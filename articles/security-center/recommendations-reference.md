@@ -1,38 +1,39 @@
 ---
-title: Referens tabell för alla Azure Security Center rekommendationer
-description: Den här artikeln innehåller Azure Security Center säkerhets rekommendationer som hjälper dig att skärpa och skydda dina resurser.
+title: Referenstabell för alla Azure Security Center rekommendationer
+description: Den här artikeln Azure Security Center säkerhetsrekommendationer som hjälper dig att härda och skydda dina resurser.
 author: memildin
 ms.service: security-center
 ms.topic: reference
 ms.date: 04/06/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a44a5e4e715238c42e51e65dfe16d4f70dfcf54d
-ms.sourcegitcommit: c2a41648315a95aa6340e67e600a52801af69ec7
+ms.openlocfilehash: e994aead1840fd3ef9b57e92cf95e94837608d7a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106504828"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719141"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Säkerhetsrekommendationer – en referensguide
 
-Den här artikeln innehåller de rekommendationer som du kan se i Azure Security Center. Rekommendationerna som visas i din miljö beror på vilka resurser du skyddar och din anpassade konfiguration.
+Den här artikeln innehåller de rekommendationer som du kan se Azure Security Center. Rekommendationerna som visas i din miljö beror på vilka resurser du skyddar och din anpassade konfiguration.
 
-Security Centers rekommendationer baseras på [Azures säkerhets benchmark](../security/benchmarks/introduction.md). Azures säkerhets prestanda är Microsofts-skapade, Azure-/regionsspecifika uppsättning rikt linjer för säkerhets-och efterlevnads metod tips baserade på vanliga ramverk för efterlevnad. Detta respekterade riktmärken bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) med fokus på Cloud-inriktad säkerhet.
+Security Center rekommendationerna baseras på [Azure Security Benchmark.](https://docs.microsoft.com/security/benchmark/azure/introduction)
+Azure Security Benchmark är Microsofts microsoft-specifika uppsättning riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. Det här respekterade benchmark-måttet bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och National Institute of Standards and Technology [(NIST)](https://www.nist.gov/) med fokus på molncentrerad säkerhet.
 
-Information om hur du svarar på dessa rekommendationer finns i [åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
+Mer information om hur du svarar på dessa rekommendationer finns [i Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
-Dina säkra Poäng baseras på antalet Security Center rekommendationer som du har slutfört. För att bestämma vilka rekommendationer som ska lösas först kan du titta på allvarlighets graden för var och en av de potentiella effekterna på dina säkra poäng.
+Din säkerhetspoäng baseras på antalet rekommendationer Security Center du har slutfört. När du ska avgöra vilka rekommendationer du ska lösa först kan du titta på allvarlighetsgraden för var och en och dess potentiella inverkan på dina säkerhetspoäng.
 
 > [!TIP]
-> Om beskrivningen i rekommendationen säger "ingen relaterad princip" är det vanligt vis på grund av att rekommendationen är beroende av en annan rekommendation och _dess_ princip. Rekommendationen "slut punkts skydd bör därför inte åtgärdas...", förlitar sig på rekommendationen som kontrollerar om en Endpoint Protection-lösning är till och med _installerad_ ("Endpoint Protection-lösning ska installeras..."). Den _underliggande rekommendationen har en_ princip.
-> Att begränsa principerna till enbart den grundläggande rekommendationen fören klar princip hanteringen.
+> Om en rekommendations beskrivning säger "Ingen relaterad princip" beror det vanligtvis på att rekommendationen är beroende av en annan rekommendation och _dess_ princip. Rekommendationen "Hälsofel för slutpunktsskydd bör åtgärdas..." förlitar sig till exempel på rekommendationen som kontrollerar om en Endpoint Protection-lösning ens har installerats _("Endpoint_ Protection-lösningen ska installeras..."). Den underliggande _rekommendationen_ har en princip.
+> Genom att begränsa principerna till endast den grundläggande rekommendationen förenklas principhanteringen.
 
 ## <a name="appservices-recommendations"></a><a name='recs-appservices'></a>AppServices-rekommendationer
 
 [!INCLUDE [asc-recs-appservices](../../includes/asc-recs-appservices.md)]
 
-## <a name="compute-recommendations"></a><a name='recs-compute'></a>Beräknings rekommendationer
+## <a name="compute-recommendations"></a><a name='recs-compute'></a>Compute-rekommendationer
 
 [!INCLUDE [asc-recs-compute](../../includes/asc-recs-compute.md)]
 
@@ -40,7 +41,7 @@ Dina säkra Poäng baseras på antalet Security Center rekommendationer som du h
 
 [!INCLUDE [asc-recs-container](../../includes/asc-recs-container.md)]
 
-## <a name="data-recommendations"></a><a name='recs-data'></a>Data rekommendationer
+## <a name="data-recommendations"></a><a name='recs-data'></a>Datarekommendationer
 
 [!INCLUDE [asc-recs-data](../../includes/asc-recs-data.md)]
 
@@ -56,21 +57,21 @@ Dina säkra Poäng baseras på antalet Security Center rekommendationer som du h
 
 [!INCLUDE [asc-recs-networking](../../includes/asc-recs-networking.md)]
 
-## <a name="deprecated-recommendations"></a>Föråldrade rekommendationer
+## <a name="deprecated-recommendations"></a>Inaktuella rekommendationer
 
 |Rekommendation|Beskrivning & relaterad princip|Allvarlighetsgrad|
 |----|----|----|
-|Åtkomst till App Services bör vara begränsad|Begränsa åtkomsten till din App Services genom att ändra nätverks konfigurationen för att neka inkommande trafik från intervall som är för breda.<br>(Relaterad princip: [för hands version]: åtkomst till App Services ska vara begränsad)|Högt|
-|Reglerna för webb program på IaaS NSG: er bör vara härdade|Skärp nätverks säkerhets gruppen (NSG) för dina virtuella datorer som kör webb program, med NSG-regler som kan tillåtas för webb program portar.<br>(Relaterad princip: NSG: er-reglerna för webb program på IaaS bör vara härdade)|Högt|
-|Pod säkerhets principer bör definieras för att minska angrepps vektorn genom att ta bort onödiga program behörigheter (förhands granskning)|Definiera Pod säkerhets principer för att minska angrepps vektorn genom att ta bort onödiga program privilegier. Vi rekommenderar att du konfigurerar Pod säkerhets principer så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [för hands version]: Pod säkerhets principer bör definieras på Kubernetes-tjänster)|Medel|
-|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i IoT-enheterna.|Låg|
-|Datorerna måste startas om för att tillämpa system uppdateringar|Starta om datorerna för att tillämpa system uppdateringar och skydda datorn från sårbarheter. (Relaterad princip: system uppdateringar bör installeras på dina datorer)|Medel|
-|Övervaknings agenten ska installeras på dina datorer|Den här åtgärden installerar en övervaknings agent på de valda virtuella datorerna. Välj en arbets yta som agenten ska rapportera till. (Ingen relaterad princip)|Högt|
+|Åtkomst till App Services bör begränsas|Begränsa åtkomsten till App Services genom att ändra nätverkskonfigurationen till att neka inkommande trafik från intervall som är för breda.<br>(Relaterad princip: [Förhandsversion]: Åtkomst till App Services bör begränsas)|Högt|
+|Reglerna för webbprogram på IaaS-NSG:er bör härdas|Härda nätverkssäkerhetsgruppen (NSG) för dina virtuella datorer som kör webbprogram med NSG-regler som är övertillåtna när det gäller webbaserade programportar.<br>(Relaterad princip: NSG:erna för webbprogram på IaaS bör härdas)|Högt|
+|Säkerhetsprinciper för poddar bör definieras för att minska attackvektorn genom att ta bort onödiga programprivilegier (förhandsversion)|Definiera poddsäkerhetsprinciper för att minska angreppsvektorn genom att ta bort onödiga programprivilegier. Vi rekommenderar att du konfigurerar poddsäkerhetsprinciper så att poddar endast kan komma åt resurser som de har åtkomst till.<br>(Relaterad princip: [Förhandsversion]: Pod Security Policies bör definieras på Kubernetes Services)|Medel|
+|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i dina IoT-enheter|Installera Azure Security Center för IoT-säkerhetsmodulen för att få mer insyn i dina IoT-enheter.|Låg|
+|Datorerna bör startas om för att tillämpa systemuppdateringar|Starta om datorerna för att tillämpa systemuppdateringarna och skydda datorn mot sårbarheter. (Relaterad princip: Systemuppdateringar ska installeras på dina datorer)|Medel|
+|Övervakningsagenten ska installeras på dina datorer|Den här åtgärden installerar en övervakningsagent på de valda virtuella datorerna. Välj en arbetsyta som agenten ska rapportera till. (Ingen relaterad princip)|Högt|
 ||||
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om rekommendationer finns i följande avsnitt:
+Mer information om rekommendationer finns i följande:
 
-- [Vad är säkerhets principer, initiativ och rekommendationer?](security-policy-concept.md)
-- [Granska dina säkerhets rekommendationer](security-center-recommendations.md)
+- [Vad är säkerhetsprinciper, initiativ och rekommendationer?](security-policy-concept.md)
+- [Granska dina säkerhetsrekommendationer](security-center-recommendations.md)

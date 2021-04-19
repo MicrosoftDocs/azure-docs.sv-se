@@ -1,6 +1,6 @@
 ---
-title: Lär dig mer om villkoren i SAP HANA på Azure (stora instanser) | Microsoft Docs
-description: Lär dig mer om villkoren i SAP HANA på Azure (stora instanser).
+title: Känna till villkoren för SAP HANA på Azure (stora instanser) | Microsoft Docs
+description: Känna till villkoren för SAP HANA på Azure (stora instanser).
 services: virtual-machines-linux
 documentationcenter: ''
 author: msjuergent
@@ -10,43 +10,42 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/20/2020
+ms.date: 4/16/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 92ef2e59dab1921eae8e7d88249e75116601c597
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a243b348c01e6d1297a6a1fe016e3b6bc8d98d47
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101670866"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719087"
 ---
 # <a name="know-the-terms"></a>Förstå villkoren
 
-Flera vanliga definitioner används ofta i arkitektur-och teknisk distributions guide. Observera följande villkor och deras betydelser:
+Flera vanliga definitioner används ofta i guiden för arkitektur och teknisk distribution. Observera följande termer och deras innebörd:
 
-- **IaaS**: infrastruktur som en tjänst.
-- **PaaS**: plattform som en tjänst.
-- **SaaS**: program vara som en tjänst.
-- **SAP-komponent**: ett enskilt SAP-program, t. ex. en ERP central komponent (ECC), Business WAREHOUSE (BW), lösnings ansvarig eller Enterprise Portal (EP). SAP-komponenter kan baseras på traditionella ABAP-eller Java-tekniker eller icke-NetWeaver-baserade program som affärs objekt.
-- **SAP-miljö**: en eller flera SAP-komponenter grupperade logiskt för att utföra en affärs funktion, till exempel utveckling, kvalitets säkring, utbildning, haveri beredskap eller produktion.
-- **SAP, liggande**: refererar till hela SAP-resurserna i din IT-liggande. SAP-landskapet innehåller alla produktions miljöer och icke-produktions miljöer.
-- **SAP-system**: kombinationen av DBMS-skikt och program nivå i, till exempel ett SAP ERP-utvecklingssystem, ett SAP BW test system och ett SAP CRM-produktionssystem. Azure-distributioner stöder inte uppdelning av de här två lagren mellan både lokala och Azure. Ett SAP-system är antingen distribuerat lokalt eller distribuerat i Azure. Du kan distribuera de olika systemen i ett SAP-landskap till antingen Azure eller lokalt. Du kan till exempel distribuera SAP CRM-utvecklings-och test systemen i Azure samtidigt som du distribuerar SAP CRM-operativsystemet lokalt. För SAP HANA på Azure (stora instanser) är det avsett att du är värd för SAP-program skiktet i SAP-system i virtuella datorer och relaterad SAP HANA instansen på en enhet i stämpeln SAP HANA på Azure (stora instanser).
-- **Stor instans stämpel**: en maskin varu infrastrukturs stack som är SAP HANA TDI-certifierad och dedikerad för att köra SAP HANA-instanser i Azure.
-- **SAP HANA på Azure (stora instanser):** Officiellt namn på erbjudandet i Azure att köra HANA-instanser i på SAP HANA TDI-certifierad maskin vara som distribueras i stora instanser i olika Azure-regioner. Den relaterade termen *Hana-stor instans* är kort för *SAP HANA på Azure (stora instanser)* och används ofta i den här tekniska distributions guiden.
-- **Olika platser**: beskriver ett scenario där virtuella datorer distribueras till en Azure-prenumeration som har plats-till-plats-, flera-plats-eller Azure ExpressRoute-anslutning mellan lokala data Center och Azure. I gemensam Azure-dokumentation beskrivs även de här typerna av distributioner som scenarier med olika platser. Orsaken till anslutningen är att utöka lokala domäner, lokala Azure Active Directory/OpenLDAP och lokala DNS i Azure. Den lokala miljön är utökad till Azure-till gångar i Azure-prenumerationerna. Med det här tillägget kan de virtuella datorerna ingå i den lokala domänen. 
+- **IaaS:** Infrastruktur som en tjänst.
+- **PaaS:** Plattform som en tjänst.
+- **SaaS:** Programvara som en tjänst.
+- **SAP-komponent:** Ett enskilt SAP-program, till exempel ERP Central Component (ECC), Business Warehouse (BW), Solution Manager eller Enterprise Portal (EP). SAP-komponenter kan baseras på traditionella ABAP- eller Java-tekniker eller ett icke-NetWeaver-baserat program, till exempel affärsobjekt.
+- **SAP-miljö:** En eller flera SAP-komponenter som grupperas logiskt för att utföra en affärsfunktion, till exempel utveckling, kvalitetskontroll, utbildning, haveriberedskap eller produktion.
+- **SAP-landskap:** Refererar till hela SAP-tillgångarna i ditt IT-landskap. SAP-landskap innehåller alla produktions- och icke-produktionsmiljöer.
+- **SAP-system:** Kombinationen av DBMS-lager och programlager för, till exempel ett SAP ERP-utvecklingssystem, ett SAP BW-testsystem och ett SAP CRM-produktionssystem. Azure-distributioner har inte stöd för att dela upp dessa två lager mellan den lokala platsen och Azure. Ett SAP-system distribueras antingen lokalt eller distribueras i Azure. Du kan distribuera de olika systemen i ett SAP-landskap till antingen Azure eller lokalt. Du kan till exempel distribuera SAP CRM-utvecklings- och testsystemen i Azure medan du distribuerar SAP CRM-produktionssystemet lokalt. För SAP HANA på Azure (stora instanser) är det tänkt att du ska vara värd för SAP-programlagret för SAP-system på virtuella datorer och den relaterade SAP HANA-instansen på en enhet i stämpeln SAP HANA på Azure (stora instanser).
+- **Stämpel för stor** instans: En maskinvaruinfrastrukturstack som är SAP HANA TDI-certifierad och dedikerad för att SAP HANA instanser i Azure.
+- **SAP HANA på Azure (stora instanser):** Det officiella namnet på erbjudandet i Azure för att köra HANA-instanser i på SAP HANA TDI-certifierad maskinvara som distribueras i stora instansstämplar i olika Azure-regioner. Den relaterade termen *hana stor instans* är en *förkortning SAP HANA azure (stora instanser)* och används ofta i den här tekniska distributionsguiden.
+- **Flera platser:** Beskriver ett scenario där virtuella datorer distribueras till en Azure-prenumeration som har plats-till-plats-, multiplats- eller Azure ExpressRoute-anslutning mellan lokala datacenter och Azure. I den vanliga Azure-dokumentationen beskrivs även dessa typer av distributioner som scenarier över flera platser. Orsaken till anslutningen är att utöka lokala domäner, lokala domäner Azure Active Directory/OpenLDAP och lokal DNS till Azure. Det lokala landskapslandskapet utökas till Azure-tillgångarna i Azure-prenumerationerna. Med det här tillägget kan de virtuella datorerna ingå i den lokala domänen. 
 
-   Domän användare av den lokala domänen kan komma åt servrarna och köra tjänster på de virtuella datorerna (till exempel DBMS-tjänster). Kommunikation och namn matchning mellan virtuella datorer som distribuerats lokalt och Azure-distribuerade virtuella datorer är möjligt. Det här scenariot är vanligt för det sätt på vilket de flesta SAP-till gångar distribueras. Mer information finns i [Azure VPN gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) och [skapa ett virtuellt nätverk med en plats-till-plats-anslutning med hjälp av Azure Portal](../../../vpn-gateway/tutorial-site-to-site-portal.md).
-- **Klient organisation**: en kund som distribueras i Hana stor instans-stämpel isoleras till en *klient.* En klient är isolerad i nätverk, lagring och beräknings lager från andra klienter. Lagrings-och beräknings enheter tilldelade till olika klienter kan inte se varandra eller kommunicera med varandra på nivån HANA-stor instans stämpel. En kund kan välja att distribuera olika klienter. Även om det inte finns någon kommunikation mellan klienter på nivån HANA stor instans stämpel.
-- **SKU-kategori**: för en stor instans av Hana erbjuds följande två kategorier av SKU: er:
-    - **Typ I-klass**: S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 och S224m
-    - **Typ II-klass**: S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm och S960m
-- **Stamp**: definierar den interna distributions storleken på Hana för stora instanser i Microsoft. Innan HANA-stora instans enheter kan distribueras, består en stor instans av HANA som består av beräknings-, nätverks-och lagrings rack som måste distribueras på en plats i data centret. En sådan distribution kallas för en HANA-stor instans eller från revision 4 (se nedan) på vi använder det alternativa villkoret för **stor instans rad**
-- **Revision**: det finns två olika stämplar revisioner för Hana-stora instans stämplar. Dessa skiljer sig från arkitekturen och närhet till Azures värdar för virtuella datorer
-    - "Revision 3" (rev 3): är den ursprungliga design som har distribuerats från mitten av året 2016
-    - "Revision 4" (rev 4): är en ny design som kan ge närmare närhet till värdar för virtuella Azure-datorer och med den lägre nätverks fördröjningen mellan virtuella Azure-datorer och HANA stora instans enheter 
-    - "Revision 4,2" (rev 4,2): på befintliga revision 4-domänkontrollanter ommärkess resurserna till BareMetal-infrastrukturen.  Kunder kan komma åt sina resurser som BareMetal-instanser från Azure Portal. 
+   Domänanvändare av den lokala domänen kan komma åt servrarna och köra tjänster på dessa virtuella datorer (till exempel DBMS-tjänster). Kommunikation och namnmatchning mellan virtuella datorer som distribuerats lokalt och Azure-distribuerade virtuella datorer är möjligt. Det här scenariot är typiskt för hur de flesta SAP-tillgångar distribueras. Mer information finns i [Azure VPN Gateway](../../../vpn-gateway/vpn-gateway-about-vpngateways.md) och Skapa ett virtuellt nätverk med en [plats-till-plats-anslutning](../../../vpn-gateway/tutorial-site-to-site-portal.md)med hjälp av Azure Portal .
+- **Klientorganisation:** En kund som distribueras i stämpeln HANA Large Instance isoleras till en *klientorganisation.* En klientorganisation är isolerad i nätverks-, lagrings- och beräkningslagret från andra klienter. Lagrings- och beräkningsenheter som är tilldelade till de olika klienterna kan inte se varandra eller kommunicera med varandra på stämpelnivån hana stor instans. En kund kan välja att ha distributioner till olika klienter. Inte ens då finns det någon kommunikation mellan klienter på stämpelnivån HANA Large Instance.
+- **SKU-kategori:** För hana, stor instans erbjuds följande två kategorier av SKU:er:
+    - **Typ I-klass:** S72, S72m, S96, S144, S144m, S192, S192m, S192xm, S224 och S224 m
+    - **Typ II-klass:** S384, S384m, S384xm, S384xxm, S576m, S576xm, S768m, S768xm och S960m
+- **Stämpel:** Definierar Microsofts interna distributionsstorlek för hana stora instanser. Innan stora HANA-instansenheter kan distribueras måste en stämpel för hana stor instans som består av beräknings-, nätverks- och lagringsrack distribueras på en datacenterplats. En sådan distribution kallas för en stor HANA-instansstämpel eller från Revision 4 (se nedan) på vi använder den alternativa termen **för raden för stora instanser**
+- **Revision:** Det finns två olika stämpelrevisioner för hana stora instansstämplar. Dessa skiljer sig åt vad gäller arkitektur och närhet till värdar för virtuella Azure-datorer.
+    - "Revision 3" (Rev 3) är den ursprungliga designen som distribuerades från mitten av 2016.
+    - "Revision 4.2" (Rev 4.2) är en ny design som ger närmare anslutning till virtuella Azure-datorvärdar. Rev 4.2 erbjuder extremt låg nätverksfördröjning mellan virtuella Azure-datorer och HANA large Instance-enheter. Resurser i Azure Portal kallas BareMetal-infrastruktur. Kunder kan komma åt sina resurser som BareMetal-instanser från Azure Portal. 
 
-Det finns flera olika ytterligare resurser som du kan använda för att distribuera en SAP-arbetsbelastning i molnet. Om du planerar att köra en distribution av SAP HANA i Azure måste du ha erfarenhet av och känna till principerna för Azure-IaaS och distributionen av SAP-arbetsbelastningar på Azure IaaS. Innan du fortsätter kan du läsa [Använd SAP-lösningar på Azure Virtual Machines](get-started.md) för mer information. 
+Det finns en mängd ytterligare resurser för hur du distribuerar en SAP-arbetsbelastning i molnet. Om du planerar att köra en distribution av SAP HANA i Azure måste du ha erfarenhet av och känna till principerna för Azure IaaS och distributionen av SAP-arbetsbelastningar i Azure IaaS. Mer information finns i Använda [SAP-lösningar på virtuella Azure-datorer](get-started.md) innan du fortsätter. 
 
-**Nästa steg**
-- Se [HLI-certifiering](hana-certification.md)
+## <a name="next-steps"></a>Nästa steg
+- Se [HLI-certifiering](hana-certification.md).

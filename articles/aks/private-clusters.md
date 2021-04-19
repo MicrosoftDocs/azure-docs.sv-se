@@ -1,53 +1,53 @@
 ---
-title: Skapa ett privat Azure Kubernetes service-kluster
-description: Lär dig hur du skapar ett privat Azure Kubernetes service-kluster (AKS)
+title: Skapa ett privat Azure Kubernetes Service kluster
+description: Lär dig hur du skapar ett Azure Kubernetes Service-kluster (AKS)
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 474c9a5d58627cec59904ccbcc5b3597de314612
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 339bb41aed5ead3d7ee7d1217bfbc771cf068832
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106120375"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719123"
 ---
-# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes service-kluster
+# <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes Service kluster
 
-I ett privat kluster har kontroll planet eller API-servern interna IP-adresser som definieras i [RFC1918 för privat Internet-](https://tools.ietf.org/html/rfc1918) dokument. Genom att använda ett privat kluster kan du se till att nätverks trafiken mellan API-servern och noderna i pooler fortfarande finns kvar i det privata nätverket.
+I ett privat kluster har kontrollplanet eller API-servern interna IP-adresser som definieras i [dokumentet RFC1918 – Adressallokering för privat Internet.](https://tools.ietf.org/html/rfc1918) Genom att använda ett privat kluster kan du se till att nätverkstrafiken mellan API-servern och dina nodpooler endast finns kvar i det privata nätverket.
 
-Kontroll planet eller API-servern finns i en Azure Kubernetes service (AKS)-hanterad Azure-prenumeration. En kunds kluster eller Node-pool är i kundens prenumeration. Servern och klustret eller noden kan kommunicera med varandra via [tjänsten Azure Private Link][private-link-service] i det virtuella nätverkets API-Server och en privat slut punkt som exponeras i under nätet för KUNDEns AKS-kluster.
+Kontrollplanet eller API-servern finns i en AKS Azure Kubernetes Service prenumeration (AKS). En kunds kluster eller nodpool finns i kundens prenumeration. Servern och klustret eller nodpoolen kan kommunicera med varandra via [Azure Private Link-tjänsten][private-link-service] i det virtuella API-servernätverket och en privat slutpunkt som exponeras i undernätet i kundens AKS-kluster.
 
 ## <a name="region-availability"></a>Regional tillgänglighet
 
-Privat kluster är tillgängligt i offentliga regioner, Azure Government och Azure Kina 21Vianet-regioner där [AKS stöds](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service).
+Privat kluster är tillgängligt i offentliga regioner, Azure Government och Azure China 21Vianet regioner där [AKS stöds.](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)
 
 > [!NOTE]
-> Azure Government-platser stöds, men US Gov, Texas stöds inte för närvarande på grund av stöd för privata länkar.
+> Azure Government-webbplatser stöds, men US Gov, Texas stöds inte för närvarande på grund av att Private Link stöds.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure CLI-version 2.2.0 eller senare
-* Tjänsten Private Link stöds endast på standard Azure Load Balancer. Basic-Azure Load Balancer stöds inte.  
-* Om du vill använda en anpassad DNS-Server lägger du till Azure DNS IP-168.63.129.16 som överordnad DNS-server på den anpassade DNS-servern.
+* Azure CLI version 2.2.0 eller senare
+* Tjänsten Private Link stöds endast på Standard Azure Load Balancer. Grundläggande Azure Load Balancer stöds inte.  
+* Om du vill använda en anpassad DNS-server lägger du till Azure DNS IP 168.63.129.16 som överordnad DNS-server i den anpassade DNS-servern.
 
 ## <a name="create-a-private-aks-cluster"></a>Skapa ett privat AKS-kluster
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en resurs grupp eller Använd en befintlig resurs grupp för ditt AKS-kluster.
+Skapa en resursgrupp eller använd en befintlig resursgrupp för ditt AKS-kluster.
 
 ```azurecli-interactive
 az group create -l westus -n MyResourceGroup
 ```
 
-### <a name="default-basic-networking"></a>Standard nätverk för grundläggande 
+### <a name="default-basic-networking"></a>Grundläggande standardnätverk 
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
 Där `--enable-private-cluster` är en obligatorisk flagga för ett privat kluster. 
 
-### <a name="advanced-networking"></a>Avancerat nätverk  
+### <a name="advanced-networking"></a>Avancerade nätverk  
 
 ```azurecli-interactive
 az aks create \
@@ -64,29 +64,29 @@ az aks create \
 Där `--enable-private-cluster` är en obligatorisk flagga för ett privat kluster. 
 
 > [!NOTE]
-> Om Docker-bryggan Address CIDR (172.17.0.1/16) står i konflikt med under nätets CIDR, ändra Docker-bryggans adress på lämpligt sätt.
+> Om CIDR (172.17.0.1/16) hamnar i konflikt med undernätets CIDR ändrar du Docker-bryggadressen på rätt sätt.
 
 ## <a name="configure-private-dns-zone"></a>Konfigurera Privat DNS zon 
 
-Följande parametrar kan utnyttjas för att konfigurera Privat DNS zon.
+Följande parametrar kan användas för att konfigurera Privat DNS Zon.
 
-- "System" är standardvärdet. Om argumentet--Private-DNS-Zone utelämnas, kommer AKS att skapa en Privat DNS zon i resurs gruppen för noden.
-- "Ingen" innebär att AKS inte skapar någon Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-matchning för det privata fullständiga domän namnet.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas inom agentens noder och kan orsaka kluster problem efter distributionen. 
-- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" kräver att du skapar en Privat DNS zon i det här formatet för Azure Global Cloud: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zon som går framåt.  Dessutom behöver du en tilldelad identitet eller tjänstens huvud namn med minst- `private dns zone contributor`  och- `vnet contributor` rollerna.
-- "FQDN-underdomänen" kan användas med "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" endast för att ge under domän funktioner till `privatelink.<region>.azmk8s.io`
+- "System" är standardvärdet. Om argumentet --private-dns-zone utelämnas skapar AKS en Privat DNS zon i nodresursgruppen.
+- "Ingen" innebär att AKS inte skapar en Privat DNS zon.  Detta kräver att du tar med din egen DNS-server och konfigurerar DNS-upplösningen för privat FQDN.  Om du inte konfigurerar DNS-matchning kan DNS bara matchas i agentnoderna och orsakar klusterproblem efter distributionen. 
+- "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" kräver att du skapar en Privat DNS Zon i det här formatet för Azures globala moln: `privatelink.<region>.azmk8s.io` . Du behöver resurs-ID för den Privat DNS zonen framöver.  Dessutom behöver du en användar tilldelad identitet eller tjänstens huvudnamn med minst `private dns zone contributor`  rollerna `vnet contributor` och .
+- "fqdn-subdomain" kan endast användas med "CUSTOM_PRIVATE_DNS_ZONE_RESOURCE_ID" för att tillhandahålla underdomänfunktioner för att `privatelink.<region>.azmk8s.io`
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-* AKS Preview version 0.5.7 eller senare
-* API-version 2020-11-01 eller senare
+* Förhandsversionen av AKS version 0.5.7 eller senare
+* API-versionen 2020-11-01 eller senare
 
-### <a name="create-a-private-aks-cluster-with-private-dns-zone-preview"></a>Skapa ett privat AKS-kluster med Privat DNS zon (för hands version)
+### <a name="create-a-private-aks-cluster-with-private-dns-zone"></a>Skapa ett privat AKS-kluster Privat DNS zon
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone [system|none]
 ```
 
-### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone-preview"></a>Skapa ett privat AKS-kluster med en anpassad Privat DNS zon (förhands granskning)
+### <a name="create-a-private-aks-cluster-with-a-custom-private-dns-zone"></a>Skapa ett privat AKS-kluster med en anpassad Privat DNS zon
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster --enable-managed-identity --assign-identity <ResourceId> --private-dns-zone <custom private dns zone ResourceId> --fqdn-subdomain <subdomain-name>
@@ -94,42 +94,42 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 
 ## <a name="options-for-connecting-to-the-private-cluster"></a>Alternativ för att ansluta till det privata klustret
 
-API-serverns slut punkt har ingen offentlig IP-adress. Om du vill hantera API-servern måste du använda en virtuell dator som har åtkomst till AKS-klustrets Azure-Virtual Network (VNet). Det finns flera alternativ för att upprätta en nätverks anslutning till det privata klustret.
+API-serverslutpunkten har ingen offentlig IP-adress. För att hantera API-servern måste du använda en virtuell dator som har åtkomst till AKS-klustrets Azure Virtual Network (VNet). Det finns flera alternativ för att upprätta nätverksanslutning till det privata klustret.
 
-* Skapa en virtuell dator i samma Azure-Virtual Network (VNet) som AKS-klustret.
-* Använd en virtuell dator i ett separat nätverk och konfigurera [peering för virtuella nätverk][virtual-network-peering].  Mer information om det här alternativet finns i avsnittet nedan.
-* Använd en [Express Route eller en VPN-][express-route-or-VPN] anslutning.
-* Använd [kommando funktionen AKS kör](#aks-run-command-preview).
+* Skapa en virtuell dator i samma Azure Virtual Network (VNet) som AKS-klustret.
+* Använd en virtuell dator i ett separat nätverk och konfigurera [Peering för virtuella nätverk.][virtual-network-peering]  Mer information om det här alternativet finns i avsnittet nedan.
+* Använd en [Express Route- eller VPN-anslutning.][express-route-or-VPN]
+* Använd [funktionen AKS Kör kommando](#aks-run-command-preview).
 
-Att skapa en virtuell dator i samma VNET som AKS-klustret är det enklaste alternativet.  Express Route och VPN lägger till kostnader och kräver ytterligare nätverks komplexitet.  Peering av virtuella nätverk kräver att du planerar dina nätverks-CIDR-intervall för att se till att det inte finns några överlappande intervall.
+Det enklaste alternativet är att skapa en virtuell dator i samma virtuella nätverk som AKS-klustret.  Express Route och VPN:er lägger till kostnader och kräver ytterligare nätverkskomplexitet.  Peering för virtuella nätverk kräver att du planerar ditt nätverks CIDR-intervall för att säkerställa att det inte finns några överlappande intervall.
 
-### <a name="aks-run-command-preview"></a>AKS körnings kommando (förhands granskning)
+### <a name="aks-run-command-preview"></a>AKS Kör kommando (förhandsversion)
 
-I dag när du behöver åtkomst till ett privat kluster måste du göra det i det virtuella kluster nätverket eller ett peer-nätverk eller en klient dator. Detta kräver vanligt vis att datorn är ansluten via VPN eller Express Route till det virtuella kluster nätverket eller att en hoppning skapas i det virtuella kluster nätverket. Med kommandot AKS Run kan du fjärranropa kommandon i ett AKS-kluster via AKS-API: et. Den här funktionen ger dig ett API som gör det möjligt att till exempel köra just-in-Time-kommandon från en fjärran sluten dator för ett privat kluster. Detta kan avsevärt hjälpa till att snabbt få till gång till ett privat kluster när klient datorn inte finns i det privata nätverket, samtidigt som den fortfarande behåller och tvingar samma RBAC-kontroller och en privat API-Server.
+Idag när du behöver åtkomst till ett privat kluster måste du göra det i klustrets virtuella nätverk eller ett peer-peer-nätverk eller klientdator. Detta kräver vanligtvis att datorn är ansluten via VPN eller Express Route till klustrets virtuella nätverk eller en jumpbox som ska skapas i klustrets virtuella nätverk. Med AKS-körningskommandot kan du fjärranropa kommandon i ett AKS-kluster via AKS-API:et. Den här funktionen tillhandahåller ett API som gör att du till exempel kan köra just-in-time-kommandon från en fjärransluten bärbar dator för ett privat kluster. Detta kan ge snabb just-in-time-åtkomst till ett privat kluster när klientdatorn inte finns i klustrets privata nätverk samtidigt som samma RBAC-kontroller och privata API-server behålls och framtvings.
 
-### <a name="register-the-runcommandpreview-preview-feature"></a>Registrera `RunCommandPreview` förhands gransknings funktionen
+### <a name="register-the-runcommandpreview-preview-feature"></a>Registrera `RunCommandPreview` förhandsgranskningsfunktionen
 
-Om du vill använda det nya Kör-kommando-API: et måste du aktivera `RunCommandPreview` funktions flaggan i din prenumeration.
+Om du vill använda det Kör kommando API:et måste du aktivera `RunCommandPreview` funktionsflaggan för din prenumeration.
 
-Registrera `RunCommandPreview` funktions flaggan med hjälp av kommandot [AZ funktions register] [AZ-Feature-register], som du ser i följande exempel:
+Registrera `RunCommandPreview` funktionsflaggan med kommandot [az feature register][az-feature-register] enligt följande exempel:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.ContainerService" --name "RunCommandPreview"
 ```
 
-Det tar några minuter för statusen att visa *registrerad*. Verifiera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
+Det tar några minuter för statusen att visa *Registrerad*. Kontrollera registreringsstatusen med hjälp av [kommandot az feature list:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/RunCommandPreview')].{Name:name,State:properties.state}"
 ```
 
-När du är klar uppdaterar du registreringen av resurs leverantören *Microsoft. container service* med hjälp av kommandot [AZ Provider register][az-provider-register] :
+När du är klar uppdaterar du registreringen av *resursprovidern Microsoft.ContainerService* med kommandot [az provider register:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-### <a name="use-aks-run-command"></a>Använda kommandot kör AKS
+### <a name="use-aks-run-command"></a>Använda AKS-Kör kommando
 
 Enkelt kommando
 
@@ -137,19 +137,19 @@ Enkelt kommando
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl get pods -n kube-system"
 ```
 
-Distribuera ett manifest genom att bifoga den aktuella filen
+Distribuera ett manifest genom att bifoga den specifika filen
 
 ```azurecli-interactive
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f deployment.yaml
 ```
 
-Distribuera ett manifest genom att bifoga en hel mapp
+Distribuera ett manifest genom att koppla en hel mapp
 
 ```azurecli-interactive
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "kubectl apply -f deployment.yaml -n default" -f .
 ```
 
-Utföra en Helm-installation och skicka de angivna värdena manifestet
+Utföra en Helm-installation och skicka manifestet för specifika värden
 
 ```azurecli-interactive
 az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitnami https://charts.bitnami.com/bitnami && helm repo update && helm install my-release -f values.yaml bitnami/nginx" -f values.yaml
@@ -157,42 +157,42 @@ az aks command invoke -g <resourceGroup> -n <clusterName> -c "helm repo add bitn
 
 ## <a name="virtual-network-peering"></a>Virtuell nätverkspeering
 
-Som nämnts är virtuell nätverks-peering ett sätt att komma åt ditt privata kluster. Om du vill använda peering för virtuella nätverk måste du konfigurera en länk mellan det virtuella nätverket och den privata DNS-zonen.
+Som tidigare nämnts är peering för virtuella nätverk ett sätt att komma åt ditt privata kluster. Om du vill använda peering för virtuella nätverk måste du konfigurera en länk mellan det virtuella nätverket och den privata DNS-zonen.
     
-1. Gå till resurs gruppen för noden i Azure Portal.  
+1. Gå till nodresursgruppen i Azure Portal.  
 2. Välj den privata DNS-zonen.   
-3. I det vänstra fönstret väljer du länken **virtuellt nätverk** .  
-4. Skapa en ny länk för att lägga till det virtuella nätverket för den virtuella datorn i den privata DNS-zonen. Det tar några minuter för DNS-zon-länken att bli tillgänglig.  
-5. I Azure Portal navigerar du till resurs gruppen som innehåller klustrets virtuella nätverk.  
-6. Välj det virtuella nätverket i den högra rutan. Det virtuella nätverks namnet har formatet *AKS-VNet- \**.  
-7. Välj **peering** i det vänstra fönstret.  
-8. Välj **Lägg till**, Lägg till det virtuella nätverket för den virtuella datorn och skapa sedan peering.  
-9. Gå till det virtuella nätverket där du har den virtuella datorn, Välj **peering**, Välj det virtuella AKS-nätverket och skapa sedan peer-kopplingen. Om adress intervallen för det virtuella AKS-nätverket och den virtuella DATORns virtuella nätverk är i konflikt med varandra, Miss lyckas peering. Mer information finns i  [peering för virtuella nätverk][virtual-network-peering].
+3. I den vänstra rutan väljer du **länken Virtuellt** nätverk.  
+4. Skapa en ny länk för att lägga till det virtuella nätverket för den virtuella datorn i den privata DNS-zonen. Det tar några minuter innan länken för DNS-zonen blir tillgänglig.  
+5. I Azure Portal navigerar du till resursgruppen som innehåller klustrets virtuella nätverk.  
+6. Välj det virtuella nätverket i den högra rutan. Namnet på det virtuella nätverket har formen *aks-vnet- \**.  
+7. I den vänstra rutan väljer du **Peerings**.  
+8. Välj **Lägg** till, lägg till det virtuella nätverket för den virtuella datorn och skapa sedan peering.  
+9. Gå till det virtuella nätverket där du har den virtuella datorn, välj **Peerings**, välj det virtuella AKS-nätverket och skapa sedan peering. Om adressintervallen i det virtuella AKS-nätverket och den virtuella datorns virtuella nätverk krockar, misslyckas peering. Mer information finns i [Peering för virtuella nätverk.][virtual-network-peering]
 
 ## <a name="hub-and-spoke-with-custom-dns"></a>Hubb och eker med anpassad DNS
 
-[Hubbs-och eker-arkitekturer](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) används ofta för att distribuera nätverk i Azure. I många av dessa distributioner är DNS-inställningar i eker-virtuella nätverk konfigurerade för att referera till en central DNS-vidarebefordrare för att tillåta lokal och Azure-baserad DNS-matchning. När du distribuerar ett AKS-kluster till en sådan nätverks miljö finns det några särskilda överväganden som måste beaktas.
+[Nav- och ekerarkitekturer](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) används ofta för att distribuera nätverk i Azure. I många av dessa distributioner är DNS-inställningarna i de virtuella ekernätverken konfigurerade att referera till en central DNS-vidarebefordrare för att möjliggöra lokal och Azure-baserad DNS-upplösning. När du distribuerar ett AKS-kluster till en sådan nätverksmiljö finns det några särskilda överväganden som måste beaktas.
 
-![Hubb och eker för privata kluster](media/private-clusters/aks-private-hub-spoke.png)
+![Privat klusterhubb och eker](media/private-clusters/aks-private-hub-spoke.png)
 
-1. När ett privat kluster har allokerats skapas som standard en privat slut punkt (1) och en privat DNS-zon (2) i den kluster hanterade resurs gruppen. Klustret använder en A-post i den privata zonen för att matcha IP-adressen för den privata slut punkten för kommunikation till API-servern.
+1. När ett privat kluster etableras skapas som standard en privat slutpunkt (1) och en privat DNS-zon (2) i den kluster hanterade resursgruppen. Klustret använder en A-post i den privata zonen för att matcha IP-adressen för den privata slutpunkten för kommunikation till API-servern.
 
-2. Den privata DNS-zonen är länkad till det virtuella nätverk som klusternoderna är kopplade till (3). Det innebär att den privata slut punkten bara kan matchas av värdar i den länkade VNet. I scenarier där ingen anpassad DNS har kon figurer ATS i VNet (standard), fungerar detta utan problem som värd punkt på 168.63.129.16 för DNS som kan lösa poster i den privata DNS-zonen på grund av länken.
+2. Den privata DNS-zonen är endast länkad till det virtuella nätverk som klusternoderna är kopplade till (3). Det innebär att den privata slutpunkten endast kan matchas av värdar i det länkade virtuella nätverket. I scenarier där ingen anpassad DNS har konfigurerats på det virtuella nätverket (standard) fungerar detta utan problem som värdar pekar på 168.63.129.16 för DNS som kan matcha poster i den privata DNS-zonen på grund av länken.
 
-3. I scenarier där det virtuella nätverket som innehåller klustret har anpassade DNS-inställningar (4) Miss lyckas kluster distributionen om inte den privata DNS-zonen är länkad till det virtuella nätverk som innehåller de anpassade DNS-matcharna (5). Du kan skapa den här länken manuellt när den privata zonen har skapats under kluster etableringen eller via Automation när du har identifierat att zonen har skapats med hjälp av en Event-baserad distributions mekanism (till exempel Azure Event Grid och Azure Functions).
+3. I scenarier där det virtuella nätverk som innehåller klustret har anpassade DNS-inställningar (4), misslyckas klusterdistributionen om inte den privata DNS-zonen är länkad till det virtuella nätverk som innehåller de anpassade DNS-matcharna (5). Den här länken kan skapas manuellt när den privata zonen har skapats under klusteretablering eller via automatisering när du har upptäckt att zonen har skapats med hjälp av händelsebaserade distributionsmekanismer (till exempel Azure Event Grid och Azure Functions).
 
 > [!NOTE]
-> Om du använder [ta med din egen väg tabell med Kubernetes](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) och tar med din egen DNS med ett privat kluster kommer klustret inte att fungera. Du måste associera [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) i resurs gruppen för noden till under nätet när det inte gick att skapa klustret.
+> Om du använder [Bring Your Own Route Table med kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) och Bring Your Own DNS med privat kluster går det inte att skapa klustret. Du måste associera [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) i nodresursgruppen till undernätet när klustret har skapats, för att skapa klustret.
 
 ## <a name="limitations"></a>Begränsningar 
-* Det går inte att använda IP-auktoriserade intervall för den privata API-serverns slut punkt, de gäller bara för den offentliga API-servern
-* [Begränsningar för Azure Private Link-tjänsten][private-link-service] gäller för privata kluster.
-* Inget stöd för Azure DevOps Microsoft-värdbaserat agenter med privata kluster. Överväg att använda [egen värdbaserade agenter](/azure/devops/pipelines/agents/agents?tabs=browser). 
-* För kunder som behöver aktivera Azure Container Registry för att fungera med privata AKS måste det Container Registry virtuella nätverket vara peer-kopplat med agent klustrets virtuella nätverk.
+* IP-auktoriserade intervall kan inte tillämpas på den privata API-serverslutpunkten, de gäller bara för den offentliga API-servern
+* [Azure Private Link tjänstbegränsningar][private-link-service] gäller för privata kluster.
+* Inget stöd för Microsoft-värdbaserade agenter i Azure DevOps med privata kluster. Överväg att använda [agenter med egen värd.](/azure/devops/pipelines/agents/agents?tabs=browser) 
+* För kunder som behöver aktivera Azure Container Registry att arbeta med privat AKS måste det virtuella Container Registry-nätverket peer-vara peer-ed med agentklustrets virtuella nätverk.
 * Inget stöd för att konvertera befintliga AKS-kluster till privata kluster
-* Om du tar bort eller ändrar den privata slut punkten i kundens undernät kommer klustret att sluta fungera. 
-* När kunderna har uppdaterat en post på sina egna DNS-servrar skulle dessa poddar fortfarande matcha apiserver FQDN till den äldre IP-adressen efter migreringen tills de startas om. Kunder måste starta om hostNetwork poddar och standard-DNSPolicy poddar efter kontroll Plans migreringen.
-* När det gäller underhåll i kontroll planet kan din [AKS-IP-adress](./limit-egress-traffic.md) ändras. I det här fallet måste du uppdatera en post som pekar på den privata IP-adressen för API-servern på din anpassade DNS-server och starta om anpassade poddar eller distributioner med hjälp av hostNetwork.
+* Om du tar bort eller ändrar den privata slutpunkten i kundens undernät slutar klustret att fungera. 
+* När kunderna har uppdaterat A-posten på sina egna DNS-servrar skulle dessa poddar fortfarande matcha apiserver-FQDN till den äldre IP-adressen efter migreringen tills de startas om. Kunder måste starta om hostNetwork Pods och standard-DNSPolicy Pods efter kontrollplansmigrering.
+* Vid underhåll på kontrollplanet kan [AKS IP-adressen](./limit-egress-traffic.md) ändras. I det här fallet måste du uppdatera A-posten som pekar på API-serverns privata IP-adress på din anpassade DNS-server och starta om eventuella anpassade poddar eller distributioner med hjälp av hostNetwork.
 
 <!-- LINKS - internal -->
 [az-provider-register]: /cli/azure/provider#az-provider-register

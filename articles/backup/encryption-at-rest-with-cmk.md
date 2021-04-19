@@ -1,97 +1,97 @@
 ---
 title: Kryptering av säkerhetskopieringsdata med kundhanterade nycklar
-description: Lär dig hur Azure Backup kan kryptera dina säkerhetskopierade data med Kundhanterade nycklar (CMK).
+description: Lär dig Azure Backup gör att du kan kryptera dina säkerhetskopierade data med hjälp av kund hanterade nycklar (CMK).
 ms.topic: conceptual
-ms.date: 04/01/2021
-ms.openlocfilehash: b6cb1a288d0052b39bbeb52ed9fd20e68a6427ed
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.date: 04/19/2021
+ms.openlocfilehash: bd51be06e707674f3e35b3478d7f99d096be912a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106167898"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718781"
 ---
 # <a name="encryption-of-backup-data-using-customer-managed-keys"></a>Kryptering av säkerhetskopieringsdata med kundhanterade nycklar
 
-Med Azure Backup kan du kryptera dina säkerhets kopierings data med Kundhanterade nycklar (CMK) i stället för att använda plattforms hanterade nycklar, som är aktiverade som standard. Dina nycklar som används för att kryptera säkerhetskopierade data måste lagras i [Azure Key Vault](../key-vault/index.yml).
+Azure Backup kan du kryptera dina säkerhetskopierade data med kund hanterade nycklar (CMK) i stället för att använda plattform hanterade nycklar, vilket är aktiverat som standard. Dina nycklar som används för att kryptera säkerhetskopierade data måste lagras i [Azure Key Vault](../key-vault/index.yml).
 
-Krypterings nyckeln som används för kryptering av säkerhets kopior kan skilja sig från den som används för källan. Data skyddas med hjälp av en AES 256-baserad data krypterings nyckel (DEK), som i sin tur skyddas med hjälp av dina nycklar (KEK). Detta ger dig fullständig kontroll över data och nycklar. För att tillåta kryptering krävs det att Recovery Services valvet beviljas åtkomst till krypterings nyckeln i Azure Key Vault. Du kan ändra nyckeln som och när det behövs.
+Krypteringsnyckeln som används för att kryptera säkerhetskopior kan vara en annan än den som används för källan. Data skyddas med en AES 256-baserad datakrypteringsnyckel (DEK), som i sin tur skyddas med hjälp av dina nycklar (KEK). Detta ger dig fullständig kontroll över data och nycklar. För att tillåta kryptering måste Recovery Services-valvet beviljas åtkomst till krypteringsnyckeln i Azure Key Vault. Du kan ändra nyckeln vid behov.
 
 I den här artikeln beskrivs följande:
 
 - Skapa ett Recovery Services-valv
-- Konfigurera Recovery Services-valvet för att kryptera säkerhetskopierade data med Kundhanterade nycklar
-- Utföra säkerhets kopiering till valv som krypterats med Kundhanterade nycklar
-- Återställa data från säkerhets kopior
+- Konfigurera Recovery Services-valvet för att kryptera säkerhetskopierade data med kund hanterade nycklar
+- Utföra säkerhetskopiering till valv som krypterats med kund hanterade nycklar
+- Återställa data från säkerhetskopior
 
 ## <a name="before-you-start"></a>Innan du börjar
 
-- Med den här funktionen kan du **bara kryptera nya Recovery Services-valv**. Det finns inte stöd för alla valv som innehåller befintliga objekt som är registrerade eller försökte registreras.
+- Med den här funktionen kan du kryptera **nya Recovery Services-valv endast**. Valv som innehåller befintliga objekt som har registrerats eller som har försökt registreras till det stöds inte.
 
-- När den har Aktiver ATS för ett Recovery Services valv kan inte kryptering med Kundhanterade nycklar återställas till med hjälp av plattforms hanterade nycklar (standard). Du kan ändra krypterings nycklarna enligt dina krav.
+- När det har aktiverats för ett Recovery Services-valv går det inte att återställa kryptering med kund hanterade nycklar till att använda plattform hanterade nycklar (standard). Du kan ändra krypteringsnycklarna enligt dina krav.
 
-- Den här funktionen **stöder för närvarande inte säkerhets kopiering med mars-agenten** och du kanske inte kan använda ett CMK-krypterat valv för samma. MARS-agenten använder en kryptering baserad på användar lösen fras. Den här funktionen stöder inte heller säkerhets kopiering av klassiska virtuella datorer.
+- Den här funktionen stöder för närvarande inte säkerhetskopiering med **MARS-agenten** och du kanske inte kan använda ett CMK-krypterat valv för samma. MARS-agenten använder en användar lösenfrasbaserad kryptering. Den här funktionen stöder inte heller säkerhetskopiering av klassiska virtuella datorer.
 
-- Den här funktionen är inte relaterad till [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), som använder gästkod kryptering av en virtuell dators diskar med BitLocker (för Windows) och DM-Crypt (för Linux)
+- Den här funktionen är inte relaterad [till Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md), som använder gästbaserad kryptering av en virtuell dators diskar med BitLocker (för Windows) och DM-Crypt (för Linux)
 
-- Recovery Services-valvet kan bara krypteras med nycklar som lagras i en Azure Key Vault, som finns i **samma region**. Nycklar måste också vara **RSA-nycklar** och ska vara i **aktiverat** läge.
+- Recovery Services-valvet kan endast krypteras med nycklar som lagras i Azure Key Vault som finns i **samma region.** Dessutom måste nycklarna bara vara **RSA-nycklar** och ska vara i **aktiverat** tillstånd.
 
-- Det finns för närvarande inte stöd för att flytta CMK-krypterade Recovery Services valv över resurs grupper och prenumerationer.
-- När du flyttar ett Recovery Services-valv som redan är krypterat med Kundhanterade nycklar till en ny klient måste du uppdatera Recovery Services-valvet för att återskapa och konfigurera om valvets hanterade identitet och CMK (som bör finnas i den nya klienten). Om detta inte är slutfört kommer säkerhets kopierings-och återställnings åtgärderna att börja fungera. Dessutom måste alla rollbaserade behörigheter för åtkomst kontroll (RBAC) som kon figurer ATS i prenumerationen konfigureras om.
+- Det finns för närvarande inte stöd för att flytta CMK-krypterade Recovery Services-valv mellan resursgrupper och prenumerationer.
+- När du flyttar ett Recovery Services-valv som redan är krypterat med kund hanterade nycklar till en ny klientorganisation måste du uppdatera Recovery Services-valvet för att återskapa och konfigurera om valvets hanterade identitet och CMK (som ska finnas i den nya klientorganisationen). Om detta inte görs misslyckas säkerhetskopierings- och återställningsåtgärder. Dessutom måste alla RBAC-behörigheter (rollbaserad åtkomstkontroll) som konfigurerats i prenumerationen konfigureras om.
 
 - Den här funktionen kan konfigureras via Azure Portal och PowerShell.
 
     >[!NOTE]
-    >Använd AZ-modulen 5.3.0 eller mer om du vill använda Kundhanterade nycklar för säkerhets kopieringar i Recovery Services valvet.
+    >Använd Az-modulen 5.3.0 eller högre för att använda kund hanterade nycklar för säkerhetskopieringar i Recovery Services-valvet.
     
     >[!Warning]
-    >Om du använder PowerShell för att hantera krypterings nycklar för säkerhets kopiering rekommenderar vi inte att du uppdaterar nycklarna från portalen.<br></br>Om du uppdaterar nyckeln från portalen kan du inte använda PowerShell för att uppdatera krypterings nyckeln ytterligare, till en PowerShell-uppdatering som stöder den nya modellen är tillgänglig. Du kan dock fortsätta att uppdatera nyckeln från Azure Portal.
+    >Om du använder PowerShell för att hantera krypteringsnycklar för säkerhetskopiering rekommenderar vi inte att du uppdaterar nycklarna från portalen.<br>Om du uppdaterar nyckeln från portalen kan du inte använda PowerShell för att uppdatera krypteringsnyckeln ytterligare förrän en PowerShell-uppdatering som stöder den nya modellen är tillgänglig. Du kan dock fortsätta att uppdatera nyckeln från Azure Portal.
 
-Om du inte har skapat och konfigurerat Recovery Services-valvet kan du [läsa hur du gör det här](backup-create-rs-vault.md).
+Om du inte har skapat och konfigurerat Recovery Services-valvet kan du [läsa hur du gör det här.](backup-create-rs-vault.md)
 
-## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurera ett valv för kryptering med Kundhanterade nycklar
+## <a name="configuring-a-vault-to-encrypt-using-customer-managed-keys"></a>Konfigurera ett valv för kryptering med kund hanterade nycklar
 
 Det här avsnittet omfattar följande steg:
 
-1. Aktivera hanterad identitet för Recovery Services valvet
+1. Aktivera hanterad identitet för Recovery Services-valvet
 
-1. Tilldela behörighet till valvet för att få åtkomst till krypterings nyckeln i Azure Key Vault
+1. Tilldela behörigheter till valvet för att få åtkomst till krypteringsnyckeln i Azure Key Vault
 
-1. Aktivera mjuk borttagning och tömning av skydd på Azure Key Vault
+1. Aktivera mjuk borttagning och rensningsskydd på Azure Key Vault
 
-1. Tilldela krypterings nyckeln till Recovery Services-valvet
+1. Tilldela krypteringsnyckeln till Recovery Services-valvet
 
-Alla dessa steg måste följas i den ordning som anges ovan för att uppnå avsedda resultat. Varje steg beskrivs i detalj nedan.
+Det är nödvändigt att alla dessa steg följs i den ordning som nämns ovan för att uppnå de avsedda resultaten. Varje steg beskrivs i detalj nedan.
 
-## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Aktivera hanterad identitet för Recovery Services valvet
+## <a name="enable-managed-identity-for-your-recovery-services-vault"></a>Aktivera hanterad identitet för Recovery Services-valvet
 
-Azure Backup använder systemtilldelade hanterade identiteter och användarspecifika hanterade identiteter för att autentisera Recovery Services-valvet för att få åtkomst till krypterings nycklar som lagras i Azure Key Vault. Om du vill aktivera hanterad identitet för Recovery Services valvet följer du stegen som beskrivs nedan.
+Azure Backup använder system tilldelade hanterade identiteter och användar tilldelade hanterade identiteter för att autentisera Recovery Services-valvet för att få åtkomst till krypteringsnycklar som lagras i Azure Key Vault. Följ stegen nedan om du vill aktivera hanterad identitet för Recovery Services-valvet.
 
 >[!NOTE]
->Den hanterade identiteten får **inte** inaktive ras (även tillfälligt). Inaktive ring av den hanterade identiteten kan leda till inkonsekvent beteende.
+>När den har aktiverats får den **hanterade identiteten** inte inaktiveras (inte ens tillfälligt). Inaktivering av den hanterade identiteten kan leda till inkonsekvent beteende.
 
-### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>Aktivera systemtilldelad hanterad identitet för valvet
+### <a name="enable-system-assigned-managed-identity-for-the-vault"></a>Aktivera system tilldelad hanterad identitet för valvet
 
 **I portalen:**
 
-1. Gå till Recovery Services valv – > **identitet**
+1. Gå till ditt Recovery Services-valv – > **identitet**
 
-    ![Identitets inställningar](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
+    ![Identitetsinställningar](media/encryption-at-rest-with-cmk/enable-system-assigned-managed-identity-for-vault.png)
 
-1. Navigera till fliken **system tilldelad** .
+1. Gå till fliken **System tilldelad.**
 
-1. Ändra **status** till **på**.
+1. Ändra **Status till** **På.**
 
-1. Klicka på **Spara** för att aktivera identiteten för valvet.
+1. Klicka **på Spara** för att aktivera identiteten för valvet.
 
-Ett objekt-ID genereras, vilket är den systemtilldelade hanterade identiteten för valvet.
+Ett objekt-ID genereras, som är valvets system tilldelade hanterade identitet.
 
 >[!NOTE]
->Den hanterade identiteten får inte inaktive ras (även tillfälligt). Inaktive ring av den hanterade identiteten kan leda till inkonsekvent beteende.
+>När den har aktiverats får den hanterade identiteten inte inaktiveras (inte ens tillfälligt). Inaktivering av den hanterade identiteten kan leda till inkonsekvent beteende.
 
 
 **Med PowerShell:**
 
-Använd kommandot [Update-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) för att aktivera systemtilldelad hanterad identitet för Recovery Services-valvet.
+Använd kommandot [Update-AzRecoveryServicesVault för](/powershell/module/az.recoveryservices/update-azrecoveryservicesvault) att aktivera system tilldelad hanterad identitet för Recovery Services-valvet.
 
 Exempel:
 
@@ -111,56 +111,56 @@ TenantId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Type        : SystemAssigned
 ```
 
-### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Tilldela användare tilldelad hanterad identitet till valvet
+### <a name="assign-user-assigned-managed-identity-to-the-vault"></a>Tilldela en användar tilldelad hanterad identitet till valvet
 
-Utför följande steg för att tilldela den tilldelade hanterade identiteten för ditt Recovery Services-valv:
+Utför följande steg för att tilldela den användar tilldelade hanterade identiteten för Recovery Services-valvet:
 
-1.  Gå till Recovery Services valv – > **identitet**
+1.  Gå till ditt Recovery Services-valv – > **identitet**
 
-    ![Tilldela användare tilldelad hanterad identitet till valvet](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
+    ![Tilldela en användar tilldelad hanterad identitet till valvet](media/encryption-at-rest-with-cmk/assign-user-assigned-managed-identity-to-vault.png)
 
-1.  Gå till fliken **tilldelade användare** .
+1.  Gå till fliken **Användar tilldelad.**
 
-1.  Klicka på **+ Lägg** till för att lägga till en användardefinierad hanterad identitet.
+1.  Klicka **på +Lägg till** för att lägga till en användar tilldelad hanterad identitet.
 
-1.  Välj prenumerationen för din identitet i bladet **Lägg till användare som tilldelats hanterade identiteter** som öppnas.
+1.  På **bladet Lägg till användar tilldelad** hanterad identitet som öppnas väljer du prenumerationen för din identitet.
 
-1.  Välj identiteten i listan. Du kan också filtrera efter namnet på identiteten eller resurs gruppen.
+1.  Välj identiteten i listan. Du kan också filtrera efter namnet på identiteten eller resursgruppen.
 
-1.  När du är klar klickar du på **Lägg till** för att slutföra tilldelningen av identiteten.
+1.  När du är klar klickar **du på** Lägg till för att slutföra tilldelning av identiteten.
 
-## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Tilldela behörighet till Recovery Servicess valvet för att få åtkomst till krypterings nyckeln i Azure Key Vault
+## <a name="assign-permissions-to-the-recovery-services-vault-to-access-the-encryption-key-in-the-azure-key-vault"></a>Tilldela behörigheter till Recovery Services-valvet för att få åtkomst till krypteringsnyckeln i Azure Key Vault
 
 >[!Note]
->Om du använder användarspecifika identiteter måste samma behörigheter tilldelas till den användare som tilldelats identiteten.
+>Om du använder användar tilldelade identiteter måste samma behörigheter tilldelas till den användar tilldelade identiteten.
 
-Du måste nu tillåta Recovery Services-valvet att få åtkomst till Azure Key Vault som innehåller krypterings nyckeln. Detta görs genom att tillåta att Recovery Services valvets hanterade identitet får åtkomst till Key Vault.
+Nu måste du tillåta Recovery Services-valvet att komma åt Azure Key Vault som innehåller krypteringsnyckeln. Detta görs genom att tillåta att Recovery Services-valvets hanterade identitet får åtkomst till Key Vault.
 
-**I portalen**:
+**I portalen:**
 
-1. Gå till dina Azure Key Vault-> **åtkomst principer**. Fortsätt till **+ Lägg till åtkomst principer**.
+1. Gå till Azure Key Vault -> **åtkomstprinciper**. Fortsätt till **+Lägg till åtkomstprinciper.**
 
-    ![Lägg till åtkomst principer](./media/encryption-at-rest-with-cmk/access-policies.png)
+    ![Lägga till åtkomstprinciper](./media/encryption-at-rest-with-cmk/access-policies.png)
 
-1. Under **nyckel behörigheter** väljer du **Hämta**, **lista**, **packa upp nyckel** och **packa upp nyckel** åtgärder. Detta anger de åtgärder på nyckeln som ska tillåtas.
+1. Under **Nyckelbehörigheter** väljer du **Hämta,** **Lista,** **Packa upp nyckel och** **Omsluta** nyckelåtgärder. Detta anger vilka åtgärder på nyckeln som tillåts.
 
-    ![Tilldela nyckel behörigheter](./media/encryption-at-rest-with-cmk/key-permissions.png)
+    ![Tilldela nyckelbehörigheter](./media/encryption-at-rest-with-cmk/key-permissions.png)
 
-1. Gå till **Välj huvud konto** och Sök efter ditt valv i sökrutan med hjälp av dess namn eller hanterad identitet. När den visas väljer du valvet och väljer **Välj** längst ned i fönstret.
+1. Gå till **Välj huvudnamn** och sök efter ditt valv i sökrutan med dess namn eller hanterade identitet. När det visas väljer du valvet och **väljer Välj** längst ned i fönstret.
 
-    ![Välj huvud konto](./media/encryption-at-rest-with-cmk/select-principal.png)
+    ![Välj huvudnamn](./media/encryption-at-rest-with-cmk/select-principal.png)
 
-1. När du är färdig väljer du **Lägg** till för att lägga till den nya åtkomst principen.
+1. När du är klar väljer du **Lägg till** för att lägga till den nya åtkomstprincipen.
 
-1. Välj **Spara** för att spara ändringar som gjorts i åtkomst principen för Azure Key Vault.
+1. Välj **Spara** för att spara ändringar som gjorts i åtkomstprincipen för Azure Key Vault.
 
-## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivera mjuk borttagning och tömning av skydd på Azure Key Vault
+## <a name="enable-soft-delete-and-purge-protection-on-the-azure-key-vault"></a>Aktivera mjuk borttagning och rensningsskydd på Azure Key Vault
 
-Du måste **Aktivera mjuk borttagning och tömning av skydd** på Azure Key Vault som lagrar din krypterings nyckel. Du kan göra detta från Azure Key Vault användar gränssnittet som visas nedan. (Du kan också ange dessa egenskaper när du skapar Key Vault). Läs mer om dessa Key Vaults egenskaper [här](../key-vault/general/soft-delete-overview.md).
+Du måste aktivera **skydd mot mjuk borttagning och rensning** på Azure Key Vault som lagrar krypteringsnyckeln. Du kan göra detta från Azure Key Vault användargränssnitt enligt nedan. (Du kan också ange dessa egenskaper när du skapar Key Vault). Läs mer om dessa Key Vault [här](../key-vault/general/soft-delete-overview.md).
 
 ![Aktivera mjuk borttagning eller rensningsskydd](./media/encryption-at-rest-with-cmk/soft-delete-purge-protection.png)
 
-Du kan också aktivera mjuk borttagning och rensning av skydd via PowerShell med hjälp av stegen nedan:
+Du kan också aktivera mjuk borttagning och rensningsskydd via PowerShell med hjälp av stegen nedan:
 
 1. Logga in på ditt Azure-konto.
 
@@ -168,7 +168,7 @@ Du kan också aktivera mjuk borttagning och rensning av skydd via PowerShell med
     Login-AzAccount
     ```
 
-1. Välj den prenumeration som innehåller ditt valv.
+1. Välj den prenumeration som innehåller valvet.
 
     ```azurepowershell
     Set-AzContext -SubscriptionId SubscriptionId
@@ -184,7 +184,7 @@ Du kan också aktivera mjuk borttagning och rensning av skydd via PowerShell med
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-1. Aktivera rensnings skydd
+1. Aktivera rensningsskydd
 
     ```azurepowershell
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "AzureKeyVaultName").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
@@ -194,55 +194,55 @@ Du kan också aktivera mjuk borttagning och rensning av skydd via PowerShell med
     Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
     ```
 
-## <a name="assign-encryption-key-to-the-rs-vault"></a>Tilldela en krypterings nyckel till RS-valvet
+## <a name="assign-encryption-key-to-the-rs-vault"></a>Tilldela krypteringsnyckel till RS-valvet
 
 >[!NOTE]
-> Kontrol lera följande innan du fortsätter:
+> Kontrollera följande innan du fortsätter:
 >
 > - Alla steg som nämns ovan har slutförts:
->   - Det Recovery Services valvets hanterade identitet har Aktiver ATS och har tilldelats nödvändiga behörigheter
->   - Azure Key Vault har mjuk borttagning och rensning-skydd aktiverat
-> - Recovery Services-valvet som du vill aktivera CMK **-kryptering för har inga objekt** som är skyddade eller registrerade för det
+>   - Recovery Services-valvets hanterade identitet har aktiverats och har tilldelats nödvändiga behörigheter
+>   - Funktionen Azure Key Vault har aktiverat mjuk borttagning och rensningsskydd
+> - Recovery Services-valvet som du vill aktivera CMK-kryptering **för har inga** objekt skyddade eller registrerade i det
 
-När ovanstående är säkerställd fortsätter du med att välja krypterings nyckel för ditt valv.
+När ovanstående är säkerställt fortsätter du med att välja krypteringsnyckeln för valvet.
 
-### <a name="to-assign-the-key-in-the-portal"></a>Så här tilldelar du nyckeln i portalen
+### <a name="to-assign-the-key-in-the-portal"></a>Tilldela nyckeln i portalen
 
-1. Gå till Recovery Services valv – > **Egenskaper**
+1. Gå till Recovery Services-valvet – > **egenskaper**
 
     ![Krypteringsinställningar](./media/encryption-at-rest-with-cmk/encryption-settings.png)
 
-1. Välj **Uppdatera** under **krypterings inställningar**.
+1. Välj **Uppdatera** under **Krypteringsinställningar.**
 
-1. I fönstret krypterings inställningar väljer du **Använd din egen nyckel** och fortsätter att ange nyckeln på något av följande sätt. **Kontrol lera att den nyckel som du vill använda är en RSA 2048-nyckel, som är i ett aktiverat läge.**
+1. I fönstret Krypteringsinställningar väljer du **Använd din egen nyckel** och fortsätter att ange nyckeln på något av följande sätt. **Kontrollera att den nyckel som du vill använda är en RSA 2048-nyckel som är i ett aktiverat tillstånd.**
 
-    1. Ange den **nyckel-URI** som du vill kryptera data i Recovery Services valvet med. Du måste också ange den prenumeration där Azure Key Vault (som innehåller den här nyckeln) finns. Den här nyckel-URI: n kan hämtas från motsvarande nyckel i Azure Key Vault. Se till att nyckel-URI: n har kopierats korrekt. Vi rekommenderar att du använder knappen **Kopiera till Urklipp** som medföljer nyckel identifieraren.
+    1. Ange den **nyckel-URI** som du vill kryptera data med i det här Recovery Services-valvet. Du måste också ange den prenumeration där Azure Key Vault (som innehåller den här nyckeln) finns. Den här nyckel-URI:en kan hämtas från motsvarande nyckel i Azure Key Vault. Se till att nyckel-URI:en kopieras korrekt. Vi rekommenderar att du använder knappen **Kopiera till Urklipp som** medföljer nyckelidentifieraren.
 
         >[!NOTE]
-        >När du anger krypterings nyckeln med hjälp av nyckel-URI: n kommer nyckeln inte att roteras automatiskt. Viktiga uppdateringar måste göras manuellt, genom att ange den nya nyckeln vid behov.
+        >När du anger krypteringsnyckeln med hjälp av nyckel-URI roteras inte nyckeln automatiskt. Så viktiga uppdateringar måste göras manuellt genom att den nya nyckeln anges när det behövs.
 
         ![Ange nyckel-URI](./media/encryption-at-rest-with-cmk/key-uri.png)
 
-    1. Bläddra och välj nyckeln från Key Vault i fönstret nyckel väljare.
+    1. Bläddra och välj nyckeln från Key Vault i nyckelväljarfönstret.
 
         >[!NOTE]
-        >När du anger krypterings nyckeln med hjälp av fönstret nyckel väljare, roteras nyckeln automatiskt när en ny version av nyckeln aktive ras. [Läs mer](#enabling-auto-rotation-of-encryption-keys) om hur du aktiverar automatisk rotation av krypterings nycklar.
+        >När du anger krypteringsnyckeln med hjälp av nyckelväljarfönstret roteras nyckeln automatiskt när en ny version av nyckeln aktiveras. [Läs mer](#enabling-auto-rotation-of-encryption-keys) om hur du aktiverar automatisk rotation av krypteringsnycklar.
 
-        ![Välj nyckel från Key Vault](./media/encryption-at-rest-with-cmk/key-vault.png)
+        ![Välj nyckel från nyckelvalvet](./media/encryption-at-rest-with-cmk/key-vault.png)
 
 1. Välj **Spara**.
 
-1. **Spårnings förlopp och status för uppdatering av krypterings nyckel**: du kan följa förloppet och statusen för tilldelningen av krypterings nyckel med hjälp av vyn **säkerhets kopierings jobb** i det vänstra navigerings fältet. Statusen ska ändras snart till **slutförd**. Ditt valv kommer nu att kryptera alla data med den angivna nyckeln som KEK.
+1. **Spåra förlopp och status för** uppdatering av krypteringsnyckel: Du kan  spåra förlopp och status för tilldelningen av krypteringsnyckel med hjälp av vyn Säkerhetskopieringsjobb i det vänstra navigeringsfältet. Statusen bör snart ändras till **Slutfört.** Valvet krypterar nu alla data med den angivna nyckeln som KEK.
 
-    ![Status slutförd](./media/encryption-at-rest-with-cmk/status-succeeded.png)
+    ![Statusen har slutförts](./media/encryption-at-rest-with-cmk/status-succeeded.png)
 
-    Uppdatering av krypterings nycklar loggas också i valvets aktivitets logg.
+    Krypteringsnyckeluppdateringarna loggas också i valvets aktivitetslogg.
 
     ![Aktivitetslogg](./media/encryption-at-rest-with-cmk/activity-log.png)
 
-### <a name="to-assign-the-key-with-powershell"></a>Så här tilldelar du nyckeln med PowerShell
+### <a name="to-assign-the-key-with-powershell"></a>Tilldela nyckeln med PowerShell
 
-Använd kommandot [set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) för att aktivera kryptering med Kundhanterade nycklar och för att tilldela eller uppdatera krypterings nyckeln som ska användas.
+Använd kommandot [Set-AzRecoveryServicesVaultProperty](/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultproperty) för att aktivera kryptering med kund hanterade nycklar och för att tilldela eller uppdatera krypteringsnyckeln som ska användas.
 
 Exempel:
 
@@ -267,65 +267,65 @@ InfrastructureEncryptionState : Disabled
 ```
 
 >[!NOTE]
-> Den här processen är densamma när du vill uppdatera eller ändra krypterings nyckeln. Om du vill uppdatera och använda en nyckel från en annan Key Vault (skiljer sig från den som för närvarande används) kontrollerar du att:
+> Den här processen är densamma när du vill uppdatera eller ändra krypteringsnyckeln. Om du vill uppdatera och använda en nyckel från en annan Key Vault (skiljer sig från den som används för närvarande) kontrollerar du att:
 >
-> - Nyckel valvet finns i samma region som Recovery Services-valvet
+> - Nyckelvalvet finns i samma region som Recovery Services-valvet
 >
-> - Nyckel valvet har mjuk borttagnings-och rensnings skydd aktiverat
+> - Mjuk borttagning och rensning har aktiverats för nyckelvalvet
 >
-> - Recovery Services-valvet har de behörigheter som krävs för att komma åt nyckel valvet.
+> - Recovery Services-valvet har de behörigheter som krävs för att komma åt nyckelvalvet.
 
-## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Säkerhetskopiera till ett valv som är krypterat med Kundhanterade nycklar
+## <a name="backing-up-to-a-vault-encrypted-with-customer-managed-keys"></a>Backa upp till ett valv som krypterats med kund hanterade nycklar
 
-Innan du fortsätter att konfigurera skyddet rekommenderar vi starkt att du ser till att följande check lista följer. Detta är viktigt sedan när ett objekt har kon figurer ATS för säkerhets kopiering (eller försökte konfigureras) till ett icke-CMK krypterat valv, det går inte att aktivera kryptering med Kundhanterade nycklar på den och fortsätter att använda plattforms hanterade nycklar.
+Innan du fortsätter med att konfigurera skydd rekommenderar vi starkt att du ser till att följande checklista följs. Detta är viktigt eftersom kryptering med kund hanterade nycklar inte kan aktiveras på ett icke-CMK-krypterat valv när ett objekt har konfigurerats för säkerhetskopiering (eller försök att konfigureras) och fortsätter att använda plattform hanterade nycklar.
 
 >[!IMPORTANT]
-> Innan du fortsätter att konfigurera skydd måste **du ha** slutfört följande steg:
+> Innan du fortsätter med att konfigurera skyddet måste **du ha** slutfört följande steg:
 >
->1. Säkerhets kopierings valvet har skapats
->1. Aktiverade den systemtilldelade hanterade identiteten för Recovery Services-valvet eller tilldelats en användardefinierad hanterad identitet till valvet
->1. Tilldelade behörigheter till säkerhets kopierings valvet (eller den användarspecifika hanterade identiteten) för att komma åt krypterings nycklar från din Key Vault
->1. Aktiverat mjuk borttagning och tömning av skydd för din Key Vault
->1. Tilldelat en giltig krypterings nyckel för säkerhets kopierings valvet
+>1. Skapat ditt Backup-valv
+>1. Aktiverade Recovery Services-valvets system tilldelade hanterade identitet eller tilldelade en användar tilldelad hanterad identitet till valvet
+>1. Tilldelade behörigheter till ditt Säkerhetskopieringsvalv (eller den användar tilldelade hanterade identiteten) för åtkomst till krypteringsnycklar från Key Vault
+>1. Aktiverat skydd för mjuk borttagning och rensning för Key Vault
+>1. Tilldelat en giltig krypteringsnyckel för säkerhetskopieringsvalvet
 >
->Om alla ovanstående steg har bekräftats fortsätter du med att konfigurera säkerhets kopieringen.
+>Om alla ovanstående steg har bekräftats fortsätter du först med att konfigurera säkerhetskopieringen.
 
-Processen för att konfigurera och utföra säkerhets kopieringar till ett Recovery Services valv som är krypterade med Kundhanterade nycklar är samma som för ett valv som använder plattforms hanterade nycklar, utan **ändringar i upplevelsen**. Detta gäller även för [säkerhets kopiering av virtuella Azure-datorer](./quick-backup-vm-portal.md) samt säkerhets kopiering av arbets belastningar som körs i en virtuell dator (till exempel [SAP HANA](./tutorial-backup-sap-hana-db.md) [SQL Server](./tutorial-sql-backup.md) databaser).
+Processen för att konfigurera och utföra säkerhetskopieringar till ett Recovery Services-valv som är krypterat med kund hanterade nycklar är samma som för ett valv som använder plattformsbaserade nycklar, utan ändringar i **upplevelsen**. Detta gäller för [säkerhetskopiering](./quick-backup-vm-portal.md) av virtuella Azure-datorer samt säkerhetskopiering av arbetsbelastningar som körs på en virtuell dator (till exempel SAP HANA [,](./tutorial-backup-sap-hana-db.md) [SQL Server databaser).](./tutorial-sql-backup.md)
 
-## <a name="restoring-data-from-backup"></a>Återställa data från säkerhets kopia
+## <a name="restoring-data-from-backup"></a>Återställa data från en säkerhetskopia
 
-### <a name="vm-backup"></a>VM-säkerhetskopiering
+### <a name="vm-backup"></a>Säkerhetskopiering av virtuell dator
 
-Data som lagras i Recovery Services-valvet kan återställas enligt de steg som beskrivs [här](./backup-azure-arm-restore-vms.md). När du återställer från ett Recovery Services valv som är krypterat med Kundhanterade nycklar kan du välja att kryptera återställda data med en disk krypterings uppsättning (DES).
+Data som lagras i Recovery Services-valvet kan återställas enligt stegen som beskrivs [här.](./backup-azure-arm-restore-vms.md) När du återställer från ett Recovery Services-valv som krypterats med kund hanterade nycklar kan du välja att kryptera återställda data med en diskkrypteringsuppsättning (DES).
 
-#### <a name="restoring-vm--disk"></a>Återställa VM/disk
+#### <a name="restoring-vm--disk"></a>Återställa virtuell dator/disk
 
-1. När du återställer disk/VM från en "ögonblicks bild" återställnings punkt krypteras de återställda data med det DES som används för att kryptera den virtuella käll datorns diskar.
+1. När du återställer disk/virtuell dator från en återställningspunkt för ögonblicksbilder krypteras de återställda data med de DES som används för att kryptera den virtuella källdatorns diskar.
 
-1. När du återställer disk/virtuell dator från en återställnings punkt med återställnings typ som "valv" kan du välja att återställa återställda data med hjälp av ett DES som anges vid återställnings tillfället. Alternativt kan du välja att fortsätta med att återställa data utan att ange ett DES, då det kommer att krypteras med hjälp av Microsoft-hanterade nycklar.
+1. När du återställer disk/virtuell dator från en återställningspunkt med återställningstyp som "valv" kan du välja att de återställda data ska krypteras med hjälp av en DES som anges vid tidpunkten för återställningen. Du kan också välja att fortsätta med återställningen av data utan att ange en DES, i vilket fall den krypteras med Microsoft-hanterade nycklar.
 
-Du kan kryptera den återställda disken/virtuella datorn när återställningen har slutförts, oavsett vad som gjorts när du påbörjar återställningen.
+Du kan kryptera den återställda disken/den virtuella datorn när återställningen är klar, oavsett vilket val som gjorts när återställningen initieras.
 
-![Återställnings punkter](./media/encryption-at-rest-with-cmk/restore-points.png)
+![Återställningspunkter](./media/encryption-at-rest-with-cmk/restore-points.png)
 
-#### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Välj en disk krypterings uppsättning vid återställning från valv återställnings punkt
+#### <a name="select-a-disk-encryption-set-while-restoring-from-vault-recovery-point"></a>Välj en diskkrypteringsuppsättning vid återställning från valvåterställningspunkt
 
-**I portalen**:
+**I portalen:**
 
-Disk krypterings uppsättningen anges under krypterings inställningar i återställnings fönstret, som du ser nedan:
+Diskkrypteringsuppsättningen anges under Krypteringsinställningar i återställningsfönstret, enligt nedan:
 
-1. I **kryptera disk (er) med din nyckel** väljer du **Ja**.
+1. I Kryptera **diskar med din nyckel väljer** du **Ja.**
 
-1. Välj den DES som du vill använda för de återställda diskarna i list rutan. **Se till att du har åtkomst till DES.**
+1. I listrutan väljer du de DES som du vill använda för de återställda diskarna. **Kontrollera att du har åtkomst till DES.**
 
 >[!NOTE]
->Möjligheten att välja ett DES när du återställer är inte tillgänglig om du återställer en virtuell dator som använder Azure Disk Encryption.
+>Möjligheten att välja en DES under återställning är inte tillgänglig om du återställer en virtuell dator som använder Azure Disk Encryption.
 
 ![Kryptera disk med din nyckel](./media/encryption-at-rest-with-cmk/encrypt-disk-using-your-key.png)
 
-**Med PowerShell**:
+**Med PowerShell:**
 
-Använd kommandot [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) med parametern [ `-DiskEncryptionSetId <string>` ] för att [Ange det des](/powershell/module/az.compute/get-azdiskencryptionset) som ska användas för att kryptera den återställda disken. Mer information om hur du återställer diskar från VM-säkerhetskopiering finns i [den här artikeln](./backup-azure-vms-automation.md#restore-an-azure-vm).
+Använd kommandot [Get-AzRecoveryServicesBackupItem](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupitem) med parametern [ ] för att ange de DES som ska användas för att kryptera den `-DiskEncryptionSetId <string>` återställda disken. [](/powershell/module/az.compute/get-azdiskencryptionset) Mer information om hur du återställer diskar från säkerhetskopiering av virtuella datorer finns i [den här artikeln.](./backup-azure-vms-automation.md#restore-an-azure-vm)
 
 Exempel:
 
@@ -338,77 +338,87 @@ $rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $backupitem -StartDate $st
 $restorejob = Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -StorageAccountName "DestAccount" -StorageAccountResourceGroupName "DestRG" -TargetResourceGroupName "DestRGforManagedDisks" -DiskEncryptionSetId “testdes1” -VaultId $vault.ID
 ```
 
-#### <a name="restoring-files"></a>Filer återställs
+#### <a name="restoring-files"></a>Återställa filer
 
-När du utför en fil återställning krypteras de återställda data med den nyckel som används för att kryptera mål platsen.
+När du utför en filåterställning krypteras de återställda data med nyckeln som används för att kryptera målplatsen.
 
 ### <a name="restoring-sap-hanasql-databases-in-azure-vms"></a>Återställa SAP HANA/SQL-databaser i virtuella Azure-datorer
 
-När du återställer från en säkerhets kopie rad SAP HANA/SQL-databas som körs i en virtuell Azure-dator krypteras de återställda data med hjälp av krypterings nyckeln som används på mål lagrings platsen. Det kan vara en kundhanterad nyckel eller en plattforms-hanterad nyckel som används för att kryptera diskarna på den virtuella datorn.
+När du återställer från en säkerhetskopierad SAP HANA/SQL-databas som körs på en virtuell Azure-dator krypteras återställda data med hjälp av krypteringsnyckeln som används på mållagringsplatsen. Det kan vara en kund hanterad nyckel eller en plattforms hanterad nyckel som används för att kryptera diskarna på den virtuella datorn.
 
 ## <a name="additional-topics"></a>Ytterligare information
 
-### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>Aktivera kryptering med Kundhanterade nycklar vid skapande av valv (i för hands version)
+### <a name="enable-encryption-using-customer-managed-keys-at-vault-creation-in-preview"></a>Aktivera kryptering med kund hanterade nycklar när valvet skapas (i förhandsversion)
 
 >[!NOTE]
->Att aktivera kryptering vid skapande av valv med hjälp av Kundhanterade nycklar är i begränsad offentlig för hands version och kräver registrering av prenumerationer. Registrera dig för för hands versionen genom att fylla i [formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) och skriva till oss på [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+>Aktivering av kryptering vid valvskapande med kund hanterade nycklar är en begränsad offentlig förhandsversion och kräver att prenumerationer tillåts. Om du vill registrera dig för förhandsversionen fyller [du i formuläret](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapURDNTVVhGOUxXSVBZMEwxUU5FNDkyQkU4Ny4u) och skriver till oss på [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
 
-När din prenumeration är tillåten visas fliken **säkerhets kopierings kryptering** . På så sätt kan du aktivera kryptering på säkerhets kopian med Kundhanterade nycklar när du skapar ett nytt Recovery Services-valv. Gör så här för att aktivera kryptering:
+När din prenumeration tillåts visas fliken **Kryptering för säkerhetskopiering.** På så sätt kan du aktivera kryptering på säkerhetskopian med kund hanterade nycklar när du skapar ett nytt Recovery Services-valv. Utför följande steg för att aktivera krypteringen:
 
-1. Bredvid fliken **grundläggande** anger du krypterings nyckeln och identiteten som ska användas för kryptering på fliken **säkerhets kopierings kryptering** .
+1. Bredvid fliken Grundläggande inställningar går du till fliken Kryptering **för säkerhetskopiering** och anger **krypteringsnyckeln** och identiteten som ska användas för kryptering.
 
-   ![Aktivera kryptering på valv nivå](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
+   ![Aktivera kryptering på valvnivå](media/encryption-at-rest-with-cmk/enable-encryption-using-cmk-at-vault.png)
 
 
    >[!NOTE]
-   >Inställningarna gäller endast för säkerhets kopiering och är valfria.
+   >Inställningarna gäller endast säkerhetskopiering och är valfria.
 
-1. Välj **Använd kundhanterad nyckel** som krypterings typ.
+1. Välj **Använd kund hanterad nyckel** som krypteringstyp.
 
-1. Välj lämpligt alternativ för att ange den nyckel som ska användas för kryptering.
+1. Om du vill ange vilken nyckel som ska användas för kryptering väljer du lämpligt alternativ.
 
-   Du kan ange URI: n för krypterings nyckeln eller bläddra och välja nyckeln. När du anger nyckeln med hjälp av alternativet **välj Key Vault** aktive ras automatisk rotation av krypterings nyckeln automatiskt. [Läs mer om automatisk rotation](#enabling-auto-rotation-of-encryption-keys). 
+   Du kan ange URI:en för krypteringsnyckeln eller bläddra och välja nyckeln. När du anger nyckeln med alternativet **Välj Key Vault** aktiveras automatisk rotation av krypteringsnyckeln automatiskt. [Läs mer om automatisk rotation.](#enabling-auto-rotation-of-encryption-keys) 
 
-1. Ange den användare som tilldelats hanterad identitet för att hantera kryptering med Kundhanterade nycklar. Klicka på **Välj** för att bläddra och välja den identitet som krävs.
+1. Ange den användartilldeerade hanterade identiteten för att hantera kryptering med kundhanterade nycklar. Klicka **på Välj** för att bläddra och välja den identitet som krävs.
 
-1. När du är klar kan du fortsätta med att lägga till taggar (valfritt) och fortsätta skapa valvet.
+1. När du är klar fortsätter du med att lägga till taggar (valfritt) och fortsätter att skapa valvet.
 
-### <a name="enabling-auto-rotation-of-encryption-keys"></a>Aktivera automatisk rotation av krypterings nycklar
+### <a name="enabling-auto-rotation-of-encryption-keys"></a>Aktivera automatisk rotation av krypteringsnycklar
 
-När du anger den Kundhanterade nyckeln som måste användas för att kryptera säkerhets kopior, använder du följande metoder för att ange den:
+När du anger den kund hanterade nyckeln som måste användas för att kryptera säkerhetskopior använder du följande metoder för att ange den:
 
 - Ange nyckel-URI
 - Välj från Key Vault
 
-Med alternativet **Välj från Key Vault** kan du aktivera automatisk rotation för den valda nyckeln. Detta eliminerar den manuella ansträngningen för uppdatering till nästa version. Men med det här alternativet:
-- Det kan ta upp till en timme innan nyckel versions uppdateringen börjar gälla.
-- När en ny version av nyckeln börjar gälla bör den tidigare versionen också vara tillgänglig (i aktiverat tillstånd) för minst ett efterföljande säkerhets kopierings jobb när nyckel uppdateringen har börjat gälla.
+Med alternativet **Välj Key Vault** kan du aktivera automatisk rotation för den valda nyckeln. Detta eliminerar det manuella arbetet med att uppdatera till nästa version. Men med det här alternativet:
+- Uppdatering av nyckelversion kan ta upp till en timme att gälla.
+- När en ny version av nyckeln gäller ska den gamla versionen också vara tillgänglig (i aktiverat tillstånd) för minst ett efterföljande säkerhetskopieringsjobb efter att nyckeluppdateringen har aktiverats.
+
+### <a name="using-azure-policies-for-auditing-and-enforcing-encryption-utilizing-customer-managed-keys-in-preview"></a>Använda Azure-principer för granskning och framtvingande av kryptering med kund hanterade nycklar (i förhandsversion)
+
+Azure Backup kan du använda Azure-princip för att granska och framtvinga kryptering med kund hanterade nycklar för data i Recovery Services-valvet. Använda Azure-principer:
+
+- Granskningsprincipen kan användas för granskningsvalv med kryptering med kund hanterade nycklar som aktiveras efter 2021-04-01. För valv med CMK-kryptering aktiverat före det här datumet kan principen misslyckas med att tillämpas eller kan visa falska negativa resultat (det vill säga dessa valv kan rapporteras som icke-kompatibla, trots att **CMK-kryptering** är aktiverat).
+- Om du vill använda granskningsprincipen för granskningsvalv med **CMK-kryptering** aktiverat före 2021-04-01 använder du Azure Portal för att uppdatera en krypteringsnyckel. Detta hjälper till att uppgradera till den nya modellen. Om du inte vill ändra krypteringsnyckeln anger du samma nyckel igen via nyckel-URI eller alternativet för nyckelval. 
+
+   >[!Warning]
+    >Om du använder PowerShell för att hantera krypteringsnycklar för säkerhetskopiering rekommenderar vi inte att du uppdaterar nycklarna från portalen.<br>Om du uppdaterar nyckeln från portalen kan du inte använda PowerShell för att uppdatera krypteringsnyckeln ytterligare förrän en PowerShell-uppdatering som stöder den nya modellen är tillgänglig. Du kan dock fortsätta att uppdatera nyckeln från Azure Portal.
 
 ## <a name="frequently-asked-questions"></a>Vanliga frågor och svar
 
-### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>Kan jag kryptera ett befintligt säkerhets kopierings valv med Kundhanterade nycklar?
+### <a name="can-i-encrypt-an-existing-backup-vault-with-customer-managed-keys"></a>Kan jag kryptera ett befintligt Backup-valv med kund hanterade nycklar?
 
-Nej, CMK-kryptering kan bara aktive ras för nya valv. Därför måste valvet aldrig ha haft några objekt skyddade. I själva verket måste inga försök att skydda några objekt till valvet göras innan du aktiverar kryptering med Kundhanterade nycklar.
+Nej, CMK-kryptering kan endast aktiveras för nya valv. Valvet får därför aldrig ha några objekt som skyddas. I själva verket måste inga försök att skydda objekt till valvet göras innan kryptering med kund hanterade nycklar kan användas.
 
-### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Jag försökte skydda ett objekt till mitt valv, men det misslyckades och valvet innehåller fortfarande inga objekt som är skyddade för det. Kan jag aktivera CMK-kryptering för det här valvet?
+### <a name="i-tried-to-protect-an-item-to-my-vault-but-it-failed-and-the-vault-still-doesnt-contain-any-items-protected-to-it-can-i-enable-cmk-encryption-for-this-vault"></a>Jag försökte skydda ett objekt i mitt valv, men det misslyckades, och valvet innehåller fortfarande inte några objekt som skyddas till det. Kan jag aktivera CMK-kryptering för det här valvet?
 
-Nej, valvet får inte ha några försök att skydda några objekt tidigare.
+Nej, valvet får inte ha gjort några försök att skydda objekt till det tidigare.
 
-### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Jag har ett valv som använder CMK-kryptering. Kan jag senare återställa till kryptering med hjälp av plattforms hanterade nycklar även om jag har säkerhetskopierade objekt skyddade till valvet?
+### <a name="i-have-a-vault-thats-using-cmk-encryption-can-i-later-revert-to-encryption-using-platform-managed-keys-even-if-i-have-backup-items-protected-to-the-vault"></a>Jag har ett valv som använder CMK-kryptering. Kan jag senare återgå till kryptering med plattforms hanterade nycklar även om jag har säkerhetskopierade objekt som skyddas i valvet?
 
-Nej, när du har aktiverat CMK-kryptering kan den inte återställas för att använda plattforms hanterade nycklar. Du kan ändra de nycklar som används enligt dina krav.
+Nej, när du har aktiverat CMK-kryptering kan den inte återställas till att använda plattform hanterade nycklar. Du kan ändra de nycklar som används enligt dina krav.
 
-### <a name="does-cmk-encryption-for-azure-backup-also-apply-to-azure-site-recovery"></a>Gäller CMK-kryptering för Azure Backup även för Azure Site Recovery?
+### <a name="does-cmk-encryption-for-azure-backup-also-apply-to-azure-site-recovery"></a>Gäller CMK-kryptering Azure Backup även för Azure Site Recovery?
 
-Nej, den här artikeln handlar bara om kryptering av säkerhets kopierings data. För Azure Site Recovery måste du ange egenskapen separat som tillgänglig från tjänsten.
+Nej, den här artikeln beskriver endast kryptering av säkerhetskopierade data. För Azure Site Recovery måste du ange egenskapen separat som tillgänglig från tjänsten.
 
-### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>Jag missade något av stegen i den här artikeln och gick vidare för att skydda min data källa. Kan jag fortfarande använda CMK-kryptering?
+### <a name="i-missed-one-of-the-steps-in-this-article-and-went-on-to-protect-my-data-source-can-i-still-use-cmk-encryption"></a>Jag missade ett av stegen i den här artikeln och gick vidare för att skydda min datakälla. Kan jag fortfarande använda CMK-kryptering?
 
-Inte följer stegen i artikeln och fortsätter att skydda objekt kan leda till att valvet inte kan använda kryptering med Kundhanterade nycklar. Vi rekommenderar därför att du läser [den här check listan](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) innan du fortsätter att skydda objekt.
+Om du inte följer stegen i artikeln och fortsätter att skydda objekt kan det leda till att valvet inte kan använda kryptering med kund hanterade nycklar. Vi rekommenderar därför att du refererar till den [här checklistan innan](#backing-up-to-a-vault-encrypted-with-customer-managed-keys) du fortsätter för att skydda objekt.
 
-### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>Lägger du till kostnaden för mina säkerhets kopieringar med CMK-kryptering?
+### <a name="does-using-cmk-encryption-add-to-the-cost-of-my-backups"></a>Lägger användningen av CMK-kryptering till kostnaden för mina säkerhetskopior?
 
-Om du använder CMK-kryptering för säkerhets kopiering debiteras du inte ytterligare kostnader. Du kan dock fortsätta att betala kostnader för att använda Azure Key Vault där din nyckel lagras.
+Om du använder CMK-kryptering för säkerhetskopiering medför det inga ytterligare kostnader för dig. Du kan dock fortsätta att medföra kostnader för att använda din Azure Key Vault där nyckeln lagras.
 
 ## <a name="next-steps"></a>Nästa steg
 

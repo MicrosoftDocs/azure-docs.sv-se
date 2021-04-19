@@ -6,15 +6,15 @@ ms.author: andbrown
 ms.date: 2/11/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: d33c7f87d77f371d4eb4bf903e4d534f334e39c4
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 196a449f25d97fb1c1b7b8d79ee8889e0d31a5ae
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599510"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717755"
 ---
 # <a name="import-new-update"></a>Importera ny uppdatering
-Lär dig hur du importerar en ny uppdatering till Enhetsuppdatering för IoT Hub. Om du inte redan har gjort det bör du bekanta dig med de grundläggande [importbegreppen](import-concepts.md).
+Lär dig hur du importerar en ny uppdatering till Enhetsuppdatering för IoT Hub. Om du inte redan har gjort det måste du bekanta dig med de grundläggande [importbegreppen](import-concepts.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -112,8 +112,8 @@ Exempel:
 
 ## <a name="import-update"></a>Importera uppdatering
 
-[!NOTE]
-Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal användargränssnitt. Du kan också använda [Enhetsuppdatering för att IoT Hub API:er](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att importera en uppdatering. 
+> [!NOTE]
+> Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal användargränssnitt. Du kan också använda [Enhetsuppdatering för att IoT Hub API:er](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att importera en uppdatering. 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och gå till din IoT Hub med Enhetsuppdatering.
 
@@ -141,7 +141,7 @@ Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal anv�
 
    :::image type="content" source="media/import-update/container.png" alt-text="Välj container" lightbox="media/import-update/container.png":::
 
-8. Välj Skicka för att starta importen.
+8. Välj "Skicka" för att starta importen.
 
    :::image type="content" source="media/import-update/publish-update.png" alt-text="Publicera uppdatering" lightbox="media/import-update/publish-update.png":::
 

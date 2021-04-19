@@ -107,8 +107,6 @@
       href: reference-reports-data-retention.md
     - name: Rapporteringssvarstider
       href: reference-reports-latencies.md
-    - name: Felkoder för inloggning
-      href: reference-sign-ins-error-codes.md
     - name: Vanliga frågor och svar
       href: reports-faq.md
     - name: Schema för spårningslogg

@@ -1,22 +1,22 @@
 ---
-title: Skapa en NFS-resurs – Azure Files (förhands granskning)
-description: Lär dig hur du skapar en Azure-filresurs som kan monteras med hjälp av Network File System-protokollet.
+title: Skapa en NFS-resurs – Azure Files (förhandsversion)
+description: Lär dig hur du skapar en Azure-filresurs som kan monteras med hjälp av protokollet Network File System.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/22/2021
+ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: b085b9991175d8cd43e2dac0db80c5af4e703c34
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b549c625f0a6ff0480eafc38f84d292e66350950
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521245"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107717139"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Så här skapar du en NFS-resurs
-Azure-filresurser är fullständigt hanterade fil resurser som bor i molnet. Den här artikeln beskriver hur du skapar en fil resurs som använder NFS-protokollet. Mer information om båda protokollen finns i [Azure File Share-protokoll](storage-files-compare-protocols.md).
+Azure-filresurser är fullständigt hanterade filresurser som finns i molnet. Den här artikeln beskriver hur du skapar en filresurs som använder NFS-protokollet. Mer information om båda protokollen finns i [Azure-filresursprotokoll.](storage-files-compare-protocols.md)
 
 ## <a name="limitations"></a>Begränsningar
 [!INCLUDE [files-nfs-limitations](../../../includes/files-nfs-limitations.md)]
@@ -25,19 +25,19 @@ Azure-filresurser är fullständigt hanterade fil resurser som bor i molnet. Den
 [!INCLUDE [files-nfs-regional-availability](../../../includes/files-nfs-regional-availability.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
-- NFS-resurser kan bara nås från betrodda nätverk. Anslutningar till NFS-resursen måste härstamma från någon av följande källor:
-    - [Skapa antingen en privat slut punkt](storage-files-networking-endpoints.md#create-a-private-endpoint) (rekommenderas) eller [begränsa åtkomsten till din offentliga slut punkt](storage-files-networking-endpoints.md#restrict-public-endpoint-access).
-    - [Konfigurera en punkt-till-plats (P2s) VPN på Linux som ska användas med Azure Files](storage-files-configure-p2s-vpn-linux.md).
-    - [Konfigurera en plats-till-plats-VPN för användning med Azure Files](storage-files-configure-s2s-vpn.md).
+- NFS-resurser kan bara nås från betrodda nätverk. Anslutningar till din NFS-resurs måste komma från någon av följande källor:
+    - Skapa [antingen en privat slutpunkt](storage-files-networking-endpoints.md#create-a-private-endpoint) (rekommenderas) eller begränsa [åtkomsten till din offentliga slutpunkt.](storage-files-networking-endpoints.md#restrict-public-endpoint-access)
+    - [Konfigurera en punkt-till-plats-VPN (P2S) i Linux för användning med Azure Files](storage-files-configure-p2s-vpn-linux.md).
+    - [Konfigurera ett plats-till-plats-VPN för användning med Azure Files](storage-files-configure-s2s-vpn.md).
     - Konfigurera [ExpressRoute](../../expressroute/expressroute-introduction.md).
 
-- Om du tänker använda Azure CLI [installerar du den senaste versionen](/cli/azure/install-azure-cli).
+- Om du tänker använda Azure CLI installerar [du den senaste versionen](/cli/azure/install-azure-cli).
 
-## <a name="register-the-nfs-41-protocol"></a>Registrera NFS 4,1-protokollet
-Om du använder Azure PowerShell-modulen eller Azure CLI registrerar du din funktion med följande kommandon:
+## <a name="register-the-nfs-41-protocol"></a>Registrera NFS 4.1-protokollet
+Om du använder modulen Azure PowerShell Azure CLI registrerar du funktionen med hjälp av följande kommandon:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Använd antingen Azure PowerShell eller Azure CLI för att registrera NFS 4,1-funktionen för Azure Files.
+Använd antingen Azure PowerShell eller Azure CLI för att registrera NFS 4.1-funktionen för Azure Files.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
@@ -77,10 +77,10 @@ az provider register \
 
 ---
 
-Registreringens godkännande kan ta upp till en timme. Kontrol lera att registreringen är klar med följande kommandon:
+Registreringsgodkännande kan ta upp till en timme. Använd följande kommandon för att kontrollera att registreringen är klar:
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Använd antingen Azure PowerShell eller Azure CLI för att kontrol lera registreringen av NFS 4,1-funktionen för Azure Files. 
+Använd antingen Azure PowerShell eller Azure CLI för att kontrollera registreringen av NFS 4.1-funktionen för Azure Files. 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```azurepowershell
@@ -99,38 +99,37 @@ az feature show \
 
 ---
 
-## <a name="create-a-filestorage-storage-account"></a>Skapa ett FileStorage-lagrings konto
-För närvarande är NFS 4,1-resurser bara tillgängliga som Premium fil resurser. Om du vill distribuera en Premium-filresurs med stöd för NFS 4,1-protokoll måste du först skapa ett FileStorage-lagrings konto. Ett lagrings konto är ett objekt på översta nivån i Azure som representerar en delad pool av lagrings utrymme som kan användas för att distribuera flera Azure-filresurser.
+## <a name="create-a-filestorage-storage-account"></a>Skapa ett FileStorage-lagringskonto
+NFS 4.1-resurser är för närvarande endast tillgängliga som premiumfilresurser. Om du vill distribuera en premiumfilresurs med protokollstöd för NFS 4.1 måste du först skapa ett FileStorage-lagringskonto. Ett lagringskonto är ett objekt på den översta nivån i Azure som representerar en delad lagringspool som kan användas för att distribuera flera Azure-filresurser.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Om du vill skapa ett FileStorage lagrings konto navigerar du till Azure Portal.
+Om du vill skapa ett FileStorage-lagringskonto går du till Azure Portal.
 
-1. I Azure Portal väljer du **lagrings konton** på den vänstra menyn.
+1. I Azure Portal väljer du **Lagringskonton** på den vänstra menyn.
 
-    ![Azure Portal huvud sida Välj lagrings konto](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
+    ![Azure Portal väljer lagringskonto på huvudsidan.](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
-2. På fönstret **lagringskonton** som visas, väljer du **lägg till**.
-3. Välj den prenumeration där du vill skapa lagringskontot.
-4. Välj den resurs grupp där lagrings kontot ska skapas
+1. På fönstret **lagringskonton** som visas, väljer du **lägg till**.
+1. Välj den prenumeration där du vill skapa lagringskontot.
+1. Välj den resursgrupp där lagringskontot ska skapas
+1. Ange sedan ett namn för lagringskontot. Namnet du väljer måste vara unikt för Azure. Namnet måste också bestå av mellan 3 och 24 tecken långt och får bara innehålla siffror och gemener.
+1. Välj en plats för ditt lagringskonto eller använd standardplatsen.
+1. För **Prestanda** väljer du **Premium.**
 
-5. Ange sedan ett namn för lagringskontot. Namnet du väljer måste vara unikt för Azure. Namnet måste också bestå av mellan 3 och 24 tecken långt och får bara innehålla siffror och gemener.
-6. Välj en plats för ditt lagringskonto eller använd standardplatsen.
-7. För **prestanda** väljer du **Premium**.
+    Du måste välja **Premium** för **att Fildelningar** ska vara ett tillgängligt alternativ i **listrutan Typ av** konto.
 
-    Du måste välja **Premium** för att **FileStorage** ska vara ett tillgängligt alternativ i list rutan **typ av konto** .
+1. För **Premium-kontotyp** väljer **du Filresurs.**
 
-8. Välj **typ av konto** och välj **FileStorage**.
-9. Lämna **replikeringsuppsättningen** till standardvärdet för **lokalt REDUNDANT lagring (LRS)**.
+    :::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="Skärmbild av premiumprestanda valt.":::
 
-    ![Så här skapar du ett lagrings konto för en Premium-filresurs](media/storage-how-to-create-premium-fileshare/create-filestorage-account.png)
+1. Låt **Replikering ha** kvar standardvärdet Lokalt redundant lagring **(LRS).**
+1. Välj **Granska + skapa** för att granska inställningarna för ditt lagringskonto och skapa kontot.
+1. Välj **Skapa**.
 
-10. Välj **Granska + skapa** för att granska inställningarna för ditt lagringskonto och skapa kontot.
-11. Välj **Skapa**.
-
-När lagrings konto resursen har skapats navigerar du till den.
+När lagringskontoresursen har skapats navigerar du till den.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Om du vill skapa ett FileStorage lagrings konto öppnar du en PowerShell-prompt och kör följande kommandon för att komma ihåg att ersätta `<resource-group>` och `<storage-account>` med lämpliga värden för din miljö.
+Om du vill skapa ett FileStorage-lagringskonto öppnar du en PowerShell-kommandotolk och kör följande kommandon. Kom ihåg att ersätta och med `<resource-group>` lämpliga värden för din `<storage-account>` miljö.
 
 ```powershell
 $resourceGroupName = "<resource-group>"
@@ -146,7 +145,7 @@ $storageAccount = New-AzStorageAccount `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Om du vill skapa ett FileStorage lagrings konto öppnar du terminalen och kör följande kommandon, som är medlem i att ersätta `<resource-group>` och `<storage-account>` med lämpliga värden för din miljö.
+Om du vill skapa ett FileStorage-lagringskonto öppnar du terminalen och kör följande kommandon. Kom ihåg att ersätta och med `<resource-group>` lämpliga värden för din `<storage-account>` miljö.
 
 ```azurecli-interactive
 resourceGroup="<resource-group>"
@@ -166,33 +165,33 @@ az storage account create \
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Nu när du har skapat ett FileStorage-konto och konfigurerat nätverket kan du skapa en NFS-filresurs. Processen påminner om hur du skapar en SMB-resurs genom att välja **NFS** i stället för **SMB** när du skapar resursen.
+Nu när du har skapat ett FileStorage-konto och konfigurerat nätverket kan du skapa en NFS-filresurs. Processen liknar att skapa en SMB-resurs. Du väljer **NFS i** stället för **SMB** när du skapar resursen.
 
-1. Navigera till ditt lagrings konto och välj **fil resurser**.
-1. Välj **+ fil resurs** för att skapa en ny fil resurs.
-1. Namnge fil resursen, Välj en etablerad kapacitet.
-1. För **protokoll** väljer du **NFS (för hands version)**.
-1. För **rot-squash** gör du ett val.
+1. Gå till ditt lagringskonto och välj **Filresurser.**
+1. Välj **+ Filresurs för** att skapa en ny filresurs.
+1. Ge filresursen ett namn och välj en etablerad kapacitet.
+1. För **Protokoll** väljer **du NFS (förhandsversion)**.
+1. För **Root Squash** gör du ett val.
 
-    - Rot-squash (standard) – åtkomst för fjärr-superanvändare (rot) mappas till UID (65534) och GID (65534).
-    - Ingen rot-squash – fjärr-superanvändare (root) får åtkomst som rot.
-    - Alla squash – all användar åtkomst mappas till UID (65534) och GID (65534).
+    - Rot squash (standard) – Åtkomst för fjärranvändaren (rot) mappas till UID (65534) och GID (65534).
+    - Ingen rot mosade – Fjärr-superanvändare (rot) får åtkomst som rot.
+    - All mos mos – All användaråtkomst mappas till UID (65534) och GID (65534).
     
 1. Välj **Skapa**.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Skärm bild av bladet för att skapa fil resurs":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/files-nfs-create-share.png" alt-text="Skärmbild av bladet för att skapa filresurs.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Se till att .NET Framework är installerat. Se [Ladda ned .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
+1. Kontrollera att .NET Framework är installerat. Se [Ladda ned .NET Framework](https://dotnet.microsoft.com/download/dotnet-framework).
  
-1. Kontrol lera att PowerShell-versionen som har installerats är `5.1` eller högre genom att använda följande kommando.    
+1. Kontrollera att versionen av PowerShell som har installerats `5.1` är eller högre med hjälp av följande kommando.    
 
    ```powershell
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Information om hur du uppgraderar din version av PowerShell finns i [uppgradera befintliga Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
+   Information om hur du uppgraderar din version av PowerShell [finns i Uppgradera Windows PowerShell](/powershell/scripting/install/installing-windows-powershell#upgrading-existing-windows-powershell)
     
 1. Installera den senaste versionen av PowershellGet-modulen.
 
@@ -202,18 +201,18 @@ Nu när du har skapat ett FileStorage-konto och konfigurerat nätverket kan du s
 
 1. Stäng och öppna sedan PowerShell-konsolen igen.
 
-1. Installera **AZ. Storage** Preview module version **2.5.2-Preview**.
+1. Installera **az.storage preview-modulen** version **2.5.2-preview**.
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Mer information om hur du installerar PowerShell-moduler finns i [installera modulen Azure PowerShell](/powershell/azure/install-az-ps)
+   Mer information om hur du installerar PowerShell-moduler finns [i Installera Azure PowerShell modulen](/powershell/azure/install-az-ps)
    
-1. Om du vill skapa en Premium-filresurs med Azure PowerShell-modulen använder du cmdleten [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) .
+1. Om du vill skapa en premiumfilresurs Azure PowerShell modulen använder du cmdleten [New-AzRmStorageShare.](/powershell/module/az.storage/new-azrmstorageshare)
 
     > [!NOTE]
-    > Premium fil resurser faktureras med hjälp av en etablerad modell. Den tillhandahållna resursens storlek anges `QuotaGiB` nedan. Mer information finns i [förstå den etablerade modellen](understanding-billing.md#provisioned-model) och [sidan Azure Files prissättning](https://azure.microsoft.com/pricing/details/storage/files/).
+    > Premium-filresurser faktureras med hjälp av en etablerad modell. Den etablerade storleken på resursen anges av `QuotaGiB` nedan. Mer information finns i [Förstå den etablerade modellen och](understanding-billing.md#provisioned-model) Azure Files [prissättningssidan.](https://azure.microsoft.com/pricing/details/storage/files/)
 
     ```powershell
     New-AzRmStorageShare `
@@ -225,10 +224,10 @@ Nu när du har skapat ett FileStorage-konto och konfigurerat nätverket kan du s
     ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Om du vill skapa en Premium-filresurs med Azure CLI använder du kommandot [AZ Storage Share Create](/cli/azure/storage/share-rm) .
+Om du vill skapa en premiumfilresurs med Azure CLI använder du [kommandot az storage share create.](/cli/azure/storage/share-rm)
 
 > [!NOTE]
-> Premium fil resurser faktureras med hjälp av en etablerad modell. Den tillhandahållna resursens storlek anges `quota` nedan. Mer information finns i [förstå den etablerade modellen](understanding-billing.md#provisioned-model) och [sidan Azure Files prissättning](https://azure.microsoft.com/pricing/details/storage/files/).
+> Premium-filresurser faktureras med hjälp av en etablerad modell. Den etablerade storleken på resursen anges av `quota` nedan. Mer information finns i [Förstå den etablerade modellen och](understanding-billing.md#provisioned-model) Azure Files [prissättningssidan.](https://azure.microsoft.com/pricing/details/storage/files/)
 
 ```azurecli-interactive
 az storage share-rm create \
@@ -242,6 +241,6 @@ az storage share-rm create \
 ---
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har skapat en NFS-resurs, för att använda den, måste du montera den på Linux-klienten. Mer information finns i [så här monterar du en NFS-resurs](storage-files-how-to-mount-nfs-shares.md).
+Nu när du har skapat en NFS-resurs måste du montera den på Linux-klienten för att kunna använda den. Mer information finns i [Montera en NFS-resurs.](storage-files-how-to-mount-nfs-shares.md)
 
-Om det uppstår några problem kan du läsa [Felsöka Azure NFS-filresurser](storage-troubleshooting-files-nfs.md).
+Om du får problem kan du gå till [Felsöka Azure NFS-filresurser.](storage-troubleshooting-files-nfs.md)

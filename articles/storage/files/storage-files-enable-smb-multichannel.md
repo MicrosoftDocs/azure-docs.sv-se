@@ -1,22 +1,22 @@
 ---
-title: Aktivera SMB Multichannel
+title: Aktivera SMB multichannel
 description: Lär dig hur du aktiverar SMB Multichannel på Azure Premium-filresurser.
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2f867fa6d4b7e1d864a85106b5d957a53d38eb76
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: da4e1a58aef28e5c47100a0311ff81a5af04a918
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101732552"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718989"
 ---
-# <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Aktivera SMB Multichannel på ett FileStorage-konto (förhands granskning) 
+# <a name="enable-smb-multichannel-on-a-filestorage-account-preview"></a>Aktivera SMB Multichannel på ett FileStorage-konto (förhandsversion) 
 
-Azure FileStorage-konton stöder SMB Multichannel (för hands version), vilket ökar prestandan från en SMB 3. x-klient genom att upprätta flera nätverks anslutningar till dina Premium-filresurser. Den här artikeln innehåller steg-för-steg-anvisningar om hur du aktiverar SMB Multichannel på ett befintligt lagrings konto. Detaljerad information om Azure Files SMB Multichannel finns i SMB Multichannel-prestanda.
+Azure FileStorage-konton stöder SMB Multichannel (förhandsversion), vilket ökar prestanda från en SMB 3.x-klient genom att upprätta flera nätverksanslutningar till dina premiumfilresurser. Den här artikeln innehåller stegvisa anvisningar för att aktivera SMB Multichannel på ett befintligt lagringskonto. Detaljerad information om hur Azure Files SMB Multichannel finns i SMB Multichannel performance (SMB Multichannel-prestanda).
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -29,11 +29,11 @@ Azure FileStorage-konton stöder SMB Multichannel (för hands version), vilket �
 ## <a name="prerequisites"></a>Förutsättningar
 
 - [Skapa ett FileStorage-konto](./storage-how-to-create-file-share.md).
-- Om du tänker använda Azure PowerShell-modulen installerar du [3.0.1-Preview-versionen av modulen](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).
+- Om du tänker använda modulen Azure PowerShell installerar [du 3.0.1-förhandsversionen av modulen](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview).
 
 ## <a name="getting-started"></a>Komma igång
 
-Öppna ett PowerShell-fönster och logga in i din Azure-prenumeration. Därifrån kan du registrera dig för för hands versionen av SMB Multichannel med följande kommandon.
+Öppna ett PowerShell-fönster och logga in på din Azure-prenumeration. Därifrån kan du registrera dig för förhandsversionen av SMB Multichannel med följande kommandon.
 
 ```azurepowershell
 Connect-AzAccount
@@ -49,9 +49,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 > [!NOTE]
 > Registreringen kan ta upp till en timme.
 
-### <a name="verify-that-feature-registration-is-complete"></a>Verifiera att funktions registreringen har slutförts
+### <a name="verify-that-feature-registration-is-complete"></a>Kontrollera att funktionsregistreringen har slutförts
 
-Eftersom det kan ta upp till en timme att aktivera funktionen på ditt lagrings konto kan du använda följande kommando för att kontrol lera att den är registrerad för din prenumeration:
+Eftersom det kan ta upp till en timme att aktivera funktionen på ditt lagringskonto kan du använda följande kommando för att verifiera att den är registrerad för din prenumeration:
 
 ```azurepowershell
 Get-AzProviderFeature -FeatureName AllowSMBMultichannel -ProviderNamespace Microsoft.Storage
@@ -59,22 +59,22 @@ Get-AzProviderFeature -FeatureName AllowSMBMultichannel -ProviderNamespace Micro
 
 
 ## <a name="enable-smb-multichannel"></a>Aktivera SMB Multichannel 
-När du har skapat ett FileStorage-konto kan du följa anvisningarna för att uppdatera SMB Multichannel-inställningar för ditt lagrings konto.
+När du har skapat ett FileStorage-konto kan du följa anvisningarna för att uppdatera SMB Multichannel-inställningarna för ditt lagringskonto.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-1. Logga in på Azure Portal och navigera till det FileStorage lagrings konto som du vill konfigurera SMB Multichannel på.
-1. Välj **fil resurser** under **fil tjänst** och välj sedan **fil resurs inställningar**.
-1. Växla **SMB Multichannel** till **på** (eller **inaktivera** ) och välj **Spara**.
+1. Logga in på Azure Portal och gå till det FileStorage-lagringskonto som du vill konfigurera SMB Multichannel på.
+1. Välj **Filresurser** under **Filtjänst** och välj sedan **Filresursinställningar.**
+1. Växla **SMB Multichannel till** på **(eller** **av för att** inaktivera) och välj **Spara**.
 
-:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Skärm bild av lagrings kontot, SMB Multichannel har växlats på.":::
+:::image type="content" source="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png" alt-text="Skärmbild av lagringskontot, smb multichannel är toggled på."  lightbox="media/storage-files-enable-smb-multichannel/enable-smb-multichannel-on-storage-account.png":::
 
-Om alternativet SMB Multichannel inte är synligt under **Inställningar för fildelning** eller om du får ett fel vid uppdatering av konfigurationen, kontrollerar du att din prenumeration har registrerats och att ditt konto är i en av de [regioner som stöds](#regional-availability) och att det finns stöd för konto typ och replikering.
+Om alternativet SMB Multichannel inte visas **under** Filresursinställningar eller om du får ett felmeddelande om att uppdateringsinställningen misslyckades när [](#regional-availability) du uppdaterar konfigurationen kontrollerar du att din prenumeration är registrerad och att ditt konto finns i en av de regioner som stöds med kontotyp och replikering som stöds.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Om du vill aktivera SMB Multichannel med hjälp av Azure PowerShell-modulen måste du [Installera 3.0.1-Preview-versionen](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview) av modulen.
+Om du vill aktivera SMB Multichannel med Azure PowerShell-modulen måste du installera [3.0.1-förhandsversionen](https://www.powershellgallery.com/packages/Az.Storage/3.0.1-preview) av modulen.
 
-Ange variablerna `$resourceGroupName` och `$storageAccountName` till din resurs grupp och ditt lagrings konto innan du kör dessa PowerShell-kommandon.
+Ange variablerna och `$resourceGroupName` till `$storageAccountName` din resursgrupp och ditt lagringskonto innan du kör dessa PowerShell-kommandon.
 
 ```azurepowershell
 # Enable SMB Multichannel on the premium storage account that's in one of the supported regions
@@ -82,17 +82,17 @@ Update-AzStorageFileServiceProperty -ResourceGroupName $resourceGroupName -Stora
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Azure CLI har ännu inte stöd för konfiguration av SMB Multichannel. Se Portal anvisningarna för att konfigurera SMB Multichannel på lagrings konto.
+Azure CLI stöder ännu inte konfigurering av SMB Multichannel. Se portalanvisningarna för att konfigurera SMB Multichannel på lagringskontot.
 
 ---
 
 > [!NOTE]
-> Eventuella ändringar av konfigurations inställningarna för SMB Multichannel kommer att gälla alla fil resurser under lagrings kontot. Du måste montera om resursen på klienten för att ändringarna ska börja gälla.
+> Ändringar i konfigurationsinställningarna för SMB Multichannel gäller för alla filresurser under lagringskontot. Du måste dock återmontera resursen på klienten för att ändringarna ska gälla.
 
 
 ## <a name="next-steps"></a>Nästa steg 
 
-- [Montera om fil resursen](storage-how-to-use-files-windows.md) för att dra nytta av SMB Multichannel.
-- [Felsök eventuella problem som du har relaterat till SMB Multichannel](storage-troubleshooting-files-performance.md#smb-multichannel-option-not-visible-under-file-share-settings).
-- Läs mer om förbättringarna i [SMB Multichannel-prestanda](storage-files-smb-multichannel-performance.md)
- - Mer information om funktionen Windows SMB Multichannel finns i [Hantera SMB-Multichannel](/azure-stack/hci/manage/manage-smb-multichannel).
+- [Montera om filresursen för](storage-how-to-use-files-windows.md) att dra nytta av SMB Multichannel.
+- [Felsök eventuella problem som rör SMB Multichannel](storage-troubleshooting-files-performance.md#smb-multichannel-option-not-visible-under-file-share-settings).
+- Mer information om förbättringarna finns i [Prestanda för SMB Multichannel](storage-files-smb-multichannel-performance.md)
+ - Mer information om Windows SMB Multichannel-funktionen finns i [Hantera SMB Mulitchannel.](/azure-stack/hci/manage/manage-smb-multichannel)

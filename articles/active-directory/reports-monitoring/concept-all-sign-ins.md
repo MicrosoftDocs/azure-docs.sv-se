@@ -4,7 +4,7 @@ description: Introduktion till rapporter om inloggningsaktiviteter i Azure Activ
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,35 +13,37 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 781cafd9b382868d0aa4f6b77ff7338c4ee15ed2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: dc9aa77b3fdc3cda94670545f847bb9de31e1160
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589677"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718961"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory rapporter om inloggningsaktiviteter – förhandsversion
 
-Med Azure Active Directory-portalen får du åtkomst till tre aktivitetsloggar:
+Som IT-administratör vill du veta hur it-miljön fungerar. Med informationen om systemets hälsotillstånd kan du bedöma om och hur du behöver svara på potentiella problem. 
+
+Som stöd för det här målet ger Azure Active Directory-portalen dig åtkomst till tre aktivitetsloggar:
 
 - **Inloggningar –** Information om inloggningar och hur dina resurser används av användarna.
 - **[Granskning](concept-audit-logs.md)** – Information om ändringar som tillämpas på din klientorganisation, till exempel användare och grupphantering eller uppdateringar som tillämpas på klientorganisationens resurser.
 - **[Etablering –](concept-provisioning-logs.md)** Aktiviteter som utförs av etableringstjänsten, till exempel skapande av en grupp i ServiceNow eller en användare som importerats från Workday.
 
 
-Rapporten om klassiska inloggningar i Azure Active Directory ger dig en översikt över interaktiva användar inloggningar. Dessutom har du nu åtkomst till ytterligare tre inloggningsrapporter som nu är i förhandsversion:
+Den klassiska inloggningsrapporten i Azure Active Directory ger dig en översikt över interaktiva användar inloggningar. Dessutom har du nu åtkomst till ytterligare tre inloggningsrapporter som nu är i förhandsversion:
 
-- Inloggningar för icke-interaktiva användare
+- Icke-interaktiva användar inloggningar
 
 - Inloggningar för tjänstens huvudnamn
 
 - Hanterade identiteter för inloggningar med Azure-resurser
 
-Den här artikeln ger dig en översikt över inloggningsaktivitetsrapporten med förhandsversionen av icke-interaktiva, program och hanterade identiteter för inloggningar för Azure-resurser. Information om inloggningsrapporten utan förhandsgranskningsfunktioner finns i [Inloggningsaktivitetsrapporter i Azure Active Directory portalen.](concept-sign-ins.md)
+Den här artikeln ger dig en översikt över inloggningsaktivitetsrapporten med förhandsversionen av icke-interaktiva program och hanterade identiteter för inloggningar med Azure-resurser. Information om inloggningsrapporten utan förhandsgranskningsfunktioner finns i Inloggningsaktivitetsrapporter [i Azure Active Directory portalen.](concept-sign-ins.md)
 
 
 
@@ -63,7 +65,7 @@ Innan du kan börja använda den här funktionen bör du känna till svaren på:
 
 ### <a name="what-azure-ad-license-do-you-need-to-access-sign-in-activity"></a>Vilken Azure AD-licens behöver du för att komma åt inloggningsaktiviteter?
 
-Klientorganisationen måste ha en associerad Azure AD Premium licens för att kunna se inloggningsaktiviteter. Se [Kom igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) för att uppgradera din Azure Active Directory-version. Det tar några dagar innan data visas i rapporterna när du har uppgraderat till en Premium-licens utan dataaktiviteter innan uppgraderingen.
+Din klientorganisation måste ha en Azure AD Premium som är associerad med den för att kunna se inloggningsaktiviteter. Se [Kom igång med Azure Active Directory Premium](../fundamentals/active-directory-get-started-premium.md) för att uppgradera din Azure Active Directory-version. Det tar några dagar innan data visas i rapporterna när du har uppgraderat till en Premium-licens utan dataaktiviteter innan uppgraderingen.
 
 
 
@@ -76,15 +78,15 @@ Inloggningsrapporten innehåller svar på följande frågor:
 - Vad är status för dessa inloggningar?
 
 
-På rapportbladet inloggningar kan du växla mellan:
+På rapportbladet för inloggningar kan du växla mellan:
 
 - **Interaktiva användar inloggningar** – Inloggningar där en användare tillhandahåller en autentiseringsfaktor, till exempel ett lösenord, ett svar via en MFA-app, en biometrisk faktor eller en QR-kod.
 
-- **Icke-interaktiva användar inloggningar –** Inloggningar som utförs av en klient för en användares räkning. Dessa inloggningar kräver ingen interaktion eller autentiseringsfaktor från användaren. Till exempel autentisering och auktorisering med uppdaterings- och åtkomsttoken som inte kräver att en användare anger autentiseringsuppgifter.
+- **Icke-interaktiva användar inloggningar** – Inloggningar som utförs av en klient för en användares räkning. De här inloggningarna kräver inte någon interaktion eller autentiseringsfaktor från användaren. Till exempel autentisering och auktorisering med uppdaterings- och åtkomsttoken som inte kräver att en användare anger autentiseringsuppgifter.
 
 - **Inloggningar för tjänstens huvudnamn** – Inloggningar av appar och tjänstens huvudnamn som inte omfattar någon användare. I dessa inloggningar tillhandahåller appen eller tjänsten autentiseringsuppgifter för egen räkning för att autentisera eller komma åt resurser.
 
-- **Hanterade identiteter för inloggningar för Azure-resurser** – Inloggningar av Azure-resurser som har hemligheter som hanteras av Azure. Mer information finns i Vad [är hanterade identiteter för Azure-resurser?](../managed-identities-azure-resources/overview.md) 
+- **Hanterade identiteter för inloggningar till Azure-resurser** – Inloggningar av Azure-resurser som har hemligheter som hanteras av Azure. Mer information finns i Vad [är hanterade identiteter för Azure-resurser?](../managed-identities-azure-resources/overview.md) 
 
 
 ![Rapporttyper för inloggningar](./media/concept-all-sign-ins/sign-ins-report-types.png)
@@ -114,7 +116,7 @@ Varje flik på inloggningsbladet visar standardkolumnerna nedan. Vissa flikar ha
 
 - Status för inloggningen
 
-- IP-adressen för den enhet som används för inloggningen
+- IP-adressen för enheten som används för inloggningen
 
 
 
@@ -129,13 +131,13 @@ Interaktiva användar inloggningar är inloggningar där en användare tillhanda
 
 
 > [!NOTE] 
-> Rapporten över interaktiva användar inloggningar som används för att innehålla vissa icke-interaktiva inloggningar från Microsoft Exchange-klienter. Även om dessa inloggningar inte var interaktiva inkluderades de i rapporten för interaktiva användar inloggningar för ytterligare synlighet. När rapporten för icke-interaktiva användarinloggningar blev offentlig förhandsversion i november 2020 flyttades dessa icke-interaktiva inloggningshändelseloggar till den icke-interaktiva användarinloggningsrapporten för ökad noggrannhet. 
+> Rapporten för interaktiva användar inloggningar som används för att innehålla vissa icke-interaktiva inloggningar från Microsoft Exchange-klienter. Även om dessa inloggningar inte var interaktiva så inkluderades de i rapporten för interaktiva användar inloggningar för ytterligare synlighet. När rapporten för icke-interaktiva användarinloggningar blev offentlig förhandsversion i november 2020 flyttades dessa icke-interaktiva inloggningshändelseloggar till den icke-interaktiva användarinloggningsrapporten för ökad noggrannhet. 
 
 
 **Rapportstorlek:** liten <br> 
 **Exempel:**
 
-- En användare anger användarnamn och lösenord på azure AD-inloggningsskärmen.
+- En användare anger användarnamn och lösenord på inloggningsskärmen i Azure AD.
 
 - En användare skickar en SMS MFA-utmaning.
 
@@ -144,7 +146,7 @@ Interaktiva användar inloggningar är inloggningar där en användare tillhanda
 - En användare federeras till Azure AD med en AD FS SAML-försäkran.
 
 
-Förutom standardfälten visas även följande i rapporten för interaktiva inloggningar: 
+Förutom standardfälten visar även rapporten för interaktiva inloggningar: 
 
 - Inloggningsplatsen
 
@@ -171,7 +173,7 @@ Välj ett objekt i listvyn för att få mer detaljerad information om relaterad 
 
 
 
-### <a name="non-interactive-user-sign-ins"></a>Inloggningar för icke-interaktiva användare
+### <a name="non-interactive-user-sign-ins"></a>Icke-interaktiva användar inloggningar
 
 Icke-interaktiva användar inloggningar är inloggningar som utfördes av en klientapp eller os-komponenter för en användares räkning. Precis som interaktiva användar inloggningar görs dessa inloggningar för en användares räkning. Till skillnad från interaktiva användar inloggningar kräver dessa inloggningar inte att användaren anger en autentiseringsfaktor. I stället använder enheten eller klientappen en token eller kod för att autentisera eller komma åt en resurs för en användares räkning. I allmänhet uppfattar användaren dessa inloggningar som att de sker i bakgrunden av användarens aktivitet.
 
@@ -204,7 +206,7 @@ Du kan inte anpassa de fält som visas i den här rapporten.
 
 ![Inaktiverade kolumner](./media/concept-all-sign-ins/disabled-columns.png "Inaktiverade kolumner")
 
-För att göra det enklare att sammanfatta data grupperas icke-interaktiva inloggningshändelser. Klienter skapar ofta många icke-interaktiva inloggningar för samma användares räkning under en kort tidsperiod, som delar samma egenskaper förutom den tid då inloggningen gjordes. En klient kan till exempel få en åtkomsttoken en gång i timmen för en användares räkning. Om användaren eller klienten inte ändrar tillstånd är IP-adressen, resursen och all annan information densamma för varje begäran om åtkomsttoken. När Azure AD loggar flera inloggningar som är identiska förutom tid och datum aggregeras dessa inloggningar från samma entitet till en enda rad. En rad med flera identiska inloggningar (förutom datum och tid som utfärdas) har ett värde som är större än 1 i kolumnen #-inloggningar. Du kan expandera raden om du vill se alla olika inloggningar och deras olika tidsstämplar. Inloggningar sammanställs i icke-interaktiva användare när följande data matchar:
+För att göra det enklare att sammanfatta data grupperas icke-interaktiva inloggningshändelser. Klienter skapar ofta många icke-interaktiva inloggningar för samma användares räkning under en kort tidsperiod, som delar samma egenskaper förutom den tid då inloggningen gjordes. En klient kan till exempel få en åtkomsttoken en gång i timmen för en användares räkning. Om användaren eller klienten inte ändrar tillstånd är IP-adressen, resursen och all annan information densamma för varje begäran om åtkomsttoken. När Azure AD loggar flera inloggningar som är identiska förutom tid och datum aggregeras inloggningarna från samma entitet till en enda rad. En rad med flera identiska inloggningar (förutom datum och tid som utfärdas) har ett värde som är större än 1 i kolumnen #-inloggningar. Du kan expandera raden om du vill se alla olika inloggningar och deras olika tidsstämplar. Inloggningar sammanställs i icke-interaktiva användare när följande data matchar:
 
 
 - Program
@@ -232,7 +234,7 @@ Du kan:
 
 ## <a name="service-principal-sign-ins"></a>Inloggningar för tjänstens huvudnamn
 
-Till skillnad från interaktiva och icke-interaktiva användar inloggningar involverar inte inloggningar med tjänstens huvudnamn någon användare. De loggas i stället in av alla icke-användarkonton, till exempel appar eller tjänstens huvudnamn (förutom inloggning med hanterad identitet, som endast ingår i inloggningsrapporten för hanterade identiteter). I dessa inloggningar tillhandahåller appen eller tjänsten sina egna autentiseringsuppgifter, till exempel ett certifikat eller en apphemlighet för att autentisera eller komma åt resurser.
+Till skillnad från interaktiva och icke-interaktiva användar inloggningar involverar inte inloggningar med tjänstens huvudnamn någon användare. De loggas i stället in av alla icke-användarkonton, till exempel appar eller tjänstens huvudnamn (förutom inloggning med hanterad identitet, som endast ingår i rapporten för inloggningar med hanterade identiteter). I dessa inloggningar tillhandahåller appen eller tjänsten sina egna autentiseringsuppgifter, till exempel ett certifikat eller en apphemlighet för att autentisera eller komma åt resurser.
 
 
 **Rapportstorlek:** Stora <br>
@@ -265,7 +267,7 @@ Du kan inte anpassa de fält som visas i den här rapporten.
 
 ![Inaktiverade kolumner](./media/concept-all-sign-ins/disabled-columns.png "Inaktiverade kolumner")
 
-För att göra det enklare att sammanfatta data i inloggningsloggarna för tjänstens huvudnamn grupperas inloggningshändelser för tjänstens huvudnamn. Inloggningar från samma entitet under samma villkor aggregeras i en enda rad. Du kan expandera raden om du vill se alla olika inloggningar och deras olika tidsstämplar. Inloggningar aggregeras i rapporten för tjänstens huvudnamn när följande data matchar:
+För att göra det enklare att sammanfatta data i inloggningsloggarna för tjänstens huvudnamn grupperas inloggningshändelser för tjänstens huvudnamn. Inloggningar från samma entitet under samma villkor sammanställs till en enda rad. Du kan expandera raden om du vill se alla olika inloggningar och deras olika tidsstämplar. Inloggningar sammanställs i rapporten för tjänstens huvudnamn när följande data matchar:
 
 - Tjänstens huvudnamn eller ID
 
@@ -324,7 +326,7 @@ För att göra det enklare att sammanfatta data grupperas hanterade identiteter 
 
 Välj ett objekt i listvyn för att visa alla inloggningar som är grupperade under en nod.
 
-Välj ett grupperat objekt för att se all information om inloggningen. 
+Välj ett grupperat objekt om du vill se all information om inloggningen. 
 
 
 ## <a name="sign-in-error-code"></a>Felkod för inloggning
@@ -333,15 +335,15 @@ Om inloggningen misslyckades kan du få mer information om orsaken i avsnittet *
 
 ![Skärmbild som visar en detaljerad informationsvy.](./media/concept-all-sign-ins/error-code.png)
  
-Medan loggobjektet ger dig en felorsak finns det fall där du kan få mer information med hjälp av [sökverktyget för inloggningsfel.](https://login.microsoftonline.com/error) Om det till exempel är tillgängligt ger det här verktyget dig reparationssteg.  
+Även om loggobjektet ger dig en felorsak finns det fall där du kan få mer information med hjälp av verktyget [för att söka efter inloggningsfel.](https://login.microsoftonline.com/error) Om det till exempel är tillgängligt ger det här verktyget dig reparationssteg.  
 
-![Felkod för sökningsverktyg](./media/concept-all-sign-ins/error-code-lookup-tool.png)
+![Felkodsuppslagsverktyg](./media/concept-all-sign-ins/error-code-lookup-tool.png)
 
 
 
 ## <a name="filter-sign-in-activities"></a>Filtrera inloggningsaktivitet
 
-Genom att ange ett filter kan du begränsa omfånget för de returnerade inloggningsdata. Azure AD ger dig ett brett utbud av ytterligare filter som du kan ange. När du ställer in filtret bör du alltid vara särskilt uppmärksam på det **konfigurerade** datumintervallfiltret. Ett korrekt datumintervallfilter säkerställer att Azure AD endast returnerar de data som du verkligen bryr dig om.     
+Genom att ange ett filter kan du begränsa omfånget för returnerade inloggningsdata. Azure AD ger dig ett brett utbud av ytterligare filter som du kan ange. När du ställer in filtret bör du alltid vara särskilt uppmärksam på det konfigurerade **datumintervallfiltret.** Ett korrekt datumintervallfilter säkerställer att Azure AD endast returnerar de data som du verkligen bryr dig om.     
 
 Med **filtret** Datumintervall kan du definiera en tidsram för returnerade data.
 Möjliga värden:
@@ -371,7 +373,7 @@ Filtret för interaktiva och icke-interaktiva inloggningar är detsamma. På gru
 
 ## <a name="access-the-new-sign-in-activity-reports"></a>Få åtkomst till de nya inloggningsaktivitetsrapporterna 
 
-Rapporten för inloggningsaktivitet i Azure Portal ger dig en enkel metod för att slå på och av förhandsgranskningsrapporten. Om du har aktiverat förhandsgranskningsrapporterna får du en ny meny som ger dig åtkomst till alla typer av inloggningsaktiviteter.     
+Rapporten om inloggningsaktivitet i Azure Portal ger dig en enkel metod för att stänga av och stänga av förhandsgranskningsrapporten. Om du har aktiverat förhandsgranskningsrapporter får du en ny meny som ger dig åtkomst till alla typer av inloggningsaktiviteter.     
 
 
 Så här kommer du åt de nya inloggningsrapporterna med icke-interaktiva inloggningar och program inloggningar: 
@@ -402,11 +404,11 @@ Så här kommer du åt de nya inloggningsrapporterna med icke-interaktiva inlogg
 
 När du laddar ned en inloggningsaktivitetsrapport gäller följande:
 
-- Du kan ladda ned inloggningsrapporten som CSV- eller JSON-fil.
+- Du kan ladda ned inloggningsrapporten som EN CSV- eller JSON-fil.
 
 - Du kan ladda ned upp till 100 000 poster. Om du vill ladda ned mer data använder du rapporterings-API:et.
 
-- Nedladdningen baseras på det filterval som du har gjort.
+- Nedladdningen baseras på det filterval du har gjort.
 
 - Antalet poster som du kan ladda ned begränsas av de principer Azure Active Directory [kvarhållningsprinciper för rapporter.](reference-reports-data-retention.md) 
 
@@ -418,15 +420,15 @@ Varje CSV-nedladdning består av sex olika filer:
 
 - Interaktiva inloggningar
 
-- Autentiseringsinformation för de interaktiva inloggningarna
+- Autentiseringsinformation om interaktiva inloggningar
 
 - Icke-interaktiva inloggningar
 
-- Autentiseringsinformation för icke-interaktiva inloggningar
+- Autentiseringsinformation om icke-interaktiva inloggningar
 
 - Inloggningar för tjänstens huvudnamn
 
-- Inloggningar för hanterad identitet för Azure-resurser
+- Inloggningar med hanterade identiteter för Azure-resurser
 
 Varje JSON-nedladdning består av fyra olika filer:
 
@@ -436,7 +438,7 @@ Varje JSON-nedladdning består av fyra olika filer:
 
 - Inloggningar för tjänstens huvudnamn
 
-- Inloggningar för hanterade identiteter för Azure-resurser
+- Inloggningar med hanterade identiteter för Azure-resurser
 
 ![Ladda ned filer](./media/concept-all-sign-ins/download-files.png "Ladda ned filer")
 
@@ -446,5 +448,5 @@ Varje JSON-nedladdning består av fyra olika filer:
 ## <a name="next-steps"></a>Nästa steg
 
 * [Felkoder för inloggningsaktivitetsrapport](reference-sign-ins-error-codes.md)
-* [Principer för databevarande i Azure AD](reference-reports-data-retention.md)
+* [Kvarhållningsprinciper för Azure AD-data](reference-reports-data-retention.md)
 * [Svarstider för Azure AD-rapporter](reference-reports-latencies.md)

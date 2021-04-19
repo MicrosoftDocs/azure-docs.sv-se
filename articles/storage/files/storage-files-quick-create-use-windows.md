@@ -1,20 +1,20 @@
 ---
-title: Skapa och Använd en Azure Files resurs på virtuella Windows-datorer
-description: Skapa och Använd en Azure Files-resurs i Azure Portal. Anslut den till en virtuell Windows-dator, Anslut till fil resursen och ladda upp en fil till fil resursen.
+title: Skapa och använda en Azure Files resurs på virtuella Windows-datorer
+description: Skapa och använda en Azure Files resurs i Azure Portal. Anslut den till en virtuell Windows-dator, anslut till Files-resursen och ladda upp en fil till Files-resursen.
 author: roygara
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/01/2019
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 4c5629f80c37c9f79dc9a39c4d8304acbee9679d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a3c664f6c6c0532ef915357cfbcbc8228202502
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92489582"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718305"
 ---
-# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snabb start: skapa och hantera Azure Files resurs med virtuella Windows-datorer
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Snabbstart: Skapa och hantera Azure Files resurs med virtuella Windows-datorer
 
 Artikeln visar de grundläggande stegen för att skapa och använda en Azure Files-resurs. I den här snabbstarten fokuserar vi på att snabbt konfigurera en Azure Files-resurs så att du kan se hur tjänsten fungerar. Om du behöver mer detaljerade instruktioner för att skapa och använda Azure-filresurser i din egen miljö, kan du läsa mer i [Använda en Azure-filresurs med Windows](storage-how-to-use-files-windows.md).
 
@@ -42,19 +42,19 @@ Innan du kan arbeta med en Azure-filresurs måste du skapa ett Azure-lagringskon
 Därefter skapar du en filresurs.
 
 1. När distributionen av Azure-lagringskontot är klar väljer du **Gå till resurs**.
-1. Välj **Filer** i lagringskontots fönster.
+1. Välj **Filresurser** i fönstret lagringskonto.
 
-    ![Välj Filer](./media/storage-files-quick-create-use-windows/click-files.png)
+    ![Välj Filresurser.](./media/storage-files-quick-create-use-windows/click-files.png)
 
-1. Välj **fil resurs**.
+1. Välj **+ Filresurs**.
 
-    ![Välj knappen för att lägga till filresurs](./media/storage-files-quick-create-use-windows/create-file-share.png)
+    ![Välj + filresurs för att skapa en ny filresurs.](./media/storage-files-quick-create-use-windows/create-file-share.png)
 
-1. Ge den nya filresursen namnet *qsfileshare* > ange ”1” som **Kvot** > välj **Skapa**. Kvoten kan vara högst 5 TiB, men du behöver bara 1 GiB för den här snabbstarten.
+1. Ge den nya filresursen *namnet qsfileshare,* ange "1" för **Kvot,** lämna **Transaktionsoptimerad** markerad och välj **Skapa.** Kvoten kan vara högst 5 TiB (100 TiB med stora filresurser aktiverade), men du behöver bara 1 GiB för den här snabbstarten.
 1. Skapa en ny txt-fil med namnet *qsTestFile* på den lokala datorn.
 1. Välj den nya filresursen och välj sedan **Överför** på filresursens plats.
 
-    ![Ladda upp en fil](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
+    ![Ladda upp en fil.](./media/storage-files-quick-create-use-windows/create-file-share-portal5.png)
 
 1. Bläddra till platsen där du skapade din txt-fil > välj *qsTestFile.txt* > välj **Överför**.
 
@@ -63,14 +63,14 @@ Nu har du skapat ett Azure Storage-konto och en filresurs med en fil i Azure. D�
 ### <a name="deploy-a-vm"></a>Distribuera en virtuell dator
 
 1. Expandera sedan menyn till vänster om portalen och välj **Skapa en resurs** i det övre vänstra hörnet i Azure-portalen.
-1. Sök efter och välj **Windows Server 2016 Data Center** i sökrutan ovanför **Azure Marketplace** -resurser och välj sedan **skapa**.
+1. I sökrutan ovanför listan över virtuella **Azure Marketplace** du efter och väljer **Windows Server 2016 Datacenter.**
 1. På fliken **Grundinställningar** under **Projektinformation** väljer du den resursgrupp som du skapade för snabbstarten.
 
-   ![Ange grundläggande information om de virtuella datorerna på portalens blad](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
+   ![Ange grundläggande information om den virtuella datorn på portalbladet.](./media/storage-files-quick-create-use-windows/vm-resource-group-and-subscription.png)
 
 1. Under **Instansinformation** ger du den virtuella datorn namnet *qsVM*.
 1. Lämna standardinställningar för **Region**, **Tillgänglighetsalternativ**, **Avbildning** och **Storlek**.
-1. Under **Administratörskonto** lägger du till *VMadmin* som **Användarnamn** och anger ett **Lösenord** för den virtuella datorn.
+1. Under **Administratörskonto** lägger du till **ett användarnamn** och anger ett lösenord **för** den virtuella datorn.
 1. Under **Regler för inkommande portar** väljer du **Tillåt valda portar** och sedan **RDP (3389)** och **HTTP** från listrutan.
 1. Välj **Granska + skapa**.
 1. Välj **Skapa**. Det tar några minuter att skapa en ny virtuell dator.
@@ -96,60 +96,50 @@ Nu har du skapat en ny virtuell dator och anslutit en datadisk. Nu måste du ans
 ## <a name="map-the-azure-file-share-to-a-windows-drive"></a>Mappa Azure-filresursen till en Windows-enhet
 
 1. I Azure-portalen går du till filresursen *qsfileshare* och väljer **Anslut**.
-1. Kopiera innehållet i den andra rutan och klistra in det i **Anteckningar**.
+1. Välj en enhetsbeteckning och kopiera sedan innehållet i den andra rutan och klistra in det **i Anteckningar.**
 
-   ![Skärm bild som visar innehållet i rutan sekunder som ska kopieras och klistras in i anteckningar.](./media/storage-files-quick-create-use-windows/portal_netuse_connect2.png)
+   :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Skärmbild som visar innehållet i rutan som du ska kopiera och klistra in i Anteckningar." lightbox="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png":::
 
-1. I den virtuella datorn öppnar du **Utforskaren** och väljer **Den här datorn** i fönstret. Detta ändrar menyerna i menyfliksområdet. Under menyn **Dator** väljer du **Mappa nätverksenhet**.
-1. Välj enhetsbeteckningen och ange UNC-sökvägen. Om du har följt namn förslaget i den här snabb starten kopierar du *\\ qsstorageacct. File. Core. Windows. Net\qsfileshare* från **anteckningar**.
-
-   Kontrollera att båda kryssrutorna är markerade.
-
-   ![En skärmbild av dialogrutan "Anslut nätverksenhet"](./media/storage-files-quick-create-use-windows/mountonwindows10.png)
-
-1. Välj **Slutför**.
-1. I dialogrutan **Windows-säkerhet**:
-
-   - Kopiera lagringskontonamnet som ska läggas till i AZURE\ från Anteckningar och klistra in det i dialogrutan **Windows-säkerhet** som användarnamn. Om du har följt namnförslagen i den här snabbstarten kopierar du *AZURE\qsstorageacct*.
-   - Kopiera lagringskontonyckeln från Anteckningar och klistra in den i dialogrutan **Windows-säkerhet** som lösenord.
-
-      ![UNC-sökvägen från fönstret Anslut i Azure Files](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
+1. Öppna **PowerShell** på den virtuella datorn och klistra in innehållet i **Anteckningar och** tryck sedan på Retur för att köra kommandot. Den bör mappa enheten.
 
 ## <a name="create-a-share-snapshot"></a>Skapa en ögonblicksbild av en resurs
 
 Nu när du har mappat enheten kan du skapa en ögonblicksbild.
 
-1. I portalen går du till filresursen och väljer **Skapa ögonblicksbild**.
+1. I portalen navigerar du till filresursen, väljer **Ögonblicksbilder och** sedan + Lägg **till ögonblicksbild.**
 
-   ![Skapa en ögonblicksbild](./media/storage-files-quick-create-use-windows/create-snapshot.png)
+   ![Välj ögonblicksbilder under avsnittet Åtgärder och välj sedan Lägg till ögonblicksbild.](./media/storage-files-quick-create-use-windows/create-snapshot.png)
 
 1. I den virtuella datorn öppnar du *qstestfile.txt* och skriver ”den här filen har ändrats” > Spara och stäng filen.
 1. Skapa en annan ögonblicksbild.
 
 ## <a name="browse-a-share-snapshot"></a>Bläddra i en resursögonblicksbild
 
-1. Välj **Visa ögonblicksbilder** i din filresurs.
-1. I fönstret **Ögonblicksbilder av filresurs** väljer du den första ögonblicksbilden i listan.
+1. På filresursen väljer du **Ögonblicksbilder.**
+1. På **bladet Ögonblicksbilder** väljer du den första ögonblicksbilden i listan.
 
    ![Vald ögonblicksbild i listan med tidsstämplar](./media/storage-files-quick-create-use-windows/snapshot-list.png)
 
-1. I fönstret för denna ögonblicksbild väljer du *qsTestFile.txt*.
+1. Öppna ögonblicksbilden och välj *qsTestFile.txt*.
 
 ## <a name="restore-from-a-snapshot"></a>Återställa från en ögonblicksbild
 
 1. Från bladet för filresursens ögonblicksbild högerklickar du på *qsTestFile* och väljer knappen **Återställ**.
+
+    :::image type="content" source="media/storage-files-quick-create-use-windows/restore-share-snapshot.png" alt-text="Skärmbild av bladet för ögonblicksbild, qstestfile har valts, återställning är markerat.":::
+
 1. Välj **Skriv över originalfilen**.
 
-   ![Knapparna Ladda ned och Återställ](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
+   ![Skärmbild av popup-fönster för återställning, överskrivning av ursprunglig fil har valts.](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
 
 1. Öppna filen i den virtuella datorn. Den oförändrade versionen har återställts.
 
 ## <a name="delete-a-share-snapshot"></a>Ta bort en resursögonblicksbild
 
-1. Välj **Visa ögonblicksbilder** i din filresurs.
-1. I fönstret **Ögonblicksbilder av filresurs** väljer du den sista ögonblicksbilden i listan och klickar på **Ta bort**.
+1. På filresursen väljer du **Ögonblicksbilder.**
+1. På **bladet Ögonblicksbilder** väljer du den sista ögonblicksbilden i listan och väljer Ta **bort**.
 
-   ![Knappen Ta bort](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
+   ![Skärmbild av bladet ögonblicksbilder, den senaste ögonblicksbilden vald, knappen Ta bort markerad.](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Använda en resursögonblicksbild i Windows
 
@@ -173,7 +163,10 @@ Precis som med lokala VSS-ögonblicksbilder, kan du visa ögonblicksbilder från
 
 1. Välj **Återställ**. Åtgärden kopierar innehållet i hela katalogen rekursivt vid tidpunkten då resursögonblicksbilden skapades till den ursprungliga platsen.
 
-   ![Knappen Återställ i varnings meddelandet ](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png) : om filen inte har ändrats visas inte en tidigare version av filen eftersom den är samma version som ögonblicks bilden. Detta är konsekvent med hur det fungerar på en Windows-filserver.
+   ![Återställningsknapp i varningsmeddelande](./media/storage-files-quick-create-use-windows/snapshot-windows-restore.png)
+    
+    > [!NOTE]
+    > Om filen inte har ändrats visas ingen tidigare version för filen eftersom filen är samma version som ögonblicksbilden. Detta stämmer överens med hur detta fungerar på en Windows-filserver.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

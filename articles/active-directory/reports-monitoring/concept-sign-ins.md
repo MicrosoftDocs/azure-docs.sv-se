@@ -4,7 +4,7 @@ description: Introduktion till rapporter om inloggningsaktiviteter i Azure Activ
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 4b18127b-d1d0-4bdc-8f9c-6a4c991c5f75
 ms.service: active-directory
@@ -13,20 +13,22 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99f1f27cb087dc83295dddade4c0fca551a0d9c9
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 2a4cd69224daa05a3e5931fbde1c85bb8dc9e46a
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107589694"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719015"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Rapporter om inloggningsaktiviteter i Azure Active Directory-portalen
 
-Med Azure Active Directory-portalen får du åtkomst till tre aktivitetsloggar:
+Som IT-administratör vill du veta hur it-miljön fungerar. Med informationen om systemets hälsotillstånd kan du bedöma om och hur du behöver svara på potentiella problem. 
+
+Som stöd för det här målet ger Azure Active Directory-portalen dig åtkomst till tre aktivitetsloggar:
 
 - **Inloggningar –** Information om inloggningar och hur dina resurser används av användarna.
 - **[Granskning](concept-audit-logs.md)** – Information om ändringar som tillämpas på din klientorganisation, till exempel användare och grupphantering eller uppdateringar som tillämpas på klientorganisationens resurser.
@@ -54,7 +56,7 @@ Rapporten över användar inloggningar ger svar på följande frågor:
 * Hur många användare har loggat in under en vecka?
 * Vad är status för dessa inloggningar?
 
-På menyn [Azure Portal](https://portal.azure.com) väljer du **Azure Active Directory** eller söker efter och väljer **Azure Active Directory** valfri sida.
+På menyn [Azure Portal](https://portal.azure.com) väljer du **Azure Active Directory**, eller söker efter och väljer **Azure Active Directory** från valfri sida.
 
 ![Välj Azure Active Directory](./media/concept-sign-ins/select-azure-active-directory.png "Azure Active Directory")
 
@@ -115,7 +117,7 @@ Först begränsar du de rapporterade data till en nivå som passar dig. För det
 
 **Begärande-ID** – ID:t för den begäran som du bryr dig om.
 
-**Användare** – Namnet eller användarens huvudnamn (UPN) för den användare som du bryr dig om.
+**Användare** – Användarens huvudnamn (UPN) för den användare som du bryr dig om.
 
 **Program** – namnet på målprogrammet.
  
@@ -247,7 +249,7 @@ När du klickar på ett objekt visas mer information om inloggningen:
 - Inloggningsstatus
 
 > [!NOTE]
-> IP-adresser utfärdas på ett sådant sätt att det inte finns någon slutgiltig anslutning mellan en IP-adress och var datorn med den adressen finns fysiskt. Mappningen av IP-adresser är komplicerad eftersom mobilleverantörer och VPN:er utfärdar IP-adresser från centrala pooler som ofta är mycket långt från den plats där klientenhet faktiskt används. För närvarande är det bäst att konvertera IP-adresser till en fysisk plats i Azure AD-rapporter baserat på spårningar, registerdata, omvända upp- och upp- och annan information.
+> IP-adresser utfärdas på ett sådant sätt att det inte finns någon slutgiltig anslutning mellan en IP-adress och var datorn med den adressen finns fysiskt. Mappning av IP-adresser är komplicerat eftersom mobilleverantörer och VPN:er utfärdar IP-adresser från centrala pooler som ofta är mycket långt från där klientenhet faktiskt används. För närvarande i Azure AD-rapporter är det bäst att konvertera IP-adresser till en fysisk plats baserat på spårningar, registerdata, omvända upp- och annan information.
 
 På sidan **Användare** visas en fullständig översikt över alla användarinloggningar om du klickar på **Inloggningar** i avsnittet **Aktivitet**.
 
@@ -265,7 +267,7 @@ Startpunkten för dessa data är de tre främsta programmen i din organisation. 
 
 ![Skärmbild som visar var du kan välja Översikt.](./media/concept-sign-ins/10.png "Inloggningsaktivitet")
 
-Diagrammen för appanvändning visar veckovisa sammanställningar av inloggningar för de tre främsta programmen under en viss tidsperiod. Standardvärdet för tidsperioden är 30 dagar.
+Appanvändningsdiagrammen visar veckovisa sammanställningar av inloggningar för de tre främsta programmen under en viss tidsperiod. Standardvärdet för tidsperioden är 30 dagar.
 
 ![Skärmbild som visar appanvändningen under en månad.](./media/concept-sign-ins/graph-chart.png "Inloggningsaktivitet")
 

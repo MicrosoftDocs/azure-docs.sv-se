@@ -8,18 +8,18 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 0396c028c8c0e1a18baf037fed4efc21aad944f1
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2eb0e3ce2ac20c89d9c0176ca3e7b33dc839c923
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107715108"
+ms.locfileid: "107718835"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Snabbstart: Lägga till en simulerad enhet i ditt IoT Central program
 
 En enhetsmall definierar funktionerna för en enhet som ansluter till IoT Central program. Funktionerna omfattar telemetri som enheten skickar, enhetsegenskaper och de kommandon som en enhet svarar på. Med hjälp av en enhetsmall kan du lägga till både verkliga och simulerade enheter i ett program. Simulerade enheter är användbara för att testa beteendet för ditt IoT Central innan du ansluter riktiga enheter.
 
-I den här snabbstarten lägger du till en enhetsmall för en ESP32-Azure IoT Kit-utvecklingskort och skapar en simulerad enhet. För att slutföra den här snabbstarten behöver du ingen riktig enhet, du arbetar med en simulering av enheten. En ESP32-enhet:
+I den här snabbstarten lägger du till en enhetsmall för ESP32-Azure IoT Kit-utvecklingskort och skapar en simulerad enhet. För att slutföra den här snabbstarten behöver du ingen riktig enhet, du arbetar med en simulering av enheten. En ESP32-enhet:
 
 * Skickar telemetri, till exempel temperatur.
 * Rapporterar enhetsspecifika egenskaper, till exempel den högsta temperaturen sedan enheten startades om.
@@ -28,11 +28,11 @@ I den här snabbstarten lägger du till en enhetsmall för en ESP32-Azure IoT Ki
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Slutför [snabbstarten Skapa Azure IoT Central program](./quick-deploy-iot-central.md) för att skapa ett IoT Central-program med hjälp av mallen **Anpassad app > anpassat** program.
+Slutför [snabbstarten Skapa Azure IoT Central ett](./quick-deploy-iot-central.md) program för att skapa ett IoT Central program med hjälp av mallen **Anpassad app > Anpassat** program.
 
 ## <a name="create-a-device-template"></a>Skapa en enhetsmall
 
-Om du vill lägga till en ny enhetsmall i programmet väljer du **fliken Enhetsmallar** i den vänstra rutan.
+Om du vill lägga till en ny enhetsmall i programmet väljer **du fliken Enhetsmallar** i den vänstra rutan.
 
 :::image type="content" source="media/quick-create-simulated-device/device-definitions.png" alt-text="Skärmbild som visar en tom lista över enhetsmallar":::
 
@@ -52,7 +52,7 @@ Följande steg visar hur du använder enhetskatalogen för att importera modelle
 
 1. Om du vill lägga till en ny enhetsmall **väljer du +** Ny på sidan **Enhetsmallar.**
 
-1. På sidan **Välj typ** rullar du nedåt tills du hittar panelen **ESP32-Azure IoT Kit** i avsnittet Använda en förkonfigurerad **enhetsmall.**
+1. På sidan **Välj typ** rullar du nedåt tills du hittar panelen **ESP32-Azure IoT Kit** i avsnittet Använda en **förkonfigurerad enhetsmall.**
 
 1. Välj panelen **ESP32-Azure IoT Kit** och välj sedan **Nästa: Granska.**
 
@@ -62,7 +62,7 @@ Följande steg visar hur du använder enhetskatalogen för att importera modelle
 
     :::image type="content" source="media/quick-create-simulated-device/devkit-template.png" alt-text="Skärmbild som visar enhetsmallen för ESP32-enhet":::
 
-    Namnet på mallen är **Sensor Controller**. Modellen innehåller komponenter som Sensor **Controller,** **SensorTemp** och **Device Information.** Komponenter definierar funktionerna för en ESP32-enhet. Funktionerna omfattar telemetri, egenskaper och kommandon.
+    Namnet på mallen är **Sensor Controller**. Modellen innehåller komponenter som Sensor **Controller,** **SensorTemp** och **Device Information.** Komponenter definierar funktionerna i en ESP32-enhet. Funktionerna omfattar telemetri, egenskaper och kommandon.
 
 ### <a name="add-cloud-properties"></a>Lägga till molnegenskaper
 
@@ -91,10 +91,10 @@ Du kan anpassa programmet för att visa relevant information om enheten. Med anp
 Standardvyer är ett snabbt sätt att komma igång med att visualisera viktig enhetsinformation. Du kan ha upp till tre standardvyer som genereras för enhetsmallen:
 
 * I **vyn** Kommandon kan du skicka kommandon till enheten.
-* I **översiktsvyn** används diagram och mått för att visa enhettelemetri.
-* Vyn **Om** visar enhetsegenskaper.
+* I **vyn** Översikt används diagram och mått för att visa enhettelemetri.
+* I **vyn Om** visas enhetsegenskaper.
 
-Välj **noden** Vyer i enhetsmallen. Du kan se att IoT Central genererat **en översikt,** en **Om-vy** och en **rådatavy** åt dig när du lade till mallen.
+Välj **noden** Vyer i enhetsmallen. Du kan se IoT Central har genererat **vyerna** **Översikt,** Om och **Rådata** när du lade till mallen.
 
 Så här lägger du till ett nytt formulär för att hantera enheten:
 
@@ -102,7 +102,7 @@ Så här lägger du till ett nytt formulär för att hantera enheten:
 
 1. Ändra formulärnamnet till **Hantera enhet**.
 
-1. Välj **molnegenskaperna** **Kundnamn och Senaste** servicedatum och **egenskapen Måltemperatur.** Välj sedan **Lägg till avsnitt:**
+1. Välj **molnegenskaperna** Customer Name **(Kundnamn) och Last Service Date** (Senaste servicedatum) och egenskapen Target Temperature **(Måltemperatur).** Välj sedan **Lägg till avsnitt:**
 
     :::image type="content" source="media/quick-create-simulated-device/new-form.png" alt-text="Skärmbild som visar ett nytt formulär som lagts till i enhetsmallen":::
 
@@ -114,7 +114,7 @@ Innan du kan skapa en simulerad enhet eller ansluta en riktig enhet måste du pu
 
 Så här publicerar du en enhetsmall:
 
-1. Gå till **enhetsmallen sensorstyrenhet** från **sidan Enhetsmallar.**
+1. Gå till **enhetsmallen sensorkontrollant** från **sidan Enhetsmallar.**
 
 1. Välj **Publicera** i kommandofältet överst på sidan.
 
@@ -126,13 +126,13 @@ När du har publicerat en enhetsmall visas den på **sidan** Enheter. I en publi
 
 Om du vill lägga till en simulerad enhet i programmet använder du **esp32-enhetsmallen** som du skapade.
 
-1. Om du vill lägga till en ny **enhet väljer du** Enheter i den vänstra rutan. Fliken **Enheter** visar Alla **enheter och** **enhetsmallen Sensor Controller** för ESP32-enheten. Välj **Sensor Controller**.
+1. Om du vill lägga till en ny **enhet väljer** du Enheter i det vänstra fönstret. Fliken **Enheter** visar Alla **enheter och** **enhetsmallen Sensor Controller** för ESP32-enheten. Välj **Sensor Controller**.
 
-1. Om du vill lägga till en simulerad DevKit-enhet väljer **du + Ny**. Använd det föreslagna **enhets-ID:t** eller ange ditt eget. Ett enhets-ID kan innehålla bokstäver, siffror och `-` tecken. Du kan också ange ett namn för den nya enheten. Kontrollera att Simulera **den här enheten** är inställd på **Ja** och välj sedan **Skapa.**
+1. Om du vill lägga till en simulerad DevKit-enhet väljer **du + Ny.** Använd det föreslagna **enhets-ID:t** eller ange ett eget. Ett enhets-ID kan innehålla bokstäver, siffror och `-` tecken. Du kan också ange ett namn för den nya enheten. Kontrollera att Simulera **den här enheten** är inställd på **Ja** och välj sedan **Skapa.**
 
-    :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="Skärmbild som visar den simulerade Sensor Controller-enheten":::
+    :::image type="content" source="media/quick-create-simulated-device/simulated-device.png" alt-text="Skärmbild som visar den simulerade sensorstyrenhetsenheten":::
 
-Nu kan du interagera med vyerna som skapades tidigare med hjälp av simulerade data:
+Nu kan du interagera med vyerna som skapats tidigare med hjälp av simulerade data:
 
 1. Välj den simulerade enheten på **sidan** Enheter
 
@@ -140,7 +140,7 @@ Nu kan du interagera med vyerna som skapades tidigare med hjälp av simulerade d
 
         :::image type="content" source="media/quick-create-simulated-device/simulated-telemetry.png" alt-text="Skärmbild som visar översiktssidan för simulerad enhet":::
 
-    * Vyn **Om** visar egenskapsvärden.
+    * I **vyn Om** visas egenskapsvärden.
 
     * I **vyn** Kommandon kan du köra kommandon, till exempel **starta** om enheten.
 

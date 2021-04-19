@@ -460,6 +460,8 @@
                   href: aad-sspr-technical-profile.md
                 - name: Anspråkstransformering
                   href: claims-transformation-technical-profile.md
+                - name: Villkorlig åtkomst
+                  href: conditional-access-technical-profile.md
                 - name: ID-tokentips
                   href: id-token-hint.md
                 - name: JWT-tokenutfärdare

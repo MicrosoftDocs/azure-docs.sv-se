@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 564e7d3d2353661d0a69cbd15ad8b281defacf87
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bf60f512416007137e71119fa7474b1393099ebf
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600580"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107718889"
 ---
 # <a name="take-a-tour-of-the-azure-iot-central-ui"></a>Ta en rundtur i Azure IoT Central-användargränssnittet
 
@@ -28,7 +28,7 @@ På [IoT Central webbplats](https://aka.ms/iotcentral-get-started) kan du läsa 
 
 ### <a name="create-an-application"></a>Skapa ett program
 
-I avsnittet Skapa kan du bläddra i listan över branschrelev relevanta IoT Central mallar eller börja från grunden med hjälp av en anpassad appmall.  
+I avsnittet **Skapa** kan du bläddra i listan över branschrelev relevanta IoT Central mallar eller börja från grunden med hjälp av en anpassad appmall.  
 
 :::image type="content" source="media/overview-iot-central-tour/iot-central-build.png" alt-text="IoT Central byggsida":::
 
@@ -53,7 +53,7 @@ När du är i IoT-programmet använder du det vänstra fönstret för att få å
 
   :::column-end:::
   :::column span="2":::
-     **Instrumentpaneler** visar alla program och personliga instrumentpaneler. 
+     **Instrumentpanelen** visar alla program och personliga instrumentpaneler. 
      
      **Med** enheter kan du hantera alla dina enheter.
 
@@ -98,7 +98,7 @@ Du kan välja mellan ett ljust eller ett mörkt tema för användargränssnittet
 
 :::image type="content" source="Media/overview-iot-central-tour/dashboard.png" alt-text="Skärmbild av IoT Central instrumentpanel.":::
 
-* Instrumentpanelen är den första sidan som visas när du loggar in på IoT Central program. Du kan skapa och anpassa flera instrumentpaneler för program. Läs mer om att [lägga till paneler på instrumentpanelen](howto-add-tiles-to-your-dashboard.md)
+* **Instrumentpanelen** är den första sidan som visas när du loggar in på IoT Central program. Du kan skapa och anpassa flera instrumentpaneler för program. Läs mer om att [lägga till paneler på instrumentpanelen](howto-add-tiles-to-your-dashboard.md)
 
 * Personliga instrumentpaneler kan också skapas för att övervaka det du bryr dig om. Mer information finns i artikeln [Skapa Azure IoT Central personliga instrumentpaneler.](howto-create-personal-dashboards.md)
 
@@ -106,7 +106,7 @@ Du kan välja mellan ett ljust eller ett mörkt tema för användargränssnittet
 
 :::image type="content" source="Media/overview-iot-central-tour/devices.png" alt-text="Skärmbild av sidan Enheter.":::
 
-Den här sidan visar enheterna i IoT Central program grupperade efter _enhetsmall_. 
+Den här sidan visar enheterna i IoT Central program grupperade efter _enhetsmall_.
 
 * En enhetsmall definierar en typ av enhet som kan ansluta till ditt program.
 * En enhet motsvarar antingen en verklig eller simulerad enhet i ditt program.
@@ -122,13 +122,13 @@ På den här sidan kan du skapa och visa enhetsgrupper i IoT Central program. Du
 ### <a name="rules"></a>Regler
 :::image type="content" source="Media/overview-iot-central-tour/rules.png" alt-text="Skärmbild av sidan Regler.":::
 
-På den här sidan kan du visa och skapa regler baserat på enhetsdata. När en regel utlöses kan den utlösa en eller flera åtgärder, till exempel skicka ett e-postmeddelande eller anropa en webhook. Mer information finns i [självstudien Konfigurera](tutorial-create-telemetry-rules.md) regler. 
+På den här sidan kan du visa och skapa regler baserat på enhetsdata. När en regel utlöses kan den utlösa en eller flera åtgärder, till exempel att skicka ett e-postmeddelande eller aktivera en webhook. Mer information finns i [självstudien Konfigurera](tutorial-create-telemetry-rules.md) regler.
 
 ### <a name="analytics"></a>Analys
 
 :::image type="content" source="Media/overview-iot-central-tour/analytics.png" alt-text="Skärmbild av sidan Analytics.":::
 
-Analytics visar omfattande funktioner för att analysera historiska trender och korrelera olika telemetri från dina enheter. Mer information finns i artikeln [Skapa analys för ditt Azure IoT Central program.](howto-create-analytics.md)
+Analys visar omfattande funktioner för att analysera historiska trender och korrelera olika telemetri från dina enheter. Mer information finns i artikeln [Skapa analys för ditt Azure IoT Central program.](howto-create-analytics.md)
 
 ### <a name="jobs"></a>Jobb
 
@@ -140,7 +140,7 @@ På den här sidan kan du visa och skapa jobb som kan användas för massåtgär
 
 :::image type="content" source="Media/overview-iot-central-tour/templates.png" alt-text="Skärmbild av enhetsmallar.":::
 
-På sidan med enhetsmallar kan du visa och skapa enhetsmallar i programmet. Mer information finns i självstudien om att [definiera en ny enhetstyp i Azure IoT Central-programmet](howto-set-up-template.md). 
+På sidan med enhetsmallar kan du visa och skapa enhetsmallar i programmet. Mer information finns i självstudien om att [definiera en ny enhetstyp i Azure IoT Central-programmet](howto-set-up-template.md).
 
 ### <a name="data-export"></a>Dataexport
 

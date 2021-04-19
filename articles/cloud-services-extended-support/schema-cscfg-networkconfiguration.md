@@ -1,6 +1,6 @@
 ---
-title: Azure Cloud Services (Extended support) NetworkConfiguration-schema | Microsoft Docs
-description: Information som rör schemat för nätverks konfiguration för Cloud Services (utökad support)
+title: Azure Cloud Services (utökat stöd) NetworkConfiguration Schema | Microsoft Docs
+description: Information som rör schemat för nätverkskonfiguration för Cloud Services (utökat stöd)
 ms.topic: article
 ms.service: cloud-services-extended-support
 ms.date: 10/14/2020
@@ -8,21 +8,21 @@ author: gachandw
 ms.author: gachandw
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 2650da2579f13ec1588af7a25e5b28908209bc82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ed2d48288bf97fe3ebaa1e8ffc1336d8a82d940e
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101700192"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107719033"
 ---
-# <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services (utökad support) konfiguration av networkConfiguration-schema
+# <a name="azure-cloud-services-extended-support-config-networkconfiguration-schema"></a>Azure Cloud Services konfigurationsschema (utökat stöd)
 
-`NetworkConfiguration`Elementet i tjänst konfigurations filen anger Virtual Network-och DNS-värden. De här inställningarna är valfria för Cloud Services.
+Elementet `NetworkConfiguration` i tjänstkonfigurationsfilen anger Virtual Network DNS-värden. De här inställningarna är valfria för Cloud Services.
 
-Du kan använda följande resurs för att lära dig mer om virtuella nätverk och associerade scheman:
+Du kan använda följande resurs för att lära dig mer om virtuella nätverk och tillhörande scheman:
 
-- [Konfigurations schema för moln tjänst (utökad support)](schema-cscfg-file.md).
-- [Definitions schema för moln tjänst (utökad support)](schema-csdef-file.md).
+- [Konfigurationsschema för Molntjänst (utökat stöd).](schema-cscfg-file.md)
+- [Cloud Service (utökat stöd) DefinitionSschema](schema-csdef-file.md).
 - [Skapa en Virtual Network](../virtual-network/manage-virtual-network.md).
 
 ## <a name="networkconfiguration-element"></a>NetworkConfiguration-element
@@ -59,18 +59,18 @@ I följande exempel visas `NetworkConfiguration` elementet och dess underordnade
 </ServiceConfiguration>
 ```
 
-I följande tabell beskrivs `NetworkConfiguration` elementets underordnade element.
+I följande tabell beskrivs de underordnade elementen i `NetworkConfiguration` elementet .
 
 | Element       | Beskrivning |
 | ------------- | ----------- |
-| AccessControl | Valfritt. Anger reglerna för åtkomst till slut punkter i en moln tjänst. Namnet på åtkomst kontrollen definieras av en sträng för `name` attribut. `AccessControl`Elementet innehåller ett eller flera `Rule` element. Fler än ett `AccessControl` element kan definieras.|
-| Regel | Valfritt. Anger den åtgärd som ska vidtas för ett angivet undernät med IP-adresser. Regelns ordning definieras av ett sträng värde för `order` attributet. Ju lägre regel numret är desto högre prioritet. Regler kan till exempel anges med ordnings nummer på 100, 200 och 300. Regeln med ordnings numret 100 har företräde framför regeln som har en ordning på 200.<br /><br /> Åtgärden för regeln definieras av en sträng för `action` attributet. Möjliga värden:<br /><br /> -   `permit` – Anger att endast paket från det angivna under nätets intervall kan kommunicera med slut punkten.<br />-   `deny` – Anger att åtkomst nekas till slut punkterna i det angivna under näts intervallet.<br /><br /> Under näts intervallet för IP-adresser som påverkas av regeln definieras av en sträng för `remoteSubnet` attributet. Beskrivningen för regeln definieras av en sträng för `description` attributet.|
-| EndpointAcl | Valfritt. Anger tilldelning av åtkomst kontroll regler till en slut punkt. Namnet på den roll som innehåller slut punkten definieras av en sträng för `role` attributet. Namnet på slut punkten definieras av en sträng för `endpoint` attributet. Namnet på den uppsättning `AccessControl` regler som ska tillämpas på slut punkten definieras i en sträng för `accessControl` attributet. Fler än ett `EndpointAcl` element kan definieras.|
-| DNS Server | Valfritt. Anger inställningarna för en DNS-server. Du kan ange inställningar för DNS-servrar utan Virtual Network. Namnet på DNS-servern definieras av en sträng för `name` attributet. IP-adressen för DNS-servern definieras av en sträng för `IPAddress` attributet. IP-adressen måste vara en giltig IPv4-adress.|
-| VirtualNetworkSite | Valfritt. Anger namnet på den Virtual Network plats där du vill distribuera moln tjänsten. Den här inställningen skapar inte en Virtual Network webbplats. Den refererar till en plats som redan har definierats i nätverks filen för din Virtual Network. En moln tjänst kan bara vara medlem i en Virtual Network. Om du inte anger den här inställningen kommer moln tjänsten inte att distribueras till en Virtual Network. Namnet på den Virtual Network webbplatsen definieras av en sträng för `name` attributet.|
-| InstanceAddress | Valfritt. Anger associationen för en roll till ett undernät eller en uppsättning undernät i Virtual Network. När du associerar ett rollnamn till en instans adress kan du ange de undernät som du vill att rollen ska kopplas till. `InstanceAddress`Elementet innehåller ett undernät. Namnet på den roll som är associerad med under nätet eller under näten definieras av en sträng för `roleName` attributet.|
-| Undernät | Valfritt. Anger det undernät som motsvarar under nätets namn i nätverks konfigurations filen. Namnet på under nätet definieras av en sträng för `name` attributet.|
-| ReservedIP | Valfritt. Anger den reserverade IP-adress som ska associeras med distributionen. Du måste använda Create Reserverad IP-adress för att skapa den reserverade IP-adressen. Varje distribution i en moln tjänst kan associeras med en reserverad IP-adress. Namnet på den reserverade IP-adressen definieras av en sträng för `name` attributet.|
+| AccessControl | Valfritt. Anger regler för åtkomst till slutpunkter i en molntjänst. Namnet på åtkomstkontrollen definieras av en sträng för `name` attributet. Elementet `AccessControl` innehåller ett eller flera `Rule` element. Mer än ett `AccessControl` element kan definieras.|
+| Regel | Valfritt. Anger vilken åtgärd som ska vidtas för ett angivet undernätsintervall med IP-adresser. Regelns ordning definieras av ett strängvärde för `order` attributet . Ju lägre regelnummer, desto högre prioritet. Regler kan till exempel anges med ordernumren 100, 200 och 300. Regeln med ordernumret 100 har företräde framför regeln med ordningen 200.<br /><br /> Åtgärden för regeln definieras av en sträng för `action` attributet . Möjliga värden:<br /><br /> -   `permit` – Anger att endast paket från det angivna undernätsintervallet kan kommunicera med slutpunkten.<br />-   `deny` – Anger att åtkomst nekas till slutpunkterna i det angivna undernätsintervallet.<br /><br /> Undernätsintervallet för IP-adresser som påverkas av regeln definieras av en sträng för `remoteSubnet` attributet . Beskrivningen för regeln definieras av en sträng för `description` attributet .|
+| EndpointAcl | Valfritt. Anger tilldelningen av regler för åtkomstkontroll till en slutpunkt. Namnet på rollen som innehåller slutpunkten definieras av en sträng för `role` attributet. Namnet på slutpunkten definieras av en sträng för `endpoint` attributet . Namnet på den uppsättning regler `AccessControl` som ska tillämpas på slutpunkten definieras i en sträng för `accessControl` attributet. Fler än ett `EndpointAcl` element kan definieras.|
+| DnsServer | Valfritt. Anger inställningarna för en DNS-server. Du kan ange inställningar för DNS-servrar utan Virtual Network. Namnet på DNS-servern definieras av en sträng för `name` attributet . IP-adressen för DNS-servern definieras av en sträng för `IPAddress` attributet . IP-adressen måste vara en giltig IPv4-adress.|
+| VirtualNetworkSite | Valfritt. Anger namnet på den Virtual Network där du vill distribuera din molntjänst. Den här inställningen skapar inte en Virtual Network plats. Den refererar till en plats som tidigare har definierats i nätverksfilen för Virtual Network. En molntjänst kan bara vara medlem i en Virtual Network. Om du inte anger den här inställningen distribueras inte molntjänsten till en Virtual Network. Namnet på den Virtual Network definieras av en sträng för `name` attributet .|
+| InstanceAddress | Valfritt. Anger associationen mellan en roll och ett undernät eller en uppsättning undernät i Virtual Network. När du associerar ett rollnamn med en instansadress kan du ange de undernät som du vill att den här rollen ska associeras till. `InstanceAddress`innehåller elementet Subnets. Namnet på den roll som är associerad med undernätet eller undernäten definieras av en sträng för `roleName` attributet .|
+| Undernät | Valfritt. Anger det undernät som motsvarar undernätets namn i nätverkskonfigurationsfilen. Namnet på undernätet definieras av en sträng för `name` attributet .|
+| ReservedIP | Valfritt. Anger den reserverade IP-adress som ska associeras med distributionen. Allokeringsmetoden för en reserverad IP-adress måste anges som `Static` för mall- och powershell-distributioner. Varje distribution i en molntjänst kan bara associeras med en reserverad IP-adress. Namnet på den reserverade IP-adressen definieras av en sträng för `name` attributet .|
 
 ## <a name="see-also"></a>Se även
-[Konfigurations schema för moln tjänst (utökad support)](schema-cscfg-file.md).
+[Konfigurationsschema för Molntjänst (utökat stöd).](schema-cscfg-file.md)
