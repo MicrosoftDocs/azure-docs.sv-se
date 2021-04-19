@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 04/14/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7098cfbc2fbe2236687eb7d621a0e587497fcebc
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: feff8b003428fd61fba826d05f8212fa8d9788f9
+ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516454"
+ms.lasthandoff: 04/18/2021
+ms.locfileid: "107601935"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -23,7 +23,7 @@ ms.locfileid: "107516454"
 <!-- markdownlint-disable MD034 -->
 > [!IMPORTANT]
 >
-> * Koden i den här artikeln använder synkrona metoder och lagring av o säkra autentiseringsuppgifter för enkelhetens skull. Se referensdokumentationen nedan.
+> * Koden i den här artikeln använder synkrona metoder och oskadlig lagring av autentiseringsuppgifter för enkelhetens skull. Se referensdokumentationen nedan.
 
 [Referensdokumentation](../../index.yml)  |  [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/formrecognizer/ai-form-recognizer/)  |  [Paket (npm)](https://www.npmjs.com/package/@azure/ai-form-recognizer)  |  [Exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/samples)
 
@@ -32,8 +32,8 @@ ms.locfileid: "107516454"
 * Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Node.js](https://nodejs.org/)
 * En Azure Storage blob som innehåller en uppsättning träningsdata. Se [Skapa en träningsdatauppsättning för en anpassad modell för](../../build-training-data-set.md) tips och alternativ för att sätta ihop din träningsdatauppsättning. I den här snabbstarten kan du använda filerna under mappen **Train** (Träna) i [exempeldatauppsättningen](https://go.microsoft.com/fwlink/?linkid=2090451) (ladda ned och extrahera *sample_data.zip*).
-* När du har din Azure-prenumeration skapar Formigenkänning en Formigenkänning resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats väljer du **Gå till resurs**.
-  * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Formigenkänning-API:et. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+* När du har din Azure-prenumeration skapar Formigenkänning resurs en Formigenkänning resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats väljer du **Gå till resurs**.
+  * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Formigenkänning-API:et. Du klistrar in din nyckel och slutpunkt i koden nedan senare i snabbstarten.
   * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
 
 ## <a name="setting-up"></a>Inrätta
@@ -129,11 +129,11 @@ Du måste också lägga till referenser till URL:erna för dina tränings- och t
 * [!INCLUDE [get SAS URL](../../includes/sas-instructions.md)]
 
    :::image type="content" source="../../media/quickstarts/get-sas-url.png" alt-text="HÄMTNING AV SAS-URL":::
-* Använd exemplet från och kvittobilderna som ingår i exemplen nedan (finns även på [GitHub)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/test-assets)eller så kan du använda stegen ovan för att hämta SAS-URL:en för ett enskilt dokument i Blob Storage.
+* Använd exemplet från och kvittobilderna som ingår i exemplen nedan (finns även på [GitHub)](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer/assets)eller så kan du använda stegen ovan för att hämta SAS-URL:en för ett enskilt dokument i Blob Storage.
 
 ## <a name="analyze-layout"></a>Analysera layout
 
-Du kan använda Formigenkänning för att analysera tabeller, linjer och ord i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [layoutkonceptsguiden](../../concept-layout.md). Om du vill analysera innehållet i en fil vid en viss URI använder du `beginRecognizeContentFromUrl` metoden .
+Du kan använda Formigenkänning för att analysera tabeller, linjer och ord i dokument, utan att behöva träna en modell. Mer information om extrahering av layout finns i [layoutkonceptuell guide.](../../concept-layout.md) Om du vill analysera innehållet i en fil vid en viss URI använder du `beginRecognizeContentFromUrl` metoden .
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_getcontent)]
 
@@ -195,7 +195,7 @@ Om du vill analysera visitkort från en URL använder du `beginRecognizeBusiness
 
 ## <a name="analyze-invoices"></a>Analysera fakturor
 
-Det här avsnittet visar hur du analyserar och extraherar vanliga fält från försäljningsfakturor med hjälp av en förtränad modell. Mer information om fakturaanalys finns i den [konceptuella guiden Faktura.](../../concept-invoices.md)
+Det här avsnittet visar hur du analyserar och extraherar gemensamma fält från försäljningsfakturor med hjälp av en förtränad modell. Mer information om fakturaanalys finns i den [konceptuella guiden Faktura.](../../concept-invoices.md)
 
 Om du vill analysera fakturor från en URL använder du `beginRecognizeInvoicesFromUrl` metoden .
 
@@ -217,7 +217,7 @@ Om du vill analysera identitetsdokument från en URL använder du `beginRecogniz
 Det här avsnittet visar hur du tränar en modell med dina egna data. En tränad modell kan mata ut strukturerade data som innehåller nyckel/värde-relationerna i det ursprungliga formulärdokumentet. När du har tränat modellen kan du testa och träna om den och så småningom använda den för att extrahera data från flera formulär på ett tillförlitligt sätt utifrån dina behov.
 
 > [!NOTE]
-> Du kan också träna modeller med ett grafiskt användargränssnitt, till exempel [Formigenkänning exempeletikettverktyget](../../quickstarts/label-tool.md).
+> Du kan också träna modeller med ett grafiskt användargränssnitt, till [exempel Formigenkänning exempeletikettverktyget](../../quickstarts/label-tool.md).
 
 ### <a name="train-a-model-without-labels"></a>Träna en modell utan etiketter
 
@@ -444,7 +444,7 @@ node index.js
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort resursen eller resursgruppen. Om du tar bort resursgruppen tas även alla andra resurser som är associerade med den bort.
+Om du vill rensa och ta bort en Cognitive Services prenumeration kan du ta bort resursen eller resursgruppen. När du tar bort resursgruppen tas även alla andra resurser som är associerade med den bort.
 
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)

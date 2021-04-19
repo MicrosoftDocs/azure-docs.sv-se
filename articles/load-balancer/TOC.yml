@@ -31,25 +31,27 @@
       href: tutorial-load-balancer-standard-public-zone-redundant-portal.md
     - name: Belastningsutjämna virtuella datorer i en specifik tillgänglighetszon
       href: tutorial-load-balancer-standard-public-zonal-portal.md
+    - name: Belastningsutjämna virtuella datorer med flera tillgänglighetsuppsättningar
+      href: tutorial-multi-availability-sets-portal.md
     - name: Konfigurera portvidarebefordran i Load Balancer
       href: tutorial-load-balancer-port-forwarding-portal.md
     - name: Lastbalanserare mellan regioner
       items:
         - name: Skapa lastbalanserare mellan regioner – portalen
           href: tutorial-cross-region-portal.md
-        - name: Skapa en belastningsutjämnare för flera regioner – PowerShell
+        - name: Skapa lastbalanserare mellan regioner – PowerShell
           href: tutorial-cross-region-powershell.md
-        - name: Skapa en belastningsutjämnare för flera regioner – Azure CLI
+        - name: Skapa lastbalanserare mellan regioner – Azure CLI
           href: tutorial-cross-region-cli.md
     - name: NAT Gateway
       items:
-        - name: Integrera offentlig belastningsutjämnare för NAT-gateway
+        - name: Integrera en offentlig lastbalanserare för NAT-gateway
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-public-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
-        - name: Integrera intern belastningsutjämnare för NAT-gateway
+        - name: Integrera en intern lastbalanserare för NAT-gateway
           href: ../virtual-network/tutorial-nat-gateway-load-balancer-internal-portal.md?toc=%2fazure%2fload-balancer%2ftoc.json
-    - name: IP-baserad server del
+    - name: IP-baserad backend
       items:
-        - name: Skapa en offentlig belastningsutjämnare med en IP-baserad server del – Portal
+        - name: Skapa en offentlig lastbalanserare med en IP-baserad backend – portalen
           href: tutorial-load-balancer-ip-backend-portal.md
 - name: Exempel
   items:
@@ -107,7 +109,7 @@
       href: backend-pool-management.md
     - name: Standard Load Balancer och skalningsuppsättningar för virtuella datorer
       href: load-balancer-standard-virtual-machine-scale-sets.md
-    - name: Hämta information med Azure-Instance Metadata Service
+    - name: Hämta information med azure-Instance Metadata Service
       href: instance-metadata-service-load-balancer.md
 - name: Så här gör du
   items:
@@ -162,7 +164,7 @@
           href: move-across-regions-internal-load-balancer-powershell.md
     - name: Konfiguration för lastbalanserare med ”endast utgående”
       href: egress-only.md
-    - name: Hämta metadata med Azure-IMDS
+    - name: Hämta metadata med Azure IMDS
       href: howto-load-balancer-imds.md
     - name: Felsöka
       items:

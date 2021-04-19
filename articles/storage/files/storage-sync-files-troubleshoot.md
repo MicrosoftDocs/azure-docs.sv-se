@@ -1,40 +1,40 @@
 ---
 title: Felsöka Azure File Sync | Microsoft Docs
-description: Felsök vanliga problem i en distribution Azure File Sync, som du kan använda för att omvandla Windows Server till ett snabbt cacheminne för din Azure-filresurs.
+description: Felsök vanliga problem i en distribution på Azure File Sync, som du kan använda för att omvandla Windows Server till en snabb cache för din Azure-filresurs.
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
 ms.date: 4/12/2021
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: bf74b3a1659547772368c9fb394eeab8321b5f5d
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 6007ec954682c0cb0ba20cbbf6b3621ead0bf7ff
+ms.sourcegitcommit: 089c2bd1ac4861f43c4b89396d3d056a6eef4913
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599646"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107602108"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Felsök Azure File Sync
 Använd Azure File Sync för att centralisera organisationens filresurser i Azure Files, samtidigt som du behåller flexibiliteten, prestandan och kompatibiliteten hos en lokal filserver. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
 
-Den här artikeln är utformad för att hjälpa dig att felsöka och lösa problem som kan uppstå med Azure File Sync distributionen. Vi beskriver också hur du samlar in viktiga loggar från systemet om en djupare undersökning av problemet krävs. Om du inte ser svaret på din fråga kan du kontakta oss via följande kanaler (i eskalerande ordning):
+Den här artikeln är utformad för att hjälpa dig att felsöka och lösa problem som kan uppstå med din Azure File Sync distribution. Vi beskriver också hur du samlar in viktiga loggar från systemet om en djupare undersökning av problemet krävs. Om du inte ser svaret på din fråga kan du kontakta oss via följande kanaler (i eskalerande ordning):
 
-1. [Microsoft Q&A question page for Azure Storage](/answers/products/azure?product=storage).
+1. [Microsoft Q&En frågesida för Azure Storage](/answers/products/azure?product=storage).
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files).
 3. Microsoft Support. Om du vill skapa en ny supportbegäran går  Azure Portal klickar du på knappen **Hjälp + support** på fliken Hjälp och väljer sedan **Ny supportbegäran.**
 
-## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Jag har problem med att Azure File Sync på min server (synkronisering, molnnivåindelad osv.). Bör jag ta bort och återskapa serverslutpunkten?
+## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Jag har problem med att Azure File Sync på min server (synkronisering, molnnivåindelad osv.). Ska jag ta bort och återskapa min serverslutpunkt?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
 
 ## <a name="agent-installation-and-server-registration"></a>Agentinstallation och serverregistrering
 <a id="agent-installation-failures"></a>**Felsöka agentinstallationsfel**  
-Om den Azure File Sync agentinstallationen misslyckas i en upphöjd kommandotolk kör du följande kommando för att aktivera loggning under agentinstallationen:
+Om Azure File Sync agentinstallationen misslyckas kör du följande kommando i en upphöjd kommandotolk för att aktivera loggning under agentinstallationen:
 
 ```
 StorageSyncAgent.msi /l*v AFSInstaller.log
 ```
 
-Granska installer.log för att ta reda på orsaken till installationsfelet.
+Granska installer.log för att fastställa orsaken till installationsfelet.
 
 <a id="agent-installation-gpo"></a>**Agentinstallationen misslyckas med felet: Storage Sync Agent Installationsguiden avslutades i förtid på grund av ett fel**
 
@@ -46,31 +46,31 @@ CAQuietExec64:  + FullyQualifiedErrorId : UnauthorizedAccess
 CAQuietExec64:  Error 0x80070001: Command line returned an error.
 ```
 
-Det här problemet uppstår om [PowerShell-körningsprincipen](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) har konfigurerats med grupprincip och principinställningen är "Tillåt endast signerade skript". Alla skript som ingår i Azure File Sync agenten signeras. Installationen Azure File Sync agenten misslyckas eftersom installationsprogrammet utför skriptkörningen med hjälp av inställningen Kringgå körningsprincip.
+Det här problemet uppstår om [PowerShell-körningsprincipen](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) har konfigurerats med hjälp av en grupprincip och principinställningen är "Tillåt endast signerade skript". Alla skript som ingår i Azure File Sync agenten signeras. Installationen Azure File Sync agenten misslyckas eftersom installationsprogrammet utför skriptkörningen med hjälp av inställningen Kringgå körningsprincip.
 
 Lös problemet genom att tillfälligt inaktivera [grupprincipinställningen Aktivera skriptkörning](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_execution_policies#use-group-policy-to-manage-execution-policy) på servern. När agentinstallationen är klar kan grupprincipinställningen återaktiveras.
 
-<a id="agent-installation-on-DC"></a>**Agentinstallationen misslyckas på Active Directory-domän controller**  
+<a id="agent-installation-on-DC"></a>**Agentinstallationen misslyckas på Active Directory-domän Controller**  
 Om du försöker installera synkroniseringsagenten på en Active Directory-domänkontrollant där PDC-rollägaren finns på en Windows Server 2008 R2-version eller under OS-versionen kan du få problem där synkroniseringsagenten inte kan installeras.
 
-Lös problemet genom att överföra PDC-rollen till en annan domänkontrollant som kör Windows Server 2012 R2 eller senare och sedan installera synkronisering.
+Lös problemet genom att överföra PDC-rollen till en annan domänkontrollant som kör Windows Server 2012 R2 eller senare och installera sedan synkroniseringen.
 
-<a id="parameter-is-incorrect"></a>**Det går inte att komma åt en volym på Windows Server 2012 R2 med fel: Parametern är felaktig**  
+<a id="parameter-is-incorrect"></a>**Det går inte att komma åt en volym på Windows Server 2012 R2 med felet: Parametern är felaktig**  
 När du har skapat en serverslutpunkt på Windows Server 2012 R2 uppstår följande fel vid åtkomst till volymen:
 
 driveletter:\ är inte tillgänglig.  
 Parametern är felaktig.
 
-Lös problemet genom att installera [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) och starta om servern. Om den här uppdateringen inte installeras eftersom en senare uppdatering redan har installerats går du till Windows Update, installerar de senaste uppdateringarna för Windows Server 2012 R2 och startar om servern.
+Lös problemet genom att installera [KB2919355](https://support.microsoft.com/help/2919355/windows-rt-8-1-windows-8-1-windows-server-2012-r2-update-april-2014) och starta om servern. Om den här uppdateringen inte kommer att installeras eftersom en senare uppdatering redan har installerats går du till Windows Update, installerar de senaste uppdateringarna för Windows Server 2012 R2 och startar om servern.
 
 <a id="server-registration-missing-subscriptions"></a>**Serverregistrering visar inte alla Azure-prenumerationer**  
-När du registrerar en server ServerRegistration.exe prenumeration saknas prenumerationer när du klickar på listrutan Azure-prenumeration.
+När du registrerar en server med ServerRegistration.exe prenumeration saknas prenumerationer när du klickar på listrutan Azure-prenumeration.
 
 Det här problemet beror på ServerRegistration.exe endast hämtar prenumerationer från de första 5 Azure AD-klientorganisationen. 
 
 Om du vill öka klientgränsen för serverregistrering på servern skapar du ett DWORD-värde med namnet ServerRegistrationTenantLimit under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure\StorageSync med ett värde som är större än 5.
 
-Du kan också lösa det här problemet genom att använda följande PowerShell-kommandon för att registrera servern:
+Du kan också lösa problemet genom att använda följande PowerShell-kommandon för att registrera servern:
 
 ```powershell
 Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
@@ -86,7 +86,7 @@ Det här meddelandet visas om Az eller AzureRM PowerShell-modulen inte är insta
 
 Utför följande steg för att installera Az- eller AzureRM-modulen på PowerShell 5.1:
 
-1. Skriv **powershell från** en upphöjd kommandotolk och tryck på Retur.
+1. Skriv **powershell** från en upphöjd kommandotolk och tryck på Retur.
 2. Installera den senaste Az- eller AzureRM-modulen genom att följa dokumentationen:
     - [Az-modul (kräver .NET 4.7.2)](/powershell/azure/install-az-ps)
     - [AzureRM-modul](https://go.microsoft.com/fwlink/?linkid=856959)
@@ -96,7 +96,7 @@ Utför följande steg för att installera Az- eller AzureRM-modulen på PowerShe
 
 ![En skärmbild av dialogrutan Serverregistrering med felmeddelandet "servern är redan registrerad"](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
-Det här meddelandet visas om servern tidigare har registrerats med en tjänst för synkronisering av lagring. Om du vill avregistrera servern från den aktuella tjänsten för synkronisering av lagring och sedan registrera dig för en ny tjänst för synkronisering av lagring slutför du stegen som beskrivs i [Avregistrera](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)en server med Azure File Sync .
+Det här meddelandet visas om servern tidigare har registrerats med en tjänst för synkronisering av lagring. Om du vill avregistrera servern från den aktuella tjänsten för synkronisering av lagring och sedan registrera med en ny tjänst för synkronisering av lagring slutför du stegen som beskrivs i [Avregistrera](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)en server med Azure File Sync .
 
 Om servern inte visas under **Registrerade** servrar i tjänsten för synkronisering av lagring kör du följande PowerShell-kommandon på den server som du vill avregistrera:
 
@@ -109,25 +109,25 @@ Reset-StorageSyncServer
 > Om servern är en del av ett kluster kan du använda den valfria parametern *Reset-StorageSyncServer -CleanClusterRegistration* för att även ta bort klusterregistreringen.
 
 <a id="web-site-not-trusted"></a>**När jag registrerar en server ser jag många svar på "webbplatsen är inte betrodd". Varför?**  
-Det här problemet uppstår när **principen Internet Explorer utökad säkerhet** aktiveras under serverregistreringen. Mer information om hur du inaktiverar principen förbättrad **Internet Explorer-säkerhet** finns i [Förbereda Windows Server](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) för användning med Azure File Sync och Så här [distribuerar du Azure File Sync](storage-sync-files-deployment-guide.md).
+Det här problemet uppstår när **principen Internet Explorer utökad säkerhet** aktiveras under serverregistreringen. Mer information om hur du inaktiverar principen Förbättrad **Internet Explorer-säkerhet** finns i Förbereda [Windows Server](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) för användning med Azure File Sync och Så här [distribuerar du Azure File Sync](storage-sync-files-deployment-guide.md).
 
 <a id="server-registration-missing"></a>**Servern visas inte under registrerade servrar i Azure Portal**  
-Om en server inte visas under Registrerade **servrar för** en tjänst för synkronisering av lagring:
+Om en server inte visas under **Registrerade servrar för** en tjänst för synkronisering av lagring:
 1. Logga in på den server som du vill registrera.
 2. Öppna Utforskaren och gå sedan till installationskatalogen för Storage Sync Agent (standardplatsen är C:\Program Files\Azure\StorageSyncAgent). 
 3. Kör ServerRegistration.exe och slutför guiden för att registrera servern med en tjänst för synkronisering av lagring.
 
-## <a name="sync-group-management"></a>Hantering av synkroniseringsgrupp
+## <a name="sync-group-management"></a>Synkronisering av grupphantering
 
 ### <a name="cloud-endpoint-creation-errors"></a>Fel vid skapande av molnslutpunkt
 
-<a id="cloud-endpoint-using-share"></a>**Det går inte att skapa molnslutpunkten med det här felet: "Angiven Azure FileShare används redan av en annan CloudEndpoint"**  
+<a id="cloud-endpoint-using-share"></a>**Det går inte att skapa molnslutpunkten med det här felet: "Den angivna Azure FileShare används redan av en annan CloudEndpoint"**  
 Det här felet uppstår om Azure-filresursen redan används av en annan molnslutpunkt. 
 
 Om du ser det här meddelandet och Azure-filresursen för närvarande inte används av en molnslutpunkt utför du följande steg för att rensa Azure File Sync-metadata på Azure-filresursen:
 
 > [!Warning]  
-> Om du tar bort metadata på en Azure-filresurs som för närvarande används av en molnslutpunkt misslyckas Azure File Sync åtgärder. Om du sedan använder den här filresursen för synkronisering i en annan synkroniseringsgrupp är dataförlust för filer i den gamla synkroniseringsgruppen nästan säker.
+> Om du tar bort metadata på en Azure-filresurs som för närvarande används av en molnslutpunkt Azure File Sync misslyckas. Om du sedan använder den här filresursen för synkronisering i en annan synkroniseringsgrupp är dataförlust för filer i den gamla synkroniseringsgruppen nästan säker.
 
 1. I Azure Portal du till Azure-filresursen.  
 2. Högerklicka på Azure-filresursen och välj sedan **Redigera metadata.**
@@ -142,7 +142,7 @@ Om du vill skapa en molnslutpunkt måste ditt användarkonto ha följande Micros
 * Läsa: Hämta rolltilldelning
 * Skriva: Skapa rolltilldelning
 
-Följande inbyggda roller har nödvändiga Microsoft-auktoriseringsbehörigheter:  
+Följande inbyggda roller har de Microsoft-auktoriseringsbehörigheter som krävs:  
 * Ägare
 * Administratör för användaråtkomst
 
@@ -157,13 +157,13 @@ Så här avgör du om din användarkontoroll har de behörigheter som krävs:
 
 ### <a name="server-endpoint-creation-and-deletion-errors"></a>Fel vid skapande och borttagning av serverslutpunkt
 
-<a id="-2134375898"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2134375898 eller 0x80c80226)**  
+<a id="-2134375898"></a>**Det går inte att skapa serverslutpunkten med det här felet: "MgmtServerJobFailed" (Felkod: -2134375898 eller 0x80c80226)**  
 Felet uppstår om sökvägen till serverslutpunkten finns på systemvolymen och molnnivåindelning är aktiverat. Molnnivåindelning stöds inte på systemvolymen. Om du vill skapa en serverslutpunkt på systemvolymen inaktiverar du molnnivåindelning när du skapar serverslutpunkten.
 
 <a id="-2147024894"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2147024894 eller 0x80070002)**  
 Det här felet uppstår om den angivna sökvägen till serverslutpunkten är ogiltig. Kontrollera att sökvägen till serverslutpunkten är en lokalt ansluten NTFS-volym. Observera att Azure File Sync inte stöder mappade enheter som sökvägar till serverslutpunkter.
 
-<a id="-2134375640"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2134375640 eller 0x80c80328)**  
+<a id="-2134375640"></a>**Det går inte att skapa serverslutpunkten med det här felet: "MgmtServerJobFailed" (Felkod: -2134375640 eller 0x80c80328)**  
 Det här felet uppstår om den angivna sökvägen till serverslutpunkten inte är en NTFS-volym. Kontrollera att sökvägen till serverslutpunkten är en lokalt ansluten NTFS-volym. Observera att Azure File Sync inte stöder mappade enheter som sökvägar till serverslutpunkter.
 
 <a id="-2134347507"></a>**Det går inte att skapa serverslutpunkten med det här felet: "MgmtServerJobFailed" (Felkod: -2134347507 eller 0x80c8710d)**  
@@ -172,25 +172,25 @@ Det här felet beror på att Azure File Sync inte stöder serverslutpunkter på 
 1. Ladda [ned PsExec-verktyget.](/sysinternals/downloads/psexec)
 2. Kör följande kommando från en upphöjd kommandotolk för att starta en kommandotolk som körs under systemkontot: **PsExec.exe -i -s -d cmd**
 3. Från kommandotolken som körs under systemkontot skriver du följande kommandon och trycker på RETUR:   
-    **cd /d "drive letter:\System Volume Information"**  
-    **kompakt /u /s**
+    **cd /d "enhetsbeteckning:\System Volume Information"**  
+    **compact /u /s**
 
-<a id="-2134376345"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2134376345 eller 0x80C80067)**  
+<a id="-2134376345"></a>**Det går inte att skapa serverslutpunkten med det här felet: "MgmtServerJobFailed" (Felkod: -2134376345 eller 0x80C80067)**  
 Det här felet uppstår om gränsen för serverslutpunkter per server uppnås. Azure File Sync stöder för närvarande upp till 30 serverslutpunkter per server. Mer information finns i Azure File Sync [skalningsmål.](./storage-files-scale-targets.md#azure-file-sync-scale-targets)
 
-<a id="-2134376427"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2134376427 eller 0x80c80015)**  
+<a id="-2134376427"></a>**Det går inte att skapa serverslutpunkten med det här felet: "MgmtServerJobFailed" (Felkod: -2134376427 eller 0x80c80015)**  
 Det här felet uppstår om en annan serverslutpunkt redan synkroniserar den angivna serversökvägen. Azure File Sync har inte stöd för att flera serverslutpunkter synkroniserar samma katalog eller volym.
 
 <a id="-2160590967"></a>**Det går inte att skapa serverslutpunkten med följande fel: "MgmtServerJobFailed" (Felkod: -2160590967 eller 0x80c80077)**  
-Det här felet uppstår om sökvägen till serverslutpunkten innehåller överblivna nivåindelade filer. Om en serverslutpunkt nyligen har tagits bort väntar du tills rensningen av de överblivna nivåindelade filerna har slutförts. Händelse-ID 6662 loggas i telemetrihändelseloggen när rensningen av överblivna nivåindelade filer har startat. Händelse-ID 6661 loggas när rensningen av överblivna nivåindelade filer har slutförts och en serverslutpunkt kan återskapas med hjälp av sökvägen. Om det inte går att skapa serverslutpunkten efter att rensningen av nivåindelade filer har slutförts eller om händelse-ID 6661 inte kan hittas i händelseloggen för telemetri på grund av händelseloggens sammanslagning tar du bort de överblivna nivåindelade filerna genom att utföra stegen som beskrivs i nivåindelade filer är inte tillgängliga på servern efter att en [serverslutpunkt](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) har tagits bort.
+Det här felet uppstår om sökvägen till serverslutpunkten innehåller överblivna nivåindelade filer. Om en serverslutpunkt nyligen har tagits bort väntar du tills rensningen av de överblivna nivåindelade filerna har slutförts. Händelse-ID 6662 loggas i telemetrihändelseloggen när rensningen av överblivna nivåindelade filer har startat. Händelse-ID 6661 loggas när rensningen av överblivna nivåindelade filer har slutförts och en serverslutpunkt kan återskapas med hjälp av sökvägen. Om det inte går att skapa serverslutpunkten efter att rensningen av nivåindelade filer har slutförts eller om händelse-ID 6661 inte kan hittas i telemetrihändelseloggen på grund av händelseloggens återställning, tar du bort de överblivna nivåindelade filerna genom att utföra stegen som beskrivs i avsnittet Nivåindelade filer är inte tillgängliga på [servern](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) efter att du har tagit bort en serverslutpunkt.
 
 <a id="-2134347757"></a>**Borttagningen av serverslutpunkten misslyckas med följande fel: "MgmtServerJobExpired" (Felkod: -2134347757 eller 0x80c87013)**  
 Det här felet uppstår om servern är offline eller inte har någon nätverksanslutning. Om servern inte längre är tillgänglig avregistrerar du servern i portalen, vilket tar bort serverslutpunkterna. Om du vill ta bort serverslutpunkterna följer du stegen som beskrivs i [Avregistrera en server med Azure File Sync](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service).
 
 ### <a name="server-endpoint-health"></a>Serverslutpunktens hälsa
 
-<a id="server-endpoint-provisioningfailed"></a>**Det går inte att öppna sidan med egenskaper för serverslutpunkt eller uppdatera molnnivåprincipen**  
-Det här problemet kan inträffa om en hanteringsåtgärd på serverslutpunkten misslyckas. Om egenskapssidan för serverslutpunkten inte öppnas i Azure Portal kan det här problemet åtgärdas om serverslutpunkten uppdateras med Hjälp av PowerShell-kommandon från servern. 
+<a id="server-endpoint-provisioningfailed"></a>**Det går inte att öppna sidan med egenskaper för serverslutpunkt eller uppdatera principen för molnnivåindelad lagring**  
+Det här problemet kan inträffa om en hanteringsåtgärd på serverslutpunkten misslyckas. Om sidan för serverslutpunktens egenskaper inte öppnas i Azure Portal kan det här problemet åtgärdas om serverslutpunkten uppdateras med Hjälp av PowerShell-kommandon från servern. 
 
 ```powershell
 # Get the server endpoint id based on the server endpoint DisplayName property
@@ -210,9 +210,9 @@ Set-AzStorageSyncServerEndpoint `
 
 Det här problemet kan inträffa om Storage Sync Monitor-processen (AzureStorageSyncMonitor.exe) inte körs eller om servern inte kan komma åt Azure File Sync tjänsten.
 
-På servern som visas som "Visas offline" i portalen tittar du på Händelse-ID 9301 i telemetrihändelseloggen (finns under Program och tjänster\Microsoft\FileSync\Agent i Loggboken) för att avgöra varför servern inte kan komma åt Azure File Sync-tjänsten. 
+På servern som visas som "Visas offline" i portalen tittar du på Händelse-ID 9301 i telemetrihändelseloggen (finns under Program och tjänster\Microsoft\FileSync\Agent i Loggboken) för att ta reda på varför servern inte kan komma åt Azure File Sync-tjänsten. 
 
-- Om **GetNextJob har slutförts med status: 0** loggas kan servern kommunicera med Azure File Sync tjänsten. 
+- Om **GetNextJob slutfördes med status: 0** loggas kan servern kommunicera med Azure File Sync tjänsten. 
     - Öppna Aktivitetshanteraren på servern och kontrollera att Storage Sync Monitor-processen (AzureStorageSyncMonitor.exe) körs. Om processen inte körs provar du först att starta om servern. Om det inte går att lösa problemet genom att starta om servern uppgraderar du till den senaste [agentversionen](./storage-files-release-notes.md) för Azure File Sync. 
 
 - Om GetNextJob har slutförts med **status: -2134347756** loggas kan servern inte kommunicera med Azure File Sync-tjänsten på grund av en konfiguration av brandväggen, proxyn eller TLS-chiffersviten. 
@@ -243,25 +243,25 @@ Om du vill kontrollera den aktuella synkroniseringsaktiviteten på [en server Hu
 En serverslutpunkt kanske inte loggar synkroniseringsaktiviteten på flera timmar på grund av en bugg eller otillräcklig systemresurser. Kontrollera att den Azure File Sync [agentversionen](./storage-files-release-notes.md) är installerad. Om problemet kvarstår öppnar du en supportbegäran.
 
 > [!Note]  
-> Om servertillståndet på bladet registrerade servrar är "Visas offline" utför du stegen som beskrivs i serverslutpunkten har hälsostatusen "Ingen aktivitet" eller "Väntar" och servertillståndet på bladet med registrerade servrar är [avsnittet "Visas offline".](#server-endpoint-noactivity)
+> Om servertillståndet på bladet med registrerade servrar är "Visas offline" utför du stegen som beskrivs i serverslutpunkten har hälsostatusen "Ingen aktivitet" eller "Väntar" och servertillståndet på bladet med registrerade servrar är [avsnittet "Visas offline".](#server-endpoint-noactivity)
 
 ## <a name="sync"></a>Synkronisera
 <a id="afs-change-detection"></a>**Hur lång tid tar det innan filen synkroniseras till servrar i synkroniseringsgruppen om jag har skapat en fil direkt i min Azure-filresurs via SMB eller via portalen?**  
 [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
 <a id="serverendpoint-pending"></a>**Serverslutpunktens hälsa är i ett väntande tillstånd i flera timmar**  
-Det här problemet förväntas om du skapar en molnslutpunkt och använder en Azure-filresurs som innehåller data. Det ändringsuppräkningsjobb som söker efter ändringar i Azure-filresursen måste slutföras innan filer kan synkroniseras mellan molnet och serverslutpunkter. Hur lång tid jobbet tar beror på storleken på namnområdet i Azure-filresursen. Serverslutpunktens hälsa bör uppdateras när uppräkningsjobbet för ändringar har slutförts.
+Det här problemet är förväntat om du skapar en molnslutpunkt och använder en Azure-filresurs som innehåller data. Det ändringsuppräkningsjobb som söker efter ändringar i Azure-filresursen måste slutföras innan filer kan synkroniseras mellan molnet och serverslutpunkter. Hur lång tid jobbet tar beror på storleken på namnområdet i Azure-filresursen. Serverslutpunktens hälsa bör uppdateras när uppräkningsjobbet har slutförts.
 
 ### <a name="how-do-i-monitor-sync-health"></a><a id="broken-sync"></a>Hur gör jag för att övervaka synkroniseringshälsa?
 # <a name="portal"></a>[Portal](#tab/portal1)
-I varje synkroniseringsgrupp kan du öka detaljgranskningen i dess enskilda serverslutpunkter för att se status för de senaste slutförda synkroniseringssessionerna. En grön hälsokolumn och värdet 0 för Filer som inte synkroniseras anger att synkroniseringen fungerar som förväntat. Om så inte är fallet, se nedan för en lista över vanliga synkroniseringsfel och hur du hanterar filer som inte synkroniseras. 
+I varje synkroniseringsgrupp kan du öka detaljgranskningen i de enskilda serverslutpunkterna för att se status för de senaste slutförda synkroniseringssessionerna. En grön hälsokolumn och värdet 0 För filer som inte synkroniseras indikerar att synkroniseringen fungerar som förväntat. Om så inte är fallet, se nedan för en lista över vanliga synkroniseringsfel och hur du hanterar filer som inte synkroniseras. 
 
 ![En skärmbild av Azure Portal](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
 # <a name="server"></a>[Server](#tab/server)
-Gå till serverns telemetriloggar, som finns i Loggboken på `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` . Händelse 9102 motsvarar en slutförd synkroniseringssession. Om du vill ha den senaste synkroniseringsstatusen letar du efter den senaste händelsen med ID 9102. SyncDirection anger om den här sessionen var en uppladdning eller nedladdning. Om HResult är 0 lyckades synkroniseringssessionen. Ett HResult som inte är noll innebär att det uppstod ett fel under synkroniseringen. nedan finns en lista över vanliga fel. Om PerItemErrorCount är större än 0 innebär det att vissa filer eller mappar inte synkroniserades korrekt. Det är möjligt att ha ett HResult på 0 men ett PerItemErrorCount som är större än 0.
+Gå till serverns telemetriloggar, som finns i Loggboken på `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` . Händelse 9102 motsvarar en slutförd synkroniseringssession. Om du vill ha den senaste synkroniseringsstatusen letar du upp den senaste händelsen med ID 9102. SyncDirection anger om den här sessionen var en uppladdning eller nedladdning. Om HResult är 0 lyckades synkroniseringssessionen. Ett HResult som inte är noll innebär att det uppstod ett fel under synkroniseringen. nedan finns en lista över vanliga fel. Om PerItemErrorCount är större än 0 innebär det att vissa filer eller mappar inte synkroniserades korrekt. Det är möjligt att ha ett HResult på 0 men ett PerItemErrorCount som är större än 0.
 
-Nedan visas ett exempel på en lyckad uppladdning. Av utrymmesskäl visas bara några av de värden som finns i varje 9102-händelse nedan. 
+Nedan visas ett exempel på en lyckad uppladdning. Av utrymmesskäl visas bara några av värdena i varje 9102-händelse nedan. 
 
 ```
 Replica Sync session completed.
@@ -285,13 +285,13 @@ PerItemErrorCount: 0,
 TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTransferBytes: 0.
 ```
 
-Ibland misslyckas synkroniseringssessioner totalt eller har en PerItemErrorCount som inte är noll, men fortfarande fortsätter med vissa filer som synkroniseras. Detta kan ses i fälten Applied* (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount och AppliedSizeBytes), som visar hur mycket av sessionen som lyckas. Om du ser flera synkroniseringssessioner på en rad som misslyckas men har ett ökande antal tillämpade* bör du ge synkroniseringen tid att försöka igen innan du öppnar en supportbiljett.
+Ibland misslyckas synkroniseringssessioner totalt eller har en PerItemErrorCount som inte är noll, men fortsätter fortfarande, och vissa filer synkroniseras korrekt. Detta kan ses i fälten Tillämpad* (AppliedFileCount, AppliedDirCount, AppliedTombstoneCount och AppliedSizeBytes), som visar hur mycket av sessionen som lyckas. Om du ser flera synkroniseringssessioner på en rad som misslyckas men har ett ökande antal tillämpade* bör du ge synkroniseringen tid att försöka igen innan du öppnar en supportbiljett.
 
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>Hur övervakar jag förloppet för en pågående synkronisering?
 # <a name="portal"></a>[Portal](#tab/portal1)
-I synkroniseringsgruppen går du till den aktuella serverslutpunkten och tittar på avsnittet Synkroniseringsaktivitet för att se antalet filer som laddats upp eller laddats ned i den aktuella synkroniseringssessionen. Observera att denna status fördröjs med cirka 5 minuter och om synkroniseringssessionen är tillräckligt liten att slutföras inom den tiden kanske den inte rapporteras i portalen. 
+I synkroniseringsgruppen går du till den aktuella serverslutpunkten och tittar på avsnittet Synkroniseringsaktivitet för att se antalet filer som laddats upp eller ned i den aktuella synkroniseringssessionen. Observera att denna status fördröjs med cirka 5 minuter och om synkroniseringssessionen är tillräckligt liten att slutföras inom den tiden kanske den inte rapporteras i portalen. 
 
 # <a name="server"></a>[Server](#tab/server)
 Titta på den senaste 9302-händelsen i telemetriloggen på servern (i Loggboken går du till Program- och tjänstloggar\Microsoft\FileSync\Agent\Telemetry). Den här händelsen anger statusen för den aktuella synkroniseringssessionen. TotalItemCount anger hur många filer som ska synkroniseras, AppliedItemCount antalet filer som har synkroniserats hittills och PerItemErrorCount antalet filer som inte kan synkroniseras (se nedan för hur du hanterar detta).
@@ -319,17 +319,17 @@ Kontrollera följande för varje server i en viss synkroniseringsgrupp:
 Titta på de slutförda synkroniseringssessionerna, som är markerade med 9102-händelser i telemetrihändelseloggen för varje server (i Loggboken går du till `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` ). 
 
 1. På en viss server vill du se till att de senaste uppladdnings- och nedladdningssessionerna har slutförts. Det gör du genom att kontrollera att HResult och PerItemErrorCount är 0 för både uppladdning och nedladdning (fältet SyncDirection anger om en viss session är en uppladdnings- eller nedladdningssession). Observera att om du inte ser en nyligen slutförd synkroniseringssession är det troligt att en synkroniseringssession pågår, vilket är förväntat om du precis har lagt till eller ändrat en stor mängd data.
-2. När en server är helt uppdaterad med molnet och inte har några ändringar att synkronisera i någon av riktningarna visas tomma synkroniseringssessioner. Dessa visas genom att ladda upp och ladda ned händelser där alla sync*-fält (SyncFileCount, SyncDirCount, SyncTombstoneCount och SyncSizeBytes) är noll, vilket innebär att det inte fanns något att synkronisera. Observera att dessa tomma synkroniseringssessioner kanske inte inträffar på servrar med hög omsättning eftersom det alltid finns något nytt att synkronisera. Om det inte finns någon synkroniseringsaktivitet bör de ske var 30:e minut. 
+2. När en server är helt uppdaterad med molnet och inte har några ändringar att synkronisera i någon av riktningarna visas tomma synkroniseringssessioner. Dessa indikeras av uppladdnings- och nedladdningshändelser där alla sync*-fält (SyncFileCount, SyncDirCount, SyncTombstoneCount och SyncSizeBytes) är noll, vilket innebär att det inte fanns något att synkronisera. Observera att dessa tomma synkroniseringssessioner kanske inte inträffar på servrar med hög omsättning eftersom det alltid finns något nytt att synkronisera. Om det inte finns någon synkroniseringsaktivitet bör de ske var 30:e minut. 
 3. Om alla servrar är uppdaterade med molnet, vilket innebär att deras senaste uppladdnings- och nedladdningssessioner är tomma synkroniseringssessioner, kan du med rimlig säkerhet säga att systemet som helhet är synkroniserat. 
     
-Observera att om du har gjort ändringar direkt i azure-filresursen Azure File Sync inte den här ändringen förrän ändringsuppräkningen körs, vilket sker en gång var 24:e timme. Det är möjligt att en server säger att den är uppdaterad med molnet när den i själva verket saknar de senaste ändringarna som gjorts direkt i Azure-filresursen. 
+Observera att om du har gjort ändringar direkt i Azure-filresursen Azure File Sync inte den här ändringen förrän ändringsuppräkningen körs, vilket sker en gång var 24:e timme. Det är möjligt att en server säger att den är uppdaterad med molnet när den i själva verket saknar de senaste ändringarna som gjorts direkt i Azure-filresursen. 
 
 ---
 
 ### <a name="how-do-i-see-if-there-are-specific-files-or-folders-that-are-not-syncing"></a>Hur gör jag för att se om det finns vissa filer eller mappar som inte synkroniseras?
-Om antalet PerItemErrorCount på servern eller Antal filer som inte synkroniseras i portalen är större än 0 för en viss synkroniseringssession innebär det att vissa objekt inte kan synkroniseras. Filer och mappar kan ha egenskaper som hindrar dem från att synkroniseras. Dessa egenskaper kan vara beständiga och kräva explicita åtgärder för att återuppta synkroniseringen, till exempel borttagning av tecken som inte stöds från fil- eller mappnamnet. De kan också vara tillfälliga, vilket innebär att filen eller mappen automatiskt återupptar synkroniseringen. Filer med öppna referenser återupptar till exempel automatiskt synkroniseringen när filen stängs. När Azure File Sync identifierar ett sådant problem skapas en fellogg som kan parsas för att lista de objekt som för närvarande inte synkroniseras korrekt.
+Om ditt PerItemErrorCount på servern eller antalet filer som inte synkroniseras i portalen är större än 0 för en viss synkroniseringssession innebär det att vissa objekt inte kan synkroniseras. Filer och mappar kan ha egenskaper som hindrar dem från att synkroniseras. Dessa egenskaper kan vara beständiga och kräva explicita åtgärder för att återuppta synkroniseringen, till exempel att ta bort tecken som inte stöds från fil- eller mappnamnet. De kan också vara tillfälliga, vilket innebär att filen eller mappen automatiskt återupptar synkroniseringen. Filer med öppna referenser återupptar till exempel automatiskt synkroniseringen när filen stängs. När Azure File Sync identifierar ett sådant problem skapas en fellogg som kan parsas för att lista de objekt som för närvarande inte synkroniseras korrekt.
 
-Om du vill se de här felen kör du **FileSyncErrorsReport.ps1** PowerShell-skriptet (finns i agentinstallationskatalogen för Azure File Sync-agenten) för att identifiera filer som inte kunde synkroniseras på grund av öppna referenser, tecken som inte stöds eller andra problem. Fältet ItemPath visar platsen för filen i förhållande till rotsynkroniseringskatalogen. Se listan över vanliga synkroniseringsfel nedan för reparationssteg.
+Om du vill se dessa fel kör du **FileSyncErrorsReport.ps1** PowerShell-skriptet (finns i katalogen för agentinstallation för Azure File Sync-agenten) för att identifiera filer som inte kunde synkroniseras på grund av öppna referenser, tecken som inte stöds eller andra problem. Fältet ItemPath visar platsen för filen i förhållande till rotsynkroniseringskatalogen. Se listan över vanliga synkroniseringsfel nedan för reparationssteg.
 
 > [!Note]  
 > Om FileSyncErrorsReport.ps1 returnerar "Det fanns inga filfel hittades" eller inte listar fel per objekt för synkroniseringsgruppen är orsaken antingen:
@@ -340,37 +340,37 @@ Om du vill se de här felen kör du **FileSyncErrorsReport.ps1** PowerShell-skri
 >- Orsak 2: Händelseloggen ItemResults på servern omsluten på grund av för många fel per objekt och händelseloggen innehåller inte längre fel för den här synkroniseringsgruppen.
 >    - Du kan förhindra det här problemet genom att öka storleken på ItemResults-händelseloggen. Händelseloggen ItemResults finns under "Program- och tjänstloggar\Microsoft\FileSync\Agent" i Loggboken. 
 
-#### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Felsökning per fil-/katalogsynkroniseringsfel
+#### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Felsöka synkroniseringsfel per fil/katalog
 **ItemResults-logg – synkroniseringsfel per objekt**  
 
 | Hresult | HRESULT (decimal) | Felsträng | Problem | Åtgärder |
 |---------|-------------------|--------------|-------|-------------|
 | 0x80070043 | -2147942467 | ERROR_BAD_NET_NAME | Den nivåindelade filen på servern är inte tillgänglig. Det här problemet uppstår om den nivåindelade filen inte återkallades innan du tog bort en serverslutpunkt. | Information om hur du löser problemet finns [i Nivåindelade filer är inte tillgängliga på servern när du har tagit bort en serverslutpunkt.](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) |
-| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats. Det här objektet synkroniseras när de beroende ändringarna har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår i flera dagar använder du powershellFileSyncErrorsReport.ps1 skriptet för att avgöra varför den beroende mappen ännu inte har synkroniserats. |
-| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats. Det här objektet synkroniseras när de beroende ändringarna har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår i flera dagar använder du powershellFileSyncErrorsReport.ps1 skriptet för att avgöra varför den beroende mappen ännu inte har synkroniserats. |
-| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats och synkroniseringssessionen misslyckades. Det här objektet synkroniseras när de beroende ändringarna har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår undersöker du synkroniseringssessionsfelet. |
+| 0x80c80207 | -2134375929 | ECS_E_SYNC_CONSTRAINT_CONFLICT | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats. Det här objektet synkroniseras när beroende ändringar har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår i flera dagar använder du powershellFileSyncErrorsReport.ps1 skriptet för att avgöra varför den beroende mappen ännu inte har synkroniserats. |
+| 0x80C8028A | -2134375798 | ECS_E_SYNC_CONSTRAINT_CONFLICT_ON_FAILED_DEPENDEE | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats. Det här objektet synkroniseras när beroende ändringar har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår i flera dagar använder du powershellFileSyncErrorsReport.ps1 skriptet för att avgöra varför den beroende mappen ännu inte har synkroniserats. |
+| 0x80c80284 | -2134375804 | ECS_E_SYNC_CONSTRAINT_CONFLICT_SESSION_FAILED | Fil- eller katalogändringen kan inte synkroniseras ännu eftersom en beroende mapp ännu inte har synkroniserats och synkroniseringssessionen misslyckades. Det här objektet synkroniseras när beroende ändringar har synkroniserats. | Ingen åtgärd krävs. Om felet kvarstår undersöker du synkroniseringssessionsfelet. |
 | 0x8007007b | -2147024773 | ERROR_INVALID_NAME | Fil- eller katalognamnet är ogiltigt. | Byt namn på filen eller katalogen i fråga. Mer information [finns i Hantera tecken som](?tabs=portal1%252cazure-portal#handling-unsupported-characters) inte stöds. |
 | 0x80c80255 | -2134375851 | ECS_E_XSMB_REST_INCOMPATIBILITY | Fil- eller katalognamnet är ogiltigt. | Byt namn på filen eller katalogen i fråga. Mer information [finns i Hantera tecken som](?tabs=portal1%252cazure-portal#handling-unsupported-characters) inte stöds. |
-| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Det går inte att synkronisera filen eftersom den används. Filen synkroniseras när den inte längre används. | Ingen åtgärd krävs. Azure File Sync skapar en tillfällig VSS-ögonblicksbild en gång om dagen på servern för att synkronisera filer som har öppna referenser. |
+| 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Filen kan inte synkroniseras eftersom den används. Filen synkroniseras när den inte längre används. | Ingen åtgärd krävs. Azure File Sync skapar en tillfällig VSS-ögonblicksbild en gång om dagen på servern för att synkronisera filer som har öppna referenser. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Filen har ändrats, men ändringen har ännu inte identifierats av synkroniseringen. Sync återställs när den här ändringen har identifierats. | Ingen åtgärd krävs. |
-| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Filen har tagits bort och synkroniseringen känner inte till ändringen. | Ingen åtgärd krävs. Sync slutar logga det här felet när ändringsidentifiering upptäcker att filen har tagits bort. |
+| 0x80070002 | -2147024894 | ERROR_FILE_NOT_FOUND | Filen har tagits bort och sync känner inte till ändringen. | Ingen åtgärd krävs. Sync slutar logga det här felet när ändringsidentifiering upptäcker att filen har tagits bort. |
 | 0x80070003 | -2147942403 | ERROR_PATH_NOT_FOUND | Det går inte att synkronisera borttagningen av en fil eller katalog eftersom objektet redan har tagits bort i målet och synkroniseringen inte känner till ändringen. | Ingen åtgärd krävs. Sync slutar logga det här felet när ändringsidentifiering körs på målet och synkroniseringen identifierar att objektet har tagits bort. |
 | 0x80c80205 | -2134375931 | ECS_E_SYNC_ITEM_SKIP | Filen eller katalogen hoppas över men synkroniseras under nästa synkroniseringssession. Om det här felet rapporteras när du laddar ned objektet är fil- eller katalognamnet mer än sannolikt ogiltigt. | Ingen åtgärd krävs om det här felet rapporteras när filen laddas upp. Om felet rapporteras när du laddar ned filen byter du namn på filen eller katalogen i fråga. Mer information [finns i Hantera tecken som](?tabs=portal1%252cazure-portal#handling-unsupported-characters) inte stöds. |
 | 0x800700B7 | -2147024713 | ERROR_ALREADY_EXISTS | Det går inte att synkronisera skapandet av en fil eller katalog eftersom objektet redan finns i målet och synkroniseringen inte känner till ändringen. | Ingen åtgärd krävs. Synkroniseringen kommer att sluta logga det här felet när ändringsidentifieringen körs på målet och Sync upptäcker det nya objektet. |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Det går inte att synkronisera filen eftersom gränsen för Azure-filresursen har nåtts. | Du kan lösa problemet genom att gå [till avsnittet Lagringsgräns för Azure-filresurser](?tabs=portal1%252cazure-portal#-2134351810) i felsökningsguiden. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Det går inte att synkronisera filen eftersom gränsen för Azure-filresursen har nåtts. | Information om hur du löser problemet [finns i avsnittet Om lagringsgränsen](?tabs=portal1%252cazure-portal#-2134351810) för Azure-filresurser i felsökningsguiden. |
 | 0x80c8027C | -2134375812 | ECS_E_ACCESS_DENIED_EFS | Filen krypteras av en lösning som inte stöds (t.ex. NTFS EFS). | Dekryptera filen och använd en krypteringslösning som stöds. En lista över lösningar som stöds finns i avsnittet [Krypteringslösningar](./storage-sync-files-planning.md#encryption) i planeringsguiden. |
 | 0x80c80283 | -2160591491 | ECS_E_ACCESS_DENIED_DFSRRO | Filen finns i en skrivskyddade DFS-R-replikeringsmapp. | Filen finns i en skrivskyddade DFS-R-replikeringsmapp. Azure Files Sync stöder inte serverslutpunkter i skrivskyddade DFS-R-replikeringsmappar. Mer information finns i [planeringsguiden](./storage-sync-files-planning.md#distributed-file-system-dfs). |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Filen har ett väntande borttagningstillstånd. | Ingen åtgärd krävs. Filen tas bort när alla öppna filreferenser har stängts. |
-| 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Filen kan inte synkroniseras eftersom inställningarna för brandväggen och det virtuella nätverket på lagringskontot är aktiverade och servern inte har åtkomst till lagringskontot. | Lägg till serverns IP-adress eller virtuella nätverk genom att följa stegen i avsnittet Konfigurera inställningar för brandvägg och [virtuellt](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) nätverk i distributionsguiden. |
+| 0x80c86044 | -2134351804 | ECS_E_AZURE_AUTHORIZATION_FAILED | Filen kan inte synkroniseras eftersom inställningarna för brandvägg och virtuellt nätverk på lagringskontot är aktiverade och servern inte har åtkomst till lagringskontot. | Lägg till serverns IP-adress eller virtuella nätverk genom att följa stegen i avsnittet Konfigurera inställningar [för](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) brandvägg och virtuellt nätverk i distributionsguiden. |
 | 0x80c80243 | -2134375869 | ECS_E_SECURITY_DESCRIPTOR_SIZE_TOO_LARGE | Filen kan inte synkroniseras eftersom säkerhetsbeskrivningens storlek överskrider gränsen på 64 KiB. | Lös problemet genom att ta bort filens åtkomstkontrollposter så att säkerhetsbeskrivningen minskar i storlek. |
-| 0x8000ffff | -2147418113 | E_UNEXPECTED | Det går inte att synkronisera filen på grund av ett oväntat fel. | Om felet kvarstår i flera dagar kan du öppna ett supportfall. |
-| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Filen kan inte synkroniseras eftersom den används. Filen synkroniseras när den inte längre används. | Ingen åtgärd krävs. |
+| 0x8000ffff | -2147418113 | E_UNEXPECTED | Filen kan inte synkroniseras på grund av ett oväntat fel. | Om felet kvarstår i flera dagar öppnar du ett supportfall. |
+| 0x80070020 | -2147024864 | ERROR_SHARING_VIOLATION | Det går inte att synkronisera filen eftersom den används. Filen synkroniseras när den inte längre används. | Ingen åtgärd krävs. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Filen ändrades under synkroniseringen, så den måste synkroniseras igen. | Ingen åtgärd krävs. |
-| 0x80070017 | -2147024873 | ERROR_CRC | Filen kan inte synkroniseras på grund av ett CRC-fel. Det här felet kan inträffa om en nivåindelad fil inte återkallades innan du tog bort en serverslutpunkt eller om filen är skadad. | Information om hur du löser problemet finns i Nivåindelade filer som inte är tillgängliga på servern när du har tagit bort en [serverslutpunkt](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) för att ta bort nivåindelade filer som är överblivna. Om felet kvarstår när du har tagit bort överblivna nivåindelade filer kör [du chkdsk](/windows-server/administration/windows-commands/chkdsk) på volymen. |
-| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Det går inte att synkronisera filen eftersom det maximala antalet konfliktfiler har nåtts. Azure File Sync har stöd för 100 konfliktfiler per fil. Mer information om filkonflikter finns i vanliga Azure File Sync [vanliga frågor och svar.](./storage-files-faq.md#afs-conflict-resolution) | Du kan lösa problemet genom att minska antalet motstridiga filer. Filen kommer att synkroniseras när antalet motstridiga filer är mindre än 100. |
+| 0x80070017 | -2147024873 | ERROR_CRC | Det går inte att synkronisera filen på grund av ett CRC-fel. Det här felet kan inträffa om en nivåindelad fil inte återkallades innan du tog bort en serverslutpunkt eller om filen är skadad. | Information om hur du löser problemet finns i Nivåindelade filer som inte är tillgängliga på servern när du har tagit bort en [serverslutpunkt](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) för att ta bort nivåindelade filer som är överblivna. Om felet kvarstår när du har tagit bort överblivna nivåindelade filer kör [du chkdsk](/windows-server/administration/windows-commands/chkdsk) på volymen. |
+| 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Filen kan inte synkroniseras eftersom det maximala antalet konfliktfiler har nåtts. Azure File Sync har stöd för 100 konfliktfiler per fil. Mer information om filkonflikter finns i Azure File Sync [vanliga frågor och svar.](./storage-files-faq.md#afs-conflict-resolution) | Du kan lösa problemet genom att minska antalet motstridiga filer. Filen kommer att synkroniseras när antalet motstridiga filer är mindre än 100. |
 
 #### <a name="handling-unsupported-characters"></a>Hantera tecken som inte stöds
-Om **FileSyncErrorsReport.ps1** PowerShell-skriptet visar synkroniseringsfel per objekt på grund av tecken som inte stöds (felkod 0x8007007b eller 0x80c80255) bör du ta bort eller byta namn på tecknen vid fel från respektive filnamn. PowerShell skriver troligen ut dessa tecken som frågetecken eller tomma rektanglar eftersom de flesta av dessa tecken inte har någon standardkodning för visuella objekt. 
+Om **FileSyncErrorsReport.ps1** PowerShell-skriptet visar synkroniseringsfel per objekt på grund av tecken som inte stöds (felkod 0x8007007b eller 0x80c80255) bör du ta bort eller byta namn på tecken vid fel från respektive filnamn. PowerShell skriver sannolikt ut dessa tecken som frågetecken eller tomma rektanglar eftersom de flesta av dessa tecken inte har någon standardkodning av visuella objekt. 
 > [!Note]  
 > [Utvärderingsverktyget](storage-sync-files-planning.md#evaluation-cmdlet) kan användas för att identifiera tecken som inte stöds. Om datauppsättningen har flera filer med ogiltiga tecken använder du [skriptet ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars) för att byta namn på filer som innehåller tecken som inte stöds.
 
@@ -378,11 +378,12 @@ Tabellen nedan innehåller alla Unicode-tecken som Azure File Sync stöder ännu
 
 | Teckenuppsättning | Antal tecken |
 |---------------|-----------------|
-| <ul><li>0x0000009D (osc-operativsystemkommando)</li><li>0x00000090 (dcs-enhetens kontrollsträng)</li><li>0x0000008F (ss3 single shift three)</li><li>0x00000081 (förinställd hög oktett)</li><li>0x0000007F (del delete)</li><li>0x0000008D (ri reverse line feed)</li></ul> | 6 |
-| 0x0000FDD0 – 0x0000FDEF (arabiska presentation formulär-a) | 32 |
-| 0x0000FFF0 – 0x0000FFFF (specialerbjudanden) | 16 |
-| <ul><li>0x0001FFFE – 0x0001FFFF = 2 (icke-character)</li><li>0x0002FFFE – 0x0002FFFF = 2 (icke-character)</li><li>0x0003FFFE – 0x0003FFFF = 2 (icke-character)</li><li>0x0004FFFE – 0x0004FFFF = 2 (icke-character)</li><li>0x0005FFFE – 0x0005FFFF = 2 (icke-character)</li><li>0x0006FFFE – 0x0006FFFF = 2 (icke-character)</li><li>0x0007FFFE – 0x0007FFFF = 2 (icke-character)</li><li>0x0008FFFE – 0x0008FFFF = 2 (icke-character)</li><li>0x0009FFFE – 0x0009FFFF = 2 (icke-character)</li><li>0x000AFFFE – 0x000AFFFF = 2 (icke-character)</li><li>0x000BFFFE – 0x000BFFFF = 2 (icke-character)</li><li>0x000CFFFE – 0x000CFFFF = 2 (icke-character)</li><li>0x000DFFFE – 0x000DFFFF = 2 (icke-character)</li><li>0x000EFFFE – 0x000EFFFF = 2 (odefinierad)</li><li>0x000FFFFE – 0x000FFFFF = 2 (privat privat användningsområde)</li></ul> | 30 |
-| 0x0010FFFE, 0x0010FFFF | 2 |
+| 0x00000000 – 0x0000001F (kontrolltecken) | 32 |
+| <ul><li>0x00000022 (citattecken)</li><li>0x0000002A (asterisk)</li><li>0x0000002F (snedstreck)</li><li>0x0000003A (kolon)</li><li>0x0000003C (mindre än)</li><li>0x0000003E (större än)</li><li>0x0000003F (frågetecken)</li><li>0x0000005C (omsnedstreck)</li><li>0x0000007C (rör eller stapel)</li></ul> | 9 |
+| <ul><li>0x0004FFFE – 0x0004FFFF = 2 (icke-faktisk)</li><li>0x0008FFFE – 0x0008FFFF = 2 (icke-character)</li><li>0x000CFFFE – 0x000CFFFF = 2 (icke-faktisk)</li><li>0x0010FFFE – 0x0010FFFF = 2 (icke-faktisk)</li></ul> | 8 |
+| <ul><li>0x0000009D (osc-operativsystemkommando)</li><li>0x00000090 (DCS-enhetens kontrollsträng)</li><li>0x0000008F (ss3 single shift three)</li><li>0x00000081 (förinställd hög oktett)</li><li>0x0000007F (del delete)</li><li>0x0000008D (ri reverse line feed)</li></ul> | 6 |
+| 0x0000FFF0, 0x0000FFFD, 0x0000FFFE, 0x0000FFFF (specialerbjudanden) | 4 |
+| Filer eller kataloger som slutar med en punkt | 1 |
 
 ### <a name="common-sync-errors"></a>Vanliga synkroniseringsfel
 <a id="-2147023673"></a>**Synkroniseringssessionen avbröts.**  
@@ -501,7 +502,7 @@ Det här felet beror på Azure File Sync agenten inte har behörighet att komma 
 1. [Kontrollera att lagringskontot finns.](#troubleshoot-storage-account)
 2. [Kontrollera att lagringskontots brandvägg och virtuella nätverk har rätt inställningar (om de är aktiverade)](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
-<a id="-2134364014"></a>**Sync misslyckades på grund av låst lagringskonto.**  
+<a id="-2134364014"></a>**Synkroniseringen misslyckades på grund av låst lagringskonto.**  
 
 | Fel | Kod |
 |-|-|
@@ -543,7 +544,7 @@ Det här felet inträffar om den Azure File Sync-agentversion som är installera
 | **Felsträng** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
 | **Reparation krävs** | Yes |
 
-Det här felet uppstår när du överskrider lagringsgränsen för Azure-filresursen, och det kan hända om en kvot används för en Azure-filresurs eller om användningen överskrider gränsen för en Azure-filresurs. Mer information finns i aktuella [begränsningar för en Azure-filresurs.](storage-files-scale-targets.md)
+Det här felet uppstår när du överskrider lagringsgränsen för Azure-filresursen, och det kan hända om en kvot används för en Azure-filresurs eller om användningen överskrider gränsen för en Azure-filresurs. Mer information finns i aktuella begränsningar [för en Azure-filresurs.](storage-files-scale-targets.md)
 
 1. Gå till synkroniseringsgruppen i tjänsten för synkronisering av lagring.
 2. Välj molnslutpunkten i synkroniseringsgruppen.
@@ -852,7 +853,7 @@ Kontrollera att du har den senaste Azure File Sync agenten. Från och med agent 
  
 När du har den senaste agentversionen måste du ge Programmet Microsoft.StorageSync åtkomst till lagringskontot (se Kontrollera att Azure File Sync har åtkomst [till lagringskontot](#troubleshoot-rbac)).
 
-<a id="-2134364010"></a>**Synkroniseringen misslyckades på grund av att brandväggen och det virtuella nätverket inte är konfigurerat**  
+<a id="-2134364010"></a>**Synkroniseringen misslyckades på grund av att brandväggen och det virtuella nätverket inte har konfigurerats**  
 
 | Fel | Kod |
 |-|-|
@@ -923,7 +924,7 @@ Felet uppstår eftersom Azure File Sync inte stöder HTTP-omdirigering (statusko
 
 Felet uppstår när en datainmatningsåtgärd överskrider tidsgränsen. Det här felet kan ignoreras om synkroniseringen pågår (AppliedItemCount är större än 0). Se [Hur gör jag för att övervaka förloppet för en aktuell synkroniseringssession?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
-<a id="-2134375814"></a>**Synkroniseringen misslyckades eftersom det inte går att hitta sökvägen till serverslutpunkten på servern.**  
+<a id="-2134375814"></a>**Sync misslyckades eftersom det inte går att hitta sökvägen till serverslutpunkten på servern.**  
 
 | Fel | Kod |
 |-|-|
@@ -1048,7 +1049,7 @@ if ($fileShare -eq $null) {
 1. Klicka på **fliken Rolltilldelningar** i listan över användare och program *(tjänstens huvudnamn)* som har åtkomst till ditt lagringskonto.
 1. Kontrollera **att Microsoft.StorageSync** **eller Hybrid File Sync Service** (gammalt programnamn) visas i listan med rollen Läsare och **Dataåtkomst.** 
 
-    ![En skärmbild av Tjänstens huvudnamn File Sync hybridtjänst på fliken åtkomstkontroll för lagringskontot](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
+    ![En skärmbild av tjänstens huvudnamn File Sync hybridtjänst på fliken åtkomstkontroll för lagringskontot](media/storage-sync-files-troubleshoot/file-share-inaccessible-3.png)
 
     Om **Microsoft.StorageSync** **eller Hybrid File Sync Service** inte visas i listan utför du följande steg:
 
@@ -1081,18 +1082,18 @@ Det finns två huvudklasser med fel som kan inträffa via någon av felsökväge
     - *Otillgänglig Azure-filresurs*. Det här felet inträffar vanligtvis när du tar bort Azure-filresursen när den fortfarande är en molnslutpunkt i en synkroniseringsgrupp.
     - *Otillgängligt lagringskonto*. Det här felet inträffar vanligtvis när du tar bort lagringskontot medan det fortfarande har en Azure-filresurs som är en molnslutpunkt i en synkroniseringsgrupp. 
 - Serverfel 
-  - *Azure File Sync filsystemfiltret (StorageSync.sys) läses inte in.* För att kunna svara på nivåindelnings-/återkallningsbegäranden måste Azure File Sync filsystemfiltret läsas in. Filtret som inte läses in kan inträffa av flera orsaker, men den vanligaste orsaken är att en administratör tar bort det manuellt. Filtret Azure File Sync filsystem måste alltid läsas in för att Azure File Sync fungera korrekt.
-  - *Saknad, skadad eller på annat sätt brutenparspunkt*. Enparspunkt är en särskild datastruktur på en fil som består av två delar:
+  - *Azure File Sync filsystemfiltret (StorageSync.sys) läses inte in.* För att kunna svara på nivåindelnings-/återkallningsbegäranden måste Azure File Sync filsystemfiltret läsas in. Filtret som inte läses in kan inträffa av flera orsaker, men den vanligaste orsaken är att en administratör tar bort det manuellt. Det Azure File Sync filsystemfiltret måste alltid läsas in för att Azure File Sync fungera korrekt.
+  - *Saknad, skadad eller på annat sätt bruten reparspunkt*. Enparspunkt är en särskild datastruktur på en fil som består av två delar:
     1. En reparse-tagg, som anger för operativsystemet att Azure File Sync-filsystemfiltret (StorageSync.sys) kan behöva göra vissa åtgärder på I/O i filen. 
     2. Parsa data, vilket indikerar att filsystemet filtrerar filens URI på den associerade molnslutpunkten (Azure-filresursen). 
         
-       Det vanligaste sättet som enparspunkt kan skadas är om en administratör försöker ändra taggen eller dess data. 
-  - *Problem med nätverksanslutning*. Servern måste ha internetanslutning för att kunna nivåindelad eller återkalla en fil.
+       Det vanligaste sättet som en reparse-punkt kan skadas är om en administratör försöker ändra taggen eller dess data. 
+  - *Problem med nätverksanslutning.* Servern måste ha internetanslutning för att kunna nivåindelad eller återkalla en fil.
 
 Följande avsnitt beskriver hur du felsöker problem med molnnivåindelad lagring och avgör om ett problem är ett problem med molnlagring eller en server.
 
 ### <a name="how-to-monitor-tiering-activity-on-a-server"></a>Övervaka nivåindelning på en server  
-Om du vill övervaka nivåindelningsaktiviteten på en server använder du händelse-ID 9003, 9016 och 9029 i händelseloggen för telemetri (finns under Program och tjänster\Microsoft\FileSync\Agent i Loggboken).
+Om du vill övervaka nivåindelningsaktivitet på en server använder du händelse-ID 9003, 9016 och 9029 i händelseloggen telemetri (finns under Program och tjänster\Microsoft\FileSync\Agent i Loggboken).
 
 - Händelse-ID 9003 tillhandahåller feldistribution för en serverslutpunkt. Till exempel Totalt antal fel, Felkod osv. Observera att en händelse loggas per felkod.
 - Händelse-ID 9016 ger spökresultat för en volym. Till exempel är Ledigt utrymme i procent, Antal filer som är spökade i sessionen, Antal filer som inte kunde spökas osv.
@@ -1102,7 +1103,7 @@ Om du vill övervaka nivåindelningsaktiviteten på en server använder du händ
 Om du vill övervaka återkallning på en server använder du händelse-ID 9005, 9006, 9009 och 9059 i händelseloggen telemetri (finns under Program och tjänster\Microsoft\FileSync\Agent i Loggboken).
 
 - Händelse-ID 9005 ger återkallelsetillförlitlighet för en serverslutpunkt. Till exempel Totalt antal unika filer som nås, Totalt antal unika filer med misslyckad åtkomst osv.
-- Händelse-ID 9006 ger distribution av återkallelsefel för en serverslutpunkt. Till exempel Totalt antal misslyckade begäranden, ErrorCode osv. Observera att en händelse loggas per felkod.
+- Händelse-ID 9006 ger distribution av återkallelsefel för en serverslutpunkt. Till exempel Totalt antal misslyckade begäranden, Felkod osv. Observera att en händelse loggas per felkod.
 - Händelse-ID 9009 ger information om återkallning av session för en serverslutpunkt. Till exempel DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed osv.
 - Händelse-ID 9059 ger distribution av program återkallade för en serverslutpunkt. Till exempel ShareId, Programnamn och TotalEgressNetworkBytes.
 
@@ -1130,21 +1131,21 @@ Om filerna inte nivåindelats för Azure Files:
 | 0x80c86043 | -2134351805 | ECS_E_GHOSTING_FILE_IN_USE | Filen kunde inte nivåindelad eftersom den används. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den inte längre används. |
 | 0x80c80241 | -2134375871 | ECS_E_GHOSTING_EXCLUDED_BY_SYNC | Filen kunde inte nivåindelad eftersom den exkluderades av synkroniseringen. | Ingen åtgärd krävs. Filer i listan för synkroniseringsundantag kan inte nivåindelas. |
 | 0x80c86042 | -2134351806 | ECS_E_GHOSTING_FILE_NOT_FOUND | Filen kunde inte nivåindelad eftersom den inte hittades på servern. | Ingen åtgärd krävs. Om problemet kvarstår bör du kontrollera om filen finns på servern. |
-| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Filen kunde inte nivåindelad eftersom den togs bort i Azure-filresursen. | Ingen åtgärd krävs. Filen bör tas bort från servern när nästa session för nedladdningssynkronisering körs. |
+| 0x80c83053 | -2134364077 | ECS_E_CREATE_SV_FILE_DELETED | Det gick inte att nivåindelade filen eftersom den togs bort i Azure-filresursen. | Ingen åtgärd krävs. Filen bör tas bort från servern när nästa session för nedladdningssynkronisering körs. |
 | 0x80c8600e | -2134351858 | ECS_E_AZURE_SERVER_BUSY | Filen kunde inte nivåindelad på grund av ett nätverksproblem. | Ingen åtgärd krävs. Om felet kvarstår kontrollerar du nätverksanslutningen till Azure-filresursen. |
 | 0x80072ee7 | -2147012889 | WININET_E_NAME_NOT_RESOLVED | Filen kunde inte nivåindelad på grund av ett nätverksproblem. | Ingen åtgärd krävs. Om felet kvarstår kontrollerar du nätverksanslutningen till Azure-filresursen. |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Filen kunde inte nivåindelad på grund av felet åtkomst nekad. Det här felet kan inträffa om filen finns i en skrivskyddad DFS-R-replikeringsmapp. | Azure Files Sync stöder inte serverslutpunkter i skrivskyddade DFS-R-replikeringsmappar. Mer information finns i [planeringsguiden](./storage-sync-files-planning.md#distributed-file-system-dfs). |
 | 0x80072efe | -2147012866 | WININET_E_CONNECTION_ABORTED | Filen kunde inte nivåindelad på grund av ett nätverksproblem. | Ingen åtgärd krävs. Om felet kvarstår kontrollerar du nätverksanslutningen till Azure-filresursen. |
 | 0x80c80261 | -2134375839 | ECS_E_GHOSTING_MIN_FILE_SIZE | Filen kunde inte nivåindelad eftersom filstorleken är mindre än den storlek som stöds. | Om agentversionen är mindre än 9.0 är den minsta filstorlek som stöds 64 kB. Om agentversionen är 9.0 eller senare baseras den minsta filstorlek som stöds på filsystemets klusterstorlek (dubbla filsystemets klusterstorlek). Om filsystemets klusterstorlek till exempel är 4 kB är den minsta filstorleken 8 kB. |
 | 0x80c83007 | -2134364153 | ECS_E_STORAGE_ERROR | Filen kunde inte nivåindelad på grund av ett Azure Storage-problem. | Öppna en supportbegäran om felet kvarstår. |
-| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Filen kunde inte nivåindelad eftersom den återkallades samtidigt. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har återkallats och inte längre används. |
-| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Filen kunde inte nivåindelad eftersom den inte har synkroniserats med Azure-filresursen. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har synkroniserats med Azure-filresursen. |
+| 0x800703e3 | -2147023901 | ERROR_OPERATION_ABORTED | Filen kunde inte nivåindelade eftersom den återkallades samtidigt. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har återkallats och inte längre används. |
+| 0x80c80264 | -2134375836 | ECS_E_GHOSTING_FILE_NOT_SYNCED | Det gick inte att nivåindelade filen eftersom den inte har synkroniserats med Azure-filresursen. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har synkroniserats med Azure-filresursen. |
 | 0x80070001 | -2147942401 | ERROR_INVALID_FUNCTION | Filen kunde inte nivåindelad eftersom filterdrivrutinen för molnnivåindelning (storagesync.sys) inte körs. | Lös problemet genom att öppna en upphöjd kommandotolk och köra följande kommando: `fltmc load storagesync`<br>Om det inte går att läsa in filterdrivrutinen storagesync när du kör kommandot fltmc avinstallerar du Azure File Sync-agenten, startar om servern och installerar Azure File Sync agenten. |
 | 0x80070070 | -2147024784 | ERROR_DISK_FULL | Filen kunde inte nivåindelad på grund av otillräckligt diskutrymme på volymen där serverslutpunkten finns. | Åtgärda problemet genom att frigöra minst 100 MB diskutrymme på den volym där serverslutpunkten finns. |
 | 0x80070490 | -2147023728 | ERROR_NOT_FOUND | Filen kunde inte nivåindelad eftersom den inte har synkroniserats till Azure-filresursen. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har synkroniserats med Azure-filresursen. |
 | 0x80c80262 | -2134375838 | ECS_E_GHOSTING_UNSUPPORTED_RP | Filen kunde inte nivåindelad eftersom det är en reparspunkt som inte stöds. | Om filen är en referenspunkt för datadeduplicering följer du stegen i [planeringsguiden](./storage-sync-files-planning.md#data-deduplication) för att aktivera stöd för datadeduplicering. Filer med andra referenspunkter än datadeduplicering stöds inte och kommer inte att nivåindelas.  |
 | 0x80c83052 | -2134364078 | ECS_E_CREATE_SV_STREAM_ID_MISMATCH | Filen kunde inte nivåindelad eftersom den har ändrats. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den ändrade filen har synkroniserats med Azure-filresursen. |
-| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Filen kunde inte nivåindelad eftersom den inte har synkroniserats till Azure-filresursen. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har synkroniserats med Azure-filresursen. |
+| 0x80c80269 | -2134375831 | ECS_E_GHOSTING_REPLICA_NOT_FOUND | Filen kunde inte nivåindelad eftersom den inte har synkroniserats med Azure-filresursen. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den har synkroniserats med Azure-filresursen. |
 | 0x80072ee2 | -2147012894 | WININET_E_TIMEOUT | Filen kunde inte nivåindelad på grund av ett nätverksproblem. | Ingen åtgärd krävs. Om felet kvarstår kontrollerar du nätverksanslutningen till Azure-filresursen. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Filen kunde inte nivåindelad eftersom den har ändrats. | Ingen åtgärd krävs. Filen kommer att nivåindelas när den ändrade filen har synkroniserats med Azure-filresursen. |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Filen kunde inte nivåindelad på grund av otillräcklig systemresurser. | Om felet kvarstår bör du undersöka vilken drivrutin för program eller kernelläge som förbrukar systemresurser. |
@@ -1158,7 +1159,7 @@ Om filer inte kan återkallas:
 1. Granska Loggboken händelseloggar för telemetri, drift och diagnostik under Program och tjänster\Microsoft\FileSync\Agent.
     1. Kontrollera att filerna finns i Azure-filresursen.
     2. Kontrollera att servern är ansluten till Internet. 
-    3. Öppna MMC-snapin-modulen Tjänster och kontrollera att tjänsten Storage Sync Agent (FileSyncSvc) körs.
+    3. Öppna snapin-modulen Services MMC och kontrollera att tjänsten Storage Sync Agent (FileSyncSvc) körs.
     4. Kontrollera Azure File Sync filterdrivrutiner (StorageSync.sys och StorageSyncGuard.sys) körs:
         - Kör i en upphöjd `fltmc` kommandotolk. Kontrollera att StorageSync.sys och StorageSyncGuard.sys filterdrivrutiner för filsystemet visas.
 
@@ -1173,12 +1174,12 @@ Om filer inte kan återkallas:
 | 0x80070036 | -2147024842 | ERROR_NETWORK_BUSY | Filen kunde inte återkallas på grund av ett nätverksproblem.  | Om felet kvarstår kontrollerar du nätverksanslutningen till Azure-filresursen. |
 | 0x80c80037 | -2134376393 | ECS_E_SYNC_SHARE_NOT_FOUND | Det gick inte att återkalla filen eftersom serverslutpunkten togs bort. | Information om hur du löser problemet finns [i Nivåindelade filer är inte tillgängliga på servern när du har tagit bort en serverslutpunkt.](?tabs=portal1%252cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) |
 | 0x80070005 | -2147024891 | ERROR_ACCESS_DENIED | Det gick inte att återkalla filen på grund av ett fel om nekad åtkomst. Det här problemet kan uppstå om inställningarna för brandväggen och det virtuella nätverket på lagringskontot är aktiverade och servern inte har åtkomst till lagringskontot. | Lös problemet genom att lägga till serverns IP-adress eller [](./storage-sync-files-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings) virtuella nätverk genom att följa stegen i avsnittet Konfigurera inställningar för brandvägg och virtuellt nätverk i distributionsguiden. |
-| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Filen kunde inte återkallas eftersom den inte är tillgänglig i Azure-filresursen. | Lös problemet genom att kontrollera att filen finns i Azure-filresursen. Om filen finns i Azure-filresursen uppgraderar du till den senaste Azure File Sync [agentversionen](./storage-files-release-notes.md#supported-versions). |
+| 0x80c86002 | -2134351870 | ECS_E_AZURE_RESOURCE_NOT_FOUND | Det gick inte att återkalla filen eftersom den inte är tillgänglig i Azure-filresursen. | Lös problemet genom att kontrollera att filen finns i Azure-filresursen. Om filen finns i Azure-filresursen uppgraderar du till den senaste Azure File Sync [agentversionen](./storage-files-release-notes.md#supported-versions). |
 | 0x80c8305f | -2134364065 | ECS_E_EXTERNAL_STORAGE_ACCOUNT_AUTHORIZATION_FAILED | Filen kunde inte återkallas på grund av ett auktoriseringsfel på lagringskontot. | Lös problemet genom att kontrollera [Azure File Sync har åtkomst till lagringskontot](?tabs=portal1%252cazure-portal#troubleshoot-rbac). |
 | 0x80c86030 | -2134351824 | ECS_E_AZURE_FILE_SHARE_NOT_FOUND | Det gick inte att återkalla filen eftersom Azure-filresursen inte är tillgänglig. | Kontrollera att filresursen finns och är tillgänglig. Om filresursen har tagits bort och återskapats utför du stegen som beskrivs i avsnittet [Synkroniseringen](?tabs=portal1%252cazure-portal#-2134375810) misslyckades eftersom Azure-filresursen togs bort och återskapades för att ta bort och återskapa synkroniseringsgruppen. |
 | 0x800705aa | -2147023446 | ERROR_NO_SYSTEM_RESOURCES | Det gick inte att återkalla filen på grund av otillräcklig systemresurser. | Om felet kvarstår bör du undersöka vilken drivrutin för program eller kernelläge som förbrukar systemresurser. |
 | 0x8007000e | -2147024882 | ERROR_OUTOFMEMORY | Det gick inte att återkalla filen på grund av otillräckligt minne. | Om felet kvarstår bör du undersöka vilken drivrutin för program eller kernelläge som orsakar tillståndet med lågt minne. |
-| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Filen kunde inte återkallas på grund av otillräckligt diskutrymme. | Lös problemet genom att frigöra utrymme på volymen. Det gör du genom att flytta filer till en annan volym, öka storleken på volymen eller tvinga filer att nivåindelas med hjälp av cmdleten Invoke-StorageSyncCloudTiering. |
+| 0x80070070 | -2147024784 | ERROR_DISK_FULL | Det gick inte att återkalla filen på grund av otillräckligt diskutrymme. | Lös problemet genom att frigöra utrymme på volymen. Det gör du genom att flytta filer till en annan volym, öka storleken på volymen eller tvinga filer att nivåindelas med hjälp av cmdleten Invoke-StorageSyncCloudTiering. |
 
 ### <a name="tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint"></a>Nivåindelade filer är inte tillgängliga på servern efter att en serverslutpunkt har tagits bort
 Nivåindelade filer på en server blir otillgängliga om filerna inte återkallas innan du tar bort en serverslutpunkt.
@@ -1216,7 +1217,7 @@ $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 
 *Alternativ 1: Ta bort de överblivna nivåindelade filerna*
 
-Det här alternativet tar bort de överblivna nivåindelade filerna på Windows Server, men kräver att serverslutpunkten tas bort om den finns på grund av problem efter 30 dagar eller är ansluten till en annan synkroniseringsgrupp. Filkonflikter uppstår om filer uppdateras på Windows Server- eller Azure-filresursen innan serverslutpunkten återskapas.
+Det här alternativet tar bort de överblivna nivåindelade filerna på Windows Server, men kräver att serverslutpunkten tas bort om den finns på grund av problem efter 30 dagar eller om den är ansluten till en annan synkroniseringsgrupp. Filkonflikter uppstår om filer uppdateras på Windows Server- eller Azure-filresursen innan serverslutpunkten återskapas.
 
 1. Kontrollera Azure File Sync version v5.1 eller senare är installerad.
 2. Säkerhetskopiera Platsen för Azure-filresursen och serverslutpunkten.
@@ -1232,7 +1233,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-5. Spara den OrphanTieredFiles.txt utdatafilen om filerna behöver återställas från säkerhetskopian när de har tagits bort.
+5. Spara OrphanTieredFiles.txt utdatafil om filerna behöver återställas från en säkerhetskopia när de har tagits bort.
 6. Kör följande PowerShell-kommandon för att ta bort överblivna nivåindelade filer:
 
 ```powershell
@@ -1249,7 +1250,7 @@ $orphanFilesRemoved.OrphanedTieredFiles > DeletedOrphanFiles.txt
 
 *Alternativ 2: Montera Azure-filresursen och kopiera filerna lokalt som är överblivna på servern*
 
-Det här alternativet kräver inte att serverslutpunkten tas bort, men det krävs tillräckligt med diskutrymme för att kopiera de fullständiga filerna lokalt.
+Det här alternativet kräver inte att du tar bort serverslutpunkten, men det krävs tillräckligt med diskutrymme för att kopiera de fullständiga filerna lokalt.
 
 1. [Montera](./storage-how-to-use-files-windows.md) Azure-filresursen på den Windows Server som har överblivna nivåindelade filer.
 2. Kör följande PowerShell-kommandon för att visa överblivna nivåindelade filer:
@@ -1258,24 +1259,24 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 $orphanFiles = Get-StorageSyncOrphanedTieredFiles -path <server endpoint path>
 $orphanFiles.OrphanedTieredFiles > OrphanTieredFiles.txt
 ```
-3. Använd den OrphanTieredFiles.txt utdatafilen för att identifiera överblivna nivåindelade filer på servern.
+3. Använd utdatafilen OrphanTieredFiles.txt att identifiera överblivna nivåindelade filer på servern.
 4. Skriva över de överblivna nivåindelade filerna genom att kopiera den fullständiga filen från Azure-filresursen till Windows Server.
 
 ### <a name="how-to-troubleshoot-files-unexpectedly-recalled-on-a-server"></a>Så här felsöker du filer som oväntat återkallas på en server  
-Antivirus, säkerhetskopiering och andra program som läser ett stort antal filer orsakar oönskad återkallning om de inte respekterar attributet hoppa över offline och hoppar över läsning av innehållet i dessa filer. Genom att hoppa över filer för produkter som stöder det här alternativet kan oönskad återkallning undvikas i samband med aktiviteter som virusgenomsökningar eller säkerhetskopieringsjobb.
+Antivirus, säkerhetskopiering och andra program som läser ett stort antal filer orsakar oönskad återkallning om de inte respekterar attributet hoppa över offline och hoppar över läsningen av innehållet i dessa filer. Genom att hoppa över filer för produkter som stöder det här alternativet kan oönskad återkallning undvikas i samband med aktiviteter som virusgenomsökningar eller säkerhetskopieringsjobb.
 
 Kontakta programleverantören för information om hur du konfigurerar deras lösning så att offlinefiler ignoreras.
 
 Oönskad återkallning kan också inträffa i andra scenarier, till exempel när du bläddrar bland filer i Utforskaren. Om en mapp med filer på molnnivå öppnas i Utforskaren på servern kan det leda till oväntad återkallning. Det är ännu mer troligt om en antiviruslösning är aktiverad på servern.
 
 > [!NOTE]
->Använd händelse-ID 9059 i telemetrihändelseloggen för att avgöra vilka program som orsakar återkallningar. Den här händelsen tillhandahåller distribution av program återkallade för en serverslutpunkt och loggas en gång i timmen.
+>Använd händelse-ID 9059 i telemetrihändelseloggen för att avgöra vilka program som orsakar återkallanden. Den här händelsen tillhandahåller distribution av program återkallade för en serverslutpunkt och loggas en gång i timmen.
 
 ### <a name="tls-12-required-for-azure-file-sync"></a>TLS 1.2 krävs för Azure File Sync
 
 Du kan visa TLS-inställningarna på servern genom att titta på [registerinställningarna](/windows-server/security/tls/tls-registry-settings). 
 
-Om du använder en proxyserver kan du läsa proxyns dokumentation och se till att den är konfigurerad för att använda TLS1.2.
+Om du använder en proxyserver kan du läsa proxyns dokumentation och kontrollera att den är konfigurerad för att använda TLS1.2.
 
 ## <a name="general-troubleshooting"></a>Allmän felsökning
 Om du får problem med Azure File Sync på en server börjar du med att utföra följande steg:
@@ -1307,7 +1308,7 @@ För agentversion v11 och senare:
 3. En .zip-fil som innehåller loggar och spårningsfiler sparas i den utdatakatalog som du har angett. 
 
 För agentversion v10 och tidigare:
-1. Skapa en katalog där AFSDiag-utdata ska sparas (till exempel C:\Output).
+1. Skapa en katalog där AFSDiag-utdata sparas (till exempel C:\Output).
     > [!NOTE]
     >AFSDiag tar bort allt innehåll i utdatakatalogen innan loggar samlas in. Ange en utdataplats som inte innehåller data.
 2. Öppna ett upphöjt PowerShell-fönster och kör sedan följande kommandon (tryck på Retur efter varje kommando):
