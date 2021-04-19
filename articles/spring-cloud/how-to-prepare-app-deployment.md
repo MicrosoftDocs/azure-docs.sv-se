@@ -1,6 +1,6 @@
 ---
-title: Förbereda ett program för distribution i Azure våren Cloud
-description: Lär dig hur du förbereder ett program för distribution till Azure våren Cloud.
+title: Förbereda ett program för distribution i Azure Spring Cloud
+description: Lär dig hur du förbereder ett program för distribution till Azure Spring Cloud.
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: how-to
@@ -8,33 +8,33 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a90d4c2a8649e270365af9b11fa408b865945f92
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cabc4784dfb19f569212f4d0cb93e6838473e559
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878466"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714496"
 ---
-# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Förbereda ett program för distribution i Azure våren Cloud
+# <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Förbereda ett program för distribution i Azure Spring Cloud
 
 ::: zone pivot="programming-language-csharp"
-Azure våren Cloud tillhandahåller robusta tjänster för att vara värd för, övervaka, skala och uppdatera en Steeltoe-app. Den här artikeln visar hur du förbereder ett befintligt Steeltoe-program för distribution till Azure våren Cloud. 
+Azure Spring Cloud tillhandahåller robusta tjänster för att vara värd för, övervaka, skala och uppdatera en Steeltoe-app. Den här artikeln visar hur du förbereder ett befintligt Azure Spring Cloud. 
 
-I den här artikeln beskrivs beroenden, konfigurationen och koden som krävs för att köra en .NET Core Steeltoe-app i Azure våren Cloud. Information om hur du distribuerar ett program till Azure våren Cloud finns i [distribuera ditt första Azure våren Cloud-program](spring-cloud-quickstart.md).
+I den här artikeln beskrivs de beroenden, konfiguration och kod som krävs för att köra en .NET Core Configurationtoe-app i Azure Spring Cloud. Information om hur du distribuerar ett program till Azure Spring Cloud finns i [Distribuera ditt Azure Spring Cloud program](spring-cloud-quickstart.md).
 
 >[!Note]
-> Steeltoe support för Azure våren Cloud erbjuds för närvarande som en offentlig för hands version. Med den offentliga för hands versionen kan kunder experimentera med nya funktioner före den officiella versionen.  Funktioner och tjänster för offentliga för hands versioner är inte avsedda för användning i produktion.  Mer information om stöd för för hands versionerna finns i [vanliga frågor och svar](https://azure.microsoft.com/support/faq/) eller filen [supportbegäran](../azure-portal/supportability/how-to-create-azure-support-request.md).
+> Stöd för olika tjänster Azure Spring Cloud för närvarande som en offentlig förhandsversion. Med offentliga förhandsversioner kan kunder experimentera med nya funktioner innan de släpps officiellt.  Funktioner och tjänster i den offentliga förhandsversionen är inte avsedda för produktionsanvändning.  Mer information om support under förhandsversioner finns i Vanliga frågor [och svar](https://azure.microsoft.com/support/faq/) eller skapa en [Supportbegäran](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ##  <a name="supported-versions"></a>Versioner som stöds
 
-Azure våren Cloud stöder:
+Azure Spring Cloud stöder:
 
 * .NET Core 3.1
-* Steeltoe 2,4 och 3,0
+* Metalltoe 2.4 och 3.0
 
 ## <a name="dependencies"></a>Beroenden
 
-För Steeltoe 2,4 lägger du till det senaste paketet [Microsoft. Azure. SpringCloud. client 1. x. x](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) i projekt filen:
+För Steeltoe 2.4 lägger du till det senaste [Microsoft.Azure.SpringCloud.Client 1.x.x-paketet](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) i projektfilen:
 
 ```xml
 <ItemGroup>
@@ -46,7 +46,7 @@ För Steeltoe 2,4 lägger du till det senaste paketet [Microsoft. Azure. SpringC
 </ItemGroup>
 ```
 
-För Steeltoe 3,0 lägger du till det senaste paketet [Microsoft. Azure. SpringCloud. client 2. x.](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) x i projekt filen:
+För Steeltoe 3.0 lägger du till det senaste [Microsoft.Azure.SpringCloud.Client 2.x.x-paketet](https://www.nuget.org/packages/Microsoft.Azure.SpringCloud.Client/) i projektfilen:
 
 ```xml
 <ItemGroup>
@@ -57,11 +57,11 @@ För Steeltoe 3,0 lägger du till det senaste paketet [Microsoft. Azure. SpringC
 </ItemGroup>
 ```
 
-## <a name="update-programcs"></a>Uppdatera program. CS
+## <a name="update-programcs"></a>Uppdatera Program.cs
 
-`Program.Main`Anropa metoden i-metoden `UseAzureSpringCloudService` .
+I metoden `Program.Main` anropar du `UseAzureSpringCloudService` metoden .
 
-För Steeltoe-2.4.4 anropar du `UseAzureSpringCloudService` efter `ConfigureWebHostDefaults` och efter `AddConfigServer` om det kallas:
+För Metalltoe 2.4.4 `UseAzureSpringCloudService` anropar du efter `ConfigureWebHostDefaults` och efter om den `AddConfigServer` anropas:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -74,7 +74,7 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         .UseAzureSpringCloudService();
 ```
 
-För Steeltoe-3.0.0 anropar du `UseAzureSpringCloudService` före `ConfigureWebHostDefaults` och före en Steeltoe-konfigurations kod:
+För Metalltoe 3.0.0 anropar du `UseAzureSpringCloudService` före och före någon `ConfigureWebHostDefaults` Configurationtoe-konfigurationskod:
 
 ```csharp
 public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -87,11 +87,11 @@ public static IHostBuilder CreateHostBuilder(string[] args) =>
         .AddConfigServer();
 ```
 
-## <a name="enable-eureka-server-service-discovery"></a>Aktivera identifiering av Eureka-Server
+## <a name="enable-eureka-server-service-discovery"></a>Aktivera identifiering av Tjänsten Eureka Server
 
-I konfigurations källan som ska användas när appen körs i Azure våren-molnet, anger `spring.application.name` du samma namn som Azure våren Cloud-appen som projektet ska distribueras till.
+I konfigurationskällan som ska användas när appen körs i Azure Spring Cloud anger du till samma namn som den Azure Spring Cloud som projektet ska `spring.application.name` distribueras till.
 
-Om du till exempel distribuerar ett .NET-projekt `EurekaDataProvider` som heter en Azure våren Cloud-app som heter `planet-weather-provider` *appSettings.jspå* -filen, ska du inkludera följande JSON:
+Om du till exempel distribuerar ett .NET-projekt `EurekaDataProvider` med namnet till en Azure Spring Cloud-app med namnetappSettings.js`planet-weather-provider` *på* filen ska innehålla följande JSON:
 
 ```json
 "spring": {
@@ -101,9 +101,9 @@ Om du till exempel distribuerar ett .NET-projekt `EurekaDataProvider` som heter 
 }
 ```
 
-## <a name="use-service-discovery"></a>Använda tjänst identifiering
+## <a name="use-service-discovery"></a>Använda tjänstidentifiering
 
-Om du vill anropa en tjänst med hjälp av identifiering av Eureka Server-tjänsten gör du HTTP-begäranden till `http://<app_name>` där `app_name` är värdet för `spring.application.name` mål programmet. Till exempel anropar följande kod `planet-weather-provider` tjänsten:
+Om du vill anropa en tjänst med hjälp av tjänstidentifiering för Eureka Server, gör du HTTP-begäranden till där `http://<app_name>` `app_name` är värdet för `spring.application.name` målappen. Följande kod anropar till exempel `planet-weather-provider` tjänsten:
 
 ```csharp
 using (var client = new HttpClient(discoveryHandler, false))
@@ -122,40 +122,40 @@ using (var client = new HttpClient(discoveryHandler, false))
 ::: zone-end
 
 ::: zone pivot="programming-language-java"
-Det här avsnittet visar hur du förbereder ett befintligt Java våren-program för distribution till Azure våren Cloud. Om Azure våren Cloud har kon figurer ATS korrekt tillhandahåller robusta tjänster för att övervaka, skala och uppdatera ditt Java våren Cloud-program.
+Det här avsnittet visar hur du förbereder ett befintligt Java Spring-program för distribution till Azure Spring Cloud. Om den är korrekt konfigurerad Azure Spring Cloud robusta tjänster för att övervaka, skala och uppdatera Java Spring Cloud program.
 
-Innan du kör det här exemplet kan du prova den [grundläggande snabb](spring-cloud-quickstart.md)starten.
+Innan du kör det här exemplet kan du prova den [grundläggande snabbstarten](spring-cloud-quickstart.md).
 
-Andra exempel beskriver hur du distribuerar ett program till Azure våren Cloud när POM-filen har kon figurer ATS. 
+Andra exempel förklarar hur du distribuerar ett program Azure Spring Cloud när POM-filen har konfigurerats. 
 * [Starta din första app](spring-cloud-quickstart.md)
 * [Skapa och köra mikrotjänster](spring-cloud-quickstart-sample-app-introduction.md)
 
-I den här artikeln beskrivs de nödvändiga beroendena och hur du lägger till dem i POM-filen.
+Den här artikeln förklarar de nödvändiga beroendena och hur du lägger till dem i POM-filen.
 
 ## <a name="java-runtime-version"></a>Java Runtime-version
 
-Endast våren/Java-program kan köras i Azure våren-molnet.
+Endast Spring-/Java-program kan köras Azure Spring Cloud.
 
-Azure våren Cloud stöder både Java 8 och Java 11. Värd miljön innehåller den senaste versionen av Azul Zulu OpenJDK för Azure. Mer information om Azul Zulu OpenJDK för Azure finns i [installera JDK](/azure/developer/java/fundamentals/java-jdk-install).
+Azure Spring Cloud stöder både Java 8 och Java 11. Värdmiljön innehåller den senaste versionen av Azul Zulu OpenJDK för Azure. Mer information om Azul Zulu OpenJDK för Azure finns [i Installera JDK.](/azure/developer/java/fundamentals/java-jdk-install)
 
-## <a name="spring-boot-and-spring-cloud-versions"></a>Moln versioner för våren start och våren
+## <a name="spring-boot-and-spring-cloud-versions"></a>Spring Boot och Spring Cloud versioner
 
-För att förbereda ett befintligt våren Boot-program för distribution till Azure våren-molnet ingår våren-start-och våren-moln beroenden i program POM-filen som visas i följande avsnitt.
+För att förbereda ett Spring Boot-program för distribution till Azure Spring Cloud inkluderar du Spring Boot- och Spring Cloud-beroenden i POM-filen för programmet enligt följande avsnitt.
 
-Azure våren Cloud stöder bara våren Boot-appar, antingen våren Boot version 2,1 eller version 2,2. I följande tabell visas de kombinationer som stöds av våren-start och våren:
+Azure Spring Cloud stöder Spring Boot version 2.2, 2.3, 2.4. I följande tabell visas de kombinationer Spring Boot och Spring Cloud stöds:
 
-Start version för våren | Våren Cloud-version
+Spring Boot version | Spring Cloud version
 ---|---
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
-2.4.1 + | 2020.0.0
+2.4.1+ | 2020.0.0
 
 > [!NOTE]
-> Vi har identifierat ett problem med vår 2.4.0 på TLS-autentisering mellan dina appar och Eureka, Använd 2.4.1 eller senare. Läs våra [vanliga frågor och svar](./spring-cloud-faq.md?pivots=programming-language-java#development) om du insistera med 2.4.0.
+> Vi har identifierat ett problem med Spring Boot 2.4.0 vid TLS-autentisering mellan dina appar och Eureka. Använd 2.4.1 eller högre. I våra vanliga frågor [och svar](./spring-cloud-faq.md?pivots=programming-language-java#development) hittar du en lösning om du vill använda 2.4.0.
 
-### <a name="dependencies-for-spring-boot-version-2223"></a>Beroenden för våren Boot version 2.2/2.3
+### <a name="dependencies-for-spring-boot-version-2223"></a>Beroenden för Spring Boot version 2.2/2.3
 
-För våren Boot version 2,2 lägger du till följande beroenden i programmets POM-fil.
+För Spring Boot version 2.2 lägger du till följande beroenden i POM-filen för programmet.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -179,9 +179,9 @@ För våren Boot version 2,2 lägger du till följande beroenden i programmets P
     </dependencyManagement>
 ```
 
-### <a name="dependencies-for-spring-boot-version-24"></a>Beroenden för vår start version 2,4
+### <a name="dependencies-for-spring-boot-version-24"></a>Beroenden för Spring Boot version 2.4
 
-För våren Boot version 2,2 lägger du till följande beroenden i programmets POM-fil.
+För Spring Boot version 2.2 lägger du till följande beroenden i POM-filen för programmet.
 
 ```xml
     <!-- Spring Boot dependencies -->
@@ -206,15 +206,15 @@ För våren Boot version 2,2 lägger du till följande beroenden i programmets P
 ```
 
 > [!WARNING]
-> Ange inte `server.port` i konfigurationen. Azure våren Cloud kommer att Overide den här inställningen till ett fast port nummer. Respektera även den här inställningen och ange inte Server porten i koden.
+> Ange inte `server.port` i konfigurationen. Azure Spring Cloud över den här inställningen till ett fast portnummer. Respektera även den här inställningen och ange inte serverporten i koden.
 
-## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Andra rekommenderade beroenden för att aktivera moln funktioner i Azure våren
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Andra rekommenderade beroenden för att Azure Spring Cloud funktioner
 
-Om du vill aktivera de inbyggda funktionerna i Azure våren Cloud från tjänst registret till distribuerad spårning måste du även inkludera följande beroenden i ditt program. Du kan ta bort vissa av dessa beroenden om du inte behöver motsvarande funktioner för de olika apparna.
+Om du vill aktivera de inbyggda funktionerna i Azure Spring Cloud från tjänstregistret till distribuerad spårning måste du även inkludera följande beroenden i ditt program. Du kan ta bort vissa av dessa beroenden om du inte behöver motsvarande funktioner för de specifika apparna.
 
-### <a name="service-registry"></a>Tjänst register
+### <a name="service-registry"></a>Service Registry
 
-Om du vill använda den hanterade tjänsten för Azure-tjänsten ska du inkludera `spring-cloud-starter-netflix-eureka-client` beroendet i pom.xml-filen som visas här:
+Om du vill använda den hanterade Azure Service Registry-tjänsten `spring-cloud-starter-netflix-eureka-client` inkluderar du beroendet i pom.xml som visas här:
 
 ```xml
     <dependency>
@@ -223,16 +223,16 @@ Om du vill använda den hanterade tjänsten för Azure-tjänsten ska du inkluder
     </dependency>
 ```
 
-Slut punkten för tjänst registrerings servern matas automatiskt in som miljövariabler med din app. Program kan registrera sig själva med tjänstens register Server och identifiera andra beroende mikrotjänster.
+Slutpunkten för Service Registry-servern matas automatiskt in som miljövariabler med din app. Program kan registrera sig själva med Service Registry-servern och identifiera andra beroende mikrotjänster.
 
 
 #### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient-anteckning
 
-Lägg till följande anteckning i program käll koden.
+Lägg till följande anteckning i programmets källkod.
 ```java
 @EnableDiscoveryClient
 ```
-Se till exempel programmet piggymetrics från tidigare exempel:
+Du kan till exempel se programmet symmetrymetrics från tidigare exempel:
 ```java
 package com.piggymetrics.gateway;
 
@@ -254,7 +254,7 @@ public class GatewayApplication {
 
 ### <a name="distributed-configuration"></a>Distribuerad konfiguration
 
-Om du vill aktivera distribuerad konfiguration inkluderar du följande beroende `spring-cloud-config-client` i avsnittet beroenden i pom.xml-filen:
+Om du vill aktivera distribuerad konfiguration inkluderar du `spring-cloud-config-client` följande beroende i avsnittet beroenden i din pom.xml fil:
 
 ```xml
 <dependency>
@@ -264,11 +264,11 @@ Om du vill aktivera distribuerad konfiguration inkluderar du följande beroende 
 ```
 
 > [!WARNING]
-> Ange inte `spring.cloud.config.enabled=false` i Start konfigurationen. Annars slutar programmet att fungera med konfigurations servern.
+> Ange inte i `spring.cloud.config.enabled=false` din bootstrap-konfiguration. Annars slutar programmet att fungera med Config Server.
 
 ### <a name="metrics"></a>Mått
 
-Inkludera `spring-boot-starter-actuator` beroendet i avsnittet beroenden i pom.xml-filen som visas här:
+Inkludera `spring-boot-starter-actuator` beroendet i avsnittet beroenden i din pom.xml som visas här:
 
 ```xml
 <dependency>
@@ -277,17 +277,17 @@ Inkludera `spring-boot-starter-actuator` beroendet i avsnittet beroenden i pom.x
 </dependency>
 ```
 
- Måtten hämtas regelbundet från JMX-slutpunkterna. Du kan visualisera måtten med hjälp av Azure Portal.
+ Mått hämtas regelbundet från JMX-slutpunkterna. Du kan visualisera måtten med hjälp av Azure Portal.
 
  > [!WARNING]
- > Ange `spring.jmx.enabled=true` i konfigurations egenskapen. Annars kan inte måtten visualiseras i Azure Portal.
+ > Ange i `spring.jmx.enabled=true` konfigurationsegenskapen. Annars kan mått inte visualiseras i Azure Portal.
 
 ### <a name="distributed-tracing"></a>Distribuerad spårning
 
-Du måste också aktivera en Azure Application insikts-instans för att arbeta med din Azure våren Cloud Service-instans. Information om hur du använder Application Insights med Azure våren Cloud finns i [dokumentationen om distribuerad spårning](spring-cloud-tutorial-distributed-tracing.md).
+Du måste också aktivera en Azure Application Insights-instans så att den fungerar med Azure Spring Cloud-tjänstinstansen. Information om hur du använder Application Insights med Azure Spring Cloud finns i [dokumentationen om distribuerad spårning](spring-cloud-tutorial-distributed-tracing.md).
 
-#### <a name="spring-boot-2223"></a>Våren boot 2.2/2.3
-Inkludera följande `spring-cloud-starter-sleuth` och `spring-cloud-starter-zipkin` beroenden i avsnittet beroenden i pom.xml-filen:
+#### <a name="spring-boot-2223"></a>Spring Boot 2.2/2.3
+Inkludera följande `spring-cloud-starter-sleuth` och `spring-cloud-starter-zipkin` beroenden i avsnittet beroenden i din pom.xml fil:
 
 ```xml
 <dependency>
@@ -300,8 +300,8 @@ Inkludera följande `spring-cloud-starter-sleuth` och `spring-cloud-starter-zipk
 </dependency>
 ```
 
-#### <a name="spring-boot-24"></a>Våren boot 2,4
-Ta med följande beroende `spring-cloud-sleuth-zipkin` i avsnittet beroenden i pom.xml-filen:
+#### <a name="spring-boot-24"></a>Spring Boot 2.4
+Inkludera följande `spring-cloud-sleuth-zipkin` beroende i avsnittet beroenden i din pom.xml fil:
 
 ```xml
 <dependency>
@@ -311,15 +311,15 @@ Ta med följande beroende `spring-cloud-sleuth-zipkin` i avsnittet beroenden i p
 ```
 
 ## <a name="see-also"></a>Se även
-* [Analysera program loggar och mått](./diagnostic-services.md)
+* [Analysera programloggar och mått](./diagnostic-services.md)
 * [Konfigurera konfigurationsservern](spring-cloud-tutorial-config-server.md)
-* [Använd distribuerad spårning med Azure våren Cloud](spring-cloud-tutorial-distributed-tracing.md)
-* [Guide för våren-snabb start](https://spring.io/quickstart)
-* [Dokumentation om våren Boot](https://spring.io/projects/spring-boot)
+* [Använda distribuerad spårning med Azure Spring Cloud](spring-cloud-tutorial-distributed-tracing.md)
+* [Snabbstartsguide för Spring](https://spring.io/quickstart)
+* [Spring Boot dokumentation](https://spring.io/projects/spring-boot)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I det här avsnittet har du lärt dig hur du konfigurerar ditt Java våren-program för distribution till Azure våren Cloud. Information om hur du konfigurerar en konfigurations Server instans finns i [Konfigurera en konfigurations Server instans](spring-cloud-tutorial-config-server.md).
+I det här avsnittet har du lärt dig hur du konfigurerar ditt Java Spring-program för distribution till Azure Spring Cloud. Information om hur du ställer in en Config Server-instans finns [i Konfigurera en Config Server instans](spring-cloud-tutorial-config-server.md).
 
-Fler exempel finns på GitHub: [Azure våren Cloud-exempel](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
+Fler exempel finns på GitHub: [Azure Spring Cloud Samples](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples).
 ::: zone-end

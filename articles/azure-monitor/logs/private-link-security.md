@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.openlocfilehash: 86f4f31d45acd99ca97cfb48081d87c632da5c96
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 97e589755602c14a11873fee5288ee8c6e24ba83
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587671"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714312"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Använd Azure Private Link för att ansluta nätverk till Azure Monitor på ett säkert sätt
 
@@ -41,7 +41,7 @@ Azure Monitor Private Link scope (AMPLS) ansluter privata slutpunkter (och de vi
 > [!NOTE]
 > En enda Azure Monitor kan tillhöra flera AMPLS,men du kan inte ansluta ett enda VNet till mer än en AMPLS. 
 
-## <a name="planning-your-private-link-setup"></a>Planera din Private Link installation
+## <a name="planning-your-private-link-setup"></a>Planera konfigurationen Private Link installation
 
 Innan du inställningar för Azure Monitor Private Link bör du tänka på nätverkstopologin och särskilt din DNS-routningstopologi. 
 
@@ -51,26 +51,26 @@ Vissa Azure Monitor använder globala slutpunkter, vilket innebär att de betjä
 När du ställer in en Private Link-anslutning uppdateras DIN DNS för att mappa Azure Monitor till privata IP-adresser från ditt VNets IP-intervall. Den här ändringen åsidosätter eventuell tidigare mappning av dessa slutpunkter, vilket kan ha meningsfulla konsekvenser, vilket beskrivs nedan. 
 
 ### <a name="azure-monitor-private-link-applies-to-all-azure-monitor-resources---its-all-or-nothing"></a>Azure Monitor Private Link gäller för alla Azure Monitor resurser – det är Allt eller Inget
-Eftersom vissa Azure Monitor slutpunkter är globala går det inte att skapa en Private Link för en specifik komponent eller arbetsyta. När du i stället ställer in en Private Link till en enda Application Insights-komponent eller Log Analytics-arbetsyta uppdateras dina DNS-poster för **alla** Application Insights komponenter. Alla försök att mata in eller fråga en komponent går igenom Private Link och misslyckas eventuellt. När det gäller Log Analytics är inmatnings- och konfigurationsslutpunkter arbetsytespecifika, vilket innebär att konfigurationen av privat länk endast gäller för de angivna arbetsytorna. Inmatning och konfiguration av andra arbetsytor dirigeras till de offentliga Log Analytics-standardslutpunkterna.
+Eftersom vissa Azure Monitor slutpunkter är globala går det inte att skapa en Private Link för en specifik komponent eller arbetsyta. När du i stället ställer in en Private Link till en enda Application Insights-komponent eller Log Analytics-arbetsyta uppdateras DINA DNS-poster för **alla** Application Insights komponenter. Alla försök att mata in eller fråga en komponent går igenom Private Link och misslyckas eventuellt. När det gäller Log Analytics är inmatnings- och konfigurationsslutpunkter arbetsytespecifika, vilket innebär att konfigurationen av privat länk endast gäller för de angivna arbetsytorna. Inmatning och konfiguration av andra arbetsytor dirigeras till de offentliga Log Analytics-standardslutpunkterna.
 
 ![Diagram över DNS-åsidosättningar i ett enda VNet](./media/private-link-security/dns-overrides-single-vnet.png)
 
-Detta gäller inte bara för ett specifikt VNet, utan för alla virtuella nätverk som delar samma DNS-server (se Problemet med [DNS-åsidosättningar](#the-issue-of-dns-overrides)). Så, till exempel, begäran om att mata in loggar till Application Insights komponent skickas alltid via den Private Link vägen. Komponenter som inte är länkade till AMPLS misslyckas med den Private Link verifieringen och går inte igenom.
+Detta gäller inte bara för ett specifikt VNet, utan för alla virtuella nätverk som delar samma DNS-server (se Problemet med [DNS-åsidosättningar](#the-issue-of-dns-overrides)). Begäran om att mata in loggar till en Application Insights komponent skickas därför alltid via den Private Link vägen. Komponenter som inte är länkade till AMPLS misslyckas med den Private Link verifieringen och går inte igenom.
 
 > [!NOTE]
-> Sammanfattningsvis: När du har Private Link anslutning till en enskild resurs gäller den för Azure Monitor resurser i nätverket. För Application Insights resurser är det "Alla eller Inget". Det innebär i praktiken att du bör lägga Application Insights alla resurser i nätverket till din AMPLS eller ingen av dem.
+> För att avsluta: När du har Private Link anslutning till en enskild resurs gäller den för Azure Monitor i nätverket. För Application Insights resurser är det "Allt eller Inget". Det innebär i praktiken att du bör lägga Application Insights alla resurser i nätverket till din AMPLS eller ingen av dem.
 > 
-> För att hantera risker med data exfiltrering rekommenderar vi att du lägger till alla Application Insights- och Log Analytics-resurser i din AMPLS och blockerar utgående nätverkstrafik så mycket som möjligt.
+> För att hantera data exfiltreringsrisker rekommenderar vi att du lägger till alla Application Insights- och Log Analytics-resurser i ampls-nätverket och blockerar utgående nätverkstrafik så mycket som möjligt.
 
 ### <a name="azure-monitor-private-link-applies-to-your-entire-network"></a>Azure Monitor Private Link gäller för hela nätverket
-Vissa nätverk består av flera virtuella nätverk. Om de virtuella nätverken använder samma DNS-server åsidosätter de varandras DNS-mappningar och bryter eventuellt varandras kommunikation med Azure Monitor (se Problemet med [DNS-åsidosättningar](#the-issue-of-dns-overrides)). Slutligen kommer endast det sista virtuella nätverket att kunna kommunicera med Azure Monitor, eftersom DNS mappar Azure Monitor-slutpunkter till privata IP-adresser från det här VNet-intervallet (som kanske inte kan nås från andra virtuella nätverk).
+Vissa nätverk består av flera virtuella nätverk. Om de virtuella nätverken använder samma DNS-server åsidosätter de varandras DNS-mappningar och kan eventuellt bryta varandras kommunikation med Azure Monitor (se Problemet med [DNS-åsidosättningar).](#the-issue-of-dns-overrides) Slutligen kommer endast det sista virtuella nätverket att kunna kommunicera med Azure Monitor, eftersom DNS mappar Azure Monitor-slutpunkter till privata IP-adresser från det här VNet-intervallet (som kanske inte kan nås från andra virtuella nätverk).
 
 ![Diagram över DNS-åsidosättningar i flera virtuella nätverk](./media/private-link-security/dns-overrides-multiple-vnets.png)
 
-I diagrammet ovan ansluter VNet 10.0.1.x först till AMPLS1 och mappar de Azure Monitor slutpunkterna till IP-adresser från dess intervall. Senare ansluter VNet 10.0.2.x till AMPLS2 och åsidosätter DNS-mappningen för samma *globala slutpunkter* med IP-adresser från dess intervall. Eftersom dessa virtuella nätverk inte är peer-peerade kan det första virtuella nätverket nu inte nå dessa slutpunkter.
+I diagrammet ovan ansluter VNet 10.0.1.x först till AMPLS1 och mappar de Azure Monitor globala slutpunkterna till IP-adresser från dess intervall. Senare ansluter VNet 10.0.2.x till AMPLS2 och åsidosätter DNS-mappningen för samma globala *slutpunkter* med IP-adresser från dess intervall. Eftersom dessa virtuella nätverk inte är peer-peer-peerade kan det första virtuella nätverket nu inte nå dessa slutpunkter.
 
 > [!NOTE]
-> För att avsluta: AMPLS-konfigurationen påverkar alla nätverk som delar samma DNS-zoner. För att undvika att åsidosätta varandras DNS-slutpunktsmappningar är det bäst att konfigurera en enskild privat slutpunkt i ett peer-baserat nätverk (till exempel ett hubb-VNet) eller separera nätverken på DNS-nivå (exempelexempel med hjälp av DNS-vidarebefordrare eller separata DNS-servrar helt).
+> För att avsluta: AMPLS-konfigurationen påverkar alla nätverk som delar samma DNS-zoner. För att undvika att åsidosätta varandras DNS-slutpunktsmappningar är det bäst att konfigurera en enskild privat slutpunkt i ett peer-baserat nätverk (till exempel ett hubb-VNet) eller separera nätverken på DNS-nivå (exempel på exempel med DNS-vidarebefordrare eller separata DNS-servrar helt).
 
 ### <a name="hub-spoke-networks"></a>Hub-spoke-nätverk
 Hub-spoke-topologier kan undvika problem med DNS-åsidosättningar genom att ange en Private Link i det virtuella hubbnätverket (huvudnätverk), i stället för att konfigurera en Private Link för varje VNet separat. Den här konfigurationen är användbar, särskilt om Azure Monitor som används av de virtuella ekernätverken delas. 
@@ -107,39 +107,39 @@ Börja med att skapa en Azure Monitor Private Link Omfångsresurs.
 
    ![Skapa Azure Monitor Private Link omfång](./media/private-link-security/ampls-create-1d.png)
 
-6. Låt verifieringen gå igenom och välj sedan **Skapa**.
+6. Låt verifieringen klara och välj sedan **Skapa.**
 
 ### <a name="connect-azure-monitor-resources"></a>Ansluta Azure Monitor resurser
 
 Anslut Azure Monitor (Log Analytics-arbetsytor och Application Insights komponenter) till din AMPLS.
 
-1. I Azure Monitor Private Link väljer du **Azure Monitor resurser** på den vänstra menyn. Välj knappen **Lägg till**.
-2. Lägg till arbetsytan eller komponenten. Om du **väljer** knappen Lägg till öppnas en dialogruta där du kan välja Azure Monitor resurser. Du kan bläddra igenom dina prenumerationer och resursgrupper, eller så kan du skriva in deras namn för att filtrera ned till dem. Välj arbetsytan eller komponenten och välj Tillämpa **för att** lägga till dem i ditt omfång.
+1. I ditt Azure Monitor Private Link väljer **du Azure Monitor Resurser** på den vänstra menyn. Välj knappen **Lägg till**.
+2. Lägg till arbetsytan eller komponenten. Om du **väljer** knappen Lägg till öppnas en dialogruta där du kan välja Azure Monitor resurser. Du kan bläddra igenom dina prenumerationer och resursgrupper, eller så kan du ange deras namn för att filtrera ned till dem. Välj arbetsytan eller komponenten och välj Tillämpa **för att** lägga till dem i ditt omfång.
 
-    ![Skärmbild av att välja ett omfångs-UX](./media/private-link-security/ampls-select-2.png)
+    ![Skärmbild av val av omfångs-UX](./media/private-link-security/ampls-select-2.png)
 
 > [!NOTE]
-> När Azure Monitor resurser tas bort måste du först koppla bort dem från alla AMPLS-objekt som de är anslutna till. Det går inte att ta bort resurser som är anslutna till en AMPLS.
+> När Azure Monitor resurser tas bort måste du först koppla bort dem från de AMPLS-objekt som de är anslutna till. Det går inte att ta bort resurser som är anslutna till en AMPLS.
 
 ### <a name="connect-to-a-private-endpoint"></a>Ansluta till en privat slutpunkt
 
-Nu när du har anslutit resurser till din AMPLS skapar du en privat slutpunkt för att ansluta nätverket. Du kan utföra den här uppgiften [i Azure Portal Private Link eller](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)i ditt Azure Monitor Private Link, som du gjorde i det här exemplet.
+Nu när du har anslutit resurser till din AMPLS kan du skapa en privat slutpunkt för att ansluta nätverket. Du kan utföra den här uppgiften [i Azure Portal Private Link eller](https://portal.azure.com/#blade/Microsoft_Azure_Network/PrivateLinkCenterBlade/privateendpoints)i ditt omfång Azure Monitor Private Link, som du gjorde i det här exemplet.
 
-1. I omfångsresursen **väljer du Privata slutpunktsanslutningar** i den vänstra resursmenyn. Välj **Privat slutpunkt för** att starta processen för att skapa slutpunkten. Du kan också godkänna anslutningar som startades i Private Link här genom att välja dem och välja **Godkänn.**
+1. I omfångsresursen **väljer du Privata slutpunktsanslutningar** i den vänstra resursmenyn. Välj **Privat slutpunkt för** att starta processen för att skapa slutpunkten. Du kan också godkänna anslutningar som har startats i Private Link här genom att välja dem och välja **Godkänn.**
 
     ![Skärmbild av UX för privata slutpunktsanslutningar](./media/private-link-security/ampls-select-private-endpoint-connect-3.png)
 
-2. Välj prenumerationen, resursgruppen och namnet på slutpunkten och den region som den ska finnas i. Regionen måste vara samma region som det virtuella nätverk som du ansluter den till.
+2. Välj prenumerationen, resursgruppen och namnet på slutpunkten samt den region som den ska finnas i. Regionen måste vara samma region som det virtuella nätverk som du ansluter den till.
 
 3. Välj **Nästa: Resurs**. 
 
 4. På skärmen Resurs
 
-   a. Välj den **prenumeration** som innehåller din Azure Monitor privat omfångsresurs. 
+   a. Välj den **prenumeration som** innehåller din Azure Monitor privat omfångsresurs. 
 
    b. För **resurstyp** väljer du **Microsoft.insights/privateLinkScopes**. 
 
-   c. I **listrutan** resurs väljer du det omfång Private Link som du skapade tidigare. 
+   c. I **listrutan resurs** väljer du det omfång Private Link du skapade tidigare. 
 
    d. Välj **Nästa: Konfiguration >**.
       ![Skärmbild av att välja Skapa privat slutpunkt](./media/private-link-security/ampls-select-private-endpoint-create-4.png)
@@ -150,11 +150,11 @@ Nu när du har anslutit resurser till din AMPLS skapar du en privat slutpunkt f�
  
    b.    Välj **Ja** för **Integrera med privat DNS-zon** och låt den automatiskt skapa en ny Privat DNS zon. De faktiska DNS-zonerna kan vara annorlunda än vad som visas i skärmbilden nedan. 
    > [!NOTE]
-   > Om du väljer **Nej** och föredrar att hantera DNS-poster manuellt måste du först konfigurera Private Link , inklusive den här privata slutpunkten och AMPLS-konfigurationen. Konfigurera sedan DNS enligt anvisningarna i [Konfigurera DNS för den privata Azure-slutpunkten](../../private-link/private-endpoint-dns.md). Se till att du inte skapar tomma poster när du förbereder konfigurationen av den privata länken. De DNS-poster som du skapar kan åsidosätta befintliga inställningar och påverka din anslutning till Azure Monitor.
+   > Om du väljer **Nej** och föredrar att hantera DNS-poster manuellt måste du först slutföra konfigurationen av Private Link , inklusive den här privata slutpunkten och AMPLS-konfigurationen. Konfigurera sedan DNS enligt anvisningarna i [Konfigurera DNS för den privata Azure-slutpunkten](../../private-link/private-endpoint-dns.md). Se till att du inte skapar tomma poster när du förbereder konfigurationen av den privata länken. De DNS-poster som du skapar kan åsidosätta befintliga inställningar och påverka din anslutning till Azure Monitor.
  
    c.    Välj **Granska + skapa**.
  
-   d.    Låt valideringen klara. 
+   d.    Låt valideringen klaras. 
  
    e.    Välj **Skapa**. 
 
@@ -162,12 +162,12 @@ Nu när du har anslutit resurser till din AMPLS skapar du en privat slutpunkt f�
 
 Nu har du skapat en ny privat slutpunkt som är ansluten till denna AMPLS.
 
-## <a name="review-and-validate-your-private-link-setup"></a>Granska och verifiera Private Link konfiguration
+## <a name="review-and-validate-your-private-link-setup"></a>Granska och verifiera din Private Link installation
 
 ### <a name="reviewing-your-endpoints-dns-settings"></a>Granska slutpunktens DNS-inställningar
 Den privata slutpunkten som du skapade bör nu ha fyra konfigurerade DNS-zoner:
 
-[![Skärmbild av DNS-zoner för privata slutpunkter.](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
+[![Skärmbild av DNS-zoner för privat slutpunkt.](./media/private-link-security/private-endpoint-dns-zones.png)](./media/private-link-security/private-endpoint-dns-zones-expanded.png#lightbox)
 
 * privatelink-monitor-azure-com
 * privatelink-oms-opinsights-azure-com
@@ -175,76 +175,82 @@ Den privata slutpunkten som du skapade bör nu ha fyra konfigurerade DNS-zoner:
 * privatelink-agentsvc-azure-automation-net
 
 > [!NOTE]
-> Var och en av dessa zoner mappar Azure Monitor slutpunkter till privata IP-adresser från det virtuella nätverkets IP-pool. IP-adresserna som visas i bilderna nedan är bara exempel. Konfigurationen bör i stället visa privata IP-adresser från ditt eget nätverk.
+> Var och en av dessa zoner mappar Azure Monitor slutpunkter till privata IP-adresser från det virtuella nätverkets POOL med IP-adresser. IP-adresserna som visas i bilderna nedan är bara exempel. Konfigurationen bör i stället visa privata IP-adresser från ditt eget nätverk.
 
 #### <a name="privatelink-monitor-azure-com"></a>Privatelink-monitor-azure-com
-Den här zonen omfattar de globala slutpunkter som används av Azure Monitor, vilket innebär att dessa slutpunkter betjänar begäranden med hänsyn till alla resurser, inte en specifik. Den här zonen ska ha slutpunkter mappade för:
-* `in.ai` - (Application Insights inmatningsslutpunkt visas en global och en regional post
+Den här zonen omfattar de globala slutpunkter som används Azure Monitor, vilket innebär att dessa slutpunkter betjänar begäranden med hänsyn till alla resurser, inte en specifik. Den här zonen ska ha slutpunkter mappade för:
+* `in.ai` – Application Insights-inmatningsslutpunkt (både en global och en regional post)
 * `api` – Application Insights- och Log Analytics API-slutpunkt
-* `live` – Application Insights slutpunkt för livemått
+* `live` – Application Insights slutpunkt för live-mått
 * `profiler` – Application Insights profileringsslutpunkt
-* `snapshot`– Application Insights slutpunkten för [ ![ ögonblicksbilder Skärmbild Privat DNS i zonen monitor-azure-com.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
+* `snapshot`– Application Insights slutpunkt för [ ![ ögonblicksbilder Skärmbild av Privat DNS för zonen monitor-azure-com.](./media/private-link-security/dns-zone-privatelink-monitor-azure-com.png)](./media/private-link-security/dns-zone-privatelink-monitor-azure-com-expanded.png#lightbox)
 
 #### <a name="privatelink-oms-opinsights-azure-com"></a>privatelink-oms-opinsights-azure-com
 Den här zonen omfattar arbetsytespecifik mappning till OMS-slutpunkter. Du bör se en post för varje arbetsyta som är länkad till den AMPLS som är ansluten till den här privata slutpunkten.
-[![Skärmbild av Privat DNS oms-opinsights-azure-com i zonen .](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
+[![Skärmbild av Privat DNS oms-opinsights-azure-com.](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-oms-opinsights-azure-com-expanded.png#lightbox)
 
 #### <a name="privatelink-ods-opinsights-azure-com"></a>privatelink-ods-opinsights-azure-com
 Den här zonen omfattar arbetsytespecifik mappning till ODS-slutpunkter – inmatningsslutpunkten för Log Analytics. Du bör se en post för varje arbetsyta som är länkad till den AMPLS som är ansluten till den här privata slutpunkten.
-[![Skärmbild av Privat DNS ods-opinsights-azure-com.](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
+[![Skärmbild av Privat DNS ods-opinsights-azure-com i zonen .](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com.png)](./media/private-link-security/dns-zone-privatelink-ods-opinsights-azure-com-expanded.png#lightbox)
 
 #### <a name="privatelink-agentsvc-azure-automation-net"></a>privatelink-agentsvc-azure-automation-net
 Den här zonen omfattar arbetsytespecifik mappning till agenttjänstens automatiseringsslutpunkter. Du bör se en post för varje arbetsyta som är länkad till den AMPLS som är ansluten till den här privata slutpunkten.
 [![Skärmbild av Privat DNS zonagent svc-azure-automation-net.](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net.png)](./media/private-link-security/dns-zone-privatelink-agentsvc-azure-automation-net-expanded.png#lightbox)
 
+#### <a name="privatelink-blob-core-windows-net"></a>privatelink-blob-core-windows-net
+Den här zonen konfigurerar anslutningen till lagringskontot för de globala agenterna lösningspaket. Genom den kan agenter ladda ned nya eller uppdaterade lösningspaket (även kallade hanteringspaket). Det krävs bara en post för att hantera Log Analytics-agenter, oavsett hur många arbetsytor som används.
+[![Skärmbild av Privat DNS blob-core-windows-net i zonen.](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net.png)](./media/private-link-security/dns-zone-privatelink-blob-core-windows-net-expanded.png#lightbox)
+> [!NOTE]
+> Den här posten läggs bara till i konfigurationer av privata länkar som skapats den 19 april 2021 eller senare.
+
+
 ### <a name="validating-you-are-communicating-over-a-private-link"></a>Verifiera att du kommunicerar via en Private Link
-* För att verifiera att dina begäranden nu skickas via den privata slutpunkten och till de privata IP-mappade slutpunkterna kan du granska dem med en nätverksspårning till verktyg eller till och med din webbläsare. När du till exempel försöker fråga din arbetsyta eller ditt program kontrollerar du att begäran skickas till den privata IP-adress som är mappad till API-slutpunkten. I det här exemplet är den *172.17.0.9.*
+* För att verifiera att dina begäranden nu skickas via den privata slutpunkten och de privata IP-mappade slutpunkterna kan du granska dem med ett verktyg för nätverksspårning eller till och med din webbläsare. När du till exempel försöker fråga din arbetsyta eller ditt program kontrollerar du att begäran skickas till den privata IP-adress som är mappad till API-slutpunkten. I det här exemplet är den *172.17.0.9.*
 
-    Obs! Vissa webbläsare kan använda andra DNS-inställningar (se [Webbläsarens DNS-inställningar).](#browser-dns-settings) Kontrollera att DNS-inställningarna gäller.
+    Obs! Vissa webbläsare kan använda andra DNS-inställningar (se [DNS-inställningar för webbläsare).](#browser-dns-settings) Kontrollera att DNS-inställningarna gäller.
 
-* För att se till att din arbetsyta eller komponent inte tar emot begäranden från offentliga nätverk (inte anslutna via AMPLS), anger du resursens offentliga inmatning och frågeflaggor till *Nej* enligt förklaringen i Hantera åtkomst utanför omfånget för privata [länkar.](#manage-access-from-outside-of-private-links-scopes)
+* För att se till att din arbetsyta eller komponent inte tar emot begäranden från offentliga nätverk (inte anslutna via AMPLS) anger du resursens offentliga inmatning och frågeflaggor till *Nej* enligt förklaringen i Hantera åtkomst utanför omfången för privata [länkar.](#manage-access-from-outside-of-private-links-scopes)
 
-* Från en klient i det skyddade nätverket använder du till `nslookup` någon av de slutpunkter som anges i dina DNS-zoner. Dns-servern bör matcha den med mappade privata IP-adresser i stället för de offentliga IP-adresser som används som standard.
+* Från en klient i det skyddade nätverket använder du till `nslookup` någon av de slutpunkter som anges i dina DNS-zoner. Den bör matchas av DNS-servern till de mappade privata IP-adresserna i stället för de offentliga IP-adresser som används som standard.
 
 
 ## <a name="configure-log-analytics"></a>Konfigurera Log Analytics
 
-Gå till Azure-portalen. På resursmenyn för Log Analytics-arbetsytan finns det ett objekt **som heter Nätverksisolering** till vänster. Du kan styra två olika tillstånd från den här menyn.
+Gå till Azure-portalen. På resursmenyn för Log Analytics-arbetsytan finns det ett objekt som heter **Nätverksisolering** till vänster. Du kan styra två olika tillstånd från den här menyn.
 
 ![LA-nätverksisolering](./media/private-link-security/ampls-log-analytics-lan-network-isolation-6.png)
 
 ### <a name="connected-azure-monitor-private-link-scopes"></a>Omfång Azure Monitor Private Link anslutna enheter
-Alla omfång som är anslutna till arbetsytan visas på den här skärmen. Genom att ansluta till omfång (AMPLS) kan nätverkstrafik från det virtuella nätverket som är anslutet till varje AMPLS nå den här arbetsytan. Att skapa en anslutning här har samma effekt som att konfigurera den för omfånget, som vi gjorde i [Ansluta Azure Monitor resurser](#connect-azure-monitor-resources). Om du vill lägga till en ny **anslutning väljer du** Lägg till och Azure Monitor Private Link Omfång. Välj **Tillämpa för** att ansluta den. Observera att en arbetsyta kan ansluta till 5 AMPLS-objekt, som anges [i Begränsningar och begränsningar](#restrictions-and-limitations). 
+Alla omfång som är anslutna till arbetsytan visas på den här skärmen. Genom att ansluta till omfång (AMPLS) kan nätverkstrafik från det virtuella nätverket som är anslutet till varje AMPLS nå den här arbetsytan. Att skapa en anslutning här har samma effekt som att konfigurera den för omfånget, som vi gjorde i [Ansluta Azure Monitor resurser](#connect-azure-monitor-resources). Om du vill lägga till en ny anslutning **väljer du** Lägg till och Azure Monitor Private Link Omfång. Välj **Tillämpa för** att ansluta den. Observera att en arbetsyta kan ansluta till 5 AMPLS-objekt, som anges [i Begränsningar och begränsningar](#restrictions-and-limitations). 
 
-### <a name="manage-access-from-outside-of-private-links-scopes"></a>Hantera åtkomst utanför omfång för privata länkar
-Inställningarna längst ned på den här sidan styr åtkomsten från offentliga nätverk, vilket innebär att nätverk inte är anslutna via de omfång som anges ovan. Ange **Tillåt offentlig nätverksåtkomst för inmatning till** **Inga** blockerar inmatning av loggar från datorer utanför de anslutna omfången. Ange **Tillåt offentlig nätverksåtkomst för frågor till** **Nej** blockerar frågor som kommer från datorer utanför omfången. Det omfattar frågor som körs via arbetsböcker, instrumentpaneler, API-baserade klientupplevelser, insikter i Azure Portal med mera. Upplevelser som körs utanför Azure Portal och som frågar Log Analytics-data måste också köras i det privata länkade virtuella nätverket.
+### <a name="manage-access-from-outside-of-private-links-scopes"></a>Hantera åtkomst utanför omfången för privata länkar
+Inställningarna längst ned på den här sidan styr åtkomsten från offentliga nätverk, vilket innebär att nätverk inte är anslutna via angivna omfång (AMPLS). Ange **Tillåt offentlig nätverksåtkomst för inmatning till** **Inga** blockerar inmatning av loggar från datorer utanför de anslutna omfången. Ange **Tillåt offentlig nätverksåtkomst för frågor till** **Nej** blockerar frågor som kommer från datorer utanför omfånget. Det omfattar frågor som körs via arbetsböcker, instrumentpaneler, API-baserade klientupplevelser, insikter i Azure Portal och mycket mer. Upplevelser som körs utanför Azure Portal och som frågar Log Analytics-data måste också köras i det privata länkade virtuella nätverket.
 
 ### <a name="exceptions"></a>Undantag
 Begränsning av åtkomst enligt beskrivningen ovan gäller inte för Azure Resource Manager och har därför följande begränsningar:
-* Åtkomst till data – även om blockerande/tillåtande av frågor från offentliga nätverk gäller för de flesta Log Analytics-upplevelser, kan vissa använda datafrågor via Azure Resource Manager och kan därför inte fråga efter data om inte Private Link-inställningarna tillämpas även på Resource Manager (funktionen kommer snart). Exempel är Azure Monitor lösningar, Arbetsböcker och insikter och LogicApp-anslutningsappen.
+* Åtkomst till data – även om blockerande/tillåtande av frågor från offentliga nätverk gäller för de flesta Log Analytics-upplevelser, kan vissa använda frågedata via Azure Resource Manager och kan därför inte köra frågor mot data om inte Private Link-inställningar tillämpas även på Resource Manager (funktionen kommer snart). Exempel är Azure Monitor lösningar, Arbetsböcker och insikter och LogicApp-anslutningsappen.
 * Arbetsytehantering – Ändringar av arbetsyteinställningar och konfiguration (inklusive att aktivera eller inaktivera dessa åtkomstinställningar) hanteras av Azure Resource Manager. Begränsa åtkomsten till arbetsytehantering med lämpliga roller, behörigheter, nätverkskontroller och granskning. Mer information finns i [Azure Monitor, behörigheter och säkerhet.](../roles-permissions-security.md)
 
 > [!NOTE]
 > Loggar och mått som överförs till en arbetsyta via [diagnostikinställningar](../essentials/diagnostic-settings.md) går via en säker privat Microsoft-kanal och styrs inte av dessa inställningar.
 
 ### <a name="log-analytics-solution-packs-download"></a>Ladda ned Log Analytics-lösningspaket
+Log Analytics-agenter måste ha åtkomst till ett globalt lagringskonto för att kunna ladda ned lösningspaket. Private Link som skapats den 19 april 2021 eller senare kan nå agentens lösningspaketlagring via den privata länken. Detta är möjligt via den nya DNS-zonen som skapats för [blob.core.windows.net](#privatelink-blob-core-windows-net).
 
-Om du vill tillåta att Log Analytics-agenten laddar ned lösningspaket lägger du till lämpliga fullständigt kvalificerade domännamn i brandväggens lista över tillåtna domännamn. 
+Om konfigurationen Private Link innan den 19 april 2021 når den inte lösningspaketlagringen via en privat länk. Om du vill hantera detta kan du göra något av följande:
+* Skapa om din AMPLS och den privata slutpunkten som är anslutna till den
+* Låt dina agenter nå lagringskontot via dess offentliga slutpunkt genom att lägga till följande regler i brandväggens lista över tillåtna:
 
+    | Molnmiljö | Agentresurs | Portar | Riktning |
+    |:--|:--|:--|:--|
+    |Azure, offentlig     | scadvisorcontent.blob.core.windows.net         | 443 | Utgående
+    |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Utgående
+    |Azure Kina 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Utgående
 
-| Molnmiljö | Agentresurs | Portar | Riktning |
-|:--|:--|:--|:--|
-|Azure, offentlig     | scadvisorcontent.blob.core.windows.net         | 443 | Utgående
-|Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Utgående
-|Azure Kina 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Utgående
-
-
->[!NOTE]
-> Från och med 19 april 2021 krävs inte inställningen ovan, och du kommer att kunna nå lösningspaketens lagringskonto via den privata länken. Den nya funktionen kräver att du återskapar AMPLS (den 19 april 2021 eller senare) och den privata slutpunkten som är ansluten till den. Det gäller inte för befintliga AMPLS och privata slutfästen.
 
 ## <a name="configure-application-insights"></a>Konfigurera Application Insights
 
-Gå till Azure-portalen. I din Azure Monitor Application Insights-komponentresursen är ett **menyalternativ Nätverksisolering** till vänster. Du kan styra två olika tillstånd från den här menyn.
+Gå till Azure-portalen. I Azure Monitor Application Insights-komponentresursen är ett **menyalternativ Nätverksisolering** till vänster. Du kan styra två olika tillstånd från den här menyn.
 
 ![AI-nätverksisolering](./media/private-link-security/ampls-application-insights-lan-network-isolation-6.png)
 
@@ -260,15 +266,15 @@ Du måste lägga till resurser som är värdar för de övervakade arbetsbelastn
 Begränsning av åtkomst på det här sättet gäller endast för data i Application Insights resurs. Konfigurationsändringar, inklusive att aktivera eller inaktivera dessa åtkomstinställningar, hanteras dock av Azure Resource Manager. Därför bör du begränsa åtkomsten till Resource Manager med lämpliga roller, behörigheter, nätverkskontroller och granskning. Mer information finns i [Azure Monitor roller, behörigheter och säkerhet](../roles-permissions-security.md).
 
 > [!NOTE]
-> För att skydda arbetsytebaserade Application Insights måste du låsa både åtkomsten till Application Insights och den underliggande Log Analytics-arbetsytan.
+> För att skydda arbetsytebaserade Application Insights måste du låsa åtkomsten till både Application Insights och den underliggande Log Analytics-arbetsytan.
 >
-> Diagnostik på kodnivå (profilerare/felsökare) behöver du ange [ett eget lagringskonto för att](../app/profiler-bring-your-own-storage.md) stödja private link.
+> Med diagnostik på kodnivå (profilerare/felsökare) måste du ange [ett eget lagringskonto som stöd](../app/profiler-bring-your-own-storage.md) för privat länk.
 
-### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Hantering av allt-eller-inget-typ av privata länkar
-Som förklaras [i Planera konfigurationen Private Link](#planning-your-private-link-setup)påverkar konfiguration av en Private Link även för en enskild resurs alla Azure Monitor-resurser i dessa nätverk och i andra nätverk som delar samma DNS. Det här beteendet kan göra onboarding-processen utmanande. Överväg följande alternativ:
+### <a name="handling-the-all-or-nothing-nature-of-private-links"></a>Hantera privata länkars allt-eller-inget-natur
+Som förklaras [i Planera konfigurationen Private Link](#planning-your-private-link-setup), påverkar konfigurationen av en Private Link även för en enskild resurs alla Azure Monitor-resurser i dessa nätverk och i andra nätverk som delar samma DNS. Det här beteendet kan göra onboarding-processen utmanande. Överväg följande alternativ:
 
 * Allt i – den enklaste och säkraste metoden är att lägga till alla Application Insights komponenter i AMPLS. För komponenter som du även vill ha åtkomst till från andra nätverk lämnar du flaggorna "Tillåt offentlig Internetåtkomst för inmatning/fråga" inställt på Ja (standard).
-* Isolera nätverk – om du är (eller kan anpassa dig till) med hjälp av ekernätverk följer du riktlinjerna i [Nätverkstopologi av hub-spoke-ekrar i Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Konfigurera sedan separata privata länkinställningar i relevanta virtuella ekernätverk. Se även till att separera DNS-zoner, eftersom DNS-åsidosättningar kommer att åsidosättas om du delar DNS-zoner [med andra ekernätverk.](#the-issue-of-dns-overrides)
+* Isolera nätverk – om du är (eller kan anpassa dig till) med hjälp av ekernätverk följer du riktlinjerna i [Nätverkstopologi av hub-spoke-ekrar i Azure](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke). Konfigurera sedan separata privata länkinställningar i relevanta virtuella ekernätverk. Se även till att separera DNS-zoner, eftersom dns-åsidosättningar kommer att orsaka DNS-åsidosättningar om du delar [DNS-zoner med andra ekernätverk.](#the-issue-of-dns-overrides)
 * Använd anpassade DNS-zoner för specifika appar – med den här lösningen kan du komma åt utvalda Application Insights-komponenter via en Private Link, samtidigt som all annan trafik över de offentliga vägarna finns kvar.
     - Konfigurera en anpassad [privat DNS-zon](../../private-link/private-endpoint-dns.md)och ge den ett unikt namn, till exempel internal.monitor.azure.com
     - Skapa en AMPLS och en privat slutpunkt och välj **att inte** integrera automatiskt med privat DNS
@@ -277,7 +283,7 @@ Som förklaras [i Planera konfigurationen Private Link](#planning-your-private-l
     - Lägg till poster för ovanstående ![ skärmbild av konfigurerad DNS-zon](./media/private-link-security/private-endpoint-global-dns-zone.png)
     - Gå till Application Insights och kopiera dess [anslutningssträng.](../app/sdk-connection-string.md)
     - Appar eller skript som vill anropa den här komponenten via en Private Link bör använda anslutningssträngen med EndpointSuffix=internal.monitor.azure.com
-* Mappa slutpunkter via värdfiler i stället för DNS – för att ha en Private Link åtkomst endast från en specifik dator/virtuell dator i nätverket:
+* Mappa slutpunkter via värdfiler i stället för DNS – för att Private Link åtkomst endast från en specifik dator/virtuell dator i nätverket:
     - Konfigurera en AMPLS och en privat slutpunkt och välj **att inte** integrera automatiskt med privat DNS 
     - Konfigurera ovanstående A-poster på en dator som kör appen i värdfilen
 
@@ -327,7 +333,7 @@ $ sudo /opt/microsoft/omsagent/bin/omsadmin.sh -w <workspace id> -s <workspace k
 
 ### <a name="azure-portal"></a>Azure Portal
 
-För att Azure Monitor-portalupplevelser som Application Insights och Log Analytics måste du tillåta att Azure Portal- och Azure Monitor-tilläggen är tillgängliga i de privata nätverken. Lägg **till AzureActiveDirectory,** **AzureResourceManager,** **AzureFrontDoor.FirstParty** och **AzureFrontdoor.Frontend-tjänsttaggar** [](../../firewall/service-tags.md) i nätverkssäkerhetsgruppen.
+Om du Azure Monitor använda portalupplevelser som Application Insights och Log Analytics måste du tillåta att Azure Portal- och Azure Monitor-tilläggen är tillgängliga i de privata nätverken. Lägg **till AzureActiveDirectory,** **AzureResourceManager,** **AzureFrontDoor.FirstParty** och **AzureFrontdoor.Frontend-tjänsttaggar** [](../../firewall/service-tags.md) i nätverkssäkerhetsgruppen.
 
 ### <a name="querying-data"></a>Köra frågor mot data
 [ `externaldata` Operatorn](/azure/data-explorer/kusto/query/externaldata-operator?pivots=azuremonitor) stöds inte via en Private Link eftersom den läser data från lagringskonton men garanterar inte att lagringen nås privat.
@@ -342,8 +348,8 @@ Paketera JavaScript-koden i skriptet så att webbläsaren inte försöker ladda 
 
 ### <a name="browser-dns-settings"></a>DNS-inställningar för webbläsare
 
-Om du ansluter till dina Azure Monitor via en Private Link måste trafiken till dessa resurser gå genom den privata slutpunkt som är konfigurerad i nätverket. Om du vill aktivera den privata slutpunkten uppdaterar du DNS-inställningarna enligt förklaringen [i Anslut till en privat slutpunkt.](#connect-to-a-private-endpoint) Vissa webbläsare använder sina egna DNS-inställningar i stället för de som du anger. Webbläsaren kan försöka ansluta till Azure Monitor offentliga slutpunkter och kringgå Private Link helt. Kontrollera att webbläsarinställningarna inte åsidosätter eller cachelagrar gamla DNS-inställningar. 
+Om du ansluter till dina Azure Monitor via en Private Link måste trafiken till dessa resurser gå via den privata slutpunkt som är konfigurerad i nätverket. Om du vill aktivera den privata slutpunkten uppdaterar du DNS-inställningarna enligt förklaringen [i Anslut till en privat slutpunkt.](#connect-to-a-private-endpoint) Vissa webbläsare använder sina egna DNS-inställningar i stället för de som du anger. Webbläsaren kan försöka ansluta till Azure Monitor offentliga slutpunkter och kringgå Private Link helt. Kontrollera att webbläsarinställningarna inte åsidosätter eller cachelagrar gamla DNS-inställningar. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer [om privat lagring](private-storage.md)
+- Läs mer om [privat lagring](private-storage.md)

@@ -1,6 +1,6 @@
 ---
-title: Översikt över enhets simulering – Azure | Microsoft Docs
-description: En beskrivning av lösnings Accelerator för enhets simulering och dess funktioner.
+title: Översikt över enhetssimulering – Azure | Microsoft Docs
+description: En beskrivning av lösningsacceleratorn för enhetssimulering och dess funktioner.
 author: dominicbetts
 manager: philmea
 ms.service: iot-accelerators
@@ -9,58 +9,58 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 12/03/2018
 ms.author: dobett
-ms.openlocfilehash: 979643c76b8bded51e30232228b7fe7485a1f53b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 27a23ff924c2fa9e9e35fec010ca2a177868eacc
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057685"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713920"
 ---
 # <a name="device-simulation-solution-accelerator-overview"></a>Översikt över lösningsacceleratorn för enhetssimulering
 
-I en molnbaserad IoT-lösning ansluter dina enheter till en moln slut punkt för att skicka telemetri, till exempel temperatur, plats och status. Din lösning förbrukar denna telemetri, så att du kan vidta åtgärder eller härleda insikter från den.
+I en molnbaserad IoT-lösning ansluter dina enheter till en molnslutpunkt för att skicka telemetri som temperatur, plats och status. Din lösning använder den här telemetrin så att du kan vidta åtgärder eller härleda insikter från den.
 
-När du utvecklar en IoT-lösning är experimentering och testning viktiga delar av processen. Simulering är ett viktigt verktyg i hela den här processen. Med enhets simulering kan du:
+När du utvecklar en IoT-lösning är experimentering och testning viktiga delar av processen. Simulering är ett viktigt verktyg i den här processen. Med enhetssimulering kan du:
 
-* Snabbt få en prototyp igång och upprepa genom att justera det simulerade enhets beteendet i farten. Med den här processen kan du bevisa att du har en bra idé att investera i kostsam maskin vara. Du kan skapa anpassade enheter via webb gränssnittet för att generera en prototyp enhet på några sekunder.
-* Verifiera att lösningen fungerar som förväntat från enhet till lösning genom att simulera verkliga enhets beteenden. Du kan skripta komplexa enhets beteenden med hjälp av Java Script för att skapa realistiska simulerad telemetri.
-* Skala testet till din lösning genom att simulera normala, högsta och bortom belastnings belastnings förhållanden. Med skalnings test kan du också få rätt storlek på de Azure-resurser som behövs för att köra din lösning.
+* Få snabbt igång en prototyp och iterera genom att justera simulerat enhetsbeteende i farten. Med den här processen kan du bevisa idén innan du investerar i dyr maskinvara. Du kan skapa anpassade enheter via webbgränssnittet för att generera en prototypenhet på några sekunder.
+* Validera att lösningen fungerar som förväntat från enhet till lösning genom att simulera verkliga enhetsbeteenden. Du kan skapa skript för komplexa enhetsbeteenden med Hjälp av JavaScript för att generera realistisk simulerad telemetri.
+* Skala testa din lösning genom att simulera normala, högsta och bortom belastningstoppar. Skalningstester hjälper dig också att anpassa storleken på de Azure-resurser som behövs för att köra din lösning.
 
-![Simulering av exempel drönare](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
+![Exempel på drönarsimulering](media/iot-accelerators-device-simulation-overview/dronesimulation.png)
 
-Med enhets simulering kan du definiera enhets modeller för att simulera dina riktiga enheter. Den här modellen innehåller meddelande format, dubbla egenskaper och metoder. Du kan också simulera komplexa enhets beteenden med Java Script.
+Med enhetssimulering kan du definiera enhetsmodeller för att simulera dina verkliga enheter. Den här modellen innehåller meddelandeformat, tvillingegenskaper och metoder. Du kan också simulera komplexa enhetsbeteenden med JavaScript.
 
-Du kan köra simuleringar för en till tusentals enheter som ansluter till en IoT-hubb. För att hjälpa till med testningen kan du distribuera en IoT-hubb tillsammans med enhets simulering för en fristående miljö.
+Du kan köra simuleringar för en till tusentals enheter som ansluter till valfri IoT-hubb. För att hjälpa till med testning kan du distribuera en IoT-hubb tillsammans med enhetssimulering för en fristående miljö.
 
-Enhets simuleringen är kostnads fri. Men enhets simuleringen distribueras till din Azure-prenumeration i molnet och använder Azure-resurser. Om enhets simuleringen inte uppfyller dina krav finns [även käll koden på GitHub](https://github.com/Azure/device-simulation-dotnet) så att du kan kopiera och ändra.
+Enhetssimulering är kostnadsfritt. Enhetssimulering distribueras dock till din Azure-prenumeration i molnet och förbrukar Azure-resurser. Om enhetssimuleringen inte uppfyller dina krav är [källkoden också tillgänglig på GitHub](https://github.com/Azure/azure-iot-pcs-device-simulation) där du kan kopiera och ändra den.
 
-## <a name="sample-simulations"></a>Exempel simuleringar
+## <a name="sample-simulations"></a>Exempelsimuleringar
 
-När du distribuerar enhets simulering får du några exempel på simuleringar och exempel enheter. Du kan använda de här exemplen för att lära dig hur du använder enhets simulering. Kom igång genom att köra en [simulering](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)av ett exempel. Du kan också [skapa en egen simulering med någon av de många exempel enheter som tillhandahålls](iot-accelerators-device-simulation-create-simulation.md).
+När du distribuerar enhetssimulering får du några exempelsimuleringar och exempelenheter. Du kan använda de här exemplen för att lära dig hur du använder enhetssimulering. Kom igång genom att köra en [exempelsimulering](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md). Du kan också [skapa en egen simulering med någon av de många exempelenheter som tillhandahålls.](iot-accelerators-device-simulation-create-simulation.md)
 
 ![Simuleringskonfiguration](media/iot-accelerators-device-simulation-overview/samplesimulation1.png)
 
 ## <a name="custom-simulated-devices"></a>Anpassade simulerade enheter
 
-Du kan använda enhets simuleringen för att [skapa anpassade enhets modeller](iot-accelerators-device-simulation-create-custom-device.md) som du kan använda i dina simuleringar. Du kan till exempel definiera en ny enhets modell för kyl skåp som skickar telemetri för temperatur och fuktighet. Anpassade simulerade enheter är idealiska för enkla enhets beteenden med värden för slumpmässiga, ökande eller decrementing telemetri.
+Du kan använda enhetssimuleringen för [att skapa anpassade enhetsmodeller](iot-accelerators-device-simulation-create-custom-device.md) som ska användas i dina simuleringar. Du kan till exempel definiera en ny kylskåpsenhetsmodell som skickar telemetri om temperatur och luftfuktighet. Anpassade simulerade enheter är idealiska för enkla enhetsbeteenden med slumpmässiga, stegvisa eller minskande telemetrivärden.
 
 ![Skapa enhetsmodell](media/iot-accelerators-device-simulation-overview/adddevicemodel.png)
 
 ## <a name="advanced-simulated-devices"></a>Avancerade simulerade enheter
 
-När du behöver mer kontroll över telemetri-värden som en enhet skickar, kan du använda en avancerad enhets modell. Med avancerade enhets modeller kan du hantera JavaScript-stöd för att manipulera de skickade telemetridata. Du kan till exempel simulera invändig temperatur för en parkerad bil på en varm solig dag – när den yttre temperaturen stiger ökar den inre temperaturen exponentiellt.
+När du behöver mer kontroll över telemetrivärden som en enhet skickar kan du använda en avancerad enhetsmodell. Avancerade enhetsmodeller gör det möjligt för JavaScript-stöd att ändra de skickade telemetrivärdena. Du kan till exempel simulera den inre temperaturen för en bil som står på en varm solig dag – när temperaturen ökar ökar den inre temperaturen exponentiellt.
 
-Med avancerade enhets modeller kan du [skapa och ladda upp dina egna enhets modeller](iot-accelerators-device-simulation-advanced-device.md) som består av en JSON-enhets definitions fil och motsvarande JavaScript-filer.
+Med avancerade enhetsmodeller kan [du skapa och ladda upp egna enhetsmodeller](iot-accelerators-device-simulation-advanced-device.md) som består av en JSON-enhetsdefinitionsfil och motsvarande JavaScript-filer.
 
-Med avancerade enhets modeller kan du:
+Med avancerade enhetsmodeller kan du:
 
-* Ange meddelande formatet som skickas från enheten tillsammans med telemetri typerna.
-* Använd anpassade skript för att generera telemetri värden som upprätthåller enhetens status över tid.
-* Använd anpassat skript för att ange hur den simulerade enheten svarar på metoder.
+* Ange det meddelandeformat som skickas från enheten tillsammans med telemetrityperna.
+* Använd anpassade skript för att generera telemetrivärden som upprätthåller enhetens tillstånd över tid.
+* Använd anpassade skript för att ange hur den simulerade enheten svarar på metoder.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig om enhets simuleringens lösnings Accelerator och dess funktioner. Om du vill distribuera Solution Accelerator går du till GitHub-lagringsplatsen:
+I den här artikeln har du lärt dig om lösningsacceleratorn för enhetssimulering och dess funktioner. Om du vill distribuera lösningsacceleratorn går du till GitHub-lagringsplatsen:
 
 > [!div class="nextstepaction"]
-> [Distribuera och köra en IoT-enhetssimulering i Azure](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md)
+> [Distribuera och köra en IoT-enhetssimulering i Azure](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md)

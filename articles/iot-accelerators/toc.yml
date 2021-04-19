@@ -22,7 +22,7 @@
 - name: Snabbstarter
   items:
     - name: Distribuera lösningsaccelerator för enhetssimulering
-      href: 'https://github.com/Azure/device-simulation-dotnet/blob/master/README.md'
+      href: 'https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md'
     - name: Testa en lösning för ansluten fabrik
       href: quickstart-connected-factory-deploy.md
   expanded: true
@@ -38,9 +38,9 @@
   items:
     - name: Branschanpassat IoT
       items:
-        - name: 'OPC, dubbel arkitektur'
+        - name: OPC-tvillingarkitektur
           href: overview-opc-twin-architecture.md
-        - name: Arkitektur för OPC Vault
+        - name: OPC Vault-arkitektur
           href: overview-opc-vault-architecture.md
 - name: Anvisningar
   items:
@@ -127,7 +127,7 @@
         - name: Referensguide för utvecklare
           href: 'https://github.com/Azure/device-simulation-dotnet/wiki/Simulation-Service-Developer-Reference-Guide'
         - name: GitHub-lagringsplats
-          href: 'https://github.com/Azure/device-simulation-dotnet'
+          href: 'https://github.com/Azure/azure-iot-pcs-device-simulation'
     - name: Referensarkitektur
       href: /azure/architecture/reference-architectures/iot
       items:
@@ -135,7 +135,7 @@
           href: /azure/architecture/reference-architectures/iot
     - name: VANLIGA FRÅGOR OCH SVAR
       items:
-        - name: Vanliga frågor och svar om Solution Accelerator
+        - name: Vanliga frågor och svar om lösningsacceleratorer
           href: iot-accelerators-faq.md
         - name: Vanliga frågor och svar om ansluten fabrik
           href: iot-accelerators-faq-cf.md

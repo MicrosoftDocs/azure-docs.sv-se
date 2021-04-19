@@ -13,9 +13,9 @@
   items:
     - name: Skapa datafabrik – användargränssnitt
       href: quickstart-create-data-factory-portal.md
-    - name: Skapa data fabrik – verktyget för att kopiera data
+    - name: Skapa datafabrik – verktyget Kopiera data
       href: quickstart-create-data-factory-copy-data-tool.md
-    - name: Skapa data fabrik – Azure CLI
+    - name: Skapa datafabrik – Azure CLI
       href: quickstart-create-data-factory-azure-cli.md
     - name: Skapa datafabrik – Azure PowerShell
       href: quickstart-create-data-factory-powershell.md
@@ -38,7 +38,7 @@
       items:
         - name: Från Azure Blob Storage till Azure SQL Database
           items:
-            - name: Verktyget kopiera data
+            - name: Verktyget Kopiera data
               href: tutorial-copy-data-tool.md
             - name: Användargränssnitt
               href: tutorial-copy-data-portal.md
@@ -46,7 +46,7 @@
               href: tutorial-copy-data-dot-net.md
         - name: Från en SQL Server-databas till Azure Blob Storage
           items:
-            - name: Verktyget kopiera data
+            - name: Verktyget Kopiera data
               href: tutorial-hybrid-copy-data-tool.md
             - name: Användargränssnitt
               href: tutorial-hybrid-copy-portal.md
@@ -107,15 +107,15 @@
       items:
         - name: Omvandla data genom att mappa dataflöden
           items:
-            - name: Metod tips för landnings data i sjön med ADLS Gen2
+            - name: Metodtips för att landningsdata i en lake med ADLS Gen2
               href: tutorial-data-flow-write-to-lake.md
-            - name: Transformera data i sjön med delta sjö
+            - name: Transformera data i en lake med Delta Lake
               href: tutorial-data-flow-delta-lake.md
             - name: Omvandla data genom att mappa dataflöden
               href: tutorial-data-flow.md
             - name: Videokurser för dataflödesmappning
               href: data-flow-tutorials.md
-        - name: Förbereda data med datatransformering
+        - name: Förbereda data med dataförändring
           href: wrangling-tutorial.md
         - name: Använda externa tjänster
           items:
@@ -199,9 +199,9 @@
               href: concepts-data-flow-expression-builder.md
             - name: Uttrycksspråk
               href: data-flow-expression-functions.md
-        - name: Förbereda data med Power Query data datatransformering
+        - name: Förbereda data med Power Query data wrangling
           items:
-            - name: Översikt över data datatransformering
+            - name: Översikt över dataförändring
               href: wrangling-overview.md
             - name: Funktioner som stöds
               href: wrangling-functions.md
@@ -433,13 +433,13 @@
           href: connector-zoho.md
     - name: Flytta data
       items:
-        - name: Kopiera data med kopierings aktivitet
+        - name: Kopiera data med kopieringsaktivitet
           href: copy-activity-overview.md
         - name: Övervaka kopieringsaktivitet
           href: copy-activity-monitoring.md
-        - name: Ta bort filer med hjälp av ta bort aktivitet
+        - name: Ta bort filer med aktiviteten Ta bort
           href: delete-activity.md
-        - name: Verktyget kopiera data
+        - name: Verktyget Kopiera data
           href: copy-data-tool.md
         - name: Stöd för format och komprimering
           href: supported-file-formats-and-compression-codecs.md
@@ -466,21 +466,21 @@
     - name: Omvandla data
       href: transform-data.md
       items:
-        - name: Kör data flödes aktivitet
+        - name: Köra Dataflöde aktivitet
           href: control-flow-execute-data-flow-activity.md
-        - name: Kör Power Query aktivitet
+        - name: Köra Power Query aktivitet
           href: control-flow-power-query-activity.md
         - name: Azure Function-aktivitet
           href: control-flow-azure-function-activity.md
         - name: Anpassad aktivitet
           href: transform-data-using-dotnet-custom-activity.md
-        - name: Databricks jar-aktivitet
+        - name: Databricks Jar-aktivitet
           href: transform-data-databricks-jar.md
         - name: Databricks Notebook-aktivitet
           href: transform-data-databricks-notebook.md
-        - name: Databricks python-aktivitet
+        - name: Databricks Python-aktivitet
           href: transform-data-databricks-python.md
-        - name: Datautforskaren kommando aktivitet
+        - name: Datautforskaren kommandoaktivitet
           href: /azure/data-explorer/data-factory-command-activity?toc=/azure/data-factory/toc.json
         - name: Data Lake U-SQL-aktivitet
           href: transform-data-using-data-lake-analytics.md
@@ -488,49 +488,49 @@
           href: transform-data-using-hadoop-hive.md
         - name: HDInsight MapReduce-aktivitet
           href: transform-data-using-hadoop-map-reduce.md
-        - name: HDInsight gris-aktivitet
+        - name: HDInsight Pig-aktivitet
           href: transform-data-using-hadoop-pig.md
         - name: HDInsight Spark-aktivitet
           href: transform-data-using-spark.md
-        - name: Aktivitet för HDInsight-direktuppspelning
+        - name: HDInsight Streaming-aktivitet
           href: transform-data-using-hadoop-streaming.md
-        - name: Machine Learning kör pipeline-aktivitet
+        - name: Machine Learning aktiviteten Execute Pipeline
           href: transform-data-machine-learning-service.md
-        - name: Machine Learning Studio (klassisk) batch execution Activity
+        - name: Machine Learning Studio (klassisk) aktiviteten Batch Execution
           href: transform-data-using-machine-learning.md
-        - name: Machine Learning Studio (klassisk) uppdatera resurs aktivitet
+        - name: Machine Learning Studio (klassisk) Uppdatera resursaktivitet
           href: update-machine-learning-models.md
-        - name: Lagrad procedur aktivitet
+        - name: Lagrad proceduraktivitet
           href: transform-data-using-stored-procedure.md
         - name: Länkade tjänster för Compute
           href: compute-linked-services.md
     - name: Kontrollflöde
       items:
-        - name: Lägg till variabel aktivitet
+        - name: Lägg till variabelaktivitet
           href: control-flow-append-variable-activity.md
-        - name: Kör pipeline-aktivitet
+        - name: aktiviteten Execute Pipeline
           href: control-flow-execute-pipeline-activity.md
-        - name: Filtrera aktivitet
+        - name: Filteraktivitet
           href: control-flow-filter-activity.md
         - name: För varje aktivitet
           href: control-flow-for-each-activity.md
-        - name: Hämta metadata-aktivitet
+        - name: Hämta metadataaktivitet
           href: control-flow-get-metadata-activity.md
-        - name: Om villkors aktivitet
+        - name: aktiviteten If Condition
           href: control-flow-if-condition-activity.md
-        - name: Söknings aktivitet
+        - name: Sökningsaktivitet
           href: control-flow-lookup-activity.md
-        - name: Ange variabel aktivitet
+        - name: Ange variabelaktivitet
           href: control-flow-set-variable-activity.md
-        - name: Växel aktivitet
+        - name: Växla aktivitet
           href: control-flow-switch-activity.md
-        - name: Tills-aktivitet
+        - name: aktiviteten Until
           href: control-flow-until-activity.md
-        - name: Validerings aktivitet
+        - name: Valideringsaktivitet
           href: control-flow-validation-activity.md
-        - name: Vänta-aktivitet
+        - name: Vänteaktivitet
           href: control-flow-wait-activity.md
-        - name: Webb aktivitet
+        - name: Webbaktivitet
           href: control-flow-web-activity.md
         - name: Webhook-aktivitet
           href: control-flow-webhook-activity.md
@@ -600,7 +600,7 @@
           href: data-movement-security-considerations.md
         - name: Dataåtkomststrategier
           href: data-access-strategies.md
-        - name: IP-adresser för Azure integration runtime
+        - name: IP-adresser för Azure Integration Runtime
           href: azure-integration-runtime-ip-addresses.md
         - name: Spara autentiseringsuppgifter i Azure Key Vault
           href: store-credentials-in-key-vault.md
@@ -610,11 +610,11 @@
           href: encrypt-credentials-self-hosted-integration-runtime.md
         - name: Hanterad identitet för Data Factory
           href: data-factory-service-identity.md
-        - name: Kryptera data Factory med kundhanterad nyckel
+        - name: Kryptera datafabrik med kund hanterad nyckel
           href: enable-customer-managed-key.md
         - name: Hanterat virtuellt nätverk
           href: managed-virtual-network-private-endpoint.md
-        - name: Azure privat länk för Data Factory
+        - name: Privat Azure-länk för Data Factory
           href: data-factory-private-link.md
         - name: Säkerhetsbaslinje för Azure
           href: security-baseline.md
@@ -706,17 +706,17 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Skapa ett beroende för utlösare för rullande fönster
           href: tumbling-window-trigger-dependency.md
-        - name: Skapa en utlösare för lagrings händelser
+        - name: Skapa en utlösare för lagringshändelse
           href: how-to-create-event-trigger.md
-        - name: Skapa en anpassad händelse utlösare
+        - name: Skapa en anpassad händelseutlösare
           href: how-to-create-custom-event-trigger.md
-        - name: Referens utlöser metadata i pipeline
+        - name: Referensutlösarmetadata i pipeline
           href: how-to-use-trigger-parameterization.md
     - name: Data Catalog och styrning
       items:
         - name: Ansluta en datafabrik till Azure Purview
           href: connect-data-factory-to-azure-purview.md
-        - name: Identifiera och utforska data i ADF med avdelningens kontroll
+        - name: Identifiera och utforska data i ADF med Purview
           href: how-to-discover-explore-purview-data.md
     - name: Scenarier
       items:
@@ -744,7 +744,7 @@
               href: how-to-sqldb-to-cosmosdb.md
             - name: Dedupe och null-kontroll med kodavsnitt
               href: how-to-data-flow-dedupe-nulls-snippets.md
-            - name: Bearbeta data från AML modeller med hjälp av data flöde
+            - name: Bearbeta data från AML-modeller med hjälp av dataflöde
               href: scenario-dataflow-process-data-aml-models.md
         - name: SSIS-migrering från lokal plats
           items:
@@ -774,9 +774,9 @@
           href: solution-template-databricks-notebook.md
     - name: Förstå prissättningen
       items:
-        - name: Översikt över reserverade data flödes kapacitet
+        - name: Översikt över reserverad kapacitet för dataflöde
           href: data-flow-reserved-capacity-overview.md
-        - name: Data flöde förstå reservations avgifter
+        - name: Dataflöde – förstå reservationsavgifter
           href: data-flow-understand-reservation-charges.md
         - name: Planera och hantera kostnader
           href: plan-manage-costs.md
@@ -793,7 +793,11 @@
         - name: Pipeline-utlösare
           href: pipeline-trigger-troubleshoot-guide.md
         - name: Dataflöden
-          href: data-flow-troubleshoot-guide.md
+          items:
+            - name: Översikt över dataflöden
+              href: data-flow-troubleshoot-guide.md
+            - name: Anslutning och format
+              href: data-flow-troubleshoot-connector-format.md
         - name: Kontinuerlig integrering och distribution
           href: ci-cd-github-troubleshoot-guide.md
         - name: Säkerhet och åtkomstkontroll

@@ -1,6 +1,6 @@
 ---
-title: Vanliga frågor om IoT Solution Accelerators – Azure | Microsoft Docs
-description: I den här artikeln besvaras vanliga frågor och svar om IoT Solution-acceleratorer. Den innehåller länkar till GitHub-databaserna.
+title: Vanliga frågor och svar om IoT-lösningsacceleratorer – Azure | Microsoft Docs
+description: Den här artikeln besvarar vanliga frågor för IoT-lösningsacceleratorer. Den innehåller länkar till GitHub-lagringsplatsen.
 author: dominicbetts
 manager: timlt
 ms.service: iot-accelerators
@@ -8,101 +8,101 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1fd2b8461bd66c826dc4890c331b740c4703f896
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 61993df77b0831926f16339a741a2553e80c2a0d
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96903997"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713848"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Vanliga frågor och svar om IoT-lösningsacceleratorer
 
-Se även de [vanliga frågorna om de anslutna fabriken](iot-accelerators-faq-cf.md).
+Se även Vanliga frågor och [svar om ansluten fabrik.](iot-accelerators-faq-cf.md)
 
-### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Var hittar jag käll koden för lösnings acceleratorerna?
+### <a name="where-can-i-find-the-source-code-for-the-solution-accelerators"></a>Var hittar jag källkoden för lösningsacceleratorerna?
 
-Käll koden lagras i följande GitHub-databaser:
+Källkoden lagras i följande GitHub-lagringsplatsen:
 
-* [Lösnings Accelerator för ansluten fabrik](https://github.com/Azure/azure-iot-connected-factory)
-* [Lösnings Accelerator för enhets simulering](https://github.com/Azure/device-simulation-dotnet)
+* [Lösningsacceleratorn Ansluten fabrik](https://github.com/Azure/azure-iot-connected-factory)
+* [Lösningsaccelerator för enhetssimulering](https://github.com/Azure/azure-iot-pcs-device-simulation)
 
-### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Var kan jag hitta acceleratorer för fjärrövervakning och förebyggande underhålls lösningar?
+### <a name="where-can-i-find-the-remote-monitoring-and-predictive-maintenance-solution-accelerators"></a>Var hittar jag lösningsacceleratorer för fjärrövervakning och förutsägande underhåll?
 
-Från och med den 10 december 2020 har fjärrövervakning och förebyggande underhålls acceleratorer tagits bort från webbplatsen [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) och är inte längre tillgängliga för nya distributioner. GitHub-databaserna för båda acceleratorerna har arkiverats. Koden är fortfarande tillgänglig för alla som har åtkomst till, men databaserna tar inga nya bidrag.
+Från och med 10 december 2020 har acceleratorerna för fjärrövervakning och förutsägande underhåll tagits bort från [Azure IoT-lösningsacceleratorer-platsen](https://www.azureiotsolutions.com/Accelerators) och är inte längre tillgängliga för nya distributioner. GitHub-lagringsplatsen för båda acceleratorerna har arkiverats. Koden är fortfarande tillgänglig för alla att komma åt, men lagringsplatsen tar inte emot några nya bidrag.
 
-### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>Vad händer med mina befintliga fjärrövervakninger och förebyggande underhålls distributioner?
+### <a name="what-happens-to-my-existing-remote-monitoring-and-predictive-maintenance-deployments"></a>Vad händer med mina befintliga distributioner av fjärrövervakning och förutsägande underhåll?
 
-Befintliga distributioner påverkas inte av att du tar bort fjärrövervakning och förebyggande underhålls lösningar och fortsätter att fungera. Förgrenade databaser påverkas inte heller. Huvud databaserna på GitHub har arkiverats.
+Befintliga distributioner påverkas inte av borttagningen av lösningsacceleratorerna för fjärrövervakning och förutsägande underhåll och fortsätter att fungera. Förked lagringsplatsen påverkas inte heller. Huvudlagringsplatsen på GitHub har arkiverats.
 
-### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Hur gör jag för att distribuerar du lösnings Accelerator för enhets simulering?
+### <a name="how-do-i-deploy-device-simulation-solution-accelerator"></a>Hur gör jag för att du lösningsacceleratorn för enhetssimulering?
 
-Information om hur du distribuerar lösnings acceleratorn för enhets simulering finns i GitHub-lagringsplatsen för [enhets simulering](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) .
+Om du vill distribuera lösningsacceleratorn för enhetssimulering kan du gå till GitHub-lagringsplatsen [för](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) enhetssimulering.
 
-### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Var hittar jag information om de borttagna lösnings acceleratorerna?
+### <a name="where-can-i-find-information-about-the-removed-solution-accelerators"></a>Var hittar jag information om de borttagna lösningsacceleratorerna?
 
-Se följande sidor på webbplatsen för föregående versioner:
+Se följande sidor på webbplatsen för tidigare versioner:
 
 * [Fjärrövervakning](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 * [Förebyggande underhåll](/previous-versions/azure/iot-accelerators/about-iot-accelerators)
 
-### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Vilka SDK: er kan jag använda för att utveckla enhets klienter för lösnings acceleratorer?
+### <a name="what-sdks-can-i-use-to-develop-device-clients-for-the-solution-accelerators"></a>Vilka SDK:er kan jag använda för att utveckla enhetsklienter för lösningsacceleratorer?
 
-Du hittar länkar till olika språk (C, .NET, Java, Node.js, python) IoT-enhets-SDK: er i [Microsoft Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) : er GitHub-databaser.
+Du hittar länkar till IoT-enhets-SDK:er för olika språk (C, .NET, Java, Node.js, Python) [i GitHub-lagringsplatsen för Microsoft Azure IoT-SDK:er.](https://github.com/Azure/azure-iot-sdks)
 
-Om du använder DevKit-enheten kan du hitta resurser och exempel i [IoT DEVKIT SDK](https://github.com/Microsoft/devkit-sdk) GitHub-lagringsplatsen.
+Om du använder DevKit-enheten hittar du resurser och exempel på GitHub-lagringsplatsen [för IoT DevKit SDK.](https://github.com/Microsoft/devkit-sdk)
 
-### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Jag är tjänst administratör och vill ändra katalog mappningen mellan min prenumeration och en särskild Azure AD-klient. Vill du Hur gör jag för att slutföra den här uppgiften?
+### <a name="im-a-service-administrator-and-id-like-to-change-the-directory-mapping-between-my-subscription-and-a-specific-azure-ad-tenant-how-do-i-complete-this-task"></a>Jag är tjänstadministratör och vill ändra katalogmappningen mellan min prenumeration och en specifik Azure AD-klientorganisation. Hur gör jag för att du slutföra den här uppgiften?
 
-Se [så här lägger du till en befintlig prenumeration i din Azure AD-katalog](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
+Se [Lägga till en befintlig prenumeration i Azure AD-katalogen](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Jag vill ändra en tjänst administratör eller Co-Administrator när du är inloggad med ett organisations konto
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Jag vill ändra en tjänstadministratör eller Co-Administrator när jag är inloggad med ett organisationskonto
 
-Se Support artikeln [ändra tjänst administratör och Co-Administrator när du är inloggad med ett organisations konto](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
+Se supportartikeln [Ändra tjänstadministratör och Co-Administrator när du är inloggad med ett organisationskonto](https://azure.microsoft.com/support/changing-service-admin-and-co-admin).
 
-### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Varför ser jag det här felet? "Ditt konto har inte rätt behörighet för att skapa en lösning. Kontakta konto administratören eller försök med ett annat konto. "
+### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Varför ser jag det här felet? "Ditt konto har inte rätt behörighet för att skapa en lösning. Kontakta din kontoadministratör eller försök med ett annat konto."
 
-Se följande diagram för vägledning:
+Titta på följande diagram för vägledning:
 
-![Behörighets flöde](media/iot-accelerators-faq/flowchart.png)
+![Flödesschema för behörigheter](media/iot-accelerators-faq/flowchart.png)
 
 > [!NOTE]
-> Om du fortsätter att se felet när du har verifierat att du är global administratör för Azure AD-klienten och en medadministratör för prenumerationen, har du konto administratören som tar bort användaren och tilldelar om nödvändig behörighet i den här ordningen. Lägg först till användaren som global administratör och Lägg sedan till användare som en medadministratör för Azure-prenumerationen. Kontakta [hjälp & support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)om problemen kvarstår.
+> Om du fortsätter att se felet när du har verifierat att du är global administratör för Azure AD-klienten och en medadministratör för prenumerationen, be kontoadministratören ta bort användaren och tilldela om nödvändiga behörigheter i den här ordningen. Lägg först till användaren som global administratör och lägg sedan till användaren som medadministratör för Azure-prenumerationen. Om problemet kvarstår kontaktar du [Hjälp & support .](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
-### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Varför ser jag det här felet när jag har en Azure-prenumeration? "En Azure-prenumeration krävs för att skapa förkonfigurerade lösningar. Du kan skapa ett kostnads fritt utvärderings konto på bara några minuter. "
+### <a name="why-am-i-seeing-this-error-when-i-have-an-azure-subscription-an-azure-subscription-is-required-to-create-pre-configured-solutions-you-can-create-a-free-trial-account-in-just-a-couple-of-minutes"></a>Varför visas det här felet när jag har en Azure-prenumeration? "En Azure-prenumeration krävs för att skapa förkonfigurerade lösningar. Du kan skapa ett kostnadsfritt utvärderingskonto på bara några minuter."
 
-Om du är säker på att du har en Azure-prenumeration verifierar du klient mappningen för din prenumeration och kontrollerar att rätt klient organisation är markerad i list rutan. Om du har verifierat att klienten är korrekt följer du föregående diagram och validerar mappningen av prenumerationen och den här Azure AD-klienten.
+Om du är säker på att du har en Azure-prenumeration verifierar du klientmappningen för din prenumeration och kontrollerar att rätt klient har valts i listrutan. Om du har verifierat att klientorganisationen är korrekt följer du diagrammet ovan och validerar mappningen av din prenumeration och den här Azure AD-klienten.
 
-### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Vad är skillnaden mellan att ta bort en resurs grupp i Azure Portal och klicka på ta bort på en lösnings Accelerator i azureiotsolutions.com?
+### <a name="whats-the-difference-between-deleting-a-resource-group-in-the-azure-portal-and-clicking-delete-on-a-solution-accelerator-in-azureiotsolutionscom"></a>Vad är skillnaden mellan att ta bort en resursgrupp i Azure Portal klicka på Ta bort på en lösningsaccelerator i azureiotsolutions.com?
 
-* Om du tar bort Solution Accelerator i [azureiotsolutions.com](https://www.azureiotsolutions.com/)tar du bort alla resurser som distribuerades när du skapade Solution Accelerator. Om du har lagt till ytterligare resurser i resurs gruppen tas även dessa resurser bort.
-* Om du tar bort resurs gruppen i [Azure Portal](https://portal.azure.com)tar du bara bort resurserna i den resurs gruppen. Du måste också ta bort det Azure Active Directory program som är kopplat till Solution Accelerator.
+* Om du tar bort lösningsacceleratorn [i azureiotsolutions.com](https://www.azureiotsolutions.com/)tar du bort alla resurser som distribuerades när du skapade lösningsacceleratorn. Om du har lagt till ytterligare resurser i resursgruppen tas även dessa resurser bort.
+* Om du tar bort resursgruppen i [Azure Portal](https://portal.azure.com)tar du bara bort resurserna i den resursgruppen. Du måste också ta bort den Azure Active Directory som är associerad med lösningsacceleratorn.
 
-### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Kan jag fortsätta att använda mina befintliga investeringar i Azure IoT Solution-acceleratorer?
+### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>Kan jag fortsätta att utnyttja mina befintliga investeringar i Azure IoT-lösningsacceleratorer?
 
-Ja. Alla lösningar som finns idag fortsätter att fungera i din Azure-prenumeration och käll koden förblir tillgänglig i GitHub.
+Ja. Alla lösningar som finns i dag fortsätter att fungera i din Azure-prenumeration och källkoden förblir tillgänglig i GitHub.
 
-### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hur många IoT Hub-instanser kan jag etablera i en prenumeration?
+### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>Hur många IoT Hub instanser kan jag etablera i en prenumeration?
 
-Som standard kan du etablera [10 IoT-hubbar per prenumeration](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits). Du kan skapa ett [support ärende för Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) för att höja den här gränsen. Därför kan du, eftersom varje lösnings Accelerator etablerar en ny IoT Hub, bara etablera upp till 10 lösnings acceleratorer i en specifik prenumeration.
+Som standard kan du etablera [10 IoT-hubbar per prenumeration.](../azure-resource-manager/management/azure-subscription-service-limits.md#iot-hub-limits) Du kan skapa en [Azure-supportbiljett för](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) att höja den här gränsen. Eftersom varje lösningsaccelerator etablerar en ny IoT Hub kan du därför bara etablera upp till 10 lösningsacceleratorer i en viss prenumeration.
 
-### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hur många Azure Cosmos DB-instanser kan jag etablera i en prenumeration?
+### <a name="how-many-azure-cosmos-db-instances-can-i-provision-in-a-subscription"></a>Hur många Azure Cosmos DB instanser kan jag etablera i en prenumeration?
 
-50. Du kan skapa ett [support ärende för Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) för att höja den här gränsen, men som standard kan du bara etablera 50 Cosmos DB-instanser per prenumeration.
+Femtio. Du kan skapa en [Azure-supportbiljett](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) för att höja den här gränsen, men som standard kan du bara etablera 50 Cosmos DB instanser per prenumeration.
 
-### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Kan jag skapa en lösnings Accelerator om jag har Microsoft Azure för DreamSpark?
+### <a name="can-i-create-a-solution-accelerator-if-i-have-microsoft-azure-for-dreamspark"></a>Kan jag skapa en lösningsaccelerator om jag Microsoft Azure för DreamSpark?
 
 > [!NOTE]
 > Microsoft Azure för DreamSpark kallas nu Microsoft Imagine för studenter.
 
-För närvarande kan du inte skapa en lösnings Accelerator med ett [Microsoft Azure för DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) -konto. Du kan dock skapa ett [kostnads fritt utvärderings konto för Azure](https://azure.microsoft.com/free/) på bara några minuter som gör det möjligt att skapa en lösnings Accelerator.
+För närvarande kan du inte skapa en lösningsaccelerator med [ett Microsoft Azure för Ett DreamSpark-konto.](https://azure.microsoft.com/pricing/member-offers/imagine/) Du kan dock skapa ett kostnadsfritt [utvärderingskonto för Azure](https://azure.microsoft.com/free/) på bara några minuter så att du kan skapa en lösningsaccelerator.
 
 ### <a name="how-do-i-delete-an-azure-ad-tenant"></a>Hur gör jag för att ta bort en Azure AD-klient?
 
-Se Eric Golpess blogg inlägg [genom att ta bort en Azure AD-klient](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant).
+Mer information finns i Eric Golpes blogginlägg Walkthrough of Deleting an Azure AD Tenant (Ta [bort en Azure AD-klientorganisation).](/archive/blogs/ericgolpe/walkthrough-of-deleting-an-azure-ad-tenant)
 
 ### <a name="next-steps"></a>Nästa steg
 
 Du kan även utforska andra funktioner och möjligheter i IoT-lösningsacceleratorerna:
 
-* [Distribuera lösnings Accelerator för ansluten fabrik](quickstart-connected-factory-deploy.md)
+* [Distribuera lösningsacceleratorn Ansluten fabrik](quickstart-connected-factory-deploy.md)
 * [IoT-säkerhet från grunden](../iot-fundamentals/iot-security-ground-up.md)

@@ -26,7 +26,7 @@
       href: tutorial-register-applications.md
     - name: 3 – Skapa användarflöden
       href: tutorial-create-user-flows.md
-    - name: 4 – autentisera användare
+    - name: 4 – Autentisera användare
       items:
         - name: ASP.NET
           href: tutorial-web-app-dotnet.md
@@ -37,7 +37,7 @@
         - name: Python
           href: tutorial-web-app-python.md
           displayName: flask
-    - name: 5 – bevilja API-åtkomst
+    - name: 5 – Bevilja API-åtkomst
       items:
         - name: ASP.NET
           href: tutorial-web-api-dotnet.md
@@ -82,7 +82,7 @@
     - name: Användarupplevelse
       expanded: true
       items:
-        - name: Användar flöden och anpassade principer
+        - name: Användarflöden och anpassade principer
           href: user-flow-overview.md
         - name: Översikt över anpassad princip
           href: custom-policy-overview.md
@@ -96,6 +96,8 @@
       href: policy-keys-overview.md
 - name: Anvisningar
   items:
+    - name: Hantera din klientorganisation
+      href: tenant-management.md
     - name: Appintegrering
       items:
         - name: Registrera ett webbprogram
@@ -107,7 +109,7 @@
             - name: Konfigurera ett SAML-program
               href: saml-service-provider.md
               displayName: 'SP, service provider'
-            - name: Konfigurera alternativ för SAML-program
+            - name: Konfigurera SAML-programalternativ
               href: saml-service-provider-options.md
               displayName: 'SP, service provider'
         - name: Registrera ett Microsoft Graph-program
@@ -134,9 +136,9 @@
           items:
             - name: Återställning av lösenord för självbetjäning
               href: add-password-reset-policy.md
-            - name: Lösen ords ändring via självbetjäning
+            - name: Lösenordsändring via självbetjäning
               href: add-password-change-policy.md
-            - name: Framtvinga lösen ords återställning
+            - name: Tvinga lösenordsåterställning
               href: force-password-reset.md
         - name: Princip för profilredigering
           href: add-profile-editing-policy.md
@@ -159,7 +161,7 @@
           displayName: 'AD-FS, ADFS'
         - name: Amazon
           href: identity-provider-amazon.md
-        - name: Apple (för hands version)
+        - name: Apple (förhandsversion)
           href: identity-provider-apple-id.md
         - name: Azure AD (en enda klient)
           href: identity-provider-azure-ad-single-tenant.md
@@ -169,11 +171,11 @@
           href: identity-provider-azure-ad-b2c.md
         - name: Facebook
           href: identity-provider-facebook.md
-        - name: Allmän OpenId-anslutning
+        - name: Allmän OpenId Connect
           href: identity-provider-generic-openid-connect.md
-        - name: Allmän SAML Identity Provider
+        - name: Allmän SAML-identitetsprovider
           items:
-            - name: Konfigurera en SAML Identity Provider
+            - name: Konfigurera en SAML-identitetsprovider
               href: identity-provider-generic-saml.md
             - name: Konfigurera alternativ för SAML-identitetsprovider
               href: identity-provider-generic-saml-options.md
@@ -265,9 +267,9 @@
           href: configure-tokens.md
     - name: Definiera anpassade attribut
       href: user-flow-custom-attributes.md
-    - name: Riskfylld autentisering
+    - name: Riskbaserad autentisering
       items:
-        - name: Undersök risker med identitets skydd
+        - name: Undersöka risker med Identity Protection
           href: identity-protection-investigate-risk.md
         - name: Konfigurera villkorlig åtkomst
           href: conditional-access-user-flow.md
@@ -306,9 +308,9 @@
       items:
         - name: Partnergalleri för Azure AD B2C
           href: partner-gallery.md
-    - name: Identitets verifiering och-korrektur
+    - name: Identitetsverifiering och bevis
       items:
-        - name: Identitets verifiering och språk partner
+        - name: Identitetsverifierings- och bevispartner
           href: identity-verification-proofing.md
           displayName: 'id verify, id verification, azure ad b2c proofing, id proofing'
         - name: Experian
@@ -321,9 +323,9 @@
           href: partner-lexisnexis.md
         - name: Onfido
           href: partner-onfido.md
-    - name: Skydd mot bedrägerier
+    - name: Bedrägeriskydd
       items:
-        - name: Microsoft Dynamics 365 bedrägeri skydd
+        - name: Bedrägeriskydd i Microsoft Dynamics 365
           href: partner-dynamics-365-fraud-protection.md
           displayName: 'm365 dynamics, dynamics fraud protection, fraud, 365 protection'
         - name: Arkose Labs
@@ -331,7 +333,7 @@
           displayName: 'fraud protection, fraud, Azure AD b2c, protection, B2Cprotection'
     - name: Skydda äldre och lokala appar
       items:
-        - name: Pinga identitet
+        - name: Ping-identitet
           href: partner-ping-identity.md
         - name: Strata
           href: partner-strata.md
@@ -384,7 +386,7 @@
         - name: Användningsanalys
           href: analytics-with-application-insights.md
           displayName: 'application insights, app insights, reports, reporting'
-        - name: Skydda telefonbaserad MFA
+        - name: Säker telefonbaserad MFA
           href: phone-based-mfa.md
           displayName: 'multi-factor authentication, Azure Monitor, Log Analytics, reports, reporting, dashboard'
     - name: Efterlevnad
@@ -397,7 +399,7 @@
           displayName: GDPR
 - name: Referens
   items:
-    - name: Anpassat princip schema
+    - name: Anpassat principschema
       items:
         - name: TrustFrameworkPolicy
           href: trustframeworkpolicy.md
@@ -492,7 +494,7 @@
           href: relyingparty.md
         - name: Anspråkslösare
           href: claim-resolver-overview.md
-    - name: Viktig information om anpassade principer
+    - name: Anpassad information om princip
       href: custom-policy-developer-notes.md
     - name: Tjänstens begränsningar
       href: service-limits.md

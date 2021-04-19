@@ -4,12 +4,12 @@ description: Innehåller en sammanfattning av supportinställningar och begräns
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: bcbac4f6a91ad77d21eb6274aa03d251b8fbfe7c
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 354f64eb86cd545860c47562fba7ff43babe72ca
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515064"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714154"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Stödmatris för SQL Server Backup på virtuella Azure-datorer
 
@@ -22,7 +22,7 @@ Du kan använda Azure Backup för att SQL Server databaser i virtuella Azure-dat
 **Distributioner som stöds** | Virtuella SQL Marketplace Azure-datorer och virtuella icke-Marketplace-datorer (manuellt installerat SQL Server) stöds.
 **Regioner som stöds** | Australien, sydöstra (ASE), Australien, östra (AE), Australien, centrala (AC), Australien, centrala 2 (AC) <br> Brasilien, södra (BRS)<br> Kanada, centrala (QUEBEC), Kanada, östra (CE)<br> Asien, sydöstra (SEA), Asien, östra (EA) <br> USA, östra (EUS), USA, östra 2 (EUS2), USA, västra centrala (WCUS), USA, västra (WUS); USA, västra 2 (WUS 2) USA, norra centrala (NCUS) USA, centrala (CUS) USA, södra centrala (SCUS) <br> Indien, centrala (INC), Indien, södra (INS), Indien, västra <br> Japan, östra (JPE), Japan, västra (JPW) <br> Sydkorea, centrala (KRC), Sydkorea, södra (KRS) <br> Europa, norra (NE), Europa, västra <br> Storbritannien, södra (UKS), Storbritannien, västra (UKW) <br> US Gov, Arizona, US Gov, Virginia, US Gov, Texas, USA DoD, centrala, USA DoD, östra <br> Tyskland, norra, Tyskland, västra centrala <br> Schweiz, norra, Schweiz, västra <br> Frankrike, centrala <br> Kina, östra, Kina, östra 2, Kina, norra, Kina, norra 2
 **Operativsystem som stöds** | Windows Server 2019, Windows Server 2016, Windows Server 2012, Windows Server 2008 R2 SP1 <br/><br/> Linux stöds inte för närvarande.
-**SQL Server-versioner som stöds** | SQL Server 2019 SQL Server 2017 enligt beskrivningen på sidan Sök efter produktlivscykel , SQL Server 2016 och SPS enligt beskrivningen på sidan [Sök](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)produktlivscykel , SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 [](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017) <br/><br/> Enterprise, Standard, Web, Developer, Express.<br><br>Express Local DB-versioner stöds inte.
+**SQL Server-versioner som stöds** | SQL Server 2019 SQL Server 2017 enligt beskrivningen på sidan Sök efter produktlivscykel [,](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202017)SQL Server 2016 och SPS enligt beskrivningen på sidan [Sök](https://support.microsoft.com/lifecycle/search?alpha=SQL%20server%202016%20service%20pack)produktlivscykel , SQL Server 2014, SQL Server 2012, SQL Server 2008 R2, SQL Server 2008 <br/><br/> Enterprise, Standard, Web, Developer, Express.<br><br>Express Local DB-versioner stöds inte.
 **.NET-versioner som stöds** | .NET Framework 4.5.2 eller senare installerat på den virtuella datorn
 
 ## <a name="feature-considerations-and-limitations"></a>Överväganden och begränsningar för funktioner
@@ -39,7 +39,7 @@ _*Storleksgränsen för databasen beror på dataöverföringshastigheten som vi 
 * Lösningen stöds på båda typerna av [distributioner – Azure Resource Manager](../azure-resource-manager/management/deployment-models.md) virtuella datorer och klassiska virtuella datorer.
 * Alla säkerhetskopieringstyper (fullständig/differentiell/logg) och återställningsmodeller (enkel/fullständig/massloggad) stöds.
 * För **skrivskyddade databaser:** fullständiga och endast kopierade fullständiga säkerhetskopior är de enda säkerhetskopieringstyper som stöds.
-* Intern SQL-komprimering stöds om den uttryckligen aktiveras av användaren i säkerhetskopieringsprincipen. Azure Backup åsidosätter standardvärden på instansnivå med satsen COMPRESSION/NO_COMPRESSION, beroende på värdet för den här kontrollen som angetts av användaren.
+* Intern SQL-komprimering stöds om den uttryckligen aktiveras av användaren i säkerhetskopieringspolicyn. Azure Backup åsidosätter standardvärden på instansnivå med satsen COMPRESSION/NO_COMPRESSION, beroende på värdet för den här kontrollen som angetts av användaren.
 * TDE – aktiverad databassäkerhetskopiering stöds. Om du vill återställa en TDE-krypterad databas SQL Server en annan databas måste du först återställa [certifikatet till målservern](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Komprimering av säkerhetskopior för TDE-aktiverade databaser för SQL Server 2016 och senare versioner är tillgänglig, men med lägre överföringsstorlek enligt förklaringen [här](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593).
 * Säkerhetskopierings- och återställningsåtgärder för speglingsdatabaser och ögonblicksbilder av databaser stöds inte.
 * SQL Server **redundansklusterinstans (FCI)** stöds inte.
@@ -97,7 +97,7 @@ Copy-Only Fullständig |  Sekundär
 
 Azure Backup stöder en konsekvent dataöverföringshastighet på 200 Mbit/s för fullständiga och differentiella säkerhetskopior av stora SQL-databaser (på 500 GB). Om du vill använda optimala prestanda ser du till att:
 
-- Den underliggande virtuella datorn (som innehåller SQL Server instansen som är värd för databasen) är konfigurerad med det nödvändiga nätverksgenomflödet. Om det maximala dataflödet för den virtuella datorn är mindre än 200 Mbit/s kan Azure Backup inte överföra data med optimal hastighet.<br></br>Dessutom måste den disk som innehåller databasfilerna ha tillräckligt med etablerat dataflöde. [Läs mer](../virtual-machines/disks-performance.md) om diskgenomflöde och prestanda i virtuella Azure-datorer. 
+- Den underliggande virtuella datorn (som innehåller SQL Server instansen som är värd för databasen) konfigureras med det nödvändiga nätverkets dataflöde. Om det maximala dataflödet för den virtuella datorn är mindre än 200 Mbit/s kan Azure Backup inte överföra data med optimal hastighet.<br>Dessutom måste den disk som innehåller databasfilerna ha tillräckligt med etablerat dataflöde. [Läs mer](../virtual-machines/disks-performance.md) om diskgenomflöde och prestanda i virtuella Azure-datorer. 
 - Processer som körs på den virtuella datorn förbrukar inte vm-bandbredden. 
 - Säkerhetskopieringsschemana är utspridda över en delmängd av databaserna. Flera säkerhetskopieringar som körs samtidigt på en virtuell dator delar nätverkets förbrukningshastighet mellan säkerhetskopiorna. [Läs mer](faq-backup-sql-server.yml#can-i-control-how-many-concurrent-backups-run-on-the-sql-server-) om hur du styr antalet samtidiga säkerhetskopieringar.
 

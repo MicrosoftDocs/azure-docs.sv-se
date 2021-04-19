@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: c972211a48816409ff626396fb5ddc7c939c021b
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: c966051ed5699d408fe83f1e9c862ca78b3282c4
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057889"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714550"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Vad är Azure IoT-lösningsacceleratorer?
 
@@ -29,11 +29,11 @@ Du kan även använda lösningsacceleratorerna som utbildningsverktyg innan du s
 Programkoden i varje lösningsaccelerator innehåller en webbapp som du kan använda för att hantera lösningsacceleratorn.
 
 > [!NOTE]
-> Lösningen för fjärrövervakning och förebyggande underhåll har tagits bort från [Azure IoT Solution Accelerators](https://www.azureiotsolutions.com/Accelerators) -webbplatsen. Mer information finns i [Vad är Azure IoT Solution-acceleratorer? (tidigare version)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
+> Lösningarna för fjärrövervakning och förutsägande underhåll [](https://www.azureiotsolutions.com/Accelerators) har tagits bort från Azure IoT-lösningsacceleratorer platsen. Mer information finns i [Vad är Azure IoT-lösningsacceleratorer? (tidigare version)](/previous-versions/azure/iot-accelerators/about-iot-accelerators).
 
 ## <a name="supported-iot-scenarios"></a>IoT-scenarier som stöds
 
-Det finns för närvarande två lösnings acceleratorer som du kan distribuera:
+Det finns för närvarande två lösningsacceleratorer som du kan distribuera:
 
 ### <a name="connected-factory"></a>Ansluten fabrik
 
@@ -41,7 +41,7 @@ Använd den [Fabriksanslutna lösningsacceleratorn](iot-accelerators-connected-f
 
 Du kan använda instrumentpanelen för ansluten fabrik för att övervaka och hantera dina industrienheter:
 
-:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Skärm bild som visar instrument panelen för den anslutna fabriks lösningen." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
+:::image type="content" source="./media/about-iot-accelerators/cf-dashboard-inline.png" alt-text="Skärmbild som visar instrumentpanelen för lösningen Ansluten fabrik." lightbox="./media/about-iot-accelerators/cf-dashboard-expanded.png":::
 
 ### <a name="device-simulation"></a>Enhetssimulering
 
@@ -49,7 +49,7 @@ Använd [Lösningsacceleratorn för enhetssimulering](iot-accelerators-device-si
 
 Du kan använda webbappen för enhetssimulering för att konfigurera och köra simuleringar:
 
-:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="Skärm bild som visar instrument panelen för enhets simulerings lösning." lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
+:::image type="content" source="./media/about-iot-accelerators/ds-dashboard-inline.png" alt-text="Skärmbild som visar instrumentpanelen för enhetssimuleringslösningen." lightbox="./media/about-iot-accelerators/ds-dashboard-expanded.png":::
 
 ## <a name="design-principles"></a>Designprinciper
 
@@ -68,7 +68,7 @@ De ursprungliga lösningsacceleratorerna skrevs med .NET med hjälp av en MVC-ar
 | Lösningsaccelerator   | Arkitektur  | Språk     |
 | ---------------------- | ------------- | ------------- |
 | Ansluten fabrik      | MVC           | [.NET](https://github.com/Azure/azure-iot-connected-factory)          |
-| Enhetssimulering      | Mikrotjänster | [.NET](https://github.com/Azure/device-simulation-dotnet)          |
+| Enhetssimulering      | Mikrotjänster | [.NET](https://github.com/Azure/azure-iot-pcs-device-simulation)          |
 
 Läs mer om arkitektur för mikrotjänster i [Introduktion till Azure IoT-referensarkitektur](/azure/architecture/reference-architectures/iot/).
 
@@ -80,4 +80,4 @@ Kostnaden för att köra en lösningsaccelerator är den sammanlagda [kostnaden 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill prova någon av IoT-lösningens acceleratorer kan du gå till snabb starts guiden och [prova en ansluten fabriks lösning](quickstart-connected-factory-deploy.md).
+Om du vill prova någon av IoT-lösningsacceleratorerna kan du ta en titt på snabbstarten [Prova en ansluten fabrikslösning](quickstart-connected-factory-deploy.md).

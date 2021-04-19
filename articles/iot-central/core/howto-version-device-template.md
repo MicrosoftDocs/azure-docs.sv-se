@@ -1,6 +1,6 @@
 ---
-title: Förstå versions hantering av enhets mallar för dina Azure IoT Central-appar | Microsoft Docs
-description: Iterera över dina enhetsspecifika mallar genom att skapa nya versioner och utan att påverka dina Live-anslutna enheter
+title: Förstå versionshantering av enhetsmallar för dina Azure IoT Central-| Microsoft Docs
+description: Iterera över dina enhetsmallar genom att skapa nya versioner och utan att påverka dina liveanslutna enheter
 author: dominicbetts
 ms.author: dobett
 ms.date: 11/06/2020
@@ -8,29 +8,29 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 93545c63013c95e3db498b079061da3d9b189efd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03d4b0e43c9f692b90f4ab5d4d136dac92b74de6
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95995768"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715054"
 ---
-# <a name="create-a-new-device-template-version"></a>Skapa en ny version av enhets mal len
+# <a name="create-a-new-device-template-version"></a>Skapa en ny enhetsmallversion
 
-*Den här artikeln gäller lösnings byggare och enhets utvecklare.*
+*Den här artikeln gäller för lösningsbyggare och enhetsutvecklare.*
 
-En enhets mall innehåller ett schema som beskriver hur en enhet samverkar med IoT Central. Dessa interaktioner innehåller telemetri, egenskaper och kommandon. Både enheten och IoT Central programmet förlitar sig på en delad förståelse av schemat för att utbyta information. Du kan bara göra begränsade ändringar i schemat utan att behöva bryta kontraktet, det vill säga att de flesta schema ändringar kräver en ny version av enhets mal len. Versions hantering av enhets mal len låter äldre enheter fortsätta med den schema version som de förstår, medan nyare eller uppdaterade enheter använder en senare schema version.
+En enhetsmall innehåller ett schema som beskriver hur en enhet interagerar med IoT Central. Dessa interaktioner omfattar telemetri, egenskaper och kommandon. Både enheten och IoT Central förlitar sig på delad förståelse av det här schemat för att utbyta information. Du kan bara göra begränsade ändringar i schemat utan att bryta kontraktet. Därför kräver de flesta schemaändringar en ny version av enhetsmallen. Med versionshantering av enhetsmallen kan äldre enheter fortsätta med den schemaversion som de förstår, medan nyare eller uppdaterade enheter använder en senare schemaversion.
 
-Schemat i en enhets mall definieras i enhets modellen och dess gränssnitt. Enhets mallar innehåller annan information, till exempel moln egenskaper, visnings anpassningar och vyer. Om du gör ändringar i dessa delar av enhets mal len som inte definierar hur enheten utbyter data med IoT Central, behöver du inte version av mallen.
+Schemat i en enhetsmall definieras i enhetsmodellen och dess gränssnitt. Enhetsmallar innehåller annan information, till exempel molnegenskaper, visningsanpassningar och vyer. Om du gör ändringar i de delar av enhetsmallen som inte definierar hur enheten utbyter data med IoT Central behöver du inte versionsversionsmallen.
 
-Du måste alltid publicera en uppdaterad enhets mall innan en operatör kan använda den. IoT Central hindrar dig från att publicera större ändringar i en enhets mall utan att först ha den första versionen av mallen.
+Du måste alltid publicera en uppdaterad enhetsmall innan en operatör kan använda den. IoT Central förhindrar att du publicerar större ändringar i en enhetsmall utan att först skapa en version av mallen.
 
 > [!NOTE]
-> Mer information om hur du skapar en enhets mall finns i [Konfigurera och hantera en enhets mall](howto-set-up-template.md)
+> Mer information om hur du skapar en enhetsmall finns [i Konfigurera och hantera en enhetsmall](howto-set-up-template.md)
 
-## <a name="versioning-rules"></a>Versions regler
+## <a name="versioning-rules"></a>Versionshanteringsregler
 
-I det här avsnittet sammanfattas de versions regler som gäller för enhets mallar. Både enhets modeller och gränssnitt har versions nummer. I följande kodfragment visas enhets modellen för en termostat-enhet. Enhets modellen har ett enda gränssnitt. Du kan se versions numret i slutet av `@id` fältet.
+I det här avsnittet sammanfattas de versionsregler som gäller för enhetsmallar. Både enhetsmodeller och gränssnitt har versionsnummer. I följande kodfragment visas enhetsmodellen för en termostatenhet. Enhetsmodellen har ett enda gränssnitt. Du kan se versionsnumret i slutet av `@id` fältet.
 
 ```json
 {
@@ -45,69 +45,69 @@ I det här avsnittet sammanfattas de versions regler som gäller för enhets mal
 }
 ```
 
-Om du vill visa den här informationen i IoT Central användar gränssnitt väljer du **Visa identitet** i redigeraren för enhets mal len:
+Om du vill visa den här informationen IoT Central användargränssnittet väljer du **Visa identitet i** redigeraren för enhetsmallen:
 
-:::image type="content" source="media/howto-version-device-template/view-identity.png" alt-text="Visa identiteten för ett gränssnitt för att se versions numret":::
+:::image type="content" source="media/howto-version-device-template/view-identity.png" alt-text="Visa identiteten för ett gränssnitt för att se versionsnumret":::
 
 I följande lista visas de regler som avgör när du måste skapa en ny version:
 
-* När en enhets modell har publicerats kan du inte ta bort några gränssnitt, även i en ny version av enhets mal len.
-* När en enhets modell har publicerats kan du lägga till ett gränssnitt om du skapar en ny version av enhets mal len.
-* När en enhets modell har publicerats kan du ersätta ett gränssnitt med en nyare version om du skapar en ny version av enhets mal len. Om till exempel den sensor v1-mallen använder termostat v1-gränssnittet, kan du skapa en sensor v2-enhets mal len som använder termostat v2-gränssnittet.
-* När ett gränssnitt har publicerats kan du inte ta bort något gränssnitts innehåll, även i en ny version av enhets mal len.
-* När ett gränssnitt har publicerats kan du lägga till objekt i innehållet i ett gränssnitt om du skapar en ny version av gränssnittet och enhets mal len. Objekt som du kan lägga till i gränssnittet omfattar telemetri, egenskaper och kommandon.
-* När ett gränssnitt har publicerats kan du göra icke-schema ändringar i befintliga objekt i gränssnittet om du skapar en ny version av gränssnittet och enhets mal len. Icke-schema delar av ett gränssnitts objekt inkluderar visnings namnet och den semantiska typen. Schema delarna av ett gränssnitts objekt som du inte kan ändra är namn, kapacitets typ och schema.
+* När en enhetsmodell har publicerats kan du inte ta bort några gränssnitt, inte ens i en ny version av enhetsmallen.
+* När en enhetsmodell har publicerats kan du lägga till ett gränssnitt om du skapar en ny version av enhetsmallen.
+* När en enhetsmodell har publicerats kan du ersätta ett gränssnitt med en nyare version om du skapar en ny version av enhetsmallen. Om enhetsmallen sensor v1 till exempel använder termostatens v1-gränssnitt kan du skapa en sensor v2-enhetsmall som använder termostat v2-gränssnittet.
+* När ett gränssnitt har publicerats kan du inte ta bort något av gränssnittsinnehållet, inte ens i en ny version av enhetsmallen.
+* När ett gränssnitt har publicerats kan du lägga till objekt i innehållet i ett gränssnitt om du skapar en ny version av gränssnittet och enhetsmallen. Objekt som du kan lägga till i gränssnittet inkluderar telemetri, egenskaper och kommandon.
+* När ett gränssnitt har publicerats kan du göra icke-schemaändringar av befintliga objekt i gränssnittet om du skapar en ny version av gränssnittet och enhetsmallen. Delar av ett gränssnittsobjekt som inte är schemadelar innehåller visningsnamnet och semantiktypen. Schemadelarna för ett gränssnittsobjekt som du inte kan ändra är namn, kapacitetstyp och schema.
 
-I följande avsnitt får du stegvisa exempel på hur du ändrar enhetsspecifika i IoT Central.
+I följande avsnitt går vi igenom några exempel på hur du ändrar enhetsmallar i IoT Central.
 
-## <a name="customize-the-device-template-without-versioning"></a>Anpassa enhets mal len utan versions hantering
+## <a name="customize-the-device-template-without-versioning"></a>Anpassa enhetsmallen utan versionshantering
 
-Vissa delar av enhetens funktioner kan redige ras utan att du behöver version av enhets mal len och gränssnitten. Till exempel innehåller vissa av dessa fält visnings namn, semantisk typ, minimalt värde, högsta värde, decimaler, färg, enhet, visnings enhet, kommentar och beskrivning. För att lägga till en av dessa anpassningar:
+Vissa element i dina enhetsfunktioner kan redigeras utan att du behöver skapa en version av enhetsmallen och gränssnitten. Några av dessa fält är till exempel visningsnamn, semantisk typ, minimivärde, maxvärde, decimaler, färg, enhet, visningsenhet, kommentar och beskrivning. Så här lägger du till en av dessa anpassningar:
 
-1. Gå till **Device templates** -sidan.
-1. Välj den enhets mall som du vill anpassa.
-1. Välj fliken **Anpassa** .
-1. Alla funktioner som definierats i din enhets modell visas här. Du kan redigera, Spara och använda alla dessa fält utan att behöva version av din enhets mall. Om det finns fält som du vill redigera som är skrivskyddade måste du version av enhets mal len för att ändra dem. Välj ett fält som du vill redigera och ange i alla nya värden.
-1. Välj **Spara**. Dessa värden åsidosätter nu allt som ursprungligen sparades i enhets mal len och används i hela programmet.
+1. Gå till **sidan Enhetsmallar.**
+1. Välj den enhetsmall som du vill anpassa.
+1. Välj **fliken** Anpassa.
+1. Alla funktioner som definieras i din enhetsmodell visas här. Du kan redigera, spara och använda alla dessa fält utan att behöva versionsversionen av enhetsmallen. Om det finns fält som du vill redigera som är skrivskyddade måste du skapa en version av enhetsmallen för att ändra dem. Välj ett fält som du vill redigera och ange eventuella nya värden.
+1. Välj **Spara**. Nu åsidosätter dessa värden allt som ursprungligen sparades i enhetsmallen och som används i hela programmet.
 
-## <a name="version-a-device-template"></a>Version en enhets mall
+## <a name="version-a-device-template"></a>Versionsversion för en enhetsmall
 
-När du skapar en ny version av din enhets mall skapas en utkast version av mallen där enhets modellen kan redige ras. Alla publicerade gränssnitt förblir publicerade tills de är individuellt versioner. Om du vill ändra ett publicerat gränssnitt måste du först skapa en ny version av enhets mal len.
+När du skapar en ny version av enhetsmallen skapas ett utkast av mallen där enhetsmodellen kan redigeras. Alla publicerade gränssnitt förblir publicerade tills de har versionerna individuellt. Om du vill ändra ett publicerat gränssnitt skapar du först en ny version av enhetsmallen.
 
-Den enda version som enhets mal len är när du försöker redigera en del av enhets modellen som du inte kan redigera i avsnittet anpassningar.
+Versionsredigera endast enhetsmallen när du försöker redigera en del av enhetsmodellen som du inte kan redigera i avsnittet om anpassningar.
 
-Till version av en enhets mall:
+Versionsversion av en enhetsmall:
 
-1. Gå till **Device templates** -sidan.
-1. Välj den enhets mall som du försöker att köra en version av.
-1. Välj knappen **version** överst på sidan och ge mallen ett nytt namn. IoT Central föreslår ett nytt namn som du kan redigera.
+1. Gå till **sidan Enhetsmallar.**
+1. Välj den enhetsmall som du försöker versions versionera.
+1. Välj knappen **Version** överst på sidan och ge mallen ett nytt namn. IoT Central föreslår ett nytt namn som du kan redigera.
 1. Välj **Skapa**.
-1. Nu är din enhets mall i utkast läge. Du kan se att gränssnitten fortfarande är låsta. Versions gränssnitt som du vill ändra.
+1. Nu är enhetsmallen i utkastläge. Du kan se att dina gränssnitt fortfarande är låsta. Versionsversion för alla gränssnitt som du vill ändra.
 
 ## <a name="version-an-interface"></a>Version ett gränssnitt
 
-Med versions hanterings gränssnittet kan du lägga till, uppdatera och ta bort funktionerna i gränssnittet som du redan har skapat.
+Med versionshantering av ett gränssnitt kan du lägga till och uppdatera funktioner i det gränssnitt som du redan har skapat.
 
-Till version ett gränssnitt:
+Så här versionsversionar du ett gränssnitt:
 
-1. Gå till **Device templates** -sidan.
-1. Välj den enhets mall som du har i utkast läge.
-1. Välj det gränssnitt som är i publicerat läge som du vill använda som version och redigera.
-1. Välj knappen **version** överst på gränssnitts sidan.
+1. Gå till **sidan Enhetsmallar.**
+1. Välj den enhetsmall som du har i utkastläge.
+1. Välj det gränssnitt som är i publicerat läge som du vill versionsversiona och redigera.
+1. Välj **knappen Version** längst upp på gränssnittssidan.
 1. Välj **Skapa**.
-1. Nu är ditt gränssnitt i utkast läge. Du kan lägga till eller redigera funktioner i gränssnittet utan att behöva bryta befintliga anpassningar och vyer.
+1. Nu är gränssnittet i utkastläge. Du kan lägga till eller redigera funktioner i ditt gränssnitt utan att bryta befintliga anpassningar och vyer.
 
-## <a name="migrate-a-device-across-versions"></a>Migrera en enhet över versioner
+## <a name="migrate-a-device-across-versions"></a>Migrera en enhet mellan versioner
 
-Du kan skapa flera versioner av enhets mal len. Med tiden har du flera anslutna enheter som använder dessa enhetsspecifika mallar. Du kan migrera enheter från en version av din enhets mall till en annan. Följande steg beskriver hur du migrerar en enhet:
+Du kan skapa flera versioner av enhetsmallen. Med tiden har du flera anslutna enheter som använder dessa enhetsmallar. Du kan migrera enheter från en version av enhetsmallen till en annan. Följande steg beskriver hur du migrerar en enhet:
 
 1. Gå till **Enheter**-sidan.
-1. Välj den enhet som du vill migrera till en annan version.
-1. Välj **migrera**:  :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="Välj alternativet för att börja migrera en enhet":::
-1. Välj enhets mal len med det versions nummer som du vill migrera enheten till och välj **migrera**.
+1. Välj den enhet som du behöver migrera till en annan version.
+1. Välj **Migrera:**  :::image type="content" source="media/howto-version-device-template/migrate-device.png" alt-text="Välj alternativet för att börja migrera en enhet":::
+1. Välj enhetsmallen med det versionsnummer som du vill migrera enheten till och välj **Migrera**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du är en operatör eller Solution Builder är ett föreslaget nästa steg att lära dig [hur du hanterar dina enheter](./howto-manage-devices.md).
+Om du är operatör eller lösningsbyggare är ett förslag på nästa steg att lära [dig hur du hanterar dina enheter.](./howto-manage-devices.md)
 
-Om du är en enhets utvecklare är ett förslag till nästa steg att läsa om [Azure IoT Edge enheter och Azure IoT Central](./concepts-iot-edge.md).
+Om du är enhetsutvecklare är ett förslag på nästa steg att läsa om Azure IoT Edge [enheter och Azure IoT Central](./concepts-iot-edge.md).

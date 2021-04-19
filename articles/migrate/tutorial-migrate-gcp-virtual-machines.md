@@ -1,188 +1,190 @@
 ---
-title: Identifiera, utvärdera och migrera Google Cloud Platform (GCP) VM-instanser till Azure
-description: I den här artikeln beskrivs hur du migrerar virtuella GCP-datorer till Azure med Azure Migrate.
+title: Identifiera, utvärdera och migrera virtuella Google Cloud Platform instanser (GCP) till Azure
+description: Den här artikeln beskriver hur du migrerar virtuella GCP-datorer till Azure med Azure Migrate.
 author: deseelam
 ms.author: deseelam
 ms.manager: bsiva
 ms.topic: tutorial
 ms.date: 08/19/2020
 ms.custom: MVC
-ms.openlocfilehash: 12b8e30b0107b6b008cbd6467ada7c2d44f5e6d6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9965557115206cd512450d3411a70390f2249153
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98871645"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107713533"
 ---
-# <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Identifiera, utvärdera och migrera Google Cloud Platform virtuella datorer (GCP) till Azure
+# <a name="discover-assess-and-migrate-google-cloud-platform-gcp-vms-to-azure"></a>Identifiera, utvärdera och migrera virtuella Google Cloud Platform (GCP) till Azure
 
-I den här självstudien lär du dig att identifiera, utvärdera och migrera Google Cloud Platform virtuella datorer (VM) till virtuella Azure-datorer med hjälp av Azure Migrate: Server utvärdering och Azure Migrate: Migreringsverktyg för Server.
+Den här självstudien visar hur du identifierar, utvärderar och migrerar virtuella Google Cloud Platform-datorer (GCP) till virtuella Azure-datorer med hjälp av Azure Migrate: Server Assessment och Azure Migrate: Server Migration Tools.
 
 I den här självstudien får du lära dig hur man:
 > [!div class="checklist"]
 >
-> * Verifiera krav för migrering.
-> * Förbered Azure-resurser med Azure Migrate: Server-migrering. Konfigurera behörigheter för ditt Azure-konto och resurser för att arbeta med Azure Migrate.
-> * Förbered GCP VM-instanser för migrering.
-> * Lägg till verktyget Azure Migrate: Migreringsverktyg i Azure Migrate Hub.
-> * Konfigurera replikerings enheten och distribuera konfigurations servern.
-> * Installera mobilitets tjänsten på virtuella GCP-datorer som du vill migrera.
+> * Kontrollera förhandskrav för migrering.
+> * Förbereda Azure-resurser med Azure Migrate: Servermigrering. Konfigurera behörigheter för ditt Azure-konto och dina resurser så att de fungerar med Azure Migrate.
+> * Förbereda GCP VM-instanser för migrering.
+> * Lägg till Azure Migrate: Server Migration i Azure Migrate hubben.
+> * Konfigurera replikeringsinstallationen och distribuera konfigurationsservern.
+> * Installera tjänsten Mobility virtuella GCP-datorer som du vill migrera.
 > * Aktivera replikering för virtuella datorer.
-> * Spåra och övervaka replikeringsstatus. 
-> * Kör en testmigrering för att se till att allt fungerar som förväntat.
+> * Spåra och övervaka replikeringsstatusen. 
+> * Kör en testmigrering för att kontrollera att allt fungerar som förväntat.
 > * Kör en fullständig migrering till Azure.
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/pricing/free-trial/) innan du börjar.
 
 ## <a name="discover-and-assess"></a>Identifiera och utvärdera
 
-Innan du migrerar till Azure rekommenderar vi att du utför en utvärdering av VM-identifiering och migrering. Den här utvärderingen hjälper till att anpassa dina virtuella GCP-datorer för migrering till Azure och beräkna möjliga kostnader för Azure-körning.
+Innan du migrerar till Azure rekommenderar vi att du utför en identifiering och migrering av virtuella datorer. Den här utvärderingen hjälper dig att ändra storlek på dina virtuella GCP-datorer för migrering till Azure och uppskatta potentiella Azure-körningskostnader.
 
 Konfigurera en utvärdering på följande sätt:
 
-1. Följ [själv studie kursen](./tutorial-discover-gcp.md) för att konfigurera Azure och förbereda dina virtuella GCP-datorer för en utvärdering. Tänk på följande:
+1. Följ [självstudien](./tutorial-discover-gcp.md) för att konfigurera Azure och förbereda dina virtuella GCP-datorer för en utvärdering. Tänk på följande:
 
-    - Azure Migrate använder lösenordsautentisering vid identifiering av GCP VM-instanser. GCP-instanser har inte stöd för lösenordsautentisering som standard. Innan du kan identifiera måste du aktivera lösenordsautentisering.
-        - Tillåt WinRM-port 5985 (HTTP) för Windows-datorer. Detta tillåter fjärr-WMI-anrop.
+    - Azure Migrate använder lösenordsautentisering vid identifiering av virtuella GCP-datorinstanser. GCP-instanser stöder inte lösenordsautentisering som standard. Innan du kan identifiera måste du aktivera lösenordsautentisering.
+        - För Windows-datorer tillåter du WinRM-port 5985 (HTTP). Detta tillåter fjärr-WMI-anrop.
         - För Linux-datorer:
             1. Logga in på varje Linux-dator.
-            2. Öppna filen sshd_config: vi/etc/ssh/sshd_config
-            3. Leta upp raden **PasswordAuthentication** i filen och ändra värdet till **Ja**.
-            4. Spara filen och Stäng den. Starta om SSH-tjänsten.
-    - Om du använder en rot användare för att identifiera dina virtuella Linux-datorer, måste du kontrol lera att rot inloggningen är tillåten på de virtuella datorerna.
+            2. Öppna filen sshd_config : vi /etc/ssh/sshd_config
+            3. Leta upp raden **PasswordAuthentication** i filen och ändra värdet till **ja.**
+            4. Spara filen och stäng den. Starta om ssh-tjänsten.
+    - Om du använder en rotanvändare för att identifiera dina virtuella Linux-datorer ser du till att rotinloggning tillåts på de virtuella datorerna.
         1. Logga in på varje Linux-dator
-        2. Öppna filen sshd_config: vi/etc/ssh/sshd_config
-        3. Leta upp raden **PermitRootLogin** i filen och ändra värdet till **Ja**.
-        4. Spara filen och Stäng den. Starta om SSH-tjänsten.
+        2. Öppna filen sshd_config : vi /etc/ssh/sshd_config
+        3. Leta upp raden **PermitRootLogin i filen** och ändra värdet till **ja.**
+        4. Spara filen och stäng den. Starta om ssh-tjänsten.
 
-2. Följ sedan den här [självstudien](./tutorial-assess-gcp.md) för att skapa en Azure Migrate-projekt och-apparat för att identifiera och utvärdera dina virtuella GCP-datorer.
+2. Följ sedan den här [självstudien](./tutorial-assess-gcp.md) för att konfigurera Azure Migrate projekt och installation för att identifiera och utvärdera dina virtuella GCP-datorer.
 
-Även om vi rekommenderar att du testar en utvärdering är inte ett obligatoriskt steg att utföra en utvärdering för att kunna migrera virtuella datorer.
+Även om vi rekommenderar att du provar en utvärdering är det inte obligatoriskt att utföra en utvärdering för att kunna migrera virtuella datorer.
 
 
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-- Se till att de virtuella GCP-datorerna som du vill migrera kör en operativ system version som stöds. Virtuella GCP-datorer behandlas som fysiska datorer för migreringen. Granska de [operativ system och kernel-versioner som stöds](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) för migreringen av den fysiska servern. Du kan använda standard kommandon som *hostnamectl* eller *uname-a* för att kontrol lera operativ system och kernel-versioner för dina virtuella Linux-datorer.  Vi rekommenderar att du utför en testmigrering för att verifiera att den virtuella datorn fungerar som förväntat innan du fortsätter med den faktiska migreringen.
-- Se till att dina virtuella GCP-datorer uppfyller de [konfigurationer som stöds](./migrate-support-matrix-physical-migration.md#physical-server-requirements) för migrering till Azure.
-- Kontrol lera att de virtuella GCP-datorerna som du replikerar till Azure uppfyller [kraven för virtuella Azure](./migrate-support-matrix-physical-migration.md#azure-vm-requirements) -datorer.
-- Vissa ändringar krävs på de virtuella datorerna innan du migrerar dem till Azure.
-    - För vissa operativ system gör Azure Migrate dessa ändringar automatiskt.
-    - Det är viktigt att du gör dessa ändringar innan du påbörjar migrering. Om du migrerar den virtuella datorn innan du gör ändringen kanske den virtuella datorn inte startar i Azure.
-Granska de [Windows](prepare-for-migration.md#windows-machines) -och [Linux](prepare-for-migration.md#linux-machines) -ändringar du behöver göra.
+- Kontrollera att de virtuella GCP-datorer som du vill migrera kör en operativsystemversion som stöds. Virtuella GCP-datorer behandlas som fysiska datorer vid migreringen. Granska operativsystem [och kernelversioner som stöds för arbetsflödet](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines) för migrering av fysisk server. Du kan använda standardkommandon *som hostnamectl* eller *uname -a* för att kontrollera operativsystem- och kernel-versionerna för dina virtuella Linux-datorer.  Vi rekommenderar att du utför en testmigrering för att verifiera om den virtuella datorn fungerar som förväntat innan du fortsätter med den faktiska migreringen.
+- Kontrollera att dina virtuella GCP-datorer uppfyller de [konfigurationer som stöds](./migrate-support-matrix-physical-migration.md#physical-server-requirements) för migrering till Azure.
+- Kontrollera att de virtuella GCP-datorerna som du replikerar till Azure uppfyller kraven för [virtuella Azure-datorer.](./migrate-support-matrix-physical-migration.md#azure-vm-requirements)
+- Det krävs vissa ändringar på de virtuella datorerna innan du migrerar dem till Azure.
+    - För vissa operativsystem gör Azure Migrate dessa ändringar automatiskt.
+    - Det är viktigt att göra dessa ändringar innan du påbörjar migreringen. Om du migrerar den virtuella datorn innan du gör ändringen kanske den virtuella datorn inte startar i Azure.
+Granska [de Windows-](prepare-for-migration.md#windows-machines) [och Linux-ändringar](prepare-for-migration.md#linux-machines) du behöver göra.
 
 ### <a name="prepare-azure-resources-for-migration"></a>Förbereda Azure-resurser för migrering
 
-Förbered Azure för migrering med Azure Migrate: Migreringsverktyg för Server.
+Förbered Azure för migrering med Azure Migrate: Server Migration Tool.
 
 **Uppgift** | **Information**
 --- | ---
-**Skapa ett Azure Migrate-projekt** | Ditt Azure-konto behöver deltagar-eller ägar behörighet för att [skapa ett nytt projekt](./create-manage-projects.md).
-**Verifiera behörigheter för ditt Azure-konto** | Ditt Azure-konto måste ha behörighet att skapa en virtuell dator och skriva till en Azure-hanterad disk.
+**Skapa ett Azure Migrate-projekt** | Ditt Azure-konto måste ha behörigheten Deltagare eller Ägare för [att skapa ett nytt projekt.](./create-manage-projects.md)
+**Verifiera behörigheter för ditt Azure-konto** | Ditt Azure-konto måste ha behörighet att skapa en virtuell dator och skriva till en azure-hanterad disk.
 
 ### <a name="assign-permissions-to-create-project"></a>Tilldela behörigheter för att skapa projekt
 
 1. I Azure-portalen öppnar du prenumerationen och väljer **Åtkomstkontroll (IAM)** .
-2. Leta upp det relevanta kontot i **kontrol lera åtkomst** och klicka på det för att visa behörigheter.
-3. Du bör ha behörighet som **deltagare** eller **ägare** .
+2. I **Kontrollera åtkomst,** leta upp relevant konto och klicka på det för att visa behörigheter.
+3. Du bör ha **behörighet som** deltagare **eller** ägare.
     - Om du nyligen skapade ett kostnadsfritt Azure-konto är du ägare av prenumerationen.
     - Om du inte är prenumerationens ägare kan du be ägaren tilldela dig rollen.
 
 ### <a name="assign-azure-account-permissions"></a>Tilldela behörigheter för Azure-konto
 
-Tilldela Azure-kontot rollen virtuell dator deltagare. Detta ger behörighet att:
+Tilldela rollen Virtuell datordeltagare till Azure-kontot. Detta ger behörighet att:
 
 - Skapa en virtuell dator i den valda resursgruppen.
 - Skapa en virtuell dator i det valda virtuella nätverket.
-- Skriv till en Azure-hanterad disk. 
+- Skriva till en Azure-hanterad disk. 
 
 ### <a name="create-an-azure-network"></a>Skapa ett Azure-nätverk
 
-[Konfigurera](../virtual-network/manage-virtual-network.md#create-a-virtual-network) ett virtuellt Azure-nätverk (VNet). När du replikerar till Azure är de virtuella Azure-datorerna som skapas anslutna till det virtuella Azure-nätverket som du anger när du konfigurerar migrering.
+[Konfigurera ett](../virtual-network/manage-virtual-network.md#create-a-virtual-network) virtuellt Azure-nätverk (VNet). När du replikerar till Azure är de virtuella Azure-datorer som skapas ansluten till det virtuella Azure-nätverk som du anger när du konfigurerade migreringen.
 
 ## <a name="prepare-gcp-instances-for-migration"></a>Förbereda GCP-instanser för migrering
 
-För att förbereda för GCP till Azure-migrering måste du förbereda och distribuera en replikeringsprincip för migrering.
+För att förbereda för migrering från GCP till Azure måste du förbereda och distribuera en replikeringsinstallation för migrering.
 
-### <a name="prepare-a-machine-for-the-replication-appliance"></a>Förbereda en dator för replikerings enheten
+### <a name="prepare-a-machine-for-the-replication-appliance"></a>Förbereda en dator för replikeringsinstallationen
 
-Azure Migrate: Server-migreringen använder en replikeringsfil för att replikera datorer till Azure. Replikeringssystemet kör följande komponenter.
+Azure Migrate: Server Migration använder en replikeringsinstallation för att replikera datorer till Azure. Replikeringsinstallationen kör följande komponenter.
 
-- **Konfigurations** Server: konfigurations servern samordnar kommunikationen mellan GCP VM: ar och Azure och hanterar datareplikering.
-- **Processerver**: processervern fungerar som en gateway för replikering. Den tar emot replikeringsdata, optimerar dem med cachelagring, komprimering och kryptering och skickar dem till ett cache Storage-konto i Azure.
+- **Konfigurationsserver:** Konfigurationsservern samordnar kommunikationen mellan de virtuella GCP-datorerna och Azure och hanterar datareplikering.
+- **Processerserver:** Processerpservern fungerar som en replikeringsgateway. Den tar emot replikeringsdata, optimerar dem med cachelagring, komprimering och kryptering och skickar dem till ett cachelagringskonto i Azure.
 
-Förbered distribution av installationer enligt följande:
+Förbered distributionen av installationen på följande sätt:
 
-- Konfigurera en separat virtuell GCP-dator för att vara värd för replikerings enheten. Den här instansen måste köra Windows Server 2012 R2 eller Windows Server 2016. [Granska](./migrate-replication-appliance.md#appliance-requirements) maskin vara, program vara och nätverks krav för enheten.
-- Installationen bör inte installeras på en virtuell käll dator som du vill replikera eller på Azure Migrate identifierings-och utvärderings installation som du kan ha installerat tidigare. Den bör distribueras på en annan virtuell dator.
-- De virtuella datorer som ska migreras måste ha en nätverks rad syn för GCP. Konfigurera nödvändiga brand Väggs regler för att aktivera detta. Det rekommenderas att du distribuerar replikeringen i samma VPC-nätverk som de virtuella käll datorerna som ska migreras. Om replikerings enheten måste finnas i en annan VPC måste VPCs vara ansluten via VPC-peering.
-- Den virtuella GCP-datorns virtuella datorer kommunicerar med replikeringssystemet på portarna HTTPS 443 (kontroll av kanal dirigering) och TCP 9443 (data transport) inkommande för hantering av replikering och data överföring för replikering. Replikeringssystemet i vänder sig till att dirigera och skicka replikeringsdata till Azure via port HTTPS 443 utgående. Om du vill konfigurera de här reglerna redigerar du reglerna för inkommande/utgående säkerhets grupp med lämpliga portar och käll-IP-information.
+- Konfigurera en separat virtuell GCP-dator som värd för replikeringsinstallationen. Den här instansen måste köra Windows Server 2012 R2 eller Windows Server 2016. [Granska](./migrate-replication-appliance.md#appliance-requirements) maskinvaru-, programvaru- och nätverkskraven för installationen.
+- Installationen bör inte installeras på en virtuell källdatorn som du vill replikera eller på den Azure Migrate identifierings- och utvärderingsinstallation som du kanske har installerat tidigare. Den bör distribueras på en annan virtuell dator.
+- De virtuella GCP-käll datorerna som ska migreras bör ha en nätverkslinje för replikeringsinstallationen. Konfigurera nödvändiga brandväggsregler för att aktivera detta. Vi rekommenderar att replikeringsinstallationen distribueras i samma VPC-nätverk som de virtuella käll datorer som ska migreras. Om replikeringsinstallationen måste finnas i en annan VPC måste VPC:erna anslutas via VPC-peering.
+- De virtuella GCP-käll datorerna kommunicerar med replikeringsinstallationen på portarna HTTPS 443 (kontrollkanalorkestrering) och TCP 9443 (datatransport) inkommande för replikeringshantering och överföring av replikeringsdata. Replikeringsinstallationen orkestrerar och skickar replikeringsdata till Azure via port HTTPS 443 utgående. Konfigurera de här reglerna genom att redigera reglerna för inkommande/utgående säkerhetsgrupp med lämpliga portar och käll-IP-information.
 
-   ![GCP brand Väggs regler](./media/tutorial-migrate-gcp-virtual-machines/gcp-firewall-rules.png)
+   ![GCP-brandväggsregler](./media/tutorial-migrate-gcp-virtual-machines/gcp-firewall-rules.png)
      
  
-   ![Redigera brand Väggs regler](./media/tutorial-migrate-gcp-virtual-machines/gcp-edit-firewall-rule.png)
+   ![Redigera brandväggsregler](./media/tutorial-migrate-gcp-virtual-machines/gcp-edit-firewall-rule.png)
 
-- Replikerings enheten använder MySQL. Granska [alternativen](migrate-replication-appliance.md#mysql-installation) för att installera MySQL på-enheten.
-- Granska de Azure-URL: er som krävs för att replikeringssystemet ska kunna komma åt [offentliga](migrate-replication-appliance.md#url-access) och [offentliga](migrate-replication-appliance.md#azure-government-url-access) moln.
+- Replikeringsinstallationen använder MySQL. Granska [alternativen för](migrate-replication-appliance.md#mysql-installation) att installera MySQL på installationen.
+- Granska de Azure-URL:er som krävs för att replikeringsinstallationen ska [få åtkomst till](migrate-replication-appliance.md#url-access) offentliga moln [och](migrate-replication-appliance.md#azure-government-url-access) myndighetsmoln.
 
-## <a name="set-up-the-replication-appliance"></a>Konfigurera replikerings enheten
+## <a name="set-up-the-replication-appliance"></a>Konfigurera replikeringsinstallationen
 
-Det första steget i migreringen är att konfigurera replikerings enheten. Om du vill konfigurera installations programmet för GCP VM-migrering måste du hämta installations filen för installationen och sedan köra den på den [virtuella datorn som du för beredde](#prepare-a-machine-for-the-replication-appliance).
+Det första steget i migreringen är att konfigurera replikeringsinstallationen. Om du vill konfigurera installationen för migrering av virtuella GCP-datorer måste du ladda ned installationsfilen för installationen och sedan köra den på den [virtuella dator som du förberedde.](#prepare-a-machine-for-the-replication-appliance)
 
-### <a name="download-the-replication-appliance-installer"></a>Ladda ned installations programmet för replikerings enheten
+### <a name="download-the-replication-appliance-installer"></a>Ladda ned installationsprogrammet för replikeringsinstallationen
 
-1. I **Azure Migrate: Server-migrering** i Azure Migrate Project >- **servrar** klickar du på **identifiera**.
+1. I det Azure Migrate projektet > **Server** i **Azure Migrate: Server Migration klickar** du på **Identifiera.**
 
     ![Identifiera virtuella datorer](./media/tutorial-migrate-physical-virtual-machines/migrate-discover.png)
 
-2. I **identifiera datorer**  >  **är dina datorer virtualiserade?**, klicka på **inte virtualiserad/annan**.
-3. I **mål region** väljer du den Azure-region som du vill migrera datorerna till.
-4. Välj **Bekräfta att mål regionen för migrering är <region namn>**.
-5. Klicka på **Skapa resurser**. Detta skapar ett Azure Site Recovery valv i bakgrunden.
-    - Om du redan har konfigurerat migrering med Azure Migrate Server-migreringen kan du inte konfigurera mål alternativet eftersom resurserna tidigare har kon figurer ATS.
-    - Du kan inte ändra mål region för projektet när du har klickat på den här knappen.
-    - Om du vill migrera dina virtuella datorer till en annan region måste du skapa ett nytt/annat Azure Migrate-projekt.
+2. I **Identifiera datorer**  >  **Virtualiseras dina datorer? klickar du** på Inte **virtualiserad/Övrigt.**
+3. I **Målregion** väljer du den Azure-region som du vill migrera datorerna till.
+4. Välj **Bekräfta att målregionen för migreringen <namnet på regionen>**.
+5. Klicka **på Skapa resurser.** Detta skapar ett Azure Site Recovery-valv i bakgrunden.
+    - Om du redan har konfigurerat migrering med Azure Migrate Server Migration går det inte att konfigurera målalternativet eftersom resurser har konfigurerats tidigare.
+    - Du kan inte ändra målregionen för det här projektet när du har klickat på den här knappen.
+    - Om du vill migrera dina virtuella datorer till en annan region måste du skapa ett nytt/Azure Migrate projekt. 
+    > [!NOTE]
+    > Om du valde privat slutpunkt som anslutningsmetod för Azure Migrate-projektet när det skapades, konfigureras Recovery Services-valvet även för anslutning till privat slutpunkt. Kontrollera att de privata slutpunkterna kan nås från replikeringsinstallationen: [ **Läs mer**](how-to-use-azure-migrate-with-private-endpoints.md#troubleshoot-network-connectivity)
 
-6. I vill **du installera en ny replikeringsprincip? väljer du** **installera en replikeringsprincip**.
-7. I **Hämta och installera installations programmet för replikering** laddar du ned installations programmet för installationen och registrerings nyckeln. Du behöver nyckeln för att kunna registrera installationen. Nyckeln är giltig i fem dagar efter att den har laddats ned.
+6. I **Vill du installera en ny replikeringsinstallation?** väljer du Installera en **replikeringsinstallation.**
+7. I **Ladda ned och installera programvaran för replikeringsinstallationen** laddar du ned installationsprogrammet och registreringsnyckeln. Du behöver nyckeln för att kunna registrera installationen. Nyckeln är giltig i fem dagar efter att den har laddats ned.
 
-    ![Hämta Provider](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
+    ![Nedladdningsprovider](media/tutorial-migrate-physical-virtual-machines/download-provider.png)
 
-8. Kopiera installations filen och nyckel filen för installations programmet till Windows Server 2016 eller Windows Server 2012 GCP VM som du skapade för replikeringen.
-9. Kör installations filen för replikeringstjänsten enligt beskrivningen i nästa procedur.  
+8. Kopiera installationsfilen och nyckelfilen till den virtuella Windows Server 2016- eller Windows Server 2012 GCP-dator som du skapade för replikeringsinstallationen.
+9. Kör installationsfilen för replikeringsinstallationen enligt beskrivningen i nästa procedur.  
     9.1. I **Innan du börjar** väljer du **Installera konfigurerationsservern och processervern** och väljer sedan **Nästa**.   
-    9,2 i **program vara från tredje part** väljer **du jag accepterar licens avtalet från tredje part** och väljer sedan **Nästa**.   
-    9,3 under **registrering** väljer du **Bläddra** och går sedan till den plats där du vill placera valv registrerings nyckel filen. Välj **Nästa**.  
-    9,4 i **Internet inställningar** väljer **du Anslut till Azure Site Recovery utan proxyserver** och väljer sedan **Nästa**.  
-    9,5 kontroll sidan för **krav kontroll** körs söker efter flera objekt. När den är klar väljer du **Nästa**.  
-    9,6 i **MySQL-konfiguration** anger du ett lösen ord för MySQL db och väljer sedan **Nästa**.  
-    9,7 i **miljö information** väljer du **Nej**. Du behöver inte skydda dina virtuella datorer. Välj **Nästa**.  
-    9,8 på **installations plats** väljer du **Nästa** för att acceptera standardvärdet.  
-    9,9 i **Val av nätverk** väljer du **Nästa** för att acceptera standardvärdet.  
-    9,10 i **Sammanfattning** väljer du **Installera**.   
-    9,11 **installations förloppet** visar information om installations processen. När den är klar väljer du **Avsluta**. Ett fönster visar ett meddelande om en omstart. Välj **OK**.   
-    9,12 härnäst visas ett meddelande om anslutnings lösen frasen för konfigurations servern. Kopiera lösen frasen till Urklipp och spara lösen frasen i en tillfällig textfil på de virtuella käll datorerna. Du behöver den här lösen frasen senare under installationen av mobilitets tjänsten.
-10. När installationen är klar startas konfigurations guiden för enheten automatiskt (du kan också starta guiden manuellt genom att använda cspsconfigtool-genvägen som skapas på Skriv bordet på enheten). Använd fliken Hantera konton i guiden för att lägga till konto information som ska användas för push-installation av mobilitets tjänsten. I den här självstudien kommer vi att manuellt installera mobilitets tjänsten på virtuella käll datorer som ska replikeras, så skapa ett dummy-konto i det här steget och fortsätt. Du kan ange följande information för att skapa vår dummy-konto – "gäst" som eget namn, "username" som användar namn och "lösen ord" som lösen ord för kontot. Du kommer att använda det här dummy-kontot i steget aktivera replikering. 
-11. När installationen har startats om efter installationen går du till **identifiera datorer**, väljer den nya installationen i **Välj konfigurations Server** och klickar på **Slutför registrering**. Genom att slutföra registreringen utförs några slutliga uppgifter för att förbereda replikeringen.
+    9.2 **I Programvarulicens från** tredje part väljer du Jag godkänner **licensavtalet från** tredje part och väljer sedan **Nästa.**   
+    9.3 I **Registrering** väljer du **Bläddra** och går sedan till den plats där du lägger nyckelfilen för valvregistrering. Välj **Nästa**.  
+    9.4 I **Internetinställningar** väljer du **Anslut till Azure Site Recovery utan proxyserver** och väljer sedan **Nästa.**  
+    9.5 **Sidan Kravkontroll** kör kontroller efter flera objekt. När den är klar väljer du **Nästa**.  
+    9.6 I **MySQL-konfiguration** anger du ett lösenord för MySQL-databasen och väljer sedan **Nästa.**  
+    9.7 I **Miljöinformation** väljer du **Nej**. Du behöver inte skydda dina virtuella datorer. Välj **Nästa**.  
+    9.8 I **Installationsplats** väljer du **Nästa för** att acceptera standardinställningen.  
+    9.9 I **Nätverksval** väljer du **Nästa för** att acceptera standardinställningen.  
+    9.10 I **sammanfattning** väljer du **Installera**.   
+    9.11 **Installationsförloppet** visar information om installationsprocessen. När den är klar väljer du **Avsluta**. Ett fönster visar ett meddelande om en omstart. Välj **OK**.   
+    9.12 Ett fönster visar sedan ett meddelande om lösenfrasen för konfigurationsserverns anslutning. Kopiera lösenfrasen till Urklipp och spara lösenfrasen i en temporär textfil på de virtuella käll datorerna. Du behöver den här lösenfrasen senare under installationen av mobilitetstjänsten.
+10. När installationen är klar startas installationskonfigurationsguiden automatiskt (Du kan också starta guiden manuellt med genvägen cspsconfigtool som skapas på skrivbordet i installationen). Använd fliken Hantera konton i guiden för att lägga till kontoinformation som ska användas för push-installation av tjänsten Mobility. I den här självstudien installerar vi mobilitetstjänsten manuellt på de virtuella käll-datorer som ska replikeras, så skapa ett dummykonto i det här steget och fortsätt. Du kan ange följande information för att skapa dummy-kontot – "gäst" som eget namn, "användarnamn" som användarnamn och "lösenord" som lösenord för kontot. Du kommer att använda det här dummy-kontot i fasen Aktivera replikering. 
+11. När installationen har startats om efter installationen går du till Identifiera datorer, väljer den nya installationen i **Välj konfigurationsserver** och klickar **på Slutför registreringen.** Slutför registreringen utför några sista uppgifter för att förbereda replikeringsinstallationen.
 
-    ![Slutför registrering](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
+    ![Slutför registreringen](./media/tutorial-migrate-physical-virtual-machines/finalize-registration.png)
 
 ## <a name="install-the-mobility-service"></a>Installera mobilitetstjänsten
 
-En mobilitets tjänst agent måste vara installerad på de virtuella GCP-datorer som ska migreras. Agent installationerna är tillgängliga på replikerings enheten. Du hittar rätt installations program och installerar agenten på varje dator som du vill migrera. Gör så här:
+En tjänsten Mobility måste installeras på de virtuella GCP-käll datorerna som ska migreras. Agentinstallationerna är tillgängliga i replikeringsinstallationen. Du hittar rätt installationsprogram och installerar agenten på varje dator som du vill migrera. Gör så här:
 
-1. Logga in på replikerings enheten.
-2. Navigera till **%programdata%\ASR\home\svsystems\pushinstallsvc\repository**.
-3. Hitta installations programmet för käll GCP VM-operativsystem och version. Granska [operativ system som stöds](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines).
-4. Kopiera installations filen till den virtuella GCP-dator som du vill migrera.
-5. Kontrol lera att du har den sparade lösen Frass text filen som skapades när du installerade replikeringen.
-    - Om du har glömt att spara lösen frasen kan du Visa lösen frasen på den replikerade enheten med det här steget. Från kommando raden kör **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe-v** för att visa den aktuella lösen frasen.
-    - Kopiera nu den här lösen frasen till Urklipp och spara den i en tillfällig textfil på de virtuella käll datorerna.
+1. Logga in på replikeringsinstallationen.
+2. Gå till **%ProgramData%\ASR\home\svsystems\pushinstallsvc\repository**.
+3. Leta reda på installationsprogrammet för de virtuella GCP-källversionerna, operativsystem och version. Granska [operativsystem som stöds.](../site-recovery/vmware-physical-azure-support-matrix.md#replicated-machines)
+4. Kopiera installationsfilen till den virtuella GCP-källdatorn som du vill migrera.
+5. Kontrollera att du har den sparade lösenfrastextfilen som skapades när du installerade replikeringsinstallationen.
+    - Om du har glömt att spara lösenfrasen kan du visa lösenfrasen i replikeringsinstallationen med det här steget. Från kommandoraden kör du **C:\ProgramData\ASR\home\svsystems\bin\genpassphrase.exe -v för** att visa den aktuella lösenfrasen.
+    - Kopiera nu den här lösenfrasen till Urklipp och spara den i en temporär textfil på de virtuella käll datorerna.
 
-### <a name="installation-guide-for-windows-gcp-vms"></a>Installations guide för virtuella Windows GCP-datorer
+### <a name="installation-guide-for-windows-gcp-vms"></a>Installationsguide för virtuella Windows GCP-datorer
 
-1. Extrahera innehållet i installations filen till en lokal mapp (till exempel C:\Temp) på den virtuella datorn GCP enligt följande:
+1. Extrahera innehållet i installationsfilen till en lokal mapp (till exempel C:\Temp) på den virtuella GCP-datorn enligt följande:
 
     ```
     ren Microsoft-ASR_UA*Windows*release.exe MobilityServiceInstaller.exe
@@ -190,32 +192,32 @@ En mobilitets tjänst agent måste vara installerad på de virtuella GCP-datorer
     cd C:\Temp\Extracted
     ```  
 
-2. Kör installations programmet för mobilitets tjänsten:
+2. Kör installationsprogrammet för mobilitetstjänsten:
     ```
    UnifiedAgent.exe /Role "MS" /Silent
     ```  
 
-3. Registrera agenten med replikerings enheten:
+3. Registrera agenten med replikeringsinstallationen:
     ```
     cd C:\Program Files (x86)\Microsoft Azure Site Recovery\agent
     UnifiedAgentConfigurator.exe  /CSEndPoint <replication appliance IP address> /PassphraseFilePath <Passphrase File Path>
     ```
 
-### <a name="installation-guide-for-linux-gcp-vms"></a>Installations guide för virtuella Linux GCP-datorer
+### <a name="installation-guide-for-linux-gcp-vms"></a>Installationsguide för virtuella Linux GCP-datorer
 
-1. Extrahera innehållet i installations tarball till en lokal mapp (till exempel/tmp/MobSvcInstaller) på den virtuella datorn GCP enligt följande:
+1. Extrahera innehållet i installationsprogrammets tarball-fil till en lokal mapp (till exempel /tmp/MobSvcInstaller) på den virtuella GCP-datorn enligt följande:
     ```
     mkdir /tmp/MobSvcInstaller
     tar -C /tmp/MobSvcInstaller -xvf <Installer tarball>
     cd /tmp/MobSvcInstaller
     ```  
 
-2. Kör installations skriptet:
+2. Kör installationsskriptet:
     ```
     sudo ./install -r MS -q
     ```  
 
-3. Registrera agenten med replikerings enheten:
+3. Registrera agenten med replikeringsinstallationen:
     ```
     /usr/local/ASR/Vx/bin/UnifiedAgentConfigurator.sh -i <replication appliance IP address> -P <Passphrase File Path>
     ```
@@ -223,87 +225,92 @@ En mobilitets tjänst agent måste vara installerad på de virtuella GCP-datorer
 ## <a name="enable-replication-for-gcp-vms"></a>Aktivera replikering för virtuella GCP-datorer
 
 > [!NOTE]
-> Via portalen kan du lägga till upp till 10 virtuella datorer för replikering samtidigt. Om du vill replikera fler virtuella datorer samtidigt kan du lägga till dem i batchar med 10.
+> Via portalen kan du lägga till upp till 10 virtuella datorer för replikering samtidigt. Om du vill replikera fler virtuella datorer samtidigt kan du lägga till dem i batchar om 10.
 
-1. I Azure Migrate Project >- **servrar** **Azure Migrate: Server-migrering** klickar du på **Replikera**.
+1. I projektet Azure Migrate , **>,** **Azure Migrate: Server Migration,** klickar du på **Replikera**.
 
     ![Replikera virtuella datorer](./media/tutorial-migrate-physical-virtual-machines/select-replicate.png)
 
-2. I **Replikera**, > **käll inställningar**  >  **att datorerna har virtualiserats?** väljer du **inte virtualiserad/övrigt**.
-3. I **lokal** installation väljer du namnet på Azure Migrate-installationen som du konfigurerar.
-4. I **processerver** väljer du namnet på replikerings enheten. 
-5. I **autentiseringsuppgifter för gäst** väljer du det dummy-konto som skapades tidigare under [installationen av installations programmet för replikering](#download-the-replication-appliance-installer) för att installera mobilitets tjänsten manuellt (push-installation stöds inte). Klicka sedan på **Nästa: virtuella datorer**.   
+2. I **Replikera** väljer >   >  **källinställningar Virtualiseras dina datorer?**, väljer **du Inte virtualiserad/Övrigt.**
+3. I **Lokal installation väljer** du namnet på den Azure Migrate som du har ställt in.
+4. I **Processer server** väljer du namnet på replikeringsinstallationen. 
+5. I **Gästautentiseringsuppgifter** väljer du det [](#download-the-replication-appliance-installer) dummy-konto som skapades tidigare under installationsprogrammet för replikering för att installera tjänsten Mobility manuellt (push-installation stöds inte). Klicka sedan **på Nästa: Virtuella datorer.**   
  
     ![Replikera inställningar](./media/tutorial-migrate-physical-virtual-machines/source-settings.png)
-6. I **Virtual Machines**, i **Importera migreringsjobb från en utvärdering?**, lämnar du standardinställningen **Nej, jag anger inställningarna för migrering manuellt**.
-7. Markera varje virtuell dator som du vill migrera. Klicka sedan på **Nästa: mål inställningar**.
+6. I **Virtual Machines** i **Importera migreringsinställningar** från en utvärdering? lämnar du standardinställningen Nej, jag anger **migreringsinställningarna manuellt.**
+7. Kontrollera varje virtuell dator som du vill migrera. Klicka sedan **på Nästa: Målinställningar.**
 
     ![Välj virtuella datorer](./media/tutorial-migrate-physical-virtual-machines/select-vms.png)
 
 8. I **Målinställningar** väljer du prenumeration och den målregion som du vill migrera till. Ange sedan den resursgrupp där du vill att de virtuella Azure-datorerna ska finnas efter migreringen.
-9. I **Virtuellt nätverk** väljer du det Azure VNet/undernät som de virtuella Azure-datorerna ska anslutas till efter migreringen.
-10. I **tillgänglighets alternativ** väljer du:
-    -  Tillgänglighets zon för att fästa den migrerade datorn i en angiven tillgänglighets zon i regionen. Använd det här alternativet för att distribuera servrar som utgör en program nivå med flera noder i Tillgänglighetszoner. Om du väljer det här alternativet måste du ange den tillgänglighets zon som ska användas för var och en av de valda datorerna på fliken beräkning. Det här alternativet är bara tillgängligt om det valda mål området för migreringen stöder Tillgänglighetszoner
-    -  Tillgänglighets uppsättning för att placera den migrerade datorn i en tillgänglighets uppsättning. Den valda mål resurs gruppen måste ha en eller flera tillgänglighets uppsättningar för att kunna använda det här alternativet.
-    - Inget alternativ för infrastrukturs redundans krävs om du inte behöver någon av dessa tillgänglighets konfigurationer för de migrerade datorerna.
-11. I **disk krypterings typ** väljer du:
-    - Kryptering – rest med plattforms hanterad nyckel
-    - Kryptering – rest med kundhanterad nyckel
-    - Double Encryption med plattforms hanterade och Kundhanterade nycklar
+9. I **Virtuellt nätverk** väljer du det Azure VNet/undernät som de virtuella Azure-datorerna ska anslutas till efter migreringen.  
+10. I  **Cachelagringskonto** behåller du standardalternativet för att använda cachelagringskontot som skapas automatiskt för projektet. Använd listrutan om du vill ange ett annat lagringskonto som ska användas som cachelagringskonto för replikering. <br/> 
+    > [!NOTE]
+    >
+    > - Om du valde privat slutpunkt som anslutningsmetod för Azure Migrate-projektet beviljar du Recovery Services-valvet åtkomst till cachelagringskontot. [**Läs mer**](how-to-use-azure-migrate-with-private-endpoints.md#grant-access-permissions-to-the-recovery-services-vault)
+    > - Om du vill replikera med ExpressRoute med privat peering skapar du en privat slutpunkt för cachelagringskontot. [**Läs mer**](how-to-use-azure-migrate-with-private-endpoints.md#create-a-private-endpoint-for-the-storage-account-optional) 
+11. I **Tillgänglighetsalternativ** väljer du:
+    -  Tillgänglighetszon för att fästa den migrerade datorn till en specifik tillgänglighetszon i regionen. Använd det här alternativet för att distribuera servrar som utgör en programnivå med flera noder över Tillgänglighetszoner. Om du väljer det här alternativet måste du ange vilken tillgänglighetszon som ska användas för var och en av den valda datorn på fliken Beräkning. Det här alternativet är endast tillgängligt om målregionen som valts för migreringen stöder Tillgänglighetszoner
+    -  Tillgänglighetsuppsättning för att placera den migrerade datorn i en tillgänglighetsuppsättning. Den valda målresursgruppen måste ha en eller flera tillgänglighetsuppsättningar för att kunna använda det här alternativet.
+    - Inget alternativ för infrastrukturredundans krävs om du inte behöver någon av dessa tillgänglighetskonfigurationer för de migrerade datorerna.
+12. I **Diskkrypteringstyp** väljer du:
+    - Kryptering i vila med plattformsstyrd nyckel
+    - Kryptering i vila med kund hanterad nyckel
+    - Dubbel kryptering med plattforms-hanterade och kund hanterade nycklar
 
    > [!NOTE]
-   > För att replikera virtuella datorer med CMK måste du [skapa en disk krypterings uppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) under mål resurs gruppen. Ett objekt med en disk krypterings uppsättning mappar Managed Disks till en Key Vault som innehåller den CMK som ska användas för SSE.
+   > Om du vill replikera virtuella datorer med CMK måste du [skapa en diskkrypteringsuppsättning](../virtual-machines/disks-enable-customer-managed-keys-portal.md#set-up-your-disk-encryption-set) under målresursgruppen. Ett objekt för diskkrypteringsuppsättning mappar Managed Disks en Key Vault som innehåller den CMK som ska användas för SSE.
   
-12. I **Azure Hybrid-förmån**:
+13. I **Azure Hybrid-förmån**:
 
     - Välj **Nej** om du inte vill använda Azure Hybrid-förmånen. Klicka på **Nästa**.
     - Välj **Ja** om du har Windows Server-datorer som omfattas av aktiva Software Assurance- eller Windows Server-prenumerationer och du vill tillämpa förmånen på de datorer som du migrerar. Klicka på **Nästa**.
 
-    ![Mål inställningar](./media/tutorial-migrate-vmware/target-settings.png)
+    ![Målinställningar](./media/tutorial-migrate-vmware/target-settings.png)
 
-13. I **Compute** granskar du VM-namn, storlek, OS-disktyp och tillgänglighets konfiguration (om det valts i föregående steg). De virtuella datorerna måste följa [Azures krav](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
+14. I **Compute** granskar du vm-namnet, storleken, OS-disktypen och tillgänglighetskonfigurationen (om du valde det i föregående steg). De virtuella datorerna måste följa [Azures krav](migrate-support-matrix-physical-migration.md#azure-vm-requirements).
 
-    - **VM-storlek**: om du använder bedömnings rekommendationer visas den rekommenderade storleken i list rutan VM-storlek. Annars väljer Azure Migrate en storlek baserat på den närmaste matchningen i Azure-prenumerationen. Du kan också välja en storlek manuellt i **Storlek på virtuell Azure-dator**.
-    - **OS-disk**: Ange OS-disken (start) för den virtuella datorn. Operativsystemdisken är den disk där operativsystemets bootloader och installationsprogram finns.
-    - **Tillgänglighets zon**: Ange den tillgänglighets zon som ska användas.
-    - **Tillgänglighets uppsättning**: Ange den tillgänglighets uppsättning som ska användas.
+    - **VM-storlek:** Om du använder utvärderingsrekommendationer visar listrutan VM-storlek den rekommenderade storleken. Annars väljer Azure Migrate en storlek baserat på den närmaste matchningen i Azure-prenumerationen. Du kan också välja en storlek manuellt i **Storlek på virtuell Azure-dator**.
+    - **OS-disk:** Ange OS-disken (startdisken) för den virtuella datorn. Operativsystemdisken är den disk där operativsystemets bootloader och installationsprogram finns.
+    - **Tillgänglighetszon:** Ange den tillgänglighetszon som ska användas.
+    - **Tillgänglighetsuppsättning:** Ange den tillgänglighetsuppsättning som ska användas.
 
-![Beräknings inställningar](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
+![Beräkningsinställningar](./media/tutorial-migrate-physical-virtual-machines/compute-settings.png)
 
-14. I **diskar** anger du om de virtuella dator diskarna ska replikeras till Azure och väljer disk typ (standard SSD/HDD eller Premium Managed Disks) i Azure. Klicka på **Nästa**.
+15. I **Diskar anger** du om de virtuella datordiskarna ska replikeras till Azure och väljer disktypen (standard SSD/HDD eller premium-hanterade diskar) i Azure. Klicka på **Nästa**.
     - Du kan undanta diskar från replikering.
     - Om du undantar diskar kommer de inte att synas i den virtuella Azure-datorn efter migreringen. 
 
-    ![Disk inställningar](./media/tutorial-migrate-physical-virtual-machines/disks.png)
+    ![Diskinställningar](./media/tutorial-migrate-physical-virtual-machines/disks.png)
 
-15. I **Granska och starta replikering** kontrollerar du inställningarna och klickar på **Replikera** för att påbörja den första replikeringen för servrarna.
+16. I **Granska och starta replikering** kontrollerar du inställningarna och klickar på **Replikera** för att påbörja den första replikeringen för servrarna.
 
 > [!NOTE]
-> Du kan uppdatera replikeringsinställningar varje tid innan replikeringen startar, **Hantera**  >  **replikering av datorer**. Det går inte att ändra inställningarna efter att replikeringen har startat.
+> Du kan uppdatera replikeringsinställningarna när som helst innan replikeringen startar, **Hantera**  >  **replikeringsdatorer.** Det går inte att ändra inställningarna efter att replikeringen har startat.
 
 ## <a name="track-and-monitor-replication-status"></a>Spåra och övervaka replikeringsstatus
 
-- När du klickar på **Replikera** startar du jobbet starta replikering.
-- När jobbet starta replikeringen har slutförts börjar de virtuella datorerna med den inledande replikeringen till Azure.
-- När den inledande replikeringen har slutförts börjar delta-replikeringen. Stegvisa ändringar i GCP VM-diskar replikeras regelbundet till replik diskarna i Azure.
+- När du klickar på **Replikera** påbörjas ett jobb för att starta replikeringen.
+- När jobbet Starta replikering har slutförts påbörjar de virtuella datorerna den inledande replikeringen till Azure.
+- När den inledande replikeringen är klar påbörjas deltareplikeringen. Inkrementella ändringar av virtuella GCP-datordiskar replikeras regelbundet till replikdiskarna i Azure.
 
-Du kan spåra jobb status i Portal meddelanden.
+Du kan spåra jobbstatus i portalmeddelanden.
 
-Du kan övervaka replikeringsstatus genom att klicka på **Replikera servrar** i **Azure Migrate: Server-migrering**.  
+Du kan övervaka replikeringsstatusen genom att **klicka på Replikera servrar** i **Azure Migrate: Server Migration**.  
 
 ![Övervaka replikering](./media/tutorial-migrate-physical-virtual-machines/replicating-servers.png)
 
 ## <a name="run-a-test-migration"></a>Kör en testmigrering
 
-När delta-replikering börjar kan du köra en testmigrering för de virtuella datorerna innan du kör en fullständig migrering till Azure. Test migreringen rekommenderas starkt och ger en möjlighet att identifiera eventuella problem och åtgärda dem innan du fortsätter med den faktiska migreringen. Vi rekommenderar att du gör detta minst en gång för varje virtuell dator innan du migrerar den.
+När deltareplikeringen börjar kan du köra en testmigrering för de virtuella datorerna innan du kör en fullständig migrering till Azure. Testmigrering rekommenderas starkt och ger möjlighet att identifiera eventuella problem och åtgärda dem innan du fortsätter med själva migreringen. Vi rekommenderar att du gör detta minst en gång för varje virtuell dator innan du migrerar den.
 
-- Genom att köra en test-migrering kontrollerar du att migreringen fungerar som förväntat, utan att påverka de virtuella GCP-datorerna, som förblir operativa och fortsätter att replikera.
-- Testmigrering simulerar migreringen genom att skapa en virtuell Azure-dator med replikerade data (vanligt vis migrera till ett virtuellt nätverk som inte är i Azure-prenumerationen).
-- Du kan använda den replikerade virtuella Azure-datorn för att verifiera migreringen, utföra app-testning och åtgärda eventuella problem före fullständig migrering.
+- När du kör en testmigrering kontrolleras att migreringen fungerar som förväntat, utan att de virtuella GCP-datorerna påverkas, fortsätter att fungera och replikeras.
+- Testmigrering simulerar migreringen genom att skapa en virtuell Azure-dator med replikerade data (vanligtvis migrera till ett icke-produktions-VNet i din Azure-prenumeration).
+- Du kan använda den replikerade virtuella Azure-testdatorn för att verifiera migreringen, utföra apptestning och åtgärda eventuella problem före fullständig migrering.
 
-Gör en testmigrering enligt följande:
+Gör en testmigrering på följande sätt:
 
-1. I Server för **migrerings mål**  >    >  **Azure Migrate: Server migrering** klickar du på **test migrerade servrar**.
+1. I **Migreringsmål**  >  **Servrar**  >  **Azure Migrate: Servermigrering** klickar du **på Testa migrerade servrar.**
 
      ![Testmigrerade servrar](./media/tutorial-migrate-physical-virtual-machines/test-migrated-servers.png)
 
@@ -321,40 +328,40 @@ Gör en testmigrering enligt följande:
 
 ## <a name="migrate-gcp-vms"></a>Migrera virtuella GCP-datorer
 
-När du har kontrollerat att testmigreringen fungerar som förväntat kan du migrera de virtuella GCP-datorerna.
+När du har kontrollerat att testmigrering fungerar som förväntat kan du migrera de virtuella GCP-datorerna.
 
-1. I Azure Migrate Project >- **servrar**  >  **Azure Migrate: Server-migrering** klickar du på **Replikera servrar**.
+1. I det Azure Migrate projektet > **Servers**  >  **Azure Migrate: Server Migration (Servermigrering)** **klickar du på Replikera servrar**.
 
     ![Servrarna replikeras](./media/tutorial-migrate-physical-virtual-machines/replicate-servers.png)
 
 2. I **Replikera datorer** högerklickar du på den virtuella datorn > **Migrera**.
-3. I **migrera**  >  **Stäng virtuella datorer och utför en planerad migrering utan data förlust** väljer du **Ja**  >  **OK**.
-    - Om du inte vill stänga av den virtuella datorn väljer du **Nej**.
-4. Ett migreringsjobb startas för den virtuella datorn. Du kan visa jobbets status genom att klicka på ikonen för meddelande klocka längst upp till höger på Portal sidan eller genom att gå till sidan jobb i Migreringsverktyg för Server (klicka på Översikt på verktygs panelen > välja jobb på den vänstra menyn).
+3. I **Migrera**  >  **Stäng av virtuella datorer och utför en planerad migrering utan dataförlust väljer** du **Ja**  >  **OK.**
+    - Om du inte vill stänga av den virtuella datorn väljer du **Nej.**
+4. Ett migreringsjobb startas för den virtuella datorn. Du kan visa jobbstatusen genom att klicka på klockikonen för meddelanden längst upp till höger på portalsidan eller genom att gå till jobbsidan i servermigreringsverktyget (klicka på Översikt på verktygspanelen > Välj jobb på den vänstra menyn).
 5. När jobbet är klart kan du se och hantera den virtuella datorn på sidan Virtual Machines.
 
 ### <a name="complete-the-migration"></a>Slutföra migreringen
 
-1. När migreringen är färdig högerklickar du på den virtuella datorn > **stoppa migreringen**. Det här gör följande:
-    - Stoppar replikering för den virtuella GCP-datorn.
-    - Tar bort den virtuella datorn GCP från antalet **replikerade servrar** i Azure Migrate: Server-migrering.
-    - Rensar statusinformation om replikering för den virtuella datorn.
-2. Installera [Azure VM-](../virtual-machines/extensions/agent-windows.md) eller [Linux](../virtual-machines/extensions/agent-linux.md) -agenten på de migrerade datorerna.
+1. När migreringen är klar högerklickar du på den virtuella > **stoppa migreringen.** Det här gör följande:
+    - Stoppar replikeringen för den virtuella GCP-datorn.
+    - Tar bort den virtuella GCP-datorn från **antalet replikerande servrar** i Azure Migrate: Server Migration.
+    - Rensar information om replikeringstillstånd för den virtuella datorn.
+2. Installera Azure VM [Windows-](../virtual-machines/extensions/agent-windows.md) eller [Linux-agenten](../virtual-machines/extensions/agent-linux.md) på de migrerade datorerna.
 3. Utför alla finjusteringar av appen efter migreringen som att uppdatera databasanslutningssträngar och webbserverkonfigurationer.
 4. Utför slutlig program- och migreringsacceptanstestning på det migrerade programmet som nu körs i Azure.
-5. Klipp ut över trafik till den migrerade virtuella Azure-instansen.
+5. Minska trafik till den migrerade virtuella Azure-datorinstansen.
 6. Uppdatera eventuell intern dokumentation för att ange den nya platsen och IP-adressen för de virtuella Azure-datorerna. 
 
 
 
 
-## <a name="post-migration-best-practices"></a>Metod tips för efter migreringen
+## <a name="post-migration-best-practices"></a>Metodtips efter migreringen
 
 - För ökat skydd:
     - Skydda data genom att säkerhetskopiera virtuella Azure-datorer med Azure Backup-tjänsten. [Läs mer](../backup/quick-backup-vm-portal.md).
     - Håll arbetsbelastningar i körning och kontinuerligt tillgängliga genom att replikera virtuella Azure-datorer till en sekundär region med Site Recovery. [Läs mer](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - För ökad säkerhet:
-    - Lås och begränsa inkommande trafik åtkomst med [Azure Security Center – just-in-Time-administration](../security-center/security-center-just-in-time.md).
+    - Lås och begränsa åtkomsten till inkommande trafik [med Azure Security Center – Just-in-time-administration](../security-center/security-center-just-in-time.md).
     - Begränsa nätverkstrafik till hanteringsslutpunkter med [nätverkssäkerhetsgrupper](../virtual-network/network-security-groups-overview.md).
     - Distribuera [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md) för att säkra diskar och skydda data från stöld och obehörig åtkomst.
     - Läs mer om [ att skydda IaaS-resurser](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) och besök [Azure Security Center](https://azure.microsoft.com/services/security-center/).
@@ -363,33 +370,33 @@ När du har kontrollerat att testmigreringen fungerar som förväntat kan du mig
 
 
 
-## <a name="troubleshooting--tips"></a>Fel sökning/tips
+## <a name="troubleshooting--tips"></a>Felsökning/tips
 
-**Fråga:** Jag kan inte se min GCP VM i listan över identifierade servrar för migrering   
-**Svar:** Kontrol lera om din replikeringsprincip uppfyller kraven. Kontrol lera att mobilitets agenten är installerad på den virtuella käll datorn som ska migreras och är registrerad på konfigurations servern. Kontrol lera brand Väggs reglerna för att aktivera en nätverks Sök väg mellan replikeringstjänsten och käll GCP virtuella datorer.  
+**Fråga:** Jag kan inte se min virtuella GCP-dator i den identifierade listan över servrar för migrering   
+**Svar:** Kontrollera om replikeringsinstallationen uppfyller kraven. Kontrollera att mobilitetsagenten är installerad på den virtuella källdatorn som ska migreras och är registrerad på konfigurationsservern. Kontrollera brandväggsreglerna för att aktivera en nätverkssökväg mellan replikeringsinstallationen och de virtuella käll-GCP-datorerna.  
 
-**Fråga:** Hur gör jag för att veta om den virtuella datorn har migrerats   
-**Svar:** Efter migreringen kan du Visa och hantera den virtuella datorn från sidan Virtual Machines. Anslut till den migrerade virtuella datorn för att verifiera.  
+**Fråga:** Hur gör jag för att om den virtuella datorn har migrerats   
+**Svar:** Efter migreringen kan du visa och hantera den virtuella datorn från Virtual Machines sidan. Anslut till den migrerade virtuella datorn för att verifiera.  
 
-**Fråga:** Jag kan inte importera virtuella datorer för migrering från mina tidigare skapade Server utvärderings resultat   
-**Svar:** Vi stöder för närvarande inte import av utvärdering för det här arbets flödet. Som en lösning kan du exportera utvärderingen och sedan manuellt välja den virtuella dator rekommendationen under steget aktivera replikering.
+**Fråga:** Jag kan inte importera virtuella datorer för migrering från mina tidigare skapade Server Assessment-resultat   
+**Svar:** För närvarande stöder vi inte import av utvärdering för det här arbetsflödet. Som en tillfällig lösning kan du exportera utvärderingen och sedan manuellt välja rekommendationen för virtuella datorer under steget Aktivera replikering.
   
-**Fråga:** Jag får felet "Det gick inte att hämta BIOS-GUID" vid försök att identifiera mina virtuella GCP-datorer   
-**Svar:** Använd rot inloggning för autentisering och inte någon pseudo-användare. Om du inte kan använda en rot användare ser du till att de funktioner som krävs har angetts för användaren, enligt instruktionerna i [support mat ris](migrate-support-matrix-physical.md#physical-server-requirements). Granska även operativ system som stöds för virtuella GCP-datorer.  
+**Fråga:** Jag får felet "Det gick inte att hämta BIOS GUID" när jag försöker identifiera mina virtuella GCP-datorer   
+**Svar:** Använd rotinloggning för autentisering och inte någon pseudoanvändare. Om du inte kan använda en rotanvändare ser du till att de nödvändiga funktionerna är inställda på användaren enligt anvisningarna i [supportmatrisen](migrate-support-matrix-physical.md#physical-server-requirements). Granska även operativsystem som stöds för virtuella GCP-datorer.  
 
-**Fråga:** Min replikeringsstatus fortlöper inte   
-**Svar:** Kontrol lera om din replikeringsprincip uppfyller kraven. Kontrol lera att du har aktiverat de portar som krävs på replikerings enheten TCP-port 9443 och HTTPS 443 för data transport. Se till att det inte finns några inaktuella dubbletter av Replikerings enheten som är ansluten till samma projekt.   
+**Fråga:** Min replikeringsstatus fortskrider inte   
+**Svar:** Kontrollera om replikeringsinstallationen uppfyller kraven. Kontrollera att du har aktiverat de portar som krävs på replikeringsinstallationen TCP-port 9443 och HTTPS 443 för dataöverföring. Kontrollera att det inte finns några inaktuella dubblettversioner av replikeringsinstallationen som är anslutna till samma projekt.   
 
-**Fråga:** Jag kan inte identifiera GCP-instanser med Azure Migrate på grund av HTTP-statuskod 504 från fjärrhanterings tjänsten för Windows    
-**Svar:** Se till att granska kraven för Azure Migrate-installationen och URL-åtkomst behoven. Kontrol lera att inga proxyinställningar blockerar installationen av enheten.
+**Fråga:** Jag kan inte identifiera GCP-instanser med Azure Migrate på grund av HTTP-statuskod 504 från windows fjärrhanteringstjänsten    
+**Svar:** Se till att granska kraven för Azure Migrate-installationen och URL-åtkomstbehoven. Kontrollera att inga proxyinställningar blockerar installationens registrering.
 
-**Fråga:** Måste jag göra några ändringar innan jag migrerar mina virtuella GCP-datorer till Azure   
+**Fråga:** Måste jag göra några ändringar innan jag migrerar mina virtuella GCP-datorer till Azure?   
 **Svar:** Du kan behöva göra dessa ändringar innan du migrerar dina virtuella EC2-datorer till Azure:
 
-- Om du använder Cloud-Init för VM-etableringen kanske du vill inaktivera Cloud-Init på den virtuella datorn innan du replikerar det till Azure. Etablerings stegen som utförs av Cloud-Init på den virtuella datorn kanske GCP Specific och kommer inte att vara giltiga efter migreringen till Azure.  
-- Läs avsnittet [krav](#prerequisites) för att avgöra om det finns några ändringar som krävs för operativ systemet innan du migrerar dem till Azure.
+- Om du använder cloud-init för etableringen av den virtuella datorn kanske du vill inaktivera cloud-init på den virtuella datorn innan du replikerar den till Azure. Etableringsstegen som utförs av cloud-init på den virtuella datorn kanske är GCP-specifika och är inte giltiga efter migreringen till Azure.  
+- Granska avsnittet [förutsättningar för](#prerequisites) att avgöra om det finns några ändringar som krävs för operativsystemet innan du migrerar dem till Azure.
 - Vi rekommenderar alltid att du kör en testmigrering före den slutliga migreringen.  
 
 ## <a name="next-steps"></a>Nästa steg
 
-Undersök [resan för migrering i molnet](/azure/architecture/cloud-adoption/getting-started/migrate) i Azure Cloud adoption Framework.
+Undersök [molnmigreringsresan](/azure/architecture/cloud-adoption/getting-started/migrate) i Azure Cloud Adoption Framework.

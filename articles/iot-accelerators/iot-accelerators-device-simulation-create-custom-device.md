@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 22920e6535a19b1ab0ce970c1195cee676d9363f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: ed83fdde4e005b0db76b9edf30faef5e8c732998
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106057736"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107714046"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Självstudie: Skapa en anpassad simulerad enhet
 
@@ -34,7 +34,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 För att följa den här självstudien behöver du en distribuerad instans av enhetssimulering i din Azure-prenumeration.
 
-Om du inte redan har distribuerat enhets simuleringen kan du läsa [distribuera enhets simulering](https://github.com/Azure/device-simulation-dotnet/blob/master/README.md) på GitHub.
+Om du inte har distribuerat enhetssimuleringen ännu kan du se [Distribution av enhetssimulering](https://github.com/Azure/azure-iot-pcs-device-simulation/blob/master/README.md) på GitHub.
 
 ## <a name="view-your-device-models"></a>Visa dina enhetsmodeller
 
@@ -80,7 +80,7 @@ Genom att klona en enhetsmodell kan du skapa en kopia av en befintlig enhetsmode
 
 Om du vill klona en enhetsmodell markerar du kryssrutan intill modellen och klickar sedan på **Klona** i åtgärdsfältet:
 
-![Skärm bild som markerar den markerade modellen och klonings knappen.](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
+![Skärmbild som visar den valda modellen och knappen Klona.](media/iot-accelerators-device-simulation-create-custom-device/clonedevice.png)
 
 ## <a name="delete-a-device-model"></a>Ta bort en enhetsmodell
 

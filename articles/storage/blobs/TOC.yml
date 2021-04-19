@@ -266,11 +266,9 @@
       items:
         - name: Skapa och hantera lagringskonton
           items:
-            - name: Skapa ett allmänt lagringskonto
+            - name: skapar ett lagringskonto
               displayName: 'Resource Manager, Resource Manager template, template, ARM'
               href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Skapa ett blockblobslagringskonto
-              href: storage-blob-create-account-block-blob.md
             - name: Uppgradera ett lagringskonto
               href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Återställa ett borttaget lagringskonto

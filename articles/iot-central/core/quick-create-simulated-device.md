@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 142d78cf8b787e04704d26bca0c650944052fd7f
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 0396c028c8c0e1a18baf037fed4efc21aad944f1
+ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588980"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107715108"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Snabbstart: Lägga till en simulerad enhet i ditt IoT Central program
 
@@ -62,7 +62,7 @@ Följande steg visar hur du använder enhetskatalogen för att importera modelle
 
     :::image type="content" source="media/quick-create-simulated-device/devkit-template.png" alt-text="Skärmbild som visar enhetsmallen för ESP32-enhet":::
 
-    Namnet på mallen är **Sensor Controller**. Modellen innehåller komponenter som Sensor **Controller,** **SensorTemp** och **Device Information.** Komponenter definierar funktionerna i en ESP32-enhet. Funktionerna omfattar telemetri, egenskaper och kommandon.
+    Namnet på mallen är **Sensor Controller**. Modellen innehåller komponenter som Sensor **Controller,** **SensorTemp** och **Device Information.** Komponenter definierar funktionerna för en ESP32-enhet. Funktionerna omfattar telemetri, egenskaper och kommandon.
 
 ### <a name="add-cloud-properties"></a>Lägga till molnegenskaper
 
@@ -94,7 +94,7 @@ Standardvyer är ett snabbt sätt att komma igång med att visualisera viktig en
 * I **översiktsvyn** används diagram och mått för att visa enhettelemetri.
 * Vyn **Om** visar enhetsegenskaper.
 
-Välj **noden** Vyer i enhetsmallen. Du kan se att IoT Central genererat **en översikt och** en **Om-vy** åt dig när du lade till mallen.
+Välj **noden** Vyer i enhetsmallen. Du kan se att IoT Central genererat **en översikt,** en **Om-vy** och en **rådatavy** åt dig när du lade till mallen.
 
 Så här lägger du till ett nytt formulär för att hantera enheten:
 
@@ -120,13 +120,13 @@ Så här publicerar du en enhetsmall:
 
 1. I dialogrutan som visas väljer du **Publicera**.
 
-När du har publicerat en enhetsmall visas den på **sidan** Enheter. I en publicerad enhetsmall kan du inte redigera en enhetsmodell utan att skapa en ny version. Du kan dock ändra molnegenskaper, anpassningar och vyer i en publicerad enhetsmall utan versionshantering. När du har gjort några ändringar väljer **du Publicera**  för att skicka ändringarna så att verkliga och simulerade enheter kan använda dem.
+När du har publicerat en enhetsmall visas den på **sidan** Enheter. I en publicerad enhetsmall kan du inte redigera en enhetsmodell utan att skapa en ny version. Du kan dock ändra molnegenskaper, anpassningar och vyer i en publicerad enhetsmall utan versionshantering. När du har gjort några ändringar väljer **du Publicera**  för att skicka ändringarna så att verkliga och simulerade enheter kan användas.
 
 ## <a name="add-a-simulated-device"></a>Lägga till en simulerad enhet
 
 Om du vill lägga till en simulerad enhet i programmet använder du **esp32-enhetsmallen** som du skapade.
 
-1. Om du vill lägga till en ny **enhet väljer du** Enheter i den vänstra rutan. Fliken **Enheter** visar **Alla enheter och** **enhetsmallen Sensor Controller** för ESP32-enheten. Välj **Sensor Controller**.
+1. Om du vill lägga till en ny **enhet väljer du** Enheter i den vänstra rutan. Fliken **Enheter** visar Alla **enheter och** **enhetsmallen Sensor Controller** för ESP32-enheten. Välj **Sensor Controller**.
 
 1. Om du vill lägga till en simulerad DevKit-enhet väljer **du + Ny**. Använd det föreslagna **enhets-ID:t** eller ange ditt eget. Ett enhets-ID kan innehålla bokstäver, siffror och `-` tecken. Du kan också ange ett namn för den nya enheten. Kontrollera att Simulera **den här enheten** är inställd på **Ja** och välj sedan **Skapa.**
 

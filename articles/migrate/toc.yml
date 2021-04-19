@@ -70,11 +70,11 @@
           href: tutorial-migrate-aws-virtual-machines.md
         - name: Migrera GCP-instanser
           href: tutorial-migrate-gcp-virtual-machines.md
-    - name: Använd
+    - name: Containerisera
       items:
-        - name: Använd ASP.NET-appar och migrera till AKS
+        - name: Containerisera ASP.NET och migrera till AKS
           href: tutorial-app-containerization-aspnet-kubernetes.md
-        - name: Använd Java-webbappar och migrera till AKS
+        - name: Containerisera Java-webbappar och migrera till AKS
           href: tutorial-containerize-java-kubernetes.md
 - name: Begrepp
   items:
@@ -130,6 +130,8 @@
   items:
     - name: Skapa och hantera Azure Migrate-projekt
       href: create-manage-projects.md
+    - name: Använda Azure Migrate med privat länk
+      href: how-to-use-azure-migrate-with-private-endpoints.md
     - name: Förbereda för att arbeta med ISV-verktyg/Movere
       href: prepare-isv-movere.md
     - name: Identifiera
@@ -148,7 +150,7 @@
               href: deploy-appliance-script-government.md
         - name: Begränsa identifieringsomfång för virtuella VMware-datorer
           href: set-discovery-scope.md
-        - name: Så här lägger du till autentiseringsuppgifter för servern
+        - name: Så här lägger du till serverautentiseringsuppgifter
           href: add-server-credentials.md
         - name: Identifiera program/roller/funktioner
           href: how-to-discover-applications.md
@@ -166,7 +168,7 @@
           href: how-to-create-a-group.md
         - name: Skapa en Azure VM-utvärdering
           href: how-to-create-assessment.md
-        - name: Skapa en Azure SQL-utvärdering
+        - name: Skapa en Azure SQL utvärdering
           href: how-to-create-azure-sql-assessment.md
         - name: Skapa en AVS-utvärdering
           href: how-to-create-azure-vmware-solution-assessment.md
@@ -198,7 +200,7 @@
               href: how-to-migrate-vmware-vms-with-cmk-disks.md
         - name: Skala migrering
           items:
-            - name: Migrera virtuella VMware-datorer i skala med hjälp av metoden utan agent
+            - name: Så här migrerar du virtuella VMware-datorer i stor skala med hjälp av agentlös replikeringsmetod
               href: how-to-scale-out-for-migration.md
             - name: Automatisera migrering av ett stort antal virtuella datorer
               href: how-to-migrate-at-scale.md
@@ -210,7 +212,7 @@
           href: how-to-delete-project.md
         - name: Arbeta med en tidigare version av Azure Migrate
           href: migrate-v1.md
-        - name: Hantera migreringsjobb med Azure Lighthouse
+        - name: Hantera migreringsprojekt med Azure Lighthouse
           href: ../lighthouse/how-to/migration-at-scale.md?toc=/azure/migrate/toc.json&bc=/azure/migrate/breadcrumb/toc.json
 - name: Felsöka
   items:
