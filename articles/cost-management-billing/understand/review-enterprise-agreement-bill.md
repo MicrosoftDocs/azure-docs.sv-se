@@ -9,12 +9,12 @@ ms.subservice: enterprise
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 643aac7927cc7b14693387fbb5765bdcd0214dc2
-ms.sourcegitcommit: fc401c220eaa40f6b3c8344db84b801aa9ff7185
-ms.translationtype: HT
+ms.openlocfilehash: 5d945c421dc0a4abed17b3a355339c131dd922df
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/20/2021
-ms.locfileid: "98598254"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728058"
 ---
 # <a name="understand-your-azure-enterprise-agreement-bill"></a>Förstå fakturan för ditt Azure Enterprise-avtal
 
@@ -396,51 +396,6 @@ See [Power BI self-service sign up](https://powerbi.microsoft.com/documentation/
 
     Du kan hämta API-nyckeln i Azure EA-portalen under fliken **Download Usage** (Ladda ned användning). Välj **API Access Key** (API-åtkomstnyckel) och klistra sedan in nyckeln i rutan **Account Key** (Kontonyckel).
 1. Det tar cirka 5 till 30 minuter att läsa in data i Power BI beroende på datamängdernas storlek.
-
-## <a name="reports-faq"></a>Vanliga frågor och svar om rapporter
-
-I det här avsnittet besvaras vanliga frågor om rapporter.
-
-### <a name="why-is-my-cost-showing-as-0"></a>Varför visas min kostnad som 0 USD?
-
-För kunder med **direktregistrering** kan företagsadministratörer ge kontoägare och avdelningsadministratörer tillgång till information om kostnad/pris i användningsrapporterna. Följ de här stegen:
-
-1. I Azure Enterprise-portalen väljer du **Manage** (Hantera) i det vänstra navigeringsfältet.
-1. Välj den blå pennan bredvid Visa avgifter för DA (avdelningsadministratör).
-1. Välj **Aktiverad** och spara.
-1. Välj den blå pennan bredvid Visa avgifter för AO (kontoägare).
-1. Välj **Aktiverad** och spara.
-
-> [!NOTE]
-> Om du är kontoägare eller avdelningsadministratör kontaktar du företagsadministratören för att aktivera prissättningsfunktionen.
-
-Om du är kund med **indirekt registrering** kontaktar du din partner och kontrollerar om de har aktiverat prissättningsfunktionen åt dig. Detta kan endast göras av en partner. När de har aktiverat funktionen kan du visa kostnader och priser för din registrering som en företagsadministratör.
-
-Partner som vill aktivera funktionen för att visa avgifter för en kontoägare eller avdelningsadministratör kan följa stegen under **direktregistrering**.
-
-### <a name="why-is-there-no-sku-information-on-my-usage-detail-report"></a>Varför finns det ingen SKU-information i rapporten för användningsinformation?
-
-Det finns ingen SKU-information i rapporten för användningsinformation. Men däremot innehåller rapporten användningsinformation, vilket innebär att du kan få tag på SKU-informationen genom att ladda ned prisdokumentrapporten.
-
-### <a name="why-doesnt-the-total-amount-on-azure-marketplace-match-the-reports-for-usage-summary-and-detail"></a>Varför stämmer inte totalbeloppet i Azure Marketplace överens med rapporterna för användningssammanfattning och användningsinformation?
-
-Rapporten för Azure Marketplace-debiteringar visar endast användningsbaserade debiteringar. Engångsavgifter visas inte. Du kan se de senaste användningsbaserade avgifterna och engångsavgifterna på sidan med användningssammanfattningen.
-
-### <a name="why-is-there-no-information-on-my-api-report"></a>Varför finns det ingen information i min API-rapport?
-
-API-nycklar upphör att gälla var sjätte månad. Be företagsadministratören generera en ny API-nyckel om du har problem. Kom ihåg att följa stegen i vanliga frågor och svar om API-rapporter.
-
-### <a name="why-isnt-my-power-bi-report-working"></a>Varför fungerar inte min Power BI-rapport?
-
-Om du har problem med Power BI loggar du en begäran om teknisk support till [Power BI-supportteamet](https://support.powerbi.com).
-
-### <a name="why-dont-my-resource-tags-show-on-my-reports"></a>Varför visas inte resurstaggar i mina rapporter?
-
-Resurstaggar hanteras i Azure-portalen. Du kan kontakta Azure-prenumerationsteamet på [Azure-portalen](https://portal.azure.com). Följ stegen i artikeln [Skapa en supportbegäran för Azure](../../azure-portal/supportability/how-to-create-azure-support-request.md).
-
-### <a name="why-does-my-resource-rate-change-every-day"></a>Varför ändras mitt resurspris varje dag?
-
-Resurspriset i den detaljerade användningsrapporten är ett beräknat värde. Det representerar det genomsnittliga månadspriset som debiteras för en tjänst. Resurspriset beräknas med hjälp av genomsnittet av det månatliga åtagandet och de månatliga överförbrukningsavgifterna för en tjänstenhet. Den del av användningen som debiteras mot åtagande och överförbrukningsavgifter ändras till dagen då månaden slutar. Detta innebär att även resurspriset ändras under månaden. Resurspriser låses den femte dagen efter månadens slut.
 
 ### <a name="glossary-of-processes-for-calculating-the-resource-rate"></a>Ordlista för processer för beräkning av resurspris
 

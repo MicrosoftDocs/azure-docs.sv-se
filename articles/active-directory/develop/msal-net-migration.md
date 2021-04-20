@@ -1,7 +1,7 @@
 ---
 title: Migrera till MSAL.NET
 titleSuffix: Microsoft identity platform
-description: Lär dig mer om skillnaderna mellan Microsoft Authentication Library for .NET (MSAL.NET) och Azure AD Authentication Library for .NET (ADAL.NET) och hur du migrerar till MSAL.NET.
+description: Lär dig mer om skillnaderna mellan Microsoft Authentication Library för .NET (MSAL.NET) och Azure AD Authentication Library för .NET (ADAL.NET) och hur du migrerar till MSAL.NET.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,59 +13,59 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 49b5da2da72e78226db19f5d8881073577aee5b0
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: 2ec4ca8b24f1e8534e7f8434bc86a2eb2745e946
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107575531"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727050"
 ---
 # <a name="migrating-applications-to-msalnet"></a>Migrera program till MSAL.NET
 
-Både Microsoft Authentication Library för .NET (MSAL.NET) och Azure AD-autentiseringsbiblioteket för .NET (ADAL.NET) används för att autentisera Azure AD-entiteter och begära token från Azure AD. Hittills har de flesta utvecklare arbetat med Azure AD för utvecklarplattformen (v1.0) för att autentisera Azure AD-identiteter (arbets- och skolkonton) genom att begära token med hjälp av Azure AD Authentication Library (ADAL). Använda MSAL:
+Både Microsoft Authentication Library för .NET (MSAL.NET) och Azure AD Authentication Library for .NET (ADAL.NET) används för att autentisera Azure AD-entiteter och begära token från Azure AD. Hittills har de flesta utvecklare arbetat med Azure AD för utvecklarplattformen (v1.0) för att autentisera Azure AD-identiteter (arbets- och skolkonton) genom att begära token med hjälp av Azure AD Authentication Library (ADAL). Använda MSAL:
 
-- du kan autentisera en bredare uppsättning Microsoft-identiteter (Azure AD-identiteter och Microsoft-konton och sociala och lokala konton via Azure AD B2C) eftersom den använder Microsoft Identity Platform,
-- användarna får den bästa upplevelsen för enkel inloggning.
+- du kan autentisera en bredare uppsättning Microsoft-identiteter (Azure AD-identiteter och Microsoft-konton samt sociala och lokala konton via Azure AD B2C) eftersom den använder Microsoft Identity Platform,
+- dina användare får den bästa upplevelsen för enkel inloggning.
 - ditt program kan aktivera inkrementellt medgivande, och det är enklare att stödja villkorlig åtkomst
 - du drar nytta av innovationen.
 
-**MSAL.NET eller Microsoft.Identity.Web är nu de autentiseringsbibliotek som** rekommenderas för användning med Microsoft Identity Platform. Inga nya funktioner kommer att implementeras ADAL.NET. Arbetet fokuserar på att förbättra MSAL.
+**MSAL.NET eller Microsoft.Identity.Web är nu de autentiseringsbibliotek** som rekommenderas för användning med Microsoft Identity Platform. Inga nya funktioner implementeras på ADAL.NET. Arbetet fokuserar på att förbättra MSAL.
 
 I den här artikeln beskrivs skillnaderna mellan Microsoft Authentication Library för .NET (MSAL.NET) och Azure AD-autentiseringsbiblioteket för .NET (ADAL.NET) och hjälper dig att migrera till MSAL.
 
 ## <a name="should-you-migrate-to-msalnet-or-to-microsoftidentityweb"></a>Bör du migrera till MSAL.NET eller till Microsoft.Identity.Web
 
-Innan du går in närmare på MSAL.NET kontra ADAL.NET kanske du vill kontrollera om du vill använda MSAL.NET eller en abstraktion på högre nivå som [Microsoft.Identity.Web](microsoft-identity-web.md)
+Innan du går in närmare på MSAL.NET kontra ADAL.NET bör du kontrollera om du vill använda MSAL.NET eller en abstraktion på högre nivå som [Microsoft.Identity.Web](microsoft-identity-web.md)
 
-Mer information om beslutsträdet nedan finns i [Bör jag endast använda MSAL.NET? eller en abstraktion på högre nivå?](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)
+Mer information om beslutsträdet nedan finns i [Bör jag endast MSAL.NET använda? eller en abstraktion på högre nivå?](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Is-MSAL.NET-right-for-me%3F)
 
-:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="Blockdiagram som förklarar hur du väljer om du behöver använda MSAL.NET och Microsoft.Identity.Web eller både och när du migrerar från ADAL.NET":::
+:::image type="content" source="media/msal-net-migration/decision-diagram.png" alt-text="Blockdiagram som förklarar hur du väljer om du behöver använda MSAL.NET och Microsoft.Identity.Web eller båda när du migrerar från ADAL.NET":::
 
 ## <a name="differences-between-adal-and-msal-apps"></a>Skillnader mellan ADAL- och MSAL-appar
 
-I de flesta fall vill du använda MSAL.NET microsoft-identitetsplattformen, som är den senaste generationens Microsoft-autentiseringsbibliotek. Med MSAL.NET hämtar du token för användare som loggar in i ditt program med Azure AD -konton (arbets- och skolkonton), Microsoft-konton (personliga) konton (MSA) eller Azure AD B2C.
+I de flesta fall vill du använda MSAL.NET och Microsoft Identity-plattformen, som är den senaste generationens Microsoft-autentiseringsbibliotek. Med MSAL.NET hämtar du token för användare som loggar in i ditt program med Azure AD -konton (arbets- och skolkonton), Microsoft-konton (personliga) eller Azure AD B2C.
 
 Om du redan är bekant med slutpunkten för Azure AD för utvecklare (v1.0) (och ADAL.NET) kanske du vill läsa Vad är annorlunda med [Microsoft Identity Platform?](../azuread-dev/azure-ad-endpoint-comparison.md).
 
 Du måste dock fortfarande använda ADAL.NET om ditt program behöver logga in användare med tidigare versioner [av Active Directory Federation Services (AD FS) (ADFS).](/windows-server/identity/active-directory-federation-services) Mer information finns i [ADFS-stöd.](https://aka.ms/msal-net-adfs-support)
 
-I följande bild sammanfattas några av skillnaderna mellan ADAL.NET och MSAL.NET ![ kod sida vid sida](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
+I följande bild sammanfattas några av skillnaderna mellan ADAL.NET och MSAL.NET kod sida ![ vid sida](./media/msal-compare-msaldotnet-and-adaldotnet/differences.png)
 
-### <a name="nuget-packages-and-namespaces"></a>NuGet-paket och namnrymder
+### <a name="nuget-packages-and-namespaces"></a>NuGet-paket och namnområden
 
-ADAL.NET från [NuGet-paketet Microsoft.IdentityModel.Clients.ActiveDirectory.](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) namnområdet som ska användas är `Microsoft.IdentityModel.Clients.ActiveDirectory` .
+ADAL.NET nuGet-paketet [Microsoft.IdentityModel.Clients.ActiveDirectory.](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory) det namnområde som ska användas är `Microsoft.IdentityModel.Clients.ActiveDirectory` .
 
 Om du MSAL.NET måste du lägga till [Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client) NuGet-paketet och använda `Microsoft.Identity.Client` namnområdet
 
 ### <a name="scopes-not-resources"></a>Omfång, inte resurser
 
-ADAL.NET hämtar token för *resurser*, men MSAL.NET hämtar token för *omfång .* Ett antal MSAL.NET AcquireToken-åsidosättningar kräver en parameter med namnet scopes( `IEnumerable<string> scopes` ). Den här parametern är en enkel lista över strängar som deklarerar önskade behörigheter och resurser som begärs. Välkända omfång är Microsoft Graph [omfånget](https://docs.microsoft.com/graph/permissions-reference).
+ADAL.NET hämtar token för *resurser*, men MSAL.NET hämtar token för *omfång .* Ett antal MSAL.NET AcquireToken-åsidosättningar kräver en parameter som kallas scopes( `IEnumerable<string> scopes` ). Den här parametern är en enkel lista över strängar som deklarerar önskade behörigheter och resurser som begärs. Välkända omfång är Microsoft Graph [omfången](/graph/permissions-reference).
 
-Det är också möjligt i MSAL.NET att komma åt v1.0-resurser. Mer information finns [i Omfång för ett v1.0-program.](#scopes-for-a-web-api-accepting-v10-tokens)
+Det är också möjligt MSAL.NET åtkomst till v1.0-resurser. Mer information finns [i Omfång för ett v1.0-program.](#scopes-for-a-web-api-accepting-v10-tokens)
 
 ### <a name="core-classes"></a>Kärnklasser
 
-- ADAL.NET använder [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) som representation av din anslutning till säkerhetstokentjänsten (STS) eller auktoriseringsservern via en utfärdare. Däremot är MSAL.NET runt [klientprogram](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Den innehåller två separata klasser: `PublicClientApplication` och `ConfidentialClientApplication`
+- ADAL.NET använder [AuthenticationContext](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/AuthenticationContext:-the-connection-to-Azure-AD) som representation av din anslutning till säkerhetstokentjänsten (STS) eller auktoriseringsservern via en utfärdare. I stället är MSAL.NET utformat runt [klientprogram](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Client-Applications). Den innehåller två separata klasser: `PublicClientApplication` och `ConfidentialClientApplication`
 
 - Hämta token: ADAL.NET och MSAL.NET har samma autentiseringssamtal ( och för ADAL.NET, och och i MSAL.NET), men `AcquireTokenAsync` med olika parametrar som `AcquireTokenSilentAsync` `AcquireTokenInteractive` `AcquireTokenSilent` krävs. En skillnad är att i MSAL.NET behöver du inte längre skicka in för ditt program i `ClientID` varje AcquireTokenXX-anrop. Anges faktiskt `ClientID` bara en gång när du skapar ( eller `IPublicClientApplication` `IConfidentialClientApplication` ).
 
@@ -274,4 +274,4 @@ Du kan också använda den här metoden för olika integreringsscenarier där du
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om omfången finns i [Omfång, behörigheter och medgivande på Microsoft Identity Platform](v2-permissions-and-consent.md)
+Du hittar mer information om omfången i [Omfång, behörigheter och medgivande på Microsoft Identity Platform](v2-permissions-and-consent.md)

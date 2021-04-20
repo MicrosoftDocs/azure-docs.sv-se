@@ -5,13 +5,13 @@ author: pkshultz
 ms.topic: how-to
 ms.date: 04/16/2021
 ms.author: peshultz
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 40281211e5eb70089f4168dcb02720c912120a35
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.custom: devx-track-azurecli
+ms.openlocfilehash: 01d2ea03768a09c1ad4e019b9e8ed43a26443637
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576116"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728526"
 ---
 # <a name="create-a-pool-with-disk-encryption-enabled"></a>Skapa en pool med diskkryptering aktiverat
 
@@ -21,7 +21,7 @@ Den här artikeln beskriver hur du skapar en Batch-pool med diskkryptering aktiv
 
 ## <a name="why-use-a-pool-with-disk-encryption-configuration"></a>Varför ska jag använda en pool med diskkrypteringskonfiguration?
 
-Med en Batch-pool kan du komma åt och lagra data på operativsystemet och temporära diskar på beräkningsnoden. Kryptering av disken på serversidan med en plattforms hanterad nyckel skyddar dessa data med låg belastning och bekvämlighet.
+Med en Batch-pool kan du komma åt och lagra data på operativsystemet och temporära diskar på beräkningsnoden. Kryptering av disken på serversidan med en plattforms hanterad nyckel skyddar dessa data med låga omkostnader och bekvämlighet.
 
 Batch tillämpar någon av dessa diskkrypteringstekniker på beräkningsnoder, baserat på poolkonfiguration och regional support.
 

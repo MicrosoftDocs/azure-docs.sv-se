@@ -7,25 +7,25 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01149eed5cc4195ca501507e7fe1d66fffecb84d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 2f01b1d222470c49505638be64180948b6f7e046
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327530"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728266"
 ---
-Använd den optiska teckenigenkänningen REST API för att läsa tryckt och handskriven text.
+Använd optisk teckenläsning för REST API att läsa tryckt och handskriven text.
 
 > [!NOTE]
-> Den här snabbstarten använder cURL-kommandon för att anropa REST API. Du kan också anropa REST API med hjälp av ett programmeringsspråk. Se GitHub-exemplen för exempel [i C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), [Python,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST) [Java,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST) [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)och [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST).
+> Den här snabbstarten använder cURL-kommandon för att anropa REST API. Du kan också anropa REST API med ett programmeringsspråk. Se GitHub-exemplen för exempel [i C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), [Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST), [Java,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST) [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)och [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services/) 
+* En Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services/) 
 * När du har din Azure-prenumeration skapar du en Visuellt innehåll-resurs för att skapa Visuellt innehåll resurs i Azure Portal för att <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
   * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Visuellt innehåll tjänsten. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
   * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
@@ -35,7 +35,9 @@ Använd den optiska teckenigenkänningen REST API för att läsa tryckt och hand
 
 ## <a name="read-printed-and-handwritten-text"></a>Läsa tryckt och handskriven text
 
-OCR-tjänsten kan läsa synlig text i en bild och konvertera den till en teckenström. Mer information om textigenkänning finns i [översikten optisk teckenläsning (OCR).](../overview-ocr.md)
+OCR-tjänsten kan läsa synlig text i en bild och konvertera den till en teckenström. Mer information om textigenkänning finns i [översikten över optisk teckenläsning (OCR).](../overview-ocr.md)
+
+### <a name="call-the-read-api"></a>Anropa API:et Read
 
 Så här skapar du och kör exemplet:
 
@@ -52,7 +54,9 @@ Så här skapar du och kör exemplet:
 curl -v -X POST "https://westcentralus.api.cognitive.microsoft.com/vision/v3.2/read/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: <subscription key>" --data-ascii "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Atomist_quote_from_Democritus.png/338px-Atomist_quote_from_Democritus.png\"}"
 ```
 
-Svaret innehåller ett `Operation-Location` -huvud vars värde är en unik URL. Du använder den här URL:en för att köra frågor mot resultatet av läsåtgärden. URL:en upphör att gälla om 48 timmar.
+Svaret innehåller en rubrik `Operation-Location` vars värde är en unik URL. Du använder den här URL:en för att fråga resultatet av åtgärden Läs. URL:en upphör att gälla om 48 timmar.
+
+### <a name="get-read-results"></a>Hämta läsresultat
 
 1. Kopiera följande kommando till textredigeraren.
 1. Ersätt URL:en med `Operation-Location` det värde som du kopierade i föregående steg.
@@ -131,7 +135,9 @@ Ett svar som anger att åtgärden lyckades returneras i JSON. Exempelprogrammet 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Utforska OCR-API:et mer ingående. Om du snabbt vill experimentera med API:et kan du prova [Open API-testkonsolen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005/console).
+I den här snabbstarten har du lärt dig hur du anropar REST API. Härnäst kan du läsa mer om read API-funktionerna.
 
 > [!div class="nextstepaction"]
-> [Utforska OCR-API:et](https://centraluseuap.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2/operations/5d986960601faab4bf452005)
+>[Anropa Read-API:et](../Vision-API-How-to-Topics/call-read-api.md)
+
+* [Översikt över OCR](../overview-ocr.md)

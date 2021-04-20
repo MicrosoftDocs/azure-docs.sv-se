@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 88bb4c24489b973aa4230ba6f2b34756f83c7dda
-ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
-ms.translationtype: HT
+ms.openlocfilehash: f2443af472900363babf9e2381536df7538b5291
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 12/10/2020
-ms.locfileid: "97030696"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726492"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Komma igång med Azure Enterprise-portalen
 
@@ -72,113 +72,8 @@ Artikeln [Azure Marketplace](./ea-azure-marketplace.md) förklarar hur EA-kunder
 
 I artikeln [Administration i Azure EA-portalen för partner](./ea-partner-portal-administration.md) förklaras några vanliga uppgifter som en EA-administratör hos en partner kan utföra i Azure EA-portalen.
 
-## <a name="get-started-on-azure-ea---faq"></a>Komma igång med Azure EA – Vanliga frågor och svar
-
-Det här avsnittet innehåller information om vanliga frågor som ställts av kunder under registreringsprocessen.  
-
-### <a name="i-accidentally-associated-my-existing-azure-account-with-azure-ea-enrollment-as-a-result-i-lost-my-monthly-credit-can-i-get-my-monthly-credit-back"></a>Jag associerade av misstag mitt befintliga Azure-konto med Azure EA-registrering. Därför har jag förlorat min månadskredit. Kan jag få tillbaka min månadskredit?
-
-Om du har loggat in som Azure EA-kontoinnehavare med samma autentiseringsuppgifter som för din Visual Studio-prenumeration kan du återställa din enskilda Azure-förmån för Visual Studio-prenumeration genom att utföra någon av följande åtgärder:
-
-- Ta bort kontoinnehavaren från Azure Enterprise-portalen efter att du har tagit bort eller flyttat eventuella associerade Azure-prenumerationer. Registrera dig sedan för enskilda Visual Studio Azure-förmåner på nytt.
-- Ta bort Visual Studio-prenumeranten från administrationsplatsen i VLSC och tilldela om prenumerationen till ett konto med andra autentiseringsuppgifter den här gången. Registrera dig sedan för enskilda Visual Studio Azure-förmåner på nytt.
-
-### <a name="what-type-of-subscription-should-i-create"></a>Vilken typ av prenumeration ska jag skapa?
-
-Azure Enterprise-portalen har två typer av prenumerationer för företagskunder:
-
-- Microsoft Azure Enterprise, som passar för:
-  - All produktionsanvändning
-  - Bästa priser baserat på infrastrukturutgifter
-
-  [Kontakta Azure-säljavdelningen](https://azure.microsoft.com/pricing/enterprise-agreement/) om du vill få mer information.
-
-- Enterprise Dev/Test, som passar för:
-  - Alla utvecklar-/testarbetsbelastningar
-  - Medelstor till stor enskild utvecklar-/testarbetsbelastning
-  - Åtkomst till särskilda MSDN-avbildningar och priser för förmånstjänster
-
-  Mer information finns i [Enterprise Dev/Test-erbjudande](https://azure.microsoft.com/offers/ms-azr-0148p/).
-
-### <a name="my-subscription-name-is-the-same-as-the-offer-name-should-i-change-the-subscription-name-to-something-meaningful-to-my-organization"></a>Mitt prenumerationsnamn är detsamma som namnet på erbjudandet. Ska jag ändra prenumerationsnamnet till något som är meningsfullt för min organisation?
-
-När du skapar en prenumeration blir namnet som standard den erbjudandetyp som du väljer. Vi rekommenderar att du ändrar prenumerationsnamnet till något som gör det lätt för dig att spåra prenumerationen.
-
-Så här ändrar du namnet:
-
-1. Logga in på [https://account.windowsazure.com](https://account.windowsazure.com).
-1. Välj prenumerationslistan.
-1. Välj den prenumeration som du vill redigera.
-1. Välj ikonen **Hantera prenumeration**.
-1. Redigera prenumerationsinformation.
-
-### <a name="how-can-i-track-costs-incurred-by-a-cost-center"></a>Hur spårar jag kostnader som uppstått på ett kostnadsställe?
-
-För att spåra kostnader per kostnadsställe behöver du definiera kostnadsstället på någon av följande nivåer:
-
-- Avdelning
-- Konto
-- Prenumeration
-
-Utifrån dina behov kan du använda samma kostnadsställe för att spåra användning och kostnader som är associerade med ett visst kostnadsställe.
-
-Om du till exempel vill spåra kostnaden för ett särskilt projekt där flera avdelningar är inblandade kan du definiera kostnadsstället på en prenumerationsnivå för att spåra användningen och kostnaderna.
-
-Du kan inte definiera ett kostnadsställe på servicenivå. Om du vill spåra användning på servicenivå kan du använda funktionen _Tagg_, som finns på servicenivå.
-
-### <a name="how-do-i-track-usage-and-spend-by-different-departments-in-my-organization"></a>Hur spårar jag användning och utgifter av olika avdelningar i min organisation?
-
-Du kan skapa så många avdelningar som du behöver under din Azure EA-registrering. För att kunna spåra användningen på rätt sätt ska du se till att prenumerationer inte delas mellan olika avdelningar.
-
-När du har skapat avdelningar och prenumerationer kan du se data i användningsrapporten. Den här informationen kan hjälpa dig att spåra användning samt hantera kostnader och utgifter på avdelningsnivå.
-
-Du kan även komma åt användningsdata via rapporterings-API:et. Detaljerad information och exempelkod finns i [REST-API:er för Azure Enterprise](./ea-portal-rest-apis.md).
-
-### <a name="can-i-set-a-spending-quota-and-get-alerts-as-i-approach-my-limit"></a>Kan jag ange en utgiftskvot och få aviseringar när jag närmar mig min gräns?
-
-Du kan ange en utgiftskvot på avdelningsnivå, så meddelar systemet dig automatiskt när utgiftsgränsen når 50 %, 75 %, 90 % och 100 % av den kvot som du definierar.
-
-Du definierar utgiftskvoten genom att välja en avdelning och sedan välja redigeringsikonen. När du har redigerat informationen för utgiftsgräns väljer du **Spara**.
-
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Jag använde resursgrupper för att implementera RBAC och spåra användning. Hur visar jag associerad användningsinformation?
-
-Om du använder _resursgrupper_ och _taggar_ spåras den här informationen på servicenivå, och du kan komma åt den i nedladdningsfilen (CSV) för detaljerad användning. Se [ladda ned användningsrapport](https://ea.azure.com/report/downloadusage) i Azure Enterprise-portalen.
-
-Du kan även komma åt användning via API. Detaljerad information och exempelkod finns i [REST-API:er för Azure Enterprise](./ea-portal-rest-apis.md).
-
-> [!NOTE]
-> Du kan endast använda taggar på resurser som stöder Azure Resource Manager-åtgärder. Om du har skapat en virtuell dator, ett virtuellt nätverk eller lagring via den klassiska distributionsmodellen (t.ex. via den klassiska portalen) kan du inte använda en tagg på den resursen. Du måste distribuera dessa resurser igen via Resource Manager för att stödja taggning. Alla andra resurser stöder taggning.
-
-### <a name="can-i-perform-analyses-using-power-bi"></a>Kan jag göra analyser med Power BI?
-
-Ja. Med Microsoft Azure Enterprise-innehållspaketet för Power BI kan du:
-
-- Snabbt importera och analysera Azure-förbrukning för din företagsregistrering.
-- Ta reda på vilken avdelning, vilket konto eller vilken prenumeration som förbrukade mest användning.
-- Lära dig vilken tjänst som din organisation använde mest.
-- Spåra utgifts- och användningstrender.
-
-Så här använder du Power BI:
-
-1. Gå till Power BI-webbplatsen.
-1. Logga in med ett giltigt arbets- eller skolkonto.
-
-   Arbets- eller skolkontot kan vara detsamma eller ett annat än det som används för att nå registreringen via Azure Enterprise-portalen.
-1. På instrumentpanelen för tjänster väljer du Microsoft Azure Enterprise-panelen och sedan **Anslut**.
-1. På skärmen **Anslut till Azure Enterprise** anger du:
-    - URL till Azure-miljön: [https://ea.azure.com](https://ea.azure.com)
-    - Antal månader: mellan 1 och 36
-    - Registreringsnummer: ditt registreringsnummer
-1. Välj **Nästa**.
-1. Ange API-nyckel i rutan **Kontonyckel**.
-
-   Du hittar API-nyckeln i Azure Enterprise-portalen. Titta på fliken **Ladda ned användning** och välj sedan **API-åtkomstnyckel**. Kopiera den och klistra in nyckeln i rutan **Kontonyckel** i Power BI.
-
-Beroende på datamängdens storlek kan det ta mellan fem och trettio minuter för data att läsas in Power BI.
-
-Power BI-rapportering är tillgängligt för Azure EA-direktkunder, partner och indirekta kunder som kan visa faktureringsinformation.
-
 ## <a name="next-steps"></a>Nästa steg
 
+- Läs vanliga [Cost Management + Billing och svar](../cost-management-billing-faq.yml) om hur du kommer igång med EA-portalen.
 - Administratörer i Azure Enterprise-portalen bör läsa [Administration i Azure Enterprise-portalen](ea-portal-administration.md). Där finns mer information om vanliga administrativa uppgifter.
 - Om du behöver hjälp med att felsöka problem med Azure Enterprise-portalen kan du läsa [Felsöka åtkomst till Azure Enterprise-portalen](ea-portal-troubleshoot.md).

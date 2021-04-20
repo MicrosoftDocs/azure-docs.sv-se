@@ -58,7 +58,7 @@
         - name: Nätverkssäkerhet
           href: network-security.md
         - name: Azures säkerhetsbaslinje för Key Vault
-          href: security-baseline.md
+          href: /security/benchmark/azure/baselines/key-vault-security-baseline?context=/azure/key-vault/context/context
         - name: Säkerhetskontroller av Azure Policy
           displayName: 'regulatory, compliance, standards, domains'
           href: ../security-controls-policy.md?toc=/azure/key-vault/general/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
@@ -96,9 +96,9 @@
               href: assign-access-policy-powershell.md
             - name: Portalen
               href: assign-access-policy-portal.md
-        - name: Azure RBAC-behörighets modell
+        - name: Azure RBAC-behörighetsmodell
           items:
-            - name: 'Använd en Azure RBAC för att hantera åtkomst till nycklar, hemligheter och certifikat'
+            - name: 'Använda en Azure RBAC för att hantera åtkomst till nycklar, hemligheter och certifikat'
               href: rbac-guide.md
             - name: Valvåtkomstprinciper för Azure RBAC-migreringsguide
               href: rbac-migration.md

@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 2c4dcaaa1deaa50d620e7c24dacbe56fa91c217f
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: d63e7916423038e53c375b2be4114582cf4d6152
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713452"
+ms.locfileid: "107725772"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Anpassad e-postverifiering med SendGrid
 
@@ -35,8 +35,6 @@ Använd anpassad e-post Azure Active Directory B2C (Azure AD B2C) för att skick
 
 Anpassad e-postverifiering kräver användning av en tredjeparts-e-postleverantör som [SendGrid,](https://sendgrid.com) [Mailjet](https://Mailjet.com)eller [SparkPost,](https://sparkpost.com)en anpassad REST API eller en HTTP-baserad e-postleverantör (inklusive din egen). I den här artikeln beskrivs hur du ställer in en lösning som använder SendGrid.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-sendgrid-account"></a>Skapa ett SendGrid-konto
 
 Om du inte redan har ett kan du börja med att konfigurera ett SendGrid-konto (Azure-kunder kan låsa upp 25 000 kostnadsfria e-postmeddelanden varje månad). Installationsanvisningar finns i avsnittet [Skapa ett SendGrid-konto i](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account) Skicka e-post med [SendGrid med Azure](../sendgrid-dotnet-how-to-send-email.md).
@@ -44,18 +42,18 @@ Om du inte redan har ett kan du börja med att konfigurera ett SendGrid-konto (A
 Se till att slutföra avsnittet där du skapar en [SendGrid API-nyckel.](../sendgrid-dotnet-how-to-send-email.md#to-find-your-sendgrid-api-key) Registrera API-nyckeln för användning i ett senare steg.
 
 > [!IMPORTANT]
-> SendGrid ger kunderna möjlighet att skicka e-postmeddelanden från delade IP-adresser och [dedikerade IP-adresser.](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) När du använder dedikerade IP-adresser måste du skapa ditt eget rykte korrekt med en IP-adress som värmer upp. Mer information finns i [Värme upp en IP-adress.](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)
+> SendGrid ger kunderna möjlighet att skicka e-postmeddelanden från delade IP-adresser och [dedikerade IP-adresser.](https://sendgrid.com/docs/ui/account-and-settings/dedicated-ip-addresses/) När du använder dedikerade IP-adresser måste du bygga ditt eget rykte korrekt med en IP-adress som värmer upp. Mer information finns i [Värme upp en IP-adress.](https://sendgrid.com/docs/ui/sending-email/warming-up-an-ip-address/)
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Skapa Azure AD B2C principnyckel
 
 Lagra sedan SendGrid API-nyckeln i en Azure AD B2C principnyckel som dina principer ska referera till.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. Kontrollera att du använder den katalog som innehåller din Azure AD B2C klientorganisation. Välj filtret **Katalog +** prenumeration på den översta menyn och välj Azure AD B2C katalog.
+1. Kontrollera att du använder den katalog som innehåller din Azure AD B2C klientorganisation. Välj filtret **Katalog + prenumeration** på den översta menyn och välj Azure AD B2C katalog.
 1. Välj **Alla tjänster** på menyn högst upp till vänster i Azure-portalen och sök efter och välj **Azure AD B2C**.
 1. På sidan Översikt väljer du **Identity Experience Framework**.
 1. Välj **Principnycklar och** välj sedan Lägg **till**.
-1. För **Alternativ** väljer du **Manuell.**
+1. För **Alternativ** väljer du **Manuell**.
 1. Ange ett **namn** för principnyckeln. Till exempel `SendGridSecret`. Prefixet `B2C_1A_` läggs automatiskt till i namnet på din nyckel.
 1. I **Hemlighet** anger du den SendGrid API-nyckel som du antecknade tidigare.
 1. För **Nyckelanvändning** väljer du **Signatur.**
@@ -63,7 +61,7 @@ Lagra sedan SendGrid API-nyckeln i en Azure AD B2C principnyckel som dina princi
 
 ## <a name="create-sendgrid-template"></a>Skapa SendGrid-mall
 
-När ett SendGrid-konto har skapats och SendGrid API-nyckeln lagras i en Azure AD B2C-principnyckel skapar du en dynamisk [SendGrid-transaktionsmall.](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)
+Med ett SendGrid-konto som skapats och SendGrid API-nyckeln lagrad i en Azure AD B2C-principnyckel skapar du en dynamisk [SendGrid-transaktionsmall.](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)
 
 1. På SendGrid-webbplatsen öppnar du [sidan med transaktionsmallar](https://sendgrid.com/dynamic_templates) och väljer **Skapa mall.**
 1. Ange ett unikt mallnamn som `Verification email` och välj sedan **Spara.**
@@ -171,7 +169,7 @@ När ett SendGrid-konto har skapats och SendGrid API-nyckeln lagras i en Azure A
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Lägga Azure AD B2C anspråkstyper
 
-I din princip lägger du till följande anspråkstyper i `<ClaimsSchema>` elementet i `<BuildingBlocks>` .
+I principen lägger du till följande anspråkstyper i `<ClaimsSchema>` elementet i `<BuildingBlocks>` .
 
 Dessa anspråkstyper är nödvändiga för att generera och verifiera e-postadressen med hjälp av en engångslösenordskod (OTP).
 
@@ -202,7 +200,7 @@ Dessa anspråkstyper är nödvändiga för att generera och verifiera e-postadre
 
 Därefter behöver du en anspråksomvandling för att mata ut ett JSON-stränganspråk som ska vara brödtexten i begäran som skickas till SendGrid.
 
-JSON-objektets struktur definieras av -ID:erna i punkt-notationen för InputParameters och TransformationClaimTypes för InputClaims. Tal i punkt notationen innebär matriser. Värdena kommer från InputClaims-värdena och InputParameters-egenskaperna "Value". Mer information om JSON-anspråksomvandlar finns i [JSON-anspråksomvandlar](json-transformations.md).
+JSON-objektets struktur definieras av ID:erna i punkt notation för InputParameters och TransformationClaimTypes för InputClaims. Tal i punkt notationen innebär matriser. Värdena kommer från InputClaims-värdena och InputParameters-egenskaperna "Value". Mer information om omvandlingar av JSON-anspråk finns i [JSON-anspråksomvandlar](json-transformations.md).
 
 Lägg till följande anspråksomvandling till `<ClaimsTransformations>` elementet i `<BuildingBlocks>` . Gör följande uppdateringar av XML-filen för anspråksomvandling:
 
@@ -305,6 +303,9 @@ Under innehållsdefinitioner, fortfarande `<BuildingBlocks>` i , lägger du till
 
 Den `GenerateOtp` tekniska profilen genererar en kod för e-postadressen. Den `VerifyOtp` tekniska profilen verifierar koden som är associerad med e-postadressen. Du kan ändra formatets konfiguration och lösenordets giltighetstid. Mer information om tekniska profiler för engångslösenord finns i Definiera en teknisk [profil för engångslösenord.](one-time-password-technical-profile.md)
 
+> [!NOTE]
+> OTP-koder som genereras av protokollet Web.TPEngine.Providers.OneTimePasswordProtocolProvider är knutna till webbläsarsessionen. Det innebär att en användare kan generera unika OTP-koder i olika webbläsarsessioner som var och en är giltig för sina motsvarande sessioner. Däremot är en OTP-kod som genereras av det inbyggda användarflödet oberoende av webbläsarsessionen, så om en användare genererar en ny OTP-kod i en ny webbläsarsession ersätter den föregående OTP-koden.
+
 Lägg till följande tekniska profiler i `<ClaimsProviders>` elementet .
 
 ```xml
@@ -384,7 +385,7 @@ Precis som med tekniska profiler för engångslösenord lägger du till följand
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Skapa en referens till DisplayControl
 
-I det sista steget lägger du till en referens till den DisplayControl som du skapade. Ersätt dina `LocalAccountSignUpWithLogonEmail` befintliga `LocalAccountDiscoveryUsingEmailAddress` och självinfogade tekniska profiler med följande. Om du använde en tidigare version Azure AD B2C princip. Dessa tekniska profiler `DisplayClaims` använder med en referens till DisplayControl.
+I det sista steget lägger du till en referens till den DisplayControl som du skapade. Ersätt dina befintliga `LocalAccountSignUpWithLogonEmail` `LocalAccountDiscoveryUsingEmailAddress` och självinfogade tekniska profiler med följande. Om du använde en tidigare version av Azure AD B2C princip. Dessa tekniska profiler använder `DisplayClaims` med en referens till DisplayControl.
 
 Mer information finns i [Självkontrollerad teknisk profil och](restful-technical-profile.md) [DisplayControl.](display-controls.md)
 
@@ -531,7 +532,7 @@ För att lokalisera e-postmeddelandet måste du skicka lokaliserade strängar ti
     
 ## <a name="optional-localize-the-ui"></a>[Valfritt] Lokalisera användargränssnittet
 
-Med lokaliseringselementet kan du stödja flera språk eller språk i principen för användarresor. Med lokaliseringsstödet i principer kan du ange språkspecifika strängar för både elementen i användargränssnittet för verifieringskontroll [och](localization-string-ids.md#verification-display-control-user-interface-elements) [felmeddelanden för lösenord en gång.](localization-string-ids.md#one-time-password-error-messages) Lägg till följande LocalizedString i LocalizedResources. 
+Med lokaliseringselementet kan du stödja flera språk i principen för användarresor. Med lokaliseringsstödet i principer kan du ange språkspecifika strängar för både elementen i användargränssnittet för verifieringskontroll [och](localization-string-ids.md#verification-display-control-user-interface-elements) [felmeddelanden för lösenord en gång.](localization-string-ids.md#one-time-password-error-messages) Lägg till följande LocalizedString i LocalizedResources. 
 
 ```XML
 <LocalizedResources Id="api.custom-email.en">
@@ -562,11 +563,11 @@ Med lokaliseringselementet kan du stödja flera språk eller språk i principen 
 </LocalizedResources>
 ```
 
-När du har lagt till de lokaliserade strängarna tar du bort metadata för OTP-verifieringsfelmeddelanden från de tekniska profilerna LocalAccountSignUpWithLogonEmail och LocalAccountDiscoveryUsingEmailAddress.
+När du har lagt till de lokaliserade strängarna tar du bort metadata för OTP-verifieringsfelmeddelanden från tekniska profiler för LocalAccountSignUpWithLogonEmail och LocalAccountDiscoveryUsingEmailAddress.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du hittar ett exempel på en anpassad princip för e-postverifiering på GitHub:
+Du hittar ett exempel på en anpassad e-postverifieringsprincip på GitHub:
 
 - [Anpassad e-postverifiering – DisplayControls](https://github.com/azure-ad-b2c/samples/tree/master/policies/custom-email-verifcation-displaycontrol)
 - Information om hur du använder en anpassad REST API eller en HTTP-baserad SMTP-e-postleverantör finns i Definiera en [teknisk RESTful-profil](restful-technical-profile.md)i en anpassad Azure AD B2C en anpassad princip.

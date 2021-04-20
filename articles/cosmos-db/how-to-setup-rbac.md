@@ -4,14 +4,14 @@ description: Lär dig hur du konfigurerar rollbaserad åtkomstkontroll med Azure
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: thweiss
-ms.openlocfilehash: 145c60784ec9cef60d0863e1eb03aa564dea2b55
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 209d18dfbadea89f14fd90da9a1bc57b3ccf0dfe
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600836"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728084"
 ---
 # <a name="configure-role-based-access-control-with-azure-active-directory-for-your-azure-cosmos-db-account-preview"></a>Konfigurera rollbaserad åtkomstkontroll med Azure Active Directory för ditt Azure Cosmos DB konto (förhandsversion)
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -33,7 +33,7 @@ Den Azure Cosmos DB RBAC-dataplanet bygger på begrepp som ofta finns i andra RB
 
 - [Behörighetsmodellen](#permission-model) består av en uppsättning **åtgärder**; Var och en av dessa åtgärder mappar till en eller flera databasåtgärder. Några exempel på åtgärder är att läsa ett objekt, skriva ett objekt eller köra en fråga.
 - Azure Cosmos DB skapar **[rolldefinitioner som](#role-definitions)** innehåller en lista över tillåtna åtgärder.
-- Rolldefinitioner tilldelas till specifika Azure AD-identiteter via **[rolltilldelningar](#role-assignments)**. En rolltilldelning definierar också det omfång som rolldefinitionen gäller för. för närvarande finns det tre omfång:
+- Rolldefinitioner tilldelas till specifika Azure AD-identiteter via **[rolltilldelningar](#role-assignments)**. En rolltilldelning definierar också det omfång som rolldefinitionen gäller för. för närvarande är tre omfång:
     - Ett Azure Cosmos DB konto,
     - En Azure Cosmos DB databas,
     - En Azure Cosmos DB container.
@@ -50,7 +50,10 @@ Den Azure Cosmos DB RBAC-dataplanet bygger på begrepp som ofta finns i andra RB
 > - [ARM-mallar](manage-with-templates.md)
 > - [Azure PowerShell skript](manage-with-powershell.md),
 > - [Azure CLI-skript](manage-with-cli.md),
-> - [Azure-hanteringsbibliotek](https://azure.github.io/azure-sdk/releases/latest/index.html).
+> - Azure-hanteringsbibliotek som är tillgängliga i
+>   - [.NET](https://www.nuget.org/packages/Azure.ResourceManager.CosmosDB)
+>   - [Java](https://search.maven.org/artifact/com.azure.resourcemanager/azure-resourcemanager-cosmos)
+>   - [Python](https://pypi.org/project/azure-mgmt-cosmosdb/)
 
 I tabellen nedan visas alla åtgärder som exponeras av behörighetsmodellen.
 
@@ -80,7 +83,7 @@ När du Azure Cosmos DB-SDK:er, utfärdar dessa SDK:er skrivskyddade metadatabeg
 - Partitionsnyckeln för dina containrar eller deras indexeringsprincip.
 - Listan över fysiska partitioner som utgör en container och deras adresser.
 
-De hämtar *inte* några av de data som du har lagrat i ditt konto.
+De hämtar *inte* några av de data som du har lagrat på ditt konto.
 
 För att säkerställa bästa möjliga transparens i vår behörighetsmodell omfattas dessa metadatabegäranden uttryckligen av `Microsoft.DocumentDB/databaseAccounts/readMetadata` åtgärden. Den här åtgärden ska tillåtas i alla situationer där ditt Azure Cosmos DB-konto nås via någon av Azure Cosmos DB-SDK:erna. Den kan tilldelas (via en rolltilldelning) på valfri nivå i Azure Cosmos DB hierarki (det vill säga konto, databas eller container).
 
@@ -278,15 +281,15 @@ När du har skapat rolldefinitionerna kan du associera dem med dina AAD-identite
 - Den resursgrupp som innehåller ditt konto.
 - ID för rolldefinitionen som ska tilldelas.
 - Huvud-ID för den identitet som rolldefinitionen ska tilldelas till.
-- Rolltilldelningens omfattning. omfång som stöds är:
+- Rolltilldelningens omfattning; omfång som stöds är:
     - `/` (kontonivå)
     - `/dbs/<database-name>` (databasnivå)
     - `/dbs/<database-name>/colls/<container-name>` (containernivå)
 
-  Omfånget måste matcha eller vara ett underomfång för ett av rolldefinitionens tilldelningsbara omfång.
+  Omfånget måste matcha eller vara ett underomfång för en av rolldefinitionens tilldelningsbara omfång.
 
 > [!NOTE]
-> Om du vill skapa en rolltilldelning för ett huvudnamn för tjänsten  ska du se till att använda dess **objekt-ID** som finns i avsnittet **Företagsprogram** på Azure Active Directory portalbladet.
+> Om du vill skapa en rolltilldelning för ett **huvudnamn** för tjänsten  använder du dess **objekt-ID** som finns i avsnittet Företagsprogram på Azure Active Directory portalbladet.
 
 > [!NOTE]
 > Åtgärderna som beskrivs nedan är för närvarande tillgängliga i:
@@ -379,7 +382,7 @@ const client = new CosmosClient({
 
 ## <a name="auditing-data-requests"></a>Granska databegäranden
 
-När du använder Azure Cosmos DB RBAC [utökas](cosmosdb-monitor-resource-logs.md) diagnostikloggarna med identitets- och auktoriseringsinformation för varje dataåtgärd. På så sätt kan du utföra detaljerad granskning och hämta den AAD-identitet som används för varje databegäran som skickas till ditt Azure Cosmos DB konto.
+När du använder Azure Cosmos DB RBAC [utökas](cosmosdb-monitor-resource-logs.md) diagnostikloggarna med identitets- och auktoriseringsinformation för varje dataåtgärd. På så sätt kan du utföra detaljerad granskning och hämta den AAD-identitet som används för varje databegäran som skickas Azure Cosmos DB ditt konto.
 
 Den här ytterligare informationen flödar **i loggkategorin DataPlaneRequests** och består av två extra kolumner:
 

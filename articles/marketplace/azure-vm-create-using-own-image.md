@@ -1,33 +1,33 @@
 ---
 title: Skapa ett erbjudande för virtuella Azure-datorer på Azure Marketplace med din egen avbildning
-description: Lär dig hur du publicerar ett erbjudande för virtuella datorer på Azure Marketplace med din egen avbildning.
+description: Lär dig hur du publicerar ett erbjudande om virtuella datorer för att Azure Marketplace med din egen avbildning.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: krsh
 ms.author: krsh
-ms.date: 03/10/2021
-ms.openlocfilehash: 4711ea76af83594ec529cfda13a308fbe6646398
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/16/2021
+ms.openlocfilehash: 47fe7b42b68ae42f74a74e5fc69c8d1041d3bf8d
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200465"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727132"
 ---
-# <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Så här skapar du en virtuell dator med en egen avbildning
+# <a name="how-to-create-a-virtual-machine-using-your-own-image"></a>Så här skapar du en virtuell dator med din egen avbildning
 
-Den här artikeln beskriver hur du skapar och distribuerar en användardefinierad avbildning av en virtuell dator (VM).
+Den här artikeln beskriver hur du skapar och distribuerar en avbildning av en virtuell dator (VM) som tillhandahålls av användaren.
 
 > [!NOTE]
-> Innan du påbörjar den här proceduren bör du gå igenom de [tekniska kraven](marketplace-virtual-machines.md#technical-requirements) för virtuella Azure-datorer, inklusive krav på virtuell hård disk (VHD).
+> Innan du börjar med den här proceduren granskar du [de tekniska kraven](marketplace-virtual-machines.md#technical-requirements) för erbjudanden för virtuella Azure-datorer, inklusive krav för virtuell hårddisk (VHD).
 
-Om du vill använda en godkänd bas avbildning i stället följer du anvisningarna i [skapa en avbildning av en virtuell dator från en godkänd bas](azure-vm-create-using-approved-base.md).
+Om du i stället vill använda en godkänd basavbildning följer du anvisningarna i [Skapa en VM-avbildning från en godkänd bas](azure-vm-create-using-approved-base.md).
 
 ## <a name="configure-the-vm"></a>Konfigurera den virtuella datorn
 
-I det här avsnittet beskrivs hur du ändrar storlek, uppdaterar och generaliserar en virtuell Azure-dator. Dessa steg är nödvändiga för att förbereda din virtuella dator så att den distribueras på Azure Marketplace.
+I det här avsnittet beskrivs hur du kan ändra storlek på, uppdatera och generalisera en virtuell Azure-dator. De här stegen är nödvändiga för att förbereda den virtuella datorn så att den distribueras Azure Marketplace.
 
-### <a name="size-the-vhds"></a>Ändra storlek på de virtuella hård diskarna
+### <a name="size-the-vhds"></a>Ändra storlek på de virtuella hårddiskarna
 
 [!INCLUDE [Discussion of VHD sizing](includes/vhd-size.md)]
 
@@ -35,34 +35,37 @@ I det här avsnittet beskrivs hur du ändrar storlek, uppdaterar och generaliser
 
 [!INCLUDE [Discussion of most current updates](includes/most-current-updates.md)]
 
-### <a name="perform-more-security-checks"></a>Utför fler säkerhets kontroller
+### <a name="perform-more-security-checks"></a>Utföra fler säkerhetskontroller
 
 [!INCLUDE [Discussion of addition security checks](includes/additional-security-checks.md)]
 
-### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Utför anpassad konfiguration och schemalagda aktiviteter
+### <a name="perform-custom-configuration-and-scheduled-tasks"></a>Utföra anpassad konfiguration och schemalagda aktiviteter
 
 [!INCLUDE [Discussion of custom configuration and scheduled tasks](includes/custom-config.md)]
 
 ### <a name="generalize-the-image"></a>Generalisera avbildningen
 
-Alla avbildningar på Azure Marketplace måste kunna återanvändas på ett generiskt sätt. För att uppnå detta måste den virtuella hård disken generaliseras, en åtgärd som tar bort alla instans-/regionsspecifika identifierare och program driv rutiner från en virtuell dator.
+Alla bilder i Azure Marketplace måste kunna återanvändas på ett allmänt sätt. För att uppnå detta måste den virtuella hårddisken för operativsystemet generaliseras, en åtgärd som tar bort alla instansspecifika identifierare och programvarudrivrutiner från en virtuell dator.
 
-## <a name="bring-your-image-into-azure"></a>Ta med din avbildning i Azure
+## <a name="bring-your-image-into-azure"></a>Ta din avbildning till Azure
 
-Det finns tre sätt att hämta din avbildning i Azure:
+> [!NOTE]
+> Azure-prenumerationen som innehåller SIG måste finnas under samma klientorganisation som utgivarkontot för att kunna publicera. Dessutom måste utgivarkontot minst ha deltagaråtkomst till prenumerationen som innehåller SIG.
 
-1. Ladda upp den virtuella hård disken till ett delat avbildnings Galleri (SIG).
-1. Överför den virtuella hård disken till ett Azure Storage-konto.
-1. Extrahera den virtuella hård disken från en hanterad avbildning (om du använder avbildnings Bygg tjänster).
+Det finns tre sätt att föra in avbildningen i Azure:
+
+1. Ladda upp den virtuella hårddisken till Shared Image Gallery (SIG).
+1. Ladda upp den virtuella hårddisken till ett Azure Storage-konto.
+1. Extrahera den virtuella hårddisken från en hanterad avbildning (om du använder tjänster för att skapa avbildningar).
 
 I följande tre avsnitt beskrivs dessa alternativ.
 
-### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>Alternativ 1: Ladda upp den virtuella hård disken som delad avbildnings Galleri
+### <a name="option-1-upload-the-vhd-as-shared-image-gallery"></a>Alternativ 1: Ladda upp den virtuella hårddisken som Shared Image Gallery
 
-1. Ladda upp VHD: er till lagrings kontot.
-2. På Azure Portal söker du efter **distribuera en anpassad mall**.
-3. Välj **Bygg en egen mall i redigeraren**.
-4. Kopiera följande Azure Resource Manager-mall (ARM).
+1. Ladda upp virtuella hårddiskar till lagringskontot.
+2. På Azure Portal du efter **Distribuera en anpassad mall**.
+3. Välj **Skapa en egen mall i redigeraren**.
+4. Kopiera följande arm Azure Resource Manager mall (arm).
 
     ```json
     {
@@ -153,76 +156,76 @@ I följande tre avsnitt beskrivs dessa alternativ.
 
 5. Klistra in mallen i redigeraren.
 
-    :::image type="content" source="media/create-vm/vm-sample-code-screen.png" alt-text="Exempel på kod skärm för virtuell dator.":::
+    :::image type="content" source="media/create-vm/vm-sample-code-screen.png" alt-text="Exempelkodskärm för virtuell dator.":::
 
 1. Välj **Spara**.
-1. Använd parametrarna i den här tabellen för att fylla i fälten på skärmen som följer.
+1. Använd parametrarna i den här tabellen för att slutföra fälten på skärmen som följer.
 
-| Parametrar | Beskrivning |
+| Parametrar | Description |
 | --- | --- |
-| sourceStorageAccountResourceId | Resurs-ID för det käll lagrings konto som BLOB-VHD: n finns i.<br><br>Om du vill hämta resurs-ID: t går du till ditt **lagrings konto** på **Azure Portal**, går till **Egenskaper** och kopierar värdet **ResourceID** . |
-| sourceBlobUri | BLOB-URI för OS-diskens VHD-BLOB (måste vara i det angivna lagrings kontot).<br><br>Hämta BLOB-URL: en genom att gå till ditt **lagrings konto** på **Azure Portal**, gå till din **BLOB** och kopiera **URL** -värdet. |
-| sourceBlobDataDisk0Uri | BLOB-URI för data diskens VHD-BLOB (måste finnas i det angivna lagrings kontot). Ta bort den här parametern från mallen om du inte har någon data disk.<br><br>Hämta BLOB-URL: en genom att gå till ditt **lagrings konto** på **Azure Portal**, gå till din **BLOB** och kopiera **URL** -värdet. |
-| sourceBlobDataDisk1Uri | BLOB-URI för ytterligare data diskens VHD-BLOB (måste finnas i det angivna lagrings kontot). Om du inte har ytterligare en datadisk tar du bort den här parametern från mallen.<br><br>Hämta BLOB-URL: en genom att gå till ditt **lagrings konto** på **Azure Portal**, gå till din **BLOB** och kopiera **URL** -värdet. |
-| galleryName | Namn på Galleri för delad avbildning |
-| galleryImageDefinitionName | Bild definitionens namn |
-| galleryImageVersionName | Namn på den avbildnings version som ska skapas i det här formatet: `<MajorVersion>.<MinorVersion>.<Patch>` |
+| sourceStorageAccountResourceId | Resurs-ID för källlagringskontot där blob-VHD finns.<br><br>Om du vill hämta resurs-ID:t  går du till ditt **lagringskonto på Azure Portal,** går **till** Egenskaper och kopierar **ResourceID-värdet.** |
+| sourceBlobUri | Blob-URI för OS-diskens VHD-blob (måste finnas i det angivna lagringskontot).<br><br>Om du vill hämta blob-URL:en går du **till ditt lagringskonto på Azure Portal**, går till din **blob** och kopierar  **URL-värdet.** |
+| sourceBlobDataDisk0Uri | Blob-URI för datadiskens VHD-blob (måste finnas på det angivna lagringskontot). Om du inte har en datadisk tar du bort den här parametern från mallen.<br><br>Hämta blob-URL:en genom  att gå till **ditt lagringskonto på Azure Portal,** gå till **din blob** och kopiera **URL-värdet.** |
+| sourceBlobDataDisk1Uri | Blob-URI för ytterligare datadisk-VHD-blob (måste finnas på det angivna lagringskontot). Om du inte har någon ytterligare datadisk tar du bort den här parametern från mallen.<br><br>Hämta blob-URL:en genom  att gå till **ditt lagringskonto på Azure Portal,** gå till **din blob** och kopiera **URL-värdet.** |
+| galleryName | Namnet på Shared Image Gallery |
+| galleryImageDefinitionName | Namnet på bilddefinitionen |
+| galleryImageVersionName | Namnet på den avbildningsversion som ska skapas i följande format: `<MajorVersion>.<MinorVersion>.<Patch>` |
 |
 
-:::image type="content" source="media/create-vm/custom-deployment-window.png" alt-text="Visar det anpassade distributions fönstret.":::
+:::image type="content" source="media/create-vm/custom-deployment-window.png" alt-text="Visar det anpassade distributionsfönstret.":::
 
-8. Välj **Granska + skapa**. När verifieringen är klar väljer du **skapa**.
+8. Välj **Granska + skapa**. När verifieringen är klar väljer du **Skapa**.
 
 > [!TIP]
-> Utgivar kontot måste ha "ägar behörighet" för att publicera SIG-avbildningen. Om det behövs följer du stegen nedan för att bevilja åtkomst:
+> Utgivarkontot måste ha "ägaråtkomst" för att publicera SIG-avbildningen. Om det behövs följer du stegen nedan för att bevilja åtkomst:
 >
-> 1. Gå till galleriet för delade avbildningar (SIG).
-> 2. Välj **åtkomst kontroll** (IAM) på den vänstra panelen.
-> 3. Välj **Lägg till** och **Lägg sedan till roll tilldelning**.
-> 4. För **roll** väljer du **ägare**.
-> 5. För **tilldela åtkomst till** väljer du **användare, grupp eller tjänstens huvud namn**.
+> 1. Gå till Shared Image Gallery (SIG).
+> 2. Välj **Åtkomstkontroll** (IAM) på den vänstra panelen.
+> 3. Välj **Lägg till** och sedan Lägg till **rolltilldelning.**
+> 4. För **Roll** väljer du **Ägare.**
+> 5. För **Tilldela åtkomst till** väljer du **Användare, grupp eller tjänstens huvudnamn.**
 > 6. Ange Azure-e-postadressen för den person som ska publicera avbildningen.
 > 7. Välj **Spara**.<br><br>
-> :::image type="content" source="media/create-vm/add-role-assignment.png" alt-text="Fönstret Lägg till roll tilldelning visas.":::
+> :::image type="content" source="media/create-vm/add-role-assignment.png" alt-text="Fönstret Lägg till rolltilldelning visas.":::
 
-### <a name="option-2-upload-the-vhd-to-a-storage-account"></a>Alternativ 2: överför den virtuella hård disken till ett lagrings konto
+### <a name="option-2-upload-the-vhd-to-a-storage-account"></a>Alternativ 2: Ladda upp den virtuella hårddisken till ett lagringskonto
 
-Konfigurera och Förbered den virtuella datorn så att den laddas upp enligt beskrivningen i [förbereda en Windows VHD eller VHDX för att ladda upp till Azure](../virtual-machines/windows/prepare-for-upload-vhd-image.md) eller [skapa och ladda upp en Linux-VHD](../virtual-machines/linux/create-upload-generic.md).
+Konfigurera och förbered den virtuella dator som ska laddas upp enligt beskrivningen i Förbereda en Virtuell Windows-hårddisk eller [VHDX](../virtual-machines/windows/prepare-for-upload-vhd-image.md) för uppladdning till Azure eller Skapa och ladda upp [en virtuell Linux-hårddisk.](../virtual-machines/linux/create-upload-generic.md)
 
-### <a name="option-3-extract-the-vhd-from-managed-image-if-using-image-building-services"></a>Alternativ 3: extrahera den virtuella hård disken från den hanterade avbildningen (om du använder avbildnings Bygg tjänster)
+### <a name="option-3-extract-the-vhd-from-managed-image-if-using-image-building-services"></a>Alternativ 3: Extrahera den virtuella hårddisken från hanterad avbildning (om du använder tjänster för att skapa avbildningar)
 
-Om du använder en avbildnings Bygg tjänst som [Packer](https://www.packer.io/)kan du behöva extrahera den virtuella hård disken från avbildningen. Det finns inget direkt sätt att göra detta. Du måste skapa en virtuell dator och extrahera den virtuella hård disken från den virtuella dator disken.
+Om du använder en bildskapande tjänst som [Packer](https://www.packer.io/)kan du behöva extrahera den virtuella hårddisken från avbildningen. Det finns inget direkt sätt att göra detta på. Du måste skapa en virtuell dator och extrahera den virtuella hårddisken från den virtuella datordisken.
 
 ## <a name="create-the-vm-on-the-azure-portal"></a>Skapa den virtuella datorn på Azure Portal
 
-Följ de här stegen för att skapa den virtuella dator avbildningen på [Azure Portal](https://ms.portal.azure.com/).
+Följ de här stegen för att skapa den virtuella bas-VM-avbildningen [på Azure Portal](https://ms.portal.azure.com/).
 
 1. Logga in på [Azure-portalen](https://ms.portal.azure.com/).
 2. Välj **Virtuella datorer**.
-3. Välj **+ Lägg** till för att öppna skärmen **skapa en virtuell dator** .
-4. Välj avbildningen i list rutan eller Välj **Bläddra bland alla offentliga och privata avbildningar** för att söka eller bläddra bland alla tillgängliga avbildningar av virtuella datorer.
-5. Om du vill skapa en virtuell dator i **generation 2** går du till fliken **Avancerat** och väljer alternativet **gen 2** .
+3. Välj **+ Lägg till** för att öppna skärmen Skapa en **virtuell** dator.
+4. Välj avbildningen i listrutan eller välj Bläddra bland alla offentliga och privata **avbildningar för** att söka efter eller bläddra bland alla tillgängliga avbildningar av virtuella datorer.
+5. Om du vill skapa en virtuell gen **2-dator** går **du till fliken** Avancerat och väljer alternativet Gen **2.**
 
-    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Välj gen 1 eller gen 2.":::
+    :::image type="content" source="media/create-vm/vm-gen-option.png" alt-text="Välj Gen 1 eller Gen 2.":::
 
 6. Välj storleken på den virtuella dator som ska distribueras.
 
     :::image type="content" source="media/create-vm/create-virtual-machine-sizes.png" alt-text="Välj en rekommenderad VM-storlek för den valda avbildningen.":::
 
 7. Ange övrig information som krävs för att skapa den virtuella datorn.
-8. Välj **Granska + skapa** för att granska dina val. När meddelandet **verifieringen lyckades** visas väljer du **skapa**.
+8. Välj **Granska + skapa för** att granska dina val. När meddelandet **Valideringen har** godkänts visas väljer du **Skapa**.
 
-Azure börjar etablering av den virtuella dator som du har angett. Spåra förloppet genom att välja fliken **Virtual Machines** på den vänstra menyn. När den har skapats ändras statusen för den virtuella datorn till att **köras**.
+Azure börjar etablera den virtuella dator som du angav. Spåra förloppet genom att **Virtual Machines** på den vänstra menyn. När den virtuella datorn har skapats ändras statusen till **Körs.**
 
 ## <a name="connect-to-your-vm"></a>Ansluta till din virtuella dator
 
-Se följande dokumentation för att ansluta till din virtuella [Windows](../virtual-machines/windows/connect-logon.md) -eller [Linux](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm) -dator.
+Läs följande dokumentation för att ansluta till din virtuella [Windows-](../virtual-machines/windows/connect-logon.md) eller [Linux-dator.](../virtual-machines/linux/ssh-from-windows.md#connect-to-your-vm)
 
 [!INCLUDE [Discussion of addition security checks](includes/size-connect-generalize.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Testa din VM-avbildning](azure-vm-image-test.md) för att säkerställa att den uppfyller publicerings kraven för Azure Marketplace. Detta är valfritt.
-- Om du inte vill testa din VM-avbildning loggar du in på [partner Center](https://partner.microsoft.com/) och publicerar sig-avbildningen (alternativ #1).
-- Om du har följt alternativet #2 eller #3 [genererar du SAS-URI: n](azure-vm-get-sas-uri.md).
-- Om du har problem med att skapa din nya Azure-baserade virtuella hård disk läser du [vanliga frågor och svar om virtuella datorer för Azure Marketplace](azure-vm-create-faq.md).
+- [Testa den virtuella datoravbildningen](azure-vm-image-test.md) så att den uppfyller Azure Marketplace publiceringskrav. Detta är valfritt.
+- Om du inte vill testa VM-avbildningen loggar du in på [Partnercenter](https://partner.microsoft.com/) och publicerar SIG-avbildningen (alternativ #1).
+- Om du har följt #2 eller #3 [genererar du SAS-URI:t](azure-vm-get-sas-uri.md).
+- Om du har problem med att skapa en ny Azure-baserad virtuell hårddisk kan du gå till [Vanliga frågor och svar om virtuella datorer Azure Marketplace](azure-vm-create-faq.md).

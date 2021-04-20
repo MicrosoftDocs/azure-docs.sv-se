@@ -1,7 +1,7 @@
 ---
-title: Konfigurera webbslutpunkter (förhandsversion)
+title: Konfigurera webbslutpunkter
 titleSuffix: Azure Cognitive Services
-description: konfigurera webbslutpunkter för anpassade kommandon
+description: konfigurera webbslutpunkter för Anpassade kommandon
 services: cognitive-services
 author: xiaojul
 manager: yetian
@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 95f27827950c5ed38caa1f83ede266afb57a1697
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 5f1d5318140dd14c5024e8dd3ad0def0afc7f378
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107515642"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725916"
 ---
 # <a name="set-up-web-endpoints"></a>Konfigurera webbslutpunkter
 
@@ -31,66 +31,66 @@ I den här artikeln får du lära dig att ställa in webbslutpunkter i programme
 > [!div class = "checklist"]
 > * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 > * En Azure-prenumerationsnyckel för Speech-tjänsten: [Hämta en kostnadsfritt](overview.md#try-the-speech-service-for-free) eller skapa den i [Azure-portalen](https://portal.azure.com)
-> * En tidigare [skapad app för Anpassade kommandon](quickstart-custom-commands-application.md)
-> * En Speech SDK-aktiverad klientapp: [Instruktion: Avsluta aktivitet i klientprogram](./how-to-custom-commands-setup-speech-sdk.md)
+> * En Anpassade kommandon -app (se [Skapa en röstassistent med Anpassade kommandon](quickstart-custom-commands-application.md))
+> * En Speech SDK-aktiverad klientapp (se [Integrera med ett klientprogram med hjälp av Speech SDK)](how-to-custom-commands-setup-speech-sdk.md)
 
-## <a name="deploy-an-external-web-endpoint-using-azure-function-app"></a>Distribuera en extern webbslutpunkt med hjälp av Azure-funktionsappen
+## <a name="deploy-an-external-web-endpoint-using-azure-function-app"></a>Distribuera en extern webbslutpunkt med hjälp av Azure Function-appen
 
-* För den här självstudien behöver du en HTTP-slutpunkt som upprätthåller tillstånd för alla enheter som du har ställt in i **kommandot TurnOnOff** för ditt anpassade kommandoprogram.
+I den här självstudien behöver du en HTTP-slutpunkt som upprätthåller tillstånd för alla enheter som du har ställt in i kommandot **TurnOnOff** för ditt Anpassade kommandon program.
 
-* Om du redan har en webbslutpunkt som du vill anropa går du vidare till [nästa avsnitt.](#setup-web-endpoints-in-custom-commands) I nästa avsnitt har vi också försedt dig med en standardvärdwebbslutpunkt som du kan använda om du vill hoppa över det här avsnittet.
+Om du redan har en webbslutpunkt som du vill anropa går du vidare till [nästa avsnitt.](#setup-web-endpoints-in-custom-commands) Nästa avsnitt innehåller också information om en standardvärdwebbslutpunkt som du kan använda om du vill hoppa över det här avsnittet.
 
-### <a name="input-format-of-azure-function"></a>Indataformat för Azure Function
-* Därefter distribuerar du en slutpunkt med hjälp [av Azure Functions](../../azure-functions/index.yml).
-Följande är det allmänna formatet för en Anpassade kommandon händelse som skickas till din Azure-funktion. Använd den här informationen när du skriver funktionsappen.
+### <a name="input-format-of-azure-function"></a>Indataformat för Azure-funktion
 
-    ```json
-    {
-      "conversationId": "string",
-      "currentCommand": {
-        "name": "string",
-        "parameters": {
-          "SomeParameterName": "string",
-          "SomeOtherParameterName": "string"
-        }
-      },
-      "currentGlobalParameters": {
-          "SomeGlobalParameterName": "string",
-          "SomeOtherGlobalParameterName": "string"
-      }
+Därefter distribuerar du en slutpunkt med hjälp [av Azure Functions](../../azure-functions/index.yml).
+Följande är formatet för en Anpassade kommandon händelse som skickas till din Azure-funktion. Använd den här informationen när du skriver azure-funktionsappen.
+
+```json
+{
+  "conversationId": "string",
+  "currentCommand": {
+    "name": "string",
+    "parameters": {
+      "SomeParameterName": "string",
+      "SomeOtherParameterName": "string"
     }
-    ```
+  },
+  "currentGlobalParameters": {
+      "SomeGlobalParameterName": "string",
+      "SomeOtherGlobalParameterName": "string"
+  }
+}
+```
 
     
-* Nu ska vi gå igenom nyckelattributen för dessa indata:
+I följande tabell beskrivs nyckelattributen för dessa indata:
         
-    | Attribut | Förklaring |
-    | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-    | **conversationId** | Den unika identifieraren för konversationen. Observera att detta ID kan genereras från klientappen. |
-    | **currentCommand** | Kommandot som för närvarande är aktivt i konversationen. |
-    | **Namn** | Namnet på kommandot. Attributet `parameters` är en karta med de aktuella värdena för parametrarna. |
-    | **currentGlobalParameters** | En karta som `parameters` , men som används för globala parametrar. |
+| Attribut | Förklaring |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **conversationId** | Den unika identifieraren för konversationen. Observera att detta ID kan genereras av klientappen. |
+| **currentCommand** | Kommandot som för närvarande är aktivt i konversationen. |
+| **Namn** | Namnet på kommandot. Attributet `parameters` är en karta med de aktuella värdena för parametrarna. |
+| **currentGlobalParameters** | En karta som `parameters` , men som används för globala parametrar. |
 
 
-* För **Azure-funktionen DeviceState** ser ett exempel Anpassade kommandon händelse ut så här. Detta fungerar som **indata** till funktionsappen.
+För **Azure-funktionen DeviceState** ser ett exempel Anpassade kommandon händelse ut så här. Detta fungerar som **indata** för funktionsappen.
     
-    ```json
-    {
-      "conversationId": "someConversationId",
-      "currentCommand": {
-        "name": "TurnOnOff",
-        "parameters": {
-          "item": "tv",
-          "value": "on"
-        }
-      }
+```json
+{
+  "conversationId": "someConversationId",
+  "currentCommand": {
+    "name": "TurnOnOff",
+    "parameters": {
+      "item": "tv",
+      "value": "on"
     }
-    ```
+  }
+}
+```
 
-### <a name="output-format-of-azure-function"></a>Utdataformat för Azure Function
+### <a name="azure-function-output-for-a-custom-command-app"></a>Azure Function-utdata för en anpassad kommandoapp
 
-#### <a name="output-consumed-by-a-custom-commands--application"></a>Utdata som används av Anpassade kommandon program
-I det här fallet kan du ange att utdataformatet måste följa följande format. Följ [Uppdatera ett kommando från en webbslutpunkt](./how-to-custom-commands-update-command-from-web-endpoint.md) för mer information.
+Om utdata från din Azure-funktion används av Anpassade kommandon bör de visas i följande format. Mer [information finns i Uppdatera ett kommando från en](./how-to-custom-commands-update-command-from-web-endpoint.md) webbslutpunkt.
 
 ```json
 {
@@ -107,41 +107,46 @@ I det här fallet kan du ange att utdataformatet måste följa följande format.
 }
 ```
 
-#### <a name="output-consumed-by-a-client-application"></a>Utdata som används av ett klientprogram
-I det här fallet kan du ange utdataformatet så att det passar din klients behov.
-* För vår **DeviceState-slutpunkt** används utdata från Azure-funktionen av ett klientprogram i stället för Anpassade kommandon program. Exempel **på** utdata från Azure-funktionen bör se ut så här:
+### <a name="azure-function-output-for-a-client-application"></a>Azure Function-utdata för ett klientprogram
+
+Om utdata från din Azure-funktion används av ett klientprogram kan utdata ha den form som klientprogrammet kräver.
+
+För vår **DeviceState-slutpunkt** används utdata från din Azure-funktion av ett klientprogram i stället för Anpassade kommandon program. Exempel på utdata från Azure-funktionen bör se ut så här:
     
-    ```json
-    {
-      "TV": "on",
-      "Fan": "off"
-    }
-    ``` 
+```json
+{
+  "TV": "on",
+  "Fan": "off"
+}
+``` 
 
-*  Dessutom bör dessa utdata skrivas till en extern lagring, så att du kan upprätthålla enheternas tillstånd. Det externa lagringstillståndet används i [avsnittet Integrera med klientprogram.](#integrate-with-client-application)
+Dessa utdata ska skrivas till en extern lagringsplats så att du kan upprätthålla enheternas tillstånd. Det externa lagringstillståndet används i [avsnittet Integrera med klientprogram](#integrate-with-client-application) nedan.
 
 
-### <a name="host-azure-function"></a>Värd för Azure-funktion
+### <a name="deploy-azure-function"></a>Distribuera en Azure-funktion
 
-1. Skapa ett tabellagringskonto för att spara enhetstillståndet.
-    1. Gå till Azure Portal skapa en ny resurs av typen **Lagringskonto** med namnet **devicestate**.
-        1. Kopiera värdet **Anslutningssträng** från **devicestate -> Access Keys**.
-        1. Du måste lägga till den här strängen i den nedladdade funktionsappskoden.
-    1. Ladda ned [funktionsappens exempelkod](https://aka.ms/speech/cc-function-app-sample).
-    1. Öppna den nedladdade lösningen i VS 2019. I filen **Connections.jspå** ersätter **STORAGE_ACCOUNT_SECRET_CONNECTION_STRING** värdet till den kopierade hemligheten från *steg ett*.
+Vi tillhandahåller ett exempel som du kan konfigurera och distribuera som en Azure Functions app. Följ dessa steg om du vill skapa ett lagringskonto för vårt exempel.
+ 
+1. Skapa tabellagring för att spara enhetstillståndet. I Azure Portal skapar du en ny resurs av typen **Lagringskonto med** namnet **devicestate**.
+1. Kopiera värdet **för Anslutningssträng** från **devicestate -> Access Keys**. Du måste lägga till den här stränghemligheten i den nedladdade funktionsappskoden.
+1. Ladda ned [funktionsappens exempelkod](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/tree/main/custom-commands/quick-start).
+1. Öppna den nedladdade lösningen i Visual Studio 2019. I **Connections.jspå** **ersätter STORAGE_ACCOUNT_SECRET_CONNECTION_STRING** med hemligheten från steg 2.
 1.  Ladda ned **DeviceStateAzureFunction-koden.**
-1. [Distribuera](../../azure-functions/index.yml) Functions-appen till Azure.
-    
-    1.  Vänta tills distributionen har lyckats och gå till den distribuerade resursen på Azure Portal. 
-    1. Välj **Funktioner** i den vänstra rutan och välj sedan **DeviceState.**
-    1.  I det nya fönstret väljer du **Kod + test och** sedan Hämta **funktions-URL.**
+
+Följ dessa steg om du Azure Functions distribuera exempelappen.
+
+1. [Distribuera](../../azure-functions/index.yml) Azure Functions appen.
+1. Vänta tills distributionen har lyckats och gå till den distribuerade resursen på Azure Portal. 
+1. Välj **Funktioner** i den vänstra rutan och välj sedan **DeviceState.**
+1.  I det nya fönstret väljer du **Kod + test och** sedan Hämta **funktions-URL.**
  
 ## <a name="setup-web-endpoints-in-custom-commands"></a>Konfigurera webbslutpunkter i Anpassade kommandon
+
 Nu ska vi koppla ihop Azure-funktionen med det Anpassade kommandon programmet.
-I det här avsnittet använder du en befintlig **devicestate-standardslutpunkt.** Om du har skapat en egen webbslutpunkt med hjälp av Azure-funktionen eller på annat sätt använder du den i stället för standardvärdet https://webendpointexample.azurewebsites.net/api/DeviceState .
+I det här avsnittet använder du en befintlig **DeviceState-standardslutpunkt.** Om du har skapat en egen webbslutpunkt med hjälp av Azure Function eller på annat sätt använder du den i stället för standardvärdet `https://webendpointexample.azurewebsites.net/api/DeviceState` .
 
 1. Öppna programmet Anpassade kommandon som du skapade tidigare.
-1. Gå till ”Webbslutpunkter” och klicka på ”Ny webbslutpunkt”.
+1. Gå till **Webbslutpunkter och** klicka på **Ny webbslutpunkt.**
 
    > [!div class="mx-imgBorder"]
    > ![Ny webbslutpunkt](media/custom-commands/setup-web-endpoint-new-endpoint.png)
@@ -154,10 +159,10 @@ I det här avsnittet använder du en befintlig **devicestate-standardslutpunkt.*
    | Sidhuvuden | Nyckel: app, Värde: använd de första 8 siffrorna i ditt applicationId | De rubrikparametrar som ska ingå i begärandets rubrik.|
 
     > [!NOTE]
-    > - Exempelwebbslutpunkten som skapats med hjälp av [Azure-funktionen](../../azure-functions/index.yml), som ansluter till databasen som sparar enhetens tillstånd för TV och fläkt
-    > - Den föreslagna rubriken behövs bara i slutpunktsexemplet
-    > - För att värdet för rubriken ska vara unikt i slutpunktsexemplet, använder du de första 8 siffrorna i ditt applicationId
-    > - I verkligheten kan webbslutpunkten vara slutpunkten för [IoT-hubben](../../iot-hub/about-iot-hub.md) som hanterar dina enheter
+    > - Exempelwebbslutpunkten som [skapas med Azure Functions](../../azure-functions/index.yml), som är ansluten till databasen som sparar enhetens tillstånd för TV och fläkt.
+    > - Den föreslagna rubriken behövs bara för slutpunktsexempel.
+    > - För att se till att värdet för rubriken är unikt i vår exempelslutpunkt tar du de första 8 siffrorna i ditt **applicationId**.
+    > - I verkligheten kan webbslutpunkten vara slutpunkten för [den IOT-hubb](../../iot-hub/about-iot-hub.md) som hanterar dina enheter.
 
 1. Klicka på **Spara**.
 
@@ -209,19 +214,17 @@ I det här avsnittet använder du en befintlig **devicestate-standardslutpunkt.*
    > - I vårt slutpunktsexempel skickar vi tillbaka http-svar med detaljerade felmeddelanden om vanliga fel som t.ex. saknade rubrikparametrar.
 
 ### <a name="try-it-out-in-test-portal"></a>Testa i testportalen
-- Svaret Vid lyckad åtgärd\
-Spara, träna och testa
+- Spara, träna och testa när du får ett svar.
    > [!div class="mx-imgBorder"]
    > ![Skärmbild som visar svaret Vid lyckad.](media/custom-commands/setup-web-endpoint-on-success-response.png)
-- Svaret Vid fel\
-Ta bort någon av frågeparametrarna, spara, träna om och testa
+- Ta bort en av frågeparametrarna vid felsvar, spara, träna om och testa.
    > [!div class="mx-imgBorder"]
    > ![Anropa webbslutpunkter vid lyckad åtgärd](media/custom-commands/setup-web-endpoint-on-fail-response.png)
 
 ## <a name="integrate-with-client-application"></a>Integrera med klientprogram
 
-I [How-to: Send activity to client application](./how-to-custom-commands-send-activity-to-client.md)(Så här gör du: Skicka aktivitet till klientprogram) lade du till åtgärden Skicka aktivitet **till** klient. Aktiviteten skickas till klientprogrammet oavsett om åtgärden **Anropa webbslutpunkt** har slutförts eller inte.
-I de flesta fall brukar man dock vanligtvis enbart vilja skicka aktiviteten till klientprogrammet om anropet till webbslutpunkten lyckas. I det här exemplet sker det när enhetens status har uppdaterats.
+I [Skicka Anpassade kommandon till klientprogram lade](./how-to-custom-commands-send-activity-to-client.md)du till åtgärden Skicka aktivitet **till** klient. Aktiviteten skickas till klientprogrammet oavsett om åtgärden **Anropa webbslutpunkt** har slutförts eller inte.
+Normalt vill du dock bara skicka aktivitet till klientprogrammet när anropet till webbslutpunkten lyckas. I det här exemplet sker det när enhetens status har uppdaterats.
 
 1. Ta bort åtgärden **Skicka aktivitet till klient** som du tidigare lade till.
 1. Redigera anrop till webbslutpunkt:
@@ -238,10 +241,11 @@ I de flesta fall brukar man dock vanligtvis enbart vilja skicka aktiviteten till
       }
     }
    ```
-Nu ska du enbart skicka aktiviteten till klienten när begärandet till webbslutpunkten lyckas.
+Nu skickar du bara aktivitet till klienten när begäran till webbslutpunkten lyckas.
 
 ### <a name="create-visuals-for-syncing-device-state"></a>Skapa visuella objekt som synkroniserar enhetstillstånd
-Lägg till följande XML i `MainPage.xaml` ovanför blocket `"EnableMicrophoneButton"`.
+
+Lägg till följande XML i `MainPage.xaml` ovanför **blocket EnableMicrophoneButton.**
 
 ```xml
 <Button x:Name="SyncDeviceStateButton" Content="Sync Device State"
@@ -253,7 +257,7 @@ Lägg till följande XML i `MainPage.xaml` ovanför blocket `"EnableMicrophoneBu
 
 ### <a name="sync-device-state"></a>Synkronisera enhetstillstånd
 
-I `MainPage.xaml.cs` lägger du till referensen `using Windows.Web.Http;`. Lägg till följande kod i klassen `MainPage`. Den här metoden skickar en GET-begäran till slutpunktsexemplet och extraherar det aktuella enhetsläget för appen. Kom ihåg att ändra `<your_app_name>` till det som du använde i det anpassade kommandots **rubrik** i webbslutpunkten
+I `MainPage.xaml.cs` lägger du till referensen `using Windows.Web.Http;`. Lägg till följande kod i klassen `MainPage`. Den här metoden skickar en GET-begäran till slutpunktsexemplet och extraherar det aktuella enhetsläget för appen. Se till att ändra `<your_app_name>` till det du använde i rubriken i **webbslutpunkten** för anpassat kommando.
 
 ```C#
 private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs e)
@@ -293,17 +297,16 @@ private async void SyncDeviceState_ButtonClicked(object sender, RoutedEventArgs 
 }
 ```
 
-## <a name="try-it-out"></a>Prova nu
+## <a name="try-it-out"></a>Prova
 
-1. Starta programmet
+1. Starta programmet.
 1. Klicka på Synkronisera enhetstillstånd.\
-Om du testade appen med `turn on tv` i föregående avsnitt, ser du att tv-programmen visas som ”på”.
+Om du testade appen med `turn on tv` i föregående avsnitt visas TV-programmet som **på**.
     > [!div class="mx-imgBorder"]
     > ![Synkronisera enhetstillstånd](media/custom-commands/setup-web-endpoint-sync-device-state.png)
-1. Välj Aktivera mikrofon
-1. Välj knappen Prata
-1. Säg `turn on the fan`
-1. Fläktens status bör ändras till ”på”
+1. Välj **Aktivera mikrofon.**
+1. Välj **knappen** Prata.
+1. Säg `turn on the fan` . Fläktens visuella tillstånd bör ändras till **på**.
     > [!div class="mx-imgBorder"]
     > ![Sätt på fläkten](media/custom-commands/setup-web-endpoint-turn-on-fan.png)
 
@@ -311,4 +314,3 @@ Om du testade appen med `turn on tv` i föregående avsnitt, ser du att tv-progr
 
 > [!div class="nextstepaction"]
 > [Exportera Anpassade kommandon program som en fjärrfärdighet](./how-to-custom-commands-integrate-remote-skills.md)
-

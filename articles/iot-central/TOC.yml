@@ -235,6 +235,8 @@
           href: core/howto-export-data.md
         - name: Exportera data till molnmål (äldre)
           href: core/howto-export-data-legacy.md
+        - name: Transformera data för Azure IoT Central
+          href: core/howto-transform-data.md
         - name: Använd arbetsflöden för att integrera med andra tjänster
           href: core/howto-configure-rules-advanced.md
         - name: Skapa anpassade roller
@@ -243,7 +245,7 @@
           href: core/howto-create-custom-analytics.md
         - name: Visualisera dina data i Power BI
           href: core/howto-connect-powerbi.md
-        - name: Ansluta ditt program med Dynamics 365 Field Services
+        - name: Anslut ditt program med Dynamics 365 Field Services
           href: government/how-to-configure-connected-field-services.md
     - name: Hantera dina enheter
       items:

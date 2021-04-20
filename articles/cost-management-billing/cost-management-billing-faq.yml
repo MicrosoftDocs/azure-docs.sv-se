@@ -1,0 +1,469 @@
+### YamlMime:FAQ
+metadata:
+  title: Cost Management + Billing vanliga frågor och svar
+  titleSuffix: Azure Cost Management + Billing
+  description: Vanliga frågor och svar.
+  author: bandersmsft
+  ms.reviewer: adwise
+  ms.service: cost-management-billing
+  ms.topic: conceptual
+  ms.date: 04/15/2021
+  ms.author: banders
+  ms.openlocfilehash: e96ba3c42ddce1ed12ad560b2d73b99a35c61f8b
+  ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 04/19/2021
+  ms.locfileid: "107728632"
+title: Azure Cost Management + Billing vanliga frågor och svar
+summary: ''
+sections:
+- name: Allmänna faktureringsfrågor
+  questions:
+  - question: Hur gör jag för att du supporten för Azure-fakturering?
+    answer: >
+      Skapa en supportbegäran i [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+  - question: Hur gör jag för att betala min faktura?
+    answer: >
+      Se [Lösa förfallna betalningsperioder för din Azure-prenumeration.](manage/resolve-past-due-balance.md)
+  - question: Hur gör jag för att hitta min faktura?
+    answer: >
+      Se [Visa och ladda ned Microsoft Azure faktura](understand/download-azure-invoice.md).
+  - question: Varför debiteras jag? Jag har ett kostnadsfritt Azure-konto.
+    answer: >
+      Kostnadsfria tjänster har begränsningar. Förmodligen har du överskridit de kostnadsfria gränserna. Se [Undvika avgifter med ditt kostnadsfria Azure-konto.](manage/avoid-charges-free-account.md)
+  - question: Hur gör jag för att förstå min faktura?
+    answer: >
+      Om du har köpt din Azure-prenumeration via Azure-webbplatsen kan du [läsa Granska din enskilda Azure-prenumerationsfaktura.](understand/review-individual-bill.md)
+  - question: Hur gör jag för att snabbt se mina avgifter?
+    answer: >
+      Se [Utforska och analysera kostnader med kostnadsanalys.](costs/quick-acm-cost-analysis.md)
+  - question: Jag har oväntade avgifter. Hur gör jag för att förstå dem?
+    answer: >
+      Se [Analysera oväntade avgifter.](understand/analyze-unexpected-charges.md)
+  - question: Hur gör jag för att avbryta min Azure-prenumeration?
+    answer: >
+      Se [Avbryt din Azure-prenumeration.](manage/cancel-azure-subscription.md)
+- name: Cost Management frågor
+  questions:
+  - question: Hur kan jag ge åtkomst för att visa kostnader?
+    answer: >
+      Se [Tilldela åtkomst till Cost Management data](costs/assign-access-acm-data.md).
+  - question: Vilka partnererbjudanden stöds av Cost Management?
+    answer: >
+      Cost Management är tillgängligt för partner vars kunder har en Azure-plan. Genom att aktivera en principinställning kan partner tillåta sina kunder att visa kostnadsinformation. Mer information finns i [Komma igång med Azure Cost Management för partners](costs/get-started-partners.md). Klassisk CSP har inte stöd för av Cost Management.
+  - question: Hur kan jag se prognostiserade kostnader?
+    answer: >
+      I Azure Portal navigerar du till **Cost Management + fakturering** > **Cost Management** > **Kostnadsanalys**. I standardvyn innehåller det översta diagrammet de faktiska/amorterade kostnaderna och prognostiserade kostnadsavsnitt. Den färgade delen av diagrammet visar dina faktiska/amorterade kostnader. Den skuggade delen visar prognostiserade kostnader.
+  - question: Hur gör jag för att visa en kostnadsuppdelning efter Azure-tjänst?
+    answer: >
+      I Azure Portal navigerar du **Cost Management + Billing**  >  **Cost Management**  >  **Kostnadsanalys**. Välj **Kostnad efter tjänst** och gruppera sedan efter **Tjänstnivå**. Ändra vyn till **Tabell**.
+  - question: Hur gör jag för att se mina fakturakostnader?
+    answer: >
+      I Azure Portal du till Kostnadsanalys för det omfång som är associerat med fakturan som du analyserar. Välj vyn **Fakturainformation**. Fakturainformation visar de avgifter som visas på din faktura.
+  - question: Hur gör jag för att visa kostnader för en tagg?
+    answer: >
+      I Azure Portal navigerar du till **Cost Management + fakturering** > **Cost Management** > **Kostnadsanalys**. Välj **Gruppera efter** för taggen. Taggar är inte tillgängliga för köp, klientresurser som inte är associerade med prenumerationer, prenumerationsresurser som inte har distribuerats till en resursgrupp eller klassiska resurser. Vissa tjänster innehåller inte taggar i användningsdata. Mer information finns i [Tagga stöd för Azure-resurser.](../azure-resource-manager/management/tag-support.md)
+  - question: Hur gör jag för att du kostnaderna för min EA-registrering?
+    answer: >
+      I Azure Portal navigerar du till **Cost Management + Billing** > Översikt. Välj länken **Detaljdelning.**
+  - question: Hur visar jag min AWS-kostnad i Cost Management?
+    answer: >
+      Se [Konfigurera integrering av kostnads- och användningsrapport för AWS.](costs/aws-integration-set-up-configure.md)
+  - question: Hur gör jag för att skapa en budget?
+    answer: >
+      Se [självstudien Skapa och hantera Azure-budgetar.](costs/tutorial-acm-create-budgets.md)
+  - question: Hur gör jag för att skapa en budget för ett specifikt filter eller en viss tagg?
+    answer: >
+      I fönstret Skapa budget väljer du omfånget för den budget som du vill skapa. Välj **Lägg till filter** för att välja eventuella filter eller en tagg som du vill lägga till för den här budgeten. Mer information finns i självstudien [Skapa och hantera Azure-budgetar.](costs/tutorial-acm-create-budgets.md#create-a-budget-in-the-azure-portal)
+  - question: Hur gör jag för att exportera kostnadshanteringsdata?
+    answer: >
+      Se [självstudien Skapa och hantera exporterade data.](costs/tutorial-export-acm-data.md)
+  - question: Hur gör jag för att exportera kostnadshanteringsdata som partner om jag inte har en Azure-prenumeration i min klient?
+    answer: >
+      Se artikeln [Exportera kostnadsdata med en SAS-nyckel för ett Azure Storage-konto.](costs/export-cost-data-storage-account-sas-key.md)
+  - question: Stöds den klassiska CSP-Cost Management i Azure-planen som CSP-partner?
+    answer: "Med tanke på planer på att övergå kunder i klassisk CSP till Azure Plan för den nya handelsupplevelsen [kommer](https://www.microsoft.com/licensing/news/new-azure-experience-in-csp)Azure Cost Management endast att vara tillgängligt för direkta partner och indirekta leverantörer av kunder som ingår i Azure-planen. \n"
+  - question: Hur kan jag som CSP-partner (global administratör) aktivera principen för kostnadssynlighet i prenumerationsomfånget för mina slutanvändare och återförsäljare i Azure-planen?
+    answer: >
+      Se [Aktivera Cost Management för kundklientprenumerationer](costs/get-started-partners.md#enable-cost-management-for-customer-tenant-subscriptions) för att aktivera principen för kostnadssynlighet för Azure-förbrukade tjänster till återförsäljarpris för Azure RBAC-användare av prenumerationen. Som global administratör för en direkt partner eller en indirekt leverantör kan du visa kostnaderna i kundens klientorganisation oavsett princip.
+  - question: Hur kan jag debitera tillbaka kostnader?
+    answer: >
+      Du kan allokera kostnader i Cost Management för att se de kostnader som du distribuerar till prenumerationer, resursgrupper eller taggar i kostnadsanalysen. Mer information finns i artikeln [Skapa och hantera regler för kostnadsallokering i Azure.](costs/allocate-costs.md)
+  - question: Kan jag använda Power BI för att visa kostnader?
+    answer: >
+      Ja, du använder Power BI Desktop för att [ansluta till Cost Management data](/power-bi/connect-data/desktop-connect-azure-cost-management) eller så kan du använda Cost Management Power BI app för [EAs](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md).
+  - question: Vilka typer av erbjudanden stöds i Cost Management?
+    answer: >
+      Se [Microsoft Azure erbjudanden.](/costs/understand-cost-mgt-data.md#supported-microsoft-azure-offers)
+  - question: Hur snart kan jag se mina kostnads- och användningsdata i Azure Cost Management?
+    answer: >
+      Se [Uppdateringar av kostnads- och användningsdata och kvarhållning.](/costs/understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention)
+  - question: Kan jag hitta all kostnadsrelaterad information i Azure Cost Management?
+    answer: >
+      Se [Kostnader som ingår i Cost Management](costs/understand-cost-mgt-data.md#costs-included-in-cost-management).
+  - question: Räknas allokerade kostnader in i budgetar och prognosvyer?
+    answer: >
+      <a name="budgets-forecast"></a>Ja. Allokerade kostnader räknas in i och stöds av budgetar och prognoser. I budget- och prognosvyerna visas kostnader som har allokerats till dem enligt kostnadsallokeringsreglerna.
+  - question: Vad händer om en kostnadsallokeringsregel tas bort?
+    answer: >
+      <a name="delete-rule"></a>När en kostnadsallokeringsregel tas bort, tas alla öppna och aktuella faktureringsmånadskostnader som allokeras till målen bort. Om kostnadsallokeringsregeln har funnits i flera månader förblir de tidigare föregående månaderna med allokeringsdata de som ursprungligen angavs av allokeringsregeln.
+  - question: Varför krävs det en registreringsadministratör eller en faktureringskontoadministratör för att skapa kostnadsallokeringsregler?
+    answer: >
+      <a name="why-admin"></a>Kostnadsallokeringsregler skapas antingen i registreringsomfånget (Enterprise-avtal) eller i faktureringskontoomfånget (Microsoft-kundavtal). För att kunna göra ändringar i de här omfången måste man ha administratörsbehörighet för fakturering.
+  - question: Varför är kostnadsallokeringskällor och mål begränsade till 25 per regel?
+    answer: >
+      <a name="source-target-rule-limit"></a>Gränsen är en förhandsversionsbegränsning för att säkerställa prestanda och skalbarhet för bästa kostnadsallokering. Gränserna kommer antingen att ökas eller tas bort när kostnadsallokeringen övergår till allmän tillgänglighet (GA).
+  - question: Vad kan hända om kostnadsallokeringsregler (källor/mål) överlappar?
+    answer: >
+      <a name="rule-overlap"></a>Du bör inte ha regler med överlappande källor eller överlappande mål. Kostnadsallokeringsregler tillämpas i ordning efter skapandedatum, så om det finns överlappande kostnadsallokeringsregler prioriteras den regel som har det tidigaste skapandedatumet.
+- name: Cost Management + Billing API-frågor
+  questions:
+  - question: När kommer EA-rapporterings-API:erna att bli inaktuella?
+    answer: >
+      Teamet Cost Management + Billing har inte tillkännagivit någon tidsgräns för utfasning av API:erna. API:erna är inte längre i aktiv utveckling. Vi rekommenderar att du planerar allt arbete som behövs för att migrera bort från dem.
+  - question: Hur gör jag för att migrera från EA-rapporterings-API:erna och vilka nya API:er ska jag anropa?
+    answer: >
+      Se [Migrera från EA-rapportering till Azure Resource Manager-API:er.](costs/migrate-from-enterprise-reporting-to-azure-resource-manager-apis.md)
+  - question: Varför får jag tidsgränser för API:et för användningsinformation?
+    answer: >
+      Datauppsättningen för användningsinformation kan ofta vara mycket stor (flera GB eller mer). Ju större storlek på datauppsättningen du begär, desto längre tid tar det för tjänsten att kompilera data innan de skickas till dig. På grund av fördröjningen kan synkrona API-lösningar som API:et för sidnumrerad [JSON-användningsinformation](/rest/api/consumption/usagedetails/list) gå ut innan dina data anges. Om du stöter på tidsgränser eller har processer som ofta behöver hämta en stor mängd användningsinformation kan du läsa Hämta datauppsättningar för stor användning [återkommande med Exporterar](costs/ingest-azure-usage-at-scale.md).
+  - question: Hur gör jag för att migrera från EA-rapporterings-API:er till Microsoft-kundavtal API:er?
+    answer: >
+      Se [Migrera från Enterprise-avtal till Microsoft-kundavtal API:er.](costs/migrate-cost-management-api.md)
+- name: Frågor om Azure-reservationer
+  questions:
+  - question: Hur gör jag för att du visa reservationsavgifter?
+    answer: >
+      I Azure Portal navigerar du till **Cost Management + fakturering** > **Cost Management** > **Kostnadsanalys**. Lägg till ett filter för **Prismodell: Reservation**. Under Omfång och bredvid den kostnad som visas väljer du nedåtpilen och väljer sedan antingen **Faktisk kostnad** eller Mått **för amorterad** kostnad.
+  - question: Hur gör jag för att du reservationsbesparingar?
+    answer: >
+      Det finns ett par olika sätt att visa dina besparingar.
+
+      -  Om du är EA-kund kan du använda Azure Cost Management Power BI appen för EA för att visa [rapporten RI Savings (RI-besparingar).](/costs/analyze-cost-data-azure-cost-management-power-bi-template-app#reports-available-with-the-app.md)
+
+      -  Använd datafilen Användning och avgifter för att manuellt [fastställa reservationsbesparingar.](reservations/understand-reserved-instance-usage-ea.md#determine-reservation-savings)
+  - question: Hur gör jag för att underutnyttjande av reservationer?
+    answer: >
+      Logga in på Azure-portalen. Välj sedan Alla tjänster > **reservationer** och notera **Utnyttjande (%)** för en reservation. Välj en reservation. Granska trenden i reservationsanvändningen över tid. Mer information finns i [Visa reservationsanvändning i Azure Portal](reservations/manage-reserved-vm-instance.md?toc=/azure/cost-management-billing/reservations/toc.json#view-reservation-use-in-the-azure-portal). Du kan också visa [oanvända reservationskostnader i kostnadsanalysen](costs/cost-analysis-common-uses.md#view-unused-ri-costs-in-cost-analysis).
+  - question: Hur hittar jag reservationskostnader att debitera tillbaka?
+    answer: >
+      Detaljerad information [finns i Charge back Azure Reservation costs (Debitera kostnader](reservations/charge-back-usage.md?toc=/azure/cost-management-billing/reservations/toc.json) för Azure-reservationer).
+  - question: Hur kan jag visa avgifter som uppstått för virtuella spot-datorer?
+    answer: >
+      Se [Visa dina kostnader för virtuella spot-datorer.](/costs/cost-analysis-common-uses.md#view-your-spot-vm-charges)
+  - question: Hur gör jag för att du en rapport om reservationsinformation?
+    answer: >
+      Läs API-dokumentationen för att [generera en reservationsinformationsrapport.](/rest/api/cost-management/generatereservationdetailsreport)
+- name: Frågor om Azure Enterprise-avtal (EA) och EA-portalen
+  questions:
+  - question: Hur gör jag för att tilldela SPN-behörigheter till min registrering?
+    answer: >
+      Se [Tilldela roller till EA-SPN:er.](manage/assign-roles-azure-service-principals.md)
+  - question: Varför fick jag inget aktiveringsmeddelande via e-post?
+    answer: >
+      En e-postmeddelande för aktivering från Azure EA-portalen skickas från *waep@microsoft.com* . Om du inte har fått något aktiveringsmeddelande kan du se om det finns i mappen för spam eller skräp. Det skickas med _service_subject för inbjudan att visa/hantera Microsoft Azure_. Det skickas till varje nyligen tillagd EA-administratör.
+
+
+      Om du är säker på att du har konfigurerats som EA-administratör behöver du inte vänta på att ta emot aktiveringsmeddelandet innan du loggar in på Azure EA-portalen. I stället kan du gå till https://ea.azure.com och logga in med din e-postadress (arbets-, skol- eller Microsoft-konto) och ditt lösenord.
+  - question: Hur gör jag för att lägga till en ny EA-administratör i min registrering?
+    answer: >
+      En ny företagsadministratör kan läggas till av befintliga företagsadministratörer. Om du är EA-administratör loggar du in på EA-portalen > Klicka på **Manage** (Hantera) > Klicka på **+ Add Administrator** (+ Lägg till administratör) i det övre högra hörnet för att lägga till en ny EA-administratör. Se till att du har rätt e-postadress och en önskad inloggningsmetod, till exempel via autentisering från arbete/skola eller Microsoft Live ID för att lägga till användarna.
+
+
+      Om du inte är EA-administratör kontaktar du EA-administratören i ditt företag för att begära att du läggs till i registreringen. När du har lagts till i registreringen får du ett aktiveringsmeddelande via e-post.
+
+
+      Men om EA-administratörerna inte kan hjälpa dig kan vi lägga till dig för deras räkning om du kan ge oss följande:
+
+      - registreringsnumret
+
+      - e-postadressen som ska läggas till samt autentiseringstyp (arbete/skola/MS)
+
+      - e-postgodkännande från EA-administratören.
+
+
+      När du har all information som krävs skickar du en begäran på [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport).
+  - question: Hur gör jag för att du den första EA-administratören för registreringen?
+    answer: >
+      Den första EA-administratören kan uppdateras i Volume Licensing Service Center genom att uppdatera meddelandekontakten och onlineadministratören på portalen. Det tar upp till 24 timmar för EA-portalen att uppdateras. När den är uppdaterad får den nya EA-administratören aktiveringsmeddelande via e-post.
+
+
+      Om du inte har åtkomst till VLSC-portalen eller om den första EA-administratören inte längre kan hantera registreringen och inte har någon åtkomst till EA-portalen skickar du en begäran på [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) om en uppdatering och ger följande information:
+
+      - Registreringsnummer
+
+      - E-postadress som ska läggas till samt autentiseringstyp (arbete/skola/MS)
+
+      - Orsak till att ändra första EA-administratör
+
+      - E-postgodkännande från den första EA-administratören
+  - question: Min nuvarande EA-administratör är inte längre hos företaget. Vad ska jag göra?
+    answer: >
+      En EA-registrering kan ha flera EA-administratörer. Du kan kontakta en annan EA-administratör för att lägga till ny EA-administratör/kontoinnehavare/avdelningsadministratör. Men om du inte är tydlig med vem som är EA-administratör i företaget eller om det inte finns någon annan tillgänglig EA-administratör för registreringen kontaktar du oss med följande information:
+
+      - Registreringsnummer
+
+      - E-postadress som ska läggas till samt autentiseringstyp (arbete/skola/MS)
+
+      - Ge information om att aktuell EA-administratör inte längre finns i företaget
+
+
+      Observera att om det finns andra EA-administratörer för registreringen kontaktar vi EA-administratörerna för att begära godkännande vid administrativa ändringar av registreringen.
+  - question: Min registrering visas i väntande status. Hur aktiverar jag min registrering?
+    answer: >
+      Registreringar har väntande status om den första EA-administratören inte har loggat in på registreringen tidigare. Om du är EA-administratör loggar du in på Azure EA-portalen. På landningssidan med alla dina registreringsnummer kanske du inte ser din väntande registrering. Avmarkera ”aktiv”-rutan i det övre högra hörnet i EA-portalen – en åtgärd som visar den väntande registreringen. Klicka på registreringen för att få åtkomst till informationen och när du har nått sidan Manage (Hantera) för registreringen uppdateras statusen från Pending (Väntar) till Active (Aktiv).
+  - question: Varför är mitt konto fast i väntande status?
+    answer: >
+      När nya kontoinnehavare läggs till i registreringen för första gången visas de alltid med beteckningen ”väntar” under status. När kontoinnehavaren får välkomstmeddelandet kan han/hon logga in och aktivera sitt konto. När du loggar in uppdateras kontostatusen från ”väntande” till ”aktiv”.
+  - question: Varför visas ett fel när jag loggar in på Azure EA-portalen?
+    answer: "Det finns några möjliga orsaker till ett felmeddelande på Azure EA-portalen när du loggar in, följ dessa felsökningssteg:\n\n 1. Se till att du använder rätt URL-adress för EA-portalen på [https://ea.azure.com](https://ea.azure.com).\n 1. Ta reda på om din åtkomst till Azure EA-portalen har lagts till som ett arbets- eller skolkonto eller Microsoft Live ID. Om du använder ditt arbetskonto anger du din e-postadress och ditt lösenord för arbete. Om du använder Microsoft Live ID anger du din Live ID-e-post och ditt Microsoft Live ID-lösenord. Om du har glömt ditt Microsoft Live ID-lösenord kan du återställa det på [https://account.live.com/password/reset](https://account.live.com/password/reset).\n 1. Vi rekommenderar att du använder en privat webbläsare för att logga in så att inga cookies och ingen cache från tidigare/befintliga sessioner bevaras. Rensa cachen och använd privat surfläge/inkognitofönster för att öppna [https://ea.azure.com](https://ea.azure.com).\n 1. Om du får ett felmeddelande om ogiltig användare när du använder ett Microsoft-konto kan det bero på att du har flera Microsoft-konton och att det du försöker logga in med inte är det primära aliaset. Gå till account.live.com om du vill kontrollera primärt alias:\n     - Gå till ”Din information” > Hantera e-postadress eller telefonnummer för inloggning.\n     - Följ anvisningarna på skärmen för att verifiera en alternativ e-postadress och hämta en kod för att få åtkomst till känslig information.\n     - Ange säkerhetskoden.\n     - Om du föredrar att konfigurera tvåstegsautentisering senare väljer du ”Konfigurera senare”.\n     - Du hamnar på sidan Hantera dina kontoalias där du ser de kontoalias som du har. Dubbelkontrollera att du använder det primära aliaset när du loggar in på Azure EA-portalen. Om du inte gör det kan du göra den till ditt primära alias eller så använder du det primära aliaset för EA-portalen.\n \n Om felsökningsstegen ovan misslyckades skickar du en begäran på [https://aka.ms/AzureEntSupport](https://aka.ms/AzureEntSupport) med information som:\n   - Webbläsare och version som används.\n   - Skärmbild av felmeddelandet.\n   - URL för sidan med fel.  \n   - Datum, tid och tidszon för när felet inträffar.\n\n- Dessutom hjälper det om du får en loggfil. Här är stegen för att fånga en nätverksspårning med hjälp av informationen nedan:\n\n1. Öppna Internet Explorer.\n1. Tryck på F12, så öppnas en ruta längst ned i IE.\n1. Välj fliken **Nätverk**.\n1. Klicka på **Börja registrera**.\n1. Utför åtgärden som orsakar felet.\n1. När du får felmeddelandet klickar du på **Sluta registrera**.\n1. Spara filen och ta med informationen i supportbegäran.\n1. Se till att ange ditt registreringsnummer och din e-postadress i supportbegäran.\n"
+  - question: Vad är skillnaden mellan arbets-/skolkonto och Microsoft-konto?
+    answer: >
+      **Microsoft-konto:** Konton som har associerats med Live ID på [https://signup.live.com](https://signup.live.com).
+
+
+      **Arbets-/skolkonto:** Bara tillgängligt för företag som har konfigurerat Active Directory med federation till molnet och där alla konton finns i en enda klientorganisation. Användare kan läggas till med auktoriseringstypen arbete/skola om företagets interna Active Directory är federerat i molnet.
+
+
+      Från september 2016 tillåter Microsoft inte längre att arbets- eller skolkonton registreras som Microsoft-konton. Mer information finns i följande material: [https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/](https://blogs.technet.microsoft.com/enterprisemobility/2016/09/15/cleaning-up-the-azure-ad-and-microsoft-account-overlap/).
+
+
+      Om organisationen inte är federerad i molnet kan du inte använda din e-postadress för arbete eller skola. Registrera eller skapa en ny e-postadress och registrera den som ett Microsoft-konto istället.
+  - question: Jag har glömt mitt lösenord till Azure EA-portalen. Vad ska jag göra?
+    answer: >
+      Om du har glömt ditt Microsoft Live ID-lösenord kan du återställa det på [https://account.live.com/password/reset](https://account.live.com/password/reset).
+
+
+      Om du har glömt ditt lösenord till arbetet kontaktar du företagets IT-administratör.
+  - question: Jag har ett giltigt arbets- eller skolkonto. Varför kan jag inte lägga till det i EA-portalen?
+    answer: >
+      Om du har ett arbets- eller skolkonto under en annan klientorganisation ändrar du behörighetsnivån under registreringsinformationssidan till ”Work or School Account Cross Tenant” (Arbets- eller skolkonto mellan klientorganisationer) så kan du lägga till kontot.
+  - question: Jag associerade av misstag mitt befintliga Azure-konto med Azure EA-registrering. Därför har jag förlorat min månadskredit. Kan jag få tillbaka min månadskredit?
+    answer: >
+      Om du har loggat in som Azure EA-kontoinnehavare med samma autentiseringsuppgifter som för din Visual Studio-prenumeration kan du återställa din enskilda Azure-förmån för Visual Studio-prenumeration genom att utföra någon av följande åtgärder:
+
+
+      - Ta bort kontoinnehavaren från Azure Enterprise-portalen efter att du har tagit bort eller flyttat eventuella associerade Azure-prenumerationer. Registrera dig sedan för enskilda Visual Studio Azure-förmåner på nytt.
+
+      - Ta bort Visual Studio-prenumeranten från administrationsplatsen i VLSC och tilldela om prenumerationen till ett konto med andra autentiseringsuppgifter den här gången. Registrera dig sedan för enskilda Visual Studio Azure-förmåner på nytt.
+  - question: Vilken typ av prenumeration ska jag skapa?
+    answer: >
+      Azure Enterprise-portalen har två typer av prenumerationer för företagskunder:
+
+
+      - Microsoft Azure Enterprise, som passar för:
+
+      - All produktionsanvändning
+
+      - Bästa priser baserat på infrastrukturutgifter
+
+
+      [Kontakta Azure-säljavdelningen](https://azure.microsoft.com/pricing/enterprise-agreement/) om du vill få mer information.
+
+
+      - Enterprise Dev/Test, som passar för:
+
+      - Alla utvecklar-/testarbetsbelastningar
+
+      - Medelstor till stor enskild utvecklar-/testarbetsbelastning
+
+      - Åtkomst till särskilda MSDN-avbildningar och priser för förmånstjänster
+
+
+      Mer information finns i [Enterprise Dev/Test-erbjudande](https://azure.microsoft.com/offers/ms-azr-0148p/).
+  - question: Mitt prenumerationsnamn är detsamma som namnet på erbjudandet. Ska jag ändra prenumerationsnamnet till något som är meningsfullt för min organisation?
+    answer: >
+      När du skapar en prenumeration blir namnet som standard den erbjudandetyp som du väljer. Vi rekommenderar att du ändrar prenumerationsnamnet till något som gör det lätt för dig att spåra prenumerationen.
+
+
+      Så här ändrar du namnet:
+
+
+      1. Logga in på [https://account.windowsazure.com](https://account.windowsazure.com).
+
+      1. Välj prenumerationslistan.
+
+      1. Välj den prenumeration som du vill redigera.
+
+      1. Välj ikonen **Hantera prenumeration**.
+
+      1. Redigera prenumerationsinformation.
+  - question: Hur spårar jag kostnader som uppstått på ett kostnadsställe?
+    answer: >
+      För att spåra kostnader per kostnadsställe behöver du definiera kostnadsstället på någon av följande nivåer:
+
+
+      - Avdelning
+
+      - Konto
+
+      - Prenumeration
+
+
+      Utifrån dina behov kan du använda samma kostnadsställe för att spåra användning och kostnader som är associerade med ett visst kostnadsställe.
+
+
+      Om du till exempel vill spåra kostnaden för ett särskilt projekt där flera avdelningar är inblandade kan du definiera kostnadsstället på en prenumerationsnivå för att spåra användningen och kostnaderna.
+
+
+      Du kan inte definiera ett kostnadsställe på servicenivå. Om du vill spåra användning på servicenivå kan du använda funktionen _Tagg_, som finns på servicenivå.
+  - question: Hur spårar jag användning och utgifter av olika avdelningar i min organisation?
+    answer: >
+      Du kan skapa så många avdelningar som du behöver under din Azure EA-registrering. För att kunna spåra användningen på rätt sätt ska du se till att prenumerationer inte delas mellan olika avdelningar.
+
+
+      När du har skapat avdelningar och prenumerationer kan du se data i användningsrapporten. Den här informationen kan hjälpa dig att spåra användning samt hantera kostnader och utgifter på avdelningsnivå.
+
+
+      Du kan även komma åt användningsdata via rapporterings-API:et. Detaljerad information och exempelkod finns i [REST-API:er för Azure Enterprise](manage/ea-portal-rest-apis.md).
+  - question: Kan jag ange en utgiftskvot och få aviseringar när jag närmar mig min gräns?
+    answer: >
+      Du kan ange en utgiftskvot på avdelningsnivå, så meddelar systemet dig automatiskt när utgiftsgränsen når 50 %, 75 %, 90 % och 100 % av den kvot som du definierar.
+
+
+      Du definierar utgiftskvoten genom att välja en avdelning och sedan välja redigeringsikonen. När du har redigerat informationen för utgiftsgräns väljer du **Spara**.
+  - question: Jag använde resursgrupper för att implementera Azure RBAC och spåra användning. Hur visar jag associerad användningsinformation?
+    answer: >
+      Om du använder _resursgrupper_ och _taggar_ spåras den här informationen på servicenivå, och du kan komma åt den i nedladdningsfilen (CSV) för detaljerad användning. Se [ladda ned användningsrapport](https://ea.azure.com/report/downloadusage) i Azure Enterprise-portalen.
+
+
+      Du kan även komma åt användning via API. Detaljerad information och exempelkod finns i [REST-API:er för Azure Enterprise](manage/ea-portal-rest-apis.md).
+
+
+      > [!NOTE]
+
+      > Du kan endast använda taggar på resurser som stöder Azure Resource Manager-åtgärder. Om du har skapat en virtuell dator, ett virtuellt nätverk eller lagring via den klassiska distributionsmodellen (t.ex. via den klassiska portalen) kan du inte använda en tagg på den resursen. Du måste distribuera dessa resurser igen via Resource Manager för att stödja taggning. Alla andra resurser stöder taggning.
+  - question: Kan jag göra analyser med Power BI?
+    answer: >
+      Ja, du kan använda [anslutningsappen för Azure Cost Management](/power-bi/connect-data/desktop-connect-azure-cost-management) för att Power BI Desktop kraftfulla, anpassade visualiseringar och rapporter som hjälper dig att bättre förstå dina Azure-utgifter. Om du har ett Enterprise-avtal (EA) kan du även använda Azure Cost Management [mallappen](costs/analyze-cost-data-azure-cost-management-power-bi-template-app.md). Mallappen Azure Cost Management innehåller förskapade rapporter som hjälper dig att övervaka kostnader, trender för tjänstanvändning och identifiera alternativ för kostnadsoptimering för att minska dina utgifter.               Power BI-rapportering är tillgängligt för Azure EA-direktkunder, partner och indirekta kunder som kan visa faktureringsinformation.
+  - question: Kan jag associera mitt befintliga Azure-konto med Azure EA-registrering?
+    answer: >
+      Ja. Alla Azure-prenumerationer som du är kontoinnehavare för konverteras till ditt Enterprise-avtal. Bland dessa ingår prenumerationer som använder månatlig kredit, till exempel Visual Studio, AzurePass, MPN, BizSpark och fler. Du kommer att förlora månadskredit när du konverterar sådana prenumerationer.
+  - question: Hur många Azure-kontoinnehavare kan du ha per prenumeration?
+    answer: >
+      Bara en kontoinnehavare tillåts per prenumeration.  Ytterligare roller kan läggas till med rollbaserad åtkomst eller Åtkomstkontroll (IAM) på prenumerationsfliken i det övre vänstra hörnet på sidan på [Azure-portalen](https://portal.azure.com).
+  - question: Kan jag överföra äganderätten till prenumerationen till ett annat konto?
+    answer: >
+      Ja, du kan överföra äganderätten till prenumerationen till ett annat konto. Exempel: Om konto A har tre prenumerationer kan företagsadministratören överföra en prenumeration till konto B, en till konto C och en till konto D. Det går även att överföra alla prenumerationer till konto E.
+
+
+      Så här överför du prenumerationer:
+
+
+      1. I Azure Enterprise-portalen väljer du **Hantera** > **Konto**.
+
+      1. Hovra över **Konto** längst till höger för att se alternativen **Överför ägarskap** (personikonen) och **Överför prenumeration** (listikonen). De här alternativen är endast synliga för aktiva konton.
+  - question: Kan en Azure-kontoinnehavare listas under mer än en avdelning?
+    answer: >
+      Nej, en kontoinnehavare kan bara associeras med en enda avdelning. Principen är till för att säkerställa korrekt övervakning och fördelning av kostnader och utgifter kopplade till avdelningen de är justerade mot under EA-registreringen i Azure EA-portalen.
+  - question: Kan en Azure-kontoinnehavare listas som en säkerhetsgrupp?
+    answer: >
+      Nej, en prenumerationsägare måste vara ett unikt Microsoft-konto (MSA) eller en Azure Active Directory-autentisering (Azure AD). För att ta hänsyn till följden i organisationen kan du skapa allmänna konton och använda Azure AD för att hantera prenumerationsåtkomst.
+  - question: Kan en enskild användare äga flera prenumerationer?
+    answer: >
+      En Azure-kontoinnehavare kan skapa och hantera ett obegränsat antal prenumerationer.
+  - question: Hur kan jag få åtkoms till/visa alla min organisations prenumerationer?
+    answer: >
+      Idag måste detta göras med en princip. Det betyder att du skulle kräva att ditt konto läggs till i en prenumerationsroll med rollbaserad åtkomst för varje prenumeration som skapas.
+  - question: Var skapar jag en prenumeration?
+    answer: >
+      Innan du kan skapa en Azure EA-prenumeration måste ditt konto läggas till i rollen som kontoinnehavare av din administratören för din EA-registrering i Azure EA-portalen. Du måste sedan logga in på Azure EA-portalen för att få din rättighet att skapa prenumerationer för EA-erbjudanden. Vi rekommenderar att din första EA-prenumeration skapas via länken ”+ Add Subscription” (+ Lägg till prenumeration) på prenumerationsfliken i EA-portalen.  Men när ditt konto är berättigat kan det vara enklare att skapa prenumerationer i portal.azure.com på prenumerationsfliken i det övre högra hörnet på sidan, där du både kan skapa och byta namn på prenumerationen i ett enda steg.
+  - question: Vem kan skapa en prenumeration?
+    answer: >
+      Om du vill skapa en prenumeration för ett Azure-erbjudande för företag måste du vara berättigad i rollen som kontoinnehavare i [EA-portalen](https://ea.azure.com).
+  - question: Varför visas min kostnad som 0 USD?
+    answer: >
+      För kunder med **direktregistrering** kan företagsadministratörer ge kontoägare och avdelningsadministratörer tillgång till information om kostnad/pris i användningsrapporterna. Följ de här stegen:
+
+
+      1. I Azure Enterprise-portalen väljer du **Manage** (Hantera) i det vänstra navigeringsfältet.
+
+      1. Välj den blå pennan bredvid Visa avgifter för DA (avdelningsadministratör).
+
+      1. Välj **Aktiverad** och spara.
+
+      1. Välj den blå pennan bredvid Visa avgifter för AO (kontoägare).
+
+      1. Välj **Aktiverad** och spara.
+
+
+      > [!NOTE]
+
+      > Om du är kontoägare eller avdelningsadministratör kontaktar du företagsadministratören för att aktivera prissättningsfunktionen.
+
+
+      Om du är kund med **indirekt registrering** kontaktar du din partner och kontrollerar om de har aktiverat prissättningsfunktionen åt dig. Detta kan endast göras av en partner. När de har aktiverat funktionen kan du visa kostnader och priser för din registrering som en företagsadministratör.
+
+
+      Partner som vill aktivera funktionen för att visa avgifter för en kontoägare eller avdelningsadministratör kan följa stegen under **direktregistrering**.
+  - question: Varför finns det ingen SKU-information i rapporten för användningsinformation?
+    answer: >
+      Det finns ingen SKU-information i rapporten för användningsinformation. Men däremot innehåller rapporten användningsinformation, vilket innebär att du kan få tag på SKU-informationen genom att ladda ned prisdokumentrapporten.
+  - question: Varför stämmer inte totalbeloppet i Azure Marketplace överens med rapporterna för användningssammanfattning och användningsinformation?
+    answer: >
+      Rapporten för Azure Marketplace-debiteringar visar endast användningsbaserade debiteringar. Engångsavgifter visas inte. Du kan se de senaste användningsbaserade avgifterna och engångsavgifterna på sidan med användningssammanfattningen.
+  - question: Varför finns det ingen information i min API-rapport?
+    answer: >
+      API-nycklar upphör att gälla var sjätte månad. Be företagsadministratören generera en ny API-nyckel om du har problem. Kom ihåg att följa stegen i vanliga frågor och svar om API-rapporter.
+  - question: Varför fungerar inte min Power BI-rapport?
+    answer: >
+      Om du har problem med Power BI loggar du en begäran om teknisk support till [Power BI-supportteamet](https://support.powerbi.com).
+  - question: Varför visas inte mina resurstaggar i mina rapporter?
+    answer: >
+      Resurstaggar hanteras i Azure-portalen. Du kan kontakta Azure-prenumerationsteamet på [Azure-portalen](https://portal.azure.com). Följ stegen i artikeln [Skapa en supportbegäran för Azure](../azure-portal/supportability/how-to-create-azure-support-request.md).
+  - question: Varför ändras mitt resurspris varje dag?
+    answer: >
+      Resurspriset i den detaljerade användningsrapporten är ett beräknat värde. Det representerar det genomsnittliga månadspriset som debiteras för en tjänst. Resurspriset beräknas med hjälp av genomsnittet av det månatliga åtagandet och de månatliga överförbrukningsavgifterna för en tjänstenhet. Den del av användningen som debiteras mot åtagande och överförbrukningsavgifter ändras till dagen då månaden slutar. Detta innebär att även resurspriset ändras under månaden. Resurspriser låses den femte dagen efter månadens slut.
+  - question: På vilket sätt har Azure Marketplace-tjänster och Azure EA-förskottsbetalningar ändrats?
+    answer: >
+      Från och med den 1 mars 2018 förbrukar vissa tjänster från tredjepartsåterförsäljare Azure EA-förskottsbetalningar. Förutom för reserverade VM-instanser i Azure fakturerades tjänsterna tidigare separat utanför Azure EA-förskottsbetalningar.
+
+
+      Vi har utökat användningen av Azure-förskottsbetalningar till att nu omfatta några av de mest köpta Azure Marketplace-tjänster som publicerats av tredje part. Azure EA-förskottsbetalningar för dessa tjänster på Azure Marketplace förenklar hanteringen av ditt köp och dina betalningar.
+
+
+      Ändringen gjordes eftersom kunderna ville ha andra sätt att använda förskottsbetalningen för Azure. Vi uppfyller en vanlig förfrågan som påverkar en stor del av våra Azure Marketplace-kunder.
+  - question: Hur gör jag för att dra nytta av Azure-förskottsbetalningar för Azure Marketplace köp med mitt EA-avtal?
+    answer: >
+      Faktureringsupplevelsen blir enklare och du kan använda din Azure EA-förskottsbetalning på ett bättre sätt. Eftersom tjänsterna ingår i din Azure-förskottsbetalning blir din Azure EA-förskottsbetalning mer värdefull.
+  - question: Vilka Azure Marketplace-tjänster använder Azure EA-förskottsbetalningar och hur vet jag vilka de är?
+    answer: >
+      När du köper en tjänst som använder Azure-förskottsbetalningar visas en ansvarsfriskrivning på Azure Marketplace. Vissa tjänster som stöds publiceras av Red Hat, SUSE, Autodesk och Oracle. Tjänster som har liknande namngivningskonventioner men som publiceras av andra parter, dras inte av från Azure-förskottsbetalningar. Se [tjänster från tredje part som använder Azure-förskottsbetalningar](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) för en fullständig lista över produkter som deltar i programmet.
+  - question: Vad händer om min Azure EA-förskottsbetalning tar slut för Azure Marketplace köp?
+    answer: >
+      När du har förbrukat din Azure-förskottsbetalning övergår användningen till överförbrukning, och avgifterna för dessa tjänster visas på din nästa överförbrukningsfaktura tillsammans med andra förbrukningstjänster. Före ändringen 1 mars 2018 fakturerades dessa avgifter med andra Azure Marketplace-tjänster.
+  - question: Varför förbrukar inte alla Azure Marketplace-tjänster Azure EA-förskottsbetalningar?
+    answer: >
+      Vår ambition är att leverera den bästa kundupplevelsen för Azure EA-förskottsbetalningar. De senaste ändringarna av Azure EA-förskottsbetalningar hanterade ett stort antal kunder och en stor del av de totala Azure Marketplace. Andra tjänster kan läggas till i framtiden.
+  - question: Hur påverkar Azure Marketplace och ändringar i Azure EA-förskottsbetalningar indirekt registrering och partner?
+    answer: >
+      Det påverkar inte vår indirekta registrering för kunder eller partner. Dessa tjänster har samma påläggsmöjligheter för partner som andra konsumtionstjänster. Det enda som ändras är att debiteringarna visas på en annan faktura och att betalningen av avgifterna kommer från kundens Azure EA-förskottsbetalning.
+  - question: Var kan jag se de Azure Marketplace tjänster som använder Azure EA-förskottsbetalningar?
+    answer: >
+      Specifika Azure Marketplace-erbjudanden kan förbruka Azure-förskottsbetalningssaldot. Se [tjänster från tredje part som använder Azure-förskottsbetalningar](https://azure.microsoft.com/updates/azure-marketplace-third-party-reseller-services-now-use-azure-monetary-commitment) för en fullständig lista över produkter som deltar i programmet.
+- name: Partnerfrågor
+  questions:
+  - question: Vem ska länka partner-ID:t?
+    answer: >
+      Alla användare från partnerorganisationen som arbetar med en kunds Power Apps kan länka partner-ID:t till kontot. Vi rekommenderar att associationen i PAL görs i början av projektet. Den kan dock utföras när du har åtkomst till kundens katalog.
+  - question: Kan ett partner-ID ändras efter att det har länkats?
+    answer: >
+      Ja. Ett länkat partner-ID kan ändras, läggas till eller tas bort. Ett exempel på den här situationen kan vara när en anställd från ditt företag lämnar organisationen. Ett annat exempel kan vara när ett projekt eller kontrakt med kunden avslutas.
+  - question: Vad händer om en användare har ett konto i flera klientorganisationer för en kund?
+    answer: >
+      Länken mellan partner-ID:t och kontot skapas för alla kundens klientorganisationer. Länka partner-ID:t i alla kundens klientorganisationer.
+  - question: Kan andra partner eller kunder redigera eller ta bort länken till partner-ID:t?
+    answer: >
+      Länken är kopplad på användarkontonivå. Du är den enda som kan redigera eller ta bort länken till partner-ID:t. Kunden och andra partner kan inte ändra länken till partner-ID:t.
+  - question: Vilket MPN-ID ska jag använda om mitt företag har flera?
+    answer: >
+      Se till att använda **associerat MPN-ID** som visas i din partnerprofil. Det är vanligtvis den lokala konto-ID-associationen med din organisation.
+  - question: Hur gör jag för att förklara PAL för min kund?
+    answer: >
+      PAL gör det möjligt för Microsoft att identifiera och känna igen de partner som hjälper kunder att uppnå affärsmål och realisera värde i molnet. Kunderna måste först ge en partner åtkomst till sin Power Apps resurs. När åtkomst har beviljats associeras partnerns Microsoft Partner Network-ID (MPN-ID). Den här associationen hjälper Microsoft att förstå tjänstleverantörer och förfina de verktyg och program som behövs för att bäst stödja kunder.
+  - question: Vilka data samlas in av PAL?
+    answer: >
+      PAL-associationen för befintliga autentiseringsuppgifter tillhandahåller inga nya kunddata till Microsoft. Den ger information till Microsoft där en partner är aktivt involverad i en kunds Power Apps miljöer. Microsoft kan tilldela användning och påverkan från kundmiljön till partnerorganisationen baserat på kontots behörigheter (Power Apps-roll) och omfång (klientorganisation, resursgrupp, resurs) som tillhandahålls till partnern av kunden.
+  - question: Påverkar PAL-associationen säkerheten för en kunds Power Apps miljö?
+    answer: PAL-associationen lägger bara till partnerns MPN-ID till de autentiseringsuppgifter som redan har etablerats. Den ändrar inga behörigheter (eller Power Apps) eller ger extra Power Apps till partnern eller Microsoft.

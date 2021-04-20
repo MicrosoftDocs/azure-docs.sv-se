@@ -1,204 +1,222 @@
 ---
 title: Felsöka vanliga fel
-description: 'Lär dig hur du felsöker problem med att skapa princip definitioner, de olika SDK: erna och tillägget för Kubernetes.'
-ms.date: 01/26/2021
+description: Lär dig hur du felsöker problem med att skapa principdefinitioner, de olika SDK:erna och tillägget för Kubernetes.
+ms.date: 04/19/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 6e0e4067f07266bae9c87fd4443d27314cc28c0b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4feae11c6d8d78a43bae9882405e292a18e90bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100592606"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725070"
 ---
 # <a name="troubleshoot-errors-with-using-azure-policy"></a>Felsöka fel med hjälp av Azure Policy
 
-När du skapar princip definitioner, arbetar med SDK: er eller konfigurerar [Azure policy för Kubernetes](../concepts/policy-for-kubernetes.md) -tillägg kan du stöta på fel. I den här artikeln beskrivs olika allmänna fel som kan uppstå, och det föreslår olika sätt att lösa dem.
+När du skapar principdefinitioner, arbetar med -SDK:er eller ställer in Azure Policy för [Kubernetes-tillägg](../concepts/policy-for-kubernetes.md) kan du få fel. Den här artikeln beskriver olika allmänna fel som kan uppstå och föreslår olika sätt att lösa dem.
 
-## <a name="find-error-details"></a>Hitta fel information
+## <a name="find-error-details"></a>Hitta felinformation
 
-Fel informationens plats beror på vilken aspekt av Azure Policy du arbetar med.
+Platsen för felinformationen beror på vilken aspekt av Azure Policy du arbetar med.
 
-- Om du arbetar med en anpassad princip går du till Azure Portal för att få en mer beskrivande feedback om schemat eller granskar resulterande [efterlevnadsprinciper](../how-to/get-compliance-data.md) för att se hur resurserna utvärderades.
-- Om du arbetar med någon av de olika SDK: erna innehåller SDK information om varför funktionen misslyckades.
-- Om du arbetar med tillägget för Kubernetes börjar du med [loggningen](../concepts/policy-for-kubernetes.md#logging) i klustret.
+- Om du arbetar med en anpassad princip går du till Azure Portal för att få [](../how-to/get-compliance-data.md) linting-feedback om schemat eller granskar resulterande efterlevnadsdata för att se hur resurserna utvärderades.
+- Om du arbetar med någon av de olika SDK:erna ger SDK information om varför funktionen misslyckades.
+- Om du arbetar med tillägget för Kubernetes börjar du med [loggning](../concepts/policy-for-kubernetes.md#logging) i klustret.
 
 ## <a name="general-errors"></a>Allmänna fel
 
-### <a name="scenario-alias-not-found"></a>Scenario: aliaset hittades inte
+### <a name="scenario-alias-not-found"></a>Scenario: Alias hittades inte
 
 #### <a name="issue"></a>Problem
 
-Ett felaktigt eller obefintligt alias används i en princip definition. Azure Policy använder [alias](../concepts/definition-structure.md#aliases) för att mappa till Azure Resource Manager egenskaper.
+Ett felaktigt eller inexistent alias används i en principdefinition. Azure Policy använder [alias för](../concepts/definition-structure.md#aliases) att mappa till Azure Resource Manager egenskaper.
 
 #### <a name="cause"></a>Orsak
 
-Ett felaktigt eller obefintligt alias används i en princip definition.
+Ett felaktigt eller inexistent alias används i en principdefinition.
 
 #### <a name="resolution"></a>Lösning
 
-Kontrol lera först att Resource Manager-egenskapen har ett alias. Om du vill leta upp tillgängliga alias går du till [Azure policy tillägg för Visual Studio Code](../how-to/extension-for-vscode.md) eller SDK.
-Om alias för en Resource Manager-egenskap inte finns skapar du ett support ärende.
+Kontrollera först att Resource Manager har ett alias. Om du vill söka efter tillgängliga alias går du [till Azure Policy för Visual Studio Code](../how-to/extension-for-vscode.md) eller SDK.
+Om aliaset för en Resource Manager-egenskap inte finns skapar du en supportbiljett.
 
-### <a name="scenario-evaluation-details-arent-up-to-date"></a>Scenario: utvärderings informationen är inte aktuell
+### <a name="scenario-evaluation-details-arent-up-to-date"></a>Scenario: Utvärderingsinformationen är inte uppdaterad
 
 #### <a name="issue"></a>Problem
 
-En resurs är i ett tillstånd där det _inte har startats_ eller så är kompatibilitetsinformation inte aktuella.
+En resurs har _statusen Inte startad_ eller så är kompatibilitetsinformationen inte aktuell.
 
 #### <a name="cause"></a>Orsak
 
-En ny princip eller initiativ tilldelning tar cirka 30 minuter att tillämpas. Nya eller uppdaterade resurser inom omfånget för en befintlig tilldelning blir tillgängliga inom 15 minuter. En sökning efter standard kompatibilitet sker var 24: e timme. Mer information finns i [utvärderings utlösare](../how-to/get-compliance-data.md#evaluation-triggers).
+Det tar cirka 30 minuter att tillämpa en ny princip- eller initiativtilldelning. Nya eller uppdaterade resurser inom omfånget för en befintlig tilldelning blir tillgängliga inom cirka 15 minuter. En standardgenomsökning av efterlevnad sker var 24:e timme. Mer information finns i [utvärderingsutlösare.](../how-to/get-compliance-data.md#evaluation-triggers)
 
 #### <a name="resolution"></a>Lösning
 
-Börja med att vänta en lämplig tids period för att en utvärderings version ska slutföras och att resultatet av efterlevnaden blir tillgängligt i Azure Portal eller SDK. Om du vill starta en ny utvärderings sökning med Azure PowerShell eller REST API, se [utvärderings genomsökning på begäran](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
+Vänta först en lämplig tid tills utvärderingen har avslutats och kompatibilitetsresultaten blir tillgängliga i Azure Portal eller SDK. Information om hur du startar en ny utvärderingsgenomsökning med Azure PowerShell eller REST API finns [i Utvärderingsgenomsökning på begäran.](../how-to/get-compliance-data.md#on-demand-evaluation-scan)
 
-### <a name="scenario-compliance-isnt-as-expected"></a>Scenario: kompatibiliteten är inte som förväntat
+### <a name="scenario-compliance-isnt-as-expected"></a>Scenario: Efterlevnad är inte som förväntat
 
 #### <a name="issue"></a>Problem
 
-En resurs är inte i ett _kompatibelt_ eller _inte kompatibelt_ utvärderings tillstånd som förväntas för resursen.
+En resurs är inte i utvärderingstillståndet Kompatibel eller Ej kompatibel som förväntas för resursen.  
 
 #### <a name="cause"></a>Orsak
 
-Resursen är inte i rätt omfattning för princip tilldelningen, eller så fungerar inte princip definitionen som tänkt.
+Resursen finns inte i rätt omfång för principtilldelningen, eller så fungerar principdefinitionen inte som den ska.
 
 #### <a name="resolution"></a>Lösning
 
-Så här felsöker du princip definitionen:
+Så här felsöker du principdefinitionen:
 
-1. Vänta i så fall hur lång tid det tar för en utvärdering att slutföra och att efterföljande resultat blir tillgängliga i Azure Portal eller SDK. 
+1. Vänta först lämplig tid tills utvärderingen har avslutats och kompatibilitetsresultaten blir tillgängliga i Azure Portal sdk. 
 
-1. Om du vill starta en ny utvärderings sökning med Azure PowerShell eller REST API, se [utvärderings genomsökning på begäran](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Se till att tilldelnings parametrarna och tilldelnings omfånget har angetts korrekt.
+1. Information om hur du startar en ny utvärderingsgenomsökning med Azure PowerShell eller REST API finns [i Utvärderingsgenomsökning på begäran.](../how-to/get-compliance-data.md#on-demand-evaluation-scan)
+1. Kontrollera att tilldelningsparametrarna och tilldelningsomfånget är korrekt inställda.
 1. Kontrollera [principdefinitionsläget](../concepts/definition-structure.md#mode):
-   - Läget bör vara `all` för alla resurs typer.
-   - Läget bör vara `indexed` om princip definitionen söker efter taggar eller platser.
-1. Kontrol lera att resursens omfattning inte är [utesluten](../concepts/assignment-structure.md#excluded-scopes) eller [undantagen](../concepts/exemption-structure.md).
-1. Om kompatibiliteten för en princip tilldelning visar `0/0` resurser, fastställdes inga resurser som är tillämpliga inom tilldelnings omfånget. Kontrol lera både princip definitionen och tilldelnings omfånget.
-1. En icke-kompatibel resurs som förväntades vara kompatibel finns i [avgöra orsaken till inkompatibiliteten](../how-to/determine-non-compliance.md). Jämförelsen av definitionen för det utvärderade egenskap svärdet indikerar varför en resurs inte var kompatibel.
-   - Om **målvärdet** är fel, ändra princip definitionen.
-   - Om det **aktuella värdet** är fel kontrollerar du resurs nytto lasten via `resources.azure.com` .
-1. Information om andra vanliga problem och lösningar finns i [Felsöka: tvångs åtgärd är inte som förväntat](#scenario-enforcement-not-as-expected).
+   - Läget ska vara för `all` alla resurstyper.
+   - Läget ska vara om `indexed` principdefinitionen söker efter taggar eller plats.
+1. Kontrollera att omfånget för resursen inte [undantas](../concepts/assignment-structure.md#excluded-scopes) eller [undantas.](../concepts/exemption-structure.md)
+1. Om efterlevnad för en principtilldelning `0/0` visar resurser, kunde inga resurser fastställas vara tillämpliga inom tilldelningsomfånget. Kontrollera både principdefinitionen och tilldelningsomfånget.
+1. För en icke-kompatibel resurs som förväntades vara kompatibel, se [fastställa orsakerna till inkompatibilitet](../how-to/determine-non-compliance.md). Jämförelsen av definitionen med det utvärderade egenskapsvärdet anger varför en resurs var inkompatibla.
+   - Om **målvärdet är** fel ändrar du principdefinitionen.
+   - Om det **aktuella värdet** är fel verifierar du resursnyttolasten via `resources.azure.com` .
+1. Information om andra vanliga problem och lösningar finns i [Felsöka: Framtvingande fungerar inte som förväntat.](#scenario-enforcement-not-as-expected)
 
-Om du fortfarande har problem med en duplicerad och anpassad inbyggd princip definition eller anpassad definition, skapar du ett support ärende under redigering av **en princip** för att dirigera problemet korrekt.
+Om du fortfarande har problem med din duplicerade och anpassade inbyggda principdefinition eller anpassade definition skapar du en supportbiljett **under** Redigera en princip för att dirigera problemet korrekt.
 
-### <a name="scenario-enforcement-not-as-expected"></a>Scenario: tvång inte som förväntat
+### <a name="scenario-enforcement-not-as-expected"></a>Scenario: Tillämpningen är inte som förväntat
 
 #### <a name="issue"></a>Problem
 
-En resurs som du förväntar dig Azure Policy att agera på är inte igång och det finns ingen post i [Azures aktivitets logg](../../../azure-monitor/essentials/platform-logs-overview.md).
+En resurs som du Azure Policy att agera på åtgärdas inte och det finns ingen post i [Azure-aktivitetsloggen](../../../azure-monitor/essentials/platform-logs-overview.md).
 
 #### <a name="cause"></a>Orsak
 
-Princip tilldelningen har kon figurer ATS för en [**enforcementMode**](../concepts/assignment-structure.md#enforcement-mode) -inställning som är _inaktive rad_.
-När **enforcementMode** är inaktive rad tillämpas inte princip påverkan och det finns ingen post i aktivitets loggen.
+Principtilldelningen har konfigurerats för en [**enforcementMode-inställning**](../concepts/assignment-structure.md#enforcement-mode) som är _Inaktiverad._
+När **enforcementMode** är inaktiverat tillämpas inte principeffekten och det finns ingen post i aktivitetsloggen.
 
 #### <a name="resolution"></a>Lösning
 
-Felsök din princip tilldelnings genomförande genom att göra följande:
+Felsök principtilldelningens tillämpning genom att göra följande:
 
-1. Vänta i så fall hur lång tid det tar för en utvärdering att slutföra och att efterföljande resultat blir tillgängliga i Azure Portal eller SDK. 
+1. Vänta först lämplig tid tills en utvärdering har avslutats och kompatibilitetsresultaten blir tillgängliga i Azure Portal eller SDK. 
 
-1. Om du vill starta en ny utvärderings sökning med Azure PowerShell eller REST API, se [utvärderings genomsökning på begäran](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Se till att tilldelnings parametrarna och tilldelnings omfånget är rätt inställda och att **enforcementMode** är _aktiverat_.
+1. Om du vill starta en ny utvärderingsgenomsökning med Azure PowerShell eller REST API, se [Utvärderingsgenomsökning på begäran.](../how-to/get-compliance-data.md#on-demand-evaluation-scan)
+1. Kontrollera att tilldelningsparametrarna och tilldelningsomfånget är korrekt inställda och att **enforcementMode** är _Aktiverat._
 1. Kontrollera [principdefinitionsläget](../concepts/definition-structure.md#mode):
-   - Läget bör vara `all` för alla resurs typer.
-   - Läget bör vara `indexed` om princip definitionen söker efter taggar eller platser.
-1. Kontrol lera att resursens omfattning inte är [utesluten](../concepts/assignment-structure.md#excluded-scopes) eller [undantagen](../concepts/exemption-structure.md).
-1. Kontrol lera att resurs nytto lasten matchar princip logiken. Detta kan göras genom att spara [en spårning för HTTP-arkiv (har)](../../../azure-portal/capture-browser-trace.md) eller granska Azure Resource Manager mallens egenskaper (arm-mall).
-1. Andra vanliga problem och lösningar finns i [Felsöka: kompatibiliteten är inte som förväntat](#scenario-compliance-isnt-as-expected).
+   - Läget ska vara för `all` alla resurstyper.
+   - Läget ska vara om `indexed` principdefinitionen söker efter taggar eller plats.
+1. Se till att resursens omfång inte [undantas](../concepts/assignment-structure.md#excluded-scopes) eller [undantas.](../concepts/exemption-structure.md)
+1. Kontrollera att resursnyttolasten matchar principlogiken. Detta kan göras genom att [samla in en HTTP-arkivspårning (HAR)](../../../azure-portal/capture-browser-trace.md) eller granska Azure Resource Manager (ARM-mall) egenskaper.
+1. Information om andra vanliga problem och lösningar finns [i Felsöka: Efterlevnad är inte som förväntat.](#scenario-compliance-isnt-as-expected)
 
-Om du fortfarande har problem med en duplicerad och anpassad inbyggd princip definition eller anpassad definition, skapar du ett support ärende under redigering av **en princip** för att dirigera problemet korrekt.
+Om du fortfarande har problem med din duplicerade och anpassade inbyggda principdefinition eller anpassade definition skapar du en supportbiljett **under** Redigera en princip för att dirigera problemet korrekt.
 
-### <a name="scenario-denied-by-azure-policy"></a>Scenario: nekas av Azure Policy
+### <a name="scenario-denied-by-azure-policy"></a>Scenario: Nekas av Azure Policy
 
 #### <a name="issue"></a>Problem
 
-Skapandet eller uppdateringen av en resurs nekas.
+Skapande eller uppdatering av en resurs nekas.
 
 #### <a name="cause"></a>Orsak
 
-En princip tilldelning till omfånget för din nya eller uppdaterade resurs uppfyller villkoren i en princip definition med en [neka](../concepts/effects.md#deny) -påverkan. Resurser som uppfyller dessa definitioner förhindras från att skapas eller uppdateras.
+En principtilldelning till omfånget för din nya eller uppdaterade resurs uppfyller kriterierna för en principdefinition med [en Neka-effekt.](../concepts/effects.md#deny) Resurser som uppfyller dessa definitioner förhindras från att skapas eller uppdateras.
 
 #### <a name="resolution"></a>Lösning
 
-Fel meddelandet från en princip tilldelning neka inkluderar princip definitionen och princip tilldelnings-ID: n. Om fel informationen i meddelandet saknas är det också tillgängligt i [aktivitets loggen](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Använd den här informationen om du vill ha mer information för att förstå resurs begränsningarna och justera resurs egenskaperna i din begäran om du vill matcha tillåtna värden.
+Felmeddelandet från en principtilldelning som nekar innehåller principdefinitionen och principtilldelnings-ID:erna. Om felinformationen i meddelandet missas är den också tillgänglig i [aktivitetsloggen](../../../azure-monitor/essentials/activity-log.md#view-the-activity-log). Använd den här informationen för att få mer information för att förstå resursbegränsningarna och justera resursegenskaperna i din begäran så att de matchar tillåtna värden.
 
-## <a name="template-errors"></a>Fel i mall
-
-### <a name="scenario-policy-supported-functions-processed-by-template"></a>Scenario: funktioner som stöds av principer som bearbetas av mall
+### <a name="scenario-definition-targets-multiple-resource-types"></a>Scenario: Definitionen riktar in sig på flera resurstyper
 
 #### <a name="issue"></a>Problem
 
-Azure Policy stöder ett antal funktioner och funktioner i ARM-mallar som endast är tillgängliga i en princip definition. Resource Manager bearbetar dessa funktioner som en del av en distribution i stället för som en del av en princip definition.
+En principdefinition som innehåller flera resurstyper misslyckas vid verifiering eller uppdatering med följande fel:
+
+```error
+The policy definition '{0}' targets multiple resource types, but the policy rule is authored in a way that makes the policy not applicable to the target resource types '{1}'.
+```
 
 #### <a name="cause"></a>Orsak
 
-Att använda funktioner som stöds, till exempel `parameter()` eller `resourceGroup()` , resulterar i det behandlade resultatet av funktionen vid distributions tiden i stället för att tillåta funktionen för princip definitionen och Azure policy motorn att bearbeta.
+Principdefinitionsregeln har ett eller flera villkor som inte utvärderas av målresurstyperna.
 
 #### <a name="resolution"></a>Lösning
 
-Om du vill skicka en funktion som en del av en princip definition kan du undanta hela strängen med `[` så att egenskapen ser ut som `[[resourceGroup().tags.myTag]` . Escape-tecken gör att Resource Manager hanterar värdet som en sträng när den bearbetar mallen. Azure Policy placerar sedan funktionen i princip definitionen, vilket gör att den kan vara dynamisk som förväntat. Mer information finns [i syntax och uttryck i Azure Resource Manager mallar](../../../azure-resource-manager/templates/template-expressions.md).
+Om ett alias används kontrollerar du att aliaset endast utvärderas mot den resurstyp som det tillhör genom att lägga till ett typvillkor före det. Ett alternativ är att dela upp principdefinitionen i flera definitioner för att undvika att rikta in flera resurstyper.
 
-## <a name="add-on-for-kubernetes-installation-errors"></a>Tillägg för Kubernetes-installations fel
+## <a name="template-errors"></a>Mallfel
 
-### <a name="scenario-installation-by-using-a-helm-chart-fails-because-of-a-password-error"></a>Scenario: installationen med hjälp av ett Helm-diagram Miss lyckas på grund av ett lösen ords fel
+### <a name="scenario-policy-supported-functions-processed-by-template"></a>Scenario: Funktioner som stöds av principen bearbetas av mallen
 
 #### <a name="issue"></a>Problem
 
-`helm install azure-policy-addon`Kommandot Miss lyckas och returnerar något av följande fel:
+Azure Policy stöder ett antal ARM-mallfunktioner och funktioner som endast är tillgängliga i en principdefinition. Resource Manager dessa funktioner som en del av en distribution i stället för som en del av en principdefinition.
+
+#### <a name="cause"></a>Orsak
+
+Om du använder funktioner som stöds, till exempel eller , resulterar det bearbetade resultatet av funktionen vid distributionen i stället för att funktionen för `parameter()` `resourceGroup()` principdefinitionen och Azure Policy-motorn kan bearbetas.
+
+#### <a name="resolution"></a>Lösning
+
+Om du vill skicka en funktion genom som en del av en principdefinition, så undvik hela strängen `[` med så att egenskapen ser ut som `[[resourceGroup().tags.myTag]` . Escape-tecknet gör Resource Manager att behandla värdet som en sträng när mallen bearbetar den. Azure Policy placerar sedan funktionen i principdefinitionen, vilket gör att den kan vara dynamisk som förväntat. Mer information finns i [Syntax och uttryck i Azure Resource Manager mallar](../../../azure-resource-manager/templates/template-expressions.md).
+
+## <a name="add-on-for-kubernetes-installation-errors"></a>Tillägg för Kubernetes-installationsfel
+
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-of-a-password-error"></a>Scenario: Installationen med hjälp av ett Helm-diagram misslyckas på grund av ett lösenordsfel
+
+#### <a name="issue"></a>Problem
+
+Kommandot `helm install azure-policy-addon` misslyckas och returnerar något av följande fel:
 
 - `!: event not found`
 - `Error: failed parsing --set data: key "<key>" has no value (cannot end with ,)`
 
 #### <a name="cause"></a>Orsak
 
-Det genererade lösen ordet innehåller ett kommatecken ( `,` ), vilket Helm-diagrammet delas på.
+Det genererade lösenordet innehåller ett kommatecken ( `,` ), som Helm-diagrammet delar upp sig på.
 
 #### <a name="resolution"></a>Lösning
 
-När du kör `helm install azure-policy-addon` kan du undanta kommatecken ( `,` ) i lösen ordet med ett omvänt snedstreck ( `\` ).
+När du kör `helm install azure-policy-addon` kan du escape-använda kommatecken ( `,` ) i lösenordsvärdet med ett omsnedstreck ( `\` ).
 
-### <a name="scenario-installation-by-using-a-helm-chart-fails-because-the-name-already-exists"></a>Scenario: installationen med hjälp av ett Helm-diagram Miss lyckas eftersom namnet redan finns
+### <a name="scenario-installation-by-using-a-helm-chart-fails-because-the-name-already-exists"></a>Scenario: Installationen med hjälp av ett Helm-diagram misslyckas eftersom namnet redan finns
 
 #### <a name="issue"></a>Problem
 
-`helm install azure-policy-addon`Kommandot Miss lyckas och följande fel returneras:
+Kommandot `helm install azure-policy-addon` misslyckas och returnerar följande fel:
 
 - `Error: cannot re-use a name that is still in use`
 
 #### <a name="cause"></a>Orsak
 
-Helm-diagrammet med namnet `azure-policy-addon` har redan installerats eller är delvis installerat.
+Helm-diagrammet med namnet har `azure-policy-addon` redan installerats eller delvis installerats.
 
 #### <a name="resolution"></a>Lösning
 
-Följ anvisningarna för att [ta bort Azure policy för Kubernetes-tillägget](../concepts/policy-for-kubernetes.md#remove-the-add-on)och kör sedan kommandot igen `helm install azure-policy-addon` .
+Följ instruktionerna för [att ta Azure Policy för Kubernetes-tillägget](../concepts/policy-for-kubernetes.md#remove-the-add-on)och kör sedan kommandot `helm install azure-policy-addon` igen.
 
-### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Scenario: användar tilldelningar för virtuella Azure-datorer ersätts av systemtilldelade hanterade identiteter
+### <a name="scenario-azure-virtual-machine-user-assigned-identities-are-replaced-by-system-assigned-managed-identities"></a>Scenario: Användar tilldelade identiteter för virtuella Azure-datorer ersätts med system tilldelade hanterade identiteter
 
 #### <a name="issue"></a>Problem
 
-När du har tilldelat initiativen för gäst konfigurations principer till gransknings inställningarna i en dator, tilldelas inte längre tilldelade hanterade identiteter som har tilldelats datorn. Endast en tilldelad hanterad identitet har tilldelats.
+När du har tilldelat gästkonfigurationsprincipinitiativ för att granska inställningar på en dator, tilldelas inte längre de användar tilldelade hanterade identiteterna som har tilldelats datorn. Endast en system tilldelad hanterad identitet tilldelas.
 
 #### <a name="cause"></a>Orsak
 
-Princip definitionerna som tidigare användes i DeployIfNotExists-definitioner för gäst konfiguration säkerställer att en tilldelad identitet tilldelas till datorn, men de tar också bort tilldelade identitets tilldelningar.
+Principdefinitionerna som tidigare användes i gästkonfigurationens DeployIfNotExists-definitioner säkerställde att en system tilldelad identitet har tilldelats till datorn, men de tog även bort de användartilldelningar som tilldelats användaren.
 
 #### <a name="resolution"></a>Lösning
 
-Definitionerna som tidigare orsakade det här problemet visas som _\[ föråldrade \]_ och de ersätts av princip definitioner som hanterar krav utan att användarens tilldelade hanterade identiteter tas bort. En manuell åtgärd krävs. Ta bort eventuella befintliga princip tilldelningar som är markerade som _\[ föråldrade \]_ och ersätt dem med det uppdaterade nödvändiga princip-initiativ och princip definitioner som har samma namn som originalet.
+Definitionerna som tidigare orsakade _\[ \]_ det här problemet visas som inaktuella och ersätts av principdefinitioner som hanterar krav utan att ta bort användar tilldelade hanterade identiteter. Det krävs ett manuellt steg. Ta bort alla befintliga principtilldelningar som har markerats _\[ \]_ som inaktuella och ersätt dem med det uppdaterade nödvändiga principinitiativ och principdefinitioner som har samma namn som originalet.
 
-En detaljerad beskrivning finns i blogg inlägget [viktig ändring som har publicerats för gransknings principer för gäst konfiguration](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
+En detaljerad berättelse finns i blogginlägget Important [change released for Guest Configuration audit policies](https://techcommunity.microsoft.com/t5/azure-governance-and-management/important-change-released-for-guest-configuration-audit-policies/ba-p/1655316).
 
-## <a name="add-on-for-kubernetes-general-errors"></a>Tillägg för Kubernetes allmänna fel
+## <a name="add-on-for-kubernetes-general-errors"></a>Tillägg för allmänna Kubernetes-fel
 
-### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-egress-restrictions"></a>Scenario: tillägget kan inte komma åt Azure Policy tjänstens slut punkt på grund av utgående begränsningar
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-egress-restrictions"></a>Scenario: Tillägget kan inte nå slutpunkten för Azure Policy på grund av begränsningar för utgående trafik
 
 #### <a name="issue"></a>Problem
 
-Tillägget kan inte komma åt Azure Policy tjänstens slut punkt och returnerar något av följande fel:
+Tillägget kan inte nå slutpunkten för Azure Policy och returnerar något av följande fel:
 
 - `failed to fetch token, service not reachable`
 - `Error getting file "Get https://raw.githubusercontent.com/Azure/azure-policy/master/built-in-references/Kubernetes/container-allowed-images/template.yaml: dial tcp 151.101.228.133.443: connect: connection refused`
@@ -209,34 +227,34 @@ Det här problemet uppstår när ett utgående kluster är låst.
 
 #### <a name="resolution"></a>Lösning
 
-Se till att de domäner och portar som anges i följande artiklar är öppna:
+Kontrollera att de domäner och portar som anges i följande artiklar är öppna:
 
-- [Nödvändiga utgående nätverks regler och fullständigt kvalificerade domän namn (FQDN) för AKS-kluster](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
-- [Installera Azure Policy-tillägget för Azure Arc-aktiverade Kubernetes (för hands version)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
+- [Obligatoriska regler för utgående nätverk och fullständigt kvalificerade domännamn (FQDN) för AKS-kluster](../../../aks/limit-egress-traffic.md#required-outbound-network-rules-and-fqdns-for-aks-clusters)
+- [Installera Azure Policy för kubernetes Azure Arc (förhandsversion)](../concepts/policy-for-kubernetes.md#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
 
-### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-the-aad-pod-identity-configuration"></a>Scenario: tillägget kan inte komma åt Azure Policy tjänstens slut punkt på grund av AAD-Pod-Identity-konfigurationen
+### <a name="scenario-the-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-because-of-the-aad-pod-identity-configuration"></a>Scenario: Tillägget kan inte nå slutpunkten för Azure Policy på grund av konfigurationen av aad-pod-identity
 
 #### <a name="issue"></a>Problem
 
-Tillägget kan inte komma åt Azure Policy tjänstens slut punkt och returnerar något av följande fel:
+Tillägget kan inte nå slutpunkten för Azure Policy och returnerar något av följande fel:
 
 - `azure.BearerAuthorizer#WithAuthorization: Failed to refresh the Token for request to https://gov-prod-policy-data.trafficmanager.net/checkDataPolicyCompliance?api-version=2019-01-01-preview: StatusCode=404`
 - `adal: Refresh request failed. Status Code = '404'. Response body: getting assigned identities for pod kube-system/azure-policy-8c785548f-r882p in CREATED state failed after 16 attempts, retry duration [5]s, error: <nil>`
 
 #### <a name="cause"></a>Orsak
 
-Felet uppstår när _Add-Pod-Identity_ är installerat i klustret och _Kube-_ poddar inte är exkluderat i _AAD-Pod-Identity_.
+Det här felet uppstår _när add-pod-identity_ installeras i klustret och _kube-system-poddarna_ inte exkluderas i _aad-pod-identity_.
 
-_AAD-Pod-Identity_ -nodens hanterade identitet (NMI) poddar ändra noderna program varan iptables för att avlyssna anrop till Azure instance metadata-slutpunkten. Den här inställningen innebär att alla begär Anden som görs till metadata-slutpunkten fångas upp av NMI, även om Pod inte använder _AAD-Pod-Identity_.
-_AzurePodIdentityException_ -CUSTOMRESOURCEDEFINITION (CRD) kan konfigureras för att informera _AAD-Pod-identiteten_ att förfrågningar till en slut punkt för metadata som kommer från en pod som matchar etiketterna som definierats i CRD ska vara proxy utan bearbetning i NMI.
+Komponenten _aad-pod-identity_ Hanterad identitet för noder (NMI) ändrar nodernas iptables för att fånga upp anrop till azure-instansens metadataslutpunkt. Den här konfigurationen innebär att alla förfrågningar som görs till metadataslutpunkten fångas upp av NMI, även om podden inte använder _aad-pod-identity_.
+_AzurePodIdentityException_ CustomResourceDefinition (CRD) kan konfigureras för att informera _aad-pod-identity_ om att alla begäranden till en metadataslutpunkt som kommer från en podd som matchar etiketterna som definierats i CRD ska ske med proxy utan någon bearbetning i NMI.
 
 #### <a name="resolution"></a>Lösning
 
-Undanta system-poddar som har `kubernetes.azure.com/managedby: aks` etiketten i _Kube-systemets_ namnrymd i _AAD-Pod-Identity_ genom att konfigurera _AzurePodIdentityException_ CRD.
+Undanta de systempoddar som har etiketten i `kubernetes.azure.com/managedby: aks` _namnområdet kube-system_ i _aad-pod-identity_ genom att konfigurera _CRD:en AzurePodIdentityException._
 
-Mer information finns i [inaktivera Azure Active Directory (Azure AD) Pod-identitet för en specifik Pod/tillämpning](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
+Mer information finns i [Inaktivera identiteten Azure Active Directory podd (Azure AD) för en specifik pod/program](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
 
-Följ det här exemplet om du vill konfigurera ett undantag:
+Om du vill konfigurera ett undantag följer du det här exemplet:
 
 ```yaml
 apiVersion: "aadpodidentity.k8s.io/v1"
@@ -259,11 +277,11 @@ spec:
     kubernetes.azure.com/managedby: aks
 ```
 
-### <a name="scenario-the-resource-provider-isnt-registered"></a>Scenario: resurs leverantören har inte registrerats
+### <a name="scenario-the-resource-provider-isnt-registered"></a>Scenario: Resursprovidern är inte registrerad
 
 #### <a name="issue"></a>Problem
 
-Tillägget kan komma åt Azure Policy tjänstens slut punkt, men tilläggs loggarna visar något av följande fel:
+Tillägget kan nå slutpunkten för Azure Policy-tjänsten, men tilläggsloggarna visar något av följande fel:
 
 - `The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
   https://aka.ms/policy-register-subscription for how to register subscriptions.`
@@ -274,32 +292,32 @@ Tillägget kan komma åt Azure Policy tjänstens slut punkt, men tilläggs logga
 
 #### <a name="cause"></a>Orsak
 
-Resurs leverantören "Microsoft. PolicyInsights" är inte registrerad. Det måste registreras för att tillägget ska kunna hämta princip definitioner och returnera efterlevnadsprinciper.
+Resursprovidern "Microsoft.PolicyInsights" är inte registrerad. Det måste vara registrerat för tillägget för att hämta principdefinitioner och returnera efterlevnadsdata.
 
 #### <a name="resolution"></a>Lösning
 
-Registrera resurs leverantören "Microsoft. PolicyInsights" i kluster prenumerationen. Instruktioner finns i [Registrera en resurs leverantör](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Registrera resursprovidern Microsoft.PolicyInsights i klusterprenumerationen. Anvisningar finns i Registrera [en resursprovider.](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
-### <a name="scenario-the-subscription-is-disabled"></a>Scenario: prenumerationen är inaktive rad
+### <a name="scenario-the-subscription-is-disabled"></a>Scenario: Prenumerationen är inaktiverad
 
 #### <a name="issue"></a>Problem
 
-Tillägget kan komma åt Azure Policy tjänstens slut punkt, men följande fel visas:
+Tillägget kan nå slutpunkten Azure Policy tjänst, men följande fel visas:
 
 `The subscription '{subId}' has been disabled for azure data-plane policy. Please contact support.`
 
 #### <a name="cause"></a>Orsak
 
-Det här felet innebär att prenumerationen har bedömts vara problematisk och funktions flaggan `Microsoft.PolicyInsights/DataPlaneBlocked` lades till för att blockera prenumerationen.
+Det här felet innebär att prenumerationen har fastställts vara problematisk och att funktionsflaggan `Microsoft.PolicyInsights/DataPlaneBlocked` har lagts till för att blockera prenumerationen.
 
 #### <a name="resolution"></a>Lösning
 
-[Kontakta funktions teamet](mailto:azuredg@microsoft.com)för att undersöka och lösa problemet.
+Kontakta funktionsteamet för att undersöka [och lösa problemet.](mailto:azuredg@microsoft.com)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om problemet inte visas i den här artikeln eller om du inte kan lösa det, kan du få support genom att besöka någon av följande kanaler:
+Om problemet inte finns med i den här artikeln eller om du inte kan lösa det kan du få support genom att besöka någon av följande kanaler:
 
 - Få svar från experter via [Microsoft Q&A](/answers/topics/azure-policy.html).
-- Anslut till [@AzureSupport](https://twitter.com/azuresupport) . Den här officiella Microsoft Azures resursen på Twitter hjälper till att förbättra kund upplevelsen genom att ansluta Azure-communityn till rätt svar, support och experter.
-- Om du fortfarande behöver hjälp går du till [Support webbplatsen för Azure](https://azure.microsoft.com/support/options/) och väljer **skicka en support förfrågan**.
+- Anslut med [@AzureSupport](https://twitter.com/azuresupport) . Den här Microsoft Azure resursen på Twitter hjälper till att förbättra kundupplevelsen genom att ansluta Azure-communityn till rätt svar, support och experter.
+- Om du fortfarande behöver hjälp går du till [Azure-supportwebbplatsen](https://azure.microsoft.com/support/options/) och väljer **Skicka en supportbegäran.**

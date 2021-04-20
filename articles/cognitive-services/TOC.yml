@@ -32,7 +32,7 @@
       items:
         - name: Containers
           items:
-            - name: Cognitive Services behållare
+            - name: Cognitive Services containrar
               href: cognitive-services-container-support.md
             - name: Taggar och viktig information för containeravbildningar
               href: ./containers/container-image-tags.md
@@ -72,7 +72,7 @@
           href: security-baseline.md
         - name: Säkerhetskontroller av Azure Policy
           href: ./security-controls-policy.md
-    - name: Använd med Big data
+    - name: Använda med stordata
       items:
         - name: Cognitive Services för stordata
           href: ./big-data/cognitive-services-for-big-data.md
@@ -135,7 +135,9 @@
       href: 'https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/'
     - name: Azure Government
       href: 'https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure'
-    - name: Videoklipp
+    - name: Video
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cognitive-services'
-    - name: Blogg
+    - name: Azure-bloggen
       href: 'https://azure.microsoft.com/blog/topics/cognitive-services/'
+    - name: Azure AI blogg
+      href: 'https://techcommunity.microsoft.com/t5/azure-ai/bg-p/AzureAIBlog'

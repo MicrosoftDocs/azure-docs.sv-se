@@ -1,60 +1,61 @@
 ---
 author: baanders
-description: inkludera fil för Azure Digitals dubbla gränser
+description: include file for Azure Digital Twins limits
 ms.service: digital-twins
 ms.topic: include
-ms.date: 6/9/2020
+ms.date: 4/8/2021
 ms.author: baanders
-ms.openlocfilehash: 4a69b2ff15fc4857e9fb292d2f753aa68ed875d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 34fec713c3764987f07bc7fb89ecb0a0d770a840
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100370125"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728032"
 ---
 ### <a name="functional-limits"></a>Funktionella gränser
 
-I följande tabell visas funktionella gränser för Azure Digital-dubbla. 
+I följande tabell visas funktionsgränserna för Azure Digital Twins. 
 
 > [!TIP]
-> För att utforma rekommendationer för att fungera inom dessa funktionella gränser, se [metod tips för att utforma modeller](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models).
+> Modelleringsrekommendationer för att arbeta inom dessa funktionella gränser finns [i Metodtips för att utforma modeller.](../articles/digital-twins/concepts-models.md#best-practices-for-designing-models)
 
 | Område | Funktion | Standardgräns | Justerbar? |
 | --- | --- | --- | --- |
-| Azure-resurs | Antal Azure Digitals dubbla instanser i en region, per prenumeration | 10 | Ja |
-| Digitala tvillingenheter | Antal dubbla i en digital Azure-instans | 200 000 | Ja |
-| Digitala tvillingenheter | Antal inkommande relationer till en enda | 5 000 | Inga |
-| Digitala tvillingenheter | Antal utgående relationer från en enda delad | 5 000 | Inga |
-| Digitala tvillingenheter | Maximal storlek (för JSON-innehåll i en begäran eller en PATCH-begäran) för en enskild | 32 KB | Inga |
-| Digitala tvillingenheter | Maximal nytto Last storlek för begäran | 32 KB | Inga | 
-| Routning | Antal slut punkter för en enskild Azure Digitals dubbla instans | 6 | Inga |
-| Routning | Antal vägar för en enda digital Azure-instans | 6 | Ja |
-| Modeller | Antal modeller inom en enskild Azure Digital-instans | 10 000 | Ja |
-| Modeller | Antal modeller som kan överföras i ett enda API-anrop | 250 | Inga |
-| Modeller | Maximal storlek (för JSON-innehåll i en begäran eller en PATCH-begäran) för en enskild modell | 1 MB | Inga |
-| Modeller | Antal objekt som har returnerats på en enda sida | 100 | Inga |
-| Fråga | Antal objekt som har returnerats på en enda sida | 100 | Ja |
-| Söka i data | Antal `AND`  /  `OR` uttryck i en fråga | 50 | Ja |
-| Söka i data | Antal mat ris objekt i en `IN`  /  `NOT IN` sats | 50 | Ja |
+| Azure-resurs | Antal Azure Digital Twins instanser i en region per prenumeration | 10 | Yes |
+| Digitala tvillingenheter | Antal tvillingar i en Azure Digital Twins instans | 200 000 | Yes |
+| Digitala tvillingenheter | Antal inkommande relationer till en enda tvilling | 5 000 | No |
+| Digitala tvillingenheter | Antal utgående relationer från en enda tvilling | 5 000 | No |
+| Digitala tvillingenheter | Maximal storlek (JSON-brödtext i en PUT- eller PATCH-begäran) för en enskild tvilling | 32 kB | No |
+| Digitala tvillingenheter | Maximal storlek för nyttolast för begäran | 32 kB | No | 
+| Routning | Antal slutpunkter för en enskild Azure Digital Twins instans | 6 | No |
+| Routning | Antal vägar för en enskild Azure Digital Twins instans | 6 | Yes |
+| Modeller | Antal modeller inom en enda Azure Digital Twins instans | 10 000 | Yes |
+| Modeller | Antal modeller som kan laddas upp i ett enda API-anrop | 250 | No |
+| Modeller | Maximal storlek (JSON-brödtext i en PUT- eller PATCH-begäran) för en enskild modell | 1 MB | No |
+| Modeller | Antal objekt som returneras på en enda sida | 100 | No |
+| Fråga | Antal objekt som returneras på en enda sida | 100 | Ja |
+| Söka i data | Antal uttryck `AND`  /  `OR` i en fråga | 50 | Ja |
+| Söka i data | Antal matrisobjekt i en `IN`  /  `NOT IN` -sats | 50 | Ja |
 | Söka i data | Antal tecken i en fråga | 8,000 | Ja |
-| Söka i data | Antal `JOINS` i en fråga | 5 | Ja |
+| Söka i data | Antal i `JOINS` en fråga | 5 | Yes |
 
 ### <a name="rate-limits"></a>Hastighetsbegränsningar
 
-Följande tabell visar frekvens gränserna för olika API: er.
+I följande tabell visas hastighetsbegränsningarna för olika API:er.
 
 | API | Funktion | Standardgräns | Justerbar? |
 | --- | --- | --- | --- |
-| Modell-API | Antal begär Anden per sekund | 100 | Ja |
-| Digitals dubbla API | Antal begär Anden per sekund | 2 000 | Ja |
-| Digitals dubbla API | Antal åtgärder för att skapa/ta bort per sekund i **alla dubbla och relationer** | 50 | Ja |
-| Digitals dubbla API | Antal åtgärder för att skapa/uppdatera/ta bort per sekund på en **enskild** eller dess relationer | 10 | Inga |
-| Fråge-API | Antal begär Anden per sekund | 500 | Ja |
-| Fråge-API | [Fråge enheter](../articles/digital-twins/concepts-query-units.md) per sekund | 4 000 | Ja |
-| API för händelse vägar | Antal begär Anden per sekund | 100 | Ja |
+| Modell-API | Antal begäranden per sekund | 100 | Yes |
+| Digital Twins API | Antal läsbegäranden per sekund | 1 000 | Yes |
+| Digital Twins API | Antal korrigeringsbegäranden per sekund | 1 000 | Yes |
+| Digital Twins API | Antal åtgärder för att skapa/ta bort per sekund **för alla tvillingar och relationer** | 50 | Yes |
+| Digital Twins API | Antal åtgärder för att skapa/uppdatera/ta bort per sekund på en **enskild tvilling** eller dess relationer | 10 | No |
+| Fråge-API | Antal begäranden per sekund | 500 | Yes |
+| Fråge-API | [Frågeenheter](../articles/digital-twins/concepts-query-units.md) per sekund | 4 000 | Yes |
+| API för händelsevägar | Antal begäranden per sekund | 100 | Yes |
 
 ### <a name="other-limits"></a>Andra gränser
 
-Gränser för data typer och fält i DTDL-dokument för Azure Digitals-modeller finns i Specifikations dokumentationen i GitHub: [*digital-DTDL Definition Language ()-version 2*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
+Begränsningar för datatyper och fält i DTDL-dokument för Azure Digital Twins-modeller finns i dess specifikationsdokumentation i GitHub: [*Digital Twins Definition Language (DTDL) – version 2.*](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md)
  
-Information om svars tid och andra begränsningar för frågor finns i [*anvisningar: fråga det dubbla diagrammet*](../articles/digital-twins/how-to-query-graph.md).
+Information om frågesvarstid och andra frågebegränsningar finns i Så här [*frågar du tvillingdiagrammet*](../articles/digital-twins/how-to-query-graph.md).

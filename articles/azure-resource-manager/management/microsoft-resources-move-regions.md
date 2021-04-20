@@ -1,24 +1,24 @@
 ---
-title: Flytta regioner för resurser i Microsoft. Resources
-description: Visa hur du flyttar resurser i namn området Microsoft. Resources till nya regioner.
+title: Flytta regioner för resurser i Microsoft.Resources
+description: Visa hur du flyttar resurser som finns i namnområdet Microsoft.Resources till nya regioner.
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: 098e5c36969da12966d793b6e1eddd4f79701ead
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 898e5efef22f76dc07395fcfcad413ef4582dafd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88951059"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725880"
 ---
-# <a name="move-microsoftresources-resources-to-new-region"></a>Flytta Microsoft. Resources-resurser till ny region
+# <a name="move-microsoftresources-resources-to-new-region"></a>Flytta Microsoft.Resources-resurser till en ny region
 
-Du kan behöva flytta en befintlig resurs till en ny region. Den här artikeln visar hur du flyttar två resurs typer – templateSpecs och deploymentScripts – som finns i namn området Microsoft. Resources.
+Du kan behöva flytta en befintlig resurs till en ny region. Den här artikeln visar hur du flyttar två resurstyper – templateSpecs och deploymentScripts – som finns i namnområdet Microsoft.Resources.
 
-## <a name="move-template-specs-to-new-region"></a>Flytta specifikationer för mall till ny region
+## <a name="move-template-specs-to-new-region"></a>Flytta mallspecifikter till en ny region
 
-Om du har en [mall-specifikation](../templates/template-specs.md) i en region och vill flytta den till en ny region kan du exportera mallen och distribuera den igen.
+Om du har en [mallspecifikitet](../templates/template-specs.md) i en region och vill flytta den till en ny region kan du exportera mallspecifikationen och distribuera den igen.
 
-1. Använd kommandot för att exportera en befintlig mall specifikation. För parameter värden anger du de värden som matchar den mall specifikation som du vill exportera.
+1. Använd kommandot för att exportera en befintlig mallspecifikt. För parametervärdena anger du de värden som matchar mallspecifikationen som du vill exportera.
 
    För Azure PowerShell använder du:
 
@@ -40,7 +40,7 @@ Om du har en [mall-specifikation](../templates/template-specs.md) i en region oc
      --output-folder c:\export
    ```
 
-1. Använd specifikationen exporterad mall för att skapa en ny mall-specifikation. I följande exempel visas `westus` för den nya regionen, men du kan ange den region som du vill använda.
+1. Använd den exporterade mallspecifikationen för att skapa en ny mallspecifikör. Följande exempel visas för `westus` den nya regionen, men du kan ange den region du vill ha.
 
    För Azure PowerShell använder du:
 
@@ -64,11 +64,11 @@ Om du har en [mall-specifikation](../templates/template-specs.md) i en region oc
      --template-file "c:\export\demoTemplateSpec.json"
    ```
 
-## <a name="move-deployment-scripts-to-new-region"></a>Flytta distributions skript till en ny region
+## <a name="move-deployment-scripts-to-new-region"></a>Flytta distributionsskript till en ny region
 
-1. Välj den resurs grupp som innehåller det distributions skript som du vill flytta till en ny region.
+1. Välj den resursgrupp som innehåller distributionsskriptet som du vill flytta till en ny region.
 
-1. [Exportera mallen](../templates/export-template-portal.md). När du exporterar väljer du distributions skriptet och eventuella andra nödvändiga resurser.
+1. [Exportera mallen](../templates/export-template-portal.md). När du exporterar väljer du distributionsskriptet och eventuella andra nödvändiga resurser.
 
 1. Ta bort följande egenskaper i den exporterade mallen:
 
@@ -76,21 +76,21 @@ Om du har en [mall-specifikation](../templates/template-specs.md) i en region oc
    * principalId
    * ClientID
 
-1. Den exporterade mallen har ett hårdkodad-värde för området för distributions skriptet.
+1. Den exporterade mallen har ett hårdkodat värde för regionen för distributionsskriptet.
 
    ```json
    "location": "westus2",
    ```
 
-   Ändra mallen så att den tillåter en parameter för att ange platsen. Mer information finns i [Ange resurs plats i arm-mallen](../templates/resource-location.md)
+   Ändra mallen så att en parameter tillåts för att ange platsen. Mer information finns i Ange [resursplats i ARM-mall](../templates/resource-location.md)
 
    ```json
    "location": "[parameters('location')]",
    ```
 
-1. [Distribuera den exporterade mallen](../templates/deploy-powershell.md) och ange en ny region för distributions skriptet.
+1. [Distribuera den exporterade mallen och](../templates/deploy-powershell.md) ange en ny region för distributionsskriptet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du flyttar resurser till en ny resurs grupp eller prenumeration finns i [Flytta resurser till en ny resurs grupp eller prenumeration](move-resource-group-and-subscription.md).
-* Information om hur du flyttar resurser till en ny region finns i [Flytta Azure-resurser mellan regioner](move-region.md).
+* Mer information om hur du flyttar resurser till en ny resursgrupp eller prenumeration finns i [Flytta resurser till en ny resursgrupp eller prenumeration.](move-resource-group-and-subscription.md)
+* Mer information om hur du flyttar resurser till en ny region finns [i Flytta resurser mellan regioner.](move-resources-overview.md#move-resources-across-regions)

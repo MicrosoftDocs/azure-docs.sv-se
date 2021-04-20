@@ -9,21 +9,23 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/09/2020
+ms.date: 04/19/2021
 ms.author: duau
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 42870c1a539916cde018667921d913b164fb6b20
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 18c77a2b4cbf61979a2ba085640a03c209e890e7
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537686"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727932"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-cli"></a>Snabbstart: Skapa en Traffic Manager för en webbapp med hög tillgänglig användning med Azure CLI
 
 I den här snabbstarten beskrivs hur du skapar en Traffic Manager-profil som ger hög tillgänglighet för din webbapp.
 
 I den här snabbstarten skapar du två instanser av en webbapp. Var och en av dem körs i olika Azure-regioner. Du skapar Traffic Manager-profil baserat på [slutpunktsprioritet](traffic-manager-routing-methods.md#priority-traffic-routing-method). Profilen dirigerar användartrafik till den primära plats som kör webbappen. Traffic Manager övervakar kontinuerligt webbappen. Om den primära platsen inte är tillgänglig ger den automatisk redundans till säkerhetskopieringsplatsen.
+
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="Diagram över Traffic Manager distributionsmiljö med CLI." border="false":::
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -177,7 +179,7 @@ I följande exempel ersätter du **<app1name_eastus>** **och<app2name_westeurope
 
 ### <a name="determine-the-dns-name"></a>Bestämma DNS-namnet
 
-Fastställ DNS-namnet på Traffic Manager med [az network traffic-manager profile show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show).
+Fastställ DNS-namnet för Traffic Manager med [az network traffic-manager profile show](/cli/azure/network/traffic-manager/profile#az-network-traffic-manager-profile-show).
 
 ```azurecli-interactive
 
@@ -191,7 +193,7 @@ az network traffic-manager profile show \
 Kopiera värdet **RelativeDnsName.** DNS-namnet för din Traffic Manager profil är *http://<* relativednsname *>.trafficmanager.net*. 
 
 ### <a name="view-traffic-manager-in-action"></a>Se hur Traffic Manager fungerar i praktiken
-1. I en webbläsare anger du DNS-namnet för din Traffic Manager-profil (*http://<* relativednsname *>.trafficmanager.net*) för att visa webbappens standardwebbplats.
+1. I en webbläsare anger du DNS-namnet på din Traffic Manager-profil (*http://<* relativednsname *>.trafficmanager.net*) för att visa webbappens standardwebbplats.
 
     > [!NOTE]
     > I det här snabbstartsscenariot dirigeras alla begäranden till den primära slutpunkten. Den är inställd på **Prioritet 1**.

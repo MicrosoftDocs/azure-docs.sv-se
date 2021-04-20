@@ -1,7 +1,7 @@
 ---
 title: Anropa API:t för textanalys
 titleSuffix: Azure Cognitive Services
-description: Den här artikeln förklarar hur du kan anropa Azure-Cognitive Services Textanalys REST API och Postman.
+description: Den här artikeln förklarar hur du kan anropa Azure Cognitive Services Textanalys REST API och Postman.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,97 +11,99 @@ ms.topic: conceptual
 ms.date: 03/01/2021
 ms.author: aahi
 ms.custom: references_regions
-ms.openlocfilehash: 00f9c6510a87770367472c0da6774b94034c6d72
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: 5790c7c62b9d97df9683773170301b6e09a47667
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107029785"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728490"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Så här anropar du Textanalys REST API
 
-I den här artikeln använder vi Textanalys REST API och [Postman](https://www.postman.com/downloads/) för att demonstrera viktiga begrepp. API: et tillhandahåller flera synkrona och asynkrona slut punkter för att använda funktionerna i tjänsten. 
+I den här artikeln använder vi Textanalys REST API [Postman för att](https://www.postman.com/downloads/) demonstrera viktiga begrepp. API:et tillhandahåller flera synkrona och asynkrona slutpunkter för att använda tjänstens funktioner. 
 
 ## <a name="create-a-text-analytics-resource"></a>Skapa en Textanalys resurs
 
 > [!NOTE]
-> * Du behöver en Textanalys-resurs som använder en standard [pris nivå](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) (S) om du vill använda- `/analyze` eller- `/health` slut punkterna. `/analyze`Slut punkten ingår i [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+> * Du behöver en Textanalys resurs med prisnivån [](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) Standard (S) om du vill använda `/analyze` `/health` slutpunkterna eller . Slutpunkten `/analyze` ingår i [din prisnivå.](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
 
-Innan du använder API för textanalys måste du skapa en Azure-resurs med en nyckel och slut punkt för dina program. 
+Innan du använder Textanalys API måste du skapa en Azure-resurs med en nyckel och slutpunkt för dina program. 
 
-1.  Börja med att gå till [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) och skapa en ny textanalys resurs, om du inte redan har en. Välj en [pris nivå](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/).
+1.  Gå först till [Azure Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) och skapa en Textanalys resurs, om du inte redan har en. Välj [en prisnivå.](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)
 
-2.  Välj den region som du vill använda för slut punkten.  Observera att `/analyze` och `/health` slut punkterna endast är tillgängliga i följande regioner: västra USA 2, östra USA 2, centrala USA, norra Europa och Västeuropa.
+2.  Välj den region som du vill använda för slutpunkten.  Observera att slutpunkterna och endast är tillgängliga i följande `/analyze` `/health` regioner: USA, västra 2, USA, östra 2, USA, centrala, Europa, norra och Europa, västra.
 
-3.  Skapa Textanalys resursen och gå till bladet "nycklar och slut punkt" till vänster på sidan. Kopiera nyckeln som ska användas senare när du anropar API: erna. Du lägger till detta senare som ett värde för `Ocp-Apim-Subscription-Key` sidhuvudet.
+3.  Skapa Textanalys resurs och gå till "nycklar och slutpunktsbladet" till vänster på sidan. Kopiera nyckeln som ska användas senare när du anropar API:erna. Du lägger till detta senare som ett värde för `Ocp-Apim-Subscription-Key` rubriken.
 
-4. Så här kontrollerar du antalet text poster som har skickats med din Textanalys-resurs:
+4. Så här kontrollerar du antalet textposter som har skickats med din Textanalys resurs:
 
-    1. Navigera till din Textanalys-resurs i Azure Portal. 
-    2. Klicka på **mått**, som finns under **övervakning** i den vänstra navigerings menyn. 
-    3. Välj *bearbetade text poster* i list rutan för **mått**.
+    1. Gå till Textanalys resurs i Azure Portal. 
+    2. Klicka **på Mått**, som finns under **Övervakning** i den vänstra navigeringsmenyn. 
+    3. Välj *Bearbetade textposter* i listrutan för **Mått.**
     
-En text post är 1000 tecken.
+En textpost är 1 000 tecken.
 
-## <a name="change-your-pricing-tier"></a>Ändra din pris nivå 
+## <a name="change-your-pricing-tier"></a>Ändra prisnivå 
 
-Om du har en befintlig Textanalys resurs med hjälp av pris nivån S0 till S4, bör du uppdatera den för att använda [pris nivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)standard (S). Pris nivåerna S0 till S4 kommer att dras tillbaka. Så här uppdaterar du din resurs priser:
+Om du har en Textanalys resurs som använder prisnivån S0 till S4 bör du uppdatera den så att den använder [prisnivån](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/)Standard (S). Prisnivåerna S0 till S4 dras tillbaka. Så här uppdaterar du resursens priser:
 
-1. Navigera till din Textanalys-resurs i [Azure Portal](https://portal.azure.com/).
-2. Välj **pris nivå** i den vänstra navigerings menyn. Den kommer att vara under **resurs hantering**. 
-3. Välj pris nivån standard (S). Klicka sedan på **Välj**.
+1. Gå till Textanalys resurs i [Azure Portal](https://portal.azure.com/).
+2. Välj **Prisnivå i** den vänstra navigeringsmenyn. Den kommer att vara under **RESURSHANTERING.** 
+3. Välj prisnivån Standard (S). Klicka sedan på **Välj**.
 
-Du kan också skapa en ny Textanalys resurs med pris nivån standard (S) och migrera dina program så att de använder autentiseringsuppgifterna för den nya resursen. 
+Du kan också skapa en Textanalys resurs med prisnivån Standard (S) och migrera dina program för att använda autentiseringsuppgifterna för den nya resursen. 
 
-## <a name="using-the-api-synchronously"></a>Använda API: et synkront
+## <a name="using-the-api-synchronously"></a>Använda API:et synkront
 
 Du kan anropa Textanalys synkront (för scenarier med låg latens). Du måste anropa varje API (funktion) separat när du använder synkront API. Om du behöver anropa flera funktioner kan du läsa avsnittet nedan om hur du anropar Textanalys asynkront. 
 
-## <a name="using-the-api-asynchronously"></a>Använda API asynkront
+## <a name="using-the-api-asynchronously"></a>Använda API:et asynkront
 
-Från och med v 3.1 – för hands version. 3 tillhandahåller API för textanalys två asynkrona slut punkter: 
+Från och med v3.1-preview.3 Textanalys API:et två asynkrona slutpunkter: 
 
-* Med `/analyze` slut punkten för textanalys kan du analysera samma uppsättning text dokument med flera text analys funktioner i ett API-anrop. Om du tidigare vill använda flera funktioner måste du göra separata API-anrop för varje åtgärd. Överväg den här funktionen när du behöver analysera stora uppsättningar med dokument med mer än en Textanalys-funktion.
+* Med slutpunkten för Textanalys kan du analysera samma `/analyze` uppsättning textdokument med flera textanalysfunktioner i ett API-anrop. För att kunna använda flera funktioner skulle du tidigare behöva göra separata API-anrop för varje åtgärd. Överväg den här funktionen när du behöver analysera stora uppsättningar dokument med mer än en Textanalys funktion.
 
-* `/health`Slut punkten för textanalys för hälsa, som kan extrahera och märka relevant medicinsk information från kliniska dokument.  
+* Slutpunkten `/health` för Textanalys för hälsotillstånd, som kan extrahera och märka relevant medicinsk information från medicinska dokument.  
 
-Se tabellen nedan för att se vilka funktioner som kan användas asynkront. Observera att endast några få funktioner kan anropas från `/analyze` slut punkten. 
+Observera att slutpunkterna /analyze och /health endast är tillgängliga i följande regioner: USA, västra 2, USA, östra 2, USA, centrala, Europa, norra och Europa, västra.
+
+Se tabellen nedan för att se vilka funktioner som kan användas asynkront. Observera att endast några få funktioner kan anropas från `/analyze` slutpunkten. 
 
 | Funktion | Synkront | Asynkrona |
 |--|--|--|
 | Språkidentifiering | ✔ |  |
 | Attitydanalys | ✔ |  |
-| Åsikts utvinning | ✔ |  |
+| Yttrandeutvinning | ✔ |  |
 | Extrahering av nyckelfraser | ✔ | ✔* |
-| Identifiering av namngiven entitet (inklusive PII och PHI) | ✔ | ✔* |
-| Länkning av entitet | ✔ | ✔* |
+| Igenkänning av namngiven entitet (inklusive PII och PHI) | ✔ | ✔* |
+| Entitetslänkning | ✔ | ✔* |
 | Textanalys för hälsa (container) | ✔ |  |
-| Textanalys för hälso tillstånd (API) |  | ✔  |
+| Textanalys för hälsa (API) |  | ✔  |
 
-`*` -Anropade asynkront via `/analyze` slut punkten.
+`*` – Anropas asynkront via `/analyze` slutpunkten.
 
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
 <a name="json-schema"></a>
 
-## <a name="api-request-formats"></a>Format för API-begäran
+## <a name="api-request-formats"></a>FORMAT för API-begäran
 
-Du kan skicka både synkrona och asynkrona anrop till API för textanalys.
+Du kan skicka både synkrona och asynkrona anrop till Textanalys API.
 
 #### <a name="synchronous"></a>[Synkront](#tab/synchronous)
 
-### <a name="synchronous-requests"></a>Synkrona begär Anden
+### <a name="synchronous-requests"></a>Synkrona begäranden
 
-Formatet för API-begäranden är detsamma för alla synkrona åtgärder. Dokument skickas i ett JSON-objekt som rå ostrukturerad text. XML stöds inte. JSON-schemat består av de element som beskrivs nedan.
+Formatet för API-begäranden är detsamma för alla synkrona åtgärder. Dokument skickas i ett JSON-objekt som ostrukturerad råtext. XML stöds inte. JSON-schemat består av elementen som beskrivs nedan.
 
 | Element | Giltiga värden | Obligatoriskt? | Användning |
 |---------|--------------|-----------|-------|
-|`id` |Data typen är sträng, men i dokument-ID: n är det vanligt vis heltal. | Obligatorisk | Systemet använder de ID: n som du anger för att strukturera utdata. Språk koder, nyckel fraser och sentiment resultat genereras för varje ID i begäran.|
-|`text` | Ostrukturerad rå text, upp till 5 120 tecken. | Obligatorisk | För språk identifiering kan text uttryckas på valfritt språk. För sentiment analys, extrahering av nyckel fraser och enhets identifiering måste texten vara på ett [språk som stöds](../language-support.md). |
-|`language` | 2 teckens [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kod för ett [språk som stöds](../language-support.md) | Det varierar | Krävs för sentiment-analys, extrahering av nyckel fraser och länkning av entiteter. valfritt för språk identifiering. Det finns inget fel om du exkluderar det, men analysen har minskats utan den. Språk koden ska motsvara den `text` du anger. |
+|`id` |Datatypen är sträng, men i praktiken brukar dokument-ID:erna vara heltal. | Obligatorisk | Systemet använder de -ID:er som du anger för att strukturera utdata. Språkkoder, nyckelfraser och sentimentpoäng genereras för varje ID i begäran.|
+|`text` | Ostrukturerad råtext, upp till 5 120 tecken. | Obligatorisk | För språkidentifiering kan text uttryckas på alla språk. För attitydanalys, extrahering av nyckelfraser och entitetsidentifiering måste texten finnas på ett [språk som stöds.](../language-support.md) |
+|`language` | ISO [639-1-kod](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) med två tecken för ett språk [som stöds](../language-support.md) | Det varierar | Krävs för attitydanalys, extrahering av nyckelfraser och entitetslänkning; valfritt för språkidentifiering. Det uppstår inget fel om du undantar det, men analysen har utelämnats utan det. Språkkoden ska motsvara den `text` du anger. |
 
-Följande är ett exempel på en API-begäran för synkrona Textanalys-slutpunkter. 
+Följande är ett exempel på en API-begäran för de synkrona Textanalys slutpunkterna. 
 
 ```json
 {
@@ -117,32 +119,32 @@ Följande är ett exempel på en API-begäran för synkrona Textanalys-slutpunkt
 
 #### <a name="asynchronous"></a>[Asynkrona](#tab/asynchronous)
 
-### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Asynkrona begär anden till `/analyze` slut punkten
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Asynkrona begäranden till `/analyze` slutpunkten
 
 > [!NOTE]
-> Den senaste för hands versionen av Textanalys klient biblioteket gör att du kan anropa asynkrona analys åtgärder med ett klient objekt. Du kan hitta exempel på GitHub:
+> I den senaste förhandsversionen av Textanalys klientbiblioteket kan du anropa Asynkrona analysåtgärder med hjälp av ett klientobjekt. Du hittar exempel på GitHub:
 * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
 * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
 * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
 
-Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som stöds som du vill använda i ett enda API-anrop. Den här slut punkten stöder för närvarande:
+Med `/analyze` slutpunkten kan du välja vilken av de funktioner Textanalys som du vill använda i ett enda API-anrop. Den här slutpunkten stöder för närvarande:
 
 * Extrahering av nyckelfraser 
-* Identifiering av namngiven entitet (inklusive PII och PHI)
+* Igenkänning av namngiven entitet (inklusive PII och PHI)
 * Entity Linking
 
 | Element | Giltiga värden | Obligatoriskt? | Användning |
 |---------|--------------|-----------|-------|
-|`displayName` | Sträng | Valfritt | Används som visnings namn för den unika identifieraren för jobbet.|
+|`displayName` | Sträng | Valfritt | Används som visningsnamn för jobbets unika identifierare.|
 |`analysisInput` | Innehåller `documents` fältet nedan | Obligatorisk | Innehåller informationen för de dokument som du vill skicka. |
-|`documents` | Innehåller `id` fälten och `text` nedan | Obligatorisk | Innehåller information för varje dokument som skickas och dokumentets rå text. |
-|`id` | Sträng | Obligatorisk | De ID: n som du anger används för att strukturera utdata. |
-|`text` | Ostrukturerad rå text, upp till 125 000 tecken. | Obligatorisk | Måste vara på det engelska språket, vilket är det enda språk som stöds för närvarande. |
-|`tasks` | Innehåller följande textanalys funktioner: `entityRecognitionTasks` , `entityLinkingTasks` , `keyPhraseExtractionTasks` eller `entityRecognitionPiiTasks` . | Obligatorisk | En eller flera av de Textanalys-funktioner som du vill använda. Observera att `entityRecognitionPiiTasks` har en valfri `domain` parameter som kan anges till `pii` eller `phi` och `pii-categories` för identifiering av valda entitetstyper. Om `domain` parametern inte anges används standardvärdet `pii` . |
-|`parameters` | Innehåller `model-version` fälten och `stringIndexType` nedan | Obligatorisk | Det här fältet ingår i ovanstående funktions uppgifter som du väljer. De innehåller information om modell versionen som du vill använda och index typen. |
-|`model-version` | Sträng | Obligatorisk | Ange vilken version av modellen som du vill använda.  |
-|`stringIndexType` | Sträng | Obligatorisk | Ange den text avkodare som matchar din programmerings miljö.  De typer som stöds är `textElement_v8` (standard), `unicodeCodePoint` , `utf16CodeUnit` . Mer information finns i [artikeln text förskjutning](../concepts/text-offsets.md#offsets-in-api-version-31-preview) .  |
-|`domain` | Sträng | Valfritt | Gäller endast för en parameter för `entityRecognitionPiiTasks` uppgiften och kan anges till `pii` eller `phi` . Den används som standard `pii` om inget värde anges.  |
+|`documents` | Innehåller `id` fälten `text` och nedan | Obligatorisk | Innehåller information för varje dokument som skickas och dokumentets råtext. |
+|`id` | Sträng | Obligatorisk | De-ID:er som du anger används för att strukturera utdata. |
+|`text` | Ostrukturerad råtext, upp till 125 000 tecken. | Obligatorisk | Måste vara på engelska, vilket är det enda språk som stöds för närvarande. |
+|`tasks` | Innehåller följande Textanalys funktioner: `entityRecognitionTasks` `entityLinkingTasks` , `keyPhraseExtractionTasks` eller `entityRecognitionPiiTasks` . | Obligatorisk | En eller flera av Textanalys som du vill använda. Observera att `entityRecognitionPiiTasks` har en valfri parameter som kan anges till eller och för identifiering av valda `domain` `pii` `phi` `pii-categories` entitetstyper. Om `domain` parametern är ospecificerad får systemet som standard `pii` . |
+|`parameters` | Innehåller fälten `model-version` `stringIndexType` och nedan | Obligatorisk | Det här fältet ingår i ovanstående funktionsaktiviteter som du väljer. De innehåller information om den modellversion som du vill använda och indextypen. |
+|`model-version` | Sträng | Obligatorisk | Ange vilken version av modellen som anropas som du vill använda.  |
+|`stringIndexType` | Sträng | Obligatorisk | Ange den textavkodare som matchar din programmeringsmiljö.  Typer som stöds `textElement_v8` är (standard), `unicodeCodePoint` , `utf16CodeUnit` . Mer information [finns i artikeln Om förskjutningar](../concepts/text-offsets.md#offsets-in-api-version-31-preview) av text.  |
+|`domain` | Sträng | Valfritt | Gäller endast som en parameter för `entityRecognitionPiiTasks` uppgiften och kan anges till eller `pii` `phi` . Standardvärdet är `pii` om det inte anges.  |
 
 ```json
 {
@@ -194,17 +196,17 @@ Med `/analyze` slut punkten kan du välja vilken av de textanalys funktioner som
 
 ```
 
-### <a name="asynchronous-requests-to-the-health-endpoint"></a>Asynkrona begär anden till `/health` slut punkten
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>Asynkrona begäranden till `/health` slutpunkten
 
-Formatet för API-begäranden till Textanalys för hälso värdbaserade API: er är detsamma som för dess behållare. Dokument skickas i ett JSON-objekt som rå ostrukturerad text. XML stöds inte. JSON-schemat består av de element som beskrivs nedan.  Fyll i och skicka [formuläret Cognitive Services begäran](https://aka.ms/csgate) för att begära åtkomst till textanalys för offentlig för hands version av hälso tillstånd. Du debiteras inte för Textanalys för hälso tillstånds användning. 
+Formatet för API-begäranden till Textanalys för hälso-värd-API är samma som för dess container. Dokument skickas i ett JSON-objekt som ostrukturerad råtext. XML stöds inte. JSON-schemat består av elementen som beskrivs nedan.  Fyll i och skicka formuläret [för Cognitive Services för att](https://aka.ms/csgate) begära åtkomst till Textanalys den offentliga hälsoförhandsvisningen. Du debiteras inte för Textanalys hälsoanvändning. 
 
 | Element | Giltiga värden | Obligatoriskt? | Användning |
 |---------|--------------|-----------|-------|
-|`id` |Data typen är sträng, men i dokument-ID: n är det vanligt vis heltal. | Obligatorisk | Systemet använder de ID: n som du anger för att strukturera utdata. |
-|`text` | Ostrukturerad rå text, upp till 5 120 tecken. | Obligatorisk | Observera att endast engelsk text stöds för närvarande. |
-|`language` | 2 teckens [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) -kod för ett [språk som stöds](../language-support.md) | Obligatorisk | `en`Stöds för närvarande inte. |
+|`id` |Datatypen är sträng, men i praktiken brukar dokument-ID:erna vara heltal. | Obligatorisk | Systemet använder de-ID:er som du anger för att strukturera utdata. |
+|`text` | Ostrukturerad råtext, upp till 5 120 tecken. | Obligatorisk | Observera att endast engelsk text stöds för närvarande. |
+|`language` | ISO [639-1-kod](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) med två tecken för ett språk [som stöds](../language-support.md) | Obligatorisk | Endast `en` stöds för närvarande. |
 
-Följande är ett exempel på en API-begäran för Textanalys för hälso slut punkter. 
+Följande är ett exempel på en API-begäran för Textanalys för hälsoslutpunkter. 
 
 ```json
 example.json
@@ -223,111 +225,111 @@ example.json
 ---
 
 >[!TIP]
-> Se artikeln [data och frekvens begränsningar](../concepts/data-limits.md) för information om priser och storleks gränser för att skicka Data till API för textanalys.
+> Se artikeln [Data- och hastighetsbegränsningar](../concepts/data-limits.md) för information om priser och storleksgränser för att skicka data till Textanalys-API:et.
 
 
 ## <a name="set-up-a-request"></a>Konfigurera en begäran 
 
-I Postman (eller något annat verktyg för webb-API-testning) lägger du till slut punkten för den funktion som du vill använda. Använd tabellen nedan för att hitta rätt slut punkts format och Ersätt `<your-text-analytics-resource>` med resurs slut punkten. Exempel:
+I Postman (eller något annat testverktyg för webb-API) lägger du till slutpunkten för den funktion som du vill använda. Använd tabellen nedan för att hitta rätt slutpunktsformat och ersätt `<your-text-analytics-resource>` med din resursslutpunkt. Exempel:
 
 `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.0/languages`
 
 #### <a name="synchronous"></a>[Synkront](#tab/synchronous)
 
-### <a name="endpoints-for-sending-synchronous-requests"></a>Slut punkter för att skicka synkrona begär Anden
+### <a name="endpoints-for-sending-synchronous-requests"></a>Slutpunkter för att skicka synkrona begäranden
 
-| Funktion | Typ av begäran | Resurs slut punkter |
+| Funktion | Typ av begäran | Resursslutpunkter |
 |--|--|--|
 | Språkidentifiering | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
 | Attitydanalys | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment` |
-| Åsikts utvinning | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
+| Yttrandeutvinning | POST | `<your-text-analytics-resource>/text/analytics/v3.0/sentiment?opinionMining=true` |
 | Extrahering av nyckelfraser | POST | `<your-text-analytics-resource>/text/analytics/v3.0/keyPhrases` |
 | Igenkänning av namngiven entitet – allmänt | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/general` |
-| Igenkänning av namngivna enheter – PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
-| Igenkänning av namngiven entitet – Fi | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
+| Igenkänning av namngiven entitet – PII | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
+| Igenkänning av namngiven entitet – PHI | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
 #### <a name="asynchronous"></a>[Asynkrona](#tab/asynchronous)
 
-### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Slut punkter för att skicka asynkrona begär anden till `/analyze` slut punkten
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Slutpunkter för att skicka asynkrona begäranden till `/analyze` slutpunkten
 
-| Funktion | Typ av begäran | Resurs slut punkter |
+| Funktion | Typ av begäran | Resursslutpunkter |
 |--|--|--|
-| Skicka analys jobb | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
-| Hämta analys status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
+| Skicka analysjobb | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze` |
+| Hämta analysstatus och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>` |
 
-### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Slut punkter för att skicka asynkrona begär anden till `/health` slut punkten
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Slutpunkter för att skicka asynkrona begäranden till `/health` slutpunkten
 
-| Funktion | Typ av begäran | Resurs slut punkter |
+| Funktion | Typ av begäran | Resursslutpunkter |
 |--|--|--|
-| Skicka Textanalys för hälso tillstånds jobb  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
-| Hämta jobb status och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
-| Avbryt jobb | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Skicka Textanalys för hälsojobb  | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs` |
+| Hämta jobbstatus och resultat | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
+| Avbryta jobb | DELETE | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.4/entities/health/jobs/<Operation-Location>` |
 
 --- 
 
-När du har slut punkten, i Postman (eller något annat verktyg för webb-API-testning):
+När du har din slutpunkt går du till Postman (eller något annat testverktyg för webb-API):
 
 1. Välj typ av begäran för den funktion som du vill använda.
-2. Klistra in i slut punkten för den korrekta åtgärd som du vill använda från tabellen ovan.
-3. Ange de tre begärandehuvuden:
+2. Klistra in slutpunkten för den åtgärd som du vill använda från tabellen ovan.
+3. Ange de tre begärandehuvudena:
 
-   + `Ocp-Apim-Subscription-Key`: din åtkomst nyckel, hämtas från Azure Portal
-   + `Content-Type`: Application/JSON
-   + `Accept`: Application/JSON
+   + `Ocp-Apim-Subscription-Key`: din åtkomstnyckel som hämtas från Azure Portal
+   + `Content-Type`: application/json
+   + `Accept`: application/json
 
-    Om du använder Postman bör din begäran se ut ungefär som på följande skärm, förutsatt att en `/keyPhrases` slut punkt används.
+    Om du använder Postman bör din begäran se ut ungefär som på följande skärmbild, förutsatt att det finns en `/keyPhrases` slutpunkt.
     
-    ![Skärm bild för begäran med slut punkt och sidhuvud](../media/postman-request-keyphrase-1.png)
+    ![Skärmbild av begäran med slutpunkter och rubriker](../media/postman-request-keyphrase-1.png)
     
-4. Välj **RAW** som **brödtext**
+4. Välj **rådata** som format för **brödtexten**
     
-    ![Skärm bild för begäran med inställningar för brödtext](../media/postman-request-body-raw.png)
+    ![Skärmbild av begäran med brödtextinställningar](../media/postman-request-body-raw.png)
 
-5. Klistra in vissa JSON-dokument i ett giltigt format. Använd exemplen i avsnittet **API Request format** ovan och mer information och exempel finns i avsnitten nedan:
+5. Klistra in vissa JSON-dokument i ett giltigt format. Använd exemplen i **avsnittet API-begärandeformat** ovan. Mer information och exempel finns i avsnitten nedan:
 
-      + [Språk identifiering](text-analytics-how-to-language-detection.md)
-      + [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md)
+      + [Språkidentifiering](text-analytics-how-to-language-detection.md)
+      + [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md)
       + [Attitydanalys](text-analytics-how-to-sentiment-analysis.md)
-      + [Enhets igenkänning](text-analytics-how-to-entity-linking.md)
+      + [Entitetsigenkänning](text-analytics-how-to-entity-linking.md)
 
 ## <a name="send-the-request"></a>Skicka begäran
 
-Skicka API-begäran. Om du har gjort anropet till en synkron slut punkt visas svaret omedelbart, som ett enda JSON-dokument med ett objekt för varje dokument-ID som anges i begäran.
+Skicka API-begäran. Om du gjorde anropet till en synkron slutpunkt visas svaret omedelbart, som ett enda JSON-dokument, med ett objekt för varje dokument-ID som anges i begäran.
 
-Om du har gjort anropet till asynkrona `/analyze` eller `/health` slut punkter kontrollerar du att du har fått en 202-svarskod. Du måste få svaret att visa resultaten:
+Om du gjorde anropet till de asynkrona slutpunkterna eller slutpunkterna kontrollerar du `/analyze` att du har fått en `/health` 202-svarskod. du måste få svaret för att visa resultatet:
 
-1. I API-svaret hittar du `Operation-Location` från-huvudet, som identifierar det jobb som du skickade till API: et. 
-2. Skapa en GET-begäran för den slut punkt som du använde. Se [tabellen ovan](#set-up-a-request) för slut punkts formatet och granska [API-referens dokumentationen](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus). Exempel:
+1. I API-svaret hittar du `Operation-Location` från -huvudet, som identifierar jobbet som du skickade till API:et. 
+2. Skapa en GET-begäran för den slutpunkt som du använde. Se tabellen ovan [för slutpunktsformatet](#set-up-a-request) och läs API-referensdokumentationen . [](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/AnalyzeStatus) Exempel:
 
     `https://my-resource.cognitiveservices.azure.com/text/analytics/v3.1-preview.4/analyze/jobs/<Operation-Location>`
 
-3. Lägg till i `Operation-Location` begäran.
+3. Lägg till `Operation-Location` i begäran.
 
-4. Svaret är ett enda JSON-dokument med ett objekt för varje dokument-ID som anges i begäran.
+4. Svaret blir ett enda JSON-dokument med ett objekt för varje dokument-ID som anges i begäran.
 
-Observera att `/analyze` `/health` resultaten från get-begäran i steg 2 är tillgängliga i 24 timmar från den tidpunkt då jobbet skapades.  Den här tiden anges av `expirationDateTime` värdet i get-svaret.  Efter den här tids perioden rensas resultatet och är inte längre tillgängligt för hämtning.    
+Observera att för både asynkrona åtgärder och åtgärder är resultaten från GET-begäran i steg 2 ovan tillgängliga i 24 timmar från det att `/analyze` `/health` jobbet skapades.  Den här gången anges av värdet `expirationDateTime` i GET-svaret.  Efter den här tidsperioden rensas resultaten och är inte längre tillgängliga för hämtning.    
 
-## <a name="example-api-responses"></a>Exempel-API-svar
+## <a name="example-api-responses"></a>Exempel på API-svar
  
 # <a name="synchronous"></a>[Synkront](#tab/synchronous)
 
-### <a name="example-responses-for-synchronous-operation"></a>Exempel svar för synkron åtgärd
+### <a name="example-responses-for-synchronous-operation"></a>Exempelsvar för synkron åtgärd
 
-Svaren på den synkrona slut punkten varierar beroende på vilken slut punkt du använder. Se följande artiklar för exempel svar.
+De synkrona slutpunktssvaren varierar beroende på vilken slutpunkt du använder. Se följande artiklar för exempelsvar.
 
-+ [Språk identifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
-+ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Språkidentifiering](text-analytics-how-to-language-detection.md#step-3-view-the-results)
++ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Attitydanalys](text-analytics-how-to-sentiment-analysis.md#view-the-results)
-+ [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
++ [Entitetsigenkänning](text-analytics-how-to-entity-linking.md#view-results)
 
 # <a name="asynchronous"></a>[Asynkrona](#tab/asynchronous)
 
-### <a name="example-responses-for-asynchronous-operations"></a>Exempel svar för asynkrona åtgärder
+### <a name="example-responses-for-asynchronous-operations"></a>Exempelsvar för asynkrona åtgärder
 
-Om det lyckas, kommer GET-begäran till `/analyze` slut punkten returnera ett objekt som innehåller de tilldelade aktiviteterna. Till exempel `keyPhraseExtractionTasks`. Dessa aktiviteter innehåller objektet Response från lämplig Textanalys funktion. Se följande artiklar för mer information.
+Om det lyckas returnerar GET-begäran `/analyze` till slutpunkten ett objekt som innehåller de tilldelade uppgifterna. Till exempel `keyPhraseExtractionTasks`. Dessa uppgifter innehåller svarsobjektet från lämplig Textanalys funktion. Mer information finns i följande artiklar.
 
-+ [Extrahering av nyckel fraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
-+ [Enhets igenkänning](text-analytics-how-to-entity-linking.md#view-results)
++ [Extrahering av nyckelfraser](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
++ [Entitetsigenkänning](text-analytics-how-to-entity-linking.md#view-results)
 + [Textanalys för hälsa](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
 
 --- 
@@ -337,5 +339,5 @@ Om det lyckas, kommer GET-begäran till `/analyze` slut punkten returnera ett ob
 * [Översikt över Textanalys](../overview.md)
 * [Vanliga frågor och svar (FAQ)](../text-analytics-resource-faq.md)</br>
 * [Produktsida för textanalys](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Använda klient biblioteket för Textanalys](../quickstarts/client-libraries-rest-api.md)
+* [Använda Textanalys klientbibliotek](../quickstarts/client-libraries-rest-api.md)
 * [Nyheter](../whats-new.md)

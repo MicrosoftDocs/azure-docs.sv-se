@@ -1,5 +1,5 @@
 ---
-title: Avvikelse detektor multivarierad Java Client library snabb start
+title: Avvikelseidentifiering snabbstart för Java-klientbibliotek med fleravarierade program
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,43 +8,45 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: eae4d00cd7b1a0ff90648086320135505a0d900a
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f2e227b2a589955191a2e602495cf0ffbb3f6d8b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316044"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732131"
 ---
-Kom igång med multivarierad klient bibliotek för avvikelse detektor för Java. Följ de här stegen för att installera paket starten med hjälp av algoritmerna som tillhandahålls av tjänsten. De nya API: erna för avvikelse identifiering i multivarierad gör det möjligt för utvecklare att enkelt integrera avancerad AI för att identifiera avvikelser från grupper av mått, utan att det behövs några kunskaper om Machine Learning eller märkta data. Beroenden och Inter-korrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. Detta hjälper dig att proaktivt skydda dina komplexa system från haverier.
+Kom igång med Avvikelseidentifiering flervarierat klientbibliotek för Java. Följ de här stegen för att installera paketet och börja använda de algoritmer som tillhandahålls av tjänsten. De nya API:erna för avvikelseidentifiering med flera variabler gör det möjligt för utvecklare att enkelt integrera avancerad AI för att identifiera avvikelser från grupper av mått, utan att behöva maskininlärningskunskaper eller märkta data. Beroenden och interkorrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. På så sätt kan du proaktivt skydda komplexa system mot fel.
 
-Använd klient biblioteket för avvikelse detektor multivarierad för Java för att:
+Använd Avvikelseidentifiering multivariate-klientbibliotek för Java för att:
 
-* Identifiera avvikelser på system nivå från en grupp tids serier.
-* När en enskild tid serie inte meddelar dig mycket och du måste titta på alla signaler för att identifiera ett problem.
-* Predicative-underhåll av dyra fysiska till gångar med flera till hundratals olika typer av sensorer som mäter olika aspekter av system hälsan.
+* Identifiera avvikelser på systemnivå från en grupp med tidsserier.
+* När en enskild tidsserie inte berättar så mycket och du måste titta på alla signaler för att identifiera ett problem.
+* Predikatiskt underhåll av dyra fysiska tillgångar med tiotals till hundratals olika typer av sensorer som mäter olika aspekter av systemets hälsa.
+
+[Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (Maven)](https://repo1.maven.org/maven2/com/azure/azure-ai-anomalydetector/3.0.0-beta.2/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
+* Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Java Development Kit (JDK)](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
-* [Gradle build-verktyget](https://gradle.org/install/)eller någon annan beroende hanterare.
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" skapar du en avvikelse detektor resurs "  target="_blank"> skapa en avvikelse </a> i den Azure Portal för att hämta nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API: t för avvikelse identifiering. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* [Gradle-byggverktyget](https://gradle.org/install/), eller någon annan beroendehanterare.
+* När du har din Azure-prenumeration skapar Avvikelseidentifiering en Avvikelseidentifiering resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. Vänta tills den har distribuerats och klicka **på knappen Gå till** resurs.
+    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Avvikelseidentifiering-API:et. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-gradle-project"></a>Skapa ett nytt Gradle-projekt
 
-I den här snabb starten används Gradle-beroende hanteraren. Du hittar mer information om klient bibliotek på den [centrala maven-lagringsplatsen](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor).
+I den här snabbstarten används Gradle-beroendehanteraren. Du hittar mer information om klientbibliotek på [Maven Central Repository.](https://search.maven.org/artifact/com.azure/azure-ai-metricsadvisor)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) skapar du en ny katalog för din app och navigerar till den. 
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) skapar du en ny katalog för din app och navigerar till den. 
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-Kör `gradle init` kommandot från din arbets katalog. Med det här kommandot skapas viktiga build-filer för Gradle, inklusive *build. Gradle. KTS* som används vid körning för att skapa och konfigurera ditt program.
+Kör `gradle init` kommandot från arbetskatalogen. Det här kommandot skapar viktiga byggfiler för Gradle, inklusive *build.gradle.kts* som används vid körning för att skapa och konfigurera ditt program.
 
 ```console
 gradle init --type basic
@@ -52,9 +54,9 @@ gradle init --type basic
 
 Välj en **DSL** när du uppmanas till det och välj **Kotlin**.
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket
+### <a name="install-the-client-library"></a>Installera klientbiblioteket
 
-Leta upp *build. gradle. KTS* och öppna den med önskad IDE-eller text redigerare. Kopiera sedan i den här build-konfigurationen. Se till att inkludera projekt beroenden.
+Leta *upp build.gradle.kts* och öppna det med önskad IDE eller textredigerare. Kopiera sedan den här byggkonfigurationen. Se till att inkludera projektberoendena.
 
 ```kotlin
 dependencies {
@@ -64,13 +66,13 @@ dependencies {
 
 ### <a name="create-a-java-file"></a>Skapa en Java-fil
 
-Skapa en mapp för din exempel App. Kör följande kommando från arbets katalogen:
+Skapa en mapp för exempelappen. Kör följande kommando från arbetskatalogen:
 
 ```console
 mkdir -p src/main/java
 ```
 
-Navigera till den nya mappen och skapa en fil med namnet *MetricsAdvisorQuickstarts. java*. Öppna det i önskat redigerings program eller IDE och Lägg till följande- `import` uttryck:
+Navigera till den nya mappen och skapa en fil med namnet *MetricsAdvisorQuickstarts.java*. Öppna den i önskat redigeringsprogram eller IDE och lägg till följande `import` -instruktioner:
 
 ```java
 package com.azure.ai.anomalydetector;
@@ -101,18 +103,18 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 ```
 
-Skapa variabler för resursens Azure-slutpunkt och nyckel. Skapa en annan variabel för exempel data filen.
+Skapa variabler för resursens Azure-slutpunkt och nyckel. Skapa en annan variabel för exempeldatafilen.
 
 ```java
 String key = "YOUR_API_KEY";
 String endpoint = "YOUR_ENDPOINT";
 ```
 
- För att kunna använda multivarierad-API: erna för avvikelse detektor måste vi träna vår egen modell innan identifieringen används. Data som används för utbildning är en batch över tids serier, varje gång serien ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tids serier ska vara zippade till en zip-fil och överföras till [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md). Som standard används fil namnet för att representera variabeln för tids serien. Alternativt kan en extra meta.jsi filen inkluderas i zip-filen om du vill att namnet på variabeln ska skilja sig från. zip-filens namn. När vi genererar [URL: en BLOB SAS (Shared Access Signatures)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL: en till zip-filen för utbildning.
+ Om du vill Avvikelseidentifiering flera api:er måste vi träna vår egen modell innan du använder identifiering. Data som används för träning är en batch med tidsserier. Varje tidsserie ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tidsserier ska vara komprimerade i en zip-fil och laddas upp till [Azure Blob Storage.](../../../../storage/blobs/storage-blobs-introduction.md) Som standard används filnamnet för att representera variabeln för tidsserien. Alternativt kan en extra meta.jspå filen inkluderas i zip-filen om du vill att namnet på variabeln ska vara ett annat än ZIP-filnamnet. När vi har [genererat blob-SAS-URL :en (signaturer för delad åtkomst)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL:en till ZIP-filen för träning.
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du gör följande med klient biblioteket för avvikelse detektor för Node.js:
+De här kodfragmenten visar hur du gör följande med Avvikelseidentifiering klientbibliotek för Node.js:
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Träna en modell](#train-a-model)
@@ -122,7 +124,7 @@ De här kodfragmenten visar hur du gör följande med klient biblioteket för av
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera ett `anomalyDetectorClient` objekt med din slut punkt och dina autentiseringsuppgifter.
+Instansiera ett `anomalyDetectorClient` objekt med din slutpunkt och dina autentiseringsuppgifter.
 
 ```java
 HttpHeaders headers = new HttpHeaders()
@@ -147,11 +149,11 @@ AnomalyDetectorClient anomalyDetectorClient = new AnomalyDetectorClientBuilder()
 
 ## <a name="train-a-model"></a>Träna en modell
 
-### <a name="construct-a-model-result-and-train-model"></a>Konstruera modell resultat och träna modeller
+### <a name="construct-a-model-result-and-train-model"></a>Skapa ett modellresultat och träna en modell
 
-Först måste vi konstruera en modell förfrågan. Kontrol lera att start-och slut tid stämmer med din data källa.
+Först måste vi skapa en modellbegäran. Se till att start- och sluttiden överensstämmer med datakällan.
 
- För att kunna använda multivarierad-API: erna för avvikelse detektor måste vi träna vår egen modell innan identifieringen används. Data som används för utbildning är en batch över tids serier, varje gång serien ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tids serier ska vara zippade till en zip-fil och överföras till [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs). Som standard används fil namnet för att representera variabeln för tids serien. Alternativt kan en extra meta.jsi filen inkluderas i zip-filen om du vill att namnet på variabeln ska skilja sig från. zip-filens namn. När vi genererar [URL: en BLOB SAS (Shared Access Signatures)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL: en till zip-filen för utbildning.
+ Om du vill Avvikelseidentifiering flera api:er måste vi träna vår egen modell innan du använder identifiering. Data som används för träning är en batch med tidsserier. Varje tidsserie ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tidsserier ska zippas upp i en zip-fil och laddas upp till [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs). Som standard används filnamnet för att representera variabeln för tidsserien. Alternativt kan en extra meta.jspå filen inkluderas i zip-filen om du vill att namnet på variabeln ska vara ett annat än ZIP-filnamnet. När vi har [genererat blob-SAS-URL :en (signaturer för delad åtkomst)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL:en till ZIP-filen för träning.
 
 ```java
 Path path = Paths.get("test-data.csv");
@@ -228,7 +230,7 @@ while (true) {
 
 ## <a name="export-model"></a>Exportera modell
 
-Använd för att exportera din tränade modell `exportModelWithResponse` .
+Om du vill exportera den tränade modellen använder du `exportModelWithResponse` .
 
 ```java
 StreamResponse response_export = anomalyDetectorClient.exportModelWithResponse(model_id, Context.NONE);
@@ -239,7 +241,7 @@ value.subscribe(s -> write(bw, s), (e) -> close(bw), () -> close(bw));
 
 ## <a name="delete-model"></a>Ta bort modell
 
-Använd funktionen för att ta bort en befintlig modell som är tillgänglig för den aktuella resursen `deleteMultivariateModelWithResponse` .
+Om du vill ta bort en befintlig modell som är tillgänglig för den aktuella resursen använder du `deleteMultivariateModelWithResponse` funktionen .
 
 ```java
 Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.deleteMultivariateModelWithResponse(model_id, Context.NONE);
@@ -247,7 +249,7 @@ Response<Void> deleteMultivariateModelWithResponse = anomalyDetectorClient.delet
 
 ## <a name="run-the-application"></a>Kör programmet
 
-Du kan bygga appen med:
+Du kan skapa appen med:
 
 ```console
 gradle build
@@ -262,4 +264,4 @@ gradle run
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Metod tips för multivarierad av avvikelse detektor](../../concepts/best-practices-multivariate.md)
+* [Avvikelseidentifiering metodtips med flera](../../concepts/best-practices-multivariate.md)

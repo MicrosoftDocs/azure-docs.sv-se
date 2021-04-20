@@ -1,113 +1,113 @@
 ---
 title: Parametrisera mappningsdataflöden
-description: Lär dig hur du Parameterisera ett mappnings data flöde från Data Factory-pipeliner
+description: Lär dig hur du parameteriserar ett mappningsdataflöde från datafabrikspipelines
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 564c7cf6e9627db08d543b964ce476e71bfb473d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/19/2021
+ms.openlocfilehash: 22c4fc0680d8666d8c2dfafb8829436e27cf1ebd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93040747"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725718"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Parametrisera mappningsdataflöden
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)] 
 
-Att mappa data flöden i Azure Data Factory stödja användning av parametrar. Definiera parametrar i data flödes definitionen och Använd dem i alla uttryck. Parametervärdena anges av anrops pipelinen via aktiviteten kör data flöde. Det finns tre alternativ för att ställa in värden i uttryck för data flödes aktivitet:
+Mappning av dataflöden i Azure Data Factory Azure Synapse Analytics stöder användning av parametrar. Definiera parametrar i dataflödesdefinitionen och använd dem i dina uttryck. Parametervärdena anges av den anropande pipelinen via aktiviteten Kör Dataflöde kör. Du har tre alternativ för att ange värden i dataflödesaktivitetsuttrycken:
 
-* Använd språket för flödes kontroll flödets uttryck för att ange ett dynamiskt värde
-* Använd data flödets uttrycks språk för att ange ett dynamiskt värde
-* Använd antingen uttrycks språk för att ange ett statiskt litteralt värde
+* Använda språket för pipelinekontrollflödesuttryck för att ange ett dynamiskt värde
+* Använda språket för dataflödesuttryck för att ange ett dynamiskt värde
+* Använd något av uttrycksspråken för att ange ett statiskt literalvärde
 
-Använd den här funktionen för att göra dina data flöden generella, flexibla och återanvändbara. Du kan Parameterisera data flödes inställningar och uttryck med dessa parametrar.
+Använd den här funktionen för att göra dina dataflöden generella, flexibla och återanvändbara. Du kan parametrisera dataflödesinställningar och uttryck med dessa parametrar.
 
-## <a name="create-parameters-in-a-mapping-data-flow"></a>Skapa parametrar i ett data flöde för mappning
+## <a name="create-parameters-in-a-mapping-data-flow"></a>Skapa parametrar i ett mappningsdataflöde
 
-Om du vill lägga till parametrar till ditt data flöde, klickar du på den tomma delen av data flödes arbets ytan för att se de allmänna egenskaperna. I fönstret inställningar visas en flik som heter **parameter**. Välj **ny** för att skapa en ny parameter. För varje parameter måste du tilldela ett namn, välja en typ och alternativt ange ett standardvärde.
+Om du vill lägga till parametrar i dataflödet klickar du på den tomma delen av dataflödesarbetsytan för att se de allmänna egenskaperna. I inställningsfönstret visas fliken **Parameter**. Välj **Ny** för att generera en ny parameter. För varje parameter måste du tilldela ett namn, välja en typ och eventuellt ange ett standardvärde.
 
-![Skapa data flödes parametrar](media/data-flow/create-params.png "Skapa data flödes parametrar")
+![Skapa Dataflöde parametrar](media/data-flow/create-params.png "Skapa Dataflöde parametrar")
 
-## <a name="use-parameters-in-a-mapping-data-flow"></a>Använda parametrar i ett data flöde för mappning 
+## <a name="use-parameters-in-a-mapping-data-flow"></a>Använda parametrar i ett mappningsdataflöde 
 
-Det går att referera till parametrar i ett data flödes uttryck. Parametrarna börjar med $ och är oföränderliga. Du hittar listan över tillgängliga parametrar inuti uttrycks verktyget under fliken **parametrar** .
+Parametrar kan refereras till i alla dataflödesuttryck. Parametrar börjar med $ och är oföränderliga. Du hittar listan över tillgängliga parametrar i Expression Builder under **fliken** Parametrar.
 
-![Skärm bild som visar de tillgängliga parametrarna på fliken parametrar.](media/data-flow/parameter-expression.png "Parameter uttryck för data flöde")
+![Skärmbild som visar tillgängliga parametrar på fliken Parametrar.](media/data-flow/parameter-expression.png "Uttryck för dataflödesparameter")
 
-Du kan snabbt lägga till ytterligare parametrar genom att välja **ny parameter** och ange namn och typ.
+Du kan snabbt lägga till ytterligare parametrar genom att **välja Ny parameter** och ange namn och typ.
 
-![Skärm bild som visar parametrarna på fliken parametrar med nya parametrar tillagda.](media/data-flow/new-parameter-expression.png "Parameter uttryck för data flöde")
+![Skärmbild som visar parametrarna på fliken Parametrar med nya parametrar tillagda.](media/data-flow/new-parameter-expression.png "Uttryck för dataflödesparameter")
 
-## <a name="assign-parameter-values-from-a-pipeline"></a>Tilldela parameter värden från en pipeline
+## <a name="assign-parameter-values-from-a-pipeline"></a>Tilldela parametervärden från en pipeline
 
-När du har skapat ett data flöde med parametrar kan du köra det från en pipeline med aktiviteten kör data flöde. När du har lagt till aktiviteten till din pipeline-arbetsyta visas de tillgängliga data flödes parametrarna på fliken **parametrar** i aktiviteten.
+När du har skapat ett dataflöde med parametrar kan du köra det från en pipeline med aktiviteten Kör Dataflöde körning. När du har lagt till aktiviteten på pipelinearbetsytan visas tillgängliga dataflödesparametrar på fliken Parametrar **för** aktiviteten.
 
-När du tilldelar parameter värden kan du använda antingen [uttrycks språket för pipelinen](control-flow-expression-language-functions.md) eller [data flödets uttrycks språk](data-flow-expression-functions.md) baserat på Spark-typer. Varje mappnings data flöde kan ha valfri kombination av parametrar för pipeline och data flödes uttryck.
+När du tilldelar parametervärden kan du använda antingen [språket för pipelineuttryck](control-flow-expression-language-functions.md) eller [dataflödesuttrycket baserat](data-flow-expression-functions.md) på Spark-typer. Varje mappningsdataflöde kan ha valfri kombination av parametrar för pipeline- och dataflödesuttryck.
 
-![Skärm bild som visar fliken parametrar med det data flödes uttryck som valts för värdet.](media/data-flow/parameter-assign.png "Ange en data flödes parameter")
+![Skärmbild som visar fliken Parametrar med Dataflöde valt för värdet för myparam.](media/data-flow/parameter-assign.png "Ange en Dataflöde parameter")
 
-### <a name="pipeline-expression-parameters"></a>Uttrycks parametrar för pipeline
+### <a name="pipeline-expression-parameters"></a>Parametrar för pipelineuttryck
 
-Med parametrarna för pipeline-uttryck kan du referera till systemvariabler, funktioner, pipeline-parametrar och variabler som liknar andra pipeline-aktiviteter. När du klickar på **pipeline-uttryck** öppnas ett sido navigerings läge där du kan ange ett uttryck med uttrycks verktyget.
+Med parametrar för pipelineuttryck kan du referera till systemvariabler, funktioner, pipelineparametrar och variabler som liknar andra pipeline-aktiviteter. När du klickar **på Pipeline-uttryck** öppnas ett sidnavigeringsnavigering där du kan ange ett uttryck med hjälp av uttrycksverktyget.
 
-![Skärm bild som visar fönstret uttrycks verktyg.](media/data-flow/parameter-pipeline.png "Ange en data flödes parameter")
+![Skärmbild som visar uttrycksverktygets fönster.](media/data-flow/parameter-pipeline.png "Ange en Dataflöde parameter")
 
-När det hänvisas till utvärderas pipeliniska parametrar och sedan används deras värde i data flödets uttrycks språk. Uttrycks typen för pipelinen behöver inte matcha data flödets parameter typ. 
+När du refererar till dem utvärderas pipelineparametrar och sedan används deras värde i uttrycksspråket för dataflöde. Pipelineuttryckstypen behöver inte matcha parametertypen för dataflödet. 
 
-#### <a name="string-literals-vs-expressions"></a>Sträng litteraler vs-uttryck
+#### <a name="string-literals-vs-expressions"></a>Stränglitteraler jämfört med uttryck
 
-När du tilldelar en uttrycks parameter för pipeline av typen sträng, läggs standard citat tecken till och värdet utvärderas som en literal. Om du vill läsa parameter värdet som ett data flödes uttryck, markerar du rutan uttryck bredvid parametern.
+När du tilldelar en parameter för pipelineuttryck av typen sträng läggs standardcitat till och värdet utvärderas som en literal. Om du vill läsa parametervärdet som ett dataflödesuttryck markerar du uttrycksrutan bredvid parametern .
 
-![Skärm bild som visar det uttryck för data flödes parametrar som valts för en parameter.](media/data-flow/string-parameter.png "Ange en data flödes parameter")
+![Skärmbild som visar fönstret DataflödesparametrarUttryck som valts för en parameter.](media/data-flow/string-parameter.png "Ange en Dataflöde parameter")
 
-Om data flödes parametern `stringParam` refererar till en pipeline-parameter med värde `upper(column1)` . 
+Om dataflödesparametern `stringParam` refererar till en pipelineparameter med värdet `upper(column1)` . 
 
-- Om uttrycket är markerat `$stringParam` utvärderas värdet för column1 alla versaler.
-- Om uttrycket inte är markerat (standard beteende)  `$stringParam` utvärderas till `'upper(column1)'`
+- Om uttrycket är markerat `$stringParam` utvärderas värdet för column1 med versaler.
+- Om uttrycket inte är markerat (standardbeteende)  `$stringParam` utvärderas till `'upper(column1)'`
 
-#### <a name="passing-in-timestamps"></a>Överför i tidsstämplar
+#### <a name="passing-in-timestamps"></a>Skicka in tidsstämplar
 
-I pipeline-uttryckets språk kan systemvariabler, till exempel `pipeline().TriggerTime` och funktioner som `utcNow()` returnerar tidsstämplar som strängar i formatet åååå-mm-dd \' T \' hh: mm: SS. SSSSSSZ'. Om du vill konvertera dessa till data flödes parametrar av typen timestamp, använder du String-interpolation för att inkludera önskad tidstämpel i en `toTimestamp()` funktion. Om du till exempel vill konvertera utlösnings tiden för pipelinen till en data flödes parameter kan du använda `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
+I språket för pipelineuttryck kan systemvariabler som och funktioner som returnera tidsstämplar som strängar i `pipeline().TriggerTime` `utcNow()` formatet "yyyy-MM-dd T HH:mm:ss" i formatet "yyyy-MM-dd \' T \' HH:mm:ss". SSSSSZ". Om du vill konvertera dessa till dataflödesparametrar av typen tidsstämpel använder du stränginterpolation för att inkludera önskad tidsstämpel i en `toTimestamp()` funktion. Om du till exempel vill konvertera pipelinens utlösartid till en dataflödesparameter kan du använda `toTimestamp(left('@{pipeline().TriggerTime}', 23), 'yyyy-MM-dd\'T\'HH:mm:ss.SSS')` . 
 
-![Skärm bild som visar fliken Parametrar där du kan ange en utlösnings tid.](media/data-flow/parameter-timestamp.png "Ange en data flödes parameter")
+![Skärmbild som visar fliken Parametrar där du kan ange en utlösartid.](media/data-flow/parameter-timestamp.png "Ange en Dataflöde parameter")
 
 > [!NOTE]
-> Data flöden kan bara stödja upp till 3 millisekunder. `left()`Funktionen används för att trimma ytterligare siffror.
+> Dataflöden har endast stöd för upp till 3 millisekunders siffror. Funktionen `left()` används för att trimma ytterligare siffror.
 
-#### <a name="pipeline-parameter-example"></a>Exempel på pipeline-parameter
+#### <a name="pipeline-parameter-example"></a>Exempel på pipelineparameter
 
-Anta att du har en heltals parameter `intParam` som refererar till en pipeline-parameter av typen sträng, `@pipeline.parameters.pipelineParam` . 
+Säg att du har en `intParam` heltalsparameter som refererar till en pipelineparameter av typen String, `@pipeline.parameters.pipelineParam` . 
 
-![Skärm bild som visar fliken parametrar med parametrar med namnet stringParam och intParam.](media/data-flow/parameter-pipeline-2.png "Ange en data flödes parameter")
+![Skärmbild som visar fliken Parametrar med parametrarna stringParam och intParam.](media/data-flow/parameter-pipeline-2.png "Ange en Dataflöde parameter")
 
 `@pipeline.parameters.pipelineParam` tilldelas värdet `abs(1)` vid körning.
 
-![Skärm bild som visar fliken parametrar med värdet för a b s (1) markerat.](media/data-flow/parameter-pipeline-4.png "Ange en data flödes parameter")
+![Skärmbild som visar fliken Parametrar med värdet för ett b:er (1) valt.](media/data-flow/parameter-pipeline-4.png "Ange en Dataflöde parameter")
 
-När `$intParam` refereras till i ett uttryck, till exempel en härledd kolumn, kommer det att utvärdera `abs(1)` RETUR `1` . 
+När `$intParam` refereras till i ett uttryck som en härledd kolumn utvärderas `abs(1)` returen `1` . 
 
-![Skärm bild som visar värdet för kolumner.](media/data-flow/parameter-pipeline-3.png "Ange en data flödes parameter")
+![Skärmbild som visar kolumnvärdet.](media/data-flow/parameter-pipeline-3.png "Ange en Dataflöde parameter")
 
-### <a name="data-flow-expression-parameters"></a>Uttrycks parametrar för data flöde
+### <a name="data-flow-expression-parameters"></a>Parametrar för dataflödesuttryck
 
-Genom att välja **data flödes uttryck** öppnas data flödets uttrycks verktyg. Du kommer att kunna referera till funktioner, andra parametrar och en definierad schema kolumn i hela data flödet. Det här uttrycket kommer att utvärderas som det är när det refereras.
+Om **du väljer Dataflödesuttryck** öppnas dataflödesuttrycksverktyget. Du kommer att kunna referera till funktioner, andra parametrar och alla definierade schemakolumner i dataflödet. Det här uttrycket utvärderas som det är när det refereras till.
 
 > [!NOTE]
-> Om du skickar ett ogiltigt uttryck eller en referens till en schema kolumn som inte finns i omvandlingen, kommer parametern att utvärderas till null.
+> Om du skickar ett ogiltigt uttryck eller refererar till en schemakolumn som inte finns i transformeringen utvärderas parametern till null.
 
 
-### <a name="passing-in-a-column-name-as-a-parameter"></a>Skicka in ett kolumn namn som en parameter
+### <a name="passing-in-a-column-name-as-a-parameter"></a>Skicka ett kolumnnamn som en parameter
 
-Ett vanligt mönster är att skicka in ett kolumn namn som ett parameter värde. Om kolumnen definieras i data flödes schemat kan du referera till den direkt som ett sträng uttryck. Om kolumnen inte är definierad i schemat använder du `byName()` funktionen. Kom ihåg att omvandla kolumnen till lämplig typ med en gjutning, till exempel `toString()` .
+Ett vanligt mönster är att skicka in ett kolumnnamn som ett parametervärde. Om kolumnen definieras i dataflödesschemat kan du referera till den direkt som ett stränguttryck. Om kolumnen inte har definierats i schemat använder du `byName()` funktionen . Kom ihåg att typutforma kolumnen med en typ av typ som `toString()` .
 
-Om du till exempel vill mappa en sträng kolumn baserat på en parameter `columnName` kan du lägga till en härledd kolumn omvandling som är lika med `toString(byName($columnName))` .
+Om du till exempel vill mappa en strängkolumn baserat på en parameter kan du lägga till en härledd `columnName` kolumnomvandling som är lika med `toString(byName($columnName))` .
 
-![Skicka in ett kolumn namn som en parameter](media/data-flow/parameterize-column-name.png "Skicka in ett kolumn namn som en parameter")
+![Skicka ett kolumnnamn som en parameter](media/data-flow/parameterize-column-name.png "Skicka ett kolumnnamn som en parameter")
 
 ## <a name="next-steps"></a>Nästa steg
-* [Kör data flödes aktivitet](control-flow-execute-data-flow-activity.md)
-* [Kontroll flödes uttryck](control-flow-expression-language-functions.md)
+* [Köra dataflödesaktivitet](control-flow-execute-data-flow-activity.md)
+* [Kontrollflödesuttryck](control-flow-expression-language-functions.md)

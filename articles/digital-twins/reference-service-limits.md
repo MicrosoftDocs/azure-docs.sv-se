@@ -4,24 +4,24 @@ titleSuffix: Azure Digital Twins
 description: Diagram som visar gränserna för Azure Digital Twins tjänsten.
 author: baanders
 ms.author: baanders
-ms.date: 05/05/2020
+ms.date: 04/08/2021
 ms.topic: article
 ms.service: digital-twins
-ms.openlocfilehash: 15c76bc042cb66dafbdeebac2951f5cb68310aa4
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 651922837b2193f7a8387c4dec6a1e20b84a41a5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482799"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728036"
 ---
 # <a name="azure-digital-twins-service-limits"></a>Azure Digital Twins tjänstbegränsningar
 
 Det här är tjänstbegränsningarna för Azure Digital Twins.
 
 > [!NOTE]
-> Vissa delar av den här tjänsten har justerbara gränser. Detta visas i tabellerna nedan med kolumnen *Justerbar?* När gränsen kan justeras är värdet *Justerbar?* *Ja.*
+> Vissa områden i den här tjänsten har justerbara gränser. Detta visas i tabellerna nedan med kolumnen *Justerbar?* När gränsen kan justeras är *värdet Justerbar?* *Ja.*
 >
-> Om ditt företag kräver att en justerbar gräns eller kvot höjs över standardgränsen kan du begära ytterligare resurser genom att [öppna en supportbegäran.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
+> Om ditt företag kräver att en justerbar gräns eller kvot höjs över standardgränsen kan du begära ytterligare resurser genom [att öppna ett supportbegäran.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)
 
 ## <a name="limits-by-type"></a>Begränsningar efter typ
 
@@ -31,9 +31,9 @@ Det här är tjänstbegränsningarna för Azure Digital Twins.
 
 När en gräns nås begränsar tjänsten ytterligare begäranden. Detta resulterar i ett 429-felsvar från dessa begäranden.
 
-Här är några rekommendationer för att arbeta med gränser för att hantera detta.
-* **Använd logik för omprövning.** [Sdk:erna Azure Digital Twins](how-to-use-apis-sdks.md) implementerar omprövningslogik för misslyckade begäranden, så om du arbetar med ett tillhandahållet SDK är detta redan inbyggt. I annat fall bör du överväga att implementera omprövningslogik i ditt eget program. Tjänsten skickar tillbaka ett huvud i felsvaret, som du kan använda för att avgöra hur lång tid det tar `Retry-After` att vänta innan du försöker igen.
-* **Använd tröskelvärden och meddelanden för att varna om att gränser närmar sig.** Några av tjänstgränserna för Azure Digital Twins har motsvarande [mått som kan](troubleshoot-metrics.md) användas för att spåra användning inom dessa områden. Information om hur du konfigurerar tröskelvärden och konfigurerar en avisering för ett mått när ett tröskelvärde närmar sig finns i anvisningarna i [*Felsökning: Konfigurera aviseringar*](troubleshoot-alerts.md). Överväg att implementera den här logiken i din egen programkod om du vill konfigurera meddelanden för andra gränser där mått inte tillhandahålls.
+Här är några rekommendationer för att arbeta med begränsningar för att hantera detta.
+* **Använd logik för omprövning.** [SDK:Azure Digital Twins](how-to-use-apis-sdks.md) implementerar omprövningslogik för misslyckade begäranden, så om du arbetar med ett tillhandahållet SDK är detta redan inbyggt. I annat fall bör du överväga att implementera logik för omprövning i ditt eget program. Tjänsten skickar tillbaka ett huvud i felsvaret, som du kan använda för att `Retry-After` avgöra hur lång tid som ska vänta innan du försöker igen.
+* **Använd tröskelvärden och meddelanden för att varna om närmar sig gränser.** Några av tjänstbegränsningarna för Azure Digital Twins har motsvarande [mått som](troubleshoot-metrics.md) kan användas för att spåra användning inom dessa områden. Information om hur du konfigurerar tröskelvärden och konfigurerar en avisering för alla mått när ett tröskelvärde närmar sig finns i anvisningarna i [*Felsökning: Konfigurera aviseringar.*](troubleshoot-alerts.md) Om du vill konfigurera meddelanden för andra gränser där mått inte tillhandahålls kan du implementera den här logiken i din egen programkod.
 
 ## <a name="next-steps"></a>Nästa steg
 

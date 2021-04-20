@@ -1,14 +1,14 @@
 ---
-title: 'Snabb start: läsa klient bibliotek eller REST API'
+title: 'Snabbstart: Läsa klientbibliotek eller REST API'
 titleSuffix: Azure Cognitive Services
-description: Lär dig hur du använder OCR (optisk tecken läsning) i ditt program via ett inbyggt klient bibliotek på valfritt språk.
+description: Lär dig hur du använder optisk teckenläsning (OCR) i ditt program via ett inbyggt klientbibliotek på det språk du väljer.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/21/2020
+ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -16,17 +16,17 @@ ms.custom:
 - devx-track-csharp
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
-keywords: dator vision, dator vision
-ms.openlocfilehash: 865002fbc9e492b43b9c572468f722c85c6cc4b8
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+keywords: tjänsten för datorseende, tjänsten för datorseende
+ms.openlocfilehash: bd6fcec1544e20c119018df2595cc27c8c368824
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106284822"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728270"
 ---
-# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Snabb start: Använd läsa klient bibliotek eller REST API
+# <a name="quickstart-use-the-read-client-library-or-rest-api"></a>Snabbstart: Använda klientbiblioteket För läsning eller REST API
 
-Kom igång med läsa REST API-eller klient bibliotek. Läs tjänsten innehåller AI-algoritmer för att extrahera synlig text från bilder och returnera den som strukturerad sträng. Följ de här stegen för att installera ett paket i programmet och prova exempel koden för grundläggande uppgifter.
+Kom igång med REST API eller klientbibliotek. Med tjänsten Läsa får du AI-algoritmer för att extrahera synlig text från bilder och returnera den som strukturerade strängar. Följ de här stegen för att installera ett paket i ditt program och prova exempelkoden för grundläggande uppgifter.
 
 
 

@@ -8,29 +8,29 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
-ms.openlocfilehash: 86cbd1e1d51af3a2f9a594e7e87a7896e70d6635
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 8bbb6033fd4045664a20df7e2b2c14b8a8837214
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758601"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725052"
 ---
 # <a name="whats-new-in-content-moderator"></a>Vad är nytt i Content Moderator
 
-Läs om vad som är nytt i tjänsten. Dessa objekt kan vara viktig för anteckningar, videor, blogg inlägg och andra typer av information. Skapa ett bok märke för den här sidan för att hålla dig uppdaterad med tjänsten.
+Lär dig vad som är nytt i tjänsten. Dessa objekt kan vara viktig information, videor, blogginlägg och andra typer av information. Bokmärk den här sidan för att hålla dig uppdaterad med tjänsten.
 
 ## <a name="august-2020"></a>Augusti 2020
 
-### <a name="new-video-moderation-ui"></a>Nytt gränssnitt för videos moderator
+### <a name="new-video-moderation-ui"></a>Nytt användargränssnitt för videomoderering
 
-* Sidan för gransknings verktygets video moderator har uppdaterats med många nya verktyg och funktioner för att under lätta taggning och bearbetning av videor och delar av videor. Mer information finns i [hand boken för videoinspelning](./video-moderation-human-review.md) .
+* Granskningsverktygets sida för videomoderering har uppdaterats med många nya verktyg och funktioner för att underlätta taggning och bearbetning av videor och delar av videor. Mer information [finns i videomodereringsguiden.](./video-moderation-human-review.md)
 
 ### <a name="new-dashboard"></a>Ny instrumentpanel
 
-* Instrument panelen för gransknings verktyget har uppdaterats för att visa mer information om öppna, väntande och slutförda granskningar. I [guiden granska verktyg](./Review-Tool-User-Guide/human-in-the-loop.md) finns en rundtur i de nya funktionerna.
+* Instrumentpanelen för granskningsverktyget har uppdaterats för att visa mer information om öppna, väntande och slutförda granskningar. I [granskningsverktygets guide](./Review-Tool-User-Guide/human-in-the-loop.md) får du en genomgång av de nya funktionerna.
 
 ## <a name="cognitive-services-updates"></a>Cognitive Services uppdateringar
 
-[Azure Update-meddelanden för Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)
+[Azure-uppdateringsmeddelanden för Cognitive Services](https://azure.microsoft.com/updates/?product=cognitive-services)

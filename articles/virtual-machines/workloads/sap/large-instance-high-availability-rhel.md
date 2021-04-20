@@ -3,25 +3,24 @@ title: Hög tillgänglighet för Azure Large Instances för SAP på RHEL
 description: Lär dig hur du automatiserar en SAP HANA databas redundans med hjälp av ett pacemakerkluster i Red Hat Enterprise Linux.
 author: jaawasth
 ms.author: jaawasth
-ms.service: virtual-machines-linux
-ms.subservice: workloads
+ms.service: virtual-machines-sap
 ms.topic: how-to
-ms.date: 02/08/2021
-ms.openlocfilehash: dc27fd67a3801815464ecd37fea567c02dee6e49
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.date: 04/19/2021
+ms.openlocfilehash: f7b6e6efbbd17655b4f68d79ac26ee34ae754a3b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719051"
+ms.locfileid: "107728454"
 ---
 # <a name="azure-large-instances-high-availability-for-sap-on-rhel"></a>Hög tillgänglighet för Azure Large Instances för SAP på RHEL
 
 > [!NOTE]
-> Den här artikeln innehåller referenser till termen *svartlistad*, en term som Microsoft inte längre använder. När den här termen tas bort från programvaran tar vi bort den från den här artikeln.
+> Den här artikeln innehåller referenser till termen *svartlista*, en term som Microsoft inte längre använder. När den här termen tas bort från programvaran tar vi bort den från den här artikeln.
 
 I den här artikeln får du lära dig hur du konfigurerar pacemakerklustret i RHEL 7.6 för att automatisera en SAP HANA databas redundans. Du måste ha en god förståelse för Linux, SAP HANA och Pacemaker för att slutföra stegen i den här guiden.
 
-Följande tabell innehåller de värdnamn som används i hela den här artikeln. Kodblocken i artikeln visar de kommandon som måste köras, samt utdata från dessa kommandon. Var noga med vilken nod som varje kommando refererar till.
+Följande tabell innehåller de värdnamn som används i den här artikeln. Kodblocken i artikeln visar de kommandon som måste köras, samt utdata från dessa kommandon. Var noga med vilken nod som refereras i varje kommando.
 
 | Typ | Värdnamn | Nod|
 |-------|-------------|------|
@@ -38,34 +37,24 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
     ```
     root@sollabdsm35 ~]# cat /etc/hosts
     27.0.0.1 localhost localhost.azlinux.com
-    0.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
-    0.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
-    0.20.251.150 sollabdsm36-st
-
+    10.60.0.35 sollabdsm35.azlinux.com sollabdsm35 node1
+    10.60.0.36 sollabdsm36.azlinux.com sollabdsm36 node2
+    10.20.251.150 sollabdsm36-st
     10.20.251.151 sollabdsm35-st
-
-    
-
     10.20.252.151 sollabdsm36-back
-
     10.20.252.150 sollabdsm35-back
-
-    
-
     10.20.253.151 sollabdsm36-node
-
     10.20.253.150 sollabdsm35-node
-
     ```
 
 2.  Skapa och byt ut SSH-nycklarna.
     1. Generera ssh-nycklar.
 
-       ```
+    ```
        [root@sollabdsm35 ~]# ssh-keygen -t rsa -b 1024
        [root@sollabdsm36 ~]# ssh-keygen -t rsa -b 1024
-       ```
-    2. Kopiera nycklar till de andra värdarna för lösenordslös SSH.
+    ```
+    2. Kopiera nycklar till de andra värdarna för lösenordslös ssh.
     
        ```
        [root@sollabdsm35 ~]# ssh-copy-id -i /root/.ssh/id_rsa.pub sollabdsm35
@@ -82,8 +71,6 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
 
     SELINUX=disabled
 
-    
-
     [root@sollabdsm36 ~]# vi /etc/selinux/config
 
     ...
@@ -97,8 +84,6 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
     [root@sollabdsm35 ~]# sestatus
 
     SELinux status: disabled
-
-    
 
     [root@sollabdsm36 ~]# sestatus
 
@@ -117,7 +102,7 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
         server 0.rhel.pool.ntp.org iburst
        ```
     
-    2. Aktivera kronotjänst. 
+    2. Aktivera kronologisk tjänst. 
       
         ```
         systemctl enable chronyd
@@ -133,8 +118,6 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
         Stratum : 3
     
         Ref time (UTC) : Thu Jan 28 18:46:10 2021
-    
-        
     
         chronyc sources
     
@@ -153,7 +136,7 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
 
 6. Uppdatera systemet
     1. Installera först de senaste uppdateringarna på systemet innan du börjar installera SBD-enheten.
-    1. Om du inte vill ha en fullständig uppdatering av systemet, även om det rekommenderas, uppdaterar du minst följande paket.
+    1. Om du inte vill ha en fullständig uppdatering av systemet, även om det rekommenderas, bör du minst uppdatera följande paket.
         1. `resource-agents-sap-hana`
         1. `selinux-policy`
         1. `iscsi-initiator-utils`
@@ -162,7 +145,6 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
         ```
         node1:~ # yum update
         ```
- 
 
 7. Installera lagringsplatsen SAP HANA RHEL-HA.
 
@@ -176,11 +158,11 @@ Innan du kan börja konfigurera klustret konfigurerar du SSH-nyckelutbyte för a
     ```
       
 
-8. Installera Pacemaker, SBD, OpenIPMI, ipmitools och fencing_sbd på alla noder.
+8. Installera pacemaker, SBD, OpenIPMI, ipmitool och fencing_sbd på alla noder.
 
     ``` 
     yum install pcs sbd fence-agent-sbd.x86_64 OpenIPMI
-    ipmitools
+    ipmitool
     ```
 
   ## <a name="configure-watchdog"></a>Konfigurera Watchdog
@@ -202,16 +184,13 @@ I det här avsnittet får du lära dig hur du konfigurerar Watchdog. I det här 
 
     Active: inactive (dead)
 
-    
-
     Nov 28 23:02:40 sollabdsm35 systemd[1]: Collecting watchdog.service
 
     ```
 
-2. Standardinställningen för Linux watchdog, som installeras under installationen, är iTCO watchdog som inte stöds av UCS- och HPE SDFlex-system. Därför måste den här watchdog vara inaktiverad.
+2. Standardinställningen för Linux Watchdog, som installeras under installationen, är iTCO watchdog som inte stöds av UCS- och HPE SDFlex-system. Därför måste den här watchdogen inaktiveras.
     1. Fel watchdog installeras och läses in i systemet:
        ```
-   
        sollabdsm35:~ # lsmod |grep iTCO
    
        iTCO_wdt 13480 0
@@ -226,9 +205,8 @@ I det här avsnittet får du lära dig hur du konfigurerar Watchdog. I det här 
        sollabdsm36:~ # modprobe -r iTCO_wdt iTCO_vendor_support
        ```  
         
-    3. För att se till att drivrutinen inte läses in vid nästa systemstart måste drivrutinen vara blockerad. Om du vill blockera iTCO-modulerna lägger du till följande i slutet av `50-blacklist.conf` filen:
+    3. Drivrutinen måste vara blockerad för att se till att drivrutinen inte läses in vid nästa systemstart. Om du vill blockera iTCO-modulerna lägger du till följande i slutet av `50-blacklist.conf` filen:
        ```
-   
        sollabdsm35:~ # vi /etc/modprobe.d/50-blacklist.conf
    
         unload the iTCO watchdog modules
@@ -243,7 +221,7 @@ I det här avsnittet får du lära dig hur du konfigurerar Watchdog. I det här 
        /etc/modprobe.d/50-blacklist.conf
        ```  
 
-    5. Testa om ipmi-tjänsten har startats. Det är viktigt att IPMI-timern inte körs. Timerhanteringen utförs från SBD-pacemakertjänsten.
+    5. Testa om IPMI-tjänsten har startats. Det är viktigt att IPMI-timern inte körs. Timerhanteringen utförs från SBD-pacemakertjänsten.
        ```
        sollabdsm35:~ # ipmitool mc watchdog get
    
@@ -263,11 +241,9 @@ I det här avsnittet får du lära dig hur du konfigurerar Watchdog. I det här 
    
        ``` 
 
-3. Som standard är den enhet som krävs /dev/watchdog skapas inte.
+3. Som standard är den enhet som krävs /dev/watchdog kommer inte att skapas.
 
     ```
-    No watchdog device was created
-
     sollabdsm35:~ # ls -l /dev/watchdog
 
     ls: cannot access /dev/watchdog: No such file or directory
@@ -332,10 +308,10 @@ I det här avsnittet får du lära dig hur du konfigurerar Watchdog. I det här 
 ## <a name="sbd-configuration"></a>SBD-konfiguration
 I det här avsnittet får du lära dig hur du konfigurerar SBD. I det här avsnittet används samma två värdar, `sollabdsm35` `sollabdsm36` och , som refereras till i början av den här artikeln.
 
-1.  Kontrollera att iSCSI- eller FC-disken är synlig på båda noderna. I det här exemplet används en FC-baserad SBD-enhet. Mer information om SBD-avstängning finns i [referensdokumentationen](http://www.linux-ha.org/wiki/SBD_Fencing).
+1.  Kontrollera att iSCSI- eller FC-disken är synlig på båda noderna. I det här exemplet används en FC-baserad SBD-enhet. Mer information om SBD-avstängning finns i [Designvägledning för RHEL-kluster med hög tillgänglighet – SBD-överväganden.](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Faccess.redhat.com%2Farticles%2F2941601&data=04%7C01%7Cralf.klahr%40microsoft.com%7Cd49d7a3e3871449cdecc08d8c77341f1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C637478645171139432%7CUnknown%7CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%3D%7C1000&sdata=c%2BUAC5gmgpFNWZCQFfiqcik8CH%2BmhH2ly5DsOV1%2FE5M%3D&reserved=0)
 2.  LUN-ID:t måste vara identiskt på alla noder.
   
-3.  Kontrollera multipath-status för SBD-enheten.
+3.  Kontrollera multipath-status för sbd-enheten.
     ```
     multipath -ll
     3600a098038304179392b4d6c6e2f4b62 dm-5 NETAPP ,LUN C-Mode
@@ -379,7 +355,7 @@ I det här avsnittet får du lära dig hur du konfigurerar SBD. I det här avsni
     scp /etc/sysconfig/sbd node2:/etc/sysconfig/sbd
     ```
 
-6.  Kontrollera att SBD-disken är synlig från båda noderna.
+6.  Kontrollera att SBD-disken visas från båda noderna.
     ```
     sbd -d /dev/mapper/3600a098038304179392b4d6c6e2f4b62 dump
 
@@ -402,18 +378,15 @@ I det här avsnittet får du lära dig hur du konfigurerar SBD. I det här avsni
 7.  Lägg till SBD-enheten i SBD-konfigurationsfilen.
 
     ```
-    \# SBD_DEVICE specifies the devices to use for exchanging sbd messages
-
-    \# and to monitor. If specifying more than one path, use ";" as
-
-    \# separator.
-
-    \#
+    # SBD_DEVICE specifies the devices to use for exchanging sbd messages
+    # and to monitor. If specifying more than one path, use ";" as
+    # separator.
+    #
 
     SBD_DEVICE="/dev/mapper/3600a098038304179392b4d6c6e2f4b62"
-    \## Type: yesno
+    ## Type: yesno
      Default: yes
-     \# Whether to enable the pacemaker integration.
+     # Whether to enable the pacemaker integration.
     SBD_PACEMAKER=yes
     ```
 
@@ -443,22 +416,16 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
     ```
     systemctl start pcsd
     ```
-  
-  
 
 5.  Kör endast klusterautentisering från node1.
 
     ```
     pcs cluster auth sollabdsm35 sollabdsm36
 
-
-
         Username: hacluster
 
             Password:
-
             sollabdsm35.localdomain: Authorized
-
             sollabdsm36.localdomain: Authorized
 
      ``` 
@@ -509,20 +476,16 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
 
 8. Om en nod inte ansluter till klustret kontrollerar du om brandväggen fortfarande körs.
 
-  
-
 9. Skapa och aktivera SBD-enheten
     ```
     pcs stonith create SBD fence_sbd devices=/dev/mapper/3600a098038303f4c467446447a
     ```
   
-
 10. Stoppa klustret och starta om klustertjänsterna (på alla noder).
 
     ```
     pcs cluster stop --all
     ```
-
 
 11. Starta om klustertjänsterna (på alla noder).
 
@@ -631,7 +594,7 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
 
     Present Countdown: 19 sec
 
-    [root@sollabdsm351 ~] lsof /dev/watchdog
+    [root@sollabdsm35 ~] lsof /dev/watchdog
 
     COMMAND PID USER FD TYPE DEVICE SIZE/OFF NODE NAME
 
@@ -660,7 +623,7 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
       set as panic_wdt_timeout in the /etc/sysconfig/ipmi config file.
       ```
   
-    * Det andra testet att köra är att lägga en nod i stängs med PCS-kommandon.
+    * Det andra testet att köra är att stängs av en nod med hjälp av PCS-kommandon.
 
       ```
       pcs stonith fence sollabdsm36
@@ -670,6 +633,7 @@ I det här avsnittet initierar du klustret. I det här avsnittet används samma 
 19. För resten av SAP HANA kan du inaktivera STONITH genom att ange:
 
    * pcs-egenskapsuppsättning `stonith-enabled=false`
+   * Det är ibland enklare att hålla STONITH inaktiverat under installationen av klustret, eftersom du undviker oväntade omstarter av systemet.
    * Den här parametern måste anges till true för produktiv användning. Om den här parametern inte är inställd på true stöds inte klustret.
    * pcs-egenskapsuppsättning `stonith-enabled=true`
 
@@ -693,7 +657,7 @@ Det finns två alternativ för att integrera HANA. Det första alternativet är 
    
        * su - hr2adm
    
-       * hdbsql -u system -p SAPhana10 -i 00 "select value from
+       * hdbsql -u system -p $YourPass -i 00 "select value from
        "SYS"."M_INIFILE_CONTENTS" where key='log_mode'"
    
        
@@ -702,9 +666,9 @@ Det finns två alternativ för att integrera HANA. Det första alternativet är 
    
        "normal"
        ```
-    2. SAP HANA systemreplikering fungerar bara när den första säkerhetskopieringen har utförts. Följande kommando skapar en första säkerhetskopia i `/tmp/` katalogen . Välj ett korrekt säkerhetskopieringsfilsystem för databasen. 
+    2. SAP HANA systemreplikering fungerar bara när den inledande säkerhetskopieringen har utförts. Följande kommando skapar en första säkerhetskopia i `/tmp/` katalogen . Välj ett korrekt säkerhetskopieringsfilsystem för databasen. 
        ```
-       * hdbsql -i 00 -u system -p SAPhana10 "BACKUP DATA USING FILE
+       * hdbsql -i 00 -u system -p $YourPass "BACKUP DATA USING FILE
        ('/tmp/backup')"
    
    
@@ -721,18 +685,14 @@ Det finns två alternativ för att integrera HANA. Det första alternativet är 
    
        -rw-r----- 1 hr2adm sapsys 1996496896 Oct 26 23:31 backup_databackup_3_1
    
-       ```
-    
+       ```  
 
-    3. Säkerhetskopiera alla databascontainrar för den här databasen.
-       ```
+    3. Säkerhetskopiera alla databascontainrar i den här databasen.
+       ``` 
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA USING
+       FILE ('/tmp/sydb')"     
    
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA USING
-       FILE ('/tmp/sydb')"
-   
-       
-   
-       * hdbsql -i 00 -u system -p SAPhana10 -d SYSTEMDB "BACKUP DATA FOR HR2
+       * hdbsql -i 00 -u system -p $YourPass -d SYSTEMDB "BACKUP DATA FOR HR2
        USING FILE ('/tmp/rh2')"
    
        ```
@@ -748,7 +708,7 @@ Det finns två alternativ för att integrera HANA. Det första alternativet är 
        done.
        ```
 
-    5. Kontrollera statusen för det primära systemet.
+    5. Kontrollera status för det primära systemet.
        ```
        hdbnsutil -sr_state
     
@@ -959,16 +919,16 @@ Det finns två alternativ för att integrera HANA. Det första alternativet är 
 
 #### <a name="log-replication-mode-description"></a>Beskrivning av loggreplikeringsläge
 
-Mer information om läget för loggreplikering finns i den [officiella SAP-dokumentationen.](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/c039a1a5b8824ecfa754b55e0caffc01.html)
+Mer information om loggreplikeringsläget finns i den officiella [SAP-dokumentationen.](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/627bd11e86c84ec2b9fcdf585d24011c.html)
   
 
 #### <a name="network-setup-for-hana-system-replication"></a>Nätverkskonfiguration för HANA-systemreplikering
 
 
-För att säkerställa att replikeringstrafiken använder rätt VLAN för replikeringen måste den konfigureras korrekt i `global.ini` . Om du hoppar över det här steget använder HANA Access VLAN för replikeringen, som kan vara oönskad.
+För att säkerställa att replikeringstrafiken använder rätt VLAN för replikeringen måste det konfigureras korrekt i `global.ini` . Om du hoppar över det här steget använder HANA access VLAN för replikeringen, som kan vara oönskad.
 
 
-I följande exempel visas värdnamnets lösningskonfiguration för systemreplikering till en sekundär plats. Tre olika nätverk kan identifieras:
+I följande exempel visas konfigurationen för värdnamnmatchning för systemreplikering till en sekundär plats. Tre olika nätverk kan identifieras:
 
 * Offentligt nätverk med adresser i intervallet 10.0.1.*
 
@@ -976,13 +936,13 @@ I följande exempel visas värdnamnets lösningskonfiguration för systemreplike
 
 * Dedikerat nätverk för systemreplikering: 10.5.1.*
 
-I det första exemplet har `[system_replication_communication]listeninterface` parametern angetts till och endast `.global` värdarna för den närliggande replikeringsplatsen har angetts.
+I det första exemplet har `[system_replication_communication]listeninterface` parametern angetts till och `.global` endast värdarna för den närliggande replikeringsplatsen anges.
 
 I följande exempel har `[system_replication_communication]listeninterface` parametern angetts till och `.internal` alla värdar för båda platserna har angetts.
 
   
 
-### <a name="source-sap-ag-sap-hana-hrs-networking"></a>Källan SAP AG SAP HANA HRS Networking
+Mer information finns i [Nätverkskonfiguration för SAP HANA systemreplikering.](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)
 
   
 
@@ -996,7 +956,7 @@ global.ini
 
 
 ## <a name="configure-sap-hana-in-a-pacemaker-cluster"></a>Konfigurera SAP HANA i ett Pacemaker-kluster
-I det här avsnittet får du lära dig hur du konfigurerar SAP HANA i ett pacemakerkluster. I det här avsnittet används samma två värdar, `sollabdsm35` `sollabdsm36` och , som refereras till i början av den här artikeln.
+I det här avsnittet får du lära dig hur du konfigurerar SAP HANA i ett Pacemaker-kluster. I det här avsnittet används samma två värdar, `sollabdsm35` `sollabdsm36` och , som refereras till i början av den här artikeln.
 
 Kontrollera att du har uppfyllt följande krav:  
 
@@ -1024,9 +984,8 @@ Kontrollera att du har uppfyllt följande krav:
     [root@node1 ~]# pcs resource defaults migration-threshold=5000
     ```
 2.  Konfigurerasync.
+    Mer information finns i Hur [konfigurerar jag mitt RHEL 7-kluster med hög tillgänglighet med pacemaker ochsync.](https://access.redhat.com/solutions/1293523)
     ```
-    https://access.redhat.com/solutions/1293523 --> quorum information RHEL7
-
     cat /etc/corosync/corosync.conf
 
     totem {
@@ -1090,71 +1049,60 @@ Kontrollera att du har uppfyllt följande krav:
     ```
   
 
-1.  Skapa klonad SAPHanaTopology-resurs.
-    ```
-    pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1 interleave=true
-    SAPHanaTopology resource is gathering status and configuration of SAP
-    HANA System Replication on each node. SAPHanaTopology requires
-    following attributes to be configured.
+3.  Skapa klonad SAPHanaTopology-resurs.
+    SAPHanaTopology-resursen samlar in status och konfiguration av SAP HANA systemreplikering på varje nod. SAPHanaTopology kräver att följande attribut konfigureras.
+       ```
+       pcs resource create SAPHanaTopology_HR2_00 SAPHanaTopology SID=HR2 InstanceNumber=00 --clone clone-max=2 clone-node-max=1    interleave=true
+       ```
 
+    | Attributnamn | Description  |
+    |---|---|
+    | SID | SAP System Identifier (SID) för SAP HANA installation. Måste vara samma för alla noder. |
+    | InstanceNumber | Tvåsiffrig SAP-instansidentifierare.|
 
-
-        Attribute Name Description
-
-        SID SAP System Identifier (SID) of SAP HANA installation. Must be
-    same for all nodes.
-
-    InstanceNumber 2-digit SAP Instance identifier.
-    pcs resource show SAPHanaTopology_HR2_00-clone
-
-    Clone: SAPHanaTopology_HR2_00-clone
-
+    * Resursstatus
+       ```
+       pcs resource show SAPHanaTopology_HR2_00
+   
+       InstanceNumber 2-digit SAP Instance identifier.
+       pcs resource show SAPHanaTopology_HR2_00-clone
+   
+       Clone: SAPHanaTopology_HR2_00-clone
+   
         Meta Attrs: clone-max=2 clone-node-max=1 interleave=true
-
+   
         Resource: SAPHanaTopology_HR2_00 (class=ocf provider=heartbeat
-    type=SAPHanaTopology)
-
+       type=SAPHanaTopology)
+   
         Attributes: InstanceNumber=00 SID=HR2
-
+   
         Operations: monitor interval=60 timeout=60
-    (SAPHanaTopology_HR2_00-monitor-interval-60)
-
+       (SAPHanaTopology_HR2_00-monitor-interval-60)
+   
         start interval=0s timeout=180
-    (SAPHanaTopology_HR2_00-start-interval-0s)
-
+       (SAPHanaTopology_HR2_00-start-interval-0s)
+   
         stop interval=0s timeout=60 (SAPHanaTopology_HR2_00-stop-interval-0s)
+   
+       ```
 
-    ```
+4.  Skapa primär/sekundär SAPHana-resurs.
+    * SAPHana-resursen ansvarar för att starta, stoppa och flytta SAP HANA databasen. Den här resursen måste köras som en primär/sekundär klusterresurs. Resursen har följande attribut.
 
-3.  Skapa primär/sekundär SAPHana-resurs.
-
-    ```
-    SAPHana resource is responsible for starting, stopping and relocating the SAP HANA database. This resource must be run as a Primary/    Secondary cluster resource. The resource has the following attributes.
-
-    
-
-    Attribute Name Required? Default value Description
-
-    SID Yes None SAP System Identifier (SID) of SAP HANA installation. Must be same for all nodes.
-
-    InstanceNumber Yes none 2-digit SAP Instance identifier.
-
-    PREFER_SITE_TAKEOVER
-
-    no yes Should cluster prefer to switchover to secondary instance instead of restarting primary locally? ("no": Do prefer restart locally;   "yes": Do prefer takeover to remote site)
-
-    AUTOMATED_REGISTER no false Should the former SAP HANA primary be registered as secondary after takeover and DUPLICATE_PRIMARY_TIMEOUT?     ("false": no, manual intervention will be needed; "true": yes, the former primary will be registered by resource agent as secondary)
-
-    DUPLICATE_PRIMARY_TIMEOUT no 7200 Time difference (in seconds) needed between primary time stamps, if a dual-primary situation occurs. If   the time difference is less than the time gap, then the cluster holds one or both instances in a "WAITING" status. This is to give an   admin a chance to react on a failover. A failed former primary will be registered after the time difference is passed. After this   registration to the new primary all data will be overwritten by the system replication.
-    ```
-  
+| Attributnamn            | Obligatoriskt? | Standardvärde | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+|---------------------------|-----------|---------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| SID                       | Yes       | Inget          | SAP System Identifier (SID) för SAP HANA installation. Måste vara samma för alla noder.                                                                                                                                                                                                                                                                                                                                                                                       |
+| InstanceNumber            | Yes       | inget          | 2-siffrig SAP-instansidentifierare.                                                                                                                                                                                                                                                                                                                                                                                                                                        |
+| PREFER_SITE_TAKEOVER      | nej        | ja           | Bör klustret föredra att växla över till en sekundär instans i stället för att starta om den primära lokalt? ("nej": Föredrar att starta om lokalt; "ja": Föredrar övertagande till fjärrplats)                                                                                                                                                                                                                                                                                            |
+|                           |           |               |                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| AUTOMATED_REGISTER        | nej        | FALSE         | Bör den tidigare SAP HANA vara registrerad som sekundär efter övertagande och DUPLICATE_PRIMARY_TIMEOUT? ("false": nej, manuella åtgärder krävs; "true": ja, den tidigare primära registreras av resursagenten som sekundär)                                                                                                                                                                                                                        |
+| DUPLICATE_PRIMARY_TIMEOUT | nej        | 7200          | Tidsskillnad (i sekunder) som behövs mellan primära tidsstämplar, om en dubbel primär situation inträffar. Om tidsskillnaden är mindre än tidsskillnaden har klustret en eller båda instanserna statusen "VÄNTAR". Det här är för att ge en administratör möjlighet att reagera på en redundans. En tidigare misslyckad primär registreras när tidsskillnaden har passerat. Efter den här registreringen till den nya primära, skrivs alla data över av systemreplikeringen. |
 
 5.  Skapa HANA-resursen.
     ```
     pcs resource create SAPHana_HR2_00 SAPHana SID=HR2 InstanceNumber=00 PREFER_SITE_TAKEOVER=true DUPLICATE_PRIMARY_TIMEOUT=7200   AUTOMATED_REGISTER=true primary notify=true clone-max=2 clone-node-max=1 interleave=true
 
     pcs resource show SAPHana_HR2_00-primary
-
 
 
     Primary: SAPHana_HR2_00-primary
@@ -1251,11 +1199,9 @@ Kontrollera att du har uppfyllt följande krav:
     + primary-SAPHana_HR2_00 : 100
     ```
 
-6.  Skapa en virtuell IP-adressresurs.
-
+6.  Skapa en resurs för virtuell IP-adress.
+    Klustret innehåller en virtuell IP-adress för att nå den primära instansen av SAP HANA. Nedan visas exempelkommandot för att skapa en IPaddr2-resurs med IP-adressen 10.7.0.84/24.
     ```
-    Cluster will contain Virtual IP address in order to reach the Primary instance of SAP HANA. Below is example command to create IPaddr2  resource with IP 10.7.0.84/24
-
     pcs resource create vip_HR2_00 IPaddr2 ip="10.7.0.84"
     pcs resource show vip_HR2_00
 
@@ -1272,13 +1218,11 @@ Kontrollera att du har uppfyllt följande krav:
     ```
 
 7.  Skapa begränsningar.
-
-    ```
-    For correct operation we need to ensure that SAPHanaTopology resources are started before starting the SAPHana resources and also that  the virtual IP address is present on the node where the Primary resource of SAPHana is running. To achieve this, the following 2    constraints need to be created.
-
-    pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
-    pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
-    ```
+    * För att åtgärden ska fungera korrekt måste vi se till att SAPHanaTopology-resurser startas innan du startar SAPHana-resurserna och att den virtuella IP-adressen finns på noden där den primära resursen för SAPHana körs. För att uppnå detta måste följande två begränsningar skapas.
+       ```
+       pcs constraint order SAPHanaTopology_HR2_00-clone then SAPHana_HR2_00-primary symmetrical=false
+       pcs constraint colocation add vip_HR2_00 with primary SAPHana_HR2_00-primary 2000
+       ```
 
 ###  <a name="testing-the-manual-move-of-saphana-resource-to-another-node"></a>Testa den manuella flytten av SAPHana-resursen till en annan nod
 
@@ -1325,7 +1269,7 @@ Node Attributes:
   * nedgraderad värd:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.82
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.82
 
     result:
 
@@ -1336,7 +1280,7 @@ Node Attributes:
   * Uppflyttad värd:
 
     ```
-    hdbsql -i 00 -u system -p SAPhana10 -n 10.7.0.84
+    hdbsql -i 00 -u system -p $YourPass -n 10.7.0.84
     
     Welcome to the SAP HANA Database interactive terminal.
     
@@ -1360,20 +1304,17 @@ Node Attributes:
 Med alternativet `AUTOMATED_REGISTER=false` kan du inte växla fram och tillbaka.
 
 Om det här alternativet är inställt på false måste du omregistrera noden:
-
-  
 ```
 hdbnsutil -sr_register --remoteHost=node2 --remoteInstance=00 --replicationMode=syncmem --name=DC1
 ```
-  
 
 Nu fungerar node2, som var den primära, som den sekundära värden.
 
 Överväg att ange det här alternativet till sant för att automatisera registreringen av den nedgraderade värden.
-
   
 ```
 pcs resource update SAPHana_HR2_00-primary AUTOMATED_REGISTER=true
-
 pcs cluster node clear node1
 ```
+
+Om du föredrar automatisk registrering beror på kundscenariot. Det blir enklare för driftteamet att automatiskt registrera om noden efter ett övertagande. Men du kanske vill registrera noden manuellt för att först köra ytterligare tester för att se till att allt fungerar som förväntat.

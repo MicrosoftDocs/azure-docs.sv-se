@@ -9,12 +9,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 72f4ac8df39b9511fd98a1dd5a3eca76e11e34bf
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 158eed6d287fa384023defbb20a7a1c39ea3d838
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535152"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728598"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Snabbstart: Skapa ett Azure Purview-konto i Azure Portal
 
@@ -31,7 +31,7 @@ I den här snabbstarten skapar du ett Azure Purview-konto.
 
 * Ditt konto måste ha behörighet att skapa resurser i prenumerationen
 
-* Om du har **Azure Policy** blockera alla program från att skapa **lagringskonto** och **EventHub-namnrymd** måste du göra principfel med hjälp av taggen , som kan anges när du skapar ett Purview-konto. Huvudorsaken är att för varje Purview-konto som skapas måste det skapa en hanterad resursgrupp och i den här resursgruppen ett lagringskonto och ett EventHub-namnområde.
+* Om du har **Azure Policy** blockera alla program från att skapa **lagringskonto** och **EventHub-namnområde** måste du göra ett principfel med hjälp av taggen , som kan anges när du skapar ett Purview-konto. Huvudorsaken är att för varje Purview-konto som skapas måste det skapa en hanterad resursgrupp och i den här resursgruppen ett lagringskonto och ett EventHub-namnområde.
 
     > [!important]
     > Du behöver inte följa det här steget om du inte har Azure Policy eller om en befintlig Azure Policy inte blockerar skapandet av **lagringskontot** och **EventHub-namnområdet**.
@@ -119,7 +119,7 @@ Om det behövs följer du dessa steg för att konfigurera din prenumeration så 
    :::image type="content" source="./media/create-catalog-portal/add-purview-instance.png" alt-text="Skärmbild som visar hur du skapar en Azure Purview-kontoinstans i Azure Portal.":::
 
     > [!Note] 
-    > Azure Purview stöder inte flytt av sitt konto mellan regioner. Mer information om detta finns på sidan [för Azure-tjänster som stöds.](../azure-resource-manager/management/region-move-support.md)
+    > Azure Purview stöder inte flytt av sitt konto mellan regioner. Mer information om detta finns i Stöd [för flytt av resurser.](../azure-resource-manager/management/move-support-resources.md)
 
 1. Gör **följande på** fliken Grundläggande inställningar:
     1. Välj en **Resursgrupp**.
@@ -135,7 +135,7 @@ Om det behövs följer du dessa steg för att konfigurera din prenumeration så 
 1. När den nya kontoetablering är klar väljer **du Gå till resurs**.
 
     > [!Note]
-    > Om etableringen misslyckades med status innebär det att det finns en Azure-princip som blockerar Purview från att skapa ett `Conflict` **lagringskonto** och **EventHub-namnområdet**. Du måste gå igenom stegen **för förutsättningar för** att lägga till undantag.
+    > Om etableringen misslyckades med statusen innebär det att det finns en Azure-princip som blockerar Purview från att skapa ett `Conflict` **lagringskonto** och **EventHub-namnområdet**. Du måste gå igenom stegen **för förutsättningar för** att lägga till undantag.
     > :::image type="content" source="./media/create-catalog-portal/purview-conflict-error.png" alt-text="Felmeddelande för vykonflikt":::
 
 1. Välj **Starta vykonto**.
@@ -156,15 +156,15 @@ Så här lägger du till ett säkerhetsobjekt **i dataplanrollen Purview Data In
 
 1. Klicka **på + Lägg till**
 
-Om du när du klickar på Lägg till visas två alternativ som visar båda markerade (inaktiverade) så innebär det att du inte har rätt behörighet att lägga till någon i en dataplansroll på Azure Purview-kontot. Du måste hitta en ägare, administratör för användaråtkomst eller någon annan med rolltilldelningsbehörighet på ditt Azure Purview-konto. Du kan leta efter rätt  personer genom att välja fliken Rolltilldelningar och sedan rulla ned för att leta efter Ägare eller Administratör för användaråtkomst och kontakta dessa personer.
+Om du när du klickar på Lägg till visas två alternativ som visar båda markerade (inaktiverade) så innebär det att du inte har rätt behörighet att lägga till någon i en dataplansroll på Azure Purview-kontot. Du måste hitta en ägare, administratör för användaråtkomst eller någon annan med rolltilldelningsbehörighet på ditt Azure Purview-konto. Du kan söka efter rätt  personer genom att välja fliken Rolltilldelningar och sedan rulla ned för att leta efter Ägare eller Administratör för användaråtkomst och kontakta dessa personer.
 
 1. Välj **Lägg till rolltilldelning**.
 
-1. För rolltypen i **rollen Purview Data Intendent** eller **Purview Data Source Administrator Role** beroende [](catalog-permissions.md) på vad säkerhetsobjekt kommer att användas för (mer information finns i Katalogbehörigheter och program- och tjänsthuvudnamnsobjekt [i Azure Active Directory).](../active-directory/develop/app-objects-and-service-principals.md)
+1. För Rolltyp i **Purview Data Intendentroll** eller **Purview Data Source Administrator Role** beroende [](catalog-permissions.md) på vad säkerhetsobjekt kommer att användas för (mer information finns i Katalogbehörigheter och Program- och tjänsthuvudnamnsobjekt [i Azure Active Directory).](../active-directory/develop/app-objects-and-service-principals.md)
 
-1. För **Tilldela åtkomst lämnar** du standardvärdet **Användare, Grupp eller Tjänstens huvudnamn**.
+1. För **Tilldela åtkomst lämnar** du standardvärdet **Användare, Grupp eller Tjänstens huvudnamn.**
 
-1. För **Välj** anger du namnet på användaren Azure Active Directory grupp eller tjänstens huvudnamn som du vill tilldela och klickar sedan på användarens namn i resultatfönstret.
+1. För **Välj** anger du namnet på användaren, Azure Active Directory grupp eller tjänstens huvudnamn som du vill tilldela och klickar sedan på användarens namn i resultatfönstret.
 
 1. Klicka på **Spara.**
 

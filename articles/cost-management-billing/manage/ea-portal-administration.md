@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 8f643336d50f5ade145454d408599215ed6fd31e
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 787f902311437e6ca8a679299ef7a28b34cee4ab
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259446"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728418"
 ---
 # <a name="azure-ea-portal-administration"></a>Administration i Azure EA-portalen
 
@@ -38,7 +38,7 @@ Endast befintliga Azure-företagsadministratörer kan skapa andra företagsadmin
 
 Använd något av följande alternativ, baserat på din situation.
 
-#### <a name="if-youre-already-an-enterprise-administrator"></a>Om du redan är företags administratör
+#### <a name="if-youre-already-an-enterprise-administrator"></a>Om du redan är företagsadministratör
 
 1. Logga in på [Azure Enterprise-portalen](https://ea.azure.com).
 1. Gå till **Hantera** > **Registreringsinformation**.
@@ -46,11 +46,11 @@ Använd något av följande alternativ, baserat på din situation.
 
 Kontrollera att du har användarens e-postadress och önskad autentiseringsmetod, till exempel arbets-, skol- eller Microsoft-konto.
 
-#### <a name="if-youre-not-an-enterprise-administrator"></a>Om du inte är företags administratör
+#### <a name="if-youre-not-an-enterprise-administrator"></a>Om du inte är företagsadministratör
 
-Om du inte är företags administratör kan du kontakta en företags administratör för att begära att de lägger till dig i registreringen. Företags administratören använder föregående steg för att lägga till dig som företags administratör. När du har blivit tillagd i en registrering får du ett aktiveringsmeddelande via e-post.
+Om du inte är företagsadministratör kan du kontakta en företagsadministratör och be om att få lägga till dig i en registrering. Företagsadministratören använder föregående steg för att lägga till dig som företagsadministratör. När du har blivit tillagd i en registrering får du ett aktiveringsmeddelande via e-post.
 
-#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Om din företags administratör inte kan hjälpa dig
+#### <a name="if-your-enterprise-administrator-cant-help-you"></a>Om företagsadministratören inte kan hjälpa dig
 
 Om din företagsadministratör inte kan hjälpa dig skapar du en [supportbegäran i Azure Enterprise-portalen](https://support.microsoft.com/supportrequestform/cf791efa-485b-95a3-6fad-3daf9cd4027c). Ange följande information:
 
@@ -424,51 +424,6 @@ Så här börjar du:
 1. Nu bör Microsoft-kontot vara fritt från aktiva prenumerationer och kan tas bort.
 1. Borttagna konton blir kvar i vyn i portalen med inaktiv status av historiska faktureringsskäl.  Du kan filtrera bort dem från vyn genom att markera kryssrutan för att bara visa aktiva konton.
 
-## <a name="account-subscription-ownership-faq"></a>Vanliga frågor och svar om prenumerationsägarskap
-
-I det här dokumentet besvaras frågor som rör ägarskapet för kontoprenumerationen.
-
-### <a name="can-i-associate-my-existing-azure-account-to-azure-ea-enrollment"></a>Kan jag associera mitt befintliga Azure-konto med Azure EA-registrering?
-
-Ja. Alla Azure-prenumerationer som du är kontoinnehavare för konverteras till ditt Enterprise-avtal. Bland dessa ingår prenumerationer som använder månatlig kredit, till exempel Visual Studio, AzurePass, MPN, BizSpark och fler. Du kommer att förlora månadskredit när du konverterar sådana prenumerationer.
-
-### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Hur många Azure-kontoinnehavare kan du ha per prenumeration?
-
-Bara en kontoinnehavare tillåts per prenumeration.  Ytterligare roller kan läggas till med rollbaserad åtkomst eller Åtkomstkontroll (IAM) på prenumerationsfliken i det övre vänstra hörnet på sidan på [Azure-portalen](https://portal.azure.com).
-
-### <a name="is-it-possible-to-transfer-subscription-ownership-to-another-account"></a>Kan jag överföra äganderätten till prenumerationen till ett annat konto?
-
-Ja, du kan överföra äganderätten till prenumerationen till ett annat konto. Exempel: Om konto A har tre prenumerationer kan företagsadministratören överföra en prenumeration till konto B, en till konto C och en till konto D. Det går även att överföra alla prenumerationer till konto E.
-
-Så här överför du prenumerationer:
-
-1. I Azure Enterprise-portalen väljer du **Hantera** > **Konto**.
-1. Hovra över **Konto** längst till höger för att se alternativen **Överför ägarskap** (personikonen) och **Överför prenumeration** (listikonen). De här alternativen är endast synliga för aktiva konton.
-
-### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Kan en Azure-kontoinnehavare listas under mer än en avdelning?
-
-Nej, en kontoinnehavare kan bara associeras med en enda avdelning. Principen är till för att säkerställa korrekt övervakning och fördelning av kostnader och utgifter kopplade till avdelningen de är justerade mot under EA-registreringen i Azure EA-portalen.
-
-### <a name="can-an-azure-account-owner-be-listed-as-a-security-group"></a>Kan en Azure-kontoinnehavare listas som en säkerhetsgrupp?
-
-Nej, en prenumerationsägare måste vara ett unikt Microsoft-konto (MSA) eller en Azure Active Directory-autentisering (Azure AD). För att ta hänsyn till följden i organisationen kan du skapa allmänna konton och använda Azure AD för att hantera prenumerationsåtkomst.
-
-### <a name="can-an-individual-user-own-multiple-subscriptions"></a>Kan en enskild användare äga flera prenumerationer?
-
-En Azure-kontoinnehavare kan skapa och hantera ett obegränsat antal prenumerationer.
-
-### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Hur kan jag få åtkoms till/visa alla min organisations prenumerationer?
-
-Idag måste detta göras med en princip. Det betyder att du skulle kräva att ditt konto läggs till i en prenumerationsroll med rollbaserad åtkomst för varje prenumeration som skapas.
-
-### <a name="where-do-i-go-to-create-a-subscription"></a>Var skapar jag en prenumeration?
-
-Innan du kan skapa en Azure EA-prenumeration måste ditt konto läggas till i rollen som kontoinnehavare av din administratören för din EA-registrering i Azure EA-portalen. Du måste sedan logga in på Azure EA-portalen för att få din rättighet att skapa prenumerationer för EA-erbjudanden. Vi rekommenderar att din första EA-prenumeration skapas via länken ”+ Add Subscription” (+ Lägg till prenumeration) på prenumerationsfliken i EA-portalen.  Men när ditt konto är berättigat kan det vara enklare att skapa prenumerationer i portal.azure.com på prenumerationsfliken i det övre högra hörnet på sidan, där du både kan skapa och byta namn på prenumerationen i ett enda steg.
-
-### <a name="who-can-create-a-subscription"></a>Vem kan skapa en prenumeration?
-
-Om du vill skapa en prenumeration för ett Azure-erbjudande för företag måste du vara berättigad i rollen som kontoinnehavare i [EA-portalen](https://ea.azure.com).
-
 ## <a name="azure-ea-term-glossary"></a>Ordlista för Azure EA
 
 - **Konto**: En organisationsenhet i Azure Enterprise-portalen. Den används för att administrera prenumerationer samt för rapportering.
@@ -510,3 +465,4 @@ Om du vill skapa en prenumeration för ett Azure-erbjudande för företag måste
 
 - Läs om hur du kan spara pengar med [reservationer för virtuella datorer](ea-portal-vm-reservations.md).
 - Om du behöver hjälp med att felsöka problem med Azure EA-portalen kan du läsa [Felsöka åtkomst till Azure EA-portalen](ea-portal-troubleshoot.md).
+- Läs vanliga [Cost Management + Billing om du](../cost-management-billing-faq.yml) har frågor om ea-prenumerationsägarskap.

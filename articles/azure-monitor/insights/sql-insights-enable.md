@@ -5,21 +5,27 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: cfcb34b731855fd26ddad191b819e308406117cb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 012aa364fe9e379455b6b63f7c9e541d2d5b97ed
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478343"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726906"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivera SQL-insikter (förhandsversion)
-Den här artikeln beskriver hur du aktiverar [SQL-insikter för](sql-insights-overview.md) att övervaka dina SQL-distributioner. Övervakning utförs från en virtuell Azure-dator som upprättar en anslutning till dina SQL-distributioner och använder dynamiska hanteringsvyer (DMV:er) för att samla in övervakningsdata. Du kan styra vilka datauppsättningar som samlas in och insamlingsfrekvensen med hjälp av en övervakningsprofil.
+Den här artikeln beskriver hur du aktiverar [SQL-insikter för](sql-insights-overview.md) att övervaka dina SQL-distributioner. Övervakning utförs från en virtuell Azure-dator som upprättar en anslutning till dina SQL-distributioner och använder dynamiska hanteringsvyer (DMV:er) för att samla in övervakningsdata. Du kan styra vilka datauppsättningar som samlas in och frekvensen för insamling med hjälp av en övervakningsprofil.
+
+> [!NOTE]
+> Information om hur du aktiverar SQL-insikter genom att skapa övervakningsprofilen och den virtuella datorn med hjälp av en Resource Manager-mall finns i [Resource Manager exempel på SQL-insikter.](resource-manager-sql-insights.md)
 
 ## <a name="create-log-analytics-workspace"></a>Skapa Log Analytics-arbetsyta
 SQL-insikter lagrar sina data på en eller flera [Log Analytics-arbetsytor.](../logs/data-platform-logs.md#log-analytics-workspaces)  Innan du kan aktivera SQL Insights måste du antingen [skapa en arbetsyta](../logs/quick-create-workspace.md) eller välja en befintlig. En enskild arbetsyta kan användas med flera övervakningsprofiler, men arbetsytan och profilerna måste finnas i samma Azure-region. Om du vill aktivera och komma åt funktionerna i SQL Insights måste du ha [Log Analytics-deltagarrollen](../logs/manage-access.md) på arbetsytan. 
 
 ## <a name="create-monitoring-user"></a>Skapa övervakningsanvändare 
 Du behöver en användare i de SQL-distributioner som du vill övervaka. Följ procedurerna nedan för olika typer av SQL-distributioner.
+
+Anvisningarna nedan omfattar processen per typ av SQL som du kan övervaka.  Om du vill göra detta med ett skript på flera SQL-databaser samtidigt läser du följande [README-fil och](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation-README.txt) [exempelskript](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Workbooks/Workloads/SQL/SQL%20Insights%20Onboarding%20Scripts/Permissions_LoginUser_Account_Creation.ps1).
+
 
 ### <a name="azure-sql-database"></a>Azure SQL-databas
 Öppna Azure SQL Database med [SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) eller [Frågeredigeraren (förhandsversion)](../../azure-sql/database/connect-query-portal.md) i Azure Portal.
@@ -52,7 +58,7 @@ order by username
 ```
 
 ### <a name="azure-sql-managed-instance"></a>Azure SQL Managed Instance
-Logga in på Azure SQL Managed Instance och [använd SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) eller liknande verktyg för att köra följande skript för att skapa övervakningsanvändaren med de behörigheter som krävs. Ersätt *användaren* med ett användarnamn och *mystrongpassword* med ett lösenord.
+Logga in på Azure SQL Managed Instance och [använd SQL Server Management Studio](../../azure-sql/database/connect-query-ssms.md) eller liknande för att köra följande skript för att skapa övervakningsanvändaren med de behörigheter som krävs. Ersätt *användaren* med ett användarnamn och *mystrongpassword* med ett lösenord.
 
  
 ```sql
@@ -87,7 +93,7 @@ Kontrollera att användaren har skapats.
 select name as username,
        create_date,
        modify_date,
-       type_desc as type,
+       type_desc as type
 from sys.server_principals
 where type not in ('A', 'G', 'R', 'X')
        and sid is not null
@@ -117,7 +123,7 @@ Varje typ av SQL erbjuder metoder för att din virtuella övervakningsdator ska 
 
 ### <a name="azure-sql-databases"></a>Azure SQL Databases  
 
-SQL-insikter har stöd för Azure SQL Database åtkomst via både den offentliga slutpunkten och det virtuella nätverket.
+SQL-insikter stöder åtkomst Azure SQL Database via både den offentliga slutpunkten och det virtuella nätverket.
 
 För åtkomst via den offentliga slutpunkten lägger du till en regel under sidan **Brandväggsinställningar** och avsnittet [IP-brandväggsinställningar.](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-firewall-rules)  Om du vill ange åtkomst från [](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#virtual-network-firewall-rules) ett virtuellt nätverk kan du ange brandväggsregler för virtuella nätverk och ange de tjänsttaggar som [krävs av Azure Monitor agenten](https://docs.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-overview#networking).  [I den](https://docs.microsoft.com/azure/azure-sql/database/network-access-controls-overview#ip-vs-virtual-network-firewall-rules) här artikeln beskrivs skillnaderna mellan dessa två typer av brandväggsregler.
 
@@ -134,7 +140,7 @@ Om den virtuella övervakningsdatorn kommer att finnas i samma virtuella nätver
 ### <a name="azure-virtual-machine-and-azure-sql-virtual-machine"></a>Virtuell Azure-dator Azure SQL virtuell dator  
 Om den virtuella övervakningsdatorn finns i samma virtuella nätverk som dina virtuella SQL-datorresurser kan du gå till Anslut till [SQL Server i ett virtuellt nätverk](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-within-a-virtual-network). Om den virtuella övervakningsdatorn kommer att finnas i ett annat virtuellt nätverk än dina virtuella SQL-datorresurser kan du gå till [Anslut till SQL Server via Internet.](https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/ways-to-connect-to-sql#connect-to-sql-server-over-the-internet)
 
-## <a name="store-monitoring-password-in-key-vault"></a>Lagra övervakningslösenord i Key Vault
+## <a name="store-monitoring-password-in-key-vault"></a>Lagra övervakningslösenordet i Key Vault
 Du bör lagra dina lösenord för SQL-användaranslutning i en Key Vault i stället för att ange dem direkt i anslutningssträngarna för övervakningsprofilen.
 
 När du har inställningar för din profil för SQL-övervakning behöver du någon av följande behörigheter för den Key Vault som du tänker använda:
@@ -145,8 +151,8 @@ När du har inställningar för din profil för SQL-övervakning behöver du nå
 En ny åtkomstprincip skapas automatiskt när du skapar din SQL Monitoring som använder den Key Vault du har angett. Använd *Tillåt åtkomst från Alla nätverk för* Key Vault nätverksinställningar.
 
 
-## <a name="create-sql-monitoring-profile"></a>Skapa en PROFIL för SQL-övervakning
-Öppna SQL-insikter genom **att välja SQL (förhandsversion)** **i** avsnittet **Insikter Azure Monitor** på menyn Azure Portal. Klicka **på Skapa ny profil.** 
+## <a name="create-sql-monitoring-profile"></a>Skapa sql-övervakningsprofil
+Öppna SQL-insikter genom **att välja SQL (förhandsversion)** **i** avsnittet Insikter **Azure Monitor** på menyn Azure Portal. Klicka **på Skapa ny profil.** 
 
 :::image type="content" source="media/sql-insights-enable/create-new-profile.png" alt-text="Skapa en ny profil." lightbox="media/sql-insights-enable/create-new-profile.png":::
 
@@ -174,7 +180,7 @@ Profilen lagras som en [regelresurs för datainsamling](../agents/data-collectio
 Klicka **på Skapa övervakningsprofil** när du har angett informationen för din övervakningsprofil. Det kan ta upp till en minut för profilen att distribueras.  Om du inte ser den nya  profilen i kombinationsrutan Övervakningsprofil klickar du på uppdateringsknappen så visas den när distributionen är klar.  När du har valt den nya profilen väljer du fliken **Hantera** profil för att lägga till en övervakningsdator som ska associeras med profilen.
 
 ### <a name="add-monitoring-machine"></a>Lägga till övervakningsdator
-Välj **Lägg till övervakningsdator** för att öppna en kontextpanel och välj den virtuella dator som ska konfigureras för att övervaka DINA SQL-instanser och ange anslutningssträngarna.
+Välj **Lägg till övervakningsdator** för att öppna en kontextpanel för att välja den virtuella dator som ska konfigureras för att övervaka dina SQL-instanser och ange anslutningssträngarna.
 
 Välj prenumerationen och namnet på den virtuella övervakningsdatorn. Om du använder Key Vault för att lagra lösenordet för övervakningsanvändaren väljer du Key Vault-resurser med dessa hemligheter och anger den URL och det hemliga namn som ska användas i anslutningssträngarna. I nästa avsnitt finns information om hur du identifierar anslutningssträngen för olika SQL-distributioner.
 

@@ -1,5 +1,5 @@
 ---
-title: Snabb start för multivarierad-klient bibliotek för avvikelse detektor
+title: Avvikelseidentifiering snabbstart för Python multivariate-klientbibliotek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,36 +8,38 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 9b848f6c86f2ff2e95fa5cc191b088b7175f2311
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316036"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732261"
 ---
-Kom igång med multivarierad klient bibliotek för avvikelse detektor för python. Följ de här stegen för att installera paket starten med hjälp av algoritmerna som tillhandahålls av tjänsten. De nya API: erna för avvikelse identifiering i multivarierad gör det möjligt för utvecklare att enkelt integrera avancerad AI för att identifiera avvikelser från grupper av mått, utan att det behövs några kunskaper om Machine Learning eller märkta data. Beroenden och Inter-korrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. Detta hjälper dig att proaktivt skydda dina komplexa system från haverier.
+Kom igång med Avvikelseidentifiering flervariat klientbibliotek för Python. Följ de här stegen för att installera paketet med hjälp av de algoritmer som tillhandahålls av tjänsten. Med de nya API:erna för multivarierad avvikelseidentifiering kan utvecklare enkelt integrera avancerad AI för att identifiera avvikelser från grupper med mått, utan att behöva maskininlärning eller märkta data. Beroenden och interkorrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. Detta hjälper dig att proaktivt skydda dina komplexa system mot fel.
 
-Använd klient biblioteket för avvikelse detektor multivarierad för python för att:
+Använd Avvikelseidentifiering flervariat klientbibliotek för Python för att:
 
-* Identifiera avvikelser på system nivå från en grupp tids serier.
-* När en enskild tid serie inte meddelar dig mycket och du måste titta på alla signaler för att identifiera ett problem.
-* Predicative-underhåll av dyra fysiska till gångar med flera till hundratals olika typer av sensorer som mäter olika aspekter av system hälsan.
+* Identifiera avvikelser på systemnivå från en grupp med tidsserier.
+* När en enskild tidsserie inte berättar så mycket och du måste titta på alla signaler för att identifiera ett problem.
+* Predikatiskt underhåll av dyra fysiska tillgångar med tiotals till hundratals olika typer av sensorer som mäter olika aspekter av systemhälsan.
+
+[Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * [Python 3.x](https://www.python.org/)
-* [Pandas data analys bibliotek](https://pandas.pydata.org/)
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" skapar du en avvikelse detektor resurs "  target="_blank"> skapa en avvikelse </a> i den Azure Portal för att hämta nyckel och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API: t för avvikelse identifiering. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* [Pandas dataanalysbibliotek](https://pandas.pydata.org/)
+* Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services)
+* När du har din Azure-prenumeration skapar Avvikelseidentifiering en Avvikelseidentifiering resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. Vänta tills den har distribuerats och klicka **på knappen Gå till** resurs.
+    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Avvikelseidentifiering-API:et. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
 
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
-### <a name="create-a-new-python-application"></a>Skapa ett nytt python-program
+### <a name="create-a-new-python-application"></a>Skapa ett nytt Python-program
 
- Skapa en ny python-fil och importera följande bibliotek.
+ Skapa en ny Python-fil och importera följande bibliotek.
 
 ```python
 import os
@@ -50,16 +52,16 @@ from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 ```
 
-Skapa variabler för din nyckel som en miljö variabel, sökvägen till en tids serie data fil och Azure-platsen för din prenumeration. Till exempel `westus2`.
+Skapa variabler för din nyckel som en miljövariabel, sökvägen till en tidsseriedatafil och Azure-platsen för din prenumeration. Till exempel `westus2`.
 
 ```python
 subscription_key = "ANOMALY_DETECTOR_KEY"
 anomaly_detector_endpoint = "ANOMALY_DETECTOR_ENDPOINT"
 ```
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket
+### <a name="install-the-client-library"></a>Installera klientbiblioteket
 
-När du har installerat python kan du installera klient biblioteket med:
+När du har installerat Python kan du installera klientbiblioteket med:
 
 ```console
 pip install --upgrade azure-ai-anomalydetector
@@ -67,7 +69,7 @@ pip install --upgrade azure-ai-anomalydetector
 
 ## <a name="code-examples"></a>Kodexempel
 
-Dessa kodfragment visar hur du gör följande med klient biblioteket för avvikelse detektor för python:
+De här kodfragmenten visar hur du gör följande med Avvikelseidentifiering klientbibliotek för Python:
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Träna modellen](#train-the-model)
@@ -77,9 +79,9 @@ Dessa kodfragment visar hur du gör följande med klient biblioteket för avvike
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Om du vill instansiera en ny klient för avvikelse detektor måste du skicka prenumerations nyckeln för avvikelse detektor och associerad slut punkt. Vi upprättar också en data källa.  
+För att instansiera en Avvikelseidentifiering klient måste du skicka Avvikelseidentifiering prenumerationsnyckel och associerad slutpunkt. Vi kommer också att upprätta en datakälla.  
 
-För att kunna använda multivarierad-API: erna för avvikelse detektor måste vi träna vår egen modell innan identifieringen används. Data som används för utbildning är en batch över tids serier, varje gång serien ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tids serier ska vara zippade till en zip-fil och överföras till [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs). Som standard används fil namnet för att representera variabeln för tids serien. Alternativt kan en extra meta.jsi filen inkluderas i zip-filen om du vill att namnet på variabeln ska skilja sig från. zip-filens namn. När vi genererar [URL: en BLOB SAS (Shared Access Signatures)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL: en till zip-filen för utbildning.
+Om du vill Avvikelseidentifiering flera api:er måste vi träna vår egen modell innan du använder identifiering. Data som används för träning är en batch med tidsserier. Varje tidsserie ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tidsserier ska zippas upp i en zip-fil och laddas upp till [Azure Blob Storage.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Som standard används filnamnet för att representera variabeln för tidsserien. Alternativt kan en extra meta.jspå filen inkluderas i zip-filen om du vill att namnet på variabeln ska vara ett annat än ZIP-filnamnet. När vi har [genererat blob-SAS-URL :en (signaturer för delad åtkomst)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL:en till ZIP-filen för träning.
 
 ```python
 def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None):
@@ -101,7 +103,7 @@ def __init__(self, subscription_key, anomaly_detector_endpoint, data_source=None
 
 ## <a name="train-the-model"></a>Träna modellen
 
-Vi börjar med att träna modellen, kontrollerar modellens status och träningen för att fastställa när utbildningen är klar och hämtar sedan det senaste modell-ID som vi behöver när vi går vidare till identifierings fasen.
+Vi tränar först modellen, kontrollerar modellens status under träningen för att avgöra när träningen är klar och hämtar sedan det senaste modell-ID:t som vi behöver när vi går över till identifieringsfasen.
 
 ```python
 def train(self, start_time, end_time, max_tryout=500):
@@ -141,7 +143,7 @@ def train(self, start_time, end_time, max_tryout=500):
 
 ## <a name="detect-anomalies"></a>Identifiera avvikelser
 
-Använd `detect_anomaly` och `get_dectection_result` för att avgöra om det finns några avvikelser i data källan. Du måste skicka modell-ID: t för den modell som du precis har tränat.
+Använd och `detect_anomaly` för att avgöra om det finns några avvikelser i `get_dectection_result` datakällan. Du måste skicka modell-ID:t för den modell som du precis har tränat.
 
 ```python
 def detect(self, model_id, start_time, end_time, max_tryout=500):
@@ -175,7 +177,7 @@ def detect(self, model_id, start_time, end_time, max_tryout=500):
 
 ## <a name="export-model"></a>Exportera modell
 
-Om du vill exportera en modell användning `export_model` och skicka modell-ID: t för den modell som du vill exportera:
+Om du vill exportera en modellanvändning `export_model` och skicka modell-ID:t för den modell som du vill exportera:
 
 ```python
 def export_model(self, model_id, model_path="model.zip"):
@@ -194,7 +196,7 @@ def export_model(self, model_id, model_path="model.zip"):
 
 ## <a name="delete-model"></a>Ta bort modell
 
-Ta bort en modell användning `delete_multivariate_model` och skicka modell-ID: t för den modell som du vill ta bort:
+Så här tar du bort en `delete_multivariate_model` modellanvändning och skickar modell-ID:t för den modell som du vill ta bort:
 
 ```python
 def delete_model(self, model_id):
@@ -207,7 +209,7 @@ def delete_model(self, model_id):
 
 ## <a name="run-the-application"></a>Kör programmet
 
-Innan du kör programmet måste vi lägga till kod för att anropa våra nyligen skapade funktioner.
+Innan du kör programmet måste vi lägga till kod för att anropa de nya funktionerna.
 
 ```python
 if __name__ == '__main__':
@@ -234,6 +236,6 @@ if __name__ == '__main__':
 
 ```
 
-Kör programmet med `python` kommandot och ditt fil namn.
+Kör programmet med `python` kommandot och filnamnet.
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

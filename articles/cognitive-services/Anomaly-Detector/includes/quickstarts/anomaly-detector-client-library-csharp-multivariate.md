@@ -1,5 +1,5 @@
 ---
-title: Snabb start för klient bibliotek för avvikelse detektor i .NET multivarierad
+title: Avvikelseidentifiering snabbstart för .NET multivariate-klientbibliotek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: mrbullwinkle
@@ -8,46 +8,48 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: 1318a8c410f14f4a1dc91072d66f18e39f7ca7e7
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b3acea520859de10825468a4d37c3030f9b862bd
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316052"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732327"
 ---
-Kom igång med multivarierad klient bibliotek för avvikelse detektor för .NET. Följ de här stegen för att installera paketet och börja använda de algoritmer som tillhandahålls av tjänsten. De nya API: erna för avvikelse identifiering i multivarierad gör det möjligt för utvecklare att enkelt integrera avancerad AI för att identifiera avvikelser från grupper av mått, utan att det behövs några kunskaper om Machine Learning eller märkta data. Beroenden och Inter-korrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. Detta hjälper dig att proaktivt skydda dina komplexa system från haverier.
+Kom igång med Avvikelseidentifiering flervarierat klientbibliotek för .NET. Följ de här stegen för att installera paketet och börja använda algoritmerna som tillhandahålls av tjänsten. De nya API:erna för avvikelseidentifiering med flera variabler gör det möjligt för utvecklare att enkelt integrera avancerad AI för att identifiera avvikelser från grupper av mått, utan att behöva maskininlärningskunskaper eller märkta data. Beroenden och interkorrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. På så sätt kan du proaktivt skydda komplexa system mot fel.
 
-Använd klient biblioteket för avvikelse detektor multivarierad för .NET för att:
+Använd Avvikelseidentifiering multivariate-klientbibliotek för .NET för att:
 
-* Identifiera avvikelser på system nivå från en grupp tids serier.
-* När en enskild tid serie inte meddelar dig mycket och du måste titta på alla signaler för att identifiera ett problem.
-* Predicative-underhåll av dyra fysiska till gångar med flera till hundratals olika typer av sensorer som mäter olika aspekter av system hälsan.
+* Identifiera avvikelser på systemnivå från en grupp med tidsserier.
+* När en enskild tidsserie inte berättar så mycket och du måste titta på alla signaler för att identifiera ett problem.
+* Predikatiskt underhåll av dyra fysiska tillgångar med tiotals till hundratals olika typer av sensorer som mäter olika aspekter av systemets hälsa.
+
+[Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/anomalydetector/Azure.AI.AnomalyDetector)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.AnomalyDetector/3.0.0-preview.3)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
-* Den aktuella versionen av [.net Core](https://dotnet.microsoft.com/download/dotnet-core)
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" skapar du en avvikelse detektor resurs "  target="_blank"> skapa en avvikelse </a> i den Azure Portal för att hämta nyckel och slut punkt. Vänta tills den har distribuerats och välj knappen **gå till resurs** .
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API: t för avvikelse identifiering. Klistra in din nyckel och slut punkt i koden nedan senare i snabb starten.
-    Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services)
+* Den aktuella versionen av [.NET Core](https://dotnet.microsoft.com/download/dotnet-core)
+* När du har din Azure-prenumeration skapar Avvikelseidentifiering en Avvikelseidentifiering resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. Vänta tills den har distribuerats och välj **knappen Gå till** resurs.
+    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Avvikelseidentifiering-API:et. Klistra in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-net-core-application"></a>Skapa ett nytt .NET Core-program
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `anomaly-detector-quickstart-multivariate` . Det här kommandot skapar ett enkelt "Hello World"-projekt med en enda C#-källfil: *program. cs*.
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en ny `dotnet new` konsolapp med namnet `anomaly-detector-quickstart-multivariate` . Det här kommandot skapar ett enkelt "Hello World"-projekt med en enda C#-källfil: *Program.cs*.
 
 ```dotnetcli
 dotnet new console -n anomaly-detector-quickstart-multivariate
 ```
 
-Ändra katalogen till mappen nyligen skapade appar. Du kan bygga programmet med:
+Ändra din katalog till den nyligen skapade appmappen. Du kan skapa programmet med:
 
 ```dotnetcli
 dotnet build
 ```
 
-Build-utdata får inte innehålla varningar eller fel.
+Byggutdata får inte innehålla några varningar eller fel.
 
 ```output
 ...
@@ -57,15 +59,15 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket
+### <a name="install-the-client-library"></a>Installera klientbiblioteket
 
-I program katalogen installerar du klient biblioteket för avvikelse detektor för .NET med följande kommando:
+I programkatalogen installerar du Avvikelseidentifiering för .NET med följande kommando:
 
 ```dotnetcli
 dotnet add package Azure.AI.AnomalyDetector --version 3.0.0-preview.3
 ```
 
-Öppna filen *program. cs* från projekt katalogen och Lägg till följande med hjälp av `directives` :
+Från projektkatalogen öppnar du *filen program.cs* och lägger till följande med `directives` :
 
 ```csharp
 using System;
@@ -84,7 +86,7 @@ using Microsoft.Identity.Client;
 using NUnit.Framework;
 ```
 
-I programmets `main()` metod skapar du variabler för resursens Azure-slutpunkt, din API-nyckel och en anpassad data källa.
+I programmets `main()` -metod skapar du variabler för resursens Azure-slutpunkt, DIN API-nyckel och en anpassad datakälla.
 
 ```csharp
 string endpoint = "YOUR_API_KEY";
@@ -92,11 +94,11 @@ string apiKey =  "YOUR_ENDPOINT";
 string datasource = "YOUR_SAMPLE_ZIP_FILE_LOCATED_IN_AZURE_BLOB_STORAGE_WITH_SAS";
 ```
 
- För att kunna använda multivarierad-API: erna för avvikelse detektor måste vi träna vår egen modell innan identifieringen används. Data som används för utbildning är en batch över tids serier, varje gång serien ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tids serier ska vara zippade till en zip-fil och överföras till [Azure Blob Storage](../../../../storage/blobs/storage-blobs-introduction.md#blobs). Som standard används fil namnet för att representera variabeln för tids serien. Alternativt kan en extra meta.jsi filen inkluderas i zip-filen om du vill att namnet på variabeln ska skilja sig från. zip-filens namn. När vi genererar en [BLOB SAS-URL (Shared Access Signatures)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL: en till zip-filen för utbildning.
+ Om du vill Avvikelseidentifiering flera api:er måste vi träna vår egen modell innan du använder identifiering. Data som används för träning är en batch med tidsserier. Varje tidsserie ska vara i CSV-format med två kolumner, tidsstämpel och värde. Alla tidsserier ska komprimeras till en zip-fil och laddas upp till [Azure Blob Storage.](../../../../storage/blobs/storage-blobs-introduction.md#blobs) Som standard används filnamnet för att representera variabeln för tidsserien. Alternativt kan en extra meta.jspå filen inkluderas i zip-filen om du vill att namnet på variabeln ska vara ett annat än .zip-filnamnet. När vi har [genererat en BLOB-SAS-URL (signaturer för delad åtkomst)](../../../../storage/common/storage-sas-overview.md)kan vi använda URL:en till ZIP-filen för träning.
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du gör följande med klient biblioteket för avvikelse detektor multivarierad för .NET:
+De här kodfragmenten visar hur du gör följande med Avvikelseidentifiering multivariate-klientbibliotek för .NET:
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Träna modellen](#train-the-model)
@@ -106,7 +108,7 @@ De här kodfragmenten visar hur du gör följande med klient biblioteket för av
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-Instansiera en klient med avvikelse detektor med din slut punkt och nyckel.
+Instansiera Avvikelseidentifiering klient med din slutpunkt och nyckel.
 
 ```csharp
 var endpointUri = new Uri(endpoint);
@@ -117,7 +119,7 @@ AnomalyDetectorClient client = new AnomalyDetectorClient(endpointUri, credential
 
 ## <a name="train-the-model"></a>Träna modellen
 
-Skapa en ny privat asynkron uppgift enligt nedan för att hantera utbildningen för din modell. Du kommer att använda `TrainMultivariateModel` för att träna modellen och `GetMultivariateModelAysnc` kontrol lera när inlärningen är klar.
+Skapa en ny privat asynkron uppgift enligt nedan för att hantera träning av din modell. Du använder för `TrainMultivariateModel` att träna modellen och för att kontrollera när `GetMultivariateModelAysnc` träningen är klar.
 
 ```csharp
 private async Task trainAsync(AnomalyDetectorClient client, string datasource, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
@@ -174,7 +176,7 @@ private async Task trainAsync(AnomalyDetectorClient client, string datasource, D
 
 ## <a name="detect-anomalies"></a>Identifiera avvikelser
 
-Skapa ett namngivet namn om du vill identifiera avvikelser med den nyligen utbildade modellen `private async Task` `detectAsync` . Du kommer att skapa en ny `DetectionRequest` och skicka den som en parameter till `DetectAnomalyAsync` .
+Om du vill identifiera avvikelser med hjälp av din nyligen tränade modell skapar du en `private async Task` med namnet `detectAsync` . Du skapar en ny och `DetectionRequest` skickar den som en parameter till `DetectAnomalyAsync` .
 
 ```csharp
 private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, string datasource, Guid model_id, DateTimeOffset start_time, DateTimeOffset end_time, int max_tryout = 500)
@@ -216,7 +218,7 @@ private async Task<DetectionResult> detectAsync(AnomalyDetectorClient client, st
 
 ## <a name="export-model"></a>Exportera modell
 
-Om du vill exportera modellen som du har tränat tidigare skapar du en `private async Task` namngiven `exportAysnc` . Du kommer att använda `ExportModelAsync` och skicka modell-ID: t för den modell som du vill exportera.
+Om du vill exportera modellen som du tränade tidigare skapar du en `private async Task` med namnet `exportAysnc` . Du använder och `ExportModelAsync` skickar modell-ID:t för den modell som du vill exportera.
 
 ```csharp
 private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, string model_path = "model.zip")
@@ -244,7 +246,7 @@ private async Task exportAsync(AnomalyDetectorClient client, Guid model_id, stri
 
 ## <a name="delete-model"></a>Ta bort modell
 
-Ta bort en modell som du har skapat tidigare `DeleteMultivariateModelAsync` och skicka modell-ID: t för den modell som du vill ta bort. Du kan hämta ett modell-ID som du kan oss på `getModelNumberAsync` :
+Ta bort en modell som du har skapat tidigare och `DeleteMultivariateModelAsync` skicka modell-ID för den modell som du vill ta bort. Om du vill hämta ett modell-ID kan du använda `getModelNumberAsync` :
 
 ```csharp
 private async Task deleteAsync(AnomalyDetectorClient client, Guid model_id)
@@ -272,7 +274,7 @@ private async Task<int> getModelNumberAsync(AnomalyDetectorClient client, bool d
 
 ## <a name="main-method"></a>Main-metoden
 
-Nu när du har alla komponent delar måste du lägga till ytterligare kod i huvud metoden för att anropa dina nyligen skapade uppgifter.
+Nu när du har alla komponentdelar måste du lägga till ytterligare kod i huvudmetoden för att anropa dina nya uppgifter.
 
 ```csharp
 
@@ -332,7 +334,7 @@ Nu när du har alla komponent delar måste du lägga till ytterligare kod i huvu
 
 ## <a name="run-the-application"></a>Kör programmet
 
-Kör programmet med `dotnet run` kommandot från program katalogen.
+Kör programmet med kommandot `dotnet run` från programkatalogen.
 
 ```dotnetcli
 dotnet run
@@ -340,4 +342,4 @@ dotnet run
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Metod tips för multivarierad av avvikelse detektor](../../concepts/best-practices-multivariate.md)
+* [Avvikelseidentifiering metodtips för flera varianser](../../concepts/best-practices-multivariate.md)

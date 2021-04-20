@@ -1,182 +1,195 @@
 ---
-title: Skapa en instrument panel i Azure Portal
-description: Den här artikeln beskriver hur du skapar och anpassar en instrument panel i Azure Portal.
+title: Skapa en instrumentpanel i Azure Portal
+description: Den här artikeln beskriver hur du skapar och anpassar en instrumentpanel i Azure Portal.
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.topic: how-to
-ms.date: 03/16/2021
-ms.openlocfilehash: fa7f1813d86571b568d23d64cab5705f8a117faa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/15/2021
+ms.openlocfilehash: 0666a9f8ca9df2fa44a7eaa4045c9b5e9a724ff5
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104774657"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726106"
 ---
-# <a name="create-a-dashboard-in-the-azure-portal"></a>Skapa en instrument panel i Azure Portal
+# <a name="create-a-dashboard-in-the-azure-portal"></a>Skapa en instrumentpanel i Azure Portal
 
-Instrument paneler är en fokuserad och ordnad vy av moln resurserna i Azure Portal. Använd instrument paneler som en arbets yta där du kan övervaka resurser och snabbt starta aktiviteter för dagliga åtgärder. Du kan exempelvis skapa anpassade instrumentpaneler som baseras på projekt, uppgifter eller användarroller.
+Instrumentpaneler är en fokuserad och ordnad vy över dina molnresurser i Azure Portal. Använd instrumentpaneler som en arbetsyta där du kan övervaka resurser och snabbt starta uppgifter för dagliga åtgärder. Du kan exempelvis skapa anpassade instrumentpaneler som baseras på projekt, uppgifter eller användarroller.
 
-Azure Portal tillhandahåller en standard instrument panel som start punkt. Du kan redigera standard instrument panelen och skapa och anpassa ytterligare instrument paneler. Den här artikeln beskriver hur du skapar en ny instrument panel och anpassar den. Information om hur du delar instrument paneler finns i [dela Azure-instrumentpaneler med hjälp av rollbaserad åtkomst kontroll i Azure](azure-portal-dashboard-share-access.md).
+I Azure Portal finns en standardinstrumentpanel som utgångspunkt. Du kan redigera standardinstrumentpanelen och skapa och anpassa ytterligare instrumentpaneler.
+
+> [!NOTE]
+> Varje användare kan skapa upp till 100 privata instrumentpaneler. Om du [publicerar och delar instrumentpanelen](azure-portal-dashboard-share-access.md)implementeras den som en Azure-resurs i din prenumeration och räknas inte mot den här gränsen.
+
+Den här artikeln beskriver hur du skapar en ny instrumentpanel och anpassar den. Information om hur du delar instrumentpaneler finns [i Dela Azure-instrumentpaneler med hjälp av rollbaserad åtkomstkontroll i Azure.](azure-portal-dashboard-share-access.md)
 
 ## <a name="create-a-new-dashboard"></a>Skapa en ny instrumentpanel
 
-I det här exemplet skapar vi en ny privat instrument panel och tilldelar ett namn. Kom igång genom att följa dessa steg:
+Det här exemplet visar hur du skapar en ny privat instrumentpanel med ett tilldelat namn. Alla instrumentpaneler är privata när de skapas, men du kan välja att publicera och dela din instrumentpanel med andra användare i din organisation om du vill.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **instrument panel** på Azure Portal-menyn. Din standardvy kanske redan är inställd på instrument panelen.
+1. På Azure Portal väljer du **Instrumentpanel.** Standardvyn kanske redan är inställd på instrumentpanel.
 
-    ![Öppna instrument panelen](./media/azure-portal-dashboards/portal-menu-dashboard.png)
+    ![Skärmbild av Azure Portal med Instrumentpanel valt.](./media/azure-portal-dashboards/portal-menu-dashboard.png)
 
-1. Välj **ny instrument panel** och sedan en **Tom instrument panel**.
+1. Välj **Ny instrumentpanel och** sedan Tom **instrumentpanel.**
 
-    ![Skärm bild av ny instrument panel](./media/azure-portal-dashboards/create-new-dashboard.png)
+    ![Skärmbild av alternativen för Ny instrumentpanel.](./media/azure-portal-dashboards/create-new-dashboard.png)
 
-    Den här åtgärden öppnar **panel galleriet** där du väljer paneler och ett tomt rutnät där du ordnar panelerna.
+    Den här åtgärden öppnar **panelgalleriet,** där du kan välja paneler och ett tomt rutnät där du ordnar panelerna.
 
-1. Välj **min instrument panels** text i instrument panelens etikett och ange ett namn som hjälper dig att enkelt identifiera den anpassade instrument panelen.
+1. Välj texten **Min instrumentpanel** på instrumentpanelens etikett och ange ett namn som gör det enkelt att identifiera den anpassade instrumentpanelen.
 
-    ![Skärm bild av panel galleriet och tomt rutnät](./media/azure-portal-dashboards/dashboard-name.png)
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-name.png" alt-text="Skärmbild av ett tomt rutnät med panelgalleriet.":::
 
-1. I sidhuvudet väljer du **anpassning** för att avsluta redigerings läge och väljer sedan **Spara**.
+1. Om du vill spara instrumentpanelen som den är **väljer du Anpassningen är** klar i sidhuvudet. Eller fortsätt till nästa avsnitt för att lägga till paneler och spara din instrumentpanel.
 
-    :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="Skärm bild av Spara-processen för instrument panelen":::
-
-I vyn instrument panel visas nu din nya instrument panel. Välj pilen bredvid instrument panelens namn för att se vilka instrument paneler som är tillgängliga för dig. Listan kan innehålla instrument paneler som andra användare har skapat och delat.
+Instrumentpanelsvyn visar nu den nya instrumentpanelen. Välj pilen bredvid instrumentpanelens namn för att se instrumentpaneler som är tillgängliga för dig. Listan kan innehålla instrumentpaneler som andra användare har skapat och delat.
 
 ## <a name="edit-a-dashboard"></a>Redigera en instrumentpanel
 
-Nu ska vi redigera instrument panelen för att lägga till, ändra storlek på och arrangera paneler som representerar dina Azure-resurser.
+Nu ska vi redigera instrumentpanelen för att lägga till, ändra storlek på och ordna paneler som representerar dina Azure-resurser.
 
-### <a name="add-tiles-from-the-tile-gallery"></a>Lägga till paneler från panel galleriet
+### <a name="add-tiles-from-the-tile-gallery"></a>Lägga till paneler från panelgalleriet
 
-Följ dessa steg om du vill lägga till paneler i en instrument panel:
+Följ dessa steg om du vill lägga till paneler på en instrumentpanel:
 
-1. Välj ![ Redigera ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Redigera** från sidhuvudet.
+1. Välj ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **redigeringsikonen** Redigera från instrumentpanelens sidhuvud.
 
-    ![Skärm bild av instrument panelens markerings redigering](./media/azure-portal-dashboards/dashboard-edit.png)
+    ![Skärmbild av instrumentpanelen med alternativet Redigera framhävt.](./media/azure-portal-dashboards/dashboard-edit.png)
 
-1. Bläddra i **panel galleriet** eller Använd Sök fältet för att hitta den panel som du vill använda.
+1. Bläddra i **panelgalleriet** eller använd sökfältet för att hitta en viss panel. Välj den panel som du vill lägga till på instrumentpanelen.
 
-1. Välj **Lägg** till för att lägga till panelen på instrument panelen med standard storlek och plats. Du kan också dra panelen till rutnätet och placera den där du vill. Lägg till de paneler som du vill ha, men här är några idéer:
+   :::image type="content" source="media/azure-portal-dashboards/dashboard-tile-gallery.png" alt-text="Skärmbild av panelgalleriet.":::
 
-    - Lägg till **alla resurser** för att se eventuella resurser som du redan har skapat.
+1. Välj **Lägg** till för att lägga till panelen på instrumentpanelen med en standardstorlek och plats. Eller dra panelen till rutnätet och placera den där du vill. Lägg till valfria paneler, men här är några idéer:
 
-    - Om du arbetar med mer än en organisation lägger du till panelen **organisations identitet** på din instrument panel för att tydligt visa vilken organisation resurserna tillhör.
+    - Lägg **till Alla** resurser för att se alla resurser som du redan har skapat.
 
-1. I sidhuvudet väljer du **Spara**.
+    - Om du arbetar med mer än  en organisation lägger du till panelen Organisationsidentitet på instrumentpanelen för att tydligt visa vilken organisation resurserna tillhör.
 
-### <a name="add-tiles-from-a-resource-page"></a>Lägg till paneler från en resurs sida
+1. Om du vill ändrar du storlek på panelen genom att dra och släppa panelens nedre högra hörn.
 
-Det finns ett alternativt sätt att lägga till paneler på instrument panelen. Många resurs sidor innehåller en ikon för kartnål i kommando fältet. Om du väljer ikonen fästs en panel som representerar käll sidan på den instrument panel som för närvarande är aktiv. 
+1. Spara ändringarna genom att välja **Spara** i sidhuvudet. Du kan också förhandsgranska ändringarna utan att spara genom att **välja Förhandsgranska** i sidhuvudet. På förhandsgranskningsskärmen kan  du välja Spara för att behålla  **ändringarna,** Ignorera för att ta bort dem eller Redigera för att gå tillbaka till redigeringsalternativen och göra ytterligare ändringar.
 
-![Skärm bild av sid kommando fältet med ikonen fäst](./media/azure-portal-dashboards/dashboard-pin-blade.png)
+   :::image type="content" source="media/azure-portal-dashboards/dashboard-save.png" alt-text="Skärmbild av alternativen Förhandsgranska, Spara och Ignorera.":::
 
-### <a name="resize-or-rearrange-tiles"></a>Ändra storlek på eller arrangera om paneler
+### <a name="pin-content-from-a-resource-page"></a>Fästa innehåll från en resurssida
 
-Följ dessa steg om du vill ändra storleken på en panel eller arrangera om panelerna på en instrument panel:
+Ett annat sätt att lägga till paneler på instrumentpanelen är direkt från en resurssida.
 
-1. Välj ![ Redigera ikon ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Redigera** från sidhuvudet.
+Många resurssidor innehåller en fästikon i kommandofältet. Om du väljer den här ikonen kan du fästa en panel som representerar källsidan på en befintlig instrumentpanel eller på en ny instrumentpanel som du skapar.
 
-1. Välj snabb menyn i det övre högra hörnet på en panel. Välj sedan en panel storlek. Paneler som har stöd för valfri storlek innehåller även ett "handtag" i det nedre högra hörnet som låter dig dra panelen till den storlek du önskar.
+![Skärmbild av sidans kommandofält med fästikonen](./media/azure-portal-dashboards/dashboard-pin-blade.png)
 
-    ![Skärm bild av instrument panelen med panel storleks meny öppen](./media/azure-portal-dashboards/dashboard-tile-resize.png)
+I vissa fall kan en fästikon också visas av specifikt innehåll på en sida, vilket innebär att du kan fästa en panel för det specifika innehållet i stället för hela sidan.
 
-1. Välj en panel och dra den till en ny plats i rutnätet för att ordna instrument panelen.
+### <a name="resize-or-rearrange-tiles"></a>Ändra storlek på eller ordna om paneler
 
-### <a name="additional-tile-configuration"></a>Ytterligare panel konfiguration
+Följ dessa steg om du vill ändra storleken på en panel eller ordna om panelerna på en instrumentpanel:
 
-Vissa paneler kan kräva mer konfiguration för att visa den information som du vill ha. **Mått diagram** panelen måste till exempel konfigureras för att visa ett mått från Azure Monitor. Du kan också anpassa panel data om du vill åsidosätta instrument panelens standard tids inställningar.
+1. Välj ![ ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **redigeringsikonen** Redigera i sidhuvudet.
 
-Alla paneler som måste ställas in visar en banderoll tills du anpassar panelen. I **mått diagrammet** är banderollen **redige ras i mått**. Så här anpassar du panelen:
+1. Välj snabbmenyn i det övre högra hörnet av en panel. Välj sedan en panelstorlek. Paneler som stöder alla storlekar innehåller också en "referens" i det nedre högra hörnet som gör att du kan dra panelen till den storlek du vill ha.
 
-1. I sidhuvudet väljer du **Spara** för att avsluta redigerings läget.
+    :::image type="content" source="media/azure-portal-dashboards/dashboard-tile-resize.png" alt-text="Skärmbild av instrumentpanelen med menyn panelstorlek öppen.":::
 
-1. Välj banderollen och gör sedan den nödvändiga installationen.
+1. Välj en panel och dra den till en ny plats i rutnätet för att ordna din instrumentpanel.
 
-    ![Skärm bild av panel som kräver konfiguration](./media/azure-portal-dashboards/dashboard-configure-tile.png)
+### <a name="additional-tile-configuration"></a>Ytterligare panelkonfiguration
+
+Vissa paneler kan kräva mer konfiguration för att visa den information du vill ha. Panelen måttdiagram **måste till exempel konfigureras** för att visa ett mått från Azure Monitor. Du kan också anpassa paneldata för att åsidosätta instrumentpanelens standardtidsinställningar.
+
+Alla paneler som måste konfigureras visar en banderoll tills du anpassar panelen. För **måttdiagrammet är** banderollen **Redigera i Mått**. Anpassa panelen:
+
+1. I sidhuvudet väljer du **Spara för** att avsluta redigeringsläget.
+
+1. Välj banderollen och gör sedan den nödvändiga konfigurationen.
+
+    ![Skärmbild av panel som kräver konfiguration](./media/azure-portal-dashboards/dashboard-configure-tile.png)
 
 > [!NOTE]
-> Med en markdown-panel kan du visa anpassat, statiskt innehåll på din instrument panel. Detta kan vara grundläggande instruktioner, en bild, en uppsättning hyperlänkar eller till och med kontakt information. Mer information om hur du använder en markdown-panel finns i [använda en markdown-panel på Azure-instrumentpaneler för att visa anpassat innehåll](azure-portal-markdown-tile.md).
+> Med en markdown-panel kan du visa anpassat statiskt innehåll på instrumentpanelen. Det kan vara grundläggande instruktioner, en bild, en uppsättning hyperlänkar eller till och med kontaktinformation. Mer information om hur du använder en markdown-panel finns i [Använda en markdown-panel på Azure-instrumentpaneler för att visa anpassat innehåll.](azure-portal-markdown-tile.md)
 
-### <a name="customize-tile-data"></a>Anpassa panel data
+### <a name="customize-tile-data"></a>Anpassa paneldata
 
-Data på instrument panelen visar automatiskt aktivitet under de senaste 24 timmarna. Följ dessa steg om du vill visa en annan tidsrymd för just den här panelen:
+Data på instrumentpanelen visar automatiskt aktivitet under de senaste 24 timmarna. Följ dessa steg om du vill visa ett annat tidsintervall för bara den här panelen:
 
-1. Välj **Anpassa panel data** från snabb menyn eller från ![ filtret filter ikon ](./media/azure-portal-dashboards/dashboard-filter.png) i det övre vänstra hörnet i panelen.
+1. Välj **Anpassa paneldata** på snabbmenyn eller från ![ filterikonfiltret ](./media/azure-portal-dashboards/dashboard-filter.png) i det övre vänstra hörnet av panelen.
 
-    ![Skärm bild av snabb menyn för panel](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
+    ![Skärmbild av panelens snabbmeny.](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
-1. Markera kryss rutan om du vill **åsidosätta inställningarna för instrument panels tid på panel nivån**.
+1. Markera kryssrutan för att **åsidosätta instrumentpanelens tidsinställningar på panelnivå.**
 
-    ![Skärm bild av dialog rutan för att konfigurera inställningar för panel tid](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
+    ![Skärmbild av dialogrutan för att konfigurera inställningar för paneltid.](./media/azure-portal-dashboards/dashboard-override-time-settings.png)
 
-1. Välj den tids period som ska visas för den här panelen. Du kan välja mellan de senaste 30 minuterna för de senaste 30 dagarna eller definiera ett anpassat intervall.
+1. Välj det tidsintervall som ska visas för den här panelen. Du kan välja mellan de senaste 30 minuterna och de senaste 30 dagarna eller definiera ett anpassat intervall.
 
-1. Välj tids kornig het som ska visas. Du kan visa var som helst från en minut till en månad.
+1. Välj den tidskornighet som ska visas. Du kan visa allt från en minuts ökning till en månad.
 
 1. Välj **Använd**.
 
 ## <a name="delete-a-tile"></a>Ta bort en panel
 
-Följ dessa steg om du vill ta bort en panel från en instrument panel:
+Om du vill ta bort en panel från en instrumentpanel gör du något av följande:
 
-* Välj snabb menyn i det övre högra hörnet i panelen och välj **ta bort från instrument panelen**. Eller:
+- Välj snabbmenyn i det övre högra hörnet av panelen och välj sedan Ta **bort från instrumentpanelen.**
 
-* Välj ![ Redigera Redigera ](./media/azure-portal-dashboards/dashboard-edit-icon.png)  ikon för att ange anpassnings läge. Hovra i det övre högra hörnet i panelen och välj ikonen Ta bort ![ ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) ta bort för att ta bort panelen från instrument panelen.
+- Välj ![ redigeringsikonen ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Redigera** för att gå till anpassningsläge. Hovra i det övre högra hörnet av panelen och välj sedan ikonen Ta ![ bort ikonen Ta bort för att ta bort panelen från ](./media/azure-portal-dashboards/dashboard-delete-icon.png) instrumentpanelen.
 
-   ![Skärm bild som visar hur du tar bort en panel från instrument panelen](./media/azure-portal-dashboards/dashboard-delete-tile.png)
+   ![Skärmbild som visar hur du tar bort panelen från instrumentpanelen.](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
 ## <a name="clone-a-dashboard"></a>Klona en instrumentpanel
 
-Följ dessa steg om du vill använda en befintlig instrument panel som mall för en ny instrument panel:
+Följ dessa steg om du vill använda en befintlig instrumentpanel som mall för en ny instrumentpanel:
 
-1. Se till att instrument panelens vy visar den instrument panel som du vill kopiera.
+1. Kontrollera att instrumentpanelsvyn visar den instrumentpanel som du vill kopiera.
 
-1. I sidhuvudet väljer du ![ klona ikon ](./media/azure-portal-dashboards/dashboard-clone.png) **kloning**.
+1. I sidhuvudet väljer du ![ klonikonen ](./media/azure-portal-dashboards/dashboard-clone.png) **Klona**.
 
-1. En kopia av instrument panelen, som heter **klon av** *ditt instrument panels namn* , öppnas i redigerings läge. Använd föregående steg i den här artikeln för att byta namn på och anpassa instrument panelen.
+1. En kopia av instrumentpanelen med namnet Klon av *instrumentpanelens namn öppnas* i redigeringsläge.  Använd föregående steg i den här artikeln för att byta namn på och anpassa instrumentpanelen.
 
-## <a name="publish-and-share-a-dashboard"></a>Publicera och dela en instrument panel
+## <a name="publish-and-share-a-dashboard"></a>Publicera och dela en instrumentpanel
 
-När du skapar en instrument panel är den privat som standard, vilket innebär att du är den enda som kan se den. Om du vill göra instrument paneler tillgängliga för andra kan du publicera och dela dem. Mer information finns i [dela Azure-instrumentpaneler med hjälp av rollbaserad åtkomst kontroll i Azure](azure-portal-dashboard-share-access.md).
+När du skapar en instrumentpanel är den privat som standard, vilket innebär att du är den enda som kan se den. Om du vill göra instrumentpaneler tillgängliga för andra kan du publicera och dela dem. Mer information finns i Dela [Azure-instrumentpaneler med hjälp av rollbaserad åtkomstkontroll i Azure.](azure-portal-dashboard-share-access.md)
 
-### <a name="open-a-shared-dashboard"></a>Öppna en delad instrument panel
+### <a name="open-a-shared-dashboard"></a>Öppna en delad instrumentpanel
 
-Följ dessa steg om du vill söka efter och öppna en delad instrument panel:
+Följ dessa steg om du vill hitta och öppna en delad instrumentpanel:
 
-1. Välj pilen bredvid instrument panelens namn.
+1. Välj pilen bredvid instrumentpanelens namn.
 
-1. Välj i listan över visade instrument paneler. Om den instrument panel som du vill öppna inte visas i listan:
+1. Välj från den visade listan över instrumentpaneler. Om den instrumentpanel som du vill öppna inte visas:
 
-    1. Välj **Bläddra alla instrument paneler**.
+    1. välj **Bläddra bland alla instrumentpaneler.**
 
-        ![Skärm bild av menyn Välj instrument panel](./media/azure-portal-dashboards/dashboard-browse.png)
+        ![Skärmbild av menyn för val av instrumentpanel](./media/azure-portal-dashboards/dashboard-browse.png)
 
-    1. I fältet **typ** väljer du **delade instrument paneler**.
+    1. I fältet **Typ** väljer du Delade **instrumentpaneler.**
 
-        ![Skärm bild av menyn alla val av instrument paneler](./media/azure-portal-dashboards/dashboard-browse-all.png)
+        ![Skärmbild av valmenyn för alla instrumentpaneler](./media/azure-portal-dashboards/dashboard-browse-all.png)
 
-    1. Välj en eller flera prenumerationer. Du kan också ange text för att filtrera instrument paneler efter namn.
+    1. Välj en eller flera prenumerationer. Du kan också ange text för att filtrera instrumentpaneler efter namn.
 
-    1. Välj en instrument panel i listan med delade instrument paneler.
+    1. Välj en instrumentpanel i listan över delade instrumentpaneler.
 
 ## <a name="delete-a-dashboard"></a>Ta bort en instrumentpanel
 
-Följ dessa steg om du vill ta bort en privat eller delad instrument panel permanent:
+Följ dessa steg om du vill ta bort en privat eller delad instrumentpanel permanent:
 
-1. Välj den instrument panel som du vill ta bort från listan bredvid instrument panelens namn.
+1. Välj den instrumentpanel som du vill ta bort från listan bredvid namnet på instrumentpanelen.
 
-1. Välj ![ ta bort ikon ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **ta** bort från sidhuvudet.
+1. Välj ![ ikonen Ta bort ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Ta** bort från sidhuvudet.
 
-1. För en privat instrument panel väljer du **OK** i bekräftelse dialog rutan för att ta bort instrument panelen. För en delad instrument panel, i bekräftelse dialog rutan, markerar du kryss rutan för att bekräfta att den publicerade instrument panelen inte längre kan visas av andra. Välj sedan **OK**.
+1. För en privat instrumentpanel väljer du **OK i** bekräftelsedialogrutan för att ta bort instrumentpanelen. För en delad instrumentpanel markerar du kryssrutan i bekräftelsedialogrutan för att bekräfta att den publicerade instrumentpanelen inte längre kan visas av andra. Välj sedan **OK**.
 
-    ![Skärm bild av borttagnings bekräftelse](./media/azure-portal-dashboards/dashboard-delete-dash.png)
+    ![Skärmbild av bekräftelse av borttagning.](./media/azure-portal-dashboards/dashboard-delete-dash.png)
 
 ## <a name="recover-a-deleted-dashboard"></a>Återställa en borttagen instrumentpanel
 
-Om du är i det globala Azure-molnet och du tar bort en _publicerad_ instrument panel i Azure Portal kan du återställa instrument panelen inom 14 dagar från borttagningen. Mer information finns i [återställa en borttagen instrument panel i Azure Portal](recover-shared-deleted-dashboard.md).
+Om du är i det globala Azure-molnet och tar bort en publicerad instrumentpanel i Azure Portal kan du återställa instrumentpanelen inom 14 dagar från borttagningen.  Mer information finns i [Återställa en borttagna instrumentpanel i Azure Portal](recover-shared-deleted-dashboard.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Dela Azure-instrumentpaneler med hjälp av rollbaserad åtkomst kontroll i Azure](azure-portal-dashboard-share-access.md)
-* [Skapa Azure-instrumentpaneler programmässigt](azure-portal-dashboards-create-programmatically.md)
+- [Dela Azure-instrumentpaneler med hjälp av rollbaserad åtkomstkontroll i Azure](azure-portal-dashboard-share-access.md)
+- [Skapa Azure-instrumentpaneler programmässigt](azure-portal-dashboards-create-programmatically.md)

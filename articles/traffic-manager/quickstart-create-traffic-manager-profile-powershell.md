@@ -4,8 +4,8 @@ description: Den här snabbstartsartikeln beskriver hur du skapar en Traffic Man
 services: traffic-manager
 author: duongau
 ms.author: duau
-manager: twooley
-ms.date: 10/01/2020
+manager: kumud
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: traffic-manager
 ms.workload: infrastructure-services
@@ -13,18 +13,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-api
-ms.openlocfilehash: 0fd2ae59f62850da75eecd5423ad225e208dca80
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 96580a56abaffcc11180a406e00aaabb1cb1e2e7
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537652"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727888"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-for-a-highly-available-web-application-using-azure-powershell"></a>Snabbstart: Skapa en Traffic Manager för en webbapp med hög Azure PowerShell
 
 I den här snabbstarten beskrivs hur du skapar en Traffic Manager-profil som ger hög tillgänglighet för din webbapp.
 
 I den här snabbstarten skapar du två instanser av en webbapp. Var och en av dem körs i olika Azure-regioner. Du skapar Traffic Manager-profil baserat på [slutpunktsprioritet](traffic-manager-routing-methods.md#priority-traffic-routing-method). Profilen dirigerar användartrafik till den primära plats som kör webbappen. Traffic Manager övervakar kontinuerligt webbappen. Om den primära platsen inte är tillgänglig ger den automatisk redundans till säkerhetskopieringsplatsen.
+
+:::image type="content" source="./media/quickstart-create-traffic-manager-profile/environment-diagram.png" alt-text="Diagram över Traffic Manager distributionsmiljö med hjälp av Azure PowerShell." border="false":::
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -40,7 +42,7 @@ Skapa en resursgrupp med [hjälp av New-AzResourceGroup](/powershell/module/az.r
 ```azurepowershell-interactive
 
 # Variables
-$Location1="WestUS"
+$Location1="EastUS"
 
 # Create a Resource Group
 New-AzResourceGroup -Name MyResourceGroup -Location $Location1
@@ -77,39 +79,37 @@ Skapa Web App Service-planer med hjälp av [New-AzAppServicePlan](/powershell/mo
 ```azurepowershell-interactive
 
 # Variables
-$App1Name="AppServiceTM1$Random"
-$App2Name="AppServiceTM2$Random"
-$Location1="WestUS"
-$Location2="EastUS"
+$Location1="EastUS"
+$Location2="WestEurope"
 
 # Create an App service plan
-New-AzAppservicePlan -Name "$App1Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location1 -Tier Standard
-New-AzAppservicePlan -Name "$App2Name-Plan" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
+New-AzAppservicePlan -Name "myAppServicePlanEastUS" -ResourceGroupName MyResourceGroup -Location $Location1 -Tier Standard
+New-AzAppservicePlan -Name "myAppServicePlanEastUS" -ResourceGroupName MyResourceGroup -Location $Location2 -Tier Standard
 
 ```
 ### <a name="create-a-web-app-in-the-app-service-plan"></a>Skapa en webbapp i App Service plan
-Skapa två instanser av webbappen med Hjälp av [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) i App Service i Azure-regionerna *USA,* västra *och USA,* östra.
+Skapa två instanser av webbappen med Hjälp av [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) i App Service i Azure-regionerna *USA,* östra och *Europa,* västra.
 
 ```azurepowershell-interactive
-$App1ResourceId=(New-AzWebApp -Name $App1Name -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "$App1Name-Plan").Id
-$App2ResourceId=(New-AzWebApp -Name $App2Name -ResourceGroupName MyResourceGroup -Location $Location2 -AppServicePlan "$App2Name-Plan").Id
+$App1ResourceId=(New-AzWebApp -Name myWebAppEastUS -ResourceGroupName MyResourceGroup -Location $Location1 -AppServicePlan "myAppServicePlanEastUS").Id
+$App2ResourceId=(New-AzWebApp -Name myWebAppWestEurope -ResourceGroupName MyResourceGroup -Location $Location2 -AppServicePlan "myAppServicePlanWestEurope").Id
 
 ```
 
 ## <a name="add-traffic-manager-endpoints"></a>Lägga till Traffic Manager-slutpunkter
 Lägg till de Web Apps som Traffic Manager slutpunkter med [New-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) till Traffic Manager profilen enligt följande:
-- Lägg till webbappen i *Azure-regionen USA,* västra som primär slutpunkt för att dirigera all användartrafik. 
-- Lägg till webbappen i *Azure-regionen USA,* östra som redundansslutpunkt. När den primära slutpunkten inte är tillgänglig dirigeras trafiken automatiskt till redundansslutpunkten.
+- Lägg till webbappen i *Azure-regionen USA,* östra som primär slutpunkt för att dirigera all användartrafik. 
+- Lägg till webbappen i *Azure-regionen Europa, västra* som redundansslutpunkt. När den primära slutpunkten inte är tillgänglig dirigeras trafiken automatiskt till redundansslutpunkten.
 
 ```azurepowershell-interactive
-New-AzTrafficManagerEndpoint -Name "$App1Name-$Location1" `
+New-AzTrafficManagerEndpoint -Name "myPrimaryEndpoint" `
 -ResourceGroupName MyResourceGroup `
 -ProfileName "$mytrafficmanagerprofile" `
 -Type AzureEndpoints `
 -TargetResourceId $App1ResourceId `
 -EndpointStatus "Enabled"
 
-New-AzTrafficManagerEndpoint -Name "$App2Name-$Location2" `
+New-AzTrafficManagerEndpoint -Name "myFailoverEndpoint" `
 -ResourceGroupName MyResourceGroup `
 -ProfileName "$mytrafficmanagerprofile" `
 -Type AzureEndpoints `
@@ -130,7 +130,7 @@ Get-AzTrafficManagerProfile -Name $mytrafficmanagerprofile `
 -ResourceGroupName MyResourceGroup
 ```
 
-Kopiera **värdet RelativeDnsName.** DNS-namnet för din Traffic Manager profil är *http://<* relativednsname *>.trafficmanager.net*. 
+Kopiera värdet **RelativeDnsName.** DNS-namnet för din Traffic Manager profil är *http://<* relativednsname *>.trafficmanager.net*. 
 
 ### <a name="view-traffic-manager-in-action"></a>Se hur Traffic Manager fungerar i praktiken
 1. I en webbläsare anger du DNS-namnet på din Traffic Manager-profil (*http://<* relativednsname *>.trafficmanager.net*) för att visa webbappens standardwebbplats.
@@ -140,7 +140,7 @@ Kopiera **värdet RelativeDnsName.** DNS-namnet för din Traffic Manager profil 
 2. Om du Traffic Manager redundans i praktiken inaktiverar du din primära plats med [hjälp av Disable-AzTrafficManagerEndpoint](/powershell/module/az.trafficmanager/disable-aztrafficmanagerendpoint).
 
    ```azurepowershell-interactive
-    Disable-AzTrafficManagerEndpoint -Name $App1Name-$Location1 `
+    Disable-AzTrafficManagerEndpoint -Name "myPrimaryEndpoint" `
     -Type AzureEndpoints `
     -ProfileName $mytrafficmanagerprofile `
     -ResourceGroupName MyResourceGroup `

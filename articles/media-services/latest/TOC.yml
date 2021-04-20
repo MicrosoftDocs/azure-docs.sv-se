@@ -85,6 +85,8 @@
       items:
         - name: Koda och strömma en fjärrfil – Node.js
           href: stream-files-nodejs-quickstart.md
+        - name: Strömma live med Node.js
+          href: stream-live-tutorial-with-nodejs.md
     - name: Python
       items:
         - name: Grundläggande Python-kodning

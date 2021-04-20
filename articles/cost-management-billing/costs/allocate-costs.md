@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 414ce626d76c9b7a7d073d6cbfa5a5f4446c3073
-ms.sourcegitcommit: a8ff4f9f69332eef9c75093fd56a9aae2fe65122
+ms.openlocfilehash: e7afef7e0a10bb4be3c30112fc207467167e4a17
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105025534"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726528"
 ---
 # <a name="create-and-manage-azure-cost-allocation-rules-preview"></a>Skapa och hantera regler för kostnadsallokering i Azure (för hands version)
 
@@ -96,7 +96,7 @@ I Azure Portal navigerar du till **Cost Management + fakturering** > **Cost Mana
 
 :::image type="content" source="./media/allocate-costs/tagged-costs.png" alt-text="Exempel som visar kostnader för alla kunder" lightbox="./media/allocate-costs/tagged-costs.png" :::
 
-Här är en video som visar hur du skapar en kostnads tilldelnings regel.
+Här är en video som visar hur du skapar en kostnadsallokeringsregel.
 
 >[!VIDEO https://www.youtube.com/embed/nYzIIs2mx9Q]
 
@@ -105,12 +105,7 @@ Här är en video som visar hur du skapar en kostnads tilldelnings regel.
 
 Du kan redigera en kostnadsallokeringsregel för att ändra källan eller målet, eller för att uppdatera den förifyllda procentandelen för beräknings-, lagrings- eller nätverksalternativ. Redigera reglerna på samma sätt som du skapar dem. Det kan ta upp till två timmar att ändra befintliga regler.
 
-## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
-
-Följande avsnitt innehåller vanliga frågor om kostnadsallokering.
-
-### <a name="what-are-the-current-limitations-with-cost-allocation-in-public-preview"></a>Vilka är de aktuella begränsningarna med kostnadsallokering i offentlig förhandsversion?
-<a name="limitations"></a>
+## <a name="current-limitations"></a>Aktuella begränsningar
 
 För närvarande kan kostnadsallokering användas i Cost Management av kostnadsanalyser, budgetar och prognosvyer. Allokerade kostnader visas också i listan med prenumerationer och på sidan Prenumerationsöversikt.
 
@@ -122,32 +117,9 @@ Följande objekt kan för närvarande inte användas i den offentliga förhandsv
 - [Cost Management Power BI-appen](https://appsource.microsoft.com/product/power-bi/costmanagement.azurecostmanagementapp)
 - [Power BI Desktop-anslutningsappen](/power-bi/connect-data/desktop-connect-azure-cost-management)
 
-### <a name="are-costs-factored-into-budgets-and-forecast-views"></a>Räknas kostnaderna med i budget- och prognosvyerna?
-<a name="budgets-forecast"></a>
-
-Ja. Allokerade kostnader räknas in i och stöds av budgetar och prognoser. I budget- och prognosvyerna visas kostnader som har allokerats till dem enligt kostnadsallokeringsreglerna.
-
-### <a name="if-a-cost-allocation-rule-is-deleted-what-happens"></a>Vad händer om en kostnadsallokeringsregel tas bort?
-<a name="delete-rule"></a>
-
-När en kostnadsallokeringsregel tas bort, tas alla öppna och aktuella faktureringsmånadskostnader som allokeras till målen bort. Om kostnadsallokeringsregeln har funnits i flera månader förblir de tidigare föregående månaderna med allokeringsdata de som ursprungligen angavs av allokeringsregeln.
-
-### <a name="why-is-an-enrollment-admin-or-a-billing-account-admin-needed-to-create-cost-allocation-rules"></a>Varför krävs det en registreringsadministratör eller en faktureringskontoadministratör för att skapa kostnadsallokeringsregler?
-<a name="why-admin"></a>
-
-Kostnadsallokeringsregler skapas antingen i registreringsomfånget (Enterprise-avtal) eller i faktureringskontoomfånget (Microsoft-kundavtal). För att kunna göra ändringar i de här omfången måste man ha administratörsbehörighet för fakturering.
-
-### <a name="why-are-sources-and-targets-limited-to-25-per-rule"></a>Varför är källor och mål begränsade till 25 per regel?
-<a name="source-target-rule-limit"></a>
-
-Gränsen är en förhandsversionsbegränsning för att säkerställa prestanda och skalbarhet för bästa kostnadsallokering. Gränserna kommer antingen att ökas eller tas bort när kostnadsallokeringen övergår till allmän tillgänglighet (GA).
-
-### <a name="what-can-happen-if-cost-allocation-rules-sourcestargets-overlap"></a>Vad kan hända om kostnadsallokeringsregler (källor/mål) överlappar?
-<a name="rule-overlap"></a>
-
-Du bör inte ha regler med överlappande källor eller överlappande mål. Kostnadsallokeringsregler tillämpas i ordning efter skapandedatum, så om det finns överlappande kostnadsallokeringsregler prioriteras den regel som har det tidigaste skapandedatumet.
 
 ## <a name="next-steps"></a>Nästa steg
 
+- Läs vanliga [Cost Management + Billing och svar](../cost-management-billing-faq.yml) om kostnadsallokering.
 - Skapa eller uppdatera allokeringsregler med hjälp av [REST-API:et för kostnadsallokering](/rest/api/cost-management/costallocationrules)
 - Läs mer om att [optimera din molninvestering med Azure Cost Management](cost-mgt-best-practices.md)

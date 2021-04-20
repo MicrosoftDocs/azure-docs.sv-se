@@ -1,6 +1,6 @@
 ---
 title: Vad är nytt i Azure NetApp Files | Microsoft Docs
-description: Innehåller en översikt över de senaste nya funktionerna och förbättringarna av Azure NetApp Files.
+description: Innehåller en sammanfattning av de senaste nya funktionerna och förbättringarna av Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,112 +12,116 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 04/05/2021
+ms.date: 04/19/2021
 ms.author: b-juche
-ms.openlocfilehash: 94981cd0912f76b710b3a60040ffbffd38381bcd
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 3c6da2137f2db43284ce7a533ff763e9ef157f35
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106552112"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726654"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Vad är nytt i Azure NetApp Files
 
-Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en översikt över de senaste nya funktionerna och förbättringarna. 
+Azure NetApp Files uppdateras regelbundet. Den här artikeln innehåller en sammanfattning av de senaste nya funktionerna och förbättringarna. 
 
 ## <a name="april-2021"></a>April 2021
 
-* [Active Directory Domain Services (lägger till) LDAP-användar mappning med NFS-utökade grupper (för](configure-ldap-extended-groups.md) hands version)   
+* [SMB3-protokollkryptering](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (förhandsversion) 
 
-    Azure NetApp Files stöder som standard upp till 16 grupp-ID: n vid hantering av autentiseringsuppgifter för NFS-användare, enligt definitionen i [RFC 5531](https://tools.ietf.org/html/rfc5531). Med den här nya funktionen kan du nu öka Max gränsen upp till 1 024 om du har användare som är medlemmar i fler än standard antalet grupper. För att stödja den här funktionen kan NFS-volymer nu också läggas till i tillägg till LDAP, vilket gör det möjligt Active Directory LDAP-användare med utökade grupp poster (med upp till 1024 grupper) för att få åtkomst till volymen. 
+    Du kan nu aktivera SMB3-protokollkryptering på Azure NetApp Files SMB- och dual-protocol-volymer. Den här funktionen möjliggör kryptering för aktuella SMB3-data med hjälp av [AES-CCM-algoritmen på SMB 3.0 och AES-GCM-algoritmen på SMB 3.1.1-anslutningar.](/windows-server/storage/file-server/file-server-smb-overview#features-added-in-smb-311-with-windows-server-2016-and-windows-10-version-1607) SMB-klienter som inte använder SMB3-kryptering kan inte komma åt den här volymen. Vilodata krypteras oavsett den här inställningen. SMB-kryptering förbättrar säkerheten ytterligare. Det kan dock påverka klienten (PROCESSORkostnader för kryptering och dekryptering av meddelanden). Det kan också påverka användningen av lagringsresurser (minskning av dataflödet). Du bör testa krypteringsprestandapåverkan mot dina program innan du distribuerar arbetsbelastningar till produktion.
+
+* [Active Directory Domain Services (ADDS) LDAP-användarmappning med utökade NFS-grupper](configure-ldap-extended-groups.md) (förhandsversion)   
+
+    Som standard stöder Azure NetApp Files upp till 16 grupp-ID:n vid hantering av NFS-användarautentiseringsuppgifter, enligt definitionen i [RFC 5531](https://tools.ietf.org/html/rfc5531). Med den här nya funktionen kan du nu öka maximalt upp till 1 024 om du har användare som är medlemmar i fler än standardantalet grupper. För att stödja den här funktionen kan NFS-volymer nu också läggas till i ADDS LDAP, vilket gör att Active Directory LDAP-användare med utökade gruppposter (med upp till 1 024 grupper) kan komma åt volymen. 
 
 ## <a name="march-2021"></a>Mars 2021
+ 
+* [SMB-resurser för kontinuerlig tillgänglighet (CA)](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (förhandsversion)  
 
-* [SMB-resurser för kontinuerlig tillgänglighet](azure-netapp-files-create-volumes-smb.md#add-an-smb-volume) (för hands version)  
+    SMB transparent redundans möjliggör underhållsåtgärder på Azure NetApp Files-tjänsten utan att avbryta anslutningen till serverprogram som lagrar och kommer åt data på SMB-volymer. För att stödja SMB transparent redundans Azure NetApp Files stöder nu alternativet SMB-resurser för kontinuerlig tillgänglighet för användning med SQL Server-program över SMB som körs på virtuella Azure-datorer. Den här funktionen stöds för närvarande i Windows SQL Server. Linux SQL Server stöds inte för närvarande. Aktivering av den här funktionen ger betydande SQL Server prestandaförbättringar och skalnings- och kostnadsfördelar för enskild [instans, Always-On-redundansklusterinstans och Always-On-distributioner av tillgänglighetsgrupp.](azure-netapp-files-solution-architectures.md#sql-server) Se [Fördelar med att använda Azure NetApp Files för SQL Server distribution.](solutions-benefits-azure-netapp-files-sql-server.md)
 
-    SMB transparent redundans möjliggör underhålls åtgärder på tjänsten Azure NetApp Files utan att avbryta anslutningen till serverprogram som lagrar och använder data på SMB-volymer. För att ha stöd för transparent SMB-redundans stöder Azure NetApp Files nu alternativet SMB-resurser med kontinuerlig tillgänglighet för användning med SQL Server program över SMB som körs på virtuella Azure-datorer. Den här funktionen stöds för närvarande på Windows SQL Server. Linux-SQL Server stöds inte för närvarande. Att aktivera den här funktionen ger betydande SQL Server prestanda förbättringar och skalnings-och kostnads förmåner för [en enskild instans, Always-On redundanskluster och Always-On tillgänglighets grupps distributioner](azure-netapp-files-solution-architectures.md#sql-server). Se [fördelarna med att använda Azure NetApp Files för SQL Server-distribution](solutions-benefits-azure-netapp-files-sql-server.md).
+* [Automatisk storleksändring av en målvolym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 
-* [Automatisk storleks ändring av en mål volym för replikering mellan regioner](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
-
-    I en replikeringsrelation mellan regioner ändras storleken på mål volymen automatiskt baserat på käll volymens storlek. Därför behöver du inte ändra storlek på mål volymen separat. Det här beteendet för automatisk storleks ändring är tillämpligt när volymerna finns i en aktiv replikeringsrelation, eller när replikeringen är bruten vid omsynkroniseringen. För att den här funktionen ska fungera måste du se till att det finns tillräckligt med utrymme i kapacitets poolerna för både käll-och mål volymerna.
+    I en replikeringsrelation mellan regioner ändras storleken på målvolymen automatiskt baserat på källvolymens storlek. Därför behöver du inte ändra storlek på målvolymen separat. Det här beteendet för automatisk storleksändring gäller när volymerna finns i en aktiv replikeringsrelation eller när replikerings-peering bryts med omsynkroniseringsåtgärden. För att den här funktionen ska fungera måste du se till att det finns tillräckligt med utrymme i kapacitetspoolerna för både käll- och målvolymerna.
 
 ## <a name="december-2020"></a>December 2020
 
-* [Azure Application enhetligt ögonblicks bild verktyget](azacsnap-introduction.md) (förhands granskning)    
+* [Azure Application konsekvent ögonblicksbild (förhandsversion)](azacsnap-introduction.md)    
 
-    Azure Application enhetligt ögonblicks bild verktyget (AzAcSnap) är ett kommando rads verktyg som gör det möjligt att förenkla data skyddet för databaser från tredje part (SAP HANA) i Linux-miljöer (till exempel SUSE och RHEL).   
+    Azure Application Consistent Snapshot Tool (AzAcSnap) är ett kommandoradsverktyg som gör att du kan förenkla dataskyddet för databaser från tredje part (SAP HANA) i Linux-miljöer (till exempel SUSE och RHEL).   
 
-    AzAcSnap utnyttjar volym ögonblicks bilder och Replikerings funktioner i Azure NetApp Files och Azure stor instans. Det ger följande fördelar:
+    AzAcSnap utnyttjar funktionerna för ögonblicksbilder och replikering av volymer i Azure NetApp Files och Azure Large Instance. Det ger följande fördelar:
 
-    * Programkonsekvent data skydd 
-    * Databas katalog hantering 
-    * *Ad hoc* -volymens skydd 
-    * Kloning av lagrings volymer 
-    * Stöd för haveri beredskap 
+    * Program konsekvent dataskydd 
+    * Hantering av databaskatalog 
+    * *Ad hoc-volymskydd* 
+    * Kloning av lagringsvolymer 
+    * Stöd för haveriberedskap 
 
 ## <a name="november-2020"></a>November 2020
 
-* [Återställ ögonblicks bild](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
+* [Återställning av ögonblicksbild](azure-netapp-files-manage-snapshots.md#revert-a-volume-using-snapshot-revert)
 
-    Med funktionen för återställning av ögonblicks bilder kan du snabbt återställa en volym till det tillstånd den var i när en viss ögonblicks bild togs. I de flesta fall går det mycket snabbare att återställa en volym än att återställa enskilda filer från en ögonblicks bild till det aktiva fil systemet. Det är också mer utrymmes effektivt jämfört med att återställa en ögonblicks bild till en ny volym.
+    Med funktionen för återställning av ögonblicksbilder kan du snabbt återställa en volym till det tillstånd som den var i när en viss ögonblicksbild togs. I de flesta fall går det mycket snabbare att återställa en volym än att återställa enskilda filer från en ögonblicksbild till det aktiva filsystemet. Det är också mer utrymmeseffektivt jämfört med att återställa en ögonblicksbild till en ny volym.
 
 ## <a name="september-2020"></a>September 2020
 
-* [Azure NetApp Files replikering mellan regioner](cross-region-replication-introduction.md) (för hands version)
+* [Azure NetApp Files replikering mellan regioner](cross-region-replication-introduction.md) (förhandsversion)
 
-  Azure NetApp Files stöder nu replikering över flera regioner. Med den här nya funktionen för haveri beredskap kan du replikera dina Azure NetApp Files volymer från en Azure-region till en annan på ett snabbt och kostnads effektivt sätt och skydda dina data från oförutsedda regionala haverier. Azure NetApp Files replikering mellan regioner utnyttjar NetApp SnapMirror® Technology; endast ändrade block skickas över nätverket i ett komprimerat, effektivt format. Den här tillverkarspecifika tekniken minimerar mängden data som krävs för att replikera över regionerna, och därför sparar kostnader för data överföring. Den förkortar också replikerings tiden, så att du kan få ett mindre återställnings punkt mål (återställnings punkt mål).
+  Azure NetApp Files stöder nu replikering mellan regioner. Med den här nya haveriberedskapsfunktionerna kan du replikera dina Azure NetApp Files-volymer från en Azure-region till en annan på ett snabbt och kostnadseffektivt sätt, vilket skyddar dina data från oförutsedda regionala fel. Azure NetApp Files replikering mellan regioner använder NetApp SnapMirror®teknik; endast ändrade block skickas via nätverket i ett komprimerat, effektivt format. Den här egenutvecklade tekniken minimerar mängden data som krävs för att replikera mellan regionerna, vilket sparar kostnader för dataöverföring. Det förkortar också replikeringstiden så att du kan uppnå ett mindre mål för återställningspunkt (RPO).
 
-* [Manuell pool för QoS-kapacitet](manual-qos-capacity-pool-introduction.md) (för hands version)  
+* [Manuell QoS-kapacitetspool](manual-qos-capacity-pool-introduction.md) (förhandsversion)  
 
-    I en manuell pool för QoS-kapacitet kan du tilldela kapaciteten och data flödet för en volym oberoende av varandra. Det totala data flödet för alla volymer som skapats med en manuell QoS-kapacitet begränsas av poolens totala genomflöde. Det bestäms av kombinationen av poolens storlek och data flödet på tjänst nivå. Alternativt kan en Pools [QoS-typ](azure-netapp-files-understand-storage-hierarchy.md#qos_types) vara automatisk (automatisk), vilket är standardvärdet. I en pool med automatisk QoS-kapacitet tilldelas data flöde automatiskt till volymerna i poolen, proportionella mot storleks kvoten som tilldelats volymerna.
+    I en manuell QoS-kapacitetspool kan du tilldela kapacitet och dataflöde för en volym oberoende av varandra. Det totala dataflödet för alla volymer som skapas med en manuell QoS-kapacitetspool begränsas av poolens totala dataflöde. Det bestäms av kombinationen av poolstorleken och dataflödet på tjänstnivå. Alternativt kan [QoS-typen för en kapacitetspool](azure-netapp-files-understand-storage-hierarchy.md#qos_types) vara automatisk, vilket är standardinställningen. I en automatisk QoS-kapacitetspool tilldelas dataflödet automatiskt till volymerna i poolen, proportionellt mot storlekskvoten som tilldelats volymerna.
 
-* [LDAP-signering](azure-netapp-files-create-volumes-smb.md) (för hands version)   
+* [LDAP-signering](azure-netapp-files-create-volumes-smb.md) (förhandsversion)   
 
-    Azure NetApp Files stöder nu LDAP-signering för säkra LDAP-sökningar mellan Azure NetApp Files-tjänsten och de användardefinierade Active Directory Domain Services domän kontrol Lanterna. Den här funktionen finns för närvarande som en förhandsversion.
+    Azure NetApp Files stöder nu LDAP-signering för säkra LDAP-uppslag mellan Azure NetApp Files-tjänsten och de Active Directory Domain Services domänkontrollanterna. Den här funktionen finns för närvarande som en förhandsversion.
 
-* [AES-kryptering för AD-autentisering](azure-netapp-files-create-volumes-smb.md) (för hands version)
+* [AES-kryptering för AD-autentisering](azure-netapp-files-create-volumes-smb.md) (förhandsversion)
 
-    Azure NetApp Files stöder nu AES-kryptering på LDAP-anslutning till DOMÄNKONTROLLANT för att aktivera AES-kryptering för en SMB-volym. Den här funktionen finns för närvarande som en förhandsversion. 
+    Azure NetApp Files stöder nu AES-kryptering på LDAP-anslutning till domänkontrollant för att aktivera AES-kryptering för en SMB-volym. Den här funktionen finns för närvarande som en förhandsversion. 
 
-* Nya [mått](azure-netapp-files-metrics.md):   
+* Nya [mått:](azure-netapp-files-metrics.md)   
 
-    * Nya volym mått: 
-        * *Storlek på allokerad volym: den allokerade* storleken på en volym
-    * Mått för nya pooler: 
-        * *Allokerad storlek för pool*: poolens allokerade storlek 
-        * *Total ögonblicks bild storlek för poolen*: summan av ögonblicks bildernas storlek från alla volymer i poolen
+    * Nya volymmått: 
+        * *Allokerad volymstorlek:* Den etablerade storleken på en volym
+    * Nya poolmått: 
+        * *Allokerad storlek* för pool: Poolens etablerade storlek 
+        * *Total ögonblicksbildstorlek för poolen:* Summan av ögonblicksbildstorleken från alla volymer i poolen
 
 ## <a name="july-2020"></a>Juli 2020
 
-* [NFSv3-och SMB-volym (Dual-Protocol)](create-volumes-dual-protocol.md)
+* [Volym med dubbla protokoll (NFSv3 och SMB)](create-volumes-dual-protocol.md)
 
-    Nu kan du skapa en Azure NetApp Files volym som tillåter samtidig åtkomst med dubbla protokoll (NFS v3 och SMB) med stöd för mappning av LDAP-användare. Den här funktionen möjliggör användnings fall där du kan ha en Linux-baserad arbets belastning som genererar och lagrar data i en Azure NetApp Files volym. På samma gång måste personalen använda Windows-baserade klienter och program vara för att analysera de nyligen genererade data från samma Azure NetApp Files volym. Med funktionen samtidig åtkomst med dubbla protokoll raderas behovet av att kopiera data för arbets belastnings data till en separat volym med ett annat protokoll för efter analys, sparande av lagrings kostnad och drift tid. Den här funktionen är kostnads fri (normal [Azure NetApp Files lagrings kostnad](https://azure.microsoft.com/pricing/details/netapp/) gäller fortfarande) och är allmänt tillgänglig. Läs mer i [dokumentationen för samtidig åtkomst till dubbla protokoll](create-volumes-dual-protocol.MD).
+    Nu kan du skapa en Azure NetApp Files-volym som tillåter samtidig åtkomst med dubbla protokoll (NFS v3 och SMB) med stöd för LDAP-användarmappning. Den här funktionen möjliggör användningsfall där du kan ha en Linux-baserad arbetsbelastning som genererar och lagrar data i en Azure NetApp Files volym. Samtidigt måste personalen använda Windows-baserade klienter och programvara för att analysera nyligen genererade data från samma Azure NetApp Files volym. Funktionen samtidig åtkomst med dubbla protokoll gör att du inte behöver kopiera arbetsbelastningsgenererade data till en separat volym med ett annat protokoll för efteranalys, vilket sparar lagringskostnad och drifttid. Den här funktionen är kostnadsfri (normal [Azure NetApp Files fortfarande](https://azure.microsoft.com/pricing/details/netapp/) gäller) och är allmänt tillgänglig. Läs mer i dokumentationen [om samtidig åtkomst med dubbla protokoll.](create-volumes-dual-protocol.MD)
 
-* [NFS v 4.1 Kerberos-kryptering under överföring](configure-kerberos-encryption.MD)
+* [NFS v4.1 Kerberos-kryptering under överföring](configure-kerberos-encryption.MD)
 
-    Azure NetApp Files stöder nu NFS-klient kryptering i Kerberos-lägen (krb5, krb5i och krb5p) med AES-256-kryptering, vilket ger dig ytterligare data säkerhet. Den här funktionen är kostnads fri (normal [Azure NetApp Files lagrings kostnad](https://azure.microsoft.com/pricing/details/netapp/) gäller fortfarande) och är allmänt tillgänglig. Läs mer i [dokumentationen för Kerberos-kryptering i NFS v 4.1](configure-kerberos-encryption.MD).
+    Azure NetApp Files stöder nu NFS-klientkryptering i Kerberos-lägen (krb5, krb5i och krb5p) med AES-256-kryptering, vilket ger ytterligare datasäkerhet. Den här funktionen är kostnadsfri (normal [Azure NetApp Files fortfarande](https://azure.microsoft.com/pricing/details/netapp/) gäller) och är allmänt tillgänglig. Läs mer i [dokumentationen om NFS v4.1 Kerberos-kryptering.](configure-kerberos-encryption.MD)
 
-* [Ändring av service nivå för dynamisk volym](dynamic-change-volume-service-level.MD)
+* [Dynamisk ändring av volymtjänstnivå](dynamic-change-volume-service-level.MD)
 
-    Cloud lovar flexibilitet i IT-utgifterna. Du kan nu ändra service nivån för en befintlig Azure NetApp Files volym genom att flytta volymen till en annan kapacitets pool som använder den tjänste nivå som du vill använda för volymen. Den här ändringar på plats på service nivå för volymen kräver inte att du migrerar data. Det påverkar inte heller data planets åtkomst till volymen. Du kan ändra en befintlig volym för att använda en högre service nivå för bättre prestanda eller för att använda en lägre service nivå för kostnads optimering. Den här funktionen är kostnads fri (normal [Azure NetApp Files lagrings kostnad](https://azure.microsoft.com/pricing/details/netapp/) gäller fortfarande) och är för närvarande en offentlig för hands version. Du kan registrera dig för för hands versionen av funktionen genom att följa den [dynamiska volymens ändrings dokumentation på tjänst nivå](dynamic-change-volume-service-level.md).
+    Molnet utlovar flexibilitet i IT-utgifter. Du kan nu ändra servicenivån för en befintlig Azure NetApp Files volym genom att flytta volymen till en annan kapacitetspool som använder den servicenivå som du vill ha för volymen. Den här ändringen på servicenivå på plats för volymen kräver inte att du migrerar data. Det påverkar inte heller dataplanets åtkomst till volymen. Du kan ändra en befintlig volym om du vill använda en högre servicenivå för bättre prestanda eller använda en lägre servicenivå för kostnadsoptimering. Den här funktionen är kostnadsfri (normal Azure NetApp Files [fortfarande](https://azure.microsoft.com/pricing/details/netapp/) gäller) och är för närvarande i offentlig förhandsversion. Du kan registrera dig för funktionsförhandsvisningen genom att följa [dokumentationen för dynamisk volymändring på tjänstnivå.](dynamic-change-volume-service-level.md)
 
-* [Princip för ögonblicks bild av volym](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) (för hands version) 
+* [Princip för ögonblicksbild av volym](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies) (förhandsversion) 
 
-    Med Azure NetApp Files kan du skapa tidpunkts ögonblicks bilder av dina volymer. Nu kan du skapa en ögonblicks bild princip om du vill att Azure NetApp Files automatiskt ska skapa ögonblicks bilder av volymen enligt valfri frekvens. Du kan schemalägga att ögonblicks bilderna ska tas i varje timme, varje dag, varje vecka eller månads vis. Du kan också ange det maximala antal ögonblicks bilder som ska sparas som en del av ögonblicks bild principen. Den här funktionen är kostnads fri (normal [Azure NetApp Files lagrings kostnad](https://azure.microsoft.com/pricing/details/netapp/) gäller fortfarande) och är för närvarande en för hands version. Du kan registrera dig för för hands versionen av funktionen genom att följa [dokumentationen för volym ögonblicks bilds principen](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies).
+    Azure NetApp Files kan du skapa ögonblicksbilder av dina volymer vid en tidpunkt. Nu kan du skapa en ögonblicksbildsprincip för att Azure NetApp Files skapa ögonblicksbilder av volymen automatiskt med valfri frekvens. Du kan schemalägga ögonblicksbilderna som ska tas i varje timme, varje dag, varje vecka eller varje månad. Du kan också ange det maximala antalet ögonblicksbilder som ska behållas som en del av ögonblicksbildsprincipen. Den här funktionen är kostnadsfri (normal [Azure NetApp Files fortfarande](https://azure.microsoft.com/pricing/details/netapp/) gäller) och är för närvarande i förhandsversion. Du kan registrera dig för funktionsförhandsvisningen genom att följa [principdokumentationen för volymögonblicksbilder.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
 
-* [Export princip för NFS-rot åtkomst](azure-netapp-files-configure-export-policy.md)
+* [Exportprincip för NFS-rotåtkomst](azure-netapp-files-configure-export-policy.md)
 
-    Med Azure NetApp Files kan du nu ange om rot kontot ska ha åtkomst till volymen. 
+    Azure NetApp Files nu kan du ange om rotkontot kan komma åt volymen. 
 
-* [Dölj ögonblicks bilds Sök väg](azure-netapp-files-manage-snapshots.md#restore-a-file-from-a-snapshot-using-a-client)
+* [Dölj sökväg för ögonblicksbilder](azure-netapp-files-manage-snapshots.md#restore-a-file-from-a-snapshot-using-a-client)
 
-    Med Azure NetApp Files kan du nu ange om en användare ska kunna se och komma åt `.snapshot` katalogen (NFS-klienter) eller `~snapshot` mappen (SMB-klienter) på en monterad volym.
+    Azure NetApp Files nu kan du ange om en användare kan se och komma åt katalogen `.snapshot` (NFS-klienter) eller mappen `~snapshot` (SMB-klienter) på en monterad volym.
 
 ## <a name="may-2020"></a>Maj 2020
 
-* [Användare av säkerhets kopierings princip](create-active-directory-connections.md) (förhands granskning)
+* [Användare av säkerhetskopieringspolicy](create-active-directory-connections.md) (förhandsversion)
 
-    Med Azure NetApp Files kan du inkludera ytterligare konton som kräver förhöjd behörighet för det dator konto som skapats för användning med Azure NetApp Files. De angivna kontona kommer att kunna ändra NTFS-behörigheter på fil-eller mappnivå. Du kan till exempel ange ett icke-privilegierat tjänst konto som används för att migrera data till en SMB-filresurs i Azure NetApp Files. Funktionen säkerhets kopierings princip användare är för närvarande en för hands version.
+    Azure NetApp Files kan du inkludera ytterligare konton som kräver utökade privilegier till datorkontot som skapats för användning med Azure NetApp Files. De angivna kontona kan ändra NTFS-behörigheterna på fil- eller mappnivå. Du kan till exempel ange ett icke-privilegierat tjänstkonto som används för att migrera data till en SMB-filresurs i Azure NetApp Files. Funktionen Användare av säkerhetskopieringspolicy finns för närvarande i förhandsversion.
 
 ## <a name="next-steps"></a>Nästa steg
 * [Vad är Azure NetApp Files](azure-netapp-files-introduction.md)

@@ -98,7 +98,7 @@
           href: reservations/reserved-instance-windows-software-costs.md?toc=/azure/cost-management-billing/toc.json
         - name: Användningsdata för enskilda prenumerationer
           href: reservations/understand-reserved-instance-usage.md?toc=/azure/cost-management-billing/toc.json
-        - name: Användningsdata Microsoft-kundavtal företag och tjänster
+        - name: Enterprise- Microsoft-kundavtal användningsdata
           href: reservations/understand-reserved-instance-usage-ea.md?toc=/azure/cost-management-billing/toc.json
     - name: Fakturering
       items:
@@ -280,7 +280,7 @@
           href: manage/cost-management-budget-scenario.md
         - name: Använda kostnadsaviseringar
           href: costs/cost-mgt-alerts-monitor-usage-spending.md
-        - name: Exportera kostnadsdata med en Storage SAS-nyckel
+        - name: Exportera kostnadsdata med en SAS-nyckel för Storage
           href: costs/export-cost-data-storage-account-sas-key.md
         - name: Tilldela kostnader
           href: costs/allocate-costs.md
@@ -402,7 +402,7 @@
       href: /powershell/module/Az.CostManagement
     - name: Scenarier för automatisering av fakturering
       href: manage/cost-management-automation-scenarios.md
-    - name: Azure-REST API
+    - name: Azure Retail Prices REST API
       href: /rest/api/cost-management/retail-prices/azure-retail-prices
     - name: REST API för Azure-fakturering
       href: /rest/api/billing
@@ -410,7 +410,7 @@
       href: manage/consumption-api-overview.md
     - name: REST API för Azure Consumption
       href: /rest/api/consumption
-    - name: Översikt över REST API företagsrapportering
+    - name: Översikt över REST API rapportering
       href: manage/enterprise-api.md
     - name: 'REST-API:er för Enterprise Reporting'
       href: /rest/api/billing/enterprise/billing-enterprise-api-balance-summary
@@ -428,6 +428,8 @@
           href: /rest/api/consumption/reservationsdetails
 - name: Resurser
   items:
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: cost-management-billing-faq.yml
     - name: Utveckla dina färdigheter med Microsoft Learn
       href: /learn/browse/?products=azure-cost-management
     - name: Feedbackforum för Cost Management

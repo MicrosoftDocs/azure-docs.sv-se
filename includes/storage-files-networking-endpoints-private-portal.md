@@ -5,30 +5,30 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 5/11/2020
+ms.date: 04/15/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09723030f0da0252120f66f36347cad2e3a3546a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 958c40ed311ebe8b2a83ce0d4d394d00f48d1afa
+ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93376200"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732275"
 ---
-Navigera till lagrings kontot som du vill skapa en privat slut punkt för. I innehålls förteckningen för lagrings kontot väljer du **anslutningar för privata slut punkter** och sedan **+ privat slut punkt** för att skapa en ny privat slut punkt. 
+Gå till det lagringskonto som du vill skapa en privat slutpunkt för. I innehållsförteckningen för lagringskontot väljer du **Nätverk,** **Privata slutpunktsanslutningar** och **sedan + Privat slutpunkt för** att skapa en ny privat slutpunkt. 
 
-[![En skärm bild av objektet privata slut punkts anslutningar i innehålls förteckningen för lagrings kontot](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png)](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png#lightbox)
+[![En skärmbild av objektet för privata slutpunktsanslutningar i innehållsförteckningen för lagringskontot](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png)](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-0.png#lightbox)
 
 Den resulterande guiden har flera sidor att slutföra.
 
-På bladet **grundläggande** väljer du önskad resurs grupp, namn och region för din privata slut punkt. Det kan vara vad du vill, de behöver inte matcha lagrings kontot på något sätt, även om du måste skapa den privata slut punkten i samma region som det virtuella nätverk som du vill skapa den privata slut punkten i.
+På **bladet Grundläggande** väljer du önskad resursgrupp, namn och region för din privata slutpunkt. De kan vara vad du vill, de behöver inte matcha lagringskontot på något sätt, även om du måste skapa den privata slutpunkten i samma region som det virtuella nätverk som du vill skapa den privata slutpunkten i.
 
-![En skärm bild av grunderna i avsnittet Skapa privat slut punkt](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
+![En skärmbild av avsnittet Grundläggande i avsnittet Skapa privat slutpunkt](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-1.png)
 
-På **resurs** bladet väljer du alternativ knappen för **att ansluta till en Azure-resurs i min katalog**. Under **resurs typ** väljer du **Microsoft. Storage/storageAccounts** som resurs typ. **Resurs** fältet är lagrings kontot med den Azure-filresurs som du vill ansluta till. Mål under resurs är **fil**, eftersom det är för Azure Files.
+På **bladet** Resurs väljer du alternativknappen för **Anslut till en Azure-resurs i min katalog**. Under **Resurstyp** väljer **du Microsoft.Storage/storageAccounts** som resurstyp. Fältet **Resurs** är lagringskontot med den Azure-filresurs som du vill ansluta till. Målunderresursen är **filen**, eftersom detta är för Azure Files.
 
-På bladet **konfiguration** kan du välja det angivna virtuella nätverk och undernät som du vill lägga till din privata slut punkt till. Du måste välja ett distinkt undernät från under nätet som du har lagt till tjänst slut punkten till ovan. Konfigurations bladet innehåller också information om hur du skapar/uppdaterar den privata DNS-zonen. Vi rekommenderar att du använder standard `privatelink.file.core.windows.net` zonen.
+På **bladet** Konfiguration kan du välja det specifika virtuella nätverk och undernät som du vill lägga till din privata slutpunkt i. Du måste välja ett distinkt undernät från det undernät som du lade till tjänstslutpunkten till ovan. Bladet Konfiguration innehåller också information om hur du skapar/uppdaterar den privata DNS-zonen. Vi rekommenderar att du använder `privatelink.file.core.windows.net` standardzonen.
 
-![En skärm bild av konfigurations avsnittet](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-2.png)
+![En skärmbild av avsnittet Konfiguration](media/storage-files-networking-endpoints-private-portal/create-private-endpoint-2.png)
 
-Klicka på **Granska + skapa** för att skapa den privata slut punkten. 
+Klicka **på Granska + skapa** för att skapa den privata slutpunkten. 

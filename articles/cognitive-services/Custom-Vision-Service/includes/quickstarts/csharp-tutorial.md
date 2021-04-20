@@ -4,65 +4,65 @@ ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 09/15/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b247613ba02f897d2c0b02fc12ecd4a974cffdf4
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.openlocfilehash: 3fcc3598348dcfd3e0d0b81bded40161743126d3
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106113074"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107725339"
 ---
-Kom igång med Custom Vision klient biblioteket för .NET. Följ de här stegen för att installera paketet och prova exempel koden för att skapa en bild klassificerings modell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets förutsäga slut punkts-URL för att program mässigt testa det. Använd det här exemplet som mall för att skapa en egen bild igenkännings app.
+Kom igång med Custom Vision klientbibliotek för .NET. Följ de här stegen för att installera paketet och prova exempelkoden för att skapa en bildklassificeringsmodell. Du skapar ett projekt, lägger till taggar, tränar projektet och använder projektets slutpunkts-URL för förutsägelse för att testa det programmatiskt. Använd det här exemplet som en mall för att skapa en egen bildigenkänningsapp.
 
 > [!NOTE]
-> Om du vill skapa och träna en klassificerings modell _utan att_ skriva kod, se den [webbläsarbaserade vägledningen](../../getting-started-build-a-classifier.md) i stället.
+> Om du vill skapa och träna en klassificeringsmodell _utan att_ skriva kod kan du gå till [webbläsarbaserad vägledning i](../../getting-started-build-a-classifier.md) stället.
 
-Använd Custom Vision klient bibliotek för .NET för att:
+Använd Custom Vision för .NET för att:
 
 * Skapa ett nytt Custom Vision-projekt
 * Lägg till taggar i projektet
 * Ladda upp och tagga bilder
 * Träna projektet
 * Publicera den aktuella iterationen
-* Testa förutsägelse slut punkten
+* Testa förutsägelseslutpunkten
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | Biblioteks käll kod [(utbildning)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paket (NuGet) [(utbildning)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(förutsägelse)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [exempel](/samples/browse/?products=azure&term=vision&terms=vision)
+[Referensdokumentation](/dotnet/api/overview/azure/cognitiveservices/client/customvision) | [Bibliotekskällkod (träning)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Training) [(förutsägelse)](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.CustomVision.Prediction) | Paketexempel (NuGet) [(träning)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training/) [(förutsägelse)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction/)  |  [](/samples/browse/?products=azure&term=vision&terms=vision)
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/)
-* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller aktuell version av [.net Core](https://dotnet.microsoft.com/download/dotnet-core).
-* När du har en Azure-prenumeration skapar du <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" en Custom vision resurs "  target="_blank"> skapa en Custom vision resurs </a> i Azure Portal för att skapa en utbildnings-och förutsägelse resurs och hämta nycklar och slut punkt. Vänta tills den har distribuerats och klicka på knappen **gå till resurs** .
-    * Du behöver nyckeln och slut punkten från de resurser som du skapar för att ansluta ditt program till Custom Vision. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services/)
+* Den [Visual Studio IDE](https://visualstudio.microsoft.com/vs/) eller den aktuella versionen av [.NET Core](https://dotnet.microsoft.com/download/dotnet-core).
+* När du har din Azure-prenumeration skapar du en Custom Vision-resurs för att skapa en Custom Vision-resurs i Azure Portal för att skapa en utbildnings- och förutsägelseresurs och hämta dina nycklar <a href="https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision"  title=" "  target="_blank"> och </a> slutpunkter. Vänta tills den har distribuerats och klicka **på knappen Gå till** resurs.
+    * Du behöver nyckeln och slutpunkten från de resurser som du skapar för att ansluta ditt program till Custom Vision. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-c-application"></a>Skapa ett nytt C#-program
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Skapa ett nytt .NET Core-program med Visual Studio. 
+Med Visual Studio skapar du ett nytt .NET Core-program. 
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket 
+### <a name="install-the-client-library"></a>Installera klientbiblioteket 
 
-När du har skapat ett nytt projekt installerar du klient biblioteket genom att högerklicka på projekt lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I paket hanteraren som öppnas väljer du **Bläddra**, markerar **ta med för hands version** och söker efter `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` och `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . Välj den senaste versionen och **Installera** sedan. 
+När du har skapat ett nytt projekt installerar du klientbiblioteket genom att högerklicka på projektlösningen i **Solution Explorer** och välja **Hantera NuGet-paket.** I pakethanteraren som öppnas väljer du **Bläddra,** **markerar Inkludera förhandsversion** och söker efter och `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training` `Microsoft.Azure.CognitiveServices.Vision.CustomVision.Prediction` . Välj den senaste versionen och sedan **Installera**. 
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-I ett konsol fönster (till exempel cmd, PowerShell eller bash) använder du `dotnet new` kommandot för att skapa en ny konsol app med namnet `custom-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program. cs*. 
+I ett konsolfönster (till exempel cmd, PowerShell eller Bash) använder du kommandot för att skapa en `dotnet new` ny konsolapp med namnet `custom-vision-quickstart` . Det här kommandot skapar ett enkelt "Hello World" C#-projekt med en enda källfil: *program.cs*. 
 
 ```console
 dotnet new console -n custom-vision-quickstart
 ```
 
-Ändra katalogen till mappen nyligen skapade appar. Du kan bygga programmet med:
+Ändra katalogen till den nyligen skapade appmappen. Du kan skapa programmet med:
 
 ```console
 dotnet build
 ```
 
-Build-utdata får inte innehålla varningar eller fel. 
+Build-utdata får inte innehålla några varningar eller fel. 
 
 ```console
 ...
@@ -72,9 +72,9 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-client-library"></a>Installera klient biblioteket 
+### <a name="install-the-client-library"></a>Installera klientbiblioteket 
 
-I program katalogen installerar du Custom Vision klient biblioteket för .NET med följande kommando:
+I programkatalogen installerar du Custom Vision för .NET med följande kommando:
 
 ```console
 dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Training --version 2.0.0
@@ -84,39 +84,39 @@ dotnet add package Microsoft.Azure.CognitiveServices.Vision.CustomVision.Predict
 ---
 
 > [!TIP]
-> Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs), som innehåller kod exemplen i den här snabb starten.
+> Vill du visa hela snabbstartskodfilen samtidigt? Du hittar den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs), som innehåller kodexe exemplen i den här snabbstarten.
 
-Från projekt katalogen öppnar du filen *program. cs* och lägger till följande `using` direktiv:
+Öppna filen *program.cs från projektkatalogen* och lägg till följande `using` -direktiv:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_imports)]
 
 
-I programmets **main** -Metod skapar du variabler för resursens nyckel och slut punkt. Du kan också deklarera några grundläggande objekt som ska användas senare.
+I programmets **Main-metod** skapar du variabler för resursens nyckel och slutpunkt. Du deklarerar även vissa grundläggande objekt som ska användas senare.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_creds)]
 
 > [!IMPORTANT]
-> Gå till Azure-portalen. Om Custom Vision resurserna som du skapade i avsnittet **krav** har distribuerats, klickar du på knappen **gå till resurs** under **Nästa steg**. Du hittar nycklar och slut punkt i resursens nyckel- **och slut punkts** sidor. Du måste hämta nycklarna för både utbildnings-och förutsägelse resurserna, tillsammans med API-slutpunkten för utbildnings resursen.
+> Gå till Azure-portalen. Om Custom Vision resurser som du skapade  i avsnittet Förutsättningar har distribuerats klickar du på knappen **Gå till** resurs under **Nästa steg.** Du hittar dina nycklar och slutpunkter på resursernas **nyckel- och slutpunktssidor.** Du måste hämta nycklarna för både dina tränings- och förutsägelseresurser, tillsammans med API-slutpunkten för din träningsresurs.
 >
-> Du hittar värdet för förutsägelse resurs-ID på resursens fliken **Egenskaper** , listad som **prenumerations-ID**.
+> Du hittar värdet för förutsägelseresurs-ID:t på fliken **Egenskaper för** resursen, som visas som **Prenumerations-ID.**
 > 
-> Kom ihåg att ta bort nycklarna från koden när du är klar och publicera dem aldrig offentligt. För produktion bör du överväga att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter. Mer information finns i [säkerhets](../../../cognitive-services-security.md) artikeln Cognitive Services.
+> Kom ihåg att ta bort nycklarna från koden när du är klar och aldrig publicera dem offentligt. Överväg att använda ett säkert sätt att lagra och komma åt dina autentiseringsuppgifter för produktion. Mer information finns i artikeln Cognitive Services [säkerhet.](../../../cognitive-services-security.md)
 
-I programmets **main** -metod lägger du till anrop för de metoder som används i den här snabb starten. Du kommer att implementera dessa senare.
+I programmets Main-metod **lägger** du till anrop för de metoder som används i den här snabbstarten. Du implementerar dessa senare.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_maincalls)]
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
 |Name|Beskrivning|
 |---|---|
-|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Den här klassen hanterar skapandet, utbildningen och publiceringen av dina modeller. |
-|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Den här klassen hanterar frågekörning för modeller för bild klassificerings förutsägelser.|
-|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| Den här klassen definierar en enstaka förutsägelse för en enda avbildning. Den innehåller egenskaper för objekt-ID och namn och en förtroende poäng.|
+|[CustomVisionTrainingClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclient) | Den här klassen hanterar skapandet, träningen och publiceringen av dina modeller. |
+|[CustomVisionPredictionClient](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.customvisionpredictionclient)| Den här klassen hanterar frågor från dina modeller för bildklassificeringsförutsägelser.|
+|[PredictionModel](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.prediction.models.predictionmodel)| Den här klassen definierar en enskild förutsägelse för en enskild bild. Den innehåller egenskaper för objekt-ID och namn samt en förtroendepoäng.|
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du gör följande uppgifter med Custom Vision-klient biblioteket för .NET:
+Dessa kodfragment visar hur du utför följande uppgifter med Custom Vision klientbibliotek för .NET:
 
 * [Autentisera klienten](#authenticate-the-client)
 * [Skapa ett nytt Custom Vision-projekt](#create-a-new-custom-vision-project)
@@ -124,63 +124,63 @@ De här kodfragmenten visar hur du gör följande uppgifter med Custom Vision-kl
 * [Ladda upp och tagga bilder](#upload-and-tag-images)
 * [Träna projektet](#train-the-project)
 * [Publicera den aktuella iterationen](#publish-the-current-iteration)
-* [Testa förutsägelse slut punkten](#test-the-prediction-endpoint)
+* [Testa förutsägelseslutpunkten](#test-the-prediction-endpoint)
 
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-I en ny metod instansierar du inlärnings-och förutsägelse klienter med hjälp av din slut punkt och nycklar.
+I en ny metod instansierar du tränings- och förutsägelseklienter med hjälp av din slutpunkt och dina nycklar.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_auth)]
 
 ## <a name="create-a-new-custom-vision-project"></a>Skapa ett nytt Custom Vision-projekt
 
-I nästa kod skapas ett bild klassificerings projekt. Det skapade projektet visas på [Custom vision webbplats](https://customvision.ai/). Se [CreateProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) -metoden för att ange andra alternativ när du skapar ditt projekt (förklaras i guiden [skapa en klassificerings](../../getting-started-build-a-classifier.md) webb Portal).  
+Nästa kod skapar ett bildklassificeringsprojekt. Det skapade projektet visas på Custom Vision [webbplats](https://customvision.ai/). Se [createProject-metoden](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.createproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_CreateProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_String_System_String_System_Nullable_System_Guid__System_String_System_Collections_Generic_IList_System_String__&preserve-view=true) för att ange andra alternativ när du skapar projektet (förklaras i guiden Skapa [en klassificerare i](../../getting-started-build-a-classifier.md) webbportalen).  
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_create)]
 
 
 ## <a name="add-tags-to-the-project"></a>Lägg till taggar i projektet
 
-Den här metoden definierar de taggar som du kommer att träna modellen på.
+Den här metoden definierar de taggar som du ska träna modellen på.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_addtags)]
 
 ## <a name="upload-and-tag-images"></a>Ladda upp och tagga bilder
 
-Hämta först exempel bilderna för projektet. Spara innehållet i [mappen exempel bilder](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) på din lokala enhet.
+Ladda först ned exempelbilderna för det här projektet. Spara innehållet i mappen [Avbildningsexempel](https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/CustomVision/ImageClassification/Images) på din lokala enhet.
 
 > [!NOTE]
-> Behöver du en bredare uppsättning avbildningar för att slutföra utbildningen? Källa, ett Microsoft garage-projekt, gör att du kan samla in och köpa uppsättningar av avbildningar i utbildnings syfte. När du har samlat in dina avbildningar kan du hämta dem och sedan importera dem till ditt Custom Vision-projekt på vanligt sätt. Besök [sidan källa](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) om du vill veta mer.
+> Behöver du en bredare uppsättning bilder för att slutföra träningen? Med Trove, Microsoft Garage-projekt, kan du samla in och köpa uppsättningar av bilder i utbildningssyfte. När du har samlat in dina bilder kan du ladda ned dem och sedan importera dem till ditt Custom Vision-projekt som vanligt. Besök [Trove-sidan om](https://www.microsoft.com/ai/trove?activetab=pivot1:primaryr3) du vill veta mer.
 
-Definiera sedan en hjälp metod för att ladda upp avbildningarna i den här katalogen. Du kan behöva redigera argumentet **GetFiles** för att peka på den plats där bilderna sparas.
+Definiera sedan en hjälpmetod för att ladda upp bilderna i den här katalogen. Du kan behöva redigera argumentet **GetFiles** så att det pekar på den plats där bilderna sparas.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_loadimages)]
 
-Definiera sedan en metod för att ladda upp avbildningarna och tillämpa Taggar enligt deras mapp-plats (bilderna är redan sorterade). Du kan ladda upp och tagga bilder iterativt, eller i en batch (upp till 64 per batch). Det här kodfragmentet innehåller exempel på båda. 
+Definiera sedan en metod för att ladda upp bilderna och tillämpa taggar enligt deras mappplats (bilderna är redan sorterade). Du kan ladda upp och tagga bilder iterativt eller i en batch (upp till 64 per batch). Det här kodfragmentet innehåller exempel på båda. 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
 
 ## <a name="train-the-project"></a>Träna projektet
 
-Den här metoden skapar den första inlärningen iteration i projektet. Tjänsten frågar tjänsten tills utbildningen är slutförd.
+Den här metoden skapar den första tränings iterationen i projektet. Den frågar tjänsten tills träningen har slutförts.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 
 > [!TIP]
-> Träna med valda Taggar
+> Träna med valda taggar
 >
-> Du kan välja att bara träna på en delmängd av dina använda taggar. Du kanske vill göra detta om du inte har använt tillräckligt med vissa Taggar ännu, men du har tillräckligt med andra. I [TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) -anropet använder du parametern *trainingParameters* . Skapa en [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters) och ange dess **SelectedTags** -egenskap till en lista med ID: n för de taggar som du vill använda. Modellen kommer att träna att bara identifiera taggarna i listan.
+> Om du vill kan du bara träna på en delmängd av dina tillämpade taggar. Du kanske vill göra detta om du inte har tillämpat tillräckligt många taggar ännu, men du har tillräckligt med andra. I [anropet TrainProject](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.customvisiontrainingclientextensions.trainproject#Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_CustomVisionTrainingClientExtensions_TrainProject_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_ICustomVisionTrainingClient_System_Guid_System_String_System_Nullable_System_Int32__System_Nullable_System_Boolean__System_String_Microsoft_Azure_CognitiveServices_Vision_CustomVision_Training_Models_TrainingParameters_&preserve-view=true) använder du *parametern trainingParameters.* Skapa en [TrainingParameters](/dotnet/api/microsoft.azure.cognitiveservices.vision.customvision.training.models.trainingparameters) och ange dess **SelectedTags-egenskap** till en lista med ID:er för de taggar som du vill använda. Modellen kommer att tränas att endast identifiera taggarna i listan.
 
 ## <a name="publish-the-current-iteration"></a>Publicera den aktuella iterationen
 
-Den här metoden gör den aktuella iterationen av modellen tillgänglig för frågor. Du kan använda modell namnet som referens för att skicka förutsägelse begär Anden. Du måste ange ett eget värde för `predictionResourceId` . Du hittar resurs-ID för förutsägelse på fliken **Översikt** i Azure Portal, som **prenumerations-ID**.
+Den här metoden gör den aktuella iterationen av modellen tillgänglig för frågor. Du kan använda modellnamnet som referens för att skicka förutsägelsebegäranden. Du måste ange ett eget värde för `predictionResourceId` . Du hittar resurs-ID:t för förutsägelsen på **fliken** Översikt för resursen Azure Portal **prenumerations-ID**.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/CustomVision/ImageClassification/Program.cs?name=snippet_publish)]
 
 
-## <a name="test-the-prediction-endpoint"></a>Testa förutsägelse slut punkten
+## <a name="test-the-prediction-endpoint"></a>Testa förutsägelseslutpunkten
 
 Den här delen av skriptet läser in test avbildningen, frågar modell slut punkten och matar ut förutsägelse data till-konsolen.
 
@@ -191,11 +191,11 @@ Den här delen av skriptet läser in test avbildningen, frågar modell slut punk
 
 #### <a name="visual-studio-ide"></a>[Visual Studio IDE](#tab/visual-studio)
 
-Kör programmet genom att klicka på knappen **Felsök** överst i IDE-fönstret.
+Kör programmet genom att klicka **på knappen** Felsök längst upp i IDE-fönstret.
 
 #### <a name="cli"></a>[CLI](#tab/cli)
 
-Kör programmet från program katalogen med `dotnet run` kommandot.
+Kör programmet från programkatalogen med `dotnet run` kommandot .
 
 ```dotnet
 dotnet run
@@ -224,11 +224,11 @@ Du kan sedan kontrollera att testbilden (som finns i **Images/Test/**) har tagga
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu har du gjort varje steg i processen för bild klassificering i kod. Det här exemplet kör en enda inlärnings upprepning, men ofta behöver du träna och testa din modell flera gånger för att göra den mer exakt.
+Nu har du gjort varje steg i bildklassificeringsprocessen i kod. Det här exemplet kör en enda tränings-iteration, men ofta behöver du träna och testa din modell flera gånger för att göra den mer exakt.
 
 > [!div class="nextstepaction"]
 > [Testa och träna om en modell](../../test-your-model.md)
 
 * [Vad är Custom Vision?](../../overview.md)
-* Du hittar käll koden för det här exemplet på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
+* Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/CustomVision/ObjectDetection/Program.cs)
 * [Referensdokumentation för SDK](/dotnet/api/overview/azure/cognitiveservices/client/customvision)

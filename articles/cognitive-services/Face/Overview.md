@@ -7,21 +7,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 11/23/2020
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: ansiktsigenkänning, programvara för ansiktsigenkänning, ansiktsanalys, ansiktsmatchning, ansiktsigenkänningsapp, ansiktssökning efter bild, sökning efter ansiktsigenkänning
-ms.openlocfilehash: a999b2100dc57d7b623cebbbe261f821a80835e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 30707dd844769f730f135a451cd5306ca7e402cb
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107505130"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107726996"
 ---
 # <a name="what-is-the-azure-face-service"></a>Vad är Azure Ansiktstjänsten?
 
 > [!WARNING]
-> Den 11 juni 2020 meddelade Microsoft att de inte kommer att sälja teknik för ansiktsigenkänning till polismyndigheter i USA förrän starka föreskrifter som rör användningen av dessa tekniker och som bygger på de mänskliga rättigheterna har införts. Därför kan kunder inte använda funktioner för ansiktsigenkänning som ingår i Azure-tjänster, till exempel Ansiktsigenkänning eller Video Indexer, om en kund är eller tillåter användning av sådana tjänster av eller för en USA.
+> Den 11 juni 2020 meddelade Microsoft att de inte kommer att sälja teknik för ansiktsigenkänning till polismyndigheter i USA förrän starka föreskrifter som rör användningen av dessa tekniker och som bygger på de mänskliga rättigheterna har införts. Därför kan kunder inte använda funktioner för ansiktsigenkänning som ingår i Azure-tjänster, till exempel Ansiktsigenkänning eller Video Indexer, om en kund är eller tillåter användning av sådana tjänster av eller för en polisavdelning på USA.
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
@@ -48,7 +48,7 @@ Mer information om ansiktsavkänning finns i artikeln [Begrepp för ansiktsavkä
 
 ## <a name="face-verification"></a>Ansiktsverifiering
 
-Verifierings-API:et bygger på Identifiering och tar upp frågan "Är dessa två bilder samma person?". Verifiering kallas även "en-till-en"-matchning eftersom avsökningsavbildningen jämförs med endast en registrerad mall. Verifiering kan användas i scenarier för identitetsverifiering eller åtkomstkontroll för att verifiera att en bild matchar en tidigare bild (till exempel från ett foto från ett id-kort som utfärdats av en myndighet). Mer information finns i [begreppsguiden för ansiktsigenkänning](concepts/face-recognition.md) eller [referensdokumentationen Verifiera API.](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)
+Verifierings-API:et bygger på Identifiering och löser frågan "Är dessa två bilder samma person?". Verifiering kallas även "en-till-en"-matchning eftersom avsökningsavbildningen jämförs med endast en registrerad mall. Verifiering kan användas i scenarier för identitetsverifiering eller åtkomstkontroll för att verifiera att en bild matchar en tidigare bild (till exempel från ett foto från ett id-kort som utfärdats av myndigheter). Mer information finns i [begreppsguiden för ansiktsigenkänning](concepts/face-recognition.md) eller [referensdokumentationen Verifiera API.](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)
 
 ## <a name="face-identification"></a>Ansiktsidentifiering
 
@@ -60,11 +60,11 @@ Följande bild visar ett exempel på en databas med namnet `"myfriends"` . Varje
 
 När du har skapat och tränat en databas kan du identifiera den mot gruppen med ett nytt identifierat ansikte. Om ansiktet identifieras som en person i gruppen, så returneras personobjektet.
 
-Mer information om personidentifiering finns i [begreppsguiden för ansiktsigenkänning](concepts/face-recognition.md) eller [referensdokumentationen för API:et](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) Identifiera.
+Mer information om personidentifiering finns i [begreppsguiden för ansiktsigenkänning](concepts/face-recognition.md) eller [referensdokumentationen för API:et](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) För identifiering.
 
 ## <a name="find-similar-faces"></a>Hitta liknande ansikten
 
-Find Similar-API:et gör ansiktsmatchning mellan målansiktet och en uppsättning kandidatansikten, och hittar en mindre uppsättning ansikten som ser ut ungefär som målansiktet. Detta är användbart för att göra en ansiktssökning efter bild. 
+Find Similar-API:et gör ansiktsmatchning mellan målansiktet och en uppsättning kandidatansikten, och hittar en mindre uppsättning ansikten som ser ut ungefär som målansiktet. Den här åtgärden är användbar för att göra en ansiktssökning efter bild. 
 
 Två arbetslägen, **matchPerson** och **matchFace,** stöds. Läget **matchPerson** returnerar liknande ansikten efter filtrering för samma person med hjälp av [API:et Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a). Läget **matchFace** ignorerar samma-person-filtret. Den returnerar en lista över liknande kandidatansikten som kan tillhöra samma person.
 
@@ -87,7 +87,7 @@ API:et för gruppering delar in en uppsättning okända ansikten i flera grupper
 
 Följande exempelprogram visar några sätt att använda ansiktstjänsten:
 
-- [Ansikts-API: Windows-klientbibliotek](https://github.com/Microsoft/Cognitive-Face-Windows) och -exempel är en WPF-app som demonstrerar flera scenarier för ansiktsigenkänning, analys och identifiering.
+- [Ansikts-API: Windows-klientbibliotek](https://github.com/Microsoft/Cognitive-Face-Windows) och exempel är en WPF-app som demonstrerar flera scenarier för ansiktsigenkänning, analys och identifiering.
 - [FamilyNotes UWP-appen](https://github.com/Microsoft/Windows-appsample-familynotes) är en Universell Windows-plattform-app (UWP) som använder ansiktsidentifiering tillsammans med tal, Cortana, pennanteckningar och kamera i ett scenario med delning av familjeanteckningar.
 
 ## <a name="data-privacy-and-security"></a>Datasekretess och säkerhet

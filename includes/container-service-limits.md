@@ -5,28 +5,27 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: include
-ms.date: 11/22/2019
+ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 1c2dec106ae72ddead7bda54792fa74e38eb6660
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 15e91e6f275c3a6ebe44690441404a38e8f61394
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106081025"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107732462"
 ---
 | Resurs                                                                                                           | Gräns                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Maximalt antal kluster per prenumeration                                                                                  | 1000                                                                                                                                                                                                        |
-| Maximalt antal noder per kluster med tillgänglighets uppsättningar för virtuella datorer och Basic Load Balancer SKU                       | 100                                                                                                                                                                                                         |
-| Maximalt antal noder per kluster med Virtual Machine Scale Sets och [standard load BALANCER SKU][standard-load-balancer] | 1000 (100 noder per [Node-pool][node-pool])                                                                                                                                                                 |
-| Maximalt antal poddar per nod: [grundläggande nätverk][basic-networking] med Kubernetes                                           | 110                                                                                                                                                                                                         |
-| Maximalt antal poddar per nod: [Avancerat nätverk][advanced-networking] med Azure Container Networking Interface        | Azure CLI-distribution: 30<sup>1</sup><br />Azure Resource Manager mall: 30<sup>1</sup><br />Portaldistribution: 30                                                                                        |
-| Open Service nät (OSM) AKS addon Preview                                                                          | Kubernetes-kluster version: 1.19 +<sup>2</sup><br />OSM kontrollanter per kluster: 1<sup>2</sup><br />Poddar per OSM-styrenhet: 500<sup>2</sup><br />Kubernetes tjänst konton som hanteras av OSM: 50<sup>2</sup> |
+| Maximalt antal noder per kluster med tillgänglighetsuppsättningar för virtuella datorer och Basic Load Balancer SKU                       | 100                                                                                                                                                                                                         |
+| Maximalt antal noder per kluster med Virtual Machine Scale Sets [och Standard Load Balancer SKU][standard-load-balancer] | 1 000 (över alla [nodpooler)][node-pool]                                            |
+| Maximalt antal nodpooler per kluster                                                                                     | 100                                                                                  |
+| Maximalt antal poddar per nod: [Grundläggande nätverk][basic-networking] med Kubenet                                           | Max: 250 <br /> Standard för Azure CLI: 110 <br /> Azure Resource Manager standardmall: 110 <br /> Azure Portal standarddistribution: 30          |
+| Maximalt antal poddar per [nod: Avancerade nätverk][advanced-networking] med Azure Container Networking Interface        | Max: 250 <br /> Standard: 30                                                      |
+| Förhandsversion av Open Service Mesh (OSM) AKS-tillägg                                                                          | Kubernetes-klusterversion: 1.19+<sup>1</sup><br />OSM-styrenheter per kluster: 1<sup>1</sup><br />Poddar per OSM-styrenhet: 500<sup>1</sup><br />Kubernetes-tjänstkonton som hanteras av OSM: 50<sup>1</sup> |
 
-<sup>1</sup> När du distribuerar ett Azure Kubernetes service-kluster (AKS) med Azure CLI eller en Resource Manager-mall, kan det här värdet konfigureras upp till 250 poddar per nod. Du kan inte konfigurera maximalt poddar per nod efter att du redan har distribuerat ett AKS-kluster, eller om du distribuerar ett kluster med hjälp av Azure Portal.<br />
-
-<sup>2</sup> OSM-tillägget för AKS är i förhands gransknings läge och kommer att genomgå ytterligare förbättringar före allmän tillgänglighet (GA). Under förhands gransknings fasen rekommenderar vi att du inte överskrider de gränser som visas.<br />
+<sup>1</sup> OSM-tillägget för AKS är i förhandsversion och kommer att genomgå ytterligare förbättringar före allmän tillgänglighet (GA). Under förhandsversionsfasen rekommenderar vi att du inte överskrider de gränser som visas.<br />
 
 <!-- LINKS - Internal -->
 

@@ -1,14 +1,14 @@
 ---
-title: 'Snabb start: klient bibliotek för avbildnings analys eller REST API'
+title: 'Snabbstart: Klientbibliotek för bildanalys eller REST API'
 titleSuffix: Azure Cognitive Services
-description: Lär dig hur du använder bild analys i ditt program via ett inbyggt klient bibliotek på valfritt språk.
+description: Lär dig hur du använder bildanalys i ditt program via ett inbyggt klientbibliotek på det språk du väljer.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 03/21/2020
+ms.date: 03/29/2021
 ms.author: pafarley
 ms.custom:
 - devx-track-python
@@ -16,17 +16,17 @@ ms.custom:
 - devx-track-csharp
 - cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-computer-vision
-keywords: dator vision, dator vision
-ms.openlocfilehash: 6fa8bb9bda7cdaf5d7db4b4758d5bb9cd63e75da
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+keywords: tjänsten för datorseende, tjänsten för datorseende
+ms.openlocfilehash: 0ed8116ec1f40ab6ef5fcc4bef426c3b65f38c45
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287247"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728180"
 ---
-# <a name="quickstart-use-the-image-analysis-client-library-or-rest-api"></a>Snabb start: Använd klient biblioteket för avbildnings analys eller REST API
+# <a name="quickstart-use-the-image-analysis-client-library-or-rest-api"></a>Snabbstart: Använda klientbiblioteket för bildanalys eller REST API
 
-Kom igång med bild analys REST API eller klient bibliotek. I analys avbildnings tjänsten finns AI-algoritmer för bearbetning av bilder och för att returnera information om deras visuella funktioner. Följ de här stegen för att installera ett paket i programmet och prova exempel koden för grundläggande uppgifter.
+Kom igång med bildanalys-REST API eller klientbibliotek. Tjänsten Analysera bild tillhandahåller AI-algoritmer för bearbetning av bilder och returnerar information om deras visuella funktioner. Följ de här stegen för att installera ett paket i programmet och prova exempelkoden för grundläggande uppgifter.
 
 
 

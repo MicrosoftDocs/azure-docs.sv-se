@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 04/16/2021
+ms.date: 04/19/2021
 ms.author: mimart
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f48135523238711eb9058b35348895c851a95403
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: b4bb58f106f3255ec6cd80b14b175ff413bc0dc6
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713830"
+ms.locfileid: "107725808"
 ---
 # <a name="custom-email-verification-with-mailjet"></a>Anpassad e-postverifiering med Mailjet
 
@@ -35,18 +35,16 @@ Använd anpassad e-post i Azure Active Directory B2C (Azure AD B2C) för att ski
 
 Anpassad e-postverifiering kräver användning av en e-postleverantör från tredje part som [Mailjet,](https://Mailjet.com) [SendGrid](./custom-email-sendgrid.md)eller [SparkPost,](https://sparkpost.com)en anpassad REST API eller en HTTP-baserad e-postleverantör (inklusive din egen). I den här artikeln beskrivs hur du ställer in en lösning som använder Mailjet.
 
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
-
 ## <a name="create-a-mailjet-account"></a>Skapa ett Mailjet-konto
 
 Om du inte redan har ett kan du börja med att konfigurera ett Mailjet-konto (Azure-kunder kan låsa upp 6 000 e-postmeddelanden med en gräns på 200 e-postmeddelanden per dag). 
 
-1. Följ installationsanvisningarna i Skapa [ett E-postkonto](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/).
+1. Följ installationsanvisningarna i Skapa [ett e-postkonto](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/).
 1. För att kunna skicka e-post, [registrera och verifiera din](https://www.mailjet.com/guides/azure-mailjet-developer-resource-user-guide/enabling-mailjet/#how-to-configure-mailjet-for-use) avsändar-e-postadress eller domän.
-2. Gå till sidan [API-nyckelhantering.](https://app.mailjet.com/account/api_keys) Registrera **API-nyckeln** och **den hemliga nyckeln** för användning i ett senare steg. Båda nycklarna genereras automatiskt när ditt konto skapas.  
+2. Gå till sidan [API Key Management (API-nyckelhantering).](https://app.mailjet.com/account/api_keys) Registrera **API-nyckeln** och **den hemliga nyckeln** för användning i ett senare steg. Båda nycklarna genereras automatiskt när ditt konto skapas.  
 
 > [!IMPORTANT]
-> Mailjet ger kunderna möjlighet att skicka e-post från delade IP-adresser och [dedikerade IP-adresser.](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP) När du använder dedikerade IP-adresser måste du skapa ditt eget rykte korrekt med en IP-adress som värmer upp. Mer information finns i [Hur gör jag för att upp min IP-adress ?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
+> Mailjet ger kunderna möjlighet att skicka e-post från delade IP-adresser och [dedikerade IP-adresser.](https://documentation.mailjet.com/hc/articles/360043101973-What-is-a-dedicated-IP) När du använder dedikerade IP-adresser måste du bygga ditt eget rykte korrekt med en IP-adress som värmer upp. Mer information finns i [Hur gör jag för att upp min IP-adress ?](https://documentation.mailjet.com/hc/articles/1260803352789-How-do-I-warm-up-my-IP-).
 
 
 ## <a name="create-azure-ad-b2c-policy-key"></a>Skapa Azure AD B2C principnyckel
@@ -60,22 +58,22 @@ Lagra sedan Mailjet API-nyckeln i en Azure AD B2C principnyckel som dina princip
 1. Välj **Principnycklar** och välj sedan Lägg **till**.
 1. För **Alternativ** väljer du **Manuell.**
 1. Ange ett **namn** för principnyckeln. Till exempel `MailjetApiKey`. Prefixet `B2C_1A_` läggs automatiskt till i namnet på din nyckel.
-1. I **Hemlighet** anger du den Mailjet **API-nyckel** som du antecknade tidigare.
+1. I **Hemlighet anger** du den Mailjet **API-nyckel som** du antecknade tidigare.
 1. För **Nyckelanvändning** väljer du **Signatur.**
 1. Välj **Skapa**.
-1. Välj **Principnycklar och** välj sedan Lägg **till**.
+1. Välj **Principnycklar och** välj sedan Lägg **till.**
 1. För **Alternativ** väljer du **Manuell.**
-1. Ange ett **namn** för principnyckeln. Till exempel `MailjetSecretKey`. Prefixet `B2C_1A_` läggs automatiskt till i namnet på din nyckel.
-1. I **Hemlighet** anger du den Mailjet **Secret Key som** du antecknade tidigare.
+1. Ange ett **Namn** för principnyckeln. Till exempel `MailjetSecretKey`. Prefixet `B2C_1A_` läggs automatiskt till i namnet på din nyckel.
+1. I **Hemlighet** anger du den **Mailjet-hemliga nyckel som** du tidigare har spelat in.
 1. För **Nyckelanvändning** väljer du **Signatur.**
 1. Välj **Skapa**.
 
 ## <a name="create-a-mailjet-template"></a>Skapa en Mailjet-mall
 
-När du har skapat ett Mailjet-konto och mailgränssnitts-API-nyckeln som lagras i en Azure AD B2C-principnyckel skapar du en dynamisk transaktionsmall [för](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)Mailjet.
+När du har skapat ett Mailjet-konto och mailjet-API-nyckeln som lagras i en Azure AD B2C-principnyckel skapar du en dynamisk transaktionsmall [för](https://sendgrid.com/docs/ui/sending-email/how-to-send-an-email-with-dynamic-transactional-templates/)Mailjet.
 
-1. På webbplatsen Mailjet öppnar du sidan [med transaktionsmallar och](https://app.mailjet.com/templates/transactional) väljer **Skapa en ny mall.**
-1. Välj **Genom att koda den** i HTML och välj sedan Kod från **grunden.**
+1. På mailjet-webbplatsen öppnar du [sidan med transaktionsmallar](https://app.mailjet.com/templates/transactional) och väljer **Skapa en ny mall.**
+1. Välj By coding it in HTML (Genom **att koda** den i **HTML) och välj sedan Code from scratch (Kod från grunden).**
 1. Ange ett unikt mallnamn som `Verification email` och välj sedan **Skapa.**
 1. I HTML-redigeraren klistrar du in följande HTML-mall eller använder en egen. Parametrarna `{{var:otp:""}}` `{{var:email:""}}` och ersätts dynamiskt med värdet för ett lösenord och användarens e-postadress.
 
@@ -179,14 +177,14 @@ När du har skapat ett Mailjet-konto och mailgränssnitts-API-nyckeln som lagras
     1. För Adress **väljer** du din e-postadress
     1. Välj **Spara**.
 1. Längst upp till höger väljer **du Spara & Publicera** och sedan **Ja, publicera ändringar**
-1. Registrera **mall-ID:t** för mallen som du skapade för användning i ett senare steg. Du anger detta ID när du lägger [till anspråksomvandlingen](#add-the-claims-transformation).
+1. Registrera **mall-ID för** mallen som du skapade för användning i ett senare steg. Du anger detta ID när du lägger [till anspråksomvandlingen](#add-the-claims-transformation).
 
 
 ## <a name="add-azure-ad-b2c-claim-types"></a>Lägga Azure AD B2C anspråkstyper
 
 I din princip lägger du till följande anspråkstyper i `<ClaimsSchema>` elementet i `<BuildingBlocks>` .
 
-Dessa anspråkstyper är nödvändiga för att generera och verifiera e-postadressen med hjälp av en engångslösenordskod (OTP).
+Dessa anspråkstyper är nödvändiga för att generera och verifiera e-postadressen med hjälp av en engångskod för lösenord (OTP).
 
 ```XML
 <!--
@@ -215,7 +213,7 @@ Dessa anspråkstyper är nödvändiga för att generera och verifiera e-postadre
 
 Därefter behöver du en anspråksomvandling för att mata ut ett JSON-stränganspråk som ska vara brödtexten i begäran som skickas till Mailjet.
 
-JSON-objektets struktur definieras av ID:erna i punkt notation för InputParameters och TransformationClaimTypes för InputClaims. Tal i punkt notationen innebär matriser. Värdena kommer från InputClaims- och InputParameters-egenskaperna "Value". Mer information om JSON-anspråksomvandlar finns i [JSON-anspråksomvandlar](json-transformations.md).
+JSON-objektets struktur definieras av -ID:erna i punkt notation för InputParameters och TransformationClaimTypes för InputClaims. Tal i punkt notationen innebär matriser. Värdena kommer från InputClaims- och InputParameters-egenskaperna "Value". Mer information om JSON-anspråksomvandlar finns i [JSON-anspråksomvandlar](json-transformations.md).
 
 Lägg till följande anspråksomvandling till `<ClaimsTransformations>` elementet i `<BuildingBlocks>` . Gör följande uppdateringar i XML-filen för anspråksomvandling:
 
@@ -322,6 +320,9 @@ Under innehållsdefinitioner, fortfarande `<BuildingBlocks>` i , lägger du till
 
 Den `GenerateOtp` tekniska profilen genererar en kod för e-postadressen. Den `VerifyOtp` tekniska profilen verifierar koden som är associerad med e-postadressen. Du kan ändra formatets konfiguration och lösenordets giltighetstid. Mer information om tekniska profiler för engångslösenord finns i Definiera en teknisk [profil för engångslösenord.](one-time-password-technical-profile.md)
 
+> [!NOTE]
+> OTP-koder som genereras av protokollet Web.TPEngine.Providers.OneTimePasswordProtocolProvider är knutna till webbläsarsessionen. Det innebär att en användare kan generera unika OTP-koder i olika webbläsarsessioner som var och en är giltig för sina motsvarande sessioner. Däremot är en OTP-kod som genereras av det inbyggda användarflödet oberoende av webbläsarsessionen, så om en användare genererar en ny OTP-kod i en ny webbläsarsession ersätter den föregående OTP-koden.
+
 Lägg till följande tekniska profiler i `<ClaimsProviders>` elementet .
 
 ```XML
@@ -368,7 +369,7 @@ Lägg till följande tekniska profiler i `<ClaimsProviders>` elementet .
 
 ## <a name="add-a-rest-api-technical-profile"></a>Lägga till en REST API teknisk profil
 
-Den REST API tekniska profilen genererar e-postinnehållet (med formatet Mailjet). Mer information om restful-tekniska profiler finns i [Definiera en teknisk RESTful-profil.](restful-technical-profile.md)
+Den REST API tekniska profilen genererar e-postinnehållet (med formatet Mailjet). Mer information om RESTful-tekniska profiler finns i [Definiera en teknisk RESTful-profil.](restful-technical-profile.md)
 
 Precis som med tekniska profiler för engångslösenord lägger du till följande tekniska profiler i `<ClaimsProviders>` elementet .
 
@@ -402,7 +403,7 @@ Precis som med tekniska profiler för engångslösenord lägger du till följand
 
 ## <a name="make-a-reference-to-the-displaycontrol"></a>Skapa en referens till DisplayControl
 
-I det sista steget lägger du till en referens till den DisplayControl som du skapade. Ersätt dina `LocalAccountSignUpWithLogonEmail` befintliga `LocalAccountDiscoveryUsingEmailAddress` och självinfogade tekniska profiler med följande. Om du använde en tidigare version Azure AD B2C princip. Dessa tekniska profiler `DisplayClaims` använder med en referens till DisplayControl.
+I det sista steget lägger du till en referens till den DisplayControl som du skapade. Ersätt dina befintliga `LocalAccountSignUpWithLogonEmail` `LocalAccountDiscoveryUsingEmailAddress` och självinfogade tekniska profiler med följande. Om du använde en tidigare version Azure AD B2C princip. Dessa tekniska profiler `DisplayClaims` använder med en referens till DisplayControl.
 
 Mer information finns i [Självkontrollerad teknisk profil och](restful-technical-profile.md) [DisplayControl.](display-controls.md)
 
@@ -445,7 +446,7 @@ Mer information finns i [Självkontrollerad teknisk profil och](restful-technica
 
 ## <a name="optional-localize-your-email"></a>[Valfritt] Lokalisera din e-post
 
-För att lokalisera e-postmeddelandet måste du skicka lokaliserade strängar till Mailjet eller din e-postleverantör. Du kan till exempel lokalisera e-postämnet, brödtexten, kodmeddelandet eller signaturen för e-postmeddelandet. Om du vill göra det kan du använda [omvandlingen GetLocalizedStringsTransformation-anspråk](string-transformations.md) för att kopiera lokaliserade strängar till anspråkstyper. `GenerateEmailRequestBody`Anspråksomvandlingen, som genererar JSON-nyttolasten, använder inkommande anspråk som innehåller de lokaliserade strängarna.
+För att lokalisera e-postmeddelandet måste du skicka lokaliserade strängar till Mailjet eller din e-postleverantör. Du kan till exempel lokalisera ämne, brödtext, kodmeddelande eller signatur för e-postmeddelandet. Om du vill göra det kan du använda [anspråksomvandlingen GetLocalizedStringsTransformation](string-transformations.md) för att kopiera lokaliserade strängar till anspråkstyper. `GenerateEmailRequestBody`Anspråksomvandlingen, som genererar JSON-nyttolasten, använder inkommande anspråk som innehåller de lokaliserade strängarna.
 
 1. Definiera följande stränganspråk i principen: ämne, meddelande, codeIntro och signatur.
 1. Definiera en [GetLocalizedStringsTransformation-anspråksomvandling](string-transformations.md) för att ersätta lokaliserade strängvärden i anspråken från steg 1.
@@ -552,7 +553,7 @@ För att lokalisera e-postmeddelandet måste du skicka lokaliserade strängar ti
     
 ## <a name="optional-localize-the-ui"></a>[Valfritt] Lokalisera användargränssnittet
 
-Med lokaliseringselementet kan du stödja flera språk i principen för användarresor. Med lokaliseringsstödet i principer kan du ange språkspecifika strängar för både elementen i användargränssnittet för verifieringskontroll [och](localization-string-ids.md#verification-display-control-user-interface-elements) [felmeddelanden för lösenord en gång.](localization-string-ids.md#one-time-password-error-messages) Lägg till följande LocalizedString i LocalizedResources. 
+Med lokaliseringselementet kan du stödja flera språk eller språk i principen för användarresor. Med lokaliseringsstödet i principer kan du ange språkspecifika strängar för både elementen i användargränssnittet för verifieringskontroll [och](localization-string-ids.md#verification-display-control-user-interface-elements) [felmeddelanden för lösenord en gång.](localization-string-ids.md#one-time-password-error-messages) Lägg till följande LocalizedString i LocalizedResources. 
 
 ```XML
 <LocalizedResources Id="api.custom-email.en">

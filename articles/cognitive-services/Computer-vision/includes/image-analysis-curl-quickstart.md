@@ -1,47 +1,47 @@
 ---
-title: 'Snabb start: bild analys REST API'
+title: 'Snabbstart: Bildanalys REST API'
 titleSuffix: Azure Cognitive Services
-description: I den här snabb starten ska du komma igång med bild analys REST API.
+description: I den här snabbstarten kommer du igång med REST API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: quickstart
-ms.date: 12/02/2020
+ms.topic: include
+ms.date: 04/19/2021
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 77958746487ffbcf19ad14be71818c59e9520374
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+ms.openlocfilehash: 7a2e8613aab61beec3720cadaa20eb008386b43b
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287250"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107728183"
 ---
-Använd REST API för bild analys för att:
+Använd bildanalys-REST API för att:
 
-* Analysera en bild för taggar, text beskrivning, ansikten, vuxen innehåll med mera.
-* Generera en miniatyr med Smart beskärning
+* Analysera en bild för taggar, textbeskrivning, ansikten, vuxet innehåll med mera.
+* Generera en miniatyrbild med smart beskärning
 
 > [!NOTE]
-> I den här snabb starten används spiral kommandon för att anropa REST API. Du kan också anropa REST API med ett programmeringsspråk. Se exemplen för GitHub för exempel i [C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), [python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST), [Java](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST), [Java Script](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)och [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST).
+> Den här snabbstarten använder cURL-kommandon för att anropa REST API. Du kan också anropa REST API med hjälp av ett programmeringsspråk. Se GitHub-exemplen för exempel [i C#](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/dotnet/ComputerVision/REST), [Python,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/python/ComputerVision/REST) [Java,](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/java/ComputerVision/REST) [JavaScript](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/javascript/ComputerVision/REST)och [Go](https://github.com/Azure-Samples/cognitive-services-quickstart-code/tree/master/go/ComputerVision/REST).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services/) 
-* När du har en Azure-prenumeration <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" skapar du en visuellt innehåll resurs "  target="_blank"> skapa en visuellt innehåll resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-  * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till Visuellt innehåll-tjänsten. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-  * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
-* [spiralen](https://curl.haxx.se/) är installerad
+* En Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services/) 
+* När du har din Azure-prenumeration skapar du Visuellt innehåll resurs för att skapa Visuellt innehåll resurs i Azure Portal för att <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+  * Du behöver nyckeln och slutpunkten från resursen som du skapar för att ansluta ditt program till Visuellt innehåll tjänsten. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+  * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
+* [cURL installerat](https://curl.haxx.se/)
 
 ## <a name="analyze-an-image"></a>Analysera en bild
 
-Utför följande steg för att analysera en avbildning för en mängd olika visuella funktioner:
+Om du vill analysera en bild för en mängd olika visuella funktioner gör du följande:
 
 1. Kopiera följande kommando till en textredigerare.
 1. Gör följande ändringar i kommandot där det behövs:
     1. Ersätt värdet för `<subscriptionKey>` med din prenumerationsnyckel.
-    1. Ersätt den första delen av URL: en för begäran ( `westcentralus` ) med texten i din egen slut punkts-URL.
+    1. Ersätt den första delen av url:en för begäran ( `westcentralus` ) med texten i din egen slutpunkts-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Du kan också ändra bild-URL:en i begärandetexten (`http://upload.wikimedia.org/wikipedia/commons/3/3c/Shaki_waterfall.jpg\`) till URL:en för en annan bild som ska analyseras.
 1. Öppna ett kommandotolksfönster.
@@ -114,20 +114,20 @@ Ett svar som anger att åtgärden lyckades returneras i JSON. Exempelprogrammet 
 
 ## <a name="generate-a-thumbnail"></a>Skapa en miniatyrbild
 
-Du kan använda bild analys för att generera en miniatyr med Smart beskärning. Du anger önskad höjd och bredd, vilket kan skilja sig från indata-bildens höjd/bredd-förhållande. Med bild analys används smart beskärning för att på ett intelligent sätt identifiera intresse området och skapa beskärnings koordinater runt regionen.
+Du kan använda bildanalys för att generera en miniatyrbild med smart beskärning. Du anger önskad höjd och bredd, vilket kan skilja sig i proportioner från den inmatade bilden. Bildanalys använder smart beskärning för att identifiera det intressanta området och generera koordinater för beskärning i den regionen.
  
 Så här skapar du och kör exemplet:
 
 1. Kopiera följande kommando till en textredigerare.
 1. Gör följande ändringar i kommandot där det behövs:
     1. Ersätt värdet för `<subscriptionKey>` med din prenumerationsnyckel.
-    1. Ersätt värdet för `<thumbnailFile>` med sökvägen och namnet på filen där du vill spara den returnerade miniatyr bilden.
-    1. Ersätt den första delen av URL: en för begäran ( `westcentralus` ) med texten i din egen slut punkts-URL.
+    1. Ersätt värdet för `<thumbnailFile>` med sökvägen och namnet på filen där du vill spara den returnerade miniatyrbilden.
+    1. Ersätt den första delen av url:en för begäran ( `westcentralus` ) med texten i din egen slutpunkts-URL.
         [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
     1. Du kan också ändra bild-URL i begärandetexten (`https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\`) till URL-adressen till en annan bild från vilken du kan skapa en miniatyrbild.
 1. Öppna ett kommandotolksfönster.
-1. Klistra in kommandot från text redigeraren i kommando tolkens fönster.
-1. Kör programmet genom att trycka på RETUR.
+1. Klistra in kommandot från textredigeraren i kommandotolkens fönster.
+1. Tryck på Retur för att köra programmet.
 
     ```bash
     curl -H "Ocp-Apim-Subscription-Key: <subscriptionKey>" -o <thumbnailFile> -H "Content-Type: application/json" "https://westus.api.cognitive.microsoft.com/vision/v3.1/generateThumbnail?width=100&height=100&smartCropping=true" -d "{\"url\":\"https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Shorkie_Poo_Puppy.jpg/1280px-Shorkie_Poo_Puppy.jpg\"}"
@@ -135,12 +135,14 @@ Så här skapar du och kör exemplet:
 
 ### <a name="examine-the-response"></a>Granska svaret
 
-Ett lyckat svar skriver miniatyrbilden till filen som anges i `<thumbnailFile>`. Om begäran misslyckas innehåller svaret en felkod och ett meddelande som beskriver vad som gick fel. Om begäran verkar lyckas men den skapade miniatyren inte är en giltig bildfil, kan det bero på att din prenumerations nyckel inte är giltig.
+Ett lyckat svar skriver miniatyrbilden till filen som anges i `<thumbnailFile>`. Om begäran misslyckas innehåller svaret en felkod och ett meddelande som beskriver vad som gick fel. Om begäran verkar lyckas men den skapade miniatyrbilden inte är en giltig bildfil kan det vara så att din prenumerationsnyckel inte är giltig.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Utforska API för bild analys i större djup. Om du snabbt vill experimentera med API: et kan du prova med [Open API test-konsolen](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console).
+I den här snabbstarten har du lärt dig hur du installerar grundläggande bildanalys-anrop med hjälp av REST API. Härnäst kan du läsa mer om funktionerna i Analysera API.
 
 > [!div class="nextstepaction"]
-> [Utforska API för bild analys](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)
+>[Anropa API:et Analysera](../Vision-API-How-to-Topics/HowToCallVisionAPI.md)
+
+* [Översikt över bildanalys](../overview-image-analysis.md)

@@ -1,12 +1,12 @@
 ---
 title: 'Snabbstart: Konfigurera hög tillgänglighet med Azure Front Door Service – Azure Portal'
-description: Den här snabbstarten visar hur du använder Azure Front Door Service för din globala webbapp med hög åtkomst och höga prestanda med hjälp av Azure Portal.
+description: Den här snabbstarten visar hur du använder Azure Front Door Service för ditt globala webbprogram med hög åtkomst och höga prestanda med hjälp av Azure Portal.
 services: front-door
 documentationcenter: na
 author: duongau
 ms.author: duau
 manager: KumudD
-ms.date: 09/16/2020
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-portal
-ms.openlocfilehash: 2cf52d30c5658e73c55944bdfb7d424425fa4507
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 74b7c16904c86751076d40056027999fe44cb868
+ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538944"
+ms.lasthandoff: 04/19/2021
+ms.locfileid: "107727875"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Snabbstart: Skapa en Front Door för en global webbapp med hög tillgänglighet
 
-Kom igång med Azure Front Door med hjälp av Azure Portal för att konfigurera hög tillgänglighet för en webbapp.
+Kom igång med Azure Front Door hjälp av Azure Portal konfigurera hög tillgänglighet för en webbapp.
 
-I den här snabbstarten Azure Front Door två instanser av ett webbprogram som körs i olika Azure-regioner. Du skapar en Front Door-konfiguration baserat på samma viktade och samma prioritetsbackends. Den här konfigurationen dirigerar trafik till den närmaste platsen som kör programmet. Azure Front Door övervakar webbappen kontinuerligt. Tjänsten tillhandahåller automatisk redundans till nästa tillgängliga plats när den närmaste platsen inte är tillgänglig.
+I den här snabbstarten Azure Front Door två instanser av ett webbprogram som körs i olika Azure-regioner. Du skapar en Front Door-konfiguration baserat på samma viktade och samma prioritets backend-server. Den här konfigurationen dirigerar trafik till den närmaste platsen som kör programmet. Azure Front Door övervakar webbappen kontinuerligt. Tjänsten tillhandahåller automatisk redundans till nästa tillgängliga plats när den närmaste platsen inte är tillgänglig.
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagram över Front Door distributionsmiljö med hjälp av Azure Portal." border="false":::
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -55,7 +57,7 @@ Om du inte redan har en webbapp kan du använda följande steg för att konfigur
     | **Operativsystem**          | Välj **Windows**. |
     | **Region**           | Välj **USA, centrala.** |
     | **Windows-plan** | Välj **Skapa ny** och ange *myAppServicePlanCentralUS* i textrutan. |
-    | **SKU och storlek** | Välj **Standard S1 100 total ACU, 1,75 GB minne**. |
+    | **SKU och storlek** | Välj **Standard S1 100 total ACU, 1,75 GB minne.** |
 
 1. Välj **Granska + skapa,** granska **sammanfattningen** och välj sedan **Skapa.** Det kan ta flera minuter för distributionen att slutföras.
 
@@ -67,8 +69,8 @@ När distributionen är klar skapar du en andra webbapp. Använd samma procedur 
 | ---              | ---  |
 | **Resursgrupp**   | Välj **Skapa ny** och ange *FrontDoorQS_rg2* |
 | **Namn**             | Ange ett unikt namn för webbappen, i det här exemplet *WebAppContoso-2*  |
-| **Region**           | En annan region, i det här exemplet USA, *södra centrala* |
-| **App Service plan**  >  **Windows-plan**         | Välj **Ny** och ange *myAppServicePlanSouthCentralUS* och välj sedan **OK** |
+| **Region**           | En annan region, i det här exemplet USA, *östra* |
+| **App Service plan**  >  **Windows-plan**         | Välj **Ny** och ange *myAppServicePlanEastUS* och välj sedan **OK** |
 
 ## <a name="create-a-front-door-for-your-application"></a>Skapa en Front Door för programmet
 
@@ -76,7 +78,7 @@ Konfigurera Azure Front Door att dirigera användartrafik baserat på den lägst
 
 1. Välj Skapa en resurs på startsidan eller **Azure-menyn.** Välj **Nätverk**  >  **Se alla**  >  **Front Door**.
 
-1. På fliken **Grundläggande inställningar** på sidan **Skapa Front Door** anger eller väljer du följande information och väljer sedan **Nästa: Konfiguration.**
+1. På fliken **Grundläggande inställningar** på sidan Skapa **en Front Door** anger eller väljer du följande information och väljer sedan **Nästa: Konfiguration.**
 
     | Inställning | Värde |
     | --- | --- |
@@ -108,7 +110,7 @@ Skapa sedan en backend-pool som innehåller dina två webbappar.
 
     **Låt alla andra fält vara kvar som standard.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Lägg till en backend-värd till Front Door":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Lägg till en backend-värd i Front Door":::
 
 1. Välj **Lägg till en backend** igen. välj följande information och välj Lägg **till**.
 
@@ -126,7 +128,7 @@ Skapa sedan en backend-pool som innehåller dina två webbappar.
 
 Slutligen lägger du till en routningsregel. En routningsregel mappar din värd på serversidan till serverpoolen. Regeln vidarebefordrar en begäran för `contoso-frontend.azurefd.net` till **myBackendPool**.
 
-1. I Skapa **en Front Door** i **Routningsregler väljer du** för att konfigurera **+** en routningsregel.
+1. I Skapa **en Front Door** i **Routningsregler väljer** du för **+** att konfigurera en routningsregel.
 
 1. I **Lägg till en regel** för **Namn** anger du *LocationRule*. Acceptera alla standardvärden och välj sedan Lägg till **för att** lägga till routningsregeln.
 
@@ -141,22 +143,22 @@ Slutligen lägger du till en routningsregel. En routningsregel mappar din värd 
 
 ## <a name="view-azure-front-door-in-action"></a>Visa Azure Front Door i praktiken
 
-När du har Front Door en konfiguration tar det några minuter innan konfigurationen distribueras globalt. När du är klar öppnar du den frontend-värd som du skapade. I en webbläsare går du till `contoso-frontend.azurefd.net` . Din begäran dirigeras automatiskt till den närmaste servern från de angivna servrarna i serverpoolen.
+När du har Front Door en server tar det några minuter innan konfigurationen distribueras globalt. När det är klart öppnar du den värd för frontend som du skapade. I en webbläsare går du till `contoso-frontend.azurefd.net` . Din begäran dirigeras automatiskt till den närmaste servern till dig från de angivna servrarna i serverpoolen.
 
 Om du har skapat dessa appar i den här snabbstarten visas en informationssida.
 
 Prova följande steg för att testa omedelbar global redundans i praktiken:
 
-1. Öppna en webbläsare enligt beskrivningen ovan och gå till adressen till frontend: `contoso-frontend.azurefd.net` .
+1. Öppna en webbläsare enligt beskrivningen ovan och gå till frontend-adressen: `contoso-frontend.azurefd.net` .
 
-1. I Azure Portal du efter och väljer *App Services*. Rulla ned för att hitta en av dina webbappar, **WebAppContoso-1** i det här exemplet.
+1. I Azure Portal du efter och väljer *App services*. Rulla ned för att hitta en av dina webbappar, **WebAppContoso-1** i det här exemplet.
 
 1. Välj din webbapp och välj sedan Stoppa **och** Ja **för att** verifiera.
 
 1. Uppdatera webbläsaren. Du bör se samma informationssida.
 
    >[!TIP]
-   >Det finns en liten fördröjning för de här åtgärderna. Du kan behöva uppdatera igen.
+   >Det är lite fördröjning för de här åtgärderna. Du kan behöva uppdatera igen.
 
 1. Hitta den andra webbappen och stoppa den också.
 
@@ -166,7 +168,7 @@ Prova följande steg för att testa omedelbar global redundans i praktiken:
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar kan du ta bort alla objekt som du har skapat. När du tar bort en resursgrupp tas även dess innehåll bort. Om du inte planerar att använda den här Front Door bör du ta bort resurser för att undvika onödiga kostnader.
+När du är klar kan du ta bort alla objekt som du har skapat. Om du tar bort en resursgrupp tas även dess innehåll bort. Om du inte planerar att använda den här Front Door bör du ta bort resurser för att undvika onödiga kostnader.
 
 1. I Azure Portal du efter och väljer **Resursgrupper,** eller väljer **Resursgrupper** på Azure Portal menyn.
 
