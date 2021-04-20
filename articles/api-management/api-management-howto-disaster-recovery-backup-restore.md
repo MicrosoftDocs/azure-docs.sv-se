@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/05/2020
 ms.author: apimpm
-ms.openlocfilehash: 090eda3c3310a1b793733e37725c62758445d6b2
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: ad0936fddacf8f5b2e4917441f5feaa41aad9de4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587374"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739808"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Så här implementerar du haveriberedskap med hjälp av säkerhetskopiering och återställning i Azure API Management
 
-Genom att publicera och hantera dina API:er via Azure API Management utnyttjar du feltolerans- och infrastrukturfunktioner som du annars skulle utforma, implementera och hantera manuellt. Azure-plattformen minskar en stor del av potentiella fel till en bråkdel av kostnaden.
+Genom att publicera och hantera dina API:er via Azure API Management utnyttjar du feltolerans och infrastrukturfunktioner som du annars skulle utforma, implementera och hantera manuellt. Azure-plattformen minskar en stor del av potentiella fel till en bråkdel av kostnaden.
 
 Om du vill återställa från tillgänglighetsproblem som påverkar den region som är värd för din API Management-tjänst, kan du när som helst vara redo att rekonfigurera tjänsten i en annan region. Beroende på ditt mål för återställningstid kanske du vill behålla en väntelägestjänst i en eller flera regioner. Du kan också försöka behålla konfigurationen och innehållet synkroniserat med den aktiva tjänsten enligt ditt mål för återställningspunkt. Funktionerna för säkerhetskopiering och återställning av tjänster tillhandahåller de byggstenar som krävs för att implementera en strategi för haveriberedskap.
 
@@ -36,7 +36,7 @@ Den här guiden visar hur du automatiserar säkerhetskopierings- och återställ
 > Säkerhetskopieringsåtgärden samlar inte in föraggregering av loggdata som används i rapporter som visas på Analytics-bladet i Azure Portal.
 
 > [!WARNING]
-> Varje säkerhetskopia upphör att gälla efter 30 dagar. Om du försöker återställa en säkerhetskopia när förfalloperioden på 30 dagar har gått ut, misslyckas återställningen med ett `Cannot restore: backup expired` meddelande.
+> Varje säkerhetskopia upphör att gälla efter 30 dagar. Om du försöker återställa en säkerhetskopia när förfalloperioden på 30 dagar har gått ut misslyckas återställningen med ett `Cannot restore: backup expired` meddelande.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -67,7 +67,7 @@ Alla uppgifter som du utför på resurser med hjälp av Azure Resource Manager m
 
 4. Ange ett namn på programmet.
 5. Som programtyp väljer du **Intern**.
-6. Ange en platshållar-URL, till exempel för `http://resources` **omdirigerings-URI:n,** eftersom det är ett obligatoriskt fält, men värdet används inte senare. Klicka på kryssrutan för att spara programmet.
+6. Ange en platshållar-URL, till exempel för omdirigerings-URI, eftersom det är ett obligatoriskt `http://resources` fält, men värdet används inte senare.  Klicka på kryssrutan för att spara programmet.
 7. Klicka på **Skapa**.
 
 ### <a name="add-an-application"></a>Lägga till ett program
@@ -118,7 +118,7 @@ namespace GetTokenResourceManagerRequests
 
 Ersätt `{tenant id}` `{application id}` , och med följande `{redirect uri}` instruktioner:
 
-1. Ersätt `{tenant id}` med klientorganisations-ID:t för Azure Active Directory som du skapade. Du kan komma åt ID:t genom **att klicka Appregistreringar**  ->  **slutpunkter**.
+1. Ersätt `{tenant id}` med klientorganisations-ID:t för Azure Active Directory som du skapade. Du kan komma åt ID:t genom **att klicka Appregistreringar**  ->  **slutpunkter.**
 
     ![Slutpunkter][api-management-endpoint]
 
@@ -130,7 +130,7 @@ Ersätt `{tenant id}` `{application id}` , och med följande `{redirect uri}` in
     ![Token][api-management-arm-token]
 
     > [!NOTE]
-    > Token kan upphöra att gälla efter en viss tid. Kör kodexeletten igen för att generera en ny token.
+    > Token kan upphöra att gälla efter en viss period. Kör kodexeletten igen för att generera en ny token.
 
 ## <a name="calling-the-backup-and-restore-operations"></a>Anropa säkerhetskopierings- och återställningsåtgärder
 
@@ -182,12 +182,12 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 
 där:
 
--   `subscriptionId` – ID för den prenumeration som innehåller API Management-tjänsten som du återställer en säkerhetskopia till
+-   `subscriptionId` – ID för prenumerationen som innehåller API Management-tjänsten som du återställer en säkerhetskopia till
 -   `resourceGroupName` – namnet på den resursgrupp som innehåller Azure API Management-tjänsten som du återställer en säkerhetskopia till
 -   `serviceName` – namnet på den API Management som återställs till angivet när den skapades
 -   `api-version` – ersätt med `api-version=2019-12-01`
 
-I brödtexten i begäran anger du platsen för säkerhetskopieringsfilen. Det innebär att du lägger till Azure Storage-kontonamnet, åtkomstnyckeln, blobcontainerns namn och säkerhetskopieringsnamnet:
+I brödtexten i begäran anger du platsen för säkerhetskopieringsfilen. Det innebär att du lägger till Namnet på Azure-lagringskontot, åtkomstnyckeln, blobcontainerns namn och namnet på säkerhetskopian:
 
 ```json
 {
@@ -217,8 +217,8 @@ Ange värdet för `Content-Type` begärandehuvudet till `application/json` .
 -   **Containern** som anges i **begärandetexten måste finnas**.
 -   När säkerhetskopieringen pågår bör du **undvika hanteringsändringar** i tjänsten, till exempel uppgradering eller nedgradering av SKU, ändring av domännamn med mera.
 -   Återställning av en **säkerhetskopia garanteras endast i 30 dagar** sedan den skapades.
--   **Ändringar** som görs i tjänstkonfigurationen (till exempel API:er, principer och utseendet på utvecklarportalen) medan säkerhetskopieringen pågår kan uteslutas från säkerhetskopieringen och **går förlorade.**
--   Om Azure Storage-kontot är [][azure-storage-ip-firewall] brandvägg aktiverat måste kunden  tillåta uppsättningen [med Azure API Management-kontrollplans-IP-adresser][control-plane-ip-address] på sitt lagringskonto för att kunna säkerhetskopiera till eller återställa från till arbete. Kontot Azure Storage kan finnas i valfri Azure-region förutom den där API Management-tjänsten finns. Om API Management-tjänsten till exempel finns i USA, västra kan Azure Storage-kontot vara i USA, västra 2 och kunden måste öppna kontrollen Plan-IP 13.64.39.16 (API Management Control Plane IP of West US) i brandväggen. Det beror på att begäranden till Azure Storage inte SNATed till en offentlig IP-adress från Compute (Azure Api Management Control Plane) i samma Azure-region. Lagringsbegäran mellan regioner kommer att SNATed till den offentliga IP-adressen.
+-   **Ändringar** som görs i tjänstkonfigurationen (till exempel API:er, principer och utvecklarportalens utseende) medan säkerhetskopieringen pågår kan uteslutas från säkerhetskopieringen och **går förlorade.**
+-   Om brandväggen för Azure Storage-kontot är aktiverad  måste kunden Tillåta uppsättningen [azure API Management-kontrollplans-IP-adresser][control-plane-ip-address] på lagringskontot för säkerhetskopiering till eller återställning från till arbete. [][azure-storage-ip-firewall] Kontot Azure Storage kan finnas i valfri Azure-region förutom den där API Management-tjänsten finns. Om API Management-tjänsten till exempel finns i USA, västra kan Azure Storage-kontot vara i USA, västra 2 och kunden måste öppna kontrollen Plan-IP 13.64.39.16 (API Management Control Plane IP of West US) i brandväggen. Det beror på att begäranden till Azure Storage inte SNATed till en offentlig IP-adress från Compute (Azure Api Management Control Plane) i samma Azure-region. Lagringsbegäran mellan regioner kommer att SNATed till den offentliga IP-adressen.
 -   [Resursdelning för korsande ursprung (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) **ska inte** aktiveras på Blob Service i Azure Storage konto.
 -   **SKU:n** för den tjänst som återställs **till måste matcha** SKU:n för den säkerhetskopierade tjänst som återställs.
 
@@ -230,7 +230,7 @@ Ange värdet för `Content-Type` begärandehuvudet till `application/json` .
 -   [Konfiguration av hanterad](api-management-howto-use-managed-service-identity.md) identitet.
 -   [Azure Monitor diagnostik](api-management-howto-use-azure-monitor.md) Konfiguration.
 -   [Protokoll och chifferinställningar.](api-management-howto-manage-protocols-ciphers.md)
--   [Innehåll på](api-management-howto-developer-portal.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) utvecklarportalen.
+-   [Innehåll på](developer-portal-faq.md#is-the-portals-content-saved-with-the-backuprestore-functionality-in-api-management) utvecklarportalen.
 
 Hur ofta du utför tjänstsäkerhetskopior påverkar ditt mål för återställningspunkten. För att minimera det rekommenderar vi att du implementerar regelbundna säkerhetskopieringar och säkerhetskopieringar på begäran när du har gjort ändringar i API Management tjänsten.
 

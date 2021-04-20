@@ -3,12 +3,12 @@ title: Geo-haveriberedskap – Azure Event Hubs| Microsoft Docs
 description: Så här använder du geografiska regioner för redundans och haveriberedskap i Azure Event Hubs
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: 504a83772c2ac8e3afc86465899357d0eda4eb92
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b2cf2b0ebef2b460b626e45d6b52309c9281d6ce
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478666"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739250"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – Geo-haveriberedskap 
 
@@ -23,7 +23,7 @@ Funktionen Event Hubs geo-haveriberedskap är utformad för att göra det enklar
 Funktionen för Geo-Disaster-återställning säkerställer att hela konfigurationen av ett namnområde (Event Hubs, konsumentgrupper och inställningar) kontinuerligt replikeras från ett primärt namnområde till ett sekundärt namnområde när det är kopplat, och att du när som helst kan initiera en redundansförflyttning från den primära till den sekundära när som helst. Redundansflyttningen pekar det valda aliasnamnet på nytt för namnområdet till det sekundära namnområdet och bryter sedan parkopplingen. Redundansen är nästan omedelbar när den har initierats. 
 
 > [!IMPORTANT]
-> Funktionen möjliggör omedelbar kontinuitet för åtgärder med samma konfiguration, men **replikerar inte händelsedata**. Om inte katastrofen orsakade förlust av alla zoner kan händelsedata som bevaras i den primära händelsehubben efter redundansen återställas och historiska händelser kan hämtas därifrån när åtkomsten har återställts. Om du vill replikera händelsedata och använda motsvarande namnrymder i aktiva/aktiva konfigurationer för att hantera avbrott och katastrofer ska du inte förlita dig på den här funktionsuppsättningen för geo-haveriberedskap, utan följ replikeringsvägledningen [.](event-hubs-federation-overview.md)  
+> Funktionen möjliggör omedelbar kontinuitet för åtgärder med samma konfiguration, men **replikerar inte händelsedata**. Om inte katastrofen orsakade förlust av alla zoner kan händelsedata som bevaras i den primära händelsehubben efter redundansen återställas och historiska händelser kan hämtas därifrån när åtkomsten har återställts. Om du vill replikera händelsedata och använda motsvarande namnrymder i aktiva/aktiva konfigurationer för att hantera avbrott och katastrofer [](event-hubs-federation-overview.md)ska du inte förlita dig på den här funktionsuppsättningen för geo-haveriberedskap, utan följ replikeringsvägledningen .  
 
 ## <a name="outages-and-disasters"></a>Avbrott och katastrofer
 
@@ -52,10 +52,10 @@ Följande kombinationer av primära och sekundära namnrymder stöds:
 
 | Primärt namnområde | Sekundärt namnområde | Stöds | 
 | ----------------- | -------------------- | ---------- |
-| Standard | Standard | Ja | 
-| Standard | Dedikerad | Ja | 
-| Dedikerad | Dedikerad | Ja | 
-| Dedikerad | Standard | Inga | 
+| Standard | Standard | Yes | 
+| Standard | Dedikerad | Yes | 
+| Dedikerad | Dedikerad | Yes | 
+| Dedikerad | Standard | No | 
 
 > [!NOTE]
 > Du kan inte koppla ihop namnrymder som finns i samma dedikerade kluster. Du kan koppla ihop namnområden som finns i separata kluster. 
@@ -71,7 +71,7 @@ Följande avsnitt är en översikt över redundansen och förklarar hur du stäl
 Du skapar eller använder först ett befintligt primärt namnområde och ett nytt sekundärt namnområde och kopplar sedan ihop de två. Den här parkopplingen ger dig ett alias som du kan använda för att ansluta. Eftersom du använder ett alias behöver du inte ändra anslutningssträngar. Endast nya namnrymder kan läggas till i redundanskopplingen. 
 
 1. Skapa det primära namnområdet.
-1. Skapa det sekundära namnområdet i en annan region. Det här är valfritt. Du kan skapa den sekundära namnrymden när du skapar parkopplingen i nästa steg. 
+1. Skapa det sekundära namnområdet i en annan region. Det här är valfritt. Du kan skapa det sekundära namnområdet när du skapar parkopplingen i nästa steg. 
 1. I Azure Portal navigerar du till ditt primära namnområde.
 1. Välj **Geo-återställning** på den vänstra menyn och välj **Initiera parkoppling** i verktygsfältet. 
 
@@ -97,7 +97,7 @@ Slutligen bör du lägga till övervakning för att identifiera om en redundans 
 
 ### <a name="example"></a>Exempel
 
-I ett exempel på det här scenariot kan du överväga en POS-lösning (Point of Sale) som ger antingen meddelanden eller händelser. Event Hubs skickar dessa händelser till en mappnings- eller omformateringslösning som sedan vidarebefordrar mappade data till ett annat system för vidare bearbetning. Då kan alla dessa system finnas i samma Azure-region. När och vilken del av redundansen som ska redundansen ska fattas beror på dataflödet i infrastrukturen. 
+I ett exempel på det här scenariot kan du överväga en POS-lösning (Point of Sale) som ger antingen meddelanden eller händelser. Event Hubs skickar dessa händelser till någon mappnings- eller omformateringslösning, som sedan vidarebefordrar mappade data till ett annat system för vidare bearbetning. Då kan alla dessa system finnas i samma Azure-region. När och vilken del av redundansen som ska redundansen fattas beror på dataflödet i infrastrukturen. 
 
 Du kan automatisera redundans med övervakningssystem eller med anpassade övervakningslösningar. Sådan automatisering kräver dock extra planering och arbete, vilket ligger utanför omfånget för den här artikeln.
 
@@ -118,21 +118,13 @@ Om du initierar redundansen krävs två steg:
 
 Om du har gjort ett misstag; Om du till exempel har kopplat ihop fel regioner under den första installationen kan du när som helst bryta parkopplingen av de två namnrymderna. Om du vill använda de parkopplade namnrymderna som vanliga namnområden tar du bort aliaset.
 
-## <a name="samples"></a>Exempel
-
-Exemplet [på GitHub visar](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) hur du ställer in och initierar en redundans. Det här exemplet visar följande begrepp:
-
-- Inställningar som krävs Azure Active Directory att använda Azure Resource Manager med Event Hubs. 
-- Steg som krävs för att köra exempelkoden. 
-- Skicka och ta emot från den aktuella primära namnrymden. 
-
 ## <a name="considerations"></a>Överväganden
 
 Tänk på följande:
 
-1. Det är Event Hubs geo-haveriberedskap inte replikerar data, och därför kan du inte återanvända det gamla förskjutningsvärdet för din primära händelsehubb på den sekundära händelsehubben. Vi rekommenderar att du startar om händelsemottagaren med någon av följande metoder:
+1. Geo-Event Hubs inte replikerar data, och därför kan du inte återanvända det gamla förskjutningsvärdet för din primära händelsehubb på den sekundära händelsehubben. Vi rekommenderar att du startar om händelsemottagaren med någon av följande metoder:
 
-   - *EventPosition.FromStart() –* Om du vill läsa alla data på den sekundära händelsehubben.
+   - *EventPosition.FromStart()* – Om du vill läsa alla data på den sekundära händelsehubben.
    - *EventPosition.FromEnd()* – Om du vill läsa alla nya data från tidpunkten för anslutningen till din sekundära händelsehubb.
    - *EventPosition.FromEnqueuedTime(dateTime)* – Om du vill läsa alla data som tas emot i den sekundära händelsehubben från ett visst datum och en viss tid.
 
@@ -161,14 +153,14 @@ När du använder tillgänglighetszoner replikeras både metadata och data (hän
 Det här avsnittet innehåller fler överväganden när du använder geo-haveriberedskap med namnområden som använder privata slutpunkter. Mer information om hur du använder privata slutpunkter Event Hubs i allmänhet finns i [Konfigurera privata slutpunkter.](private-link-service.md)
 
 ### <a name="new-pairings"></a>Nya par
-Om du försöker skapa en koppling mellan ett primärt namnområde med en privat slutpunkt och ett sekundärt namnområde utan en privat slutpunkt misslyckas parkopplingen. Parkopplingen lyckas bara om både primära och sekundära namnrymder har privata slutpunkter. Vi rekommenderar att du använder samma konfigurationer på de primära och sekundära namnrymderna och i virtuella nätverk där privata slutpunkter skapas.  
+Om du försöker skapa en koppling mellan ett primärt namnområde med en privat slutpunkt och ett sekundärt namnområde utan en privat slutpunkt misslyckas parkopplingen. Parkopplingen lyckas bara om både primära och sekundära namnområden har privata slutpunkter. Vi rekommenderar att du använder samma konfigurationer på de primära och sekundära namnrymderna och på virtuella nätverk där privata slutpunkter skapas.  
 
 > [!NOTE]
 > När du försöker koppla ihop det primära namnområdet med en privat slutpunkt och ett sekundärt namnområde kontrollerar valideringsprocessen bara om det finns en privat slutpunkt i det sekundära namnområdet. Den kontrollerar inte om slutpunkten fungerar eller kommer att fungera efter redundans. Det är ditt ansvar att se till att det sekundära namnområdet med privat slutpunkt fungerar som förväntat efter redundans.
 >
 > Om du vill testa att de privata slutpunktskonfigurationerna är samma i primära och sekundära namnrymder skickar du en läsbegäran (till exempel: [Hämta händelsehubb](/rest/api/eventhub/get-event-hub)) till det sekundära namnområdet utanför det virtuella nätverket och kontrollerar att du får ett felmeddelande från tjänsten.
 
-### <a name="existing-pairings"></a>Befintliga parkopplingar
+### <a name="existing-pairings"></a>Befintliga par
 Om det redan finns en koppling mellan den primära och sekundära namnrymden misslyckas skapandet av den privata slutpunkten i det primära namnområdet. Lös problemet genom att först skapa en privat slutpunkt i det sekundära namnområdet och sedan skapa en för det primära namnområdet.
 
 > [!NOTE]

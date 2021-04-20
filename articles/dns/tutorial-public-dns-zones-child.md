@@ -1,40 +1,38 @@
 ---
-title: 'Självstudie: skapa en Azure-underordnad DNS-zon'
+title: 'Självstudie: Skapa en underordnad DNS-zon i Azure'
 titleSuffix: Azure DNS
-description: Själv studie kurs om hur du skapar underordnade DNS-zoner i Azure Portal.
+description: Självstudie om hur du skapar underordnade DNS-zoner i Azure Portal.
 author: jonbeck
 ms.assetid: be4580d7-aa1b-4b6b-89a3-0991c0cda897
 ms.service: dns
 ms.topic: tutorial
 ms.custom: ''
 ms.workload: infrastructure-services
-ms.date: 7/16/2020
+ms.date: 04/19/2021
 ms.author: jonbeck
-ms.openlocfilehash: 1e2eddd821bb7a9d2050913efef3d73b406e32f7
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: 283ff2786a0b63c6263c62a13e27cce92c2368dd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101733218"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737396"
 ---
-# <a name="tutorial-creating-a-new-child-dns-zone"></a>Självstudie: skapa en ny underordnad DNS-zon
+# <a name="tutorial-creating-a-new-child-dns-zone"></a>Självstudie: Skapa en ny underordnad DNS-zon
 
 I den här guiden får du lära dig att: 
 
 > [!div class="checklist"]
 > * Logga in på Azure-portalen.
-> * Skapa en underordnad DNS-zon via den nya DNS-zonen.
-> * Skapar en underordnad DNS-zon via överordnad DNS-zon.
-> * Verifierar NS-delegering för ny underordnad DNS-zon.
-
-
+> * Skapa en underordnad DNS-zon via en ny DNS-zon.
+> * Skapa en underordnad DNS-zon via en överordnad DNS-zon.
+> * Verifiera NS-delegering för ny underordnad DNS-zon.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration.  Om du inte har något konto kan du [skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Ett Azure-konto med en aktiv prenumeration.  Om du inte har något konto kan du [skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * Befintlig överordnad Azure DNS zon.  
 
-I den här självstudien kommer vi att använda contoso.com som överordnad zon och subdomain.contoso.com som underordnat domän namn.  Ersätt *contoso.com* med ditt överordnade domän namn och under *domän* med din underordnade domän.  Om du inte har skapat din överordnade DNS-zon, se steg för att [skapa en DNS-zon med hjälp av Azure Portal](./dns-getstarted-portal.md#create-a-dns-zone). 
+I den här självstudien använder vi contoso.com som överordnad zon och subdomain.contoso.com som underdomännamn.  Ersätt *contoso.com* med det överordnade domännamnet *och underdomänen* med din underordnade domän.  Om du inte har skapat den överordnade DNS-zonen kan du gå till stegen för att [skapa DNS-zon med Azure Portal](./dns-getstarted-portal.md#create-a-dns-zone). 
 
 
 ## <a name="sign-in-to-azure-portal"></a>Logga in på Azure-portalen
@@ -42,69 +40,65 @@ I den här självstudien kommer vi att använda contoso.com som överordnad zon 
 Logga in på [Azure-portalen](https://portal.azure.com/) med ditt Azure-konto.
 Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar.
 
-Det finns två sätt att skapa en underordnad DNS-zon.
-1.  Via portal sidan Skapa DNS-zon.
-1.  Via konfigurations sidan för den överordnade DNS-zonen.
+Det finns två sätt att skapa den underordnade DNS-zonen.
+1.  Via portalsidan "Skapa DNS-zon".
+1.  Via konfigurationssidan för den överordnade DNS-zonen.
 
+## <a name="create-child-dns-zone-via-create-dns-zone"></a>Skapa underordnad DNS-zon via skapa DNS-zon
 
-## <a name="create-child-dns-zone-via-create-dns-zone"></a>Skapa en underordnad DNS-zon via skapa DNS-zon
-
-I det här steget ska vi skapa en ny underordnad DNS-zon med namnet **subdomain.contoso.com** och delegera den till befintlig överordnad DNS-zon **contoso.com**. Du skapar DNS-zonen med hjälp av flikarna på sidan **Skapa DNS-zon** .
+I det här steget skapar vi en ny underordnad DNS-zon med **namnet subdomain.contoso.com** och delegerar den till den befintliga överordnade DNS-zonen **contoso.com**. Du skapar DNS-zonen med hjälp av flikarna på sidan **Skapa DNS-zon.**
 1.  Välj **Skapa en resurs** på menyn i Microsoft Azure-portalen eller från **startsidan**. Fönstret **Nytt** visas.
-1.  Välj **nätverk** och välj sedan **DNS-zon** och välj sedan **Lägg till** knapp.
+1.  Välj **Nätverk** och sedan **DNS-zon och** sedan knappen Lägg **till.**
 
-1.  På fliken **grundläggande** anger eller väljer du följande värden:
-    * **Prenumeration**: Välj en prenumeration för att skapa zonen i.
-    * **Resurs grupp**: Ange din befintliga resurs grupp eller skapa en ny genom att välja **Skapa ny**, ange *MyResourceGroup* och välj **OK**. Resursgruppens namn måste vara unikt inom Azure-prenumerationen.
-    * Markera den här kryss rutan: **zonen är underordnad en befintlig zon som redan finns i Azure DNS**
-    * **Prenumeration på överordnad zon**: i den här List rutan söker du efter och/eller väljer det prenumerations namn som överordnad DNS-zon *contoso.com* skapades under.
-    * **Överordnad zon**: i Sök fältet skriver du *contoso.com* för att läsa in den i list rutan. När du har läst in Select *contoso.com* från List rutan.
-    * **Namn:** Skriv under *domän* för den här självstudien exempel. Observera att den överordnade DNS-zonens namn *contoso.com* automatiskt läggs till som suffix till namn när vi väljer överordnad zon i steget ovan.
+1.  På **fliken Grundläggande** skriver eller väljer du följande värden:
+    * **Prenumeration:** Välj en prenumeration som du vill skapa zonen i.
+    * **Resursgrupp:** Ange din befintliga resursgrupp eller skapa en ny genom att välja **Skapa ny.** Ange *MyResourceGroup* och välj **OK.** Resursgruppens namn måste vara unikt inom Azure-prenumerationen.
+    * Markera den här kryssrutan: **Den här zonen är underordnad en befintlig zon som redan finns i Azure DNS**
+    * **Överordnad zonprenumeration:** I den här listrutan söker eller väljer du det prenumerationsnamn under vilket *den överordnade DNS-contoso.com* skapades.
+    * **Överordnad zon:** I sökfältet skriver du *contoso.com* att läsa in den i listrutan. När du har *läst contoso.com* väljer du alternativet från listrutan.
+    * **Namn:** Skriv *underdomän för det här* självstudieexempel. Observera att det överordnade *DNS-contoso.com* läggs automatiskt till som suffix som namn när vi väljer överordnad zon i steget ovan.
 
 1. Välj **Nästa: Granska + skapa**.
-1. På fliken **Granska + skapa** granskar du sammanfattningen, korrigera eventuella verifierings fel och väljer sedan **skapa**.
+1. På fliken **Granska + skapa** granskar du sammanfattningen, korrigerar eventuella verifieringsfel och väljer sedan **Skapa.**
 Det kan ta några minuter att skapa zonen.
 
- 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-inline.png" alt-text="Skärm bild av sidan Skapa DNS-zon." lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-inline.png" alt-text="Skärmbild av sidan skapa DNS-zon." lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-expanded.png":::
 
-## <a name="create-child-dns-zone-via-parent-dns-zone-overview-page"></a>Sidan skapa underordnad DNS-zon via översikt över överordnad DNS-zon
-Du kan också skapa en ny underordnad DNS-zon och delegera den till den överordnade DNS-zonen med hjälp av knappen för den **underordnade zonen** från översikts sidan för överordnad zon. Genom att använda den här knappen fylls de överordnade parametrarna automatiskt i för den underordnade zonen. 
+## <a name="create-child-dns-zone-via-parent-dns-zone-overview-page"></a>Översiktssida för att skapa underordnad DNS-zon via överordnad DNS-zon
+Du kan också skapa en ny underordnad DNS-zon och delegera den till den överordnade DNS-zonen med hjälp av knappen **Underordnad** zon från översiktssidan för den överordnade zonen. Med den här knappen fylls de överordnade parametrarna automatiskt i i förväg för den underordnade zonen. 
 
-1.  I Azure Portal, under **alla resurser**, öppnar du DNS-zonen *contoso.com* i resurs gruppen **MyResourceGroup** . Du kan ange *contoso.com* i rutan **Filtrera efter namn** för att hitta den enklare.
-1.  På sidan Översikt över DNS-zon väljer du knappen **+ underordnad zon** .
+1.  I den Azure Portal under **Alla resurser** öppnar du *contoso.com* DNS-zon i **resursgruppen MyResourceGroup.** Du kan ange *contoso.com* i **rutan Filtrera efter namn** för att hitta den enklare.
+1.  På översiktssidan för DNS-zonen väljer du **knappen +Underordnad** zon.
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Knapp för underordnade skärm bilds zon." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Skärmbild av knappen underordnad zon." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
-1.  Sidan Skapa DNS-zon öppnas sedan. Alternativet för underordnad zon är redan markerat och prenumerationen på den överordnade zonen och den överordnade zonen är redan ifylld för dig på den här sidan.
-1.  Skriv namnet som *underordnat* exempel i den här kursen. Observera att du har överordnat DNS-zonens namn contoso.com automatiskt som prefix till namn.
-1.  Välj **Nästa: Taggar** och **Nästa: granska + skapa**.
-1.  På fliken **Granska + skapa** granskar du sammanfattningen, korrigera eventuella verifierings fel och väljer sedan **skapa**.
+1.  Sidan skapa DNS-zon öppnas sedan. Alternativet Underordnad zon är redan markerat och överordnad zonprenumeration och överordnad zon fylls i åt dig på den här sidan.
+1.  Skriv namnet som underordnad för *det här* självstudieexempel. Observera att du överordnade DNS-zonnamn contoso.com läggs automatiskt till som prefix till namn.
+1.  Välj **Nästa: Taggar** och sedan **Nästa: Granska + skapa**.
+1.  På fliken **Granska + skapa** granskar du sammanfattningen, korrigerar eventuella verifieringsfel och väljer sedan **Skapa.**
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Skärm bild av markerad underordnad zon" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Skärmbild av vald underordnad zon" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 
 ## <a name="verify-child-dns-zone"></a>Verifiera underordnad DNS-zon
-Nu när du har skapat en ny underordnad DNS-zon *subdomain.contoso.com* . Om du vill kontrol lera att delegeringen har genomförts korrekt ska du kontrol lera namnserver (NS) för din underordnade zon i den överordnade zonen enligt beskrivningen nedan.  
+Nu när du har en ny underordnad *DNS-zon subdomain.contoso.com* skapat. För att kontrollera att delegeringen har skett korrekt bör du kontrollera att nameserver(NS)-posterna för den underordnade zonen finns i den överordnade zonen enligt beskrivningen nedan.  
 
 **Hämta namnservrar för den underordnade DNS-zonen:**
 
-1.  I Azure Portal, under **alla resurser**, öppnar du DNS-zonen *subdomain.contoso.com* i resurs gruppen **MyResourceGroup** . Du kan ange *subdomain.contoso.com* i rutan **Filtrera efter namn** för att hitta den enklare.
-1.  Hämta namnservrarna från översikts sidan för DNS-zonen. I det här exemplet har zonen contoso.com tilldelats namnservrarna *ns1-08.Azure-DNS.com, ns2-08.Azure-DNS.net, NS3-08.Azure-DNS.org* och *NS4-08.Azure-DNS.info*:
+1.  I den Azure Portal under **Alla resurser** öppnar du *subdomain.contoso.com* DNS-zonen i **resursgruppen MyResourceGroup.** Du kan ange *subdomain.contoso.com* i **rutan Filtrera efter namn** för att hitta den enklare.
+1.  Hämta namnservrarna från översiktssidan för DNS-zonen. I det här exemplet har zonen contoso.com tilldelats *namnservrar ns1-08.azure-dns.com, ns2-08.azure-dns.net, ns3-08.azure-dns.org* och *ns4-08.azure-dns.info*:
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="Skärm bild av namnservrar för den underordnade zonen" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
-**Verifiera NS-posten i den överordnade DNS-zonen:**
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="Skärmbild av underordnade zonnamnservrar" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+**Kontrollera NS-posten i den överordnade DNS-zonen:**
 
-I det här steget går vi till den överordnade DNS-zonen *contoso.com* och kontrollerar att post uppsättningen för de underordnade zonerna namnservrar har skapats.
+I det här steget går vi nu till den överordnade *DNS-contoso.com* och kontrollerar att dess NS-postuppsättningspost för de underordnade zonnamnservrarna har skapats.
 
-1. I Azure Portal, under **alla resurser**, öppnar du DNS-zonen contoso.com i resurs gruppen **MyResourceGroup** . Du kan ange contoso.com i rutan **Filtrera efter namn** för att hitta den enklare.
-1.  På sidan Översikt över *contoso.com* DNS-zoner söker du efter post uppsättningarna.
-1.  Du kommer att se att post uppsättning av typen NS och namn under domän redan har skapats i den överordnade DNS-zonen. Kontrol lera värdena för den här post uppsättningen den liknar listan namnserver som vi hämtade från den underordnade DNS-zonen i ovanstående steg.
+1. I den Azure Portal under **Alla resurser** öppnar du contoso.com DNS-zon i **resursgruppen MyResourceGroup.** Du kan ange contoso.com i **rutan Filtrera efter namn** för att hitta den enklare.
+1.  På *översiktssidan contoso.com* DNS-zoner söker du efter postuppsättningarna.
+1.  Du kommer att se att postuppsättningen av typen NS och namnunderdomänen redan har skapats i den överordnade DNS-zonen. Kontrollera värdena för den här postuppsättningen. Den liknar den namnserverlista som vi hämtade från den underordnade DNS-zonen i ovanstående steg.
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Skärm bild av namnservrar-verifiering för underordnade zoner" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Skärmbild av verifiering av namnservrar för underordnad zon" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>Rensa resurser
-När du inte längre behöver de resurser som du skapade i den här självstudien tar du bort dem genom att ta bort resurs gruppen **MyResourceGroup** . Öppna resurs gruppen **MyResourceGroup** och välj **ta bort resurs grupp**.
-
-
+När du inte längre behöver de resurser som du skapade i den här självstudien tar du bort dem genom att ta **bort resursgruppen MyResourceGroup.** Öppna **resursgruppen MyResourceGroup** och välj Ta **bort resursgrupp.**
 
 ## <a name="next-steps"></a>Nästa steg
 

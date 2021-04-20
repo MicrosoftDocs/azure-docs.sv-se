@@ -1,6 +1,6 @@
 ---
-title: Villkorlig åtkomst för B2B-samarbets användare – Azure AD
-description: Lär dig hur du tillämpar Multi-Factor Authentication-principer för Azure Active Directory B2B-användare.
+title: Villkorlig åtkomst för B2B-samarbetsanvändare – Azure AD
+description: Lär dig hur du tillämpar principer för multifaktorautentisering för Azure Active Directory B2B-användare.
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -11,79 +11,79 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74bfa4987f584bbd3490bc5f4f187dee5bc1bd87
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 22a5388d15b18180539eb95990a29f7ddf4f1951
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101646290"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739556"
 ---
-# <a name="conditional-access-for-b2b-collaboration-users"></a>Villkorlig åtkomst för B2B-samarbets användare
+# <a name="conditional-access-for-b2b-collaboration-users"></a>Villkorlig åtkomst för B2B-samarbetsanvändare
 
-Den här artikeln beskriver hur organisationer kan omfånget av principer för villkorlig åtkomst (CA) för B2B-gäst användare för att få åtkomst till sina resurser.
+Den här artikeln beskriver hur organisationer kan begränsa principer för villkorsstyrd åtkomst (CA) för B2B-gästanvändare så att de kan komma åt sina resurser.
 >[!NOTE]
->Detta autentiserings-eller auktoriseringsfel är lite annorlunda för gäst användare än för befintliga användare av identitets leverantören (IdP).
+>Det här autentiserings- eller auktoriseringsflödet är lite annorlunda för gästanvändare än för de befintliga användarna av den identitetsprovidern (IdP).
 
-## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>Autentiseringsschema för B2B-gäst användare från en extern katalog
+## <a name="authentication-flow-for-b2b-guest-users-from-an-external-directory"></a>Autentiseringsflöde för B2B-gästanvändare från en extern katalog
 
-Följande diagram illustrerar flödet: ![ bilden visar autentiseringsscheman för B2B-gäst användare från en extern katalog](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
+Följande diagram illustrerar flödet: bilden visar ![ autentiseringsflödet för B2B-gästanvändare från en extern katalog](./media/conditional-access-b2b/authentication-flow-b2b-guests.png)
 
-| Steg | Beskrivning |
+| Steg | Description |
 |--------------|-----------------------|
-| 1. | B2B-gäst användaren begär åtkomst till en resurs. Resursen omdirigerar användaren till resurs klienten, en betrodd IdP.|
-| 2. | Resurs klienten identifierar användaren som extern och omdirigerar användaren till B2B-gäst användarens IdP. Användaren utför primär autentisering i IdP.
-| 3. | B2B-gäst användarens IdP utfärdar en token till användaren. Användaren omdirigeras tillbaka till resurs klienten med token. Resurs klienten verifierar token och utvärderar sedan användaren mot sina CA-principer. Resurs klienten kan till exempel kräva att användaren utför Azure Active Directory (AD) Multi-Factor Authentication.
-| 4. | När alla CA-principer för resurs klienten är uppfyllda utfärdar resurs klienten sin egen token och omdirigerar användaren till resursen.
+| 1. | B2B-gästanvändaren begär åtkomst till en resurs. Resursen omdirigerar användaren till dess resursklientorganisation, en betrodd IdP.|
+| 2. | Resursklientorganisationen identifierar användaren som extern och omdirigerar användaren till B2B-gästanvändarens IdP. Användaren utför primär autentisering i IdP:n.
+| 3. | B2B-gästanvändarens IdP utfärdar en token till användaren. Användaren omdirigeras tillbaka till resursklientorganisationen med token. Resursklientorganisationen verifierar token och utvärderar sedan användaren mot dess CA-principer. Resursklientorganisationen kan till exempel kräva att användaren utför Azure Active Directory (AD) Multi-Factor Authentication.
+| 4. | När alla principer för resursklientorganisations-CA är uppfyllda utfärdar resursklientorganisationen sin egen token och omdirigerar användaren till dess resurs.
 
-## <a name="authentication-flow-for-b2b-guest-users-with-one-time-passcode"></a>Autentiseringsschema för B2B-gäst användare med ett lösen ord
+## <a name="authentication-flow-for-b2b-guest-users-with-one-time-passcode"></a>Autentiseringsflöde för B2B-gästanvändare med ett lösenord
 
-Följande diagram illustrerar flödet: ![ bilden visar autentiseringsscheman för B2B-gäst användare med ett lösen ord](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
+Följande diagram illustrerar flödet: bilden visar ![ autentiseringsflödet för B2B-gästanvändare med ett lösenord](./media/conditional-access-b2b/authentication-flow-b2b-guests-otp.png)
 
-| Steg | Beskrivning |
+| Steg | Description |
 |--------------|-----------------------|
-| 1. |Användaren begär åtkomst till en resurs i en annan klient organisation. Resursen omdirigerar användaren till resurs klienten, en betrodd IdP.|
-| 2. | Resurs klienten identifierar användaren som en [extern e-postanvändare för eng ång slö sen ord (eng ång slö sen ord)](./one-time-passcode.md) och skickar ett e-postmeddelande med eng ång slö sen ord till användaren.|
-| 3. | Användaren hämtar eng ång slö sen ord och skickar koden. Resurs klienten utvärderar användaren mot sina CA-principer.
-| 4. | När alla CA-principer är uppfyllda utfärdar resurs klienten en token och omdirigerar användaren till resursen. |
+| 1. |Användaren begär åtkomst till en resurs i en annan klientorganisation. Resursen omdirigerar användaren till dess resursklientorganisation, en betrodd IdP.|
+| 2. | Resursklientorganisationen identifierar användaren som en extern e-postanvändare med engångslösenord [(OTP)](./one-time-passcode.md) och skickar ett e-postmeddelande med engångslösenordet till användaren.|
+| 3. | Användaren hämtar engångslösenordet och skickar koden. Resursklientorganisationen utvärderar användaren mot dess CA-principer.
+| 4. | När alla PRINCIPER för certifikatutfärdaren har uppfyllts utfärdar resursklienten en token och omdirigerar användaren till dess resurs. |
 
 >[!NOTE]
->Om användaren kommer från en extern resurs klient organisation är det inte möjligt för B2B-gäst användarens IdP CA-principer att utvärderas. Från och med idag gäller endast resurs innehavarens certifikat utfärdare för dess gäster.
+>Om användaren kommer från en extern resursklientorganisation är det inte möjligt att även B2B-gästanvändarens IdP CA-principer utvärderas. Från och med idag gäller endast resursklientorganisationens CA-principer för dess gäster.
 
-## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>Azure AD-Multi-Factor Authentication för B2B-användare
+## <a name="azure-ad-multi-factor-authentication-for-b2b-users"></a>Azure AD Multi-Factor Authentication för B2B-användare
 
-Organisationer kan använda flera Azure AD Multi-Factor Authentication-principer för sina B2B-gäst användare. Dessa principer kan tillämpas på klient-, app-eller individuell användar nivå på samma sätt som de är aktiverade för heltids anställda och medlemmar i organisationen.
-Resurs klienten är alltid ansvarig för Azure AD Multi-Factor Authentication för användare, även om gäst användarens organisation har Multi-Factor Authentication funktioner. Här är ett exempel –
+Organisationer kan tillämpa flera Azure AD Multi-Factor Authentication-principer för sina B2B-gästanvändare. Dessa principer kan tillämpas på klient-, app- eller enskild användarnivå på samma sätt som de aktiveras för heltidsanställda och medlemmar i organisationen.
+Resursklientorganisationen ansvarar alltid för Azure AD Multi-Factor Authentication för användare, även om gästanvändarens organisation har multifaktorautentiseringsfunktioner. Här är ett exempel:
 
-1. En administratörs-eller informations anställd i ett företag som heter Fabrikam bjuder in användare från ett annat företag som heter Contoso för att använda sitt program.
+1. En administratör eller informationsarbetare på ett företag som heter Fabrikam bjuder in användare från ett annat företag som heter Contoso att använda sitt program Woodgrove.
 
-2. Sparbanken i Fabrikam har kon figurer ATS för att kräva Azure AD-Multi-Factor Authentication för åtkomst.
+2. Woodgrove-appen i Fabrikam är konfigurerad för att kräva Azure AD Multi-Factor Authentication vid åtkomst.
 
-3. När B2B-gäst användaren från contoso försöker komma åt Sparbanken i Fabrikam-klienten uppmanas de att slutföra Azure AD Multi-Factor Authentication-utmaningen.
+3. När B2B-gästanvändaren från Contoso försöker komma åt Woodgrove i Fabrikam-klientorganisationen uppmanas de att slutföra Azure AD Multi-Factor Authentication-utmaningen.
 
-4. Gäst användaren kan sedan konfigurera Azure AD-Multi-Factor Authentication med Fabrikam och välja alternativen.
+4. Gästanvändaren kan sedan konfigurera sin Azure AD Multi-Factor Authentication med Fabrikam och välja alternativen.
 
-5. Det här scenariot fungerar för alla identiteter – Azure AD eller personal Microsoft-konto (MSA). Om användaren i Contoso exempelvis autentiserar sig med sociala-ID.
+5. Det här scenariot fungerar för alla identiteter – Azure AD eller personligt Microsoft-konto (MSA). Till exempel om användaren i Contoso autentiseras med hjälp av ett socialt ID.
 
-6. Fabrikam måste ha tillräckliga Premium Azure AD-licenser som stöder Azure AD Multi-Factor Authentication. Användaren från Contoso använder sedan den här licensen från fabrikam. Information om B2B-licensiering finns i [fakturerings modell för externa Azure AD-identiteter](./external-identities-pricing.md) .
+6. Fabrikam måste ha tillräckligt med Premium Azure AD-licenser som stöder Azure AD Multi-Factor Authentication. Användaren från Contoso använder sedan den här licensen från Fabrikam. Se [faktureringsmodellen för externa Azure AD-identiteter](./external-identities-pricing.md) för information om B2B-licensieringen.
 
 >[!NOTE]
->Azure AD Multi-Factor Authentication görs på resurs innehavaren för att säkerställa förutsägbarhet.
+>Azure AD Multi-Factor Authentication görs vid resurstilldelningen för att säkerställa förutsägbarhet. När gästanvändaren loggar in visas inloggningssidan för resursklientorganisationen i bakgrunden och en egen inloggningssida för startklientorganisationen och företagslogotypen i förgrunden.
 
-### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Konfigurera Azure AD-Multi-Factor Authentication för B2B-användare
+### <a name="set-up-azure-ad-multi-factor-authentication-for-b2b-users"></a>Konfigurera Azure AD Multi-Factor Authentication för B2B-användare
 
-Titta på den här videon om du vill konfigurera Azure AD Multi-Factor Authentication för B2B-samarbets användare:
+Om du vill konfigurera Azure AD Multi-Factor Authentication för B2B-samarbetsanvändare kan du titta på den här videon:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/b2b-conditional-access-setup/Player]
 
-### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>B2B-användare Azure AD Multi-Factor Authentication för erbjudandet om inlösen
+### <a name="b2b-users-azure-ad-multi-factor-authentication-for-offer-redemption"></a>B2B-användare Azure AD Multi-Factor Authentication för inlösning av erbjudande
 
-Titta på den här videon om du vill veta mer om Azure AD Multi-Factor Authentication inlösen-upplevelsen:
+Om du vill veta mer om inlösningsupplevelsen för Azure AD Multi-Factor Authentication kan du titta på den här videon:
 
 >[!VIDEO https://channel9.msdn.com/Blogs/Azure/MFA-redemption/Player]
 
-### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>Azure AD Multi-Factor Authentication återställning för B2B-användare
+### <a name="azure-ad-multi-factor-authentication-reset-for-b2b-users"></a>Återställning av Azure AD Multi-Factor Authentication för B2B-användare
 
-Nu är följande PowerShell-cmdletar tillgängliga för att korrekturläsa B2B-gäst användare:
+Nu är följande PowerShell-cmdlets tillgängliga för att bevisa B2B-gästanvändare:
 
 1. Anslut till Azure AD
 
@@ -91,7 +91,7 @@ Nu är följande PowerShell-cmdletar tillgängliga för att korrekturläsa B2B-g
    $cred = Get-Credential
    Connect-MsolService -Credential $cred
    ```
-2. Hämta alla användare med korrektur metoder
+2. Hämta alla användare med proof up-metoder
 
    ```
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
@@ -102,7 +102,7 @@ Nu är följande PowerShell-cmdletar tillgängliga för att korrekturläsa B2B-g
    Get-MsolUser | where { $_.StrongAuthenticationMethods} | select UserPrincipalName, @{n="Methods";e={($_.StrongAuthenticationMethods).MethodType}}
    ```
 
-3. Återställ Azure AD-Multi-Factor Authentication-metoden för en särskild användare för att kräva att B2B-samarbets användaren ställer in några språk metoder igen. 
+3. Återställ Azure AD Multi-Factor Authentication-metoden för en specifik användare så att B2B-samarbetsanvändaren måste konfigurera korrekturmetoder igen. 
    Här är ett exempel:
 
    ```
@@ -111,41 +111,41 @@ Nu är följande PowerShell-cmdletar tillgängliga för att korrekturläsa B2B-g
 
 ## <a name="conditional-access-for-b2b-users"></a>Villkorlig åtkomst för B2B-användare
 
-Det finns olika faktorer som påverkar CA-principer för B2B-gäst användare.
+Det finns olika faktorer som påverkar CA-principer för B2B-gästanvändare.
 
 ### <a name="device-based-conditional-access"></a>Enhetsbaserad villkorlig åtkomst
 
-I CA finns ett alternativ för att kräva att en användares [enhet är kompatibel eller hybrid Azure AD-ansluten](../conditional-access/concept-conditional-access-conditions.md#device-state-preview). B2B-gäst användare kan bara uppfylla efterlevnad om resurs klienten kan hantera sin enhet. Enheter kan inte hanteras av mer än en organisation i taget. B2B-gäst användare kan inte uppfylla hybrid Azure AD-anslutning eftersom de inte har något lokalt AD-konto. Endast om gäst användarens enhet är ohanterad kan de registrera eller registrera sina enheter i resurs klienten och sedan göra enheten kompatibel. Användaren kan sedan uppfylla kontrollen bevilja behörighet.
+I CERTIFIKATUTFÄRDARE finns det ett alternativ för att kräva att en användares enhet är [kompatibel eller Hybrid Azure AD-ansluten.](../conditional-access/concept-conditional-access-conditions.md#device-state-preview) B2B-gästanvändare kan bara uppfylla efterlevnadskrav om resursklientorganisationen kan hantera sin enhet. Enheter kan inte hanteras av mer än en organisation i taget. B2B-gästanvändare kan inte uppfylla Hybrid Azure AD-anslutning eftersom de inte har något lokalt AD-konto. Endast om gästanvändarens enhet är ohanterad kan användaren registrera eller registrera sin enhet i resursklientorganisationen och sedan göra enheten kompatibel. Användaren kan sedan uppfylla beviljandekontrollen.
 
 >[!Note]
 >Vi rekommenderar inte att du kräver en hanterad enhet för externa användare.
 
 ### <a name="mobile-application-management-policies"></a>Principer för hantering av mobilprogram
 
-Certifikat utfärdaren tilldelar kontroller, till exempel **Kräv godkända klient program** och kräver att enhets **skydds principer** måste registreras i klienten. De här kontrollerna kan endast tillämpas på [iOS-och Android-enheter](../conditional-access/concept-conditional-access-conditions.md#device-platforms). Ingen av dessa kontroller kan dock tillämpas på B2B-gäst användare om användarens enhet redan hanteras av en annan organisation. Det går inte att registrera en mobil enhet i mer än en klient i taget. Om den mobila enheten hanteras av en annan organisation kommer användaren att blockeras. Endast om gäst användarens enhet är ohanterad kan de registrera sina enheter i resurs klienten. Användaren kan sedan uppfylla kontrollen bevilja behörighet.  
+Ca-beviljandekontroller som **Kräv godkända klientappar** **och Kräv appskyddsprinciper** kräver att enheten registreras i klientorganisationen. Dessa kontroller kan endast tillämpas på [iOS- och Android-enheter.](../conditional-access/concept-conditional-access-conditions.md#device-platforms) Ingen av dessa kontroller kan dock tillämpas på B2B-gästanvändare om användarens enhet redan hanteras av en annan organisation. En mobil enhet kan inte registreras i mer än en klientorganisation åt gången. Om den mobila enheten hanteras av en annan organisation blockeras användaren. Endast om gästanvändarens enhet är ohanterad kan användaren registrera sin enhet i resursklientorganisationen. Användaren kan sedan uppfylla beviljandekontrollen.  
 
 >[!NOTE]
->Vi rekommenderar inte att du kräver en app Protection-princip för externa användare.
+>Vi rekommenderar inte att du kräver en appskyddsprincip för externa användare.
 
-### <a name="location-based-conditional-access"></a>Plats-baserad villkorlig åtkomst
+### <a name="location-based-conditional-access"></a>Platsbaserad villkorlig åtkomst
 
-Den [platsbaserade principen](../conditional-access/concept-conditional-access-conditions.md#locations) som baseras på IP-intervall kan tillämpas om den bjudande organisationen kan skapa ett betrott IP-adressintervall som definierar deras partner organisationer.
+Den platsbaserade principen som baseras på IP-intervall kan tillämpas om den inbjudande organisationen kan skapa ett [betrott IP-adressintervall](../conditional-access/concept-conditional-access-conditions.md#locations) som definierar deras partnerorganisationer.
 
 Principer kan också tillämpas baserat på **geografiska platser**.
 
 ### <a name="risk-based-conditional-access"></a>Riskbaserad villkorlig åtkomst
 
-[Principen för inloggnings risker](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) tillämpas om B2B-gäst användaren uppfyller tilldelnings kontrollen. En organisation kan till exempel kräva Azure AD Multi-Factor Authentication för medelhög eller hög inloggnings risk. Om en användare inte tidigare har registrerats för Azure AD Multi-Factor Authentication i resurs klienten kommer användaren att blockeras. Detta görs för att förhindra att obehöriga användare registrerar sina egna Azure AD Multi-Factor Authentication-autentiseringsuppgifter i händelse av att de äventyrar en legitim användares lösen ord.
+Principen [för inloggningsrisk](../conditional-access/concept-conditional-access-conditions.md#sign-in-risk) tillämpas om B2B-gästanvändaren uppfyller beviljandekontrollen. En organisation kan till exempel kräva Azure AD Multi-Factor Authentication för medelhög eller hög inloggningsrisk. Men om en användare inte tidigare har registrerats för Azure AD Multi-Factor Authentication i resursklientorganisationen blockeras användaren. Detta görs för att förhindra att obehöriga användare registrerar sina egna autentiseringsuppgifter för Azure AD Multi-Factor Authentication om de skulle kompromettera en legitim användares lösenord.
 
-Det går dock inte att lösa [användar risk principen](../conditional-access/concept-conditional-access-conditions.md#user-risk) i resurs klienten. Om du till exempel behöver en lösen ords ändring för gäst användare med hög risk blockeras de på grund av möjligheten att återställa lösen ord i resurs katalogen.
+Principen [för användarrisk kan](../conditional-access/concept-conditional-access-conditions.md#user-risk) dock inte lösas i resursklientorganisationen. Om du till exempel kräver en lösenordsändring för gästanvändare med hög risk blockeras de på grund av att det inte går att återställa lösenord i resurskatalogen.
 
-### <a name="conditional-access-client-apps-condition"></a>Villkor för klient program för villkorlig åtkomst
+### <a name="conditional-access-client-apps-condition"></a>Villkor för klientappar för villkorsstyrd åtkomst
 
-[Klient program villkor](../conditional-access/concept-conditional-access-conditions.md#client-apps) fungerar likadant för B2B-gäst användare som de gör för andra typer av användare. Du kan till exempel förhindra att gäst användare använder bakåtkompatibla autentiseringsprotokoll.
+[Klientappvillkor](../conditional-access/concept-conditional-access-conditions.md#client-apps) fungerar på samma sätt för B2B-gästanvändare som för andra typer av användare. Du kan till exempel förhindra att gästanvändare använder äldre autentiseringsprotokoll.
 
-### <a name="conditional-access-session-controls"></a>Kontroller för villkorlig åtkomst-session
+### <a name="conditional-access-session-controls"></a>Sessionskontroller för villkorsstyrd åtkomst
 
-[Sessionsnycklar](../conditional-access/concept-conditional-access-session.md) fungerar likadant för B2B-gäst användare som de gör för andra typer av användare.
+[Sessionskontroller](../conditional-access/concept-conditional-access-session.md) fungerar på samma sätt för B2B-gästanvändare som för andra typer av användare.
 
 ## <a name="next-steps"></a>Nästa steg
 

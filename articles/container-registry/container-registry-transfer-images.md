@@ -4,12 +4,12 @@ description: Överföra samlingar av avbildningar eller andra artefakter från e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: e921880eb0b8ae5a38e69c9c0045f6a26d84084d
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 7784ce3e5e0171c84fb1f1da6e69f7d38bec9637
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107497990"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737414"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Överföra artefakter till ett annat register
 
@@ -34,10 +34,10 @@ Den här funktionen är tillgänglig på **tjänstnivån** premiumcontainerregis
 
 * **Containerregister – Du** behöver ett befintligt källregister med artefakter att överföra och ett målregister. ACR-överföring är avsedd för förflyttning över fysiskt frånkopplade moln. Vid testning kan käll- och målregister finnas i samma eller en annan Azure-prenumeration, Active Directory-klient eller moln. 
 
-   Om du behöver skapa ett register kan du gå till [Snabbstart: Skapa ett privat containerregister med Hjälp av Azure CLI.](container-registry-get-started-azure-cli.md) 
+   Om du behöver skapa ett register kan du gå till [Snabbstart: Skapa ett privat containerregister med hjälp av Azure CLI.](container-registry-get-started-azure-cli.md) 
 * **Lagringskonton** – Skapa käll- och mållagringskonton i valfri prenumeration och plats. I testsyfte kan du använda samma prenumeration eller prenumerationer som dina käll- och målregister. I scenarier mellan moln skapar du vanligtvis ett separat lagringskonto i varje moln. 
 
-  Om det behövs skapar du lagringskontona med [Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) eller andra verktyg. 
+  Om det behövs skapar du lagringskontona [med Azure CLI](../storage/common/storage-account-create.md?tabs=azure-cli) eller andra verktyg. 
 
   Skapa en blobcontainer för artefaktöverföring i varje konto. Skapa till exempel en container med namnet *transfer*. Två eller flera överföringspipelines kan dela samma lagringskonto, men bör använda olika omfång för lagringscontainer.
 * **Nyckelvalv – Nyckelvalv** behövs för att lagra SAS-tokenhemligheter som används för åtkomst till käll- och mållagringskonton. Skapa käll- och målnyckelvalven i samma Azure-prenumeration eller prenumerationer som dina käll- och målregister. I demonstrationssyfte förutsätter mallarna och kommandona som används i den här artikeln också att käll- och målnyckelvalven finns i samma resursgrupper som käll- respektive målregister. Den här användningen av vanliga resursgrupper krävs inte, men den förenklar mallarna och kommandona som används i den här artikeln.
@@ -61,7 +61,7 @@ Du skapar följande tre pipelineresurser för avbildningsöverföring mellan reg
 Lagringsautentisering använder SAS-token, som hanteras som hemligheter i nyckelvalv. Pipelines använder hanterade identiteter för att läsa hemligheterna i valven.
 
 * **[ExportPipeline](#create-exportpipeline-with-resource-manager)** – långvarig resurs som innehåller information på hög nivå om *källregistret* och lagringskontot. Den här informationen omfattar källlagringsblobcontainerns URI och nyckelvalvet som hanterar SAS-källtoken. 
-* **[ImportPipeline](#create-importpipeline-with-resource-manager)** – Långvarig resurs som innehåller information på hög nivå om *målregistret* och lagringskontot. Den här informationen omfattar mållagringsblobcontainerns URI och nyckelvalvet som hanterar målets SAS-token. En importutlösare är aktiverad som standard, så pipelinen körs automatiskt när en artefaktblob hamnar i mållagringscontainern. 
+* **[ImportPipeline](#create-importpipeline-with-resource-manager)** – Långvarig resurs som innehåller information på hög nivå om *målregistret* och lagringskontot. Den här informationen omfattar mållagringsblobcontainerns URI och nyckelvalvet som hanterar sas-måltoken. En importutlösare är aktiverad som standard, så pipelinen körs automatiskt när en artefaktblob hamnar i mållagringscontainern. 
 * **[PipelineRun](#create-pipelinerun-for-export-with-resource-manager)** – Resurs som används för att anropa en ExportPipeline- eller ImportPipeline-resurs.  
   * Du kör ExportPipeline manuellt genom att skapa en PipelineRun-resurs och ange de artefakter som ska exporteras.  
   * Om en importutlösare är aktiverad körs ImportPipeline automatiskt. Den kan också köras manuellt med hjälp av en PipelineRun. 
@@ -108,7 +108,7 @@ az keyvault secret set \
 
 Kör kommandot [az storage container generate-sas][az-storage-container-generate-sas] för att generera en SAS-token för containern i mållagringskontot som används för artefaktimport.
 
-*Rekommenderade tokenbehörigheter:* Läsa, ta bort, lista
+*Rekommenderade tokenbehörigheter:* Läsa, ta bort, Lista
 
 I följande exempel tilldelas kommandoutdata till IMPORT_SAS miljövariabel, med prefixet "?". Uppdatera `--expiry` värdet för din miljö:
 
@@ -242,7 +242,7 @@ az deployment group create \
 
 #### <a name="option-2-create-resource-and-provide-user-assigned-identity"></a>Alternativ 2: Skapa en resurs och ange en användartilldelningsidentitet
 
-I det här kommandot anger du resurs-ID:t för den användartilldelningsidentitet som en ytterligare parameter.
+I det här kommandot anger du resurs-ID:t för den användar tilldelade identiteten som en ytterligare parameter.
 
 ```azurecli
 az deployment group create \
@@ -265,7 +265,7 @@ IMPORT_RES_ID=$(az deployment group show \
 
 ## <a name="create-pipelinerun-for-export-with-resource-manager"></a>Skapa PipelineRun för export med Resource Manager 
 
-Skapa en PipelineRun-resurs för ditt källcontainerregister med Azure Resource Manager malldistribution. Den här resursen kör resursen ExportPipeline som du skapade tidigare och exporterar angivna artefakter från containerregistret som en blob till ditt källlagringskonto.
+Skapa en PipelineRun-resurs för ditt källcontainerregister med hjälp Azure Resource Manager malldistribution. Den här resursen kör resursen ExportPipeline som du skapade tidigare och exporterar angivna artefakter från containerregistret som en blob till ditt källlagringskonto.
 
 Kopiera PipelineKör Resource Manager [till](https://github.com/Azure/acr/tree/master/docs/image-transfer/PipelineRun/PipelineRun-Export) en lokal mapp.
 
@@ -395,7 +395,7 @@ az deployment group create \
 
 ## <a name="delete-pipeline-resources"></a>Ta bort pipelineresurser
 
-Följande exempelkommandon använder [az resource delete för att][az-resource-delete] ta bort pipelineresurserna som skapades i den här artikeln. Resurs-ID:erna lagrades tidigare i miljövariabler.
+I följande exempelkommandon används [az resource delete för att][az-resource-delete] ta bort pipelineresurserna som skapades i den här artikeln. Resurs-ID:erna lagrades tidigare i miljövariabler.
 
 ```
 # Delete export resources
@@ -416,19 +416,25 @@ az resource delete \
 * **Malldistribution eller fel**
   * Om en pipelinekörning misslyckas kan du titta på `pipelineRunErrorMessage` egenskapen för körningsresursen.
   * Vanliga fel vid malldistribution finns i Felsöka [distributioner av ARM-mallar](../azure-resource-manager/templates/template-tutorial-troubleshoot.md)
+* **Problem med att komma åt lagring**<a name="problems-accessing-storage"></a>
+  * Om du ser ett `403 Forbidden` fel från lagringen har du förmodligen problem med din SAS-token.
+  * SAS-token kanske inte är giltig för närvarande. SAS-token kan ha upphört att gälla eller så kan lagringskontonycklarna ha ändrats sedan SAS-token skapades. Kontrollera att SAS-token är giltig genom att försöka använda SAS-token för att autentisera för åtkomst till lagringskontocontainern. Du kan till exempel placera en befintlig blobslutpunkt följt av SAS-token i adressfältet i ett nytt Microsoft Edge InPrivate-fönster eller ladda upp en blob till containern med SAS-token med hjälp av `az storage blob upload` .
+  * SAS-token kanske inte har tillräckligt med tillåtna resurstyper. Kontrollera att SAS-token har fått behörighet till Tjänst, Container och Objekt under Tillåtna resurstyper ( `srt=sco` i SAS-token).
+  * SAS-token kanske inte har tillräcklig behörighet. För exportpipelines är de nödvändiga SAS-tokenbehörigheterna Läsa, Skriva, Lista och Lägg till. För importpipelines är de SAS-tokenbehörigheter som krävs Läs, Ta bort och Lista. (Behörigheten Ta bort krävs bara om importpipelinen har `DeleteSourceBlobOnSuccess` alternativet aktiverat.)
+  * SAS-token kanske inte är konfigurerad för att endast fungera med HTTPS. Kontrollera att SAS-token är konfigurerad för att endast fungera med HTTPS ( `spr=https` i SAS-token).
 * **Problem med export eller import av lagringsblobar**
-  * SAS-token kan ha upphört att gälla eller ha otillräcklig behörighet för den angivna export- eller importkörningen
+  * SAS-token kan vara ogiltig eller ha otillräcklig behörighet för den angivna export- eller importkörningen. Se [Problem med att komma åt lagring.](#problems-accessing-storage)
   * Befintlig lagringsblob i källlagringskontot kanske inte skrivs över under flera exportkörningar. Bekräfta att alternativet OverwriteBlob är inställt i exportkörningen och att SAS-token har tillräcklig behörighet.
   * Lagringsblob i mållagringskontot kanske inte tas bort efter en lyckad importkörning. Bekräfta att alternativet DeleteBlobOnSuccess har angetts i importkörningen och att SAS-token har tillräcklig behörighet.
-  * Lagringsbloben har inte skapats eller tagits bort. Bekräfta att containern som anges i export- eller importkörningen finns, eller att det finns en angiven lagringsblob för manuell importkörning. 
+  * Lagringsblob har inte skapats eller tagits bort. Bekräfta att containern som anges i export- eller importkörningen finns, eller att den angivna lagringsbloben finns för manuell importkörning. 
 * **AzCopy-problem**
   * Se [Felsöka AzCopy-problem.](../storage/common/storage-use-azcopy-configure.md)  
 * **Problem med att överföra artefakter**
-  * Inte alla artefakter, eller inga, överförs. Bekräfta stavning av artefakter i exportkörningen och namnet på bloben i export- och importkörningar. Bekräfta att du överför högst 50 artefakter.
+  * Inte alla artefakter, eller inga, överförs. Bekräfta stavning av artefakter i exportkörningen och namnet på bloben vid export- och importkörningar. Bekräfta att du överför högst 50 artefakter.
   * Pipelinekörningen kanske inte har slutförts. En export- eller importkörning kan ta lite tid. 
   * För andra pipelineproblem anger du [distributionskorrelations-ID:t](../azure-resource-manager/templates/deployment-history.md) för exportkörningen eller importkörningen till Azure Container Registry teamet.
 * **Problem med att hämta avbildningen i en fysiskt isolerad miljö**
-  * Om du ser fel angående externa lager eller försöker lösa mcr.microsoft.com när du försöker hämta en avbildning i en fysiskt isolerad miljö har ditt bildmanifest sannolikt icke-distributable skikt. På grund av typen av fysiskt isolerad miljö kan dessa avbildningar ofta inte hämta. Du kan bekräfta att så är fallet genom att kontrollera bildmanifestet för att se om det finns referenser till externa register. Om så är fallet måste du skicka de icke distributable lager till ditt offentliga moln ACR innan du distribuerar en exportpipelinekörning för avbildningen. Vägledning om hur du gör detta finns i Hur gör jag för att [push-distribution av icke-distributable lager till ett register?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
+  * Om du ser fel angående externa lager eller försöker lösa mcr.microsoft.com när du försöker hämta en avbildning i en fysiskt isolerad miljö har ditt bildmanifest sannolikt icke-distributable lager. På grund av typen av fysiskt isolerad miljö kan dessa avbildningar ofta inte hämta. Du kan bekräfta att så är fallet genom att kontrollera bildmanifestet för att se om det finns referenser till externa register. Om så är fallet måste du skicka icke-distributable-lagren till ditt offentliga moln-ACR innan du distribuerar en exportpipelinekörning för avbildningen. Vägledning om hur du gör detta finns i Hur gör jag för att [push-distribution av icke-distributable lager till ett register?](./container-registry-faq.md#how-do-i-push-non-distributable-layers-to-a-registry)
 
 ## <a name="next-steps"></a>Nästa steg
 

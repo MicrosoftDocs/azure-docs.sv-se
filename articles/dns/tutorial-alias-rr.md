@@ -1,19 +1,19 @@
 ---
-title: 'Självstudie: skapa en aliasresurspost för att referera till en resurs post i en zon'
+title: 'Självstudie: Skapa en aliaspost för att referera till en resurspost i en zon'
 titleSuffix: Azure DNS
 description: Den här självstudien visar hur du konfigurerar en Azure DNS-aliaspost för att referera till en resurspost i zonen.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c20f079fdbccdf003d96a1b2683060c2cd6d0e5a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "76939255"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737378"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Självstudie: Skapa en aliaspost för att referera till en resurspost för zonen
 
@@ -26,7 +26,7 @@ I den här guiden får du lära dig att:
 > * Testa aliasposten.
 
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 Du måste ha ett domännamn tillgängligt som du kan ha i Azure DNS för att testa med. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
@@ -58,7 +58,7 @@ Skapa en aliaspost för som pekar mot en resurspost i zonen.
 ## <a name="test-the-alias-record"></a>Testa aliasposten
 
 1. Starta ditt föredragna nslookup-verktyg. Ett alternativ är att bläddra till [https://network-tools.com/nslook](https://network-tools.com/nslook) .
-2. Ange frågetyp för en post och Sök efter **test. \<your domain name\>**.. Svaret **10.10.10.10**.
+2. Ange frågetypen för A-poster och leta upp **test. \<your domain name\>**. Svaret **10.10.10.10**.
 3. I Azure-portalen, ändrar du **server** A-posten till **10.11.11.11**.
 4. Vänta några minuter och använd därefter nslookup igen för att **testa** posten. Svaret **10.11.11.11**.
 

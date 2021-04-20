@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: Använd Azure cache för Redis i .NET Framework'
+title: 'Snabbstart: Använda Azure Cache for Redis i .NET Framework'
 description: I den här snabbstarten lär du dig hur du får tillgång till Azure Cache for Redis från dina .NET-appar
 author: yegu-ms
 ms.author: yegu
@@ -8,26 +8,26 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: devx-track-csharp, mvc
 ms.date: 06/18/2020
-ms.openlocfilehash: 1834f21a3e25308f6be86eba2961cc983b14a5db
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 71e973e359c21c9ec6a77de93b8b56dfa16da342
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104721553"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739178"
 ---
-# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Snabb start: Använd Azure cache för Redis i .NET Framework
+# <a name="quickstart-use-azure-cache-for-redis-in-net-framework"></a>Snabbstart: Använda Azure Cache for Redis i .NET Framework
 
-I den här snabb starten införlivar du Azure cache för Redis i en .NET Framework-app för att få åtkomst till en säker, dedikerad cache som är tillgänglig från alla program i Azure. Du använder särskilt [stackexchange. Redis](https://github.com/StackExchange/StackExchange.Redis) -klienten med C#-kod i en .net-konsol app.
+I den här snabbstarten införlivar du Azure Cache for Redis en .NET Framework-app för att få åtkomst till en säker, dedikerad cache som kan nås från alla program i Azure. Du använder specifikt [StackExchange.Redis-klienten](https://github.com/StackExchange/StackExchange.Redis) med C#-kod i en .NET-konsolapp.
 
 ## <a name="skip-to-the-code-on-github"></a>Hoppa till koden på GitHub
 
-Om du vill hoppa över direkt till koden går du till [.NET Framework snabb start](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet) på GitHub.
+Om du vill hoppa direkt till koden kan du gå .NET Framework [snabbstarten](https://github.com/Azure-Samples/azure-cache-redis-samples/tree/main/quickstart/dotnet) på GitHub.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
+- Azure-prenumeration [– skapa en kostnadsfritt](https://azure.microsoft.com/free/)
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/)
-- [.NET Framework 4 eller högre](https://www.microsoft.com/net/download/dotnet-framework-runtime), vilket krävs av klienten stackexchange. Redis.
+- [.NET Framework 4 eller](https://www.microsoft.com/net/download/dotnet-framework-runtime)senare , vilket krävs av StackExchange.Redis-klienten.
 
 ## <a name="create-a-cache"></a>Skapa en cache
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-create.md)]
@@ -40,20 +40,20 @@ Redigera filen *CacheSecrets.config* och lägg till följande innehåll:
 
 ```xml
 <appSettings>
-    <add key="CacheConnection" value="<cache-name>.redis.cache.windows.net,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
+    <add key="CacheConnection" value="<host-name>,abortConnect=false,ssl=true,allowAdmin=true,password=<access-key>"/>
 </appSettings>
 ```
 
-Ersätt `<cache-name>` med din cachens värdnamn.
+Ersätt `<host-name>` med din cachens värdnamn.
 
 Ersätt `<access-key>` med primärnyckeln för cachen.
 
 
 ## <a name="create-a-console-app"></a>Skapa en konsolapp
 
-I Visual Studio klickar du på **fil**  >  **nytt**  >  **projekt**.
+I Visual Studio klickar du **på Arkiv**  >  **nytt**  >  **projekt.**
 
-Välj **konsol program (.NET Framework)** och **bredvid** Konfigurera appen. Skriv ett **projekt namn**, kontrol lera att **.NET Framework 4.6.1** eller högre är markerat och klicka sedan på **skapa** för att skapa ett nytt konsol program.
+Välj **Konsolapp (.NET Framework)** och **Nästa för** att konfigurera din app. Skriv ett **projektnamn**, kontrollera **att .NET Framework 4.6.1** eller  senare har valts och klicka sedan på Skapa för att skapa ett nytt konsolprogram.
 
 <a name="configure-the-cache-clients"></a>
 
@@ -61,7 +61,7 @@ Välj **konsol program (.NET Framework)** och **bredvid** Konfigurera appen. Skr
 
 I det här avsnittet konfigurerar du konsolprogrammet att använda [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)-klienten för .NET.
 
-I Visual Studio klickar du på **verktyg**  >  **NuGet Package Manager**  >  **Package Manager-konsolen** och kör följande kommando från fönstret Package Manager-konsol.
+I Visual Studio klickar du **på Verktyg** NuGet Package Manager Package Manager Console och kör följande kommando från package  >    >  manager-konsolfönstret.
 
 ```powershell
 Install-Package StackExchange.Redis
@@ -128,7 +128,7 @@ Värdet för appinställningen *CacheConnection* används för att referera till
 
 ## <a name="handle-redisconnectionexception-and-socketexception-by-reconnecting"></a>Hantera RedisConnectionException och SocketException genom att ansluta igen
 
-En rekommenderad metod för att anropa metoder i `ConnectionMultiplexer` är att försöka lösa `RedisConnectionException` och `SocketException` undantag automatiskt genom att stänga och återupprätta anslutningen.
+En rekommenderad metod när du anropar metoder på är att försöka lösa och undantag automatiskt genom att stänga och `ConnectionMultiplexer` `RedisConnectionException` återupprätta `SocketException` anslutningen.
 
 Lägg till följande `using`-instruktioner i *Program.cs*:
 
@@ -137,7 +137,7 @@ using System.Net.Sockets;
 using System.Threading;
 ```
 
-Lägg till följande medlemmar i klassen i *program. cs* `Program` :
+I *Program.cs* lägger du till följande medlemmar i `Program` klassen :
 
 ```csharp
 private static long lastReconnectTicks = DateTimeOffset.MinValue.UtcTicks;
@@ -344,7 +344,7 @@ Azure Cache for Redis kan cachelagra både .NET-objekt och basdatatyper, men .NE
 
 Ett enkelt sätt att serialisera objekt är att använda `JsonConvert`-serialiseringsmetoderna i [Newtonsoft.Json](https://www.nuget.org/packages/Newtonsoft.Json/) och serialisera till och från JSON. I det här avsnittet ska du lägga till ett .NET-objekt till cachen.
 
-I Visual Studio klickar du på **verktyg**  >  **NuGet Package Manager**  >  **Package Manager-konsolen** och kör följande kommando från fönstret Package Manager-konsol.
+I Visual Studio klickar du **på Verktyg** NuGet Package Manager Package Manager Console och kör följande kommando från package  >    >  manager-konsolfönstret.
 
 ```powershell
 Install-Package Newtonsoft.Json
@@ -426,7 +426,7 @@ I den här snabbstarten du har lärt dig hur du använder Azure Cache for Redis 
 > [!div class="nextstepaction"]
 > [Skapa en ASP.NET-webbapp som använder en Azure Cache for Redis.](./cache-web-app-howto.md)
 
-Vill du optimera och Spara på dina moln utgifter?
+Vill du optimera och spara på dina molnutgifter?
 
 > [!div class="nextstepaction"]
-> [Börja analysera kostnaderna med Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+> [Börja analysera kostnader med Cost Management](../cost-management-billing/costs/quick-acm-cost-analysis.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)

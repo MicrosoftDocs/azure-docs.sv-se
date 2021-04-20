@@ -1,7 +1,7 @@
 ---
-title: Översikts sidan exempel
+title: Översiktssida för exempel
 titleSuffix: An Azure Communication Services sample overview.
-description: Översikt över tillgängliga exempel projekt för Azure Communication Services.
+description: Översikt över tillgängliga exempelprojekt för Azure Communication Services.
 author: probableprime
 manager: chpalm
 services: azure-communication-services
@@ -9,34 +9,35 @@ ms.author: rifox
 ms.date: 03/12/2021
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 1803afa1fd274ca3a7b2d5668a836ff5ca0b62c6
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 185cd5d33b15c4c1976fa82ccc75dcd661a36449
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076095"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737540"
 ---
 # <a name="samples"></a>Exempel
 
 [!INCLUDE [Public Preview Notice](../includes/public-preview-include-android-ios.md)]
 
-Azure Communication Services har många tillgängliga exempel som du kan använda för att testa ACS-tjänster och-funktioner innan du skapar egna program eller användnings fall.
+Azure Communication Services finns många exempel som du kan använda för att testa ACS-tjänster och -funktioner innan du skapar ett eget program eller användningsfall.
 
-## <a name="application-samples"></a>Program exempel
+## <a name="application-samples"></a>Programexempel
 
-| Exempel namn                                                                                          | Beskrivning                                                         | Tillgängliga språk/plattformar      |
+| Exempelnamn                                                                                          | Description                                                         | Tillgängliga språk/plattformar      |
 | :--------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------ | :--------------------------------- |
-| [Grupp som anropar hjälte-exempel](./calling-hero-sample.md)                                                | Innehåller ett exempel på hur du skapar ett grupp anrops program.          | [Webb](https://github.com/Azure-Samples/communication-services-web-calling-hero), [iOS](https://github.com/Azure-Samples/communication-services-ios-calling-hero), [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
-| [Anrops exempel för webben](./web-calling-sample.md)                                                        | En steg-för-steg-genom gång av ACS-anropande funktioner på webben. | [Webb](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
-| [Exempel på chatt-hjälte](./chat-hero-sample.md)                                                            | Innehåller ett exempel på hur du skapar ett chatt-program.                   | [Webb](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
-| [Contoso medicin app](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | Exempel program som demonstrerar ett patient-läkare-flöde.                     | Webb & Node.js                      |
-| [Contoso butiks app](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Exempel program som demonstrerar ett support flöde för åter försäljning.                     | ASP.NET, .NET Core, Java Script/Web |
-| [WPF-anrops exempel](https://github.com/Azure-Samples/communication-services-web-calling-wpf-sample) | Exempel program för Windows som demonstrerar anrops funktionen          | WPF/Node.js                      |
+| [Exempel på gruppsamtal i Hero](./calling-hero-sample.md)                                                | Innehåller ett exempel på hur du skapar ett gruppsamtalsprogram.          | [Webb,](https://github.com/Azure-Samples/communication-services-web-calling-hero) [iOS,](https://github.com/Azure-Samples/communication-services-ios-calling-hero) [Android](https://github.com/Azure-Samples/communication-services-android-calling-hero)                           |
+| [Exempel på webbsamtal](./web-calling-sample.md)                                                        | En steg-för-steg-genomgång av ACS-anropsfunktioner på webben. | [Webb](https://github.com/Azure-Samples/communication-services-web-calling-tutorial/)                                |
+| [Exempel på chatthjält](./chat-hero-sample.md)                                                            | Innehåller ett exempel på hur du skapar ett chattprogram.                   | [Webb](https://github.com/Azure-Samples/communication-services-web-chat-hero)                    |
+| [Contosos medicinska app](https://github.com/Azure-Samples/communication-services-contoso-med-app)       | Exempelapp som demonstrerar ett patient-läkare-flöde.                     | Webb& Node.js                      |
+| [Contosos detaljhandelsapp](https://github.com/Azure-Samples/communication-services-contoso-retail-app)     | Exempelapp som demonstrerar ett flöde för återförsäljningsstöd.                     | ASP.NET,.NET Core, JavaScript/Web |
+| [Exempel på WPF-anrop](https://github.com/Azure-Samples/communication-services-web-calling-wpf-sample) | Exempelapp för Windows som demonstrerar anropsfunktioner          | WPF/Node.js                      |
 
-## <a name="quickstart-samples"></a>Snabb starts exempel
-Få åtkomst till kod exempel för snabb starter som finns i vår dokumentation.
+## <a name="quickstart-samples"></a>Snabbstartsexempel
+Få åtkomst till kodexempel för snabbstarter som finns i vår dokumentation.
  - [JavaScript](https://github.com/Azure-Samples/communication-services-javascript-quickstarts/)
  - [.NET](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/)
+ - [Java](https://github.com/Azure-Samples/communication-services-java-quickstarts)
  - [iOS](https://github.com/Azure-Samples/communication-services-ios-quickstarts/)
  - [Android](https://github.com/Azure-Samples/communication-services-android-quickstarts/)
  - [Python](https://github.com/Azure-Samples/communication-services-python-quickstarts/)

@@ -173,48 +173,74 @@
           href: api-management-howto-manage-protocols-ciphers.md
     - name: Anpassa utvecklarupplevelsen
       items:
-        - name: Förstå utvecklarportalen
-          href: api-management-howto-developer-portal.md
-        - name: Migrera från den inaktuella till den nya utvecklarportalen
-          href: developer-portal-deprecated-migration.md
-        - name: Autentisera med Azure AD
-          href: api-management-howto-aad.md
-        - name: Autentisera med Azure AD B2C
-          href: api-management-howto-aad-b2c.md
-        - name: Delegerad autentisering
-          href: api-management-howto-setup-delegation.md
-        - name: E-postaviseringar och mallar
-          href: api-management-howto-configure-notifications.md
-        - name: Aktivera OAuth-stöd för konsolen
-          href: api-management-howto-oauth2.md
-        - name: Inaktuell portal – anpassa portalen
-          href: api-management-customize-styles.md
-        - name: Inaktuell portal – ändra sidor och layouter
-          href: api-management-modify-content-layout.md
-        - name: Inaktuell portal – anpassa med mallar
-          href: api-management-developer-portal-templates.md
-    - name: Mallar för den inaktuella portalen
-      items:
-        - name: Referens för datamodell
-          href: api-management-template-data-model-reference.md
-        - name: Sidkontroller
-          href: api-management-page-controls.md
-        - name: Mallar
-          href: api-management-developer-portal-templates-reference.md
-        - name: 'API:er'
-          href: api-management-api-templates.md
-        - name: Produkter
-          href: api-management-product-templates.md
-        - name: Program
-          href: api-management-application-templates.md
-        - name: Problem
-          href: api-management-issue-templates.md
-        - name: Användarprofil
-          href: api-management-user-profile-templates.md
-        - name: Sidor
-          href: api-management-page-templates.md
-        - name: Mallresurser
-          href: api-management-template-resources.md
+        - name: Använda utvecklarportalen
+          items:
+            - name: Förstå utvecklarportalen
+              href: api-management-howto-developer-portal.md
+            - name: Vanliga frågor och svar
+              href: developer-portal-faq.md
+            - name: Automatisera portaldistributioner
+              href: automate-portal-deployments.md
+            - name: Migrera från den inaktuella till den nya utvecklarportalen
+              href: developer-portal-deprecated-migration.md
+            - name: Autentisera med Azure AD
+              href: api-management-howto-aad.md
+            - name: Autentisera med Azure AD B2C
+              href: api-management-howto-aad-b2c.md
+            - name: Delegera autentisering
+              href: api-management-howto-setup-delegation.md
+            - name: Aktivera OAuth-stöd för konsolen
+              href: api-management-howto-oauth2.md
+            - name: E-postaviseringar och mallar
+              href: api-management-howto-configure-notifications.md
+            - name: Integrera Application Insights
+              href: developer-portal-integrate-application-insights.md
+            - name: Integrera Google Taggstyrning
+              href: developer-portal-integrate-google-tag-manager.md
+        - name: Utvecklarportal för egen värd
+          items:
+            - name: Skapa en portal med egen värd
+              href: developer-portal-self-host.md
+            - name: Alternativa metoder för egen värd
+              href: developer-portal-alternative-processes-self-host.md
+            - name: Implementera widgetar
+              href: developer-portal-implement-widgets.md
+            - name: Bidra med widgetar
+              href: developer-portal-widget-contribution-guidelines.md
+            - name: Använda communitywidgetar
+              href: developer-portal-use-community-widgets.md
+            - name: Testa portalen med egen värd
+              href: developer-portal-testing.md
+        - name: Inaktuell portal
+          items:
+            - name: Inaktuell portal – anpassa portalen
+              href: api-management-customize-styles.md
+            - name: Inaktuell portal – ändra sidor och layouter
+              href: api-management-modify-content-layout.md
+            - name: Inaktuell portal – anpassa med mallar
+              href: api-management-developer-portal-templates.md
+        - name: Mallar för den inaktuella portalen
+          items:
+            - name: Referens för datamodell
+              href: api-management-template-data-model-reference.md
+            - name: Sidkontroller
+              href: api-management-page-controls.md
+            - name: Mallar
+              href: api-management-developer-portal-templates-reference.md
+            - name: 'API:er'
+              href: api-management-api-templates.md
+            - name: Produkter
+              href: api-management-product-templates.md
+            - name: Program
+              href: api-management-application-templates.md
+            - name: Problem
+              href: api-management-issue-templates.md
+            - name: Användarprofil
+              href: api-management-user-profile-templates.md
+            - name: Sidor
+              href: api-management-page-templates.md
+            - name: Mallresurser
+              href: api-management-template-resources.md
     - name: Definiera principer
       items:
         - name: Ange eller redigera principer

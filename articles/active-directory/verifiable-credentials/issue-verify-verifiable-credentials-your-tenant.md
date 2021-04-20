@@ -1,6 +1,6 @@
 ---
-title: Självstudie – utfärda och verifiera verifierbara autentiseringsuppgifter med din Azure-klient (för hands version)
-description: Ändra kod exemplet för verifierbara autentiseringsuppgifter så att det fungerar med din Azure-klient
+title: Självstudie – Utfärda och verifiera verifierbara autentiseringsuppgifter med din Azure-klientorganisation (förhandsversion)
+description: Ändra kodexempel för verifierbara autentiseringsuppgifter så att det fungerar med din Azure-klientorganisation
 documentationCenter: ''
 author: barclayn
 manager: daveba
@@ -10,99 +10,99 @@ ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: e4772b6701065a44416d849faa9a501bd7895f27
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 310c821bf102d267d0b5f77dbf206b896ab2f1c7
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106553387"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739232"
 ---
-# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Självstudie – utfärda och verifiera verifierbara autentiseringsuppgifter med din klient (för hands version)
+# <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Självstudie – Utfärda och verifiera verifierbara autentiseringsuppgifter med din klientorganisation (förhandsversion)
 
 > [!IMPORTANT]
-> Azure Active Directory verifierbara autentiseringsuppgifter finns för närvarande i en offentlig för hands version.
+> Azure Active Directory verifierbara autentiseringsuppgifter är för närvarande i offentlig förhandsversion.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Nu när din Azure-klient har kon figurer ATS med tjänsten för verifierbar behörighet går vi igenom de steg som krävs för att aktivera Azure Active Directory (Azure AD) för att utfärda verifierbara autentiseringsuppgifter med hjälp av exempel appen.
+Nu när din Azure-klient har ställts in med tjänsten Verifiable Credential går vi igenom de steg som krävs för att göra det möjligt för din Azure Active Directory (Azure AD) att utfärda verifierbara autentiseringsuppgifter med hjälp av exempelappen.
 
-I den här artikeln:
+I den här artikeln får du:
 
 > [!div class="checklist"]
-> * Registrera exempel appen i din Azure AD
-> * Skapa en regel och Visa fil
-> * Ladda upp regler och Visa filer
-> * Konfigurera din Issuer-tjänst för verifierbara autentiseringsuppgifter för att använda Azure Key Vault
-> * Uppdatera exempel kod med din klients information.
+> * Registrera exempelappen i Azure AD
+> * Skapa regler och visningsfil
+> * Ladda upp regler och visa filer
+> * Konfigurera tjänsten Utfärdare av verifierbara autentiseringsuppgifter att använda Azure Key Vault
+> * Uppdatera exempelkod med din klients information.
 
-Vår exempel kod kräver att användare autentiseras för en identitets leverantör, särskilt Azure AD B2C, innan den verifierade Credential-experten kan utfärdas. Inte alla utfärdare av verifierbara autentiseringsuppgifter kräver autentisering innan autentiseringsuppgifter utfärdas.
+Vår exempelkod kräver att användare autentiserar till en identitetsprovider, särskilt Azure AD B2C, innan VC:et för verifierade autentiseringsuppgifter kan utfärdas. Det är inte alla verifierbara utfärdare av autentiseringsuppgifter som kräver autentisering innan autentiseringsuppgifter utfärdas.
 
-Autentisering av ID-token gör att användarna kan bevisa vem de är innan de får sina autentiseringsuppgifter. När användarna har loggat in returnerar identitets leverantören en säkerhetstoken som innehåller anspråk om användaren. Utfärdar-tjänsten omvandlar sedan dessa säkerhetstoken och deras anspråk till verifierbara autentiseringsuppgifter. Den verifierbara autentiseringsuppgiften är signerad med utfärdaren.
+Autentisering av ID-token gör det möjligt för användare att bevisa vem de är innan de får sina autentiseringsuppgifter. När användarna har loggat in returnerar identitetsprovidern en säkerhetstoken som innehåller anspråk om användaren. Utfärdartjänsten omvandlar sedan dessa säkerhetstoken och deras anspråk till en verifierbar autentiseringsidentifiering. De verifierbara autentiseringssuppgifter signeras med utfärdarens DID.
 
-Alla identitets leverantörer som stöder OpenID Connect-protokollet stöds. Exempel på identitets leverantörer som stöds är [Azure Active Directory](../fundamentals/active-directory-whatis.md)och [Azure AD B2C](../../active-directory-b2c/overview.md). I den här självstudien använder vi AAD.
+Alla identitetsproviders som stöder OpenID Connect-protokollet stöds. Exempel på identitetsproviders [som stöds är Azure Active Directory](../fundamentals/active-directory-whatis.md)och [Azure AD B2C](../../active-directory-b2c/overview.md). I den här självstudien använder vi AAD.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-I den här självstudien förutsätter vi att du redan har slutfört stegen i [föregående självstudie](enable-your-tenant-verifiable-credentials.md) och har åtkomst till den miljö som du använde.
+Den här självstudien förutsätter att du redan har slutfört stegen i [föregående självstudie](enable-your-tenant-verifiable-credentials.md) och har åtkomst till den miljö som du använde.
 
-## <a name="register-an-app-to-enable-did-wallets-to-sign-in-users"></a>Registrera en app för att aktivera inloggade plån boks användare
+## <a name="register-an-app-to-enable-did-wallets-to-sign-in-users"></a>Registrera en app för att aktivera DID-plånböcker för att logga in användare
 
-Om du vill utfärda en verifierbar autentiseringsuppgift måste du registrera en app så att autentiserare eller andra plån boks referenser för verifierbara autentiseringsuppgifter tillåts logga in användare.  
+Om du vill utfärda en verifierbar autentiseringsidentifiering måste du registrera en app så att Authenticator, eller andra verifierbara autentiseringsuppgifter, kan logga in användare.  
 
-Registrera ett program med namnet ' VC plån boks app ' i Azure AD och hämta ett klient-ID.
+Registrera ett program med namnet "VC Wallet App" i Azure AD och hämta ett klient-ID.
 
-1. Följ anvisningarna för att registrera ett program med [Azure AD](../develop/quickstart-register-app.md) vid registrering, Använd värdena nedan.
+1. Följ anvisningarna för att registrera ett program [med Azure AD](../develop/quickstart-register-app.md) Vid registrering använder du värdena nedan.
 
-   - Namn: "VC för plån boks program"
-   - Konto typer som stöds: konton endast i den här organisations katalogen
+   - Namn: "VC Plånboksapp"
+   - Kontotyper som stöds: Endast konton i den här organisationskatalogen
    - Omdirigerings-URI: vcclient://openid/
 
    ![registrera ett program](media/issue-verify-verifable-credentials-your-tenant/register-application.png)
 
-2. När du har registrerat programmet skriver du ned program-ID: t (klient). Du behöver det här värdet senare.
+2. När du har registrerat programmet skriver du ned program-ID:t (klienten). Du behöver det här värdet senare.
 
-   ![programmets klient-ID](media/issue-verify-verifable-credentials-your-tenant/client-id.png)
+   ![programklient-ID](media/issue-verify-verifable-credentials-your-tenant/client-id.png)
 
-3. Välj knappen **slut punkter** och kopiera OpenID för att ansluta metadata dokument-URI: n. Du behöver den här informationen för nästa avsnitt. 
+3. Välj knappen **Slutpunkter** och kopiera den URI OpenID Connect metadatadokumentet. Du behöver den här informationen för nästa avsnitt. 
 
-   ![utfärdarens slut punkter](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
+   ![issuer endpoints (utfärdarslutpunkter)](media/issue-verify-verifable-credentials-your-tenant/application-endpoints.png)
 
-## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Konfigurera din Node-app med åtkomst till Azure Key Vault
+## <a name="set-up-your-node-app-with-access-to-azure-key-vault"></a>Konfigurera din nodapp med åtkomst till Azure Key Vault
 
-För att autentisera en användares begäran om utfärdande av autentiseringsuppgifter använder webbplatsen för utfärdaren dina kryptografiska nycklar i Azure Key Vault. För att få åtkomst till Azure Key Vault måste webbplatsen ha ett klient-ID och en klient hemlighet som kan användas för att autentisera till Azure Key Vault.
+För att autentisera en användares begäran om utfärdande av autentiseringsuppgifter använder utfärdarwebbplatsen dina kryptografiska nycklar i Azure Key Vault. För att Azure Key Vault åtkomst måste webbplatsen ha ett klient-ID och en klienthemlighet som kan användas för att autentisera Azure Key Vault.
 
-1. När du visar översikts sidan för VC-huvudappen väljer du **certifikat & hemligheter**.
+1. När du visar översiktssidan för VC-plånboksappen **väljer du Certifikat & hemligheter**.
     ![certifikat och hemligheter](media/issue-verify-verifable-credentials-your-tenant/vc-wallet-app-certs-secrets.png)
-1. I avsnittet **klient hemligheter** väljer du **ny klient hemlighet**
-    1. Lägg till en beskrivning som "nodens VC-klient hemlighet"
-    1. Upphör att gälla: på ett år.
-  ![Program hemlighet med ett års förfallo datum](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
-1. Kopiera HEMLIGHETen. Du behöver den här informationen för att uppdatera din exempel-Node-app.
+1. I avsnittet **Klienthemligheter** väljer du **Ny klienthemlighet**
+    1. Lägg till en beskrivning som "Node VC client secret" (Node VC-klienthemlighet)
+    1. Upphör att gälla: om ett år.
+  ![Programhemlighet med ett års förfallotid](media/issue-verify-verifable-credentials-your-tenant/add-client-secret.png)
+1. Kopiera secret (hemlighet). Du behöver den här informationen för att uppdatera exempelnodappen.
 
 >[!WARNING]
-> Du har en möjlighet att kopiera hemligheten. Hemligheten är ett hash-värde efter detta. Kopiera inte ID: t. 
+> Du har en möjlighet att kopiera hemligheten. Hemligheten är ett sätt att hash-koda efter detta. Kopiera inte ID:t. 
 
-När du har skapat ditt program och din klient hemlighet i Azure AD måste du ge programmet de behörigheter som krävs för att utföra åtgärder på din Key Vault. Att göra dessa behörighets ändringar krävs för att webbplatsen ska kunna komma åt och använda de privata nycklar som lagras där.
+När du har skapat ditt program och din klienthemlighet i Azure AD måste du ge programmet de behörigheter som krävs för att utföra åtgärder på Key Vault. Dessa behörighetsändringar krävs för att webbplatsen ska kunna komma åt och använda de privata nycklar som lagras där.
 
 1. Gå till Key Vault.
-2. Välj det nyckel valv som vi använder för de här självstudierna.
-3. Välj **åtkomst principer** i vänster navigerings fält
-4. Välj **+ Lägg till åtkomst princip**.
-5. I avsnittet **nyckel behörigheter** väljer du **Hämta** och **signera**.
-6. Välj **huvud konto** och Använd program-ID för att söka efter programmet som vi registrerade tidigare. Välj den.
+2. Välj det nyckelvalv som vi använder för de här självstudierna.
+3. Välj **Åtkomstprinciper** i det vänstra navigeringsfältet
+4. Välj **+Lägg till åtkomstprincip.**
+5. I avsnittet **Nyckelbehörigheter** väljer **du Hämta** och **Signera**.
+6. Välj **Huvudnamn** och använd program-ID:t för att söka efter det program som vi registrerade tidigare. Välj den.
 7. Välj **Lägg till**.
-8. Välj **Spara**.
+8. Välj **SPARA.**
 
-Mer information om Key Vault behörigheter och åtkomst kontroll finns i [nyckel valvets RBAC-guide](../../key-vault/general/rbac-guide.md)
+Mer information om hur Key Vault och åtkomstkontroll finns i [RBAC-guiden för nyckelvalv](../../key-vault/general/rbac-guide.md)
 
-![tilldela Key Vault-behörigheter](media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png)
-## <a name="make-changes-to-match-your-environment"></a>Gör ändringar för att matcha din miljö
+![tilldela behörigheter för nyckelvalv](media/issue-verify-verifable-credentials-your-tenant/key-vault-permissions.png)
+## <a name="make-changes-to-match-your-environment"></a>Göra ändringar för att matcha din miljö
 
-Hittills har vi arbetat med vår exempel-App. Appen använder [Azure Active Directory B2C](../../active-directory-b2c/overview.md) och vi växlar nu till att använda Azure AD så vi behöver göra vissa ändringar, inte bara för att matcha din miljö, utan även för att stödja ytterligare anspråk som inte har använts tidigare.
+Hittills har vi arbetat med vår exempelapp. Appen använder [Azure Active Directory B2C](../../active-directory-b2c/overview.md) och vi byter nu till att använda Azure AD, så vi behöver göra vissa ändringar, inte bara för att matcha din miljö, utan även för att stödja ytterligare anspråk som inte har använts tidigare.
 
-1. Kopiera regel filen nedan och spara den till **modified-expertRules.js**. 
+1. Kopiera regelfilen nedan och spara den för att **modified-expertRules.jspå**. 
 
     > [!NOTE]
-    > **"scope": "OpenID Profile"** ingår i den här regel filen och inkluderades inte i exempel filens regelfil. I nästa avsnitt beskrivs hur du aktiverar de valfria anspråken i Azure Active Directory-klienten. 
+    > **"scope": "openid profile"** ingår i den här regelfilen och inkluderades inte i exempelappens regelfil. I nästa avsnitt förklaras hur du aktiverar de valfria anspråken i din Azure Active Directory klientorganisation. 
     
     ```json
     {
@@ -127,70 +127,70 @@ Hittills har vi arbetat med vår exempel-App. Appen använder [Azure Active Dire
     }
     ```
 
-2. Öppna filen och Ersätt **client_id** -och **konfigurations** värden med de två värdena som vi kopierade i föregående avsnitt.
+2. Öppna filen och ersätt **client_id** och **konfigurationsvärdena** med de två värden som vi kopierade i föregående avsnitt.
 
-    ![markering av de två värdena som behöver ändras som en del av det här steget](media/issue-verify-verifable-credentials-your-tenant/rules-file.png)
+    ![markera de två värden som behöver ändras som en del av det här steget](media/issue-verify-verifable-credentials-your-tenant/rules-file.png)
 
-  Värde **konfigurationen** är OpenID för att ansluta metadata dokument-URI: n.
+  Värdet Konfiguration **är** den URI OpenID Connect metadatadokumentet.
 
-  Eftersom exempel koden använder Azure Active Directory B2C och vi använder Azure Active Directory, måste vi lägga till valfria anspråk via omfång för att dessa anspråk ska ingå i ID-token som ska skrivas till verifierbara autentiseringsuppgifter. 
+  Eftersom exempelkoden använder Azure Active Directory B2C och vi använder Azure Active Directory måste vi lägga till valfria anspråk via omfång för att dessa anspråk ska tas med i ID-token som ska skrivas till den verifierbara autentiseringskoden. 
 
-3. Öppna Azure Active Directory på Azure Portal.
+3. Öppna Azure Portal i Azure Active Directory.
 4. Välj **Appregistreringar**.
-5. Öppna appen VC plån bok som vi skapade tidigare.
-6. Välj **token-konfiguration**.
+5. Öppna VC-plånboksappen som vi skapade tidigare.
+6. Välj **Tokenkonfiguration.**
 7. Välj **+ Lägg till valfritt anspråk**
 
-     ![Lägg till ett valfritt anspråk under pollett-konfiguration](media/issue-verify-verifable-credentials-your-tenant/token-configuration.png)
+     ![under tokenkonfiguration lägger du till ett valfritt anspråk](media/issue-verify-verifable-credentials-your-tenant/token-configuration.png)
 
-8. Från **tokentyp** väljer du **ID** och i listan över tillgängliga anspråk väljer du **given_name** och **family_name**
+8. Från **Tokentyp** väljer **du ID** och i listan över tillgängliga anspråk väljer du **given_name** och **family_name**
 
-     ![Lägg till valfria anspråk](media/issue-verify-verifable-credentials-your-tenant/add-optional-claim.png)
+     ![lägga till valfria anspråk](media/issue-verify-verifable-credentials-your-tenant/add-optional-claim.png)
 
 9. Tryck på **Lägg till**.
-10. Om du får varnings meddelandet som visas nedan markerar du kryss rutan och väljer **Lägg till**.
+10. Om du får en behörighetsvarning som visas nedan markerar du kryssrutan och väljer Lägg **till**.
 
-     ![Lägg till behörigheter för valfria anspråk](media/issue-verify-verifable-credentials-your-tenant/add-optional-claim-permissions.png)
+     ![lägga till behörigheter för valfria anspråk](media/issue-verify-verifable-credentials-your-tenant/add-optional-claim-permissions.png)
 
-Nu när en användare visas med "logga in" för att få till gång till den verifierbara autentiseringsuppgiften vet appen VC plån boks att ta med de angivna anspråken via omfattnings parametern som ska skrivas till verifierbara autentiseringsuppgifter.
+När en användare nu visas med "inloggningen" för att få din verifierbara autentiseringsbok vet VC Wallet-appen att den ska inkludera specifika anspråk via omfångsparametern som ska skrivas till den verifierbara autentiseringsboken.
 
-## <a name="create-new-vc-with-this-rules-file-and-the-old-display-file"></a>Skapa en ny VC med den här regel filen och den gamla visnings filen
+## <a name="create-new-vc-with-this-rules-file-and-the-old-display-file"></a>Skapa ny VC med den här regelfilen och den gamla visningsfilen
 
-1. Överför den nya regel filen till vår behållare
-1. På sidan verifierbara autentiseringsuppgifter skapar du en ny autentiseringsuppgift med namnet **modifiedCredentialExpert** med hjälp av den gamla visnings filen och den nya regel filen (**modified-credentialExpert.jspå**).
-1. När processen för att skapa autentiseringsuppgifter är klar på **översikts** sidan kopierar du **webb adressen till ärendets autentiseringsuppgifter** och sparar den eftersom vi behöver den i nästa avsnitt.
+1. Ladda upp den nya regelfilen till vår container
+1. På sidan med verifierbara autentiseringsuppgifter skapar du en ny autentiseringsuppgifterna med namnet **modifiedCredentialExpert** med hjälp av den gamla visningsfilen och den nya **regelfilen**(modified-credentialExpert.jspå ).
+1. När processen för att skapa autentiseringsuppgifter har slutförts från sidan Översikt kopierar du **URL:en** för autentiseringsuppgifter för problem och sparar den eftersom vi behöver den i nästa avsnitt. 
 
 ## <a name="before-we-continue"></a>Innan vi fortsätter
 
-Vi måste lägga till några värden innan vi kan göra nödvändiga kod ändringar. Vi använder dessa värden i nästa avsnitt för att göra exempel koden att använda dina egna nycklar som lagras i ditt valv. Hittills borde vi ha följande värden klara.
+Vi måste sätta ihop några värden innan vi kan göra de nödvändiga kodändringarna. Vi använder dessa värden i nästa avsnitt för att göra så att exempelkoden använder dina egna nycklar som lagras i valvet. Hittills bör vi ha följande värden klara.
 
-- **Kontrakts-URI** från autentiseringsuppgifterna som vi nyss skapade (URL för utfärdande av autentiseringsuppgifter)
-- **Programmets klient-ID** Vi fick detta när vi registrerade Node-appen.
-- **Klient hemlighet** Vi skapade det tidigare när vi beviljade din app-åtkomst till Key Vault.
+- **Kontrakt-URI** från de autentiseringsuppgifter som vi nyss skapade (Utfärda autentiserings-URL)
+- **Klient-ID för program** Vi fick detta när vi registrerade Node-appen.
+- **Klienthemlighet** Vi skapade detta tidigare när vi gav appen åtkomst till nyckelvalvet.
 
-Det finns några andra värden som vi behöver ta innan vi kan göra ändringarna en gång i vår exempel-App. Nu ska vi hämta dem nu!
+Det finns några andra värden som vi måste hämta innan vi kan göra ändringarna en gång i vår exempelapp. Nu ska vi hämta dem!
 
 ### <a name="verifiable-credentials-settings"></a>Inställningar för verifierbara autentiseringsuppgifter
 
-1. Gå till sidan autentiseringsuppgifter för verifierbar och välj **Inställningar**.  
+1. Gå till sidan Kontrollerbara autentiseringsuppgifter och välj **Inställningar.**  
 1. Kopiera följande värden:
 
-    - Klient-ID 
-    - Utfärdar-ID (din)
-    - Nyckel valv (URI)
+    - Klientorganisations-ID 
+    - Utfärdaridentifierare (din DID)
+    - Nyckelvalv (URI)
 
-1. Under signerings nyckel identifieraren finns en URI, men vi behöver bara en del av den. Kopiera från den del som säger **issuerSigningKeyION** som är markerad med den röda rektangeln i bilden nedan.
+1. Under Signeringsnyckel-ID finns det en URI, men vi behöver bara en del av den. Kopiera från delen **issuerSigningKeyION** som markerats av den röda rektangeln i bilden nedan.
 
-   ![nyckel-ID för inloggning](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
+   ![identifierare för inloggningsnyckel](media/issue-verify-verifable-credentials-your-tenant/issuer-signing-key-ion.png)
 
-### <a name="did-document"></a>GJORDE dokumentet
+### <a name="did-document"></a>DID-dokument
 
-1. Öppna [DIF-nätverks Utforskaren](https://identity.foundation/ion/explorer/)
+1. Öppna [DIF-Nätverksutforskaren](https://identity.foundation/ion/explorer/)
 
-2. Klistra in din i Sök fältet.
+2. Klistra in DID i sökfältet.
 
-4. Från det formaterade svaret hittar du avsnittet **verificationMethod**
-5. Under "verificationMethod" kopierar du ID: t och etiketter det som kvSigningKeyId
+4. I det formaterade svaret hittar du avsnittet **verificationMethod**
+5. Under "verificationMethod" kopierar du ID:t och märk det som kvSigningKeyId
     
     ```json=
     "verificationMethod": [
@@ -198,11 +198,11 @@ Det finns några andra värden som vi behöver ta innan vi kan göra ändringarn
             "id": "#sig_25e48331",
     ```
 
-Nu har vi allt vi behöver för att göra ändringarna i vår exempel kod.
+Nu har vi allt vi behöver för att göra ändringarna i vår exempelkod.
 
-- **Utfärdare:** app.js uppdatera CONST-autentiseringsuppgifter med din nya kontrakts-URI
-- **Verifier:** app.js uppdatera issuerDid med din Issuer-identifierare
-- **Utfärdare och Verifier** uppdaterar didconfig.jsmed följande värden:
+- **Utfärdare:** app.js uppdatera autentiseringsuppgifter med din nya kontrakt-URI
+- **Verifierare:** app.js uppdatera issuerDid med din utfärdaridentifierare
+- **Issuer och Verifier** uppdaterar didconfig.jspå med följande värden:
 
 
 ```json=
@@ -218,81 +218,81 @@ Nu har vi allt vi behöver för att göra ändringarna i vår exempel kod.
 ```
 
 >[!IMPORTANT]
->Detta är ett demo program och du bör normalt aldrig ge ditt program hemlighet direkt.
+>Det här är ett demoprogram och du bör normalt aldrig ge ditt program hemligheten direkt.
 
 
-Nu har du allt på plats för att utfärda och verifiera dina egna verifierbara autentiseringsuppgifter från din Azure Active Directory-klient med dina egna nycklar. 
+Nu har du allt på plats för att utfärda och verifiera dina egna verifierbara autentiseringsuppgifter från din Azure Active Directory klient med dina egna nycklar. 
 
 ## <a name="issue-and-verify-the-vc"></a>Utfärda och verifiera VC
 
-Följ samma steg som vi följde i föregående självstudie för att utfärda verifierbara autentiseringsuppgifter och verifiera den med din app. När du har slutfört verifierings processen är du nu redo att fortsätta lära dig om verifierbara autentiseringsuppgifter.
+Följ samma steg som vi följde i föregående självstudie för att utfärda verifierbara autentiseringsuppgifter och verifiera den med din app. När du har slutfört verifieringsprocessen är du nu redo att lära dig mer om verifierbara autentiseringsuppgifter.
 
-1. Öppna en kommando tolk och öppna mappen utfärdare.
-2. Kör den uppdaterade Node-appen.
+1. Öppna en kommandotolk och öppna mappen issuer.
+2. Kör den uppdaterade nodappen.
 
     ```terminal
     node app.js
     ```
 
-3. Använda en annan kommando tolk kör ngrok för att konfigurera en URL på 8081
+3. Använd en annan kommandotolk och kör ngrok för att konfigurera en URL på 8081
 
     ```terminal
     ngrok http 8081
     ```
     
     >[!IMPORTANT]
-    > Du kan också märka en varning om att den här appen eller webbplatsen kan vara riskfylld. Meddelandet förväntas för tillfället eftersom vi ännu inte har kopplat till din domän. Konfigurera detta genom att följa anvisningarna för [DNS-bindning](how-to-dnsbind.md) .
+    > Du kan också se en varning om att den här appen eller webbplatsen kan vara riskabel. Meddelandet förväntas just nu eftersom vi ännu inte har länkat din DID till din domän. Följ anvisningarna [för DNS-bindning](how-to-dnsbind.md) för att konfigurera detta.
 
     
-4. Öppna HTTPS-URL: en som genererats av ngrok.
+4. Öppna DEN HTTPS-URL som genererats av ngrok.
 
-    ![Slut punkter för NGROK-vidarebefordring](media/enable-your-tenant-verifiable-credentials/ngrok-url-screen.png)
+    ![NGROK-slutpunkter för vidarebefordran](media/enable-your-tenant-verifiable-credentials/ngrok-url-screen.png)
 
-5. Välj **Hämta autentiseringsuppgift**
-6. I autentiseraren genomsöker QR-koden.
-7. I **den här appen eller webbplatsen kan ett riskfylldt** varnings meddelande Välj **Avancerat**.
+5. Välj **GET CREDENTIAL (HÄMTA AUTENTISERINGSUPPGIFTER)**
+6. Sök igenom QR-koden i Authenticator.
+7. På **Den här appen eller webbplatsen kan vara ett riskabelt** varningsmeddelande. Välj **Avancerat**.
 
-  ![Inledande varning](media/enable-your-tenant-verifiable-credentials/site-warning.png)
+  ![Första varningen](media/enable-your-tenant-verifiable-credentials/site-warning.png)
 
-8. På den riskfyllda webbplatsen varning väljer **du Fortsätt ändå (osäker)**
+8. Vid varningen om riskfylld webbplats väljer du **Fortsätt ändå (osäker)**
 
-  ![Andra varning om utfärdaren](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
+  ![Andra varningen om utfärdaren](media/enable-your-tenant-verifiable-credentials/site-warning-proceed.png)
 
 
-9. På skärmen **Lägg till autentiseringsuppgifter** ser du några saker: 
-    1. Längst upp på skärmen ser du ett rött **ej verifierat** meddelande
-    1. Autentiseringsuppgifterna anpassas baserat på de ändringar som vi gjorde i visnings filen.
-    1. Alternativet **Logga in på ditt konto** pekar på inloggnings sidan för Azure AD.
+9. På skärmen **Lägg till en autentiseringsidentifiering** ser du några saker: 
+    1. Längst upp på skärmen ser du ett rött meddelande som inte **har verifierats**
+    1. Autentiseringssuppgifter anpassas baserat på de ändringar vi har gjort i visningsfilen.
+    1. Alternativet **Logga in på ditt konto** pekar på din Azure AD-inloggningssida.
     
-   ![Sidan Lägg till autentiseringsuppgift med varning](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
+   ![skärmen lägg till autentiseringsuppgifter med varning](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified.png)
 
-10. Välj **Logga in på ditt konto** och autentisera med hjälp av en användare i din Azure AD-klient.
-11. När du har autentiserat knappen **Lägg till** är det inte längre grått. Välj **Lägg till**.
+10. Välj **Logga in på ditt konto och** autentisera med en användare i din Azure AD-klientorganisation.
+11. När du har autentiserat **knappen** Lägg till är den inte längre nedtonad. Välj **Lägg till.**
 
-  ![Sidan Lägg till autentiseringsuppgifter efter autentisering](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
+  ![skärmen lägg till autentiseringsuppgifter efter autentisering](media/enable-your-tenant-verifiable-credentials/add-credential-not-verified-authenticated.png)
 
-Vi har nu utfärdat en verifierbar autentiseringsuppgift som använder vår klient organisation för att generera VC samtidigt som du fortfarande använder vår B2C-klient för autentisering.
+Vi har nu utfärdat en verifierbar autentiseringsautentisering med din klient för att generera vc medan du fortfarande använder den ursprungliga B2C-klienten för autentisering.
 
-  ![VC utfärdat av din Azure AD och autentiserad av vår Azure B2C-instans](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
+  ![vc utfärdat av din azure AD och autentiserad av vår Azure B2C-instans](media/enable-your-tenant-verifiable-credentials/my-vc-b2c.png)
 
 
-## <a name="test-verifying-the-vc-using-the-sample-app"></a>Testa att verifiera VC med hjälp av exempel appen
+## <a name="test-verifying-the-vc-using-the-sample-app"></a>Testa att verifiera VC med hjälp av exempelappen
 
-Nu när vi har utfärdat de verifierbara autentiseringsuppgifterna från vår egen klient med anspråk från din Azure AD, ska vi kontrol lera att vi använder vår exempel App.
+Nu när vi har utfärdat de verifierbara autentiseringssuppgifter från din egen klientorganisation med anspråk från din Azure AD ska vi verifiera den med hjälp av exempelappen.
 
-1. Sluta köra din Issuer ngrok-tjänst.
+1. Sluta köra utfärdarens ngrok-tjänst.
 
     ```cmd
     control-c
     ```
 
-2. Kör nu ngrok med Verifier-porten 8082.
+2. Kör nu ngrok med verifierarporten 8082.
 
     ```cmd
     ngrok http 8082
     ```
 
-3. I ett annat terminalfönster navigerar du till appen Verifier och kör den på samma sätt som du körde utfärdarens app.
+3. I ett annat terminalfönster navigerar du till verifierarappen och kör den på samma sätt som vi körde utfärdarappen.
 
     ```cmd
     cd ..
@@ -300,19 +300,19 @@ Nu när vi har utfärdat de verifierbara autentiseringsuppgifterna från vår eg
     node app.js
     ```
 
-4. Öppna ngrok-URL: en i webbläsaren och skanna QR-koden med hjälp av autentiseraren i din mobila enhet.
-5. På din mobila enhet väljer du **Tillåt** på skärmen **ny behörighets förfrågan** .
+4. Öppna ngrok-URL:en i webbläsaren och skanna QR-koden med Authenticator på din mobila enhet.
+5. På din mobila enhet väljer du **Tillåt** på skärmen **Ny behörighetsbegäran.**
 
    >[!IMPORTANT]
-    > Eftersom exempel appen också använder det gjorde du för att signera presentations förfrågan, ser du en varning om att den här appen eller webbplatsen kan vara riskfylld. Meddelandet förväntas för tillfället eftersom vi ännu inte har kopplat till din domän. Konfigurera detta genom att följa anvisningarna för [DNS-bindning](how-to-dnsbind.md) .
+    > Eftersom exempelappen också använder din DID för att signera presentationsbegäran visas en varning om att den här appen eller webbplatsen kan vara riskabel. Meddelandet förväntas just nu eftersom vi ännu inte har länkat din DID till din domän. Följ anvisningarna [för DNS-bindning](how-to-dnsbind.md) för att konfigurera detta.
     
-   ![ny behörighets förfrågan](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
+   ![ny behörighetsbegäran](media/enable-your-tenant-verifiable-credentials/new-permission-request.png)
 
-8. Du har nu verifierat dina autentiseringsuppgifter och webbplatsen ska visa ditt för-och efter namn från Azure AD-användarkontot. 
+8. Nu har du verifierat dina autentiseringsuppgifter och webbplatsen bör visa ditt för- och efternamn från Ditt Azure AD-användarkonto. 
 
-Du har nu slutfört självstudien och är officiellt en verifierad Credential-expert! Din exempel app använder din gjorde för både utfärdande och verifiering, medan du skriver anspråk till en verifierbar autentiseringsuppgift från din Azure AD. 
+Nu har du slutfört självstudien och är officiellt verifierad autentiseringsexpert! Exempelappen använder din DID för både utfärdande och verifiering, medan anspråk skrivs till en verifierbar autentiseringsidentifiering från Azure AD. 
 
 ## <a name="next-steps"></a>Nästa steg
 
 - Lär dig hur du skapar [anpassade autentiseringsuppgifter](credential-design.md)
-- Kommunikations [exempel](issuer-openid.md) för Issuer service
+- Exempel på utfärdare av [tjänstkommunikation](issuer-openid.md)

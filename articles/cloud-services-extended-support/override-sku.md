@@ -1,6 +1,6 @@
 ---
-title: Åsidosätt SKU-information över CSCFG/CSDEF för Azure Cloud Services (utökad support)
-description: Åsidosätt SKU-information över CSCFG/CSDEF för Azure Cloud Services (utökad support)
+title: Åsidosätt SKU-information över CSCFG/CSDEF för Azure Cloud Services (utökat stöd)
+description: Åsidosätt SKU-information över CSCFG/CSDEF för Azure Cloud Services (utökat stöd)
 ms.topic: how-to
 ms.service: cloud-services-extended-support
 author: surbhijain
@@ -8,36 +8,36 @@ ms.author: surbhijain
 ms.reviewer: gachandw
 ms.date: 04/05/2021
 ms.custom: ''
-ms.openlocfilehash: 17e47b562c52ffce631a01cf03004d77053ea647
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: d5dfae4b5cfee8f61e11e418a05e86017d119410
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387336"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739268"
 ---
-# <a name="override-sku-information-over-cscfgcsdef-in-cloud-services-extended-support"></a>Åsidosätt SKU-information över CSCFG/CSDEF i Cloud Services (utökad support) 
+# <a name="override-sku-information-over-cscfgcsdef-in-cloud-services-extended-support"></a>Åsidosätt SKU-information över CSCFG/CSDEF i Cloud Services (utökat stöd) 
 
-Med den här funktionen kan användaren uppdatera roll storleken och antalet instanser i moln tjänsten med hjälp av egenskapen **allowModelOverride** utan att behöva uppdatera tjänstens konfiguration och tjänst definitions filerna, vilket innebär att moln tjänsten kan skalas upp/ned/in/ut utan att göra en ompaketering och omdistribuera.
+Med den här funktionen kan användaren uppdatera rollstorleken och instansantalet i sin molntjänst med hjälp av egenskapen **allowModelOverride** utan att behöva uppdatera tjänstkonfigurationen och tjänstdefinitionsfilerna, vilket gör att molntjänsten kan skala upp/ned/in/ut utan att behöva packa om och distribuera om.
 
 ## <a name="set-allowmodeloverride-property"></a>Ange egenskapen allowModelOverride
-Du kan ställa in egenskapen allowModelOverride på följande sätt:
-* När allowModelOverride = True, kommer API-anropet att uppdatera roll storlek och instans antal för moln tjänsten utan att validera värdena med csdef-och cscfg-filerna. 
+Egenskapen allowModelOverride kan anges på följande sätt:
+* När allowModelOverride = true uppdaterar API-anropet rollstorleken och instansantalet för molntjänsten utan att verifiera värdena med csdef- och cscfg-filerna. 
 > [!Note]
-> Cscfg-filen kommer att uppdateras för att avspegla roll instans antalet, men csdef (inom cspkg) behåller de gamla värdena
-* När allowModelOverride = false skulle API-anropet orsaka ett fel när värdena för roll storlek och instans antal inte stämmer överens med csdef-och cscfg-filerna
+> Cscfg uppdateras för att återspegla antalet rollinstanser, men csdef (inom cspkg) behåller de gamla värdena
+* När allowModelOverride = false skulle API-anropet ge ett fel när rollstorleken och instansantalet inte matchar csdef- respektive cscfg-filerna
 
-Standardvärdet är inställt på false. Om egenskapen återställs till falskt tillbaka från True, kommer csdef-och cscfg-filerna återigen att kontrol leras för verifiering.
+Standardvärdet är inställt på falskt. Om egenskapen återställs till false back från true kontrolleras återigen csdef- och cscfg-filerna för verifiering.
 
-Gå igenom exemplen nedan för att tillämpa egenskapen i PowerShell, Template och SDK
+Gå igenom exemplen nedan för att tillämpa egenskapen i PowerShell, mallen och SDK
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
-Om du anger egenskapen "allowModelOverride" = true här uppdateras moln tjänsten med roll egenskaperna som definierats i avsnittet roleProfile
+Om du anger egenskapen "allowModelOverride" = true här uppdateras molntjänsten med rollegenskaperna som definierats i avsnittet roleProfile
 ```json
 "properties": {
         "packageUrl": "[parameters('packageSasUri')]",
         "configurationUrl": "[parameters('configurationSasUri')]",
         "upgradeMode": "[parameters('upgradeMode')]",
-        “**allowModelOverride**” : true,
+        “allowModelOverride” : true,
         "roleProfile": {
           "roles": [
             {
@@ -59,7 +59,7 @@ Om du anger egenskapen "allowModelOverride" = true här uppdateras moln tjänste
 
 ```
 ### <a name="powershell"></a>PowerShell
-Om du ställer in växeln "AllowModelOverride" på den nya New-AzCloudService-cmdleten uppdateras moln tjänsten med de SKU-egenskaper som definierats i RoleProfile
+Om du anger växeln "AllowModelOverride" på den nya New-AzCloudService-cmdleten uppdateras molntjänsten med de SKU-egenskaper som definierats i RoleProfile
 ```powershell
 New-AzCloudService ` 
 -Name “ContosoCS” ` 
@@ -76,7 +76,7 @@ New-AzCloudService `
 -Tag $tag
 ```
 ### <a name="sdk"></a>SDK
-Om du ställer in variabeln AllowModelOverride = True uppdateras moln tjänsten med de SKU-egenskaper som definierats i RoleProfile
+Om du anger variabeln AllowModelOverride= true uppdateras molntjänsten med de SKU-egenskaper som definierats i RoleProfile
 
 ```csharp
 CloudService cloudService = new CloudService
@@ -97,9 +97,9 @@ CloudService cloudService = new CloudService
 CloudService createOrUpdateResponse = m_CrpClient.CloudServices.CreateOrUpdate(“ContosOrg”, “ContosoCS”, cloudService);
 ```
 ### <a name="azure-portal"></a>Azure Portal
-Portalen tillåter inte att egenskapen ovan åsidosätter roll storleken och antalet instanser i csdef och cscfg-filen. 
+Portalen tillåter inte att egenskapen ovan åsidosätter rollstorleken och instansantalet i csdef och cscfg. 
 
 
 ## <a name="next-steps"></a>Nästa steg 
-- Granska [distributions kraven](deploy-prerequisite.md) för Cloud Services (utökad support).
-- Läs igenom [vanliga frågor och svar](faq.md) om Cloud Services (utökad support).
+- Granska [distributionens krav för](deploy-prerequisite.md) Cloud Services (utökad support).
+- Läs [vanliga frågor och svar](faq.md) om Cloud Services (utökad support).

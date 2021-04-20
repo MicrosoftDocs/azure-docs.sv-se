@@ -3,12 +3,12 @@ title: Stöd för flyttåtgärd efter resurstyp
 description: Visar de Azure-resurstyper som kan flyttas till en ny resursgrupp, prenumeration eller region.
 ms.topic: conceptual
 ms.date: 04/16/2021
-ms.openlocfilehash: c159b6e5f64f3052a6584034aa58b058b1426b16
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: a56a9e6f04aa800e16bbab0190ce7b41d87da590
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107725574"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740096"
 ---
 # <a name="move-operation-support-for-resources"></a>Stöd för flytt av resurser
 
@@ -257,7 +257,7 @@ Gå till ett resursprovidernamnområde:
 > | ------------- | ----------- | ---------- | ----------- |
 > | actionrules | Ja | Ja | Inga |
 > | aviseringar | Inga | Inga | Inga |
-> | aviseringslista | Inga | Inga | Inga |
+> | alertslist | Inga | Inga | Inga |
 > | alertsmetadata | Inga | Inga | Inga |
 > | alertssummary | Inga | Inga | Inga |
 > | alertssummarylist | Inga | Inga | Inga |
@@ -347,8 +347,8 @@ Gå till ett resursprovidernamnområde:
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Resursgrupp | Prenumeration | Flytt av region |
 > | ------------- | ----------- | ---------- | ----------- |
-> | automationaccounts | Ja | Ja | Ja (med hjälp av mall) <br/><br/> [Använda geo-replikering](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |
-> | automationaccounts/konfigurationer | Ja | Ja | Inga |
+> | automationskonto | Ja | Ja | Ja (med hjälp av mall) <br/><br/> [Använda geo-replikering](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |
+> | automationaccounts/configurations | Ja | Ja | Inga |
 > | automationaccounts/runbooks | Ja | Ja | Inga |
 
 ## <a name="microsoftavs"></a>Microsoft.AVS
@@ -861,7 +861,7 @@ Gå till ett resursprovidernamnområde:
 > | ------------- | ----------- | ---------- | ----------- |
 > | flexibleServers | Inga | Inga | Inga |
 > | servergroups | Inga | Inga | Inga |
-> | Servrar | Ja | Ja | Du kan använda en skrivskyddade replik mellan regioner för att flytta en befintlig server. [Läs mer.](../../postgresql/howto-move-regions-portal.md)
+> | Servrar | Ja | Ja | Du kan använda en skrivskyddade replik mellan regioner för att flytta en befintlig server. [Läs mer](../../postgresql/howto-move-regions-portal.md).
 > | serversv2 | Ja | Ja | Inga |
 > | singleservers | Ja | Ja | Inga |
 
@@ -1672,7 +1672,7 @@ Gå till ett resursprovidernamnområde:
 ## <a name="microsoftsearch"></a>Microsoft.Search
 
 > [!IMPORTANT]
-> Du kan inte flytta flera Sök-resurser i olika regioner i en enda åtgärd. Flytta dem i stället i separata åtgärder.
+> Du kan inte flytta flera Sök-resurser i olika regioner i samma åtgärd. Flytta dem i stället i separata åtgärder.
 
 > [!div class="mx-tableFixed"]
 > | Resurstyp | Resursgrupp | Prenumeration | Flytt av region |
@@ -1990,7 +1990,7 @@ Gå till ett resursprovidernamnområde:
 > | Resurstyp | Resursgrupp | Prenumeration | Flytt av region |
 > | ------------- | ----------- | ---------- | ----------- |
 > | dedikerade molnnoder | Inga | Inga | Inga |
-> | dedicatedcloudservices | Inga | Inga | Inga |
+> | dedikerade molntjänster | Inga | Inga | Inga |
 > | virtualmachines | Inga | Inga | Inga |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft.VnfManager
@@ -2008,7 +2008,7 @@ Gå till ett resursprovidernamnområde:
 > | ------------- | ----------- | ---------- | ----------- |
 > | konton | Inga | Inga | Inga |
 > | Planer | Inga | Inga | Inga |
-> | registreradeprenumereringar | Inga | Inga | Inga |
+> | registeredsubscriptions | Inga | Inga | Inga |
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 
@@ -2027,7 +2027,7 @@ Gå till ett resursprovidernamnområde:
 > | deletedsites | Inga | Inga | Inga |
 > | deploymentlocations | Inga | Inga | Inga |
 > | georegioner | Inga | Inga | Inga |
-> | värdmiljö | Inga | Inga | Inga |
+> | hostingenvironments | Inga | Inga | Inga |
 > | kubeenvironments | Ja | Ja | Inga |
 > | publishingusers | Inga | Inga | Inga |
 > | rekommendationer | Inga | Inga | Inga |
@@ -2036,9 +2036,9 @@ Gå till ett resursprovidernamnområde:
 > | serverfarms | Ja | Ja | Inga |
 > | serverfarms/eventgridfilters | Inga | Inga | Inga |
 > | webbplatser | Ja | Ja | Inga |
-> | platser/premieraddons | Ja | Ja | Inga |
+> | webbplatser/premieraddons | Ja | Ja | Inga |
 > | platser/platser | Ja | Ja | Inga |
-> | sourcecontrols | Inga | Inga | Inga |
+> | källkontroller | Inga | Inga | Inga |
 > | staticsites | Inga | Inga | Inga |
 
 ## <a name="microsoftwindowsesu"></a>Microsoft.WindowsESU

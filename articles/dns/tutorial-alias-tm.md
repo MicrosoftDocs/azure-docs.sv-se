@@ -1,24 +1,23 @@
 ---
-title: 'Självstudie: skapa en aliasresurspost som stöder domäns Apex Names-Traffic Manager'
+title: 'Självstudie: Skapa en aliaspost för att stödja namn på toppdomäner – Traffic Manager'
 titleSuffix: Azure DNS
 description: Den här självstudien visar hur du konfigurerar en Azure DNS-aliaspost för att stödja användning av ditt apex-domännamn med Traffic Manager.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e0101133c68142845a8ada50d9921d341cf10ad0
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77149957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738800"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Självstudie: Konfigurera en aliaspost för att hantera apex-domännamn med Traffic Manager 
 
 Du kan skapa en aliaspost för ditt domännamnsapex för att referera till en Azure Traffic Manager-profil. Ett exempel kan vara contoso.com. I stället för att använda en omdirigeringstjänst konfigurerar du Azure DNS till att referera till en Traffic Manager-profil direkt från din zon. 
-
 
 I den här guiden får du lära dig att:
 
@@ -28,8 +27,7 @@ I den här guiden får du lära dig att:
 > * Skapa en aliaspost.
 > * Testa aliasposten.
 
-
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 Du måste ha ett domännamn tillgängligt som du kan ha i Azure DNS för att testa med. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
@@ -39,24 +37,28 @@ Anvisningar om att hantera din domän i Azure DNS finns i [Självstudie: Hantera
 Den exempeldomän som används i den här självstudien är contoso.com, men du använder ditt eget domännamn.
 
 ## <a name="create-the-network-infrastructure"></a>Skapa nätverksinfrastrukturen
+
 Skapa först ett virtuellt nätverk och ett undernät för att placera dina webbservrar i.
+
 1. Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com).
 2. Längst upp till vänster i portalen väljer du **Skapa en resurs**. Ange *resursgrupp* i sökrutan och skapa en resursgrupp med namnet **RG-DNS-Alias-TM**.
-3. Välj **skapa en resurs**  >  **nätverk**  >  **virtuellt nätverk**.
+3. Välj **Skapa en resurs**  >    >  **Virtuellt nätverk för nätverk.**
 4. Skapa ett virtuellt nätverk med namnet **VNet-Servers**. Placera det i resursgruppen **RG-DNS-Alias-TM** och ge undernätet namnet **SN-Web**.
 
 ## <a name="create-two-web-server-virtual-machines"></a>Skapa två virtuella webbserverdatorer
-1. Välj **skapa en resurs**  >  **Windows Server 2016 VM**.
+
+1. Välj **Skapa en resurs för** den virtuella Windows Server  >  **2016-datorn.**
 2. Ange **Web-01** som namn och placera den virtuella datorn i resursgruppen **RG-DNS-Alias-TM**. Ange ett användarnamn och ett lösenord, och välj **OK**.
 3. För **Storlek** väljer du en SKU med 8 GB RAM.
 4. Som **Inställningar** väljer du det virtuella nätverket **VNet-Servers** och undernätet **SN-Web**.
 5. Välj **Offentlig IP-adress**. Under **Tilldelning** väljer du **Statisk** och sedan **OK**.
-6. För offentliga inkommande portar väljer du **http**  >  **https**  >  **RDP (3389)** och väljer sedan **OK**.
+6. För offentliga inkommande portar väljer du **HTTP (80)**  >  **HTTPS (443)**  >  **RDP (3389)** och sedan **OK.**
 7. På sidan **Sammanfattning** väljer du **Skapa**. Den här proceduren tar några minuter att slutföra.
 
 Upprepa proceduren för att en annan virtuell dator med namnet **Web-02**.
 
 ### <a name="add-a-dns-label"></a>Ange en DNS-etikett
+
 De offentliga IP-adresserna behöver en DNS-etikett för att fungera med Traffic Manager.
 1. I resursgruppen **RG-DNS-Alias-TM** väljer du den offentliga IP-adressen **Web-01-ip**.
 2. Under **Inställningar** väljer du **Konfiguration**.
@@ -83,7 +85,7 @@ Upprepa den här proceduren för att installera IIS på **Web-02**.
 ## <a name="create-a-traffic-manager-profile"></a>Skapa en Traffic Manager-profil
 
 1. Öppna resursgruppen **RG-DNS-Alias-TM** och välj den offentliga IP-adressen **Web-01-ip**. Anteckna IP-adressen för senare användning. Upprepa det här steget för den offentliga IP-adressen **Web-02-ip**.
-1. Välj **skapa en resurs**  >  **nätverk**  >  **Traffic Manager profilen**.
+1. Välj **Skapa en resurs**  >    >  **nätverksprofil Traffic Manager .**
 2. För namnet anger du **TM-alias-test**. Placera det i resursgruppen **RG-DNS-Alias-TM**.
 3. Välj **Skapa**.
 4. När distributionen är klar väljer du **Gå till resurs**.

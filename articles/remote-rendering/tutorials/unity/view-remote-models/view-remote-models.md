@@ -1,147 +1,147 @@
 ---
 title: Visa en modell som renderats på distans
-description: I självstudien "Hello World" i Azure Remote rendering visas en modell som återges via fjärr anslutning av Azure
+description: Självstudien Hello World "Azure Remote Rendering Hello World" visar hur du visar en modell som återges via en fjärrlagring i Azure
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8784bc4744e2d4beb6a72fdc0df0fd0b32346f9
-ms.sourcegitcommit: 73d80a95e28618f5dfd719647ff37a8ab157a668
+ms.openlocfilehash: f43e5b77580b7071ce48b39190c26a53f99f8cf5
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105605016"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107740160"
 ---
-# <a name="tutorial-viewing-a-remotely-rendered-model"></a>Självstudie: Visa en fjärrrenderad modell
+# <a name="tutorial-viewing-a-remotely-rendered-model"></a>Självstudie: Visa en fjärrre renderad modell
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
-> * Etablera en ARR-instans (Azure Remote rendering)
-> * Skapa och stoppa en åter givnings session
-> * Återanvänd en befintlig åter givnings session
+> * Etablera en Azure Remote Rendering (ARR)-instans
+> * Skapa och stoppa en renderingssession
+> * Återanvända en befintlig renderingssession
 > * Ansluta och koppla från sessioner
-> * Läs in modeller till en åter givnings session
+> * Läsa in modeller i en renderingssession
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För den här självstudien behöver du:
 
-* En aktiv Azure-prenumeration med betala per användning [skapa ett konto](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)
-* Windows SDK 10.0.18362.0 [(Hämta)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Den senaste versionen av Visual Studio 2019 [(Hämta)](https://visualstudio.microsoft.com/vs/older-downloads/)
-* GIT [(nedladdning)](https://git-scm.com/downloads)
-* Unity (se [system krav](../../../overview/system-requirements.md#unity) för versioner som stöds)
-* Mellanliggande kunskap om Unit och C#-språket (till exempel: skapa skript och objekt, använda prefabs, konfigurera Unity-händelser osv.)
+* En aktiv Azure-prenumeration med användningsbaserade betalning [Skapa ett konto](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/)
+* Windows SDK 10.0.18362.0 [(ladda ned)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
+* Den senaste versionen av Visual Studio 2019 [(ladda ned)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* GIT [(ladda ned)](https://git-scm.com/downloads)
+* Unity (se [systemkrav för](../../../overview/system-requirements.md#unity) versioner som stöds)
+* Kunskap på medelnivå om Unity och språket C# (till exempel att skapa skript och objekt, använda prefabs, konfigurera Unity-händelser osv.)
 
-## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Etablera en ARR-instans (Azure Remote rendering)
+## <a name="provision-an-azure-remote-rendering-arr-instance"></a>Etablera en Azure Remote Rendering (ARR)-instans
 
-För att få åtkomst till tjänsten Azure Remote rendering måste du först [skapa ett konto](../../../how-tos/create-an-account.md#create-an-account).
+För att få åtkomst Azure Remote Rendering-tjänsten måste du först [skapa ett konto](../../../how-tos/create-an-account.md#create-an-account).
 
 ## <a name="create-a-new-unity-project"></a>Skapa ett nytt Unity-projekt
 
 > [!TIP]
-> [Databasen arr samples](https://github.com/Azure/azure-remote-rendering) innehåller ett projekt med alla självstudier som har slutförts. den kan användas som referens. Leta i *Unity\Tutorial-Complete* efter hela Unity-projektet.
+> [Lagringsplatsen arr-exempel](https://github.com/Azure/azure-remote-rendering) innehåller ett projekt med alla självstudier slutförda, den kan användas som referens. Titta i *Unity\Tutorial-Complete för* det fullständiga Unity-projektet.
 
 Skapa ett nytt projekt från Unity Hub.
 I det här exemplet antar vi att projektet skapas i en mapp med namnet **RemoteRendering**.
 
 :::image type="content" source="./media/unity-new-project.PNG" alt-text="Nytt Unity-projekt":::
 
-## <a name="include-the-azure-remote-rendering-package"></a>Ta med Azure Remote rendering-paketet
+## <a name="include-the-azure-remote-rendering-package"></a>Inkludera Azure Remote Rendering paket
 
-[Följ anvisningarna](../../../how-tos/unity/install-remote-rendering-unity-package.md) för hur du lägger till Azure Remote rendering-paketet i ett Unity-projekt.
+[Följ anvisningarna](../../../how-tos/unity/install-remote-rendering-unity-package.md) för hur du lägger till Azure Remote Rendering-paketet i ett Unity-projekt.
 
 
 ## <a name="configure-the-camera"></a>Konfigurera kameran
 
-1. Välj den **primära Camera** -noden.
+1. Välj **noden Huvudkamera.**
 
-1. Öppna snabb menyn genom att högerklicka på *Transform* -komponenten och välj alternativet för **återställning** :
+1. Öppna snabbmenyn genom att högerklicka på *komponenten Transformera* och välja **alternativet** Återställ:
 
-    ![Återställ kamera omvandling](./media/camera-reset-transform.png)
+    ![återställa kameratransform](./media/camera-reset-transform.png)
 
-1. Ange **Rensa flaggor** till *solid färg*
+1. Ange **Rensa flaggor till** Solid *Color*
 
-1. Ange **bakgrund** till *svart* (#000000), med helt transparent (0) alpha (a)
+1. Ange **Bakgrund** till *Svart* (#000000), med helt transparent (0) alfa (A)
 
-    ![Färg hjul](./media/color-wheel-black.png)
+    ![Färghjul](./media/color-wheel-black.png)
 
-1. Ange **klippnings plan** till *nära = 0,3* och *mycket = 20*. Det innebär att rendera kommer att vara en klipps geometri som är närmare än 30 cm eller längre än 20 meter.
+1. Ange **Cklippningsplan till** *Nära = 0,3* och *Långt = 20*. Det innebär att återgivningen kommer att fästa geometri som är närmare än 30 cm eller längre än 20 meter.
 
     ![Egenskaper för Unity-kamera](./media/camera-properties.png)
 
-## <a name="adjust-the-project-settings"></a>Justera projekt inställningarna
+## <a name="adjust-the-project-settings"></a>Justera projektinställningarna
 
-1. Öppna *redigera > projekt inställningar...*
-1. Välj **kvalitet** i den vänstra List menyn
-1. Ändra **standard kvalitets nivån** för alla plattformar till *låg*. Med den här inställningen aktive ras effektivare åter givning av lokalt innehåll och det påverkar inte kvaliteten på fjärrrenderat innehåll.
+1. Öppna *Redigera > projektinställningar...*
+1. Välj **Kvalitet** på den vänstra listmenyn
+1. Ändra **Standardkvalitetsnivå för** alla plattformar till *Låg.* Den här inställningen aktiverar effektivare återgivning av lokalt innehåll och påverkar inte kvaliteten på fjärrreenderat innehåll.
 
-    ![Ändra inställningar för projekt kvalitet](./media/settings-quality.png)
+    ![ändra kvalitetsinställningar för projekt](./media/settings-quality.png)
 
-1. Välj **grafik** från den vänstra List menyn
-1. Ändra inställningen för inställnings **pipelinen för skript åter givning** till *HybridRenderingPipeline*. \
-    ![Skärm bild som pekar på den plats där du ändrar inställningen för inställnings pipelinen för skript åter givning till HybridRenderingPipeline.](./media/settings-graphics-render-pipeline.png)\
-    Ibland fyller användar gränssnittet inte listan över tillgängliga pipelin typer från paketen. Om detta inträffar måste *HybridRenderingPipeline* -till gången dras till fältet manuellt: \
-    ![Ändra inställningar för projekt grafik](./media/hybrid-rendering-pipeline.png)
+1. Välj **Grafik** på den vänstra listmenyn
+1. Ändra inställningen **Skriptbar renderingspipeline** *till HybridRenderingPipeline*.\
+    ![Skärmbild som visar var du ändrar inställningen Skriptbar renderingspipeline till HybridRenderingPipeline.](./media/settings-graphics-render-pipeline.png)\
+    Ibland fyller inte användargränssnittet i listan över tillgängliga pipelinetyper från paketen. Om detta inträffar måste *tillgången HybridRenderingPipeline* dras till fältet manuellt:\
+    ![ändra projektgrafikinställningar](./media/hybrid-rendering-pipeline.png)
 
     > [!NOTE]
-    > Om du inte kan dra och släppa *HybridRenderingPipeline* -till gången i fältet rendera pipeliner (kanske eftersom fältet inte finns!) ser du till att paket konfigurationen innehåller `com.unity.render-pipelines.universal` paketet.
+    > Om du inte kan dra och släppa *tillgången HybridRenderingPipeline* i fältet Render Pipeline Asset (eventuellt eftersom fältet inte finns!) ska du kontrollera att paketkonfigurationen innehåller `com.unity.render-pipelines.universal` paketet.
 
-1. Välj **spelare** på den vänstra List menyn
-1. Välj fliken **universell Windows-plattform inställningar** som visas som en Windows-ikon.
-1. Ändra **XR-inställningarna** så att de stöder Windows Mixed Reality enligt nedan:
+1. Välj **Player** på den vänstra listmenyn
+1. Välj fliken **Universell Windows-plattform inställningar,** som visas som en Windows-ikon.
+1. Ändra **XR-inställningarna för** att Windows Mixed Reality enligt nedan:
     1. Aktivera **virtuell verklighet som stöds**
-    1. Tryck på knappen "+" och Lägg till **Windows Mixed Reality**
-    1. Ange **djup formatet** *16-bitars djup*
-    1. Se till att **djup delning av buffert** är aktiverat
-    1. Ställ in **stereo åter givnings läge** på *en enskild pass instans*
+    1. Tryck på knappen "+" och lägg till **Windows Mixed Reality**
+    1. Ange **djupformat** till *16-bitars djup*
+    1. Se till **att delning av djupbuffert** är aktiverat
+    1. Ställ **in Stereorenderingsläge** *på Single Pass Instanced*
 
-    ![inställningar för spelare](./media/xr-player-settings.png)
+    ![spelarinställningar](./media/xr-player-settings.png)
 
-1. I samma fönster, över **XR-inställningar**, expanderar du **publicerings inställningar**
-1. Rulla ned till **funktioner** och välj:
+1. I samma fönster ovanför **XR-inställningar expanderar** du **Publiceringsinställningar**
+1. Rulla ned **till Funktioner** och välj:
     * **InternetClient**
     * **InternetClientServer**
     * **SpatialPerception**
-    * **PrivateNetworkClientServer** (*valfritt*). Välj det här alternativet om du vill ansluta enhetens fjärrfelsökning till enheten.
+    * **PrivateNetworkClientServer** *(valfritt).* Välj det här alternativet om du vill ansluta Unity-fjärrfelsökaren till din enhet.
 
-1. Aktivera **Holographic** och **Desktop** under **stödda enhets familjer**
-1. Stäng eller docka panelen **projekt inställningar**
-1. Öppna *fil->Bygg inställningar*
-1. Välj **universell Windows-plattform**
-1. Konfigurera inställningarna så att de matchar de som finns nedan
-1. Tryck på knappen **Växla plattform** . \
-![Build-inställningar](./media/build-settings.png)
-1. När Unity ändrar plattformar stänger du panelen Bygg.
+1. Under **Enhetsfamiljer som stöds** aktiverar du **Holographic** och **Desktop**
+1. Stäng eller docka **panelen Projektinställningar**
+1. Öppna *inställningar för >-version*
+1. Välj **Universell Windows-plattform**
+1. Konfigurera inställningarna så att de matchar dem som finns nedan
+1. Tryck på **knappen Växla** plattform.\
+![build-inställningar](./media/build-settings.png)
+1. När Unity har byter plattform stänger du byggpanelen.
 
-## <a name="validate-project-setup"></a>Verifiera projekt konfiguration
+## <a name="validate-project-setup"></a>Verifiera projektkonfigurationen
 
-Utför följande steg för att kontrol lera att projekt inställningarna är korrekta.
+Utför följande steg för att verifiera att projektinställningarna är korrekta.
 
-1. Välj posten **ValidateProject** på **RemoteRendering** -menyn i verktygsfältet i Unity Editor.
-1. Granska **ValidateProject** -fönstret och leta efter fel och korrigera projekt inställningar där det behövs.
+1. Välj posten **ValidateProject** på menyn **RemoteRendering** i verktygsfältet i Unity-redigeraren.
+1. Granska fönstret **ValidateProject för** att se om det finns fel och åtgärda projektinställningarna vid behov.
 
-    ![Project-validering av Unit Editor](./media/remote-render-unity-validation.png)
+    ![Projektvalidering i Unity-redigeraren](./media/remote-render-unity-validation.png)
 
-## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Skapa ett skript för att koordinera anslutning och tillstånd för Azure Remote rendering
+## <a name="create-a-script-to-coordinate-azure-remote-rendering-connection-and-state"></a>Skapa ett skript för att samordna Azure Remote Rendering anslutning och tillstånd
 
-Det finns fyra grundläggande steg för att Visa fjärranslutna modeller som beskrivs i flödesschemat nedan. Varje steg måste utföras i ordning. Nästa steg är att skapa ett skript som hanterar program tillståndet och fortsätter med varje steg som krävs.
+Det finns fyra grundläggande steg för att visa fjärrre renderade modeller, som beskrivs i flödesschemat nedan. Varje fas måste utföras i ordning. Nästa steg är att skapa ett skript som hanterar programtillståndet och fortsätter genom varje obligatorisk fas.
 
 ![ARR-stack 0](./media/remote-render-stack-0.png)
 
-1. I fönstret *projekt* , under **till gångar**, skapar du en ny mapp med namnet *RemoteRenderingCore*. Skapa sedan en annan mapp med namnet *skript* i *RemoteRenderingCore*.
+1. I fönstret *Projekt,* under **Tillgångar,** skapar du en ny mapp med namnet *RemoteRenderingCore.* I *RemoteRenderingCore skapar* du sedan en annan mapp med *namnet Skript.*
 
-1. Skapa ett [nytt C#-skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) med namnet **RemoteRenderingCoordinator**.
+1. Skapa ett [nytt C#-skript](https://docs.unity3d.com/Manual/CreatingAndUsingScripts.html) med **namnet RemoteRenderingCoordinator**.
 Projektet bör se ut så här:
 
-    ![Projekthierarkin](./media/project-structure.png)
+    ![Projekthierarki](./media/project-structure.png)
 
-    Detta koordinator skript spårar och hanterar status för fjärrrendering. I anmärkning används en del av den här koden för att bibehålla tillstånd, exponera funktioner för andra komponenter, utlösa händelser och lagra programspecifika data som inte är *direkt* relaterade till Azure-fjärrrendering. Använd koden nedan som utgångs punkt och vi kommer att adressera och implementera den aktuella koden för Azures fjärrrendering senare i självstudien.
+    Det här koordinatorskriptet spårar och hanterar fjärrrenderingstillståndet. Observera att en del av den här koden används för att upprätthålla tillstånd, exponera funktioner för andra  komponenter, utlösa händelser och lagra programspecifika data som inte är direkt relaterade till Azure Remote Rendering. Använd koden nedan som utgångspunkt så tar vi upp och implementerar den specifika Azure Remote Rendering kod senare i självstudien.
 
-1. Öppna **RemoteRenderingCoordinator** i kod redigeraren och ersätt hela innehållet med koden nedan:
+1. Öppna **RemoteRenderingCoordinator** i kodredigeraren och ersätt hela innehållet med koden nedan:
 
 ```cs
 // Copyright (c) Microsoft Corporation. All rights reserved.
@@ -182,14 +182,15 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 
     public static RemoteRenderingCoordinator instance;
 
-    // AccountDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
-    // The list of regions is available at https://docs.microsoft.com/azure/remote-rendering/reference/regions
+    // Account
+    // RemoteRenderingDomain must be '<region>.mixedreality.azure.com' - if no '<region>' is specified, connections will fail
+    // For most people '<region>' is either 'westus2' or 'westeurope'
     [SerializeField]
-    private string accountDomain = "westus2.mixedreality.azure.com";
-    public string AccountDomain
+    private string remoteRenderingDomain = "westus2.mixedreality.azure.com";
+    public string RemoteRenderingDomain
     {
-        get => accountDomain.Trim();
-        set => accountDomain = value;
+        get => remoteRenderingDomain.Trim();
+        set => remoteRenderingDomain = value;
     }
 
     [Header("Development Account Credentials")]
@@ -201,12 +202,12 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     }
 
     [SerializeField]
-    private string accountAuthenticationDomain = "<enter your account authentication domain here>";
-    public string AccountAuthenticationDomain
+    private string accountDomain = "<enter your account domain here>";
+    public string AccountDomain
     {
-        get => accountAuthenticationDomain.Trim();
-        set => accountAuthenticationDomain = value;
-    }   
+        get => accountDomain.Trim();
+        set => accountDomain = value;
+    }    
 
     [SerializeField]
     private string accountKey = "<enter your account key here>";
@@ -272,7 +273,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
             if (currentCoordinatorState != value)
             {
                 currentCoordinatorState = value;
-                Debug.Log($"State changed to: {currentCoordinatorState}");
+                Debug.LogFormat(LogType.Log, LogOption.NoStacktrace, null, "{0}", $"State changed to: {currentCoordinatorState}");
                 CoordinatorStateChange?.Invoke(currentCoordinatorState);
             }
         }
@@ -297,7 +298,7 @@ public class RemoteRenderingCoordinator : MonoBehaviour
     private async Task<SessionConfiguration> GetDevelopmentCredentials()
     {
         Debug.LogWarning("Using development credentials! Not recommended for production.");
-        return await Task.FromResult(new SessionConfiguration(AccountAuthenticationDomain, AccountDomain, AccountId, AccountKey));
+        return await Task.FromResult(new SessionConfiguration(AccountDomain, RemoteRenderingDomain, AccountId, AccountKey));
     }
 
     /// <summary>
@@ -523,29 +524,29 @@ public class RemoteRenderingCoordinator : MonoBehaviour
 }
 ```
 
-## <a name="create-the-azure-remote-rendering-gameobject"></a>Skapa Azure-GameObject för fjärrrendering
+## <a name="create-the-azure-remote-rendering-gameobject"></a>Skapa Azure Remote Rendering GameObject
 
-*ARRServiceUnity*(Remote rendering Coordinator och det nödvändiga skriptet) är båda MonoBehaviours som måste kopplas till en GameObject i scenen. *ARRServiceUnity* -skriptet tillhandahålls av arr för att visa mycket av arr: s funktioner för att ansluta till och hantera fjärrsessioner.
+Koordinatorn för fjärråtergivning och dess nödvändiga skript (*ARRServiceUnity*) är båda MonoBehaviours som måste kopplas till ett GameObject i scenen. *ARRServiceUnity-skriptet* tillhandahålls av ARR för att exponera en stor del av ARR:s funktioner för att ansluta till och hantera fjärrsessioner.
 
-1. Skapa en ny GameObject i scenen (Ctrl + Shift + N eller *GameObject->skapa tom*) och ge den namnet **RemoteRenderingCoordinator**.
-1. Lägg till *RemoteRenderingCoordinator* -skriptet till **RemoteRenderingCoordinator** -GameObject. \
-![Lägg till RemoteRenderingCoordinator-komponent](./media/add-coordinator-script.png)
-1. Bekräfta att *ARRServiceUnity* -skriptet, som visas som *tjänst* i kontrollanten, automatiskt läggs till i GameObject. Om du undrar är detta ett resultat som har `[RequireComponent(typeof(ARRServiceUnity))]` högst upp i **RemoteRenderingCoordinator** -skriptet.
-1. Lägg till dina autentiseringsuppgifter för Azure-fjärrrendering, din konto domän för autentisering och konto domänen i koordinator skriptet: \
+1. Skapa ett nytt GameObject i scenen (Ctrl + Skift + N eller *GameObject->Skapa tom*) och ge den **namnet RemoteRenderingCoordinator**.
+1. Lägg till *skriptet RemoteRenderingCoordinator* i **RemoteRenderingCoordinator** GameObject.\
+![Lägg till komponenten RemoteRenderingCoordinator](./media/add-coordinator-script.png)
+1. Bekräfta att *ARRServiceUnity-skriptet,* som visas som *Tjänst* i kontroll, läggs automatiskt till i GameObject. Om du undrar är det här ett resultat som `[RequireComponent(typeof(ARRServiceUnity))]` finns överst i skriptet **RemoteRenderingCoordinator.**
+1. Lägg till Azure Remote Rendering autentiseringsuppgifter, din kontodomän och Remote Rendering domän i koordinatorskriptet:\
 ![Lägg till dina autentiseringsuppgifter](./media/configure-coordinator-script.png)
 
-## <a name="initialize-azure-remote-rendering"></a>Initiera Azure Remote rendering
+## <a name="initialize-azure-remote-rendering"></a>Initiera Azure Remote Rendering
 
-Nu när vi har ramverket för vår koordinator kommer vi att implementera var och en av de fyra stegen som börjar med att **initiera Fjärrrendering**.
+Nu när vi har ramverket för vår koordinator implementerar vi var och en av de fyra stegen som börjar med **Remote Rendering**.
 
 ![ARR-stack 1](./media/remote-render-stack-1.png)
 
-**Initiera** meddelar Azure Remote rendering vilket Camera-objekt som ska användas för åter givning och försätter tillstånds datorn i **NotAuthorized**. Det innebär att den är initierad men ännu inte auktoriserad för att ansluta till en session. Eftersom en ARR-session påbörjar en kostnad måste vi bekräfta att användaren vill fortsätta.
+**Initiera talar** Azure Remote Rendering vilket kameraobjekt som ska användas för rendering och förlopp för tillståndsdatorn **till NotAuthorized**. Det innebär att den har initierats men ännu inte har behörighet att ansluta till en session. Eftersom start av en ARR-session medför en kostnad måste vi bekräfta att användaren vill fortsätta.
 
-När du anger **NotAuthorized** -tillstånd anropas **CheckAuthorization** , som anropar händelsen **RequestingAuthorization** och avgör vilka kontoautentiseringsuppgifter som ska användas (**AccountInfo** definieras nära klassens överkant och använder de autentiseringsuppgifter som du definierade via enhets kontrollen i steget ovan).
+När du anger tillståndet **NotAuthorized** anropas **CheckAuthorization,** som anropar händelsen **RequestingAuthorization** och avgör vilka kontoautentiseringsuppgifter som ska användas (**AccountInfo** definieras längst upp i klassen och använder de autentiseringsuppgifter som du definierade via Unity Inspector i steget ovan).
 
    > [!NOTE]
-   > Omkompilering av Runtime stöds inte av ARR. Att ändra skriptet och spara det medan uppspelnings läget är aktivt kan resultera i uppsatta inlåsningar och måste tvingas stänga av med aktivitets hanteraren. Se alltid till att du har stoppat uppspelnings läget innan du redigerar skripten.
+   > Omkompilering av körning stöds inte av ARR. Om du ändrar skriptet och sparar det medan uppspelningsläget är aktivt kan det leda till att Unity fryser och att aktivitetshanteraren måste stängas av. Se alltid till att du har stoppat uppspelningsläget innan du redigerar skripten.
 
 1. Ersätt innehållet i **InitializeARR** och **InitializeSessionService** med den färdiga koden nedan:
 
@@ -580,32 +581,32 @@ public async void InitializeSessionService()
 }
 ```
 
-För att kunna fortsätta från **NotAuthorized** till **nosession**, visar vi vanligt vis en modal dialog ruta till användaren så att de kan välja (och vi ska göra det i ett annat kapitel). För närvarande kringgår vi automatiskt verifierings kontrollen genom att anropa **ByPassAuthentication** så snart händelsen **RequestingAuthorization** utlöses.
+För att gå från **NotAuthorized** till **NoSession** presenterar vi vanligtvis en modal dialogruta för användaren så att de kan välja (och vi gör just det i ett annat kapitel). För tillfället kringgår vi automatiskt auktoriseringskontrollen genom att anropa **ByPassAuthentication** så snart **händelsen RequestingAuthorization** utlöses.
 
-1. Välj **RemoteRenderingCoordinator** -GameObject och leta upp **OnRequestingAuthorization** Unity-händelsen som visas i kontrollanten för **RemoteRenderingCoordinator** -komponenten.
+1. Välj **RemoteRenderingCoordinator** GameObject och leta reda på **OnRequestingAuthorization** Unity-händelsen som visas i Kontroll för **komponenten RemoteRenderingCoordinator.**
 
-1. Lägg till en ny händelse genom att trycka på "+" längst ned till höger.
-1. Dra komponenten till en egen händelse för att referera till sig själv. \
+1. Lägg till en ny händelse genom att trycka på "+" i det nedre högra högra.
+1. Dra komponenten till en egen händelse så att den refererar till sig själv.\
 ![Kringgå autentisering](./media/bypass-authorization-add-event.png)\
-1. I list rutan väljer du **RemoteRenderingCoordinator-> BypassAuthorization**. \
-![Skärm bild som visar det valda alternativet RemoteRenderingCoordinator. BypassAuthorization.](./media/bypass-authorization-event.png)
+1. I listrutan väljer du **RemoteRenderingCoordinator -> BypassAuthorization**.\
+![Skärmbild som visar det valda alternativet RemoteRenderingCoordinator.BypassAuthorization.](./media/bypass-authorization-event.png)
 
-## <a name="create-or-join-a-remote-session"></a>Skapa eller ansluta till en fjärran sluten session
+## <a name="create-or-join-a-remote-session"></a>Skapa eller ansluta till en fjärrsession
 
-Det andra steget är att skapa eller ansluta till en session med fjärrrendering (se [fjärrstyrda sessioner](../../../concepts/sessions.md) för mer information).
+Det andra steget är att skapa eller ansluta till en Remote Rendering-session (se [Remote Rendering-sessioner](../../../concepts/sessions.md) för mer information).
 
-![ARR stack 2](./media/remote-render-stack-2.png)
+![ARR-stack 2](./media/remote-render-stack-2.png)
 
-Fjärrsessionen är den plats där modellerna återges. Metoden **JoinRemoteSession ()** försöker ansluta till en befintlig session, spåras med egenskapen **LastUsedSessionID** eller om det finns ett tilldelat aktivt sessions-ID på **SessionIDOverride**. **SessionIDOverride** är endast avsedd för dina fel söknings ändamål, den bör endast användas när du vet att sessionen finns och vill ansluta till den explicit.
+Fjärrsessionen är den plats där modellerna återges. Metoden **JoinRemoteSession( )** försöker ansluta till en befintlig session, spåras med egenskapen **LastUsedSessionID** eller om det finns ett tilldelat aktivt sessions-ID **på SessionIDOverride**. **SessionIDOverride** är endast avsett för felsökning. Det bör endast användas när du vet att sessionen finns och vill ansluta till den explicit.
 
-Om inga sessioner är tillgängliga skapas en ny session. Att skapa en ny session är dock en tids krävande åtgärd. Därför bör du endast försöka skapa sessioner när det behövs och återanvända dem när det är möjligt (se att det [är kommersiellt klart: sessioner, schemaläggning och bästa praxis](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) för mer information om att hantera sessioner).
+Om inga sessioner är tillgängliga skapas en ny session. Att skapa en ny session är dock en tidskrävande åtgärd. Därför bör du försöka skapa sessioner endast när det behövs och återanvända dem när det är möjligt (mer information om hur du hanterar sessioner finns i Commercial [Ready: Sessionspooling,](../commercial-ready/commercial-ready.md#fast-startup-time-strategies) schemaläggning och metodtips).
 
 > [!TIP]
-> **StopRemoteSession ()** kommer att avsluta den aktiva sessionen. För att undvika onödiga avgifter bör du alltid stoppa sessioner när de inte längre behövs.
+> **StopRemoteSession()** avslutar den aktiva sessionen. För att undvika onödiga avgifter bör du alltid stoppa sessioner när de inte längre behövs.
 
-Tillstånds datorn kommer nu att förloppet till antingen **ConnectingToNewRemoteSession** eller **ConnectingToExistingRemoteSession**, beroende på tillgängliga sessioner. Om du öppnar en befintlig session eller skapar en ny session utlöses händelsen **ARRSessionService. OnSessionStatusChanged** , vilket gör att vår **OnRemoteSessionStatusChanged** -metod körs. Vi rekommenderar att du fortsätter att försätta tillstånds datorn på **RemoteSessionReady**.
+Tillståndsdatorn fortsätter nu till **antingen ConnectingToNewRemoteSession** eller **ConnectingToExistingRemoteSession,** beroende på tillgängliga sessioner. Om du öppnar en befintlig session eller skapar en ny session utlöses **händelsen ARRSessionService.OnSessionStatusChanged,** vilket kör vår **OnRemoteSessionStatusChanged-metod.** Vi rekommenderar att detta leder till att tillståndsdatorn avancerar till **RemoteSessionReady**.
 
-1. Om du vill ansluta till en ny session ändrar du koden för att ersätta metoderna **JoinRemoteSession ()** och **StopRemoteSession ()** med de slutförda exemplen nedan:
+1. Om du vill ansluta till en ny session ändrar du koden för att ersätta metoderna **JoinRemoteSession( )** och **StopRemoteSession( )** med de ifyllda exemplen nedan:
 
 ```cs
 /// <summary>
@@ -649,21 +650,21 @@ public void StopRemoteSession()
 }
 ```
 
-Om du vill spara tid genom att återanvända sessioner ska du inaktivera alternativet **auto-stop-sessionen** i *ARRServiceUnity* -komponenten. Tänk på att det inte går att köra sessioner, även om det inte finns någon anslutning till dem. Din session kan köras så länge din *MaxLeaseTime* innan den stängs av på servern (värdet för *MaxLeaseTime* kan ändras i koordinatorn för Fjärrrendering under *nya sessioner standardvärden*). Om du å andra sidan stänger av varje session vid från koppling måste du vänta på att en ny session ska startas varje gång, vilket kan vara en ganska lång process.
+Om du vill spara tid genom att återanvända sessioner ska du inaktivera alternativet **Stoppa** session automatiskt i *ARRServiceUnity-komponenten.* Tänk på att detta gör att sessioner körs även när ingen är ansluten till dem. Sessionen kan köras så länge som *MaxLeaseTime* innan den stängs av av servern (värdet för *MaxLeaseTime* kan ändras i Remote Rendering Coordinator under *New Session Defaults*(Standardinställningar för ny session). Å andra sidan, om du automatiskt stänger av varje session när du kopplar från, måste du vänta tills en ny session startas varje gång, vilket kan vara en något längre process.
 
 > [!NOTE]
-> Att stoppa en session börjar gälla omedelbart och kan inte återställas. När du har stoppat måste du skapa en ny session med samma start kostnad.
+> Att stoppa en session börjar gälla omedelbart och kan inte ångras. När den har stoppats måste du skapa en ny session med samma startkostnader.
 
-## <a name="connect-the-local-runtime-to-the-remote-session"></a>Ansluta den lokala körnings miljön till fjärrsessionen
+## <a name="connect-the-local-runtime-to-the-remote-session"></a>Ansluta den lokala körningen till fjärrsessionen
 
 Därefter måste programmet ansluta sin lokala körning till fjärrsessionen.
 
 ![ARR-stack 3](./media/remote-render-stack-3.png)
 
-Programmet måste också lyssna efter händelser om anslutningen mellan körningen och den aktuella sessionen. dessa tillstånds ändringar hanteras i **OnLocalRuntimeStatusChanged**. Den här koden förflyttar oss vårt tillstånd till **ConnectingToRuntime**. När den är ansluten i **OnLocalRuntimeStatusChanged** förflyttas statusen till **RuntimeConnected**. Anslutning till körnings miljön är det sista tillstånd som koordinatorn tar sig själv med, vilket innebär att programmet görs med all gemensam konfiguration och är redo att påbörja det sessionsbaserade arbetet med att läsa in och återge modeller.
+Programmet måste också lyssna efter händelser om anslutningen mellan körningen och den aktuella sessionen. dessa tillståndsändringar hanteras i **OnLocalRuntimeStatusChanged**. Den här koden förs vidare till **ConnectingToRuntime**. När du har **anslutit i OnLocalRuntimeStatusChanged** fortsätter tillståndet till **RuntimeConnected**. Att ansluta till körningen är det sista tillstånd som koordinatorn säkerhetsproblem med, vilket innebär att programmet är gjort med all gemensam konfiguration och är redo att påbörja det sessionsspecifika arbetet med att läsa in och återge modeller.
 
- 1. Ersätt metoderna **ConnectRuntimeToRemoteSession ()** och **DisconnectRuntimeFromRemoteSession ()** med de slutförda versionerna nedan.
- 1. Det är viktigt att anteckna enhets metoden **LateUpdate** och att den uppdaterar den aktuella aktiva sessionen. Detta gör att den aktuella sessionen kan skicka/ta emot meddelanden och uppdatera buffertens buffert med de ramar som tas emot från fjärrsessionen. Det är viktigt att ARR fungerar korrekt.
+ 1. Ersätt metoderna **ConnectRuntimeToRemoteSession( ) och** **DisconnectRuntimeFromRemoteSession( )** med de slutförda versionerna nedan.
+ 1. Det är viktigt att notera Unity-metoden **LateUpdate** och att den uppdaterar den aktuella aktiva sessionen. På så sätt kan den aktuella sessionen skicka/ta emot meddelanden och uppdatera rambufferten med bildrutorna som tas emot från fjärrsessionen. Det är viktigt att ARR fungerar korrekt.
 
 ```cs
 /// <summary>
@@ -709,17 +710,17 @@ private void LateUpdate()
 ```
 
 > [!NOTE]
-> Att ansluta den lokala körningen till en fjärrsession beror på att **uppdateringen** anropas för den aktiva sessionen. Om du upptäcker att ditt program aldrig förfaller förbi **ConnectingToRuntime** -läget kan du se till att du regelbundet anropar **uppdatering** på den aktiva sessionen.
+> Anslutningen av den lokala körningen till en fjärrsession beror på att **Uppdateringen** anropas på den aktiva sessionen. Om du upptäcker att programmet aldrig går förbi tillståndet **ConnectingToRuntime** kontrollerar du att du **anropar Uppdatera** regelbundet på den aktiva sessionen.
 
-## <a name="load-a-model"></a>Läs in en modell
+## <a name="load-a-model"></a>Läsa in en modell
 
-Med den nödvändiga grunden på plats är du redo att läsa in en modell i fjärrsessionen och börja ta emot ramar.
+Med den nödvändiga grunden på plats är du redo att läsa in en modell i fjärrsessionen och börja ta emot bildrutor.
 
-![Diagram som visar process flödet för att förbereda för att läsa in och visa en modell.](./media/remote-render-stack-4.png)
+![Diagram som visar processflödet för att förbereda för att läsa in och visa en modell.](./media/remote-render-stack-4.png)
 
-Metoden **LoadModel** är utformad för att acceptera en modell Sök väg, en förlopps hanterare och en överordnad transformering. Dessa argument används för att läsa in en modell i fjärrsessionen, uppdatera användaren vid inläsnings förloppet och orientera den fjärranslutna åter givnings modellen baserat på överordnad transformering.
+Metoden **LoadModel** är utformad för att acceptera en modellsökväg, förloppshanterare och överordnad transformering. Dessa argument används för att läsa in en modell i fjärrsessionen, uppdatera användaren om inläsningsförloppet och orientera den fjärrregivna modellen baserat på den överordnade transformeringen.
 
-1. Ersätt **LoadModel** -metoden helt med koden nedan:
+1. Ersätt **metoden LoadModel** helt med koden nedan:
 
     ```cs
     /// <summary>
@@ -770,20 +771,20 @@ Metoden **LoadModel** är utformad för att acceptera en modell Sök väg, en f�
 
 Koden ovan utför följande steg:
 
-1. Skapa en [fjärran sluten entitet](../../../concepts/entities.md).
-1. Skapa en lokal GameObject som representerar den fjärranslutna entiteten.
-1. Konfigurera den lokala GameObject för att synkronisera dess tillstånd (t. ex. Transform) till fjärrentiteten varje bild ruta.
-1. Ange ett namn och Lägg till en [**WorldAnchor**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) för att under lätta stabiliseringen.
-1. Läs in modell data från Blob Storage till den fjärranslutna entiteten.
-1. Returnera den överordnade entiteten, för senare referens.
+1. Skapa en [fjärrentitet](../../../concepts/entities.md).
+1. Skapa ett lokalt GameObject som representerar fjärrentiteten.
+1. Konfigurera det lokala GameObject att synkronisera dess tillstånd (d.v.s. Transformera) till den fjärranslutna entiteten varje bildruta.
+1. Ange ett namn och lägg till [**en WorldAnchor**](https://docs.unity3d.com/550/Documentation/ScriptReference/VR.WSA.WorldAnchor.html) för att underlätta stabiliseringen.
+1. Läs in modelldata från Blob Storage till fjärrentiteten.
+1. Returnera den överordnade entiteten för senare referens.
 
-## <a name="view-the-test-model"></a>Visa test modellen
+## <a name="view-the-test-model"></a>Visa testmodellen
 
-Nu har vi all kod som krävs för att visa en fjärrrenderad modell, och alla fyra nödvändiga steg för fjärrrendering har slutförts. Nu måste vi lägga till en liten kod för att starta processen för modell inläsning.
+Nu har vi all kod som krävs för att visa en fjärrre renderad modell. Alla fyra av de nödvändiga stegen för fjärrrendering är klara. Nu måste vi lägga till lite kod för att starta modellbelastningsprocessen.
 
 ![ARR-stack 4](./media/remote-render-stack-5.png)
 
-1. Lägg till följande kod i **RemoteRenderingCoordinator** -klassen, strax under metoden **LoadModel** är fin:
+1. Lägg till följande kod i **klassen RemoteRenderingCoordinator,** precis under **metoden LoadModel:**
 
     ```cs
     private bool loadingTestModel = false;
@@ -811,28 +812,28 @@ Nu har vi all kod som krävs för att visa en fjärrrenderad modell, och alla fy
     }
     ```
     
-    Den här koden skapar en GameObject som fungerar som överordnad test modell. Sedan anropar den **LoadModel** -metoden för att läsa in modellen "Builtin://Engine", som är en till gång inbyggd i Azure-fjärrrendering för att kunna testa åter givningen.
+    Den här koden skapar ett GameObject som fungerar som överordnat till testmodellen. Sedan anropas **metoden LoadModel** för att läsa in modellen "builtin://Engine", som är en tillgång som är inbyggd i Azure Remote Rendering för att testa renderingen.
 
 1. Spara koden.
-1. Tryck på uppspelnings knappen i Unity-redigeraren för att starta processen med att ansluta till Azures fjärrrendering och skapa en ny session.
-1. Det går inte att se mycket i spelläget, men konsolen visar status för programmet som ändras. Det kommer sannolikt att `ConnectingToNewRemoteSession` förskjutas och stanna kvar där, eventuellt i upp till fem minuter.
-1. Välj **RemoteRenderingCoordinator** -GameObject för att se dess kopplade skript i kontrollanten. Se uppdateringen av tjänst komponenten när den fortskrider genom initierings **-** och anslutnings stegen.
-1. Övervaka konsolens utdata – väntar på att tillstånd ska ändras till **RuntimeConnected**.
-1. När körningen är ansluten högerklickar du på **RemoteRenderingCoordinator** i kontrollanten för att Visa snabb menyn. Klicka sedan på alternativet **Läs in test modell** i snabb menyn som har lagts till av en `[ContextMenu("Load Test Model")]` del av vår kod ovan.
+1. Tryck på knappen Spela upp i Unity-redigeraren för att starta processen med att ansluta Azure Remote Rendering och skapa en ny session.
+1. Du kommer inte att se så mycket i spelvyn, men konsolen visar programmets status som ändras. Den kommer troligen att `ConnectingToNewRemoteSession` gå vidare till och stanna kvar där, eventuellt i upp till fem minuter.
+1. Välj **RemoteRenderingCoordinator** GameObject för att se dess bifogade skript i kontrollanten. Se hur **tjänstkomponenten** uppdateras allt eftersom den går igenom initierings- och anslutningsstegen.
+1. Övervaka konsolens utdata – väntar på att tillståndet ska ändras till **RuntimeAnsluten**.
+1. När körningen är ansluten högerklickar du på **RemoteRenderingCoordinator** i kontrollanten för att visa snabbmenyn. Klicka sedan på alternativet **Belastningstestmodell** på snabbmenyn, som läggs till av `[ContextMenu("Load Test Model")]` den del av koden ovan.
 
-    ![Läs in från snabb menyn](./media/load-test-model.png)
+    ![Läs in från snabbmenyn](./media/load-test-model.png)
 
-1. Titta på konsolen för utdata från den **ProgressHandler** som vi skickade till **LoadModel** -metoden.
-1. Se den fjärranslutna modellen!
+1. Titta på konsolen för utdata från **ProgressHandler som** vi skickade till **metoden LoadModel.**
+1. Se den fjärrregivna modellen!
 
 > [!NOTE]
-> Fjärrmodellen visas aldrig i vyn scen, bara i vyn spel. Detta beror på att ARR återger ramar på distans, särskilt för spelets perspektiv, och är inte medvetna om redigerings kameran (används för att rendera scen visningen).
+> Fjärrmodellen visas aldrig i scenvyn, endast i spelvyn. Det beror på att ARR fjärrreenderar bildrutorna specifikt för kameran i spelvyn och inte är medveten om redigerarkameran (används för att återge scenvyn).
 
 ## <a name="next-steps"></a>Nästa steg
 
-![Inläst modell](./media/test-model-rendered.png)
+![Modellen har lästs in](./media/test-model-rendered.png)
 
-Grattis! Du har skapat ett grundläggande program som kan visa fjärranslutna modeller med Azure fjärrrendering. I nästa självstudie kommer vi att integrera MRTK och importera våra egna modeller.
+Grattis! Du har skapat ett grundläggande program som kan visa fjärrregivna modeller med hjälp av Azure Remote Rendering. I nästa självstudie ska vi integrera MRTK och importera våra egna modeller.
 
 > [!div class="nextstepaction"]
-> [Nästa: gränssnitt och anpassade modeller](../custom-models/custom-models.md)
+> [Nästa: Gränssnitt och anpassade modeller](../custom-models/custom-models.md)

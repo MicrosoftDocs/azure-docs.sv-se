@@ -356,6 +356,8 @@
               href: service-fabric-cluster-resource-manager-movement-cost.md
             - name: Automatisk skalning av tjänster
               href: service-fabric-cluster-resource-manager-autoscaling.md
+            - name: Nodtaggning
+              href: service-fabric-cluster-resource-manager-node-tagging.md
     - name: Övervakning och diagnostik
       items:
         - name: Övervakningsöversikt
@@ -446,13 +448,13 @@
           href: how-to-managed-cluster-vmss-extension.md
         - name: Konfigurera ditt hanterade kluster
           href: how-to-managed-cluster-configuration.md
-        - name: Lägg till NSG-regler och andra nätverks alternativ för hanterade kluster
+        - name: Lägga till NSG-regler och andra nätverksalternativ för hanterade kluster
           href: how-to-managed-cluster-networking.md
-        - name: Distribuera hanterade kluster program med ARM-mall
+        - name: Distribuera hanterade klusterprogram med arm-mall
           href: how-to-managed-cluster-app-deployment-template.md
-        - name: Aktivera disk kryptering för hanterade klusternoder
+        - name: Aktivera diskkryptering för hanterade klusternoder
           href: how-to-enable-managed-cluster-disk-encryption.md
-        - name: Använd hanterad identitet för hanterade klusternoder
+        - name: Använda hanterad identitet för hanterade klusternoder
           href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
     - name: Planera och förbereda
       items:
@@ -502,7 +504,7 @@
                   href: service-fabric-how-to-remove-node-type.md
             - name: Uppgradera
               items:
-                - name: Hantera Service Fabric kluster uppgraderingar
+                - name: Hantera Service Fabric klusteruppgraderingar
                   href: service-fabric-cluster-upgrade-version-azure.md
                 - name: Uppgradera klusterkonfigurationen
                   href: service-fabric-cluster-config-upgrade-azure.md
@@ -618,7 +620,7 @@
           href: service-fabric-create-your-first-linux-application-with-java.md
         - name: Körbara gästprogrammet på Windows
           href: quickstart-guest-app.md
-    - name: Bygg program
+    - name: Skapa program
       items:
         - name: Skapa en körbar gästtjänst
           items:

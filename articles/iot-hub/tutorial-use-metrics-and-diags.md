@@ -1,6 +1,6 @@
 ---
-title: Självstudie – konfigurera och Använd mått och loggar med en Azure IoT Hub
-description: Självstudie – lär dig hur du konfigurerar och använder mått och loggar med en Azure IoT Hub. Detta ger data som ska analyseras för att hjälpa till att diagnostisera problem som navet kan ha.
+title: Självstudie – Konfigurera och använda mått och loggar med en Azure IoT-hubb
+description: Självstudie – Lär dig att konfigurera och använda mått och loggar med en Azure IoT-hubb. Detta ger data att analysera för att diagnostisera problem som din hubb kan ha.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -12,39 +12,39 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: 1e2983fb50ce3ad1482db85025677cba5fee0c2e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 62958dc374598e6f530af398f722001e5ed51acd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104889605"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739700"
 ---
-# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Självstudie: Konfigurera och Använd mått och loggar med en IoT-hubb
+# <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Självstudie: Konfigurera och använda mått och loggar med en IoT-hubb
 
-Du kan använda Azure Monitor för att samla in mått och loggar för din IoT-hubb som kan hjälpa dig att övervaka driften av din lösning och felsöka problem när de inträffar. I den här artikeln får du se hur du skapar diagram baserat på mått, hur du skapar aviseringar som utlöser mått, hur du skickar IoT Hub åtgärder och fel till Azure Monitor loggar och hur du kontrollerar loggarna efter fel.
+Du kan använda Azure Monitor för att samla in mått och loggar för din IoT-hubb som kan hjälpa dig att övervaka driften av din lösning och felsöka problem när de inträffar. I den här artikeln får du se hur du skapar diagram baserat på mått, hur du skapar aviseringar som utlöses för mått, hur du skickar IoT Hub-åtgärder och -fel till Azure Monitor-loggar och hur du kontrollerar om det finns fel i loggarna.
 
-I den här självstudien används Azure-exemplet från [.net-skicka telemetri snabb start](quickstart-send-telemetry-dotnet.md) för att skicka meddelanden till IoT Hub. Du kan alltid använda en enhet eller ett annat exempel för att skicka meddelanden, men du kan behöva ändra några steg i enlighet med detta.
+I den här självstudien används Azure-exemplet från [snabbstarten .NET Send telemetry](quickstart-send-telemetry-dotnet.md) (Skicka telemetri) för att skicka meddelanden till IoT Hub. Du kan alltid använda en enhet eller ett annat exempel för att skicka meddelanden, men du kan behöva ändra några steg därefter.
 
-Det kan vara bra att känna till Azure Monitor koncept innan du påbörjar den här självstudien. Mer information finns i [övervaka IoT Hub](monitor-iot-hub.md). Mer information om de mått och resurs loggar som genereras av IoT Hub finns i [referens för övervaknings data](monitor-iot-hub-reference.md).
+Viss kunskap om Azure Monitor kan vara användbart innan du påbörjar den här självstudien. Mer information finns i [Övervaka IoT Hub](monitor-iot-hub.md). Mer information om mått och resursloggar som genereras av IoT Hub finns i [Referens för övervakningsdata.](monitor-iot-hub-reference.md)
 
 I den här självstudien utför du följande åtgärder:
 
 > [!div class="checklist"]
 >
-> * Använd Azure CLI för att skapa en IoT-hubb, registrera en simulerad enhet och skapa en Log Analytics arbets yta.  
-> * Skicka IoT Hub anslutningar och enhets telemetri resurs loggar till Azure Monitor loggar i Log Analytics arbets ytan.
-> * Använd Metric Explorer för att skapa ett diagram baserat på valda mått och fäst det på din instrument panel.
-> * Skapa mått aviseringar så att du kan få ett meddelande via e-post när viktiga villkor uppstår.
+> * Använd Azure CLI för att skapa en IoT-hubb, registrera en simulerad enhet och skapa en Log Analytics-arbetsyta.  
+> * Skicka IoT Hub och resursloggar för enhettelemetri till Azure Monitor loggar på Log Analytics-arbetsytan.
+> * Använd Metric Explorer för att skapa ett diagram baserat på valda mått och fäst det på instrumentpanelen.
+> * Skapa måttaviseringar så att du kan meddelas via e-post när viktiga villkor inträffar.
 > * Ladda ned och kör en app som simulerar en IoT-enhet som skickar meddelanden till IoT-hubben.
-> * Visa aviseringar när villkoren inträffar.
-> * Visa mått diagrammet på instrument panelen.
+> * Visa aviseringarna när dina villkor inträffar.
+> * Visa måttdiagrammet på instrumentpanelen.
 > * Visa IoT Hub fel och åtgärder i Azure Monitor loggar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-- Du behöver .NET Core SDK 2,1 eller mer på din utvecklings dator. Du kan ladda ned .NET Core-SDK:n för flera plattformar från [.NET](https://www.microsoft.com/net/download/all).
+- Du behöver .NET Core SDK 2.1 eller högre på utvecklingsdatorn. Du kan ladda ned .NET Core-SDK:n för flera plattformar från [.NET](https://www.microsoft.com/net/download/all).
 
   Du kan kontrollera den aktuella versionen av C# på utvecklingsdatorn med följande kommando:
 
@@ -54,33 +54,33 @@ I den här självstudien utför du följande åtgärder:
 
 - Ett e-postkonto som kan ta emot e-post.
 
-- Kontrol lera att port 8883 är öppen i brand väggen. Enhets exemplet i den här självstudien använder MQTT-protokoll, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags-och miljö nätverks miljöer. Mer information och sätt att kringgå det här problemet finns i [ansluta till IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Kontrollera att port 8883 är öppen i brandväggen. Enhetsexempel i den här självstudien använder MQTT-protokollet, som kommunicerar via port 8883. Den här porten kan blockeras i vissa företags- och utbildningsnätverksmiljöer. Mer information och sätt att komma runt det här problemet finns i [Ansluta till IoT Hub (MQTT).](iot-hub-mqtt-support.md#connecting-to-iot-hub)
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Konfigurera resurser
 
-I den här självstudien behöver du en IoT-hubb, en Log Analytics-arbetsyta och en simulerad IoT-enhet. De här resurserna kan skapas med Azure CLI eller Azure PowerShell. Använd samma resursgrupp och plats för alla resurser. När du har gått igenom självstudien kan du ta bort allt i ett steg genom att ta bort resurs gruppen.
+I den här självstudien behöver du en IoT-hubb, en Log Analytics-arbetsyta och en simulerad IoT-enhet. De här resurserna kan skapas med Azure CLI eller Azure PowerShell. Använd samma resursgrupp och plats för alla resurser. När du är klar med självstudien kan du ta bort allt i ett steg genom att ta bort resursgruppen.
 
-Här är de steg som krävs.
+Här är de nödvändiga stegen.
 
-1. Skapa en [resurs grupp](../azure-resource-manager/management/overview.md).
+1. Skapa en [resursgrupp](../azure-resource-manager/management/overview.md).
 
 2. Skapa en IoT-hubb.
 
 3. Skapa en Log Analytics-arbetsyta.
 
-4. Registrera en enhets identitet för den simulerade enhet som skickar meddelanden till IoT-hubben. Spara anslutnings strängen för enheten som ska användas för att konfigurera den simulerade enheten.
+4. Registrera en enhetsidentitet för den simulerade enheten som skickar meddelanden till din IoT-hubb. Spara enhetsanslutningssträngen som ska användas för att konfigurera den simulerade enheten.
 
 ### <a name="set-up-resources-using-azure-cli"></a>Konfigurera resurser med hjälp av Azure CLI
 
-Kopiera och klistra in det här skriptet i Cloud Shell. Skriptet körs en rad i taget, förutsatt att du redan är inloggad. Det kan ta lite tid att köra några av kommandona. De nya resurserna skapas i resurs gruppen *ContosoResources*.
+Kopiera och klistra in det här skriptet i Cloud Shell. Skriptet körs en rad i taget, förutsatt att du redan är inloggad. Vissa kommandon kan ta lite tid att köra. De nya resurserna skapas i resursgruppen *ContosoResources*.
 
-Namnet på vissa resurser måste vara unikt i Azure. Skriptet genererar ett slumpmässigt värde med `$RANDOM` funktionen och lagrar det i en variabel. För dessa resurser lägger skriptet till detta slumpmässiga värde till ett bas namn för resursen, vilket gör resurs namnet unikt.
+Namnet på vissa resurser måste vara unikt i Azure. Skriptet genererar ett slumpmässigt värde med `$RANDOM` funktionen och lagrar det i en variabel. För dessa resurser lägger skriptet till det här slumpmässiga värdet i ett basnamn för resursen, vilket gör resursnamnet unikt.
 
-Endast en kostnads fri IoT Hub tillåts per prenumeration. Om du redan har en kostnads fri IoT-hubb i din prenumeration kan du antingen ta bort den innan du kör skriptet eller ändra skriptet så att det använder din kostnads fria IoT-hubb eller en IoT Hub som använder standard-eller Basic-nivån.
+Endast en kostnadsfri IoT-hubb tillåts per prenumeration. Om du redan har en kostnadsfri IoT-hubb i din prenumeration kan du ta bort den innan du kör skriptet eller ändra skriptet så att det använder din kostnadsfria IoT-hubb eller en IoT Hub som använder standard- eller basic-nivån.
 
-Skriptet skriver ut namnet på IoT-hubben, namnet på Log Analytics arbets ytan och anslutnings strängen för enheten som registreras. Se till att anteckna detta när du behöver dem senare i den här artikeln.
+Skriptet skriver ut namnet på IoT-hubben, namnet på Log Analytics-arbetsytan och anslutningssträngen för den enhet som den registrerar. Kom ihåg att anteckna dessa eftersom du behöver dem senare i den här artikeln.
 
 ```azurecli-interactive
 
@@ -134,208 +134,208 @@ az iot hub device-identity show-connection-string --device-id $iotDeviceName \
 ```
 
 >[!NOTE]
->När du skapar enhets identiteten kan du få följande fel: *inga nycklar hittades för principen iothubowner för IoT Hub ContosoTestHub*. Åtgärda felet genom att uppdatera IoT-tillägget för Azure CLI och kör de senaste två kommandona i skriptet igen. 
+>När du skapar enhetsidentiteten kan du få följande fel: Inga nycklar hittades för principen *iothubowner för IoT Hub ContosoTestHub*. Åtgärda felet genom att uppdatera IoT-tillägget för Azure CLI och kör de senaste två kommandona i skriptet igen. 
 >
->Här är kommandot för att uppdatera tillägget. Kör det här kommandot i Cloud Shell-instansen.
+>Här är kommandot för att uppdatera tillägget. Kör det här kommandot i din Cloud Shell instans.
 >
 >```cli
 >az extension update --name azure-iot
 >```
 
-## <a name="collect-logs-for-connections-and-device-telemetry"></a>Samla in loggar för anslutningar och telemetri för enheter
+## <a name="collect-logs-for-connections-and-device-telemetry"></a>Samla in loggar för anslutningar och enhettelemetri
 
-IoT Hub avger resurs loggar för flera åtgärds kategorier. för att du ska kunna visa dessa loggar måste du dock skapa en diagnostisk inställning för att skicka dem till ett mål. Ett sådant mål är Azure Monitor loggar som samlas in i en Log Analytics arbets yta. IoT Hub resurs loggar grupperas i olika kategorier. Du kan välja vilka kategorier som du vill skicka till Azure Monitor loggar i den diagnostiska inställningen. I den här artikeln samlar vi in loggar för åtgärder och fel som inträffar med anslutningar och telemetri för enheter. En fullständig lista över de kategorier som stöds för IoT Hub finns i [IoT Hub resurs loggar](monitor-iot-hub-reference.md#resource-logs).
+IoT Hub sändar resursloggar för flera åtgärdskategorier. Men om du vill visa loggarna måste du skapa en diagnostikinställning för att skicka dem till ett mål. Ett sådant mål är Azure Monitor loggar som samlas in på en Log Analytics-arbetsyta. IoT Hub resursloggar grupperas i olika kategorier. Du kan välja vilka kategorier du vill skicka till Azure Monitor loggar i diagnostikinställningen. I den här artikeln samlar vi in loggar för åtgärder och fel som inträffar som har att göra med anslutningar och enhettelemetri. En fullständig lista över de kategorier som stöds för IoT Hub finns i [IoT Hub resursloggar](monitor-iot-hub-reference.md#resource-logs).
 
-Följ dessa steg om du vill skapa en diagnostisk inställning för att skicka IoT Hub resurs loggar till Azure Monitor loggar:
+Följ dessa steg om du vill skapa en diagnostikinställning IoT Hub skicka loggar Azure Monitor till Azure Monitor loggar:
 
-1. Om du inte redan är på hubben i portalen väljer du **resurs grupper** och väljer resurs gruppen ContosoResources. Välj IoT-hubben i listan över resurser som visas.
+1. Om du inte redan är på hubben i  portalen väljer du Först Resursgrupper och sedan resursgruppen ContosoResources. Välj din IoT-hubb i listan över resurser som visas.
 
-1. Leta upp **övervakningsavsnittet** på IoT Hub-bladet. Välj **diagnostikinställningar**. Välj sedan **Lägg till diagnostisk inställning**.
+1. Leta upp **övervakningsavsnittet** på IoT Hub-bladet. Välj **Diagnostikinställningar.** Välj sedan **Lägg till diagnostikinställning.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Skärm bild som visar diagnostikinställningar i avsnittet övervakning.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/open-diagnostic-settings.png" alt-text="Skärmbild som visar diagnostikinställningar i avsnittet Övervakning.":::
 
-1. I fönstret **diagnostikinställningar anger** du ett beskrivande namn, till exempel "skicka anslutningar och telemetri till loggar".
+1. I fönstret **Diagnostikinställning** ger du inställningen ett beskrivande namn, till exempel "Skicka anslutningar och telemetri till loggar".
 
-1. Under **kategori information** väljer du **anslutningar** och **telemetri för enheter**.
+1. Under **Kategoriinformation** väljer du **Anslutningar** och **enhettelemetri.**
 
-1. Under **mål information** väljer du **Skicka till Log Analytics** och använder sedan väljaren Log Analytics arbets yta för att välja den arbets yta som du antecknade tidigare. När du är klar bör den diagnostiska inställningen se ut ungefär som på följande skärm bild:
+1. Under **Målinformation** väljer du **Skicka till Log Analytics** och använder sedan Log Analytics-arbetsyteväljaren för att välja den arbetsyta som du antecknade tidigare. När du är klar bör diagnostikinställningen se ut ungefär som på följande skärmbild:
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="Skärmbild som visar de slutliga diagnostiklogginställningarna.":::
 
-1. Spara inställningarna genom att klicka på **Spara**. Stäng fönstret **diagnostik-inställning** . Du kan se den nya inställningen i listan över diagnostikinställningar.
+1. Spara inställningarna genom att klicka på **Spara**. Stäng fönstret **Diagnostikinställning.** Du kan se den nya inställningen i listan över diagnostikinställningar.
 
 ## <a name="set-up-metrics"></a>Konfigurera mått
 
-Nu ska vi använda Metrics Explorer för att skapa ett diagram som visar mått som du vill spåra. Du fäster det här diagrammet på standard instrument panelen i Azure Portal.
+Nu ska vi använda Metrics Explorer för att skapa ett diagram som visar mått som du vill spåra. Du fäster det här diagrammet på standardinstrumentpanelen i Azure Portal.
 
-1. I den vänstra rutan i IoT Hub väljer du **mått** i avsnittet **övervakning** .
+1. I den vänstra rutan i din IoT Hub väljer **du Mått** i **avsnittet** Övervakning.
 
-1. Längst upp på skärmen väljer du de **senaste 24 timmarna (automatiskt)**. I list rutan som visas väljer du **senaste 4 timmar** för **tidsintervall**, ställer in **tids kornig het** på **1 minut** och väljer **lokalt** för **Visa tid som**. Välj **Använd** för att spara inställningarna. Inställningen bör nu säga **lokal tid: senaste 4 timmarna (1 minut)**.
+1. Längst upp på skärmen väljer du **Senaste 24 timmarna (automatiskt).** I listrutan som visas väljer du Senaste **4 timmarna** för Tidsintervall, anger Tidskornighet till **1** minut och väljer **Lokal** för Visa tid **som**.  Spara **inställningarna genom** att välja Tillämpa. Inställningen bör nu vara **Lokal tid: Senaste 4 timmarna (1 minut)**.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-select-time-range.png" alt-text="Skärmbild som visar tidsinställningar för mått.":::
 
-1. I diagrammet finns det en del mått inställning som visas som en del av din IoT Hub. Lämna standardvärdena **för områdes** **namn och mått namn rymder** . Välj **mått** inställningen och skriv "telemetri" och välj sedan **telemetri meddelanden som skickas** från List rutan. **Agg regeringen** anges automatiskt till **Sum**. Observera att namnet på diagrammet också ändras.
+1. I diagrammet visas en partiell måttinställning som är begränsad till din IoT-hubb. Lämna värdena **för** **Omfång och Namnområde** för mått på standardvärdena. Välj inställningen **Mått** och skriv "Telemetri" och välj sedan **Telemetrimeddelanden som skickas** i listrutan. **Aggregering** ställs automatiskt in på **Summa**. Observera att diagrammets rubrik också ändras.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Skärm bild som visar hur du lägger till telemetri meddelanden som har skickats till diagrammet.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-telemetry-messages-sent.png" alt-text="Skärmbild som visar tillägg av måttet Skickade telemetrimeddelanden i diagrammet.":::
 
-1. Välj nu **Lägg till mått** för att lägga till ett mått i diagrammet. Under **du Mått** väljer du **Total number of messages used** (Totalt antal använda meddelanden). **Agg regeringen** anges automatiskt till **AVG**. Lägg märke till att diagrammets rubrik har ändrats för att ta med det här måttet.
+1. Välj nu **Lägg till mått** för att lägga till ytterligare ett mått i diagrammet. Under **du Mått** väljer du **Total number of messages used** (Totalt antal använda meddelanden). **Aggregering** ställs automatiskt in **på Genomsnitt.** Observera återigen att diagrammets rubrik har ändrats för att inkludera det här måttet.
 
    Nu visar skärmen minimerade mått för *Telemetry messages sent* (Skickade telemetrimeddelanden), plus det nya måttet för *Total number of messages used* (Totalt antal använda meddelanden).
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Skärm bild som visar hur du lägger till sammanlagt antal meddelanden som används av måttet i diagrammet.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used.png" alt-text="Skärmbild som visar hur du lägger till måttet Totalt antal meddelanden som används i diagrammet.":::
 
-1. I det övre högra hörnet i diagrammet väljer **du fäst på instrument panelen**.
+1. Välj Fäst på instrumentpanelen uppe till **höger i diagrammet.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="Skärm bild som visar knappen Fäst på instrument panelen.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-total-number-of-messages-used-pin.png" alt-text="Skärmbild som visar knappen Fäst på instrumentpanelen.":::
 
-1. I fönstret **Fäst på instrument panelen** väljer du den **befintliga** fliken. Välj **privat** och välj sedan **instrument panel** i list rutan instrument panel. Slutligen väljer du **Fäst** för att fästa diagrammet på standard instrument panelen i Azure Portal. Om du inte fäster ditt diagram på en instrument panel behålls inte inställningarna när du avslutar Metric Explorer.
+1. I fönstret **Fäst på instrumentpanelen** väljer du **fliken** Befintlig. Välj **Privat** och sedan **Instrumentpanel** i listrutan Instrumentpanel. Välj slutligen Fäst **för** att fästa diagrammet på standardinstrumentpanelen i Azure Portal. Om du inte fäster diagrammet på en instrumentpanel behålls inte inställningarna när du avslutar Metric Explorer.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="Skärm bild som visar inställningar för fäst vid instrument panelen.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/pin-to-dashboard.png" alt-text="Skärmbild som visar inställningar för Fäst på instrumentpanelen.":::
 
-## <a name="set-up-metric-alerts"></a>Konfigurera mått varningar
+## <a name="set-up-metric-alerts"></a>Konfigurera måttaviseringar
 
-Nu ska vi ställa in aviseringar som ska utlösas på två mått *meddelanden om telemetri som skickas* och det *totala antalet meddelanden som används*.
+Nu ska vi konfigurera aviseringar som ska utlösas för två mått *Telemetrimeddelanden som skickats* och *Totalt antal meddelanden som används.*
 
-*Meddelanden som skickas med telemetri* är ett utmärkt mått att övervaka för att spåra meddelande data flöde och undvika att begränsas. För en IoT Hub på den kostnads fria nivån är begränsnings gränsen 100 meddelanden/SEK. Med en enda enhet kommer vi inte att kunna uppnå denna typ av data flöde, så i stället ställer vi in aviseringen att utlösa om antalet meddelanden överstiger 1000 på en 5 minuters period. I produktion kan du ställa in signalen till ett mer signifikant värde baserat på nivån, versionen och antalet enheter i din IoT Hub.
+*Skickade telemetrimeddelanden är* ett bra mått för att övervaka att spåra meddelandedataflöde och undvika att begränsas. För en IoT Hub på den kostnadsfria nivån är begränsningsgränsen 100 meddelanden per sekund. Med en enda enhet kommer vi inte att kunna uppnå den typen av dataflöde, så i stället ställer vi in aviseringen så att den utlöses om antalet meddelanden överskrider 1 000 under en 5-minutersperiod. I produktion kan du ställa in signalen på ett mer betydande värde baserat på nivå, utgåva och antal enheter i din IoT-hubb.
 
-*Totalt antal meddelanden som används* spårar det dagliga antalet meddelanden som används. Måttet återställs varje dag med 00:00 UTC. Om du överskrider den dagliga kvoten efter en viss tröskel kommer IoT Hub inte längre att acceptera meddelanden. För en IoT Hub på den kostnads fria nivån är den dagliga meddelande kvoten 8000. Vi konfigurerar aviseringen så att den utlöses om det totala antalet meddelanden överstiger 4000, 50% av kvoten. I praktiken skulle du förmodligen ange den här procent andelen till ett högre värde. Det dagliga kvot svärdet beror på nivån, versionen och antalet enheter i din IoT-hubb.
+*Totalt antal meddelanden som används* spårar det dagliga antalet meddelanden som används. Det här måttet återställs varje dag kl. 00:00 UTC. Om du överskrider din dagliga kvot efter ett visst tröskelvärde kommer IoT Hub inte längre att acceptera meddelanden. För ett IoT Hub på den kostnadsfria nivån är den dagliga meddelandekvoten 8 000. Vi ställer in aviseringen så att den utlöses om det totala antalet meddelanden överskrider 4 000, 50 % av kvoten. I praktiken skulle du förmodligen ange den här procentandelen till ett högre värde. Det dagliga kvotvärdet beror på nivå, utgåva och antal enheter för din IoT-hubb.
 
-Mer information om kvot-och begränsnings gränser med IoT Hub finns i [kvoter och begränsning](iot-hub-devguide-quotas-throttling.md).
+Mer information om kvot- och begränsningsgränser med IoT Hub finns [i Kvoter och begränsning.](iot-hub-devguide-quotas-throttling.md)
 
-Så här ställer du in mått aviseringar:
+Så här ställer du in måttaviseringar:
 
-1. Gå till din IoT Hub i Azure Portal.
+1. Gå till din IoT-hubb i Azure Portal.
 
-1. Under **övervakning** väljer du **aviseringar**. Välj sedan **ny aviserings regel**.  Fönstret **skapa aviserings regel** öppnas.
+1. Under **Övervakning** väljer du **Aviseringar.** Välj sedan **Ny aviseringsregel**.  Fönstret **Skapa aviseringsregel** öppnas.
 
-    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="Skärm bild som visar fönstret Skapa aviserings regel.":::
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-pane.png" alt-text="Skärmbild som visar fönstret Skapa aviseringsregel.":::
 
-    I fönstret **skapa aviserings regel** finns fyra avsnitt:
+    Det finns **fyra avsnitt i** fönstret Skapa aviseringsregel:
 
-    * **Omfånget** har redan angetts till din IoT-hubb, så vi lämnar endast det här avsnittet.
-    * **Villkor** anger den signal och de villkor som ska utlösa aviseringen.
+    * **Omfånget** är redan inställt på din IoT-hubb, så vi låter det här avsnittet vara kvar.
+    * **Villkor** anger den signal och de villkor som utlöser aviseringen.
     * **Åtgärder** konfigurerar vad som händer när aviseringen utlöses.
-    * Med **aviserings regel information** kan du ange ett namn och en beskrivning för aviseringen.
+    * **Med information om** aviseringsregeln kan du ange ett namn och en beskrivning för aviseringen.
 
-1. Konfigurera först villkoret som aviseringen ska utlösa.
+1. Konfigurera först villkoret som aviseringen ska utlösas på.
 
-    1. Under **villkor** väljer du **Lägg till villkor**. Skriv "telemetri" i rutan Sök i rutan **Konfigurera signal logik** i sökrutan och välj **telemetri meddelanden som skickats**.
+    1. Under **Villkor** väljer du Lägg **till villkor**. I fönstret **Konfigurera signallogik** skriver du "telemetri" i sökrutan och väljer **Telemetrimeddelanden som skickats.**
 
-       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Skärm bild som visar valet av mått.":::
+       :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-telemetry-messages-sent.png" alt-text="Skärmbild som visar val av mått.":::
 
-    1. I fönstret **Konfigurera signal logik** anger eller bekräftar du följande fält under **aviserings logiken** (du kan ignorera diagrammet):
+    1. I fönstret **Konfigurera signallogik** anger eller bekräftar du följande fält under **Aviseringslogik** (du kan ignorera diagrammet):
 
-       **Tröskelvärde**:  *statisk*.
+       **Tröskelvärde:** *Statisk .*
 
-       **Operator**: *större än*.
+       **Operator:** *Större än*.
 
-       **Sammansättnings typ**: *totalt*.
+       **Sammansättningstyp:** *Totalt*.
 
-       **Tröskelvärde**: 1000.
+       **Tröskelvärde:** 1000.
 
-       **Agg regerings kornig het (period)**: *5 minuter*.
+       **Sammansättningskornighet (period):** *5 minuter*.
 
-       **Utvärderings frekvens**: *var 1 minut*
+       **Utvärderingsfrekvens:** *var 1 minut*
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Skärm bild som visar inställningar för aviserings villkor.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Skärmbild som visar inställningar för aviseringsvillkor.":::
 
-       De här inställningarna ställer in signalen för att summera antalet meddelanden under en period på 5 minuter. Den här summan kommer att utvärderas varje minut, och om summan för de föregående 5 minuterna överstiger 1000 meddelanden, utlöses aviseringen.
+       De här inställningarna anger att signalen ska summera antalet meddelanden under en period på 5 minuter. Den här summan utvärderas varje minut och om totalsumman för de föregående 5 minuterna överskrider 1 000 meddelanden utlöses aviseringen.
 
-       Välj **färdig** för att spara signal logiken.
+       Välj **Klar** för att spara signallogiken.
 
-1. Nu ska du konfigurera åtgärden för aviseringen.
+1. Konfigurera nu åtgärden för aviseringen.
 
-    1. Gå tillbaka till fönstret **skapa aviserings regel** under **åtgärder** och välj **Lägg till åtgärds grupper**. I fönstret **Välj en åtgärds grupp som ska kopplas till den här varnings regeln** väljer du **skapa åtgärds grupp**.
+    1. I fönstret **Skapa aviseringsregel** går du till **Åtgärder och** väljer Lägg till **åtgärdsgrupper.** I fönstret **Välj en åtgärdsgrupp att ansluta till den här aviseringsregeln** väljer **du Skapa åtgärdsgrupp.**
 
-    1. Ge åtgärds gruppen ett namn och ett visnings namn under fliken **grundläggande** i fönstret **skapa åtgärds grupp** .
+    1. Under fliken **Grundläggande inställningar** i fönstret **Skapa åtgärdsgrupp** ger du åtgärdsgruppen ett namn och ett visningsnamn.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="Skärm bild som visar fliken grundläggande i fönstret Skapa åtgärds grupp.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-basics.png" alt-text="Skärmbild som visar fliken Grundläggande inställningar i fönstret Skapa åtgärdsgrupp.":::
 
-    1. Välj fliken **meddelanden** . För **meddelande typ** väljer du **e-post/SMS-meddelande/push/röst** i list rutan. Fönstret **e-post/SMS/push/Voice** öppnas.
+    1. Välj **fliken** Meddelanden. Som **Meddelandetyp** väljer du **E-post/SMS-meddelande/Push/röst** i listrutan. Fönstret **E-post/SMS-meddelande/Push/röst** öppnas.
 
-    1. I fönstret **e-post/SMS/push/Voice** väljer du e-post och anger din e-postadress och väljer sedan **OK**.
+    1. I fönstret **E-post/SMS/Push/röst** väljer du e-post och anger din e-postadress. Välj sedan **OK.**
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="Skärm bild som visar inställningar för e-postadress.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/set-email-address.png" alt-text="Skärmbild som visar inställningen för e-postadress.":::
 
-    1. Gå tillbaka till fönstret **meddelanden** och ange ett namn för meddelandet.
+    1. I fönstret **Meddelanden** anger du ett namn för meddelandet.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="Skärm bild som visar fönstret slutförda aviseringar.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-notification-complete.png" alt-text="Skärmbild som visar det slutförda meddelandefönstret.":::
 
-    1. Valfritt Om du väljer fliken **åtgärder** och sedan markerar List rutan **Åtgärds typ** kan du se vilka typer av åtgärder som du kan utlösa med en avisering. I den här artikeln använder vi bara meddelanden, så du kan ignorera inställningarna på den här fliken.
+    1. (Valfritt) Om du väljer **fliken Åtgärder** och  sedan väljer listrutan Åtgärdstyp kan du se vilka typer av åtgärder som du kan utlösa med en avisering. I den här artikeln använder vi bara meddelanden, så du kan ignorera inställningarna på den här fliken.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="Skärm bild som visar tillgängliga åtgärds typer i åtgärds fönstret.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/action-types.png" alt-text="Skärmbild som visar de åtgärdstyper som är tillgängliga i fönstret Åtgärder.":::
 
-    1. Välj fliken **Granska och skapa** , verifiera inställningarna och välj **skapa**.
+    1. Välj fliken **Granska och skapa,** verifiera inställningarna och välj **Skapa.**
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Skärm bild som visar fönstret granska och skapa.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Skärmbild som visar fönstret Granska och Skapa.":::
 
-    1. Gå tillbaka till fönstret **skapa aviserings regel** och Lägg märke till att din nya åtgärds grupp har lagts till i aviseringens åtgärder.  
+    1. I fönstret **Skapa aviseringsregel** ser du att den nya åtgärdsgruppen har lagts till i åtgärderna för aviseringen.  
 
-1. Konfigurera slutligen varnings regel informationen och spara varnings regeln.
+1. Slutligen konfigurerar du aviseringsregelns information och sparar aviseringsregeln.
 
-    1. Ange ett namn och en beskrivning för aviseringen i fönstret **skapa aviserings regel** under information om aviserings regler. till exempel "varna om över 1000 meddelanden över 5 minuter". Kontrol lera att **Aktivera varnings regel när** du har skapat den har marker ATS. Den slutförda varnings regeln ser ut ungefär som den här skärm bilden.
+    1. Ange ett **namn och en** beskrivning för aviseringen under Information om aviseringsregel i fönstret Skapa aviseringsregel. till exempel "Avisering om mer än 1 000 meddelanden över 5 minuter". Kontrollera att Aktivera **aviseringsregel när den skapas** är markerat. Din slutförda aviseringsregel ser ut ungefär som på den här skärmbilden.
 
-        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="Skärm bild som visar fönstret Skapa aviserings regel.":::
+        :::image type="content" source="media/tutorial-use-metrics-and-diags/create-alert-rule-final.png" alt-text="Skärmbild som visar det färdiga fönstret Skapa aviseringsregel.":::
 
-    1. Välj **skapa aviserings regel** för att spara din nya regel.
+    1. Välj **Skapa aviseringsregel** för att spara den nya regeln.
 
-1. Ställ nu in en ny avisering för de *sammanlagda antalet använda meddelanden*. Det här måttet är användbart om du vill skicka en avisering när antalet meddelanden som används närmar sig den dagliga kvoten för IoT Hub, då IoT Hub kommer att börja avvisa meddelanden. Följ de steg du gjorde tidigare, med följande skillnader.
+1. Ställ nu in en ny avisering för de *sammanlagda antalet använda meddelanden*. Det här måttet är användbart om du vill skicka en avisering när antalet meddelanden som används närmar sig den dagliga kvoten för IoT-hubben. Då börjar IoT-hubben avvisa meddelanden. Följ de steg som du gjorde tidigare, med följande skillnader.
 
-    * För signalen i fönstret **Konfigurera signal logik** väljer du det **totala antalet meddelanden som används**.
+    * För signalen i fönstret **Konfigurera signallogik** väljer du **Totalt antal meddelanden som används.**
 
-    * I fönstret **Konfigurera signal logik** anger eller bekräftar du följande fält (du kan ignorera diagrammet):
+    * I fönstret **Konfigurera signallogik** anger eller bekräftar du följande fält (du kan ignorera diagrammet):
 
-       **Tröskelvärde**:  *statisk*.
+       **Tröskelvärde:** *Statisk .*
 
-       **Operator**: *större än*.
+       **Operator:** *Större än*.
 
-       **Sammansättnings typ**: *maximum*.
+       **Sammansättningstyp:** *Maximalt*.
 
-       **Tröskelvärde**: 4000.
+       **Tröskelvärde:** 4000.
 
-       **Agg regerings kornig het (period)**: *1 minut*.
+       **Sammansättningskornighet (period):** *1 minut*.
 
-       **Utvärderings frekvens**: *var 1 minut*
+       **Utvärderingsfrekvens:** *var 1 minut*
 
-       De här inställningarna ställer in signalen för att utlösa när antalet meddelanden når 4000. Måttet utvärderas varje minut.
+       De här inställningarna anger att signalen ska skjutas när antalet meddelanden når 4 000. Måttet utvärderas varje minut.
 
-    * När du anger åtgärden för varnings regeln väljer du bara åtgärds gruppen som du skapade tidigare.
+    * När du anger åtgärden för aviseringsregeln väljer du bara den åtgärdsgrupp som du skapade tidigare.
 
-    * För aviserings informationen väljer du ett annat namn och en annan beskrivning än du tidigare.
+    * För aviseringsinformationen väljer du ett annat namn och en annan beskrivning än du gjorde tidigare.
 
-1. Välj **aviseringar** under **övervakning** i den vänstra rutan i IoT Hub. Välj nu **Hantera aviserings regler** på menyn överst i **aviserings** fönstret. Fönstret **regler** öppnas. Nu bör du se de två aviseringarna:
+1. Välj **Aviseringar** under **Övervakning i** den vänstra rutan i din IoT-hubb. Välj nu **Hantera aviseringsregler** på menyn längst upp i **fönstret Aviseringar.** Fönstret **Regler** öppnas. Nu bör du se dina två aviseringar:
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Skärm bild som visar fönstret regler med de nya varnings reglerna.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/rules-management.png" alt-text="Skärmbild som visar fönstret Regler med de nya aviseringsreglerna.":::
 
-1. Stäng fönstret **regler** .
+1. Stäng **fönstret** Regler.
 
-Med de här inställningarna utlöses en avisering och du får ett e-postmeddelande när mer än 1000 meddelanden skickas inom en tids period på 5 minuter och även när det totala antalet meddelanden som används överskrider 4000 (50% av den dagliga kvoten för en IoT-hubb på den kostnads fria nivån).
+Med de här inställningarna utlöses en avisering och du får ett e-postmeddelande när fler än 1 000 meddelanden skickas inom ett tidsintervall på 5 minuter och även när det totala antalet meddelanden som används överskrider 4 000 (50 % av den dagliga kvoten för en IoT-hubb på den kostnadsfria nivån).
 
-## <a name="run-the-simulated-device-app"></a>Kör den simulerade Device-appen
+## <a name="run-the-simulated-device-app"></a>Köra den simulerade enhetsappen
 
-I avsnittet [Konfigurera resurser](#set-up-resources) registrerade du en enhets identitet som ska användas för att simulera användning av en IoT-enhet. I det här avsnittet kan du ladda ned en .NET-konsol app som simulerar en enhet som skickar enhets-till-moln-meddelanden till en IoT Hub, konfigurera den för att skicka dessa meddelanden till IoT-hubben och sedan köra det.
+I avsnittet [Konfigurera resurser registrerade du](#set-up-resources) en enhetsidentitet som ska användas för att simulera med hjälp av en IoT-enhet. I det här avsnittet laddar du ned en .NET-konsolapp som simulerar en enhet som skickar "enhet till molnet"-meddelanden till en IoT Hub, konfigurerar den för att skicka dessa meddelanden till din IoT-hubb och kör den sedan.
 
 > [!IMPORTANT]
 >
-> Aviseringar kan ta upp till 10 minuter innan de är helt konfigurerade och aktiverade genom att IoT Hub. Vänta minst 10 minuter från det att du konfigurerar din senaste avisering och kör den simulerade Device-appen.
+> Det kan ta upp till 10 minuter innan aviseringarna har konfigurerats fullständigt och aktiverats av IoT Hub. Vänta minst 10 minuter mellan den tidpunkt då du konfigurerade din senaste avisering och kör den simulerade enhetsappen.
 
-Ladda ned lösningen för [IoT-enhetssimuleringen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Den här länken laddar ned en lagrings platsen med flera program. den som du söker efter finns i IoT-Hub/snabb starter/simulerad enhet/.
+Ladda ned lösningen för [IoT-enhetssimuleringen](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Den här länken laddar ned en lagringsplatsen med flera program i den. det du letar efter finns i iot-hub/Quickstarts/simulated-device/.
 
-1. I ett lokalt terminalfönster navigerar du till rotmappen för lösningen. Gå sedan till mappen **iot-hub\Quickstarts\simulated-device**.
+1. Navigera till lösningens rotmapp i ett lokalt terminalfönster. Gå sedan till mappen **iot-hub\Quickstarts\simulated-device**.
 
 1. Öppna filen **SimulatedDevice.cs** i en valfri textredigerare.
 
-    1. Ersätt värdet för `s_connectionString` variabeln med den enhets anslutnings sträng som du antecknade när du körde skriptet för att konfigurera resurser.
+    1. Ersätt värdet för variabeln `s_connectionString` med enhetsanslutningssträngen som du antecknade när du körde skriptet för att konfigurera resurser.
 
-    1. I `SendDeviceToCloudMessagesAsync` -metoden ändrar du `Task.Delay` från 1000 till 1, vilket minskar tiden mellan att skicka meddelanden från 1 sekund till 0,001 sekunder. När du förkortar den här fördröjningen ökar antalet meddelanden som skickas. (Du kommer troligen inte att få en meddelande frekvens på 100 meddelanden per sekund.)
+    1. I metoden ändrar du från 1 000 till 1, vilket minskar tiden mellan att skicka meddelanden från 1 sekund till `SendDeviceToCloudMessagesAsync` `Task.Delay` 0,001 sekunder. När du förkortar den här fördröjningen ökar antalet meddelanden som skickas. (Du får förmodligen inte en meddelandefrekvens på 100 meddelanden per sekund.)
 
         ```csharp
         await Task.Delay(1);
         ```
 
-    1. Spara ändringarna i **SimulatedDevice. cs**.
+    1. Spara ändringarna i **SimulatedDevice.cs.**
 
-1. I det lokala terminalfönstret kör du följande kommando för att installera de nödvändiga paketen för det simulerade enhets programmet:
+1. I det lokala terminalfönstret kör du följande kommando för att installera de paket som krävs för det simulerade enhetsprogrammet:
 
     ```cmd/sh
     dotnet restore
@@ -349,65 +349,65 @@ Ladda ned lösningen för [IoT-enhetssimuleringen](https://github.com/Azure-Samp
 
     Följande skärmbild visar utdata när det simulerade enhetsprogrammet skickar telemetri till din IoT-hubb:
 
-    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="Skärm bild som visar simulerade enhets utdata.":::
+    :::image type="content" source="media/tutorial-use-metrics-and-diags/simulated-device-output.png" alt-text="Skärmbild som visar simulerade enhetsutdata.":::
 
-Låt programmet köras i minst 10-15 minuter. Vi rekommenderar att den körs tills den slutar skicka meddelanden (cirka 20-30 minuter). Detta inträffar när du har överskridit den dagliga meddelande kvoten för din IoT-hubb och har slutat att acceptera fler meddelanden.
+Låt programmet köras i minst 10–15 minuter. Vi rekommenderar att den körs tills den slutar skicka meddelanden (cirka 20–30 minuter). Detta inträffar när du har överskridit den dagliga meddelandekvoten för din IoT-hubb och den har slutat acceptera fler meddelanden.
 
 > [!NOTE]
-> Om du låter enhets appen köras under en längre period när den slutar att skicka meddelanden kan du få ett undantag. Du kan ignorera detta undantag på ett säkert sätt och stänga app-fönstret.
+> Om du lämnar enhetsappen igång under en längre tid efter att den har sluta skicka meddelanden kan du få ett undantag. Du kan ignorera det här undantaget och stänga appfönstret.
 
-## <a name="view-metrics-chart-on-your-dashboard"></a>Visa mått diagram på din instrument panel
+## <a name="view-metrics-chart-on-your-dashboard"></a>Visa måttdiagram på instrumentpanelen
 
-1. I det övre vänstra hörnet av Azure Portal öppnar du Portal-menyn och väljer **instrument panel**.
+1. I det övre vänstra hörnet i Azure Portal öppnar du portalmenyn och väljer sedan **Instrumentpanel.**
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Skärm bild som visar hur du väljer din instrument panel.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/select-dashboard.png" alt-text="Skärmbild som visar hur du väljer din instrumentpanel.":::
 
-1. Hitta diagrammet som du har fäst tidigare och klicka någonstans på panelen utanför diagrammets data för att expandera det. Det visar de meddelanden om telemetri som skickas och det totala antalet meddelanden som används i diagrammet. De senaste talen visas längst ned i diagrammet. Du kan flytta markören i diagrammet om du vill se mått värden för vissa tider. Du kan också ändra tid svärdet och precisionen längst upp i diagrammet för att begränsa eller expandera data till en tids period av intresse.
+1. Leta upp diagrammet som du fäste tidigare och klicka var som helst på panelen utanför diagramdata för att expandera det. Den visar skickade telemetrimeddelanden och det totala antalet meddelanden som används i diagrammet. De senaste talen visas längst ned i diagrammet. Du kan flytta markören i diagrammet för att se måttvärdena för specifika tider. Du kan också ändra tidsvärdet och kornigheten överst i diagrammet för att begränsa eller expandera data till en tidsperiod av intresse.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="Skärm bild som visar mått diagrammet.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/metrics-on-dashboard-last-hour.png" alt-text="Skärmbild som visar måttdiagrammet.":::
 
-   I det här scenariot är den simulerade enhetens meddelande data flöde inte tillräckligt stort för att orsaka att IoT Hub begränsar sina meddelanden. I ett scenario som faktiskt inbegriper begränsning kan du se att de meddelanden som skickas överskrider begränsnings gränsen för din IoT-hubb under en begränsad tid. Detta är för att hantera burst-trafik. Mer information finns i [trafik utformning](iot-hub-devguide-quotas-throttling.md#traffic-shaping).
+   I det här scenariot är den simulerade enhetens meddelandegenomflöde inte tillräckligt stort för att IoT Hub begränsa dess meddelanden. I ett scenario som faktiskt omfattar begränsning kan du se att telemetrimeddelanden som skickas överskrider begränsningsgränsen för din IoT-hubb under en begränsad tid. Detta är för att hantera burst-trafik. Mer information finns i [trafikformning](iot-hub-devguide-quotas-throttling.md#traffic-shaping).
 
 ## <a name="view-the-alerts"></a>Visa aviseringarna
 
-När antalet meddelanden som skickas överskrider de gränser som du har angett i aviserings reglerna börjar du få e-postaviseringar.
+När antalet meddelanden som skickas överskrider de gränser som du har angett i dina aviseringsregler börjar du få e-postaviseringar.
 
-Om du vill se om det finns några aktiva aviseringar väljer du **aviseringar** under **övervakning** i den vänstra rutan i IoT Hub. Rutan **aviseringar** visar antalet aviseringar som har utlösts sorterade efter allvarlighets grad för det angivna tidsintervallet.
+Om du vill se om det finns några aktiva aviseringar väljer **du** **Aviseringar** under Övervakning i den vänstra rutan i IoT-hubben. I **fönstret** Aviseringar visas antalet aviseringar som har uttskjutna, sorterade efter allvarlighetsgrad för det angivna tidsperioden.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-alerts.png" alt-text="Skärm bild som visar aviserings sammanfattningen.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-alerts.png" alt-text="Skärmbild som visar sammanfattningen av aviseringar.":::
 
-Välj raden för allvarlighets grad allvarlighets grad 3. Fönstret **alla aviseringar** öppnas och visar en lista över de allvarlighets grad 3-aviseringar som har utlösts.
+Välj raden för allvarlighetsgrad Sev 3. Fönstret **Alla aviseringar** öppnas och visar en lista över de 3 aviseringar som har utlöses.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="Skärm bild som visar fönstret alla aviseringar.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-all-alerts.png" alt-text="Skärmbild som visar fönstret Alla aviseringar.":::
 
-Välj en av aviseringarna om du vill se aviserings informationen.
+Välj en av aviseringarna för att se aviseringsinformationen.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="Skärm bild som visar aviserings information.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/view-individual-alert.png" alt-text="Skärmbild som visar aviseringsinformation.":::
 
-Kontrol lera din inkorg för e-postmeddelanden från Microsoft Azure. Ämnes raden beskriver den avisering som har utlösts. Till exempel *: Azure: aktive rad allvarlighets grad: 3 avisering om över 1000 meddelanden över 5 minuter*. Texten ser ut ungefär som på följande bild:
+Kontrollera din inkorg efter e-postmeddelanden från Microsoft Azure. Ämnesraden beskriver aviseringen som utlöstes. Till exempel *Azure: Aktiverad allvarlighetsgrad: 3 Avisering om mer än 1 000 meddelanden över 5 minuter*. Brödtexten ser ut ungefär som på följande bild:
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/alert-mail.png" alt-text="Skärmbild av e-postmeddelandet som visar att aviseringarna har aktiverats.":::
 
 ## <a name="view-azure-monitor-logs"></a>Visa Azure Monitor loggar
 
-I avsnittet [samla in loggar för anslutningar och telemetri](#collect-logs-for-connections-and-device-telemetry) har du skapat en diagnostisk inställning för att skicka resurs loggar som skickats av din IoT Hub för anslutning och telemetri till Azure Monitor loggar. I det här avsnittet ska du köra en Kusto-fråga mot Azure Monitor loggar för att se eventuella fel som har inträffat.
+I avsnittet Samla in loggar för anslutningar och [enhetste](#collect-logs-for-connections-and-device-telemetry) telemetri har du skapat en diagnostikinställning för att skicka resursloggar som genereras av din IoT-hubb för anslutnings- och enhetste telemetriåtgärder till Azure Monitor Logs. I det här avsnittet kör du en Kusto-fråga mot Azure Monitor loggar för att se eventuella fel som har inträffat.
 
-1. Under **övervakning** i den vänstra rutan i IoT hub i Azure Portal väljer du **loggar**. Stäng fönstret inledande **frågor** om det öppnas.
+1. Under **Övervakning** i den vänstra rutan i IoT-hubben i Azure Portal väljer du **Loggar**. Stäng det inledande **fönstret Frågor** om det öppnas.
 
-1. I fönstret ny fråga väljer du fliken **frågor** och expandera sedan **IoT Hub** för att se listan över standard frågor.
+1. I fönstret Ny fråga väljer du **fliken Frågor** och expanderar **sedan IoT Hub** för att se listan över standardfrågor.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Skärm bild av IoT Hub standard frågor.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Skärmbild av IoT Hub med standardfrågor.":::
 
-1. Välj *fel sammanfattnings* fråga. Frågan visas i fönstret Frågeredigeraren. Välj **Kör** i redigerings fönstret och titta på frågeresultaten. Expandera en av raderna för att se information.
+1. Välj frågan *Felsammanfattning.* Frågan visas i fönstret Frågeredigeraren. Välj **Kör** i redigeringsfönstret och observera frågeresultatet. Expandera en av raderna för att se information.
 
-   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="Skärm bild av de loggar som returneras av frågan Sammanfattning av fel.":::
+   :::image type="content" source="media/tutorial-use-metrics-and-diags/logs-errors.png" alt-text="Skärmbild av loggarna som returneras av felsammanfattningsfrågan.":::
 
    > [!NOTE]
-   > Om du inte ser några fel kan du försöka köra frågan *nyligen anslutna enheter* . Detta bör returnera en rad för den simulerade enheten.
+   > Om du inte ser några fel kan du prova att köra frågan *Nyligen anslutna* enheter. Detta bör returnera en rad för den simulerade enheten.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill ta bort alla resurser du skapade för den här självstudien tar du bort hela resursgruppen. Detta tar även bort alla resurser som ingår i gruppen. I det här fallet tar den bort IoT Hub, Log Analytics arbets ytan och själva resurs gruppen. Om du har fäst mått diagram på instrument panelen måste du ta bort dem manuellt genom att klicka på de tre punkterna i det övre högra hörnet i varje diagram och välja **ta bort**. Se till att spara ändringarna när du har tagit bort diagrammen.
+Om du vill ta bort alla resurser du skapade för den här självstudien tar du bort hela resursgruppen. Detta tar även bort alla resurser som ingår i gruppen. I det här fallet tar den bort IoT-hubben, Log Analytics-arbetsytan och själva resursgruppen. Om du har fäst måttdiagram på instrumentpanelen måste du ta bort dem manuellt genom att klicka på de tre punkterna i det övre högra hörnet av varje diagram och välja **Ta bort**. Se till att spara ändringarna när du har tagit bort diagrammen.
 
 Om du vill ta bort resursgruppen använder du kommandot [az group delete](/cli/azure/group#az-group-delete).
 
@@ -417,17 +417,17 @@ az group delete --name ContosoResources
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig hur du använder IoT Hub mått och loggar genom att utföra följande uppgifter:
+I den här självstudien har du lärt dig IoT Hub använda mått och loggar genom att utföra följande uppgifter:
 
 > [!div class="checklist"]
 >
-> * Använd Azure CLI för att skapa en IoT-hubb, registrera en simulerad enhet och skapa en Log Analytics arbets yta.  
-> * Skicka IoT Hub anslutningar och enhets telemetri resurs loggar till Azure Monitor loggar i Log Analytics arbets ytan.
-> * Använd Metric Explorer för att skapa ett diagram baserat på valda mått och fäst det på din instrument panel.
-> * Skapa mått aviseringar så att du kan få ett meddelande via e-post när viktiga villkor uppstår.
+> * Använd Azure CLI för att skapa en IoT-hubb, registrera en simulerad enhet och skapa en Log Analytics-arbetsyta.  
+> * Skicka IoT Hub-anslutningar och resursloggar för enhettelemetri till Azure Monitor loggar på Log Analytics-arbetsytan.
+> * Använd Metric Explorer för att skapa ett diagram baserat på valda mått och fäst det på instrumentpanelen.
+> * Skapa måttaviseringar så att du kan meddelas via e-post när viktiga villkor inträffar.
 > * Ladda ned och kör en app som simulerar en IoT-enhet som skickar meddelanden till IoT-hubben.
-> * Visa aviseringar när villkoren inträffar.
-> * Visa mått diagrammet på instrument panelen.
+> * Visa aviseringarna när dina villkor inträffar.
+> * Visa måttdiagrammet på instrumentpanelen.
 > * Visa IoT Hub fel och åtgärder i Azure Monitor loggar.
 
 Gå vidare till nästa självstudie där du får lära dig hur du hanterar tillstånd för en IoT-enhet. 

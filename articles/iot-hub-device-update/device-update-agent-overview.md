@@ -1,78 +1,78 @@
 ---
-title: Förstå enhets uppdatering för Azure IoT Hub-agenten | Microsoft Docs
-description: Förstå enhets uppdatering för Azure IoT Hub-agenten.
+title: Förstå enhetsuppdatering för Azure IoT Hub Agent| Microsoft Docs
+description: Förstå enhetsuppdatering för Azure IoT Hub agent.
 author: ValOlson
 ms.author: valls
 ms.date: 2/12/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: efe5d0171463668bda19a0d0445fc67f3734aaee
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0d97287657b1e1fe7d540e8811c90794aaa5fece
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561244"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739574"
 ---
 # <a name="device-update-for-iot-hub-agent-overview"></a>Översikt av enhetsuppdatering för IoT Hub agent
 
-Enhets uppdaterings agenten består av två konceptuella lager:
+Enhetsuppdateringsagenten består av två konceptuella lager:
 
-* Gränssnitts skiktet bygger ovanpå [Azure IoT plug and Play (PNP)](../iot-pnp/overview-iot-plug-and-play.md) som gör det möjligt att skicka meddelanden mellan enhets uppdaterings agenten och enhets uppdaterings tjänsterna.
-* Plattforms skiktet ansvarar för uppdaterings åtgärder på hög nivå för att ladda ned, installera och tillämpa som kan vara plattform, eller enhets information.
+* Gränssnittslagret bygger på [Azure IoT Plug and Play (PnP)](../iot-pnp/overview-iot-plug-and-play.md) så att meddelanden kan flöda mellan enhetsuppdateringsagenten och enhetsuppdateringstjänsterna.
+* Plattformslagret ansvarar för de högnivåuppdateringsåtgärder för Ladda ned, Installera och Tillämpa som kan vara plattforms- eller enhetsspecifik.
 
-:::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Agent implementeringar." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
+:::image type="content" source="media/understand-device-update/client-agent-reference-implementations.png" alt-text="Agentimplementering." lightbox="media/understand-device-update/client-agent-reference-implementations.png":::
 
-## <a name="the-interface-layer"></a>Gränssnitts skiktet
+## <a name="the-interface-layer"></a>Gränssnittsskiktet
 
-Gränssnitts lagret består av [ADU Core-gränssnittet](https://github.com/Azure/iot-hub-device-update/tree/main/src/agent/adu_core_interface) och [enhets informations gränssnittet](https://github.com/Azure/iot-hub-device-update/tree/main/src/agent/device_info_interface).
+Gränssnittslagret består av [ADU Core Interface och](https://github.com/Azure/iot-hub-device-update/tree/main/src/agent/adu_core_interface) [Device Information Interface.](https://github.com/Azure/iot-hub-device-update/tree/main/src/agent/device_info_interface)
 
-Dessa gränssnitt förlitar sig på en konfigurations fil för standardvärden. Standardvärdena är aduc_manufacturer och aduc_model för AzureDeviceUpdateCore-gränssnittet och-modellen och-tillverkaren för DeviceInformation-gränssnittet. [Läs mer](device-update-configuration-file.md) i konfigurations filen.
+Dessa gränssnitt förlitar sig på en konfigurationsfil för standardvärden. Standardvärdena omfattar aduc_manufacturer och aduc_model AzureDeviceUpdateCore-gränssnittet och modell och tillverkare för gränssnittet DeviceInformation. [Läs mer](device-update-configuration-file.md) om konfigurationsfilen.
 
-### <a name="adu-core-interface"></a>ADU Core-gränssnitt
+### <a name="adu-core-interface"></a>ADU Core Interface
 
-Gränssnittet "ADU Core" är den primära kommunikations kanalen mellan enhets uppdaterings agenten och tjänsterna. [Läs mer](device-update-plug-and-play.md#adu-core-interface) om det här gränssnittet.
+ADU Core-gränssnittet är den primära kommunikationskanalen mellan enhetsuppdateringsagenten och tjänsterna. [Läs mer om](device-update-plug-and-play.md#adu-core-interface) det här gränssnittet.
 
-### <a name="device-information-interface"></a>Enhets informations gränssnitt
+### <a name="device-information-interface"></a>Device Information Interface
 
-Enhets informations gränssnittet används för att implementera `Azure IoT PnP DeviceInformation` gränssnittet. [Läs mer](device-update-plug-and-play.md#device-information-interface) om det här gränssnittet.
+Device Information Interface används för att implementera `Azure IoT PnP DeviceInformation` -gränssnittet. [Läs mer om](device-update-plug-and-play.md#device-information-interface) det här gränssnittet.
 
-## <a name="the-platform-layer"></a>Plattforms skiktet
+## <a name="the-platform-layer"></a>Plattformsskiktet
 
-Det finns två implementeringar av plattforms skiktet. Simulator Platform Layer har en snabb implementering av uppdaterings åtgärderna och används för att snabbt testa och utvärdera enhets uppdateringar för IoT Hub tjänster och installation. När enhets uppdaterings agenten har skapats med Simulator Platform Layer, hänvisar vi till den som enhets uppdaterings Simulator agent eller bara Simulator. [Läs mer](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) om hur du använder Simulator-agenten. Linux Platform Layer integreras med [leverans optimering](https://github.com/microsoft/do-client) för hämtningar och används i vår Raspberry Pi-referens avbildning och alla klienter som körs på Linux-system.
+Det finns två implementeringar av plattformsskiktet. Simulatorplattformsskiktet har en trivial implementering av uppdateringsåtgärderna och används för att snabbt testa och utvärdera enhetsuppdatering för IoT Hub tjänster och installation. När enhetsuppdateringsagenten har skapats med simulatorplattformslagret refererar vi till den som simulatoragent för enhetsuppdatering eller bara simulator. [Läs mer](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) om hur du använder simulatoragenten. Linux Platform Layer integreras med [Leveransoptimering](https://github.com/microsoft/do-client) för nedladdningar och används i vår Raspberry Pi-referensavbildning och alla klienter som körs på Linux-system.
 
-### <a name="simulator-platform-layer"></a>Simulator Platform Layer
+### <a name="simulator-platform-layer"></a>Simulatorplattformslager
 
-Simulator Platform Layer-implementeringen finns i `src/platform_layers/simulator_platform_layer` och kan användas för att testa och utvärdera enhets uppdatering för IoT Hub.  Många av åtgärderna i implementeringen "Simulator" är nedreducerade för att minska de fysiska ändringarna för att experimentera med enhets uppdatering för IoT Hub.  En "simulerad" uppdatering från slut punkt till slut punkt kan utföras med det här plattforms skiktet. [Läs mer](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) om att köra Simulator-agenten.
+Implementeringen av simulatorplattformslagret finns i och kan användas för att testa `src/platform_layers/simulator_platform_layer` och utvärdera enhetsuppdatering för IoT Hub.  Många av åtgärderna i implementeringen av "simulatorn" modelleras för att minska fysiska ändringar för att experimentera med Enhetsuppdatering för IoT Hub.  En "simulerad" uppdatering från slut till slut kan utföras med hjälp av det här plattformsskiktet. [Läs mer om](https://github.com/Azure/iot-hub-device-update/blob/main/docs/agent-reference/how-to-run-agent.md) att köra simulatoragenten.
 
-### <a name="linux-platform-layer"></a>Plattforms lager för Linux
+### <a name="linux-platform-layer"></a>Linux-plattformslager
 
-Linux Platform Layer-implementeringen finns i `src/platform_layers/linux_platform_layer` och integreras med [leverans optimerings klienten](https://github.com/microsoft/do-client/releases) för hämtningar och används i vår Raspberry Pi-referens avbildning och alla klienter som körs på Linux-system.
+Implementeringen av Linux Platform Layer finns i och integreras med Leveransoptimering Client för nedladdningar och används i vår Raspberry Pi-referensavbildning och alla klienter som körs på `src/platform_layers/linux_platform_layer` Linux-system. [](https://github.com/microsoft/do-client/releases)
 
-Det här lagret kan integreras med olika uppdaterings hanterare för att implementera installations programmet. Till exempel `SWUpdate` anropar uppdaterings hanteraren ett gränssnitts skript för att anropa den `SWUpdate` körbara filen för att utföra en uppdatering.
+Det här lagret kan integreras med olika uppdateringshanterare för att implementera installationsprogrammet. Uppdateringshanteraren `SWUpdate` anropar till exempel ett shell-skript för att anropa den `SWUpdate` körbara filen för att utföra en uppdatering.
 
-## <a name="update-handlers"></a>Uppdatera hanterare
+## <a name="update-handlers"></a>Uppdateringshanterare
 
-Uppdaterings hanterare är komponenter som hanterar innehåll eller installations bara delar av uppdateringen. Implementeringar av uppdaterings hanterare är i `src/content_handlers` .
+Uppdateringshanterare är komponenter som hanterar innehåll eller installationsprogramspecifika delar av uppdateringen. Implementeringar av uppdateringshanteraren finns i `src/content_handlers` .
 
-### <a name="simulator-update-handler"></a>Uppdaterings hanterare för Simulator
+### <a name="simulator-update-handler"></a>Simulatoruppdateringshanterare
 
-Uppdaterings hanteraren för Simulator används av simulator Platform Layer och kan användas med Linux-plattforms skiktet för att falska interaktioner med en innehålls hanterare. Simulatorns uppdaterings hanterare implementerar API: erna för uppdaterings hanterare med det mesta av ingen-Ops. Du kan hitta implementeringen av Simulatorns uppdaterings hanterare nedan:
-* [Avbildnings uppdaterings Simulator](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/swupdate_handler/inc/aduc/swupdate_simulator_handler.hpp)
-* [Paket uppdatering apt Simulator](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/apt_handler/inc/aduc/apt_simulator_handler.hpp)
+Simulatoruppdateringshanteraren används av simulatorplattformslagret och kan användas med Linux-plattformsskiktet för falska interaktioner med en innehållshanterare. Simulatoruppdateringshanteraren implementerar API:er för uppdateringshanterare med mestadels inga åtgärder. Implementeringen av simulatoruppdateringshanteraren finns nedan:
+* [Bilduppdateringssimulator](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/swupdate_handler/inc/aduc/swupdate_simulator_handler.hpp)
+* [Apt-simulator för paketuppdatering](https://github.com/Azure/iot-hub-device-update/blob/main/src/content_handlers/apt_handler/inc/aduc/apt_simulator_handler.hpp)
 
-Obs! InstalledCriteria-fältet i PnP-gränssnittet för AzureDeviceUpdateCore ska vara SHA256-hashen för innehållet. Detta är samma hash som finns i [objektet importera manifest](import-update.md#create-device-update-import-manifest). [Läs mer](device-update-plug-and-play.md) om `installedCriteria` och `AzureDeviceUpdateCore` gränssnittet.
+Obs! Fältet InstalledCriteria i PnP-gränssnittet AzureDeviceUpdateCore ska vara sha256-hashen för innehållet. Det här är samma hash som finns i [importmanifestobjektet](import-update.md#create-a-device-update-import-manifest). [Läs mer](device-update-plug-and-play.md) `installedCriteria` om och `AzureDeviceUpdateCore` -gränssnittet.
 
-### <a name="swupdate-update-handler"></a>`SWUpdate` Uppdaterings hanterare
+### <a name="swupdate-update-handler"></a>`SWUpdate` Uppdateringshanterare
 
-`SWUpdate`Uppdaterings hanteraren "integreras med den `SWUpdate` körbara kommando raden och andra Shell-kommandon för att implementera A/B-uppdateringar specifikt för referens avbildningen Raspberry Pi. Hitta den senaste Raspberry Pi-referens avbildningen [här](https://github.com/Azure/iot-hub-device-update/releases). `SWUpdate`Uppdaterings hanteraren implementeras i [src/content_handlers/swupdate_content_handler](https://github.com/Azure/iot-hub-device-update/tree/main/src/content_handlers/swupdate_handler).
+Uppdateringshanteraren" integreras med den körbara kommandoraden och andra shell-kommandon för att implementera `SWUpdate` `SWUpdate` A/B-uppdateringar specifikt för Raspberry Pi-referensbilden. Hitta den senaste Raspberry Pi-referensbilden [här.](https://github.com/Azure/iot-hub-device-update/releases) `SWUpdate`Uppdateringshanteraren implementeras i [src/content_handlers/swupdate_content_handler](https://github.com/Azure/iot-hub-device-update/tree/main/src/content_handlers/swupdate_handler).
 
-### <a name="apt-update-handler"></a>APT uppdaterings hanterare
+### <a name="apt-update-handler"></a>APT-uppdateringshanterare
 
-Uppdaterings hanteraren för APT bearbetar ett APT uppdaterings manifest och anropar APT för att installera eller uppdatera de angivna Debian-paketen.
+APT-uppdateringshanteraren bearbetar ett APT-specifikt uppdateringsmanifest och anropar APT för att installera eller uppdatera de angivna Debian-paketen.
 
-## <a name="self-update-device-update-agent"></a>Enhets uppdaterings agent själv uppdatering
+## <a name="self-update-device-update-agent"></a>Uppdatera enhetsuppdateringsagenten själv
 
-Enhets uppdaterings agenten och dess beroenden kan uppdateras genom enhets uppdateringen för IoT Hub pipelinen. Om du använder en avbildningsbaserad uppdatering inkluderar du den senaste enhets uppdaterings agenten i den nya avbildningen. Om du använder en paket-baserad uppdatering inkluderar du enhets uppdaterings agenten och den önskade versionen i apt-manifestet som ett annat paket. [Läs mer](device-update-apt-manifest.md) om apt-manifestet. Du kan kontrol lera den installerade versionen av enhets uppdaterings agenten och leverans optimerings agenten i avsnittet enhets egenskaper på din [IoT-enhet](../iot-hub/iot-hub-devguide-device-twins.md). [Läs mer om enhets egenskaper under ADU Core Interface](device-update-plug-and-play.md#device-properties).
+Enhetsuppdateringsagenten och dess beroenden kan uppdateras via enhetsuppdateringen för IoT Hub pipeline. Om du använder en avbildningsbaserad uppdatering ska du inkludera den senaste enhetsuppdateringsagenten i den nya avbildningen. Om du använder en paketbaserad uppdatering ska du inkludera enhetsuppdateringsagenten och dess önskade version i apt-manifestet precis som andra paket. [Läs mer om](device-update-apt-manifest.md) apt-manifest. Du kan kontrollera den installerade versionen av enhetsuppdateringsagenten och Leveransoptimering i avsnittet Enhetsegenskaper för [din IoT-enhetstvilling.](../iot-hub/iot-hub-devguide-device-twins.md) [Läs mer om enhetsegenskaper under ADU Core Interface](device-update-plug-and-play.md#device-properties).
 
 ## <a name="next-steps"></a>Nästa steg
-[Förstå konfigurations filen för enhets uppdaterings agenten](device-update-configuration-file.md)
+[Förstå konfigurationsfilen för enhetsuppdateringsagenten](device-update-configuration-file.md)

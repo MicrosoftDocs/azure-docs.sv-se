@@ -1,12 +1,12 @@
 ---
 title: 'Snabbstart: Konfigurera hög tillgänglighet med Azure Front Door – Azure PowerShell'
-description: Den här snabbstarten visar hur du använder Azure Front Door för att skapa en global webbapp med hög tillgänglighet och höga prestanda med hjälp av Azure PowerShell.
+description: Den här snabbstarten visar hur du använder Azure Front Door för att skapa en global webbapp med hög tillgänglighet och höga prestanda med Azure PowerShell.
 services: front-door
 documentationcenter: na
 author: duongau
 ms.author: duau
 manager: KumudD
-ms.date: 09/21/2020
+ms.date: 04/19/2021
 ms.topic: quickstart
 ms.service: frontdoor
 ms.workload: infrastructure-services
@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom:
 - mode-api
-ms.openlocfilehash: cd439a5931340f56401e5f6ba7a4e09f35ab7c7d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 17fa18e1f29622b941c281b9cdce27f6e72eb13a
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107539045"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739988"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-powershell"></a>Snabbstart: Skapa en Front Door för en global webbapp med hög Azure PowerShell
 
-Kom igång med Azure Front Door hjälp av Azure PowerShell för att skapa en global webbapp med hög tillgång och höga prestanda.
+Kom igång med Azure Front Door hjälp av Azure PowerShell för att skapa ett globalt webbprogram med hög kapacitet och höga prestanda.
 
-Den Front Door dirigerar webbtrafik till specifika resurser i en backend-pool. Du definierade frontend-domänen, lägger till resurser i en serverpool och skapar en routningsregel. Den här artikeln använder en enkel konfiguration av en serverdelspool med två webbappresurser och en enda routningsregel med standardsökvägsmatchning "/*".
+Den Front Door dirigerar webbtrafik till specifika resurser i en backend-pool. Du har definierat frontend-domänen, lagt till resurser i en serverpool och skapat en routningsregel. Den här artikeln använder en enkel konfiguration av en serverdelspool med två webbappresurser och en enda routningsregel med standardsökvägen som matchar "/*".
+
+:::image type="content" source="media/quickstart-create-front-door/environment-diagram.png" alt-text="Diagram över Front Door miljödiagram med PowerShell." border="false":::
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -50,22 +52,22 @@ New-AzResourceGroup -Name myResourceGroupFD -Location centralus
 
 Den här snabbstarten kräver två instanser av ett webbprogram som körs i olika Azure-regioner. Båda webbprograminstanserna körs i aktivt/aktivt läge, så att någon av dem kan ta trafik. Den här konfigurationen skiljer sig från en aktiv/fristående konfiguration, där en fungerar som en redundans.
 
-Om du inte redan har en webbapp använder du följande skript för att konfigurera två exempelwebbappar.
+Om du inte redan har en webbapp kan du använda följande skript för att konfigurera två exempelwebbappar.
 
 ```azurepowershell-interactive
 # Create first web app in Central US region.
 $webapp1 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-1" `
 -Location centralus `
 -ResourceGroupName myResourceGroupFD `
 -AppServicePlan myAppServicePlanCentralUS
 
 # Create second web app in South Central US region.
 $webapp2 = New-AzWebApp `
--Name "WebAppContoso-$(Get-Random)" `
+-Name "WebAppContoso-2" `
 -Location southcentralus `
 -ResourceGroupName myResourceGroupFD `
--AppServicePlan myAppServicePlanSouthCentralUS
+-AppServicePlan myAppServicePlanEastUS
 ```
 
 ## <a name="create-a-front-door"></a>Skapa en Front Door
@@ -78,7 +80,7 @@ Det här avsnittet beskriver hur du kan skapa och konfigurera följande komponen
 
 ### <a name="create-a-frontend-object"></a>Skapa ett frontend-objekt
 
-Objektet frontend konfigurerar värdnamnet för Front Door. Som standard har värdnamnet suffixet **.azurefd.net*.
+Frontend-objektet konfigurerar värdnamnet för Front Door. Som standard har värdnamnet suffixet **.azurefd.net*.
 
 ```azurepowershell-interactive
 # Create a unique name

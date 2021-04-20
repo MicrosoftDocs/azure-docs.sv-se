@@ -1,24 +1,24 @@
 ---
-title: 'Självstudie: värd för din domän och under domän – Azure DNS'
+title: 'Självstudie: Vara värd för din domän och underdomän – Azure DNS'
 description: I den här självstudien får du lära dig hur du konfigurerar Azure DNS att vara värd för dina DNS-zoner.
 services: dns
 author: rohinkoul
 ms.service: dns
 ms.topic: tutorial
-ms.date: 3/11/2019
+ms.date: 04/19/2021
 ms.author: rohink
-ms.openlocfilehash: a8f64ab3141459142def12a1758b0fe0a94ca432
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c9c0568eb4d8a7403fc29f34a4c4e9f6e0fadecd
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92282167"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107738872"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Självstudie: Använda Azure DNS som värd för din domän
 
 Du kan använda Azure DNS för att vara värd för din DNS-domän och hantera dina DNS-poster. Genom att använda Azure som värd för dina domäner kan du hantera dina DNS-poster med hjälp av samma autentiseringsuppgifter, API:er, verktyg och fakturering som för dina andra Azure-tjänster.
 
-Anta exempelvis att du köper domänen contoso.net från en domännamnsregistrator och sedan skapar en zon med namnet contoso.net i Azure DNS. Eftersom du är ägare till domänen erbjuder sig registratorn att konfigurera namnserverposterna (NS) för din domän. Registratorn lagrar NS-poster i den överordnade .NET-zonen. Internetanvändare över hela världen omdirigeras sedan till din Azure DNS-zon när de försöker matcha DNS-poster i contoso.net.
+Anta att du köper domänen `contoso.net` från en domännamnsregistrator och sedan skapar en zon med namnet `contoso.net` i Azure DNS. Eftersom du är ägare till domänen erbjuder registratorn alternativet att konfigurera namnserverposter (NS) för din domän. Registratorn lagrar NS-posterna i den överordnade .NET-zonen. Internetanvändare över hela världen omdirigeras sedan till din Azure DNS-zon när de försöker matcha DNS-poster i contoso.net.
 
 
 I den här guiden får du lära dig att:
@@ -30,42 +30,42 @@ I den här guiden får du lära dig att:
 > * Kontrollera att delegeringen fungerar.
 
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du måste ha ett domän namn tillgängligt för att kunna testa med att du kan vara värd för Azure DNS. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
+Du måste ha ett domännamn som du kan testa med och som du kan använda i Azure DNS. Du måste ha fullständig kontroll över den här domänen. Fullständig behörighet omfattar möjligheten att ange namnserverposter (NS-poster) för domänen.
 
-I det här exemplet kommer vi att referera till den överordnade domänen som **contoso.net**
+I det här exemplet refererar vi till den överordnade domänen en `contoso.net` .
 
 ## <a name="create-a-dns-zone"></a>Skapa en DNS-zon
 
-1. Gå till [Azure Portal](https://portal.azure.com/) för att skapa en DNS-zon. Sök efter och välj **DNS-zoner**.
+1. Gå till den [Azure Portal för](https://portal.azure.com/) att skapa en DNS-zon. Sök efter och välj **DNS-zoner**.
 
    ![DNS-zon](./media/dns-delegate-domain-azure-dns/openzone650.png)
 
-1. Välj **Skapa DNS-zon**.
-1. På sidan **Skapa DNS-zon** anger du följande värden och väljer sedan **skapa**: till exempel **contoso.net**
-      > [!NOTE] 
-      > Om den nya zonen som du skapar är en underordnad zon (t. ex. överordnad zon = contoso.net underordnad zon = child.contoso.net), se vår [själv studie kurs om att skapa en ny underordnad DNS-zon](./tutorial-public-dns-zones-child.md)
+1. Välj **Skapa DNS-zon.**
+
+1. På sidan **Skapa DNS-zon** anger du följande värden och väljer sedan **Skapa.** Till exempel `contoso.net`.
+
+   > [!NOTE] 
+   > Om den nya zonen som du skapar är en underordnad zon (t.ex. överordnad zon = underordnad zon = ), kan du gå till självstudien Skapa en ny `contoso.net` `child.contoso.net` underordnad [DNS-zon](./tutorial-public-dns-zones-child.md)
 
     | **Inställning** | **Värde** | **Information** |
     |--|--|--|
-    | **Projekt information:**  |  |  |
-    | **Resursgrupp**    | ContosoRG | Skapa en resursgrupp. Resurs gruppens namn måste vara unikt inom den prenumeration som du har valt. Platsen för resurs gruppen har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid "global" och visas inte. |
-    | **Instans information:** |  |  |
-    | **Underordnad zon**        | lämna omarkerad | Eftersom den här zonen **inte** är en [underordnad zon](./tutorial-public-dns-zones-child.md) bör du lämna denna omarkerad |
-    | **Namn**              | contoso.net | Fält för namn på överordnad zon      |
-    | **Plats**          | East US | Det här fältet baseras på den plats som valts som del av resurs gruppen skapas  |
+    | **Resursgrupp**    | ContosoRG | Skapa en resursgrupp. Resursgruppens namn måste vara unikt inom den prenumeration som du har valt. Platsen för resursgruppen har ingen inverkan på DNS-zonen. Platsen för DNS-zonen är alltid ”global” och visas inte. |
+    | **Underordnad zon**        | lämna avmarkerat | Eftersom den här zonen **inte är** en [underordnad zon](./tutorial-public-dns-zones-child.md) bör du lämna den avmarkerad |
+    | **Namn**              | `contoso.net` | Fält för det överordnade zonnamnet      |
+    | **Plats**          | East US | Det här fältet baseras på den plats som valts när resursgruppen skapas  |
     
 
 ## <a name="retrieve-name-servers"></a>Hämta namnservrar
 
-Innan du kan delegera din DNS-zon till Azure DNS måste du känna till namnservrarna för din zon. Azure DNS allokerar namnservrar från en pool varje gång en zon skapas.
+Innan du kan delegera din DNS-zon till Azure DNS måste du känna till namnservrarna för din zon. Azure DNS namnservrar från en pool varje gång en zon skapas.
 
-1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. På sidan **Alla resurser** väljer du din DNS-zon. Om den prenumeration som du valde redan har flera resurser kan du ange ditt domännamn i rutan **Filtrera efter namn** för att enkelt få åtkomst till programgatewayen. 
+1. I Azure Portal klickar du på **Alla resurser** i rutan **Favoriter** för den DNS-zon du skapade. På sidan **Alla resurser** väljer du din DNS-zon. Om den prenumeration som du har valt redan har flera resurser kan du ange ditt domännamn i rutan **Filtrera** efter namn för att enkelt komma åt programgatewayen. 
 
-1. Hämta namnservrarna på sidan DNS-zon. I det här exemplet har zonen contoso.net tilldelats namnservrarna *ns1-01.Azure-DNS.com*, *NS2-01.Azure-DNS.net*, *NS3-01.Azure-DNS.org* och *NS4-01.Azure-DNS.info*:
+1. Hämta namnservrarna på sidan DNS-zon. I det här exemplet har `contoso.net` zonen tilldelats namnservrarna `ns1-01.azure-dns.com` , , * och `ns2-01.azure-dns.net` `ns3-01.azure-dns.org` `ns4-01.azure-dns.info` :
 
    ![Lista över namnservrar](./media/dns-delegate-domain-azure-dns/viewzonens500.png)
 
@@ -73,7 +73,7 @@ Azure DNS skapar automatiskt auktoritativa NS-poster i din zon för de tilldelad
 
 ## <a name="delegate-the-domain"></a>Delegera domänen
 
-Nu när du har namnservrar och DNS-zonen är skapad måste den överordnade domänen uppdateras med Azure DNS-namnservrarna. Varje registrator har sina egna DNS-hanteringsverktyg för att ändra namnserverposterna för en domän. 
+När DNS-zonen har skapats och du har namnservrarna måste du uppdatera den överordnade domänen med de Azure DNS namnservrarna. Varje registrator har sina egna DNS-hanteringsverktyg för att ändra namnserverposterna för en domän. 
 
 1. På registratorns DNS-hanteringssida redigerar du NS-posterna och ersätter NS-posterna med Azure DNS-namnservrarna.
 
@@ -86,11 +86,11 @@ Delegering med hjälp av namnservrar i din egen zon, även kallat *vanity name s
 
 ## <a name="verify-the-delegation"></a>Kontrollera delegeringen
 
-När du har slutfört delegeringen kan du kontrollera att den fungerar med hjälp av ett verktyg som till exempel *nslookup* för att köra en fråga mot SOA-posten (Start of Authority) för din zon. SOA-posten skapas automatiskt när zonen har skapats. Du kan behöva vänta i 10 minuter eller mer när du har slutfört delegeringen innan du kan bekräfta att den fungerar. Det kan ta en stund innan ändringarna sprids genom DNS-systemet.
+När du har slutfört delegeringen kan du kontrollera att den fungerar med hjälp av ett verktyg som till exempel *nslookup* för att köra en fråga mot SOA-posten (Start of Authority) för din zon. SOA-posten skapas automatiskt när zonen har skapats. Du kan behöva vänta minst 10 minuter efter att du har slutfört delegeringen innan du kan kontrollera att den fungerar. Det kan ta en stund innan ändringarna sprids genom DNS-systemet.
 
 Du måste inte ange Azure DNS-namnservrarna. Om delegeringen är korrekt konfigurerad hittar den normala DNS-matchningsprocessen namnservrarna automatiskt.
 
-1. I en kommando tolk anger du ett nslookup-kommando som liknar följande exempel:
+1. Från en kommandotolk anger du ett nslookup-kommando som liknar följande exempel:
 
    ```
    nslookup -type=SOA contoso.net
@@ -116,7 +116,7 @@ Du måste inte ange Azure DNS-namnservrarna. Om delegeringen är korrekt konfigu
 
 Du kan behålla resursgruppen **contosoRG** om du planerar att genomföra nästa självstudie. Annars tar du bort resursgrupp **contosoRG** för att ta bort de resurser som skapades i den här självstudien.
 
-- Markera resursgruppen **contosoRG** och välj sedan **Ta bort resursgrupp**. 
+Markera resursgruppen **contosoRG** och välj sedan **Ta bort resursgrupp**. 
 
 ## <a name="next-steps"></a>Nästa steg
 

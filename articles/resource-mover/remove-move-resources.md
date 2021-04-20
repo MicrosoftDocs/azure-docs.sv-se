@@ -1,49 +1,49 @@
 ---
-title: Ta bort resurser från en flyttnings samling i Azure Resource-arbetskraften
-description: Lär dig hur du tar bort resurser från en flyttnings samling i Azure Resource-arbetskraft.
+title: Ta bort resurser från en flyttsamling i Azure Resource Mover
+description: Lär dig hur du tar bort resurser från en flyttsamling i Azure Resource Mover.
 manager: evansma
 author: rayne-wiselman
 ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/22/2020
 ms.author: raynew
-ms.openlocfilehash: 25311e93e1081b3c7638c275c39153b2c357048d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 067aa245223bce0e8fa009b88af760a26f7ce3dc
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102559143"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739034"
 ---
-# <a name="manage-move-collections-and-resource-groups"></a>Hantera flytta samlingar och resurs grupper
+# <a name="manage-move-collections-and-resource-groups"></a>Hantera flyttsamlingar och resursgrupper
 
-Den här artikeln beskriver hur du tar bort resurser från en flyttnings samling eller tar bort en flytta samling/resurs grupp i [Azure Resource-arbetskraften](overview.md). Flytta samlingar används när du flyttar Azure-resurser mellan Azure-regioner.
+Den här artikeln beskriver hur du tar bort resurser från en flyttsamling eller tar bort en flyttsamling/resursgrupp i [Azure Resource Mover](overview.md). Flytta samlingar används när du flyttar Azure-resurser mellan Azure-regioner.
 
-## <a name="remove-a-resource-portal"></a>Ta bort en resurs (portal)
+## <a name="remove-a-resource-portal"></a>Ta bort en resurs (portalen)
 
-Du kan ta bort resurser i en flyttnings samling i resurs förflyttnings portalen på följande sätt:
+Du kan ta bort resurser i en flyttsamling i Resource Mover-portalen på följande sätt:
 
-1. I **flera regioner** väljer du alla resurser som du vill ta bort från samlingen och väljer **ta bort**. 
+1. I **Över regioner** väljer du alla resurser som du vill ta bort från samlingen och väljer Ta **bort**. 
 
-    ![Knapp att välja för att ta bort](./media/remove-move-resources/portal-select-resources.png)
+    ![Knapp att välja att ta bort](./media/remove-move-resources/portal-select-resources.png)
 
-2. I **ta bort resurser** klickar du på **ta bort**.
+2. I **Ta bort resurser** klickar du på Ta **bort**.
 
-    ![Knappen för att välja att ta bort resurser från en flytt samling](./media/remove-move-resources/remove-portal.png)
+    ![Knapp för att välja att ta bort resurser från en flyttsamling](./media/remove-move-resources/remove-portal.png)
 
-## <a name="remove-a-move-collectionresource-group-portal"></a>Ta bort en flytt samling/resurs grupp (portal)
+## <a name="remove-a-move-collectionresource-group-portal"></a>Ta bort en flyttsamling/resursgrupp (portal)
 
-Du kan ta bort en flytt samling/resurs grupp i portalen.
+Du kan ta bort en flyttsamling/resursgrupp i portalen.
 
-1. Följ anvisningarna i proceduren ovan för att ta bort resurser från samlingen. Om du tar bort en resurs grupp kontrollerar du att den inte innehåller några resurser.
-2. Ta bort flyttnings samlingen eller resurs gruppen.  
+1. Följ anvisningarna i proceduren ovan för att ta bort resurser från samlingen. Om du tar bort en resursgrupp kontrollerar du att den inte innehåller några resurser.
+2. Ta bort flyttsamlingen eller resursgruppen.  
 
 ## <a name="remove-a-resource-powershell"></a>Ta bort en resurs (PowerShell)
 
-Med PowerShell-cmdletar kan du ta bort en enskild resurs från en MoveCollection eller ta bort flera resurser.
+Med PowerShell-cmdlets kan du ta bort en enskild resurs från en MoveCollection eller ta bort flera resurser.
 
 ### <a name="remove-a-single-resource"></a>Ta bort en enskild resurs
 
-Ta bort en resurs (i vårt exempel det virtuella nätverket *psdemorm-VNet*) enligt följande:
+Ta bort en resurs (i vårt exempel det virtuella nätverket *psdemorm-vnet)* enligt följande:
 
 ```azurepowershell-interactive
 # Remove a resource using the resource ID
@@ -51,7 +51,7 @@ Remove-AzResourceMoverMoveResource -ResourceGroupName "RG-MoveCollection-demoRMS
 ```
 **Utdata efter körning av cmdlet**
 
-![Mata ut text efter borttagning av en resurs från en flyttnings samling](./media/remove-move-resources/powershell-remove-single-resource.png)
+![Utdatatext när du har tagit bort en resurs från en flyttsamling](./media/remove-move-resources/powershell-remove-single-resource.png)
 
 ### <a name="remove-multiple-resources"></a>Ta bort flera resurser
 
@@ -124,6 +124,7 @@ What happens when you remove a VM resource from a move collection depends on the
 **Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there.
 **Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.  | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
 **Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region.
+**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region. |  Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
 
 ## SQL resource state after removing
 
@@ -143,6 +144,7 @@ What happens when you remove an Azure SQL resource from a move collection depend
 **Discard failed** | We recommend that you discard the moves so that the target resources are deleted first.<br/><br/> After that, the resource goes back to the **Initiate move pending** state, and you can continue from there. 
 **Delete source pending** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
 **Delete source failed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target region. 
+**Move completed** | Deleted from the move collection.<br/><br/> It doesn't delete anything created in the target or source region.
 
 ## Next steps
 

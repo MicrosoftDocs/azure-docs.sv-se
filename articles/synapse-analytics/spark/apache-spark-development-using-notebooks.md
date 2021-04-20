@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 4230ced172de52e5acf45e071fa2a49a332eb696
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719231"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107737678"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio notebook-Azure Synapse Analytics
 
@@ -28,10 +28,10 @@ Med en Azure Synapse Studio-notebook-dator kan du:
 * Analysera data i rådataformat (CSV, txt, JSON osv.), bearbetade filformat (parquet, Delta Lake, ORC osv.) och SQL-tabelldatafiler mot Spark och SQL.
 * Var produktiv med förbättrade redigeringsfunktioner och inbyggd datavisualisering.
 
-I den här artikeln beskrivs hur du använder notebook-Azure Synapse Studio.
+Den här artikeln beskriver hur du använder notebook-datorer i Azure Synapse Studio.
 
 ## <a name="preview-of-the-new-notebook-experience"></a>Förhandsversion av den nya notebook-upplevelsen
-Synapse-teamet införde den nya notebook-komponenten i Synapse Studio för att tillhandahålla konsekvent notebook-upplevelse för Microsoft-kunder och maximera identifiering, produktivitet, delning och samarbete. Den nya notebook-upplevelsen är redo för förhandsversion. Markera knappen **Förhandsgranskningsfunktioner** i notebook-verktygsfältet för att aktivera den. Tabellen nedan visar funktionsjämförelse mellan befintliga notebook-datorer (så kallade "klassiska notebook-datorer") med den nya förhandsversionen.  
+Synapse-teamet införde den nya notebook-komponenten i Synapse Studio för att ge Microsoft-kunder en konsekvent notebook-upplevelse och maximera identifiering, produktivitet, delning och samarbete. Den nya notebook-upplevelsen är redo för förhandsversion. Markera knappen **Förhandsgranskningsfunktioner** i notebook-verktygsfältet för att aktivera den. Tabellen nedan visar funktionsjämförelse mellan befintliga notebook-datorer (så kallade "klassiska notebook-datorer") med den nya förhandsversionen.  
 
 |Funktion|Klassisk notebook-dator|Notebook-förhandsgranskning|
 |--|--|--|
@@ -79,13 +79,13 @@ Det finns flera sätt att lägga till en ny cell i anteckningsboken.
 
     ![add-azure-notebook-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
 
-3. Använd [aznb-genvägsnycklarna i kommandoläget](#shortcut-keys-under-command-mode). Tryck **på A** för att infoga en cell ovanför den aktuella cellen. Tryck **på B** för att infoga en cell under den aktuella cellen.
+3. Använd [aznb Shortcut-nycklar i kommandoläge](#shortcut-keys-under-command-mode). Tryck **på A** för att infoga en cell ovanför den aktuella cellen. Tryck **på B** för att infoga en cell under den aktuella cellen.
 
 ---
 
 ### <a name="set-a-primary-language"></a>Ange ett primärt språk
 
-Azure Synapse Studio-notebook-datorer stöder fyra Apache Spark språk:
+Azure Synapse Studio Notebooks stöder fyra Apache Spark språk:
 
 * pySpark (Python)
 * Spark (Scala)
@@ -115,7 +115,7 @@ Följande bild är ett exempel på hur du kan skriva en PySpark-fråga med hjäl
 
 Du kan inte referera till data eller variabler direkt över olika språk i en Synapse Studio notebook-dator. I Spark kan en tillfällig tabell refereras till på olika språk. Här är ett exempel på hur du läser en `Scala` DataFrame i `PySpark` och använder en `SparkSQL` Temporär Spark-tabell som en lösning.
 
-1. I Cell 1 läser du en DataFrame från en SQL-poolanslutning med Hjälp av Scala och skapar en tillfällig tabell.
+1. I Cell 1 läser du en DataFrame från en SQL-poolanslutning med hjälp av Scala och skapar en tillfällig tabell.
 
    ```scala
    %%scala
@@ -150,6 +150,18 @@ IntelliSense-funktionerna har olika mognadsnivåer för olika språk. Använd f�
 |SparkSQL|Ja|Ja|-|-|-|-|-|-|
 |.NET för Spark (C#)|Yes|-|-|-|-|-|-|-|
 
+
+
+### <a name="code-snippets"></a>Kodfragment
+
+Azure Synapse Studio-anteckningsböcker innehåller kodfragment som gör det enklare att ange vanliga kodmönster, till exempel konfigurera din Spark-session, läsa data som en Spark DataFrame eller rita diagram med matplotlib osv.
+
+Kodfragment visas [i IntelliSense](#ide-style-intellisense) blandat med andra förslag. Innehållet i kodfragmenten överensstämmer med kodcellsspråket. Du kan se tillgängliga kodfragment genom att skriva **Kodfragment** eller om några nyckelord visas i kodfragmentrubriken i kodcellsredigeraren. Genom att till exempel skriva **läsa** kan du se en lista över kodfragment för att läsa data från olika datakällor.
+
+![Synapse-kodfragment](./media/apache-spark-development-using-notebooks/synapse-code-snippets.gif#lightbox)
+
+
+
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Formatera textcell med verktygsfältsknappar
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
@@ -181,7 +193,7 @@ Välj knappen **Ångra** eller tryck på **Ctrl +Z för** att återkalla den sen
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Välj ellipserna (...) för att komma åt menyn ytterligare cellåtgärder längst till höger. Välj sedan **Flytta cellen uppåt eller** Flytta cellen nedåt **för** att flytta den aktuella cellen. 
+Välj ellipserna (...) för att komma åt menyn för andra cellåtgärder längst till höger. Välj sedan **Flytta cellen uppåt eller** Flytta cellen nedåt **för** att flytta den aktuella cellen. 
 
 Du kan också använda [kortkommandon i kommandoläget](#shortcut-keys-under-command-mode). Tryck **på Ctrl+Alt+ctrl för** att flytta upp den aktuella cellen. Tryck **på Ctrl+Alt+↓** för att flytta den aktuella cellen nedåt.
 
@@ -198,7 +210,7 @@ Klicka på vänster sida av en cell och dra den till önskad position.
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Om du vill ta bort en cell väljer du ellipserna (...) för att komma åt menyn för ytterligare cellåtgärder längst till höger och väljer sedan **Ta bort cell.** 
+Om du vill ta bort en cell väljer du ellipserna (...) för att komma åt den andra cellåtgärder-menyn längst till höger och väljer sedan **Ta bort cell**. 
 
 Du kan också använda [kortkommandon i kommandoläget](#shortcut-keys-under-command-mode). Tryck **på D,D för** att ta bort den aktuella cellen.
   
@@ -214,7 +226,7 @@ Du kan också använda [kortkommandon i kommandoläget](#shortcut-keys-under-com
 
 ---
 
-### <a name="collapse-a-cell-input"></a>Dölj en cellindata
+### <a name="collapse-a-cell-input"></a>Komprimera en cellindata
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
@@ -273,7 +285,7 @@ Välj knappen **Kör alla** för att köra alla celler i den aktuella notebook-d
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Om du vill öppna menyn för ytterligare cellåtgärder längst till höger väljer du ellipserna (**...**). Välj sedan **Kör celler ovan för** att köra alla celler ovanför den aktuella i följd. Välj **Kör celler nedan för** att köra alla celler under den aktuella i följd.
+Om du vill öppna menyn för andra cellåtgärder längst till höger väljer du ellipserna (**...**). Välj sedan **Kör celler ovan för** att köra alla celler ovanför den aktuella i följd. Välj **Kör celler nedan för** att köra alla celler under den aktuella i följd.
 
    ![run-cells-above-or-below](./media/apache-spark-development-using-notebooks/synapse-run-cells-above-or-below.png)
 
@@ -288,8 +300,8 @@ Expandera listrutan från knappen **Kör alla** och välj sedan Kör celler **ov
 ### <a name="cancel-all-running-cells"></a>Avbryt alla celler som körs
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
-Välj knappen **Avbryt alla** för att avbryta de celler som körs och som väntar i kön. 
-   ![cancel-all-cells](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
+Välj knappen **Avbryt alla** för att avbryta cellerna som körs eller cellerna som väntar i kön. 
+   ![avbryt alla celler](./media/apache-spark-development-using-notebooks/synapse-cancel-all.png) 
 
 # <a name="preview-notebook"></a>[Notebook-förhandsversion](#tab/preview)
 
@@ -328,7 +340,7 @@ En stegvis cellkörningsstatus visas under cellen för att hjälpa dig att se de
 
 ### <a name="spark-progress-indicator"></a>Förloppsindikator för Spark
 
-Azure Synapse Studio Notebook är helt Spark-baserad. Kodceller körs på den serverlösa Apache Spark fjärrpoolen. En förloppsindikator för Spark-jobb visas med en förloppsindikator i realtid som hjälper dig att förstå jobbets körningsstatus.
+Azure Synapse Studio-notebook-datorn är helt Spark-baserad. Kodceller körs på den serverlösa Apache Spark fjärrpoolen. En förloppsindikator för Spark-jobb visas med en förloppsindikator i realtid som hjälper dig att förstå jobbets körningsstatus.
 Antalet aktiviteter per jobb eller fas hjälper dig att identifiera den parallella nivån för spark-jobbet. Du kan också gå djupare in i Spark-användargränssnittet för ett specifikt jobb (eller fas) genom att välja länken för jobbets (eller fasens) namn.
 
 
@@ -447,9 +459,9 @@ Tillgängliga cell magics: [%%time](https://ipython.readthedocs.io/en/stable/int
 
 
 
-# <a name="preview-notebook"></a>[Notebook-förhandsversion](#tab/preview)
+# <a name="preview-notebook"></a>[Notebook-förhandsgranskning](#tab/preview)
 
-Tillgängliga rad magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [%run](#notebook-reference), [%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
+Tillgängliga line magics: [%lsmagic](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-lsmagic), [%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%history](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-history), [%run](#notebook-reference), [%load](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-load)
 
 Tillgängliga cell magics: [%%time](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-time), [%%timeit](https://ipython.readthedocs.io/en/stable/interactive/magics.html#magic-timeit), [%%capture](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-capture), [%%writefile](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-writefile), [%%sql](#use-multiple-languages), [%%pyspark](#use-multiple-languages), [%%spark](#use-multiple-languages), [%%csharp](#use-multiple-languages), [%%html](https://ipython.readthedocs.io/en/stable/interactive/magics.html#cellmagic-html), [%%configure](#spark-session-config-magic-command)
 
@@ -467,7 +479,7 @@ Välj knappen **Lägg till i pipeline** i det övre högra hörnet för att läg
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Om du vill parametrisera notebook-datorn väljer du ellipserna (...) för att komma åt menyn för ytterligare cellåtgärder längst till höger. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
+Om du vill parametrisera notebook-datorn väljer du ellipserna (...) för att komma åt den andra cellåtgärder-menyn längst till höger. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
 
 ![växlingsparameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
@@ -514,7 +526,7 @@ Med hjälp av följande kortkommandon kan du enklare navigera och köra kod i Az
 |--|--|
 |Kör den aktuella cellen och välj nedan | Skift+Retur |
 |Kör den aktuella cellen och infoga nedan | Alt + Retur |
-|Markera cellen ovan| Upp |
+|Välj cell ovan| Upp |
 |Välj cell nedan| Ned |
 |Infoga cellen ovan| A |
 |Infoga cellen nedan| B |
@@ -525,7 +537,7 @@ Med hjälp av följande kortkommandon kan du enklare navigera och köra kod i Az
 |Ta bort markerade celler| D, D |
 |Växla till redigeringsläge| Ange |
 
-# <a name="preview-notebook"></a>[Notebook-förhandsgranskning](#tab/preview)
+# <a name="preview-notebook"></a>[Notebook-förhandsversion](#tab/preview)
 
 | Action |Synapse Studio notebook-genvägar  |
 |--|--|

@@ -1,62 +1,62 @@
 ---
 title: Skydda Azure Remote Rendering och modellagring
-description: Härdning av ett program för fjärråter givning för att skydda innehåll
+description: Härda ett Remote Rendering för att skydda innehåll
 author: florianborn71
 ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b1bcba264589d6cbe9b4f671e1e4f2c9b1dbf2c5
-ms.sourcegitcommit: f377ba5ebd431e8c3579445ff588da664b00b36b
+ms.openlocfilehash: 6e595f7ff313ff85a12209e8c124b9aa376b20b6
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 02/05/2021
-ms.locfileid: "99594256"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739754"
 ---
-# <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Självstudie: skydda Azure-fjärråter givning och modell lagring
+# <a name="tutorial-securing-azure-remote-rendering-and-model-storage"></a>Självstudie: Skydda Azure Remote Rendering och modelllagring
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
 >
-> * Skydda Azure-Blob Storage som innehåller Azures modeller för fjärrrendering
-> * Autentisera med Azure AD för att få åtkomst till din Azure Remote rendering-instans
-> * Använd Azure-autentiseringsuppgifter för Azure-fjärrrendering-autentisering
+> * Säker Azure Blob Storage som innehåller Azure Remote Rendering modeller
+> * Autentisera med Azure AD för att få åtkomst Azure Remote Rendering instans
+> * Använda Azure-autentiseringsuppgifter för Azure Remote Rendering autentisering
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Den här självstudien bygger på [Självstudier: förfina material, belysning och effekter](..\materials-lighting-effects\materials-lighting-effects.md).
+* Den här självstudien bygger [på Självstudie: Förfina material, belysning och effekter](..\materials-lighting-effects\materials-lighting-effects.md).
 
-## <a name="why-additional-security-is-needed"></a>Varför ytterligare säkerhet krävs
+## <a name="why-additional-security-is-needed"></a>Varför krävs ytterligare säkerhet
 
 Programmets aktuella tillstånd och dess åtkomst till dina Azure-resurser ser ut så här:
 
 ![Inledande säkerhet](./media/security-one.png)
 
-Både "AccountID + AccountKey" och "URL + SAS-token" är både i princip lagring av användar namn och lösen ord tillsammans. Om t. ex. "AccountID + AccountKey" exponerades, skulle det vara enkelt för en angripare att använda dina ARR-resurser utan din tillåtelse till din kostnad.
+Både "AccountID + AccountKey" och "URL + SAS-token" lagrar båda i stort sett ett användarnamn och lösenord tillsammans. Om till exempel "AccountID + AccountKey" exponerades skulle det vara enkelt för en angripare att använda dina ARR-resurser utan din tillåtelse på din kostnad.
 
 ## <a name="securing-your-content-in-azure-blob-storage"></a>Skydda ditt innehåll i Azure Blob Storage
 
-Azure fjärrrendering kan komma åt innehållet i Azure-Blob Storage på ett säkert sätt med rätt konfiguration. Se [anvisningar: länka lagrings konton](../../../how-tos/create-an-account.md#link-storage-accounts) för att konfigurera din Azure Remote rendering-instans med Blob Storage-konton.
+Azure Remote Rendering på ett säkert sätt komma åt innehållet i Azure Blob Storage med rätt konfiguration. Se [Så här länkar du lagringskonton för att](../../../how-tos/create-an-account.md#link-storage-accounts) konfigurera din Azure Remote Rendering instans med dina Blob Storage-konton.
 
-När du använder en länkad blob-lagring, använder du något annorlunda metoder för att läsa in modeller:
+När du använder en länkad bloblagring använder du något olika metoder för att läsa in modeller:
 
 ```cs
 var loadModelParams = new LoadModelFromSasOptions(modelPath, modelEntity);
 var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelFromSasAsync(loadModelParams);
 ```
 
-Ovanstående rader använder `FromSas` versionen av params och session åtgärden. De måste konverteras till icke-SAS-versioner:
+Raderna ovan använder versionen `FromSas` av parameter- och sessionsåtgärden. De måste konverteras till icke-SAS-versioner:
 
 ```cs
 var loadModelParams = new LoadModelOptions(storageAccountPath, blobContainerName, modelPath, modelEntity);
 var task = ARRSessionService.CurrentActiveSession.Connection.LoadModelAsync(loadModelParams);
 ```
 
-Nu ska vi ändra **RemoteRenderingCoordinator** för att läsa in en anpassad modell från ett länkat Blob Storage-konto.
+Nu ska vi ändra **RemoteRenderingCoordinator för att** läsa in en anpassad modell från ett länkat bloblagringskonto.
 
-1. Om du inte redan har gjort det, slutför du [instruktionen för att länka lagrings konton](../../../how-tos/create-an-account.md#link-storage-accounts) så att du får åtkomst till din Blob Storage-instans för arr-instansen.
-1. Lägg till följande modifierade **LoadModel** -Metod i **RemoteRenderingCoordinator** precis under den aktuella **LoadModel** -metoden:
+1. Om du inte redan har gjort det slutför du [how-to:link-lagringskonton](../../../how-tos/create-an-account.md#link-storage-accounts) för att ge ARR-instansen behörighet att komma åt din Blob Storage instans.
+1. Lägg till följande ändrade **LoadModel-metod** **i RemoteRenderingCoordinator precis** under den aktuella **LoadModel-metoden:**
 
     ```cs
     /// <summary>
@@ -107,11 +107,11 @@ Nu ska vi ändra **RemoteRenderingCoordinator** för att läsa in en anpassad mo
     }
     ```
 
-    Den här koden är identisk med den ursprungliga `LoadModel` metoden, men vi har ERSATT SAS-versionen av metoden anrop med icke-SAS-versioner.
+    I de flesta fall är den här koden identisk med den ursprungliga metoden, men vi har ersatt SAS-versionen av metod-anropen med `LoadModel` icke-SAS-versioner.
 
-    Ytterligare indata `storageAccountName` och `blobContainerName` har också lagts till i argumenten. Vi kallar den här nya **LoadModel** -metoden från en annan metod som liknar den allra första **LoadTestModel** -metoden som vi skapade i den första självstudien.
+    Ytterligare indata `storageAccountName` och har också lagts till i `blobContainerName` argumenten. Vi anropar den här nya **LoadModel-metoden** från en annan metod som liknar den första **LoadTestModel-metoden** som vi skapade i den första självstudien.
 
-1. Lägg till följande metod i **RemoteRenderingCoordinator** precis efter **LoadTestModel**
+1. Lägg till följande metod **i RemoteRenderingCoordinator precis** efter **LoadTestModel**
 
     ```cs
     private bool loadingLinkedCustomModel = false;
@@ -160,58 +160,58 @@ Nu ska vi ändra **RemoteRenderingCoordinator** för att läsa in en anpassad mo
     }
     ```
 
-    Den här koden lägger till tre ytterligare String-variabler i **RemoteRenderingCoordinator** -komponenten.
-    ![Skärm bild som visar lagrings kontots namn, BLOB container namn och modell Sök väg för RemoteRenderingCoordinator-komponenten.](./media/storage-account-linked-model.png)
+    Den här koden lägger till ytterligare tre strängvariabler i **komponenten RemoteRenderingCoordinator.**
+    ![Skärmbild som visar lagringskontots namn, blobcontainerns namn och modellsökvägen för komponenten RemoteRenderingCoordinator.](./media/storage-account-linked-model.png)
 
-1. Lägg till dina värden i **RemoteRenderingCoordinator** -komponenten. När du har följt [snabb starten för modell konverteringen](../../../quickstarts/convert-model.md)ska värdena vara:
+1. Lägg till dina värden i **komponenten RemoteRenderingCoordinator.** När du har [följt snabbstarten för modellkonvertering](../../../quickstarts/convert-model.md)bör dina värden vara:
 
-    * **Lagrings konto namn**: ditt lagrings konto namn, det globalt unika namn som du väljer för ditt lagrings konto. I snabb starten är det *arrtutorialstorage*. ditt värde är annorlunda.
-    * **Namn på BLOB-behållare**: arroutput, Blob Storage container
-    * **Modell Sök väg**: kombinationen av "outputFolderPath" och "outputAssetFileName" som definierats i *arrconfig.jsi* filen. I snabb starten är detta "outputFolderPath": "konverterad/robot", "outputAssetFileName": robot. arrAsset ". Vilket skulle resultera i en modell Sök väg med värdet "konverterad/robot/robot. arrAsset", ditt värde är annorlunda.
+    * **Namn på lagringskonto:** Namnet på ditt lagringskonto, det globalt unika namn som du väljer för ditt lagringskonto. I snabbstarten var *det arrtutorialstorage*. Ditt värde kommer att vara annorlunda.
+    * **Blobcontainerns** namn: arroutput, Blob Storage containern
+    * **Modellsökväg:** Kombinationen av "outputFolderPath" och "outputAssetFileName" som definieras *iarrconfig.json-filen.* I snabbstarten var detta "outputFolderPath":"converted/robot", "outputAssetFileName": "robot.arrAsset". Vilket skulle resultera i modellsökvägens värde "converted/robot/robot.arrAsset", så kommer ditt värde att vara annorlunda.
 
     >[!TIP]
-    > Om du [kör **Conversion.ps1**](../../../quickstarts/convert-model.md#run-the-conversion) skriptet, utan argumentet "-UseContainerSas", kommer skriptet att mata ut alla ovanstående värden för din i stället för SAS-token. ![Länkad modell](./media/converted-output.png)
-1. För tiden tar du bort eller inaktiverar GameObject- **TestModel** för att göra plats för din anpassade modell att läsa in.
-1. Spela upp scenen och Anslut till en fjärran sluten session.
-1. Högerklicka på din **RemoteRenderingCoordinator** och välj **Läs in länkad anpassad modell**.
-    ![Läs in länkad modell](./media/load-linked-model.png)
+    > Om du kör [ **Conversion.ps1-skriptet**](../../../quickstarts/convert-model.md#run-the-conversion) utan argumentet "-UseContainerSas" matar skriptet ut alla ovanstående värden för din i stället för SAS-token. ![Länkad modell](./media/converted-output.png)
+1. För närvarande tar du bort eller inaktiverar GameObject **TestModel** för att göra plats för din anpassade modell att läsa in.
+1. Spela upp scenen och anslut till en fjärrsession.
+1. Högerklicka på din **RemoteRenderingCoordinator och välj** Läs **in länkad anpassad modell.**
+    ![Läsa in länkad modell](./media/load-linked-model.png)
 
 De här stegen har ökat säkerheten för programmet genom att ta bort SAS-token från det lokala programmet.
 
-Nu ser det aktuella läget för programmet och dess åtkomst till dina Azure-resurser ut så här:
+Nu ser det aktuella tillståndet för programmet och dess åtkomst till dina Azure-resurser ut så här:
 
 ![Bättre säkerhet](./media/security-two.png)
 
-Vi har ett "lösen ord", AccountKey, för att ta bort från det lokala programmet. Detta kan göras med hjälp av Azure Active Directory (AAD)-autentisering.
+Vi har ytterligare ett "lösenord", AccountKey, som ska tas bort från det lokala programmet. Detta kan göras med hjälp Azure Active Directory (AAD)-autentisering.
 
 ## <a name="azure-active-directory-azure-ad-authentication"></a>Azure Active Directory (Azure AD)-autentisering
 
-Med AAD-autentisering kan du avgöra vilka individer eller grupper som använder ARR på ett mer kontrollerat sätt. ARR har inbyggt stöd för att acceptera [åtkomsttoken](../../../../active-directory/develop/access-tokens.md) i stället för att använda en konto nyckel. Du kan tänka på åtkomst-token som en tidsbegränsad, användarspecifik nyckel, som bara låser upp vissa delar av den specifika resurs som den begärde för.
+Med AAD-autentisering kan du avgöra vilka individer eller grupper som använder ARR på ett mer kontrollerat sätt. ARR har inbyggt stöd för att acceptera [åtkomsttoken i](../../../../active-directory/develop/access-tokens.md) stället för att använda en kontonyckel. Du kan tänka på åtkomsttoken som en tidsbegränsad, användarspecifik nyckel som bara låser upp vissa delar av den specifika resurs som den begärdes för.
 
-**RemoteRenderingCoordinator** -skriptet har ett ombud med namnet **ARRCredentialGetter**, som innehåller en metod som returnerar ett **SessionConfiguration** -objekt, som används för att konfigurera fjärrhantering av sessionen. Vi kan tilldela en annan metod till **ARRCredentialGetter**, så att vi kan använda ett Azure Sign in-flöde, vilket genererar ett **SessionConfiguration** -objekt som innehåller en Azure-åtkomsttoken. Denna åtkomsttoken är speciell för användaren som loggar in.
+Skriptet **RemoteRenderingCoordinator** har en delegat med namnet **ARRCredentialGetter**, som innehåller en metod som returnerar ett **SessionConfiguration-objekt** som används för att konfigurera fjärrsessionshanteringen. Vi kan tilldela en annan metod **till ARRCredentialGetter,** så att vi kan använda ett Azure-inloggningsflöde, vilket genererar ett **SessionConfiguration-objekt** som innehåller en Azure-åtkomsttoken. Denna åtkomsttoken är specifik för den användare som loggar in.
 
-1. Följ anvisningarna för [att: Konfigurera autentisering-autentisering för distribuerade program](../../../how-tos/authentication.md#authentication-for-deployed-applications), i synnerhet du följer anvisningarna i dokumentationen för Azures ankare i Azure [AD User Authentication](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication). Det innebär att registrera ett nytt Azure Active Directory program och konfigurera åtkomst till din ARR-instans.
-1. När du har konfigurerat det nya AAD-programmet kontrollerar du att AAD-programmet ser ut som följande bilder:
+1. Följ [anvisningarna i How To: Configure authentication - Authentication for deployed applications](../../../how-tos/authentication.md#authentication-for-deployed-applications)(Så här gör du: Konfigurera autentisering – autentisering för distribuerade program). Mer specifikt följer du anvisningarna i Azure Spatial Anchors-användarautentisering för [Azure AD.](../../../../spatial-anchors/concepts/authentication.md?tabs=csharp#azure-ad-user-authentication) Det innebär att registrera ett nytt Azure Active Directory och konfigurera åtkomst till arr-instansen.
+1. När du har konfigurerat det nya AAD-programmet kontrollerar du att ditt AAD-program ser ut som följande bilder:
 
-    **AAD-program – > autentisering** ![ App-autentisering](./media/app-authentication-public.png)
+    **AAD-program - > autentisering** ![ Appautentisering](./media/app-authentication-public.png)
 
-    **AAD-program – > API-behörigheter** ![ App-API: er](./media/request-api-permissions-step-five.png)
+    **AAD-program - > API-behörigheter** ![ App-API:er](./media/request-api-permissions-step-five.png)
 
-1. När du har konfigurerat ditt konto för fjärrrendering kontrollerar du att konfigurationen ser ut som på följande bild:
+1. När du har Remote Rendering ditt konto kontrollerar du att konfigurationen ser ut som på följande bild:
 
-    **AAR-> AccessControl (IAM)** ![ ARR-roll](./media/azure-remote-rendering-role-assignment-complete.png)
+    **AAR -> AccessControl (IAM)** ![ ARR-roll](./media/azure-remote-rendering-role-assignment-complete.png)
 
     >[!NOTE]
-    > En *ägar* roll är inte tillräcklig för att hantera sessioner via klient programmet. För varje användare som du vill ge möjlighet att hantera sessioner måste du tillhandahålla rollen **Remote rendering-klient**. För varje användare som du vill hantera sessioner och konvertera modeller måste du ange rollen som **administratör för Fjärrrendering**.
+    > En *ägarroll* räcker inte för att hantera sessioner via klientprogrammet. För varje användare som du vill ge möjlighet att hantera sessioner måste du ange rollen **Remote Rendering Client**. För varje användare som du vill hantera sessioner och konvertera modeller måste du ange rollen **som Remote Rendering administratör.**
 
-Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till AAR-tjänsten. Vi gör det genom att implementera en instans av **BaseARRAuthentication**, vilket kommer att returnera ett nytt **SessionConfiguration** -objekt. I det här fallet kommer konto informationen att konfigureras med Azure-åtkomsttoken.
+Nu när Azure-sidan är på plats behöver vi ändra hur koden ansluter till AAR-tjänsten. Det gör vi genom att implementera en instans av **BaseARRAuthentication**, som returnerar ett nytt **SessionConfiguration-objekt.** I det här fallet konfigureras kontoinformationen med Azure-åtkomsttoken.
 
-1. Skapa ett nytt skript med namnet **AADAuthentication** och ersätt dess kod med följande:
+1. Skapa ett nytt skript med **namnet AADAuthentication** och ersätt koden med följande:
 
     ```cs
     // Copyright (c) Microsoft Corporation. All rights reserved.
     // Licensed under the MIT License. See LICENSE in the project root for license information.
-
+    
     using Microsoft.Azure.RemoteRendering;
     using Microsoft.Identity.Client;
     using System;
@@ -219,17 +219,9 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
     using System.Threading;
     using System.Threading.Tasks;
     using UnityEngine;
-
+    
     public class AADAuthentication : BaseARRAuthentication
     {
-        [SerializeField]
-        private string accountDomain;
-        public string AccountDomain
-        {
-            get => accountDomain.Trim();
-            set => accountDomain = value;
-        }
-
         [SerializeField]
         private string activeDirectoryApplicationClientID;
         public string ActiveDirectoryApplicationClientID
@@ -237,7 +229,7 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
             get => activeDirectoryApplicationClientID.Trim();
             set => activeDirectoryApplicationClientID = value;
         }
-
+    
         [SerializeField]
         private string azureTenantID;
         public string AzureTenantID
@@ -245,7 +237,15 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
             get => azureTenantID.Trim();
             set => azureTenantID = value;
         }
-
+    
+        [SerializeField]
+        private string azureRemoteRenderingDomain;
+        public string AzureRemoteRenderingDomain
+        {
+            get => azureRemoteRenderingDomain.Trim();
+            set => azureRemoteRenderingDomain = value;
+        }
+    
         [SerializeField]
         private string azureRemoteRenderingAccountID;
         public string AzureRemoteRenderingAccountID
@@ -255,37 +255,37 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
         }
     
         [SerializeField]
-        private string azureRemoteRenderingAccountAuthenticationDomain;
-        public string AzureRemoteRenderingAccountAuthenticationDomain
+        private string azureRemoteRenderingAccountDomain;
+        public string AzureRemoteRenderingAccountDomain
         {
-            get => azureRemoteRenderingAccountAuthenticationDomain.Trim();
-            set => azureRemoteRenderingAccountAuthenticationDomain = value;
-        }
-
+            get => azureRemoteRenderingAccountDomain.Trim();
+            set => azureRemoteRenderingAccountDomain = value;
+        }    
+    
         public override event Action<string> AuthenticationInstructions;
-
+    
         string authority => "https://login.microsoftonline.com/" + AzureTenantID;
-
+    
         string redirect_uri = "https://login.microsoftonline.com/common/oauth2/nativeclient";
-
-        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountAuthenticationDomain + "/mixedreality.signin" };
-
+    
+        string[] scopes => new string[] { "https://sts." + AzureRemoteRenderingAccountDomain + "/mixedreality.signin" };
+    
         public void OnEnable()
         {
             RemoteRenderingCoordinator.ARRCredentialGetter = GetAARCredentials;
             this.gameObject.AddComponent<ExecuteOnUnityThread>();
         }
-
+    
         public async override Task<SessionConfiguration> GetAARCredentials()
         {
             var result = await TryLogin();
             if (result != null)
             {
                 Debug.Log("Account signin successful " + result.Account.Username);
-
+    
                 var AD_Token = result.AccessToken;
-
-                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountAuthenticationDomain, AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+    
+                return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
             }
             else
             {
@@ -293,7 +293,7 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
             }
             return default;
         }
-
+    
         private Task DeviceCodeReturned(DeviceCodeResult deviceCodeDetails)
         {
             //Since everything in this task can happen on a different thread, invoke responses on the main Unity thread
@@ -303,10 +303,10 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
                 Debug.Log(deviceCodeDetails.Message);
                 AuthenticationInstructions?.Invoke(deviceCodeDetails.Message);
             });
-
+    
             return Task.FromResult(0);
         }
-
+    
         public override async Task<AuthenticationResult> TryLogin()
         {
             var clientApplication = PublicClientApplicationBuilder.Create(ActiveDirectoryApplicationClientID).WithAuthority(authority).WithRedirectUri(redirect_uri).Build();
@@ -314,11 +314,11 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
             try
             {
                 var accounts = await clientApplication.GetAccountsAsync();
-
+    
                 if (accounts.Any())
                 {
                     result = await clientApplication.AcquireTokenSilent(scopes, accounts.First()).ExecuteAsync();
-
+    
                     return result;
                 }
                 else
@@ -356,64 +356,64 @@ Med Azures sida av saker på plats måste vi nu ändra hur koden ansluter till A
                 Debug.LogError("GetAccountsAsync");
                 Debug.LogException(ex);
             }
-
+    
             return null;
         }
     }
     ```
 
 >[!NOTE]
-> Den här koden är inte helt slutförd och är inte klar för ett kommersiellt program. Till exempel är det minst sannolikt att du vill lägga till möjligheten att logga ut. Detta kan göras med hjälp av den `Task RemoveAsync(IAccount account)` metod som tillhandahålls av klient programmet. Den här koden är endast avsedd för självstudier, din implementering är specifik för ditt program.
+> Den här koden är inte alls komplett och är inte redo för ett kommersiellt program. Till exempel vill du förmodligen lägga till möjligheten att logga ut också. Detta kan göras med hjälp av `Task RemoveAsync(IAccount account)` den metod som tillhandahålls av klientprogrammet. Den här koden är endast avsedd för självstudier. Implementeringen är specifik för ditt program.
 
-Koden försöker först hämta token i tyst läge med hjälp av **AquireTokenSilent**. Detta kommer att lyckas om användaren tidigare har autentiserat det här programmet. Om det inte lyckas kan du gå vidare till en mer engagerad strategi.
+Koden försöker först hämta token tyst med hjälp av **AquireTokenSilent**. Detta lyckas om användaren tidigare har autentiserat det här programmet. Om det inte lyckas går du vidare till en mer användar-inblandat strategi.
 
-För den här koden använder vi [enhets kod flödet](../../../../active-directory/develop/v2-oauth2-device-code.md) för att få en åtkomsttoken. Det här flödet gör att användaren kan logga in på sina Azure-konton på en dator eller en mobil enhet och låta den resulterande token skickas tillbaka till HoloLens-programmet.
+För den här koden använder vi [enhetskodflödet för att hämta](../../../../active-directory/develop/v2-oauth2-device-code.md) en åtkomsttoken. Med det här flödet kan användaren logga in på sitt Azure-konto på en dator eller mobil enhet och få den resulterande token skickad tillbaka till HoloLens-programmet.
 
-Den viktigaste delen av den här klassen från ett ARR-perspektiv är den här raden:
+Den viktigaste delen av den här klassen ur ett ARR-perspektiv är den här raden:
 
 ```cs
-return await Task.FromResult(new SessionConfiguration(AccountDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
+return await Task.FromResult(new SessionConfiguration(AzureRemoteRenderingAccountDomain, AzureRemoteRenderingDomain, AzureRemoteRenderingAccountID, "", AD_Token, ""));
 ```
 
-Här skapar vi ett nytt **SessionConfiguration** -objekt med hjälp av konto domänen, konto-ID, konto verifierings domän och åtkomsttoken. Denna token används sedan av ARR-tjänsten för att fråga, skapa och ansluta sessioner för fjärrrendering så länge som användaren är auktoriserad baserat på de rollbaserade behörigheter som kon figurer ATS tidigare.
+Här skapar vi ett nytt **SessionConfiguration-objekt med** fjärrrenderingsdomänen, konto-ID:t, kontodomänen och åtkomsttoken. Denna token används sedan av ARR-tjänsten för att fråga, skapa och ansluta till fjärrrenderingssessioner så länge användaren har behörighet baserat på de rollbaserade behörigheter som konfigurerades tidigare.
 
-Med den här ändringen ser det aktuella läget för programmet och dess åtkomst till dina Azure-resurser att se ut så här:
+Med den här ändringen ser det aktuella tillståndet för programmet och dess åtkomst till dina Azure-resurser ut så här:
 
 ![Ännu bättre säkerhet](./media/security-three.png)
 
-Eftersom autentiseringsuppgifterna för användaren inte lagras på enheten (eller i det här fallet även på enheten) är deras exponerings risk mycket låg. Nu använder enheten en användarspecifik, tidsbegränsad åtkomsttoken för att få åtkomst till ARR, som använder åtkomst kontroll (IAM) för att få åtkomst till Blob Storage. Dessa två steg har helt tagit bort "lösen orden" från käll koden och ökad säkerhet avsevärt. Detta är dock inte den mest tillgängliga säkerheten, och om du flyttar modell-och sessionshantering till en webb tjänst förbättras säkerheten ytterligare. Ytterligare säkerhets aspekter beskrivs i kapitlet om [kommersiellt beredskap](../commercial-ready/commercial-ready.md) .
+Eftersom användarautentiseringsuppgifterna inte lagras på enheten (eller i det här fallet även anges på enheten), är deras exponeringsrisk mycket låg. Nu använder enheten en användarspecifik, tidsbegränsad åtkomsttoken för att få åtkomst till ARR, som använder åtkomstkontroll (IAM) för att komma åt Blob Storage. Dessa två steg har helt tagit bort "lösenorden" från källkoden och ökat säkerheten avsevärt. Detta är dock inte den mest tillgängliga säkerheten. Om du flyttar modell- och sessionshanteringen till en webbtjänst förbättras säkerheten ytterligare. Ytterligare säkerhetsöverväganden beskrivs i [kapitlet Kommersiell](../commercial-ready/commercial-ready.md) beredskap.
 
 ### <a name="testing-aad-auth"></a>Testa AAD-autentisering
 
-När AAD-autentisering är aktiv i Unity-redigeraren måste du autentisera varje gång du startar programmet. På enheten sker autentiseringen första gången och krävs bara igen när token går ut eller är ogiltig.
+När AAD Auth är aktivt i Unity-redigeraren måste du autentisera varje gång du startar programmet. På enheten sker autentiseringssteget första gången och krävs bara igen när token upphör att gälla eller har ogiltigförklarats.
 
-1. Lägg till **AADAuthentication** -komponenten i **RemoteRenderingCoordinator** -GameObject.
+1. Lägg till **komponenten AADAuthentication** i **RemoteRenderingCoordinator** GameObject.
 
-    ![AAD auth-komponent](./media/azure-active-directory-auth-component.png)
+    ![AAD-autentiseringskomponent](./media/azure-active-directory-auth-component.png)
 
-1. Fyll i värdena för klient-ID och klient-ID. Du hittar dessa värden på sidan Översikt för din app Registration:
+1. Fyll i dina värden för Klient-ID och Klient-ID. Dessa värden finns på översiktssidan för din appregistrering:
 
-    * **Konto domänen** är samma domän som du har använt i **RemoteRenderingCoordinator** konto domän.
-    * **Active Directory programmets klient-ID** är *program-ID: t (Client)* som finns i din AAD-app-registrering (se bilden nedan).
-    * **Azure-klient-ID** är *katalog-ID: t* som finns i registreringen av AAD-appen (se bilden nedan).
-    * **Konto-ID för Azure Remote rendering** är samma **konto-ID** som du har använt för **RemoteRenderingCoordinator**.
-    * **Kontots autentiserings domän** är samma **konto för autentisering av konto** som du har använt i **RemoteRenderingCoordinator**.
+    * **Klient-ID för Active Directory-program** *är det program-ID (klient) som* finns i din AAD-appregistrering (se bilden nedan).
+    * **Azure-klientorganisations-ID** *är katalog-ID:t (klient)* som finns i din AAD-appregistrering ( se bilden nedan).
+    * **Azure Remote Rendering Domän** är samma domän som du har använt i **RemoteRenderingCoordinators** Remote Rendering Domän.
+    * **Azure Remote Rendering konto-ID** är samma **konto-ID** som du har använt **för RemoteRenderingCoordinator**.
+    * **Azure Remote Rendering-kontodomän** är samma **kontodomän** som du har använt i **RemoteRenderingCoordinator**.
 
-    ![Skärm bild som visar program-ID: t och katalog (klient)-ID: t.](./media/app-overview-data.png)
+    ![Skärmbild som visar program-ID (klient) och katalog-ID (klient).](./media/app-overview-data.png)
 
-1. Tryck på Play i Unity-redigeraren och medgivande till att köra en session.
-    Eftersom **AADAuthentication** -komponenten har en Visa kontrollant, kopplas den automatiskt för att visa en prompt efter den modala panel som har behörighet för sessionen.
-1. Följ anvisningarna som finns i panelen till höger om **AppMenu**.
-    Du bör se något som liknar detta: ![ illustration som visar instruktions panelen som visas till höger om AppMenu.](./media/device-flow-instructions.png)
-    När du har angett den angivna koden på den sekundära enheten (eller webbläsaren på samma enhet) och logga in med dina autentiseringsuppgifter, returneras en åtkomsttoken till det begär ande programmet, i det här fallet Unit-redigeraren.
-1. Efter den här punkten bör allt i programmet fortsätta normalt. Kontrol lera om det finns fel i enhets konsolen om du inte går igenom stegen som förväntat.
+1. Tryck på Spela upp i Unity-redigeraren och godkänn att du kör en session.
+    Eftersom **AADAuthentication-komponenten** har en visningskontrollant, är den automatiskt ansluten för att visa en uppmaning efter den modala panelen för sessionsauktorisering.
+1. Följ anvisningarna på panelen till höger om **AppMenu**.
+    Du bör se något som liknar detta: ![ Bild som visar instruktionspanelen som visas till höger om AppMenu.](./media/device-flow-instructions.png)
+    När du har angett den angivna koden på den sekundära enheten (eller webbläsaren på samma enhet) och loggat in med dina autentiseringsuppgifter returneras en åtkomsttoken till det begärande programmet, i det här fallet Unity-redigeraren.
+1. Därefter bör allt i programmet fortsätta normalt. Kontrollera om det finns fel i Unity-konsolen om du inte går igenom stegen som förväntat.
 
-## <a name="build-to-device"></a>Bygg till enhet
+## <a name="build-to-device"></a>Skapa till enhet
 
-Om du skapar ett program med MSAL to Device måste du inkludera en fil i projektets mapp **till gångar** . Detta hjälper kompileraren att bygga programmet korrekt med *Microsoft.Identity.Client.dll* som ingår i **självstudiernas till gångar**.
+Om du skapar ett program med MSAL på enheten måste du inkludera en fil i projektets **mapp Tillgångar.** Detta hjälper kompilatorn att skapa programmet korrekt med hjälp avMicrosoft.Identity.Client.dll *som* ingår i **Självstudietillgångar**.
 
-1. Lägg till en ny fil i **till gångar** med namnet **link.xml**
-1. Lägg till följande för filen:
+1. Lägg till en ny fil i **Tillgångar med** **namnetlink.xml**
+1. Lägg till följande för i filen:
 
     ```xml
     <linker>
@@ -427,11 +427,11 @@ Om du skapar ett program med MSAL to Device måste du inkludera en fil i projekt
 
 1. Spara ändringarna
 
-Följ anvisningarna i [snabb start: Distribuera Unity-exempel till HoloLens – Bygg exempelprojektet](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)för att bygga till HoloLens.
+Följ stegen i [Snabbstart: Distribuera Unity-exempel till HoloLens – Skapa exempelprojektet](../../../quickstarts/deploy-to-hololens.md#build-the-sample-project)för att skapa till HoloLens.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Resten av den här själv studie kursen innehåller konceptuella ämnen för att skapa ett produktions klart program som använder Azure-fjärrrendering.
+Resten av den här självstudien innehåller konceptuella ämnen för att skapa ett produktionsklart program som använder Azure Remote Rendering.
 
 > [!div class="nextstepaction"]
-> [Nästa: kommersiell beredskap](../commercial-ready/commercial-ready.md)
+> [Nästa: Kommersiell beredskap](../commercial-ready/commercial-ready.md)

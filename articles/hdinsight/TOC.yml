@@ -42,15 +42,15 @@
       items:
         - name: Versionshantering
           items:
-            - name: Introduktion till versions hantering
+            - name: Introduktion till versionshantering
               href: ./hdinsight-overview-versioning.md
             - name: HDInsight-versioner
               href: ./hdinsight-component-versioning.md
-            - name: 'HDInsight version 4,0'
+            - name: HDInsight version 4.0
               href: ./hdinsight-40-component-versioning.md
             - name: HDInsight version 3.6
               href: ./hdinsight-36-component-versioning.md
-            - name: Pensionerade HDInsight-versioner
+            - name: Tillbakadragna HDInsight-versioner
               href: ./hdinsight-retired-versions.md
         - name: Enterprise Security Package
           href: ./enterprise-security-package.md
@@ -246,7 +246,7 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Spark- och Hive-verktyg för VSCode
               href: ./hdinsight-for-vscode.md
-            - name: Referens för konfigurations inställningar för HDInsight
+            - name: Referens för HDInsight-konfigurationsinställningar
               href: ./hdinsight-config-for-vscode.md
         - name: Övervakning
           items:
@@ -260,6 +260,8 @@
               href: ./hdinsight-cluster-availability.md
             - name: Klustertillgänglighet – Azure Monitor-loggar
               href: ./cluster-availability-monitor-logs.md
+            - name: Azure Monitor tabelluppdateringar
+              href: ./log-analytics-migration.md
         - name: Felsöka
           items:
             - name: Begär ökning av CPU-kärnkvot
@@ -835,9 +837,9 @@
               href: ./interactive-query/apache-hive-query-odbc-driver-powershell.md
         - name: Hantera
           items:
-            - name: Kopiera Hive-tabeller över lagrings konton
+            - name: Kopiera Hive-tabeller mellan lagringskonton
               href: ./interactive-query/hive-migration-across-storage-accounts.md
-            - name: Migrera standard Hive-metaarkiv till externa metaarkiv i Azure HDInsight
+            - name: Migrera Hive-standardmetaarkiv till externt metaarkiv på Azure HDInsight
               href: ./interactive-query/hive-default-metastore-export-import.md
             - name: Migrera Hive-arbetsbelastningar till HDInsight 4.0
               href: ./interactive-query/apache-hive-migrate-workloads.md

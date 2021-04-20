@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 942b77f8338636f9dda5dcf6cd4262dad57b4b0a
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6aa502e1ed0e49192220174d5a8573690035a4a3
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726276"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107739142"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Exempel på utfärdare av tjänstkommunikation (förhandsversion)
 
@@ -25,18 +25,18 @@ Tjänsten Azure AD Verifiable Credential kan utfärda verifierbara autentisering
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
-För att utfärda en verifierbar autentiseringsidentifiering instrueras Authenticator genom att ladda ned kontraktet för att samla in indata från användaren och skicka informationen till den utfärdande tjänsten. Om du behöver använda en ID-token måste du konfigurera din identitetsprovider så att Authenticator kan logga in en användare med hjälp OpenID Connect protokollet. Anspråken i den resulterande ID-token används för att fylla i innehållet i dina verifierbara autentiseringsuppgifter. Authenticator autentiserar användaren med hjälp OpenID Connect auktoriseringskodflödet. OpenID-providern måste ha stöd för OpenID Connect funktioner: 
+För att utfärda en verifierbar autentiseringsman instrueras Authenticator genom att ladda ned kontraktet för att samla in indata från användaren och skicka informationen till den utfärdande tjänsten. Om du behöver använda en ID-token måste du konfigurera din identitetsprovider så att Authenticator kan logga in en användare med hjälp OpenID Connect protokollet. Anspråken i den resulterande ID-token används för att fylla i innehållet i dina verifierbara autentiseringsuppgifter. Authenticator autentiserar användaren med hjälp OpenID Connect auktoriseringskodflödet. OpenID-providern måste ha stöd för följande OpenID Connect funktioner: 
 
 | Funktion | Beskrivning |
 | ------- | ----------- |
 | Typ av beviljande | Måste ha stöd för typ av beviljande av auktoriseringskod. |
-| Tokenformat | Måste skapa okrypterade kompakta JWT:er. |
-| Signaturalgoritm | Måste producera JWT-signerat med RSA 256. |
+| Tokenformat | Måste producera okrypterade kompakta JWT:er. |
+| Signaturalgoritm | Måste producera JWT-kontrakt som signerats med RS 256. |
 | Konfigurationsdokument | Måste ha stöd OpenID Connect konfigurationsdokument och `jwks_uri` . | 
-| Klientregistrering | Måste ha stöd för offentlig klientregistrering med `redirect_uri` värdet `vclient://openid/` . | 
+| Klientregistrering | Måste ha stöd för offentlig klientregistrering med `redirect_uri` värdet `vcclient://openid/` . | 
 | PKCE | Rekommenderas av säkerhetsskäl, men krävs inte. |
 
-Exempel på HTTP-begäranden som skickas till din identitetsprovider finns nedan. Din identitetsprovider måste acceptera och svara på dessa begäranden i enlighet OpenID Connect standard för autentisering.
+Exempel på HTTP-begäranden som skickas till din identitetsprovider finns nedan. Din identitetsprovider måste acceptera och svara på dessa begäranden i enlighet med OpenID Connect standard för autentisering.
 
 ## <a name="client-registration"></a>Klientregistrering
 
@@ -52,11 +52,11 @@ Om du vill aktivera det här bytet registrerar du ett program hos din identitets
 
 När du har registrerat ett program med din identitetsprovider registrerar du dess klient-ID. Du kommer att använda den i avsnittet nedan. Du måste också skriva ned URL:en till den välkända slutpunkten för den OIDC-kompatibla identitetsprovidern. Den utfärdande tjänsten använder den här slutpunkten för att ladda ned de offentliga nycklar som behövs för att verifiera ID-token när den skickas av Authenticator.
 
-Den konfigurerade omdirigerings-URI:n används av Authenticator så att den vet när inloggningen är klar och den kan hämta ID-token. 
+Den konfigurerade omdirigerings-URI:n används av Authenticator så att den vet när inloggningen har slutförts och den kan hämta ID-token. 
 
 ## <a name="authorization-request"></a>Auktoriseringsbegäran
 
-Auktoriseringsbegäran som skickas till din identitetsprovider använder följande format.
+Den auktoriseringsbegäran som skickas till din identitetsprovider använder följande format.
 
 ```HTTP
 GET /authorize?client_id=<client-id>&redirect_uri=portableidentity%3A%2F%2Fverify&response_mode=query&response_type=code&scope=openid&state=12345&nonce=12345 HTTP/1.1
@@ -66,7 +66,7 @@ Connection: Keep-Alive
 
 | Parameter | Värde |
 | ------- | ----------- |
-| `client_id` | Det klient-ID som erhölls under programregistreringsprocessen. |
+| `client_id` | Klient-ID:t som erhölls under programregistreringsprocessen. |
 | `redirect_uri` | Måste använda `vcclient://openid/` . |
 | `response_mode` | Måste ha stöd för `query` . |
 | `response_type` | Måste ha stöd för `code` . |
@@ -74,9 +74,9 @@ Connection: Keep-Alive
 | `state` | Måste returneras till klienten enligt OpenID Connect standard. |
 | `nonce` | Måste returneras som ett anspråk i ID-token enligt OpenID Connect standard. |
 
-När identitetsprovidern tar emot en auktoriseringsbegäran bör den autentisera användaren och vidta nödvändiga åtgärder för att slutföra inloggningen, till exempel multifaktorautentisering.
+När den tar emot en auktoriseringsbegäran ska identitetsprovidern autentisera användaren och vidta alla åtgärder som krävs för att slutföra inloggningen, till exempel multifaktorautentisering.
 
-Du kan anpassa inloggningsprocessen efter dina behov. Du kan be användarna att ange ytterligare information, godkänna användningsvillkor, betala för sina autentiseringsuppgifter med mera. När alla steg har slutförts svarar du på auktoriseringsbegäran genom att omdirigera till omdirigerings-URI:en enligt nedan. 
+Du kan anpassa inloggningsprocessen efter dina behov. Du kan be användarna att ange ytterligare information, godkänna användningsvillkor, betala för sina autentiseringsuppgifter och mycket mer. När alla steg har slutförts svarar du på auktoriseringsbegäran genom att omdirigera till omdirigerings-URI:en enligt nedan. 
 
 ```HTTP
 vcclient://openid/?code=nbafhjbh1ub1yhbj1h4jr1&state=12345
@@ -89,7 +89,7 @@ vcclient://openid/?code=nbafhjbh1ub1yhbj1h4jr1&state=12345
 
 ## <a name="token-request"></a>Tokenbegäran
 
-Tokenbegäran som skickas till din identitetsprovider har följande formulär.
+Tokenbegäran som skickas till din identitetsprovider får följande formulär.
 
 ```HTTP
 POST /token HTTP/1.1
@@ -102,13 +102,13 @@ client_id=<client-id>&redirect_uri=vcclient%3A%2F%2Fopenid%2F&grant_type=authori
 
 | Parameter | Värde |
 | ------- | ----------- |
-| `client_id` | Klient-ID:t som erhölls under programregistreringsprocessen. |
+| `client_id` | Det klient-ID som erhölls under programregistreringsprocessen. |
 | `redirect_uri` | Måste använda `vcclient://openid/` . |
 | `scope` | Måste ha stöd för `openid` . |
 | `grant_type` | Måste ha stöd för `authorization_code` . |
 | `code` | Auktoriseringskoden som returneras av din identitetsprovider. |
 
-När du tar emot tokenbegäran bör din identitetsprovider svara med en ID-token.
+När du tar emot tokenbegäran bör identitetsprovidern svara med en ID-token.
 
 ```HTTP
 HTTP/1.1 200 OK
@@ -135,13 +135,13 @@ ID-token måste använda JWT kompakt serialiseringsformat och får inte kryptera
 | Begär | Värde |
 | ------- | ----------- |
 | `kid` | Nyckelidentifieraren för den nyckel som används för att signera ID-token, som motsvarar en post i OpenID-providerns `jwks_uri` . |
-| `aud` | Det klient-ID som erhölls under programregistreringsprocessen. |
+| `aud` | Klient-ID:t som erhölls under programregistreringsprocessen. |
 | `iss` | Måste vara värdet `issuer` i ditt OpenID Connect konfigurationsdokument. |
 | `exp` | Måste innehålla förfallotiden för ID-token. |
 | `iat` | Måste innehålla den tid då ID-token utfärdades. |
 | `nonce` | Värdet som ingår i auktoriseringsbegäran. |
-| Ytterligare anspråk | ID-token ska innehålla eventuella ytterligare anspråk vars värden kommer att inkluderas i de verifierbara autentiseringsuppgifter som kommer att utfärdas. I det här avsnittet bör du inkludera attribut om användaren, till exempel deras namn. |
+| Ytterligare anspråk | ID-token ska innehålla eventuella ytterligare anspråk vars värden ska inkluderas i de verifierbara autentiseringsuppgifter som kommer att utfärdas. I det här avsnittet bör du inkludera alla attribut om användaren, till exempel deras namn. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Så här anpassar du dina Azure Active Directory verifierbara autentiseringsuppgifter](credential-design.md)
+- [Anpassa dina Azure Active Directory autentiseringsuppgifter](credential-design.md)

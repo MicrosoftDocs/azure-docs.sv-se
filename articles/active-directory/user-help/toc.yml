@@ -1,4 +1,4 @@
-- name: Användar hjälp dokumentation
+- name: Dokumentation om användarhjälp
   href: index.yml
 - name: Hjälp om tvåstegsverifiering
   items:
@@ -16,6 +16,8 @@
       href: multi-factor-authentication-end-user-app-passwords.md
     - name: Logga in
       href: user-help-sign-in.md?toc=./toc.json
+    - name: Inloggning för arbets- eller skolkonto
+      href: multi-factor-authentication-end-user-signin.md
     - name: Få hjälp
       href: multi-factor-authentication-end-user-troubleshoot.md
 - name: Hjälp om återställning av lösenord
@@ -50,7 +52,7 @@
       href: auth-app-android-china.md
     - name: Säkerhetskopiera och återställa konton
       href: user-help-auth-app-backup-recovery.md
-    - name: Importera lösen ord till Authenticator-appen
+    - name: Importera lösenord till Authenticator-appen
       href: user-help-authenticator-app-import-passwords.md
     - name: VANLIGA FRÅGOR OCH SVAR
       href: user-help-auth-app-faq.md
@@ -72,7 +74,7 @@
       href: my-account-portal-sign-ins-page.md
     - name: Ändra dina portalinställningar
       href: my-account-portal-settings.md
-    - name: Hitta en administratör för mitt konto
+    - name: Hitta en Administratör för mitt konto
       href: my-account-find-administrator.md
     - name: Växla organisationer
       href: cross-tenant-switcher.md
