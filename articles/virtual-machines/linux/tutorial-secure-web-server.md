@@ -1,28 +1,21 @@
 ---
-title: 'Självstudie: Skydda en Linux-webbserver med TLS/SSL-certifikat i Azure'
+title: 'Självstudie: Skydda en webbserver med TLS/SSL-certifikat'
 description: I den här självstudien får du lära dig hur du använder Azure CLI till att skydda en virtuell Linux-dator som kör webbservern NGINX med SSL-certifikat som lagras i Azure Key Vault.
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
-ms.date: 04/30/2018
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 97eee5d852450df2341d57932052839825523933
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4b2290d29d1f6fbf8acd2e2652cd47a321fe674f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107769759"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813172"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: Skydda en webbserver på en virtuell Linux-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
+# <a name="tutorial-use-tlsssl-certificates-to-secure-a-web-server"></a>Självstudie: Använda TLS/SSL-certifikat för att skydda en webbserver
 För att skydda webbservrar kan ett Transport Layer Security (TLS), tidigare kallat Secure Sockets Layer (SSL), användas för att kryptera webbtrafik. Dessa TLS/SSL-certifikat kan lagras i Azure Key Vault och tillåta säkra distributioner av certifikat till virtuella Linux-datorer (VM) i Azure. I den här guiden får du lära du dig hur man:
 
 > [!div class="checklist"]
@@ -31,7 +24,7 @@ För att skydda webbservrar kan ett Transport Layer Security (TLS), tidigare kal
 > * Skapa en virtuell dator och installera NGINX-webbservern
 > * Mata in certifikatet i den virtuella datorn och konfigurera NGINX med en TLS-bindning
 
-Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
+I den här självstudien används [CLI i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Prova** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -147,7 +140,7 @@ Din skyddade NGINX-webbplats visas sedan som i exemplet nedan:
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skyddat en NGINX-webbserver med ett TLS/SSL-certifikat som lagras Azure Key Vault. Du har lärt dig att:
+I den här självstudien skyddade du en NGINX-webbserver med ett TLS/SSL-certifikat som lagras i Azure Key Vault. Du har lärt dig att:
 
 > [!div class="checklist"]
 > * Skapa ett Azure Key Vault

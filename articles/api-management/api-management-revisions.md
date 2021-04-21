@@ -8,57 +8,57 @@ ms.service: api-management
 ms.topic: article
 ms.date: 06/12/2020
 ms.author: jodowns
-ms.custom: fasttrack-new
-ms.openlocfilehash: 9a20a7966daff372cf5c0abc9b7b1dbbfd459838
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: fasttrack-new, devx-track-azurepowershell
+ms.openlocfilehash: bd837faaaa986659ad9b30aa3cf853ea490cec6d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91403246"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812146"
 ---
 # <a name="revisions-in-azure-api-management"></a>Revisioner i Azure API Management
 
-Med hjälp av revisioner kan du göra ändringar i dina API: er på ett kontrollerat och säkert sätt. Skapa en ny revision när du vill göra ändringar. Du kan sedan redigera och testa API utan att störa dina API-konsumenter. När du är klar gör du ändringen aktuell. Samtidigt kan du välja att skicka en post till ändrings loggen för att hålla dina API-konsumenter uppdaterade med vad som har ändrats. Ändrings loggen publiceras i Developer-portalen.
+Med revideringar kan du göra ändringar i dina API:er på ett kontrollerat och säkert sätt. När du vill göra ändringar skapar du en ny revision. Du kan sedan redigera och testa API:et utan att störa dina API-konsumenter. När du är klar gör du ändringen aktuell. Du kan också publicera en post i ändringsloggen för att hålla DINA API-användare uppdaterade med det som har ändrats. Ändringsloggen publiceras på utvecklarportalen.
 
 > [!NOTE]
-> Developer-portalen är inte tillgänglig i förbruknings nivån.
+> Utvecklarportalen är inte tillgänglig på förbrukningsnivån.
 
-Med revideringar kan du:
+Med revisioner kan du:
 
-- Gör en säker ändring av API-definitionerna och principerna, utan att störa ditt produktions-API.
-- Prova ändringar innan du publicerar dem.
-- Dokumentera de ändringar du gör så att dina utvecklare kan förstå vad som är nytt.
-- Återställ igen om du hittar problem.
+- Gör ändringar i API-definitionerna och principerna på ett säkert sätt utan att störa produktions-API:et.
+- Prova ändringarna innan du publicerar dem.
+- Dokumentera de ändringar du gör så att utvecklarna förstår vad som är nytt.
+- Återställ om du hittar problem.
 
-[Kom igång med revisioner genom att följa vår genom gång.](./api-management-get-started-revise-api.md)
+[Kom igång med revisioner genom att följa vår genomgång.](./api-management-get-started-revise-api.md)
 
-## <a name="accessing-specific-revisions"></a>Åtkomst till vissa revisioner
+## <a name="accessing-specific-revisions"></a>Åtkomst till specifika revisioner
 
-Varje revidering av ditt API kan nås med hjälp av en särskilt utformad URL. Lägg till `;rev={revisionNumber}` i slutet av din API-URL, men före frågesträngen för att få åtkomst till en viss revision av detta API. Du kan till exempel använda den här URL: en för att komma åt revision 3 av `customers` API: et:
+Varje revision av ditt API kan nås med hjälp av en särskilt utformad URL. Lägg till `;rev={revisionNumber}` i slutet av API-URL:en, men före frågesträngen, för att få åtkomst till en specifik revision av det API:et. Du kan till exempel använda den här URL:en för att få åtkomst till revision 3 av `customers` API:et:
 
 `https://apis.contoso.com/customers;rev=3?customerId=123`
 
-Som standard har varje revision samma säkerhets inställningar som den aktuella revisionen. Du kan avsiktligt ändra principerna för en särskild revision om du vill att en annan säkerhet ska tillämpas för varje revision. Du kanske till exempel vill lägga till en [IP-filtrerings princip](./api-management-access-restriction-policies.md#RestrictCallerIPs) för att förhindra att externa anropare får åtkomst till en revision som fortfarande är under utveckling.
+Som standard har varje revision samma säkerhetsinställningar som den aktuella revisionen. Du kan avsiktligt ändra principerna för en specifik revision om du vill tillämpa olika säkerhet för varje revision. Du kanske till exempel vill [](./api-management-access-restriction-policies.md#RestrictCallerIPs) lägga till en IP-filtreringsprincip för att förhindra att externa anropare kommer åt en revision som fortfarande är under utveckling.
 
-En revision kan kopplas från, vilket gör den oåtkomlig för anropare även om de försöker få åtkomst till den via dess URL. Du kan markera en revision som offline med hjälp av Azure Portal. Om du använder PowerShell kan du använda `Set-AzApiManagementApiRevision` cmdleten och ange `Path` argumentet till `$null` .
+En revision kan tas offline, vilket gör det otillgängligt för anropare även om de försöker komma åt revisionen via dess URL. Du kan markera en revision som offline med hjälp av Azure Portal. Om du använder PowerShell kan du använda `Set-AzApiManagementApiRevision` cmdleten och ange `Path` argumentet till `$null` .
 
 > [!NOTE]
-> Vi rekommenderar att du börjar med att göra ändringar offline när du inte använder dem för testning.
+> Vi rekommenderar att du tar revisioner offline när du inte använder dem för testning.
 
 ## <a name="current-revision"></a>Aktuell revision
 
-En enda revision kan anges som den *aktuella* revisionen. Den här ändringen är den som används för alla API-begäranden som inte anger ett explicit revisions nummer i URL: en. Du kan återställa till en tidigare revision genom att ställa in ändringen som aktuell.
+En enda revision kan anges som den *aktuella revisionen.* Den här revisionen är den som används för alla API-begäranden som inte anger ett explicit revisionsnummer i URL:en. Du kan återställa till en tidigare revision genom att ange den revisionen som aktuell.
 
-Du kan ställa in en revidering som aktuell med hjälp av Azure Portal. Om du använder PowerShell kan du använda `New-AzApiManagementApiRelease` cmdleten.
+Du kan ange en revision som aktuell med hjälp av Azure Portal. Om du använder PowerShell kan du använda `New-AzApiManagementApiRelease` cmdleten .
 
-## <a name="revision-descriptions"></a>Reviderings beskrivningar
+## <a name="revision-descriptions"></a>Revisionsbeskrivningar
 
-När du skapar en revision kan du ange en beskrivning för ditt eget spårnings syfte. Beskrivningar spelas inte till dina API-användare.
+När du skapar en revision kan du ange en beskrivning för dina egna spårningsändamål. Beskrivningar spelas inte upp för DINA API-användare.
 
-När du ställer in en revidering som aktuell kan du också välja att ange en offentlig ändrings logg anteckning. Ändrings loggen ingår i Developer-portalen för att dina API-användare ska kunna se den. Du kan ändra din ändrings logg anteckning med `Update-AzApiManagementApiRelease` PowerShell-cmdleten.
+När du ställer in en revision som aktuell kan du även ange en offentlig ändringslogganteckning om du vill. Ändringsloggen ingår i utvecklarportalen så att DINA API-användare kan visa den. Du kan ändra din ändringslogganteckning med hjälp av `Update-AzApiManagementApiRelease` PowerShell-cmdleten.
 
-## <a name="versions-and-revisions"></a>Versioner och revideringar
+## <a name="versions-and-revisions"></a>Versioner och revisioner
 
-Versioner och revideringar är distinkta funktioner. Varje version kan ha flera revisioner, precis som ett icke-versions-API. Du kan använda revideringar utan att använda versioner, eller tvärtom. Normalt används versioner för att separera API-versioner med större ändringar, medan revisioner kan användas för mindre och icke-brytande ändringar i ett API.
+Versioner och revisioner är distinkta funktioner. Varje version kan ha flera revisioner, precis som ett API som inte är versionat. Du kan använda revisioner utan att använda versioner eller tvärtom. Normalt används versioner för att separera API-versioner med icke-mindre ändringar, medan revisioner kan användas för mindre och icke-större ändringar i ett API.
 
-Om du upptäcker att din ändring har fått större ändringar, eller om du vill förvandla din revision till en beta-/test version, kan du skapa en version från en revidering. Använd Azure Portal och klicka på "Skapa version från revision" på snabb menyn för omarbetning på fliken revisioner.
+Om du upptäcker att ändringen har större ändringar, eller om du formellt vill omvandla din revision till en beta-/testversion, kan du skapa en version från en revision. Med hjälp Azure Portal klickar du på Skapa version från revision på snabbmenyn revision på fliken Revisioner.

@@ -251,7 +251,7 @@
         - name: Azure Maps
           tocHref: /azure/azure-maps/
           topicHref: /azure/azure-maps/
-        - name: Azure Certified Device
+        - name: Azure-certifierad enhet
           tocHref: /azure/certification/
           topicHref: /azure/certification/
     - name: Resource Manager
@@ -703,7 +703,7 @@
         - name: Peering Service
           tocHref: /azure/peering-service/
           topicHref: /azure/peering-service/
-        - name: Route Server (förhandsversion)
+        - name: Vägserver (förhandsversion)
           tocHref: /azure/route-server/
           topicHref: /azure/route-server/
         - name: Traffic Manager
@@ -864,6 +864,9 @@
         - name: Filer
           tocHref: /azure/storage/files/
           topicHref: /azure/storage/files/storage-files-introduction
+        - name: 'File Sync '
+          tocHref: /azure/storage/file-sync/
+          topicHref: /azure/storage/file-sync/file-sync-introduction
         - name: Köer
           tocHref: /azure/storage/queues/
           topicHref: /azure/storage/queues/storage-queues-introduction

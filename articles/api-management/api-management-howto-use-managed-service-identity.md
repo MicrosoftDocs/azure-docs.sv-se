@@ -1,6 +1,6 @@
 ---
 title: Använda hanterade identiteter i Azure API Management | Microsoft Docs
-description: Lär dig hur du skapar systemtilldelade och användarspecifika identiteter i API Management med hjälp av Azure Portal, PowerShell och en Resource Manager-mall.
+description: Lär dig hur du skapar system-tilldelade och användar tilldelade identiteter i API Management med hjälp av Azure Portal, PowerShell och en Resource Manager mall.
 services: api-management
 documentationcenter: ''
 author: miaojiang
@@ -11,41 +11,42 @@ ms.workload: integration
 ms.topic: article
 ms.date: 03/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 98237efae89e7d88dd23cb7e8fc9f7e9f05bca70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 40ee196f53af040e4099fb344de5488109ce001b
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102521551"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812254"
 ---
 # <a name="use-managed-identities-in-azure-api-management"></a>Använda hanterade identiteter i Azure API Management
 
-Den här artikeln visar hur du skapar en hanterad identitet för en Azure API Management-instans och hur du kommer åt andra resurser. En hanterad identitet som genereras av Azure Active Directory (Azure AD) gör att API Management-instansen enkelt och säkert kan komma åt andra Azure AD-skyddade resurser, till exempel Azure Key Vault. Azure hanterar den här identiteten så att du inte behöver etablera eller rotera några hemligheter. Mer information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md).
+Den här artikeln visar hur du skapar en hanterad identitet för en Azure API Management instans och hur du kommer åt andra resurser. En hanterad identitet som genereras av Azure Active Directory (Azure AD) gör att din API Management-instans enkelt och säkert kan komma åt andra Azure AD-skyddade resurser, till exempel Azure Key Vault. Azure hanterar den här identiteten så att du inte behöver etablera eller rotera några hemligheter. Mer information om hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md).
 
-Du kan bevilja två typer av identiteter för en API Management-instans:
+Du kan tilldela två typer av identiteter till en API Management instans:
 
-- En *systemtilldelad identitet* är kopplad till din tjänst och tas bort om tjänsten tas bort. Tjänsten kan bara ha en tilldelad identitet.
-- En *användardefinierad identitet* är en fristående Azure-resurs som kan tilldelas till din tjänst. Tjänsten kan ha flera användare tilldelade identiteter.
+- En *system tilldelad identitet* är kopplad till din tjänst och tas bort om tjänsten tas bort. Tjänsten kan bara ha en system tilldelad identitet.
+- En *användar tilldelad identitet* är en fristående Azure-resurs som kan tilldelas till din tjänst. Tjänsten kan ha flera användar tilldelade identiteter.
 
-## <a name="create-a-system-assigned-managed-identity"></a>Skapa en systemtilldelad hanterad identitet
+## <a name="create-a-system-assigned-managed-identity"></a>Skapa en system tilldelad hanterad identitet
 
 ### <a name="azure-portal"></a>Azure Portal
 
-Om du vill konfigurera en hanterad identitet i Azure Portal skapar du först en API Management instans och aktiverar sedan funktionen.
+Om du vill konfigurera en hanterad identitet i Azure Portal måste du först skapa en API Management-instans och sedan aktivera funktionen.
 
-1. Skapa en API Management-instans i portalen på vanligt sätt. Bläddra till den i portalen.
-2. Välj **hanterade identiteter**.
-3. Växla **status** till **på** på fliken **systemtilldelad** . Välj **Spara**.
+1. Skapa en API Management instans i portalen som vanligt. Bläddra till den i portalen.
+2. Välj **Hanterade identiteter.**
+3. På fliken **System tilldelad** växlar du **Status** till **På**. Välj **Spara**.
 
-    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Alternativ för att aktivera en systemtilldelad hanterad identitet" border="true":::
+    :::image type="content" source="./media/api-management-msi/enable-system-msi.png" alt-text="Val för att aktivera en system tilldelad hanterad identitet" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Följande steg beskriver hur du skapar en API Management-instans och tilldelar den en identitet med hjälp av Azure PowerShell. 
+Följande steg går igenom hur du skapar en API Management-instans och tilldelar den en identitet med hjälp av Azure PowerShell. 
 
-1. Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i [Azure PowerShells guide](/powershell/azure/install-az-ps). Kör sedan `Connect-AzAccount` för att skapa en anslutning till Azure.
+1. Om det behövs installerar Azure PowerShell med hjälp av anvisningarna i [Azure PowerShell guiden](/powershell/azure/install-az-ps). Kör sedan `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 2. Använd följande kod för att skapa instansen. Fler exempel på hur du använder Azure PowerShell med en API Management-instans finns i [API Management PowerShell-exempel](powershell-samples.md).
 
@@ -69,7 +70,7 @@ Följande steg beskriver hur du skapar en API Management-instans och tilldelar d
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 
-Du kan skapa en API Management-instans med en identitet genom att inkludera följande egenskap i resurs definitionen:
+Du kan skapa en API Management instans med en identitet genom att inkludera följande egenskap i resursdefinitionen:
 
 ```json
 "identity" : {
@@ -77,9 +78,9 @@ Du kan skapa en API Management-instans med en identitet genom att inkludera föl
 }
 ```
 
-Den här egenskapen anger att Azure ska skapa och hantera identiteten för din API Management-instans.
+Den här egenskapen anger att Azure ska skapa och hantera identiteten för din API Management instans.
 
-En fullständig Azure Resource Manager mall kan till exempel se ut så här:
+En fullständig mall Azure Resource Manager till exempel se ut så här:
 
 ```json
 {
@@ -116,27 +117,27 @@ När instansen skapas har den följande ytterligare egenskaper:
 }
 ```
 
-`tenantId`Egenskapen identifierar vilken Azure AD-klient identiteten tillhör. `principalId`Egenskapen är en unik identifierare för instansens nya identitet. I Azure AD har tjänstens huvud namn samma namn som du gav API Management-instansen.
+Egenskapen `tenantId` identifierar vilken Azure AD-klientorganisation identiteten tillhör. Egenskapen `principalId` är en unik identifierare för instansens nya identitet. I Azure AD har tjänstens huvudnamn samma namn som du gav till din API Management instansen.
 
 > [!NOTE]
-> En API Management instans kan ha både tilldelade och användarspecifika identiteter på samma gång. I det här fallet är `type` egenskapen `SystemAssigned,UserAssigned` .
+> En API Management-instans kan ha både system-tilldelade och användar-tilldelade identiteter på samma gång. I det här fallet `type` är egenskapen `SystemAssigned,UserAssigned` .
 
-## <a name="supported-scenarios-using-system-assigned-identity"></a>Scenarier som stöds med hjälp av systemtilldelad identitet
+## <a name="supported-scenarios-using-system-assigned-identity"></a>Scenarier som stöds med system tilldelad identitet
 
-### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Hämta ett anpassat TLS/SSL-certifikat för API Management-instansen från Azure Key Vault
-Du kan använda den systemtilldelade identiteten för en API Management instans för att hämta anpassade TLS/SSL-certifikat som lagras i Azure Key Vault. Du kan sedan tilldela dessa certifikat till anpassade domäner i API Management-instansen. Tänk på följande:
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault"></a>Hämta ett anpassat TLS/SSL-certifikat för API Management instansen från Azure Key Vault
+Du kan använda den systemtilldeade identiteten för en API Management instans för att hämta anpassade TLS/SSL-certifikat som lagras i Azure Key Vault. Du kan sedan tilldela dessa certifikat till anpassade domäner i API Management instansen. Tänk på följande:
 
-- Innehålls typen för hemligheten måste vara *Application/x-PKCS12*.
-- Använd slut punkten för Key Vault certifikatets hemlighet, som innehåller hemligheten.
+- Innehållstypen för hemligheten måste vara *application/x-pkcs12*.
+- Använd den Key Vault slutpunkt för certifikathemlighet som innehåller hemligheten.
 
 > [!Important]
-> Om du inte anger objekt versionen av certifikatet får API Management automatiskt en nyare version av certifikatet inom fyra timmar efter det att det har uppdaterats i Key Vault.
+> Om du inte anger objektversionen av certifikatet hämtar API Management automatiskt den nya versionen av certifikatet inom fyra timmar efter att det har uppdaterats i Key Vault.
 
-I följande exempel visas en Azure Resource Manager mall som innehåller följande steg:
+I följande exempel visas Azure Resource Manager mall som innehåller följande steg:
 
-1. Skapa en API Management-instans med en hanterad identitet.
-2. Uppdatera åtkomst principerna för en Azure Key Vault-instans och Tillåt att API Management-instansen hämtar hemligheter från den.
-3. Uppdatera API Management-instansen genom att ange ett eget domän namn genom ett certifikat från Key Vault-instansen.
+1. Skapa en API Management instans med en hanterad identitet.
+2. Uppdatera åtkomstprinciperna för en Azure Key Vault instans och tillåt att API Management-instansen hämtar hemligheter från den.
+3. Uppdatera instansen API Management genom att ange ett anpassat domännamn via ett certifikat från Key Vault instansen.
 
 ```json
 {
@@ -260,46 +261,46 @@ I följande exempel visas en Azure Resource Manager mall som innehåller följan
 }
 ```
 
-### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Autentisera till Server delen med hjälp av en API Management identitet
+### <a name="authenticate-to-the-back-end-by-using-an-api-management-identity"></a>Autentisera till backend-servern med hjälp av API Management identitet
 
-Du kan använda den systemtilldelade identiteten för att autentisera till Server delen via principen för [autentisering som hanteras av identitet](api-management-authentication-policies.md#ManagedIdentity) .
+Du kan använda den system tilldelade identiteten för att autentisera till serverslutet via [principen för autentisering hanterad identitet.](api-management-authentication-policies.md#ManagedIdentity)
 
-### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Ansluta till Azure-resurser bakom IP-brandvägg med systemtilldelad hanterad identitet
+### <a name="connect-to-azure-resources-behind-ip-firewall-using-system-assigned-managed-identity"></a><a name="apim-as-trusted-service"></a>Ansluta till Azure-resurser bakom IP-brandväggen med hjälp av system tilldelad hanterad identitet
 
 
-API Management är en betrodd Microsoft-tjänst till följande resurser. Detta gör att tjänsten kan ansluta till följande resurser bakom en brand vägg. När du uttryckligen tilldelar rätt Azure-roll till den [systemtilldelade hanterade identiteten](../active-directory/managed-identities-azure-resources/overview.md) för den resurs instansen motsvarar åtkomst omfånget för instansen den Azure-roll som tilldelats den hanterade identiteten.
+API Management är en betrodd Microsoft-tjänst till följande resurser. Detta gör att tjänsten kan ansluta till följande resurser bakom en brandvägg. När du uttryckligen har tilldelat lämplig Azure-roll till den system tilldelade hanterade identiteten för den resursinstansen motsvarar åtkomstomfånget för instansen den [Azure-roll](../active-directory/managed-identities-azure-resources/overview.md) som tilldelats den hanterade identiteten.
 
 
 |Azure-tjänst | Länk|
 |---|---|
-|Azure Storage | [Betrodd – åtkomst till Azure-lagring](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
-|Azure Service Bus | [Betrodd – åtkomst till Azure-Service-Bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
-|Azure Event Hub | [Trused – åtkomst till Azure – Event-hubb](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
+|Azure Storage | [Trusted-access-to-azure-storage](../storage/common/storage-network-security.md?tabs=azure-portal#trusted-access-based-on-system-assigned-managed-identity)|
+|Azure Service Bus | [Trusted-access-to-azure-service-bus](../service-bus-messaging/service-bus-ip-filtering.md#trusted-microsoft-services)|
+|Azure Event Hub | [Trused-access-to-azure-event-hub](../event-hubs/event-hubs-ip-filtering.md#trusted-microsoft-services)|
 
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet
 
 > [!NOTE]
-> Du kan associera en API Management-instans med upp till 10 hanterade identiteter som användaren tilldelats.
+> Du kan associera en API Management-instans med upp till 10 användar tilldelade hanterade identiteter.
 
 ### <a name="azure-portal"></a>Azure Portal
 
 Om du vill konfigurera en hanterad identitet i portalen skapar du först en API Management-instans och aktiverar sedan funktionen.
 
-1. Skapa en API Management-instans i portalen på vanligt sätt. Bläddra till den i portalen.
-2. Välj **hanterade identiteter**.
-3. På fliken **användare tilldelad** väljer du **Lägg till**.
-4. Sök efter den identitet som du skapade tidigare och markera den. Välj **Lägg till**.
+1. Skapa en API Management instans i portalen som vanligt. Bläddra till den i portalen.
+2. Välj **Hanterade identiteter.**
+3. På fliken **Användar tilldelad** väljer du Lägg **till**.
+4. Sök efter den identitet som du skapade tidigare och välj den. Välj **Lägg till**.
 
-   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Alternativ för att aktivera en användardefinierad hanterad identitet" border="true":::
+   :::image type="content" source="./media/api-management-msi/enable-user-assigned-msi.png" alt-text="Val för att aktivera en användar tilldelad hanterad identitet" border="true":::
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Följande steg beskriver hur du skapar en API Management-instans och tilldelar den en identitet med hjälp av Azure PowerShell. 
+Följande steg går igenom hur du skapar en API Management-instans och tilldelar den en identitet med hjälp av Azure PowerShell. 
 
-1. Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i [guiden Azure PowerShell](/powershell/azure/install-az-ps). Kör sedan `Connect-AzAccount` för att skapa en anslutning till Azure.
+1. Om det behövs installerar du Azure PowerShell med hjälp av anvisningarna i [Azure PowerShell guiden](/powershell/azure/install-az-ps). Kör sedan `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 2. Använd följande kod för att skapa instansen. Fler exempel på hur du använder Azure PowerShell med en API Management-instans finns i [API Management PowerShell-exempel](powershell-samples.md).
 
@@ -332,7 +333,7 @@ Följande steg beskriver hur du skapar en API Management-instans och tilldelar d
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-mall
 
-Du kan skapa en API Management-instans med en identitet genom att inkludera följande egenskap i resurs definitionen:
+Du kan skapa en API Management instans med en identitet genom att inkludera följande egenskap i resursdefinitionen:
 
 ```json
 "identity": {
@@ -343,9 +344,9 @@ Du kan skapa en API Management-instans med en identitet genom att inkludera föl
 }
 ```
 
-Genom att lägga till en användardefinierad typ anger att Azure ska använda den användar tilldelnings identitet som angetts för din instans.
+Om du lägger till den användar tilldelade typen anger du att Azure ska använda den användar tilldelade identiteten som angetts för din instans.
 
-En fullständig Azure Resource Manager mall kan till exempel se ut så här:
+En fullständig mall Azure Resource Manager till exempel se ut så här:
 
 ```json
 {
@@ -378,7 +379,7 @@ En fullständig Azure Resource Manager mall kan till exempel se ut så här:
 }
 ```
 
-När tjänsten skapas har den följande ytterligare egenskaper:
+När tjänsten har skapats har den följande ytterligare egenskaper:
 
 ```json
 "identity": {
@@ -392,47 +393,47 @@ När tjänsten skapas har den följande ytterligare egenskaper:
 }
 ```
 
-`principalId`Egenskapen är en unik identifierare för den identitet som används för Azure AD-administration. `clientId`Egenskapen är en unik identifierare för programmets nya identitet som används för att ange vilken identitet som ska användas vid körnings anrop.
+Egenskapen `principalId` är en unik identifierare för den identitet som används för Azure AD-administration. Egenskapen är en unik identifierare för programmets nya identitet som används för att ange vilken `clientId` identitet som ska användas under körningssamtal.
 
 > [!NOTE]
-> En API Management instans kan ha både tilldelade och användarspecifika identiteter på samma gång. I det här fallet är `type` egenskapen `SystemAssigned,UserAssigned` .
+> En API Management-instans kan ha både system-tilldelade och användar-tilldelade identiteter på samma gång. I det här fallet `type` är egenskapen `SystemAssigned,UserAssigned` .
 
-## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>Scenarier som stöds med hjälp av användare tilldelad hanterad identitet
+## <a name="supported-scenarios-using-user-assigned-managed-identity"></a>Scenarier som stöds med användar tilldelad hanterad identitet
 
-### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Hämta ett anpassat TLS/SSL-certifikat för API Management-instansen från Azure Key Vault
-Du kan använda valfri användardefinierad identitet för att upprätta förtroende mellan en API Management-instans och ett nyckel valv. Förtroendet kan sedan användas för att hämta anpassade TLS/SSL-certifikat som lagras i Azure Key Vault. Du kan sedan tilldela dessa certifikat till anpassade domäner i API Management-instansen. 
+### <a name="obtain-a-custom-tlsssl-certificate-for-the-api-management-instance-from-azure-key-vault"></a><a name="use-ssl-tls-certificate-from-azure-key-vault-ua"></a>Hämta ett anpassat TLS/SSL-certifikat för API Management instansen från Azure Key Vault
+Du kan använda valfri användar tilldelad identitet för att upprätta förtroende mellan en API Management instans och KeyVault. Det här förtroendet kan sedan användas för att hämta anpassade TLS/SSL-certifikat som lagras i Azure Key Vault. Du kan sedan tilldela dessa certifikat till anpassade domäner i API Management instansen. 
 
 Tänk på följande:
 
-- Innehålls typen för hemligheten måste vara *Application/x-PKCS12*.
-- Använd slut punkten för Key Vault certifikatets hemlighet, som innehåller hemligheten.
+- Innehållstypen för hemligheten måste vara *application/x-pkcs12.*
+- Använd den Key Vault slutpunkt för certifikathemlighet, som innehåller hemligheten.
 
 > [!Important]
-> Om du inte anger objekt versionen av certifikatet får API Management automatiskt en nyare version av certifikatet inom fyra timmar efter det att det har uppdaterats i Key Vault.
+> Om du inte anger objektversionen av certifikatet hämtar API Management automatiskt den nya versionen av certifikatet inom fyra timmar efter att det har uppdaterats i Key Vault.
 
-Den fullständiga mallen finns i [API Management med nyckel valv baserat SSL med hjälp av användarens tilldelade identitet](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
+Den fullständiga mallen finns i använda [API Management KeyVault-baserad SSL med användar tilldelad identitet](https://github.com/Azure/azure-quickstart-templates/blob/master/101-api-management-key-vault-create/azuredeploy.json).
 
-I den här mallen kommer du att distribuera:
+I den här mallen distribuerar du:
 
 * Azure API Management
-* Azure-hanterad användare tilldelad identitet
-* Azure-nyckel valv för att lagra SSL/TLS-certifikat
+* Hanterad användar tilldelad identitet i Azure
+* Azure KeyVault för lagring av SSL/TLS-certifikatet
 
 Klicka på följande knapp för att köra distributionen automatiskt:
 
 [![Distribuera till Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-api-management-key-vault-create%2Fazuredeploy.json)
 
-### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Autentisera till Server delen med hjälp av en användardefinierad identitet
+### <a name="authenticate-to-the-back-end-by-using-a-user-assigned-identity"></a>Autentisera till backend-servern med hjälp av en användar tilldelad identitet
 
-Du kan använda den användare-tilldelade identiteten för att autentisera till Server delen via principen för autentisering av den [autentiserade identiteten](api-management-authentication-policies.md#ManagedIdentity) .
+Du kan använda den användar tilldelade identiteten för att autentisera till serverslutet via [principen för autentisering hanterad identitet.](api-management-authentication-policies.md#ManagedIdentity)
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Ta bort en identitet
 
-Du kan ta bort en tilldelad identitet genom att inaktivera funktionen via portalen eller Azure Resource Manager-mallen på samma sätt som den skapades. Användare-tilldelade identiteter kan tas bort individuellt. Om du vill ta bort alla identiteter anger du identitets typen till `"None"` .
+Du kan ta bort en system tilldelad identitet genom att inaktivera funktionen via portalen eller Azure Resource Manager på samma sätt som den skapades. Användar tilldelade identiteter kan tas bort individuellt. Om du vill ta bort alla identiteter anger du identitetstypen till `"None"` .
 
-Om du tar bort en tilldelad identitet på det här sättet tas även den bort från Azure AD. Systemtilldelade identiteter tas också automatiskt bort från Azure AD när API Management-instansen tas bort.
+Om du tar bort en system tilldelad identitet på det här sättet tas den även bort från Azure AD. System tilldelade identiteter tas också bort automatiskt från Azure AD när API Management-instansen tas bort.
 
-Uppdatera det här avsnittet om du vill ta bort alla identiteter med hjälp av Azure Resource Manager-mallen:
+Om du vill ta bort alla identiteter med hjälp Azure Resource Manager mallen uppdaterar du det här avsnittet:
 
 ```json
 "identity": {
@@ -441,13 +442,13 @@ Uppdatera det här avsnittet om du vill ta bort alla identiteter med hjälp av A
 ```
 
 > [!Important]
-> Om en API Management instans har kon figurer ATS med ett anpassat SSL-certifikat från Key Vault och du försöker inaktivera en hanterad identitet, kommer begäran att Miss sen.
+> Om en API Management-instans har konfigurerats med ett anpassat SSL-certifikat från Key Vault och du försöker inaktivera en hanterad identitet, misslyckas begäran.
 >
-> Du kan häva blockeringen själv genom att växla från ett Azure Key Vault certifikat till ett infogat kodat certifikat och sedan inaktivera den hanterade identiteten. Mer information finns i avsnittet [Så här konfigurerar du ett eget domännamn](configure-custom-domain.md).
+> Du kan avblockera dig själv genom att växla från ett Azure Key Vault-certifikat till ett infogade kodat certifikat och sedan inaktivera den hanterade identiteten. Mer information finns i avsnittet [Så här konfigurerar du ett eget domännamn](configure-custom-domain.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om hanterade identiteter för Azure-resurser:
+Läs mer om hanterade identiteter för Azure-resurser:
 
 * [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md)
 * [Azure Resource Manager-mallar](https://github.com/Azure/azure-quickstart-templates)

@@ -9,12 +9,13 @@ ms.service: api-management
 ms.topic: article
 ms.date: 01/26/2021
 ms.author: apimpm
-ms.openlocfilehash: d5d261368260a1c9658ae0bef8bdf63a7ca6bafe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d198f34abe826af2dce0c1ed9950600d4c7bbd3
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750634"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812308"
 ---
 # <a name="secure-backend-services-using-client-certificate-authentication-in-azure-api-management"></a>Skydda servertjänster med klientcertifikatautentisering i Azure API Management
 
@@ -32,7 +33,7 @@ API Management två alternativ för att hantera certifikat som används för sä
 Vi rekommenderar att du använder Key Vault-certifikat eftersom det förbättrar API Management säkerhet:
 
 * Certifikat som lagras i nyckelvalv kan återanvändas i flera tjänster
-* Detaljerade [åtkomstprinciper kan](../key-vault/general/security-overview.md#privileged-access) tillämpas på certifikat som lagras i nyckelvalv
+* Detaljerade [åtkomstprinciper kan](../key-vault/general/security-features.md#privileged-access) tillämpas på certifikat som lagras i nyckelvalv
 * Certifikat som uppdateras i nyckelvalvet roteras automatiskt i API Management. Efter uppdateringen i nyckelvalvet uppdateras ett certifikat i API Management inom 4 timmar. Du kan också uppdatera certifikatet manuellt med hjälp Azure Portal eller via REST API.
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -49,7 +50,7 @@ Vi rekommenderar att du använder Key Vault-certifikat eftersom det förbättrar
 1. Aktivera en system-tilldelad eller användar [tilldelad hanterad identitet](api-management-howto-use-managed-service-identity.md) i API Management instansen.
 1. Tilldela en [åtkomstprincip för nyckelvalv](../key-vault/general/assign-access-policy-portal.md) till den hanterade identiteten med behörighet att hämta och lista certifikat från valvet. Så här lägger du till principen:
     1. Navigera till ditt nyckelvalv i portalen.
-    1. Välj **Inställningar > Åtkomstprinciper > + Lägg till åtkomstprincip**.
+    1. Välj **Inställningar > Åtkomstprinciper > + Lägg till åtkomstprincip.**
     1. Välj **Certifikatbehörigheter** och välj sedan **Hämta** och **lista**.
     1. I **Välj huvudnamn** väljer du resursnamnet för din hanterade identitet. Om du använder en system tilldelad identitet är huvudnamnet namnet på din API Management instansen.
 1. Skapa eller importera ett certifikat till nyckelvalvet. Se [Snabbstart: Ange och hämta ett certifikat från Azure Key Vault med hjälp av Azure Portal](../key-vault/certificates/quick-create-portal.md).
@@ -104,14 +105,14 @@ När certifikatet har laddats upp visas det i **fönstret** Certifikat. Om du ha
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din API Management instans.
 1. Under **API:er** väljer du **API:er.**
 1. Välj ett API i listan. 
-2. På fliken **Design** väljer du redigeringsikonen i **avsnittet Backend (Backend).**
+2. Välj **redigeringsikonen** i avsnittet **Backend på fliken** Design.
 3. I **Autentiseringsuppgifter för gateway** väljer du **Klientcertifikat** och väljer certifikatet i listrutan.
 1. Välj **Spara**.
 
     :::image type="content" source="media/api-management-howto-mutual-certificates/apim-client-cert-enable-select.png" alt-text="Använda klientcertifikat för gatewayautentisering":::
 
 > [!CAUTION]
-> Den här ändringen börjar gälla omedelbart och anrop till åtgärder för det API:et använder certifikatet för att autentisera på backend-servern.
+> Den här ändringen börjar gälla omedelbart och anrop till åtgärder för det API:et använder certifikatet för att autentisera på serverservern.
 
 > [!TIP]
 > När ett certifikat har angetts för gatewayautentisering för serverdelstjänsten för ett API, blir det en del av principen för det API:et och kan visas i principredigeraren.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f76b2811531b49c9312a02a581e876f9ef569a2a
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 95ab5917779a73b7221a5b431126164aef88b494
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750976"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812128"
 ---
 # <a name="data-encryption-models"></a>Datakrypteringsmodeller
 
@@ -46,7 +46,7 @@ Krypteringsmodeller på serversidan avser kryptering som utförs av Azure-tjäns
 
 ![Server](./media/encryption-models/azure-security-encryption-atrest-fig3.png)
 
-Var och en av modellerna för kryptering på serversidan i vila innebär egenskaper hos nyckelhantering. Detta omfattar var och hur krypteringsnycklar skapas och lagras samt åtkomstmodeller och procedurer för nyckelrotation.  
+Var och en av modellerna för kryptering på serversidan i vila innebär egenskaper hos nyckelhantering. Detta omfattar var och hur krypteringsnycklar skapas och lagras samt åtkomstmodellerna och procedurerna för nyckelrotation.  
 
 Tänk på följande för kryptering på klientsidan:
 
@@ -91,45 +91,45 @@ När kryptering på serversidan med tjänst hanterade nycklar används, hanteras
 
 I scenarier där kravet är att kryptera vilodata och kontrollera krypteringsnycklarna kan kunderna använda kryptering på serversidan med kund hanterade nycklar i Key Vault. Vissa tjänster kan bara lagra rotnyckelns krypteringsnyckel i Azure Key Vault och lagra den krypterade datakrypteringsnyckeln på en intern plats närmare data. I det scenariot kan kunder ta med sina egna nycklar till Key Vault (BYOK – Bring Your Own Key) eller generera nya och använda dem för att kryptera de önskade resurserna. Medan resursprovidern utför krypterings- och dekrypteringsåtgärder använder den den konfigurerade nyckelkrypteringsnyckeln som rotnyckel för alla krypteringsåtgärder.
 
-Förlust av nyckelkrypteringsnycklar innebär dataförlust. Därför bör nycklar inte tas bort. Nycklar ska säkerhetskopieras när de skapas eller roteras. [Mjuk borttagning ska](../../key-vault/general/soft-delete-overview.md) vara aktiverat på alla valv som lagrar nyckelkrypteringsnycklar. I stället för att ta bort en nyckel anger du aktiverat till falskt eller anger förfallodatumet.
+Förlust av nyckelkrypteringsnycklar innebär dataförlust. Därför bör nycklar inte tas bort. Nycklar bör säkerhetskopieras när de skapas eller roteras. [Mjuk borttagning ska](../../key-vault/general/soft-delete-overview.md) vara aktiverat på alla valv som lagrar nyckelkrypteringsnycklar. I stället för att ta bort en nyckel anger du aktiverat till falskt eller anger förfallodatumet.
 
 ### <a name="key-access"></a>Nyckelåtkomst
 
-Krypteringsmodellen på serversidan med kund hanterade nycklar i Azure Key Vault innebär att tjänsten får åtkomst till nycklarna för att kryptera och dekryptera efter behov. Kryptering i vila-nycklar görs tillgängliga för en tjänst via en åtkomstkontrollprincip. Den här principen ger tjänstidentiteten åtkomst till att ta emot nyckeln. En Azure-tjänst som körs för en associerad prenumerations räkning kan konfigureras med en identitet i prenumerationen. Tjänsten kan utföra Azure Active Directory och ta emot en autentiseringstoken som identifierar sig som den tjänst som agerar för prenumerationen. Denna token kan sedan visas för att Key Vault hämta en nyckel som den har fått åtkomst till.
+Krypteringsmodellen på serversidan med kund hanterade nycklar i Azure Key Vault innebär att tjänsten får åtkomst till nycklarna för att kryptera och dekryptera efter behov. Kryptering i vila-nycklar görs tillgängliga för en tjänst via en princip för åtkomstkontroll. Den här principen ger tjänstidentiteten åtkomst till att ta emot nyckeln. En Azure-tjänst som körs för en associerad prenumeration kan konfigureras med en identitet i prenumerationen. Tjänsten kan utföra Azure Active Directory och ta emot en autentiseringstoken som identifierar sig som den tjänst som agerar för prenumerationen. Denna token kan sedan visas för Key Vault för att hämta en nyckel som den har fått åtkomst till.
 
 För åtgärder som använder krypteringsnycklar kan en tjänstidentitet beviljas åtkomst till någon av följande åtgärder: dekryptera, kryptera, unwrapKey, wrapKey, verifiera, signera, hämta, lista, uppdatera, skapa, importera, ta bort, säkerhetskopiera och återställa.
 
-För att hämta en nyckel för användning vid kryptering eller dekryptering av vilodata måste tjänstidentiteten som Resource Manager-tjänstinstansen kör som ha UnwrapKey (för att hämta nyckeln för dekryptering) och WrapKey (för att infoga en nyckel i nyckelvalvet när du skapar en ny nyckel).
+För att hämta en nyckel för användning vid kryptering eller dekryptering av vilodata, måste tjänstidentiteten som Resource Manager-tjänstinstansen kör som ha UnwrapKey (för att hämta nyckeln för dekryptering) och WrapKey (för att infoga en nyckel i nyckelvalvet när du skapar en ny nyckel).
 
 >[!NOTE]
->Mer information om Key Vault finns på sidan skydda ditt nyckelvalv i [Azure Key Vault dokumentationen](../../key-vault/general/security-overview.md).
+>Mer information om hur Key Vault auktorisering finns på sidan skydda ditt nyckelvalv i [Azure Key Vault dokumentationen](../../key-vault/general/security-features.md).
 
 **Fördelar**
 
 - Fullständig kontroll över de nycklar som används – krypteringsnycklar hanteras i kundens Key Vault under kundens kontroll.
 - Möjlighet att kryptera flera tjänster till en huvudtjänst
-- Kan åtse nyckelhantering från den övergripande hanteringsmodellen för tjänsten
+- Kan åtsegrera nyckelhantering från den övergripande hanteringsmodellen för tjänsten
 - Kan definiera tjänst- och nyckelplats mellan regioner
 
 **Nackdelar**
 
 - Kunden har det fullständiga ansvaret för nyckelåtkomsthantering
-- Kunden har det fullständiga ansvaret för nyckellivscykelhantering
+- Kunden har fullständigt ansvar för nyckellivscykelhantering
 - Ytterligare konfiguration & konfigurationskostnader
 
 ## <a name="server-side-encryption-using-customer-managed-keys-in-customer-controlled-hardware"></a>Kryptering på serversidan med kundstyrda nycklar i kundkontrollerad maskinvara
 
-Vissa Azure-tjänster aktiverar HYOK-nyckelhanteringsmodellen (Host Your Own Key). Det här hanteringsläget är användbart i scenarier där det finns ett behov av att kryptera vilodata och hantera nycklarna i en upphovsrättsskyddad lagringsplats utanför Microsofts kontroll. I den här modellen måste tjänsten hämta nyckeln från en extern plats. Prestanda- och tillgänglighetsgarantier påverkas och konfigurationen är mer komplex. Eftersom tjänsten dessutom har åtkomst till DEK under krypterings- och dekrypteringsåtgärder liknar de övergripande säkerhetsgarantierna för den här modellen när nycklarna är kund-hanterade i Azure Key Vault.  Därför är den här modellen inte lämplig för de flesta organisationer om de inte har särskilda nyckelhanteringskrav. På grund av dessa begränsningar stöder de flesta Azure-tjänster inte kryptering på serversidan med serverbaserade nycklar i kundkontrollerad maskinvara.
+Vissa Azure-tjänster aktiverar HYOK-nyckelhanteringsmodellen (Host Your Own Key). Det här hanteringsläget är användbart i scenarier där det finns ett behov av att kryptera vilodata och hantera nycklarna i en upphovsrättsskyddad lagringsplats utanför Microsofts kontroll. I den här modellen måste tjänsten hämta nyckeln från en extern plats. Prestanda- och tillgänglighetsgarantier påverkas och konfigurationen är mer komplex. Eftersom tjänsten dessutom har åtkomst till DEK under krypterings- och dekrypteringsåtgärder liknar de övergripande säkerhetsgarantierna för den här modellen när nycklarna hanteras av kunden i Azure Key Vault.  Därför är den här modellen inte lämplig för de flesta organisationer om de inte har särskilda nyckelhanteringskrav. På grund av dessa begränsningar stöder de flesta Azure-tjänster inte kryptering på serversidan med hjälp av server-hanterade nycklar i kundkontrollerad maskinvara.
 
 ### <a name="key-access"></a>Nyckelåtkomst
 
-När kryptering på serversidan med tjänst hanterade nycklar i kundkontrollerad maskinvara används, underhålls nycklarna i ett system som konfigurerats av kunden. Azure-tjänster som stöder den här modellen ger ett sätt att upprätta en säker anslutning till ett nyckelarkiv som kunden tillhandahåller.
+När kryptering på serversidan med tjänst hanterade nycklar i kundkontrollerad maskinvara används, underhålls nycklarna i ett system som konfigurerats av kunden. Azure-tjänster som stöder den här modellen är ett sätt att upprätta en säker anslutning till ett nyckelarkiv som kunden tillhandahåller.
 
 **Fördelar**
 
 - Fullständig kontroll över den rotnyckel som används – krypteringsnycklar hanteras av ett butik som tillhandahålls av kunden
 - Möjlighet att kryptera flera tjänster till en huvudtjänst
-- Kan åtsegrera nyckelhantering från den övergripande hanteringsmodellen för tjänsten
+- Kan åtse nyckelhantering från den övergripande hanteringsmodellen för tjänsten
 - Kan definiera tjänst- och nyckelplats mellan regioner
 
 **Nackdelar**
@@ -240,7 +240,7 @@ De Azure-tjänster som stöder varje krypteringsmodell:
 
 \* Den här tjänsten bevarar inte data. Tillfälliga cacheminnen, om några, krypteras med en Microsoft-nyckel.
 
-\*\* Den här tjänsten stöder lagring av data i din Key Vault, lagringskonto eller annan tjänst för datalagring som redan har stöd för Server-Side Encryption med Customer-Managed Nyckel.
+\*\* Den här tjänsten stöder lagring av data i din Key Vault, lagringskonto eller annan tjänst för datalagring som redan stöder Server-Side kryptering med Customer-Managed nyckel.
 
 ## <a name="next-steps"></a>Nästa steg
 
