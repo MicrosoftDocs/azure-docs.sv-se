@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/20/2020
 ms.author: v-erkel
-ms.openlocfilehash: 36ce494c7fd51a1341834d5c231e32e60c5a32b9
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ae4c52ec1390166eccb0e73d6f81a8553c445b2e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752002"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813298"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Använda kund hanterade krypteringsnycklar för Azure HPC Cache
 
@@ -54,33 +54,33 @@ Nyckelegenskaper:
 
 Åtkomstbehörigheter för nyckelvalv:
 
-* Den användare som skapar Azure HPC Cache måste ha behörigheter som motsvarar Key Vault [deltagarrollen](../role-based-access-control/built-in-roles.md#key-vault-contributor). Samma behörigheter krävs för att konfigurera och hantera Azure Key Vault.
+* Den användare som skapar Azure HPC Cache ha behörigheter som motsvarar den Key Vault [deltagarrollen](../role-based-access-control/built-in-roles.md#key-vault-contributor). Samma behörigheter krävs för att konfigurera och hantera Azure Key Vault.
 
-  Mer information [finns i Säker åtkomst till ett](../key-vault/general/security-overview.md) nyckelvalv.
+  Mer [information finns i Säker åtkomst till](../key-vault/general/security-features.md) ett nyckelvalv.
 
 ## <a name="1-set-up-azure-key-vault"></a>1. Konfigurera Azure Key Vault
 
-Du kan konfigurera ett nyckelvalv och en nyckel innan du skapar cachen, eller göra det som en del av cacheskapandet. Se till att dessa resurser uppfyller kraven som beskrivs [ovan.](#understand-key-vault-and-key-requirements)
+Du kan konfigurera ett nyckelvalv och en nyckel innan du skapar cacheminnet, eller göra det som en del av cacheskapandet. Se till att dessa resurser uppfyller kraven som beskrivs [ovan.](#understand-key-vault-and-key-requirements)
 
 När cacheminnet skapas måste du ange ett valv, en nyckel och en nyckelversion som ska användas för cachens kryptering.
 
-Mer information [Azure Key Vault dokumentationen.](../key-vault/general/overview.md)
+Läs dokumentationen [Azure Key Vault för](../key-vault/general/overview.md) mer information.
 
 > [!NOTE]
-> Den Azure Key Vault måste använda samma prenumeration och finnas i samma region som Azure HPC Cache. Kontrollera att den region du väljer stöder [båda produkterna.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
+> Den Azure Key Vault måste använda samma prenumeration och finnas i samma region som Azure HPC Cache. Kontrollera att den region som du väljer [stöder båda produkterna.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. Skapa cachen med kund hanterade nycklar aktiverade
 
-Du måste ange krypteringsnyckelkällan när du skapar Azure HPC Cache. Följ anvisningarna i [Skapa en Azure HPC Cache](hpc-cache-create.md)och ange nyckelvalvet och nyckeln på sidan **Diskkrypteringsnycklar.** Du kan skapa ett nytt nyckelvalv och en nyckel när du skapar cacheminnet.
+Du måste ange krypteringsnyckelkällan när du skapar Azure HPC Cache. Följ instruktionerna i [Skapa en Azure HPC Cache](hpc-cache-create.md)och ange nyckelvalvet och nyckeln på sidan **Diskkrypteringsnycklar.** Du kan skapa ett nytt nyckelvalv och en nyckel när du skapar cacheminnet.
 
 > [!TIP]
-> Om sidan **Diskkrypteringsnycklar** inte visas kontrollerar du att cacheminnet finns i en av de [regioner som stöds.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
+> Om sidan **Diskkrypteringsnycklar** inte visas kontrollerar du att cacheminnet finns i någon av de [regioner som stöds.](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=hpc-cache,key-vault)
 
 Den användare som skapar cachen måste ha behörigheter som motsvarar rollen [Key Vault deltagare](../role-based-access-control/built-in-roles.md#key-vault-contributor) eller högre.
 
 1. Klicka på knappen för att aktivera privat hanterade nycklar. När du har ändrat den här inställningen visas inställningarna för nyckelvalvet.
 
-1. Klicka **på Välj ett nyckelvalv** för att öppna sidan för nyckelval. Välj eller skapa nyckelvalvet och nyckeln för att kryptera data på cacheminnets diskar.
+1. Klicka **på Välj ett nyckelvalv** för att öppna sidan för nyckelval. Välj eller skapa nyckelvalvet och nyckeln för kryptering av data på cacheminnets diskar.
 
    Om ditt Azure Key Vault inte visas i listan kontrollerar du följande krav:
 
@@ -105,7 +105,7 @@ Efter några minuter visas den nya Azure HPC Cache i din Azure Portal. Gå till 
 Den här tvåstegsprocessen är nödvändig eftersom Azure HPC Cache-instansen behöver en identitet för att skicka till Azure Key Vault för auktorisering. Cacheidentiteten finns inte förrän dess första steg har skapats.
 
 > [!NOTE]
-> Du måste auktorisera kryptering inom 90 minuter efter att du har skapat cacheminnet. Om du inte slutför det här steget kommer cacheminnet att få en time out och misslyckas. En misslyckad cache måste skapas på nytt, den kan inte åtgärdas.
+> Du måste auktorisera krypteringen inom 90 minuter efter att du har skapat cachen. Om du inte slutför det här steget kommer cacheminnet att få en time out och misslyckas. En misslyckad cache måste skapas på nytt, den kan inte åtgärdas.
 
 Cachen visar statusen **Väntar på nyckeln**. Klicka på **knappen Aktivera** kryptering överst på sidan för att ge cachen åtkomst till det angivna nyckelvalvet.
 

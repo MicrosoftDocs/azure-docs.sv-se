@@ -1,195 +1,195 @@
 ---
-title: Så här hanterar du ett kommersiellt marknads plats konto i Microsoft Partner Center – Azure Marketplace
-description: Lär dig hur du hanterar ett kommersiellt marknads plats konto i Microsoft Partner Center.
+title: Hantera ett konto för den kommersiella marknadsplatsen i Microsoft Partner Center – Azure Marketplace
+description: Lär dig hur du hanterar ett konto för den kommersiella marknadsplatsen i Microsoft Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 04/07/2021
-ms.openlocfilehash: c76d9d06425405cf7f43e089cb9c2995e30410ee
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 6b721e7acb7907743c0696aff6c11ad59f5ceba9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107108472"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812578"
 ---
-# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Hantera ditt kommersiella Marketplace-konto i Partner Center
+# <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Hantera ditt commercial marketplace-konto i Partnercenter
 
 **Lämpliga roller**
 
 - Ägare
 - Ansvarig
 
-När du har [skapat ett partner Center-konto](./create-account.md)kan du använda [instrument panelen för extern Marketplace](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) för att hantera ditt konto och erbjudanden.
+När du har skapat [ett Partnercenter-konto kan](./create-account.md)du använda instrumentpanelen för [den kommersiella marknadsplatsen](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) för att hantera ditt konto och dina erbjudanden.
 
-## <a name="access-your-account-settings"></a>Komma åt dina konto inställningar
+## <a name="access-your-account-settings"></a>Få åtkomst till dina kontoinställningar
 
-Om du inte redan har gjort det ska du (eller din organisations administratör) komma åt [konto inställningarna](https://partner.microsoft.com/dashboard/account/management) för ditt partner Center-konto.
+Om du inte redan har gjort det bör du (eller din organisations administratör) komma åt [kontoinställningarna för](https://partner.microsoft.com/dashboard/account/management) ditt Partnercenter-konto.
 
-1. Logga in på [instrument panelen för kommersiellt marknads platser](https://partner.microsoft.com/dashboard/commercial-marketplace) i Partner Center med det konto som du vill komma åt. Om du är en del av flera konton och har loggat in med ett annat, kan du [Växla konton](switch-accounts.md).
-1. I det övre högra hörnet väljer du **Inställningar** (kugg hjuls ikon) och väljer sedan **konto inställningar**.
+1. Logga in på [instrumentpanelen för den kommersiella](https://partner.microsoft.com/dashboard/commercial-marketplace) marknadsplatsen i Partnercenter med det konto som du vill komma åt. Om du ingår i flera konton och har loggat in med en annan kan du [byta konto.](switch-accounts.md)
+1. Längst upp till höger väljer du **Inställningar** (kugghjulsikonen) och sedan **Kontoinställningar.**
 
-    [![Skärm bild av menyn konto inställningar i Partner Center. ](./media/manage-accounts/settings-account.png)](./media/manage-accounts/settings-account.png#lightbox)
+    [![Skärmbild av menyn kontoinställningar i Partnercenter. ](./media/manage-accounts/settings-account.png)](./media/manage-accounts/settings-account.png#lightbox)
 
-1. Välj **juridiskt** under **konto inställningar** . Välj fliken **utvecklare** för att visa information som är relaterad till ditt kommersiella marknads plats konto.
+1. Under **Kontoinställningar väljer** du **Juridiskt.** Välj sedan fliken **Utvecklare** för att visa information om ditt kommersiella Marketplace-konto.
 
-    [![Skärm bild av fliken Utvecklare på den juridiska sidan i konto inställningar. ](./media/manage-accounts/developer-tab.png)](./media/manage-accounts/developer-tab.png#lightbox)
+    [![Skärmbild av fliken Utvecklare på den juridiska sidan i Kontoinställningar. ](./media/manage-accounts/developer-tab.png)](./media/manage-accounts/developer-tab.png#lightbox)
 
-### <a name="account-settings-page"></a>Sidan konto inställningar
+### <a name="account-settings-page"></a>Sidan Kontoinställningar
 
-När du väljer **Inställningar** och expanderar **konto inställningar** är standardvyn **juridisk information**. Den här sidan kan ha upp till tre flikar, beroende på vilka program du har registrerat i: _partner_, _åter försäljare_ och _utvecklare_.
+När du väljer **Inställningar** och **expanderar Kontoinställningar** är standardvyn **Juridisk information**. Den här sidan kan ha upp till tre flikar, beroende på vilka program du har registrerat i: _Partner,_ _Återförsäljare_ och _Utvecklare._
 
-Fliken **partner** för partner som har registrerats i MPN innehåller:
+Fliken **Partner** för partner som registrerats i MPN innehåller:
 
-- All juridisk information, till exempel registrerat juridiskt namn och adress för ditt företag
+- All juridisk företagsinformation, till exempel registrerat juridiskt namn och adress för ditt företag
 - Primär kontakt
-- Företags platser.
+- Företagsplatser.
 
-Fliken **åter försäljare** för partner som utför CSP-verksamhet innehåller:
+Fliken **Reseller (Återförsäljare)** för partner som utför CSP-verksamhet innehåller:
 
-- Primär kontakt information
-- Kund support profil
+- Primär kontaktinformation
+- Kundsupportprofil
 - Programinformation
 
-Fliken **utvecklare** , för partner som har registrerats i ett program för utvecklare, har följande information:
+Fliken **Utvecklare** innehåller följande information för partner som har registrerats i alla utvecklingsprogram:
 
-- **Konto information**: konto typ och konto status
-- **Utgivar**-ID: säljar-ID, användar-ID, utgivarens ID, Azure AD-klienter med mera
-- **Kontakt information**: utgivarens visnings namn, säljar kontakt (namn, e-post, telefon och adress) och företags god kännare (namn, e-post, telefon)
+- **Kontoinformation:** Kontotyp och Kontostatus
+- **Utgivar-ID:** Säljar-ID, användar-ID, utgivar-ID, Azure AD-klientorganisation med mera
+- **Kontaktinformation:** Utgivarens visningsnamn, säljarkontakt (namn, e-postadress, telefon och adress) och företags godkännare (namn, e-postadress, telefon)
 
-### <a name="account-settings---developer-tab"></a>Konto inställningar – fliken Utvecklare
+### <a name="account-settings---developer-tab"></a>Kontoinställningar – fliken Utvecklare
 
 Följande information beskriver informationen på fliken Utvecklare.
 
-#### <a name="account-details"></a>Konto information
+#### <a name="account-details"></a>Kontoinformation
 
-I avsnittet _konto information_ på fliken _utvecklare_ kan du se grundläggande information, till exempel din **Kontotyp** (företag eller individ) och **verifierings statusen** för ditt konto. Under ditt konto verifierings process visar de här inställningarna varje steg som krävs, inklusive e-postverifiering, personal verifiering och verksamhets verifiering.
+I _avsnittet Kontoinformation_  på fliken Utvecklare kan du se grundläggande information, till exempel kontotyp **(företag** eller enskild) och **verifieringsstatus** för ditt konto. Under kontoverifieringsprocessen visar inställningarna varje steg som krävs, inklusive e-postverifiering, anställningsverifiering och företagsverifiering.
 
-#### <a name="publisher-ids"></a>Utgivar-ID
+#### <a name="publisher-ids"></a>Utgivar-ID:er
 
-I avsnittet Publisher-ID kan du se ditt **Symantec-ID** (om tillämpligt), **säljar-ID**, **användar-** ID, **MPN-ID** och **Azure AD-klienter**. Dessa värden tilldelas av Microsoft för att unikt identifiera ditt Developer-konto och kan inte redige ras.
+I avsnittet Utgivar-ID:n kan du se ditt **Symantec-ID** (om tillämpligt), **säljar-ID,** **användar-ID,** **MPN-ID** och **Azure AD-klienter.** Dessa värden tilldelas av Microsoft för att unikt identifiera ditt utvecklarkonto och kan inte redigeras.
 
 Om du inte har ett Symantec-ID kan du välja länken för att begära ett.
 
 ### <a name="contact-info"></a>Kontaktuppgifter
 
-I avsnittet _kontakt information_ ser du **visnings namnet för utgivaren**, **säljarens kontakt information** (kontakt namn, e-postadress, telefonnummer och adress för företags säljaren) och **företagets god kännare** (namn, e-postadress och telefonnummer till den person som har behörighet att godkänna beslut för företaget).
+I _avsnittet_ Kontaktinformation visas utgivarens **visningsnamn,** kontaktuppgifter till säljare (kontaktnamn, e-postadress, telefonnummer och adress för företagets säljare) och Företags godkännare **(namn,** e-postadress och telefonnummer för den person som har behörighet att godkänna företagets beslut). 
 
-Du kan också välja länken **Uppdatera** om du vill ändra din kontakt information, till exempel visnings namn och e-postadress för Publisher.
+Du kan också välja länken **Uppdatera om** du vill ändra din kontaktinformation, till exempel utgivarens visningsnamn och e-postadress.
 
-### <a name="account-settings-identifiers"></a>Konto inställnings identifierare
+### <a name="account-settings-identifiers"></a>Identifierare för kontoinställningar
 
-Under **konto inställningar**  >  **organisations profil** väljer du **identifierare** för att se följande information:
+Under **Kontoinställningar**  >  **Organisationsprofil** väljer du **Identifierare** för att se följande information:
 
-- **MPN-ID**: MPN-ID: n som är kopplade till ditt konto
-- **CSP**: MPN-ID som är kopplade till CSP-programmet för det här kontot.
-- **Utgivare**: säljar-ID: n som är kopplade till ditt konto
-- **Spåra GUID**: alla spårnings-GUID som är associerade med ditt konto
+- **MPN-ID:er:** ALLA MPN-ID:er som är associerade med ditt konto
+- **CSP:** MPN-ID:er som är associerade med CSP-programmet för det här kontot.
+- **Utgivare:** Säljar-ID:er som är associerade med ditt konto
+- **Spårnings-GUID:** Alla spårnings-GUID:er som är associerade med ditt konto
 
-#### <a name="tracking-guids"></a>Spåra GUID
+#### <a name="tracking-guids"></a>Spåra GUID:er
 
-Globalt unika identifierare (GUID) är unika referens nummer (med 32 hexadecimala siffror) som kan användas för att spåra din Azure-användning.
+Globalt unika identifierare (GUID) är unika referensnummer (med 32 hexadecimala siffror) som kan användas för att spåra din Azure-användning.
 
-Om du vill skapa GUID för spårning bör du använda en GUID-Generator. Azure Storages teamet har skapat ett [GUID Generator-formulär](https://aka.ms/StoragePartners) som kommer att skicka ett GUID till rätt format och kan återanvändas över olika spårnings system.
+Om du vill skapa GUID:er för spårning bör du använda en GUID-generator. Teamet Azure Storage har skapat ett [GUID-generatorformulär](https://aka.ms/StoragePartners) som skickar ett GUID med rätt format via e-post och som kan återanvändas i de olika spårningssystemen.
 
-Vi rekommenderar att du skapar ett unikt GUID för varje erbjudande och distributions kanal för varje produkt. Du kan välja att använda ett enda GUID för produktens flera distributions kanaler om du inte vill att rapportering ska delas.
+Vi rekommenderar att du skapar ett unikt GUID för varje erbjudande och distributionskanal för varje produkt. Du kan välja att använda ett enda GUID för produktens flera distributionskanaler om du inte vill att rapporteringen ska delas upp.
 
-Om du distribuerar en produkt med hjälp av en mall och den är tillgänglig på både Azure Marketplace och på GitHub, kan du skapa och registrera två olika GUID:
+Om du distribuerar en produkt med hjälp av en mall och den är tillgänglig på både Azure Marketplace och på GitHub kan du skapa och registrera två distinkta GUID:er:
 
-- Produkt A på Azure Marketplace
+- Produkt A i Azure Marketplace
 - Produkt A på GitHub
 
-Rapportering görs av partner värdet (Microsoft partner-ID) och GUID. Du kan också spåra GUID på en mer detaljerad nivå som justeras efter varje plan i erbjudandet.
+Rapporteringen görs av partnervärdet (Microsoft Partner-ID) och GUID:erna. Du kan också spåra GUID:er på en mer detaljerad nivå som överensstämmer med varje plan i ditt erbjudande.
 
-Mer information finns i [vanliga frågor och svar om att spåra Azures kund användning med GUID](azure-partner-customer-usage-attribution.md#faq).
+Mer information finns i Spåra [Azure-kundanvändning med GUID:er](azure-partner-customer-usage-attribution.md#faq)vanliga frågor och svar ).
 
 ### <a name="agreements"></a>Avtal
 
-På sidan **avtal** kan du Visa en lista över de publicerings avtal som du har auktoriserat. Dessa avtal visas enligt namn och versions nummer, inklusive datumet då det godkändes och namnet på den användare som har godkänt avtalet.
+På **sidan** Avtal kan du visa en lista över de publiceringsavtal som du har godkänt. Dessa avtal listas enligt namn och versionsnummer, inklusive det datum då det godkändes och namnet på den användare som godkände avtalet.
 
-Så här öppnar du avtals sidan:
+Så här kommer du till sidan Avtal:
 
-1. Logga in på [partner Center](https://partner.microsoft.com/dashboard/home).
-1. I det övre högra hörnet väljer du **Inställningar**  >  **konto inställningar**.
-1. Under **konto inställningar** väljer du **avtal**.
+1. Logga in på [Partner Center](https://partner.microsoft.com/dashboard/home).
+1. Längst upp till höger väljer du **Inställningar**  >  **Kontoinställningar.**
+1. Under **Kontoinställningar** väljer du **Avtal.**
 
-De **åtgärder som krävs** kan visas överst på den här sidan om det finns avtals uppdateringar som kräver din uppmärksamhet. Om du vill godkänna ett uppdaterat avtal läser du först den länkade avtals versionen och väljer sedan **Godkänn avtal**.
+**Åtgärder som** krävs kan visas överst på den här sidan om det finns avtalsuppdateringar som behöver din uppmärksamhet. Om du vill godkänna ett uppdaterat avtal läser du först den länkade avtalsversionen och väljer **sedan Acceptera avtal.**
 
-## <a name="set-up-a-payout-profile"></a>Konfigurera en utbetalnings profil
+## <a name="set-up-a-payout-profile"></a>Konfigurera en utbetalningsprofil
 
-En utbetalnings profil är Bank kontot som fortsätter skickas från din försäljning. Det här bank kontot måste finnas i samma land eller region där du registrerade ditt partner Center-konto. Mer information om en utbetalnings profil finns i [skapa och hantera incitaments utbetalningar och skatte profiler i Partner Center](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles) och [Konfigurera ditt utbetalnings konto och skatte formulär](/partner-center/set-up-your-payout-account).
+En utbetalningsprofil är det bankkonto som fortsätter att skickas från din försäljning. Det här bankkontot måste finnas i samma land eller region där du registrerade ditt Partnercenter-konto. Mer information om en utbetalningsprofil finns i Skapa och hantera incitament för utbetalnings- och skatteprofiler i [Partnercenter](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles) och Konfigurera ditt [utbetalningskonto och skatteformulär.](/partner-center/set-up-your-payout-account)
 
-Så här konfigurerar du din utbetalnings profil:
+Så här ställer du in din utbetalningsprofil:
 
-1. Gå till [sidan för extern Marketplace-översikt](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) i Partner Center.
-2. I avsnittet **profil** , bredvid **utbetalnings profil**, väljer du **Uppdatera**.
-3. **Välj en betalnings metod**: bank konto eller PayPal.
-4. **Lägg till betalnings information**: Detta kan vara att välja en kontotyp (kontroll eller besparingar), ange konto innehavarens namn, konto nummer och routing number, fakturerings adress, telefonnummer eller PayPal-e-postadress. Mer information om hur du använder PayPal som din konto Betalnings Metod och för att ta reda på om den stöds på din marknad eller region finns i [PayPal-information](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
+1. Gå till [översiktssidan för den kommersiella marknadsplatsen](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) i Partnercenter.
+2. I avsnittet **Profil** bredvid Utbetalningsprofil **väljer** du **Uppdatera**.
+3. **Välj en betalningsmetod:** Bankkonto eller PayPal.
+4. **Lägg till betalningsinformation:** Detta kan omfatta att välja en kontotyp (kontroll eller sparande), ange kontoinnehavarens namn, kontonummer och routningsnummer, faktureringsadress, telefonnummer eller PayPal-e-postadress. Mer information om hur du använder PayPal som betalningsmetod för ditt konto och om du vill ta reda på om det stöds i din marknad eller region finns [i PayPal info](/windows/uwp/publish/setting-up-your-payout-account-and-tax-forms#paypal-info).
 
 > [!IMPORTANT]
-> Att ändra ditt utbetalnings konto kan försena dina betalningar med upp till en betalnings cykel. Den här fördröjningen inträffar eftersom vi behöver verifiera konto ändringen, precis som vi gör när du först konfigurerar kontot för utbetalning. Du betalar fortfarande för hela beloppet när ditt konto har verifierats. alla betalningar som förfaller för den aktuella betalnings cykeln läggs till nästa.  
+> Om du ändrar ditt utbetalningskonto kan du fördröja dina betalningar med upp till en betalningscykel. Den här fördröjningen beror på att vi behöver verifiera kontoändringen, precis som vi gör när vi först ställer in utbetalningskontot. Du får fortfarande betalt för hela beloppet när ditt konto har verifierats. eventuella betalningar som förfaller för den aktuella betalningscykeln läggs till i nästa.  
 
-## <a name="tax-profile"></a>Skatte profil
+## <a name="tax-profile"></a>Skatteprofil
 
-Granska din aktuella moms profil status och bekräfta att rätt **typ av entitetstyp** och **information om skatte certifikat** visas. Välj **Redigera** för att uppdatera eller fylla i nödvändiga formulär.
+Granska din aktuella skatteprofilstatus och bekräfta att rätt **entitetstyp** **och skattecertifikatinformation** visas. Välj **Redigera** för att uppdatera eller fylla i alla formulär som krävs.
 
-För att kunna upprätta din skatte status måste du ange land eller region för bosättning och medborgarskap och fylla i lämpliga skatte formulär som är kopplade till ditt land eller din region.
+För att kunna fastställa din skattestatus måste du ange ditt land eller din region för hem och ursprungsland och fylla i lämpliga skatteformulär som är associerade med ditt land eller din region.
 
-Oavsett ditt land eller din region eller ditt medborgarskap måste du fylla i USA skatte formulär för att sälja erbjudanden via Microsoft. Partner som uppfyller vissa USA placering krav måste fylla i ett IRS W-9-formulär. Andra partner utanför USA måste fylla i ett IRS-W-8-formulär. Du kan fylla i dessa formulär online när du har slutfört din skatte profil.
+Oavsett land eller region måste du fylla i skatteformulär USA att sälja erbjudanden via Microsoft. Partner som uppfyller vissa USA måste fylla i ett IRS W-9-formulär. Andra partner utanför USA måste fylla i ett IRS W-8-formulär. Du kan fylla i dessa formulär online när du fyller i din skatteprofil.
 
-En USA individuellt Taxpayer Identification Number (eller ITIN) krävs inte för att få betalningar från Microsoft eller för att göra anspråk på bidrag för skatte fördrag.
+Ett USA individuellt identifieringsnummer (eller ITIN) behöver inte ta emot betalningar från Microsoft eller kräva skatteförmåner.
 
-Du kan slutföra och skicka in dina skatte formulär elektroniskt i Partner Center. i de flesta fall behöver du inte skriva ut och skicka e-post till några formulär.
+Du kan fylla i och skicka skatteformulär elektroniskt i Partnercenter; I de flesta fall behöver du inte skriva ut och skicka några formulär via e-post.
 
-Olika länder och regioner har olika skatte krav. Den exakta mängd som du måste betala i skatter beror på de länder och regioner där du säljer dina erbjudanden. Microsoft remitterar försäljning och använder skatt för din räkning i vissa länder och regioner. Dessa länder och regioner identifieras i den process där ditt erbjudande visas. I andra länder och regioner, beroende på var du är registrerad, kan du behöva betala försäljnings-och användnings skatt för din försäljning direkt till den lokala beskattnings-utfärdaren. Dessutom kan de försäljnings vinster du får vara skattepliktiga. Vi rekommenderar starkt att du kontaktar den behöriga myndigheten för ditt land eller din region som kan hjälpa dig att fastställa rätt skatte information för dina Microsoft Sales-transaktioner.
+Olika länder och regioner har olika skattekrav. Exakt hur mycket du måste betala i skatt beror på vilka länder och regioner där du säljer dina erbjudanden. Microsoft erbjuder försäljning och använder skatt åt dig i vissa länder och regioner. Dessa länder och regioner identifieras när du listar ditt erbjudande. I andra länder och regioner, beroende på var du är registrerad, kan du behöva överföra försäljning och använda skatt för din försäljning direkt till den lokala skatteutfärdaren. Dessutom kan försäljningen du får vara momsbar som inkomst. Vi rekommenderar starkt att du kontaktar relevant myndighet för ditt land eller din region som bäst kan hjälpa dig att fastställa rätt skatteinformation för dina Microsoft-försäljningstransaktioner.
 
-Mer information om en skatte profil finns i [skapa och hantera incitaments utbetalningar och skatte profiler i Partner Center](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles) och [Konfigurera ditt utbetalnings konto och skatte formulär](/partner-center/set-up-your-payout-account).
+Mer information om en skatteprofil finns i Skapa och hantera incitament för utbetalnings- och skatteprofiler i [Partnercenter](/partner-center/incentives-create-and-manage-your-payout-and-tax-profiles) och Konfigurera ditt [utbetalningskonto och skatteformulär.](/partner-center/set-up-your-payout-account)
 
-### <a name="withholding-rates"></a>Käll frekvens
+### <a name="withholding-rates"></a>Källskattefrekvens
 
-Den information som du skickar i dina skatte formulär avgör vilken käll avgift som behövs. Käll priset gäller endast för försäljning som du gör i USA. försäljning som görs till platser utanför USA omfattas inte av indrag. Käll priserna varierar, men för de flesta utvecklare som registrerar utanför USA är standard priset 30%. Du kan välja att minska den här hastigheten om ditt land eller din region har samtyckt till ett inkomst skatte avtal med USA.
+Den information som du skickar i dina skatteformulär avgör lämplig källskatt. Källskattesatsen gäller endast för försäljning som du gör i USA; försäljning som görs till icke-amerikanska platser omfattas inte av källskatt. Källskattefrekvensen varierar, men för de flesta utvecklare som registrerar sig utanför USA är standardfrekvensen 30 %. Du kan välja att minska den här frekvensen om ditt land eller din region har samtyckt till en inkomstskatt med USA.
 
-### <a name="tax-treaty-benefits"></a>Förmåner för skatte fördrag
+### <a name="tax-treaty-benefits"></a>Förmåner för skatteförmåner
 
-Om du befinner dig utanför USA kanske du kan dra nytta av fördelarna med moms avtal. De här fördelarna varierar från land/region till land/region, och kan göra det möjligt för dig att minska den mängd som Microsoft drar nytta av. Du kan göra anspråk på skatte förmåner genom att fylla i del II i formuläret W-8BEN. Vi rekommenderar att du kommunicerar med lämpliga resurser i ditt land eller din region för att avgöra om dessa förmåner gäller dig.
+Om du är utanför USA kan du eventuellt dra nytta av skatteförmåner. Dessa förmåner varierar från land/region till land/region och kan göra att du kan minska mängden skatter som Microsoft håller inne. Du kan begära skatteförmåner genom att fylla i del II av W-8BEN-formuläret. Vi rekommenderar att du kommunicerar med lämpliga resurser i ditt land eller din region för att avgöra om dessa förmåner gäller för dig.
 
-[Läs mer om skatte information för Windows app/Game-utvecklare och Azure Marketplace-utgivare](/windows/uwp/publish/tax-details-for-paid-apps).
+[Läs mer om skatteinformation för Windows-app-/spelutvecklare och Azure Marketplace utgivare.](/windows/uwp/publish/tax-details-for-paid-apps)
 
-### <a name="payout-hold-status"></a>Status för utbetalning
+### <a name="payout-hold-status"></a>Status för utbetalnings hold
 
-Som standard skickar Microsoft betalningar per månad. Du kan dock välja att spärra dina inbetalningar, vilket förhindrar att betalningar skickas till ditt konto. Om du väljer att spärra dina inbetalningar kommer vi att fortsätta att registrera alla intäkter som du får och ange informationen i din **utbetalnings Sammanfattning**. Vi kommer dock inte att skicka några betalningar till ditt konto förrän du tar bort spärren.
+Som standard skickar Microsoft betalningar per månad. Du kan dock välja att vänta med dina betalningar, vilket förhindrar att betalningar skickas till ditt konto. Om du väljer att vänta med dina utbetalningsbetalningar fortsätter vi att registrera eventuella intäkter som du tjänar och ange informationen i din **utbetalningssammanfattning.** Vi skickar dock inga betalningar till ditt konto förrän du tar bort stödet.
 
-**För att spärra dina betalningar**:
+**Så här placerar du dina betalningar i betalningsanklagning:**
 
-1. Gå till **konto inställningar**. 
-1. I vänster-nav expanderar du **betalning och skatt** och väljer **utbetalnings-och skatte profiler**.
-1. Välj det program som du vill lagra betalningar för och markera sedan kryss rutan **Behåll min betalning** .
+1. Gå till **Kontoinställningar**. 
+1. I det vänstra navigeringsfältet **expanderar du Utbetalning och skatt** och väljer **Utbetalnings- och skatteprofiler.**
+1. Välj det program som du vill hålla betalningar för och markera sedan **kryssrutan Håll min** betalning.
 
-Du kan ändra din utbetalnings status när som helst, men tänk på att ditt beslut påverkar nästa månads utbetalning. Om du till exempel vill ha en utbetalning av april, se till att ställa in din utbetalnings status **till före slutet** av mars.
+Du kan ändra statusen för utbetalnings hold när som helst, men tänk på att ditt beslut påverkar nästa månadsutbetalning. Om du till exempel vill hålla aprilutbetalningen ska du se till att ställa in din utbetalningsstatus på **På** innan slutet av mars.
 
-När du har angett statusen för din utbetalnings spärr till **på**, kommer alla utbetalningar att hållas kvar tills du växlar skjutreglaget tillbaka till **av**. När du gör det kommer du att inkluderas under nästa månads utbetalnings cykel (förutsatt att alla tillämpliga betalnings trösklar har uppfyllts). Om du till exempel har haft dina utbetalningar som är spärrade, men vill ha en utbetalning som genererats i juni, **ser du till** att växla över-statusen för utbetalningen är intill innan slutet av maj.
+När du har ställt in din utbetalningsstatus på **På** behålls alla utbetalningar tills du växlar skjutreglaget tillbaka till **Av**. När du gör det inkluderas du under nästa månatliga utbetalningscykel (förutsatt att tillämpliga betalningströsklar har uppnåtts). Om du till exempel har fått dina utbetalningar väntande, men vill ha en utbetalning som genereras i juni, ska du se till att ändra utbetalningsstatusen till **Av** innan slutet av maj.
 
 > [!NOTE]
-> Ditt val av **utbetalnings status** gäller för **alla** intäkts källor som betalas via Microsoft Partner Center, inklusive Azure Marketplace, Microsoft AppSource, Microsoft Store, annonsering och så vidare.). Du kan inte välja olika spärr status för varje intäkts källa.
+> Ditt **val av utbetalningsstatus** gäller för alla intäktskällor som betalas via Microsoft Partner Center, inklusive Azure Marketplace, Microsoft AppSource, Microsoft Store, annonsering och så vidare.).  Du kan inte välja olika kvarställningsstatusar för varje intäktskälla.
 
 ## <a name="devices"></a>Enheter
 
-Inställningarna för enhets hantering gäller endast för UWP-publicering (Universal Windows Platform). [Läs mer](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
+Inställningarna för enhetshantering gäller endast för UWP-publicering (Universal Windows Platform). [Läs mer](/windows/uwp/publish/manage-account-settings-and-profile#additional-settings-and-info).
 
-## <a name="create-a-billing-profile"></a>Skapa en fakturerings profil
+## <a name="create-a-billing-profile"></a>Skapa en faktureringsprofil
 
-Om du publicerar en [Dynamics 365 för kund engagemang & Power Apps](./partner-center-portal/create-new-customer-engagement-offer.md) eller [Dynamics 365 for Operations](./partner-center-portal/create-new-operations-offer.md) -erbjudandet måste du slutföra din *fakturerings profil*.
+Om du publicerar ett [erbjudande för Dynamics 365 for Customer Engagement & Power Apps](dynamics-365-customer-engage-offer-setup.md) eller Dynamics [365 for Operations](./partner-center-portal/create-new-operations-offer.md) måste du slutföra *faktureringsprofilen*.
 
-Fakturerings adressen är förifylld från din juridiska organisation och du kan uppdatera den här adressen senare. Fälten skatte-och moms-ID krävs för vissa länder och valfritt för andra. Det går inte att redigera lands-/region namn och företags namn.
+Faktureringsadressen är ifylld i förväg från din juridiska enhet och du kan uppdatera den här adressen senare. Fälten moms och momsregistreringsnummer krävs för vissa länder och valfria för andra. Namnet på landet/regionen och företagets namn kan inte redigeras.
 
-1. Gå till **konto inställningar**.
-1. Expandera **organisations profil** i det vänstra navigerings fältet och välj **fakturerings profil**.
+1. Gå till **Kontoinställningar.**
+1. Expandera sedan Organisationsprofil i det vänstra **navigeringsfältet och** välj **Faktureringsprofil.**
 
 
-## <a name="multi-user-account-management"></a>Hantering av flera användar konton
+## <a name="multi-user-account-management"></a>Hantering av flera användarkonton
 
-Partner Center använder [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) för åtkomst och hantering av flera användares konton. Organisationens Azure AD associeras automatiskt med ditt partner Center-konto som en del av registrerings processen.
+Partnercenter använder [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) för åtkomst och hantering av flera användarkonton. Din organisations Azure AD associeras automatiskt med ditt Partnercenter-konto som en del av registreringsprocessen.
 
 ## <a name="next-steps"></a>Nästa steg
 

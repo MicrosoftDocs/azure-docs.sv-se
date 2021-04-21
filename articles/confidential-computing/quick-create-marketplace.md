@@ -1,6 +1,6 @@
 ---
-title: Snabbstart – Skapa en virtuell dator med konfidentiell databehandling i Azure med Marketplace
-description: Kom igång med dina distributioner genom att lära dig hur du snabbt skapar en konfidentiell virtuell dator med Marketplace.
+title: Snabbstart – Skapa en virtuell dator för konfidentiell databehandling i Azure med Marketplace
+description: Kom igång med dina distributioner genom att lära dig hur du snabbt skapar en konfidentiell virtuell dator för databehandling med Marketplace.
 author: JBCook
 ms.service: virtual-machines
 ms.subservice: confidential-computing
@@ -8,27 +8,27 @@ ms.workload: infrastructure
 ms.topic: quickstart
 ms.date: 04/06/2020
 ms.author: JenCook
-ms.openlocfilehash: 6dbd6fb5c989e1e8b88bf752f5009bdbb62d8c39
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: be935dbd7e4559bcad8c5cf78622a5c63810f54c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535458"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812398"
 ---
-# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Snabbstart: Distribuera en virtuell Dator med konfidentiell databehandling i Azure på Marketplace
+# <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-marketplace"></a>Snabbstart: Distribuera en virtuell Azure Confidential Computing-dator på Marketplace
 
 Kom igång med konfidentiell databehandling i Azure genom att använda Azure Marketplace för att skapa en virtuell dator (VM) som backas upp av Intel SGX. Sedan installerar du Open Enclave Software Development Kit (SDK) för att konfigurera utvecklingsmiljön. 
 
-Den här självstudien rekommenderas om du snabbt vill börja distribuera en konfidentiell virtuell dator för databehandling. De virtuella datorerna körs på specialmaskinvara och kräver specifika konfigurationsinmatningar för att köras som avsett. Marketplace-erbjudandet som beskrivs i den här snabbstarten gör det enklare att distribuera genom att begränsa användarindata.
+Den här självstudien rekommenderas om du snabbt vill börja distribuera en konfidentiell virtuell dator för databehandling. De virtuella datorerna körs på specialmaskinvara och kräver specifika konfigurationsindata för att köras som avsett. Marketplace-erbjudandet som beskrivs i den här snabbstarten gör det enklare att distribuera genom att begränsa användarindata.
 
-Om du är intresserad av att distribuera en konfidentiell virtuell dator med anpassad konfiguration följer du stegen Azure Portal Konfidentiell beräkning för [virtuell dator.](quick-create-portal.md)
+Om du är intresserad av att distribuera en konfidentiell virtuell dator med anpassad konfiguration följer du stegen Azure Portal Konfidentiell beräkning för [virtuella datorer.](quick-create-portal.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.microsoft.com/pricing/purchase-options/pay-as-you-go/) innan du börjar.
 
 > [!NOTE]
-> Konton för kostnadsfri utvärdering har inte åtkomst till de virtuella datorer som används i den här självstudien. Uppgradera till en prenumeration där du betalar per prenumeration.
+> Konton för kostnadsfri utvärdering har inte åtkomst till de virtuella datorer som används i den här självstudien. Uppgradera till en Betala per prenumeration.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -40,7 +40,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 
     ![Välj Marketplace](media/quick-create-marketplace/portal-search-marketplace.png)    
 
-1. På landningssidan för konfidentiell beräkningsdistribution i Azure väljer du **Skapa.**
+1. På landningssidan för konfidentiell beräkningsdistribution i Azure väljer du **Skapa**.
  
 
 ## <a name="configure-your-virtual-machine"></a>Konfigurera den virtuella datorn
@@ -52,7 +52,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
    * **Region:** Välj den Azure-region som är rätt för dig.
 
         > [!NOTE]
-        > Virtuella datorer för konfidentiell beräkning körs bara på specialiserad maskinvara som är tillgänglig i specifika regioner. De senaste tillgängliga regionerna för virtuella DCsv2-Series finns i [tillgängliga regioner.](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)
+        > Konfidentiella virtuella datorer för beräkning körs bara på specialiserad maskinvara som är tillgänglig i specifika regioner. De senaste tillgängliga regionerna för virtuella DCsv2-Series finns i [tillgängliga regioner.](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)
     
     * **Välj Bild:** Välj en avbildning. Om du vill slutföra den här specifika självstudien väljer du Ubuntu 18.04 (Gen 2). Annars omdirigeras du vid lämpliga steg nedan. 
 
@@ -94,7 +94,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 1. Välj **Skapa** i fönstret **Granska + skapa**.
 
 > [!NOTE]
-> Gå vidare till nästa avsnitt och fortsätt med den här självstudien om du har distribuerat en virtuell Linux-dator. Om du har distribuerat en virtuell Windows-dator följer du dessa steg för att ansluta till den virtuella [Windows-datorn](../virtual-machines/windows/connect-logon.md) och [installerar sedan OE SDK på Windows.](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
+> Fortsätt till nästa avsnitt och fortsätt med den här självstudien om du har distribuerat en virtuell Linux-dator. Om du har distribuerat en virtuell Windows-dator följer du dessa steg för att ansluta till din virtuella [Windows-dator](../virtual-machines/windows/connect-logon.md) och [installerar sedan OE SDK på Windows.](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
 
 
 ## <a name="connect-to-the-linux-vm"></a> Ansluta till den virtuella Linux-datorn
@@ -105,7 +105,7 @@ Om du redan använder ett BASH-gränssnitt ansluter du till den virtuella Azure-
 ssh azureadmin@40.55.55.555
 ```
 
-Du hittar den offentliga IP-adressen för den virtuella datorn i Azure Portal under avsnittet Översikt på den virtuella datorn.
+Du hittar den offentliga IP-adressen för den virtuella datorn i Azure Portal under avsnittet Översikt för den virtuella datorn.
 
 ![IP-adress i Azure Portal](media/quick-create-portal/public-ip-virtual-machine.png)
 
@@ -144,11 +144,18 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```
 
 #### <a name="2-install-the-intel-sgx-dcap-driver"></a>2. Installera Intel SGX DCAP-drivrutinen
+Vissa versioner av Ubuntu kan redan ha Intel SGX-drivrutinen installerad. Kontrollera med följande kommando: 
+
+```bash
+dmesg | grep -i sgx
+[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
+``` 
+Om utdata är tomma installerar du drivrutinen: 
 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.4/linux/distro/ubuntuServer18.04/sgx_linux_x64_driver_1.21.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -159,13 +166,13 @@ sudo ./sgx_linux_x64_driver.bin
 #### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3. Installera Intel- och Open Enclave-paketen och beroendena
 
 ```bash
-sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
+sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
 ```
 
 > [!NOTE] 
 > Det här steget installerar även [paketet az-dcap-client](https://github.com/microsoft/azure-dcap-client) som krävs för att utföra fjärr attestation i Azure.
 
-#### <a name="4-verify-the-open-enclave-sdk-install"></a>4. **Verifiera installationen av Open Enclave SDK**
+#### <a name="4-verify-the-open-enclave-sdk-install"></a>4. **Kontrollera installationen av Open Enclave SDK**
 
 Se [Använda Open Enclave SDK på](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/Linux_using_oe_sdk.md) GitHub för att verifiera och använda den installerade SDK:n.
 
@@ -173,11 +180,11 @@ Se [Använda Open Enclave SDK på](https://github.com/openenclave/openenclave/bl
 
 Du kan ta bort resursgruppen, den virtuella datorn och alla relaterade resurser när de inte längre behövs. 
 
-Välj resursgruppen för den virtuella datorn och välj sedan Ta **bort.** Bekräfta namnet på resursgruppen för att slutföra borttagningen av resurserna.
+Välj resursgruppen för den virtuella datorn och välj sedan Ta **bort**. Bekräfta namnet på resursgruppen för att slutföra borttagningen av resurserna.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten distribuerade du en konfidentiell virtuell dator och installerade Open Enclave SDK. Mer information om virtuella datorer för konfidentiell databehandling i Azure finns [i Lösningar på Virtual Machines](virtual-machine-solutions.md). 
+I den här snabbstarten distribuerade du en virtuell dator för konfidentiell databehandling och installerade Open Enclave SDK. Mer information om virtuella datorer för konfidentiell databehandling i Azure finns [i Lösningar på Virtual Machines](virtual-machine-solutions.md). 
 
 Upptäck hur du kan skapa program för konfidentiell databehandling genom att fortsätta till Open Enclave SDK-exemplen på GitHub. 
 

@@ -10,16 +10,16 @@ ms.subservice: keys
 ms.topic: tutorial
 ms.date: 02/24/2021
 ms.author: ambapat
-ms.openlocfilehash: 171e0c03dc6f246d0f56d11f793ca711b0082f49
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: d2719f473caa8d7fa6ce1480a35ddc6cca8a33d6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107588300"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815638"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault"></a>Importera HSM-skyddade nycklar till Key Vault
 
-När du använder en Azure Key Vault kan du importera eller generera nycklar i maskinvarusäkerhetsmoduler (HSM) som aldrig lämnar HSM-gränsen. Det här scenariot kallas ofta *BYOK* (Bring Your Own Key). Azure Key Vault nCipher nShield-familjen HSM:er (FIPS 140-2 Level 2-verifierad) för att skydda dina nycklar.
+När du använder en Azure Key Vault kan du importera eller generera nycklar i maskinvarusäkerhetsmoduler (HSM) som aldrig lämnar HSM-gränsen. Det här scenariot kallas ofta *BYOK* (Bring Your Own Key). Azure Key Vault nCipher nShield-familjen med HSM:er (FIPS 140-2 Level 2-verifierad) för att skydda dina nycklar.
 
 Den här funktionen är inte tillgänglig för Azure China 21Vianet.
 
@@ -46,5 +46,5 @@ Den här funktionen är inte tillgänglig för Azure China 21Vianet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Granska Key Vault [säkerhetsöversikten för](../general/security-overview.md) att säkerställa säkerhet, hållbarhet och övervakning för dina nycklar.
+* Gå igenom [Key Vault säkerhetsöversikten för](../general/security-features.md) att säkerställa säkerhet, hållbarhet och övervakning för dina nycklar.
 * En fullständig [beskrivning av den nya BYOK-metoden](./byok-specification.md) finns i BYOK-specifikationen

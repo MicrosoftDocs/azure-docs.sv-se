@@ -1,5 +1,5 @@
 ---
-title: Snabbstart – Azure Key Vault klientbibliotek för JavaScript (version 4)
+title: Snabbstart – Azure Key Vault nyckelklientbibliotek för JavaScript (version 4)
 description: Lär dig hur du skapar, hämtar och tar bort nycklar från ett Azure-nyckelvalv med hjälp av JavaScript-klientbiblioteket
 author: msmbaldwin
 ms.author: mbaldwin
@@ -8,16 +8,16 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: c0066409732f4492186ea0bf604261e1ab59ca9f
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 08de0045a19b0f07308778f8716fa48abded445b
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750310"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815548"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-javascript-version-4"></a>Snabbstart: Azure Key Vault nyckelklientbibliotek för JavaScript (version 4)
 
-Kom igång med Azure Key Vault klientbibliotek för JavaScript. [Azure Key Vault](../general/overview.md) är en molntjänst som tillhandahåller ett säkert lager för kryptografiska nycklar. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabbstarten lär du dig att skapa, hämta och ta bort nycklar från ett Azure-nyckelvalv med hjälp av JavaScript-nyckelklientbiblioteket
+Kom igång med Azure Key Vault-nyckelklientbiblioteket för JavaScript. [Azure Key Vault](../general/overview.md) är en molntjänst som tillhandahåller ett säkert lager för kryptografiska nycklar. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabbstarten lär du dig att skapa, hämta och ta bort nycklar från ett Azure-nyckelvalv med hjälp av JavaScript-nyckelklientbiblioteket
 
 Key Vault klientbiblioteksresurser:
 
@@ -32,7 +32,7 @@ Mer information om Key Vault och nycklar finns i:
 - En Azure-prenumeration [– skapa en utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Aktuella [Node.js](https://nodejs.org) för ditt operativsystem.
 - [Azure CLI](/cli/azure/install-azure-cli)
-- En Key Vault – du kan skapa en [med Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
+- En Key Vault – du kan skapa en [med hjälp Azure Portal](../general/quick-create-portal.md) Azure [CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
 
 Den här snabbstarten förutsätter att du [kör Azure CLI](/cli/azure/install-azure-cli).
 
@@ -50,11 +50,11 @@ Den här snabbstarten förutsätter att du [kör Azure CLI](/cli/azure/install-a
 
 2. Logga in med dina autentiseringsuppgifter för kontot i webbläsaren.
 
-## <a name="create-new-nodejs-application"></a>Skapa ett Node.js program
+## <a name="create-new-nodejs-application"></a>Skapa ett nytt Node.js program
 
-Skapa sedan ett Node.js program som kan distribueras till molnet. 
+Skapa sedan ett Node.js som kan distribueras till molnet. 
 
-1. Skapa en mapp med namnet i ett `key-vault-node-app` kommandogränssnitt:
+1. I ett kommandogränssnitt skapar du en mapp med namnet `key-vault-node-app` :
 
 ```azurecli
 mkdir key-vault-node-app
@@ -101,7 +101,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
 
-Skapa en åtkomstprincip för ditt nyckelvalv som ger nyckelbehörighet till ditt användarkonto
+Skapa en åtkomstprincip för ditt nyckelvalv som beviljar nyckelbehörigheter till ditt användarkonto
 
 ```azurecli
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --key-permissions delete get list create purge
@@ -115,7 +115,7 @@ Kodexe exemplen nedan visar hur du skapar en klient, anger en nyckel, hämtar en
 
 1. Skapa en ny textfil och spara den som "index.js"
 
-1. Lägg till Kräv-anrop för att läsa in Azure Node.js moduler
+1. Lägga till Kräv anrop för att läsa in Azure Node.js moduler
 
 1. Skapa strukturen för programmet, inklusive grundläggande undantagshantering
 
@@ -152,9 +152,9 @@ const { KeyClient } = require("@azure/keyvault-keys");
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterade identiteter tilldelas till App Service eller virtuell dator. Mer information finns i [Översikt över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om autentisering till Key Vault finns i [Utvecklarguide.](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om hur du autentiserar till Key Vault finns [i Utvecklarguide.](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)
 
 Lägg till följande kod i funktionen "main()"
 
@@ -168,7 +168,7 @@ const client = new KeyClient(KVUri, credential);
 
 ### <a name="save-a-key"></a>Spara en nyckel
 
-Nu när programmet har autentiserats kan du placera en nyckel i ditt nyckelvalv med hjälp av [metoden createKey](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) Metodens parametrar accepterar ett nyckelnamn och [nyckeltypen](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype)
+Nu när programmet har autentiserats kan du placera en nyckel i ditt nyckelvalv med hjälp av [createKey-metoden](/javascript/api/@azure/keyvault-keys/keyclient?#createKey_string__KeyType__CreateKeyOptions_) Metodens parametrar accepterar ett nyckelnamn och [nyckeltypen](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keytype)
 
 ```javascript
 await client.createKey(keyName, keyType);
@@ -184,7 +184,7 @@ const retrievedKey = await client.getKey(keyName);
 
 ### <a name="delete-a-key"></a>Ta bort en nyckel
 
-Slutligen tar vi bort och rensar nyckeln från nyckelvalvet med metoderna [beginDeleteKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_) [och purgeDeletedKey.](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_)
+Slutligen tar vi bort och rensar nyckeln från nyckelvalvet med [metoderna beginDeleteKey](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#beginDeleteKey_string__BeginDeleteKeyOptions_) och [purgeDeletedKey.](https://docs.microsoft.com/javascript/api/@azure/keyvault-keys/keyclient?#purgeDeletedKey_string__PurgeDeletedKeyOptions_)
 
 ```javascript
 const deletePoller = await client.beginDeleteKey(keyName);
@@ -272,6 +272,6 @@ I den här snabbstarten skapade du ett nyckelvalv, lagrade en nyckel och hämtad
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Läs en [översikt över Azure Key Vault nycklar](about-keys.md)
-- Skydda [åtkomst till ett nyckelvalv](../general/security-overview.md)
-- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/security-features.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

@@ -1,52 +1,50 @@
 ---
 title: Microsoft OPC Publisher
-description: Den här artikeln innehåller en översikt över Edge-modulen OPC.
-author: jehona-m
+description: Den här artikeln innehåller en översikt över OPC Publisher Edge-modulen.
+author: v-condav
 ms.author: jemorina
 ms.service: industrial-iot
 ms.topic: conceptual
 ms.date: 3/22/2021
-ms.openlocfilehash: 3a44bdbadfe6ecd86a1b98fb7002f2d75c23bb6a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6df39c93e9bcfca522ac61a863c87269216cc592
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104800541"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816178"
 ---
-# <a name="what-is-the-opc-publisher"></a>Vad är OPC-utgivaren?
+# <a name="what-is-the-opc-publisher"></a>Vad är OPC Publisher?
 
-OPC Publisher är en Microsoft-produkt som stöds fullt ut, som har utvecklats i öppet, som förenar mellanrummet mellan industriella till gångar och Microsoft Azure molnet. Det gör det genom att ansluta till OPC UA-aktiverade till gångar eller industriella anslutnings program och publicera telemetridata till Azure IoT Hub i olika format, inklusive IEC62541 OPC UA PubSub standardformat (från version 2,6 och senare).
+OPC Publisher är en Microsoft-produkt med fullständigt stöd som överbryggar avståndet mellan industriella tillgångar och Microsoft Azure molnet. Det gör den genom att ansluta OPC UA-aktiverade tillgångar eller programvara för industriella anslutningar till Microsoft Azure molnet. Den publicerar telemetridata som samlas in för att Azure IoT Hub i olika format, inklusive IEC62541 OPC UA PubSub-standardformat (från version 2.6 och senare). OPC Publisher körs på Azure IoT Edge som en modul eller på vanlig Docker som en container. Eftersom den använder plattformsoberoende .NET-körning körs den inbyggt i både Linux och Windows 10.
 
-Den körs på Azure IoT Edge som en modul eller på en enkel Docker som en behållare. Eftersom den använder sig av .NET-plattforms oberoende körning körs den också internt i Linux och Windows 10.
-
-OPC Publisher är en referens implementering som visar hur du:
+OPC Publisher är en referensimplementering som visar hur du:
 
 - Anslut till befintliga OPC UA-servrar.
-- Publicera JSON-kodade telemetridata från OPC UA-servrar i OPC UA pub/sub-format med en JSON-nyttolast till Azure IoT Hub.
+- Publicera JSON-kodade telemetridata från OPC UA-servrar i OPC UA Pub/Sub-format med hjälp av en JSON-nyttolast till en Azure IoT Hub.
 
-Du kan använda något av de transport protokoll som Azure IoT Hub-klientens SDK stöder: HTTPS, AMQP och MQTT.
+Du kan använda något av de transportprotokoll som Azure IoT Hub klient-SDK stöder, till exempel HTTPS, AMQP och MQTT.
 
-Referens implementeringen innehåller:
+Referensimplementering omfattar följande.
 
-- En OPC UA- *klient* för att ansluta till befintliga OPC UA-servrar som du har i nätverket.
-- En OPC UA- *Server* på port 62222 som du kan använda för att hantera vad som publiceras och erbjuder IoT Hub direkta metoder för att göra samma sak.
+- En OPC *UA-klient* för att ansluta till befintliga OPC UA-servrar som du har i nätverket.
+- En OPC *UA-server* på port 62222 som du kan använda för att hantera vad som publiceras och erbjuder IoT Hub direktmetoder för att göra samma sak.
 
-Du kan ladda ned [referens implementeringen OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) från GitHub.
+Du kan ladda ned [OPC Publisher-referensimplementering](https://github.com/Azure/iot-edge-opc-publisher) från GitHub.
 
-Programmet implementeras med hjälp av .NET Core Technology och kan köras på alla plattformar som stöds av .NET Core.
+Programmet implementeras med hjälp av .NET Core-teknik och kan köras på valfri plattform som stöds av .NET Core.
 
-## <a name="what-does-the-opc-publisher-do"></a>Vad gör OPC-utgivaren?
+## <a name="what-does-the-opc-publisher-do"></a>Vad gör OPC Publisher?
 
-OPC Publisher implementerar omprövnings logik för att upprätta anslutningar till slut punkter som inte svarar på ett visst antal Keep Alive-begäranden. Om en OPC UA-server till exempel slutar svara på grund av strömavbrott.
+OPC Publisher implementerar omprövningslogik för att upprätta anslutningar till slutpunkter som inte svarar på ett visst antal keep alive-begäranden. Till exempel om en OPC UA-server slutar svara på grund av ett strömavbrott.
 
-För varje distinkt publicerings intervall till en OPC UA-Server skapar programmet en separat prenumeration där alla noder med publicerings intervallet uppdateras.
+För varje distinkt publiceringsintervall till en OPC UA-server skapar programmet en separat prenumeration där alla noder med det här publiceringsintervallet uppdateras.
 
-OPC Publisher stöder batchbearbetning av data som skickas till IoT Hub för att minska belastningen på nätverket. Den här batchen skickar ett paket till IoT Hub endast om den konfigurerade paket storleken har nåtts.
+OPC Publisher stöder batchbearbetning av data som skickas till IoT Hub för att minska nätverksbelastningen. Den här batchbearbetningen skickar ett paket IoT Hub endast om den konfigurerade paketstorleken har uppnåtts.
 
-I det här programmet används OPC Foundation OPC UA-referens stack som NuGet-paket. Se [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) för licens villkoren.
+Det här programmet använder OPC Foundation OPC UA-referensstacken som NuGet-paket. Licensvillkoren [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) finns i .
 
 ## <a name="next-steps"></a>Nästa steg
-Nu när du har lärt dig vad OPC-utgivaren är kan du komma igång genom att distribuera den:
+Nu när du har lärt dig vad OPC Publisher är kan du komma igång genom att distribuera den:
 
 > [!div class="nextstepaction"]
 > [Distribuera OPC Publisher i fristående läge](tutorial-publisher-deploy-opc-publisher-standalone.md)

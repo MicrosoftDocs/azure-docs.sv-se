@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: b0e076f3b248942870ba58a51c85c3df1f1277a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: a970eb23c171522907b6066454d9ca15d85f0835
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750616"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812302"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Använda namngivna värden i Azure API Management principer
 
@@ -39,21 +39,21 @@ Mer information om namngivna värdeattribut finns i API Management [REST API ref
 
 Hemliga värden kan lagras antingen som krypterade strängar i API Management (anpassade hemligheter) eller genom att referera till hemligheter i [Azure Key Vault](../key-vault/general/overview.md). 
 
-Vi rekommenderar att du använder key vault-hemligheter eftersom det hjälper API Management säkerhet:
+Vi rekommenderar att du använder Key Vault-hemligheter eftersom det hjälper till att förbättra API Management säkerhet:
 
 * Hemligheter som lagras i nyckelvalv kan återanvändas i olika tjänster
-* Detaljerade [åtkomstprinciper](../key-vault/general/security-overview.md#privileged-access) kan tillämpas på hemligheter
-* Hemligheter som uppdateras i nyckelvalvet roteras automatiskt i API Management. Efter uppdateringen i nyckelvalvet uppdateras ett namngivet värde API Management inom 4 timmar. Du kan också uppdatera hemligheten manuellt med hjälp Azure Portal eller via hanterings-REST API.
+* Detaljerade [åtkomstprinciper](../key-vault/general/security-features.md#privileged-access) kan tillämpas på hemligheter
+* Hemligheter som uppdateras i nyckelvalvet roteras automatiskt i API Management. Efter uppdateringen i nyckelvalvet uppdateras ett namngivet värde API Management inom 4 timmar. Du kan också uppdatera hemligheten manuellt med hjälp Azure Portal eller via REST API.
 
-### <a name="prerequisites-for-key-vault-integration"></a>Förutsättningar för Key Vault-integrering
+### <a name="prerequisites-for-key-vault-integration"></a>Krav för Key Vault-integrering
 
 1. Anvisningar för hur du skapar ett nyckelvalv finns [i Snabbstart: Skapa ett nyckelvalv med hjälp av Azure Portal](../key-vault/general/quick-create-portal.md).
 1. Aktivera en system-tilldelad eller användar [tilldelad hanterad identitet](api-management-howto-use-managed-service-identity.md) i API Management instansen.
 1. Tilldela en [åtkomstprincip för nyckelvalv](../key-vault/general/assign-access-policy-portal.md) till den hanterade identiteten med behörighet att hämta och lista hemligheter från valvet. Så här lägger du till principen:
     1. Navigera till ditt nyckelvalv i portalen.
     1. Välj **Inställningar > Åtkomstprinciper > +Lägg till åtkomstprincip**.
-    1. Välj **Hemliga behörigheter** och välj sedan **Hämta** och **Lista.**
-    1. I **Välj huvudnamn** väljer du resursnamnet för din hanterade identitet. Om du använder en system tilldelad identitet är huvudnamnet namnet på din API Management instansen.
+    1. Välj **Hemliga behörigheter** och sedan **Hämta** och **Lista.**
+    1. I **Välj huvudnamn** väljer du resursnamnet för din hanterade identitet. Om du använder en system tilldelad identitet är huvudnamnet namnet på din API Management instans.
 1. Skapa eller importera en hemlighet till nyckelvalvet. Se [Snabbstart: Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure Portal](../key-vault/secrets/quick-create-portal.md).
 
 Om du vill använda hemligheten för [nyckelvalvet lägger du till eller redigerar ett namngivet](#add-or-edit-a-named-value)värde och anger en typ av **nyckelvalv.** Välj hemligheten från nyckelvalvet.
@@ -67,22 +67,22 @@ Om du vill använda hemligheten för [nyckelvalvet lägger du till eller rediger
 Se [Krav för Key Vault-integrering.](#prerequisites-for-key-vault-integration)
 
 > [!CAUTION]
-> När du använder en nyckelvalvshemlighet i API Management bör du vara noga med att inte ta bort hemligheten, nyckelvalvet eller den hanterade identitet som används för att få åtkomst till nyckelvalvet.
+> När du använder en nyckelvalvshemlighet i API Management bör du vara noga med att inte ta bort hemligheten, nyckelvalvet eller den hanterade identiteten som används för att få åtkomst till nyckelvalvet.
 
 1. I [Azure Portal](https://portal.azure.com)navigerar du till din API Management instans.
 1. Under **API:er** väljer du **Namngivna värden**  >  **+Lägg till**.
 1. Ange ett **Namn-ID** och ange ett **Visningsnamn som används** för att referera till egenskapen i principer.
 1. I **Värdetyp** väljer du **Nyckelvalv.**
-1. Ange identifieraren för en nyckelvalvshemlighet (utan version) eller välj **Välj** för att välja en hemlighet från ett nyckelvalv.
+1. Ange identifieraren för en nyckelvalvshemlighet (utan version) eller välj **Välj för** att välja en hemlighet från ett nyckelvalv.
     > [!IMPORTANT]
-    > Om du själv anger ett nyckelvalvshemlighets-ID måste du se till att det inte har versionsinformation. Annars roteras hemligheten inte automatiskt i API Management efter en uppdatering i nyckelvalvet.
-1. I **Klientidentitet** väljer du en system tilldelad eller en befintlig användar tilldelad hanterad identitet. Lär dig hur [du lägger till eller ändrar hanterade identiteter i API Management tjänsten](api-management-howto-use-managed-service-identity.md).
+    > Om du själv anger ett nyckelvalvshemlighets-ID ska du se till att det inte har versionsinformation. Annars roteras hemligheten inte automatiskt i API Management efter en uppdatering i nyckelvalvet.
+1. I **Klientidentitet** väljer du en system-tilldelad eller en befintlig användar tilldelad hanterad identitet. Lär dig hur [du lägger till eller ändrar hanterade identiteter i API Management tjänsten](api-management-howto-use-managed-service-identity.md).
     > [!NOTE]
-    > Identiteten måste ha behörighet att hämta och lista hemligheter från nyckelvalvet. Om du inte redan har konfigurerat åtkomst till nyckelvalvet uppmanas du API Management så att den automatiskt kan konfigurera identiteten med nödvändiga behörigheter.
+    > Identiteten måste ha behörighet att hämta och lista hemligheter från nyckelvalvet. Om du inte redan har konfigurerat åtkomst till nyckelvalvet uppmanas API Management så att den automatiskt kan konfigurera identiteten med nödvändiga behörigheter.
 1. Lägg till en eller flera valfria taggar för att organisera dina namngivna värden och sedan **Spara**.
 1. Välj **Skapa**.
 
-    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Lägga till hemligt värde för nyckelvalv":::
+    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Lägga till nyckelvalvshemlighetsvärde":::
 
 ### <a name="add-a-plain-or-secret-value"></a>Lägga till ett oformaterad eller hemligt värde
 
@@ -196,7 +196,7 @@ Namngivna värden kan innehålla principuttryck, men de får inte innehålla and
 Om du vill ta bort ett namngivet värde väljer du namnet och sedan **Ta** bort på snabbmenyn (**...**).
 
 > [!IMPORTANT]
-> Om det namngivna värdet refereras av API Management principer kan du inte ta bort det förrän du tar bort det namngivna värdet från alla principer som använder det.
+> Om det namngivna värdet refereras till av API Management principer kan du inte ta bort det förrän du tar bort det namngivna värdet från alla principer som använder det.
 
 ## <a name="next-steps"></a>Nästa steg
 

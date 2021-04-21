@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 11/19/2020
 ms.author: nanditav
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ddafb0e76799e3d8011232534c505f97c79b22e
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 71249534c6a088088213659b5a45e042229721c7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751138"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813190"
 ---
 # <a name="encryption-for-azure-synapse-analytics-workspaces"></a>Kryptering för Azure Synapse Analytics-arbetsytor
 
@@ -44,7 +44,7 @@ Data i följande Synapse-komponenter krypteras med den kund hanterade nyckeln so
 
 ## <a name="workspace-encryption-configuration"></a>Konfiguration av kryptering för arbetsyta
 
-Arbetsytor kan konfigureras för att aktivera dubbel kryptering med en kund hanterad nyckel när arbetsytan skapas. Välj alternativet "Aktivera dubbel kryptering med en kund hanterad nyckel" på fliken "Säkerhet" när du skapar din nya arbetsyta. Du kan välja att ange en nyckelidentifierar-URI eller välja från en lista över nyckelvalv i **samma region** som arbetsytan. Själva Key Vault måste ha **rensningsskydd aktiverat.**
+Arbetsytor kan konfigureras för att aktivera dubbel kryptering med en kund hanterad nyckel när arbetsytan skapas. Välj alternativet "Aktivera dubbel kryptering med en kund hanterad nyckel" på fliken "Säkerhet" när du skapar din nya arbetsyta. Du kan välja att ange en nyckelidentifierar-URI eller välja från en lista med nyckelvalv i **samma region** som arbetsytan. Själva Key Vault måste ha **rensningsskydd aktiverat.**
 
 > [!IMPORTANT]
 > Konfigurationsinställningen för dubbel kryptering kan inte ändras när arbetsytan har skapats.
@@ -53,13 +53,13 @@ Arbetsytor kan konfigureras för att aktivera dubbel kryptering med en kund hant
 
 ### <a name="key-access-and-workspace-activation"></a>Nyckelåtkomst och aktivering av arbetsyta
 
-Krypteringsmodellen Azure Synapse kund hanterade nycklar innebär att arbetsytan får åtkomst till nycklarna i Azure Key Vault krypterar och dekrypterar efter behov. Nycklarna görs tillgängliga för arbetsytan antingen via en åtkomstprincip eller genom Azure Key Vault [RBAC-åtkomst.](../../key-vault/general/rbac-guide.md) När du beviljar behörigheter via en Azure Key Vault-åtkomstprincip väljer du alternativet ["Endast program"](../../key-vault/general/security-overview.md#key-vault-authentication-options) när du skapar principen (välj arbetsytans hanterade identitet och lägg inte till den som ett auktoriserat program).
+Krypteringsmodellen Azure Synapse kund hanterade nycklar innebär att arbetsytan får åtkomst till nycklarna i Azure Key Vault krypterar och dekrypterar efter behov. Nycklarna görs tillgängliga för arbetsytan antingen via en åtkomstprincip eller genom Azure Key Vault [RBAC-åtkomst.](../../key-vault/general/rbac-guide.md) När du beviljar behörigheter via en Azure Key Vault-åtkomstprincip väljer du alternativet ["Endast program"](../../key-vault/general/security-features.md#key-vault-authentication-options) när du skapar principen (välj arbetsytans hanterade identitet och lägg inte till den som ett auktoriserat program).
 
  Den hanterade identiteten för arbetsytan måste beviljas de behörigheter som krävs för nyckelvalvet innan arbetsytan kan aktiveras. Den här fasbaserade metoden för aktivering av arbetsytor säkerställer att data i arbetsytan krypteras med den kund hanterade nyckeln. Observera att kryptering kan aktiveras eller inaktiveras för dedikerade SQL-pooler – varje pool är inte aktiverad för kryptering som standard.
 
 #### <a name="permissions"></a>Behörigheter
 
-För att kryptera eller dekryptera vilodata måste den hanterade identiteten för arbetsytan ha följande behörigheter:
+För att kryptera eller dekryptera vilodata måste arbetsytans hanterade identitet ha följande behörigheter:
 * WrapKey (för att infoga en nyckel Key Vault när du skapar en ny nyckel).
 * UnwrapKey (för att hämta nyckeln för dekryptering).
 * Hämta (för att läsa den offentliga delen av en nyckel)

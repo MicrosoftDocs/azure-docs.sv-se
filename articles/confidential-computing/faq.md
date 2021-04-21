@@ -8,18 +8,18 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 05c98102109d1925eb78d4558faf62b366801e77
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa78d6495eeffd0ea733451e029f07413602ce0d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538986"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812740"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Vanliga frågor och svar om konfidentiell databehandling i Azure
 
 Den här artikeln innehåller svar på några av de vanligaste frågorna om att köra [arbetsbelastningar för konfidentiell databehandling på virtuella Azure-datorer.](overview.md)
 
-Om ditt Azure-problem inte åtgärdas i den här artikeln går du till Azure-forumen [på MSDN och Stack Overflow](https://azure.microsoft.com/support/forums/). Du kan publicera problemet i dessa forum eller publicera det [ @AzureSupport på Twitter.](https://twitter.com/AzureSupport) Du kan också skicka en Azure-supportbegäran. Om du vill skicka en supportbegäran går du [till Azure-supportsidan](https://azure.microsoft.com/support/options/)och väljer Få support.
+Om ditt Azure-problem inte åtgärdas i den här artikeln går du till Azure-forumen [på MSDN och Stack Overflow](https://azure.microsoft.com/support/forums/). Du kan publicera ditt problem i dessa forum eller publicera det [ @AzureSupport på Twitter.](https://twitter.com/AzureSupport) Du kan också skicka en Azure-supportbegäran. Om du vill skicka en supportbegäran går du [till Azure-supportsidan](https://azure.microsoft.com/support/options/)och väljer Få support.
 
 ## <a name="confidential-computing-virtual-machines"></a>Konfidentiell databehandling Virtual Machines <a id="vm-faq"></a>
 
@@ -32,14 +32,14 @@ Här är några exempel på hur du kan distribuera en virtuell dator med DCsv2:
 
 **Kommer alla OS-avbildningar att fungera med konfidentiell databehandling i Azure?**
 
-Nej. De virtuella datorerna kan bara distribueras på andra generationens operativsystem med Ubuntu Server 18.04, Ubuntu Server 16.04, Windows Server 2019 Datacenter och Windows Server 2016 Datacenter. Läs mer om virtuella Gen 2-datorer på [Linux](../virtual-machines/generation-2.md) och [Windows](../virtual-machines/generation-2.md)
+Nej. De virtuella datorerna kan bara distribueras på andra generationens operativsystem med Ubuntu Server 18.04, Ubuntu Server 20.04, Windows Server 2019 Datacenter och Windows Server 2016 Datacenter. Läs mer om virtuella Gen 2-datorer på [Linux](../virtual-machines/generation-2.md) och [Windows](../virtual-machines/generation-2.md)
 
 **Virtuella DCsv2-datorer är nedtonade i portalen och jag kan inte välja en**
 
 Baserat på informationsbubblan bredvid den virtuella datorn finns det olika åtgärder att vidta:
    -    **UnsupportedGeneration**(Generation stöds inte): Ändra genereringen av avbildningen av den virtuella datorn till "Gen2".
    -    **NotAvailableForSubscription:** Regionen är ännu inte tillgänglig för din prenumeration. Välj en tillgänglig region.
-   -    **InsufficientQuota:** [Skapa en supportbegäran för att öka kvoten.](../azure-portal/supportability/per-vm-quota-requests.md) Prenumerationer på kostnadsfria utvärderingsversion har ingen kvot för virtuella datorer för konfidentiell databehandling. 
+   -    **InsufficientQuota:** [Skapa en supportbegäran för att öka kvoten.](../azure-portal/supportability/per-vm-quota-requests.md) Kostnadsfria utvärderingsprenumerationer har ingen kvot för virtuella datorer med konfidentiell databehandling. 
 
 **Virtuella DCsv2-datorer visas inte när jag försöker söka efter dem i portalens storleksväljare**
 
@@ -47,15 +47,15 @@ Kontrollera att du har valt en [tillgänglig region.](https://azure.microsoft.co
 
 **Kan jag aktivera accelererat nätverk med konfidentiell databehandling i Azure?**
 
- Nej. Accelererat nätverk stöds inte på DC-Series eller DCsv2-Series virtuella datorer. Accelererat nätverk kan inte aktiveras för distribution av konfidentiella virtuella datorer för databehandling eller för Azure Kubernetes Service klusterdistribution som körs på konfidentiell databehandling.
+ Nej. Accelererat nätverk stöds inte på DC-Series eller DCsv2-Series virtuella datorer. Accelererat nätverk kan inte aktiveras för distribution av konfidentiell databehandling av virtuella datorer eller Azure Kubernetes Service klusterdistribution som körs på konfidentiell databehandling.
 
 **Kan jag använda Azure Dedicated Host med dessa datorer?**
 
-Ja. Azure Dedicated Host stöd för virtuella datorer i DCsv2-serien. Azure Dedicated Host en fysisk server med en enda klient för att köra dina virtuella datorer på. Användare använder vanligtvis Azure Dedicated Host för att uppfylla efterlevnadskrav gällande fysisk säkerhet, dataintegritet och övervakning. 
+Ja. Azure Dedicated Host stöd för virtuella datorer i DCsv2-serien. Azure Dedicated Host en fysisk server med en enda klientorganisation som du kan köra dina virtuella datorer på. Användare använder vanligtvis Azure Dedicated Host för att hantera efterlevnadskrav gällande fysisk säkerhet, dataintegritet och övervakning. 
 
-**Jag får ett Azure Resource Manager fel vid malldistribution: "Åtgärden kunde inte slutföras eftersom den resulterar i att den godkända kvoten för DcsV2-familjens kärnor överskrids"**
+**Jag får ett Azure Resource Manager fel vid malldistribution: "Åtgärden kunde inte slutföras eftersom den resulterar i att den godkända standardkvoten för DcsV2-familjkärnor överskrids"**
 
-[Skapa en supportbegäran för att öka din kvot.](../azure-portal/supportability/per-vm-quota-requests.md) Prenumerationer på kostnadsfria utvärderingsversion har ingen kvot för virtuella datorer för konfidentiell databehandling. 
+[Skapa en supportbegäran för att öka din kvot.](../azure-portal/supportability/per-vm-quota-requests.md) Prenumerationer på kostnadsfria utvärderingsversion har ingen kvot för virtuella datorer med konfidentiell databehandling. 
 
 **Vad är skillnaden mellan virtuella DCsv2-Series och DC-Series datorer?**
 
@@ -67,12 +67,12 @@ Nej. För närvarande är dessa virtuella datorer endast tillgängliga i utvalda
 
 **Är hypertrådning AV på de här datorerna?**
 
-Flertrådsteknik är inaktiverad för alla azure-kluster för konfidentiell databehandling.
+Flertrådsteknik är inaktiverad för alla Azure-kluster för konfidentiell databehandling.
 
 **Hur gör jag för att du installera Open Enclave SDK på de virtuella DCsv2-datorerna?**
    
-Om du vill ha instruktioner om hur du installerar OE SDK på en Azure-dator eller en lokal dator följer du anvisningarna på GitHub för [Open Enclave SDK.](https://github.com/openenclave/openenclave)
+Om du vill ha instruktioner om hur du installerar OE SDK på en Azure-dator eller en lokal dator följer du anvisningarna på [Open Enclave SDK GitHub.](https://github.com/openenclave/openenclave)
      
-Du kan också titta på GitHub-installationsinstruktioner för Open Enclave SDK för OS-specifika anvisningar:
+Du kan också titta i GitHub för Open Enclave SDK för OS-specifika installationsanvisningar:
    - [Installera OE SDK på Windows](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
    - [Installera OE SDK på Ubuntu 18.04](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Ubuntu_18.04.md)

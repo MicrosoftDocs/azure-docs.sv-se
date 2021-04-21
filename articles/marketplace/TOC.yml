@@ -61,25 +61,18 @@
           href: test-drive-hosted-detailed-config.md
         - name: Konfigurera Azure-prenumeration för värdbaserad provkörning
           href: test-drive-azure-subscription-setup.md
-    - name: Attribution för Azure-kundanvändning
+    - name: Spårning av kundanvändning för Azure-partner
       href: azure-partner-customer-usage-attribution.md
     - name: Alternativ för Go-to-market
       items:
         - name: Dina Marketplace-förmåner
           href: gtm-your-marketplace-benefits.md
-          items: null
-        - name: Säljsamarbeta med Microsoft
-          items:
-            - name: Översikt över säljförsäljning
-              href: co-sell-overview.md
-            - name: Krav på säljförsäljning
-              href: co-sell-requirements.md
-            - name: Konfigurera samförsäljning
-              href: co-sell-configure.md
-            - name: Verifiera säljstatus
-              href: co-sell-status.md
-            - name: Migrera lösningar för säljsamarbete från OCP GTM
-              href: co-sell-solution-migration.md
+        - name: Deltagande i partnersäljsamarbete
+          href: marketplace-co-sell.md
+        - name: Alternativet för säljsamarbete i Partner Center
+          href: commercial-marketplace-co-sell.md
+        - name: Migrera lösningar för säljsamarbete från OCP GTM
+          href: co-sell-solution-migration.md
         - name: Sälja via CSP-partner
           href: cloud-solution-providers.md
         - name: Onboardingguiden Ansluta program
@@ -206,20 +199,32 @@
           href: create-consulting-service-pricing-availability.md
     - name: Dynamics 365-erbjudanden
       items:
-        - name: Planera ett Dynamics 365-erbjudande
-          href: appsource-offer-publishing-guide.md
-        - name: Skapa och publicera ett Dynamics 365-erbjudande
+        - name: Planera ditt erbjudande
+          href: marketplace-dynamics-365.md
+        - name: Skapa ett customer engagement-& Power Apps erbjudande
           items:
-            - name: Skapa ett erbjudande om Dynamics 365 for Customer Engagement och Power Apps
-              href: partner-center-portal/create-new-customer-engagement-offer.md
+            - name: Skapa erbjudandet
+              href: dynamics-365-customer-engage-offer-setup.md
+            - name: Egenskaper
+              href: dynamics-365-customer-engage-properties.md
+            - name: Erbjudandelista
+              href: dynamics-365-customer-engage-offer-listing.md
+            - name: Tillgänglighet
+              href: dynamics-365-customer-engage-availability.md
+            - name: Teknisk konfiguration
+              href: dynamics-365-customer-engage-technical-configuration.md
+            - name: Kompletterande innehåll
+              href: dynamics-365-customer-engage-supplemental-content.md
+            - name: Granska och publicera
+              href: dynamics-365-customer-engage-review-publish.md
+        - name: Skapa ett drifterbjudande
+          items:
             - name: Skapa ett erbjudande för Dynamics 365 for Operations
-              items:
-                - name: Skapa ett erbjudande för Dynamics 365 for Operations
-                  href: partner-center-portal/create-new-operations-offer.md
-                - name: Funktionell validering
-                  href: dynamics-365-finance-operations-functional-validation.md
-            - name: Skapa ett erbjudande för Dynamics 365 for Business Central
-              href: partner-center-portal/create-new-business-central-offer.md
+              href: partner-center-portal/create-new-operations-offer.md
+            - name: Funktionell validering
+              href: dynamics-365-finance-operations-functional-validation.md
+        - name: Skapa ett Business Central-erbjudande
+          href: partner-center-portal/create-new-business-central-offer.md
     - name: Erbjudanden för IoT Edge-moduler
       items:
         - name: Planera ett IoT Edge-modulerbjudande
@@ -228,8 +233,6 @@
           href: partner-center-portal/azure-iot-edge-module-creation.md
         - name: Förbereda tekniska tillgångar för IoT Edge-moduler
           href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Checklista för förcertifiering
-          href: iot-edge-checklist.md
     - name: Hanterade tjänsterbjudanden
       items:
         - name: Planera ett erbjudande för hanterad tjänst
@@ -328,48 +331,6 @@
       href: partner-center-portal/downloads-dashboard.md
     - name: Instrumentpanel för omdömen och recensioner
       href: partner-center-portal/ratings-reviews.md
-    - name: Programmatisk åtkomst till analys
-      items:
-        - name: Kom igång
-          href: analytics-get-started.md
-        - name: Krav för programmatisk åtkomst
-          href: analytics-prerequisites.md
-        - name: Paradigm för programmatisk åtkomst
-          href: analytics-programmatic-access.md
-        - name: Gör ditt första API-anrop
-          href: analytics-make-your-first-api-call.md
-        - name: Lista över systemfrågor
-          href: analytics-system-queries.md
-        - name: Exempelfrågor
-          href: analytics-sample-queries.md
-        - name: Exempelprogram
-          href: analytics-sample-application.md
-        - name: Specifikation för anpassad fråga
-          href: analytics-custom-query-specification.md
-        - name: Vanliga frågor och svar om programmatisk analys
-          href: analytics-programmatic-faq.md
-        - name: Api-referens för Analytics
-          items:
-            - name: 'Lista över API:er'
-              href: analytics-available-apis.md
-            - name: Hämta alla datauppsättningar
-              href: analytics-api-get-all-datasets.md
-            - name: API för att hämta rapportfrågor
-              href: analytics-api-get-report-queries.md
-            - name: API för att ta bort rapportfrågor
-              href: analytics-api-delete-report-queries.md
-            - name: Testa API för rapportfrågor
-              href: analytics-api-try-report-queries.md
-            - name: Hämta rapport-API
-              href: analytics-api-get-report.md
-            - name: Uppdatera rapport-API
-              href: analytics-api-update-report.md
-            - name: Ta bort rapport-API
-              href: analytics-api-delete-report.md
-            - name: 'Pausa API:et för rapportkörningar'
-              href: analytics-api-pause-report-executions.md
-            - name: ÅTERUPPTA API för rapportkörningar
-              href: analytics-api-resume-report-executions.md
     - name: Hantera faktureringsavvikelser med dataförbrukning
       href: anomaly-detection.md
     - name: Vanliga analysfrågor
@@ -470,8 +431,6 @@
       href: commercial-marketplace-co-sell-countries.md
     - name: Kod för tillstånd för säljsamarbete
       href: commercial-marketplace-co-sell-states.md
-    - name: Diagram över referensarkitektur
-      href: reference-architecture-diagram.md
     - name: Kategorier och underkategorier
       href: categories.md
     - name: HTML-taggar som stöds

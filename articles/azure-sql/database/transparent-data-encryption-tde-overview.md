@@ -12,19 +12,19 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 10/12/2020
-ms.openlocfilehash: 160066f9599388256c7c821732a1e06fec49bdf5
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: f93d65b4d10c1a8454a8e24b5cb081dae4d6943e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749050"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812812"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparent datakryptering för SQL Database, SQL Managed Instance och Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Transparent datakryptering (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) hjälper till att skydda Azure SQL Database, Azure SQL Managed Instance och Azure Synapse Analytics mot hot om skadlig offlineaktivitet genom att kryptera vilodata. TDE utför realtidskryptering och realtidsdekryptering av databasen, tillhörande säkerhetskopior och transaktionsloggfiler i vila, utan att några ändringar krävs i programmet. Som standard är TDE aktiverat för alla nyligen distribuerade SQL-databaser och måste aktiveras manuellt för äldre databaser med Azure SQL Database, Azure SQL Managed Instance. TDE måste aktiveras manuellt för Azure Synapse Analytics.
 
-TDE utför I/O-kryptering i realtid och dekryptering av data på sidnivå. Varje sida dekrypteras när de läses in i minnet och krypteras sedan innan de skrivs tillbaka till disken. TDE krypterar lagringen av en hel databas med hjälp av en symmetrisk nyckel som kallas Databaskrypteringsnyckel (DEK). Vid databasstart dekrypteras den krypterade DEK:n och används sedan för dekryptering och omkryptering av databasfilerna SQL Server databasmotorn. DEK skyddas av TDE-skyddet. TDE-skydd är antingen ett tjänst hanterat certifikat (tjänst-hanterad transparent datakryptering) eller en asymmetrisk nyckel som lagras [i Azure Key Vault](../../key-vault/general/security-overview.md) (kund-hanterad transparent datakryptering).
+TDE utför I/O-kryptering i realtid och dekryptering av data på sidnivå. Varje sida dekrypteras när de läses in i minnet och krypteras sedan innan de skrivs tillbaka till disken. TDE krypterar lagringen av en hel databas med hjälp av en symmetrisk nyckel som kallas Databaskrypteringsnyckel (DEK). Vid databasstart dekrypteras den krypterade DEK:n och används sedan för dekryptering och omkryptering av databasfilerna SQL Server databasmotorn. DEK skyddas av TDE-skyddet. TDE-skydd är antingen ett tjänst hanterat certifikat (tjänst-hanterad transparent datakryptering) eller en asymmetrisk nyckel som lagras [i Azure Key Vault](../../key-vault/general/security-features.md) (kund-hanterad transparent datakryptering).
 
 För Azure SQL Database och Azure Synapse ärvs TDE-skyddet på [servernivå](logical-servers.md) av alla databaser som är associerade med den servern. Till Azure SQL Managed Instance ärvs TDE-skyddet på instansnivå och ärvs av alla krypterade databaser på den instansen. Termen server *refererar* både till server och instans i hela det här dokumentet, om inget annat anges.
 
@@ -32,9 +32,9 @@ För Azure SQL Database och Azure Synapse ärvs TDE-skyddet på [servernivå](lo
 > Alla nyligen skapade databaser i SQL Database krypteras som standard med hjälp av tjänst-hanterad transparent datakryptering. Befintliga SQL-databaser som skapats före maj 2017 och SQL-databaser som skapats via återställning, geo-replikering och databaskopiering krypteras inte som standard. Befintliga SQL Managed Instance som skapats före februari 2019 krypteras inte som standard. SQL Managed Instance databaser som skapats via återställning ärver krypteringsstatus från källan.
 
 > [!NOTE]
-> TDE kan inte användas för att  kryptera systemdatabaser, till exempel huvuddatabasen, i Azure SQL Database och Azure SQL Managed Instance. **Huvuddatabasen** innehåller objekt som behövs för att utföra TDE-åtgärderna på användardatabaserna. Vi rekommenderar att du inte lagrar känsliga data i systemdatabaserna. [Infrastrukturkryptering](transparent-data-encryption-byok-overview.md#doubleencryption) distribueras nu, vilket krypterar systemdatabaserna inklusive huvuddatabaserna. 
+> TDE kan inte användas för att  kryptera systemdatabaser, till exempel huvuddatabasen, i Azure SQL Database och Azure SQL Managed Instance. **Huvuddatabasen** innehåller objekt som behövs för att utföra TDE-åtgärderna på användardatabaserna. Vi rekommenderar att du inte lagrar känsliga data i systemdatabaserna. [Infrastrukturkryptering](transparent-data-encryption-byok-overview.md#doubleencryption) distribueras nu, vilket krypterar systemdatabaserna, inklusive huvuddatabaserna. 
 
-## <a name="service-managed-transparent-data-encryption"></a>Tjänst-hanterad transparent datakryptering
+## <a name="service-managed-transparent-data-encryption"></a>Tjänst hanterad transparent datakryptering
 
 I Azure är standardinställningen för TDE att DEK skyddas av ett inbyggt servercertifikat. Det inbyggda servercertifikatet är unikt för varje server och krypteringsalgoritmen som används är AES 256. Om en databas finns i en geo-replikeringsrelation skyddas både den primära och den geo-sekundära databasen av den primära databasens överordnade servernyckel. Om två databaser är anslutna till samma server delar de också samma inbyggda certifikat. Microsoft roterar automatiskt dessa certifikat i enlighet med den interna säkerhetsprincipen och rotnyckeln skyddas av ett internt Microsoft-hemlighetsarkiv. Kunder kan kontrollera SQL Database och SQL Managed Instance med interna säkerhetsprinciper i oberoende granskningsrapporter från tredje part som är tillgängliga i [Microsoft Trust Center.](https://servicetrust.microsoft.com/)
 
@@ -75,11 +75,11 @@ Det enda undantaget är när du exporterar en databas till och från SQL Databas
 
 Hantera TDE i Azure Portal.
 
-För att konfigurera TDE via Azure Portal måste du vara ansluten som Azure-ägare, deltagare eller SQL-säkerhetshanterare.
+Om du vill konfigurera TDE via Azure Portal måste du vara ansluten som Azure-ägare, deltagare eller SQL-säkerhetshanterare.
 
 Aktivera och inaktivera TDE på databasnivå. Använd Azure SQL Managed Instance Transact-SQL (T-SQL) för att aktivera och inaktivera TDE på en databas. För Azure SQL Database och Azure Synapse kan du hantera TDE för databasen i [Azure Portal](https://portal.azure.com) när du har loggat in med Azure-administratörs- eller deltagarkontot. Hitta TDE-inställningarna under användardatabasen. Som standard används tjänst-hanterad transparent datakryptering. Ett TDE-certifikat genereras automatiskt för den server som innehåller databasen.
 
-![Tjänst hanterad transparent datakryptering](./media/transparent-data-encryption-tde-overview/service-managed-transparent-data-encryption.png)  
+![Tjänst-hanterad transparent datakryptering](./media/transparent-data-encryption-tde-overview/service-managed-transparent-data-encryption.png)  
 
 Du anger TDE-huvudnyckeln, som kallas TDE-skydd, på server- eller instansnivå. Om du vill använda TDE med BYOK-stöd och skydda dina databaser med en nyckel från Key Vault öppnar du TDE-inställningarna under servern.
 
@@ -156,4 +156,4 @@ Använd följande uppsättning kommandon för Azure SQL Database och Azure Synap
 - En allmän beskrivning av transparent datakryptering finns i [Transparent datakryptering.](/sql/relational-databases/security/encryption/transparent-data-encryption)
 - Mer information om transparent datakryptering med BYOK-stöd för Azure SQL Database, Azure SQL Managed Instance och Azure Synapse finns i [Transparent datakryptering med Bring Your Own Key stöd för](transparent-data-encryption-byok-overview.md).
 - Om du vill börja använda transparent datakryptering Bring Your Own Key stöd finns i guiden Aktivera transparent datakryptering med hjälp av din egen [nyckel från Key Vault](transparent-data-encryption-byok-configure.md).
-- Mer information om Key Vault finns i [Säker åtkomst till ett nyckelvalv.](../../key-vault/general/security-overview.md)
+- Mer information om Key Vault finns i [Säker åtkomst till ett nyckelvalv.](../../key-vault/general/security-features.md)

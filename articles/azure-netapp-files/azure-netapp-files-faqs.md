@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: a8c06b25b923d663e982e940100be7b9a2a009e1
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6cef4860184b217e96e8967ab24a3befc632e316
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726852"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811858"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Vanliga frågor och svar om Azure NetApp Files
 
@@ -78,7 +78,7 @@ Ja, du kan konfigurera upp till fem regler i en enda NFS-exportprincip.
 
 ### <a name="does-azure-netapp-files-support-network-security-groups"></a>Stöder Azure NetApp Files nätverkssäkerhetsgrupper?
 
-Nej, för närvarande kan du inte tillämpa nätverkssäkerhetsgrupper på det delegerade undernätet i Azure NetApp Files eller de nätverksgränssnitt som skapats av tjänsten.
+Nej, för närvarande kan du inte tillämpa nätverkssäkerhetsgrupper på det delegerade undernätet Azure NetApp Files eller de nätverksgränssnitt som skapats av tjänsten.
 
 ### <a name="can-i-use-azure-rbac-with-azure-netapp-files"></a>Kan jag använda Azure RBAC med Azure NetApp Files?
 
@@ -214,6 +214,11 @@ Hantering av `SMB Shares` , `Sessions` och via `Open Files` datorhanteringskonso
 
 Använd **länken JSON-vy** i volymöversiktsfönstret och leta efter  **startIp-identifieraren** under  ->  **properties mountTargets**.
 
+### <a name="can-an-azure-netapp-files-smb-share-act-as-an-dfs-namespace-dfs-n-root"></a>Kan en Azure NetApp Files SMB-resurs fungera som en DFS-namnrymdsrot (DFS-N)?
+
+Nej. Men Azure NetApp Files SMB-resurser kan fungera som ett mappmål för DFS-namnrymd (DFS-N).   
+Om du vill använda en Azure NetApp Files SMB-resurs som ett DFS-N-mappmål anger du monteringssökvägen för Universal Naming Convention (UNC) för SMB-resursen i Azure NetApp Files med hjälp av [proceduren DFS Add Folder Target.](/windows-server/storage/dfs-namespaces/add-folder-targets#to-add-a-folder-target)  
+
 ### <a name="smb-encryption-faqs"></a>Vanliga frågor och svar om SMB-kryptering
 
 I det här avsnittet besvaras vanliga frågor om SMB-kryptering (SMB 3.0 och SMB 3.1.1).
@@ -242,7 +247,7 @@ SMB 3.0 använder AES-CCM-algoritmen, medan SMB 3.1.1 använder AES-GCM-algoritm
 
 SMB-kryptering krävs inte. Därför är den endast aktiverad för en viss resurs om användaren begär att Azure NetApp Files aktivera den. Azure NetApp Files-resurser exponeras aldrig för Internet. De är bara tillgängliga inifrån ett visst VNet, via VPN eller Express Route, så Azure NetApp Files-resurser är säkra. Valet att aktivera SMB-kryptering är helt upp till användaren. Tänk på den förväntade prestandaförseningen innan du aktiverar den här funktionen.
 
-#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>Vad förväntas påverka klientarbetsbelastningar av SMB-kryptering?
+#### <a name="what-is-the-anticipated-impact-of-smb-encryption-on-client-workloads"></a><a name="smb_encryption_impact"></a>Vad förväntas påverka SMB-kryptering på klientarbetsbelastningar?
 
 Även om SMB-kryptering påverkar både klienten (PROCESSORkostnader för kryptering och dekryptering av meddelanden) och lagringen (minskning av dataflödet), visar följande tabell endast lagringspåverkan. Du bör testa krypteringsprestandapåverkan mot dina egna program innan du distribuerar arbetsbelastningar till produktion.
 
@@ -255,7 +260,7 @@ SMB-kryptering krävs inte. Därför är den endast aktiverad för en viss resur
 
 ### <a name="how-do-i-monitor-usage-for-capacity-pool-and-volume-of-azure-netapp-files"></a>Hur gör jag för att övervaka användningen för kapacitetspoolen och volymen av Azure NetApp Files? 
 
-Azure NetApp Files kapacitetspool och volymanvändningsstatistik. Du kan också använda Azure Monitor för att övervaka Azure NetApp Files. Mer [information finns Azure NetApp Files](azure-netapp-files-metrics.md) mått. 
+Azure NetApp Files tillhandahåller kapacitetspooler och mått för volymanvändning. Du kan också använda Azure Monitor för att övervaka Azure NetApp Files. Mer [information finns Azure NetApp Files](azure-netapp-files-metrics.md) mått. 
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Kan jag hantera Azure NetApp Files via Azure Storage Explorer?
 
@@ -265,7 +270,7 @@ Nej. Azure NetApp Files stöds inte av Azure Storage Explorer.
 
 Du kan använda kommandot från en klient för att se om en katalog närmar sig `stat` den maximala storleksgränsen för katalogmetadata (320 MB).   
 
-För en katalog på 320 MB är antalet block 655360, där varje blockstorlek är 512 byte.  (Det vill säga 320x1024x1024/512.)  Det här antalet översätts till högst cirka 4 miljoner filer för en katalog på 320 MB. Det faktiska antalet maximalt antal filer kan dock vara lägre, beroende på faktorer som antalet filer som innehåller icke-ASCII-tecken i katalogen. Därför bör du använda kommandot på `stat` följande sätt för att avgöra om katalogen närmar sig sin gräns.  
+För en katalog på 320 MB är antalet block 655360, där varje blockstorlek är 512 byte.  (Det vill säga 320x1024x1024/512.)  Det här antalet översätts till högst cirka 4 miljoner filer för en katalog på 320 MB. Det faktiska antalet maximalt antal filer kan dock vara lägre, beroende på faktorer som antalet filer som innehåller icke-ASCII-tecken i katalogen. Därför bör du använda kommandot på `stat` följande sätt för att avgöra om katalogen närmar sig gränsen.  
 
 Exempel:
 
@@ -291,14 +296,14 @@ Azure NetApp Files tillhandahåller NFS- och SMB-volymer.  Du kan använda val a
 
 NetApp erbjuder en SaaS-baserad lösning, [NetApp Cloud Sync.](https://cloud.netapp.com/cloud-sync-service)  Med lösningen kan du replikera NFS- eller SMB-data till Azure NetApp Files NFS-exporter eller SMB-resurser. 
 
-Du kan också använda en mängd olika kostnadsfria verktyg för att kopiera data. För NFS kan du använda arbetsbelastningar som [rsync](https://rsync.samba.org/examples.html) för att kopiera och synkronisera källdata till en Azure NetApp Files volym. För SMB kan du använda arbetsbelastningar [robocopy](/windows-server/administration/windows-commands/robocopy) på samma sätt.  Dessa verktyg kan också replikera fil- eller mappbehörigheter. 
+Du kan också använda en mängd olika kostnadsfria verktyg för att kopiera data. För NFS kan du använda verktyg för arbetsbelastningar som [rsync](https://rsync.samba.org/examples.html) för att kopiera och synkronisera källdata till en Azure NetApp Files volym. För SMB kan du använda arbetsbelastningar [robocopy](/windows-server/administration/windows-commands/robocopy) på samma sätt.  Dessa verktyg kan också replikera fil- eller mappbehörigheter. 
 
 Kraven för datamigrering från lokal plats till Azure NetApp Files är följande: 
 
-- Kontrollera Azure NetApp Files är tillgänglig i Azure-målregionen.
+- Se Azure NetApp Files är tillgängligt i Azure-målregionen.
 - Verifiera nätverksanslutningen mellan källan och den Azure NetApp Files målvolymens IP-adress. Dataöverföring mellan den lokala platsen och Azure NetApp Files-tjänsten stöds via ExpressRoute.
-- Skapa målvolymen Azure NetApp Files volymen.
-- Överför källdata till målvolymen med hjälp av det filkopieringsverktyg du föredrar.
+- Skapa målvolymen Azure NetApp Files målvolymen.
+- Överför källdata till målvolymen med önskat filkopieringsverktyg.
 
 ### <a name="how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region"></a>Hur gör jag för att skapa en kopia av en Azure NetApp Files i en annan Azure-region?
     
@@ -306,15 +311,15 @@ Azure NetApp Files tillhandahåller NFS- och SMB-volymer.  Alla filbaserade kopi
 
 NetApp erbjuder en SaaS-baserad lösning, [NetApp Cloud Sync.](https://cloud.netapp.com/cloud-sync-service)  Med lösningen kan du replikera NFS- eller SMB-data till Azure NetApp Files NFS-exporter eller SMB-resurser. 
 
-Du kan också använda en mängd olika kostnadsfria verktyg för att kopiera data. För NFS kan du använda verktyg för arbetsbelastningar som [rsync](https://rsync.samba.org/examples.html) för att kopiera och synkronisera källdata till en Azure NetApp Files volym. För SMB kan du använda arbetsbelastningar [robocopy](/windows-server/administration/windows-commands/robocopy) på samma sätt.  Dessa verktyg kan också replikera fil- eller mappbehörigheter. 
+Du kan också använda en mängd olika kostnadsfria verktyg för att kopiera data. För NFS kan du använda arbetsbelastningsverktyg som [rsync](https://rsync.samba.org/examples.html) för att kopiera och synkronisera källdata till en Azure NetApp Files volym. För SMB kan du använda arbetsbelastningar [robocopy](/windows-server/administration/windows-commands/robocopy) på samma sätt.  Dessa verktyg kan också replikera fil- eller mappbehörigheter. 
 
 Kraven för att replikera en Azure NetApp Files till en annan Azure-region är följande: 
-- Se Azure NetApp Files är tillgängligt i Azure-målregionen.
+- Se Azure NetApp Files är tillgänglig i Azure-målregionen.
 - Verifiera nätverksanslutningen mellan virtuella nätverk i varje region. För närvarande global peering mellan virtuella nätverk inte.  Du kan upprätta en anslutning mellan virtuella nätverk genom att länka till en ExpressRoute-krets eller använda en S2S VPN-anslutning. 
-- Skapa målvolymen Azure NetApp Files målvolymen.
-- Överför källdata till målvolymen med önskat filkopieringsverktyg.
+- Skapa målvolymen Azure NetApp Files volymen.
+- Överför källdata till målvolymen med hjälp av det filkopieringsverktyg du föredrar.
 
-### <a name="is-migration-with-azure-data-box-supported"></a>Stöds migrering med Azure Data Box?
+### <a name="is-migration-with-azure-data-box-supported"></a>Stöds migrering med Azure Data Box stöd?
 
 Nej. Azure Data Box stöder inte Azure NetApp Files för närvarande. 
 
@@ -335,7 +340,7 @@ Användning Azure NetApp Files NFS- eller SMB-volymer med AVS stöds i följande
 ## <a name="next-steps"></a>Nästa steg  
 
 - [Microsoft Azure vanliga frågor och svar om ExpressRoute](../expressroute/expressroute-faqs.md)
-- [Microsoft Azure Virtual Network vanliga frågor och svar](../virtual-network/virtual-networks-faq.md)
+- [Vanliga frågor och svar Microsoft Azure Virtual Network Microsoft Azure Virtual Network om Microsoft Azure Virtual Network](../virtual-network/virtual-networks-faq.md)
 - [Skapa en supportbegäran för Azure](../azure-portal/supportability/how-to-create-azure-support-request.md)
 - [Azure Data Box](../databox/index.yml)
 - [Vanliga frågor och svar om SMB-prestanda för Azure NetApp Files](azure-netapp-files-smb-performance.md)

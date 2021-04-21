@@ -1,5 +1,5 @@
 ---
-title: Kundstyrd transparent datakryptering (TDE)
+title: Kund hanterad transparent datakryptering (TDE)
 description: Bring Your Own Key (BYOK) för transparent datakryptering (TDE) med Azure Key Vault för SQL Database och Azure Synapse Analytics. TDE med BYOK-översikt, fördelar, hur det fungerar, överväganden och rekommendationer.
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
 services: sql-database
@@ -12,27 +12,27 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/01/2021
-ms.openlocfilehash: b812a3feaa900914ef5f16f2f72270d9b6008371
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b3403558cbc07d152bbae7e901464a8aa4a8e4d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753046"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812776"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Transparent datakryptering i Azure SQL med kundhanterad nyckel
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Azure SQL transparent datakryptering [(TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) med kund hanterad nyckel möjliggör ett Bring Your Own Key-scenario (BYOK) för dataskydd i vila och gör det möjligt för organisationer att implementera uppdelning av uppgifter i hanteringen av nycklar och data. Med kundhantering av transparent datakryptering ansvarar kunden för och har fullständig kontroll över en nyckellivscykelhantering (nyckelskapande, uppladdning, rotation, borttagning), behörigheter för nyckelanvändning och granskning av åtgärder för nycklar.
+Azure SQL transparent datakryptering [(TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) med kundhanteringsnyckel möjliggör Bring Your Own Key-scenario (BYOK) för dataskydd i vila och gör att organisationer kan implementera uppdelning av uppgifter i hanteringen av nycklar och data. Med kundstyrd transparent datakryptering ansvarar kunden för och har fullständig kontroll över en nyckellivscykelhantering (nyckelskapande, uppladdning, rotation, borttagning), behörigheter för nyckelanvändning och granskning av åtgärder på nycklar.
 
-I det här scenariot är nyckeln som används för kryptering av databaskrypteringsnyckeln (DEK), som kallas TDE-skydd, en kund hanterad asymmetrisk nyckel som lagras i ett kundägt och kundägt [Azure Key Vault (AKV),](../../key-vault/general/security-overview.md)ett molnbaserat externt nyckelhanteringssystem. Key Vault har hög tillgänglig och skalbar säker lagring för RSA-kryptografiska nycklar, eventuellt backat av FIPS 140-2 Level 2-verifierade maskinvarusäkerhetsmoduler (HSM). Den tillåter inte direkt åtkomst till en lagrad nyckel, men tillhandahåller tjänster för kryptering/dekryptering med hjälp av nyckeln till de auktoriserade entiteterna. Nyckeln kan genereras av nyckelvalvet, importeras eller överföras till nyckelvalvet från [en on-prem HSM-enhet](../../key-vault/keys/hsm-protected-keys.md).
+I det här scenariot är nyckeln som används för kryptering av databaskrypteringsnyckeln (DEK), som kallas TDE-skydd, en kundbaserad asymmetrisk nyckel som lagras i ett kundägt och kundägt [Azure Key Vault (AKV),](../../key-vault/general/security-features.md)ett molnbaserat externt nyckelhanteringssystem. Key Vault har hög tillgänglig och skalbar säker lagring för RSA-kryptografiska nycklar, eventuellt backat av FIPS 140-2 Level 2-verifierade maskinvarusäkerhetsmoduler (HSM). Den tillåter inte direkt åtkomst till en lagrad nyckel, men tillhandahåller tjänster för kryptering/dekryptering med nyckeln till behöriga entiteter. Nyckeln kan genereras av nyckelvalvet, importeras eller överföras till nyckelvalvet från en [on-prem HSM-enhet](../../key-vault/keys/hsm-protected-keys.md).
 
-För Azure SQL Database och Azure Synapse Analytics anges TDE-skyddet på servernivå och ärvs av alla krypterade databaser som är associerade med den servern. Till Azure SQL Managed Instance TDE-skydd anges på instansnivå och ärvs av alla krypterade databaser på den instansen. Termen *server refererar* både till en server i SQL Database och Azure Synapse och till en hanterad instans i SQL Managed Instance det här dokumentet, om inget annat anges.
+För Azure SQL Database och Azure Synapse Analytics anges TDE-skyddet på servernivå och ärvs av alla krypterade databaser som är associerade med den servern. Till Azure SQL Managed Instance TDE-skyddet anges på instansnivå och ärvs av alla krypterade databaser på den instansen. Termen server *refererar* både till en server i SQL Database och Azure Synapse till en hanterad instans i SQL Managed Instance det här dokumentet, om inget annat anges.
 
 > [!IMPORTANT]
-> För dem som använder tjänst-hanterad TDE som vill börja använda kund-hanterad TDE förblir data krypterade under växlingsprocessen och det finns ingen avbrottstid eller omkryptering av databasfilerna. Om du växlar från en tjänst hanterad nyckel till en kund hanterad nyckel behöver du bara omkrypteringen av DEK, vilket är en snabb och online-åtgärd.
+> För dem som använder tjänst-hanterad TDE som vill börja använda kund-hanterad TDE förblir data krypterade under växlingsprocessen och det finns ingen avbrottstid eller omkryptering av databasfilerna. Växling från en tjänst hanterad nyckel till en kund hanterad nyckel kräver bara omkryptering av DEK, vilket är en snabb och online-åtgärd.
 
 > [!NOTE]
-> <a id="doubleencryption"></a> För att Azure SQL kunder med två lager av kryptering av vilade data distribueras infrastrukturkryptering (med AES-256-krypteringsalgoritmen) med plattformsbaserade hanterade nycklar. Detta ger ett extra lager av kryptering i vila tillsammans med TDE med kund-hanterade nycklar, som redan är tillgängliga. För Azure SQL Database och hanterad instans krypteras alla databaser, inklusive huvuddatabasen och andra systemdatabaser, när infrastrukturkryptering aktiveras. För stunden måste kunderna begära åtkomst till den här funktionen. Om du är intresserad av den här funktionen kontaktar du AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
+> <a id="doubleencryption"></a> För att Azure SQL kunder två lager med kryptering av vilodata distribueras infrastrukturkryptering (med AES-256-krypteringsalgoritmen) med plattforms hanterade nycklar. Detta ger ett extra lager av kryptering i vila tillsammans med TDE med kund-hanterade nycklar, som redan är tillgängliga. För Azure SQL Database och hanterad instans krypteras alla databaser, inklusive huvuddatabasen och andra systemdatabaser, när infrastrukturkryptering är aktiverat. För stunden måste kunderna begära åtkomst till den här funktionen. Om du är intresserad av den här funktionen kontaktar du AzureSQLDoubleEncryptionAtRest@service.microsoft.com .
 
 ## <a name="benefits-of-the-customer-managed-tde"></a>Fördelar med kund-hanterad TDE
 
@@ -52,9 +52,9 @@ Kund-hanterad TDE ger kunden följande fördelar:
 
 ## <a name="how-customer-managed-tde-works"></a>Så här fungerar kund hanterad TDE
 
-![Konfiguration och funktion av kund-hanterad TDE](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-roles.PNG)
+![Konfiguration och drift av den kund hanterade TDE:en](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-roles.PNG)
 
-För att servern ska kunna använda TDE-skydd som lagras i AKV för kryptering av DEK måste nyckelvalvsadministratören ge följande åtkomstbehörigheter till servern med hjälp av dess unika Azure Active Directory-identitet (Azure AD):
+För att servern ska kunna använda TDE-skydd som lagras i AKV för kryptering av DEK måste nyckelvalvsadministratören ge följande åtkomsträttigheter till servern med dess unika Azure Active Directory-identitet (Azure AD):
 
 - **get** – för att hämta den offentliga delen och egenskaperna för nyckeln i Key Vault
 
@@ -72,33 +72,33 @@ Granskare kan använda Azure Monitor för att granska Key Vault AuditEvent-logga
 
 [!INCLUDE [sql-database-akv-permission-delay](../includes/sql-database-akv-permission-delay.md)]
 
-## <a name="requirements-for-configuring-customer-managed-tde"></a>Krav för att konfigurera kund hanterad TDE
+## <a name="requirements-for-configuring-customer-managed-tde"></a>Krav för att konfigurera kund-hanterad TDE
 
 ### <a name="requirements-for-configuring-akv"></a>Krav för att konfigurera AKV
 
-- Nyckelvalv och SQL Database/hanterad instans måste tillhöra samma Azure Active Directory klientorganisation. Interaktioner mellan klientnyckelvalv och server stöds inte. Om du vill flytta resurser efteråt måste TDE med AKV konfigureras om. Läs mer om att [flytta resurser](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
+- Nyckelvalv och SQL Database/hanterad instans måste tillhöra samma Azure Active Directory klientorganisation. Interaktioner mellan klientnyckelvalv och server stöds inte. Om du vill flytta resurser efteråt måste TDE med AKV konfigureras om. Läs mer om [att flytta resurser](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- [Funktionen för mjuk](../../key-vault/general/soft-delete-overview.md) borttagning måste vara aktiverad på nyckelvalvet för att skydda mot oavsiktlig borttagning av dataförlust (eller nyckelvalv). Mjukt borttagna resurser bevaras i 90 dagar, såvida de inte återställs eller rensas av kunden under tiden. *Återställnings-* och *rensningsåtgärderna* har sina egna behörigheter som är associerade med en åtkomstprincip för nyckelvalvet. Funktionen för mjuk borttagning är inaktiverad som standard och kan aktiveras via [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) [eller CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli). Det kan inte aktiveras via Azure Portal.  
+- [Funktionen för mjuk borttagning](../../key-vault/general/soft-delete-overview.md) måste vara aktiverad på nyckelvalvet för att skydda mot oavsiktlig borttagning av dataförlust (eller nyckelvalv). Mjukt borttagna resurser bevaras i 90 dagar, såvida de inte återställs eller tas bort av kunden under tiden. *Återställnings-* *och rensningsåtgärderna* har sina egna behörigheter som är associerade med en åtkomstprincip för nyckelvalvet. Funktionen för mjuk borttagning är inaktiverad som standard och kan aktiveras via [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) [eller CLI.](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) Det kan inte aktiveras via Azure Portal.  
 
-- Ge servern eller den hanterade instansen åtkomst till nyckelvalvet (get, wrapKey, unwrapKey) med dess Azure Active Directory identitet. När du använder Azure Portal skapas Azure AD-identiteten automatiskt. När du använder PowerShell eller CLI måste Azure AD-identiteten skapas explicit och slutförande ska verifieras. I [Konfigurera TDE med BYOK](transparent-data-encryption-byok-configure.md) och Konfigurera TDE med [BYOK finns SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) detaljerade stegvisa instruktioner när du använder PowerShell.
+- Ge servern eller den hanterade instansen åtkomst till nyckelvalvet (get, wrapKey, unwrapKey) med hjälp av dess Azure Active Directory identitet. När du använder Azure Portal skapas Azure AD-identiteten automatiskt. När du använder PowerShell eller CLI måste Azure AD-identiteten skapas explicit och slutförande ska verifieras. Se [Konfigurera TDE med BYOK](transparent-data-encryption-byok-configure.md) och Konfigurera TDE med [BYOK](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) SQL Managed Instance detaljerade stegvisa instruktioner när du använder PowerShell.
 
-- När du använder brandväggen med AKV måste du aktivera *alternativet Tillåt betrodda Microsoft-tjänster att kringgå brandväggen*.
+- När du använder brandväggen med AKV måste du aktivera alternativet *Tillåt betrodda Microsoft-tjänster att kringgå brandväggen.*
 
 ### <a name="requirements-for-configuring-tde-protector"></a>Krav för att konfigurera TDE-skydd
 
 - TDE-skydd kan bara vara asymmetriskt, RSA- eller RSA HSM-nyckel. Nyckellängderna som stöds är 2 048 byte och 3 072 byte.
 
-- Nyckelaktiveringsdatumet (om det har angetts) måste vara ett datum och en tid i det förflutna. Förfallodatumet (om detta anges) måste vara ett framtida datum och en framtida tid.
+- Nyckelaktiveringsdatumet (om det har angetts) måste vara ett tidigare datum och en tid. Förfallodatumet (om det har angetts) måste vara ett framtida datum och tid.
 
 - Nyckeln måste vara i tillståndet *Aktiverad.*
 
-- Om du importerar en befintlig nyckel till nyckelvalvet måste du ange den i filformat som stöds ( `.pfx` `.byok` , eller `.backup` ).
+- Om du importerar en befintlig nyckel till nyckelvalvet måste du ange den i filformat som stöds ( `.pfx` , `.byok` eller `.backup` ).
 
 > [!NOTE]
-> Azure SQL stöder nu användning av en RSA-nyckel som lagras i en hanterad HSM som TDE-skydd. Den här funktionen är i **offentlig förhandsversion.** Azure Key Vault Managed HSM är en fullständigt hanterad molntjänst som uppfyller standardkrav för en enskild klientorganisation och som gör att du kan skydda kryptografiska nycklar för dina molnprogram med FIPS 140-2 Level 3-verifierade HSM:er. Läs mer om [Hanterade HSM:er.](../../key-vault/managed-hsm/index.yml)
+> Azure SQL nu stöd för användning av en RSA-nyckel som lagras i en hanterad HSM som TDE-skydd. Den här funktionen är i **offentlig förhandsversion.** Azure Key Vault Managed HSM är en fullständigt hanterad molntjänst som uppfyller standardkrav för en enskild klientorganisation och som gör att du kan skydda kryptografiska nycklar för dina molnprogram med FIPS 140-2 Level 3-verifierade HSM:er. Läs mer om [Managed HSM:er.](../../key-vault/managed-hsm/index.yml)
 
 
-## <a name="recommendations-when-configuring-customer-managed-tde"></a>Rekommendationer när du konfigurerar kund-hanterad TDE
+## <a name="recommendations-when-configuring-customer-managed-tde"></a>Rekommendationer när du konfigurerar kund hanterad TDE
 
 ### <a name="recommendations-when-configuring-akv"></a>Rekommendationer när du konfigurerar AKV
 
@@ -106,27 +106,27 @@ Granskare kan använda Azure Monitor för att granska Key Vault AuditEvent-logga
 
 - Ange ett resurslås för nyckelvalvet för att styra vem som kan ta bort den här kritiska resursen och förhindra oavsiktlig eller obehörig borttagning. Läs mer om [resurslås.](../../azure-resource-manager/management/lock-resources.md)
 
-- Aktivera granskning och rapportering för alla krypteringsnycklar: Key Vault innehåller loggar som är enkla att mata in i andra verktyg för säkerhetsinformation och händelsehantering. Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) är ett exempel på en tjänst som redan är integrerad.
+- Aktivera granskning och rapportering för alla krypteringsnycklar: Key Vault innehåller loggar som är enkla att mata in i andra säkerhetsinformations- och händelsehanteringsverktyg. Operations Management Suite [Log Analytics](../../azure-monitor/insights/key-vault-insights-overview.md) är ett exempel på en tjänst som redan är integrerad.
 
-- Länka varje server med två nyckelvalv som finns i olika regioner och innehåller samma nyckelmaterial för att säkerställa hög tillgänglighet för krypterade databaser. Markera bara nyckeln från nyckelvalvet i samma region som ett TDE-skydd. Systemet växlar automatiskt till nyckelvalvet i fjärrregionen om det finns ett avbrott som påverkar nyckelvalvet i samma region.
+- Länka varje server med två nyckelvalv som finns i olika regioner och innehåller samma nyckelmaterial för att säkerställa hög tillgänglighet för krypterade databaser. Markera endast nyckeln från nyckelvalvet i samma region som ett TDE-skydd. Systemet växlar automatiskt till nyckelvalvet i fjärrregionen om ett avbrott påverkar nyckelvalvet i samma region.
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>Rekommendationer när du konfigurerar TDE-skydd
 
 - Förvara en kopia av TDE-skyddet på en säker plats eller depositionsplatsen till depositionstjänsten.
 
-- Om nyckeln genereras i nyckelvalvet skapar du en nyckelsäkerhetskopia innan du använder nyckeln i AKV för första gången. Säkerhetskopieringen kan återställas till en Azure Key Vault endast. Läs mer om [kommandot Backup-AzKeyVaultKey.](/powershell/module/az.keyvault/backup-azkeyvaultkey)
+- Om nyckeln genereras i nyckelvalvet skapar du en nyckelsäkerhetskopia innan du använder nyckeln i AKV för första gången. Säkerhetskopieringen kan bara återställas till en Azure Key Vault. Läs mer om [kommandot Backup-AzKeyVaultKey.](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 - Skapa en ny säkerhetskopia när ändringar görs i nyckeln (till exempel nyckelattribut, taggar, ACL:er).
 
-- **Behåll tidigare versioner** av nyckeln i nyckelvalvet när du roterar nycklar, så att äldre databassäkerhetskopior kan återställas. När TDE-skyddet har ändrats för en databas uppdateras inte gamla säkerhetskopior av databasen för **att** använda det senaste TDE-skyddet. Vid återställningen behöver varje säkerhetskopiering TDE-skydd som den krypterades med vid tidpunkten för skapandet. Nyckelrotationerna kan utföras enligt anvisningarna i Rotate the transparent datakryptering Protector Using PowerShell (Rotera [transparent datakryptering skydd med PowerShell).](transparent-data-encryption-byok-key-rotation.md)
+- **Behåll tidigare versioner** av nyckeln i nyckelvalvet när du roterar nycklar, så att äldre databassäkerhetskopior kan återställas. När TDE-skyddet ändras för en databas uppdateras  inte gamla säkerhetskopior av databasen för att använda det senaste TDE-skyddet. Vid återställningen behöver varje säkerhetskopiering det TDE-skydd som den krypterades med när den skapades. Nyckelrotationerna kan utföras enligt anvisningarna i [Rotera transparent datakryptering-skydd med Hjälp av PowerShell.](transparent-data-encryption-byok-key-rotation.md)
 
-- Behåll alla tidigare använda nycklar i AKV även efter växling till tjänst hanterade nycklar. Det säkerställer att databassäkerhetskopior kan återställas med TDE-skydd som lagras i AKV.  TDE-skydd som skapats Azure Key Vault måste underhållas tills alla återstående lagrade säkerhetskopior har skapats med tjänst-hanterade nycklar. Gör återställningsbara säkerhetskopior av dessa nycklar med [backup-AzKeyVaultKey.](/powershell/module/az.keyvault/backup-azkeyvaultkey)
+- Behåll alla tidigare använda nycklar i AKV även efter byte till tjänst hanterade nycklar. Det säkerställer att databassäkerhetskopior kan återställas med TDE-skydd som lagras i AKV.  TDE-skydd som skapats med Azure Key Vault måste underhållas tills alla återstående lagrade säkerhetskopior har skapats med tjänst hanterade nycklar. Gör återställningsbara säkerhetskopior av dessa nycklar med [backup-AzKeyVaultKey.](/powershell/module/az.keyvault/backup-azkeyvaultkey)
 
 - Om du vill ta bort en potentiellt komprometterad nyckel under en säkerhetsincident utan risk för dataförlust följer du stegen i Ta bort [en potentiellt komprometterad nyckel.](transparent-data-encryption-byok-remove-tde-protector.md)
 
 ## <a name="inaccessible-tde-protector"></a>Otillgängligt TDE-skydd
 
-När transparent datakryptering har konfigurerats för att använda en kund hanterad nyckel krävs kontinuerlig åtkomst till TDE-skyddet för att databasen ska vara online. Om servern förlorar åtkomst till det kund hanterade TDE-skyddet i AKV börjar en databas inom 10 minuter neka alla anslutningar med motsvarande felmeddelande och ändra dess tillstånd till *Otillgänglig*. Den enda åtgärd som tillåts för en databas i otillgängligt tillstånd är att ta bort den.
+När transparent datakryptering har konfigurerats för att använda en kund hanterad nyckel krävs kontinuerlig åtkomst till TDE-skyddet för att databasen ska vara online. Om servern förlorar åtkomst till det kund hanterade TDE-skyddet i AKV kommer en databas inom 10 minuter att börja neka alla anslutningar med motsvarande felmeddelande och ändra dess tillstånd till *Otillgänglig*. Den enda åtgärden som tillåts för en databas i otillgängligt tillstånd är att ta bort den.
 
 > [!NOTE]
 > Om databasen inte är tillgänglig på grund av ett tillfälligt nätverksavbrott krävs ingen åtgärd och databaserna kommer att online igen automatiskt.
@@ -135,14 +135,14 @@ När åtkomsten till nyckeln har återställts krävs extra tid och steg för at
 
 - Om nyckelåtkomsten återställs inom 8 timmar, kommer databasen att autohealeras inom nästa timme.
 
-- Om nyckelåtkomsten återställs efter mer än 8 timmar går det inte att hämta databasen automatiskt. Det krävs extra steg i portalen och det kan ta lång tid beroende på databasens storlek. När databasen är online igen går tidigare konfigurerade [](auto-failover-group-overview.md) inställningar på servernivå, till exempel konfiguration av redundansgrupp, historik för återställning till tidpunkt och **taggar förlorade.** Därför rekommenderar vi att du implementerar ett meddelandesystem som gör att du kan identifiera och åtgärda underliggande problem med nyckelåtkomst inom 8 timmar.
+- Om nyckelåtkomsten återställs efter mer än 8 timmar går det inte att göra en automatiskheal utan att återställa databasen kräver extra steg på portalen och det kan ta lång tid beroende på databasens storlek. När databasen är online igen går tidigare konfigurerade [](auto-failover-group-overview.md) inställningar på servernivå, till exempel konfiguration av redundansgrupp, historik för återställning till tidpunkt och taggar **förlorade.** Därför rekommenderar vi att du implementerar ett meddelandesystem som gör att du kan identifiera och åtgärda underliggande problem med nyckelåtkomst inom 8 timmar.
 
-Nedan visas de extra steg som krävs på portalen för att få en otillgänglig databas online igen.
+Nedan visas en vy över de extra steg som krävs på portalen för att ta en otillgänglig databas online igen.
 
 ![Otillgänglig TDE BYOK-databas](./media/transparent-data-encryption-byok-overview/customer-managed-tde-inaccessible-database.jpg)
 
 
-### <a name="accidental-tde-protector-access-revocation"></a>Oavsiktlig åtkomståterkallning av TDE-skydd
+### <a name="accidental-tde-protector-access-revocation"></a>Oavsiktligt återkallande av åtkomst till TDE-skydd
 
 Det kan hända att någon med tillräcklig åtkomstbehörighet till nyckelvalvet av misstag inaktiverar serveråtkomsten till nyckeln genom att:
 
@@ -168,7 +168,7 @@ Om du vill övervaka databastillståndet och aktivera aviseringar om förlust av
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Säkerhetskopiering och återställning av databas med kund-hanterad TDE
 
-När en databas har krypterats med TDE med hjälp av en nyckel från Key Vault, krypteras även alla nyligen genererade säkerhetskopior med samma TDE-skydd. När TDE-skyddet ändras uppdateras inte gamla säkerhetskopior av databasen **för att använda** det senaste TDE-skyddet.
+När en databas har krypterats med TDE med hjälp av en nyckel från Key Vault, krypteras alla nyligen genererade säkerhetskopior också med samma TDE-skydd. När TDE-skyddet ändras uppdateras inte gamla säkerhetskopior av databasen **för att använda** det senaste TDE-skyddet.
 
 Om du vill återställa en säkerhetskopia som krypterats med ett TDE-skydd från Key Vault, kontrollerar du att nyckelmaterial är tillgängligt för målservern. Vi rekommenderar därför att du behåller alla gamla versioner av TDE-skyddet i nyckelvalvet, så att säkerhetskopior av databasen kan återställas.
 
@@ -197,11 +197,11 @@ I scenarier med både [](auto-failover-group-overview.md) [aktiv geo-replikering
 
 För att undvika problem när du upprättar eller under geo-replikering på grund av ofullständigt nyckelmaterial, är det viktigt att du följer dessa regler när du konfigurerar kund-hanterad TDE:
 
-- Alla nyckelvalv som ingår måste ha samma egenskaper och samma åtkomstbehörighet för respektive servrar.
+- Alla nyckelvalv som ingår måste ha samma egenskaper och samma åtkomstbehörigheter för respektive servrar.
 
-- Alla nyckelvalv som ingår måste innehålla identiskt nyckelmaterial. Det gäller inte bara för det aktuella TDE-skyddet, utan även för alla tidigare TDE-skydd som kan användas i säkerhetskopieringsfilerna.
+- Alla berörda nyckelvalv måste innehålla identiskt nyckelmaterial. Det gäller inte bara för det aktuella TDE-skyddet, utan även för alla tidigare TDE-skydd som kan användas i säkerhetskopieringsfilerna.
 
-- Både inledande installation och rotation av TDE-skyddet måste göras på den sekundära först och sedan på den primära.
+- Både den inledande installationen och rotationen av TDE-skyddet måste göras på den sekundära först och sedan på den primära.
 
 ![Redundansgrupper och geo-dr](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
@@ -213,6 +213,6 @@ Du kanske också vill kontrollera följande PowerShell-exempelskript för vanlig
 
 - [Rotera transparent datakryptering skydd för SQL Database PowerShell](transparent-data-encryption-byok-key-rotation.md)
 
-- [Ta bort ett transparent datakryptering (TDE)-skydd för SQL Database powershell](transparent-data-encryption-byok-remove-tde-protector.md)
+- [Ta bort ett transparent datakryptering(TDE)-skydd för SQL Database powershell](transparent-data-encryption-byok-remove-tde-protector.md)
 
 - [Hantera transparent datakryptering i SQL Managed Instance med din egen nyckel med hjälp av PowerShell](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)
