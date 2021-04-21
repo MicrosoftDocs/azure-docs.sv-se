@@ -1,19 +1,19 @@
 ---
-title: Skapa en Function-app med GitHub-distribution – Azure CLI
+title: Skapa en funktionsapp med GitHub-distribution – Azure CLI
 description: Skapa en funktionsapp och distribuera funktionskoden från en GitHub-lagringsplats med hjälp av Azure Functions.
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 219e993ad7132c90de6db680facc9b8f815947cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8abbe30067a488055e59de86372482d99cadaae3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934398"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786269"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>Skapa en funktionsapp i Azure som distribueras från GitHub
 
-Den här Azure Functions exempel skriptet skapar en Function-app med hjälp av [förbruknings planen](../consumption-plan.md), tillsammans med dess relaterade resurser. Skriptet konfigurerar också funktionskoden för kontinuerlig distribution från en GitHub-lagringsplats. 
+Det Azure Functions exempelskriptet skapar en funktionsapp med [hjälp av förbrukningsplanen](../consumption-plan.md), tillsammans med dess relaterade resurser. Skriptet konfigurerar också funktionskoden för kontinuerlig distribution från en GitHub-lagringsplats. 
 
 För det här exemplet behöver du följande:
 
@@ -24,7 +24,7 @@ För det här exemplet behöver du följande:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. 
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad. 
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -40,9 +40,9 @@ Varje kommando i tabellen länkar till kommandospecifik dokumentation. I det hä
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Skapar lagringskontot för funktionsappen. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Skapar en Function-app i den serverbaserade [förbruknings planen](../consumption-plan.md) och kopplar den till en git-eller Mercurial-lagringsplats. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Skapar lagringskontot för funktionsappen. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Skapar en funktionsapp i den serverlösa [förbrukningsplanen och](../consumption-plan.md) associerar den med en Git- eller Mercurial-lagringsplats. |
 
 ## <a name="next-steps"></a>Nästa steg
 

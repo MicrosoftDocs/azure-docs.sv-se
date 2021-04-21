@@ -1,5 +1,5 @@
 ---
-title: Skript exempel för Azure CLI – väg trafik via en virtuell nätverks installation
+title: Skriptexempel för Azure CLI – Dirigera trafik via en virtuell nätverksinstallation
 description: Azure CLI-skriptexempel – Dirigera trafik via en virtuell nätverksinstallation för brandvägg.
 services: virtual-network
 documentationcenter: virtual-network
@@ -13,14 +13,14 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a349f8160e8ab5b6459b2085e21e7368570c57db
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7970ab4472000c53e23f7962a9cbf4ec05ea3465
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87503845"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763189"
 ---
-# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>Använda ett Azure CLI-skript för att dirigera trafik via en virtuell nätverks installation
+# <a name="use-an-azure-cli-script-to-route-traffic-through-a-network-virtual-appliance"></a>Använda ett Azure CLI-skript för att dirigera trafik via en virtuell nätverksinstallation
 
 Det här skriptexemplet skapar ett virtuellt nätverk med klient- och serverdelsundernät. Det skapar också en virtuell dator med aktiverad IP-vidarebefordran för att dirigera trafik mellan de två undernäten. När du kört skriptet kan du distribuera nätverksprogramvara, till exempel ett brandväggsprogram, till den virtuella datorn.
 
@@ -56,8 +56,8 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 | [az network nsg create](/cli/azure/network/nsg) | Skapar en nätverkssäkerhetsgrupp (NSG). |
 | [az network nsg rule create](/cli/azure/network/nsg/rule) | Skapar NSG-regler som tillåter inkommande HTTP- och HTTPS-portar till den virtuella datorn. |
 | [az network vnet subnet update](/cli/azure/network/vnet/subnet)| Associerar NSG:erna och routningstabellerna med undernät. |
-| [az network route-table create](/cli/azure/network/route-table#az-network-route-table-create)| Skapar en routningstabell för alla vägar. |
-| [az network route-table route create](/cli/azure/network/route-table/route#az-network-route-table-route-create)| Skapar vägar för att dirigera trafik mellan undernät och Internet via den virtuella datorn. |
+| [az network route-table create](/cli/azure/network/route-table#az_network_route_table_create)| Skapar en routningstabell för alla vägar. |
+| [az network route-table route create](/cli/azure/network/route-table/route#az_network_route_table_route_create)| Skapar vägar för att dirigera trafik mellan undernät och Internet via den virtuella datorn. |
 | [az vm create](/cli/azure/vm) | Skapar en virtuell dator och kopplar nätverkskortet till den. Det här kommandot anger även den virtuella datoravbildning som ska användas samt administrativa autentiseringsuppgifter. |
 | [az group delete](/cli/azure/group) | Tar bort en resursgrupp och alla resurser den innehåller. |
 
@@ -65,4 +65,4 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
-Ytterligare Network CLI-skript exempel finns i [översikts dokumentationen för Azure-nätverk](../cli-samples.md)
+Ytterligare CLI-skriptexempel för nätverk finns i dokumentationen [Azure-nätverkstjänster översikt](../cli-samples.md)

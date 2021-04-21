@@ -1,6 +1,6 @@
 ---
-title: Skapa en närhets placerings grupp med hjälp av Azure CLI
-description: Lär dig mer om att skapa och använda närhets placerings grupper för virtuella datorer i Azure.
+title: Skapa en närhetsplaceringsgrupp med hjälp av Azure CLI
+description: Lär dig mer om att skapa och använda närhetsplaceringsgrupper för virtuella datorer i Azure.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: proximity-placement-groups
@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 3/8/2021
 ms.author: cynthn
-ms.openlocfilehash: a347c9284608340811f9c2388df26129baeb8837
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e4f91afa86a0d99b4ce42e96295bf2ae1f9fcd9f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102505655"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771451"
 ---
 # <a name="deploy-vms-to-proximity-placement-groups-using-azure-cli"></a>Distribuera virtuella datorer till närhetsplaceringsgrupper med Azure CLI
 
-För att få virtuella datorer så nära som möjligt, vilket ger lägsta möjliga fördröjning, bör du distribuera dem i en [närhets placerings grupp](../co-location.md#proximity-placement-groups).
+För att få virtuella datorer så nära som möjligt, för att uppnå lägsta möjliga svarstid, bör du distribuera dem i en [närhetsplaceringsgrupp](../co-location.md#proximity-placement-groups).
 
-En närhets placerings grupp är en logisk gruppering som används för att se till att Azure Compute-resurser är fysiskt placerade nära varandra. Placerings grupper för närhet är användbara för arbets belastningar där låg latens är ett krav.
+En närhetsplaceringsgrupp är en logisk gruppering som används för att se till att Azure-beräkningsresurser finns fysiskt nära varandra. Närhetsplaceringsgrupper är användbara för arbetsbelastningar där låg latens är ett krav.
 
 
-## <a name="create-the-proximity-placement-group"></a>Skapa placerings gruppen närhet
-Skapa en närhets placerings grupp med [`az ppg create`](/cli/azure/ppg#az-ppg-create) . 
+## <a name="create-the-proximity-placement-group"></a>Skapa närhetsplaceringsgruppen
+Skapa en närhetsplaceringsgrupp med hjälp av [`az ppg create`](/cli/azure/ppg#az_ppg_create) . 
 
 ```azurecli-interactive
 az group create --name myPPGGroup --location westus
@@ -34,9 +34,9 @@ az ppg create \
    -t standard 
 ```
 
-## <a name="list-proximity-placement-groups"></a>Lista närhets placerings grupper
+## <a name="list-proximity-placement-groups"></a>Lista närhetsplaceringsgrupper
 
-Du kan visa alla närhets placerings grupper med [AZ PPG List](/cli/azure/ppg#az-ppg-list).
+Du kan lista alla dina närhetsplaceringsgrupper med [az ppg list](/cli/azure/ppg#az_ppg_list).
 
 ```azurecli-interactive
 az ppg list -o table
@@ -44,7 +44,7 @@ az ppg list -o table
 
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
 
-Skapa en virtuell dator i närhets placerings gruppen med [den nya virtuella AZ-datorn](/cli/azure/vm#az-vm-create).
+Skapa en virtuell dator i närhetsplaceringsgruppen med hjälp [av den nya az vm](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 az vm create \
@@ -57,19 +57,19 @@ az vm create \
    -l westus
 ```
 
-Du kan se den virtuella datorn i närhets placerings gruppen med [AZ PPG show](/cli/azure/ppg#az-ppg-show).
+Du kan se den virtuella datorn i närhetsplaceringsgruppen med [az ppg show](/cli/azure/ppg#az_ppg_show).
 
 ```azurecli-interactive
 az ppg show --name myppg --resource-group myppggroup --query "virtualMachines"
 ```
 
 ## <a name="availability-sets"></a>Tillgänglighetsuppsättningar
-Du kan också skapa en tillgänglighets uppsättning i närheten av placerings gruppen. Använd samma `--ppg` parameter med [AZ VM Availability-set Create](/cli/azure/vm/availability-set#az-vm-availability-set-create) för att skapa en tillgänglighets uppsättning och alla virtuella datorer i tillgänglighets uppsättningen kommer också att skapas i samma närhets placerings grupp.
+Du kan också skapa en tillgänglighetsuppsättning i din närhetsplaceringsgrupp. Använd samma parameter med az vm availability-set create för att skapa en tillgänglighetsuppsättning och alla virtuella datorer i tillgänglighetsuppsättningen skapas också i samma `--ppg` närhetsplaceringsgrupp. [](/cli/azure/vm/availability-set#az_vm_availability_set_create)
 
 ## <a name="scale-sets"></a>Skalningsuppsättningar
 
-Du kan också skapa en skalnings uppsättning i närheten av placerings gruppen. Använd samma `--ppg` parameter med [AZ VMSS Create](/cli/azure/vmss#az_vmss_create) för att skapa en skalnings uppsättning och alla instanser kommer att skapas i samma närhets placerings grupp.
+Du kan också skapa en skalningsuppsättning i din närhetsplaceringsgrupp. Använd samma parameter med az vmss create för att skapa en skalningsuppsättning och alla instanser skapas i `--ppg` samma närhetsplaceringsgrupp. [](/cli/azure/vmss#az_vmss_create)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om [Azure CLI](/cli/azure/ppg) -kommandon för närhets placerings grupper.
+Läs mer om [Azure CLI-kommandon](/cli/azure/ppg) för närhetsplaceringsgrupper.

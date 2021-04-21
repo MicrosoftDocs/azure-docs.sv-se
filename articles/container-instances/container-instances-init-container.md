@@ -1,47 +1,47 @@
 ---
-title: Köra init-behållare
-description: Kör init-behållare i Azure Container Instances om du vill utföra installations uppgifter i en behållar grupp innan program behållarna körs.
+title: Köra init-containrar
+description: Kör init-containrar i Azure Container Instances för att utföra installationsaktiviteter i en containergrupp innan programcontainrarna körs.
 ms.topic: article
 ms.date: 06/01/2020
-ms.openlocfilehash: 5a729263ee632eb9227694ec8684eb6889c6324b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ccaf1a67d6ca3bcff422acb591b528cc72a9608
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85954289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763945"
 ---
-# <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Kör en init-behållare för installations uppgifter i en behållar grupp
+# <a name="run-an-init-container-for-setup-tasks-in-a-container-group"></a>Köra en init-container för installationsaktiviteter i en containergrupp
 
-Azure Container Instances stöder *init-behållare* i en behållar grupp. Init-behållare körs för att slutföras innan program behållaren eller behållare startar. Liknar [Kubernetes init containers](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/), Använd en eller flera init-behållare för att utföra initierings logik för dina program behållare, till exempel att ställa in konton, köra installations skript eller konfigurera databaser.
+Azure Container Instances har stöd *för init-containrar* i en containergrupp. Init-containrar körs innan programcontainern eller containrarna startar. På samma [sätt som med Kubernetes init-containrar](https://kubernetes.io/docs/concepts/workloads/pods/init-containers/)använder du en eller flera init-containrar för att utföra initieringslogik för dina appcontainrar, till exempel ange konton, köra installationsskript eller konfigurera databaser.
 
-Den här artikeln visar hur du använder en Azure Resource Manager-mall för att konfigurera en behållar grupp med en init-behållare.
+Den här artikeln visar hur du använder en Azure Resource Manager för att konfigurera en containergrupp med en init-container.
 
 ## <a name="things-to-know"></a>Saker att känna till
 
-* **API-version** – du behöver minst Azure Container instances API version 2019-12-01 för att distribuera init-behållare. Distribuera med en `initContainers` egenskap i en [yaml-fil](container-instances-multi-container-yaml.md) eller en [Resource Manager-mall](container-instances-multi-container-group.md).
-* **Ordningen för körnings** -init-behållare utförs i den ordning som anges i mallen och före andra behållare. Som standard kan du ange högst 59 init-behållare per behållar grupp. Minst en icke-init-behållare måste finnas i gruppen.
-* **Värd miljö** – init-behållare körs på samma maskin vara som resten av behållarna i gruppen.
-* **Resurser** – du har inte angett resurser för init-behållare. De beviljas totala resurser, till exempel processorer och minne som är tillgängliga för behållar gruppen. Inga andra behållare körs i gruppen medan en init-behållare körs.
-* **Egenskaper som stöds** – init-behållare kan använda grupp egenskaper som volymer, hemligheter och hanterade identiteter. De kan dock inte använda portar eller en IP-adress om de har kon figurer ATS för behållar gruppen. 
-* **Starta om princip** – varje init-behållare måste avslutas innan nästa behållare i gruppen startar. Om en init-behållare inte avslutas utan problem är dess omstart beroende av den [princip för omstart](container-instances-restart-policy.md) som har kon figurer ATS för gruppen:
+* **API-version** – Du behöver minst Azure Container Instances API-version 2019-12-01 för att distribuera Init-containrar. Distribuera med hjälp `initContainers` av en egenskap i en [YAML-fil](container-instances-multi-container-yaml.md) eller [Resource Manager mall](container-instances-multi-container-group.md).
+* **Körningsordning** – Init-containrar körs i den ordning som anges i mallen och före andra containrar. Som standard kan du ange högst 59 init-containrar per containergrupp. Minst en icke-init-container måste finnas i gruppen.
+* **Värdmiljö** – Init-containrar körs på samma maskinvara som resten av containrarna i gruppen.
+* **Resurser** – Du anger inte resurser för init-containrar. De beviljas totalt antal resurser, till exempel processorer och minne som är tillgängligt för containergruppen. När en init-container körs körs inga andra containrar i gruppen.
+* **Egenskaper som** stöds – Init-containrar kan använda gruppegenskaper som volymer, hemligheter och hanterade identiteter. De kan dock inte använda portar eller en IP-adress om de har konfigurerats för containergruppen. 
+* **Omstartsprincip** – Varje init-container måste avslutas innan nästa container i gruppen startar. Om en init-container inte avslutas korrekt beror omstartsåtgärden på den [omstartsprincip som](container-instances-restart-policy.md) konfigurerats för gruppen:
 
     |Princip i grupp  |Princip i init  |
     |---------|---------|
     |Always     |OnFailure         |
     |OnFailure     |OnFailure         |
     |Aldrig     |Aldrig         |
-* **Avgifter** – container gruppen debiteras för den första distributionen av en init-behållare.
+* **Avgifter** – containergruppen debiteras från den första distributionen av en init-container.
 
-## <a name="resource-manager-template-example"></a>Exempel på en Resource Manager-mall
+## <a name="resource-manager-template-example"></a>Resource Manager mallexempel
 
-Börja med att kopiera följande JSON till en ny fil med namnet `azuredeploy.json` . Mallen konfigurerar en behållar grupp med en init-behållare och två program behållare:
+Börja med att kopiera följande JSON till en ny fil med namnet `azuredeploy.json` . Mallen uppsättningar en containergrupp med en init-container och två programcontainrar:
 
-* Behållaren *init1* kör den [upptaget](https://hub.docker.com/_/busybox) avbildningen från Docker Hub. Den försätts i vilo läge i 60 sekunder och skriver sedan en kommando rads sträng till en fil på en [emptyDir volym](container-instances-volume-emptydir.md).
-* Båda program behållarna kör Microsoft- `aci-wordcount` behållar avbildningen:
-    * *Hamlet* -behållaren kör WORDCOUNT-appen i standard konfigurationen och räknar ord frekvenser i Shakespeare uppspelnings- *Hamlet*.
-    * *Juliet* app-behållaren läser kommando rads strängen från emptDir-volymen för att köra WORDCOUNT-appen i stället för Shakespeares *Romeo och Juliet*.
+* *Init1-containern* kör [busybox-avbildningen](https://hub.docker.com/_/busybox) från Docker Hub. Den förfaller i 60 sekunder och skriver sedan en kommandoradssträng till en fil på en [emptyDir-volym.](container-instances-volume-emptydir.md)
+* Båda programcontainrarna kör `aci-wordcount` Microsoft-containeravbildningen:
+    * Containern *kör* ordräkningsappen i standardkonfigurationen och räknar ordfrekvenser i Görs *spelpjäsEnd .*
+    * Juliet-appcontainern läser kommandoradssträngen från emptDir-volymen för att köra wordcount-appen i stället på Volume's *Volume och Juliet*. 
 
-Mer information och exempel som använder `aci-wordcount` avbildningen finns i [Ange miljövariabler i container instances](container-instances-environment-variables.md).
+Mer information och exempel som använder `aci-wordcount` avbildningen finns i [Ange miljövariabler i containerinstanser](container-instances-environment-variables.md).
 
 ```json
 {
@@ -168,7 +168,7 @@ Skapa en resursgrupp med kommandot [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Distribuera mallen med kommandot [AZ Deployment Group Create][az-deployment-group-create] .
+Distribuera mallen med kommandot [az deployment group][az-deployment-group-create] create.
 
 ```azurecli
 az deployment group create \
@@ -176,12 +176,12 @@ az deployment group create \
   --template-file azuredeploy.json
 ```
 
-I en grupp med en init-behållare ökar distributions tiden på grund av den tid det tar för initierings containern eller behållare att slutföras.
+I en grupp med en init-container ökar distributionstiden på grund av den tid det tar för init-containern eller containrarna att slutföras.
 
 
 ## <a name="view-container-logs"></a>Visa containerloggar
 
-För att kontrol lera att initierings containern har körts kan du Visa loggens utdata från appens behållare med hjälp av kommandot [AZ container logs][az-container-logs] . `--container-name`Argumentet anger den behållare från vilken du vill hämta loggar. I det här exemplet ska du hämta loggarna för *Hamlet* -och *Juliet* -behållarna, som visar olika kommandoutdata:
+Om du vill kontrollera att init-containern har körts korrekt kan du visa loggutdata för appcontainrarna med [kommandot az container logs.][az-container-logs] Argumentet `--container-name` anger den container som loggar ska hämtas från. I det här exemplet hämtar du loggarna för containrarna *för docka* och *juliet,* som visar olika kommandoutdata:
 
 ```azurecli
 az container logs \
@@ -211,14 +211,14 @@ Utdata:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Med init-behållare kan du utföra installations-och initierings uppgifter för dina program behållare. Mer information om att köra uppgiftsbaserade behållare finns i [köra behållare aktiviteter med principer för omstart](container-instances-restart-policy.md).
+Init-containrar hjälper dig att utföra konfigurations- och initieringsuppgifter för dina programcontainrar. Mer information om hur du kör uppgiftsbaserade containrar finns i [Köra containerbaserade uppgifter med omstartsprinciper.](container-instances-restart-policy.md)
 
-Azure Container Instances innehåller andra alternativ för att ändra beteendet för program behållare. Exempel:
+Azure Container Instances andra alternativ för att ändra beteendet för programcontainrar. Exempel:
 
-* [Ange miljövariabler i behållar instanser](container-instances-environment-variables.md)
-* [Ange kommando raden i en behållar instans för att åsidosätta standard kommando rads åtgärden](container-instances-start-command.md)
+* [Ange miljövariabler i containerinstanser](container-instances-environment-variables.md)
+* [Ange kommandoraden i en containerinstans för att åsidosätta standardkommandoradsåtgärden](container-instances-start-command.md)
 
 
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group#az-deployment-group-create
-[az-container-logs]: /cli/azure/container#az-container-logs
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group#az_deployment_group_create
+[az-container-logs]: /cli/azure/container#az_container_logs

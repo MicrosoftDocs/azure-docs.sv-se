@@ -1,17 +1,17 @@
 ---
-title: 'Självstudie: skicka anpassade händelser till hybrid anslutning – Event Grid'
+title: 'Självstudie: Skicka anpassade händelser till hybridanslutning – Event Grid'
 description: 'Självstudie: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En hybridanslutning används för slutpunkten.'
 ms.date: 07/07/2020
 ms.topic: tutorial
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c709d77827551860cc917c3c84c5a849d9fdc512
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fcbc76f3ab58aac6beca3e142eba3a9b62c28a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566834"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107770416"
 ---
-# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Självstudie: dirigera anpassade händelser till Azure Relay Hybridanslutningar med Azure CLI och Event Grid
+# <a name="tutorial-route-custom-events-to-azure-relay-hybrid-connections-with-azure-cli-and-event-grid"></a>Självstudie: Dirigera anpassade händelser till Azure Relay hybridanslutningar med Azure CLI och Event Grid
 
 Azure Event Grid är en händelsetjänst för molnet. Azure Relay hybridanslutningar är en av de händelsehanterare som stöds. Du kan använda hybridanslutningar som händelsehanterare när du behöver bearbeta händelser från program som inte har en offentlig slutpunkt. Dessa program kan finnas i ditt företagsnätverk. I den här artikeln använder du Azure CLI för att skapa ett anpassat ämne, prenumerera på det anpassade ämnet och utlösa händelsen för att visa resultatet. Du skickar händelser till hybridanslutningen.
 
@@ -21,13 +21,13 @@ Azure Event Grid är en händelsetjänst för molnet. Azure Relay hybridanslutni
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Den här artikeln kräver version 2.0.56 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.56 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
 Event Grid-ämnen är Azure-resurser och måste placeras i en Azure-resursgrupp. Resursgruppen är en logisk samling där Azure-resurser distribueras och hanteras.
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). 
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az_group_create). 
 
 I följande exempel skapas en resursgrupp med namnet *gridResourceGroup* på platsen *westus2*.
 
@@ -45,7 +45,7 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="subscribe-to-a-custom-topic"></a>Prenumerera på ett anpassat ämne
 
-Du prenumererar på ett event Grid-ämne för att berätta Event Grid vilka händelser du vill spåra. I följande exempel prenumererar du på det anpassade ämne som du skapade och skickar resurs-ID för Hybrid anslutningen för slut punkten. Hybridanslutnings-ID är i formatet:
+Du prenumererar på ett Event Grid-ämne för att Event Grid vilka händelser du vill spåra. I följande exempel prenumererar vi på det anpassade ämne som du har skapat och resurs-ID:t för hybridanslutningen för slutpunkten. Hybridanslutnings-ID är i formatet:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Relay/namespaces/<relay-namespace>/hybridConnections/<hybrid-connection-name>`
 
@@ -74,7 +74,7 @@ Observera att ett [förfallodatum](concepts.md#event-subscription-expiration) ha
 
 Du behöver ett program som kan hämta händelser från hybridanslutningen. [Microsoft Azure Event Grid Hybrid Connection Consumer sample for C#](https://github.com/Azure-Samples/event-grid-dotnet-hybridconnection-destination) utför den här åtgärden. Du har redan slutfört förutsättningsstegen.
 
-1. Kontrol lera att du har Visual Studio 2019 eller senare.
+1. Kontrollera att du har Visual Studio 2019 eller senare.
 
 1. Klona lagringsplatsen till din lokala dator.
 

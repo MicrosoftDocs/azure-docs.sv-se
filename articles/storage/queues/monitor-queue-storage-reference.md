@@ -1,69 +1,69 @@
 ---
-title: Data referens för Azure Queue Storage-övervakning
-description: Logg och statistik referens för övervakning av data från Azure Queue Storage.
+title: Azure Queue Storage för övervakningsdata
+description: Logg- och måttreferens för övervakningsdata från Azure Queue Storage.
 author: normesta
 services: azure-monitor
 ms.author: normesta
-ms.date: 10/02/2020
+ms.date: 04/20/2021
 ms.topic: reference
 ms.service: azure-monitor
 ms.subservice: logs
-ms.custom: monitoring
-ms.openlocfilehash: 95f20737b044140fe12ea939e71cd2397cb4826d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: subject-monitoring
+ms.openlocfilehash: 506f5a46688f597b8ac5db341c5bbe5eb5fb67c8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100576689"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763153"
 ---
-# <a name="azure-queue-storage-monitoring-data-reference"></a>Data referens för Azure Queue Storage-övervakning
+# <a name="azure-queue-storage-monitoring-data-reference"></a>Azure Queue Storage för övervakningsdata
 
-Mer information om hur du samlar in och analyserar övervaknings data för Azure Storage finns i [övervaknings Azure Storage](monitor-queue-storage.md) .
+Se [Övervakning Azure Storage](monitor-queue-storage.md) för information om hur du samlar in och analyserar övervakningsdata för Azure Storage.
 
 ## <a name="metrics"></a>Mått
 
-I följande tabeller visas de plattforms mått som samlas in för Azure Storage.
+I följande tabeller visas de plattformsmått som samlats in för Azure Storage.
 
 ### <a name="capacity-metrics"></a>Kapacitetsmått
 
-Värdena för kapacitets värden uppdateras dagligen (upp till 24 timmar). Tids kornig het definierar tidsintervallet för vilka mått värden presenteras. Tids kornig het för alla kapacitets mått är en timme (PT1H).
+Kapacitetsmåttvärden uppdateras dagligen (upp till 24 timmar). Tidsintervallet definierar det tidsintervall för vilket måttvärden visas. Det tidsslag som stöds för alla kapacitetsmått är en timme (PT1H).
 
-Azure Storage tillhandahåller följande kapacitets mått i Azure Monitor.
+Azure Storage tillhandahåller följande kapacitetsmått i Azure Monitor.
 
-#### <a name="account-level-capacity-metrics"></a>Kapacitets mått på konto nivå
+#### <a name="account-level-capacity-metrics"></a>Kapacitetsmått på kontonivå
 
 [!INCLUDE [Account-level capacity metrics](../../../includes/azure-storage-account-capacity-metrics.md)]
 
 #### <a name="queue-storage-metrics"></a>Queue Storage mått
 
-I den här tabellen visas [Queue Storage mått](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
+Den här tabellen [Queue Storage mått](../../azure-monitor/essentials/metrics-supported.md#microsoftstoragestorageaccountsqueueservices).
 
 | Metric | Beskrivning |
 | ------------------- | ----------------- |
-| **QueueCapacity** | Mängden Queue Storage som används av lagrings kontot. <br><br> Processor `Bytes` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
-| **QueueCount** | Antalet köer i lagrings kontot. <br><br> Processor `Count` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
-| **QueueMessageCount** | Ungefärligt antal köa meddelanden i lagrings kontot. <br><br> Processor `Count` <br> Sammansättnings typ: `Average` <br> Värde exempel: `1024` |
+| **QueueCapacity** | Den mängd Queue Storage används av lagringskontot. <br><br> Enhet: `Bytes` <br> Sammansättningstyp: `Average` <br> Värdeexempel: `1024` |
+| **QueueCount** | Antalet köer i lagringskontot. <br><br> Enhet: `Count` <br> Sammansättningstyp: `Average` <br> Värdeexempel: `1024` |
+| **QueueMessageCount** | Antalet kömeddelanden som inte har utkommit på lagringskontot. <br><br> Enhet: `Count` <br> Sammansättningstyp: `Average` <br> Värdeexempel: `1024` |
 
 ### <a name="transaction-metrics"></a>Transaktionsmått
 
-Transaktions mått genereras på varje begäran till ett lagrings konto från Azure Storage till Azure Monitor. Om det inte finns någon aktivitet på ditt lagrings konto kommer det inte att finnas några data om transaktions måtten under perioden. Alla transaktions mått är tillgängliga både på konto-och Queue Storage Service nivå. Tids kornig het definierar tidsintervallet som Mät värden presenteras. Tids korn som stöds för alla transaktions mått är PT1H och PT1M.
+Transaktionsmått genereras vid varje begäran till ett lagringskonto från Azure Storage till Azure Monitor. Om det inte finns någon aktivitet på ditt lagringskonto kommer det inte att finnas några data om transaktionsmått under perioden. Alla transaktionsmått är tillgängliga på både konto- Queue Storage på tjänstnivå. Tidsintervallet definierar det tidsintervall som måttvärden visas. De tidsperioder som stöds för alla transaktionsmått är PT1H och PT1M.
 
 [!INCLUDE [Transaction metrics](../../../includes/azure-storage-account-transaction-metrics.md)]
 
 <a id="metrics-dimensions"></a>
 
-## <a name="metrics-dimensions"></a>Mått dimensioner
+## <a name="metrics-dimensions"></a>Måttdimensioner
 
-Azure Storage stöder följande dimensioner för mått i Azure Monitor.
+Azure Storage har stöd för följande dimensioner för mått i Azure Monitor.
 
 [!INCLUDE [Metrics dimensions](../../../includes/azure-storage-account-metrics-dimensions.md)]
 
-## <a name="resource-logs-preview"></a>Resurs loggar (förhands granskning)
+## <a name="resource-logs-preview"></a>Resursloggar (förhandsversion)
 
 > [!NOTE]
-> Azure Storage loggar i Azure Monitor finns i offentlig för hands version och är tillgänglig för för hands testning i alla offentliga moln regioner. Den här för hands versionen aktiverar loggar för blobbar (inklusive Azure Data Lake Storage Gen2), filer, köer, tabeller, Premium Storage-konton i generell användning v1-och General-Purpose v2-lagrings konton. Klassiska lagrings konton stöds inte.
+> Azure Storage loggar i Azure Monitor är i offentlig förhandsversion och är tillgänglig för förhandsversionstestning i alla offentliga molnregioner. Den här förhandsversionen aktiverar loggar för blobar (inklusive Azure Data Lake Storage Gen2), filer, köer, tabeller, premiumlagringskonton i allmänna v1- och general-purpose v2-lagringskonton. Klassiska lagringskonton stöds inte.
 
-I följande tabell visas egenskaperna för Azure Storage resurs loggar när de samlas in i Azure Monitor loggar eller Azure Storage. Egenskaperna beskriver åtgärden, tjänsten och typen av auktorisering som användes för att utföra åtgärden.
+I följande tabell visas egenskaperna för Azure Storage resursloggar när de samlas in i Azure Monitor-loggar eller Azure Storage. Egenskaperna beskriver åtgärden, tjänsten och den typ av auktorisering som användes för att utföra åtgärden.
 
 ### <a name="fields-that-describe-the-operation"></a>Fält som beskriver åtgärden
 
@@ -79,5 +79,5 @@ I följande tabell visas egenskaperna för Azure Storage resurs loggar när de s
 
 ## <a name="see-also"></a>Se även
 
-- Se [övervakning av Azure-Queue Storage](monitor-queue-storage.md) för en beskrivning av övervakning av azure-Queue Storage.
-- Mer information om övervakning av Azure-resurser finns i [övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) .
+- En [beskrivning av Azure Queue Storage](monitor-queue-storage.md) finns i Övervakning av Azure Queue Storage.
+- Se [Övervaka Azure-resurser med Azure Monitor](../../azure-monitor/essentials/monitor-azure-resource.md) information om övervakning av Azure-resurser.

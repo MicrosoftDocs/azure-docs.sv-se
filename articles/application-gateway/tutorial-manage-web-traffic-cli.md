@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 07/20/2019
 ms.author: victorh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 89ba84be61469ff07eff55bb9cd114fe124b3ec2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01df6a12437808aa903046d2923c735ded5067ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566613"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772836"
 ---
 # <a name="manage-web-traffic-with-an-application-gateway-using-the-azure-cli"></a>Hantera webbtrafik med en programgateway som använder Azure CLI
 
-Programgatewayen används till att hantera och skydda webbtrafiken till de servrar du hanterar. Du kan använda Azure CLI för att skapa en [Programgateway](overview.md) som använder en [skalnings uppsättning för virtuella datorer](../virtual-machine-scale-sets/overview.md) för backend-servrar. I det här exemplet innehåller skalnings uppsättningen två instanser av virtuella datorer. Skalnings uppsättningen läggs till i standard server delen för programgatewayen.
+Programgatewayen används till att hantera och skydda webbtrafiken till de servrar du hanterar. Du kan använda Azure CLI för att skapa en [programgateway](overview.md) som använder en [VM-skalningsuppsättning](../virtual-machine-scale-sets/overview.md) för backend-servrar. I det här exemplet innehåller skalningsuppsättningen två virtuella datorinstanser. Skalningsuppsättningen läggs till i programgatewayens standard-backend-pool.
 
 I den här artikeln kan du se hur du:
 
@@ -25,17 +25,17 @@ I den här artikeln kan du se hur du:
 * Skapa en programgateway
 * Skapa en VM-skalningsuppsättning med serverdelens standardpool
 
-Om du vill kan du slutföra den här proceduren med hjälp av [Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
+Om du vill kan du slutföra den här proceduren med [hjälp av Azure PowerShell](tutorial-manage-web-traffic-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. Skapa en resursgrupp med [az group create](/cli/azure/group#az-group-create).
+En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create).
 
 I följande exempel skapas en resursgrupp med namnet *myResourceGroupAG* på platsen *eastus*.
 
@@ -99,7 +99,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Skapa en VM-skalningsuppsättning
 
-I det här exemplet skapar du en VM-skalningsuppsättning som tillhandahåller servrar till serverdelspoolen i programgatewayen. De virtuella datorerna i skalningsuppsättningen är associerade med undernätet *myBackendSubnet* och *appGatewayBackendPool*. Du skapar skalningsuppsättningen med [az vmss create](/cli/azure/vmss#az-vmss-create).
+I det här exemplet skapar du en VM-skalningsuppsättning som tillhandahåller servrar till serverdelspoolen i programgatewayen. De virtuella datorerna i skalningsuppsättningen är associerade med undernätet *myBackendSubnet* och *appGatewayBackendPool*. Du skapar skalningsuppsättningen med [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \

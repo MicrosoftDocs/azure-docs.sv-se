@@ -1,17 +1,17 @@
 ---
-title: Skapa en Function-app med ansluten lagring – Azure CLI
+title: Skapa en funktionsapp med ansluten lagring – Azure CLI
 description: Exempel på Azure CLI-skript – Skapa en Azure-funktion som ansluter till Azure Storage
 ms.topic: sample
 ms.date: 04/20/2017
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 13120ad4478febf9281ff423a3a7a8f8f3b25845
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 539c3a7dd95045b2e569dbb339be0e5a0c845902
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934415"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786299"
 ---
-# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Skapa en Function-app med en namngiven lagrings konto anslutning 
+# <a name="create-a-function-app-with-a-named-storage-account-connection"></a>Skapa en funktionsapp med en namngiven lagringskontoanslutning 
 
 Det här exempelskriptet för Azure Functions skapar en funktionsapp och ansluter funktionen till ett Azure Storage-konto. Appinställningen som skapas och som innehåller anslutningen kan användas med en [lagringsutlösare eller lagringsbindning](../functions-bindings-storage-blob.md). 
 
@@ -19,7 +19,7 @@ Det här exempelskriptet för Azure Functions skapar en funktionsapp och anslute
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -35,11 +35,11 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapa en resursgrupp med en plats. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Skapa ett lagringskonto. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Skapar en Function-app i [förbruknings planen](../consumption-plan.md)utan server. |
-| [AZ lagrings konto show-Connection-String](/cli/azure/storage/account#az-storage-account-show-connection-string) | Hämtar anslutningssträngen för kontot. |
-| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Anger anslutnings strängen som en app-inställning i Function-appen. |
+| [az group create](/cli/azure/group#az_group_create) | Skapa en resursgrupp med en plats. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Skapa ett lagringskonto. |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Skapar en funktionsapp i den serverlösa [förbrukningsplanen](../consumption-plan.md). |
+| [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string) | Hämtar anslutningssträngen för kontot. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Anger anslutningssträngen som en appinställning i funktionsappen. |
 
 ## <a name="next-steps"></a>Nästa steg
 
