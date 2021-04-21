@@ -7,12 +7,13 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5eefcb55bb5447d557f097af872847576aa86eed
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 9d3e34bee3d0f1420b379638389e6fad0a2fed60
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107519314"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831572"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>felsökningsguide Microsoft Azure attestation
 
@@ -62,7 +63,7 @@ Kontrollera rollerna i PowerShell genom att köra stegen nedan:
 
 a. Starta PowerShell och logga in på Azure via cmdleten "Connect-AzAccount"
 
-b. Se vägledningen här [för](../role-based-access-control/role-assignments-list-powershell.md) att verifiera din Azure-rolltilldelning på attestationsprovidern
+b. Se vägledningen här [för att](../role-based-access-control/role-assignments-list-powershell.md) verifiera din Azure-rolltilldelning på attestationsprovidern
 
 c. Om du inte hittar en lämplig rolltilldelning följer du anvisningarna [här](../role-based-access-control/role-assignments-powershell.md)
 
@@ -75,11 +76,11 @@ Det finns olika orsaker till varför en begäran kan returnera 400. Nedan visas 
 
 ### <a name="21-attestation-failure-due-to-policy-evaluation-errors"></a>2.1. Attestationsfel på grund av principutvärderingsfel
 
-Attestationsprincipen innehåller auktoriseringsregler och utfärdanderegler. Enklav e-bevis utvärderas baserat på auktoriseringsreglerna. Utfärdanderegler definierar de anspråk som ska ingå i attestationstoken. Om anspråk i enklavbevis inte följer auktoriseringsreglerna returnerar attest-anrop principutvärderingsfel. 
+Attestationsprincipen innehåller auktoriseringsregler och utfärdanderegler. Enklavbevis utvärderas baserat på auktoriseringsreglerna. Utfärdanderegler definierar de anspråk som ska ingå i attestationstoken. Om anspråk i enklavbevis inte följer auktoriseringsreglerna returnerar attestanrop principutvärderingsfel. 
 
 **Felkod** PolicyEvaluationError
 
-**Scenarioexempel** När anspråk i enklavcitatet inte överensstämmer med auktoriseringsreglerna för attereringsprincipen
+**Scenarioexempel** När anspråk i enklavcitat inte matchar auktoriseringsreglerna för attereringsprincipen
 
 ```
 Native operation failed with 65518: G:\Az\security\Attestation\src\AttestationServices\Instance\NativePolicyWrapper\NativePolicyEngine.cpp(168)\(null)!00007FF801762308: (caller: 00007FF80143DCC8) Exception(0) 83FFFFEE Policy Evaluation Error has occurred Msg:[Policy Engine Exception: A Deny claim was issued, authorization failed.]
@@ -88,11 +89,11 @@ G:\Az\security\Attestation\src\AttestationServices\Instance\Enclave\api.cpp(840)
 
 ```
 
-**Felsökningssteg** Användare kan utvärdera enklavbevis mot en SGX-atterstationsprincip innan de konfigurerar samma.
+**Felsökningssteg** Användare kan utvärdera enklavbevis mot en SGX-attestationsprincip innan de konfigurerar samma.
 
-Skicka en begäran om attesterings-API genom att tillhandahålla principtext i parametern "draftPolicyForAttestation". AttestSgxEnclave-API:et använder det här principdokumentet under attestanropet och kan användas för att testa attesteringsprinciper innan de används. Den attestationstoken som genereras när det här fältet finns kommer att vara oskyddad.
+Skicka en begäran om attesterings-API genom att tillhandahålla principtext i parametern "draftPolicyForAttestation". API:et AttestSgxEnclave använder det här principdokumentet under attest-anropet och det kan användas för att testa attesteringsprinciper innan de förbrukas. Den attestationstoken som genereras när det här fältet finns är oskyddad.
 
-Se [exempel på attestationeringsprincip](./policy-examples.md)
+Se [exempel på attestationprincip](./policy-examples.md)
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Attestationsfel på grund av ogiltiga indata
 
@@ -100,8 +101,8 @@ Se [exempel på attestationeringsprincip](./policy-examples.md)
 
 **Scenarioexempel** SGX-attestationsfel på grund av ogiltiga indata. Nedan visas några exempel på felmeddelanden:
 - Det angivna offerten var ogiltig på grund av ett fel i offerten 
-- Det angivna offerten var ogiltig eftersom enheten där offerten genererades inte uppfyller Azure-baslinjekraven
-- Det angivna citatt var ogiltigt eftersom TCBInfo eller QEID som tillhandahölls av PCK Cache Service var ogiltigt
+- Angivet citattecken var ogiltigt eftersom enheten där offerten genererades inte uppfyller Azure-baslinjekraven
+- Det angivna citattet var ogiltigt eftersom TCBInfo eller QEID som tillhandahölls av PCK Cache Service var ogiltigt
 
 **Felsökningsanvisningar**
 
@@ -128,7 +129,7 @@ At line:1 char:1
 
 **Felsökningssteg** Rotcertifikatet måste flaggas som utfärdat av en certifikatutfärdare (de grundläggande X.509-begränsningarna), annars betraktas det inte som ett giltigt certifikat. 
 
-Se till att tillägget Grundläggande begränsningar för rotcertifikatet är inställt för att indikera att Ämnestyp = CA
+Se till att tillägget Grundläggande begränsningar för rotcertifikatet är inställt för att ange ämnestyp = CA
 
 Annars anses certifikatkedjan vara ogiltig.
 
@@ -157,7 +158,7 @@ At line:1 char:1
 
 ```
 
-När användaren inte laddar upp ett certifikat i JWS-format
+När användaren inte överför ett certifikat i JWS-format
 
 ```
 Add-AzAttestationPolicySigner : Operation returned HTTP Status Code 400
@@ -178,13 +179,13 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.AddAzureAttestationPolicySigner
 ```
 
-**Felsökningssteg** Om du vill lägga till/ta bort ett nytt certifikat för principtecken använder du RFC7519 JSON Web Token (JWT) med ett anspråk med namnet "x-ms-policyCertificate". Anspråksvärdet är en RFC7517 JSON Web Key som innehåller certifikatet som ska läggas till. JWT måste signeras med privat nyckel för något av de giltiga principcertifikat som är associerade med providern. Se [exempel på principtecken.](./policy-signer-examples.md)
+**Felsökningssteg** Om du vill lägga till/ta bort ett nytt principcertifikat använder du RFC7519 JSON Web Token (JWT) med ett anspråk med namnet "x-ms-policyCertificate". Anspråksvärdet är en RFC7517 JSON Web Key som innehåller certifikatet som ska läggas till. JWT måste signeras med privat nyckel för något av de giltiga princip signerarcertifikat som är associerade med providern. Se [exempel på principtecken.](./policy-signer-examples.md)
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Konfigurationsfel för att bestationeringsprincip
 
 **Felkod** PolicyParsingError
 
-**Scenarioexempel** Princip med felaktig syntax (till exempel om semikolon saknas)/giltig JWT-princip)
+**Scenarioexempel** Princip med felaktig syntax (till exempel om det saknas semikolon)/giltig JWT-princip)
 
 ```
 Native operation failed with 65526: ..\NativePolicyWrapper\NativePolicyEngine.cpp(31)\(null)!: (caller: ) Exception(0) 83FFFFF6 Invalid policy was specified    Msg:[Policy Parser Exception Thrown: Offending
@@ -202,7 +203,7 @@ At line:1 char:1
 
 **Felkod** InvalidOperation
 
-**Scenarioexempel** Ogiltigt innehåll har angetts (till exempel ladda upp princip/osignerad princip när principsignering krävs)
+**Scenarioexempel** Ogiltigt innehåll tillhandahålls (till exempel ladda upp princip/osignerad princip när principsignering krävs)
 
 ```
 Native operation failed with 74: ..\Shared\base64url.h(226)\(null)!: (caller: ) Exception(0) 83FF004A Bad message    Msg:[Unknown base64 character: 41 (')')]
@@ -216,15 +217,15 @@ At line:1 char:1
 
 **Felsökningssteg** Kontrollera att principen i textformat är UTF-8-kodad.
 
-Om principsignering krävs måste attestationsprincipen endast konfigureras i JWT-format (RFC7519 JSON Web Token). Om principsignering inte krävs kan principen konfigureras i text- eller JWT-format.
+Om principsignering krävs måste attestationsprincipen endast konfigureras i FORMATET RFC7519 JSON Web Token (JWT). Om principsignering inte krävs kan principen konfigureras i text- eller JWT-format.
 
-Om du vill konfigurera en princip i JWT-format använder du JWT med ett anspråk med namnet "AttestationPolicy". Anspråksvärdet är Base64URL-kodad version av principtexten. Om attesteringsprovidern är konfigurerad med certifikat för princip signerare, måste JWT signeras med privat nyckel för något av de giltiga princip signerarcertifikat som är associerade med providern. 
+Om du vill konfigurera en princip i JWT-format använder du JWT med ett anspråk med namnet "AttestationPolicy". Värdet för anspråket är Base64URL-kodad version av principtexten. Om attesteringsprovidern har konfigurerats med certifikat för principtecken måste JWT signeras med en privat nyckel för något av de giltiga princip signerarcertifikat som är associerade med providern. 
 
 Om du vill konfigurera en princip i textformat anger du principtext direkt.
 
 I PowerShell anger du PolicyFormat som JWT för att konfigurera principen i JWT-format. Standardprincipformatet är Text.
 
-Se exempel på [attestationsprincip](./policy-examples.md) [och hur du skapar en attestationsprincip](./author-sign-policy.md) 
+Se exempel [](./policy-examples.md) på attestationprincip och [hur du skapar en attestationsprincip](./author-sign-policy.md) 
 
 ## <a name="3-azattestation-installation-issues-in-powershell"></a>3. Installationsproblem med Az.Attestation i PowerShell
 
@@ -246,14 +247,14 @@ Om du vill fortsätta att interagera med PowerShell-galleriet kör du följande 
 
 ## <a name="4-policy-accessconfiguration-issues-in-powershell"></a>4. Problem med principåtkomst/konfiguration i PowerShell
 
-Användare som tilldelats med lämpliga roller. Men problem med auktorisering vid hantering av attestationsprinciper via PowerShell.
+Användare som tilldelats med lämpliga roller. Men du får auktoriseringsproblem när du hanterar attestationsprinciper via PowerShell.
 
 ### <a name="error"></a>Fel
-Klienten med objekt-ID för objekt-ID har inte behörighet att utföra åtgärden &lt; &gt;  Microsoft.Authorization/roleassignments/write över omfånget 'subcriptions/subscriptionId &lt; &gt; resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/ role assignmentId ' eller &lt; omfånget är &gt; ogiltigt. Uppdatera dina autentiseringsuppgifter om åtkomsten nyligen har beviljats
+Klienten med objekt-ID för objekt-ID har inte behörighet att utföra åtgärden &lt; &gt;  Microsoft.Authorization/roleassignments/write över omfånget 'subcriptions/ &lt; subscriptionId &gt; resourcegroups/secure_enclave_poc/providers/Microsoft.Authorization/roleassignments/ role assignmentId ' eller så är omfånget &lt; &gt; ogiltigt. Uppdatera dina autentiseringsuppgifter om åtkomsten nyligen har beviljats
 
 ### <a name="troubleshooting-steps"></a>Felsökningsanvisningar
 
-Den lägsta version av Az-moduler som krävs för att stödja attestationsåtgärder är följande: 
+Den lägsta versionen av Az-moduler som krävs för att stödja attestationsåtgärder är följande: 
 
  **Az 4.5.0** 
  
@@ -267,6 +268,6 @@ Kör kommandot nedan för att verifiera den installerade versionen av alla Az-mo
 Get-InstalledModule 
 ```
 
-Om versionerna inte matchar minimikraven kör du Update-Module kommandon
+Om versionerna inte matchar minimikravet kör du Update-Module kommandon
 
 t.ex. - Update-Module -Name Az.Attestation

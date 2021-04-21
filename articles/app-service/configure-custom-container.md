@@ -3,17 +3,18 @@ title: Konfigurera en anpassad container
 description: Lär dig hur du konfigurerar en anpassad container i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
 ms.topic: article
 ms.date: 02/23/2021
+ms.custom: devx-track-azurepowershell
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7bfebe318d93a544c964d70ea0a28144a7f0e43b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 48d2eeec1bdb1b9b4a393b4116092f043716077c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764251"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832041"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurera en anpassad container för Azure App Service
 
-Den här artikeln visar hur du konfigurerar en anpassad container som ska köras på Azure App Service.
+Den här artikeln visar hur du konfigurerar en anpassad container för körning på Azure App Service.
 
 ::: zone pivot="container-windows"
 
@@ -23,7 +24,7 @@ Den här guiden innehåller viktiga begrepp och instruktioner för containeriser
 
 ::: zone pivot="container-linux"
 
-Den här guiden innehåller viktiga begrepp och instruktioner för containerisering av Linux-appar i App Service. Om du aldrig har använt Azure App Service följer du [snabbstarten och självstudien om](quickstart-custom-container.md) anpassade [containrar](tutorial-custom-container.md) först. Det finns också en [snabbstart och självstudie för en app](quickstart-multi-container.md) med flera [containrar.](tutorial-multi-container-app.md)
+Den här guiden innehåller viktiga begrepp och instruktioner för containerisering av Linux-appar i App Service. Om du aldrig har använt Azure App Service följer du [snabbstarten och självstudien om](quickstart-custom-container.md) anpassade [containrar](tutorial-custom-container.md) först. Det finns också en [snabbstart och självstudie för en app med](quickstart-multi-container.md) flera [containrar.](tutorial-multi-container-app.md)
 
 ::: zone-end
 
@@ -33,12 +34,12 @@ Den här guiden innehåller viktiga begrepp och instruktioner för containeriser
 
 För din anpassade Windows-avbildning måste du välja rätt överordnad [avbildning (basavbildning) för](https://docs.docker.com/develop/develop-images/baseimages/) det ramverk som du vill använda:
 
-- Om du .NET Framework distribuera appar använder du en överordnad avbildning som baseras på Windows Server Core [Långsiktig underhållskanal (LTSC)-versionen.](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 
-- Om du vill distribuera .NET Core-appar använder du en överordnad avbildning baserat på Windows Server Nano [Semi-Annual Servicing Channel-versionen (SAC).](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 
+- Om du .NET Framework en överordnad avbildning baserat på Windows Server Core [Långsiktig underhållskanal (LTSC)-versionen.](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 
+- Om du vill distribuera .NET Core-appar använder du en överordnad avbildning som baseras på SAC-versionen (Windows Server Nano [Semi-Annual Servicing Channel).](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 
 
 Det tar lite tid att ladda ned en överordnad avbildning när appen startas. Men du kan minska starttiden genom att använda någon av följande överordnade avbildningar som redan har cachelagrats i Azure App Service:
 
-- [mcr.microsoft.com/windows/servercore](https://hub.docker.com/_/microsoft-windows-servercore):2004
+- [](https://hub.docker.com/_/microsoft-windows-servercore)mcr.microsoft.com/windows/servercore:2004
 - [](https://hub.docker.com/_/microsoft-windows-servercore)mcr.microsoft.com/windows/servercore:ltsc2019
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-2004
 - [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-ltsc2019
@@ -63,7 +64,7 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 
 ## <a name="use-an-image-from-a-private-registry"></a>Använda en avbildning från ett privat register
 
-Om du vill använda en avbildning från ett privat register, Azure Container Registry kör du följande kommando:
+Om du vill använda en avbildning från ett privat register, till Azure Container Registry, kör du följande kommando:
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <image-name> --docker-registry-server-url <private-repo-url> --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -111,7 +112,7 @@ I PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-När din app körs App Service appinställningarna i processen som miljövariabler automatiskt. Du kan verifiera miljövariabler för containrar med URL:en `https://<app-name>.scm.azurewebsites.net/Env)` .
+När appen körs matas App Service appinställningar in i processen som miljövariabler automatiskt. Du kan verifiera miljövariabler för containrar med URL:en `https://<app-name>.scm.azurewebsites.net/Env)` .
 
 Om din app använder avbildningar från ett privat register eller från Docker Hub sparas autentiseringsuppgifter för åtkomst till lagringsplatsen i miljövariabler: `DOCKER_REGISTRY_SERVER_URL` `DOCKER_REGISTRY_SERVER_USERNAME` , och `DOCKER_REGISTRY_SERVER_PASSWORD` . På grund av säkerhetsrisker exponeras inga av dessa reserverade variabelnamn för programmet.
 
@@ -129,7 +130,7 @@ För IIS- .NET Framework (4.0 eller högre) containrar matas de in som `System.C
 
 ::: zone pivot="container-linux"
 
-Den här metoden fungerar både för appar med en container eller appar med flera containrar, där miljövariablerna anges i *filen docker-compose.yml.*
+Den här metoden fungerar både för appar med en enskild container eller appar med flera containrar, där miljövariablerna anges i *filen docker-compose.yml.*
 
 ::: zone-end
 
@@ -139,7 +140,7 @@ Den här metoden fungerar både för appar med en container eller appar med fler
 
 Du kan använda *katalogen C:\home* i appens filsystem för att spara filer mellan omstarter och dela dem mellan instanser. i `C:\home` din app tillhandahålls för att ge containerappen åtkomst till beständig lagring.
 
-När beständig lagring är inaktiverat bevaras `C:\home` inte skrivningar till katalogen. [Docker-värdloggar och containerloggar](#access-diagnostic-logs) sparas i en beständig standardlagringsplats som inte är kopplad till containern. När beständig lagring är aktiverat bevaras alla skrivningar till katalogen och kan nås av alla instanser av en `C:\home` utskalade app och loggen är tillgänglig på `C:\home\LogFiles` .
+När beständig lagring är inaktiverat bevaras `C:\home` inte skrivningar till katalogen. [Docker-värdloggar och containerloggar](#access-diagnostic-logs) sparas i en beständig standardlagringsplats som inte är kopplad till containern. När beständig lagring är aktiverad bevaras alla skrivningar till katalogen och kan nås av alla instanser av en `C:\home` utskalade app och loggen är tillgänglig på `C:\home\LogFiles` .
 
 ::: zone-end
 
@@ -187,7 +188,7 @@ Du kan ansluta till Windows-containern direkt för diagnostikuppgifter genom att
 - Med felsökningskonsolen kan du köra interaktiva kommandon, till exempel starta PowerShell-sessioner, inspektera registernycklar och navigera i hela containerfilsystemet.
 - Den fungerar separat från den grafiska webbläsaren ovanför, vilket endast visar filerna i din [delade lagring.](#use-persistent-shared-storage)
 - I en utskalade app ansluts felsökningskonsolen till en av containerinstanserna. Du kan välja en annan instans från **listrutan** Instans på den översta menyn.
-- Ändringar som du gör i containern  inifrån -konsolen bevaras inte när appen startas om (förutom ändringar i den delade lagringen), eftersom den inte ingår i Docker-avbildningen. Om du vill bevara ändringarna, till exempel registerinställningar och programvaruinstallation, gör de till en del av Dockerfile.
+- Ändringar som du gör i containern  inifrån konsolen bevaras inte när appen startas om (förutom ändringar i den delade lagringen), eftersom den inte ingår i Docker-avbildningen. Om du vill bevara dina ändringar, till exempel registerinställningar och programvaruinstallation, gör dem till en del av Dockerfile.
 
 ## <a name="access-diagnostic-logs"></a>Få åtkomst till diagnostikloggar
 
@@ -208,7 +209,7 @@ Docker-loggar visas i portalen på sidan **Containerinställningar** i din app. 
 
 Gå till `https://<app-name>.scm.azurewebsites.net/DebugConsole` och klicka på mappen **LogFiles** för att se de enskilda loggfilerna. Om du vill ladda **ned hela LogFiles-katalogen** klickar **du på** nedladdningsikonen till vänster om katalognamnet. Du kan också komma åt den här mappen med hjälp av en FTP-klient.
 
-I konsolterminalen kan du inte komma åt mappen `C:\home\LogFiles` som standard eftersom beständig delad lagring inte är aktiverat. Aktivera beständig delad lagring för att aktivera det här [beteendet i konsolterminalen.](#use-persistent-shared-storage)
+I konsolterminalen kan du inte komma åt mappen `C:\home\LogFiles` som standard eftersom beständig delad lagring inte är aktiverat. Aktivera det här beteendet i konsolterminalen genom [att aktivera beständig delad lagring](#use-persistent-shared-storage).
 
 Om du försöker ladda ned Den Docker-logg som för närvarande används med hjälp av en FTP-klient kan du få ett felmeddelande på grund av ett fillås.
 
@@ -280,13 +281,13 @@ I följande tabell visas möjliga värden:
 
 | Värde | Beskrivningar |
 | - | - |
-| **Reparation** | Starta om containern efter tre på varandra följande tillgänglighetskontroller |
+| **Reparation** | Starta om containern efter tre efterföljande tillgänglighetskontroller |
 | **ReportOnly** | Standardvärdet. Starta inte om containern utan rapportera i Docker-loggarna för containern efter tre efterföljande tillgänglighetskontroller. |
 | **Av** | Kontrollera inte tillgängligheten. |
 
 ## <a name="support-for-group-managed-service-accounts"></a>Stöd för grupp-hanterade tjänstkonton
 
-Grupp-hanterade tjänstkonton (gMSA) stöds för närvarande inte i Windows-containrar i App Service.
+Grupp hanterade tjänstkonton (gMSA) stöds för närvarande inte i Windows-containrar i App Service.
 
 ::: zone-end
 
@@ -297,7 +298,7 @@ Grupp-hanterade tjänstkonton (gMSA) stöds för närvarande inte i Windows-cont
 SSH möjliggör säker kommunikation mellan en container och en klient. För att en anpassad container ska ha stöd för SSH måste du lägga till den i själva Docker-avbildningen.
 
 > [!TIP]
-> Alla inbyggda Linux-containrar i App Service har lagt till SSH-instruktionerna i sina avbildningsdatabaser. Du kan gå igenom följande instruktioner medNode.js [ 10.14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktiverad där. Konfigurationen i den Node.js inbyggda avbildningen skiljer sig något, men samma i princip.
+> Alla inbyggda Linux-containrar i App Service har lagt till SSH-instruktionerna i sina avbildningsdatabaser. Du kan gå igenom följande instruktioner medNode.js [ 10.14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktiverad där. Konfigurationen i den Node.js inbyggda avbildningen är något annorlunda, men i princip densamma.
 
 - Lägg [till sshd_config-fil](https://man.openbsd.org/sshd_config) till lagringsplatsen, som i följande exempel.
 
@@ -352,11 +353,11 @@ SSH möjliggör säker kommunikation mellan en container och en klient. För att
 
 - [Använda beständig lagring i Docker Compose](#use-persistent-storage-in-docker-compose)
 - [Begränsningar för förhandsversion](#preview-limitations)
-- [Alternativ för Docker Compose](#docker-compose-options)
+- [Docker Compose-alternativ](#docker-compose-options)
 
 ### <a name="use-persistent-storage-in-docker-compose"></a>Använda beständig lagring i Docker Compose
 
-Appar med flera containrar som WordPress behöver beständig lagring för att fungera korrekt. Om du vill aktivera det måste Docker Compose-konfigurationen peka på en lagringsplats *utanför* containern. Lagringsplatser i containern bevarar inte ändringar utöver app-omstart.
+Appar med flera containrar som WordPress behöver beständig lagring för att fungera korrekt. Om du vill aktivera det måste Docker Compose-konfigurationen peka på en *lagringsplats utanför* containern. Lagringsplatser i containern bevarar inte ändringar utöver appstart.
 
 Aktivera beständig lagring genom att ange appinställningen med kommandot `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) i [Cloud Shell](https://shell.azure.com).
 
@@ -385,9 +386,9 @@ Flera containrar är för närvarande i förhandsversion. Följande funktioner A
 - Hanterade identiteter
 - CORS
 
-### <a name="docker-compose-options"></a>Alternativ för Docker Compose
+### <a name="docker-compose-options"></a>Docker Compose-alternativ
 
-Följande listor visar konfigurationsalternativ som stöds och inte stöds:
+Följande listor visar konfigurationsalternativ som stöds och som inte stöds:
 
 #### <a name="supported-options"></a>Alternativ som stöds
 
@@ -427,6 +428,6 @@ Följande listor visar konfigurationsalternativ som stöds och inte stöds:
 
 ::: zone-end
 
-Du kan också se ytterligare resurser:
+Eller så kan du se ytterligare resurser:
 
-[Läsa in certifikat i Windows-/Linux-containrar](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+[Läsa in certifikat i Windows/Linux-containrar](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

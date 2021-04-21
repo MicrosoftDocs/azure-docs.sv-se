@@ -1,47 +1,47 @@
 ---
-title: Strömma körnings loggar i Azure Functions
-description: 115-145 tecken inklusive blank steg. Den här sammanfattningen visas i sökresultatet.
+title: Strömma körningsloggar i Azure Functions
+description: 115–145 tecken, inklusive blanksteg. Den här sammanfattningen visas i sökresultatet.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 085849386fce929ceaec4536844cf31b94fe7539
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: contperf-fy21q2, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 4afb1068acda69c9dd65a423d887abea80c695cd
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97033059"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830906"
 ---
-# <a name="enable-streaming-execution-logs-in-azure-functions"></a>Aktivera strömnings körnings loggar i Azure Functions
+# <a name="enable-streaming-execution-logs-in-azure-functions"></a>Aktivera direktuppspelningskörningsloggar i Azure Functions
 
-När du utvecklar ett program vill du ofta se vad som skrivs till loggarna i nära real tid när de körs i Azure.
+När du utvecklar ett program vill du ofta se vad som skrivs till loggarna nästan i realtid när du kör i Azure.
 
-Det finns två sätt att visa en ström med loggfiler som genereras av dina funktions körningar.
+Det finns två sätt att visa en ström av loggfiler som genereras av funktionskörningarna.
 
-* **Inbyggd logg strömning**: app Services plattformen gör att du kan visa en ström med dina program loggs-filer. Detta motsvarar de utdata som visas när du felsöker dina funktioner under [lokal utveckling](functions-develop-local.md) och när du använder fliken **test** i portalen. All logg-baserad information visas. Mer information finns i [Stream-loggar](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Den här streaming-metoden har endast stöd för en enda instans och kan inte användas med en app som körs på Linux i en förbruknings plan.
+* **Inbyggd loggströmning:** Med App Service-plattformen kan du visa en ström av dina programloggfiler. Detta motsvarar de utdata som visas när [](functions-develop-local.md) du felsöker dina funktioner under lokal utveckling och när du använder **fliken** Test i portalen. All loggbaserad information visas. Mer information finns i [Stream-loggar.](../app-service/troubleshoot-diagnostic-logs.md#stream-logs) Den här strömningsmetoden stöder bara en enda instans och kan inte användas med en app som körs på Linux i en förbrukningsplan.
 
-* **Live Metrics Stream**: när din Function-app är [ansluten till Application Insights](configure-monitoring.md#enable-application-insights-integration)kan du Visa loggdata och andra mått i nära real tid i Azure Portal med hjälp av [Live Metrics Stream](../azure-monitor/app/live-stream.md). Använd den här metoden när du övervakar funktioner som körs på flera instanser eller i Linux i en förbruknings plan. Den här metoden använder [exempel data](configure-monitoring.md#configure-sampling).
+* **Live Metrics Stream:** när funktionsappen är ansluten [till Application Insights](configure-monitoring.md#enable-application-insights-integration)kan du visa loggdata och andra mått nästan i realtid i Azure Portal med hjälp [av Live Metrics Stream](../azure-monitor/app/live-stream.md). Använd den här metoden när du övervakar funktioner som körs på flera instanser eller på Linux i en förbrukningsplan. Den här metoden [använder exempeldata](configure-monitoring.md#configure-sampling).
 
-Logg strömmar kan visas både i portalen och i de flesta lokala utvecklings miljöer. 
+Loggströmmar kan visas både i portalen och i de flesta lokala utvecklingsmiljöer. 
 
-## <a name="portal"></a>Portal
+## <a name="portal"></a>Portalen
 
-Du kan visa båda typerna av logg strömmar i portalen.
+Du kan visa båda typerna av loggströmmar i portalen.
 
-### <a name="built-in-log-streaming"></a>Inbyggd logg strömning
+### <a name="built-in-log-streaming"></a>Inbyggd loggströmning
 
-Om du vill visa strömmande loggar i portalen väljer du fliken **plattforms funktioner** i din Function-app. Välj sedan **logg strömning** under **övervakning**.
+Om du vill visa strömningsloggar i portalen väljer **du fliken Plattformsfunktioner** i funktionsappen. Under Övervakning **väljer du** **loggströmning.**
 
-![Aktivera strömmande loggar i portalen](./media/functions-monitoring/enable-streaming-logs-portal.png)
+![Aktivera strömningsloggar i portalen](./media/functions-monitoring/enable-streaming-logs-portal.png)
 
-Detta ansluter din app till logg strömnings tjänsten och program loggar visas i fönstret. Du kan växla mellan **program loggar** och **webb server loggar**.  
+Detta ansluter din app till loggströmningstjänsten och programloggar visas i fönstret. Du kan växla mellan **Programloggar och** **Webbserverloggar.**  
 
-![Visa strömmande loggar i portalen](./media/functions-monitoring/streaming-logs-window.png)
+![Visa strömningsloggar i portalen](./media/functions-monitoring/streaming-logs-window.png)
 
 ### <a name="live-metrics-stream"></a>Live-ström med mätvärden
 
-Om du vill visa Live Metrics Stream för din app väljer du fliken **Översikt** i din Function-app. När du har Application Insights aktiverar kan du se en **Application Insights** länk under **konfigurerade funktioner**. Den här länken leder till Application Insights sidan för din app.
+Om du vill Live Metrics Stream för din app väljer du **fliken Översikt** för din funktionsapp. När du har Application Insights aktiveras visas en länk **Application Insights** under **Konfigurerade funktioner**. Den här länken tar dig Application Insights sidan för din app.
 
-I Application Insights väljer du **Live Metrics Stream**. [Exempel logg poster](configure-monitoring.md#configure-sampling) visas under **exempel telemetri**.
+I Application Insights väljer du **Live Metrics Stream**. [Exempelloggposter visas](configure-monitoring.md#configure-sampling) under **Exempeltelemetri**.
 
 ![Visa Live Metrics Stream i portalen](./media/functions-monitoring/live-metrics-stream.png) 
 
@@ -49,13 +49,13 @@ I Application Insights väljer du **Live Metrics Stream**. [Exempel logg poster]
 
 [!INCLUDE [functions-enable-log-stream-vs-code](../../includes/functions-enable-log-stream-vs-code.md)]
 
-## <a name="core-tools"></a>Kärn verktyg
+## <a name="core-tools"></a>Core Tools
 
 [!INCLUDE [functions-streaming-logs-core-tools](../../includes/functions-streaming-logs-core-tools.md)]
 
 ## <a name="azure-cli"></a>Azure CLI
 
-Du kan aktivera strömmande loggar med hjälp av [Azure CLI](/cli/azure/install-azure-cli). Använd följande kommandon för att logga in, välja din prenumeration och strömma loggfiler:
+Du kan aktivera strömmande loggar med hjälp av [Azure CLI.](/cli/azure/install-azure-cli) Använd följande kommandon för att logga in, välja din prenumeration och strömma loggfiler:
 
 ```azurecli
 az login
@@ -66,11 +66,11 @@ az webapp log tail --resource-group <RESOURCE_GROUP_NAME> --name <FUNCTION_APP_N
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-Du kan aktivera strömnings loggar med [Azure PowerShell](/powershell/azure/). För PowerShell använder du kommandot [set-AzWebApp](/powershell/module/az.websites/set-azwebapp) för att aktivera loggning i Function-appen, som du ser i följande kodfragment: 
+Du kan aktivera strömmande loggar med hjälp [av Azure PowerShell](/powershell/azure/). För PowerShell använder du [kommandot Set-AzWebApp](/powershell/module/az.websites/set-azwebapp) för att aktivera loggning i funktionsappen, som du ser i följande kodavsnitt: 
 
 :::code language="powershell" source="~/powershell_scripts/app-service/monitor-with-logs/monitor-with-logs.ps1" range="19-20":::
 
-Mer information finns i det [fullständiga kod exemplet](../app-service/scripts/powershell-monitor.md#sample-script). 
+Mer information finns i det [fullständiga kodexe exemplet](../app-service/scripts/powershell-monitor.md#sample-script). 
 
 ## <a name="next-steps"></a>Nästa steg
 

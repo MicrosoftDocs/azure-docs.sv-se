@@ -1,17 +1,17 @@
 ---
 title: Starta anslutning av virtuell dator – Azure
-description: Så här konfigurerar du funktionen Starta virtuell dator vid anslutning.
+description: Så här konfigurerar du funktionen Starta virtuell dator på anslut.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: af95cf5d3e4112c717d653062f186797d48fb515
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 161a4d578509a7752f9438ce8f05d599bdb54e93
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389816"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832292"
 ---
 # <a name="start-virtual-machine-on-connect-preview"></a>Starta virtuell dator vid anslutning (förhandsversion)
 
@@ -19,7 +19,7 @@ ms.locfileid: "107389816"
 > Funktionen Starta virtuell dator på Anslut är för närvarande i offentlig förhandsversion.
 > Den här förhandsversionen tillhandahålls utan serviceavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Med funktionen Starta virtuell dator (VM) på Anslut (förhandsversion) kan du spara kostnader genom att du kan friplacera dina virtuella datorer när du inte använder dem. När du behöver använda den virtuella datorn igen behöver du bara aktivera dina virtuella datorer igen.
+Med funktionen Starta virtuell dator (VM) på Anslut (förhandsversion) kan du spara kostnader genom att tillåta slutanvändare att aktivera sina virtuella datorer endast när de behöver dem. Du kan sedan stänga av virtuella datorer när de inte behövs.
 
 >[!NOTE]
 >Windows Virtual Desktop (klassisk) stöder inte den här funktionen.
@@ -33,13 +33,13 @@ Följande fjärrskrivbordsklienter stöder funktionen Starta virtuell dator på 
 - [Webbklienten](connect-web.md)
 - [Windows-klienten (version 1.2748 eller senare)](connect-windows-7-10.md)
 
-Du kan söka efter meddelanden om uppdateringar och klientstöd på [Tech Community-forumet.](https://aka.ms/wvdtc)
+Du kan söka efter meddelanden om uppdateringar och klientstöd i [Tech Community-forumet.](https://aka.ms/wvdtc)
 
-Det Azure Government molnet stöder för närvarande inte Starta virtuell dator på Anslut.
+Det Azure Government molnet stöder för närvarande inte Starta virtuell dator på Connect.
 
 ## <a name="create-a-custom-role-for-start-vm-on-connect"></a>Skapa en anpassad roll för Starta virtuell dator på Anslut
 
-Innan du kan konfigurera funktionen Starta virtuell dator på Anslut måste du tilldela den virtuella datorn en anpassad RBAC-roll (rollbaserad åtkomstkontroll). Med den här rollen kan Windows Virtual Desktop hantera de virtuella datorerna i din prenumeration. Du kan också använda den här rollen för att aktivera virtuella datorer, kontrollera deras status och rapportera diagnostikinformation. Om du vill veta mer om vad varje roll gör kan du ta en titt på anpassade [Azure-roller.](../role-based-access-control/custom-roles.md)
+Innan du kan konfigurera funktionen Starta virtuell dator på anslut måste du tilldela den virtuella datorn en anpassad RBAC-roll (rollbaserad åtkomstkontroll). Med den här rollen kan Windows Virtual Desktop hantera de virtuella datorerna i din prenumeration. Du kan också använda den här rollen för att aktivera virtuella datorer, kontrollera deras status och rapportera diagnostikinformation. Om du vill veta mer om vad varje roll gör kan du ta en titt på Anpassade [Roller i Azure.](../role-based-access-control/custom-roles.md)
 
 ### <a name="use-the-azure-portal"></a>Använda Azure-portalen
 
@@ -50,22 +50,22 @@ Så här använder du Azure Portal tilldela en anpassad roll för Starta virtuel
 2. Gå till **Åtkomstkontroll (IAM) och** välj Lägg **till en anpassad roll.**
 
     > [!div class="mx-imgBorder"]
-    > ![En skärmbild av en nedrullningslistad meny från knappen Lägg till i Åtkomstkontroll (IAM). "Lägg till en anpassad roll" är markerat i rött.](media/add-custom-role.png)
+    > ![En skärmbild av en nedrullningsen meny från knappen Lägg till i åtkomstkontroll (IAM). "Lägg till en anpassad roll" är markerat i rött.](media/add-custom-role.png)
 
 3. Ge sedan den anpassade rollen ett namn och lägg till en beskrivning. Vi rekommenderar att du ger den namnet "starta virtuell dator vid anslutning".
 
-4. På fliken **Behörigheter** lägger du till följande behörigheter till den prenumeration som du tilldelar rollen till: 
+4. På fliken **Behörigheter** lägger du till följande behörigheter i den prenumeration som du tilldelar rollen till: 
  
    - Microsoft.Compute/virtualMachines/start/action
    - Microsoft.Compute/virtualMachines/read
 
-5. När du är klar väljer du **OK.**
+5. När du är klar väljer du **Ok.**
 
 Därefter måste du tilldela rollen för att bevilja åtkomst till Windows Virtual Desktop.
 
 Så här tilldelar du den anpassade rollen:
 
-1. På fliken **Åtkomstkontroll (IAM) väljer** du Lägg **till rolltilldelningar.**
+1. På fliken **Åtkomstkontroll (IAM) väljer** du **Lägg till rolltilldelningar.**
 
 2. Välj den roll som du nyss skapade.
 
@@ -128,7 +128,7 @@ Så här använder du Azure Portal för att konfigurera Starta virtuell dator p�
    >[!NOTE]
    > Värdpoolen som du konfigurerar den här funktionen i måste ha personliga skrivbord med direkt rolltilldelningar. Om skrivborden i värdpoolen inte är korrekt konfigurerade fungerar inte konfigurationsprocessen.
 
-4. I värdpoolen väljer du **Egenskaper**. Under **Starta virtuell dator på** anslut väljer du **Ja** och sedan **Spara** för att tillämpa inställningen omedelbart.
+4. I värdpoolen väljer du **Egenskaper**. Under **Starta virtuell dator på anslut** väljer du **Ja** och sedan **Spara** för att tillämpa inställningen omedelbart.
 
     > [!div class="mx-imgBorder"]
     > ![En skärmbild av Fönstret Egenskaper. Alternativet Starta virtuell dator vid anslutning är markerat i rött.](media/properties-start-vm-on-connect.png)

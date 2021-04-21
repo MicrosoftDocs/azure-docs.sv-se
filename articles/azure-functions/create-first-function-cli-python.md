@@ -6,16 +6,17 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-python
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-python-uiex
-ms.openlocfilehash: f5c51630d111bd68e311a93100abb8266e2a8e27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b006f006c9fb45c9a7d80e815f95bec812e5ec3f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787439"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831842"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en Python-funktion i Azure från kommandoraden
 
@@ -59,7 +60,7 @@ Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShe
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
++ I ett terminal- eller kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
 
 + Kör `(Get-Module -ListAvailable Az).Version` och verifiera version 5.0 eller senare. 
 
@@ -117,7 +118,7 @@ Du kör alla efterföljande kommandon i den här aktiverade virtuella miljön.
 
 I Azure Functions är ett funktionsprojekt en container för en eller flera enskilda funktioner som var och en svarar på en specifik utlösare. Alla funktioner i ett projekt delar samma lokala konfigurationer och värdkonfigurationer. I det här avsnittet skapar du ett funktionsprojekt som innehåller en enda funktion.
 
-1. Kör kommandot på följande sätt för att skapa ett funktionsprojekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
+1. Kör kommandot på följande sätt för att skapa ett functions-projekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
 
     ```console
     func init LocalFunctionProj --python
@@ -129,9 +130,9 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
     cd LocalFunctionProj
     ```
     
-    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler [ medlocal.settings.jspå](functions-run-local.md#local-settings-file) ochhost.js[ på](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
+    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
 
-1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på din funktion `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP).
+1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på funktionen `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP).
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
@@ -207,7 +208,7 @@ Använd följande kommandon för att skapa dessa objekt. Både Azure CLI och Pow
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    Kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) skapar en resursgrupp. Vanligtvis skapar du din resursgrupp och dina resurser i en region nära dig, med hjälp av en tillgänglig region som returneras från cmdleten [Get-AzLocation.](/powershell/module/az.resources/get-azlocation)
+    Kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) skapar en resursgrupp. Vanligtvis skapar du din resursgrupp och dina resurser i en region nära dig med hjälp av en tillgänglig region som returneras från cmdleten [Get-AzLocation.](/powershell/module/az.resources/get-azlocation)
 
     ---
 
@@ -246,7 +247,7 @@ Använd följande kommandon för att skapa dessa objekt. Både Azure CLI och Pow
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
     ```
     
-    Kommandot [az functionapp create](/cli/azure/functionapp#az_functionapp_create) skapar funktionsappen i Azure. Om du använder Python 3.7 eller 3.6 ändrar `--runtime-version` du till respektive eller `3.7` `3.6` .
+    Kommandot [az functionapp create](/cli/azure/functionapp#az_functionapp_create) skapar funktionsappen i Azure. Om du använder Python 3.7 eller 3.6 ändrar `--runtime-version` `3.7` du till eller `3.6` .
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
@@ -254,25 +255,25 @@ Använd följande kommandon för att skapa dessa objekt. Både Azure CLI och Pow
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
     
-    Cmdleten [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) skapar funktionsappen i Azure. Om du använder Python 3.7 eller 3.6 ändrar du `-RuntimeVersion` `3.7` till respektive eller `3.6` .
+    Cmdleten [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) skapar funktionsappen i Azure. Om du använder Python 3.7 eller 3.6 ändrar `-RuntimeVersion` `3.7` du till eller `3.6` .
 
     ---
     
     I föregående exempel ersätter du med namnet på det konto som du använde i föregående steg och ersätter med ett `<STORAGE_NAME>` globalt unikt namn som passar `<APP_NAME>` dig.  `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
     
-    Det här kommandot skapar en funktionsapp som körs i den angivna språkkörningen under [Azure Functions Consumption Plan](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot innehåller också en associerad Azure Application Insights-instans i samma resursgrupp, med vilken du kan övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en funktionsapp som körs i din angivna språkkörning under [Azure Functions Consumption Plan](consumption-plan.md), vilket är kostnadsfritt för den användning du ådrar dig här. Kommandot tiller även en associerad Azure Application Insights-instans i samma resursgrupp som du kan använda för att övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 
 [!INCLUDE [functions-run-remote-azure-cli](../../includes/functions-run-remote-azure-cli.md)]
 
-Kör följande kommando för att visa strömmande loggar [i nära](functions-run-local.md#enable-streaming-logs) realtid Application Insights i Azure Portal:
+Kör följande kommando för att visa strömningsloggar [i nära](functions-run-local.md#enable-streaming-logs) realtid Application Insights i Azure Portal:
 
 ```console
 func azure functionapp logstream <APP_NAME> --browser
 ```
 
-I ett separat terminalfönster eller i webbläsaren anropar du fjärrfunktionen igen. En utförlig logg över funktionskörningen i Azure visas i terminalen. 
+Anropa fjärrfunktionen igen i ett separat terminalfönster eller i webbläsaren. En utförlig logg över funktionskörningen i Azure visas i terminalen. 
 
 [!INCLUDE [functions-cleanup-resources-cli](../../includes/functions-cleanup-resources-cli.md)]
 

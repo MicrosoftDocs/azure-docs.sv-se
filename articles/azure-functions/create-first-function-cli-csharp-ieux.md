@@ -6,13 +6,14 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2d03f8c820e0a8b6a19394649db66f8028b62781
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fb287333ba8b0b4fc0bb35ce91d2e3113ff50e2b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768803"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831122"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en C#-funktion i Azure från kommandoraden
 
@@ -24,15 +25,15 @@ ms.locfileid: "107768803"
 > - [Python](create-first-function-cli-python.md)
 > - [TypeScript](create-first-function-cli-typescript.md)
 
-I den här artikeln använder du kommandoradsverktyg för att skapa en biblioteksbaserad C#-klassfunktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till <abbr title="En körningsmiljö där all information om servern är transparent för programutvecklare, vilket förenklar processen med att distribuera och hantera kod.">serverlöst</abbr> miljö för <abbr title="Azures tjänst som tillhandahåller en serverlös datormiljö med låg kostnad för program.">Azure Functions</abbr>.
+I den här artikeln använder du kommandoradsverktyg för att skapa en biblioteksbaserad C#-klassfunktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till <abbr title="En körningsmiljö där all information om servern är transparent för programutvecklare, vilket förenklar distributionen och hanteringen av kod.">serverlöst</abbr> miljö för <abbr title="Azures tjänst som tillhandahåller en kostnadseffektiv serverlös databehandlingsmiljö för program.">Azure Functions</abbr>.
 
-När du slutför den här snabbstarten medför det en liten kostnad på några cent eller mindre för ditt Azure-konto.
+Den här snabbstarten medför en liten kostnad på några cent eller mindre för ditt Azure-konto.
 
 Det finns även en [Visual Studio kodbaserad version av](create-first-function-vs-code-csharp.md) den här artikeln.
 
 ## <a name="1-prepare-your-environment"></a>1. Förbered din miljö
 
-+ Skaffa ett Azure <abbr title="Profilen som underhåller faktureringsinformation för Azure-användning.">konto</abbr> med en aktiv <abbr title="Den grundläggande organisationsstrukturen där du hanterar resurser i Azure, vanligtvis associerad med en person eller avdelning inom en organisation.">prenumeration</abbr>. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
++ Skaffa en Azure <abbr title="Den profil som behåller faktureringsinformation för Azure-användning.">konto</abbr> med en aktiv <abbr title="Den grundläggande organisationsstrukturen där du hanterar resurser i Azure, vanligtvis associerad med en person eller avdelning inom en organisation.">prenumeration</abbr>. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
 + Installera [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
@@ -107,7 +108,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
         
-    Det returnerade objektet är [ett ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) som returnerar ett svarsmeddelande som antingen [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) eller [ett BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Mer information finns i Azure Functions [HTTP-utlösare och bindningar.](./functions-bindings-http-webhook.md?tabs=csharp)  
+    Returobjektet är ett [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) som returnerar ett svarsmeddelande som antingen [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) eller [Ett BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Mer information finns i Azure Functions [HTTP-utlösare och bindningar.](./functions-bindings-http-webhook.md?tabs=csharp)  
     </details>
 
 <br/>
@@ -116,7 +117,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
 
 ## <a name="4-run-the-function-locally"></a>4. Kör funktionen lokalt
 
-1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från *mappen LocalFunctionProj:*
+1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från mappen *LocalFunctionProj:*
 
     ```
     func start
@@ -245,7 +246,7 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
     <details>
     <summary><strong>Vad kostar det att etablera resurser i Azure?</strong></summary>
 
-    Det här kommandot skapar en funktionsapp som körs i din angivna språkkörning under [Azure Functions Consumption-planen](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot tiller även en associerad Azure Application Insights-instans i samma resursgrupp som du kan använda för att övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en funktionsapp som körs i den angivna språkkörningen under [Azure Functions Consumption-planen](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot innehåller också en associerad Azure Application Insights-instans i samma resursgrupp, med vilken du kan övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
     </details>
 
 <br/>
@@ -255,14 +256,14 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
 ## <a name="6-deploy-the-function-project-to-azure"></a>6. Distribuera funktionsprojektet till Azure
 
 
-**Kopiera** 'func azure funtionapp publish <APP_NAME> into your terminal **Replace** `<APP_NAME>` with the name of your app.
+**Kopiera** ' func azure funtionapp publicera <APP_NAME> till **terminalen Ersätt** `<APP_NAME>` med namnet på din app.
 **Kör**
 
 ```console
 func azure functionapp publish <APP_NAME>
 ```
 
-Kommandot `publish` visar resultat som liknar följande utdata (trunkerat för enkelhetens skull):
+Kommandot `publish` visar resultat som liknar följande utdata (trunkerade för enkelhetens skull):
 
 <pre class="is-monospace is-size-small has-padding-medium has-background-tertiary has-text-tertiary-invert">
 ...
@@ -297,7 +298,7 @@ Kopiera den fullständiga **Invoke URL (Anropa URL)** som visas i `publish` komm
 
 ## <a name="8-clean-up-resources"></a>8. Rensa resurser
 
-Om du fortsätter till nästa [steg och lägger till](#next-steps) en Azure Storage köutdata <abbr title="En deklarativ anslutning mellan en funktion och andra resurser. En indatabindning tillhandahåller data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">Bindande</abbr>håller du alla dina resurser på plats eftersom du bygger vidare på det du redan har gjort.
+Om du fortsätter till nästa [steg och lägger till](#next-steps) en Azure Storage köutdata <abbr title="En deklarativ anslutning mellan en funktion och andra resurser. En indatabindning tillhandahåller data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">Bindande</abbr>håller du alla dina resurser på plats när du bygger vidare på det du redan har gjort.
 
 Annars använder du följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser för att undvika ytterligare kostnader.
 

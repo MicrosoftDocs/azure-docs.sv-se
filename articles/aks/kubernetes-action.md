@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/06/2020
 ms.author: atulmal
 ms.custom: github-actions-azure
-ms.openlocfilehash: 3a8e91f74fe3c862a814d7660e64748df9553f1d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 3d0b6030cc63d0d7f4eac2c72c3545cf315b1fd3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779767"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832395"
 ---
 # <a name="github-actions-for-deploying-to-kubernetes-service"></a>GitHub Actions för distribution till Kubernetes-tjänsten
 
@@ -140,7 +140,7 @@ Innan du kan distribuera till AKS måste du ange Kubernetes-målnamnrymden och s
       container-registry-password: ${{ secrets.REGISTRY_PASSWORD }}
       secret-name: ${{ env.SECRET }}
       namespace: ${{ env.NAMESPACE }}
-      force: true
+      arguments: --force true
 ```
 
 
@@ -224,9 +224,9 @@ När kubernetes-klustret, containerregistret och lagringsplatsen inte längre be
 
 * [Installationsprogram för Kubectl-verktyget](https://github.com/Azure/setup-kubectl) ( `azure/setup-kubectl` ): Installerar en specifik version av kubectl i -programmet.
 * [Kubernetes set context](https://github.com/Azure/k8s-set-context) ( ): Ange kubernetes-målklusterkontexten som ska användas av andra åtgärder eller `azure/k8s-set-context` köra kubectl-kommandon.
-* [AKS-uppsättningskontext](https://github.com/Azure/aks-set-context) ( `azure/aks-set-context` ): Ange Azure Kubernetes Service för klusterkontexten.
+* [AKS-uppsättningskontext](https://github.com/Azure/aks-set-context) `azure/aks-set-context` ( ): Ange Azure Kubernetes Service för klusterkontexten.
 * [Kubernetes create secret](https://github.com/Azure/k8s-create-secret) ( `azure/k8s-create-secret` ): Skapa en allmän hemlighet eller docker-registry-hemlighet i Kubernetes-klustret.
 * [Kubernetes deploy](https://github.com/Azure/k8s-deploy) ( `azure/k8s-deploy` ): Bake and deploy manifests to Kubernetes clusters (Bake and deploy manifests to Kubernetes clusters.
 * [Konfigurera Helm](https://github.com/Azure/setup-helm) ( `azure/setup-helm` ): Installera en specifik version av Helm-binärfil på -et.
-* [Kubernetes bake](https://github.com/Azure/k8s-bake) ( ): Bake-manifestfil som ska användas för distributioner med hjälp av `azure/k8s-bake` helm2, kustomize eller kompose.
+* [Kubernetes bake](https://github.com/Azure/k8s-bake) ( ): Bake-manifestfil som ska användas för distributioner med `azure/k8s-bake` hjälp av helm2, kustomize eller kompose.
 * [Kubernetes lint](https://github.com/azure/k8s-lint) ( `azure/k8s-lint` ): Validera/lint dina manifestfiler.

@@ -1,69 +1,69 @@
 ---
-title: Skapa en TypeScript-funktion från kommando raden – Azure Functions
-description: Lär dig hur du skapar en TypeScript-funktion från kommando raden och sedan publicerar det lokala projektet till Server lös värd i Azure Functions.
+title: Skapa en TypeScript-funktion från kommandoraden – Azure Functions
+description: Lär dig hur du skapar en TypeScript-funktion från kommandoraden och sedan publicerar det lokala projektet till serverlös värd i Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 488ef9fa3fd5b6c09ed435483dbf8f6fa3eb5bef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: c7b37700d93ea129ba46de81989f06dd2afe52ba
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97937203"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831824"
 ---
-# <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Snabb start: skapa en TypeScript-funktion i Azure från kommando raden
+# <a name="quickstart-create-a-typescript-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en TypeScript-funktion i Azure från kommandoraden
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-I den här artikeln använder du kommando rads verktyg för att skapa en TypeScript-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverbaserade miljön för Azure Functions.
+I den här artikeln använder du kommandoradsverktyg för att skapa en TypeScript-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverlösa Azure Functions.
 
-Att slutföra den här snabb starten innebär en låg kostnad av några USD cent eller mindre i ditt Azure-konto.
+Den här snabbstarten medför en liten kostnad på några cent eller mindre för ditt Azure-konto.
 
-Det finns också en [Visual Studio Code-baserad version](create-first-function-vs-code-typescript.md) av den här artikeln.
+Det finns även en [Visual Studio kodbaserad version av](create-first-function-vs-code-typescript.md) den här artikeln.
 
 ## <a name="configure-your-local-environment"></a>Konfigurera din lokala miljö
 
 Innan du börjar måste du ha följande:
 
-+ Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
++ Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-+ [Azure Functions Core tools](functions-run-local.md#v2) version 3. x.
++ Den [Azure Functions Core Tools](functions-run-local.md#v2) version 3.x.
 
 + Ett av följande verktyg för att skapa Azure-resurser:
 
-    + [Azure CLI](/cli/azure/install-azure-cli) version 2,4 eller senare.
+    + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 eller senare.
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps) version 5,0 eller senare.
+    + [Azure PowerShell](/powershell/azure/install-az-ps) version 5.0 eller senare.
 
-+ [Node.js](https://nodejs.org/), aktiva LTS-och UNDERHÅLLs LTS-versioner (8.11.1 och 10.14.1 rekommenderas).
++ [Node.js](https://nodejs.org/)versionerna Active LTS och Maintenance LTS (8.11.1 och 10.14.1 rekommenderas).
 
-### <a name="prerequisite-check"></a>Krav kontroll
+### <a name="prerequisite-check"></a>Kravkontroll
 
-Verifiera dina krav, beroende på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
+Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ I ett terminalfönster eller kommando fönster, kör `func --version` för att kontrol lera att Azure Functions Core Tools är version 3. x.
++ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
 
-+ Kör `az --version` för att kontrol lera att Azure CLI-versionen är 2,4 eller senare.
++ Kör `az --version` för att kontrollera att Azure CLI-versionen är 2.4 eller senare.
 
 + Kör `az login` för att logga in på Azure och verifiera en aktiv prenumeration.
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ I ett terminalfönster eller kommando fönster, kör `func --version` för att kontrol lera att Azure Functions Core Tools är version 3. x.
++ I ett terminal- eller kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
 
-+ Kör `(Get-Module -ListAvailable Az).Version` och verifiera version 5,0 eller senare. 
++ Kör `(Get-Module -ListAvailable Az).Version` och verifiera version 5.0 eller senare. 
 
 + Kör `Connect-AzAccount` för att logga in på Azure och verifiera en aktiv prenumeration.
 
 ---
 
-## <a name="create-a-local-function-project"></a>Skapa ett lokalt funktions projekt
+## <a name="create-a-local-function-project"></a>Skapa ett lokalt funktionsprojekt
 
-I Azure Functions är ett funktions projekt en behållare för en eller flera enskilda funktioner som varje svarar på en viss utlösare. Alla funktioner i ett projekt delar samma lokala och värdbaserade konfigurationer. I det här avsnittet skapar du ett funktions projekt som innehåller en enda funktion.
+I Azure Functions är ett funktionsprojekt en container för en eller flera enskilda funktioner som var och en svarar på en specifik utlösare. Alla funktioner i ett projekt delar samma lokala konfigurationer och värdkonfigurationer. I det här avsnittet skapar du ett funktionsprojekt som innehåller en enda funktion.
 
-1. Kör `func init` kommandot enligt följande för att skapa ett Functions-projekt i en mapp med namnet *LocalFunctionProj* med den angivna körnings miljön:  
+1. Kör kommandot på följande sätt för att skapa ett functions-projekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
 
     ```console
     func init LocalFunctionProj --typescript
@@ -75,46 +75,46 @@ I Azure Functions är ett funktions projekt en behållare för en eller flera en
     cd LocalFunctionProj
     ```
     
-    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler som heter [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.js](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som hämtats från Azure, undantas filen från käll kontroll som standard i *. gitignore* -filen.
+    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
 
-1. Lägg till en funktion i projektet med hjälp av följande kommando, där `--name` argumentet är det unika namnet för din funktion (HttpExample) och `--template` argumentet anger funktionens utlösare (http).
+1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på funktionen `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP).
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
     ``` 
     
-    `func new` skapar en undermapp som matchar funktions namnet som innehåller en kod fil som är lämplig för projektets valda språk och en konfigurations fil med namnet *function.jspå*.
+    `func new` skapar en undermapp som matchar funktionsnamnet som innehåller en kodfil som är lämplig för projektets valda språk och en konfigurationsfil med *namnetfunction.jspå*.
 
-### <a name="optional-examine-the-file-contents"></a>Valfritt Granska fil innehållet
+### <a name="optional-examine-the-file-contents"></a>(Valfritt) Granska filinnehållet
 
-Om du vill kan du hoppa över att [köra funktionen lokalt](#run-the-function-locally) och undersöka fil innehållet senare.
+Om du vill kan du gå [vidare till Kör funktionen lokalt](#run-the-function-locally) och undersöka filinnehållet senare.
 
-#### <a name="indexts"></a>index. TS
+#### <a name="indexts"></a>index.ts
 
-*index. TS* exporterar en funktion som utlöses enligt konfigurationen i *function.jspå*.
+*index.ts* exporterar en funktion som utlöses enligt konfigurationen i *function.jspå*.
 
 :::code language="typescript" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-TypeScript/index.ts":::
 
-För en HTTP-utlösare tar funktionen emot begär ande data i variabeln `req` av typen **HttpRequest** som definieras i *function.jspå*. Returvärdet, som definieras som `$return` i *function.jspå*, är svaret. 
+För en HTTP-utlösare tar funktionen emot begärandedata i variabeln av typen `req` **HttpRequest** enligt *definitionen ifunction.jspå*. Returobjektet, som `$return` definieras *ifunction.jspå*, är svaret. 
 
 #### <a name="functionjson"></a>function.json
 
-*function.jspå* är en konfigurations fil som definierar indata och utdata `bindings` för funktionen, inklusive utlösnings typen. 
+*function.jspå är* en konfigurationsfil som definierar indata och `bindings` utdata för funktionen, inklusive utlösartypen. 
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-JavaScript/function.json":::
 
-Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren har en inkommande bindning av typen [`httpTrigger`](functions-bindings-http-webhook-trigger.md) och utgående bindningen av typen [`http`](functions-bindings-http-webhook-output.md) .
+Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren har en indatabindning av typen [`httpTrigger`](functions-bindings-http-webhook-trigger.md) och utdatabindning av typen [`http`](functions-bindings-http-webhook-output.md) .
 
 ## <a name="run-the-function-locally"></a>Köra funktionen lokalt
 
-1. Kör din funktion genom att starta den lokala Azure Functions runtime-värden från mappen *LocalFunctionProj* :
+1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från *mappen LocalFunctionProj:*
 
     ```console
     npm install
     npm start
     ```
     
-    I slutet av utdata bör följande rader visas:
+    Mot slutet av utdata bör följande rader visas:
     
     <pre>
     ...
@@ -130,19 +130,19 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
     </pre>
     
     >[!NOTE]  
-    > Om HttpExample inte visas som visas nedan, kommer du förmodligen igång värden från utsidan av projektets rotmapp. I så fall kan du använda **CTRL** + **C** för att stoppa värden, navigera till projektets rotmapp och köra föregående kommando igen.
+    > Om HttpExample inte visas som på bilden nedan har du förmodligen startat värden utanför projektets rotmapp. I så fall använder du **Ctrl** C för att stoppa värden, navigerar till projektets +  rotmapp och kör föregående kommando igen.
 
-1. Kopiera URL: en för din `HttpExample` funktion från utdata till en webbläsare och Lägg till frågesträngen och `?name=<your-name>` gör den fullständiga URL: en som `http://localhost:7071/api/HttpExample?name=Functions` . Webbläsaren ska visa ett meddelande som `Hello Functions` :
+1. Kopiera URL:en för funktionen från dessa utdata till en webbläsare och `HttpExample` lägg till frågesträngen `?name=<your-name>` , vilket gör den fullständiga URL:en som `http://localhost:7071/api/HttpExample?name=Functions` . Webbläsaren bör visa ett meddelande som `Hello Functions` :
 
     ![Resultatet av funktionen körs lokalt i webbläsaren](./media/functions-create-first-azure-function-azure-cli/function-test-local-browser.png)
     
-    Terminalen där du startade projektet visar också logg data när du gör förfrågningar.
+    Terminalen där du startade projektet visar även loggutdata när du gör begäranden.
 
-1. När du är klar kan du använda **CTRL** + **C** och välja `y` att stoppa funktions värden.
+1. När du är klar använder du **Ctrl** + **C** och väljer `y` att stoppa functions-värden.
 
 [!INCLUDE [functions-create-azure-resources-cli](../../includes/functions-create-azure-resources-cli.md)]
 
-4. Skapa Function-appen i Azure:
+4. Skapa funktionsappen i Azure:
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
         
@@ -150,7 +150,7 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime node --runtime-version 12 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME>
     ```
     
-    Kommandot [AZ functionapp Create](/cli/azure/functionapp#az_functionapp_create) skapar Function-appen i Azure. Om du använder Node.js 10 ändrar du också `--runtime-version` till `10` .
+    Kommandot [az functionapp create](/cli/azure/functionapp#az_functionapp_create) skapar funktionsappen i Azure. Om du använder Node.js 10 ändrar du även `--runtime-version` till `10` .
     
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     
@@ -158,33 +158,33 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -Runtime node -RuntimeVersion 12 -FunctionsVersion 3 -Location 'West Europe'
     ```
     
-    Cmdlet: en [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) skapar Function-appen i Azure. Ändra till om du använder Node.js 10 `-RuntimeVersion` `10` .
+    Cmdleten [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) skapar funktionsappen i Azure. Om du använder Node.js 10 ändrar du `-RuntimeVersion` till `10` .
 
     ---
         
-    I föregående exempel ersätter `<STORAGE_NAME>` du med namnet på det konto som du använde i föregående steg och ersätter `<APP_NAME>` med ett globalt unikt namn som passar dig. `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
+    I föregående exempel ersätter du med namnet på det konto som du använde i föregående steg och ersätter med ett `<STORAGE_NAME>` globalt unikt namn som passar `<APP_NAME>` dig. `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
     
-    Det här kommandot skapar en Function-app som körs på den angivna språk körningen under [Azure Functions förbruknings plan](consumption-plan.md), vilket är kostnads fritt för den användnings mängd som du ådrar dig här. Kommandot etablerar även en associerad Azure Application insikts-instans i samma resurs grupp, som du kan använda för att övervaka din Function-app och Visa loggar. Mer information finns i [övervaka Azure Functions](functions-monitoring.md). Instansen debiteras inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en funktionsapp som körs i din angivna språkkörning under [Azure Functions Consumption Plan](consumption-plan.md), vilket är kostnadsfritt för den användning du ådrar dig här. Kommandot tiller även en associerad Azure Application Insights-instans i samma resursgrupp som du kan använda för att övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
 
-## <a name="deploy-the-function-project-to-azure"></a>Distribuera funktions projektet till Azure
+## <a name="deploy-the-function-project-to-azure"></a>Distribuera funktionsprojektet till Azure
 
-Innan du använder kärn verktyg för att distribuera ditt projekt till Azure skapar du en produktions klar version av JavaScript-filer från källfilerna för TypeScript.
+Innan du använder Core Tools för att distribuera projektet till Azure skapar du en produktionsklar version av JavaScript-filer från TypeScript-källfilerna.
 
-1. Använd följande kommando för att förbereda ditt TypeScript-projekt för distribution:
+1. Använd följande kommando för att förbereda TypeScript-projektet för distribution:
 
     ```console
     npm run build:production 
     ```
 
-1. Med nödvändiga resurser på plats är du nu redo att distribuera ditt lokala Functions-projekt till Function-appen i Azure med hjälp av kommandot [FUNC Azure functionapp Publish](functions-run-local.md#project-file-deployment) . I följande exempel ersätter du `<APP_NAME>` med namnet på din app.
+1. Nu när de nödvändiga resurserna är på plats är du redo att distribuera ditt lokala funktionsprojekt till funktionsappen i Azure med hjälp av [kommandot func azure functionapp publish.](functions-run-local.md#project-file-deployment) I följande exempel ersätter `<APP_NAME>` du med namnet på din app.
 
     ```console
     func azure functionapp publish <APP_NAME>
     ```
     
-    Om du ser felet "det går inte att hitta appen med namnet..." väntar du några sekunder och försöker igen, eftersom Azure kanske inte har fullständigt initierat appen efter föregående `az functionapp create` kommando.
+    Om du ser felet "Det går inte att hitta appen med namnet ..." väntar du några sekunder och försöker igen, eftersom Azure kanske inte har initierat appen helt efter föregående `az functionapp create` kommando.
     
-    Kommandot Publicera visar resultat som liknar följande utdata (trunkerade för enkelhetens skull):
+    Publiceringskommandot visar resultat som liknar följande utdata (trunkerade för enkelhetens skull):
     
     <pre>
     ...
@@ -212,4 +212,4 @@ Innan du använder kärn verktyg för att distribuera ditt projekt till Azure sk
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Ansluta till en Azure Storage-kö](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-typescript)
+> [Ansluta till en Azure Storage kö](functions-add-output-binding-storage-queue-cli.md?pivots=programming-language-typescript)

@@ -4,15 +4,16 @@ description: Lär dig hur du skapar en Python-funktion från kommandoraden och p
 ms.date: 11/03/2020
 ms.topic: quickstart
 ms.custom:
-- devx-track-python
+- devx-track-powershell
 - devx-track-azurecli
+- devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 626cff867a336880689373c289087e2332a816ee
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e144304ae1b36ca02d4b8796e7994e87b09505d9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787457"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831104"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en Python-funktion i Azure från kommandoraden
 
@@ -34,11 +35,11 @@ Det finns även en [Visual Studio kodbaserad version av](create-first-function-v
 
 Innan du börjar måste du ha följande:
 
-+ Ett Azure-konto <abbr title="Profilen som underhåller faktureringsinformation för Azure-användning.">konto</abbr> med en aktiv <abbr title="Den grundläggande organisationsstrukturen där du hanterar resurser i Azure, vanligtvis associerad med en person eller avdelning inom en organisation.">prenumeration</abbr>. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
++ En Azure <abbr title="Profilen som underhåller faktureringsinformation för Azure-användning.">konto</abbr> med en aktiv <abbr title="Den grundläggande organisationsstrukturen där du hanterar resurser i Azure, vanligtvis associerad med en person eller avdelning inom en organisation.">prenumeration</abbr>. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
 + Den [Azure Functions Core Tools](functions-run-local.md#v2) version 3.x. 
   
-+ Antingen <abbr title="En uppsättning plattformsoberoende kommandoradsverktyg för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure CLI</abbr> eller <abbr title="En PowerShell-modul som innehåller kommandon för att arbeta med Azure-resurser från din lokala utvecklingsdator som ett alternativ till att använda Azure Portal.">Azure PowerShell</abbr> för att skapa Azure-resurser:
++ Antingen <abbr title="En uppsättning plattformsoberoende kommandoradsverktyg för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure CLI</abbr> eller <abbr title="En PowerShell-modul som innehåller kommandon för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure PowerShell</abbr> för att skapa Azure-resurser:
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 eller senare.
 
@@ -48,11 +49,11 @@ Innan du börjar måste du ha följande:
 
 ### <a name="11-prerequisite-check"></a>1.1 Kravkontroll
 
-Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
+Kontrollera dina förutsättningar, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ I en terminal eller ett kommandofönster kör du `func --version` för att kontrollera att <abbr title="En uppsättning kommandoradsverktyg för att arbeta med Azure Functions på din lokala dator.">Azure Functions Core Tools</abbr> är version 3.x.
++ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera att <abbr title="Uppsättningen kommandoradsverktyg för att arbeta med Azure Functions på den lokala datorn.">Azure Functions Core Tools</abbr> är version 3.x.
 
 + Kör `az --version` för att kontrollera att Azure CLI-versionen är 2.4 eller senare.
 
@@ -62,7 +63,7 @@ Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShe
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+ I en terminal eller ett kommandofönster kör du `func --version` för att kontrollera att <abbr title="En uppsättning kommandoradsverktyg för att arbeta med Azure Functions på din lokala dator.">Azure Functions Core Tools</abbr> är version 3.x.
++ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera att <abbr title="Uppsättningen kommandoradsverktyg för att arbeta med Azure Functions på din lokala dator.">Azure Functions Core Tools</abbr> är version 3.x.
 
 + Kör `(Get-Module -ListAvailable Az).Version` och verifiera version 5.0 eller senare. 
 
@@ -156,7 +157,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
 
     Argumentet `--template` anger funktionens utlösare (HTTP).
     
-    `func new`skapar en undermapp som matchar funktionsnamnet som innehåller en *\_ \_ \_ \_ init.py-fil* med funktionens kod och en konfigurationsfil *med namnetfunction.jspå*.
+    `func new`skapar en undermapp som matchar funktionsnamnet som innehåller en *\_ \_ \_ \_ init.py-fil* med funktionens kod och en konfigurationsfil med *namnetfunction.jspå*.
 
     <br/>    
     <details>
@@ -166,14 +167,14 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
     
     :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
     
-    För en HTTP-utlösare tar funktionen emot begärandedata i `req` variabeln enligt definitionen *ifunction.jspå*. `req`är en instans av [klassen azure.functions.HttpRequest.](/python/api/azure-functions/azure.functions.httprequest) Returobjektet, som definieras `$return` som ifunction.js *på*, är en instans av [klassen azure.functions.HttpResponse.](/python/api/azure-functions/azure.functions.httpresponse) Mer information finns i Azure Functions [HTTP-utlösare och bindningar](./functions-bindings-http-webhook.md?tabs=python).
+    För en HTTP-utlösare tar funktionen emot begärandedata i `req` variabeln enligt definitionen *ifunction.jspå*. `req`är en instans av [klassen azure.functions.HttpRequest.](/python/api/azure-functions/azure.functions.httprequest) Returobjektet, som definieras som `$return` *ifunction.jspå*, är en instans av [klassen azure.functions.HttpResponse.](/python/api/azure-functions/azure.functions.httpresponse) Mer information finns i Azure Functions [HTTP-utlösare och bindningar.](./functions-bindings-http-webhook.md?tabs=python)
     </details>
 
     <br/>
     <details>
     <summary><strong>Kod för function.jspå</strong></summary>
 
-    *function.jspå* är en konfigurationsfil som definierar <abbr title="Deklarativa anslutningar mellan en funktion och andra resurser. En indatabindning tillhandahåller data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">indata- och utdatabindningar</abbr> för funktionen, inklusive utlösartypen.
+    *function.jspå är* en konfigurationsfil som definierar <abbr title="Deklarativa anslutningar mellan en funktion och andra resurser. En indatabindning ger data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">indata- och utdatabindningar</abbr> för funktionen, inklusive utlösartypen.
     
     Du kan ändra för `scriptFile` att anropa en annan Python-fil om du vill.
     
@@ -188,7 +189,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
 
 ## <a name="4-run-the-function-locally"></a>4. Kör funktionen lokalt
 
-1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från *mappen LocalFunctionProj:*
+1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från mappen *LocalFunctionProj:*
 
     ```
     func start
@@ -266,7 +267,7 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
     New-AzResourceGroup -Name AzureFunctionsQuickstart-rg -Location westeurope
     ```
 
-    Kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) skapar en resursgrupp. Vanligtvis skapar du din resursgrupp och dina resurser i en region nära dig, med hjälp av en tillgänglig region som returneras från cmdleten [Get-AzLocation.](/powershell/module/az.resources/get-azlocation)
+    Kommandot [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) skapar en resursgrupp. Vanligtvis skapar du din resursgrupp och dina resurser i en region nära dig med hjälp av en tillgänglig region som returneras från cmdleten [Get-AzLocation.](/powershell/module/az.resources/get-azlocation)
 
     ---
 
@@ -292,9 +293,9 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
 
     ---
 
-    Ersätt `<STORAGE_NAME>` med ett namn som är lämpligt för dig och <abbr title="Namnet måste vara unikt för alla lagringskonton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga namn eller företagsnamn, programnamn och en numerisk identifierare, som i contosüzappstorage20.">unikt i Azure Storage</abbr>. Namn får endast innehålla tre till 24 tecken och gemener. `Standard_LRS` anger ett konto för generell användning som stöds [av Functions](storage-considerations.md#storage-account-requirements).
+    Ersätt `<STORAGE_NAME>` med ett namn som är lämpligt för dig och <abbr title="Namnet måste vara unikt för alla lagringskonton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga namn eller företagsnamn, programnamn och en numerisk identifierare, som i contoszenzappstorage20.">unikt i Azure Storage</abbr>. Namn får endast innehålla tre till 24 tecken och gemener. `Standard_LRS` anger ett konto för generell användning som stöds [av Functions](storage-considerations.md#storage-account-requirements).
     
-    Lagringskontot ådrar sig bara några cent (USD) för den här snabbstarten.
+    Lagringskontot har bara några cent (USD) för den här snabbstarten.
 
 1. Skapa funktionsappen i Azure:
 
@@ -322,7 +323,7 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
     
     <br/>
     <details>
-    <summary><strong>Vad är kostnaden för de resurser som etableras i Azure?</strong></summary>
+    <summary><strong>Vad kostar det att etablera resurser i Azure?</strong></summary>
 
     Det här kommandot skapar en funktionsapp som körs i den angivna språkkörningen under [Azure Functions Consumption Plan](functions-scale.md#overview-of-plans), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot innehåller också en associerad Azure Application Insights-instans i samma resursgrupp, med vilken du kan övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
     </details>

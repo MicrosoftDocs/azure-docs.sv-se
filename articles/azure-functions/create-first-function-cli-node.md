@@ -3,22 +3,22 @@ title: Skapa en JavaScript-funktion från kommandoraden – Azure Functions
 description: Lär dig hur du skapar en JavaScript-funktion från kommandoraden och sedan publicerar det lokala Node.js-projektet till serverlös värd i Azure Functions.
 ms.date: 11/03/2020
 ms.topic: quickstart
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: b8db78e56087e7cb777d1aa85391d4b6ac2aae27
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: eb162bcff647e9e1dbced19ddea33a8f3c54b58e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787547"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831950"
 ---
 # <a name="quickstart-create-a-javascript-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en JavaScript-funktion i Azure från kommandoraden
 
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-I den här artikeln använder du kommandoradsverktyg för att skapa en JavaScript-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverlösa miljön Azure Functions. 
+I den här artikeln använder du kommandoradsverktyg för att skapa en JavaScript-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverlösa Azure Functions. 
 
-När du slutför den här snabbstarten medför det en liten kostnad på några cent eller mindre för ditt Azure-konto.
+Den här snabbstarten medför en liten kostnad på några cent eller mindre för ditt Azure-konto.
 
 Det finns även en [Visual Studio kodbaserad version av](create-first-function-vs-code-node.md) den här artikeln.
 
@@ -40,7 +40,7 @@ Innan du börjar måste du ha följande:
 
 ### <a name="prerequisite-check"></a>Kravkontroll
 
-Kontrollera dina förutsättningar, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
+Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -64,7 +64,7 @@ Kontrollera dina förutsättningar, som beror på om du använder Azure CLI elle
 
 I Azure Functions är ett funktionsprojekt en container för en eller flera enskilda funktioner som var och en svarar på en specifik utlösare. Alla funktioner i ett projekt delar samma lokala konfigurationer och värdkonfigurationer. I det här avsnittet skapar du ett funktionsprojekt som innehåller en enda funktion.
 
-1. Kör kommandot på följande sätt för att skapa ett funktionsprojekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
+1. Kör kommandot på följande sätt för att skapa ett functions-projekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
 
     ```console
     func init LocalFunctionProj --javascript
@@ -76,9 +76,9 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
     cd LocalFunctionProj
     ```
 
-    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler [ medlocal.settings.jspå](functions-run-local.md#local-settings-file) ochhost.js[ på](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
+    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
 
-1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på din funktion `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP).
+1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på funktionen `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP).
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"

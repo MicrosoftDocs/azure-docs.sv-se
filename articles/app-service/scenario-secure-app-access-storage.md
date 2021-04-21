@@ -10,13 +10,13 @@ ms.workload: identity
 ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.custom: azureday1, devx-track-azurecli
-ms.openlocfilehash: 7d84b3f8e654940a8f2c36075b92d630505e88b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: a37b189ae98332b2d6c557b6bdfad98266002e9e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482348"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833912"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Självstudie: Azure Storage från en webbapp
 
@@ -44,7 +44,7 @@ I den här guiden får du lära dig att:
 
 ## <a name="enable-managed-identity-on-an-app"></a>Aktivera hanterad identitet i en app
 
-Om du skapar och publicerar webbappen via Visual Studio har den hanterade identiteten aktiverats i din app åt dig. I apptjänsten väljer du **Identity (Identitet)** i den vänstra rutan och sedan **System assigned (System tilldelad).** Kontrollera att **Status är** inställt på **På**. Om inte väljer du **Spara och** sedan Ja för **att aktivera** den system tilldelade hanterade identiteten. När den hanterade identiteten är aktiverad anges statusen till **På** och objekt-ID:t är tillgängligt.
+Om du skapar och publicerar webbappen via Visual Studio har den hanterade identiteten aktiverats på din app åt dig. I apptjänsten väljer du **Identitet i** den vänstra rutan och sedan **System tilldelad**. Kontrollera att **Status är** inställt på **På**. Om inte väljer du **Spara och** sedan Ja för **att aktivera** den system tilldelade hanterade identiteten. När den hanterade identiteten är aktiverad anges statusen till **På** och objekt-ID:t är tillgängligt.
 
 :::image type="content" alt-text="Skärmbild som visar alternativet System tilldelad identitet." source="./media/scenario-secure-app-access-storage/create-system-assigned-identity.png":::
 
@@ -137,7 +137,7 @@ Kör följande skript för att skapa ett v2-lagringskonto Blob Storage generell 
 
 Ange platsen för ditt lagringskonto. Containernamnet får bara innehålla gemener, måste börja med en bokstav eller siffra och får bara innehålla bokstäver, siffror och bindestreck (-).
 
-I följande exempel används ditt Azure AD-konto för att auktorisera åtgärden för att skapa containern. Innan du skapar containern tilldelar du rollen Storage Blob Data-deltagare till dig själv. Även om du är kontoägare behöver du explicita behörigheter för att utföra dataåtgärder mot lagringskontot.
+I följande exempel används ditt Azure AD-konto för att auktorisera åtgärden för att skapa containern. Innan du skapar containern tilldelar du rollen Storage Blob Data-deltagare till dig själv. Även om du är kontoägare behöver du explicit behörighet att utföra dataåtgärder mot lagringskontot.
 
 Kom ihåg att ersätta platshållarvärden inom vinkelparenteser med dina egna värden.
 

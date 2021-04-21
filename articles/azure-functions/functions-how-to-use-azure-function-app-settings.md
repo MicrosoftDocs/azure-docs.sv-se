@@ -4,13 +4,13 @@ description: Lär dig hur du konfigurerar inställningar för funktionsappen i A
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.custom: cc996988-fb4f-47, devx-track-azurecli
-ms.openlocfilehash: ed87a5a744defb15d4a898aeabdce5267b7431fe
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: cc996988-fb4f-47, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 6775fdf8d5174600344f3c7177a3130ef63e8f76
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775663"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832688"
 ---
 # <a name="manage-your-function-app"></a>Hantera funktionsappen 
 
@@ -40,7 +40,7 @@ De här inställningarna lagras krypterade. Mer information finns i Säkerhet [f
 
 Information om hur du hittar programinställningarna [finns i Kom igång i Azure Portal](#get-started-in-the-azure-portal). 
 
-Fliken **Programinställningar** innehåller inställningar som används av funktionsappen. Du måste välja **Visa värden** för att se värdena i portalen. Om du vill lägga till en inställning i portalen väljer **du Ny programinställning** och lägger till det nya nyckel/värde-paret.
+På **fliken Programinställningar** finns inställningar som används av funktionsappen. Du måste välja **Visa värden** för att se värdena i portalen. Om du vill lägga till en inställning i portalen väljer **du Ny programinställning** och lägger till det nya nyckel/värde-paret.
 
 ![Funktionsappinställningar i Azure Portal.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-settings-tab.png)
 
@@ -86,7 +86,7 @@ När du utvecklar en funktionsapp lokalt måste du underhålla lokala kopior av 
 
 ## <a name="hosting-plan-type"></a>Typ av värdplan
 
-När du skapar en funktionsapp skapar du även en värdplan där appen körs. En plan kan ha en eller flera funktionsappar. Funktionernas funktioner, skalning och priser beror på typen av plan. Mer information finns i [Azure Functions värdalternativ.](functions-scale.md)
+När du skapar en funktionsapp skapar du även en värdplan där appen körs. En plan kan ha en eller flera funktionsappar. Funktionernas funktioners funktioner, skalning och priser beror på typen av plan. Mer information finns i [Azure Functions värdalternativ](functions-scale.md).
 
 Du kan bestämma vilken typ av plan som används av funktionsappen från Azure Portal eller med hjälp av Azure CLI eller Azure PowerShell API:er. 
 
@@ -100,13 +100,13 @@ Följande värden anger plantypen:
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
-Information om vilken typ av plan som används av **funktionsappen finns App Service plan** på fliken Översikt för funktionsappen i [Azure Portal](https://portal.azure.com).  Om du vill se prisnivån väljer du namnet på **App Service plan** och väljer **sedan Egenskaper** i den vänstra rutan.
+Information om vilken typ av plan som används av  **funktionsappen finns App Service plan** på fliken Översikt för funktionsappen i [Azure Portal](https://portal.azure.com). Om du vill se prisnivån väljer du namnet **på App Service Plan** och väljer sedan **Egenskaper** i det vänstra fönstret.
 
 ![Visa skalningsplan i portalen](./media/functions-scale/function-app-overview-portal.png)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-Kör följande Azure CLI-kommando för att få din värdplantyp:
+Kör följande Azure CLI-kommando för att hämta typen av värdplan:
 
 ```azurecli-interactive
 functionApp=<FUNCTION_APP_NAME>
@@ -116,7 +116,7 @@ az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output t
 
 ```  
 
-I föregående exempel ersätter `<RESOURCE_GROUP>` och med namnen på `<FUNCTION_APP_NAME>` resursgruppen och funktionsappen. 
+I föregående exempel ersätter `<RESOURCE_GROUP>` du `<FUNCTION_APP_NAME>` och med resursgruppens respektive funktionsappens namn. 
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/powershell)
 
@@ -129,13 +129,13 @@ $ResourceGroup = '<RESOURCE_GROUP>'
 $PlanID = (Get-AzFunctionApp -ResourceGroupName $ResourceGroup -Name $FunctionApp).AppServicePlan
 (Get-AzFunctionAppPlan -Name $PlanID -ResourceGroupName $ResourceGroup).SkuTier
 ```
-I föregående exempel ersätter `<RESOURCE_GROUP>` och med namnen på `<FUNCTION_APP_NAME>` resursgruppen och funktionsappen. 
+I föregående exempel ersätter `<RESOURCE_GROUP>` du `<FUNCTION_APP_NAME>` och med resursgruppens respektive funktionsappens namn. 
 
 ---
 
 ## <a name="plan-migration"></a>Planera migrering
 
-Du kan använda Azure CLI-kommandon för att migrera en funktionsapp mellan en förbrukningsplan och en Premium-plan i Windows. De specifika kommandona beror på migreringens riktning. Direktmigrering till en dedikerad plan (App Service) stöds inte för närvarande.
+Du kan använda Azure CLI-kommandon för att migrera en funktionsapp mellan en förbrukningsplan och en Premium-plan i Windows. De specifika kommandona beror på migreringens riktning. Direktmigrering till en App Service-plan stöds inte för närvarande.
 
 Den här migreringen stöds inte i Linux.
 
@@ -231,7 +231,7 @@ Vi rekommenderar att du utvecklar dina funktioner på din lokala dator. När du 
 
 ### <a name="console"></a><a name="console"></a>Konsol
 
-![Funktionsappkonsol](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
+![Funktionsappskonsol](./media/functions-how-to-use-azure-function-app-settings/configure-function-console.png)
 
 Konsolen i portalen är ett perfekt utvecklarverktyg när du föredrar att interagera med funktionsappen från kommandoraden. Vanliga kommandon är katalog- och filskapande och navigering, samt körning av batchfiler och skript. 
 

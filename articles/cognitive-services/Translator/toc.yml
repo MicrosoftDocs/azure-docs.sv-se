@@ -146,22 +146,24 @@
           href: document-translation/create-sas-tokens.md
     - name: Referens
       items:
-        - name: Hämta dokumentformat
-          href: document-translation/reference/get-document-formats.md
-        - name: Hämta ordlisteformat
-          href: document-translation/reference/get-glossary-formats.md
-        - name: Hämta källa för dokumentlagring
-          href: document-translation/reference/get-document-storage-source.md
-        - name: Skicka batchbegäran
-          href: document-translation/reference/submit-batch-request.md
-        - name: Hämta status för åtgärdsdokument
-          href: document-translation/reference/get-operation-documents-status.md
+        - name: Hämta dokumentformat som stöds
+          href: document-translation/reference/get-supported-document-formats.md
+        - name: Hämta ordlisteformat som stöds
+          href: document-translation/reference/get-supported-glossary-formats.md
+        - name: Hämta lagringskällor som stöds
+          href: document-translation/reference/get-supported-storage-sources.md
+        - name: Starta översättning
+          href: document-translation/reference/start-translation.md
+        - name: Hämta dokumentstatus
+          href: document-translation/reference/get-documents-status.md
         - name: Hämta dokumentstatus
           href: document-translation/reference/get-document-status.md
-        - name: Hämta åtgärder
-          href: document-translation/reference/get-operations.md
-        - name: Avbryt åtgärd
-          href: document-translation/reference/cancel-operation.md
+        - name: Hämta översättningsstatus
+          href: document-translation/reference/get-translations-status.md
+        - name: Hämta översättningsstatus
+          href: document-translation/reference/get-translation-status.md
+        - name: Avbryta översättning
+          href: document-translation/reference/cancel-translation.md
 - name: Anvisningar
   items:
     - name: Företagsberedskap

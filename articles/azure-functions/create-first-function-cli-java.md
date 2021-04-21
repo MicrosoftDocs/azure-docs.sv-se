@@ -6,16 +6,17 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 - devx-track-azurecli
+- devx-track-azurepowershell
 adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: 1a1571e83e33ee0aec40df4cf68b3d01b6ef5f04
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 69c4129feacf36b6b98cdcd7c2f4f5f36d7839b2
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107787511"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831932"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en Java-funktion i Azure från kommandoraden
 
@@ -81,7 +82,7 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
     > + `JAVA_HOME`Miljövariabeln måste anges till installationsplatsen för rätt version av JDK för att slutföra den här artikeln.
 
 1. Maven ber dig om de värden som behövs för att slutföra genereringen av projektet vid distributionen.   
-    Ange följande värden när du uppmanas att göra det:
+    Ange följande värden när du tillfrågas:
 
     | Prompt | Värde | Beskrivning |
     | ------ | ----- | ----------- |
@@ -115,11 +116,11 @@ Svarsmeddelandet genereras av [API:et HttpResponseMessage.Builder.](/java/api/co
 
 #### <a name="pomxml"></a>pom.xml
 
-Inställningar för de Azure-resurser som skapats  som värd för din app definieras i konfigurationselementet för plugin-programmet med **ett groupId** för i den `com.microsoft.azure` genererade pom.xml filen. Konfigurationselementet nedan instruerar till exempel en Maven-baserad distribution att skapa en funktionsapp `java-functions-group` i resursgruppen i `westus` regionen. Själva funktionsappen körs på Windows som finns i `java-functions-app-service-plan` planen, vilket som standard är en serverlös förbrukningsplan.
+Inställningar för De Azure-resurser som skapas  som värd för din app definieras i konfigurationselementet i plugin-programmet med **ett groupId** för i den `com.microsoft.azure` genererade pom.xml filen. Konfigurationselementet nedan instruerar till exempel en Maven-baserad distribution att skapa en funktionsapp i `java-functions-group` resursgruppen i `westus` regionen. Själva funktionsappen körs på Windows som finns i `java-functions-app-service-plan` planen, vilket som standard är en serverlös förbrukningsplan.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
-Du kan ändra de här inställningarna för att styra hur resurser skapas i Azure, till exempel genom att ändra `runtime.os` från till före den första `windows` `linux` distributionen. En fullständig lista över inställningar som stöds av Maven-plugin-programmet finns i [konfigurationsinformationen](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+Du kan ändra de här inställningarna för att styra hur resurser skapas i Azure, till exempel genom att ändra `runtime.os` från till innan den första `windows` `linux` distributionen. En fullständig lista över inställningar som stöds av Maven-plugin-programmet finns i [konfigurationsinformationen](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
 
 #### <a name="functiontestjava"></a>FunctionTest.java
 
@@ -127,7 +128,7 @@ Arketypen genererar också ett enhetstest för din funktion. När du ändrar fun
 
 ## <a name="run-the-function-locally"></a>Köra funktionen lokalt
 
-1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från mappen *LocalFunctionProj:*
+1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från *mappen LocalFunctionProj:*
 
     ```console
     mvn clean package
@@ -150,9 +151,9 @@ Arketypen genererar också ett enhetstest för din funktion. När du ändrar fun
     </pre>
     
     > [!NOTE]  
-    > Om HttpExample inte visas som det visas ovan startade du förmodligen värden utanför projektets rotmapp. I så fall använder du **Ctrl** C för att stoppa värden, navigerar till projektets +  rotmapp och kör föregående kommando igen.
+    > Om HttpExample inte visas som det visas ovan har du förmodligen startat värden utanför projektets rotmapp. I så fall använder du **Ctrl** C för att stoppa värden, navigerar till projektets +  rotmapp och kör föregående kommando igen.
 
-1. Kopiera URL:en för funktionen från dessa utdata till en webbläsare och lägg till `HttpExample` frågesträngen `?name=<YOUR_NAME>` , vilket gör den fullständiga URL:en som `http://localhost:7071/api/HttpExample?name=Functions` . Webbläsaren bör visa ett meddelande som returnerar frågesträngens värde. Terminalen där du startade projektet visar även loggutdata när du gör begäranden.
+1. Kopiera URL:en för funktionen från dessa utdata till en webbläsare och `HttpExample` lägg till frågesträngen `?name=<YOUR_NAME>` , vilket gör den fullständiga URL:en som `http://localhost:7071/api/HttpExample?name=Functions` . Webbläsaren bör visa ett meddelande som returnerar frågesträngens värde. Terminalen där du startade projektet visar även loggutdata när du gör begäranden.
 
 1. När du är klar använder du **Ctrl** + **C** och väljer `y` att stoppa functions-värden.
 
@@ -192,9 +193,9 @@ En funktionsapp och relaterade resurser skapas i Azure när du först distribuer
     + Resursgrupp. Namnges _som java-functions-group_.
     + Lagringskonto. Krävs av Functions. Namnet genereras slumpmässigt baserat på krav på lagringskontonamn.
     + Värdplan. Serverlös värdtjänst för funktionsappen i _regionen USA,_ västra. Namnet är _java-functions-app-service-plan_.
-    + Funktionsapp. En funktionsapp är distributions- och körningsenheten för dina funktioner. Namnet genereras slumpmässigt baserat på ditt _artifactId_, och läggs till med ett slumpmässigt genererat tal.
+    + Funktionsapp. En funktionsapp är distributionen och körningsenheten för dina funktioner. Namnet genereras slumpmässigt baserat på ditt _artifactId_, och läggs till med ett slumpmässigt genererat tal.
     
-    Distributionen paketerar projektfilerna och distribuerar dem till den nya funktionsappen med [zip-distributionen](functions-deployment-technologies.md#zip-deploy). Koden körs från distributionspaketet i Azure.
+    Distributionen paketerar projektfilerna och distribuerar dem till den nya funktionsappen med [hjälp av zip-distributionen](functions-deployment-technologies.md#zip-deploy). Koden körs från distributionspaketet i Azure.
 
 [!INCLUDE [functions-run-remote-azure-cli](../../includes/functions-run-remote-azure-cli.md)]
 

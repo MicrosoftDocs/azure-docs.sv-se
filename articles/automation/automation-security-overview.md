@@ -1,21 +1,22 @@
 ---
-title: Azure Automation översikt över autentisering av konto
+title: Azure Automation översikt över kontoautentisering
 description: Den här artikeln innehåller en översikt över Azure Automation-kontoautentisering.
 keywords: automation security, secure automation; automation authentication
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 09aab71513b1152924de4eae91a718bad23d1012
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 546407ce7286cebc04d3c86422f6242051d1dbf3
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518009"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830438"
 ---
-# <a name="azure-automation-account-authentication-overview"></a>Azure Automation översikt över autentisering av konto
+# <a name="azure-automation-account-authentication-overview"></a>Azure Automation översikt över kontoautentisering
 
-Med Azure Automation kan du automatisera åtgärder mot resurser i Azure, lokalt och med andra molnproviders, till exempel Amazon Web Services (AWS). Du kan använda runbooks för att automatisera dina uppgifter eller en Hybrid Runbook Worker om du har affärs- eller driftprocesser att hantera utanför Azure. Att arbeta i någon av dessa miljöer kräver behörigheter för att få säker åtkomst till resurserna med de minimala rättigheter som krävs.
+Med Azure Automation kan du automatisera åtgärder mot resurser i Azure, lokalt och med andra molnproviders, till exempel Amazon Web Services (AWS). Du kan använda runbooks för att automatisera dina uppgifter eller en Hybrid Runbook Worker om du har affärs- eller driftprocesser att hantera utanför Azure. Att arbeta i någon av dessa miljöer kräver behörighet för att få säker åtkomst till resurserna med de minimala rättigheter som krävs.
 
 Den här artikeln beskriver autentiseringsscenarier som stöds av Azure Automation och beskriver hur du kommer igång baserat på den miljö eller de miljöer som du behöver hantera.
 
@@ -27,9 +28,9 @@ Ett Azure Automation-konto skiljer sig från ditt eller dina Microsoft-konton so
 
 ## <a name="automation-resources"></a>Automation-resurser
 
-Automation-resurserna för varje Automation-konto är associerade med en enda Azure-region, men kontot kan hantera alla resurser i din Azure-prenumeration. Det främsta skälet till att skapa Automation-konton i olika regioner är om du har principer som kräver att data och resurser isoleras till en viss region.
+Automation-resurserna för varje Automation-konto är associerade med en enda Azure-region, men kontot kan hantera alla resurser i din Azure-prenumeration. Det främsta skälet till att skapa Automation-konton i olika regioner är om du har principer som kräver att data och resurser isoleras till en specifik region.
 
-Alla uppgifter som du skapar mot resurser med hjälp av Azure Resource Manager och PowerShell-cmdletarna i Azure Automation måste autentisera till Azure med autentiseringsuppgifterna för organisationsidentitet i Azure Active Directory (Azure AD) i Azure.
+Alla uppgifter som du skapar mot resurser med hjälp av Azure Resource Manager och PowerShell-cmdlets i Azure Automation måste autentisera till Azure med autentiseringsuppgifterna för organisationsidentiteter i Azure Active Directory (Azure AD) i Azure.
 
 ## <a name="managed-identities-preview"></a>Hanterade identiteter (förhandsversion)
 
@@ -37,13 +38,13 @@ En hanterad identitet från Azure Active Directory (Azure AD) gör att din runbo
 
 Här är några av fördelarna med att använda hanterade identiteter:
 
-- Du kan använda hanterade identiteter för att autentisera till alla Azure-tjänster som stöder Azure AD-autentisering. De kan användas för både moln- och hybridjobb. Hybridjobb kan använda hanterade identiteter när de körs på Hybrid Runbook Worker som körs på en virtuell Azure-dator eller en virtuell dator som inte är en Azure-dator.
+- Du kan använda hanterade identiteter för att autentisera till alla Azure-tjänster som stöder Azure AD-autentisering. De kan användas för både moln- och hybridjobb. Hybridjobb kan använda hanterade identiteter när de körs på Hybrid Runbook Worker som körs på en virtuell Azure-dator eller en virtuell dator som inte är azure.
 
 - Hanterade identiteter kan användas utan extra kostnad.
 
 - Du behöver inte förnya certifikatet som används av Automation Kör som-kontot.
 
-- Du behöver inte ange Anslutningsobjektet Kör som i din Runbook-kod. Du kan komma åt resurser med hjälp av automationskontots hanterade identitet från en runbook utan att skapa certifikat, anslutningar, Kör som-konton osv.
+- Du behöver inte ange Anslutningsobjektet Kör som i din Runbook-kod. Du kan komma åt resurser med hjälp av automationskontots hanterade identitet från en Runbook utan att skapa certifikat, anslutningar, Kör som-konton osv.
 
 Ett Automation-konto kan beviljas två typer av identiteter:
 
@@ -63,12 +64,12 @@ Kör som-konton i Azure Automation autentisering för att hantera Azure Resource
 * Kör som-konto i Azure: Gör att du kan hantera Azure-resurser baserat på Azure Resource Manager och hanteringstjänst för Azure.
 * Klassiskt Kör som-konto i Azure: Gör att du kan hantera klassiska Azure-resurser baserat på den klassiska distributionsmodellen.
 
-Mer information om distributionsmodellerna för Azure Resource Manager och klassisk finns i [Resource Manager och klassisk distribution.](../azure-resource-manager/management/deployment-models.md)
+Mer information om de Azure Resource Manager och klassiska distributionsmodellerna finns i [Resource Manager och klassisk distribution.](../azure-resource-manager/management/deployment-models.md)
 
 >[!NOTE]
->Azure-molnlösningsleverantör (CSP)-prenumerationer stöder endast Azure Resource Manager modellen. Icke-Azure Resource Manager tjänster är inte tillgängliga i programmet. När du använder en CSP-prenumeration skapas inte det klassiska Kör som-kontot i Azure, men Azure Kör som-kontot skapas. Mer information om CSP-prenumerationer finns i [Tillgängliga tjänster i CSP-prenumerationer.](/azure/cloud-solution-provider/overview/azure-csp-available-services)
+>Azure-molnlösningsleverantör prenumerationer (CSP) stöder endast Azure Resource Manager modellen. Tjänster som Azure Resource Manager inte är tillgängliga i programmet. När du använder en CSP-prenumeration skapas inte det klassiska Kör som-kontot i Azure, men Kör som-kontot i Azure skapas. Mer information om CSP-prenumerationer finns i [Tillgängliga tjänster i CSP-prenumerationer.](/azure/cloud-solution-provider/overview/azure-csp-available-services)
 
-När du skapar ett Automation-konto skapas Kör som-kontot som standard samtidigt. Om du väljer att inte skapa det tillsammans med Automation-kontot kan det skapas individuellt vid ett senare tillfälle. Ett klassiskt Kör som-konto i Azure är valfritt och skapas separat om du behöver hantera klassiska resurser.
+När du skapar ett Automation-konto skapas Kör som-kontot som standard på samma gång. Om du väljer att inte skapa den tillsammans med Automation-kontot kan du skapa den individuellt vid ett senare tillfälle. Ett klassiskt Kör som-konto i Azure är valfritt och skapas separat om du behöver hantera klassiska resurser.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 
@@ -78,16 +79,16 @@ När du skapar ett Kör som-konto utförs följande uppgifter:
 
 * Skapar ett Azure AD-program med ett själv signerat certifikat, skapar ett tjänsthuvudnamnskonto för programmet i Azure AD och tilldelar rollen Deltagare för kontot i din aktuella prenumeration. [](../role-based-access-control/built-in-roles.md#contributor) Du kan ändra certifikatinställningen till [Läsare eller](../role-based-access-control/built-in-roles.md#reader) någon annan roll. Mer information finns i [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).
 
-* Skapar en Automation-certifikattillgång med namnet `AzureRunAsCertificate` i det angivna Automation-kontot. Certifikattillgången innehåller den privata certifikatnyckel som används av Azure AD-programmet.
+* Skapar en Automation-certifikattillgång med namnet `AzureRunAsCertificate` i det angivna Automation-kontot. Certifikattillgången innehåller den privata certifikatnyckel som azure AD-programmet använder.
 
 * Skapar en Automation-anslutningstillgång med namnet `AzureRunAsConnection` i det angivna Automation-kontot. Anslutningstillgången innehåller program-ID, klientorganisations-ID, prenumerations-ID och tumavtryck för certifikat.
 
 ### <a name="azure-classic-run-as-account"></a>Klassiskt Kör som-konto i Azure
 
-När du skapar ett klassiskt Kör som-konto i Azure utförs följande uppgifter:
+När du skapar ett klassiskt Kör som-konto i Azure utför det följande uppgifter:
 
 > [!NOTE]
-> Du måste vara medadministratör för prenumerationen för att kunna skapa eller förnya den här typen av Kör som-konto.
+> Du måste vara medadministratör för prenumerationen för att skapa eller förnya den här typen av Kör som-konto.
 
 * Skapar ett hanteringscertifikat i prenumerationen.
 
@@ -104,35 +105,35 @@ Tjänstens huvudnamn för ett Kör som-konto har inte behörighet att läsa Azur
 Det här avsnittet definierar behörigheter för både vanliga Kör som-konton och klassiska Kör som-konton.
 
 * Om du vill skapa eller uppdatera ett Kör som-konto kan Programadministratör i Azure Active Directory och en ägare i prenumerationen slutföra alla uppgifter.
-* Om du vill konfigurera eller förnya klassiska Kör som-konton måste du ha rollen som medadministratör på prenumerationsnivå. Mer information om behörigheter för klassiska prenumerationer finns i [Administratörer för klassiska Azure-prenumerationer.](../role-based-access-control/classic-administrators.md#add-a-co-administrator)
+* Om du vill konfigurera eller förnya klassiska Kör som-konton måste du ha rollen Medadministratör på prenumerationsnivå. Mer information om behörigheter för klassiska prenumerationer finns i Administratörer [för klassiska Azure-prenumerationer.](../role-based-access-control/classic-administrators.md#add-a-co-administrator)
 
-I en situation där du har uppdelning av uppgifter visar följande tabell en lista över uppgifterna, motsvarande cmdlet och de behörigheter som krävs:
+I en situation där du har aparation av uppgifter visar följande tabell en lista över de uppgifter, motsvarande cmdlet och behörigheter som behövs:
 
 |Uppgift|Cmdlet  |Minsta behörigheter  |Där du anger behörigheterna|
 |---|---------|---------|---|
 |Skapa Azure AD-program|[New-AzADApplication](/powershell/module/az.resources/new-azadapplication)     | Programutvecklarroll<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > appregistreringar |
 |Lägg till en autentiseringsidentifiering i programmet.|[New-AzADAppCredential](/powershell/module/az.resources/new-azadappcredential)     | Programadministratör eller global administratör<sup>1</sup>         |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > appregistreringar|
 |Skapa och hämta tjänstens huvudnamn för Azure AD|[New-AzADServicePrincipal](/powershell/module/az.resources/new-azadserviceprincipal)</br>[Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal)     | Programadministratör eller global administratör<sup>1</sup>        |[Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app)</br>Start > Azure AD > appregistreringar|
-|Tilldela eller hämta Azure-rollen för det angivna huvudbeloppet|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Administratör eller ägare för användaråtkomst eller har följande behörigheter:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Prenumeration](../role-based-access-control/role-assignments-portal.md)</br>Start > Prenumerationer > \<subscription name\> – Access Control (IAM)|
+|Tilldela eller hämta Azure-rollen för det angivna huvudbeloppet|[New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment)</br>[Get-AzRoleAssignment](/powershell/module/Az.Resources/Get-AzRoleAssignment)      | Administratör för användaråtkomst eller ägare, eller har följande behörigheter:</br></br><code>Microsoft.Authorization/Operations/read</br>Microsoft.Authorization/permissions/read</br>Microsoft.Authorization/roleDefinitions/read</br>Microsoft.Authorization/roleAssignments/write</br>Microsoft.Authorization/roleAssignments/read</br>Microsoft.Authorization/roleAssignments/delete</code></br></br> | [Prenumeration](../role-based-access-control/role-assignments-portal.md)</br>Startprenumerationer > > \<subscription name\> – Access Control (IAM)|
 |Skapa eller ta bort ett Automation-certifikat|[New-AzAutomationCertificate](/powershell/module/Az.Automation/New-AzAutomationCertificate)</br>[Remove-AzAutomationCertificate](/powershell/module/az.automation/remove-azautomationcertificate)     | Deltagare i resursgrupp         |Resursgrupp för Automation-konto|
 |Skapa eller ta bort en Automation-anslutning|[New-AzAutomationConnection](/powershell/module/az.automation/new-azautomationconnection)</br>[Remove-AzAutomationConnection](/powershell/module/az.automation/remove-azautomationconnection)|Deltagare i resursgrupp |Resursgrupp för Automation-konto|
 
-<sup>1</sup> Icke-administratörsanvändare i din Azure AD-klientorganisation kan  registrera [AD-program](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) om  alternativet Användare kan registrera program för Azure AD-klienten på sidan Användarinställningar är inställt på **Ja.** Om inställningen för programregistrering är **Nej** måste användaren som utför den här åtgärden vara enligt definitionen i den här tabellen.
+<sup>1</sup> Icke-administratörsanvändare i din Azure AD-klientorganisation kan  registrera [AD-program](../active-directory/develop/howto-create-service-principal-portal.md#permissions-required-for-registering-an-app) om alternativet Användare kan registrera program för Azure AD-klienten på **sidan** Användarinställningar är inställt på **Ja.** Om programregistreringsinställningen är **Nej** måste användaren som utför den här åtgärden vara enligt definitionen i den här tabellen.
 
-Om du inte är medlem i prenumerationens Active Directory-instans innan du läggs till i rollen Global administratör för prenumerationen läggs du till som gäst. I så fall får du en `You do not have permissions to create…` varning på sidan Lägg till **Automation-konto.**
+Om du inte är medlem i prenumerationens Active Directory-instans innan du läggs till i rollen Global administratör för prenumerationen läggs du till som gäst. I så fall får du en varning `You do not have permissions to create…` på sidan Lägg till **Automation-konto.**
 
-Så här kontrollerar du att situationen som producerar felmeddelandet har åtgärdats:
+Kontrollera att situationen som producerar felmeddelandet har åtgärdats:
 
-1. I fönstret Azure Active Directory i Azure Portal väljer du **Användare och grupper**.
+1. I fönstret Azure Active Directory i fönstret Azure Portal du **Användare och grupper**.
 2. Välj **Alla användare.**
 3. Välj ditt namn och välj sedan **Profil.**
 4. Kontrollera att värdet för **attributet Användartyp** under användarens profil inte är inställt på **Gäst**.
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll
 
-Rollbaserad åtkomstkontroll är tillgänglig med Azure Resource Manager att bevilja tillåtna åtgärder till ett Azure AD-användarkonto och Kör som-konto, samt autentisera tjänstens huvudnamn. Mer information om hur du utvecklar din modell för att hantera Automation-behörigheter finns i artikeln [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).
+Rollbaserad åtkomstkontroll är tillgänglig med Azure Resource Manager att bevilja tillåtna åtgärder till ett Azure AD-användarkonto och Kör som-konto och autentisera tjänstens huvudnamn. Mer information om hur du utvecklar din modell för att hantera Automation-behörigheter finns i artikeln [Rollbaserad åtkomstkontroll i Azure Automation](automation-role-based-access-control.md).
 
-Om du har strikta säkerhetskontroller för behörighetstilldelning i resursgrupper måste  du tilldela Rollen Deltagare i resursgruppen Kör som-kontomedlemskap.
+Om du har strikta säkerhetskontroller för behörighetstilldelning i resursgrupper måste  du tilldela rollen Deltagare i resursgruppen kör som-kontomedlemskap.
 
 ## <a name="runbook-authentication-with-hybrid-runbook-worker"></a>Runbook-autentisering med Hybrid Runbook Worker
 
@@ -142,7 +143,7 @@ För runbooks som använder Hybrid Runbook Workers på virtuella Azure-datorer k
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du skapar ett Automation-Azure Portal finns i [Skapa ett fristående Azure Automation konto.](automation-create-standalone-account.md)
-* Om du vill skapa ett konto med hjälp av en mall kan du gå [till Skapa ett Automation-konto med en Azure Resource Manager mall](quickstart-create-automation-account-template.md).
+* Information om hur du skapar ett Automation-Azure Portal finns i [Skapa ett fristående Azure Automation konto](automation-create-standalone-account.md).
+* Om du föredrar att skapa ditt konto med hjälp av en mall kan du gå [till Skapa ett Automation-konto med en Azure Resource Manager mall](quickstart-create-automation-account-template.md).
 * Information om autentisering med Amazon Web Services finns [i Autentisera runbooks med Amazon Web Services](automation-config-aws-account.md).
 * En lista över Azure-tjänster som stöder funktionen Hanterade identiteter för Azure-resurser finns i [Tjänster som stöder hanterade identiteter för Azure-resurser](/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities).

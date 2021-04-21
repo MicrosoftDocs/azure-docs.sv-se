@@ -3,12 +3,13 @@ title: Så här riktar du Azure Functions körningsversioner
 description: Azure Functions stöder flera versioner av körningen. Lär dig hur du anger körningsversionen av en funktionsapp som finns i Azure.
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: 9a9f8fca1c39fd0251df3e3a8da3d789aae4d3d6
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ca107ec2f0ce04bf7b1eae3a98087217c267d33d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779281"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830924"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Så här riktar du Azure Functions körningsversioner
 
@@ -134,9 +135,9 @@ Funktionsappen startas om efter att ändringen har gjorts i programinställninge
 
 Om du vill fästa en Linux-funktionsapp till en specifik värdversion anger du avbildnings-URL:en i fältet "LinuxFxVersion" i platskonfigurationen. Exempel: om vi vill fästa en nod 10-funktionsapp till exempel värdversion 3.0.13142 –
 
-För **Linux App Service/elastiska Premium-appar** – Ställ in `LinuxFxVersion` på `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` .
+För **Linux App Service/elastiska Premium-appar** – Ställ `LinuxFxVersion` in på `DOCKER|mcr.microsoft.com/azure-functions/node:3.0.13142-node10-appservice` .
 
-För **appar med Linux-förbrukning** – Ställ in `LinuxFxVersion` på `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` .
+För **appar med Linux-förbrukning** – Ställ `LinuxFxVersion` in på `DOCKER|mcr.microsoft.com/azure-functions/mesh:3.0.13142-node10` .
 
 # <a name="portal"></a>[Portal](#tab/portal)
 
@@ -153,7 +154,7 @@ az functionapp config show --name <function_app> \
 --resource-group <my_resource_group> --query 'linuxFxVersion' -o tsv
 ```
 
-I den här koden `<function_app>` ersätter du med namnet på funktionsappen. Ersätt även `<my_resource_group>` med namnet på resursgruppen för funktionsappen. Det aktuella värdet för `linuxFxVersion` returneras.
+I den här koden `<function_app>` ersätter du med namnet på din funktionsapp. Ersätt också `<my_resource_group>` med namnet på resursgruppen för funktionsappen. Det aktuella värdet `linuxFxVersion` för returneras.
 
 Om du vill `linuxFxVersion` uppdatera inställningen i funktionsappen använder du [kommandot az functionapp config set.](/cli/azure/functionapp/config)
 
@@ -163,9 +164,9 @@ az functionapp config set --name <FUNCTION_APP> \
 --linux-fx-version <LINUX_FX_VERSION>
 ```
 
-Ersätt `<FUNCTION_APP>` med namnet på din funktionsapp. Ersätt även `<RESOURCE_GROUP>` med namnet på resursgruppen för funktionsappen. Ersätt också med `<LINUX_FX_VERSION>` värdet för en specifik bild enligt beskrivningen ovan.
+Ersätt `<FUNCTION_APP>` med namnet på din funktionsapp. Ersätt också `<RESOURCE_GROUP>` med namnet på resursgruppen för funktionsappen. Ersätt också med `<LINUX_FX_VERSION>` värdet för en specifik bild enligt beskrivningen ovan.
 
-Du kan köra det här kommandot [från Azure Cloud Shell](../cloud-shell/overview.md) genom att **välja Prova** i föregående kodexempel. Du kan också använda [Azure CLI lokalt för att](/cli/azure/install-azure-cli) köra det här kommandot när du har kört az [login](/cli/azure/reference-index#az_login) för att logga in.
+Du kan köra det här kommandot [Azure Cloud Shell](../cloud-shell/overview.md) genom att **välja Testa** i föregående kodexempel. Du kan också använda [Azure CLI lokalt för att](/cli/azure/install-azure-cli) köra det här kommandot när du har kört az login [för](/cli/azure/reference-index#az_login) att logga in.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -181,7 +182,7 @@ Funktionsappen startas om när ändringen har gjorts i platskonfigurationen.
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Rikta in 2.0-körningen i din lokala utvecklingsmiljö](functions-run-local.md)
+> [Rikta in dig på 2.0-körningen i din lokala utvecklingsmiljö](functions-run-local.md)
 
 > [!div class="nextstepaction"]
 > [Se Versionsanteckningar för körningsversioner](https://github.com/Azure/azure-webjobs-sdk-script/releases)

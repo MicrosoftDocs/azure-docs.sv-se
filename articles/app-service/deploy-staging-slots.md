@@ -4,13 +4,13 @@ description: Lär dig hur du distribuerar appar till en plats som inte är en pr
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
 ms.date: 04/30/2020
-ms.custom: fasttrack-edit
-ms.openlocfilehash: b93fb61cc58360ddfcf15d2af2c936203d869500
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: fasttrack-edit, devx-track-azurepowershell
+ms.openlocfilehash: 8a26332250f5c53116d940a2b625eb8d7991c187
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771541"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833120"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurera mellanlagringsmiljöer i Azure App Service
 <a name="Overview"></a>
@@ -21,9 +21,9 @@ Att distribuera ditt program till en plats som inte är en produktionsplats har 
 
 * Du kan verifiera appändringar i ett distributionsfack för mellanlagring innan du växlar det med produktionsplatsen.
 * Genom att först distribuera en app till ett fack och växla den till produktion ser du till att alla instanser av platsen värms upp innan de växlas till produktion. Detta eliminerar stilleståndstiden när du distribuerar din app. Trafikomdirigeringen är sömlös och inga begäranden tas bort på grund av växlingsåtgärder. Du kan automatisera hela arbetsflödet genom att konfigurera [automatisk växling](#Auto-Swap) när validering i förväg inte behövs.
-* Efter en växling har facket med tidigare mellanfasad app nu den tidigare produktionsappen. Om ändringarna som växlades till produktionsplatsen inte är som förväntat kan du utföra samma växling omedelbart för att få tillbaka din "senast kända bra plats".
+* Efter en växling har facket med tidigare mellanfasad app nu den tidigare produktionsappen. Om ändringarna som växlades till produktionsplatsen inte är som förväntat kan du utföra samma växling direkt för att få tillbaka din "senast kända bra plats".
 
-Varje App Service plan har stöd för olika antal distributionsfack. Det tillkommer ingen extra kostnad för att använda distributionsfack. Information om hur många platser som din appnivå stöder finns i [App Service gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits) 
+Varje App Service plan har stöd för olika antal distributionsfack. Det tillkommer ingen extra kostnad för att använda distributionsfack. Information om hur många platser som din appnivå stöder finns i App Service [gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md#app-service-limits) 
 
 Om du vill skala appen till en annan nivå kontrollerar du att målnivån stöder det antal platser som din app redan använder. Om din app till exempel har fler än fem platser kan du inte skala ned den till **standardnivån** eftersom **standardnivån** endast stöder fem distributionsfack. 
 
@@ -197,7 +197,7 @@ Om du har problem kan du gå till [Felsöka växlingar.](#troubleshoot-swaps)
 
 ## <a name="specify-custom-warm-up"></a>Ange anpassad uppvärmning
 
-Vissa appar kan kräva anpassade uppvärmningsåtgärder före bytet. Med `applicationInitialization` konfigurationselementet i web.config kan du ange anpassade initieringsåtgärder. [Växlingsåtgärden](#AboutConfiguration) väntar på att den här anpassade uppvärmningen ska slutföras innan du växlar med målplatsen. Här är ett exempel på web.config fragment.
+Vissa appar kan kräva anpassade uppvärmningsåtgärder innan bytet. Med `applicationInitialization` konfigurationselementet i web.config kan du ange anpassade initieringsåtgärder. [Växlingsåtgärden](#AboutConfiguration) väntar på att den här anpassade uppvärmningen ska slutföras innan du växlar med målplatsen. Här är ett exempel på web.config fragment.
 
 ```xml
 <system.webServer>
@@ -287,9 +287,9 @@ Sök efter och välj din app. Välj **Distributionsfack**  >  *\<slot to delete>
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Azure PowerShell är en modul som innehåller cmdlets för att hantera Azure via Windows PowerShell, inklusive stöd för att hantera distributionsfack i Azure App Service.
+Azure PowerShell är en modul som tillhandahåller cmdlets för att hantera Azure via Windows PowerShell, inklusive stöd för att hantera distributionsfack i Azure App Service.
 
-Information om hur du installerar och konfigurerar Azure PowerShell och om hur du autentiserar Azure PowerShell med din Azure-prenumeration finns i Så här installerar och [konfigurerar](/powershell/azure/)du Microsoft Azure PowerShell .  
+Information om hur du installerar och konfigurerar Azure PowerShell och om hur du autentiserar Azure PowerShell med din Azure-prenumeration finns i Installera och [konfigurera Microsoft Azure PowerShell](/powershell/azure/).  
 
 ---
 ### <a name="create-a-web-app"></a>Skapa en webbapp
@@ -311,7 +311,7 @@ Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType M
 ```
 
 ---
-### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Avbryt en väntande växling (byt med granskning) och återställ konfigurationen för källfacket
+### <a name="cancel-a-pending-swap-swap-with-review-and-restore-the-source-slot-configuration"></a>Avbryta en väntande växling (växla med granskning) och återställ källplatsens konfiguration
 ```powershell
 Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
@@ -336,10 +336,10 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 
 ## <a name="automate-with-resource-manager-templates"></a>Automatisera med Resource Manager mallar
 
-[Azure Resource Manager är deklarativa](../azure-resource-manager/templates/overview.md) JSON-filer som används för att automatisera distributionen och konfigurationen av Azure-resurser. Om du vill växla fack med Resource Manager mallar anger du två egenskaper för *resurserna Microsoft.Web/sites/slots* och *Microsoft.Web/sites:*
+[Azure Resource Manager är](../azure-resource-manager/templates/overview.md) deklarativa JSON-filer som används för att automatisera distributionen och konfigurationen av Azure-resurser. Om du vill växla fack Resource Manager med hjälp av mallar anger du två egenskaper för *resurserna Microsoft.Web/sites/slots* och *Microsoft.Web/sites:*
 
 - `buildVersion`: det här är en strängegenskap som representerar den aktuella versionen av appen som distribuerats i facket. Exempel: "v1", "1.0.0.1" eller "2019-09-20T11:53:25.2887393-07:00".
-- `targetBuildVersion`: det här är en strängegenskap som anger `buildVersion` vad facket ska ha. Om targetBuildVersion inte är lika med den aktuella utlöser detta växlingsåtgärden genom att hitta `buildVersion` platsen som har angiven `buildVersion` .
+- `targetBuildVersion`: Det här är en strängegenskap som anger `buildVersion` vad facket ska ha. Om targetBuildVersion inte är lika med den aktuella utlöser detta växlingsåtgärden genom att hitta platsen `buildVersion` som har angiven `buildVersion` .
 
 ### <a name="example-resource-manager-template"></a>Exempel Resource Manager mall
 
@@ -399,15 +399,15 @@ Azure [CLI-kommandon](https://github.com/Azure/azure-cli) för distributionsfack
 
 ## <a name="troubleshoot-swaps"></a>Felsöka växlingar
 
-Om något fel inträffar under [ett fackväxling](#AboutConfiguration)loggas det *D:\home\LogFiles\eventlog.xml*. Den loggas också i den programspecifika felloggen.
+Om något fel inträffar under [ett byte](#AboutConfiguration)loggas det *D:\home\LogFiles\eventlog.xml*. Den loggas också i den programspecifika felloggen.
 
 Här är några vanliga växlingsfel:
 
-- En HTTP-begäran till programroten har fördr i tid. Växlingsåtgärden väntar i 90 sekunder för varje HTTP-begäran och försöker igen upp till 5 gånger. Om alla återförsök har time out stoppats växlingsåtgärden.
+- En HTTP-begäran till programroten har en tidsendd. Växlingsåtgärden väntar i 90 sekunder för varje HTTP-begäran och försöker igen upp till 5 gånger. Om alla återförsök har upphört att fungera stoppas växlingsåtgärden.
 
-- Initiering av lokal cache kan misslyckas när appinnehållet överskrider den lokala diskkvoten som angetts för den lokala cachen. Mer information finns i Översikt [över lokal cache.](overview-local-cache.md)
+- Initiering av lokal cache kan misslyckas när appinnehållet överskrider den lokala diskkvot som angetts för den lokala cachen. Mer information finns i Översikt [över lokal cache.](overview-local-cache.md)
 
-- Under [anpassad uppvärmning görs HTTP-begäranden](#Warm-up)internt (utan att gå igenom den externa URL:en). De kan misslyckas med vissa URL-omskrivningsregler i *Web.config*. Regler för att omdirigera domännamn eller tillämpa HTTPS kan till exempel förhindra att uppvärmningsbegäranden når appkoden. Du kan komma runt det här problemet genom att ändra reglerna för omskrivning genom att lägga till följande två villkor:
+- Under [anpassad uppvärmning görs HTTP-begäranden](#Warm-up)internt (utan att gå igenom den externa URL:en). De kan misslyckas med vissa URL-omskrivningsregler i *Web.config*. Regler för att omdirigera domännamn eller framtvinga HTTPS kan till exempel förhindra att uppvärmningsbegäranden når appkoden. Du kan komma runt det här problemet genom att ändra reglerna för omskrivning genom att lägga till följande två villkor:
 
     ```xml
     <conditions>
@@ -425,7 +425,7 @@ Här är några vanliga växlingsfel:
     </conditions>
     ```
 
-- Efter fackväxlingar kan det uppstå oväntade omstarter i appen. Det beror på att efter en växling blir konfigurationen av värdnamnets bindning inte synkroniserad, vilket i sig inte orsakar omstarter. Vissa underliggande lagringshändelser (till exempel redundans för lagringsvolym) kan dock identifiera dessa avvikelser och tvinga alla arbetsprocesser att starta om. Om du vill minimera dessa typer av omstarter anger du [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` appinställningen](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) på *alla platser*. Den här appinställningen fungerar *dock inte* med Windows Communication Foundation (WCF).
+- Efter fackväxlingar kan det uppstå oväntade omstarter i appen. Det beror på att efter en växling blir konfigurationen för värdnamnsbindningen inte synkroniserad, vilket i sig inte orsakar omstarter. Vissa underliggande lagringshändelser (till exempel redundans för lagringsvolym) kan dock identifiera dessa avvikelser och tvinga alla arbetsprocesser att starta om. Om du vill minimera dessa typer av omstarter anger du [ `WEBSITE_ADD_SITENAME_BINDINGS_IN_APPHOST_CONFIG=1` appinställningen](https://github.com/projectkudu/kudu/wiki/Configurable-settings#disable-the-generation-of-bindings-in-applicationhostconfig) på *alla platser.* Den här appinställningen fungerar dock *inte* med Windows Communication Foundation appar (WCF).
 
 ## <a name="next-steps"></a>Nästa steg
 [Blockera åtkomst till platser som inte är produktionsplatser](app-service-ip-restrictions.md)

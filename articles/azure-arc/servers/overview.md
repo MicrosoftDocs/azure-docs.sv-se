@@ -1,71 +1,71 @@
 ---
-title: Översikt över Azure Arc-aktiverade servrar
-description: Lär dig hur du använder Azure Arc-aktiverade servrar för att hantera servrar som ligger utanför Azure som en Azure-resurs.
-keywords: Azure Automation, DSC, PowerShell, önskad tillstånds konfiguration, uppdaterings hantering, ändrings spårning, inventering, Runbooks, python, grafisk, hybrid
-ms.date: 02/18/2021
+title: översikt Azure Arc aktiverade servrar
+description: Lär dig hur du använder Azure Arc-aktiverade servrar för att hantera servrar som finns utanför Azure, till exempel en Azure-resurs.
+keywords: azure automation, DSC, powershell, desired state configuration, update management, change tracking, inventory, runbooks, python, graphical, hybrid
+ms.date: 04/21/2021
 ms.topic: overview
-ms.openlocfilehash: 863cab073018c5a592cba6e94451a9af038ebd52
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 324f6cc29bd9e4eca1a20413032c213c2618a11e
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023341"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832004"
 ---
 # <a name="what-is-azure-arc-enabled-servers"></a>Vad är Azure Arc-aktiverade servrar?
 
-Med Azure Arc-aktiverade servrar kan du hantera dina fysiska Windows-och Linux-servrar och virtuella datorer *utanför* Azure, i företags nätverket eller någon annan moln leverantör. Den här hanterings upplevelsen är utformad för att vara konsekvent med hur du hanterar interna virtuella Azure-datorer. När en hybrid dator är ansluten till Azure blir den en ansluten dator och behandlas som en resurs i Azure. Varje ansluten dator har ett resurs-ID, ingår i en resurs grupp och fördelar med Azures standard konstruktioner, till exempel Azure Policy och att använda taggar. Tjänste leverantörer som hanterar en kunds lokala infrastruktur kan hantera sina hybrid datorer, precis som de gör i dag med interna Azure-resurser, i flera kund miljöer med [Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) med Azure Arc.
+Azure Arc-aktiverade servrar kan du hantera dina fysiska Windows- och Linux-servrar och virtuella datorer som finns utanför Azure, i företagsnätverket eller någon annan molnleverantör.  Den här hanteringsupplevelsen är utformad för att vara konsekvent med hur du hanterar interna virtuella Azure-datorer. När en hybriddator är ansluten till Azure blir den en ansluten dator och behandlas som en resurs i Azure. Varje ansluten dator har ett resurs-ID, ingår i en resursgrupp och drar nytta av Azure-standardkonstruktioner som att Azure Policy och tillämpa taggar. Tjänstleverantörer som hanterar en kunds lokala infrastruktur kan hantera sina hybriddatorer, precis som de gör i dag med interna Azure-resurser i flera kundmiljöer, med [hjälp av Azure Lighthouse](../../lighthouse/how-to/manage-hybrid-infrastructure-arc.md) med Azure Arc.
 
-För att kunna leverera den här upplevelsen med dina hybrid datorer utanför Azure måste den Azure-anslutna dator agenten installeras på varje dator som du planerar att ansluta till Azure. Den här agenten levererar inga andra funktioner och ersätter inte Azure [Log Analytics-agenten](../../azure-monitor/agents/log-analytics-agent.md). Log Analytics agent för Windows och Linux krävs om du vill övervaka operativ system och arbets belastningar som körs på datorn proaktivt, hantera den med hjälp av Automation-runbooks eller lösningar som Uppdateringshantering eller använda andra Azure-tjänster som [Azure Security Center](../../security-center/security-center-introduction.md).
+För att leverera den här upplevelsen med dina hybriddatorer som finns utanför Azure måste Azure Connected Machine-agenten installeras på varje dator som du planerar att ansluta till Azure. Den här agenten levererar inte några andra funktioner och ersätter inte Azure [Log Analytics-agenten](../../azure-monitor/agents/log-analytics-agent.md). Log Analytics-agenten för Windows och Linux krävs när du proaktivt vill övervaka operativsystemet och arbetsbelastningar som körs på datorn, hantera det med hjälp av Automation-runbooks eller lösningar som Uppdateringshantering eller använda andra Azure-tjänster [som Azure Security Center](../../security-center/security-center-introduction.md).
 
 ## <a name="supported-scenarios"></a>Scenarier som stöds
 
-När du ansluter datorn till Azure Arc-aktiverade servrar kan du utföra följande konfigurations hanterings-och övervaknings uppgifter:
+När du ansluter datorn till Azure Arc-aktiverade servrar kan du utföra följande hanterings- och övervakningsuppgifter för konfiguration:
 
-- Tilldela [Azure policy gäst konfigurationer](../../governance/policy/concepts/guest-configuration.md) med samma erfarenhet som princip tilldelning för virtuella Azure-datorer. I dag tillämpar de flesta principer för gäst konfiguration inte konfigurationerna, de har bara gransknings inställningar i datorn. Mer information om kostnaden för att använda Azure Policy principer för gäst konfiguration med ARC-aktiverade servrar finns i Azure Policy [prissättnings guide](https://azure.microsoft.com/pricing/details/azure-policy/).
+- Tilldela [Azure Policy gästkonfigurationer med](../../governance/policy/concepts/guest-configuration.md) samma upplevelse som principtilldelning för virtuella Azure-datorer. Idag tillämpar de flesta gästkonfigurationsprinciper inte konfigurationer, de granskar bara inställningar på datorn. Information om kostnaden för att använda Azure Policy gästkonfigurationsprinciper med Arc-aktiverade servrar finns i Azure Policy [prisguiden](https://azure.microsoft.com/pricing/details/azure-policy/).
 
-- Rapport om konfigurations ändringar av installerad program vara, Microsoft-tjänster, Windows-register och filer och Linux-daemon på övervakade servrar med hjälp av Azure Automation [ändringsspårning och inventering](../../automation/change-tracking/overview.md) och [Azure Security Center fil integritets övervakning](../../security-center/security-center-file-integrity-monitoring.md)för servrar som är aktiverade med [Azure Defender för servrar](../../security-center/defender-for-servers-introduction.md).
+- Rapportera om konfigurationsändringar av installerad programvara, Microsoft-tjänster, Windows-register och -filer samt Linux-daemons på övervakade servrar med Azure Automation [Ändringsspårning och inventering](../../automation/change-tracking/overview.md) och [Azure Security Center File Integrity Monitoring](../../security-center/security-center-file-integrity-monitoring.md), för servrar som är aktiverade med Azure Defender för [servrar](../../security-center/defender-for-servers-introduction.md).
 
-- Övervaka din anslutna dators prestanda för gäst operativ system och identifiera program komponenter för att övervaka deras processer och beroenden med andra resurser som programmet kommunicerar med hjälp av [Azure Monitor for VMS](../../azure-monitor/vm/vminsights-overview.md).
+- Övervaka prestandan för gästoperativsystemet på den anslutna datorn och identifiera programkomponenter för att övervaka deras processer och beroenden med andra resurser som programmet kommunicerar med hjälp av [VM Insights.](../../azure-monitor/vm/vminsights-overview.md)
 
-- Förenkla distributionen med andra Azure-tjänster som Azure Automation [tillstånds konfiguration](../../automation/automation-dsc-overview.md) och Azure Monitor Log Analytics arbets yta med de [Azure VM-tillägg](manage-vm-extensions.md) som stöds för din icke-Azure Windows-eller Linux-dator. Detta inkluderar konfiguration av konfiguration eller program vara efter distribution med hjälp av tillägget för anpassat skript.
+- Förenkla distributionen med andra Azure-tjänster som Azure Automation [State Configuration](../../automation/automation-dsc-overview.md) och Azure Monitor Log Analytics-arbetsytan, med hjälp av [de Azure VM-tillägg](manage-vm-extensions.md) som stöds för din Windows- eller Linux-dator som inte är Azure. Detta inkluderar att utföra en konfiguration efter distributionen eller programvaruinstallation med hjälp av det anpassade skripttillägget.
 
-- Använd [uppdateringshantering](../../automation/update-management/overview.md) i Azure Automation för att hantera operativ system uppdateringar för dina Windows-och Linux-servrar
+- Använd [Uppdateringshantering](../../automation/update-management/overview.md) i Azure Automation för att hantera uppdateringar av operativsystem för dina Windows- och Linux-servrar
 
     > [!NOTE]
-    > För närvarande stöds inte aktivering av Uppdateringshantering direkt från en ARC-aktiverad server. Se [aktivera uppdateringshantering från ditt Automation-konto](../../automation/update-management/enable-from-automation-account.md) för att förstå kraven och hur du aktiverar för servern.
+    > För närvarande stöds inte aktivering Uppdateringshantering direkt från en Arc-aktiverad server. Se [Aktivera Uppdateringshantering automation-kontot för att](../../automation/update-management/enable-from-automation-account.md) förstå kraven och hur du aktiverar för din server.
 
-- Ta med dina icke-Azure-servrar för hot identifiering och proaktiv övervakning för potentiella säkerhetshot med hjälp av [Azure Security Center](../../security-center/security-center-introduction.md).
+- Inkludera dina icke-Azure-servrar för hotidentifiering och övervaka proaktivt potentiella säkerhetshot med [hjälp av Azure Security Center](../../security-center/security-center-introduction.md).
 
-Loggdata som samlas in och lagras i en Log Analytics-arbetsyta från hybrid datorn innehåller nu egenskaper som är speciella för datorn, till exempel ett resurs-ID. Detta kan användas för att ge stöd åt [resurs Sammanhangs](../../azure-monitor/logs/design-logs-deployment.md#access-mode) logg åtkomst.
+Loggdata som samlas in och lagras på en Log Analytics-arbetsyta från hybriddatorn innehåller nu egenskaper som är specifika för datorn, till exempel ett resurs-ID. Detta kan användas för att stödja åtkomst [till resurskontextloggar.](../../azure-monitor/logs/design-logs-deployment.md#access-mode)
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="supported-regions"></a>Regioner som stöds
 
-En slutgiltig lista över regioner som stöds med Azure Arc-aktiverade servrar finns på sidan [Azure-produkter efter region](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) .
+En slutgiltig lista över regioner som stöds med Azure Arc-aktiverade servrar finns på sidan [Azure-produkter efter](https://azure.microsoft.com/global-infrastructure/services/?products=azure-arc) region.
 
-I de flesta fall ska den plats som du väljer när du skapar installations skriptet vara den Azure-region som är geografiskt närmast din dators plats. Data i vila lagras i den region i Azure som innehåller den region som du anger, vilket även kan påverka ditt val av region om du har data placering-krav. Om den Azure-region som datorn ansluter till påverkas av ett avbrott påverkas inte den anslutna datorn, men hanterings åtgärder som använder Azure kan inte slutföras. Om det uppstår ett regionalt avbrott, och om du har flera platser som stöder en geografiskt redundant tjänst, är det bäst att ansluta datorerna på varje plats till en annan Azure-region.
+I de flesta fall bör den plats som du väljer när du skapar installationsskriptet vara den Azure-region som geografiskt ligger närmast datorns plats. Vilodata lagras inom azure-geografin som innehåller den region som du anger, vilket även kan påverka ditt val av region om du har krav på datahemlighet. Om den Azure-region som datorn ansluter till påverkas av ett avbrott påverkas inte den anslutna datorn, men hanteringsåtgärder som använder Azure kanske inte kan slutföras. Om det finns ett regionalt avbrott, och om du har flera platser som stöder en geografiskt redundant tjänst, är det bäst att ansluta datorerna på varje plats till en annan Azure-region.
 
-Följande metadatainformation om den anslutna datorn samlas in och lagras i den region där Azure Arc-datorns resurs har kon figurer ATS:
+Följande metadatainformation om den anslutna datorn samlas in och lagras i den region där Azure Arc datorresursen har konfigurerats:
 
-- Namn och version för operativ system
+- Namn och version för operativsystem
 - Datornamn
-- Fullständigt kvalificerat domän namn (FQDN)
-- Version av ansluten dator agent
+- Datorns fullständiga domännamn (FQDN)
+- Agentversion för ansluten dator
 
-Om datorn till exempel är registrerad i Azure-bågen i regionen USA, östra, lagras dessa data i regionen USA.
+Om datorn till exempel är registrerad i Azure Arc regionen USA, östra lagras dessa data i regionen USA.
 
 ### <a name="supported-environments"></a>Miljöer som stöds
 
-Arc-aktiverade servrar stöder hantering av fysiska servrar och virtuella datorer som finns *utanför* Azure. För detaljerad information om vilka hybrid moln miljöer som är värdar för virtuella datorer, se [krav för anslutna maskin agenter](agent-overview.md#supported-environments).
+Arc-aktiverade servrar stöder hantering av fysiska servrar och virtuella datorer *som* finns utanför Azure. Specifik information om vilka hybridmolnmiljöer som är värdar för virtuella datorer finns i [Krav för Connected Machine-agenten.](agent-overview.md#supported-environments)
 
 > [!NOTE]
-> Arc-aktiverade servrar har inte utformats eller stöds för att aktivera hantering av virtuella datorer som körs i Azure.
+> Arc-aktiverade servrar är inte utformade eller stöds inte för att aktivera hantering av virtuella datorer som körs i Azure.
 
-### <a name="agent-status"></a>Agent status
+### <a name="agent-status"></a>Agentstatus
 
-Den anslutna dator agenten skickar ett vanligt pulsslags meddelande till tjänsten var 5: e minut. Om tjänsten slutar att ta emot dessa pulsslags meddelanden från en dator anses datorn vara offline och statusen ändras automatiskt till **frånkopplad** i portalen inom 15 till 30 minuter. När du tar emot ett efterföljande pulsslags meddelande från den anslutna dator agenten kommer dess status automatiskt att ändras till **ansluten**.
+Connected Machine-agenten skickar ett vanligt pulsslagsmeddelande till tjänsten var femte minut. Om tjänsten slutar ta emot dessa pulsslagsmeddelanden från en dator betraktas  datorn som offline och statusen ändras automatiskt till Frånkopplad i portalen inom 15 till 30 minuter. När du får ett efterföljande pulsslagsmeddelande från connected machine-agenten ändras dess status automatiskt till **Ansluten**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Innan du utvärderar eller aktiverar Arc-aktiverade servrar över flera hybrid datorer kan du läsa [Översikt över anslutna dator agenter](agent-overview.md) för att förstå krav, teknisk information om agenten och distributions metoder.
+Innan du utvärderar eller aktiverar Arc-aktiverade servrar över flera hybriddatorer bör du läsa Översikt över Connected [Machine-agenten](agent-overview.md) för att förstå krav, teknisk information om agenten och distributionsmetoder.

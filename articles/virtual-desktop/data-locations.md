@@ -1,40 +1,40 @@
 ---
-title: Data platser för Windows Virtual Desktop – Azure
-description: En kort översikt över vilka platser som Windows Virtual Desktops data och metadata lagras i.
+title: Dataplatser för Windows Virtual Desktop – Azure
+description: En kort översikt över vilka platser Windows Virtual Desktop och metadata lagras i.
 author: Heidilohr
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 02/17/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: a4c63cc686b08d179e20e6f3e3a7aa1efa69a5f8
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: eeba3cb579c6ef9158379403a3206f99a2cfb060
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106447088"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830636"
 ---
-# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Platser för data och metadata för virtuella Windows-datorer
+# <a name="data-and-metadata-locations-for-windows-virtual-desktop"></a>Data- och metadataplatser för Windows Virtual Desktop
 
 >[!IMPORTANT]
->Det här innehållet gäller för virtuella Windows-datorer med Azure Resource Manager virtuella Windows Desktop-objekt. Om du använder Windows Virtual Desktop (klassisk) utan Azure Resource Manager objekt, se [den här artikeln](./virtual-desktop-fall-2019/data-locations-2019.md).
+>Det här innehållet gäller för Windows Virtual Desktop med Azure Resource Manager Windows Virtual Desktop objekt. Om du använder en Windows Virtual Desktop (klassisk) utan att Azure Resource Manager objekt kan du läsa den [här artikeln.](./virtual-desktop-fall-2019/data-locations-2019.md)
 
-Det virtuella Windows-skrivbordet är för närvarande tillgängligt för alla geografiska platser. Administratörer kan välja plats för att lagra användar data när de skapar värdar för virtuella datorer och associerade tjänster, till exempel fil servrar. Lär dig mer om Azures geografiska områden i [Azure datacenter-kartan](https://azuredatacentermap.azurewebsites.net/).
+Windows Virtual Desktop är för närvarande tillgänglig för alla geografiska platser. Administratörer kan välja plats för att lagra användardata när de skapar värdpoolens virtuella datorer och associerade tjänster, till exempel filservrar. Läs mer om Geografiska områden i Azure på [azure-datacenterkartan](https://azuredatacentermap.azurewebsites.net/).
 
 >[!NOTE]
->Microsoft kontrollerar eller begränsar inte de regioner där du eller dina användare kan komma åt dina användar-och appdata.
+>Microsoft styr eller begränsar inte de regioner där du eller dina användare kan komma åt dina användar- och appspecifika data.
 
 >[!IMPORTANT]
->Windows Virtual Desktop lagrar global metadatainformation som klient namn, värdnamn, namn på App-grupp och användarens huvud namn i ett Data Center. Varje gång en kund skapar ett tjänst objekt måste de ange en plats för tjänst objekt. Platsen som de anger avgör var metadata för objektet ska lagras. Kunden väljer en Azure-region och metadata kommer att lagras i relaterad geografi. En lista över alla Azure-regioner och relaterade geografiska områden finns i [Azure](https://azure.microsoft.com/global-infrastructure/geographies/)-geografiska områden.
+>Windows Virtual Desktop lagrar global metadatainformation som arbetsytenamn, värdpoolnamn, appgruppnamn och användarhuvudnamn i ett datacenter. När en kund skapar ett tjänstobjekt måste de ange en plats för tjänstobjektet. Den plats som de anger avgör var metadata för objektet ska lagras. Kunden väljer en Azure-region och metadata lagras i det relaterade geografiska området. En lista över alla Azure-regioner och relaterade geografiska områden finns i [Azures geografiska områden.](https://azure.microsoft.com/global-infrastructure/geographies/)
 
 Vi stöder för närvarande lagring av metadata i följande geografiska områden:
 
-- USA (US) (allmänt tillgänglig)
-- Europa (EU) (offentlig för hands version) 
+- USA (USA) (allmänt tillgänglig)
+- Europa (EU) (offentlig förhandsversion) 
 
 >[!NOTE]
-> När du väljer en region för att skapa Windows Virtual Desktop Service-objekt i, ser du regioner under både amerikanska och EU: s geografiska områden. För att se till att du förstår vilken region som passar bäst för din distribution, kan du ta en titt på [vår globala infrastruktur karta i Azure](https://azure.microsoft.com/global-infrastructure/geographies/#geographies).
+> När du väljer en region att skapa Windows Virtual Desktop tjänstobjekt i visas regioner under både usa och EU:s geografiska områden. För att se till att du förstår vilken region som skulle fungera bäst för din distribution kan du ta en titt på [vår globala infrastrukturkarta för Azure.](https://azure.microsoft.com/global-infrastructure/geographies/#geographies)
 
-Lagrade metadata är krypterade i vila och geo-redundanta speglar behålls i geografien. Alla kunddata, till exempel appinställningar och användar data, finns på den plats kunden väljer och hanteras inte av tjänsten. Fler geografiska områden kommer att bli tillgängliga när tjänsten växer.
+Lagrade metadata krypteras i vila och geo-redundanta speglingar bevaras inom geografin. Alla kunddata, till exempel appinställningar och användardata, finns på den plats som kunden väljer och hanteras inte av tjänsten. Fler geografiska områden blir tillgängliga när tjänsten växer.
 
-Tjänste-metadata replikeras i Azure geografi för haveri beredskap.
+Tjänstmetadata replikeras inom Azure-geografin för haveriberedskap.

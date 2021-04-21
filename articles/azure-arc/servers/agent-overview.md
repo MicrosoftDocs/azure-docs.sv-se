@@ -1,86 +1,87 @@
 ---
-title: Översikt över den anslutna dator agenten
-description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade Server Agent som har stöd för övervakning av virtuella datorer i hybrid miljöer.
+title: Översikt över Connected Machine-agenten
+description: Den här artikeln innehåller en detaljerad översikt över Azure Arc-aktiverade serveragenten, som stöder övervakning av virtuella datorer som finns i hybridmiljöer.
 ms.date: 03/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2db1758240dca448409af9f4ec00c01d684c920a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: dd58997a8af86a3789895bfb29bfd5803826fa6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105609244"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832967"
 ---
-# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverade Server Agent
+# <a name="overview-of-azure-arc-enabled-servers-agent"></a>Översikt över Azure Arc-aktiverad serveragent
 
-Azure Arc-aktiverade servrar som är anslutna till dator agenten gör att du kan hantera dina Windows-och Linux-datorer utanför Azure i företags nätverket eller någon annan moln leverantör. Den här artikeln innehåller en detaljerad översikt över agent-, system-och nätverks krav och olika distributions metoder.
+Med Azure Arc-aktiverade servrar med Connected Machine-agenten kan du hantera dina Windows- och Linux-datorer som finns utanför Azure i företagsnätverket eller någon annan molnleverantör. Den här artikeln innehåller en detaljerad översikt över agenten, system- och nätverkskraven och de olika distributionsmetoderna.
 
 >[!NOTE]
->Från och med den allmänna versionen av Azure Arc-aktiverade servrar i september 2020 inaktive ras alla för hands versioner av Azures anslutna dator agenter (agenter med lägre versioner än  1,0) den **2 februari 2021**.  Med den här tids ramen kan du uppgradera till version 1,0 eller högre innan de förinstallerade agenterna inte längre kan kommunicera med tjänsten Azure Arc-aktiverade servrar.
+>Från och med den allmänna versionen av Azure Arc-aktiverade servrar i september 2020 kommer alla förhandsversioner av Azure Connected Machine-agenten (agenter  med versioner som är mindre än 1.0) att bli inaktuella senast den 2 februari **2021.**  Med den här tidsramen kan du uppgradera till version 1.0 eller senare innan de tidigare utgivna agenterna inte längre kan kommunicera med Azure Arc-aktiverade servertjänsten.
 
-## <a name="agent-component-details"></a>Information om agent komponent
+## <a name="agent-component-details"></a>Information om agentkomponenten
 
-:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Agent översikt över Arc-aktiverade servrar." border="false":::
+:::image type="content" source="media/agent-overview/connected-machine-agent.png" alt-text="Översikt över Arc-aktiverad serveragent." border="false":::
 
-Azure Connected Machine agent-paketet innehåller flera logiska komponenter, som sammanställs tillsammans.
+Paketet Azure Connected Machine agent innehåller flera logiska komponenter som paketeras tillsammans.
 
-* HIMDS (hybrid instance metadata service) hanterar anslutningen till Azure och den anslutna datorns Azure-identitet.
+* Hybrid Instance Metadata Service (HIMDS) hanterar anslutningen till Azure och den anslutna datorns Azure-identitet.
 
-* Konfigurations agenten för gäster tillhandahåller In-Guest princip-och gäst konfigurations funktioner, till exempel bedöma om datorn uppfyller de nödvändiga principerna.
+* Gästkonfigurationsagenten tillhandahåller In-Guest-princip och gästkonfigurationsfunktioner, till exempel att utvärdera om datorn uppfyller nödvändiga principer.
 
-    Observera följande beteende med Azure Policy [gäst konfiguration](../../governance/policy/concepts/guest-configuration.md) för en frånkopplad dator:
+    Observera följande beteende med Azure Policy [gästkonfiguration för](../../governance/policy/concepts/guest-configuration.md) en frånkopplad dator:
 
-    * En princip tilldelning för gäst konfiguration som riktar sig mot frånkopplade datorer påverkas inte.
-    * Gäst tilldelning lagras lokalt i 14 dagar. Om den anslutna dator agenten återansluter till tjänsten inom 14-dagars perioden tillämpas princip tilldelningarna igen.
-    * Tilldelningar tas bort efter 14 dagar och omtilldelas inte till datorn efter 14-dagars perioden.
+    * En principtilldelning för gästkonfiguration som riktar sig mot frånkopplade datorer påverkas inte.
+    * Gästtilldelningen lagras lokalt i 14 dagar. Om Connected Machine-agenten återansluter till tjänsten inom 14-dagarsperioden tillämpas principtilldelningarna på nytt.
+    * Tilldelningar tas bort efter 14 dagar och omtilldelades inte till datorn efter 14-dagarsperioden.
 
-* Tilläggs agenten hanterar VM-tillägg, inklusive installation, avinstallation och uppgradering. Tillägg laddas ned från Azure och kopieras till `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` mappen i Windows och för Linux till `/opt/GC_Ext/downloads` . I Windows installeras tillägget på följande sökväg `%SystemDrive%\Packages\Plugins\<extension>` och i Linux installeras tillägget på `/var/lib/waagent/<extension>` .
+* Tilläggsagenten hanterar VM-tillägg, inklusive installation, avinstallation och uppgradering. Tillägg laddas ned från Azure och kopieras till `%SystemDrive%\%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads` mappen i Windows och för Linux till `/opt/GC_Ext/downloads` . I Windows installeras tillägget på följande `%SystemDrive%\Packages\Plugins\<extension>` sökväg, och i Linux installeras tillägget till `/var/lib/waagent/<extension>` .
 
-## <a name="instance-metadata"></a>Metadata för instans
+## <a name="instance-metadata"></a>Instansmetadata
 
-Metadatainformation om den anslutna datorn samlas in efter att den anslutna dator agenten registreras med ARC-aktiverade servrar. Specifikt:
+Metadatainformation om den anslutna datorn samlas in när Connected Machine-agenten har registrerats på Arc-aktiverade servrar. Specifikt:
 
-* Namn, typ och version för operativ system
+* Namn, typ och version för operativsystemet
 * Datornamn
-* Fullständigt kvalificerat domän namn (FQDN)
-* Version av ansluten dator agent
-* Active Directory och fullständigt DNS-kvalificerat domän namn (FQDN)
+* Datorns fullständiga domännamn (FQDN)
+* Agentversion för ansluten dator
+* Fullständigt domännamn (FQDN) för Active Directory och DNS
 * UUID (BIOS-ID)
-* Dator agentens pulsslag har anslutits
-* Version av ansluten dator agent
+* Pulsslag för ansluten datoragent
+* Agentversion för ansluten dator
 * Offentlig nyckel för hanterad identitet
-* Status och information om efterlevnadsprinciper (om du använder Azure Policy principer för gäst konfiguration)
+* Status och information om principefterlevnad (om du Azure Policy gästkonfigurationsprinciper)
 
-Följande metadatainformation krävs av agenten från Azure:
+Följande metadatainformation begärs av agenten från Azure:
 
-* Resurs plats (region)
+* Resursplats (region)
 * ID för virtuell dator
 * Taggar
-* Azure Active Directory hanterat identitets certifikat
-* Princip tilldelningar för gäst konfiguration
-* Tilläggs begär Anden – installera, uppdatera och ta bort.
+* Azure Active Directory certifikat för hanterad identitet
+* Principtilldelningar för gästkonfiguration
+* Tilläggsbegäranden – installera, uppdatera och ta bort.
 
 ## <a name="download-agents"></a>Ladda ned agenter
 
 Du kan ladda ned Azure Connected Machine agent-paketet för Windows och Linux från de platser som anges nedan.
 
-* [Windows agent Windows Installer-paketet](https://aka.ms/AzureConnectedMachineAgent) från Microsoft Download Center.
+* [Windows-Windows Installer från](https://aka.ms/AzureConnectedMachineAgent) Microsoft Download Center.
 
-* Linux Agent-paketet distribueras från Microsofts [paket lagrings plats](https://packages.microsoft.com/) med det önskade paket formatet för distributionen (. RPM eller. DEB).
+* Linux-agentpaketet distribueras från Microsofts [paketdatabas med](https://packages.microsoft.com/) det föredragna paketformatet för distributionen (. RPM eller . DEB).
 
-Azure Connected Machine agent för Windows och Linux kan uppgraderas till den senaste versionen manuellt eller automatiskt beroende på dina behov. Mer information finns [här](manage-agent.md).
+Den Azure Connected Machine agenten för Windows och Linux kan uppgraderas till den senaste versionen manuellt eller automatiskt beroende på dina krav. Mer information finns [här.](manage-agent.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="supported-environments"></a>Miljöer som stöds
 
-Arc-aktiverade servrar har stöd för installation av den anslutna dator agenten på en fysisk server och en virtuell dator som finns *utanför* Azure. Detta inkluderar virtuella datorer som körs på plattformar som VMware, Azure Stack HCI och andra moln miljöer. Arc-aktiverade servrar stöder inte installation av agenten på virtuella datorer som körs i Azure, eller virtuella datorer som körs på Azure Stack hubb eller Azure Stack Edge eftersom de redan modelleras som virtuella Azure-datorer.
+Arc-aktiverade servrar stöder installation av connected machine-agenten på alla fysiska servrar och virtuella datorer *som* finns utanför Azure. Detta omfattar virtuella datorer som körs på plattformar som VMware, Azure Stack HCI och andra molnmiljöer. Arc-aktiverade servrar stöder inte installation av agenten på virtuella datorer som körs i Azure, eller virtuella datorer som körs på Azure Stack Hub eller Azure Stack Edge eftersom de redan är modellerade som virtuella Azure-datorer.
 
 ### <a name="supported-operating-systems"></a>Operativsystem som stöds
 
-Följande versioner av operativ systemet Windows och Linux stöds officiellt för den Azure-anslutna dator agenten:
+Följande versioner av Windows- och Linux-operativsystemet stöds officiellt för Azure Connected Machine agenten:
 
-- Windows Server 2008 R2, Windows Server 2012 R2 och högre (inklusive Server Core)
-- Ubuntu 16,04 och 18,04 LTS (x64)
+- Windows Server 2008 R2, Windows Server 2012 R2 och senare (inklusive Server Core)
+- Ubuntu 16.04 och 18.04 LTS (x64)
 - CentOS Linux 7 (x64)
 - SUSE Linux Enterprise Server (SLES) 15 (x64)
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
@@ -88,79 +89,79 @@ Följande versioner av operativ systemet Windows och Linux stöds officiellt fö
 - Oracle Linux 7
 
 > [!WARNING]
-> Linux-värdnamnet eller Windows-datornamnet kan inte använda ett av de reserverade orden eller varumärkena i namnet, annars försöker registreringen av den anslutna datorn i Azure Miss lyckas. Se [lösa fel i reserverat resurs namn](../../azure-resource-manager/templates/error-reserved-resource-name.md) för en lista över reserverade ord.
+> Linux-värdnamnet eller Windows-datornamnet kan inte använda något av de reserverade orden eller varumärkena i namnet, annars misslyckas försök att registrera den anslutna datorn med Azure. En [lista över reserverade](../../azure-resource-manager/templates/error-reserved-resource-name.md) ord finns i Lösa fel med reserverade resursnamn.
 
 ### <a name="required-permissions"></a>Behörigheter som krävs
 
-* För att publicera datorer är du medlem i rollen **Azure-ansluten dator-onboarding** eller [deltagar](../../role-based-access-control/built-in-roles.md#contributor) roll i resurs gruppen.
+* Om du vill publicera datorer är du medlem **i Azure Connected Machine onboarding-** [eller deltagarrollen](../../role-based-access-control/built-in-roles.md#contributor) i resursgruppen.
 
-* Om du vill läsa, ändra och ta bort en dator är du medlem i rollen **resurs administratör för Azure-ansluten dator** i resurs gruppen.
+* Om du vill läsa, ändra och ta bort en dator är du **medlem Azure Connected Machine rollen Resursadministratör** i resursgruppen.
 
-* Om du vill välja en resurs grupp från den nedrullningsbara listan när du använder metoden för att **skapa skript** , är du minst medlem i rollen [läsare](../../role-based-access-control/built-in-roles.md#reader) för den resurs gruppen.
+* Om du vill välja en resursgrupp i  listrutan när du använder metoden Generera [](../../role-based-access-control/built-in-roles.md#reader) skript är du åtminstone medlem i rollen Läsare för den resursgruppen.
 
 ### <a name="azure-subscription-and-service-limits"></a>Azure-prenumeration och tjänstbegränsningar
 
-Innan du konfigurerar dina datorer med Azure Arc-aktiverade servrar granskar du Azure Resource Manager [prenumerations gränser](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) och [resurs grupps gränser](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) för att planera för antalet datorer som ska anslutas.
+Innan du konfigurerar dina datorer Azure Arc-aktiverade servrar [](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits) bör [](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) du granska Azure Resource Manager-prenumerationsgränser och resursgruppsgränser för att planera för antalet datorer som ska anslutas.
 
-Azure Arc-aktiverade servrar har stöd för upp till 5 000 dator instanser i en resurs grupp.
+Azure Arc-aktiverade servrar stöder upp till 5 000 datorinstanser i en resursgrupp.
 
-### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1,2-protokoll
+### <a name="transport-layer-security-12-protocol"></a>Transport Layer Security 1.2-protokoll
 
-För att säkerställa säkerheten för data som överförs till Azure rekommenderar vi starkt att du konfigurerar datorn att använda Transport Layer Security (TLS) 1,2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har befunnits vara sårbara och även om de fortfarande arbetar för att tillåta bakåtkompatibilitet, rekommenderas de **inte**.
+För att säkerställa säkerheten för data under överföring till Azure rekommenderar vi starkt att du konfigurerar datorn så att den använder Transport Layer Security (TLS) 1.2. Äldre versioner av TLS/Secure Sockets Layer (SSL) har visat sig vara sårbara och även om de fortfarande fungerar för att tillåta bakåtkompatibilitet rekommenderas **de inte**.
 
 |Plattform/språk | Support | Mer information |
 | --- | --- | --- |
-|Linux | Linux-distributioner tenderar att förlita sig på [openssl](https://www.openssl.org) för TLS 1,2-stöd. | Kontrol lera [openssl-ändringsloggen](https://www.openssl.org/news/changelog.html) för att bekräfta att din version av OpenSSL stöds.|
-| Windows Server 2012 R2 och senare | Stöds och är aktiverat som standard. | För att bekräfta att du fortfarande använder [standardinställningarna](/windows-server/security/tls/tls-registry-settings).|
+|Linux | Linux-distributioner förlitar [sig ofta på OpenSSL](https://www.openssl.org) för stöd för TLS 1.2. | Kontrollera [OpenSSL-ändringsloggen](https://www.openssl.org/news/changelog.html) för att bekräfta att din version av OpenSSL stöds.|
+| Windows Server 2012 R2 och senare | Stöds och aktiveras som standard. | Bekräfta att du fortfarande använder [standardinställningarna](/windows-server/security/tls/tls-registry-settings).|
 
 ### <a name="networking-configuration"></a>Nätverkskonfiguration
 
-Den anslutna dator agenten för Linux och Windows kommunicerar på ett säkert sätt till Azure-bågen via TCP-port 443. Om datorn ansluter via en brand vägg eller proxyserver för kommunikation via Internet kan du läsa följande för att förstå kraven på nätverks konfigurationen.
+Connected Machine-agenten för Linux och Windows kommunicerar utgående säkert till Azure Arc TCP-port 443. Om datorn ansluter via en brandvägg eller proxyserver för att kommunicera via Internet kan du läsa följande för att förstå kraven för nätverkskonfiguration.
 
 > [!NOTE]
-> Arc-aktiverade servrar stöder inte användning av en [Log Analytics Gateway](../../azure-monitor/agents/gateway.md) som proxy för den anslutna dator agenten.
+> Arc-aktiverade servrar stöder inte användning av [en Log Analytics-gateway](../../azure-monitor/agents/gateway.md) som proxy för Connected Machine-agenten.
 >
 
-Om den utgående anslutningen begränsas av din brand vägg eller proxyserver kontrollerar du att URL: erna i listan nedan inte är blockerade. Om du bara tillåter de IP-adressintervall eller domän namn som krävs för att agenten ska kunna kommunicera med tjänsten, måste du tillåta åtkomst till följande service märken och URL: er.
+Om den utgående anslutningen begränsas av brandväggen eller proxyservern kontrollerar du att URL:erna nedan inte blockeras. När du bara tillåter de IP-intervall eller domännamn som krävs för att agenten ska kunna kommunicera med tjänsten måste du tillåta åtkomst till följande tjänsttaggar och URL:er.
 
-Service märken:
+Tjänsttaggar:
 
 * AzureActiveDirectory
 * AzureTrafficManager
 * AzureResourceManager
 * AzureArcInfrastructure
 
-Er
+Webbadresser:
 
-| Agentresurs | Beskrivning |
+| Agentresurs | Description |
 |---------|---------|
 |`management.azure.com`|Azure Resource Manager|
 |`login.windows.net`|Azure Active Directory|
 |`login.microsoftonline.com`|Azure Active Directory|
 |`dc.services.visualstudio.com`|Application Insights|
 |`*.guestconfiguration.azure.com` |Gästkonfiguration|
-|`*.his.arc.azure.com`|Hybrid identitets tjänst|
+|`*.his.arc.azure.com`|Hybrididentitetstjänst|
 |`www.office.com`|Office 365|
 
-För hands versioner (version 0,11 och lägre) kräver också åtkomst till följande URL: er:
+Förhandsversionsagenter (version 0.11 och tidigare) kräver också åtkomst till följande URL:er:
 
-| Agentresurs | Beskrivning |
+| Agentresurs | Description |
 |---------|---------|
 |`agentserviceapi.azure-automation.net`|Gästkonfiguration|
 |`*-agentservice-prod-1.azure-automation.net`|Gästkonfiguration|
 
-En lista över IP-adresser för varje service tag/region finns i JSON-filen – [Azure IP-intervall och service märken – offentligt moln](https://www.microsoft.com/download/details.aspx?id=56519). Microsoft publicerar veckovis uppdateringar som innehåller varje Azure-tjänst och de IP-intervall som används. Den här informationen i JSON-filen är den aktuella tidpunkts listan för de IP-intervall som motsvarar varje service tag. IP-adresserna kan komma att ändras. Om det krävs IP-adressintervall för brand Väggs konfigurationen ska **AzureCloud** -tjänst tag gen användas för att ge åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller granskning av dessa URL: er, Tillåt dem som andra Internet trafik.
+En lista över IP-adresser för varje tjänsttagg/region finns i JSON-filen – [Azure IP-intervall och tjänsttaggar – offentligt moln.](https://www.microsoft.com/download/details.aspx?id=56519) Microsoft publicerar veckovisa uppdateringar som innehåller varje Azure-tjänst och de IP-intervall som används. Den här informationen i JSON-filen är den aktuella listan med tidpunkter för ip-intervallen som motsvarar varje tjänsttagg. IP-adresserna kan komma att ändras. Om IP-adressintervall krävs för brandväggskonfigurationen ska **AzureCloud-tjänsttaggen** användas för att tillåta åtkomst till alla Azure-tjänster. Inaktivera inte säkerhetsövervakning eller inspektion av dessa URL:er, tillåt dem på samma sätt som med annan Internettrafik.
 
-Mer information finns i [Översikt över service märken](../../virtual-network/service-tags-overview.md).
+Mer information finns i Översikt [över tjänsttaggar.](../../virtual-network/service-tags-overview.md)
 
-### <a name="register-azure-resource-providers"></a>Registrera Azure-resurs leverantörer
+### <a name="register-azure-resource-providers"></a>Registrera Azure-resursproviders
 
-Azure Arc-aktiverade servrar är beroende av följande Azure-resurs leverantörer i din prenumeration för att kunna använda den här tjänsten:
+Azure Arc-aktiverade servrar är beroende av följande Azure-resursproviders i din prenumeration för att kunna använda den här tjänsten:
 
-* **Microsoft. HybridCompute**
-* **Microsoft. GuestConfiguration**
+* **Microsoft.HybridCompute**
+* **Microsoft.GuestConfiguration**
 
-Om de inte är registrerade kan du registrera dem med hjälp av följande kommandon:
+Om de inte är registrerade kan du registrera dem med följande kommandon:
 
 Azure PowerShell:
 
@@ -179,117 +180,117 @@ az provider register --namespace 'Microsoft.HybridCompute'
 az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Du kan också registrera resurs leverantörerna i Azure Portal genom att följa stegen under [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+Du kan också registrera resursproviders i Azure Portal genom att följa stegen under [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
 
 ## <a name="installation-and-configuration"></a>Installation och konfiguration
 
-Att ansluta datorer i din hybrid miljö direkt med Azure kan utföras med hjälp av olika metoder beroende på dina behov. I följande tabell beskrivs varje metod för att avgöra vilken som fungerar bäst för din organisation.
+Du kan ansluta datorer i din hybridmiljö direkt med Azure med hjälp av olika metoder beroende på dina behov. I följande tabell visas varje metod för att avgöra vilken som fungerar bäst för din organisation.
 
 > [!IMPORTANT]
-> Den anslutna dator agenten kan inte installeras på en virtuell Azure Windows-dator. Om du försöker igen identifierar installationen detta och återställer.
+> Connected Machine-agenten kan inte installeras på en virtuell Azure Windows-dator. Om du försöker göra det identifierar installationen detta och återställs.
 
 | Metod | Beskrivning |
 |--------|-------------|
-| Interaktivt | Installera agenten manuellt på ett enda eller litet antal datorer enligt stegen i [ansluta datorer från Azure Portal](onboard-portal.md).<br> Från Azure Portal kan du generera ett skript och köra det på datorn för att automatisera installations-och konfigurations stegen för agenten.|
-| I skala | Installera och konfigurera agenten för flera datorer efter att [ansluta datorerna med ett huvud namn för tjänsten](onboard-service-principal.md).<br> Den här metoden skapar ett huvud namn för tjänsten för att ansluta datorer icke-interaktivt.|
-| I skala | Installera och konfigurera agenten för flera datorer enligt metoden [med hjälp av Windows POWERSHELL DSC](onboard-dsc.md).<br> Den här metoden använder ett huvud namn för tjänsten för att ansluta datorer icke-interaktivt med PowerShell DSC. |
+| Interaktivt | Installera agenten manuellt på ett eller ett litet antal datorer genom att följa stegen i [Ansluta datorer från Azure Portal](onboard-portal.md).<br> Från Azure Portal kan du generera ett skript och köra det på datorn för att automatisera installations- och konfigurationsstegen för agenten.|
+| I stor skala | Installera och konfigurera agenten för flera datorer efter Connect machines using a Service Principal (Anslut [datorer med tjänstens huvudnamn).](onboard-service-principal.md)<br> Den här metoden skapar ett huvudnamn för tjänsten för att ansluta datorer icke-interaktivt.|
+| I stor skala | Installera och konfigurera agenten för flera datorer enligt metoden [Using Windows PowerShell DSC](onboard-dsc.md).<br> Den här metoden använder tjänstens huvudnamn för att ansluta datorer icke-interaktivt med PowerShell DSC. |
 
-## <a name="connected-machine-agent-technical-overview"></a>Teknisk översikt över anslutna dator agenter
+## <a name="connected-machine-agent-technical-overview"></a>Teknisk översikt över Connected Machine-agenten
 
-### <a name="windows-agent-installation-details"></a>Installations information för Windows-agent
+### <a name="windows-agent-installation-details"></a>Installationsinformation för Windows-agenten
 
-Den anslutna dator agenten för Windows kan installeras med hjälp av någon av följande tre metoder:
+Connected Machine-agenten för Windows kan installeras med någon av följande tre metoder:
 
 * Dubbelklicka på filen `AzureConnectedMachineAgent.msi` .
-* Manuellt genom att köra Windows Installer-paketet `AzureConnectedMachineAgent.msi` från kommando gränssnittet.
-* Från en PowerShell-session med en skriptad metod.
+* Manuellt genom att köra `AzureConnectedMachineAgent.msi` Windows Installer-paketet från kommandogränssnittet.
+* Från en PowerShell-session med hjälp av en skriptad metod.
 
-När du har installerat den anslutna dator agenten för Windows tillämpas följande konfigurations ändringar i hela systemet.
+När du har installerat Connected Machine-agenten för Windows tillämpas följande systemomfattande konfigurationsändringar.
 
-* Följande installationsfiler skapas under installationen.
+* Följande installationsmappar skapas under installationen.
 
-    |Mapp |Beskrivning |
+    |Mapp |Description |
     |-------|------------|
-    |%ProgramFiles%\AzureConnectedMachineAgent |Standard installations Sök väg som innehåller agentens stödfiler.|
-    |%ProgramData%\AzureConnectedMachineAgent |Innehåller konfigurationsfilerna för agenten.|
-    |%ProgramData%\AzureConnectedMachineAgent\Tokens |Innehåller de hämtade token.|
-    |%ProgramData%\AzureConnectedMachineAgent\Config |Innehåller agent konfigurations filen `agentconfig.json` som registrerar registrerings informationen med tjänsten.|
-    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | Installations Sök väg som innehåller gäst konfigurations agentens filer. |
-    |%ProgramData%\GuestConfig |Innehåller principer (tillämpade) från Azure.|
-    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | Tillägg laddas ned från Azure och kopieras här.|
+    |%ProgramFiles%\AzureConnectedMachineAgent |Standardinstallationssökväg som innehåller agentens supportfiler.|
+    |%ProgramData%\AzureConnectedMachineAgent |Innehåller agentkonfigurationsfilerna.|
+    |%ProgramData%\AzureConnectedMachineAgent\Tokens |Innehåller de köpta token.|
+    |%ProgramData%\AzureConnectedMachineAgent\Config |Innehåller agentkonfigurationsfilen `agentconfig.json` som registrerar registreringsinformationen för tjänsten.|
+    |%ProgramFiles%\ArcConnectedMachineAgent\ExtensionService\GC | Installationssökväg som innehåller gästkonfigurationsagentfilerna. |
+    |%ProgramData%\GuestConfig |Innehåller (tillämpade) principer från Azure.|
+    |%ProgramFiles%\AzureConnectedMachineAgent\ExtensionService\downloads | Tilläggen laddas ned från Azure och kopieras här.|
 
-* Följande Windows-tjänster skapas på mål datorn under installationen av agenten.
+* Följande Windows-tjänster skapas på måldatorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
+    |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid-Instance Metadata Service |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
-    |GCArcService |Arc-tjänst för gäst konfiguration |gc_service |Övervakar datorns önskade tillstånds konfiguration.|
-    |ExtensionService |Tjänst för gäst konfigurations tillägg | gc_service |Installerar nödvändiga tillägg som mål för datorn.|
+    |himds |Azure Hybrid Instance Metadata Service |himds |Den här tjänsten implementerar Azure Instance Metadata Service (IMDS) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
+    |GCArcService |Arc-tjänst för gästkonfiguration |gc_service |Övervakar önskad tillståndskonfiguration för datorn.|
+    |ExtensionService |Gästkonfigurationstilläggstjänst | gc_service |Installerar de tillägg som krävs för datorn.|
 
-* Följande miljövariabler skapas under Agent installationen.
+* Följande miljövariabler skapas under agentinstallationen.
 
     |Name |Standardvärde |Beskrivning |
     |-----|--------------|------------|
     |IDENTITY_ENDPOINT |http://localhost:40342/metadata/identity/oauth2/token ||
     |IMDS_ENDPOINT |http://localhost:40342 ||
 
-* Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
+* Det finns flera tillgängliga loggfiler för felsökning. De beskrivs i följande tabell.
 
-    |Loggas |Beskrivning |
+    |Loggas |Description |
     |----|------------|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
-    |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
-    |%ProgramData%\GuestConfig\ gc_agent_logs \ gc_agent. log |Registrerar information om DSC-tjänstens aktivitet,<br> särskilt anslutningen mellan HIMDS-tjänsten och Azure Policy.|
-    |% Program data% \GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |Registrerar Detaljer om telemetri för DSC-tjänster och utförlig loggning.|
-    |%ProgramData%\GuestConfig\ ext_mgr_logs|Registrerar information om tilläggs Agent komponenten.|
-    |%ProgramData%\GuestConfig\ extension_logs\<Extension>|Registrerar information från det installerade tillägget.|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\himds.log |Innehåller information om agenttjänsten (HIMDS) och interaktion med Azure.|
+    |%ProgramData%\AzureConnectedMachineAgent\Log\azcmagent.log |Innehåller utdata från azcmagent tool-kommandon när det utförliga argumentet (-v) används.|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |Innehåller information om DSC-tjänstaktiviteten,<br> i synnerhet anslutningen mellan HIMDS-tjänsten och Azure Policy.|
+    |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |Innehåller information om DSC-tjänstens telemetri och utförlig loggning.|
+    |%ProgramData%\GuestConfig\ext_mgr_logs|Innehåller information om tilläggsagentkomponenten.|
+    |%ProgramData%\GuestConfig\extension_logs\<Extension>|Registrerar information från det installerade tillägget.|
 
-* Den lokala säkerhets gruppen **hybrid agent tilläggs program** skapas.
+* De lokala programmen för **hybridagenttillägg för säkerhetsgruppen** skapas.
 
-* Följande artefakter tas inte bort under avinstallationen av agenten.
+* Under avinstallationen av agenten tas inte följande artefakter bort.
 
     * %ProgramData%\AzureConnectedMachineAgent\Log
-    * %ProgramData%\AzureConnectedMachineAgent och under kataloger
+    * %ProgramData%\AzureConnectedMachineAgent och underkataloger
     * %ProgramData%\GuestConfig
 
-### <a name="linux-agent-installation-details"></a>Installations information för Linux-agenten
+### <a name="linux-agent-installation-details"></a>Installationsinformation för Linux-agenten
 
-Den anslutna dator agenten för Linux finns i det önskade paket formatet för distributionen (. RPM eller. DEB) som finns i Microsoft- [paketets lagrings plats](https://packages.microsoft.com/). Agenten installeras och konfigureras med Shell-skript paketet [Install_linux_azcmagent. sh](https://aka.ms/azcmagent).
+Connected Machine-agenten för Linux tillhandahålls i önskat paketformat för distributionen (. RPM eller . DEB) som finns på Microsoft-paketdatabasen . [](https://packages.microsoft.com/) Agenten installeras och konfigureras med shell-skriptpaketet [Install_linux_azcmagent.sh](https://aka.ms/azcmagent).
 
-När du har installerat den anslutna dator agenten för Linux tillämpas följande konfigurations ändringar i hela systemet.
+När du har installerat Connected Machine-agenten för Linux tillämpas följande konfigurationsändringar för hela systemet.
 
-* Följande installationsfiler skapas under installationen.
+* Följande installationsmappar skapas under installationen.
 
-    |Mapp |Beskrivning |
+    |Mapp |Description |
     |-------|------------|
-    |/var/opt/azcmagent/ |Standard installations Sök väg som innehåller agentens stödfiler.|
+    |/var/opt/azcmagent/ |Standardinstallationssökväg som innehåller agentens supportfiler.|
     |/opt/azcmagent/ |
-    |/opt/GC_Ext | Installations Sök väg som innehåller gäst konfigurations agentens filer.|
+    |/opt/GC_Ext | Installationssökväg som innehåller gästkonfigurationsagentfilerna.|
     |/opt/DSC/ |
-    |/var/opt/azcmagent/tokens |Innehåller de hämtade token.|
-    |/var/lib/GuestConfig |Innehåller principer (tillämpade) från Azure.|
+    |/var/opt/azcmagent/tokens |Innehåller de köpta token.|
+    |/var/lib/GuestConfig |Innehåller (tillämpade) principer från Azure.|
     |/opt/GC_Ext/downloads|Tillägg laddas ned från Azure och kopieras här.|
 
-* Följande daemonar skapas på mål datorn under installationen av agenten.
+* Följande daemons skapas på måldatorn under installationen av agenten.
 
-    |Tjänstnamn |Visningsnamn |Processnamn |Beskrivning |
+    |Tjänstnamn |Visningsnamn |Processnamn |Description |
     |-------------|-------------|-------------|------------|
-    |himdsd. service |Azure Connected Machine Agent-tjänsten |himds |Den här tjänsten implementerar IMDS (Azure instance metadata service) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
-    |gcad.servce |Tjänsten GC båg |gc_linux_service |Övervakar datorns önskade tillstånds konfiguration. |
-    |extd. service |Tilläggs tjänst |gc_linux_service | Installerar nödvändiga tillägg som mål för datorn.|
+    |himdsd.service |Azure Connected Machine Agent Service |himds |Den här tjänsten implementerar Tjänsten Azure Instance Metadata (IMDS) för att hantera anslutningen till Azure och den anslutna datorns Azure-identitet.|
+    |gcad.servce |GC Arc-tjänsten |gc_linux_service |Övervakar datorns önskade tillståndskonfiguration. |
+    |extd.service |Tilläggstjänst |gc_linux_service | Installerar de tillägg som krävs för datorn.|
 
-* Det finns flera loggfiler tillgängliga för fel sökning. De beskrivs i följande tabell.
+* Det finns flera loggfiler för felsökning. De beskrivs i följande tabell.
 
-    |Loggas |Beskrivning |
+    |Loggas |Description |
     |----|------------|
-    |/var/opt/azcmagent/log/himds.log |Innehåller information om agenternas (HIMDS) tjänst och interaktion med Azure.|
-    |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent-verktygets kommandon när argumentet verbose (-v) används.|
-    |/opt/logs/dsc.log |Registrerar information om DSC-tjänstens aktivitet,<br> särskilt anslutningen mellan himds-tjänsten och Azure Policy.|
-    |/opt/logs/dsc.telemetry.txt |Registrerar Detaljer om telemetri för DSC-tjänster och utförlig loggning.|
-    |/var/lib/GuestConfig/ext_mgr_logs |Registrerar information om tilläggs Agent komponenten.|
-    |/var/lib/GuestConfig/extension_logs|Registrerar information från det installerade tillägget.|
+    |/var/opt/azcmagent/log/himds.log |Innehåller information om agenttjänsten (HIMDS) och interaktion med Azure.|
+    |/var/opt/azcmagent/log/azcmagent.log |Innehåller utdata från azcmagent tool-kommandon när det utförliga argumentet (-v) används.|
+    |/opt/logs/dsc.log |Innehåller information om DSC-tjänstaktiviteten,<br> i synnerhet anslutningen mellan tjänsten himds och Azure Policy.|
+    |/opt/logs/dsc.telemetry.txt |Innehåller information om DSC-tjänstens telemetri och utförlig loggning.|
+    |/var/lib/GuestConfig/ext_mgr_logs |Innehåller information om tilläggsagentkomponenten.|
+    |/var/lib/GuestConfig/extension_logs|Innehåller information från det installerade tillägget.|
 
-* Följande miljövariabler skapas under Agent installationen. Dessa variabler anges i `/lib/systemd/system.conf.d/azcmagent.conf` .
+* Följande miljövariabler skapas under agentinstallationen. Dessa variabler anges i `/lib/systemd/system.conf.d/azcmagent.conf` .
 
     |Name |Standardvärde |Beskrivning |
     |-----|--------------|------------|
@@ -303,6 +304,6 @@ När du har installerat den anslutna dator agenten för Linux tillämpas följan
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Börja utvärdera Azure Arc-aktiverade servrar genom att följa artikeln [Connect hybrid Machines to Azure från Azure Portal](onboard-portal.md).
+* Om du vill börja Azure Arc-aktiverade servrar följer du artikeln [Ansluta hybriddatorer](onboard-portal.md)till Azure från Azure Portal .
 
-* Felsöknings information finns i [fel söknings guide för anslutna datorer](troubleshoot-agent-onboard.md).
+* Felsökningsinformation finns i guiden Felsöka [Connected Machine-agenten.](troubleshoot-agent-onboard.md)

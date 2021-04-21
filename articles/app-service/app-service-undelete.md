@@ -1,79 +1,80 @@
 ---
-title: Återställ borttagna appar
-description: Lär dig hur du återställer en borttagen app i Azure App Service. Undvik att ta bort en app som har tagits bort av misstag.
+title: Återställa borttagna appar
+description: Lär dig hur du återställer en borttagna app i Azure App Service. Undvik att råka ta bort en app av misstag.
 author: btardif
 ms.author: byvinyal
 ms.date: 9/23/2019
 ms.topic: article
-ms.openlocfilehash: 71f762ac0effc9ad14510c02679109362163f66d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: e894e0a8bd20d6a1c3c833a4c0a3656c0dcd0f05
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97008545"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833174"
 ---
 # <a name="restore-deleted-app-service-app-using-powershell"></a>Återställa borttagen App Service-app med hjälp av PowerShell
 
-Om du har råkat ta bort din app av misstag i Azure App Service kan du återställa den med hjälp av kommandona från [PowerShell-modulen AZ](/powershell/azure/).
+Om du råkar ta bort din app av misstag Azure App Service kan du återställa den med hjälp av kommandona från [Az PowerShell-modulen](/powershell/azure/).
 
 > [!NOTE]
-> - Borttagna appar rensas från systemet 30 dagar efter den första borttagningen. När en app har rensats kan den inte återställas.
-> - Funktionen för att ångra borttagning stöds inte för förbruknings planen.
-> - App Service-appar som körs i en App Service-miljön inte har stöd för ögonblicks bilder. Därför stöds inte borttagning av funktioner och klonings funktioner för App Service appar som körs i en App Service-miljön.
+> - Borttagna appar tas bort från systemet 30 dagar efter den första borttagningen. När en app har rensats kan den inte återställas.
+> - Funktionen för att ta inte tillbaka stöds inte för förbrukningsplanen.
+> - Apps Service-appar som körs App Service-miljön en tjänst stöder inte ögonblicksbilder. Därför stöds inte funktionen för att ta bort och klona för App Service som körs i en App Service-miljön.
 >
 
-## <a name="re-register-app-service-resource-provider"></a>Registrera App Service Resource Provider igen
+## <a name="re-register-app-service-resource-provider"></a>Registrera om App Service resursprovider
 
-Vissa kunder kan komma över ett problem där det inte går att hämta listan över borttagna appar. Lös problemet genom att köra följande kommando:
+Vissa kunder kan stöta på ett problem där det inte går att hämta listan över borttagna appar. Lös problemet genom att köra följande kommando:
 
 ```powershell
  Register-AzResourceProvider -ProviderNamespace "Microsoft.Web"
 ```
 
-## <a name="list-deleted-apps"></a>Lista över borttagna appar
+## <a name="list-deleted-apps"></a>Lista borttagna appar
 
 Om du vill hämta samlingen med borttagna appar kan du använda `Get-AzDeletedWebApp` .
 
-För information om en speciell borttagen app kan du använda:
+Mer information om en specifik borttagna app som du kan använda:
 
 ```powershell
 Get-AzDeletedWebApp -Name <your_deleted_app> -Location <your_deleted_app_location> 
 ```
 
-Den detaljerade informationen innehåller:
+Den detaljerade informationen omfattar:
 
-- **DeletedSiteId**: unik identifierare för appen som används för scenarier där flera appar med samma namn har tagits bort
-- **SubscriptionID**: prenumerationen som innehåller den borttagna resursen
-- **Plats**: den ursprungliga appens plats
-- **ResourceGroupName**: namnet på den ursprungliga resurs gruppen
-- **Namn**: namnet på den ursprungliga appen.
-- **Fack**: namnet på platsen.
-- **Borttagnings tid**: när appen togs bort  
+- **DeletedSiteId:** Unik identifierare för appen som används för scenarier där flera appar med samma namn har tagits bort
+- **SubscriptionID:** Prenumeration som innehåller den borttagna resursen
+- **Plats:** Platsen för den ursprungliga appen
+- **ResourceGroupName:** Namnet på den ursprungliga resursgruppen
+- **Namn:** Namnet på den ursprungliga appen.
+- **Plats:** namnet på facket.
+- **Borttagningstid:** När togs appen bort  
 
-## <a name="restore-deleted-app"></a>Återställ borttagen app
+## <a name="restore-deleted-app"></a>Återställa borttagna appar
 
 >[!NOTE]
-> `Restore-AzDeletedWebApp` stöds inte för Function-appar.
+> `Restore-AzDeletedWebApp` stöds inte för funktionsappar.
 
-När den app du vill återställa har identifierats kan du återställa den med hjälp av `Restore-AzDeletedWebApp` .
+När den app som du vill återställa har identifierats kan du återställa den med hjälp av `Restore-AzDeletedWebApp` .
 
 ```powershell
 Restore-AzDeletedWebApp -TargetResourceGroupName <my_rg> -Name <my_app> -TargetAppServicePlanName <my_asp>
 ```
 > [!NOTE]
-> Distributions platser återställs inte som en del av din app. Om du behöver återställa en mellanlagringsplats använder du `-Slot <slot-name>`  flaggan.
+> Distributionsfack återställs inte som en del av din app. Om du behöver återställa en mellanlagringsplats använder du `-Slot <slot-name>`  flaggan .
 >
 
-Kommandot Inputs for är:
+Indata för kommandot är:
 
-- **Mål resurs grupp**: mål resurs grupp där appen kommer att återställas
-- **Namn**: appens namn måste vara globalt unik.
-- **TargetAppServicePlanName**: App Service plan länkade till appen
+- **Målresursgrupp:** Målresursgrupp där appen ska återställas
+- **Namn:** Namnet på appen ska vara globalt unikt.
+- **TargetAppServicePlanName:** App Service plan länkad till appen
 
-Som standard `Restore-AzDeletedWebApp` återställs både din app-konfiguration och allt innehåll. Om du bara vill återställa innehållet använder du `-RestoreContentOnly` flaggan med den här kommandot.
+Som standard `Restore-AzDeletedWebApp` återställs både din appkonfiguration och allt innehåll. Om du bara vill återställa innehåll använder du flaggan `-RestoreContentOnly` med den här kommandoleten.
 
 > [!NOTE]
-> Om appen fanns på och sedan togs bort från en App Service-miljön, kan den bara återställas om motsvarande App Service-miljön fortfarande finns.
+> Om appen finns på och sedan tas bort från en App Service-miljön kan den bara återställas om motsvarande App Service-miljön fortfarande finns.
 >
 
-Du hittar den fullständiga kommandot-referensen här: [restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp).
+Du hittar den fullständiga kommandoreferensen här: [Restore-AzDeletedWebApp](/powershell/module/az.websites/restore-azdeletedwebapp).
