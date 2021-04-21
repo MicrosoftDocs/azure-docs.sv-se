@@ -1,7 +1,7 @@
 ---
-title: Logga mått i designern
+title: Loggmått i designern
 titleSuffix: Azure Machine Learning
-description: Övervaka dina Azure ML-experiment i designer. Aktivera loggning med hjälp av modulen kör Python-skript och Visa de loggade resultaten i Studio.
+description: Övervaka dina Azure ML Designer-experiment. Aktivera loggning med hjälp av modulen Kör Python-skript och visa de loggade resultaten i studio.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,31 +11,31 @@ ms.subservice: core
 ms.date: 01/11/2021
 ms.topic: conceptual
 ms.custom: designer
-ms.openlocfilehash: b940f5c9bd14bcec404827daaef666da802d969b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 13a3b86514428b0219aaf671260c07b4e197d2de
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98065260"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817322"
 ---
-# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Aktivera loggning i Azure Machine Learning designer-pipeliner
+# <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Aktivera loggning i Azure Machine Learning designer-pipelines
 
 
-I den här artikeln får du lära dig hur du lägger till loggnings kod till designer-pipeliner. Du lär dig också hur du visar dessa loggar med hjälp av webb portalen för Azure Machine Learning Studio.
+I den här artikeln får du lära dig hur du lägger till loggningskod i designerpipelines. Du lär dig också hur du visar dessa loggar med hjälp Azure Machine Learning-studio webbportalen.
 
-Mer information om hur du loggar mått med hjälp av SDK-redigerings upplevelsen finns i [övervaka Azure ml experiment körningar och mått](how-to-track-experiments.md).
+Mer information om hur du loggar mått med hjälp av SDK-redigeringsupplevelsen finns i Övervaka Körningar och mått [för Azure ML-experiment.](how-to-log-view-metrics.md)
 
-## <a name="enable-logging-with-execute-python-script"></a>Aktivera loggning med kör Python-skript
+## <a name="enable-logging-with-execute-python-script"></a>Aktivera loggning med Kör Python-skript
 
-Använd modulen [Kör Python-skript](./algorithm-module-reference/execute-python-script.md) om du vill aktivera loggning i designer-pipeliner. Även om du kan logga ett värde med det här arbets flödet är det särskilt användbart att logga mått från modulen __utvärdera modell__ för att spåra modell prestanda i flera körningar.
+Använd modulen [Kör Python-skript](./algorithm-module-reference/execute-python-script.md) för att aktivera loggning i designerpipelines. Även om du kan logga ett värde med det här arbetsflödet är det särskilt användbart att logga mått från modulen __Utvärdera__ modell för att spåra modellens prestanda mellan körningar.
 
-I följande exempel visas hur du loggar medelvärdet av ett kvadratvärde i två utbildade modeller med hjälp av modellen utvärdera modell och köra Python-skript.
+I följande exempel visas hur du loggar mean squared-felet för två tränade modeller med modulerna Evaluate Model (Utvärdera modell) och Execute Python Script (Kör Python-skript).
 
-1. Anslut en __köra python-skriptfil__ till utdata från modulen __utvärdera modell__ .
+1. Anslut en __Execute Python Script-modul__ (Kör Python-skript) till utdata __för modulen Evaluate Model (Utvärdera__ modell).
 
-    ![Anslut kör python-skriptfil för att utvärdera modell modulen](./media/how-to-track-experiments/designer-logging-pipeline.png)
+    ![Anslut modulen Execute Python Script (Kör Python-skript) för att utvärdera modellmodulen](./media/how-to-log-view-metrics/designer-logging-pipeline.png)
 
-1. Klistra in följande kod i __Kör Python-skript__ kod redigeraren för att logga medelvärdet för det absoluta felet för din tränade modell. Du kan använda ett liknande mönster för att logga andra värden i designern:
+1. Klistra in följande kod i __kodredigeraren Kör Python-skript__ för att logga det absoluta medelvärdesfelet för din tränade modell. Du kan använda ett liknande mönster för att logga andra värden i designern:
 
     ```python
     # dataframe1 contains the values from Evaluate Model
@@ -59,26 +59,26 @@ I följande exempel visas hur du loggar medelvärdet av ett kvadratvärde i två
         return dataframe1,
     ```
     
-Den här koden använder Azure Machine Learning python SDK för att logga värden. Den använder Run.get_context () för att hämta kontexten för den aktuella körningen. Den loggar sedan värden till den kontexten med metoden Run. parent. log (). Den använder `parent` för att logga värden i den överordnade pipelinen i stället för att modulen ska köras.
+Den här koden använder Azure Machine Learning Python SDK för att logga värden. Den använder Run.get_context() för att hämta kontexten för den aktuella körningen. Sedan loggar den värden till den kontexten med metoden run.parent.log(). Den använder `parent` för att logga värden till den överordnade pipelinekörningen i stället för modulkörningen.
 
-Mer information om hur du använder python SDK för att logga värden finns i [Aktivera loggning i Azure ml-utbildning](how-to-track-experiments.md).
+Mer information om hur du använder Python SDK för att logga värden finns i [Aktivera loggning i Azure ML-träningskörningar.](how-to-log-view-metrics.md)
 
 ## <a name="view-logs"></a>Visa loggar
 
-När pipeline-körningen är klar kan du se *Mean_Absolute_Error* på sidan experiment.
+När pipelinekörningen är klar kan du se *Mean_Absolute_Error* på sidan Experiment.
 
-1. Gå till avsnittet **experiment** .
+1. Gå till **avsnittet** Experiment.
 1. Välj experimentet.
-1. Välj den körning i ditt experiment du vill visa.
+1. Välj den körning i experimentet som du vill visa.
 1. Välj **Mått**.
 
-    ![Visa körnings mått i Studio](./media/how-to-track-experiments/experiment-page-metrics-across-runs.png)
+    ![Visa körningsmått i studio](./media/how-to-log-view-metrics/experiment-page-metrics-across-runs.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig hur du använder loggar i designern. För nästa steg, se följande relaterade artiklar:
+I den här artikeln har du lärt dig hur du använder loggar i designern. Nästa steg finns i följande relaterade artiklar:
 
 
-* Lär dig hur du felsöker designer-pipeliner, finns i [felsöka & FELSÖKA ml-pipelines](how-to-debug-pipelines.md#azure-machine-learning-designer).
-* Lär dig hur du använder python SDK för att logga mått i redigerings miljön för SDK, se [Aktivera loggning i Azure ml-utbildningar](how-to-track-experiments.md).
-* Lär dig hur du använder [Kör Python-skript](./algorithm-module-reference/execute-python-script.md) i designern.
+* Information om hur du felsöker designerpipelines [finns i Felsöka & felsöka ML-pipelines.](how-to-debug-pipelines.md#azure-machine-learning-designer)
+* Lär dig hur du använder Python SDK för att logga mått i SDK-redigeringsupplevelsen. Mer information finns i [Aktivera loggning i Azure ML-träningskörningar.](how-to-log-view-metrics.md)
+* Lär dig hur du [använder Kör Python-skript](./algorithm-module-reference/execute-python-script.md) i designern.

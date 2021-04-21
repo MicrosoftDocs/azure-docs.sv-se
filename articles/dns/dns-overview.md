@@ -4,20 +4,20 @@ description: Översikt över DNS-värdtjänst på Microsoft Azure. Värd för di
 author: rohinkoul
 ms.service: dns
 ms.topic: overview
-ms.date: 3/25/2021
+ms.date: 4/20/2021
 ms.author: rohink
-ms.openlocfilehash: 41d2fdca653828588a5881daa0fa16c3bc71b5c4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a04e9aa2a0c342ff86b8f603c02a78952c55af88
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105046495"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817656"
 ---
 # <a name="what-is-azure-dns"></a>Vad är Azure DNS?
 
 Azure DNS är en värdtjänst för DNS-domäner som tillhandahåller namnmatchning med hjälp av Microsoft Azure-infrastrukturen. Genom att använda Azure som värd för dina domäner kan du hantera dina DNS-poster med hjälp av samma autentiseringsuppgifter, API:er, verktyg och fakturering som för dina andra Azure-tjänster.
 
-Du kan inte använda Azure DNS för att köpa ett domännamn. För en årlig avgift så kan du köpa ett domännamn med hjälp av [App Service-domäner](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain) eller en domännamnsregistrator från tredje part. Dina domäner kan sedan hanteras i Azure DNS för posthantering. Mer information finns i [delegera en domän till Azure DNS](dns-domain-delegation.md).
+Du kan inte använda Azure DNS för att köpa ett domännamn. För en årlig avgift så kan du köpa ett domännamn med hjälp av [App Service-domäner](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain) eller en domännamnsregistrator från tredje part. Dina domäner kan sedan hanteras i Azure DNS för posthantering. Mer information finns i [Delegera en domän till Azure DNS](dns-domain-delegation.md).
 
 Följande funktioner ingår med Azure DNS.
 
@@ -29,7 +29,7 @@ DNS-domäner i Azure DNS finns på Azures globala nätverk med DNS-namnservrar. 
 
  Azure DNS bygger på Azure Resource Manager, erbjuder bland annat följande funktioner:
 
-* [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../azure-resource-manager/management/overview.md) för att kontrol lera vem som har åtkomst till vissa åtgärder för din organisation.
+* [Rollbaserad åtkomstkontroll i Azure (Azure RBAC) för](../azure-resource-manager/management/overview.md) att styra vem som har åtkomst till specifika åtgärder för din organisation.
 
 * [Aktivitetsloggar](../azure-resource-manager/management/overview.md) för att övervaka hur en användare i organisationen ändrar en resurs eller hitta ett fel vid felsökning.
 
@@ -37,9 +37,9 @@ DNS-domäner i Azure DNS finns på Azures globala nätverk med DNS-namnservrar. 
 
 Mer information finns i [Så skyddar du DNS-zoner och -poster](dns-protect-zones-recordsets.md). 
 
-## <a name="dnssec"></a>DNSSEC
+## <a name="dnssec"></a>Dnssec
 
-Azure DNS stöder för närvarande inte DNSSEC. I de flesta fall kan du minska behovet av DNSSEC genom att konsekvent använda HTTPS/TLS i dina program. Om DNSSEC är ett kritiskt krav för dina DNS-zoner kan du vara värd för dessa zoner med DNS-leverantörer från tredje part.
+Azure DNS stöder för närvarande inte DNSSEC. I de flesta fall kan du minska behovet av DNSSEC genom att konsekvent använda HTTPS/TLS i dina program. Om DNSSEC är ett kritiskt krav för dina DNS-zoner kan du vara värd för dessa zoner med DNS-värdleverantörer från tredje part.
 
 ## <a name="ease-of-use"></a>Enkel att använda
 
@@ -51,15 +51,15 @@ Dina domäner och poster kan hanteras med hjälp av Azure-portalen, Azure PowerS
 
 ## <a name="customizable-virtual-networks-with-private-domains"></a>Anpassningsbara virtuella nätverk med privata domäner
 
-Azure DNS stöder också privata DNS-domäner. Med den här funktionen kan du använda dina egna anpassade domännamn i dina privata virtuella nätverk i stället för de namn som tillhandahålls av Azure och är tillgängliga i dag.
+Azure DNS också stöd för privata DNS-domäner. Med den här funktionen kan du använda dina egna anpassade domännamn i dina privata virtuella nätverk i stället för de namn som tillhandahålls av Azure och är tillgängliga i dag.
 
 Mer information finns på sidan om att [använda Azure DNS för privata domäner](private-dns-overview.md).
 
 ## <a name="alias-records"></a>Aliasposter
 
-Azure DNS stöder aliaspostuppsättningar. Du kan använda en aliasuppsättning för att referera till en Azure-resurs, till exempel en offentlig Azure-IP-adress, en Azure Traffic Manager-profil eller en Azure Content Delivery Network-slutpunkt (CDN). Om IP-adressen för den underliggande resursen ändras uppdateras aliaspostuppsättningen sömlöst under DNS-matchningen. Aliaspostuppsättningen pekar på tjänstinstansen och tjänstinstansen associeras med en IP-adress.
+Azure DNS stöder aliaspostuppsättningar. Du kan använda en aliaspostuppsättning för att referera till en Azure-resurs, till exempel en offentlig IP-adress i Azure, en Azure Traffic Manager-profil eller en Azure Content Delivery Network-slutpunkt (CDN). Om IP-adressen för den underliggande resursen ändras uppdateras aliaspostuppsättningen sömlöst under DNS-matchningen. Aliaspostuppsättningen pekar på tjänstinstansen och tjänstinstansen associeras med en IP-adress.
 
-Du kan nu peka din Apex eller en blott-domän till en Traffic Manager profil eller CDN-slutpunkt med hjälp av en aliasresurspost. Ett exempel kan vara contoso.com.
+Dessutom kan du nu peka ditt apex eller din domän mot en domän Traffic Manager en cdn-profil eller CDN-slutpunkt med hjälp av en aliaspost. Ett exempel kan vara contoso.com.
 
 Mer information finns i [översikten över Azure DNS-aliasposter](dns-alias.md).
 

@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 65dc9da03a6b763d419c51e53bf756550e8b56a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1a1cd8c051f9e04c09ef2986805873d8e7fea54e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751858"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817638"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Flytta en Azure Key Vault-instans till en annan prenumeration
 
@@ -47,8 +47,8 @@ Vissa tjänsthuvudnamn (användare och program) är bundna till en specifik klie
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Åtkomst](../../role-based-access-control/built-in-roles.md#contributor) på deltagarnivå eller högre till den aktuella prenumerationen där nyckelvalvet finns. Du kan tilldela en roll [med Azure Portal,](../../role-based-access-control/role-assignments-portal.md) [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell.](../../role-based-access-control/role-assignments-powershell.md)
-* [Åtkomst](../../role-based-access-control/built-in-roles.md#contributor) på deltagarnivå eller högre till prenumerationen där du vill flytta nyckelvalvet. Du kan tilldela en roll [Azure Portal,](../../role-based-access-control/role-assignments-portal.md) [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell.](../../role-based-access-control/role-assignments-powershell.md)
+* [Åtkomst](../../role-based-access-control/built-in-roles.md#contributor) på deltagarnivå eller högre till den aktuella prenumerationen där nyckelvalvet finns. Du kan tilldela en roll [Azure Portal,](../../role-based-access-control/role-assignments-portal.md) [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell.](../../role-based-access-control/role-assignments-powershell.md)
+* [Åtkomst](../../role-based-access-control/built-in-roles.md#contributor) på deltagarnivå eller högre till prenumerationen där du vill flytta nyckelvalvet. Du kan tilldela en roll [med Azure Portal,](../../role-based-access-control/role-assignments-portal.md) [Azure CLI](../../role-based-access-control/role-assignments-cli.md)eller [PowerShell.](../../role-based-access-control/role-assignments-powershell.md)
 * En resursgrupp i den nya prenumerationen. Du kan skapa en med [Azure Portal,](../../azure-resource-manager/management/manage-resource-groups-portal.md) [PowerShell](../../azure-resource-manager/management/manage-resource-groups-powershell.md)eller [Azure CLI.](../../azure-resource-manager/management/manage-resource-groups-cli.md)
 
 Du kan kontrollera befintliga roller med [Azure Portal,](../../role-based-access-control/role-assignments-list-portal.md) [PowerShell,](../../role-based-access-control/role-assignments-list-powershell.md) [Azure CLI](../../role-based-access-control/role-assignments-list-cli.md)eller [REST API](../../role-based-access-control/role-assignments-list-rest.md).
@@ -57,10 +57,10 @@ Du kan kontrollera befintliga roller med [Azure Portal,](../../role-based-access
 ## <a name="moving-a-key-vault-to-a-new-subscription"></a>Flytta ett nyckelvalv till en ny prenumeration
 
 1. Logga in på Azure Portal på https://portal.azure.com.
-2. Navigera till ditt [nyckelvalv](overview.md)
+2. Gå till ditt [nyckelvalv](overview.md)
 3. Klicka på fliken Översikt
 4. Välj knappen Flytta
-5. Välj "Flytta till en annan prenumeration" i listrutan
+5. Välj Flytta till en annan prenumeration i listrutan
 6. Välj den resursgrupp där du vill flytta nyckelvalvet
 7. Bekräfta varningen om att flytta resurser
 8. Välj OK
@@ -123,5 +123,5 @@ Om du använder en hanterad identitet måste du också uppdatera identiteten eft
 - Läs mer om [nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md)
 - Konceptuell information, inklusive hur du tolkar Key Vault loggar, finns i [Key Vault loggning](logging.md)
 - [Utvecklarguide för Key Vault](../general/developers-guide.md)
-- [Skydda ditt nyckelvalv](security-overview.md)
+- [Azure Key Vault säkerhetsfunktioner](security-features.md)
 - [Konfigurera Azure Key Vault brandväggar och virtuella nätverk](network-security.md)

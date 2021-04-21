@@ -1,27 +1,24 @@
 ---
 title: Installera Elasticsearch på en virtuell utvecklingsdator i Azure
-description: Självstudier – Installera Elastic Stack på en virtuell utvecklingsdator med Linux i Azure
+description: Installera Elastic Stack (ELK) på en virtuell Linux-dator för utveckling i Azure
 services: virtual-machines
-documentationcenter: virtual-machines
 author: rloutlaw
 manager: justhe
-tags: azure-resource-manager
 ms.service: virtual-machines
 ms.collection: linux
 ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
-ms.topic: tutorial
+ms.topic: how-to
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: b3213d7de9aee88486fa1db1388c51948fbde430
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ce28efa30b04a2a762c39f47dac739633eac209
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102557819"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818484"
 ---
-# <a name="install-the-elastic-stack-on-an-azure-vm"></a>Installera Elastic Stack på en virtuell dator i Azure VM
+# <a name="install-the-elastic-stack-elk-on-an-azure-vm"></a>Installera Elastic Stack (ELK) på en virtuell Azure-dator
 
 Den här artikeln beskriver hur du installerar [Elasticsearch](https://www.elastic.co/products/elasticsearch), [Logstash](https://www.elastic.co/products/logstash) och [Kibana](https://www.elastic.co/products/kibana) på en virtuell dator med Ubuntu i Azure. Om du vill se hur Elastic Stack fungerar i praktiken kan du ansluta till Kibana och arbeta med en del exempeldata. 
 
@@ -38,7 +35,7 @@ I den här guiden får du lära du dig hur man:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -82,7 +79,7 @@ När den virtuella datorn har skapats visar Azure CLI information som ser ut ung
 
 ## <a name="ssh-into-your-vm"></a>SSH till den virtuella datorn
 
-Om du inte redan känner till den offentliga IP-adressen för den virtuella datorn kör du kommandot [AZ Network Public-IP List](/cli/azure/network/public-ip) :
+Om du inte redan känner till den offentliga IP-adressen för den virtuella datorn kör du [kommandot az network public-ip list:](/cli/azure/network/public-ip)
 
 ```azurecli-interactive
 az network public-ip list --resource-group myResourceGroup --query [].ipAddress
@@ -165,7 +162,7 @@ Testa Logstash i interaktivt läge och kontrollera att det fungerar korrekt:
 sudo /usr/share/logstash/bin/logstash -e 'input { stdin { } } output { stdout {} }'
 ```
 
-Det här är en grundläggande logstash-[pipeline](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) som skickar standardindata till standardutdata. 
+Det här är en [](https://www.elastic.co/guide/en/logstash/5.6/pipeline.html) grundläggande Logstash-pipeline som ger standardindata till standardutdata. 
 
 ```output
 The stdin plugin is now waiting for input:
@@ -229,7 +226,7 @@ az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 
 Öppna Kibana-konsolen och välj **Skapa** för att generera ett standardindex baserat på de syslog-data som skickades till Elasticsearch tidigare. 
 
-![Skärm bild som visar Kibana-konsolen och markerar knappen Skapa.](media/elasticsearch-install/kibana-index.png)
+![Skärmbild som visar Kibana-konsolen och knappen Skapa.](media/elasticsearch-install/kibana-index.png)
 
 Välj **Utforska** på Kibana-konsolen och sök, bläddra och filtrera syslog-händelserna.
 

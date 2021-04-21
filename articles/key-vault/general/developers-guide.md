@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 4f9523594c07209d530a143713061be6d0467af8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 08ac1ae09741b63648aec2b51b6a774a46b9af7c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753388"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818448"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Utvecklarguide för Azure Key Vault
 
@@ -37,7 +37,7 @@ Key Vault hantering, på liknande sätt som andra Azure-tjänster, görs via Azu
 
 Åtkomsten till hanteringslagret styrs av [rollbaserad åtkomstkontroll i Azure.](../../role-based-access-control/overview.md) I Key Vault kan du med hanteringslagret, även kallat hanterings- eller kontrollplan, skapa och hantera nyckelvalv och dess attribut, inklusive åtkomstprinciper, men inte nycklar, hemligheter och certifikat, som hanteras på dataplanet. Du kan använda en fördefinierad `Key Vault Contributor` roll för att bevilja hanteringsåtkomst till Key Vault.     
 
-**API:er och -API:er för nyckelvalvshantering:**
+**API:er och -API:er för hantering av nyckelvalv:**
 
 | Azure CLI | PowerShell | REST-API | Resource Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
@@ -45,15 +45,15 @@ Key Vault hantering, på liknande sätt som andra Azure-tjänster, görs via Azu
 
 Se [Klientbibliotek](client-libraries.md) för installationspaket och källkod.
 
-Mer information om Key Vault finns i Key Vault [hanteringsplanet](security-overview.md)
+Mer information om Key Vault finns i Azure Key Vault [säkerhetsfunktioner](security-features.md)
 
 ## <a name="authenticate-to-key-vault-in-code"></a>Autentisera till Key Vault i kod
 
-Key Vault använder Azure AD-autentisering som kräver Azure AD-säkerhetsobjekt för att bevilja åtkomst. Ett Azure AD-säkerhetsobjekt kan vara en användare, ett programtjänsthuvudnamn, en hanterad identitet för [Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md)eller en grupp av någon typ av säkerhetsobjekt.
+Key Vault använder Azure AD-autentisering som kräver Azure AD-säkerhetsobjekt för att bevilja åtkomst. Ett Azure AD-säkerhetsobjekt kan vara en användare, ett huvudnamn för programtjänsten, en hanterad identitet för [Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md)eller en grupp av någon typ av säkerhetsobjekt.
 
 ### <a name="authentication-best-practices"></a>Metodtips för autentisering
 
-Vi rekommenderar att du använder hanterad identitet för program som distribueras till Azure. Om du använder Azure-tjänster, som inte stöder hanterad identitet eller om program distribueras lokalt, är tjänstens huvudnamn [med](../../active-directory/develop/howto-create-service-principal-portal.md) ett certifikat ett möjligt alternativ. I det scenariot ska certifikatet lagras i Key Vault roteras ofta. Tjänstens huvudnamn med hemlighet kan användas för utvecklings- och testningsmiljöer, och lokalt eller i Cloud Shell användning av användarens huvudnamn rekommenderas.
+Vi rekommenderar att du använder hanterad identitet för program som distribueras till Azure. Om du använder Azure-tjänster, som inte stöder hanterad identitet eller om program distribueras [lokalt,](../../active-directory/develop/howto-create-service-principal-portal.md) är tjänstens huvudnamn med ett certifikat ett möjligt alternativ. I det scenariot ska certifikatet lagras i Key Vault och roteras ofta. Tjänstens huvudnamn med hemlighet kan användas för utvecklings- och testningsmiljöer, och lokalt eller i Cloud Shell användning av användarens huvudnamn rekommenderas.
 
 Rekommenderade säkerhetsobjekt per miljö:
 - **Produktionsmiljö:**
@@ -63,9 +63,9 @@ Rekommenderade säkerhetsobjekt per miljö:
 - **Lokal utveckling:**
   - Användarens huvudnamn eller tjänstens huvudnamn med hemlighet
 
-Ovanstående autentiseringsscenarier stöds av **Azure Identity-klientbiblioteket** och integreras med Key Vault-ID:er. Azure Identity-biblioteket kan användas i olika miljöer och plattformar utan att ändra koden. Azure Identity skulle också automatiskt hämta autentiseringstoken från den inloggade Azure-användaren med Azure CLI, Visual Studio, Visual Studio Code med mera. 
+Ovanstående autentiseringsscenarier stöds av **Azure Identity-klientbiblioteket** och är integrerade Key Vault-SDK:er. Azure Identity-biblioteket kan användas i olika miljöer och plattformar utan att ändra din kod. Azure Identity skulle också automatiskt hämta autentiseringstoken från den inloggade Azure-användaren med Azure CLI, Visual Studio, Visual Studio Code med mera. 
 
-Mer information om klientbibliotek för Azure Identity finns i:
+Mer information om Klientbibliotek för Azure Identity finns i:
 
 **Azure Identity-klientbibliotek**
 
@@ -74,16 +74,16 @@ Mer information om klientbibliotek för Azure Identity finns i:
 |[Azure Identity SDK .NET](/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](/javascript/api/overview/azure/identity-readme)|     
 
 >[!Note]
-> [App Authentication-biblioteket](/dotnet/api/overview/azure/service-to-service-authentication) som rekommenderas för Key Vault .NET SDK version 3, som för närvarande är depracated . Följ [appauthentication till Azure.Identity Migration Guidance](/dotnet/api/overview/azure/app-auth-migration) för att migrera till Key Vault .NET SDK version 4.
+> [Appautentiseringsbibliotek](/dotnet/api/overview/azure/service-to-service-authentication) som rekommenderas för Key Vault .NET SDK version 3, som för närvarande är depracated . Följ [AppAuthentication to Azure.Identity Migration Guidance (Vägledning för migrering av AppAuthentication till Azure.Identity)](/dotnet/api/overview/azure/app-auth-migration) för att migrera till Key Vault .NET SDK version 4.
 
 Självstudier om hur du autentiserar för Key Vault i program finns i:
-- [Autentisera till Key Vault i program som finns på en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
-- [Autentisera till Key Vault i ett program som körs på en virtuell dator i Python](./tutorial-python-virtual-machine.md)
+- [Autentisera för Key Vault i program som finns på en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
+- [Autentisera för Key Vault i program som finns på en virtuell dator i Python](./tutorial-python-virtual-machine.md)
 - [Autentisera till Key Vault med App Service](./tutorial-net-create-vault-azure-web-app.md)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Hantera nycklar, certifikat och hemligheter
 
-Åtkomst till nycklar, hemligheter och certifikat styrs av dataplanet. Åtkomstkontroll på dataplanet kan göras med hjälp av åtkomstprinciper för lokalt valv eller Azure RBAC.
+Åtkomst till nycklar, hemligheter och certifikat styrs av dataplanet. Åtkomstkontroll för dataplanet kan göras med hjälp av åtkomstprinciper för lokala valv eller Azure RBAC.
 
 **API:er och -API:er för nycklar**
 
@@ -105,20 +105,20 @@ Självstudier om hur du autentiserar för Key Vault i program finns i:
 
 Se [Klientbibliotek](client-libraries.md) för installationspaket och källkod.
 
-Mer information om hur Key Vault dataplanssäkerhet finns [i Key Vault Säkerhetsöversikt](security-overview.md).
+Mer information om hur Key Vault dataplanssäkerhet finns [i Azure Key Vault säkerhetsfunktioner](security-features.md).
 
 ### <a name="code-examples"></a>Kodexempel
 
 Fullständiga exempel som använder Key Vault med dina program finns i:
 
-- [Azure Key Vault kodexempel](https://azure.microsoft.com/resources/samples/?service=key-vault) – Kodexempel för Azure Key Vault. 
+- [Azure Key Vault kodexempel](https://azure.microsoft.com/resources/samples/?service=key-vault) – kodexempel för Azure Key Vault. 
 
 ## <a name="how-tos"></a>Instruktioner
 
 Följande artiklar och scenarier innehåller uppgiftsspecifik vägledning för att arbeta med Azure Key Vault:
 
 - [Åtkomst Key Vault bakom brandväggen](access-behind-firewall.md) – För att få åtkomst till ett nyckelvalv måste ditt nyckelvalvsklientprogram kunna komma åt flera slutpunkter för olika funktioner.
-- Hur du distribuerar certifikat till virtuella datorer från Key Vault [– Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) – Ett molnprogram som körs på en virtuell dator på Azure behöver ett certifikat. Hur hämtar du det här certifikatet till den här virtuella datorn idag?
+- Hur du distribuerar certifikat till virtuella datorer från Key Vault [– Windows](../../virtual-machines/extensions/key-vault-windows.md), [Linux](../../virtual-machines/extensions/key-vault-linux.md) – Ett molnprogram som körs på en virtuell dator i Azure behöver ett certifikat. Hur hämtar du det här certifikatet till den här virtuella datorn idag?
 - [Distribuera Azure Web App Certificate via Key Vault](../../app-service/configure-ssl-certificate.md#import-a-certificate-from-key-vault)
 - Tilldela en åtkomstprincip[(CLI](assign-access-policy-cli.md)  |  [PowerShell-portalen).](assign-access-policy-powershell.md)  |  [](assign-access-policy-portal.md) 
 - [Hur du använder Key Vault mjuk](./key-vault-recovery.md) borttagning med CLI vägleder dig genom användningen och livscykeln för ett nyckelvalv och olika nyckelvalvsobjekt med mjuk borttagning aktiverat.
@@ -131,15 +131,15 @@ De här artiklarna handlar om andra scenarier och tjänster som använder eller 
 - [Kryptering i vila](../../security/fundamentals/encryption-atrest.md) tillåter kodning (kryptering) av data när de bevaras. Datakrypteringsnycklar krypteras ofta med en nyckelkrypteringsnyckel i Azure Key Vault att ytterligare begränsa åtkomsten.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) kan du chef din egen klientnyckel. I stället för att Microsoft hanterar din klientnyckel (standard) kan du till exempel hantera din egen klientnyckel för att följa specifika regler som gäller för din organisation. Att hantera sin egen klientnyckel kallas också för att ta med sin egen nyckel eller BYOK.
 - [med Azure Private Link Service](private-link-service.md) kan du komma åt Azure-tjänster (till exempel Azure Key Vault, Azure Storage och Azure Cosmos DB) och Azure-värdtjänster för kunder/partner via en privat slutpunkt i ditt virtuella nätverk.
-- Key Vault integrering med [Event Grid](../../event-grid/event-schema-key-vault.md)  kan användarna meddelas när statusen för en hemlighet som lagras i nyckelvalvet har ändrats. Du kan distribuera nya versioner av hemligheter till program eller rotera hemligheter som snart upphör att gälla för att förhindra avbrott.
+- Key Vault integrering med [Event Grid](../../event-grid/event-schema-key-vault.md)  kan användarna meddelas när statusen för en hemlighet som lagras i nyckelvalvet har ändrats. Du kan distribuera en ny version av hemligheter till program eller rotera hemligheter som snart upphör att gälla för att förhindra avbrott.
 - Du kan skydda dina [Azure Devops-hemligheter](/azure/devops/pipelines/release/azure-key-vault) från oönskad åtkomst i Key Vault.
-- [Använda en hemlighet som lagras Key Vault i DataBricks för att ansluta till Azure Storage](./integrate-databricks-blob-storage.md)
-- Konfigurera och kör Azure Key Vault för [CSI-drivrutinen Secrets Store](./key-vault-integrate-kubernetes.md) på Kubernetes
+- [Använd hemlighet som lagras i Key Vault i DataBricks för att ansluta till Azure Storage](./integrate-databricks-blob-storage.md)
+- Konfigurera och kör Azure Key Vault för [CSI-drivrutinen för Secrets Store](./key-vault-integrate-kubernetes.md) på Kubernetes
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault översikter och begrepp
 
 - [Key Vault beteende för mjuk borttagning](soft-delete-overview.md) beskriver en funktion som tillåter återställning av borttagna objekt, oavsett om borttagningen var oavsiktlig eller avsiktlig.
-- [Key Vault klientbegränsning ger](overview-throttling.md) en orientering om de grundläggande begränsningsbegreppen och erbjuder en metod för din app.
+- [Key Vault klientbegränsning ger](overview-throttling.md) en orientering om de grundläggande principerna för begränsning och erbjuder en metod för din app.
 - [Key Vault säkerhetsvärldar](overview-security-worlds.md) beskriver relationerna mellan regioner och säkerhetsområden.
 
 ## <a name="social"></a>Socialt

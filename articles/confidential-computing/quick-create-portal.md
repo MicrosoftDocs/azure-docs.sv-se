@@ -10,12 +10,12 @@ ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: f43229570f6bab942cc57a2ea3be163d37f02f89
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 1ae6631c3f6ee71d7a09832956c7e687ceca22b6
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536175"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819060"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Snabbstart: Distribuera en virtuell Azure-dator för konfidentiell databehandling i Azure Portal
 
@@ -62,9 +62,9 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 
 1. Konfigurera operativsystemavbildningen som du vill använda för den virtuella datorn.
 
-    * **Välj Bild:** För den här självstudien väljer du Ubuntu 18.04 LTS. Du kan också välja Windows Server 2019, Windows Server 2016 eller ubuntu 16.04 LTS. Om du väljer att göra det omdirigeras du i den här självstudien.
+    * **Välj Bild:** För den här självstudien väljer du Ubuntu 18.04 LTS. Du kan också välja Windows Server 2019, Windows Server 2016 eller och Ubuntu 20.04 LTS. Om du väljer att göra det omdirigeras du i den här självstudien.
     
-    * **Växla avbildningen för Gen 2:** Confidential compute virtual machines (Konfidentiell beräkning av virtuella datorer) körs bara på [generation 2-avbildningar.](../virtual-machines/generation-2.md) Se till att den avbildning som du väljer är en Gen 2-avbildning. Klicka på **fliken** Avancerat ovan där du konfigurerar den virtuella datorn. Rulla nedåt tills du hittar avsnittet "VM Generation" (VM-generation). Välj Gen 2 och gå sedan tillbaka till **fliken Grundläggande** inställningar.
+    * **Växla avbildningen för Gen 2:** Confidential compute virtual machines (Virtuella datorer för konfidentiell beräkning) körs bara på [generation 2-avbildningar.](../virtual-machines/generation-2.md) Se till att den avbildning som du väljer är en Gen 2-avbildning. Klicka på **fliken** Avancerat ovan där du konfigurerar den virtuella datorn. Rulla nedåt tills du hittar avsnittet "VM Generation" (VM-generation). Välj Gen 2 och gå sedan tillbaka till **fliken Grundläggande** inställningar.
     
 
         ![Fliken Avancerat](media/quick-create-portal/advanced-tab-virtual-machine.png)
@@ -72,18 +72,18 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 
         ![VM-generation](media/quick-create-portal/gen2-virtual-machine.png)
 
-    * **Återgå till grundläggande konfiguration:** Gå tillbaka till **fliken Grundläggande** inställningar med hjälp av navigeringen längst upp.
+    * **Gå tillbaka till grundläggande** konfiguration: Gå tillbaka **till fliken Grundläggande** inställningar med hjälp av navigeringen längst upp.
 
-1. Välj en virtuell dator med konfidentiella beräkningsfunktioner i storleksväljaren genom att välja **ändra storlek.** I storleksväljaren för virtuella datorer klickar du på **Rensa alla filter.** Välj **Lägg till filter,** **välj** Familj som filtertyp och välj sedan endast **Konfidentiell beräkning.**
+1. Välj en virtuell dator med konfidentiella beräkningsfunktioner i storleksväljaren genom att välja **ändra storlek.** I storleksväljaren för den virtuella datorn klickar du **på Rensa alla filter.** Välj **Lägg till filter,** **välj** Familj som filtertyp och välj sedan endast **Konfidentiell beräkning.**
 
     ![DCsv2-Series virtuella datorer](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Du bör se storlekar **DC1s_v2**, **DC2s_v2**, **DC4s_V2** och **DC8_v2**. Det här är de enda storlekar på virtuella datorer som för närvarande stöder konfidentiell databehandling. [Läs mer](virtual-machine-solutions.md).
+    > Du bör se storlekar **DC1s_v2**, **DC2s_v2**, **DC4s_V2** och **DC8_v2**. Det här är de enda storlekar på virtuella datorer som för närvarande stöder konfidentiell databehandling med Intel SGX. [Läs mer](virtual-machine-solutions.md).
 
 1. Fyll i följande information:
 
-   * **Autentiseringstyp:** Välj **offentlig SSH-nyckel** om du skapar en virtuell Linux-dator. 
+   * **Autentiseringstyp:** Välj **Offentlig SSH-nyckel** om du skapar en virtuell Linux-dator. 
 
         > [!NOTE]
         > Du kan välja mellan offentlig SSH-nyckel eller lösenord för autentisering. SSH är säkrare. Instruktioner om hur du genererar en SSH-nyckel finns i [Skapa SSH-nycklar på Linux och Mac för virtuella Linux-datorer i Azure](../virtual-machines/linux/mac-create-ssh-keys.md).
@@ -94,7 +94,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
     
     * **Lösenord:** Ange ditt lösenord för autentisering om det är tillämpligt.
 
-    * **Offentliga inkommande portar:** Välj **Tillåt valda portar** och välj **SSH (22)** och **HTTP (80)** i listan **Välj offentliga inkommande** portar. Om du distribuerar en virtuell Windows-dator väljer du **HTTP (80)** och **RDP (3389).** I den här snabbstarten är det här steget nödvändigt för att ansluta till den virtuella datorn och slutföra Open Enclave SDK-konfigurationen. 
+    * **Offentliga inkommande portar:** Välj **Tillåt valda** portar och **välj SSH (22)** och **HTTP (80)** i listan Välj offentliga **inkommande** portar. Om du distribuerar en virtuell Windows-dator väljer du **HTTP (80)** och **RDP (3389).** I den här snabbstarten är det här steget nödvändigt för att ansluta till den virtuella datorn och slutföra Open Enclave SDK-konfigurationen. 
 
      ![Ingående portar](media/quick-create-portal/inbound-port-virtual-machine.png)
 
@@ -116,7 +116,7 @@ Om du inte har någon Azure-prenumeration [skapar du ett konto](https://azure.mi
 1. Välj **Skapa** i fönstret **Granska + skapa**.
 
 > [!NOTE]
-> Fortsätt till nästa avsnitt och fortsätt med den här självstudien om du har distribuerat en virtuell Linux-dator. Om du har distribuerat en virtuell Windows-dator följer du dessa steg för att ansluta till den virtuella [Windows-datorn](../virtual-machines/windows/connect-logon.md) och [installerar sedan OE SDK på Windows.](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
+> Fortsätt till nästa avsnitt och fortsätt med den här självstudien om du har distribuerat en virtuell Linux-dator. Om du har distribuerat en virtuell Windows-dator följer du dessa steg för att ansluta till din virtuella [Windows-dator](../virtual-machines/windows/connect-logon.md) och [installerar sedan OE SDK på Windows.](https://github.com/openenclave/openenclave/blob/master/docs/GettingStartedDocs/install_oe_sdk-Windows.md)
 
 
 ## <a name="connect-to-the-linux-vm"></a> Ansluta till den virtuella Linux-datorn
@@ -127,7 +127,7 @@ Om du redan använder ett BASH-gränssnitt ansluter du till den virtuella Azure-
 ssh azureadmin@40.55.55.555
 ```
 
-Du hittar den offentliga IP-adressen för den virtuella datorn i Azure Portal under avsnittet Översikt på den virtuella datorn.
+Du hittar den offentliga IP-adressen för den virtuella datorn i Azure Portal under avsnittet Översikt för den virtuella datorn.
 
 :::image type="content" source="media/quick-create-portal/public-ip-virtual-machine.png" alt-text="IP-adress i Azure Portal":::
 
@@ -166,11 +166,18 @@ wget -qO - https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add 
 ```
 
 #### <a name="2-install-the-intel-sgx-dcap-driver"></a>2. Installera Intel SGX DCAP-drivrutinen
+Vissa versioner av Ubuntu kan redan ha Intel SGX-drivrutinen installerad. Kontrollera med följande kommando: 
+
+```bash
+dmesg | grep -i sgx
+[  106.775199] sgx: intel_sgx: Intel SGX DCAP Driver {version}
+``` 
+Om utdata är tomma installerar du drivrutinen: 
 
 ```bash
 sudo apt update
 sudo apt -y install dkms
-wget https://download.01.org/intel-sgx/sgx-dcap/1.9/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.36.2.bin -O sgx_linux_x64_driver.bin
+wget https://download.01.org/intel-sgx/sgx-dcap/1.7/linux/distro/ubuntu18.04-server/sgx_linux_x64_driver_1.35.bin -O sgx_linux_x64_driver.bin
 chmod +x sgx_linux_x64_driver.bin
 sudo ./sgx_linux_x64_driver.bin
 ```
@@ -180,8 +187,9 @@ sudo ./sgx_linux_x64_driver.bin
 
 #### <a name="3-install-the-intel-and-open-enclave-packages-and-dependencies"></a>3. Installera Intel- och Open Enclave-paketen och beroendena
 
+
 ```bash
-sudo apt -y install clang-7 libssl-dev gdb libsgx-enclave-common libsgx-enclave-common-dev libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
+sudo apt -y install clang-8 libssl-dev gdb libsgx-enclave-common libprotobuf10 libsgx-dcap-ql libsgx-dcap-ql-dev az-dcap-client open-enclave
 ```
 
 > [!NOTE] 
@@ -199,7 +207,7 @@ Välj resursgruppen för den virtuella datorn och välj sedan Ta **bort.** Bekr�
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten distribuerade du en virtuell dator för konfidentiell databehandling och installerade Open Enclave SDK. Mer information om virtuella datorer med konfidentiell databehandling i Azure finns [i Lösningar på Virtual Machines](virtual-machine-solutions.md). 
+I den här snabbstarten distribuerade du en virtuell dator för konfidentiell databehandling och installerade Open Enclave SDK. Mer information om virtuella datorer för konfidentiell databehandling i Azure finns [i Lösningar på Virtual Machines](virtual-machine-solutions.md). 
 
 Upptäck hur du kan skapa program för konfidentiell databehandling genom att fortsätta till Open Enclave SDK-exemplen på GitHub. 
 

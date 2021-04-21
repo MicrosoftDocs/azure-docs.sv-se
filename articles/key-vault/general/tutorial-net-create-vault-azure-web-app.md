@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 479181e851e6f54246a2ad89e7529bf3f50bb8a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 91467d1de3a1543736115ef7a25281733c8eb85d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751984"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819222"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Självstudie: Använda en hanterad identitet för att Key Vault till en Azure-webbapp i .NET
 
@@ -85,7 +85,7 @@ git commit -m "first commit"
 
 Du kan använda FTP och lokal Git för att distribuera en Azure-webbapp med hjälp av en *distributionsanvändare*. När du har konfigurerat distributionsanvändaren kan du använda den för alla dina Azure-distributioner. Ditt användarnamn och lösenord för distribution på kontonivå skiljer sig från autentiseringsuppgifterna för din Azure-prenumeration. 
 
-Konfigurera distributionsanvändaren genom att köra [kommandot az webapp deployment user set.](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) Välj ett användarnamn och lösenord som följer dessa riktlinjer: 
+Konfigurera distributionsanvändaren genom att köra [kommandot az webapp deployment user set.](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) Välj ett användarnamn och lösenord som följer dessa riktlinjer: 
 
 - Användarnamnet måste vara unikt inom Azure. För lokala Git-pushar får den inte innehålla tecknet vid tecknet (@). 
 - Lösenordet måste vara minst åtta tecken långt och innehålla två av följande tre element: bokstäver, siffror och symboler. 
@@ -100,7 +100,7 @@ Registrera ditt användarnamn och lösenord så att du kan använda det för att
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där du distribuerar Azure-resurser och hanterar dem. Skapa en resursgrupp som ska innehålla både nyckelvalvet och webbappen med hjälp av [kommandot az group create:](/cli/azure/group?#az-group-create)
+En resursgrupp är en logisk container där du distribuerar Azure-resurser och hanterar dem. Skapa en resursgrupp som ska innehålla både nyckelvalvet och webbappen med hjälp av [kommandot az group create:](/cli/azure/group?#az_group_create)
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -243,7 +243,7 @@ I det här avsnittet konfigurerar du webbåtkomst till Key Vault och uppdaterar 
 
 I den här självstudien använder vi [hanterad identitet för](../../active-directory/managed-identities-azure-resources/overview.md) att autentisera till Key Vault. Hanterad identitet hanterar automatiskt programautentiseringsuppgifter.
 
-I Azure CLI skapar du identiteten för programmet genom att köra kommandot [az webapp-identity assign:](/cli/azure/webapp/identity?#az-webapp-identity-assign)
+I Azure CLI skapar du identiteten för programmet genom att köra kommandot [az webapp-identity assign:](/cli/azure/webapp/identity?#az_webapp_identity_assign)
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -259,7 +259,7 @@ Kommandot returnerar det här JSON-kodfragmentet:
 }
 ```
 
-Om du vill ge  webbappen behörighet att hämta och lista åtgärder i nyckelvalvet skickar du till kommandot Azure CLI az  `principalId` [keyvault set-policy:](/cli/azure/keyvault?#az-keyvault-set-policy)
+Om du vill ge  webbappen behörighet att hämta och lista åtgärder i nyckelvalvet skickar du till kommandot Azure CLI az  `principalId` [keyvault set-policy:](/cli/azure/keyvault?#az_keyvault_set_policy)
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
@@ -343,4 +343,4 @@ Där innan du såg "Hello World!", bör du nu se värdet för din hemlighet.
 - [Använda Azure Key Vault med program som distribuerats till en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
 - Läs mer om [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md)
 - Visa [utvecklarguiden](./developers-guide.md)
-- [Säker åtkomst till ett nyckelvalv](./security-overview.md)
+- [Säker åtkomst till ett nyckelvalv](./security-features.md)

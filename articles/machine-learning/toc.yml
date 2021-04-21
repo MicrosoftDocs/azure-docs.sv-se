@@ -285,7 +285,7 @@
         - name: Konfigurera utvecklingsmiljöer
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Konfigurera Studio-miljö
+        - name: Konfigurera studiomiljö
           items:
             - name: Skapa och hantera filer
               href: how-to-manage-files.md
@@ -390,15 +390,12 @@
           href: how-to-migrate-from-estimators-to-scriptrunconfig.md
         - name: Spåra och övervaka träning
           items:
-            - name: 'Starta, övervaka eller avbryta körningar'
+            - name: 'Spåra, övervaka och analysera körningar'
               displayName: 'cancel, fail, status, child run'
-              href: how-to-manage-runs.md
-            - name: Aktivera loggar
-              displayName: 'troubleshoot, log, files, tracing'
-              href: how-to-track-experiments.md
-            - name: Visa loggar och mått för körningar
+              href: how-to-track-monitor-analyze-runs.md
+            - name: Logga & visa mått och loggfiler
               displayName: 'troubleshoot, log, files, tracing, metrics'
-              href: how-to-monitor-view-training-logs.md
+              href: how-to-log-view-metrics.md
             - name: Visualisera körningar med TensorBoard
               displayName: 'log, monitor, metrics'
               href: how-to-monitor-tensorboard.md

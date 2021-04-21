@@ -1,6 +1,6 @@
 ---
-title: Snabb start – Azure Key Vault nycklar klient bibliotek för .NET (version 4)
-description: Lär dig hur du skapar, hämtar och tar bort nycklar från ett Azure Key Vault med hjälp av .NET-klient biblioteket (version 4)
+title: Snabbstart – Azure Key Vault klientbibliotek för .NET (version 4)
+description: Lär dig hur du skapar, hämtar och tar bort nycklar från ett Azure-nyckelvalv med hjälp av .NET-klientbiblioteket (version 4)
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/23/2020
@@ -8,35 +8,35 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: 52e33660b4076f8119ddb5d77e2dbbf7ee201913
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 5c1e4d64ba3359a07dddbbf89774e31815935230
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968466"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818430"
 ---
-# <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Snabb start: Azure Key Vault nyckel klient bibliotek för .NET (SDK v4)
+# <a name="quickstart-azure-key-vault-key-client-library-for-net-sdk-v4"></a>Snabbstart: Azure Key Vault nyckelklientbibliotek för .NET (SDK v4)
 
-Kom igång med klient biblioteket för Azure Key Vaults nyckel för .NET. [Azure Key Vault](../general/overview.md) är en moln tjänst som tillhandahåller en säker lagring för kryptografiska nycklar. Du kan lagra kryptografiska nycklar, lösen ord, certifikat och andra hemligheter på ett säkert sätt. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabb starten lär du dig att skapa, hämta och ta bort nycklar från ett Azure Key Vault med hjälp av klient biblioteket för .NET-nyckel
+Kom igång med Azure Key Vault för .NET. [Azure Key Vault](../general/overview.md) är en molntjänst som tillhandahåller ett säkert lager för kryptografiska nycklar. Du kan lagra kryptografiska nycklar, lösenord, certifikat och andra hemligheter på ett säkert sätt. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabbstarten lär du dig att skapa, hämta och ta bort nycklar från ett Azure-nyckelvalv med hjälp av .NET-nyckelklientbiblioteket
 
-Key Vault viktiga klient biblioteks resurser:
+Key Vault viktiga klientbiblioteksresurser:
 
-[API-referens dokumentation](/dotnet/api/azure.security.keyvault.keys)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
+[API-referensdokumentation](/dotnet/api/azure.security.keyvault.keys)  |  [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Paket (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.keys/)
 
 Mer information om Key Vault och nycklar finns i:
-- [Översikt över Key Vault](../general/overview.md)
-- [Översikt över nycklar](about-keys.md).
+- [Key Vault översikt](../general/overview.md)
+- [Översikt över nycklar.](about-keys.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/dotnet)
-* [.NET Core 3,1 SDK eller senare](https://dotnet.microsoft.com/download/dotnet-core)
+* En Azure-prenumeration [– skapa en utan kostnad](https://azure.microsoft.com/free/dotnet)
+* [.NET Core 3.1 SDK eller senare](https://dotnet.microsoft.com/download/dotnet-core)
 * [Azure CLI](/cli/azure/install-azure-cli)
-* En Key Vault – du kan skapa en med hjälp av [Azure Portal](../general/quick-create-portal.md), [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md).
+* En Key Vault – du kan skapa en [med Azure Portal,](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md) [eller Azure PowerShell](../general/quick-create-powershell.md).
 
 ## <a name="setup"></a>Konfiguration
 
-Den här snabb starten använder Azure Identity Library för att autentisera användare till Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. mer information finns i [autentisera klienten med klient biblioteket för Azure Identity](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
+Den här snabbstarten använder Azure Identity-biblioteket för att autentisera användare för Azure-tjänster. Utvecklare kan också använda Visual Studio eller Visual Studio Code för att autentisera sina anrop. Mer information finns i Autentisera klienten med [Azure Identity-klientbiblioteket](/dotnet/api/overview/azure/identity-readme?#authenticate-the-client&preserve-view=true).
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -53,15 +53,15 @@ Den här snabb starten använder Azure Identity Library för att autentisera anv
     ```
     ---
 
-    Om Azure CLI eller Azure PowerShell kan öppna din standard webbläsare kommer det att göra det och läsa in en Azure-inloggnings sida.
+    Om Azure CLI eller Azure PowerShell kan öppna din standardwebbläsare gör den det och läser in en Inloggningssida för Azure.
 
-    Annars öppnar du en webb sida på [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och anger den auktoriseringskod som visas i din terminal.
+    Annars öppnar du en webbläsarsida på och [https://aka.ms/devicelogin](https://aka.ms/devicelogin) anger auktoriseringskoden som visas i terminalen.
 
 2. Logga in med dina autentiseringsuppgifter för kontot i webbläsaren.
 
-#### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckel valv
+#### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
 
-Skapa en åtkomst princip för nyckel valvet som beviljar nyckel behörigheter till ditt användar konto
+Skapa en åtkomstprincip för ditt nyckelvalv som beviljar nyckelbehörigheter till ditt användarkonto
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli-interactive
@@ -74,21 +74,21 @@ Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName u
 ```
 ---
 
-### <a name="create-new-net-console-app"></a>Skapa ny .NET-konsol program
+### <a name="create-new-net-console-app"></a>Skapa en ny .NET-konsolapp
 
-1. Kör följande kommando i ett kommando gränssnitt för att skapa ett projekt med namnet `key-vault-console-app` :
+1. Kör följande kommando i ett kommandogränssnitt för att skapa ett projekt med namnet `key-vault-console-app` :
 
     ```dotnetcli
     dotnet new console --name key-vault-console-app
     ```
 
-1. Ändra till den nyligen skapade *Key-valvet-console-app-* katalogen och kör följande kommando för att skapa projektet:
+1. Ändra till den nyligen skapade *katalogen key-vault-console-app* och kör följande kommando för att skapa projektet:
 
     ```dotnetcli
     dotnet build
     ```
 
-    Build-utdata får inte innehålla varningar eller fel.
+    Build-utdata får inte innehålla några varningar eller fel.
     
     ```console
     Build succeeded.
@@ -98,13 +98,13 @@ Set-AzKeyVaultAccessPolicy -VaultName <your-key-vault-name> -UserPrincipalName u
 
 ### <a name="install-the-packages"></a>Installera paketen
 
-Från kommando gränssnittet installerar du Azure Key Vault nyckel klient bibliotek för .NET:
+Från kommandogränssnittet installerar du Azure Key Vault klientbibliotek för .NET:
 
 ```dotnetcli
 dotnet add package Azure.Security.KeyVault.Keys
 ```
 
-I den här snabb starten måste du också installera Azure SDK-klient biblioteket för Azure-identitet:
+I den här snabbstarten måste du också installera Azure SDK-klientbiblioteket för Azure Identity:
 
 ```dotnetcli
 dotnet add package Azure.Identity
@@ -112,7 +112,7 @@ dotnet add package Azure.Identity
 
 #### <a name="set-environment-variables"></a>Ange miljövariabler
 
-Det här programmet använder Key Vault-namnet som en miljö variabel som kallas `KEY_VAULT_NAME` .
+Det här programmet använder nyckelvalvsnamnet som en miljövariabel med namnet `KEY_VAULT_NAME` .
 
 Windows
 ```cmd
@@ -128,15 +128,15 @@ macOS eller Linux
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
-Med klient biblioteket för Azure Key Vaults nyckel för .NET kan du hantera nycklar. I avsnittet [kod exempel](#code-examples) visas hur du skapar en-klient, ställer in en nyckel, hämtar en nyckel och tar bort en nyckel.
+Med Azure Key Vault nyckelklientbiblioteket för .NET kan du hantera nycklar. Avsnittet [Kodexempel](#code-examples) visar hur du skapar en klient, anger en nyckel, hämtar en nyckel och tar bort en nyckel.
 
 ## <a name="code-examples"></a>Kodexempel
 
-### <a name="add-directives"></a>Lägg till direktiv
+### <a name="add-directives"></a>Lägga till direktiv
 
-Lägg till följande direktiv överst i *programmet. cs*:
+Lägg till följande -direktiv överst i *Program.cs:*
 
 ```csharp
 using System;
@@ -146,9 +146,9 @@ using Azure.Security.KeyVault.Keys;
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabb starten används inloggad användare för att autentisera till nyckel valv, vilket är önskad metod för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas App Service eller virtuell dator. mer information finns i [Översikt över hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I det här exemplet expanderas namnet på nyckel valvet till Key Vault-URI: n i formatet "https:// \<your-key-vault-name\> . Vault.Azure.net". Det här exemplet använder klassen ["DefaultAzureCredential ()"](/dotnet/api/azure.identity.defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om autentisering till Key Vault finns i [Developer ' s guide](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder [klassen "DefaultAzureCredential()"](/dotnet/api/azure.identity.defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om hur du autentiserar till Key Vault finns [i Utvecklarguide.](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)
 
 ```csharp
 var keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -159,18 +159,18 @@ var client = new KeyClient(new Uri(kvUri), new DefaultAzureCredential());
 
 ### <a name="save-a-key"></a>Spara en nyckel
 
-För den här uppgiften använder du metoden [CreateKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) . Metodens parametrar accepterar ett nyckel namn och [nyckel typen](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype).
+För den här uppgiften använder du [metoden CreateKeyAsync.](/dotnet/api/azure.security.keyvault.keys.keyclient.createkeyasync) Metodens parametrar accepterar ett nyckelnamn och [nyckeltypen](https://docs.microsoft.com/dotnet/api/azure.security.keyvault.keys.keytype).
 
 ```csharp
 var key = await client.CreateKeyAsync("myKey", KeyType.Rsa);
 ```
 
 > [!NOTE]
-> Om det finns ett nyckel namn, kommer över koden att skapa en ny version av nyckeln.
+> Om nyckelnamnet finns skapar koden ovan en ny version av nyckeln.
 
 ### <a name="retrieve-a-key"></a>Hämta en nyckel
 
-Nu kan du hämta den tidigare skapade nyckeln med [GetKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.getkeyasync) -metoden.
+Nu kan du hämta den tidigare skapade nyckeln med [metoden GetKeyAsync.](/dotnet/api/azure.security.keyvault.keys.keyclient.getkeyasync)
 
 ```csharp
 var key = await client.GetKeyAsync("myKey");
@@ -178,7 +178,7 @@ var key = await client.GetKeyAsync("myKey");
 
 ### <a name="delete-a-key"></a>Ta bort en nyckel
 
-Slutligen tar vi bort och rensar nyckeln från nyckel valvet med metoderna [StartDeleteKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.startdeletekeyasync) och [PurgeDeletedKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedkeyasync) .
+Slutligen tar vi bort och rensar nyckeln från nyckelvalvet med metoderna [StartDeleteKeyAsync](/dotnet/api/azure.security.keyvault.keys.keyclient.startdeletekeyasync) och [PurgeDeletedKeyAsync.](/dotnet/api/azure.security.keyvault.keys.keyclient.purgedeletedkeyasync)
 
 ```csharp
 var operation = await client.StartDeleteKeyAsync("myKey");
@@ -192,7 +192,7 @@ await client.PurgeDeletedKeyAsync("myKey");
 
 ## <a name="sample-code"></a>Exempelkod
 
-Ändra .NET Core-konsolens app för att interagera med Key Vault genom att utföra följande steg:
+Ändra .NET Core-konsolappen så att den interagerar Key Vault genom att utföra följande steg:
 
 - Ersätt koden i *Program.cs* med följande kod:
 
@@ -237,19 +237,19 @@ await client.PurgeDeletedKeyAsync("myKey");
     ```
 ### <a name="test-and-verify"></a>Testa och verifiera
 
-1.  Kör följande kommando för att bygga projektet
+1.  Kör följande kommando för att skapa projektet
 
     ```dotnetcli
     dotnet build
     ```
 
-1. Kör följande kommando för att köra appen.
+1. Kör appen genom att köra följande kommando.
 
     ```dotnetcli
     dotnet run
     ```
 
-1. När du uppmanas till det anger du ett hemligt värde. Till exempel mySecretPassword.
+1. Ange ett hemligt värde när du uppmanas till det. Till exempel mySecretPassword.
 
     En variant av följande utdata visas:
 
@@ -263,13 +263,13 @@ await client.PurgeDeletedKeyAsync("myKey");
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett nyckel valv, lagrat en nyckel och hämtat nyckeln. 
+I den här snabbstarten skapade du ett nyckelvalv, lagrade en nyckel och hämtade nyckeln. 
 
 Mer information om Key Vault och hur du integrerar det med dina appar finns i följande artiklar:
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Läs en [Översikt över nycklar](about-keys.md)
-- Se en [åtkomst Key Vault från självstudien för App Service program](../general/tutorial-net-create-vault-azure-web-app.md)
-- Se en [åtkomst Key Vault från den virtuella datorns självstudie](../general/tutorial-net-virtual-machine.md)
-- Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Key Vault säkerhets översikt](../general/security-overview.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
+- Läs en [översikt över nycklar](about-keys.md)
+- Se [självstudien åtkomst Key Vault från App Service-program](../general/tutorial-net-create-vault-azure-web-app.md)
+- Se en [access-Key Vault från självstudien för virtuell dator](../general/tutorial-net-virtual-machine.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Granska Key Vault [säkerhetsöversikten](../general/security-features.md)

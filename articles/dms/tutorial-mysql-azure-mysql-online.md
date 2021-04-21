@@ -1,7 +1,7 @@
 ---
 title: 'Självstudie: Migrera MySQL online till Azure Database for MySQL'
 titleSuffix: Azure Database Migration Service
-description: Lär dig att utföra en online-migrering från MySQL lokalt för att Azure Database for MySQL med hjälp av Azure Database Migration Service.
+description: Lär dig att utföra en onlinemigrering från MySQL lokalt till Azure Database for MySQL med hjälp av Azure Database Migration Service.
 services: dms
 author: arunkumarthiags
 ms.author: arthiaga
@@ -12,39 +12,39 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
-ms.openlocfilehash: 050356dc74641e7e7154d6a3976e6cc8d5f4ce3d
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 754d8cc9e79bc100e87f56c6fc33102963e53e8d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063618"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818198"
 ---
 # <a name="tutorial-migrate-mysql-to-azure-database-for-mysql-online-using-dms"></a>Självstudie: Migrera MySQL till Azure Database for MySQL online med DMS
 
-Du kan använda Azure Database Migration Service för att migrera databaserna från en lokal MySQL-instans till [Azure Database for MySQL](../mysql/index.yml) med minimal stillestånds tid. Du kan med andra ord migrera med minimal stilleståndstid i programmet. I den här självstudien migrerar du exempel databasen **anställda** från en lokal instans av MySQL 5,7 till Azure Database for MySQL med hjälp av en online-migrering i Azure Database migration service.
+Du kan använda Azure Database Migration Service för att migrera databaserna från en lokal MySQL-instans [till Azure Database for MySQL](../mysql/index.yml) med minimal avbrottstid. Du kan med andra ord migrera med minimal stilleståndstid i programmet. I den här självstudien migrerar du exempeldatabasen **Anställda** från en lokal instans av MySQL 5.7 till Azure Database for MySQL med hjälp av en onlinemigreringsaktivitet i Azure Database Migration Service.
 
 > [!IMPORTANT]
-> Scenariot "MySQL to Azure Database for MySQL"-migreringen ersätts med ett parallellt, starkt presterande offline-migreringsjobb den 1 juni 2021. För online-migreringar kan du använda det här nya erbjudandet tillsammans med [datareplikering](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication). Du kan också använda verktyg med öppen källkod, till exempel min [dumper/-lastare](https://centminmod.com/mydumper.html) med datareplikering för online-migreringar. 
+> Onlinemigreringsscenariot "MySQL till Azure Database for MySQL" ersätts med ett parallelliserat offlinemigreringsscenario med hög performantitet den 1 juni 2021. För onlinemigrering kan du använda det här nya erbjudandet tillsammans med [datareplikering.](https://docs.microsoft.com/azure/mysql/concepts-data-in-replication) Du kan också använda verktyg med öppen källkod som [MyDumper/MyLoader](https://centminmod.com/mydumper.html) med datareplikering för onlinemigrering. 
 
 I den här guiden får du lära dig att:
 > [!div class="checklist"]
 >
 > * Migrera exempelschemat med verktyget mysqldump.
 > * Skapa en instans av Azure Database Migration Service.
-> * Skapa ett migreringsjobb med hjälp av Azure Database Migration Service.
+> * Skapa ett migreringsprojekt med hjälp av Azure Database Migration Service.
 > * Köra migreringen.
 > * Övervaka migreringen.
 
 > [!NOTE]
-> Om du använder Azure Database Migration Service för att utföra en online-migrering måste du skapa en instans utifrån pris nivån Premium.
+> Om Azure Database Migration Service utföra en onlinemigrering måste du skapa en instans baserat på prisnivån Premium.
 
 > [!IMPORTANT]
-> För en optimal migrering rekommenderar Microsoft att du skapar en instans av Azure Database Migration Service i samma Azure-region som mål databasen. Att flytta data mellan regioner eller geografiska områden kan göra migreringsprocessen långsammare och leda till fel.
+> För en optimal migreringsupplevelse rekommenderar Microsoft att du skapar en instans Azure Database Migration Service i samma Azure-region som måldatabasen. Att flytta data mellan regioner eller geografiska områden kan göra migreringsprocessen långsammare och leda till fel.
 
 > [!NOTE]
-> Kompensations fri kommunikation
+> Biasfri kommunikation
 >
-> Microsoft stöder en mängd olika och införlivande miljöer. Den här artikeln innehåller referenser till ordet _slav_. Microsofts [stil guide för en kostnads fri kommunikation](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) känner igen detta som ett undantags ord. Ordet används i den här artikeln för konsekvens eftersom det är det ord som visas i program varan. När program varan har uppdaterats för att ta bort ordet uppdateras den här artikeln som en justering.
+> Microsoft har stöd för en miljö med mångfald och inkludering. Den här artikeln innehåller referenser till ordet _slave ._ Microsofts [stilguide för biasfri kommunikation identifierar](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) detta som ett exkluderingsord. Ordet används i den här artikeln för konsekvens eftersom det för närvarande är ordet som visas i programvaran. När programvaran uppdateras för att ta bort ordet uppdateras den här artikeln så att den är i linje.
 >
 
 
@@ -52,24 +52,24 @@ I den här guiden får du lära dig att:
 
 För att slutföra den här kursen behöver du:
 
-* Ladda ned och installera [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 eller 5.7. Den lokala MySQL-versionen måste överensstämma med Azure Database for MySQL-versionen. Exempelvis kan MySQL 5.6 endast migreras till Azure Database for MySQL 5.6 och inte uppgraderat till 5.7. Migreringar till eller från MySQL 8,0 stöds inte.
-* [Skapa en instans i Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Läs artikeln [Använda MySQL Workbench för att ansluta och fråga efter data](../mysql/connect-workbench.md) om du vill ha information om hur du ansluter och skapar en databas med Azure-portalen.  
-* Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med hjälp av Azure Resource Manager distributions modell, som tillhandahåller plats-till-plats-anslutning till dina lokala käll servrar genom att använda antingen [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Mer information om hur du skapar ett virtuellt nätverk finns i [Virtual Network-dokumentationen](../virtual-network/index.yml)och i synnerhet snabb starts artiklar med stegvisa anvisningar.
+* Ladda ned och installera [MySQL Community Edition](https://dev.mysql.com/downloads/mysql/) 5.6 eller 5.7. Den lokala MySQL-versionen måste överensstämma med Azure Database for MySQL-versionen. Exempelvis kan MySQL 5.6 endast migreras till Azure Database for MySQL 5.6 och inte uppgraderat till 5.7. Migreringar till eller från MySQL 8.0 stöds inte.
+* [Skapa en instans i Azure Database for MySQL](../mysql/quickstart-create-mysql-server-database-using-azure-portal.md). Se artikeln Använda [MySQL Workbench](../mysql/connect-workbench.md) för att ansluta och fråga efter data för information om hur du ansluter och skapar en databas med hjälp av Workbench-programmet.  
+* Skapa en Microsoft Azure Virtual Network för Azure Database Migration Service med Azure Resource Manager distributionsmodell, som ger plats-till-plats-anslutning till dina lokala källservrar med hjälp av [ExpressRoute](../expressroute/expressroute-introduction.md) eller [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md). Mer information om hur du skapar ett virtuellt [nätverk finns i Virtual Network-dokumentationen](../virtual-network/index.yml)och i synnerhet snabbstartsartiklarna med stegvisa detaljer.
 
     > [!NOTE]
-    > Om du använder ExpressRoute med nätverks-peering till Microsoft under installationen av Virtual networkNet lägger du till följande tjänst [slut punkter](../virtual-network/virtual-network-service-endpoints-overview.md) i under nätet där tjänsten ska tillhandahållas:
+    > Om du använder ExpressRoute med nätverks-peering till Microsoft under installationen av virtuellt nätverkNät lägger du till följande tjänstslutpunkter i det undernät där tjänsten ska [etableras:](../virtual-network/virtual-network-service-endpoints-overview.md)
     >
-    > * Slut punkt för mål databas (till exempel SQL-slutpunkt, Cosmos DB slut punkt och så vidare)
-    > * Lagrings slut punkt
+    > * Måldatabasslutpunkt (till exempel SQL-slutpunkt, Cosmos DB slutpunkt och så vidare)
+    > * Lagringsslutpunkt
     > * Service Bus-slutpunkt
     >
-    > Den här konfigurationen är nödvändig eftersom Azure Database Migration Service saknar Internet anslutning.
+    > Den här konfigurationen är nödvändig Azure Database Migration Service saknar Internetanslutning.
 
-* Se till att det virtuella nätverkets regler för nätverks säkerhets grupp inte blockerar den utgående porten 443 av ServiceTag för Service Bus, Storage och AzureMonitor. Mer information om NSG för trafik filtrering i virtuellt nätverk finns i artikeln [filtrera nätverks trafik med nätverks säkerhets grupper](../virtual-network/virtual-network-vnet-plan-design-arm.md).
+* Kontrollera att reglerna för nätverkssäkerhetsgruppen för det virtuella nätverket inte blockerar den utgående porten 443 för ServiceTag för ServiceBus, Storage och AzureMonitor. Mer information om filtrering av nätverkssäkerhetsgrupper för virtuella nätverk finns i artikeln [Filtrera nätverkstrafik med nätverkssäkerhetsgrupper.](../virtual-network/virtual-network-vnet-plan-design-arm.md)
 * Konfigurera din [Windows-brandvägg för databasmotoråtkomst](/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Öppna Windows-brandväggen för att tillåta Azure Database Migration Service åtkomst till käll-MySQL-servern som standard är TCP-port 3306.
-* När du använder en brand Väggs installation framför dina käll databaser, kan du behöva lägga till brand Väggs regler för att tillåta Azure Database Migration Service åtkomst till käll databaserna för migrering.
-* Skapa en [brand Väggs regel](../azure-sql/database/firewall-configure.md) på server nivå för Azure Database for MySQL att tillåta Azure Database migration service åtkomst till mål databaserna. Ange under nätets intervall för det virtuella nätverk som används för Azure Database Migration Service.
+* Öppna Windows-brandväggen så att Azure Database Migration Service åtkomst till mySQL-källservern, som som standard är TCP-port 3306.
+* När du använder en brandväggsinstallation framför dina källdatabaser kan du behöva lägga till brandväggsregler för att tillåta Azure Database Migration Service åtkomst till källdatabaserna för migrering.
+* Skapa en brandväggsregel [på servernivå](../azure-sql/database/firewall-configure.md) för Azure Database for MySQL tillåta Azure Database Migration Service åtkomst till måldatabaserna. Ange undernätsintervallet för det virtuella nätverk som används för Azure Database Migration Service.
 * MySQL-källan måste vara på en MySQL Community Edition som stöds. Om du vill kontrollera vilken version av MySQL-instansen du har går du till verktyget MySQL eller MySQL Workbench och kör följande kommando:
 
     ```
@@ -81,9 +81,9 @@ För att slutföra den här kursen behöver du:
 * Aktivera binär loggning i filen my.ini (Windows) eller my.cnf (Unix) i källdatabasen med följande konfiguration:
 
   * **server_id** = 1 eller större (endast relevant för MySQL 5.6)
-  * **logg-bin** = \<path> (gäller endast för MySQL 5,6)    Till exempel: log-bin = E:\ MySQL_logs \BinLog
+  * **log-bin** = \<path> (endast relevant för MySQL 5.6)    Exempel: log-bin = E:\MySQL_logs\BinLog
   * **binlog_format** = rad
-  * **Expire_logs_days** = 5 (vi rekommenderar att inte använda noll, gäller endast MySQL 5,6)
+  * **Expire_logs_days** = 5 (vi rekommenderar att du inte använder noll; endast relevant för MySQL 5.6)
   * **Binlog_row_image** = fullständig (endast relevant för MySQL 5.6)
   * **log_slave_updates** = 1
 
@@ -97,7 +97,7 @@ För att slutföra den här kursen behöver du:
 
 För att slutföra alla databasobjekt som tabellscheman, index och lagrade procedurer måste vi extrahera schemat från källdatabasen och tillämpa det på databasen. Du kan extrahera schema med mysqldump med parametern `--no-data`.
 
-Förutsatt att du har MySQL- **anställda** exempel databas i det lokala systemet, är kommandot för schema migrering med mysqldump:
+Förutsatt att du har **exempeldatabasen** MySQL Employees i det lokala systemet är kommandot för att göra schemamigrering med mysqldump:
 
 ```
 mysqldump -h [servername] -u [username] -p[password] --databases [db name] --no-data > [schema file path]
@@ -121,7 +121,7 @@ Exempel:
 mysql.exe -h shausample.mysql.database.azure.com -u dms@shausample -p employees < d:\employees.sql
  ```
 
-Om du har sekundärnycklar i ditt schema misslyckas den första inläsningen och den kontinuerliga synkroniseringen av migreringen.  Kör följande skript i MySQL Workbench för att extrahera skriptet för att ta bort sekundär nyckel och lägga till ett sekundär nyckel skript.
+Om du har sekundärnycklar i ditt schema misslyckas den första inläsningen och den kontinuerliga synkroniseringen av migreringen.  Kör följande skript i MySQL Workbench för att extrahera drop-foreign key-skriptet och lägga till ett främmande nyckelskript.
 
 ```sql
 SET group_concat_max_len = 8192;
@@ -144,127 +144,143 @@ SET group_concat_max_len = 8192;
 Kör drop-sekundärnyckeln (som är den andra kolumnen) i frågeresultatet till drop-sekundärnyckeln.
 
 > [!NOTE]
-> Azure DMS stöder inte referens åtgärden CASCADE, som hjälper dig att automatiskt ta bort eller uppdatera en matchande rad i den underordnade tabellen när en rad tas bort eller uppdateras i den överordnade tabellen. Mer information finns i avsnittet referens åtgärder i artikelns [begränsningar för sekundär nyckel](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html).
-> Azure DMS kräver att du släpper sekundär nyckel begränsningar i mål databas servern under den inledande data inläsningen och du kan inte använda referens åtgärder. Om din arbets belastning är beroende av att uppdatera en relaterad underordnad tabell via den här referens åtgärden, rekommenderar vi att du utför en [dumpning och återställning](../mysql/concepts-migrate-dump-restore.md) i stället. 
+> Azure DMS stöder inte CASCADE-referensåtgärden, som hjälper till att automatiskt ta bort eller uppdatera en matchande rad i den underordnade tabellen när en rad tas bort eller uppdateras i den överordnade tabellen. Mer information finns i MySQL-dokumentationen i avsnittet Referensåtgärder i artikeln [OM BEGRÄNSNINGAR FÖR FRÄMMANDE NYCKEL.](https://dev.mysql.com/doc/refman/8.0/en/create-table-foreign-keys.html)
+> Azure DMS kräver att du släpper begränsningar för externa nycklar i måldatabasservern under den inledande databelastningen och att du inte kan använda referensåtgärder. Om din arbetsbelastning är beroende av att uppdatera en relaterad underordnad tabell via den här referensåtgärden rekommenderar vi att du i stället utför [en dump och återställning.](../mysql/concepts-migrate-dump-restore.md) 
 
 
 > [!IMPORTANT]
-> Om du importerar data med hjälp av en säkerhets kopia tar du bort kommandona skapa avskärmar manuellt eller genom att använda kommandot--Skip-definar när du utför en mysqldump. Definar kräver Super-behörighet för att skapa och är begränsad i Azure Database for MySQL.
+> Om du importerar data med hjälp av en säkerhetskopia tar du bort CREATE DEFINER-kommandona manuellt eller med kommandot --skip-definer när du utför en mysqldump. DEFINER kräver superprivilegier för att skapa och är begränsad i Azure Database for MySQL.
 
-Om du har en utlösare i data (infogning eller uppdaterings utlösare), kommer den att upprätthålla data integriteten i målet före replikerade data från källan. Rekommendationen är att inaktivera utlösare i alla tabeller för målet under migreringen och sedan aktivera utlösare när migreringen är klar.
+Om du har utlösare i databasen framtvingar den dataintegritet i målet före fullständig datamigrering från källan. Rekommendationen är att inaktivera utlösare för alla tabeller i målet under migreringen och sedan aktivera utlösare när migreringen är klar.
 
-Om du vill inaktivera utlösare i mål databasen använder du följande kommando:
+Kör följande skript i MySQL Workbench på måldatabasen för att extrahera släpp-utlösarskriptet och lägga till utlösarskriptet.
 
+```sql
+SELECT
+    SchemaName,
+    GROUP_CONCAT(DropQuery SEPARATOR ';\n') as DropQuery,
+    Concat('DELIMITER $$ \n\n', GROUP_CONCAT(AddQuery SEPARATOR '$$\n'), '$$\n\nDELIMITER ;') as AddQuery
+FROM
+(
+SELECT 
+    TRIGGER_SCHEMA as SchemaName,
+    Concat('DROP TRIGGER `', TRIGGER_NAME, "`") as DropQuery,
+    Concat('CREATE TRIGGER `', TRIGGER_NAME, '` ', ACTION_TIMING, ' ', EVENT_MANIPULATION, 
+            '\nON `', EVENT_OBJECT_TABLE, '`\n' , 'FOR EACH ', ACTION_ORIENTATION, ' ',
+            ACTION_STATEMENT) as AddQuery
+FROM  
+    INFORMATION_SCHEMA.TRIGGERS
+ORDER BY EVENT_OBJECT_SCHEMA, EVENT_OBJECT_TABLE, ACTION_TIMING, EVENT_MANIPULATION, ACTION_ORDER ASC
+) AS Queries
+GROUP BY SchemaName
 ```
-SELECT Concat('DROP TRIGGER ', Trigger_Name, ';') FROM  information_schema.TRIGGERS WHERE TRIGGER_SCHEMA = 'your_schema';
-```
+
+Kör den genererade utlösarfrågan (DropQuery-kolumnen) i resultatet för att släppa utlösare i måldatabasen. Lägg till utlösarfrågan kan sparas för att användas när datamigrering har slutförts.
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Registrera resursprovidern Microsoft.DataMigration
 
 1. Logga in på Azure Portal och välj **Alla tjänster** och sedan **Prenumerationer**.
 
-   ![Visa portalprenumerationer](media/tutorial-mysql-to-azure-mysql-online/portal-select-subscriptions.png)
+   ![Visa portalprenumerationer](media/tutorial-mysql-to-azure-mysql-online/01-portal-select-subscriptions.png)
 
-2. Välj den prenumeration där du vill skapa instansen av Azure Database Migration Service och välj sedan **resurs leverantörer**.
+2. Välj den prenumeration där du vill skapa instansen av Azure Database Migration Service och välj sedan **Resursproviders.**
 
-    ![Visa resursprovidrar](media/tutorial-mysql-to-azure-mysql-online/portal-select-resource-provider.png)
+    ![Visa resursprovidrar](media/tutorial-mysql-to-azure-mysql-online/02-01-portal-select-resource-provider.png)
 
-3. Sök efter migrering och välj sedan **Registrera** till höger om **Microsoft. data migration**.
+3. Sök efter migrering och välj sedan Registrera till höger om **Microsoft.DataMigration.**
 
-    ![Registrera resursprovider](media/tutorial-mysql-to-azure-mysql-online/portal-register-resource-provider.png)
+    ![Registrera resursprovider](media/tutorial-mysql-to-azure-mysql-online/02-02-portal-register-resource-provider.png)
 
-## <a name="create-a-dms-instance"></a>Skapa en DMS-instans
+## <a name="create-a-database-migration-service-instance"></a>Skapa en Database Migration Service instans
 
 1. I Azure Portal väljer du + **Skapa en resurs**, söker efter Azure Database Migration Service och väljer sedan **Azure Database Migration Service** i listrutan.
 
-    ![Azure Marketplace](media/tutorial-mysql-to-azure-mysql-online/portal-marketplace.png)
+    ![Azure Marketplace](media/tutorial-mysql-to-azure-mysql-online/03-dms-portal-marketplace.png)
 
 2. På sidan **Azure Database Migration Service** väljer du **Skapa**.
 
-    ![Skapa Azure Database Migration Service-instans](media/tutorial-mysql-to-azure-mysql-online/dms-create1.png)
+    ![Skapa Azure Database Migration Service-instans](media/tutorial-mysql-to-azure-mysql-online/04-dms-portal-marketplace-create.png)
   
 3. På sidan **Create Migration Service** anger du ett namn för tjänsten, prenumerationen och en ny eller befintlig resursgrupp.
 
-4. Välj ett befintligt virtuellt nätverk eller skapa ett nytt.
-
-    Det virtuella nätverket ger Azure Database Migration Service åtkomst till käll SQL Server och mål Azure SQL Database instansen.
-
-    Mer information om hur du skapar ett virtuellt nätverk i Azure Portal finns i artikeln [skapa ett virtuellt nätverk med hjälp av Azure Portal](../virtual-network/quick-create-portal.md).
-
-5. Välj en prisnivå.
+4. Välj en prisnivå och gå till nätverksskärmen. Offlinemigreringsfunktioner är tillgängliga på prisnivån Standard och Premium.
 
     Mer information om kostnader och prisnivåer finns på [sidan med priser](https://aka.ms/dms-pricing).
 
-    ![Konfigurera Azure Database Migration Service-instansinställningar](media/tutorial-mysql-to-azure-mysql-online/dms-settings3.png)
+    ![Konfigurera Azure Database Migration Service grundläggande inställningar](media/tutorial-mysql-to-azure-mysql-online/05-dms-portal-create-basic.png)
 
-6. Välj **Skapa** för att skapa tjänsten.
+5. Välj ett befintligt virtuellt nätverk i listan eller ange namnet på det nya virtuella nätverk som ska skapas. Gå till skärmen Granska + skapa. Du kan också lägga till taggar i tjänsten med hjälp av taggar-skärmen.
+
+    Det virtuella nätverket ger Azure Database Migration Service åtkomst till käll-SQL Server och målinstansen Azure SQL Database målinstansen.
+
+    ![Konfigurera Azure Database Migration Service nätverksinställningar](media/tutorial-mysql-to-azure-mysql-online/06-dms-portal-create-networking.png)
+
+    Mer information om hur du skapar ett virtuellt nätverk i Azure Portal finns i artikeln Skapa ett virtuellt nätverk med hjälp [av Azure Portal](../virtual-network/quick-create-portal.md).
+
+6. Granska konfigurationerna och välj **Skapa** för att skapa tjänsten.
+    
+    ![Azure Database Migration Service skapa](media/tutorial-mysql-to-azure-mysql-online/07-dms-portal-create-submit.png)
 
 ## <a name="create-a-migration-project"></a>Skapa ett migreringsprojekt
 
-När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och skapar sedan ett nytt migreringsprojekt.
+När tjänsten har skapats letar du reda på den i Azure Portal, öppnar den och skapar sedan ett nytt migreringsprojekt.  
 
 1. I Azure Portal väljer du **Alla tjänster**, söker efter Azure Database Migration Service och väljer sedan **Azure Database Migration Services**.
 
-      ![Hitta alla instanser av Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/dms-search.png)
+    ![Leta upp alla instanser av Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/08-01-dms-portal-search-service.png)
 
-2. På skärmen **Azure Database migration Services** söker du efter namnet på Azure Database migration service-instansen som du skapade och väljer sedan instansen.
+2. Välj din migreringstjänstinstans bland sökresultaten och välj + **Nytt migreringsprojekt**.
+    
+    ![Skapa ett nytt migreringsprojekt](media/tutorial-mysql-to-azure-mysql-online/08-02-dms-portal-new-project.png)
 
-     ![Hitta din instans av Azure Database Migration Service](media/tutorial-mysql-to-azure-mysql-online/dms-instance-search.png)
+3. På **sidan** Nytt migreringsprojekt anger du ett namn  för projektet. I rutan Typ av  källserver väljer du **MySQL.** I rutan  Typ av målserver väljer du **Azure Database For MySQL** och i urvalsrutan Migreringsaktivitetstyp väljer du **Online-datamigrering.** Välj **Skapa och kör aktivitet**.
 
-3. Välj + **Nytt migreringsprojekt**.
-4. På sidan **Nytt migreringsprojekt** anger du namnet på projektet, I textrutan **Typ av källserver** väljer du **MySQL**, i textrutan **Målservertyp** väljer du **AzureDbForMySQL**.
-5. I avsnittet **Välj aktivitetstyp** väljer du **Online-datamigrering**
-
-    ![Skapa Database Migration Service-projekt](media/tutorial-mysql-to-azure-mysql-online/dms-create-project4.png)
+    ![Skapa Database Migration Service-projekt](media/tutorial-mysql-to-azure-mysql-online/09-dms-portal-project-mysql-create.png)
 
     > [!NOTE]
-    > Alternativt kan du välja **skapa endast projekt** för att skapa migreringsjobbet nu och utföra migreringen senare.
+    > Alternativt kan du välja Skapa **endast projekt för att** skapa migreringsprojektet nu och köra migreringen senare.
 
-6. Välj **Spara**, notera kraven för att använda DMS för att migrera data och välj sedan **Skapa och kör aktivitet**.
+## <a name="configure-migration-project"></a>Konfigurera migreringsprojekt
 
-## <a name="specify-source-details"></a>Ange källinformation
+1. På skärmen **Välj källa** anger du anslutningsinformationen för MySQL-källinstansen och väljer **Nästa: Välj>>**
 
-1. På sidan **Lägg till källinformation** anger du anslutningsinformationen för MySQL-källinstansen.
+    ![Skärmen Lägg till källinformation](media/tutorial-mysql-to-azure-mysql-online/10-dms-portal-project-mysql-source.png)
 
-    ![Skärmen Lägg till källinformation](media/tutorial-mysql-to-azure-mysql-online/dms-add-source-details.png)
+2. På skärmen **Välj mål** anger du anslutningsinformationen för målinstansen Azure Database for MySQL och väljer **Nästa: Välj databaser>>**
 
-## <a name="specify-target-details"></a>Ange målinformation
+    ![Skärmen Lägg till målinformation](media/tutorial-mysql-to-azure-mysql-online/11-dms-portal-project-mysql-target.png)
 
-1. Välj **Spara** och ange på sidan **Målinformation** anslutningsinformationen för Azure Database for MySQL-målservern, som är den företablerade instansen av Azure Database for MySQL som schemat **Anställda**-distribuerades till med mysqldump.
+3. På skärmen **Välj databaser** mappar du käll- och måldatabasen för migrering och väljer **Nästa: Konfigurera migreringsinställningar>>**. Du kan välja alternativet **Make Source Server Readonly** (Gör källservern skrivskyddade) för att göra källan skrivskyddade, men var försiktig så att det här är en inställning på servernivå. Om du väljer det här alternativet ställs hela servern in på skrivskydd, inte bara de valda databaserna.
+    
+    Om måldatabasen innehåller samma databasnamn som källdatabasen väljer Azure Database Migration Service måldatabasen som standard.
+    ![Skärmen Välj databasinformation](media/tutorial-mysql-to-azure-mysql-online/12-dms-portal-project-mysql-select-db.png)
+    
+    > [!NOTE] 
+   > Du kan välja flera databaser i det här steget, men varje instans av Azure Database Migration Service stöder upp till 4 databaser för samtidig migrering. Det finns också en gräns på 10 instanser av Azure Database Migration Service per prenumeration per region. Om du till exempel har 80 databaser att migrera kan du migrera 40 av dem till samma region samtidigt, men bara om du har skapat 10 instanser av Azure Database Migration Service.
 
-    ![Skärmen Målinformation](media/tutorial-mysql-to-azure-mysql-online/dms-add-target-details.png)
+4. På skärmen **Konfigurera migreringsinställningar** väljer du de tabeller som ska ingå i migreringen och **väljer Nästa: Sammanfattning>>**. Om måltabellerna har några data är de inte markerade som standard, men du kan uttryckligen välja dem och de trunkeras innan du påbörjar migreringen.
 
-2. Välj **Spara** och mappa sedan på sidan **Mappa till måldatabaser** käll- och måldatabasen för migrering.
+    ![Skärmen Välj tabeller](media/tutorial-mysql-to-azure-mysql-online/13-dms-portal-project-mysql-select-tbl.png)
 
-    Om mål databasen innehåller samma databas namn som käll databasen Azure Database Migration Service väljer mål databasen som standard.
+5. På skärmen **Sammanfattning** i **textrutan** Aktivitetsnamn anger du ett namn för migreringsaktiviteten och granskar sammanfattningen för att säkerställa att käll- och målinformationen matchar det du angav tidigare.
 
-    ![Mappa till måldatabaser](media/tutorial-mysql-to-azure-mysql-online/dms-map-target-details.png)
-   > [!NOTE] 
-   > Du kan välja flera databaser i det här steget, men varje instans av Azure Database Migration Service har stöd för upp till 4 databaser för samtidig migrering. Det finns också en gräns på 10 instanser av Azure Database Migration Service per prenumeration per region. Om du till exempel har 80 databaser att migrera kan du migrera 40 till samma region samtidigt, men endast om du har skapat 10 instanser av Azure Database Migration Service.
+    ![Sammanfattning av migreringsprojekt](media/tutorial-mysql-to-azure-mysql-online/14-dms-portal-project-mysql-activity-summary.png)
 
-3. Välj **Spara**. I rutan **Aktivitetsnamn** på skärmen **Migreringssammanfattning** anger du ett namn för migreringsaktiviteten och granskar sedan sammanfattningen för att se till att informationen för källa och mål matchar det du angav tidigare.
-
-    ![Migreringssammanfattning](media/tutorial-mysql-to-azure-mysql-online/dms-migration-summary.png)
-
-## <a name="run-the-migration"></a>Köra migreringen
-
-* Välj **Kör migrering**.
-
-    Fönstret migrering av aktivitet visas och aktivitetens **status** **initieras**.
+6. Välj **Starta migrering.** Migreringsaktivitetsfönstret visas och **Status** för aktiviteten är **Initieras**. **Status ändras** till **Körs när** tabellmigreringarna startar.
 
 ## <a name="monitor-the-migration"></a>Övervaka migreringen
 
 1. På migreringsaktivitetssidan väljer du **Uppdatera** för att uppdatera visningen tills **Status** för migreringen är **Slutförd**.
 
-     ![Aktivitetsstatus – slutförd](media/tutorial-mysql-to-azure-mysql-online/dms-activity-completed.png)
+     ![Aktivitetsstatus – slutförd](media/tutorial-mysql-to-azure-mysql-online/15-dms-activity-completed.png)
 
 2. Under **Databasnamn** väljer du en specifik databas för att komma till migreringsstatus för åtgärderna **Fullständig datainläsning** och **Inkrementell datasynkronisering**.
 
     Fullständig datainläsning visar den initiala inläsningsmigreringsstatus, och Inkrementell datasynkronisering visar CDC-status (change data capture).
 
-     ![Aktivitetsstatus – Fullständig inläsning slutförd](media/tutorial-mysql-to-azure-mysql-online/dms-activity-full-load-completed.png)
+     ![Aktivitetsstatus – Fullständig inläsning slutförd](media/tutorial-mysql-to-azure-mysql-online/16-dms-activity-full-load-completed.png)
 
-     ![Aktivitetsstatus – Inkrementell datasynkronisering](media/tutorial-mysql-to-azure-mysql-online/dms-activity-incremental-data-sync.png)
+     ![Aktivitetsstatus – Inkrementell datasynkronisering](media/tutorial-mysql-to-azure-mysql-online/17-dms-activity-incremental-data-sync.png)
 
 ## <a name="perform-migration-cutover"></a>Utföra snabbmigrering
 
@@ -272,7 +288,7 @@ När den fullständiga inläsningen är klar är databaserna märkta med **Klar 
 
 1. När du är redo att slutföra databasmigreringen väljer du **Starta snabb**.
 
-    ![Starta snabb](media/tutorial-mysql-to-azure-mysql-online/dms-start-cutover.png)
+    ![Starta snabb](media/tutorial-mysql-to-azure-mysql-online/18-dms-start-cutover.png)
 
 2. Stoppa alla inkommande transaktioner till källdatabasen och vänta tills **Väntande ändringar** visar **0**.
 3. Välj **Bekräfta** och sedan **Apply** (Använd).
@@ -281,5 +297,5 @@ När den fullständiga inläsningen är klar är databaserna märkta med **Klar 
 ## <a name="next-steps"></a>Nästa steg
 
 * Information om kända problem och begränsningar när du utför onlinemigreringar till Azure Database for MySQL finns i artikeln [Known issues and workarounds with Azure Database for MySQL online migrations](known-issues-azure-mysql-online.md) (Kända problem och lösningar med Azure Database for MySQL-onlinemigreringar).
-* Mer information om Azure Database Migration Service finns i artikeln [Vad är Azure Database migration service?](./dms-overview.md).
-* Mer information om Azure Database for MySQL finns i artikeln [Vad är Azure Database for MySQL?](../mysql/overview.md).
+* Information om Azure Database Migration Service finns i artikeln [Vad är Azure Database Migration Service?](./dms-overview.md).
+* Information om Azure Database for MySQL finns i artikeln [Vad är Azure Database for MySQL?](../mysql/overview.md).

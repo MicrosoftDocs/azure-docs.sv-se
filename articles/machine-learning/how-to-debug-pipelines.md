@@ -1,7 +1,7 @@
 ---
-title: Felsöka ML-pipeliner
+title: Felsöka ML-pipelines
 titleSuffix: Azure Machine Learning
-description: Fel sökning när du får fel när du kör en maskin inlärnings pipeline. Vanliga fall GRO par och tips som hjälper dig att felsöka skript före och under fjärrkörning.
+description: Så här felsöker du när du får fel när du kör en maskininlärningspipeline. Vanliga fallgropar och tips som hjälper dig att felsöka skript före och under fjärrkörning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,34 +10,34 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: troubleshooting
 ms.custom: troubleshooting, devx-track-python, contperf-fy21q2
-ms.openlocfilehash: 195942d1787cdef51ee480fa5c5595db99bc7c78
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3a85566f395e97bbe88d52a8b306c7e0aa15669d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102522095"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817349"
 ---
-# <a name="troubleshooting-machine-learning-pipelines"></a>Felsöka maskin inlärnings pipeliner
+# <a name="troubleshooting-machine-learning-pipelines"></a>Felsöka pipelines för maskininlärning
 
-I den här artikeln får du lära dig att felsöka när du får fel när du kör en [maskin inlärnings pipeline](concept-ml-pipelines.md) i [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) och [Azure Machine Learning designer](./concept-designer.md). 
+I den här artikeln får du lära dig hur du felsöker när du får fel när du kör en [maskininlärningspipeline i Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) och Azure Machine Learning [designer](./concept-designer.md). [](concept-ml-pipelines.md) 
 
 ## <a name="troubleshooting-tips"></a>Felsökningstips
 
-Följande tabell innehåller vanliga problem under utveckling av pipeline, med möjliga lösningar.
+Följande tabell innehåller vanliga problem under pipelineutvecklingen, med potentiella lösningar.
 
 | Problem | Möjlig lösning |
 |--|--|
-| Det gick inte att skicka data till `PipelineData` katalogen | Se till att du har skapat en katalog i skriptet som motsvarar var din pipeline förväntar sig stegutdata. I de flesta fall definierar ett indataargument utdatakatalogen, och sedan skapar du katalogen explicit. Använd `os.makedirs(args.output_dir, exist_ok=True)` för att skapa utdatakatalogen. Se [självstudien](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) för ett bedömnings skript exempel som visar det här design mönstret. |
-| Beroendebuggar | Om du ser beroendefel i din fjärrpipeline som inte skedde vid en lokal testning bekräftar du att fjärrmiljöns beroenden och versioner matchar dem som finns i din testmiljö. (Se [miljö utveckling, cachelagring och åter användning](./concept-environments.md#environment-building-caching-and-reuse)|
-| Tvetydiga fel med beräknings mål | Försök att ta bort och återskapa Compute-mål. Det går snabbt och kan lösa vissa tillfälliga problem genom att återskapa beräknings mål. |
-| Pipeline återanvändar inte steg | Steg åter användning är aktiverat som standard, men se till att du inte har inaktiverat det i ett steg i pipeline. Om åter användning är inaktive rad `allow_reuse` kommer parametern i steget att ställas in på `False` . |
-| Pipelinen körs inte nödvändigt vis | Om du vill se till att stegen bara körs igen när deras underliggande data eller skript ändras, kan du koppla från dina käll kods kataloger för varje steg. Om du använder samma käll katalog för flera steg kan du få onödig omkörning. Använd `source_directory` parametern i ett pipeline-steg-objekt för att peka på den isolerade katalogen för det steget och se till att du inte använder samma `source_directory` sökväg för flera steg. |
-| Steg sakta ner över utbildningens epoker eller andra funktioner för upprepning | Försök att byta fil skrivning, inklusive loggning, från `as_mount()` till `as_upload()` . **Monterings** läget använder ett virtualiserat virtualiserat fil system och laddar upp hela filen varje gången det läggs till. |
-| Compute Target tar lång tid att starta | Docker-avbildningar för beräknings mål läses in från Azure Container Registry (ACR). Azure Machine Learning skapar som standard en ACR som använder tjänst nivån *Basic* . Att ändra ACR för arbets ytan till standard-eller Premium-nivån kan minska den tid det tar att bygga och läsa in bilder. Mer information finns i [Azure Container Registry tjänst nivåer](../container-registry/container-registry-skus.md). |
+| Det går inte att skicka data till `PipelineData` katalogen | Se till att du har skapat en katalog i skriptet som motsvarar var din pipeline förväntar sig stegutdata. I de flesta fall definierar ett indataargument utdatakatalogen, och sedan skapar du katalogen explicit. Använd `os.makedirs(args.output_dir, exist_ok=True)` för att skapa utdatakatalogen. I [självstudien](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) finns ett exempel på ett bedömningsskript som visar det här designmönstret. |
+| Beroendebuggar | Om du ser beroendefel i din fjärrpipeline som inte skedde vid en lokal testning bekräftar du att fjärrmiljöns beroenden och versioner matchar dem som finns i din testmiljö. (Se [Miljöskapande, cachelagring och återanvändning](./concept-environments.md#environment-building-caching-and-reuse)|
+| Tvetydiga fel med beräkningsmål | Försök att ta bort och återskapa beräkningsmål. Det går snabbt att återskapa beräkningsmål och kan lösa vissa tillfälliga problem. |
+| Pipeline som inte återanvänder steg | Återanvändning av steg är aktiverat som standard, men se till att du inte har inaktiverat det i ett pipelinesteg. Om återanvändning är inaktiverat `allow_reuse` anges parametern i steget till `False` . |
+| Pipelinen kör om i onödan | För att säkerställa att stegen bara körs igen när deras underliggande data eller skript ändras, frikoppla dina källkodskataloger för varje steg. Om du använder samma källkatalog för flera steg kan det uppstå onödiga omkörningar. Använd parametern på ett pipelinestegobjekt för att peka på den isolerade katalogen för det steget och se till att du inte använder `source_directory` samma sökväg för flera `source_directory` steg. |
+| Steg som saktar ned över träningsepoker eller annat loopbeteende | Försök att växla alla fil skrivningar, inklusive loggning, `as_mount()` från till `as_upload()` . **Monteringsläget** använder ett fjärrvirtualiserat filsystem och laddar upp hela filen varje gång den läggs till. |
+| Det tar lång tid att starta beräkningsmålet | Docker-avbildningar för beräkningsmål läses in från Azure Container Registry (ACR). Som standard Azure Machine Learning en ACR som använder den *grundläggande* tjänstnivån. Om du ändrar ACR för din arbetsyta till standard- eller premiumnivån kan det minska den tid det tar att skapa och läsa in avbildningar. Mer information finns i [Azure Container Registry tjänstnivåer](../container-registry/container-registry-skus.md). |
 
 ### <a name="authentication-errors"></a>Autentiseringsfel
 
-Om du utför en hanterings åtgärd på ett beräknings mål från ett Fjärrjobb får du ett av följande fel: 
+Om du utför en hanteringsåtgärd på ett beräkningsmål från ett fjärrjobb får du något av följande fel: 
 
 ```json
 {"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
@@ -47,14 +47,14 @@ Om du utför en hanterings åtgärd på ett beräknings mål från ett Fjärrjob
 {"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
 ```
 
-Till exempel visas ett fel meddelande om du försöker skapa eller ansluta ett beräknings mål från en ML-pipeline som skickas för fjärrkörning.
-## <a name="troubleshooting-parallelrunstep"></a>Telefonbaserad `ParallelRunStep` 
+Du får till exempel ett felmeddelande om du försöker skapa eller koppla ett beräkningsmål från en ML-pipeline som skickas för fjärrkörning.
+## <a name="troubleshooting-parallelrunstep"></a>Felsökning `ParallelRunStep` 
 
 Skriptet för en `ParallelRunStep` *måste innehålla* två funktioner:
-- `init()`: Använd den här funktionen för eventuell kostsam eller vanlig förberedelse för senare härledning. Använd till exempel den för att läsa in modellen i ett globalt objekt. Den här funktionen kommer endast att anropas en gång i början av processen.
--  `run(mini_batch)`: Funktionen kommer att köras för varje `mini_batch` instans.
-    -  `mini_batch`: `ParallelRunStep` anropar Run-metoden och skickar antingen en lista eller en Pandas `DataFrame` som ett argument till metoden. Varje post i mini_batch är en fil Sök väg om indata är en `FileDataset` eller en Pandas `DataFrame` om indata är en `TabularDataset` .
-    -  `response`: Run ()-metoden ska returnera en Pandas `DataFrame` eller en matris. För append_row output_action läggs dessa returnerade element till i den gemensamma utdatafilen. För summary_only ignoreras innehållet i elementen. För alla utdata-åtgärder anger varje returnerat utdata en lyckad körning av indata-element i mini-batch för indata. Se till att tillräckligt med data inkluderas i körnings resultatet för att mappa indata till att köra resultatet av utdata. Kör utdata skrivs i utdatafilen och är inte garanterat i ordning, du bör använda vissa nycklar i utdata för att mappa den till indata.
+- `init()`: Använd den här funktionen för kostsamma eller vanliga förberedelser för senare slutsatsledning. Du kan till exempel använda den för att läsa in modellen i ett globalt objekt. Den här funktionen anropas bara en gång i början av processen.
+-  `run(mini_batch)`: Funktionen körs för varje `mini_batch` instans.
+    -  `mini_batch`: `ParallelRunStep` anropar körningsmetoden och skickar antingen en lista eller Pandas `DataFrame` som ett argument till metoden . Varje post i mini_batch är en filsökväg om indata är en `FileDataset` eller en Pandas `DataFrame` om indata är en `TabularDataset` .
+    -  `response`: run()-metoden ska returnera en pandas `DataFrame` eller en matris. För append_row output_action läggs dessa returnerade element till i den gemensamma utdatafilen. Till summary_only ignoreras innehållet i elementen. För alla utdataåtgärder anger varje returnerat utdataelement en lyckad körning av indataelementet i indataminibatchen. Kontrollera att tillräckligt med data ingår i körningsresultatet för att mappa indata för att köra utdataresultat. Körningsutdata skrivs i utdatafilen och är inte garanterat i ordning. Du bör använda en nyckel i utdata för att mappa den till indata.
 
 ```python
 %%writefile digit_identification.py
@@ -102,7 +102,7 @@ def run(mini_batch):
     return resultList
 ```
 
-Om du har en annan fil eller mapp i samma katalog som ditt härlednings skript kan du referera till den genom att söka efter den aktuella arbets katalogen.
+Om du har en annan fil eller mapp i samma katalog som ditt inferensskript kan du referera till den genom att söka efter den aktuella arbetskatalogen.
 
 ```python
 script_dir = os.path.realpath(os.path.join(__file__, '..',))
@@ -111,37 +111,37 @@ file_path = os.path.join(script_dir, "<file_name>")
 
 ### <a name="parameters-for-parallelrunconfig"></a>Parametrar för ParallelRunConfig
 
-`ParallelRunConfig` är den viktigaste konfigurationen för `ParallelRunStep` instansen i Azure Machine Learning pipelinen. Du använder den för att omsluta ditt skript och konfigurera nödvändiga parametrar, inklusive alla följande poster:
-- `entry_script`: Ett användar skript som en lokal fil Sök väg som ska köras parallellt på flera noder. Om `source_directory` det finns använder du en relativ sökväg. Annars använder du valfri sökväg som är tillgänglig på datorn.
-- `mini_batch_size`: Den mini-batch-storlek som skickas till ett enda `run()` anrop. (valfritt; standardvärdet är `10` filer för `FileDataset` och `1MB` for `TabularDataset` .)
-    - För är `FileDataset` det antalet filer med minimivärdet `1` . Du kan kombinera flera filer i en mini-batch.
-    - För är `TabularDataset` det data storleken. Exempel värden är `1024` , `1024KB` , `10MB` och `1GB` . Det rekommenderade värdet är `1MB` . Mini-batch från `TabularDataset` kommer aldrig att överskrida fil gränser. Om du till exempel har CSV-filer med olika storlekar är den minsta filen 100 KB och störst är 10 MB. Om du anger `mini_batch_size = 1MB` kommer filer med en storlek som är mindre än 1 MB att behandlas som en mini-batch. Filer med en storlek som är större än 1 MB delas upp i flera mini-batchar.
-- `error_threshold`: Antalet post-och fil haverier `TabularDataset` `FileDataset` som ska ignoreras under bearbetningen. Om antalet fel för hela inflödet överskrider det här värdet kommer jobbet att avbrytas. Fel tröskeln är för alla indatatyper och inte för enskilda mini-batchar som skickas till- `run()` metoden. Intervallet är `[-1, int.max]` . `-1`Delen indikerar att ignorera alla avbrott under bearbetningen.
+`ParallelRunConfig` är den större konfigurationen för `ParallelRunStep` instansen inom Azure Machine Learning pipeline. Du kan använda det för att omsluta skriptet och konfigurera nödvändiga parametrar, inklusive alla följande poster:
+- `entry_script`: Ett användarskript som en lokal filsökväg som ska köras parallellt på flera noder. Om `source_directory` finns använder du en relativ sökväg. Annars använder du alla sökvägar som är tillgängliga på datorn.
+- `mini_batch_size`: Storleken på den minibatch som skickas till ett enda `run()` anrop. (valfritt; standardvärdet är `10` filer för och för `FileDataset` `1MB` `TabularDataset` .)
+    - För `FileDataset` är det antalet filer med minimivärdet `1` . Du kan kombinera flera filer i en minibatch.
+    - För `TabularDataset` är det storleken på data. Exempelvärden är `1024` , `1024KB` , och `10MB` `1GB` . Det rekommenderade värdet är `1MB` . Minibatchen från `TabularDataset` kommer aldrig att korsa filgränser. Om du till exempel har .csv-filer med olika storlekar är den minsta filen 100 KB och den största är 10 MB. Om du anger `mini_batch_size = 1MB` behandlas filer med en storlek som är mindre än 1 MB som en minibatch. Filer som är större än 1 MB delas upp i flera minibatchar.
+- `error_threshold`: Antalet postfel för och `TabularDataset` filfel för `FileDataset` som ska ignoreras under bearbetningen. Om felantalet för hela indata går över det här värdet avbryts jobbet. Feltröskelvärdet är för hela indata och inte för enskilda minibatch som skickas till `run()` metoden. Intervallet är `[-1, int.max]` . Delen `-1` anger att alla fel ignoreras under bearbetningen.
 - `output_action`: Ett av följande värden anger hur utdata ska ordnas:
-    - `summary_only`: Användar skriptet kommer att lagra utdata. `ParallelRunStep` kommer bara att använda utdata för fel tröskel beräkningen.
-    - `append_row`: För alla indata skapas bara en fil i mappen utdata för att lägga till alla utdata avgränsade med rad.
-- `append_row_file_name`: Om du vill anpassa namnet på utdatafilen för append_row output_action (valfritt; standardvärde `parallel_run_step.txt` ).
-- `source_directory`: Sökvägar till mappar som innehåller alla filer som ska köras på beräknings målet (valfritt).
-- `compute_target`: `AmlCompute` Stöds endast.
-- `node_count`: Antalet beräknade datornoder som ska användas för att köra användar skriptet.
-- `process_count_per_node`: Antalet processer per nod. Bästa praxis är att ställa in på antalet GPU eller CPU en nod har (valfritt; standardvärde är `1` ).
-- `environment`: Python-miljöns definition. Du kan konfigurera den att använda en befintlig python-miljö eller konfigurera en tillfällig miljö. Definitionen är också ansvarig för att ange nödvändiga program beroenden (valfritt).
-- `logging_level`: Logg utförlighet. Värden i ökande utförlighet är: `WARNING` , `INFO` och `DEBUG` . (valfritt; standardvärdet är `INFO` )
-- `run_invocation_timeout`: `run()` Tids gränsen för metod anrop i sekunder. (valfritt; standardvärdet är `60` )
-- `run_max_try`: Maximalt antal försök `run()` för en mini-batch. A `run()` Miss lyckas om ett undantag genereras eller om inget returneras när `run_invocation_timeout` nås (valfritt `3` ). 
+    - `summary_only`: Användarskriptet lagrar utdata. `ParallelRunStep` använder endast utdata för beräkningen av feltröskelvärdet.
+    - `append_row`: För alla indata skapas endast en fil i utdatamappen för att lägga till alla utdata avgränsade med rad.
+- `append_row_file_name`: Om du vill anpassa namnet på utdatafilen för append_row output_action (valfritt; standardvärdet är `parallel_run_step.txt` ).
+- `source_directory`: Sökvägar till mappar som innehåller alla filer som ska köras på beräkningsmålet (valfritt).
+- `compute_target`: Stöds `AmlCompute` endast.
+- `node_count`: Antalet beräkningsnoder som ska användas för att köra användarskriptet.
+- `process_count_per_node`: Antalet processer per nod. Bästa praxis är att ange antalet GPU eller CPU som en nod har (valfritt; standardvärdet är `1` ).
+- `environment`: Python-miljödefinitionen. Du kan konfigurera den så att den använder en befintlig Python-miljö eller för att konfigurera en tillfällig miljö. Definitionen ansvarar också för att ange nödvändiga programberoenden (valfritt).
+- `logging_level`: Loggens verbositet. Värden i ökande verbositet är: `WARNING` `INFO` , och `DEBUG` . (valfritt; standardvärdet är `INFO` )
+- `run_invocation_timeout`: `run()` Tidsgränsen för metodanrop i sekunder. (valfritt; standardvärdet är `60` )
+- `run_max_try`: Maximalt antal försök `run()` för en minibatch. Ett `run()` misslyckades om ett undantag returneras eller inget returneras när `run_invocation_timeout` har uppnåtts (valfritt; standardvärdet är `3` ). 
 
-Du kan ange `mini_batch_size` , `node_count` ,,, `process_count_per_node` `logging_level` `run_invocation_timeout` och `run_max_try` som `PipelineParameter` , så att du kan finjustera parametervärdena när du skickar om en pipeline-körning. I det här exemplet använder du `PipelineParameter` för `mini_batch_size` och `Process_count_per_node` och du kommer att ändra dessa värden när du skickar om en körning senare. 
+Du kan ange , , , , och som , så att du kan finjustera parametervärdena när du skickar `mini_batch_size` `node_count` en `process_count_per_node` `logging_level` `run_invocation_timeout` `run_max_try` `PipelineParameter` pipelinekörning igen. I det här exemplet använder du `PipelineParameter` för och och du ändrar dessa värden när du skickar en körning igen `mini_batch_size` `Process_count_per_node` senare. 
 
 ### <a name="parameters-for-creating-the-parallelrunstep"></a>Parametrar för att skapa ParallelRunStep
 
-Skapa ParallelRunStep med hjälp av skriptet, miljö konfigurationen och parametrarna. Ange det beräknings mål som du redan har kopplat till din arbets yta som mål för körning av ditt härlednings skript. Använd `ParallelRunStep` för att skapa pipeline-steget för batch-härledning, som tar alla följande parametrar:
-- `name`: Namnet på steget med följande namngivnings begränsningar: unika, 3-32 tecken och regex ^ \[ a-z \] ([-a-Z0-9] * [a-Z0-9])? $.
-- `parallel_run_config`: Ett `ParallelRunConfig` objekt som definieras tidigare.
-- `inputs`: En eller flera data uppsättningar med en enkel Azure Machine Learning typ som ska partitioneras för parallell bearbetning.
-- `side_inputs`: En eller flera referens data eller data uppsättningar som används som sid indata utan att behöva partitioneras.
-- `output`: Ett `OutputFileDatasetConfig` objekt som motsvarar utdata-katalogen.
-- `arguments`: En lista över argument som skickas till användar skriptet. Använd unknown_args för att hämta dem i ditt Entry-skript (valfritt).
-- `allow_reuse`: Om steget ska återanvända tidigare resultat när det körs med samma inställningar/indata. Om den här parametern är är `False` en ny körning alltid att skapas för det här steget under pipeline-körningen. (valfritt; standardvärdet är `True` .)
+Skapa ParallelRunStep med hjälp av skriptet, miljökonfigurationen och parametrarna. Ange beräkningsmålet som du redan har kopplat till arbetsytan som körningsmål för ditt härledningsskript. Använd `ParallelRunStep` för att skapa pipelinesteget för batch-slutsatsledning, som tar alla följande parametrar:
+- `name`: Namnet på steget, med följande namngivningsbegränsningar: unika, 3–32 tecken och regex ^ \[ a-z \] ([-a-z0-9]*[a-z0-9])?$.
+- `parallel_run_config`: Ett `ParallelRunConfig` -objekt, som definierades tidigare.
+- `inputs`: En eller flera datauppsättningar Azure Machine Learning som ska partitioneras för parallell bearbetning.
+- `side_inputs`: En eller flera referensdata eller datauppsättningar som används som sidoindata utan att behöva partitioneras.
+- `output`: Ett `OutputFileDatasetConfig` objekt som motsvarar utdatakatalogen.
+- `arguments`: En lista med argument som skickas till användarskriptet. Använd unknown_args för att hämta dem i ditt startskript (valfritt).
+- `allow_reuse`: Om steget ska återanvända tidigare resultat när det körs med samma inställningar/indata. Om den här `False` parametern är genereras alltid en ny körning för det här steget under pipelinekörningen. (valfritt; standardvärdet är `True` .)
 
 ```python
 from azureml.pipeline.steps import ParallelRunStep
@@ -155,48 +155,48 @@ parallelrun_step = ParallelRunStep(
 )
 ```
 
-## <a name="debugging-techniques"></a>Fel söknings tekniker
+## <a name="debugging-techniques"></a>Felsökningstekniker
 
-Det finns tre huvud tekniker för fel sökning av pipeliner: 
+Det finns tre huvudsakliga tekniker för felsökning av pipelines: 
 
-* Felsöka enskilda pipeline-steg på din lokala dator
-* Använd loggning och Application Insights för att isolera och diagnostisera problemets källa
-* Koppla en fjärr fel sökare till en pipeline som körs i Azure
+* Felsöka enskilda pipelinesteg på din lokala dator
+* Använda loggning Application Insights för att isolera och diagnostisera orsaken till problemet
+* Koppla ett fjärrfelsökare till en pipeline som körs i Azure
 
 ### <a name="debug-scripts-locally"></a>Felsöka skript lokalt
 
-Ett av de vanligaste felen i en pipeline är att domän skriptet inte körs som avsett eller innehåller körnings fel i fjärrberäknings kontexten som är svåra att felsöka.
+Ett av de vanligaste felen i en pipeline är att domänskriptet inte körs som avsett eller innehåller körningsfel i fjärrbearbetningskontexten som är svåra att felsöka.
 
-Det går inte att köra pipeliner lokalt, men om du kör skripten i isolering på din lokala dator kan du felsöka snabbare eftersom du inte behöver vänta på bearbetningen av beräknings-och miljö versionen. Det krävs en del utvecklings arbete för att göra detta:
+Själva pipelines kan inte köras lokalt, men om du kör skripten isolerat på den lokala datorn kan du felsöka snabbare eftersom du inte behöver vänta på beräknings- och miljöbyggprocessen. Vissa utvecklingsarbete krävs för att göra detta:
 
-* Om dina data finns i ett moln data lager måste du hämta data och göra dem tillgängliga för ditt skript. Att använda ett litet exempel på dina data är ett bra sätt att skära ned i körningen och snabbt få feedback om skript beteende
-* Om du försöker simulera ett mellanliggande pipeline-steg kan du behöva bygga de objekt typer som det aktuella skriptet förväntar sig i föregående steg
-* Du måste också definiera en egen miljö och replikera de beroenden som definierats i fjärrberäknings miljön
+* Om dina data finns i ett molndatalager måste du ladda ned data och göra dem tillgängliga för ditt skript. Att använda ett litet exempel på dina data är ett bra sätt att minska körningen och snabbt få feedback om skriptbeteende
+* Om du försöker simulera ett mellanliggande pipelinesteg kan du behöva skapa objekttyperna som det specifika skriptet förväntar sig från föregående steg manuellt
+* Du måste också definiera din egen miljö och replikera de beroenden som definierats i fjärrbearbetningsmiljön
 
-När du har en skript konfiguration som ska köras i din lokala miljö är det mycket enklare att utföra fel sökning av uppgifter, t. ex.:
+När du har en skriptkonfiguration som ska köras i din lokala miljö är det mycket enklare att utföra felsökningsuppgifter som:
 
-* Bifoga en anpassad fel söknings konfiguration
-* Pausa körning och inspektera objekt tillstånd
-* Fångst typ eller logiska fel som inte ska exponeras förrän runtime
+* Koppla en anpassad felsökningskonfiguration
+* Pausa körningen och inspektera objekttillståndet
+* Fånga typ eller logiska fel som inte exponeras förrän körning
 
 > [!TIP] 
-> När du kan kontrol lera att skriptet körs som förväntat kör du ett lämpligt nästa steg i en pipeline för ett enda steg innan du försöker köra det i en pipeline med flera steg.
+> När du kan kontrollera att skriptet körs som förväntat är ett bra nästa steg att köra skriptet i en pipeline i ett steg innan du försöker köra det i en pipeline med flera steg.
 
-## <a name="configure-write-to-and-review-pipeline-logs"></a>Konfigurera, skriva till och granska pipeline-loggar
+## <a name="configure-write-to-and-review-pipeline-logs"></a>Konfigurera, skriva till och granska pipelineloggar
 
-Att testa skript lokalt är ett bra sätt att felsöka större kodfragment och komplex logik innan du börjar skapa en pipeline, men ibland behöver du felsöka skript under själva pipeline-körningen, särskilt när du diagnostiserar beteende som inträffar under interaktionen mellan pipeline-steg. Vi rekommenderar att du använder `print()` instruktioner i dina steg skript så att du kan se objekt status och förväntade värden under fjärrkörning, på samma sätt som du skulle felsöka JavaScript-kod.
+Att testa skript lokalt är ett bra sätt att felsöka större kodfragment och komplex logik innan du börjar skapa en pipeline, men du kommer troligen att behöva felsöka skript under själva pipelinekörningen, särskilt när du diagnostiserar beteende som inträffar under interaktionen mellan pipelinestegen. Vi rekommenderar att du använder -instruktioner i dina stegskript så att du kan se objekttillstånd och förväntade värden under fjärrkörningen, ungefär som när du felsöker `print()` JavaScript-kod.
 
-### <a name="logging-options-and-behavior"></a>Loggnings alternativ och beteende
+### <a name="logging-options-and-behavior"></a>Loggningsalternativ och beteende
 
-Tabellen nedan innehåller information om olika fel söknings alternativ för pipelines. Det är inte en fullständig lista, som andra alternativ finns förutom bara de Azure Machine Learning-, python-och Open-räkningar som visas här.
+Tabellen nedan innehåller information om olika felsökningsalternativ för pipelines. Det är inte en fullständig lista, eftersom det finns andra alternativ förutom de Azure Machine Learning, Python och OpenCensus som visas här.
 
 | Bibliotek                    | Typ   | Exempel                                                          | Mål                                  | Resurser                                                                                                                                                                                                                                                                                                                    |
 |----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portalens användar gränssnitt             | [Spåra experiment](how-to-track-experiments.md)<br>[azureml. Core. Run-klass](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
-| Python-utskrift/-loggning    | Loggas    | `print(val)`<br>`logging.info(message)`                          | Driv rutins loggar, Azure Machine Learning designer | [Spåra experiment](how-to-track-experiments.md)<br><br>[Python-loggning](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
-| OpenCensus Python          | Loggas    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights-spår                | [Felsöka pipelines i Application Insights.](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportörer](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Cookbook för python-loggning](https://docs.python.org/3/howto/logging-cookbook.html) |
+| Azure Machine Learning SDK | Metric | `run.log(name, val)`                                             | Azure Machine Learning portalgränssnitt             | [Spåra experiment](how-to-log-view-metrics.md)<br>[azureml.core.Run-klass](/python/api/azureml-core/azureml.core.run%28class%29)                                                                                                                                                 |
+| Python-utskrift/-loggning    | Loggas    | `print(val)`<br>`logging.info(message)`                          | Drivrutinsloggar, Azure Machine Learning designer | [Spåra experiment](how-to-log-view-metrics.md)<br><br>[Python-loggning](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Loggas    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – spårningar                | [Felsöka pipelines i Application Insights.](./how-to-log-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportörer](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Cookbook för Python-loggning](https://docs.python.org/3/howto/logging-cookbook.html) |
 
-#### <a name="logging-options-example"></a>Exempel på loggnings alternativ
+#### <a name="logging-options-example"></a>Exempel på loggningsalternativ
 
 ```python
 import logging
@@ -230,50 +230,50 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning Designer
 
-För pipeliner som skapats i designern kan du hitta **70_driver_log** -filen på antingen sidan redigering eller på sidan körnings information för pipelinen.
+För pipelines som skapats i designern hittar du **70_driver_log** på redigeringssidan eller på informationssidan för pipelinekörningar.
 
-### <a name="enable-logging-for-real-time-endpoints"></a>Aktivera loggning för slut punkter i real tid
+### <a name="enable-logging-for-real-time-endpoints"></a>Aktivera loggning för realtidsslutpunkter
 
-För att felsöka och felsöka real tids slut punkter i designern måste du aktivera program insikts loggning med hjälp av SDK. Med loggning kan du felsöka och felsöka problem med distribution och användning av modeller. Mer information finns i [Logga in för distribuerade modeller](./how-to-enable-app-insights.md). 
+För att kunna felsöka realtidsslutpunkter i designern måste du aktivera Application Insight-loggning med SDK:n. Med loggning kan du felsöka problem med modelldistribution och användning. Mer information finns i [Loggning för distribuerade modeller.](./how-to-enable-app-insights.md) 
 
-### <a name="get-logs-from-the-authoring-page"></a>Hämta loggar från sidan redigering
+### <a name="get-logs-from-the-authoring-page"></a>Hämta loggar från redigeringssidan
 
-När du skickar en pipeline-körning och stannar på sidan redigering kan du hitta de loggfiler som genereras för varje modul när varje modul har slutförts.
+När du skickar en pipelinekörning och är kvar på redigeringssidan kan du hitta loggfilerna som genererats för varje modul när varje modul har körts klart.
 
-1. Välj en modul som har körts klart på redigerings arbets ytan.
-1. I den högra rutan i modulen går du till fliken  **utdata + loggar** .
-1. Expandera den högra rutan och välj **70_driver_log.txt** för att visa filen i webbläsaren. Du kan också hämta loggar lokalt.
+1. Välj en modul som har körts klart på redigeringsarbetsytan.
+1. I den högra rutan i modulen går du till  **fliken Utdata +** loggar.
+1. Expandera den högra rutan och välj den **70_driver_log.txtför** att visa filen i webbläsaren. Du kan också ladda ned loggar lokalt.
 
-    ![Fönster för utökad utdata i designern](./media/how-to-debug-pipelines/designer-logs.png)
+    ![Expanderat utdatafönster i designern](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="get-logs-from-pipeline-runs"></a>Hämta loggar från pipeline-körningar
+### <a name="get-logs-from-pipeline-runs"></a>Hämta loggar från pipelinekörningar
 
-Du kan också hitta loggfilerna för vissa körningar på sidan körnings information för pipeline, som du hittar i avsnittet **pipelines** eller **experiment** i Studio.
+Du hittar även loggfilerna för specifika körningar på informationssidan för pipelinekörningar, som du hittar i avsnittet **Pipelines** eller **Experiment** i studio.
 
-1. Välj en pipeline-körning som skapats i designern.
+1. Välj en pipelinekörning som skapats i designern.
 
-    ![Sidan pipeline-körning](./media/how-to-debug-pipelines/designer-pipelines.png)
+    ![Sidan Pipelinekörning](./media/how-to-debug-pipelines/designer-pipelines.png)
 
-1. Välj en modul i förhands gransknings fönstret.
-1. I den högra rutan i modulen går du till fliken  **utdata + loggar** .
-1. Expandera den högra rutan om du vill visa **70_driver_log.txt** filen i webbläsaren eller välj filen för att ladda ned loggarna lokalt.
+1. Välj en modul i förhandsgranskningsfönstret.
+1. I den högra rutan i modulen går du till  **fliken Utdata +** loggar.
+1. Expandera det högra fönstret om du vill **70_driver_log.txt** filen i webbläsaren eller välj filen för att ladda ned loggarna lokalt.
 
 > [!IMPORTANT]
-> Om du vill uppdatera en pipeline från sidan körnings information för pipelinen måste du **klona** pipeline-körningen till ett nytt pipeline-utkast. En pipeline-körning är en ögonblicks bild av pipelinen. Det liknar en loggfil och kan inte ändras. 
+> Om du vill uppdatera en pipeline från sidan med information om pipelinekörningen måste du **klona** pipelinekörningen till ett nytt pipelineutkast. En pipelinekörning är en ögonblicksbild av pipelinen. Det liknar en loggfil och kan inte ändras. 
 
 ## <a name="application-insights"></a>Application Insights
-Mer information om hur du använder python-biblioteket för openräkning på det här sättet finns i den här guiden: [Felsöka och Felsök maskin inlärnings pipeliner i Application Insights](./how-to-log-pipelines-application-insights.md)
+Mer information om hur du använder Python-biblioteket OpenCensus på det här sättet finns i den här guiden: Felsöka pipelines för [maskininlärning i Application Insights](./how-to-log-pipelines-application-insights.md)
 
-## <a name="interactive-debugging-with-visual-studio-code"></a>Interaktiv fel sökning med Visual Studio Code
+## <a name="interactive-debugging-with-visual-studio-code"></a>Interaktiv felsökning med Visual Studio Code
 
-I vissa fall kan du behöva interaktivt felsöka python-koden som används i ML-pipeline. Genom att använda Visual Studio Code (VS Code) och debugpy kan du ansluta till koden när den körs i tränings miljön. Mer information finns [i interaktiv fel sökning i vs Code guide](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines).
+I vissa fall kan du behöva felsöka Python-koden som används i ML-pipelinen interaktivt. Med hjälp Visual Studio Code (VS Code) och debugpy kan du ansluta till koden när den körs i träningsmiljön. Mer information finns i guiden [för interaktiv felsökning i VS Code.](how-to-debug-visual-studio-code.md#debug-and-troubleshoot-machine-learning-pipelines)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* En fullständig självstudie med `ParallelRunStep` finns i [Självstudier: bygga en Azure Machine Learning pipeline för batch-Poäng](tutorial-pipeline-batch-scoring-classification.md).
+* En fullständig självstudie med `ParallelRunStep` hjälp av finns i [Tutorial: Build an Azure Machine Learning pipeline for batch scoring](tutorial-pipeline-batch-scoring-classification.md).
 
-* Ett fullständigt exempel som visar Automatisk maskin inlärning i ML pipelines finns i [använda automatisk ml i en Azure Machine Learning pipeline i python](how-to-use-automlstep-in-pipelines.md).
+* Ett komplett exempel som visar automatiserad maskininlärning i ML-pipelines finns i [Använda automatiserad ML i en Azure Machine Learning-pipeline i Python](how-to-use-automlstep-in-pipelines.md).
 
-* Se SDK-referensen för hjälp med [azureml-pipeline – Core-](/python/api/azureml-pipeline-core/) paketet och [azureml-pipeline-steg-](/python/api/azureml-pipeline-steps/) paketet.
+* I SDK-referensen finns hjälp med [paketet azureml-pipelines-core](/python/api/azureml-pipeline-core/) och [paketet azureml-pipelines-steps.](/python/api/azureml-pipeline-steps/)
 
-* Se listan över [designers undantag och felkoder](algorithm-module-reference/designer-error-codes.md).
+* Se listan över [designerundantag och felkoder.](algorithm-module-reference/designer-error-codes.md)

@@ -45,7 +45,9 @@
           href: tutorial-sql-server-managed-instance-online.md
     - name: Migrera MySQL
       items:
-        - name: till Azure Database for MySQL
+        - name: för Azure Database for MySQL (offline)
+          href: tutorial-mysql-azure-mysql-offline-portal.md
+        - name: för Azure Database for MySQL (online)
           href: tutorial-mysql-azure-mysql-online.md
     - name: Migrera RDS MySQL
       items:
@@ -87,6 +89,8 @@
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-online.md
         - name: SQL Server till SQL MI (offline)
           href: howto-sql-server-to-azure-sql-managed-instance-powershell-offline.md
+        - name: MySQL till Azure Database for MySQL (offline)
+          href: migrate-mysql-to-azure-mysql-powershell.md
     - name: Distribuera om SSIS-paket till
       items:
         - name: Azure SQL Database
@@ -141,9 +145,9 @@
               href: known-issues-azure-sql-db-managed-instance-online.md
             - name: Azure DB för MySQL
               href: known-issues-azure-mysql-online.md
-            - name: PostgreSQL till Azure DB för PostgreSQL
+            - name: PostgreSQL till Azure DB for PostgreSQL
               href: known-issues-azure-postgresql-online.md
-            - name: Oracle till Azure DB för PostgreSQL
+            - name: Oracle till Azure DB for PostgreSQL
               href: known-issues-oracle-azure-postgresql-online.md
             - name: MongoDB till Azure Cosmos DB API för MongoDB
               href: known-issues-mongo-cosmos-db.md

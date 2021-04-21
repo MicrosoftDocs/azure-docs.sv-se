@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 93c0c77ad36be82802fd53e4130e48ac431b0280
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749680"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819294"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Snabbstart: Skapa ett nyckelvalv med hjälp av Azure Portal
 
@@ -69,5 +69,5 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här snabbstarten skapade du en Key Vault med hjälp av Azure Portal. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](overview.md)
-- Granska Azure Key Vault [säkerhetsöversikten](security-overview.md)
+- Granska Azure Key Vault [säkerhetsöversikten](security-features.md)
 - Se [Azure Key Vault för utvecklare](developers-guide.md)

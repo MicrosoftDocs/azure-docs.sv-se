@@ -1,47 +1,42 @@
 ---
-title: Självstudie – belastningsutjämna virtuella Linux-datorer i Azure
+title: Självstudie – Belastningsutjämna virtuella datorer för hög tillgänglighet
 description: I den här självstudien lär du dig hur du använder Azure CLI för att skapa en lastbalanserare för ett säkert program med hög tillgänglighet på tre virtuella Linux-datorer
-services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/13/2017
+ms.date: 04/20/2021
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 433bbd51618cfb5624c8ed2c549e1793488f0e81
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 191eb1338533cf1a5f81f4d04c5dfc6fd5cc569c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553773"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818754"
 ---
-# <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Självstudie: lastbalansera virtuella Linux-datorer i Azure för att skapa ett program med hög tillgänglighet med Azure CLI
+# <a name="tutorial-load-balance-vms-for-high-availability"></a>Självstudie: Belastningsutjämna virtuella datorer för hög tillgänglighet
 
 Med belastningsutjämning får du högre tillgänglighet genom att inkommande begäranden sprids över flera virtuella datorer. I den här kursen får du lära dig mer om de olika komponenterna i Azure Load Balancer som distribuerar trafik och ger hög tillgänglighet. Lär dig att:
 
 > [!div class="checklist"]
-> * skapa en Azure Load Balancer
-> * skapa en hälsoavsökning för lastbalanseraren
-> * skapa trafikregler för lastbalanseraren
-> * Använda cloud-init för att skapa en grundläggande Node.js-app
-> * skapa virtuella datorer och anslut dem till en lastbalanserare
-> * visa en lastbalanserare i praktiken
-> * lägga till och ta bort virtuella datorer från en lastbalanserare.
+> * Skapa en lastbalanserare
+> * Skapa en hälsoavsökning
+> * Skapa trafikregler
+> * Använda cloud-init för att installera en grundläggande Node.js app
+> * Skapa virtuella datorer och koppla dem till lastbalanseraren
+> * Visa lastbalanseraren i praktiken
+> * Lägga till och ta bort virtuella datorer från lastbalanseraren
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="azure-load-balancer-overview"></a>Översikt över Azure Load Balancer
+
 En Azure-lastbalanserare är en Layer-4-lastbalanserare (TCP, UDP) som ger hög tillgänglighet genom att distribuera inkommande trafik till felfria virtuella datorer. Lastbalanseraren har en hälsoavsökningsfunktion som övervakar en given port på varje virtuell dator och ser till att trafik endast distribueras till virtuella datorer som fungerar.
 
 Du definierar en IP-konfiguration på klientdelen som innehåller en eller flera offentliga IP-adresser. IP-konfigurationen på klientdelen gör att det går att komma åt lastbalanseraren och program via Internet. 
@@ -54,7 +49,7 @@ Om du följde den föregående självstudien [skapa en VM-skalningsuppsättning]
 
 
 ## <a name="create-azure-load-balancer"></a>Skapa en Azure Load Balancer
-I det här avsnittet beskrivs hur du skapar och konfigurerar varje komponent i lastbalanseraren. Innan du kan skapa lastbalanseraren måste du skapa en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resurs grupp med namnet *myResourceGroupLoadBalancer* på platsen för *öster* :
+I det här avsnittet beskrivs hur du skapar och konfigurerar varje komponent i lastbalanseraren. Innan du kan skapa lastbalanseraren måste du skapa en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resursgrupp med *namnet myResourceGroupLoadBalancer* på *platsen eastus:*
 
 ```azurecli-interactive
 az group create --name myResourceGroupLoadBalancer --location eastus
@@ -219,7 +214,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Skapa virtuella datorer
 Placera dina virtuella datorer i en tillgänglighetsuppsättning för att förbättra tillgängligheten för din app. Mer information om tillgänglighetsuppsättningar finns i den tidigare självstudien [Skapa virtuella datorer med hög tillgänglighet](tutorial-availability-sets.md).
 
-Skapa en tillgänglighets uppsättning med [AZ VM Availability-set Create](/cli/azure/vm/availability-set). I följande exempel skapas en tillgänglighetsuppsättning med namnet *myAvailabilitySet*:
+Skapa en tillgänglighetsuppsättning med [az vm availability-set create](/cli/azure/vm/availability-set). I följande exempel skapas en tillgänglighetsuppsättning med namnet *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \

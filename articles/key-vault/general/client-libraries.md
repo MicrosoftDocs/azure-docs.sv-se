@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/14/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 37e67ad869af23b51497e1497865f620bae612aa
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b8690b5ce3e2aee9a554d3e0682161b86264e124
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749194"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818541"
 ---
 # <a name="client-libraries-for-azure-key-vault"></a>Klientbibliotek för Azure Key Vault
 
@@ -24,7 +24,7 @@ Klientbiblioteken för Azure Key Vault programmatisk åtkomst till Key Vault fun
 
 Varje SDK har separata klientbibliotek för nyckelvalv, hemligheter, nycklar och certifikat enligt tabellen nedan.
 
-| Språk | Hemligheter | Nycklar | Certifikat | Key Vault (hanteringsplan) |
+| Språk | Hemligheter | Nycklar | Certifikat | Key Vault (hanteringsplanet) |
 |--|--|--|--|--|
 | .NET | - [API-referens](/dotnet/api/azure.security.keyvault.secrets)<br>- [NuGet-paket](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault/Azure.Security.KeyVault.Secrets)<br>- [Quickstart](../secrets/quick-create-net.md) | - [API-referens](/dotnet/api/azure.security.keyvault.keys)<br>- [NuGet-paket](https://www.nuget.org/packages/Azure.Security.KeyVault.Keys/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault/Azure.Security.KeyVault.Keys)<br>- [Quickstart](../keys/quick-create-net.md) | - [API-referens](/dotnet/api/azure.security.keyvault.certificates)<br>- [NuGet-paket](https://www.nuget.org/packages/Azure.Security.KeyVault.Certificates/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault/Azure.Security.KeyVault.Certificates)<br>- [Quickstart](../certificates/quick-create-net.md) | - [API-referens](/dotnet/api/microsoft.azure.management.keyvault)<br>- [NuGet-paket](https://www.nuget.org/packages/Microsoft.Azure.Management.KeyVault/)<br> - [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault/Microsoft.Azure.Management.KeyVault)|
 | Python| - [API-referens](/python/api/overview/azure/keyvault-secrets-readme)<br>- [PyPi-paket](https://pypi.org/project/azure-keyvault-secrets/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-secrets)<br>- [Quickstart](../secrets/quick-create-python.md) |- [API-referens](/python/api/overview/azure/keyvault-keys-readme)<br>- [PyPi-paket](https://pypi.org/project/azure-keyvault-keys/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-keys)<br>- [Quickstart](../keys/quick-create-python.md) | - [API-referens](/python/api/overview/azure/keyvault-certificates-readme)<br>- [PyPi-paket](https://pypi.org/project/azure-keyvault-certificates/)<br>- [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-keyvault-certificates)<br>- [Quickstart](../certificates/quick-create-python.md) | - [API-referens](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br> - [PyPi-paket](https://pypi.org/project/azure-mgmt-keyvault/)<br> - [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault/azure-mgmt-keyvault)|
@@ -35,4 +35,4 @@ Varje SDK har separata klientbibliotek för nyckelvalv, hemligheter, nycklar och
 
 - Se guiden [Azure Key Vault utvecklare](developers-guide.md)
 - Läs mer om [autentisering till ett nyckelvalv](authentication.md)
-- Läs mer om [att skydda åtkomst till en Key Vault](security-overview.md)
+- Läs mer om [att skydda åtkomst till en Key Vault](security-features.md)

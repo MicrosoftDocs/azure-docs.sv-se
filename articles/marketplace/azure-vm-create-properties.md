@@ -1,89 +1,89 @@
 ---
-title: Konfigurera egenskaper för virtuell dator i Azure Marketplace
-description: Lär dig hur du konfigurerar egenskaper för virtuella datorer på Azure Marketplace.
+title: Konfigurera egenskaper för erbjudanden för virtuella datorer på Azure Marketplace
+description: Lär dig hur du konfigurerar egenskaper för erbjudanden för virtuella datorer Azure Marketplace.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 281553782774c31ec8cfaf614542fd739c4d3dd9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5942368ba1709127b815a35676b716955c1bee8f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629537"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819096"
 ---
-# <a name="how-to-configure-virtual-machine-offer-properties"></a>Så här konfigurerar du egenskaper för erbjudande för virtuell dator
+# <a name="configure-virtual-machine-offer-properties"></a>Konfigurera egenskaper för erbjudande för virtuell dator
 
-På sidan **Egenskaper** (Välj från vänster-navigerings-menyn i Partner Center) definierar du de kategorier som används för att gruppera din virtuella dator erbjudandet på Azure Marketplace, din program version och de juridiska kontrakt som stöder erbjudandet.
+På sidan **Egenskaper** (välj från den vänstra navigeringsmenyn) definierar du de kategorier som används för att gruppera erbjudandet om den virtuella datorn (VM) på Azure Marketplace, din programversion och de juridiska kontrakt som stöder ditt erbjudande.
 
 ## <a name="select-a-category"></a>Välj en kategori
 
-Välj kategorier och under Kategorier för att placera ditt erbjudande i lämpliga sökområden för Azure Marketplace. Var noga med att beskriva senare i beskrivningen av erbjudandet om hur ditt erbjudande stöder dessa kategorier.
+Välj kategorier och underkategorier för att placera ditt erbjudande i lämpliga Azure Marketplace sökområden. Se till att du senare i erbjudandebeskrivningen beskriver hur ditt erbjudande stöder dessa kategorier.
 
-- Välj en primär kategori.
-- Om du vill lägga till en andra valfri kategori (sekundär) väljer du länken **+ Kategorier** .
-- Välj upp till två under Kategorier för den primära och/eller sekundära kategorin. Om ingen under kategori gäller ditt erbjudande väljer du **ej tillämpligt**. Använd Ctrl och klicka för att välja en andra under kategori.
+- Välj en Primär kategori.
+- Om du vill lägga till en andra valfri kategori (sekundär) väljer du **länken +Kategorier.**
+- Välj upp till två underkategorier för kategorin Primär och/eller Sekundär. Om ingen underkategori gäller för ditt erbjudande väljer du **Ej tillämpligt.** Använd Ctrl+ klicka för att välja en andra underkategori.
 
-Se den fullständiga listan över kategorier och under Kategorier i [erbjudande lista med bästa praxis](gtm-offer-listing-best-practices.md). Virtual Machine-erbjudanden visas alltid under **beräknings** kategorin på Azure Marketplace.
+Se den fullständiga listan över kategorier och underkategorier i [Metodtips för erbjudandelistor.](gtm-offer-listing-best-practices.md) Erbjudanden för virtuella datorer visas alltid under **kategorin Compute** på Azure Marketplace.
 
-## <a name="provide-terms-and-conditions"></a>Ange villkor
+## <a name="provide-terms-and-conditions"></a>Ange allmänna villkor
 
-Under **juridisk**, ange villkor för ditt erbjudande. Du kan välja mellan två alternativ:
+Under **Juridiskt** anger du villkor för ditt erbjudande. Du kan välja mellan två alternativ:
 
-- [Använd standard kontraktet med valfria ändringar](#use-the-standard-contract)
-- [Använd egna villkor](#use-your-own-terms-and-conditions)
+- [Använd standardavtalet med valfria ändringar](#use-the-standard-contract)
+- [Använd dina egna villkor](#use-your-own-terms-and-conditions)
 
-Mer information om standard kontraktet och valfria ändringar finns i [standard kontrakt för Microsoft Commercial Marketplace](standard-contract.md). Du kan ladda ned [standard kontraktet](https://go.microsoft.com/fwlink/?linkid=2041178) PDF (se till att blockering av popup-fönster är inaktiverat).
+Mer information om standardavtalet och valfria ändringar finns i [Standardavtal för Microsofts kommersiella marknadsplats.](standard-contract.md) Du kan ladda ned [Standardavtal](https://go.microsoft.com/fwlink/?linkid=2041178) PDF-filen (kontrollera att blockeringen av popup-fönster är inaktiverad).
 
-### <a name="use-the-standard-contract"></a>Använd standard kontraktet
+### <a name="use-the-standard-contract"></a>Använda standardavtalet
 
-För att förenkla inköps processen för kunder och minska den juridiska komplexiteten för program varu leverantörer erbjuder Microsoft ett standard kontrakt som du kan använda för dina erbjudanden på den kommersiella marknaden. När du erbjuder program varan under standard kontraktet behöver kunderna bara läsa och godkänna den en gång, och du behöver inte skapa anpassade allmänna villkor.
+För att förenkla anskaffningsprocessen för kunder och minska programvaruleverantörers juridiska komplexitet erbjuder Microsoft ett standardavtal som du kan använda för dina erbjudanden på den kommersiella marknadsplatsen. När du erbjuder din programvara enligt standardavtalet behöver kunderna bara läsa och godkänna den en gång och du behöver inte skapa anpassade villkor.
 
-1. Markera kryss rutan **Använd standard kontraktet för Microsofts kommersiella Marketplace** .
+1. Markera kryssrutan **Använd Standardavtal för Microsofts kommersiella marknadsplats.**
 
-   ![Visar kryss rutan Använd standard kontraktet för Microsofts kommersiella Marketplace.](partner-center-portal/media/use-standard-contract.png)
+   ![Visar kryssrutan Använd Standardavtal för Microsofts kommersiella marknadsplats.](partner-center-portal/media/use-standard-contract.png)
 
-1. I **bekräftelse** dialog rutan väljer du **acceptera**. Beroende på skärmens storlek kan du behöva rulla upp för att se den.
-1. Välj **Spara utkast** innan du fortsätter.
+1. I dialogrutan **Bekräftelse** väljer du **Acceptera**. Beroende på skärmens storlek kan du behöva rulla uppåt för att se den.
+1. Välj **Spara utkast innan** du fortsätter.
 
    > [!NOTE]
-   > När du har publicerat ett erbjudande med standard kontraktet för den kommersiella marknads platsen kan du inte använda dina egna anpassade villkor. Erbjud antingen lösningen enligt standard kontraktet med valfria ändringar eller under egna villkor.
+   > När du har publicerat ett erbjudande Standardavtal på den kommersiella marknadsplatsen kan du inte använda dina egna anpassade villkor. Antingen erbjuder du din lösning enligt standardavtalet med valfria ändringar eller enligt dina egna villkor.
 
-#### <a name="add-amendments-to-the-standard-contract-optional"></a>Lägg till ändringar i standard kontraktet (valfritt)
+#### <a name="add-amendments-to-the-standard-contract-optional"></a>Lägga till ändringar i standardavtalet (valfritt)
 
-Det finns två typer av ändringar som är tillgängliga: *universell* och *anpassad*.
+Det finns två typer av ändringar: *universella* och *anpassade*.
 
-##### <a name="add-universal-amendment-terms"></a>Lägg till generella ändrings villkor
+##### <a name="add-universal-amendment-terms"></a>Lägga till villkor för universella ändringar
 
-I **villkoren för Universal-ändringar till standard kontraktet för Microsofts handels marknads plats** anger du villkoren för den allmänna ändringen. Du kan ange ett obegränsat antal tecken i den här rutan. Dessa villkor visas för kunder i AppSource, Azure Marketplace och/eller Azure Portal under identifierings-och inköps flödet.
+I rutan **Universal amendment terms to the standard contract for Microsoft's commercial marketplace (Allmänna tilläggsvillkor till standardavtalet för Microsofts kommersiella marknadsplats)** anger du dina villkor för universella ändringar. Du kan ange ett obegränsat antal tecken i den här rutan. Dessa villkor visas för kunder i AppSource, Azure Marketplace och/eller Azure Portal under identifierings- och inköpsflödet.
 
-##### <a name="add-one-or-more-custom-amendments"></a>Lägg till en eller flera anpassade ändringar
+##### <a name="add-one-or-more-custom-amendments"></a>Lägga till en eller flera anpassade ändringar
 
-1. Under **anpassade ändrings villkor till standard kontraktet för Microsofts kommersiella marknads plats** väljer du länken **Lägg till anpassad ändrings term (max 10)** .
-2. Ange dina **anpassade ändrings villkor** i rutan.
-3. Ange **klient-ID** i rutan. Endast kunder som är kopplade till klient-ID: n som du anger för de här anpassade villkoren visas i erbjudandet inköps flöde i Azure Portal.
+1. Under **Villkor för anpassade ändringar i Standardavtal för Microsofts** kommersiella marknadsplats väljer du länken Lägg till anpassad **ändringsterm (max 10).**
+2. Ange dina **villkor för anpassad** ändring i rutan.
+3. Ange **klientorganisations-ID** i rutan. Endast kunder som är kopplade till de klient-ID:er som du anger för dessa anpassade villkor ser dem i erbjudandets inköpsflöde i Azure Portal.
 
    > [!TIP]
-   > Ett klient-ID identifierar din kund i Azure. Du kan be kunden om detta ID och de kan hitta det genom att gå till [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Egenskaper**. Värdet för katalog-ID är klient-ID (till exempel `50c464d3-4930-494c-963c-1e951d15360e` ). Du kan också leta upp organisationens klient-ID för din kund genom att använda deras domän namns-URL i [Vad är mitt Microsoft Azure-och Office 365-klient-ID?](https://www.whatismytenantid.com/).
+   > Ett klientorganisations-ID identifierar din kund i Azure. Du kan be kunden om detta ID och de hittar det genom att gå till [**https://portal.azure.com**](https://portal.azure.com)  >  **Azure Active Directory**  >  **Egenskaper**. Katalog-ID-värdet är klientorganisations-ID:t (till exempel `50c464d3-4930-494c-963c-1e951d15360e` ). Du kan också leta upp organisationens klientorganisations-ID för din kund med hjälp av deras domännamns-URL i Vad är mitt Microsoft Azure och [Office 365-klientorganisations-ID?](https://www.whatismytenantid.com/).
 
-4. Alternativt kan du ange en egen **Beskrivning** för klient-ID: t. Den här beskrivningen hjälper dig att identifiera den kund som du är mål för med ändringen.
-5. Om du vill lägga till ett annat klient-ID väljer du länken **Lägg till en kunds klient-ID (max 10)** och upprepar steg 3 och 4. Du kan lägga till upp till 20 klient-ID: n.
-6. Upprepa steg 1 till 5 för att lägga till ytterligare en ändrings period. Du kan ange upp till tio anpassade ändrings villkor per erbjudande.
-7. Välj **Spara utkast** innan du fortsätter.
+4. Du kan också ange en beskrivning av klient-ID:t.  Den här beskrivningen hjälper dig att identifiera kunden du riktar ändringen mot.
+5. Om du vill lägga till ett annat klientorganisations-ID väljer du länken Lägg till en kunds **klient-ID (max 10)** och upprepar steg 3 och 4. Du kan lägga till upp till 20 klient-ID:er.
+6. Upprepa steg 1 till 5 om du vill lägga till ytterligare en ändringsterm. Du kan ange upp till tio anpassade ändringsvillkor per erbjudande.
+7. Välj **Spara utkast innan** du fortsätter.
 
-### <a name="use-your-own-terms-and-conditions"></a>Använd egna villkor
+### <a name="use-your-own-terms-and-conditions"></a>Använd dina egna villkor
 
-Du kan välja att ange egna villkor, i stället för standard kontraktet. Kunderna måste acceptera dessa villkor innan de kan testa ditt erbjudande.
+Du kan ange egna villkor i stället för att använda standardavtalet. Kunderna måste acceptera dessa villkor innan de kan prova ditt erbjudande.
 
-1. Under **Legal**, avmarkerar du kryss rutan **Använd standard kontraktet för Microsofts kommersiella Marketplace** .
-1. I rutan **allmänna villkor** anger du upp till 10 000 tecken text.
+1. Under **Juridiskt** avmarkerar **du kryssrutan Använd Standardavtal för Microsofts kommersiella marknadsplats.**
+1. I **rutan Allmänna villkor** anger du upp till 10 000 tecken text.
 
    > [!NOTE]
-   > Om du behöver en längre Beskrivning anger du en enskild webb adress som pekar på var du hittar dina villkor. Den kommer att visas för kunder som en aktiv länk.
+   > Om du behöver en längre beskrivning anger du en enda webbadress som pekar på var dina villkor finns. Den visas för kunder som en aktiv länk.
 
-1. Välj **Spara utkast** innan du fortsätter till nästa flik på vänster-navigerings-menyn och **ge listan**.
+1. Välj **Spara utkast** innan du fortsätter till nästa flik i den vänstra navigeringsmenyn, **Erbjudandelista.**
 
 ## <a name="next-steps"></a>Nästa steg
 

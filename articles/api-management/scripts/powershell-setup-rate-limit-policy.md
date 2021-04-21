@@ -1,6 +1,6 @@
 ---
 title: Skriptexempel för Azure PowerShell – Konfigurera en princip för hastighetsbegränsning | Microsoft Docs
-description: Lär dig hur du ställer in en princip för hastighets begränsning med Azure PowerShell. Se ett exempel skript och Visa fler tillgängliga resurser.
+description: Lär dig hur du ställer in en princip för hastighetsbegränsning med Azure PowerShell. Se ett exempelskript och visa ytterligare tillgängliga resurser.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,17 +11,17 @@ ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 40bbd520eb265b70f95c6b365b590727af8ea144
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: f78639b4f693b5dd0d414bf603b5518ddd2bf5da
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87851298"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818610"
 ---
 # <a name="set-up-rate-limit-policy"></a>Konfigurera en princip för hastighetsbegränsning
 
-Det här exempel skriptet ställer in en princip för hastighets begränsning. 
+Det här exempelskriptet uppsättningar en princip för hastighetsbegränsning. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

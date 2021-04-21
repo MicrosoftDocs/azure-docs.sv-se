@@ -5,25 +5,25 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: how-to
-ms.date: 02/23/2021
-ms.openlocfilehash: 4db523624922d8ddcb8c1868b84927926d9ed3d5
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.date: 04/20/2021
+ms.openlocfilehash: 59c1ca67c9e93b62890512cda647ffcdf7712f9a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103818"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107819276"
 ---
 # <a name="share-and-receive-data-from-azure-blob-storage-and-azure-data-lake-storage"></a>Dela och ta emot data från Azure Blob Storage och Azure Data Lake Storage
 
 [!INCLUDE[appliesto-storage](includes/appliesto-storage.md)]
 
-Azure Data Share stöder ögonblicks bilds-baserad delning från ett lagrings konto. Den här artikeln förklarar hur du delar och tar emot data från Azure Blob Storage, Azure Data Lake Storage Gen1 och Azure Data Lake Storage Gen2.
+Azure Data Share stöder ögonblicksbildbaserad delning från ett lagringskonto. Den här artikeln förklarar hur du delar och tar emot data från Azure Blob Storage, Azure Data Lake Storage Gen1 och Azure Data Lake Storage Gen2.
 
-Azure Data Share stöder delning av filer, mappar och fil system från Azure Data Lake gen1 och Azure Data Lake Gen2. Det stöder också delning av blobbar, mappar och behållare från Azure Blob Storage. Endast block-blobbar stöds för närvarande. Data som delas från dessa källor kan tas emot av Azure Data Lake Gen2 eller Azure Blob Storage.
+Azure Data Share har stöd för delning av filer, mappar och filsystem från Azure Data Lake Gen1 och Azure Data Lake Gen2. Den stöder också delning av blobar, mappar och containrar från Azure Blob Storage. Du kan dela block-, tilläggs- eller sidblobar och de tas emot som blockblobar. Data som delas från dessa källor kan tas emot av Azure Data Lake Gen2 eller Azure Blob Storage.
 
-När fil system, behållare eller mappar delas i ögonblicks bilds-baserad delning, kan data konsumenter välja att göra en fullständig kopia av delnings data. Eller så kan de använda den stegvisa ögonblicks bilds funktionen för att endast kopiera nya eller uppdaterade filer. Den stegvisa ögonblicks bilds kapaciteten baseras på filernas senaste ändrings tid. 
+När filsystem, containrar eller mappar delas i ögonblicksbildbaserad delning kan datakonsumenter välja att göra en fullständig kopia av resursdata. De kan också använda funktionen för inkrementell ögonblicksbild för att endast kopiera nya eller uppdaterade filer. Funktionen för inkrementell ögonblicksbild baseras på filernas senaste ändringstid. 
 
-Befintliga filer med samma namn skrivs över under en ögonblicks bild. En fil som tas bort från källan tas inte bort från målet. Tomma undermappar på källan kopieras inte till målet. 
+Befintliga filer med samma namn skrivs över under en ögonblicksbild. En fil som tas bort från källan tas inte bort på målet. Tomma undermappar vid källan kopieras inte över till målet. 
 
 ## <a name="share-data"></a>Dela data
 
@@ -31,106 +31,106 @@ Använd informationen i följande avsnitt för att dela data med hjälp av Azure
 ### <a name="prerequisites-to-share-data"></a>Krav för att dela data
 
 * Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
-* Hitta mottagarens e-postadress för Azure-inloggning. Mottagarens e-postalias fungerar inte för dina behov.
-* Om käll-Azure-datalagret finns i en annan Azure-prenumeration än den där du ska skapa data resurs resursen registrerar du [Microsoft. DataShare Resource Provider](concepts-roles-permissions.md#resource-provider-registration) i prenumerationen där Azure Data Store finns. 
+* Hitta mottagarens e-postadress för Azure-inloggning. Mottagarens e-postalias fungerar inte för dina syften.
+* Om Azure-källdatalagret finns i en annan Azure-prenumeration än den där du skapar Data Share-resursen registrerar du resursprovidern [Microsoft.DataShare](concepts-roles-permissions.md#resource-provider-registration) i prenumerationen där Azure-datalagret finns. 
 
-### <a name="prerequisites-for-the-source-storage-account"></a>Krav för käll lagrings kontot
+### <a name="prerequisites-for-the-source-storage-account"></a>Krav för källlagringskontot
 
-* Ett Azure Storage-konto. Om du inte redan har ett konto [skapar du ett](../storage/common/storage-account-create.md).
-* Behörighet att skriva till lagrings kontot. Skriv behörigheten finns i *Microsoft. Storage/storageAccounts/Write*. Den är en del av deltagar rollen.
-* Behörighet att lägga till roll tilldelning i lagrings kontot. Den här behörigheten finns i *Microsoft. auktorisering/roll tilldelningar/Skriv*. Den är en del av ägar rollen. 
+* Ett Azure Storage-konto. Om du inte redan har ett konto skapar [du ett](../storage/common/storage-account-create.md).
+* Behörighet att skriva till lagringskontot. Skrivbehörighet finns i *Microsoft.Storage/storageAccounts/write*. Det är en del av rollen Deltagare.
+* Behörighet att lägga till rolltilldelning till lagringskontot. Den här behörigheten finns *i Microsoft.Authorization/role assignments/write*. Det är en del av rollen Ägare. 
 
 ### <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
 Logga in på [Azure-portalen](https://portal.azure.com/).
 
-### <a name="create-a-data-share-account"></a>Skapa ett data resurs konto
+### <a name="create-a-data-share-account"></a>Skapa ett Data Share konto
 
-Skapa en Azure Data Share-resurs i en Azure-resurs grupp.
+Skapa en Azure Data Share resurs i en Azure-resursgrupp.
 
-1. Öppna menyn i det övre vänstra hörnet i portalen och välj sedan **skapa en resurs** (+).
+1. I det övre vänstra hörnet i portalen öppnar du menyn och väljer sedan **Skapa en resurs** (+).
 
-1. Sök efter *data resurs*.
+1. Sök efter *Data Share*.
 
-1. Välj **data resurs** och **skapa**.
+1. Välj **Data Share** och **Skapa**.
 
-1. Ange grundläggande information om din Azure Data Share-resurs: 
+1. Ange grundläggande information om din Azure Data Share resurs: 
 
      **Inställning** | **Föreslaget värde** | **Fältbeskrivning**
     |---|---|---|
-    | Prenumeration | Din prenumeration | Välj en Azure-prenumeration för ditt data resurs konto.|
-    | Resursgrupp | *test-resurs-grupp* | Använd en befintlig resurs grupp eller skapa en resurs grupp. |
-    | Location | *USA, östra 2* | Välj en region för ditt data resurs konto.
-    | Name | *datashareaccount* | Namnge ditt data resurs konto. |
+    | Prenumeration | Din prenumeration | Välj en Azure-prenumeration för ditt dataresurskonto.|
+    | Resursgrupp | *test-resource-group* | Använd en befintlig resursgrupp eller skapa en resursgrupp. |
+    | Location | *USA, östra 2* | Välj en region för ditt dataresurskonto.
+    | Name | *datashareaccount* | Namnge ditt dataresurskonto. |
     | | |
 
-1. Välj **Granska + skapa**  >  **skapa** för att etablera ditt data resurs konto. Det tar vanligt vis ungefär 2 minuter att tillhandahålla ett nytt data resurs konto. 
+1. Välj **Granska + skapa skapa**  >  **för** att etablera ditt dataresurskonto. Etableringen av ett nytt dataresurskonto tar vanligtvis cirka 2 minuter. 
 
 1. När distributionen är klar väljer du **Gå till resurs**.
 
 ### <a name="create-a-share"></a>Skapa en resurs
 
-1. Gå till **översikts** sidan för data delning.
+1. Gå till översiktssidan för **din** dataresurs.
 
-   :::image type="content" source="./media/share-receive-data.png" alt-text="Skärm bild som visar översikt över data resursen.":::
+   :::image type="content" source="./media/share-receive-data.png" alt-text="Skärmbild som visar översikten över dataresursen.":::
 
-1. Välj **börja dela dina data**.
+1. Välj **Börja dela dina data.**
 
 1. Välj **Skapa**.   
 
-1. Ange information om din resurs. Ange ett namn, resurs typ, en beskrivning av delnings innehåll och användnings villkor (valfritt). 
+1. Ange information för din resurs. Ange namn, resurstyp, beskrivning av resursinnehåll och användningsvillkor (valfritt). 
 
-    ![Skärm bild som visar information om data resurser.](./media/enter-share-details.png "Ange information om data resursen.") 
-
-1. Välj **Fortsätt**.
-
-1. Om du vill lägga till data uppsättningar i din resurs väljer du **Lägg till data uppsättningar**. 
-
-    ![Skärm bild som visar hur du lägger till data uppsättningar i din resurs.](./media/datasets.png "Data uppsättningar.")
-
-1. Välj en data mängds typ som ska läggas till. Listan över data uppsättnings typer beror på om du har valt ögonblicks bilds-baserad delning eller delning på plats i föregående steg. 
-
-    ![Skärm bild som visar var du väljer en data uppsättnings typ.](./media/add-datasets.png "Lägg till data uppsättningar.")    
-
-1. Gå till det objekt som du vill dela. Välj sedan **Lägg till data uppsättningar**. 
-
-    ![Skärm bild som visar hur du väljer ett objekt att dela.](./media/select-datasets.png "Välj data uppsättningar.")    
-
-1. På fliken **mottagare** lägger du till e-postadressen för din data konsument genom att välja **Lägg till mottagare**. 
-
-    ![Skärm bild som visar hur du lägger till mottagares e-postadresser.](./media/add-recipient.png "Lägg till mottagare.") 
+    ![Skärmbild som visar information om dataresursen.](./media/enter-share-details.png "Ange information om dataresursen.") 
 
 1. Välj **Fortsätt**.
 
-1. Om du har valt en typ av ögonblicks bilds resurs kan du konfigurera ögonblicks bilds schemat för att uppdatera data för data konsumenten. 
+1. Om du vill lägga till datauppsättningar i resursen väljer du **Lägg till datauppsättningar**. 
 
-    ![Skärm bild som visar inställningarna för ögonblicks bild scheman.](./media/enable-snapshots.png "Aktivera ögonblicks bilder.") 
+    ![Skärmbild som visar hur du lägger till datauppsättningar i din resurs.](./media/datasets.png "Datamängder.")
 
-1. Välj en start tid och upprepnings intervall. 
+1. Välj en datauppsättningstyp som ska läggas till. Listan över datauppsättningstyper beror på om du valde ögonblicksbildsbaserad delning eller delning på plats i föregående steg. 
+
+    ![Skärmbild som visar var du väljer en datauppsättningstyp.](./media/add-datasets.png "Lägg till datauppsättningar.")    
+
+1. Gå till det objekt som du vill dela. Välj sedan **Lägg till datauppsättningar.** 
+
+    ![Skärmbild som visar hur du väljer ett objekt att dela.](./media/select-datasets.png "Välj datauppsättningar.")    
+
+1. På fliken **Mottagare** lägger du till datakonsumentens e-postadress genom att välja **Lägg till mottagare.** 
+
+    ![Skärmbild som visar hur du lägger till mottagarens e-postadresser.](./media/add-recipient.png "Lägg till mottagare.") 
 
 1. Välj **Fortsätt**.
 
-1. På fliken **Granska + skapa** granskar du paket innehåll, inställningar, mottagare och synkroniseringsinställningar. Välj sedan **Skapa**.
+1. Om du har valt en resurstyp för ögonblicksbilder kan du konfigurera schemat för ögonblicksbilder för att uppdatera dina data för datakonsumenten. 
 
-Nu har du skapat din Azure-Dataresurs. Mottagaren av din data resurs kan acceptera din inbjudan. 
+    ![Skärmbild som visar inställningarna för schemat för ögonblicksbilder.](./media/enable-snapshots.png "Aktivera ögonblicksbilder.") 
+
+1. Välj starttid och upprepningsintervall. 
+
+1. Välj **Fortsätt**.
+
+1. På fliken **Granska + skapa** granskar du paketinnehållet, inställningarna, mottagarna och synkroniseringsinställningarna. Välj sedan **Skapa**.
+
+Nu har du skapat din Azure-dataresurs. Mottagaren av din dataresurs kan acceptera din inbjudan. 
 
 ## <a name="receive-data"></a>Ta emot data
 
 I följande avsnitt beskrivs hur du tar emot delade data.
-### <a name="prerequisites-to-receive-data"></a>Krav för att ta emot data
-Innan du accepterar en inbjudan om data delning måste du kontrol lera att du har följande krav: 
+### <a name="prerequisites-to-receive-data"></a>Förutsättningar för att ta emot data
+Innan du godkänner en dataresursinbjudan kontrollerar du att följande krav är uppfyllda: 
 
-* En Azure-prenumeration. Om du inte har någon prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/).
-* En inbjudan från Azure. E-postmeddelandets ämne bör vara "Azure Data Share-inbjudan från *\<yourdataprovider\@domain.com>* ".
-* En registrerad [Microsoft. DataShare-resurs leverantör](concepts-roles-permissions.md#resource-provider-registration) i:
-    * Azure-prenumerationen där du skapar en data resurs resurs.
-    * Azure-prenumerationen där ditt mål för Azure-datalager finns.
+* En Azure-prenumeration. Om du inte har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/).
+* En inbjudan från Azure. E-postämnet ska vara "Azure Data Share inbjudan från *\<yourdataprovider\@domain.com>* ".
+* En registrerad [Microsoft.DataShare-resursprovider](concepts-roles-permissions.md#resource-provider-registration) i:
+    * Azure-prenumerationen där du skapar en Data Share resurs.
+    * Azure-prenumerationen där dina Azure-måldatalager finns.
 
-### <a name="prerequisites-for-a-target-storage-account"></a>Krav för ett mål lagrings konto
+### <a name="prerequisites-for-a-target-storage-account"></a>Krav för ett mållagringskonto
 
-* Ett Azure Storage-konto. [Skapa ett konto](../storage/common/storage-account-create.md)om du inte redan har en. 
-* Behörighet att skriva till lagrings kontot. Den här behörigheten finns i *Microsoft. Storage/storageAccounts/Write*. Den är en del av deltagar rollen. 
-* Behörighet att lägga till roll tilldelning i lagrings kontot. Den här tilldelningen finns i *Microsoft. auktorisering/roll tilldelningar/Skriv*. Den är en del av ägar rollen.  
+* Ett Azure Storage-konto. Om du inte redan har ett skapar [du ett konto](../storage/common/storage-account-create.md). 
+* Behörighet att skriva till lagringskontot. Den här behörigheten *finns i Microsoft.Storage/storageAccounts/write*. Det är en del av rollen Deltagare. 
+* Behörighet att lägga till rolltilldelning till lagringskontot. Den här tilldelningen finns *i Microsoft.Authorization/role assignments/write*. Det är en del av rollen Ägare.  
 
 ### <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 
@@ -138,71 +138,71 @@ Logga in på [Azure-portalen](https://portal.azure.com/).
 
 ### <a name="open-an-invitation"></a>Öppna en inbjudan
 
-Du kan öppna en inbjudan från e-post eller direkt från Azure Portal.
+Du kan öppna en inbjudan via e-post eller direkt från Azure Portal.
 
-1. Om du vill öppna en inbjudan från e-post, kontrollerar du Inkorgen för en inbjudan från din data leverantör. Inbjudan från Microsoft Azure har titeln "Azure Data Share-inbjudan från *\<yourdataprovider\@domain.com>* ". Välj **Visa inbjudan** för att se din inbjudan i Azure. 
+1. Om du vill öppna en inbjudan från ett e-postmeddelande kontrollerar du om det finns en inbjudan från dataleverantören i din inkorg. Inbjudan från Microsoft Azure heter "Azure Data Share inbjudan från *\<yourdataprovider\@domain.com>* ". Välj **Visa inbjudan** för att se din inbjudan i Azure. 
 
-   Om du vill öppna en inbjudan från Azure Portal kan du söka efter *data dela inbjudningar*. Du ser en lista över inbjudningar för data resurser.
+   Om du vill öppna en inbjudan Azure Portal du efter *Data Share inbjudningar*. Du ser en lista över Data Share inbjudningar.
 
-   ![Skärm bild som visar listan över inbjudningar i Azure Portal.](./media/invitations.png "Lista över inbjudningar.") 
+   ![Skärmbild som visar listan över inbjudningar i Azure Portal.](./media/invitations.png "Lista över inbjudningar.") 
 
 1. Välj den resurs som du vill visa. 
 
 ### <a name="accept-an-invitation"></a>Acceptera en inbjudan
-1. Granska alla fält, inklusive **användningsvillkor**. Om du godkänner villkoren markerar du kryss rutan. 
+1. Granska alla fält, inklusive **Användningsvillkor**. Om du godkänner villkoren markerar du kryssrutan. 
 
-   ![Skärm bild som visar Användningsvillkor-ytan.](./media/terms-of-use.png "Användningsvillkor.") 
+   ![Skärmbild som visar Användningsvillkor området.](./media/terms-of-use.png "Användningsvillkor.") 
 
-1. Under **konto för mål data resurs** väljer du den prenumeration och resurs grupp där du ska distribuera data resursen. Fyll sedan i följande fält:
+1. Under **Målkonto Data Share väljer** du den prenumeration och resursgrupp där du ska distribuera Data Share. Fyll sedan i följande fält:
 
-   * I fältet **data resurs konto** väljer du **Skapa nytt** om du inte har ett data resurs konto. Annars väljer du ett befintligt data delnings konto som ska acceptera din data resurs. 
+   * I fältet **Dataresurskonto** väljer du **Skapa nytt** om du inte har ett Data Share konto. Annars väljer du ett befintligt Data Share som accepterar din dataresurs. 
 
-   * I fältet **mottaget resurs namn** lämnar du standardvärdet som data leverantören anger eller anger ett nytt namn för den mottagna resursen. 
+   * I fältet **Mottaget resursnamn** lämnar du antingen standardinställningen som dataleverantören angav eller anger ett nytt namn för den mottagna resursen. 
 
-1. Välj **Godkänn och konfigurera**. En resurs prenumeration skapas. 
+1. Välj **Acceptera och konfigurera**. En resursprenumeration skapas. 
 
-   ![Skärm bild som visar var du accepterar konfigurations alternativen.](./media/accept-options.png "Godkänn alternativ") 
+   ![Skärmbild som visar var du godkänner konfigurationsalternativen.](./media/accept-options.png "Acceptera alternativ") 
 
-    Den mottagna resursen visas i ditt data resurs konto. 
+    Den mottagna resursen visas i ditt Data Share konto. 
 
-    Om du inte vill acceptera inbjudan väljer du **avvisa**. 
+    Om du inte vill acceptera inbjudan väljer du **Avvisa**. 
 
 ### <a name="configure-a-received-share"></a>Konfigurera en mottagen resurs
-Följ stegen i det här avsnittet om du vill konfigurera en plats för att ta emot data.
+Följ stegen i det här avsnittet för att konfigurera en plats för att ta emot data.
 
-1. Markera kryss rutan bredvid den data uppsättning där du vill tilldela ett mål på fliken **data uppsättningar** . Välj **Mappa till mål** för att välja ett mål data lager. 
+1. På fliken **Datauppsättningar** markerar du kryssrutan bredvid den datauppsättning där du vill tilldela ett mål. Välj **Mappa till mål** för att välja ett måldatalager. 
 
-   ![Skärm bild som visar hur du mappar till ett mål.](./media/dataset-map-target.png "Mappa till mål.") 
+   ![Skärmbild som visar hur du mappar till ett mål.](./media/dataset-map-target.png "Mappa till målet.") 
 
-1. Välj ett mål data lager för data. Filer i mål data lagret som har samma sökväg och namn som filer i de data som tas emot kommer att skrivas över. 
+1. Välj ett måldatalager för data. Filer i måldatalagret som har samma sökväg och namn som filer i mottagna data skrivs över. 
 
-   ![Skärm bild som visar var du kan välja ett mål lagrings konto.](./media/map-target.png "Mål lagring.") 
+   ![Skärmbild som visar var du väljer ett mållagringskonto.](./media/map-target.png "Mållagring.") 
 
-1. För ögonblicks bilds-baserad delning, om dataprovidern använder ett ögonblicks bild schema för att regelbundet uppdatera data, kan du aktivera schemat från fliken **ögonblicks bild schema** . Markera rutan bredvid ögonblicks bilds schemat. Välj sedan **Aktivera**. Observera att den första schemalagda ögonblicks bilden startar inom en minut av schema tiden och att efterföljande ögonblicks bilder startar inom några sekunder från den schemalagda tiden.
+1. För ögonblicksbildbaserad delning kan du aktivera schemat på fliken Schema för ögonblicksbilder om dataleverantören använder ett schema för **ögonblicksbilder** för att regelbundet uppdatera data. Markera rutan bredvid schemat för ögonblicksbilden. Välj sedan **Aktivera**. Observera att den första schemalagda ögonblicksbilden startar inom en minut från schematiden och efterföljande ögonblicksbilder startar inom några sekunder från den schemalagda tiden.
 
-   ![Skärm bild som visar hur du aktiverar ett schema för ögonblicks bilder.](./media/enable-snapshot-schedule.png "Aktivera schema för ögonblicks bild.")
+   ![Skärmbild som visar hur du aktiverar ett schema för ögonblicksbilder.](./media/enable-snapshot-schedule.png "Aktivera schema för ögonblicksbilder.")
 
-### <a name="trigger-a-snapshot"></a>Utlös en ögonblicks bild
-Stegen i det här avsnittet gäller endast för Snapshot-baserad delning.
+### <a name="trigger-a-snapshot"></a>Utlösa en ögonblicksbild
+Stegen i det här avsnittet gäller endast för ögonblicksbildbaserad delning.
 
-1. Du kan utlösa en ögonblicks bild från fliken **information** . På fliken väljer du **Utlös ögonblicks bild**. Du kan välja att utlösa en fullständig ögonblicks bild eller en stegvis ögonblicks bild av dina data. Om du tar emot data från data leverantören för första gången väljer du **fullständig kopia**. När en ögonblicks bild körs kommer efterföljande ögonblicks bilder inte att starta förrän den tidigare slutförts.
+1. Du kan utlösa en ögonblicksbild från **fliken** Information. På fliken väljer du Trigger **snapshot (Utlösa ögonblicksbild).** Du kan välja att utlösa en fullständig ögonblicksbild eller inkrementell ögonblicksbild av dina data. Om du tar emot data från dataleverantören för första gången väljer du **Fullständig kopia.** När en ögonblicksbild körs startar inte efterföljande ögonblicksbilder förrän den föregående har slutförts.
 
-   ![Skärm bild som visar alternativet Utlös ögonblicks bild.](./media/trigger-snapshot.png "Utlös ögonblicks bild.") 
+   ![Skärmbild som visar valet Avlösa ögonblicksbild.](./media/trigger-snapshot.png "Ögonblicksbild av utlösare.") 
 
-1. När den senaste körnings statusen har *slutförts* går du till mål data lagret för att Visa mottagna data. Välj **data uppsättningar** och välj sedan länken mål Sök väg. 
+1. När den senaste *körningsstatusen är lyckad* går du till måldatalagret för att visa mottagna data. Välj **Datauppsättningar** och välj sedan länken målsökväg. 
 
-   ![Skärm bild som visar en mappning för en konsument data uppsättning.](./media/consumer-datasets.png "Mappning av konsument data uppsättning.") 
+   ![Skärmbild som visar mappning av konsumentdatamängd.](./media/consumer-datasets.png "Mappning av konsumentdatamängd.") 
 
 ### <a name="view-history"></a>Visa historik
-Du kan bara visa historiken för dina ögonblicks bilder i ögonblicks bilds-baserad delning. Öppna **Historik-fliken för** att visa historiken. Här visas historiken för alla ögonblicks bilder som har genererats under de senaste 30 dagarna. 
+Du kan bara visa historiken för dina ögonblicksbilder i ögonblicksbildbaserad delning. Om du vill visa historiken öppnar **du fliken** Historik. Här ser du historiken för alla ögonblicksbilder som har genererats under de senaste 30 dagarna. 
 
-## <a name="storage-snapshot-performance"></a>Prestanda för lagrings ögonblicks bilder
-Lagrings ögonblicks bildernas prestanda påverkas av ett antal faktorer utöver antalet filer och storleken på delade data. Vi rekommenderar alltid att du utför dina egna prestanda testningar. Nedan visas några exempel faktorer som påverkar prestanda.
+## <a name="storage-snapshot-performance"></a>Prestanda för ögonblicksbilder av lagring
+Prestanda för ögonblicksbilder av lagring påverkas av ett antal faktorer utöver antalet filer och storleken på delade data. Vi rekommenderar alltid att du utför dina egna prestandatester. Nedan visas några exempel på faktorer som påverkar prestanda.
 
-* Samtidig åtkomst till käll-och mål data lager.  
-* Plats för käll-och mål data lager. 
-* För en stegvis ögonblicks bild kan antalet filer i den delade data mängden påverka den tid det tar att hitta listan med filer med senaste ändrings tid efter den senaste lyckade ögonblicks bilden. 
+* Samtidig åtkomst till käll- och måldatalager.  
+* Plats för käll- och måldatalager. 
+* För inkrementell ögonblicksbild kan antalet filer i den delade datauppsättningen påverka den tid det tar att hitta listan över filer med tiden för senaste ändring efter den senaste lyckade ögonblicksbilden. 
 
 
 ## <a name="next-steps"></a>Nästa steg
-Du har lärt dig hur du delar och tar emot data från ett lagrings konto med hjälp av Azure Data Share-tjänsten. Information om hur du delar från andra data källor finns i [data lager som stöds](supported-data-stores.md).
+Du har lärt dig hur du delar och tar emot data från ett lagringskonto med hjälp av Azure Data Share tjänsten. Mer information om delning från andra datakällor finns i [Datalager som stöds.](supported-data-stores.md)
