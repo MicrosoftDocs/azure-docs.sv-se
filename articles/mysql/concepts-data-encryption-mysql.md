@@ -6,18 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: bed0ccbc25c6fcc43d8fb0948182f229bce63edf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d8e40cf9dac496266f67ad94e1e65db01e42f9d2
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764719"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816844"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL datakryptering med en kund hanterad nyckel
 
 Datakryptering med kundhanterade nycklar för Azure Database for MySQL gör att du kan ta med din egen nyckel (BYOK) för dataskydd i vila. Det gör det även möjligt för organisationer att implementera ansvarsfördelning vad gäller hanteringen av nycklar och data. Med kundhanterad kryptering ansvarar du för och har fullständig kontroll över en nyckels livscykel, behörigheter för nyckelanvändning och granskning av åtgärder på nycklar.
 
-Datakryptering med kund hanterade nycklar Azure Database for MySQL, anges på servernivå. För en viss server används en kund hanterad nyckel, som kallas nyckelkrypteringsnyckel (KEK), för att kryptera datakrypteringsnyckeln (DEK) som används av tjänsten. KEK är en asymmetrisk nyckel som lagras i en kundägd och Azure Key Vault [instans.](../key-vault/general/security-overview.md) Nyckelkrypteringsnyckeln (KEK) och datakrypteringsnyckeln (DEK) beskrivs i detalj senare i den här artikeln.
+Datakryptering med kund hanterade nycklar Azure Database for MySQL, anges på servernivå. För en viss server används en kund hanterad nyckel, som kallas nyckelkrypteringsnyckel (KEK), för att kryptera datakrypteringsnyckeln (DEK) som används av tjänsten. KEK är en asymmetrisk nyckel som lagras i en kundägd och Azure Key Vault [instans.](../key-vault/general/security-features.md) Nyckelkrypteringsnyckeln (KEK) och datakrypteringsnyckeln (DEK) beskrivs i detalj senare i den här artikeln.
 
 Key Vault är ett molnbaserat, externt nyckelhanteringssystem. Den har hög tillgänglig och ger skalbar och säker lagring för RSA-kryptografiska nycklar, som eventuellt backas upp av FIPS 140-2 Level 2-verifierade maskinvarusäkerhetsmoduler (HSM). Den tillåter inte direkt åtkomst till en lagrad nyckel, men tillhandahåller tjänster för kryptering och dekryptering till behöriga entiteter. Key Vault kan generera nyckeln, importera den eller överföra [den från en lokal HSM-enhet](../key-vault/keys/hsm-protected-keys.md).
 
@@ -36,7 +36,7 @@ Datakryptering med kund hanterade nycklar för Azure Database for MySQL ger föl
 
 ## <a name="terminology-and-description"></a>Terminologi och beskrivning
 
-**Datakrypteringsnyckel (DEK):** En symmetrisk AES256-nyckel som används för att kryptera en partition eller ett block med data. Kryptering av varje datablock med en annan nyckel gör krypteringsanalysattacker svårare. Åtkomst till DEK:er krävs av resursprovidern eller programinstansen som krypterar och dekrypterar ett visst block. När du ersätter en DEK med en ny nyckel måste endast data i dess associerade block krypteras om med den nya nyckeln.
+**Datakrypteringsnyckel (DEK):** En symmetrisk AES256-nyckel som används för att kryptera en partition eller ett block med data. Kryptering av varje datablock med en annan nyckel gör det svårare att analysera kryptografiattacker. Åtkomst till DEK:er krävs av resursprovidern eller programinstansen som krypterar och dekrypterar ett visst block. När du ersätter en DEK med en ny nyckel måste endast data i dess associerade block krypteras om med den nya nyckeln.
 
 **Nyckelkrypteringsnyckel (KEK):** En krypteringsnyckel som används för att kryptera DEK:erna. En KEK som aldrig lämnar Key Vault tillåter att DEK:erna själva krypteras och kontrolleras. Entiteten som har åtkomst till kek kan vara annorlunda än den entitet som kräver DEK. Eftersom KK krävs för att dekryptera DEK:erna är KEK i praktiken en enda punkt där DEK:er effektivt kan tas bort genom borttagning av KEK.
 
@@ -72,7 +72,7 @@ Följande är krav för att konfigurera den kund hanterade nyckeln:
 * Nyckeln måste vara i tillståndet *Aktiverad.*
 * Nyckeln måste ha mjuk [borttagning med kvarhållningsperioden](../key-vault/general/soft-delete-overview.md) inställd på **90 dagar.** Detta anger implicit det nödvändiga nyckelattributet recoveryLevel: "Återställningsbar". Om kvarhållningen är inställd på < 90 dagar ser du till att recoveryLevel: "CustomizedRecoverable" som inte är kravet, så se till att ange kvarhållningsperioden är inställd på **90 dagar**.
 * Rensningsskydd måste [vara aktiverat för nyckeln.](../key-vault/general/soft-delete-overview.md#purge-protection)
-* Om du importerar [en befintlig nyckel till](/rest/api/keyvault/ImportKey/ImportKey) nyckelvalvet måste du ange den i filformat som stöds ( , , `.pfx` `.byok` `.backup` ).
+* Om du importerar [en befintlig nyckel till nyckelvalvet](/rest/api/keyvault/ImportKey/ImportKey) måste du ange den i filformat som stöds ( , , `.pfx` `.byok` `.backup` ).
 
 ## <a name="recommendations"></a>Rekommendationer
 
@@ -99,11 +99,11 @@ När du konfigurerar datakryptering med en kund hanterad nyckel i Key Vault krä
 * Om vi skapar en skrivskyddad replik för din Azure Database for MySQL, som har datakryptering aktiverat, är replikservern *i ett otillgängligt* tillstånd. Du kan åtgärda detta via [Azure Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) eller [CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers).
 * Om du tar bort KeyVault kan Azure Database for MySQL inte komma åt nyckeln och kommer att flyttas *till otillgängligt* tillstånd. Återställ [Key Vault](../key-vault/general/key-vault-recovery.md) och återställ datakrypteringen så att servern blir *tillgänglig.*
 * Om vi tar bort nyckeln från KeyVault kan Azure Database for MySQL inte komma åt nyckeln och kommer att gå över till *otillgängligt* tillstånd. Återställ nyckeln [och](../key-vault/general/key-vault-recovery.md) återställ datakrypteringen för att göra servern *tillgänglig.*
-* Om nyckeln som lagras i Azure KeyVault upphör att gälla blir nyckeln ogiltig och Azure Database for MySQL övergår *till otillgängligt* tillstånd. Utöka nyckelns förfallodatum med [HJÄLP av CLI](/cli/azure/keyvault/key#az_keyvault_key_set-attributes) och förnya sedan datakrypteringen så att servern blir *tillgänglig.*
+* Om nyckeln som lagras i Azure KeyVault upphör att gälla blir nyckeln ogiltig och Azure Database for MySQL övergår *till otillgängligt* tillstånd. Utöka nyckelns förfallodatum med [CLI och](/cli/azure/keyvault/key#az_keyvault_key_set-attributes) förnya sedan datakrypteringen så att servern *blir tillgänglig.*
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Oavsiktlig återkallelse av nyckelåtkomst från Key Vault
 
-Det kan hända att någon med tillräcklig behörighet för att Key Vault inaktiverar serveråtkomst till nyckeln av misstag genom att:
+Det kan hända att någon med tillräcklig behörighet för att Key Vault av misstag inaktiverar serveråtkomst till nyckeln genom att:
 
 * Återkalla nyckelvalvsbehörigheterna get, wrapKey och unwrapKey från servern.
 * Ta bort nyckeln.

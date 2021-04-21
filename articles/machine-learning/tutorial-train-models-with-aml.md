@@ -1,7 +1,7 @@
 ---
-title: 'Själv studie kurs om bild klassificering: träna modeller'
+title: 'Självstudie om bildklassificering: Träna modeller'
 titleSuffix: Azure Machine Learning
-description: Använd Azure Machine Learning för att träna en bild klassificerings modell med scikit – lär dig i en python-Jupyter Notebook. Den här självstudien är del ett av två.
+description: Använd Azure Machine Learning att träna en bildklassificeringsmodell med scikit-learn i en Python-Jupyter Notebook. Den här självstudien är del ett av två.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,52 +10,52 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 85dea807ee09338e7f0e9e388f6b196fd3beef33
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 6c5691759983d8ec40598834e5dbcd507ccf00cf
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104588672"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816880"
 ---
-# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Självstudie: träna bild klassificerings modeller med MNIST-data och scikit-lär 
+# <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Självstudie: Träna bildklassificeringsmodeller med MNIST-data och scikit-learn 
 
 
-I den här självstudien ska du träna en maskininlärningsmodell på fjärranslutna beräkningsresurser. Du använder arbets flödet för utbildning och distribution för Azure Machine Learning i en python-Jupyter Notebook.  Du kan sedan använda anteckningsboken som en mall för att träna din egen maskininlärningsmodell med egna data. Den här självstudien är **del ett i en själv studie serie i två delar**.  
+I den här självstudien ska du träna en maskininlärningsmodell på fjärranslutna beräkningsresurser. Du använder arbetsflödet för träning och distribution för Azure Machine Learning i en Python-Jupyter Notebook.  Du kan sedan använda anteckningsboken som en mall för att träna din egen maskininlärningsmodell med egna data. Den här **självstudien är del ett i en självstudieserie i två delar.**  
 
-Den här självstudien tränar en enkel logistik regression med hjälp av [MNIST](http://yann.lecun.com/exdb/mnist/) -datauppsättningen och [scikit – lära](https://scikit-learn.org) med Azure Machine Learning. MNIST är en populär datauppsättning som består av 70 000 gråskalebilder. Varje bild är en handskriven siffra på 28 × 28 pixlar, som representerar ett tal från noll till nio. Målet är att skapa en klassificerare för flera klasser som identifierar siffran som en viss bild representerar.
+Den här självstudien tränar en enkel logistisk regression med hjälp av [MNIST-datauppsättningen](http://yann.lecun.com/exdb/mnist/) [och scikit-learn](https://scikit-learn.org) med Azure Machine Learning. MNIST är en populär datauppsättning som består av 70 000 gråskalebilder. Varje bild är en handskriven siffra på 28 × 28 pixlar, som representerar ett tal från noll till nio. Målet är att skapa en klassificerare för flera klasser som identifierar siffran som en viss bild representerar.
 
 Läs hur du vidtar följande åtgärder:
 
 > [!div class="checklist"]
 > * Konfigurera din utvecklingsmiljö.
 > * Kom åt och utforska data.
-> * Träna en enkel logistik Regressions modell på ett fjärran slutet kluster.
+> * Träna en enkel logistisk regressionsmodell i ett fjärrkluster.
 > * Granska träningsresultaten och registrera den bästa modellen.
 
 Du lär dig hur du väljer en modell och distribuerar den i [del två av den här självstudien](tutorial-deploy-models-with-aml.md).
 
-Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
+Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnadsfria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
 >[!NOTE]
-> Koden i den här artikeln har testats med [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) -version 1.13.0.
+> Koden i den här artikeln har testats [Azure Machine Learning SDK](/python/api/overview/azure/ml/intro) version 1.13.0.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Slutför [självstudien: kom igång med att skapa ditt första Azure ml-experiment](tutorial-1st-experiment-sdk-setup.md) för att:
+* Slutför [självstudien: Kom igång med att skapa ditt första Azure ML-experiment](tutorial-1st-experiment-sdk-setup.md) för att:
     * Skapa en arbetsyta
-    * Klona självstudiernas antecknings böcker till din mapp i arbets ytan.
-    * Skapa en molnbaserad beräknings instans.
+    * Klona anteckningsboken för självstudier till mappen på arbetsytan.
+    * Skapa en molnbaserad beräkningsinstans.
 
-* Öppna mappen *img-klassifikation-part1-Training. ipynb* i dina klonade *självstudier/mnist* . 
+* I den klonade *mappen tutorials/image-classification-mnist-data* öppnar du *notebook-filen img-classification-part1-training.ipynb.* 
 
 
-Självstudien och den medföljande **utils.py** -filen finns också på [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) om du vill använda den i din egen [lokala miljö](how-to-configure-environment.md#local). Kör `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` för att installera beroenden för den här självstudien.
+Självstudien och **tillhörande utils.py** finns också på [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) om du vill använda den i din egen [lokala miljö.](how-to-configure-environment.md#local) Kör `pip install azureml-sdk[notebooks] azureml-opendatasets matplotlib` för att installera beroenden för den här självstudien.
 
 > [!Important]
-> Resten av den här artikeln innehåller samma innehåll som du ser i antecknings boken.  
+> Resten av den här artikeln innehåller samma innehåll som du ser i notebook-filen.  
 >
-> Växla till Jupyter Notebook nu om du vill läsa när du kör koden. 
-> Om du vill köra en enda kod cell i en bärbar dator klickar du på cellen kod och trycker på **SKIFT + RETUR**. Du kan också köra hela antecknings boken genom att välja **Kör alla** från det översta verktygsfältet.
+> Växla till Jupyter Notebook nu om du vill läsa vidare när du kör koden. 
+> Om du vill köra en enskild kodcell i en notebook-dator klickar du på kodcellen och **trycker på Skift+Retur.** Du kan också köra hela anteckningsboken genom att **välja Kör alla** i det översta verktygsfältet.
 
 ## <a name="set-up-your-development-environment"></a><a name="start"></a>Ställt in din utvecklingsmiljö
 
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Anslut till en arbetsyta
 
-Skapa ett arbetsyteobjekt från den befintliga arbetsytan. `Workspace.from_config()` läser filen **config.jspå** och läser in informationen i ett objekt med namnet `ws` :
+Skapa ett arbetsyteobjekt från den befintliga arbetsytan. `Workspace.from_config()` läser filenconfig.js **och läser** in informationen i ett objekt med namnet `ws` :
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -93,7 +93,7 @@ print(ws.name, ws.location, ws.resource_group, sep='\t')
 ```
 
 >[!NOTE]
-> Du kan bli ombedd att autentisera till din arbets yta första gången du kör följande kod. Följ anvisningarna på skärmen.
+> Du kan bli ombedd att autentisera till din arbetsyta första gången du kör följande kod. Följ anvisningarna på skärmen.
 
 ### <a name="create-an-experiment"></a>Skapa ett experiment
 
@@ -106,13 +106,13 @@ experiment_name = 'Tutorial-sklearn-mnist'
 exp = Experiment(workspace=ws, name=experiment_name)
 ```
 
-### <a name="create-or-attach-an-existing-compute-target"></a>Skapa eller koppla ett befintligt beräknings mål
+### <a name="create-or-attach-an-existing-compute-target"></a>Skapa eller koppla ett befintligt beräkningsmål
 
-Genom att använda Azure Machine Learning Compute, en hanterad tjänst så kan datavetare träna maskininlärningsmodeller i kluster med virtuella Azure-datorer. Exempel innefattar virtuella datorer med GPU-stöd. I den här självstudien ska du skapa Azure Machine Learning Compute som din träningsmiljö. Du kommer att skicka python-kod som ska köras på den här virtuella datorn senare i självstudien. 
+Genom att använda Azure Machine Learning Compute, en hanterad tjänst så kan datavetare träna maskininlärningsmodeller i kluster med virtuella Azure-datorer. Exempel innefattar virtuella datorer med GPU-stöd. I den här självstudien ska du skapa Azure Machine Learning Compute som din träningsmiljö. Du skickar Python-kod som ska köras på den här virtuella datorn senare i självstudien. 
 
-Koden nedan skapar beräkningsklustren åt dig om de inte redan finns på din arbetsyta. Det konfigurerar ett kluster som skalar ned till 0 när det inte används och kan skala upp till högst 4 noder. 
+Koden nedan skapar beräkningsklustren åt dig om de inte redan finns på din arbetsyta. Den uppsättningar ett kluster som skalar ned till 0 när det inte används och kan skala upp till högst 4 noder. 
 
- **Det tar cirka fem minuter att skapa beräknings målet.** Om beräknings resursen redan finns i arbets ytan använder koden den och hoppar över skapande processen.
+ **Det tar cirka fem minuter att skapa beräkningsmålet.** Om beräkningsresursen redan finns på arbetsytan använder koden den och hoppar över skapandeprocessen.
 
 ```python
 from azureml.core.compute import AmlCompute
@@ -162,11 +162,11 @@ Innan du tränar en modell så måste du förstå de data som du använder för 
 
 ### <a name="download-the-mnist-dataset"></a>Ladda ned MNIST-datauppsättningen
 
-Använd Azures öppna data uppsättningar för att hämta RAW MNIST-datafilerna. [Azure Open-datauppsättningar](../open-datasets/overview-what-are-open-datasets.md) är granskade offentliga data uppsättningar som du kan använda för att lägga till scenario-/regionsspecifika funktioner till maskin inlärnings lösningar för mer exakta modeller. Varje data uppsättning har en motsvarande klass, `MNIST` i det här fallet för att hämta data på olika sätt.
+Använd Azure Open Datasets för att hämta rådatafilerna för MNIST-data. [Azure Open Datasets](../open-datasets/overview-what-are-open-datasets.md) offentliga datauppsättningar som du kan använda för att lägga till scenariospecifika funktioner i maskininlärningslösningar för mer exakta modeller. Varje datauppsättning har en motsvarande klass, `MNIST` i det här fallet, för att hämta data på olika sätt.
 
-Den här koden hämtar data som ett `FileDataset` objekt, vilket är en underordnad klass till `Dataset` . En `FileDataset` refererar till en eller flera filer i alla format i dina data lager eller offentliga URL: er. Klassen ger dig möjlighet att ladda ned eller montera filerna i beräkningen genom att skapa en referens till data käll platsen. Dessutom registrerar du data uppsättningen på din arbets yta för enkel hämtning under utbildningen.
+Den här koden hämtar data som ett `FileDataset` -objekt, vilket är en underklass av `Dataset` . En `FileDataset` refererar till en eller flera filer i alla format i dina datalager eller offentliga URL:er. Klassen ger dig möjlighet att ladda ned eller montera filerna till din beräkning genom att skapa en referens till datakällans plats. Dessutom registrerar du datauppsättningen på din arbetsyta för enkel hämtning under träningen.
 
-Följ anvisningarna [för att](how-to-create-register-datasets.md) lära dig mer om data uppsättningar och deras användning i SDK.
+Följ [nstruktionerna för att](how-to-create-register-datasets.md) lära dig mer om datauppsättningar och deras användning i SDK.
 
 ```python
 from azureml.core import Dataset
@@ -223,10 +223,10 @@ Nu har du en uppfattning om hur dessa bilder ser ut och det förväntade föruts
 
 ## <a name="train-on-a-remote-cluster"></a>Träna i ett fjärrkluster
 
-För den här uppgiften skickar du jobbet som ska köras på det kluster för fjärr utbildning som du ställer in tidigare.  Du skickar ett jobb genom att:
+För den här uppgiften skickar du jobbet som ska köras på det fjärrträningskluster som du konfigurerade tidigare.  Du skickar ett jobb genom att:
 * Skapa en katalog
 * Skapa ett träningsskript
-* Skapa en konfiguration för skript körning
+* Skapa en skriptkörningskonfiguration
 * Skicka jobbet
 
 ### <a name="create-a-directory"></a>Skapa en katalog
@@ -301,30 +301,30 @@ Observera hur skriptet hämtar data och sparar modeller:
 
 + Träningsskriptet läser ett argument för att hitta katalogen som innehåller data. När du skickar jobbet senare pekar du på datalagret för det här argumentet: ```parser.add_argument('--data-folder', type=str, dest='data_folder', help='data directory mounting point')```
 
-+ Övnings skriptet sparar din modell i en katalog med namnet **outputs**. Allt som skrivs i den här katalogen överförs automatiskt till din arbetsyta. Du kommer åt din modell från den här katalogen senare i självstudien. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
++ Träningsskriptet sparar din modell i en katalog med namnet **outputs**. Allt som skrivs i den här katalogen överförs automatiskt till din arbetsyta. Du kommer åt din modell från den här katalogen senare i självstudien. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Utbildnings skriptet kräver `utils.py` att filen läser in data mängden korrekt. Följande kod kopieras `utils.py` till `script_folder` så att filen kan nås tillsammans med övnings skriptet på fjär resursen.
++ Träningsskriptet kräver att filen `utils.py` läser in datauppsättningen korrekt. Följande kod `utils.py` kopieras `script_folder` till så att filen kan nås tillsammans med träningsskriptet på fjärrresursen.
 
   ```python
   import shutil
   shutil.copy('utils.py', script_folder)
   ```
 
-### <a name="configure-the-training-job"></a>Konfigurera utbildnings jobbet
+### <a name="configure-the-training-job"></a>Konfigurera träningsjobbet
 
-Skapa ett [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) -objekt om du vill ange konfigurations information för ditt utbildnings jobb, inklusive ditt utbildnings skript, vilken miljö som ska användas och vilket beräknings mål som ska köras. Konfigurera ScriptRunConfig genom att ange:
+Skapa ett [ScriptRunConfig-objekt](/python/api/azureml-core/azureml.core.scriptrunconfig) för att ange konfigurationsinformationen för träningsjobbet, inklusive träningsskriptet, miljön som ska användas och beräkningsmålet som ska köras. Konfigurera ScriptRunConfig genom att ange:
 
 * Katalogen som innehåller dina skript. Alla filer i den här katalogen laddas upp till klusternoderna för körning.
 * Beräkningsmålet. I det här fallet använder du Azure Machine Learning-beräkningsklustret som du skapade.
-* Utbildnings skriptets namn, **Train.py**.
-* En miljö som innehåller de bibliotek som krävs för att köra skriptet.
-* Argument krävs från övnings skriptet.
+* Namnet på träningsskriptet, **train.py**.
+* En miljö som innehåller de bibliotek som behövs för att köra skriptet.
+* Argument som krävs från träningsskriptet.
 
-I den här självstudien är det här målet AmlCompute. Alla filer i skriptmappen laddas upp till klusternoderna för körning. **--Data_folder** är inställd på att använda data uppsättningen.
+I den här självstudien är det här målet AmlCompute. Alla filer i skriptmappen laddas upp till klusternoderna för körning. **--data_folder är** inställd på att använda datauppsättningen.
 
-Börja med att skapa miljön som innehåller: scikit--biblioteket, azureml-dataset-runtime som krävs för att få åtkomst till data uppsättningen och AzureML-standardvärden som innehåller beroenden för loggnings mått. Azureml-defaults innehåller också de beroenden som krävs för att distribuera modellen som en webb tjänst senare i del 2 av självstudien.
+Skapa först den miljö som innehåller: biblioteket scikit-learn, azureml-dataset-runtime som krävs för åtkomst till datauppsättningen och azureml-defaults som innehåller beroenden för loggning av mått. Azureml-defaults innehåller också de beroenden som krävs för att distribuera modellen som en webbtjänst senare i del 2 av självstudien.
 
-När miljön har definierats kan du registrera den med arbets ytan och sedan använda den igen i del 2 av självstudien.
+När miljön har definierats registrerar du den med arbetsytan för att använda den igen i del 2 av självstudien.
 
 ```python
 from azureml.core.environment import Environment
@@ -340,7 +340,7 @@ env.python.conda_dependencies = cd
 env.register(workspace=ws)
 ```
 
-Skapa sedan ScriptRunConfig genom att ange utbildnings skriptet, beräkna målet och miljön.
+Skapa sedan ScriptRunConfig genom att ange träningsskriptet, beräkningsmålet och miljön.
 
 ```python
 from azureml.core import ScriptRunConfig
@@ -371,32 +371,32 @@ Den första körningen tar totalt **cirka 10 minuter**. Men för efterföljande 
 
 Vad händer medan du väntar:
 
-- **Skapa bild**: en Docker-avbildning skapas som matchar python-miljön som anges i Azure ml-miljön. Avbildningen laddas upp till arbetsytan. Det tar **cirka fem minuter** att skapa och överföra avbildningen.
+- **Skapa avbildning:** En Docker-avbildning skapas som matchar Python-miljön som anges av Azure ML-miljön. Avbildningen laddas upp till arbetsytan. Det tar **cirka fem minuter** att skapa och överföra avbildningen.
 
   Den här fasen sker en gång för varje Python-miljö eftersom containern cachelagras för efterföljande körningar. När avbildningen skapas strömmas loggar till körningshistoriken. Du kan övervaka förloppet för avbildningsgenereringen med de här loggarna.
 
-- **Skalning**: om fjärrklusteret kräver fler noder för att köra körningen än vad som är tillgängligt, läggs ytterligare noder till automatiskt. Skalningen tar normalt **cirka fem minuter.**
+- **Skalning:** Om fjärrklustret kräver fler noder för att köra än vad som är tillgängligt för närvarande läggs ytterligare noder till automatiskt. Skalningen tar normalt **cirka fem minuter.**
 
-- **Körs**: i det här steget skickas nödvändiga skript och filer till Compute-målet. Datalagren monteras eller kopieras därefter. Och sedan körs **entry_script**. Medan jobbet körs strömmas **STDOUT** och katalogen **./logs** till körnings historiken. Du kan övervaka körningens förlopp med hjälp av de här loggarna.
+- **Körs:** I det här skedet skickas nödvändiga skript och filer till beräkningsmålet. Datalagren monteras eller kopieras därefter. Och sedan körs **entry_script**. När jobbet körs strömmas **stdout** och **katalogen ./logs** till körningshistoriken. Du kan övervaka körningens förlopp med hjälp av de här loggarna.
 
-- **Efter bearbetning**: katalogen **./outputs** i körningen kopieras till körnings historiken i din arbets yta, så att du kan komma åt dessa resultat.
+- **Efterbearbetning:** **Katalogen ./outputs** för körningen kopieras till körningshistoriken på arbetsytan så att du kan komma åt dessa resultat.
 
 Du kan kontrollera förloppet för ett jobb som körs på flera olika sätt. Den här självstudien använder en Jupyter-widget samt en `wait_for_completion`-metod.
 
 ### <a name="jupyter-widget"></a>Jupyter-widget
 
-Se förloppet för [widgeten](/python/api/azureml-widgets/azureml.widgets)kör med en Jupyter-widget. Precis som körningsöverföringen så är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till 15:e sekund tills jobbet slutförts:
+Titta på förloppet för körningen med en [Jupyter-widget](/python/api/azureml-widgets/azureml.widgets). Precis som körningsöverföringen så är widgeten asynkron och tillhandahåller liveuppdateringar var 10:e till 15:e sekund tills jobbet slutförts:
 
 ```python
 from azureml.widgets import RunDetails
 RunDetails(run).show()
 ```
 
-Widgeten kommer att se ut så här i slutet av utbildningen:
+Widgeten ser ut som följande i slutet av träningen:
 
 ![Anteckningsbok-widget](./media/tutorial-train-models-with-aml/widget.png)
 
-Om du vill avbryta en körning kan du följa [instruktionerna](./how-to-manage-runs.md).
+Om du vill avbryta en körning kan du följa [instruktionerna](./how-to-track-monitor-analyze-runs.md).
 
 ### <a name="get-log-results-upon-completion"></a>Hämta loggresultat när åtgärden har slutförts
 
@@ -452,7 +452,7 @@ compute_target.delete()
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här Azure Machine Learning själv studie kursen har du använt python för följande uppgifter:
+I den Azure Machine Learning självstudien använde du Python för följande uppgifter:
 
 > [!div class="checklist"]
 > * Konfigurera din utvecklingsmiljö.

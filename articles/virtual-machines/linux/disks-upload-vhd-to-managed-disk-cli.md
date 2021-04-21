@@ -8,12 +8,12 @@ ms.date: 06/15/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 285f0acd5097ce68cddee6f732b17944dffb0eba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0f48856f085737040ca16afcca1e56be1da4843e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107762577"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816754"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Ladda upp en virtuell hårddisk till Azure eller kopiera en hanterad disk till en annan region – Azure CLI
 
@@ -42,7 +42,7 @@ Den här typen av hanterad disk har två unika tillstånd:
 
 ## <a name="create-an-empty-managed-disk"></a>Skapa en tom hanterad disk
 
-Innan du kan skapa en tom standard-HDD för uppladdning behöver du filstorleken för den virtuella hårddisk som du vill ladda upp i byte. Du kan hämta det genom att använda antingen `wc -c <yourFileName>.vhd` eller `ls -al <yourFileName>.vhd` . Det här värdet används när du anger **parametern --upload-size-bytes.**
+Innan du kan skapa en tom standard-HDD för uppladdning behöver du filstorleken för den virtuella hårddisk som du vill ladda upp, i byte. Du kan hämta det genom att använda antingen `wc -c <yourFileName>.vhd` eller `ls -al <yourFileName>.vhd` . Det här värdet används när du anger **parametern --upload-size-bytes.**
 
 Skapa en tom standard hdd för uppladdning genom att ange både parametern **--for-upload** och parametern **--upload-size-bytes** i en cmdlet [för](/cli/azure/disk#az_disk_create) disk create:
 
@@ -102,7 +102,7 @@ Följande skript gör detta åt dig. Processen liknar stegen som beskrivs ovan, 
 > [!IMPORTANT]
 > Du måste lägga till en förskjutning på 512 när du tillhandahåller diskstorleken i byte för en hanterad disk från Azure. Det beror på att Azure utelämnar sidfoten när diskstorleken returneras. Kopieringen misslyckas om du inte gör detta. Följande skript gör redan detta åt dig.
 
-Ersätt , , , och (ett exempel på ett platsvärde är `<sourceResourceGroupHere>` `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` uswest2) med dina värden och kör sedan följande skript för att `<yourTargetLocationHere>` kopiera en hanterad disk.
+Ersätt , , , och (ett exempel på ett platsvärde är `<sourceResourceGroupHere>` `<sourceDiskNameHere>` `<targetDiskNameHere>` `<targetResourceGroupHere>` uswest2) med dina värden och kör sedan följande skript för att kopiera `<yourTargetLocationHere>` en hanterad disk.
 
 > [!TIP]
 > Om du skapar en OS-disk lägger du till --hyper-v-generation <yourGeneration> i `az disk create` .
@@ -122,7 +122,7 @@ targetSASURI=$(az disk grant-access -n $targetDiskName -g $targetRG  --access-le
 
 sourceSASURI=$(az disk grant-access -n $sourceDiskName -g $sourceRG --duration-in-seconds 86400 --query [accessSas] -o tsv)
 
-.\azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
+azcopy copy $sourceSASURI $targetSASURI --blob-type PageBlob
 
 az disk revoke-access -n $sourceDiskName -g $sourceRG
 

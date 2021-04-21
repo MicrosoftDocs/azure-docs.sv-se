@@ -1,6 +1,6 @@
 ---
 title: Skriptexempel för Azure PowerShell – Säker serverdel | Microsoft Docs
-description: Lär dig hur du använder ett Azure PowerShell skript exempel för att skydda Server delen med ömsesidig certifikatautentisering.
+description: Lär dig hur du använder ett Azure PowerShell-skriptexempel för att skydda serverd med ömsesidig certifikatautentisering.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.topic: sample
 ms.date: 11/16/2017
 ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: cb6b1cfcb6a8f482bdcbc9d6befc99197f024f4a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: 7d3a4352c356f6f14ff23f32f6e71724027e20d7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87905660"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816808"
 ---
 # <a name="secure-back-end"></a>Säker serverdel
 

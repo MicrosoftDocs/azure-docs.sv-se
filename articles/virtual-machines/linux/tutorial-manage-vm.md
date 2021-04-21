@@ -4,23 +4,18 @@ description: I den här självstudien lär du dig hur du använder Azure CLI fö
 services: virtual-machines
 documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 77213fe83a56a33f4d10658f85465349949be792
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fb70f11e8815b078bccd4ed1cd294c961904579d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555609"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816610"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Självstudie: Skapa och hantera virtuella Linux-datorer med Azure CLI
 
@@ -33,7 +28,7 @@ Med virtuella Azure-datorer får du en fullständigt konfigurerbar och flexibel 
 > * Ändra storlek på en virtuell dator
 > * Visa och förstå tillstånd för virtuella datorer
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -159,7 +154,7 @@ I följande tabell kategoriseras storlekarna i användningsfall.
 | [Generell användning](../sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Balanserat förhållande mellan processor och minne. Perfekt för utveckling eller test samt små till medelstora lösningar för program och data.  |
 | [Beräkningsoptimerad](../sizes-compute.md)   | Fsv2          | Högt förhållande mellan processor och minne. Bra för program med medelhög trafik, nätverkstillämpningar och batchprocesser.        |
 | [Minnesoptimerad](../sizes-memory.md)    | Esv3, Ev3, M, DSv2, Dv2  | Högt förhållande mellan minne och kärna. Utmärkt för relationsdatabaser, mellanstora till stora cacheminnen och minnesinterna analyser.                 |
-| [Lagringsoptimerad](../sizes-storage.md)      | Lsv2, LS              | Högt diskgenomflöde och I/O. Perfekt för stordata, SQL- och NoSQL-databaser.                                                         |
+| [Lagringsoptimerad](../sizes-storage.md)      | Lsv2, Ls              | Högt diskgenomflöde och I/O. Perfekt för stordata, SQL- och NoSQL-databaser.                                                         |
 | [GPU](../sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Virtuella specialdatorer som är avsedda för tung grafisk rendering och videoredigering.       |
 | [Höga prestanda](../sizes-hpc.md) | H        | Virtuella datorer med de kraftfullaste processorerna och nätverksgränssnitt för stora dataflöden (RDMA). |
 
@@ -252,7 +247,7 @@ En virtuell Azure-dator kan ha en av många energinivåer. Det här tillståndet
 
 ### <a name="power-states"></a>Energinivåer
 
-| Energinivå | Beskrivning
+| Energinivå | Description
 |----|----|
 | Startar | Anger att den virtuella datorn startas. |
 | Körs | Anger att den virtuella datorn körs. |
@@ -281,7 +276,7 @@ ode                DisplayStatus    Level
 PowerState/running  VM running       Info
 ```
 
-Om du vill hämta energi läget för alla virtuella datorer i din prenumeration använder du [Virtual Machines-List all API](/rest/api/compute/virtualmachines/listall) med parametern **statusOnly** inställd på *True*.
+Om du vill hämta energitillståndet för alla virtuella datorer i din prenumeration använder du Virtual Machines – Lista alla [API:er](/rest/api/compute/virtualmachines/listall) med **parameterstatusEndant** inställd på *sant*.
 
 ## <a name="management-tasks"></a>Hanteringsuppgifter
 
@@ -329,4 +324,4 @@ I den här självstudien har du lärt dig om grundläggande VM-skapande och hant
 Gå vidare till nästa självstudie om du vill lära dig mer om diskar i virtuella dator.  
 
 > [!div class="nextstepaction"]
-> [Skapa och hantera virtuella dator diskar](./tutorial-manage-disks.md)
+> [Skapa och hantera virtuella datordiskar](./tutorial-manage-disks.md)

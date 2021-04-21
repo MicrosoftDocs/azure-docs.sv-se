@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 989bcbb7e509b9b7692f067af2989fcad94b6ad1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 284ef8de1c672fdc0a5bb1a996a3446010253f57
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107797139"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816799"
 ---
 # <a name="deploy-azure-file-sync"></a>Distribuera Azure File Sync
 Använd Azure File Sync för att centralisera organisationens filresurser i Azure Files, samtidigt som du behåller flexibiliteten, prestandan och kompatibiliteten hos en lokal filserver. Windows Server omvandlas av Azure File Sync till ett snabbt cacheminne för Azure-filresursen. Du kan använda alla protokoll som är tillgängliga på Windows Server för att komma åt data lokalt, inklusive SMB, NFS och FTPS. Du kan ha så många cacheminnen som du behöver över hela världen.
 
-Vi rekommenderar starkt att du läser Planera för [en Azure Files-distribution](../files/storage-files-planning.md) och Planera för [en Azure File Sync-distribution](file-sync-planning.md) innan du slutför stegen som beskrivs i den här artikeln.
+Vi rekommenderar starkt att du läser Planera för [en Azure Files-distribution](../files/storage-files-planning.md) och Planera [för en Azure File Sync-distribution](file-sync-planning.md) innan du slutför stegen som beskrivs i den här artikeln.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -103,7 +103,7 @@ Vi rekommenderar starkt att du läser Planera för [en Azure Files-distribution]
 ---
 
 ## <a name="prepare-windows-server-to-use-with-azure-file-sync"></a>Förbereda Windows Server för användning med Azure File Sync
-För varje server som du tänker använda med Azure File Sync, inklusive varje servernod i ett redundanskluster, **inaktiverar du Internet Explorer Förbättrad säkerhetskonfiguration.** Detta krävs endast för inledande serverregistrering. Du kan aktivera det igen när servern har registrerats.
+För varje server som du tänker använda med Azure File Sync, inklusive varje servernod i ett redundanskluster, inaktiverar du Internet Explorer **Förbättrad säkerhetskonfiguration.** Detta krävs endast för inledande serverregistrering. Du kan aktivera det igen när servern har registrerats.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 > [!Note]  
@@ -118,7 +118,7 @@ För varje server som du tänker använda med Azure File Sync, inklusive varje s
     ![Popup-fönstret Förbättrad säkerhetskonfiguration i Internet Explorer med ”Av” valt](media/storage-sync-files-deployment-guide/prepare-server-disable-ieesc-part-3.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Om du vill inaktivera Internet Explorer Förbättrad säkerhetskonfiguration kör du följande från en upphöjd PowerShell-session:
+Om du vill Internet Explorer förbättrad säkerhetskonfiguration kör du följande från en upphöjd PowerShell-session:
 
 ```powershell
 $installType = (Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\").InstallationType
@@ -228,7 +228,7 @@ Du kan ladda ned agenten från [Microsoft Download Center.](https://go.microsoft
 
 Vi rekommenderar att du gör följande:
 - Låt standardinstallationssökvägen (C:\Program Files\Azure\StorageSyncAgent) vara kvar för att förenkla felsökning och serverunderhåll.
-- Aktivera Microsoft Update att hålla Azure File Sync uppdaterade. Alla uppdateringar, till Azure File Sync-agenten, inklusive funktionsuppdateringar och snabbkorrigeringar, sker från Microsoft Update. Vi rekommenderar att du installerar den senaste uppdateringen för Azure File Sync. Mer information finns i [Azure File Sync uppdateringsprincip](file-sync-planning.md#azure-file-sync-agent-update-policy).
+- Aktivera Microsoft Update att hålla Azure File Sync uppdaterade. Alla uppdateringar, till Azure File Sync-agenten, inklusive funktionsuppdateringar och snabbkorrigeringar, sker från Microsoft Update. Vi rekommenderar att du installerar den senaste uppdateringen för Azure File Sync. Mer information finns i [Azure File Sync uppdateringsprincip.](file-sync-planning.md#azure-file-sync-agent-update-policy)
 
 När Azure File Sync agentinstallationen är klar öppnas användargränssnittet för serverregistrering automatiskt. Du måste ha en tjänst för synkronisering av lagring innan du registrerar dig. se nästa avsnitt om hur du skapar en tjänst för synkronisering av lagring.
 
@@ -281,7 +281,7 @@ När du registrerar Windows Server med en tjänst för synkronisering av lagring
 
 Administratören som registrerar servern måste vara medlem i hanteringsrollerna **Ägare** eller **Deltagare för** den angivna tjänsten för synkronisering av lagring. Detta kan konfigureras under **Access Control (IAM)** i Azure Portal för tjänsten för synkronisering av lagring.
 
-Det är också möjligt att skilja administratörer som kan registrera servrar från de som tillåts att även konfigurera synkronisering i en tjänst för synkronisering av lagring. För detta skulle du behöva skapa en anpassad roll där du listar de administratörer som endast tillåts registrera servrar och ger din anpassade roll följande behörigheter:
+Det är också möjligt att skilja administratörer som kan registrera servrar från de som tillåts att även konfigurera synkronisering i en tjänst för synkronisering av lagring. För detta skulle du behöva skapa en anpassad roll där du listar de administratörer som endast tillåts registrera servrar och ge din anpassade roll följande behörigheter:
 
 * "Microsoft.StorageSync/storageSyncServices/registeredServers/write"
 * "Microsoft.StorageSync/storageSyncServices/read"
@@ -295,9 +295,9 @@ När du har loggat in uppmanas du att ange följande information:
 
 ![Skärmbild av användargränssnittet för serverregistrering](media/storage-sync-files-deployment-guide/register-server-scubed-1.png)
 
-- **Azure-prenumeration:** Prenumerationen som innehåller tjänsten för synkronisering av lagring (se [Distribuera tjänsten för synkronisering av lagring).](#deploy-the-storage-sync-service) 
-- **Resursgrupp:** Resursgruppen som innehåller tjänsten för synkronisering av lagring.
-- **Tjänst för synkronisering av** lagring: Namnet på tjänsten för synkronisering av lagring som du vill registrera.
+- **Azure-prenumeration:** Den prenumeration som innehåller tjänsten för synkronisering av lagring (se [Distribuera tjänsten för synkronisering av lagring).](#deploy-the-storage-sync-service) 
+- **Resursgrupp:** Den resursgrupp som innehåller tjänsten för synkronisering av lagring.
+- **Tjänst för synkronisering av** lagring: Namnet på den tjänst för synkronisering av lagring som du vill registrera.
 
 När du har valt lämplig information väljer du **Registrera för** att slutföra serverregistreringen. Som en del av registreringsprocessen uppmanas du att logga in en ytterligare inloggning.
 
@@ -314,23 +314,23 @@ Följ anvisningarna för Azure Portal eller PowerShell.
 ## <a name="create-a-sync-group-and-a-cloud-endpoint"></a>Skapa en synkroniseringsgrupp och en molnslutpunkt
 En synkroniseringsgrupp definierar synkroniseringstopologin för en uppsättning filer. Slutpunkter i en synkroniseringsgrupp synkroniseras med varandra. En synkroniseringsgrupp måste innehålla en molnslutpunkt, som representerar en Azure-filresurs och en eller flera serverslutpunkter. En serverslutpunkt representerar en sökväg på en registrerad server. En server kan ha serverslutpunkter i flera synkroniseringsgrupper. Du kan skapa så många synkroniseringsgrupper som du behöver för att korrekt beskriva din önskade synkroniseringstopologi.
 
-En molnslutpunkt är en pekare till en Azure-filresurs. Alla serverslutpunkter synkroniseras med en molnslutpunkt, vilket gör molnslutpunkten till hubben. Lagringskontot för Azure-filresursen måste finnas i samma region som tjänsten för synkronisering av lagring. Hela Azure-filresursen synkroniseras, med ett undantag: En särskild mapp, som är jämförbar med den dolda mappen "System Volume Information" på en NTFS-volym, etableras. Den här katalogen heter ". SystemShareInformation". Den innehåller viktiga synkroniseringsmetadata som inte synkroniseras med andra slutpunkter. Använd eller ta inte bort den!
+En molnslutpunkt är en pekare till en Azure-filresurs. Alla serverslutpunkter synkroniseras med en molnslutpunkt, vilket gör molnslutpunkten till hubben. Lagringskontot för Azure-filresursen måste finnas i samma region som tjänsten för synkronisering av lagring. Hela Azure-filresursen synkroniseras, med ett undantag: En särskild mapp som är jämförbar med den dolda mappen "System Volume Information" på en NTFS-volym etableras. Den här katalogen heter ". SystemShareInformation". Den innehåller viktiga synkroniseringsmetadata som inte synkroniseras till andra slutpunkter. Använd inte eller ta inte bort det!
 
 > [!Important]  
-> Du kan göra ändringar i valfri molnslutpunkt eller serverslutpunkt i synkroniseringsgruppen och synkronisera filerna med de andra slutpunkterna i synkroniseringsgruppen. Om du gör en direkt ändring i molnslutpunkten (Azure-filresursen) måste ändringarna först identifieras av en Azure File Sync-jobb för ändringsidentifiering. Ett ändringsidentifieringsjobb initieras endast för en molnslutpunkt en gång var 24:e timme. Mer information finns i [Azure Files vanliga frågor och svar.](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json#afs-change-detection)
+> Du kan göra ändringar i valfri molnslutpunkt eller serverslutpunkt i synkroniseringsgruppen och synkronisera filerna med de andra slutpunkterna i synkroniseringsgruppen. Om du gör en ändring i molnslutpunkten (Azure-filresursen) direkt måste ändringarna först identifieras av en Azure File Sync-jobb för ändringsidentifiering. Ett ändringsidentifieringsjobb initieras endast för en molnslutpunkt en gång var 24:e timme. Mer information finns i [Azure Files vanliga frågor och svar.](../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json#afs-change-detection)
 
-Administratören som skapar molnslutpunkten måste vara medlem i hanteringsrollen **Ägare** för lagringskontot som innehåller den Azure-filresurs som molnslutpunkten pekar på. Detta kan konfigureras under **Access Control (IAM)** i Azure Portal för lagringskontot.
+Administratören som skapar molnslutpunkten måste vara  medlem i hanteringsrollen Ägare för lagringskontot som innehåller den Azure-filresurs som molnslutpunkten pekar på. Detta kan konfigureras under **Access Control (IAM)** i Azure Portal för lagringskontot.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-Om du vill skapa en synkroniseringsgrupp [går Azure Portal](https://portal.azure.com/)till tjänsten för synkronisering av lagring och väljer sedan **+ Synkroniseringsgrupp:**
+Om du vill skapa en synkroniseringsgrupp [går Azure Portal](https://portal.azure.com/)till din tjänst för synkronisering av lagring och väljer sedan **+ Synkroniseringsgrupp:**
 
 ![Skapa en ny synkroniseringsgrupp i Azure-portalen](media/storage-sync-files-deployment-guide/create-sync-group-part-1.png)
 
 I fönstret som öppnas anger du följande information för att skapa en synkroniseringsgrupp med en molnslutpunkt:
 
-- **Synkroniseringsgruppens** namn: Namnet på synkroniseringsgruppen som ska skapas. Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig.
+- **Namn på synkroniseringsgrupp:** Namnet på synkroniseringsgruppen som ska skapas. Det här namnet måste vara unikt i tjänsten för synkronisering av lagring men kan vara vilket namn som helst som är logiskt för dig.
 - **Prenumeration:** Prenumerationen där du distribuerade tjänsten för synkronisering av lagring i [Distribuera tjänsten för synkronisering av lagring.](#deploy-the-storage-sync-service)
-- **Lagringskonto:** Om du väljer **Välj** lagringskonto visas ett annat fönster där du kan välja det lagringskonto som har den Azure-filresurs som du vill synkronisera med.
+- **Lagringskonto:** Om du väljer Välj lagringskonto **visas** ett annat fönster där du kan välja det lagringskonto som har den Azure-filresurs som du vill synkronisera med.
 - **Azure-filresurs:** Namnet på den Azure-filresurs som du vill synkronisera med.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -402,10 +402,12 @@ az storagesync sync-group cloud-endpoint create --resource-group myResourceGroup
 ---
 
 ## <a name="create-a-server-endpoint"></a>Skapa en serverslutpunkt
-En serverslutpunkt representerar en viss plats på en registrerad server, till exempel en mapp på en servervolym. En serverslutpunkt måste vara en sökväg på en registrerad server (i stället för en monterad resurs), och om du vill använda molnnivåindelad lagring måste sökvägen finnas på en volym som inte är en systemvolym. Nas (Network Attached Storage) stöds inte.
+En serverslutpunkt representerar en viss plats på en registrerad server, till exempel en mapp på en servervolym. En serverslutpunkt omfattas av följande villkor:
 
-> [!NOTE]
-> Det går inte att ändra sökvägen eller enhetsbeteckningen efter att du har upprättat en serverslutpunkt på en volym. Kontrollera att du använder en slutlig sökväg på den registrerade servern.
+- En serverslutpunkt måste vara en sökväg på en registrerad server (i stället för en monterad resurs). Nas (Network Attached Storage) stöds inte.
+- Serverslutpunkten kan finnas på systemvolymen, men serverslutpunkter på systemvolymen kanske inte använder molnnivåindelad lagring.
+- Det går inte att ändra sökvägen eller enhetsbeteckningen efter att du har upprättat en serverslutpunkt på en volym. Kontrollera att du använder en slutlig sökväg på den registrerade servern.
+- En registrerad server har stöd för flera serverslutpunkter, men en synkroniseringsgrupp kan bara ha en serverslutpunkt per registrerad server vid en given tidpunkt. Andra serverslutpunkter i synkroniseringsgruppen måste finnas på olika registrerade servrar.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Om du vill lägga till en serverslutpunkt går du till den nyligen skapade synkroniseringsgruppen och väljer sedan **Lägg till serverslutpunkt.**
@@ -494,14 +496,14 @@ az storagesync sync-group server-endpoint create --resource-group myResourceGrou
 ## <a name="configure-firewall-and-virtual-network-settings"></a>Konfigurera inställningar för brandvägg och virtuellt nätverk
 
 ### <a name="portal"></a>Portalen
-Om du vill konfigurera Azure File-synkroniseringen så att den fungerar med brandväggs- och virtuella nätverksinställningar gör du följande:
+Om du vill konfigurera Azure File-synkroniseringen så att den fungerar med inställningarna för brandvägg och virtuellt nätverk gör du följande:
 
 1. Från Azure Portal du till det lagringskonto som du vill skydda.
 1. Välj **Nätverk** på den vänstra menyn.
 1. Under **Valda nätverk** under Tillåt åtkomst **från**.
 1. Kontrollera att dina servrars IP-adress eller virtuella nätverk visas under **avsnittet Adressintervall.**
-1. Kontrollera att **Tillåt betrodda Microsoft-tjänster åtkomst till det här lagringskontot** är markerat.
-1. Spara **inställningarna** genom att välja Spara.
+1. Kontrollera att **Tillåt betrodda Microsoft-tjänster åtkomst till det här lagringskontot är** markerat.
+1. Välj **Spara** för att spara inställningarna.
 
     ![Konfigurera brandväggs- och virtuella nätverksinställningar så att de fungerar med Azure File Sync](media/storage-sync-files-deployment-guide/firewall-and-vnet.png)
 
@@ -521,10 +523,10 @@ De rekommenderade stegen för att publicera på Azure File Sync för första gå
 1. Omdirigera användare och program till den här nya resursen.
 1. Du kan också ta bort alla dubblettresurser på servrarna.
  
-Om du inte har extra lagringsutrymme för inledande registrering och vill ansluta till befintliga resurser kan du förinstallera data i Azure-filresurser. Den här metoden rekommenderas om och endast om du kan acceptera driftstopp och absolut inte garantera några dataändringar på serverresurser under den första registreringsprocessen. 
+Om du inte har extra lagringsutrymme för inledande registrering och vill ansluta till befintliga resurser kan du förinstallera data i Azure-filresurser. Den här metoden rekommenderas, om och bara om du kan acceptera driftstopp och absolut inte garantera några dataändringar på serverresurser under den första onboarding-processen. 
  
 1. Se till att data på någon av servrarna inte kan ändras under registreringsprocessen.
-1. Förinstallera Azure-filresurser med serverdata med hjälp av ett dataöverföringsverktyg via SMB. Till exempel Robocopy. Du kan också använda AzCopy via REST. Se till att använda AzCopy med lämpliga växlar för att bevara tidsstämplar och attribut för ACL:er.
+1. Förinstallera Azure-filresurser med serverdata med alla dataöverföringsverktyg via SMB. Robocopy, till exempel. Du kan också använda AzCopy via REST. Se till att använda AzCopy med lämpliga växlar för att bevara tidsstämplar och attribut för ACL:er.
 1. Skapa Azure File Sync topologi med önskade serverslutpunkter som pekar på befintliga resurser.
 1. Låt synkroniseringen slutföra avstämningsprocessen på alla slutpunkter. 
 1. När avstämningen är klar kan du öppna resurser för ändringar.
@@ -539,9 +541,9 @@ För närvarande har för seeding-metoden några begränsningar –
 > Följande information kan bara användas med version 9 (eller senare) av lagringssynkroniseringsagenten. Versioner som är lägre än 9 har inte cmdletarna StorageSyncSelfService.
 
 Tidigare versioner är en Windows-funktion som gör att du kan använda VSS-ögonblicksbilder på serversidan av en volym för att presentera återställningsbara versioner av en fil till en SMB-klient.
-Detta möjliggör ett kraftfullt scenario, som ofta kallas självbetjäning, direkt för informationsarbetare i stället för beroende på återställningen från en IT-administratör.
+Detta möjliggör ett kraftfullt scenario, som ofta kallas självbetjäning, direkt för informationsarbetare i stället för beroende på återställning från en IT-administratör.
 
-VSS-ögonblicksbilder och tidigare versioner fungerar oberoende av Azure File Sync. Molnnivåindelad lagring måste dock vara inställt på ett kompatibelt läge. Många Azure File Sync serverslutpunkter kan finnas på samma volym. Du måste göra följande PowerShell-anrop per volym som även har en serverslutpunkt där du planerar att eller använder molnnivåindelad lagring.
+VSS-ögonblicksbilder och tidigare versioner fungerar oberoende av Azure File Sync. Molnnivåindelad lagring måste dock vara inställt på ett kompatibelt läge. Många Azure File Sync serverslutpunkter kan finnas på samma volym. Du måste göra följande PowerShell-anrop per volym som har till och med en serverslutpunkt där du planerar att använda eller använder molnnivåindelad lagring.
 
 ```powershell
 Import-Module '<SyncAgentInstallPath>\StorageSync.Management.ServerCmdlets.dll'
@@ -563,11 +565,11 @@ Om du vill se om kompatibiliteten för självbetjäning har aktiverats kan du k�
 Get-StorageSyncSelfServiceRestore [[-Driveletter] <string>]
 ```
 
-Den visar alla volymer på servern samt antalet kompatibla dagar för molnnivåindelad lagring för var och en. Det här antalet beräknas automatiskt baserat på maximalt antal möjliga ögonblicksbilder per volym och standardschemat för ögonblicksbilder. Som standard kan alltså alla tidigare versioner som presenteras för ett informationsarbetare användas för att återställa från. Samma sak gäller om du ändrar standardschemat så att det tar fler ögonblicksbilder.
-Men om du ändrar schemat på ett sätt som resulterar i en tillgänglig ögonblicksbild på volymen som är äldre än värdet för kompatibla dagar, kommer användarna inte att kunna använda den äldre ögonblicksbilden (tidigare version) att återställa från.
+Den visar alla volymer på servern samt antalet kompatibla dagar för molnnivåindelad lagring för var och en. Det här antalet beräknas automatiskt baserat på maximalt antal möjliga ögonblicksbilder per volym och standardschemat för ögonblicksbilder. Så som standard kan alla tidigare versioner som presenteras för en informationsarbetare användas för att återställa från. Samma sak gäller om du ändrar standardschemat så att det tar fler ögonblicksbilder.
+Men om du ändrar schemat på ett sätt som resulterar i en tillgänglig ögonblicksbild på volymen som är äldre än värdet för kompatibla dagar, kommer användarna inte att kunna använda den här äldre ögonblicksbilden (tidigare version) för att återställa från.
 
 > [!Note]
-> Aktivering av självbetjäning av återställning kan påverka din Azure-lagringsförbrukning och -faktura. Den här effekten är begränsad till filer som för närvarande är nivåindelade på servern. Aktivering av den här funktionen säkerställer att det finns en tillgänglig filversion i molnet som kan refereras via en post för en tidigare version (VSS-ögonblicksbild).
+> Aktivering av självbetjäning av återställning kan påverka din förbrukning och faktura för Azure-lagring. Den här effekten är begränsad till filer som för närvarande är nivåindelade på servern. Aktivering av den här funktionen säkerställer att det finns en tillgänglig filversion i molnet som kan refereras via en post för en tidigare version (VSS-ögonblicksbild).
 >
 > Om du inaktiverar funktionen minskar Azure-lagringsförbrukningen långsamt tills fönstret med kompatibla dagar har passerat. Det finns inget sätt att påskynda detta. 
 
@@ -579,11 +581,11 @@ För att den nya gränsen ska gälla måste du köra cmdleten igen för att akti
 <a id="proactive-recall"></a>
 ## <a name="proactively-recall-new-and-changed-files-from-an-azure-file-share"></a>Proaktivt återkalla nya och ändrade filer från en Azure-filresurs
 
-Med agentversion 11 blir ett nytt läge tillgängligt på en serverslutpunkt. Med det här läget kan globalt distribuerade företag ha servercachen i en förifylld fjärrregion även innan lokala användare får åtkomst till några filer. När det här läget är aktiverat på en serverslutpunkt gör det att servern återkallar filer som har skapats eller ändrats i Azure-filresursen.
+Med agentversion 11 blir ett nytt läge tillgängligt på en serverslutpunkt. Med det här läget kan globalt distribuerade företag ha servercachen i en fjärransluten region förifylld även innan lokala användare får åtkomst till filer. När det här läget aktiveras på en serverslutpunkt gör det att servern återkallar filer som har skapats eller ändrats i Azure-filresursen.
 
 ### <a name="scenario"></a>Scenario
 
-Ett globalt distribuerat företag har avdelningskontor i USA och Indien. På morgonen (amerikansk tid) skapar informationsarbetare en ny mapp och nya filer för ett helt nytt projekt och arbetar hela dagen med det. Azure File Sync mappar och filer till Azure-filresursen (molnslutpunkt). Informationsarbetare i Indien fortsätter att arbeta med projektet i sin tidszon. När de kommer på morgonen måste den lokala Azure File Sync-aktiverade servern i Indien ha dessa nya filer tillgängliga lokalt, så att Indien-teamet effektivt kan arbeta bort från en lokal cache. Aktivering av det här läget förhindrar att den första filåtkomsten går långsammare på grund av återkallelse på begäran och gör att servern proaktivt kan återkalla filerna så fort de har ändrats eller skapats i Azure-filresursen.
+Ett globalt distribuerat företag har avdelningskontor i USA och Indien. På morgonen (amerikansk tid) skapar informationsarbetare en ny mapp och nya filer för ett helt nytt projekt och arbetar hela dagen med det. Azure File Sync synkroniserar mappar och filer till Azure-filresursen (molnslutpunkt). Informationsarbetare i Indien fortsätter att arbeta med projektet i sin tidszon. När de kommer på morgonen måste den lokala Azure File Sync-aktiverade servern i Indien ha dessa nya filer tillgängliga lokalt, så att Indien-teamet effektivt kan arbeta bort från en lokal cache. Aktivering av det här läget förhindrar att den första filåtkomsten går långsammare på grund av återkallelse på begäran och gör att servern proaktivt kan återkalla filerna så fort de har ändrats eller skapats i Azure-filresursen.
 
 > [!IMPORTANT]
 > Det är viktigt att du inser att spårning av ändringar i Azure-filresursen som är nära på servern kan öka utgående trafik och faktureras från Azure. Om filer som återkallas till servern inte faktiskt behövs lokalt kan onödigt återkallande av servern ha negativa konsekvenser. Använd det här läget när du vet att en förifylld cache på en server med de senaste ändringarna i molnet har en positiv effekt på användare eller program som använder filerna på den servern.
@@ -595,7 +597,7 @@ Ett globalt distribuerat företag har avdelningskontor i USA och Indien. På mor
 1. I [Azure Portal](https://portal.azure.com/)du till tjänsten för synkronisering av lagring, väljer rätt synkroniseringsgrupp och identifierar sedan den serverslutpunkt som du vill spåra ändringar i Azure-filresursen (molnslutpunkt) för.
 1. I avsnittet molnnivåindelning letar du reda på avsnittet "Ladda ned Azure-filresurs". Du ser det valda läget och kan ändra det för att spåra ändringar i Azure-filresursen närmare och proaktivt återkalla dem till servern.
 
-:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="En bild som visar nedladdningsbeteendet för Azure-filresursen för en aktuell serverslutpunkt och en knapp för att öppna en meny som gör det möjligt att ändra den.":::
+:::image type="content" source="media/storage-sync-files-deployment-guide/proactive-download.png" alt-text="En bild som visar nedladdningsbeteendet för Azure-filresursen för en serverslutpunkt som för närvarande gäller och en knapp för att öppna en meny som tillåter att den ändras.":::
 
 # <a name="powershell"></a>[PowerShell](#tab/proactive-powershell)
 
@@ -610,10 +612,10 @@ Set-AzStorageSyncServerEndpoint -InputObject <PSServerEndpoint> -LocalCacheMode 
 
 ---
 
-## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrera en DFS Replication -distribution (DFS-R) till Azure File Sync
+## <a name="migrate-a-dfs-replication-dfs-r-deployment-to-azure-file-sync"></a>Migrera en DFS Replication (DFS-R)-distribution till Azure File Sync
 Migrera en DFS-R-distribution till Azure File Sync:
 
-1. Skapa en synkroniseringsgrupp som representerar den DFS-R-topologi som du ersätter.
+1. Skapa en synkroniseringsgrupp som representerar DFS-R-topologin som du ersätter.
 1. Starta på den server som har den fullständiga datauppsättningen i din DFS-R-topologi att migrera. Installera Azure File Sync på den servern.
 1. Registrera servern och skapa en serverslutpunkt för den första servern som ska migreras. Aktivera inte molnnivåindelad.
 1. Låt alla data synkroniseras till din Azure-filresurs (molnslutpunkt).

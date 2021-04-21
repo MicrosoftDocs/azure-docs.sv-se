@@ -1,46 +1,46 @@
 ---
 title: Azure-tjänster som har stöd för tillgänglighetszoner
-description: Om du vill skapa hög tillgängliga och elastiska program i Azure Tillgänglighetszoner du fysiskt separata platser som du kan använda för att köra dina resurser.
+description: Om du vill skapa program med hög tillgång och återhämtning i Azure Tillgänglighetszoner tillhandahålla fysiskt separata platser som du kan använda för att köra dina resurser.
 author: prsandhu
 ms.service: azure
 ms.topic: conceptual
-ms.date: 04/13/2021
+ms.date: 04/21/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: fasttrack-edit, mvc, references_regions
-ms.openlocfilehash: b59062395c0b05f36dd0f5bd00fbd1acb3ccb2a9
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4c592c2d67df1e792200cc36449a6268807bbb56
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529804"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816268"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-tjänster som har stöd för tillgänglighetszoner
 
-Microsoft Azure global infrastruktur utformas och konstrueras på varje lager för att leverera högsta möjliga redundans och återhämtning till sina kunder. Azure-infrastrukturen består av geografiska områden, regioner och Tillgänglighetszoner, som begränsar radien vid ett fel och därmed begränsar den potentiella påverkan på kundprogram och data. Den Azure-tillgänglighetszoner har utvecklats för att tillhandahålla en programvaru- och nätverkslösning som skyddar mot datacenterfel och ger våra kunder ökad hög tillgänglighet (HA).
+Microsoft Azure global infrastruktur utformas och konstrueras på varje lager för att leverera högsta möjliga redundans och återhämtning till sina kunder. Azure-infrastrukturen består av geografiska områden, regioner och Tillgänglighetszoner, som begränsar radien för ett haveri och därmed begränsar den potentiella påverkan på kundprogram och data. Den Azure-tillgänglighetszoner har utvecklats för att tillhandahålla en programvaru- och nätverkslösning för att skydda mot datacenterfel och för att ge våra kunder ökad hög tillgänglighet (HA).
 
-Tillgänglighetszoner är unika fysiska platser inom en Azure-region. Varje zon består av ett eller flera datacenter med oberoende ström, kylning och nätverk. Den fysiska avgränsningen av Tillgänglighetszoner inom en region begränsar påverkan på program och data från zonfel, till exempel storskaliga översvämningar, större stormar och superstormningar och andra händelser som kan störa åtkomsten till webbplatser, säker genomgångar, längre drifttid för verktygen och tillgängligheten av resurser. Tillgänglighetszoner och deras associerade datacenter är utformade så att tjänsterna, kapaciteten och tillgängligheten stöds av de andra Tillgänglighetszoner i regionen om en zon komprometteras.
+Tillgänglighetszoner är unika fysiska platser inom en Azure-region. Varje zon består av ett eller flera datacenter med oberoende ström, kylning och nätverk. Den fysiska avgränsningen av Tillgänglighetszoner inom en region begränsar påverkan på program och data från zonfel, till exempel storskaliga översvämningar, större stormar och superstormingar och andra händelser som kan störa åtkomsten till webbplatser, säker genomgångar, längre drifttid för hjälpmedel och tillgängligheten för resurser. Tillgänglighetszoner och deras associerade datacenter är utformade så att tjänster, kapacitet och tillgänglighet stöds av de andra Tillgänglighetszoner i regionen om en zon komprometteras.
 
-Alla Azure-hanteringstjänster är uppritade för att vara motståndskraftiga mot fel på regionnivå. I spektrumet av fel har ett eller flera fel i tillgänglighetszoner inom en region en mindre felradie jämfört med ett helt regionfel. Azure kan återställas från ett fel på zonnivå för hanteringstjänster inom en region. Azure utför kritiskt underhåll en zon i taget inom en region för att förhindra eventuella fel som påverkar kundresurser som distribueras Tillgänglighetszoner inom en region.
+Alla Azure-hanteringstjänster är uppritade för att vara motståndskraftiga mot fel på regionnivå. I spektrumet av fel har ett eller flera fel i en tillgänglighetszon inom en region en mindre felradie jämfört med ett helt regionsfel. Azure kan återställas från ett fel på zonnivå för hanteringstjänster inom en region. Azure utför kritiskt underhåll en zon i taget inom en region för att förhindra eventuella fel som påverkar kundresurser som distribueras över Tillgänglighetszoner inom en region.
 
 
 ![konceptuell vy av en Azure-region med 3 zoner](./media/az-region/azure-region-availability-zones.png)
 
 
-Azure-tjänster Tillgänglighetszoner indela i tre kategorier: **zonredundant, zonredundant** **och icke-regionala** tjänster.  Kundarbetsbelastningar kan kategoriseras för att använda någon av dessa arkitekturscenarier för att uppfylla programmets prestanda och hållbarhet.
+Azure-tjänster Tillgänglighetszoner indela i tre kategorier: **zonindela,** **zonredundant** **och icke-regionala** tjänster. Kundarbetsbelastningar kan kategoriseras för att använda någon av dessa arkitekturscenarier för att uppfylla programprestanda och hållbarhet.
 
-- **Zonindelade** tjänster – En resurs kan distribueras till en specifik, självvald tillgänglighetszon för att uppnå strängare svarstider eller prestandakrav.  Återhämtning bygger på egen arkitektur genom att replikera program och data till en eller flera zoner i regionen.  Resurser kan fästas på en specifik zon. Virtuella datorer, hanterade diskar eller IP-standardadresser kan till exempel fästas på en specifik zon, vilket möjliggör ökad återhämtning genom att ha en eller flera instanser av resurser fördelade mellan zoner.
+- **Zonindelade** tjänster – En resurs kan distribueras till en specifik, självvald tillgänglighetszon för att uppnå strängare svarstider eller prestandakrav.  Återhämtning bygger på egen arkitektur genom att replikera program och data till en eller flera zoner i regionen.  Resurser kan fästas på en specifik zon. Till exempel kan virtuella datorer, hanterade diskar eller IP-standardadresser fästas på en specifik zon, vilket möjliggör ökad återhämtning genom att ha en eller flera instanser av resurser fördelade mellan zoner.
 
-- **Zonredundant tjänst** – Azure-plattformen replikerar resursen och data mellan zoner.  Microsoft hanterar leveransen av hög tillgänglighet eftersom Azure automatiskt replikerar och distribuerar instanser inom regionen.  ZRS replikerar till exempel data över tre zoner så att ett zonfel inte påverkar datas HA. 
+- **Zonredundant tjänst** – Resurser replikeras eller distribueras automatiskt mellan zoner. Till exempel replikerar ZRS data över tre zoner så att ett zonfel inte påverkar datas HA.  
 
-- **Icke-regionala tjänster** – Tjänster är alltid tillgängliga från Azure-geografiska områden och är motståndskraftiga mot zonomfattande avbrott samt regionomfattande avbrott. 
+- **Icke-regionala tjänster** – Tjänster är alltid tillgängliga från geografiska Azure-områden och är motståndskraftiga mot zonomfattande avbrott samt regionomfattande avbrott. 
 
 
-Skapa din programarkitektur med hjälp av en kombination av Tillgänglighetszoner azure-regionpar för att uppnå omfattande affärskontinuum i Azure. Du kan replikera program och data synkront med hjälp av Tillgänglighetszoner i en Azure-region för hög tillgänglighet och asynkront replikera mellan Azure-regioner för haveriberedskapsskydd. Mer information finns i Skapa [lösningar för hög tillgänglighet med hjälp av Tillgänglighetszoner](/azure/architecture/high-availability/building-solutions-for-high-availability). 
+För att uppnå omfattande affärskontinuum i Azure kan du skapa din programarkitektur med hjälp av Tillgänglighetszoner med Azure-regionpar. Du kan replikera program och data synkront med Tillgänglighetszoner inom en Azure-region för hög tillgänglighet och asynkront replikera mellan Azure-regioner för haveriberedskapsskydd. Mer information finns i Skapa [lösningar för hög tillgänglighet med hjälp av Tillgänglighetszoner](/azure/architecture/high-availability/building-solutions-for-high-availability). 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
 
- - De äldre virtuella datorerna för generation visas inte. Mer information finns i [Tidigare generationer av storlekar på virtuella datorer.](../virtual-machines/sizes-previous-gen.md)
+ - De äldre virtuella generationdatorerna visas inte. Mer information finns i [Tidigare generationer av storlekar på virtuella datorer.](../virtual-machines/sizes-previous-gen.md)
  - Som vi nämnde i [Regioner Tillgänglighetszoner i Azure](az-overview.md)är vissa tjänster icke-regionala. Dessa tjänster är inte beroende av en specifik Azure-region, eftersom de är motståndskraftiga mot zonomfattande avbrott och regionomfattande avbrott.  Listan över icke-regionala tjänster finns i Produkt [tillgänglig per region.](https://azure.microsoft.com/global-infrastructure/services/)
 
 
@@ -60,19 +60,19 @@ Skapa din programarkitektur med hjälp av en kombination av Tillgänglighetszone
 | USA, västra 2        |                      |                     |                |
 | USA, västra 3*       |                      |                     |                |
 
-\* Om du vill veta mer Tillgänglighetszoner tjänster och tillgängliga tjänster i dessa regioner kan du kontakta din Microsoft-säljare eller kundrepresentant. Information om kommande regioner som stöder Tillgänglighetszoner finns i [Azures geografiska områden.](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
+\* Om du vill veta mer Tillgänglighetszoner och tillgängliga tjänster i dessa regioner kan du kontakta din Microsoft-säljare eller kundrepresentant. Information om kommande regioner som stöder Tillgänglighetszoner finns i [Azure-geografiska områden.](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)
 
 
 ## <a name="azure-services-supporting-availability-zones"></a>Azure-tjänster som stöder Tillgänglighetszoner
 
 - Äldre virtuella datorer för generation visas inte nedan. Mer information finns i [tidigare generationer av storlekar på virtuella datorer.](../virtual-machines/sizes-previous-gen.md)
 
-- Vissa tjänster är icke-regionala. Mer [information finns i Regioner Tillgänglighetszoner tjänster i Azure.](az-overview.md) Dessa tjänster är inte beroende av en specifik Azure-region, vilket gör dem motståndskraftiga mot zonomfattande avbrott och regionomfattande avbrott.  Listan över icke-regionala tjänster finns i Produkt [tillgänglig per region.](https://azure.microsoft.com/global-infrastructure/services/)
+- Vissa tjänster är icke-regionala. Mer [information finns i Regioner Tillgänglighetszoner i Azure.](az-overview.md) Dessa tjänster är inte beroende av en specifik Azure-region, vilket gör dem motståndskraftiga mot zonomfattande avbrott och regionomfattande avbrott.  Listan över icke-regionala tjänster finns i Produkt [tillgänglig per region.](https://azure.microsoft.com/global-infrastructure/services/)
 
 
 ### <a name="zone-resilient-services"></a>Zonre elastiska tjänster 
 
-:globe_with_meridians: Icke-regionala tjänster – Tjänster är alltid tillgängliga från Azures geografiska områden och är motståndskraftiga mot zonomfattande avbrott samt regionomfattande avbrott.
+:globe_with_meridians: Icke-regionala tjänster – Tjänster är alltid tillgängliga från Azure-geografiska områden och är motståndskraftiga mot zonomfattande avbrott samt regionomfattande avbrott.
 
 :large_blue_diamond: Motståndskraftig mot avbrott i zonen 
 
@@ -144,7 +144,7 @@ Skapa din programarkitektur med hjälp av en kombination av Tillgänglighetszone
 |     Network Watcher: [Trafikanalys](https://docs.microsoft.com/azure/network-watcher/frequently-asked-questions#service-availability-and-redundancy)                          | :large_blue_diamond:  |
 |     [Power BI Embedded](https://docs.microsoft.com/power-bi/admin/service-admin-failover#what-does-high-availability)                                           | :large_blue_diamond:  |
 |     [Premium-Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blob-performance-tiers#:~:text=Table%201%20%20%20%20Area%20%20,%20%20Currently%20supports%20only%20locally-redundan%20...%20)                                        | :large_blue_diamond:  |
-|     Lagring: [Azure Premium-filer](https://docs.microsoft.com/azure/storage/files/storage-files-planning)                                | :large_blue_diamond:  |
+|     Storage: [Azure Premium Files](https://docs.microsoft.com/azure/storage/files/storage-files-planning)                                | :large_blue_diamond:  |
 |     Virtual Machines: [Azure Dedicated Host](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                     | :large_blue_diamond:  |
 |     Virtual Machines: [Ddsv4-serien](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                              | :large_blue_diamond:  |
 |     Virtual Machines: [Ddv4-serien](https://docs.microsoft.com/azure/virtual-machines/windows/create-powershell-availability-zone)                               | :large_blue_diamond:  |

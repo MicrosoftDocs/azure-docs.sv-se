@@ -1,6 +1,6 @@
 ---
 title: Skriptexempel för Azure PowerShell – Konfigurera en anpassad domän | Microsoft Docs
-description: Lär dig hur du konfigurerar en anpassad domän på proxy-eller Portal slut punkter för API Management-tjänsten. Se exempel skript och Visa fler tillgängliga resurser.
+description: Lär dig hur du ställer in en anpassad domän på proxy eller portalslutpunkter för API Management-tjänsten. Se exempelskript och visa ytterligare tillgängliga resurser.
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -11,13 +11,13 @@ ms.workload: mobile
 ms.topic: sample
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 16da7891b5321006708dc59ec8d482754beb7d9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: mvc, devx-track-azurepowershell
+ms.openlocfilehash: ce7ac9a27dd2708e3a32758c6e86011e493ea33a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87853304"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107817097"
 ---
 # <a name="set-up-custom-domain"></a>Konfigurera en anpassad CDN-domän
 
