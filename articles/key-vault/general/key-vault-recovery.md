@@ -1,22 +1,22 @@
 ---
 title: Azure Key Vault översikt över | Microsoft Docs
-description: Key Vault Recovery-funktioner är utformade för att förhindra oavsiktlig eller skadlig borttagning av nyckelvalvet och hemligheter, nycklar och certifikat som lagras i nyckelvalvet.
+description: Key Vault Recovery-funktioner är utformade för att förhindra oavsiktlig eller skadlig borttagning av ditt nyckelvalv och hemligheter, nycklar och certifikat som lagras i nyckelvalvet.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.author: mbaldwin
 author: msmbaldwin
 ms.date: 09/30/2020
-ms.openlocfilehash: c3ffbba9546ada54a42c3f2c2aa5d98da599b353
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b9c249bedd0432458b3e6f5c010cdc5ff39dff44
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749748"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815674"
 ---
 # <a name="azure-key-vault-recovery-management-with-soft-delete-and-purge-protection"></a>Azure Key Vault med mjuk borttagning och rensningsskydd
 
-Den här artikeln beskriver två återställningsfunktioner i Azure Key Vault, mjuk borttagning och rensningsskydd. Det här dokumentet innehåller en översikt över dessa funktioner och visar hur du hanterar dem via Azure Portal, Azure CLI och Azure PowerShell.
+Den här artikeln beskriver två återställningsfunktioner i Azure Key Vault, mjuk borttagning och rensningsskydd. Det här dokumentet ger en översikt över dessa funktioner och visar hur du hanterar dem via Azure Portal, Azure CLI och Azure PowerShell.
 
 Mer information om Key Vault finns i
 - [Översikt över Key Vault](overview.md)
@@ -24,10 +24,10 @@ Mer information om Key Vault finns i
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration [– skapa en kostnadsfritt](https://azure.microsoft.com/free/dotnet)
+* En Azure-prenumeration [– skapa en utan kostnad](https://azure.microsoft.com/free/dotnet)
 * [PowerShell-modulen](/powershell/azure/install-az-ps).
 * [Azure CLI](/cli/azure/install-azure-cli)
-* En Key Vault – du kan skapa en [med Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
+* En Key Vault – du kan skapa en [med hjälp Azure Portal](../general/quick-create-portal.md) Azure [CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
 * Användaren behöver följande behörigheter (på prenumerationsnivå) för att utföra åtgärder på mjukt borttagna valv:
 
   | Behörighet | Description |
@@ -36,21 +36,21 @@ Mer information om Key Vault finns i
   |Microsoft.KeyVault/locations/deletedVaults/purge/action|Rensa ett mjukt borttagna nyckelvalv|
 
 
-## <a name="what-are-soft-delete-and-purge-protection"></a>Vad är mjuk borttagning och rensningsskydd
+## <a name="what-are-soft-delete-and-purge-protection"></a>Vad är mjuk borttagning och rensningsskydd?
 
-[Skydd för mjuk](soft-delete-overview.md) borttagning och rensning är två olika funktioner för återställning av nyckelvalv.
+[Mjuk borttagning](soft-delete-overview.md) och rensningsskydd är två olika funktioner för återställning av nyckelvalv.
 
 > [!IMPORTANT]
-> Det är viktigt att aktivera mjuk borttagning för att säkerställa att dina nyckelvalv och autentiseringsuppgifter skyddas mot oavsiktlig borttagning. Att aktivera mjuk borttagning anses dock vara en stor ändring eftersom det kan kräva att du ändrar programlogiken eller ger ytterligare behörigheter till tjänstens huvudnamn. Innan du slår på mjuk borttagning med hjälp av anvisningarna nedan kontrollerar du att ditt program är kompatibelt med ändringen med hjälp av det här [ **dokumentet här.**](soft-delete-change.md)
+> Det är viktigt att aktivera mjuk borttagning för att säkerställa att dina nyckelvalv och autentiseringsuppgifter skyddas mot oavsiktlig borttagning. Att aktivera mjuk borttagning anses dock vara en stor ändring eftersom det kan kräva att du ändrar programlogiken eller ger ytterligare behörigheter till tjänstens huvudnamn. Innan du slår på mjuk borttagning med hjälp av anvisningarna nedan kontrollerar du att ditt program är kompatibelt med ändringen med hjälp av det här dokumentet [ **här.**](soft-delete-change.md)
 
-**Mjuk borttagning är** utformat för att förhindra oavsiktlig borttagning av nyckelvalvet och nycklar, hemligheter och certifikat som lagras i nyckelvalvet. Tänk på mjuk borttagning som en papperskorg. När du tar bort ett nyckelvalv eller ett nyckelvalvsobjekt kan det fortfarande återställas under en användarkonfigurerbar kvarhållningsperiod eller som standard 90 dagar. Nyckelvalv i läget för mjuk borttagning kan också **rensas, vilket** innebär att de tas bort permanent. På så sätt kan du återskapa nyckelvalv och nyckelvalvsobjekt med samma namn. Både återställning och borttagning av nyckelvalv och objekt kräver utökade behörigheter för åtkomstprinciper. **När mjuk borttagning har aktiverats kan den inte inaktiveras.**
+**Mjuk borttagning** är utformat för att förhindra oavsiktlig borttagning av nyckelvalvet och nycklar, hemligheter och certifikat som lagras i nyckelvalvet. Tänk på mjuk borttagning som en papperskorg. När du tar bort ett nyckelvalv eller ett nyckelvalvsobjekt kan det fortfarande återställas under en användarkonfigurerbar kvarhållningsperiod eller som standard 90 dagar. Nyckelvalv med mjuk borttagning kan också **rensas, vilket** innebär att de tas bort permanent. På så sätt kan du återskapa nyckelvalv och nyckelvalvsobjekt med samma namn. Både återställning och borttagning av nyckelvalv och objekt kräver utökade behörigheter för åtkomstprinciper. **När mjuk borttagning har aktiverats kan den inte inaktiveras.**
 
-Det är viktigt att observera att nyckelvalvsnamnen är globalt **unika,** så du kan inte skapa ett nyckelvalv med samma namn som ett nyckelvalv i läget för mjuk borttagning. På samma sätt är namnen på nycklar, hemligheter och certifikat unika i ett nyckelvalv. Du kommer inte att kunna skapa en hemlighet, nyckel eller certifikat med samma namn som ett annat i läget för mjuk borttagning.
+Det är viktigt att observera att nyckelvalvsnamn är globalt **unika,** så du kan inte skapa ett nyckelvalv med samma namn som ett nyckelvalv i läget för mjuk borttagning. På samma sätt är namnen på nycklar, hemligheter och certifikat unika i ett nyckelvalv. Du kommer inte att kunna skapa en hemlighet, nyckel eller certifikat med samma namn som ett annat i läget för mjuk borttagning.
 
-**Rensningsskydd är** utformat för att förhindra borttagning av ditt nyckelvalv, nycklar, hemligheter och certifikat av en illvillig insider. Tänk på detta som en papperskorg med ett tidsbaserat lås. Du kan återställa objekt när som helst under den konfigurerbara kvarhållningsperioden. **Du kommer inte att kunna ta bort eller rensa ett nyckelvalv permanent förrän kvarhållningsperioden har gått ut.** När kvarhållningsperioden har förflutit rensas nyckelvalvet eller nyckelvalvsobjektet automatiskt.
+**Rensningsskydd är** utformat för att förhindra borttagning av ditt nyckelvalv, nycklar, hemligheter och certifikat av en illvillig insider. Tänk på detta som en papperskorg med ett tidsbaserat lås. Du kan återställa objekt när som helst under den konfigurerbara kvarhållningsperioden. **Du kommer inte att kunna ta bort eller rensa ett nyckelvalv permanent förrän kvarhållningsperioden har gått ut.** När kvarhållningsperioden går ut rensas nyckelvalvet eller nyckelvalvsobjektet automatiskt.
 
 > [!NOTE]
-> Rensningsskydd är utformat så att ingen administratörsroll eller behörighet kan åsidosätta, inaktivera eller kringgå rensningsskydd. **När rensningsskydd har aktiverats kan det inte inaktiveras eller åsidosättas av någon, inklusive Microsoft.** Det innebär att du måste återställa ett borttagna nyckelvalv eller vänta tills kvarhållningsperioden har gått ut innan du återanvänder nyckelvalvsnamnet.
+> Rensningsskydd är utformat så att ingen administratörsroll eller behörighet kan åsidosätta, inaktivera eller kringgå rensningsskydd. **När rensningsskydd har aktiverats kan det inte inaktiveras eller åsidosättas av någon, inklusive Microsoft.** Det innebär att du måste återställa ett borttagna nyckelvalv eller vänta tills kvarhållningsperioden har gått ut innan du återanvänder nyckelvalvnamnet.
 
 Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mjuk borttagning](soft-delete-overview.md)
 
@@ -76,14 +76,14 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
 1. Rulla längst ned i listrutan och klicka på "Återställ" och "Rensa"
 1. Säkerhetsobjekt behöver också hämta och lista funktioner för att utföra de flesta åtgärder.
 
-:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="Åtkomstprinciper är markerade i det vänstra navigeringsfönstret. I Åtkomstprinciper visas listrutan Hemliga positioner och fyra objekt är markerade: Hämta, Lista, Återställ och Rensa.":::
+:::image type="content" source="../media/key-vault-recovery-2.png" alt-text="Åtkomstprinciper är markerade i det vänstra navigeringsfönstret. I Åtkomstprinciper visas listrutan Hemliga positioner och fyra objekt väljs: Hämta, Lista, Återställ och Rensa.":::
 
-## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>Lista, återställa eller rensa ett mjukt borttagna nyckelvalv
+## <a name="list-recover-or-purge-a-soft-deleted-key-vault"></a>Visa, återställa eller rensa ett mjukt borttagna nyckelvalv
 
 1. Logga in på Azure Portal.
-1. Klicka på sökfältet överst på sidan.
+1. Klicka på sökfältet längst upp på sidan.
 1. Under Senaste tjänster klickar du på "Key Vault". Klicka inte på ett enskilt nyckelvalv.
-1. Längst upp på skärmen klickar du på alternativet för att "Hantera borttagna valv"
+1. Överst på skärmen klickar du på alternativet för att hantera borttagna valv
 1. Ett kontextfönster öppnas till höger på skärmen.
 1. Välj din prenumeration.
 1. Om nyckelvalvet har mjuk borttagning visas det i kontextfönstret till höger.
@@ -96,18 +96,18 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
 
 :::image type="content" source="../media/key-vault-recovery-4.png" alt-text="På Hantera borttagna nyckelvalv är det enda nyckelvalvet i listan markerat och markerat och knappen Återställ är markerad.":::
 
-## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>Visa, återställa eller rensa mjukt borttagna hemligheter, nycklar och certifikat
+## <a name="list-recover-or-purge-soft-deleted-secrets-keys-and-certificates"></a>Lista, återställa eller rensa mjukt borttagna hemligheter, nycklar och certifikat
 
 1. Logga in på Azure Portal.
 1. Välj ditt nyckelvalv.
-1. Välj bladet som motsvarar den hemlighetstyp som du vill hantera (nycklar, hemligheter eller certifikat).
-1. Överst på skärmen klickar du på "Hantera borttagna (nycklar, hemligheter eller certifikat)
+1. Välj bladet som motsvarar den hemliga typ som du vill hantera (nycklar, hemligheter eller certifikat).
+1. Längst upp på skärmen klickar du på "Hantera borttagna (nycklar, hemligheter eller certifikat)
 1. Ett kontextfönster visas till höger på skärmen.
 1. Om din hemlighet, nyckel eller certifikat inte visas i listan är den inte i läget för mjuk borttagning.
-1. Välj hemligheten, nyckeln eller certifikatet som du vill hantera.
+1. Välj den hemlighet, nyckel eller det certifikat som du vill hantera.
 1. Välj alternativet för att återställa eller rensa längst ned i kontextfönstret.
 
-:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="Alternativet Hantera borttagna nycklar är markerat i Nycklar.":::
+:::image type="content" source="../media/key-vault-recovery-5.png" alt-text="Alternativet Hantera borttagna nycklar är markerat på Nycklar.":::
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -145,13 +145,13 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
     az keyvault recover --subscription {SUBSCRIPTION ID} -n {VAULT NAME}
     ```
 
-* Rensa mjuk borttagning av nyckelvalv **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DITT NYCKELVALV)**
+* Rensa mjukt borttagna nyckelvalv **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DITT NYCKELVALV)**
 
     ```azurecli
     az keyvault purge --subscription {SUBSCRIPTION ID} -n {VAULT NAME}
     ```
 
-* Aktivera rensningsskydd för nyckelvalv
+* Aktivera rensningsskydd för key-vault
 
     ```azurecli
     az keyvault update --subscription {SUBSCRIPTION ID} -g {RESOURCE GROUP} -n {VAULT NAME} --enable-purge-protection true
@@ -171,7 +171,7 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
     az keyvault certificate delete --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {CERTIFICATE NAME}
     ```
 
-* Lista över borttagna certifikat
+* Lista borttagna certifikat
 
     ```azurecli
     az keyvault certificate list-deleted --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME}
@@ -203,7 +203,7 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
     az keyvault key delete --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {KEY NAME}
     ```
 
-* Visa en lista över borttagna nycklar
+* Lista borttagna nycklar
 
     ```azurecli
     az keyvault key list-deleted --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME}
@@ -247,7 +247,7 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
     az keyvault secret recover --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {SECRET NAME}
     ```
 
-* Rensa mjukt borttagna hemligheter **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DIN HEMLIGHET)**
+* Rensa mjuk borttagningshemlighet **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DIN HEMLIGHET)**
 
     ```azurecli
     az keyvault secret purge --subscription {SUBSCRIPTION ID} --vault-name {VAULT NAME} --name {SECRET NAME}
@@ -281,13 +281,13 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
     Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
     ```
 
-* Rensa mjukt borttagna nyckelvalv **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DITT NYCKELVALV)**
+* Rensa mjuk borttagning av nyckelvalv **(VARNING! DEN HÄR ÅTGÄRDEN TAR PERMANENT BORT DITT NYCKELVALV)**
 
     ```powershell
     Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
     ```
 
-* Aktivera rensningsskydd för key-vault
+* Aktivera rensningsskydd för nyckelvalv
 
     ```powershell
     ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"
@@ -398,6 +398,5 @@ Mer information om mjuk borttagning finns i Azure Key Vault [översikt över mju
 - [Key Vault Azure CLI-kommandon](/cli/azure/keyvault)
 - [Azure Key Vault säkerhetskopiering](backup.md)
 - [Aktivera Key Vault loggning](howto-logging.md)
-- [Säker åtkomst till ett nyckelvalv](security-overview.md)
+- [Azure Key Vault säkerhetsfunktioner](security-features.md)
 - [Azure Key Vault utvecklarguide](developers-guide.md)
-- [Metodtips för att använda ett nyckelvalv](security-overview.md)

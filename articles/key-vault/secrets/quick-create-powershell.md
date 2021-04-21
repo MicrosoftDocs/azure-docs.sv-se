@@ -1,6 +1,6 @@
 ---
-title: Snabb start – ange & hämta en hemlighet från Key Vault med PowerShell "
-description: I den här snabb starten lär du dig att skapa, hämta och ta bort hemligheter från en Azure Key Vault med hjälp av Azure PowerShell.
+title: Snabbstart – Konfigurera & hämta en hemlighet från Key Vault med Hjälp av PowerShell"
+description: I den här snabbstarten lär du dig att skapa, hämta och ta bort hemligheter från en Azure Key Vault med Azure PowerShell.
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 5e3b78dfb8f08f1a596ad12884ec088cd36c4a98
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8a0ebfc90fb57a6e67d7c9e41b78d9db502b2720
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104582463"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814648"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-powershell"></a>Snabbstart: Ställ in och hämta en hemlighet från Azure Key Vault med hjälp av PowerShell
 
@@ -25,7 +25,7 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda PowerShell lokalt kräver den här självstudien Azure PowerShell-modul version 5.0.0 eller senare. Skriv `$PSVersionTable.PSVersion` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.
+Om du väljer att installera och använda PowerShell lokalt kräver den här Azure PowerShell version 5.0.0 eller senare. Skriv `$PSVersionTable.PSVersion` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 ```azurepowershell-interactive
 Connect-AzAccount
@@ -39,9 +39,9 @@ Connect-AzAccount
 
 [!INCLUDE [Create a key vault](../../../includes/key-vault-powershell-kv-creation.md)]
 
-## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Ge ditt användar konto behörighet att hantera hemligheter i Key Vault
+## <a name="give-your-user-account-permissions-to-manage-secrets-in-key-vault"></a>Ge ditt användarkonto behörighet att hantera hemligheter i Key Vault
 
-Använd Azure PowerShell Set-AzKeyVaultAccessPolicy-cmdlet: en för att uppdatera Key Vault åtkomst princip och bevilja hemliga behörigheter till ditt användar konto.
+Använd Azure PowerShell Set-AzKeyVaultAccessPolicy för att uppdatera Key Vault åtkomstprincip och bevilja hemliga behörigheter till ditt användarkonto.
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName "<your-unique-keyvault-name>" -UserPrincipalName "user@domain.com" -PermissionsToSecrets get,set,delete
@@ -57,7 +57,7 @@ Konvertera först värdet **hVFkk965BuUv** till en säker sträng genom att skri
 $secretvalue = ConvertTo-SecureString "hVFkk965BuUv" -AsPlainText -Force
 ```
 
-Använd sedan cmdleten Azure PowerShell [set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) för att skapa en hemlighet i Key Vault som kallas **ExamplePassword** med värdet **hVFkk965BuUv** :
+Använd sedan cmdleten Azure PowerShell [Set-AzKeyVaultSecret](/powershell/module/az.keyvault/set-azkeyvaultsecret) för att skapa en hemlighet i Key Vault med namnet **ExamplePassword** med värdet **hVFkk965BuUv:**
 
 
 ```azurepowershell-interactive
@@ -93,9 +93,9 @@ Remove-AzResourceGroup -Name ContosoResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Key Vault och sparade en hemlighet. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten har du skapat Key Vault och lagrat en hemlighet i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Lär dig hur du [lagrar flera linje hemligheter i Key Vault](multiline-secrets.md)
-- Se referensen för [Azure PowerShell Key Vault-cmdletar](/powershell/module/az.keyvault/#key_vault)
-- Granska [Key Vault säkerhets översikt](../general/security-overview.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
+- Lär dig hur [du lagrar flerradshemligheter i Key Vault](multiline-secrets.md)
+- Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/#key_vault)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

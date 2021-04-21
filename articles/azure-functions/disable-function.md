@@ -3,13 +3,13 @@ title: Inaktivera funktioner i Azure Functions
 description: Lär dig hur du inaktiverar och aktiverar funktioner i Azure Functions.
 ms.topic: conceptual
 ms.date: 03/15/2021
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: devx-track-csharp, devx-track-azurepowershell
+ms.openlocfilehash: c4743603504639cba5c48af57046179a0680b371
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777589"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829887"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Inaktivera funktioner i Azure Functions
 
@@ -122,7 +122,7 @@ Funktioner kan inaktiveras på samma sätt när de körs lokalt. Om du vill inak
 
 ### <a name="c-class-libraries"></a>C#-klassbibliotek
 
-I en klassbiblioteksfunktion kan du också använda `Disable` attributet för att förhindra att funktionen utlöses. Med det här attributet kan du anpassa namnet på den inställning som används för att inaktivera funktionen. Använd den version av attributet som gör att du kan definiera en konstruktorparameter som refererar till en boolesk appinställning, enligt följande exempel:
+I en klassbiblioteksfunktion kan du också använda `Disable` attributet för att förhindra att funktionen utlöses. Med det här attributet kan du anpassa namnet på den inställning som används för att inaktivera funktionen. Använd den version av attributet som gör att du kan definiera en konstruktorparameter som refererar till en boolesk appinställning, som du ser i följande exempel:
 
 ```csharp
 public static class QueueFunctions
@@ -138,7 +138,7 @@ public static class QueueFunctions
 }
 ```
 
-Med den här metoden kan du aktivera och inaktivera funktionen genom att ändra appinställningen, utan att kompilera om eller omdistribuera. Om du ändrar en appinställning startas funktionsappen om, så den inaktiverade tillståndsändringen känns igen omedelbart.
+Med den här metoden kan du aktivera och inaktivera funktionen genom att ändra appinställningen, utan att kompilera om eller omdistribuera. Om du ändrar en appinställning startas funktionsappen om så att den inaktiverade tillståndsändringen identifieras omedelbart.
 
 Det finns också en konstruktor för parametern som inte accepterar en sträng för inställningsnamnet. Den här versionen av attributet rekommenderas inte. Om du använder den här versionen måste du kompilera om och distribuera om projektet för att ändra funktionens inaktiverade tillstånd.
 
@@ -169,10 +169,10 @@ eller
     "disabled": "IS_DISABLED"
 ```
 
-I det andra exemplet inaktiveras funktionen när det finns en appinställning med namnet IS_DISABLED är inställd på `true` eller 1.
+I det andra exemplet inaktiveras funktionen när det finns en appinställning som heter IS_DISABLED och är inställd på `true` eller 1.
 
 >[!IMPORTANT]  
->Portalen använder programinställningar för att inaktivera v1.x-funktioner. När en programinställning står i konflikt function.jsfilen kan ett fel uppstå. Du bör ta bort `disabled` egenskapen från function.jspå filen för att förhindra fel. 
+>Portalen använder programinställningar för att inaktivera v1.x-funktioner. När en programinställning står i konflikt function.jsfil kan ett fel uppstå. Du bör ta bort `disabled` egenskapen från function.jspå filen för att förhindra fel. 
 
 
 ## <a name="next-steps"></a>Nästa steg

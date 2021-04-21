@@ -1,26 +1,26 @@
 ---
-title: Snabb start – skapa en Azure API Management-instans med PowerShell | Microsoft Docs
-description: Skapa en ny Azure API Management-instans med hjälp av Azure PowerShell.
+title: Snabbstart – Skapa en Azure API Management-instans med PowerShell-| Microsoft Docs
+description: Skapa en ny Azure API Management instans med hjälp av Azure PowerShell.
 services: api-management
 documentationcenter: ''
 author: vladvino
 ms.service: api-management
 ms.topic: quickstart
-ms.custom: mvc
+ms.custom: mvc, devx-track-azurepowershell
 ms.date: 09/14/2020
 ms.author: apimpm
-ms.openlocfilehash: eb2c42d26a85a07518a018ba5b8817f13d3cd17f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 641f262cf95753bd4c364fa889051a2b8f9d111a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90707074"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814270"
 ---
-# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>Snabb start: skapa en ny Azure API Management Service-instans med hjälp av PowerShell
+# <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-powershell"></a>Snabbstart: Skapa en ny Azure API Management-tjänstinstans med hjälp av PowerShell
 
 Azure API Management (APIM) hjälper organisationer att publicera API:er till externa partner och interna utvecklare så att de kan få ut maximalt av sina data och tjänster. API Management lägger grunden till ett effektivt API-program genom engagerade utvecklare, affärsinsikter, analyser, hög säkerhet och skydd. Med APIM kan du skapa och hantera moderna API-gatewayer för befintliga serverdeltjänster som ligger var som helst. Mer information finns i [Översikt](api-management-key-concepts.md).
 
-I den här snabb starten beskrivs stegen för att skapa en ny API Management-instans med hjälp av Azure PowerShell-cmdletar.
+Den här snabbstarten beskriver stegen för att skapa en ny API Management-instans med hjälp av Azure PowerShell-cmdlets.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,7 +34,7 @@ Om du väljer att installera och använda PowerShell lokalt behöver du ha versi
 
 Skapa en Azure-resursgrupp med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. 
 
-Följande kommando skapar en resurs grupp med namnet *myResourceGroup* på platsen västra USA:
+Följande kommando skapar en resursgrupp med namnet *myResourceGroup på* platsen USA, västra:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location WestUS
@@ -42,21 +42,21 @@ New-AzResourceGroup -Name myResourceGroup -Location WestUS
 
 ## <a name="create-an-api-management-service"></a>Skapa en API Management-tjänst
 
-Nu när du har en resurs grupp kan du skapa en API Management tjänst instans. Skapa ett med hjälp av [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) och ange ett tjänst namn och utgivar information. Tjänst namnet måste vara unikt inom Azure.
+Nu när du har en resursgrupp kan du skapa en API Management-tjänstinstans. Skapa ett med [hjälp av New-AzApiManagement och](/powershell/module/az.apimanagement/new-azapimanagement) ange ett tjänstnamn och information om utgivaren. Tjänstnamnet måste vara unikt i Azure.
 
-I följande exempel används *myapim* som tjänst namn. Uppdatera namnet till ett unikt värde. Uppdatera också organisations namnet för API-utgivaren och e-postadressen för administratören för att ta emot meddelanden.
+I följande exempel används *myapim* som tjänstnamn. Uppdatera namnet till ett unikt värde. Uppdatera även organisationsnamnet för API-utgivaren och administratörens e-postadress för att ta emot meddelanden.
 
-Som standard skapar kommandot instansen på nivån utvecklare, ett ekonomiskt alternativ för att utvärdera Azure API Management. Den här nivån är inte för produktions användning. Mer information om att skala API Management-nivåerna finns i avsnittet [Uppgradera och skala](upgrade-and-scale.md).
+Som standard skapar kommandot instansen på developer-nivån, ett ekonomiskt alternativ för att utvärdera Azure API Management. Den här nivån är inte till för produktionsanvändning. Mer information om att skala API Management-nivåerna finns i avsnittet [Uppgradera och skala](upgrade-and-scale.md).
 
 > [!NOTE]
-> Detta är en tids krävande åtgärd. Det kan ta mellan 30 och 40 minuter att skapa och aktivera en API Management tjänst på den här nivån.
+> Det här är en långvarig åtgärd. Det kan ta mellan 30 och 40 minuter att skapa och aktivera en API Management på den här nivån.
 
 ```azurepowershell-interactive
 New-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" `
   -Location "West US" -Organization "Contoso" -AdminEmail "admin@contoso.com" 
 ```
 
-När kommandot returnerar kör [Get-AzApiManagement](/powershell/module/az.apimanagement/get-azapimanagement) för att visa egenskaperna för Azure API Management-tjänsten. Efter aktiveringen slutförs etablerings statusen och tjänst instansen har flera associerade URL: er. Exempel:
+När kommandot returnerar kör du [Get-AzApiManagement](/powershell/module/az.apimanagement/get-azapimanagement) för att visa egenskaperna för Azure API Management tjänsten. Efter aktiveringen är etableringsstatusen Lyckades och tjänstinstansen har flera associerade URL:er. Exempel:
 
 ```azurepowershell-interactive
 Get-AzApiManagement -Name "myapim" -ResourceGroupName "myResourceGroup" 
@@ -100,7 +100,7 @@ ResourceGroupName                     : myResourceGroup
 
 ```
 
-När du har distribuerat din API Management tjänst instans är du redo att använda den. Börja med självstudien för att [Importera och publicera ditt första API](import-and-publish.md).
+När din API Management-tjänstinstans har distribuerats är du redo att använda den. Börja med självstudien för [att importera och publicera ditt första API.](import-and-publish.md)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

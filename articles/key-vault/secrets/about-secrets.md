@@ -9,18 +9,18 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6d4f3f744a85c14c42ffef1c894b237081e871f8
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: dc4368075e1cecb43887c9fab21e55b23208dbab
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752434"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814936"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Om Azure Key Vault-hemligheter
 
 [Key Vault](../general/overview.md) säker lagring av allmänna hemligheter, till exempel lösenord och databasanslutningssträngar.
 
-Ur ett utvecklarperspektiv kan du Key Vault API:er accepterar och returnerar hemliga värden som strängar. Internt lagrar Key Vault och hanterar hemligheter som sekvenser med oktett (8-bitars byte), med en maximal storlek på 25 000 byte vardera. Tjänsten Key Vault tillhandahåller inte semantik för hemligheter. Den accepterar bara data, krypterar dem, lagrar dem och returnerar en hemlig identifierare ("id"). Identifieraren kan användas för att hämta hemligheten vid ett senare tillfälle.  
+Ur ett utvecklarperspektiv kan du Key Vault API:er accepterar och returnerar hemliga värden som strängar. Internt lagrar Key Vault och hanterar hemligheter som sekvenser med oktett (8-bitars byte), med en maximal storlek på 25 000 byte vardera. Tjänsten Key Vault inte semantik för hemligheter. Den accepterar bara data, krypterar dem, lagrar dem och returnerar en hemlig identifierare ("id"). Identifieraren kan användas för att hämta hemligheten vid ett senare tillfälle.  
 
 För data som är mycket känsliga bör klienter överväga ytterligare skyddslager för data. Ett exempel är kryptering av data med hjälp av en separat skyddsnyckel före lagring i Key Vault.  
 
@@ -34,32 +34,32 @@ Alla hemligheter i din Key Vault lagras krypterade. Den här krypteringen är tr
 
 Utöver hemliga data kan följande attribut anges:  
 
-- *exp:* IntDate, valfritt, standard är för **alltid**. Attributet *exp* (förfallotid) identifierar den förfallotid på eller efter vilken hemliga data INTE ska hämtas, förutom [i vissa situationer](#date-time-controlled-operations). Det här fältet är **endast i** informationssyfte eftersom det informerar användare av nyckelvalvstjänsten om att en viss hemlighet inte får användas. Värdet MÅSTE vara ett tal som innehåller ett IntDate-värde.   
-- *nbf:* IntDate, valfritt, standard är **nu**. Attributet *nbf* (inte före) identifierar den tid innan hemliga data SKA HÄMTAS, förutom i [vissa situationer](#date-time-controlled-operations). Det här fältet **är endast i** informationssyfte. Värdet MÅSTE vara ett tal som innehåller ett IntDate-värde. 
-- *enabled*: boolean, optional, default is **true**. Det här attributet anger om hemliga data kan hämtas. Det aktiverade attributet används tillsammans med *nbf* och *exp* när en åtgärd inträffar mellan *nbf* och *exp*. Det tillåts bara om aktiverat har angetts till **true**. Åtgärder utanför *nbf- och* *exp-fönstret* tillåts inte automatiskt, förutom i [vissa situationer](#date-time-controlled-operations).  
+- *exp:* IntDate, valfritt, standard är för **alltid**. Attributet *exp* (förfallotid) identifierar den förfallotid på eller efter vilken hemliga data INTE ska hämtas, förutom i [vissa situationer](#date-time-controlled-operations). Det här fältet är **endast i** informationssyfte eftersom det informerar användare av nyckelvalvstjänsten om att en viss hemlighet inte får användas. Värdet MÅSTE vara ett tal som innehåller ett IntDate-värde.   
+- *nbf:* IntDate, valfritt, standard är **nu**. Attributet *nbf* (inte före) identifierar den tid innan hemliga data SKA INTE hämtas, förutom i [vissa situationer](#date-time-controlled-operations). Det här fältet **är endast i** informationssyfte. Värdet MÅSTE vara ett tal som innehåller ett IntDate-värde. 
+- *enabled*: boolean, optional, default is **true**. Det här attributet anger om hemliga data kan hämtas. Det aktiverade attributet används tillsammans med *nbf* och *exp* när en åtgärd inträffar mellan *nbf* och *exp*. Det tillåts bara om aktiverat är inställt på **true**. Åtgärder utanför *nbf- och* *exp-fönstret* tillåts inte automatiskt, förutom i [vissa situationer](#date-time-controlled-operations).  
 
 Det finns ytterligare skrivskyddade attribut som ingår i alla svar som innehåller hemliga attribut:  
 
-- *created*: IntDate, valfritt. Attributet som skapades anger när den här versionen av hemligheten skapades. Det här värdet är null för hemligheter som skapats före tillägget av det här attributet. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
-- *updated*: IntDate, valfritt. Det uppdaterade attributet anger när den här versionen av hemligheten uppdaterades. Det här värdet är null för hemligheter som senast uppdaterades före tillägget av det här attributet. Värdet måste vara ett tal som innehåller ett IntDate-värde.
+- *skapad:* IntDate, valfritt. Attributet som skapades anger när den här versionen av hemligheten skapades. Det här värdet är null för hemligheter som skapats före tillägget av det här attributet. Värdet måste vara ett tal som innehåller ett IntDate-värde.  
+- *uppdaterad:* IntDate, valfritt. Det uppdaterade attributet anger när den här versionen av hemligheten uppdaterades. Det här värdet är null för hemligheter som senast uppdaterades före tillägget av det här attributet. Värdet måste vara ett tal som innehåller ett IntDate-värde.
 
-Information om vanliga attribut för varje objekttyp i nyckelvalvet finns i [Azure Key Vault översikt över nycklar, hemligheter och certifikat](../general/about-keys-secrets-certificates.md)
+Information om vanliga attribut för varje objekttyp i nyckelvalvet finns i [Azure Key Vault, hemligheter och certifikat – översikt](../general/about-keys-secrets-certificates.md)
 
 ### <a name="date-time-controlled-operations"></a>Datum/tid-kontrollerade åtgärder
 
-En hemlighets **get-åtgärd** fungerar för icke-giltiga och utgångna hemligheter, utanför *exp-fönstret nbf.*  /   Anrop av en **hemlighets get-åtgärd** för en icke-giltig hemlighet kan användas i testsyfte. Hämtning **(get** ting) av en utgången hemlighet kan användas för återställningsåtgärder.
+En hemlighets **get-åtgärd** fungerar för hemligheter som inte är giltiga än och som har upphört att gälla, utanför *nbf*  /  *exp-fönstret.* Anrop av en **hemlighets get-åtgärd** för en icke-giltig hemlighet kan användas i testsyfte. Hämtning **(hämta)** en utgången hemlighet kan användas för återställningsåtgärder.
 
 ## <a name="secret-access-control"></a>Åtkomstkontroll till hemlighet
 
-Access Control för hemligheter som hanteras i Key Vault tillhandahålls på nivån för de Key Vault som innehåller dessa hemligheter. Åtkomstkontrollprincipen för hemligheter skiljer sig från åtkomstkontrollprincipen för nycklar i samma Key Vault. Användare kan skapa ett eller flera valv som ska innehålla hemligheter och krävs för att upprätthålla lämplig segmentering och hantering av hemligheter i scenariot.   
+Access Control för hemligheter som Key Vault i en Key Vault som innehåller dessa hemligheter. Principen för åtkomstkontroll för hemligheter skiljer sig från åtkomstkontrollprincipen för nycklar i samma Key Vault. Användare kan skapa ett eller flera valv för att innehålla hemligheter och måste underhålla scenariot lämplig segmentering och hantering av hemligheter.   
 
-Följande behörigheter kan användas, per huvudnamn, i åtkomstkontrollposten för hemligheter i ett valv och spegla noggrant de åtgärder som tillåts för ett hemligt objekt:  
+Följande behörigheter kan användas per huvudnamn i åtkomstkontrollposten för hemligheter i ett valv och spegla noga de åtgärder som tillåts för ett hemligt objekt:  
 
 - Behörigheter för hemlighetshanteringsåtgärder
   - *hämta:* Läsa en hemlighet  
-  - *lista:* Lista hemligheter eller versioner av en hemlighet som lagras i en Key Vault  
+  - *list*: Lista hemligheter eller versioner av en hemlighet som lagras i en Key Vault  
   - *set*: Skapa en hemlighet  
-  - *ta bort:* Ta bort en hemlighet  
+  - *delete*: Ta bort en hemlighet  
   - *recover*: Återställa en borttagna hemlighet
   - *säkerhetskopiering:* Säkerhetskopiera en hemlighet i ett nyckelvalv
   - restore :Restore a backed up secret to a key vault *(Återställa* en säkerhetskopierad hemlighet till ett nyckelvalv)
@@ -67,13 +67,13 @@ Följande behörigheter kan användas, per huvudnamn, i åtkomstkontrollposten f
 - Behörigheter för privilegierade åtgärder
   - *rensa:* Rensa (ta bort permanent) en borttagna hemlighet
 
-Mer information om hur du arbetar med hemligheter finns [i Hemlighetsåtgärder i Key Vault REST API referens .](/rest/api/keyvault) Information om hur du etablerar behörigheter [finns i Valv – Skapa eller Uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – Uppdatera åtkomstprincip.](/rest/api/keyvault/vaults/updateaccesspolicy) 
+Mer information om hur du arbetar med hemligheter finns [i Hemlighetsåtgärder i Key Vault REST API referens](/rest/api/keyvault). Information om hur du etablerar behörigheter [finns i Valv – Skapa eller Uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – Uppdatera åtkomstprincip.](/rest/api/keyvault/vaults/updateaccesspolicy) 
 
 Anvisningar för att styra åtkomsten i Key Vault:
 - [Tilldela en Key Vault åtkomstprincip med HJÄLP av CLI](../general/assign-access-policy-cli.md)
-- [Tilldela en Key Vault åtkomstprincip med PowerShell](../general/assign-access-policy-powershell.md)
+- [Tilldela en Key Vault åtkomstprincip med Hjälp av PowerShell](../general/assign-access-policy-powershell.md)
 - [Tilldela en Key Vault åtkomstprincip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
-- [Ge åtkomst Key Vault, certifikat och hemligheter med rollbaserad åtkomstkontroll i Azure](../general/rbac-guide.md)
+- [Ge åtkomst till Key Vault, certifikat och hemligheter med en rollbaserad åtkomstkontroll i Azure](../general/rbac-guide.md)
 
 ## <a name="secret-tags"></a>Hemliga taggar  
 Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault har stöd för upp till 15 taggar, där var och en kan ha ett namn på 256 tecken och ett värde på 256 tecken.  
@@ -83,9 +83,9 @@ Du kan ange ytterligare programspecifika metadata i form av taggar. Key Vault ha
 
 ## <a name="azure-storage-account-key-management"></a>Azure Storage hantering av kontonyckel
 
-Key Vault kan hantera Azure [Storage-kontonycklar:](../../storage/common/storage-account-overview.md)
+Key Vault kan hantera [Azure Storage-kontonycklar:](../../storage/common/storage-account-overview.md)
 
-- Internt kan Key Vault (synkronisera) nycklar med ett Azure Storage-konto. 
+- Internt kan Key Vault lista (synkronisera) nycklar med ett Azure Storage-konto. 
 - Key Vault återskapar (roterar) nycklarna med jämna mellanrum.
 - Nyckelvärden returneras aldrig som svar på anroparen.
 - Key Vault hanterar nycklar för både lagringskonton och klassiska lagringskonton.
@@ -101,29 +101,29 @@ Följande behörigheter kan användas när du auktoriserar en användare eller e
 
 - Behörigheter för hanterade lagringskonto- och SaS-definitionsåtgärder
   - *get*: Hämtar information om ett lagringskonto 
-  - *list*: Lista över lagringskonton som hanteras av en Key Vault
+  - *list*: Lista lagringskonton som hanteras av en Key Vault
   - *update*: Uppdatera ett lagringskonto
-  - *ta bort:* Ta bort ett lagringskonto  
+  - *delete*: Ta bort ett lagringskonto  
   - *recover*: Återställa ett borttagna lagringskonto
   - *säkerhetskopiering:* Säkerhetskopiera ett lagringskonto
   - *restore*:Restore a backed-up storage account to a Key Vault
   - *set*: Skapa eller uppdatera ett lagringskonto
   - *regeneratekey:* Återskapa ett angivet nyckelvärde för ett lagringskonto
   - *getsas*: Hämta information om en SAS-definition för ett lagringskonto
-  - *listsas*: List storage SAS definitions for a storage account (Lista lagrings-SAS-definitioner för ett lagringskonto)
+  - *listsas*: List storage SAS definitions for a storage account
   - *deletesas:* Ta bort en SAS-definition från ett lagringskonto
-  - *setsas*: Skapa eller uppdatera en ny SAS-definition/-attribut för ett lagringskonto
+  - *setsas:* Skapa eller uppdatera en ny SAS-definition/-attribut för ett lagringskonto
 
 - Behörigheter för privilegierade åtgärder
-  - *rensa:* Rensa (permanent ta bort) ett hanterat lagringskonto
+  - *rensa:* Rensa (ta bort permanent) ett hanterat lagringskonto
 
-Mer information finns i Åtgärder [för lagringskonto i Key Vault REST API referens.](/rest/api/keyvault) Information om hur du etablerar behörigheter [finns i Valv – Skapa eller Uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – Uppdatera åtkomstprincip.](/rest/api/keyvault/vaults/updateaccesspolicy)
+Mer information finns i Åtgärder [för lagringskonto i Key Vault REST API referens](/rest/api/keyvault). Information om hur du etablerar behörigheter [finns i Valv – Skapa eller Uppdatera](/rest/api/keyvault/vaults/createorupdate) och [valv – Uppdatera åtkomstprincip.](/rest/api/keyvault/vaults/updateaccesspolicy)
 
 Anvisningar för att styra åtkomsten i Key Vault:
 - [Tilldela en Key Vault åtkomstprincip med HJÄLP av CLI](../general/assign-access-policy-cli.md)
-- [Tilldela en Key Vault åtkomstprincip med PowerShell](../general/assign-access-policy-powershell.md)
+- [Tilldela en Key Vault åtkomstprincip med Hjälp av PowerShell](../general/assign-access-policy-powershell.md)
 - [Tilldela en Key Vault åtkomstprincip med hjälp av Azure Portal](../general/assign-access-policy-portal.md)
-- [Ge åtkomst Key Vault, certifikat och hemligheter med rollbaserad åtkomstkontroll i Azure](../general/rbac-guide.md)
+- [Ge åtkomst till Key Vault, certifikat och hemligheter med en rollbaserad åtkomstkontroll i Azure](../general/rbac-guide.md)
 
 
 ## <a name="next-steps"></a>Nästa steg
@@ -132,5 +132,5 @@ Anvisningar för att styra åtkomsten i Key Vault:
 - [Om nycklar, hemligheter och certifikat](../general/about-keys-secrets-certificates.md)
 - [Om nycklar](../keys/about-keys.md)
 - [Om certifikat](../certificates/about-certificates.md)
-- [Säker åtkomst till ett nyckelvalv](../general/security-overview.md)
+- [Säker åtkomst till ett nyckelvalv](../general/security-features.md)
 - [Utvecklarguide för Key Vault](../general/developers-guide.md)

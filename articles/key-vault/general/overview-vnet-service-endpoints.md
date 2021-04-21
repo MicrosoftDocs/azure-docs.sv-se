@@ -1,6 +1,6 @@
 ---
 title: Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
-description: Lär dig hur tjänstslutpunkter för virtuellt nätverk för Azure Key Vault du kan begränsa åtkomsten till ett angivet virtuellt nätverk, inklusive användningsscenarier.
+description: Lär dig hur tjänstslutpunkter för virtuellt Azure Key Vault gör att du kan begränsa åtkomsten till ett angivet virtuellt nätverk, inklusive användningsscenarier.
 services: key-vault
 author: amitbapat
 ms.author: ambapat
@@ -8,12 +8,12 @@ ms.date: 01/02/2019
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 985cbe1128d1dd64fda86ef062750dc5dd068ffe
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 8d3b88841f03b0c5bdb9b21ea66d9a67ba795546
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751741"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814254"
 ---
 # <a name="virtual-network-service-endpoints-for-azure-key-vault"></a>Tjänstslutpunkter för virtuellt nätverk för Azure Key Vault
 
@@ -26,7 +26,7 @@ Det finns ett viktigt undantag till den här begränsningen. Om en användare ha
 Du kan konfigurera [Key Vault och virtuella](network-security.md) nätverk för att neka åtkomst till trafik från alla nätverk (inklusive Internettrafik) som standard. Du kan bevilja åtkomst till trafik från specifika virtuella Azure-nätverk och offentliga IP-adressintervall för Internet, så att du kan skapa en säker nätverksgräns för dina program.
 
 > [!NOTE]
-> Key Vault brandväggar och regler för virtuella nätverk gäller endast [för dataplanet](security-overview.md#privileged-access) för Key Vault. Key Vault åtgärder på kontrollplanet (till exempel skapa, ta bort och ändra åtgärder, ange åtkomstprinciper, ange brandväggar och regler för virtuellt nätverk och distribution av hemligheter eller nycklar via ARM-mallar) påverkas inte av brandväggar och regler för virtuellt nätverk.
+> Key Vault brandväggar och regler för virtuella nätverk gäller endast [för dataplanet](security-features.md#privileged-access) för Key Vault. Key Vault åtgärder på kontrollplanet (till exempel skapa, ta bort och ändra åtgärder, ställa in åtkomstprinciper, ange brandväggar och regler för virtuellt nätverk och distribution av hemligheter eller nycklar via ARM-mallar) påverkas inte av brandväggar och regler för virtuellt nätverk.
 
 Här följer några exempel på hur du kan använda tjänstslutpunkter:
 
@@ -66,4 +66,4 @@ Här är en lista över betrodda tjänster som har behörighet att komma åt ett
 ## <a name="next-steps"></a>Nästa steg
 
 - Stegvisa instruktioner finns i Konfigurera Azure Key Vault [och virtuella nätverk](network-security.md)
-- se Azure Key Vault [säkerhetsöversikt](security-overview.md)
+- se Azure Key Vault [säkerhetsöversikt](security-features.md)

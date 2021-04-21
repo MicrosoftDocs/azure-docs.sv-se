@@ -7,14 +7,14 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 04/19/2021
 ms.author: memildin
-ms.openlocfilehash: e12578fa6da679587d41fb25b17b00eb1645299a
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: a9997fac66dd49af04f4ed78737118d605e27072
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718421"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829898"
 ---
-# <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slutpunkter Security Center den integrerade EDR-lösningen: Microsoft Defender för slutpunkt
+# <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Skydda dina slutpunkter med Security Center integrerade EDR-lösningen: Microsoft Defender för slutpunkt
 
 Microsoft Defender för slutpunkt är en holistisk, moln levererad slutpunktssäkerhetslösning. De viktigaste funktionerna är:
 
@@ -54,7 +54,7 @@ Microsoft Defender för slutpunkt tillhandahåller:
 
 - **Hotinformation**. Defender for Endpoint genererar aviseringar när den identifierar angriparens verktyg, tekniker och procedurer. Den använder data som genereras av Microsofts hotteam och säkerhetsteam, förstärkta av information från partner.
 
-Genom att integrera Defender för Security Center kan du dra nytta av följande ytterligare funktioner:
+Genom att integrera Defender för slutpunkt Security Center kan du dra nytta av följande ytterligare funktioner:
 
 - **Automatiserad registrering.** Security Center automatiskt microsoft Defender for Endpoint-sensorn för alla Windows-servrar som övervakas av Security Center.
 
@@ -62,11 +62,12 @@ Genom att integrera Defender för Security Center kan du dra nytta av följande 
 
     :::image type="content" source="./media/security-center-wdatp/microsoft-defender-security-center.png" alt-text="Microsoft Defender för slutpunktens egna Security Center" lightbox="./media/security-center-wdatp/microsoft-defender-security-center.png":::
 
-## <a name="microsoft-defender-for-endpoint-tenant-location"></a>Plats för Microsoft Defender för slutpunktsklientorganisation
+## <a name="what-are-the-requirements-for-the-microsoft-defender-for-endpoint-tenant"></a>Vilka är kraven för klientorganisationen Microsoft Defender för slutpunkt?
 
-När du använder Azure Security Center för att övervaka dina servrar skapas automatiskt en Microsoft Defender for Endpoint-klientorganisation. Data som samlas in av Defender för slutpunkt lagras på den geografiska platsen för klientorganisationen som identifierades under etableringen. Kunddata – i pseudonymiserad form – kan också lagras i de centrala lagrings- och bearbetningssystemen i USA. 
+När du använder Azure Security Center för att övervaka dina servrar skapas automatiskt en Microsoft Defender for Endpoint-klientorganisation. 
 
-När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licens för Microsoft Defender för slutpunkt och behöver flytta dina data till en annan plats kontaktar du Microsoft Support för att återställa klientorganisationen.
+- **Plats:** Data som samlas in av Defender för slutpunkt lagras på den geografiska platsen för klientorganisationen som identifierades under etableringen. Kunddata – i pseudonymiserad form – kan också lagras i de centrala lagrings- och bearbetningssystemen i USA. När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licens för Microsoft Defender för slutpunkt och behöver flytta dina data till en annan plats kontaktar du Microsoft Support för att återställa klientorganisationen.
+- **Flytta prenumerationer:** Om du har flyttat din Azure-prenumeration mellan Azure-klienter krävs vissa manuella förberedande steg innan Security Center distribuera Defender för slutpunkt. Kontakta [Microsofts support för fullständig information.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 
 
 ## <a name="enable-the-microsoft-defender-for-endpoint-integration"></a>Aktivera integrering av Microsoft Defender för slutpunkter
@@ -75,9 +76,12 @@ När du har konfigurerat platsen kan du inte ändra den. Om du har en egen licen
 
 Bekräfta att datorn uppfyller de nödvändiga kraven för Defender för slutpunkt:
 
-1. Konfigurera nätverksinställningarna som beskrivs i Konfigurera [inställningar för enhetsproxy och Internetanslutning](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
-1. Om du distribuerar Defender till slutpunkten till en lokal dator ansluter du den till Azure Arc som beskrivs i Ansluta [hybriddatorer med Azure Arc aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)
-1. Endast för Windows Server 2019-datorer bekräftar du att dina datorer kör en giltig agent och har tillägget MicrosoftMonitoringAgent
+1. Kontrollera att datorn är ansluten till Azure efter behov:
+
+    - För **Windows-servrar** konfigurerar du nätverksinställningarna som beskrivs i [Konfigurera inställningar för enhetsproxy och Internetanslutning](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet)
+    - För **lokala datorer ansluter du** den till en Azure Arc förklaras i Ansluta [hybriddatorer med Azure Arc aktiverade servrar](../azure-arc/servers/learn/quick-enable-hybrid-vm.md)
+    - För **Windows Server 2019-** [och Windows Virtual Desktop-datorer (WVD)](../virtual-desktop/overview.md) bekräftar du att datorerna kör Log Analytics-agenten och har tillägget MicrosoftMonitoringAgent.
+    
 1. Aktivera **Azure Defender för servrar**. Se [Snabbstart: Aktivera Azure Defender](enable-azure-defender.md).
 1. Om du redan har licensierat och distribuerat Microsoft Defender for Endpoints på dina servrar tar du bort den med hjälp av proceduren som beskrivs [i Avkorta Windows-servrar.](/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints#offboard-windows-servers)
 1. Om du har flyttat din prenumeration mellan Azure-klienter krävs även vissa manuella förberedande steg. Kontakta [Microsofts support om du vill ha fullständig information.](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
@@ -128,7 +132,7 @@ Så här genererar du en ofarlig testavisering för Microsoft Defender för slut
 - [Om jag redan har en licens för Microsoft Defender för slutpunkt kan jag få rabatt för Azure Defender?](#if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender)
 - [Hur gör jag för att byta från ett EDR-verktyg från tredje part?](#how-do-i-switch-from-a-third-party-edr-tool)
 
-### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Vilka är licenskraven för Microsoft Defender för slutpunkt?
+### <a name="what-are-the-licensing-requirements-for-microsoft-defender-for-endpoint"></a>Vilka är licensieringskraven för Microsoft Defender för slutpunkt?
 Defender for Endpoint ingår utan extra kostnad med Azure Defender **för servrar**. Du kan också köpa den separat för 50 datorer eller mer.
 
 ### <a name="if-i-already-have-a-license-for-microsoft-defender-for-endpoint-can-i-get-a-discount-for-azure-defender"></a>Om jag redan har en licens för Microsoft Defender för slutpunkt kan jag få rabatt för Azure Defender?

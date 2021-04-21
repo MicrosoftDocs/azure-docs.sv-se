@@ -1,38 +1,39 @@
 ---
-title: Skapa en privat slut punkt med hjälp av Azure PowerShell
-description: Skapa en privat slut punkt för Azure-attestering med Azure PowerShell
+title: Skapa en privat slutpunkt med Azure PowerShell
+description: Skapa en privat slutpunkt för Azure Attestation med Azure PowerShell
 services: attestation
 author: msmbaldwin
 ms.service: attestation
 ms.topic: overview
 ms.date: 03/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 8ff2e73a8557c6b1761c852ac58a46037a122ddb
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: ceefd4695583822536d8cc4c14614af7f6736f70
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628534"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830132"
 ---
-# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Snabb start: skapa en privat slut punkt med hjälp av Azure PowerShell
+# <a name="quickstart-create-a-private-endpoint-using-azure-powershell"></a>Snabbstart: Skapa en privat slutpunkt med Azure PowerShell
 
-Kom igång med en privat Azure-länk genom att använda en privat slut punkt för att ansluta säkert till Azure-attestering.
+Kom igång med Azure Private Link med hjälp av en privat slutpunkt för att ansluta säkert till Azure Attestation.
 
-I den här snabb starten skapar du en privat slut punkt för Azure-attestering och distribuerar en virtuell dator för att testa den privata anslutningen.  
+I den här snabbstarten skapar du en privat slutpunkt för Azure Attestation och distribuerar en virtuell dator för att testa den privata anslutningen.  
 
 > [!NOTE]
-> Den aktuella implementeringen innehåller endast alternativet för automatiskt godkännande. Prenumerationen måste läggas till i en lista över tillåtna för att det ska gå att skapa privat slut punkt. Kontakta tjänst teamet eller skicka in en support förfrågan för Azure på [support sidan för Azure](https://azure.microsoft.com/support/options/) innan du fortsätter med stegen nedan.
+> Den aktuella implementeringen innehåller endast alternativet för automatiskt godkännande. Prenumerationen måste läggas till i en lista över tillåtna för att kunna fortsätta med att skapa den privata slutpunkten. Kontakta tjänstteamet eller skicka en Azure-supportbegäran på [Azure-supportsidan innan](https://azure.microsoft.com/support/options/) du fortsätter med stegen nedan.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Lär dig mer om [Azures privata länk](../private-link/private-link-overview.md)
-* [Konfigurera Azure-attestering med Azure PowerShell](./quickstart-powershell.md)
+* Läs mer [om Azure Private Link](../private-link/private-link-overview.md)
+* [Konfigurera Azure Attestation med Azure PowerShell](./quickstart-powershell.md)
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
 En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-Skapa en resurs grupp med [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup):
+Skapa en resursgrupp med [New-AzResourceGroup:](/powershell/module/az.resources/new-azresourcegroup)
 
 ```azurepowershell-interactive
 ## Create to your Azure account subscription and create a resource group in a desired location. ##
@@ -43,13 +44,13 @@ $loc= "eastus”
 New-AzResourceGroup -Name $rg -Location $loc
 ```
 
-## <a name="create-a-virtual-network-and-bastion-host"></a>Skapa ett virtuellt nätverk och en skydds-värd
+## <a name="create-a-virtual-network-and-bastion-host"></a>Skapa ett virtuellt nätverk och en skyddsvärd
 
-I det här avsnittet ska du skapa ett virtuellt nätverk, ett undernät och en skydds-värd. 
+I det här avsnittet skapar du ett virtuellt nätverk, ett undernät och en skyddsvärd. 
 
-Skydds-värden kommer att användas för att ansluta säkert till den virtuella datorn för att testa den privata slut punkten.
+Skyddsvärden används för att ansluta säkert till den virtuella datorn för att testa den privata slutpunkten.
 
-Skapa ett virtuellt nätverk och skydds-värd med:
+Skapa ett virtuellt nätverk och en skyddsvärd med:
 
 * [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork)
 * [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress)
@@ -72,11 +73,11 @@ $publicip = New-AzPublicIpAddress -Name "myBastionIP" -ResourceGroupName $rg -Lo
 New-AzBastion -ResourceGroupName $rg -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
 ```
 
-Det kan ta några minuter innan Azure skydds-värden kan distribueras.
+Det kan ta några minuter för den Azure Bastion värden att distribueras.
 
-## <a name="create-test-virtual-machine"></a>Skapa virtuell test dator
+## <a name="create-test-virtual-machine"></a>Skapa virtuell testdator
 
-I det här avsnittet ska du skapa en virtuell dator som ska användas för att testa den privata slut punkten.
+I det här avsnittet skapar du en virtuell dator som ska användas för att testa den privata slutpunkten.
 
 Skapa den virtuella datorn med:
 
@@ -103,7 +104,7 @@ $vmConfig = New-AzVMConfig -VMName "myVM" -VMSize "Standard_DS1_v2" | Set-AzVMOp
 New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 ```
 
-## <a name="create-an-attestation-provider"></a>Skapa en attesterings leverantör
+## <a name="create-an-attestation-provider"></a>Skapa en attestationsprovider
 
 ```azurepowershell-interactive
 ## Create an attestation provider ##
@@ -129,9 +130,9 @@ Aliases:  myattestationprovider.eus.attest.azure.net
     attesteusatm.trafficmanager.net
 ```
 
-## <a name="create-private-endpoint"></a>Skapa privat slut punkt
+## <a name="create-private-endpoint"></a>Skapa privat slutpunkt
 
-I det här avsnittet ska du skapa en privat slut punkt och anslutning med:
+I det här avsnittet skapar du den privata slutpunkten och anslutningen med hjälp av:
 
 * [New-AzPrivateLinkServiceConnection](/powershell/module/az.network/New-AzPrivateLinkServiceConnection)
 * [New-AzPrivateEndpoint](/powershell/module/az.network/new-azprivateendpoint)
@@ -149,7 +150,7 @@ New-AzPrivateEndpoint  -ResourceGroupName $rg -Name "myPrivateEndpoint" -Locatio
 ```
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera den privata DNS-zonen
 
-I det här avsnittet ska du skapa och konfigurera den privata DNS-zonen med:
+I det här avsnittet skapar och konfigurerar du den privata DNS-zonen med hjälp av:
 
 * [New-AzPrivateDnsZone](/powershell/module/az.privatedns/new-azprivatednszone)
 * [New-AzPrivateDnsVirtualNetworkLink](/powershell/module/az.privatedns/new-azprivatednsvirtualnetworklink)
@@ -170,27 +171,27 @@ $config = New-AzPrivateDnsZoneConfig -Name "privatelink.attest.azure.net" -Priva
 New-AzPrivateDnsZoneGroup -ResourceGroupName $rg -PrivateEndpointName "myPrivateEndpoint" -Name "myZoneGroup" -PrivateDnsZoneConfig $config
 ```
 
-## <a name="test-connectivity-to-private-endpoint"></a>Testa anslutningen till privat slut punkt
+## <a name="test-connectivity-to-private-endpoint"></a>Testa anslutningen till den privata slutpunkten
 
-I det här avsnittet ska du använda den virtuella datorn som du skapade i föregående steg för att ansluta till SQL Server över den privata slut punkten.
+I det här avsnittet använder du den virtuella dator som du skapade i föregående steg för att ansluta till SQL-servern över den privata slutpunkten.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com) 
  
-2. Välj **resurs grupper** i det vänstra navigerings fönstret.
+2. Välj **Resursgrupper** i det vänstra navigeringsfönstret.
 
-3. Välj **CreateAttestationPrivateLinkTutorial-RG**.
+3. Välj **CreateAttestationPrivateLinkTutorial-rg**.
 
-4. Välj **myVM**.
+4. Välj **myVM.**
 
-5. På sidan Översikt för **myVM** väljer du **Anslut** sedan **skydds**.
+5. På översiktssidan för **myVM** väljer du **Anslut** och sedan **Bastion.**
 
-6. Välj knappen blå **användnings skydds** .
+6. Välj den blå **knappen Använd Bastion.**
 
-7. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
+7. Ange det användarnamn och lösenord som du angav när den virtuella datorn skapades.
 
-8. Öppna Windows PowerShell på servern när du har anslutit.
+8. Öppna Windows PowerShell på servern när du har anslutt.
 
-9. Ange `nslookup <provider-name>.attest.azure.net`. Ersätt **\<provider-name>** med namnet på instansen av attesteringen som du skapade i föregående steg. Du får ett meddelande som liknar det som visas nedan:
+9. Ange `nslookup <provider-name>.attest.azure.net`. Ersätt **\<provider-name>** med namnet på instansen av attestationsprovidern som du skapade i föregående steg. Du får ett meddelande som liknar det som visas nedan:
 
     ```powershell
 

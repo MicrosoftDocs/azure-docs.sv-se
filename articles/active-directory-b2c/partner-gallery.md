@@ -1,7 +1,7 @@
 ---
-title: ISV partner Galleri för Azure AD B2C
+title: ISV-partnergalleri för Azure AD B2C
 titleSuffix: Azure AD B2C
-description: Lär dig hur du integrerar med våra ISV-partner för att skräddarsy din slut användar upplevelse efter dina behov. Vårt partner nätverk utökar våra lösnings funktioner; Aktivera MFA, säker kundautentisering, rollbaserad åtkomst kontroll; bekämpa bedrägerier genom att bevisa för identitets verifiering.
+description: Lär dig hur du integrerar med våra ISV-partner för att skräddarsy slutanvändaren efter dina behov. Vårt partnernätverk utökar våra lösningsfunktioner. aktivera MFA, säker kundautentisering, rollbaserad åtkomstkontroll; bedrägeri med identitetsverifieringsverifiering.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -11,67 +11,76 @@ ms.topic: how-to
 ms.date: 01/11/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0629606f602b975b399855a681570ecdac9ec832
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: b555c8651c6e1608193a6ae06c39b20f633e4ea9
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256828"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813675"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C ISV-partner
 
-Vårt ISV partner Network utökar våra lösnings funktioner som hjälper dig att bygga sömlösa slut användar upplevelser. Med Azure AD B2C kan du integrera med ISV-partners för att aktivera Multi-Factor Authentication-metoder (MFA), utföra rollbaserad åtkomst kontroll, aktivera identitets verifiering och språk kontroll, förbättra säkerheten med bot-identifiering och bedrägeri skydd och uppfylla betalnings tjänsternas direktiv 2 (PSD2) Secure Custom Authentication (SCA)-krav. Använd våra detaljerade exempel genom gångar för att lära dig hur du integrerar appar med ISV-partners.
+Vårt ISV-partnernätverk utökar våra lösningsfunktioner för att hjälpa dig att skapa sömlösa slutanvändarupplevelser. Med Azure AD B2C kan du integrera med ISV-partner för att aktivera multifaktorautentiseringsmetoder (MFA), utföra rollbaserad åtkomstkontroll, aktivera identitetsverifiering och bevis, förbättra säkerheten med botidentifiering och bedrägeriskydd och uppfylla kraven för betalningstjänstdirektiv 2 (PSD2) säker kundautentisering (SCA). Använd våra detaljerade exempelgenomgångar för att lära dig hur du integrerar appar med ISV-partner.
 
 >[!NOTE]
->[Azure Active Directory B2C Community-webbplatsen på GitHub](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) innehåller också exempel på anpassade principer från communityn.
+>På [Azure Active Directory B2C community-webbplatsen på GitHub](https://azure-ad-b2c.github.io/azureadb2ccommunity.io/) finns även exempel på anpassade principer från communityn.
 
-## <a name="identity-verification-and-proofing"></a>Identitets verifiering och-korrektur
+## <a name="identity-verification-and-proofing"></a>Identitetsverifiering och bevis
 
-Microsoft samarbetar med följande ISV: er för identitets verifiering och språk kontroll.
+Microsoft samarbetar med följande ISV:er för identitetsverifiering och bevis.
 
-| ISV-partner | Beskrivning och integrations genom gångar |
+| ISV-partner | Beskrivning och integreringsgenomgångar |
 |:-------------------------|:--------------|
-|![Skärm bild av en Experian:-logotyp.](./media/partner-gallery/experian-logo.png) | [Experian:](./partner-experian.md) är en identitets verifiering och en kontroll leverantör som utför riskbedömningar baserat på användarattribut för att förhindra bedrägerier. |
-|![Skärm bild av en IDology-logotyp.](./media/partner-gallery/idology-logo.png) | [IDology](./partner-idology.md) är en identitets verifiering och en språkprovider med ID-verifierings lösningar, bedrägeri förebyggande lösningar, lösningar för efterlevnad och andra.|
-|![Skärm bild av en Jumio-logotyp.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) är en tjänst för ID-verifiering som möjliggör verifiering av AUTOMATISERAt ID i real tid, vilket skyddar kund information. |
-| ![Skärm bild av en LexisNexis-logotyp.](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) är en profilerings-och identitets verifierings leverantör som verifierar användar identifiering och ger omfattande riskbedömning baserat på användarens enhet. |
-| ![Skärm bild av en Onfido-logotyp](./media/partner-gallery/onfido-logo.png) | [Onfido](./partner-onfido.md) är ett dokument-ID och en verifierings lösning för ansikts biometrik som gör det möjligt för företag att möta sina *kunskaper om kund* -och identitets krav i real tid.  |
+|![Skärmbild av en Experian-logotyp.](./media/partner-gallery/experian-logo.png) | [Experian](./partner-experian.md) är en identitetsverifierings- och bevisleverantör som utför riskbedömningar baserat på användarattribut för att förhindra bedrägerier. |
+|![Skärmbild av en logotyp för IDology.](./media/partner-gallery/idology-logo.png) | [IDology är](./partner-idology.md) en identitetsverifierings- och proofing-leverantör med ID-verifieringslösningar, lösningar för bedrägeriskydd, efterlevnadslösningar med mera.|
+|![Skärmbild av en Jumio-logotyp.](./media/partner-gallery/jumio-logo.png) | [Jumio](./partner-jumio.md) är en ID-verifieringstjänst som möjliggör automatiserad ID-verifiering i realtid och skyddar kunddata. |
+| ![Skärmbild av en LexisNexis-logotyp.](./media/partner-gallery/lexisnexis-logo.png) | [LexisNexis](./partner-lexisnexis.md) är en profilerings- och identitetsvalideringsprovider som verifierar användaridentifiering och tillhandahåller omfattande riskbedömning baserat på användarens enhet. |
+| ![Skärmbild av en Onfido-logotyp](./media/partner-gallery/onfido-logo.png) | [Onfido är](./partner-onfido.md) en verifieringslösning för dokument-ID och ansiktsigenkänning som gör att företag kan *uppfylla* kraven på att känna till din kund och din identitet i realtid.  |
 
-## <a name="mfa-and-passwordless-authentication"></a>MFA och lösenordsbaserad autentisering
+## <a name="mfa-and-passwordless-authentication"></a>MFA och lösenordslös autentisering
 
-Microsoft samarbetar med följande ISV: er för MFA-och lösenordsbaserad autentisering.
+Microsoft samarbetar med följande ISV:er för MFA och lösenordsfri autentisering.
 
-| ISV-partner | Beskrivning och integrations genom gångar |
+| ISV-partner | Beskrivning och integreringsgenomgångar |
 |:-------------------------|:--------------|
-| ![Skärm bild av en hypr-logotyp](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) är en lösenordsskyddad autentiseringsprovider som ersätter lösen ord med krypteringar med offentliga nycklar som eliminerar bedrägerier, nätfiske och åter användning av autentiseringsuppgifter. |
-| ![Skärm bild av en itsme-logotyp](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) är en eiDAS-kompatibel (Electronic Identification, Authentication and Trust Services) Digital ID-lösning som gör att användarna kan logga in på ett säkert sätt utan kort läsare, lösen ord, tvåfaktorautentisering och flera PIN-koder. |
-|![Skärm bild av en Keyless-logotyp.](./media/partner-gallery/keyless-logo.png) | [Keyless](./partner-keyless.md) är en lösenordsskyddad autentiseringsprovider som ger autentisering i form av en bio metrisk genomsökning i ansikts form och eliminerar bedrägerier, nätfiske och åter användning av autentiseringsuppgifter.
-| ![Skärm bild av en Nevis-logotyp](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) möjliggör lösenordsautentisering utan lösen ord och ger en mobil-och helt anpassad slut användar upplevelse med Nevis-åtkomst-appen för stark kundautentisering och för att uppfylla PSD2 transaktions krav. |
-| ![Skärm bild av en trusona-logotyp](./media/partner-gallery/trusona-logo.png) | [Trusona](./partner-trusona.md) -integreringen hjälper dig att logga in på ett säkert sätt och möjliggör autentisering med lösen ords avsökning, MFA och digital License. |
-| ![Skärm bild av en Twilio-logotyp.](./media/partner-gallery/twilio-logo.png) | [Twilio verifiera app](./partner-twilio.md) tillhandahåller flera lösningar för att aktivera MFA via SMS eng ång slö sen ord (eng ång slö sen ord), tidsbaserat eng ång slö sen ord (TOTP mobilapp) och push-meddelanden och för att uppfylla SCA-kraven för PSD2. |
-| ![Skärm bild av en typingDNA-logotyp](./media/partner-gallery/typingdna-logo.png) | [TypingDNA](./partner-typingdna.md) möjliggör stark kundautentisering genom att analysera en användares Skriv mönster. Det hjälper företag att aktivera en tyst MFA och uppfylla SCA-kraven för PSD2. |
-| ![Skärm bild av en whoiam-logotyp](./media/partner-gallery/whoiam-logo.png) | [WhoIAM](./partner-whoiam.md) är ett BRIMS-program som gör det möjligt för organisationer att verifiera användar basen med röst, SMS och e-post. |
+| ![Skärmbild av en hypr-logotyp](./media/partner-gallery/hypr-logo.png) | [Hypr](./partner-hypr.md) är en lösenordslös autentiseringsprovider som ersätter lösenord med kryptering med offentliga nycklar, vilket eliminerar bedrägeri, nätfiske och återanvändning av autentiseringsuppgifter. |
+| ![Skärmbild av itsme-logotypen](./media/partner-gallery/itsme-logo.png) | [itsme](./partner-itsme.md) är en digital ID-lösning som är kompatibel med Electronic Identification, Authentication and Trust Services (eiDAS) så att användarna kan logga in på ett säkert sätt utan kortläsare, lösenord, tvåfaktorsautentisering och flera PIN-koder. |
+|![Skärmbild av en nyckellös logotyp.](./media/partner-gallery/keyless-logo.png) | [Nyckellös](./partner-keyless.md) är en lösenordslös autentiseringsprovider som tillhandahåller autentisering i form av en ansiktsigenkänningssökning och eliminerar bedrägeri, nätfiske och återanvändning av autentiseringsuppgifter.
+| ![Skärmbild av en nevis-logotyp](./media/partner-gallery/nevis-logo.png) | [Nevis](./partner-nevis.md) möjliggör lösenordsfri autentisering och tillhandahåller en mobilt, fullständigt varumärkesspecifik slutanvändarupplevelse med Nevis Access-appen för stark kundautentisering och för att uppfylla PSD2-transaktionskraven. |
+| ![Skärmbild av en Trusona-logotyp](./media/partner-gallery/trusona-logo.png) | [Trusona-integrering](./partner-trusona.md) hjälper dig att logga in på ett säkert sätt och möjliggör lösenordsfri autentisering, MFA och digital licensgenomsökning. |
+| ![Skärmbild av en twilio-logotyp.](./media/partner-gallery/twilio-logo.png) | [Twilio Verify-appen](./partner-twilio.md) tillhandahåller flera lösningar för att aktivera MFA via SMS engångslösenord (OTP), tidsbaserade engångslösenord (TOTP) och push-meddelanden samt för att uppfylla SCA-kraven för PSD2. |
+| ![Skärmbild av en skrivningDNA-logotyp](./media/partner-gallery/typingdna-logo.png) | [Att skrivaDNA](./partner-typingdna.md) möjliggör stark kundautentisering genom att analysera en användares skrivmönster. Det hjälper företag att aktivera en tyst MFA och uppfylla SCA-kraven för PSD2. |
+| ![Skärmbild av en whoiam-logotyp](./media/partner-gallery/whoiam-logo.png) | [WhoIAM är](./partner-whoiam.md) ett BRIMS-program (Branded Identity Management System) som gör det möjligt för organisationer att verifiera sin användarbas via röst, SMS och e-post. |
 
 ## <a name="role-based-access-control"></a>Rollbaserad åtkomstkontroll 
  
-Microsoft samarbetar med följande ISV: er för rollbaserad åtkomst kontroll.
+Microsoft samarbetar med följande ISV:er för rollbaserad åtkomstkontroll.
 
-| ISV-partner | Beskrivning och integrations genom gångar |
+| ISV-partner | Beskrivning och integreringsgenomgångar |
 |:-------------------------|:--------------|
-| ![Skärm bild av en n8identity-logotyp](./media/partner-gallery/n8identity-logo.png) | [N8Identity](./partner-n8identity.md) är en plattform för identitets-som-tjänst-styrning som tillhandahåller lösningar för att hantera migrering av kund konton och kund tjänst begär Anden (CSR) som körs på Microsoft Azure. |
-| ![Skärm bild av en Saviynt-logotyp](./media/partner-gallery/saviynt-logo.png) | [Saviynt](./partner-Saviynt.md) Cloud – ursprunglig plattform befordrar bättre säkerhet, efterlevnad och styrning via intelligent analys och integrering av program vara för att effektivisera IT-modernisering. |
+| ![Skärmbild av en n8identity-logotyp](./media/partner-gallery/n8identity-logo.png) | [N8Identity](./partner-n8identity.md) är en styrningsplattform för identitet som en tjänst som tillhandahåller en lösning för migrering av kundkonton och CSR-administration (Customer Service Requests) som körs på Microsoft Azure. |
+| ![Skärmbild av en Saviynt-logotyp](./media/partner-gallery/saviynt-logo.png) | [Den molnbaserade plattformen Saviynt](./partner-Saviynt.md) främjar bättre säkerhet, efterlevnad och styrning genom intelligent analys och integrering mellan program för att effektivisera IT-moderniseringen. |
 
-## <a name="security"></a>Säkerhet
+## <a name="secure-hybrid-access-to-on-premises-application"></a>Skydda hybridåtkomst till lokala program
 
-Microsoft samarbetar med följande ISV: er för säkerhet.
+Microsoft samarbetar med följande ISV:er för att ge säker hybridåtkomst till lokala program. 
 
-| ISV-partner | Beskrivning och integrations genom gångar |
+| ISV-partner | Beskrivning och integreringsgenomgångar |
 |:-------------------------|:--------------|
-| ![Skärm bild av en Arkose Lab-logotyp](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) är en provider för bedrägeri förebyggande lösningar som hjälper organisationer att skydda mot bot-attacker, konto upptagnings attacker och bedrägligt konto öppningar. |
-| ![Skärm bild av en Microsoft Dynamics 365-logotyp](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 bedrägeri skydd](./partner-dynamics-365-fraud-protection.md) är en lösning som hjälper organisationer att skydda mot bedrägligt konto öppningar genom enhets finger avtryck. |
-| ![Skärm bild av en ping-logotyp](./media/partner-gallery/ping-logo.png) | [Ping identitet](./partner-ping-identity.md) möjliggör säker hybrid åtkomst till lokala äldre program över flera moln. |
-| ![Skärm bild av en Strata-logotyp](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) ger säker hybrid åtkomst till lokala program genom att tvinga konsekventa åtkomst principer, hålla identiteter synkroniserade och göra det enkelt att överföra program från äldre identitets system till standardbaserad autentisering och åtkomst kontroll som tillhandahålls av Azure AD B2C. |
-| ![Skärm bild av en Zscaler-logotyp](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) ger principbaserad, säker åtkomst till privata program och till gångar utan kostnad, krångel eller säkerhets risker för en VPN-anslutning. |
+| ![Skärmbild av en Ping-logotyp](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) ger säker hybridåtkomst till lokala äldre program i flera moln. |
+| ![Skärmbild av en strata-logotyp](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) ger säker hybridåtkomst till lokala program genom att tillämpa konsekventa åtkomstprinciper, hålla identiteter synkroniserade och göra det enkelt att övergå program från äldre identitetssystem till standardbaserad autentisering och åtkomstkontroll som tillhandahålls av Azure AD B2C. |
+| ![Skärmbild av en zscaler-logotyp](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) levererar principbaserad, säker åtkomst till privata program och tillgångar utan kostnad, problem eller säkerhetsrisker med ett VPN. |
+
+## <a name="fraud-protection"></a>Bedrägeriskydd
+
+Microsoft samarbetar med följande ISV:er för identifiering och förebyggande av bedrägerier. 
+
+| ISV-partner | Genomgång av beskrivning och integrering |
+|:-------------------------|:--------------|
+| ![Skärmbild av en Arkose-labblogotyp](./media/partner-gallery/arkose-logo.png) | [Arkose Labs](./partner-arkose-labs.md) är en leverantör av bedrägeriskydd som hjälper organisationer att skydda mot robotattacker, kontoupptagandeattacker och bedrägliga kontoöppningar. |
+| ![Skärmbild av en BioCatch-logotyp](./media/partner-gallery/biocatch-logo.png) | [BioCatch](./partner-biocatch.md) är en leverantör av bedrägeriskydd som analyserar en användares fysiska och kognitiva digitala beteenden för att generera insikter som skiljer mellan legitima kunder och cyberbrottsligheter. |
+| ![Skärmbild av en Microsoft Dynamics 365-logotyp](./media/partner-gallery/microsoft-dynamics365-logo.png) | [Microsoft Dynamics 365 Bedrägeriskydd är](./partner-dynamics-365-fraud-protection.md) en lösning som hjälper organisationer att skydda mot falska kontoöppningar via fingeravtryck på enheten. |
+
 
 ## <a name="additional-information"></a>Ytterligare information
 
@@ -81,4 +90,4 @@ Microsoft samarbetar med följande ISV: er för säkerhet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Välj en partner i de tabeller som nämns för att lära dig hur du integrerar lösningen med Azure AD B2C.
+Välj en partner i tabellerna som nämns för att lära dig att integrera sin lösning med Azure AD B2C.

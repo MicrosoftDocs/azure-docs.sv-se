@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 62249f579909c3f8bfa9bcdf4e77e45453fcb68b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b980a74ebd4fd072c5e04089a737cb387d968f74
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792029"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814432"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Snabbstart: Azure Key Vault-certifikatklientbibliotek för Python
 
@@ -70,7 +70,7 @@ Den här snabbstarten använder Azure Identity Library med Azure CLI för att au
 
 ### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
 
-Skapa en åtkomstprincip för ditt nyckelvalv som ger ditt användarkonto certifikatbehörighet
+Skapa en åtkomstprincip för ditt nyckelvalv som ger certifikatbehörighet till ditt användarkonto
 
 ```console
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create
@@ -143,15 +143,15 @@ python kv_certificates.py
 ```
 
 - Om du stöter på behörighetsfel kontrollerar du att du har kört [ `az keyvault set-policy` kommandot](#grant-access-to-your-key-vault).
-- Om koden med samma nyckelnamn körs på nytt kan felet "(Conflict) Certificate is currently in a deleted but recoverable state "(Conflict) Certificate is currently <name> in a deleted but recoverable state". Använd ett annat nyckelnamn.
+- Om koden med samma nyckelnamn körs igen kan felet "(Conflict) Certificate is currently in a deleted but recoverable state((Conflict) Certificate is currently in a deleted but recoverable state" ((Konflikt) Certificate is currently in a deleted but recoverable state ((Konflikt) Certificate is currently in a deleted but recoverable state((Konflikt) Certificate is currently in <name> a deleted but recoverable state((Konflikt) Certificate is currently in a deleted but Använd ett annat nyckelnamn.
 
 ## <a name="code-details"></a>Kodinformation
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterade identiteter tilldelas till App Service eller virtuell dator. Mer information finns i [Översikt över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
 
 ```python
 credential = DefaultAzureCredential()
@@ -177,7 +177,7 @@ När du hanterar begäran autentiserar Azure anroparens identitet (tjänstens hu
 
 ### <a name="retrieve-a-certificate"></a>Hämta ett certifikat
 
-Om du vill läsa ett certifikat Key Vault du använda [get_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) metoden:
+Om du vill läsa ett certifikat [](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) från Key Vault använder du get_certificate-metoden:
 
 ```python
 retrieved_certificate = client.get_certificate(certificateName)
@@ -187,14 +187,14 @@ Du kan också kontrollera att certifikatet har angetts med Azure CLI-kommandot [
 
 ### <a name="delete-a-certificate"></a>Ta bort ett certifikat
 
-Om du vill ta bort ett certifikat [använder begin_delete_certificate-metoden:](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-delete-certificate-certificate-name----kwargs-)
+Om du vill ta bort ett certifikat [använder begin_delete_certificate](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#begin-delete-certificate-certificate-name----kwargs-) metod:
 
 ```python
 poller = client.begin_delete_certificate(certificateName)
 deleted_certificate = poller.result()
 ```
 
-Metoden `begin_delete_certificate` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden anropas `result` väntar den på att den slutförs.
+Metoden `begin_delete_certificate` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden `result` anropas väntar den på att den slutförs.
 
 Du kan kontrollera att certifikatet har tagits bort med Azure CLI-kommandot [az keyvault certificate show](/cli/azure/keyvault/certificate?#az_keyvault_certificate_show).
 
@@ -204,7 +204,7 @@ När det har tagits bort förblir ett certifikat i ett borttagna men återställ
 
 Om du även vill experimentera med hemligheter [och](../secrets/quick-create-python.md) nycklar [kan](../keys/quick-create-python.md)du återanvända de Key Vault som skapades i den här artikeln.
 
-När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser:
+När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess resurser:
 
 ```azurecli
 az group delete --resource-group KeyVault-PythonQS-rg
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Azure Key Vault](../general/overview.md)
-- [Säker åtkomst till ett nyckelvalv](../general/security-overview.md)
+- [Säker åtkomst till ett nyckelvalv](../general/security-features.md)
 - [Azure Key Vault utvecklarguide](../general/developers-guide.md)
-- [Key Vault säkerhetsöversikt](../general/security-overview.md)
+- [Key Vault säkerhetsöversikt](../general/security-features.md)
 - [Autentisera med Key Vault](../general/authentication.md)

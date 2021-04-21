@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurecli
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 655ea1920fc80c8cd677281f09cfca21120e1d61
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: dc5fa0eeabc437f16ca64c34b4bb72e62c0c3b21
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726456"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815044"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Snabbstart: Ställ in och hämta en hemlighet från Azure Key Vault med hjälp av Azure CLI
 
@@ -68,4 +68,4 @@ I den här snabbstarten har du skapat Key Vault och lagrat en hemlighet i den. M
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Lär dig hur [du lagrar flerradshemligheter i Key Vault](multiline-secrets.md)
 - Se referensen för [Azure CLI az keyvault-kommandon](/cli/azure/keyvault)
-- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

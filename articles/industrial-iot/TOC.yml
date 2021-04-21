@@ -1,24 +1,22 @@
-- name: Dokumentation om Azures industriella IoT
+- name: Dokumentation om Azure Industrial IoT
   href: index.yml
 - name: Översikt
   items:
-    - name: Vad är industriella IoT?
+    - name: Vad är bransch-IoT?
       href: overview-what-is-industrial-iot.md
-    - name: Vad är OPC-utgivaren?
+    - name: Vad är OPC Publisher?
       href: overview-what-is-opc-publisher.md
-    - name: Vad är den industriella IoT-plattformen?
-      href: overview-what-is-industrial-iot-platform.md
 - name: Självstudier
   items:
-    - name: Fristående självstudier för OPC Publisher
+    - name: Fristående OPC Publisher-självstudier
       items:
-        - name: Distribuera OPC Publisher fristående läge
+        - name: Distribuera fristående LÄGE för OPC Publisher
           href: tutorial-publisher-deploy-opc-publisher-standalone.md
         - name: Konfigurera OPC Publisher
           href: tutorial-publisher-configure-opc-publisher.md
-        - name: Prestanda-och minnes justering för OPC-utgivaren
+        - name: Prestanda- och minnesjustering för OPC Publisher
           href: tutorial-publisher-performance-memory-tuning-opc-publisher.md
-    - name: Självstudier för IIoT-plattformen (dirigerat läge)
+    - name: Självstudier för IIoT-plattformen (orkestrerat läge)
       items:
         - name: Distribuera IIoT-plattform
           href: tutorial-deploy-industrial-iot-platform.md
@@ -30,15 +28,15 @@
           href: tutorial-visualize-data-time-series-insights.md
 - name: Referens
   items:
-    - name: Kommando rads argument
+    - name: Kommandoradsargument
       href: reference-command-line-arguments.md
-    - name: OPC Publisher telemetri konfigurations fil format
+    - name: Konfigurationsfilformat för OPC Publisher Telemetry
       href: reference-opc-publisher-telemetry-format.md
 - name: Resurser
   items:
     - name: OPC Publisher GitHub-lagringsplats
       href: 'https://github.com/Azure/Industrial-IoT'
-    - name: IIoT Platform GitHub-lagringsplats
+    - name: GitHub-lagringsplats för IIoT-plattformen
       href: 'https://github.com/Azure/iot-edge-opc-publisher'
     - name: Alternativ för support och hjälp
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-accelerators/toc.json&bc=/azure/iot-accelerators/breadcrumb/toc.json

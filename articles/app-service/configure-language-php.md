@@ -1,32 +1,35 @@
 ---
 title: Konfigurera PHP-appar
-description: Lär dig hur du konfigurerar en PHP-app i de interna Windows-instanserna eller i en förbyggd PHP-container i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
+description: Lär dig hur du konfigurerar en PHP-app i interna Windows-instanser eller i en förbyggd PHP-container i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: c40bc01553b9e848d668c0a699e9dcc9929f079e
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 94cbe0fa6669546cee8e989a6db2fcbb428cb9d0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779335"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829448"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>Konfigurera en PHP-app för Azure App Service
 
-Den här guiden visar hur du konfigurerar php-webbappar, mobila backend-datorer och API-appar i Azure App Service.
+Den här guiden visar hur du konfigurerar php-webbappar, mobila backend-enheter och API-appar i Azure App Service.
 
-Den här guiden innehåller viktiga begrepp och instruktioner för PHP-utvecklare som distribuerar appar till App Service. Om du aldrig har använt Azure App Service följer du [självstudiekursen PHP-snabbstart](quickstart-php.md) och [PHP med MySQL](tutorial-php-mysql-app.md) först.
+Den här guiden innehåller viktiga begrepp och instruktioner för PHP-utvecklare som distribuerar appar till App Service. Om du aldrig har använt Azure App Service börjar du med [php-snabbstarten](quickstart-php.md) [och PHP med MySQL.](tutorial-php-mysql-app.md)
 
 ## <a name="show-php-version"></a>Visa PHP-version
 
 ::: zone pivot="platform-windows"  
 
-Om du vill visa den aktuella PHP-versionen kör du följande kommando i [Cloud Shell](https://shell.azure.com):
+Om du vill visa den aktuella PHP-versionen kör du följande kommando [i Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query phpVersion
 ```
+
+> [!NOTE]
+> För att åtgärda ett utvecklingsfack inkluderar du `--slot` parametern följt av namnet på platsen.
 
 Om du vill visa alla PHP-versioner som stöds kör du följande kommando [i Cloud Shell](https://shell.azure.com):
 
@@ -38,11 +41,14 @@ az webapp list-runtimes | grep php
 
 ::: zone pivot="platform-linux"
 
-Om du vill visa den aktuella PHP-versionen kör du följande kommando i [Cloud Shell](https://shell.azure.com):
+Om du vill visa den aktuella PHP-versionen kör du följande kommando [i Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config show --resource-group <resource-group-name> --name <app-name> --query linuxFxVersion
 ```
+
+> [!NOTE]
+> För att åtgärda ett utvecklingsfack inkluderar du `--slot` parametern följt av namnet på platsen.
 
 Om du vill visa alla PHP-versioner som stöds kör du följande kommando [i Cloud Shell](https://shell.azure.com):
 
@@ -59,17 +65,17 @@ az webapp list-runtimes --linux | grep PHP
 Kör följande kommando i Cloud Shell [att](https://shell.azure.com) ange PHP-versionen till 7.4:
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --php-version 7.4
+az webapp config set --resource-group <resource-group-name> --name <app-name> --php-version 7.4
 ```
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-Kör följande kommando i Cloud Shell [för](https://shell.azure.com) att ange PHP-versionen till 7.2:
+Kör följande kommando i Cloud Shell [att](https://shell.azure.com) ange PHP-versionen till 7.2:
 
 ```azurecli-interactive
-az webapp config set --name <app-name> --resource-group <resource-group-name> --linux-fx-version "PHP|7.2"
+az webapp config set --resource-group <resource-group-name> --name <app-name> --linux-fx-version "PHP|7.2"
 ```
 
 ::: zone-end
@@ -78,9 +84,9 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="run-composer"></a>Kör Composer
 
-Om du vill App Service att köra [Composer](https://getcomposer.org/) vid distributionen är det enklaste sättet att inkludera Composer i din lagringsplats.
+Om du vill App Service köra [Composer vid](https://getcomposer.org/) distributionen är det enklaste sättet att inkludera Composer i din lagringsplats.
 
-Från ett lokalt terminalfönster ändrar du katalogen till lagringsplatsens rot och följer anvisningarna i Ladda ned [Composer](https://getcomposer.org/download/) för att ladda ned *composer.phar* till katalogroten.
+Från ett lokalt terminalfönster ändrar du katalogen till lagringsplatsens rot och följer anvisningarna i ladda ned [Composer](https://getcomposer.org/download/) för att ladda ned *composer.phar* till katalogroten.
 
 Kör följande kommandon (du behöver [npm installerat):](https://www.npmjs.com/get-npm)
 
@@ -113,11 +119,11 @@ if [ -e "$DEPLOYMENT_TARGET/composer.json" ]; then
 fi
 ```
 
-Genomför alla ändringar och distribuera din kod med Hjälp av Git eller Zip-distribution med byggautomatisering aktiverat. Composer bör nu köras som en del av distributionsautomationen.
+Genomför alla ändringar och distribuera din kod med Hjälp av Git eller Zip-distribution med build-automatisering aktiverat. Composer bör nu köras som en del av distributionsautomationen.
 
 ## <a name="run-gruntbowergulp"></a>Kör Grunt/Bower/Gulp
 
-Om du App Service köra populära automatiseringsverktyg vid distributionen, till exempel Grunt, Bower eller Gulp, måste du ange ett anpassat [distributionsskript.](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) App Service kör det här skriptet när du distribuerar med Git eller med [Zip-distribution med](deploy-zip.md) build-automatisering aktiverat. 
+Om du App Service köra populära automatiseringsverktyg vid distribution, till exempel Grunt, Bower eller Gulp, måste du ange ett anpassat [distributionsskript.](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) App Service kör det här skriptet när du distribuerar med Git eller med [Zip-distribution med](deploy-zip.md) build-automatisering aktiverat. 
 
 Om du vill att lagringsplatsen ska kunna köra dessa verktyg måste du lägga till dem i beroendena i *package.jspå.* Exempel:
 
@@ -139,7 +145,7 @@ kuduscript --node --scriptType bash --suppressPrompt
 
 Lagringsplatsens rot har nu två ytterligare filer: *.deployment* *och deploy.sh*.
 
-Öppna *deploy.sh* och leta upp `Deployment` avsnittet, som ser ut så här:
+Öppna *deploy.sh* och leta reda på `Deployment` avsnittet, som ser ut så här:
 
 ```bash
 ##################################################################################################################################
@@ -200,7 +206,7 @@ fi
 
 ## <a name="customize-build-automation"></a>Anpassa byggautomatisering
 
-Om du distribuerar din app med Git- eller zip-paket där byggautomatisering är aktiverat går App Service i följande sekvens:
+Om du distribuerar din app med Git- eller zip-paket där byggautomatisering är aktiverat App Service du skapa automatisering steg för steg genom följande sekvens:
 
 1. Kör anpassat skript om det anges av `PRE_BUILD_SCRIPT_PATH` .
 1. Kör `php composer.phar install`.
@@ -255,9 +261,9 @@ Som standard Azure App Service den virtuella rotsökvägen ( ) till rotkatalogen
 
 ::: zone pivot="platform-linux"
 
-Det webbramverk du väljer kan använda en -underkatalog som platsrot. [Laravel använder till exempel](https://laravel.com/) `public/` -underkatalogen som platsrot.
+Det webbramverk du väljer kan använda en underkatalog som platsrot. [Laravel använder till exempel](https://laravel.com/) `public/` -underkatalogen som platsrot.
 
-PHP-standardavbildningen för App Service använder Apache, och du kan inte anpassa webbplatsroten för din app. Du kan komma runt den här begränsningen genom att lägga till *en .htaccess-fil* i lagringsplatsens rot med följande innehåll:
+PHP-standardavbildningen för App Service använder Apache och du kan inte anpassa webbplatsroten för din app. Du kan komma runt den här begränsningen genom att lägga till en *.htaccess-fil* i lagringsplatsens rot med följande innehåll:
 
 ```
 <IfModule mod_rewrite.c>
@@ -310,15 +316,15 @@ Lägg till konfigurationsinställningar `.user.ini` i filen med samma syntax som
 
 Distribuera om appen med ändringarna och starta om den.
 
-Som ett alternativ till att använda en fil kan du använda ini_set() i din app för att anpassa dessa `.user.ini` icke-PHP_INI_SYSTEM [](https://www.php.net/manual/function.ini-set.php) direktiv.
+Som ett alternativ till att använda en fil kan du använda ini_set() i din app för att anpassa `.user.ini` dessa icke-PHP_INI_SYSTEM-direktiv. [](https://www.php.net/manual/function.ini-set.php)
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-Om du PHP_INI_USER, PHP_INI_PERDIR och PHP_INI_ALL (se [php.ini-direktiv](https://www.php.net/manual/ini.list.php)) lägger du till *en .htaccess-fil* i appens rotkatalog.
+Om du PHP_INI_USER, PHP_INI_PERDIR och PHP_INI_ALL -direktiv (se [php.ini-direktiv](https://www.php.net/manual/ini.list.php)), lägger du till *en .htaccess-fil* i appens rotkatalog.
 
-I *.htaccess-filen* lägger du till -direktivet med hjälp av `php_value <directive-name> <value>` -syntaxen. Exempel:
+Lägg till *-direktiv med syntaxen i .htaccess-filen.* `php_value <directive-name> <value>` Exempel:
 
 ```
 php_value upload_max_filesize 1000M
@@ -330,9 +336,9 @@ php_value display_errors On
 php_value upload_max_filesize 10M
 ```
 
-Distribuera om appen med ändringarna och starta om den. Om du distribuerar den med Kudu (till exempel [med Git](deploy-local-git.md)) startas den om automatiskt efter distributionen.
+Distribuera om appen med ändringarna och starta om den. Om du distribuerar den med Kudu (till exempel [med Git)](deploy-local-git.md)startas den om automatiskt efter distributionen.
 
-Som ett alternativ till *att använda .htaccess* kan [du använda ini_set()](https://www.php.net/manual/function.ini-set.php) i din app för att anpassa dessa icke-PHP_INI_SYSTEM-direktiv.
+Som ett alternativ till *att använda .htaccess* kan du använda [ini_set()](https://www.php.net/manual/function.ini-set.php) i din app för att anpassa dessa icke-PHP_INI_SYSTEM-direktiv.
 
 ::: zone-end
 
@@ -340,7 +346,7 @@ Som ett alternativ till *att använda .htaccess* kan [du använda ini_set()](htt
 
 ::: zone pivot="platform-windows"  
 
-Om du PHP_INI_SYSTEM (se [php.ini direktiv](https://www.php.net/manual/ini.list.php)) kan du inte använda *.htaccess-metoden.* App Service tillhandahåller en separat mekanism med hjälp av `PHP_INI_SCAN_DIR` appinställningen.
+Om du PHP_INI_SYSTEM -direktiv [(sephp.ini-direktiv](https://www.php.net/manual/ini.list.php)) kan du inte använda *.htaccess-metoden.* App Service tillhandahåller en separat mekanism med hjälp av `PHP_INI_SCAN_DIR` appinställningen.
 
 Kör först följande kommando i kommandot Cloud Shell [lägga](https://shell.azure.com) till en appinställning med namnet `PHP_INI_SCAN_DIR` :
 
@@ -348,9 +354,9 @@ Kör först följande kommando i kommandot Cloud Shell [lägga](https://shell.az
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="d:\home\site\ini"
 ```
 
-Gå till Kudu-konsolen ( `https://<app-name>.scm.azurewebsites.net/DebugConsole` ) och gå till `d:\home\site` .
+Navigera till Kudu-konsolen ( `https://<app-name>.scm.azurewebsites.net/DebugConsole` ) och gå till `d:\home\site` .
 
-Skapa en katalog i med namnet och skapa sedan en `d:\home\site` `ini` *.ini-fil* i katalogen `d:\home\site\ini` (till *exempelsettings.ini)* med de direktiv som du vill anpassa. Använd samma syntax som du använder i en *php.ini* fil. 
+Skapa en katalog i med namnet och skapa sedan en `d:\home\site` .ini-fil i katalogen (till exempelsettings.ini) med det `ini`  `d:\home\site\ini` -direktiv som du vill anpassa.  Använd samma syntax som du använder i en *php.ini* fil. 
 
 Om du till exempel vill ändra värdet [för expose_php](https://php.net/manual/ini.core.php#ini.expose-php) kör du följande kommandon:
 
@@ -366,9 +372,9 @@ Starta om appen för att ändringarna ska börja gälla.
 
 ::: zone pivot="platform-linux"
 
-Om du PHP_INI_SYSTEM -direktiv [(sephp.ini-direktiv](https://www.php.net/manual/ini.list.php)) kan du inte använda *.htaccess-metoden.* App Service en separat mekanism med hjälp av `PHP_INI_SCAN_DIR` appinställningen.
+Om du PHP_INI_SYSTEM (se [php.ini direktiv](https://www.php.net/manual/ini.list.php)) kan du inte använda *.htaccess-metoden.* App Service tillhandahåller en separat mekanism med hjälp av `PHP_INI_SCAN_DIR` appinställningen.
 
-Kör först följande kommando i kommandot Cloud Shell [lägga till](https://shell.azure.com) en appinställning med namnet `PHP_INI_SCAN_DIR` :
+Kör först följande kommando i kommandot Cloud Shell [lägga](https://shell.azure.com) till en appinställning med namnet `PHP_INI_SCAN_DIR` :
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings PHP_INI_SCAN_DIR="/usr/local/etc/php/conf.d:/home/site/ini"
@@ -376,9 +382,9 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 
 `/usr/local/etc/php/conf.d` är standardkatalogen där *php.ini* finns. `/home/site/ini`är den anpassade katalogen där du lägger till en anpassad *INI-fil.* Du separerar värdena med `:` en .
 
-Gå till webb-SSH-sessionen med din Linux-container ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
+Gå till webb-SSH-sessionen med linux-containern ( `https://<app-name>.scm.azurewebsites.net/webssh/host` ).
 
-Skapa en katalog i med namnet och skapa sedan en `/home/site` `ini` *.ini-fil* i katalogen `/home/site/ini` (till *exempelsettings.ini)* med de direktiv som du vill anpassa. Använd samma syntax som du använder i en *php.ini* fil. 
+Skapa en katalog i med namnet och skapa sedan en `/home/site` .ini-fil i katalogen (till exempelsettings.ini) med det `ini`  `/home/site/ini` -direktiv som du vill anpassa.  Använd samma syntax som du använder i en *php.ini* fil. 
 
 > [!TIP]
 > I de inbyggda Linux-containrarna i App Service *används /home* som bestående delad lagring. 
@@ -412,7 +418,7 @@ Lägg till `bin` en katalog i appens rotkatalog och placera `.dll` tilläggsfile
 
 Distribuera dina ändringar.
 
-Följ stegen i [Anpassa PHP_INI_SYSTEM direktiv](#customize-php_ini_system-directives), lägg till tilläggen i [](https://www.php.net/manual/ini.core.php#ini.extension) den anpassade *INI-filen* med tillägget [eller zend_extension-direktiv.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
+Följ stegen i Customize PHP_INI_SYSTEM directives (Anpassa PHP_INI_SYSTEM direktiv) och lägg [](https://www.php.net/manual/ini.core.php#ini.extension) till tilläggen i den anpassade [](#customize-php_ini_system-directives) *INI-filen* [med tillägget eller zend_extension-direktiv.](https://www.php.net/manual/ini.core.php#ini.zend-extension)
 
 ```
 extension=d:\home\site\wwwroot\bin\mongodb.dll
@@ -468,7 +474,7 @@ Använd standardverktyget [error_log()](https://php.net/manual/function.error-lo
 
 När en fungerande PHP-app beter sig annorlunda i App Service har fel kan du prova följande:
 
-- [Åtkomst till loggströmmen](#access-diagnostic-logs).
+- [Få åtkomst till loggströmmen](#access-diagnostic-logs).
 - Testa appen lokalt i produktionsläge. App Service kör din app i produktionsläge, så du måste se till att projektet fungerar som förväntat i produktionsläge lokalt. Exempel:
     - Beroende på *dincomposer.jskan* olika paket installeras för produktionsläge ( jämfört med `require` `require-dev` ).
     - Vissa webbramverk kan distribuera statiska filer på olika sätt i produktionsläge.

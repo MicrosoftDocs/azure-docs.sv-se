@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 75ea1c0e92e4d22e73178685472eb1953565a616
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1c6cca640d8607a355e0ffca36e3af502df5052c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750346"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815512"
 ---
 # <a name="quickstart-set-and-retrieve-a-key-from-azure-key-vault-using-the-azure-portal"></a>Snabbstart: Ange och hämta en nyckel från Azure Key Vault med hjälp av Azure Portal
 
@@ -81,5 +81,5 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här snabbstarten har du skapat Key Vault och lagrat en nyckel i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

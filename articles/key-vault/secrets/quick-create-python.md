@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d7b5144264b31e62eac43513d6a851d09a09c60f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766361"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814054"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för Python
 
@@ -86,7 +86,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 ## <a name="create-the-sample-code"></a>Skapa exempelkoden
 
-Med Azure Key Vault klientbiblioteket för Python kan du hantera hemligheter. Följande kodexempel visar hur du skapar en klient, anger en hemlighet, hämtar en hemlighet och tar bort en hemlighet.
+Med Azure Key Vault hemligt klientbibliotek för Python kan du hantera hemligheter. Följande kodexempel visar hur du skapar en klient, anger en hemlighet, hämtar en hemlighet och tar bort en hemlighet.
 
 Skapa en fil med *namnet kv_secrets.py* som innehåller den här koden.
 
@@ -133,15 +133,15 @@ python kv_secrets.py
 ```
 
 - Om du stöter på behörighetsfel kontrollerar du att du har kört [ `az keyvault set-policy` kommandot](#grant-access-to-your-key-vault).
-- Om koden med samma hemlighetsnamn körs på nytt kan felet "(Conflict) Secret is currently in a deleted but recoverable state" ((Konflikt) Secret is currently in a deleted but recoverable state ((Konflikt) Secret is currently in a deleted but recoverable state((Konflikt) Secret is currently in a deleted but recoverable state((Konflikt) Secret is currently in <name> a deleted but recoverable state". Använd ett annat hemligt namn.
+- Om koden med samma hemlighetsnamn körs på nytt kan felet "(Conflict) Secret is currently in a deleted but recoverable state "(Conflict) Secret is currently <name> in a deleted but recoverable state". Använd ett annat hemligt namn.
 
 ## <a name="code-details"></a>Kodinformation
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterade identiteter tilldelas till App Service eller virtuell dator. Mer information finns i [Översikt över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](https://docs.microsoft.com/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
 
 ```python
 credential = DefaultAzureCredential()
@@ -158,11 +158,11 @@ client.set_secret(secretName, secretValue)
 
 Anrop `set_secret` genererar ett anrop till Azure REST API för nyckelvalvet.
 
-När du hanterar begäran autentiserar Azure anroparens identitet (tjänstens huvudnamn) med hjälp av autentiseringsobjektet som du angav för klienten.
+När du hanterar begäran autentiserar Azure anroparen (tjänstens huvudnamn) med hjälp av autentiseringsobjektet som du angav för klienten.
 
 ### <a name="retrieve-a-secret"></a>Hämta en hemlighet
 
-Om du vill läsa en hemlighet Key Vault använder du [get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#get-secret-name--version-none----kwargs-) metoden:
+Om du vill läsa en hemlighet Key Vault du använda [get_secret](/python/api/azure-keyvault-secrets/azure.keyvault.secrets.secretclient?#get-secret-name--version-none----kwargs-) metoden:
 
 ```python
 retrieved_secret = client.get_secret(secretName)
@@ -181,17 +181,17 @@ poller = client.begin_delete_secret(secretName)
 deleted_secret = poller.result()
 ```
 
-Metoden `begin_delete_secret` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden `result` anropas väntar den på att den slutförs.
+Metoden `begin_delete_secret` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden anropas `result` väntar den på att den slutförs.
 
 Du kan kontrollera att hemligheten har tagits bort med Azure CLI-kommandot [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show).
 
-När en hemlighet har tagits bort finns den kvar i ett borttagna men återställningsbart tillstånd under en tid. Om du kör koden igen använder du ett annat hemligt namn.
+När en hemlighet har tagits bort förblir den i ett borttagna men återställningsbart tillstånd under en tid. Om du kör koden igen använder du ett annat hemligt namn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) [nycklar kan du](../keys/quick-create-python.md)återanvända de Key Vault som skapades i den här artikeln.
+Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) nycklar [kan](../keys/quick-create-python.md)du återanvända de Key Vault som skapades i den här artikeln.
 
-När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess resurser:
+När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser:
 
 ```azurecli
 az group delete --resource-group KeyVault-PythonQS-rg
@@ -200,7 +200,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Azure Key Vault](../general/overview.md)
-- [Säker åtkomst till ett nyckelvalv](../general/security-overview.md)
+- [Säker åtkomst till ett nyckelvalv](../general/security-features.md)
 - [Azure Key Vault utvecklarguide](../general/developers-guide.md)
-- [Key Vault säkerhetsöversikt](../general/security-overview.md)
+- [Key Vault säkerhetsöversikt](../general/security-features.md)
 - [Autentisera med Key Vault](../general/authentication.md)

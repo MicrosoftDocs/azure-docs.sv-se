@@ -1,6 +1,6 @@
 ---
 title: Använda temporära tabeller i Synapse SQL
-description: Grundläggande rikt linjer för att använda temporära tabeller i Synapse SQL.
+description: Grundläggande vägledning för att använda temporära tabeller i Synapse SQL.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,30 +10,30 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 06faa1da71331c299245a93af96166880e7732de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8513df83196b3521a749515c6bb22caad7d255b7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96451783"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816051"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Temporära tabeller i Synapse SQL
 
-Den här artikeln innehåller grundläggande information om hur du använder temporära tabeller och visar principerna för temporära tabeller på sessionsläge i Synapse SQL. 
+Den här artikeln innehåller grundläggande vägledning för att använda temporära tabeller och beskriver principerna för temporära tabeller på sessionsnivå i Synapse SQL. 
 
-Både den dedikerade SQL-poolen och resurserna för Server lös SQL-pool kan använda temporära tabeller. SQL-poolen utan server har begränsningar som beskrivs i slutet av den här artikeln. 
+Både de dedikerade SQL-poolerna och serverlösa SQL-poolresurser kan använda temporära tabeller. Serverlös SQL-pool har begränsningar som beskrivs i slutet av den här artikeln. 
 
 ## <a name="temporary-tables"></a>Temporära tabeller
 
-Temporära tabeller är användbara vid bearbetning av data, särskilt under omvandling där de mellanliggande resultaten är tillfälliga. Med Synapse SQL finns temporära tabeller på sessions nivå.  De är bara synliga för den session där de skapades. De tas då bort automatiskt när sessionen loggar ut. 
+Temporära tabeller är användbara vid bearbetning av data, särskilt under omvandling där de mellanliggande resultaten är tillfälliga. Med Synapse SQL finns temporära tabeller på sessionsnivå.  De är bara synliga för den session där de skapades. Därför tas de bort automatiskt när sessionen loggas ut. 
 
 ## <a name="temporary-tables-in-dedicated-sql-pool"></a>Temporära tabeller i dedikerad SQL-pool
 
-I den dedikerade SQL-poolen ger temporära tabeller en prestanda förmån eftersom deras resultat skrivs till lokala platser i stället för Fjärrlagring.
+I den dedikerade SQL-poolresursen erbjuder temporära tabeller en prestandaförmån eftersom deras resultat skrivs till lokal lagring i stället för fjärrlagring.
 
 ### <a name="create-a-temporary-table"></a>Skapa en tillfällig tabell
 
-Temporära tabeller skapas genom att prefixet för ditt tabell namn används `#` .  Exempel:
+Temporära tabeller skapas genom att tabellnamnet föregås av `#` ett .  Exempel:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -53,7 +53,7 @@ WITH
 )
 ```
 
-Temporära tabeller kan också skapas med en `CTAS` med exakt samma metod:
+Temporära tabeller kan också skapas med `CTAS` en med exakt samma metod:
 
 ```sql
 CREATE TABLE #stats_ddl
@@ -94,13 +94,13 @@ GROUP BY
 ```
 
 > [!NOTE]
-> `CTAS` är ett kraftfullt kommando och har den extra fördelen att vara effektiv i användningen av transaktions logg utrymme. 
+> `CTAS` är ett kraftfullt kommando och har den extra fördelen att det är effektivt att använda transaktionsloggutrymmet. 
 > 
 > 
 
-### <a name="drop-temporary-tables"></a>Släpp temporära tabeller
+### <a name="drop-temporary-tables"></a>Ta bort temporära tabeller
 
-Inga temporära tabeller bör finnas när en ny session skapas.  Men om du anropar samma lagrade procedur som skapar en tillfällig med samma namn, så att du kan se till att dina `CREATE TABLE` instruktioner lyckas, kan du använda en enkel för hands kontroll med  `DROP` : 
+När en ny session skapas bör det inte finnas några temporära tabeller.  Men om du anropar samma lagrade procedur som skapar en tillfällig procedur med samma namn, för att säkerställa att dina instruktioner lyckas, använder du en enkel kontroll före `CREATE TABLE` förekomsten med  `DROP` : 
 
 ```sql
 IF OBJECT_ID('tempdb..#stats_ddl') IS NOT NULL
@@ -109,17 +109,17 @@ BEGIN
 END
 ```
 
-För att koda konsekvens är det en bra idé att använda det här mönstret för både tabeller och temporära tabeller.  Det är också en bra idé att använda `DROP TABLE` för att ta bort temporära tabeller när du är klar med dem.  
+För kodningskonsekvens är det en bra idé att använda det här mönstret för både tabeller och temporära tabeller.  Det är också en bra idé att använda för `DROP TABLE` att ta bort temporära tabeller när du är klar med dem.  
 
-Vid utveckling av lagrade procedurer är det vanligt att se Drop-kommandon som samlats ihop i slutet av en procedur för att se till att dessa objekt rensas.
+I utveckling av lagrade procedurer är det vanligt att se att drop-kommandona paketeras tillsammans i slutet av en procedur för att se till att dessa objekt rensas.
 
 ```sql
 DROP TABLE #stats_ddl
 ```
 
-### <a name="modularize-code"></a>Modularize-kod
+### <a name="modularize-code"></a>Modularisera kod
 
-Temporära tabeller kan användas var som helst i en användarsession. Den här funktionen kan sedan utnyttjas för att hjälpa dig att modularize program koden.  För att demonstrera, genererar följande lagrade procedur DDL för att uppdatera all statistik i databasen efter statistik namn:
+Temporära tabeller kan användas var som helst i en användarsession. Den här funktionen kan sedan utnyttjas för att hjälpa dig modularisera programkoden.  För att demonstrera genererar följande lagrade procedur DDL för att uppdatera all statistik i databasen efter statistiknamn:
 
 ```sql
 CREATE PROCEDURE    [dbo].[prc_sqldw_update_stats]
@@ -188,16 +188,16 @@ SELECT
     THEN 'UPDATE STATISTICS '+[two_part_name]+'('+[stats_name]+') WITH RESAMPLE;'
     END AS [update_stats_ddl]
 ,   [seq_nmbr]
-FROM    t1
+FROM    #stats_ddl
 ;
 GO
 ```
 
-I det här skedet är den enda åtgärd som har inträffat skapandet av en lagrad procedur som genererar #stats_ddl temporära tabellen.  Den lagrade proceduren släpper #stats_ddl om den redan finns. Den här minskningen ser till att den inte fungerar om den körs mer än en gång i en session.  
+I det här skedet är den enda åtgärden som har inträffat att skapa en lagrad procedur som genererar #stats_ddl temporär tabell.  Den lagrade proceduren #stats_ddl om den redan finns. Den här listrutan ser till att den inte misslyckas om den körs mer än en gång i en session.  
 
-Eftersom det inte finns någon `DROP TABLE` i slutet av den lagrade proceduren, är den skapade tabellen kvar och kan läsas utanför den lagrade proceduren när den lagrade proceduren har slutförts.  
+Eftersom det inte finns någon i slutet av den lagrade proceduren, förblir den skapade tabellen och kan läsas utanför den lagrade proceduren när den lagrade `DROP TABLE` proceduren har slutförts.  
 
-Till skillnad från andra SQL Server-databaser låter Synapse SQL dig använda den temporära tabellen utanför proceduren som skapade den.  De temporära tabeller som skapas via dedikerad SQL-pool kan användas **var som helst** i sessionen. Därför har du mer modulär och hanterbar kod, som visas i exemplet nedan:
+Till skillnad från andra SQL Server databaser Synapse SQL du använda den tillfälliga tabellen utanför proceduren som skapade den.  De temporära tabeller som skapas via dedikerad SQL-pool kan användas **var** som helst i sessionen. Därför har du mer modulär och hanterbar kod, som du ser i exemplet nedan:
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -218,21 +218,21 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-### <a name="temporary-table-limitations"></a>Tillfälligt tabell begränsningar
+### <a name="temporary-table-limitations"></a>Tillfälliga tabellbegränsningar
 
-Dedikerad SQL-pool har några implementerings begränsningar för temporära tabeller:
+Dedikerad SQL-pool har några implementeringsbegränsningar för temporära tabeller:
 
-- Endast tillfälliga tabeller med sessions definitions område stöds.  Globala temporära tabeller stöds inte.
-- Det går inte att skapa vyer för temporära tabeller.
-- Temporära tabeller kan bara skapas med hash-eller resursallokering-distribution.  Replikerad temporär tabell distribution stöds inte. 
+- Endast temporära tabeller med sessionsomfång stöds.  Globala temporära tabeller stöds inte.
+- Vyer kan inte skapas i temporära tabeller.
+- Temporära tabeller kan bara skapas med hash- eller resursallokeringsdistribution.  Distribution av replikerade temporära tabeller stöds inte. 
 
-## <a name="temporary-tables-in-serverless-sql-pool"></a>Temporära tabeller i SQL-poolen utan Server
+## <a name="temporary-tables-in-serverless-sql-pool"></a>Temporära tabeller i en serverlös SQL-pool
 
-Temporära tabeller i SQL-poolen utan Server stöds men deras användning är begränsad. De kan inte användas i frågor som målfil. 
+Temporära tabeller i serverlös SQL-pool stöds men deras användning är begränsad. De kan inte användas i frågor som är målfiler. 
 
-Du kan till exempel inte ansluta till en temporär tabell med data från filer i lagrings utrymmet. Antalet temporära tabeller är begränsat till 100 och den totala storleken är begränsad till 100 MB.
+Du kan till exempel inte ansluta till en tillfällig tabell med data från filer i lagring. Antalet temporära tabeller är begränsat till 100 och deras totala storlek är begränsad till 100 MB.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om hur du utvecklar tabeller finns i avsnittet [utforma tabeller med hjälp av artikeln SYNAPSE SQL-resurser](develop-tables-overview.md) .
+Mer information om hur du utvecklar tabeller finns i artikeln Designing tables using the Synapse SQL resources (Utforma tabeller med [hjälp Synapse SQL resurser).](develop-tables-overview.md)
 

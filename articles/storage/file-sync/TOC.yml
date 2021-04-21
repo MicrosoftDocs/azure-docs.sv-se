@@ -19,7 +19,7 @@
       items:
         - name: Översikt över molnnivåindelad
           href: file-sync-cloud-tiering-overview.md
-        - name: Översikt över principer för molnnivåindelad lagring
+        - name: Översikt över principer för molnnivåindelad
           href: file-sync-cloud-tiering-policy.md
         - name: Välj dina principer för molnnivåindelad lagring
           href: file-sync-choose-cloud-tiering-policies.md
@@ -51,6 +51,10 @@
           href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
         - name: Distribuera Azure File Sync
           href: file-sync-deployment-guide.md
+        - name: Använda DFS-N med Azure Files
+          href: ../files/files-manage-namespaces.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Köpa lagringsreservationer
+          href: ../files/files-reserve-capacity.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
     - name: Nätverk
       items:
         - name: Konfigurera nätverksslutpunkter i Azure File Sync

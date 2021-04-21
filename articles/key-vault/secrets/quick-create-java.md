@@ -1,6 +1,6 @@
 ---
 title: Snabbstart – Azure Key Vault hemligt klientbibliotek för Java
-description: Innehåller en snabbstart för Azure Key Vault Secret-klientbiblioteket för Java.
+description: Innehåller en snabbstart för Azure Key Vault Hemligt klientbibliotek för Java.
 author: msmbaldwin
 ms.custom: devx-track-java
 ms.author: mbaldwin
@@ -8,14 +8,14 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b45bb353ae32f1037fde7dc5d518472089edf12f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: c52ac859f72c440e2cebd59555606c7b3986a314
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766343"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814882"
 ---
-# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Snabbstart: Azure Key Vault Hemligt klientbibliotek för Java
+# <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för Java
 Kom igång med Azure Key Vault Secret-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
 
 Ytterligare resurser:
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.secrets.quickstart
                        -DinteractiveMode=false
 ```
 
-Utdata från att generera projektet ser ut ungefär så här:
+Utdata från genereringen av projektet ser ut ungefär så här:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -111,7 +111,7 @@ cd akv-secrets-java
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
-Skapa en åtkomstprincip för ditt nyckelvalv som beviljar hemliga behörigheter till ditt användarkonto.
+Skapa en åtkomstprincip för ditt nyckelvalv som ger ditt användarkonto hemliga behörigheter.
 
 ```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --secret-permissions delete get list set purge
@@ -156,7 +156,7 @@ import com.azure.security.keyvault.secrets.models.KeyVaultSecret;
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 I den här snabbstarten används en inloggad användare för att autentisera till Key Vault, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska en hanterad identitet tilldelas till en App Service eller virtuell dator. Mer information finns i Översikt [över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -175,7 +175,7 @@ Nu när programmet har autentiserats kan du placera en hemlighet i nyckelvalvet 
 secretClient.setSecret(new KeyVaultSecret(secretName, secretValue));
 ```
 
-Du kan kontrollera att hemligheten har angetts med [kommandot az keyvault secret](/cli/azure/keyvault/secret?#az_keyvault_secret_show) show:
+Du kan kontrollera att hemligheten har angetts med [kommandot az keyvault secret show:](/cli/azure/keyvault/secret?#az_keyvault_secret_show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -200,7 +200,7 @@ SyncPoller<DeletedSecret, Void> deletionPoller = secretClient.beginDeleteSecret(
 deletionPoller.waitForCompletion();
 ```
 
-Du kan kontrollera att hemligheten har tagits bort med kommandot [az keyvault secret](/cli/azure/keyvault/secret?#az_keyvault_secret_show) show:
+Du kan kontrollera att hemligheten har tagits bort med kommandot [az keyvault secret show:](/cli/azure/keyvault/secret?#az_keyvault_secret_show)
 
 ```azurecli
 az keyvault secret show --vault-name <your-unique-key-vault-name> --name mySecret
@@ -280,5 +280,5 @@ public class App {
 I den här snabbstarten skapade du ett nyckelvalv, lagrade en hemlighet, hämtade det och tog sedan bort det. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Skydda [åtkomst till ett nyckelvalv](../general/security-overview.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/security-features.md)

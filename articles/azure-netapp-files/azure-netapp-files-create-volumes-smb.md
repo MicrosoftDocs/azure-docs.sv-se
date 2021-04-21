@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 04/19/2021
+ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 9bb995e5e3038d7a4cd24f0db2608461c8848497
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 28fc465627032522afb9da8f6ec0fad704834d09
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726304"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813712"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
@@ -34,7 +34,7 @@ Den här artikeln visar hur du skapar en SMB3-volym. Information om NFS-volymer 
 
 ## <a name="configure-active-directory-connections"></a>Konfigurera Active Directory-anslutningar 
 
-Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om du inte har konfigurerat Active Directory-anslutningar för Azure NetApp-filer följer du anvisningarna som beskrivs i [Skapa och hantera Active Directory-anslutningar.](create-active-directory-connections.md)
+Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om du inte har konfigurerat Active Directory-anslutningar för Azure NetApp-filer följer du anvisningarna i [Skapa och hantera Active Directory-anslutningar.](create-active-directory-connections.md)
 
 ## <a name="add-an-smb-volume"></a>Lägga till en SMB-volym
 
@@ -81,13 +81,13 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
     
         ![Skapa undernät](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Om du vill tillämpa en befintlig ögonblicksbildsprincip på volymen klickar du på Visa avancerat avsnitt för att expandera den, anger om du vill dölja sökvägen till ögonblicksbilden och väljer en ögonblicksbildsprincip i den nedströmsmenyn.  
+    * Om du vill tillämpa en befintlig ögonblicksbildsprincip på volymen klickar du på Visa avancerat avsnitt för att expandera den, anger om du vill dölja sökvägen till ögonblicksbilden och väljer en princip för ögonblicksbilder i den nedströmsmenyn.  
 
         Information om hur du skapar en princip för ögonblicksbilder finns i [Hantera principer för ögonblicksbilder.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
 
         ![Visa avancerat val](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. Klicka **på** Protokoll och fyll i följande information:  
+4. Klicka **på** Protokoll och slutför följande information:  
     * Välj **SMB** som protokolltyp för volymen. 
     * Välj **din Active Directory-anslutning** i listrutan.
     * Ange namnet på den delade volymen i  **Resursnamn**.
@@ -95,7 +95,7 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
         Den här funktionen möjliggör kryptering för SMB3-data under flygning. SMB-klienter som inte använder SMB3-kryptering kan inte komma åt den här volymen.  Vilodata krypteras oavsett den här inställningen.  
         Mer information [finns i Vanliga frågor och svar om SMB-kryptering.](azure-netapp-files-faqs.md#smb-encryption-faqs) 
 
-        Funktionen **SMB3-protokollkryptering** är för närvarande i förhandsversion. Om det här är första gången du använder den här funktionen registrerar du funktionen innan du använder den: 
+        Funktionen **SMB3-protokollkryptering** är för närvarande i förhandsversion. Om det är första gången du använder den här funktionen registrerar du funktionen innan du använder den: 
 
         ```azurepowershell-interactive
         Register-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
@@ -104,7 +104,7 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
         Kontrollera status för funktionsregistreringen: 
 
         > [!NOTE]
-        > **RegistrationState kan** vara i tillståndet `Registering` i upp till 60 minuter innan den ändras till `Registered` . Vänta tills statusen är `Registered` innan du fortsätter.
+        > **RegistrationState kan** vara i tillståndet `Registering` i upp till 60 minuter innan du ändrar till `Registered` . Vänta tills statusen är `Registered` innan du fortsätter.
 
         ```azurepowershell-interactive
         Get-AzProviderFeature -ProviderNamespace Microsoft.NetApp -FeatureName ANFSMBEncryption
@@ -114,9 +114,9 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
     * Om du vill aktivera kontinuerlig tillgänglighet för SMB-volymen väljer du **Aktivera kontinuerlig tillgänglighet.**    
 
         > [!IMPORTANT]   
-        > Funktionen SMB Continuous Availability finns för närvarande i offentlig förhandsversion. Du måste skicka en begäran om väntelista för att få åtkomst till funktionen via sidan för att **[Azure NetApp Files SMB continuous availability shares public preview waitlist submission page (SMB-kontinuerlig](https://aka.ms/anfsmbcasharespreviewsignup)** tillgänglighetsresurser för offentlig förhandsversion). Vänta på ett officiellt bekräftelsemeddelande från Azure NetApp Files innan du använder funktionen Kontinuerlig tillgänglighet.   
+        > Funktionen kontinuerlig SMB-tillgänglighet är för närvarande i offentlig förhandsversion. Du måste skicka en begäran om väntelista för att få åtkomst till funktionen via sidan för att **[skicka Azure NetApp Files SMB continuous availability shares public preview (SMB-kontinuerlig tillgänglighetsresurser](https://aka.ms/anfsmbcasharespreviewsignup)** för offentlig förhandsversion). Vänta på ett officiellt e-postmeddelande från Azure NetApp Files innan du använder funktionen Kontinuerlig tillgänglighet.   
         > 
-        > Du bör endast aktivera kontinuerlig tillgänglighet för SQL-arbetsbelastningar. Användning av SMB-kontinuerliga tillgänglighetsresurser för andra arbetsbelastningar än SQL Server *stöds* inte. Den här funktionen stöds för närvarande i Windows SQL Server. Linux SQL Server stöds inte för närvarande. Om du använder ett icke-administratörskonto (domän) för att SQL Server måste du se till att kontot har den säkerhetsbehörighet som krävs tilldelad. Om domänkontot inte har den säkerhetsbehörighet som krävs ( ) och behörigheten inte kan anges på domännivå kan du ge kontot behörighet genom att använda fältet Säkerhetsbehörighetsanvändare i `SeSecurityPrivilege` Active Directory-anslutningar.  Se [Skapa en Active Directory-anslutning.](create-active-directory-connections.md#create-an-active-directory-connection)
+        > Du bör endast aktivera kontinuerlig tillgänglighet för SQL Server och [FsLogix-användarprofilcontainrar.](../virtual-desktop/create-fslogix-profile-container.md) Användning av SMB-kontinuerliga tillgänglighetsresurser för andra arbetsbelastningar än SQL Server och FsLogix-användarprofilcontainrar *stöds* inte. Den här funktionen stöds för närvarande i Windows SQL Server. Linux SQL Server stöds inte för närvarande. Om du använder ett icke-administratörskonto (domän) för att SQL Server måste du se till att kontot har den säkerhetsbehörighet som krävs. Om domänkontot inte har den säkerhetsbehörighet som krävs ( ), och behörigheten inte kan anges på domännivå, kan du bevilja kontot behörigheten med hjälp av fältet Säkerhetsprivilegier i `SeSecurityPrivilege` Active Directory-anslutningar.  Se [Skapa en Active Directory-anslutning.](create-active-directory-connections.md#create-an-active-directory-connection)
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 
@@ -144,13 +144,13 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
  
     En volym ärver prenumeration, resursgrupp och platsattribut från kapacitetspoolen. Du kan övervaka volymdistributionsstatusen via fliken Meddelanden.
 
-## <a name="control-access-to-an-smb-volume"></a>Kontrollera åtkomsten till en SMB-volym  
+## <a name="control-access-to-an-smb-volume"></a>Kontrollera åtkomst till en SMB-volym  
 
 Åtkomst till en SMB-volym hanteras via behörigheter.  
 
 ### <a name="share-permissions"></a>Dela behörigheter  
 
-Som standard har en ny volym **delningsbehörigheterna Alla/Fullständig** behörighet. Medlemmar i gruppen Domänadministratörer kan ändra resursbehörigheterna på följande sätt:  
+Som standard har en ny volym **resursbehörigheterna Alla/Fullständig** behörighet. Medlemmar i gruppen Domänadministratörer kan ändra resursbehörigheterna på följande sätt:  
 
 1. Mappa resursen till en enhet.  
 2. Högerklicka på enheten, välj **Egenskaper** och gå sedan till **fliken** Säkerhet.
@@ -159,7 +159,7 @@ Som standard har en ny volym **delningsbehörigheterna Alla/Fullständig** behö
 
 ### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fil- och mappbehörigheter  
 
-Du kan ange behörigheter för en fil eller mapp med hjälp **av** fliken Säkerhet i objektets egenskaper i Windows SMB-klienten.
+Du kan ange behörigheter för en  fil eller mapp med hjälp av fliken Säkerhet i objektets egenskaper i Windows SMB-klienten.
  
 ![Ange fil- och mappbehörigheter](../media/azure-netapp-files/set-file-folder-permissions.png) 
 

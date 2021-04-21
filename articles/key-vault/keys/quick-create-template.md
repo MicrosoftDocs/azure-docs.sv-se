@@ -1,6 +1,6 @@
 ---
-title: Azure snabb start – skapa ett Azure Key Vault och en nyckel med hjälp av Azure Resource Manager mall | Microsoft Docs
-description: Snabb start visar hur du skapar Azure Key Vault och lägger till nyckel till valven med hjälp av Azure Resource Manager mall (ARM-mall).
+title: Azure snabbstart – Skapa ett Azure-nyckelvalv och en nyckel med hjälp Azure Resource Manager en | Microsoft Docs
+description: Snabbstart som visar hur du skapar Azure-nyckelvalv och lägger till en nyckel i valven med hjälp Azure Resource Manager (ARM-mall).
 services: key-vault
 author: sebansal
 tags: azure-resource-manager
@@ -10,29 +10,29 @@ ms.topic: quickstart
 ms.custom: mvc,subject-armqs
 ms.date: 10/14/2020
 ms.author: sebansal
-ms.openlocfilehash: 48686fb78dc4295da3bd390d92ae3837cd09a4d0
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 048482c6b52d3fd9225224bd3b4ff3ee66bf24fd
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105639428"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815368"
 ---
-# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Snabb start: skapa ett Azure Key Vault och en nyckel med hjälp av ARM-mall 
+# <a name="quickstart-create-an-azure-key-vault-and-a-key-by-using-arm-template"></a>Snabbstart: Skapa ett Azure-nyckelvalv och en nyckel med hjälp av ARM-mall 
 
-[Azure Key Vault](../general/overview.md) är en moln tjänst som ger en säker lagring för hemligheter, till exempel nycklar, lösen ord, certifikat och andra hemligheter. Den här snabb starten fokuserar på processen att distribuera en Azure Resource Manager-mall (ARM-mall) för att skapa ett nyckel valv och en nyckel.
+[Azure Key Vault](../general/overview.md) är en molntjänst som tillhandahåller ett säkert lager för hemligheter, till exempel nycklar, lösenord, certifikat och andra hemligheter. Den här snabbstarten fokuserar på processen att distribuera en Azure Resource Manager (ARM-mall) för att skapa ett nyckelvalv och en nyckel.
 
 > [!NOTE]
 > Den här funktionen är inte tillgänglig för Azure Government.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra den här artikeln:
+Så här slutför du den här artikeln:
 
 - Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- Användaren måste ha en inbyggd Azure-roll som tilldelats t. ex. arbeta. [Läs mer här](../../role-based-access-control/role-assignments-portal.md)
+- Användaren måste ha en inbyggd Azure-roll tilldelad, t.ex. Bidragsgivare. [Läs mer här](../../role-based-access-control/role-assignments-portal.md)
 - Mallen behöver ditt användarobjekts-ID för Azure AD för att konfigurera behörigheter. Följande procedur hämtar objekt-ID:t (GUID).
 
-    1. Kör följande Azure PowerShell-eller Azure CLI-kommando genom att välja **testa** och klistra in skriptet i rutan Shell. Om du vill klistra in skriptet högerklickar du på gränssnittet och väljer **Klistra in**.
+    1. Kör följande kommando Azure PowerShell Azure CLI genom att välja **Prova** och klistra sedan in skriptet i gränssnittsfönstret. Klistra in skriptet genom att högerklicka på gränssnittet och sedan välja Klistra **in.**
 
         # <a name="cli"></a>[CLI](#tab/CLI)
         ```azurecli-interactive
@@ -51,7 +51,7 @@ För att slutföra den här artikeln:
 
         ---
 
-    1. Anteckna objekt-ID:t. Du behöver det i nästa avsnitt i den här snabb starten.
+    1. Anteckna objekt-ID:t. Du behöver den i nästa avsnitt i den här snabbstarten.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -162,17 +162,17 @@ För att slutföra den här artikeln:
 
 Två resurser definieras i mallen:
 
-- [Microsoft. nyckel valv/-valv](/azure/templates/microsoft.keyvault/vaults)
-- Microsoft. nyckel valv/valv/nycklar
+- [Microsoft.KeyVault/vaults](/azure/templates/microsoft.keyvault/vaults)
+- Microsoft.KeyVault/vaults/keys
 
-Fler Azure Key Vault mal sampel finns i [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular).
+Fler Azure Key Vault finns i [Azure-snabbstartsmallar.](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Keyvault&pageNumber=1&sort=Popular)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
-Du kan använda [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal), Azure PowerShell, Azure CLI eller REST API. Mer information om distributions metoder finns i [distribuera mallar](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell).
+Du kan använda [Azure Portal,](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal)Azure PowerShell, Azure CLI eller REST API. Mer information om distributionsmetoder finns i [Distribuera mallar.](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-Du kan antingen använda Azure Portal för att kontrol lera nyckel valvet och nyckeln, eller använda följande Azure CLI-eller Azure PowerShell skript för att visa en lista över nyckeln som skapats.
+Du kan antingen använda Azure Portal för att kontrollera nyckelvalvet och nyckeln, eller använda följande Azure CLI eller Azure PowerShell för att lista nyckeln som skapats.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -196,7 +196,7 @@ Write-Host "Press [ENTER] to continue..."
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 Andra snabbstarter och självstudier om Key Vault bygger på den här snabbstarten. Om du planerar att fortsätta med efterföljande snabbstarter och självstudier kan du lämna kvar de här resurserna.
-När du inte behöver resursgruppen längre så tar du bort den. Då tas även nyckelvalvet och relaterade resurser bort. Ta bort resurs gruppen med hjälp av Azure CLI eller Azure PowerShell:
+När du inte behöver resursgruppen längre så tar du bort den. Då tas även nyckelvalvet och relaterade resurser bort. Så här tar du bort resursgruppen med hjälp av Azure CLI eller Azure PowerShell:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -219,8 +219,8 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett nyckel valv och en nyckel med en ARM-mall och validerade distributionen. Om du vill veta mer om Key Vault och Azure Resource Manager fortsätter du till artiklarna nedan.
+I den här snabbstarten skapade du ett nyckelvalv och en nyckel med hjälp av en ARM-mall och verifierade distributionen. Mer information om Key Vault och Azure Resource Manager finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Läs mer om [Azure Resource Manager](../../azure-resource-manager/management/overview.md)
-- Granska [Key Vault säkerhets översikt](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

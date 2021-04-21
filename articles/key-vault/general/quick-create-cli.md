@@ -1,6 +1,6 @@
 ---
-title: Snabb start – skapa en Azure Key Vault med Azure CLI
-description: Snabb start visar hur du skapar en Azure Key Vault med hjälp av Azure CLI
+title: Snabbstart – Skapa en Azure Key Vault med Azure CLI
+description: Snabbstart som visar hur du skapar en Azure Key Vault med hjälp av Azure CLI
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,22 +9,22 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f7f6f5d82c5fda7101e80ddcb8b17dc6bdef6532
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 588bee2922ee44f3f89b5d252b5b4a6991d26b82
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070293"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815134"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Snabb start: skapa ett nyckel valv med Azure CLI
+# <a name="quickstart-create-a-key-vault-using-the-azure-cli"></a>Snabbstart: Skapa ett nyckelvalv med hjälp av Azure CLI
 
-Azure Key Vault är en moln tjänst som tillhandahåller en säker lagring för [nycklar](../keys/index.yml), [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [About Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckel valv finns i [om nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md).
+Azure Key Vault är en molntjänst som tillhandahåller ett säkert arkiv [för nycklar,](../keys/index.yml) [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [Om Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckelvalv finns [i Om nycklar, hemligheter och certifikat.](about-keys-secrets-certificates.md)
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - Den här snabb starten kräver version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här snabbstarten kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -40,9 +40,9 @@ Azure Key Vault är en moln tjänst som tillhandahåller en säker lagring för 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Key Vault och tog bort den. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten skapade du Key Vault och tog bort den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](overview.md)
-- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
-- Se referensen för [kommandon för Azure CLI-AZ](/cli/azure/keyvault)
+- Läs en [översikt över Azure Key Vault](overview.md)
+- Granska Azure Key Vault [säkerhetsöversikten](security-features.md)
+- Se referensen för [Azure CLI az keyvault-kommandon](/cli/azure/keyvault)
 

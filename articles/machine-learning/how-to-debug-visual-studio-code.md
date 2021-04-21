@@ -1,7 +1,7 @@
 ---
-title: Interaktiv fel sökning med Visual Studio Code
+title: Interaktiv felsökning med Visual Studio Code
 titleSuffix: Azure Machine Learning
-description: Felsöka Azure Machine Learning kod, pipelines och distributioner interaktivt med Visual Studio Code
+description: Felsöka Azure Machine Learning kod, pipelines och distributioner interaktivt med hjälp Visual Studio Code
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,116 +9,116 @@ ms.topic: conceptual
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 09/30/2020
-ms.openlocfilehash: 783b5afdaef369582614cde3525f7968fdb5e567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 69a69afedbd86871987a8e62b55dfc070121cc78
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102508647"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107813874"
 ---
-# <a name="interactive-debugging-with-visual-studio-code"></a>Interaktiv fel sökning med Visual Studio Code
+# <a name="interactive-debugging-with-visual-studio-code"></a>Interaktiv felsökning med Visual Studio Code
 
 
 
-Lär dig att interaktivt felsöka Azure Machine Learning experiment, pipelines och distributioner med Visual Studio Code (VS Code) och [debugpy](https://github.com/microsoft/debugpy/).
+Lär dig hur du interaktivt felsöker Azure Machine Learning, pipelines och distributioner med hjälp Visual Studio Code (VS Code) [och debugpy](https://github.com/microsoft/debugpy/).
 
-## <a name="run-and-debug-experiments-locally"></a>Kör och Felsök experiment lokalt
+## <a name="run-and-debug-experiments-locally"></a>Köra och felsöka experiment lokalt
 
-Använd Azure Machine Learning-tillägget för att verifiera, köra och felsöka Machine Learning-experiment innan du skickar dem till molnet.
+Använd Azure Machine Learning för att verifiera, köra och felsöka dina maskininlärningsexperiment innan du skickar dem till molnet.
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-* Azure Machine Learning VS Code Extension (för hands version). Mer information finns i [konfigurera Azure Machine Learning vs Code Extension](tutorial-setup-vscode-extension.md).
+* Azure Machine Learning VS Code-tillägg (förhandsversion). Mer information finns i [Konfigurera Azure Machine Learning VS Code-tillägget](tutorial-setup-vscode-extension.md).
 * [Docker](https://www.docker.com/get-started)
   * Docker Desktop för Mac och Windows
-  * Docker-motor för Linux.
+  * Docker Engine för Linux.
 * [Python 3](https://www.python.org/downloads/)
 
 > [!NOTE]
-> I Windows, se till att [Konfigurera Docker att använda Linux-behållare](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers).
+> Se till att konfigurera [Docker för att använda Linux-containrar i Windows.](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)
 
 > [!TIP]
-> För Windows, även om det inte krävs, rekommenderar vi starkt att du [använder Docker med Windows-undersystem för Linux (Wsl) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
+> För Windows, även om det inte krävs, rekommenderar vi starkt att du använder [Docker med Windows-undersystem för Linux (WSL) 2](/windows/wsl/tutorials/wsl-containers#install-docker-desktop).
 
 > [!IMPORTANT]
-> Innan du kör ditt experiment lokalt ska du kontrol lera att Docker körs.
+> Kontrollera att Docker körs innan du kör experimentet lokalt.
 
-### <a name="debug-experiment-locally"></a>Felsök experiment lokalt
+### <a name="debug-experiment-locally"></a>Felsöka experiment lokalt
 
-1. I VS Code öppnar du vyn Azure Machine Learning tillägg.
-1. Expandera noden prenumeration som innehåller din arbets yta. Om du inte redan har en, kan du [skapa en Azure Machine Learning-arbetsyta](how-to-manage-resources-vscode.md#create-a-workspace) med hjälp av tillägget.
-1. Expandera noden arbets yta.
-1. Högerklicka på noden **experiment** och välj **Skapa experiment**. När meddelandet visas anger du ett namn på experimentet.
-1. Expandera noden **experiment** , högerklicka på det experiment som du vill köra och välj **Kör experiment**.
-1. I listan med alternativ för att köra experimentet väljer du **lokalt**.
-1. **Första gången används endast i Windows**. När du uppmanas att tillåta fil resurs väljer du **Ja**. När du aktiverar fil resurs tillåter Docker Docker att montera katalogen som innehåller ditt skript till behållaren. Dessutom tillåter det också Docker att lagra loggar och utdata från din körning i en tillfällig katalog i systemet.
-1. Välj **Ja** om du vill felsöka experimentet. Annars väljer du **Nej**. Om du väljer Nej körs ditt experiment lokalt utan att du ansluter till fel söknings programmet.
-1. Välj **Skapa ny körnings konfiguration** för att skapa din körnings konfiguration. Körnings konfigurationen definierar det skript som du vill köra, beroenden och data uppsättningar som används. Alternativt, om du redan har en, väljer du den i list rutan.
-    1. Välj din miljö. Du kan välja någon av de [Azure Machine Learning som granskats](resource-curated-environments.md) eller skapa en egen.
-    1. Ange namnet på skriptet som du vill köra. Sökvägen är relativ i förhållande till den katalog som öppnats i VS Code.
-    1. Välj om du vill använda en Azure Machine Learning data uppsättning eller inte. Du kan skapa [Azure Machine Learning data uppsättningar](how-to-manage-resources-vscode.md#create-dataset) med hjälp av tillägget.
-    1. Debugpy krävs för att du ska kunna koppla fel sökaren till behållaren och köra experimentet. Om du vill lägga till debugpy som ett beroende väljer du **Lägg till debugpy**. Annars väljer du **hoppa över**. Om du inte lägger till debugpy som ett beroende körs experimentet utan att kopplas till fel söknings programmet.
-    1. En konfigurations fil som innehåller dina konfigurations inställningar för körning öppnas i redigeraren. Om du är nöjd med inställningarna väljer du **Skicka experiment**. Du kan också öppna kommando paletten (**visa > kommando paletten**) från meny raden och ange `Azure ML: Submit experiment` kommandot i text rutan.
-1. När experimentet har skickats skapas en Docker-avbildning som innehåller ditt skript och de konfigurationer som anges i körnings konfigurationen.
+1. I VS Code öppnar du Azure Machine Learning tilläggsvyn.
+1. Expandera prenumerationsnoden som innehåller din arbetsyta. Om du inte redan har en kan du skapa en [Azure Machine Learning med](how-to-manage-resources-vscode.md#create-a-workspace) hjälp av tillägget.
+1. Expandera noden för arbetsytan.
+1. Högerklicka på noden **Experiment** och välj **Skapa experiment**. När frågan visas anger du ett namn för experimentet.
+1. Expandera **noden Experiment,** högerklicka på det experiment som du vill köra och välj **Kör experiment.**
+1. I listan med alternativ för att köra experimentet väljer du **Lokalt.**
+1. **Använd endast första gången på Windows.** När du uppmanas att tillåta filresursen väljer du **Ja.** När du aktiverar filresursen kan Docker montera katalogen som innehåller skriptet i containern. Dessutom kan Docker lagra loggar och utdata från körningen i en tillfällig katalog i systemet.
+1. Välj **Ja** för att felsöka experimentet. Annars väljer du **Nej**. Om du väljer Nej körs experimentet lokalt utan att ansluta till felsökningsprogrammet.
+1. Välj **Skapa ny körningskonfiguration** för att skapa körningskonfigurationen. Körningskonfigurationen definierar det skript som du vill köra, beroenden och datauppsättningar som används. Om du redan har en kan du välja den i listrutan.
+    1. Välj din miljö. Du kan välja något av de här [Azure Machine Learning eller](resource-curated-environments.md) skapa en egen.
+    1. Ange namnet på det skript som du vill köra. Sökvägen är relativ till katalogen som öppnades i VS Code.
+    1. Välj om du vill använda en Azure Machine Learning datauppsättning eller inte. Du kan skapa [Azure Machine Learning datauppsättningar med](how-to-manage-resources-vscode.md#create-dataset) hjälp av tillägget .
+    1. Felsökning krävs för att koppla felsökningsprogrammet till containern som kör experimentet. Om du vill lägga till debugpy som ett beroende väljer **du Lägg till debugpy**. Annars väljer du **Hoppa över**. Om du inte lägger till debugpy som ett beroende körs experimentet utan att det ansluts till felsökningsprogrammet.
+    1. En konfigurationsfil som innehåller körningskonfigurationsinställningarna öppnas i redigeraren. Om du är nöjd med inställningarna väljer du **Skicka experiment**. Du kan också öppna kommandopaletten (**Visa > Kommandopalett)** från menyraden och ange `Azure ML: Submit experiment` kommandot i textrutan.
+1. När experimentet har skickats skapas en Docker-avbildning som innehåller skriptet och de konfigurationer som anges i körningskonfigurationen.
 
-    När Bygg processen för Docker-avbildningen börjar börjar innehållet i `60_control_log.txt` fil data strömmen till konsolen utdata i vs Code.
+    När Docker-avbildningsbyggprocessen börjar strömmas innehållet `60_control_log.txt` i filströmmen till utdatakonsolen i VS Code.
 
     > [!NOTE]
-    > Första gången som Docker-avbildningen skapas kan ta flera minuter.
+    > Första gången Docker-avbildningen skapas kan det ta flera minuter.
 
-1. När avbildningen har skapats visas ett meddelande om att starta fel söknings programmet. Ställ in dina Bryt punkter i skriptet och välj **Starta fel sökning** när du är redo att starta fel sökningen. Detta kopplar VS Code-felsökaren till behållaren som kör experimentet. Du kan också hovra över noden för din aktuella körning i Azure Machine Learning-tillägget och välja ikonen spela upp för att starta fel söknings programmet.
+1. När avbildningen har skapats visas en uppmaning om att starta felsökningsprogrammet. Ange brytpunkter i skriptet och välj **Starta felsökning** när du är redo att börja felsöka. Då kopplas VS Code-felsökaren till containern som kör experimentet. Du kan också hovra Azure Machine Learning över noden för den aktuella körningen i Azure Machine Learning och välja uppspelningsikonen för att starta felsökningsprogrammet.
 
     > [!IMPORTANT]
-    > Du kan inte ha flera debug-sessioner för ett enda experiment. Du kan dock felsöka två eller fler experiment med flera VS Code-instanser.
+    > Du kan inte ha flera felsökningssessioner för ett enda experiment. Du kan dock felsöka två eller flera experiment med hjälp av flera VS Code-instanser.
 
-Nu bör du kunna stega igenom och felsöka koden med VS Code.
+Nu bör du kunna gå igenom och felsöka koden med hjälp av VS Code.
 
-Om du vill avbryta körningen högerklickar du på noden kör och väljer **Avbryt körning**.
+Om du vill avbryta körningen högerklickar du på körningsnoden och väljer **Avbryt körning.**
 
-Precis som fjärrexperiment körs kan du expandera noden kör för att kontrol lera loggar och utdata.
+På liknande sätt som med fjärrexperimentkörningar kan du expandera din körningsnod för att granska loggarna och utdata.
 
 > [!TIP]
-> Docker-avbildningar som använder samma beroenden som definierats i din miljö återanvänds mellan körningar. Men om du kör ett experiment med en ny eller en annan miljö skapas en ny avbildning. Eftersom dessa bilder sparas i din lokala lagring rekommenderas du att ta bort gamla Docker-avbildningar. Om du vill ta bort avbildningar från systemet använder du [Docker-tillägget Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) eller [vs Code Docker](https://code.visualstudio.com/docs/containers/overview).
+> Docker-avbildningar som använder samma beroenden som definierats i din miljö återanvänds mellan körningar. Men om du kör ett experiment med en ny eller annan miljö skapas en ny avbildning. Eftersom dessa avbildningar sparas i din lokala lagring rekommenderar vi att du tar bort gamla eller oanvända Docker-avbildningar. Om du vill ta bort avbildningar från systemet använder [du Docker CLI](https://docs.docker.com/engine/reference/commandline/rmi/) eller [VS Code Docker-tillägget](https://code.visualstudio.com/docs/containers/overview).
 
 ## <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Felsöka pipelines för maskininlärning
 
-I vissa fall kan du behöva interaktivt felsöka python-koden som används i ML-pipeline. Genom att använda VS Code och debugpy kan du ansluta till koden när den körs i tränings miljön.
+I vissa fall kan du behöva felsöka Python-koden som används i ML-pipelinen interaktivt. Genom att använda VS Code och felsökningspy kan du koppla till koden när den körs i träningsmiljön.
 
 ### <a name="prerequisites"></a>Förutsättningar
 
-* En __Azure Machine Learning arbets yta__ som har kon figurer ATS för att använda en __Azure-Virtual Network__.
-* En __Azure Machine Learning pipeline__ som använder Python-skript som en del av stegen i pipelinen. Till exempel en PythonScriptStep.
-* Ett Azure Machine Learning beräknings kluster, som finns __i det virtuella nätverket__ och __används av pipelinen för utbildning__.
-* En __utvecklings miljö__ som finns __i det virtuella nätverket__. Utvecklings miljön kan vara något av följande:
+* En __Azure Machine Learning arbetsyta__ som är konfigurerad för att använda __en Azure-Virtual Network__.
+* En __Azure Machine Learning-pipeline__ som använder Python-skript som en del av pipelinestegen. Till exempel PythonScriptStep.
+* Ett Azure Machine Learning Compute-kluster, som __finns i det virtuella nätverket__ och som används av __pipelinen för träning .__
+* En __utvecklingsmiljö__ som finns __i det virtuella nätverket__. Utvecklingsmiljön kan vara något av följande:
 
   * En virtuell Azure-dator i det virtuella nätverket
-  * En beräknings instans av den virtuella Notebook-datorn i det virtuella nätverket
-  * En klient dator som har privat nätverks anslutning till det virtuella nätverket, antingen via VPN eller via ExpressRoute.
+  * En beräkningsinstans av en virtuell notebook-dator i det virtuella nätverket
+  * En klientdator som har privat nätverksanslutning till det virtuella nätverket, antingen via VPN eller ExpressRoute.
 
-Mer information om hur du använder en Azure-Virtual Network med Azure Machine Learning finns i [Översikt över virtuell nätverks isolering och sekretess](how-to-network-security-overview.md).
+Mer information om hur du använder en Azure Virtual Network med Azure Machine Learning finns i Översikt [över isolering och sekretess för virtuella nätverk.](how-to-network-security-overview.md)
 
 > [!TIP]
-> Även om du kan arbeta med Azure Machine Learning resurser som inte ligger bakom ett virtuellt nätverk rekommenderas du att använda ett virtuellt nätverk.
+> Även om du kan arbeta Azure Machine Learning resurser som inte finns bakom ett virtuellt nätverk rekommenderas det att du använder ett virtuellt nätverk.
 
 ### <a name="how-it-works"></a>Så här fungerar det
 
-Dina steg i ML-pipeline kör Python-skript. Dessa skript ändras för att utföra följande åtgärder:
+Dina ML-pipelinesteg kör Python-skript. De här skripten ändras för att utföra följande åtgärder:
 
-1. Logga IP-adressen för den värd som de körs på. Du använder IP-adressen för att ansluta fel sökaren till skriptet.
+1. Logga IP-adressen för den värd som de körs på. Du använder IP-adressen för att ansluta felsökaren till skriptet.
 
-2. Starta debugpy debug-komponenten och vänta tills en fel sökare ansluter.
+2. Starta felsökningskomponenten debugpy och vänta tills en felsökare ansluter.
 
-3. I utvecklings miljön övervakar du de loggar som skapats av inlärnings processen för att hitta IP-adressen där skriptet körs.
+3. Från utvecklingsmiljön övervakar du loggarna som skapats av träningsprocessen för att hitta IP-adressen där skriptet körs.
 
-4. Du anger VS-kod för IP-adressen för att ansluta fel sökaren till med hjälp av en `launch.json` fil.
+4. Du talar om för VS Code ip-adressen att ansluta felsökaren till med hjälp av en `launch.json` -fil.
 
-5. Du kopplar fel söknings programmet och interaktivt steg genom skriptet.
+5. Du kopplar felsökaren och går interaktivt igenom skriptet.
 
 ### <a name="configure-python-scripts"></a>Konfigurera Python-skript
 
-Om du vill aktivera fel sökning gör du följande ändringar i python-skripten som används av stegen i ML-pipeline:
+Om du vill aktivera felsökning gör du följande ändringar i Python-skripten som används av stegen i ML-pipelinen:
 
-1. Lägg till följande import uttryck:
+1. Lägg till följande importutdrag:
 
     ```python
     import argparse
@@ -128,7 +128,7 @@ Om du vill aktivera fel sökning gör du följande ändringar i python-skripten 
     from azureml.core import Run
     ```
 
-1. Lägg till följande argument. Med de här argumenten kan du aktivera fel söknings programmet vid behov och ange tids gränsen för att koppla fel söknings programmet:
+1. Lägg till följande argument. Med de här argumenten kan du aktivera felsökaren efter behov och ange tidsgränsen för att koppla felsökningsprogrammet:
 
     ```python
     parser.add_argument('--remote_debug', action='store_true')
@@ -143,14 +143,14 @@ Om du vill aktivera fel sökning gör du följande ändringar i python-skripten 
                         help=f'Defines Port of VS Code client')
     ```
 
-1. Lägg till följande-instruktioner. Dessa instruktioner läser in den aktuella körnings kontexten så att du kan logga IP-adressen för noden som koden körs på:
+1. Lägg till följande -instruktioner. De här isatserna läser in den aktuella körningskontexten så att du kan logga IP-adressen för noden som koden körs på:
 
     ```python
     global run
     run = Run.get_context()
     ```
 
-1. Lägg till en `if` instruktion som startar debugpy och väntar på att ett fel söknings program ska bifogas. Om ingen fel sökare bifogas före tids gränsen fortsätter skriptet som normalt. Se till att ersätta `HOST` värdena och `PORT` är `listen` funktionen med dina egna.
+1. Lägg till `if` en -instruktion som startar debugpy och väntar på att ett felsökningsprogrammet ska ansluta. Om inget felsökningsprogrammet kopplas före tidsgränsen fortsätter skriptet som vanligt. Se till att ersätta `HOST` värdena och är funktionen med dina `PORT` `listen` egna.
 
     ```python
     if args.remote_debug:
@@ -167,7 +167,7 @@ Om du vill aktivera fel sökning gör du följande ändringar i python-skripten 
         print(f'Debugger attached = {debugpy.is_client_connected()}')
     ```
 
-Följande python-exempel visar en enkel `train.py` fil som aktiverar fel sökning:
+I följande Python-exempel visas `train.py` en enkel fil som möjliggör felsökning:
 
 ```python
 # Copyright (c) Microsoft. All rights reserved.
@@ -230,7 +230,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>Konfigurera ML-pipeline
 
-Om du vill tillhandahålla python-paket som krävs för att starta debugpy och hämta körnings kontexten skapar du en miljö och anger `pip_packages=['debugpy', 'azureml-sdk==<SDK-VERSION>']` . Ändra SDK-versionen så att den matchar den som du använder. Följande kodfragment visar hur du skapar en miljö:
+Om du vill tillhandahålla de Python-paket som behövs för att starta debugpy och hämta körningskontexten skapar du en miljö och anger `pip_packages=['debugpy', 'azureml-sdk==<SDK-VERSION>']` . Ändra SDK-versionen så att den matchar den som du använder. Följande kodfragment visar hur du skapar en miljö:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -255,7 +255,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['debugpy', 'azureml-sdk==<SDK-VERSION>'])
 ```
 
-I avsnittet [Konfigurera Python-skript](#configure-python-scripts) har nya argument lagts till i de skript som används av dina ml-pipeline-steg. Följande kodfragment visar hur du använder dessa argument för att aktivera fel sökning för komponenten och ange en tids gräns. Den visar också hur du använder miljön som skapats tidigare genom att ställa in `runconfig=run_config` :
+I avsnittet [Konfigurera Python-skript har](#configure-python-scripts) nya argument lagts till i skripten som används av dina ML-pipelinesteg. Följande kodfragment visar hur du använder dessa argument för att aktivera felsökning för komponenten och ange en tidsgräns. Den visar också hur du använder miljön som skapades tidigare genom att ange `runconfig=run_config` :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -268,33 +268,33 @@ step1 = PythonScriptStep(name="train_step",
                          allow_reuse=False)
 ```
 
-När pipelinen körs skapar varje steg en underordnad körning. Om fel sökning är aktiverat loggar det ändrade skriptet information som liknar följande text i `70_driver_log.txt` för den underordnade körningen:
+När pipelinen körs skapar varje steg en underordnad körning. Om felsökning är aktiverat loggar det ändrade skriptet information som liknar följande text i `70_driver_log.txt` för den underordnade körningen:
 
 ```text
 Timeout for debug connection: 300
 ip_address: 10.3.0.5
 ```
 
-Spara `ip_address` värdet. Den används i nästa avsnitt.
+Spara `ip_address` värdet. Det används i nästa avsnitt.
 
 > [!TIP]
-> Du kan också hitta IP-adressen från körnings loggarna för den underordnade körningen för den här pipeline-steget. Mer information om att visa den här informationen finns i [övervaka Azure ml experiment körningar och mått](how-to-track-experiments.md).
+> Du kan också hitta IP-adressen från körningsloggarna för den underordnade körningen för det här pipelinesteget. Mer information om hur du visar den här informationen finns [i Övervaka Azure ML-experimentkörningar och mått.](how-to-log-view-metrics.md)
 
 ### <a name="configure-development-environment"></a>Konfigurera utvecklingsmiljön
 
-1. Om du vill installera debugpy i din VS Code Development-miljö använder du följande kommando:
+1. Om du vill installera debugpy i VS Code-utvecklingsmiljön använder du följande kommando:
 
     ```bash
     python -m pip install --upgrade debugpy
     ```
 
-    Mer information om hur du använder debugpy med VS Code finns i [fjärrfelsökning](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection).
+    Mer information om hur du använder felsökning med VS Code finns i [Fjärrfelsökning.](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection)
 
-1. Om du vill konfigurera VS-kod för att kommunicera med Azure Machine Learning beräkning som kör fel söknings programmet, skapar du en ny fel söknings konfiguration:
+1. Skapa en ny felsökningskonfiguration för att konfigurera VS Code Azure Machine Learning med den beräkning som kör felsökningsprogrammet:
 
-    1. Från VS Code väljer du __Felsök__ -menyn och väljer sedan __Öppna konfigurationer__. En fil med namnet __launch.jspå__ öppnas.
+    1. I VS Code väljer du __menyn Felsök__ och sedan __Öppna konfigurationer.__ En fil __medlaunch.jspå__ öppnas.
 
-    1. Leta upp raden som innehåller i __launch.jspå__ filen `"configurations": [` och infoga följande text. Ändra `"host": "<IP-ADDRESS>"` posten till den IP-adress som returnerades i loggarna från föregående avsnitt. Ändra `"localRoot": "${workspaceFolder}/code/step"` posten till en lokal katalog som innehåller en kopia av skriptet som felsöks:
+    1. Leta reda __launch.js__ rad som innehåller i filen och `"configurations": [` infoga följande text efter den. Ändra posten `"host": "<IP-ADDRESS>"` till den IP-adress som returnerades i loggarna från föregående avsnitt. Ändra posten `"localRoot": "${workspaceFolder}/code/step"` till en lokal katalog som innehåller en kopia av skriptet som felsöks:
 
         ```json
         {
@@ -314,50 +314,50 @@ Spara `ip_address` värdet. Den används i nästa avsnitt.
         ```
 
         > [!IMPORTANT]
-        > Om det redan finns andra poster i avsnittet konfigurationer lägger du till ett kommatecken (,) efter den kod som du har infogat.
+        > Om det redan finns andra poster i konfigurationsavsnittet lägger du till ett kommatecken (,) efter den kod som du infogade.
 
         > [!TIP]
-        > Den bästa metoden, särskilt för pipelines är att hålla resurserna för skript i separata kataloger så att koden endast är relevant för vart och ett av stegen. I det här exemplet `localRoot` refererar exempel till värdet `/code/step1` .
+        > Det bästa sättet, särskilt för pipelines, är att behålla resurserna för skript i separata kataloger så att koden endast är relevant för varje steg. I det här exemplet `localRoot` refererar exempelvärdet till `/code/step1` .
         >
-        > Om du felsöker flera skript i olika kataloger skapar du ett separat konfigurations avsnitt för varje skript.
+        > Om du felsöker flera skript i olika kataloger skapar du ett separat konfigurationsavsnitt för varje skript.
 
-    1. Spara __launch.jspå__ filen.
+    1. Spara __launch.jsfilen.__
 
-### <a name="connect-the-debugger"></a>Anslut fel söknings programmet
+### <a name="connect-the-debugger"></a>Ansluta felsökningsprogrammet
 
 1. Öppna VS Code och öppna en lokal kopia av skriptet.
-2. Ange Bryt punkter där du vill att skriptet ska stoppa när du har kopplat.
-3. Medan den underordnade processen kör skriptet och `Timeout for debug connection` visas i loggarna använder du F5-tangenten eller väljer __Felsök__. När du uppmanas väljer du __Azure Machine Learning Compute: konfiguration av fjärrfelsökning__ . Du kan också välja fel söknings ikonen från sido fältet, __Azure Machine Learning: fjärrfelsöknings__ post i list rutan Felsök och Använd sedan den gröna pilen för att koppla fel sökaren.
+2. Ange brytpunkter där du vill att skriptet ska stoppas när du har kopplat det.
+3. När den underordnade processen kör skriptet och visas i loggarna använder du `Timeout for debug connection` tangenten F5 eller väljer __Felsök.__ När du uppmanas väljer du __Azure Machine Learning Compute: fjärrfelsökningskonfiguration.__ Du kan också välja felsökningsikonen i sidofältet, __Azure Machine Learning:__ fjärrfelsökningsposten från listrutan Felsök och sedan använda den gröna pilen för att koppla felsökaren.
 
-    Vid det här tillfället ansluter VS Code till debugpy på Compute-noden och stoppas vid den Bryt punkt som du har angett tidigare. Nu kan du gå igenom koden när den körs, Visa variabler osv.
+    I det här läget ansluter VS Code till felsökningspyen på beräkningsnoden och stoppas vid den brytpunkt som du konfigurerade tidigare. Nu kan du stega igenom koden när den körs, visa variabler osv.
 
     > [!NOTE]
-    > Om loggen visar att en uppgift visas `Debugger attached = False` har tids gränsen gått ut och skriptet fortsatte utan fel sökning. Skicka pipelinen igen och Anslut fel söknings programmet efter `Timeout for debug connection` meddelandet och innan tids gränsen upphör att gälla.
+    > Om loggen visar en post som anger har tidsgränsen gått ut och `Debugger attached = False` skriptet har fortsatt utan felsökningsprogrammet. Skicka pipelinen igen och anslut felsökaren efter `Timeout for debug connection` meddelandet och innan tidsgränsen går ut.
 
-## <a name="debug-and-troubleshoot-deployments"></a>Felsöka och felsöka distributioner
+## <a name="debug-and-troubleshoot-deployments"></a>Felsöka distributioner
 
-I vissa fall kan du behöva interaktivt felsöka python-koden som finns i modell distributionen. Om Entry-skriptet till exempel inte fungerar och orsaken inte kan fastställas av ytterligare loggning. Genom att använda VS Code och debugpy kan du koppla till koden som körs i Docker-behållaren.
+I vissa fall kan du behöva felsöka Python-koden interaktivt i modelldistributionen. Om till exempel inmatningsskriptet misslyckas och orsaken inte kan fastställas av ytterligare loggning. Genom att använda VS Code och felsökningspyen kan du ansluta till koden som körs i Docker-containern.
 
 > [!IMPORTANT]
-> Den här fel söknings metoden fungerar inte när du använder `Model.deploy()` och `LocalWebservice.deploy_configuration` för att distribuera en modell lokalt. I stället måste du skapa en avbildning med metoden [Model. Package ()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-) .
+> Den här felsökningsmetoden fungerar inte när du använder och `Model.deploy()` `LocalWebservice.deploy_configuration` distribuerar en modell lokalt. I stället måste du skapa en avbildning med [hjälp av metoden Model.package().](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-)
 
-Lokal distribution av webb tjänster kräver en fungerande Docker-installation på det lokala systemet. Mer information om hur du använder Docker finns i [Docker-dokumentationen](https://docs.docker.com/). Observera att när du arbetar med beräknings instanser är Docker redan installerat.
+Distribution av lokala webbtjänster kräver en fungerande Docker-installation i det lokala systemet. Mer information om hur du använder Docker finns i [Docker-dokumentationen.](https://docs.docker.com/) Observera att docker redan är installerat när du arbetar med beräkningsinstanser.
 
 ### <a name="configure-development-environment"></a>Konfigurera utvecklingsmiljön
 
-1. Om du vill installera debugpy i din lokala VS-kod utvecklings miljö använder du följande kommando:
+1. Om du vill installera debugpy i din lokala VS Code-utvecklingsmiljö använder du följande kommando:
 
     ```bash
     python -m pip install --upgrade debugpy
     ```
 
-    Mer information om hur du använder debugpy med VS Code finns i [fjärrfelsökning](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection).
+    Mer information om hur du använder felsökning med VS Code finns [i Fjärrfelsökning.](https://code.visualstudio.com/docs/python/debugging#_debugging-by-attaching-over-a-network-connection)
 
-1. Om du vill konfigurera VS-kod för att kommunicera med Docker-avbildningen skapar du en ny fel söknings konfiguration:
+1. Om du vill konfigurera VS Code för att kommunicera med Docker-avbildningen skapar du en ny felsökningskonfiguration:
 
-    1. Från VS Code väljer du __fel söknings__ menyn i __körnings__ omfattningen och väljer sedan __Öppna konfigurationer__. En fil med namnet __launch.jspå__ öppnas.
+    1. Från VS Code väljer du __menyn Felsök__ i __kör-utökningen__ och väljer __sedan Öppna konfigurationer.__ En fil __medlaunch.jspå__ öppnas.
 
-    1. Leta upp objektet __"konfigurationer"__ (den rad som innehåller) i __launch.jspå__ filen `"configurations": [` och infoga följande text. 
+    1. Leta reda __launch.js__ __"konfigurationer"__ (raden som innehåller ) i filen och `"configurations": [` infoga följande text efter det. 
 
         ```json
         {
@@ -376,7 +376,7 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
             ]
         }
         ```
-        Efter infogningen bör __launch.jspå__ filen likna följande:
+        Efter __infogning börlaunch.js__ på filen se ut ungefär så här:
         ```json
         {
         // Use IntelliSense to learn about possible attributes.
@@ -411,15 +411,15 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
         ```
 
         > [!IMPORTANT]
-        > Om det redan finns andra poster i avsnittet konfigurationer lägger du till ett kommatecken ( __,__ ) efter den kod som du har infogat.
+        > Om det redan finns andra poster i konfigurationsavsnittet lägger du till ett kommatecken ( __,__ ) efter koden som du infogade.
 
-        Det här avsnittet bifogar Docker-behållaren med port __5678__.
+        Det här avsnittet ansluter till Docker-containern med port __5678__.
 
-    1. Spara __launch.jspå__ filen.
+    1. Spara __launch.jsfilen.__
 
-### <a name="create-an-image-that-includes-debugpy"></a>Skapa en avbildning som innehåller debugpy
+### <a name="create-an-image-that-includes-debugpy"></a>Skapa en avbildning som innehåller felsökning
 
-1. Ändra Conda-miljön för distributionen så att den innehåller debugpy. I följande exempel visas hur du lägger till den med hjälp av `pip_packages` parametern:
+1. Ändra conda-miljön för distributionen så att den innehåller felsökning. I följande exempel visas hur du lägger till den med `pip_packages` parametern :
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
@@ -435,7 +435,7 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
         f.write(myenv.serialize_to_string())
     ```
 
-1. Om du vill starta debugpy och vänta en anslutning när tjänsten startas lägger du till följande längst upp i `score.py` filen:
+1. Om du vill starta debugpy och vänta på en anslutning när tjänsten startar lägger du till följande överst i `score.py` filen:
 
     ```python
     import debugpy
@@ -446,10 +446,10 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
     print("Debugger attached...")
     ```
 
-1. Skapa en avbildning baserat på miljö definitionen och hämta avbildningen till det lokala registret. 
+1. Skapa en avbildning baserat på miljödefinitionen och hämta avbildningen till det lokala registret. 
 
     > [!NOTE]
-    > I det här exemplet förutsätts att `ws` du pekar på din Azure Machine Learning arbets yta och det `model` är modellen som distribueras. `myenv.yml`Filen innehåller de Conda-beroenden som skapades i steg 1.
+    > Det här exemplet `ws` förutsätter att pekar på Azure Machine Learning arbetsyta och `model` det är den modell som distribueras. Filen `myenv.yml` innehåller conda-beroendena som skapades i steg 1.
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies
@@ -466,67 +466,67 @@ Lokal distribution av webb tjänster kräver en fungerande Docker-installation p
     package.pull()
     ```
 
-    När avbildningen har skapats och hämtats (den här processen kan ta mer än 10 minuter, så vänta på patient), visas avbildnings Sök vägen (inklusive lagrings plats, namn och tagg, som i det här fallet också dess sammandrag) i ett meddelande som liknar följande:
+    När avbildningen har skapats och laddats ned (den här processen kan ta mer än 10 minuter, så vänta lite), visas avbildningssökvägen (inklusive lagringsplats, namn och tagg, som i det här fallet även är dess sammanfattning) slutligen i ett meddelande som liknar följande:
 
     ```text
     Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. För att göra det enklare att arbeta med avbildningen lokalt kan du använda följande kommando för att lägga till en tagg för avbildningen. Ersätt `myimagepath` i följande kommando med värdet location från föregående steg.
+1. Om du vill göra det enklare att arbeta med avbildningen lokalt kan du använda följande kommando för att lägga till en tagg för avbildningen. Ersätt `myimagepath` i följande kommando med platsvärdet från föregående steg.
 
     ```bash
     docker tag myimagepath debug:1
     ```
 
-    För resten av stegen kan du referera till den lokala avbildningen som `debug:1` i stället för värdet för fullständig avbildnings Sök väg.
+    För resten av stegen kan du referera till den lokala avbildningen som i `debug:1` stället för värdet för den fullständiga avbildningssökvägen.
 
 ### <a name="debug-the-service"></a>Felsöka tjänsten
 
 > [!TIP]
-> Om du anger en tids gräns för debugpy-anslutningen i `score.py` filen måste du ansluta vs-kod till felsökningssessionen innan tids gränsen upphör att gälla. Starta VS Code, öppna den lokala kopian av `score.py` , ange en Bryt punkt och låt den vara klar innan du använder stegen i det här avsnittet.
+> Om du anger en tidsgräns för felsökningsanslutningen i filen måste du ansluta VS Code till felsökningssessionen innan `score.py` tidsgränsen går ut. Starta VS Code, öppna den lokala kopian av , ange en brytpunkt och gör den redo att gå innan du `score.py` använder stegen i det här avsnittet.
 >
-> Mer information om fel sökning och inställning av Bryt punkter finns i [fel sökning](https://code.visualstudio.com/Docs/editor/debugging).
+> Mer information om felsökning och inställning av brytpunkter finns [i Felsöka](https://code.visualstudio.com/Docs/editor/debugging).
 
-1. Om du vill starta en Docker-behållare med hjälp av avbildningen använder du följande kommando:
+1. Om du vill starta en Docker-container med avbildningen använder du följande kommando:
 
     ```bash
     docker run -it --name debug -p 8000:5001 -p 5678:5678 -v <my_local_path_to_score.py>:/var/azureml-app/score.py debug:1 /bin/bash
     ```
 
-    Detta kopplar ditt `score.py` lokala namn till den i behållaren. Därför avspeglas alla ändringar som görs i redigeraren automatiskt i behållaren
+    Detta kopplar `score.py` din lokalt till den i containern. Därför återspeglas alla ändringar som görs i redigeraren automatiskt i containern
 
-2. För en bättre upplevelse kan du gå till behållaren med ett nytt VS Code-gränssnitt. Välj en `Docker` omfattning från vs Code-sido fältet, leta upp din lokala behållare i den här dokumentationen `debug:1` . Högerklicka på den här behållaren och välj `"Attach Visual Studio Code"` , så öppnas ett nytt vs Code-gränssnitt automatiskt och det här gränssnittet visar inifrån den skapade behållaren.
+2. För en bättre upplevelse kan du gå till containern med ett nytt VS-kodgränssnitt. Välj `Docker` utökningen från VS Code-sidofältet, leta reda på den lokala container som skapats. I den här dokumentationen är det `debug:1` . Högerklicka på den här containern och välj , så öppnas ett nytt VS Code-gränssnitt automatiskt och det här gränssnittet visar `"Attach Visual Studio Code"` inuti den skapade containern.
 
-    ![Gränssnittet för container VS-kod](./media/how-to-troubleshoot-deployment/container-interface.png)
+    ![VS Code-gränssnittet för containern](./media/how-to-troubleshoot-deployment/container-interface.png)
 
-3. I behållaren kör du följande kommando i gränssnittet
+3. I containern kör du följande kommando i gränssnittet
 
     ```bash
     runsvdir /var/runit
     ```
-    Sedan kan du se följande utdata i gränssnittet i din behållare:
+    Sedan kan du se följande utdata i gränssnittet i containern:
 
-    ![Utdata för kör konsolen för container](./media/how-to-troubleshoot-deployment/container-run.png)
+    ![Utdata från containerkörningskonsolen](./media/how-to-troubleshoot-deployment/container-run.png)
 
-4. Om du vill bifoga VS Code till debugpy i behållaren öppnar du VS Code och använder F5-tangenten eller väljer __Felsök__. När du uppmanas väljer du __Azure Machine Learning distribution: Docker-felsöknings__ konfiguration. Du kan också välja ikonen __Kör__ omfattning från sido rutan, __Azure Machine Learning distribution: Docker-felsöknings__ post från List rutan Felsök och Använd sedan den gröna pilen för att koppla fel sökaren.
+4. Om du vill koppla VS Code till felsökningspyen i containern öppnar du VS Code och använder F5-nyckeln eller väljer __Felsök.__ När du uppmanas väljer du __Azure Machine Learning Distribution: Docker Debug configuration (Docker-felsökningskonfiguration).__ Du kan också  välja körningsutökningsikonen i sidofältet, __posten Azure Machine Learning Deployment: Docker Debug (Azure Machine Learning Distribution: Docker Debug)__ i listrutan Felsök och sedan använda den gröna pilen för att koppla felsökaren.
 
-    ![Fel söknings ikonen, starta fel söknings knappen och konfigurations väljaren](./media/how-to-troubleshoot-deployment/start-debugging.png)
+    ![Felsökningsikonen, knappen Starta felsökning och konfigurationsväljaren](./media/how-to-troubleshoot-deployment/start-debugging.png)
     
-    När du har klickat på den gröna pilen och kopplat fel söknings programmet kan du se viss ny information i gränssnittet för behållare VS-kod:
+    När du har klickat på den gröna pilen och bifogat felsökaren kan du se ny information i VS Code-gränssnittet för containern:
     
-    ![Behållar fel sökaren bifogad information](./media/how-to-troubleshoot-deployment/debugger-attached.png)
+    ![Bifogad information om containerfelsökningsprogrammet](./media/how-to-troubleshoot-deployment/debugger-attached.png)
     
-    I ditt huvud VS-kod gränssnitt kan du också se följande:
+    I huvudgränssnittet för VS Code kan du se följande:
 
     ![VS Code-brytpunkten i score.py](./media/how-to-troubleshoot-deployment/local-debugger.png)
 
-Nu har den lokala `score.py` som är kopplad till behållaren redan stoppad vid de Bryt punkter där du har angett. Vid det här tillfället ansluter VS Code till debugpy i Docker-behållaren och stoppar Docker-behållaren vid den Bryt punkt som du angav tidigare. Nu kan du gå igenom koden när den körs, Visa variabler osv.
+Och nu har den lokala `score.py` som är kopplad till containern redan stoppats vid brytpunkterna där du anger. Nu ansluter VS Code till debugpy i Docker-containern och stoppar Docker-containern vid den brytpunkt som du konfigurerade tidigare. Nu kan du stega igenom koden när den körs, visa variabler osv.
 
-Mer information om hur du använder VS Code för att felsöka python finns i [Felsöka python-koden](https://code.visualstudio.com/docs/python/debugging).
+Mer information om hur du använder VS Code för att felsöka Python finns [i Felsöka Python-koden.](https://code.visualstudio.com/docs/python/debugging)
 
 ### <a name="stop-the-container"></a>Stoppa containern
 
-Om du vill stoppa behållaren använder du följande kommando:
+Om du vill stoppa containern använder du följande kommando:
 
 ```bash
 docker stop debug
@@ -534,12 +534,12 @@ docker stop debug
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har konfigurerat VS Code Remote kan du använda en beräknings instans som fjärrberäkning från VS Code för att interaktivt felsöka din kod. 
+Nu när du har ställt in VS Code Remote kan du använda en beräkningsinstans som fjärrbearbetning från VS Code för att interaktivt felsöka koden. 
 
-Läs mer om fel sökning:
+Läs mer om felsökning:
 
 * [Distribution av lokal modell](how-to-troubleshoot-deployment-local.md)
-* [Distribution av fjärrmodell](how-to-troubleshoot-deployment.md)
+* [Fjärrmodellsdistribution](how-to-troubleshoot-deployment.md)
 * [Pipelines för maskininlärning](how-to-debug-pipelines.md)
 * [ParallelRunStep](how-to-debug-parallel-run-step.md)
 

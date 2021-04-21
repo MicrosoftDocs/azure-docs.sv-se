@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: ba5b375f75d2655045e62583679839c8dd2a5720
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0c1a3362c4f1dfd3396ccd4704933d06d2611414
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752452"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814126"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Snabbstart: Ställ in och hämta en hemlighet från Azure Key Vault med hjälp av Azure-portalen
 
@@ -29,7 +29,7 @@ Mer information om finns i
 
 För att Azure Key Vault åtkomst till tjänsten behöver du en Azure-prenumeration. Om du inte redan har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-All åtkomst till hemligheter sker via Azure Key Vault. I den här snabbstarten skapar du ett [nyckelvalv med Azure Portal,](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md) [eller Azure PowerShell](../general/quick-create-powershell.md).
+All åtkomst till hemligheter sker via Azure Key Vault. För den här snabbstarten skapar du ett [nyckelvalv med Azure Portal,](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -39,12 +39,12 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 Följ stegen för att lägga till en hemlighet i valvet:
 
-1. Gå till ditt nya nyckelvalv i Azure Portal
+1. Gå till det nya nyckelvalvet i Azure Portal
 1. På sidan Key Vault inställningar väljer du **Hemligheter**.
 1. Klicka på **Generera/importera**.
 1. Välj följande värden på skärmen **Skapa en hemlighet**:
     - **Uppladdningsalternativ**: Manuell.
-    - **Namn:** Ange ett namn på hemligheten. Det hemliga namnet måste vara unikt inom en Key Vault. Namnet måste vara en sträng på 1–127 tecken som börjar med en bokstav och som endast innehåller 0–9, a–z, A–Z och -. Mer information om namngivning finns i [Key Vault, identifierare och versionshantering](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
+    - **Namn:** Ange ett namn på hemligheten. Det hemliga namnet måste vara unikt inom en Key Vault. Namnet måste vara en sträng med 1–127 tecken, som börjar med en bokstav och som endast innehåller 0–9, a–z, A–Z och -. Mer information om namngivning finns i [Key Vault, identifierare och versionshantering](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning)
     - **Värde:** Ange ett värde för hemligheten. Key Vault API:er accepterar och returnerar hemliga värden som strängar. 
     - Lämna standardvärdena för de andra alternativen. Klicka på **Skapa**.
 
@@ -58,7 +58,7 @@ Om du klickar på den aktuella versionen så kan du se värdet du angav i föreg
 
 ![Egenskaper för hemlighet](../media/quick-create-portal/current-version-hidden.png)
 
-Genom att klicka på knappen "Visa hemligt värde" i den högra rutan kan du se det dolda värdet. 
+Du kan se det dolda värdet genom att klicka på knappen Visa hemligt värde i den högra rutan. 
 
 ![Hemligt värde visades](../media/quick-create-portal/current-version-shown.png)
 
@@ -81,8 +81,8 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här snabbstarten skapade du en Key Vault och lagrade en hemlighet i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Läs [Säker åtkomst till en Key Vault](../general/security-overview.md)
+- Läs [Säker åtkomst till en Key Vault](../general/security-features.md)
 - Se [Använda Key Vault med App Service-webbapp](../general/tutorial-net-create-vault-azure-web-app.md)
 - Se [Använda Key Vault med program som distribuerats till en virtuell dator](../general/tutorial-net-virtual-machine.md)
 - Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
-- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

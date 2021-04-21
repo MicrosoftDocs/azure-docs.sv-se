@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8352deb00f6954d862b9e44646cce1604e2c5428
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 1f2df113b855ef85906e00a0316b09870ff20fb7
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749626"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814378"
 ---
 # <a name="configure-azure-key-vault-firewalls-and-virtual-networks"></a>Konfigurera Azure Key Vault brandväggar och virtuella nätverk
 
@@ -28,47 +28,47 @@ I det här avsnittet går vi in på de olika Azure Key Vault som brandväggen ka
 
 ### <a name="key-vault-firewall-disabled-default"></a>Key Vault brandväggen inaktiverad (standard)
 
-När du skapar ett nytt nyckelvalv inaktiveras som standard Azure Key Vault brandväggen. Alla program och Azure-tjänster kan komma åt nyckelvalvet och skicka begäranden till nyckelvalvet. Observera att den här konfigurationen inte innebär att alla användare kommer att kunna utföra åtgärder på ditt nyckelvalv. Nyckelvalvet begränsar fortfarande till hemligheter, nycklar och certifikat som lagras i nyckelvalvet genom att kräva Azure Active Directory behörighet för autentisering och åtkomstprincip. Mer information om autentisering av nyckelvalv finns i dokumentet om grundläggande nyckelvalvsautentisering [här.](./authentication-fundamentals.md) Mer information finns i Access [Azure Key Vault bakom en brandvägg.](./access-behind-firewall.md)
+När du skapar ett nytt nyckelvalv inaktiveras som standard Azure Key Vault brandväggen. Alla program och Azure-tjänster kan komma åt nyckelvalvet och skicka begäranden till nyckelvalvet. Observera att den här konfigurationen inte innebär att alla användare kommer att kunna utföra åtgärder på ditt nyckelvalv. Nyckelvalvet begränsar fortfarande till hemligheter, nycklar och certifikat som lagras i nyckelvalvet genom att kräva Azure Active Directory behörighet för autentisering och åtkomstprincip. Mer information om autentisering av nyckelvalv finns i dokumentet om grundläggande nyckelvalvsautentisering [här.](./authentication-fundamentals.md) Mer information finns i [Access Azure Key Vault bakom en brandvägg.](./access-behind-firewall.md)
 
 ### <a name="key-vault-firewall-enabled-trusted-services-only"></a>Key Vault brandväggen aktiverad (endast betrodda tjänster)
 
-När du aktiverar Key Vault-brandväggen får du ett alternativ för att "Tillåt betrodda Microsoft-tjänster att kringgå brandväggen". Listan över betrodda tjänster omfattar inte alla Azure-tjänster. Azure DevOps finns till exempel inte med i listan över betrodda tjänster. **Detta innebär inte att tjänster som inte visas i listan över betrodda tjänster inte är betrodda eller osäkra.** Listan över betrodda tjänster omfattar tjänster där Microsoft styr all kod som körs på tjänsten. Eftersom användare kan skriva anpassad kod i Azure-tjänster som Azure DevOps ger Microsoft inte möjlighet att skapa ett godkännande för tjänsten. Dessutom, bara för att en tjänst visas i listan över betrodda tjänster, innebär det inte att den tillåts för alla scenarier. 
+När du aktiverar Key Vault-brandväggen får du ett alternativ för att "Tillåt betrodda Microsoft-tjänster att kringgå brandväggen". Listan över betrodda tjänster omfattar inte alla Azure-tjänster. Azure DevOps finns till exempel inte med i listan över betrodda tjänster. **Detta innebär inte att tjänster som inte visas i listan över betrodda tjänster inte är betrodda eller osäkra.** Listan över betrodda tjänster innehåller tjänster där Microsoft styr all kod som körs på tjänsten. Eftersom användare kan skriva anpassad kod i Azure-tjänster som Azure DevOps ger Microsoft inte möjlighet att skapa ett godkännande för tjänsten. Och bara för att en tjänst visas i listan över betrodda tjänster innebär det inte att den tillåts för alla scenarier. 
 
 Om du vill ta reda på om en tjänst som du försöker använda finns i listan över betrodda tjänster kan du se följande dokument [här.](./overview-vnet-service-endpoints.md#trusted-services)
-Följ anvisningarna här för portalen, Azure CLI och [Powershell för instruktioner](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal)
+Följ anvisningarna här för portalen, Azure CLI och [Powershell](https://docs.microsoft.com/azure/key-vault/general/network-security#use-the-azure-portal) för instruktioner
 
 ### <a name="key-vault-firewall-enabled-ipv4-addresses-and-ranges---static-ips"></a>Key Vault brandväggen aktiverad (IPv4-adresser och -intervall – statiska IP-adresser)
 
 Om du vill ge en viss tjänst åtkomst till nyckelvalvet via Key Vault Firewall kan du lägga till tjänstens IP-adress i listan över tillåtna nyckelvalvsbrandväggen. Den här konfigurationen passar bäst för tjänster som använder statiska IP-adresser eller välkända intervall. Det finns en gräns på 1 000 CIDR-intervall för det här fallet.
 
-Utför följande steg för att tillåta en IP-adress eller ett intervall för en Azure-resurs, till exempel en webbapp eller logikapp.
+Utför följande steg för att tillåta en IP-adress eller ett intervall för en Azure-resurs, till exempel en webbapp eller en logikapp.
 
 1. Logga in på Azure Portal
 1. Välj resursen (specifik instans av tjänsten)
 1. Klicka på bladet Egenskaper under Inställningar
 1. Leta efter fältet "IP-adress".
-1. Kopiera det här värdet eller intervallet och ange det i key vault-brandväggens lista över tillåtna värden.
+1. Kopiera det här värdet eller intervallet och ange det i listan över tillåtna nyckelvalvsbrandväggen.
 
-Om du vill tillåta en hel Azure-tjänst Key Vault brandväggen använder du listan över offentligt dokumenterade datacenter-IP-adresser för Azure [här.](https://www.microsoft.com/download/details.aspx?id=41653) Hitta IP-adresserna som är associerade med den tjänst som du vill använda i den region som du vill använda och lägg till dessa IP-adresser i Key Vault-brandväggen med hjälp av stegen ovan.
+Om du vill tillåta en hel Azure-tjänst Key Vault brandväggen använder du listan över offentligt dokumenterade datacenter-IP-adresser för Azure [här.](https://www.microsoft.com/download/details.aspx?id=41653) Hitta IP-adresserna som är associerade med den tjänst som du vill använda i den region som du vill använda och lägg till dessa IP-adresser i nyckelvalvsbrandväggen med hjälp av stegen ovan.
 
-### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>Key Vault-brandväggen aktiverad (virtuella nätverk – dynamiska IP-adresser)
+### <a name="key-vault-firewall-enabled-virtual-networks---dynamic-ips"></a>Key Vault aktiverad brandvägg (virtuella nätverk – dynamiska IP-adresser)
 
 Om du försöker tillåta en Azure-resurs, till exempel en virtuell dator via nyckelvalvet, kanske du inte kan använda statiska IP-adresser och du kanske inte vill tillåta att alla IP-adresser för Azure Virtual Machines får åtkomst till ditt nyckelvalv.
 
-I det här fallet bör du skapa resursen i ett virtuellt nätverk och sedan tillåta trafik från det specifika virtuella nätverket och undernätet att komma åt ditt nyckelvalv. Gör detta genom att utföra följande steg.
+I det här fallet bör du skapa resursen i ett virtuellt nätverk och sedan tillåta att trafik från det specifika virtuella nätverket och undernätet får åtkomst till ditt nyckelvalv. Gör detta genom att utföra följande steg.
 
 1. Logga in på Azure Portal
 1. Välj det nyckelvalv som du vill konfigurera
 1. Välj bladet Nätverk
 1. Välj + Lägg till befintligt virtuellt nätverk
-1. Välj det virtuella nätverk och undernät som du vill tillåta genom nyckelvalvsbrandväggen.
+1. Välj det virtuella nätverk och undernät som du vill tillåta genom Nyckelvalvsbrandväggen.
 
 ### <a name="key-vault-firewall-enabled-private-link"></a>Key Vault Firewall Enabled (Private Link)
 
-Information om hur du konfigurerar en privat länkanslutning i nyckelvalvet finns i dokumentet [här.](./private-link-service.md)
+Information om hur du konfigurerar en privat länkanslutning i ditt nyckelvalv finns i dokumentet [här.](./private-link-service.md)
 
 > [!IMPORTANT]
-> När brandväggsreglerna är i kraft kan användarna bara utföra Key Vault [dataplansåtgärder](security-overview.md#privileged-access) när deras begäranden kommer från tillåtna virtuella nätverk eller IPv4-adressintervall. Detta gäller även åtkomst Key Vault från Azure Portal. Även om användarna kan bläddra till ett nyckelvalv från Azure Portal kanske de inte kan lista nycklar, hemligheter eller certifikat om deras klientdator inte finns med i listan över tillåtna. Detta påverkar även Key Vault av andra Azure-tjänster. Användare kan eventuellt se en lista över nyckelvalv, men inte lista nycklar, om brandväggsregler förhindrar klientdatorn.
+> När brandväggsreglerna är i kraft kan användarna bara utföra Key Vault åtgärder på [dataplanet](security-features.md#privileged-access) när deras begäranden kommer från tillåtna virtuella nätverk eller IPv4-adressintervall. Detta gäller även för åtkomst Key Vault från Azure Portal. Även om användarna kan bläddra till ett nyckelvalv från Azure Portal kanske de inte kan visa nycklar, hemligheter eller certifikat om deras klientdator inte finns med i listan över tillåtna. Detta påverkar även Key Vault av andra Azure-tjänster. Användare kan eventuellt se en lista över nyckelvalv, men inte lista nycklar, om brandväggsregler förhindrar klientdatorn.
 
 > [!NOTE]
 > Tänk på följande konfigurationsbegränsningar:
@@ -175,4 +175,4 @@ Så här konfigurerar du Key Vault och virtuella nätverk med hjälp av PowerShe
 ## <a name="next-steps"></a>Nästa steg
 
 * [Tjänstslutpunkter för virtuellt nätverk för Key Vault](overview-vnet-service-endpoints.md)
-* [Azure Key Vault säkerhetsöversikt](security-overview.md)
+* [Azure Key Vault säkerhetsöversikt](security-features.md)
