@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: Konfigurera Hoxhunt för automatisk användar etablering med Azure Active Directory | Microsoft Docs'
-description: Lär dig hur du automatiskt etablerar och avetablerar användar konton från Azure AD till Hoxhunt.
+title: 'Självstudie: Konfigurera Hoxhunt för automatisk användareablering med Azure Active Directory | Microsoft Docs'
+description: Lär dig hur du etablerar och avetabler användarkonton automatiskt från Azure AD till Hoxhunt.
 services: active-directory
 documentationcenter: ''
 author: Zhchia
@@ -15,66 +15,66 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2021
 ms.author: Zhchia
-ms.openlocfilehash: 24c8e2aafed6ee7b8823effc350dee4edb5e4873
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: db33cc43419b4228ca270d3a69c0e88de2c05638
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101650863"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752056"
 ---
-# <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Hoxhunt för automatisk användar etablering
+# <a name="tutorial-configure-hoxhunt-for-automatic-user-provisioning"></a>Självstudie: Konfigurera Hoxhunt för automatisk användareablering
 
-I den här självstudien beskrivs de steg du behöver utföra i både Hoxhunt och Azure Active Directory (Azure AD) för att konfigurera automatisk användar etablering. När Azure AD konfigureras, etablerar och avetablerar Azure AD automatiskt användare och grupper i [Hoxhunt](https://www.hoxhunt.com/) med hjälp av Azure AD Provisioning-tjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md). 
+I den här självstudien beskrivs de steg du behöver utföra i både Hoxhunt och Azure Active Directory (Azure AD) för att konfigurera automatisk användareablering. När Azure AD har konfigurerats etablerar och avetabler de automatiskt användare och grupper till [Hoxhunt](https://www.hoxhunt.com/) med hjälp av Azure AD-etableringstjänsten. Viktig information om vad den här tjänsten gör, hur den fungerar och vanliga frågor finns i [Automatisera användaretablering och avetablering för SaaS-program med Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 
 ## <a name="capabilities-supported"></a>Funktioner som stöds
 > [!div class="checklist"]
 > * Skapa användare i Hoxhunt
-> * Ta bort användare i Hoxhunt när de inte behöver åtkomst längre
-> * Behåll användarattribut synkroniserade mellan Azure AD och Hoxhunt
-> * [Enkel inloggning](hoxhunt-tutorial.md) till Hoxhunt (rekommenderas)
+> * Ta bort användare i Hoxhunt när de inte längre behöver åtkomst
+> * Håll användarattribut synkroniserade mellan Azure AD och Hoxhunt
+> * [Enkel inloggning till](hoxhunt-tutorial.md) Hoxhunt (rekommenderas)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande krav:
+Det scenario som beskrivs i den här självstudien förutsätter att du redan har följande förutsättningar:
 
-* [En Azure AD-klient](../develop/quickstart-create-new-tenant.md) 
-* Ett användar konto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etablering (till exempel program administratör, moln program administratör, program ägare eller global administratör). 
-* En Hoxhunt-klient.
-* SCIM API-nyckel och SCIM slut punkts-URL för din organisation (konfigurerad av Hoxhunt support).
+* [En Azure AD-klientorganisation](../develop/quickstart-create-new-tenant.md) 
+* Ett användarkonto i Azure AD med [behörighet](../roles/permissions-reference.md) att konfigurera etablering (till exempel programadministratör, molnadministratör Programadministratör, programägare eller global administratör). 
+* En Hoxhunt-klientorganisation.
+* SCIM API-nyckel och SCIM-slutpunkts-URL för din organisation (konfigureras av Stöd för Hoxhunt).
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Steg 1. Planera etablering av distributionen
 1. Lär dig mer om [hur etableringstjänsten fungerar](../app-provisioning/user-provisioning.md).
 2. Ta reda på vem som finns i [etableringsomfånget](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
-3. Ta reda på vilka data som ska [mappas mellan Azure AD och Hoxhunt](../app-provisioning/customize-application-attributes.md). 
+3. Fastställ vilka data som [ska mappas mellan Azure AD och Hoxhunt](../app-provisioning/customize-application-attributes.md). 
 
-## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Hoxhunt för att ge stöd för etablering med Azure AD
-Kontakta [Hoxhunt-supporten](mailto:support@hoxhunt.com) för att ta emot scim API-nyckel och scim slut punkts-URL för att konfigurera Hoxhunt till stöd för etablering med Azure AD.
-## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>Steg 3. Lägg till Hoxhunt från Azure AD-programgalleriet
+## <a name="step-2-configure-hoxhunt-to-support-provisioning-with-azure-ad"></a>Steg 2. Konfigurera Hoxhunt för att stödja etablering med Azure AD
+Kontakta [Hoxhunt-supporten för](mailto:support@hoxhunt.com) att få SCIM API-nyckel och SCIM-slutpunkts-URL för att konfigurera Hoxhunt för att stödja etablering med Azure AD.
+## <a name="step-3-add-hoxhunt-from-the-azure-ad-application-gallery"></a>Steg 3. Lägga till Hoxhunt från Azure AD-programgalleriet
 
-Lägg till Hoxhunt från Azure AD-programgalleriet för att börja hantera etablering till Hoxhunt. Om du tidigare har konfigurerat Hoxhunt för SSO kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](../manage-apps/add-application-portal.md). 
+Lägg till Hoxhunt från Azure AD-programgalleriet för att börja hantera etablering till Hoxhunt. Om du tidigare har ställt in Hoxhunt för enkel inloggning kan du använda samma program. Vi rekommenderar dock att du skapar en separat app när du testar integreringen i början. Lär dig mer om att lägga till ett program från galleriet [här](../manage-apps/add-application-portal.md). 
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Steg 4. Definiera vem som ska finnas i etableringsomfånget 
 
 Med Azure AD-etableringstjänsten kan du bestämma vem som ska etableras, baserat på tilldelningen till programmet och eller baserat på attribut för användaren/gruppen. Om du väljer att omfånget som ska etableras till din app ska baseras på tilldelning, kan du använda följande [steg](../manage-apps/assign-user-or-group-access-portal.md) för att tilldela användare och grupper till programmet. Om du väljer att omfånget endast ska etableras baserat på attribut för användaren eller gruppen, kan du använda ett omfångsfilter enligt beskrivningen [här](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
-* När du tilldelar användare och grupper till Hoxhunt måste du välja en annan roll än **standard åtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
+* När du tilldelar användare och grupper till Hoxhunt måste du välja en annan roll än **Standardåtkomst**. Användare med rollen Standardåtkomst undantas från etableringen och markeras som icke-berättigade i etableringsloggarna. Om den enda rollen som är tillgänglig i programmet är standardrollen för åtkomst, kan du [uppdatera applikationsmanifest](../develop/howto-add-app-roles-in-azure-ad-apps.md) och lägga till fler roller. 
 
 * Starta i liten skala. Testa med en liten uppsättning användare och grupper innan du distribuerar till alla. När etableringsomfånget har angetts till tilldelade användare och grupper, kan du kontrollera detta genom att tilldela en eller två användare eller grupper till appen. När omfånget är inställt på alla användare och grupper, kan du ange ett [attributbaserat omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md). 
 
 
-## <a name="step-5-configure-automatic-user-provisioning-to-hoxhunt"></a>Steg 5. Konfigurera automatisk användar etablering till Hoxhunt 
+## <a name="step-5-configure-automatic-user-provisioning-to-hoxhunt"></a>Steg 5. Konfigurera automatisk användareablering till Hoxhunt 
 
-Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Provisioning-tjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i TestApp baserat på användar-och/eller grupp tilldelningar i Azure AD.
+Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD-etableringstjänsten för att skapa, uppdatera och inaktivera användare och/eller grupper i TestApp baserat på användar- och/eller grupptilldelningar i Azure AD.
 
-### <a name="to-configure-automatic-user-provisioning-for-hoxhunt-in-azure-ad"></a>Konfigurera automatisk användar etablering för Hoxhunt i Azure AD:
+### <a name="to-configure-automatic-user-provisioning-for-hoxhunt-in-azure-ad"></a>Så här konfigurerar du automatisk användareablering för Hoxhunt i Azure AD:
 
 1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Företagsprogram** och sedan **Alla program**.
 
     ![Bladet Företagsprogram](common/enterprise-applications.png)
 
-2. I listan program väljer du **Hoxhunt**.
+2. I programlistan väljer du **Hoxhunt**.
 
-    ![Hoxhunt-länken i program listan](common/all-applications.png)
+    ![Hoxhunt-länken i programlistan](common/all-applications.png)
 
 3. Välj fliken **Etablering**.
 
@@ -82,9 +82,9 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 4. Ange **Etableringsläge** som **Automatiskt**.
 
-    ![Fliken etablering automatiskt](common/provisioning-automatic.png)
+    ![Automatisk etableringsflik](common/provisioning-automatic.png)
 
-5. Under avsnittet **admin credentials** , skriver du in din Hoxhunt-klient-URL och en hemlig token. Klicka på **Testa anslutning** för att se till att Azure AD kan ansluta till Hoxhunt. Om anslutningen Miss lyckas kontrollerar du att Hoxhunt-kontot har administratörs behörighet och försöker igen.
+5. I avsnittet **Autentiseringsuppgifter för** administratör anger du din Hoxhunt-klientorganisations-URL och hemlig token. Klicka **på Testa anslutning** för att se till att Azure AD kan ansluta till Hoxhunt. Om anslutningen misslyckas ser du till att ditt Hoxhunt-konto har administratörsbehörighet och försöker igen.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -94,9 +94,9 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
 
 7. Välj **Spara**.
 
-8. Under avsnittet **mappningar** väljer du **Synkronisera Azure Active Directory användare till Hoxhunt**.
+8. I avsnittet **Mappningar** väljer du **Synkronisera Azure Active Directory användare till Hoxhunt**.
 
-9. Granska de användarattribut som synkroniseras från Azure AD till Hoxhunt i avsnittet **attribut-mappning** . Attributen som väljs som **matchande** egenskaper används för att matcha användar kontona i Hoxhunt för uppdaterings åtgärder. Om du väljer att ändra [matchande målattribut](../app-provisioning/customize-application-attributes.md)måste du se till att Hoxhunt-API: et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att spara ändringarna.
+9. Granska de användarattribut som synkroniseras från Azure AD till Hoxhunt i **avsnittet Attributmappning.** Attributen som valts **som** Matchande egenskaper används för att matcha användarkontona i Hoxhunt för uppdateringsåtgärder. Om du väljer att ändra det [matchande målattributet](../app-provisioning/customize-application-attributes.md)måste du se till att Hoxhunt-API:et stöder filtrering av användare baserat på det attributet. Välj knappen **Spara** för att genomföra ändringarna.
 
    |Attribut|Typ|Stöds för filtrering|
    |---|---|---|
@@ -105,16 +105,16 @@ Det här avsnittet vägleder dig genom stegen för att konfigurera Azure AD Prov
    |aktiv|Boolesk|
    |name.givenName|Sträng|
    |name.familyName|Sträng|
-   |urn: IETF: params: scim: schemas: tillägg: Enterprise: 2.0: användare: avdelning|Sträng|
-   |adresser [Type EQ "Work"]. land|Sträng|
+   |urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:department|Sträng|
+   |addresses[type eq "work"].country|Sträng|
 
 10. Information om hur du konfigurerar omfångsfilter finns i följande instruktioner i [självstudien för omfångsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Om du vill aktivera Azure AD Provisioning-tjänsten för Hoxhunt ändrar du **etablerings statusen** till **på** i avsnittet **Inställningar** .
+11. Om du vill aktivera Azure AD-etableringstjänsten för Hoxhunt ändrar du **Etableringsstatus** **till På** i **avsnittet** Inställningar.
 
     ![Etableringsstatus är på](common/provisioning-toggle-on.png)
 
-12. Definiera de användare och/eller grupper som du vill etablera till Hoxhunt genom att välja önskade värden i **omfång** i avsnittet **Inställningar** .
+12. Definiera de användare och/eller grupper som du vill etablera till Hoxhunt genom att välja önskade värden i **Omfång** i **avsnittet** Inställningar.
 
     ![Etableringsomfång](common/provisioning-scope.png)
 
@@ -130,6 +130,9 @@ När du har konfigurerat etableringen använder du följande resurser till att �
 * Använd [etableringsloggarna](../reports-monitoring/concept-provisioning-logs.md) för att se vilka användare som har etablerats och vilka som har misslyckats
 * Kontrollera [förloppsindikatorn](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) för att se status för etableringscykeln och hur nära den är att slutföras
 * Om etableringskonfigurationen verkar innehålla fel, kommer programmet att placeras i karantän. Läs mer om karantänstatus [här](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Ändringslogg
+* 2021-04-20 – Stöd har lagts till för attributet "preferredLanguage" och enterprise extension "urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division".
 
 ## <a name="additional-resources"></a>Ytterligare resurser
 

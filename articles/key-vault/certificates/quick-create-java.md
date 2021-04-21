@@ -1,6 +1,6 @@
 ---
 title: Snabbstart för Azure Key Vault certifikatklientbibliotek – Java
-description: Lär dig mer om Azure Key Vault för Java med hjälp av stegen i den här snabbstarten.
+description: Lär dig mer om Azure Key Vault Certificate-klientbiblioteket för Java med hjälp av stegen i den här snabbstarten.
 author: msmbaldwin
 ms.custom: devx-track-java
 ms.author: mbaldwin
@@ -8,15 +8,15 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: db69258a774343af18e683444d22530a32f85555
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: c064a35ac6136d728f75b65379c543149cc8189d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374955"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750040"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Snabbstart: Azure Key Vault certifikatklientbibliotek för Java (certifikat)
-Kom igång med Azure Key Vault-certifikatklientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
+Kom igång med Azure Key Vault Certificate-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
 
 Ytterligare resurser:
 
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.certificates.quickstart
                        -DinteractiveMode=false
 ```
 
-Utdata från genereringen av projektet ser ut ungefär så här:
+Utdata från att generera projektet ser ut ungefär så här:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -111,14 +111,14 @@ cd akv-certificates-java
 [!INCLUDE [Create a resource group and key vault](../../../includes/key-vault-rg-kv-creation.md)]
 
 #### <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
-Skapa en åtkomstprincip för ditt nyckelvalv som ger ditt användarkonto certifikatbehörigheter.
+Skapa en åtkomstprincip för ditt nyckelvalv som beviljar certifikatbehörighet till ditt användarkonto.
 
 ```console
 az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Ange miljövariabler
-Det här programmet använder ditt nyckelvalvsnamn som en miljövariabel med namnet `KEY_VAULT_NAME` .
+Det här programmet använder nyckelvalvsnamnet som en miljövariabel med namnet `KEY_VAULT_NAME` .
 
 Windows
 ```cmd
@@ -159,7 +159,7 @@ import com.azure.security.keyvault.certificates.models.KeyVaultCertificateWithPo
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 I den här snabbstarten används en inloggad användare för att autentisera till Key Vault, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska en hanterad identitet tilldelas till en App Service eller virtuell dator. Mer information finns i Översikt [över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -172,7 +172,7 @@ CertificateClient certificateClient = new CertificateClientBuilder()
 ```
 
 ### <a name="save-a-secret"></a>Spara en hemlighet
-Nu när programmet har autentiserats kan du skapa ett certifikat i nyckelvalvet med hjälp av `certificateClient.beginCreateCertificate` metoden . Detta kräver ett namn för certifikatet och en certifikatprincip – vi har tilldelat värdet "myCertificate" till variabeln i det här exemplet och använder `certificateName` en standardprincip.
+Nu när programmet har autentiserats kan du skapa ett certifikat i nyckelvalvet med hjälp av `certificateClient.beginCreateCertificate` metoden . Detta kräver ett namn för certifikatet och en certifikatprincip – vi har tilldelat värdet "myCertificate" till variabeln i det här exemplet och `certificateName` använder en standardprincip.
 
 Att skapa certifikat är en långvarig åtgärd som du kan avse förloppet för eller vänta tills det har slutförts.
 
@@ -271,5 +271,5 @@ public class App {
 I den här snabbstarten skapade du ett nyckelvalv, skapade ett certifikat, hämtade det och tog sedan bort det. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
-- Skydda [åtkomsten till ett nyckelvalv](../general/secure-your-key-vault.md)
+- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
+- Skydda [åtkomst till ett nyckelvalv](../general/security-overview.md)

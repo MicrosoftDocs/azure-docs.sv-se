@@ -1,6 +1,6 @@
 ---
 title: Alternativ för enkel inloggning i Azure AD
-description: Läs mer om de tillgängliga alternativen för enkel inloggning (SSO) i Azure Active Directory.
+description: Lär dig mer om de alternativ som är tillgängliga för enkel inloggning (SSO) i Azure Active Directory.
 services: active-directory
 author: iantheninja
 manager: CelesteDG
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: iangithinji
 ms.reviewer: arvindh, japere
-ms.openlocfilehash: d81ad34c81a451f1faecb6cb33c0cc427567f122
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 202ccf6f540ec78c2bb30e0f0a0173609bba578c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379612"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751462"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Alternativ för enkel inloggning i Azure AD
 
@@ -86,13 +86,12 @@ Med lösenordsbaserad inloggning loggar användarna in på programmet med ett an
 
 Lösenordsbaserad enkel inloggning använder den befintliga autentiseringsprocessen som tillhandahålls av programmet. När du aktiverar enkel inloggning med lösenord för ett program samlar Azure AD in och lagrar användarnamn och lösenord för programmet på ett säkert sätt. Användarautentiseringsuppgifter lagras i ett krypterat tillstånd i katalogen.
 
+Dessutom kan administratören aktivera principer för villkorsstyrd åtkomst i Azure AD eller multifaktorautentisering för lösenordsbaserad enkel inloggning.
+
 Välj lösenordsbaserad enkel inloggning när:
 
 - Ett program stöder inte SAML-protokoll för enkel inloggning.
 - Ett program autentiseras med ett användarnamn och lösenord i stället för åtkomsttoken och huvuden.
-
->[!NOTE]
->Du kan inte använda principer för villkorlig åtkomst eller multifaktorautentisering för lösenordsbaserad enkel inloggning.
 
 Lösenordsbaserad enkel inloggning stöds för alla molnbaserade program som har en HTML-baserad inloggningssida. Användaren kan använda någon av följande webbläsare:
 
@@ -103,10 +102,10 @@ Lösenordsbaserad enkel inloggning stöds för alla molnbaserade program som har
 - Microsoft Edge på Windows 10 Anniversary Edition eller senare
 - Microsoft Edge för iOS och Android
 - Intune Managed Browser
-- Chrome på Windows 7 eller senare och på macOS X eller senare
+- Chrome i Windows 7 eller senare och på macOS X eller senare
 - Firefox 26.0 eller senare på Windows XP SP2 eller senare och på macOS X 10.6 eller senare
 
-Information om hur du konfigurerar ett molnprogram för lösenordsbaserad enkel inloggning finns [i Konfigurera enkel inloggning med lösenord.](configure-password-single-sign-on-non-gallery-applications.md)
+Information om hur du konfigurerar ett molnprogram för lösenordsbaserad enkel inloggning finns i [Konfigurera enkel inloggning med lösenord.](configure-password-single-sign-on-non-gallery-applications.md)
 
 Information om hur du konfigurerar ett lokalt program för enkel inloggning via Programproxy finns i Lösenordsvalv för enkel [inloggning med Programproxy](application-proxy-configure-single-sign-on-password-vaulting.md)
 
@@ -115,7 +114,7 @@ Information om hur du konfigurerar ett lokalt program för enkel inloggning via 
 För att autentisera en användare för ett program hämtar Azure AD användarens autentiseringsuppgifter från katalogen och anger dem på programmets inloggningssida.  Azure AD skickar autentiseringsuppgifterna på ett säkert sätt via ett webbläsartillägg eller en mobilapp. Den här processen gör det möjligt för en administratör att hantera autentiseringsuppgifter för användare och kräver inte att användarna kommer ihåg sina lösenord.
 
 > [!IMPORTANT]
-> Autentiseringsuppgifterna är fördrövade från användaren under den automatiserade inloggningsprocessen. Autentiseringsuppgifterna kan dock upptäckas med hjälp av webbfelsökningsverktyg. Användare och administratörer måste följa samma säkerhetsprinciper som om autentiseringsuppgifterna angavs direkt av användaren.
+> Autentiseringsuppgifterna är fördiga från användaren under den automatiserade inloggningsprocessen. Autentiseringsuppgifterna kan dock upptäckas med hjälp av webbfelsökningsverktyg. Användare och administratörer måste följa samma säkerhetsprinciper som om autentiseringsuppgifterna angavs direkt av användaren.
 
 ### <a name="managing-credentials-for-password-based-sso"></a>Hantera autentiseringsuppgifter för lösenordsbaserad enkel inloggning
 
@@ -146,13 +145,13 @@ När en användare har autentiserats med ett länkat program måste en kontopost
 
 ## <a name="disabled-sso"></a>Inaktiverad enkel inloggning
 
-Inaktiverat läge innebär att enkel inloggning inte används för programmet. När enkel inloggning har inaktiverats kan användarna behöva autentisera två gånger. Först autentiserar användare till Azure AD och sedan loggar de in i programmet.
+Inaktiverat läge innebär att enkel inloggning inte används för programmet. När enkel inloggning har inaktiverats kan användarna behöva autentisera två gånger. Först autentiserar användare till Azure AD och loggar sedan in i programmet.
 
 Använd inaktiverat läge för enkel inloggning:
 
 - Om du inte är redo att integrera det här programmet med enkel inloggning med Azure AD, eller
 - Om du testar andra aspekter av programmet, eller
-- Som ett säkerhetslager för ett lokalt program som inte kräver att användarna autentiseras. Med inaktiverad måste användaren autentiseras.
+- Som ett säkerhetslager för ett lokalt program som inte kräver att användarna autentiseras. När den är inaktiverad måste användaren autentiseras.
 
 Observera att om du har konfigurerat programmet för SP-initierad SAML-baserad enkel inloggning och du ändrar SSO-läget till inaktivera, hindras inte användarna från att logga in på programmet utanför MyApps-portalen. För att uppnå detta måste [du inaktivera möjligheten för användare att logga in](disable-user-sign-in-portal.md)
 
@@ -162,7 +161,7 @@ Observera att om du har konfigurerat programmet för SP-initierad SAML-baserad e
 
 Välj Integrerad Windows-autentisering läge för enkel inloggning för att tillhandahålla enkel inloggning till en lokal app som autentiserar med IWA.
 
-Information om hur du konfigurerar en lokal app för IWA finns i [Kerberos-begränsad](application-proxy-configure-single-sign-on-with-kcd.md)delegering för enkel inloggning till dina program med Programproxy .
+Information om hur du konfigurerar en lokal app för IWA finns i [Kerberos-begränsad delegering](application-proxy-configure-single-sign-on-with-kcd.md)för enkel inloggning till dina program med Programproxy .
 
 ### <a name="how-single-sign-on-with-kcd-works"></a>Så här fungerar enkel inloggning med KCD
 Det här diagrammet förklarar flödet när en användare kommer åt ett lokalt program som använder IWA.

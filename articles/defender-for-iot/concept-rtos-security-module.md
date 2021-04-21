@@ -1,60 +1,60 @@
 ---
-title: Konceptuell förklaring av grunderna i Defender-IoT-Micro-agenten för Azure återställnings tider
-description: Lär dig grunderna om Defender-IoT-Micro-agent för Azure återställnings tider-koncept och arbets flöde.
+title: Konceptuell förklaring av grunderna i Defender-IoT-micro-agent för Azure RTOS
+description: Lär dig grunderna om Defender-IoT-micro-agent för att Azure RTOS begrepp och arbetsflöde.
 ms.topic: conceptual
 ms.date: 09/09/2020
-ms.openlocfilehash: 83557930aeeccbb557382583e4d6666a000ce52c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 04b86d401bcb9fc919c36b28cf4f80ea3bfd7030
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104779281"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750490"
 ---
-# <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender-IoT-Micro-agent för Azure återställnings tider (för hands version)
+# <a name="defender-iot-micro-agent-for-azure-rtos-preview"></a>Defender-IoT-micro-agent för Azure RTOS (förhandsversion)
 
-Använd den här artikeln för att få en bättre förståelse för Defender-IoT-Micro-agenten för Azure återställnings tider, inklusive funktioner och fördelar samt länkar till relevanta konfigurations-och referens resurser. 
+Använd den här artikeln för att få en bättre förståelse för Defender-IoT-micro-agenten för Azure RTOS, inklusive funktioner och fördelar samt länkar till relevanta konfigurations- och referensresurser. 
 
-## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure återställnings tider IoT Defender-IoT-Micro-agent
+## <a name="azure-rtos-iot-defender-iot-micro-agent"></a>Azure RTOS IoT Defender-IoT-micro-agent
 
-Defender-IoT-Micro-agent för Azure återställnings tider tillhandahåller en omfattande säkerhetslösning för Azure återställnings tider-enheter som en del av NetX Duo-erbjudandet. I NetX Duo-erbjudandet levereras Azure återställnings tider med Azure IoT Defender-IoT-Micro-agent inbyggt och ger täckning för vanliga hot i real tids operativ system enheter när de har Aktiver ATS. 
+Defender-IoT-micro-agent för Azure RTOS en omfattande säkerhetslösning för Azure RTOS enheter som en del av NetX Duo-erbjudandet. I NetX Duo-erbjudandet levereras Azure RTOS med inbyggd Azure IoT Defender-IoT-micro-agent och ger täckning för vanliga hot på dina realtidsoperativsystemetsenheter när de har aktiverats.
 
-Defender-IoT-Micro-agenten för Azure återställnings tider körs i bakgrunden och ger en smidig användar upplevelse, samtidigt som du skickar säkerhets meddelanden med hjälp av varje kunds unika anslutningar till deras IoT Hub. Defender-IoT-Micro-agenten för Azure återställnings tider är aktive rad som standard.  
+Defender-IoT-micro-agenten för Azure RTOS körs i bakgrunden och ger en sömlös användarupplevelse när säkerhetsmeddelanden skickas med hjälp av varje kunds unika anslutningar till sina IoT Hub. Defender-IoT-micro-agent för Azure RTOS är aktiverat som standard.  
 
 ## <a name="azure-rtos-netx-duo"></a>Azure RTOS NetX Duo
 
-Azure återställnings tider NetX Duo är en avancerad, inbyggd TCP/IP-nätverks stack som utformats specifikt för djupt inbyggda real tids-och IoT-program. Azure återställnings tider NetX Duo är en dubbel IPv4-och IPv6-nätverks stack som ger en omfattande uppsättning protokoll, inklusive säkerhet och moln. Läs mer om [Azure återställnings tider netx Duo](/azure/rtos/netx-duo/) -lösningar.
+Azure RTOS NetX Duo är en avancerad TCP/IP-nätverksstack i branschklass som utformats särskilt för djupt inbäddade realtids- och IoT-program. Azure RTOS NetX Duo är en dubbel IPv4- och IPv6-nätverksstack som ger en omfattande uppsättning protokoll, inklusive säkerhet och moln. Läs mer om [Azure RTOS NetX Duo-lösningar.](/azure/rtos/netx-duo/)
 
-Modulen erbjuder följande funktioner:
+Modulen innehåller följande funktioner:
 
-- **Identifiera skadliga nätverks aktiviteter**
-- **Enhets beteende bas linjer baserade på anpassade aviseringar**
-- **Förbättra enhetens säkerhets hygien**
+- **Identifiera skadliga nätverksaktiviteter**
+- **Baslinjer för enhetsbeteende baserat på anpassade aviseringar**
+- **Förbättra enhetens säkerhetshygien**
 
-## <a name="defender-iot-micro-agent-for-azure-rtos-architecture"></a>Defender-IoT-Micro-agent för Azure återställnings tider-arkitektur
+## <a name="defender-iot-micro-agent-for-azure-rtos-architecture"></a>Defender-IoT-micro-agent för Azure RTOS arkitektur
 
-Defender-IoT-Micro-agenten för Azure återställnings tider initieras av Azure IoT mellan plattforms plattform och använder IoT Hub klienter för att skicka säkerhetstelemetri till hubben.
+Defender-IoT-micro-agenten för Azure RTOS initieras av Azure IoT-mellanprogramplattformen och använder IoT Hub klienter för att skicka säkerhetstelemetri till hubben.
 
-:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Azure IoT Defender – IoT-Micro-agent state diagram och informations flöde":::
+:::image type="content" source="media/architecture/security-module-state-diagram.png" alt-text="Tillståndsdiagram och informationsflöde för Azure IoT Defender-IoT-mikroagent":::
 
-Defender-IoT-Micro-agenten för Azure återställnings tider övervakar följande enhets aktivitet och information med hjälp av tre insamlare:
-- Enhets nätverks aktivitet **TCP**, **UDP** och **ICM**
-- System information som **ThreadX** -och **netx Duo** -versioner
+Defender-IoT-micro-agenten för Azure RTOS övervakar följande enhetsaktivitet och information med hjälp av tre insamlare:
+- Enhetsnätverksaktivitet **TCP,** **UDP** och **ICM**
+- Systeminformation som **Threadx-** och **NetX Duo-versioner**
 - Pulsslagshändelser
 
-Varje insamlare är länkad till en prioritets grupp och varje prioritets grupp har ett eget intervall med möjliga värden **låg**, **medel** och **hög**. Intervallen påverkar det tidsintervall då data samlas in och skickas.
+Varje insamlare är länkad till en prioritetsgrupp och varje prioritetsgrupp har ett eget intervall med möjliga värden **för Låg,** **Medel** och **Hög.** Intervallen påverkar tidsintervallet då data samlas in och skickas.
 
-Varje tidsintervall kan konfigureras och IoT-anslutningarna kan aktive ras och inaktive ras för att ytterligare [Anpassa din lösning](how-to-azure-rtos-security-module.md). 
+Varje tidsintervall kan konfigureras och IoT-anslutningsapparna kan aktiveras och inaktiveras för att ytterligare [anpassa din lösning.](how-to-azure-rtos-security-module.md) 
 
-## <a name="supported-security-alerts-and-recommendations"></a>Säkerhets aviseringar och rekommendationer som stöds
+## <a name="supported-security-alerts-and-recommendations"></a>Säkerhetsaviseringar och rekommendationer som stöds
 
-Defender-IoT-Micro-agenten för Azure återställnings tider har stöd för vissa säkerhets aviseringar och rekommendationer. Se till att [Granska och anpassa relevanta aviserings-och rekommendations värden](concept-rtos-security-alerts-recommendations.md) för tjänsten när du har slutfört den inledande konfigurationen.
+Defender-IoT-micro-agenten för Azure RTOS har stöd för specifika säkerhetsaviseringar och rekommendationer. Se till att [granska och anpassa relevanta aviserings- och rekommendationsvärden](concept-rtos-security-alerts-recommendations.md) för din tjänst när du har slutfört den inledande konfigurationen.
 
 ## <a name="ready-to-begin"></a>Är du redo att börja?
 
-Defender-IoT-Micro-agent för Azure återställnings tider tillhandahålls som kostnads fri nedladdning för dina IoT-enheter. Tjänsten Defender för IoT Cloud är tillgänglig med en 30-dagars utvärderings version per Azure-prenumeration. [Ladda ned Defender-IoT-Micro-agenten nu](https://github.com/azure-rtos/azure-iot-preview/releases) och kom igång. 
+Defender-IoT-micro-agent för Azure RTOS tillhandahålls som en kostnadsfri nedladdning för dina IoT-enheter. Defender for IoT-molntjänsten är tillgänglig med en 30-dagars utvärderingsversion per Azure-prenumeration. [Ladda ned Defender-IoT-micro-agenten](https://github.com/azure-rtos/azure-iot-preview/releases) nu så ska vi komma igång. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Kom igång med Defender-IoT-Micro-agent för Azure återställnings tider- [krav och installations program](quickstart-azure-rtos-security-module.md).
-- Läs mer om Defender-IoT-Micro-agent för Azure återställnings tider- [säkerhetsaviseringar och rekommendations support](concept-rtos-security-alerts-recommendations.md). 
-- Använd [referens-API: et](azure-rtos-security-module-api.md)Defender-IoT-Micro-agent för Azure återställnings tider.
+- Kom igång med Defender-IoT-micro-agent för Azure RTOS [och konfigurera](quickstart-azure-rtos-security-module.md).
+- Läs mer om Defender-IoT-micro-agent för att Azure RTOS [säkerhetsaviseringar och rekommendationer som stöder](concept-rtos-security-alerts-recommendations.md). 
+- Använd Defender-IoT-micro-agent för att Azure RTOS [API.](azure-rtos-security-module-api.md)

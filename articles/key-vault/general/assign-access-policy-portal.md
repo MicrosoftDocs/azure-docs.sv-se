@@ -1,59 +1,58 @@
 ---
-title: Tilldela en Azure Key Vault åtkomst princip (portal)
-description: Använda Azure Portal för att tilldela en Key Vault åtkomst princip till ett säkerhets objekt eller en program identitet.
+title: Tilldela en Azure Key Vault åtkomstprincip (portal)
+description: Hur du använder Azure Portal för att tilldela en Key Vault åtkomstprincip till ett säkerhetsobjekt eller en programidentitet.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a64a91e6f41f3fba7584630380ffb878979b4389
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 443b269e7155fc206ee50e7907a7acded2c22f53
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968772"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751498"
 ---
-# <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Tilldela en Key Vault åtkomst princip med hjälp av Azure Portal
+# <a name="assign-a-key-vault-access-policy-using-the-azure-portal"></a>Tilldela en Key Vault åtkomstprincip med hjälp av Azure Portal
 
-En Key Vault åtkomst princip bestämmer om ett specifikt säkerhets objekt, nämligen en användare, ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av Azure Portal (den här artikeln), [Azure CLI](assign-access-policy-cli.md)eller [Azure PowerShell](assign-access-policy-powershell.md).
+En Key Vault-åtkomstprincip avgör om ett visst säkerhetsobjekt, nämligen en användare, ett program eller en användargrupp, kan utföra olika åtgärder på Key Vault [hemligheter,](../secrets/index.yml) [nycklar](../keys/index.yml)och [certifikat.](../certificates/index.yml) Du kan tilldela åtkomstprinciper med hjälp av Azure Portal (den här artikeln), [Azure CLI](assign-access-policy-cli.md) [eller Azure PowerShell](assign-access-policy-powershell.md).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Mer information om hur du skapar grupper i Azure Active Directory via Azure Portal finns i [skapa en grundläggande grupp och lägga till medlemmar](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
+Mer information om hur du skapar grupper i Azure Active Directory via Azure Portal finns i [Skapa en grundläggande grupp och lägga till medlemmar](../../active-directory/fundamentals/active-directory-groups-create-azure-portal.md)
 
 ## <a name="assign-an-access-policy"></a>Tilldela en åtkomstprincip
 
-1.  I [Azure Portal](https://portal.azure.com)navigerar du till Key Vault resursen. 
+1.  I [Azure Portal](https://portal.azure.com)navigerar du till Key Vault resurs. 
 
-1.  Välj **åtkomst principer** under **Inställningar** och välj sedan **Lägg till åtkomst princip**:
+1.  Under **Inställningar** väljer du **Åtkomstprinciper** och sedan Lägg **till åtkomstprincip:**
 
-    ![Välj åtkomst principer, Välj Lägg till roll tilldelning](../media/authentication/assign-policy-portal-01.png)
+    ![Välj Åtkomstprinciper och sedan Lägg till rolltilldelning](../media/authentication/assign-policy-portal-01.png)
 
-1.  Välj de behörigheter som du vill använda under **certifikat behörigheter**, **nyckel behörigheter** och **hemliga behörigheter**. Du kan också välja en mall som innehåller gemensamma behörighets kombinationer:
+1.  Välj de behörigheter som du vill använda under **Certifikatbehörigheter,** **Nyckelbehörigheter** och **Hemliga behörigheter.** Du kan också välja en mall som innehåller vanliga behörighetskombinationer:
 
-    ![Ange åtkomst princip behörigheter](../media/authentication/assign-policy-portal-02.png)
+    ![Ange behörigheter för åtkomstprincip](../media/authentication/assign-policy-portal-02.png)
 
-1. Under **Välj huvud konto** väljer du länken **ingen som marker ATS** för att öppna fönstret **huvud** val. Ange namnet på användaren, appen eller tjänstens huvud namn i Sök fältet, Välj lämpligt resultat och välj sedan **Välj**.
+1. Under **Välj huvudnamn** väljer du **länken Ingen vald** för att öppna **markeringsfönstret** Huvudnamn. Ange namnet på användaren, appen eller tjänstens huvudnamn i sökfältet, välj lämpligt resultat och välj sedan **Välj**.
 
-    ![Välja säkerhets princip för åtkomst principen](../media/authentication/assign-policy-portal-03.png)
+    ![Välja säkerhetsobjekt för åtkomstprincipen](../media/authentication/assign-policy-portal-03.png)
 
-    Om du använder en hanterad identitet för appen söker du efter och väljer namnet på själva appen. (Mer information om hanterade identitets-och tjänst huvud namn finns i [Key Vault autentisering-app identitet och tjänstens huvud namn](authentication.md#app-identity-and-security-principals).)
+    Om du använder en hanterad identitet för appen söker du efter och väljer namnet på själva appen. (Mer information om hanterade identiteter och tjänstens huvudnamn finns [i Key Vault autentisering – appidentitet och tjänstens huvudnamn](authentication.md#app-identity-and-security-principals).)
  
-1.  Tillbaka i fönstret **Lägg till åtkomst princip** väljer du **Lägg till** för att spara åtkomst principen.
+1.  I fönstret Lägg **till åtkomstprincip väljer** du Lägg **till för** att spara åtkomstprincipen.
 
-    ![Lägger till åtkomst principen med det tilldelade säkerhets objekt](../media/authentication/assign-policy-portal-04.png)
+    ![Lägga till åtkomstprincipen med det tilldelade säkerhetsobjekt](../media/authentication/assign-policy-portal-04.png)
 
-1. Gå tillbaka till sidan **åtkomst principer** , kontrol lera att åtkomst principen visas under **aktuella åtkomst principer** och välj sedan **Spara**. Åtkomst principerna tillämpas inte förrän du sparar dem.
+1. På sidan **Åtkomstprinciper** kontrollerar du att din åtkomstprincip visas under **Aktuella åtkomstprinciper** och väljer sedan **Spara.** Åtkomstprinciper tillämpas inte förrän du sparar dem.
 
-    ![Spara ändringar i åtkomst principen](../media/authentication/assign-policy-portal-05.png)
+    ![Spara ändringar i åtkomstprincipen](../media/authentication/assign-policy-portal-05.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Key Vault säkerhet: identitets-och åtkomst hantering](security-overview.md#identity-management)
-- [Skydda nyckel valvet](secure-your-key-vault.md).
-- [Guide för Azure Key Vault utvecklare](developers-guide.md)
+- [Azure Key Vault: Identitets- och åtkomsthantering](security-overview.md#identity-management)
+- [Skydda ditt nyckelvalv.](security-overview.md)
+- [Azure Key Vault utvecklarguide](developers-guide.md)

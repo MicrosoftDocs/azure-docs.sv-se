@@ -1,18 +1,18 @@
 ---
 title: Azure Key Vault grundläggande om autentisering
 description: Lär dig mer om hur autentiseringsmodellen i Key Vault fungerar
-author: ShaneBala-keyvault
-ms.author: sudbalas
-ms.date: 09/25/2020
+author: msmbaldwin
+ms.author: mbaldwin
+ms.date: 04/15/2021
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: c43995a8b3a072d98db0ba2c8219694f17e49a26
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: f0cd2fb341dd790a7628cc3cf6a5bdd87d7c3687
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107363435"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107753424"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundläggande om Key Vault-autentisering
 
@@ -35,7 +35,7 @@ Det här dokumentet förutsätter att du är bekant med följande begrepp. Om du
 1. Konfigurera Key Vault brandväggsåtkomst till ditt nyckelvalv (valfritt).
 1. Testa säkerhetsobjekts förmåga att komma åt nyckelvalvet.
 
-## <a name="register-a-user-or-application-in-azure-active-directory-as-a-security-principal"></a>Registrera en användare eller ett program i Azure Active Directory som säkerhetsobjekt
+## <a name="register-a-user-or-application-in-azure-active-directory-as-a-security-principal"></a>Registrera en användare eller ett program Azure Active Directory som säkerhetsobjekt
 
 När en användare eller ett program gör en begäran till nyckelvalvet måste begäran först autentiseras av Azure Active Directory. För att detta ska fungera måste användaren eller programmet registreras i Azure Active Directory som säkerhetsobjekt.
 
@@ -55,7 +55,7 @@ När det gäller nyckelvalv avgör dessa rolltilldelningar ett säkerhetsobjekts
 > Även om användare med rollen Deltagare eller Ägare inte har åtkomst till att utföra åtgärder på hemligheter som lagras i nyckelvalvet som standard, ger rollerna Deltagare och Ägare behörighet att lägga till eller ta bort åtkomstprinciper till hemligheter som lagras i nyckelvalvet. Därför kan en användare med dessa rolltilldelningar ge sig själva åtkomst till hemligheter i nyckelvalvet. Därför rekommenderar vi att endast administratörer har åtkomst till rollerna Deltagare eller Ägare. Användare och program som bara behöver hämta hemligheter från nyckelvalvet bör beviljas rollen Läsare. **Mer information finns i nästa avsnitt.**
 
 >[!NOTE]
-> När du tilldelar en rolltilldelning till en användare på Azure Active Directory-klientorganisationsnivå, kommer den här uppsättningen behörigheter att gå nedåt till alla prenumerationer, resursgrupper och resurser inom omfånget för tilldelningen. Om du vill följa huvudprincipen för minsta behörighet kan du göra den här rolltilldelningen till ett mer detaljerad omfång. Du kan till exempel tilldela en användare rollen Läsare på prenumerationsnivå och en ägarroll för ett enda nyckelvalv. Gå till IAM-inställningarna (Identity Access Management) för en prenumeration, resursgrupp eller ett nyckelvalv för att göra en rolltilldelning med ett mer detaljerad omfång.
+> När du tilldelar en rolltilldelning till en användare på Azure Active Directory-klientorganisationsnivå, kommer den här uppsättningen behörigheter att gå nedåt till alla prenumerationer, resursgrupper och resurser inom omfånget för tilldelningen. Om du vill följa huvudprincipen för minsta behörighet kan du göra den här rolltilldelningen till ett mer detaljerad omfång. Du kan till exempel tilldela en användare rollen Läsare på prenumerationsnivå och en ägarroll för ett enda nyckelvalv. Gå till inställningarna för Hantering av identitetsåtkomst (IAM) för en prenumeration, resursgrupp eller ett nyckelvalv för att göra en rolltilldelning med ett mer detaljerad omfång.
 
 * Länk för mer information om [Azure-roller](../../role-based-access-control/built-in-roles.md)
 * Mer information om hur du tilldelar eller tar bort [rolltilldelningar](../../role-based-access-control/role-assignments-portal.md)
@@ -68,9 +68,9 @@ Den här tabellen visar flera exempel på de olika åtgärder som styrs av hante
 
 |Hanteringsplanåtgärder (exempel)|Dataplansåtgärder (exempel)|
 | --- | --- |
-| Skapa Key Vault | Skapa en nyckel, hemlighet, certifikat
+| Skapa Key Vault | Skapa en nyckel, en hemlighet, ett certifikat
 | Ta bort Key Vault | Ta bort en nyckel, en hemlighet, ett certifikat
-| Lägga till eller Key Vault rolltilldelningar | Visa och hämta värden för nycklar, hemligheter, certifikat
+| Lägga till eller ta Key Vault rolltilldelningar | Visa och hämta värden för nycklar, hemligheter, certifikat
 | Lägga till eller Key Vault åtkomstprinciper | Säkerhetskopiering och återställning av nycklar, hemligheter, certifikat
 | Ändra Key Vault brandväggsinställningar | Förnya nycklar, hemligheter, certifikat
 | Ändra Key Vault återställningsinställningar | Rensa eller återställa mjukt borttagna nycklar, hemligheter, certifikat
@@ -78,11 +78,11 @@ Den här tabellen visar flera exempel på de olika åtgärder som styrs av hante
 
 ### <a name="management-plane-access--azure-active-directory-role-assignments"></a>Rolltilldelningar för & Azure Active Directory åtkomstplan
 
-Azure Active Directory rolltilldelningar ger åtkomst till att utföra åtgärder på hanteringsplanet i ett nyckelvalv. Den här åtkomsten beviljas vanligtvis till användare, inte till program. Du kan begränsa vilka hanteringsplanåtgärder en användare kan utföra genom att ändra en användares rolltilldelning.
+Azure Active Directory rolltilldelningar ger åtkomst till att utföra åtgärder på hanteringsplanet på ett nyckelvalv. Den här åtkomsten beviljas vanligtvis till användare, inte till program. Du kan begränsa vilka hanteringsplanåtgärder en användare kan utföra genom att ändra en användares rolltilldelning.
 
 Om du till exempel tilldelar en användare en Key Vault-läsarroll till en användare kan de se egenskaperna för ditt nyckelvalv, till exempel åtkomstprinciper, men de kan inte göra några ändringar. Genom att tilldela en användare får en ägarroll fullständig åtkomst till att ändra inställningarna för nyckelvalvshanteringsplanet.
 
-Rolltilldelningar styrs i bladet key vault Access Control (IAM). Om du vill att en viss användare ska ha åtkomst till att vara läsare eller administratör för flera nyckelvalvsresurser kan du skapa en rolltilldelning på valv-, resursgrupps- eller prenumerationsnivå så läggs rolltilldelningen till i alla resurser inom omfånget för tilldelningen.
+Rolltilldelningar styrs i bladet key vault Access Control (IAM). Om du vill att en viss användare ska ha åtkomst till att vara läsare eller administratör för flera nyckelvalvsresurser kan du skapa en rolltilldelning på valv-, resursgrupps- eller prenumerationsnivå, så läggs rolltilldelningen till i alla resurser inom omfånget för tilldelningen.
 
 Åtkomst till dataplanet eller åtkomst för att utföra åtgärder på nycklar, hemligheter och certifikat som lagras i nyckelvalvet kan läggas till på ett av två sätt.
 
@@ -95,11 +95,11 @@ Rolltilldelningar styrs i bladet key vault Access Control (IAM). Om du vill att 
 
 Klassiska åtkomstprinciper är detaljerade, vilket innebär att du kan tillåta eller neka möjligheten för varje enskild användare eller program att utföra enskilda åtgärder i ett nyckelvalv. Några exempel:
 
-* Säkerhetsobjekt 1 kan utföra valfri nyckelåtgärd men får inte utföra några hemlighets- eller certifikatåtgärd.
+* Säkerhetsobjekt 1 kan utföra valfri nyckelåtgärd, men får inte utföra några hemlighets- eller certifikatåtgärd.
 * Säkerhetsobjekt 2 kan lista och läsa alla nycklar, hemligheter och certifikat, men kan inte utföra några åtgärder för att skapa, ta bort eller förnya.
-* Säkerhetsobjekt 3 kan säkerhetskopiera och återställa alla hemligheter, men kan inte läsa själva värdet för hemligheterna.
+* Säkerhetsobjekt 3 kan säkerhetskopiera och återställa alla hemligheter men kan inte läsa värdet för hemligheterna själva.
 
-Klassiska åtkomstprinciper tillåter dock inte behörigheter per objektnivå, och tilldelade behörigheter tillämpas på omfånget för ett enskilt nyckelvalv. Om du till exempel ger åtkomstprincipen "Secret Get" behörighet till ett säkerhetsobjekt i ett visst nyckelvalv kan säkerhetsobjekt få alla hemligheter i det specifika nyckelvalvet. Den här behörigheten "Hämta hemlighet" utökas dock inte automatiskt till andra nyckelvalv och måste tilldelas explicit.
+Klassiska åtkomstprinciper tillåter dock inte behörigheter på objektnivå, och tilldelade behörigheter tillämpas på omfånget för ett enskilt nyckelvalv. Om du till exempel ger åtkomstprincipen "Secret Get" behörighet till ett säkerhetsobjekt i ett visst nyckelvalv kan säkerhetsobjekt få alla hemligheter i det specifika nyckelvalvet. Den här behörigheten "Hämta hemlighet" utökas dock inte automatiskt till andra nyckelvalv och måste tilldelas explicit.
 
 > [!IMPORTANT]
 > Åtkomstprinciper och rolltilldelningar för det Azure Active Directory nyckelvalvet är oberoende av varandra. Om du tilldelar säkerhetsobjekt rollen Deltagare på prenumerationsnivå kan säkerhetsobjekt inte automatiskt utföra dataplansåtgärder på varje nyckelvalv inom prenumerationens omfång. Säkerhetsobjekt måste fortfarande beviljas eller ge sig själva behörighet för åtkomstprinciper för att utföra dataplansåtgärder.
@@ -111,7 +111,7 @@ Ett nytt sätt att bevilja åtkomst till nyckelvalvsdataplanet är via rollbaser
 > [!NOTE]
 > Den här åtkomstmodellen är inte kompatibel med de klassiska åtkomstprinciper för Key Vault som visas ovan. Du måste välja en. Du har möjlighet att göra det här valet när du klickar på fliken Åtkomstprincip i nyckelvalvet.
 
-Key Vault rolltilldelningar är en uppsättning inbyggda Azure-rolltilldelningar som omfattar vanliga uppsättningar med behörigheter som används för åtkomst till nycklar, hemligheter och certifikat. Den här behörighetsmodellen möjliggör även ytterligare funktioner som inte är tillgängliga i den klassiska principmodellen för nyckelvalvsåtkomst.
+Key Vault rolltilldelningar är en uppsättning inbyggda Azure-rolltilldelningar som omfattar gemensamma uppsättningar med behörigheter som används för åtkomst till nycklar, hemligheter och certifikat. Den här behörighetsmodellen möjliggör även ytterligare funktioner som inte är tillgängliga i den klassiska principmodellen för nyckelvalvsåtkomst.
 
 * Azure RBAC-behörigheter kan hanteras i stor skala genom att tillåta att användarna tilldelas dessa roller på prenumerations-, resursgrupps- eller enskild nyckelvalvsnivå. En användare har dataplansbehörigheter till alla nyckelvalv inom omfånget för Azure RBAC-tilldelningen. Detta eliminerar behovet av att tilldela behörigheter för enskilda åtkomstprinciper per användare/program per nyckelvalv.
 
@@ -119,12 +119,12 @@ Key Vault rolltilldelningar är en uppsättning inbyggda Azure-rolltilldelningar
 
 Mer information om Azure RBAC för Key Vault finns i följande dokument:
 
-* Azure RBAC for [Key Vault länk](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure RBAC for [Key Vault länk](rbac-guide.md)
 * Länk till Azure RBAC Key Vault [roller](../../role-based-access-control/built-in-roles.md#key-vault-administrator)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurera Key Vault Brandvägg
 
-Som standard tillåter nyckelvalvet trafik från det offentliga Internet att skicka nå ditt nyckelvalv via en offentlig slutpunkt. Om du vill ha ett extra säkerhetslager kan du konfigurera Azure Key Vault Firewall för att begränsa åtkomsten till den offentliga slutpunkten för nyckelvalvet.
+Som standard tillåter nyckelvalvet trafik från det offentliga Internet att skicka nå ditt nyckelvalv via en offentlig slutpunkt. Om du vill ha ytterligare ett säkerhetslager kan du konfigurera Azure Key Vault Firewall för att begränsa åtkomsten till den offentliga slutpunkten för nyckelvalvet.
 
 Om du vill aktivera Key Vault-brandväggen klickar du på fliken Nätverk i nyckelvalvsportalen och väljer alternativknappen Tillåt åtkomst från: "Privat slutpunkt och valda nätverk". Om du väljer att aktivera nyckelvalvsbrandväggen kan du använda dessa metoder för att tillåta trafik genom Key Vault-brandväggen.
 

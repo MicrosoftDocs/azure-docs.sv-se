@@ -3,19 +3,18 @@ title: Om Azure Key Vault certifikatförnyelse
 description: Den här artikeln beskriver hur du förnyar Azure Key Vault certifikat.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: overview
 ms.date: 07/20/2020
 ms.author: sebansal
-ms.openlocfilehash: 0492575bef93a1b08d48475c3ab32ecbc7becd6e
-ms.sourcegitcommit: dddd1596fa368f68861856849fbbbb9ea55cb4c7
+ms.openlocfilehash: 082b0fd4d3324502516dcd2b45b9ad16a919c773
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107364302"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749230"
 ---
 # <a name="renew-your-azure-key-vault-certificates"></a>Förnya dina Azure Key Vault certifikat
 
@@ -36,7 +35,7 @@ För det andra konfigurerar du när du vill få ett meddelande om att certifikat
 Om ett certifikats princip är inställd på automatisk förnyelse skickas ett meddelande om följande händelser.
 
 - Innan certifikatet förnyas
-- Efter certifikatförnyelsen anger om certifikatet har förnyats, eller om det uppstod ett fel, som kräver manuell förnyelse av certifikatet.  
+- Efter certifikatförnyelse anger om certifikatet har förnyats, eller om det uppstod ett fel, som kräver manuell förnyelse av certifikatet.  
 
   När en certifikatprincip som är inställd på att förnyas manuellt (endast e-post) skickas ett meddelande när det är dags att förnya certifikatet.  
 
@@ -52,7 +51,7 @@ Azure Key Vault hanterar hela underhållet av certifikat som utfärdats av betro
 Genom att Azure Key Vault certifikat kan du importera certifikat från valfri certifikatutfärdare, en förmån som gör att du kan integrera med flera Azure-resurser och göra distributionen enkel. Om du är orolig över att förlora kontrollen över förfallodatumen för ditt certifikat, eller om du har upptäckt att ett certifikat redan har upphört att gälla, kan ditt nyckelvalv hjälpa dig att hålla dig uppdaterad. För icke-integrerade CA-certifikat kan du med nyckelvalvet konfigurera e-postaviseringar som snart upphör att gälla. Sådana meddelanden kan även anges för flera användare.
 
 > [!IMPORTANT]
-> Ett certifikat är ett versionsobjekt. Om den aktuella versionen upphör att gälla måste du skapa en ny version. Konceptuellt är varje ny version ett nytt certifikat som består av en nyckel och en blob som kopplar nyckeln till en identitet. När du använder en certifikatutfärdare som inte är partner genererar nyckelvalvet ett nyckel/värde-par och returnerar en certifikatsigneringsbegäran (CSR).
+> Ett certifikat är ett versionsobjekt. Om den aktuella versionen upphör att gälla måste du skapa en ny version. Konceptuellt är varje ny version ett nytt certifikat som består av en nyckel och en blob som binder nyckeln till en identitet. När du använder en certifikatutfärdare som inte är partner genererar nyckelvalvet ett nyckel/värde-par och returnerar en certifikatsigneringsbegäran (CSR).
 
 Så här förnyar du ett icke-integrerat CA-certifikat:
 
@@ -84,7 +83,7 @@ Azure Key Vault hanterar även autorenewal av själv signerade certifikat. Mer i
 
 Skapa ett själv signerat certifikat med en giltighet på **1** månad och ange sedan livslängdsåtgärden för rotation till **1 %**. Du bör kunna visa certifikatversionshistoriken som skapas under de närmaste dagarna.
   
-**Kommer taggarna att replikeras efter att certifikatet har utfärdats automatiskt?**
+**Kommer taggarna att replikeras efter ett autorenewal av certifikatet?**
 
 Ja, taggarna replikeras efter autorenewal.
 

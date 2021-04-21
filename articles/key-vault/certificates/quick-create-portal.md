@@ -3,7 +3,6 @@ title: Azure-snabbstart – Konfigurera och hämta ett certifikat från Key Vaul
 description: Snabbstart som visar hur du ställer in och hämtar ett certifikat Azure Key Vault med hjälp av Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 0a35f83286abe5ae33f6d3c44ee7b05faf692512
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479227"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749986"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Snabbstart: Ange och hämta ett certifikat från Azure Key Vault med hjälp av Azure Portal
 
@@ -88,5 +87,5 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
 - Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)

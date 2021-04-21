@@ -1,183 +1,183 @@
 ---
-title: Metod tips för Azure Service Fabric Security
-description: Den här artikeln innehåller en uppsättning metod tips för Azure Service Fabric Security.
+title: Metodtips för Azure Service Fabric säkerhet
+description: Den här artikeln innehåller en uppsättning metodtips för Azure Service Fabric säkerhet.
 author: unifycloud
 ms.author: tomsh
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 91d7e0777cbdad459e4514a0216146e0d5739f6d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94700954"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750958"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Metodtips för Azure Service Fabric-säkerhet
-Att distribuera ett program på Azure är snabbt, enkelt och kostnads effektivt. Innan du distribuerar moln programmet till produktion bör du gå igenom vår lista över viktiga och rekommenderade metod tips för att implementera säkra kluster i ditt program.
+Det går snabbt, enkelt och kostnadseffektivt att distribuera ett program i Azure. Innan du distribuerar molnprogrammet till produktion bör du granska vår lista över viktiga och rekommenderade metodtips för att implementera säkra kluster i ditt program.
 
 Azure Service Fabric är en distribuerad systemplattform som gör det enkelt att paketera, distribuera och hantera skalbara och tillförlitliga mikrotjänster. Service Fabric tar också itu med betydande utmaningar vid utveckling och hantering av molnprogram. Utvecklare och administratörer kan undvika komplexa infrastrukturproblem och fokusera på att implementera verksamhetskritiska, krävande arbetsbelastningar som är skalbara, tillförlitliga och hanterbara.
 
 För varje bästa praxis förklarar vi:
 
--   Det bästa tillvägagångs sättet är.
+-   Vad bästa praxis är.
 -   Varför du bör implementera bästa praxis.
--   Vad kan inträffa om du inte implementerar bästa praxis.
+-   Vad som kan hända om du inte implementerar bästa praxis.
 -   Hur du kan lära dig att implementera bästa praxis.
 
-Vi rekommenderar följande rekommenderade metoder för Azure Service Fabric-säkerhet:
+Vi rekommenderar följande metodtips för Service Fabric Azure-säkerhet:
 
--   Använd Azure Resource Manager mallar och Service Fabric PowerShell-modulen för att skapa säkra kluster.
--   Använd X. 509-certifikat.
--   Konfigurera säkerhets principer.
--   Implementera Reliable Actors säkerhets konfiguration.
+-   Använd Azure Resource Manager-mallar och Service Fabric PowerShell-modulen för att skapa säkra kluster.
+-   Använd X.509-certifikat.
+-   Konfigurera säkerhetsprinciper.
+-   Implementera Reliable Actors säkerhetskonfiguration.
 -   Konfigurera TLS för Azure Service Fabric.
--   Använd Nätverks isolering och säkerhet med Azure Service Fabric.
+-   Använd nätverksisolering och säkerhet med Azure Service Fabric.
 -   Konfigurera Azure Key Vault för säkerhet.
 -   Tilldela användare till roller.
 
 
-## <a name="best-practices-for-securing-your-clusters"></a>Metod tips för att skydda dina kluster
+## <a name="best-practices-for-securing-your-clusters"></a>Metodtips för att skydda dina kluster
 
 Använd alltid ett säkert kluster:
--   Implementera kluster säkerhet med hjälp av certifikat.
--   Tillhandahåll klient åtkomst (admin och skrivskyddad) med hjälp av Azure Active Directory (Azure AD).
+-   Implementera klustersäkerhet med hjälp av certifikat.
+-   Ge klientåtkomst (administratör och skrivskyddad) med hjälp av Azure Active Directory (Azure AD).
 
 Använd automatiserade distributioner:
--   Använd skript för att skapa, distribuera och rulla över hemligheterna.
--   Lagra hemligheterna i Azure Key Vault och Använd Azure AD för all annan klient åtkomst.
+-   Använd skript för att generera, distribuera och återställa hemligheterna.
+-   Lagra hemligheterna i Azure Key Vault och använd Azure AD för all annan klientåtkomst.
 -   Kräv autentisering för mänsklig åtkomst till hemligheterna.
 
-Överväg även följande konfigurations alternativ:
--   Skapa perimeternätverk (kallas även demilitariserad-zoner, DMZs och skärmade undernät) med hjälp av Azure nätverks säkerhets grupper (NSG: er).
--   Få åtkomst till virtuella datorer i klustret (VM) eller hantera klustret med hjälp av hopp servrar med Anslutning till fjärrskrivbord.
+Tänk också på följande konfigurationsalternativ:
+-   Skapa perimeternätverk (även kallade demilitariserade zoner, DMZ:er och skärmade undernät) med hjälp av Azure NSG:er (Network Security Groups).
+-   Få åtkomst till virtuella datorer (VM) för kluster eller hantera klustret med hjälp av hoppservrar med Anslutning till fjärrskrivbord.
 
-Dina kluster måste skyddas för att förhindra att obehöriga användare ansluter, särskilt när ett kluster körs i produktionen. Även om det är möjligt att skapa ett oskyddat kluster kan anonyma användare ansluta till klustret om klustret exponerar hanterings slut punkter för det offentliga Internet.
+Klustren måste skyddas för att förhindra att obehöriga användare ansluter, särskilt när ett kluster körs i produktion. Även om det är möjligt att skapa ett oskyddat kluster kan anonyma användare ansluta till klustret om klustret exponerar hanteringsslutpunkter för det offentliga Internet.
 
-Det finns tre [scenarier](../../service-fabric/service-fabric-cluster-security.md) för att implementera kluster säkerhet med hjälp av olika tekniker:
+Det finns tre [scenarier för](../../service-fabric/service-fabric-cluster-security.md) att implementera klustersäkerhet med hjälp av olika tekniker:
 
--   Säkerhet från nod till nod: det här scenariot skyddar kommunikationen mellan de virtuella datorerna och datorerna i klustret. Den här typen av säkerhet garanterar att endast de datorer som har behörighet att ansluta till klustret kan vara värdar för program och tjänster i klustret.
-I det här scenariot kan kluster som körs på Azure eller fristående kluster som körs i Windows använda antingen [certifikat säkerhet](../../service-fabric/service-fabric-windows-cluster-x509-security.md) eller [Windows-säkerhet](../../service-fabric/service-fabric-windows-cluster-windows-security.md) för Windows Server-datorer.
--   Säkerhet från klient till nod: det här scenariot skyddar kommunikationen mellan en Service Fabric-klient och de enskilda noderna i klustret.
--   Service Fabric rollbaserad åtkomst kontroll (Service Fabric RBAC): det här scenariot använder separata identiteter (certifikat, Azure AD och så vidare) för varje administratör och användar klient roll som har åtkomst till klustret. Du anger roll identiteter när du skapar klustret.
+-   Nod-till-nod-säkerhet: Det här scenariot skyddar kommunikationen mellan de virtuella datorerna och datorerna i klustret. Den här säkerhetsformen säkerställer att endast de datorer som har behörighet att ansluta till klustret kan vara värdar för program och tjänster i klustret.
+I det här scenariot kan kluster som körs i Azure, eller fristående kluster som körs i Windows, använda antingen certifikatsäkerhet eller [Windows-säkerhet](../../service-fabric/service-fabric-windows-cluster-windows-security.md) för Windows Server-datorer. [](../../service-fabric/service-fabric-windows-cluster-x509-security.md)
+-   Säkerhet från klient till nod: Det här scenariot skyddar kommunikationen mellan Service Fabric klient och de enskilda noderna i klustret.
+-   Service Fabric rollbaserad åtkomstkontroll (Service Fabric RBAC): Det här scenariot använder separata identiteter (certifikat, Azure AD och så vidare) för varje administratörs- och användarklientroll som har åtkomst till klustret. Du anger rollidentiteterna när du skapar klustret.
 
 >[!NOTE]
->**Säkerhets rekommendationer för Azure-kluster:** Använd Azure AD-säkerhet för att autentisera klienter och certifikat för nod-till-nod-säkerhet.
+>**Säkerhetsrekommendation för Azure-kluster:** Använd Azure AD-säkerhet för att autentisera klienter och certifikat för nod-till-nod-säkerhet.
 
-Information om hur du konfigurerar ett fristående Windows-kluster finns i [Konfigurera inställningar för ett fristående Windows-kluster](../../service-fabric/service-fabric-cluster-manifest.md).
+Information om hur du konfigurerar ett fristående Windows-kluster [finns i Konfigurera inställningar för ett fristående Windows-kluster.](../../service-fabric/service-fabric-cluster-manifest.md)
 
-Använd Azure Resource Manager mallar och Service Fabric PowerShell-modulen för att skapa ett säkert kluster.
-Stegvisa instruktioner för att skapa ett säkert Service Fabric kluster med hjälp av Azure Resource Manager-mallar finns i [skapa ett Service Fabric kluster](../../service-fabric/service-fabric-cluster-creation-via-arm.md).
+Använd Azure Resource Manager-mallar och Service Fabric PowerShell-modulen för att skapa ett säkert kluster.
+Stegvisa instruktioner för att skapa ett säkert Service Fabric med hjälp av Azure Resource Manager-mallar finns i [Skapa ett Service Fabric kluster.](../../service-fabric/service-fabric-cluster-creation-via-arm.md)
 
-Använd Azure Resource Manager-mallen:
--   Anpassa klustret med hjälp av mallen för att konfigurera hanterad lagring för virtuella datorer virtuella hård diskar (VHD: er).
--   Enhets ändringar i resurs gruppen med hjälp av mallen för enkel konfigurations hantering och granskning.
+Använd Azure Resource Manager mall:
+-   Anpassa klustret med hjälp av mallen för att konfigurera hanterad lagring för virtuella hårddiskar (VHD).
+-   Gör ändringar i resursgruppen med hjälp av mallen för enkel konfigurationshantering och granskning.
 
-Behandla kluster konfigurationen som kod:
--   Var noggrann när du kontrollerar distributions konfigurationerna.
--   Undvik att använda implicita kommandon för att ändra dina resurser direkt.
+Hantera klusterkonfigurationen som kod:
+-   Var noggrann när du kontrollerar dina distributionskonfigurationer.
+-   Undvik att använda implicita kommandon för att direkt ändra dina resurser.
 
-Många aspekter av [Service Fabric programmets livs cykel](../../service-fabric/service-fabric-application-lifecycle.md) kan automatiseras. [Service Fabric PowerShell-modulen](../../service-fabric/service-fabric-deploy-remove-applications.md#upload-the-application-package) automatiserar vanliga uppgifter för att distribuera, uppgradera, ta bort och testa Azure Service Fabric-program. Hanterade API: er och HTTP-API: er för program hantering är också tillgängliga.
+Många aspekter av [Service Fabric kan](../../service-fabric/service-fabric-application-lifecycle.md) automatiseras. [PowerShell Service Fabric modulen](../../service-fabric/service-fabric-deploy-remove-applications.md#upload-the-application-package) automatiserar vanliga uppgifter för att distribuera, uppgradera, ta bort och testa Azure Service Fabric program. Hanterade API:er och HTTP-API:er för programhantering är också tillgängliga.
 
-## <a name="use-x509-certificates"></a>Använd X. 509-certifikat
-Skydda alltid dina kluster genom att använda X. 509-certifikat eller Windows-säkerhet. Säkerhet konfigureras bara när klustret skapas. Det går inte att aktivera säkerhet när klustret har skapats.
+## <a name="use-x509-certificates"></a>Använda X.509-certifikat
+Skydda alltid dina kluster med hjälp av X.509-certifikat eller Windows-säkerhet. Säkerheten konfigureras bara när klustret skapas. Det går inte att aktivera säkerhet när klustret har skapats.
 
-Ange ett [kluster certifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md)genom att ange värdet för egenskapen **ClusterCredentialType** till X509. Ange ett Server certifikat för externa anslutningar genom att ange egenskapen **ServerCredentialType** till X509.
+Om du vill [ange ett klustercertifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md)anger du värdet för **egenskapen ClusterCredentialType** till X509. Om du vill ange ett servercertifikat för externa anslutningar anger du **egenskapen ServerCredentialType** till X509.
 
-Följ också dessa metoder:
--   Skapa certifikat för produktions kluster genom att använda en korrekt konfigurerad Windows Server Certificate service. Du kan också hämta certifikaten från en godkänd certifikat utfärdare (CA).
--   Använd aldrig ett temporärt certifikat eller test certifikat för produktions kluster om certifikatet har skapats med hjälp av MakeCert.exe eller ett liknande verktyg.
--   Använd ett självsignerat certifikat för test kluster, men inte för produktions kluster.
+Följ även dessa metoder:
+-   Skapa certifikaten för produktionskluster med hjälp av en korrekt konfigurerad Windows Server-certifikattjänst. Du kan också hämta certifikaten från en godkänd certifikatutfärdare (CA).
+-   Använd aldrig ett tillfälligt certifikat eller testcertifikat för produktionskluster om certifikatet har skapats med hjälp MakeCert.exe eller ett liknande verktyg.
+-   Använd ett själv signerat certifikat för testkluster, men inte för produktionskluster.
 
-Om klustret är oskyddat kan vem som helst ansluta till klustret anonymt och utföra hanterings åtgärder. Därför bör du alltid säkra produktions kluster genom att använda X. 509-certifikat eller Windows-säkerhet.
+Om klustret är oskyddat kan vem som helst ansluta till klustret anonymt och utföra hanteringsåtgärder. Därför bör du alltid skydda produktionskluster med hjälp av X.509-certifikat eller Windows-säkerhet.
 
-Mer information om hur du använder X. 509-certifikat finns i [lägga till eller ta bort certifikat för ett Service Fabric-kluster](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md).
+Mer information om hur du använder X.509-certifikat finns i [Lägga till eller ta bort certifikat för Service Fabric kluster](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md).
 
-## <a name="configure-security-policies"></a>Konfigurera säkerhets principer
-Service Fabric skyddar också resurserna som används av program. Resurser som filer, kataloger och certifikat lagras under användar kontona när programmet distribueras. Den här funktionen gör att program som körs säkrare från varandra, även i en delad värd miljö.
+## <a name="configure-security-policies"></a>Konfigurera säkerhetsprinciper
+Service Fabric också de resurser som används av program. Resurser som filer, kataloger och certifikat lagras under användarkontona när programmet distribueras. Den här funktionen gör program som körs säkrare från varandra, även i en delad värdmiljö.
 
--   Använd en Active Directory domän grupp eller användare: kör tjänsten under autentiseringsuppgifterna för ett Active Directory användar-eller grupp konto. Se till att du använder Active Directory lokalt i din domän och inte Azure Active Directory. Få åtkomst till andra resurser i domänen som har beviljats behörigheter genom att använda en domän användare eller grupp. Till exempel resurser som fil resurser.
+-   Använd en Active Directory-domängrupp eller -användare: Kör tjänsten under autentiseringsuppgifterna för en Active Directory-användare eller ett gruppkonto. Se till att använda Active Directory lokalt i din domän och inte Azure Active Directory. Få åtkomst till andra resurser i domänen som har beviljats behörighet med hjälp av en domänanvändare eller grupp. Till exempel resurser som filresurser.
 
--   Tilldela en säkerhets åtkomst princip för HTTP-och HTTPS-slutpunkter: ange egenskapen **SecurityAccessPolicy** för att tillämpa en **runas** -princip på en tjänst när tjänst manifestet deklarerar slut punkts resurser med http. Portar som tilldelas HTTP-slutpunkterna är korrekt åtkomst kontrollerade listor för det RunAs-användarkonto som tjänsten körs under. När principen inte har angetts har http.sys inte åtkomst till tjänsten och du kan få problem med anrop från klienten.
+-   Tilldela en säkerhetsåtkomstprincip för HTTP- och HTTPS-slutpunkter: Ange egenskapen **SecurityAccessPolicy** för att tillämpa en **RunAs-princip** på en tjänst när tjänstmanifestet deklarerar slutpunktsresurser med HTTP. Portar som allokeras till HTTP-slutpunkterna är korrekt åtkomstkontrollerade listor för RunAs-användarkontot som tjänsten körs under. När principen inte har angetts har http.sys åtkomst till tjänsten och du kan få fel med anrop från klienten.
 
-Information om hur du använder säkerhets principer i ett Service Fabric kluster finns i [Konfigurera säkerhets principer för ditt program](../../service-fabric/service-fabric-application-runas-security.md).
+Information om hur du använder säkerhetsprinciper i ett Service Fabric kluster finns [i Konfigurera säkerhetsprinciper för ditt program](../../service-fabric/service-fabric-application-runas-security.md).
 
-## <a name="implement-the-reliable-actors-security-configuration"></a>Implementera Reliable Actors säkerhets konfiguration
-Service Fabric Reliable Actors är en implementering av aktörens design mönster. Precis som med ett mönster för program varu design baseras beslutet om att använda ett speciellt mönster på om ett program varu problem passar mönstret.
+## <a name="implement-the-reliable-actors-security-configuration"></a>Implementera Reliable Actors säkerhetskonfiguration
+Service Fabric Reliable Actors är en implementering av aktörsdesignmönstret. Precis som med alla programdesignmönster baseras beslutet att använda ett visst mönster på om ett programvaruproblem passar mönstret.
 
-I allmänhet använder du aktörens design mönster för att hjälpa till att modellera lösningar för följande program varu problem eller säkerhets scenarier:
--   Ditt problem utrymme innebär ett stort antal (tusentals eller mer) av små, oberoende och isolerade enheter av tillstånd och logik.
--   Du arbetar med entrådade objekt som inte kräver betydande interaktion från externa komponenter, inklusive frågor om tillstånd i en uppsättning aktörer.
--   Dina aktörs instanser blockerar inte anropare med oförutsägbara fördröjningar genom att skicka I/O-åtgärder.
+Använd i allmänhet aktörsdesignmönstret för att modellera lösningar för följande programvaruproblem eller säkerhetsscenarier:
+-   Ditt problemområde omfattar ett stort antal (tusentals eller fler) små, oberoende och isolerade tillstånds- och logikenheter.
+-   Du arbetar med entrådiga objekt som inte kräver betydande interaktion från externa komponenter, inklusive frågetillstånd över en uppsättning aktörer.
+-   Aktörsinstanserna blockerar inte anropare med oförutsägbara fördröjningar genom att utfärda I/O-åtgärder.
 
-I Service Fabric implementeras aktörer i Reliable Actors Application Framework. Det här ramverket baseras på aktörens mönster och byggt ovanpå [Service Fabric Reliable Services](../../service-fabric/service-fabric-reliable-services-introduction.md). Varje tillförlitlig aktörs tjänst som du skriver är en partitionerad tillstånds känslig tillförlitlig tjänst.
+I Service Fabric implementeras aktörer i det Reliable Actors programramverket. Det här ramverket baseras på aktörsmönstret och bygger på [Service Fabric Reliable Services](../../service-fabric/service-fabric-reliable-services-introduction.md). Varje tillförlitlig aktörstjänst som du skriver är en partitionerad tillståndsful och tillförlitlig tjänst.
 
-Varje aktör definieras som en instans av en aktörs typ, som är identisk med hur ett .NET-objekt är en instans av en .NET-typ. En **aktörs typ** som implementerar funktionerna i en kalkylator kan till exempel ha många aktörer av den typen som distribueras på olika noder i ett kluster. Var och en av de distribuerade aktörerna kännetecknas unikt av ett aktörs-ID.
+Varje aktör definieras som en instans av en aktörstyp, identisk med hur ett .NET-objekt är en instans av en .NET-typ. En aktörstyp **som** implementerar funktionerna i en kalkylator kan till exempel ha många aktörer av den typen som distribueras på olika noder i ett kluster. Var och en av de distribuerade aktörer kännetecknas unikt av en aktörsidentifierare.
 
-[Replicators säkerhetskonfigurationer](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) används för att skydda kommunikations kanalen som används vid replikering. Den här konfigurationen förhindrar att tjänster ser var and ras replikeringstrafik och säkerställer att hög tillgängliga data är säkra. Som standard förhindrar ett tomt säkerhets konfigurations avsnitt replikeringen av säkerheten.
-Konfigurationer för duplicering konfigurerar den ansvariga för att göra providerns tillstånd för aktörs status mycket tillförlitligt.
+[Replikeringssäkerhetskonfigurationer](../../service-fabric/service-fabric-reliable-actors-kvsactorstateprovider-configuration.md) används för att skydda den kommunikationskanal som används under replikeringen. Den här konfigurationen förhindrar tjänster från att se varandras replikeringstrafik och säkerställer att data med hög tillgång är säkra. Som standard förhindrar ett tomt säkerhetskonfigurationsavsnitt replikeringssäkerhet.
+Replikatorkonfigurationer konfigurerar den replikerare som ansvarar för att göra tillståndet aktörstillståndsprovider mycket tillförlitligt.
 
 ## <a name="configure-tls-for-azure-service-fabric"></a>Konfigurera TLS för Azure Service Fabric
-Processen för serverautentisering [autentiserar](../../service-fabric/service-fabric-cluster-creation-via-arm.md) kluster hanterings slut punkter till en hanterings klient. Hanterings klienten känner sedan igen att den pratar med det riktiga klustret. Det här certifikatet tillhandahåller också en [TLS](../../service-fabric/service-fabric-cluster-creation-via-arm.md) för https Management API och för Service Fabric Explorer över https.
-Du måste skaffa ett anpassat domännamn för ditt kluster. När du begär ett certifikat från en certifikat utfärdare måste certifikatets ämnes namn matcha det anpassade domän namn som du använder för klustret.
+Serverautentiseringsprocessen autentiserar slutpunkterna för klusterhantering till en [hanteringsklient.](../../service-fabric/service-fabric-cluster-creation-via-arm.md) Hanteringsklienten känner sedan igen att den pratar med det verkliga klustret. Det här certifikatet tillhandahåller också [en TLS för](../../service-fabric/service-fabric-cluster-creation-via-arm.md) HTTPS-hanterings-API:et och för Service Fabric Explorer över HTTPS.
+Du måste skaffa ett anpassat domännamn för ditt kluster. När du begär ett certifikat från en certifikatutfärdare måste certifikatets ämnesnamn matcha det anpassade domännamn som du använder för klustret.
 
-Om du vill konfigurera TLS för ett program måste du först skaffa ett SSL/TLS-certifikat som har signerats av en certifikat utfärdare. CA: n är en betrodd tredje part som utfärdar certifikat för TLS-säkerhets syfte. Om du inte redan har ett SSL/TLS-certifikat måste du skaffa ett från ett företag som säljer SSL/TLS-certifikat.
+För att konfigurera TLS för ett program måste du först hämta ett SSL/TLS-certifikat som har signerats av en certifikatutfärdare. Certifikatutfärdaren är en betrodd tredje part som utfärdar certifikat för TLS-säkerhet. Om du inte redan har ett SSL/TLS-certifikat måste du skaffa ett från ett företag som säljer SSL/TLS-certifikat.
 
 Certifikatet måste uppfylla följande krav för SSL/TLS-certifikat i Azure:
 -   Certifikatet måste innehålla en privat nyckel.
 
--   Certifikatet måste skapas för nyckel utbyte och kunna exporteras till en personal information Exchange-fil (. pfx).
+-   Certifikatet måste skapas för nyckelutbyte och kunna exporteras till en personlig informationsutbytesfil (.pfx).
 
--   Certifikatets ämnes namn måste matcha domän namnet som används för att komma åt din moln tjänst.
+-   Certifikatets ämnesnamn måste matcha domännamnet som används för att få åtkomst till molntjänsten.
 
-    - Hämta ett anpassat domän namn som ska användas för åtkomst till din moln tjänst.
-    - Begär ett certifikat från en certifikat utfärdare med ett ämnes namn som matchar tjänstens anpassade domän namn. Om ditt anpassade domän namn till exempel är __contoso__**. com**, ska certifikatet från din certifikat utfärdare ha ämnes namnet **. contoso.com** eller __www__**. contoso.com**.
+    - Skaffa ett anpassat domännamn som ska användas för åtkomst till molntjänsten.
+    - Begär ett certifikat från en certifikatutfärdare med ett ämnesnamn som matchar tjänstens anpassade domännamn. Om ditt anpassade domännamn till exempel är __contoso__**.com** bör certifikatet från certifikatutfärdaren ha ämnesnamnet **.contoso.com** __eller www__**.contoso.com**.
 
     >[!NOTE]
-    >Du kan inte hämta ett SSL/TLS-certifikat från en certifikat utfärdare för __cloudapp__**.net** -domänen.
+    >Du kan inte hämta ett SSL/TLS-certifikat från en certifikatutfärdare för __cloudapp__**.net-domänen.**
 
--   Certifikatet måste ha minst 2 048-bitars kryptering.
+-   Certifikatet måste använda minst 2 048-bitarskryptering.
 
-HTTP-protokollet är inte säkert och kan omfattas av avlyssnings attacker. Data som överförs via HTTP skickas som oformaterad text från webbläsaren till webb servern eller mellan andra slut punkter. Angripare kan fånga upp och Visa känsliga data som skickas via HTTP, till exempel kreditkorts information och konto inloggningar. När data skickas eller publiceras via en webbläsare via HTTPS ser SSL till att känslig information krypteras och skyddas från avlyssning.
+HTTP-protokollet är oskyddat och omfattas av avlyssningsattacker. Data som överförs via HTTP skickas som oformaterad text från webbläsaren till webbservern eller mellan andra slutpunkter. Angripare kan fånga upp och visa känsliga data som skickas via HTTP, till exempel kreditkortsinformation och kontoinloggningar. När data skickas eller publiceras via en webbläsare via HTTPS ser SSL till att känslig information krypteras och säkras från avlyssning.
 
-Mer information om hur du använder SSL/TLS-certifikat finns i [Konfigurera TLS för ett program i Azure](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+Mer information om hur du använder SSL/TLS-certifikat finns i [Konfigurera TLS för ett program i Azure.](../../cloud-services/cloud-services-configure-ssl-certificate-portal.md)
 
-## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Använda nätverks isolering och säkerhet med Azure Service Fabric
-Konfigurera ett 3-NodeType-säkert kluster med hjälp av [Azure Resource Manager-mallen](../../azure-resource-manager/templates/template-syntax.md) som ett exempel. Styr inkommande och utgående nätverks trafik med hjälp av mall-och nätverks säkerhets grupper.
+## <a name="use-network-isolation-and-security-with-azure-service-fabric"></a>Använda nätverksisolering och säkerhet med Azure Service Fabric
+Konfigurera ett säkert kluster med 3 nodetype med hjälp av [Azure Resource Manager mallen](../../azure-resource-manager/templates/template-syntax.md) som ett exempel. Kontrollera inkommande och utgående nätverkstrafik med hjälp av mallen och nätverkssäkerhetsgrupper.
 
-Mallen har en NSG för var och en av de virtuella datorernas skalnings uppsättningar och används för att styra trafiken in och ut ur uppsättningen. Reglerna konfigureras som standard för att tillåta all trafik som krävs för system tjänsterna och program portarna som anges i mallen. Granska de här reglerna och gör eventuella ändringar som passar dina behov, inklusive att lägga till nya regler för dina program.
+Mallen har en NSG för var och en av VM-skalningsuppsättningarna och används för att styra trafiken in och ut ur uppsättningen. Reglerna konfigureras som standard för att tillåta all trafik som behövs för systemtjänsterna och programportarna som anges i mallen. Granska dessa regler och gör ändringar som passar dina behov, inklusive att lägga till nya regler för dina program.
 
-Mer information finns i [vanliga nätverks scenarier för Azure Service Fabric](../../service-fabric/service-fabric-patterns-networking.md).
+Mer information finns i Vanliga [nätverksscenarier för Azure Service Fabric](../../service-fabric/service-fabric-patterns-networking.md).
 
 ## <a name="set-up-azure-key-vault-for-security"></a>Konfigurera Azure Key Vault för säkerhet
 Service Fabric använder certifikat för att tillhandahålla autentisering och kryptering för att skydda ett kluster och dess program.
 
-Service Fabric använder X. 509-certifikat för att skydda ett kluster och tillhandahålla funktioner för program säkerhet. Du använder Azure Key Vault för att [Hantera certifikat](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) för Service Fabric kluster i Azure. Azure-resurs leverantören som skapar klustren hämtar certifikaten från ett nyckel valv. Providern installerar sedan certifikaten på de virtuella datorerna när klustret distribueras på Azure.
+Service Fabric använder X.509-certifikat för att skydda ett kluster och för att tillhandahålla programsäkerhetsfunktioner. Du använder Azure Key Vault för [att hantera](../../service-fabric/service-fabric-cluster-security-update-certs-azure.md) certifikat Service Fabric kluster i Azure. Den Azure-resursprovider som skapar klustren hämtar certifikaten från ett nyckelvalv. Providern installerar sedan certifikaten på de virtuella datorerna när klustret distribueras i Azure.
 
-Det finns en certifikat relation mellan [Azure Key Vault](../../key-vault/general/secure-your-key-vault.md), Service Fabric klustret och resurs leverantören som använder certifikaten. När klustret skapas lagras information om certifikat relationen i ett nyckel valv.
+Det finns en certifikatrelation [mellan Azure Key Vault,](../../key-vault/general/security-overview.md)Service Fabric klustret och den resursprovider som använder certifikaten. När klustret skapas lagras information om certifikatrelationen i ett nyckelvalv.
 
-Det finns två grundläggande steg för att konfigurera ett nyckel valv:
-1. Skapa en resurs grupp specifikt för ditt nyckel valv.
+Det finns två grundläggande steg för att konfigurera ett nyckelvalv:
+1. Skapa en resursgrupp specifikt för ditt nyckelvalv.
 
-    Vi rekommenderar att du sätter nyckel valvet i sin egen resurs grupp. Den här åtgärden hjälper till att förhindra förlust av nycklar och hemligheter om andra resurs grupper tas bort, till exempel lagring, beräkning eller gruppen som innehåller klustret. Resurs gruppen som innehåller nyckel valvet måste finnas i samma region som det kluster som använder det.
+    Vi rekommenderar att du lägger nyckelvalvet i en egen resursgrupp. Den här åtgärden hjälper till att förhindra förlust av dina nycklar och hemligheter om andra resursgrupper tas bort, till exempel lagring, beräkning eller den grupp som innehåller klustret. Resursgruppen som innehåller ditt nyckelvalv måste finnas i samma region som det kluster som använder det.
 
-2. Skapa ett nyckel valv i den nya resurs gruppen.
+2. Skapa ett nyckelvalv i den nya resursgruppen.
 
-    Nyckel valvet måste vara aktiverat för distribution. Compute Resource providern kan sedan hämta certifikaten från valvet och installera dem på VM-instanserna.
+    Nyckelvalvet måste vara aktiverat för distribution. Beräkningsresursprovidern kan sedan hämta certifikaten från valvet och installera dem på VM-instanserna.
 
-Läs mer om hur du konfigurerar ett nyckel valv i [Vad är Azure Key Vault?](../../key-vault/general/overview.md).
+Mer information om hur du ställer in ett nyckelvalv finns i [Vad är Azure Key Vault?](../../key-vault/general/overview.md).
 
 ## <a name="assign-users-to-roles"></a>Tilldela användare till roller
-När du har skapat programmen som ska representera ditt kluster tilldelar du användarna de roller som stöds av Service Fabric: skrivskyddad och administratör. Du kan tilldela dessa roller med hjälp av Azure Portal.
+När du har skapat programmen som representerar klustret tilldelar du användarna de roller som stöds av Service Fabric: skrivskyddad och administratör. Du kan tilldela dessa roller med hjälp av Azure Portal.
 
 >[!NOTE]
-> Mer information om hur du använder roller i Service Fabric finns [Service Fabric rollbaserad åtkomst kontroll för Service Fabric klienter](../../service-fabric/service-fabric-cluster-security-roles.md).
+> Mer information om hur du använder Service Fabric i Service Fabric finns [i Service Fabric rollbaserad åtkomstkontroll för Service Fabric klienter](../../service-fabric/service-fabric-cluster-security-roles.md).
 
-Azure Service Fabric stöder två åtkomst kontroll typer för klienter som är anslutna till ett [Service Fabric-kluster](../../service-fabric/service-fabric-cluster-creation-via-arm.md): administratör och användare. Kluster administratören kan använda åtkomst kontroll för att begränsa åtkomsten till vissa kluster åtgärder för olika användar grupper. Åtkomst kontroll gör klustret säkrare.
+Azure Service Fabric stöder två typer av åtkomstkontroll för klienter som är [anslutna Service Fabric ett kluster:](../../service-fabric/service-fabric-cluster-creation-via-arm.md)administratör och användare. Klusteradministratören kan använda åtkomstkontroll för att begränsa åtkomsten till vissa klusteråtgärder för olika grupper av användare. Åtkomstkontroll gör klustret säkrare.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Service Fabric säkerhets check lista](../../service-fabric/service-fabric-best-practices-security.md)
-- Konfigurera din Service Fabric [utvecklings miljö](../../service-fabric/service-fabric-get-started.md).
-- Läs mer om [Service Fabric support alternativ](../../service-fabric/service-fabric-support.md).
+- [Service Fabric checklista för säkerhet](../../service-fabric/service-fabric-best-practices-security.md)
+- Konfigurera din Service Fabric [utvecklingsmiljö](../../service-fabric/service-fabric-get-started.md).
+- Lär dig [mer Service Fabric om supportalternativen](../../service-fabric/service-fabric-support.md).

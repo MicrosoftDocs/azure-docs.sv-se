@@ -1,6 +1,6 @@
 ---
-title: Åtkomst kontroll för Azure Managed HSM
-description: 'Hantera åtkomst behörigheter för Azure-hanterad HSM och nycklar. Omfattar autentiserings-och auktoriserings modellen för hanterad HSM och hur du skyddar din HSM: er.'
+title: Azure Managed HSM-åtkomstkontroll
+description: Hantera åtkomstbehörigheter för Azure Managed HSM och nycklar. Omfattar autentiserings- och auktoriseringsmodellen för Managed HSM och hur du skyddar dina HSM:er.
 services: key-vault
 author: amitbapat
 tags: azure-resource-manager
@@ -9,84 +9,85 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 02/17/2021
 ms.author: ambapat
-ms.openlocfilehash: 0c0a0c5f62f92aaf195e207dfd505ffb017d924e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bea1ccf0777c6325bc86c15e0f88304c465d89c9
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100653908"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750292"
 ---
 # <a name="managed-hsm-access-control"></a>Åtkomstkontroll i Managed HSM
 
 > [!NOTE]
-> Key Vault Resource provider stöder två resurs typer: **valv** och **hanterade HSM: er**. Åtkomst kontroll som beskrivs i den här artikeln gäller endast **hanterade HSM: er**. Mer information om åtkomst kontroll för hanterad HSM finns i [ge åtkomst till Key Vault nycklar, certifikat och hemligheter med en rollbaserad åtkomst kontroll i Azure](../general/rbac-guide.md).
+> Key Vault har stöd för två resurstyper: **valv och** **hanterade HSM:er.** Åtkomstkontroll som beskrivs i den här artikeln gäller endast för **hanterade HSM:er.** Mer information om åtkomstkontroll för hanterad HSM finns i Ge åtkomst till Key Vault, certifikat och hemligheter med en [rollbaserad åtkomstkontroll i Azure.](../general/rbac-guide.md)
 
-Azure Key Vault hanterad HSM är en moln tjänst som skyddar krypterings nycklar. Eftersom dessa data är känsliga och affärs kritiska måste du skydda åtkomsten till dina hanterade HSM: er genom att bara tillåta behöriga program och användare att komma åt dem. Den här artikeln ger en översikt över den hanterade HSM-modellen för åtkomst kontroll. Den förklarar autentisering och auktorisering och beskriver hur du skyddar åtkomsten till dina hanterade HSM: er.
+Azure Key Vault Managed HSM är en molntjänst som skyddar krypteringsnycklar. Eftersom dessa data är känsliga och affärskritiska måste du skydda åtkomsten till dina hanterade HSM:er genom att endast tillåta auktoriserade program och användare att komma åt dem. Den här artikeln innehåller en översikt över managed HSM-modellen för åtkomstkontroll. Den förklarar autentisering och auktorisering och beskriver hur du skyddar åtkomsten till dina hanterade HSM:er.
 
 ## <a name="access-control-model"></a>Åtkomstkontrollmodell
 
-Åtkomst till en hanterad HSM styrs via två gränssnitt: **hanterings planet** och **data planet**. Hanterings planet är den plats där du hanterar HSM. Åtgärder i det här planet innefattar att skapa och ta bort hanterade HSM: er och hämta hanterade HSM-egenskaper. Data planet är den plats där du arbetar med de data som lagras i en hanterad HSM – som är HSM-backade krypterings nycklar. Du kan lägga till, ta bort, ändra och använda nycklar för att utföra kryptografiska åtgärder, hantera roll tilldelningar för att kontrol lera åtkomsten till nycklarna, skapa en fullständig HSM-säkerhetskopiering, återställa fullständig säkerhets kopiering och hantera säkerhets domän från data Plans gränssnittet.
+Åtkomst till en hanterad HSM styrs via två gränssnitt: **hanteringsplanet** och **dataplanet**. Hanteringsplanet är den plats där du hanterar själva HSM:en. Åtgärder i det här planet omfattar att skapa och ta bort hanterade HSM:er och hämta hanterade HSM-egenskaper. Dataplanet är den plats där du arbetar med data som lagras i en hanterad HSM – det vill säga HSM-backade krypteringsnycklar. Du kan lägga till, ta bort, ändra och använda nycklar för att utföra kryptografiska åtgärder, hantera rolltilldelningar för att styra åtkomsten till nycklarna, skapa en fullständig HSM-säkerhetskopiering, återställa fullständig säkerhetskopiering och hantera säkerhetsdomänen från dataplanets gränssnitt.
 
-För att få åtkomst till en hanterad HSM i något av planerna måste alla anropare ha korrekt autentisering och auktorisering. Autentisering upprättar identiteten för anroparen. Auktorisering avgör vilka åtgärder som anroparen kan köra. En anropare kan vara vilken som helst av de [säkerhets objekt](../../role-based-access-control/overview.md#security-principal) som definierats i Azure Active Directory-användare, grupp, tjänstens huvud namn eller hanterad identitet.
+För att få åtkomst till en hanterad HSM i endera plan måste alla anropare ha rätt autentisering och auktorisering. Autentiseringen upprättar anroparens identitet. Auktorisering avgör vilka åtgärder som anroparen kan köra. En anropare kan vara något av de säkerhetsobjekt som definieras i Azure Active Directory – användare, grupp, [tjänstens](../../role-based-access-control/overview.md#security-principal) huvudnamn eller hanterad identitet.
 
-Båda planerna använder Azure Active Directory för autentisering. För auktorisering använder de olika system på följande sätt
-- Hanterings planet använder Azure-rollbaserad åtkomst kontroll--Azure RBAC--ett auktoriserings system som bygger på Azure Azure Resource Manager 
-- Data planet använder en hanterad HSM-nivå RBAC (hanterad HSM lokal RBAC)--ett behörighets system som implementeras och tillämpas på den hanterade HSM-nivån.
+Båda plan använder Azure Active Directory för autentisering. För auktorisering använder de olika system på följande sätt
+- Hanteringsplanet använder rollbaserad åtkomstkontroll i Azure – Azure RBAC – ett auktoriseringssystem som bygger på Azure Azure Resource Manager 
+- Dataplanet använder en hanterad RBAC på HSM-nivå (managed HSM local RBAC) – ett auktoriseringssystem som implementeras och framtvingas på hanterad HSM-nivå.
 
-När en hanterad HSM skapas innehåller beställaren även en lista över data Plans administratörer (alla [säkerhets objekt](../../role-based-access-control/overview.md#security-principal) stöds). Endast de här administratörerna kan komma åt det hanterade HSM-dataplanet för att utföra nyckel åtgärder och hantera roll tilldelningar för data planet (hanterad HSM lokal RBAC).
+När en hanterad HSM skapas tillhandahåller beställaren även en lista över [dataplansadministratörer (alla säkerhetsobjekt](../../role-based-access-control/overview.md#security-principal) stöds). Endast dessa administratörer kan komma åt det hanterade HSM-dataplanet för att utföra nyckelåtgärder och hantera rolltilldelningar för dataplanet (hanterad HSM lokal RBAC).
 
-Behörighets modellen för båda planen använder samma syntax, men de tillämpas på olika nivåer och roll tilldelningar använder olika omfång. Hanterings planet Azure RBAC tillämpas av Azure Resource Manager medan dataplan-hanterad HSM-lokal RBAC upprätthålls av hanterad HSM.
+Behörighetsmodellen för båda plan använder samma syntax, men de tillämpas på olika nivåer och rolltilldelningar använder olika omfång. Hanteringsplanet Azure RBAC tillämpas av Azure Resource Manager medan dataplanet Hanterad HSM lokal RBAC framtvingas av den hanterade HSM:en.
 
 > [!IMPORTANT]
-> Beviljande av en hanterings plan för säkerhets objekt till en hanterad HSM ger dem inte åtkomst till data planet för att komma åt nycklar eller roll tilldelningar för data planet hanterad HSM-lokal RBAC). Den här isoleringen är avsiktlig för att förhindra oavsiktlig expandering av behörigheter som påverkar åtkomst till nycklar som lagras i hanterad HSM.
+> Att bevilja en säkerhetsobjekthanteringsplan åtkomst till en hanterad HSM ger dem inte någon åtkomst till dataplanet för att få åtkomst till nycklar eller rolltilldelningar för dataplanet Hanterad HSM lokal RBAC). Den här isoleringen är avsiktlig för att förhindra oavsiktlig utökning av privilegier som påverkar åtkomsten till nycklar som lagras i Managed HSM.
 
-Till exempel kan en prenumerations administratör (eftersom han/hon har behörigheten "deltagare" för alla resurser i prenumerationen) ta bort en hanterad HSM i sin prenumeration, men om de inte har åtkomst till data planet som uttryckligen beviljas genom hanterad HSM lokal RBAC, kan de inte få åtkomst till nycklar eller hantera roll tilldelning i den hanterade HSM för att ge sig själva eller andra åtkomst till data
+Till exempel kan en prenumerationsadministratör (eftersom de har behörigheten Deltagare till alla resurser i prenumerationen) ta bort en hanterad HSM i prenumerationen, men om de inte har dataplansåtkomst som specifikt beviljats via hanterad HSM lokal RBAC kan de inte få åtkomst till nycklar eller hantera rolltilldelning i den hanterade HSM:n för att bevilja sig själva eller andra åtkomst till dataplanet.
 
 ## <a name="azure-active-directory-authentication"></a>Azure Active Directory-autentisering
 
-När du skapar en hanterad HSM i en Azure-prenumeration associeras den automatiskt med Azure Active Directory-innehavaren av prenumerationen. Alla anropare i båda planerna måste registreras i den här klienten och autentiseras för åtkomst till hanterad HSM.
+När du skapar en hanterad HSM i en Azure-prenumeration associeras den automatiskt Azure Active Directory klientorganisationen för prenumerationen. Alla anropare i båda planen måste vara registrerade i den här klientorganisationen och autentiseras för att få åtkomst till den hanterade HSM:en.
 
-Programmet autentiseras med Azure Active Directory innan du anropar något av planerna. Programmet kan använda alla [autentiseringsmetoder som stöds](../../active-directory/develop/authentication-vs-authorization.md) baserat på program typen. Programmet hämtar en token för en resurs i planet för att få åtkomst. Resursen är en slut punkt i hanterings-eller data planet, baserat på Azure-miljön. Programmet använder token och skickar en REST API begäran till hanterad HSM-slutpunkt. Läs mer i [hela autentiserings flödet](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
+Programmet autentiserar med Azure Active Directory innan något av planerna anropas. Programmet kan använda valfri [autentiseringsmetod som stöds](../../active-directory/develop/authentication-vs-authorization.md) baserat på programtypen. Programmet hämtar en token för en resurs i planet för att få åtkomst. Resursen är en slutpunkt i hanterings- eller dataplanet, baserat på Azure-miljön. Programmet använder token och skickar en REST API till Managed HSM-slutpunkten. Om du vill veta mer kan du granska [hela autentiseringsflödet](../../active-directory/develop/v2-oauth2-auth-code-flow.md).
 
-Det finns flera fördelar med att använda en enda autentiseringsmekanism för båda planerna:
+Användningen av en enda autentiseringsmekanism för båda plan har flera fördelar:
 
-- Organisationer kan styra åtkomsten centralt till alla hanterade HSM: er i organisationen.
-- Om en användare lämnar förlorar de direkt åtkomst till alla hanterade HSM: er i organisationen.
-- Organisationer kan anpassa autentiseringen med hjälp av alternativen i Azure Active Directory, till exempel för att aktivera Multi-Factor Authentication för extra säkerhet.
+- Organisationer kan styra åtkomsten centralt till alla hanterade HSM:er i organisationen.
+- Om en användare lämnar förlorar de omedelbart åtkomst till alla hanterade HSM:er i organisationen.
+- Organisationer kan anpassa autentisering med hjälp av alternativen i Azure Active Directory, till exempel för att aktivera multifaktorautentisering för ökad säkerhet.
 
-## <a name="resource-endpoints"></a>Resurs slut punkter
+## <a name="resource-endpoints"></a>Resursslutpunkter
 
-Säkerhets objekt får åtkomst till planen genom slut punkter. Åtkomst kontrollerna för de två planerna fungerar oberoende av varandra. Om du vill ge åtkomst till ett program för att använda nycklar i en hanterad HSM beviljar du data Plans åtkomst genom att använda hanterad HSM lokalt RBAC. För att ge en användare åtkomst till hanterad HSM-resurs för att skapa, läsa, ta bort, flytta den hanterade HSM: er och redigera andra egenskaper och taggar som du använder Azure RBAC.
+Säkerhetsobjekt får åtkomst till planen via slutpunkter. Åtkomstkontrollerna för de två planen fungerar oberoende av varandra. Om du vill ge ett program åtkomst att använda nycklar i en hanterad HSM beviljar du dataplansåtkomst med hjälp av hanterad HSM lokal RBAC. Om du vill ge en användare åtkomst till en hanterad HSM-resurs för att skapa, läsa, ta bort, flytta de hanterade HSM:erna och redigera andra egenskaper och taggar som du använder med Azure RBAC.
 
-I följande tabell visas slut punkterna för hanterings-och data planen.
+I följande tabell visas slutpunkterna för hanterings- och dataplan.
 
-| Åtkomst &nbsp; plan | Slutpunkter för åtkomst | Operations | Åtkomstkontrollmekanismer |
+| &nbsp;Åtkomstplan | Slutpunkter för åtkomst | Operations | Åtkomstkontrollmekanismer |
 | --- | --- | --- | --- |
-| Hanteringsplanet | **EAN**<br> management.azure.com:443<br> | Skapa, läsa, uppdatera, ta bort och flytta hanterade HSM: er<br>Ange hanterade HSM-Taggar | Azure RBAC |
-| Dataplanet | **EAN**<br> &lt;HSM-name &gt; . managedhsm.Azure.net:443<br> | **Nycklar**: dekryptera, kryptera,<br> Packa upp, radbryta, verifiera, signera, Hämta, lista, uppdatera, skapa, importera, ta bort, säkerhetskopiera, återställa, rensa<br/><br/> **Data Plans roll – hantering (hanterad HSM lokal RBAC)**_: lista roll definitioner, tilldela roller, ta bort roll tilldelningar <br/> <br/> , definiera anpassade roller_* säkerhets kopiering/återställning **: säkerhets kopiering, återställning, <br/> <br/> kontrol lera status säkerhets kopiering/återställning drift** säkerhets domän * *: Hämta och ladda upp säkerhets domän | Hanterad HSM lokal RBAC |
+| Hanteringsplanet | **Globala:**<br> management.azure.com:443<br> | Skapa, läsa, uppdatera, ta bort och flytta hanterade HSM:er<br>Ange hanterade HSM-taggar | Azure RBAC |
+| Dataplanet | **Globala:**<br> &lt;hsm-name &gt; .managedhsm.azure.net:443<br> | **Nycklar:** dekryptera, kryptera,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollhantering för dataplan (hanterad HSM lokal RBAC):** lista rolldefinitioner, tilldela roller, ta bort rolltilldelningar,_<br/> <br/>_ definiera anpassade roller *Säkerhetskopiering/återställning:**säkerhetskopiering, återställning, <br/> <br/> kontrollera statussäkerhetskopiering/återställningsåtgärder** Säkerhetsdomän**: ladda ned och ladda upp säkerhetsdomän | Hanterad lokal HSM-RBAC |
 |||||
-## <a name="management-plane-and-azure-rbac"></a>Hanterings plan och Azure RBAC
 
-I hanterings planet använder du Azure RBAC för att auktorisera de åtgärder som en anropare kan utföra. I Azure RBAC-modellen har varje Azure-prenumeration en instans av Azure Active Directory. Du beviljar åtkomst till användare, grupper och program från den här katalogen. Åtkomst beviljas för att hantera resurser i Azure-prenumerationen som använder Azure Resource Manager distributions modell. Om du vill bevilja åtkomst använder du [Azure Portal](https://portal.azure.com/), [Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs)eller [Azure Resource Manager REST-API: er](/rest/api/authorization/roleassignments).
+## <a name="management-plane-and-azure-rbac"></a>Hanteringsplanet och Azure RBAC
 
-Du skapar ett nyckel valv i en resurs grupp och hanterar åtkomst med hjälp av Azure Active Directory. Du beviljar användare eller grupper möjligheten att hantera nyckel valv i en resurs grupp. Du beviljar åtkomst på en bestämd omfattnings nivå genom att tilldela lämpliga Azure-roller. Om du vill bevilja åtkomst till en användare för att hantera nyckel valv tilldelar du en fördefinierad `key vault Contributor` roll till användaren vid en bestämd omfattning. Följande omfattnings nivåer kan tilldelas en Azure-roll:
+I hanteringsplanet använder du Azure RBAC för att auktorisera de åtgärder som en anropare kan köra. I Azure RBAC-modellen har varje Azure-prenumeration en instans av Azure Active Directory. Du beviljar åtkomst till användare, grupper och program från den här katalogen. Åtkomst beviljas för att hantera resurser i Azure-prenumerationen som använder den Azure Resource Manager distributionsmodellen. Om du vill bevilja åtkomst [använder du Azure Portal,](https://portal.azure.com/) [Azure CLI,](/cli/azure/install-classic-cli) [Azure PowerShell](/powershell/azureps-cmdlets-docs)eller [rest Azure Resource Manager-API:erna](/rest/api/authorization/roleassignments).
 
-- **Hanterings grupp**: en Azure-roll som tilldelas på prenumerations nivån gäller för alla prenumerationer i hanterings gruppen.
-- **Prenumeration**: en Azure-roll som tilldelas på prenumerations nivån gäller för alla resurs grupper och resurser i prenumerationen.
-- **Resurs grupp**: en Azure-roll som tilldelas på resurs grupps nivå gäller för alla resurser i den resurs gruppen.
-- **Resurs**: en Azure-roll som är tilldelad en angiven resurs gäller resursen. I det här fallet är resursen ett särskilt nyckel valv.
+Du skapar ett nyckelvalv i en resursgrupp och hanterar åtkomst med hjälp av Azure Active Directory. Du ger användare eller grupper möjlighet att hantera nyckelvalven i en resursgrupp. Du beviljar åtkomsten på en specifik omfångsnivå genom att tilldela lämpliga Azure-roller. Om du vill bevilja åtkomst till en användare för att hantera nyckelvalv tilldelar du en `key vault Contributor` fördefinierad roll till användaren i ett specifikt omfång. Följande omfångsnivåer kan tilldelas till en Azure-roll:
 
-Det finns flera fördefinierade roller. Om en fördefinierad roll inte passar dina behov kan du definiera en egen roll. Mer information finns i [Azure RBAC: inbyggda roller](../../role-based-access-control/built-in-roles.md).
+- **Hanteringsgrupp:** En Azure-roll som tilldelats på prenumerationsnivå gäller för alla prenumerationer i den hanteringsgruppen.
+- **Prenumeration:** En Azure-roll som tilldelats på prenumerationsnivå gäller för alla resursgrupper och resurser i prenumerationen.
+- **Resursgrupp:** En Azure-roll som tilldelats på resursgruppsnivå gäller för alla resurser i den resursgruppen.
+- **Specifik resurs:** En Azure-roll som tilldelats för en specifik resurs gäller för den resursen. I det här fallet är resursen ett specifikt nyckelvalv.
 
-## <a name="data-plane-and-managed-hsm-local-rbac"></a>Data plan och hanterad HSM lokalt RBAC
+Det finns flera fördefinierade roller. Om en fördefinierad roll inte passar dina behov kan du definiera en egen roll. Mer information finns i [Azure RBAC: Inbyggda roller.](../../role-based-access-control/built-in-roles.md)
 
-Du beviljar en säkerhets objekts åtkomst för att köra särskilda nyckel åtgärder genom att tilldela en roll. För varje roll tilldelning måste du ange en roll och omfattning som tilldelningen gäller för. För hanterade HSM-lokala RBAC är två omfattningar tillgängliga.
+## <a name="data-plane-and-managed-hsm-local-rbac"></a>Dataplanet och hanterad HSM lokal RBAC
 
-- **"/" eller "/Keys"**: område för HSM-nivå. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i rollen för alla objekt (nycklar) i den hanterade HSM.
-- **"/Keys/ &lt; Key-name &gt; "**: Key Level-omfattning. Säkerhets objekt som har tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i den här rollen för alla versioner av den angivna nyckeln.
+Du ger säkerhetsobjekt åtkomst för att köra specifika nyckelåtgärder genom att tilldela en roll. För varje rolltilldelning måste du ange en roll och ett omfång som tilldelningen gäller för. Två omfång är tillgängliga för lokal RBAC för Managed HSM.
+
+- **"/" eller "/keys"**: HSM-nivåomfång. Säkerhetsobjekt som tilldelats en roll i det här omfånget kan utföra de åtgärder som definierats i rollen för alla objekt (nycklar) i den hanterade HSM:en.
+- **"/keys/ &lt; key-name &gt; "**: Nyckelnivåomfång. Säkerhetsobjekt som har tilldelats en roll i det här omfånget kan endast utföra de åtgärder som definierats i den här rollen för alla versioner av den angivna nyckeln.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- En vägledning för att komma igång med en administratör finns i [Vad är hanterad HSM?](overview.md).
-- En själv studie kurs om roll hantering finns i [hanterad HSM lokal RBAC](role-management.md)
-- Mer information om användnings loggning för hanterad HSM-loggning finns i [hanterad HSM-loggning](logging.md).
+- En komma igång-självstudie för en administratör finns i [Vad är Hanterad HSM?](overview.md)
+- En självstudiekurs om rollhantering finns i [Lokal RBAC för hanterad HSM](role-management.md)
+- Mer information om användningsloggning för Managed HSM-loggning finns i [Hanterad HSM-loggning](logging.md)

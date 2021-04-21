@@ -1,58 +1,58 @@
 ---
 title: Använda Key Vault-referenser
-description: Lär dig hur du konfigurerar Azure App Service och Azure Functions att använda Azure Key Vault referenser. Gör Key Vault hemligheter tillgängliga för din program kod.
+description: Lär dig hur du ställer Azure App Service och Azure Functions att använda Azure Key Vault referenser. Gör Key Vault hemligheter tillgängliga för din programkod.
 author: mattchenderson
 ms.topic: article
 ms.date: 02/05/2021
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: e0bba85cc99e1751f39172ac320fe721d6f02e87
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: b87001f9b283c774096fe669d58a9b487174625d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106076793"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750778"
 ---
 # <a name="use-key-vault-references-for-app-service-and-azure-functions"></a>Använd Key Vault referenser för App Service och Azure Functions
 
-Det här avsnittet visar hur du arbetar med hemligheter från Azure Key Vault i din App Service eller Azure Functions program utan att behöva ändra kod. [Azure Key Vault](../key-vault/general/overview.md) är en tjänst som tillhandahåller centraliserad hemligheter-hantering med fullständig kontroll över åtkomst principer och gransknings historik.
+Det här avsnittet visar hur du arbetar med hemligheter från Azure Key Vault i ditt App Service eller Azure Functions-program utan att kräva några kodändringar. [Azure Key Vault](../key-vault/general/overview.md) är en tjänst som tillhandahåller centraliserad hemlighetshantering med fullständig kontroll över åtkomstprinciper och granskningshistorik.
 
-## <a name="granting-your-app-access-to-key-vault"></a>Ge appen åtkomst till Key Vault
+## <a name="granting-your-app-access-to-key-vault"></a>Bevilja din app åtkomst till Key Vault
 
-För att kunna läsa hemligheter från Key Vault måste ett valv skapas och ge ditt program behörighet att komma åt det.
+För att kunna läsa hemligheter från Key Vault måste du ha skapat ett valv och ge appen behörighet att komma åt det.
 
-1. Skapa ett nyckel valv genom att följa [Key Vault snabb start](../key-vault/secrets/quick-create-cli.md).
+1. Skapa ett nyckelvalv genom att följa [Key Vault snabbstart.](../key-vault/secrets/quick-create-cli.md)
 
-1. Skapa en [systemtilldelad hanterad identitet](overview-managed-identity.md) för ditt program.
+1. Skapa en [system tilldelad hanterad identitet](overview-managed-identity.md) för ditt program.
 
    > [!NOTE] 
-   > Key Vault referenser stöder för närvarande endast systemtilldelade hanterade identiteter. Användare som tilldelats identiteter kan inte användas.
+   > Key Vault-referenser stöder för närvarande endast system tilldelade hanterade identiteter. Användar tilldelade identiteter kan inte användas.
 
-1. Skapa en [åtkomst princip i Key Vault](../key-vault/general/secure-your-key-vault.md#key-vault-access-policies) för den program identitet som du skapade tidigare. Aktivera hemliga behörigheten "Get" för den här principen. Konfigurera inte det "auktoriserade programmet" eller `applicationId` Inställningar, eftersom detta inte är kompatibelt med en hanterad identitet.
+1. Skapa en [åtkomstprincip i Key Vault](../key-vault/general/security-overview.md#privileged-access) för den programidentitet som du skapade tidigare. Aktivera behörigheten "Hämta" för den här principen. Konfigurera inte det "auktoriserade programmet" eller inställningarna `applicationId` eftersom det inte är kompatibelt med en hanterad identitet.
 
-### <a name="access-network-restricted-vaults"></a>Få åtkomst till nätverk-begränsade valv
+### <a name="access-network-restricted-vaults"></a>Få åtkomst till nätverksbegränsade valv
 
 > [!NOTE]
-> Linux-baserade program kan för närvarande inte lösa hemligheter från ett nätverk med begränsat nyckel valv, om inte appen finns inom en [App Service-miljön](./environment/intro.md).
+> Linux-baserade program kan för närvarande inte lösa hemligheter från ett nätverksbegränsat nyckelvalv om inte appen finns i en [App Service-miljön](./environment/intro.md).
 
-Om valvet har kon figurer ATS med [nätverks begränsningar](../key-vault/general/overview-vnet-service-endpoints.md)måste du också se till att programmet har nätverks åtkomst.
+Om valvet har konfigurerats [med nätverksbegränsningar](../key-vault/general/overview-vnet-service-endpoints.md)måste du också se till att programmet har nätverksåtkomst.
 
-1. Kontrol lera att programmet har utgående nätverksfunktioner konfigurerade, enligt beskrivningen i [App Service nätverksfunktioner](./networking-features.md) och [Azure Functions nätverks alternativ](../azure-functions/functions-networking-options.md).
+1. Kontrollera att programmet har utgående nätverksfunktioner konfigurerade, enligt beskrivningen i [App Service nätverksfunktionerna](./networking-features.md) [och Azure Functions nätverksalternativen](../azure-functions/functions-networking-options.md).
 
-2. Se till att valvets konfigurations konton för nätverket eller under nätet som appen kommer att komma åt.
+2. Kontrollera att valvets konfigurationskonton för nätverket eller undernätet som appen kommer åt det via.
 
 > [!IMPORTANT]
-> Åtkomst till ett valv via integrering av virtuella nätverk är för närvarande inte kompatibelt med [automatiska uppdateringar för hemligheter utan en angiven version](#rotation).
+> Åtkomst till ett valv via integrering av virtuella nätverk är för närvarande [inkompatibel med automatiska uppdateringar för hemligheter utan en angiven version](#rotation).
 
-## <a name="reference-syntax"></a>Syntax för referenser
+## <a name="reference-syntax"></a>Referenssyntax
 
-En Key Vault referens är av formuläret `@Microsoft.KeyVault({referenceString})` , där `{referenceString}` ersätts av något av följande alternativ:
+En Key Vault referens har formen `@Microsoft.KeyVault({referenceString})` , där `{referenceString}` ersätts med något av följande alternativ:
 
 > [!div class="mx-tdBreakAll"]
-> | Referens sträng                                                            | Beskrivning                                                                                                                                                                                 |
+> | Referenssträng                                                            | Description                                                                                                                                                                                 |
 > |-----------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-> | SecretUri =_SecretUri_                                                       | **SecretUri** bör vara den fullständiga data Plans-URI: n för en hemlighet i Key Vault, om du vill, inklusive en version, t. ex. `https://myvault.vault.azure.net/secrets/mysecret/` eller`https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
-> | VaultName =_VaultName_; SecretName =_SecretName_; SecretVersion =_SecretVersion_ | **VaultName** är obligatoriskt och bör vara namnet på din Key Vault-resurs. **SecretName** är obligatoriskt och bör vara namnet på mål hemligheten. **SecretVersion** är valfritt, men om det finns en version av hemligheten som ska användas. |
+> | SecretUri=_secretUri_                                                       | SecretUri **ska** vara den fullständiga dataplans-URI:en för en hemlighet i Key Vault, eventuellt inklusive en version, t.ex. `https://myvault.vault.azure.net/secrets/mysecret/` eller `https://myvault.vault.azure.net/secrets/mysecret/ec96f02080254f109c51a1f14cdb1931`  |
+> | VaultName=_vaultName_; SecretName=_secretName_; SecretVersion=_secretVersion_ | **VaultName är** obligatoriskt och bör namnet på din Key Vault resurs. **SecretName är** obligatoriskt och ska vara namnet på målhemligheten. SecretVersion **är** valfritt, men om det finns en version av hemligheten som ska användas. |
 
 En fullständig referens skulle till exempel se ut så här:
 
@@ -69,24 +69,24 @@ Du kan också:
 ## <a name="rotation"></a>Rotation
 
 > [!IMPORTANT]
-> [Åtkomst till ett valv via integrering av virtuella nätverk](#access-network-restricted-vaults) är för närvarande inte kompatibelt med automatiska uppdateringar för hemligheter utan en angiven version.
+> [Åtkomst till ett valv via integrering av virtuella nätverk är för](#access-network-restricted-vaults) närvarande inkompatibel med automatiska uppdateringar för hemligheter utan en angiven version.
 
-Om en version inte anges i referensen kommer appen att använda den senaste versionen som finns i Key Vault. När nyare versioner blir tillgängliga, till exempel med en rotations händelse, uppdateras appen automatiskt och börjar använda den senaste versionen inom en dag. Alla konfigurations ändringar som görs i appen leder till en omedelbar uppdatering av de senaste versionerna av alla refererade hemligheter.
+Om en version inte anges i referensen använder appen den senaste versionen som finns i Key Vault. När nyare versioner blir tillgängliga, till exempel med en rotationshändelse, uppdateras appen automatiskt och börjar använda den senaste versionen inom en dag. Alla konfigurationsändringar som görs i appen kommer att orsaka en omedelbar uppdatering av de senaste versionerna av alla refererade hemligheter.
 
-## <a name="source-application-settings-from-key-vault"></a>Käll program inställningar från Key Vault
+## <a name="source-application-settings-from-key-vault"></a>Källprograminställningar från Key Vault
 
-Key Vault referenser kan användas som värden för [program inställningar](configure-common.md#configure-app-settings), så att du kan behålla hemligheter i Key Vault i stället för plats konfigurationen. Program inställningarna krypteras säkert i vila, men om du behöver hemliga hanterings funktioner bör de gå in Key Vault.
+Key Vault referenser kan användas som värden [](configure-common.md#configure-app-settings)för programinställningar, så att du kan behålla hemligheter i Key Vault stället för platskonfigurationen. Programinställningar krypteras säkert i vila, men om du behöver funktioner för hemlighetshantering bör de gå in på Key Vault.
 
-Om du vill använda en Key Vault referens för en program inställning anger du referensen som värde för inställningen. Din app kan referera till hemligheten via nyckeln som normalt. Inga kod ändringar krävs.
+Om du vill Key Vault en referens för en programinställning anger du referensen som värdet för inställningen. Din app kan referera till hemligheten via dess nyckel som vanligt. Inga kodändringar krävs.
 
 > [!TIP]
-> De flesta program inställningar som använder Key Vault referenser ska markeras som plats inställningar, eftersom du borde ha separata valv för varje miljö.
+> De flesta programinställningar som använder Key Vault-referenser ska markeras som fackinställningar, eftersom du bör ha separata valv för varje miljö.
 
 ### <a name="azure-resource-manager-deployment"></a>Azure Resource Manager-distribution
 
-När du automatiserar resurs distributioner via Azure Resource Manager mallar kan du behöva sekvensera dina beroenden i en viss ordning för att den här funktionen ska fungera. Observera att du måste definiera dina program inställningar som sin egen resurs, i stället för att använda en `siteConfig` egenskap i plats definitionen. Detta beror på att platsen måste definieras först så att den systemtilldelade identiteten skapas med den och kan användas i åtkomst principen.
+När du automatiserar resursdistributioner via Azure Resource Manager-mallar kan du behöva sekvensera dina beroenden i en viss ordning för att den här funktionen ska fungera. Observera att du måste definiera dina programinställningar som en egen resurs i stället för att använda en `siteConfig` egenskap i platsdefinitionen. Det beror på att platsen måste definieras först så att den system tilldelade identiteten skapas med den och kan användas i åtkomstprincipen.
 
-Ett exempel på en pseudo-mall för en Function-app kan se ut så här:
+Ett exempel på en pseudomall för en funktionsapp kan se ut så här:
 
 ```json
 {
@@ -190,30 +190,30 @@ Ett exempel på en pseudo-mall för en Function-app kan se ut så här:
 ```
 
 > [!NOTE] 
-> I det här exemplet är käll kontroll distributionen beroende av program inställningarna. Detta är vanligt vis ett osäkert beteende eftersom uppdaterings inställningen för appen har asynkront. Men eftersom vi har inkluderat `WEBSITE_ENABLE_SYNC_UPDATE_SITE` program inställningen är uppdateringen synkron. Det innebär att käll kontroll distributionen endast startar när program inställningarna har uppdaterats fullständigt.
+> I det här exemplet beror källkontrolldistributionen på programinställningarna. Detta är vanligtvis osäkert eftersom uppdateringen av appinställningen beter sig asynkront. Men eftersom vi har inkluderat `WEBSITE_ENABLE_SYNC_UPDATE_SITE` programinställningen är uppdateringen synkron. Det innebär att källkontrollsdistributionen bara börjar när programinställningarna har uppdaterats fullständigt.
 
 ## <a name="troubleshooting-key-vault-references"></a>Felsöka Key Vault referenser
 
-Om en referens inte löses korrekt, används referensvärdet i stället. Det innebär att en miljö variabel skapas vars värde har syntaxen för program inställningar `@Microsoft.KeyVault(...)` . Detta kan orsaka att programmet returnerar fel, eftersom det förväntar sig en hemlighet för en viss struktur.
+Om en referens inte matchas korrekt används referensvärdet i stället. Det innebär att för programinställningar skapas en miljövariabel vars värde har `@Microsoft.KeyVault(...)` syntaxen . Detta kan göra att programmet kastar fel, eftersom det förväntade sig en hemlighet av en viss struktur.
 
-Oftast beror det på en felaktig konfiguration av [Key Vaults åtkomst princip](#granting-your-app-access-to-key-vault). Det kan dock också bero på en hemlighet som inte längre är befintlig eller syntaxfel i själva referensen.
+Oftast beror detta på en felaktig konfiguration av Key Vault [åtkomstprincip .](#granting-your-app-access-to-key-vault) Men det kan också bero på att en hemlighet inte längre finns eller ett syntaxfel i själva referensen.
 
-Om syntaxen är korrekt kan du Visa andra orsaker till felet genom att kontrol lera den aktuella lösnings statusen i portalen. Gå till program inställningar och välj "redigera" för referensen i fråga. Under inställnings konfigurationen bör du se statusinformation, inklusive eventuella fel. Avsaknad av detta innebär att referensens syntax är ogiltig.
+Om syntaxen är korrekt kan du visa andra orsaker till felet genom att kontrollera den aktuella lösningsstatusen i portalen. Gå till Programinställningar och välj "Redigera" för referensen i fråga. Under inställningskonfigurationen bör du se statusinformation, inklusive eventuella fel. Frånvaron av dessa innebär att referenssyntaxen är ogiltig.
 
-Du kan också använda en av de inbyggda identifierarna för att få ytterligare information.
+Du kan också använda en av de inbyggda detektorerna för att få ytterligare information.
 
 ### <a name="using-the-detector-for-app-service"></a>Använda detektorn för App Service
 
-1. I portalen navigerar du till din app.
+1. Navigera till din app i portalen.
 2. Välj **Diagnostisera och lösa problem**.
-3. Välj **tillgänglighet och prestanda** och välj sedan **webbapp.**
-4. Hitta **Key Vault diagnostik för program inställningar** och klicka på **Mer information**.
+3. Välj **Tillgänglighet och prestanda** och välj **Webbappen nere.**
+4. Leta **Key Vault diagnostik för programinställningar** och klicka på Mer **information.**
 
 
 ### <a name="using-the-detector-for-azure-functions"></a>Använda detektorn för Azure Functions
 
-1. I portalen navigerar du till din app.
-2. Navigera till **plattforms funktioner.**
+1. Navigera till din app i portalen.
+2. Gå till **Plattformsfunktioner.**
 3. Välj **Diagnostisera och lösa problem**.
-4. Välj **tillgänglighet och prestanda** och välj **Function app-Down eller rapportera fel.**
-5. Klicka på **Key Vault diagnostik för program inställningar.**
+4. Välj **Tillgänglighet och prestanda** och välj **Funktionsappen är nere eller rapporterar fel.**
+5. Klicka på **Key Vault diagnostik för programinställningar.**

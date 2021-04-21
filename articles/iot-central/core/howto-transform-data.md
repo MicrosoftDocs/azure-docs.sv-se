@@ -7,12 +7,12 @@ ms.date: 04/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 7d9575bedbdce96ef59e9b1d77b9034162bc16bf
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 6032300bd203db78e8cd147cf79300d6dcd9b1dc
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107730487"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751696"
 ---
 # <a name="transform-data-for-iot-central"></a>Transformera data för IoT Central
 
@@ -51,7 +51,7 @@ Det finns två alternativ för att transformera enhetsdata vid ingress:
 
 - **IoT Edge:** Använd en IoT Edge-modul för att transformera data från nedströmsenheter innan du skickar data till IoT Central program.
 
-- **IoT Central enhetsbrygga:** IoT Central-enhetsbryggan ansluter andra IoT-enhetsmoln, till exempel Sigfox, Particle och The Things Network, till IoT Central. [](https://github.com/Azure/iotc-device-bridge) Enhetsbryggan använder en Azure-funktion för att vidarebefordra data och du kan anpassa funktionen för att transformera enhetsdata.
+- **IoT Central enhetsbrygga:** IoT Central-enhetsbryggan ansluter andra IoT-enhetsmoln, till exempel Sigfox, Particle och The Things Network, till IoT Central. [](howto-build-iotc-device-bridge.md) Enhetsbryggan använder en Azure-funktion för att vidarebefordra data och du kan anpassa funktionen för att transformera enhetsdata.
 
 ### <a name="use-iot-edge-to-transform-device-data"></a>Använda IoT Edge för att transformera enhetsdata
 
@@ -114,7 +114,7 @@ Så här skapar du ett containerregister:
 
     Anteckna värdena och `username` `password` . Du använder dem senare.
 
-Så här skapar du den anpassade modulen [i Azure Cloud Shell](https://shell.azure.com/):
+Skapa den anpassade modulen i [Azure Cloud Shell](https://shell.azure.com/):
 
 1. I [Azure Cloud Shell](https://shell.azure.com/)navigerar du till en lämplig mapp.
 1. Kör följande kommando för att klona GitHub-lagringsplatsen som innehåller modulens källkod:
@@ -251,7 +251,7 @@ Generera democertifikaten och installera dem på din gatewayenhet:
     När du har kört föregående kommandon är följande filer redo att användas i nästa steg:
 
     - *~/certs/certs/azure-iot-test-only.root.ca.cert.pem* – Rotcertifikatutfärdarens certifikat som används för att göra alla andra democertifikat för att testa ett IoT Edge-scenario.
-    - *~/certs/certs/iot-edge-device-mycacert-full-chain.cert.pem* – Ett CA-enhetscertifikat som refereras från *filen config.yaml.* I ett gatewayscenario är det här CA-certifikatet hur IoT Edge verifierar sin identitet till underordnade enheter.
+    - *~/certs/certs/iot-edge-device-mycacert-full-chain.cert.pem* – Ett ca-enhetscertifikatutfärdarcertifikat som refereras från *filen config.yaml.* I ett gatewayscenario är det här CA-certifikatet hur IoT Edge verifierar sin identitet till underordnade enheter.
     - *~/certs/private/iot-edge-device-mycacert.key.pem* – Den privata nyckeln som är associerad med enhetens CA-certifikat.
 
     Mer information om dessa democertifikat finns i Skapa [democertifikat för att testa IoT Edge-enhetsfunktioner.](../../iot-edge/how-to-create-test-certificates.md)
@@ -506,7 +506,7 @@ Om du vill lägga till en enhetsmall IoT Central ditt program navigerar du till 
 
 1. När modellen har importerats väljer du **Publicera för** att publicera **enhetsmallen för** beräkningsmodellen.
 
-Så här ställer du in dataexporten för att skicka data till enhetsbryggan:
+Konfigurera dataexporten för att skicka data till enhetsbryggan:
 
 1. I ditt IoT Central väljer du **Dataexport**.
 

@@ -1,90 +1,97 @@
 ---
-title: Viktiga ändringar som kommer till Azure Security Center
+title: Viktiga ändringar kommer till Azure Security Center
 description: Kommande ändringar av Azure Security Center som du kan behöva känna till och för vilka du kan behöva planera
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/08/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: f9e1b5d19acbc9bcee86c374a3f843530b8adc61
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3307d3aed422c3eab63412388244ef14ef3be699
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103767"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751010"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Viktiga kommande ändringar i Azure Security Center
 
 > [!IMPORTANT]
-> Informationen på den här sidan avser för hands versions produkter eller funktioner som kan ändras i stort sett innan de släpps kommersiellt. Microsoft lämnar inga åtaganden eller garantier, vare sig uttryckliga eller underförstådda, med avseende på den information som anges här.
+> Informationen på den här sidan relaterar till förhandsprodukter eller funktioner, som kan ändras avsevärt innan de släpps kommersiellt, om någonsin. Microsoft gör inga åtaganden eller garantier, uttryckliga eller underförstådda, med avseende på den information som anges här.
 
-På den här sidan får du lära dig om ändringar som planeras för Security Center. Den beskriver planerade ändringar av produkten som kan påverka saker som dina säkra poäng eller arbets flöden.
+På den här sidan får du lära dig om ändringar som planeras för Security Center. Den beskriver planerade ändringar i produkten som kan påverka saker som säkerhetspoäng eller arbetsflöden.
 
-Om du letar efter den senaste versions informationen hittar du dem i [vad som är nytt i Azure Security Center](release-notes.md).
+Om du letar efter de senaste versionerna hittar du dem i Nyheter i [Azure Security Center](release-notes.md).
 
 
 ## <a name="planned-changes"></a>Planerade ändringar
 
 | Planerad ändring                                                                                                                                                        | Beräknat datum för ändring |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------|
-| [21 rekommendationer som flyttas mellan säkerhets kontroller](#21-recommendations-moving-between-security-controls)                                                           | April 2021                |
-| [Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | April 2021                |
-| [Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | 2021 **augusti**             |
-| [Förbättringar av SQL data klassificerings rekommendation](#enhancements-to-sql-data-classification-recommendation)                                                     | K2 2021                   |
+| [21 rekommendationer flyttas mellan säkerhetskontroller](#21-recommendations-moving-between-security-controls)                                                           | April 2021                |
+| [Två rekommendationer från säkerhetskontrollen "Tillämpa systemuppdateringar" är inaktuell](#two-recommendations-from-apply-system-updates-security-control-being-deprecated) | April 2021                |
+| [Den äldre implementeringen av ISO 27001 ersätts med ny ISO 27001:2013](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)          | Juni 2021                 |
+| [Rekommendationer från AWS släpps för allmän tillgänglighet (GA)](#recommendations-from-aws-will-be-released-for-general-availability-ga)                     | **Augusti** 2021           |
+| [Förbättringar av sql-dataklassificeringsrekommendation](#enhancements-to-sql-data-classification-recommendation)                                                     | Andra kvartalet 2021                   |
 |                                                                                                                                                                       |                           |
 
 
-### <a name="21-recommendations-moving-between-security-controls"></a>21 rekommendationer som flyttas mellan säkerhets kontroller 
+### <a name="21-recommendations-moving-between-security-controls"></a>21 rekommendationer flyttas mellan säkerhetskontroller 
 
 **Beräknat datum för ändring:** April 2021
 
-Följande rekommendationer flyttas till en annan säkerhets kontroll. Säkerhets kontroller är logiska grupper av relaterade säkerhets rekommendationer och återspeglar dina sårbara angrepps ytor. Den här flytten säkerställer att var och en av dessa rekommendationer är i den lämpligaste kontrollen för att uppfylla målet. 
+Följande rekommendationer flyttas till en annan säkerhetskontroll. Säkerhetskontroller är logiska grupper med relaterade säkerhetsrekommendationer och återspeglar dina sårbara angreppsytor. Den här flytten säkerställer att var och en av dessa rekommendationer har den lämpligaste kontrollen för att uppfylla sitt mål. 
 
-Lär dig vilka rekommendationer som finns i varje säkerhets kontroll i säkerhets kontroller och deras rekommendationer.
+Lär dig vilka rekommendationer som finns i varje säkerhetskontroll i Säkerhetskontroller och deras rekommendationer.
 
 |Rekommendation |Ändra och påverka  |
 |---------|---------|
-|Sårbarhets bedömning bör vara aktiverat på dina SQL-servrar<br>Sårbarhets bedömning ska vara aktiverat på SQL-hanterade instanser<br>Säkerhets risker i SQL-databaser bör åtgärdas nya<br>Säkerhets risker i SQL-databaser i virtuella datorer bör åtgärdas     |Flytta från åtgärds sårbarheter (värt 6 Poäng)<br>åtgärda säkerhetskonfigurationer (värt 4 Poäng).<br>Beroende på din miljö får de här rekommendationerna en minskad inverkan på dina poäng.|
-|Det bör finnas fler än en ägare som tilldelats din prenumeration<br>Variabler för Automation-konton ska vara krypterade<br>IoT-enheter – gransknings processen slutade skicka händelser<br>IoT-enheter – det gick inte att verifiera operativ systemets bas linje<br>IoT-enheter-TLS cipher Suite-uppgradering krävs<br>IoT-enheter – öppna portar på enheten<br>IoT-enheter – en princip för att tillåta brand vägg i en av kedjorna hittades<br>IoT-enheter-tillåtande brand Väggs regel i indatamängden hittades<br>IoT-enheter – en brand Väggs regel för att tillåtas i utmatnings kedjan hittades<br>Diagnostikloggar i IoT Hub ska vara aktive rad<br>IoT-enheter – agent som skickar underutnyttjade meddelanden<br>IoT-enheter-standard princip för IP-filter ska nekas<br>IoT-enheter – IP filter regel stora IP-intervall<br>IoT-enheter – intervall och storlek för agent meddelande ska justeras<br>IoT-enheter – identiska autentiseringsuppgifter för autentisering<br>IoT-enheter – gransknings processen slutade skicka händelser<br>Konfigurations bas linje för IoT-enheter – operativ system (OS) bör vara fast|Flyttar till **implementera rekommenderade säkerhets metoder**.<br>När en rekommendation flyttas till säkerhets kontrollen för att implementera säkerhets metoder för säkerhet, vilket inte är värt några punkter, påverkar inte längre rekommendationen dina säkra poäng.|
+|Sårbarhetsbedömning bör aktiveras på SQL-servrarna<br>Sårbarhetsbedömning bör aktiveras på dina SQL-hanterade instanser<br>Sårbarheter i DINA SQL-databaser bör åtgärdas ny<br>Sårbarheter i DINA SQL-databaser på virtuella datorer bör åtgärdas     |Flytta från Åtgärda sårbarheter (värd 6 punkter)<br>för att åtgärda säkerhetskonfigurationer (värd 4 punkter).<br>Beroende på din miljö har dessa rekommendationer en minskad inverkan på dina poäng.|
+|Det bör finnas fler än en ägare tilldelad till din prenumeration<br>Automation-kontovariabler ska vara krypterade<br>IoT-enheter – Granskningsprocessen slutade skicka händelser<br>IoT-enheter – Valideringsfel vid baslinje för operativsystem<br>IoT-enheter – uppgradering av TLS-chiffersvit krävs<br>IoT-enheter – Öppna portar på enheten<br>IoT-enheter – En tillåtande brandväggsprincip i en av kedjorna hittades<br>IoT-enheter – En tillåten brandväggsregel i indatakedjan hittades<br>IoT-enheter – En tillåten brandväggsregel i utdatakedjan hittades<br>Diagnostikloggar i IoT Hub ska vara aktiverade<br>IoT-enheter – Agent som skickar underutnyttjade meddelanden<br>IoT-enheter – Standardprincipen för IP-filter ska vara Neka<br>IoT-enheter – IP-filterregel för stort IP-intervall<br>IoT-enheter – Intervall och storlek för agentmeddelanden bör justeras<br>IoT-enheter – identiska autentiseringsuppgifter<br>IoT-enheter – Den granskade processen slutade skicka händelser<br>IoT-enheter – Baslinjekonfigurationen för operativsystem (OS) bör vara fast|Flytta till **Implementera metodtips för säkerhet.**<br>När en rekommendation flyttas till Säkerhetskontroll med metodtips för implementerad säkerhet, vilket inte är värt några poäng, påverkar rekommendationen inte längre dina säkerhetspoäng.|
 |||
 
 
-### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från "tillämpa system uppdateringar"-säkerhets kontrollen är inaktuell
+### <a name="two-recommendations-from-apply-system-updates-security-control-being-deprecated"></a>Två rekommendationer från säkerhetskontrollen "Tillämpa systemuppdateringar" är inaktuell
 
 **Beräknat datum för ändring:** April 2021
 
-Följande två rekommendationer är föråldrade:
+Följande två rekommendationer håller på att bli inaktuella:
 
-- **OS-versionen bör uppdateras för dina moln tjänst roller** – som standard uppdaterar Azure regelbundet ditt gäst operativ system till den senaste avbildningen som stöds i OS-familjen som du har angett i tjänst konfigurationen (. cscfg), till exempel Windows Server 2016.
-- **Kubernetes Services bör uppgraderas till en icke-sårbar Kubernetes-version** – utvärderings versionen är inte lika bred som vi vill. Den aktuella versionen av den här rekommendationen kommer slutligen att ersättas med en förbättrad version som är bättre anpassad till kundens säkerhets behov.
-
-
-### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Rekommendationer från AWS kommer att lanseras för allmän tillgänglighet (GA)
-
-**Beräknat datum för ändring:** 2021 augusti
-
-Azure Security Center skyddar arbets belastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
-
-Rekommendationerna som kommer från AWS-säkerhetshubben har varit i för hands version eftersom moln anslutningarna introducerades. Rekommendationer som har flaggats som **förhands granskning** ingår inte i beräkningarna av dina säkra poäng, men bör fortfarande åtgärdas när så är möjligt, så att när förhands gransknings perioden är slut bidrar de till dina poäng.
-
-Med den här ändringen kommer två uppsättningar med AWS-rekommendationer att flyttas till GA:
-
-- [Säkerhets hubbens PCI DSS kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
-- [Säkerhets hubbens CIS-AWS grunder benchmark-kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
-
-När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultaten dina kombinerade säkra Poäng för alla dina resurser i flera och hybrid moln.
+- **Operativsystemversionen** bör uppdateras för dina molntjänstroller – Som standard uppdaterar Azure regelbundet gästoperativsystemet till den senaste avbildningen som stöds i operativsystemfamiljen som du har angett i tjänstkonfigurationen (.cscfg), till exempel Windows Server 2016.
+- Kubernetes Services bör uppgraderas till en **icke-sårbar Kubernetes-version** – den här rekommendationens utvärderingar är inte så omfattande som vi vill att de ska vara. Den aktuella versionen av den här rekommendationen kommer så småningom att ersättas med en förbättrad version som är bättre anpassad efter våra kunders säkerhetsbehov.
 
 
+### <a name="legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013"></a>Den äldre implementeringen av ISO 27001 ersätts med ny ISO 27001:2013
 
-### <a name="enhancements-to-sql-data-classification-recommendation"></a>Förbättringar av SQL data klassificerings rekommendation
+Den äldre implementeringen av ISO 27001 tas bort från Security Center instrumentpanel för regelefterlevnad. Om du spårar din ISO 27001-efterlevnad med Security Center kan du registrera den nya ISO 27001:2013-standarden för alla relevanta hanteringsgrupper eller prenumerationer, och den aktuella äldre ISO 27001 tas snart bort från instrumentpanelen.
 
-**Beräknat datum för ändring:** K2 2021
+:::image type="content" source="media/upcoming-changes/removing-iso-27001-legacy-implementation.png" alt-text="Security Center instrumentpanel för regelefterlevnad som visar meddelandet om borttagning av den äldre implementeringen av ISO 27001." lightbox="media/upcoming-changes/removing-iso-27001-legacy-implementation.png":::
 
-Rekommendations **känsliga data i dina SQL-databaser bör klassificeras** i säkerhets kontrollen **Använd data klassificering** ersätts med en ny version som är bättre anpassad med Microsofts strategi för data klassificering. Som ett resultat kommer rekommendationens ID också att ändras (för närvarande är det b0df6f56-862d-4730-8597-38c0fd4ebd59).
+### <a name="recommendations-from-aws-will-be-released-for-general-availability-ga"></a>Rekommendationer från AWS släpps för allmän tillgänglighet (GA)
+
+**Beräknat datum för ändring:** Augusti 2021
+
+Azure Security Center skyddar arbetsbelastningar i Azure, Amazon Web Services (AWS) och Google Cloud Platform (GCP).
+
+Rekommendationerna från AWS Security Hub har varit i förhandsversion sedan molnanslutningsapparna introducerades. Rekommendationer som  flaggats som förhandsversion ingår inte i beräkningarna av dina säkerhetspoäng, men bör fortfarande åtgärdas när det är möjligt, så att de bidrar till dina poäng när förhandsversionsperioden är slut.
+
+Med den här ändringen flyttas två uppsättningar AWS-rekommendationer till GA:
+
+- [Security Hubs PCI DSS kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-pci-controls.html)
+- [Security Hubs CIS AWS Foundations Benchmark-kontroller](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-cis-controls.html)
+
+När dessa är GA och utvärderingarna körs på dina AWS-resurser påverkar resultatet din kombinerade säkerhetspoäng för alla dina multi- och hybridmolnresurser.
+
+
+
+### <a name="enhancements-to-sql-data-classification-recommendation"></a>Förbättringar av sql-dataklassificeringsrekommendation
+
+**Beräknat datum för ändring:** Andra kvartalet 2021
+
+Rekommendationen **Känsliga data i dina SQL-databaser** ska klassificeras i Tillämpa säkerhetskontroll för **dataklassificering** och ersättas med en ny version som är bättre anpassad efter Microsofts strategi för dataklassificering. Därför ändras även rekommendationens ID (för närvarande är det b0df6f56-862d-4730-8597-38c0fd4ebd59).
 
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-För alla nyligen gjorda ändringar av produkten, se [Vad är nytt i Azure Security Center?](release-notes.md).
+Alla nya ändringar av produkten finns i [Vad är nytt i Azure Security Center?](release-notes.md).

@@ -1,45 +1,39 @@
 ---
-title: Azure Key Vault säkerhets världar | Microsoft Docs
-description: 'Azure Key Vault är en tjänst för flera innehavare. Den använder en pool med HSM: er på varje Azure-plats. Alla platser i en geografisk region delar en kryptografisk avgränsning.'
+title: Azure Key Vault säkerhetsvärldar | Microsoft Docs
+description: Azure Key Vault är en tjänst för flera innehavare. Den använder en pool med HSM:er i varje Azure-region. Alla regioner i en geografisk region delar en kryptografisk gräns.
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
 ms.date: 07/03/2017
-ms.openlocfilehash: d21deea13aac3d40c452a183c340d3108a1a01f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0d82a3cb4c08d47b6827072378b9827037d32412
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936336"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751822"
 ---
-# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault säkerhets världar och geografiska gränser
+# <a name="azure-key-vault-security-worlds-and-geographic-boundaries"></a>Azure Key Vault säkerhetsvärldar och geografiska gränser
 
-Azure Key Vault är en tjänst för flera innehavare och använder en pool med HSM: er (Hardware Security modules) på varje Azure-plats. 
+Azure-produkter är tillgängliga i ett antal [Geografiska områden i Azure,](https://azure.microsoft.com/en-us/global-infrastructure/geographies/)där varje Azure-geografi innehåller en eller flera regioner. Till exempel innehåller geografin Europa två regioner – Europa, norra och Europa, västra – medan den enda regionen i brasiliens geografiska område är Brasilien, södra.
 
-Alla HSM: er på Azure-platser i samma geografiska region delar samma kryptografiska gränser (Thales Security World). Till exempel, östra USA och västra USA delar samma säkerhets värld eftersom de hör till den amerikanska geo-platsen. På samma sätt delar alla Azure-platser i Japan samma säkerhets värld och alla Azure-platser i Australien, Indien och så vidare. 
+Azure Key Vault är en tjänst för flera innehavare som använder en pool med maskinvarusäkerhetsmoduler (HSM). Alla HSM:er i ett geografiskt område delar samma kryptografiska gräns, vilket kallas en "säkerhetsvärld". Varje geografiskt område motsvarar en enda säkerhetsvärld och vice versa.
 
-## <a name="backup-and-restore-behavior"></a>Beteende för säkerhets kopiering och återställning
-
-En säkerhets kopia som tar en nyckel från ett nyckel valv på en Azure-plats kan återställas till ett nyckel valv på en annan Azure-plats, förutsatt att båda dessa villkor är uppfyllda:
-
-- Båda Azure-platserna tillhör samma geografiska plats
-- Båda nyckel valvena tillhör samma Azure-prenumeration
-
-Till exempel kan en säkerhets kopia som tas av en specifik prenumeration av en nyckel i ett nyckel valv i västra Indien bara återställas till ett annat nyckel valv i samma prenumeration och Geo-plats; Västra Indien, centrala Indien eller södra Indien.
-
-## <a name="regions-and-products"></a>Regioner och produkter
-
-- [Azure-regioner](https://azure.microsoft.com/regions/)
-- [Microsoft-produkter efter region](https://azure.microsoft.com/regions/services/)
-
-Regioner mappas till säkerhets världar som visas som huvud rubriker i tabellerna:
-
-I artikeln produkter per region, t. ex., innehåller fliken **Amerika** östra USA, centrala USA, västra USA all mappning till Amerika-regionen. 
+USA, östra och USA, västra delar samma säkerhetsvärld eftersom de tillhör det geografiska USA). På samma sätt delar alla Azure-regioner i Japan samma säkerhetsvärld, precis som alla Azure-regioner i Australien och så vidare.
 
 >[!NOTE]
->Ett undantag är att US DOD öst och US DOD CENTRAL har sina egna säkerhets världar. 
+> Ett undantag är att USA DOD, östra och USA DOD CENTRAL har sina egna säkerhetsvärldar.
 
-På samma sätt kan du på fliken **Europa** , norra Europa och västra Europa, mappa båda till regionen Europa. Samma sak gäller även på fliken **Asien och Stillahavsområdet** .
+## <a name="backup-and-restore-behavior"></a>Beteende för säkerhetskopiering och återställning
+
+En säkerhetskopia som tas av en nyckel från ett nyckelvalv i en Azure-region kan återställas till ett nyckelvalv i en annan Azure-region, så länge båda dessa villkor är sanna:
+
+- Båda Azure-regionerna tillhör samma geografiska område.
+- Båda nyckelvalven tillhör samma Azure-prenumeration.
+
+Till exempel kan en säkerhetskopia av en nyckel i ett nyckelvalv i Indien, västra återställas till ett annat nyckelvalv i samma prenumeration i geografin Indien (regionerna Indien, västra, Indien, centrala och Indien, södra).
+
+## <a name="next-steps"></a>Nästa steg
+
+- Se [Microsoft-produkter efter region](https://azure.microsoft.com/regions/services/)

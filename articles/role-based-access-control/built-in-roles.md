@@ -9,18 +9,18 @@ author: rolyon
 ms.author: rolyon
 ms.date: 04/09/2021
 ms.custom: generated
-ms.openlocfilehash: c89e6ed98e0a71f530cefda4cc1f42a27996d805
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: f4112d4b9bf55e45ec865f5c8606ead9088a7983
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107518515"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752398"
 ---
 # <a name="azure-built-in-roles"></a>Inbyggda roller i Azure
 
-[Rollbaserad åtkomstkontroll i Azure (Azure RBAC)](overview.md) har flera inbyggda Azure-roller som du kan tilldela till användare, grupper, tjänsthuvudnamn och hanterade identiteter. Rolltilldelningar är det sätt som du styr åtkomsten till Azure-resurser. Om de inbyggda rollerna inte uppfyller organisationens specifika behov kan du skapa egna anpassade [Azure-roller.](custom-roles.md) Information om hur du tilldelar roller finns i [Steg för att tilldela en Azure-roll.](role-assignments-steps.md)
+[Rollbaserad åtkomstkontroll i Azure (Azure RBAC)](overview.md) har flera inbyggda Roller i Azure som du kan tilldela till användare, grupper, tjänstens huvudnamn och hanterade identiteter. Rolltilldelningar är det sätt som du styr åtkomsten till Azure-resurser. Om de inbyggda rollerna inte uppfyller organisationens specifika behov kan du skapa egna anpassade [Azure-roller.](custom-roles.md) Information om hur du tilldelar roller finns i [Steg för att tilldela en Azure-roll.](role-assignments-steps.md)
 
-I den här artikeln visas de inbyggda Rollerna i Azure. Om du letar efter administratörsroller för Azure Active Directory (Azure AD) kan du se [Inbyggda roller i Azure AD.](../active-directory/roles/permissions-reference.md)
+I den här artikeln visas de inbyggda rollerna i Azure. Om du letar efter administratörsroller för Azure Active Directory (Azure AD) kan du gå till [Inbyggda roller i Azure AD.](../active-directory/roles/permissions-reference.md)
 
 Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka på rollnamnet för att visa listan `Actions` över , , och för varje `NotActions` `DataActions` `NotDataActions` roll. Information om vad de här åtgärderna innebär och hur de tillämpas på hanterings- och dataplan finns i [Förstå rolldefinitioner för Azure.](role-definitions.md)
 
@@ -30,12 +30,12 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | Inbyggd roll | Description | ID |
 > | --- | --- | --- |
 > | **Allmänt** |  |  |
-> | [Deltagare](#contributor) | Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC, hanterar tilldelningar i Azure Blueprints eller delar bildgallerier. | b24988ac-6180-42a0-ab88-20f7382dd24c |
+> | [Deltagare](#contributor) | Ger fullständig åtkomst för att hantera alla resurser, men du kan inte tilldela roller i Azure RBAC, hantera tilldelningar i Azure Blueprints eller dela bildgallerier. | b24988ac-6180-42a0-ab88-20f7382dd24c |
 > | [Ägare](#owner) | Ger fullständig åtkomst för att hantera alla resurser, inklusive möjligheten att tilldela roller i Azure RBAC. | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | [Läsare](#reader) | Visa alla resurser, men tillåter inte att du gör några ändringar. | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | [Administratör för användaråtkomst](#user-access-administrator) | Låter dig hantera användaråtkomst till Azure-resurser. | 18d7d88d-d35e-4fb5-a5c3-7773c20a72d9 |
 > | **Beräkning** |  |  |
-> | [Klassisk virtuell datordeltagare](#classic-virtual-machine-contributor) | Låter dig hantera klassiska virtuella datorer, men inte åtkomst till dem, och inte det virtuella nätverket eller lagringskontot som de är anslutna till. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
+> | [Klassisk virtuell datordeltagare](#classic-virtual-machine-contributor) | Låter dig hantera klassiska virtuella datorer, men inte åtkomst till dem, och inte det virtuella nätverk eller lagringskonto som de är anslutna till. | d73bb868-a0df-4d4d-bd69-98a00b01fccb |
 > | [Administratörsinloggning för virtuell dator](#virtual-machine-administrator-login) | Visa Virtual Machines i portalen och logga in som administratör | 1c0163c0-47e6-4577-8991-ea5c82e286e4 |
 > | [Virtuell datordeltagare](#virtual-machine-contributor) | Låter dig hantera virtuella datorer, men inte åtkomst till dem, och inte det virtuella nätverket eller lagringskontot som de är anslutna till. | 9980e02c-c2be-4d73-94e8-173b1dc7cf3c |
 > | [Användarinloggning för virtuell dator](#virtual-machine-user-login) | Visa Virtual Machines i portalen och logga in som en vanlig användare. | fb879df8-f326-4884-b1cf-06f3ad86be52 |
@@ -57,13 +57,13 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Backup Reader](#backup-reader) | Kan visa säkerhetskopieringstjänster, men kan inte göra ändringar | a795c7a0-d4a2-40c1-ae25-d81f01202912 |
 > | [Klassisk lagringskontodeltagare](#classic-storage-account-contributor) | Låter dig hantera klassiska lagringskonton, men inte åtkomst till dem. | 86e8f5dc-a6e9-4c67-9d15-de283e8eac25 |
 > | [Tjänstroll för nyckeloperatör för klassisk lagringskonto](#classic-storage-account-key-operator-service-role) | Operatorer för klassiska lagringskontonycklar kan visa och återskapa nycklar på klassiska lagringskonton | 985d6b00-f706-48f5-a6fe-d0ca12fb668d |
-> | [Data Box-enhet deltagare](#data-box-contributor) | Låter dig hantera allt under Data Box-enhet service förutom att ge åtkomst till andra. | add466c9-e687-43fc-8d98-dfcf8d720be5 |
-> | [Data Box-enhet Läsare](#data-box-reader) | Låter dig hantera Data Box-enhet-tjänsten förutom att skapa beställnings- eller redigeringsinformation och ge åtkomst till andra. | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
+> | [Data Box-enhet deltagare](#data-box-contributor) | Låter dig hantera allt under Data Box-enhet Service förutom att ge åtkomst till andra. | add466c9-e687-43fc-8d98-dfcf8d720be5 |
+> | [Data Box-enhet Läsare](#data-box-reader) | Låter dig hantera Data Box-enhet-tjänsten, förutom att skapa beställnings- eller redigeringsinformation och ge åtkomst till andra. | 028f4ed7-e2a9-465e-a8f4-9c0ffdfdc027 |
 > | [Data Lake Analytics Utvecklare](#data-lake-analytics-developer) | Låter dig skicka, övervaka och hantera dina egna jobb, men inte skapa eller ta bort Data Lake Analytics konton. | 47b7735b-770e-4598-a7da-8b91488b4c88 |
 > | [Läsar- och dataåtkomst](#reader-and-data-access) | Låter dig visa allt men låter dig inte ta bort eller skapa ett lagringskonto eller en innesluten resurs. Det ger också läs-/skrivåtkomst till alla data som finns i ett lagringskonto via åtkomst till lagringskontonycklar. | c12c1c16-33a1-487b-954d-41c89c60f349 |
 > | [Lagringskontodeltagare](#storage-account-contributor) | Tillåter hantering av lagringskonton. Ger åtkomst till kontonyckeln, som kan användas för att komma åt data via auktorisering med delad nyckel. | 17d1049b-9a84-46fb-8f53-869881c3d3ab |
 > | [Tjänstroll för nyckeloperatör för lagringskonto](#storage-account-key-operator-service-role) | Tillåter att åtkomstnycklar för lagringskontot listas och återskapas. | 81a9662b-bebf-436f-a333-f67b29880f12 |
-> | [Storage Blob Data-deltagare](#storage-blob-data-contributor) | Läsa, skriva och ta bort Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
+> | [Storage Blob Data-deltagare](#storage-blob-data-contributor) | Läsa, skriva och ta bort Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | ba92f5b4-2d11-453d-a403-e96b0029c9fe |
 > | [Storage Blob Data-ägare](#storage-blob-data-owner) | Ger fullständig åtkomst till Azure Storage blobcontainrar och data, inklusive tilldelning av POSIX-åtkomstkontroll. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | [Storage Blob Data-läsare](#storage-blob-data-reader) | Läs och lista Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | [Storage Blob Dele blob](#storage-blob-delegator) | Hämta en nyckel för användardelegering som sedan kan användas för att skapa en signatur för delad åtkomst för en container eller blob som är signerad med Azure AD-autentiseringsuppgifter. Mer information finns i Skapa [en SAS för användardelegering.](/rest/api/storageservices/create-user-delegation-sas) | db58b8e5-c6ad-4a2a-8342-4190687cbf4a |
@@ -72,10 +72,10 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Storage-fildata för SMB-resursläsare](#storage-file-data-smb-share-reader) | Tillåter läsåtkomst för filer/kataloger i Azure-filresurser. Den här rollen motsvarar en filresurs-ACL för läsning på Windows-filservrar. | aba4ae5f-2193-4029-9191-0cb91df5e314 |
 > | [Storage Queue Data-deltagare](#storage-queue-data-contributor) | Läsa, skriva och ta bort Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) | 974c5e8b-45b9-4653-ba55-5f855dd0fb88 |
 > | [Storage Queue Data Message Processor](#storage-queue-data-message-processor) | Granska, hämta och ta bort ett meddelande från en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
-> | [Avsändare av storage queue-datameddelande](#storage-queue-data-message-sender) | Lägga till meddelanden i en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | [Avsändare av storage queue-datameddelande](#storage-queue-data-message-sender) | Lägga till meddelanden i en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Storage Queue Data Reader](#storage-queue-data-reader) | Läs och lista Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Webb** |  |  |
-> | [Azure Maps datadeltagare](#azure-maps-data-contributor) | Ger åtkomst till att läsa, skriva och ta bort åtkomst till kartrelaterade data från ett Azure Maps-konto. | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
+> | [Azure Maps datadeltagare](#azure-maps-data-contributor) | Ger åtkomst till att läsa, skriva och ta bort åtkomst till mappningsrelaterade data från ett Azure Maps-konto. | 8f5e0ce6-4f7b-4dcf-bddf-e6f48634a204 |
 > | [Azure Maps Data Reader](#azure-maps-data-reader) | Ger åtkomst till läsmappningsrelaterade data från ett Azure Maps-konto. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Azure Spring Cloud dataläsare](#azure-spring-cloud-data-reader) | Tillåt läsåtkomst till Azure Spring Cloud data | b5537268-8956-4941-a8f0-646150406f0c |
 > | [Search Service Contributor](#search-service-contributor) | Låter dig hantera Söktjänster, men inte åtkomst till dem. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
@@ -95,7 +95,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [AcrQuarantineReader](#acrquarantinereader) | acr quarantine data reader | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | [AcrQuarantineWriter](#acrquarantinewriter) | acr quarantine data writer | c8d4ff99-41c3-41a8-9f60-21dfdad59608 |
 > | [Azure Kubernetes Service administratörsroll för kluster](#azure-kubernetes-service-cluster-admin-role) | Visa en lista över åtgärden för klusteradministratörsbehörighet. | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
-> | [Azure Kubernetes Service användarroll för kluster](#azure-kubernetes-service-cluster-user-role) | Visa en lista över åtgärden för klusteranvändares autentiseringsuppgifter. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
+> | [Azure Kubernetes Service klusteranvändarroll](#azure-kubernetes-service-cluster-user-role) | Visa en lista över åtgärden för klusteranvändares autentiseringsuppgifter. | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | [Azure Kubernetes Service deltagarroll](#azure-kubernetes-service-contributor-role) | Ger åtkomst till Azure Kubernetes Service skrivskyddade kluster | ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8 |
 > | [Azure Kubernetes Service RBAC-administratör](#azure-kubernetes-service-rbac-admin) | Låter dig hantera alla resurser under kluster/namnområde, förutom att uppdatera eller ta bort resurskvoter och namnområden. | 3498e952-d568-435e-9b2c-8d77e338d7f7 |
 > | [Azure Kubernetes Service RBAC-klusteradministratör](#azure-kubernetes-service-rbac-cluster-admin) | Låter dig hantera alla resurser i klustret. | b1ff04bb-8a4e-4dc4-8eb5-8693973ce19b |
@@ -121,8 +121,8 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [HDInsight-klusteroperator](#hdinsight-cluster-operator) | Gör att du kan läsa och ändra HDInsight-klusterkonfigurationer. | 61ed4efc-fel3-44fd-b111-e24485cc132a |
 > | [HDInsight Domain Services-deltagare](#hdinsight-domain-services-contributor) | Kan läsa, skapa, ändra och ta bort Domain Services-relaterade åtgärder som krävs för HDInsight-Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics Contributor](#log-analytics-contributor) | Log Analytics-deltagare kan läsa alla övervakningsdata och redigera övervakningsinställningar. Redigering av övervakningsinställningar omfattar att lägga till VM-tillägget till virtuella datorer. läsa lagringskontonycklar för att kunna konfigurera insamling av loggar från Azure Storage; skapa och konfigurera Automation-konton; lägga till lösningar; och konfigurera Azure Diagnostics på alla Azure-resurser. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
-> | [Log Analytics Reader](#log-analytics-reader) | Log Analytics-läsare kan visa och söka i alla övervakningsdata samt visa övervakningsinställningar, inklusive att visa konfigurationen av Azure Diagnostics på alla Azure-resurser. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | [Vy över dataöversiktsman](#purview-data-curator) | Dataöversikten Microsoft.Purview kan skapa, läsa, ändra och ta bort katalogdataobjekt och upprätta relationer mellan objekt. Den här rollen är i förhandsversion och kan komma att ändras. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
+> | [Log Analytics Reader](#log-analytics-reader) | Log Analytics-läsare kan visa och söka efter alla övervakningsdata samt visa övervakningsinställningar, inklusive att visa konfigurationen av Azure Diagnostics på alla Azure-resurser. | 73c42c96-874c-492b-b04d-ab87d138a893 |
+> | [Vy över dataöversikt över intendenten](#purview-data-curator) | Dataöversikten Microsoft.Purview kan skapa, läsa, ändra och ta bort katalogdataobjekt och upprätta relationer mellan objekt. Den här rollen är i förhandsversion och kan komma att ändras. | 8a3c2885-9b38-4fd2-9d99-91af537c1347 |
 > | [Purview Data Reader](#purview-data-reader) | Dataläsaren Microsoft.Purview kan läsa katalogdataobjekt. Den här rollen är i förhandsversion och kan komma att ändras. | ff100721-1b9d-43d8-af52-42b69c1272db |
 > | [Purview Data Source Administrator](#purview-data-source-administrator) | Datakällsadministratören Microsoft.Purview kan hantera datakällor och genomsökningar. Den här rollen är i förhandsversion och kan komma att ändras. | 200bba9e-f0c8-430f-892b-6f0794863803 |
 > | [Schema Registry-deltagare (förhandsversion)](#schema-registry-contributor-preview) | Läsa, skriva och ta bort schemaregistergrupper och scheman. | 5dffeca3-4936-4216-b2bc-10343a5abb25 |
@@ -134,7 +134,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Cognitive Services Custom Vision deltagare](#cognitive-services-custom-vision-contributor) | Fullständig åtkomst till projektet, inklusive möjligheten att visa, skapa, redigera eller ta bort projekt. | c1ff6cc2-c111-46fe-8896-e0ef812ad9f3 |
 > | [Cognitive Services Custom Vision distribution](#cognitive-services-custom-vision-deployment) | Publicera, avpublicera eller exportera modeller. Distributionen kan visa projektet men kan inte uppdatera. | 5c4089e1-6d96-4d2f-b296-c1bc7137275f |
 > | [Cognitive Services Custom Vision Labeler](#cognitive-services-custom-vision-labeler) | Visa, redigera träningsbilder och skapa, lägga till, ta bort eller ta bort bildtaggar. Etiketterare kan visa projektet men kan inte uppdatera något annat än träningsbilder och taggar. | 88424f51-ebe7-446f-bc41-7fa16989e96c |
-> | [Cognitive Services Custom Vision Läsare](#cognitive-services-custom-vision-reader) | Skrivskyddade åtgärder i projektet. Läsare kan inte skapa eller uppdatera projektet. | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
+> | [Cognitive Services Custom Vision Läsare](#cognitive-services-custom-vision-reader) | Skrivskyddade åtgärder i projektet. Läsarna kan inte skapa eller uppdatera projektet. | 93586559-c37d-4a6b-ba08-b9f0940c2d73 |
 > | [Cognitive Services Custom Vision utbildare](#cognitive-services-custom-vision-trainer) | Visa, redigera projekt och träna modellerna, inklusive möjligheten att publicera, avpublicera och exportera modellerna. Utbildare kan inte skapa eller ta bort projektet. | 0a5ae4ab-0d65-4eeb-be61-29fc9b54394b |
 > | [Cognitive Services dataläsare (förhandsversion)](#cognitive-services-data-reader-preview) | Låter dig läsa Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services Metrics Advisor administratör](#cognitive-services-metrics-advisor-administrator) | Fullständig åtkomst till projektet, inklusive konfiguration på systemnivå. | cb43c632-a144-4ec5-977c-e80c4affc34a |
@@ -149,7 +149,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Läsare för enhetsuppdateringsdistributioner](#device-update-deployments-reader) | Ger läsåtkomst till hanteringsåtgärder, men tillåter inte ändringar | 49e2f5d2-7741-4835-8efa-19e1fe35e47f |
 > | [Läsare för enhetsuppdatering](#device-update-reader) | Ger läsåtkomst till hanterings- och innehållsåtgärder, men tillåter inte ändringar | e9dba6fb-3d52-4cf0-bce3-f06ce71b9e0f |
 > | **Mixad verklighet** |  |  |
-> | [Remote Rendering administratör](#remote-rendering-administrator) | Ger användaren funktioner för konvertering, hantering av session, rendering och diagnostik för Azure Remote Rendering | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
+> | [Remote Rendering administratör](#remote-rendering-administrator) | Ger användaren tillgång till funktioner för konvertering, hantering av session, rendering och diagnostik Azure Remote Rendering | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
 > | [Remote Rendering Klient](#remote-rendering-client) | Ger användaren hanterings-, renderings- och diagnostikfunktioner för Azure Remote Rendering. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Spatial Anchors kontodeltagare](#spatial-anchors-account-contributor) | Låter dig hantera spatiala fästpunkter i ditt konto, men inte ta bort dem | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [Spatial Anchors kontoägare](#spatial-anchors-account-owner) | Låter dig hantera spatiala fästpunkter i ditt konto, inklusive att ta bort dem | 70bbe301-9835-447d-afdd-19eb3167307c |
@@ -172,7 +172,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [FHIR-dataläsare](#fhir-data-reader) | Rollen tillåter användare eller huvudnamn att läsa FHIR-data | 4c8d0bbc-75d3-4935-991f-5f3c56d81508 |
 > | [FHIR-dataskrivare](#fhir-data-writer) | Rollen tillåter användare eller huvudnamn att läsa och skriva FHIR-data | 3f88fce4-5892-4214-ae73-ba5294559913 |
 > | [Integration Service Environment deltagare](#integration-service-environment-contributor) | Låter dig hantera integreringstjänstmiljöer, men inte åtkomst till dem. | a41e2c5b-bd99-4a07-88f4-9bf657a760b8 |
-> | [Integration Service Environment Utvecklare](#integration-service-environment-developer) | Gör att utvecklare kan skapa och uppdatera arbetsflöden, integrationskonton och API-anslutningar i integrationstjänstmiljöer. | c7aa55d3-1abb-444a-a5ca-5e51e485d6ec |
+> | [Integration Service Environment Utvecklare](#integration-service-environment-developer) | Gör att utvecklare kan skapa och uppdatera arbetsflöden, integrationskonton och API-anslutningar i integreringstjänstmiljöer. | c7aa55d3-1abb-444a-a5ca-5e51e485d6ec |
 > | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) | Låter dig hantera konton för intelligenta system, men inte åtkomst till dem. | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [Logic App-deltagare](#logic-app-contributor) | Låter dig hantera logikappar, men inte ändra åtkomsten till dem. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Logic App-operatör](#logic-app-operator) | Låter dig läsa, aktivera och inaktivera logikappar, men inte redigera eller uppdatera dem. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
@@ -188,15 +188,15 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Azure Sentinel-svarare](#azure-sentinel-responder) | Azure Sentinel-svarare | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault administratör](#key-vault-administrator) | Utför alla dataplansåtgärder på ett nyckelvalv och alla objekt i det, inklusive certifikat, nycklar och hemligheter. Det går inte att hantera nyckelvalvsresurser eller rolltilldelningar. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | 00482a5a-887f-4fb3-b363-3b7fe8e74483 |
 > | [Key Vault certifikatansvarig](#key-vault-certificates-officer) | Utför en åtgärd på certifikaten för ett nyckelvalv, förutom att hantera behörigheter. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | a4417e6f-fecd-4de8-b567-7b0420556985 |
-> | [Key Vault deltagare](#key-vault-contributor) | Hantera nyckelvalv, men tillåter inte att du tilldelar roller i Azure RBAC och ger dig inte åtkomst till hemligheter, nycklar eller certifikat. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
+> | [Key Vault deltagare](#key-vault-contributor) | Hantera nyckelvalv, men tillåter inte att du tilldelar roller i Azure RBAC och tillåter inte åtkomst till hemligheter, nycklar eller certifikat. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
 > | [Key Vault Crypto Officer](#key-vault-crypto-officer) | Utför en åtgärd på nycklarna för ett nyckelvalv, förutom att hantera behörigheter. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | 14b46e9e-c2b7-41b4-b07b-48a6ebf60603 |
 > | [Key Vault kryptografitjänstkrypteringsanvändare](#key-vault-crypto-service-encryption-user) | Läs metadata för nycklar och utför radbrytningsåtgärder. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | e147488a-f6f5-4113-8e2d-b22465e65bf6 |
-> | [Key Vault Crypto-användare](#key-vault-crypto-user) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckelvalv som använder behörighetsmodellen rollbaserad åtkomstkontroll i Azure. | 12338af0-0e69-4776-bea7-57ae8d297424 |
-> | [Key Vault Läsare](#key-vault-reader) | Läs metadata för nyckelvalv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckelmaterial. Fungerar bara för nyckelvalv som använder behörighetsmodellen rollbaserad åtkomstkontroll i Azure. | 21090545-7ca7-4776-b22c-e363652d74d2 |
+> | [Key Vault Crypto-användare](#key-vault-crypto-user) | Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | 12338af0-0e69-4776-bea7-57ae8d297424 |
+> | [Key Vault Läsare](#key-vault-reader) | Läs metadata för nyckelvalv och dess certifikat, nycklar och hemligheter. Det går inte att läsa känsliga värden, till exempel hemligt innehåll eller nyckelmaterial. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | 21090545-7ca7-4776-b22c-e363652d74d2 |
 > | [Key Vault Secrets Officer](#key-vault-secrets-officer) | Utför en åtgärd på hemligheterna för ett nyckelvalv, förutom att hantera behörigheter. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | b86a8fe4-44ce-4948-aee5-eccb2c155cd7 |
 > | [Key Vault hemlighetsanvändare](#key-vault-secrets-user) | Läsa hemligt innehåll. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure". | 4633458b-17de-408a-b874-0445c86b69e6 |
-> | [Hanterad HSM-deltagare](#managed-hsm-contributor) | Låter dig hantera hanterade HSM-pooler, men inte åtkomst till dem. | 18500a29-7fe2-46b2-a342-b16a415e101d |
-> | [Säkerhetsadministratör](#security-admin) | Visa och uppdatera behörigheter för Security Center. Samma behörigheter som rollen Säkerhetsläsare och kan även uppdatera säkerhetsprincipen och ignorera aviseringar och rekommendationer. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Managed HSM-deltagare](#managed-hsm-contributor) | Låter dig hantera hanterade HSM-pooler, men inte åtkomst till dem. | 18500a29-7fe2-46b2-a342-b16a415e101d |
+> | [Säkerhetsadministratör](#security-admin) | Visa och uppdatera behörigheter för Security Center. Samma behörigheter som säkerhetsläsarrollen och kan även uppdatera säkerhetsprincipen och avvisa aviseringar och rekommendationer. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Deltagare i säkerhetsutvärdering](#security-assessment-contributor) | Låter dig skicka utvärderingar till Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Security Manager (äldre)](#security-manager-legacy) | Det här är en äldre roll. Använd säkerhetsadministratören i stället. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
 > | [Säkerhetsläsare](#security-reader) | Visa behörigheter för Security Center. Kan visa rekommendationer, aviseringar, en säkerhetsprincip och säkerhets tillstånd, men kan inte göra ändringar. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
@@ -205,9 +205,9 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Labbskapare](#lab-creator) | Gör att du kan skapa nya labb under dina Azure Lab-konton. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Övervaka** |  |  |
 > | [Application Insights komponentdeltagare](#application-insights-component-contributor) | Kan hantera Application Insights komponenter | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Ger användaren behörighet att visa och ladda ned ögonblicksbilder av felsökning som samlats in med Application Insights Snapshot Debugger. Observera att dessa behörigheter inte ingår i [rollerna Ägare](#owner) [eller](#contributor) Deltagare. När du ger Application Insights Snapshot Debugger rollen måste du bevilja rollen direkt till användaren. Rollen känns inte igen när den läggs till i en anpassad roll. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Ger användaren behörighet att visa och ladda ned ögonblicksbilder av felsökning som samlats in med Application Insights Snapshot Debugger. Observera att dessa behörigheter inte ingår i rollerna [Ägare](#owner) [eller](#contributor) Deltagare. När du ger Application Insights Snapshot Debugger rollen måste du bevilja rollen direkt till användaren. Rollen känns inte igen när den läggs till i en anpassad roll. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Övervakningsdeltagare](#monitoring-contributor) | Kan läsa alla övervakningsdata och redigera övervakningsinställningar. Se även [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
-> | [Övervakningsmåttutgivare](#monitoring-metrics-publisher) | Aktiverar publiceringsmått mot Azure-resurser | 3913510d-42f4-4e42-8a64-420c390055eb |
+> | [Övervakningsmåttutgivare](#monitoring-metrics-publisher) | Aktiverar publicering av mått mot Azure-resurser | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [Övervakningsläsare](#monitoring-reader) | Kan läsa alla övervakningsdata (mått, loggar osv.). Se även [Kom igång med roller, behörigheter och säkerhet med Azure Monitor](../azure-monitor/roles-permissions-security.md#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
 > | [Arbetsboksdeltagare](#workbook-contributor) | Kan spara delade arbetsböcker. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Arbetsboksläsare](#workbook-reader) | Kan läsa arbetsböcker. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
@@ -215,7 +215,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Automation-jobboperator](#automation-job-operator) | Skapa och hantera jobb med Automation Runbooks. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Automation-operatör](#automation-operator) | Automation-operatörer kan starta, stoppa, pausa och återuppta jobb | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation Runbook-operatör](#automation-runbook-operator) | Läsa Runbook-egenskaper – för att kunna skapa jobb för runbooken. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
-> | [Azure Arc aktiverat kubernetes-klusteranvändarroll](#azure-arc-enabled-kubernetes-cluster-user-role) | Visa en lista över åtgärden för autentiseringsuppgifter för klusteranvändare. | 00493d72-78f6-4148-b6c5-d3ce8e4799ddd |
+> | [Azure Arc aktiverad Kubernetes-klusteranvändarroll](#azure-arc-enabled-kubernetes-cluster-user-role) | Åtgärden Visa en lista över autentiseringsuppgifter för klusteranvändare. | 00493d72-78f6-4148-b6c5-d3ce8e4799ddd |
 > | [Azure Arc Kubernetes-administratör](#azure-arc-kubernetes-admin) | Låter dig hantera alla resurser under kluster/namnområde, förutom att uppdatera eller ta bort resurskvoter och namnområden. | dffb1e0c-446f-4dde-a09f-99eb5cc68b96 |
 > | [Azure Arc Kubernetes-klusteradministratör](#azure-arc-kubernetes-cluster-admin) | Låter dig hantera alla resurser i klustret. | 8393591c-06b9-48a2-a542-1bd6b377f6a2 |
 > | [Azure Arc Kubernetes Viewer](#azure-arc-kubernetes-viewer) | Låter dig visa alla resurser i kluster/namnrymd, förutom hemligheter. | 63f0a09d-1495-4db4-a681-037d84835eb4 |
@@ -232,16 +232,16 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Deltagarroll för hanterat program](#managed-application-contributor-role) | Gör det möjligt att skapa hanterade programresurser. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Operatörsroll för hanterat program](#managed-application-operator-role) | Låter dig läsa och utföra åtgärder på hanterade programresurser | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Läsare för hanterade program](#managed-applications-reader) | Låter dig läsa resurser i en hanterad app och begära JIT-åtkomst. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
-> | [Tilldelning av registrering av hanterade tjänster Ta bort roll](#managed-services-registration-assignment-delete-role) | Med borttagningsrollen för tilldelning av hanterade tjänster kan användare av hanterade tjänster ta bort den registreringstilldelning som tilldelats deras klientorganisation. | 91c1777a-f3dc-4fae-b103-61d183457e46 |
+> | [Tilldelning av registrering av hanterade tjänster Ta bort roll](#managed-services-registration-assignment-delete-role) | Med borttagningsrollen för registreringstilldelning för hanterade tjänster kan de hanterande klientanvändarna ta bort den registreringstilldelning som tilldelats deras klientorganisation. | 91c1777a-f3dc-4fae-b103-61d183457e46 |
 > | [Deltagare i hanteringsgrupp](#management-group-contributor) | Deltagarroll för hanteringsgrupp | 5d58bcaf-24a5-4b20-bdb6-eed9f69fbe4c |
 > | [Läsare för hanteringsgrupp](#management-group-reader) | Läsarroll för hanteringsgrupp | ac63b705-f282-497d-ac71-919bf39d939d |
 > | [New Relic APM-kontodeltagare](#new-relic-apm-account-contributor) | Låter dig hantera New Relic Application Performance Management och program, men inte åtkomst till dem. | 5d28c62d-5b37-4476-8438-e587778df237 |
-> | [Dataskrivare för Policy Insights (förhandsversion)](#policy-insights-data-writer-preview) | Ger läsåtkomst till resursprinciper och skrivåtkomst till resurskomponentprinciphändelser. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
-> | [Operator för kvotbegäran](#quota-request-operator) | Läs och skapa kvotbegäranden, få status för kvotbegäran och skapa supportärenden. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
+> | [Policy Insights Data Writer (förhandsversion)](#policy-insights-data-writer-preview) | Ger läsåtkomst till resursprinciper och skrivåtkomst till principhändelser för resurskomponenter. | 66bb4e9e-b016-4a94-8249-4c0511c2be84 |
+> | [Operator för kvotbegäran](#quota-request-operator) | Läsa och skapa kvotbegäranden, få status för kvotbegäran och skapa supportbegäranden. | 0e5f05e5-9ab9-446b-b98d-1e2157c94125 |
 > | [Reservationsköpare](#reservation-purchaser) | Låter dig köpa reservationer | f7b75c60-3036-4b75-91c3-6b41c27c1689 |
 > | [Deltagare för resursprincip](#resource-policy-contributor) | Användare med behörighet att skapa/ändra resursprincip, skapa supportbiljett och läsa resurser/hierarki. | 36243c78-bf99-498c-9df9-86d9f8d28608 |
 > | [Site Recovery-deltagare](#site-recovery-contributor) | Låter dig hantera Site Recovery förutom valvskapande och rolltilldelning | 6670b86e-a3f7-4917-ac9b-5d6ab1be4567 |
-> | [Site Recovery-operatör](#site-recovery-operator) | Låter dig redundans- och återställning efter fel men inte utföra Site Recovery av hanteringsåtgärder | 494ae006-db33-4328-bf46-533a6560a3ca |
+> | [Site Recovery-operatör](#site-recovery-operator) | Låter dig redundans och återställning efter fel, men inte utföra Site Recovery av hanteringsåtgärder | 494ae006-db33-4328-bf46-533a6560a3ca |
 > | [Site Recovery-läsare](#site-recovery-reader) | Låter dig visa Site Recovery status men inte utföra andra hanteringsåtgärder | dbaa88c4-0c30-4179-9fb3-46319faa6149 |
 > | [Supportbegärandedeltagare](#support-request-contributor) | Låter dig skapa och hantera supportbegäranden | cfd33db0-3dd1-45e3-aa9d-cdbdf3b6f24e |
 > | [Taggdeltagare](#tag-contributor) | Låter dig hantera taggar på entiteter utan att ge åtkomst till själva entiteterna. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
@@ -250,19 +250,19 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 > | [Azure Digital Twins dataläsare](#azure-digital-twins-data-reader) | Skrivskyddade roller för Digital Twins egenskaper för dataplanet | d57506d4-4c8d-48b1-8587-93c323f6a5a3 |
 > | [BizTalk-deltagare](#biztalk-contributor) | Låter dig hantera BizTalk-tjänster, men inte åtkomst till dem. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
 > | [Programgruppdeltagare för skrivbordsvirtualisering](#desktop-virtualization-application-group-contributor) | Deltagare i programgruppen för skrivbordsvirtualisering. | 86240b0e-9422-4c43-887b-b61143f32ba8 |
-> | [Gruppläsare för program för skrivbordsvirtualisering](#desktop-virtualization-application-group-reader) | Läsare av programgruppen för skrivbordsvirtualisering. | aebf23d0-b568-4e86-b8f9-fe83a2c6ab55 |
-> | [Desktop Virtualization Contributor](#desktop-virtualization-contributor) | Deltagare i Desktop Virtualization. | 082f0a83-3be5-4ba1-904c-961lob79b387 |
+> | [Läsare för programgrupp för skrivbordsvirtualisering](#desktop-virtualization-application-group-reader) | Läsare av programgruppen för skrivbordsvirtualisering. | aebf23d0-b568-4e86-b8f9-fe83a2c6ab55 |
+> | [Desktop Virtualization-deltagare](#desktop-virtualization-contributor) | Deltagare i Desktop Virtualization. | 082f0a83-3be5-4ba1-904c-961lob79b387 |
 > | [Deltagare i värdpool för skrivbordsvirtualisering](#desktop-virtualization-host-pool-contributor) | Deltagare i värdpoolen för skrivbordsvirtualisering. | e307426c-f9b6-4e81-87de-d99efb3c32bc |
 > | [Läsare för värdpool för skrivbordsvirtualisering](#desktop-virtualization-host-pool-reader) | Läsare av värdpoolen för skrivbordsvirtualisering. | ceadfde2-b300-400a-ab7b-6143895aa822 |
-> | [Läsare för skrivbordsvirtualisering](#desktop-virtualization-reader) | Läsare av skrivbordsvirtualisering. | 49a72310-ab8d-41df-bbb0-79b649203868 |
-> | [Värdoperator för skrivbordsvirtualiseringssession](#desktop-virtualization-session-host-operator) | Operatör av sessionsvärden för skrivbordsvirtualisering. | 2ad6aaab-ead9-4eaa-8ac5-da422f562408 |
-> | [Användare av skrivbordsvirtualisering](#desktop-virtualization-user) | Tillåter att användaren använder programmen i en programgrupp. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
-> | [Sessionsoperator för skrivbordsvirtualisering](#desktop-virtualization-user-session-operator) | Operatör av Uesr-sessionen för skrivbordsvirtualisering. | ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6 |
-> | [Deltagare i skrivbordsvirtualiseringsarbetsyta](#desktop-virtualization-workspace-contributor) | Deltagare i arbetsytan för skrivbordsvirtualisering. | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
+> | [Läsare för skrivbordsvirtualisering](#desktop-virtualization-reader) | Läsare av Desktop Virtualization. | 49a72310-ab8d-41df-bbb0-79b649203868 |
+> | [Värdoperatör för skrivbordsvirtualiseringssession](#desktop-virtualization-session-host-operator) | Operatör av sessionsvärden för skrivbordsvirtualisering. | 2ad6aaab-ead9-4eaa-8ac5-da422f562408 |
+> | [Användare av skrivbordsvirtualisering](#desktop-virtualization-user) | Tillåter användare att använda programmen i en programgrupp. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
+> | [Sessionsoperatör för skrivbordsvirtualisering](#desktop-virtualization-user-session-operator) | Operatör av Desktop Virtualization Uesr-sessionen. | ea4bfff8-7fb4-485a-aadd-d4129a0ffaa6 |
+> | [Deltagare i arbetsytan för skrivbordsvirtualisering](#desktop-virtualization-workspace-contributor) | Deltagare i arbetsytan för skrivbordsvirtualisering. | 21efdde3-836f-432b-bf3d-3e8e734d4b2b |
 > | [Läsare för arbetsyta för skrivbordsvirtualisering](#desktop-virtualization-workspace-reader) | Läsare av arbetsytan för skrivbordsvirtualisering. | 0fa44ee9-7a7d-466b-9bb2-2bf446b1204d |
 > | [DiskSäkerhetskopieringsläsare](#disk-backup-reader) | Ger behörighet att säkerhetskopiera valv för att utföra disksäkerhetskopiering. | 3e5e47e6-65f7-47ef-90b5-e5dd4d455f24 |
 > | [Diskåterställningsoperator](#disk-restore-operator) | Ger behörighet till säkerhetskopieringsvalvet för att utföra diskåterställning. | b50d9833-a0cb-478e-945f-707fcc997c13 |
-> | [Deltagare för ögonblicksbild av disk](#disk-snapshot-contributor) | Ger behörighet att säkerhetskopiera valv för att hantera ögonblicksbilder av diskar. | 7efff54f-a5b4-42b5-a1c5-5411624893ce |
+> | [Diskögonblicksbilddeltagare](#disk-snapshot-contributor) | Ger behörighet att säkerhetskopiera valv för att hantera ögonblicksbilder av diskar. | 7efff54f-a5b4-42b5-a1c5-5411624893ce |
 > | [Deltagare i Scheduler-jobbsamlingar](#scheduler-job-collections-contributor) | Låter dig hantera Scheduler-jobbsamlingar, men inte åtkomst till dem. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 > | [Services Hub-operatör](#services-hub-operator) | Med Services Hub Operator kan du utföra alla läs-, skriv- och borttagningsåtgärder relaterade till Services Hub Connectors. | 82200a5b-e217-47a5-b665-6d8765ee745b |
 
@@ -272,7 +272,7 @@ Följande tabell innehåller en kort beskrivning av varje inbyggd roll. Klicka p
 
 ### <a name="contributor"></a>Deltagare
 
-Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att du tilldelar roller i Azure RBAC, hanterar tilldelningar i Azure Blueprints eller delar bildgallerier. [Läs mer](rbac-and-directory-admin-roles.md)
+Ger fullständig åtkomst för att hantera alla resurser, men du kan inte tilldela roller i Azure RBAC, hantera tilldelningar i Azure Blueprints eller dela bildgallerier. [Läs mer](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -283,7 +283,7 @@ Ger fullständig åtkomst för att hantera alla resurser, men tillåter inte att
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/Write | Skapa roller, rolltilldelningar, principtilldelningar, principdefinitioner och principuppsättningsdefinitioner |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | Beviljar anroparen Användaråtkomst Administratörsåtkomst för klientomfånget |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | Skapa eller uppdatera skisstilldelningar |
-> | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | Ta bort skisstilldelningar |
+> | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | Ta bort eventuella skisstilldelningar |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/galleries/share/action | Delar ett galleri till olika omfång |
 > | **DataActions** |  |
 > | *inget* |  |
@@ -447,7 +447,7 @@ Låter dig hantera användaråtkomst till Azure-resurser. [Läs mer](rbac-and-di
 
 ### <a name="classic-virtual-machine-contributor"></a>Klassisk virtuell datordeltagare
 
-Låter dig hantera klassiska virtuella datorer, men inte åtkomst till dem, och inte det virtuella nätverket eller lagringskontot som de är anslutna till.
+Låter dig hantera klassiska virtuella datorer, men inte åtkomst till dem, och inte det virtuella nätverk eller lagringskonto som de är anslutna till.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -518,13 +518,13 @@ Låter dig hantera klassiska virtuella datorer, men inte åtkomst till dem, och 
 
 ### <a name="virtual-machine-administrator-login"></a>Administratörsinloggning för virtuell dator
 
-Visa Virtual Machines portalen och logga in som administratör [Läs mer](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
+Visa Virtual Machines i portalen och logga in som administratör [Läs mer](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | Hämtar en definition för offentlig IP-adress. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | Hämtar en lastbalanseringsdefinition |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Hämtar en definition för nätverksgränssnittet.  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
@@ -532,7 +532,7 @@ Visa Virtual Machines portalen och logga in som administratör [Läs mer](../act
 > | *inget* |  |
 > | **DataActions** |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/login/action | Logga in på en virtuell dator som en vanlig användare |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | Logga in på en virtuell dator med Windows-administratörs- eller Linux-rotanvändarbehörighet |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/action | Logga in på en virtuell dator med Windows-administratörs- eller Linux-rotanvändarbehörigheter |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -577,17 +577,17 @@ Låter dig hantera virtuella datorer, men inte åtkomst till dem, och inte det v
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | Skapa och hantera tillgänglighetsuppsättningar för beräkning |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | Skapa och hantera beräkningsplatser |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | Utför alla åtgärder för virtuella datorer, inklusive att skapa, uppdatera, ta bort, starta, starta om och stänga av virtuella datorer. Kör fördefinierade skript på virtuella datorer. |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | Utför alla åtgärder för virtuella datorer, inklusive att skapa, uppdatera, ta bort, starta, starta om och stänga av virtuella datorer. Köra fördefinierade skript på virtuella datorer. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | Skapa och hantera VM-skalningsuppsättningar |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | Skapar en ny disk eller uppdaterar en befintlig |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | Hämta egenskaperna för en disk |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/delete | Tar bort disken |
 > | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/schedules/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/applicationGateways/backendAddressPools/join/action | Ansluter till en programgateway-adresspool. Inte aviseringsbar. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | Ansluter till en lastbalanseringsadresspool på en backend-adress. Inte aviseringsbar. |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/applicationGateways/backendAddressPools/join/action | Ansluter till en application gateway-backend-adresspool. Inte aviseringsbar. |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | Ansluter till en lastbalanseringsadresspool för backend. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatPools/join/action | Ansluter till en inkommande NAT-pool för lastbalanserare. Inte aviseringsbar. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | Ansluter till en inkommande NAT-regel för lastbalanserare. Inte aviseringsbar. |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | Ansluter till en inkommande nat-regel för lastbalanserare. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/probes/join/action | Tillåter att avsökningar av en lastbalanserare används. Med den här behörigheten kan healthProbe-egenskapen för VM-skalningsuppsättningen till exempel referera till avsökningen. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | Hämtar en lastbalanseringsdefinition |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/locations/* | Skapa och hantera nätverksplatser |
@@ -596,7 +596,7 @@ Låter dig hantera virtuella datorer, men inte åtkomst till dem, och inte det v
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/read | Hämtar en definition för en nätverkssäkerhetsgrupp |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/join/action | Ansluter till en offentlig IP-adress. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | Hämtar en definition för offentlig IP-adress. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | Ansluter till ett virtuellt nätverk. Inte aviseringsbar. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | Skapa en avsikt för säkerhetskopieringsskydd |
@@ -604,7 +604,7 @@ Låter dig hantera virtuella datorer, men inte åtkomst till dem, och inte det v
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/read | Returnerar objektinformation för det skyddade objektet |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/write | Skapa ett skyddat säkerhetskopieringsobjekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | Returnerar alla skyddsprinciper |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/write | Skapar skyddsprincip |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/write | Skapar en skyddsprincip |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | Åtgärden Get Vault hämtar ett objekt som representerar Azure-resursen av typen "valv" |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Returnerar användningsinformation för ett Recovery Services-valv. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | Åtgärden Skapa valv skapar en Azure-resurs av typen "valv" |
@@ -694,7 +694,7 @@ Visa Virtual Machines i portalen och logga in som en vanlig användare. [Läs me
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/read | Hämtar en definition för offentlig IP-adress. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/read | Hämtar en lastbalanseringsdefinition |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Hämtar en definition för nätverksgränssnittet.  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read |  |
@@ -1117,7 +1117,7 @@ Låter dig hantera privata DNS-zonresurser, men inte de virtuella nätverk som d
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/privateDnsZones/* |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationResults/* |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationStatuses/* |  |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/join/action | Ansluter till ett virtuellt nätverk. Inte aviseringsbar. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | **NotActions** |  |
@@ -1162,7 +1162,7 @@ Låter dig hantera privata DNS-zonresurser, men inte de virtuella nätverk som d
 
 ### <a name="traffic-manager-contributor"></a>Traffic Manager deltagare
 
-Låter dig hantera Traffic Manager profiler, men låter dig inte styra vem som har åtkomst till dem.
+Låter dig hantera Traffic Manager profiler, men du kan inte styra vem som har åtkomst till dem.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1229,7 +1229,7 @@ Kan skapa och hantera ett Avere vFXT kluster. [Läs mer](../avere-vfxt/avere-vfx
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/* |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/*/read |  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/* |  |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/read | Hämtar en definition för undernät för virtuellt nätverk |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | Ansluter till ett virtuellt nätverk. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/action | Ansluter resurser som lagringskonto eller SQL-databas till ett undernät. Inte aviseringsbar. |
@@ -1297,7 +1297,7 @@ Kan skapa och hantera ett Avere vFXT kluster. [Läs mer](../avere-vfxt/avere-vfx
 }
 ```
 
-### <a name="avere-operator"></a>Avere-operatör
+### <a name="avere-operator"></a>Avere-operator
 
 Används av Avere vFXT för att hantera klustret Läs [mer](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
@@ -1307,7 +1307,7 @@ Används av Avere vFXT för att hantera klustret Läs [mer](../avere-vfxt/avere-
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | Hämta egenskaperna för en virtuell dator |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Hämtar en definition för nätverksgränssnittet.  |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/write | Skapar ett nätverksgränssnitt eller uppdaterar ett befintligt nätverksgränssnitt.  |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/read | Hämtar en definition för undernät för virtuellt nätverk |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/join/action | Ansluter till ett virtuellt nätverk. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/join/action | Ansluter till en nätverkssäkerhetsgrupp. Inte aviseringsbar. |
@@ -1372,8 +1372,8 @@ Låter dig hantera säkerhetskopieringstjänsten, men kan inte skapa valv och ge
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/* |  |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/* | Hantera åtgärdsresultat för säkerhetskopieringshantering |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/* | Skapa och hantera säkerhetskopieringscontainrar i säkerhetskopieringstjänsterna i Recovery Services-valvet |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/* | Hantera åtgärdsresultat vid säkerhetskopieringshantering |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/* | Skapa och hantera säkerhetskopieringscontainrar i säkerhetskopior i Recovery Services-valvet |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/action | Uppdaterar containerlistan |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | Skapa och hantera säkerhetskopieringsjobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | Exportera jobb |
@@ -1390,19 +1390,19 @@ Låter dig hantera säkerhetskopieringstjänsten, men kan inte skapa valv och ge
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | Åtgärden Get Vault hämtar ett objekt som representerar Azure-resursen av typen "valv" |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | Skapa och hantera registrerade identiteter |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | Skapa och hantera användningen av Recovery Services-valv |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | Skapa och hantera användning av Recovery Services-valv |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | Returnerar listan över lagringskonton eller hämtar egenskaperna för det angivna lagringskontot. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/* |  |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | Validera åtgärden för skyddat objekt |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | Validera åtgärd för skyddat objekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/write | Åtgärden Skapa valv skapar en Azure-resurs av typen "valv" |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | Returnerar status för säkerhetskopieringsåtgärd för Recovery Services-valv. |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som är registrerade med valvet. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som har registrerats med valvet. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | Hämta alla containrar som kan skyddas |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera säkerhetskopieringsstatus för Recovery Services-valv |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera status för säkerhetskopiering för Recovery Services-valv |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | Verifiera funktioner |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | Löser aviseringen. |
@@ -1507,13 +1507,13 @@ Låter dig hantera säkerhetskopieringstjänster, förutom borttagning av säker
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | Skapa och hantera säkerhetskopieringsjobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | Exportera jobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | Skapa och hantera resultat av åtgärder för säkerhetskopieringshantering |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | Hämta resultatet av principåtgärden. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | Hämta resultat av principåtgärden. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | Returnerar alla skyddsprinciper |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | Skapa och hantera objekt som kan säkerhetskopieras |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | Returnerar listan över alla skyddade objekt. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | Returnerar alla containrar som tillhör prenumerationen |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/read | Returnerar sammanfattningar för skyddade objekt och skyddade servrar för en Recovery Services . |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | Åtgärden Uppdatera resurscertifikat uppdaterar certifikatet för resurs-/valvaudential. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | Åtgärden Uppdatera resurscertifikat uppdaterar autentiseringscertifikatet för resurs/valv. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/read | Åtgärden Hämta utökad information hämtar ett objekts utökade information som representerar Azure-resursen av typen ?vault? |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/write | Åtgärden Hämta utökad information hämtar ett objekts utökade information som representerar Azure-resursen av typen ?vault? |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/read | Hämtar aviseringarna för Recovery Services-valvet. |
@@ -1527,17 +1527,17 @@ Låter dig hantera säkerhetskopieringstjänster, förutom borttagning av säker
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | Returnerar listan över lagringskonton eller hämtar egenskaperna för det angivna lagringskontot. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | Validera åtgärd för skyddat objekt |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/action | Validera åtgärden för skyddat objekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | Returnerar status för säkerhetskopieringsåtgärd för Recovery Services-valv. |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | Hämta status för principåtgärden. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | Hämta status för principåtgärd. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/write | Skapar en registrerad container |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/inquire/action | Göra en förfrågan om arbetsbelastningar i en container |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som har registrerats med valvet. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/inquire/action | Fråga efter arbetsbelastningar i en container |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som är registrerade med valvet. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/write | Skapa en avsikt för säkerhetskopieringsskydd |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | Hämta en avsikt för säkerhetskopieringsskydd |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | Hämta alla skyddbara containrar |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/read | Hämta alla containrar som kan skyddas |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | Hämta alla objekt i en container |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera säkerhetskopieringsstatus för Recovery Services-valv |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera status för säkerhetskopiering för Recovery Services-valv |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupPreValidateProtection/action |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupValidateFeatures/action | Verifiera funktioner |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupAadProperties/read | Hämta AAD-egenskaper för autentisering i den tredje regionen för återställning mellan regioner. |
@@ -1549,7 +1549,7 @@ Låter dig hantera säkerhetskopieringstjänster, förutom borttagning av säker
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | Löser aviseringen. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | Åtgärden returnerar listan över åtgärder för en resursprovider |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/operationStatus/read | Hämtar åtgärdsstatus för en viss åtgärd |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | Visa en lista över alla avsikter för säkerhetskopieringsskydd |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/read | Lista alla avsikter för säkerhetskopieringsskydd |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -1664,7 +1664,7 @@ Kan visa säkerhetskopieringstjänster, men kan inte göra ändringar [Läs mer]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/read | Returnerar alla jobbobjekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/action | Exportera jobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/read | Returnerar resultatet av säkerhetskopieringsåtgärden för Recovery Services-valvet. |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | Hämta resultatet av principåtgärden. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/read | Hämta resultat av principåtgärden. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/read | Returnerar alla skyddsprinciper |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/read | Returnerar listan över alla skyddade objekt. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/read | Returnerar alla containrar som tillhör prenumerationen |
@@ -1677,11 +1677,11 @@ Kan visa säkerhetskopieringstjänster, men kan inte göra ändringar [Läs mer]
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/read | Returnerar Lagringskonfiguration för Recovery Services-valv. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/read | Returnerar konfiguration för Recovery Services-valv. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/read | Returnerar status för säkerhetskopieringsåtgärd för Recovery Services-valv. |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | Hämta status för principåtgärd. |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som är registrerade med valvet. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operations/read | Hämta status för principåtgärden. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngine/read | Returnerar alla servrar för säkerhetskopieringshantering som har registrerats med valvet. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/read | Hämta en avsikt för säkerhetskopieringsskydd |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/items/read | Hämta alla objekt i en container |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera säkerhetskopieringsstatus för Recovery Services-valv |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/backupStatus/action | Kontrollera status för säkerhetskopiering för Recovery Services-valv |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/write | Löser aviseringen. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/operations/read | Åtgärden returnerar listan över åtgärder för en resursprovider |
@@ -1808,9 +1808,9 @@ Låter dig hantera klassiska lagringskonton, men inte åtkomst till dem.
 }
 ```
 
-### <a name="classic-storage-account-key-operator-service-role"></a>Tjänstroll för nyckeloperatör för klassiskt lagringskonto
+### <a name="classic-storage-account-key-operator-service-role"></a>Tjänstroll för nyckeloperatör för klassisk lagringskonto
 
-Nyckelansvariga för klassiska lagringskonton kan visa och återskapa nycklar på klassiska lagringskonton Läs [mer](../key-vault/secrets/overview-storage-keys.md)
+Nyckelansvariga för klassiska lagringskonton kan visa och återskapa nycklar på klassiska lagringskonton [Läs mer](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1851,7 +1851,7 @@ Nyckelansvariga för klassiska lagringskonton kan visa och återskapa nycklar p�
 
 ### <a name="data-box-contributor"></a>Data Box-enhet deltagare
 
-Låter dig hantera allt under Data Box-enhet Service förutom att ge åtkomst till andra. [Läs mer](../databox/data-box-logs.md)
+Låter dig hantera allt under Data Box-enhet service förutom att ge åtkomst till andra. [Läs mer](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1900,7 +1900,7 @@ Låter dig hantera allt under Data Box-enhet Service förutom att ge åtkomst ti
 
 ### <a name="data-box-reader"></a>Data Box-enhet Läsare
 
-Låter dig hantera Data Box-enhet-tjänsten, förutom att skapa beställnings- eller redigeringsinformation och ge åtkomst till andra. [Läs mer](../databox/data-box-logs.md)
+Låter dig hantera Data Box-enhet tjänst förutom att skapa beställnings- eller redigeringsinformation och ge åtkomst till andra. [Läs mer](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1912,7 +1912,7 @@ Låter dig hantera Data Box-enhet-tjänsten, förutom att skapa beställnings- e
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/locations/availableSkus/action | Den här metoden returnerar listan över tillgängliga SKU:er. |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/locations/validateInputs/action | Den här metoden gör alla typer av verifieringar. |
 > | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/locations/regionConfiguration/action | Den här metoden returnerar konfigurationerna för regionen. |
-> | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/locations/validateAddress/action | Verifierar leveransadressen och tillhandahåller alternativa adresser om det finns några. |
+> | [Microsoft.Databox](resource-provider-operations.md#microsoftdatabox)/locations/validateAddress/action | Verifierar leveransadressen och anger alternativa adresser om det finns några. |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
@@ -1955,7 +1955,7 @@ Låter dig hantera Data Box-enhet-tjänsten, förutom att skapa beställnings- e
 }
 ```
 
-### <a name="data-lake-analytics-developer"></a>Data Lake Analytics Utvecklare
+### <a name="data-lake-analytics-developer"></a>Data Lake Analytics utvecklare
 
 Låter dig skicka, övervaka och hantera dina egna jobb, men inte skapa eller ta bort Data Lake Analytics konton. [Läs mer](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
@@ -2136,7 +2136,7 @@ Tillåter hantering av lagringskonton. Ger åtkomst till kontonyckeln, som kan a
 
 ### <a name="storage-account-key-operator-service-role"></a>Tjänstroll för nyckeloperatör för lagringskonto
 
-Tillåter att åtkomstnycklar för lagringskontot listas och återskapas. [Läs mer](../storage/common/storage-account-keys-manage.md)
+Tillåter att åtkomstnycklar för lagringskontot visas och återskapas. [Läs mer](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2177,7 +2177,7 @@ Tillåter att åtkomstnycklar för lagringskontot listas och återskapas. [Läs 
 
 ### <a name="storage-blob-data-contributor"></a>Storage Blob Data-deltagare
 
-Läsa, skriva och ta bort Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Läsa, skriva och ta bort Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2232,7 +2232,7 @@ Läsa, skriva och ta bort Azure Storage containrar och blobar. Information om vi
 
 ### <a name="storage-blob-data-owner"></a>Storage Blob Data-ägare
 
-Ger fullständig åtkomst till Azure Storage blobcontainrar och data, inklusive tilldelning av POSIX-åtkomstkontroll. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Ger fullständig åtkomst till Azure Storage blobcontainrar och data, inklusive tilldelning av POSIX-åtkomstkontroll. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2275,7 +2275,7 @@ Ger fullständig åtkomst till Azure Storage blobcontainrar och data, inklusive 
 
 ### <a name="storage-blob-data-reader"></a>Storage Blob Data-läsare
 
-Läs och lista Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Läs och lista Azure Storage containrar och blobar. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2318,7 +2318,7 @@ Läs och lista Azure Storage containrar och blobar. Information om vilka åtgär
 
 ### <a name="storage-blob-delegator"></a>Storage Blob Dele blob
 
-Hämta en nyckel för användardelegering som sedan kan användas för att skapa en signatur för delad åtkomst för en container eller blob som är signerad med Azure AD-autentiseringsuppgifter. Mer information finns i Skapa [en SAS för användardelegering.](/rest/api/storageservices/create-user-delegation-sas) [Läs mer](/rest/api/storageservices/get-user-delegation-key)
+Hämta en nyckel för användardelegering som sedan kan användas för att skapa en signatur för delad åtkomst för en container eller blob som har signerats med Azure AD-autentiseringsuppgifter. Mer information finns i Skapa [en SAS för användardelegering.](/rest/api/storageservices/create-user-delegation-sas) [Läs mer](/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2412,7 +2412,7 @@ Tillåter läsning, skrivning, borttagning och ändring av ACL:er för filer/kat
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/read | Returnerar en fil/mapp eller en lista med filer/mappar. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/write | Returnerar resultatet av att skriva en fil eller skapa en mapp. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/delete | Returnerar resultatet av borttagningen av en fil/mapp. |
-> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/modifypermissions/action | Returnerar resultatet av att ändra behörigheten för en fil/mapp. |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/files/modifypermissions/action | Returnerar resultatet av behörighetsmodifiering för en fil/mapp. |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -2445,7 +2445,7 @@ Tillåter läsning, skrivning, borttagning och ändring av ACL:er för filer/kat
 
 ### <a name="storage-file-data-smb-share-reader"></a>Storage-fildata för SMB-resursläsare
 
-Tillåter läsåtkomst för filer/kataloger i Azure-filresurser. Den här rollen motsvarar en filresurs-ACL med läsning på Windows-filservrar. [Läs mer](../storage/files/storage-files-identity-auth-active-directory-enable.md)
+Tillåter läsåtkomst för filer/kataloger i Azure-filresurser. Den här rollen motsvarar en filresurs-ACL för läsning på Windows-filservrar. [Läs mer](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2484,7 +2484,7 @@ Tillåter läsåtkomst för filer/kataloger i Azure-filresurser. Den här rollen
 
 ### <a name="storage-queue-data-contributor"></a>Storage Queue Data-deltagare
 
-Läsa, skriva och ta bort Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Läsa, skriva och ta bort Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2535,7 +2535,7 @@ Läsa, skriva och ta bort Azure Storage köer och kömeddelanden. Information om
 
 ### <a name="storage-queue-data-message-processor"></a>Storage Queue Data Message Processor
 
-Granska, hämta och ta bort ett meddelande från en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Granska, hämta och ta bort ett meddelande från en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2574,9 +2574,9 @@ Granska, hämta och ta bort ett meddelande från en Azure Storage kö. Informati
 }
 ```
 
-### <a name="storage-queue-data-message-sender"></a>Avsändare av storage queue-datameddelande
+### <a name="storage-queue-data-message-sender"></a>Storage Queue Data Message Sender
 
-Lägga till meddelanden i en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Lägga till meddelanden i en Azure Storage kö. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2615,7 +2615,7 @@ Lägga till meddelanden i en Azure Storage kö. Information om vilka åtgärder 
 
 ### <a name="storage-queue-data-reader"></a>Storage Queue Data Reader
 
-Läs och lista Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i [Behörigheter för att anropa blob- och ködataåtgärder](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
+Läsa och lista Azure Storage köer och kömeddelanden. Information om vilka åtgärder som krävs för en viss dataåtgärd finns i Behörigheter för [att anropa blob- och ködataåtgärder.](/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations) [Läs mer](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2659,7 +2659,7 @@ Läs och lista Azure Storage köer och kömeddelanden. Information om vilka åtg
 
 ### <a name="azure-maps-data-contributor"></a>Azure Maps datadeltagare
 
-Ger åtkomst till att läsa, skriva och ta bort åtkomst till mappningsrelaterade data från ett Azure Maps-konto. [Läs mer](../azure-maps/azure-maps-authentication.md)
+Ger åtkomst till att läsa, skriva och ta bort åtkomst till kartrelaterade data från ett Azure Maps-konto. [Läs mer](../azure-maps/azure-maps-authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -2700,7 +2700,7 @@ Ger åtkomst till att läsa, skriva och ta bort åtkomst till mappningsrelaterad
 }
 ```
 
-### <a name="azure-maps-data-reader"></a>Azure Maps dataläsare
+### <a name="azure-maps-data-reader"></a>Azure Maps Data Reader
 
 Ger åtkomst till läsmappningsrelaterade data från ett Azure Maps-konto. [Läs mer](../azure-maps/azure-maps-authentication.md)
 
@@ -2778,7 +2778,7 @@ Tillåt läsåtkomst till Azure Spring Cloud Data [Läs mer](../spring-cloud/how
 }
 ```
 
-### <a name="search-service-contributor"></a>Search Service Contributor
+### <a name="search-service-contributor"></a>Search Service-deltagare
 
 Låter dig hantera Söktjänster, men inte åtkomst till dem. [Läs mer](../search/search-security-rbac.md)
 
@@ -3007,7 +3007,7 @@ Låter din app komma åt tjänsten i serverlöst läge med AAD-autentiseringsalt
 
 ### <a name="signalr-service-owner-preview"></a>SignalR Service ägare (förhandsversion)
 
-Fullständig åtkomst till rest Azure SignalR Service-API:er
+Fullständig åtkomst till Azure SignalR Service REST-API:er
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -3019,15 +3019,15 @@ Fullständig åtkomst till rest Azure SignalR Service-API:er
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/accessKey/action | Generera en tillfällig AccessKey för signering av ClientTokens. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/auth/clientToken/action | Generera en ClientToken för att starta en klientanslutning. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/hub/send/action | Skicka meddelanden till alla klientanslutningar i hubben. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | Skicka ett meddelande till gruppen. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Kontrollera om gruppen finns eller om användaren finns i gruppen. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/send/action | Sänd ett meddelande till gruppen. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Kontrollera om det finns en grupp eller om användaren finns i en grupp. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/write | Gå med i/lämna gruppen. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/send/action | Skicka meddelanden direkt till en klientanslutning. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | Kontrollera att klientanslutningen finns. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/write | Stäng klientanslutningen. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | Skicka meddelanden till användaren, som kan bestå av flera klientanslutningar. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/send/action | Skicka meddelanden till användare som kan bestå av flera klientanslutningar. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | Kontrollera om användaren finns. |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/användare/skrivning | Ändra en användare. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/write | Ändra en användare. |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -3066,9 +3066,9 @@ Fullständig åtkomst till rest Azure SignalR Service-API:er
 }
 ```
 
-### <a name="signalr-service-reader-preview"></a>SignalR Service Läsare (förhandsversion)
+### <a name="signalr-service-reader-preview"></a>SignalR Service Reader (förhandsversion)
 
-Skrivskyddade åtkomst till rest Azure SignalR Service-API:er
+Skrivskyddade åtkomst till Azure SignalR Service REST-API:er
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -3077,7 +3077,7 @@ Skrivskyddade åtkomst till rest Azure SignalR Service-API:er
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
-> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Kontrollera om det finns en grupp eller om användaren finns i en grupp. |
+> | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/group/read | Kontrollera om gruppen finns eller om användaren finns i gruppen. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/clientConnection/read | Kontrollera att klientanslutningen finns. |
 > | [Microsoft.SignalRService](resource-provider-operations.md#microsoftsignalrservice)/SignalR/user/read | Kontrollera om användaren finns. |
 > | **NotDataActions** |  |
@@ -3177,10 +3177,10 @@ Låter dig hantera webbplatser (inte webbplaner), men inte åtkomst till dem.
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/certificates/* | Skapa och hantera webbplatscertifikat |
-> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/read | Hämta namn på platser som tilldelats värdnamnet. |
+> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/read | Hämta namn på platser som har tilldelats värdnamnet. |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/join/action | Ansluter till en App Service plan |
 > | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/serverFarms/read | Hämta egenskaperna för en App Service plan |
-> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/* | Skapa och hantera webbplatser (webbplatsskapande kräver även skrivbehörighet till den associerade App Service plan) |
+> | [Microsoft.Web](resource-provider-operations.md#microsoftweb)/sites/* | Skapa och hantera webbplatser (webbplatsskapande kräver också skrivbehörighet till den App Service planen) |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -3272,7 +3272,7 @@ acr image signer [Läs mer](../container-registry/container-registry-roles.md)
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | Push-överför/hämta metadata för innehållsförtroende för ett containerregister. |
+> | [Microsoft.ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/sign/write | Push-överför/hämta innehållsförtroendemetadata för ett containerregister. |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -3466,13 +3466,13 @@ acr quarantine data writer
 
 ### <a name="azure-kubernetes-service-cluster-admin-role"></a>Azure Kubernetes Service administratörsroll för kluster
 
-Visa en lista över åtgärden för klusteradministratörsbehörighet. [Läs mer](../aks/control-kubeconfig-access.md)
+Visa en lista över autentiseringsuppgifter för klusteradministratör. [Läs mer](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | Visa en lista över autentiseringsuppgifter för clusterAdmin för ett hanterat kluster |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | Hämta en hanterad klusteråtkomstprofil efter rollnamn med hjälp av lista över autentiseringsuppgifter |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/action | Visa en lista med autentiseringsuppgifter för clusterAdmin för ett hanterat kluster |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/action | Hämta en hanterad klusteråtkomstprofil efter rollnamn med hjälp av autentiseringsuppgifter för lista |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | Hämta ett hanterat kluster |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -3507,14 +3507,14 @@ Visa en lista över åtgärden för klusteradministratörsbehörighet. [Läs mer
 }
 ```
 
-### <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes Service användarroll för kluster
+### <a name="azure-kubernetes-service-cluster-user-role"></a>Azure Kubernetes Service klusteranvändarroll
 
-Visa en lista över åtgärden för klusteranvändares autentiseringsuppgifter. [Läs mer](../aks/control-kubeconfig-access.md)
+Visa en lista över autentiseringsuppgifter för klusteranvändare. [Läs mer](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändar-autentiseringsuppgifter för ett hanterat kluster |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändares autentiseringsuppgifter för ett hanterat kluster |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/read | Hämta ett hanterat kluster |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -3548,7 +3548,7 @@ Visa en lista över åtgärden för klusteranvändares autentiseringsuppgifter. 
 }
 ```
 
-### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes Service rollen Deltagare
+### <a name="azure-kubernetes-service-contributor-role"></a>Azure Kubernetes Service deltagarroll
 
 Ger åtkomst till läs- och Azure Kubernetes Service kluster [Läs mer](../aks/concepts-identity.md)
 
@@ -3605,7 +3605,7 @@ Låter dig hantera alla resurser under kluster/namnområde, förutom att uppdate
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Hämtar listan över prenumerationer. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändar-autentiseringsuppgifter för ett hanterat kluster |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändares autentiseringsuppgifter för ett hanterat kluster |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -3668,7 +3668,7 @@ Låter dig hantera alla resurser i klustret. [Läs mer](../aks/manage-azure-rbac
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Hämtar listan över prenumerationer. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändares autentiseringsuppgifter för ett hanterat kluster |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/action | Lista klustretAnvändar-autentiseringsuppgifter för ett hanterat kluster |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -3729,20 +3729,20 @@ Tillåter skrivskyddade åtkomst för att se de flesta objekt i ett namnområde.
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/controllerrevisions/read | Läser controllerrevisions |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/daemonsets/read | Läser daemonsets |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/deployments/read | Läser distributioner |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/read | Läser replikuppsättningar |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/replicasets/read | Skrivskyddade replikuppsättningar |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/apps/statefulsets/read | Läser tillståndsfulsets |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/autoscaling/horizontalpodautoscalers/read | Läser horizontalpodautoscalers |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/autoscaling/horizontalpodautoscalers/read | Läsningar horizontalpodautoscalers |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/cronjobs/read | Läser cronjobs |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/read | Läser jobb |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/read | Läser konfigurationskartor |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/read | Läsningar av slutpunkter |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | Läsningar av händelser |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | Läsningar av händelser |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/read | Läser slutpunkter |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | Läser händelser |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | Läser händelser |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/daemonsets/read | Läser daemonsets |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/deployments/read | Läser distributioner |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/ingresses/read | Läser ingresser |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/networkpolicies/read | Läser nätverkspolicies |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/replicasets/read | Skrivskyddade replikuppsättningar |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/replicasets/read | Läser replikuppsättningar |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/limitranges/read | Läsgränsintervall |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/namespaces/read | Läser namnområden |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/networking.k8s.io/ingresses/read | Läser ingresser |
@@ -3820,7 +3820,7 @@ Tillåter skrivskyddade åtkomst för att se de flesta objekt i ett namnområde.
 
 ### <a name="azure-kubernetes-service-rbac-writer"></a>Azure Kubernetes Service RBAC Writer
 
-Tillåter läs-/skrivåtkomst till de flesta objekt i ett namnområde. Den här rollen tillåter inte visning eller ändring av roller eller rollbindningar. Den här rollen tillåter dock åtkomst till hemligheter och poddar som körs som alla ServiceAccount i namnområdet, så den kan användas för att få API-åtkomstnivåer för alla ServiceAccount i namnområdet. Om du tillämpar den här rollen i klusteromfång får du åtkomst till alla namnområden. [Läs mer](../aks/manage-azure-rbac.md)
+Tillåter läs-/skrivåtkomst till de flesta objekt i ett namnområde. Den här rollen tillåter inte visning eller ändring av roller eller rollbindningar. Den här rollen tillåter dock åtkomst till hemligheter och poddar som alla ServiceAccount i namnområdet, så den kan användas för att få API-åtkomstnivåer för alla ServiceAccount i namnområdet. Om du tillämpar den här rollen i klusteromfång får du åtkomst till alla namnområden. [Läs mer](../aks/manage-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -3845,8 +3845,8 @@ Tillåter läs-/skrivåtkomst till de flesta objekt i ett namnområde. Den här 
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/batch/jobs/* |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/configmaps/* |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/endpoints/* |  |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | Läser händelser |
-> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | Läser händelser |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events.k8s.io/events/read | Läsningar av händelser |
+> | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/events/read | Läsningar av händelser |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/daemonsets/* |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/deployments/* |  |
 > | [Microsoft.ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/extensions/ingresses/* |  |
@@ -3943,7 +3943,7 @@ Kan läsa Azure Cosmos DB-kontodata. Se [DocumentDB-kontodeltagare för](#docume
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/read | Läsa valfri samling |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/action | Läser databaskontots skrivskyddade nycklar. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/read | Läsa måttdefinitioner |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Metrics/read | Läsmått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Metrics/read | Läs mått |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
@@ -3983,7 +3983,7 @@ Kan läsa Azure Cosmos DB-kontodata. Se [DocumentDB-kontodeltagare för](#docume
 }
 ```
 
-### <a name="cosmos-db-operator"></a>Cosmos DB operator
+### <a name="cosmos-db-operator"></a>Cosmos DB Operator
 
 Låter dig hantera Azure Cosmos DB-konton, men inte komma åt data i dem. Förhindrar åtkomst till kontonycklar och anslutningssträngar. [Läs mer](../cosmos-db/role-based-access-control.md)
 
@@ -4054,7 +4054,7 @@ Låter dig hantera Azure Cosmos DB-konton, men inte komma åt data i dem. Förhi
 
 ### <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 
-Kan skicka återställningsbegäran för en Cosmos DB-databas eller en container för ett konto [Läs mer](../cosmos-db/role-based-access-control.md)
+Kan skicka återställningsbegäran för en Cosmos DB databas eller en container för ett konto [Läs mer](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -4100,9 +4100,9 @@ Kan utföra återställningsåtgärd för Cosmos DB databaskonto med kontinuerli
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/locations/restorableDatabaseAccounts/restore/action | Skicka en återställningsbegäran |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/locations/restoreableDatabaseAccounts/restore/action | Skicka en återställningsbegäran |
 > | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/locations/restorableDatabaseAccounts/*/read |  |
-> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/locations/restorableDatabaseAccounts/read | Läs ett återställningsbart databaskonto eller visa en lista över alla återställningsbara databaskonton |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/locations/restorableDatabaseAccounts/read | Läs ett återställningsbart databaskonto eller Visa en lista över alla återställningsbara databaskonton |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -4138,7 +4138,7 @@ Kan utföra återställningsåtgärd för Cosmos DB databaskonto med kontinuerli
 
 ### <a name="documentdb-account-contributor"></a>DocumentDB-kontodeltagare
 
-Kan hantera Azure Cosmos DB konton. Azure Cosmos DB kallades tidigare DocumentDB. [Läs mer](../cosmos-db/role-based-access-control.md)
+Kan hantera Azure Cosmos DB-konton. Azure Cosmos DB kallades tidigare DocumentDB. [Läs mer](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -4258,7 +4258,7 @@ Låter dig hantera SQL-databaser, men inte åtkomst till dem. Du kan inte heller
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/* | Skapa och hantera SQL-databaser |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/read | Returnera listan över servrar eller hämtar egenskaperna för den angivna servern. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läsmått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läs mått |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | Läsa måttdefinitioner |
 > | **NotActions** |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
@@ -4365,7 +4365,7 @@ Låter dig hantera SQL Managed Instances och nödvändig nätverkskonfiguration,
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/* |  |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läs mått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läsmått |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | Läsa måttdefinitioner |
 > | **NotActions** |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/delete | Tar bort en specifik hanterad server Azure Active Directory autentiseringsobjekt |
@@ -4429,7 +4429,7 @@ Låter dig hantera säkerhetsrelaterade principer för SQL-servrar och databaser
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read | Hämtar resultatet för den hanterade instansen azure async-administratörsåtgärder. |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/locations/administratorAzureAsyncOperation/read | Hämtar resultatet för Azure-asynkrona administratörsåtgärder för hanterad instans. |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/tables/columns/sensitivityLabels/* |  |
@@ -4440,12 +4440,12 @@ Låter dig hantera säkerhetsrelaterade principer för SQL-servrar och databaser
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/transparentDataEncryption/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/auditingSettings/* | Skapa och hantera SQL Server-granskningsinställning |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/read | Hämta information om den utökade serverblobgranskningsprincipen som konfigurerats på en viss server |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/read | Hämta information om den utökade serverns blobgranskningsprincip som konfigurerats på en viss server |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditingSettings/* | Skapa och hantera granskningsinställningar för SQL Server-databasen |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | Hämta databasens blobgranskningsposter |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | Hämta databasblobgranskningsposterna |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/currentSensitivityLabels/* |  |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Skapa och hantera principer för datamaskering för SQL Server-databaser |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/read | Hämta information om den utökade blobgranskningsprincip som konfigurerats på en viss databas |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Skapa och hantera datamaskeringsprinciper för SQL Server-databaser |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/read | Hämta information om den utökade blobgranskningsprincip som konfigurerats för en viss databas |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/read | Returnera listan över databaser eller hämtar egenskaperna för den angivna databasen. |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/read | Hämta ett databasschema. |
@@ -4453,7 +4453,7 @@ Låter dig hantera säkerhetsrelaterade principer för SQL-servrar och databaser
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/tables/read | Hämta en databastabell. |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityAlertPolicies/* | Skapa och hantera principer för SQL Server-databassäkerhetsaviseringar |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityMetrics/* | Skapa och hantera säkerhetsmått för SQL Server-databasen |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityMetrics/* | Skapa och hantera säkerhetsmått för SQL Server-databaser |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/sensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/transparentDataEncryption/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessments/* |  |
@@ -4470,7 +4470,7 @@ Låter dig hantera säkerhetsrelaterade principer för SQL-servrar och databaser
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/azureADOnlyAuthentications/* |  |
 > | [Microsoft.Security](resource-provider-operations.md#microsoftsecurity)/sqlVulnerabilityAssessments/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/administrators/read | Hämtar en lista över administratörer för hanterade instanser. |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | Hämtar ett specifikt Azure Active Directory-administratörsobjekt |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/administrators/read | Hämtar ett specifikt Azure Active Directory administratörsobjekt |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -4564,7 +4564,7 @@ Låter dig hantera SQL-servrar och databaser, men inte åtkomst till dem, och in
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/locations/*/read |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/* | Skapa och hantera SQL-servrar |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läsmått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läs mått |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/read | Läsa måttdefinitioner |
 > | **NotActions** |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
@@ -4579,12 +4579,12 @@ Låter dig hantera SQL-servrar och databaser, men inte åtkomst till dem, och in
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditingSettings/* | Redigera granskningsinställningar för SQL Server-databasen |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/auditRecords/read | Hämta databasens blobgranskningsposter |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/currentSensitivityLabels/* |  |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Redigera principer för datamaskning för SQL Server-databaser |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/dataMaskingPolicies/* | Redigera datamaskeringsprinciper för SQL Server-databasen |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/extendedAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/recommendedSensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/schemas/tables/columns/sensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityAlertPolicies/* | Redigera principer för SQL Server-databassäkerhetsaviseringar |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityMetrics/* | Redigera säkerhetsmått för SQL Server-databas |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/securityMetrics/* | Redigera säkerhetsmått för SQL Server-databasen |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/sensitivityLabels/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessments/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/databases/vulnerabilityAssessmentScans/* |  |
@@ -4593,7 +4593,7 @@ Låter dig hantera SQL-servrar och databaser, men inte åtkomst till dem, och in
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/extendedAuditingSettings/* |  |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/securityAlertPolicies/* | Redigera principer för SQL Server-säkerhetsaviseringar |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/vulnerabilityAssessments/* |  |
-> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/delete | Tar bort en specifik server Azure Active Directory autentiseringsobjekt |
+> | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/delete | Tar bort ett specifikt serverobjekt Azure Active Directory autentiseringsobjekt |
 > | [Microsoft.Sql](resource-provider-operations.md#microsoftsql)/servers/azureADOnlyAuthentications/write | Lägger till eller uppdaterar en specifik server Azure Active Directory autentiseringsobjekt |
 > | **DataActions** |  |
 > | *inget* |  |
@@ -4708,7 +4708,7 @@ Ger fullständig åtkomst till Azure Event Hubs resurser. [Läs mer](../event-hu
 
 ### <a name="azure-event-hubs-data-receiver"></a>Azure Event Hubs datamottagare
 
-Tillåter åtkomst till Azure Event Hubs resurser. [Läs mer](../event-hubs/authenticate-application.md)
+Ger åtkomst till Azure Event Hubs resurser. [Läs mer](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -4890,7 +4890,7 @@ Ta bort privata data från en Log Analytics-arbetsyta. [Läs mer](../azure-monit
 
 ### <a name="hdinsight-cluster-operator"></a>HDInsight-klusteroperator
 
-Låter dig läsa och ändra HDInsight-klusterkonfigurationer. [Läs mer](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
+Gör att du kan läsa och ändra HDInsight-klusterkonfigurationer. [Läs mer](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -4945,7 +4945,7 @@ Låter dig läsa och ändra HDInsight-klusterkonfigurationer. [Läs mer](../hdin
 
 ### <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services-deltagare
 
-Kan läsa, skapa, ändra och ta bort Domain Services-relaterade åtgärder som behövs för HDInsight Enterprise Security Package [Läs mer](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
+Kan läsa, skapa, ändra och ta bort Domain Services-relaterade åtgärder som krävs för HDInsight Enterprise Security Package [Läs mer](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5053,13 +5053,13 @@ Log Analytics-deltagare kan läsa alla övervakningsdata och redigera övervakni
 
 ### <a name="log-analytics-reader"></a>Log Analytics Reader
 
-Log Analytics-läsare kan visa och söka efter alla övervakningsdata samt visa övervakningsinställningar, inklusive att visa konfigurationen av Azure Diagnostics på alla Azure-resurser. [Läs mer](../azure-monitor/logs/manage-access.md)
+Log Analytics-läsare kan visa och söka i alla övervakningsdata samt visa övervakningsinställningar, inklusive att visa konfigurationen av Azure Diagnostics på alla Azure-resurser. [Läs mer](../azure-monitor/logs/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | */läsa | Läs resurser av alla typer, utom hemligheter. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med den nya motorn. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med hjälp av ny motor. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | Kör en sökfråga |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
@@ -5098,9 +5098,9 @@ Log Analytics-läsare kan visa och söka efter alla övervakningsdata samt visa 
 }
 ```
 
-### <a name="purview-data-curator"></a>Purview Data Intendent
+### <a name="purview-data-curator"></a>Vy över dataöversikt över intendenten
 
-Datacuratorn Microsoft.Purview kan skapa, läsa, ändra och ta bort katalogdataobjekt och upprätta relationer mellan objekt. Den här rollen är i förhandsversion och kan komma att ändras.
+Dataöversikten Microsoft.Purview kan skapa, läsa, ändra och ta bort katalogdataobjekt och upprätta relationer mellan objekt. Den här rollen är i förhandsversion och kan komma att ändras.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5184,7 +5184,7 @@ Dataläsaren Microsoft.Purview kan läsa katalogdataobjekt. Den här rollen är 
 
 ### <a name="purview-data-source-administrator"></a>Purview Data Source Administrator
 
-Datakällsadministratören Microsoft.Purview kan hantera datakällor och genomsökningar. Den här rollen är i förhandsversion och kan komma att ändras.
+Datakällsadministratören Microsoft.Purview kan hantera datakällor och datagenomsökningar. Den här rollen är i förhandsversion och kan komma att ändras.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5225,7 +5225,7 @@ Datakällsadministratören Microsoft.Purview kan hantera datakällor och genoms�
 }
 ```
 
-### <a name="schema-registry-contributor-preview"></a>Schemaregisterdeltagare (förhandsversion)
+### <a name="schema-registry-contributor-preview"></a>Schema Registry-deltagare (förhandsversion)
 
 Läsa, skriva och ta bort schemaregistergrupper och scheman.
 
@@ -5317,11 +5317,11 @@ Tillåter åtkomst till blockkedjemedlemsnoder [Läs mer](../blockchain/service/
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | Hämtar eller listar befintliga blockkedjemedlemstransaktionsnoder. |
+> | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/read | Hämtar eller visar en lista över befintliga transaktionsnoder för Blockchain-medlemmar. |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
-> | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/connect/action | Ansluter till en blockkedjemedlemstransaktionsnod. |
+> | [Microsoft.Blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/connect/action | Ansluter till en transaktionsnod för blockkedjemedlem. |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -5369,10 +5369,10 @@ Låter dig skapa, läsa, uppdatera, ta bort och hantera nycklar för Cognitive S
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Skapar, uppdaterar eller läser diagnostikinställningen för Analysis Server |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | Läsa loggdefinitioner |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/read | Läsa måttdefinitioner |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läs mått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läsmått |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller listar distributionsåtgärder. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller visar en lista över distributionsåtgärder. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Hämta resultatet av prenumerationsåtgärden. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Hämtar listan över prenumerationer. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourcegroups/deployments/* |  |
@@ -5523,7 +5523,7 @@ Publicera, avpublicera eller exportera modeller. Distributionen kan visa projekt
 
 ### <a name="cognitive-services-custom-vision-labeler"></a>Cognitive Services Custom Vision Labeler
 
-Visa, redigera träningsbilder och skapa, lägga till, ta bort eller ta bort bildtaggar. Etiketterare kan visa projektet men kan inte uppdatera något annat än träningsbilder och taggar. [Läs mer](../cognitive-services/custom-vision-service/role-based-access-control.md)
+Visa, redigera träningsbilder och skapa, lägga till, ta bort eller ta bort bildtaggarna. Etiketterare kan visa projektet men kan inte uppdatera något annat än träningsbilder och taggar. [Läs mer](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5576,7 +5576,7 @@ Visa, redigera träningsbilder och skapa, lägga till, ta bort eller ta bort bil
 
 ### <a name="cognitive-services-custom-vision-reader"></a>Cognitive Services Custom Vision Läsare
 
-Skrivskyddade åtgärder i projektet. Läsare kan inte skapa eller uppdatera projektet. [Läs mer](../cognitive-services/custom-vision-service/role-based-access-control.md)
+Skrivskyddade åtgärder i projektet. Läsarna kan inte skapa eller uppdatera projektet. [Läs mer](../cognitive-services/custom-vision-service/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5668,7 +5668,7 @@ Visa, redigera projekt och träna modellerna, inklusive möjligheten att publice
 }
 ```
 
-### <a name="cognitive-services-data-reader-preview"></a>Cognitive Services dataläsare (förhandsversion)
+### <a name="cognitive-services-data-reader-preview"></a>Cognitive Services Data Reader (förhandsversion)
 
 Låter dig läsa Cognitive Services data.
 
@@ -5750,7 +5750,7 @@ Fullständig åtkomst till projektet, inklusive konfiguration på systemnivå. [
 
 ### <a name="cognitive-services-qna-maker-editor"></a>Cognitive Services QnA Maker Editor
 
-Nu ska vi skapa, redigera, importera och exportera en KUNSKAPSB. Du kan inte publicera eller ta bort en kunskapsbasen. [Läs mer](../cognitive-services/qnamaker/reference-role-based-access-control.md)
+Nu ska vi skapa, redigera, importera och exportera en kunskapsbasen. Du kan inte publicera eller ta bort en kunskapsbasen. [Läs mer](../cognitive-services/qnamaker/reference-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -5764,41 +5764,41 @@ Nu ska vi skapa, redigera, importera och exportera en KUNSKAPSB. Du kan inte pub
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/create/write | Asynkron åtgärd för att skapa en ny kunskapsbas. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller ersätta kunskapsbasinnehåll. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller Ersätta kunskapsbasinnehåll. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/train/action | Träna anropet för att lägga till förslag i kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | Ladda ned ändringar från körningen. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/train/action | Träna anrop för att lägga till förslag i kunskapsbasen. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | Ladda ned ändringar från runtime. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/write | Ersätt ändringsdata. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/refreshkeys/action | Genererar om en slutpunktsnyckel. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/write | Uppdatera slutpunktsseningar för en slutpunkt. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/write | Uppdatera slutpunktspunkter för en slutpunkt. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/operations/read | Hämtar information om en specifik långvarig åtgärd. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/create/write | Asynkron åtgärd för att skapa en ny kunskapsbas. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller Ersätta kunskapsbasinnehåll. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller ersätta kunskapsbasinnehåll. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/train/action | Träna anropet för att lägga till förslag i kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | Ladda ned ändringar från runtime. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/write | Ersätt ändringsdata. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | Ladda ned ändringar från körningen. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/ändring/skrivning | Ersätt ändringsdata. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/refreshkeys/action | Genererar om en slutpunktsnyckel. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/write | Uppdatera slutpunktspunkter för en slutpunkt. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/write | Uppdatera slutpunktsseningar för en slutpunkt. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/operations/read | Hämtar information om en specifik långvarig åtgärd. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/create/write | Asynkron åtgärd för att skapa en ny kunskapsbas. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller ersätta kunskapsbasinnehåll. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/write | Asynkron åtgärd för att ändra en kunskapsbas eller Ersätta kunskapsbasinnehåll. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/train/action | Träna anropet för att lägga till förslag i kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | Ladda ned ändringar från runtime. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | Ladda ned ändringar från körningen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/write | Ersätt ändringsdata. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/refreshkeys/action | Genererar om en slutpunktsnyckel. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/write | Uppdatera slutpunktsseningar för en slutpunkt. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/write | Uppdatera slutpunktspunkter för en slutpunkt. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/operations/read | Hämtar information om en specifik långvarig åtgärd. |
 > | **NotDataActions** |  |
 > | *inget* |  |
@@ -5885,19 +5885,19 @@ Nu ska vi läsa och testa en kunskapsbasen. [Läs mer](../cognitive-services/qna
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | Ladda ned ändringar från körningen. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/alterations/read | Ladda ned ändringar från runtime. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | Ladda ned ändringar från runtime. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/alterations/read | Ladda ned ändringar från körningen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/QnAMaker.v2/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/read | Hämtar lista över kunskapsbaser eller information om en specifik kunskapsbaser. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/download/read | Ladda ned kunskapsbasen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/knowledgebases/generateanswer/action | GenerateAnswer-anrop för att fråga kunskapsbasen. |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | Ladda ned ändringar från runtime. |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/alterations/read | Ladda ned ändringar från körningen. |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointkeys/read | Hämtar slutpunktsnycklar för en slutpunkt |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/TextAnalytics/QnAMaker/endpointsettings/read | Hämtar slutpunktsinställningar för en slutpunkt |
 > | **NotDataActions** |  |
@@ -5956,14 +5956,14 @@ Låter dig läsa och lista nycklar för Cognitive Services. [Läs mer](../cognit
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/*/read |  |
-> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | Visa nycklar |
+> | [Microsoft.CognitiveServices](resource-provider-operations.md#microsoftcognitiveservices)/accounts/listkeys/action | Visa lista över nycklar |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/read | Läsa en klassisk måttavisering |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/read | Läsa en resursdiagnostikinställning |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/read | Läsa loggdefinitioner |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/read | Läsa måttdefinitioner |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läs mått |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metrics/read | Läsmått |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller listar distributionsåtgärder. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller visar en lista över distributionsåtgärder. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Hämta resultatet av prenumerationsåtgärden. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Hämtar listan över prenumerationer. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
@@ -6077,7 +6077,7 @@ Ger dig fullständig åtkomst till hanterings- och innehållsåtgärder [Läs me
 
 ### <a name="device-update-content-administrator"></a>Innehållsadministratör för enhetsuppdatering
 
-Ger dig fullständig åtkomst till innehållsåtgärder Läs [mer](../iot-hub-device-update/device-update-control-access.md)
+Ger dig fullständig åtkomst till innehållsåtgärder [Läs mer](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6130,7 +6130,7 @@ Ger dig fullständig åtkomst till innehållsåtgärder Läs [mer](../iot-hub-de
 
 ### <a name="device-update-content-reader"></a>Innehållsläsare för enhetsuppdatering
 
-Ger läsåtkomst till innehållsåtgärder, men tillåter inte ändringar Läs [mer](../iot-hub-device-update/device-update-control-access.md)
+Ger dig läsåtkomst till innehållsåtgärder, men tillåter inte ändringar Läs [mer](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6179,7 +6179,7 @@ Ger läsåtkomst till innehållsåtgärder, men tillåter inte ändringar Läs [
 
 ### <a name="device-update-deployments-administrator"></a>Administratör för enhetsuppdateringsdistributioner
 
-Ger dig fullständig åtkomst till hanteringsåtgärder [Läs mer](../iot-hub-device-update/device-update-control-access.md)
+Ger dig fullständig åtkomst till hanteringsåtgärder Läs [mer](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6232,7 +6232,7 @@ Ger dig fullständig åtkomst till hanteringsåtgärder [Läs mer](../iot-hub-de
 
 ### <a name="device-update-deployments-reader"></a>Läsare för enhetsuppdateringsdistributioner
 
-Ger dig läsåtkomst till hanteringsåtgärder, men tillåter inte ändringar Läs [mer](../iot-hub-device-update/device-update-control-access.md)
+Ger läsåtkomst till hanteringsåtgärder, men tillåter inte ändringar Läs [mer](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6281,7 +6281,7 @@ Ger dig läsåtkomst till hanteringsåtgärder, men tillåter inte ändringar L�
 
 ### <a name="device-update-reader"></a>Läsare för enhetsuppdatering
 
-Ger läsåtkomst till hanterings- och innehållsåtgärder, men tillåter inte ändringar [Läs mer](../iot-hub-device-update/device-update-control-access.md)
+Ger dig läsåtkomst till hanterings- och innehållsåtgärder, men tillåter inte ändringar Läs [mer](../iot-hub-device-update/device-update-control-access.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6335,7 +6335,7 @@ Ger läsåtkomst till hanterings- och innehållsåtgärder, men tillåter inte �
 
 ### <a name="remote-rendering-administrator"></a>Remote Rendering administratör
 
-Ger användare funktioner för konvertering, hantering av session, återgivning och diagnostik för Azure Remote Rendering [Läs mer](../remote-rendering/how-tos/authentication.md)
+Ger användaren tillgång till funktioner för konvertering, hantering av session, rendering och diagnostik Azure Remote Rendering [Läs mer](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6388,7 +6388,7 @@ Ger användare funktioner för konvertering, hantering av session, återgivning 
 
 ### <a name="remote-rendering-client"></a>Remote Rendering Klient
 
-Ger användaren hanterings-, renderings- och diagnostikfunktioner för Azure Remote Rendering. [Läs mer](../remote-rendering/how-tos/authentication.md)
+Ger användaren möjlighet att hantera funktioner för sessions-, renderings- och diagnostikfunktioner för Azure Remote Rendering. [Läs mer](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6433,7 +6433,7 @@ Ger användaren hanterings-, renderings- och diagnostikfunktioner för Azure Rem
 }
 ```
 
-### <a name="spatial-anchors-account-contributor"></a>Spatial Anchors-kontodeltagare
+### <a name="spatial-anchors-account-contributor"></a>Spatial Anchors kontodeltagare
 
 Låter dig hantera spatiala fästpunkter i ditt konto, men inte ta bort dem [Läs mer](../spatial-anchors/concepts/authentication.md)
 
@@ -6445,9 +6445,9 @@ Låter dig hantera spatiala fästpunkter i ditt konto, men inte ta bort dem [Lä
 > | *inget* |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | Skapa spatiala fästpunkter |
-> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande spatiala fästpunkter |
+> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande rumsliga fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | Hämta egenskaper för spatiala fästpunkter |
-> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | Leta upp spatiala fästpunkter |
+> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | Hitta spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Skicka diagnostikdata för att förbättra kvaliteten på Azure Spatial Anchors tjänsten |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/write | Uppdatera egenskaper för spatiala fästpunkter |
 > | **NotDataActions** |  |
@@ -6494,8 +6494,8 @@ Låter dig hantera spatiala fästpunkter i ditt konto, inklusive att ta bort dem
 > | *inget* |  |
 > | **DataActions** |  |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/create/action | Skapa spatiala fästpunkter |
-> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/delete | Ta bort spatiala fästpunkter |
-> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande rumsliga fästpunkter |
+> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/delete | Ta bort rumsliga fästpunkter |
+> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | Hämta egenskaper för spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | Hitta spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Skicka diagnostikdata för att förbättra kvaliteten på Azure Spatial Anchors tjänsten |
@@ -6535,7 +6535,7 @@ Låter dig hantera spatiala fästpunkter i ditt konto, inklusive att ta bort dem
 
 ### <a name="spatial-anchors-account-reader"></a>Spatial Anchors-kontoläsare
 
-Låter dig hitta och läsa egenskaper för spatiala fästpunkter i ditt konto [Läs mer](../spatial-anchors/concepts/authentication.md)
+Gör att du kan hitta och läsa egenskaper för spatiala fästpunkter i ditt konto [Läs mer](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6544,7 +6544,7 @@ Låter dig hitta och läsa egenskaper för spatiala fästpunkter i ditt konto [L
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
-> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande spatiala fästpunkter |
+> | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/discovery/read | Upptäck närliggande rumsliga fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/properties/read | Hämta egenskaper för spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/query/read | Hitta spatiala fästpunkter |
 > | [Microsoft.MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/read | Skicka diagnostikdata för att förbättra kvaliteten på Azure Spatial Anchors tjänsten |
@@ -6588,7 +6588,7 @@ Kan hantera tjänsten och API:erna [Läs mer](../api-management/api-management-r
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | Skapa och hantera API Management tjänst |
+> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/* | Skapa och hantera API Management tjänsten |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
@@ -6632,7 +6632,7 @@ Kan hantera tjänsten och API:erna [Läs mer](../api-management/api-management-r
 }
 ```
 
-### <a name="api-management-service-operator-role"></a>API Management rollen tjänstoperatör
+### <a name="api-management-service-operator-role"></a>API Management tjänstoperatörsroll
 
 Kan hantera tjänsten men inte API:erna [Läs mer](../api-management/api-management-role-based-access-control.md)
 
@@ -6640,14 +6640,14 @@ Kan hantera tjänsten men inte API:erna [Läs mer](../api-management/api-managem
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/*/read | Läsa API Management Service-instanser |
-> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | Säkerhetskopiera API Management service till den angivna containern i ett lagringskonto som tillhandahålls av användaren |
-> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | Ta API Management Service-instans |
+> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/backup/action | Säkerhetskopiera API Management till den angivna containern i ett lagringskonto som användaren har angett |
+> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/delete | Ta bort API Management Service-instans |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/managedeployments/action | Ändra SKU/enheter, lägga till/ta bort regionala distributioner av API Management Service |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/read | Läsa metadata för en API Management Service-instans |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/restore/action | Återställa API Management service från den angivna containern i ett lagringskonto som användaren har angett |
 > | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatecertificate/action | Ladda upp TLS/SSL-certifikat för en API Management tjänst |
-> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatehostname/action | Konfigurera, uppdatera eller ta bort anpassade domännamn för en API Management tjänst |
-> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/write | Skapa eller uppdatera API Management serviceinstans |
+> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/updatehostname/action | Konfigurera, uppdatera eller ta bort anpassade domännamn för en API Management Service |
+> | [Microsoft.ApiManagement](resource-provider-operations.md#microsoftapimanagement)/service/write | Skapa eller uppdatera API Management Service-instans |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
@@ -6701,7 +6701,7 @@ Kan hantera tjänsten men inte API:erna [Läs mer](../api-management/api-managem
 }
 ```
 
-### <a name="api-management-service-reader-role"></a>API Management tjänstläsarroll
+### <a name="api-management-service-reader-role"></a>API Management-tjänstläsarroll
 
 Skrivskyddade åtkomst till tjänsten och API:er [Läs mer](../api-management/api-management-role-based-access-control.md)
 
@@ -6799,9 +6799,9 @@ Ger fullständig åtkomst till App Configuration data. [Läs mer](../azure-app-c
 }
 ```
 
-### <a name="app-configuration-data-reader"></a>App Configuration Data Reader
+### <a name="app-configuration-data-reader"></a>App Configuration dataläsare
 
-Tillåter läsåtkomst till App Configuration data. [Läs mer](../azure-app-configuration/concept-enable-rbac.md)
+Ger läsåtkomst till App Configuration data. [Läs mer](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6881,7 +6881,7 @@ Ger fullständig åtkomst till Azure Service Bus resurser. [Läs mer](../service
 
 ### <a name="azure-service-bus-data-receiver"></a>Azure Service Bus datamottagare
 
-Ger åtkomst till Azure Service Bus resurser. [Läs mer](../service-bus-messaging/authenticate-application.md)
+Tillåter åtkomst till Azure Service Bus resurser. [Läs mer](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -6926,7 +6926,7 @@ Ger åtkomst till Azure Service Bus resurser. [Läs mer](../service-bus-messagin
 
 ### <a name="azure-service-bus-data-sender"></a>Azure Service Bus Data Sender
 
-Tillåter att skicka åtkomst till Azure Service Bus resurser. [Läs mer](../service-bus-messaging/authenticate-application.md)
+Tillåter att åtkomst skickas till Azure Service Bus resurser. [Läs mer](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7065,16 +7065,16 @@ Låter dig hantera EventGrid-åtgärder.
 
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-deltagare
 
-Låter dig hantera eventGrid-händelseprenumerationsåtgärder. [Läs mer](../event-grid/security-authorization.md)
+Låter dig hantera prenumerationsåtgärder för EventGrid-händelser. [Läs mer](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
-> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* | Skapa och hantera prenumerationer på regionala händelser |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* | Skapa och hantera regionala händelseprenumerationer |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | Lista globala händelseprenumerationer efter ämnestyp |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | Lista prenumerationer på regionala händelser |
-> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | Visa en lista över regionala händelseprenumerationer efter topictype |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | Lista regionala händelseprenumerationer efter ämnestyp |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
@@ -7129,7 +7129,7 @@ Låter dig läsa EventGrid-händelseprenumerationer. [Läs mer](../event-grid/se
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/read | Läsa en eventSubscription |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/read | Lista globala händelseprenumerationer efter ämnestyp |
 > | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/eventSubscriptions/read | Lista prenumerationer på regionala händelser |
-> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | Lista regionala händelseprenumerationer efter ämnestyp |
+> | [Microsoft.EventGrid](resource-provider-operations.md#microsofteventgrid)/locations/topicTypes/eventSubscriptions/read | Visa en lista över regionala händelseprenumerationer efter topictype |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -7169,7 +7169,7 @@ Låter dig läsa EventGrid-händelseprenumerationer. [Läs mer](../event-grid/se
 
 ### <a name="fhir-data-contributor"></a>FHIR-datadeltagare
 
-Roll ger användare eller huvudnamn fullständig åtkomst till FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
+Roll ger fullständig åtkomst för användare eller huvudnamn till FHIR Data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7208,7 +7208,7 @@ Roll ger användare eller huvudnamn fullständig åtkomst till FHIR-data [Läs m
 
 ### <a name="fhir-data-exporter"></a>FHIR Data Exporter
 
-Roll tillåter användare eller huvudnamn att läsa och exportera FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
+Roll tillåter användare eller huvudnamn att läsa och exportera FHIR Data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7249,7 +7249,7 @@ Roll tillåter användare eller huvudnamn att läsa och exportera FHIR-data [Lä
 
 ### <a name="fhir-data-reader"></a>FHIR-dataläsare
 
-Roll låter användare eller huvudnamn läsa FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
+Roll tillåter användare eller huvudnamn att läsa FHIR Data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7286,7 +7286,7 @@ Roll låter användare eller huvudnamn läsa FHIR-data [Läs mer](../healthcare-
 }
 ```
 
-### <a name="fhir-data-writer"></a>FHIR-dataskrivare
+### <a name="fhir-data-writer"></a>FHIR Data Writer
 
 Roll låter användare eller huvudnamn läsa och skriva FHIR-data [Läs mer](../healthcare-apis/fhir/configure-azure-rbac.md)
 
@@ -7329,7 +7329,7 @@ Roll låter användare eller huvudnamn läsa och skriva FHIR-data [Läs mer](../
 
 ### <a name="integration-service-environment-contributor"></a>Integration Service Environment deltagare
 
-Låter dig hantera integreringstjänstmiljöer, men inte åtkomst till dem. [Läs mer](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+Låter dig hantera integrationstjänstmiljöer, men inte åtkomst till dem. [Läs mer](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7370,9 +7370,9 @@ Låter dig hantera integreringstjänstmiljöer, men inte åtkomst till dem. [Lä
 }
 ```
 
-### <a name="integration-service-environment-developer"></a>Integration Service Environment Utvecklare
+### <a name="integration-service-environment-developer"></a>Integration Service Environment utvecklare
 
-Gör att utvecklare kan skapa och uppdatera arbetsflöden, integrationskonton och API-anslutningar i integreringstjänstmiljöer. [Läs mer](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+Gör att utvecklare kan skapa och uppdatera arbetsflöden, integrationskonton och API-anslutningar i integrationstjänstmiljöer. [Läs mer](../logic-apps/add-artifacts-integration-service-environment-ise.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7415,7 +7415,7 @@ Gör att utvecklare kan skapa och uppdatera arbetsflöden, integrationskonton oc
 }
 ```
 
-### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems-kontodeltagare
+### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems Account Contributor
 
 Låter dig hantera konton för intelligenta system, men inte åtkomst till dem.
 
@@ -7561,7 +7561,7 @@ Låter dig läsa, aktivera och inaktivera logikappar, men inte redigera eller up
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/disable/action | Inaktiverar arbetsflödet. |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/enable/action | Aktiverar arbetsflödet. |
 > | [Microsoft.Logic](resource-provider-operations.md#microsoftlogic)/workflows/validate/action | Verifierar arbetsflödet. |
-> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller visar en lista över distributionsåtgärder. |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/operations/read | Hämtar eller listar distributionsåtgärder. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Hämta resultatet av prenumerationsåtgärden. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
@@ -7672,7 +7672,7 @@ Skapa, läsa, uppdatera och ta bort användar tilldelad identitet [Läs mer](../
 }
 ```
 
-### <a name="managed-identity-operator"></a>Operatör för hanterad identitet
+### <a name="managed-identity-operator"></a>Operator för hanterad identitet
 
 Läs och tilldela användar tilldelad identitet [Läs mer](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
@@ -7728,7 +7728,7 @@ Läs och tilldela användar tilldelad identitet [Läs mer](../active-directory/m
 
 ### <a name="attestation-contributor"></a>Attestation-deltagare
 
-Kan läsa skriva eller ta bort instansen av attestationsprovidern [Läs mer](../attestation/quickstart-powershell.md)
+Kan läsa skriva eller ta bort attestation-providerinstansen [Läs mer](../attestation/quickstart-powershell.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7771,7 +7771,7 @@ Kan läsa skriva eller ta bort instansen av attestationsprovidern [Läs mer](../
 
 ### <a name="attestation-reader"></a>Attestation Reader
 
-Kan läsa egenskaperna för attestationsprovidern [Läs mer](../attestation/troubleshoot-guide.md)
+Läs egenskaperna för attestationsprovidern [Läs mer](../attestation/troubleshoot-guide.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -7855,16 +7855,16 @@ Azure Sentinel Automation-deltagare [Läs mer](../sentinel/roles.md)
 
 ### <a name="azure-sentinel-contributor"></a>Azure Sentinel-deltagare
 
-Azure Sentinel Deltagare [Läs mer](../sentinel/roles.md)
+Azure Sentinel Mer [information om deltagare](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med den nya motorn. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med hjälp av ny motor. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Visa logganalysdata |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* |  |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Hämta en avslutande OMS-lösning |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Komma igång med att avsluta OMS-lösningen |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Köra frågor över data i arbetsytan |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Hämta datakällor under en arbetsyta. |
@@ -7931,11 +7931,11 @@ Azure Sentinel Läsa [mer](../sentinel/roles.md)
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/action | Kontrollera användarauktorisering och licens |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Query Threat Intelligence-indikatorer |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Query Threat Intelligence-indikatorer |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med den nya motorn. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med hjälp av ny motor. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Visa logganalysdata |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/LinkedServices/read | Hämta länkade tjänster under den angivna arbetsytan. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Hämtar en sparad sökfråga |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Få en avslutande OMS-lösning |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Komma igång med att avsluta OMS-lösningen |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Köra frågor över data i arbetsytan |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Hämta datakällor under en arbetsyta. |
@@ -8007,17 +8007,17 @@ Azure Sentinel svarare [Läs mer](../sentinel/roles.md)
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/automationRules/* |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/* |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/* |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Lägga till taggar till threat intelligence-indikatorn |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Lägga till taggar i threat intelligence-indikatorn |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/query/action | Query Threat Intelligence-indikatorer |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/bulkTag/action | Hotinformation för masstaggar |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Lägga till taggar till threat intelligence-indikatorn |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | Ersätta taggar för hotinformationsindikator |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/appendTags/action | Lägga till taggar i threat intelligence-indikatorn |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/indicators/replaceTags/action | Indikatorn Ersätt taggar för hotinformation |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/threatIntelligence/queryIndicators/action | Query Threat Intelligence-indikatorer |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med den nya motorn. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/analytics/query/action | Sök med hjälp av ny motor. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/*/read | Visa logganalysdata |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Hämta datakällor under en arbetsyta. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/read | Hämtar en sparad sökfråga |
-> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Komma igång med att avsluta OMS-lösningen |
+> | [Microsoft.OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/solutions/read | Få en avslutande OMS-lösning |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/read | Köra frågor över data i arbetsytan |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Hämta datakällor under en arbetsyta. |
@@ -8029,7 +8029,7 @@ Azure Sentinel svarare [Läs mer](../sentinel/roles.md)
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
-> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Delete |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Ta bort |  |
 > | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/*/Ta bort |  |
 > | **DataActions** |  |
 > | *inget* |  |
@@ -8210,7 +8210,7 @@ Utför en åtgärd på certifikaten för ett nyckelvalv, förutom att hantera be
 
 ### <a name="key-vault-contributor"></a>Key Vault deltagare
 
-Hantera nyckelvalv, men tillåter inte att du tilldelar roller i Azure RBAC och ger dig inte åtkomst till hemligheter, nycklar eller certifikat. [Läs mer](../key-vault/general/secure-your-key-vault.md)
+Hantera nyckelvalv, men tillåter inte att du tilldelar roller i Azure RBAC och tillåter inte åtkomst till hemligheter, nycklar eller certifikat. [Läs mer](../key-vault/general/security-overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -8265,7 +8265,7 @@ Hantera nyckelvalv, men tillåter inte att du tilldelar roller i Azure RBAC och 
 
 ### <a name="key-vault-crypto-officer"></a>Key Vault Crypto Officer
 
-Utför en åtgärd på nycklarna för ett nyckelvalv, förutom att hantera behörigheter. Fungerar bara för nyckelvalv som använder behörighetsmodellen rollbaserad åtkomstkontroll i Azure.
+Utför en åtgärd på nycklarna för ett nyckelvalv, förutom att hantera behörigheter. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure".
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -8335,9 +8335,9 @@ Läs metadata för nycklar och utför radbrytningsåtgärder. Fungerar bara för
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | Visa en lista över nycklar i det angivna valvet, eller läsegenskaper och offentligt material för en nyckel. För asymmetriska nycklar exponerar den här åtgärden offentlig nyckel och innehåller möjlighet att utföra algoritmer för offentliga nycklar, till exempel kryptera och verifiera signatur. Privata nycklar och symmetriska nycklar exponeras aldrig. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Omsluter en symmetrisk nyckel med Key Vault nyckel. Observera att om Key Vault nyckel är asymmetrisk kan den här åtgärden utföras av huvudnamn med läsbehörighet. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Packa upp en symmetrisk nyckel med en Key Vault nyckel. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | Visa en lista med nycklar i det angivna valvet eller läsegenskaper och offentligt material för en nyckel. För asymmetriska nycklar exponerar den här åtgärden offentlig nyckel och innehåller möjligheten att utföra algoritmer för offentliga nycklar, till exempel kryptera och verifiera signatur. Privata nycklar och symmetriska nycklar exponeras aldrig. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Omsluter en symmetrisk nyckel med Key Vault nyckel. Observera att om Key Vault är asymmetrisk kan den här åtgärden utföras av huvudnamn med läsbehörighet. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Omsluter en symmetrisk nyckel med en Key Vault nyckel. |
 > | **NotDataActions** |  |
 > | *inget* |  |
 
@@ -8382,13 +8382,13 @@ Utföra kryptografiska åtgärder med hjälp av nycklar. Fungerar bara för nyck
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | Visa en lista med nycklar i det angivna valvet eller läsegenskaper och offentligt material för en nyckel. För asymmetriska nycklar exponerar den här åtgärden offentlig nyckel och innehåller möjligheten att utföra algoritmer för offentliga nycklar, till exempel kryptera och verifiera signatur. Privata nycklar och symmetriska nycklar exponeras aldrig. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | Visa en lista över nycklar i det angivna valvet, eller läsegenskaper och offentligt material för en nyckel. För asymmetriska nycklar exponerar den här åtgärden offentlig nyckel och innehåller möjlighet att utföra algoritmer för offentliga nycklar, till exempel kryptera och verifiera signatur. Privata nycklar och symmetriska nycklar exponeras aldrig. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/update/action | Uppdaterar de angivna attributen som är associerade med den angivna nyckeln. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | Skapar säkerhetskopian av en nyckel. Filen kan användas för att återställa nyckeln i en Key Vault i samma prenumeration. Begränsningar kan gälla. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | Skapar säkerhetskopian för en nyckel. Filen kan användas för att återställa nyckeln i en Key Vault i samma prenumeration. Begränsningar kan gälla. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | Krypterar klartext med en nyckel. Observera att om nyckeln är asymmetrisk kan den här åtgärden utföras av huvudnamn med läsbehörighet. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | Dekrypterar chiffertext med en nyckel. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Omsluter en symmetrisk nyckel med Key Vault nyckel. Observera att om Key Vault är asymmetrisk kan den här åtgärden utföras av huvudnamn med läsbehörighet. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Omsluter en symmetrisk nyckel med en Key Vault nyckel. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Packa upp en symmetrisk nyckel med en Key Vault nyckel. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | Signerar en sammanfattning av meddelanden (hash) med en nyckel. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | Verifierar signaturen för en sammanfattning av meddelanden (hash) med en nyckel. Observera att om nyckeln är asymmetrisk kan den här åtgärden utföras av huvudnamn med läsbehörighet. |
 > | **NotDataActions** |  |
@@ -8442,7 +8442,7 @@ Läs metadata för nyckelvalv och dess certifikat, nycklar och hemligheter. Det 
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/deletedVaults/read | Visa egenskaperna för mjukt borttagna nyckelvalv |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/locations/*/read |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/*/read |  |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Visar en lista över åtgärder som är tillgängliga på Resursprovidern Microsoft.KeyVault |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/operations/read | Visar en lista över åtgärder som är tillgängliga i resursprovidern Microsoft.KeyVault |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -8548,7 +8548,7 @@ Utför en åtgärd på hemligheterna för ett nyckelvalv, förutom att hantera b
 
 ### <a name="key-vault-secrets-user"></a>Key Vault hemlighetsanvändare
 
-Läsa hemligt innehåll. Fungerar bara för nyckelvalv som använder behörighetsmodellen rollbaserad åtkomstkontroll i Azure.
+Läsa hemligt innehåll. Fungerar bara för nyckelvalv som använder behörighetsmodellen "rollbaserad åtkomstkontroll i Azure".
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -8587,7 +8587,7 @@ Läsa hemligt innehåll. Fungerar bara för nyckelvalv som använder behörighet
 }
 ```
 
-### <a name="managed-hsm-contributor"></a>Managed HSM-deltagare
+### <a name="managed-hsm-contributor"></a>Hanterad HSM-deltagare
 
 Låter dig hantera hanterade HSM-pooler, men inte åtkomst till dem. [Läs mer](../key-vault/managed-hsm/secure-your-managed-hsm.md)
 
@@ -8736,7 +8736,7 @@ Det här är en äldre roll. Använd säkerhetsadministratören i stället.
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/read | Läsa konfigurationsinformation för klassiska virtuella datorer |
 > | [Microsoft.ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/write | Skrivkonfiguration för klassiska virtuella datorer |
-> | [Microsoft.ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/*/read | Läs konfigurationsinformation om det klassiska nätverket |
+> | [Microsoft.ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/*/read | Läsa konfigurationsinformation om klassiskt nätverk |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
@@ -8855,7 +8855,7 @@ Låter dig ansluta, starta, starta om och stänga av dina virtuella datorer i Az
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/read | Hämta egenskaperna för en tillgänglighetsuppsättning |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/read | Läs egenskaperna för en virtuell dator (VM-storlekar, körningsstatus, VM-tillägg osv.) |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/deallocate/action | Stänger av den virtuella datorn och frigör beräkningsresurserna |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/deallocate/action | Stänger av den virtuella datorn och släpper beräkningsresurserna |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/read | Hämta egenskaperna för en virtuell dator |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/restart/action | Startar om den virtuella datorn |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/start/action | Startar den virtuella datorn |
@@ -8868,10 +8868,10 @@ Låter dig ansluta, starta, starta om och stänga av dina virtuella datorer i Az
 > | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/formulas/write | Lägga till eller ändra formler. |
 > | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/policySets/evaluatePolicies/action | Utvärderar labbprincipen. |
 > | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/claim/action | Bli ägare till en befintlig virtuell dator |
-> | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualmachines/listApplicableSchedules/action | Visar en lista över tillämpliga scheman för start/stopp, om några. |
+> | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualmachines/listApplicableSchedules/action | Visar en lista över tillämpliga start-/stoppscheman, om några. |
 > | [Microsoft.DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/labs/virtualMachines/getRdpFileContents/action | Hämtar en sträng som representerar innehållet i RDP-filen för den virtuella datorn |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | Ansluter till en lastbalanseringsadresspool för backend. Inte aviseringsbar. |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | Ansluter till en inkommande nat-regel för lastbalanserare. Inte aviseringsbar. |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/join/action | Ansluter till en lastbalanseringsadresspool på en backend-adress. Inte aviseringsbar. |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/join/action | Ansluter till en inkommande NAT-regel för lastbalanserare. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/*/read | Läs egenskaperna för ett nätverksgränssnitt (till exempel alla lastbalanserare som nätverksgränssnittet ingår i) |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/join/action | Ansluter en virtuell dator till ett nätverksgränssnitt. Inte aviseringsbar. |
 > | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/read | Hämtar en definition för nätverksgränssnittet.  |
@@ -9004,7 +9004,7 @@ Gör att du kan skapa nya labb under dina Azure Lab-konton. [Läs mer](../lab-se
 
 ### <a name="application-insights-component-contributor"></a>Application Insights komponentdeltagare
 
-Kan hantera Application Insights komponenter Läs [mer](../azure-monitor/app/resources-roles-access-control.md)
+Kan hantera Application Insights Läs [mer](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9015,7 +9015,7 @@ Kan hantera Application Insights komponenter Läs [mer](../azure-monitor/app/res
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | Skapa och hantera nya aviseringsregler |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/components/* | Skapa och hantera Insights-komponenter |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/topologi/read | Lästopologi |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/topologi/läsa | Läsa topologi |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/transactions/read | Lästransaktioner |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Skapa och hantera Insights-webbtester |
 > | [Microsoft.ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/read | Hämtar tillgänglighetsstatus för alla resurser i det angivna omfånget |
@@ -9067,7 +9067,7 @@ Kan hantera Application Insights komponenter Läs [mer](../azure-monitor/app/res
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Ger användaren behörighet att visa och ladda ned ögonblicksbilder av felsökning som samlats in med Application Insights Snapshot Debugger. Observera att dessa behörigheter inte ingår i rollerna [Ägare](#owner) [eller](#contributor) Deltagare. När du ger Application Insights Snapshot Debugger rollen måste du bevilja rollen direkt till användaren. Rollen känns inte igen när den läggs till i en anpassad roll. [Läs mer](../azure-monitor/app/snapshot-debugger.md)
+Ger användaren behörighet att visa och ladda ned ögonblicksbilder av felsökning som samlats in med Application Insights Snapshot Debugger. Observera att dessa behörigheter inte ingår i [rollerna Ägare](#owner) [eller](#contributor) Deltagare. När du ger Application Insights Snapshot Debugger rollen måste du bevilja rollen direkt till användaren. Rollen känns inte igen när den läggs till i en anpassad roll. [Läs mer](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9138,16 +9138,16 @@ Kan läsa alla övervakningsdata och redigera övervakningsinställningar. Se ä
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Metrics/* | Läsa mått för en resurs. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Registrera Microsoft Insights-providern |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
-> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Skapa och hantera Insights-webbtester |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Skapa och hantera webbtester för Insights |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopes/* |  |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopeOperationStatuses/* |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/write | Skapar en ny arbetsyta eller länkar till en befintlig arbetsyta genom att ange kund-ID från den befintliga arbetsytan. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/intelligencepacks/* | Läs-/skriv-/ta bort logganalyslösningspaket. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/intelligencepacks/* | Läs/skriv/ta bort log analytics-lösningspaket. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/savedSearches/* | Sparade sökningar för läsning/skrivning/borttagning av logganalys. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/search/action | Kör en sökfråga |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | Hämtar de delade nycklarna för arbetsytan. Dessa nycklar används för att ansluta Microsoft Operational Insights-agenter till arbetsytan. |
-> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | Läsa/skriva/ta bort log analytics-konfigurationer för lagringsinformation. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | Konfigurationer för läs-/skriv-/borttagningslagringsinformation för Log Analytics. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | Hämta information om hälsoövervakare för virtuella gästdatorn. |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
@@ -9217,7 +9217,7 @@ Kan läsa alla övervakningsdata och redigera övervakningsinställningar. Se ä
 
 ### <a name="monitoring-metrics-publisher"></a>Övervakningsmåttutgivare
 
-Aktiverar publiceringsmått mot Azure-resurser [Läs mer](../azure-monitor/insights/container-insights-update-metrics.md)
+Aktiverar publicering av mått mot Azure-resurser [Läs mer](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9453,7 +9453,7 @@ Skapa och hantera jobb med Automation Runbooks. [Läs mer](../automation/automat
 
 ### <a name="automation-operator"></a>Automation-operatör
 
-Automation-operatörer kan starta, stoppa, pausa och återuppta jobb [Läs mer](../automation/automation-role-based-access-control.md)
+Automation-operatörer kan starta, stoppa, pausa och återuppta jobb Läs [mer](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9579,9 +9579,9 @@ Läsa Runbook-egenskaper – för att kunna skapa jobb för runbooken. [Läs mer
 }
 ```
 
-### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Azure Arc aktiverat kubernetes-klusteranvändarroll
+### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Azure Arc aktiverad Kubernetes-klusteranvändarroll
 
-Visa en lista över åtgärden för autentiseringsuppgifter för klusteranvändare.
+Åtgärden Visa en lista över autentiseringsuppgifter för klusteranvändare.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9634,7 +9634,7 @@ Visa en lista över åtgärden för autentiseringsuppgifter för klusteranvända
 
 ### <a name="azure-arc-kubernetes-admin"></a>Azure Arc Kubernetes-administratör
 
-Låter dig hantera alla resurser under kluster/namnområde, förutom att uppdatera eller ta bort resurskvoter och namnområden. [Läs mer](../azure-arc/kubernetes/azure-rbac.md)
+Låter dig hantera alla resurser under kluster/namnrymd, förutom att uppdatera eller ta bort resurskvoter och namnområden. [Läs mer](../azure-arc/kubernetes/azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9660,8 +9660,8 @@ Låter dig hantera alla resurser under kluster/namnområde, förutom att uppdate
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/* |  |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läser händelser |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läsningar av händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läsningar av händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läser händelser |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/* |  |
@@ -9822,20 +9822,20 @@ Låter dig visa alla resurser i kluster/namnrymd, förutom hemligheter. [Läs me
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/controllerrevisions/read | Läser controllerrevisions |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/daemonsets/read | Läser daemonsets |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/deployments/read | Läser distributioner |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/replicasets/read | Läser replikuppsättningar |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/replicasets/read | Skrivskyddade replikuppsättningar |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/apps/statefulsets/read | Läser tillståndsfulsets |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/autoscaling/horizontalpodautoscalers/read | Läser horizontalpodautoscalers |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/autoscaling/horizontalpodautoscalers/read | Läsningar horizontalpodautoscalers |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/cronjobs/read | Läser cronjobs |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/read | Läser jobb |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/read | Läser konfigurationskartor |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/read | Läsningar av slutpunkter |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läsningar av händelser |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läsningar av händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/read | Läser slutpunkter |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läser händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läser händelser |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/read | Läser daemonsets |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/read | Läser distributioner |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/read | Läser ingresser |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/networkpolicies/read | Läser nätverkspolicies |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/replicasets/read | Skrivskyddade replikuppsättningar |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/replicasets/read | Läser replikuppsättningar |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/limitranges/read | Läsgränsintervall |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/namespaces/read | Läser namnområden |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/networking.k8s.io/ingresses/read | Läser ingresser |
@@ -9913,7 +9913,7 @@ Låter dig visa alla resurser i kluster/namnrymd, förutom hemligheter. [Läs me
 
 ### <a name="azure-arc-kubernetes-writer"></a>Azure Arc Kubernetes Writer
 
-Låter dig uppdatera allt i kluster/namnrymd, förutom (kluster)roller och (kluster)rollbindningar. [Läs mer](../azure-arc/kubernetes/azure-rbac.md)
+Gör att du kan uppdatera allt i kluster/namnrymd, förutom (kluster)roller och (kluster)rollbindningar. [Läs mer](../azure-arc/kubernetes/azure-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -9938,8 +9938,8 @@ Låter dig uppdatera allt i kluster/namnrymd, förutom (kluster)roller och (klus
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/batch/jobs/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/configmaps/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/endpoints/* |  |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läser händelser |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läser händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events.k8s.io/events/read | Läsningar av händelser |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/events/read | Läsningar av händelser |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/daemonsets/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/deployments/* |  |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/extensions/ingresses/* |  |
@@ -10022,7 +10022,7 @@ Låter dig uppdatera allt i kluster/namnrymd, förutom (kluster)roller och (klus
 }
 ```
 
-### <a name="azure-connected-machine-onboarding"></a>Azure Connected Machine Onboarding
+### <a name="azure-connected-machine-onboarding"></a>Azure Connected Machine registrering
 
 Kan publicera Azure Connected Machines. [Läs mer](../azure-arc/servers/onboard-service-principal.md)
 
@@ -10030,7 +10030,7 @@ Kan publicera Azure Connected Machines. [Läs mer](../azure-arc/servers/onboard-
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Läsa alla Azure Arc datorer |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Skriver en Azure Arc datorer |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Skriver Azure Arc datorer |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/read | Läsa alla Azure Arc privateLinkScopes |
 > | [Microsoft.GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/read | Hämta tilldelning av gästkonfiguration. |
 > | **NotActions** |  |
@@ -10069,14 +10069,14 @@ Kan publicera Azure Connected Machines. [Läs mer](../azure-arc/servers/onboard-
 
 ### <a name="azure-connected-machine-resource-administrator"></a>Azure Connected Machine resursadministratör
 
-Kan läsa, skriva, ta bort och registrera Azure Connected Machines på nya sätt.
+Kan läsa, skriva, ta bort och publicera Azure Connected Machines på nya sätt.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/read | Läsa alla Azure Arc datorer |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Skriver en Azure Arc datorer |
-> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Tar bort en Azure Arc datorer |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/write | Skriver Azure Arc datorer |
+> | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/delete | Tar bort Azure Arc datorer |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/machines/extensions/write | Installerar eller uppdaterar Azure Arc tillägg |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/privateLinkScopes/* |  |
 > | [Microsoft.HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/read |  |
@@ -10214,7 +10214,7 @@ Kan hantera skissdefinitioner, men inte tilldela dem. [Läs mer](../governance/b
 }
 ```
 
-### <a name="blueprint-operator"></a>Skissoperator
+### <a name="blueprint-operator"></a>Skissoperatör
 
 Kan tilldela befintliga publicerade skisser, men kan inte skapa nya skisser. Observera att detta endast fungerar om tilldelningen görs med en användar tilldelad hanterad identitet. [Läs mer](../governance/blueprints/overview.md)
 
@@ -10416,9 +10416,9 @@ Tillåter användare att redigera och ta bort hierarkiinställningar
 }
 ```
 
-### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes-kluster – Azure Arc registrering
+### <a name="kubernetes-cluster---azure-arc-onboarding"></a>Kubernetes-kluster – Azure Arc onboarding
 
-Rolldefinition för att auktorisera en användare/tjänst för att skapa anslutenClusters-resurs [Läs mer](../azure-arc/kubernetes/connect-cluster.md)
+Rolldefinition för att auktorisera en användare/tjänst att skapa anslutenkluserresurs [Läs mer](../azure-arc/kubernetes/connect-cluster.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -10429,7 +10429,7 @@ Rolldefinition för att auktorisera en användare/tjänst för att skapa anslute
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/operationresults/read | Hämta resultatet av prenumerationsåtgärden. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/read | Hämtar listan över prenumerationer. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
-> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Skriver connectedClusters |
+> | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/Write | Skrivningar anslutnakluslar |
 > | [Microsoft.Kubernetes](resource-provider-operations.md#microsoftkubernetes)/connectedClusters/read | Läsa anslutnakluslar |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Skapa och uppdatera en supportbiljett |
 > | **NotActions** |  |
@@ -10471,7 +10471,7 @@ Rolldefinition för att auktorisera en användare/tjänst för att skapa anslute
 }
 ```
 
-### <a name="managed-application-contributor-role"></a>Deltagarroll för hanterade program
+### <a name="managed-application-contributor-role"></a>Deltagarroll för hanterat program
 
 Gör det möjligt att skapa hanterade programresurser.
 
@@ -10606,13 +10606,13 @@ Låter dig läsa resurser i en hanterad app och begära JIT-åtkomst.
 
 ### <a name="managed-services-registration-assignment-delete-role"></a>Tilldelning av registrering av hanterade tjänster Ta bort roll
 
-Med borttagningsrollen för tilldelning av hanterade tjänster kan användare av hanterade tjänster ta bort den registreringstilldelning som tilldelats deras klientorganisation. [Läs mer](../lighthouse/how-to/remove-delegation.md)
+Med borttagningsrollen för tilldelning av hanterade tjänster kan de hanterande klientanvändarna ta bort den registreringstilldelning som tilldelats deras klientorganisation. [Läs mer](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | Hämtar en lista över tilldelningar för managed services-registrering. |
-> | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | Tar bort tilldelning av managed services-registrering. |
+> | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/read | Hämtar en lista över tilldelningar för Managed Services-registrering. |
+> | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/delete | Tar bort registreringstilldelningen för Managed Services. |
 > | [Microsoft.ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/read | Läser åtgärdsstatus för resursen. |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -10649,7 +10649,7 @@ Med borttagningsrollen för tilldelning av hanterade tjänster kan användare av
 
 ### <a name="management-group-contributor"></a>Deltagare i hanteringsgrupp
 
-Deltagarroll för hanteringsgrupp [Läs mer](../governance/management-groups/overview.md)
+Roll för hanteringsgruppsdeltagare [Läs mer](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -10788,16 +10788,16 @@ Låter dig hantera New Relic Application Performance Management och program, men
 }
 ```
 
-### <a name="policy-insights-data-writer-preview"></a>Dataskrivare för Policy Insights (förhandsversion)
+### <a name="policy-insights-data-writer-preview"></a>Policy Insights Data Writer (förhandsversion)
 
-Ger läsåtkomst till resursprinciper och skrivåtkomst till resurskomponentprinciphändelser. [Läs mer](../governance/policy/concepts/policy-for-kubernetes.md)
+Ger läsåtkomst till resursprinciper och skrivåtkomst till principhändelser för resurskomponenter. [Läs mer](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/read | Hämta information om en principtilldelning. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policydefinitions/read | Hämta information om en principdefinition. |
-> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | Hämta information om ett principundantag. |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policyexemptions/read | Få information om ett principundantag. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/read | Hämta information om en principuppsättningsdefinition. |
 > | **NotActions** |  |
 > | *inget* |  |
@@ -10839,7 +10839,7 @@ Ger läsåtkomst till resursprinciper och skrivåtkomst till resurskomponentprin
 
 ### <a name="quota-request-operator"></a>Operator för kvotbegäran
 
-Läsa och skapa kvotbegäranden, få status för kvotbegäran och skapa supportbegäranden. [Läs mer](/rest/api/reserved-vm-instances/quotaapi)
+Läs och skapa kvotbegäranden, få status för kvotbegäran och skapa supportärenden. [Läs mer](/rest/api/reserved-vm-instances/quotaapi)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -10894,7 +10894,7 @@ Läsa och skapa kvotbegäranden, få status för kvotbegäran och skapa supportb
 
 ### <a name="reservation-purchaser"></a>Reservationsköpare
 
-Låter dig köpa reservationer [Läs mer](../cost-management-billing/reservations/prepare-buy-reservation.md)
+Gör att du kan köpa reservationer [Läs mer](../cost-management-billing/reservations/prepare-buy-reservation.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -10903,12 +10903,12 @@ Låter dig köpa reservationer [Läs mer](../cost-management-billing/reservation
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/register/action | Registrerar kapacitetsresursprovidern och gör det möjligt att skapa kapacitetsresurser. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/register/action | Registrerar prenumeration med resursprovidern Microsoft.Compute |
-> | [Microsoft.SQL](resource-provider-operations.md#microsoftsql)/register/action | Registrerar prenumerationen för Microsoft SQL Database och gör det möjligt att skapa Microsoft SQL-databaser. |
-> | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/register/action | Registrera till förbruknings-RP |
+> | [Microsoft.SQL](resource-provider-operations.md#microsoftsql)/register/action | Registrerar prenumerationen för Microsoft SQL Database-resursprovidern och gör det möjligt att skapa Microsoft SQL-databaser. |
+> | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/register/action | Registrera dig för förbruknings-RP |
 > | [Microsoft.Capacity](resource-provider-operations.md#microsoftcapacity)/catalogs/read | Läsa katalogen för reservation |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/roleAssignments/read | Hämta information om en rolltilldelning. |
 > | [Microsoft.Consumption](resource-provider-operations.md#microsoftconsumption)/reservationRecommendations/read | Lista enskilda eller delade rekommendationer för reserverade instanser för en prenumeration. |
-> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/supporttickets/write | Gör att du kan skapa och uppdatera en supportbiljett |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/supporttickets/write | Tillåter att du skapar och uppdaterar en supportbiljett |
 > | **NotActions** |  |
 > | *inget* |  |
 > | **DataActions** |  |
@@ -11002,24 +11002,24 @@ Användare med behörighet att skapa/ändra resursprincip, skapa supportbiljett 
 
 ### <a name="site-recovery-contributor"></a>Site Recovery-deltagare
 
-Låter dig hantera Site Recovery förutom valvskapande och rolltilldelning [Läs mer](../site-recovery/site-recovery-role-based-linked-access-control.md)
+Låter dig hantera Site Recovery förutom att skapa valv och rolltilldelning [Läs mer](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Skapa och hantera en klassisk måttavisering |
-> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för det virtuella nätverket |
+> | [Microsoft.Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/read | Hämta definitionen för virtuellt nätverk |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocatedStamp/read | GetAllocatedStamp är en intern åtgärd som används av tjänsten |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/locations/allocateStamp/action | AllocateStamp är en intern åtgärd som används av tjänsten |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | Åtgärden Uppdatera resurscertifikat uppdaterar autentiseringscertifikatet för resurs/valv. |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/certificates/write | Åtgärden Uppdatera resurscertifikat uppdaterar certifikatet för resurs-/valvaudential. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | Skapa och hantera utökad information relaterad till valvet |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/read | Åtgärden Get Vault hämtar ett objekt som representerar Azure-resursen av typen "valv" |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | Skapa och hantera registrerade identiteter |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/* | Skapa eller uppdatera inställningar för replikeringsaviseringar |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | Läsa alla händelser |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/* | Skapa och hantera replikeringsrepliker |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/* | Skapa och hantera replikerings strukturer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | Skapa och hantera replikeringsjobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/* | Skapa och hantera replikeringsprinciper |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/* | Skapa och hantera återställningsplaner |
@@ -11112,40 +11112,40 @@ Låter dig redundans och återställning efter fel men inte utföra andra Site R
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | Åtgärden Hämta containrar kan användas för att registrera containrarna för en resurs. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | Läsa eventuella aviseringsinställningar |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | Läsa alla händelser |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/checkConsistency/action | Kontrollerar infrastruktur fabricens konsekvens |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | Läsa alla material |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/checkConsistency/action | Kontrollerar infrastrukturskonsekvens |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | Läsa eventuella strukturer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/reassociateGateway/action | Associera gatewayen på ett annat sätt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/renewcertificate/action | Förnya certifikat för infrastruktur |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | Läsa alla nätverk |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | Läsa alla nätverksmappningar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | Läsa alla skyddscontainrar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Läsa alla objekt som kan skyddas |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | Läsa eventuella skyddscontainrar |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Läsa alla skyddbara objekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/action | Tillämpa återställningspunkt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/action | Genomför redundans |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/action | Planerad redundans |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Läsa alla skyddade objekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Läsa eventuella återställningspunkter för replikering |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/action | Reparera replikering |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Återaktivera skydd av skyddat objekt |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Växelskyddscontainer |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/action | Skydda skyddat objekt på nytt |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/switchprotection/action | Switch Protection-container |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/action | Testa redundans |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Rensa redundanstest |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/action | Testa redundansrensning |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/action | Redundans |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/action | Uppdatera mobilitetstjänsten |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Läsa alla mappningar av skyddscontainrar |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Läsa alla mappningar av skyddscontainer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Läs alla Recovery Services-leverantörer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/action | Uppdatera provider |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | Läsa alla lagringsklassificeringar |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Läsa alla lagringsklassificeringsmappningar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | Läs alla vCenters |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | Läsa alla vCenters |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/* | Skapa och hantera replikeringsjobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | Läsa eventuella principer |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/failoverCommit/action | Återställningsplan för genomförd redundans |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/plannedFailover/action | Plan för planerad redundansåterställning |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | Läs eventuella återställningsplaner |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/reProtect/action | Återställningsplan för återaktivering av skydd |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/failoverCommit/action | Återställningsplan för genomförande av redundans |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/plannedFailover/action | Planerad återställningsplan för redundans |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | Läsa eventuella återställningsplaner |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/reProtect/action | Återaktivera skydd för återställningsplan |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailover/action | Återställningsplan för redundanstest |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Återställningsplan för redundansrensning |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/testFailoverCleanup/action | Återställningsplan för redundanstest |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/unplannedFailover/action | Återställningsplan för redundans |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | Läsa aviseringar för Recovery Services-valvet |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/read |  |
@@ -11248,7 +11248,7 @@ Låter dig redundans och återställning efter fel men inte utföra andra Site R
 
 ### <a name="site-recovery-reader"></a>Site Recovery-läsare
 
-Låter dig visa Site Recovery status men inte utföra andra hanteringsåtgärder [Läs mer](../site-recovery/site-recovery-role-based-linked-access-control.md)
+Låter dig visa Site Recovery men inte utföra andra hanteringsåtgärder Läs [mer](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -11264,21 +11264,21 @@ Låter dig visa Site Recovery status men inte utföra andra hanteringsåtgärder
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/read | Åtgärden Hämta containrar kan användas för att registrera containrarna för en resurs. |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationAlertSettings/read | Läsa eventuella aviseringsinställningar |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationEvents/read | Läsa alla händelser |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | Läsa alla material |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/read | Läsa eventuella strukturer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/read | Läsa alla nätverk |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/read | Läsa alla nätverksmappningar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | Läsa eventuella skyddscontainrar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Läsa alla skyddbara objekt |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/read | Läsa alla skyddscontainrar |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/read | Läsa alla objekt som kan skyddas |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/read | Läsa alla skyddade objekt |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/read | Läsa eventuella återställningspunkter för replikering |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/read | Läsa alla mappningar av skyddscontainer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationRecoveryServicesProviders/read | Läs alla Recovery Services-leverantörer |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/read | Läsa alla lagringsklassificeringar |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/read | Läsa alla lagringsklassificeringsmappningar |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | Läs alla vCenters |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationFabrics/replicationvCenters/read | Läsa alla vCenters |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationJobs/read | Läsa alla jobb |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationPolicies/read | Läsa eventuella principer |
-> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | Läs eventuella återställningsplaner |
+> | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/vaults/replicationRecoveryPlans/read | Läsa eventuella återställningsplaner |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/read |  |
 > | [Microsoft.RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/read | Returnerar användningsinformation för ett Recovery Services-valv. |
@@ -11446,7 +11446,7 @@ Låter dig hantera taggar på entiteter utan att ge åtkomst till själva entite
 
 ### <a name="azure-digital-twins-data-owner"></a>Azure Digital Twins dataägare
 
-Fullständig åtkomstroll för Digital Twins dataplan [Läs mer](../digital-twins/concepts-security.md)
+Fullständig åtkomstroll för Digital Twins dataplanet [Läs mer](../digital-twins/concepts-security.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -11457,7 +11457,7 @@ Fullständig åtkomstroll för Digital Twins dataplan [Läs mer](../digital-twin
 > | **DataActions** |  |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/* | Läsa, ta bort, skapa eller uppdatera en händelseväg |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/* | Läsa, skapa, uppdatera eller ta bort digital tvilling |
-> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* | Anropa alla kommandon på en Digital Twin |
+> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/commands/* | Anropa ett kommando på en digital tvilling |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/* | Läsa, skapa, uppdatera eller ta bort digital tvillingrelationer |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/* | Läsa, skapa, uppdatera eller ta bort en modell |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/* | Köra frågor mot Digital Twins Graph |
@@ -11505,9 +11505,9 @@ Skrivskyddade roller för Digital Twins egenskaper för dataplanet [Läs mer](..
 > | *inget* |  |
 > | **DataActions** |  |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/read | Läsa valfri Digital Twin |
-> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/read | Läsa alla Digital Twin-relationer |
+> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/digitaltwins/relationships/read | Läsa alla digital tvillingrelationer |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/eventroutes/read | Läsa en händelseväg |
-> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/read | Läsa vilken modell som helst |
+> | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/models/read | Läsa valfri modell |
 > | [Microsoft.DigitalTwins](resource-provider-operations.md#microsoftdigitaltwins)/query/action | Köra frågor mot Digital Twins Graph |
 > | **NotDataActions** |  |
 > | *inget* |  |
@@ -11599,8 +11599,8 @@ Deltagare i programgruppen för skrivbordsvirtualisering. [Läs mer](../virtual-
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/* |  |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11644,7 +11644,7 @@ Deltagare i programgruppen för skrivbordsvirtualisering. [Läs mer](../virtual-
 }
 ```
 
-### <a name="desktop-virtualization-application-group-reader"></a>Läsare för programgrupp för skrivbordsvirtualisering
+### <a name="desktop-virtualization-application-group-reader"></a>Gruppläsare för program för skrivbordsvirtualisering
 
 Läsare av programgruppen för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 
@@ -11653,8 +11653,8 @@ Läsare av programgruppen för skrivbordsvirtualisering. [Läs mer](../virtual-d
 > | --- | --- |
 > | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/*/read |  |
 > | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | Läsa programgrupper |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | Hämtar eller visar en lista över distributioner. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11699,7 +11699,7 @@ Läsare av programgruppen för skrivbordsvirtualisering. [Läs mer](../virtual-d
 }
 ```
 
-### <a name="desktop-virtualization-contributor"></a>Desktop Virtualization Contributor
+### <a name="desktop-virtualization-contributor"></a>Desktop Virtualization-deltagare
 
 Deltagare i Desktop Virtualization. [Läs mer](../virtual-desktop/rbac.md)
 
@@ -11748,14 +11748,14 @@ Deltagare i Desktop Virtualization. [Läs mer](../virtual-desktop/rbac.md)
 }
 ```
 
-### <a name="desktop-virtualization-host-pool-contributor"></a>Deltagare i värdpoolen för skrivbordsvirtualisering
+### <a name="desktop-virtualization-host-pool-contributor"></a>Deltagare i värdpool för skrivbordsvirtualisering
 
 Deltagare i värdpoolen för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/* |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11804,8 +11804,8 @@ Läsare av värdpoolen för skrivbordsvirtualisering. [Läs mer](../virtual-desk
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/*/read |  |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/*/read |  |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | Hämtar eller visar en lista över distributioner. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11850,12 +11850,12 @@ Läsare av värdpoolen för skrivbordsvirtualisering. [Läs mer](../virtual-desk
 
 ### <a name="desktop-virtualization-reader"></a>Läsare för skrivbordsvirtualisering
 
-Läsare av skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
+Läsare av Desktop Virtualization. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/*/read |  |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/*/read |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | Hämtar eller visar en lista över distributioner. |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11897,15 +11897,15 @@ Läsare av skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 }
 ```
 
-### <a name="desktop-virtualization-session-host-operator"></a>Värdoperatör för skrivbordsvirtualiseringssession
+### <a name="desktop-virtualization-session-host-operator"></a>Värdoperator för skrivbordsvirtualiseringssession
 
 Operatör av sessionsvärden för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
-> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/* |  |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
+> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Läsa roller och rolltilldelningar |
@@ -11989,13 +11989,13 @@ Tillåter användare att använda programmen i en programgrupp. [Läs mer](../vi
 
 ### <a name="desktop-virtualization-user-session-operator"></a>Sessionsoperatör för skrivbordsvirtualisering
 
-Operatör av Uesr-sessionen för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
+Operatör av Desktop Virtualization Uesr-sessionen. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/read | Läsa värdpooler |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/read | Läsa värdpooler/sessionsvärdar |
 > | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/hostpools/sessionhosts/usersessions/* |  |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
@@ -12040,9 +12040,9 @@ Operatör av Uesr-sessionen för skrivbordsvirtualisering. [Läs mer](../virtual
 }
 ```
 
-### <a name="desktop-virtualization-workspace-contributor"></a>Deltagare i arbetsytan för skrivbordsvirtualisering
+### <a name="desktop-virtualization-workspace-contributor"></a>Deltagare i skrivbordsvirtualiseringsarbetsyta
 
-Deltagare i arbetsytan för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
+Deltagare i arbetsytan För skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -12093,12 +12093,12 @@ Deltagare i arbetsytan för skrivbordsvirtualisering. [Läs mer](../virtual-desk
 
 ### <a name="desktop-virtualization-workspace-reader"></a>Läsare för arbetsyta för skrivbordsvirtualisering
 
-Läsare av arbetsytan För skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
+Läsare av arbetsytan för skrivbordsvirtualisering. [Läs mer](../virtual-desktop/rbac.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | [Microsoft.DesktopVirtualisering](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/read | Läs arbetsytor |
+> | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/workspaces/read | Läsa arbetsytor |
 > | [Microsoft.DesktopVirtualization](resource-provider-operations.md#microsoftdesktopvirtualization)/applicationgroups/read | Läsa programgrupper |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Hämtar eller visar en lista över resursgrupper. |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/read | Hämtar eller visar en lista över distributioner. |
@@ -12144,7 +12144,7 @@ Läsare av arbetsytan För skrivbordsvirtualisering. [Läs mer](../virtual-deskt
 
 ### <a name="disk-backup-reader"></a>DiskSäkerhetskopieringsläsare
 
-Ger behörighet till säkerhetskopieringsvalvet för att utföra disksäkerhetskopiering. [Läs mer](../backup/disk-backup-faq.yml)
+Ger behörighet att säkerhetskopiera valv för att utföra disksäkerhetskopiering. [Läs mer](../backup/disk-backup-faq.yml)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -12232,7 +12232,7 @@ Ger behörighet till säkerhetskopieringsvalvet för att utföra diskåterställ
 
 ### <a name="disk-snapshot-contributor"></a>Diskögonblicksbilddeltagare
 
-Ger behörighet till säkerhetskopieringsvalvet för att hantera ögonblicksbilder av diskar. [Läs mer](../backup/backup-managed-disks.md)
+Ger behörighet att säkerhetskopiera valv för att hantera ögonblicksbilder av diskar. [Läs mer](../backup/backup-managed-disks.md)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -12246,7 +12246,7 @@ Ger behörighet till säkerhetskopieringsvalvet för att hantera ögonblicksbild
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/snapshots/endGetAccess/action | Återkalla SAS-URI för ögonblicksbilden |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/beginGetAccess/action | Hämta SAS-URI för disken för blobåtkomst |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/action | Returnerar åtkomstnycklarna för det angivna lagringskontot. |
-> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/write | Skapar ett lagringskonto med de angivna parametrarna, uppdaterar egenskaperna eller taggarna eller lägger till en anpassad domän för det angivna lagringskontot. |
+> | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/write | Skapar ett lagringskonto med de angivna parametrarna eller uppdaterar egenskaperna eller taggarna eller lägger till en anpassad domän för det angivna lagringskontot. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/read | Returnerar listan över lagringskonton eller hämtar egenskaperna för det angivna lagringskontot. |
 > | [Microsoft.Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/delete | Tar bort ett befintligt lagringskonto. |
 > | **NotActions** |  |
@@ -12342,7 +12342,7 @@ Låter dig hantera Scheduler-jobbsamlingar, men inte åtkomst till dem.
 }
 ```
 
-### <a name="services-hub-operator"></a>Tjänsthubboperator
+### <a name="services-hub-operator"></a>Services Hub-operatör
 
 Med Services Hub Operator kan du utföra alla läs-, skriv- och borttagningsåtgärder relaterade till Services Hub Connectors. [Läs mer](/services-hub/health/sh-connector-roles)
 
@@ -12354,9 +12354,9 @@ Med Services Hub Operator kan du utföra alla läs-, skriv- och borttagningsåtg
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Skapa och hantera en distribution |
 > | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/write | Skapa eller uppdatera en Tjänsthubbanslutning |
 > | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/read | Visa eller visa en lista över hubbanslutningsappar för tjänster |
-> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/delete | Ta bort services hub-anslutningsappar |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/delete | Ta bort Services Hub-anslutningsappar |
 > | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/connectors/checkAssessmentEntitlement/action | Visar en lista över utvärderingsrättigheter för en viss Services Hub-arbetsyta |
-> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/supportOfferingEntitlement/read | Visa berättiganden för supporterbjudanden för en viss Tjänsthubbarbetsyta |
+> | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/supportOfferingEntitlement/read | Visa berättiganden för supporterbjudanden för en viss tjänsthubbarbetsyta |
 > | [Microsoft.ServicesHub](resource-provider-operations.md#microsoftserviceshub)/workspaces/read | Visa en lista över arbetsytor i tjänsthubben för en viss användare |
 > | **NotActions** |  |
 > | *inget* |  |

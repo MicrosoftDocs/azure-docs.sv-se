@@ -1,9 +1,8 @@
 ---
-title: Snabb start – skapa en Azure Key Vault med Azure Portal
-description: Snabb start visar hur du skapar en Azure Key Vault med hjälp av Azure Portal
+title: Snabbstart – Skapa en Azure Key Vault med Azure Portal
+description: Snabbstart som visar hur du skapar en Azure Key Vault med hjälp av Azure Portal
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
@@ -11,22 +10,22 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 729b6ccf1092679a71aa35f49be7d3199d4f4918
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d8bfdf3a4ad8b713fb6c937d61fa437fc7977f2
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97936285"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749680"
 ---
-# <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Snabb start: skapa ett nyckel valv med hjälp av Azure Portal
+# <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Snabbstart: Skapa ett nyckelvalv med hjälp av Azure Portal
 
-Azure Key Vault är en moln tjänst som tillhandahåller en säker lagring för [nycklar](../keys/index.yml), [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [About Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckel valv finns i [om nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md).
+Azure Key Vault är en molntjänst som tillhandahåller ett säkert arkiv [för nycklar,](../keys/index.yml) [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [Om Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckelvalv finns [i Om nycklar, hemligheter och certifikat.](about-keys-secrets-certificates.md)
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-I den här snabb starten skapar du ett nyckel valv med [Azure Portal](https://portal.azure.com). 
+I den här snabbstarten skapar du ett nyckelvalv med [Azure Portal](https://portal.azure.com). 
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -34,14 +33,14 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Skapa ett valv
 
-1. På Azure Portal-menyn eller på **Start** sidan väljer du **skapa en resurs**.
+1. På Azure Portal menyn eller på sidan **Start** väljer du **Skapa en resurs**.
 2. I rutan Sök anger du **Key Vault**.
 3. Välj **Key Vault** i listan med resultat.
 4. Välj **Skapa** i avsnittet Key Vault.
 5. Ange följande information i avsnittet **Skapa nyckelvalv** avsnittet Ange följande information:
-    - **Namn**: Ett unikt namn krävs. I den här snabb starten använder vi **contoso-vault2**. 
+    - **Namn**: Ett unikt namn krävs. I den här snabbstarten använder vi **Contoso-vault2**. 
     - **Prenumeration**: Välj en prenumeration.
-    - Under **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
+    - Under **Resursgrupp** väljer du **Skapa ny** och anger ett resursgruppsnamn.
     - Välj en plats i listrutan **Plats**.
     - Lämna standardvärdena för de andra alternativen.
 6. När du har angett den här informationen väljer du **Skapa**.
@@ -67,8 +66,8 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Key Vault med hjälp av Azure Portal. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten skapade du en Key Vault med hjälp av Azure Portal. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](overview.md)
-- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
-- Se [Azure Key Vault Developer ' s guide](developers-guide.md)
+- Läs en [översikt över Azure Key Vault](overview.md)
+- Granska Azure Key Vault [säkerhetsöversikten](security-overview.md)
+- Se [Azure Key Vault för utvecklare](developers-guide.md)

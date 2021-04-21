@@ -1,14 +1,14 @@
 ---
-title: Azure Service Bus identifiering av dubbla | Microsoft Docs
+title: Azure Service Bus dubblettmeddelandeidentifiering | Microsoft Docs
 description: Den här artikeln förklarar hur du kan identifiera dubbletter i Azure Service Bus meddelanden. Dupliceringsmeddelandet kan ignoreras och ignoreras.
 ms.topic: article
-ms.date: 04/14/2021
-ms.openlocfilehash: a9ca9de988f5a3db15da773a870e2d929ab938c8
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.date: 04/19/2021
+ms.openlocfilehash: baeda3509cb5646c658f79fb11610ecfdd1ffd3d
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499486"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751282"
 ---
 # <a name="duplicate-detection"></a>Dubblettidentifiering
 
@@ -37,7 +37,7 @@ MessageId *kan* alltid vara något GUID, men att fästa identifieraren för aff�
 >- [Premier-nivån](service-bus-premium-messaging.md) stöder inte partitionering, så vi rekommenderar att du använder unika meddelande-ID:er i dina program och inte förlitar dig på partitionsnycklar för dubblettidentifiering. 
 
 
-## <a name="enable-duplicate-detection"></a>Aktivera dubblettidentifiering
+## <a name="duplicate-detection-window-size"></a>Fönsterstorlek för dubblettidentifiering
 
 Förutom att bara aktivera dubblettidentifiering kan du också konfigurera storleken på tidsperioden för dubblettidentifieringshistoriken då meddelande-ID:n bevaras.
 Det här värdet är som standard 10 minuter för köer och ämnen, med ett minsta värde på 20 sekunder till det högsta värdet på 7 dagar.
@@ -46,37 +46,20 @@ Om du aktiverar dubblettidentifiering och fönstrets storlek påverkas köns (oc
 
 Att hålla fönstret litet innebär att färre meddelande-ID:n måste behållas och matchas, och dataflödet påverkas mindre. För entiteter med högt dataflöde som kräver dubblettidentifiering bör du hålla fönstret så litet som möjligt.
 
-### <a name="using-the-portal"></a>Använda portalen
-
-I portalen aktiveras funktionen för dubblettidentifiering när  entiteten skapas med kryssrutan Aktivera dubblettidentifiering, som är inaktiverad som standard. Inställningen för att skapa nya ämnen är likvärdig.
-
-![Skärmbild av dialogrutan Skapa kö med alternativet Aktivera dubblettidentifiering markerat och markerat i rött.][1]
-
-> [!IMPORTANT]
-> Du kan inte aktivera/inaktivera dubblettidentifiering när kön har skapats. Du kan bara göra det när du skapar kön. 
-
-Tidsfönstret för dubblettidentifieringshistoriken kan ändras i fönstret för egenskaper för kö och ämne i Azure Portal.
-
-![Skärmbild av Service Bus med inställningen Egenskaper markerad och alternativet Dubblettidentifieringshistorik markerat i rött.][2]
-
-### <a name="using-sdks"></a>Använda SDK:er
-
-Du kan använda någon av våra SDK:er i .NET, Java, JavaScript, Python och Go för att aktivera funktionen för dubblettidentifiering när du skapar köer och ämnen. Du kan också ändra tidsperioden för dubblettidentifieringshistorik.
-Egenskaperna som ska uppdateras när du skapar köer och ämnen för att uppnå detta är:
-- `RequiresDuplicateDetection`
-- `DuplicateDetectionHistoryTimeWindow`
-
-Observera att även om egenskapsnamnen anges i Pascal-höljet här, använder JavaScript- och Python-SDK:er kamelhölje respektive hölje.
-
 ## <a name="next-steps"></a>Nästa steg
-
-Mer information om Service Bus finns i följande avsnitt:
-
-* [Service Bus-köer, ämnen och prenumerationer](service-bus-queues-topics-subscriptions.md)
-* [Komma igång med Service Bus-köer](service-bus-dotnet-get-started-with-queues.md)
-* [Använd Service Bus ämnen och prenumerationer](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+Du kan aktivera identifiering av duplicerade meddelanden med Azure Portal, PowerShell, CLI, Resource Manager mall, .NET, Java, Python och JavaScript. Mer information finns i Aktivera [identifiering av duplicerade meddelanden.](enable-duplicate-detection.md) 
 
 I scenarier där klientkoden inte kan skicka ett meddelande på nytt med samma *MessageId* som tidigare är det viktigt att utforma meddelanden som kan bearbetas på ett säkert sätt. Det [här blogginlägget om idempotens](https://particular.net/blog/what-does-idempotent-mean) beskriver olika tekniker för hur du gör det.
 
-[1]: ./media/duplicate-detection/create-queue.png
-[2]: ./media/duplicate-detection/queue-prop.png
+Prova exemplen på det språk du väljer för att utforska Azure Service Bus funktioner. 
+
+- [Azure Service Bus klientbiblioteksexempel för Java](/samples/azure/azure-sdk-for-java/servicebus-samples/)
+- [Azure Service Bus klientbiblioteksexempel för Python](/samples/azure/azure-sdk-for-python/servicebus-samples/)
+- [Azure Service Bus klientbiblioteksexempel för JavaScript](/samples/azure/azure-sdk-for-js/service-bus-javascript/)
+- [Azure Service Bus klientbiblioteksexempel för TypeScript](/samples/azure/azure-sdk-for-js/service-bus-typescript/)
+- [Azure.Messaging.ServiceBus-exempel för .NET](/samples/azure/azure-sdk-for-net/azuremessagingservicebus-samples/)
+
+Hitta exempel för äldre .NET- och Java-klientbibliotek nedan:
+- [Microsoft.Azure.ServiceBus-exempel för .NET](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/)
+- [azure-servicebus-exempel för Java](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/MessageBrowse)
+

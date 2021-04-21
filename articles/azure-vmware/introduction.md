@@ -1,28 +1,28 @@
 ---
 title: Introduktion
-description: Lär dig om funktionerna och fördelarna med Azure VMware-lösningen för att distribuera och hantera VMware-baserade arbets belastningar i Azure.
+description: Lär dig funktionerna och fördelarna med Azure VMware Solution att distribuera och hantera VMware-baserade arbetsbelastningar i Azure. Azure VMware Solution serviceavtal garanterar att Azure VMware-hanteringsverktyg (vCenter Server och NSX Manager) kommer att vara tillgängliga minst 99,9 % av tiden.
 ms.topic: overview
-ms.date: 03/24/2021
-ms.openlocfilehash: 32dd73108dc12d7d7acc605f43a0fbf6d2cf1cd7
-ms.sourcegitcommit: 5fd1f72a96f4f343543072eadd7cdec52e86511e
+ms.date: 04/20/2021
+ms.openlocfilehash: 9471aa2e427d28e0b8211dc8b25b2e61a4bfa8c4
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106107998"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752650"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Vad är Azure VMware Solution?
 
-Med Azure VMware-lösningen får du privata moln som innehåller vSphere-kluster som bygger på dedikerad Azure-infrastruktur utan operativ system. Den minsta första distributionen är tre värdar, men ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster.  Alla etablerade privata moln har vCenter Server, virtuellt San, vSphere och NSX-T. Du kan migrera arbets belastningar från dina lokala miljöer, distribuera nya virtuella datorer (VM) och använda Azure-tjänster från dina privata moln.
+Azure VMware Solution med privata moln som innehåller vSphere-kluster som skapats från dedikerad Azure-infrastruktur utan metal. Den minsta inledande distributionen är tre värdar, men ytterligare värdar kan läggas till en i taget, upp till högst 16 värdar per kluster.  Alla etablerade privata moln har vCenter Server, vSAN, vSphere och NSX-T. Du kan migrera arbetsbelastningar från dina lokala miljöer, distribuera nya virtuella datorer (VM) och använda Azure-tjänster från dina privata moln.  Azure VMware-hanteringsverktyg (vCenter Server och NSX Manager) kommer att vara tillgängliga minst 99,9 % av tiden. Mer information finns i [Azure VMware Solution serviceavtal](https://aka.ms/avs/sla).
 
-Azure VMware-lösningen är en VMware-verifierad lösning med pågående verifiering och testning av förbättringar och uppgraderingar. Microsoft hanterar och upprätthåller infrastrukturen för privata moln och program vara. Det gör att du kan fokusera på att utveckla och köra arbets belastningar i dina privata moln. 
+Azure VMware Solution är en VMware-verifierad lösning med en framtida validering och testning av förbättringar och uppgraderingar. Microsoft hanterar och underhåller infrastruktur och programvara i privata moln. Du kan fokusera på att utveckla och köra arbetsbelastningar i dina privata moln. 
 
-Diagrammet visar sammanlänkning mellan privata moln och virtuella nätverk i Azure, Azure-tjänster och lokala miljöer. Nätverks åtkomst från privata moln till Azure-tjänster eller virtuella nätverk tillhandahåller SLA-driven integrering av Azures tjänst slut punkter. ExpressRoute Global Reach ansluter din lokala miljö till ditt privata moln i Azure VMware-lösningen. 
+Diagrammet visar angränsande mellan privata moln och virtuella nätverk i Azure, Azure-tjänster och lokala miljöer. Nätverksåtkomst från privata moln till Azure-tjänster eller virtuella nätverk ger SLA-driven integrering av Azure-tjänstslutpunkter. ExpressRoute Global Reach ansluter din lokala miljö till din Azure VMware Solution privata molnet. 
 
-![Bild av Azure VMware-lösning för privat moln sammanlänkning till Azure och lokalt](./media/adjacency-overview-drawing-final.png)
+![Bild Azure VMware Solution av angränsande privata moln till Azure och lokalt](./media/adjacency-overview-drawing-final.png)
 
 ## <a name="hosts-clusters-and-private-clouds"></a>Värdar, kluster och privata moln
 
-Privata moln och kluster i Azure VMware-lösningen bygger på en dator utan operativ system som är värd för Azure-infrastrukturen utan operativ system. De avancerade värdarna har 576 GB RAM och dubbla Intel 18 kärnor, 2,3 GHz-processorer. Han är värd för att ha två virtuellt San-diskgroups med 15,36 TB (SSD) av RAW virtuellt San-kapacitets nivå och en 3,2 TB (NVMe) virtuellt San-cache-nivå.
+Azure VMware Solution privata moln och kluster är byggda från en hyperkonvergerad Azure-infrastrukturvärd utan metal. De avancerade värdarna har 576 GB RAM-minne och dubbla Intel 18-kärnor, 2,3 GHz-processorer. HE-värdarna har två vSAN-diskgrupper med 15,36 TB (SSD) rå vSAN-kapacitetsnivå och en vSAN-cachenivå på 3,2 TB (NVMe).
 
 Nya privata moln distribueras via Azure Portal eller Azure CLI.
 
@@ -30,37 +30,37 @@ Nya privata moln distribueras via Azure Portal eller Azure CLI.
 
 [!INCLUDE [avs-networking-description](includes/azure-vmware-solution-networking-description.md)]
 
-Mer information finns i [nätverks koncept](concepts-networking.md).
+Mer information finns i [Nätverksbegrepp.](concepts-networking.md)
 
 ## <a name="access-and-security"></a>Åtkomst och säkerhet
 
-Privata moln i Azure VMware-lösningar använder vSphere rollbaserad åtkomst kontroll för förbättrad säkerhet. Du kan integrera vSphere SSO LDAP-funktioner med Azure Active Directory. Mer information finns i [begreppen åtkomst och identitet](concepts-identity.md).  
+Azure VMware Solution privata moln använder rollbaserad åtkomstkontroll i vSphere för ökad säkerhet. Du kan integrera vSphere SSO LDAP-funktioner med Azure Active Directory. Mer information finns i [Begreppen Åtkomst och Identitet.](concepts-identity.md)  
 
-Virtuellt San data-at-rest-kryptering är som standard aktiverat och används för att tillhandahålla virtuellt San data lagrings säkerhet. Mer information finns i [Storage Concepts](concepts-storage.md).
+vSAN-kryptering av vilodata är som standard aktiverad och används för att tillhandahålla säkerhet för vSAN-datalager. Mer information finns i [Lagringsbegrepp.](concepts-storage.md)
 
-## <a name="host-and-software-lifecycle-maintenance"></a>Underhåll av värd-och program varu livs cykel
+## <a name="host-and-software-lifecycle-maintenance"></a>Underhåll av värd- och programvarulivscykel
 
-Vanliga uppgraderingar av Azure VMware-lösningen privat moln och VMware-programvara ser till att de senaste säkerhets-, stabilitets-och funktions uppsättningarna körs i dina privata moln. Mer information finns i [uppdateringar och uppgraderingar av privata moln](concepts-upgrades.md).
+Regelbundna uppgraderingar av Azure VMware Solution privata moln och VMware-programvara säkerställer att de senaste säkerhets-, stabilitets- och funktionsuppsättningarna körs i dina privata moln. Mer information finns i Uppdateringar [och uppgraderingar av privata moln.](concepts-upgrades.md)
 
 ## <a name="monitoring-your-private-cloud"></a>Övervaka ditt privata moln
 
-När Azure VMware-lösningen har distribuerats i din prenumeration genereras [Azure Monitor loggar](../azure-monitor/overview.md) automatiskt. 
+När Azure VMware Solution har distribuerats till din [prenumeration Azure Monitor genereras](../azure-monitor/overview.md) loggarna automatiskt. 
 
 I ditt privata moln kan du:
 - Samla in loggar på var och en av dina virtuella datorer.
-- [Hämta och installera MMA-agenten](../azure-monitor/agents/log-analytics-agent.md#installation-options) på virtuella Linux-och Windows-datorer.
+- [Ladda ned och installera MMA-agenten](../azure-monitor/agents/log-analytics-agent.md#installation-options) på virtuella Linux- och Windows-datorer.
 - Aktivera [Azure Diagnostics-tillägget](../azure-monitor/agents/diagnostics-extension-overview.md).
-- [Skapa och kör nya frågor](../azure-monitor/logs/data-platform-logs.md#log-queries).
-- Kör samma frågor som du brukar köra på dina virtuella datorer.
+- [Skapa och kör nya frågor.](../azure-monitor/logs/data-platform-logs.md#log-queries)
+- Kör samma frågor som du vanligtvis kör på dina virtuella datorer.
 
-Övervaknings mönster i Azure VMware-lösningen liknar virtuella Azure-datorer i IaaS-plattformen. Mer information och instruktioner finns i [övervaka virtuella Azure-datorer med Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md).
+Övervakningsmönstren i Azure VMware Solution liknar virtuella Azure-datorer på IaaS-plattformen. Mer information och hur du gör finns i Övervaka virtuella [Azure-datorer med Azure Monitor](../azure-monitor/vm/monitor-vm-azure.md).
 
-## <a name="customer-communication"></a>Kund kommunikation
+## <a name="customer-communication"></a>Kundkommunikation
 [!INCLUDE [customer-communications](includes/customer-communications.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nästa steg är att lära dig viktiga [koncept för privata moln och kluster](concepts-private-clouds-clusters.md).
+Nästa steg är att lära dig viktiga [begrepp för privata moln och kluster.](concepts-private-clouds-clusters.md)
 
 <!-- LINKS - external -->
 

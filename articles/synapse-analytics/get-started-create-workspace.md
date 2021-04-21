@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 03/17/2021
-ms.openlocfilehash: 61fcbfa9d40ebb26485ce8160fa3b011935ab4d6
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4b7251be220c012ca51970863ac2eed55d46d711
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107536312"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751156"
 ---
 # <a name="creating-a-synapse-workspace"></a>Skapa en Synapse-arbetsyta
 
@@ -51,7 +51,7 @@ Fyll i följande fält:
 Under **Välj Data Lake Storage Gen 2:**
 
 1. Efter **Kontonamn** väljer du **Skapa nytt** och ger det nya **lagringskontot namnet contosolake** eller liknande eftersom namnet måste vara unikt.
-1. Efter **Filnamn väljer du** Skapa ny **och** ger den namnet **användare**. Detta skapar en lagringscontainer med namnet **users**. Arbetsytan använder det här lagringskontot som "primärt" lagringskonto för Spark-tabeller och Spark-programloggar.
+1. Efter **Filnamn väljer du** Skapa ny **och** ger den namnet **användare**. Detta skapar en lagringscontainer med namnet **users**. Arbetsytan använder det här lagringskontot som "primärt" lagringskonto till Spark-tabeller och Spark-programloggar.
 1. Markera rutan "Tilldela mig rollen Storage Blob Data-deltagare Data Lake Storage Gen2 lagringskonto". 
 
 ## <a name="completing-the-process"></a>Slutföra processen
@@ -77,6 +77,14 @@ Vi ska använda en liten exempeldatamängd på 100 000 rader med NYX Taxi Cab-da
 * Under kategorin **Azure Data Lake Storage Gen2** visas ett objekt med ett namn som **myworkspace ( Primary - contosolake ).**
 * Välj containern med **namnet användare (primär).**
 * Välj **Ladda** upp och välj den `NYCTripSmall.parquet` fil som du laddade ned.
+
+En parquet-fil laddas upp och är tillgänglig via två motsvarande URI:er:
+* `https://contosolake.dfs.core.windows.net/users/NYCTripSmall.parquet` 
+* `abfss://users@contosolake.dfs.core.windows.net/NYCTripSmall.parquet`
+
+I exemplen som följer i den här självstudien ersätter du **contosolake** i användargränssnittet med namnet på det primära lagringskonto som du valde för din arbetsyta.
+
+
 
 ## <a name="next-steps"></a>Nästa steg
 

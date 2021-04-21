@@ -1,39 +1,41 @@
 ---
 title: Information om Azure Security Center
-description: En beskrivning av vad som är nytt och vad som har ändrats i Azure Security Center
+description: En beskrivning av vad som är nytt och ändrat i Azure Security Center
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 04/11/2021
+ms.date: 04/20/2021
 ms.author: memildin
-ms.openlocfilehash: 5f94b17fac17a7238b3f4b7eef218961df7a42d5
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 92138b0253d28c8bf2617ee7b17474f30ac5cafe
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739970"
+ms.locfileid: "107751211"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Vad är nytt i Azure Security Center?
 
-Security Center är i aktiv utveckling och får kontinuerliga förbättringar. Den här sidan innehåller information om nya funktioner, felkorrigeringar och inaktuella funktioner för att hålla dig uppdaterad med den senaste utvecklingen.
+Security Center är i aktiv utveckling och får kontinuerliga förbättringar. Den här sidan innehåller information om nya funktioner, felkorrigeringar och föråldrade funktioner för att hålla dig uppdaterad med den senaste utvecklingen.
 
-Den här sidan uppdateras ofta, så gå tillbaka ofta. 
+Den här sidan uppdateras ofta, så gå ofta tillbaka till den. 
 
-Information om planerade *ändringar* som kommer snart att Security Center finns i [Viktiga kommande ändringar i Azure Security Center](upcoming-changes.md). 
+Information om *planerade ändringar* som snart kommer att Security Center finns i Viktiga kommande ändringar i [Azure Security Center](upcoming-changes.md). 
 
 > [!TIP]
-> Om du letar efter objekt som är äldre än sex månader hittar du dem i Arkiv för Nyheter i [Azure Security Center](release-notes-archive.md).
+> Om du letar efter objekt som är äldre än sex månader hittar du dem i Arkiv för Nyheter [i Azure Security Center](release-notes-archive.md).
 
 ## <a name="april-2021"></a>April 2021
 
 Uppdateringar i april är:
 - [Nyligen nedlästa containerregisteravbildningar genomsöks nu varje vecka (allmän tillgänglighet)](#recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability)
 - [Använd Azure Defender för Kubernetes för att skydda Kubernetes-hybriddistributioner och Kubernetes-distributioner i flera moln (förhandsversion)](#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview)
+- [Rekommendationer för att Azure Defender för DNS och Resource Manager (förhandsversion)](#recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview)
 - [Fyra nya rekommendationer som rör gästkonfiguration (förhandsversion)](#four-new-recommendations-related-to-guest-configuration-preview)
 - [CMK-rekommendationer har flyttats till metodtips för säkerhetskontroll](#cmk-recommendations-moved-to-best-practices-security-control)
-- [11 Azure Defender inaktuella aviseringar](#11-azure-defender-alerts-deprecated)
+- [11 Azure Defender-aviseringar är inaktuella](#11-azure-defender-alerts-deprecated)
 - [Två rekommendationer från säkerhetskontrollen "Tillämpa systemuppdateringar" är inaktuella](#two-recommendations-from-apply-system-updates-security-control-were-deprecated)
+- [Azure Defender för SQL på datorpanelen borttagen från Azure Defender instrumentpanel](#azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard)
 
 ### <a name="recently-pulled-container-registry-images-are-now-rescanned-weekly-general-availability"></a>Nyligen nedlästa containerregisteravbildningar genomsöks nu varje vecka (allmän tillgänglighet)
 
@@ -43,10 +45,10 @@ Nya säkerhetsrisker upptäcks varje dag. Med den här uppdateringen genomsöks 
 
 Genomsökning debiteras per bild, så det tillkommer inga extra avgifter för dessa nya genomsökningar.
 
-Läs mer om den här [skannern i Använda Azure Defender för containerregister för att genomsöka dina avbildningar efter säkerhetsrisker.](defender-for-container-registries-usage.md)
+Läs mer om den här [skannern i Använda Azure Defender för containerregister för att söka igenom dina avbildningar efter säkerhetsrisker.](defender-for-container-registries-usage.md)
 
 
-### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Använd Azure Defender för Kubernetes för att skydda Kubernetes-hybriddistributioner och Kubernetes-distributioner i flera moln (förhandsversion)
+### <a name="use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-preview"></a>Använd Azure Defender för Kubernetes för att skydda Kubernetes-hybriddistributioner och Kubernetes-distributioner med flera moln (förhandsversion)
 
 Azure Defender för Kubernetes utökar sina hotskyddsfunktioner för att skydda dina kluster oavsett var de distribueras. Detta har aktiverats genom integrering med [Azure Arc aktiverat Kubernetes](../azure-arc/kubernetes/overview.md) och dess [nya tilläggsfunktioner](../azure-arc/kubernetes/extensions.md). 
 
@@ -62,33 +64,46 @@ Integreringen mellan Azure Security Center, Azure Defender och Azure Arc kuberne
 - Identifierade säkerhetshot från Azure Defender rapporteras på den nya sidan Säkerhet i Azure Arc portalen
 - Azure Arc Kubernetes-kluster är integrerade i Azure Security Center plattform och upplevelse
 
-Läs mer i [Använda Azure Defender för Kubernetes med dina lokala Kubernetes-kluster och Kubernetes-kluster för flera moln.](defender-for-kubernetes-azure-arc.md)
+Läs mer i Använda Azure Defender för Kubernetes med dina lokala [Kubernetes-kluster och Kubernetes-kluster för flera moln.](defender-for-kubernetes-azure-arc.md)
 
 :::image type="content" source="media/defender-for-kubernetes-azure-arc/extension-recommendation.png" alt-text="Azure Security Center rekommendation för att distribuera Azure Defender för Azure Arc Kubernetes-kluster." lightbox="media/defender-for-kubernetes-azure-arc/extension-recommendation.png":::
+
+
+### <a name="recommendations-to-enable-azure-defender-for-dns-and-resource-manager-preview"></a>Rekommendationer för att Azure Defender för DNS och Resource Manager (förhandsversion)
+
+Två nya rekommendationer har lagts till för att förenkla processen med [att Azure Defender för Resource Manager](defender-for-resource-manager-introduction.md) och Azure Defender för [DNS:](defender-for-dns-introduction.md)
+
+- **Azure Defender för Resource Manager bör vara aktiverat** – Defender för Resource Manager övervakar automatiskt resurshanteringsåtgärder i din organisation. Azure Defender identifierar hot och varnar dig om misstänkt aktivitet.
+- **Azure Defender för DNS ska** vara aktiverat – Defender för DNS ger ett extra skyddslager för dina molnresurser genom att kontinuerligt övervaka alla DNS-frågor från dina Azure-resurser. Azure Defender varnar dig om misstänkt aktivitet i DNS-lagret.
+
+Aktivering av Azure Defender-planer resulterar i avgifter. Läs mer om prisinformationen per region Security Center sidan med priser: https://aka.ms/pricing-security-center .
+
+> [!TIP]
+> Förhandsversionsrekommendationer återger inte en resurs som inte är skadad och de ingår inte i beräkningarna av dina säkerhetspoäng. Åtgärda dem när det är möjligt, så att de bidrar till dina poäng när förhandsgranskningsperioden är slut. Läs mer om hur du svarar på dessa rekommendationer [i Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
 ### <a name="four-new-recommendations-related-to-guest-configuration-preview"></a>Fyra nya rekommendationer som rör gästkonfiguration (förhandsversion)
 
 Azures [gästkonfigurationstillägg rapporterar](../governance/policy/concepts/guest-configuration.md) till Security Center för att säkerställa att dina virtuella datorers gästinställningar är härdade. Tillägget krävs inte för Arc-aktiverade servrar eftersom det ingår i Arc Connected Machine-agenten. Tillägget kräver en system hanterad identitet på datorn.
 
-Vi har lagt till fyra nya rekommendationer för att Security Center för att få ut det här tillägget på bästa sätt.
+Vi har lagt till fyra nya rekommendationer för att Security Center för att få ut mesta av det här tillägget.
 
 - Två rekommendationer uppmanar dig att installera tillägget och dess nödvändiga system hanterade identitet:
     - **Gästkonfigurationstillägget ska installeras på dina datorer**
     - **Gästkonfigurationstillägget för virtuella datorer ska distribueras med system tilldelad hanterad identitet**
 
-- När tillägget installeras och körs börjar granskning av dina datorer och du uppmanas att härda inställningar som konfiguration av operativsystem- och miljöinställningar. Dessa två rekommendationer uppmanar dig att härda dina Windows- och Linux-datorer enligt beskrivningen:
+- När tillägget installeras och körs börjar det granska dina datorer och du uppmanas att härda inställningar, till exempel konfiguration av operativsystem- och miljöinställningar. Dessa två rekommendationer uppmanar dig att härda dina Windows- och Linux-datorer enligt beskrivningen:
     - **Windows Defender Exploit Guard ska vara aktiverat på dina datorer**
-    - **Autentisering till Linux-datorer bör kräva SSH-nycklar**
+    - **Autentisering till Linux-datorer måste kräva SSH-nycklar**
 
-Läs mer i [Förstå Azure Policy gästkonfiguration.](../governance/policy/concepts/guest-configuration.md)
+Läs mer i [Azure Policy i Gästkonfiguration.](../governance/policy/concepts/guest-configuration.md)
 
 ### <a name="cmk-recommendations-moved-to-best-practices-security-control"></a>CMK-rekommendationer har flyttats till metodtips för säkerhetskontroll
 
-Alla organisationers säkerhetsprogram har krav på datakryptering. Som standard krypteras Azure-kundernas data i vila med tjänst-hanterade nycklar. Kund hanterade nycklar (CMK) krävs dock ofta för att uppfylla regelefterlevnadsstandarder. Med CMK:er kan du kryptera dina data [Azure Key Vault](../key-vault/general/overview.md) en nyckel som skapats och ägs av dig. Detta ger dig fullständig kontroll och ansvar för nyckellivscykeln, inklusive rotation och hantering.
+Alla organisationers säkerhetsprogram innehåller krav på datakryptering. Som standard krypteras Azure-kundernas data i vila med tjänst hanterade nycklar. Kund hanterade nycklar (CMK) krävs dock ofta för att uppfylla regelefterlevnadsstandarder. Med CMK:er kan du kryptera dina data [Azure Key Vault](../key-vault/general/overview.md) en nyckel som skapats och ägs av dig. Detta ger dig fullständig kontroll och ansvar för nyckellivscykeln, inklusive rotation och hantering.
 
 Azure Security Center säkerhetskontroller är logiska grupper av relaterade säkerhetsrekommendationer och återspeglar dina sårbara angreppsytor. Varje kontroll har ett maximalt antal punkter som du kan lägga till i din säkerhetspoäng om du åtgärdar alla rekommendationer som anges i kontrollen för alla dina resurser. Säkerhetskontrollen **Implementera säkerhetsmetoder** är värd noll punkter. Därför påverkar inte rekommendationerna i den här kontrollen dina säkerhetspoäng.
 
-Rekommendationerna nedan flyttas till säkerhetskontrollen Implementera metodtips **för att** bättre återspegla deras valfria natur. Den här flytten säkerställer att dessa rekommendationer har den lämpligaste kontrollen för att uppfylla deras mål.
+Rekommendationerna nedan flyttas till säkerhetskontrollen Implementera metodtips **för säkerhet** som bättre återspeglar deras valfria natur. Den här flytten säkerställer att dessa rekommendationer har den lämpligaste kontrollen för att uppfylla deras mål.
 
 - Azure Cosmos DB bör använda kund hanterade nycklar för att kryptera vilodata
 - Azure Machine Learning bör krypteras med en kund hanterad nyckel (CMK)
@@ -101,15 +116,15 @@ Rekommendationerna nedan flyttas till säkerhetskontrollen Implementera metodtip
 Lär dig vilka rekommendationer som finns i varje säkerhetskontroll [i Säkerhetskontroller och deras rekommendationer.](secure-score-security-controls.md#security-controls-and-their-recommendations)
 
 
-### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender-aviseringar är inaktuella
+### <a name="11-azure-defender-alerts-deprecated"></a>11 Azure Defender inaktuella aviseringar
 
-De Azure Defender aviseringarna nedan har gjorts inaktuella.
+De Azure Defender aviseringarna nedan är inaktuella.
 
 - Nya aviseringar ersätter dessa två aviseringar och ger bättre täckning:
 
     | AlertType                | AlertDisplayName                                                         |
     |--------------------------|--------------------------------------------------------------------------|
-    | ARM_MicroBurstDomainInfo | FÖRHANDSVERSION – Funktionskörningen "Get-AzureDomainInfo" för MicroBurst-verktyget har identifierats |
+    | ARM_MicroBurstDomainInfo | FÖRHANDSVERSION – Funktionskörningen "Get-AzureDomainInfo" för MicroBurst-verktygslådan har identifierats |
     | ARM_MicroBurstRunbook    | FÖRHANDSVERSION – Funktionskörningen "Get-AzurePasswords" för MicroBurst-verktygslådan har identifierats  |
     |                          |                                                                          |
 
@@ -123,7 +138,7 @@ De Azure Defender aviseringarna nedan har gjorts inaktuella.
     | ImpossibleTravel    | Ovanlig resa               |
     | MaliciousIP         | Skadlig IP-adress          |
     | LeakedCredentials   | Läckta autentiseringsuppgifter            |
-    | Password Entim       | Lösenordsutlösenord                |
+    | Password Entim       | Lösenordsutspolning                |
     | LeakedCredentials   | Azure AD-hotinformation  |
     | AADAI               | Azure AD AI                   |
     |                     |                               |
@@ -135,23 +150,27 @@ De Azure Defender aviseringarna nedan har gjorts inaktuella.
 
 Följande två rekommendationer är inaktuella och ändringarna kan leda till en liten inverkan på säkerhetspoängen:
 
-- **Datorerna bör startas om för att tillämpa systemuppdateringar**
-- **Övervakningsagenten ska installeras på datorerna**. Den här rekommendationen gäller endast lokala datorer och en del av dess logik överförs till en annan rekommendation. Problem med **Log Analytics-agentens** hälsotillstånd bör lösas på dina datorer
+- **Datorerna ska startas om för att tillämpa systemuppdateringar**
+- **Övervakningsagenten ska installeras på dina datorer.** Den här rekommendationen gäller endast lokala datorer och en del av dess logik överförs till en annan rekommendation. **Log Analytics-agentens** hälsoproblem bör lösas på dina datorer
 
-Vi rekommenderar att du kontrollerar dina konfigurationer för kontinuerlig export och arbetsflödesautomatisering för att se om dessa rekommendationer ingår i dem. Dessutom bör alla instrumentpaneler eller andra övervakningsverktyg som använder dem uppdateras i enlighet med detta.
+Vi rekommenderar att du kontrollerar dina automatiseringskonfigurationer för löpande export och arbetsflöde för att se om rekommendationerna ingår i dem. Dessutom bör alla instrumentpaneler eller andra övervakningsverktyg som använder dem uppdateras i enlighet med detta.
 
 Läs mer om dessa rekommendationer på [referenssidan för säkerhetsrekommendationer.](recommendations-reference.md)
+
+### <a name="azure-defender-for-sql-on-machine-tile-removed-from-azure-defender-dashboard"></a>Azure Defender för SQL på datorpanelen borttagen från Azure Defender instrumentpanel
+
+I Azure Defender instrumentpanels täckningsområde finns paneler för relevanta Azure Defender för din miljö. På grund av ett problem med rapporteringen av antalet skyddade och oskyddade resurser har vi beslutat att tillfälligt ta bort resurstäckningsstatusen **för Azure Defender** för SQL på datorer tills problemet har lösts.
 
 
 ## <a name="march-2021"></a>Mars 2021
 
-Uppdateringar i mars är:
+Uppdateringar i mars omfattar:
 
 - [Azure Firewall integrerad hantering i Security Center](#azure-firewall-management-integrated-into-security-center)
 - [Sårbarhetsbedömning i SQL innehåller nu funktionen "Inaktivera regel" (förhandsversion)](#sql-vulnerability-assessment-now-includes-the-disable-rule-experience-preview)
-- [Azure Monitor-arbetsböcker som är integrerade Security Center och tre mallar tillhandahålls](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
+- [Azure Monitor arbetsböcker som är integrerade i Security Center och tre mallar tillhandahålls](#azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided)
 - [Instrumentpanelen för regelefterlevnad innehåller nu Azure-granskningsrapporter (förhandsversion)](#regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview)
-- [Rekommendationsdata kan visas i Azure Resource Graph med "Utforska i ARG"](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
+- [Rekommendationsdata kan visas i Azure Resource Graph "Utforska i ARG"](#recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg)
 - [Uppdateringar av principerna för att distribuera arbetsflödesautomation](#updates-to-the-policies-for-deploying-workflow-automation)
 - [Två äldre rekommendationer skriver inte längre data direkt till Azure-aktivitetsloggen](#two-legacy-recommendations-no-longer-write-data-directly-to-azure-activity-log)
 - [Förbättringar på sidan Rekommendationer](#recommendations-page-enhancements)
@@ -159,11 +178,11 @@ Uppdateringar i mars är:
 
 ### <a name="azure-firewall-management-integrated-into-security-center"></a>Azure Firewall integrerad hantering i Security Center
 
-När du öppnar Azure Security Center visas översiktssidan på den första sidan. 
+När du öppnar Azure Security Center visas den första sidan på översiktssidan. 
 
 Den här interaktiva instrumentpanelen ger en enhetlig vy över säkerhetsstatusen för dina hybridmolnarbetsbelastningar. Dessutom visas säkerhetsaviseringar, täckningsinformation med mera.
 
-Som en del av att hjälpa dig att visa din säkerhetsstatus från en central upplevelse har vi integrerat Azure Firewall Manager i den här instrumentpanelen. Du kan nu kontrollera statusen för brandväggens täckning i alla nätverk och centralt hantera Azure Firewall principer från och med Security Center.
+Som en del av att visa din säkerhetsstatus från en central upplevelse har vi integrerat Azure Firewall Manager i den här instrumentpanelen. Nu kan du kontrollera statusen för brandväggens täckning i alla nätverk och centralt hantera Azure Firewall principer från och med Security Center.
 
 Läs mer om den här [Azure Security Center på översiktssidan](overview-page.md)för .
 
@@ -174,50 +193,50 @@ Läs mer om den här [Azure Security Center på översiktssidan](overview-page.m
 
 Security Center innehåller en inbyggd sårbarhetsskanner som hjälper dig att identifiera, spåra och åtgärda potentiella säkerhetsrisker i databasen. Resultaten från dina utvärderingsgenomsökningar ger en översikt över sql-datorernas säkerhetstillstånd och information om eventuella säkerhetsresultat.
 
-Om du har en organisation som behöver ignorera en finding i stället för att åtgärda den kan du inaktivera den om du vill. Inaktiverade resultat påverkar inte säkerhetspoängen eller genererar oönskade brus.
+Om du har en organisation som behöver ignorera en upptäckt i stället för att åtgärda den kan du inaktivera den om du vill. Inaktiverade resultat påverkar inte din säkerhetspoäng eller genererar oönskade brus.
 
 Läs mer i [Inaktivera specifika resultat.](defender-for-sql-on-machines-vulnerability-assessment.md#disable-specific-findings-preview)
 
 
 
-### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>Azure Monitor arbetsböcker som är integrerade i Security Center och tre mallar tillhandahålls
+### <a name="azure-monitor-workbooks-integrated-into-security-center-and-three-templates-provided"></a>Azure Monitor-arbetsböcker som är integrerade Security Center och tre mallar tillhandahålls
 
-Som en del av Ignite spring 2021 presenterade vi en integrerad upplevelse Azure Monitor arbetsböcker i Security Center.
+Som en del av Ignite spring 2021 presenterade vi en integrerad Azure Monitor-arbetsböcker i Security Center.
 
-Du kan använda den nya integreringen för att börja använda de färdiga mallarna Security Center galleriet. Med hjälp av arbetsboksmallar kan du komma åt och skapa dynamiska och visuella rapporter för att spåra organisationens säkerhetsstatus. Dessutom kan du skapa nya arbetsböcker baserat på Security Center data eller andra datatyper som stöds och snabbt distribuera community-arbetsböcker från Security Center GitHub-communityn.
+Du kan använda den nya integreringen för att börja använda färdiga mallar från Security Center galleriet. Med hjälp av arbetsboksmallar kan du komma åt och skapa dynamiska och visuella rapporter för att spåra organisationens säkerhetsstatus. Dessutom kan du skapa nya arbetsböcker baserat på Security Center data eller andra datatyper som stöds och snabbt distribuera arbetsböcker från Security Center GitHub-communityn.
 
 Tre mallrapporter tillhandahålls:
 
 - **Säkerhetspoäng över tid** – Spåra dina prenumerationers poäng och ändringar av rekommendationer för dina resurser
 - **Systemuppdateringar** – Visa saknade systemuppdateringar efter resurser, operativsystem, allvarlighetsgrad med mera
-- **Resultat av sårbarhetsbedömning** – Visa resultatet av sårbarhetsgenomsökningar för dina Azure-resurser
+- **Resultat av sårbarhetsbedömning** – Visa resultatet av sårbarhetsgenomsökningar av dina Azure-resurser
 
-Lär dig mer om att använda dessa rapporter eller skapa [egna, interaktiva rapporter för att skapa Security Center data](custom-dashboards-azure-workbooks.md).
+Lär dig mer om att använda dessa rapporter eller skapa [egna, interaktiva rapporter](custom-dashboards-azure-workbooks.md)för att skapa Security Center data .
 
 :::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Rapport om säkerhetspoäng över tid":::
 
 
 ### <a name="regulatory-compliance-dashboard-now-includes-azure-audit-reports-preview"></a>Instrumentpanelen för regelefterlevnad innehåller nu Azure-granskningsrapporter (förhandsversion)
 
-Från instrumentpanelen för regelefterlevnad kan du nu ladda ned Azure- och Dynamics-certifieringsrapporter. 
+Du kan nu ladda ned Azure- och Dynamics-certifieringsrapporter från instrumentpanelen för regelefterlevnad. 
 
 :::image type="content" source="media/release-notes/audit-reports-regulatory-compliance-dashboard.png" alt-text="Verktygsfältet för instrumentpanelen för regelefterlevnad":::
 
 Du kan välja fliken för relevanta rapporttyper (PCI, SOC, ISO med flera) och använda filter för att hitta de specifika rapporter som du behöver.
 
-Läs mer om att [hantera standarderna på instrumentpanelen för regelefterlevnad.](update-regulatory-compliance-packages.md)
+Läs mer om att [hantera standarder i instrumentpanelen för regelefterlevnad.](update-regulatory-compliance-packages.md)
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard.png" alt-text="Filtrera listan över tillgängliga Azure-granskningsrapporter":::
 
 
 
-### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Rekommendationsdata kan visas i Azure Resource Graph med "Utforska i ARG"
+### <a name="recommendation-data-can-be-viewed-in-azure-resource-graph-with-explore-in-arg"></a>Rekommendationsdata kan visas i Azure Resource Graph "Utforska i ARG"
 
 Rekommendationsinformationssidorna innehåller nu verktygsfältsknappen Utforska i ARG. Använd den här knappen för att Azure Resource Graph en fråga och utforska, exportera och dela rekommendationens data.
 
-Azure Resource Graph (ARG) ger omedelbar åtkomst till resursinformation i dina molnmiljöer med robusta filtrerings-, grupperings- och sorteringsfunktioner. Det är ett snabbt och effektivt sätt att fråga efter information i Azure-prenumerationer programmatiskt eller inifrån Azure Portal.
+Azure Resource Graph (ARG) ger omedelbar åtkomst till resursinformation i dina molnmiljöer med robusta filtrerings-, grupperings- och sorteringsfunktioner. Det är ett snabbt och effektivt sätt att fråga efter information i Azure-prenumerationer programmatiskt eller Azure Portal.
 
-Läs mer om [Azure Resource Graph (ARG).](../governance/resource-graph/index.yml)
+Läs mer [om Azure Resource Graph (ARG)](../governance/resource-graph/index.yml).
 
 :::image type="content" source="media/release-notes/explore-in-resource-graph.png" alt-text="Utforska rekommendationsdata i Azure Resource Graph.":::
 
@@ -226,7 +245,7 @@ Läs mer om [Azure Resource Graph (ARG).](../governance/resource-graph/index.yml
 
 Att automatisera organisationens processer för övervakning och incidenter kan avsevärt förbättra den tid det tar att undersöka och minimera säkerhetsincidenter.
 
-Vi tillhandahåller tre Azure Policy "DeployIfNotExist"-principer som skapar och konfigurerar arbetsflödesautomatiseringsprocedurer så att du kan distribuera dina automatiseringar i organisationen:
+Vi tillhandahåller tre Azure Policy "DeployIfNotExist"-principer som skapar och konfigurerar arbetsflödesautomatiseringsprocedurer så att du kan distribuera dina automatiseringar i hela organisationen:
 
 |Mål  |Policy  |Princip-ID  |
 |---------|---------|---------|
@@ -240,7 +259,7 @@ Det finns två uppdateringar av funktionerna i dessa principer:
 - När de tilldelas förblir de aktiverade av tvingande.
 - Du kan nu anpassa dessa principer och uppdatera någon av parametrarna även efter att de redan har distribuerats. Om en användare till exempel vill lägga till en annan utvärderingsnyckel eller redigera en befintlig utvärderingsnyckel kan de göra det.
 
-Kom igång med mallar [för automatisering av arbetsflöden.](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)
+Kom igång med mallar [för arbetsflödesautomation.](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation)
 
 Läs mer om hur du [automatiserar svar på Security Center utlösare.](workflow-automation.md)
 
@@ -260,12 +279,12 @@ Om du har använt informationen för dessa två rekommendationer i aktivitetslog
 
 ### <a name="recommendations-page-enhancements"></a>Förbättringar på sidan Rekommendationer 
 
-Vi har släppt en förbättrad version av rekommendationslistan för att visa mer information på ett ögonblick.
+Vi har släppt en förbättrad version av rekommendationslistan för att visa mer information direkt.
 
 Nu visas följande på sidan:
 
 1. Högsta poäng och aktuell poäng för varje säkerhetskontroll.
-1. Ikoner som ersätter taggar som **Snabbkorrigering och** **Förhandsversion.**
+1. Ikoner som ersätter taggar som **Snabbkorrigering och** **Förhandsgranska**.
 1. En ny kolumn som visar [principinitiativ som](security-policy-concept.md) är relaterat till varje rekommendation – synlig när "Gruppera efter kontroller" är inaktiverat.
 
 :::image type="content" source="media/release-notes/recommendations-grid-enhancements.png" alt-text="Förbättringar av Azure Security Center rekommendationer – mars 2021" lightbox="media/release-notes/recommendations-grid-enhancements.png":::
@@ -277,28 +296,28 @@ Läs mer i [Säkerhetsrekommendationer i Azure Security Center](security-center-
 
 ## <a name="february-2021"></a>Februari 2021
 
-Uppdateringar i februari är:
+Uppdateringar i februari omfattar:
 
-- [Ny sida med säkerhetsaviseringar i Azure Portal släpps för allmän tillgänglighet (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
+- [Ny sida för säkerhetsaviseringar i Azure Portal släpps för allmän tillgänglighet (GA)](#new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga)
 - [Rekommendationer för Kubernetes-arbetsbelastningsskydd har släppts för allmän tillgänglighet (GA)](#kubernetes-workload-protection-recommendations-released-for-general-availability-ga)
 - [Microsoft Defender för slutpunktsintegrering med Azure Defender stöder nu Windows Server 2019 och Windows 10 Virtual Desktop (WVD) (i förhandsversion)](#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview)
 - [Direktlänk till princip från sidan med rekommendationsinformation](#direct-link-to-policy-from-recommendation-details-page)
 - [Rekommendationen för SQL-dataklassificering påverkar inte längre dina säkerhetspoäng](#sql-data-classification-recommendation-no-longer-affects-your-secure-score)
 - [Arbetsflödesautomationerna kan utlösas av ändringar av regelefterlevnadsutvärderingar (i förhandsversion)](#workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview)
-- [Förbättringar på sidan Tillgångsinventering](#asset-inventory-page-enhancements)
+- [Sidförbättringar för tillgångsinventering](#asset-inventory-page-enhancements)
 
 
-### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Ny sida för säkerhetsaviseringar i Azure Portal släpps för allmän tillgänglighet (GA)
+### <a name="new-security-alerts-page-in-the-azure-portal-released-for-general-availability-ga"></a>Ny sida med säkerhetsaviseringar i Azure Portal släpps för allmän tillgänglighet (GA)
 
 Azure Security Center säkerhetsaviseringar har gjorts om för att ge:
 
-- **Förbättrad grupperingsupplevelse för aviseringar** – hjälper till att minska aviseringarna och fokusera på de mest relevanta hoten enklare. Listan innehåller anpassningsbara filter och grupperingsalternativ.
-- **Mer information i aviseringslistan** – till exempel MITRE ATT&ACK-taktiker.
+- **Förbättrad grupperingsupplevelse för aviseringar** – hjälper till att minska varningsutmattning och fokuserar på de mest relevanta hoten enklare. Listan innehåller anpassningsbara filter och grupperingsalternativ.
+- **Mer information i aviseringslistan–** till exempel MITRE ATT&ACK-taktiker.
 - **Knapp för att skapa exempelaviseringar** – för att Azure Defender funktioner och testa dina aviseringar. (för SIEM-integrering, e-postaviseringar och arbetsflödesautomatiseringar) kan du skapa exempelaviseringar från alla Azure Defender planer.
-- **Anpassning med Azure Sentinel** incidentupplevelse – för kunder som använder båda produkterna är det nu enklare att växla mellan dem och det är enkelt att lära sig en av dem.
-- **Bättre prestanda** för stora aviseringslistor.
+- **Anpassning med Azure Sentinel incidentupplevelsen** – för kunder som använder båda produkterna är det nu enklare att växla mellan dem och det är enkelt att lära sig en av dem.
+- **Bättre prestanda för** stora aviseringslistor.
 - **Tangentbordsnavigering** via aviseringslistan.
-- **Aviseringar från Azure Resource Graph** – du kan köra frågor mot aviseringar i Azure Resource Graph, kusto-liknande API för alla dina resurser. Detta är också användbart om du skapar dina egna instrumentpaneler för aviseringar. [Läs mer om Azure Resource Graph](../governance/resource-graph/index.yml).
+- **Aviseringar från Azure Resource Graph** – du kan köra frågor mot aviseringar i Azure Resource Graph, det Kusto-liknande API:et för alla dina resurser. Detta är också användbart om du skapar dina egna instrumentpaneler för aviseringar. [Läs mer om att Azure Resource Graph](../governance/resource-graph/index.yml).
 - **Skapa funktionen för exempelaviseringar** – Om du vill skapa exempelaviseringar från den nya aviseringsupplevelsen kan du se [Generera exempelaviseringar Azure Defender exempelaviseringar.](security-center-alert-validation.md#generate-sample-azure-defender-alerts)
 
 :::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Azure Security Center säkerhetsaviseringar":::
@@ -308,32 +327,32 @@ Azure Security Center säkerhetsaviseringar har gjorts om för att ge:
 
 Vi är glada över att kunna meddela allmän tillgänglighet (GA) för uppsättningen rekommendationer för Kubernetes-arbetsbelastningsskydd.
 
-För att säkerställa att Kubernetes-arbetsbelastningar är säkra som standard har Security Center lagt till rekommendationer för kubernetes-nivåhärdning, inklusive framtvingandealternativ med Kubernetes-antagningskontroll.
+För att säkerställa att Kubernetes-arbetsbelastningar är säkra som Security Center har Security Center lagt till rekommendationer för härdning på Kubernetes-nivå, inklusive framtvingandealternativ med Kubernetes-antagningskontroll.
 
-När Azure Policy-tillägget för Kubernetes är installerat på ditt Azure Kubernetes Service-kluster (AKS) övervakas varje begäran till Kubernetes API-servern mot den fördefinierade uppsättningen bästa praxis – visas som 13 säkerhetsrekommendationer – innan den bevaras i klustret. Du kan sedan konfigurera för att framtvinga bästa praxis och be om dem för framtida arbetsbelastningar.
+När Azure Policy-tillägget för Kubernetes är installerat på ditt Azure Kubernetes Service-kluster (AKS) övervakas varje begäran till Kubernetes API-servern mot den fördefinierade uppsättningen bästa praxis , som visas som 13 säkerhetsrekommendationer, innan den bevaras i klustret. Du kan sedan konfigurera för att framtvinga bästa praxis och be om dem för framtida arbetsbelastningar.
 
 Du kan till exempel uppmana privilegierade containrar att inte skapas, och eventuella framtida begäranden om att göra det blockeras.
 
 Läs mer i [Metodtips för arbetsbelastningsskydd med Kubernetes-antagningskontroll.](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control)
 
 > [!NOTE]
-> Rekommendationerna var i förhandsversion, men de renderade inte en AKS-klusterresurs som inte är felhälsosam, och de inkluderades inte i beräkningarna av dina säkerhetspoäng. med det här GA-tillkännagivandet kommer dessa att ingå i poängberäkningen. Om du inte redan har åtgärdat dem kan detta leda till en liten inverkan på säkerhetspoängen. Åtgärda dem när det är möjligt enligt beskrivningen i [Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
+> Rekommendationerna var i förhandsversion, men de renderade inte en skadad AKS-klusterresurs och de inkluderades inte i beräkningarna av dina säkerhetspoäng. med det här GA-meddelandet kommer dessa att ingå i poängberäkningen. Om du inte redan har åtgärdat dem kan det leda till en liten inverkan på säkerhetspoängen. Åtgärda dem när det är möjligt enligt beskrivningen [i Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
 
 ### <a name="microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-in-preview"></a>Microsoft Defender för slutpunktsintegrering med Azure Defender stöder nu Windows Server 2019 och Windows 10 Virtual Desktop (WVD) (i förhandsversion)
 
 Microsoft Defender för slutpunkt är en holistisk, moln levererad slutpunktssäkerhetslösning. Den tillhandahåller riskbaserad sårbarhetshantering och utvärdering samt slutpunktsidentifiering och svar (EDR). En fullständig lista över fördelarna med att använda Defender för slutpunkt tillsammans med Azure Security Center finns i Skydda dina [slutpunkter med Security Center:s integrerade EDR-lösning: Microsoft Defender för slutpunkt.](security-center-wdatp.md)
 
-När du Azure Defender för servrar på en Windows-server ingår en licens för Defender for Endpoint i planen. Om du redan har aktiverat Azure Defender för servrar och du har Windows 2019-servrar i din prenumeration får de automatiskt Defender för slutpunkt med den här uppdateringen. Ingen manuell åtgärd krävs. 
+När du Azure Defender för servrar på en Windows-server ingår en licens för Defender för slutpunkt i planen. Om du redan har aktiverat Azure Defender för servrar och du har Windows 2019-servrar i din prenumeration får de automatiskt Defender for Endpoint med den här uppdateringen. Ingen manuell åtgärd krävs. 
 
-Stödet har nu utökats till att omfatta Windows Server 2019 [och Windows Virtual Desktop (WVD).](../virtual-desktop/overview.md)
+Stödet har nu utökats så att det omfattar Windows Server 2019 [och Windows Virtual Desktop (WVD).](../virtual-desktop/overview.md)
 
 > [!NOTE]
-> Om du aktiverar Defender för slutpunkt på en Windows Server 2019-dator måste du kontrollera att den uppfyller kraven som beskrivs i Aktivera Integrering av [Microsoft Defender för slutpunkt.](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)
+> Om du aktiverar Defender för slutpunkt på en Windows Server 2019-dator ser du till att den uppfyller kraven som beskrivs i Aktivera integrering av [Microsoft Defender för slutpunkt.](security-center-wdatp.md#enable-the-microsoft-defender-for-endpoint-integration)
 
 ### <a name="direct-link-to-policy-from-recommendation-details-page"></a>Direktlänk till princip från sidan med rekommendationsinformation
 
-När du granskar informationen om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip finns det en ny länk från sidan med rekommendationsinformation:
+När du granskar information om en rekommendation är det ofta bra att kunna se den underliggande principen. För varje rekommendation som stöds av en princip finns det en ny länk från sidan med rekommendationsinformation:
 
 :::image type="content" source="media/release-notes/view-policy-definition.png" alt-text="Länk till Azure Policy för den specifika princip som stöder en rekommendation":::
 
@@ -345,20 +364,20 @@ Om du granskar listan över rekommendationer i referensguiden för säkerhetsrek
 
 
 ### <a name="sql-data-classification-recommendation-no-longer-affects-your-secure-score"></a>Rekommendationen för SQL-dataklassificering påverkar inte längre dina säkerhetspoäng
-Rekommendationen **Känsliga data i DINA SQL-databaser bör inte längre** klassificeras påverkar din säkerhetspoäng. Det här är den enda rekommendationen i **Tillämpa säkerhetskontroll för** dataklassificering, så att kontrollen nu har ett säkerhetspoängvärde på 0.
+Rekommendationen **Känsliga data i dina SQL-databaser bör inte längre** påverka din säkerhetspoäng. Det här är den enda rekommendationen i **säkerhetskontrollen** Tillämpa dataklassificering, så att kontrollen nu har värdet 0 för säkerhetspoäng.
 
-En fullständig lista över alla säkerhetskontroller i Security Center, tillsammans med deras poäng och en lista över rekommendationerna i var och en, finns i Säkerhetskontroller [och deras rekommendationer.](secure-score-security-controls.md#security-controls-and-their-recommendations)
+En fullständig lista över alla säkerhetskontroller i Security Center, tillsammans med deras poäng och en lista över rekommendationerna i var och en, finns i [Säkerhetskontroller och deras rekommendationer.](secure-score-security-controls.md#security-controls-and-their-recommendations)
 
-### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>Arbetsflödesautomationerna kan utlösas av ändringar av regelefterlevnadsutvärderingar (i förhandsversion)
+### <a name="workflow-automations-can-be-triggered-by-changes-to-regulatory-compliance-assessments-in-preview"></a>Arbetsflödesautomation kan utlösas av ändringar av utvärderingar av regelefterlevnad (i förhandsversion)
 Vi har lagt till en tredje datatyp till utlösaralternativen för dina arbetsflödesautomatiseringar: ändringar av regelefterlevnadsbedömningar.
 
-Lär dig hur du använder verktygen för arbetsflödesautomation [i Automatisera svar på Security Center utlösare](workflow-automation.md).
+Lär dig hur du använder verktygen för arbetsflödesautomatisering [i Automatisera svar på Security Center utlösare](workflow-automation.md).
 
-:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar i utvärderingar av regelefterlevnad för att utlösa en arbetsflödesautomation" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
+:::image type="content" source="media/release-notes/regulatory-compliance-triggers-workflow-automation.png" alt-text="Använda ändringar av regelefterlevnadsutvärderingar för att utlösa en arbetsflödesautomation" lightbox="media/release-notes/regulatory-compliance-triggers-workflow-automation.png":::
 
 
-### <a name="asset-inventory-page-enhancements"></a>Sidförbättringar för tillgångsinventering
-Security Center tillgångslagersidan har förbättrats på följande sätt:
+### <a name="asset-inventory-page-enhancements"></a>Förbättringar på sidan Tillgångsinventering
+Security Center tillgångsinventeringssidan har förbättrats på följande sätt:
 
 - Sammanfattningar överst på sidan innehåller nu **Oregistrerade prenumerationer,** som visar antalet prenumerationer utan att Security Center aktiverat.
 
@@ -369,25 +388,25 @@ Security Center tillgångslagersidan har förbättrats på följande sätt:
 
         :::image type="content" source="media/release-notes/counts-in-inventory-filters.png" alt-text="Antal i filtren på sidan för tillgångsinventering i Azure Security Center":::
 
-    - **Innehåller undantagsfilter** (valfritt) – begränsa resultatet till resurser som har/inte har undantag. Det här filtret visas inte som standard, men kan nås från knappen **Lägg till** filter.
+    - **Innehåller undantagsfilter** (valfritt) – begränsa resultatet till resurser som har/inte har fått undantag. Det här filtret visas inte som standard, men kan nås via knappen **Lägg till** filter.
 
         :::image type="content" source="media/release-notes/adding-contains-exemption-filter.gif" alt-text="Lägga till filtret &quot;contains exemption&quot; Azure Security Center på sidan för tillgångsinventering":::
 
-Läs mer om hur du [utforskar och hanterar dina resurser med tillgångsinventering.](asset-inventory.md)
+Läs mer om hur du utforskar [och hanterar dina resurser med tillgångsinventering.](asset-inventory.md)
 
 ## <a name="january-2021"></a>Januari 2021
 
-Uppdateringar i januari är:
+Uppdateringar i januari omfattar:
 
 - [Azure Security Benchmark är nu standardprincipinitiativ för Azure Security Center](#azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center)
 - [Sårbarhetsbedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)](#vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga)
 - [Säkerhetspoäng för hanteringsgrupper är nu tillgängligt i förhandsversion](#secure-score-for-management-groups-is-now-available-in-preview)
-- [API för säkerhetspoäng släpps för allmän tillgänglighet (GA)](#secure-score-api-is-released-for-general-availability-ga)
+- [Säkerhetspoäng-API släpps för allmän tillgänglighet (GA)](#secure-score-api-is-released-for-general-availability-ga)
 - [Dns-skydd har lagts till i Azure Defender för App Service](#dangling-dns-protections-added-to-azure-defender-for-app-service)
 - [Anslutningsappar för flera moln släpps för allmän tillgänglighet (GA)](#multi-cloud-connectors-are-released-for-general-availability-ga)
-- [Undanta hela rekommendationer från din säkerhetspoäng för prenumerationer och hanteringsgrupper](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
-- [Användare kan nu begära synlighet för hela klientorganisationen från sin globala administratör](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
-- [35 rekommendationer för förhandsversion har lagts till för att öka täckningen av Azure Security Benchmark](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [Undanta hela rekommendationer från dina säkerhetspoäng för prenumerationer och hanteringsgrupper](#exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups)
+- [Användare kan nu begära synlighet för hela klientorganisationen från den globala administratören](#users-can-now-request-tenant-wide-visibility-from-their-global-administrator)
+- [35 rekommendationer för förhandsversion har lagts till för att öka täckningen för Azure Security Benchmark](#35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [CSV-export av filtrerad lista med rekommendationer](#csv-export-of-filtered-list-of-recommendations)
 - ["Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy utvärderingar](#not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments)
 - [Exportera veckovisa ögonblicksbilder av data om säkerhetspoäng och regelefterlevnad med löpande export (förhandsversion)](#export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview)
@@ -395,13 +414,13 @@ Uppdateringar i januari är:
 
 ### <a name="azure-security-benchmark-is-now-the-default-policy-initiative-for-azure-security-center"></a>Azure Security Benchmark är nu standardprincipinitiativ för Azure Security Center
 
-Azure Security Benchmark är Microsofts microsoft-specifika uppsättning riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. Det här respekterade benchmark-måttet bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och National Institute of Standards and Technology [(NIST)](https://www.nist.gov/) med fokus på molncentrerad säkerhet.
+Azure Security Benchmark är Microsofts skribenterade, Azure-specifika uppsättning riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. Det här allmänt respekterade benchmark-måttet bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och National Institute of Standards and Technology [(NIST)](https://www.nist.gov/) med fokus på molncentrerad säkerhet.
 
-De senaste månaderna har Security Center lista över inbyggda säkerhetsrekommendationer ökat avsevärt för att utöka vår täckning av det här benchmark-måttet.
+Under de senaste månaderna har Security Center lista över inbyggda säkerhetsrekommendationer ökat avsevärt för att utöka vår täckning av det här benchmark-måttet.
 
 Från den här versionen är benchmark grunden för Security Center rekommendationerna och helt integrerade som standardprincipinitiativ. 
 
-Alla Azure-tjänster har en säkerhetsbaslinjesida i sin dokumentation. Detta är [till exempel Security Center för baslinjen](security-baseline.md). Dessa baslinjer bygger på Azure Security Benchmark.
+Alla Azure-tjänster har en säkerhetsbaslinjesida i sin dokumentation. Det här [är Security Center är baslinjen](security-baseline.md). Dessa baslinjer bygger på Azure Security Benchmark.
 
 Om du använder Security Center instrumentpanel för regelefterlevnad visas två instanser av benchmark under en övergångsperiod:
 
@@ -412,28 +431,28 @@ Befintliga rekommendationer påverkas inte och när benchmark växer återspegla
 Mer information finns på följande sidor:
 
 - [Läs mer om Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction)
-- [Anpassa uppsättningen standarder i instrumentpanelen för regelefterlevnad](update-regulatory-compliance-packages.md)
+- [Anpassa uppsättningen standarder på instrumentpanelen för regelefterlevnad](update-regulatory-compliance-packages.md)
 
 ### <a name="vulnerability-assessment-for-on-premise-and-multi-cloud-machines-is-released-for-general-availability-ga"></a>Sårbarhetsbedömning för lokala datorer och datorer med flera moln släpps för allmän tillgänglighet (GA)
 
-I oktober presenterade vi en förhandsversion för genomsökning av Azure Arc-aktiverade servrar [med Azure Defender](defender-for-servers-introduction.md)för servrarnas integrerade skanner för sårbarhetsbedömning (drivs av Qualys).
+I oktober presenterade vi en förhandsgranskning för genomsökning Azure Arc-aktiverade servrar [med Azure Defender](defender-for-servers-introduction.md)för servrarnas integrerade skanner för sårbarhetsbedömning (drivs av Qualys).
 
-Den har nu släppts för allmän tillgänglighet (GA).
+Den släpps nu för allmän tillgänglighet (GA).
 
-När du har aktiverat Azure Arc på dina icke-Azure-datorer kommer Security Center att erbjuda att distribuera den integrerade sårbarhetsskannern på dem – manuellt och i stor skala.
+När du har aktiverat Azure Arc på icke-Azure-datorer kommer Security Center att erbjuda att distribuera den integrerade sårbarhetsskannern på dem – manuellt och i stor skala.
 
-Med den här uppdateringen kan du frigöra kraften hos **Azure Defender** för servrar för att konsolidera ditt program för sårbarhetshantering för alla dina Azure- och icke-Azure-tillgångar.
+Med den här uppdateringen kan du frigöra kraften **hos Azure Defender för** servrar för att konsolidera ditt sårbarhetshanteringsprogram för alla dina Azure- och icke-Azure-tillgångar.
 
 Huvudfunktioner:
 
 - Övervaka va-skannerns etableringstillstånd (sårbarhetsbedömning) på Azure Arc datorer
 - Etablering av den integrerade VA-agenten till oskyddade Windows- och Linux Azure Arc datorer (manuellt och i stor skala)
-- Ta emot och analysera identifierade säkerhetsrisker från distribuerade agenter (manuellt och i stor skala)
+- Ta emot och analysera identifierade sårbarheter från distribuerade agenter (manuellt och i stor skala)
 - Enhetlig upplevelse för virtuella Azure-datorer Azure Arc datorer
 
 [Läs mer om hur du distribuerar den integrerade sårbarhetsskannern till dina hybriddatorer.](deploy-vulnerability-assessment-vm.md#deploy-the-integrated-scanner-to-your-azure-and-hybrid-machines)
 
-[Läs mer om Azure Arc aktiverade servrar](../azure-arc/servers/index.yml).
+[Läs mer om Azure Arc-aktiverade servrar](../azure-arc/servers/index.yml).
 
 
 ### <a name="secure-score-for-management-groups-is-now-available-in-preview"></a>Säkerhetspoäng för hanteringsgrupper är nu tillgängligt i förhandsversion
@@ -444,12 +463,12 @@ Sidan med säkerhetspoäng visar nu aggregerade säkerhetspoäng för dina hante
 
 Läs mer om [säkerhetspoäng och säkerhetskontroller i Azure Security Center](secure-score-security-controls.md).
 
-### <a name="secure-score-api-is-released-for-general-availability-ga"></a>API för säkerhetspoäng släpps för allmän tillgänglighet (GA)
+### <a name="secure-score-api-is-released-for-general-availability-ga"></a>Säkerhetspoäng-API släpps för allmän tillgänglighet (GA)
 
 Nu kan du komma åt dina poäng via [API:et för säkerhetspoäng.](/rest/api/securitycenter/securescores/) API-metoderna ger flexibiliteten att köra frågor mot data och skapa en egen rapporteringsmekanism för dina säkerhetspoäng över tid. Exempel:
 
 - använda **API:et för** säkerhetspoäng för att hämta poängen för en specifik prenumeration
-- använd **API:et För säkerhetspoängkontroller** för att visa en lista över säkerhetskontroller och aktuella poäng för dina prenumerationer
+- använd **API:et För** säkerhetspoängkontroller för att visa en lista över säkerhetskontrollerna och de aktuella poängen för dina prenumerationer
 
 Lär dig mer om externa verktyg som är möjliga med API:et för säkerhetspoäng i [området för säkerhetspoäng i vår GitHub-community.](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)
 
@@ -462,12 +481,12 @@ Läs mer om [säkerhetspoäng och säkerhetskontroller i Azure Security Center](
 
 Övertagande av underdomäner gör det möjligt för hot aktörer att omdirigera trafik avsedd för en organisations domän till en webbplats som utför skadlig aktivitet.
 
-Azure Defender för App Service identifierar nu dingling DNS-poster när en App Service webbplats inaktiveras. Det är då DNS-posten pekar på en resurs som inte finns och din webbplats är sårbar för ett övertagande av en underdomän. Dessa skydd är tillgängliga oavsett om dina domäner hanteras med Azure DNS eller en extern domänregistrator och gäller för både App Service i Windows och App Service på Linux.
+Azure Defender för App Service identifierar nu dinglande DNS-poster när en App Service webbplats inaktiveras. Det här är då DNS-posten pekar på en resurs som inte finns och din webbplats är sårbar för ett övertagande av en underdomän. Dessa skydd är tillgängliga oavsett om dina domäner hanteras med Azure DNS eller en extern domänregistrator och gäller för både App Service i Windows och App Service på Linux.
 
 Läs mer:
 
 - [App Service aviseringsreferenstabell](alerts-reference.md#alerts-azureappserv) – Innehåller två nya Azure Defender-aviseringar som utlöses när en dinglande DNS-post identifieras
-- [Förhindra intjäning av DNS-poster](../security/fundamentals/subdomain-takeover.md) och undvik övertagande av underdomäner – Lär dig mer om hotet vid övertagande av underdomäner och den hotande DNS-aspekten
+- [Förhindra dinglande DNS-poster](../security/fundamentals/subdomain-takeover.md) och undvik övertagande av underdomäner – Lär dig mer om hotet vid övertagande av underdomäner och den hotande DNS-aspekten
 - [Introduktion till Azure Defender för App Service](defender-for-app-service-introduction.md)
 
 
@@ -487,7 +506,7 @@ Den här funktionen innebär Security Center ger synlighet och skydd i alla stö
 - Inbäddad slutpunktsidentifiering och svar (EDR)
 - Identifiering av felaktiga säkerhetskonfigurationer
 - En enda vy som visar säkerhetsrekommendationer från alla molnleverantörer
-- Införliva alla dina resurser i Security Center säkerhetspoängberäkningar
+- Införliva alla dina resurser i Security Center av säkerhetspoängberäkningar
 - Utvärderingar av regelefterlevnad för dina AWS- och GCP-resurser
 
 På Security Center menyn väljer du **Anslutningsappar för flera** moln så ser du alternativen för att skapa nya anslutningsappar:
@@ -499,15 +518,15 @@ Läs mer i:
 - [Anslut dina GCP-konton till Azure Security Center](quickstart-onboard-gcp.md)
 
 
-### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Undanta hela rekommendationer från din säkerhetspoäng för prenumerationer och hanteringsgrupper
+### <a name="exempt-entire-recommendations-from-your-secure-score-for-subscriptions-and-management-groups"></a>Undanta hela rekommendationer från dina säkerhetspoäng för prenumerationer och hanteringsgrupper
 
-Vi utökar undantagsfunktionerna till att omfatta hela rekommendationer. Tillhandahålla ytterligare alternativ för att finjustera de säkerhetsrekommendationer som Security Center gör för dina prenumerationer, hanteringsgrupp eller resurser.
+Vi utökar undantagsfunktionerna till att omfatta hela rekommendationer. Tillhandahåller ytterligare alternativ för att finjustera de säkerhetsrekommendationer som Security Center gör för dina prenumerationer, hanteringsgrupp eller resurser.
 
 Ibland visas en resurs som skadad när du vet att problemet har lösts av ett verktyg från tredje part som Security Center inte har identifierat. Eller så visas en rekommendation i ett omfång där du anser att den inte tillhör. Rekommendationen kan vara olämplig för en viss prenumeration. Eller så kanske din organisation har valt att acceptera de risker som är relaterade till den specifika resursen eller rekommendationen.
 
 Med den här förhandsgranskningsfunktionen kan du nu skapa ett undantag för en rekommendation om att:
 
-- **Undanta en resurs** för att se till att den inte listas med de resurser som inte är felfria i framtiden och inte påverkar dina säkerhetspoäng. Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den specifika motivering som du väljer.
+- **Undanta en resurs** för att se till att den inte visas med de resurser som inte är felfria i framtiden och påverkar inte dina säkerhetspoäng. Resursen visas som ej tillämplig och orsaken visas som "undantagen" med den specifika motivering som du väljer.
 
 - **Undanta en prenumeration eller hanteringsgrupp** för att säkerställa att rekommendationen inte påverkar dina säkerhetspoäng och inte visas för prenumerationen eller hanteringsgruppen i framtiden. Detta gäller för befintliga resurser och eventuella som du skapar i framtiden. Rekommendationen markeras med den specifika motivering som du väljer för det omfång som du har valt.
 
@@ -515,31 +534,31 @@ Läs mer i [Undanta resurser och rekommendationer från din säkerhetspoäng.](e
 
 
 
-### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Användare kan nu begära synlighet för hela klientorganisationen från den globala administratören
+### <a name="users-can-now-request-tenant-wide-visibility-from-their-global-administrator"></a>Användare kan nu begära synlighet för hela klientorganisationen från sin globala administratör
 
-Om en användare inte har behörighet att se Security Center data visas nu en länk för att begära behörigheter från organisationens globala administratör. Begäran innehåller den roll som de vill ha och anledningen till varför det är nödvändigt.
+Om en användare inte har behörighet att Security Center data visas nu en länk för att begära behörigheter från organisationens globala administratör. Begäran innehåller den roll som de vill ha och anledningen till varför det är nödvändigt.
 
 :::image type="content" source="media/security-center-management-groups/request-tenant-permissions.png" alt-text="Banderoll som informerar en användare om att de kan begära behörigheter för hela klientorganisationen.":::
 
 Läs mer i [Begär behörigheter för hela klientorganisationen när dina inte är tillräckliga.](tenant-wide-permissions-management.md#request-tenant-wide-permissions-when-yours-are-insufficient)
 
 
-### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 rekommendationer för förhandsversion har lagts till för att öka täckningen av Azure Security Benchmark
+### <a name="35-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>35 rekommendationer för förhandsversion har lagts till för att öka täckningen för Azure Security Benchmark
 
 [Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction) är standardprincipinitiativ i Azure Security Center. 
 
-För att öka täckningen för det här benchmark-måttet har följande 35 rekommendationer för förhandsversion lagts till i Security Center.
+För att öka täckningen för det här benchmark-måttet har följande 35 förhandsversionsrekommendationer lagts till i Security Center.
 
 > [!TIP]
 > Förhandsversionsrekommendationer återger inte en resurs som inte är skadad och de ingår inte i beräkningarna av dina säkerhetspoäng. Åtgärda dem när det är möjligt, så att de bidrar till dina poäng när förhandsgranskningsperioden är slut. Läs mer om hur du svarar på dessa rekommendationer [i Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
 | Säkerhetskontroll                     | Nya rekommendationer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Aktivera kryptering i vila            | – Azure Cosmos DB-konton ska använda kund hanterade nycklar för att kryptera vilodata<br>- Azure Machine Learning arbetsytor ska krypteras med en kund hanterad nyckel (CMK)<br>– Bring Your Own Key-dataskydd ska vara aktiverat för MySQL-servrar<br>– Bring Your Own Key-dataskydd ska vara aktiverat för PostgreSQL-servrar<br>– Cognitive Services-konton ska aktivera datakryptering med en kund hanterad nyckel (CMK)<br>– Containerregister ska krypteras med en kund hanterad nyckel (CMK)<br>– SQL-hanterade instanser bör använda kund hanterade nycklar för att kryptera vilodata<br>– SQL-servrar bör använda kund hanterade nycklar för att kryptera vilodata<br>– Lagringskonton bör använda kund hanterad nyckel (CMK) för kryptering                                                                                                                                                              |
-| Implementera metodtips för säkerhet    | – Prenumerationer ska ha en kontakt-e-postadress för säkerhetsproblem<br> – Automatisk etablering av Log Analytics-agenten ska aktiveras i din prenumeration<br> – E-postaviseringar med aviseringar med hög allvarlighetsgrad ska vara aktiverade<br> – E-postavisering till prenumerationens ägare om aviseringar med hög allvarlighetsgrad ska vara aktiverat<br> – Nyckelvalv bör ha rensningsskydd aktiverat<br> – Mjuk borttagning ska vara aktiverat för nyckelvalv |
+| Aktivera kryptering i vila            | – Azure Cosmos DB-konton ska använda kund hanterade nycklar för att kryptera vilodata<br>- Azure Machine Learning arbetsytor ska krypteras med en kund hanterad nyckel (CMK)<br>– Bring Your Own Key Data Protection ska vara aktiverat för MySQL-servrar<br>– Bring Your Own Key-dataskydd ska vara aktiverat för PostgreSQL-servrar<br>– Cognitive Services-konton ska aktivera datakryptering med en kund hanterad nyckel (CMK)<br>– Containerregister ska krypteras med en kund hanterad nyckel (CMK)<br>– Hanterade SQL-instanser bör använda kund hanterade nycklar för att kryptera vilodata<br>– SQL-servrar bör använda kund hanterade nycklar för att kryptera vilodata<br>– Lagringskonton bör använda kund hanterad nyckel (CMK) för kryptering                                                                                                                                                              |
+| Implementera metodtips för säkerhet    | – Prenumerationer ska ha en kontakt-e-postadress för säkerhetsproblem<br> – Automatisk etablering av Log Analytics-agenten ska vara aktiverad i din prenumeration<br> – E-postaviseringar om aviseringar med hög allvarlighetsgrad ska vara aktiverade<br> – E-postavisering till prenumerationens ägare om aviseringar med hög allvarlighetsgrad ska vara aktiverat<br> – Rensningsskydd bör vara aktiverat för nyckelvalv<br> – Mjuk borttagning ska vara aktiverat för nyckelvalv |
 | Hantera åtkomst och behörigheter        | – Funktionsappar ska ha "Klientcertifikat (inkommande klientcertifikat)" aktiverat |
 | Skydda program mot DDoS-attacker | – Web Application Firewall (WAF) ska vara aktiverat för Application Gateway<br> – Web Application Firewall (WAF) ska vara aktiverat för Azure Front Door Service tjänsten |
-| Begränsa obehörig nätverksåtkomst | – Brandväggen ska vara aktiverad på Key Vault<br> – Privat slutpunkt ska konfigureras för Key Vault<br> – App Configuration bör använda private link<br> – Azure Cache for Redis ska finnas i ett virtuellt nätverk<br> - Azure Event Grid domäner ska använda privat länk<br> - Azure Event Grid ämnen bör använda privat länk<br> - Azure Machine Learning arbetsytor ska använda privat länk<br> – Azure SignalR Service bör använda private link<br> - Azure Spring Cloud bör använda nätverksinjektion<br> – Containerregister bör inte tillåta obegränsad nätverksåtkomst<br> – Containerregister bör använda private link<br> – Offentlig nätverksåtkomst ska vara inaktiverad för MariaDB-servrar<br> – Offentlig nätverksåtkomst ska vara inaktiverad för MySQL-servrar<br> – Offentlig nätverksåtkomst ska vara inaktiverad för PostgreSQL-servrar<br> – Lagringskontot bör använda en privat länkanslutning<br> – Lagringskonton bör begränsa nätverksåtkomsten med hjälp av regler för virtuellt nätverk<br> – Mallar Image Builder virtuella datorer bör använda private link|
+| Begränsa obehörig nätverksåtkomst | – Brandväggen ska vara aktiverad på Key Vault<br> – Privat slutpunkt ska konfigureras för Key Vault<br> – App Configuration ska använda private link<br> – Azure Cache for Redis ska finnas i ett virtuellt nätverk<br> - Azure Event Grid domäner ska använda private link<br> - Azure Event Grid ämnen bör använda private link<br> - Azure Machine Learning arbetsytor ska använda private link<br> – Azure SignalR Service ska använda private link<br> – Azure Spring Cloud bör använda nätverksinjektion<br> – Containerregister bör inte tillåta obegränsad nätverksåtkomst<br> – Containerregister bör använda private link<br> – Offentlig nätverksåtkomst ska inaktiveras för MariaDB-servrar<br> – Offentlig nätverksåtkomst ska vara inaktiverad för MySQL-servrar<br> – Offentlig nätverksåtkomst ska inaktiveras för PostgreSQL-servrar<br> – Lagringskontot ska använda en privat länkanslutning<br> – Lagringskonton bör begränsa nätverksåtkomsten med hjälp av regler för virtuellt nätverk<br> – Mallar Image Builder virtuella datorer bör använda private link|
 |                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 Relaterade länkar:
@@ -554,7 +573,7 @@ Relaterade länkar:
 
 ### <a name="csv-export-of-filtered-list-of-recommendations"></a>CSV-export av filtrerad lista med rekommendationer 
 
-I november 2020 lade vi till filter på rekommendationssidan ( Listan över rekommendationer[innehåller nu filter](#recommendations-list-now-includes-filters)). I december expanderade vi dessa filter[(sidan Rekommendationer har nya filter för miljö, allvarlighetsgrad och tillgängliga svar).](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses) 
+I november 2020 lade vi till filter på rekommendationssidan ([Rekommendationslistan innehåller nu filter](#recommendations-list-now-includes-filters)). I december expanderade vi dessa filter[(sidan Rekommendationer har nya filter för miljö, allvarlighetsgrad och tillgängliga svar).](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses) 
 
 Med det här meddelandet ändrar vi beteendet för knappen Ladda ned till CSV så att **CSV-exporten** endast innehåller de rekommendationer som för närvarande visas i den filtrerade listan. 
 
@@ -567,9 +586,9 @@ Läs mer i [Säkerhetsrekommendationer i Azure Security Center](security-center-
 
 ### <a name="not-applicable-resources-now-reported-as-compliant-in-azure-policy-assessments"></a>"Ej tillämpligt" resurser rapporteras nu som "kompatibla" i Azure Policy utvärderingar
 
-Tidigare visades resurser som utvärderades för  en rekommendation och inte var tillämpliga i Azure Policy "Icke-kompatibla". Inga användaråtgärder kan ändra sitt tillstånd till "Kompatibel". Med den här ändringen rapporteras de som "kompatibla" för bättre tydlighet.
+Tidigare visades resurser som utvärderades för  en rekommendation och inte var tillämpliga i Azure Policy "Icke-kompatibla". Inga användaråtgärder kan ändra tillståndet till "Kompatibel". Med den här ändringen rapporteras de som "kompatibla" för bättre tydlighet.
 
-Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Dina säkerhetspoäng påverkas inte i Azure Security Center.
+Den enda påverkan visas i Azure Policy där antalet kompatibla resurser kommer att öka. Säkerhetspoängen påverkas inte i Azure Security Center.
 
 
 ### <a name="export-weekly-snapshots-of-secure-score-and-regulatory-compliance-data-with-continuous-export-preview"></a>Exportera veckovisa ögonblicksbilder av data om säkerhetspoäng och regelefterlevnad med löpande export (förhandsversion)
@@ -578,7 +597,7 @@ Vi har lagt till en ny förhandsgranskningsfunktion i verktygen för löpande [e
 
 När du definierar en löpande export anger du exportfrekvensen:
 
-:::image type="content" source="media/release-notes/export-frequency.png" alt-text="Välja frekvens för löpande export":::
+:::image type="content" source="media/release-notes/export-frequency.png" alt-text="Välja frekvens för din löpande export":::
 
 - **Direktuppspelning** – utvärderingar skickas i realtid när en resurs hälsotillstånd uppdateras (om inga uppdateringar sker skickas inga data).
 - **Ögonblicksbilder** – en ögonblicksbild av det aktuella tillståndet för alla utvärderingar av regelefterlevnad skickas varje vecka (det här är en förhandsversionsfunktion för veckovisa ögonblicksbilder av säkerhetspoäng och data om regelefterlevnad).
@@ -590,61 +609,61 @@ Läs mer om de fullständiga funktionerna i den här funktionen i [Exportera kon
 Uppdateringar i december är:
 
 - [Azure Defender för SQL-servrar på datorer är allmänt tillgänglig](#azure-defender-for-sql-servers-on-machines-is-generally-available)
-- [Azure Defender SQL-stöd för Azure Synapse Analytics dedikerad SQL-pool är allmänt tillgängligt](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
-- [Globala administratörer kan nu bevilja sig själva behörigheter på klientnivå](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
+- [Azure Defender för SQL-stöd för Azure Synapse Analytics dedikerad SQL-pool är allmänt tillgänglig](#azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available)
+- [Globala administratörer kan nu bevilja sig själva behörigheter på klientorganisationsnivå](#global-administrators-can-now-grant-themselves-tenant-level-permissions)
 - [Två nya Azure Defender planer: Azure Defender för DNS och Azure Defender för Resource Manager (i förhandsversion)](#two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview)
-- [Ny sida för säkerhetsaviseringar i Azure Portal (förhandsversion)](#new-security-alerts-page-in-the-azure-portal-preview)
+- [Ny sida med säkerhetsaviseringar i Azure Portal (förhandsversion)](#new-security-alerts-page-in-the-azure-portal-preview)
 - [Förnyad Security Center erfarenhet av Azure SQL Database & SQL Managed Instance](#revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance)
 - [Tillgångsinventeringsverktyg och filter har uppdaterats](#asset-inventory-tools-and-filters-updated)
 - [Rekommendation om webbappar som begär SSL-certifikat som inte längre ingår i säkerhetspoäng](#recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score)
-- [Sidan Rekommendationer har nya filter för miljö, allvarlighetsgrad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
+- [Sidan Rekommendationer innehåller nya filter för miljö, allvarlighetsgrad och tillgängliga svar](#recommendations-page-has-new-filters-for-environment-severity-and-available-responses)
 - [Löpande export hämtar nya datatyper och förbättrade deployifnotexist-principer](#continuous-export-gets-new-data-types-and-improved-deployifnotexist-policies)
 
 
 ### <a name="azure-defender-for-sql-servers-on-machines-is-generally-available"></a>Azure Defender för SQL-servrar på datorer är allmänt tillgänglig
 
-Azure Security Center erbjuder två Azure Defender för SQL-servrar:
+Azure Security Center två Azure Defender för SQL-servrar:
 
-- **Azure Defender för Azure SQL databasservrar** – skyddar dina Azure-interna SQL-servrar 
-- **Azure Defender för SQL-servrar** på datorer – utökar samma skydd till dina SQL-servrar i hybridmiljöer, molnmiljöer och lokala miljöer
+- **Azure Defender för Azure SQL databasservrar –** skyddar dina Azure-interna SQL-servrar 
+- **Azure Defender för SQL-servrar** på datorer – utökar samma skydd till dina SQL-servrar i hybridmiljöer, flera moln och lokala miljöer
 
 Med det här **Azure Defender för SQL** nu dina databaser och deras data oavsett var de finns.
 
 Azure Defender för SQL innehåller funktioner för sårbarhetsbedömning. Verktyget för sårbarhetsbedömning innehåller följande avancerade funktioner:
 
-- **Baslinjekonfiguration** (ny!) för att intelligent förfina resultatet av sårbarhetsgenomsökningar till sådana som kan representera verkliga säkerhetsproblem. När du har upprättat baslinjesäkerhetstillståndet rapporterar sårbarhetsbedömningsverktyget endast avvikelser från baslinjetillståndet. Resultat som matchar baslinjen anses skicka efterföljande genomsökningar. På så sätt kan du och dina analytiker fokusera din uppmärksamhet där det är viktigt.
+- **Baslinjekonfiguration** (ny!) för att intelligent förfina resultatet av sårbarhetsgenomsökningar till sådana som kan representera verkliga säkerhetsproblem. När du har upprättat baslinjens säkerhetstillstånd rapporterar verktyget för sårbarhetsbedömning endast avvikelser från baslinjetillståndet. Resultat som matchar baslinjen anses skicka efterföljande genomsökningar. På så sätt kan du och dina analytiker fokusera din uppmärksamhet där det är viktigt.
 - **Detaljerad benchmark-information** som hjälper dig *att förstå* de identifierade resultaten och varför de relaterar till dina resurser.
 - **Reparationsskript som hjälper** dig att minimera identifierade risker.
 
 Läs mer om [Azure Defender för SQL](defender-for-sql-introduction.md).
 
 
-### <a name="azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available"></a>Azure Defender för SQL-stöd för Azure Synapse Analytics dedikerad SQL-pool är allmänt tillgänglig
+### <a name="azure-defender-for-sql-support-for-azure-synapse-analytics-dedicated-sql-pool-is-generally-available"></a>Azure Defender SQL-stöd för Azure Synapse Analytics dedikerad SQL-pool är allmänt tillgängligt
 
-Azure Synapse Analytics (tidigare SQL DW) är en analystjänst som kombinerar informationslager för företag och stordataanalys. Dedikerade SQL-pooler är informationslagerfunktioner för företag i Azure Synapse. Läs mer i [Vad är Azure Synapse Analytics (tidigare SQL DW)?](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
+Azure Synapse Analytics (tidigare SQL DW) är en analystjänst som kombinerar informationslager i företag och stordataanalys. Dedikerade SQL-pooler är informationslagerfunktionerna i företaget Azure Synapse. Läs mer i [Vad är Azure Synapse Analytics (tidigare SQL DW)?](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md).
 
 Azure Defender för SQL skyddar dina dedikerade SQL-pooler med:
 
 - **Avancerat hotskydd** för att identifiera hot och attacker 
 - **Funktioner för sårbarhetsbedömning** för att identifiera och åtgärda felaktiga säkerhetskonfigurationer
 
-Azure Defender för SQL-stöd för Azure Synapse Analytics sql-pooler läggs automatiskt till i Azure SQL-databassamlingen i Azure Security Center. Du hittar en ny "Azure Defender för SQL" på sidan för Synapse-arbetsytan i Azure Portal.
+Azure Defender för SQL-stöd för Azure Synapse Analytics SQL-pooler läggs automatiskt till i Azure SQL-databaspaketet i Azure Security Center. Du hittar en ny "Azure Defender för SQL" på synapse-arbetsytans sida i Azure Portal.
 
 Läs mer om [Azure Defender för SQL](defender-for-sql-introduction.md).
 
 
-### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>Globala administratörer kan nu bevilja sig själva behörigheter på klientnivå
+### <a name="global-administrators-can-now-grant-themselves-tenant-level-permissions"></a>Globala administratörer kan nu bevilja sig själva behörigheter på klientorganisationsnivå
 
-En användare med Azure Active Directory rollen  Global administratör kan ha ansvarsområden för hela klientorganisationen, men saknar Azure-behörighet att visa den organisationsomfattande informationen i Azure Security Center. 
+En användare med Azure Active Directory rollen  global administratör kan ha ansvarsområden för hela klientorganisationen, men saknar Azure-behörighet att visa den organisationsomfattande informationen i Azure Security Center. 
 
 Om du vill tilldela dig själv behörigheter på klientorganisationsnivå följer du anvisningarna i Bevilja behörigheter [för hela klientorganisationen till dig själv.](tenant-wide-permissions-management.md#grant-tenant-wide-permissions-to-yourself)
 
 
 ### <a name="two-new-azure-defender-plans-azure-defender-for-dns-and-azure-defender-for-resource-manager-in-preview"></a>Två nya Azure Defender planer: Azure Defender för DNS och Azure Defender för Resource Manager (i förhandsversion)
 
-Vi har lagt till två nya molnbaserade funktioner för skydd mot hot i din Azure-miljö.
+Vi har lagt till två nya molnbaserade funktioner för skydd mot hot för din Azure-miljö.
 
-Dessa nya skydd förbättrar avsevärt din motståndskraft mot attacker från hot aktörer och ökar avsevärt antalet Azure-resurser som skyddas av Azure Defender.
+Dessa nya skydd förbättrar avsevärt din motståndskraft mot attacker från hot aktörer och avsevärt öka antalet Azure-resurser som skyddas av Azure Defender.
 
 - **Azure Defender för Resource Manager** – övervakar automatiskt alla resurshanteringsåtgärder som utförs i din organisation. Mer information finns i:
     - [Introduktion till Azure Defender för Resource Manager](defender-for-resource-manager-introduction.md)
@@ -657,31 +676,31 @@ Dessa nya skydd förbättrar avsevärt din motståndskraft mot attacker från ho
     - [Lista över aviseringar som tillhandahålls av Azure Defender för DNS](alerts-reference.md#alerts-dns)
 
 
-### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Ny sida för säkerhetsaviseringar i Azure Portal (förhandsversion)
+### <a name="new-security-alerts-page-in-the-azure-portal-preview"></a>Ny sida med säkerhetsaviseringar i Azure Portal (förhandsversion)
 
 Azure Security Center säkerhetsaviseringar har gjorts om för att ge:
 
-- **Förbättrad grupperingsupplevelse för aviseringar** – hjälper till att minska aviseringarna och fokusera på de mest relevanta hoten enklare. Listan innehåller anpassningsbara filter och grupperingsalternativ
+- **Förbättrad tidsanpassning för aviseringar** – hjälper till att minska varningsutmattning och fokusera på de mest relevanta hoten enklare. Listan innehåller anpassningsbara filter och grupperingsalternativ
 - **Mer information i aviseringslistan** – till exempel MITRE ATT&ACK-taktiker
-- **Knapp för att** skapa exempelaviseringar – om du vill utvärdera Azure Defender-funktioner och testa din aviseringskonfiguration (för SIEM-integrering, e-postaviseringar och arbetsflödesautomatiseringar) kan du skapa exempelaviseringar från alla Azure Defender-planer
-- **Anpassning med Azure Sentinel incidentupplevelsen** – för kunder som använder båda produkterna är det nu enklare att växla mellan dem och det är enkelt att lära sig en av de andra
+- **Knapp för** att skapa exempelaviseringar – om du vill utvärdera Azure Defender-funktioner och testa din aviseringskonfiguration (för SIEM-integrering, e-postaviseringar och arbetsflödesautomatiseringar) kan du skapa exempelaviseringar från alla Azure Defender planer
+- **Anpassning med Azure Sentinel** incidentupplevelsen – för kunder som använder båda produkterna är det nu enklare att växla mellan dem och det är enkelt att lära sig en av de andra
 - **Bättre prestanda för** stora aviseringslistor
 - **Tangentbordsnavigering** via aviseringslistan
-- **Aviseringar från Azure Resource Graph** – du kan köra frågor mot aviseringar i Azure Resource Graph, det Kusto-liknande API:et för alla dina resurser. Detta är också användbart om du skapar dina egna instrumentpaneler för aviseringar. [Läs mer om att Azure Resource Graph](../governance/resource-graph/index.yml).
+- **Aviseringar från Azure Resource Graph** – du kan köra frågor mot aviseringar i Azure Resource Graph, kusto-liknande API för alla dina resurser. Detta är också användbart om du skapar dina egna instrumentpaneler för aviseringar. [Läs mer om Azure Resource Graph](../governance/resource-graph/index.yml).
 
-Om du vill komma åt den nya upplevelsen använder du länken "prova nu" från banderollen längst upp på sidan med säkerhetsaviseringar.
+Om du vill komma åt den nya upplevelsen använder du länken "prova nu" från banderollen överst på sidan med säkerhetsaviseringar.
 
 :::image type="content" source="media/security-center-managing-and-responding-alerts/preview-alerts-experience-banner.png" alt-text="Banderoll med länk till den nya upplevelsen för förhandsgranskningsaviseringar":::
 
-Om du vill skapa exempelaviseringar från den nya aviseringsupplevelsen [kan du Azure Defender exempelaviseringar.](security-center-alert-validation.md#generate-sample-azure-defender-alerts)
+Om du vill skapa exempelaviseringar från den nya aviseringsupplevelsen [kan du Azure Defender generera exempelaviseringar.](security-center-alert-validation.md#generate-sample-azure-defender-alerts)
 
 
 ### <a name="revitalized-security-center-experience-in-azure-sql-database--sql-managed-instance"></a>Förnyad Security Center erfarenhet av Azure SQL Database & SQL Managed Instance 
 
 Den Security Center upplevelsen i SQL ger åtkomst till följande funktioner Security Center och Azure Defender SQL-funktioner:
 
-- **Säkerhetsrekommendationer** – Security Center regelbundet säkerhetstillståndet för alla anslutna Azure-resurser för att identifiera potentiella säkerhetsfelkonfigurationer. Den ger sedan rekommendationer om hur du åtgärdar dessa sårbarheter och förbättrar organisationens säkerhetsstatus.
-- **Säkerhetsaviseringar** – en identifieringstjänst som kontinuerligt övervakar Azure SQL aktiviteter för hot som SQL-igenkänning, brute force-attacker och behörighetsmissbruk. Den här tjänsten utlöser detaljerade och åtgärdsinriktade säkerhetsaviseringar i Security Center och tillhandahåller alternativ för att fortsätta undersökningar med Azure Sentinel, Microsofts Azure-interna SIEM-lösning.
+- **Säkerhetsrekommendationer** – Security Center regelbundet säkerhetstillståndet för alla anslutna Azure-resurser för att identifiera potentiella säkerhetsfelkonfigurationer. Den ger sedan rekommendationer om hur du åtgärdar dessa sårbarheter och förbättrar organisationens säkerhetsposition.
+- **Säkerhetsaviseringar** – en identifieringstjänst som kontinuerligt övervakar Azure SQL aktiviteter efter hot, till exempel SQL-igenkänning, brute force-attacker och privilegium missbruk. Den här tjänsten utlöser detaljerade och åtgärdsinriktade säkerhetsaviseringar i Security Center och tillhandahåller alternativ för att fortsätta undersökningar med Azure Sentinel, Microsofts Azure-interna SIEM-lösning.
 - **Resultat** – en tjänst för sårbarhetsbedömning som kontinuerligt övervakar Azure SQL konfigurationer och hjälper till att åtgärda sårbarheter. Utvärderingsgenomsökningar ger en översikt över Azure SQL säkerhets tillstånd tillsammans med detaljerade säkerhetsresultat.     
 
 :::image type="content" source="media/release-notes/azure-security-center-experience-in-sql.png" alt-text="Azure Security Center säkerhetsfunktioner för SQL är tillgängliga från Azure SQL":::
@@ -693,34 +712,34 @@ Inventeringssidan i Azure Security Center har uppdaterats med följande ändring
 
 - **Guider och feedback har** lagts till i verktygsfältet. Då öppnas ett fönster med länkar till relaterad information och verktyg. 
 - **Prenumerationsfiltret** har lagts till i standardfiltren som är tillgängliga för dina resurser.
-- **Öppna frågelänken** för att öppna de aktuella filteralternativen som en Azure Resource Graph fråga (kallades tidigare "Visa i Resursdiagramutforskaren").
-- **Operatoralternativ** för varje filter. Nu kan du välja bland fler logiska operatorer än "=". Du kanske till exempel vill hitta alla resurser med aktiva rekommendationer vars rubriker innehåller strängen "encrypt". 
+- **Öppna frågelänken** för att öppna de aktuella filteralternativen som en Azure Resource Graph fråga (kallades tidigare "Visa i resursgrafutforskaren").
+- **Operatoralternativ** för varje filter. Nu kan du välja bland fler logiska operatorer än =. Du kanske till exempel vill hitta alla resurser med aktiva rekommendationer vars rubriker innehåller strängen "encrypt". 
 
     :::image type="content" source="media/release-notes/inventory-filter-operators.png" alt-text="Kontroller för operatoralternativet i tillgångsinventeringens filter":::
 
-Läs mer om inventering i [Utforska och hantera dina resurser med tillgångsinventering.](asset-inventory.md)
+Läs mer om inventering i [Utforska och hantera dina resurser med tillgångslager.](asset-inventory.md)
 
 
 ### <a name="recommendation-about-web-apps-requesting-ssl-certificates-no-longer-part-of-secure-score"></a>Rekommendation om webbappar som begär SSL-certifikat som inte längre ingår i säkerhetspoäng
 
-Rekommendationen "Webbappar bör begära ett SSL-certifikat för alla inkommande begäranden" har flyttats från säkerhetskontrollen Hantera åtkomst och behörigheter **(högst** 4 punkter) till Implementera rekommenderade säkerhetsmetoder **(vilket** inte är värt några poäng). 
+Rekommendationen "Webbappar bör begära ett SSL-certifikat för alla inkommande begäranden" har flyttats från säkerhetskontrollen Hantera åtkomst och behörigheter **(högst** 4 punkter) till **Implementera** rekommenderade säkerhetsmetoder (vilket inte är värt några poäng). 
 
-Att se till att en webbapp begär ett certifikat gör det verkligen säkrare. Men för offentliga webbappar är det irrelevant. Om du använder webbplatsen via HTTP och inte HTTPS får du inget klientcertifikat. Så om ditt program kräver klientcertifikat bör du inte tillåta begäranden till ditt program via HTTP. Läs mer i [Konfigurera ömsesidig TLS-autentisering för Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
+Att se till att en webbapp begär ett certifikat gör det säkert säkrare. För offentliga webbappar är det dock irrelevant. Om du använder webbplatsen via HTTP och inte HTTPS får du inget klientcertifikat. Så om ditt program kräver klientcertifikat bör du inte tillåta begäranden till ditt program via HTTP. Läs mer i [Konfigurera ömsesidig TLS-autentisering för Azure App Service](../app-service/app-service-web-configure-tls-mutual-auth.md).
 
 Med den här ändringen är rekommendationen nu en rekommenderad metod som inte påverkar dina poäng. 
 
 Lär dig vilka rekommendationer som finns i varje säkerhetskontroll [i Säkerhetskontroller och deras rekommendationer.](secure-score-security-controls.md#security-controls-and-their-recommendations)
 
 
-### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>Sidan Rekommendationer innehåller nya filter för miljö, allvarlighetsgrad och tillgängliga svar
+### <a name="recommendations-page-has-new-filters-for-environment-severity-and-available-responses"></a>Sidan Rekommendationer har nya filter för miljö, allvarlighetsgrad och tillgängliga svar
 
 Azure Security Center övervakar alla anslutna resurser och genererar säkerhetsrekommendationer. Använd dessa rekommendationer för att stärka din hybridmolnstatus och spåra efterlevnad av de principer och standarder som är relevanta för din organisation, bransch och land.
 
-När Security Center fortsätter att utöka sin täckning och sina funktioner ökar listan över säkerhetsrekommendationer varje månad. Se till exempel [29 förhandsgranskningsrekommendationer som lagts till för att öka täckningen för Azure Security Benchmark.](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+När Security Center fortsätter att utöka sin täckning och sina funktioner ökar listan över säkerhetsrekommendationer varje månad. Se till exempel [29 rekommendationer för förhandsversioner har lagts till för att öka täckningen för Azure Security Benchmark.](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 
-Med den växande listan finns det ett behov av att filtrera rekommendationerna för att hitta de som är mest intressanta. I november lade vi till filter på sidan med rekommendationer (se [Listan över rekommendationer innehåller nu filter](#recommendations-list-now-includes-filters)).
+Med den växande listan finns det ett behov av att filtrera rekommendationerna för att hitta de som är mest intressanta. I november lade vi till filter på rekommendationssidan (se listan [över rekommendationer innehåller nu filter](#recommendations-list-now-includes-filters)).
 
-Filtren som läggs till den här månaden innehåller alternativ för att förfina listan över rekommendationer enligt:
+Filtren som lagts till den här månaden ger alternativ för att förfina listan över rekommendationer enligt:
 
 - **Miljö** – Visa rekommendationer för dina AWS-, GCP- eller Azure-resurser (eller valfri kombination)
 - **Allvarlighetsgrad** – Visa rekommendationer enligt den allvarlighetsgrad som angetts av Security Center
@@ -739,50 +758,50 @@ Filtren som läggs till den här månaden innehåller alternativ för att förfi
 
 Azure Security Center verktyg för löpande export kan du exportera Security Center rekommendationer och aviseringar för användning med andra övervakningsverktyg i din miljö.
 
-Med löpande export kan du anpassa vad som ska exporteras och vart det ska gå. Fullständig information finns i Exportera [data Security Center kontinuerligt.](continuous-export.md)
+Med löpande export kan du helt anpassa vad som ska exporteras och vart det ska gå. Fullständig information finns i [Exportera data Security Center kontinuerligt.](continuous-export.md)
 
 Dessa verktyg har förbättrats och utökats på följande sätt:
 
-- **Den kontinuerliga exportens deployifnotexist-principer förbättrades.** Principerna nu:
+- **Den kontinuerliga exportens deployifnotexist-principer förbättrade**. Principerna nu:
 
-    - **Kontrollera om konfigurationen är aktiverad.** Om den inte är det visas principen som icke-kompatibel och skapar en kompatibel resurs. Läs mer om de Azure Policy mallarna på fliken "Distribuera i Azure Policy skala" [i Konfigurera en löpande export.](continuous-export.md#set-up-a-continuous-export)
+    - **Kontrollera om konfigurationen är aktiverad.** Om den inte är det visas principen som icke-kompatibel och skapar en kompatibel resurs. Läs mer om de Azure Policy mallarna på fliken "Distribuera i Azure Policy skala med" [i Konfigurera en löpande export.](continuous-export.md#set-up-a-continuous-export)
 
-    - **Stöd för export av säkerhetsresultat.** När du använder Azure Policy kan du konfigurera den löpande exporten så att den innehåller resultat. Detta är relevant när du exporterar rekommendationer som har "underordnade" rekommendationer, till exempel resultat från skannrar för sårbarhetsbedömning eller specifika systemuppdateringar för den "överordnade" rekommendationen "Systemuppdateringar ska installeras på dina datorer".
+    - **Stöd för export av säkerhetsresultat.** När du använder Azure Policy kan du konfigurera din löpande export så att den innehåller resultat. Detta är relevant när du exporterar rekommendationer som har "under"-rekommendationer, till exempel resultat från skannrar för sårbarhetsbedömning eller specifika systemuppdateringar för den överordnade rekommendationen "Systemuppdateringar ska installeras på dina datorer".
     
     - **Stöd för export av säkerhetspoängdata.**
 
-- **Utvärderingsdata för regelefterlevnad har lagts till (i förhandsversion).** Du kan nu kontinuerligt exportera uppdateringar av regelefterlevnadsutvärderingar, inklusive för anpassade initiativ, till en Log Analytics-arbetsyta eller händelsehubb. Den här funktionen är inte tillgänglig i nationella/nationella moln.
+- **Utvärderingsdata för regelefterlevnad har lagts till (i förhandsversion).** Du kan nu kontinuerligt exportera uppdateringar av utvärderingar av regelefterlevnad, inklusive för anpassade initiativ, till en Log Analytics-arbetsyta eller event hub. Den här funktionen är inte tillgänglig i nationella/nationella moln.
 
-    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="Alternativen för att inkludera information om regelefterpatibla utvärdering med dina kontinuerliga exportdata.":::
+    :::image type="content" source="media/release-notes/continuous-export-regulatory-compliance-option.png" alt-text="Alternativen för att inkludera utvärderingsinformation som följer regelefter lag med dina kontinuerliga exportdata.":::
 
 
 ## <a name="november-2020"></a>November 2020
 
-Uppdateringar i november omfattar:
+Uppdateringar i november är:
 
-- [29 rekommendationer för förhandsversion har lagts till för att öka täckningen av Azure Security Benchmark](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
+- [29 förhandsgranskningsrekommendationer har lagts till för att öka täckningen för Azure Security Benchmark](#29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark)
 - [NIST SP 800 171 R2 har lagts Security Center på instrumentpanelen för regelefterlevnad](#nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard)
 - [Rekommendationslistan innehåller nu filter](#recommendations-list-now-includes-filters)
-- [Den automatiska etableringen har förbättrats och utökats](#auto-provisioning-experience-improved-and-expanded)
+- [Funktionen för automatisk etablering har förbättrats och utökats](#auto-provisioning-experience-improved-and-expanded)
 - [Säkerhetspoäng är nu tillgängligt i löpande export (förhandsversion)](#secure-score-is-now-available-in-continuous-export-preview)
 - [Rekommendationen "Systemuppdateringar ska installeras på dina datorer" innehåller nu underrekommendationer](#system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations)
-- [Sidan Principhantering i Azure Portal nu status för standardprinciptilldelningar](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
+- [Principhanteringssidan i Azure Portal nu status för standardprinciptilldelningar](#policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments)
 
-### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 förhandsgranskningsrekommendationer har lagts till för att öka täckningen för Azure Security Benchmark
+### <a name="29-preview-recommendations-added-to-increase-coverage-of-azure-security-benchmark"></a>29 rekommendationer för förhandsversion har lagts till för att öka täckningen av Azure Security Benchmark
 
-Azure Security Benchmark är Microsofts skribenterade, Azure-specifika, uppsättning riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction).
+Azure Security Benchmark är Microsoft-specifika, Azure-specifika riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
-Följande 29 förhandsgranskningsrekommendationer har lagts till i Security Center att öka täckningen för det här benchmark-måttet.
+Följande 29 rekommendationer för förhandsversion har lagts till i Security Center för att öka täckningen för det här benchmark-måttet.
 
 Förhandsversionsrekommendationer återger inte en resurs som inte är skadad och de ingår inte i beräkningarna av dina säkerhetspoäng. Åtgärda dem när det är möjligt, så att de bidrar till dina poäng när förhandsgranskningsperioden är slut. Läs mer om hur du svarar på dessa rekommendationer [i Åtgärda rekommendationer i Azure Security Center](security-center-remediate-recommendations.md).
 
 | Säkerhetskontroll                     | Nya rekommendationer                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 |--------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Kryptera data under överföring              | – Framtvinga SSL-anslutning ska vara aktiverat för PostgreSQL-databasservrar<br>– Framtvinga SSL-anslutning ska vara aktiverat för MySQL-databasservrar<br>– TLS bör uppdateras till den senaste versionen för din API-app<br>– TLS bör uppdateras till den senaste versionen för funktionsappen<br>– TLS bör uppdateras till den senaste versionen för din webbapp<br>– FTPS måste vara obligatoriskt i din API-app<br>– FTPS ska krävas i funktionsappen<br>– FTPS måste vara obligatoriskt i webbappen                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| Kryptera data under överföring              | – Framtvinga SSL-anslutning ska vara aktiverat för PostgreSQL-databasservrar<br>– Framtvinga SSL-anslutning ska vara aktiverat för MySQL-databasservrar<br>– TLS bör uppdateras till den senaste versionen för din API-app<br>– TLS bör uppdateras till den senaste versionen för din funktionsapp<br>– TLS bör uppdateras till den senaste versionen för din webbapp<br>– FTPS måste vara obligatoriskt i din API-app<br>– FTPS måste vara obligatoriskt i funktionsappen<br>– FTPS måste vara obligatoriskt i webbappen                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Hantera åtkomst och behörigheter        | – Webbappar bör begära ett SSL-certifikat för alla inkommande begäranden<br>– Hanterad identitet ska användas i din API-app<br>– Hanterad identitet ska användas i funktionsappen<br>– Hanterad identitet ska användas i din webbapp                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | Begränsa obehörig nätverksåtkomst | – Privat slutpunkt ska vara aktiverad för PostgreSQL-servrar<br>– Privat slutpunkt ska vara aktiverad för MariaDB-servrar<br>– Privat slutpunkt ska vara aktiverad för MySQL-servrar                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | Aktivera granskning och loggning          | – Diagnostikloggar i App Services ska vara aktiverade                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| Implementera metodtips för säkerhet    | – Azure Backup ska vara aktiverat för virtuella datorer<br>– Geo-redundant säkerhetskopiering ska vara aktiverat för Azure Database for MariaDB<br>– Geo-redundant säkerhetskopiering ska vara aktiverat för Azure Database for MySQL<br>– Geo-redundant säkerhetskopiering ska vara aktiverat för Azure Database for PostgreSQL<br>– PHP bör uppdateras till den senaste versionen för din API-app<br>– PHP bör uppdateras till den senaste versionen för din webbapp<br>– Java bör uppdateras till den senaste versionen för din API-app<br>– Java bör uppdateras till den senaste versionen för din funktionsapp<br>– Java bör uppdateras till den senaste versionen för din webbapp<br>– Python bör uppdateras till den senaste versionen för din API-app<br>– Python bör uppdateras till den senaste versionen för din funktionsapp<br>– Python bör uppdateras till den senaste versionen för webbappen<br>– Granskningsbevarande för SQL-servrar ska vara inställt på minst 90 dagar |
+| Implementera metodtips för säkerhet    | – Azure Backup ska vara aktiverat för virtuella datorer<br>– Geo-redundant säkerhetskopiering ska aktiveras för Azure Database for MariaDB<br>– Geo-redundant säkerhetskopiering ska aktiveras för Azure Database for MySQL<br>– Geo-redundant säkerhetskopiering ska aktiveras för Azure Database for PostgreSQL<br>– PHP bör uppdateras till den senaste versionen för din API-app<br>– PHP bör uppdateras till den senaste versionen för din webbapp<br>– Java bör uppdateras till den senaste versionen för din API-app<br>– Java bör uppdateras till den senaste versionen för din funktionsapp<br>– Java bör uppdateras till den senaste versionen för din webbapp<br>– Python bör uppdateras till den senaste versionen för din API-app<br>– Python bör uppdateras till den senaste versionen för din funktionsapp<br>– Python bör uppdateras till den senaste versionen för din webbapp<br>– Granskningsbevarande för SQL-servrar ska vara inställt på minst 90 dagar |
 |                                      |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 Relaterade länkar:
@@ -798,11 +817,11 @@ Relaterade länkar:
 
 ### <a name="nist-sp-800-171-r2-added-to-security-centers-regulatory-compliance-dashboard"></a>NIST SP 800 171 R2 har lagts Security Center på instrumentpanelen för regelefterlevnad
 
-NIST SP 800-171 R2-standarden är nu tillgänglig som ett inbyggt initiativ för användning med Azure Security Center:s instrumentpanel för regelefterlevnad. Mappningarna för kontrollerna beskrivs i Information om det [inbyggda initiativet NIST SP 800-171 R2](../governance/policy/samples/nist-sp-800-171-r2.md)Regulatory Compliance. 
+NIST SP 800-171 R2-standarden är nu tillgänglig som ett inbyggt initiativ för användning med Azure Security Center:s instrumentpanel för regelefterlevnad. Mappningarna för kontrollerna beskrivs i Information om [det inbyggda initiativet NIST SP 800-171 R2 Regulatory Compliance.](../governance/policy/samples/nist-sp-800-171-r2.md) 
 
 Om du vill tillämpa standarden på dina prenumerationer och kontinuerligt övervaka din efterlevnadsstatus följer du anvisningarna i Anpassa uppsättningen standarder på [instrumentpanelen för regelefterlevnad.](update-regulatory-compliance-packages.md)
 
-:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="NIST SP 800 171 R2-standarden i Security Center på instrumentpanelen för regelefterlevnad":::
+:::image type="content" source="media/release-notes/nist-sp-800-171-r2-standard.png" alt-text="NIST SP 800 171 R2-standarden Security Center på instrumentpanelen för regelefterlevnad":::
 
 Mer information om den här efterlevnadsstandarden finns [i NIST SP 800-171 R2.](https://csrc.nist.gov/publications/detail/sp/800-171/rev-2/final)
 
@@ -818,24 +837,24 @@ Nu kan du filtrera listan över säkerhetsrekommendationer enligt ett antal krit
 :::image type="content" source="media/release-notes/recommendations-filters.png" alt-text="Filter för listan med rekommendationer":::
 
 
-### <a name="auto-provisioning-experience-improved-and-expanded"></a>Funktionen för automatisk etablering har förbättrats och utökats
+### <a name="auto-provisioning-experience-improved-and-expanded"></a>Den automatiska etableringen har förbättrats och utökats
 
-Funktionen för automatisk etablering bidrar till att minska hanteringskostnader genom att installera de tillägg som krävs på nya och befintliga virtuella Azure-datorer så att de kan dra nytta av Security Center skydd. 
+Funktionen för automatisk etablering bidrar till att minska hanteringskostnader genom att installera de tillägg som krävs på nya och befintliga virtuella Azure-datorer så att de kan dra nytta Security Center av skyddet. 
 
-När Azure Security Center växer har fler tillägg utvecklats och Security Center kan övervaka en större lista över resurstyper. Verktygen för automatisk etablering har nu utökats för att stödja andra tillägg och resurstyper genom att utnyttja funktionerna i Azure Policy.
+När Azure Security Center växer har fler tillägg utvecklats och Security Center kan övervaka en större lista över resurstyper. De automatiska etableringsverktygen har nu utökats för att stödja andra tillägg och resurstyper genom att utnyttja funktionerna i Azure Policy.
 
 Nu kan du konfigurera automatisk etablering av:
 
 - Log Analytics-agent
-- (Nytt) Azure Policy för Kubernetes
-- (Nytt) Microsoft Dependency Agent
+- (Ny) Azure Policy för Kubernetes
+- (Ny) Microsoft Dependency Agent
 
 Läs mer i [Auto provisioning agents and extensions from Azure Security Center](security-center-enable-data-collection.md).
 
 
 ### <a name="secure-score-is-now-available-in-continuous-export-preview"></a>Säkerhetspoäng är nu tillgängligt i löpande export (förhandsversion)
 
-Med kontinuerlig export av säkerhetspoäng kan du strömma ändringar till dina poäng i realtid till Azure Event Hubs eller en Log Analytics-arbetsyta. Använd den här funktionen för att:
+Med kontinuerlig export av säkerhetspoäng kan du strömma ändringar av dina poäng i realtid till Azure Event Hubs eller en Log Analytics-arbetsyta. Använd den här funktionen för att:
 
 - spåra dina säkerhetspoäng över tid med dynamiska rapporter
 - exportera säkerhetspoängdata till Azure Sentinel (eller någon annan SIEM)
@@ -846,17 +865,17 @@ Läs mer om hur du [kontinuerligt exporterar Security Center data](continuous-ex
 
 ### <a name="system-updates-should-be-installed-on-your-machines-recommendation-now-includes-subrecommendations"></a>Rekommendationen "Systemuppdateringar ska installeras på dina datorer" innehåller nu underrekommendationer
 
-Rekommendationen **Systemuppdateringar bör installeras på dina datorer** har förbättrats. Den nya versionen innehåller underrekommendationer för varje uppdatering som saknas och ger följande förbättringar:
+Rekommendationen **Systemuppdateringar bör installeras på datorerna** har förbättrats. Den nya versionen innehåller underrekommendationer för varje uppdatering som saknas och ger följande förbättringar:
 
-- En omdesignad upplevelse Azure Security Center på Azure Portal. Sidan med rekommendationsinformation **för Systemuppdateringar ska installeras på dina datorer innehåller** en lista över resultat som visas nedan. När du väljer en enda finding öppnas informationsfönstret med en länk till reparationsinformationen och en lista över berörda resurser.
+- En omdesignad upplevelse Azure Security Center på Azure Portal. Sidan med rekommendationsinformation **för Systemuppdateringar ska installeras på dina datorer innehåller** en lista över resultat som visas nedan. När du väljer en enda åtgärd öppnas informationsfönstret med en länk till reparationsinformationen och en lista över berörda resurser.
 
-    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Öppna ett av underrekommendationerna i portalen för den uppdaterade rekommendationen":::
+    :::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Öppna ett av underkommentationerna i portalen för den uppdaterade rekommendationen":::
 
-- Berikade data för rekommendationen från Azure Resource Graph (ARG). ARG är en Azure-tjänst som är utformad för att tillhandahålla effektiv resursgranskning. Du kan använda ARG för att fråga i stor skala över en viss uppsättning prenumerationer så att du effektivt kan styra din miljö. 
+- Berikade data för rekommendationen från Azure Resource Graph (ARG). ARG är en Azure-tjänst som har utformats för att tillhandahålla effektiv resursgranskning. Du kan använda ARG för att fråga i stor skala över en viss uppsättning prenumerationer så att du effektivt kan styra din miljö. 
 
-    Du Azure Security Center arg och [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) för att fråga en mängd olika säkerhetsstatusdata.
+    Du Azure Security Center till exempel använda ARG och [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) för att köra frågor mot en mängd olika säkerhetspositionsdata.
 
-    Om du tidigare efterfrågade den här rekommendationen i ARG var den enda tillgängliga informationen att rekommendationen måste åtgärdas på en dator. Följande fråga från den förbättrade versionen returnerar alla saknade systemuppdateringar grupperade efter dator.
+    Om du tidigare efterfrågade den här rekommendationen i ARG var den enda tillgängliga informationen att rekommendationen måste åtgärdas på en dator. Följande fråga i den förbättrade versionen returnerar alla saknade systemuppdateringar grupperade efter dator.
 
     ```kusto
     securityresources
@@ -865,8 +884,8 @@ Rekommendationen **Systemuppdateringar bör installeras på dina datorer** har f
     | where properties.status.code == "Unhealthy"
     ```
 
-### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Sidan Principhantering i Azure Portal nu status för standardprinciptilldelningar
+### <a name="policy-management-page-in-the-azure-portal-now-shows-status-of-default-policy-assignments"></a>Principhanteringssidan i Azure Portal nu status för standardprinciptilldelningar
 
-Nu kan du se om dina prenumerationer har Security Center standardprincipen tilldelad på sidan Security Center **säkerhetsprincip** i Azure Portal.
+Nu kan du se om dina prenumerationer har standardprincipen för Security Center tilldelad på sidan Security Center **säkerhetsprincip** i Azure Portal.
 
 :::image type="content" source="media/release-notes/policy-assignment-info-per-subscription.png" alt-text="Sidan för principhantering i Azure Security Center visar standardprinciptilldelningarna":::

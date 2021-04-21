@@ -1,94 +1,93 @@
 ---
-title: E-postmeddelande när de hemliga ändringarnas status Key Vault
-description: Guide för att använda Logic Apps för att svara på ändringar i Key Vault hemligheter
+title: Skicka e Key Vault när status för hemligheten ändras
+description: Guide för att använda Logic Apps att svara på Key Vault ändringar av hemligheter
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e6ec06e3df87e0ad0e50efca24439435d655f6a1
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013997"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752110"
 ---
-# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Använd Logic Apps för att ta emot e-post om status ändringar för Key Vault-hemligheter
+# <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Använd Logic Apps att ta emot e-post om statusändringar för Key Vault-hemligheter
 
-I den här guiden får du lära dig hur du svarar på Azure Key Vault händelser som tas emot via [Azure Event Grid](../../event-grid/index.yml) med [Azure Logic Apps](../../logic-apps/index.yml). När du är klar har du en Azure Logic app som är konfigurerad för att skicka ett e-postmeddelande varje gång en hemlighet skapas i Azure Key Vault.
+I den här guiden får du lära dig att svara på Azure Key Vault händelser som tas emot via [Azure Event Grid](../../event-grid/index.yml) med hjälp [av Azure Logic Apps](../../logic-apps/index.yml). I slutändan har du en Azure-logikapp konfigurerad för att skicka ett e-postmeddelande varje gång en hemlighet skapas i Azure Key Vault.
 
-En översikt över Azure Key Vault/Azure Event Grid-integrering finns i [övervaknings Key Vault med Azure Event Grid](event-grid-overview.md).
+En översikt över integreringen Azure Key Vault/Azure Event Grid finns i [Monitoring Key Vault with Azure Event Grid](event-grid-overview.md)(Övervaka Key Vault med Azure Event Grid ).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - Ett e-postkonto från valfri e-postleverantör som stöds av Azure Logic Apps (till exempel Office 365 Outlook). Det här e-postkontot används för att skicka händelsemeddelandena. En fullständig lista över Logic App-anslutningsprogram som stöds finns i [Översikt över anslutningsappar](/connectors)
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- Ett nyckel valv i din Azure-prenumeration. Du kan snabbt skapa ett nytt nyckel valv genom att följa stegen i [Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure CLI](../secrets/quick-create-cli.md).
-- Registrerade Event Grid som en resurs leverantör, se [resurs leverantörs registreringar](../../azure-resource-manager/management/resource-providers-and-types.md)
+- Ett nyckelvalv i din Azure-prenumeration. Du kan snabbt skapa ett nytt nyckelvalv genom att följa stegen i Ange och hämta en hemlighet från [Azure Key Vault hjälp av Azure CLI](../secrets/quick-create-cli.md).
+- Registrerade Event Grid som en resursprovider finns i Registreringar [för resursproviders](../../azure-resource-manager/management/resource-providers-and-types.md)
 
-## <a name="create-a-logic-app-via-event-grid"></a>Skapa en Logic app via Event Grid
+## <a name="create-a-logic-app-via-event-grid"></a>Skapa en logikapp via Event Grid
 
-Börja med att skapa en Logic app med event Grid-hanteraren och prenumerera på Azure Key Vault "SecretNewVersionCreated"-händelser.
+Skapa först logikappen med Event Grid-hanteraren och prenumerera på Azure Key Vault "SecretNewVersionCreated"-händelser.
 
-Följ dessa steg om du vill skapa en Azure Event Grid-prenumeration:
+Följ dessa steg Azure Event Grid skapa en prenumeration:
 
-1. I Azure Portal går du till ditt nyckel valv, väljer **händelser > kom igång** och klickar på **Logic Apps**
+1. I Azure Portal du till nyckelvalvet, väljer **Events > Get Started (Händelser som > igång)** och klickar på **Logic Apps**
 
     
-    ![Sidan Key Vault-händelser](../media/eventgrid-logicapps-kvsubs.png)
+    ![Key Vault – händelsesida](../media/eventgrid-logicapps-kvsubs.png)
 
-1. Verifiera anslutningen i **Logic Apps designer** och klicka på **Fortsätt** 
+1. På **Logic Apps Designer anslutningen** och klickar på **Fortsätt** 
  
     ![Logic App Designer – anslutning](../media/eventgrid-logicappdesigner1.png)
 
-1. På skärmen **när en resurs händelse inträffar** gör du följande:
-    - Lämna kvar **prenumerations** -och **resurs namn** som standard.
-    - Välj **Microsoft. nyckel valv. valv** för **resurs typen**.
-    - Välj **Microsoft. SecretNewVersionCreated** för **händelse typ objekt – 1**.
+1. På skärmen **När en resurshändelse inträffar** gör du följande:
+    - Lämna **Prenumeration** och **Resursnamn** som standard.
+    - Välj **Microsoft.KeyVault.vaults** som **Resurstyp.**
+    - Välj **Microsoft.KeyVault.SecretNewVersionCreated** som **Händelsetypobjekt – 1**.
 
-    ![Logic App Designer – händelse hanterare](../media/eventgrid-logicappdesigner2.png)
+    ![Logic App Designer – händelsehanterare](../media/eventgrid-logicappdesigner2.png)
 
-1. Välj **+ nytt steg** då öppnas ett fönster där du kan välja en åtgärd.
-1. Sök efter **E-post**. Baserat på din e-leverantör söker du och väljer matchande anslutningsapp. I den här självstudien används **Office 365 Outlook**. Stegen för andra e-postleverantörer liknar dessa.
-1. Välj åtgärden **Skicka ett e-postmeddelande (v2)** .
+1. Välj **+ Nytt steg.** Då öppnas ett fönster där du kan välja en åtgärd.
+1. Sök efter **E-post**. Baserat på din e-leverantör söker du och väljer matchande anslutningsapp. I den här **självstudien används Office 365 Outlook**. Stegen för andra e-postleverantörer liknar dessa.
+1. Välj åtgärden **Skicka ett e-postmeddelande (V2).**
 
-   ![Logic app designer – skicka e-post](../media/eventgrid-logicappdesigner3.png)
+   ![Logic App Designer – skicka e-post](../media/eventgrid-logicappdesigner3.png)
 
-1. Bygg din e-postmall:
-    - **För att:** Ange e-postadressen som e-postmeddelandena ska skickas till. I den här självstudien använder du ett e-postkonto som du kan komma åt för testning.
-    - **Ämne** och **Brödtext**: Skriv e-postmeddelandets text. Välj JSON-egenskaper från valverktyget för att ta med dynamiskt innehåll baserat på händelsedata. Du kan hämta data om händelsen med hjälp av `@{triggerBody()?['Data']}` .
+1. Skapa din e-postmall:
+    - **Så här gör du för att:** Ange den e-postadress som e-postmeddelandena ska skickas till. I den här självstudien använder du ett e-postkonto som du kan komma åt för testning.
+    - **Ämne** och **Brödtext**: Skriv e-postmeddelandets text. Välj JSON-egenskaper från valverktyget för att ta med dynamiskt innehåll baserat på händelsedata. Du kan hämta data för händelsen med hjälp av `@{triggerBody()?['Data']}` .
 
     Din e-postmall kan se ut som i det här exemplet.
 
-    ![Logic App Designer – e-postbrödtext](../media/eventgrid-logicappdesigner4.png)
+    ![Logic App Designer – e-postmeddelandetext](../media/eventgrid-logicappdesigner4.png)
 
-8. Klicka på **Spara som**.
-9. Ange ett **namn** på den nya Logic-appen och klicka på **skapa**.
+8. Klicka **på Spara som**.
+9. Ange ett **namn för** den nya logikappen och klicka på **Skapa.**
     
-    ![Logic App Designer – Skapa](../media/eventgrid-logicappdesigner5.png)
+    ![Logic App Designer – skapa](../media/eventgrid-logicappdesigner5.png)
 
 ## <a name="test-and-verify"></a>Testa och verifiera
 
-1.  Gå till ditt nyckel valv på Azure Portal och välj **händelser > händelse prenumerationer**.  Verifiera att en ny prenumeration har skapats
+1.  Gå till ditt nyckelvalv på Azure Portal och välj **Events > Event Subscriptions (Händelseprenumerationer).**  Kontrollera att en ny prenumeration har skapats
     
     ![Logic App Designer – testa och verifiera](../media/eventgrid-logicapps-kvnewsubs.png)
 
-1.  Gå till ditt nyckel valv, Välj **hemligheter** och välj **+ generera/importera**. Skapa en ny hemlighet för testnings ändamål och ge nyckeln och Behåll de återstående parametrarna i standardinställningarna.
+1.  Gå till nyckelvalvet, välj **Hemligheter** och välj **+ Generera/importera.** Skapa en ny hemlighet för testning och namnge nyckeln och behåll de återstående parametrarna i standardinställningarna.
 
-    ![Key Vault – skapa hemlighet](../media/eventgrid-logicapps-kv-create-secret.png)
+    ![Key Vault – Skapa hemlighet](../media/eventgrid-logicapps-kv-create-secret.png)
 
-1. På skärmen **skapa en hemlighet** anger du valfritt namn, valfritt värde och väljer **skapa**.
+1. På skärmen **Skapa en hemlighet** anger du ett namn, ett värde och väljer **Skapa.**
 
-När hemligheten skapas tas ett e-postmeddelande emot via de konfigurerade adresserna.
+När hemligheten skapas tas ett e-postmeddelande emot på de konfigurerade adresserna.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Översikt: [övervaka Key Vault med Azure Event Grid](event-grid-overview.md)
-- Gör så här: [skicka meddelanden till nyckel valv till Azure Automation](event-grid-tutorial.md).
-- [Azure Event Grid händelse schema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- Översikt: [Övervaka Key Vault med Azure Event Grid](event-grid-overview.md)
+- Gör så här: [Dirigera key vault-meddelanden till Azure Automation](event-grid-tutorial.md).
+- [Azure Event Grid händelseschema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)
 - Läs mer om [Azure Event Grid](../../event-grid/index.yml).
 - Läs mer om [Logic Apps-funktionen i Azure App Service](../../logic-apps/index.yml).

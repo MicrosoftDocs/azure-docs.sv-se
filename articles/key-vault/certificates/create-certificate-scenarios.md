@@ -1,46 +1,45 @@
 ---
 title: Övervaka och hantera processen för att skapa certifikat
-description: Scenarier som demonstrerar en rad alternativ för att skapa, övervaka och interagera med processen för att skapa certifikat med Key Vault.
+description: Scenarier som visar en mängd alternativ för att skapa, övervaka och interagera med processen för att skapa certifikat med Key Vault.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8e4acb5195497dd31f466829b1cde301ba9696b3
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "81430973"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751102"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Övervaka och hantera processen för att skapa certifikat
 Gäller för: Azure
 
 Scenarierna/åtgärderna som beskrivs i den här artikeln är:
 
-- Begär ett KV-certifikat med en utfärdare som stöds
-- Hämta väntande begäran-status för begäran är "pågår"
-- Hämta väntande begäran-status för begäran är slutförd
-- Hämta väntande begäran – status för väntande begäran är "Annullerad" eller "Misslyckad"
-- Hämta väntande begäran – status för väntande begäran är borttagen eller överskriven
-- Skapa (eller importera) när det finns väntande begäran-status är "pågår"
+- Begära ett KV-certifikat med en utfärdare som stöds
+- Hämta väntande begäran – begärandestatusen är "inProgress"
+- Hämta väntande begäran – begärandestatusen är "slutförd"
+- Hämta väntande begäran – statusen för väntande begäran är "avbruten" eller "misslyckades"
+- Hämta väntande begäran – statusen för väntande begäran "tas bort" eller "skrivs över"
+- Skapa (eller importera) när väntande begäran finns – statusen är "inProgress"
 - Sammanfoga när väntande begäran skapas med en utfärdare (till exempel DigiCert)
-- Begär en annullering medan status för väntande begäran är "pågår"
-- Ta bort ett väntande begär ande objekt
+- Begära en annullering medan statusen för väntande begäran är "inProgress"
+- Ta bort ett objekt för väntande begäran
 - Skapa ett KV-certifikat manuellt
-- Sammanfoga när en väntande begäran skapas – manuellt skapande av certifikat
+- Sammanfoga när en väntande begäran skapas – skapa certifikat manuellt
 
-## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Begär ett KV-certifikat med en utfärdare som stöds 
+## <a name="request-a-kv-certificate-with-a-supported-issuer"></a>Begära ett KV-certifikat med en utfärdare som stöds 
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
 |POST|`https://mykeyvault.vault.azure.net/certificates/mycert1/create?api-version={api-version}`|
 
-Följande exempel kräver att ett objekt med namnet "mydigicert" redan är tillgängligt i ditt nyckel valv med utfärdarens provider som DigiCert. Certifikat utfärdaren är en entitet som representeras i Azure Key Vault (KV) som en CertificateIssuer-resurs. Den används för att tillhandahålla information om källan till ett KV-certifikat; utfärdarens namn, Provider, autentiseringsuppgifter och annan administrativ information.
+Följande exempel kräver att ett objekt med namnet "mydigicert" redan är tillgängligt i nyckelvalvet med utfärdarprovidern som DigiCert. Certifikatutfärdaren är en entitet som representeras i Azure Key Vault (KV) som en CertificateIssuer-resurs. Den används för att tillhandahålla information om källan för ett KV-certifikat. utfärdarens namn, provider, autentiseringsuppgifter och annan administrativ information.
 
 ### <a name="request"></a>Förfrågan
 
@@ -77,21 +76,21 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-## <a name="get-pending-request---request-status-is-inprogress"></a>Hämta väntande begäran-status för begäran är "pågår"
+## <a name="get-pending-request---request-status-is-inprogress"></a>Hämta väntande begäran – begärandestatusen är "inProgress"
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Förfrågan
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
-> Om *request_id* anges i frågan fungerar det som ett filter. Om *request_id* i frågan och i det väntande objektet skiljer sig returneras en HTTP-statuskod på 404.
+> Om *request_id* anges i frågan fungerar den som ett filter. Om *request_id* i frågan och det väntande objektet skiljer sig åt returneras http-statuskoden 404.
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -111,7 +110,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```
 
-## <a name="get-pending-request---request-status-is-complete"></a>Hämta väntande begäran-status för begäran är slutförd
+## <a name="get-pending-request---request-status-is-complete"></a>Hämta väntande begäran – status för begäran är "klar"
 
 ### <a name="request"></a>Förfrågan
 
@@ -119,11 +118,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -143,7 +142,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 
 ```
 
-## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Hämta väntande begäran – status för väntande begäran är "Annullerad" eller "Misslyckad"
+## <a name="get-pending-request---pending-request-status-is-canceled-or-failed"></a>Hämta väntande begäran – statusen för väntande begäran är "avbruten" eller "misslyckad"
 
 ### <a name="request"></a>Förfrågan
 
@@ -151,11 +150,11 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -180,21 +179,21 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ```
 
 > [!NOTE]
-> Värdet för *ErrorCode* kan vara "certifikat utfärdarens fel" eller "begäran avvisad" baserat på utfärdare eller användar fel.
+> Värdet för *felkoden kan vara* "Certifikatutfärdarfel" eller "Begäran avvisades" baserat på utfärdar- eller användarfel.
 
-## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Hämta väntande begäran – status för väntande begäran är borttagen eller överskriven
-Ett väntande objekt kan tas bort eller skrivas över av en Create/import-åtgärd när dess status inte är "pågår".
+## <a name="get-pending-request---pending-request-status-is-deleted-or-overwritten"></a>Hämta väntande begäran – statusen för väntande begäran "tas bort" eller "skrivs över"
+Ett väntande objekt kan tas bort eller skrivas över av en create/import-åtgärd när dess status inte är "inProgress".
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Förfrågan
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-TA `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Få `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -209,19 +208,19 @@ StatusCode: 404, ReasonPhrase: 'Not Found'
 
 ```
 
-## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Skapa (eller importera) när det finns väntande begäran-status är "pågår"
-Ett väntande objekt har fyra möjliga tillstånd. "pågår", "avbruten", "Misslyckad" eller "slutförd".
+## <a name="create-or-import-when-pending-request-exists---status-is-inprogress"></a>Skapa (eller importera) när väntande begäran finns – statusen är "inProgress"
+Ett väntande objekt har fyra möjliga tillstånd: "inprogress", "canceled", "failed" eller "completed".
 
-När en väntande begärans status är "pågår" Miss fungerar åtgärderna skapa (och importera) med HTTP-statuskod 409 (konflikt).
+När tillståndet för en väntande begäran är "inprogress" misslyckas åtgärderna för att skapa (och importera) med http-statuskoden 409 (konflikt).
 
 Så här löser du en konflikt:
 
-- Om certifikatet skapas manuellt kan du antingen fylla i KV-certifikatet genom att göra en sammanslagning eller ta bort på det väntande objektet.
+- Om certifikatet skapas manuellt kan du antingen slutföra KV-certifikatet genom att slå samman eller ta bort det väntande objektet.
 
-- Om certifikatet skapas med en utfärdare kan du vänta tills certifikatet har slutförts, Miss lyckas eller har avbrutits. Du kan också ta bort det väntande objektet.
+- Om certifikatet skapas med en utfärdare kan du vänta tills certifikatet har slutförts, misslyckas eller avbryts. Du kan också ta bort det väntande objektet.
 
 > [!NOTE]
-> Om du tar bort ett väntande objekt kan det hända att x509-certifikatbegäran inte kan avbrytas med providern.
+> Om du tar bort ett väntande objekt kanske eller inte avbryter x509-certifikatbegäran hos providern.
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
@@ -255,10 +254,10 @@ StatusCode: 409, ReasonPhrase: 'Conflict'
 
 ```
 
-## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Sammanslagning när väntande begäran skapas med en utfärdare
-Sammanslagning tillåts inte när ett väntande objekt skapas med en utfärdare men tillåts när dess tillstånd är "pågår". 
+## <a name="merge-when-pending-request-is-created-with-an-issuer"></a>Sammanfoga när väntande begäran skapas med en utfärdare
+Sammanslagning tillåts inte när ett väntande objekt skapas med en utfärdare men tillåts när dess tillstånd är "inProgress". 
 
-Om begäran om att skapa x509-certifikatet Miss lyckas eller avbryts av någon anledning, och om ett x509-certifikat kan hämtas med out-of-band-medel, kan en sammanslagning utföras för att slutföra KV-certifikatet.
+Om begäran om att skapa x509-certifikatet misslyckas eller avbryts av någon anledning, och om ett x509-certifikat kan hämtas med out-of-band innebär det att en sammanslagningsåtgärd kan utföras för att slutföra KV-certifikatet.
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
@@ -286,19 +285,19 @@ StatusCode: 403, ReasonPhrase: 'Forbidden'
 
 ```
 
-## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Begär en annullering medan status för väntande begäran är "pågår"
-Det går bara att begära en annullering. En begäran kan vara avbruten. Om en begäran inte är "pågår" returneras en http-status på 400 (felaktig begäran).
+## <a name="request-a-cancellation-while-the-pending-request-status-is-inprogress"></a>Begära en annullering medan statusen för väntande begäran är "inProgress"
+En annullering kan bara begäras. En begäran kan avbrytas eller inte. Om en begäran inte är "inProgress" returneras http-statusen 400 (felaktig begäran).
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
-|9.0a|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
+|Patch|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Förfrågan
-9.0a `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Patch `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-9.0a `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Patch `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -324,21 +323,21 @@ StatusCode: 200, ReasonPhrase: 'OK'
 }
 ```
 
-## <a name="delete-a-pending-request-object"></a>Ta bort ett väntande begär ande objekt
+## <a name="delete-a-pending-request-object"></a>Ta bort ett objekt för väntande begäran
 
 > [!NOTE]
-> Om du tar bort det väntande objektet kan det hända att x509-certifikatbegäran inte kan avbrytas med providern.
+> Om du tar bort det väntande objektet kanske eller inte avbryter x509-certifikatbegäran hos providern.
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Förfrågan
-TA bort `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+Ta bort `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 ELLER
 
-TA bort `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+Ta bort `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ### <a name="response"></a>Svarsåtgärder
 
@@ -357,7 +356,7 @@ StatusCode: 200, ReasonPhrase: 'OK'
 ```
 
 ## <a name="create-a-kv-certificate-manually"></a>Skapa ett KV-certifikat manuellt
-Du kan skapa ett certifikat som utfärdats med en CA som du väljer via en manuell skapande process. Ange namnet på utfärdaren till "okänt" eller ange inte fältet Issuer.
+Du kan skapa ett certifikat som utfärdats med en valfri certifikatutfärdare genom en manuell skapandeprocess. Ange namnet på utfärdaren till "Okänd" eller ange inte utfärdarfältet.
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
@@ -397,7 +396,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Sammanfoga när en väntande begäran skapas – manuellt skapande av certifikat
+## <a name="merge-when-a-pending-request-is-created---manual-certificate-creation"></a>Sammanfoga när en väntande begäran skapas – skapa certifikat manuellt
 
 |Metod|URI för förfrågan|
 |------------|-----------------|
@@ -414,7 +413,7 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Elementnamn|Krävs|Typ|Version|Beskrivning|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Ja|matris|\<introducing version>|X509-certifikat kedja som bas 64-sträng mat ris.|
+|x5c|Yes|matris|\<introducing version>|X509-certifikatkedja som base 64-strängmatris.|
 
 ### <a name="response"></a>Svarsåtgärder
 

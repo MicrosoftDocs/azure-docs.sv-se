@@ -1,8 +1,8 @@
-- name: Dokumentation om Cloud Services (utökad support)
+- name: Azure Cloud Services (utökad support) dokumentation
   href: index.yml
 - name: Översikt
   items:
-    - name: Om Cloud Services (utökad support)
+    - name: Om Cloud Services (utökat stöd)
       href: overview.md
     - name: Krav för distribution
       href: deploy-prerequisite.md
@@ -10,15 +10,15 @@
       href: cloud-services-model-and-package.md
 - name: Självstudier
   items:
-    - name: Distribuera en moln tjänst – Portal
+    - name: Distribuera en molntjänst – portalen
       href: deploy-portal.md
-    - name: Distribuera en moln tjänst – PowerShell
+    - name: Distribuera en molntjänst – PowerShell
       href: deploy-powershell.md
-    - name: Distribuera en moln tjänst – mall
+    - name: Distribuera en molntjänst – mall
       href: deploy-template.md
-    - name: Distribuera en moln tjänst – SDK
+    - name: Distribuera en molntjänst – SDK
       href: deploy-sdk.md
-    - name: Distribuera en moln tjänst – Visual Studio
+    - name: Distribuera en molntjänst – Visual Studio
       href: /visualstudio/azure/cloud-services-extended-support?context=%2fazure%2fcloud-services-extended-support%2fcontext%2fcontext
   expanded: true
 - name: Begrepp
@@ -35,41 +35,41 @@
       href: ../cloud-services/cloud-services-guestos-update-matrix.md?context=/azure/cloud-services-extended-support/context/context
     - name: XML-schema
       items:
-        - name: Csdef XML-schema
+        - name: CSDEF XML-schema
           href: schema-csdef-file.md
         - name: LoadBalancerProbe-schema
           href: schema-csdef-loadbalancerprobe.md
-        - name: Webrole-schema
+        - name: WebRole-schema
           href: schema-csdef-webrole.md
         - name: WorkerRole-schema
           href: schema-csdef-workerrole.md
         - name: NetworkTrafficRules-schema
           href: schema-csdef-networktrafficrules.md
-        - name: Cscfg XML-schema
+        - name: CSCFG XML-schema
           href: schema-cscfg-file.md
-        - name: Roll schema
+        - name: Rollschema
           href: schema-cscfg-role.md
         - name: NetworkConfiguration-schema
           href: schema-cscfg-networkconfiguration.md
 - name: Gör så här för att
   items:
-    - name: Migrera till Cloud Services (utökad support)
+    - name: Migrera till Azure Cloud Services (utökat stöd)
       items:
         - name: Översikt över migrering
           href: in-place-migration-overview.md
         - name: Teknisk information om migrering
           href: in-place-migration-technical-details.md
-        - name: Migrera med hjälp av Azure Portal
+        - name: Migrera med Azure Portal
           href: in-place-migration-portal.md
         - name: Migrera med hjälp av PowerShell
           href: in-place-migration-powershell.md
         - name: Vanliga fel och kända problem
           href: in-place-migration-common-errors.md
-    - name: Använd tillägg
+    - name: Tillämpa tillägg
       items:
-        - name: Använd fjärr skrivbords tillägg
+        - name: Använda fjärrskrivbordstillägget
           href: enable-rdp.md
-        - name: Använd WAD-tillägg
+        - name: Tillämpa WAD-tillägg
           href: enable-wad.md
     - name: Aktivera aviseringar
       href: enable-alerts.md
@@ -77,33 +77,33 @@
       href: configure-scaling.md
     - name: Certifikat
       href: certificates-and-key-vault.md
-    - name: Skapa ARM-mall med hjälp av portalen
+    - name: Generera EN ARM-mall med hjälp av portalen
       href: generate-template-portal.md
-    - name: Växla två moln tjänster
+    - name: Växla distributioner av molntjänster
       href: swap-cloud-service.md
     - name: Åsidosätt SKU-information
       href: override-sku.md
     - name: Felsöka
       items:
-        - name: Det gick inte att starta rollen
+        - name: Fel vid start av roll
           href: role-startup-failure.md
         - name: Vanliga frågor och svar
           href: faq.md
 - name: Exempel
   items:
-    - name: Exempel på mallar
+    - name: Exempelmallar
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: Skapa en ny moln tjänst
+    - name: Skapa en ny molntjänst
       href: sample-create-cloud-service.md
-    - name: Hämta information om moln tjänst
+    - name: Hämta information om molntjänsten
       href: sample-get-cloud-service.md
-    - name: Återställa en moln tjänst
+    - name: Återställa en molntjänst
       href: sample-reset-cloud-service.md
 - name: Referens
   items:
-    - name: Exempel på distributions filer
+    - name: Exempel på distributionsfiler
       href: 'https://github.com/Azure-Samples/cloud-services-extended-support'
-    - name: AZ. CloudService-modul
+    - name: Az.CloudService-modul
       href: 'https://www.powershellgallery.com/packages/Az.CloudService/0.1.0'
     - name: PowerShell-cmdletar
       href: /powershell/module/az.cloudservice/#cloudservice

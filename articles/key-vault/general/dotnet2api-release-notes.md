@@ -1,77 +1,76 @@
 ---
-title: Viktig information om Key Vault .NET 2. x API | Microsoft Docs
-description: Lär dig hur du uppdaterar appar som skrivits för tidigare versioner av Azure Key Vault att arbeta med 2,0-versionen av Azure Key Vault-biblioteket för C# och .NET.
+title: Key Vault .NET 2.x API Release Notes| Microsoft Docs
+description: Lär dig hur du uppdaterar appar som skrivits för tidigare versioner Azure Key Vault att fungera med 2.0-versionen av Azure Key Vault-biblioteket för C# och .NET.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 editor: bryanla
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 05/02/2017
 ms.author: mbaldwin
-ms.openlocfilehash: 018570019b306dced76760fefa4441ee7d86ad2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b923cc289dc0229f18eba144b09ceb34e0edea4e
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96013963"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751894"
 ---
-# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2,0 – viktig information och migrations guide
-Med följande information kan du migrera till 2,0-versionen av Azure Key Vault-biblioteket för C# och .NET.  Appar som är skrivna för tidigare versioner måste uppdateras för att stödja den senaste versionen.  De här ändringarna krävs för att fullständigt stödja nya och förbättrade funktioner, till exempel **Key Vault certifikat**.
+# <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 – Release Notes and Migration Guide
+Följande information hjälper dig att migrera till 2.0-versionen av Azure Key Vault för C# och .NET.  Appar som skrivits för tidigare versioner måste uppdateras för att stödja den senaste versionen.  Dessa ändringar krävs för att ge fullständigt stöd för nya och förbättrade funktioner, till **exempel Key Vault certifikat**.
 
 ## <a name="key-vault-certificates"></a>Key Vault certifikat
 
-Key Vault certifikat hanterar x509-certifikat och stöder följande beteenden:  
+Key Vault hanterar x509-certifikat och stöder följande beteenden:  
 
-* Skapa certifikat via en Key Vault skapande process eller importera ett befintligt certifikat. Detta inkluderar både självsignerade certifikat och certifikat utfärdare (CA) som genereras.
-* Lagra och hantera x509-certifikat Storage på ett säkert sätt utan interaktion med hjälp av material från privat nyckel.  
-* Definiera principer som dirigerar Key Vault för att hantera certifikat livs cykeln.  
-* Ange kontakt information för livs cykel händelser, till exempel utgångs varningar och förnyelse meddelanden.  
-* Förnya automatiskt certifikat med valda utfärdare (Key Vault partners för X509-certifikat och certifikat utfärdare). * stöd certifikat från alternativ (icke-partner) tillhandahåller och certifikat utfärdare (stöder inte automatisk förnyelse).  
+* Skapa certifikat via en Key Vault skapa process eller importera ett befintligt certifikat. Detta inkluderar både själv signerade certifikat och certifikatutfärdargenererade certifikat.
+* Lagra och hantera x509-certifikatlagring på ett säkert sätt utan interaktion med material med privat nyckel.  
+* Definiera principer som dirigerar Key Vault att hantera certifikatets livscykel.  
+* Ange kontaktuppgifter för livscykelhändelser, till exempel förfallovarningar och förnyelsemeddelanden.  
+* Förnya certifikat automatiskt med valda utfärdare (Key Vault-partner X509-certifikatproviders och certifikatutfärdare).* Supportcertifikat från alternativa (icke-partner) tillhandahåller och certifikatutfärdare (stöder inte automatisk förnyelse).  
 
-## <a name="net-support"></a>.NET-support
+## <a name="net-support"></a>.NET-stöd
 
-* **.Net 4,0** stöds inte av 2,0-versionen av Azure Key Vault .net-biblioteket
-* **.NET Framework 4.5.2** stöds av 2,0-versionen av Azure Key Vault .net-biblioteket
-* **.Net Standard 1,4** stöds av 2,0-versionen av Azure Key Vault .net-biblioteket
+* **.NET 4.0** stöds inte av 2.0-versionen av Azure Key Vault .NET-biblioteket
+* **.NET Framework 4.5.2** stöds av 2.0-versionen av Azure Key Vault .NET-biblioteket
+* **.NET Standard 1.4** stöds av 2.0-versionen av Azure Key Vault .NET-biblioteket
 
 ## <a name="namespaces"></a>Namnrymder
 
-* Namn området för **modeller** ändras från **Microsoft. Azure. nyckel valv** till **Microsoft. Azure. nyckel valv. modeller**.
-* **Microsoft. Azure. nyckel valvet. internt** namn område har släppts.
-* Följande namn områden för Azure SDK-beroenden har 
+* Namnområdet för **modeller ändras** från **Microsoft.Azure.KeyVault** till **Microsoft.Azure.KeyVault.Models**.
+* Namnområdet **Microsoft.Azure.KeyVault.Internal** tas bort.
+* Följande namnrymder för Azure SDK-beroenden har 
 
-    - **Hyak. common** är nu **Microsoft. rest**.
-    - **Hyak. Common. internals** är nu **Microsoft. rest. serializering**.
+    - **Hyak.Common** är nu **Microsoft.Rest**.
+    - **Hyak.Common.Internals är** nu **Microsoft.Rest.Serialization**.
 
-## <a name="type-changes"></a>Skriv ändringar
+## <a name="type-changes"></a>Typändringar
 
-* *Hemligheten* ändrades till *SecretBundle*
-* *Ord listan* har ändrats till *IDictionary*
-* *Lista \<T> , sträng [] har* ändrats *till \<T> ilist*
-* *NextList* ändrades till  *NextPageLink*
+* *Hemligheten* har *ändrats till SecretBundle*
+* *Ordlistan* har ändrats *till IDictionary*
+* *Lista \<T> , sträng [] har* ändrats till *IList \<T>*
+* *NextList har* ändrats  *till NextPageLink*
 
-## <a name="return-types"></a>Retur typer
+## <a name="return-types"></a>Returtyper
 
-* I **list** -och **SecretList** returneras nu *iPage \<T>* i stället för *ListKeysResponseMessage*
-* Den genererade **BackupKeyAsync** returnerar nu *BackupKeyResult*, som innehåller *värde* (back upp BLOB). Tidigare har metoden omslutits och returnerade bara värdet.
+* **KeyList** och **SecretList** returnerar nu *IPage i \<T>* stället för *ListKeysResponseMessage*
+* Den **genererade BackupKeyAsync** returnerar *nu BackupKeyResult*, som *innehåller Värde* (säkerhetskopieringsblob). Tidigare var metoden omsluten och returnerade bara värdet.
 
 ## <a name="exceptions"></a>Undantag
 
-* *KeyVaultClientException* har ändrats till *KeyVaultErrorException*
-* Tjänst felet har ändrats från *undantag. Fel* i *undantag. Body. error. Message*.
-* Ytterligare information togs bort från fel meddelandet för **[JsonExtensionData]**.
+* *KeyVaultClientException* har ändrats *till KeyVaultErrorException*
+* Tjänstfelet har ändrats från *undantag. Fel* till *undantag. Body.Error.Message*.
+* Ytterligare information har tagits bort från felmeddelandet **för [JsonExtensionData]**.
 
 ## <a name="constructors"></a>Konstruktorer
 
-* I stället för att acceptera ett *httpclient* som ett konstruktor-argument accepterar konstruktorn bara *HttpClientHandler* eller *DelegatingHandler []*.
+* I stället för att *acceptera en HttpClient* som ett konstruktorargument accepterar konstruktorn bara *HttpClientHandler* *eller DelegatingHandler[]*.
 
 ## <a name="downloaded-packages"></a>Hämtade paket
 
-När en klient bearbetar ett Key Vault beroende hämtas följande paket:
+När en klient bearbetar Key Vault beroende laddas följande paket ned:
 
-### <a name="previous-package-list"></a>Lista över tidigare paket
+### <a name="previous-package-list"></a>Föregående paketlista
 
 * `package id="Hyak.Common" version="1.0.2" targetFramework="net45"`
 * `package id="Microsoft.Azure.Common" version="2.0.4" targetFramework="net45"`
@@ -82,28 +81,28 @@ När en klient bearbetar ett Key Vault beroende hämtas följande paket:
 * `package id="Microsoft.Bcl.Build" version="1.0.14" targetFramework="net45"`
 * `package id="Microsoft.Net.Http" version="2.2.22" targetFramework="net45"`
 
-### <a name="current-package-list"></a>Lista över aktuella paket
+### <a name="current-package-list"></a>Aktuell paketlista
 
 * `package id="Microsoft.Azure.KeyVault" version="2.0.0-preview" targetFramework="net45"`
 * `package id="Microsoft.Rest.ClientRuntime" version="2.2.0" targetFramework="net45"`
 * `package id="Microsoft.Rest.ClientRuntime.Azure" version="3.2.0" targetFramework="net45"`
 
-## <a name="class-changes"></a>Klass ändringar
+## <a name="class-changes"></a>Klassändringar
 
-* **UnixEpoch** -klassen har tagits bort.
-* **Base64UrlConverter** -klassen har bytt namn till **Base64UrlJsonConverter**.
+* **UnixEpoch-klassen** har tagits bort.
+* **Klassen Base64UrlConverter** har bytt namn till **Base64UrlJsonConverter**.
 
 ## <a name="other-changes"></a>Andra ändringar
 
-* Stöd för konfiguration av KV-åtgärdens återförsöks princip för tillfälliga fel har lagts till i den här versionen av API: et.
+* Stöd för konfiguration av KV-åtgärdsprincip för återförsök vid tillfälliga fel har lagts till i den här versionen av API:et.
 
-## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft. Azure. Management. NuGet för nyckel valv
+## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* För de åtgärder som returnerade ett *valv* var retur typen en klass som innehöll en **valv** egenskap. Retur typen är nu *valv*.
-* *PermissionsToKeys* och *PermissionsToSecrets* är nu *behörigheter. nycklar* och *behörigheter. hemligheter*
-* Vissa ändringar av retur typer gäller även för kontroll planet.
+* För de åtgärder som returnerade ett *valv* var returtypen en klass som innehöll en **Vault-egenskap.** Returtypen är nu *Vault*.
+* *PermissionsToKeys* och *PermissionsToSecrets är* nu *Permissions.Keys* och *Permissions.Secrets*
+* Vissa ändringar av returtyper gäller även för kontrollplanet.
 
-## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft. Azure. nyckel valv. NuGet för tillägg
+## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 
-* Paketet är uppdelat till **Microsoft. Azure. nyckel valv. Extensions** och **Microsoft. Azure. nyckel valv. kryptografi** för kryptografi åtgärder.
+* Paketet är uppdelat i **Microsoft.Azure.KeyVault.Extensions** och **Microsoft.Azure.KeyVault.Cryptography** för kryptografiåtgärderna.
 

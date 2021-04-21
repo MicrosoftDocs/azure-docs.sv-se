@@ -1,6 +1,6 @@
 ---
-title: Skapa och konfigurera ett nyckel valv för Azure Disk Encryption på en virtuell Windows-dator
-description: Den här artikeln innehåller steg för att skapa och konfigurera ett nyckel valv som ska användas med Azure Disk Encryption på en virtuell Windows-dator.
+title: Skapa och konfigurera ett nyckelvalv för Azure Disk Encryption en virtuell Windows-dator
+description: Den här artikeln innehåller steg för att skapa och konfigurera ett nyckelvalv för användning med Azure Disk Encryption på en virtuell Windows-dator.
 ms.service: virtual-machines
 ms.subservice: disks
 ms.collection: windows
@@ -9,48 +9,48 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: af48bd74bbc38b1cd9b4d3b0f127e7bdf5d3e037
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5e45b242d85d761dcbe3593c59174942ef1a62a5
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102555456"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749068"
 ---
-# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Skapa och konfigurera ett nyckel valv för Azure Disk Encryption på en virtuell Windows-dator
+# <a name="create-and-configure-a-key-vault-for-azure-disk-encryption-on-a-windows-vm"></a>Skapa och konfigurera ett nyckelvalv för Azure Disk Encryption en virtuell Windows-dator
 
-Azure Disk Encryption använder Azure Key Vault för att kontrol lera och hantera disk krypterings nycklar och hemligheter.  Mer information om nyckel valv finns i [Kom igång med Azure Key Vault](../../key-vault/general/overview.md) och [skydda nyckel valvet](../../key-vault/general/secure-your-key-vault.md). 
+Azure Disk Encryption använder Azure Key Vault för att kontrollera och hantera diskkrypteringsnycklar och hemligheter.  Mer information om nyckelvalv finns i Kom [igång med Azure Key Vault](../../key-vault/general/overview.md) och Skydda ditt [nyckelvalv.](../../key-vault/general/security-overview.md) 
 
 > [!WARNING]
-> - Om du tidigare har använt Azure Disk Encryption med Azure AD för att kryptera en virtuell dator måste du fortsätta använda det här alternativet för att kryptera den virtuella datorn. Mer information finns i [skapa och konfigurera ett nyckel valv för Azure Disk Encryption med Azure AD (tidigare version)](disk-encryption-key-vault-aad.md) .
+> - Om du tidigare har använt Azure Disk Encryption Azure AD för att kryptera en virtuell dator måste du fortsätta att använda det här alternativet för att kryptera den virtuella datorn. Se [Skapa och konfigurera ett nyckelvalv för Azure Disk Encryption med Azure AD (tidigare version)](disk-encryption-key-vault-aad.md) för mer information.
 
-Att skapa och konfigurera ett nyckel valv som ska användas med Azure Disk Encryption omfattar tre steg:
+Att skapa och konfigurera ett nyckelvalv för användning med Azure Disk Encryption omfattar tre steg:
 
 > [!Note]
-> Du måste välja alternativet i princip inställningarna för Azure Key Vault åtkomst för att ge åtkomst till Azure Disk Encryption för volym kryptering. Om du har aktiverat brand väggen i nyckel valvet måste du gå till fliken nätverk i nyckel valvet och aktivera åtkomst till Microsoft-betrodda tjänster. 
+> Du måste välja alternativet i Azure Key Vault för att aktivera åtkomst till Azure Disk Encryption för volymkryptering. Om du har aktiverat brandväggen i nyckelvalvet måste du gå till fliken Nätverk i nyckelvalvet och aktivera åtkomst till Microsoft Trusted Services. 
 
-1. Skapa en resurs grupp, om det behövs.
-2. Skapar ett nyckel valv. 
-3. Ställer in avancerade åtkomst principer för nyckel valvet.
+1. Skapa en resursgrupp om det behövs.
+2. Skapa ett nyckelvalv. 
+3. Ange avancerade åtkomstprinciper för Nyckelvalv.
 
-Dessa steg illustreras i följande snabb starter:
+De här stegen illustreras i följande snabbstarter:
 
 - [Skapa och kryptera en virtuell Windows-dator med Azure CLI](disk-encryption-cli-quickstart.md)
 - [Skapa och kryptera en virtuell Windows-dator med Azure PowerShell](disk-encryption-powershell-quickstart.md)
 
-Du kan också, om du vill, skapa eller importera en nyckel krypterings nyckel (KEK).
+Om du vill kan du också generera eller importera en nyckelkrypteringsnyckel (KEK).
 
 > [!Note]
-> Stegen i den här artikeln är automatiserade i [skripten för Azure Disk Encryption nödvändiga CLI-skript](https://github.com/ejarvi/ade-cli-getting-started) och [Azure Disk Encryption krav på PowerShell-skript](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts).
+> Stegen i den här artikeln automatiseras i [cli-Azure Disk Encryption](https://github.com/ejarvi/ade-cli-getting-started) för de nödvändiga Azure Disk Encryption [för PowerShell-skript](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts).
 
-## <a name="install-tools-and-connect-to-azure"></a>Installera verktyg och Anslut till Azure
+## <a name="install-tools-and-connect-to-azure"></a>Installera verktyg och ansluta till Azure
 
-Stegen i den här artikeln kan utföras med [Azure CLI](/cli/azure/), [Azure PowerShell AZ-modulen](/powershell/azure/)eller [Azure Portal](https://portal.azure.com).
+Stegen i den här artikeln kan utföras med [Azure CLI,](/cli/azure/) [Azure PowerShell Az-modulen](/powershell/azure/)eller [Azure Portal](https://portal.azure.com).
 
-Även om portalen är tillgänglig via webbläsaren kan Azure CLI och Azure PowerShell kräva lokal installation. Se [Azure Disk Encryption för Windows: installera verktyg](disk-encryption-windows.md#install-tools-and-connect-to-azure) för mer information.
+Även om portalen är tillgänglig via webbläsaren kräver Azure CLI och Azure PowerShell lokal installation. Mer [information Azure Disk Encryption finns i Azure Disk Encryption för Windows:](disk-encryption-windows.md#install-tools-and-connect-to-azure) Installera verktyg.
 
 ### <a name="connect-to-your-azure-account"></a>Anslut till ditt Azure-konto
 
-Innan du använder Azure CLI eller Azure PowerShell måste du först ansluta till din Azure-prenumeration. Du gör detta genom att [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli), [Logga in med Azure PowerShell](/powershell/azure/authenticate-azureps)eller ange dina autentiseringsuppgifter till Azure Portal när du uppmanas till det.
+Innan du använder Azure CLI eller Azure PowerShell måste du först ansluta till din Azure-prenumeration. Det gör du genom [att logga in med Azure CLI,](/cli/azure/authenticate-azure-cli)logga in med Azure [Powershell](/powershell/azure/authenticate-azureps)eller ange dina autentiseringsuppgifter för Azure Portal när du uppmanas till det.
 
 ```azurecli-interactive
 az login
@@ -64,8 +64,8 @@ Connect-AzAccount
  
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Disk Encryption nödvändiga CLI-skript](https://github.com/ejarvi/ade-cli-getting-started)
-- [PowerShell-skript för Azure Disk Encryption krav](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
-- Lär dig [Azure Disk Encryption scenarier på virtuella Windows-datorer](disk-encryption-windows.md)
-- Lär dig hur du [felsöker Azure Disk Encryption](disk-encryption-troubleshooting.md)
-- Läs [Azure Disk Encryption exempel skript](disk-encryption-sample-scripts.md)
+- [Azure Disk Encryption CLI-skript för förhandskrav](https://github.com/ejarvi/ade-cli-getting-started)
+- [Azure Disk Encryption powershell-skript](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)
+- Lär [Azure Disk Encryption scenarier på virtuella Windows-datorer](disk-encryption-windows.md)
+- Lär dig hur [du felsöker Azure Disk Encryption](disk-encryption-troubleshooting.md)
+- Läs [Azure Disk Encryption exempelskript](disk-encryption-sample-scripts.md)

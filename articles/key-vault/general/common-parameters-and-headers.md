@@ -1,36 +1,35 @@
 ---
 title: Vanliga parametrar och sidhuvuden
-description: De parametrar och sidhuvud som är gemensamma för alla åtgärder som du kan göra relaterade till Key Vault resurser.
+description: De parametrar och huvuden som är gemensamma för alla åtgärder som du kan göra relaterade till Key Vault resurser.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 616b6061b08258d465b09902556de6903b873199
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83005819"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749878"
 ---
 # <a name="common-parameters-and-headers"></a>Vanliga parametrar och sidhuvuden
 
 Följande information är gemensam för alla åtgärder som du kan göra relaterade till Key Vault resurser:
 
-- HTTP- `Host` huvudet måste alltid finnas och måste ange valvets värdnamn. Exempel: `Host: contoso.vault.azure.net`. Observera att de flesta klient tekniker fyller i `Host` sidhuvudet från URI: n. Till exempel `GET https://contoso.vault.azure.net/secrets/mysecret{...}` ställer in `Host` as `contoso.vault.azure.net` . Det innebär att om du kommer åt Key Vault att använda RAW IP-adress som är `GET https://10.0.0.23/secrets/mysecret{...}` det automatiska värdet för `Host` rubriken fel och du måste manuellt se till att `Host` sidhuvudet innehåller valv-värdnamnet.
-- Ersätt `{api-version}` med API-versionen i URI: n.
-- Ersätt `{subscription-id}` med prenumerations-ID: t i URI: n
-- Ersätt `{resource-group-name}` med resurs gruppen. Mer information finns i använda resurs grupper för att hantera dina Azure-resurser.
-- Ersätt `{vault-name}` med nyckel valvets namn i URI: n.
-- Ange rubrik för innehålls typ till Application/JSON.
-- Ange Authorization-huvudet till en JSON Web Token som du får från Azure Active Directory (AAD). Mer information finns i [autentisera Azure Resource Manager](authentication-requests-and-responses.md) begär Anden.
+- `Host`HTTP-huvudet måste alltid finnas och måste ange värdnamnet för valvet. Exempel: `Host: contoso.vault.azure.net`. Observera att de flesta klienttekniker fyller i `Host` -huvudet från URI:en. till exempel `GET https://contoso.vault.azure.net/secrets/mysecret{...}` anger som `Host` `contoso.vault.azure.net` . Det innebär att om du använder Key Vault rå IP-adress som , kommer det automatiska värdet för rubriken att vara fel och du måste manuellt försäkra dig om att huvudet innehåller `GET https://10.0.0.23/secrets/mysecret{...}` `Host` `Host` valvets värdnamn.
+- Ersätt `{api-version}` med API-versionen i URI:n.
+- Ersätt `{subscription-id}` med din prenumerations-ID i URI:en
+- Ersätt `{resource-group-name}` med resursgruppen. Mer information finns i Hantera Azure-resurser med hjälp av resursgrupper.
+- Ersätt `{vault-name}` med ditt nyckelvalvsnamn i URI:en.
+- Ange Content-Type-rubriken till application/json.
+- Ange auktoriseringsrubriken till en JSON Web Token som du får från Azure Active Directory (AAD). Mer information finns i [Autentisera Azure Resource Manager](authentication-requests-and-responses.md) begäranden.
 
-## <a name="common-error-response"></a>Vanliga fel svar
-Tjänsten kommer att använda HTTP-statuskod för att indikera att det lyckades eller misslyckades. Dessutom innehåller felen ett svar i följande format:
+## <a name="common-error-response"></a>Vanligt felsvar
+Tjänsten använder HTTP-statuskoder för att ange att det lyckades eller misslyckades. Dessutom innehåller fel ett svar i följande format:
 
 ```
    {  
@@ -41,10 +40,10 @@ Tjänsten kommer att använda HTTP-statuskod för att indikera att det lyckades 
    }  
 ```
 
-|Elementnamn | Typ | Beskrivning |
+|Elementnamn | Typ | Description |
 |---|---|---|
-| kod | sträng | Den typ av fel som inträffat.|
-| meddelande | sträng | En beskrivning av vad som orsakat felet. |
+| kod | sträng | Typ av fel som inträffade.|
+| meddelande | sträng | En beskrivning av vad som orsakade felet. |
 
 
 

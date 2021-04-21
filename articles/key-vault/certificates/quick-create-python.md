@@ -8,14 +8,14 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: b8f36d7490e24247f1f8482c9dece86b68015d73
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 598bbef0ceb24f3eb5932239a4146e1693521f24
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107376111"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751336"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Snabbstart: Azure Key Vault ett certifikatklientbibliotek för Python
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-python"></a>Snabbstart: Azure Key Vault-certifikatklientbibliotek för Python
 
 Kom igång med Azure Key Vault-certifikatklientbiblioteket för Python. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter. Genom att Key Vault lagra certifikat undviker du att lagra certifikat i koden, vilket ökar säkerheten för din app.
 
@@ -177,7 +177,7 @@ När du hanterar begäran autentiserar Azure anroparens identitet (tjänstens hu
 
 ### <a name="retrieve-a-certificate"></a>Hämta ett certifikat
 
-Om du vill läsa ett certifikat [](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) Key Vault du använda get_certificate-metoden:
+Om du vill läsa ett certifikat [](/python/api/azure-keyvault-certificates/azure.keyvault.certificates.certificateclient?#get-certificate-certificate-name----kwargs-) från Key Vault använder du get_certificate-metoden:
 
 ```python
 retrieved_certificate = client.get_certificate(certificateName)
@@ -213,7 +213,7 @@ az group delete --resource-group KeyVault-PythonQS-rg
 ## <a name="next-steps"></a>Nästa steg
 
 - [Översikt över Azure Key Vault](../general/overview.md)
-- [Säker åtkomst till ett nyckelvalv](../general/secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](../general/security-overview.md)
 - [Azure Key Vault utvecklarguide](../general/developers-guide.md)
 - [Key Vault säkerhetsöversikt](../general/security-overview.md)
 - [Autentisera med Key Vault](../general/authentication.md)

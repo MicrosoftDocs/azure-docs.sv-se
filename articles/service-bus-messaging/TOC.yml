@@ -100,6 +100,8 @@
       items:
         - name: Meddelandesessioner
           href: message-sessions.md
+        - name: Identifiering av dubbla meddelanden
+          href: duplicate-detection.md
         - name: Ämnesfilter och åtgärder
           href: topic-filters.md
         - name: Bläddra i meddelanden
@@ -176,7 +178,7 @@
           items:
             - name: Java Message Service (JMS) 2.0-entiteter
               href: java-message-service-20-entities.md
-            - name: Jms-utvecklare (Java Message Service) guide.md
+            - name: Java Message Service -utvecklare (JMS) guide.md
               href: jms-developer-guide.md
             - name: 'Meddelanden, nyttolaster och serialisering'
               href: service-bus-messages-payloads.md
@@ -206,8 +208,6 @@
           items:
             - name: Förhämtning av meddelanden
               href: service-bus-prefetch.md
-            - name: Identifiering av dubbla meddelanden
-              href: duplicate-detection.md
             - name: Skjut upp meddelanden
               href: message-deferral.md
             - name: Chain-enheter med automatisk vidarebefordran
@@ -236,6 +236,14 @@
           href: service-bus-integrate-with-rabbitmq.md
     - name: Hantera
       items:
+        - name: Aktivera sessioner för en kö eller prenumeration
+          href: enable-message-sessions.md
+        - name: Aktivera dubblettidentifiering för en kö eller ett ämne
+          href: enable-duplicate-detection.md
+        - name: Aktivera partitioner för en kö eller ett ämne
+          href: enable-partitions.md
+        - name: Aktivera automatisk vidarebefordran för en kö eller prenumeration
+          href: enable-auto-forward.md
         - name: Flytta mellan regioner
           href: move-across-regions.md
         - name: Uppdatera meddelandeenheter automatiskt

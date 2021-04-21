@@ -1,36 +1,35 @@
 ---
-title: Ta emot och svara på meddelanden om nyckel valv med Azure Event Grid
+title: Ta emot och svara på Key Vault-meddelanden med Azure Event Grid
 description: Lär dig hur du integrerar Key Vault med Azure Event Grid.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d7bb697879f40b45c886cd90bbb1e34906d35f66
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e46161812d122a1d5647e8589c58f9528578b878
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96187382"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107749842"
 ---
-# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Ta emot och svara på meddelanden om nyckel valv med Azure Event Grid
+# <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid"></a>Ta emot och svara på Key Vault-meddelanden med Azure Event Grid
 
-Azure Key Vault integration med Azure Event Grid aktiverar användar meddelande när status för en hemlighet som lagras i ett nyckel valv har ändrats. En översikt över den här funktionen finns i [övervaknings Key Vault med event Grid](event-grid-overview.md).
+Azure Key Vault integrering med Azure Event Grid användaraviseringar när statusen för en hemlighet som lagras i ett nyckelvalv har ändrats. En översikt över den här funktionen finns i [Monitoring Key Vault with Event Grid](event-grid-overview.md).
 
-I den här guiden beskrivs hur du tar emot Key Vault-meddelanden via Event Grid och hur du svarar på status ändringar via Azure Automation.
+Den här guiden beskriver hur du tar Key Vault meddelanden via Event Grid och hur du svarar på statusändringar via Azure Automation.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- Ett nyckel valv i din Azure-prenumeration. Du kan snabbt skapa ett nytt nyckel valv genom att följa stegen i [Ange och hämta en hemlighet från Azure Key Vault med hjälp av Azure CLI](../secrets/quick-create-cli.md).
+- Ett nyckelvalv i din Azure-prenumeration. Du kan snabbt skapa ett nytt nyckelvalv genom att följa stegen i Ange och hämta en hemlighet från [Azure Key Vault hjälp av Azure CLI](../secrets/quick-create-cli.md).
 
 ## <a name="concepts"></a>Begrepp
 
-Event Grid är en händelse tjänst för molnet. Genom att följa stegen i den här guiden kommer du att prenumerera på händelser för Key Vault och dirigera händelser till Automation. När en av hemligheterna i nyckel valvet håller på att gå ut får Event Grid ett meddelande om status ändringen och gör ett HTTP-inlägg till slut punkten. En webbhook utlöser sedan en Automation-körning av ett PowerShell-skript.
+Event Grid är en händelsetjänst för molnet. Genom att följa stegen i den här guiden prenumererar du på händelser för att Key Vault dirigera händelser till Automation. När en av hemligheterna i nyckelvalvet är på väg att upphöra Event Grid meddelas om statusändringen och gör en HTTP POST till slutpunkten. En web hook utlöser sedan en Automation-körning av ett PowerShell-skript.
 
 ![HTTP POST-flödesschema](../media/event-grid-tutorial-1.png)
 
@@ -40,33 +39,33 @@ Skapa ett Automation-konto via [Azure Portal](https://portal.azure.com):
 
 1.  Gå till portal.azure.com och logga in på din prenumeration.
 
-1.  I rutan Sök anger du **Automation-konton**.
+1.  I sökrutan anger du **Automation-konton**.
 
-1.  Under avsnittet **tjänster** i list rutan i Sök fältet väljer du **Automation-konton**.
+1.  Under avsnittet **Tjänster** i listrutan i sökfältet väljer du **Automation-konton.**
 
 1.  Välj **Lägg till**.
 
     ![Fönstret Automation-konton](../media/event-grid-tutorial-2.png)
 
-1.  Ange den information som krävs i fönstret **Lägg till Automation-konto** och välj sedan **skapa**.
+1.  Ange nödvändig information i fönstret **Lägg till Automation-konto** och välj sedan **Skapa.**
 
 ## <a name="create-a-runbook"></a>Skapa en runbook
 
-När ditt Automation-konto är klart skapar du en Runbook.
+När ditt Automation-konto är klart skapar du en runbook.
 
-![Skapa ett användar gränssnitt för Runbook](../media/event-grid-tutorial-3.png)
+![Skapa ett runbook-användargränssnitt](../media/event-grid-tutorial-3.png)
 
 1.  Välj det Automation-konto som du nyss skapade.
 
-1.  Välj **Runbooks** under **process automatisering**.
+1.  Välj **Runbooks** under **Processautomatisering.**
 
-1.  Välj **skapa en Runbook**.
+1.  Välj **Skapa en runbook.**
 
-1.  Namnge din Runbook och välj **PowerShell** som Runbook-typ.
+1.  Namnge din runbook och välj **PowerShell** som runbooktyp.
 
-1.  Välj den Runbook som du skapade och välj sedan knappen **Redigera** .
+1.  Välj den runbook som du skapade och välj sedan **knappen** Redigera.
 
-1.  Ange följande kod (i test syfte) och välj knappen **publicera** . Den här åtgärden returnerar resultatet av POST-begäran som tagits emot.
+1.  Ange följande kod (i testsyfte) och välj **knappen** Publicera. Den här åtgärden returnerar resultatet av den MOTTAGNA POST-begäran.
 
 ```azurepowershell
 param
@@ -92,111 +91,111 @@ write-Error "No input data found."
 }
 ```
 
-![Publicera Runbook-användargränssnitt](../media/event-grid-tutorial-4.png)
+![Publicera runbook-användargränssnitt](../media/event-grid-tutorial-4.png)
 
 ## <a name="create-a-webhook"></a>Skapa en webhook
 
-Skapa en webhook för att utlösa din nyligen skapade Runbook.
+Skapa en webhook för att utlösa din nyligen skapade runbook.
 
-1.  Välj **Webhooks** från avsnittet **resurser** i den Runbook som du nyss publicerat.
+1.  Välj **Webhooks** i avsnittet **Resurser i** den runbook som du nyss publicerade.
 
-1.  Välj **Lägg till webhook**.
+1.  Välj **Lägg till webhook.**
 
     ![Knappen Lägg till webhook](../media/event-grid-tutorial-5.png)
 
-1.  Välj **Skapa ny webhook**.
+1.  Välj **Skapa ny webhook.**
 
-1. Namnge webhooken, ange ett förfallo datum och kopiera URL: en.
+1. Namnge webhooken, ange ett förfallodatum och kopiera URL:en.
 
     > [!IMPORTANT] 
-    > Du kan inte Visa URL: en när du har skapat den. Se till att spara en kopia på en säker plats där du kan komma åt den i resten av den här guiden.
+    > Du kan inte visa URL:en när du har skapat den. Se till att du sparar en kopia på en säker plats där du kan komma åt den under resten av den här guiden.
 
-1. Välj **parametrar och kör inställningar** och välj sedan **OK**. Ange inga parametrar. Då aktive ras knappen **skapa** .
+1. Välj **Parametrar och körningsinställningar** och välj **sedan OK.** Ange inga parametrar. Då aktiveras **knappen** Skapa.
 
-1. Välj **OK** och välj sedan **skapa**.
+1. Välj **OK** och sedan **Skapa.**
 
-    ![Skapa nytt webhook-gränssnitt](../media/event-grid-tutorial-6.png)
+    ![Skapa nytt webhook-användargränssnitt](../media/event-grid-tutorial-6.png)
 
 ## <a name="create-an-event-grid-subscription"></a>Skapa en Event Grid-prenumeration
 
 Skapa en Event Grid-prenumeration via [Azure Portal](https://portal.azure.com).
 
-1.  Gå till ditt nyckel valv och välj fliken **händelser** .
+1.  Gå till nyckelvalvet och välj **fliken** Händelser.
 
-    ![Fliken händelser i Azure Portal](../media/event-grid-tutorial-7.png)
+    ![Fliken Händelser i Azure Portal](../media/event-grid-tutorial-7.png)
 
-1.  Välj knappen **händelse prenumeration** .
+1.  Välj knappen **Händelseprenumeration.**
 
 1.  Skapa ett beskrivande namn för prenumerationen.
 
-1.  Välj **Event Grid schema**.
+1.  Välj **Event Grid Schema**.
 
-1.  **Ämnes resurs** ska vara det nyckel valv som du vill övervaka för status ändringar.
+1.  **Ämnesresursen** ska vara det nyckelvalv som du vill övervaka för statusändringar.
 
-1.  För **filtrera till händelse typer låter du** alla alternativ vara markerade (**9 valda**).
+1.  För **Filtrera till händelsetyper** lämnar du alla alternativ markerade (**9 valda**).
 
 1.  Som **Typ av slutpunkt** väljer du **Webhook**.
 
-1.  Välj **Välj en slut punkt**. I fönstret ny kontext klistrar du in webhook-URL: en från [skapa en webhook](#create-a-webhook) -åtgärd i fältet för **prenumerationens slut punkt** .
+1.  Välj **Välj en slutpunkt.** I det nya kontextfönstret klistrar du in webhook-URL:en från steget [Skapa en webhook](#create-a-webhook) i fältet **Prenumerantslutpunkt.**
 
-1.  Välj **Bekräfta markering** i kontext fönstret.
+1.  Välj **Bekräfta markering** i kontextfönstret.
 
 1.  Välj **Skapa**.
 
-    ![Skapa händelse prenumeration](../media/event-grid-tutorial-8.png)
+    ![Skapa händelseprenumeration](../media/event-grid-tutorial-8.png)
 
 ## <a name="test-and-verify"></a>Testa och verifiera
 
-Kontrol lera att din Event Grid-prenumeration är korrekt konfigurerad. Det här testet förutsätter att du prenumererar på meddelandet "hemlig ny version skapad" i [prenumerationen skapa en Event Grid](#create-an-event-grid-subscription)och att du har de behörigheter som krävs för att skapa en ny version av en hemlighet i ett nyckel valv.
+Kontrollera att Event Grid prenumerationen är korrekt konfigurerad. Det här testet förutsätter att du prenumererar på meddelandet "Secret New Version Created" (Hemligt ny version har skapats) i Create [an Event Grid subscription](#create-an-event-grid-subscription)(Skapa en Event Grid-prenumeration) och att du har de behörigheter som krävs för att skapa en ny version av en hemlighet i ett nyckelvalv.
 
-![Testa konfigurationen av Event Grid prenumeration](../media/event-grid-tutorial-9.png)
+![Testa konfiguration av Event Grid prenumeration](../media/event-grid-tutorial-9.png)
 
-![Skapa ett hemligt fönster](../media/event-grid-tutorial-10.png)
+![Fönstret Skapa en hemlighet](../media/event-grid-tutorial-10.png)
 
-1.  Gå till ditt nyckel valv på Azure Portal.
+1.  Gå till ditt nyckelvalv på Azure Portal.
 
-1.  Skapa en ny hemlighet. I test syfte anger du förfallo datum till nästa dag.
+1.  Skapa en ny hemlighet. I testsyfte anger du förfallodatumet till nästa dag.
 
-1.  På fliken **händelser** i ditt nyckel valv väljer du den Event Grid prenumeration som du skapade.
+1.  På fliken **Händelser** i nyckelvalvet väljer du den prenumeration Event Grid du skapade.
 
-1.  Kontrol lera om en händelse har registrerats under **mått**. Två händelser förväntas: SecretNewVersion och SecretNearExpiry. Dessa händelser verifierar att Event Grid har fångat status ändringen för hemligheten i ditt nyckel valv.
+1.  Under **Mått kontrollerar** du om en händelse har avbildats. Två händelser förväntas: SecretNewVersion och SecretNearExpiry. Dessa händelser verifierar Event Grid har fångat statusändringen av hemligheten i ditt nyckelvalv.
 
-    ![Mått fönstret: Sök efter insamlade händelser](../media/event-grid-tutorial-11.png)
+    ![Fönstret Mått: sök efter avbildade händelser](../media/event-grid-tutorial-11.png)
 
 1.  Gå till ditt Automation-konto.
 
-1.  Välj fliken **Runbooks** och välj sedan den Runbook som du skapade.
+1.  Välj fliken **Runbooks** och välj sedan den runbook som du skapade.
 
-1.  Välj fliken **Webhooks** och bekräfta att tidsstämpeln "senast utlöst" är inom 60 sekunder när du skapade den nya hemligheten. Det här resultatet bekräftar att Event Grid gjort ett inlägg i webhooken med händelse information om status ändringen i ditt nyckel valv och att webhooken utlöstes.
+1.  Välj fliken **Webhooks** och bekräfta att tidsstämpeln "senast utlöst" är inom 60 sekunder från det att du skapade den nya hemligheten. Det här resultatet bekräftar Event Grid har gjort en POST till webhooken med händelseinformationen för statusändringen i nyckelvalvet och att webhooken utlöstes.
 
-    ![Webhooks-fliken, senast utlöst tidstämpel](../media/event-grid-tutorial-12.png)
+    ![Fliken Webhooks, tidsstämpeln Senast utlöst](../media/event-grid-tutorial-12.png)
 
-1. Gå tillbaka till din Runbook och välj fliken **Översikt** .
+1. Gå tillbaka till din runbook och välj **fliken** Översikt.
 
-1. Titta på listan **senaste jobb** . Du bör se att ett jobb har skapats och att statusen är slutförd. Detta bekräftar att webhooken utlöste runbooken för att börja köra skriptet.
+1. Titta på listan **Senaste** jobb. Du bör se att ett jobb har skapats och att statusen är slutförd. Detta bekräftar att webhooken utlöste runbooken för att börja köra dess skript.
 
-    ![Lista över senaste jobb för webhook](../media/event-grid-tutorial-13.png)
+    ![Webhook senaste jobblistan](../media/event-grid-tutorial-13.png)
 
-1. Välj det senaste jobbet och titta på POST-begäran som skickades från Event Grid till webhooken. Undersök JSON och se till att parametrarna för nyckel valvet och händelse typen är korrekta. Om parametern "händelse typ" i JSON-objektet matchar händelsen som inträffat i nyckel valvet (i det här exemplet Microsoft. Key Vault. SecretNearExpiry) lyckades testet.
+1. Välj det senaste jobbet och titta på POST-begäran som skickades från Event Grid till webhooken. Granska JSON och kontrollera att parametrarna för nyckelvalvet och händelsetypen är korrekta. Om parametern "händelsetyp" i JSON-objektet matchar händelsen som inträffade i nyckelvalvet (i det här exemplet Microsoft.KeyVault.SecretNearExpiry) lyckades testet.
 
 ## <a name="troubleshooting"></a>Felsökning
 
-### <a name="you-cant-create-an-event-subscription"></a>Du kan inte skapa en händelse prenumeration
+### <a name="you-cant-create-an-event-subscription"></a>Du kan inte skapa en händelseprenumeration
 
-Registrera Event Grid-och Key Vault-providern i Azure-prenumerationens resurs leverantörer. Se [leverantörer och typer av Azure-resurser](../../azure-resource-manager/management/resource-providers-and-types.md).
+Registrera om Event Grid nyckelvalvsprovidern i dina azure-prenumerationsresursproviders. Se [Resursproviders och typer i Azure.](../../azure-resource-manager/management/resource-providers-and-types.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Grattis! Om du har följt alla dessa steg är du nu redo för att program mässigt svara på status ändringar för hemligheter som lagras i ditt nyckel valv.
+Grattis! Om du har följt alla de här stegen på rätt sätt är du nu redo att programmatiskt svara på statusändringar av hemligheter som lagras i ditt nyckelvalv.
 
-Om du har använt ett avsöknings system för att söka efter status ändringar för hemligheter i dina nyckel valv kan du nu börja använda den här meddelande funktionen. Du kan också ersätta test skriptet i din Runbook med kod för att program mässigt förnya dina hemligheter när de håller på att gå ut.
+Om du har använt ett avsökningsbaserat system för att söka efter statusändringar av hemligheter i dina nyckelvalv kan du nu börja använda den här meddelandefunktionen. Du kan också ersätta testskriptet i din runbook med kod för att programmatiskt förnya dina hemligheter när de snart upphör att gälla.
 
 Läs mer:
 
 
-- Översikt: [övervaka Key Vault med Azure Event Grid](event-grid-overview.md)
-- Gör så här: [ta emot e-post när hemliga nyckel valv ändringar](event-grid-logicapps.md)
-- [Azure Event Grid händelse schema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)
-- [Översikt över Azure Key Vault](overview.md)
+- Översikt: [Övervaka Key Vault med Azure Event Grid](event-grid-overview.md)
+- Gör så här: Ta [emot e-post när en nyckelvalvshemlighet ändras](event-grid-logicapps.md)
+- [Azure Event Grid händelseschema för Azure Key Vault](../../event-grid/event-schema-key-vault.md)
+- [Azure Key Vault översikt](overview.md)
 - [Översikt för Azure Event Grid](../../event-grid/overview.md)
-- [Översikt över Azure Automation](../../automation/index.yml)
+- [Azure Automation översikt](../../automation/index.yml)

@@ -1,47 +1,47 @@
 ---
-title: Flytta ett nyckel valv till en annan region – Azure Key Vault | Microsoft Docs
-description: Den här artikeln ger vägledning om hur du flyttar ett nyckel valv till en annan region.
+title: Flytta ett nyckelvalv till en annan region – Azure Key Vault | Microsoft Docs
+description: Den här artikeln innehåller råd om hur du flyttar ett nyckelvalv till en annan region.
 services: key-vault
-author: ShaneBala-keyvault
+author: msmbaldwin
 manager: ravijan
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.date: 04/24/2020
-ms.author: sudbalas
-ms.openlocfilehash: 97956b8c6f18d37acd07543b8921b4973be3bda9
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.date: 03/31/2021
+ms.author: mbaldwin
+ms.openlocfilehash: ac2f6347776c2f5d230065b80b1c0336e21e181c
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106066661"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107751804"
 ---
-# <a name="move-an-azure-key-vault-across-regions"></a>Flytta ett Azure Key Vault över regioner
+# <a name="move-an-azure-key-vault-across-regions"></a>Flytta ett Azure-nyckelvalv mellan regioner
 
-Azure Key Vault stöder inte en resurs flyttnings åtgärd som tillåter att ett nyckel valv flyttas från en region till en annan. Den här artikeln beskriver lösningar för organisationer som har ett företag som behöver flytta ett nyckel valv till en annan region. Varje lösnings alternativ har begränsningar. Det är viktigt att förstå konsekvenserna av dessa lösningar innan du försöker tillämpa dem i en produktions miljö.
+Azure Key Vault stöder inte en resursflyttningsåtgärd som tillåter flytt av ett nyckelvalv från en region till en annan. Den här artikeln beskriver lösningar för organisationer som har ett affärs behov av att flytta ett nyckelvalv till en annan region. Varje lösning har begränsningar. Det är viktigt att förstå konsekvenserna av dessa lösningar innan du försöker tillämpa dem i en produktionsmiljö.
 
-Om du vill flytta ett nyckel valv till en annan region skapar du ett nyckel valv i den andra regionen och kopierar sedan manuellt varje enskild hemlighet från det befintliga nyckel valvet till det nya nyckel valvet. Du kan göra detta med något av följande två alternativ.
+Om du vill flytta ett nyckelvalv till en annan region skapar du ett nyckelvalv i den andra regionen och kopierar sedan manuellt varje enskild hemlighet från ditt befintliga nyckelvalv till det nya nyckelvalvet. Du kan göra detta med något av följande två alternativ.
 
 ## <a name="design-considerations"></a>Designöverväganden
 
-Kom ihåg följande koncept innan du börjar:
+Tänk på följande innan du börjar:
 
-* Nyckel valvs namn är globalt unika. Du kan inte återanvända ett valv namn.
-* Du måste konfigurera om dina åtkomst principer och nätverks konfigurations inställningar i det nya nyckel valvet.
-* Du måste konfigurera om mjuk borttagnings-och rensnings skyddet i det nya nyckel valvet.
-* Säkerhets kopierings-och återställnings åtgärden bevarar inte inställningarna för autorotation. Du kan behöva konfigurera om inställningarna.
+* Namn på nyckelvalv är globalt unika. Du kan inte återanvända ett valvnamn.
+* Du måste konfigurera om åtkomstprinciperna och inställningarna för nätverkskonfiguration i det nya nyckelvalvet.
+* Du måste konfigurera om mjuk borttagning och rensningsskydd i det nya nyckelvalvet.
+* Säkerhetskopierings- och återställningsåtgärden bevarar inte inställningarna för automatiskrotation. Du kan behöva konfigurera om inställningarna.
 
-## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Alternativ 1: Använd säkerhets kopierings-och återställnings kommandona i Key Vault
+## <a name="option-1-use-the-key-vault-backup-and-restore-commands"></a>Alternativ 1: Använd kommandona för säkerhetskopiering och återställning av nyckelvalvet
 
-Du kan säkerhetskopiera varje enskild hemlighet, nyckel och certifikat i valvet genom att använda säkerhets kopierings kommandot. Dina hemligheter laddas ned som en krypterad blob. Du kan sedan återställa blobben till det nya nyckel valvet. En lista över kommandon finns i [Azure Key Vault-kommandon](/powershell/module/azurerm.keyvault#key_vault).
+Du kan säkerhetskopiera varje enskild hemlighet, nyckel och certifikat i valvet med hjälp av säkerhetskopieringskommandot. Dina hemligheter laddas ned som en krypterad blob. Du kan sedan återställa bloben till det nya nyckelvalvet. En lista över kommandon finns i [Azure Key Vault kommandon](/powershell/module/azurerm.keyvault#key_vault).
 
-Att använda säkerhets kopierings-och återställnings kommandon har två begränsningar:
+Att använda kommandona för säkerhetskopiering och återställning har två begränsningar:
 
-* Du kan inte säkerhetskopiera ett nyckel valv i en geografi och återställa det till ett annat geografiskt område. Mer information finns i avsnittet om [Azure-geografiska](https://azure.microsoft.com/global-infrastructure/geographies/)områden.
+* Du kan inte valva upp ett nyckelvalv i ett geografiskt område och återställa det till ett annat geografiskt område. Mer information finns i [Azure-geografiska områden.](https://azure.microsoft.com/global-infrastructure/geographies/)
 
 * Säkerhetskopieringskommandot säkerhetskopierar alla versioner av varje hemlighet. Om du har en hemlighet med ett stort antal tidigare versioner (fler än 10) kanske storleken på begäran överskrider maxgränsen och åtgärden misslyckas.
 
-## <a name="option-2-manually-download-and-upload-the-key-vault-secrets"></a>Alternativ 2: Hämta och ladda ned nyckel valv hemligheter manuellt
+## <a name="option-2-manually-download-and-upload-the-key-vault-secrets"></a>Alternativ 2: Ladda ned och ladda upp nyckelvalvshemligheterna manuellt
 
-Du kan ladda ned vissa hemliga typer manuellt. Du kan till exempel Ladda ned certifikat som en PFX-fil. Med det här alternativet elimineras de geografiska begränsningarna för vissa typer av hemliga typer, t. ex. certifikat. Du kan ladda upp PFX-filerna till alla nyckel valv i vilken region som helst. Hemligheterna laddas ned i ett format som inte är lösenordsskyddade. Du ansvarar för att skydda dina hemligheter under flytten.
+Du kan ladda ned vissa hemliga typer manuellt. Du kan till exempel ladda ned certifikat som en PFX-fil. Det här alternativet eliminerar geografiska begränsningar för vissa hemliga typer, till exempel certifikat. Du kan ladda upp PFX-filerna till val annat nyckelvalv i valfri region. Hemligheterna laddas ned i ett icke-lösenordsskyddat format. Du ansvarar för att skydda dina hemligheter under flytten.
