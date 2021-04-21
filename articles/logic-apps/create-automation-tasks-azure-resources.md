@@ -1,53 +1,53 @@
 ---
-title: Skapa automatiserings uppgifter för att hantera och övervaka Azure-resurser
-description: Konfigurera automatiserade uppgifter som hjälper dig att hantera Azure-resurser och övervaka kostnader genom att skapa arbets flöden som körs på Azure Logic Apps.
+title: Skapa automatiseringsuppgifter för att hantera och övervaka Azure-resurser
+description: Konfigurera automatiserade uppgifter som hjälper dig att hantera Azure-resurser och övervaka kostnader genom att skapa arbetsflöden som körs Azure Logic Apps.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: logicappspm
 ms.topic: conceptual
-ms.date: 02/19/2021
-ms.openlocfilehash: 8180fe8554e5fff83e4caef8c245839518649ca1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/05/2021
+ms.openlocfilehash: 0a98f9e4b108d2498fa19bc0b041f9d52272c7d2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719057"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774944"
 ---
-# <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Hantera Azure-resurser och övervaka kostnader genom att skapa automatiserings uppgifter (för hands version)
+# <a name="manage-azure-resources-and-monitor-costs-by-creating-automation-tasks-preview"></a>Hantera Azure-resurser och övervaka kostnader genom att skapa automatiseringsuppgifter (förhandsversion)
 
 > [!IMPORTANT]
 > Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-För att hjälpa dig att hantera [Azure-resurser](../azure-resource-manager/management/overview.md#terminology) enklare kan du skapa automatiserade hanterings uppgifter för en speciell resurs eller resurs grupp med hjälp av mallar för automatisering, som varierar i tillgänglighet baserat på resurs typen. För ett [Azure Storage-konto](../storage/common/storage-account-overview.md)kan du till exempel konfigurera en automatiserings uppgift som skickar dig månads kostnaden för det lagrings kontot. För en [virtuell Azure-dator](https://azure.microsoft.com/services/virtual-machines/)kan du skapa en automatiserings uppgift som aktiverar eller inaktiverar den virtuella datorn enligt ett fördefinierat schema.
+För att hjälpa dig att hantera [Azure-resurser](../azure-resource-manager/management/overview.md#terminology) enklare kan du skapa automatiserade hanteringsuppgifter för en specifik resurs eller resursgrupp med hjälp av automatiseringsaktivitetsmallar, som varierar i tillgänglighet baserat på resurstypen. För ett [Azure Storage-konto kan du till](../storage/common/storage-account-overview.md)exempel konfigurera en automationsaktivitet som skickar månadskostnaden för det lagringskontot. För en [virtuell Azure-dator](https://azure.microsoft.com/services/virtual-machines/)kan du skapa en automatiseringsuppgift som aktiverar eller inaktiverar den virtuella datorn enligt ett fördefinierat schema.
 
-I bakgrunden är en automatiserings uppgift i själva verket ett arbets flöde som körs på den [Azure Logic Apps](../logic-apps/logic-apps-overview.md) tjänsten och faktureras med samma [pris sättnings](https://azure.microsoft.com/pricing/details/logic-apps/) priser och [pris sättnings modell](../logic-apps/logic-apps-pricing.md). När du har skapat uppgiften kan du Visa och redigera det underliggande arbets flödet genom att öppna uppgiften i Logic App Designer. När en aktivitet har slutfört minst en körning kan du granska status, historik, indata och utdata för varje körning.
+I bakgrunden är en automatiseringsuppgift i själva verket ett arbetsflöde som körs [på Azure Logic Apps-tjänsten](../logic-apps/logic-apps-overview.md) och debiteras med samma [priser](https://azure.microsoft.com/pricing/details/logic-apps/) och [prismodell.](../logic-apps/logic-apps-pricing.md) När du har skapat uppgiften kan du visa och redigera det underliggande arbetsflödet genom att öppna uppgiften i Logikappdesignern. När en uppgift har körts klart kan du granska status, historik, indata och utdata för varje körning.
 
-Här är tillgängliga uppgiftsmallar i den här för hands versionen:
+Här är de tillgängliga uppgiftsmallarna i den här förhandsversionen:
 
-| Resurstyp | Uppgiftsmallar för automatisering |
+| Resurstyp | Mallar för Automation-uppgifter |
 |---------------|---------------------------|
 | Azure-resursgrupper | **När resursen tas bort** |
-| Alla Azure-resurser | **Skicka månatlig kostnad för resurs** |
-| Virtuella Azure-datorer | Dessutom: <p>- **Stäng av virtuell dator** <br>- **Starta virtuell dator** |
-| Azure Storage-konton | Dessutom: <p>- **Ta bort gamla blobbar** |
+| Alla Azure-resurser | **Skicka månadskostnad för resurs** |
+| Virtuella Azure-datorer | Dessutom: <p>- **Stänga av virtuell dator** <br>- **Starta virtuell dator** |
+| Azure Storage-konton | Dessutom: <p>- **Ta bort gamla blobar** |
 | Azure Cosmos DB | Dessutom <p>- **Skicka frågeresultat via e-post** |
 |||
 
 Den här artikeln visar hur du utför följande uppgifter:
 
-* [Skapa en automatiserings uppgift](#create-automation-task) för en angiven Azure-resurs.
+* [Skapa en automatiseringsuppgift](#create-automation-task) för en specifik Azure-resurs.
 
-* [Granska aktivitetens historik](#review-task-history), som innehåller körnings status, indata, utdata och annan historisk information.
+* [Granska en uppgifts historik](#review-task-history), som innehåller körningsstatus, indata, utdata och annan historisk information.
 
-* [Redigera uppgiften](#edit-task) så att du kan uppdatera uppgiften, eller anpassa aktivitetens underliggande arbets flöde i Logic Apps designer.
+* [Redigera uppgiften så](#edit-task) att du kan uppdatera uppgiften eller anpassa aktivitetens underliggande arbetsflöde i Logikappdesignern.
 
 <a name="differences"></a>
 
-## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Hur skiljer sig automatiserings uppgifterna från Azure Automation?
+## <a name="how-do-automation-tasks-differ-from-azure-automation"></a>Hur skiljer sig automatiseringsuppgifter från Azure Automation?
 
-För närvarande kan du bara skapa en automatiserings uppgift på resurs nivå, visa aktivitetens körnings historik och redigera aktivitetens underliggande Logic app-arbetsflöde, som drivs av [Azure Logic Apps](../logic-apps/logic-apps-overview.md) tjänsten. Automatiserings aktiviteter är mer grundläggande och lätta än [Azure Automation](../automation/automation-intro.md).
+För närvarande kan du bara skapa en automatiseringsaktivitet på [resursnivå,](../logic-apps/logic-apps-overview.md) visa aktivitetens körningshistorik och redigera aktivitetens underliggande logikapparbetsflöde, som drivs av Azure Logic Apps-tjänsten. Automatiseringsuppgifter är enklare och enklare än [att Azure Automation](../automation/automation-intro.md).
 
-I jämförelse är Azure Automation en molnbaserad automatiserings-och konfigurations tjänst som stöder konsekvent hantering i dina Azure-och icke-Azure-miljöer. Tjänsten omfattar [process automatisering för att dirigera processer](../automation/automation-intro.md#process-automation) med hjälp av [Runbooks](../automation/automation-runbook-execution.md), konfigurations hantering med [ändrings spårning och inventering](../automation/change-tracking/overview.md), uppdaterings hantering, delade funktioner och heterogena funktioner. Automation ger dig fullständig kontroll under distribution, drift och inaktive ring av arbets belastningar och resurser.
+Som jämförelse är Azure Automation en molnbaserad automatiserings- och konfigurationstjänst som stöder konsekvent hantering i dina Azure- och icke-Azure-miljöer. Tjänsten omfattar [processautomatisering för](../automation/automation-intro.md#process-automation) orkestrering av processer med hjälp av [runbooks, konfigurationshantering med ändringsspårning](../automation/automation-runbook-execution.md)och inventering, uppdateringshantering, delade funktioner och heterogena funktioner. [](../automation/change-tracking/overview.md) Automatisering ger dig fullständig kontroll under distribution, drift och inaktivering av arbetsbelastningar och resurser.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -55,220 +55,220 @@ I jämförelse är Azure Automation en molnbaserad automatiserings-och konfigura
 
 * Den Azure-resurs som du vill hantera. I den här artikeln används ett Azure Storage-konto som exempel.
 
-* Ett Office 365-konto om du vill följa med exemplet, som skickar e-post med hjälp av Office 365 Outlook.
+* Ett Office 365-konto om du vill följa med i exemplet, som skickar dig e-post med hjälp av Office 365 Outlook.
 
 <a name="create-automation-task"></a>
 
-## <a name="create-an-automation-task"></a>Skapa en automatiserings uppgift
+## <a name="create-an-automation-task"></a>Skapa en automatiseringsuppgift
 
-1. Leta upp den resurs som du vill hantera i [Azure Portal](https://portal.azure.com).
+1. I [Azure Portal](https://portal.azure.com)du den resurs som du vill hantera.
 
-1. I menyn resurs bläddrar du till avsnittet **Automation** och väljer **aktiviteter**
+1. På resursmenyn bläddrar du till **avsnittet Automation** och väljer **Uppgifter**
 
-   ![Skärm bild som visar den Azure Portal och en resurs meny för lagrings konton där meny alternativet "uppgifter" har marker ATS för "Automation"-avsnittet.](./media/create-automation-tasks-azure-resources/storage-account-menu-automation-section.png)
+   ![Skärmbild som visar Azure Portal och en resursmeny för lagringskontot där menyalternativet "Uppgifter" är markerat i avsnittet "Automation".](./media/create-automation-tasks-azure-resources/storage-account-menu-automation-section.png)
 
-1. I fönstret **uppgifter** väljer du **Lägg till** så att du kan välja en uppgiftsmall.
+1. I fönstret **Uppgifter** väljer du Lägg **till** så att du kan välja en uppgiftsmall.
 
-   ![Skärm bild som visar fönstret med lagrings kontots aktiviteter där verktygsfältet har valt Lägg till](./media/create-automation-tasks-azure-resources/add-automation-task.png)
+   ![Skärmbild som visar fönstret "Uppgifter" för lagringskontot där verktygsfältet har "Lägg till" markerat](./media/create-automation-tasks-azure-resources/add-automation-task.png)
 
-1. I fönstret **Lägg till en åtgärd** väljer du mallen för den aktivitet som du vill skapa under **Välj en mall**. Om nästa sida inte visas väljer du **Nästa: autentisering**.
+1. I fönstret **Lägg till en** uppgift under Välj en **mall** väljer du mallen för den uppgift som du vill skapa. Om nästa sida inte visas väljer du **Nästa: Autentisering**.
 
-   Det här exemplet fortsätter genom att välja den **Skicka månads kostnaden för resurs** aktivitets mal len.
+   Det här exemplet fortsätter genom att välja **mallen Skicka månadskostnad för** resursaktivitet.
 
-   ![Skärm bild som visar valen, "skicka månatlig kostnad för resursen" och "Nästa: autentisering"](./media/create-automation-tasks-azure-resources/select-task-template.png)
+   ![Skärmbild som visar valen "Skicka månadskostnad för resurs" och "Nästa: Autentisering"](./media/create-automation-tasks-azure-resources/select-task-template.png)
 
-1. Under **autentisering** i avsnittet **anslutningar** väljer du **skapa** för varje anslutning som visas i aktiviteten så att du kan ange autentiseringsuppgifter för alla anslutningar. Typerna av anslutningar i varje aktivitet varierar beroende på aktiviteten.
+1. Under **Autentisering** går du till **avsnittet** Anslutningar och väljer **Skapa** för varje anslutning som visas i uppgiften så att du kan ange autentiseringsuppgifter för alla anslutningar. Anslutningstyperna i varje aktivitet varierar beroende på aktivitet.
 
-   I det här exemplet visas endast en av de anslutningar som krävs för den här aktiviteten.
+   Det här exemplet visar bara en av de anslutningar som krävs av den här aktiviteten.
 
-   ![Skärm bild som visar det valda alternativet "skapa" för Azure Resource Manager anslutningen](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
+   ![Skärmbild som visar det valda alternativet "Skapa" för Azure Resource Manager anslutningen](./media/create-automation-tasks-azure-resources/create-authenticate-connections.png)
 
 1. När du uppmanas till det loggar du in med dina autentiseringsuppgifter för Azure-kontot.
 
-   ![Skärm bild som visar valet, "logga in"](./media/create-automation-tasks-azure-resources/create-connection-sign-in.png)
+   ![Skärmbild som visar valet "Logga in"](./media/create-automation-tasks-azure-resources/create-connection-sign-in.png)
 
-   Varje lyckad autentiserad anslutning ser ut ungefär som i det här exemplet:
+   Varje autentiserad anslutning ser ut ungefär som i det här exemplet:
 
-   ![Skärm bild som visar att anslutningen har skapats](./media/create-automation-tasks-azure-resources/create-connection-success.png)
+   ![Skärmbild som visar att anslutningen har skapats](./media/create-automation-tasks-azure-resources/create-connection-success.png)
 
-1. När du har autentiserat alla anslutningar väljer du **Nästa: konfiguration** om nästa sida inte visas.
+1. När du har autentiserat alla anslutningar **väljer du Nästa:** Konfiguration om nästa sida inte visas.
 
-1. Under **konfiguration** anger du ett namn för uppgiften och annan information som krävs för uppgiften. När du är färdig väljer du **Skapa**.
+1. Under **Konfiguration** anger du ett namn på aktiviteten och eventuell annan information som krävs för uppgiften. När du är färdig väljer du **Skapa**.
 
    > [!NOTE]
-   > Du kan inte ändra aktivitets namnet när det har skapats, så Överväg ett namn som fortfarande gäller om du [redigerar det underliggande arbets flödet](#edit-task-workflow). Ändringar som du gör i det underliggande arbets flödet gäller endast för den uppgift som du har skapat, inte uppgifts mal len.
+   > Du kan inte ändra aktivitetsnamnet när du har skapat det, så tänk på ett namn som fortfarande gäller om du [redigerar det underliggande arbetsflödet](#edit-task-workflow). Ändringar som du gör i det underliggande arbetsflödet gäller endast för den uppgift som du har skapat, inte uppgiftsmallen.
    >
-   > Om du till exempel namnger aktiviteten `Send monthly cost` , men senare redigerar det underliggande arbets flödet för att köras varje vecka, kan du inte ändra aktivitetens namn till `Send weekly cost` .
+   > Om du till exempel ger aktiviteten namnet , men senare redigerar det underliggande arbetsflödet så att det körs varje vecka, kan du inte ändra `Send monthly cost` aktivitetens namn till `Send weekly cost` .
 
    Uppgifter som skickar e-postaviseringar kräver en e-postadress.
 
-   ![Skärm bild som visar nödvändig information för den valda aktiviteten](./media/create-automation-tasks-azure-resources/provide-task-information.png)
+   ![Skärmbild som visar nödvändig information för den valda uppgiften](./media/create-automation-tasks-azure-resources/provide-task-information.png)
 
-   Uppgiften som du skapade, som aktive ras automatiskt och körs, visas nu i listan **Automation-uppgifter** .
+   Den uppgift som du skapade, som är live och körs automatiskt, visas nu i **listan Automation-uppgifter.**
 
-   ![Skärm bild som visar listan med automatiserings uppgifter](./media/create-automation-tasks-azure-resources/automation-tasks-list.png)
+   ![Skärmbild som visar listan med automatiseringsuppgifter](./media/create-automation-tasks-azure-resources/automation-tasks-list.png)
 
    > [!TIP]
-   > Om aktiviteten inte visas direkt kan du försöka med att uppdatera uppgifts listan eller vänta lite innan du uppdaterar. I verktygsfältet väljer du **Uppdatera**.
+   > Om uppgiften inte visas omedelbart kan du prova att uppdatera uppgiftslistan eller vänta lite innan du uppdaterar. Välj Uppdatera i **verktygsfältet.**
 
-   När den markerade aktiviteten har körts får du ett e-postmeddelande som ser ut som i det här exemplet:
+   När den valda uppgiften körs får du ett e-postmeddelande som ser ut som i det här exemplet:
 
-   ![Skärm bild som visar e-postavisering som skickats av uppgift](./media/create-automation-tasks-azure-resources/email-notification-received.png)
+   ![Skärmbild som visar e-postaviseringar som skickats av uppgift](./media/create-automation-tasks-azure-resources/email-notification-received.png)
 
 <a name="review-task-history"></a>
 
-## <a name="review-task-history"></a>Granska uppgifts historik
+## <a name="review-task-history"></a>Granska aktivitetshistorik
 
-Följ dessa steg om du vill visa en aktivitets historik för körningar tillsammans med deras status, indata, utdata och annan information:
+Följ dessa steg om du vill visa en aktivitets historik över körningar tillsammans med deras status, indata, utdata och annan information:
 
-1. Leta upp den resurs som innehåller den aktivitets historik som du vill granska i [Azure Portal](https://portal.azure.com).
+1. I [Azure Portal](https://portal.azure.com)du den resurs som har den aktivitetshistorik som du vill granska.
 
-1. Välj **automatiserings uppgifter** på resurs menyn under **Inställningar**.
+1. På resursens meny går du till **Inställningar och** väljer **Automation-uppgifter.**
 
-1. Leta upp den uppgift som du vill granska i listan uppgifter. I den aktivitetens **körnings** kolumn väljer du **Visa**.
+1. I uppgiftslistan hittar du den uppgift som du vill granska. I kolumnen Körningar **för aktiviteten** väljer du **Visa**.
 
-   ![Skärm bild som visar en uppgift och valt visnings alternativ](./media/create-automation-tasks-azure-resources/view-runs-for-task.png)
+   ![Skärmbild som visar en uppgift och det valda alternativet "Visa"](./media/create-automation-tasks-azure-resources/view-runs-for-task.png)
 
-   I rutan **körnings historik** visas alla körningar för aktiviteten tillsammans med deras status, start tid, identifierare och körnings varaktighet.
+   Fönstret **Körningshistorik** visar alla körningar för uppgiften tillsammans med deras status, starttider, identifierare och körningstid.
 
-   ![Skärm bild som visar en aktivitets körningar, deras status och annan information](./media/create-automation-tasks-azure-resources/view-runs-history.png)
+   ![Skärmbild som visar en uppgifts körningar, deras status och annan information](./media/create-automation-tasks-azure-resources/view-runs-history.png)
 
-   Här kan du Visa status för en körning:
+   Här visas möjliga statusar för en körning:
 
    | Status | Beskrivning |
    |--------|-------------|
-   | **Avbröts** | Uppgiften avbröts under körning. |
-   | **Misslyckades** | Aktiviteten har minst en misslyckad åtgärd, men inga efterföljande åtgärder fanns för att hantera felen. |
+   | **Annullerat** | Aktiviteten avbröts när den kördes. |
+   | **Misslyckades** | Uppgiften har minst en misslyckad åtgärd, men det fanns inga efterföljande åtgärder för att hantera felet. |
    | **Körs** | Aktiviteten körs för närvarande. |
-   | **Brutit** | Alla åtgärder har genomförts. En uppgift kan fortfarande slutföras om en åtgärd Miss lyckas, men en efterföljande åtgärd fanns för att hantera felet. |
-   | **Väntar** | Körningen har inte startat ännu och pausats eftersom en tidigare instans av aktiviteten fortfarande körs. |
+   | **Lyckades** | Alla åtgärder lyckades. En uppgift kan fortfarande slutföras om en åtgärd misslyckades, men det fanns en efterföljande åtgärd för att hantera felet. |
+   | **Väntar** | Körningen har inte startat än och har pausats eftersom en tidigare instans av aktiviteten fortfarande körs. |
    |||
 
-   Mer information finns i [Översikt över körnings historik](../logic-apps/monitor-logic-apps.md#review-runs-history)
+   Mer information finns i Granska [körningshistorik](../logic-apps/monitor-logic-apps.md#review-runs-history)
 
-1. Om du vill visa status och annan information för varje steg i en körning väljer du den kör.
+1. Om du vill visa statusar och annan information för varje steg i en körning väljer du den körningen.
 
-   **Körnings fönstret för Logic app** öppnas och visar det underliggande arbets flödet som kördes.
+   Fönstret **Logikappskörning** öppnas och visar det underliggande arbetsflöde som kördes.
 
-   * Ett arbets flöde börjar alltid med en [*utlösare*](../connectors/apis-list.md#triggers-actions). För den här uppgiften börjar arbets flödet med [ **upprepnings** utlösaren](../connectors/connectors-native-recurrence.md).
+   * Ett arbetsflöde börjar alltid med en [*utlösare*](../connectors/apis-list.md#triggers). För den här uppgiften börjar arbetsflödet med [ **upprepningsutlösaren**](../connectors/connectors-native-recurrence.md).
 
-   * I varje steg visas dess status och körnings tid. Steg som har 0-sekund varaktighet tog mindre än 1 sekund att köra.
+   * Varje steg visar status och körningens varaktighet. Steg med varaktighet på 0 sekunder tog mindre än 1 sekund att köra.
 
-   ![Skärm bild som visar varje steg i körnings-, status-och körnings tid](./media/create-automation-tasks-azure-resources/runs-history-details.png)
+   ![Skärmbild som visar varje steg i körningen, statusen och körningens varaktighet](./media/create-automation-tasks-azure-resources/runs-history-details.png)
 
-1. Om du vill granska indata och utdata för varje steg väljer du steget, som expanderas.
+1. Om du vill granska indata och utdata för varje steg väljer du steget, som expanderar.
 
-   I det här exemplet visas indata för upprepnings utlösaren, som inte har några utdata eftersom utlösaren endast anger när arbets flödet körs och ger inga utdata för efterföljande åtgärder att bearbeta.
+   Det här exemplet visar indata för upprepningsutlösaren, som inte har några utdata eftersom utlösaren endast anger när arbetsflödet körs och inte ger några utdata för efterföljande åtgärder som ska bearbetas.
 
-   ![Skärm bild som visar utökad utlösare och indata](./media/create-automation-tasks-azure-resources/view-trigger-inputs.png)
+   ![Skärmbild som visar den expanderade utlösaren och indata](./media/create-automation-tasks-azure-resources/view-trigger-inputs.png)
 
-   Åtgärden **skicka en e-post** har däremot indata från tidigare åtgärder i arbets flödet och utdata.
+   Åtgärden Skicka ett **e-postmeddelande har** däremot indata från tidigare åtgärder i arbetsflödet och utdata.
 
-   ![Skärm bild som visar en utökad åtgärd, indata och utdata](./media/create-automation-tasks-azure-resources/view-action-inputs-outputs.png)
+   ![Skärmbild som visar en utökad åtgärd, indata och utdata](./media/create-automation-tasks-azure-resources/view-action-inputs-outputs.png)
 
-Information om hur du kan skapa egna automatiserade arbets flöden så att du kan integrera appar, data, tjänster och system som skiljer sig från kontexten för automatiserings aktiviteter för Azure-resurser finns i [snabb start: skapa ditt första integrations arbets flöde med hjälp av Azure Logic Apps-Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md).
+Information om hur du kan skapa egna automatiserade arbetsflöden så att du kan integrera appar, data, tjänster och system, förutom automationsuppgifter för Azure-resurser, finns i [Snabbstart: Skapa](../logic-apps/quickstart-create-first-logic-app-workflow.md)ditt första integreringsarbetsflöde med hjälp av Azure Logic Apps – Azure Portal .
 
 <a name="edit-task"></a>
 
 ## <a name="edit-the-task"></a>Redigera uppgiften
 
-Om du vill ändra en uppgift kan du välja mellan följande alternativ:
+Om du vill ändra en uppgift har du följande alternativ:
 
-* [Redigera uppgiften "infogad"](#edit-task-inline) så att du kan ändra aktivitetens egenskaper, t. ex. anslutnings information eller konfigurations information, till exempel din e-postadress.
+* [Redigera aktiviteten "infogade"](#edit-task-inline) så att du kan ändra aktivitetens egenskaper, till exempel anslutningsinformation eller konfigurationsinformation, till exempel din e-postadress.
 
-* [Redigera aktivitetens underliggande arbets flöde](#edit-task-workflow) i Logic Apps designer.
+* [Redigera aktivitetens underliggande arbetsflöde i](#edit-task-workflow) Logikappdesignern.
 
 <a name="edit-task-inline"></a>
 
-### <a name="edit-the-task-inline"></a>Redigera aktivitets infogat
+### <a name="edit-the-task-inline"></a>Redigera den infogade aktiviteten
 
-1. Leta upp den resurs som innehåller den uppgift som du vill uppdatera i [Azure Portal](https://portal.azure.com).
+1. I [Azure Portal](https://portal.azure.com)du den resurs som har den uppgift som du vill uppdatera.
 
-1. På resurs menyn under **automatisering** väljer du **uppgifter**.
+1. På resursens meny går du till **Automation och** väljer **Uppgifter.**
 
-1. Leta upp den uppgift som du vill uppdatera i listan uppgifter. Öppna menyn för aktivitets ellipser (**...**) och välj **Redigera i rad**.
+1. I uppgiftslistan hittar du den uppgift som du vill uppdatera. Öppna aktivitetens ellipsmeny (**...**) och välj **Redigera på rad.**
 
-   ![Skärm bild som visar menyn öppna ellipser och det valda alternativet "redigera i rad"](./media/create-automation-tasks-azure-resources/view-task-inline.png)
+   ![Skärmbild som visar den öppna ellipsmenyn och det valda alternativet "Redigera på rad"](./media/create-automation-tasks-azure-resources/view-task-inline.png)
 
-   Fliken **autentisering** visas som standard och visar befintliga anslutningar.
+   Fliken Autentisering visas **som** standard och visar de befintliga anslutningarna.
 
-1. Om du vill lägga till nya autentiseringsuppgifter för autentisering eller välja olika befintliga autentiseringsuppgifter för en anslutning öppnar du menyn för anslutningens ellipser (**...**) och väljer antingen **Lägg till ny anslutning** eller om den är tillgänglig, olika autentiseringsuppgifter för autentisering.
+1. Om du vill lägga till nya autentiseringsuppgifter eller välja olika befintliga autentiseringsuppgifter för en anslutning öppnar du anslutningens ellipsmeny (**...**) och väljer antingen **Lägg** till ny anslutning eller, om det är tillgängligt, andra autentiseringsuppgifter.
 
-   ![Skärm bild som visar fliken autentisering, befintliga anslutningar och den valda ellips-menyn](./media/create-automation-tasks-azure-resources/edit-connections.png)
+   ![Skärmbild som visar fliken Autentisering, befintliga anslutningar och den valda ellipsmenyn](./media/create-automation-tasks-azure-resources/edit-connections.png)
 
-1. Om du vill uppdatera andra aktivitets egenskaper väljer du **Nästa: konfiguration**.
+1. Om du vill uppdatera andra aktivitetsegenskaper väljer **du Nästa: Konfiguration.**
 
-   För uppgiften i det här exemplet är den enda egenskapen som är tillgänglig för redigering e-postadressen.
+   För uppgiften i det här exemplet är e-postadressen den enda egenskapen som är tillgänglig för redigering.
 
-   ![Skärm bild som visar fliken konfiguration](./media/create-automation-tasks-azure-resources/edit-task-configuration.png)
+   ![Skärmbild som visar fliken Konfiguration](./media/create-automation-tasks-azure-resources/edit-task-configuration.png)
 
 1. När du är klar väljer du **Spara**.
 
 <a name="edit-task-workflow"></a>
 
-### <a name="edit-the-tasks-underlying-workflow"></a>Redigera aktivitetens underliggande arbets flöde
+### <a name="edit-the-tasks-underlying-workflow"></a>Redigera aktivitetens underliggande arbetsflöde
 
-När du ändrar det underliggande arbets flödet för en automatiserings uppgift påverkar dina ändringar endast aktivitets instansen som du skapade och inte mallen som skapar aktiviteten. När du har gjort och sparat ändringarna kanske det namn som du har angett för den ursprungliga aktiviteten inte längre beskriver uppgiften längre, så du kan behöva återskapa uppgiften med ett annat namn.
+När du ändrar det underliggande arbetsflödet för en automationsaktivitet påverkar ändringarna bara den aktivitetsinstans som du skapade och inte mallen som skapar uppgiften. När du har gjort och sparat ändringarna kanske namnet som du angav för den ursprungliga uppgiften inte längre beskriver uppgiften korrekt, så du kan behöva återskapa uppgiften med ett annat namn.
 
 > [!TIP]
-> Vi rekommenderar att du klonar det underliggande arbets flödet så att du kan redigera den kopierade versionen i stället. På så sätt kan du göra och testa dina ändringar på kopian medan den ursprungliga automatiserings aktiviteten fortsätter att fungera och köras utan att riskera avbrott eller bryta befintliga funktioner. När du är klar med ändringarna och är nöjd med att den nya versionen körs kan du inaktivera eller ta bort den ursprungliga automatiserings aktiviteten och använda den klonade versionen för automatiserings uppgiften. Följande steg innehåller information om hur du klonar ditt arbets flöde.
+> Det är bästa praxis att klona det underliggande arbetsflödet så att du kan redigera den kopierade versionen i stället. På så sätt kan du göra och testa ändringarna på kopian medan den ursprungliga automatiseringsuppgiften fortsätter att fungera och köras utan att störa eller bryta befintliga funktioner. När du har slutfört ändringarna och är nöjd med att den nya versionen körs kan du inaktivera eller ta bort den ursprungliga automationsaktiviteten och använda den klonade versionen för automationsaktiviteten. Följande steg innehåller information om hur du klonar arbetsflödet.
 
-1. Leta upp den resurs som innehåller den uppgift som du vill uppdatera i [Azure Portal](https://portal.azure.com).
+1. I [Azure Portal](https://portal.azure.com)du den resurs som har den uppgift som du vill uppdatera.
 
-1. På resurs menyn under **automatisering** väljer du **uppgifter**.
+1. På resursens meny går du till **Automation och** väljer **Uppgifter.**
 
-1. Leta upp den uppgift som du vill uppdatera i listan uppgifter. Öppna menyn för aktivitets ellipser (**...**) och välj **Öppna i Logic Apps**.
+1. I uppgiftslistan hittar du den uppgift som du vill uppdatera. Öppna uppgiftens ellipsmeny (**...**) och välj **Öppna i Logic Apps**.
 
-   ![Skärm bild som visar menyn öppna ellipser och det valda alternativet, "öppna i Logic Apps"](./media/create-automation-tasks-azure-resources/edit-task-logic-app-designer.png)
+   ![Skärmbild som visar den öppna ellipsmenyn och det valda alternativet "Öppna i Logic Apps"](./media/create-automation-tasks-azure-resources/edit-task-logic-app-designer.png)
 
-   Aktivitetens underliggande arbets flöde öppnas i Azure Logic Apps tjänsten och visar **översikts** fönstret där du kan visa samma körnings historik som är tillgänglig för aktiviteten.
+   Aktivitetens underliggande arbetsflöde öppnas i Azure Logic Apps-tjänsten och  visar fönstret Översikt där du kan visa samma körningshistorik som är tillgänglig för aktiviteten.
 
-   ![Skärm bild som visar uppgiften i Azure Logic Apps Visa med översikts fönstret markerat](./media/create-automation-tasks-azure-resources/task-logic-apps-view.png)
+   ![Skärmbild som visar uppgiften i Azure Logic Apps med fönstret Översikt valt](./media/create-automation-tasks-azure-resources/task-logic-apps-view.png)
 
-1. Öppna det underliggande arbets flödet i Logic Apps designer genom att välja **Logic Apps designer** på menyn Logic Apps.
+1. Om du vill öppna det underliggande arbetsflödet i Logikappdesignern går du till logikappens meny och väljer **Logikappdesigner.**
 
-   ![Skärm bild som visar meny alternativet "Logic App Designer" valt och design ytan med det underliggande arbets flödet](./media/create-automation-tasks-azure-resources/view-task-workflow-logic-app-designer.png)
+   ![Skärmbild som visar menyalternativet "Logikappdesigner" markerat och designytan med det underliggande arbetsflödet](./media/create-automation-tasks-azure-resources/view-task-workflow-logic-app-designer.png)
 
-   Du kan nu redigera egenskaperna för arbets flödets utlösare och åtgärder samt redigera utlösaren och åtgärderna som definierar själva arbets flödet. Men i bästa praxis följer du stegen för att klona arbets flödet så att du kan göra dina ändringar på en kopia medan det ursprungliga arbets flödet fortsätter att fungera och köras.
+   Nu kan du redigera egenskaperna för arbetsflödets utlösare och åtgärder samt redigera utlösaren och åtgärderna som definierar själva arbetsflödet. Som bästa praxis bör du dock följa stegen för att klona arbetsflödet så att du kan göra ändringarna på en kopia medan det ursprungliga arbetsflödet fortsätter att fungera och köras.
 
-1. Följ dessa steg om du vill klona arbets flödet och redigera den kopierade versionen i stället:
+1. Följ dessa steg om du vill klona arbetsflödet och redigera den kopierade versionen i stället:
 
-   1. På menyn Logic app-arbetsflöde väljer du **Översikt**.
+   1. På logikappens arbetsflödesmeny väljer du **Översikt.**
 
-   1. I verktygsfältet i översikts fönstret väljer du **klona**.
+   1. I verktygsfältet i översiktsfönstret väljer du **Klona**.
 
-   1. I fönstret för att skapa logiska appar, under **namn**, anger du ett nytt namn för ditt kopierade Logic app-arbetsflöde.
+   1. Ange ett nytt namn för det kopierade **logikapparbetsflödet** under Namn i fönstret för att skapa logikappen.
 
-      Förutom för **Logic app-status** är de andra egenskaperna inte tillgängliga för redigering. 
+      Förutom **Logic App Status** är de andra egenskaperna inte tillgängliga för redigering. 
       
-   1. Under **Logic app-status** väljer du **inaktive rad** så att det klonade arbets flödet inte körs medan du gör dina ändringar. Du kan aktivera arbets flödet när du är redo att testa dina ändringar.
+   1. Under **Status för logikapp** väljer **du** Inaktiverad så att det klonade arbetsflödet inte körs medan du gör dina ändringar. Du kan aktivera arbetsflödet när du är redo att testa ändringarna.
 
-   1. När Azure har slutfört etableringen av ditt klonade arbets flöde kan du söka efter och öppna det arbets flödet i Logic Apps designer.
+   1. När Azure har etablerat det klonade arbetsflödet kan du söka efter och öppna arbetsflödet i Logic App Designer.
 
 1. Om du vill visa egenskaperna för utlösaren eller en åtgärd expanderar du utlösaren eller åtgärden.
 
-   Du kan till exempel ändra upprepnings utlösaren så att den körs varje vecka i stället för varje månad.
+   Du kan till exempel ändra upprepningsutlösaren så att den körs varje vecka i stället för varje månad.
 
-   ![Skärm bild som visar den utökade upprepnings utlösaren med frekvens listan öppen för att visa tillgängliga frekvens alternativ](./media/create-automation-tasks-azure-resources/edit-recurrence-trigger.png)
+   ![Skärmbild som visar den expanderade upprepningsutlösaren med listan Frekvens öppen för att visa tillgängliga frekvensalternativ](./media/create-automation-tasks-azure-resources/edit-recurrence-trigger.png)
 
-   Mer information om upprepnings utlösaren finns i [skapa, schemalägga och köra återkommande uppgifter och arbets flöden med upprepnings utlösaren](../connectors/connectors-native-recurrence.md). Mer information om andra utlösare och åtgärder som du kan använda finns i [kopplingar för Azure Logic Apps](../connectors/apis-list.md).
+   Mer information om upprepningsutlösaren finns i [Skapa, schemalägga och köra återkommande uppgifter och arbetsflöden med upprepningsutlösaren](../connectors/connectors-native-recurrence.md). Mer information om andra utlösare och åtgärder som du kan använda finns i [Anslutningsappar för Azure Logic Apps](../connectors/apis-list.md).
 
-1. Spara ändringarna genom att välja **Spara** i verktygsfältet designer.
+1. Spara ändringarna genom att välja Spara i **designerverktygsfältet.**
 
-   ![Skärm bild som visar verktygsfältet designer och det valda kommandot "Spara"](./media/create-automation-tasks-azure-resources/save-updated-workflow.png)
+   ![Skärmbild som visar designerverktygsfältet och det valda kommandot "Spara"](./media/create-automation-tasks-azure-resources/save-updated-workflow.png)
 
-1. Om du vill testa och köra det uppdaterade arbets flödet väljer du **Kör** i verktygsfältet designer.
+1. Om du vill testa och köra det uppdaterade arbetsflödet går du till designerverktygsfältet och väljer **Kör**.
 
-   När körningen är klar visar designern arbets flödets körnings information.
+   När körningen är klar visar designern körningsinformationen för arbetsflödet.
 
-   ![Skärm bild som visar arbets flödets körnings information i designern](./media/create-automation-tasks-azure-resources/view-run-details-designer.png)
+   ![Skärmbild som visar arbetsflödets körningsinformation i designern](./media/create-automation-tasks-azure-resources/view-run-details-designer.png)
 
-1. Om du vill inaktivera arbets flödet så att aktiviteten inte fortsätter att köras, se [Hantera Logic Apps i Azure Portal](../logic-apps/manage-logic-apps-with-azure-portal.md).
+1. Om du vill inaktivera arbetsflödet så att aktiviteten inte fortsätter att köras kan du gå [till Hantera logikappar i Azure Portal](../logic-apps/manage-logic-apps-with-azure-portal.md).
 
 ## <a name="provide-feedback"></a>Ge feedback
 
-Vi vill gärna höra från dig! [Kontakta Azure Logic Apps-teamet](mailto:logicappspm@microsoft.com)om du vill rapportera buggar, ge feedback eller ställa frågor om den här förhands gransknings funktionen.
+Vi vill gärna höra från dig! Om du vill rapportera buggar, ge feedback eller ställa frågor om den här förhandsversionen kan [du kontakta Azure Logic Apps team](mailto:logicappspm@microsoft.com).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Hantera Logic Apps i Azure Portal](../logic-apps/manage-logic-apps-with-azure-portal.md)
+* [Hantera logikappar i Azure Portal](../logic-apps/manage-logic-apps-with-azure-portal.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: skapa en enskild databas'
-description: Använd det här Azure CLI-exempel skriptet för att skapa en enskild databas.
+title: 'Azure CLI: Skapa en enkel databas'
+description: Använd det här Azure CLI-exempelskriptet för att skapa en enkel databas.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,18 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: dc17ab55cb473036d8c40bd1e533bcc20c4c6259
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00346accbccd67f542a8496ac097b0236c56a08c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92742251"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773827"
 ---
-# <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Använd Azure CLI för att skapa en enskild databas och konfigurera en brand Väggs regel
+# <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Använda Azure CLI för att skapa en enkel databas och konfigurera en brandväggsregel
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Det här skript exemplet för Azure CLI skapar en enda databas i Azure SQL Database och konfigurerar en brand Väggs regel på server nivå. När skriptet har körts kan databasen nås från alla Azure-tjänster och den konfigurerade IP-adressen.
+Det här Azure CLI-skriptexempel skapar en enkel databas Azure SQL Database och konfigurerar en brandväggsregel på servernivå. När skriptet har körts kan databasen nås från alla Azure-tjänster och den konfigurerade IP-adressen.
 
 Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -38,21 +38,21 @@ Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI v
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Beskrivning |
 |---|---|
-| [az sql server](/cli/azure/sql/server#az-sql-server-create) | Server kommandon |
-| [AZ SQL Server-brandvägg](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create) | Server brand Väggs kommandon. |
-| [AZ SQL DB](/cli/azure/sql/db#az-sql-db-create) | Databas kommandon. |
+| [az sql server](/cli/azure/sql/server#az_sql_server_create) | Serverkommandon |
+| [az sql server firewall](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | Serverbrandväggskommandon. |
+| [az sql db](/cli/azure/sql/db#az_sql_db_create) | Databaskommandon. |
 
 ## <a name="next-steps"></a>Nästa steg
 

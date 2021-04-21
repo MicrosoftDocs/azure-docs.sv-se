@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, contperf-fy21q2
 ms.date: 03/09/2021
-ms.openlocfilehash: c614f2f60adfa2a29a01000cd3adf4791591b8b5
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: d5500c04b4299c215eba843530dc84932fa10894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378762"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775051"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Anpassa Azure HDInsight med hjälp av skriptåtgärder
 
@@ -37,7 +37,7 @@ En skriptåtgärd är Ett Bash-skript som körs på noderna i ett HDInsight-klus
 
      - En offentlig fildelningstjänst som är tillgänglig via `https://` sökvägar. Exempel är Azure Blob, GitHub eller OneDrive. Exempel på URI:er finns [i Exempelskript för åtgärdsskript.](#example-script-action-scripts)
 
-  - För kluster med ESP stöds `wasb://` URI:erna `wasbs://` `http[s]://` eller eller .
+  - För kluster med ESP stöds `wasb://` URI:erna `wasbs://` `http[s]://` eller .
 
 - Skriptåtgärderna kan begränsas till att endast köras på vissa nodtyper. Exempel är huvudnoder eller arbetsnoder.
 - Skriptåtgärderna kan bevaras eller *ad hoc.*
@@ -60,9 +60,9 @@ Klustret sparar en historik över alla skript som har körts. Historiken hjälpe
 För ett domän-ansluten HDInsight-kluster finns det två Apache Ambari-behörigheter som krävs när du använder skriptåtgärder med klustret:
 
 * **AMBARI. KÖR \_ DET ANPASSADE \_ KOMMANDOT**. Rollen Ambari-administratör har den här behörigheten som standard.
-* **KLUSTER. KÖR \_ ANPASSAT \_ KOMMANDO**. Både HDInsight-klusteradministratören och Ambari-administratören har den här behörigheten som standard.
+* **KLUSTER. KÖR \_ DET ANPASSADE \_ KOMMANDOT**. Både HDInsight-klusteradministratören och Ambari-administratören har den här behörigheten som standard.
 
-Mer information om hur du arbetar med behörigheter med domän-ansluten HDInsight finns i [Hantera HDInsight-kluster med Enterprise Security Package](./domain-joined/apache-domain-joined-manage.md).
+Mer information om hur du arbetar med behörigheter med domän-ansluten HDInsight finns [i Hantera HDInsight-kluster med Enterprise Security Package](./domain-joined/apache-domain-joined-manage.md).
 
 ## <a name="access-control"></a>Åtkomstkontroll
 
@@ -93,7 +93,7 @@ Följande diagram illustrerar när skriptåtgärden körs under skapandeprocesse
 
 Skriptet körs medan HDInsight konfigureras. Skriptet körs parallellt på alla angivna noder i klustret. Den körs med rotprivilegier på noderna.
 
-Du kan göra åtgärder som att stoppa och starta tjänster, inklusive Apache Hadoop-relaterade tjänster. Om du stoppar tjänster ser du till att Ambari och andra Hadoop-relaterade tjänster körs innan skriptet har körts klart. Dessa nödvändiga tjänster avgör hälsotillståndet och tillståndet för klustret när det skapas.
+Du kan göra åtgärder som att stoppa och starta tjänster, inklusive Apache Hadoop-relaterade tjänster. Om du stoppar tjänster ser du till att Ambari och andra Hadoop-relaterade tjänster körs innan skriptet slutförs. Dessa nödvändiga tjänster avgör hälsotillståndet och tillståndet för klustret när det skapas.
 
 När klustret skapas kan du använda många skriptåtgärder samtidigt. Skripten anropas i den ordning som de har angetts.
 
@@ -104,7 +104,7 @@ När klustret skapas kan du använda många skriptåtgärder samtidigt. Skripten
 
 ### <a name="script-action-on-a-running-cluster"></a>Skriptåtgärd i ett kluster som körs
 
-Ett skriptfel på ett kluster som redan körs leder inte automatiskt till att klustret ändras till ett misslyckat tillstånd. När ett skript har körts ska klustret återgå till ett körningstillstånd. Även om klustret har ett körningstillstånd kan det misslyckade skriptet ha brutna saker. Ett skript kan till exempel ta bort filer som krävs av klustret.
+Ett skriptfel på ett kluster som redan körs leder inte automatiskt till att klustret ändras till ett misslyckat tillstånd. När ett skript har körts bör klustret återgå till ett körningstillstånd. Även om klustret har ett körningstillstånd kan det misslyckade skriptet ha brutna saker. Ett skript kan till exempel ta bort filer som krävs av klustret.
 
 Skriptåtgärder körs med rotprivilegier. Se till att du förstår vad ett skript gör innan du tillämpar det på klustret.
 
@@ -118,7 +118,7 @@ Status            : Succeeded
 ```
 
 > [!IMPORTANT]  
-> Om du ändrar klusteranvändaren, administratören, lösenordet när klustret har skapats kan skriptåtgärder som körs mot det här klustret misslyckas. Om du har några bestående skriptåtgärder som riktar in sig på arbetsnoder kan skripten misslyckas när du skalar klustret.
+> Om du ändrar klusteranvändaren, administratören, lösenordet när klustret har skapats kan skriptåtgärder som körs mot det här klustret misslyckas. Om du har några bestående skriptåtgärder som är mål för arbetsnoder kan skripten misslyckas när du skalar klustret.
 
 ## <a name="example-script-action-scripts"></a>Exempelskript för skriptåtgärder
 
@@ -231,7 +231,7 @@ I det här avsnittet beskrivs hur du tillämpar skriptåtgärder på ett kluster
    | Välj ett skript | Om du vill använda ditt eget skript väljer du __anpassat__. Annars väljer du ett skript. |
    | Name |Ange ett namn för skriptåtgärden. |
    | URI för Bash-skript |Ange skriptets URI. |
-   | Huvud/arbetsroll/Zookeeper |Ange de noder där skriptet körs: **Huvud,** **Arbets eller** **ZooKeeper.** |
+   | Head/Worker/Zookeeper |Ange de noder där skriptet körs: **Huvud,** **Arbets eller** **ZooKeeper.** |
    | Parametrar |Ange parametrarna, om det krävs av skriptet. |
 
    Använd posten __Spara den här skriptåtgärden__ för att kontrollera att skriptet tillämpas under skalningsåtgärder.
@@ -244,7 +244,7 @@ Om du vill använda dessa PowerShell-kommandon behöver du [AZ-modulen](/powersh
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
-När åtgärden har avslutats får du information som liknar följande text:
+När åtgärden har avslutats visas information som liknar följande text:
 
 ```output
 OperationState  : Succeeded
@@ -295,7 +295,7 @@ Ett exempel på hur du använder .NET SDK för att tillämpa skript på ett klus
 
    :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png" alt-text="Skicka historik för portalskriptåtgärder":::
 
-1. Välj ett skript i historiken för att visa **avsnittet** Egenskaper för det här skriptet. Längst upp på skärmen kan du köra skriptet igen eller höja upp det.
+1. Välj ett skript i historiken för att visa **avsnittet Egenskaper** för det här skriptet. Längst upp på skärmen kan du köra skriptet igen eller höja upp det.
 
    :::image type="content" source="./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png" alt-text="Höja upp egenskaper för skriptåtgärder":::
 
@@ -320,12 +320,12 @@ Följande exempelskript visar hur du använder cmdletarna för att höja upp och
 
 | Kommando | Beskrivning |
 | --- | --- |
-| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-delete) |Tar bort en angiven bestående skriptåtgärd i klustret. Det här kommandot ångrar inte de åtgärder som utförs av ett skript, utan tar bara bort den beständiga flaggan.|
-|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute)|Köra skriptåtgärder på det angivna HDInsight-klustret.|
-| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list) |Visar en lista över alla ständiga skriptåtgärder för det angivna klustret. |
-|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-list-execution-history)|Visar en lista över alla skripts körningshistorik för det angivna klustret.|
-|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-promote)|Befordrar den angivna ad hoc-skriptkörningen till ett bestående skript.|
-|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-show-execution-details)|Hämtar information om skriptkörningen för det angivna skriptkörnings-ID:t.|
+| [`az hdinsight script-action delete`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_delete) |Tar bort en angiven bestående skriptåtgärd i klustret. Det här kommandot ångrar inte de åtgärder som utförs av ett skript, utan tar bara bort den beständiga flaggan.|
+|[`az hdinsight script-action execute`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)|Köra skriptåtgärder på det angivna HDInsight-klustret.|
+| [`az hdinsight script-action list`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list) |Visar en lista över alla ständiga skriptåtgärder för det angivna klustret. |
+|[`az hdinsight script-action list-execution-history`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_list_execution_history)|Visar en lista över alla skripts körningshistorik för det angivna klustret.|
+|[`az hdinsight script-action promote`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_promote)|Befordrar den angivna ad hoc-skriptkörningen till ett bestående skript.|
+|[`az hdinsight script-action show-execution-details`](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_show_execution_details)|Hämtar information om skriptkörningen för det angivna skriptkörnings-ID:t.|
 
 ### <a name="hdinsight-net-sdk"></a>HDInsight .NET SDK
 
