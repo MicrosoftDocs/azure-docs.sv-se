@@ -81,11 +81,13 @@ additionalContent:
       items:
         - title: Expandera en lokal filresurs till molnet
           links:
-            - url: ./files/storage-sync-files-planning.md
+            - url: ./file-sync/file-sync-introduction.md
+              text: Läs mer om Azure File Sync
+            - url: ./file-sync/file-sync-planning.md
               text: Synkronisera Azure-filresurser med en Windows-filserver (Azure FileSync)
-            - url: ./files/storage-sync-files-deployment-guide.md
+            - url: ./file-sync/file-sync-deployment-guide.md
               text: Distribuera Azure File Sync
-            - url: ./files/index.yml
+            - url: ./file-sync/index.yml
               text: Mer information >
         - title: Dataöverföring online (lokalt till Azure)
           links:

@@ -1,29 +1,29 @@
 ---
-title: Konfigurera en anpassad behållare
-description: Lär dig hur du konfigurerar en anpassad behållare i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
+title: Konfigurera en anpassad container
+description: Lär dig hur du konfigurerar en anpassad container i Azure App Service. I artikeln visas de vanligaste konfigurationsåtgärderna.
 ms.topic: article
 ms.date: 02/23/2021
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 1d1a1292bc7583e4934ac176c34d2768700d11c5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 7bfebe318d93a544c964d70ea0a28144a7f0e43b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105036772"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764251"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurera en anpassad container för Azure App Service
 
-Den här artikeln visar hur du konfigurerar en anpassad behållare som ska köras på Azure App Service.
+Den här artikeln visar hur du konfigurerar en anpassad container som ska köras på Azure App Service.
 
 ::: zone pivot="container-windows"
 
-Den här guiden innehåller viktiga begrepp och instruktioner för skapa behållare av Windows-appar i App Service. Om du aldrig har använt Azure App Service följer du snabb starten och [självstudien](tutorial-custom-container.md) för [egen behållare](quickstart-custom-container.md) först.
+Den här guiden innehåller viktiga begrepp och instruktioner för containerisering av Windows-appar i App Service. Om du aldrig har använt Azure App Service följer du [snabbstarten och självstudien om](quickstart-custom-container.md) anpassade [containrar](tutorial-custom-container.md) först.
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
-Den här guiden innehåller viktiga begrepp och instruktioner för skapa behållare av Linux-appar i App Service. Om du aldrig har använt Azure App Service följer du snabb starten och [självstudien](tutorial-custom-container.md) för [egen behållare](quickstart-custom-container.md) först. Det finns också en [snabb start](quickstart-multi-container.md) och [självstudier](tutorial-multi-container-app.md)för flera behållare.
+Den här guiden innehåller viktiga begrepp och instruktioner för containerisering av Linux-appar i App Service. Om du aldrig har använt Azure App Service följer du [snabbstarten och självstudien om](quickstart-custom-container.md) anpassade [containrar](tutorial-custom-container.md) först. Det finns också en [snabbstart och självstudie för en app](quickstart-multi-container.md) med flera [containrar.](tutorial-multi-container-app.md)
 
 ::: zone-end
 
@@ -31,31 +31,31 @@ Den här guiden innehåller viktiga begrepp och instruktioner för skapa behåll
 
 ## <a name="supported-parent-images"></a>Överordnade avbildningar som stöds
 
-För din anpassade Windows-avbildning måste du välja den högra [överordnade avbildningen (bas avbildningen)](https://docs.docker.com/develop/develop-images/baseimages/) för det ramverk som du vill använda:
+För din anpassade Windows-avbildning måste du välja rätt överordnad [avbildning (basavbildning) för](https://docs.docker.com/develop/develop-images/baseimages/) det ramverk som du vill använda:
 
-- Om du vill distribuera .NET Framework appar använder du en överordnad avbildning som baseras på Windows Server Core [Long-term Servicing Channel (LTSC)-](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) versionen. 
-- Om du vill distribuera .NET Core-appar använder du en överordnad avbildning som baseras på Windows Server nano-versionen av Windows Server nano [halvårs kanal (SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) . 
+- Om du .NET Framework distribuera appar använder du en överordnad avbildning som baseras på Windows Server Core [Långsiktig underhållskanal (LTSC)-versionen.](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) 
+- Om du vill distribuera .NET Core-appar använder du en överordnad avbildning baserat på Windows Server Nano [Semi-Annual Servicing Channel-versionen (SAC).](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) 
 
 Det tar lite tid att ladda ned en överordnad avbildning när appen startas. Men du kan minska starttiden genom att använda någon av följande överordnade avbildningar som redan har cachelagrats i Azure App Service:
 
-- [MCR.Microsoft.com/Windows/ServerCore](https://hub.docker.com/_/microsoft-windows-servercore): 2004
-- [MCR.Microsoft.com/Windows/ServerCore](https://hub.docker.com/_/microsoft-windows-servercore): ltsc2019
-- [MCR.Microsoft.com/dotNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4,8-windowsservercore-2004
-- [MCR.Microsoft.com/dotNET/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4,8-windowsservercore-ltsc2019
-- [MCR.Microsoft.com/dotNet/Core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-2004
-- [MCR.Microsoft.com/dotNet/Core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1909
-- [MCR.Microsoft.com/dotNet/Core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1903
-- [MCR.Microsoft.com/dotNet/Core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/): 3,1-nanoserver-1809
-- [MCR.Microsoft.com/dotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-2004
-- [MCR.Microsoft.com/dotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1909
-- [MCR.Microsoft.com/dotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1903
-- [MCR.Microsoft.com/dotNet/Core/ASPNET](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/): 3,1-nanoserver-1809
+- [mcr.microsoft.com/windows/servercore](https://hub.docker.com/_/microsoft-windows-servercore):2004
+- [](https://hub.docker.com/_/microsoft-windows-servercore)mcr.microsoft.com/windows/servercore:ltsc2019
+- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-2004
+- [mcr.microsoft.com/dotnet/framework/aspnet](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/):4.8-windowsservercore-ltsc2019
+- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-2004
+- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1909
+- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1903
+- [mcr.microsoft.com/dotnet/core/runtime](https://hub.docker.com/_/microsoft-dotnet-core-runtime/):3.1-nanoserver-1809
+- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-2004
+- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1909
+- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1903
+- [mcr.microsoft.com/dotnet/core/aspnet](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/):3.1-nanoserver-1809
 
 ::: zone-end
 
-## <a name="change-the-docker-image-of-a-custom-container"></a>Ändra Docker-avbildningen av en anpassad behållare
+## <a name="change-the-docker-image-of-a-custom-container"></a>Ändra Docker-avbildningen av en anpassad container
 
-Om du vill ändra en befintlig anpassad container-app från den aktuella Docker-avbildningen till en ny avbildning, använder du följande kommando:
+Om du vill ändra en befintlig anpassad containerapp från den aktuella Docker-avbildningen till en ny avbildning använder du följande kommando:
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <docker-hub-repo>/<image>
@@ -63,27 +63,27 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 
 ## <a name="use-an-image-from-a-private-registry"></a>Använda en avbildning från ett privat register
 
-Om du vill använda en avbildning från ett privat register, till exempel Azure Container Registry, kör du följande kommando:
+Om du vill använda en avbildning från ett privat register, Azure Container Registry kör du följande kommando:
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group <group-name> --docker-custom-image-name <image-name> --docker-registry-server-url <private-repo-url> --docker-registry-server-user <username> --docker-registry-server-password <password>
 ```
 
-För *\<username>* och *\<password>* anger du inloggnings uppgifterna för ditt privata register konto.
+För *\<username>* och , ange *\<password>* inloggningsuppgifterna för ditt privata registerkonto.
 
-## <a name="i-dont-see-the-updated-container"></a>Jag ser inte den uppdaterade behållaren
+## <a name="i-dont-see-the-updated-container"></a>Jag ser inte den uppdaterade containern
 
-Om du ändrar inställningarna för din Docker-behållare så att de pekar på en ny behållare kan det ta några minuter innan appen hanterar HTTP-begäranden från den nya behållaren. Medan den nya behållaren hämtas och startas, App Service fortsätta att hantera begär Anden från den gamla behållaren. När den nya behållaren har startats och är redo att ta emot begär Anden börjar App Service skicka begär anden till den.
+Om du ändrar inställningarna för Docker-containern så att de pekar på en ny container kan det ta några minuter innan appen visar HTTP-begäranden från den nya containern. När den nya containern hämtas och startas fortsätter App Service att betjäna begäranden från den gamla containern. Endast när den nya containern har startats och är redo att ta emot begäranden App Service att skicka begäranden till den.
 
-## <a name="how-container-images-are-stored"></a>Hur behållar avbildningar lagras
+## <a name="how-container-images-are-stored"></a>Hur containeravbildningar lagras
 
-Första gången du kör en anpassad Docker-avbildning i App Service gör App Service en `docker pull` och hämtar alla bild lager. Dessa lager lagras på disk, precis som om du använder Docker lokalt. Varje gången appen startas om gör App Service en `docker pull` , men hämtar bara lager som har ändrats. Om inga ändringar har gjorts använder App Service befintliga lager på den lokala disken.
+Första gången du kör en anpassad Docker-avbildning App Service App Service en och `docker pull` hämtar alla avbildningslager. Dessa lager lagras på disk, till exempel om du använder Docker lokalt. Varje gång appen startas om App Service , `docker pull` men hämtar bara lager som har ändrats. Om det inte har gjorts några ändringar App Service befintliga lager på den lokala disken.
 
-Om appen ändrar beräknings instanser av någon anledning, som att skala upp och ned pris nivåerna, måste App Service hämta alla lager igen. Samma sak gäller om du skalar ut för att lägga till fler instanser. Det finns också sällsynta fall där app-instanserna kan ändras utan en skalnings åtgärd.
+Om appen av någon anledning ändrar beräkningsinstanser, till exempel att skala upp och ned prisnivåerna, måste App Service hämta alla lager igen. Samma sak gäller om du skalar ut för att lägga till ytterligare instanser. Det finns också sällsynta fall där appinstanserna kan ändras utan en skalningsåtgärd.
 
-## <a name="configure-port-number"></a>Konfigurera port nummer
+## <a name="configure-port-number"></a>Konfigurera portnummer
 
-Som standard förutsätter App Service att din anpassade behållare lyssnar på port 80. Om din behållare lyssnar på en annan port anger du `WEBSITES_PORT` appens inställning i App Service-appen. Du kan ställa in den via [Cloud Shell](https://shell.azure.com). I bash:
+Som standard förutsätter App Service din anpassade container lyssnar på port 80. Om containern lyssnar på en annan port anger du `WEBSITES_PORT` appinställningen i din App Service appen. Du kan ange det via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_PORT=8000
@@ -95,11 +95,11 @@ I PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITES_PORT"="8000"}
 ```
 
-App Service tillåter för närvarande att din behållare endast exponerar en port för HTTP-begäranden. 
+App Service tillåter för närvarande att containern endast exponerar en port för HTTP-begäranden. 
 
 ## <a name="configure-environment-variables"></a>Konfigurera miljövariabler
 
-Din anpassade behållare kan använda miljövariabler som behöver anges externt. Du kan skicka dem via [Cloud Shell](https://shell.azure.com). I bash:
+Din anpassade container kan använda miljövariabler som måste anges externt. Du kan skicka dem via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings DB_HOST="myownserver.mysql.database.azure.com"
@@ -111,12 +111,12 @@ I PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"DB_HOST"="myownserver.mysql.database.azure.com"}
 ```
 
-När din app körs, matas App Service app-inställningarna in i processen som miljövariabler automatiskt. Du kan kontrol lera variabler för container miljön med URL: en `https://<app-name>.scm.azurewebsites.net/Env)` .
+När din app körs App Service appinställningarna i processen som miljövariabler automatiskt. Du kan verifiera miljövariabler för containrar med URL:en `https://<app-name>.scm.azurewebsites.net/Env)` .
 
-Om din app använder avbildningar från ett privat register eller från Docker Hub, sparas autentiseringsuppgifter för åtkomst till lagrings platsen i miljövariabler: `DOCKER_REGISTRY_SERVER_URL` , `DOCKER_REGISTRY_SERVER_USERNAME` och `DOCKER_REGISTRY_SERVER_PASSWORD` . På grund av säkerhets risker visas inget av dessa reserverade variabel namn för programmet.
+Om din app använder avbildningar från ett privat register eller från Docker Hub sparas autentiseringsuppgifter för åtkomst till lagringsplatsen i miljövariabler: `DOCKER_REGISTRY_SERVER_URL` `DOCKER_REGISTRY_SERVER_USERNAME` , och `DOCKER_REGISTRY_SERVER_PASSWORD` . På grund av säkerhetsrisker exponeras inga av dessa reserverade variabelnamn för programmet.
 
 ::: zone pivot="container-windows"
-För IIS-eller .NET Framework (4,0 eller senare)-baserade behållare matas de in i `System.ConfigurationManager` som inställningar och anslutnings strängar för .net-appar automatiskt av App Service. För alla andra språk och ramverk är de tillgängliga som miljövariabler för processen, med något av följande motsvarande prefix:
+För IIS- .NET Framework (4.0 eller högre) containrar matas de in som `System.ConfigurationManager` .NET-appinställningar och anslutningssträngar automatiskt av App Service. För alla andra språk eller ramverk tillhandahålls de som miljövariabler för processen, med något av följande motsvarande prefix:
 
 - `APPSETTING_`
 - `SQLCONTR_`
@@ -129,29 +129,29 @@ För IIS-eller .NET Framework (4,0 eller senare)-baserade behållare matas de in
 
 ::: zone pivot="container-linux"
 
-Den här metoden fungerar både för appar med en container eller flera behållare, där miljövariablerna anges i filen *filen Docker. yml* .
+Den här metoden fungerar både för appar med en container eller appar med flera containrar, där miljövariablerna anges i *filen docker-compose.yml.*
 
 ::: zone-end
 
-## <a name="use-persistent-shared-storage"></a>Använd beständig delad lagring
+## <a name="use-persistent-shared-storage"></a>Använda beständig delad lagring
 
 ::: zone pivot="container-windows"
 
-Du kan använda *C:\home* -katalogen i appens fil system för att spara filer mellan omstarter och dela dem över instanser. `C:\home`I din app kan du använda behållar appen för att få åtkomst till beständig lagring.
+Du kan använda *katalogen C:\home* i appens filsystem för att spara filer mellan omstarter och dela dem mellan instanser. i `C:\home` din app tillhandahålls för att ge containerappen åtkomst till beständig lagring.
 
-När beständigt lagrings utrymme är inaktiverat `C:\home` behålls inte skrivningar till katalogen. [Docker-värd loggar och behållar loggar](#access-diagnostic-logs) sparas i en standard beständig delad lagring som inte är kopplad till behållaren. När beständig lagring har Aktiver ATS sparas alla skrivningar till `C:\home` katalogen och de kan nås av alla instanser av en utskalad app och loggen är tillgänglig i `C:\home\LogFiles` .
+När beständig lagring är inaktiverat bevaras `C:\home` inte skrivningar till katalogen. [Docker-värdloggar och containerloggar](#access-diagnostic-logs) sparas i en beständig standardlagringsplats som inte är kopplad till containern. När beständig lagring är aktiverat bevaras alla skrivningar till katalogen och kan nås av alla instanser av en `C:\home` utskalade app och loggen är tillgänglig på `C:\home\LogFiles` .
 
 ::: zone-end
 
 ::: zone pivot="container-linux"
 
-Du kan använda */Home* -katalogen i appens fil system för att spara filer mellan omstarter och dela dem över instanser. `/home`I din app kan du använda behållar appen för att få åtkomst till beständig lagring.
+Du kan använda *katalogen /home* i appens filsystem för att spara filer mellan omstarter och dela dem mellan instanser. i `/home` din app tillhandahålls för att göra det möjligt för containerappen att komma åt beständig lagring.
 
-När beständig lagring är inaktive rad `/home` behålls inte skrivningar till katalogen i appens omstarter eller över flera instanser. Det enda undantaget är `/home/LogFiles` katalogen som används för att lagra Docker-och container-loggar. När beständig lagring är aktive rad är alla skrivningar till `/home` katalogen bestående och kan nås av alla instanser av en utskalad app.
+När beständig lagring är inaktiverad bevaras inte skrivningar till katalogen `/home` vid omstart av appen eller över flera instanser. Det enda undantaget är `/home/LogFiles` katalogen, som används för att lagra Docker- och containerloggarna. När beständig lagring är aktiverat bevaras alla skrivningar till katalogen och kan nås av alla instanser `/home` av en utskalade app.
 
 ::: zone-end
 
-Beständig lagring är som standard inaktive rad och inställningen exponeras inte i appens inställningar. Om du vill aktivera det anger du `WEBSITES_ENABLE_APP_SERVICE_STORAGE` appens inställning via [Cloud Shell](https://shell.azure.com). I bash:
+Som standard är beständig lagring inaktiverad och inställningen visas inte i appinställningarna. Om du vill aktivera det anger `WEBSITES_ENABLE_APP_SERVICE_STORAGE` du appinställningen via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=true
@@ -164,63 +164,63 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WE
 ```
 
 > [!NOTE]
-> Du kan också [Konfigurera en egen beständig lagring](configure-connect-to-azure-storage.md).
+> Du kan också [konfigurera din egen beständiga lagring.](configure-connect-to-azure-storage.md)
 
 ## <a name="detect-https-session"></a>Identifiera HTTPS-sessionen
 
-App Service avslutar TLS/SSL på klient sidan. Det innebär att TLS/SSL-begäranden aldrig kommer till din app. Du behöver inte, och ska inte implementera stöd för TLS/SSL i din app. 
+App Service TLS/SSL avslutas på frontend-sidan. Det innebär att TLS/SSL-begäranden aldrig kommer till din app. Du behöver inte, och bör inte implementera något stöd för TLS/SSL i din app. 
 
-Klient delar finns i Azures Data Center. Om du använder TLS/SSL med din app, kommer trafiken över Internet alltid att krypteras på ett säkert sätt.
+Frontend-ändarna finns i Azure-datacenter. Om du använder TLS/SSL med din app krypteras alltid trafiken över Internet på ett säkert sätt.
 
 ::: zone pivot="container-windows"
 
-## <a name="customize-aspnet-machine-key-injection"></a>Anpassa ASP.NET Machine Key insprutning
+## <a name="customize-aspnet-machine-key-injection"></a>Anpassa ASP.NET-maskinnyckelinjektion
 
- Automatiskt skapade nycklar matas in i behållaren som dator nycklar för ASP.NET kryptografiska rutiner under behållarens start. Du [hittar dessa nycklar i din behållare](#connect-to-the-container) genom att leta efter följande miljövariabler: `MACHINEKEY_Decryption` , `MACHINEKEY_DecryptionKey` , `MACHINEKEY_ValidationKey` , `MACHINEKEY_Validation` . 
+ Under containerstarten matas automatiskt genererade nycklar in i containern som datornycklar för ASP.NET kryptografiska rutiner. Du hittar [dessa nycklar i containern genom](#connect-to-the-container) att leta efter följande miljövariabler: , , , `MACHINEKEY_Decryption` `MACHINEKEY_DecryptionKey` `MACHINEKEY_ValidationKey` `MACHINEKEY_Validation` . 
 
-De nya nycklarna vid varje omstart kan återställa ASP.NET formulär-autentisering och Visa status, om din app är beroende av dem. För att förhindra automatisk omgenerering av nycklar [ställer du in dem manuellt som App Service app-inställningar](#configure-environment-variables). 
+De nya nycklarna vid varje omstart kan återställas ASP.NET formulärautentisering och visningstillstånd, om din app är beroende av dem. För att förhindra automatisk återskapande av nycklar, [ange dem manuellt som App Service appinställningar](#configure-environment-variables). 
 
-## <a name="connect-to-the-container"></a>Anslut till behållaren
+## <a name="connect-to-the-container"></a>Ansluta till containern
 
-Du kan ansluta till din Windows-behållare direkt för diagnostiska uppgifter genom att gå till `https://<app-name>.scm.azurewebsites.net/DebugConsole` . Så här fungerar det:
+Du kan ansluta till Windows-containern direkt för diagnostikuppgifter genom att gå till `https://<app-name>.scm.azurewebsites.net/DebugConsole` . Så här fungerar det:
 
-- Med fel söknings konsolen kan du köra interaktiva kommandon, till exempel starta PowerShell-sessioner, inspektera register nycklar och navigera i hela behållar fil systemet.
-- Den fungerar separat från den grafiska webbläsaren ovanför, som bara visar filerna i din [delade lagring](#use-persistent-shared-storage).
-- I en utskalad app är fel söknings konsolen ansluten till en av behållar instanserna. Du kan välja en annan instans i list rutan **instans** på den översta menyn.
-- Alla ändringar du gör i behållaren från-konsolen behålls *inte* när din app startas om (förutom vid ändringar i den delade lagringen), eftersom den inte är en del av Docker-avbildningen. Om du vill spara ändringarna, till exempel register inställningar och program varu installation, så gör du dem till en del av Dockerfile.
+- Med felsökningskonsolen kan du köra interaktiva kommandon, till exempel starta PowerShell-sessioner, inspektera registernycklar och navigera i hela containerfilsystemet.
+- Den fungerar separat från den grafiska webbläsaren ovanför, vilket endast visar filerna i din [delade lagring.](#use-persistent-shared-storage)
+- I en utskalade app ansluts felsökningskonsolen till en av containerinstanserna. Du kan välja en annan instans från **listrutan** Instans på den översta menyn.
+- Ändringar som du gör i containern  inifrån -konsolen bevaras inte när appen startas om (förutom ändringar i den delade lagringen), eftersom den inte ingår i Docker-avbildningen. Om du vill bevara ändringarna, till exempel registerinställningar och programvaruinstallation, gör de till en del av Dockerfile.
 
 ## <a name="access-diagnostic-logs"></a>Få åtkomst till diagnostikloggar
 
-App Service loggar åtgärder av Docker-värden samt aktiviteter i behållaren. Loggar från Docker-värden (plattforms loggar) levereras som standard, men program loggar eller webb server loggar inifrån behållaren måste aktive ras manuellt. Mer information finns i [Aktivera program loggning](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer) och [Aktivera loggning av webb server](troubleshoot-diagnostic-logs.md#enable-web-server-logging). 
+App Service loggar åtgärder från Docker-värden samt aktiviteter från containern. Loggar från Docker-värden (plattformsloggar) levereras som standard, men programloggar eller webbserverloggar från containern måste aktiveras manuellt. Mer information finns i Aktivera [programloggning och](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer) [Aktivera webbserverloggning.](troubleshoot-diagnostic-logs.md#enable-web-server-logging) 
 
 Det finns flera sätt att komma åt Docker-loggar:
 
 - [I Azure Portal](#in-azure-portal)
-- [Från kudu-konsolen](#from-the-kudu-console)
-- [Med kudu-API: et](#with-the-kudu-api)
+- [Från Kudu-konsolen](#from-the-kudu-console)
+- [Med Kudu-API:et](#with-the-kudu-api)
 - [Skicka loggar till Azure Monitor](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
 
 ### <a name="in-azure-portal"></a>I Azure Portal
 
-Docker-loggar visas i portalen på sidan **behållar inställningar** i din app. Loggarna trunkeras, men du kan ladda ned alla loggar genom att klicka på **Hämta**. 
+Docker-loggar visas i portalen på sidan **Containerinställningar** i din app. Loggarna trunkeras, men du kan ladda ned alla loggar genom att klicka på **Ladda ned.** 
 
-### <a name="from-the-kudu-console"></a>Från kudu-konsolen
+### <a name="from-the-kudu-console"></a>Från Kudu-konsolen
 
-Navigera till `https://<app-name>.scm.azurewebsites.net/DebugConsole` och klicka på mappen **loggfiler** för att se de enskilda loggfilerna. Om du vill ladda ned hela **LogFiles** -katalogen klickar du på ikonen **Ladda ned** till vänster om katalog namnet. Du kan också komma åt den här mappen med en FTP-klient.
+Gå till `https://<app-name>.scm.azurewebsites.net/DebugConsole` och klicka på mappen **LogFiles** för att se de enskilda loggfilerna. Om du vill ladda **ned hela LogFiles-katalogen** klickar **du på** nedladdningsikonen till vänster om katalognamnet. Du kan också komma åt den här mappen med hjälp av en FTP-klient.
 
-I konsolens Terminal har du inte åtkomst till `C:\home\LogFiles` mappen som standard eftersom beständig delad lagring inte är aktive rad. Aktivera det här beteendet i konsolens Terminal genom att [Aktivera beständig delad lagring](#use-persistent-shared-storage).
+I konsolterminalen kan du inte komma åt mappen `C:\home\LogFiles` som standard eftersom beständig delad lagring inte är aktiverat. Aktivera beständig delad lagring för att aktivera det här [beteendet i konsolterminalen.](#use-persistent-shared-storage)
 
-Om du försöker hämta Docker-loggen som används för närvarande med en FTP-klient kan du få ett fel meddelande på grund av ett fil låsning.
+Om du försöker ladda ned Den Docker-logg som för närvarande används med hjälp av en FTP-klient kan du få ett felmeddelande på grund av ett fillås.
 
-### <a name="with-the-kudu-api"></a>Med kudu-API: et
+### <a name="with-the-kudu-api"></a>Med Kudu-API:et
 
-Navigera direkt till `https://<app-name>.scm.azurewebsites.net/api/logs/docker` för att se metadata för Docker-loggarna. Du kan se fler än en loggfil i listan, och `href` egenskapen låter dig hämta logg filen direkt. 
+Gå direkt till `https://<app-name>.scm.azurewebsites.net/api/logs/docker` för att se metadata för Docker-loggarna. Du kan se fler än en loggfil i listan och med `href` egenskapen kan du ladda ned loggfilen direkt. 
 
-För att hämta alla loggar tillsammans i en ZIP-fil, åtkomst `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip` .
+Om du vill ladda ned alla loggar tillsammans i en ZIP-fil öppnar du `https://<app-name>.scm.azurewebsites.net/api/logs/docker/zip` .
 
-## <a name="customize-container-memory"></a>Anpassa container minne
+## <a name="customize-container-memory"></a>Anpassa containerminne
 
-Som standard är alla Windows-behållare som distribueras i Azure App Service begränsade till 1 GB RAM-minne. Du kan ändra det här värdet genom att ange `WEBSITE_MEMORY_LIMIT_MB` app-inställningen via [Cloud Shell](https://shell.azure.com). I bash:
+Som standard är alla Windows-containrar som distribueras i Azure App Service begränsade till 1 GB RAM-minne. Du kan ändra det här värdet genom att `WEBSITE_MEMORY_LIMIT_MB` ange appinställningen via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_MEMORY_LIMIT_MB=2000
@@ -232,11 +232,11 @@ I PowerShell:
 Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WEBSITE_MEMORY_LIMIT_MB"=2000}
 ```
 
-Värdet definieras i MB och måste vara mindre än och lika med värdens totala fysiska minne. I en App Service plan med 8 GB RAM-minne får det totala antalet `WEBSITE_MEMORY_LIMIT_MB` för alla appar inte överstiga 8 GB. Information om hur mycket minne som är tillgängligt för varje pris nivå finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/windows/)i avsnittet **Premium container (Windows) plan** .
+Värdet definieras i MB och måste vara mindre och lika med det totala fysiska minnet för värden. I till exempel en App Service plan med 8 GB RAM får den kumulativa summan för för alla `WEBSITE_MEMORY_LIMIT_MB` appar inte överskrida 8 GB. Information om hur mycket minne som är tillgängligt för varje prisnivå finns [i App Service](https://azure.microsoft.com/pricing/details/app-service/windows/)i avsnittet Premium **Container (Windows)-plan.**
 
-## <a name="customize-the-number-of-compute-cores"></a>Anpassa antalet beräknings kärnor
+## <a name="customize-the-number-of-compute-cores"></a>Anpassa antalet beräkningskärnor
 
-Som standard körs en Windows-behållare med alla tillgängliga kärnor för den valda pris nivån. Du kanske vill minska antalet kärnor som mellanlagrings platsen använder, till exempel. Om du vill minska antalet kärnor som används av en behållare ställer du in `WEBSITE_CPU_CORES_LIMIT` app-inställningen på det önskade antalet kärnor. Du kan ställa in den via [Cloud Shell](https://shell.azure.com). I bash:
+Som standard körs en Windows-container med alla tillgängliga kärnor för din valda prisnivå. Du kanske till exempel vill minska antalet kärnor som din mellanlagringsplats använder. Om du vill minska antalet kärnor som används av en container anger du `WEBSITE_CPU_CORES_LIMIT` appinställningen till önskat antal kärnor. Du kan ange det via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --slot staging --settings WEBSITE_CPU_CORES_LIMIT=1
@@ -249,22 +249,22 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"WE
 ```
 
 > [!NOTE]
-> Uppdatering av app-inställningen utlöser automatisk omstart, vilket ger minimal nedtid. För en app för produktion kan du byta ut den till en mellanlagringsplats, ändra app-inställningen på mellanlagringsplatsen och sedan växla tillbaka till produktion.
+> Uppdatering av appinställningen utlöser automatisk omstart, vilket orsakar minimal avbrottstid. För en produktionsapp bör du överväga att växla den till en mellanlagringsplats, ändra appinställningen i mellanlagringsplatsen och sedan växla tillbaka den till produktion.
 
-Verifiera det justerade antalet genom att gå till kudu-konsolen ( `https://<app-name>.scm.azurewebsites.net` ) och skriva följande kommandon med hjälp av PowerShell. Varje kommando matar ut ett tal.
+Kontrollera det justerade numret genom att gå till Kudu-konsolen ( `https://<app-name>.scm.azurewebsites.net` ) och skriva följande kommandon med hjälp av PowerShell. Varje kommando matar ut ett tal.
 
 ```PowerShell
 Get-ComputerInfo | ft CsNumberOfLogicalProcessors # Total number of enabled logical processors. Disabled processors are excluded.
 Get-ComputerInfo | ft CsNumberOfProcessors # Number of physical processors.
 ```
 
-Processorerna kan vara multicore-eller hyperthreading-processorer. Information om hur många kärnor som är tillgängliga för varje pris nivå finns i [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/windows/)i avsnittet **Premium container (Windows) plan** .
+Processorerna kan vara processorer med flera kärnor eller hypertrådning. Information om hur många kärnor som är tillgängliga för varje prisnivå finns [i App Service i](https://azure.microsoft.com/pricing/details/app-service/windows/)avsnittet Premium Container **(Windows)-plan.**
 
-## <a name="customize-health-ping-behavior"></a>Anpassa ping-beteende för hälsa
+## <a name="customize-health-ping-behavior"></a>Anpassa beteende för hälso ping
 
-App Service anser att en behållare har startats när behållaren startar och svarar på en HTTP-ping. Hälso-ping-begäran innehåller rubriken `User-Agent= "App Service Hyper-V Container Availability Check"` . Om behållaren startar men inte svarar på ett ping efter en viss tid, App Service loggar en händelse i Docker-loggen, vilket säger att behållaren inte startades. 
+App Service anser att en container har startats korrekt när containern startar och svarar på en HTTP-ping. Begäran om hälso ping innehåller -huvudet `User-Agent= "App Service Hyper-V Container Availability Check"` . Om containern startar men inte svarar på en ping efter en viss tid, loggar App Service en händelse i Docker-loggen och säger att containern inte startat. 
 
-Om ditt program är resurs intensivt kanske behållaren inte svarar på HTTP-ping i tid. Om du vill kontrol lera åtgärderna när HTTP-pingar inte fungerar anger du `CONTAINER_AVAILABILITY_CHECK_MODE` appens inställning. Du kan ställa in den via [Cloud Shell](https://shell.azure.com). I bash:
+Om programmet är resurskrävande kanske containern inte svarar på HTTP-ping i tid. Om du vill styra åtgärderna när HTTP-pingar misslyckas anger du `CONTAINER_AVAILABILITY_CHECK_MODE` appinställningen. Du kan ange det via [Cloud Shell](https://shell.azure.com). I Bash:
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings CONTAINER_AVAILABILITY_CHECK_MODE="ReportOnly"
@@ -278,15 +278,15 @@ Set-AzWebApp -ResourceGroupName <group-name> -Name <app-name> -AppSettings @{"CO
 
 I följande tabell visas möjliga värden:
 
-| Värde | Förklaringar |
+| Värde | Beskrivningar |
 | - | - |
-| **Hjälp** | Starta om behållaren efter tre tillgänglighets kontroller i följd |
-| **ReportOnly** | Standardvärdet. Starta inte om behållaren men rapportera i Docker-loggarna för behållaren efter tre tillgänglighets kontroller i följd. |
-| **Av** | Sök inte efter tillgänglighet. |
+| **Reparation** | Starta om containern efter tre på varandra följande tillgänglighetskontroller |
+| **ReportOnly** | Standardvärdet. Starta inte om containern utan rapportera i Docker-loggarna för containern efter tre efterföljande tillgänglighetskontroller. |
+| **Av** | Kontrollera inte tillgängligheten. |
 
-## <a name="support-for-group-managed-service-accounts"></a>Stöd för grupphanterade tjänst konton
+## <a name="support-for-group-managed-service-accounts"></a>Stöd för grupp-hanterade tjänstkonton
 
-Grupphanterade tjänst konton (gMSAs) stöds för närvarande inte i Windows-behållare i App Service.
+Grupp-hanterade tjänstkonton (gMSA) stöds för närvarande inte i Windows-containrar i App Service.
 
 ::: zone-end
 
@@ -294,12 +294,12 @@ Grupphanterade tjänst konton (gMSAs) stöds för närvarande inte i Windows-beh
 
 ## <a name="enable-ssh"></a>Aktivera SSH
 
-SSH möjliggör säker kommunikation mellan en container och en klient. För att en anpassad behållare ska stödja SSH måste du lägga till den i Docker-avbildningen.
+SSH möjliggör säker kommunikation mellan en container och en klient. För att en anpassad container ska ha stöd för SSH måste du lägga till den i själva Docker-avbildningen.
 
 > [!TIP]
-> Alla inbyggda Linux-behållare i App Service har lagt till SSH-instruktionerna i sina avbildnings databaser. Du kan gå igenom följande instruktioner med [Node.js 10,14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktive rad där. Konfigurationen i den Node.js inbyggda avbildningen är något annorlunda, men samma princip.
+> Alla inbyggda Linux-containrar i App Service har lagt till SSH-instruktionerna i sina avbildningsdatabaser. Du kan gå igenom följande instruktioner medNode.js [ 10.14-lagringsplatsen](https://github.com/Azure-App-Service/node/blob/master/10.14) för att se hur den är aktiverad där. Konfigurationen i den Node.js inbyggda avbildningen skiljer sig något, men samma i princip.
 
-- Lägg till [en sshd_config-fil](https://man.openbsd.org/sshd_config) till din lagrings plats, som i följande exempel.
+- Lägg [till sshd_config-fil](https://man.openbsd.org/sshd_config) till lagringsplatsen, som i följande exempel.
 
     ```
     Port            2222
@@ -318,7 +318,7 @@ SSH möjliggör säker kommunikation mellan en container och en klient. För att
 
     > [!NOTE]
     > Den här filen konfigurerar OpenSSH och måste innehålla följande objekt:
-    > - `Port` måste vara inställt på 2222.
+    > - `Port` måste anges till 2222.
     > - `Ciphers`måste innehålla minst ett objekt i listan: `aes128-cbc,3des-cbc,aes256-cbc`.
     > - `MACs`måste innehålla minst ett objekt i listan: `hmac-sha1,hmac-sha1-96`.
 
@@ -336,9 +336,9 @@ SSH möjliggör säker kommunikation mellan en container och en klient. För att
     EXPOSE 80 2222
     ```
 
-    Den här konfigurationen tillåter inte externa anslutningar till behållaren. Port 2222 i behållaren är bara tillgänglig i brygga nätverket i ett privat virtuellt nätverk och är inte tillgänglig för en angripare på Internet.
+    Den här konfigurationen tillåter inte externa anslutningar till containern. Port 2222 i containern är endast tillgänglig i bryggnätverket i ett privat virtuellt nätverk och är inte tillgänglig för en angripare på Internet.
 
-- Starta SSH-servern i Start skriptet för din behållare.
+- Starta SSH-servern i startskriptet för din container.
 
     ```bash
     /usr/sbin/sshd
@@ -348,23 +348,23 @@ SSH möjliggör säker kommunikation mellan en container och en klient. För att
 
 [!INCLUDE [Access diagnostic logs](../../includes/app-service-web-logs-access-linux-no-h.md)]
 
-## <a name="configure-multi-container-apps"></a>Konfigurera appar med flera behållare
+## <a name="configure-multi-container-apps"></a>Konfigurera appar med flera containrar
 
-- [Använd beständigt lagrings utrymme i Docker Compose](#use-persistent-storage-in-docker-compose)
-- [För hands versions begränsningar](#preview-limitations)
-- [Docker Skriv alternativ](#docker-compose-options)
+- [Använda beständig lagring i Docker Compose](#use-persistent-storage-in-docker-compose)
+- [Begränsningar för förhandsversion](#preview-limitations)
+- [Alternativ för Docker Compose](#docker-compose-options)
 
-### <a name="use-persistent-storage-in-docker-compose"></a>Använd beständigt lagrings utrymme i Docker Compose
+### <a name="use-persistent-storage-in-docker-compose"></a>Använda beständig lagring i Docker Compose
 
-Appar med flera behållare som WordPress behöver beständig lagring för att fungera korrekt. För att aktivera den måste Docker-konfigurationen peka på en lagrings plats *utanför* din behållare. Lagrings platser i din behållare har inte kvar ändringar än starta om appar.
+Appar med flera containrar som WordPress behöver beständig lagring för att fungera korrekt. Om du vill aktivera det måste Docker Compose-konfigurationen peka på en lagringsplats *utanför* containern. Lagringsplatser i containern bevarar inte ändringar utöver app-omstart.
 
-Aktivera beständig lagring genom att ställa in `WEBSITES_ENABLE_APP_SERVICE_STORAGE` appens inställning med hjälp av kommandot [AZ webapp config appSettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i [Cloud Shell](https://shell.azure.com).
+Aktivera beständig lagring genom att ange appinställningen med kommandot `WEBSITES_ENABLE_APP_SERVICE_STORAGE` [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) i [Cloud Shell](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-I filen *filen Docker. yml* mappar du `volumes` alternativet till `${WEBAPP_STORAGE_HOME}` . 
+I filen *docker-compose.yml* mappar du `volumes` alternativet till `${WEBAPP_STORAGE_HOME}` . 
 
 `WEBAPP_STORAGE_HOME` är en miljövariabel i App Service som är mappad till beständig lagring för din app. Exempel:
 
@@ -379,15 +379,15 @@ wordpress:
 
 ### <a name="preview-limitations"></a>Begränsningar för förhandsversion
 
-Multi-container är för närvarande en för hands version. Följande App Service plattforms funktioner stöds inte:
+Flera containrar är för närvarande i förhandsversion. Följande funktioner App Service plattform stöds inte:
 
 - Autentisering/auktorisering
 - Hanterade identiteter
 - CORS
 
-### <a name="docker-compose-options"></a>Docker Skriv alternativ
+### <a name="docker-compose-options"></a>Alternativ för Docker Compose
 
-I följande listor visas en Docker-konfigurations alternativ som stöds och inte stöds:
+Följande listor visar konfigurationsalternativ som stöds och inte stöds:
 
 #### <a name="supported-options"></a>Alternativ som stöds
 
@@ -409,7 +409,7 @@ I följande listor visas en Docker-konfigurations alternativ som stöds och inte
 - andra portar än 80 och 8080 (ignoreras)
 
 > [!NOTE]
-> Andra alternativ som inte uttryckligen anropas ignoreras i den offentliga för hands versionen.
+> Alla andra alternativ som inte uttryckligen anges ignoreras i den allmänt tillgängliga förhandsversionen.
 
 [!INCLUDE [robots933456](../../includes/app-service-web-configure-robots933456.md)]
 
@@ -418,15 +418,15 @@ I följande listor visas en Docker-konfigurations alternativ som stöds och inte
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Självstudie: Migrera anpassad program vara till Azure App Service med en anpassad behållare](tutorial-custom-container.md)
+> [Självstudie: Migrera anpassad programvara till Azure App Service en anpassad container](tutorial-custom-container.md)
 
 ::: zone pivot="container-linux"
 
 > [!div class="nextstepaction"]
-> [Självstudie: WordPress-app med flera behållare](tutorial-multi-container-app.md)
+> [Självstudie: WordPress-app med flera containrar](tutorial-multi-container-app.md)
 
 ::: zone-end
 
-Eller, se ytterligare resurser:
+Du kan också se ytterligare resurser:
 
-[Läs in certifikat i Windows/Linux-behållare](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)
+[Läsa in certifikat i Windows-/Linux-containrar](configure-ssl-certificate-in-code.md#load-certificate-in-linuxwindows-containers)

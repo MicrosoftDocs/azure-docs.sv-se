@@ -1,36 +1,39 @@
 ---
-title: GitHub åtgärder arbets flöden för Azures statiska Web Apps
-description: Lär dig hur du använder GitHub-databaser för att konfigurera kontinuerlig distribution till Azures statiska Web Apps.
+title: GitHub Actions arbetsflöden för Azure Static Web Apps
+description: Lär dig hur du använder GitHub-lagringsplatsen för att konfigurera kontinuerlig distribution till Azure Static Web Apps.
 services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 04/09/2021
 ms.author: cshoe
-ms.openlocfilehash: 4f1f432da33bded4fc0f04170673e5943dec5fb0
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: b20a1670c13a272ed48088567a205d854ac99179
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107311336"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791255"
 ---
-# <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub åtgärder arbets flöden för för hands versionen av Azure static Web Apps
+# <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub Actions arbetsflöden för Azure Static Web Apps förhandsversion
 
-När du skapar en ny Azures statiska webb program resurs genererar Azure ett GitHub-åtgärds arbets flöde för att styra appens kontinuerliga distribution. Arbets flödet drivs av en YAML-fil. Den här artikeln beskriver strukturen och alternativen för arbets flödes filen.
+När du skapar en Azure Static Web Apps resurs genererar Azure ett GitHub Actions arbetsflöde för att styra appens kontinuerliga distribution. Arbetsflödet drivs av en YAML-fil. Den här artikeln beskriver strukturen och alternativen för arbetsflödesfilen.
 
 Distributioner initieras av [utlösare](#triggers), som kör [jobb](#jobs) som definieras av enskilda [steg](#steps).
 
-## <a name="file-location"></a>Fil Sök väg
+> [!NOTE]
+> Azure Static Web Apps har även stöd för Azure DevOps. Se [Publicera med Azure DevOps för](publish-devops.md) information om hur du ställer in en pipeline.
 
-När du länkar din GitHub-lagringsplats till Azure static Web Apps läggs en arbets flödes fil till i lagrings platsen.
+## <a name="file-location"></a>Filplats
 
-Följ dessa steg om du vill visa den genererade arbets flödes filen.
+När du länkar gitHub-lagringsplatsen till Azure Static Web Apps läggs en arbetsflödesfil till på lagringsplatsen.
 
-1. Öppna appens lagrings plats på GitHub.
-1. Klicka på mappen på fliken _kod_ `.github/workflows` .
-1. Klicka på filen med ett namn som ser ut som `azure-static-web-apps-<RANDOM_NAME>.yml` .
+Följ de här stegen för att visa den genererade arbetsflödesfilen.
 
-YAML-filen i lagrings platsen ser ut ungefär som i följande exempel:
+1. Öppna appens lagringsplats på GitHub.
+1. Klicka _på mappen_ på fliken `.github/workflows` Kod.
+1. Klicka på filen med ett namn som ser ut så `azure-static-web-apps-<RANDOM_NAME>.yml` här: .
+
+YAML-filen på din lagringsplats liknar följande exempel:
 
 ```yml
 name: Azure Static Web Apps CI/CD
@@ -81,7 +84,7 @@ jobs:
 
 ## <a name="triggers"></a>Utlösare
 
-En [utlösare](https://help.github.com/actions/reference/events-that-trigger-workflows) för GitHub-åtgärder meddelar ett GitHub-åtgärds arbets flöde för att köra ett jobb baserat på händelse utlösare. Utlösare anges med hjälp av `on` egenskapen i arbets flödes filen.
+En GitHub Actions [en utlösare](https://help.github.com/actions/reference/events-that-trigger-workflows) meddelar ett GitHub Actions arbetsflöde för att köra ett jobb baserat på händelseutlösare. Utlösare visas med hjälp av `on` egenskapen i arbetsflödesfilen.
 
 ```yml
 on:
@@ -94,35 +97,35 @@ on:
       - main
 ```
 
-Genom inställningar som är kopplade till `on` egenskapen kan du definiera vilka grenar som utlöser ett jobb och ställa in utlösare för att utlösa olika pull-begäranden.
+Via inställningar som är associerade med egenskapen kan du definiera vilka grenar som utlöser ett jobb och ange utlösare som `on` utlöses för olika pull-begärande tillstånd.
 
-I det här exemplet startas ett arbets flöde när _huvud_ grenen ändras. Ändringar som startar arbets flödet omfattar push-överföring och öppnande av pull-begäranden mot den valda grenen.
+I det här exemplet startas ett arbetsflöde när _huvudgrenen_ ändras. Ändringar som startar arbetsflödet inkluderar push-push-förfrågningar och öppning av pull-begäranden mot den valda grenen.
 
 ## <a name="jobs"></a>Jobb
 
-Varje händelse utlösare kräver en händelse hanterare. [Jobb](https://help.github.com/actions/reference/workflow-syntax-for-github-actions#jobs) definierar vad som händer när en händelse utlöses.
+Varje händelseutlösare kräver en händelsehanterare. [Jobb](https://help.github.com/actions/reference/workflow-syntax-for-github-actions#jobs) definierar vad som händer när en händelse utlöses.
 
-I den statiska Web Apps arbets flödes filen finns det två tillgängliga jobb.
+Det finns Static Web Apps jobb i arbetsflödesfilen.
 
 | Name                     | Beskrivning                                                                                                    |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------- |
-| `build_and_deploy_job`   | Körs när du utför push-överföring eller öppnar en pull-begäran mot den gren som anges i `on` egenskapen.          |
-| `close_pull_request_job` | Körs bara när du stänger en pull-begäran som tar bort den mellanlagrings miljö som skapats från pull-begäranden. |
+| `build_and_deploy_job`   | Körs när du push-genomför eller öppnar en pull-begäran mot grenen som anges i `on` egenskapen .          |
+| `close_pull_request_job` | Körs ENDAST när du stänger en pull-begäran, vilket tar bort mellanlagringsmiljön som skapats från pull-begäranden. |
 
 ## <a name="steps"></a>Steg
 
-Steg är sekventiella uppgifter för ett jobb. Ett steg utför åtgärder som att installera beroenden, köra tester och distribuera ditt program till produktion.
+Steg är sekventiella uppgifter för ett jobb. Ett steg utför åtgärder som att installera beroenden, köra tester och distribuera programmet till produktion.
 
-En arbets flödes fil definierar följande steg.
+En arbetsflödesfil definierar följande steg.
 
 | Jobb                      | Steg                                                                                                                              |
 | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `build_and_deploy_job`   | <ol><li>Checkar ut databasen i åtgärdens miljö.<li>Skapar och distribuerar lagrings platsen till Azures statiska Web Apps.</ol> |
-| `close_pull_request_job` | <ol><li>Meddelar Azure static Web Apps att en pull-begäran har stängts.</ol>                                                        |
+| `build_and_deploy_job`   | <ol><li>Checkar ut lagringsplatsen i åtgärdsmiljön.<li>Skapar och distribuerar lagringsplatsen till Azure Static Web Apps.</ol> |
+| `close_pull_request_job` | <ol><li>Meddelar Azure Static Web Apps att en pull-begäran har stängts.</ol>                                                        |
 
 ## <a name="build-and-deploy"></a>Skapa och distribuera
 
-Steget som heter `Build and Deploy` bygger och distribuerar till din Azure Static Web Apps-instans. Under `with` avsnittet kan du anpassa följande värden för din distribution.
+Steget med namnet `Build and Deploy` skapar och distribuerar till din Azure Static Web Apps instans. Under avsnittet `with` kan du anpassa följande värden för distributionen.
 
 ```yml
 with:
@@ -138,24 +141,24 @@ with:
 
 [!INCLUDE [static-web-apps-folder-structure](../../includes/static-web-apps-folder-structure.md)]
 
-`repo_token`Värdena, `action` och `azure_static_web_apps_api_token` anges för dig av azures statiska Web Apps bör inte ändras manuellt.
+Värdena `repo_token` , och anges åt dig genom att Azure Static Web Apps ska inte ändras `action` `azure_static_web_apps_api_token` manuellt.
 
-## <a name="custom-build-commands"></a>Anpassade build-kommandon
+## <a name="custom-build-commands"></a>Anpassade byggkommandon
 
-Du kan få detaljerad kontroll över vilka kommandon som körs under en distribution. Följande kommandon kan definieras under ett jobb `with` avsnitt.
+Du kan ha en mer exakt kontroll över vilka kommandon som körs under en distribution. Följande kommandon kan definieras under avsnittet för ett `with` jobb.
 
 Distributionen anropar alltid `npm install` före ett anpassat kommando.
 
 | Kommando             | Beskrivning                                                                                                                                                                                                                                                                                                                                                                                |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `app_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av programmet för statiskt innehåll.<br><br>Om du till exempel vill konfigurera en produktions version för ett anmärknings program skapar du ett NPM-skript som heter `build-prod` för att köra `ng build --prod` och ange `npm run build-prod` som det anpassade kommandot. Om inget anges försöker arbets flödet köra `npm run build` `npm run build:azure` kommandona eller. |
+| `app_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av programmet för statiskt innehåll.<br><br>Om du till exempel vill konfigurera en produktionsbygge för ett Angular-program skapar du ett npm-skript med namnet för att köra `build-prod` och ange som det anpassade `ng build --prod` `npm run build-prod` kommandot. Om det lämnas tomt försöker arbetsflödet köra `npm run build` kommandona `npm run build:azure` eller . |
 | `api_build_command` | Definierar ett anpassat kommando som ska köras under distributionen av Azure Functions API-programmet.                                                                                                                                                                                                                                                                                                  |
 
-## <a name="skip-app-build"></a>Hoppa över app-build
+## <a name="skip-app-build"></a>Hoppa över appbygge
 
-Om du behöver fullständig kontroll över hur ditt klient program är skapat kan du lägga till anpassade build-steg i arbets flödet. Sedan kan du konfigurera den statiska Web Apps åtgärden för att kringgå den automatiska Bygg processen och bara distribuera appen som skapades i ett föregående steg.
+Om du behöver fullständig kontroll över hur ditt frontend-program har skapats kan du lägga till anpassade byggsteg i arbetsflödet. Sedan kan du konfigurera Static Web Apps för att kringgå den automatiska byggprocessen och bara distribuera appen som skapats i ett tidigare steg.
 
-Om du vill hoppa över skapandet av appen anger `skip_app_build` du till `true` och `app_location` till platsen för den mapp som ska distribueras.
+Om du vill hoppa över att skapa `skip_app_build` appen anger du till och till platsen för mappen som ska `true` `app_location` distribueras.
 
 ```yml
 with:
@@ -172,24 +175,27 @@ with:
 
 | Egenskap         | Beskrivning                                                 |
 | ---------------- | ----------------------------------------------------------- |
-| `skip_app_build` | Ställ in värdet på `true` för att hoppa över skapandet av frontend-appen. |
+| `skip_app_build` | Ange värdet till för `true` att hoppa över att skapa frontend-appen. |
 
 > [!NOTE]
-> Du kan bara hoppa över versionen av frontend-appen. Om din app har ett API, kommer den fortfarande att skapas av den statiska Web Apps GitHub-åtgärden.
+> Du kan bara hoppa över bygget för frontend-appen. Om din app har ett API kommer den fortfarande att byggas av Static Web Apps GitHub Action.
 
 ## <a name="route-file-location"></a>Routes-filens plats
 
-Du kan anpassa arbets flödet för att leta efter [staticwebapp.config.js](routes.md) i i valfri mapp i din lagrings plats. Följande egenskap kan definieras under ett jobb `with` avsnitt.
+Du kan anpassa arbetsflödet för att leta efter [routes.jspå](routes.md) i valfri mapp på din lagringsplats. Följande egenskap kan definieras under avsnittet för ett `with` jobb.
 
 | Egenskap          | Beskrivning                                                                                                                                 |
 | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `routes_location` | Definierar den katalog plats där _staticwebapp.config.jspå_ filen hittas. Den här platsen är relativ i förhållande till lagrings platsens rot. |
+| `routes_location` | Definierar den katalogplats där _routes.jspå_ filen hittas. Den här platsen är relativ till lagringsplatsens rot. |
 
-Det är särskilt viktigt att du är medveten om platsen för din _staticwebapp.config.jsi_ filen om det inte går att flytta den här filen till `output_location` som standard.
+Det är särskilt viktigt _att duroutes.js_ platsen för filen om byggsteget för frontend-ramverket inte flyttar den här filen till som `output_location` standard.
+
+> [!IMPORTANT]
+> Funktioner som _definierats iroutes.jspå_ filen är nu inaktuella. Se konfigurationsfilen Azure Static Web Apps [för](./configuration.md) information om _staticwebapp.config.jspå_.
 
 ## <a name="environment-variables"></a>Miljövariabler
 
-Du kan ställa in miljövariabler för din version genom `env` avsnittet i ett jobbs konfiguration.
+Du kan ange miljövariabler för ditt `env` bygge via avsnittet i ett jobbs konfiguration.
 
 ```yaml
 jobs:
@@ -219,7 +225,7 @@ jobs:
 
 ## <a name="monorepo-support"></a>Monorepo-stöd
 
-En monorepo är en lagrings plats som innehåller kod för mer än ett program. Som standard spårar en statisk Web Apps arbets flödes fil alla filer i en lagrings plats, men du kan justera den så att den är riktad mot en enda app. För monorepos har varje statisk app därför den konfigurations fil som finns sida vid sida i mappen _. GitHub/arbets flöden_ i databasen.
+Ett monorepo är en lagringsplats som innehåller kod för mer än ett program. Som standard spårar en Static Web Apps-arbetsflödesfil alla filer i en lagringsplats, men du kan justera den för att rikta in dig på en enda app. För monorepos har därför varje statisk app sin egen konfigurationsfil som finns sida vid sida i _lagringsplatsens mapp .github/workflows._
 
 ```files
 ├── .github
@@ -236,9 +242,9 @@ En monorepo är en lagrings plats som innehåller kod för mer än ett program. 
 └── README.md
 ```
 
-Om du vill ange en enda app som mål för en arbets flödes fil anger du sökvägar i `push` `pull_request` avsnitten och.
+Om du vill rikta en arbetsflödesfil till en enda app anger du sökvägar i `push` avsnitten och `pull_request` .
 
-Följande exempel visar hur du lägger till en `paths` nod i `push` avsnitten och `pull_request` i en fil med namnet _Azure-static-Web-Apps-Purple-Pond. yml_.
+I följande exempel visas hur du lägger till en nod i - och -avsnitten i en fil med namnet `paths` `push` `pull_request` _azure-static-web-apps-purple-mapp.yml_.
 
 ```yml
 on:
@@ -259,11 +265,11 @@ on:
       - .github/workflows/azure-static-web-apps-purple-pond.yml
 ```
 
-I den här instansen utlöser endast ändringar som gjorts i följande filer en ny version:
+I det här fallet utlöser endast ändringar som görs i följande filer en ny version:
 
-- Alla filer i mappen _APP1_
-- Alla filer i mappen _API1_
-- Ändringar i appens _Azure-static-Web-Apps-Purple-Pond. yml_ -arbetsflöde
+- Filer i _mappen app1_
+- Filer i _mappen api1_
+- Ändringar i appens _azure-static-web-apps-purple-steg.yml-arbetsflödesfil_
 
 ## <a name="next-steps"></a>Nästa steg
 

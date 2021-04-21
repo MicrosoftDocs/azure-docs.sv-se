@@ -1,34 +1,34 @@
 ---
-title: Kör kommandon i kör behållar instans
-description: Lär dig hur du kör ett kommando i en behållare som för närvarande körs i Azure Container Instances
+title: Köra kommandon i containerinstans som körs
+description: Lär dig hur du kör ett kommando i en container som för närvarande körs i Azure Container Instances
 ms.topic: article
 ms.date: 03/30/2018
-ms.openlocfilehash: de48e6ac246e2b0751561b4c60bb63d88b599bdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 42832910efff67f111c669793798d9ff0e413536
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "79247207"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790787"
 ---
-# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Köra ett kommando i en Azure Container instance som körs
+# <a name="execute-a-command-in-a-running-azure-container-instance"></a>Köra ett kommando i en Azure-containerinstans som körs
 
 Azure Container Instances har stöd för att köra kommandon i aktiva containers. Under apputveckling och felsökning är det särskilt användbart att kunna köra kommandon i containers som redan har startats. Den här funktionen används oftast till att starta ett interaktivt gränssnitt så att du kan felsöka problem i en container som körs.
 
 ## <a name="run-a-command-with-azure-cli"></a>Köra ett kommando med Azure CLI
 
-Köra ett kommando i en behållare som körs med [AZ container exec][az-container-exec] i [Azure CLI][azure-cli]:
+Kör ett kommando i en container som körs [med az container exec][az-container-exec] i [Azure CLI:][azure-cli]
 
 ```azurecli
 az container exec --resource-group <group-name> --name <container-group-name> --exec-command "<command>"
 ```
 
-Till exempel för att starta ett bash-gränssnitt i en nginx-behållare:
+Så här startar du till exempel ett Bash-gränssnitt i en Nginx-container:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --exec-command "/bin/bash"
 ```
 
-I exemplet nedan startas bash-gränssnittet i en Linux-behållare, vilket ger en Terminal i som körs `ls` :
+I exempelutdata nedan startas Bash-gränssnittet i en Linux-container som körs, vilket ger en terminal `ls` där körs:
 
 ```output
 root@caas-83e6c883014b427f9b277a2bba3b7b5f-708716530-2qv47:/# ls
@@ -39,7 +39,7 @@ exit
 Bye.
 ```
 
-I det här exemplet startas kommando tolken i en Nanoserver-behållare som körs:
+I det här exemplet startas kommandotolken i en nanoservercontainer som körs:
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name myiis --exec-command "cmd.exe"
@@ -72,9 +72,9 @@ Bye.
 
 ## <a name="multi-container-groups"></a>Grupper med flera container
 
-Om [behållar gruppen](container-instances-container-groups.md) har flera behållare, till exempel en program behållare och en loggning av sidvagn, anger du namnet på behållaren där kommandot ska köras `--container-name` .
+Om [containergruppen har](container-instances-container-groups.md) flera containrar, till exempel en programcontainer och en sidovagn för loggning, anger du namnet på containern där kommandot ska köras med `--container-name` .
 
-I behållar gruppen *mynginx* finns till exempel två behållare, *nginx-app* och *loggar*. Starta ett gränssnitt i behållaren *nginx-app* :
+I containergruppen är till exempel *mynginx två* containrar, *nginx-app* och *loggning.* Så här startar du ett gränssnitt på *nginx-app-containern:*
 
 ```azurecli
 az container exec --resource-group myResourceGroup --name mynginx --container-name nginx-app --exec-command "/bin/bash"
@@ -82,13 +82,13 @@ az container exec --resource-group myResourceGroup --name mynginx --container-na
 
 ## <a name="restrictions"></a>Begränsningar
 
-Azure Container Instances stöder för närvarande att starta en enda process med [AZ container exec][az-container-exec]och du kan inte skicka kommando argument. Du kan till exempel inte kedje kommandon som i `sh -c "echo FOO && echo BAR"` eller köra `echo FOO` .
+Azure Container Instances stöder för närvarande start av en enda process [med az container exec][az-container-exec], och du kan inte skicka kommandoargument. Du kan till exempel inte länka kommandon som i `sh -c "echo FOO && echo BAR"` eller köra `echo FOO` .
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om andra fel söknings verktyg och vanliga distributions problem i [fel sökning av problem med behållare och distribution i Azure Container instances](container-instances-troubleshooting.md).
+Lär dig mer om andra felsökningsverktyg och vanliga distributionsproblem [i Felsöka container- och distributionsproblem i Azure Container Instances](container-instances-troubleshooting.md).
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-exec]: /cli/azure/container#az-container-exec
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-exec]: /cli/azure/container#az_container_exec
 [azure-cli]: /cli/azure

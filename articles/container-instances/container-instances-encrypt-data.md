@@ -1,110 +1,110 @@
 ---
 title: Kryptera distributionsdata
-description: Lär dig mer om kryptering av data bestående för dina behållar instans resurser och hur du krypterar data med en kundhanterad nyckel
+description: Lär dig mer om kryptering av data som bevaras för dina containerinstansresurser och hur du krypterar data med en kund hanterad nyckel
 ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 23c81aeab3bf6e9ee7f2d89fbdf8def20dab4aa7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94686284"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790877"
 ---
 # <a name="encrypt-deployment-data"></a>Kryptera distributionsdata
 
-När du kör Azure Container Instances-resurser (ACI) i molnet samlar ACI-tjänsten samman och behåller data som är relaterade till dina behållare. ACI krypterar automatiskt dessa data när de sparas i molnet. Den här krypteringen skyddar dina data och hjälper dig att uppfylla organisationens säkerhets-och efterlevnads åtaganden. ACI ger dig också möjlighet att kryptera dessa data med din egen nyckel, vilket ger dig större kontroll över data som är relaterade till dina ACI-distributioner.
+När du Azure Container Instances (ACI)-resurser i molnet samlar ACI-tjänsten in och bevarar data relaterade till dina containrar. ACI krypterar automatiskt dessa data när de sparas i molnet. Den här krypteringen skyddar dina data för att uppfylla organisationens säkerhets- och efterlevnadsåtaganden. ACI ger dig också möjlighet att kryptera dessa data med din egen nyckel, vilket ger dig större kontroll över de data som är relaterade till dina ACI-distributioner.
 
-## <a name="about-aci-data-encryption"></a>Om ACI Data Encryption 
+## <a name="about-aci-data-encryption"></a>Om ACI-datakryptering 
 
-Data i ACI krypteras och dekrypteras med hjälp av 256-bitars AES-kryptering. Den är aktive rad för alla ACI-distributioner och du behöver inte ändra din distribution eller behållare för att dra nytta av den här krypteringen. Detta inkluderar metadata om distributionen, miljövariabler, nycklar som skickas till dina behållare och loggar som behålls när behållarna har stoppats så att du fortfarande kan se dem. Kryptering påverkar inte prestanda för behållar gruppen och det finns ingen ytterligare kostnad för kryptering.
+Data i ACI krypteras och dekrypteras med 256-bitars AES-kryptering. Den är aktiverad för alla ACI-distributioner och du behöver inte ändra distributionen eller containrarna för att dra nytta av den här krypteringen. Detta inkluderar metadata om distributionen, miljövariabler, nycklar som skickas till dina containrar och loggar som bevaras när containrarna har stoppats så att du fortfarande kan se dem. Krypteringen påverkar inte containergruppens prestanda och det finns ingen extra kostnad för kryptering.
 
-## <a name="encryption-key-management"></a>Hantering av krypterings nyckel
+## <a name="encryption-key-management"></a>Hantering av krypteringsnyckel
 
-Du kan förlita dig på Microsoft-hanterade nycklar för kryptering av dina behållar data, eller så kan du hantera kryptering med dina egna nycklar. I följande tabell jämförs de här alternativen: 
+Du kan förlita dig på Microsoft-hanterade nycklar för kryptering av dina containerdata, eller så kan du hantera krypteringen med dina egna nycklar. I följande tabell jämförs dessa alternativ: 
 
 |    |    Microsoft-hanterade nycklar     |     Kundhanterade nycklar     |
 |----|----|----|
-|    **Kryptering/dekryptering**    |    Azure    |    Azure    |
-|    **Nyckel lagring**    |    Microsoft nyckel lager    |    Azure Key Vault    |
-|    **Största ansvar för nyckel rotation**    |    Microsoft    |    Kund    |
-|    **Nyckel åtkomst**    |    Endast Microsoft    |    Microsoft, kund    |
+|    **Krypterings-/dekrypteringsåtgärder**    |    Azure    |    Azure    |
+|    **Nyckellagring**    |    Microsoft Key Store    |    Azure Key Vault    |
+|    **Nyckelrotationsansvar**    |    Microsoft    |    Kund    |
+|    **Nyckelåtkomst**    |    Endast Microsoft    |    Microsoft, Kund    |
 
-Resten av dokumentet beskriver de steg som krävs för att kryptera dina ACI-distributions data med din nyckel (kundhanterad nyckel). 
+Resten av dokumentet beskriver de steg som krävs för att kryptera dina ACI-distributionsdata med din nyckel (kund hanterad nyckel). 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="encrypt-data-with-a-customer-managed-key"></a>Kryptera data med en kundhanterad nyckel
+## <a name="encrypt-data-with-a-customer-managed-key"></a>Kryptera data med en kund hanterad nyckel
 
-### <a name="create-service-principal-for-aci"></a>Skapa tjänstens huvud namn för ACI
+### <a name="create-service-principal-for-aci"></a>Skapa tjänstens huvudnamn för ACI
 
-Det första steget är att se till att din [Azure-klient](../active-directory/develop/quickstart-create-new-tenant.md) har ett huvud namn för tjänsten som tilldelas för att bevilja behörighet till tjänsten Azure Container instances. 
+Det första steget är att se till att [din Azure-klientorganisation](../active-directory/develop/quickstart-create-new-tenant.md) har ett tilldelat tjänsthuvudnamn för att bevilja behörigheter till Azure Container Instances tjänsten. 
 
 > [!IMPORTANT]
-> Innan du kan köra följande kommando och skapa ett huvud namn för tjänsten, bekräftar du att du har behörighet att skapa tjänstens huvud namn i din klient organisation.
+> För att kunna köra följande kommando och skapa ett huvudnamn för tjänsten bekräftar du att du har behörighet att skapa tjänstens huvudnamn i din klientorganisation.
 >
 
-Följande CLI-kommando konfigurerar ACI SP i Azure-miljön:
+Följande CLI-kommando ställer in ACI SP i Azure-miljön:
 
 ```azurecli-interactive
 az ad sp create --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9
 ```
 
-Utdata från att köra det här kommandot ska visa ett huvud namn för tjänsten som har kon figurer ATS med "displayName": "Azure Container instance service".
+Utdata från körningen av det här kommandot bör visa ett huvudnamn för tjänsten som har ställts in med "displayName": "Azure Container Instance Service".
 
-Om du inte kan skapa tjänstens huvud namn:
-* bekräfta att du har behörighet att göra det i din klient organisation
-* kontrol lera om det redan finns ett tjänst huvud namn i din klient organisation för distribution till ACI. Du kan göra det genom att köra `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` och använda tjänstens huvud namn i stället
+Om du inte kan skapa tjänstens huvudnamn:
+* bekräfta att du har behörighet att göra det i din klientorganisation
+* kontrollera om det redan finns ett huvudnamn för tjänsten i din klient för distribution till ACI. Du kan göra det genom att köra `az ad sp show --id 6bb8e274-af5d-4df2-98a3-4fd78b4cafd9` och använda tjänstens huvudnamn i stället
 
 ### <a name="create-a-key-vault-resource"></a>Skapa en Key Vault resurs
 
-Skapa en Azure Key Vault med hjälp av [Azure Portal](../key-vault/general/quick-create-portal.md), [Azure CLI](../key-vault/general/quick-create-cli.md)eller [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
+Skapa en Azure Key Vault med [Azure Portal,](../key-vault/general/quick-create-portal.md) [Azure CLI](../key-vault/general/quick-create-cli.md)eller [Azure PowerShell](../key-vault/general/quick-create-powershell.md).
 
-Använd följande rikt linjer för egenskaperna för nyckel valvet: 
+Använd följande riktlinjer för egenskaperna för ditt nyckelvalv: 
 * Namn: Ett unikt namn krävs. 
 * Prenumeration: Välj en prenumeration.
-* Under resurs grupp väljer du antingen en befintlig resurs grupp eller skapar en ny och anger ett resurs grupp namn.
+* Under Resursgrupp väljer du antingen en befintlig resursgrupp eller skapar en ny och anger ett resursgruppsnamn.
 * Välj en plats i listrutan Plats.
-* Du kan lämna de andra alternativen till standardinställningarna eller välja baserat på ytterligare krav.
+* Du kan lämna standardinställningarna för de andra alternativen eller välja dem baserat på ytterligare krav.
 
 > [!IMPORTANT]
-> När du använder Kundhanterade nycklar för att kryptera en ACI, rekommenderar vi att du anger följande två egenskaper i nyckel valvet, mjuk borttagning och rensar inte. Dessa egenskaper är inte aktiverade som standard, men kan aktive ras med antingen PowerShell eller Azure CLI på ett nytt eller befintligt nyckel valv.
+> När du använder kund hanterade nycklar för att kryptera en ACI-distributionsmall rekommenderar vi att följande två egenskaper anges i nyckelvalvet, Mjuk borttagning och Rensa inte. Dessa egenskaper är inte aktiverade som standard, men kan aktiveras med antingen PowerShell eller Azure CLI på ett nytt eller befintligt nyckelvalv.
 
 ### <a name="generate-a-new-key"></a>Generera en ny nyckel 
 
-När du har skapat nyckel valvet navigerar du till resursen i Azure Portal. På den vänstra navigerings menyn på resurs bladet, under Inställningar, klickar du på **nycklar**. Klicka på generera/importera i vyn för "nycklar" för att generera en ny nyckel. Använd ett unikt namn för den här nyckeln och andra inställningar som baseras på dina krav. 
+När nyckelvalvet har skapats navigerar du till resursen i Azure Portal. I den vänstra navigeringsmenyn på resursbladet går du till Inställningar och klickar på **Nycklar.** I vyn för "Nycklar" klickar du på "Generera/importera" för att generera en ny nyckel. Använd ett unikt namn för den här nyckeln och andra inställningar baserat på dina krav. 
 
 ![Generera en ny nyckel](./media/container-instances-encrypt-data/generate-key.png)
 
-### <a name="set-access-policy"></a>Ange åtkomst princip
+### <a name="set-access-policy"></a>Ange åtkomstprincip
 
-Skapa en ny åtkomst princip som gör att ACI-tjänsten kan komma åt din nyckel.
+Skapa en ny åtkomstprincip för att ge ACI-tjänsten åtkomst till din nyckel.
 
-* När din nyckel har skapats går du tillbaka till resurs bladet för nyckel valv under Inställningar och klickar på **åtkomst principer**.
-* På sidan "åtkomst principer" för ditt nyckel valv klickar du på **Lägg till åtkomst princip**.
-* Ange *nyckel behörigheter* för att inkludera nyckel behörigheter för Hämta **och ta** **fram** nyckel ![ uppsättning](./media/container-instances-encrypt-data/set-key-permissions.png)
-* För *Välj huvud konto* väljer du **Azure Container instance service**
-* Klicka på **Lägg till** längst ned 
+* När nyckeln har genererats går du tillbaka till resursbladet för nyckelvalvet och under Inställningar klickar du **på Åtkomstprinciper.**
+* På sidan Åtkomstprinciper för nyckelvalvet klickar du på Lägg **till åtkomstprincip.**
+* Ange *nyckelbehörigheter för* att inkludera **behörigheter för att** hämta och packa **upp** ![ nyckeluppsättningsnyckel](./media/container-instances-encrypt-data/set-key-permissions.png)
+* För *Välj huvudnamn* väljer du **Azure Container Instance Service**
+* Klicka **på Lägg** till längst ned 
 
-Åtkomst principen bör nu visas i nyckel valvets åtkomst principer.
+Åtkomstprincipen bör nu visas i ditt nyckelvalvs åtkomstprinciper.
 
-![Ny åtkomst princip](./media/container-instances-encrypt-data/access-policy.png)
+![Ny åtkomstprincip](./media/container-instances-encrypt-data/access-policy.png)
 
-### <a name="modify-your-json-deployment-template"></a>Ändra mallen för JSON-distribution
+### <a name="modify-your-json-deployment-template"></a>Ändra JSON-distributionsmallen
 
 > [!IMPORTANT]
-> Kryptering av distributions data med en kundhanterad nyckel är tillgängligt i den senaste API-versionen (2019-12-01) som för närvarande är distribuerad. Ange den här API-versionen i distributions mal len. Om du har problem med detta kan du kontakta Azure-supporten.
+> Kryptering av distributionsdata med en kund hanterad nyckel är tillgängligt i den senaste API-versionen (2019-12-01) som för närvarande lanseras. Ange den här API-versionen i distributionsmallen. Om du har problem med detta kan du kontakta Azure Support.
 
-När nyckel valvets nyckel och åtkomst princip har kon figurer ATS lägger du till följande egenskaper i ACI-distributions mal len. Lär dig mer om att distribuera ACI-resurser med en mall i [självstudien: Distribuera en grupp med flera behållare med hjälp av en Resource Manager-mall](./container-instances-multi-container-group.md). 
-* Under `resources` , anger `apiVersion` du `2019-12-01` .
-* Under avsnittet Egenskaper för container grupp i distributions mal len lägger du till en `encryptionProperties` , som innehåller följande värden:
-  * `vaultBaseUrl`: DNS-namnet på ditt nyckel valv finns på bladet översikt i Key Vault-resursen i portalen
-  * `keyName`: namnet på nyckeln som genererades tidigare
-  * `keyVersion`: den aktuella versionen av nyckeln. Du hittar detta genom att klicka på själva nyckeln (under "nycklar" i avsnittet Inställningar i din Key Vault-resurs)
-* Lägg till en egenskap med värde under egenskaper för behållar grupp `sku` `Standard` . `sku`Egenskapen krävs i API-version 2019-12-01.
+När nyckelvalvsnyckeln och åtkomstprincipen har ställts in lägger du till följande egenskaper i ACI-distributionsmallen. Läs mer om att distribuera ACI-resurser med en mall i [Självstudie: Distribuera](./container-instances-multi-container-group.md)en grupp med flera containrar med en Resource Manager mall . 
+* Under `resources` anger du till `apiVersion` `2019-12-01` .
+* Under avsnittet egenskaper för containergrupp i distributionsmallen lägger du till `encryptionProperties` en , som innehåller följande värden:
+  * `vaultBaseUrl`: DNS-namnet för ditt nyckelvalv finns på översiktsbladet för nyckelvalvsresursen i portalen
+  * `keyName`: namnet på den nyckel som genererades tidigare
+  * `keyVersion`: den aktuella versionen av nyckeln. Du hittar detta genom att klicka på själva nyckeln (under "Nycklar" i avsnittet Inställningar för nyckelvalvsresursen)
+* Under egenskaperna för containergruppen lägger du till en `sku` egenskap med värdet `Standard` . Egenskapen `sku` krävs i API-version 2019-12-01.
 
-Följande mall visar de här ytterligare egenskaperna för att kryptera distributions data:
+Följande mallfragment visar dessa ytterligare egenskaper för att kryptera distributionsdata:
 
 ```json
 [...]
@@ -129,7 +129,7 @@ Följande mall visar de här ytterligare egenskaperna för att kryptera distribu
 ]
 ```
 
-Följande är en fullständig mall, som är anpassad från mallen i [Självstudier: Distribuera en grupp med flera behållare med hjälp av en Resource Manager-mall](./container-instances-multi-container-group.md). 
+Följande är en fullständig mall som anpassats från mallen i [Självstudie: Distribuera](./container-instances-multi-container-group.md)en grupp med flera containrar med en Resource Manager mall . 
 
 ```json
 {
@@ -225,7 +225,7 @@ Följande är en fullständig mall, som är anpassad från mallen i [Självstudi
 
 ### <a name="deploy-your-resources"></a>Distribuera dina resurser
 
-Om du har skapat och redigerat mallfilen på Skriv bordet kan du överföra den till din Cloud Shell katalog genom att dra filen till den. 
+Om du har skapat och redigerat mallfilen på skrivbordet kan du ladda upp den till Cloud Shell-katalogen genom att dra filen till den. 
 
 Skapa en resursgrupp med kommandot [az group create][az-group-create].
 
@@ -233,14 +233,14 @@ Skapa en resursgrupp med kommandot [az group create][az-group-create].
 az group create --name myResourceGroup --location eastus
 ```
 
-Distribuera mallen med kommandot [AZ Deployment Group Create][az-deployment-group-create] .
+Distribuera mallen med kommandot [az deployment group][az-deployment-group-create] create.
 
 ```azurecli-interactive
 az deployment group create --resource-group myResourceGroup --template-file deployment-template.json
 ```
 
-Inom några sekunder bör du få ett första svar från Azure. När distributionen är klar krypteras alla data som är relaterade till den bestående av ACI-tjänsten med den nyckel du angav.
+Inom några sekunder bör du få ett första svar från Azure. När distributionen är klar krypteras alla data som är relaterade till den av ACI-tjänsten med den nyckel som du angav.
 
 <!-- LINKS - Internal -->
-[az-group-create]: /cli/azure/group#az-group-create
-[az-deployment-group-create]: /cli/azure/deployment/group/#az-deployment-group-create
+[az-group-create]: /cli/azure/group#az_group_create
+[az-deployment-group-create]: /cli/azure/deployment/group/#az_deployment_group_create

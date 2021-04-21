@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: Kopiera databasen i Azure SQL Database till en ny server'
-description: Exempel skript för Azure CLI för att kopiera en databas i Azure SQL Database till en ny server
+title: 'Azure CLI: Kopiera databasen i Azure SQL Database till ny server'
+description: Azure CLI-exempelskript för att kopiera en databas Azure SQL Database till en ny server
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: e22d28215c06de96d31faec71f4fb595bb74a4a6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 88032183825443aa3a3945530e2203e5500248a6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87495275"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791327"
 ---
-# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Använd CLI för att kopiera en databas i Azure SQL Database till en ny server
+# <a name="use-cli-to-copy-a-database-in-azure-sql-database-to-a-new-server"></a>Använda CLI för att kopiera en databas Azure SQL Database till en ny server
 
-Detta exempel på Azure CLI-skript skapar en kopia av en befintlig databas på en ny server.
+Det här Azure CLI-skriptexempel skapar en kopia av en befintlig databas på en ny server.
 
 Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -42,20 +42,20 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 az group delete --name $targetResource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Beskrivning |
 |---|---|
-| [AZ SQL DB-kopia](/cli/azure/sql/db#az-sql-db-copy) | Skapar en kopia av en databas som använder ögonblicksbilden vid den aktuella tiden. |
+| [az sql db copy](/cli/azure/sql/db#az_sql_db_copy) | Skapar en kopia av en databas som använder ögonblicksbilden vid den aktuella tiden. |
 
 ## <a name="next-steps"></a>Nästa steg
 

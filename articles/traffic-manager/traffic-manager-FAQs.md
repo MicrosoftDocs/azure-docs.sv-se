@@ -1,5 +1,5 @@
 ---
-title: Vanliga frågor och svar om Azure Traffic Manager
+title: Azure Traffic Manager – Vanliga frågor och svar
 description: Den här artikeln innehåller svar på vanliga frågor om Traffic Manager
 services: traffic-manager
 documentationcenter: ''
@@ -11,445 +11,445 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
-ms.openlocfilehash: 0d4f1ed6bab5775c44b2a745e1edc5fc07e0c06d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 708d63695cbba53578b13d1674b9aa99018bcae4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215467"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791129"
 ---
-# <a name="traffic-manager-frequently-asked-questions-faq"></a>Vanliga frågor och svar om Traffic Manager
+# <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager vanliga frågor och svar
 
 ## <a name="traffic-manager-basics"></a>Traffic Manager grunderna
 
-### <a name="what-ip-address-does-traffic-manager-use"></a>Vilken IP-adress använder Traffic Manager?
+### <a name="what-ip-address-does-traffic-manager-use"></a>Vilken IP-adress Traffic Manager använder?
 
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. Den skickar DNS-svar till direkta klienter till lämplig tjänst slut punkt. Klienterna ansluter sedan till tjänstens slut punkt direkt, inte via Traffic Manager.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager fungerar på DNS-nivå. Den skickar DNS-svar för att dirigera klienter till lämplig tjänstslutpunkt. Klienter ansluter sedan direkt till tjänstslutpunkten, inte via Traffic Manager.
 
-Därför tillhandahåller Traffic Manager inte någon slut punkt eller IP-adress som klienterna kan ansluta till. Om du vill ha en statisk IP-adress för din tjänst måste den konfigureras på tjänsten, inte i Traffic Manager.
+Därför ger Traffic Manager ingen slutpunkt eller IP-adress som klienter kan ansluta till. Om du vill ha en statisk IP-adress för din tjänst måste den konfigureras på tjänsten, inte i Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Vilka typer av trafik kan dirigeras med hjälp av Traffic Manager?
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)kan en Traffic Manager-slutpunkt vara vilken Internet tjänst som helst som finns i eller utanför Azure. Därför kan Traffic Manager dirigera trafik som härstammar från det offentliga Internet till en uppsättning slut punkter som också är riktade mot Internet. Om du har slut punkter som finns i ett privat nätverk (till exempel en intern version av [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)) eller har användare som gör DNS-begäranden från sådana interna nätverk, kan du inte använda Traffic Manager för att dirigera trafiken.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)kan en Traffic Manager slutpunkt vara valfri Internetuppkopplingstjänst som finns i eller utanför Azure. Därför kan Traffic Manager dirigera trafik som kommer från det offentliga Internet till en uppsättning slutpunkter som också är internetriktade. Om du har slutpunkter som finns i ett privat nätverk (till exempel en intern version av [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)) eller har användare som gör DNS-begäranden från sådana interna nätverk kan du inte använda Traffic Manager för att dirigera trafiken.
 
-### <a name="does-traffic-manager-support-sticky-sessions"></a>Stöder Traffic Manager "tröga" sessioner?
+### <a name="does-traffic-manager-support-sticky-sessions"></a>Stöder Traffic Manager "sticky"-sessioner?
 
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. DNS-svar används för att dirigera klienter till lämplig tjänst slut punkt. Klienterna ansluter till tjänstens slut punkt direkt, inte via Traffic Manager. Därför ser Traffic Manager inte HTTP-trafiken mellan klienten och servern.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md), Traffic Manager fungerar på DNS-nivå. Den använder DNS-svar för att dirigera klienter till lämplig tjänstslutpunkt. Klienter ansluter direkt till tjänstslutpunkten, inte via Traffic Manager. Därför Traffic Manager inte HTTP-trafiken mellan klienten och servern.
 
-Dessutom tillhör käll-IP-adressen för den DNS-fråga som togs emot av Traffic Manager den rekursiva DNS-tjänsten, inte klienten. Traffic Manager har därför inget sätt att spåra enskilda klienter och kan inte implementera "tröga" sessioner. Den här begränsningen är gemensam för alla DNS-baserade trafik hanterings system och är inte särskilt för Traffic Manager.
+Ip-källadressen för DNS-frågan som tas emot av Traffic Manager tillhör den rekursiva DNS-tjänsten, inte klienten. Därför har Traffic Manager inget sätt att spåra enskilda klienter och kan inte implementera "sticky"-sessioner. Den här begränsningen är gemensam för alla DNS-baserade trafikhanteringssystem och är inte specifik för Traffic Manager.
 
-### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Varför ser jag ett HTTP-fel när jag använder Traffic Manager?
+### <a name="why-am-i-seeing-an-http-error-when-using-traffic-manager"></a>Varför visas ett HTTP-fel när jag använder Traffic Manager?
 
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. DNS-svar används för att dirigera klienter till lämplig tjänst slut punkt. Klienterna ansluter sedan till tjänstens slut punkt direkt, inte via Traffic Manager. Traffic Manager ser inte HTTP-trafik mellan klienten och servern. Det innebär att alla HTTP-fel som du ser måste komma från ditt program. För att klienten ska kunna ansluta till programmet slutförs alla steg i DNS-lösningen. Detta omfattar alla interaktioner som Traffic Manager har på program trafik flödet.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. Den använder DNS-svar för att dirigera klienter till lämplig tjänstslutpunkt. Klienter ansluter sedan direkt till tjänstslutpunkten, inte via Traffic Manager. Traffic Manager ser inte HTTP-trafik mellan klient och server. Därför måste alla HTTP-fel som visas komma från ditt program. Alla DNS-lösningssteg är slutförda för att klienten ska kunna ansluta till programmet. Det omfattar alla interaktioner Traffic Manager har i programtrafikflödet.
 
-Ytterligare undersökning bör därför fokuseras på programmet.
+Ytterligare undersökning bör därför fokusera på programmet.
 
-HTTP-värd rubriken som skickas från klientens webbläsare är den vanligaste orsaken till problem. Kontrol lera att programmet har kon figurer ATS för att acceptera rätt värd huvud för det domän namn som du använder. För slut punkter som använder Azure App Service, se [Konfigurera ett anpassat domän namn för en webbapp i Azure App Service med Traffic Manager](../app-service/configure-domain-traffic-manager.md).
+HTTP-värdhuvudet som skickas från klientens webbläsare är den vanligaste orsaken till problem. Kontrollera att programmet är konfigurerat för att acceptera rätt värdrubrik för det domännamn som du använder. Information om slutpunkter som använder Azure App Service finns i Konfigurera ett anpassat domännamn för en [webbapp](../app-service/configure-domain-traffic-manager.md)i Azure App Service med Traffic Manager .
 
-### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Vilken prestanda påverkas om du använder Traffic Manager?
+### <a name="what-is-the-performance-impact-of-using-traffic-manager"></a>Hur påverkas prestandan av att använda Traffic Manager?
 
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. Eftersom klienter ansluter till tjänstens slut punkter direkt, påverkas inte prestanda när du använder Traffic Manager när anslutningen har upprättats.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. Eftersom klienter ansluter till dina tjänstslutpunkter direkt påverkas inte prestanda när Traffic Manager när anslutningen har upprättats.
 
-Eftersom Traffic Manager integreras med program på DNS-nivå kräver det ytterligare en DNS-sökning som ska läggas till i DNS-matchningstid. Effekten av Traffic Manager på DNS-matchningstid är minimal. Traffic Manager använder ett globalt nätverk med namnservrar, och använder [anycast](https://en.wikipedia.org/wiki/Anycast) -nätverk för att se till att DNS-frågor alltid dirigeras till den närmast tillgängliga namn servern. Dessutom innebär cachelagring av DNS-svar att den ytterligare DNS-fördröjningen som uppstår genom att använda Traffic Manager endast gäller för en bråkdel av sessioner.
+Eftersom Traffic Manager integreras med program på DNS-nivå kräver det att ytterligare en DNS-sökning infogas i DNS-lösningskedjan. Effekten av att Traffic Manager DNS-upplösningstid är minimal. Traffic Manager använder ett globalt nätverk med namnservrar och [anycast-nätverk](https://en.wikipedia.org/wiki/Anycast) för att säkerställa att DNS-frågor alltid dirigeras till den närmaste tillgängliga namnservern. Dessutom innebär cachelagring av DNS-svar att den ytterligare DNS-svarstiden som uppstår Traffic Manager endast gäller för en bråkdel av sessionerna.
 
-Prestanda metoden dirigerar trafik till närmast tillgängliga slut punkt. Netto resultatet är att den övergripande prestanda påverkan som är associerad med den här metoden ska vara minimal. Eventuell ökning av DNS-fördröjningen ska förskjutas genom lägre nätverks fördröjning till slut punkten.
+Prestandametoden dirigerar trafik till den närmaste tillgängliga slutpunkten. Nettoresultatet är att den övergripande prestandapåverkan som är associerad med den här metoden bör vara minimal. En ökning av DNS-svarstiden bör förskjutas av lägre nätverksfördröjning till slutpunkten.
 
-### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Vilka program protokoll kan jag använda med Traffic Manager?
+### <a name="what-application-protocols-can-i-use-with-traffic-manager"></a>Vilka programprotokoll kan jag använda med Traffic Manager?
 
-Som förklaras i [hur Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. När DNS-sökningen är klar ansluter klienterna direkt till program slut punkten, inte via Traffic Manager. Anslutningen kan därför använda valfritt program protokoll. Om du väljer TCP som övervaknings protokoll kan Traffic Managerens hälso övervakning av slut punkt utföras utan att använda några program protokoll. Om du väljer att verifiera hälso tillståndet med ett program protokoll måste slut punkten kunna svara på antingen HTTP-eller HTTPS GET-begäranden.
+Som förklaras [i Traffic Manager fungerar](../traffic-manager/traffic-manager-how-it-works.md)Traffic Manager fungerar på DNS-nivå. När DNS-sökning är klar ansluter klienterna direkt till programslutpunkten, inte via Traffic Manager. Anslutningen kan därför använda vilket programprotokoll som helst. Om du väljer TCP som övervakningsprotokoll kan Traffic Manager slutpunktshälsoövervakning göras utan att använda några programprotokoll. Om du väljer att hälsoverifiera med hjälp av ett programprotokoll måste slutpunkten kunna svara på HTTP- eller HTTPS GET-begäranden.
 
-### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kan jag använda Traffic Manager med domän namnet "blott"?
+### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Kan jag använda Traffic Manager med ett "domändomännamn" som är "domänbyte"?
 
-Ja. Information om hur du skapar en aliasresurspost för domän namns toppen för att referera till en Azure Traffic Manager-profil finns i [Konfigurera en aliasresurspost som stöder spetsig domän namn med Traffic Manager](../dns/tutorial-alias-tm.md).
+Ja. Information om hur du skapar en aliaspost för ditt domännamnsapex för att referera till en Azure Traffic Manager-profil finns i Konfigurera en [aliaspost](../dns/tutorial-alias-tm.md)för att stödja toppdomännamn med Traffic Manager .
 
-### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Anser Traffic Manager klient under nät adressen vid hantering av DNS-frågor? 
+### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Tar Traffic Manager klientens undernätsadress vid hantering av DNS-frågor? 
 
-Ja, förutom käll-IP-adressen för den DNS-fråga som den tar emot (som vanligt vis är IP-adressen för DNS-matcharen), vid sökning efter geografiska metoder, prestanda-och under nätets routningsmetoder, betraktar Traffic Manager även klientens under näts adress om den tas med i frågan av den matchare som gör begäran å slutanvändaren.  
-Mer specifikt, [RFC 7871 – klient under nät i DNS-frågor](https://tools.ietf.org/html/rfc7871) som tillhandahåller en [utöknings metod för DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) som kan överföra klient under nätets adress från matchare som stöder det.
+Ja, förutom IP-källadressen för DEN DNS-fråga som den tar emot (vilket vanligtvis är IP-adressen för DNS-matcharen), tar Traffic Manager även hänsyn till klientens undernätsadress när den utför sökning efter routningsmetoder för geografiska områden, prestanda och undernät, om den ingår i frågan av matcharen som gör begäran åt slutanvändaren.  
+Mer [specifikt, RFC 7871 –](https://tools.ietf.org/html/rfc7871) Klientundernät i DNS-frågor som tillhandahåller en tilläggsmekanism för [DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) som kan skicka vidare klientens undernätsadress från matchare som stöder det.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Vad är DNS TTL och hur påverkar det mina användare?
 
-När en DNS-fråga lägger på Traffic Manager anges ett värde i svaret som kallas Time-to-Live (TTL). Det här värdet, vars enhet är i sekunder, visar DNS-matchare efter hur lång tid det tar att cachelagra svaret. DNS-matchare är inte garanterade att cachelagra det här resultatet, men cachelagring gör det möjligt för dem att svara på eventuella efterföljande frågor från cachen i stället för att gå Traffic Manager DNS-servrar. Detta påverkar svaren enligt följande:
+När en DNS-fråga hamnar Traffic Manager anger den ett värde i svaret time-to-live (TTL). Det här värdet, vars enhet är i sekunder, anger för DNS-matchare nedströms hur länge svaret ska cachelagras. Även om DNS-matchare inte är garanterade att cachelagra det här resultatet kan de cachelagras så att de kan svara på efterföljande frågor från cachen i stället för att gå till Traffic Manager DNS-servrar. Detta påverkar svaren på följande sätt:
 
-- en högre TTL minskar antalet frågor som landar på Traffic Manager DNS-servrar, vilket kan minska kostnaden för en kund eftersom antalet frågor som hanteras är en fakturerbar användning.
-- en högre TTL kan eventuellt minska den tid det tar att göra en DNS-sökning.
-- en högre TTL innebär också att dina data inte återspeglar den senaste hälso information som Traffic Manager har erhållit genom sina avsöknings agenter.
+- En högre TTL minskar antalet frågor som hamnar på Traffic Manager DNS-servrarna, vilket kan minska kostnaden för en kund eftersom antalet frågor som besvaras är en fakturerbar användning.
+- en högre TTL kan potentiellt minska den tid det tar att göra en DNS-sökning.
+- ett högre TTL-värde innebär också att dina data inte återspeglar den senaste hälsoinformationen som Traffic Manager har fått via sina avsökningsagenter.
 
 ### <a name="how-high-or-low-can-i-set-the-ttl-for-traffic-manager-responses"></a>Hur hög eller låg kan jag ange TTL för Traffic Manager svar?
 
-Du kan ställa in, på per profil nivå, DNS-TTL: t vara så lågt som 0 sekunder och så högt som 2 147 483 647 sekunder (det maximala intervallet är kompatibelt med [RFC-1035](https://www.ietf.org/rfc/rfc1035.txt )). Ett TTL-värde på 0 innebär att underordnade DNS-matchare inte cachelagrar fråge svar och alla frågor förväntas uppnå de Traffic Manager DNS-servrarna för matchning.
+På profilnivå kan du ange att DNS-TTL-värdet ska vara så lågt som 0 sekunder och så högt som 2 147 483 647 sekunder (det maximala intervallet som är kompatibelt med [RFC-1035).](https://www.ietf.org/rfc/rfc1035.txt ) Ett TTL-värde på 0 innebär att underordnade DNS-matchare inte cachelagrar frågesvar och att alla frågor förväntas nå de underordnade DNS-servrarna Traffic Manager för lösning.
 
-### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Hur kan jag förstå hur många frågor som kommer till min profil? 
+### <a name="how-can-i-understand-the-volume-of-queries-coming-to-my-profile"></a>Hur kan jag förstå mängden frågor som kommer till min profil? 
 
-Ett av måtten som tillhandahålls av Traffic Manager är antalet frågor som besvaras av en profil. Du kan hämta den här informationen på en profil nivå agg regering eller dela upp den ytterligare för att se hur många frågor som har returnerats av vissa slut punkter. Dessutom kan du ställa in aviseringar som meddelar dig om svars volymen för frågan passerar de villkor som du har angett. Mer information [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).
+Ett av de mått som tillhandahålls av Traffic Manager är antalet frågor som besvaras av en profil. Du kan hämta den här informationen på en aggregering på profilnivå eller dela upp den ytterligare för att se mängden frågor där specifika slutpunkter returnerades. Dessutom kan du ställa in aviseringar som meddelar dig om frågesvarsvolymen går över de villkor som du har angett. Mer information finns [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).
 
-## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager geografisk Traffic routing-metod
+## <a name="traffic-manager-geographic-traffic-routing-method"></a>Traffic Manager Geografisk trafikroutningsmetod
 
-### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Vad är några användnings fall där geografisk routning är användbart?
+### <a name="what-are-some-use-cases-where-geographic-routing-is-useful"></a>Vad är några användningsfall där geografisk routning är användbar?
 
-Geografisk typ av routning kan användas i alla situationer där en Azure-kund behöver särskilja sina användare baserat på geografiska regioner. Du kan till exempel använda metoden för geografisk trafikroutning för att ge användare från vissa regioner en annan användar upplevelse än från andra regioner. Ett annat exempel är beroende av lokala data suveränitets uppdrag som kräver att användare från en speciell region endast betjänas av slut punkter i den regionen.
+Geografisk routningstyp kan användas i alla scenarier där en Azure-kund behöver särskilja sina användare baserat på geografiska regioner. Om du till exempel använder trafikroutningsmetoden Geografisk kan du ge användare från specifika regioner en annan användarupplevelse än de som kommer från andra regioner. Ett annat exempel är att uppfylla lokala krav på datasuveränitet som kräver att användare från en viss region endast ska betjänas av slutpunkter i den regionen.
 
-### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Hur gör jag för att avgöra om jag bör använda routningsmetod för prestanda eller geografisk routningsmetod?
+### <a name="how-do-i-decide-if-i-should-use-performance-routing-method-or-geographic-routing-method"></a>Hur gör jag för att bestämma om jag ska använda routningsmetoden Prestanda eller Geografisk routningsmetod?
 
-Den största skillnaden mellan dessa två populära routningsmetoder är att i metoden för prestanda cirkulation ditt primära mål är att skicka trafik till slut punkten som kan ge den lägsta svars tiden till anroparen, medan det primära målet är att tvinga ett geo-avgränsnings tecken för dina anropare i geografisk routning så att du kan dirigera dem till en speciell slut punkt. Överlappningen inträffar eftersom det finns en korrelation mellan geografisk stängning och lägre latens, även om detta inte alltid är sant. Det kan finnas en slut punkt i en annan geografi som kan ge uppmaningen bättre svars tid och i så fall kommer prestanda cirkulationen att skicka användaren till den slut punkten, men geografisk routning skickar dem alltid till den slut punkt som du har mappat för deras geografiska region. Om du vill göra det tydligare kan du tänka på följande exempel – med geografisk routning kan du göra ovanliga mappningar, till exempel skicka all trafik från Asien till slut punkter i oss och all amerikansk trafik till slut punkter i Asien. I så fall kan geografisk routning avsiktligt göra exakt vad du har konfigurerat för att utföra och prestanda optimering är inte ett övervägande. 
+Den största skillnaden mellan dessa två populära routningsmetoder är att ditt primära mål i Prestandaroutningsmetod är att skicka trafik till slutpunkten som kan ge anroparen kortast svarstid, medan det primära målet i Geografisk routning är att framtvinga en geo-stängsel för dina anropare så att du avsiktligt kan dirigera dem till en specifik slutpunkt. Överlappningen sker eftersom det finns en korrelation mellan geografisk närhet och kortare svarstid, även om detta inte alltid är sant. Det kan finnas en slutpunkt i ett annat geografiskt område som kan ge en bättre svarstid för anroparen och i så fall skickar prestandadirigering användaren till den slutpunkten, men geografisk routning skickar dem alltid till den slutpunkt som du har mappat för deras geografiska region. För att göra det tydligare kan du titta på följande exempel – med geografisk routning kan du göra ovanliga mappningar som att skicka all trafik från Asien till slutpunkter i USA och all amerikansk trafik till slutpunkter i Asien. I så fall gör geografisk routning avsiktligt exakt det du har konfigurerat den för att göra och prestandaoptimering är inte något att överväga. 
 >[!NOTE]
->Det kan finnas scenarier där du kan behöva både prestanda-och geografisk routning för de här scenarierna som kapslade profiler kan vara ett bra alternativ. Du kan till exempel konfigurera en överordnad profil med geografisk routning där du skickar all trafik från Nordamerika till en kapslad profil som har slut punkter i USA och använder prestanda dirigering för att skicka trafiken till den bästa slut punkten i den uppsättningen. 
+>Det kan finnas scenarier där du kan behöva funktioner för både prestanda och geografisk routning. För dessa scenarier kan kapslade profiler vara ett bra val. Du kan till exempel konfigurera en överordnad profil med geografisk routning där du skickar all trafik från Nordamerika till en kapslad profil som har slutpunkter i USA och använder prestandadirigering för att skicka trafiken till den bästa slutpunkten i den uppsättningen. 
 
-### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Vilka regioner stöds av Traffic Manager för geografisk routning?
+### <a name="what-are-the-regions-that-are-supported-by-traffic-manager-for-geographic-routing"></a>Vilka regioner stöds av en Traffic Manager geografisk routning?
 
-Hierarkin för land/region som används av Traffic Manager hittar du [här](traffic-manager-geographic-regions.md). Medan den här sidan hålls uppdaterad med eventuella ändringar kan du också hämta samma information via programmering med hjälp av [Azure Traffic Manager REST API](/rest/api/trafficmanager/). 
+Hierarkin för land/region som används av Traffic Manager finns [här.](traffic-manager-geographic-regions.md) Den här sidan hålls uppdaterad med ändringar, men du kan också programmässigt hämta samma information med hjälp av [Azure Traffic Manager REST API](/rest/api/trafficmanager/). 
 
 ### <a name="how-does-traffic-manager-determine-where-a-user-is-querying-from"></a>Hur avgör Traffic Manager var en användare frågar från?
 
-Traffic Manager tittar på käll-IP-adressen för frågan (detta är förmodligen en lokal DNS-matchare som utför frågan å användarens vägnar) och använder en intern IP-adress för att fastställa platsen. Den här kartan uppdateras regelbundet för att kunna beakta ändringar på Internet. 
+Traffic Manager tittar på käll-IP-adressen för frågan (detta är troligen en lokal DNS-matchare som gör frågan för användarens räkning) och använder en intern IP-adress till regionskarta för att fastställa platsen. Den här kartan uppdateras kontinuerligt för att ta hänsyn till ändringar i Internet. 
 
-### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Är det garanterat att Traffic Manager korrekt kan fastställa den exakta geografiska platsen för användaren i varje fall?
+### <a name="is-it-guaranteed-that-traffic-manager-can-correctly-determine-the-exact-geographic-location-of-the-user-in-every-case"></a>Garanteras det att Traffic Manager kan fastställa den exakta geografiska platsen för användaren i varje fall?
 
-Nej, Traffic Manager kan inte garantera att den geografiska region som vi härleder från käll-IP-adressen för en DNS-fråga alltid motsvarar användarens plats på grund av följande orsaker:
+Nej, Traffic Manager kan inte garantera att den geografiska region som vi här nedan kommer från IP-källadressen för en DNS-fråga alltid motsvarar användarens plats på grund av följande orsaker:
 
-- Först, enligt beskrivningen i föregående vanliga frågor och svar, är käll-IP-adressen som vi ser i en DNS-matchare som utför sökningen för användarens räkning. Även om den geografiska platsen för DNS-matcharen är en lämplig proxy för användarens geografiska plats, kan det också vara olika beroende på placeringen av tjänsten DNS-matchare och den specifika DNS-matchare-tjänsten som en kund har valt att använda. Till exempel kan en kund som finns i Malaysia anges i enhetens inställningar använder en DNS-matchare-tjänst vars DNS-server i Singapore kan plockas för att hantera fråge upplösningarna för den användaren/enheten. I så fall kan Traffic Manager bara se den matchare IP-adress som motsvarar Singapore-platsen. Se även de tidigare frågorna om support för klient under nätet på den här sidan.
+- Först, enligt beskrivningen i föregående vanliga frågor och svar, är källans IP-adress som vi ser en DNS-matchare som gör uppslag för användarens räkning. Även om DEN geografiska platsen för DNS-matcharen är en bra proxy för användarens geografiska plats kan den också vara olika beroende på DNS-matchartjänstens fotavtryck och den specifika DNS-matchartjänst som en kund har valt att använda. Till exempel kan en kund i Malaysia ange i sina enhetsinställningar använda en DNS-matchartjänst vars DNS-server i Singapore kan väljas för att hantera frågeupplösningarna för den användaren/enheten. I så fall Traffic Manager bara se matcharens IP-adress som motsvarar platsen i Singapore. Se även tidigare vanliga frågor och svar om stöd för klientens undernätsadresser på den här sidan.
 
-- För det andra använder Traffic Manager en intern karta för att göra IP-adressen till översättning av geografiskt område. Även om den här kartan verifieras och uppdateras kontinuerligt för att öka noggrannheten och kontot för internetens föränderliga natur, är det fortfarande möjligt att vår information inte är en exakt representation av den geografiska platsen för alla IP-adresser.
+- För det Traffic Manager en intern karta för att göra IP-adressen till översättning av geografiska regioner. Den här kartan verifieras och uppdateras kontinuerligt för att öka noggrannheten och ta hänsyn till internets växande natur, men det finns fortfarande en risk att vår information inte är en exakt representation av den geografiska platsen för alla IP-adresser.
 
-###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Behöver en slut punkt vara fysiskt placerad i samma region som den har kon figurer ATS för geografisk routning?
+###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>Måste en slutpunkt finnas fysiskt i samma region som den som den är konfigurerad med för geografisk routning?
 
-Nej, platsen för slut punkten tillämpar inga begränsningar för vilka regioner som kan mappas till den. En slut punkt i US-Central Azure-region kan till exempel ha alla användare från Indien riktade till sig.
+Nej, slutpunktens plats har inga begränsningar för vilka regioner som kan mappas till den. Till exempel kan en slutpunkt i US-Central Azure-regionen få alla användare från Indien dirigerade till den.
 
-### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kan jag tilldela geografiska regioner till slut punkter i en profil som inte har kon figurer ATS för att göra geografisk routning?
+### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Kan jag tilldela geografiska regioner till slutpunkter i en profil som inte har konfigurerats för geografisk routning?
 
-Ja, om Dirigerings metoden för en profil inte är geografisk, kan du använda [Azure Traffic Manager-REST API](/rest/api/trafficmanager/) för att tilldela geografiska regioner till slut punkter i profilen. Om det gäller profiler som inte är geografiska, ignoreras den här konfigurationen. Om du ändrar en sådan profil till geografisk typ av routning vid ett senare tillfälle kan Traffic Manager använda dessa mappningar.
+Ja, om routningsmetoden för en profil inte [](/rest/api/trafficmanager/) är geografisk kan du använda Azure Traffic Manager REST API för att tilldela geografiska regioner till slutpunkter i profilen. När det gäller profiler av icke-geografisk routningstyp ignoreras den här konfigurationen. Om du ändrar en sådan profil till geografisk routningstyp vid ett senare tillfälle kan Traffic Manager använda dessa mappningar.
 
-### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Varför får jag ett fel när jag försöker ändra routningsmetod för en befintlig profil till geografisk?
+### <a name="why-am-i-getting-an-error-when-i-try-to-change-the-routing-method-of-an-existing-profile-to-geographic"></a>Varför får jag ett felmeddelande när jag försöker ändra routningsmetoden för en befintlig profil till Geografisk?
 
-Alla slut punkter under en profil med geografisk routning måste ha minst en region mappad. Om du vill konvertera en befintlig profil till geografisk typ av routning måste du först associera geografiska regioner med alla dess slut punkter med [Azure Traffic Manager REST API](/rest/api/trafficmanager/) innan du ändrar routningsmetod till geografisk. Om du använder portalen måste du först ta bort slut punkterna, ändra Dirigerings metoden för profilen till geografisk och sedan lägga till slut punkterna tillsammans med deras geografiska områdes mappning.
+Alla slutpunkter under en profil med geografisk routning måste ha minst en region mappad till den. Om du vill konvertera en befintlig profil till geografisk routningstyp måste du först associera geografiska regioner till alla dess slutpunkter med hjälp [av Azure Traffic Manager REST API](/rest/api/trafficmanager/) innan du ändrar routningstypen till geografisk. Om du använder portalen tar du först bort slutpunkterna, ändrar routningsmetoden för profilen till geografisk och lägger sedan till slutpunkterna tillsammans med deras mappning av geografiska områden.
 
-### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Varför rekommenderas det starkt att kunder skapar kapslade profiler i stället för slut punkter under en profil med geografisk routning aktive rad?
+### <a name="why-is-it-strongly-recommended-that-customers-create-nested-profiles-instead-of-endpoints-under-a-profile-with-geographic-routing-enabled"></a>Varför rekommenderas det starkt att kunder skapar kapslade profiler i stället för slutpunkter under en profil med geografisk routning aktiverat?
 
-En region kan bara tilldelas till en slut punkt i en profil om den använder geografisk routningsmetod. Om den här slut punkten inte är en kapslad typ med en underordnad profil som är kopplad till den, kommer Traffic Manager fortsätta att skicka trafik till den eftersom alternativet att inte skicka någon trafik ännu bättre. Traffic Manager redundansväxlas inte till en annan slut punkt, även om den tilldelade regionen är en "överordnad" för den region som har tilldelats till slut punkten som gick in i fel tillstånd (till exempel om en slut punkt som har en region i Frankrike inte är felfri, ingen växling till en annan slut punkt som har det regions-Europa som tilldelats). Detta görs för att säkerställa att Traffic Manager respekterar de geografiska gränser som en kund har konfigurerat i sin profil. För att få förmånen av att redundansväxla till en annan slut punkt när en slut punkt slutar fungera, rekommenderas att geografiska regioner tilldelas till kapslade profiler med flera slut punkter i stället för enskilda slut punkter. På så sätt kan trafiken redundansväxlas till en annan slut punkt inuti samma kapslade underordnade profil om en slut punkt i den kapslade underordnade profilen Miss lyckas.
+En region kan bara tilldelas till en slutpunkt inom en profil om den använder den geografiska routningsmetoden. Om den slutpunkten inte är en kapslad typ med en underordnad profil kopplad till den, fortsätter Traffic Manager att skicka trafik till den om slutpunkten blir skadad eftersom alternativet att inte skicka någon trafik inte är bättre. Traffic Manager redundans inte till en annan slutpunkt, även om den region som tilldelats är "överordnad" för den region som tilldelats till den slutpunkt som inte är felsäker (till exempel om en slutpunkt som har regionen Spanien inte är felsäker, redundans till en annan slutpunkt som har regionen Europa tilldelats till sig). Detta görs för att säkerställa Traffic Manager respekterar de geografiska gränser som en kund har ställt in i sin profil. För att få fördelen med att redundanta till en annan slutpunkt när en slutpunkt blir skadad rekommenderar vi att geografiska regioner tilldelas till kapslade profiler med flera slutpunkter i stället för enskilda slutpunkter. På så sätt, om en slutpunkt i den kapslade underordnade profilen misslyckas, kan trafiken växla över till en annan slutpunkt i samma kapslade underordnade profil.
 
-### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Finns det några begränsningar för API-versionen som stöder den här typen av cirkulations typ?
+### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Finns det några begränsningar i API-versionen som stöder den här routningstypen?
 
-Ja, endast API version 2017-03-01 och nyare stöder geografisk typ av routning. Det går inte att använda alla äldre API-versioner för att skapa profiler av geografisk typ av routning eller tilldela geografiska regioner till slut punkter. Om en äldre API-version används för att hämta profiler från en Azure-prenumeration, returneras inte någon profil av typen geografisk routning. När du använder äldre API-versioner, har alla profiler som har slut punkter med en tilldelning av geografisk region ingen tilldelning av den geografiska regionen visas.
+Ja, endast API-version 2017-03-01 och senare stöder routningstypen Geografisk. Äldre API-versioner kan inte användas för att skapa profiler av geografisk routningstyp eller tilldela geografiska regioner till slutpunkter. Om en äldre API-version används för att hämta profiler från en Azure-prenumeration returneras inte någon profil av geografisk routningstyp. När du använder äldre API-versioner visas inte heller någon tilldelning av geografisk region för alla profiler som returneras med slutpunkter med en geografisk regiontilldelning.
 
-## <a name="traffic-manager-subnet-traffic-routing-method"></a>Routnings metod för Traffic Manager under näts trafik
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Traffic Manager trafikroutningsmetod för undernät
 
-### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Vad är några användnings fall där under näts dirigering är användbart?
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Vad är några användningsfall där undernätsroutning är användbart?
 
-Med hjälp av under näts dirigering kan du särskilja den upplevelse du levererar för vissa uppsättningar av användare som identifieras av käll-IP för DNS-begärandena IP-adresser. Ett exempel skulle visa olika innehåll om användarna ansluter till en webbplats från företagets HQ. En annan begränsar användare från vissa Internet-leverantörer till att bara få åtkomst till slut punkter som endast stöder IPv4-anslutningar om dessa Internet leverantörer har underordnat prestanda när IPv6 används.
-En annan orsak till att använda routningsmetod för undernät är tillsammans med andra profiler i en kapslad profil uppsättning. Om du till exempel vill använda geografisk routningsmetod för geo-avgränsning av dina användare, men för en särskild Internet leverantör som du vill använda en annan routningsmetod, kan du ha en profil med metoden för routning av undernät som överordnad profil och åsidosätta att Internet leverantören använder en särskild underordnad profil och har standard geografi profilen för alla andra.
+Med undernätsroutning kan du särskilja upplevelsen du levererar för specifika uppsättningar av användare som identifieras av käll-IP-adressen för deras IP-adress för DNS-begäranden. Ett exempel är att visa olika innehåll om användarna ansluter till en webbplats från företagets huvudkontor. En annan skulle begränsa användare från vissa Internetleverantörer till att endast få åtkomst till slutpunkter som endast stöder IPv4-anslutningar om dessa Internetleverantörer har prestanda under par när IPv6 används.
+Ett annat skäl till att använda routningsmetoden för undernät är tillsammans med andra profiler i en kapslad profiluppsättning. Om du till exempel vill använda geografisk routningsmetod för geoavstängning av dina användare, men för en specifik Internetleverantör som du vill använda en annan routningsmetod kan du ha en profil med routningsmetoden Undernät som överordnad profil och åsidosätta internetleverantören för att använda en specifik underordnad profil och ha en geografisk standardprofil för alla andra.
 
-### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Hur vet Traffic Manager IP-adressen för slutanvändaren?
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Hur vet Traffic Manager ip-adressen för slutanvändaren?
 
-Slutanvändarens enheter använder vanligt vis en DNS-matchare för att göra DNS-sökningen för deras räkning. Den utgående IP-adressen för sådana lösningar är vad Traffic Manager ser som käll-IP. Dessutom söker Subnet-metoden för att se om det finns en ECS-information (Extended client Subnet) som skickades med begäran. Om det finns ECS information, är det den adress som används för att fastställa routningen. I avsaknad av ECS-information används frågans käll-IP-adress i operationsföljd syfte.
+Slutanvändarenheterna använder vanligtvis en DNS-matchare för att göra DNS-sökning åt dem. Den utgående IP-adressen för sådana matchare Traffic Manager ser som källans IP-adress. Dessutom försöker undernätsroutningsmetoden också se om det finns information om EDNS0 Extended Client Subnet (ECS) som skickades med begäran. Om ECS-information finns är det den adress som används för att fastställa routningen. I avsaknad av ECS-information används käll-IP-adressen för frågan i routningssyfte.
 
-### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Hur kan jag ange IP-adresser när jag använder Subnet-routning?
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Hur kan jag ange IP-adresser när jag använder undernätsroutning?
 
-De IP-adresser som ska associeras med en slut punkt kan anges på två sätt. Först kan du använda den fyr punktavgränsade decimal oktetten med en start-och slut adress för att ange intervallet (till exempel 1.2.3.4-5.6.7.8 eller 3.4.5.6-3.4.5.6). Sedan kan du använda CIDR-noteringen för att ange intervallet (till exempel 1.2.3.0/24). Du kan ange flera intervall och kan använda båda Notations typerna i en intervall uppsättning. Några begränsningar gäller.
+IP-adresserna som ska associeras med en slutpunkt kan anges på två sätt. Först kan du använda den fyrdelade decimaltaltals notationen med start- och slutadresser för att ange intervallet (till exempel 1.2.3.4-5.6.7.8 eller 3.4.5.6-3.4.5.6). För det andra kan du använda CIDR-notationen för att ange intervallet (till exempel 1.2.3.0/24). Du kan ange flera intervall och använda båda notationstyperna i en intervalluppsättning. Några begränsningar gäller.
 
--    Du får inte överlappa adress intervall eftersom varje IP-adress måste mappas till en enda slut punkt
--    Start adressen får inte vara större än slut adressen
--    Om CIDR-noteringen används måste IP-adressen före "/" vara start adressen för intervallet (till exempel 1.2.3.0/24 är giltigt men 1.2.3.4.4/24 är ogiltigt)
+-    Du kan inte överlappa adressintervallen eftersom varje IP-adress måste mappas till endast en enda slutpunkt
+-    Startadressen får inte vara mer än slutadressen
+-    När det gäller CIDR-notationen ska IP-adressen före "/" vara startadressen för intervallet (till exempel är 1.2.3.0/24 giltig men 1.2.3.4.4/24 är INTE giltigt)
 
-### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hur kan jag ange en återställnings slut punkt när jag använder under näts dirigering?
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Hur kan jag ange en återställningsslutpunkt när jag använder undernätsroutning?
 
-Om du har en slut punkt utan undernät som är mappad till den i en profil med under näts dirigering kommer alla begär Anden som inte matchar andra slut punkter att dirigeras till här. Vi rekommenderar starkt att du har en sådan återställnings slut punkt i din profil eftersom Traffic Manager returnerar ett NXDOMAIN-svar om en begäran kommer in och den inte är mappad till några slut punkter eller om den är mappad till en slut punkt, men slut punkten är skadad.
+Om du har en slutpunkt utan mappade undernät i en profil med undernätsroutning dirigeras alla förfrågningar som inte matchar med andra slutpunkter till här. Vi rekommenderar starkt att du har en sådan återställningsslutpunkt i din profil eftersom Traffic Manager returnerar ett NXDOMAIN-svar om en begäran kommer in och den inte mappas till några slutpunkter eller om den mappas till en slutpunkt men slutpunkten inte är fel.
 
-### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Vad händer om en slut punkt är inaktive rad i en under näts typ profil?
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Vad händer om en slutpunkt är inaktiverad i en profil av routningstyp för undernät?
 
-Om du har en slut punkt med som är inaktive rad i en profil med under näts dirigering fungerar Traffic Manager som om den slut punkten och under näts mappningarna inte finns. Om en fråga som skulle matchas med dess IP-adress mappning tas emot och slut punkten är inaktive rad, returnerar Traffic Manager en återställnings slut punkt (en utan mappningar) eller om en sådan slut punkt inte finns, kommer att returnera ett NXDOMAIN-svar.
+Om du har en slutpunkt med som är inaktiverad i en profil med undernätsroutning beter Traffic Manager sig som om slutpunkten och undernätsmappningarna som den inte har finns. Om en fråga som skulle ha matchats med dess IP-adressmappning tas emot och slutpunkten är inaktiverad returnerar Traffic Manager en återställningsslutpunkt (en utan mappningar) eller om en sådan slutpunkt inte finns returnerar ett NXDOMAIN-svar.
 
-## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Routnings metod för Traffic Manager Multivärdes trafik
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Traffic Manager MultiValue-trafikroutningsmetod
 
-### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Vad är några användnings fall där multivärde-routning är användbart?
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Vad är några användningsfall där MultiValue-routning är användbart?
 
-Multivärde-routning returnerar flera felfria slut punkter i ett enda fråge svar. Den största fördelen med detta är att om en slut punkt inte är felfri, har klienten fler alternativ att försöka igen utan att göra något annat DNS-anrop (som kan returnera samma värde från en överordnad cache). Detta gäller för känsliga program för tillgänglighet som vill minimera stillestånds tiden.
-En annan användning av routningsmetod för flera värden är om en slut punkt är "dubbels homed" till både IPv4-och IPv6-adresser och du vill ge anroparen båda alternativen att välja från när den initierar en anslutning till slut punkten.
+MultiValue-routning returnerar flera felfria slutpunkter i ett enda frågesvar. Den största fördelen med detta är att om en slutpunkt är skadad har klienten fler alternativ för att försöka igen utan att göra ett annat DNS-anrop (som kan returnera samma värde från en överordnad cache). Detta gäller för tillgänglighetskänsliga program som vill minimera stilleståndstiden.
+Ett annat användningssätt för MultiValue-routningsmetoden är om en slutpunkt är "dual-homed" till både IPv4- och IPv6-adresser och du vill ge anroparen båda alternativen att välja mellan när den initierar en anslutning till slutpunkten.
 
-### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Hur många slut punkter returneras när multivärde-routning används?
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Hur många slutpunkter returneras när MultiValue-routning används?
 
-Du kan ange det maximala antalet slut punkter som ska returneras och multivärdet returnerar inte mer än så många felfria slut punkter när en fråga tas emot. Högsta möjliga värde för den här konfigurationen är 10.
+Du kan ange det maximala antalet slutpunkter som ska returneras och MultiValue returnerar inte fler än så många felfria slutpunkter när en fråga tas emot. Det högsta möjliga värdet för den här konfigurationen är 10.
 
-### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Får jag samma uppsättning slut punkter när multivärde-routning används?
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Får jag samma uppsättning slutpunkter när MultiValue-routning används?
 
-Vi kan inte garantera att samma uppsättning slut punkter returneras i varje fråga. Detta påverkas också av att några av slut punkterna kan hamna i fel tillstånd när de inte tas med i svaret
+Vi kan inte garantera att samma uppsättning slutpunkter returneras i varje fråga. Detta påverkas också av det faktum att vissa slutpunkter kan bli felaktiga och då tas de inte med i svaret
 
 ## <a name="real-user-measurements"></a>Faktisk slutanvändarmätning
 
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Vilka är fördelarna med att använda Faktisk slutanvändarmätning?
 
-När du använder metoden för prestanda cirkulation väljer Traffic Manager den bästa Azure-regionen som slutanvändaren ska ansluta till genom att kontrol lera käll-IP och EDNS klient under nätet (om det har skickats in) och kontrol lera det mot den nätverks fördröjnings information som tjänsten underhåller. Faktisk slutanvändarmätning förbättrar det här för din slut användar bas genom att låta deras erfarenhet bidra till den här svars tabellen, förutom att se till att den här tabellen sträcker sig över slutanvändarens nätverk från vilka slutanvändarna ansluter till Azure. Detta leder till ökad exakthet i routningen av slutanvändaren.
+När du använder prestandaroutningsmetoden väljer Traffic Manager den bästa Azure-regionen som slutanvändaren kan ansluta till genom att granska källans IP-adress och EDNS-klientundernät (om det skickas) och kontrollera det mot den information om nätverksfördröjning som tjänsten underhåller. Faktisk slutanvändarmätning förbättrar detta för slutanvändarbasen genom att deras erfarenhet bidrar till den här svarstidstabellen, förutom att se till att den här tabellen omfattar slutanvändarnätverken som slutanvändarna ansluter till Azure från. Detta leder till en ökad noggrannhet i routningen av slutanvändaren.
 
 ### <a name="can-i-use-real-user-measurements-with-non-azure-regions"></a>Kan jag använda Faktisk slutanvändarmätning med icke-Azure-regioner?
 
-Faktisk slutanvändarmätning mått och rapporter om bara svars tiden för att komma åt Azure-regioner. Om du använder prestandabaserade routning med slut punkter som finns i andra regioner än Azure-regioner, kan du fortfarande dra nytta av den här funktionen genom att få ökad latens information om den Azure-region som du valde att koppla till den här slut punkten.
+Faktisk slutanvändarmätning mått och rapporter om endast svarstiden för att nå Azure-regioner. Om du använder prestandabaserad routning med slutpunkter som finns i icke-Azure-regioner kan du fortfarande dra nytta av den här funktionen genom att ha mer information om svarstider om den representativa Azure-region som du har valt för att associeras med den här slutpunkten.
 
-### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Vilken routningsmetod fördelar från Faktisk slutanvändarmätning?
+### <a name="which-routing-method-benefits-from-real-user-measurements"></a>Vilken routningsmetod har nytta av Faktisk slutanvändarmätning?
 
-Ytterligare information som erhålls via Faktisk slutanvändarmätning gäller endast för profiler som använder routningsmetod för prestanda. Faktisk slutanvändarmätning länken är tillgänglig från alla profiler när du visar den via Azure Portal.
+Den ytterligare information som fås Faktisk slutanvändarmätning gäller endast för profiler som använder prestandaroutningsmetoden. Länken Faktisk slutanvändarmätning är tillgänglig från alla profiler när du visar den via Azure Portal.
 
 ### <a name="do-i-need-to-enable-real-user-measurements-each-profile-separately"></a>Måste jag aktivera Faktisk slutanvändarmätning varje profil separat?
 
-Nej, du behöver bara aktivera den en gång per prenumeration och all svars information som mäts och rapporteras är tillgänglig för alla profiler.
+Nej, du behöver bara aktivera det en gång per prenumeration och all svarstidsinformation som mäts och rapporteras är tillgänglig för alla profiler.
 
-### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Hur gör jag för att inaktivera Faktisk slutanvändarmätning för min prenumeration?
+### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>Hur gör jag för att inaktivera Faktisk slutanvändarmätning min prenumeration?
 
-Du kan sluta Periodisera avgifter som är relaterade till Faktisk slutanvändarmätning när du slutar samla in och skicka tillbaka svars tids mätningar från klient programmet. Om du till exempel har bäddat in ett JavaScript-skript inbäddat i webb sidor kan du sluta använda den här funktionen genom att ta bort JavaScript-filen eller genom att stänga av dess anrop när sidan återges.
+Du kan sluta betala avgifter som rör Faktisk slutanvändarmätning när du slutar samla in och skicka tillbaka svarstidsmått från klientprogrammet. När javaScript-måttet till exempel är inbäddat i webbsidor kan du sluta använda den här funktionen genom att ta bort JavaScript eller genom att inaktivera anropet när sidan återges.
 
-Du kan också stänga av Faktisk slutanvändarmätning genom att ta bort nyckeln. När du tar bort nyckeln ignoreras alla mått som skickas till Traffic Manager med den nyckeln.
+Du kan också stänga av Faktisk slutanvändarmätning genom att ta bort nyckeln. När du tar bort nyckeln tas alla mått som skickas Traffic Manager med den nyckeln bort.
 
-### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Kan jag använda Faktisk slutanvändarmätning med andra klient program än webb sidor?
+### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Kan jag använda Faktisk slutanvändarmätning med andra klientprogram än webbsidor?
 
-Ja, Faktisk slutanvändarmätning har utformats för att mata in data som samlas in via olika typer av slut användar klienter. Dessa vanliga frågor och svar kommer att uppdateras när nya typer av klient program får stöd.
+Ja, Faktisk slutanvändarmätning har utformats för att mata in data som samlas in via olika typer av slutanvändares klienter. Dessa vanliga frågor och svar kommer att uppdateras när nya typer av klientprogram stöds.
 
-### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Hur många mätningar görs varje gången mitt Faktisk slutanvändarmätning-aktiverade webb sida renderas?
+### <a name="how-many-measurements-are-made-each-time-my-real-user-measurements-enabled-web-page-is-rendered"></a>Hur många mått görs varje gång min Faktisk slutanvändarmätning aktiverade webbsidan återges?
 
-När Faktisk slutanvändarmätning används med det angivna beräknings-JavaScript-värdet kommer varje sid åter givning att resultera i sex mätningar. De rapporteras sedan tillbaka till Traffic Manager-tjänsten. Du debiteras för den här funktionen baserat på antalet mätningar som rapporter ATS till Traffic Manager tjänsten. Om användaren till exempel navigerar bort från din webb sida medan mätningarna tas, men innan den rapporteras, beaktas inte dessa mått för fakturerings syfte.
+När Faktisk slutanvändarmätning används med javaScript-måttet resulterar varje sidåtergivning i sex mätningar. Dessa rapporteras sedan tillbaka till Traffic Manager tjänsten. Du debiteras för den här funktionen baserat på antalet mätningar som rapporteras till Traffic Manager tjänst. Om användaren till exempel navigerar bort från webbplatsen när måtten tas men innan de rapporterades, beaktas inte dessa mått i faktureringssyfte.
 
-### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Är det en fördröjning innan Faktisk slutanvändarmätning skript körs på min webb sida?
+### <a name="is-there-a-delay-before-real-user-measurements-script-runs-in-my-webpage"></a>Finns det en fördröjning innan Faktisk slutanvändarmätning skript körs på min webbsida?
 
-Nej, det finns ingen fördröjning innan skriptet anropas.
+Nej, det finns ingen programmerad fördröjning innan skriptet anropas.
 
-### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Kan jag bara använda Faktisk slutanvändarmätning med de Azure-regioner jag vill mäta?
+### <a name="can-i-use-real-user-measurements-with-only-the-azure-regions-i-want-to-measure"></a>Kan jag använda Faktisk slutanvändarmätning med endast de Azure-regioner som jag vill mäta?
 
-Nej, varje gången den anropas mäter Faktisk slutanvändarmätning-skriptet en uppsättning sex Azure-regioner som fastställs av tjänsten. Den här uppsättningen ändringar mellan olika anrop och när ett stort antal sådana anrop sker omfattar mått täckningen över olika Azure-regioner.
+Nej, varje gång den anropas mäter Faktisk slutanvändarmätning en uppsättning med sex Azure-regioner som bestäms av tjänsten. Den här uppsättningen ändras mellan olika anrop och när ett stort antal sådana anrop inträffar sträcker sig måtttäckningen över olika Azure-regioner.
 
-### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Kan jag begränsa antalet mätningar som gjorts till ett speciellt tal?
+### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>Kan jag begränsa antalet mätningar som görs till ett visst tal?
 
-Måttet java script är inbäddat på din webb sida och du har fullständig kontroll över när du ska börja och sluta använda det. Så länge Traffic Manager tjänsten tar emot en begäran om en lista över Azure-regioner som ska mätas returneras en uppsättning regioner.
+JavaScript-måttet är inbäddat på din webbsida och du har fullständig kontroll över när du ska börja och sluta använda det. Så länge tjänsten Traffic Manager tar emot en begäran om att en lista över Azure-regioner ska mätas returneras en uppsättning regioner.
 
-### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Kan jag se de mått som utförs av klient programmet som en del av Faktisk slutanvändarmätning?
+### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Kan jag se de mått som tas av mitt klientprogram som en del av Faktisk slutanvändarmätning?
 
-Eftersom mått logiken körs från klient programmet är du full kontroll över vad som händer, inklusive att se fördröjnings mätningarna. Traffic Manager rapporterar inte en sammanställd vy av de mått som tas emot under nyckeln som är länkad till din prenumeration.
+Eftersom måttlogiken körs från klientprogrammet har du full kontroll över vad som händer, inklusive att se svarstidsmåtten. Traffic Manager rapporterar inte en sammanställd vy över de mått som tagits emot under nyckeln som är länkad till din prenumeration.
 
-### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Kan jag ändra mått skriptet som tillhandahålls av Traffic Manager?
+### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Kan jag ändra måttskriptet som tillhandahålls av Traffic Manager?
 
-Även om du har kontroll över vad som är inbäddat på din webb sida, förhindrar vi starkt att du gör några ändringar i Mät skriptet för att säkerställa att det mäter och rapporterar fördröjningen korrekt.
+När du har kontroll över vad som är inbäddat på din webbsida avråder vi dig från att göra ändringar i måttskriptet för att säkerställa att det mäter och rapporterar svarstiderna korrekt.
 
-### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Kommer det att vara möjligt för andra att se vilken nyckel jag använder med Faktisk slutanvändarmätning?
+### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Är det möjligt för andra att se den nyckel som jag använder med Faktisk slutanvändarmätning?
 
-När du bäddar in mått skriptet på en webb sida är det möjligt för andra att se skriptet och din Faktisk slutanvändarmätning (Rom)-nyckel. Men det är viktigt att veta att den här nyckeln skiljer sig från ditt prenumerations-ID och genereras av Traffic Manager som endast ska användas för detta ändamål. Att veta att din RUM nyckel inte äventyrar ditt Azure-kontos säkerhet.
+När du bäddar in måttskriptet på en webbsida kan andra se skriptet och din Faktisk slutanvändarmätning (RUM). Men det är viktigt att känna till att den här nyckeln skiljer sig från ditt prenumerations-ID och genereras av Traffic Manager endast ska användas för detta ändamål. Att känna till din RUM-nyckel kommer inte att äventyra säkerheten för ditt Azure-konto.
 
-### <a name="can-others-abuse-my-rum-key"></a>Kan andra missbruka min RUM nyckel?
+### <a name="can-others-abuse-my-rum-key"></a>Kan andra missbruka min RUM-nyckel?
 
-Även om det är möjligt för andra att använda din nyckel för att skicka fel information till Azure, kommer några fel mätningar inte att ändra routningen eftersom den tas med i beräkningen tillsammans med alla andra mått som vi får. Om du behöver ändra dina nycklar, kan du återskapa nyckeln som leder till att den gamla nyckeln blir borttagen.
+Även om det är möjligt för andra att använda din nyckel för att skicka fel information till Azure, ändrar inte några felaktiga mått routningen eftersom den tas med i beräkningen tillsammans med alla andra mått som vi tar emot. Om du behöver ändra dina nycklar kan du generera nyckeln på ny gång då den gamla nyckeln tas bort.
 
-### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Måste jag ange måttet Java Script på alla mina webb sidor?
+### <a name="do-i-need-to-put-the-measurement-javascript-in-all-my-web-pages"></a>Måste jag placera JavaScript-måttet på alla mina webbsidor?
 
-Faktisk slutanvändarmätning ger större värde för antalet mått ökningar. När du har sagt detta är det ditt beslut om huruvida du behöver placera det på alla dina webb sidor eller ett urval. Vår rekommendation är att börja med att placera den på den mest besökta sidan där en användare förväntas stanna på sidan fem sekunder eller mer.
+Faktisk slutanvändarmätning ger mer värde när antalet mått ökar. Med detta sagt är det ditt beslut om du behöver placera det på alla dina webbsidor eller några få. Vår rekommendation är att börja med att placera den på din mest besökta sida där en användare förväntas stanna kvar på sidan fem sekunder eller mer.
 
-### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Kan information om slutanvändarna identifieras av Traffic Manager om jag använder Faktisk slutanvändarmätning?
+### <a name="can-information-about-my-end-users-be-identified-by-traffic-manager-if-i-use-real-user-measurements"></a>Kan information om mina slutanvändare identifieras av Traffic Manager om jag använder Faktisk slutanvändarmätning?
 
-När det angivna Mät-JavaScript-värdet används får Traffic Manager insyn i klientens IP-adress för slutanvändaren och käll-IP-adressen för den lokala DNS-matchare som de använder. Traffic Manager använder bara klientens IP-adress när den har trunkerats till att inte identifiera den särskilda slutanvändaren som skickade måtten.
+När det angivna JavaScript-måttet används har Traffic Manager insyn i slutanvändarens klient-IP-adress och käll-IP-adressen för den lokala DNS-matchare som de använder. Traffic Manager använder klientens IP-adress först när den har trunkerats för att inte kunna identifiera den specifika slutanvändare som skickade måtten.
 
-### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Behöver webb sidans mätnings Faktisk slutanvändarmätning använda Traffic Manager för routning?
+### <a name="does-the-webpage-measuring-real-user-measurements-need-to-be-using-traffic-manager-for-routing"></a>Behöver webbsidan som mäter Faktisk slutanvändarmätning använda en Traffic Manager för routning?
 
-Nej, det behöver inte använda Traffic Manager. Överförings sidan av Traffic Manager fungerar separat från den faktiska användar mått delen och även om det är en bra idé att ha dem både i samma webb egenskap behöver de inte vara det.
+Nej, den behöver inte använda Traffic Manager. Routningssidan för Traffic Manager fungerar separat från den verkliga användarmåttdelen och även om det är en bra idé att ha dem båda i samma webbegenskap behöver de inte vara det.
 
-### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Måste jag vara värd för alla tjänster i Azure-regioner som ska användas med Faktisk slutanvändarmätning?
+### <a name="do-i-need-to-host-any-service-on-azure-regions-to-use-with-real-user-measurements"></a>Måste jag ha någon tjänst i Azure-regioner som ska användas med Faktisk slutanvändarmätning?
 
-Nej, du behöver inte vara värd för någon komponent på Server sidan på Azure för att Faktisk slutanvändarmätning ska fungera. Bild punkts bilden som hämtas av mät-Java Script och tjänsten som kör den i olika Azure-regioner hanteras och hanteras av Azure. 
+Nej, du behöver inte vara värd för någon komponent på serversidan i Azure för att Faktisk slutanvändarmätning fungera. Den bild med en bildpunkt som laddas ned av JavaScript-måttet och tjänsten som kör den i olika Azure-regioner hanteras och hanteras av Azure. 
 
-### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Ökar Azures bandbredds användning när jag använder Faktisk slutanvändarmätning?
+### <a name="will-my-azure-bandwidth-usage-increase-when-i-use-real-user-measurements"></a>Kommer min Azure-bandbredd att öka när jag använder Faktisk slutanvändarmätning?
 
-Som vi nämnt i föregående svar ägs och hanteras Server sidans komponenter i Faktisk slutanvändarmätning och hanteras av Azure. Det innebär att din Azure bandbredds användning inte ökar eftersom du använder Faktisk slutanvändarmätning. Detta omfattar inte bandbredds användningen utanför Azure-avgifterna. Vi minimerar bandbredden som används genom att bara hämta en bild punkts bild för att mäta svars tiden för en Azure-region. 
+Som vi nämnde i föregående svar ägs och hanteras komponenterna på Faktisk slutanvändarmätning serversidan av Azure. Det innebär att din Azure-bandbreddsanvändning inte ökar eftersom du använder Faktisk slutanvändarmätning. Detta omfattar inte någon bandbreddsanvändning utanför vad Azure debiterar. Vi minimerar bandbredden som används genom att bara ladda ned en bildpunkt för att mäta svarstiden till en Azure-region. 
 
 ## <a name="traffic-view"></a>Trafikvy
 
 ### <a name="what-does-traffic-view-do"></a>Vad gör Trafikvy?
 
-Trafikvy är en funktion i Traffic Manager som hjälper dig att förstå mer om dina användare och hur deras upplevelse är. Den använder frågorna som tagits emot av Traffic Manager och de tabell över nätverks svars information som tjänsten underhåller för att ge dig följande:
+Trafikvy är en funktion i Traffic Manager som hjälper dig att förstå mer om dina användare och hur deras upplevelse är. Den använder de frågor som tas emot av Traffic Manager och tabellerna för information om nätverksfördröjning som tjänsten upprätthåller för att ge dig följande:
 
-- De regioner från vilka dina användare ansluter till dina slut punkter i Azure.
-- Volymen av användare som ansluter från dessa regioner.
+- De regioner som användarna ansluter till dina slutpunkter i Azure från.
+- Mängden användare som ansluter från dessa regioner.
 - De Azure-regioner som de dirigeras till.
-- Svars tiden för dessa Azure-regioner.
+- Svarstiden för dessa Azure-regioner.
 
-Den här informationen är tillgänglig så att du kan använda det geografiska kart överlägg och tabellvy i portalen, förutom att vara tillgängliga som rå data som du kan hämta.
+Den här informationen är tillgänglig för dig att använda via geografiskt kartöverlägg och tabellvyer i portalen, förutom att den är tillgänglig som rådata som du kan ladda ned.
 
-### <a name="how-can-i-benefit-from-using-traffic-view"></a>Hur kan jag dra nytta av Trafikvy?
+### <a name="how-can-i-benefit-from-using-traffic-view"></a>Hur kan jag dra nytta av att använda Trafikvy?
 
-Trafikvy ger dig den övergripande vyn över trafiken som Traffic Manager profiler tar emot. I synnerhet kan den användas för att förstå var användar basen ansluter från och är lika viktiga som deras genomsnittliga svars tids upplevelse. Du kan sedan använda den här informationen för att hitta områden där du behöver fokusera, till exempel genom att utöka dina Azure-behov till en region som kan hantera dessa användare med lägre latens. En annan insikt som du kan härleda från att använda Trafikvy är att se mönstren för trafik till olika regioner som i sin tur kan hjälpa dig att fatta beslut om ökande eller minskning av lager i dessa regioner.
+Trafikvy ger dig en övergripande vy över den trafik som dina Traffic Manager tar emot. I synnerhet kan den användas för att förstå var din användarbas ansluter från och lika viktigt som deras genomsnittliga svarstid. Du kan sedan använda den här informationen för att hitta områden där du behöver fokusera, till exempel genom att utöka ditt Azure-fotavtryck till en region som kan ge användarna kortare svarstider. En annan insikt som du kan härleda från att använda Trafikvy är att se trafikmönster till olika regioner, vilket i sin tur kan hjälpa dig att fatta beslut om att öka eller minska antalet inventerade i dessa regioner.
 
-### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Hur skiljer sig Trafikvy från Traffic Manager mått som är tillgängliga via Azure Monitor?
+### <a name="how-is-traffic-view-different-from-the-traffic-manager-metrics-available-through-azure-monitor"></a>Hur skiljer sig Trafikvy från de Traffic Manager mått som är tillgängliga via Azure Monitor?
 
-Azure Monitor kan användas för att förstå den mängd trafik som tas emot av din profil och dess slut punkter. Du kan också spåra slut punkternas hälso status genom att exponera hälso kontroll resultatet. När du behöver gå utöver dessa och förstår slutanvändarens upplevelse av att ansluta till Azure på regional nivå, kan Trafikvy användas för att uppnå detta.
+Azure Monitor kan användas för att på en aggregerad nivå förstå trafiken som tas emot av din profil och dess slutpunkter. Du kan också spåra hälsostatusen för slutpunkterna genom att exponera hälsokontrollresultatet. När du behöver gå längre än dessa och förstå slutanvändarens upplevelse av att ansluta till Azure på regional nivå kan du Trafikvy för att uppnå det.
 
-### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Använder Trafikvy EDNS-klientens under näts information?
+### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Använder Trafikvy EDNS-klientundernätsinformation?
 
-DNS-frågorna som hanteras av Azure Traffic Manager ta hänsyn till ECS-information för att öka noggrannheten i operationsföljden. Men när du skapar data uppsättningen som visar var användarna ansluter från, använder Trafikvy bara IP-adressen för DNS-matcharen.
+DNS-frågorna som Azure Traffic Manager tar hänsyn till ECS-information för att öka precisionen för routningen. Men när du skapar datauppsättningen som visar var användarna ansluter från Trafikvy bara IP-adressen för DNS-matcharen.
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>Hur många dagars data Trafikvy använda?
 
-Trafikvy skapar utdata genom att bearbeta data från sju dagar före dagen innan de visas av dig. Det här är ett rörligt fönster och de senaste data kommer att användas varje gång du besöker.
+Trafikvy skapar sina utdata genom att bearbeta data från de sju dagarna före dagen innan de visas av dig. Det här är ett glidande fönster och de senaste data kommer att användas varje gång du besöker.
 
-### <a name="how-does-traffic-view-handle-external-endpoints"></a>Hur hanterar Trafikvy externa slut punkter?
+### <a name="how-does-traffic-view-handle-external-endpoints"></a>Hur hanterar Trafikvy externa slutpunkter?
 
-När du använder externa slut punkter som ligger utanför Azure-regioner i en Traffic Manager profil kan du välja att låta den vara mappad till en Azure-region som är en proxy för dess svars tids egenskaper (detta är verkligen nödvändigt om du använder metoden för prestanda cirkulation). Om det finns den här mappningen för Azure-regionen används Azure-regionens svars värden när du skapar Trafikvy-utdata. Om ingen Azure-region har angetts kommer svars informationen att vara tom i data för dessa externa slut punkter.
+När du använder externa slutpunkter som finns utanför Azure-regioner i en Traffic Manager-profil kan du välja att mappa den till en Azure-region som är en proxy för dess svarstidsegenskaper (detta behövs i själva verket om du använder prestandaroutningsmetoden). Om azure-regionen mappas så används svarstidsmåtten för Azure-regionen när du skapar Trafikvy utdata. Om ingen Azure-region anges är svarstidsinformationen tom i data för de externa slutpunkterna.
 
-### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Måste jag aktivera Trafikvy för varje profil i min prenumeration?
+### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>Måste jag aktivera Trafikvy varje profil i min prenumeration?
 
-Under för hands versions perioden har Trafikvy Aktiver ATS på en prenumerations nivå. Som en del av förbättringarna som vi gjorde före den allmänna tillgängligheten kan du nu aktivera Trafikvy på en profil nivå, så att du kan få mer detaljerad möjlighet att aktivera den här funktionen. Som standard kommer Trafikvy att inaktive ras för en profil.
+Under förhandsversionsperioden aktiverades Trafikvy på prenumerationsnivå. Som en del av de förbättringar som vi gjorde före den allmänna tillgängligheten kan du nu aktivera Trafikvy på profilnivå, så att du får mer detaljerad aktivering av den här funktionen. Som standard Trafikvy inaktiveras för en profil.
 
 >[!NOTE]
->Om du har aktiverat Trafikvy på en prenumerations nivå under förhands gransknings tiden måste du aktivera den igen för varje profil under den prenumerationen.
+>Om du Trafikvy på prenumerationsnivå under förhandsversionen måste du nu återaktivera det för var och en av profilerna under prenumerationen.
  
-### <a name="how-can-i-turn-off-traffic-view"></a>Hur kan jag stänga av Trafikvy?
+### <a name="how-can-i-turn-off-traffic-view"></a>Hur stänger jag av Trafikvy?
 
-Du kan inaktivera Trafikvy för alla profiler med hjälp av portalen eller REST API. 
+Du kan inaktivera Trafikvy alla profiler med hjälp av portalen eller REST API. 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Hur fungerar Trafikvy fakturering?
 
-Trafikvy prissättning baseras på antalet data punkter som används för att skapa utdata. För närvarande är den enda data typen som stöds den fråga din profil tar emot. Dessutom faktureras du bara för den bearbetning som utfördes när du har Trafikvy aktiverat. Det innebär att om du aktiverar Trafikvy under en viss tids period under en månad och sedan stänger av den under andra tider, bearbetas bara de data punkter som bearbetades när funktionen har Aktiver ATS för din räkning.
+Trafikvy baseras på antalet datapunkter som används för att skapa utdata. Den enda datatypen som stöds för närvarande är de frågor som din profil tar emot. Dessutom debiteras du bara för bearbetningen som gjordes när du har Trafikvy aktiverat. Det innebär att om du aktiverar Trafikvy under en viss tidsperiod i en månad och inaktiverar den under andra tider, räknas endast de datapunkter som bearbetas medan du hade funktionen aktiverad på fakturan.
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager-slutpunkter
 
-### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Kan jag använda Traffic Manager med slut punkter från flera prenumerationer?
+### <a name="can-i-use-traffic-manager-with-endpoints-from-multiple-subscriptions"></a>Kan jag använda Traffic Manager med slutpunkter från flera prenumerationer?
 
-Det går inte att använda slut punkter från flera prenumerationer med Azure Web Apps. Azure Web Apps kräver att alla anpassade domän namn som används med Web Apps bara används i en enda prenumeration. Det går inte att använda Web Apps från flera prenumerationer med samma domän namn.
+Det går inte att använda slutpunkter från flera prenumerationer med Azure Web Apps. Azure Web Apps kräver att anpassade domännamn som används med Web Apps endast används inom en enda prenumeration. Det går inte att använda Web Apps från flera prenumerationer med samma domännamn.
 
-För andra slut punkts typer är det möjligt att använda Traffic Manager med slut punkter från fler än en prenumeration. I Resource Manager kan du lägga till slut punkter från vilken prenumeration som helst i Traffic Manager, så länge som den person som konfigurerar Traffic Managers profilen har Läs behörighet till slut punkten. Dessa behörigheter kan beviljas med hjälp av [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Slut punkter från andra prenumerationer kan läggas till med [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) eller [Azure CLI](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-create).
+För andra slutpunktstyper är det möjligt att använda Traffic Manager med slutpunkter från mer än en prenumeration. I Resource Manager kan slutpunkter från alla prenumerationer läggas till i Traffic Manager, så länge den person som konfigurerar Traffic Manager-profilen har läsbehörighet till slutpunkten. Dessa behörigheter kan beviljas med hjälp [av rollbaserad åtkomstkontroll i Azure (Azure RBAC).](../role-based-access-control/role-assignments-portal.md) Slutpunkter från andra prenumerationer kan läggas till med [Azure PowerShell](/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) eller [Azure CLI.](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create)
 
-### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kan jag använda Traffic Manager med moln tjänstens mellanlagrings platser?
+### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Kan jag använda Traffic Manager med Cloud Service Staging-platser?
 
-Ja. Mellanlagrings platser för moln tjänster kan konfigureras i Traffic Manager som externa slut punkter. Hälso kontroller debiteras fortfarande enligt Azure-slutpunkters taxan.
+Ja. Platser för "mellanlagring av molntjänster" kan konfigureras i Traffic Manager som externa slutpunkter. Hälsokontroller debiteras fortfarande enligt priset för Azure-slutpunkter.
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Stöder Traffic Manager IPv6-slutpunkter?
 
-Traffic Manager tillhandahåller för närvarande inte IPv6-adresser bara namnservrar. Traffic Manager kan dock fortfarande användas av IPv6-klienter som ansluter till IPv6-slutpunkter. En klient gör DNS-förfrågningar direkt till Traffic Manager. Klienten använder i stället en rekursiv DNS-tjänst. En klient med enbart IPv6 skickar begär anden till den rekursiva DNS-tjänsten via IPv6. Sedan bör den rekursiva tjänsten kunna kontakta Traffic Manager namnservrar med hjälp av IPv4.
+Traffic Manager tillhandahåller för närvarande inte IPv6-adresserbara namnservrar. Men Traffic Manager kan fortfarande användas av IPv6-klienter som ansluter till IPv6-slutpunkter. En klient gör inte DNS-begäranden direkt till Traffic Manager. Klienten använder i stället en rekursiv DNS-tjänst. En klient med endast IPv6 skickar begäranden till den rekursiva DNS-tjänsten via IPv6. Den rekursiva tjänsten ska sedan kunna kontakta servern Traffic Manager med hjälp av IPv4.
 
-Traffic Manager svarar med slut punktens DNS-namn eller IP-adress. Det finns två alternativ för att stödja en IPv6-slutpunkt. Du kan lägga till slut punkten som ett DNS-namn som har en associerad AAAA-post och Traffic Manager hälso kontroll av slut punkten och returnera den som en CNAME-posttyp i svaret på frågan. Du kan också lägga till den slut punkten direkt med hjälp av IPv6-adressen och Traffic Manager returnerar en AAAA-typ post i svaret på frågan.
+Traffic Manager svarar med DNS-namnet eller IP-adressen för slutpunkten. Det finns två alternativ för att stödja en IPv6-slutpunkt. Du kan lägga till slutpunkten som ett DNS-namn som har en associerad AAAA-post och Traffic Manager kontrollerar slutpunkten och returnerar den som en CNAME-posttyp i frågesvaret. Du kan också lägga till slutpunkten direkt med IPv6-adressen så Traffic Manager returnerar en AAAA-typpost i frågesvaret.
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Kan jag använda Traffic Manager med mer än en webbapp i samma region?
 
-Normalt används Traffic Manager för att dirigera trafik till program som distribuerats i olika regioner. Det kan dock också användas där ett program har fler än en distribution i samma region. Traffic Manager Azure-slutpunkter tillåter inte att fler än en webbappens slut punkt från samma Azure-region läggs till i samma Traffic Manager-profil.
+Normalt används Traffic Manager för att dirigera trafik till program som distribueras i olika regioner. Det kan dock också användas om ett program har fler än en distribution i samma region. De Traffic Manager Azure-slutpunkterna tillåter inte att fler än en webbappslutpunkt från samma Azure-region läggs till i samma Traffic Manager profil.
 
-### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Hur gör jag för att flytta min Traffic Managers profils Azure-slutpunkter till en annan resurs grupp eller prenumeration?
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group-or-subscription"></a>Hur gör jag för att flytta azure-Traffic Manager-profilens Azure-slutpunkter till en annan resursgrupp eller prenumeration?
 
-Azure-slutpunkter som är associerade med en Traffic Manager-profil spåras med hjälp av deras resurs-ID. När en Azure-resurs som används som en slut punkt (t. ex. offentlig IP, klassisk moln tjänst, WebApp eller en annan Traffic Manager profil som används på ett kapslat sätt) flyttas till en annan resurs grupp eller prenumeration ändras resurs-ID: t. I det här scenariot måste du för närvarande uppdatera Traffic Manager profilen genom att först ta bort och sedan lägga till tillbaka slut punkterna till profilen.
+Azure-slutpunkter som är associerade med Traffic Manager en profil spåras med hjälp av deras resurs-ID: er. När en Azure-resurs som används som en slutpunkt (till exempel offentlig IP, klassisk molntjänst, WebApp eller en annan Traffic Manager-profil som används på ett kapslat sätt) flyttas till en annan resursgrupp eller prenumeration ändras dess resurs-ID. I det här scenariot måste du för närvarande uppdatera Traffic Manager genom att först ta bort och sedan lägga tillbaka slutpunkterna i profilen.
 
 ## <a name="traffic-manager-endpoint-monitoring"></a>Slutpunktsövervakning för Traffic Manager
 
-### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Är Traffic Manager elastisk till Azures regions problem?
+### <a name="is-traffic-manager-resilient-to-azure-region-failures"></a>Är Traffic Manager motståndskraftig mot fel i Azure-regioner?
 
-Traffic Manager är en viktig komponent i leverans av program med hög tillgänglighet i Azure.
-För att tillhandahålla hög tillgänglighet måste Traffic Manager ha en undantags bar hög tillgänglighets nivå och vara elastisk till regionalt fel.
+Traffic Manager är en viktig del av leveransen av program med hög tillgängliga i Azure.
+För att leverera hög Traffic Manager måste ha en exceptionellt hög tillgänglighet och vara motståndskraftig mot regionala haveri.
 
-Enligt design är Traffic Manager-komponenter elastiska till ett fullständigt haveri i alla Azure-regioner. Den här återhämtningen gäller för alla Traffic Manager-komponenter: DNS-namnservrar, API, lagrings skikt och tjänsten för slut punkts övervakning.
+De är Traffic Manager motståndskraftiga mot ett fullständigt fel i alla Azure-regioner. Den här motståndskraften gäller för Traffic Manager komponenter: DNS-namnservrarna, API:et, lagringslagret och tjänsten för slutpunktsövervakning.
 
-Om det osannolikt uppstår ett avbrott i en hel Azure-region förväntas Traffic Manager fortsätta att fungera normalt. Program som distribueras i flera Azure-regioner kan förlita sig på Traffic Manager dirigera trafik till en tillgänglig instans av programmet.
+Om det osannolika skulle ske ett avbrott i en hel Azure-region Traffic Manager förväntas fortsätta att fungera normalt. Program som distribueras i flera Azure-regioner kan använda Traffic Manager dirigera trafik till en tillgänglig instans av programmet.
 
-### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Hur påverkar valet av resurs grupps plats Traffic Manager?
+### <a name="how-does-the-choice-of-resource-group-location-affect-traffic-manager"></a>Hur påverkar valet av resursgruppsplats Traffic Manager?
 
-Traffic Manager är en enkel, global tjänst. Den är inte regional. Valet av resurs grupps plats ger ingen skillnad till Traffic Manager profiler som distribueras i den resurs gruppen.
+Traffic Manager är en enda global tjänst. Det är inte regionalt. Valet av resursgruppsplats gör ingen skillnad Traffic Manager distribuerade i den resursgruppen.
 
-Azure Resource Manager kräver att alla resurs grupper anger en plats, vilket avgör standard platsen för resurser som distribueras i den resurs gruppen. När du skapar en Traffic Manager-profil skapas den i en resurs grupp. Alla Traffic Manager profiler använder **Global** som plats och åsidosätter resurs gruppens standardvärde.
+Azure Resource Manager kräver att alla resursgrupper anger en plats, vilket avgör standardplatsen för resurser som distribueras i den resursgruppen. När du skapar Traffic Manager en profil skapas den i en resursgrupp. Alla Traffic Manager profiler **använder global** som plats, vilket åsidosätter resursgruppens standard.
 
-### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hur gör jag för att avgöra den aktuella hälsan för varje slut punkt?
+### <a name="how-do-i-determine-the-current-health-of-each-endpoint"></a>Hur gör jag för att du det aktuella hälsotillståndet för varje slutpunkt?
 
-Den aktuella övervaknings statusen för varje slut punkt, utöver den övergripande profilen, visas i Azure Portal. Den här informationen är också tillgänglig via trafik övervaknings [REST API](/rest/api/trafficmanager/), [PowerShell-cmdletar](/powershell/module/az.trafficmanager)och plattforms [oberoende Azure CLI](/cli/azure/install-classic-cli).
+Den aktuella övervakningsstatusen för varje slutpunkt, förutom den övergripande profilen, visas i Azure Portal. Den här informationen är också tillgänglig via Traffic Monitor [REST API,](/rest/api/trafficmanager/) [PowerShell-cmdlets](/powershell/module/az.trafficmanager)och [plattformsoberoende Azure CLI.](/cli/azure/install-classic-cli)
 
-Du kan också använda Azure Monitor för att spåra hälso tillståndet för dina slut punkter och se en visuell representation av dem. Mer information om hur du använder Azure Monitor finns i [dokumentationen för Azure-övervakning](../azure-monitor/data-platform.md).
+Du kan också använda Azure Monitor för att spåra hälsotillståndet för dina slutpunkter och se en visuell representation av dem. Mer information om hur Azure Monitor finns i [azure monitoring-dokumentationen.](../azure-monitor/data-platform.md)
 
 ### <a name="can-i-monitor-https-endpoints"></a>Kan jag övervaka HTTPS-slutpunkter?
 
-Ja. Traffic Manager stöder avsökning via HTTPS. Konfigurera **https** som protokoll i övervaknings konfigurationen.
+Ja. Traffic Manager stöder avsökning via HTTPS. Konfigurera **HTTPS** som protokoll i övervakningskonfigurationen.
 
-Traffic Manager kan inte tillhandahålla certifikat validering, inklusive:
+Traffic Manager kan inte tillhandahålla någon certifikatverifiering, inklusive:
 
-* Certifikat på Server sidan har inte verifierats
-* SNI certifikat på Server sidan har inte verifierats
-* Klient certifikat stöds inte
+* Certifikat på serversidan verifieras inte
+* SNI-certifikat på serversidan verifieras inte
+* Klientcertifikat stöds inte
 
-### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Använder jag en IP-adress eller ett DNS-namn när jag lägger till en slut punkt?
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Använder jag en IP-adress eller ett DNS-namn när jag lägger till en slutpunkt?
 
-Traffic Manager har stöd för att lägga till slut punkter med tre sätt att referera dem – som ett DNS-namn, som en IPv4-adress och som en IPv6-adress. Om slut punkten läggs till som en IPv4-eller IPv6-adress, kommer fråge svaret vara av typen post A respektive AAAA. Om slut punkten lades till som ett DNS-namn kommer fråge svaret att vara av typen CNAME. Det är bara tillåtet att lägga till slut punkter som IPv4 eller IPv6-adress om slut punkten är av typen **extern**.
-Alla routningsmetoder och övervaknings inställningar stöds av de tre adress typerna för slut punkter.
+Traffic Manager har stöd för att lägga till slutpunkter på tre sätt – som ett DNS-namn, som en IPv4-adress och som en IPv6-adress. Om slutpunkten läggs till som en IPv4- eller IPv6-adress kommer frågesvaret att vara av posttyp A respektive AAAA. Om slutpunkten lades till som ett DNS-namn kommer frågesvaret att vara av posttyp CNAME. Det är endast tillåtet att lägga till slutpunkter som IPv4- eller IPv6-adress om slutpunkten är av typen **Extern**.
+Alla routningsmetoder och övervakningsinställningar stöds av de tre slutpunktsadresseringstyperna.
 
-### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Vilka typer av IP-adresser kan jag använda när jag lägger till en slut punkt?
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Vilka typer av IP-adresser kan jag använda när jag lägger till en slutpunkt?
 
-Med Traffic Manager kan du använda IPv4-eller IPv6-adresser för att ange slut punkter. Det finns några begränsningar som anges nedan:
+Traffic Manager kan du använda IPv4- eller IPv6-adresser för att ange slutpunkter. Det finns några begränsningar som anges nedan:
 
-- Adresser som motsvarar reserverade privata IP-adresser är inte tillåtna. De här adresserna är de som anropas i RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 och RFC 5771
-- Adressen får inte innehålla några port nummer (du kan ange vilka portar som ska användas i profil konfigurations inställningarna)
-- Två slut punkter i samma profil kan ha samma mål-IP-adress
+- Adresser som motsvarar reserverade privata IP-adressutrymmen tillåts inte. Dessa adresser omfattar de som anropas i RFC 1918, RFC 6890, RFC 5737, RFC 3068, RFC 2544 och RFC 5771
+- Adressen får inte innehålla några portnummer (du kan ange vilka portar som ska användas i profilkonfigurationsinställningarna)
+- Inga två slutpunkter i samma profil kan ha samma mål-IP-adress
 
-### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Kan jag använda olika slut punkts typer för adressering i samma profil?
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Kan jag använda olika slutpunktsadresseringstyper i en enda profil?
 
-Nej, Traffic Manager tillåter inte att du blandar adress typer för slut punkter i en profil, förutom för en profil med multivärde-routningsmetod där du kan blanda IPv4-och IPv6-adress typer
+Nej, Traffic Manager tillåter inte att du blandar slutpunktsadresseringstyper i en profil, förutom för en profil med MultiValue-routningstyp där du kan blanda IPv4- och IPv6-adresseringstyper
 
-### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Vad händer när en post av typen inkommande fråga skiljer sig från den post typ som är kopplad till slut punkternas adress typ?
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Vad händer när posttypen för en inkommande fråga skiljer sig från posttypen som är associerad med slutpunktens adresseringstyp?
 
-När en fråga tas emot mot en profil hittar Traffic Manager först den slut punkt som måste returneras enligt den angivna routningsmetod och hälso status för slut punkterna. Den söker sedan efter den posttyp som begärdes i den inkommande frågan och post typen som är associerad med slut punkten innan ett svar returneras baserat på tabellen nedan.
+När en fråga tas emot mot en profil Traffic Manager först slutpunkten som måste returneras enligt den angivna routningsmetoden och hälsostatusen för slutpunkterna. Den tittar sedan på den posttyp som begärdes i den inkommande frågan och den posttyp som är associerad med slutpunkten innan ett svar returneras baserat på tabellen nedan.
 
-För profiler med någon annan routningsmetod än multivärde:
+För profiler med någon annan routningsmetod än MultiValue:
 
-|Begäran om inkommande fråga|     Slut punkts typ|     Svar har angetts|
+|Inkommande frågebegäran|     Typ av slutpunkt|     Svaret har angetts|
 |--|--|--|
-|HELST |    A/AAAA/CNAME |    Mål slut punkt| 
-|A |    A/CNAME |    Mål slut punkt|
-|A |    AAAA |    Inga DATA |
-|AAAA |    AAAA/CNAME |    Mål slut punkt|
-|AAAA |    A |    Inga DATA |
-|CNAME |    CNAME |    Mål slut punkt|
-|CNAME     |A/AAAA |    Inga DATA |
+|Någon |    A/AAAA/CNAME |    Målslutpunkt| 
+|A |    A/CNAME |    Målslutpunkt|
+|A |    AAAA |    NODATA |
+|AAAA |    AAAA/CNAME |    Målslutpunkt|
+|AAAA |    A |    NODATA |
+|CNAME |    CNAME |    Målslutpunkt|
+|CNAME     |A/AAAA |    NODATA |
 |
 
-För profiler med routningsmetod inställd på multivärde:
+För profiler med routningsmetod inställt på MultiValue:
 
-|Begäran om inkommande fråga|     Slut punkts typ |    Svar har angetts|
+|Inkommande frågebegäran|     Typ av slutpunkt |    Svaret har angetts|
 |--|--|--|
-|HELST |    Blandning av A och AAAA |    Mål slut punkter|
-|A |    Blandning av A och AAAA |    Endast mål slut punkter av typen A|
-|AAAA    |Blandning av A och AAAA|     Endast mål slut punkter av typen AAAA|
-|CNAME |    Blandning av A och AAAA |    Inga DATA |
+|Någon |    Blandning av A och AAAA |    Målslutpunkter|
+|A |    Blandning av A och AAAA |    Endast målslutpunkter av typ A|
+|AAAA    |Blandning av A och AAAA|     Endast målslutpunkter av typen AAAA|
+|CNAME |    Blandning av A och AAAA |    NODATA |
 
-### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kan jag använda en profil med IPv4/IPv6-adresserade slut punkter i en kapslad profil?
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Kan jag använda en profil med IPv4/IPv6-adresserade slutpunkter i en kapslad profil?
 
-Ja, du kan med undantaget att en profil av typen multivärde inte kan vara en överordnad profil i en kapslad profil uppsättning.
+Ja, du kan med undantaget att en profil av typen MultiValue inte kan vara en överordnad profil i en kapslad profiluppsättning.
 
-### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Jag har stoppat en slut punkt för ett webb program i Traffic Manager profil, men jag får ingen trafik även när jag har startat om den. Hur kan jag åtgärda detta?
+### <a name="i-stopped-an-web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Jag stoppade en slutpunkt för webbappen i min Traffic Manager profil, men jag får ingen trafik även efter att jag startade om den. Hur kan jag åtgärda detta?
 
-När en slut punkt för Azure-webbprogram stoppas Traffic Manager slutar att kontrol lera hälso tillståndet och startar om hälso kontrollerna först efter det att den har identifierat att slut punkten har startats om. Om du vill förhindra den här fördröjningen inaktiverar du och aktiverar sedan slut punkten i Traffic Manager profilen igen när du har startat om slut punkten.
+När en slutpunkt för ett Azure-webbprogram stoppas Traffic Manager att kontrollera hälsotillståndet och startar om hälsokontrollerna först när den har upptäckt att slutpunkten har startats om. För att förhindra den här fördröjningen inaktiverar du och återaktiverar sedan slutpunkten i Traffic Manager profilen när du har startat om slutpunkten.
 
-### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Kan jag använda Traffic Manager även om mitt program saknar stöd för HTTP eller HTTPS?
+### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Kan jag använda Traffic Manager även om mitt program inte har stöd för HTTP eller HTTPS?
 
-Ja. Du kan ange TCP som övervaknings protokoll och Traffic Manager kan initiera en TCP-anslutning och vänta på ett svar från slut punkten. Om slut punkten svarar på anslutningsbegäran med ett svar för att upprätta anslutningen, så markeras den slut punkten som felfri i tids gränsen.
+Ja. Du kan ange TCP som övervakningsprotokoll och Traffic Manager initiera en TCP-anslutning och vänta på ett svar från slutpunkten. Om slutpunkten svarar på anslutningsbegäran med ett svar för att upprätta anslutningen, inom tidsgränsen, markeras slutpunkten som felfri.
 
-### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Vilka speciella svar krävs från slut punkten vid användning av TCP-övervakning?
+### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Vilka specifika svar krävs från slutpunkten när du använder TCP-övervakning?
 
-När TCP-övervakning används startar Traffic Manager en tre-vägs TCP-handskakning genom att skicka en SYN-begäran till slut punkten på den angivna porten. Det väntar sedan på ett SYN bekräftelse svar från slut punkten under en tids period (anges i tids gräns inställningarna).
+När TCP-övervakning används startar Traffic Manager en trevägs TCP-handskakning genom att skicka en SYN-begäran till slutpunkten på den angivna porten. Den väntar sedan på ett SYN-ACK-svar från slutpunkten under en viss tidsperiod (anges i tidsgränsinställningarna).
 
-- Om ett SYN-ACK-svar tas emot inom den tids gräns som anges i övervaknings inställningarna betraktas slut punkten som felfri. En RÄNTETRANS eller RÄNTETRANS-ACK är det förväntade svaret från Traffic Manager när den stänger en socket med jämna mellanrum.
-- Om ett SYN-ACK-svar tas emot efter den angivna tids gränsen, kommer Traffic Manager att svara med en tids gräns för att återställa anslutningen.
+- Om ett SYN-ACK-svar tas emot inom den tidsgränsperiod som anges i övervakningsinställningarna anses slutpunkten vara felfri. FIN eller FIN-ACK är det förväntade svaret från Traffic Manager när den regelbundet avslutar en socket.
+- Om ett SYN-ACK-svar tas emot efter den angivna tidsgränsen svarar Traffic Manager RST för att återställa anslutningen.
 
-### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Hur snabbt kan Traffic Manager flytta mina användare bort från en felaktig slut punkt?
+### <a name="how-fast-does-traffic-manager-move-my-users-away-from-an-unhealthy-endpoint"></a>Hur snabbt kan Traffic Manager bort mina användare från en felande slutpunkt?
 
-Traffic Manager innehåller flera inställningar som kan hjälpa dig att styra failover-beteendet för din Traffic Manager profil på följande sätt:
+Traffic Manager innehåller flera inställningar som kan hjälpa dig att styra redundansbeteendet för din Traffic Manager profil enligt följande:
 
-- Du kan ange att Traffic Manager avsöker slut punkterna oftare genom att ange ett avsöknings intervall på 10 sekunder. Detta säkerställer att alla slut punkter som går dåligt att identifiera kan identifieras så snart som möjligt. 
-- Du kan ange hur lång tid som ska gå innan en tids gräns för en hälso kontroll begärs (lägsta timeout-värde är 5 SEK).
-- Du kan ange hur många fel som kan inträffa innan slut punkten markeras som ohälsosam. Värdet kan vara lågt som 0, vilket innebär att slut punkten markeras som ohälsosam så fort den inte klarar den första hälso kontrollen. Men med det lägsta värdet 0 för det tolererade antalet fel kan det leda till slut punkter som tas bort från rotationen på grund av eventuella tillfälliga problem som kan uppstå vid tidpunkten för avsökningen.
-- Du kan ange TTL (Time-to-Live) för DNS-svaret så att det blir så lågt som 0. Det innebär att DNS-matchare inte kan cachelagra svaret och varje ny fråga får ett svar som införlivar den senaste aktuella hälso informationen som Traffic Manager har.
+- Du kan ange att Traffic Manager avsökningar av slutpunkterna oftare genom att ställa in avsökningsintervallet på 10 sekunder. Detta säkerställer att alla slutpunkter som inte är felhälsosamma kan identifieras så snart som möjligt. 
+- du kan ange hur lång tid det tar att vänta innan en hälsokontrollbegäran tar för lång tid (minimivärdet för time out är 5 sek).
+- du kan ange hur många fel som kan inträffa innan slutpunkten markeras som skadad. Det här värdet kan vara lågt som 0, vilket innebär att slutpunkten markeras som skadad så fort den första hälsokontrollen misslyckas. Men om du använder minimivärdet 0 för det tolererade antalet fel kan det leda till att slutpunkter tas bort från rotationen på grund av tillfälliga problem som kan uppstå vid avsökning.
+- du kan ange time-to-live (TTL) för ATT DNS-svaret ska vara så lågt som 0. Detta innebär att DNS-matchare inte kan cachelagra svaret och att varje ny fråga får ett svar som innehåller den senaste hälsoinformationen som Traffic Manager har.
 
-Genom att använda de här inställningarna kan Traffic Manager tillhandahålla redundans under 10 sekunder efter att en slut punkt har skadats och en DNS-fråga görs mot motsvarande profil.
+Med hjälp av de här Traffic Manager kan du tillhandahålla redundans under 10 sekunder efter att en slutpunkt har feltillstånd och en DNS-fråga görs mot motsvarande profil.
 
-### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Hur kan jag ange olika övervaknings inställningar för olika slut punkter i en profil?
+### <a name="how-can-i-specify-different-monitoring-settings-for-different-endpoints-in-a-profile"></a>Hur kan jag ange olika övervakningsinställningar för olika slutpunkter i en profil?
 
-Traffic Manager övervaknings inställningarna är på per profil nivå. Om du behöver använda en annan övervaknings inställning för endast en slut punkt kan du göra det genom att låta den slut punkten vara en [kapslad profil](traffic-manager-nested-profiles.md) vars övervaknings inställningar skiljer sig från den överordnade profilen.
+Traffic Manager övervakningsinställningar är på profilnivå. Om du bara behöver använda en annan övervakningsinställning för en slutpunkt kan [](traffic-manager-nested-profiles.md) du göra det genom att ha slutpunkten som en kapslad profil vars övervakningsinställningar skiljer sig från den överordnade profilen.
 
-### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Hur kan jag tilldela HTTP-huvuden till Traffic Manager hälso kontroller i mina slut punkter?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Hur tilldelar jag HTTP-huvuden till Traffic Manager hälsokontroller till mina slutpunkter?
 
-Med Traffic Manager kan du ange anpassade huvuden i de HTTP-hälsokontroller som det initierar till dina slut punkter. Om du vill ange en anpassad rubrik kan du göra det på profil nivå (gäller för alla slut punkter) eller ange den på slut punkts nivå. Om en rubrik definieras på båda nivåerna åsidosätter den som anges på slut punkts nivån profil nivån en.
-Ett vanligt användnings fall för detta är att ange värdhuvuden så att Traffic Manager begär Anden kan dirigeras korrekt till en slut punkt som finns i en miljö med flera innehavare. Ett annat användnings fall är att identifiera Traffic Manager begär Anden från en slut punkts HTTP (S) begär ande loggar
+Traffic Manager kan du ange anpassade huvuden i de HTTP(S)-hälsokontroller som den initierar till dina slutpunkter. Om du vill ange en anpassad rubrik kan du göra det på profilnivå (gäller för alla slutpunkter) eller ange det på slutpunktsnivå. Om en rubrik definieras på båda nivåerna åsidosätter den som anges på slutpunktsnivå profilnivån ett.
+Ett vanligt användningsfall för detta är att ange värdhuvuden så att Traffic Manager-begäranden kan dirigeras korrekt till en slutpunkt som finns i en miljö med flera klienter. Ett annat användningsfall är att identifiera Traffic Manager från en slutpunkts HTTP(S)-begärandeloggar
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Vilket värd huvud använder hälso kontroller för slut punkter?
+### <a name="what-host-header-do-endpoint-health-checks-use"></a>Vilket värdhuvud använder slutpunktshälsokontroller?
 
-Om ingen anpassad värd huvud inställning anges, är värd rubriken som används av Traffic Manager DNS-namnet på slut punkts målet som kon figurer ATS i profilen, om det är tillgängligt.
+Om ingen anpassad inställning för värdhuvud anges är värdhuvudet som används av Traffic Manager DNS-namnet för slutpunktsmålet som konfigurerats i profilen, om det är tillgängligt.
 
-### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Vilka IP-adresser kommer hälso kontrollerna från?
+### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Vilka IP-adresser kommer hälsokontrollerna från?
 
-Klicka [här](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) om du vill veta mer om hur du hämtar listor över IP-adresser som Traffic Manager hälso kontroller kan härstamma från. Du kan använda REST API, Azure CLI eller Azure PowerShell för att hämta den senaste listan. Granska de IP-adresser som anges för att säkerställa att inkommande anslutningar från de här IP-adresserna är tillåtna vid slut punkterna för att kontrol lera dess hälso status.
+Klicka [här](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview) om du vill lära dig hur du hämtar listor över IP-adresser Traffic Manager hälsokontroller kan komma från. Du kan använda REST API, Azure CLI eller Azure PowerShell hämta den senaste listan. Granska IP-adresserna i listan för att se till att inkommande anslutningar från dessa IP-adresser tillåts vid slutpunkterna att kontrollera dess hälsostatus.
 
-Exempel som använder Azure PowerShell:
+Exempel med Azure PowerShell:
 
 ```azurepowershell-interactive
 $serviceTags = Get-AzNetworkServiceTag -Location eastus
@@ -458,65 +458,65 @@ $result.Properties.AddressPrefixes
 ```
 
 > [!NOTE]
-> Offentliga IP-adresser kan ändras utan föregående meddelande. Se till att hämta den senaste informationen med hjälp av service tag Discovery API eller den nedladdnings bara JSON-filen.
+> Offentliga IP-adresser kan ändras utan föregående meddelande. Se till att hämta den senaste informationen med hjälp av API:et för identifiering av tjänsttaggar eller en nedladdningsbar JSON-fil.
 
-### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hur många hälso kontroller till min slut punkt kan jag förväntar mig från Traffic Manager?
+### <a name="how-many-health-checks-to-my-endpoint-can-i-expect-from-traffic-manager"></a>Hur många hälsokontroller till min slutpunkt kan jag förvänta mig Traffic Manager?
 
-Antalet Traffic Manager hälso kontroller som når slut punkten beror på följande:
+Hur många Traffic Manager hälsokontroller som når slutpunkten beror på följande:
 
-- det värde som du har angett för övervaknings intervallet (mindre intervall innebär att fler förfrågningar får landning på slut punkten under en viss tids period).
-- det antal platser som hälso kontrollerna kommer från (IP-adresserna från där du kan vänta på att dessa kontroller visas i föregående frågor).
+- det värde som du har angett för övervakningsintervallet (mindre intervall innebär att fler begäranden landar på slutpunkten under en viss tidsperiod).
+- antalet platser som hälsokontrollerna kommer från (IP-adresserna som du kan förvänta dig att dessa kontroller kommer från visas i föregående vanliga frågor och svar).
 
-### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hur kan jag få ett meddelande om en av mina slut punkter upphör?
+### <a name="how-can-i-get-notified-if-one-of-my-endpoints-goes-down"></a>Hur får jag ett meddelande om en av mina slutpunkter går ned?
 
-Ett av måtten som tillhandahålls av Traffic Manager är hälso status för slut punkter i en profil. Du kan se detta som en mängd av alla slut punkter i en profil (till exempel 75% av dina slut punkter är felfria) eller, på en nivå per slut punkt. Traffic Manager Mät värden exponeras genom Azure Monitor och du kan använda [aviserings funktionerna](../azure-monitor/alerts/alerts-metric.md) för att få meddelanden när slut punktens hälso status ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
+Ett av de mått som tillhandahålls Traffic Manager är hälsostatusen för slutpunkter i en profil. Du kan se detta som en sammanställning av alla slutpunkter i en profil (till exempel att 75 % av dina slutpunkter är felfria) eller på slutpunktsnivå. Traffic Manager mått exponeras via Azure Monitor och du kan använda [](../azure-monitor/alerts/alerts-metric.md) dess aviseringsfunktioner för att få meddelanden när hälsostatusen för slutpunkten ändras. Mer information finns i [Traffic Manager mått och aviseringar](traffic-manager-metrics-alerts.md).  
 
 ## <a name="traffic-manager-nested-profiles"></a>Traffic Manager kapslade profiler
 
 ### <a name="how-do-i-configure-nested-profiles"></a>Hur gör jag för att konfigurera kapslade profiler?
 
-Kapslade Traffic Manager profiler kan konfigureras med både Azure Resource Manager och de klassiska Azure REST-API: erna, Azure PowerShell-cmdlets och plattforms oberoende Azure CLI-kommandon. De stöds också via den nya Azure Portal.
+Kapslade Traffic Manager-profiler kan konfigureras med både Azure Resource Manager och klassiska Azure REST API:er, Azure PowerShell-cmdlets och plattformsoberoende Azure CLI-kommandon. De stöds också via den nya Azure Portal.
 
-### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Hur många kapslings nivåer stöder Traffic Manager?
+### <a name="how-many-layers-of-nesting-does-traffic-manger-support"></a>Hur många lager av kapsling stöder Traffic Manger?
 
-Du kan kapsla profiler upp till 10 nivåer djup. Loopar är inte tillåtna.
+Du kan kapsla profiler på upp till 10 nivåer. "Loopar" är inte tillåtna.
 
-### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Kan jag blanda andra slut punkts typer med kapslade underordnade profiler i samma Traffic Manager profil?
+### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Kan jag blanda andra slutpunktstyper med kapslade underordnade profiler i samma Traffic Manager profil?
 
-Ja. Det finns inga begränsningar för hur du kombinerar slut punkter av olika typer i en profil.
+Ja. Det finns inga begränsningar för hur du kombinerar slutpunkter av olika typer i en profil.
 
-### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Hur gäller fakturerings modellen för kapslade profiler?
+### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Hur tillämpas faktureringsmodellen för kapslade profiler?
 
-Det finns ingen negativ inverkan på användningen av kapslade profiler.
+Det finns ingen negativ prispåverkan av att använda kapslade profiler.
 
-Traffic Manager faktureringen har två komponenter: hälso kontroller för slut punkter och miljon tals DNS-frågor
+Traffic Manager fakturering har två komponenter: hälsokontroller för slutpunkter och miljontals DNS-frågor
 
-* Hälso kontroller för slut punkt: det kostar inget att debitera en underordnad profil när den är konfigurerad som en slut punkt i en överordnad profil. Övervakning av slut punkterna i den underordnade profilen faktureras på vanligt sätt.
-* DNS-frågor: varje fråga räknas bara en gång. En fråga mot en överordnad profil som returnerar en slut punkt från en underordnad profil räknas endast till den överordnade profilen.
+* Hälsokontroller för slutpunkter: Det finns ingen avgift för en underordnad profil när den konfigureras som en slutpunkt i en överordnad profil. Övervakning av slutpunkterna i den underordnade profilen faktureras som vanligt.
+* DNS-frågor: Varje fråga räknas bara en gång. En fråga mot en överordnad profil som returnerar en slutpunkt från en underordnad profil räknas endast mot den överordnade profilen.
 
-Fullständig information finns på sidan med [Traffic Manager priser](https://azure.microsoft.com/pricing/details/traffic-manager/).
+Fullständig information finns på Traffic Manager [prissättningssidan.](https://azure.microsoft.com/pricing/details/traffic-manager/)
 
-### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Påverkas prestandan för kapslade profiler?
+### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Påverkas prestanda för kapslade profiler?
 
-Nej. Prestanda påverkas inte när du använder kapslade profiler.
+Nej. Det uppstår ingen prestandapåverkan när du använder kapslade profiler.
 
-Traffic Manager namnservrar bläddrar i profilmappar internt vid bearbetning av varje DNS-fråga. En DNS-fråga till en överordnad profil kan ta emot ett DNS-svar med en slut punkt från en underordnad profil. En enda CNAME-post används om du använder en enskild profil eller kapslade profiler. Du behöver inte skapa en CNAME-post för varje profil i hierarkin.
+De Traffic Manager-namnservrarna passerar profilhierarkin internt vid bearbetning av varje DNS-fråga. En DNS-fråga till en överordnad profil kan ta emot ett DNS-svar med en slutpunkt från en underordnad profil. En enda CNAME-post används oavsett om du använder en enskild profil eller kapslade profiler. Du behöver inte skapa en CNAME-post för varje profil i hierarkin.
 
-### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Hur beräknar Traffic Manager hälsan för en kapslad slut punkt i en överordnad profil?
+### <a name="how-does-traffic-manager-compute-the-health-of-a-nested-endpoint-in-a-parent-profile"></a>Hur beräknar Traffic Manager hälsotillståndet för en kapslad slutpunkt i en överordnad profil?
 
-Den överordnade profilen utför inte hälso kontroller på den underordnade direkt. I stället används hälsan för den underordnade profilens slut punkter för att beräkna den övergripande hälsan för den underordnade profilen. Den här informationen sprider den kapslade profilmappar för att fastställa hälso tillståndet för den kapslade slut punkten. Den överordnade profilen använder denna aggregerade hälsa för att avgöra om trafiken kan dirigeras till den underordnade nivån.
+Den överordnade profilen utför inte hälsokontroller direkt på den underordnade profilen. I stället används hälsotillståndet för den underordnade profilens slutpunkter för att beräkna den underordnade profilens övergripande hälsa. Den här informationen sprids i den kapslade profilhierarkin för att fastställa hälsotillståndet för den kapslade slutpunkten. Den överordnade profilen använder den här sammanställda hälsan för att avgöra om trafiken kan dirigeras till den underordnade profilen.
 
-I följande tabell beskrivs beteendet för Traffic Manager hälso kontroller för en kapslad slut punkt.
+I följande tabell beskrivs beteendet för att Traffic Manager hälsokontroller för en kapslad slutpunkt.
 
-| Status för Övervakare för underordnad profil | Status för övervakaren för överordnad slut punkt | Kommentarer |
+| Övervakarstatus för underordnad profil | Övervakarstatus för överordnad slutpunkt | Kommentarer |
 | --- | --- | --- |
-| Inaktiverat Den underordnade profilen har inaktiverats. |Stoppad |Status för överordnad slut punkt har stoppats, inte inaktiverats. Inaktiverat tillstånd är reserverat för att indikera att du har inaktiverat slut punkten i den överordnade profilen. |
-| Försämrad. Minst en underordnad profil slut punkt är i ett degraderat tillstånd. |Online: antalet Online-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>CheckingEndpoint: antalet online-och CheckingEndpoint-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>Degraderad: annars. |Trafiken dirigeras till en slut punkt med status CheckingEndpoint. Om MinChildEndpoints har angetts för hög försämras slut punkten alltid. |
-| Online. Minst en underordnad profil slut punkt är ett online-tillstånd. Ingen slut punkt har statusen degraderat. |Se ovan. | |
-| CheckingEndpoints. Minst en underordnad profil slut punkt är ' CheckingEndpoint '. Inga slut punkter är "online" eller "degraderade" |Samma som ovan. | |
-| Inaktivera. Alla underordnade profil slut punkter är antingen inaktiverade eller stoppade, eller så har den här profilen inga slut punkter. |Stoppad | |
+| Inaktiverat Den underordnade profilen har inaktiverats. |Stoppad |Det överordnade slutpunktstillståndet är Stoppad, inte Inaktiverad. Tillståndet Inaktiverad är reserverat för att ange att du har inaktiverat slutpunkten i den överordnade profilen. |
+| Försämras. Minst en underordnad profilslutpunkt är i ett degraderat tillstånd. |Online: Antalet Online-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>CheckingEndpoint: Antalet Online plus CheckingEndpoint-slutpunkter i den underordnade profilen är minst värdet för MinChildEndpoints.<BR>Degraderad: annars. |Trafiken dirigeras till en slutpunkt med statusen CheckingEndpoint. Om MinChildEndpoints har angetts för högt nedgraderas alltid slutpunkten. |
+| Online. Minst en underordnad profilslutpunkt är ett onlinetillstånd. Ingen slutpunkt är i degraderat tillstånd. |Se ovan. | |
+| CheckingEndpoints. Minst en underordnad profilslutpunkt är "CheckingEndpoint". Inga slutpunkter är online eller degraderade |Samma som ovan. | |
+| Inaktiva. Alla underordnade profilslutpunkter är antingen inaktiverade eller stoppade, eller så har den här profilen inga slutpunkter. |Stoppad | |
 
 ## <a name="next-steps"></a>Nästa steg:
 
-- Läs mer om Traffic Manager [slut punkts övervakning och automatisk redundans](../traffic-manager/traffic-manager-monitoring.md).
-- Läs mer om hur du Traffic Manager [metoder för trafik cirkulation](../traffic-manager/traffic-manager-routing-methods.md).
+- Läs mer om Traffic Manager [slutpunktsövervakning och automatisk redundans.](../traffic-manager/traffic-manager-monitoring.md)
+- Läs mer om Traffic Manager [trafikroutningsmetoder](../traffic-manager/traffic-manager-routing-methods.md).

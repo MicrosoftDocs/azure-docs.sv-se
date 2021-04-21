@@ -1,6 +1,6 @@
 ---
 title: Hantera slutpunkter för direktuppspelning
-description: Den här artikeln visar hur du hanterar strömnings slut punkter med Azure Media Services v3.
+description: Den här artikeln visar hur du hanterar slutpunkter för direktuppspelning med Azure Media Services v3.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -15,30 +15,30 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 5ad7ef447e1b8e5ac141e4feb65f1b8361b2a646
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: 2b442edc537ec64b12df215a18ab017ee47becff
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106282309"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791741"
 ---
-# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Hantera slut punkter för direkt uppspelning med Media Services v3
+# <a name="manage-streaming-endpoints-with--media-services-v3"></a>Hantera slutpunkter för direktuppspelning med Media Services v3
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-När ditt Media Services-konto skapas, läggs en **standard** [slut punkt för direkt uppspelning](stream-streaming-endpoint-concept.md) till på ditt konto i **stoppat** tillstånd. Om du vill börja strömma ditt innehåll och dra nytta av [dynamisk paketering](encode-dynamic-packaging-concept.md) och [dynamisk kryptering](drm-content-protection-concept.md), måste den strömmande slut punkten från vilken du vill strömma innehåll vara i **Kör** tillstånd.
+När ditt Media Services-konto skapas läggs en **standardslutpunkt** [för](stream-streaming-endpoint-concept.md) direktuppspelning till i ditt konto med tillståndet **Stoppad.** Om du vill starta direktuppspelning av [](drm-content-protection-concept.md)innehåll och dra nytta av dynamisk paketering och dynamisk kryptering måste slutpunkten för direktuppspelning som du vill strömma innehåll från ha tillståndet **Körs.** [](encode-dynamic-packaging-concept.md)
 
-Den här artikeln visar hur du kör kommandot [Start](/rest/api/media/streamingendpoints/start) på slut punkten för direkt uppspelning med olika tekniker. 
+Den här artikeln visar hur du kör [startkommandot på](/rest/api/media/streamingendpoints/start) slutpunkten för direktuppspelning med hjälp av olika tekniker. 
  
 > [!NOTE]
-> Du faktureras bara när slut punkten för direkt uppspelning är i körnings läge.
+> Du debiteras bara när slutpunkten för direktuppspelning körs.
     
 ## <a name="prerequisites"></a>Förutsättningar
 
-Beakta 
+Recension: 
 
 * [Media Services begrepp](concepts-overview.md)
-* [Koncept för strömnings slut punkt](stream-streaming-endpoint-concept.md)
+* [Begrepp för slutpunkter för direktuppspelning](stream-streaming-endpoint-concept.md)
 * [Dynamisk paketering](encode-dynamic-packaging-concept.md)
 
 ## <a name="use-rest"></a>Använda REST
@@ -49,18 +49,18 @@ POST https://management.azure.com/subscriptions/00000000-0000-0000-0000-00000000
 
 Mer information finns i: 
 
-* Referens dokumentationen för att [starta en StreamingEndpoint](/rest/api/media/streamingendpoints/start) -referens.
-* Att starta en slut punkt för direkt uppspelning är en asynkron åtgärd. 
+* Starta [en StreamingEndpoint-referensdokumentation.](/rest/api/media/streamingendpoints/start)
+* Att starta en slutpunkt för direktuppspelning är en asynkron åtgärd. 
 
-    Information om hur du övervakar långvariga åtgärder finns i [långvariga åtgärder](media-services-apis-overview.md).
-* Den här [Postman-samlingen](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) innehåller exempel på flera rest-åtgärder, inklusive hur du startar en slut punkt för direkt uppspelning.
+    Information om hur du övervakar långvariga åtgärder finns [i Långvariga åtgärder.](media-services-apis-overview.md)
+* Den [här Postman-samlingen](https://github.com/Azure-Samples/media-services-v3-rest-postman/blob/master/Postman/Media%20Services%20v3.postman_collection.json) innehåller exempel på flera REST-åtgärder, inklusive hur du startar en slutpunkt för direktuppspelning.
 
 ## <a name="use-the-azure-portal"></a>Använda Azure-portalen 
  
 1. Logga in på [Azure-portalen](https://portal.azure.com/).
-1. Gå till ditt Azure Media Services-konto.
-1. I det vänstra fönstret väljer du  **slut punkter för direkt uppspelning**.
-1. Välj den slut punkt för direkt uppspelning som du vill starta och välj sedan **Starta**.
+1. Gå till ditt Azure Media Services konto.
+1. I den vänstra rutan väljer du **Strömningsslutpunkter.**
+1. Välj den slutpunkt för direktuppspelning som du vill starta och välj sedan **Starta.**
 
 ## <a name="use-the-azure-cli"></a>Använda Azure CLI
 
@@ -73,7 +73,7 @@ az ams streaming-endpoint start [--account-name]
                                 [--subscription]
 ```
 
-Mer information finns i [AZ AMS streaming-Endpoint start](/cli/azure/ams/streaming-endpoint#az-ams-streaming-endpoint-start).
+Mer information finns i [az ams streaming-endpoint start](/cli/azure/ams/streaming-endpoint#az_ams_streaming_endpointstart).
 
 ## <a name="use-sdks"></a>Använda SDK:er
 
@@ -87,7 +87,7 @@ if (streamingEndpoint.resourceState() != StreamingEndpointResourceState.RUNNING)
 }
 ```
 
-Se det fullständiga [Java Code-exemplet](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
+Se det fullständiga [Java-kodexe exemplet](https://github.com/Azure-Samples/media-services-v3-java/blob/master/DynamicPackagingVODContent/StreamHLSAndDASH/src/main/java/sample/StreamHLSAndDASH.java#L128).
 
 ### <a name="net"></a>.NET
 
@@ -102,11 +102,11 @@ if (streamingEndpoint != null)
     }
 ```
 
-Se det fullständiga [.NET-kod exemplet](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Streaming/StreamHLSAndDASH/Program.cs#L112).
+Se det fullständiga [.NET-kodexe exemplet](https://github.com/Azure-Samples/media-services-v3-dotnet/blob/main/Streaming/StreamHLSAndDASH/Program.cs#L112).
 
 ---
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Media Services v3 OpenAPI-specifikation (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
-* [Slut punkts åtgärder för direkt uppspelning](/rest/api/media/streamingendpoints)
+* [Media Services v3 OpenAPI Specification (Swagger)](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01)
+* [Åtgärder för slutpunkter för direktuppspelning](/rest/api/media/streamingendpoints)

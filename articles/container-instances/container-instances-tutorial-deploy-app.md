@@ -1,17 +1,17 @@
 ---
-title: Självstudie – distribuera container app till container instance
+title: Självstudie – Distribuera containerapp till containerinstans
 description: Självstudie om Azure Container Instances del 3 av 3 – Distribuera ett containerprogram till Azure Container Instances
 ms.topic: tutorial
 ms.date: 03/21/2018
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 2ea3d285f00d38df84587d9a7c15242fff38453b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2d12b0bc91cf844001b770c8a7e534ad6b1b9b2d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87500580"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763891"
 ---
-# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Självstudie: Distribuera ett behållar program till Azure Container Instances
+# <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Självstudie: Distribuera ett containerprogram till Azure Container Instances
 
 Det här är den sista självstudien i en serie med tre delar. Tidigare i serien [skapades en behållaravbildning](container-instances-tutorial-prepare-app.md) som sedan [push-överfördes till Azure Container Registry](container-instances-tutorial-prepare-acr.md). I den här artikeln slutför vi serien genom att distribuera behållaren till Azure Container Instances.
 
@@ -32,9 +32,9 @@ I det här avsnittet använder du Azure CLI för att distribuera den avbildning 
 
 ### <a name="get-registry-credentials"></a>Hämta autentiseringsuppgifter för registret
 
-När du distribuerar en avbildning som finns i ett privat Azure Container Registry som den som skapades i den [andra själv studie kursen](container-instances-tutorial-prepare-acr.md)måste du ange autentiseringsuppgifter för att få åtkomst till registret. 
+När du distribuerar en avbildning som finns i ett privat Azure-containerregister som det som skapades i den andra självstudien [måste](container-instances-tutorial-prepare-acr.md)du ange autentiseringsuppgifter för att komma åt registret. 
 
-En bästa praxis för många scenarier är att skapa och konfigurera ett Azure Active Directory tjänstens huvud namn med *pull* -behörighet till registret. Se [autentisera med Azure Container Registry från Azure Container instances](../container-registry/container-registry-auth-aci.md) för exempel skript för att skapa ett huvud namn för tjänsten med de behörigheter som krävs. Anteckna *tjänstens huvud namn* och *lösen ord för tjänstens huvud namn*. Du använder dessa autentiseringsuppgifter för att komma åt registret när du distribuerar behållaren.
+En bra metod för många scenarier är att skapa och konfigurera Azure Active Directory tjänstens huvudnamn med *pull-behörigheter* till registret. Se [Autentisera med Azure Container Registry från Azure Container Instances](../container-registry/container-registry-auth-aci.md) exempelskript för att skapa ett huvudnamn för tjänsten med nödvändiga behörigheter. Anteckna ID:t för *tjänstens huvudnamn* och *lösenordet för tjänstens huvudnamn.* Du använder dessa autentiseringsuppgifter för att få åtkomst till registret när du distribuerar containern.
 
 Du behöver också det fullständiga namnet på containerregistrets inloggningsserver (ersätt `<acrName>` med namnet på ditt register):
 
@@ -89,7 +89,7 @@ Exempel på utdata:
 
 ```output
 listening on port 80
-::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1" 200 1663 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
+::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET / HTTP/1.1&quot; 200 1663 &quot;-&quot; &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ::ffff:10.240.0.4 - - [21/Jul/2017:06:00:02 +0000] "GET /favicon.ico HTTP/1.1" 404 150 "http://aci-demo.eastus.azurecontainer.io/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36"
 ```
 
@@ -127,8 +127,8 @@ Nu när du har tillägnat dig grunderna kan du gå vidare och lära dig mer om A
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show
+[az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli
 [prepare-app]: ./container-instances-tutorial-prepare-app.md

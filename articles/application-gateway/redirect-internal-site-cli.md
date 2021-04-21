@@ -1,37 +1,37 @@
 ---
 title: Intern omdirigering med CLI
 titleSuffix: Azure Application Gateway
-description: Lär dig hur du skapar en Programgateway som dirigerar om intern webb trafik till rätt pool med hjälp av Azure CLI.
+description: Lär dig hur du skapar en programgateway som omdirigerar intern webbtrafik till lämplig pool med hjälp av Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
-ms.openlocfilehash: b443fa7c2d6c644fc1173295f89813c18657d160
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c4aa8927422d1f95a642e1d7c383aebc03a4930e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566732"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775789"
 ---
-# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Skapa en Application Gateway med intern omdirigering med Azure CLI
+# <a name="create-an-application-gateway-with-internal-redirection-using-the-azure-cli"></a>Skapa en programgateway med intern omdirigering med hjälp av Azure CLI
 
-Du kan använda Azure CLI för att konfigurera [omdirigering av webb trafik](multiple-site-overview.md) när du skapar en [Application Gateway](overview.md). I den här självstudien definierar du en backend-pool med en skalnings uppsättning för virtuella datorer. Du kan sedan konfigurera lyssnare och regler baserat på domäner som du äger för att kontrol lera att webb trafiken kommer till rätt pool. I den här självstudien förutsätter vi att du äger flera domäner och använder exempel på *www- \. contoso.com* och *www- \. contoso.org*.
+Du kan använda Azure CLI för att konfigurera [omdirigering av webbtrafik](multiple-site-overview.md) när du skapar en [programgateway.](overview.md) I den här självstudien definierar du en serverpool med hjälp av en VM-skalningsuppsättning. Sedan konfigurerar du lyssnare och regler baserat på domäner som du äger för att se till att webbtrafiken anländer till rätt pool. Den här självstudien förutsätter att du äger flera domäner och använder *exempel på www \. contoso.com* *och www \. contoso.org*.
 
 I den här artikeln kan du se hur du:
 
 * Konfigurera nätverket
 * Skapa en programgateway
-* Lägg till lyssnare och regler för omdirigering
-* Skapa en skalnings uppsättning för virtuella datorer med backend-poolen
+* Lägga till lyssnare och omdirigeringsregel
+* Skapa en VM-skalningsuppsättning med serverpoolen
 * Skapa en CNAME-post i domänen
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroupAG --location eastus
 
 ## <a name="create-network-resources"></a>Skapa nätverksresurser 
 
-Skapa ett virtuellt nätverk med namnet *myVNet* och ett undernät med namnet *myAGSubnet* med [az network vnet create](/cli/azure/network/vnet). Du kan sedan lägga till under nätet med namnet *myBackendSubnet* som behövs för backend-adresspoolen för servrar som använder [AZ Network VNet Subnet Create](/cli/azure/network/vnet/subnet). Skapa den offentliga IP-adressen med namnet *myAGPublicIPAddress* med [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Skapa ett virtuellt nätverk med namnet *myVNet* och ett undernät med namnet *myAGSubnet* med [az network vnet create](/cli/azure/network/vnet). Du kan sedan lägga till undernätet *myBackendSubnet* som behövs av serverpoolen med [az network vnet subnet create](/cli/azure/network/vnet/subnet). Skapa den offentliga IP-adressen med namnet *myAGPublicIPAddress* med [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create).
 
 ```azurecli-interactive
 az network vnet create \
@@ -96,9 +96,9 @@ Det kan ta flera minuter att skapa programgatewayen. När programgatewayen har s
 
 ## <a name="add-listeners-and-rules"></a>Lägga till lyssnare och regler 
 
-Du behöver en lyssnare så att programgatewayen kan dirigera trafiken till serverdelspoolen på rätt sätt. I den här självstudien skapar du två lyssnare för de två domänerna. I det här exemplet skapas lyssnare för domänerna för *www- \. contoso.com* och *www- \. contoso.org*.
+Du behöver en lyssnare så att programgatewayen kan dirigera trafiken till serverdelspoolen på rätt sätt. I den här självstudien skapar du två lyssnare för de två domänerna. I det här exemplet skapas lyssnare för domänerna *www \. contoso.com* *och www \. contoso.org*.
 
-Lägg till lyssnarna för serverdelen som ska dirigera trafiken med [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Lägg till lyssnarna för serverdelen som ska dirigera trafiken med [az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create).
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -117,9 +117,9 @@ az network application-gateway http-listener create \
   --host-name www.contoso.org   
   ```
 
-### <a name="add-the-redirection-configuration"></a>Lägg till omdirigerings konfigurationen
+### <a name="add-the-redirection-configuration"></a>Lägga till omdirigeringskonfigurationen
 
-Lägg till den omdirigerings konfiguration som skickar trafik från *www- \. Consoto.org* till lyssnaren för *www- \. contoso.com* i Application Gateway med [AZ Network Application-Gateway Redirect-config Create](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
+Lägg till omdirigeringskonfigurationen som skickar trafik *från www \. consoto.org* till lyssnaren för *www \. contoso.com* i programgatewayen med [az network application-gateway redirect-config create](/cli/azure/network/application-gateway/redirect-config#az_network_application_gateway_redirect_config_create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -134,9 +134,9 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-routing-rules"></a>Lägga till routningsregler
 
-Regler bearbetas i den ordning som de skapas, och trafiken dirigeras med hjälp av den första regeln som matchar den URL som skickas till programgatewayen. Om du till exempel har en regel med en grundläggande lyssnare och en regel med en lyssnare för flera webbplatser för samma port så måste regeln med lyssnare för flera platser stå innan regeln med den grundläggande lyssnaren om regeln för flera platser ska fungera som förväntat. 
+Regler bearbetas i den ordning som de skapas och trafiken dirigeras med hjälp av den första regeln som matchar den URL som skickas till programgatewayen. Om du till exempel har en regel med en grundläggande lyssnare och en regel med en lyssnare för flera webbplatser för samma port så måste regeln med lyssnare för flera platser stå innan regeln med den grundläggande lyssnaren om regeln för flera platser ska fungera som förväntat. 
 
-I det här exemplet skapar du två nya regler och tar bort standard regeln som skapades.  Du kan lägga till regeln med [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+I det här exemplet skapar du två nya regler och tar bort standardregeln som skapades.  Du kan lägga till regeln med [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -161,7 +161,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Skapa VM-skalningsuppsättningar
 
-I det här exemplet skapar du en skalnings uppsättning för virtuella datorer som stöder den backend-pool som du skapade. Den skalnings uppsättning som du skapar heter *myvmss* och innehåller två instanser av virtuella datorer som du installerar nginx på.
+I det här exemplet skapar du en VM-skalningsuppsättning som stöder serverpoolen som du skapade. Skalningsuppsättningen som du skapar heter *myvmss* och innehåller två instanser av virtuella datorer där du installerar NGINX.
 
 ```azurecli-interactive
 az vmss create \
@@ -181,7 +181,7 @@ az vmss create \
 
 ### <a name="install-nginx"></a>Installera NGINX
 
-Kör det här kommandot i Shell-fönstret:
+Kör det här kommandot i gränssnittsfönstret:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -196,7 +196,7 @@ az vmss extension set \
 
 ## <a name="create-cname-record-in-your-domain"></a>Skapa en CNAME-post i domänen
 
-När du har skapat programgatewayen med dess offentliga IP-adress kan du hämta DNS-adressen och använda den till att skapa en CNAME-post i domänen. Hämta den DNS-adressen till programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopiera värdet *fqdn* för DNSSettings och använd det som värde för CNAME-posten du skapar. Du bör inte använda A-poster eftersom den virtuella IP-adressen kan ändras när programgatewayen startas om.
+När du har skapat programgatewayen med dess offentliga IP-adress kan du hämta DNS-adressen och använda den till att skapa en CNAME-post i domänen. Hämta den DNS-adressen till programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Kopiera värdet *fqdn* för DNSSettings och använd det som värde för CNAME-posten du skapar. Du bör inte använda A-poster eftersom den virtuella IP-adressen kan ändras när programgatewayen startas om.
 
 ```azurecli-interactive
 az network public-ip show \
@@ -212,7 +212,7 @@ Ange domännamnet i adressfältet i webbläsaren. Till exempel http: \/ /www.con
 
 ![Testa contoso-webbplatsen i programgatewayen](./media/redirect-internal-site-cli/application-gateway-nginxtest.png)
 
-Ändra adressen till din andra domän, till exempel http: \/ /www.contoso.org, så bör du se att trafiken har omdirigerats tillbaka till lyssnaren för www- \. contoso.com.
+Ändra adressen till din andra domän, till exempel http: /www.contoso.org så bör du se att trafiken har omdirigerats tillbaka till \/ lyssnaren för www \. contoso.com.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -220,6 +220,6 @@ I den här självstudiekursen lärde du dig att:
 
 > * Konfigurera nätverket
 > * Skapa en programgateway
-> * Lägg till lyssnare och regler för omdirigering
-> * Skapa en skalnings uppsättning för virtuella datorer med backend-poolen
+> * Lägga till lyssnare och omdirigeringsregel
+> * Skapa en VM-skalningsuppsättning med serverpoolen
 > * Skapa en CNAME-post i domänen

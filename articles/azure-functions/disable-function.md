@@ -4,12 +4,12 @@ description: Lär dig hur du inaktiverar och aktiverar funktioner i Azure Functi
 ms.topic: conceptual
 ms.date: 03/15/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ef3886c4b9b73f87238bf386d1320ecbac8ad181
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 03803abfda010c81fa8286a478d626ef39db59fb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374904"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777589"
 ---
 # <a name="how-to-disable-functions-in-azure-functions"></a>Inaktivera funktioner i Azure Functions
 
@@ -35,7 +35,7 @@ Använd knapparna **Aktivera** **och** Inaktivera på funktionens **översiktssi
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
 
-I Azure CLI använder du kommandot [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) för att skapa och ändra appinställningen. Följande kommando inaktiverar en funktion med namnet genom `QueueTrigger` att skapa en appinställning med namnet och `AzureWebJobs.QueueTrigger.Disabled` ange den till `true` . 
+I Azure CLI använder du kommandot [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) för att skapa och ändra appinställningen. Följande kommando inaktiverar en funktion med namnet genom `QueueTrigger` att skapa en appinställning med namnet och `AzureWebJobs.QueueTrigger.Disabled` ange den till `true` . 
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <FUNCTION_APP_NAME> \

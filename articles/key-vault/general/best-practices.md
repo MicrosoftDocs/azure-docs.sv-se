@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 83fc2639ccfeccb7de974739562e1a212bac78a4
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749914"
+ms.locfileid: "107777175"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Metodtips för att använda Key Vault
 
@@ -44,9 +44,9 @@ Se till att du tar regelbundna valv back ups när du uppdaterar/tar bort/skapar 
 
 ### <a name="azure-cli-backup-commands"></a>Azure CLI-säkerhetskopieringskommandon
 
-* [Säkerhetskopieringscertifikat](/cli/azure/keyvault/certificate#az-keyvault-certificate-backup)
-* [Säkerhetskopieringsnyckel](/cli/azure/keyvault/key#az-keyvault-key-backup)
-* [Säkerhetskopieringshemlighet](/cli/azure/keyvault/secret#az-keyvault-secret-backup)
+* [Säkerhetskopieringscertifikat](/cli/azure/keyvault/certificate#az_keyvault_certificate_backup)
+* [Säkerhetskopieringsnyckel](/cli/azure/keyvault/key#az_keyvault_key_backup)
+* [Säkerhetskopieringshemlighet](/cli/azure/keyvault/secret#az_keyvault_secret_backup)
 
 
 ## <a name="turn-on-logging"></a>Aktivera loggning

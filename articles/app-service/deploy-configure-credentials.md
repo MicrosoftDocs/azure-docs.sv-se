@@ -5,15 +5,15 @@ ms.topic: article
 ms.date: 02/11/2021
 ms.reviewer: byvinyal
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ec48ec32250e271eff9e40535689f83dd9d3b60c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b77a26f61e1168846156de990806bbed2f7c41e3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789545"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Konfigurera autentiseringsuppgifter för distribution för Azure App Service
-För att skydda appdistributionen från en lokal [dator Azure App Service](./overview.md) två typer av autentiseringsuppgifter för lokal [Git-distribution](deploy-local-git.md) och [FTP/S-distribution.](deploy-ftp.md) Dessa autentiseringsuppgifter är inte samma som autentiseringsuppgifterna för din Azure-prenumeration.
+För att skydda appdistributionen från en lokal [dator Azure App Service](./overview.md) två typer av autentiseringsuppgifter för [lokal Git-distribution](deploy-local-git.md) och [FTP/S-distribution.](deploy-ftp.md) Dessa autentiseringsuppgifter är inte samma som autentiseringsuppgifterna för din Azure-prenumeration.
 
 [!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
@@ -24,9 +24,9 @@ För att skydda appdistributionen från en lokal [dator Azure App Service](./ove
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Kör kommandot [az webapp deployment user set.](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) Ersätt \<username> och med ett användarnamn och lösenord för \<password> distributionsanvändaren. 
+Kör kommandot [az webapp deployment user set.](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) Ersätt \<username> och med ett användarnamn och lösenord för \<password> distributionsanvändaren. 
 
-- Användarnamnet måste vara unikt i Azure och för lokala Git-pushar får det inte innehålla symbolen ẫ@â€™. 
+- Användarnamnet måste vara unikt i Azure och för lokala Git-pushar får det inte innehålla @-symbolen. 
 - Lösenordet måste innehålla minst åtta tecken, med två av följande tre element: bokstäver, siffror och symboler. 
 
 ```azurecli-interactive
@@ -43,19 +43,19 @@ Du kan inte konfigurera autentiseringsuppgifterna för användaromfång med Azur
 
 Du kan konfigurera dina autentiseringsuppgifter för användaromfång på valfri [appresurssida.](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) Oavsett i vilken app du konfigurerar dessa autentiseringsuppgifter gäller den för alla appar för alla prenumerationer i ditt Azure-konto. 
 
-I [Azure Portal](https://portal.azure.com)måste du ha minst en app innan du kan komma åt sidan med autentiseringsuppgifter för distribution. Så här konfigurerar du autentiseringsuppgifter för användaromfång:
+I [Azure Portal](https://portal.azure.com)måste du ha minst en app innan du kan komma åt sidan med autentiseringsuppgifter för distribution. Så här konfigurerar du dina autentiseringsuppgifter för användaromfång:
 
-1. På den vänstra menyn i appen väljer du ftps> autentiseringsuppgifter för  >  **distributionscenter** eller **lokala Git/FTPS-autentiseringsuppgifter.**
+1. I den vänstra menyn i appen väljer du FTPS-autentiseringsuppgifter > **Deployment Center** eller  >   Lokala **Git/FTPS-autentiseringsuppgifter.**
 
-    ![Visar hur du kan välja FTP-instrumentpanelen från Distributionscenter i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Visar hur du kan välja FTP-instrumentpanelen från distributionscentret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
 2. Rulla ned till **Användaromfång,** konfigurera **Användarnamn** **och Lösenord** och välj sedan **Spara.**
 
-När du har angett dina autentiseringsuppgifter för distribution hittar du *git-distributionens* användarnamn på appens **översiktssida,**
+När du har angett dina autentiseringsuppgifter för distribution hittar du *Git-distributionens* användarnamn på appens **översiktssida,**
 
-![Visar hur du hittar användarnamnet för Git-distributionen på appens översiktssida.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
+![Visar hur du hittar git-distributionens användarnamn på appens översiktssida.](./media/app-service-deployment-credentials/deployment_credentials_overview.png)
 
-Om Git-distributionen har konfigurerats visar sidan ett **Git/deployment-användarnamn**; annars ett **FTP/distribution användarnamn**.
+Om Git-distributionen har konfigurerats visas ett **Git/deployment-användarnamn på sidan.** annars ett **FTP/distribution användarnamn**.
 
 > [!NOTE]
 > Azure visar inte ditt distributionslösenord för användaromfång. Om du glömmer lösenordet kan du återställa dina autentiseringsuppgifter genom att följa stegen i det här avsnittet.
@@ -96,7 +96,7 @@ Get-AzWebAppPublishingProfile -ResourceGroupName <group-name> -Name <app-name>
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-1. På den vänstra menyn i appen väljer du FTPS-autentiseringsuppgifter **för**  >  **distributionscenter eller** **lokala Git/FTPS-autentiseringsuppgifter.**
+1. På den vänstra menyn i appen väljer du **FTPS-autentiseringsuppgifter för**  >  **distributionscenter eller** **Lokala Git/FTPS-autentiseringsuppgifter.**
 
     ![Visar hur du kan välja FTP-instrumentpanelen från distributionscentret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
@@ -124,9 +124,9 @@ Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.
 
 # <a name="azure-portal"></a>[Azure-portalen](#tab/portal)
 
-1. På den vänstra menyn i appen väljer du Distributionscenter  >  **FTPS-autentiseringsuppgifter eller** **Lokala Git/FTPS-autentiseringsuppgifter.**
+1. På den vänstra menyn i appen väljer du **FTPS-autentiseringsuppgifter för**  >  **distributionscenter eller** **Lokala Git/FTPS-autentiseringsuppgifter.**
 
-    ![Visar hur du kan välja FTP-instrumentpanelen från Distributionscenter i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
+    ![Visar hur du kan välja FTP-instrumentpanelen från distributionscentret i Azure App Services.](./media/app-service-deployment-credentials/access-no-git.png)
 
 2. I avsnittet **Programomfång** väljer du **Återställ**.
 
@@ -134,7 +134,7 @@ Invoke-AzResourceAction -ResourceGroupName <group-name> -ResourceType Microsoft.
 
 ## <a name="disable-basic-authentication"></a>Inaktivera grundläggande autentisering
 
-Vissa organisationer behöver uppfylla säkerhetskraven och vill i stället inaktivera åtkomst via FTP eller WebDeploy. På så sätt kan organisationens medlemmar bara komma åt sina App Services via API:er som styrs av Azure Active Directory (Azure AD).
+Vissa organisationer måste uppfylla säkerhetskraven och inaktiverar i stället åtkomst via FTP eller WebDeploy. På så sätt kan organisationens medlemmar bara komma åt sina App Services via API:er som styrs av Azure Active Directory (Azure AD).
 
 ### <a name="ftp"></a>FTP
 
@@ -144,24 +144,24 @@ Om du vill inaktivera FTP-åtkomst till platsen kör du följande CLI-kommando. 
 az resource update --resource-group <resource-group> --name ftp --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-Om du vill bekräfta att FTP-åtkomst har blockerats kan du försöka autentisera med hjälp av en FTP-klient, till exempel FileZilla. Om du vill hämta autentiseringsuppgifterna för publicering går du till översiktsbladet på webbplatsen och klickar på Ladda ned publiceringsprofil. Använd FTP-™ värdnamnet, användarnamnet och lösenordet för att autentisera, så får du ett 401-felsvar som anger att du inte har behörighet.
+Om du vill bekräfta att FTP-åtkomsten är blockerad kan du försöka autentisera med hjälp av en FTP-klient, till exempel FileZilla. Om du vill hämta autentiseringsuppgifterna för publicering går du till översiktsbladet på webbplatsen och klickar på Ladda ned publiceringsprofil. Använd filens FTP-värdnamn, användarnamn och lösenord för att autentisera, så får du ett 401-felsvar som anger att du inte har behörighet.
 
 ### <a name="webdeploy-and-scm"></a>WebDeploy och SCM
 
-Om du vill inaktivera grundläggande autentiseringsåtkomst till WebDeploy-porten och SCM-platsen kör du följande CLI-kommando. Ersätt platshållarna med resursgruppen och platsnamnet. 
+Om du vill inaktivera grundläggande autentiseringsåtkomst till WebDeploy-porten och SCM-webbplatsen kör du följande CLI-kommando. Ersätt platshållarna med resursgruppen och platsnamnet. 
 
 ```azurecli-interactive
 az resource update --resource-group <resource-group> --name scm --namespace Microsoft.Web --resource-type basicPublishingCredentialsPolicies --parent sites/<site-name> --set properties.allow=false
 ```
 
-För att bekräfta att autentiseringsuppgifterna för publiceringsprofilen är blockerade i WebDeploy kan du försöka publicera en [webbapp med hjälp Visual Studio 2019.](/visualstudio/deployment/quickstart-deploy-to-azure)
+Om du vill bekräfta att autentiseringsuppgifterna för publiceringsprofilen är blockerade i WebDeploy kan du försöka publicera en [webbapp med hjälp Visual Studio 2019](/visualstudio/deployment/quickstart-deploy-to-azure).
 
 ### <a name="disable-access-to-the-api"></a>Inaktivera åtkomst till API:et
 
-API:et i föregående avsnitt har stöd för rollbaserad åtkomstkontroll i [](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) Azure (Azure RBAC), vilket innebär att du kan skapa en anpassad roll och tilldela användare med lägre behörighet till rollen så att de inte kan aktivera grundläggande autentisering på några webbplatser. Följ de här instruktionerna för att [konfigurera den anpassade rollen.](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)
+API:et i föregående avsnitt backas upp med rollbaserad åtkomstkontroll [](../role-based-access-control/custom-roles.md#steps-to-create-a-custom-role) i Azure (Azure RBAC), vilket innebär att du kan skapa en anpassad roll och tilldela användare med lägre behörighet till rollen så att de inte kan aktivera grundläggande autentisering på några webbplatser. Följ dessa instruktioner för att [konfigurera den anpassade rollen.](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#create-a-custom-rbac-role)
 
-Du kan också använda [Azure Monitor för att](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) granska alla lyckade autentiseringsbegäranden och använda [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) för att framtvinga den här konfigurationen för alla platser i din prenumeration.
+Du kan också använda [Azure Monitor för att](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#audit-with-azure-monitor) granska alla lyckade autentiseringsförfrågningar och använda [Azure Policy](https://azure.github.io/AppService/2020/08/10/securing-data-plane-access.html#enforce-compliance-with-azure-policy) för att framtvinga den här konfigurationen för alla platser i din prenumeration.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du använder dessa autentiseringsuppgifter för att distribuera din app [från lokal Git](deploy-local-git.md) eller med [FTP/S](deploy-ftp.md).
+Lär dig hur du använder dessa autentiseringsuppgifter för att distribuera din app [från lokal Git](deploy-local-git.md) eller via [FTP/S.](deploy-ftp.md)

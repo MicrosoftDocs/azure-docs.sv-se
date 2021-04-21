@@ -36,8 +36,12 @@
       href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Logic'
 - name: Begrepp
   items:
-    - name: Anslutningsappar för Logic Apps
+    - name: Översikt över anslutningsappar för Logic Apps
       href: ../connectors/apis-list.md
+    - name: Hanterade anslutningsappar för Logic Apps
+      href: ../connectors/managed.md
+    - name: Inbyggda anslutningsappar för Logic Apps
+      href: ../connectors/built-in.md
     - name: Schemalägga återkommande arbetsflöden
       href: concepts-schedule-automated-recurring-tasks-workflows.md
     - name: Azure-lösningar utan server

@@ -1,6 +1,6 @@
 ---
 title: Skapa och konfigurera en Azure DDoS Protection plan med Azure CLI
-description: Lär dig hur du skapar en DDoS Protection plan med hjälp av Azure CLI
+description: Lär dig hur du skapar en DDoS Protection plan med Azure CLI
 services: ddos-protection
 documentationcenter: na
 author: aletheatoh
@@ -11,35 +11,35 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 98c71f3cf1c521c08d177acb89aad85301e61579
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 8a8da50dc703d59dc16b5cb6253d39aeb33fd76d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107103019"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777661"
 ---
-# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Snabb start: skapa och konfigurera Azure DDoS Protection standard med hjälp av Azure CLI
+# <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Snabbstart: Skapa och konfigurera Azure DDoS Protection Standard med Azure CLI
 
-Kom igång med Azure DDoS Protection standard med hjälp av Azure CLI. 
+Kom igång med Azure DDoS Protection Standard med hjälp av Azure CLI. 
 
-En DDoS skydds plan definierar en uppsättning virtuella nätverk som har DDoS Protection standard aktiverat, mellan prenumerationer. Du kan konfigurera en DDoS skydds plan för din organisation och länka virtuella nätverk från flera prenumerationer till samma plan. 
+En DDoS-skyddsplan definierar en uppsättning virtuella nätverk som har DDoS-skyddsstandard aktiverad för flera prenumerationer. Du kan konfigurera en DDoS-skyddsplan för din organisation och länka virtuella nätverk från flera prenumerationer till samma plan. 
 
-I den här snabb starten skapar du en DDoS skydds plan och länkar den till ett virtuellt nätverk. 
+I den här snabbstarten skapar du en DDoS-skyddsplan och länkar den till ett virtuellt nätverk. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 - Azure CLI installerat lokalt eller Azure Cloud Shell
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du väljer att installera och använda CLI lokalt kräver den här snabb starten Azure CLI version 2.0.28 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
+Om du väljer att installera och använda CLI lokalt kräver den här snabbstarten Azure CLI version 2.0.28 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
-## <a name="create-a-ddos-protection-plan"></a>Skapa en DDoS Protection Plan
+## <a name="create-a-ddos-protection-plan"></a>Skapa en DDoS Protection plan
 
-I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen använda en befintlig resurs grupp eller skapa en ny.
+I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen använda en befintlig resursgrupp eller skapa en ny.
 
-Om du vill skapa en resurs grupp använder du [AZ Group Create](/cli/azure/group#az-group-create). I det här exemplet ska vi namnge vår resurs grupp _MyResourceGroup_ och använda platsen _USA, östra_ :
+Använd az group create för att skapa [en resursgrupp.](/cli/azure/group#az_group_create) I det här exemplet ger vi resursgruppen namnet _MyResourceGroup och_ använder platsen _USA, östra:_
 
 ```azurecli-interactive
 az group create \
@@ -47,7 +47,7 @@ az group create \
     --location eastus
 ```
 
-Skapa nu en DDoS-skydds plan med namnet _MyDdosProtectionPlan_:
+Skapa nu en DDoS-skyddsplan med _namnet MyDdosProtectionPlan:_
 
 ```azurecli-interactive
 az network ddos-protection create \
@@ -59,7 +59,7 @@ az network ddos-protection create \
 
 ### <a name="enable-ddos-protection-for-a-new-virtual-network"></a>Aktivera DDoS-skydd för ett nytt virtuellt nätverk
 
-Du kan aktivera DDoS-skydd när du skapar ett virtuellt nätverk. I det här exemplet ska vi namnge vårt virtuella nätverk _MyVnet_: 
+Du kan aktivera DDoS-skydd när du skapar ett virtuellt nätverk. I det här exemplet ger vi det virtuella nätverket namnet _MyVnet_: 
 
 ```azurecli-interactive
 az network vnet create \
@@ -70,11 +70,11 @@ az network vnet create \
     --ddos-protection-plan MyDdosProtectionPlan
 ```
 
-Du kan inte flytta ett virtuellt nätverk till en annan resurs grupp eller prenumeration när DDoS standard är aktive rad för det virtuella nätverket. Om du behöver flytta ett virtuellt nätverk med DDoS standard aktiverat inaktiverar du DDoS standard först, flyttar det virtuella nätverket och aktiverar sedan DDoS standard. Efter flyttningen återställs automatiskt justerade princip tröskelvärden för alla skyddade offentliga IP-adresser i det virtuella nätverket.
+Du kan inte flytta ett virtuellt nätverk till en annan resursgrupp eller prenumeration när DDoS Standard är aktiverat för det virtuella nätverket. Om du behöver flytta ett virtuellt nätverk med DDoS Standard aktiverat inaktiverar du DDoS Standard först, flyttar det virtuella nätverket och aktiverar sedan DDoS-standarden. Efter flytten återställs de automatiskt finjusterade principtrösklarna för alla skyddade offentliga IP-adresser i det virtuella nätverket.
 
 ### <a name="enable-ddos-protection-for-an-existing-virtual-network"></a>Aktivera DDoS-skydd för ett befintligt virtuellt nätverk
 
-När du [skapar en skydds plan för DDoS](#create-a-ddos-protection-plan)kan du koppla ett eller flera virtuella nätverk till planen. Om du vill lägga till fler än ett virtuellt nätverk visar du bara namn eller ID: n, blankstegsavgränsad. I det här exemplet ska vi lägga till _MyVnet_:
+När [du skapar en DDoS-skyddsplan](#create-a-ddos-protection-plan)kan du associera ett eller flera virtuella nätverk med planen. Om du vill lägga till fler än ett virtuellt nätverk listar du bara namnen eller DED:erna, avgränsade med blanksteg. I det här exemplet lägger vi till _MyVnet_:
 
 ```azurecli-interactive
 az group create \
@@ -87,7 +87,7 @@ az network ddos-protection create \
     --vnets MyVnet
 ```
 
-Du kan också aktivera DDoS-skydd för ett angivet virtuellt nätverk:
+Du kan också aktivera DDoS-skydd för ett visst virtuellt nätverk:
 
 ```azurecli-interactive
 az network vnet update \
@@ -99,7 +99,7 @@ az network vnet update \
 
 ## <a name="validate-and-test"></a>Validera och testa
 
-Börja med att kontrol lera informationen om din DDoS-skydds plan:
+Kontrollera först informationen om din DDoS-skyddsplan:
 
 ```azurecli-interactive
 az network ddos-protection show \
@@ -107,20 +107,20 @@ az network ddos-protection show \
     --name MyDdosProtectionPlan
 ```
 
-Kontrol lera att kommandot returnerar rätt information om din DDoS-skydds plan.
+Kontrollera att kommandot returnerar rätt information om din DDoS-skyddsplan.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Du kan behålla dina resurser för nästa självstudie. Om du inte längre behöver tar du bort resurs gruppen _MyResourceGroup_ . När du tar bort resurs gruppen tar du även bort DDoS-skydds planen och alla relaterade resurser. 
+Du kan behålla dina resurser för nästa självstudie. Ta bort resursgruppen _MyResourceGroup om den inte längre_ behövs. När du tar bort resursgruppen tar du även bort DDoS-skyddsplanen och alla dess relaterade resurser. 
 
-Ta bort resurs gruppen med hjälp av [AZ Group Delete](/cli/azure/group#az_group_delete):
+Om du vill ta bort resursgruppen använder [du az group delete](/cli/azure/group#az_group_delete):
 
 ```azurecli-interactive
 az group delete \
 --name MyResourceGroup 
 ```
 
-Uppdatera ett angivet virtuellt nätverk för att inaktivera DDoS-skydd:
+Uppdatera ett visst virtuellt nätverk för att inaktivera DDoS-skydd:
 
 ```azurecli-interactive
 az network vnet update \
@@ -130,11 +130,11 @@ az network vnet update \
     --ddos-protection-plan ""
 ```
 
-Om du vill ta bort en DDoS skydds plan måste du först ta bort alla virtuella nätverk från den. 
+Om du vill ta bort en DDoS-skyddsplan måste du först ta bort alla virtuella nätverk från den. 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill lära dig att visa och konfigurera telemetri för din DDoS-skydds plan fortsätter du till självstudierna.
+Fortsätt till självstudierna om du vill lära dig hur du visar och konfigurerar telemetri för din DDoS-skyddsplan.
 
 > [!div class="nextstepaction"]
 > [Visa och konfigurera telemetri för DDoS-skydd](telemetry.md)

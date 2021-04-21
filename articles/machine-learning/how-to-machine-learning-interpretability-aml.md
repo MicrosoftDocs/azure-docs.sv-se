@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, responsible-ml
-ms.openlocfilehash: 2d60c6dbedb24847b95ce268bedafcb073421319
-ms.sourcegitcommit: d3bcd46f71f578ca2fd8ed94c3cdabe1c1e0302d
+ms.openlocfilehash: d79458cfc76adcfd35a6b8dee40c0c45786abc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107576524"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763297"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Använd tolkningspaketet för att förklara ML-modeller & förutsägelser i Python (förhandsversion)
 
@@ -34,8 +34,9 @@ I den här guiden lär du dig att använda interpretability-paketet för python-
 * Distribuera en bedömningsförklarare tillsammans med din modell för att observera förklaringar vid inferens.
 
 
-
 Mer information om de tolkningstekniker och maskininlärningsmodeller som stöds finns i [Modelltolkning](how-to-machine-learning-interpretability.md) i Azure Machine Learning och [notebook-exempel.](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+
+Vägledning om hur du aktiverar tolkning för modeller som tränats med automatiserad maskininlärning finns i [Interpretability: model explanations for automated machine learning models (preview) (Tolkning:](how-to-machine-learning-interpretability-automl.md)modellförklaringar för automatiserade maskininlärningsmodeller (förhandsversion) . 
 
 ## <a name="generate-feature-importance-value-on-your-personal-machine"></a>Generera värde för funktions prioritet på din personliga dator 
 I följande exempel visas hur du använder tolkningspaketet på din personliga dator utan att kontakta Azure-tjänster.
@@ -71,7 +72,7 @@ I följande exempel visas hur du använder tolkningspaketet på din personliga d
 
    Följande kodblock visar hur du instansierar ett förklararobjekt med `TabularExplainer` `MimicExplainer` , och `PFIExplainer` lokalt.
    * `TabularExplainer` anropar en av de tre SHAP-förklararna under ( `TreeExplainer` `DeepExplainer` , , eller `KernelExplainer` ).
-   * `TabularExplainer` väljer automatiskt den lämpligaste för ditt användningsfall, men du kan anropa var och en av dess tre underliggande förklarare direkt.
+   * `TabularExplainer` väljer automatiskt det lämpligaste för ditt användningsfall, men du kan anropa var och en av dess tre underliggande förklarare direkt.
 
     ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -142,7 +143,7 @@ global_explanation.get_feature_importance_dict()
 ```
 
 ### <a name="explain-an-individual-prediction-local-explanation"></a>Förklara en enskild förutsägelse (lokal förklaring)
-Hämta de enskilda egenskapsvärdena för prioritet för olika datapunkter genom att anropa förklaringar för en enskild instans eller en grupp med instanser.
+Hämta de enskilda värdena för egenskapsvikt för olika datapunkter genom att anropa förklaringar för en enskild instans eller en grupp instanser.
 > [!NOTE]
 > `PFIExplainer` stöder inte lokala förklaringar.
 
@@ -155,9 +156,9 @@ sorted_local_importance_names = local_explanation.get_ranked_local_names()
 sorted_local_importance_values = local_explanation.get_ranked_local_values()
 ```
 
-### <a name="raw-feature-transformations"></a>Raw-funktionstransformningar
+### <a name="raw-feature-transformations"></a>Omvandlingar av raw-funktioner
 
-Du kan välja att få förklaringar vad gäller råa, otransformerade funktioner i stället för utformade funktioner. För det här alternativet skickar du din pipeline för funktionstransformering till förklararen i `train_explain.py` . I annat fall ger förklararen förklaringar när det gäller utformade funktioner.
+Du kan välja att få förklaringar vad gäller råa, otransformerade funktioner i stället för utformade funktioner. För det här alternativet skickar du din pipeline för funktionstransformering till förklaringen i `train_explain.py` . I annat fall ger förklararen förklaringar när det gäller utformade funktioner.
 
 Formatet för transformationer som stöds är samma som det som beskrivs i [sklearn-pandas](https://github.com/scikit-learn-contrib/sklearn-pandas). I allmänhet stöds alla transformningar så länge de fungerar på en enda kolumn så att det är tydligt att de är en-till-många.
 
@@ -231,7 +232,7 @@ tabular_explainer = TabularExplainer(clf.steps[-1][1],
 
 ## <a name="generate-feature-importance-values-via-remote-runs"></a>Generera värden för egenskaps prioritet via fjärrkörningar
 
-I följande exempel visas hur du kan använda klassen `ExplanationClient` för att aktivera modelltolkning för fjärrkörningar. Det liknar begreppsmässigt den lokala processen, förutom att du:
+I följande exempel visas hur du kan använda klassen `ExplanationClient` för att aktivera modelltolkning för fjärrkörningar. Den liknar konceptuellt den lokala processen, förutom att du:
 
 * Använd i `ExplanationClient` fjärrkörningen för att ladda upp tolkningskontexten.
 * Ladda ned kontexten senare i en lokal miljö.
@@ -294,7 +295,7 @@ I följande exempel visas hur du kan använda klassen `ExplanationClient` för a
 
 ## <a name="visualizations"></a>Visualiseringar
 
-När du har hämtat förklaringarna i ditt lokala Jupyter Notebook kan du använda visualiseringarna på instrumentpanelen med förklaringar för att förstå och tolka din modell. Om du vill läsa in instrumentpanelswidgeten för förklaringar i Jupyter Notebook använder du följande kod:
+När du har hämtat förklaringarna i din lokala Jupyter Notebook kan du använda visualiseringarna på instrumentpanelen med förklaringar för att förstå och tolka din modell. Om du vill läsa in instrumentpanelswidgeten för förklaringar i Jupyter Notebook använder du följande kod:
 
 ```python
 from interpret_community.widget import ExplanationDashboard
@@ -302,16 +303,16 @@ from interpret_community.widget import ExplanationDashboard
 ExplanationDashboard(global_explanation, model, datasetX=x_test)
 ```
 
-Visualiseringarna stöder förklaringar av både utformade och råa funktioner. Rådataförklaringar baseras på funktionerna från den ursprungliga datauppsättningen och de utformade förklaringarna baseras på funktionerna från datauppsättningen med funktionsteknik tillämpad.
+Visualiseringarna stöder förklaringar av både utformade och råa funktioner. Rådataförklaringar baseras på funktionerna från den ursprungliga datauppsättningen och de utformade förklaringarna baseras på funktionerna i datamängden med funktionsteknik tillämpad.
 
-När du försöker tolka en modell med avseende på den ursprungliga datauppsättningen rekommenderar vi att du använder råa förklaringar eftersom varje egenskaps prioritet motsvarar en kolumn från den ursprungliga datauppsättningen. Ett scenario där utformade förklaringar kan vara användbara är när du undersöker effekten av enskilda kategorier från en kategorisk funktion. Om en one-hot-kodning tillämpas på en kategorisk funktion innehåller de resulterande utformade förklaringarna ett annat prioritetsvärde per kategori, ett per one-hot engineered-funktion. Detta kan vara användbart när du begränsar vilken del av datamängden som är mest informativ för modellen.
+När du försöker tolka en modell med avseende på den ursprungliga datauppsättningen rekommenderar vi att du använder råa förklaringar eftersom varje egenskaps prioritet motsvarar en kolumn från den ursprungliga datauppsättningen. Ett scenario där utformade förklaringar kan vara användbara är när du undersöker effekten av enskilda kategorier från en kategorisk funktion. Om en one-hot-kodning tillämpas på en kategorisk funktion innehåller de resulterande förklaringarna ett annat prioritetsvärde per kategori, ett per one-hot-utformad funktion. Detta kan vara användbart när du begränsar vilken del av datamängden som är mest informativ för modellen.
 
 > [!NOTE]
-> Tekniker och rådata förklaringar beräknas sekventiellt. Först skapas en utformad förklaring baserat på modellen och pipelinen för featurisering. Sedan skapas den råa förklaringen baserat på den utformade förklaringen genom att aggregera vikten av utformade funktioner som kommer från samma råa funktion.
+> Tekniker och råa förklaringar beräknas sekventiellt. Först skapas en utformad förklaring baserat på modellen och featuriseringspipelinen. Sedan skapas den råa förklaringen baserat på den utformade förklaringen genom att aggregera vikten av utformade funktioner som kommer från samma råa funktion.
 
-### <a name="create-edit-and-view-dataset-cohorts"></a>Skapa, redigera och visa datamängdskohorter
+### <a name="create-edit-and-view-dataset-cohorts"></a>Skapa, redigera och visa datauppsättningskohorter
 
-Det översta menyfliksområdet visar övergripande statistik för din modell och dina data. Du kan dela upp och dela upp dina data i datamängdskohorter, eller undergrupper, för att undersöka eller jämföra modellens prestanda och förklaringar i dessa definierade undergrupper. Genom att jämföra datamängdens statistik och förklaringar i dessa undergrupper kan du få en känsla av varför möjliga fel inträffar i en grupp jämfört med en annan.
+Det översta menyfliksområdet visar övergripande statistik för din modell och dina data. Du kan dela upp och dela upp dina data i datamängdskohorter, eller undergrupper, för att undersöka eller jämföra modellens prestanda och förklaringar i dessa definierade undergrupper. Genom att jämföra datauppsättningens statistik och förklaringar i dessa undergrupper kan du få en känsla för varför möjliga fel inträffar i en grupp jämfört med en annan.
 
 [![Skapa, redigera och visa datamängdskohorter](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-cohorts.gif#lightbox)
 
@@ -320,23 +321,23 @@ Det översta menyfliksområdet visar övergripande statistik för din modell och
 De första tre flikarna i förklaringsinstrumentpanelen ger en övergripande analys av den tränade modellen tillsammans med dess förutsägelser och förklaringar.
 
 #### <a name="model-performance"></a>Modellprestanda
-Utvärdera modellens prestanda genom att utforska distributionen av dina förutsägelsevärden och värdena för modellens prestandamått. Du kan undersöka din modell ytterligare genom att titta på en jämförelseanalys av dess prestanda för olika kohorter eller undergrupper i datauppsättningen. Välj filter längs y-värde och x-värde för att klippa ut mellan olika dimensioner. Visa mått som precision, precision, träffsäkerhet, falsk positiv frekvens (FPR) och falsk negativ frekvens (FNR).
+Utvärdera modellens prestanda genom att utforska distributionen av dina förutsägelsevärden och värdena för modellens prestandamått. Du kan undersöka din modell ytterligare genom att titta på en jämförelseanalys av dess prestanda för olika kohorter eller undergrupper i datamängden. Välj filter längs y-värde och x-värde för att klippa ut över olika dimensioner. Visa mått som noggrannhet, precision, träffsäkerhet, falsk positiv frekvens (FPR) och falsk negativ frekvens (FNR).
 
 [![Fliken Modellprestanda i förklaringsvisualiseringen](./media/how-to-machine-learning-interpretability-aml/model-performance.gif)](./media/how-to-machine-learning-interpretability-aml/model-performance.gif#lightbox)
 
-#### <a name="dataset-explorer"></a>Datauppsättningsutforskaren
-Utforska din datamängdsstatistik genom att välja olika filter längs X-, Y- och färgaxlar för att dela upp dina data längs olika dimensioner. Skapa datamängdskohorter ovan för att analysera datamängdsstatistik med filter som förutsagt resultat, datauppsättningsfunktioner och felgrupper. Använd kugghjulsikonen i det övre högra hörnet i diagrammet för att ändra diagramtyper.
+#### <a name="dataset-explorer"></a>Datamängdsutforskaren
+Utforska datamängdens statistik genom att välja olika filter längs axlarna X, Y och färg för att dela upp dina data längs olika dimensioner. Skapa datamängdskohorter ovan för att analysera datamängdsstatistik med filter som förutsagt resultat, datauppsättningsfunktioner och felgrupper. Använd kugghjulsikonen i det övre högra hörnet i diagrammet för att ändra diagramtyper.
 
-[![Fliken Datauppsättningsutforskaren i förklaringsvisualiseringen](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
+[![Fliken Datamängdsutforskaren i förklaringsvisualiseringen](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif)](./media/how-to-machine-learning-interpretability-aml/dataset-explorer.gif#lightbox)
 
-#### <a name="aggregate-feature-importance"></a>Aggregera funktions prioritet
-Utforska viktiga funktioner som påverkar dina övergripande modellförutsägelser (kallas även global förklaring). Använd skjutreglaget för att visa fallande prioritetsvärden för funktioner. Välj upp till tre kohorter för att se deras egenskapsvärden sida vid sida. Klicka på någon av funktionsstaplar i diagrammet för att se hur värdena för den valda funktionspåverkansmodellen förutsägelser i beroenderitningen nedan.
+#### <a name="aggregate-feature-importance"></a>Aggregera egenskaps prioritet
+Utforska viktiga funktioner som påverkar dina övergripande modellförutsägelser (kallas även global förklaring). Använd skjutreglaget för att visa fallande prioritetsvärden för funktionen. Välj upp till tre kohorter om du vill se deras egenskapsvärden sida vid sida. Klicka på någon av funktionsstaplar i diagrammet för att se hur värdena för den valda funktionen påverkar modellförutsägelsen i beroenderitningen nedan.
 
 [![Fliken Aggregera funktions prioritet i förklaringsvisualiseringen](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif)](./media/how-to-machine-learning-interpretability-aml/aggregate-feature-importance.gif#lightbox)
 
 ### <a name="understand-individual-predictions-local-explanation"></a>Förstå enskilda förutsägelser (lokal förklaring) 
 
-På den fjärde fliken på förklaringsfliken kan du gå in på detalj i en enskild datapunkt och deras enskilda egenskapsvikter. Du kan läsa in ett diagram med den enskilda egenskapsviktpunkten för en datapunkt genom att klicka på någon av de enskilda datapunkterna i det huvudsakliga punktdiagramet eller välja en specifik datapunkt i panelguiden till höger.
+På den fjärde fliken på förklaringsfliken kan du gå in på detalj i en enskild datapunkt och deras enskilda funktionsvikter. Du kan läsa in ett diagram med den enskilda egenskapsvikten för en datapunkt genom att klicka på någon av de enskilda datapunkterna i det huvudsakliga punktdiagramet eller välja en specifik datapunkt i panelguiden till höger.
 
 |Tomt|Description|
 |----|-----------|
@@ -347,30 +348,30 @@ På den fjärde fliken på förklaringsfliken kan du gå in på detalj i en ensk
 [![Individuell egenskaps prioritet och Vad om-fliken i förklaringsinstrumentpanelen](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif)](./media/how-to-machine-learning-interpretability-aml/individual-tab.gif#lightbox)
 
 > [!NOTE]
-> Det här är förklaringar som baseras på många approximeringar och är inte "orsak" till förutsägelser. Utan strikt matematisk robusthet i kausal slutsatsledning rekommenderar vi inte att användarna fattar verkliga beslut baserat på funktionsperturationer i What-If verktyg. Det här verktyget är främst till för att förstå din modell och felsökning.
+> Det här är förklaringar baserade på många approximeringar och är inte "orsak" till förutsägelser. Utan strikt matematisk robusthet i kausal slutsatsledning rekommenderar vi inte att användarna fattar verkliga beslut baserat på funktionsperturationer i What-If verktyg. Det här verktyget är främst till för att förstå din modell och felsökning.
 
 ### <a name="visualization-in-azure-machine-learning-studio"></a>Visualisering i Azure Machine Learning-studio
 
 Om du slutför stegen [för fjärrtolkning](how-to-machine-learning-interpretability-aml.md#generate-feature-importance-values-via-remote-runs) (ladda upp genererade förklaringar till Azure Machine Learning Run History) kan du visa visualiseringarna på instrumentpanelen med förklaringar [i Azure Machine Learning-studio](https://ml.azure.com). Den här instrumentpanelen är en enklare version av instrumentpanelswidgeten som genereras i jupyter-anteckningsboken. What-If datapunktsgenerering och ICE-diagram inaktiveras eftersom det inte finns någon aktiv beräkning i Azure Machine Learning-studio som kan utföra sina realtidsberäkningar.
 
-Om datauppsättningen, globala och lokala förklaringar är tillgängliga, fyller data i alla flikar. Om endast en global förklaring är tillgänglig inaktiveras fliken Individuell egenskaps prioritet.
+Om datauppsättningen, globala och lokala förklaringar är tillgängliga, fyller data i alla flikar. Om det bara finns en global förklaring inaktiveras fliken Individuell egenskaps prioritet.
 
-Följ någon av dessa sökvägar för att få åtkomst till instrumentpanelen med förklaringar i Azure Machine Learning-studio:
+Följ någon av de här sökvägarna för att få åtkomst till instrumentpanelen med förklaringar i Azure Machine Learning-studio:
 
 * **Experimentfönstret** (förhandsversion)
-  1. Välj **Experiment** i det vänstra fönstret för att se en lista över experiment som du har kört Azure Machine Learning.
+  1. Välj **Experiment** i det vänstra fönstret för att se en lista över experiment som du har kört på Azure Machine Learning.
   1. Välj ett visst experiment för att visa alla körningar i experimentet.
   1. Välj en körning och sedan fliken **Explanations (Förklaringar)** till instrumentpanelen för förklaringsvisualiseringen.
 
-   [![Instrumentpanel för visualisering med aggregerad egenskaps prioritet i AzureML Studio i experiment](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
+   [![Visualiseringsinstrumentpanel med aggregerad egenskaps prioritet i AzureML Studio i experiment](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png)](./media/how-to-machine-learning-interpretability-aml/model-explanation-dashboard-aml-studio.png#lightbox)
 
 * **Fönstret** Modeller
   1. Om du registrerade din ursprungliga modell genom att följa stegen i [Distribuera modeller med Azure Machine Learning](./how-to-deploy-and-where.md)kan du välja **Modeller** i det vänstra fönstret för att visa den.
   1. Välj en modell och sedan fliken **Förklaringar för** att visa instrumentpanelen med förklaringar.
 
-## <a name="interpretability-at-inference-time"></a>Tolkning vid slutsatsledningstid
+## <a name="interpretability-at-inference-time"></a>Tolkning vid inferenstid
 
-Du kan distribuera förklararen tillsammans med den ursprungliga modellen och använda den vid härledningstiden för att ange de enskilda egenskapsvärdena (lokal förklaring) för alla nya datapunkter. Vi erbjuder också enklare bedömningsförklarare för att förbättra tolkningsprestanda vid inferenstid, vilket för närvarande endast stöds i Azure Machine Learning SDK. Processen för att distribuera en förklarare för lättare poäng liknar distributionen av en modell och omfattar följande steg:
+Du kan distribuera förklararen tillsammans med den ursprungliga modellen och använda den vid inferensen för att ange de enskilda egenskapsvärdena (lokal förklaring) för alla nya datapunkter. Vi erbjuder även enklare poängsättningsförklarare för att förbättra tolkningsprestanda vid inferens, vilket för närvarande endast stöds i Azure Machine Learning SDK. Processen för att distribuera en enklare bedömningsförklarare liknar att distribuera en modell och omfattar följande steg:
 
 1. Skapa ett förklaringsobjekt. Du kan till exempel använda `TabularExplainer` :
 
@@ -399,7 +400,7 @@ Du kan distribuera förklararen tillsammans med den ursprungliga modellen och an
    save(scoring_explainer, directory=OUTPUT_DIR, exist_ok=True)
    ```
 
-1. Konfigurera och registrera en avbildning som använder bedömningsförklararmodellen.
+1. Konfigurera och registrera en bild som använder bedömningsförklararmodellen.
 
    ```python
    # register explainer model using the path from ScoringExplainer.save - could be done on remote compute
@@ -430,7 +431,7 @@ Du kan distribuera förklararen tillsammans med den ursprungliga modellen och an
 
 1. Distribuera avbildningen till ett beräkningsmål genom att följa dessa steg:
 
-   1. Om det behövs registrerar du den ursprungliga förutsägelsemodellen genom att följa stegen [i Distribuera modeller med Azure Machine Learning](./how-to-deploy-and-where.md).
+   1. Om det behövs registrerar du din ursprungliga förutsägelsemodell genom att följa stegen [i Distribuera modeller med Azure Machine Learning](./how-to-deploy-and-where.md).
 
    1. Skapa en bedömningsfil.
 
@@ -561,17 +562,17 @@ Du kan distribuera förklararen tillsammans med den ursprungliga modellen och an
 
 ## <a name="troubleshooting"></a>Felsökning
 
-* **Glesa data stöds inte:** Modellförklaringens instrumentpanel går sönder/saktar ned avsevärt med ett stort antal funktioner, och därför stöder vi för närvarande inte gles dataformat. Dessutom uppstår allmänna minnesproblem med stora datamängder och ett stort antal funktioner. 
+* **Glesa data stöds** inte: Modellförklaringens instrumentpanel går sönder/saktar ned avsevärt med ett stort antal funktioner, och därför stöder vi för närvarande inte gles dataformat. Dessutom uppstår allmänna minnesproblem med stora datamängder och ett stort antal funktioner. 
 
-* **Prognosmodeller** som inte stöds med modellförklaringar: Tolkningsbarhet, bästa modellförklaring, är inte tillgängligt för AutoML-prognosexperiment som rekommenderar följande algoritmer som den bästa modellen: TCNForecaster, AutoArima,Antal, ExponentialSmoothing, Average, Naive, Seasonal Average och Seasonal Naive. AutoML-prognostiserade har regressionsmodeller som stöder förklaringar. I förklaringsinstrumentpanelen stöds dock inte fliken "Individuell egenskaps prioritet" för prognostiserade data på grund av komplexiteten i deras datapipelines.
+* **Prognosmodeller** som inte stöds med modellförklaringar: Tolkningsbarhet, bästa modellförklaring, är inte tillgängligt för AutoML-prognosexperiment som rekommenderar följande algoritmer som den bästa modellen: TCNForecaster, AutoArima,Variation, ExponentialSmoothing, Average, Naive, Seasonal Average och Seasonal Naive. AutoML-prognostiserade har regressionsmodeller som stöder förklaringar. I förklaringsinstrumentpanelen stöds dock inte fliken "Individuell egenskaps prioritet" för prognostiserade data på grund av komplexiteten i deras datapipelines.
 
-* **Lokal förklaring för dataindex:** Förklaringsinstrumentpanelen har inte stöd för att relatera lokala prioritetsvärden till en radidentifierare från den ursprungliga valideringsdatauppsättningen om datauppsättningen är större än 5 000 datapunkter eftersom instrumentpanelen slumpmässigt nedsamplar data. Instrumentpanelen visar dock funktionsvärden för rådata för varje datapunkt som skickas till instrumentpanelen under fliken Individuell egenskapsvikt. Användare kan mappa lokala prioriteter tillbaka till den ursprungliga datauppsättningen genom att matcha rådatauppsättningens funktionsvärden. Om storleken på valideringsdatamängden är mindre än 5 000 exempel motsvarar funktionen i `index` AzureML Studio indexet i valideringsdatamängden.
+* **Lokal förklaring för dataindex:** Förklaringsinstrumentpanelen stöder inte att lokala prioritetsvärden relateras till en radidentifierare från den ursprungliga valideringsdatamängden om datauppsättningen är större än 5 000 datapunkter när instrumentpanelen slumpmässigt nedamplar data. Instrumentpanelen visar dock rådata för datauppsättningens funktionsvärden för varje datapunkt som skickas till instrumentpanelen under fliken Individuell egenskapsvikt. Användare kan mappa lokala prioriteter tillbaka till den ursprungliga datauppsättningen genom att matcha rådatauppsättningens funktionsvärden. Om datamängdens valideringsstorlek är mindre än 5 000 exempel motsvarar funktionen i `index` AzureML Studio indexet i valideringsdatamängden.
 
-* **What-if/ICE-diagram** som inte stöds i studio: What-If- och ICE-diagram (Individual Conditional Expectation) stöds inte i Azure Machine Learning-studio på fliken Explanations (Förklaringar) eftersom den uppladdade förklaringen behöver en aktiv beräkning för att beräkna om förutsägelser och sannolikheter för perturerade funktioner. Den stöds för närvarande i Jupyter Notebooks när den körs som en widget med sdk:n.
+* **Vad om/ICE-diagram** som inte stöds i studio: What-If- och ICE-diagram (individual conditional expectation) stöds inte i Azure Machine Learning-studio på fliken Explanations (Förklaringar) eftersom den uppladdade förklaringen kräver en aktiv beräkning för att beräkna om förutsägelser och sannolikheter för perturbed-funktioner. Den stöds för närvarande i Jupyter Notebooks när den körs som en widget med SDK.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
 [Läs mer om modelltolkning](how-to-machine-learning-interpretability.md)
 
-[Ta en Azure Machine Learning notebook-exempel på tolkning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)
+[Kolla in Azure Machine Learning notebook-exempel på tolkning](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model)

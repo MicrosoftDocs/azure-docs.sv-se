@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 48a531e054bf92c8ddc7761689b8fdf1df8a28a7
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: ec88dfc7ded7ecb1d640eb4d73ef4c8045e549cf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750022"
+ms.locfileid: "107791993"
 ---
 # <a name="tutorial-configure-certificate-auto-rotation-in-key-vault"></a>Självstudie: Konfigurera automatisk rotering av certifikat i Key Vault
 
-Du kan enkelt etablera, hantera och distribuera digitala certifikat med hjälp av Azure Key Vault. Certifikaten kan vara offentliga och privata Secure Sockets Layer(SSL)/Transport Layer Security-certifikat (TLS) som signerats av en certifikatutfärdare (CA) eller ett själv signerat certifikat. Key Vault också begära och förnya certifikat via partnerskap med certifikatutfärdare, vilket ger en robust lösning för livscykelhantering av certifikat. I den här självstudien uppdaterar du certifikatets giltighetsperiod, automatisk rotationsfrekvens och CA-attribut.
+Du kan enkelt etablera, hantera och distribuera digitala certifikat med hjälp av Azure Key Vault. Certifikaten kan vara offentliga och privata Secure Sockets Layer(SSL)/Transport Layer Security-certifikat (TLS) som signerats av en certifikatutfärdare (CA) eller ett själv signerat certifikat. Key Vault också begära och förnya certifikat via partnerskap med certifikatutfärdare, vilket ger en robust lösning för livscykelhantering av certifikat. I den här självstudien uppdaterar du ett certifikats giltighetsperiod, frekvens för automatisk rotation och CA-attribut.
 
 Självstudien visar hur du:
 
@@ -30,7 +30,7 @@ Självstudien visar hur du:
 > * Uppdatera certifikatets frekvens för automatisk rotation.
 > * Uppdatera certifikatets attribut med hjälp av Azure PowerShell.
 
-Innan du börjar bör du läsa [Key Vault grundläggande begreppen](../general/basic-concepts.md).
+Innan du börjar bör du [läsa Key Vault grundläggande begreppen](../general/basic-concepts.md).
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -46,7 +46,7 @@ Skapa en Azure Key Vault med [Azure Portal,](../general/quick-create-portal.md) 
 
 ## <a name="create-a-certificate-in-key-vault"></a>Skapa ett certifikat i Key Vault
 
-Skapa ett certifikat eller importera ett certifikat till nyckelvalvet (se [Steg för att skapa ett certifikat i Key Vault](../secrets/quick-create-portal.md)). I det här fallet arbetar du med ett certifikat som heter **ExampleCertificate**.
+Skapa ett certifikat eller importera ett certifikat till nyckelvalvet (se [Steg för att skapa ett certifikat i Key Vault](../secrets/quick-create-portal.md)). I det här fallet arbetar du med ett certifikat som kallas **ExampleCertificate**.
 
 ## <a name="update-certificate-lifecycle-attributes"></a>Uppdatera certifikatlivscykelattribut
 
@@ -55,15 +55,15 @@ I Azure Key Vault kan du uppdatera ett certifikats livscykelattribut både när 
 Ett certifikat som skapas i Key Vault kan vara:
 
 - Ett själv signerat certifikat.
-- Ett certifikat som skapats med en certifikatutfärdare som är partner med Key Vault.
+- Ett certifikat som skapats med en certifikatutfärdare som samarbetar med Key Vault.
 - Ett certifikat med en certifikatutfärdare som inte är partner med Key Vault.
 
-Följande CA:er är för närvarande partnerproviders med Key Vault:
+Följande CAs är för närvarande partnerproviders med Key Vault:
 
 - DigiCert: Key Vault erbjuder OV TLS/SSL-certifikat.
 - GlobalSign: Key Vault erbjuder OV TLS/SSL-certifikat.
 
-Key Vault automatiskt certifikat genom etablerade samarbeten med certifikat återkallade certifikat. Eftersom Key Vault begär och förnyar certifikat automatiskt via partnerskap, gäller inte funktionen för automatisk rotation för certifikat som skapas med certifikat som inte är partner med Key Vault.
+Key Vault automatiskt certifikat via etablerade samarbeten med certifikatlicenser. Eftersom Key Vault begär och förnyar certifikat automatiskt via partnerskap, gäller inte funktionen för automatisk rotation för certifikat som skapas med certifikat som inte är partner med Key Vault.
 
 > [!NOTE]
 > En kontoadministratör för en CA-provider skapar autentiseringsuppgifter som Key Vault använder för att skapa, förnya och använda TLS/SSL-certifikat.
@@ -74,10 +74,10 @@ Key Vault automatiskt certifikat genom etablerade samarbeten med certifikat åte
 
 1. På sidan Key Vault egenskaper väljer du **Certifikat**.
 1. Välj **Generera/importera**.
-1. På skärmen **Skapa ett** certifikat uppdaterar du följande värden:
+1. Uppdatera **följande värden på** skärmen Skapa ett certifikat:
 
    - **Giltighetsperiod:** Ange värdet (i månader). Att skapa kortvariga certifikat är en rekommenderad säkerhetspraxis. Som standard är giltighetsvärdet för ett nyligen skapat certifikat 12 månader.
-   - **Typ av livslängdsåtgärd:** Välj certifikatets automatiska förnyelse och  aviseringsåtgärd och uppdatera sedan procentandelen livslängd eller **Antal dagar innan det upphör att gälla.** Som standard anges ett certifikats automatiska förnyelse till 80 procent av dess livslängd. Välj något av följande alternativ på den nedrullningsna menyn.
+   - **Typ av** livslängdsåtgärd: Välj certifikatets åtgärd för automatisk  förnyelse och avisering och uppdatera sedan den procentuella livslängden eller **Antal dagar innan det upphör att gälla.** Som standard anges ett certifikats automatiska förnyelse till 80 procent av dess livslängd. I den nedrullningsna menyn väljer du något av följande alternativ.
 
       |  Förnya automatiskt vid en viss tidpunkt| Skicka e-post till alla kontakter vid en viss tidpunkt |
       |-----------|------|
@@ -92,7 +92,7 @@ Key Vault automatiskt certifikat genom etablerade samarbeten med certifikat åte
 ### <a name="update-lifecycle-attributes-of-a-stored-certificate"></a>Uppdatera livscykelattribut för ett lagrat certifikat
 
 1. Välj nyckelvalvet.
-1. På Key Vault egenskaper väljer du **Certifikat**.
+1. På sidan Key Vault egenskaper väljer du **Certifikat**.
 1. Välj det certifikat som du vill uppdatera. I det här fallet arbetar du med ett certifikat som heter **ExampleCertificate**.
 1. Välj **Utfärdandeprincip** på den översta menyraden.
 
@@ -108,7 +108,7 @@ Key Vault automatiskt certifikat genom etablerade samarbeten med certifikat åte
 1. Välj **Spara**.
 
 > [!IMPORTANT]
-> Om du ändrar åtgärdstyp för livslängd för ett certifikat kommer ändringar för befintliga certifikat att registreras omedelbart.
+> Om du ändrar åtgärdstyp för livslängd för ett certifikat kommer ändringar av befintliga certifikat att registreras omedelbart.
 
 
 ### <a name="update-certificate-attributes-by-using-powershell"></a>Uppdatera certifikatattribut med hjälp av PowerShell
@@ -135,7 +135,7 @@ Set-AzureKeyVaultCertificatePolicy -VaultName $vaultName
 > }
 >  ```
 > 
-Mer information om parametrarna finns i [az keyvault certificate](/cli/azure/keyvault/certificate#az-keyvault-certificate-set-attributes).
+Mer information om parametrarna finns i [az keyvault certificate](/cli/azure/keyvault/certificate#az_keyvault_certificate_set_attributes).
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

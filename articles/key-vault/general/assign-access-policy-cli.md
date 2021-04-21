@@ -1,80 +1,79 @@
 ---
-title: Tilldela en Azure Key Vault åtkomst princip (CLI)
-description: Hur du använder Azure CLI för att tilldela en Key Vault åtkomst princip till ett säkerhets objekt eller en program identitet.
+title: Tilldela en Azure Key Vault åtkomstprincip (CLI)
+description: Så här använder du Azure CLI för att tilldela en Key Vault åtkomstprincip till ett säkerhetsobjekt eller en programidentitet.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.date: 08/27/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a9dc03f776ac430072e456332955cbfc75d73bf2
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: 349d7453962a736c9f15bb7d31d5a44098f463a4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105968857"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791957"
 ---
-# <a name="assign-a-key-vault-access-policy"></a>Tilldela en princip för Key Vault åtkomst
+# <a name="assign-a-key-vault-access-policy"></a>Tilldela en Key Vault åtkomstprincip
 
-En Key Vault åtkomst princip bestämmer om ett specifikt säkerhets objekt, nämligen en användare, ett program eller en användar grupp, kan utföra olika åtgärder på Key Vault [hemligheter](../secrets/index.yml), [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomst principer med hjälp av [Azure Portal](assign-access-policy-portal.md), Azure CLI (den här artikeln) eller [Azure PowerShell](assign-access-policy-powershell.md).
+En Key Vault-åtkomstprincip avgör om ett visst säkerhetsobjekt, nämligen en användare, ett program eller en användargrupp, kan utföra olika åtgärder på Key Vault [hemligheter,](../secrets/index.yml) [nycklar](../keys/index.yml)och [certifikat](../certificates/index.yml). Du kan tilldela åtkomstprinciper med [hjälp Azure Portal,](assign-access-policy-portal.md)Azure CLI (den här artikeln) eller [Azure PowerShell](assign-access-policy-powershell.md).
 
 [!INCLUDE [key-vault-access-policy-limits.md](../../../includes/key-vault-access-policy-limits.md)]
 
-Mer information om hur du skapar grupper i Azure Active Directory med Azure CLI finns i [AZ AD Group Create](/cli/azure/ad/group#az-ad-group-create) och [AZ AD Group member Add](/cli/azure/ad/group/member#az-ad-group-member-add).
+Mer information om hur du skapar grupper i Azure Active Directory med Hjälp av Azure CLI finns i [az ad group create](/cli/azure/ad/group#az_ad_group_create) och az ad group member [add](/cli/azure/ad/group/member#az_ad_group_member_add).
 
 ## <a name="configure-the-azure-cli-and-sign-in"></a>Konfigurera Azure CLI och logga in
 
-1. Installera [Azure](/cli/azure/install-azure-cli)CLI för att köra Azure CLI-kommandon lokalt.
+1. Om du vill köra Azure CLI-kommandon lokalt installerar du [Azure CLI](/cli/azure/install-azure-cli).
  
-    Använd [Azure Cloud Shell](../../cloud-shell/overview.md)för att köra kommandon direkt i molnet.
+    Om du vill köra kommandon direkt i molnet använder du [Azure Cloud Shell](../../cloud-shell/overview.md).
 
-1. Endast lokalt CLI: Logga in på Azure med `az login` :
+1. Endast lokalt CLI: logga in på Azure med `az login` :
 
     ```bash
     az login
     ```
 
-    `az login`Kommandot öppnar ett webbläsarfönster för att samla in autentiseringsuppgifter om det behövs.
+    Kommandot `az login` öppnar ett webbläsarfönster för att samla in autentiseringsuppgifter om det behövs.
 
-## <a name="acquire-the-object-id"></a>Hämta objekt-ID
+## <a name="acquire-the-object-id"></a>Hämta objekt-ID:t
 
-Bestäm objekt-ID för det program, den grupp eller användare som du vill tilldela åtkomst principen till:
+Fastställ objekt-ID:t för programmet, gruppen eller användaren som du vill tilldela åtkomstprincipen till:
 
-- Program och andra tjänst huvud namn: Använd kommandot [AZ AD SP List](/cli/azure/ad/sp#az-ad-sp-list) för att hämta tjänstens huvud namn. Undersök kommandots utdata för att fastställa objekt-ID: t för det säkerhets objekt som du vill tilldela åtkomst principen till.
+- Program och andra tjänsthuvudnamn: Använd kommandot [az ad sp list](/cli/azure/ad/sp#az_ad_sp_list) för att hämta tjänstens huvudnamn. Granska kommandots utdata för att fastställa objekt-ID:t för det säkerhetsobjekt som du vill tilldela åtkomstprincipen till.
 
     ```azurecli-interactive
     az ad sp list --show-mine
     ```
 
-- Grupper: Använd kommandot [AZ AD Group List](/cli/azure/ad/group#az-ad-group-list) för att filtrera resultaten med `--display-name` parametern:
+- Grupper: Använd [kommandot az ad group list](/cli/azure/ad/group#az_ad_group_list) och filtrera resultatet med `--display-name` parametern :
 
      ```azurecli-interactive
     az ad group list --display-name <search-string>
     ```
 
-- Användare: Använd kommandot [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) för att skicka användarens e-postadress i `--id` parametern:
+- Användare: Använd [kommandot az ad user show](/cli/azure/ad/user#az_ad_user_show) och skicka användarens e-postadress i `--id` parametern :
 
     ```azurecli-interactive
     az ad user show --id <email-address-of-user>
     ```
 
-## <a name="assign-the-access-policy"></a>Tilldela åtkomst principen
+## <a name="assign-the-access-policy"></a>Tilldela åtkomstprincipen
     
-Använd kommandot [AZ-nyckel valv set-princip](/cli/azure/keyvault#az-keyvault-set-policy) för att tilldela önskade behörigheter:
+Använd kommandot [az keyvault set-policy](/cli/azure/keyvault#az_keyvault_set_policy) för att tilldela önskade behörigheter:
 
 ```azurecli-interactive
 az keyvault set-policy --name myKeyVault --object-id <object-id> --secret-permissions <secret-permissions> --key-permissions <key-permissions> --certificate-permissions <certificate-permissions>
 ```
 
-Ersätt `<object-id>` med objekt-ID: t för ditt säkerhets objekt.
+Ersätt `<object-id>` med objekt-ID:t för ditt säkerhetsobjekt.
 
-Du behöver bara inkludera `--secret-permissions` , `--key-permissions` och `--certificate-permissions` när du tilldelar behörigheter till dessa specifika typer. De tillåtna värdena för `<secret-permissions>` , `<key-permissions>` och `<certificate-permissions>` anges i dokumentationen för [AZ-nyckel valv uppsättnings principer](/cli/azure/keyvault#az-keyvault-set-policy) .
+Du behöver bara inkludera `--secret-permissions` , och när du `--key-permissions` `--certificate-permissions` tilldelar behörigheter till dessa specifika typer. Tillåtna värden för `<secret-permissions>` , och anges i dokumentationen az `<key-permissions>` `<certificate-permissions>` [keyvault set-policy.](/cli/azure/keyvault#az_keyvault_set_policy)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Azure Key Vault säkerhet: identitets-och åtkomst hantering](security-overview.md#identity-management)
-- [Skydda nyckel valvet](secure-your-key-vault.md).
-- [Guide för Azure Key Vault utvecklare](developers-guide.md)
+- [Azure Key Vault: Identitets- och åtkomsthantering](security-overview.md#identity-management)
+- [Skydda nyckelvalvet](security-overview.md).
+- [Azure Key Vault utvecklarguide](developers-guide.md)

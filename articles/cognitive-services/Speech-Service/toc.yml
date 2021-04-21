@@ -37,7 +37,7 @@
           href: batch-transcription.md
         - name: Migrera från v2.0 till v3.0
           href: migrate-v2-to-v3.md
-        - name: Utvärdera uttal
+        - name: Använda utvärdering av uttal
           href: how-to-pronunciation-assessment.md
         - name: Anpassning
           items:

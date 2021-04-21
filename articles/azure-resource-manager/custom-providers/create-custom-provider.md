@@ -1,25 +1,25 @@
 ---
-title: Skapa resurs leverantör
-description: Beskriver hur du skapar en resurs leverantör och distribuerar dess anpassade resurs typer.
+title: Skapa resursprovider
+description: Beskriver hur du skapar en resursprovider och distribuerar dess anpassade resurstyper.
 author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 23ae69f49d37a210dd9fa1bfeedeca6c1b461e20
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94888869"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779245"
 ---
-# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Snabb start: skapa en anpassad Provider och distribuera anpassade resurser
+# <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Snabbstart: Skapa en anpassad provider och distribuera anpassade resurser
 
-I den här snabb starten skapar du en egen resurs leverantör och distribuerar anpassade resurs typer för den resurs leverantören. Mer information om anpassade providers finns i [Översikt över Azure Custom providers Preview](overview.md).
+I den här snabbstarten skapar du en egen resursprovider och distribuerar anpassade resurstyper för den resursprovidern. Mer information om anpassade providers finns i [Översikt över förhandsversionen av Azure Custom Providers.](overview.md)
 
 ## <a name="prerequisites"></a>Krav
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- För att slutföra stegen i den här snabb starten måste du anropa `REST` åtgärder. Det finns [olika sätt att skicka rest-begäranden](/rest/api/azure/).
+- För att slutföra stegen i den här snabbstarten måste du anropa `REST` åtgärder. Det finns [olika sätt att skicka REST-begäranden.](/rest/api/azure/)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -27,32 +27,32 @@ Förbered din miljö för Azure CLI.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Azure CLI-exempel används `az rest` för `REST` förfrågningar. Mer information finns i [AZ rest](/cli/azure/reference-index#az-rest).
+Azure CLI-exempel använder `az rest` för `REST` begäranden. Mer information finns i [az rest](/cli/azure/reference-index#az_rest).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-- PowerShell-kommandona körs lokalt med PowerShell 7 eller senare och Azure PowerShell modulerna. Mer information finns i [installera Azure PowerShell](/powershell/azure/install-az-ps).
-- Om du inte redan har ett verktyg för `REST` åtgärder installerar du [ARMClient](https://github.com/projectkudu/ARMClient). Det är ett kommando rads verktyg med öppen källkod som gör det enklare att anropa Azure Resource Manager API.
-- När **ARMClient** har installerats kan du Visa användnings information från en PowerShell-kommandotolk genom att skriva: `armclient.exe` . Eller så går du till [ARMClient-wikin](https://github.com/projectkudu/ARMClient/wiki).
+- PowerShell-kommandona körs lokalt med PowerShell 7 eller senare och de Azure PowerShell modulerna. Mer information finns i [Installera Azure PowerShell](/powershell/azure/install-az-ps).
+- Om du inte redan har ett verktyg för `REST` åtgärder installerar du [ARMClient](https://github.com/projectkudu/ARMClient). Det är ett kommandoradsverktyg med öppen källkod som gör det enklare att anropa Azure Resource Manager API.
+- När **ARMClient har installerats** kan du visa användningsinformation från en PowerShell-kommandotolk genom att skriva: `armclient.exe` . Eller gå till [ARMClient wiki.](https://github.com/projectkudu/ARMClient/wiki)
 
 ---
 
-## <a name="deploy-custom-provider"></a>Distribuera anpassad Provider
+## <a name="deploy-custom-provider"></a>Distribuera anpassad provider
 
-Om du vill konfigurera den anpassade providern distribuerar du en [exempel mall](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) till din Azure-prenumeration.
+Om du vill konfigurera den anpassade providern distribuerar du en [exempelmall](https://github.com/Azure/azure-docs-json-samples/blob/master/custom-providers/customprovider.json) till din Azure-prenumeration.
 
 När du har distribuerat mallen har prenumerationen följande resurser:
 
-- Funktionsapp med åtgärder för resurserna och åtgärderna.
-- Lagrings konto för att lagra användare som skapats via den anpassade providern.
-- Anpassad provider som definierar anpassade resurs typer och åtgärder. Den använder Function-programmets slut punkt för att skicka begär Anden.
+- Funktionsapp med åtgärder för resurser och åtgärder.
+- Lagringskonto för lagring av användare som skapas via den anpassade providern.
+- Anpassad provider som definierar anpassade resurstyper och åtgärder. Den använder funktionsappens slutpunkt för att skicka begäranden.
 - Anpassad resurs från den anpassade providern.
 
 Om du vill distribuera den anpassade providern använder du Azure CLI, PowerShell eller Azure Portal:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-I det här exemplet blir du ombedd att ange en resurs grupp, plats och leverantörs funktions program namn. Namnen lagras i variabler som används i andra kommandon. [AZ-gruppen Skapa](/cli/azure/group#az-group-create) och [AZ distributions grupp skapa](/cli/azure/deployment/group#az-deployment-group-create) -kommandon distribuerar resurserna.
+I det här exemplet uppmanas du att ange en resursgrupp, plats och providerns funktionsappnamn. Namnen lagras i variabler som används i andra kommandon. Kommandona [az group create](/cli/azure/group#az_group_create) och az deployment group [create](/cli/azure/deployment/group#az_deployment_group_create) distribuerar resurserna.
 
 ```azurecli-interactive
 read -p "Enter a resource group name:" rgName &&
@@ -67,7 +67,7 @@ read
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-I det här exemplet blir du ombedd att ange en resurs grupp, plats och leverantörs funktions program namn. Namnen lagras i variabler som används i andra kommandon. Kommandona [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) och [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) distribuerar resurserna.
+I det här exemplet uppmanas du att ange en resursgrupp, plats och providerns funktionsappnamn. Namnen lagras i variabler som används i andra kommandon. Kommandona [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) [och New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) distribuerar resurserna.
 
 ```powershell
 $rgName = Read-Host -Prompt "Enter a resource group name"
@@ -81,17 +81,17 @@ Read-Host -Prompt "Press [ENTER] to continue ..."
 
 ---
 
-Du kan också distribuera lösningen från Azure Portal. Klicka på knappen **distribuera till Azure** för att öppna mallen i Azure Portal.
+Du kan också distribuera lösningen från Azure Portal. Välj knappen **Distribuera till Azure** för att öppna mallen i Azure Portal.
 
 [![Distribuera till Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-docs-json-samples%2Fmaster%2Fcustom-providers%2Fcustomprovider.json)
 
-## <a name="view-custom-provider-and-resource"></a>Visa anpassad Provider och resurs
+## <a name="view-custom-provider-and-resource"></a>Visa anpassad provider och resurs
 
-Den anpassade providern är en dold resurs typ i portalen. För att bekräfta att resurs leverantören har distribuerats navigerar du till resurs gruppen. Välj alternativet för att **Visa dolda typer**.
+I portalen är den anpassade providern en dold resurstyp. Bekräfta att resursprovidern har distribuerats genom att gå till resursgruppen. Välj alternativet visa **dolda typer.**
 
-![Visa dolda resurs typer](./media/create-custom-provider/show-hidden.png)
+![Visa dolda resurstyper](./media/create-custom-provider/show-hidden.png)
 
-Om du vill se den anpassade resurs typ som du har distribuerat använder du `GET` åtgärden på resurs typen.
+Om du vill se den anpassade resurstyp som du har distribuerat använder `GET` du åtgärden på din resurstyp.
 
 ```http
 GET https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users?api-version=2018-09-01-preview
@@ -155,11 +155,11 @@ Du får svaret:
 
 ---
 
-## <a name="call-action"></a>Anrops åtgärd
+## <a name="call-action"></a>Anropa åtgärd
 
-Den anpassade providern har också en åtgärd med namnet `ping` . Den kod som bearbetar begäran implementeras i Function-appen. `ping`Åtgärden svarar med en hälsning.
+Din anpassade provider har också en åtgärd som heter `ping` . Koden som bearbetar begäran implementeras i funktionsappen. Åtgärden `ping` svarar med en hälsning.
 
-Om du vill skicka en `ping` begäran använder du `POST` åtgärden på den anpassade providern.
+Om du vill `ping` skicka en begäran använder du åtgärden på din anpassade `POST` provider.
 
 ```http
 POST https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/ping?api-version=2018-09-01-preview
@@ -204,9 +204,9 @@ Du får svaret:
 
 ---
 
-## <a name="create-a-resource-type"></a>Skapa en resurs typ
+## <a name="create-a-resource-type"></a>Skapa en resurstyp
 
-Om du vill skapa en anpassad resurs typ kan du distribuera resursen i en mall. Den här metoden visas i mallen som du distribuerade i den här snabb starten. Du kan också skicka en `PUT` begäran om resurs typen.
+Om du vill skapa den anpassade resurstypen kan du distribuera resursen i en mall. Den här metoden visas i mallen som du distribuerade i den här snabbstarten. Du kan också skicka en `PUT` begäran om resurstypen.
 
 ```http
 PUT https://management.azure.com/subscriptions/<sub-id>/resourceGroups/<rg-name>/providers/Microsoft.CustomProviders/resourceProviders/<provider-name>/users/<resource-name>?api-version=2018-09-01-preview
@@ -263,13 +263,13 @@ Du får svaret:
 
 ---
 
-## <a name="custom-resource-provider-commands"></a>Anpassade Resource Provider-kommandon
+## <a name="custom-resource-provider-commands"></a>Anpassade resursproviderkommandon
 
-Använd de [anpassade providers-](/cli/azure/ext/custom-providers/custom-providers/resource-provider) kommandona för att arbeta med din anpassade resurs leverantör.
+Använd kommandon [för anpassade providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) för att arbeta med din anpassade resursprovider.
 
-### <a name="list-custom-resource-providers"></a>Lista med anpassade resurs leverantörer
+### <a name="list-custom-resource-providers"></a>Lista anpassade resursproviders
 
-Använd `list` kommandot för att visa alla anpassade resurs leverantörer i en prenumeration. Standardvärdet visar den aktuella prenumerationens anpassade resurs leverantörer, eller så kan du ange `--subscription` parametern. Om du vill visa en resurs grupp använder du `--resource-group` parametern.
+Använd kommandot `list` för att visa alla anpassade resursproviders i en prenumeration. Standardvärdet visar den aktuella prenumerationens anpassade resursproviders, eller så kan du ange `--subscription` parametern . Om du vill visa en lista över en resursgrupp använder du `--resource-group` parametern .
 
 ```azurecli-interactive
 az custom-providers resource-provider list --subscription $subID
@@ -306,7 +306,7 @@ az custom-providers resource-provider list --subscription $subID
 
 ### <a name="show-the-properties"></a>Visa egenskaperna
 
-Använd `show` kommandot för att visa egenskaperna för den anpassade resurs leverantören. Utdataformatet liknar `list` utdata.
+Använd kommandot `show` för att visa egenskaperna för den anpassade resursprovidern. Utdataformatet liknar `list` utdata.
 
 ```azurecli-interactive
 az custom-providers resource-provider show --resource-group $rgName --name $funcName
@@ -314,7 +314,7 @@ az custom-providers resource-provider show --resource-group $rgName --name $func
 
 ### <a name="create-a-new-resource"></a>Skapa en ny resurs
 
-Använd `create` kommandot för att skapa eller uppdatera en anpassad resurs leverantör. I det här exemplet uppdateras `actions` och `resourceTypes` .
+Använd kommandot `create` för att skapa eller uppdatera en anpassad resursprovider. I det här exemplet uppdateras `actions` och `resourceTypes` .
 
 ```azurecli-interactive
 az custom-providers resource-provider create --resource-group $rgName --name $funcName \
@@ -340,9 +340,9 @@ az custom-providers resource-provider create --resource-group $rgName --name $fu
 ],
 ```
 
-### <a name="update-the-providers-tags"></a>Uppdatera providerns Taggar
+### <a name="update-the-providers-tags"></a>Uppdatera providerns taggar
 
-`update`Kommandot uppdaterar endast taggar för en anpassad resurs leverantör. I Azure Portal visar den anpassade resurs leverantörens App Service taggen.
+Kommandot `update` uppdaterar endast taggar för en anpassad resursprovider. I Azure Portal visar den anpassade resursproviderns apptjänst taggen .
 
 ```azurecli-interactive
 az custom-providers resource-provider update --resource-group $rgName --name $funcName --tags new=tag
@@ -354,9 +354,9 @@ az custom-providers resource-provider update --resource-group $rgName --name $fu
 },
 ```
 
-### <a name="delete-a-custom-resource-provider"></a>Ta bort en anpassad resurs leverantör
+### <a name="delete-a-custom-resource-provider"></a>Ta bort en anpassad resursprovider
 
-`delete`Kommandot efterfrågar och tar bara bort den anpassade resurs leverantören. Lagrings kontot, app service och App Service-planen tas inte bort. När providern har tagits bort returneras en kommando tolk.
+Kommandot `delete` frågar dig och tar bara bort den anpassade resursprovidern. Lagringskontot, App Service och App Service-planen tas inte bort. När providern har tagits bort returneras du till en kommandotolk.
 
 ```azurecli-interactive
 az custom-providers resource-provider delete --resource-group $rgName --name $funcName
@@ -364,7 +364,7 @@ az custom-providers resource-provider delete --resource-group $rgName --name $fu
 
 ## <a name="next-steps"></a>Nästa steg
 
-En introduktion till anpassade leverantörer finns i följande artikel:
+En introduktion till anpassade providers finns i följande artikel:
 
 > [!div class="nextstepaction"]
-> [Översikt över Azure Custom providers Preview](overview.md)
+> [Översikt över förhandsversionen av anpassade Azure-providers](overview.md)

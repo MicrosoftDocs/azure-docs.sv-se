@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/16/2021
-ms.openlocfilehash: 9887350842749809dd4c3708acc71a08f416e54f
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 286da1412e8a74ffbf34e4abb493241914d4f925
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565890"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764881"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Information om begränsningar och konfiguration för Azure Logic Apps
 
@@ -126,7 +126,7 @@ Här är gränserna för en enskild logikappkörning:
 
 | Name | Gräns | Kommentarer |
 | ---- | ----- | ----- |
-| Utlösar samtidighet | Med samtidighet av: Obegränsat <p><p>Med samtidighet på, som du inte kan ångra när du har aktivera: <p><p>– Standard: 25 <br>- Min: 1 <br>– Max: 100 | Den här gränsen är det maximala antalet logikappinstanser som kan köras samtidigt eller parallellt. <p><p>**Obs!** När samtidighet är aktiverat minskas SplitOn-gränsen till 100 objekt för [debatching-matriser](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch). <p><p>Information om hur du ändrar den här gränsen [finns i Ändra samtidighetsgräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) för utlösare eller Utlösa instanser [sekventiellt](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Utlösar samtidighet | Med samtidighet av: Obegränsat <p><p>Med samtidighet på, vilket du inte kan ångra när du har gjort det: <p><p>– Standard: 25 <br>- Min: 1 <br>– Max: 100 | Den här gränsen är det maximala antalet logikappinstanser som kan köras samtidigt eller parallellt. <p><p>**Obs!** När samtidighet är aktiverat minskas SplitOn-gränsen till 100 objekt för [debatching-matriser.](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) <p><p>Information om hur du ändrar den här gränsen finns [i Ändra samtidighetsgräns](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) för utlösare [eller Utlösa instanser sekventiellt](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
 | Maximalt antal väntande körningar | Med samtidighet av: <p><p>- Min: 1 <br>– Max: 50 <p><p>Med samtidighet på: <p><p>– Min: 10 plus antalet samtidiga körningar (utlösar samtidighet) <br>– Max: 100 | Den här gränsen är det maximala antalet logikappinstanser som kan vänta på att köras när logikappen redan kör det maximala antalet samtidiga instanser. <p><p>Information om hur du ändrar den här gränsen finns [i Ändra gränsen för väntande körningar.](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs) |
 | SplitOn-objekt | Med samtidighet av: 100 000 <p><p>Med samtidighet på: 100 | För utlösare som returnerar en matris kan du ange ett uttryck som använder en SplitOn-egenskap som delar upp eller [debatchar](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) matrisobjekt i flera arbetsflödesinstanser för bearbetning, i stället för att använda en Foreach-loop. Det här uttrycket refererar till matrisen som ska användas för att skapa och köra en arbetsflödesinstans för varje matrisobjekt. <p><p>**Obs!** När samtidighet är aktiverat minskas SplitOn-gränsen till 100 objekt. |
 ||||
@@ -144,7 +144,7 @@ Här är gränserna för en enskild logikappsdefinition:
 | Åtgärd: Körningar per rullande intervall på 5 minuter | – 100 000 körningar (standard) <p><p>– 300 000 körningar (max i läget för högt dataflöde)  | Information om hur du höjer standardgränsen till maxgränsen för logikappen finns i [Kör i läget för högt dataflöde](#run-high-throughput-mode), som är i förhandsversion. Eller så kan du [distribuera arbetsbelastningen över mer än en logikapp](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) efter behov. |
 | Åtgärd: Samtidiga utgående anrop | ~ 2 500 | Du kan minska antalet samtidiga begäranden eller minska varaktigheten efter behov. |
 | Körningsslutpunkt: Samtidiga inkommande anrop | ~1 000 | Du kan minska antalet samtidiga begäranden eller minska varaktigheten efter behov. |
-| Körningsslutpunkt: Läsa anrop per 5 minuter  | 60 000 | Den här gränsen gäller för anrop som hämtar råa indata och utdata från en logikapps körningshistorik. Du kan distribuera arbetsbelastningen över mer än en app efter behov. |
+| Körningsslutpunkt: Läsa anrop per 5 minuter  | 60 000 | Den här gränsen gäller för anrop som hämtar råa indata och utdata från en logikapps körningshistorik. Du kan distribuera arbetsbelastningen över fler än en app efter behov. |
 | Körningsslutpunkt: Anropa anrop per 5 minuter | 45 000 | Du kan distribuera arbetsbelastningen över fler än en app efter behov. |
 | Innehållsgenomflöde per 5 minuter | 600 MB | Du kan distribuera arbetsbelastningen över fler än en app efter behov. |
 ||||
@@ -153,7 +153,7 @@ Här är gränserna för en enskild logikappsdefinition:
 
 #### <a name="run-in-high-throughput-mode"></a>Kör i läget för högt dataflöde
 
-För en enda logikappdefinition har antalet åtgärder som körs var femte minut en [standardgräns.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Om du vill höja [](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) standardgränsen till maxgränsen för logikappen, som är tre gånger standardgränsen, kan du aktivera läget för högt dataflöde, som är i förhandsversion. Eller så kan du [distribuera arbetsbelastningen över mer än en logikapp](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) efter behov.
+För en enskild logikappdefinition har antalet åtgärder som körs var femte minut en [standardgräns.](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) Om du vill höja [](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) standardgränsen till maxgränsen för logikappen, som är tre gånger standardgränsen, kan du aktivera läget för högt dataflöde, som är i förhandsversion. Eller så kan du [distribuera arbetsbelastningen över mer än en logikapp](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling) efter behov.
 
 1. I Azure Portal väljer du Arbetsflödesinställningar under **Inställningar** på **logikappmenyn.**
 
@@ -161,7 +161,7 @@ För en enda logikappdefinition har antalet åtgärder som körs var femte minut
 
    ![Skärmbild som visar logikappmenyn i Azure Portal med "Arbetsflödesinställningar" och "Högt dataflöde" inställt på "På".](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
 
-Om du vill aktivera den här inställningen i en ARM-mall för att distribuera logikappen lägger du till objektet i objektet för logikappens resursdefinition med egenskapen `properties` `runtimeConfiguration` inställd på `operationOptions` `OptimizedForHighThroughput` :
+Om du vill aktivera den här inställningen i en ARM-mall för att distribuera logikappen går du till objektet för logikappens resursdefinition och lägger till objektet med egenskapen `properties` `runtimeConfiguration` inställd på `operationOptions` `OptimizedForHighThroughput` :
 
 ```json
 {
@@ -191,17 +191,17 @@ Om du vill aktivera den här inställningen i en ARM-mall för att distribuera l
 }
 ```
 
-Mer information om resursdefinitionen för logikappen finns i [Översikt: Automatisera](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition)distribution för Azure Logic Apps med hjälp av Azure Resource Manager mallar .
+Mer information om resursdefinitionen för logikappen finns i Översikt: Automatisera distribution [för Azure Logic Apps med hjälp av Azure Resource Manager mallar](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition).
 
 ### <a name="integration-service-environment-ise"></a>Integration Service Environment (ISE)
 
 * [Ise-SKU för](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)utvecklare: Ger upp till 500 körningar per minut, men tänk på följande:
 
-  * Se till att du endast använder denna SKU för utforskning, experiment, utveckling eller testning – inte för produktions- eller prestandatestning. Denna SKU har inget serviceavtal (SLA), uppskalningskapacitet eller redundans under återanvändning, vilket innebär att du kan uppleva fördröjningar eller driftstopp.
+  * Se till att du endast använder den här SKU:n för utforskning, experiment, utveckling eller testning – inte för produktions- eller prestandatestning. Denna SKU har inget serviceavtal (SLA), uppskalningskapacitet eller redundans under återanvändning, vilket innebär att du kan uppleva fördröjningar eller driftstopp.
 
   * Uppdateringar av backend kan tillfälligt avbryta tjänsten.
 
-* [Premium ISE SKU:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)I följande tabell beskrivs den här SKU:ns dataflödesgränser, men om du vill överskrida dessa gränser vid normal bearbetning eller köra belastningstestning som kan överskrida dessa gränser kontaktar du [Logic Apps-teamet](mailto://logicappsemail@microsoft.com) för att få hjälp med dina krav.
+* [Premium ISE SKU:](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level)I följande tabell beskrivs den här SKU:ns dataflödesgränser, men om du vill överskrida dessa gränser vid normal bearbetning eller köra belastningstestning som kan överskrida dessa gränser kontaktar [du Logic Apps-teamet](mailto://logicappsemail@microsoft.com) för att få hjälp med dina krav.
 
   | Name | Gräns | Kommentarer |
   |------|-------|-------|
@@ -226,12 +226,12 @@ Här är gränserna för ett enskilt inkommande eller utgående anrop:
 
 #### <a name="timeout-duration"></a>Timeout-varaktighet
 
-Vissa anslutningsåtgärder gör asynkrona anrop eller lyssnar efter webhook-begäranden, så tidsgränsen för dessa åtgärder kan vara längre än dessa gränser. Mer information finns i teknisk information för den specifika anslutningsappen och [arbetsflödesutlösare och åtgärder.](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
+Vissa anslutningsåtgärder gör asynkrona anrop eller lyssnar efter webhook-begäranden, så tidsgränsen för dessa åtgärder kan vara längre än dessa gränser. Mer information finns i den tekniska informationen för den specifika anslutningsappen och även [Arbetsflödesutlösare och åtgärder.](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 | Name | Logic Apps (flera klient) | Logic Apps (förhandsversion) | Integreringstjänstmiljö | Kommentarer |
 |------|---------------------------|----------------------|---------------------------------|-------|
 | Utgående begäran | 120 sekunder <br>(2 minuter) | 230 sekunder <br>(3,9 minuter) | 240 sekunder <br>(4 minuter) | Exempel på utgående begäranden är anrop som görs av HTTP-utlösaren eller åtgärden. Mer information om förhandsversionen finns i [Azure Logic Apps Preview](logic-apps-overview-preview.md). <p><p>**Tips:** Använd ett asynkront avsökningsmönster [eller en](../logic-apps/logic-apps-create-api-app.md#async-pattern) [until-loop](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)för åtgärder som körs längre. Om du vill komma runt tidsgränsgränser när [](logic-apps-http-endpoint.md)du anropar en annan logikapp som har en anropsbar slutpunkt kan du använda den inbyggda **Azure Logic Apps-åtgärden** i stället, som du hittar i anslutningsväljaren under Inbyggd . |
-| Inkommande begäran | 120 sekunder <br>(2 minuter) | 230 sekunder <br>(3,9 minuter) | 240 sekunder <br>(4 minuter) | Exempel på inkommande begäranden är anrop som tas emot av begärandeutlösaren, HTTP Webhook-utlösaren och HTTP Webhook-åtgärden. Mer information om förhandsversionen finns i [Azure Logic Apps Preview](logic-apps-overview-preview.md). <p><p>**Obs!** För att den ursprungliga anroparen ska få svaret måste alla steg i svaret slutföras inom gränsen om du inte anropar en annan logikapp som ett kapslat arbetsflöde. Mer information finns i [Anropa, utlösa eller kapsla logikappar.](../logic-apps/logic-apps-http-endpoint.md) |
+| Inkommande begäran | 120 sekunder <br>(2 minuter) | 230 sekunder <br>(3,9 minuter) | 240 sekunder <br>(4 minuter) | Exempel på inkommande begäranden är anrop som tas emot av begärandeutlösaren, HTTP Webhook-utlösaren och HTTP Webhook-åtgärden. Mer information om förhandsversionen finns i [Azure Logic Apps Preview](logic-apps-overview-preview.md). <p><p>**Obs!** För att den ursprungliga anroparen ska få svaret måste alla steg i svaret slutföras inom gränsen, såvida du inte anropar en annan logikapp som ett kapslat arbetsflöde. Mer information finns i [Anropa, utlösa eller kapsla logikappar.](../logic-apps/logic-apps-http-endpoint.md) |
 ||||||
 
 <a name="message-size-limits"></a>
@@ -240,7 +240,7 @@ Vissa anslutningsåtgärder gör asynkrona anrop eller lyssnar efter webhook-beg
 
 | Name | Gräns för flera innehavare | Gräns för integreringstjänstmiljö | Kommentarer |
 |------|--------------------|---------------------------------------|-------|
-| Meddelandestorlek | 100 MB | 200 MB | Information om hur du kan komma runt den här gränsen [finns i Hantera stora meddelanden med segmentering.](../logic-apps/logic-apps-handle-large-messages.md) Vissa anslutningsappar och API:er kanske inte stöder segmentering eller ens standardgränsen. <p><p>– Anslutningsappar som AS2, X12 och EDIFACT har sina egna [B2B-meddelandegränser.](#b2b-protocol-limits) <br>– ISE-anslutningsappar använder ISE-gränsen, inte gränserna för icke-ISE-anslutning. |
+| Meddelandestorlek | 100 MB | 200 MB | Information om hur du kan komma runt den här gränsen [finns i Hantera stora meddelanden med segmentering.](../logic-apps/logic-apps-handle-large-messages.md) Vissa anslutningsappar och API:er kanske inte stöder segmentering eller ens standardgränsen. <p><p>– Anslutningsappar som AS2, X12 och EDIFACT har sina egna [B2B-meddelandegränser.](#b2b-protocol-limits) <br>– ISE-anslutningsappar använder ISE-gränsen, inte deras gränser för icke-ISE-anslutning. |
 | Meddelandestorlek med segmentering | 1 GB | 5 GB | Den här gränsen gäller för åtgärder som antingen har inbyggt stöd för segmentering eller låter dig aktivera segmentering i deras körningskonfiguration. <p><p>Om du använder en ISE stöder Logic Apps-motorn den här gränsen, men anslutningsappar har egna segmentgränser upp till motorgränsen. Se till exempel [API-referensen för Azure Blob Storage-anslutningsappen.](/connectors/azureblob/) Mer information om segmentering finns i [Hantera stora meddelanden med segmentering.](../logic-apps/logic-apps-handle-large-messages.md) |
 |||||
 
@@ -313,7 +313,7 @@ Varje Azure-prenumeration har följande begränsningar för integrationskontot:
   | ISE SKU | Gränser för integrationskonto |
   |---------|----------------------------|
   | **Premium** | 20 konton totalt, inklusive ett Standard-konto utan extra kostnad. Med den här SKU:n kan du bara ha [standardkonton.](../logic-apps/logic-apps-pricing.md#integration-accounts) Inga kostnadsfria eller grundläggande konton tillåts. |
-  | **Utvecklare** | 20 totalt antal konton, inklusive ett [kostnadsfritt](../logic-apps/logic-apps-pricing.md#integration-accounts) konto (begränsat till 1). Med den här SKU:n kan du ha en kombination av: <p>– Ett kostnadsfritt konto och upp till 19 [standardkonton.](../logic-apps/logic-apps-pricing.md#integration-accounts) <br>– Inget kostnadsfritt konto och upp till 20 Standard-konton. <p>Inga grundläggande eller ytterligare kostnadsfria konton tillåts. <p><p>**Viktigt!** Använd [Developer SKU för](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) att experimentera, utveckla och testa, men inte för produktions- eller prestandatestning. |
+  | **Utvecklare** | 20 totalt antal konton, inklusive ett [kostnadsfritt](../logic-apps/logic-apps-pricing.md#integration-accounts) konto (begränsat till 1). Med den här SKU:n kan du ha endera kombination: <p>– Ett kostnadsfritt konto och upp till 19 [standardkonton.](../logic-apps/logic-apps-pricing.md#integration-accounts) <br>– Inget kostnadsfritt konto och upp till 20 Standard-konton. <p>Inga grundläggande eller ytterligare kostnadsfria konton tillåts. <p><p>**Viktigt!** Använd [Developer SKU för](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) att experimentera, utveckla och testa, men inte för produktions- eller prestandatestning. |
   |||
 
 Information om hur priser och fakturering fungerar för ISE:er finns Logic Apps [prismodellen](../logic-apps/logic-apps-pricing.md#fixed-pricing). Prisinformation finns i [Logic Apps priser.](https://azure.microsoft.com/pricing/details/logic-apps/)
@@ -387,11 +387,11 @@ När du tar bort en logikapp instantieras inga nya körningar. Alla pågående o
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Brandväggskonfiguration: IP-adresser och tjänsttaggar
 
-När logikappen behöver kommunicera via en brandvägg som begränsar trafiken till specifika  IP-adresser måste brandväggen tillåta åtkomst för både [de inkommande](#inbound) och utgående IP-adresserna som används av Logic Apps-tjänsten eller körningen i Azure-regionen där logikappen finns. [](#outbound) *Alla* logikappar i samma region använder samma IP-adressintervall.
+När logikappen behöver kommunicera via en brandvägg som begränsar trafiken till specifika  IP-adresser måste brandväggen tillåta åtkomst för både [inkommande](#inbound) och utgående [IP-adresser](#outbound) som används av Logic Apps-tjänsten eller körningen i Azure-regionen där logikappen finns. *Alla* logikappar i samma region använder samma IP-adressintervall.
 
 För att till exempel stödja anrop som logikappar i regionen USA, västra skickar eller tar emot via inbyggda utlösare och åtgärder, till exempel  [HTTP-utlösaren](../connectors/connectors-native-http.md)eller åtgärden , måste brandväggen tillåta åtkomst för alla inkommande IP-adresser och utgående IP-adresser för Logic Apps-tjänsten som finns i regionen USA, västra. 
 
-Om logikappen även använder hanterade anslutningsappar, till exempel Office 365 Outlook-anslutningsappen eller SQL-anslutningsappen, eller använder anpassade anslutningsappar, måste brandväggen även tillåta åtkomst för alla utgående [IP-adresser](#outbound) för hanterade anslutningsappar i logikappens Azure-region. [](../connectors/apis-list.md#managed-api-connectors) [](/connectors/custom-connectors/)  Om du använder anpassade anslutningsappar som har åtkomst till lokala resurser via den lokala [datagatewayresursen](logic-apps-gateway-connection.md)i Azure måste du dessutom konfigurera gatewayinstallationen så att den tillåter åtkomst för motsvarande utgående *[IP-adresser](#outbound)* för hanterade anslutningar.
+Om logikappen även använder hanterade anslutningsappar, till exempel Office 365 Outlook-anslutningsappen eller SQL-anslutningsappen, eller använder anpassade [anslutningsappar](/connectors/custom-connectors/)måste brandväggen även tillåta åtkomst för alla utgående [IP-adresser](#outbound) för hanterade anslutningsappar i logikappens Azure-region. [](../connectors/managed.md)  Om du använder anpassade anslutningsappar som har åtkomst till lokala resurser via den lokala [datagatewayresursen](logic-apps-gateway-connection.md)i Azure måste du dessutom konfigurera gatewayinstallationen så att den tillåter åtkomst för motsvarande utgående *[IP-adresser](#outbound)* för hanterade anslutningar.
 
 Mer information om hur du ställer in kommunikationsinställningar på gatewayen finns i följande avsnitt:
 
@@ -406,7 +406,7 @@ Innan du ställer in brandväggen med IP-adresser bör du läsa dessa överväga
 
 * Om du använder [Power Automate](/power-automate/getting-started)går vissa åtgärder, till exempel **HTTP** och **HTTP + OpenAPI,** direkt via Azure Logic Apps-tjänsten och kommer från DE IP-adresser som anges här. Mer information om IP-adresser som används av Power Automate finns [i Gränser och konfiguration för Power Automate](/flow/limits-and-config#ip-address-configuration).
 
-* För [Azure China 21Vianet](/azure/china/)är fasta eller reserverade IP-adresser inte tillgängliga för anpassade anslutningsappar och för hanterade anslutningsappar, till exempel Azure Storage, SQL Server, Office 365 Outlook och så vidare. [](../logic-apps/custom-connector-overview.md) [](../connectors/apis-list.md#managed-api-connectors)
+* För [Azure China 21Vianet](/azure/china/)är fasta eller reserverade IP-adresser inte tillgängliga för anpassade anslutningsappar och för hanterade anslutningsappar, till exempel Azure Storage, SQL Server, Office 365 Outlook och så vidare. [](../logic-apps/custom-connector-overview.md) [](../connectors/managed.md)
 
 * Om dina logikappar körs i en [integrationstjänstmiljö (ISE)](connect-virtual-network-vnet-isolated-environment-overview.md)kontrollerar du att du [även öppnar dessa portar.](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#network-ports-for-ise)
 
@@ -414,7 +414,7 @@ Innan du ställer in brandväggen med IP-adresser bör du läsa dessa överväga
 
   * **LogicAppsManagement:** Representerar de inkommande IP-adressprefixen för Logic Apps tjänsten.
 
-  * **LogicApps:** Representerar de utgående IP-adressprefixen för Logic Apps tjänsten.
+  * **LogicApps:** Representerar de utgående IP-adressprefixen för den Logic Apps tjänsten.
 
   * **AzureConnectors:** Representerar IP-adressprefix för hanterade anslutningsappar som gör inkommande webhook-återanrop till Logic Apps-tjänsten och utgående anrop till sina respektive tjänster, till exempel Azure Storage eller Azure Event Hubs.
 
@@ -429,7 +429,7 @@ Innan du ställer in brandväggen med IP-adresser bör du läsa dessa överväga
 I det här avsnittet visas de inkommande IP-adresserna Azure Logic Apps tjänsten. Om du har Azure Government kan du [Azure Government - Inkommande IP-adresser.](#azure-government-inbound)
 
 > [!TIP]
-> För att minska komplexiteten när du skapar säkerhetsregler [](../virtual-network/service-tags-overview.md)kan du välja att använda tjänsttaggen **LogicAppsManagement** i stället för att ange inkommande IP-Logic Apps-adressprefix för varje region. Du kan också använda **tjänsttaggen AzureConnectors** för hanterade anslutningsappar som gör inkommande webhook-återanrop till Logic Apps-tjänsten i stället för att ange IP-adressprefix för inkommande hanterade anslutningar för varje region. De här taggarna fungerar i de regioner Logic Apps tjänsten är tillgänglig.
+> För att minska komplexiteten när du skapar säkerhetsregler [](../virtual-network/service-tags-overview.md)kan du välja att använda tjänsttaggen **LogicAppsManagement** i stället för att ange inkommande IP-Logic Apps-adressprefix för varje region. Du kan också använda **tjänsttaggen AzureConnectors** för hanterade anslutningsappar som gör inkommande webhook-återanrop till Logic Apps-tjänsten i stället för att ange IP-adressprefix för inkommande hanterade anslutningsappar för varje region. De här taggarna fungerar i de regioner Logic Apps tjänsten är tillgänglig.
 >
 > Följande anslutningsappar gör inkommande webhook-återanrop till Logic Apps tjänsten:
 >

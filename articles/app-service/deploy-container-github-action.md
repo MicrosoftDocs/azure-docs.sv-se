@@ -1,62 +1,62 @@
 ---
-title: Anpassad CI/CD för behållare från GitHub-åtgärder
-description: Lär dig hur du använder GitHub-åtgärder för att distribuera en anpassad Linux-behållare till App Service från en CI/CD-pipeline.
+title: Anpassad container CI/CD från GitHub Actions
+description: Lär dig hur du använder GitHub Actions för att distribuera din anpassade Linux-container till App Service från en CI/CD-pipeline.
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: 1fe09970bcb9b9432b9b6f22de04bb24f1e84fa8
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: bf9fba9142de82c6e8518198d54b5e74f1807838
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106582307"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789437"
 ---
-# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Distribuera en anpassad behållare för att App Service med GitHub-åtgärder
+# <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Distribuera en anpassad container till App Service med GitHub Actions
 
-[GitHub-åtgärder](https://docs.github.com/en/actions) ger dig flexibiliteten att bygga ett automatiserat arbets flöde för program utveckling. Med [åtgärden Azure Web Deploy](https://github.com/Azure/webapps-deploy)kan du automatisera arbets flödet för att distribuera anpassade behållare till [App Service](overview.md) med GitHub-åtgärder.
+[GitHub Actions](https://docs.github.com/en/actions) ger dig flexibiliteten att skapa ett automatiserat arbetsflöde för programutveckling. Med [åtgärden Azure Web Deploy](https://github.com/Azure/webapps-deploy)kan du automatisera arbetsflödet för att distribuera anpassade containrar till App Service [med](overview.md) GitHub Actions.
 
-Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna i arbets flödet.
+Ett arbetsflöde definieras av en YAML-fil (.yml) i `/.github/workflows/` sökvägen på lagringsplatsen. Den här definitionen innehåller de olika stegen och parametrarna som finns i arbetsflödet.
 
-För ett arbets flöde för Azure App Service container har filen tre delar:
+För ett Azure App Service containerarbetsflöde har filen tre avsnitt:
 
 |Avsnitt  |Uppgifter  |
 |---------|---------|
-|**Autentisering** | 1. Hämta ett huvud namn för tjänsten eller en publicerings profil. <br /> 2. skapa en GitHub-hemlighet. |
-|**Skapa** | 1. skapa miljön. <br /> 2. Bygg behållar avbildningen. |
-|**Distribuera** | 1. distribuera behållar avbildningen. |
+|**Autentisering** | 1. Hämta ett huvudnamn för tjänsten eller publicera profil. <br /> 2. Skapa en GitHub-hemlighet. |
+|**Skapa** | 1. Skapa miljön. <br /> 2. Skapa containeravbildningen. |
+|**Distribuera** | 1. Distribuera containeravbildningen. |
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join). Du måste ha kod i en GitHub-lagringsplats för att distribuera till Azure App Service. 
-- Ett arbets behållar register och en Azure App Service app för behållare. I det här exemplet används Azure Container Registry. Se till att slutföra den fullständiga distributionen till Azure App Service för behållare. Till skillnad från vanliga webbappar har webbappar för behållare inte en standard-landnings sida. Publicera behållaren så att den har ett arbets exempel.
-    - [Lär dig hur du skapar ett behållar Node.js program med hjälp av Docker, push-överför behållar avbildningen till ett register och distribuera avbildningen till Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnadsfritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnadsfritt.](https://github.com/join) Du måste ha kod på en GitHub-lagringsplats för att kunna distribuera till Azure App Service. 
+- Ett fungerande containerregister och en Azure App Service för containrar. I det här exemplet används Azure Container Registry. Se till att slutföra den fullständiga distributionen för Azure App Service för containrar. Till skillnad från vanliga webbappar har webbappar för containrar inte någon standardlandningssida. Publicera containern för att få ett fungerande exempel.
+    - [Lär dig hur du skapar ett Node.js-program med Docker, push-distribuerar containeravbildningen till ett register och sedan distribuerar avbildningen till Azure App Service](/azure/developer/javascript/tutorial-vscode-docker-node-01)
         
 ## <a name="generate-deployment-credentials"></a>Generera autentiseringsuppgifter för distribution
 
-Det rekommenderade sättet att autentisera med Azure App tjänster för GitHub-åtgärder är med en publicerings profil. Du kan också autentisera med ett huvud namn för tjänsten, men processen kräver fler steg. 
+Det rekommenderade sättet att autentisera med Azure App Services för GitHub Actions är med en publiceringsprofil. Du kan också autentisera med ett huvudnamn för tjänsten, men processen kräver fler steg. 
 
-Spara dina autentiseringsuppgifter för din publicerings profil eller tjänstens huvud namn som [GitHub-hemlighet](https://docs.github.com/en/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer att få åtkomst till hemligheten i ditt arbets flöde. 
+Spara dina autentiseringsuppgifter för publiceringsprofilen eller tjänstens huvudnamn som [en GitHub-hemlighet](https://docs.github.com/en/actions/reference/encrypted-secrets) för att autentisera med Azure. Du kommer åt hemligheten i arbetsflödet. 
 
 # <a name="publish-profile"></a>[Publicera profil](#tab/publish-profile)
 
-En publicerings profil är en autentiseringsuppgift på program nivå. Konfigurera din publicerings profil som GitHub-hemlighet. 
+En publiceringsprofil är autentiseringsuppgifter på appnivå. Konfigurera din publiceringsprofil som en GitHub-hemlighet. 
 
-1. Gå till App Service i Azure Portal. 
+1. Gå till apptjänsten i Azure Portal. 
 
-1. På sidan **Översikt** väljer du **Hämta publicerings profil**.
+1. På sidan **Översikt** väljer du **Hämta publiceringsprofil.**
 
     > [!NOTE]
-    > Från och med oktober 2020 behöver Linux-webbapparna appens inställning som är `WEBSITE_WEBDEPLOY_USE_SCM` inställd på `true` **innan filen laddas ned**. Detta krav kommer att tas bort i framtiden. Mer information om hur du konfigurerar gemensamma inställningar för webb program finns [i Konfigurera en app service-app i Azure Portal](./configure-common.md).  
+    > Från och med oktober 2020 behöver Linux-webbappar appinställningen inställd `WEBSITE_WEBDEPLOY_USE_SCM` på innan filen laddas `true` **ned.** Det här kravet kommer att tas bort i framtiden. Se [Konfigurera en App Service-app i Azure Portal](./configure-common.md)för att lära dig hur du konfigurerar vanliga webbappinställningar.  
 
-1. Spara den hämtade filen. Du använder filens innehåll för att skapa en GitHub-hemlighet.
+1. Spara den hämtade filen. Du använder innehållet i filen för att skapa en GitHub-hemlighet.
 
 # <a name="service-principal"></a>[Tjänstens huvudnamn](#tab/service-principal)
 
-Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvudnamn](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) för tjänsten [med kommandot az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) i Azure [CLI.](/cli/azure/) Kör det här kommandot [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja **knappen Prova.**
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myApp" --role contributor \
@@ -64,7 +64,7 @@ az ad sp create-for-rbac --name "myApp" --role contributor \
                             --sdk-auth
 ```
 
-I exemplet ersätter du plats hållarna med ditt prenumerations-ID, resurs grupp namn och app-namn. Utdata är ett JSON-objekt med roll tilldelningens autentiseringsuppgifter som ger åtkomst till din App Service-app. Kopiera det här JSON-objektet för senare.
+I exemplet ersätter du platshållarna med ditt prenumerations-ID, resursgruppens namn och appnamnet. Utdata är ett JSON-objekt med autentiseringsuppgifter för rolltilldelning som ger åtkomst till din App Service app. Kopiera det här JSON-objektet för senare tillfälle.
 
 ```output 
   {
@@ -77,16 +77,16 @@ I exemplet ersätter du plats hållarna med ditt prenumerations-ID, resurs grupp
 ```
 
 > [!IMPORTANT]
-> Det är alltid en bra idé att bevilja minimal åtkomst. Omfånget i föregående exempel är begränsat till den särskilda App Service-appen och inte hela resurs gruppen.
+> Det är alltid en bra idé att bevilja minsta möjliga åtkomst. Omfånget i föregående exempel är begränsat till den App Service appen och inte hela resursgruppen.
 
 ---
 ## <a name="configure-the-github-secret-for-authentication"></a>Konfigurera GitHub-hemligheten för autentisering
 
 # <a name="publish-profile"></a>[Publicera profil](#tab/publish-profile)
 
-I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställningar > hemligheter > Lägg till en ny hemlighet**.
+I [GitHub](https://github.com/)bläddrar du till din lagringsplats och **väljer Inställningar > Hemligheter > Lägg till en ny hemlighet**.
 
-Om du vill använda [autentiseringsuppgifter för program nivå](#generate-deployment-credentials)klistrar du in innehållet i den hämtade publicerings profil filen i fältet hemligt värde. Namnge hemligheten `AZURE_WEBAPP_PUBLISH_PROFILE` .
+Om du [vill använda autentiseringsuppgifter på](#generate-deployment-credentials)appnivå klistrar du in innehållet i den nedladdade publiceringsprofilfilen i hemlighetens värdefält. Ge hemligheten namnet `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
 När du konfigurerar ditt GitHub-arbetsflöde använder du `AZURE_WEBAPP_PUBLISH_PROFILE` åtgärden för att distribuera Azure Web App. Exempel:
     
@@ -98,11 +98,11 @@ När du konfigurerar ditt GitHub-arbetsflöde använder du `AZURE_WEBAPP_PUBLISH
 
 # <a name="service-principal"></a>[Tjänstens huvudnamn](#tab/service-principal)
 
-I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställningar > hemligheter > Lägg till en ny hemlighet**.
+I [GitHub](https://github.com/)bläddrar du till din lagringsplats och **väljer Inställningar > Hemligheter > Lägg till en ny hemlighet**.
 
-Om du vill använda [autentiseringsuppgifter för användar nivå](#generate-deployment-credentials)klistrar du in hela JSON-utdata från Azure CLI-kommandot till fältet hemligt värde. Ge hemligheten namnet som `AZURE_CREDENTIALS` .
+Om du vill använda autentiseringsuppgifter på användarnivå klistrar du in hela JSON-utdata från Azure [CLI-kommandot](#generate-deployment-credentials)i hemlighetens värdefält. Ge hemligheten namnet som `AZURE_CREDENTIALS` .
 
-När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Exempel:
+När du konfigurerar arbetsflödesfilen senare använder du hemligheten som indata `creds` för azure-inloggningsåtgärden. Exempel:
 
 ```yaml
 - uses: azure/login@v1
@@ -112,19 +112,19 @@ När du konfigurerar arbets flödes filen senare använder du hemligheten för i
 
 ---
 
-## <a name="configure-github-secrets-for-your-registry"></a>Konfigurera GitHub-hemligheter för registret
+## <a name="configure-github-secrets-for-your-registry"></a>Konfigurera GitHub-hemligheter för ditt register
 
-Definiera hemligheter som ska användas med Docker inloggnings åtgärden. Exemplet i det här dokumentet använder Azure Container Registry för behållar registret. 
+Definiera hemligheter som ska användas med åtgärden Docker-inloggning. Exemplet i det här dokumentet använder Azure Container Registry för containerregistret. 
 
-1. Gå till din behållare i Azure Portal eller Docker och kopiera användar namn och lösen ord. Du kan hitta Azure Container Registry användar namn och lösen ord i Azure Portal under **Inställningar**  >  **åtkomst nycklar** för registret. 
+1. Gå till containern i Azure Portal eller Docker och kopiera användarnamnet och lösenordet. Du hittar det Azure Container Registry användarnamnet och lösenordet i Azure Portal under **Inställningar**  >  **Åtkomstnycklar** för ditt register. 
 
-2. Definiera en ny hemlighet för registrets användar namn med namnet `REGISTRY_USERNAME` . 
+2. Definiera en ny hemlighet för registrets användarnamn med namnet `REGISTRY_USERNAME` . 
 
-3. Definiera en ny hemlighet för register lösen ordet med namnet `REGISTRY_PASSWORD` . 
+3. Definiera en ny hemlighet för registerlösenordet med namnet `REGISTRY_PASSWORD` . 
 
-## <a name="build-the-container-image"></a>Bygg behållar avbildningen
+## <a name="build-the-container-image"></a>Skapa containeravbildningen
 
-I följande exempel visas en del av arbets flödet som skapar en Node.JS Docker-avbildning. Använd [Docker-inloggning](https://github.com/azure/docker-login) för att logga in på ett privat behållar register. I det här exemplet används Azure Container Registry men samma åtgärd fungerar för andra register. 
+I följande exempel visas en del av arbetsflödet som skapar en Node.JS Docker-avbildning. Använd [Docker-inloggning](https://github.com/azure/docker-login) för att logga in på ett privat containerregister. I det här Azure Container Registry används samma åtgärd för andra register. 
 
 
 ```yaml
@@ -148,7 +148,7 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-Du kan också använda [Docker-inloggning](https://github.com/azure/docker-login) för att logga in på flera behållar register samtidigt. Det här exemplet innehåller två nya GitHub-hemligheter för autentisering med docker.io. Exemplet förutsätter att det finns en Dockerfile på rot nivån i registret. 
+Du kan också använda [Docker-inloggning](https://github.com/azure/docker-login) för att logga in på flera containerregister samtidigt. Det här exemplet innehåller två nya GitHub-hemligheter för autentisering med docker.io. Exemplet förutsätter att det finns en Dockerfile på registrets rotnivå. 
 
 ```yml
 name: Linux Container Node Workflow
@@ -176,19 +176,19 @@ jobs:
         docker push mycontainer.azurecr.io/myapp:${{ github.sha }}     
 ```
 
-## <a name="deploy-to-an-app-service-container"></a>Distribuera till en App Service-behållare
+## <a name="deploy-to-an-app-service-container"></a>Distribuera till en App Service container
 
-Om du vill distribuera avbildningen till en anpassad behållare i App Service använder du `azure/webapps-deploy@v2` åtgärden. Den här åtgärden har sju parametrar:
+Om du vill distribuera avbildningen till en anpassad container App Service använder du `azure/webapps-deploy@v2` åtgärden . Den här åtgärden har sju parametrar:
 
 | **Parameter**  | **Förklaring**  |
 |---------|---------|
-| **App-Name** | Kunna Namnet på App Service-appen | 
-| **publicera – profil** | Valfritt Gäller för Web Apps (Windows och Linux) och Web App-behållare (Linux). Scenario för flera behållare stöds inte. Publicera profil \* fil innehåll (. publishsettings) med webb distributions hemligheter | 
-| **plats namn** | Valfritt Ange en befintlig plats förutom produktions platsen |
-| **paketfilerna** | Valfritt Gäller endast för webbappen: sökväg till paket eller mapp. \*. zip, \* . War, \* . jar eller en mapp för distribution |
-| **avbildningar** | Kunna Gäller endast för webb program behållare: Ange det fullständigt kvalificerade behållar avbildnings namnet. Till exempel "myregistry.azurecr.io/nginx:latest" eller "python: 3.7.2-alpina/". För en app med flera behållare kan du ange flera behållar avbildnings namn (flera rader separerade) |
-| **konfiguration – fil** | Valfritt Gäller endast för webbappens behållare: sökvägen till Docker-Compose-filen. Måste vara en fullständigt kvalificerad sökväg eller i förhållande till standard arbets katalogen. Krävs för appar med flera behållare. |
-| **Start kommando** | Valfritt Ange start kommandot. För t. ex. dotNet-körning eller dotNet-filename.dll |
+| **appnamn** | (Krävs) Namnet på App Service appen | 
+| **publicera profil** | (Valfritt) Gäller för Web Apps(Windows och Linux) och Web App Containers (linux). Scenario med flera containrar stöds inte. Filinnehåll för \* publiceringsprofil (.publishsettings) med Web Deploy-hemligheter | 
+| **facknamn** | (Valfritt) Ange en befintlig plats förutom produktionsplatsen |
+| **Paket** | (Valfritt) Gäller endast webbapp: Sökväg till paket eller mapp. \*.zip, \* .war, \* .jar eller en mapp som ska distribueras |
+| **Bilder** | (Krävs) Gäller endast webappcontainrar: Ange namnet på den eller de fullständigt kvalificerade containeravbildningarna. Till exempel "myregistry.azurecr.io/nginx:latest" eller "python:3.7.2-alpine/". För en app med flera containrar kan flera containeravbildningsnamn anges (avgränsade med flera linjer) |
+| **configuration-file** | (Valfritt) Gäller endast webappcontainrar: sökvägen till Docker-Compose fil. Bör vara en fullständigt kvalificerad sökväg eller relativ till standardarbetskatalogen. Krävs för appar med flera containrar. |
+| **startup-command** | (Valfritt) Ange startkommandot. Till exempel dotnet run eller dotnet filename.dll |
 
 # <a name="publish-profile"></a>[Publicera profil](#tab/publish-profile)
 
@@ -263,9 +263,9 @@ jobs:
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du hittar vår uppsättning åtgärder grupperade i olika databaser på GitHub, var och en innehåller dokumentation och exempel som hjälper dig att använda GitHub för CI/CD och distribuera dina appar till Azure.
+Du hittar vår uppsättning åtgärder grupperade i olika lagringsplatsen på GitHub, där var och en innehåller dokumentation och exempel som hjälper dig att använda GitHub för CI/CD och distribuera dina appar till Azure.
 
-- [Åtgärder arbets flöden att distribuera till Azure](https://github.com/Azure/actions-workflow-samples)
+- [Arbetsflöden för åtgärder som ska distribueras till Azure](https://github.com/Azure/actions-workflow-samples)
 
 - [Azure-inloggning](https://github.com/Azure/login)
 
@@ -277,4 +277,4 @@ Du hittar vår uppsättning åtgärder grupperade i olika databaser på GitHub, 
 
 - [K8s-distribution](https://github.com/Azure/k8s-deploy)
 
-- [Start arbets flöden](https://github.com/actions/starter-workflows)
+- [Startarbetsflöden](https://github.com/actions/starter-workflows)
