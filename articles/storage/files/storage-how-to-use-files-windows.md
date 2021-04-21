@@ -8,12 +8,12 @@ ms.date: 04/15/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9121774af0a1cfac6f677b4b8e2f4cd4b535042e
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e864dcaa2a611746ae813a4f0adf8409fbc50871
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107717196"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789797"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Använda en Azure-filresurs med Windows
 [Azure Files](storage-files-introduction.md) är Microsofts lättanvända filsystem i molnet. Azure-filresurser kan användas smidigt i Windows och Windows Server. Den här artikeln beskriver överväganden för att använda en Azure-filresurs med Windows och Windows Server.
@@ -48,7 +48,7 @@ Se till att port 445 är öppen: SMB-protokollet kräver att TCP-port 445 är ö
 ## <a name="using-an-azure-file-share-with-windows"></a>Använda en Azure-filresurs med Windows
 Om du vill använda en Azure-filresurs med Windows måste du antingen montera den, vilket innebär att tilldela den en enhetsbeteckning eller en sökväg för monteringspunkt, eller komma åt den via dess [UNC-sökväg](/windows/win32/fileio/naming-a-file). 
 
-Den här artikeln använder lagringskontonyckeln för att komma åt filresursen. En lagringskontonyckel är en administratörsnyckel för ett lagringskonto, inklusive administratörsbehörighet till alla filer och mappar i den filresurs som du har åtkomst till och för alla filresurser och andra lagringsresurser (blobar, köer, tabeller osv.) som finns i ditt lagringskonto. Om detta inte är tillräckligt för din [arbetsbelastning Azure File Sync](storage-sync-files-planning.md) kan användas, eller så kan du använda [identitetsbaserad autentisering via SMB](storage-files-active-directory-overview.md).
+Den här artikeln använder lagringskontonyckeln för att komma åt filresursen. En lagringskontonyckel är en administratörsnyckel för ett lagringskonto, inklusive administratörsbehörighet till alla filer och mappar i den filresurs som du har åtkomst till och för alla filresurser och andra lagringsresurser (blobar, köer, tabeller osv.) som finns i ditt lagringskonto. Om detta inte är tillräckligt för din [arbetsbelastning Azure File Sync](../file-sync/file-sync-planning.md) kan användas, eller så kan du använda [identitetsbaserad autentisering via SMB](storage-files-active-directory-overview.md).
 
 Ett vanligt mönster för lyftning och skiftande av verksamhetsspecifika program som förväntar sig en SMB-filresurs till Azure är att använda en Azure-filresurs som ett alternativ till att köra en dedikerad Windows-filserver i en Azure-dator. En viktig aspekt för en lyckad migrering av ett verksamhetsspecifikt program till att använda en Azure-filresurs är att många verksamhetsspecifika program kör i kontexten för ett dedikerat tjänstkonto med begränsade systembehörigheter i stället för den virtuella datorns administratörskonto. Därför måste du se till att du monterar/sparar autentiseringsuppgifterna för Azure-filresursen från kontexten för tjänstkontot i stället för ditt administratörskonto.
 
@@ -76,7 +76,7 @@ Så här hämtar du det här skriptet:
 
 1. Klistra in skriptet i ett gränssnitt på den värd som du vill montera filresursen till och kör den.
 
-Nu har du monterat azure-filresursen.
+Nu har du monterat Azure-filresursen.
 
 ### <a name="mount-the-azure-file-share-with-file-explorer"></a>Montera Azure-filresursen med Utforskaren
 > [!Note]  

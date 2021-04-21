@@ -1,6 +1,6 @@
 ---
-title: Utöka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper
-description: Beskriver hur du höjer åtkomsten för en global administratör för att hantera alla prenumerationer och hanterings grupper i Azure Active Directory att använda Azure Portal eller REST API.
+title: Utöka åtkomst för att hantera alla Azure-prenumerationer och hanteringsgrupper
+description: Beskriver hur du höjer åtkomsten för en global administratör för att hantera alla prenumerationer och hanteringsgrupper i Azure Active Directory med hjälp av Azure Portal eller REST API.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,109 +9,109 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 06/09/2020
 ms.author: rolyon
-ms.openlocfilehash: efc3bfef7c182ea005ac17a59793ac8f6484a424
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 37d50c030a2b426cb3e9af57afb899b7fab68388
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102042019"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778482"
 ---
-# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Utöka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper
+# <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Utöka åtkomst för att hantera alla Azure-prenumerationer och hanteringsgrupper
 
-Som global administratör i Azure Active Directory (Azure AD) kanske du inte har åtkomst till alla prenumerationer och hanterings grupper i din katalog. I den här artikeln beskrivs hur du kan öka åtkomsten till alla prenumerationer och hanterings grupper.
+Som global administratör i Azure Active Directory (Azure AD) kanske du inte har åtkomst till alla prenumerationer och hanteringsgrupper i din katalog. I den här artikeln beskrivs hur du kan utöka din åtkomst till alla prenumerationer och hanteringsgrupper.
 
 [!INCLUDE [gdpr-dsr-and-stp-note](../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="why-would-you-need-to-elevate-your-access"></a>Varför måste du öka din åtkomst?
+## <a name="why-would-you-need-to-elevate-your-access"></a>Varför skulle du behöva höja din behörighet?
 
 Om du är global administratör kan det finnas tillfällen när du vill utföra följande åtgärder:
 
-- Få åtkomst till en Azure-prenumeration eller hanterings grupp när en användare har förlorat åtkomst
+- Återfå åtkomst till en Azure-prenumeration eller hanteringsgrupp när en användare har förlorat åtkomst
 - tilldela en annan användare eller sig själv en Azure-prenumeration eller -hanteringsgrupp
-- Visa alla Azure-prenumerationer eller hanterings grupper i en organisation
-- Tillåt en Automation-app (till exempel en fakturerings-eller gransknings app) för att få åtkomst till alla Azure-prenumerationer eller hanterings grupper
+- Se alla Azure-prenumerationer eller hanteringsgrupper i en organisation
+- Tillåt att en Automation-app (till exempel en fakturerings- eller granskningsapp) får åtkomst till alla Azure-prenumerationer eller hanteringsgrupper
 
-## <a name="how-does-elevated-access-work"></a>Hur fungerar utökad åtkomst?
+## <a name="how-does-elevated-access-work"></a>Hur fungerar förhöjd åtkomst?
 
-Azure AD och Azure-resurser skyddas fristående från varandra. Det innebär att roll tilldelningar i Azure AD inte beviljar åtkomst till Azure-resurser, och Azure Role-tilldelningar ger inte åtkomst till Azure AD. Men om du är [Global administratör](../active-directory/roles/permissions-reference.md#global-administrator) i Azure AD kan du tilldela dig själv åtkomst till alla Azure-prenumerationer och hanterings grupper i din katalog. Använd den här funktionen om du inte har åtkomst till Azures prenumerations resurser, till exempel virtuella datorer eller lagrings konton, och du vill använda din globala administratörs behörighet för att få åtkomst till dessa resurser.
+Azure AD- och Azure-resurser skyddas oberoende av varandra. Det innebär att Azure AD-rolltilldelningar inte beviljar åtkomst till Azure-resurser och Azure-rolltilldelningar beviljar inte åtkomst till Azure AD. Men om du är global [administratör i](../active-directory/roles/permissions-reference.md#global-administrator) Azure AD kan du tilldela dig själv åtkomst till alla Azure-prenumerationer och hanteringsgrupper i din katalog. Använd den här funktionen om du inte har åtkomst till Azure-prenumerationsresurser, till exempel virtuella datorer eller lagringskonton, och du vill använda din globala administratörsbehörighet för att få åtkomst till dessa resurser.
 
-När du höjer åtkomsten tilldelas du rollen [administratör för användar åtkomst](built-in-roles.md#user-access-administrator) i Azure vid rot omfånget ( `/` ).På så sätt kan du Visa alla resurser och tilldela åtkomst i alla prenumerationer eller hanterings grupper i katalogen. Roll tilldelningar för administratör för användar åtkomst kan tas bort med hjälp av Azure PowerShell, Azure CLI eller REST API.
+När du höjer din behörighet tilldelas du rollen [Administratör för](built-in-roles.md#user-access-administrator) användaråtkomst i Azure i rotomfånget ( `/` ).På så sätt kan du visa alla resurser och tilldela åtkomst i valfri prenumeration eller hanteringsgrupp i katalogen. Rolltilldelningar för administratör för användaråtkomst kan tas bort med Azure PowerShell, Azure CLI eller REST API.
 
-Du bör ta bort den här utökade åtkomsten när du har gjort ändringarna som du behöver göra i rot omfånget.
+Du bör ta bort den här utökade åtkomsten när du har gjort de ändringar du behöver göra i rotomfånget.
 
 ![Upphöj åtkomst](./media/elevate-access-global-admin/elevate-access.png)
 
 ## <a name="azure-portal"></a>Azure Portal
 
-### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
+### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomst för en global administratör
 
-Följ de här stegen för att öka åtkomsten för en global administratör med hjälp av Azure Portal.
+Följ de här stegen för att utöka åtkomsten för en global administratör med hjälp av Azure Portal.
 
-1. Logga in på [Azure Portal](https://portal.azure.com) eller [Azure Active Directory administrations Center](https://aad.portal.azure.com) som global administratör.
+1. Logga in på [Azure Portal](https://portal.azure.com) eller [Azure Active Directory administrationscenter](https://aad.portal.azure.com) som global administratör.
 
-    Om du använder Azure AD Privileged Identity Management aktiverar du [roll tilldelningen global administratör](../active-directory/privileged-identity-management/pim-how-to-activate-role.md).
+    Om du använder Azure AD Privileged Identity Management aktiverar [du rolltilldelningen Global administratör.](../active-directory/privileged-identity-management/pim-how-to-activate-role.md)
 
 1. Öppna **Azure Active Directory**.
 
 1. Välj **Egenskaper** under **Hantera**.
 
-   ![Välj Egenskaper för Azure Active Directory egenskaper-skärm bild](./media/elevate-access-global-admin/azure-active-directory-properties.png)
+   ![Välj Egenskaper för Azure Active Directory egenskaper – skärmbild](./media/elevate-access-global-admin/azure-active-directory-properties.png)
 
-1. Under **åtkomst hantering för Azure-resurser** ställer du in växla till **Ja**.
+1. Under **Åtkomsthantering för Azure-resurser** anger du växlingsknappen till **Ja.**
 
-   ![Åtkomst hantering för Azure-resurser – skärm bild](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
+   ![Åtkomsthantering för Azure-resurser – skärmbild](./media/elevate-access-global-admin/aad-properties-global-admin-setting.png)
 
-   När du ställer in växla till **Ja** tilldelas du rollen administratör för användar åtkomst i Azure RBAC vid rot omfånget (/). Detta ger dig behörighet att tilldela roller i alla Azure-prenumerationer och hanterings grupper som är kopplade till den här Azure AD-katalogen. Den här växlingen är bara tillgänglig för användare som har tilldelats rollen som global administratör i Azure AD.
+   När du ställer in växlingsknappen **på Ja** tilldelas du rollen Administratör för användaråtkomst i Azure RBAC i rotomfånget (/). Detta ger dig behörighet att tilldela roller i alla Azure-prenumerationer och hanteringsgrupper som är associerade med den här Azure AD-katalogen. Den här växlingsknappen är endast tillgänglig för användare som har tilldelats rollen Global administratör i Azure AD.
 
-   När du ställer in växla till **Nej** tas rollen administratör för användar åtkomst i Azure RBAC bort från ditt användar konto. Du kan inte längre tilldela roller i alla Azure-prenumerationer och hanterings grupper som är associerade med den här Azure AD-katalogen. Du kan bara visa och hantera de Azure-prenumerationer och hanterings grupper som du har beviljats åtkomst till.
+   När du ställer in växlingsknappen **på Nej** tas rollen Administratör för användaråtkomst i Azure RBAC bort från ditt användarkonto. Du kan inte längre tilldela roller i alla Azure-prenumerationer och hanteringsgrupper som är associerade med den här Azure AD-katalogen. Du kan bara visa och hantera de Azure-prenumerationer och hanteringsgrupper som du har beviljats åtkomst till.
 
     > [!NOTE]
-    > Om du använder [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)ändrar inte din roll tilldelning **åtkomst hantering för Azure-resurser** växla till **Nej**. Om du vill behålla minst privilegie rad åtkomst rekommenderar vi att du ställer in den här växlingen på **Nej** innan du inaktiverar din roll tilldelning.
+    > Om du använder [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)ändrar inte inaktiveringen av din rolltilldelning åtkomsthanteringen för **Azure-resurser** till **Nej.** För att behålla lägsta privilegierad åtkomst rekommenderar vi att du ställer in den här **växlingsknappen på Nej** innan du inaktiverar din rolltilldelning.
     
-1. Spara inställningen genom att klicka på **Spara** .
+1. Spara **inställningen genom** att klicka på Spara.
 
-   Den här inställningen är inte en global egenskap och gäller endast för den inloggade användaren. Du kan inte öka åtkomsten för alla medlemmar i rollen global administratör.
+   Den här inställningen är inte en global egenskap och gäller endast för den inloggade användaren. Du kan inte höja behörigheten för alla medlemmar i rollen Global administratör.
 
-1. Logga ut och logga in igen för att uppdatera åtkomsten.
+1. Logga ut och logga in igen för att uppdatera din åtkomst.
 
-    Du bör nu ha åtkomst till alla prenumerationer och hanterings grupper i din katalog. När du visar fönstret åtkomst kontroll (IAM) ser du att du har tilldelats rollen administratör för användar åtkomst i rot omfånget.
+    Nu bör du ha åtkomst till alla prenumerationer och hanteringsgrupper i din katalog. När du visar fönstret Åtkomstkontroll (IAM) ser du att du har tilldelats rollen Administratör för användaråtkomst i rotomfånget.
 
-   ![Prenumerations roll tilldelningar med rot omfånget – skärm bild](./media/elevate-access-global-admin/iam-root.png)
+   ![Prenumerationsrolltilldelningar med rotomfång – skärmbild](./media/elevate-access-global-admin/iam-root.png)
 
-1. Gör de ändringar du behöver för att få utökad åtkomst.
+1. Gör de ändringar du behöver göra vid förhöjd åtkomst.
 
-    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md). Om du använder Privileged Identity Management går du [till identifiera Azure-resurser för att hantera](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) eller [tilldela Azure-resurs roller](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    Information om hur du tilldelar roller finns i [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md). Om du använder en Privileged Identity Management se Identifiera [Azure-resurser för att hantera eller](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) Tilldela [Azure-resursroller.](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md)
 
-1. Utför stegen i följande avsnitt för att ta bort den utökade åtkomsten.
+1. Utför stegen i följande avsnitt för att ta bort din förhöjda åtkomst.
 
 ### <a name="remove-elevated-access"></a>Ta bort utökad åtkomst
 
-Följ dessa steg om du vill ta bort roll tilldelningen administratör för användar åtkomst i rot omfånget ( `/` ).
+Följ dessa steg om du vill ta bort rolltilldelningen Administratör för `/` användaråtkomst i rotomfånget ( ).
 
 1. Logga in som samma användare som användes för att höja åtkomsten.
 
-1. Klicka på **Azure Active Directory** i navigerings listan och klicka sedan på **Egenskaper**.
+1. I navigeringslistan klickar du **på Azure Active Directory** och sedan på **Egenskaper.**
 
-1. Ange att **åtkomst hantering för Azure-resurser** ska växla tillbaka till **Nej**. Eftersom det här är en inställning per användare måste du vara inloggad som samma användare som användes för att öka åtkomsten.
+1. Ställ in **Åtkomsthantering för Azure-resurser** på **Nej.** Eftersom det här är en inställning per användare måste du vara inloggad som samma användare som användes för att utöka åtkomsten.
 
-    Om du försöker ta bort roll tilldelningen administratör för användar åtkomst i fönstret åtkomst kontroll (IAM) visas följande meddelande. Om du vill ta bort roll tilldelningen måste du ställa in växla tillbaka till **Nej** eller använda Azure PowerShell, Azure CLI eller REST API.
+    Om du försöker ta bort rolltilldelningen Administratör för användaråtkomst i fönstret Åtkomstkontroll (IAM) visas följande meddelande. Om du vill ta bort rolltilldelningen  måste du ange växlingsknappen till Nej eller använda Azure PowerShell, Azure CLI eller REST API.
 
-    ![Ta bort roll tilldelningar med rot omfånget](./media/elevate-access-global-admin/iam-root-remove.png)
+    ![Ta bort rolltilldelningar med rotomfång](./media/elevate-access-global-admin/iam-root-remove.png)
 
 1. Logga ut som global administratör.
 
-    Om du använder Privileged Identity Management inaktiverar du roll tilldelningen global administratör.
+    Om du använder en Privileged Identity Management inaktiverar du rolltilldelningen Global administratör.
 
     > [!NOTE]
-    > Om du använder [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)ändrar inte din roll tilldelning **åtkomst hantering för Azure-resurser** växla till **Nej**. Om du vill behålla minst privilegie rad åtkomst rekommenderar vi att du ställer in den här växlingen på **Nej** innan du inaktiverar din roll tilldelning.
+    > Om du använder [Privileged Identity Management](../active-directory/privileged-identity-management/pim-configure.md)ändrar inte inaktiveringen av rolltilldelningen åtkomsthanteringen för **Azure-resurser** till **Nej.** Om du vill behålla lägsta privilegierade åtkomst rekommenderar vi att du ställer in den här **växlingsknappen** på Nej innan du inaktiverar din rolltilldelning.
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-### <a name="list-role-assignment-at-root-scope-"></a>Lista roll tilldelning i rot omfånget (/)
+### <a name="list-role-assignment-at-root-scope-"></a>Visa en lista med rolltilldelning i rotomfånget (/)
 
-Om du vill visa roll tilldelningen användar åtkomst administratör för en användare vid rot omfånget ( `/` ) använder du kommandot [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment) .
+Om du vill visa rolltilldelningen Administratör för användaråtkomst för en användare i rotomfånget ( ) använder du kommandot `/` [Get-AzRoleAssignment.](/powershell/module/az.resources/get-azroleassignment)
 
 ```azurepowershell
 Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
@@ -132,11 +132,11 @@ CanDelegate        : False
 
 ### <a name="remove-elevated-access"></a>Ta bort utökad åtkomst
 
-Följ dessa steg om du vill ta bort roll tilldelningen administratör för användar åtkomst för dig själv eller en annan användare vid rot omfånget ( `/` ).
+Följ dessa steg om du vill ta bort rolltilldelningen Administratör för användaråtkomst för dig själv eller `/` en annan användare i rotomfånget ( ).
 
-1. Logga in som en användare som kan ta bort utökad åtkomst. Detta kan vara samma användare som användes för att höja åtkomsten eller en annan global administratör med utökad åtkomst i rot omfånget.
+1. Logga in som en användare som kan ta bort utökad åtkomst. Detta kan vara samma användare som användes för att höja behörigheten eller en annan global administratör med förhöjd åtkomst i rotomfånget.
 
-1. Använd kommandot [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment) för att ta bort roll tilldelningen administratör för användar åtkomst.
+1. Använd kommandot [Remove-AzRoleAssignment för](/powershell/module/az.resources/remove-azroleassignment) att ta bort rolltilldelningen Administratör för användaråtkomst.
 
     ```azurepowershell
     Remove-AzRoleAssignment -SignInName <username@example.com> `
@@ -145,25 +145,25 @@ Följ dessa steg om du vill ta bort roll tilldelningen administratör för anvä
 
 ## <a name="azure-cli"></a>Azure CLI
 
-### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
+### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomst för en global administratör
 
-Använd följande grundläggande steg för att öka åtkomsten för en global administratör med hjälp av Azure CLI.
+Använd följande grundläggande steg för att utöka åtkomsten för en global administratör med hjälp av Azure CLI.
 
-1. Använd kommandot [AZ rest](/cli/azure/reference-index#az_rest) för att anropa `elevateAccess` slut punkten, som ger dig rollen som administratör för användar åtkomst i rot omfånget ( `/` ).
+1. Använd kommandot [az rest för](/cli/azure/reference-index#az_rest) att anropa `elevateAccess` slutpunkten, som ger dig rollen Administratör för användaråtkomst i rotomfånget ( `/` ).
 
     ```azurecli
     az rest --method post --url "/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01"
     ```
 
-1. Gör de ändringar du behöver för att få utökad åtkomst.
+1. Gör de ändringar du behöver göra vid förhöjd åtkomst.
 
-    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av Azure CLI](role-assignments-cli.md).
+    Information om hur du tilldelar roller finns i [Tilldela Azure-roller med hjälp av Azure CLI.](role-assignments-cli.md)
 
-1. Utför stegen i ett senare avsnitt om du vill ta bort den utökade åtkomsten.
+1. Utför stegen i ett senare avsnitt för att ta bort din förhöjda åtkomst.
 
-### <a name="list-role-assignment-at-root-scope-"></a>Lista roll tilldelning i rot omfånget (/)
+### <a name="list-role-assignment-at-root-scope-"></a>Visa en lista med rolltilldelning i rotomfånget (/)
 
-Om du vill visa roll tilldelningen användar åtkomst administratör för en användare vid rot omfånget ( `/` ) använder du kommandot [AZ Role Assignment List](/cli/azure/role/assignment#az-role-assignment-list) .
+Om du vill visa rolltilldelningen Administratör för användaråtkomst för en användare i rotomfånget ( `/` ) använder du kommandot az role assignment [list.](/cli/azure/role/assignment#az_role_assignment_list)
 
 ```azurecli
 az role assignment list --role "User Access Administrator" --scope "/"
@@ -189,11 +189,11 @@ az role assignment list --role "User Access Administrator" --scope "/"
 
 ### <a name="remove-elevated-access"></a>Ta bort utökad åtkomst
 
-Följ dessa steg om du vill ta bort roll tilldelningen administratör för användar åtkomst för dig själv eller en annan användare vid rot omfånget ( `/` ).
+Följ dessa steg om du vill ta bort rolltilldelningen Administratör för användaråtkomst för dig själv eller `/` en annan användare i rotomfånget ( ).
 
-1. Logga in som en användare som kan ta bort utökad åtkomst. Detta kan vara samma användare som användes för att höja åtkomsten eller en annan global administratör med utökad åtkomst i rot omfånget.
+1. Logga in som en användare som kan ta bort utökad åtkomst. Detta kan vara samma användare som användes för att höja behörigheten eller en annan global administratör med förhöjd åtkomst i rotomfånget.
 
-1. Använd kommandot [AZ Role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete) för att ta bort roll tilldelningen administratör för användar åtkomst.
+1. Använd kommandot [az role assignment delete för](/cli/azure/role/assignment#az_role_assignment_delete) att ta bort rolltilldelningen Administratör för användaråtkomst.
 
     ```azurecli
     az role assignment delete --assignee username@example.com --role "User Access Administrator" --scope "/"
@@ -201,37 +201,37 @@ Följ dessa steg om du vill ta bort roll tilldelningen administratör för anvä
 
 ## <a name="rest-api"></a>REST-API
 
-### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomsten för en global administratör
+### <a name="elevate-access-for-a-global-administrator"></a>Utöka åtkomst för en global administratör
 
-Använd följande grundläggande steg för att öka åtkomsten för en global administratör med hjälp av REST API.
+Använd följande grundläggande steg för att utöka åtkomsten för en global administratör med hjälp av REST API.
 
-1. Med REST, anrop `elevateAccess` , som ger dig rollen som administratör för användar åtkomst i rot omfånget ( `/` ).
+1. Med HJÄLP av REST `elevateAccess` anropar du , vilket ger dig rollen Administratör för användaråtkomst i rotomfånget ( `/` ).
 
    ```http
    POST https://management.azure.com/providers/Microsoft.Authorization/elevateAccess?api-version=2016-07-01
    ```
 
-1. Gör de ändringar du behöver för att få utökad åtkomst.
+1. Gör de ändringar du behöver göra vid förhöjd åtkomst.
 
-    Information om hur du tilldelar roller finns i [tilldela Azure-roller med hjälp av REST API](role-assignments-rest.md).
+    Information om hur du tilldelar roller finns [i Tilldela Azure-roller med hjälp av REST API](role-assignments-rest.md).
 
-1. Utför stegen i ett senare avsnitt om du vill ta bort den utökade åtkomsten.
+1. Utför stegen i ett senare avsnitt för att ta bort din förhöjda åtkomst.
 
-### <a name="list-role-assignments-at-root-scope-"></a>Lista roll tilldelningar i rot omfånget (/)
+### <a name="list-role-assignments-at-root-scope-"></a>Visa en lista över rolltilldelningar i rotomfånget (/)
 
-Du kan visa en lista över alla roll tilldelningar för en användare i rot omfånget ( `/` ).
+Du kan lista alla rolltilldelningar för en användare i rotomfånget ( `/` ).
 
-- Anropa [Get roleAssignments](/rest/api/authorization/roleassignments/listforscope) där `{objectIdOfUser}` är objekt-ID: t för den användare vars roll tilldelningar du vill hämta.
+- Anropa [GET roleAssignments](/rest/api/authorization/roleassignments/listforscope) där `{objectIdOfUser}` är objekt-ID:t för den användare vars rolltilldelningar du vill hämta.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectIdOfUser}'
    ```
 
-### <a name="list-deny-assignments-at-root-scope-"></a>Visa lista över neka tilldelningar i rot omfånget (/)
+### <a name="list-deny-assignments-at-root-scope-"></a>Visa en lista över tilldelningsnekanden i rotomfånget (/)
 
-Du kan visa en lista över alla neka-tilldelningar för en användare i rot omfånget ( `/` ).
+Du kan lista alla tilldelningsnekanden för en användare i rotomfånget ( `/` ).
 
-- Anropa GET denyAssignments där `{objectIdOfUser}` är objekt-ID: t för den användare vars neka-tilldelningar du vill hämta.
+- Anropa GET denyAssignments där `{objectIdOfUser}` är objekt-ID:t för den användare vars nekandetilldelningar du vill hämta.
 
    ```http
    GET https://management.azure.com/providers/Microsoft.Authorization/denyAssignments?api-version=2018-07-01-preview&$filter=gdprExportPrincipalId+eq+'{objectIdOfUser}'
@@ -239,9 +239,9 @@ Du kan visa en lista över alla neka-tilldelningar för en användare i rot omf�
 
 ### <a name="remove-elevated-access"></a>Ta bort utökad åtkomst
 
-När du anropar `elevateAccess` skapar du en roll tilldelning för dig själv, så att du kan återkalla de behörigheterna som krävs för att ta bort roll tilldelningen administratör för användar åtkomst för sig själv vid rot omfånget ( `/` ).
+När du anropar skapar du en rolltilldelning åt dig själv, så om du vill återkalla dessa behörigheter måste du ta bort rolltilldelningen Administratör för användaråtkomst för dig själv i `elevateAccess` rotomfånget ( `/` ).
 
-1. Anropa [Get roleDefinitions](/rest/api/authorization/roledefinitions/get) där `roleName` är lika med administratör för användar åtkomst för att fastställa namn-ID för administratörs rollen för användar åtkomst.
+1. Anropa [GET roleDefinitions där](/rest/api/authorization/roledefinitions/get) är lika med Administratör för `roleName` användaråtkomst för att fastställa namn-ID för rollen Administratör för användaråtkomst.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User Access Administrator'
@@ -282,20 +282,20 @@ När du anropar `elevateAccess` skapar du en roll tilldelning för dig själv, s
     }
     ```
 
-    Spara ID: t från `name` parametern, i det här fallet `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9` .
+    Spara ID:t från `name` parametern , i det här fallet `18d7d88d-d35e-4fb5-a5c3-7773c20a72d9` .
 
-1. Du måste också ange roll tilldelningen för katalog administratören i katalog omfånget. Visa en lista med alla tilldelningar i katalog omfånget för `principalId` katalog administratören som gjorde höjningen av åtkomst anropet. Visar alla tilldelningar i katalogen för ObjectID.
+1. Du måste också lista rolltilldelningen för katalogadministratören i katalogomfånget. Visa en lista över alla tilldelningar i katalogomfånget `principalId` för den katalogadministratör som gjorde upphöjt åtkomstsamtal. Då visas alla tilldelningar i katalogen för objectid.
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'
     ```
         
     >[!NOTE] 
-    >En katalog administratör bör inte ha många tilldelningar, om föregående fråga returnerar för många tilldelningar, kan du även fråga efter alla tilldelningar precis på katalogens omfattnings nivå och sedan filtrera resultaten: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
+    >En katalogadministratör bör inte ha många tilldelningar. Om den tidigare frågan returnerar för många tilldelningar kan du också fråga efter alla tilldelningar bara på katalogomfångsnivå och sedan filtrera resultaten: `GET https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()`
             
-1. Föregående anrop returnerar en lista över roll tilldelningar. Hitta roll tilldelningen där omfånget är `"/"` och `roleDefinitionId` slutar med det roll namn-ID som du hittade i steg 1 och `principalId` matchar katalog administratörens ObjectID. 
+1. Föregående anrop returnerar en lista över rolltilldelningar. Hitta rolltilldelningen där omfånget är och slutar med rollnamnets ID som du hittade i steg 1 och matchar `"/"` `roleDefinitionId` `principalId` objectId för katalogadministratören. 
     
-    Exempel roll tilldelning:
+    Exempel på rolltilldelning:
     
     ```json
     {
@@ -319,9 +319,9 @@ När du anropar `elevateAccess` skapar du en roll tilldelning för dig själv, s
     }
     ```
     
-    Spara sedan ID: t från `name` parametern, i det här fallet 11111111-1111-1111-1111-111111111111.
+    Spara återigen ID:t från parametern , i det här fallet `name` 11111111-1111-1111-1111-111111111111.
 
-1. Använd slutligen roll tilldelnings-ID: t för att ta bort tilldelningen som lagts till av `elevateAccess` :
+1. Slutligen använder du rolltilldelnings-ID:t för att ta bort tilldelningen som lagts till av `elevateAccess` :
 
     ```http
     DELETE https://management.azure.com/providers/Microsoft.Authorization/roleAssignments/11111111-1111-1111-1111-111111111111?api-version=2015-07-01

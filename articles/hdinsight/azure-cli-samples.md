@@ -5,31 +5,31 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 09/23/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9367c1b4d82e984b2b4200768a3f83f9245c7f0f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4502cb26b4aeedff4223aaf5a592581aee36a0e6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98946888"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775109"
 ---
 # <a name="azure-hdinsight-azure-cli-samples"></a>Azure HDInsight: Azure CLI-exempel
 
 > [!div class="op_single_selector"]
-> [.Net-exempel](hdinsight-sdk-dotnet-samples.md) 
+> [.NET-exempel](hdinsight-sdk-dotnet-samples.md) 
 >  [Python-exempel](hdinsight-sdk-python-samples.md) 
 >  [Java-exempel](hdinsight-sdk-java-samples.md)
 
-Den här artikeln innehåller exempel skript för vanliga uppgifter. För varje exempel uppdaterar du variablerna med lämpliga värden och kör sedan kommandot.
+Den här artikeln innehåller exempelskript för vanliga uppgifter. För varje exempel uppdaterar du variablerna med lämpliga värden och kör sedan kommandot .
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure CLI. Se [Installera Azure CLI](/cli/azure/install-azure-cli) för steg.
+* Azure CLI. Se [Installera Azure CLI för](/cli/azure/install-azure-cli) anvisningar.
 
-* Valfritt: bash. I exemplen i den här artikeln används bash-gränssnittet i Windows 10. Installations [Guide för Windows-undersystem för Linux finns i Windows 10](/windows/wsl/install-win10) för installations steg.  Exemplen kommer att fungera från en kommando tolk i Windows med några små ändringar.
+* Valfritt: Bash. Exemplen i den här artikeln använder Bash-gränssnittet på Windows 10. Se [Windows-undersystem för Linux installationsguiden för Windows 10](/windows/wsl/install-win10) installationssteg.  Exemplen fungerar från en Kommandotolk i Windows med några mindre ändringar.
 
 ## <a name="az-login"></a>az login
 
-[Logga in på Azure](/cli/azure/reference-index#az-login).
+[Logga in på Azure](/cli/azure/reference-index#az_login).
 
 ```azurecli
 az login
@@ -38,11 +38,11 @@ az login
 # az account set --subscription "SUBSCRIPTIONID"
 ```
 
-## <a name="az-hdinsight-create"></a>AZ HDInsight Create
+## <a name="az-hdinsight-create"></a>az hdinsight create
 
-[Skapar ett nytt kluster](/cli/azure/hdinsight#az-hdinsight-create).
+[Skapar ett nytt kluster](/cli/azure/hdinsight#az_hdinsight_create).
 
-### <a name="create-a-cluster-with-an-existing-storage-account"></a>Skapa ett kluster med ett befintligt lagrings konto
+### <a name="create-a-cluster-with-an-existing-storage-account"></a>Skapa ett kluster med ett befintligt lagringskonto
 
 ```azurecli
 # set variables
@@ -88,7 +88,7 @@ az hdinsight create \
     --cluster-users-group-dns $groupDNS
 ```
 
-### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Skapa ett Kafka-kluster med [disk kryptering](./disk-encryption.md)
+### <a name="create-a-kafka-cluster-with-disk-encryption"></a>Skapa ett Kafka-kluster med [diskkryptering](./disk-encryption.md)
 
 ```azurecli
 export clusterName=CLUSTERNAME
@@ -171,9 +171,9 @@ az hdinsight create \
     --cluster-configuration $clusterConfiguration
 ```
 
-## <a name="az-hdinsight-application-create"></a>AZ HDInsight Application Create
+## <a name="az-hdinsight-application-create"></a>az hdinsight application create
 
-[Skapa ett program för ett HDInsight-kluster](/cli/azure/hdinsight/application#az-hdinsight-application-create).
+[Skapa ett program för ett HDInsight-kluster](/cli/azure/hdinsight/application#az_hdinsight_application_create).
 
 ### <a name="create-an-application-with-a-script-uri"></a>Skapa ett program med en skript-URI
 
@@ -194,7 +194,7 @@ az hdinsight application create \
     --script-parameters "$scriptParameters"
 ```
 
-### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Skapa ett program med en skript-URI och angiven Edge Node-storlek
+### <a name="create-an-application-with-a-script-uri-and-specified-edge-node-size"></a>Skapa ett program med en skript-URI och angiven gränsnodstorlek
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME
@@ -238,11 +238,11 @@ az hdinsight application create \
     --sub-domain-suffix $subDomainSuffix
 ```
 
-## <a name="az-hdinsight-script-action-execute"></a>AZ HDInsight-skript – åtgärd köra
+## <a name="az-hdinsight-script-action-execute"></a>az hdinsight script-action execute
 
-[Kör skript åtgärder på det angivna HDInsight-klustret](/cli/azure/hdinsight/script-action#az-hdinsight-script-action-execute).
+[Kör skriptåtgärder på det angivna HDInsight-klustret.](/cli/azure/hdinsight/script-action#az_hdinsight_script_action_execute)
 
-### <a name="execute-a-script-action-and-persist-on-success"></a>Kör en skript åtgärd och Spara på lyckad
+### <a name="execute-a-script-action-and-persist-on-success"></a>Köra en skriptåtgärd och bevara åtgärden
 
 ```azurecli
 export resourceGroupName=RESOURCEGROUPNAME

@@ -1,7 +1,7 @@
 ---
-title: Konfigurera cirkulations inställningar för en Azure Kubernetes-tjänst med Azure CLI
+title: Konfigurera routningsinställning för en Azure Kubernetes-tjänst med hjälp av Azure CLI
 titlesuffix: Azure Virtual Network
-description: Lär dig hur du konfigurerar ett AKS-kluster med cirkulations inställningar med hjälp av Azure CLI.
+description: Lär dig hur du konfigurerar ett AKS-kluster med routningsinställningar med hjälp av Azure CLI.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2021
 ms.author: mnayak
-ms.openlocfilehash: ac70f48a3c484f8865c54e09c59662a14a259e74
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9eaad12e254150109498be0fac2f285f33a5965c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101680341"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776617"
 ---
-# <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Konfigurera cirkulations inställningar för ett Kubernetes-kluster med Azure CLI
+# <a name="configure-routing-preference-for-a-kubernetes-cluster-using-azure-cli"></a>Konfigurera routningsinställning för ett Kubernetes-kluster med Hjälp av Azure CLI
 
-Den här artikeln visar hur du konfigurerar inställningar för routning via Internet LEVERANTÖRs nätverk (**Internet** alternativ) för ett Kubernetes-kluster med Azure CLI. Inställningen routning anges genom att skapa en offentlig IP-adress för inställnings typen för routning * * Internet * * * * och sedan använda den när du skapar AKS-klustret.
+Den här artikeln visar hur du konfigurerar routningsinställningar via INTERNET-nätverk **(internetalternativet)** för ett Kubernetes-kluster med Azure CLI. Routningsinställningarna anges genom att skapa en offentlig IP-adress av routningsinställningstypen **Internet*** och sedan använda den när du skapar AKS-klustret.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.0.49 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.49 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resurs grupp i Azure-regionen **USA, östra** :
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az_group_create). I följande exempel skapas en resursgrupp i **Azure-regionen USA,** östra:
 
 ```azurecli
   az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-a-public-ip-address"></a>Skapa en offentlig IP-adress
 
-Skapa en offentlig IP-adress med Dirigerings inställning av **Internet** typ med kommandot [AZ Network Public-IP Create](/cli/azure/network/public-ip#az-network-public-ip-create).
+Skapa en offentlig IP-adress med routningsinställning av **Internettyp** med kommandot [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create).
 
-Följande kommando skapar en ny offentlig IP-adress med inställningar för **Internet** routning i Azure-regionen **USA, östra** .
+Följande kommando skapar en ny offentlig IP-adress med **Internetroutningsinställning** i **Azure-regionen USA,** östra.
 
 ```azurecli
 az network public-ip create \
@@ -53,7 +53,7 @@ az network public-ip create \
 --version IPv4
 ```
 > [!NOTE]
->  Inställningen routning stöder för närvarande endast IPV4 offentliga IP-adresser.
+>  För närvarande stöder routningsinställningarna endast offentliga IP-adresser för IPV4.
 
 ## <a name="get-the-id-of-public-ip-address"></a>Hämta ID för offentlig IP-adress
 
@@ -78,13 +78,12 @@ az aks create \
 >[!NOTE]
 >Det tar några minuter att distribuera AKS-klustret.
 
-Om du vill validera söker du efter den offentliga IP-adressen som skapats i det tidigare steget i Azure Portal så visas IP-adressen som är kopplad till belastningsutjämnaren som är associerad med Kubernetes-klustret enligt nedan:
+För att verifiera genom att söka efter den offentliga IP-adress som skapades i det tidigare steget i Azure Portal ser du att IP-adressen är associerad med lastbalanseraren som är associerad med Kubernetes-klustret enligt nedan:
 
- ![Dirigerings inställningar offentlig IP för Kubernetes](./media/routing-preference-azure-kubernetes-service-cli/routing-preference-azure-kubernetes-service.png)
+ ![Offentlig IP-adress för routningsinställning för Kubernetes](./media/routing-preference-azure-kubernetes-service-cli/routing-preference-azure-kubernetes-service.png)
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [cirkulations inställningar i offentliga IP-adresser](routing-preference-overview.md). 
-- [Konfigurera Dirigerings inställningar för en virtuell dator med hjälp av Azure CLI](configure-routing-preference-virtual-machine-cli.md).
-
+- Läs mer om [routningsinställningar i offentliga IP-adresser.](routing-preference-overview.md) 
+- [Konfigurera routningsinställningen för en virtuell dator med hjälp av Azure CLI.](configure-routing-preference-virtual-machine-cli.md)

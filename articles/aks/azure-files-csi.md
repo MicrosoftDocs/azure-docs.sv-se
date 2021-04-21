@@ -1,59 +1,59 @@
 ---
-title: Använda CSI-drivrutiner (container Storage Interface) för Azure Files på Azure Kubernetes service (AKS)
-description: Lär dig hur du använder CSI-drivrutinerna (container Storage Interface) för Azure Files i ett Azure Kubernetes service-kluster (AKS).
+title: Använda Container Storage Interface (CSI)-drivrutiner för Azure Files on Azure Kubernetes Service (AKS)
+description: Lär dig hur du använder Container Storage Interface (CSI)-drivrutiner för Azure Files i ett Azure Kubernetes Service-kluster (AKS).
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 93f7f7a3c59beca362145ac16f7cf727df773f81
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a83d2222862db6bc3e3ff86ba4074114c1a872e5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102174069"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776167"
 ---
-# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använda CSI-drivrutiner (Azure Files container Storage Interface) i Azure Kubernetes service (AKS) (för hands version)
+# <a name="use-azure-files-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använda Azure Files Container Storage Interface (CSI)-drivrutiner i Azure Kubernetes Service (AKS) (förhandsversion)
 
-Driv rutinen för Azure Files container Storage Interface (CSI) är en [CSI Specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-kompatibel driv rutin som används av Azure Kubernetes service (AKS) för att hantera Azure Files resursernas livs cykel.
+CSI-drivrutinen (Azure Files Container Storage Interface) är en [CSI-specifikation](https://github.com/container-storage-interface/spec/blob/master/spec.md)som följer standard och som används av Azure Kubernetes Service (AKS) för att hantera livscykeln för Azure Files resurser.
 
-CSI är en standard för att exponera godtyckliga block-och fil lagrings system för arbets belastningar i behållare på Kubernetes. Genom att införa och använda CSI kan AKS nu skriva, distribuera och iterera plugin-program för att exponera nya eller förbättra befintliga lagrings system i Kubernetes utan att behöva röra kärnan Kubernetes Code och vänta på dess versions cykler.
+CSI är en standard för att exponera godtyckliga block- och fillagringssystem för containeriserade arbetsbelastningar i Kubernetes. Genom att använda och använda CSI kan AKS nu skriva, distribuera och iterera plugin-program för att exponera nya eller förbättra befintliga lagringssystem i Kubernetes utan att behöva röra Kubernetes-kärnkoden och vänta på lanseringscyklerna.
 
-Om du vill skapa ett AKS-kluster med stöd för CSI-drivrutiner, se [Aktivera CSI-drivrutiner för Azure-diskar och Azure Files på AKS](csi-storage-drivers.md).
+Information om hur du skapar ett AKS-kluster med CSI-drivrutinsstöd finns i Aktivera [CSI-drivrutiner för Azure-diskar Azure Files på AKS](csi-storage-drivers.md).
 
 >[!NOTE]
-> *Driv rutiner i ett träd* refererar till de aktuella lagrings driv rutiner som ingår i Kubernetes-koden och de nya CSI-drivrutinerna, som är plugin-program.
+> *Träddrivrutiner refererar* till de aktuella lagringsdrivrutinerna som ingår i Kubernetes-kärnkoden jämfört med de nya CSI-drivrutinerna, som är plugin-program.
 
-## <a name="use-a-persistent-volume-with-azure-files"></a>Använd en permanent volym med Azure Files
+## <a name="use-a-persistent-volume-with-azure-files"></a>Använda en beständig volym med Azure Files
 
-En [beständig volym (PV)](concepts-storage.md#persistent-volumes) representerar en lagrings enhet som tillhandahålls för användning med Kubernetes poddar. Ett PV kan användas av en eller flera poddar och kan vara dynamiskt eller statiskt allokerat. Om flera poddar behöver samtidig åtkomst till samma lagrings volym kan du använda Azure Files för att ansluta med hjälp av [SMB-protokollet (Server Message Block)][smb-overview]. Den här artikeln visar hur du skapar en Azure Files-resurs dynamiskt för användning av flera poddar i ett AKS-kluster. För statisk etablering, se [skapa och använda en volym med en Azure Files resurs manuellt](azure-files-volume.md).
+En [beständig volym (PV)](concepts-storage.md#persistent-volumes) representerar en lagringsplats som etableras för användning med Kubernetes-poddar. Ett PV kan användas av en eller flera poddar och kan etableras dynamiskt eller statiskt. Om flera poddar behöver samtidig åtkomst till samma lagringsvolym kan du använda Azure Files för att ansluta med [hjälp av SMB-protokollet (Server Message Block).][smb-overview] Den här artikeln visar hur du dynamiskt skapar en Azure Files-resurs för användning av flera poddar i ett AKS-kluster. För statisk etablering, se [Skapa och använda en volym manuellt med en Azure Files resurs](azure-files-volume.md).
 
-Mer information om Kubernetes-volymer finns i [lagrings alternativ för program i AKS][concepts-storage].
+Mer information om Kubernetes-volymer finns i [Lagringsalternativ för program i AKS][concepts-storage].
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Skapa Azure Files PVs dynamiskt med hjälp av de inbyggda lagrings klasserna
+## <a name="dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes"></a>Skapa datorer Azure Files dynamiskt med hjälp av de inbyggda lagringsklasserna
 
-En lagrings klass används för att definiera hur en Azure Files resurs skapas. Ett lagrings konto skapas automatiskt i [resurs gruppen resurs][node-resource-group] för användning med lagrings klassen som innehåller Azure Files resurser. Välj någon av följande [redundans-SKU: er för Azure Storage][storage-skus] för *skuName*:
+En lagringsklass används för att definiera hur Azure Files resurs skapas. Ett lagringskonto skapas automatiskt i [nodresursgruppen][node-resource-group] för användning med lagringsklassen för att lagra Azure Files resurser. Välj någon av följande [SKU:er för Azure Storage-redundans][storage-skus] *för skuName:*
 
-* **Standard_LRS**: standard lokalt redundant lagring
-* **Standard_GRS**: standard Geo-redundant lagring
-* **Standard_ZRS**: standard zon – redundant lagring
-* **Standard_RAGRS**: standard Geo-redundant lagring med Läs behörighet
-* **Premium_LRS**: Premium lokalt redundant lagring
+* **Standard_LRS:** Standard lokalt redundant lagring
+* **Standard_GRS:** Geo-redundant standardlagring
+* **Standard_ZRS:** Standardzonredundant lagring
+* **Standard_RAGRS:** Geo-redundant standardlagring med läsbehörighet
+* **Premium_LRS:** Lokalt redundant Premium-lagring
 
 > [!NOTE]
-> Azure Files stöder Azure Premium Storage. Den minsta Premium fil resursen är 100 GB.
+> Azure Files har stöd för Azure Premium Storage. Den minsta premiumfilresursen är 100 GB.
 
-När du använder driv rutiner för lagring CSI på AKS finns det två ytterligare inbyggda `StorageClasses` som använder Azure Files CSI-lagringsenheter. De ytterligare klasserna för CSI-lagring skapas med klustret tillsammans med standard lagrings klasser i trädet.
+När du använder CSI-lagringsdrivrutiner på AKS finns det två ytterligare inbyggda som använder `StorageClasses` CSI Azure Files lagringsdrivrutiner. De ytterligare CSI-lagringsklasserna skapas med klustret tillsammans med standardlagringsklasserna i trädet.
 
-- `azurefile-csi`: Använder Azure standard Storage för att skapa en Azure Files-resurs.
-- `azurefile-csi-premium`: Använder Azure Premium Storage för att skapa en Azure Files-resurs.
+- `azurefile-csi`: Använder Azure Standard Storage för att skapa Azure Files resurs.
+- `azurefile-csi-premium`: Använder Azure Premium Storage för att skapa en Azure Files resurs.
 
-Reclaim-principen på båda lagrings klasserna säkerställer att den underliggande Azure Files resursen tas bort när respektive PV tas bort. Lagrings klasserna konfigurerar även fil resurserna så att de kan utökas, du behöver bara redigera det permanenta volym anspråket (PVC) med den nya storleken.
+Principen för att frigöra på båda lagringsklasserna säkerställer att den underliggande Azure Files-resursen tas bort när respektive PV tas bort. Lagringsklasserna konfigurerar även filresurser så att de kan expanderas. Du behöver bara redigera beständigt volymanspråk (PV) med den nya storleken.
 
-Om du vill använda dessa lagrings klasser skapar du en [PVC](concepts-storage.md#persistent-volume-claims) och respektive POD som refererar till och använder dem. En PVC används för att automatiskt etablera lagring baserat på en lagrings klass. En PVC kan använda en av de i förväg skapade lagrings klasserna eller en användardefinierad lagrings klass för att skapa en Azure Files-resurs för önskad SKU och storlek. När du skapar en POD-definition, anges PVC: n för att begära det önskade lagrings utrymmet.
+Om du vill använda dessa lagringsklasser skapar du [en PV](concepts-storage.md#persistent-volume-claims) och respektive podd som refererar till och använder dem. En PV används för att automatiskt etablera lagring baserat på en lagringsklass. En PV kan använda en av de förskapade lagringsklasserna eller en användardefinierad lagringsklass för att skapa en Azure Files resurs för önskad SKU och storlek. När du skapar en podddefinition anges PV för att begära önskad lagring.
 
-Skapa ett [exempel på PVC och Pod som skriver ut det aktuella datumet `outfile` till ett](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) med kommandot [kubectl Apply][kubectl-apply] :
+Skapa ett [exempel på PV och podd som skriver ut det aktuella datumet till en `outfile` ](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) med kommandot [kubectl apply:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/pvc-azurefile-csi.yaml
@@ -63,7 +63,7 @@ persistentvolumeclaim/pvc-azurefile created
 pod/nginx-azurefile created
 ```
 
-När pod är i körnings läge kan du kontrol lera att fil resursen är korrekt monterad genom att köra följande kommando och kontrol lera att utdata innehåller `outfile` :
+När podden är i körningstillstånd kan du verifiera att filresursen är korrekt monterad genom att köra följande kommando och verifiera att utdata innehåller `outfile` :
 
 ```console
 $ kubectl exec nginx-azurefile -- ls -l /mnt/azurefile
@@ -72,13 +72,13 @@ total 29
 -rwxrwxrwx 1 root root 29348 Aug 31 21:59 outfile
 ```
 
-## <a name="create-a-custom-storage-class"></a>Skapa en anpassad lagrings klass
+## <a name="create-a-custom-storage-class"></a>Skapa en anpassad lagringsklass
 
-Standard lagrings klasserna passar de vanligaste scenarierna, men inte alla. I vissa fall kanske du vill ha en egen lagrings klass anpassad med dina egna parametrar. Använd till exempel följande manifest för att konfigurera `mountOptions` fil resursen.
+Standardlagringsklasserna passar de vanligaste scenarierna, men inte alla. I vissa fall kanske du vill ha en egen lagringsklass som är anpassad efter dina egna parametrar. Använd till exempel följande manifest för att konfigurera `mountOptions` för filresursen.
 
-Standardvärdet för *fileMode* och *dirMode* är *0777* för Kubernetes-monterade fil resurser. Du kan ange olika monterings alternativ för objektet lagrings klass.
+Standardvärdet för *fileMode och* *dirMode är* *0777 för* Kubernetes-monterade filresurser. Du kan ange olika monteringsalternativ för lagringsklassobjektet.
 
-Skapa en fil med namnet `azure-file-sc.yaml` och klistra in följande exempel manifest:
+Skapa en fil med namnet `azure-file-sc.yaml` och klistra in följande exempelmanifest:
 
 ```yaml
 kind: StorageClass
@@ -101,7 +101,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Skapa lagrings klassen med kommandot [kubectl Apply][kubectl-apply] :
+Skapa lagringsklassen med [kommandot kubectl apply:][kubectl-apply]
 
 ```console
 kubectl apply -f azure-file-sc.yaml
@@ -109,9 +109,9 @@ kubectl apply -f azure-file-sc.yaml
 storageclass.storage.k8s.io/my-azurefile created
 ```
 
-Azure Files CSI-drivrutinen har stöd [för att skapa ögonblicks bilder av permanenta volymer](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) och de underliggande fil resurserna.
+Den Azure Files CSI-drivrutinen har stöd [för att skapa ögonblicksbilder av beständiga](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) volymer och underliggande filresurser.
 
-Skapa en [volym ögonblicks bild klass](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) med kommandot [kubectl Apply][kubectl-apply] :
+Skapa en [volymögonblicksbildklass](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml) med [kommandot kubectl apply:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/snapshot/volumesnapshotclass-azurefile.yaml
@@ -119,7 +119,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azurefile-vsc created
 ```
 
-Skapa en [ögonblicks bild av en ögonblicks bild](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) från PVC: n som du [skapade dynamiskt i början av den här kursen](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes) `pvc-azurefile` .
+Skapa en [ögonblicksbild av volymen](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/snapshot/volumesnapshot-azurefile.yaml) från PV som vi skapade dynamiskt i början av den här [självstudien](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes), `pvc-azurefile` .
 
 
 ```bash
@@ -129,7 +129,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-c
 volumesnapshot.snapshot.storage.k8s.io/azurefile-volume-snapshot created
 ```
 
-Verifiera att ögonblicks bilden skapades korrekt:
+Kontrollera att ögonblicksbilden har skapats korrekt:
 
 ```bash
 $ kubectl describe volumesnapshot azurefile-volume-snapshot
@@ -160,12 +160,12 @@ Events:                                <none>
 
 ## <a name="resize-a-persistent-volume"></a>Ändra storlek på en beständig volym
 
-Du kan begära en större volym för en PVC. Redigera PVC-objektet och ange en större storlek. Den här ändringen utlöser expansionen av den underliggande volymen som backar upp NUVÄRDEt.
+Du kan begära en större volym för en PV. Redigera PV-objektet och ange en större storlek. Den här ändringen utlöser expansionen av den underliggande volymen som backar upp PV.
 
 > [!NOTE]
-> En ny PV skapas aldrig för att uppfylla kravet. I stället ändras storleken på en befintlig volym.
+> Ett nytt PV skapas aldrig för att uppfylla anspråket. I stället ändras storleken på en befintlig volym.
 
-I AKS stöder den inbyggda `azurefile-csi` lagrings klassen redan expansion, så Använd den [PVC som skapades tidigare med denna lagrings klass](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). PVC-filen begärde en 100Gi-filresurs. Vi kan bekräfta detta genom att köra:
+I AKS har den inbyggda lagringsklassen redan stöd för expansion, så använd `azurefile-csi` PV som skapades tidigare med den här [lagringsklassen](#dynamically-create-azure-files-pvs-by-using-the-built-in-storage-classes). PV begärde en 100Gi-filresurs. Vi kan bekräfta detta genom att köra:
 
 ```console 
 $ kubectl exec -it nginx-azurefile -- df -h /mnt/azurefile
@@ -174,7 +174,7 @@ Filesystem                                                                      
 //f149b5a219bd34caeb07de9.file.core.windows.net/pvc-5e5d9980-da38-492b-8581-17e3cad01770  100G  128K  100G   1% /mnt/azurefile
 ```
 
-Expandera PVC: n genom att öka `spec.resources.requests.storage` fältet:
+Expandera PV genom att öka `spec.resources.requests.storage` fältet:
 
 ```console
 $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {"requests": {"storage": "200Gi"}}}}'
@@ -182,7 +182,7 @@ $ kubectl patch pvc pvc-azurefile --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azurefile patched
 ```
 
-Kontrol lera att både PVC-och fil systemet i pod visar den nya storleken:
+Kontrollera att både PV och filsystemet i podden visar den nya storleken:
 
 ```console
 $ kubectl get pvc pvc-azurefile
@@ -196,44 +196,44 @@ Filesystem                                                                      
 
 
 ## <a name="nfs-file-shares"></a>NFS-filresurser
-[Azure Files har nu stöd för NFS v 4.1-protokollet](../storage/files/storage-files-how-to-create-nfs-shares.md). NFS 4,1-stöd för Azure Files ger dig ett fullständigt hanterat NFS-filsystem som en tjänst som bygger på en hög tillgänglig och mycket varaktig distribuerad elastisk lagrings plattform.
+[Azure Files har nu stöd för NFS v4.1-protokollet](../storage/files/storage-files-how-to-create-nfs-shares.md). NFS 4.1-stöd för Azure Files ger dig ett fullständigt hanterat NFS-filsystem som en tjänst som bygger på en mycket tillgänglig och mycket beständig distribuerad elastisk lagringsplattform.
 
- Det här alternativet är optimerat för slumpmässiga åtkomst arbets belastningar med data uppdateringar på plats och ger fullständig POSIX-filsystem stöd. Det här avsnittet visar hur du använder NFS-resurser med Azure-filen CSI-drivrutinen i ett AKS-kluster.
+ Det här alternativet är optimerat för arbetsbelastningar med slumpmässig åtkomst med datauppdateringar på plats och ger fullständigt stöd för POSIX-filsystemet. Det här avsnittet visar hur du använder NFS-resurser med Azure File CSI-drivrutinen i ett AKS-kluster.
 
-Se till att kontrol lera [begränsningar](../storage/files/storage-files-compare-protocols.md#limitations) och [regions tillgänglighet](../storage/files/storage-files-compare-protocols.md#regional-availability) under för hands versions fasen.
+Se till att kontrollera begränsningarna [och](../storage/files/storage-files-compare-protocols.md#limitations) [tillgängligheten för regioner](../storage/files/storage-files-compare-protocols.md#regional-availability) under förhandsversionsfasen.
 
-### <a name="register-the-allownfsfileshares-preview-feature"></a>Registrera `AllowNfsFileShares` förhands gransknings funktionen
+### <a name="register-the-allownfsfileshares-preview-feature"></a>Registrera `AllowNfsFileShares` förhandsgranskningsfunktionen
 
-Om du vill skapa en fil resurs som utnyttjar NFS 4,1 måste du aktivera `AllowNfsFileShares` funktions flaggan i din prenumeration.
+Om du vill skapa en filresurs som använder NFS 4.1 måste du aktivera `AllowNfsFileShares` funktionsflaggan för din prenumeration.
 
-Registrera `AllowNfsFileShares` funktions flaggan med hjälp av kommandot [AZ Feature register][az-feature-register] , som du ser i följande exempel:
+Registrera `AllowNfsFileShares` funktionsflaggan med [kommandot az feature register,][az-feature-register] som du ser i följande exempel:
 
 ```azurecli-interactive
 az feature register --namespace "Microsoft.Storage" --name "AllowNfsFileShares"
 ```
 
-Det tar några minuter för statusen att visa *registrerad*. Verifiera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
+Det tar några minuter för statusen att visa *Registrerad*. Kontrollera registreringsstatusen med hjälp av [kommandot az feature list:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.Storage/AllowNfsFileShares')].{Name:name,State:properties.state}"
 ```
 
-När du är klar uppdaterar du registreringen av *Microsoft. Storage* Resource Provider med hjälp av [AZ Provider register][az-provider-register] kommando:
+När du är klar uppdaterar du registreringen av *resursprovidern Microsoft.Storage* med kommandot [az provider register:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.Storage
 ```
 
-### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Skapa ett lagrings konto för NFS-filresursen
+### <a name="create-a-storage-account-for-the-nfs-file-share"></a>Skapa ett lagringskonto för NFS-filresursen
 
 [Skapa en `Premium_LRS` Azure Storage-konto](../storage/files/storage-how-to-create-file-share.md) med följande konfigurationer för att stödja NFS-resurser:
-- konto typ: FileStorage
-- säker överföring krävs (Aktivera endast HTTPS-trafik): falskt
-- Välj det virtuella nätverket för dina agent-noder i brand väggar och virtuella nätverk – så du kanske föredrar att skapa lagrings kontot i MC_ resurs gruppen.
+- kontotyp: FileStorage
+- säker överföring krävs (aktivera endast HTTPS-trafik): falskt
+- välj det virtuella nätverket för dina agentnoder i Brandväggar och virtuella nätverk, så du kanske föredrar att skapa lagringskontot i MC_ resursgruppen.
 
-### <a name="create-nfs-file-share-storage-class"></a>Skapa fil resurs lagrings klass för NFS
+### <a name="create-nfs-file-share-storage-class"></a>Skapa en lagringsklass för NFS-filresurs
 
-Spara en `nfs-sc.yaml` fil med manifestet nedan redigera respektive plats hållare.
+Spara en `nfs-sc.yaml` fil med manifestet nedan och redigera respektive platshållare.
 
 ```yml
 apiVersion: storage.k8s.io/v1
@@ -247,7 +247,7 @@ parameters:
   protocol: nfs
 ```
 
-När du har redigerat och sparat filen skapar du lagrings klassen med kommandot [kubectl Apply][kubectl-apply] :
+När du har redigerat och sparat filen skapar du lagringsklassen med [kommandot kubectl apply:][kubectl-apply]
 
 ```console
 $ kubectl apply -f nfs-sc.yaml
@@ -255,8 +255,8 @@ $ kubectl apply -f nfs-sc.yaml
 storageclass.storage.k8s.io/azurefile-csi created
 ```
 
-### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Skapa en distribution med en NFS-baserad fil resurs
-Du kan distribuera en exempel [tillstånds känslig uppsättning](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) som sparar tidsstämplar i en fil `data.txt` genom att distribuera följande kommando med kommandot [kubectl Apply][kubectl-apply] :
+### <a name="create-a-deployment-with-an-nfs-backed-file-share"></a>Skapa en distribution med en NFS-backad filresurs
+Du kan distribuera ett exempel [på en](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/statefulset.yaml) tillståndsfull uppsättning som sparar tidsstämplar i en fil genom att distribuera följande kommando med `data.txt` kommandot [kubectl apply:][kubectl-apply]
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/statefulset.yaml
@@ -277,14 +277,14 @@ accountname.file.core.windows.net:/accountname/pvc-fa72ec43-ae64-42e4-a8a2-55660
 ```
 
 >[!NOTE]
-> Observera att eftersom NFS-filresursen är i Premium-kontot är den minsta fil resurs storleken 100 GB. Om du skapar en PVC med en liten lagrings storlek kan du stöta på ett fel som "Det gick inte att skapa fil resursen... storlek (5)... ".
+> Observera att eftersom NFS-filresursen finns i Premium-kontot är den minsta filresursstorleken 100 GB. Om du skapar en PV med en liten lagringsstorlek kan du stöta på felet "det gick inte att skapa filresursen ... storlek (5)...".
 
 
 ## <a name="windows-containers"></a>Windows-containrar
 
-Azure Files CSI-drivrutinen stöder också Windows-noder och behållare. Om du vill använda Windows-behållare följer du [själv studie kursen för Windows-behållare](windows-container-cli.md) för att lägga till en Windows-Node-pool.
+Den Azure Files CSI-drivrutinen stöder också Windows-noder och -containrar. Om du vill använda Windows-containrar följer du självstudien [om Windows-containrar för](windows-container-cli.md) att lägga till en Windows-nodpool.
 
-När du har en Windows-adresspool använder du de inbyggda lagrings klasserna som `azurefile-csi` eller skapar anpassade. Du kan distribuera ett exempel på en [Windows-baserad tillstånds känslig uppsättning](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) som sparar tidsstämplar i en fil `data.txt` genom att distribuera följande kommando med kommandot [kubectl Apply][kubectl-apply] :
+När du har en Windows-nodpool kan du använda de inbyggda lagringsklasserna `azurefile-csi` som eller skapa anpassade. Du kan distribuera en [Windows-baserad](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) tillståndsbaserad uppsättning som sparar tidsstämplar i en fil genom att distribuera följande kommando med `data.txt` [kommandot kubectl apply:][kubectl-apply]
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azurefile-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -306,8 +306,8 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du använder CSI-drivrutiner för Azure-diskar finns i [använda Azure-diskar med CSI-drivrutiner](azure-disk-csi.md).
-- Mer information om metod tips för lagring finns i [metod tips för lagring och säkerhets kopiering i Azure Kubernetes-tjänsten][operator-best-practices-storage].
+- Information om hur du använder CSI-drivrutiner för Azure-diskar finns i [Använda Azure-diskar med CSI-drivrutiner.](azure-disk-csi.md)
+- Mer information om metodtips för lagring finns [i Metodtips för lagring och säkerhetskopieringar i Azure Kubernetes Service][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->
@@ -324,20 +324,20 @@ $ kubectl exec -it busybox-azurefile-0 -- cat c:\mnt\azurefile\data.txt # on Win
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [storage-skus]: ../storage/common/storage-redundancy.md

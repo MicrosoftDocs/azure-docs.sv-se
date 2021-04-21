@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/10/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: d312702f441cfe2ad94e347cadcdfc88d4cc2a72
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60436b8d4a0f338f4ece59ad4cd11c14c9e4c352
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762649"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-cli"></a>Självstudie: Skapa en NAT-gateway med Hjälp av Azure CLI
 
@@ -25,7 +25,7 @@ I den här guiden får du lära dig att:
 > [!div class="checklist"]
 > * Skapa ett virtuellt nätverk.
 > * Skapa en virtuell dator.
-> * Skapa en NAT-gateway och associera med det virtuella nätverket.
+> * Skapa en NAT-gateway och associera den med det virtuella nätverket.
 > * Anslut till den virtuella datorn och verifiera NAT-IP-adressen.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -38,7 +38,7 @@ I den här guiden får du lära dig att:
 
 Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-I följande exempel skapas en resursgrupp med **namnet myResourceGroupNAT** på **platsen eastus2:**
+I följande exempel skapas en resursgrupp med namnet **myResourceGroupNAT** på **platsen eastus2:**
 
 ```azurecli-interactive
   az group create \
@@ -90,9 +90,9 @@ Skapa ett virtuellt nätverk med **namnet myVnet** med ett undernät med namnet 
 
 ### <a name="create-bastion-host"></a>Skapa skyddsvärd
 
-Skapa en Azure Bastion med namnet **myBastionHost för att** få åtkomst till den virtuella datorn. 
+Skapa en Azure Bastion värd med namnet **myBastionHost för** att få åtkomst till den virtuella datorn. 
 
-Använd [az network vnet subnet create för](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) att skapa Azure Bastion undernät.
+Använd [az network vnet subnet create för](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) att skapa Azure Bastion undernät.
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -111,7 +111,7 @@ az network public-ip create \
     --sku Standard
 ```
 
-Använd [az network bastion create](/cli/azure/network/bastion#az-network-bastion-create) för att skapa skyddsvärden. 
+Använd [az network bastion create](/cli/azure/network/bastion#az_network_bastion_create) för att skapa skyddstion-värden. 
 
 ```azurecli-interactive
 az network bastion create \
@@ -124,7 +124,7 @@ az network bastion create \
 
 ### <a name="configure-nat-service-for-source-subnet"></a>Konfigurera NAT-tjänsten för källundernätet
 
-Vi konfigurerar källundernätet **mySubnet** i det virtuella nätverket **myVnet** för att använda en specifik NAT-gatewayresurs **myNATgateway** [med az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Det här kommandot aktiverar NAT-tjänsten i det angivna undernätet.
+Vi konfigurerar källundernätet **mySubnet** i det virtuella nätverket **myVnet** till att använda en specifik NAT-gatewayresurs **myNATgateway** med [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). Det här kommandot aktiverar NAT-tjänsten i det angivna undernätet.
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -141,7 +141,7 @@ All utgående trafik till Internetmål använder nu NAT-gatewayen.  Du behöver 
 
 I det här avsnittet skapar du en virtuell dator för att testa NAT-gatewayen för att verifiera den offentliga IP-adressen för den utgående anslutningen.
 
-Skapa den virtuella datorn med [az vm create](/cli/azure/vm#az-vm-create).
+Skapa den virtuella datorn med [az vm create](/cli/azure/vm#az_vm_create).
 
 ```azurecli-interactive
 az vm create \
@@ -186,7 +186,7 @@ I det här avsnittet testar vi NAT-gatewayen. Först identifierar vi den offentl
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte kommer att fortsätta att använda det här programmet tar du bort det virtuella nätverket, den virtuella datorn och NAT-gatewayen med följande steg:
+Om du inte tänker fortsätta att använda det här programmet tar du bort det virtuella nätverket, den virtuella datorn och NAT-gatewayen med följande steg:
 
 ```azurecli-interactive 
   az group delete \

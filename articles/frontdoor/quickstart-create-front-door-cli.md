@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 4/19/2021
 ms.author: duau
-ms.openlocfilehash: f697606e195f102d2bfb5535c92e5c78eb44cdbe
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: 99204a2d4c3a2455f0916878fb09a348dc79ac7a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727222"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778788"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application-using-azure-cli"></a>Snabbstart: Skapa en Front Door för en global webbapp med hög tillgänglig användning med Azure CLI
 
@@ -47,7 +47,7 @@ I Azure allokerar du relaterade resurser till en resursgrupp. Du kan antingen an
 
 För den här snabbstarten behöver du två resursgrupper. En i *USA, centrala* och den andra i *USA, södra centrala.*
 
-Skapa en resursgrupp med [az group create](/cli/azure/group#az-group-create):
+Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create):
 
 ```azurecli-interactive
 az group create \
@@ -63,13 +63,13 @@ az group create \
 
 Två instanser av en webbapp som körs i olika Azure-regioner krävs för den här snabbstarten. Båda webbprograminstanserna körs i aktivt/aktivt läge, så att någon av dem kan använda trafik.
 
-Om du inte redan har en webbapp använder du följande skript för att konfigurera två exempelwebbappar.
+Om du inte redan har en webbapp kan du använda följande skript för att konfigurera två exempelwebbappar.
 
 ### <a name="create-app-service-plans"></a>Skapa App Service-planer
 
 Innan du kan skapa webbapparna behöver du två App Service-planer, en i *USA, centrala* och den andra i *USA, östra.*
 
-Skapa App Service-planer [med az appservice plan create:](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true)
+Skapa App Service-planer [med az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create&preserve-view=true):
 
 ```azurecli-interactive
 az appservice plan create \
@@ -103,9 +103,9 @@ Anteckna standardvärdnamnet för varje webbapp så att du kan definiera backend
 
 ## <a name="create-the-front-door"></a>Skapa Front Door
 
-Skapa en grundläggande Front Door med standardinställningar för belastningsutjämning, hälsoavsökning och routningsregler genom att köra följande:
+Skapa en grundläggande Front Door med standardinställningar för belastningsutjämning, hälsoavsökning och routningsregler genom att köra så här:
 
-Skapa Front Door med [az network front-door create](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true):
+Skapa Front Door med [az network front-door create:](/cli/azure/ext/front-door/network/front-door#ext_front_door_az_network_front_door_create&preserve-view=true)
 
 ```azurecli-interactive
 az network front-door create \
@@ -117,23 +117,23 @@ az network front-door create \
 
 **--resource-group:** Ange en resursgrupp där du vill distribuera Front Door.
 
-**--name:** Ange ett globalt unikt namn för Azure Front Door. 
+**--name:** Ange ett globalt unikt namn för din Azure Front Door. 
 
-**--accepted-protocols:** Godkända värden är **http** och **https**. Om du vill använda båda, avgränsas båda med blanksteg.
+**--accepted-protocols:** Godkända värden är **http** och **https**. Om du vill använda båda kan du se båda avgränsade med blanksteg.
 
-**--backend-address:** Definiera båda webbapparnas värdnamn här avgränsade med ett blanksteg.
+**--backend-address:** Definiera båda webbappens värdnamn här avgränsade med ett blanksteg.
 
-När distributionen har slutförts anteckning du värdnamnet i *avsnittet frontEndpoints.*
+När distributionen är klar anteckning du om värdnamnet i *avsnittet frontEndpoints.*
 
 ## <a name="test-the-front-door"></a>Testa Front Door
 
 Öppna en webbläsare och ange det värdnamn som du får från kommandona. Den Front Door dirigerar din begäran till en av backend-resurserna.
 
-:::image type="content" source="./media/quickstart-create-front-door-cli/front-door-testing-page.png" alt-text="Front Door för testning":::
+:::image type="content" source="./media/quickstart-create-front-door-cli/front-door-testing-page.png" alt-text="Front Door testsida":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du inte längre behöver de resurser som du skapade med Front Door tar du bort båda resursgrupperna. När du tar bort resursgruppen tar du även bort Front Door alla relaterade resurser. 
+När du inte längre behöver de resurser som du skapade med Front Door kan du ta bort båda resursgrupperna. När du tar bort resursgruppen tar du även bort Front Door alla relaterade resurser. 
 
 Om du vill ta bort resursgruppen använder [du az group delete](/cli/azure/group#az_group_delete&preserve-view=true):
 
@@ -151,7 +151,7 @@ I den här snabbstarten skapade du en:
 * Front Door
 * Två webbappar
 
-Om du vill lära dig hur du lägger till en anpassad domän Front Door kan du fortsätta till Front Door självstudierna.
+Om du vill lära dig hur du lägger till en anpassad domän Front Door du fortsätta till Front Door självstudierna.
 
 > [!div class="nextstepaction"]
 > [Lägga till en anpassad domän](front-door-custom-domain.md)

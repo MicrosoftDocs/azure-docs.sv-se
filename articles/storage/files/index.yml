@@ -11,13 +11,13 @@ metadata:
   ms.collection: collection
   author: roygara
   ms.author: rogarana
-  ms.date: 08/27/2019
-  ms.openlocfilehash: 1ede53a8e288b14696ca2c30088486478a13a3af
-  ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+  ms.date: 04/19/2021
+  ms.openlocfilehash: 56879a2b6efc0ae5e7278828a474d0197f37f255
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/03/2021
-  ms.locfileid: "101724208"
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107761717"
 landingContent:
 - title: Om Azure Files
   linkLists:
@@ -25,24 +25,16 @@ landingContent:
     links:
     - text: Planeringsguide för Azure Files
       url: storage-files-planning.md
-    - text: Planeringsguide för Azure File Sync
-      url: storage-sync-files-planning.md
     - text: Vad är Azure Files?
       url: storage-files-introduction.md
+    - text: Identitetsbaserad autentisering
+      url: storage-files-active-directory-overview.md
 - title: Kom igång
   linkLists:
   - linkListType: get-started
     links:
     - text: Skapa/använda filresurser – Windows
       url: storage-files-quick-create-use-windows.md
-    - text: Skapa Premium-filresurser
-      url: ./storage-how-to-create-file-share.md
-    - text: Hantera din server med Azure File Sync
-      url: storage-sync-files-server-registration.md
-  - linkListType: tutorial
-    links:
-    - text: Utöka Windows-filservrar med Azure File Sync
-      url: storage-sync-files-extend-servers.md
 - title: Felsöka
   linkLists:
   - linkListType: reference
@@ -53,5 +45,3 @@ landingContent:
       url: storage-troubleshoot-linux-file-connection-problems.md
     - text: Felsöka prestanda med Azure Files
       url: storage-troubleshooting-files-performance.md
-    - text: Felsöka Azure File Sync
-      url: storage-sync-files-troubleshoot.md

@@ -1,41 +1,41 @@
 ---
-title: Statisk IP-adress för container grupp
-description: Skapa en behållar grupp i ett virtuellt nätverk och Använd en Azure Application Gateway för att exponera en statisk IP-adress för klient delen i en behållares webbapp
+title: Statisk IP-adress för containergrupp
+description: Skapa en containergrupp i ett virtuellt nätverk och använd en Azure-programgateway för att exponera en statisk IP-adress på serversidan för en containerwebbapp
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 0131780fdb04a71837d5ae9bf5498bf2bd499f8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: de9e06b457a9ea5485fe268bd2b7cf206f0a6c0e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98035061"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790949"
 ---
-# <a name="expose-a-static-ip-address-for-a-container-group"></a>Exponera en statisk IP-adress för en behållar grupp
+# <a name="expose-a-static-ip-address-for-a-container-group"></a>Exponera en statisk IP-adress för en containergrupp
 
-Den här artikeln visar ett sätt att exponera en statisk, offentlig IP-adress för en [behållar grupp](container-instances-container-groups.md) med hjälp av en Azure [Application Gateway](../application-gateway/overview.md). Följ de här stegen när du behöver en statisk start punkt för en extern, container app som körs i Azure Container Instances. 
+Den här artikeln visar ett sätt att exponera en statisk, offentlig IP-adress för [en containergrupp med](container-instances-container-groups.md) hjälp av en Azure [Application Gateway](../application-gateway/overview.md). Följ dessa steg när du behöver en statisk startpunkt för en externt riktad containerapp som körs i Azure Container Instances. 
 
-I den här artikeln använder du Azure CLI för att skapa resurser för det här scenariot:
+I den här artikeln använder du Azure CLI för att skapa resurserna för det här scenariot:
 
 * Ett virtuellt Azure-nätverk
-* En behållar grupp distribuerat [i det virtuella nätverket som är](container-instances-vnet.md) värd för en liten webbapp
-* En Programgateway med en offentlig IP-adress för klient delen, en lyssnare som är värd för en webbplats på gatewayen och en väg till behållare gruppen för Server delen
+* En containergrupp som distribueras [i det virtuella nätverket som](container-instances-vnet.md) är värd för en liten webbapp
+* En programgateway med en offentlig IP-adress för frontend, en lyssnare som ska vara värd för en webbplats på gatewayen och en väg till containergruppen i backend
 
-Så länge programgatewayen körs och behållar gruppen visar en stabil privat IP-adress i nätverkets delegerade undernät, är behållar gruppen tillgänglig på den här offentliga IP-adressen.
+Så länge programgatewayen körs och containergruppen exponerar en stabil privat IP-adress i nätverkets delegerade undernät är containergruppen tillgänglig på den här offentliga IP-adressen.
 
 > [!NOTE]
-> Azure debiterar för en Programgateway baserat på den tid som gatewayen är etablerad och tillgänglig, samt den mängd data som den bearbetar. Se [prissättning](https://azure.microsoft.com/pricing/details/application-gateway/).
+> Azure debiterar för en programgateway baserat på hur lång tid som gatewayen har etablerats och är tillgänglig, samt mängden data som den bearbetar. Se [prissättning](https://azure.microsoft.com/pricing/details/application-gateway/).
 
 ## <a name="create-virtual-network"></a>Skapa det virtuella nätverket
 
-I ett typiskt fall kanske du redan har ett virtuellt Azure-nätverk. Om du inte har ett kan du skapa en som visas med följande exempel kommandon. Det virtuella nätverket behöver separata undernät för programgatewayen och behållar gruppen.
+I ett typiskt fall kanske du redan har ett virtuellt Azure-nätverk. Om du inte har något kan du skapa ett som visas med följande exempelkommandon. Det virtuella nätverket behöver separata undernät för programgatewayen och containergruppen.
 
-Skapa en Azure-resurs grupp om du behöver det. Exempel:
+Om du behöver en resursgrupp skapar du en Azure-resursgrupp. Exempel:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
 ```
 
-Skapa ett virtuellt nätverk med kommandot [AZ Network VNet Create][az-network-vnet-create] . Det här kommandot skapar *myAGSubnet* -undernätet i nätverket.
+Skapa ett virtuellt nätverk med [kommandot az network vnet][az-network-vnet-create] create. Det här kommandot skapar *undernätet myAGSubnet* i nätverket.
 
 ```azurecli
 az network vnet create \
@@ -47,7 +47,7 @@ az network vnet create \
   --subnet-prefix 10.0.1.0/24
 ```
 
-Använd kommandot [AZ Network VNet Subnet Create][az-network-vnet-subnet-create] för att skapa ett undernät för gruppen Server dels behållare. Här heter den namnet *myACISubnet*.
+Använd kommandot [az network vnet subnet create][az-network-vnet-subnet-create] för att skapa ett undernät för backend-containergruppen. Här heter den *myACISubnet*.
 
 ```azurecli
 az network vnet subnet create \
@@ -57,7 +57,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Använd kommandot [AZ Network Public-IP Create][az-network-public-ip-create] för att skapa en statisk offentlig IP-resurs. I ett senare steg är den här adressen konfigurerad som klient delen av programgatewayen.
+Använd kommandot [az network public-ip create för att][az-network-public-ip-create] skapa en statisk offentlig IP-resurs. I ett senare steg konfigureras den här adressen som programgatewayens frontend.
 
 ```azurecli
 az network public-ip create \
@@ -69,9 +69,9 @@ az network public-ip create \
 
 ## <a name="create-container-group"></a>Skapa containergrupp
 
-Kör följande [AZ container Create][az-container-create] för att skapa en behållar grupp i det virtuella nätverk som du konfigurerade i föregående steg. 
+Kör följande az [container create för][az-container-create] att skapa en containergrupp i det virtuella nätverk som du konfigurerade i föregående steg. 
 
-Gruppen distribueras i *myACISubnet* -undernätet och innehåller en enda instans med namnet *AppContainer* som hämtar `aci-helloworld` avbildningen. Som du ser i andra artiklar i dokumentationen packar den här avbildningen en liten webbapp som skrivits i Node.js som hanterar en statisk HTML-sida. 
+Gruppen distribueras i undernätet *myACISubnet* och innehåller en enda instans med namnet *appcontainer* som hämtar avbildningen. `aci-helloworld` Som du ser i andra artiklar i dokumentationen paketerar den här avbildningen en liten webbapp som skrivits i Node.js fungerar som en statisk HTML-sida. 
 
 ```azurecli
 az container create \
@@ -82,7 +82,7 @@ az container create \
   --subnet myACISubnet
 ```
 
-När den har distribuerats tilldelas behållar gruppen en privat IP-adress i det virtuella nätverket. Kör till exempel följande [AZ container show][az-container-show] -kommando för att hämta gruppens IP-adress:
+När containergruppen har distribuerats tilldelas den en privat IP-adress i det virtuella nätverket. Kör till exempel följande [az container show-kommando][az-container-show] för att hämta gruppens IP-adress:
 
 ```azurecli
 az container show \
@@ -92,7 +92,7 @@ az container show \
 
 Utdata liknar följande: `10.0.2.4`.
 
-För användning i ett senare steg sparar du IP-adressen i en miljö variabel:
+Spara IP-adressen i en miljövariabel för användning i ett senare steg:
 
 ```azurecli
 ACI_IP=$(az container show \
@@ -102,11 +102,11 @@ ACI_IP=$(az container show \
 ```
 
 > [!IMPORTANT]
-> Om behållar gruppen har stoppats, startats eller startats om, kan behållar gruppens privata IP-adress komma att ändras. Om detta händer måste du uppdatera konfigurationen för programgatewayen.
+> Om containergruppen stoppas, startas eller startas om kan containergruppens privata IP-adress ändras. Om detta inträffar måste du uppdatera konfigurationen av programgatewayen.
 
 ## <a name="create-application-gateway"></a>Skapa Application Gateway
 
-Skapa en Application Gateway i det virtuella nätverket genom att följa stegen i snabb starten för [Application Gateway](../application-gateway/quick-create-cli.md). Följande [AZ Network Application-Gateway Create-][az-network-application-gateway-create] kommando skapar en gateway med en offentlig IP-adress för klient delen och en väg till behållar gruppen. Mer information om Gateway-inställningar finns i [Application Gateway-dokumentationen](../application-gateway/index.yml) .
+Skapa en programgateway i det virtuella nätverket genom att följa stegen i [snabbstarten för Application Gateway.](../application-gateway/quick-create-cli.md) Följande kommando [az network application-gateway create][az-network-application-gateway-create] skapar en gateway med en offentlig IP-adress för frontend och en väg till containergruppen i backend. Se Application Gateway [för](../application-gateway/index.yml) mer information om gatewayinställningarna.
 
 ```azurecli
 az network application-gateway create \
@@ -127,9 +127,9 @@ Det kan ta upp till 15 minuter för Azure att skapa programgatewayen.
 
 ## <a name="test-public-ip-address"></a>Testa offentlig IP-adress
   
-Nu kan du testa åtkomst till webbappen som körs i behållar gruppen bakom programgatewayen.
+Nu kan du testa åtkomsten till webbappen som körs i containergruppen bakom programgatewayen.
 
-Kör kommandot [AZ Network Public-IP show][az-network-public-ip-show] för att hämta gatewayens offentliga IP-adress:
+Kör kommandot [az network public-ip show för][az-network-public-ip-show] att hämta gatewayens offentliga IP-adress på frontend-sidan:
 
 ```azurecli
 az network public-ip show \
@@ -141,20 +141,20 @@ az network public-ip show \
 
 Utdata är en offentlig IP-adress som liknar: `52.142.18.133` .
 
-Om du vill visa den aktiva webbappen när den har kon figurer ATS navigerar du till gatewayens offentliga IP-adress i webbläsaren. Lyckad åtkomst liknar:
+Om du vill visa webbappen som körs när den har konfigurerats navigerar du till gatewayens offentliga IP-adress i webbläsaren. Lyckad åtkomst liknar följande:
 
 ![Skärmbild från webbläsaren som visar ett program som körs i en instans av Azure-containern](./media/container-instances-application-gateway/aci-app-app-gateway.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Se en [snabb starts mall](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) för att skapa en behållar grupp med en WordPress-container instans som en backend-server bakom en Programgateway.
-* Du kan också konfigurera en Programgateway med ett certifikat för SSL-avslutning. Se [översikten](../application-gateway/ssl-overview.md) och [självstudien](../application-gateway/create-ssl-portal.md).
-* Beroende på ditt scenario bör du överväga att använda andra lösningar för belastnings utjämning i Azure med Azure Container Instances. Använd till exempel [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) för att distribuera trafik över flera behållar instanser och över flera regioner. Se det här [blogg inlägget](https://aaronmsft.com/posts/azure-container-instances/).
+* Se en [snabbstartsmall](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) för att skapa en containergrupp med en WordPress-containerinstans som en serverserver bakom en programgateway.
+* Du kan också konfigurera en programgateway med ett certifikat för SSL-avslutning. Se [översikten](../application-gateway/ssl-overview.md) och [självstudien](../application-gateway/create-ssl-portal.md).
+* Beroende på ditt scenario bör du överväga att använda andra Azure-lösningar för belastningsutjämning med Azure Container Instances. Använd till exempel [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) för att distribuera trafik över flera containerinstanser och över flera regioner. Se det [här blogginlägget.](https://aaronmsft.com/posts/azure-container-instances/)
 
-[az-network-vnet-create]:  /cli/azure/network/vnet#az-network-vnet-create
-[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az-network-vnet-subnet-create
-[az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
-[az-network-public-ip-show]: /cli/azure/network/public-ip#az-network-public-ip-show
-[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az-network-application-gateway-create
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-show]: /cli/azure/container#az-container-show
+[az-network-vnet-create]:  /cli/azure/network/vnet#az_network_vnet_create
+[az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
+[az-network-public-ip-create]: /cli/azure/network/public-ip#az_network_public_ip_create
+[az-network-public-ip-show]: /cli/azure/network/public-ip#az_network_public_ip_show
+[az-network-application-gateway-create]: /cli/azure/network/application-gateway#az_network-application-gateway-create
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-show]: /cli/azure/container#az_container_show

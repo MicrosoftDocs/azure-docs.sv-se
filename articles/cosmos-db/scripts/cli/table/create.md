@@ -7,19 +7,19 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/29/2020
-ms.openlocfilehash: c6efc013241925085ecc9a5e3ead804ba3e82dee
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c9dfd7ec4a37ddc4a20ec948445273bbf772c34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94565984"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789000"
 ---
-# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Skapa ett Azure Cosmos-Tabell-API konto och en tabell med Azure CLI
+# <a name="create-an-azure-cosmos-table-api-account-and-table-using-azure-cli"></a>Skapa ett Azure Cosmos Tabell-API konto och en tabell med Hjälp av Azure CLI
 [!INCLUDE[appliesto-table-api](../../../includes/appliesto-table-api.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.9.1 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.9.1 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -39,13 +39,13 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Skapar ett Azure Cosmos DB-konto. |
-| [AZ cosmosdb Table Create](/cli/azure/cosmosdb/table#az-cosmosdb-table-create) | Skapar en Azure-Cosmos Tabell-API tabell. |
-| [az group delete](/cli/azure/resource#az-resource-delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Skapar ett Azure Cosmos DB-konto. |
+| [az cosmosdb table create](/cli/azure/cosmosdb/table#az_cosmosdb_table_create) | Skapar en Azure Cosmos Tabell-API tabell. |
+| [az group delete](/cli/azure/resource#az_resource_delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure Cosmos DB CLI finns i [Azure Cosmos DB CLI-dokumentation](/cli/azure/cosmosdb).
+Mer information om cli Azure Cosmos DB finns i [Azure Cosmos DB CLI-dokumentationen](/cli/azure/cosmosdb).
 
-Alla Azure Cosmos DB CLI-skript exempel finns i [Azure Cosmos DB CLI GitHub-lagringsplatsen](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).
+Alla Azure Cosmos DB CLI-skriptexempel finns i Azure Cosmos DB [CLI GitHub Repository](https://github.com/Azure-Samples/azure-cli-samples/tree/master/cosmosdb).

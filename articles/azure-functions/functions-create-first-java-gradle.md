@@ -1,24 +1,24 @@
 ---
-title: Använd Java och Gradle för att publicera en funktion i Azure
-description: Skapa och publicera en HTTP-utlöst funktion i Azure med Java och Gradle.
+title: Använda Java och Gradle för att publicera en funktion till Azure
+description: Skapa och publicera en HTTP-utlöst funktion till Azure med Java och Gradle.
 author: KarlErickson
 ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: c9ecb670cea022988efda8ec690c0724310cdb4b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7f8aa990f5a5e64d2d5c59b52457149187acddd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934857"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773989"
 ---
-# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Använd Java och Gradle för att skapa och publicera en funktion i Azure
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Använda Java och Gradle för att skapa och publicera en funktion till Azure
 
-Den här artikeln visar hur du skapar och publicerar ett Java-Function-projekt för att Azure Functions med kommando rads verktyget Gradle. När du är klar körs funktions koden i Azure i en [värd plan utan server](consumption-plan.md) och utlöses av en http-begäran. 
+Den här artikeln visar hur du skapar och publicerar ett Java-funktionsprojekt för Azure Functions med gradle-kommandoradsverktyget. När du är klar körs funktionskoden i Azure i en [serverlös värdplan](consumption-plan.md) och utlöses av en HTTP-begäran. 
 
 > [!NOTE]
-> Om Gradle inte är ditt fördelaktiga utvecklingsverktyg kan du ta en titt på våra liknande själv studie kurser för Java-utvecklare med [maven](./create-first-function-cli-java.md), [IntelliJ-idé](/azure/developer/java/toolkit-for-intellij/quickstart-functions) och vs- [kod](./create-first-function-vs-code-java.md).
+> Om Gradle inte är det utvecklingsverktyg du föredrar kan du kolla in våra liknande självstudier för Java-utvecklare som använder [Maven,](./create-first-function-cli-java.md) [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) och [VS Code.](./create-first-function-vs-code-java.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -26,8 +26,8 @@ För att kunna utveckla funktioner med hjälp av Java måste du ha följande ins
 
 - [Java Developer Kit](/azure/developer/java/fundamentals/java-jdk-long-term-support), version 8
 - [Azure CLI]
-- [Azure Functions Core tools](./functions-run-local.md#v2) version 2.6.666 eller senare
-- [Gradle](https://gradle.org/), version 4,10 och senare
+- [Azure Functions Core Tools](./functions-run-local.md#v2) version 2.6.666 eller senare
+- [Gradle](https://gradle.org/), version 4.10 och senare
 
 Du behöver också en aktiv Azure-prenumeration. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-Öppna `build.gradle` och ändra `appName` i följande avsnitt till ett unikt namn för att undvika domän namns konflikt vid distribution till Azure. 
+Öppna `build.gradle` och ändra i följande avsnitt till ett unikt namn för att undvika konflikter med domännamn när du `appName` distribuerar till Azure. 
 
 ```gradle
 azurefunctions {
@@ -58,20 +58,20 @@ azurefunctions {
 }
 ```
 
-Öppna den nya function. java-filen från sökvägen *src/main/Java* i en text redigerare och granska den genererade koden. Den här koden är en [http-utlöst](functions-bindings-http-webhook.md) funktion som upprepar bröd texten i begäran. 
+Öppna den nya Function.java-filen från *sökvägen src/main/java* i en textredigerare och granska den genererade koden. Den här koden är [en HTTP-utlöst](functions-bindings-http-webhook.md) funktion som returnerar brödtexten i begäran. 
 
 > [!div class="nextstepaction"]
 > [Jag stötte på ett problem](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Köra funktionen lokalt
 
-Kör följande kommando för att skapa och sedan köra-funktions projektet:
+Kör följande kommando för att skapa och kör sedan funktionsprojektet:
 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-Du ser utdata som följande från Azure Functions Core Tools när du kör projektet lokalt:
+Du ser utdata som liknar följande Azure Functions Core Tools när du kör projektet lokalt:
 
 <pre>
 ...
@@ -85,7 +85,7 @@ Http Functions:
 ...
 </pre>
 
-Utlös funktionen från kommando raden med hjälp av följande spiral kommando i ett nytt terminalfönster:
+Utlöst funktionen från kommandoraden med hjälp av följande cURL-kommando i ett nytt terminalfönster:
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
@@ -98,7 +98,7 @@ Hello, AzureFunctions
 </pre>
 
 > [!NOTE]
-> Om du anger authLevel till `FUNCTION` eller `ADMIN` , krävs inte [funktions nyckeln](functions-bindings-http-webhook-trigger.md#authorization-keys) när du kör lokalt.  
+> Om du anger authLevel `FUNCTION` till eller krävs inte `ADMIN` [funktionsnyckeln](functions-bindings-http-webhook-trigger.md#authorization-keys) när du kör lokalt.  
 
 Använd `Ctrl+C` i terminalen för att stoppa funktionskoden.
 
@@ -107,58 +107,58 @@ Använd `Ctrl+C` i terminalen för att stoppa funktionskoden.
 
 ## <a name="deploy-the-function-to-azure"></a>Distribuera funktionen till Azure
 
-En Function-app och relaterade resurser skapas i Azure när du först distribuerar din Function-app. Innan du kan distribuera använder du kommandot [AZ login](/cli/azure/authenticate-azure-cli) Azure CLI för att logga in på din Azure-prenumeration. 
+En funktionsapp och relaterade resurser skapas i Azure när du först distribuerar funktionsappen. Innan du kan distribuera använder du [Azure CLI-kommandot az login](/cli/azure/authenticate-azure-cli) för att logga in på din Azure-prenumeration. 
 
 ```azurecli
 az login
 ```
 
 > [!TIP]
-> Om ditt konto har åtkomst till flera prenumerationer använder du [AZ-konto uppsättning](/cli/azure/account#az-account-set) för att ange standard prenumerationen för den här sessionen. 
+> Om ditt konto har åtkomst till flera prenumerationer använder du [az account set för](/cli/azure/account#az_account_set) att ange standardprenumerationen för den här sessionen. 
 
-Använd följande kommando för att distribuera projektet till en ny function-app. 
+Använd följande kommando för att distribuera projektet till en ny funktionsapp. 
 
 ```bash
 gradle azureFunctionsDeploy
 ```
 
-Detta skapar följande resurser i Azure, baserat på värdena i filen build. gradle:
+Detta skapar följande resurser i Azure, baserat på värdena i filen build.gradle:
 
-+ Resurs grupp. Med namnet med _resourceGroup_ du angav.
-+ Lagrings konto. Krävs av functions. Namnet genereras slumpmässigt baserat på lagrings kontots namn krav.
-+ App Service plan. Server lös förbruknings plan som är värd för din Function-app i den angivna _appRegion_. Namnet genereras slumpmässigt.
-+ Function-app. En Function-app är distributions-och körnings enheten för dina funktioner. Namnet är ditt _APPNAME_ och läggs till med ett slumpmässigt genererat nummer. 
++ Resursgrupp. Namnges med _den resourceGroup som_ du angav.
++ Lagringskonto. Krävs av Functions. Namnet genereras slumpmässigt baserat på krav på lagringskontonamn.
++ App Service plan. Serverlös förbrukningsplan som värd för funktionsappen i den angivna _appRegion_. Namnet genereras slumpmässigt.
++ Funktionsapp. En funktionsapp är distributions- och körningsenheten för dina funktioner. Namnet är ditt _appName_, som läggs till med ett slumpmässigt genererat tal. 
 
-Distributionen paketerar också projektfilerna och distribuerar dem till den nya Function-appen med hjälp av [zip-distribution](functions-deployment-technologies.md#zip-deploy), där läget Kör-från-paket är aktiverat.
+Distributionen paketerar även projektfilerna och distribuerar dem till den nya funktionsappen med [zip-distribution](functions-deployment-technologies.md#zip-deploy), med läget run-from-package aktiverat.
 
-AuthLevel för HTTP-utlösare i exempel projekt är `ANONYMOUS` , vilket kommer att hoppa över autentiseringen. Men om du använder andra authLevel som `FUNCTION` eller `ADMIN` måste du hämta funktions nyckeln för att anropa funktions slut punkten över http. Det enklaste sättet att hämta funktions nyckeln är från [Azure Portal].
+AuthLevel för HTTP-utlösaren i exempelprojektet är `ANONYMOUS` , vilket hoppar över autentiseringen. Men om du använder en annan authLevel som eller måste du hämta `FUNCTION` `ADMIN` funktionsnyckeln för att anropa funktionsslutpunkten via HTTP. Det enklaste sättet att hämta funktionsnyckeln är från [Azure Portal].
 
 > [!div class="nextstepaction"]
 > [Jag stötte på ett problem](https://www.research.net/r/javae2e?tutorial=functions-create-first-java-gradle&step=deploy)
 
-## <a name="get-the-http-trigger-url"></a>Hämta URL: en för HTTP-utlösaren
+## <a name="get-the-http-trigger-url"></a>Hämta HTTP-utlösar-URL:en
 
-Du kan hämta den URL som krävs för att utlösa din funktion med funktions tangenten från Azure Portal. 
+Du kan hämta den URL som krävs för att utlösa funktionen, med funktionsnyckeln, från Azure Portal. 
 
-1. Bläddra till [Azure Portal], logga in, ange _APPNAME_ för din Function-app i **Sök** överst på sidan och tryck på RETUR.
+1. Bläddra till [Azure Portal,]logga in, skriv _appName_ för funktionsappen i **Sök** överst på sidan och tryck på Retur.
  
-1. I din Function-app väljer du **funktioner**, väljer din funktion och klickar sedan på **</> Hämta funktions webb adress** längst upp till höger. 
+1. I funktionsappen väljer du **Funktioner,** väljer din funktion och klickar sedan **på</> Hämta funktions-URL** längst upp till höger. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopiera funktionswebbadressen från Azure Portal":::
 
-1. Välj **Standard (funktions nyckel)** och välj **Kopiera**. 
+1. Välj **standard (funktionsnyckel)** och välj **Kopiera**. 
 
-Nu kan du använda den kopierade URL: en för att få åtkomst till din funktion.
+Du kan nu använda den kopierade URL:en för att få åtkomst till funktionen.
 
 ## <a name="verify-the-function-in-azure"></a>Verifiera funktionen i Azure
 
-För att kontrol lera att funktionen App körs på Azure med `cURL` , ersätter du URL: en från exemplet nedan med den URL som du kopierade från portalen.
+Om du vill verifiera funktionsappen som körs i Azure med hjälp av ersätter du URL:en från exemplet nedan med `cURL` den URL som du kopierade från portalen.
 
 ```console
 curl -w "\n" http://azure-functions-sample-demo.azurewebsites.net/api/HttpExample --data AzureFunctions
 ```
 
-Detta skickar en POST-begäran till funktions slut punkten med `AzureFunctions` i bröd texten i begäran. Du ser följande svar.
+Detta skickar en POST-begäran till funktionsslutpunkten `AzureFunctions` med i brödtexten i begäran. Du ser följande svar.
 
 <pre>
 Hello, AzureFunctions
@@ -169,10 +169,10 @@ Hello, AzureFunctions
 
 ## <a name="next-steps"></a>Nästa steg
 
-Du har skapat ett Java Functions-projekt med en HTTP-utlöst funktion, kört den på din lokala dator och distribuerat den till Azure. Nu kan du utöka din funktion efter...
+Du har skapat ett Java Functions-projekt med en HTTP-utlöst funktion, kört det på din lokala dator och distribuerat det till Azure. Utöka nu din funktion genom att...
 
 > [!div class="nextstepaction"]
-> [Lägga till en Azure Storage utgående bindning för kö](functions-add-output-binding-storage-queue-java.md)
+> [Lägga till en Azure Storage köutdatabindning](functions-add-output-binding-storage-queue-java.md)
 
 
 [Azure CLI]: /cli/azure

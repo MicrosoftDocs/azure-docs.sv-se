@@ -1,5 +1,5 @@
 ---
-title: Privat länk – Azure CLI – Azure Database for MySQL
+title: Private Link – Azure CLI – Azure Database for MySQL
 description: Lär dig hur du konfigurerar privat länk för Azure Database for MySQL från Azure CLI
 author: mksuni
 ms.author: sumuth
@@ -7,34 +7,34 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: da6a2b97d2656d56fa2aa0e7259fba433bd7b81e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2fbf95dcf2d5e3447197bc71105e415cce6681e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95998591"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763333"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Skapa och hantera en privat länk för Azure Database for MySQL med CLI
+# <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Skapa och hantera Private Link för Azure Database for MySQL med CLI
 
-En privat slut punkt är det grundläggande Bygg blocket för privat länk i Azure. Den gör det möjligt för Azure-resurser, t. ex. Virtual Machines (VM), att kommunicera privat med privata länk resurser. I den här artikeln får du lära dig hur du använder Azure CLI för att skapa en virtuell dator i en Azure-Virtual Network och en Azure Database for MySQL-server med en privat Azure-slutpunkt.
+En privat slutpunkt är den grundläggande byggstenen för privat länk i Azure. Det gör att Azure-resurser som Virtual Machines (VM) kan kommunicera privat med privata länkresurser. I den här artikeln får du lära dig hur du använder Azure CLI för att skapa en virtuell dator i en Azure Virtual Network och en Azure Database for MySQL-server med en privat Azure-slutpunkt.
 
 > [!NOTE]
-> Funktionen privat länk är bara tillgänglig för Azure Database for MySQL servrar i Generell användning eller Minnesoptimerade pris nivåer. Se till att databas servern är på någon av dessa pris nivåer.
+> Funktionen private link är endast tillgänglig för Azure Database for MySQL servrar i Generell användning eller minnesoptimerade prisnivåer. Se till att databasservern är på någon av dessa prisnivåer.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Innan du kan skapa en resurs måste du skapa en resurs grupp som är värd för Virtual Network. Skapa en resursgrupp med [az group create](/cli/azure/group). I det här exemplet skapas en resurs grupp med namnet *myResourceGroup* på *westeurope* -platsen:
+Innan du kan skapa en resurs måste du skapa en resursgrupp som är värd för Virtual Network. Skapa en resursgrupp med [az group create](/cli/azure/group). I det här exemplet skapas en resursgrupp *med namnet myResourceGroup* på *platsen westeurope:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
-Skapa en Virtual Network med [AZ Network VNet Create](/cli/azure/network/vnet). I det här exemplet skapas en standard Virtual Network med namnet *myVirtualNetwork* med ett undernät med namnet *undernät*:
+Skapa en Virtual Network med [az network vnet create](/cli/azure/network/vnet). I det här exemplet skapas en Virtual Network med *namnet myVirtualNetwork* med ett undernät med namnet *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -43,8 +43,8 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Inaktivera privata slut punkts principer för undernät 
-Azure distribuerar resurser till ett undernät i ett virtuellt nätverk, så du måste skapa eller uppdatera under nätet för att inaktivera [nätverks principer](../private-link/disable-private-endpoint-network-policy.md)för privata slut punkter. Uppdatera en under näts konfiguration med namnet *mitt undernät* med [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+## <a name="disable-subnet-private-endpoint-policies"></a>Inaktivera principer för privat slutpunkt för undernät 
+Azure distribuerar resurser till ett undernät i ett virtuellt nätverk, så du måste skapa eller uppdatera undernätet för att inaktivera nätverksprinciper för [privata slutpunkter.](../private-link/disable-private-endpoint-network-policy.md) Uppdatera en undernätskonfiguration med *namnet mySubnet* [med az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -54,17 +54,17 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Skapa den virtuella datorn 
-Skapa en virtuell dator med AZ VM Create. När du uppmanas anger du ett lösen ord som ska användas som inloggnings uppgifter för den virtuella datorn. I det här exemplet skapas en virtuell dator med namnet *myVm*: 
+Skapa en virtuell dator med az vm create. När du uppmanas till det anger du ett lösenord som ska användas som inloggningsuppgifter för den virtuella datorn. I det här exemplet skapas en virtuell dator med *namnet myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
   --name myVm \
   --image Win2019Datacenter
 ```
-Observera den offentliga IP-adressen för den virtuella datorn. Du kommer att använda den här adressen när du ansluter till den virtuella datorn från Internet i nästa steg.
+Anteckna den virtuella datorns offentliga IP-adress. Du kommer att använda den här adressen när du ansluter till den virtuella datorn från Internet i nästa steg.
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Skapa en Azure Database för MySQL-server 
-Skapa en Azure Database for MySQL med kommandot AZ MySQL server Create. Kom ihåg att namnet på MySQL-servern måste vara unikt i Azure, så Ersätt plats hållarens värde inom hakparenteser med ditt eget unika värde: 
+Skapa en Azure Database for MySQL med kommandot az mysql server create. Kom ihåg att namnet på mySQL-servern måste vara unikt i Azure, så ersätt platshållarvärdet inom hakparentes med ditt eget unika värde: 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -78,11 +78,11 @@ az mysql server create \
 ```
 
 > [!NOTE]
-> I vissa fall finns Azure Database for MySQL och VNet-under nätet i olika prenumerationer. I dessa fall måste du se till att följande konfigurationer:
-> - Se till att båda prenumerations resurs leverantören för **Microsoft. DBforMySQL** är registrerad. Mer information hittar du i [Resource Manager-Registration][resource-manager-portal]
+> I vissa fall Azure Database for MySQL och VNet-undernätet i olika prenumerationer. I dessa fall måste du se till att följande konfigurationer:
+> - Kontrollera att båda prenumerationerna har resursprovidern **Microsoft.DBforMySQL** registrerad. Mer information finns i [resource-manager-registration][resource-manager-portal]
 
-## <a name="create-the-private-endpoint"></a>Skapa den privata slut punkten 
-Skapa en privat slut punkt för MySQL-servern i Virtual Network: 
+## <a name="create-the-private-endpoint"></a>Skapa den privata slutpunkten 
+Skapa en privat slutpunkt för MySQL-servern i din Virtual Network: 
 
 ```azurecli-interactive
 az network private-endpoint create \  
@@ -96,7 +96,7 @@ az network private-endpoint create \
  ```
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera Privat DNS zon 
-Skapa en Privat DNS zon för MySQL Server-domän och skapa en kopplings länk med Virtual Network. 
+Skapa en Privat DNS Zon för MySQL-serverdomän och skapa en kopplingslänk till Virtual Network. 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
    --name  "privatelink.mysql.database.azure.com" 
@@ -120,26 +120,26 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> Det fullständiga domännamnet i DNS-inställningen för kunden matchar inte den privata IP-adressen som har konfigurerats. Du måste konfigurera en DNS-zon för den konfigurerade FQDN: en som visas [här](../dns/dns-operations-recordsets-portal.md).
+> Det fullständiga domännamnet i DNS-inställningen för kunden matchar inte den privata IP-adressen som har konfigurerats. Du måste konfigurera en DNS-zon för det konfigurerade FQDN som visas [här](../dns/dns-operations-recordsets-portal.md).
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Ansluta till en virtuell dator från Internet
 
-Anslut till VM- *myVm* från Internet på följande sätt:
+Anslut till den virtuella *datorn myVm* från Internet på följande sätt:
 
 1. I portalens sökfältet anger du *myVm*.
 
 1. Välj knappen **Anslut**. När du har valt knappen **Anslut** öppnas **Anslut till den virtuella datorn**.
 
-1. Välj **Hämta RDP-fil**. Azure skapar en Remote Desktop Protocol-fil (*. RDP*) och laddar ned den till datorn.
+1. Välj **Hämta RDP-fil**. Azure skapar en Remote Desktop Protocol -fil *(.rdp)* och laddar ned den till datorn.
 
-1. Öppna den *nedladdade RDP* -filen.
+1. Öppna filen *downloaded.rdp.*
 
     1. Välj **Anslut** om du uppmanas att göra det.
 
-    1. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
+    1. Ange det användarnamn och lösenord som du angav när du skapade den virtuella datorn.
 
         > [!NOTE]
-        > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto** för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
+        > Du kan behöva välja Fler **alternativ Använd ett** annat konto för att  >  **ange** autentiseringsuppgifterna som du angav när du skapade den virtuella datorn.
 
 1. Välj **OK**.
 
@@ -147,9 +147,9 @@ Anslut till VM- *myVm* från Internet på följande sätt:
 
 1. När virtuella datorns skrivbord visas kan du minimera det att gå tillbaka till din lokala dator.  
 
-## <a name="access-the-mysql-server-privately-from-the-vm"></a>Få åtkomst till MySQL-servern privat från den virtuella datorn
+## <a name="access-the-mysql-server-privately-from-the-vm"></a>Komma åt MySQL-servern privat från den virtuella datorn
 
-1. Öppna PowerShell i fjärr skrivbordet för *myVM*.
+1. Öppna PowerShell *på fjärrskrivbordet för myVM.*
 
 2. Ange  `nslookup mydemomysqlserver.privatelink.mysql.database.azure.com`. 
 
@@ -162,36 +162,36 @@ Anslut till VM- *myVm* från Internet på följande sätt:
     Address:  10.1.3.4
     ```
 
-3. Testa anslutningen till den privata länken för MySQL-servern med valfri tillgänglig klient. I exemplet nedan har jag använt [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) för att utföra åtgärden.
+3. Testa den privata länkanslutningen för MySQL-servern med valfri tillgänglig klient. I exemplet nedan har jag använt [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) för att göra åtgärden.
 
 
-4. I **ny anslutning** anger eller väljer du den här informationen:
+4. I **Ny anslutning** anger eller väljer du följande information:
 
     | Inställning | Värde |
     | ------- | ----- |
-    | Anslutningsnamn| Välj önskat anslutnings namn.|
-    | Värdnamn | Välj *mydemoserver.privatelink.mysql.Database.Azure.com* |
-    | Användarnamn | Ange användar namn som *username@servername* anges när MySQL-servern skapas. |
-    | Lösenord | Ange ett lösen ord som anges när MySQL-servern skapas. |
+    | Anslutningsnamn| Välj val av anslutningsnamn.|
+    | Värdnamn | Välj *mydemoserver.privatelink.mysql.database.azure.com* |
+    | Användarnamn | Ange det användarnamn *username@servername* som angavs när MySQL-servern skapades. |
+    | Lösenord | Ange ett lösenord som angavs när MySQL-servern skapades. |
     ||
 
 5. Välj Anslut.
 
-6. Bläddra bland databaser från menyn till vänster.
+6. Bläddra i databaser på den vänstra menyn.
 
-7. Du kan också Skapa eller fråga efter information från MySQL-databasen.
+7. (Valfritt) Skapa eller fråga efter information från MySQL-databasen.
 
-8. Stäng fjärr skrivbords anslutningen till myVm.
+8. Stäng fjärrskrivbordsanslutningen till myVm.
 
 ## <a name="clean-up-resources"></a>Rensa resurser 
-När de inte längre behövs kan du använda AZ Group Delete för att ta bort resurs gruppen och alla resurser den har: 
+När resursgruppen inte längre behövs kan du använda az group delete för att ta bort resursgruppen och alla resurser den har: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Läs mer om [vad som är en privat Azure-slutpunkt](../private-link/private-endpoint-overview.md)
+- Läs mer om [Vad är en privat Azure-slutpunkt?](../private-link/private-endpoint-overview.md)
 
 <!-- Link references, to text, Within this same GitHub repo. -->
 [resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

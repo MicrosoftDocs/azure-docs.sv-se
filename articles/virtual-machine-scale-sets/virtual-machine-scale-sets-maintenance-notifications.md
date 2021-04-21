@@ -9,12 +9,12 @@ ms.subservice: maintenance-control
 ms.date: 11/12/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 355e29cf062b731ed26670497a8de75fef266b99
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: ec8d211bd25eb04f9e000af950cea9a28a0d1874
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375720"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107762847"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Meddelanden för planerat underhåll för VM-skalningsuppsättningar
 
@@ -30,31 +30,31 @@ Planerat underhåll som kräver en omstart schemaläggs i vågor. Varje våg har
 
 - En våg börjar med ett meddelande till kunder. Som standard skickas ett meddelande till prenumerationens ägare och medägare. Du kan lägga till mottagare och meddelandealternativ som e-post, SMS och webhooks i meddelandena med hjälp av [Azure-aktivitetsloggaviseringar.](../azure-monitor/essentials/platform-logs-overview.md)  
 - Med ett meddelande *blir ett självbetjäningsfönstret* tillgängligt. Under det här fönstret som vanligtvis är 35 dagar kan du se vilka av dina virtuella datorer som ingår i vågen. Du kan starta underhåll proaktivt enligt dina egna schemaläggningsbehov.
-- Efter självbetjäningsfönstret börjar *en schemalagd underhållsfönstret.* Någon gång under den här perioden schemalägger Och tillämpar Azure det underhåll som krävs på den virtuella datorn. 
+- Efter självbetjäningsfönstret börjar *en schemalagd underhållsfönstret.* Någon gång under det här fönstret schemalägger Och tillämpar Azure det underhåll som krävs på den virtuella datorn. 
 
-Målet med att ha två fönster är att ge dig tillräckligt med tid för att starta underhållet och starta om den virtuella datorn samtidigt som du vet när Azure ska starta underhåll automatiskt.
+Målet med att ha två fönster är att ge dig tillräckligt med tid för att starta underhåll och starta om den virtuella datorn samtidigt som du vet när Azure ska starta underhåll automatiskt.
 
-Du kan använda Azure Portal, PowerShell, REST API och Azure CLI för att fråga efter underhållsfönster för dina virtuella datorer i skalningsuppsättningen för virtuella datorer och för att starta självbetjäningsunderhåll.
+Du kan använda Azure Portal, PowerShell, REST API och Azure CLI för att fråga efter underhåll windows för vm-skalningsuppsättningens virtuella datorer och för att starta självbetjäningsunderhåll.
 
 ## <a name="should-you-start-maintenance-during-the-self-service-window"></a>Bör du starta underhållet under självbetjäningsfönstret?  
 
 Följande riktlinjer kan hjälpa dig att avgöra om du vill starta underhållet vid en tidpunkt som du väljer.
 
 > [!NOTE] 
-> Självbetjäning av underhåll kanske inte är tillgängligt för alla dina virtuella datorer. Du kan avgöra om proaktiv omdistribution är tillgänglig för den virtuella datorn genom att leta **efter Starta nu** i underhållsstatusen. Underhåll via självbetjäning är för närvarande inte tillgängligt för Azure Cloud Services (webb-/arbetsroll) och Azure Service Fabric.
+> Självbetjäning av underhåll kanske inte är tillgängligt för alla dina virtuella datorer. Om du vill ta reda på om proaktiv omdistribution är tillgänglig för den virtuella datorn letar du **efter Starta nu** i underhållsstatusen. För närvarande är självbetjäning inte tillgängligt för Azure Cloud Services (webb-/arbetsroll) och Azure Service Fabric.
 
 
-Underhåll med självbetjäning rekommenderas inte för distributioner som använder *tillgänglighetsuppsättningar.* Tillgänglighetsuppsättningar är konfigurationer med hög tillgänglighet där endast en uppdateringsdomän påverkas när som helst. För tillgänglighetsuppsättningar:
+Självbetjäning av underhåll rekommenderas inte för distributioner som använder *tillgänglighetsuppsättningar.* Tillgänglighetsuppsättningar är konfigurationer med hög tillgänglighet där endast en uppdateringsdomän påverkas när som helst. För tillgänglighetsuppsättningar:
 
-- Låt Azure utlösa underhållet. För underhåll som kräver en omstart utförs underhåll av uppdateringsdomänen av uppdateringsdomänen. Uppdateringsdomäner tar inte nödvändigtvis emot underhållet sekventiellt. Det tar 30 minuter att pausa mellan uppdateringsdomäner.
+- Låt Azure utlösa underhållet. För underhåll som kräver en omstart utförs uppdateringsdomänen av uppdateringsdomänen. Uppdateringsdomäner tar inte nödvändigtvis emot underhållet sekventiellt. Det tar 30 minuter att pausa mellan uppdateringsdomäner.
 - Om en tillfällig förlust av en del av din kapacitet (1/uppdatera domänantal) är ett problem kan du enkelt kompensera för förlusten genom att allokera ytterligare instanser under underhållsperioden.
-- Uppdateringar tillämpas på feldomännivå för underhåll som inte kräver en omstart. 
+- Uppdateringar tillämpas på feldomännivå för underhåll som inte kräver omstart. 
     
 **Använd inte** självbetjäning i följande scenarier: 
 
 - Om du stänger av dina virtuella datorer ofta, antingen manuellt, med hjälp av DevTest Labs, genom att använda automatisk avstängning eller genom att följa ett schema. Självbetjäning av underhåll i dessa scenarier kan återställa underhållsstatusen och orsaka ytterligare driftstopp.
 - På kortvariga virtuella datorer som du vet kommer att tas bort före slutet av underhållsvågen. 
-- För arbetsbelastningar med ett stort tillstånd som lagras på den lokala (tillfälliga) disk som du vill underhålla efter uppdateringen. 
+- För arbetsbelastningar med ett stort tillstånd som lagras på den lokala (tillfälliga) disken som du vill underhålla efter uppdateringen. 
 - Om du ändrar storlek på den virtuella datorn ofta. Det här scenariot kan återställa underhållsstatusen. 
 - Om du har infört schemalagda händelser som aktiverar proaktiv redundans eller en bra avstängning av arbetsbelastningen 15 minuter innan underhållsavstängningen påbörjas.
 
@@ -62,7 +62,7 @@ Underhåll med självbetjäning rekommenderas inte för distributioner som anvä
 
 Det är bäst att använda självbetjäning i följande fall:
 
-- Du måste ange en exakt underhållsfönstret för hantering eller din kund. 
+- Du måste kommunicera en exakt underhållsfönstret för hantering eller din kund. 
 - Du måste slutföra underhållet senast ett visst datum. 
 - Du måste kontrollera underhållssekvensen, till exempel i ett flernivåprogram, för att garantera säker återställning.
 - Du behöver mer än 30 minuters återställningstid för virtuella datorer mellan två uppdateringsdomäner. Om du vill styra tiden mellan uppdateringsdomäner måste du utlösa underhåll på dina virtuella datorer en uppdateringsdomän i taget.
@@ -77,14 +77,14 @@ När en planerad underhållsvåg schemaläggs kan du visa listan över VM-skalni
 3. Under **VM-skalningsuppsättningar** väljer du **Redigera kolumner** för att öppna listan över tillgängliga kolumner.
 4. I avsnittet **Tillgängliga kolumner** väljer du **Självbetjäning underhåll** och flyttar det sedan till listan **Valda** kolumner. Välj **Använd**.  
 
-    Om du vill **göra det lättare** att hitta självbetjäningstjänstunderhållsobjektet kan du ändra listrutan i avsnittet Tillgängliga **kolumner** **från Alla** till **Egenskaper.**
+    Om du vill **göra det enklare att** hitta självbetjäningunderhållsobjektet kan du ändra listr listrutan i avsnittet Tillgängliga kolumner från **Alla** till **Egenskaper.** 
 
 Kolumnen **Självbetjäningsunderhåll** visas nu i listan över VM-skalningsuppsättningar. Varje VM-skalningsuppsättning kan ha något av följande värden för kolumnen självbetjäningsunderhåll:
 
 | Värde | Beskrivning |
 |-------|-------------|
 | Ja | Minst en virtuell dator i VM-skalningsuppsättningen finns i ett självbetjäningsfönstret. Du kan starta underhållet när som helst under självbetjäningsfönstret. | 
-| Inga | Inga virtuella datorer finns i ett självbetjäningsfönstret i den berörda VM-skalningsuppsättningen. | 
+| No | Inga virtuella datorer finns i ett självbetjäningsfönstret i den berörda VM-skalningsuppsättningen. | 
 | - | Dina VM-skalningsuppsättningar ingår inte i en planerad underhållsvåg.| 
 
 ## <a name="notification-and-alerts-in-the-portal"></a>Meddelanden och aviseringar i portalen
@@ -97,7 +97,7 @@ Azure kommunicerar ett schema för planerat underhåll genom att skicka ett e-po
 4. På sidan **Lägg till aktivitetsloggavisering** väljer eller anger du den begärda informationen. I **Villkor** kontrollerar du att du anger följande värden:
    - **Händelsekategori:** Välj **Service Health**.
    - **Tjänster:** Välj **Virtual Machine Scale Sets och Virtual Machines**.
-   - **Typ:** Välj **Planerat underhåll.** 
+   - **Typ:** Välj **Planned maintenance (Planerat underhåll).** 
     
 Mer information om hur du konfigurerar aktivitetsloggaviseringar finns i [Skapa aktivitetsloggaviseringar](../azure-monitor/alerts/activity-log-alerts.md)
     
@@ -141,9 +141,9 @@ Du kan starta underhåll på en virtuell dator **om IsCustomerInitiatedMaintenan
 Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
-## <a name="check-maintenance-status-by-using-the-cli"></a>Kontrollera status för underhåll med hjälp av CLI
+## <a name="check-maintenance-status-by-using-the-cli"></a>Kontrollera underhållsstatus med hjälp av CLI
 
-Du kan visa information om planerat underhåll med [hjälp av az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances).
+Du kan visa information om planerat underhåll med [hjälp av az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances).
  
 Underhållsinformation returneras endast om underhåll planeras. Om inget underhåll som påverkar den virtuella datorinstansen schemaläggs returnerar inte kommandot någon underhållsinformation. 
 
@@ -151,21 +151,21 @@ Underhållsinformation returneras endast om underhåll planeras. Om inget underh
 az vmss list-instances -g rgName -n vmssName --expand instanceView
 ```
 
-Följande egenskaper returneras under **MaintenanceRedeployStatus för** varje virtuell datorinstans: 
+Följande egenskaper returneras under **MaintenanceRedeployStatus för varje** VM-instans: 
 
 | Värde | Beskrivning   |
 |-------|---------------|
-| IsCustomerInitiatedMaintenanceAllowed | Anger om du kan starta underhåll på den virtuella datorn just nu. |
+| IsCustomerInitiatedMaintenanceAllowed | Anger om du kan starta underhållet på den virtuella datorn just nu. |
 | PreMaintenanceWindowStartTime         | I början av självbetjäningsfönstret för underhåll när du kan starta underhållet på den virtuella datorn. |
-| PreMaintenanceWindowEndTime           | Slutet på självbetjäningsfönstret för underhåll när du kan starta underhållet på den virtuella datorn. |
-| UnderhållWindowStartTime            | I början av det schemalagda underhållet som Azure initierar underhåll på den virtuella datorn. |
+| PreMaintenanceWindowEndTime           | I slutet av självbetjäningsfönstret för underhåll när du kan starta underhållet på den virtuella datorn. |
+| UnderhållWindowStartTime            | Början av det schemalagda underhållet där Azure initierar underhåll på den virtuella datorn. |
 | MaintenanceWindowEndTime              | Slutet på den schemalagda underhållsfönstret där Azure initierar underhåll på den virtuella datorn. |
 | LastOperationResultCode               | Resultatet av det senaste försöket att starta underhållet på den virtuella datorn. |
 
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-the-cli"></a>Starta underhåll på den virtuella datorinstansen med hjälp av CLI
 
-Följande anrop initierar underhåll på en VM-instans `IsCustomerInitiatedMaintenanceAllowed` om har angetts till **true**:
+Följande anrop initierar underhåll på en VM-instans om `IsCustomerInitiatedMaintenanceAllowed` har angetts till **true**:
 
 ```azurecli
 az vmss perform-maintenance -g rgName -n vmssName --instance-ids id
@@ -204,9 +204,9 @@ Mer information om hög tillgänglighet finns i [Regioner och tillgänglighet f�
 **S:** Det finns flera orsaker till varför du kanske inte ser någon underhållsinformation på dina virtuella datorer:
    - Du använder en prenumeration som har markerats som *Microsoft Internal*.
    - Dina virtuella datorer är inte schemalagda för underhåll. Det kan vara så att underhållsvågen avslutades, avbröts eller ändrades så att dina virtuella datorer inte längre påverkas av den.
-   - Du har inte kolumnen Underhåll **tillagd** i listvyn för den virtuella datorn. Även om vi har lagt till den här kolumnen i standardvyn måste du  manuellt lägga till kolumnen Underhåll i listvyn för virtuella datorer om du konfigurerar vyn så att den ser kolumner som inte är standard.
+   - Du har inte kolumnen Underhåll **tillagd** i listvyn för den virtuella datorn. Även om vi har lagt till den här kolumnen i standardvyn måste du manuellt lägga till kolumnen **Underhåll** i listvyn för virtuella datorer om du konfigurerar vyn så att den visar kolumner som inte är standard.
 
-**F: Min virtuella dator schemaläggs för underhåll den andra gången. Varför?**
+**F: Min virtuella dator är schemalagd för underhåll den andra gången. Varför?**
 
 **S:** I flera användningsfall schemaläggs den virtuella datorn för underhåll när du redan har slutfört underhållet och omdistribuerat:
    - Vi har avbrutit underhållsvågen och startat om den med en annan nyttolast. Det kan vara så att vi har identifierat en felaktig nyttolast och att vi bara behöver distribuera ytterligare en nyttolast.

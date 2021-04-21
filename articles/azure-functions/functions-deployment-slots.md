@@ -1,204 +1,204 @@
 ---
-title: Azure Functions distributions platser
-description: Lär dig att skapa och använda distributions fack med Azure Functions
+title: Azure Functions distributionsfack
+description: Lär dig att skapa och använda distributionsfack med Azure Functions
 author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 73282145abd8bfe804b47fda3bf5f12dc691ff3a
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 5f003b68283217f7877dc650ae4f07ddc5a31012
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551364"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789347"
 ---
-# <a name="azure-functions-deployment-slots"></a>Azure Functions distributions platser
+# <a name="azure-functions-deployment-slots"></a>Azure Functions distributionsfack
 
-Med Azure Functions distributions platser kan din Function-app köra olika instanser som kallas "platser". Platser är olika miljöer som exponeras via en offentligt tillgänglig slut punkt. En app-instans är alltid mappad till produktions platsen och du kan byta instanser som har tilldelats till en plats på begäran. Function-appar som körs under App Service-planen kan ha flera platser, medan endast en plats tillåts under förbruknings planen.
+Azure Functions distributionsfack gör att funktionsappen kan köra olika instanser som kallas "platser". Platser är olika miljöer som exponeras via en offentligt tillgänglig slutpunkt. En appinstans mappas alltid till produktionsplatsen och du kan växla instanser som tilldelats till en plats på begäran. Funktionsappar som körs under Apps Service-planen kan ha flera platser, medan endast ett fack tillåts under förbrukningsplanen.
 
-Följande visar hur funktioner påverkas av växlings platser:
+Följande visar hur funktioner påverkas av växlingsfack:
 
-- Trafik omdirigering är sömlös; inga förfrågningar ignoreras på grund av en växling.
-- Om en funktion körs under en växling fortsätter körningen och nästa utlösare dirigeras till den utbytta App-instansen.
+- Omdirigering av trafik är sömlöst. inga begäranden tas bort på grund av ett byte.
+- Om en funktion körs under en växling fortsätter körningen och nästa utlösare dirigeras till den växlade appinstansen.
 
 ## <a name="why-use-slots"></a>Varför ska jag använda platser?
 
-Det finns ett antal fördelar med att använda distributions platser. I följande scenarier beskrivs vanliga användnings områden för fack:
+Det finns ett antal fördelar med att använda distributionsfack. I följande scenarier beskrivs vanliga användningsområden för platser:
 
-- **Olika miljöer i olika syfte**: med olika platser får du möjlighet att särskilja App-instanser innan du växlar till produktion eller mellanlagringsplats.
-- Att **förvärma**: distribution till en plats i stället för direkt till produktion gör att appen kan värmas innan Live. Dessutom minskar svars tiden för HTTP-utlösta arbets belastningar med hjälp av platser. Instanser värms upp före distributionen, vilket minskar kall starten för nyligen distribuerade funktioner.
-- **Enkel återgång**: efter en byte med produktion har platsen med en tidigare mellanlagrad app nu den tidigare produktions appen. Om ändringarna som utbyts till produktions platsen inte är som du förväntar dig, kan du omedelbart omvända växlingen för att få din "senast fungerande instans" tillbaka.
+- **Olika miljöer för olika syften: Om** du använder olika platser kan du särskilja appinstanser innan du växlar till produktion eller mellanlagringsplats.
+- **Förewarming:** Genom att distribuera till en plats i stället för direkt till produktion kan appen värma upp innan den går live. Dessutom minskar svarstiden för HTTP-utlösta arbetsbelastningar med fack. Instanserna värmes upp före distributionen, vilket minskar kallstarten för nyligen distribuerade funktioner.
+- **Enkla återställningar:** Efter ett byte med produktion har facket med en tidigare mellanfasad app nu den tidigare produktionsappen. Om ändringarna som växlades till produktionsplatsen inte är som förväntat kan du omedelbart ångra växlingen för att få tillbaka din "senast kända bra instans".
 
-## <a name="swap-operations"></a>Växlings åtgärder
+## <a name="swap-operations"></a>Växlingsåtgärder
 
-Under en växling anses en plats vara källan och den andra målet. Käll platsen har instansen av programmet som används på mål platsen. Följande steg säkerställer att mål platsen inte upplever drift stopp under en växling:
+Under en växling anses en plats vara källan och den andra målet. Källfacket har den instans av programmet som tillämpas på målplatsen. Följande steg säkerställer att målfacket inte drabbas av driftstopp under en växling:
 
-1. **Tillämpa inställningar:** Inställningar från mål platsen tillämpas på alla instanser av käll platsen. Produktions inställningarna tillämpas till exempel på mellanlagringsplatsen. De tillämpade inställningarna omfattar följande kategorier:
-    - [Platsspecifika appinställningar och](#manage-settings) anslutnings strängar (om tillämpligt)
-    - Inställningar för [kontinuerlig distribution](../app-service/deploy-continuous-deployment.md) (om aktive rad)
-    - [App Service autentiseringsinställningar](../app-service/overview-authentication-authorization.md) (om den är aktive rad)
+1. **Tillämpa inställningar:** Inställningar från målfacket tillämpas på alla instanser av källfacket. Till exempel tillämpas produktionsinställningarna på mellanlagringsinstansen. De tillämpade inställningarna omfattar följande kategorier:
+    - [Platsspecifika appinställningar](#manage-settings) och anslutningssträngar (om tillämpligt)
+    - [Inställningar för kontinuerlig](../app-service/deploy-continuous-deployment.md) distribution (om det är aktiverat)
+    - [App Service autentiseringsinställningar](../app-service/overview-authentication-authorization.md) (om det är aktiverat)
 
-1. **Vänta tills omstarter och tillgänglighet:** Växlingen väntar på att varje instans på käll platsen ska kunna slutföra sin omstart och är tillgänglig för förfrågningar. Om någon instans inte kan starta om återställer växlings åtgärden alla ändringar till käll platsen och stoppar åtgärden.
+1. **Vänta på omstarter och tillgänglighet:** Växlingen väntar på att varje instans i källfacket ska slutföra omstarten och vara tillgänglig för begäranden. Om någon instans inte startar om återställer växlingsåtgärden alla ändringar till källfacket och stoppar åtgärden.
 
-1. **Uppdaterings dirigering:** Om alla instanser på käll platsen har förvärmts korrekt, slutför de två platserna växlingen genom att växla regler för routning. Efter det här steget har mål platsen (till exempel produktions platsen) den app som tidigare har förvärmts på käll platsen.
+1. **Uppdateringsroutning:** Om alla instanser på källplatsen har värmets upp slutför de två facken växlingen genom att växla routningsregler. Efter det här steget har målplatsen (till exempel produktionsplatsen) appen som tidigare har värmts upp i källfacket.
 
-1. **Upprepa åtgärd:** Nu när käll platsen har för hands växlings appen tidigare på mål platsen, slutför du samma åtgärd genom att tillämpa alla inställningar och starta om instanserna för käll platsen.
+1. **Upprepa åtgärd:** Nu när källfacket har förväxlingsappen som tidigare fanns på målplatsen slutför du samma åtgärd genom att tillämpa alla inställningar och starta om instanserna för källfacket.
 
 Tänk på följande punkter:
 
-- Vid alla tidpunkter på växlings åtgärden sker initieringen av de växlade apparna på käll platsen. Mål platsen är online när käll platsen är för beredd, om växlingen lyckas eller inte.
+- Vid vilken tidpunkt som helst av växlingsåtgärden sker initieringen av de växlade apparna på källplatsen. Målplatsen förblir online medan källfacket förbereds, oavsett om växlingen lyckas eller misslyckas.
 
-- Om du vill byta mellan en mellanlagringsplats med produktions platsen kontrollerar du att produktions platsen *alltid* är mål platsen. På så sätt kommer växlings åtgärden inte att påverka din produktions program.
+- Om du vill växla en mellanlagringsplats med produktionsplatsen kontrollerar du att produktionsplatsen *alltid är* målplatsen. På så sätt påverkar inte växlingsåtgärden din produktionsapp.
 
-- Inställningar som rör händelse källor och bindningar måste konfigureras som [distributions plats inställningar](#manage-settings) *innan du påbörjar en växling*. Genom att markera dem som "trög" i förväg säkerställer du att händelser och utdata dirigeras till rätt instans.
+- Inställningar som rör händelsekällor och bindningar måste konfigureras som inställningar [för distributionsfack](#manage-settings) *innan du startar ett byte.* Genom att markera dem som "sticky" (fäst) i förväg ser du till att händelser och utdata dirigeras till rätt instans.
 
 ## <a name="manage-settings"></a>Hantera inställningar
 
-Vissa konfigurations inställningar är platsspecifika. Nedan visas information om vilka inställningar som ändras när du byter platser och som är oförändrade.
+Vissa konfigurationsinställningar är fackspecifika. I följande lista visas vilka inställningar som ändras när du växlar fack och vilka som förblir desamma.
 
-Platsspecifika **Inställningar**:
+**Fackspecifika inställningar:**
 
-* Publicerings slut punkter
+* Publicera slutpunkter
 * Egna domännamn
 * Icke-offentliga certifikat och TLS/SSL-inställningar
-* Skalnings inställningar
-* Jobb scheman för WebJobs
+* Skalningsinställningar
+* WebJobs-schemaläggare
 * IP-begränsningar
 * Alltid på
 * Diagnostikinställningar
 * Resursdelning för korsande ursprung (CORS)
 
-**Inställningar som inte är** platsspecifika:
+**Icke-fackspecifika inställningar:**
 
-* Allmänna inställningar, till exempel Ramverks version, 32/64-bitars, Web Sockets
-* Appinställningar (kan konfigureras för att fästa på en plats)
-* Anslutnings strängar (kan konfigureras att fästa mot en plats)
-* Mappningar för hanterare
+* Allmänna inställningar, till exempel ramverksversion, 32/64-bitars, webbsocketar
+* Appinställningar (kan konfigureras för att hålla sig till ett fack)
+* Anslutningssträngar (kan konfigureras för att hålla sig till en plats)
+* Hanterarmappningar
 * Offentliga certifikat
 * WebJobs-innehåll
-* Hybrid anslutningar *
+* Hybridanslutningar *
 * Integrering av virtuella nätverk *
-* Tjänst slut punkter *
+* Tjänstslutpunkter *
 * Azure Content Delivery Network *
 
-Funktioner som har marker ATS med en asterisk (*) planeras att inte växlas. 
+Funktioner som markerats med en asterisk (*) planeras att tas bort. 
 
 > [!NOTE]
-> Vissa inställningar för appar som tillämpas på inställningar som inte har växlats växlas inte heller. Till exempel, eftersom diagnostikinställningar inte växlas, växlas inte relaterade appinställningar, till exempel `WEBSITE_HTTPLOGGING_RETENTION_DAYS` och `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` , även om de inte visas som plats inställningar.
+> Vissa appinställningar som gäller för ej använda inställningar byts inte heller ut. Eftersom diagnostikinställningar till exempel inte växlas kan relaterade appinställningar som och inte heller växlas, även om de inte visas `WEBSITE_HTTPLOGGING_RETENTION_DAYS` `DIAGNOSTICS_AZUREBLOBRETENTIONDAYS` som fackinställningar.
 >
 
-### <a name="create-a-deployment-setting"></a>Skapa en distributions inställning
+### <a name="create-a-deployment-setting"></a>Skapa en distributionsinställning
 
-Du kan markera inställningar som en distributions inställning, vilket gör den "trög". En inställning för tröghet växlar inte med App-instansen.
+Du kan markera inställningar som en distributionsinställning, vilket gör den "fäst". En fästinställning växlar inte med appinstansen.
 
-Om du skapar en distributions inställning på en plats, se till att skapa samma inställning med ett unikt värde på någon annan plats som är involverad i en växling. På så sätt, medan värdet för en inställning inte ändras, förblir inställnings namnen konsekventa mellan platser. Detta namn konsekvens säkerställer att koden inte försöker komma åt en inställning som har definierats på en plats, men inte en annan.
+Om du skapar en distributionsinställning i ett fack måste du skapa samma inställning med ett unikt värde i alla andra fack som är inblandade i ett byte. På så sätt förblir inställningsnamnen konsekventa mellan facken, även om värdet för en inställning inte ändras. Den här namnkonsekvensen säkerställer att koden inte försöker komma åt en inställning som har definierats i en plats men inte en annan.
 
-Använd följande steg för att skapa en distributions inställning:
+Använd följande steg för att skapa en distributionsinställning:
 
-1. Gå till **distributions fack** i Function-appen och välj plats namnet.
+1. Gå till **Distributionsfack** i funktionsappen och välj sedan facknamnet.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Hitta platser i Azure Portal." border="true":::
 
-1. Välj **konfiguration** och välj sedan det inställnings namn som du vill använda för den aktuella platsen.
+1. Välj **Konfiguration** och välj sedan det inställningsnamn som du vill använda för det aktuella facket.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Konfigurera program inställningen för en plats i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-configure-deployment-slot.png" alt-text="Konfigurera programinställningen för ett fack i Azure Portal." border="true":::
 
-1. Välj **distributions plats inställning** och välj sedan **OK**.
+1. Välj **Distributionsfackinställning** och välj sedan **OK.**
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Konfigurera distributions plats inställningen." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-setting.png" alt-text="Konfigurera inställningen för distributionsfack." border="true":::
 
-1. När du har angett avsnittet försvinner väljer du **Spara** för att behålla ändringarna
+1. När inställningsavsnittet försvinner väljer du **Spara** för att behålla ändringarna
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Spara distributions plats inställningen." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-save-deployment-slot-setting.png" alt-text="Spara inställningen för distributionsfack." border="true":::
 
 ## <a name="deployment"></a>Distribution
 
-Platser är tomma när du skapar en plats. Du kan använda någon av de [distributions tekniker som stöds](./functions-deployment-technologies.md) för att distribuera programmet till en plats.
+Fack är tomma när du skapar ett fack. Du kan använda någon av de [distributionstekniker som stöds](./functions-deployment-technologies.md) för att distribuera ditt program till ett fack.
 
 ## <a name="scaling"></a>Skalning
 
-Alla platser skalas till samma antal anställda som produktions platsen.
+Alla fack skalas till samma antal arbetare som produktionsplatsen.
 
-- För förbruknings planer skalas-facket som Function-appen skalar.
-- För App Service planer skalas appen till ett fast antal arbetare. Platser körs på samma antal arbets tagare som app-planen.
+- För förbrukningsplaner skalas facket när funktionsappen skalas.
+- För App Service-planer skalas appen till ett fast antal arbetare. Platser körs på samma antal arbetare som appplanen.
 
 ## <a name="add-a-slot"></a>Lägga till ett fack
 
-Du kan lägga till en plats via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create) eller via portalen. Följande steg visar hur du skapar en ny plats i portalen:
+Du kan lägga till ett fack via [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create) eller via portalen. Följande steg visar hur du skapar en ny plats i portalen:
 
-1. Navigera till din Function-app.
+1. Gå till funktionsappen.
 
-1. Välj **distributions platser** och välj sedan **+ Lägg till plats**.
+1. Välj **Distributionsfack** och välj sedan **+ Lägg till fack.**
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Lägg till Azure Functions distributions plats." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add.png" alt-text="Lägg Azure Functions distributionsfack." border="true":::
 
-1. Skriv namnet på facket och välj **Lägg till**.
+1. Skriv namnet på facket och välj Lägg **till**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Ge Azure Functions distributions facket." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slots-add-name.png" alt-text="Namnge Azure Functions distributionsfacket." border="true":::
 
-## <a name="swap-slots"></a>Växla platser
+## <a name="swap-slots"></a>Växla fack
 
-Du kan växla mellan platser via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap) eller via portalen. Följande steg visar hur du byter platser i portalen:
+Du kan växla fack via [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap) eller via portalen. Följande steg visar hur du växlar platser i portalen:
 
-1. Navigera till Function-appen.
-1. Välj **distributions platser** och välj sedan **Växla**.
+1. Gå till funktionsappen.
+1. Välj **Distributionsfack** och välj sedan **Växla**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Skärm bild som visar sidan &quot;distributions fack&quot; där åtgärden Lägg till plats har valts." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-swap-deployment-slot.png" alt-text="Skärmbild som visar sidan Distributionsfack med åtgärden Lägg till plats markerad." border="true":::
 
-1. Verifiera konfigurations inställningarna för din växling och välj **Växla**
+1. Kontrollera konfigurationsinställningarna för växlingen och välj **Växla**
     
-    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Växla distributions facket." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-swap-config.png" alt-text="Växla distributionsfacket." border="true":::
 
-Åtgärden kan ta en stund medan växlings åtgärden körs.
+Åtgärden kan ta en stund medan växlingsåtgärden körs.
 
 ## <a name="roll-back-a-swap"></a>Återställa en växling
 
-Om en växling resulterar i ett fel eller om du bara vill "ångra" en växling kan du återställa den ursprungliga statusen. Om du vill återgå till förväxlat tillstånd, gör du en annan växling för att omvända växlingen.
+Om en växling resulterar i ett fel eller om du bara vill "ångra" en växling kan du återställa till det ursprungliga tillståndet. Om du vill återgå till förväxlingstillståndet gör du en annan växling för att ångra växlingen.
 
-## <a name="remove-a-slot"></a>Ta bort en plats
+## <a name="remove-a-slot"></a>Ta bort ett fack
 
-Du kan ta bort en plats via [CLI](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete) eller via portalen. Följande steg visar hur du tar bort en plats i portalen:
+Du kan ta bort ett fack via [CLI](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete) eller via portalen. Följande steg visar hur du tar bort ett fack i portalen:
 
-1. Gå till **distributions fack** i Function-appen och välj plats namnet.
+1. Gå till **Distributionsfack** i funktionsappen och välj sedan facknamnet.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Hitta platser i Azure Portal." border="true":::
 
 1. Välj **Ta bort**.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Skärm bild som visar sidan &quot;Översikt&quot; där åtgärden ta bort har marker ATS." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot.png" alt-text="Skärmbild som visar sidan Översikt med åtgärden Ta bort markerad." border="true":::
 
-1. Skriv namnet på den distributions plats som du vill ta bort och välj sedan **ta bort**.
+1. Skriv namnet på det distributionsfack som du vill ta bort och välj sedan Ta **bort.**
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Ta bort distributions platsen i Azure Portal." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-delete-deployment-slot-details.png" alt-text="Ta bort distributionsfacket i Azure Portal." border="true":::
 
-1. Stäng bekräftelse fönstret för borttagning.
+1. Stäng bekräftelsefönstret för borttagning.
 
-    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Bekräfta borttagning av distributions plats." border="true":::
+    :::image type="content" source="./media/functions-deployment-slots/functions-deployment-slot-deleted.png" alt-text="Bekräftelse av borttagning av distributionsfack." border="true":::
 
-## <a name="automate-slot-management"></a>Automatisera plats hantering
+## <a name="automate-slot-management"></a>Automatisera platshantering
 
-Med [Azure CLI](/cli/azure/functionapp/deployment/slot)kan du automatisera följande åtgärder för en plats:
+Med [hjälp av Azure CLI](/cli/azure/functionapp/deployment/slot)kan du automatisera följande åtgärder för ett fack:
 
-- [fram](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-create)
-- [ta bort](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-delete)
-- [lista](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-list)
-- [skärm](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-swap)
-- [automatisk växling](/cli/azure/functionapp/deployment/slot#az-functionapp-deployment-slot-auto-swap)
+- [Skapa](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_create)
+- [Ta bort](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_delete)
+- [Lista](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_list)
+- [Swap](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_swap)
+- [automatisk växling](/cli/azure/functionapp/deployment/slot#az_functionapp_deployment_slot_auto_swap)
 
 ## <a name="change-app-service-plan"></a>Ändra App Service plan
 
-Med en Function-app som körs under en App Service plan kan du ändra den underliggande App Service plan för en plats.
+Med en funktionsapp som körs under en App Service plan kan du ändra den underliggande App Service plan för ett fack.
 
 > [!NOTE]
-> Du kan inte ändra en platss App Service plan under förbruknings planen.
+> Du kan inte ändra en platss App Service plan under förbrukningsplanen.
 
-Använd följande steg för att ändra en platss App Service plan:
+Använd följande steg för att ändra ett facks App Service plan:
 
-1. Gå till **distributions fack** i Function-appen och välj plats namnet.
+1. Gå till **Distributionsfack** i funktionsappen och välj sedan facknamnet.
 
     :::image type="content" source="./media/functions-deployment-slots/functions-navigate-slots.png" alt-text="Hitta platser i Azure Portal." border="true":::
 
-1. Under **App Service plan** väljer du **ändra App Service plan**.
+1. Under **App Service plan** väljer du **Ändra App Service plan**.
 
 1. Välj den plan som du vill uppgradera till eller skapa en ny plan.
 
@@ -208,28 +208,28 @@ Använd följande steg för att ändra en platss App Service plan:
 
 ## <a name="limitations"></a>Begränsningar
 
-Azure Functions distributions fack har följande begränsningar:
+Azure Functions distributionsfack har följande begränsningar:
 
-- Antalet tillgängliga fack för en app beror på planen. Förbruknings planen tillåts bara en distributions plats. Det finns ytterligare platser för appar som körs under App Service plan.
-- När en plats byts ut återställs nycklar för appar som har en `AzureWebJobsSecretStorageType` app-inställning som är lika med `files` .
-- Det finns inga tillgängliga platser för Linux-förbruknings planen.
+- Antalet platser som är tillgängliga för en app beror på planen. Förbrukningsplanen tillåts bara ett distributionsfack. Ytterligare platser är tillgängliga för appar som körs under App Service plan.
+- Om du växlar ett fack återställs nycklar för appar som har en `AzureWebJobsSecretStorageType` appinställning som är lika med `files` .
+- Fack är inte tillgängliga för Linux-förbrukning plan.
 
-## <a name="support-levels"></a>Support nivåer
+## <a name="support-levels"></a>Supportnivåer
 
-Det finns två nivåer av stöd för distributions platser:
+Det finns två nivåer av stöd för distributionsfack:
 
-- **Allmän tillgänglighet (ga)**: fullständigt stöd för och godkänd användning av produktion.
-- För **hands version**: stöds inte ännu, men förväntas komma att uppnå GA-status i framtiden.
+- **Allmän tillgänglighet (GA):** Fullständigt stöd och godkänt för produktionsanvändning.
+- **Förhandsversion:** Stöds inte ännu, men förväntas nå GA-status i framtiden.
 
-| Operativ system/värd plan           | Support nivå     |
+| OPERATIVSYSTEM/värdplan           | Supportnivå     |
 | ------------------------- | -------------------- |
 | Windows-förbrukning       | Allmän tillgänglighet |
 | Windows Premium           | Allmän tillgänglighet  |
-| Windows-dedikerad         | Allmän tillgänglighet |
+| Windows Dedicated         | Allmän tillgänglighet |
 | Linux-förbrukning         | Förhandsgranskning          |
 | Linux Premium             | Allmän tillgänglighet  |
-| Linux-dedikerad           | Allmän tillgänglighet |
+| Linux Dedicated           | Allmän tillgänglighet |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Distributions tekniker i Azure Functions](./functions-deployment-technologies.md)
+- [Distributionstekniker i Azure Functions](./functions-deployment-technologies.md)

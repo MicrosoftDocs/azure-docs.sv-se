@@ -1,6 +1,6 @@
 ---
-title: Inaktivera eller ta bort etablerings agenten
-description: Lär dig hur du inaktiverar eller tar bort etablerings agenten i virtuella Linux-datorer och avbildningar.
+title: Inaktivera eller ta bort etableringsagenten
+description: Lär dig hur du inaktiverar eller tar bort etableringsagenten på virtuella Linux-datorer och avbildningar.
 author: danielsollondon
 ms.service: virtual-machines
 ms.collection: linux
@@ -10,59 +10,59 @@ ms.workload: infrastructure
 ms.date: 07/06/2020
 ms.author: danis
 ms.reviewer: cynthn
-ms.openlocfilehash: 7c797957c292b9859ca41951b15f58c3d0be40b2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c70b02bdc554c723f53ad5f8c0d36c5eca87811e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102561082"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774376"
 ---
 # <a name="disable-or-remove-the-linux-agent-from-vms-and-images"></a>Inaktivera eller ta bort Linux-agenten från virtuella datorer och avbildningar
 
-Innan du tar bort Linux-agenten måste du förstå vilken virtuell dator som inte kommer att kunna utföras efter att Linux-agenten har tagits bort.
+Innan du tar bort Linux-agenten måste du förstå vad den virtuella datorn inte kan göra när Linux-agenten har tagits bort.
 
-[Tillägg](../extensions/overview.md) för virtuella Azure-datorer (VM) är små program som tillhandahåller konfigurations-och automatiserings åtgärder efter distributionen på virtuella Azure-datorer, tillägg installeras och hanteras av Azures kontroll plan. Det är jobbet i [Azure Linux-agenten](../extensions/agent-linux.md) att bearbeta plattforms tilläggets kommandon och se till att rätt tillstånd för tillägget finns i den virtuella datorn.
+Tillägg för virtuella [Azure-datorer](../extensions/overview.md) är små program som tillhandahåller konfigurations- och automatiseringsuppgifter efter distribution på virtuella Azure-datorer, tillägg installeras och hanteras av Azure-kontrollplanet. Det är Azure [Linux-agentens uppgift att](../extensions/agent-linux.md) bearbeta plattformstilläggskommandona och se till att tilläggets tillstånd är korrekt i den virtuella datorn.
 
-Azure-plattformen är värd för många tillägg som sträcker sig från konfigurations-, övervaknings-, säkerhets-och verktygs program för virtuella datorer. Det finns ett stort urval av de första och tredje parts tilläggen, exempel på viktiga scenarier som tillägg används för:
-* Stöd för Azure-tjänster från första part, till exempel Azure Backup, övervakning, disk kryptering, säkerhet, plats replikering och andra.
-* SSH-/lösen ords återställning
-* Konfiguration av virtuella datorer – körning av anpassade skript, installation av chef, Puppet-agenter osv.
-* Produkter från tredje part, till exempel AV-produkter, sårbarhets verktyg för virtuella datorer, verktyg för övervakning av virtuella datorer och appar.
-* Tillägg kan paketeras med en ny VM-distribution. De kan till exempel vara en del av en större distribution, konfigurera program på VM-etablering eller köra mot alla tillägg som stöds och som hanteras av system efter distribution.
+Azure-plattformen är värd för många tillägg som sträcker sig från VM-konfiguration, övervakning, säkerhet och verktygsprogram. Det finns ett stort urval av tillägg från första och tredje part, exempel på viktiga scenarier som tillägg används för:
+* Stöd för Azure-tjänster från första part, Azure Backup, övervakning, diskkryptering, säkerhet, platsreplikering med mera.
+* SSH/lösenordsåterställning
+* VM-konfiguration – Köra anpassade skript, installera Chef, Puppet-agenter osv.
+* Produkter från tredje part, till exempel AV-produkter, sårbarhetsverktyg för virtuella datorer, virtuella datorer och appövervakningsverktyg.
+* Tillägg kan paketeras med en ny VM-distribution. De kan till exempel ingå i en större distribution, konfigurera program på VM-etablering eller köras mot tilläggssystem som stöds efter distributionen.
 
-## <a name="disabling-extension-processing"></a>Inaktiverar tilläggs bearbetning
+## <a name="disabling-extension-processing"></a>Inaktivera tilläggsbearbetning
 
-Det finns flera sätt att inaktivera bearbetning av tillägg, beroende på dina behov, men innan du fortsätter **måste** du ta bort alla tillägg som distribueras till den virtuella datorn, till exempel med hjälp av Azure CLI, och du kan [Visa](/cli/azure/vm/extension#az-vm-extension-list) och [ta bort](/cli/azure/vm/extension#az-vm-extension-delete):
+Det finns flera sätt att inaktivera tilläggsbearbetning, beroende på  dina behov, men innan du fortsätter måste du ta bort alla tillägg som distribueras till den virtuella datorn, till exempel med hjälp av Azure CLI, kan du lista [och](/cli/azure/vm/extension#az_vm_extension_list) [ta bort](/cli/azure/vm/extension#az_vm_extension_delete):
 
 ```azurecli
 az vm extension delete -g MyResourceGroup --vm-name MyVm -n extension_name
 ```
 > [!Note]
 > 
-> Om du inte gör det kommer plattformen att försöka skicka tilläggs konfigurationen och tids gränsen efter 40min.
+> Om du inte gör ovanstående försöker plattformen skicka tilläggskonfigurationen och tidsgränsen efter 40 minuter.
 
-### <a name="disable-at-the-control-plane"></a>Inaktivera vid kontroll planet
-Om du inte är säker på om du kommer att behöva tillägg i framtiden kan du lämna Linux-agenten installerad på den virtuella datorn och sedan inaktivera tilläggs bearbetnings kapacitet från plattformen. Det här alternativet är tillgängligt i `Microsoft.Compute` API `2018-06-01` -versionen eller högre, och har inte något beroende av versionen av Linux-agenten installerad.
+### <a name="disable-at-the-control-plane"></a>Inaktivera på kontrollplanet
+Om du inte är säker på om du behöver tillägg i framtiden kan du låta Linux-agenten vara installerad på den virtuella datorn och sedan inaktivera tilläggets bearbetningskapacitet från plattformen. Det här alternativet är tillgängligt i `Microsoft.Compute` API-versionen `2018-06-01` eller senare och är inte beroende av den linux-agentversion som är installerad.
 
 ```azurecli
 az vm update -g <resourceGroup> -n <vmName> --set osProfile.allowExtensionOperations=false
 ```
-Du kan enkelt återaktivera den här tilläggs bearbetningen från plattformen med kommandot ovan, men ange det till true.
+Du kan enkelt återerablema den här tilläggsbearbetningen från plattformen med kommandot ovan, men ange den till "true".
 
 ## <a name="remove-the-linux-agent-from-a-running-vm"></a>Ta bort Linux-agenten från en virtuell dator som körs
 
-Se till att du har **tagit bort** alla befintliga tillägg från den virtuella datorn före, enligt ovan.
+Se till att **du har** tagit bort alla befintliga tillägg från den virtuella datorn tidigare, enligt ovan.
 
-### <a name="step-1-remove-the-azure-linux-agent"></a>Steg 1: ta bort Azure Linux-agenten
+### <a name="step-1-remove-the-azure-linux-agent"></a>Steg 1: Ta bort Azure Linux-agenten
 
-Om du bara tar bort Linux-agenten och inte tillhör ande konfigurations artefakter, kan du installera om vid ett senare tillfälle. Kör något av följande, som rot, för att ta bort Azure Linux-agenten:
+Om du bara tar bort Linux-agenten, och inte de associerade konfigurationsartefakter, kan du installera om vid ett senare tillfälle. Kör något av följande, som rot, för att ta bort Azure Linux-agenten:
 
-#### <a name="for-ubuntu-1804"></a>För Ubuntu >= 18,04
+#### <a name="for-ubuntu-1804"></a>För Ubuntu >=18.04
 ```bash
 apt -y remove walinuxagent
 ```
 
-#### <a name="for-redhat--77"></a>För redhat >= 7,7
+#### <a name="for-redhat--77"></a>För Redhat >= 7,7
 ```bash
 yum -y remove WALinuxAgent
 ```
@@ -72,21 +72,21 @@ yum -y remove WALinuxAgent
 zypper --non-interactive remove python-azure-agent
 ```
 
-### <a name="step-2-optional-remove-the-azure-linux-agent-artifacts"></a>Steg 2: (valfritt) ta bort Azure Linux Agent-artefakter
+### <a name="step-2-optional-remove-the-azure-linux-agent-artifacts"></a>Steg 2: (Valfritt) Ta bort Azure Linux-agentartefakter
 > [!IMPORTANT] 
 >
-> Du kan ta bort alla associerade artefakter för Linux-agenten, men det innebär att du inte kan installera om den vid ett senare tillfälle. Därför rekommenderar vi att du inaktiverar Linux-agenten först och sedan tar du bara bort Linux-agenten med hjälp av ovanstående. 
+> Du kan ta bort alla associerade artefakter för Linux-agenten, men det innebär att du inte kan installera om den vid ett senare tillfälle. Därför rekommenderar vi starkt att du inaktiverar Linux-agenten först, och endast tar bort Linux-agenten med ovanstående. 
 
-Om du vet att du inte någonsin installerar om Linux-agenten igen kan du köra följande:
+Om du vet att du aldrig kommer att installera om Linux-agenten igen kan du köra följande:
 
-#### <a name="for-ubuntu-1804"></a>För Ubuntu >= 18,04
+#### <a name="for-ubuntu-1804"></a>För Ubuntu >=18.04
 ```bash
 apt -y purge walinuxagent
 rm -rf /var/lib/waagent
 rm -f /var/log/waagent.log
 ```
 
-#### <a name="for-redhat--77"></a>För redhat >= 7,7
+#### <a name="for-redhat--77"></a>För Redhat >= 7,7
 ```bash
 yum -y remove WALinuxAgent
 rm -f /etc/waagent.conf.rpmsave
@@ -103,27 +103,27 @@ rm -f /var/log/waagent.log
 ```
 
 ## <a name="preparing-an-image-without-the-linux-agent"></a>Förbereda en avbildning utan Linux-agenten
-Om du har en avbildning som redan innehåller Cloud-Init och du vill ta bort Linux-agenten, men ändå etablera med Cloud-Init, kör du stegen i steg 2 (och eventuellt steg 3) som rot för att ta bort Azure Linux-agenten. Därefter tar följande bort konfigurationen och cachelagrade data i Cloud-Init och förbereder den virtuella datorn för att skapa en anpassad avbildning.
+Om du har en avbildning som redan innehåller cloud-init och du vill ta bort Linux-agenten, men ändå etablera med cloud-init, kör du stegen i steg 2 (och eventuellt steg 3) som rot för att ta bort Azure Linux-agenten. Därefter tar följande bort cloud-init-konfigurationen och cachelagrade data och förbereder den virtuella datorn för att skapa en anpassad avbildning.
 
 ```bash
 cloud-init clean --logs --seed 
 ```
 
 ## <a name="deprovision-and-create-an-image"></a>Avetablera och skapa en avbildning
-Linux-agenten kan rensa några av de befintliga bildmetadatana, med steget "waagent-deprovision + User", men när det har tagits bort måste du utföra åtgärder som nedan och ta bort alla andra känsliga data från den.
+Linux-agenten kan rensa vissa befintliga bildmetadata med steget "waagent -deprovision+user", men när den har tagits bort måste du utföra åtgärder som nedan och ta bort andra känsliga data från den.
 
-- Ta bort alla befintliga SSH Host-nycklar
+- Ta bort alla befintliga ssh-värdnycklar
 
    ```bash
    rm /etc/ssh/ssh_host_*key*
    ```
-- Ta bort administratörs kontot
+- Ta bort administratörskontot
 
    ```bash
    touch /var/run/utmp
    userdel -f -r <admin_user_account>
    ```
-- Ta bort rot lösen ordet
+- Ta bort rotlösenordet
 
    ```bash
    passwd -d root
@@ -139,7 +139,7 @@ az vm generalize -g <resource_group> -n <vm_name>
 az image create -g <resource_group> -n <image_name> --source <vm_name>
 ```
 
-**Skapa en avbildnings version i ett galleri för delad avbildning**
+**Skapa en avbildningsversion i en Shared Image Gallery**
 
 ```azurecli
 az sig image-version create \
@@ -149,14 +149,14 @@ az sig image-version create \
     --gallery-image-version 1.0.0 
     --managed-image /subscriptions/00000000-0000-0000-0000-00000000xxxx/resourceGroups/imageGroups/providers/images/MyManagedImage
 ```
-### <a name="creating-a-vm-from-an-image-that-does-not-contain-a-linux-agent"></a>Skapa en virtuell dator från en avbildning som inte innehåller en Linux-Agent
-När du skapar den virtuella datorn från avbildningen utan någon Linux-Agent måste du se till att den virtuella datorns distributions konfiguration anger att tillägg inte stöds på den här virtuella datorn.
+### <a name="creating-a-vm-from-an-image-that-does-not-contain-a-linux-agent"></a>Skapa en virtuell dator från en avbildning som inte innehåller en Linux-agent
+När du skapar den virtuella datorn från avbildningen utan Linux-agent måste du se till att VM-distributionskonfigurationen anger att tillägg inte stöds på den här virtuella datorn.
 
 > [!NOTE] 
 > 
-> Om du inte gör det kommer plattformen att försöka skicka tilläggs konfigurationen och tids gränsen efter 40min.
+> Om du inte gör ovanstående försöker plattformen skicka tilläggskonfigurationen och tidsgränsen efter 40 minuter.
 
-Om du vill distribuera den virtuella datorn med tillägg inaktiverade kan du använda Azure CLI med [--Enable-agent](/cli/azure/vm#az-vm-create).
+Om du vill distribuera den virtuella datorn med tillägg inaktiverade kan du använda Azure CLI [med --enable-agent](/cli/azure/vm#az_vm_create).
 
 ```azurecli
 az vm create \
@@ -168,7 +168,7 @@ az vm create \
     --enable-agent false
 ```
 
-Du kan också göra detta med hjälp av Azure Resource Manager (ARM) Mallar genom att ställa in `"provisionVMAgent": false,` .
+Du kan också göra detta med arm Azure Resource Manager mallar genom att ange `"provisionVMAgent": false,` .
 
 ```json
 "osProfile": {
@@ -186,4 +186,4 @@ Du kan också göra detta med hjälp av Azure Resource Manager (ARM) Mallar geno
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information finns i avsnittet om [etablering av Linux](provisioning.md).
+Mer information finns i [Etablera Linux.](provisioning.md)

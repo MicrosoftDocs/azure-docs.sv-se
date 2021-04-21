@@ -1,36 +1,36 @@
 ---
-title: Använda en anpassad traefik-ingress-kontrollant och konfigurera HTTPS
+title: Använda en anpassad traefik-inress-kontrollant och konfigurera HTTPS
 services: azure-dev-spaces
 ms.date: 12/10/2019
 ms.topic: conceptual
-description: Lär dig hur du konfigurerar Azure Dev Spaces för att använda en anpassad traefik-ingress-kontrollant och konfigurera HTTPS med hjälp av den ingress-kontrollanten
+description: Lär dig hur du konfigurerar Azure Dev Spaces för att använda en anpassad kontrollant för traefik-ingress och hur du konfigurerar HTTPS med hjälp av den ingress-kontrollanten
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: a04b46297d4eef6403f580206795bb492dd82516
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 76a89545b8edc700928c1c2fe0e91dfc5d3127b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374037"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777499"
 ---
-# <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Använda en anpassad traefik-ingress-kontrollant och konfigurera HTTPS
+# <a name="use-a-custom-traefik-ingress-controller-and-configure-https"></a>Använda en anpassad traefik-inress-kontrollant och konfigurera HTTPS
 
 [!INCLUDE [Azure Dev Spaces deprecation](../../../includes/dev-spaces-deprecation.md)]
 
-Den här artikeln visar hur du konfigurerar Azure Dev Spaces för att använda en anpassad ingress-kontrollant. Den här artikeln visar också hur du konfigurerar den anpassade ingress-kontrollanten för att använda HTTPS.
+Den här artikeln visar hur du konfigurerar Azure Dev Spaces för att använda en anpassad kontrollant för traefik-ingress. Den här artikeln visar också hur du konfigurerar den anpassade ingress-kontrollanten för att använda HTTPS.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure-prenumeration. Om du inte har någon, kan du skapa ett [kostnadsfritt konto][azure-account-create].
 * [Azure CLI installerat][az-cli].
-* [Azure Kubernetes Service (AKS)-kluster med Azure Dev Spaces aktiverat] [qs-cli].
+* [Azure Kubernetes Service kluster (AKS) med Azure Dev Spaces aktiverat] [qs-cli].
 * [kubectl][kubectl] installerat.
 * [Helm 3 installerat.][helm-installed]
 * [En anpassad domän][custom-domain] med en [DNS-zon][dns-zone]. Den här artikeln förutsätter att den anpassade domänen och DNS-zonen finns i samma resursgrupp som ditt AKS-kluster, men det är möjligt att använda en anpassad domän och DNS-zon i en annan resursgrupp.
 
-## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurera en anpassad ingress-kontrollant för traefik
+## <a name="configure-a-custom-traefik-ingress-controller"></a>Konfigurera en anpassad kontrollant för traefik-ingress
 
-Anslut till klustret med [kubectl][kubectl], Kubernetes-kommandoradsklienten. För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials][az-aks-get-credentials]. Det här kommandot laddar ned autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem.
+Anslut till klustret med [kubectl][kubectl], Kubernetes kommandoradsklient. För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials][az-aks-get-credentials]. Det här kommandot laddar ned autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem.
 
 ```azurecli
 az aks get-credentials --resource-group myResourceGroup --name myAKS
@@ -44,7 +44,7 @@ NAME                                STATUS   ROLES   AGE    VERSION
 aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.1
 ```
 
-Lägg till [den officiella stabila Helm-lagringsplatsen][helm-stable-repo], som innehåller Helm-diagrammet för traefik ingress-kontrollanten.
+Lägg till [den officiella stabila Helm-lagringsplatsen][helm-stable-repo], som innehåller Helm-diagrammet för kontrollanten traefik ingress.
 
 ```console
 helm repo add stable https://charts.helm.sh/stable
@@ -61,13 +61,13 @@ helm install traefik stable/traefik --namespace traefik --set kubernetes.ingress
 ```
 
 > [!NOTE]
-> I exemplet ovan skapas en offentlig slutpunkt för ingress-kontrollanten. Om du i stället behöver använda en privat slutpunkt för ingress-kontrollanten lägger du till *--set service.annotations." service \\ .beta \\ .kubernetes \\ .io/azure-load-balancer-internal"=true* parameter to the *helm install* command.
+> Exemplet ovan skapar en offentlig slutpunkt för ingress-kontrollanten. Om du behöver använda en privat slutpunkt för ingress-kontrollanten i stället lägger du till *--set service.annotations." service \\ .beta \\ .kubernetes \\ .io/azure-load-balancer-internal"=true* parameter to the *helm install* command.
 > ```console
 > helm install traefik stable/traefik --namespace traefik --set kubernetes.ingressClass=traefik --set rbac.enabled=true --set fullnameOverride=customtraefik --set kubernetes.ingressEndpoint.useDefaultPublishedService=true --set service.annotations."service\.beta\.kubernetes\.io/azure-load-balancer-internal"=true --version 1.85.0
 > ```
-> Den här privata slutpunkten exponeras i det virtuella nätverk där du distribuerar ditt AKS-kluster.
+> Den här privata slutpunkten exponeras i det virtuella nätverket där du distribuerar ditt AKS-kluster.
 
-Hämta IP-adressen för traefik ingress controller-tjänsten med [kubectl get][kubectl-get].
+Hämta IP-adressen för traefik ingress-kontrollanttjänsten med [kubectl get][kubectl-get].
 
 ```console
 kubectl get svc -n traefik --watch
@@ -82,7 +82,7 @@ traefik   LoadBalancer   10.0.205.78   <pending>     80:32484/TCP,443:30620/TCP 
 traefik   LoadBalancer   10.0.205.78   MY_EXTERNAL_IP   80:32484/TCP,443:30620/TCP   60s
 ```
 
-Lägg till *en A-post* i DIN DNS-zon med den externa IP-adressen för traefik-tjänsten med [az network dns record-set a add-record][az-network-dns-record-set-a-add-record].
+Lägg till *en A-post* i DNS-zonen med den externa IP-adressen för traefik-tjänsten med [az network dns record-set a add-record][az-network-dns-record-set-a-add-record].
 
 ```azurecli
 az network dns record-set a add-record \
@@ -94,7 +94,7 @@ az network dns record-set a add-record \
 
 I exemplet ovan läggs en *A-post* till i *MY_CUSTOM_DOMAIN* DNS-zon.
 
-I den här artikeln använder du [exempelprogrammet Azure Dev Spaces Bike Sharing för](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) att demonstrera hur du använder Azure Dev Spaces. Klona programmet från GitHub och gå till programmets katalog:
+I den här artikeln använder du exempelprogrammet [Azure Dev Spaces Bike Sharing för att](https://github.com/Azure/dev-spaces/tree/master/samples/BikeSharingApp) demonstrera hur du använder Azure Dev Spaces. Klona programmet från GitHub och gå till programmets katalog:
 
 ```cmd
 git clone https://github.com/Azure/dev-spaces
@@ -102,7 +102,7 @@ cd dev-spaces/samples/BikeSharingApp/charts
 ```
 
 Öppna [values.yaml][values-yaml] och gör följande uppdateringar:
-* Ersätt alla instanser av *<REPLACE_ME_WITH_HOST_SUFFIX>* med *traefik. MY_CUSTOM_DOMAIN* med din domän för *MY_CUSTOM_DOMAIN*. 
+* Ersätt alla instanser av *<REPLACE_ME_WITH_HOST_SUFFIX>* med *traefik. MY_CUSTOM_DOMAIN* använder din domän för *att MY_CUSTOM_DOMAIN*. 
 * Ersätt *kubernetes.io/ingress.class: traefik-azds # Dev Spaces-specific* *med kubernetes.io/ingress.class: traefik # Custom Ingress*. 
 
 Nedan visas ett exempel på en uppdaterad `values.yaml` fil:
@@ -140,9 +140,9 @@ Distribuera exempelprogrammet med `helm install` .
 helm install bikesharingsampleapp . --dependency-update --namespace dev --atomic
 ```
 
-Exemplet ovan distribuerar exempelprogrammet till *namnområdet* dev.
+Exemplet ovan distribuerar exempelprogrammet till *dev-namnområdet.*
 
-Visa URL:erna för att komma åt exempelprogrammet med hjälp av `azds list-uris` .
+Visa URL:erna för att få åtkomst till exempelprogrammet med hjälp av `azds list-uris` .
 
 ```console
 azds list-uris
@@ -157,12 +157,12 @@ http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigera till *bikesharingweb-tjänsten* genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en *för bikesharingweb-tjänsten* `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
+Navigera till *bikesharingweb-tjänsten* genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en för *bikesharingweb-tjänsten* `http://dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
 > Om du ser en felsida i stället för *bikesharingweb-tjänsten* kontrollerar du att du har uppdaterat *både kubernetes.io/ingress.class-anteckningen* och värden i *filen values.yaml.* 
 
-Använd kommandot `azds space select` för att skapa ett under-utrymme under *dev* och lista URL:erna för åtkomst till det underordnade utvecklingsutrymmet.
+Använd kommandot `azds space select` för att skapa ett under-utrymme under *dev* och lista URL:erna för att få åtkomst till det underordnade utvecklingsutrymmet.
 
 ```console
 azds space select -n dev/azureuser1 -y
@@ -178,7 +178,7 @@ http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.traefik.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigera till *bikesharingweb-tjänsten* i utrymmet *azureuser1* child dev genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en för *bikesharingweb-tjänsten* i den underordnade *utvecklingsrymden azureuser1* `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
+Navigera till *bikesharingweb-tjänsten* i det underordnade *utvecklingsutrymmet azureuser1* genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en för *bikesharingweb-tjänsten* i den underordnade *utvecklingsrymden azureuser1* `http://azureuser1.s.dev.bikesharingweb.traefik.MY_CUSTOM_DOMAIN/` .
 
 ## <a name="configure-the-traefik-ingress-controller-to-use-https"></a>Konfigurera traefik-ingress-kontrollanten att använda HTTPS
 
@@ -220,7 +220,7 @@ Använd `kubectl` för att tillämpa `letsencrypt-clusterissuer.yaml` .
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace traefik
 ```
 
-Ta bort den *tidigare traefik* *ClusterRole* *och ClusterRoleBinding* och uppgradera sedan traefik för att använda HTTPS med `helm` .
+Ta bort den *tidigare traefik* *ClusterRole* och *ClusterRoleBinding* och uppgradera sedan traefik för att använda HTTPS med `helm` .
 
 > [!NOTE]
 > Om Kubernetes RBAC inte är aktiverat i AKS-klustret tar du bort parametern *--set rbac.enabled=true.*
@@ -301,7 +301,7 @@ Uppgradera exempelprogrammet med `helm` :
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och lägg märke till att du omdirigeras för att använda HTTPS.
+Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och observera att du omdirigeras till https.
 
 > [!IMPORTANT]
 > Det kan ta 30 minuter eller mer för DNS-ändringarna att slutföras och exempelprogrammet är tillgängligt.
@@ -361,7 +361,7 @@ cd ../BikeSharingWeb/
 azds up
 ```
 
-Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och lägg märke till att du omdirigeras till https utan fel.
+Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och observera att du omdirigeras till https utan fel.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -372,9 +372,9 @@ Läs mer om hur Azure Dev Spaces fungerar.
 
 
 [az-cli]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
-[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-remove-record
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_add_record
+[az-network-dns-record-set-a-remove-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_remove_record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml

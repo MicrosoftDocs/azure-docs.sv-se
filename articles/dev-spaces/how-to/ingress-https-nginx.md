@@ -6,12 +6,12 @@ ms.topic: conceptual
 description: Lär dig hur du konfigurerar Azure Dev Spaces att använda en anpassad NGINX-ingresskontrollant och konfigurerar HTTPS med hjälp av den ingress-kontrollanten
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers, Helm, service mesh, service mesh routing, kubectl, k8s
 ms.custom: devx-track-js
-ms.openlocfilehash: a0c8fa453115936b61b2cdae299e07ae10356ed3
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: b07d66e0031b907811c4ec251987aa020542b05a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107378779"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777517"
 ---
 # <a name="use-a-custom-nginx-ingress-controller-and-configure-https"></a>Använda en anpassad NGINX-ingresskontrollant och konfigurera HTTPS
 
@@ -158,7 +158,7 @@ http://dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 Navigera till *bikesharingweb-tjänsten* genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en *för bikesharingweb-tjänsten* `http://dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
 
 > [!NOTE]
-> Om du ser en felsida i stället för *bikesharingweb-tjänsten* kontrollerar du att du har uppdaterat *både kubernetes.io/ingress.class-anteckningen* och värden i *filen values.yaml.* 
+> Om du ser en felsida i stället för *bikesharingweb-tjänsten* kontrollerar du att du har uppdaterat både *kubernetes.io/ingress.class-anteckningen* och värden i *filen values.yaml.* 
 
 Använd kommandot `azds space select` för att skapa ett under-utrymme under *dev* och lista URL:erna för åtkomst till det underordnade utvecklingsutrymmet.
 
@@ -176,9 +176,9 @@ http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/  Available
 http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/         Available
 ```
 
-Navigera till *bikesharingweb-tjänsten* i utrymmet *azureuser1* child dev genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en för *bikesharingweb-tjänsten* i den underordnade *utvecklingsrymden azureuser1* `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
+Navigera till *bikesharingweb-tjänsten* i utrymmet *azureuser1* child dev genom att öppna den offentliga URL:en från `azds list-uris` kommandot . I exemplet ovan är den offentliga URL:en för *bikesharingweb-tjänsten* i den underordnade utvecklingsrymden *azureuser1* `http://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/` .
 
-## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>Konfigurera NGINX-ingresskontrollanten att använda HTTPS
+## <a name="configure-the-nginx-ingress-controller-to-use-https"></a>Konfigurera NGINX-ingressstyrenheten att använda HTTPS
 
 Använd [cert-manager för][cert-manager] att automatisera hanteringen av TLS-certifikatet när du konfigurerar NGINX-ingress-kontrollanten att använda HTTPS. Använd `helm` för att installera *certmanager-diagrammet.*
 
@@ -210,7 +210,7 @@ spec:
 ```
 
 > [!NOTE]
-> För testning finns det också en [mellanlagringsserver][letsencrypt-staging-issuer] som du kan använda för *din ClusterIssuer*.
+> För testning finns det också en [mellanlagringsserver][letsencrypt-staging-issuer] som du kan använda för *clusterIssuer.*
 
 Använd `kubectl` för att tillämpa `letsencrypt-clusterissuer.yaml` .
 
@@ -218,7 +218,7 @@ Använd `kubectl` för att tillämpa `letsencrypt-clusterissuer.yaml` .
 kubectl apply -f letsencrypt-clusterissuer.yaml --namespace nginx
 ```
 
-Uppdatera [values.yaml för][values-yaml] att inkludera information om hur *du använder cert-manager* och HTTPS. Nedan visas ett exempel på en uppdaterad `values.yaml` fil:
+Uppdatera [values.yaml så][values-yaml] att den innehåller information om hur *du använder cert-manager* och HTTPS. Nedan visas ett exempel på en uppdaterad `values.yaml` fil:
 
 ```yaml
 # This is a YAML-formatted file.
@@ -255,7 +255,7 @@ Uppgradera exempelprogrammet med `helm` :
 helm upgrade bikesharingsampleapp . --namespace dev --atomic
 ```
 
-Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och lägg märke till att du omdirigeras för att använda HTTPS. Observera också att sidan läses in, men webbläsaren visar några fel. Om du öppnar webbläsarkonsolen visas felet som rör en HTTPS-sida som försöker läsa in HTTP-resurser. Exempel:
+Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och lägg märke till att du omdirigeras för att använda HTTPS. Observera också att sidan läses in, men webbläsaren visar några fel. När du öppnar webbläsarkonsolen visas felet som rör en HTTPS-sida som försöker läsa in HTTP-resurser. Exempel:
 
 ```console
 Mixed Content: The page at 'https://azureuser1.s.dev.bikesharingweb.nginx.MY_CUSTOM_DOMAIN/devsignin' was loaded over HTTPS, but requested an insecure resource 'http://azureuser1.s.dev.gateway.nginx.MY_CUSTOM_DOMAIN/api/user/allUsers'. This request has been blocked; the content must be served over HTTPS.
@@ -315,7 +315,7 @@ cd ../BikeSharingWeb/
 azds up
 ```
 
-Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och observera att du omdirigeras till https utan fel.
+Gå till exempelprogrammet i det underordnade *utrymmet dev/azureuser1* och lägg märke till att du omdirigeras till https utan fel.
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -326,8 +326,8 @@ Läs mer om hur Azure Dev Spaces fungerar.
 
 
 [az-cli]: /cli/azure/install-azure-cli
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az-network-dns-record-set-a-add-record
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-network-dns-record-set-a-add-record]: /cli/azure/network/dns/record-set/a#az_network_dns_record_set_a_add_record
 [custom-domain]: ../../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain
 [dns-zone]: ../../dns/dns-getstarted-cli.md
 [azds-yaml]: https://github.com/Azure/dev-spaces/blob/master/samples/BikeSharingApp/BikeSharingWeb/azds.yaml

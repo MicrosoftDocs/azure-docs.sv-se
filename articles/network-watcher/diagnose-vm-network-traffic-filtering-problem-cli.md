@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: diagnostisera ett problem med trafik filter i virtuella nätverk – Azure CLI'
+title: 'Snabbstart: Diagnostisera problem med filtreringen av VM-nätverkstrafik – Azure CLI'
 titleSuffix: Azure Network Watcher
-description: Lär dig hur du använder Azure CLI för att diagnostisera ett problem med nätverks trafik filter i virtuell dator med hjälp av IP-flödet verifiera Azure-Network Watcher.
+description: Lär dig hur du använder Azure CLI för att diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer med funktionen Kontrollera IP-flöde i Azure Network Watcher.
 services: network-watcher
 documentationcenter: network-watcher
 author: KumudD
@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 01/07/2021
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 18e380345ef0caab52e9b1c537bada73e36d8b48
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 701df4353e8d2e36baf0496bd6944c4a95395414
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063329"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763279"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Snabbstart: Diagnostisera problem med filtreringen av nätverkstrafik på virtuella datorer – Azure CLI
 
@@ -32,13 +32,13 @@ I den här snabbstarten ska du distribuera en virtuell dator (VM) och kontroller
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här snabb starten kräver version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. 
+- Den här snabbstarten kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad. 
 
-- Azure CLI-kommandona i den här snabb starten är formaterade för att köras i ett bash-gränssnitt.
+- Azure CLI-kommandona i den här snabbstarten är formaterade för att köras i ett Bash-gränssnitt.
 
 ## <a name="create-a-vm"></a>Skapa en virtuell dator
 
-Innan du kan skapa en virtuell dator måste du skapa en resursgrupp som innehåller den virtuella datorn. Skapa en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
+Innan du kan skapa en virtuell dator måste du skapa en resursgrupp som innehåller den virtuella datorn. Skapa en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resursgrupp med *namnet myResourceGroup* på *platsen eastus:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -54,7 +54,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-Det tar några minuter att skapa den virtuella datorn. Fortsätt inte med återstående steg förrän den virtuella datorn har skapats och Azure CLI returnerar utdata.
+Det tar några minuter att skapa den virtuella datorn. Fortsätt inte med de återstående stegen förrän den virtuella datorn har skapats och Azure CLI returnerar utdata.
 
 ## <a name="test-network-communication"></a>Testa nätverkskommunikationen
 
@@ -62,7 +62,7 @@ För att testa nätverkskommunikation med Network Watcher måste du först aktiv
 
 ### <a name="enable-network-watcher"></a>Aktivera nätverksbevakare
 
-Om du redan har aktiverat en nätverksbevakare i regionen USA, östra går du vidare till [Använda Kontrollera IP-flöde](#use-ip-flow-verify). Använd kommandot [az network watcher configure](/cli/azure/network/watcher#az-network-watcher-configure) till att skapa en nätverksbevakare i regionen Östra USA:
+Om du redan har aktiverat en nätverksbevakare i regionen USA, östra går du vidare till [Använda Kontrollera IP-flöde](#use-ip-flow-verify). Använd kommandot [az network watcher configure](/cli/azure/network/watcher#az_network_watcher_configure) till att skapa en nätverksbevakare i regionen Östra USA:
 
 ```azurecli-interactive
 az network watcher configure \
@@ -73,7 +73,7 @@ az network watcher configure \
 
 ### <a name="use-ip-flow-verify"></a>Använda Kontrollera IP-flöde
 
-När du skapar en virtuell dator tillåter och nekar Azure nätverkstrafik till och från den virtuella datorn som standard. Om du vill kan du åsidosätta standardinställningarna i Azure och tillåta eller neka andra typer av trafik. Testa om trafik tillåts eller nekas på olika mål och från en käll-IP-adress använder du kommandot [az network watcher test-ip-flow](/cli/azure/network/watcher#az-network-watcher-test-ip-flow).
+När du skapar en virtuell dator tillåter och nekar Azure nätverkstrafik till och från den virtuella datorn som standard. Om du vill kan du åsidosätta standardinställningarna i Azure och tillåta eller neka andra typer av trafik. Testa om trafik tillåts eller nekas på olika mål och från en käll-IP-adress använder du kommandot [az network watcher test-ip-flow](/cli/azure/network/watcher#az_network_watcher_test_ip_flow).
 
 Testa utgående kommunikation från den virtuella datorn till någon av IP-adresserna för www.bing.com:
 
@@ -125,7 +125,7 @@ Resultatet som returneras anger att åtkomsten nekas på grund av en säkerhetsr
 
 ## <a name="view-details-of-a-security-rule"></a>Visa information om en säkerhetsregel
 
-Om du vill fastställa varför reglerna i [Använda Kontrollera IP-flöde](#use-ip-flow-verify) tillåter eller förhindrar kommunikation granskar du de gällande säkerhetsreglerna för nätverksgränssnittet med kommandot [az network nic list-effective-nsg](/cli/azure/network/nic#az-network-nic-list-effective-nsg):
+Om du vill fastställa varför reglerna i [Använda Kontrollera IP-flöde](#use-ip-flow-verify) tillåter eller förhindrar kommunikation granskar du de gällande säkerhetsreglerna för nätverksgränssnittet med kommandot [az network nic list-effective-nsg](/cli/azure/network/nic#az_network_nic_list_effective_nsg):
 
 ```azurecli-interactive
 az network nic list-effective-nsg \
@@ -172,7 +172,7 @@ Returnerade utdata innehåller följande text för regeln **AllowInternetOutboun
 },
 ```
 
-Du kan se i tidigare utdata att **destinationAddressPrefix** är **Internet**. Men det är oklart hur 13.107.21.200 relaterar till **Internet**. Du ser flera adressprefix som visas under **expandedDestinationAddressPrefix**. Ett av prefixen i listan är **12.0.0.0/6**, vilken omfattar IP-adressintervallet 12.0.0.1–15.255.255.254. Eftersom 13.107.21.200 ligger inom det adressintervallet tillåter regeln **AllowInternetOutBound** den utgående trafiken. Dessutom finns det inga regler med högre prioritet (lägre nummer) som visas i tidigare utdata som åsidosätter den här regeln. Om du vill neka utgående kommunikation till en IP-adress kan du lägga till en säkerhetsregel med högre prioritet, som nekar utgående trafik på port 80 till IP-adressen.
+Du kan se i tidigare utdata att **destinationAddressPrefix** är **Internet**. Men det är oklart hur 13.107.21.200 relaterar till **Internet**. Du ser flera adressprefix listade under **expandedDestinationAddressPrefix**. Ett av prefixen i listan är **12.0.0.0/6**, vilken omfattar IP-adressintervallet 12.0.0.1–15.255.255.254. Eftersom 13.107.21.200 ligger inom det adressintervallet tillåter regeln **AllowInternetOutBound** den utgående trafiken. Dessutom finns det inga regler med högre prioritet (lägre nummer) som visas i tidigare utdata som åsidosätter den här regeln. Om du vill neka utgående kommunikation till en IP-adress kan du lägga till en säkerhetsregel med högre prioritet, som nekar utgående trafik på port 80 till IP-adressen.
 
 När du körde kommandot `az network watcher test-ip-flow` för att testa utgående kommunikation till 172.131.0.100 i [Använda Kontrollera IP-flöde](#use-ip-flow-verify) angavs i utdata att regeln **DefaultOutboundDenyAll** nekad kommunikationen. Regeln **DefaultOutboundDenyAll** är lika med regeln **DenyAllOutBound** som visas i följande utdata från kommandot `az network nic list-effective-nsg`:
 
@@ -205,7 +205,7 @@ När du körde kommandot `az network watcher test-ip-flow` för att testa utgåe
 }
 ```
 
-Regeln innehåller **0.0.0.0/0** som **destinationAddressPrefix**. Regeln nekar utgående kommunikation till 172.131.0.100, eftersom adressen inte finns i **destinationAddressPrefix** för någon av de andra utgående reglerna i utdata från `az network nic list-effective-nsg` kommandot. Om du vill tillåta den utgående kommunikationen kan du lägga till en säkerhetsregel med högre prioritet, som tillåter utgående trafik på port 80 på 172.131.0.100.
+Regeln visar **0.0.0.0/0** som **destinationAddressPrefix**. Regeln nekar utgående kommunikation till 172.131.0.100, eftersom adressen inte ligger inom **destinationAddressPrefix** för någon av de andra reglerna för utgående trafik i utdata från `az network nic list-effective-nsg` kommandot. Om du vill tillåta den utgående kommunikationen kan du lägga till en säkerhetsregel med högre prioritet, som tillåter utgående trafik på port 80 på 172.131.0.100.
 
 När du körde kommandot `az network watcher test-ip-flow` i [Använda Kontrollera IP-flöde](#use-ip-flow-verify) för att testa inkommande kommunikation från 172.131.0.100 angavs i utdata att regeln **DefaultOutboundDenyAll** nekade kommunikationen. Regeln **DefaultInboundDenyAll** är lika med regeln **DenyAllInBound** som visas i följande utdata från kommandot `az network nic list-effective-nsg`:
 

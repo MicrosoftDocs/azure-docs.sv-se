@@ -4,18 +4,18 @@ description: Lär dig hur du använder hanterade identiteter i Azure Kubernetes 
 services: container-service
 ms.topic: article
 ms.date: 12/16/2020
-ms.openlocfilehash: 58813504c5de057e06433b2e955931b37560d825
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: 59da03985f0bc9248fdb498d7b0222158029e0d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107600666"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777679"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Använda hanterade identiteter i Azure Kubernetes Service
 
 För närvarande kräver ett Azure Kubernetes Service-kluster (AKS) (specifikt Kubernetes-molnleverantören) en identitet för att skapa ytterligare resurser som lastbalanserare och hanterade diskar i Azure. Den här identiteten kan vara antingen *en hanterad identitet* eller ett *huvudnamn för tjänsten.* Om du använder ett [huvudnamn för](kubernetes-service-principal.md)tjänsten måste du antingen ange ett eller så skapar AKS ett åt dig. Om du använder en hanterad identitet skapas den automatiskt åt dig av AKS. Kluster som använder tjänstens huvudnamn når så småningom ett tillstånd där tjänstens huvudnamn måste förnyas för att klustret ska fungera. Hanteringen av tjänstens huvudnamn ökar komplexiteten, vilket är anledningen till att det är enklare att använda hanterade identiteter i stället. Samma behörighetskrav gäller för både tjänstens huvudnamn och hanterade identiteter.
 
-*Hanterade identiteter* är i stort sett en omsvept kring tjänstens huvudnamn och gör hanteringen enklare. Rotation av autentiseringsuppgifter för MI sker automatiskt var 46:e dag enligt Azure Active Directory standard. AKS använder både system-tilldelade och användar tilldelade hanterade identitetstyper. Dessa identiteter är för närvarande oföränderliga. Läs mer om hanterade [identiteter för Azure-resurser.](../active-directory/managed-identities-azure-resources/overview.md)
+*Hanterade identiteter* är i grunden en omsvept kring tjänstens huvudnamn och gör hanteringen enklare. Rotation av autentiseringsuppgifter för MI sker automatiskt var 46:e dag enligt Azure Active Directory standard. AKS använder både system-tilldelade och användar tilldelade hanterade identitetstyper. Dessa identiteter är för närvarande oföränderliga. Mer information finns i Hanterade [identiteter för Azure-resurser.](../active-directory/managed-identities-azure-resources/overview.md)
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -25,9 +25,9 @@ Du måste ha följande resurs installerad:
 
 ## <a name="limitations"></a>Begränsningar
 
-* Klienter som flyttar/migrerar hanterade identitetsaktiverade kluster stöds inte.
-* Om klustret har `aad-pod-identity` aktiverats ändrar Node-Managed Identity -poddar (NMI) nodernas iptables för att fånga upp anrop till azure-instansens metadataslutpunkt. Den här konfigurationen innebär att alla förfrågningar som görs till metadataslutpunkten fångas upp av NMI även om podden inte använder `aad-pod-identity` . AzurePodIdentityException CRD kan konfigureras för att informera om att alla förfrågningar till metadataslutpunkten som kommer från en podd som matchar etiketter som definierats i CRD ska proxyas utan någon bearbetning i `aad-pod-identity` NMI. Systempoddar med etiketten `kubernetes.azure.com/managedby: aks` i _namnområdet kube-system_ ska undantas i genom att `aad-pod-identity` konfigurera CRD för AzurePodIdentityException. Mer information finns i [Inaktivera aad-pod-identity för en specifik pod eller ett visst program.](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)
-  Om du vill konfigurera ett undantag installerar du [YAML-undantagsfelet mic-](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml).
+* Klientorganisationsflyttning/migrering av kluster med hanterad identitet stöds inte.
+* Om klustret har `aad-pod-identity` aktiverats ändrar Node-Managed Identity (NMI)-poddar nodernas iptables för att fånga upp anrop till azure-instansens metadataslutpunkt. Den här konfigurationen innebär att alla förfrågningar som görs till metadataslutpunkten fångas upp av NMI även om podden inte använder `aad-pod-identity` . AzurePodIdentityException CRD kan konfigureras för att informera om att alla begäranden till metadataslutpunkten som kommer från en podd som matchar etiketter som definierats i CRD ska proxyas utan någon bearbetning i `aad-pod-identity` NMI. Systempoddar med etiketten `kubernetes.azure.com/managedby: aks` i _kube-system-namnområdet_ bör undantas i genom att `aad-pod-identity` konfigurera CRD för AzurePodIdentityException. Mer information finns i Inaktivera [aad-pod-identity för en specifik podd eller ett visst program.](https://azure.github.io/aad-pod-identity/docs/configure/application_exception)
+  Om du vill konfigurera ett undantag installerar du [YAML-undantagsfelet mic.](https://github.com/Azure/aad-pod-identity/blob/master/deploy/infra/mic-exception.yaml)
 
 ## <a name="summary-of-managed-identities"></a>Sammanfattning av hanterade identiteter
 
@@ -35,7 +35,7 @@ AKS använder flera hanterade identiteter för inbyggda tjänster och tillägg.
 
 | Identitet                       | Name    | Användningsfall | Standardbehörigheter | Ta med din egen identitet
 |----------------------------|-----------|----------|
-| Kontrollplan | inte synlig | Används av AKS-kontrollplanskomponenter för att hantera klusterresurser, inklusive ingående lastbalanserare och AKS-hanterade offentliga IP-adresser och autoskalningsåtgärder för kluster | Deltagarroll för Node-resursgrupp | stöds
+| Kontrollplan | visas inte | Används av AKS-kontrollplanskomponenter för att hantera klusterresurser, inklusive ingående lastbalanserare och AKS-hanterade offentliga IP-adresser och autoskalningsåtgärder för kluster | Deltagarroll för Node-resursgrupp | stöds
 | Kubelet | AKS-klusternamn-agentpool | Autentisering med Azure Container Registry (ACR) | NA (för kubernetes v1.15+) | Stöds för närvarande inte
 | Tillägg | AzureNPM | Ingen identitet krävs | NA | No
 | Tillägg | AzureCNI-nätverksövervakning | Ingen identitet krävs | NA | No
@@ -66,7 +66,7 @@ Skapa sedan ett AKS-kluster:
 az aks create -g myResourceGroup -n myManagedCluster --enable-managed-identity
 ```
 
-När klustret har skapats kan du sedan distribuera dina programarbetsbelastningar till det nya klustret och interagera med det på samma sätt som du har gjort med tjänsthuvudnamnsbaserade AKS-kluster.
+När klustret har skapats kan du sedan distribuera dina programarbetsbelastningar till det nya klustret och interagera med det precis som du har gjort med tjänsthuvudnamnsbaserade AKS-kluster.
 
 Hämta slutligen autentiseringsuppgifter för att få åtkomst till klustret:
 
@@ -76,7 +76,7 @@ az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 
 ## <a name="update-an-aks-cluster-to-managed-identities-preview"></a>Uppdatera ett AKS-kluster till hanterade identiteter (förhandsversion)
 
-Nu kan du uppdatera ett AKS-kluster som för närvarande arbetar med tjänstens huvudnamn för att arbeta med hanterade identiteter med hjälp av följande CLI-kommandon.
+Du kan nu uppdatera ett AKS-kluster som för närvarande arbetar med tjänstens huvudnamn för att arbeta med hanterade identiteter med hjälp av följande CLI-kommandon.
 
 Registrera först funktionsflaggan för system tilldelad identitet:
 
@@ -90,7 +90,7 @@ Uppdatera den system tilldelade identiteten:
 az aks update -g <RGName> -n <AKSName> --enable-managed-identity
 ```
 
-Registrera funktionsflaggan för användar tilldelad identitet:
+Registrera funktionsflagga för användar tilldelad identitet:
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.ContainerService -n UserAssignedIdentityPreview
@@ -120,7 +120,7 @@ Om klustret använder hanterade identiteter visas värdet `clientId` "msi". Ett 
 }
 ```
 
-När du har verifierat att klustret använder hanterade identiteter kan du hitta objekt-ID:t för den system tilldelade identiteten på kontrollplanet med följande kommando:
+När du har verifierat att klustret använder hanterade identiteter kan du hitta objekt-ID:t för den system tilldelade identiteten för kontrollplanet med följande kommando:
 
 ```azurecli-interactive
 az aks show -g <RGName> -n <ClusterName> --query "identity"
@@ -136,13 +136,13 @@ az aks show -g <RGName> -n <ClusterName> --query "identity"
 ```
 
 > [!NOTE]
-> Om du vill skapa och använda ett eget VNet, en statisk IP-adress eller en ansluten Azure-disk där resurserna finns utanför arbetsnodens resursgrupp använder du PrincipalID för klustrets system tilldelade hanterade identitet för att utföra en rolltilldelning. Mer information om rolltilldelning finns i [Delegera åtkomst till andra Azure-resurser.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
+> Om du vill skapa och använda ett eget VNet, en statisk IP-adress eller en ansluten Azure-disk där resurserna finns utanför resursgruppen för arbetsnoden använder du PrincipalID för klustrets system tilldelade hanterade identitet för att utföra en rolltilldelning. Mer information om rolltilldelning finns i [Delegera åtkomst till andra Azure-resurser.](kubernetes-service-principal.md#delegate-access-to-other-azure-resources)
 >
-> Det kan ta upp 60 minuter att fylla i behörighet till kluster hanterad identitet som används av Azure Cloud-providern.
+> Det kan ta upp 60 minuter att fylla i behörighet som beviljas till kluster hanterad identitet som används av Azure Cloud-providern.
 
 
-## <a name="bring-your-own-control-plane-mi"></a>Ta med ditt eget kontrollplan MI
-En anpassad kontrollplansidentitet gör det möjligt att bevilja åtkomst till den befintliga identiteten innan klustret skapas. Den här funktionen möjliggör scenarier som att använda ett anpassat VNET eller en utgående typ av UDR med en i förväg skapad hanterad identitet.
+## <a name="bring-your-own-control-plane-mi"></a>Ta med ditt eget kontrollplans MI
+Med en anpassad kontrollplansidentitet kan åtkomst beviljas till den befintliga identiteten innan klustret skapas. Den här funktionen möjliggör scenarier som att använda ett anpassat VNET eller en utgående typ av UDR med en förskapad hanterad identitet.
 
 Du måste ha Azure CLI version 2.15.1 eller senare installerat.
 
@@ -150,7 +150,7 @@ Du måste ha Azure CLI version 2.15.1 eller senare installerat.
 * Azure Government stöds inte för närvarande.
 * Azure China 21Vianet stöds inte för närvarande.
 
-Om du inte har en hanterad identitet ännu, bör du gå vidare och skapa en till exempel med hjälp av [az identity CLI][az-identity-create].
+Om du inte har en hanterad identitet ännu bör du gå vidare och skapa en till exempel med hjälp av [az identity CLI][az-identity-create].
 
 ```azurecli-interactive
 az identity create --name myIdentity --resource-group myResourceGroup
@@ -193,7 +193,7 @@ az aks create \
     --assign-identity <identity-id> \
 ```
 
-Ett lyckat klusterskapande med dina egna hanterade identiteter innehåller profilinformationen userAssignedIdentities:
+Ett lyckat kluster som skapas med dina egna hanterade identiteter innehåller profilinformationen userAssignedIdentities:
 
 ```output
  "identity": {
@@ -214,5 +214,5 @@ Ett lyckat klusterskapande med dina egna hanterade identiteter innehåller profi
 
 <!-- LINKS - external -->
 [aks-arm-template]: /azure/templates/microsoft.containerservice/managedclusters
-[az-identity-create]: /cli/azure/identity#az-identity-create
-[az-identity-list]: /cli/azure/identity#az-identity-list
+[az-identity-create]: /cli/azure/identity#az_identity_create
+[az-identity-list]: /cli/azure/identity#az_identity_list
