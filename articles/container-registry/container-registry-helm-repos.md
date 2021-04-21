@@ -3,12 +3,12 @@ title: Lagra Helm-diagram
 description: Lär dig hur du lagrar Helm-diagram för dina Kubernetes-program med hjälp av lagringsplatsen i Azure Container Registry
 ms.topic: article
 ms.date: 04/15/2021
-ms.openlocfilehash: 6698eb8f5e18511717e44bf5dc06a51d8f3903b8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: c7dcdf222e9628daedb7e1c3617efb0b9c7af185
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537323"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772387"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Skicka och hämta Helm-diagram till ett Azure-containerregister
 
@@ -216,7 +216,7 @@ helm chart export mycontainerregistry.azurecr.io/helm/hello-world:v1 \
   --destination ./install
 ```
 
-Om du vill visa information om det exporterade diagrammet i lagringsplatsen kör `helm show chart` du kommandot i katalogen där du exporterade diagrammet.
+Om du vill visa information för det exporterade diagrammet i lagringsplatsen kör `helm show chart` du kommandot i katalogen där du exporterade diagrammet.
 
 ```console
 cd install
@@ -236,13 +236,13 @@ version: 0.1.0
 
 ## <a name="install-helm-chart"></a>Installera Helm-diagram
 
-Kör `helm install` för att installera Helm-diagrammet som du har dragit till den lokala cachen och exporterat. Ange ett versionnamn, till *exempel myhelmtest*, eller skicka `--generate-name` parametern . Exempel:
+Kör `helm install` för att installera Helm-diagrammet som du har dragit till den lokala cachen och exporterat. Ange ett versionnamn, till *exempel myhelmtest,* eller skicka `--generate-name` parametern . Exempel:
 
 ```console
 helm install myhelmtest ./hello-world
 ```
 
-Utdata efter lyckad diagraminstallation liknar:
+Utdata efter en lyckad diagraminstallation liknar:
 
 ```console
 NAME: myhelmtest
@@ -253,7 +253,7 @@ REVISION: 1
 TEST SUITE: None
 ```
 
-Kontrollera installationen genom att köra `helm get manifest` kommandot . 
+Verifiera installationen genom att köra `helm get manifest` kommandot . 
 
 ```console
 helm get manifest myhelmtest
@@ -261,7 +261,7 @@ helm get manifest myhelmtest
 
 Kommandot returnerar YAML-data i `configmap.yaml` mallfilen.
 
-Kör `helm uninstall` för att avinstallera diagramutgågåren i klustret:
+Kör `helm uninstall` för att avinstallera diagramutgåren i klustret:
 
 ```console
 helm uninstall myhelmtest
@@ -269,7 +269,7 @@ helm uninstall myhelmtest
 
 ## <a name="delete-chart-from-the-registry"></a>Ta bort diagram från registret
 
-Om du vill ta bort ett diagram från containerregistret använder du [kommandot az acr repository delete.][az-acr-repository-delete] Kör följande kommando och bekräfta åtgärden när du uppmanas att göra det:
+Om du vill ta bort ett diagram från containerregistret använder du [kommandot az acr repository delete.][az-acr-repository-delete] Kör följande kommando och bekräfta åtgärden när du tillfrågas:
 
 ```azurecli
 az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
@@ -291,12 +291,12 @@ az acr repository delete --name mycontainerregistry --image helm/hello-world:v1
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-quickstart]: ../aks/kubernetes-walkthrough.md
 [acr-bestpractices]: container-registry-best-practices.md
-[az-configure]: /cli/azure/reference-index#az-configure
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-configure]: /cli/azure/reference-index#az_configure
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-helm]: /cli/azure/acr/helm
 [az-acr-repository]: /cli/azure/acr/repository
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [acr-tasks]: container-registry-tasks-overview.md
