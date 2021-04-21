@@ -1,7 +1,7 @@
 ---
-title: Skript exempel för Azure CLI – skapa en Azure App konfigurations lager
+title: Skriptexempel för Azure CLI – Skapa ett Azure App Configuration Store
 titleSuffix: Azure App Configuration
-description: Skapa en Azure App konfigurations lagring med ett exempel skript för Azure CLI. Se referens artikel länkar till kommandon som används i skriptet.
+description: Skapa ett Azure App Configuration store med hjälp av ett Azure CLI-exempelskript. Se referensartikellänkar till kommandon som används i skriptet.
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
@@ -9,22 +9,22 @@ ms.topic: sample
 ms.date: 01/24/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 4554ca64dccaa69e3a6fb63e5c28a6bcbb1a32e4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4a341e9772c67da7781a5cec92f286c037c55ce9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96930848"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768965"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Skapa ett Azure App Configuration-arkiv
 
-Det här exempel skriptet skapar en ny instans av Azure App konfiguration i en ny resurs grupp.
+Det här exempelskriptet skapar en ny instans Azure App Configuration i en ny resursgrupp.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -65,16 +65,16 @@ Anteckna det faktiska namnet som genereras för den nya resursgruppen. Du använ
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-I det här skriptet används följande kommandon för att skapa en ny resurs grupp och ett konfigurations Arkiv för appar. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
+Det här skriptet använder följande kommandon för att skapa en ny resursgrupp och ett App Configuration store. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az appconfig create](/cli/azure/appconfig#az-appconfig-create) | Skapar en resurs för konfigurations Arkiv för appar. |
-| [lista med AZ appconfig-autentiseringsuppgifter](/cli/azure/appconfig/credential#az-appconfig-credential-list) | Visa en lista med åtkomst nycklar för ett konfigurations Arkiv för appar. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az appconfig create](/cli/azure/appconfig#az_appconfig_create) | Skapar en App Configuration store-resurs. |
+| [az appconfig credential list](/cli/azure/appconfig/credential#az_appconfig_credential_list) | Lista åtkomstnycklar för ett App Configuration store. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
-Ytterligare skript exempel för programkonfigurations-CLI finns i [Azure App konfigurations-CLI-exempel](../cli-samples.md).
+Ytterligare App Configuration CLI-skriptexempel finns i Azure App Configuration [CLI-exempel](../cli-samples.md).

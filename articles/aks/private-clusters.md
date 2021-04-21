@@ -4,12 +4,12 @@ description: Lär dig hur du skapar ett Azure Kubernetes Service-kluster (AKS)
 services: container-service
 ms.topic: article
 ms.date: 3/31/2021
-ms.openlocfilehash: 339bb41aed5ead3d7ee7d1217bfbc771cf068832
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 76785caedb9ca97d947e83f5aa8ff5b32d827914
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107719123"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772909"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Skapa ett privat Azure Kubernetes Service kluster
 
@@ -19,7 +19,7 @@ Kontrollplanet eller API-servern finns i en AKS Azure Kubernetes Service prenume
 
 ## <a name="region-availability"></a>Regional tillgänglighet
 
-Privat kluster är tillgängligt i offentliga regioner, Azure Government och Azure China 21Vianet regioner där [AKS stöds.](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)
+Privata kluster är tillgängligt i offentliga regioner, Azure Government och Azure China 21Vianet där [AKS stöds.](https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service)
 
 > [!NOTE]
 > Azure Government-webbplatser stöds, men US Gov, Texas stöds inte för närvarande på grund av att Private Link stöds.
@@ -97,7 +97,7 @@ az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --lo
 API-serverslutpunkten har ingen offentlig IP-adress. För att hantera API-servern måste du använda en virtuell dator som har åtkomst till AKS-klustrets Azure Virtual Network (VNet). Det finns flera alternativ för att upprätta nätverksanslutning till det privata klustret.
 
 * Skapa en virtuell dator i samma Azure Virtual Network (VNet) som AKS-klustret.
-* Använd en virtuell dator i ett separat nätverk och konfigurera [Peering för virtuella nätverk.][virtual-network-peering]  Mer information om det här alternativet finns i avsnittet nedan.
+* Använd en virtuell dator i ett separat nätverk och konfigurera [peering för virtuella nätverk.][virtual-network-peering]  Mer information om det här alternativet finns i avsnittet nedan.
 * Använd en [Express Route- eller VPN-anslutning.][express-route-or-VPN]
 * Använd [funktionen AKS Kör kommando](#aks-run-command-preview).
 
@@ -182,7 +182,7 @@ Som tidigare nämnts är peering för virtuella nätverk ett sätt att komma åt
 3. I scenarier där det virtuella nätverk som innehåller klustret har anpassade DNS-inställningar (4), misslyckas klusterdistributionen om inte den privata DNS-zonen är länkad till det virtuella nätverk som innehåller de anpassade DNS-matcharna (5). Den här länken kan skapas manuellt när den privata zonen har skapats under klusteretablering eller via automatisering när du har upptäckt att zonen har skapats med hjälp av händelsebaserade distributionsmekanismer (till exempel Azure Event Grid och Azure Functions).
 
 > [!NOTE]
-> Om du använder [Bring Your Own Route Table med kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) och Bring Your Own DNS med privat kluster går det inte att skapa klustret. Du måste associera [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) i nodresursgruppen till undernätet när klustret har skapats, för att skapa klustret.
+> Om du använder Bring Your Own Route Table med [kubenet](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) och Bring Your Own DNS med privat kluster misslyckas klusterskapandet. Du måste associera [RouteTable](./configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet) i nodresursgruppen till undernätet när klustret har skapats, för att skapa klustret.
 
 ## <a name="limitations"></a>Begränsningar 
 * IP-auktoriserade intervall kan inte tillämpas på den privata API-serverslutpunkten, de gäller bara för den offentliga API-servern
@@ -195,10 +195,10 @@ Som tidigare nämnts är peering för virtuella nätverk ett sätt att komma åt
 * Vid underhåll på kontrollplanet kan [AKS IP-adressen](./limit-egress-traffic.md) ändras. I det här fallet måste du uppdatera A-posten som pekar på API-serverns privata IP-adress på din anpassade DNS-server och starta om eventuella anpassade poddar eller distributioner med hjälp av hostNetwork.
 
 <!-- LINKS - internal -->
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [private-link-service]: ../private-link/private-link-service-overview.md#limitations
 [virtual-network-peering]: ../virtual-network/virtual-network-peering-overview.md
 [azure-bastion]: ../bastion/tutorial-create-host-portal.md

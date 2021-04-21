@@ -1,6 +1,6 @@
 ---
-title: Skapa en virtuell dator från en specialiserad avbildnings version med hjälp av Azure CLI
-description: Skapa en virtuell dator med hjälp av en specialiserad avbildnings version i ett galleri för delad avbildning med hjälp av Azure CLI.
+title: Skapa en virtuell dator från en specialiserad avbildningsversion med hjälp av Azure CLI
+description: Skapa en virtuell dator med en specialiserad avbildningsversion i en Shared Image Gallery med hjälp av Azure CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -10,20 +10,20 @@ ms.date: 04/23/2020
 ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fe081b0e74acf771e10406c15a3dea4e09956c37
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b3498037f3d2088459784ab066b8e94ba344a275
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560979"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792191"
 ---
-# <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Skapa en virtuell dator med hjälp av en specialiserad avbildnings version med Azure CLI
+# <a name="create-a-vm-using-a-specialized-image-version-with-the-azure-cli"></a>Skapa en virtuell dator med en specialiserad avbildningsversion med Azure CLI
 
-Skapa en virtuell dator från en [specialiserad avbildnings version](./shared-image-galleries.md#generalized-and-specialized-images) som lagras i ett delat avbildnings Galleri. Om du vill skapa en virtuell dator med en generaliserad avbildnings version, se [skapa en virtuell dator från en generaliserad avbildnings version](vm-generalized-image-version-cli.md).
+Skapa en virtuell dator från en [specialiserad avbildningsversion](./shared-image-galleries.md#generalized-and-specialized-images) som lagras i en Shared Image Gallery. Om du vill skapa en virtuell dator med en generaliserad avbildningsversion kan du gå [till Skapa en virtuell dator från en generaliserad avbildningsversion.](vm-generalized-image-version-cli.md)
 
-Ersätt resurs namn efter behov i det här exemplet. 
+Ersätt resursnamnen efter behov i det här exemplet. 
 
-Visa en lista över bild definitionerna i ett galleri med hjälp av [AZ sig-bild definitions listan](/cli/azure/sig/image-definition#az-sig-image-definition-list) för att se namn och ID för definitionerna.
+Visa en lista med bilddefinitionerna i ett galleri [med az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list) för att se namn och ID för definitionerna.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -35,11 +35,11 @@ az sig image-definition list \
    --output tsv
 ```
 
-Skapa den virtuella datorn med [AZ VM Create](/cli/azure/vm#az-vm-create) med hjälp av parametern--specialiserad för att indikera att avbildningen är en specialiserad avbildning. 
+Skapa den virtuella datorn med [az vm create med](/cli/azure/vm#az_vm_create) parametern --specialized för att indikera att avbildningen är en specialiserad avbildning. 
 
-Använd bild Definitions-ID: t för för `--image` att skapa den virtuella datorn från den senaste versionen av avbildningen som är tillgänglig. Du kan också skapa den virtuella datorn från en angiven version genom att ange avbildningens versions-ID för `--image` . 
+Använd avbildningsdefinitions-ID för att skapa den virtuella datorn från den `--image` senaste versionen av avbildningen som är tillgänglig. Du kan också skapa den virtuella datorn från en specifik version genom att ange avbildningsversions-ID:t för `--image` . 
 
-I det här exemplet skapar vi en virtuell dator från den senaste versionen av *myImageDefinition* -avbildningen.
+I det här exemplet skapar vi en virtuell dator från den senaste versionen av avbildningen *myImageDefinition.*
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -51,9 +51,9 @@ az vm create --resource-group myResourceGroup \
 
 
 ## <a name="next-steps"></a>Nästa steg
-[Azure Image Builder (för hands version)](./image-builder-overview.md) kan hjälpa dig att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+[Azure Image Builder (förhandsversion)](./image-builder-overview.md) kan hjälpa dig att automatisera skapandet av avbildningsversion. Du kan till och med använda det för att uppdatera och skapa en ny avbildningsversion från [en befintlig avbildningsversion.](./linux/image-builder-gallery-update-image-version.md) 
 
-Du kan också skapa en delad resurs för avbildnings galleriet med hjälp av mallar. Det finns flera tillgängliga Azure snabb starts mallar: 
+Du kan också skapa Shared Image Gallery resurs med hjälp av mallar. Det finns flera tillgängliga Azure-snabbstartsmallar: 
 
 - [Skapa ett Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-create/)
 - [Skapa en avbildningsdefinition i ett Shared Image Gallery](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)

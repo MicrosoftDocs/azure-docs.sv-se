@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/21/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 2ee2aad290c03743d8a2627922446b8167f3ffee
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 51b5714f9009cbe48aa49c6a04a1434cec12396e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480529"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107790697"
 ---
 # <a name="auto-manage-devices-in-azure-digital-twins-using-device-provisioning-service-dps"></a>Hantera enheter automatiskt i Azure Digital Twins device provisioning service (DPS)
 
@@ -29,7 +29,7 @@ Innan du kan konfigurera etableringen måste du konfigurera följande:
 * en **IoT-hubb**. Mer information finns i avsnittet *Skapa en IoT Hub* i den här IoT Hub [snabbstarten](../iot-hub/quickstart-send-telemetry-cli.md).
 * en [**Azure-funktion**](../azure-functions/functions-overview.md) som uppdaterar digital tvillinginformation baserat på IoT Hub data. Följ instruktionerna i [*Anvisningar: Mata in IoT Hub-data för*](how-to-ingest-iot-hub-data.md) att skapa den här Azure-funktionen. Samla in **_funktionsnamnet för_** att använda det i den här artikeln.
 
-Det här exemplet använder också en **enhetssimulator** som inkluderar etablering med enhetsetableringstjänsten. Enhetssimulatorn finns här: [Azure Digital Twins och IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Hämta exempelprojektet på datorn genom att navigera till exempellänken och välja **knappen Bläddra** kod under rubriken. Då kommer du till GitHub-lagringsplatsen för exemplet, som du kan ladda ned som en *. ZIP-fil* genom att välja **knappen** Kod och **Ladda ned ZIP.** 
+Det här exemplet använder också en **enhetssimulator** som inkluderar etablering med enhetsetableringstjänsten. Enhetssimulatorn finns här: [Azure Digital Twins och IoT Hub Integration Sample](/samples/azure-samples/digital-twins-iothub-integration/adt-iothub-provision-sample/). Hämta exempelprojektet på datorn genom att navigera till exempellänken och välja **knappen Bläddra** kod under rubriken. Då kommer du till GitHub-lagringsplatsen för exemplet, som du kan ladda ned som *en . ZIP-fil* genom att välja **knappen** Kod och **Ladda ned ZIP.** 
 
 :::image type="content" source="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png" alt-text="Skärmbild av lagringsplatsen digital-twins-iothub-integration på GitHub. Knappen Kod är markerad och skapar en liten dialogruta där knappen Ladda ned ZIP är markerad." lightbox="media/how-to-provision-using-device-provisioning-service/download-repo-zip.png":::
 
@@ -41,7 +41,7 @@ Du måste installera [**Node.js**](https://nodejs.org/download) datorn. Enhetssi
 
 Bilden nedan illustrerar arkitekturen för den här lösningen med hjälp Azure Digital Twins med Enhetsetableringstjänsten. Den visar både enhetsetabler- och tillbaka retire-flödet.
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/flows.png" alt-text="Diagram över enheten och flera Azure-tjänster i ett scenario från start till slut. Data flödar fram och tillbaka mellan en termostatenhet och DPS. Data flödar också ut från DPS till IoT Hub och för att Azure Digital Twins via en Azure-funktion med etiketten &quot;Allocation&quot; (Allokering). Data från en manuell åtgärd för att ta bort enhet flödar genom IoT Hub > Event Hubs > Azure Functions > Azure Digital Twins." lightbox="media/how-to-provision-using-device-provisioning-service/flows.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/flows.png" alt-text="Diagram över enheten och flera Azure-tjänster i ett scenario från start till slut. Data flödar fram och tillbaka mellan en termostatenhet och DPS. Data flödar också ut från DPS till IoT Hub och för att Azure Digital Twins via en Azure-funktion med etiketten &quot;Allocation&quot; (Allokering). Data från en manuell åtgärd för att ta bort enhet flödar IoT Hub > Event Hubs > Azure Functions > Azure Digital Twins." lightbox="media/how-to-provision-using-device-provisioning-service/flows.png":::
 
 Den här artikeln är indelad i två avsnitt:
 * [*Etablera enheten automatiskt med device provisioning-tjänsten*](#auto-provision-device-using-device-provisioning-service)
@@ -53,7 +53,7 @@ Mer ingående förklaringar av varje steg i arkitekturen finns i deras enskilda 
 
 I det här avsnittet kopplar du Device Provisioning Service till Azure Digital Twins att etablera enheter automatiskt via sökvägen nedan. Det här är ett utdrag från den fullständiga arkitektur som [visades tidigare](#solution-architecture).
 
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/provision.png" alt-text="Diagram över Etablera flöde – ett utdrag ur lösningsarkitekturdiagrammet med siffror som etiketterar avsnitt i flödet. Data flödar fram och tillbaka mellan en termostatenhet och DPS (1 för enhet > DPS och 5 för DPS > enhet). Data flödar också ut från DPS till IoT Hub (4) och till Azure Digital Twins (3) via en Azure-funktion med etiketten Allokering (2)." lightbox="media/how-to-provision-using-device-provisioning-service/provision.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/provision.png" alt-text="Diagram över Etablera flöde – ett utdrag ur lösningsarkitekturdiagrammet med siffror som etiketterar avsnitt i flödet. Data flödar fram och tillbaka mellan en termostatenhet och DPS (1 för enhet > DPS och 5 för DPS > enhet). Data flödar också ut från DPS till IoT Hub (4) och till Azure Digital Twins (3) via en Azure-funktion med etiketten &quot;Allocation&quot; (2)." lightbox="media/how-to-provision-using-device-provisioning-service/provision.png":::
 
 Här är en beskrivning av processflödet:
 1. Enheten kontaktar DPS-slutpunkten och anger identifierande information för att bevisa sin identitet.
@@ -170,18 +170,18 @@ Spara och stäng filen.
 
 ### <a name="start-running-the-device-simulator"></a>Börja köra enhetssimulatorn
 
-Starta *enhetssimulatorn med* följande kommando i katalogen device-simulator i kommandofönstret:
+Fortfarande i katalogen *device-simulator* i kommandofönstret startar du enhetssimulatorn med följande kommando:
 
 ```cmd
 node .\adt_custom_register.js
 ```
 
-Du bör se att enheten registreras och ansluts till IoT Hub och sedan börjar skicka meddelanden.
+Du bör se att enheten har registrerats och anslutits till IoT Hub och sedan börjar skicka meddelanden.
 :::image type="content" source="media/how-to-provision-using-device-provisioning-service/output.png" alt-text="Skärmbild av Fönstret Kommando som visar enhetsregistrering och skicka meddelanden" lightbox="media/how-to-provision-using-device-provisioning-service/output.png":::
 
 ### <a name="validate"></a>Verifiera
 
-På grund av det flöde som du har skapat i den här artikeln registreras enheten automatiskt i Azure Digital Twins. Använd följande [CLI Azure Digital Twins kommando](how-to-use-cli.md) för att hitta enhetstvillingen i den Azure Digital Twins som du skapade.
+På grund av det flöde som du har skapat i den här artikeln registreras enheten automatiskt i Azure Digital Twins. Använd följande [cli Azure Digital Twins kommando](how-to-use-cli.md) för att hitta enhetstvillingen i den Azure Digital Twins som du skapade.
 
 ```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
@@ -214,23 +214,23 @@ Skärmbilden nedan visar skapandet av händelsehubben.
 
 #### <a name="create-sas-policy-for-your-event-hub"></a>Skapa SAS-princip för din händelsehubb
 
-Därefter måste du skapa en princip för signatur för delad åtkomst [(SAS) för](../event-hubs/authorize-access-shared-access-signature.md) att konfigurera händelsehubben med din funktionsapp.
+Därefter måste du skapa en princip för signatur för delad åtkomst [(SAS)](../event-hubs/authorize-access-shared-access-signature.md) för att konfigurera händelsehubben med din funktionsapp.
 Gör
-1. Gå till den händelsehubb som du nyss skapade Azure Portal och välj **Principer för delad** åtkomst i menyalternativen till vänster.
+1. Gå till den händelsehubb som du precis skapade i Azure Portal och välj Principer **för delad** åtkomst i menyalternativen till vänster.
 2. Välj **Lägg till**. I fönstret *Lägg till SAS-princip* som öppnas anger du ett principnamn och markerar *kryssrutan* Lyssna.
 3. Välj **Skapa**.
     
-:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png" alt-text="Skärmbild av en Azure Portal för att lägga till en SAS-princip för händelsehubb." lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png":::
+:::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png" alt-text="Skärmbild av Azure Portal för att lägga till en SAS-princip för händelsehubb." lightbox="media/how-to-provision-using-device-provisioning-service/add-event-hub-sas-policy.png":::
 
 #### <a name="configure-event-hub-with-function-app"></a>Konfigurera händelsehubb med funktionsapp
 
 Konfigurera sedan Azure-funktionsappen som du konfigurerade i avsnittet [förutsättningar för](#prerequisites) att arbeta med din nya händelsehubb. Du gör detta genom att ange en miljövariabel i funktionsappen med händelsehubbens anslutningssträng.
 
-1. Öppna den princip som du nyss skapade och kopiera värdet **Anslutningssträng– primär** nyckel.
+1. Öppna den princip som du nyss skapade och kopiera värdet För primär nyckel **för anslutningssträng.**
 
     :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png" alt-text="Skärmbild av Azure Portal för att kopiera anslutningssträngens primära nyckel." lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-sas-policy-connection-string.png":::
 
-2. Lägg till anslutningssträngen som en variabel i funktionsappinställningarna med följande Azure CLI-kommando. Kommandot kan köras i [Cloud Shell](https://shell.azure.com), eller lokalt om du har Azure CLI [installerat på datorn](/cli/azure/install-azure-cli).
+2. Lägg till anslutningssträngen som en variabel i funktionsappinställningarna med följande Azure CLI-kommando. Kommandot kan köras i [Cloud Shell](https://shell.azure.com)lokalt om du har Azure CLI [installerat på datorn](/cli/azure/install-azure-cli).
 
     ```azurecli-interactive
     az functionapp config appsettings set --settings "EVENTHUB_CONNECTIONSTRING=<Event Hubs SAS connection string Listen>" -g <resource group> -n <your App Service (function app) name>
@@ -240,7 +240,7 @@ Konfigurera sedan Azure-funktionsappen som du konfigurerade i avsnittet [föruts
 
 I ditt funktionsappsprojekt som [](#prerequisites) du skapade i avsnittet förutsättningar skapar du en ny funktion för att dra tillbaka en befintlig enhet med hjälp IoT Hub livscykelhändelser.
 
-Mer information om livscykelhändelser finns [*i IoT Hub icke-telemetrihändelser*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events). Mer information om hur du använder Event Hubs med Azure Functions finns i [*Azure Event Hubs utlösare för Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
+Mer information om livscykelhändelser finns [*i IoT Hub händelser som inte är telemetri.*](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events) Mer information om hur du använder Event Hubs med Azure Functions finns [*i Azure Event Hubs utlösare för Azure Functions*](../azure-functions/functions-bindings-event-hubs-trigger.md).
 
 Börja med att öppna funktionsappsprojektet i Visual Studio på datorn och följ stegen nedan.
 
@@ -258,25 +258,25 @@ I den nya funktionskodfilen klistrar du in följande kod, byter namn på funktio
 
 #### <a name="step-3-publish-the-function-app-to-azure"></a>Steg 3: Publicera funktionsappen till Azure
 
-Publicera projektet med funktionen *DeleteDeviceInTwinFunc.cs* till funktionsappen i Azure.
+Publicera projektet med *funktionen DeleteDeviceInTwinFunc.cs* till funktionsappen i Azure.
 
 [!INCLUDE [digital-twins-publish-and-configure-function-app.md](../../includes/digital-twins-publish-and-configure-function-app.md)]
 
-### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>Skapa en IoT Hub för livscykelhändelser
+### <a name="create-an-iot-hub-route-for-lifecycle-events"></a>Skapa en IoT Hub väg för livscykelhändelser
 
-Nu ska du konfigurera en IoT Hub väg för att dirigera enhetslivscykelhändelser. I det här fallet lyssnar du specifikt på enhets borttagningshändelser som identifieras av `if (opType == "deleteDeviceIdentity")` . Detta utlöser borttagningen av det digitala tvillingobjektet, vilket slutför tillbakagången av en enhet och dess digitala tvilling.
+Nu ska du konfigurera en IoT Hub väg för att dirigera enhetslivscykelhändelser. I det här fallet lyssnar du specifikt på enhets borttagningshändelser som identifieras av `if (opType == "deleteDeviceIdentity")` . Detta utlöser borttagningen av det digitala tvillingobjektet och slutför tillbakagången för en enhet och dess digitala tvilling.
 
 Först måste du skapa en händelsehubbslutpunkt i din IoT-hubb. Sedan lägger du till en väg i IoT Hub för att skicka livscykelhändelser till händelsehubbens slutpunkt.
-Följ de här stegen för att skapa en händelsehubbslutpunkt:
+Följ dessa steg för att skapa en händelsehubbslutpunkt:
 
-1. I den [Azure Portal](https://portal.azure.com/)navigerar du till den IoT-hubb som  du skapade i avsnittet förutsättningar och väljer Meddelanderoutning i menyalternativen till vänster. [](#prerequisites)
+1. I [Azure Portal](https://portal.azure.com/)navigerar du till den IoT-hubb [](#prerequisites) som du  skapade i avsnittet förutsättningar och väljer Meddelanderoutning i menyalternativen till vänster.
 2. Välj fliken **Anpassade slutpunkter.**
-3. Välj **+ Lägg till** och välj Event **Hubs för att** lägga till en slutpunkt av händelsehubbtyp.
+3. Välj **+ Lägg till** och välj Event **Hubs för** att lägga till en slutpunkt av händelsehubbtyp.
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png" alt-text="Skärmbild av fönstret Visual Studio för att lägga till en anpassad slutpunkt för en händelsehubb." lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png" alt-text="Skärmbild av fönstret Visual Studio för att lägga till en anpassad slutpunkt för händelsehubben." lightbox="media/how-to-provision-using-device-provisioning-service/event-hub-custom-endpoint.png":::
 
-4. I fönstret Lägg *till en händelsehubbslutpunkt* som öppnas väljer du följande värden:
-    * **Slutpunktsnamn:** Välj ett slutpunktsnamn.
+4. I fönstret Lägg *till en slutpunkt för händelsehubben* som öppnas väljer du följande värden:
+    * **Slutpunktens namn:** Välj ett slutpunktsnamn.
     * **Namnområde för händelsehubb:** Välj händelsehubbens namnområde i listrutan.
     * **Händelsehubbinstans:** Välj händelsehubbens namn som du skapade i föregående steg.
 5. Välj **Skapa**. Låt det här fönstret vara öppet för att lägga till en väg i nästa steg.
@@ -285,15 +285,15 @@ Följ de här stegen för att skapa en händelsehubbslutpunkt:
 
 Nu ska du lägga till en väg som ansluter till slutpunkten som du skapade i steget ovan med en routningsfråga som skickar borttagningshändelserna. Följ dessa steg för att skapa en väg:
 
-1. Gå till fliken *Vägar och* välj Lägg till **för** att lägga till en väg.
+1. Gå till fliken *Vägar och* välj Lägg till **för att** lägga till en väg.
 
-    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-message-route.png" alt-text="Skärmbild av fönstret Visual Studio för att lägga till en väg för att skicka händelser." lightbox="media/how-to-provision-using-device-provisioning-service/add-message-route.png":::
+    :::image type="content" source="media/how-to-provision-using-device-provisioning-service/add-message-route.png" alt-text="Skärmbild av fönstret Visual Studio att lägga till en väg för att skicka händelser." lightbox="media/how-to-provision-using-device-provisioning-service/add-message-route.png":::
 
 2. På sidan *Lägg till en* väg som öppnas väljer du följande värden:
 
    * **Namn:** Välj ett namn för din väg. 
-   * **Slutpunkt:** Välj den event hubs-slutpunkt som du skapade tidigare från listrutan.
-   * **Datakälla:** Välj *Enhetslivscykelhändelser*.
+   * **Slutpunkt:** Välj slutpunkten för händelsehubben som du skapade tidigare i listrutan.
+   * **Datakälla:** Välj *Enhetslivscykelhändelser.*
    * **Routningsfråga:** Ange `opType='deleteDeviceIdentity'` . Den här frågan begränsar enhetslivscykelns händelser till att endast skicka borttagningshändelserna.
 
 3. Välj **Spara**.
@@ -316,7 +316,7 @@ Du kan göra detta med ett [Azure CLI-kommando](/cli/azure/iot/hub/module-identi
 
 Det kan ta några minuter att se ändringarna som återspeglas i Azure Digital Twins.
 
-Använd följande [cli Azure Digital Twins kommando](how-to-use-cli.md) för att verifiera att enhetstvillingen i den Azure Digital Twins instansen har tagits bort.
+Använd följande [cli Azure Digital Twins kommando](how-to-use-cli.md) för att verifiera att enhetens tvilling i den Azure Digital Twins instansen har tagits bort.
 
 ```azurecli-interactive
 az dt twin show -n <Digital Twins instance name> --twin-id "<Device Registration ID>"
@@ -328,9 +328,9 @@ Du bör se att enhetstvillingen inte längre kan hittas Azure Digital Twins inst
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du inte längre behöver de resurser som skapades i den här artikeln följer du dessa steg för att ta bort dem.
+Om du inte längre behöver resurserna som skapades i den här artikeln följer du dessa steg för att ta bort dem.
 
-Med hjälp Azure Cloud Shell lokala Azure CLI kan du ta bort alla Azure-resurser i en resursgrupp med [kommandot az group delete.](/cli/azure/group#az-group-delete) Detta tar bort resursgruppen. Azure Digital Twins instansen; IoT-hubben och registreringen av hubbenheten; Event Grid-ämnet och tillhörande prenumerationer; event hubs-namnområdet och båda Azure Functions, inklusive associerade resurser som lagring.
+Med hjälp Azure Cloud Shell lokala Azure CLI kan du ta bort alla Azure-resurser i en resursgrupp med [kommandot az group delete.](/cli/azure/group#az_group_delete) Detta tar bort resursgruppen. Azure Digital Twins instansen; IoT-hubben och registreringen av hubbenheten; Event Grid-ämnet och tillhörande prenumerationer; event hubs-namnområdet och båda Azure Functions, inklusive associerade resurser som lagring.
 
 > [!IMPORTANT]
 > Att ta bort en resursgrupp kan inte ångras. Resursgruppen och alla resurser som ingår i den tas bort permanent. Kontrollera att du inte av misstag tar bort fel resursgrupp eller resurser. 

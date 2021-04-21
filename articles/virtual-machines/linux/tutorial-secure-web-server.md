@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: skydda en Linux-webbserver med TLS/SSL-certifikat i Azure'
+title: 'Självstudie: Skydda en Linux-webbserver med TLS/SSL-certifikat i Azure'
 description: I den här självstudien får du lära dig hur du använder Azure CLI till att skydda en virtuell Linux-dator som kör webbservern NGINX med SSL-certifikat som lagras i Azure Key Vault.
 services: virtual-machines
 documentationcenter: virtual-machines
@@ -15,15 +15,15 @@ ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3f762597ad81dfaba907115cbcf6074d81ec2fa4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 97eee5d852450df2341d57932052839825523933
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102549591"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769759"
 ---
-# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: skydda en webb server på en virtuell Linux-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
-För att skydda webb servrar, en Transport Layer Security (TLS), som tidigare kallades Secure Sockets Layer (SSL), kan du använda certifikat för att kryptera webb trafik. Dessa TLS/SSL-certifikat kan lagras i Azure Key Vault och tillåta säker distribution av certifikat till virtuella Linux-datorer (VM: ar) i Azure. I den här guiden får du lära du dig hur man:
+# <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Självstudie: Skydda en webbserver på en virtuell Linux-dator i Azure med TLS/SSL-certifikat som lagras i Key Vault
+För att skydda webbservrar kan ett Transport Layer Security (TLS), tidigare kallat Secure Sockets Layer (SSL), användas för att kryptera webbtrafik. Dessa TLS/SSL-certifikat kan lagras i Azure Key Vault och tillåta säkra distributioner av certifikat till virtuella Linux-datorer (VM) i Azure. I den här guiden får du lära du dig hur man:
 
 > [!div class="checklist"]
 > * Skapa ett Azure Key Vault
@@ -31,7 +31,7 @@ För att skydda webb servrar, en Transport Layer Security (TLS), som tidigare ka
 > * Skapa en virtuell dator och installera NGINX-webbservern
 > * Mata in certifikatet i den virtuella datorn och konfigurera NGINX med en TLS-bindning
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -70,7 +70,7 @@ az keyvault certificate create \
 ```
 
 ### <a name="prepare-a-certificate-for-use-with-a-vm"></a>Förbereda ett certifikat för användning med en virtuell dator
-För att använda certifikatet medan den virtuella datorn skapas ska du hämta certifikatets ID med [az keyvault secret list-versions](/cli/azure/keyvault/secret). Konvertera certifikatet med [az vm secret format](/cli/azure/vm/secret#az-vm-secret-format). Följande exempel tilldelar kommandonas resultat till variabler, vilket gör dem enklare att använda i nästa steg:
+För att använda certifikatet medan den virtuella datorn skapas ska du hämta certifikatets ID med [az keyvault secret list-versions](/cli/azure/keyvault/secret). Konvertera certifikatet med [az vm secret format](/cli/azure/vm/secret#az_vm_secret_format). Följande exempel tilldelar kommandonas resultat till variabler, vilket gör dem enklare att använda i nästa steg:
 
 ```azurecli-interactive 
 secret=$(az keyvault secret list-versions \
@@ -136,7 +136,7 @@ az vm open-port \
 
 
 ### <a name="test-the-secure-web-app"></a>Testa den säkra webbappen
-Nu kan du öppna en webbläsare och ange *https: \/ \/ \<publicIpAddress>* i adress fältet. Ange din offentliga IP-adress från skapandeprocessen av den virtuella datorn. Om du använder ett självsignerat certifikat ska du acceptera säkerhetsvarningen:
+Nu kan du öppna en webbläsare och ange *https: \/ \/ \<publicIpAddress>* i adressfältet. Ange din offentliga IP-adress från skapandeprocessen av den virtuella datorn. Om du använder ett självsignerat certifikat ska du acceptera säkerhetsvarningen:
 
 ![Acceptera webbläsarens säkerhetsvarning](./media/tutorial-secure-web-server/browser-warning.png)
 
@@ -147,7 +147,7 @@ Din skyddade NGINX-webbplats visas sedan som i exemplet nedan:
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skyddat en NGINX-webbserver med ett TLS/SSL-certifikat som lagras i Azure Key Vault. Du har lärt dig att:
+I den här självstudien har du skyddat en NGINX-webbserver med ett TLS/SSL-certifikat som lagras Azure Key Vault. Du har lärt dig att:
 
 > [!div class="checklist"]
 > * Skapa ett Azure Key Vault

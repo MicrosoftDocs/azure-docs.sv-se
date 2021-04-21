@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: skapa en profil och en slut punkt för Resource Manager-mall'
+title: 'Snabbstart: Skapa en profil och slutpunkt – Resource Manager mall'
 titleSuffix: Azure Content Delivery Network
-description: I den här snabb starten lär du dig att skapa en Azure Content Delivery Network-profil och en slut punkt för en Resource Manager-mall
+description: I den här snabbstarten lär du dig hur du skapar en Azure Content Delivery Network-profil och slutpunkt för en Resource Manager mall
 services: cdn
 author: asudbring
 manager: KumudD
@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.date: 06/25/2020
 ms.author: allensu
-ms.openlocfilehash: a36484bea3a2bc9caadc5cf4482aae3bea84eafa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31f0510ed50c9d48a46524a353d7c872b368f75c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102560471"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779050"
 ---
-# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Snabb start: skapa en mall för Azure CDN profil och slut punkts ARM
+# <a name="quickstart-create-an-azure-cdn-profile-and-endpoint---arm-template"></a>Snabbstart: Skapa en Azure CDN och slutpunkt – ARM-mall
 
-Kom igång med Azure Content Delivery Network (CDN) med hjälp av en Azure Resource Manager-mall (ARM-mall). Mallen distribuerar en profil och en slut punkt.
+Kom igång med Azure Content Delivery Network (CDN) med hjälp av en Azure Resource Manager (ARM-mall). Mallen distribuerar en profil och en slutpunkt.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -37,7 +37,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/101-cdn-with-custom-origin/).
 
-Den här mallen har kon figurer ATS för att skapa en:
+Den här mallen är konfigurerad för att skapa en:
 
 * Profil
 * Slutpunkt
@@ -46,7 +46,7 @@ Den här mallen har kon figurer ATS för att skapa en:
 
 En Azure-resurs har definierats i mallen:
 
-* **[Microsoft. CDN/profiler](/azure/templates/microsoft.cdn/profiles)**
+* **[Microsoft.Cdn/profiles](/azure/templates/microsoft.cdn/profiles)**
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -86,19 +86,19 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-2. Välj **resurs grupper** i det vänstra fönstret.
+2. Välj **Resursgrupper** i det vänstra fönstret.
 
-3. Välj den resurs grupp som du skapade i föregående avsnitt. Standard resurs grupps namnet är **myResourceGroupCDN**
+3. Välj den resursgrupp som du skapade i föregående avsnitt. Standardnamnet för resursgruppen är **myResourceGroupCDN**
 
-4. Kontrol lera att följande resurser har skapats i resurs gruppen:
+4. Kontrollera att följande resurser har skapats i resursgruppen:
 
-    :::image type="content" source="media/create-profile-endpoint-template/cdn-profile-template-rg.png" alt-text="Azure CDN resurs grupp" border="true":::
+    :::image type="content" source="media/create-profile-endpoint-template/cdn-profile-template-rg.png" alt-text="Azure CDN resursgrupp" border="true":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
 ### <a name="azure-cli"></a>Azure CLI
 
-När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen och alla resurser som ingår i.
+När den inte längre behövs kan du använda [kommandot az group delete](/cli/azure/group#az_group_delete) för att ta bort resursgruppen och alla resurser som finns i den.
 
 ```azurecli-interactive 
   az group delete \
@@ -107,24 +107,24 @@ När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/az
 
 ### <a name="powershell"></a>PowerShell
 
-När de inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resurs gruppen och alla resurser som ingår i.
+När resursgruppen inte längre behövs kan du använda kommandot [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) för att ta bort resursgruppen och alla resurser i den.
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroupCDN
 ```
 
-### <a name="portal"></a>Portal
+### <a name="portal"></a>Portalen
 
-Ta bort resurs gruppen, CDN-profilen och alla relaterade resurser när de inte längre behövs. Välj den resurs grupps **myResourceGroupCDN** som innehåller CDN-profilen och slut punkten och välj sedan **ta bort**.
+Ta bort resursgruppen, CDN-profilen och alla relaterade resurser när de inte längre behövs. Välj resursgruppen **myResourceGroupCDN som** innehåller CDN-profilen och CDN-slutpunkten och välj sedan Ta **bort**.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en:
+I den här snabbstarten skapade du en:
 
 * CDN-profil
 * Slutpunkt
 
-Om du vill veta mer om Azure CDN och Azure Resource Manager fortsätter du till artiklarna nedan.
+Om du vill veta Azure CDN och Azure Resource Manager kan du fortsätta till artiklarna nedan.
 
 > [!div class="nextstepaction"]
-> [Självstudie: Använd CDN för att hantera statiskt innehåll från en webbapp](cdn-add-to-web-app.md)
+> [Självstudie: Använda CDN för att betjäna statiskt innehåll från en webbapp](cdn-add-to-web-app.md)

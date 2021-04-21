@@ -7,12 +7,12 @@ ms.author: sumuth
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b79b470a25a63c0a46ddef94ee65f47f37c560cb
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9315e6fd7dd9880d20108e3f0ed28cd32904f1a3
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477816"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791543"
 ---
 # <a name="tutorial-deploy-django-app-on-aks-with-azure-database-for-postgresql---flexible-server"></a>Självstudie: Distribuera Django-app på AKS med Azure Database for PostgreSQL – flexibel server
 
@@ -22,7 +22,7 @@ I den här snabbstarten distribuerar du ett Django-program på Azure Kubernetes 
 
 > [!NOTE]
 > - Azure Database for PostgreSQL Flexibel server är för närvarande i offentlig förhandsversion
-> - Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begreppen Django och PostgreSQL.
+> - Den här snabbstarten förutsätter grundläggande kunskaper om Kubernetes-begrepp, Django och PostgreSQL.
 
 ## <a name="pre-requisites"></a>Förutsättningar
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -31,7 +31,7 @@ I den här snabbstarten distribuerar du ett Django-program på Azure Kubernetes 
 
    [![Inbäddad start](https://shell.azure.com/images/launchcloudshell.png "Starta Azure Cloud Shell")](https://shell.azure.com)  
 - Om du vill kan du [installera](/cli/azure/install-azure-cli) Azure CLI för att köra CLI-referenskommandon.
-  - Om du använder en lokal installation loggar du in med Azure CLI med hjälp av kommandot [az login](/cli/azure/reference-index#az-login).  Slutför autentiseringsprocessen genom att följa stegen som visas i terminalen.  Fler inloggningsalternativ finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
+  - Om du använder en lokal installation loggar du in med Azure CLI med hjälp av kommandot [az login](/cli/azure/reference-index#az_login).  Slutför autentiseringsprocessen genom att följa stegen som visas i terminalen.  Fler inloggningsalternativ finns i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
   - När du uppmanas till det installerar du Azure CLI-tillägg vid första användning.  Mer information om tillägg finns i [Använda tillägg med Azure CLI](/cli/azure/azure-cli-extensions-overview).
   - Kör [az version](/cli/azure/reference-index?#az_version) om du vill hitta versionen och de beroende bibliotek som är installerade. Om du vill uppgradera till den senaste versionen kör du [az upgrade](/cli/azure/reference-index?#az_upgrade). Den här artikeln kräver den senaste versionen av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
@@ -67,7 +67,7 @@ Följande exempelutdata visar den resursgrupp som skapats:
 
 ## <a name="create-aks-cluster"></a>Skapa AKS-kluster
 
-Använd kommandot [az aks create](/cli/azure/aks#az-aks-create) för att skapa ett AKS-kluster. I följande exempel skapas ett kluster med namnet *myAKSCluster* och en enda nod. Det tar flera minuter att slutföra.
+Använd kommandot [az aks create](/cli/azure/aks#az_aks_create) för att skapa ett AKS-kluster. I följande exempel skapas ett kluster med namnet *myAKSCluster* och en enda nod. Det tar flera minuter att slutföra.
 
 ```azurecli-interactive
 az aks create --resource-group django-project --name djangoappcluster --node-count 1 --generate-ssh-keys
@@ -80,13 +80,13 @@ Efter några minuter slutförs kommandot och returnerar JSON-formaterad informat
 
 ## <a name="connect-to-the-cluster"></a>Anslut till klustret
 
-För att hantera Kubernetes-kluster använder du [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), Kubernetes kommandoradsklient. Om du använder Azure Cloud Shell är `kubectl` redan installerat. För att installera `kubectl` lokalt använder du kommandot [az aks install-cli](/cli/azure/aks#az-aks-install-cli):
+För att hantera Kubernetes-kluster använder du [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/), Kubernetes kommandoradsklient. Om du använder Azure Cloud Shell är `kubectl` redan installerat. För att installera `kubectl` lokalt använder du kommandot [az aks install-cli](/cli/azure/aks#az_aks_install_cli):
 
 ```azurecli-interactive
 az aks install-cli
 ```
 
-För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials](/cli/azure/aks#az-aks-get-credentials). Det här kommandot laddar ned autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem.
+För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster använder du kommandot [az aks get-credentials](/cli/azure/aks#az_aks_get_credentials). Det här kommandot laddar ned autentiseringsuppgifter och konfigurerar Kubernetes CLI för att använda dem.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group django-project --name djangoappcluster
@@ -128,22 +128,22 @@ Servern som skapas har attributen nedan:
 Skapa ett nytt [Django-program](https://docs.djangoproject.com/en/3.1/intro/) eller använd ditt befintliga Django-projekt. Kontrollera att koden finns i den här mappstrukturen.
 
 ```
-â””â”€â”€â”€my-djangoapp
-    â””â”€â”€â”€views.py
-    â””â”€â”€â”€models.py
-    â””â”€â”€â”€forms.py
-    â”œâ”€â”€â”€templates
+└───my-djangoapp
+    └───views.py
+    └───models.py
+    └───forms.py
+    ├───templates
           . . . . . . .
-    â”œâ”€â”€â”€static
+    ├───static
          . . . . . . .
-â””â”€â”€â”€my-django-project
-    â””â”€â”€â”€settings.py
-    â””â”€â”€â”€urls.py
-    â””â”€â”€â”€wsgi.py
+└───my-django-project
+    └───settings.py
+    └───urls.py
+    └───wsgi.py
         . . . . . . .
-    â””â”€â”€â”€ Dockerfile
-    â””â”€â”€â”€ requirements.txt
-    â””â”€â”€â”€ manage.py
+    └─── Dockerfile
+    └─── requirements.txt
+    └─── manage.py
     
 ```
 Uppdatera ```ALLOWED_HOSTS``` i för att se till att ```settings.py``` Django-programmet använder den externa IP-adress som tilldelas kubernetes-appen.
@@ -329,7 +329,7 @@ django-app  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 
 ## <a name="run-database-migrations"></a>Köra databasmigrering
 
-För alla django-program skulle du behöva köra databasmigrering eller samla in statiska filer. Du kan köra dessa django shell-kommandon med hjälp av ```$ kubectl exec <pod-name> -- [COMMAND]``` .  Innan du kör kommandot måste du hitta poddens namn med hjälp av ```kubectl get pods``` . 
+För alla django-program skulle du behöva köra databasmigrering eller samla in statiska filer. Du kan köra dessa django shell-kommandon med hjälp av ```$ kubectl exec <pod-name> -- [COMMAND]``` .  Innan du kör kommandot måste du hitta poddnamnet med hjälp av ```kubectl get pods``` . 
 
 ```bash
 $ kubectl get pods
@@ -360,7 +360,7 @@ Running migrations:
   . . . . . . 
 ```
 
-Om du får problem kan du köra för ```kubectl logs <pod-name>```  att se vilket undantag som utlösts av ditt program. Om programmet fungerar visas utdata som liknar detta när du kör ```kubectl logs``` .
+Om du får problem kan du köra för ```kubectl logs <pod-name>```  att se vilket undantag som inlöstes av ditt program. Om programmet fungerar visas utdata som liknar dessa när du kör ```kubectl logs``` .
 
 ```output
 Watching for file changes with StatReloader

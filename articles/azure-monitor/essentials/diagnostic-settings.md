@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: 32cb1a54e8d3b4cca942616bb249968c4ed9e50c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 60ac56cfda026871afa1725bbd54625b7ce7585e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107477850"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789203"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Skapa diagnostikinställningar för att skicka plattformsloggar och mått till olika målplatser
 [Plattformsloggar](./platform-logs-overview.md) i Azure, inklusive Azure-aktivitetsloggar och resursloggar, ger detaljerad diagnostik- och granskningsinformation för Azure-resurser och den Azure-plattform som de är beroende av. [Plattformsmått](./data-platform-metrics.md) samlas in som standard och lagras vanligtvis i Azure Monitor för mått. Den här artikeln innehåller information om hur du skapar och konfigurerar diagnostikinställningar för att skicka plattformsmått och plattformsloggar till olika mål.
@@ -42,11 +42,11 @@ Följande video visar hur du dirigerar plattformsloggar med diagnostikinställni
 ## <a name="destinations"></a>Mål
 Plattformsloggar och mått kan skickas till målen i följande tabell. 
 
-| Mål | Beskrivning |
+| Mål | Description |
 |:---|:---|
 | [Log Analytics-arbetsyta](../logs/design-logs-deployment.md) | Genom att skicka loggar och mått till en Log Analytics-arbetsyta kan du analysera dem med andra övervakningsdata som samlas in av Azure Monitor med hjälp av kraftfulla loggfrågor och även använda andra Azure Monitor-funktioner som aviseringar och visualiseringar. |
-| [Event Hubs](../../event-hubs/index.yml) | Genom att skicka loggar och mått Event Hubs kan du strömma data till externa system, till exempel SIEM från tredje part och andra log analytics-lösningar.  |
-| [Azure Storage-konto](../../storage/blobs/index.yml) | Arkivering av loggar och mått till ett Azure Storage-konto är användbart för granskning, statisk analys eller säkerhetskopiering. Jämfört med Azure Monitor loggar och en Log Analytics-arbetsyta är Azure Storage billigare och loggar kan förvaras där på obestämd tid.  |
+| [Event Hubs](../../event-hubs/index.yml) | Genom att skicka loggar och Event Hubs kan du strömma data till externa system, till exempel SIEM från tredje part och andra log analytics-lösningar.  |
+| [Azure Storage-konto](../../storage/blobs/index.yml) | Arkivering av loggar och mått till ett Azure Storage-konto är användbart för granskning, statisk analys eller säkerhetskopiering. Jämfört med Azure Monitor-loggar och en Log Analytics-arbetsyta är Azure-lagring billigare och loggar kan förvaras där på obestämd tid.  |
 
 
 ### <a name="destination-requirements"></a>Målkrav
@@ -56,14 +56,14 @@ Alla mål för diagnostikinställningen måste skapas innan du skapar diagnostik
 | Mål | Krav |
 |:---|:---|
 | Log Analytics-arbetsyta | Arbetsytan behöver inte finnas i samma region som den resurs som övervakas.|
-| Händelsehubbar | Principen för delad åtkomst för namnområdet definierar de behörigheter som strömningsmekanismen har. För att Event Hubs till Event Hubs måste du ha behörighet att hantera, skicka och lyssna. Om du vill uppdatera diagnostikinställningen så att den inkluderar strömning måste du ha ListKey-behörighet på den Event Hubs auktoriseringsregeln.<br><br>Händelsehubbens namnområde måste finnas i samma region som resursen som övervakas om resursen är regional. |
-| Azure Storage-konto | Du bör inte använda ett befintligt lagringskonto som har andra, icke-övervakande data som lagras i det så att du bättre kan styra åtkomsten till data. Om du arkiverar aktivitetsloggen och resursloggarna tillsammans kan du välja att använda samma lagringskonto för att lagra alla övervakningsdata på en central plats.<br><br>Om du vill skicka data till oföränderlig lagring anger du den oföränderliga principen för lagringskontot enligt beskrivningen i Ange och hantera oföränderlighetsprinciper [för Blob Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md). Du måste följa alla steg i den här artikeln, inklusive att aktivera skrivningar till skyddade tilläggsblobar.<br><br>Lagringskontot måste finnas i samma region som resursen som övervakas om resursen är regional. |
+| Händelsehubbar | Principen för delad åtkomst för namnområdet definierar de behörigheter som strömningsmekanismen har. Strömma till Event Hubs kräver behörigheterna Hantera, Skicka och Lyssna. Om du vill uppdatera diagnostikinställningen så att den inkluderar strömning måste du ha ListKey-behörighet för den Event Hubs auktoriseringsregeln.<br><br>Händelsehubbens namnområde måste finnas i samma region som resursen som övervakas om resursen är regional. |
+| Azure Storage-konto | Du bör inte använda ett befintligt lagringskonto som har andra icke-övervakningsdata som lagras där, så att du bättre kan styra åtkomsten till data. Om du arkiverar aktivitetsloggen och resursloggarna tillsammans kan du välja att använda samma lagringskonto för att lagra alla övervakningsdata på en central plats.<br><br>Om du vill skicka data till oföränderlig lagring anger du den oföränderliga principen för lagringskontot enligt beskrivningen i Ange och hantera oföränderlighetsprinciper [för Blob Storage](../../storage/blobs/storage-blob-immutability-policies-manage.md). Du måste följa alla steg i den här artikeln, inklusive att aktivera skrivningar till skyddade tilläggsblobar.<br><br>Lagringskontot måste finnas i samma region som den resurs som övervakas om resursen är regional. |
 
 > [!NOTE]
 > Azure Data Lake Storage Gen2-konton stöds för närvarande inte som mål för diagnostikinställningar även om de visas som ett giltigt alternativ i Azure-portalen.
 
 > [!NOTE]
-> Azure Monitor (diagnostikinställningar) kan inte komma åt Event Hubs resurser när virtuella nätverk är aktiverade. Du måste aktivera tillåt betrodda Microsoft-tjänster att kringgå den här brandväggsinställningen i Händelsehubb, så att Azure Monitor-tjänsten (diagnostikinställningar) beviljas åtkomst till dina Event Hubs resurser. 
+> Azure Monitor (diagnostikinställningar) kan inte komma åt Event Hubs resurser när virtuella nätverk är aktiverade. Du måste aktivera tillåt betrodda Microsoft-tjänster att kringgå den här brandväggsinställningen i Händelsehubb, så att tjänsten Azure Monitor (diagnostikinställningar) beviljas åtkomst till dina Event Hubs resurser. 
 
 
 ## <a name="create-in-azure-portal"></a>Skapa i Azure-portalen
@@ -74,13 +74,13 @@ Du kan konfigurera diagnostikinställningar i Azure Portal antingen från Azure 
 
    - För en enskild resurs klickar du **på Diagnostikinställningar** **under** Övervaka på resursens meny.
 
-        ![Skärmbild av avsnittet Övervakning på en resursmeny i Azure Portal med Diagnostikinställningar markerade.](media/diagnostic-settings/menu-resource.png)
+        ![Skärmbild av avsnittet Övervakning på en resursmeny i Azure Portal diagnostikinställningar markerade.](media/diagnostic-settings/menu-resource.png)
 
    - För en eller flera resurser klickar du **på Diagnostikinställningar** under Inställningar Azure Monitor på menyn och klickar sedan på resursen. 
 
-        ![Skärmbild av avsnittet Inställningar på menyn Azure Monitor med Diagnostikinställningar markerade.](media/diagnostic-settings/menu-monitor.png)
+        ![Skärmbild av avsnittet Inställningar i menyn Azure Monitor med Diagnostikinställningar markerade.](media/diagnostic-settings/menu-monitor.png)
 
-   - För Aktivitetslogg klickar du på **Aktivitetslogg** i **Azure Monitor** och sedan på **Diagnostikinställningar.** Se till att inaktivera alla äldre konfigurationer för aktivitetsloggen. Mer [information finns i Inaktivera](./activity-log.md#legacy-collection-methods) befintliga inställningar.
+   - För aktivitetsloggen klickar du **på Aktivitetslogg** i **Azure Monitor** och sedan **på Diagnostikinställningar.** Se till att inaktivera alla äldre konfigurationer för aktivitetsloggen. Mer [information finns i Inaktivera](./activity-log.md#legacy-collection-methods) befintliga inställningar.
 
         ![Skärmbild av Azure Monitor med Aktivitetslogg valt och Diagnostikinställningar markerade i Monitor-Activity loggens menyrad.](media/diagnostic-settings/menu-activity-log.png)
 
@@ -135,7 +135,7 @@ Efter en liten stund visas den nya inställningen i listan med inställningar f�
 
 ## <a name="create-using-powershell"></a>Skapa med PowerShell
 
-Använd [cmdleten Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) för att skapa en diagnostikinställning med [Azure PowerShell](../powershell-samples.md). Beskrivningar av dess parametrar finns i dokumentationen för denna cmdlet.
+Använd [cmdleten Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) för att skapa en diagnostikinställning med [Azure PowerShell](../powershell-samples.md). Se dokumentationen för den här cmdleten för beskrivningar av dess parametrar.
 
 > [!IMPORTANT]
 > Du kan inte använda den här metoden för Azure-aktivitetsloggen. Använd i stället [Skapa diagnostikinställning i Azure Monitor med](./resource-manager-diagnostic-settings.md) en Resource Manager för att skapa en Resource Manager och distribuera den med PowerShell.
@@ -148,7 +148,7 @@ Set-AzDiagnosticSetting -Name KeyVault-Diagnostics -ResourceId /subscriptions/xx
 
 ## <a name="create-using-azure-cli"></a>Skapa med Azure CLI
 
-Använd kommandot [az monitor diagnostic-settings create för](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) att skapa en diagnostikinställning med Azure [CLI](/cli/azure/monitor). Beskrivningar av dess parametrar finns i dokumentationen för det här kommandot.
+Använd kommandot [az monitor diagnostic-settings create för](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) att skapa en diagnostikinställning med Azure [CLI](/cli/azure/monitor). Beskrivningar av dess parametrar finns i dokumentationen för det här kommandot.
 
 > [!IMPORTANT]
 > Du kan inte använda den här metoden för Azure-aktivitetsloggen. Använd i stället Skapa diagnostikinställning i Azure Monitor med en [Resource Manager mall](./resource-manager-diagnostic-settings.md) för att skapa en Resource Manager och distribuera den med CLI.
@@ -194,7 +194,7 @@ az monitor diagnostic-settings create  \
 Se [Resource Manager för diagnostikinställningar](./resource-manager-diagnostic-settings.md) i Azure Monitor för att skapa eller uppdatera diagnostikinställningar med en Resource Manager mall.
 
 ## <a name="create-using-rest-api"></a>Skapa med REST-API
-Se [Diagnostikinställningar för](/rest/api/monitor/diagnosticsettings) att skapa eller uppdatera diagnostikinställningar med hjälp [av Azure Monitor REST API](/rest/api/monitor/).
+Se [Diagnostikinställningar för](/rest/api/monitor/diagnosticsettings) att skapa eller uppdatera diagnostikinställningar med [hjälp av Azure Monitor REST API](/rest/api/monitor/).
 
 ## <a name="create-using-azure-policy"></a>Skapa med Azure Policy
 Eftersom en diagnostikinställning måste skapas för varje Azure-resurs kan Azure Policy användas för att automatiskt skapa en diagnostikinställning när varje resurs skapas. Se [Distribuera Azure Monitor skala med hjälp Azure Policy](../deploy-scale.md) mer information.

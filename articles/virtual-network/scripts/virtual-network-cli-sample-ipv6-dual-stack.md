@@ -1,7 +1,7 @@
 ---
-title: Skript exempel för Azure CLI – konfigurera IPv6-frontend
+title: Skriptexempel för Azure CLI – Konfigurera IPv6-frontend
 titlesuffix: Azure Virtual Network
-description: Använd ett skript exempel för Azure CLI för att konfigurera IPv6-slutpunkter och distribuera ett program med dubbla stackar (IPv4 + IPv6) i Azure.
+description: Använd ett Azure CLI-skriptexempel för att konfigurera IPv6-slutpunkter och distribuera ett program med dubbla stackar (IPv4 + IPv6) i Azure.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -13,30 +13,30 @@ ms.workload: infrastructure-services
 ms.date: 04/23/2019
 ms.author: kumud
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9058fb4b9b92719f7abcc534632f983cafe2aae8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1cbfcf5f9e916c982e3a4cda9577becf343158fa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99550818"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776491"
 ---
-# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>Konfigurera IPv6-slutpunkter i ett virtuellt nätverks skript exempel
+# <a name="configure-ipv6-endpoints-in-virtual-network-script-sample"></a>Konfigurera IPv6-slutpunkter i skriptexempel för virtuellt nätverk
 
-Den här artikeln visar hur du distribuerar ett program med dubbla stackar (IPv4 + IPv6) i Azure som innehåller ett virtuellt stack-nätverk med dubbla stack-undernät, en belastningsutjämnare med dubbla (IPv4 + IPv6) frontend-konfigurationer, virtuella datorer med nätverkskort som har en dubbel IP-konfiguration, dubbla regler för nätverks säkerhets grupper och dubbla offentliga IP-adresser.
+Den här artikeln visar hur du distribuerar ett program med dubbla stackar (IPv4 + IPv6) i Azure som innehåller ett virtuellt nätverk med dubbla stackar med dubbla stackundernät, en lastbalanserare med dubbla (IPv4 + IPv6) frontend-konfigurationer, virtuella datorer med nätverkskort som har en dubbel IP-konfiguration, dubbla regler för nätverkssäkerhetsgrupp och dubbla offentliga IP-adresser.
 
 Du kan köra skriptet från Azure [Cloud Shell](https://shell.azure.com/bash) eller från en lokal installation av Azure CLI. Om du använder CLI lokalt kräver skriptet att du kör version 2.0.28 eller senare. Kör `az --version` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli). Om du kör CLI lokalt måste du också köra `az login` för att skapa en anslutning till Azure.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
-Om du vill använda funktionen IPv6 för Azure Virtual Network måste du konfigurera din prenumeration bara en gång på följande sätt:
+Om du vill använda funktionen för virtuella nätverk i IPv6 för Azure måste du bara konfigurera prenumerationen en gång på följande sätt:
 
 ```azurecli
 az feature register --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
 az feature register --name AllowIPv6CAOnStandardLB --namespace Microsoft.Network
 ```
 
-Det tar upp till 30 minuter för funktions registrering att slutföras. Du kan kontrol lera din registrerings status genom att köra följande Azure CLI-kommando:
+Det tar upp till 30 minuter för funktionsregistreringen att slutföras. Du kan kontrollera registreringsstatusen genom att köra följande Azure CLI-kommando:
 
 ```azurecli
 az feature show --name AllowIPv6VirtualNetwork --namespace Microsoft.Network
@@ -279,19 +279,19 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Skapar ett virtuellt Azure-nätverk och undernät. |
-| [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create) | Skapar en offentlig IP-adress med en statisk IP-adress och ett tillhörande DNS-namn. |
-| [az network lb create](/cli/azure/network/lb#az-network-lb-create) | Skapar en Azure-lastbalanserare. |
-| [az network lb probe create](/cli/azure/network/lb/probe#az-network-lb-probe-create) | Skapar en lastbalanseringsavsökning. En lastbalanseringsavsökning används för att övervaka varje virtuell dator i lastbalanseringsuppsättningen. Om en virtuell dator blir otillgänglig dirigeras trafiken förbi den. |
-| [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | Skapar en lastbalanseringsregel. I det här exemplet skapas en regel för port 80. När HTTP-trafik anländer vid lastbalanseraren dirigeras den till port 80, en av de virtuella datorerna i lastbalanseringsuppsättningen. |
-| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-create) | Skapar en lastbalanseringsregel för NAT (Network Address Translation).  NAT-regler mappar en port för lastbalanseraren till en port på en virtuell dator. I det här exemplet skapas en NAT-regel för SSH-trafik till varje virtuell dator i lastbalanseringsuppsättningen.  |
-| [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) | Skapar en nätverkssäkerhetsgrupp (NSG), som är en säkerhetsgräns mellan internet och den virtuella datorn. |
-| [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) | Skapar en NSG-regel för att tillåta inkommande trafik. I det här exemplet öppnas port 22 för SSH-trafik. |
-| [az network nic create](/cli/azure/network/nic#az-network-nic-create) | Skapar ett virtuellt nätverkskort och ansluter det till det virtuella nätverket, undernätet och NSG. |
-| [az vm availability-set create](/cli/azure/network/lb/rule#az-network-lb-rule-create) | Skapar en tillgänglighetsuppsättning. Tillgänglighetsuppsättningar garanterar programmets drifttid genom att fördela virtuella datorer mellan fysiska resurser så att hela uppsättningen inte berörs om något fel inträffar. |
-| [az vm create](/cli/azure/vm#az-vm-create) | Skapar den virtuella datorn och ansluter den till nätverkskortet, ett virtuellt nätverk, ett undernät och en NSG. Kommandot specificerar även avbildningen av den virtuella dator som ska användas samt administrativa autentiseringsuppgifter.  |
-| [az group delete](/cli/azure/vm/extension#az-vm-extension-set) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Skapar ett virtuellt Azure-nätverk och undernät. |
+| [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) | Skapar en offentlig IP-adress med en statisk IP-adress och ett tillhörande DNS-namn. |
+| [az network lb create](/cli/azure/network/lb#az_network_lb_create) | Skapar en Azure-lastbalanserare. |
+| [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create) | Skapar en lastbalanseringsavsökning. En lastbalanseringsavsökning används för att övervaka varje virtuell dator i lastbalanseringsuppsättningen. Om en virtuell dator blir otillgänglig dirigeras trafiken förbi den. |
+| [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) | Skapar en lastbalanseringsregel. I det här exemplet skapas en regel för port 80. När HTTP-trafik anländer vid lastbalanseraren dirigeras den till port 80, en av de virtuella datorerna i lastbalanseringsuppsättningen. |
+| [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule#az_network_lb_inbound_nat_rule_create) | Skapar en lastbalanseringsregel för NAT (Network Address Translation).  NAT-regler mappar en port för lastbalanseraren till en port på en virtuell dator. I det här exemplet skapas en NAT-regel för SSH-trafik till varje virtuell dator i lastbalanseringsuppsättningen.  |
+| [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) | Skapar en nätverkssäkerhetsgrupp (NSG), som är en säkerhetsgräns mellan internet och den virtuella datorn. |
+| [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) | Skapar en NSG-regel för att tillåta inkommande trafik. I det här exemplet öppnas port 22 för SSH-trafik. |
+| [az network nic create](/cli/azure/network/nic#az_network_nic_create) | Skapar ett virtuellt nätverkskort och ansluter det till det virtuella nätverket, undernätet och NSG. |
+| [az vm availability-set create](/cli/azure/network/lb/rule#az_network_lb_rule_create) | Skapar en tillgänglighetsuppsättning. Tillgänglighetsuppsättningar garanterar programmets drifttid genom att fördela virtuella datorer mellan fysiska resurser så att hela uppsättningen inte berörs om något fel inträffar. |
+| [az vm create](/cli/azure/vm#az_vm_create) | Skapar den virtuella datorn och ansluter den till nätverkskortet, ett virtuellt nätverk, ett undernät och en NSG. Kommandot specificerar även avbildningen av den virtuella dator som ska användas samt administrativa autentiseringsuppgifter.  |
+| [az group delete](/cli/azure/vm/extension#az_vm_extension_set) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 

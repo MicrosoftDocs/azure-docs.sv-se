@@ -1,7 +1,7 @@
 ---
 title: Diagnostisk resursloggning för en nätverkssäkerhetsgrupp
 titlesuffix: Azure Virtual Network
-description: Lär dig hur du aktiverar resursloggar för händelse- och regelräknare för en Azure-nätverkssäkerhetsgrupp.
+description: Lär dig hur du aktiverar diagnostikresursloggar för händelse- och regelräknare för en Azure-nätverkssäkerhetsgrupp.
 services: virtual-network
 author: KumudD
 manager: mtillman
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/04/2018
 ms.author: kumud
-ms.openlocfilehash: 42ce7a1760ecdb1dcbd5275927f351bef5da07a8
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d171dee87a391c5e1d66db10363e6823ef387c1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531170"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774169"
 ---
 # <a name="resource-logging-for-a-network-security-group"></a>Resursloggning för en nätverkssäkerhetsgrupp
 
@@ -24,11 +24,11 @@ En nätverkssäkerhetsgrupp (NSG) innehåller regler som tillåter eller nekar t
 När du aktiverar loggning för en NSG kan du samla in följande typer av resurslogginformation:
 
 * **Händelse:** Poster loggas för vilka NSG-regler tillämpas på virtuella datorer, baserat på MAC-adress.
-* **Regelräknare:** Innehåller poster för hur många gånger varje NSG-regel tillämpas för att neka eller tillåta trafik. Statusen för dessa regler samlas in var 300:e sekund.
+* **Regelräknare:** Innehåller poster för hur många gånger varje NSG-regel används för att neka eller tillåta trafik. Status för dessa regler samlas in var 300:e sekund.
 
 Resursloggar är endast tillgängliga för NSG:er som distribueras via Azure Resource Manager distributionsmodellen. Du kan inte aktivera resursloggning för NSG:er som distribuerats via den klassiska distributionsmodellen. En bättre förståelse av de två modellerna finns i Förstå [Azure-distributionsmodeller.](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 
-Resursloggning aktiveras separat för *varje* NSG som du vill samla in diagnostikdata för. Om du i stället är intresserad av aktivitetsloggar (operativa) kan du gå till [Azure-aktivitetsloggning.](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Om du är intresserad av IP-trafik som flödar via NSG:er kan du se Azure Network Watcher [NSG-flödesloggar](../network-watcher/network-watcher-nsg-flow-logging-overview.md) 
+Resursloggning aktiveras separat för varje *NSG* som du vill samla in diagnostikdata för. Om du i stället är intresserad av aktivitetsloggar (drift) kan du gå till [Azure-aktivitetsloggning.](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Om du är intresserad av IP-trafik som flödar via NSG:er kan du se Azure Network Watcher [NSG-flödesloggar](../network-watcher/network-watcher-nsg-flow-logging-overview.md) 
 
 ## <a name="enable-logging"></a>Aktivera loggning
 
@@ -56,9 +56,9 @@ Du kan använda [Azure Portal,](#azure-portal) [PowerShell eller](#powershell) [
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.com/powershell), eller genom att köra PowerShell från datorn. Det Azure Cloud Shell är ett kostnadsfritt interaktivt gränssnitt. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. Om du kör PowerShell från datorn behöver du Azure PowerShell version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` på datorn för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra för att logga in på `Connect-AzAccount` Azure med ett konto som har de behörigheter som [krävs.](virtual-network-network-interface.md#permissions)
+Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.com/powershell), eller genom att köra PowerShell från datorn. Det Azure Cloud Shell är ett kostnadsfritt interaktivt gränssnitt. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. Om du kör PowerShell från datorn behöver du Azure PowerShell version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` på datorn för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra för att logga in på `Connect-AzAccount` Azure med ett konto som har nödvändiga [behörigheter.](virtual-network-network-interface.md#permissions)
 
-Om du vill aktivera resursloggning behöver du ID:t för en befintlig NSG. Om du inte har en befintlig NSG kan du skapa en med [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup).
+Om du vill aktivera resursloggning behöver du ID:t för en befintlig NSG. Om du inte har en befintlig NSG kan du skapa en med [New-AzNetworkSecurityGroup.](/powershell/module/az.network/new-aznetworksecuritygroup)
 
 Hämta den nätverkssäkerhetsgrupp som du vill aktivera resursloggning för med [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup). Om du till exempel vill hämta en NSG med namnet *myNsg* som finns i en resursgrupp med namnet *myResourceGroup* anger du följande kommando:
 
@@ -95,9 +95,9 @@ Visa och analysera loggar. Mer information finns i Visa [och analysera loggar.](
 
 Du kan köra kommandona som följer i [Azure Cloud Shell](https://shell.azure.com/bash)eller genom att köra Azure CLI från datorn. Det Azure Cloud Shell är ett kostnadsfritt interaktivt gränssnitt. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. Om du kör CLI från datorn behöver du version 2.0.38 eller senare. Kör `az --version` på datorn för att hitta den installerade versionen. Om du behöver uppgradera kan du gå [till Installera Azure CLI.](/cli/azure/install-azure-cli) Om du kör CLI lokalt måste du också köra för att logga in på `az login` Azure med ett konto som har de behörigheter som [krävs.](virtual-network-network-interface.md#permissions)
 
-Om du vill aktivera resursloggning behöver du ID:t för en befintlig NSG. Om du inte har en befintlig NSG kan du skapa en med [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create).
+Om du vill aktivera resursloggning behöver du ID:t för en befintlig NSG. Om du inte har en befintlig NSG kan du skapa en med [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create).
 
-Hämta den nätverkssäkerhetsgrupp som du vill aktivera resursloggning för med [az network nsg show](/cli/azure/network/nsg#az-network-nsg-show). Om du till exempel vill hämta en NSG med namnet *myNsg* som finns i en resursgrupp med namnet *myResourceGroup* anger du följande kommando:
+Hämta den nätverkssäkerhetsgrupp som du vill aktivera resursloggning för med [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show). Om du till exempel vill hämta en NSG med namnet *myNsg* som finns i en resursgrupp med namnet *myResourceGroup* anger du följande kommando:
 
 ```azurecli-interactive
 nsgId=$(az network nsg show \
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 Du kan skriva resursloggar till tre måltyper. Mer information finns i [Loggmål.](#log-destinations) I den här artikeln skickas loggar till *Log Analytics-målet* som exempel. Mer information finns i [Loggkategorier.](#log-categories)
 
-Aktivera resursloggning för NSG med [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create). I följande exempel loggas både händelse- och räknarkategoridata till en befintlig arbetsyta med namnet *myWorkspace*, som finns i en resursgrupp med namnet *myWorkspaces* och ID:t för den NSG som du hämtade tidigare:
+Aktivera resursloggning för NSG med [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create). I följande exempel loggas både händelse- och räknarkategoridata till en befintlig arbetsyta med namnet *myWorkspace*, som finns i en resursgrupp med namnet *myWorkspaces* och ID:t för den NSG som du hämtade tidigare:
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -202,13 +202,13 @@ Information om hur du visar resursloggdata finns i [Översikt över Azure-plattf
 ) för att få bättre insikter. Lösningen tillhandahåller visualiseringar för NSG-regler som tillåter eller nekar trafik per MAC-adress för nätverksgränssnittet på en virtuell dator.
 - **Azure Storage konto:** Data skrivs till en fil PT1H.jsen fil. Du hittar följande:
   - Händelseloggen på följande sökväg: `insights-logs-networksecuritygroupevent/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
-  - Logg för regelräknare på följande sökväg: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
+  - Logga in på följande sökväg för regelräknare: `insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/[ID]/RESOURCEGROUPS/[RESOURCE-GROUP-NAME-FOR-NSG]/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/[NSG NAME]/y=[YEAR]/m=[MONTH/d=[DAY]/h=[HOUR]/m=[MINUTE]`
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [aktivitetsloggning.](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Aktivitetsloggning är aktiverat som standard för NSG:er som skapats via antingen Azure-distributionsmodellen. Du kan ta reda på vilka åtgärder som slutfördes på NSG:er i aktivitetsloggen genom att leta efter poster som innehåller följande resurstyper:
+- Läs mer om [aktivitetsloggning.](../azure-monitor/essentials/platform-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) Aktivitetsloggning är aktiverat som standard för NSG:er som skapats via azure-distributionsmodellen. Du kan ta reda på vilka åtgärder som slutfördes på NSG:er i aktivitetsloggen genom att leta efter poster som innehåller följande resurstyper:
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups
   - Microsoft.Network/networkSecurityGroups/securityRules
-- Information om hur du loggar diagnostikinformation finns i [NSG-flödesloggning](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)för att inkludera källans IP-adress för varje flöde.
+- Information om hur du loggar diagnostikinformation finns i NSG-flödesloggning för att inkludera [källans IP-adress för varje flöde.](../network-watcher/network-watcher-nsg-flow-logging-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

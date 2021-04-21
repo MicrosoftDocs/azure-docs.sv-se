@@ -1,6 +1,6 @@
 ---
-title: Självstudie för att använda Azure App konfiguration Key Vault referenser i en ASP.NET Core app | Microsoft Docs
-description: I den här självstudien får du lära dig hur du använder Azure App konfigurations Key Vault referenser från en ASP.NET Core-app
+title: Självstudie för att Azure App Configuration Key Vault referenser i en ASP.NET Core-| Microsoft Docs
+description: I den här självstudien får du lära dig hur Azure App Configuration använder Key Vault från en ASP.NET Core-app
 services: azure-app-configuration
 documentationcenter: ''
 author: AlexandraKemperMS
@@ -13,93 +13,93 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 37bc7fbcd366455668d5316e45ffbf79127a49f3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 57abbeefe8e3f2abe527f2b282d643db766b9dc9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99981246"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775753"
 ---
-# <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Självstudie: använda Key Vault referenser i en ASP.NET Core app
+# <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Självstudie: Använda Key Vault referenser i en ASP.NET Core-app
 
-I den här självstudien får du lära dig hur du använder Azure App konfigurations tjänsten tillsammans med Azure Key Vault. Konfiguration av appar och Key Vault är kompletterande tjänster som används sida vid sida i de flesta program distributioner.
+I den här självstudien lär du dig att använda Azure App Configuration-tjänsten tillsammans med Azure Key Vault. App Configuration och Key Vault kompletterande tjänster som används sida vid sida i de flesta programdistributioner.
 
-Med konfiguration av appar kan du använda tjänsterna tillsammans genom att skapa nycklar som refererar till värden som lagras i Key Vault. När app-konfigurationen skapar sådana nycklar lagrar den URI: er för Key Vault värden i stället för själva värdena.
+App Configuration hjälper dig att använda tjänsterna tillsammans genom att skapa nycklar som refererar till värden som lagras i Key Vault. När App Configuration skapar sådana nycklar lagras URI:er för Key Vault snarare än själva värdena.
 
-Programmet använder klient leverantören för konfiguration av appar för att hämta Key Vault referenser, precis som för alla andra nycklar som lagras i app-konfigurationen. I det här fallet är de värden som lagras i app-konfigurationen URI: er som refererar till värdena i Key Vault. De är inte Key Vault värden eller autentiseringsuppgifter. Eftersom klient leverantören känner igen nycklarna som Key Vault referenser, använder den Key Vault för att hämta sina värden.
+Programmet använder klientprovidern App Configuration för att hämta Key Vault referenser, precis som för andra nycklar som lagras i App Configuration. I det här fallet är värdena som lagras App Configuration URI:er som refererar till värdena i Key Vault. De är inte Key Vault värden eller autentiseringsuppgifter. Eftersom klientprovidern identifierar nycklarna som Key Vault referenser använder den Key Vault för att hämta deras värden.
 
-Ditt program ansvarar för att autentisera korrekt för både app-konfigurationen och Key Vault. De två tjänsterna kommunicerar inte direkt.
+Ditt program ansvarar för att autentisera korrekt till både App Configuration och Key Vault. De två tjänsterna kommunicerar inte direkt.
 
-Den här självstudien visar hur du implementerar Key Vault referenser i din kod. Den bygger på den webbapp som introducerades i snabbstarterna. Innan du fortsätter måste du först [skapa en ASP.net Core-app med app-konfigurationen](./quickstart-aspnet-core-app.md) .
+Den här självstudien visar hur du implementerar Key Vault referenser i koden. Den bygger på den webbapp som introducerades i snabbstarterna. Innan du fortsätter slutför du [Skapa en ASP.NET Core-app med App Configuration](./quickstart-aspnet-core-app.md) först.
 
-Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. Till exempel är [Visual Studio Code](https://code.visualstudio.com/) en plattforms oberoende kod redigerare som är tillgänglig för operativ systemen Windows, MacOS och Linux.
+Du kan använda valfri kodredigerare för att göra stegen i den här självstudien. Till exempel [Visual Studio Code](https://code.visualstudio.com/) är en plattformsoberoende kodredigerare som är tillgänglig för Windows-, macOS- och Linux-operativsystemen.
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
-> * Skapa en konfigurations nyckel för appen som refererar till ett värde som lagras i Key Vault.
-> * Få åtkomst till värdet för den här nyckeln från ett ASP.NET Core-webbprogram.
+> * Skapa en App Configuration nyckel som refererar till ett värde som lagras Key Vault.
+> * Få åtkomst till värdet för den här nyckeln från ASP.NET Core-webbapp.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Innan du startar den här självstudien installerar du [.net Core SDK](https://dotnet.microsoft.com/download).
+Innan du börjar med den här självstudien installerar [du .NET Core SDK](https://dotnet.microsoft.com/download).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-vault"></a>Skapa ett valv
 
-1. Välj alternativet **skapa en resurs** i det övre vänstra hörnet i Azure Portal:
+1. Välj alternativet **Skapa en** resurs i det övre vänstra hörnet i Azure Portal:
 
-    ![Skärm bild som visar alternativet Skapa en resurs i Azure Portal.](./media/quickstarts/search-services.png)
+    ![Skärmbild som visar alternativet Skapa en resurs i Azure Portal.](./media/quickstarts/search-services.png)
 1. Ange **Key Vault** i sökrutan.
-1. Välj **nyckel valv** till vänster i listan resultat.
-1. I **nyckel valv** väljer du **Lägg till**.
-1. Ange följande information till höger i **skapa nyckel valv**:
-    - Välj en **prenumeration för att välja en** prenumeration.
-    - I **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
-    - I **Key Vault-namnet** krävs ett unikt namn. I den här självstudien anger du **contoso-vault2**.
-    - Välj en plats i list rutan **region** .
-1. Lämna de andra alternativen för att **skapa nyckel valv** med standardvärdena.
+1. I resultatlistan väljer du **Nyckelvalv** till vänster.
+1. I **Nyckelvalv väljer** du Lägg **till**.
+1. Ange följande information **till höger i** Skapa nyckelvalv:
+    - Välj **Prenumeration för** att välja en prenumeration.
+    - I **Resursgrupp** väljer du **Skapa ny** och anger ett resursgruppsnamn.
+    - I **Nyckelvalvsnamn** krävs ett unikt namn. I den här självstudien anger **du Contoso-vault2**.
+    - Välj **en** plats i listrutan Region.
+1. Lämna **standardvärdena för de andra** alternativen för Att skapa nyckelvalv.
 1. Välj **Skapa**.
 
-I det här läget är ditt Azure-konto det enda som har behörighet att komma åt det här nya valvet.
+Nu är ditt Azure-konto det enda som har behörighet att komma åt det nya valvet.
 
-![Skärm bilden visar ditt nyckel valv.](./media/quickstarts/vault-properties.png)
+![Skärmbild som visar nyckelvalvet.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Lägga till en hemlighet i Key Vault
 
-Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytterligare steg. I det här fallet lägger du till ett meddelande som du kan använda för att testa Key Vault hämtning. Meddelandet kallas **meddelande** och du lagrar värdet "hej från Key Vault" i det.
+Om du vill lägga till en hemlighet i valvet behöver du bara vidta några ytterligare steg. I det här fallet lägger du till ett meddelande som du kan använda för att Key Vault hämtning. Meddelandet kallas Meddelande **och** du lagrar värdet "Hello from Key Vault" i det.
 
-1. Välj **hemligheter** på sidan Key Vault egenskaper.
-1. Välj **generera/importera**.
-1. Ange följande värden i fönstret **skapa en hemlighet** :
-    - **Överförings alternativ**: ange **manuell**.
-    - **Namn**: Ange ett **meddelande**.
-    - **Värde**: ange **Hej från Key Vault**.
-1. Lämna den andra **skapa en hemlig** egenskap med standardvärdena.
+1. Från sidan Key Vault egenskaper väljer du **Hemligheter.**
+1. Välj **Generera/importera**.
+1. I fönstret **Skapa en** hemlighet anger du följande värden:
+    - **Uppladdningsalternativ:** Ange **Manuell**.
+    - **Namn:** Ange **Meddelande**.
+    - **Värde:** Ange **Hello från Key Vault**.
+1. Lämna **standardvärdena för de andra egenskaperna** Skapa en hemlighet.
 1. Välj **Skapa**.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Lägg till en Key Vault referens till app-konfigurationen
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Lägga till en Key Vault-referens för App Configuration
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser** och välj sedan den instans av app konfigurations arkiv som du skapade i snabb starten.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Alla resurser** och välj sedan den App Configuration Store-instans som du skapade i snabbstarten.
 
-1. Välj **konfigurations Utforskaren**.
+1. Välj **Configuration Explorer.**
 
-1. Välj **+ skapa**  >  **Key Vault-referens** och ange sedan följande värden:
-    - **Nyckel**: Välj **TestApp: Settings: KeyVaultMessage**.
-    - **Etikett**: lämna värdet tomt.
-    - **Prenumeration**, **resurs grupp** och **nyckel valv**: Ange de värden som motsvarar dem i nyckel valvet som du skapade i föregående avsnitt.
-    - **Hemlighet**: Välj det hemliga namnet **meddelande** som du skapade i föregående avsnitt.
+1. Välj **+ Skapa**  >  **nyckelvalvsreferens** och ange sedan följande värden:
+    - **Nyckel:** Välj **TestApp:Settings:KeyVaultMessage**.
+    - **Etikett:** Lämna det här värdet tomt.
+    - **Prenumeration,** **Resursgrupp** och **Nyckelvalv:** Ange de värden som motsvarar de i nyckelvalvet som du skapade i föregående avsnitt.
+    - **Hemlighet:** Välj hemligheten med **namnet Meddelande** som du skapade i föregående avsnitt.
 
-## <a name="connect-to-key-vault"></a>Anslut till Key Vault
+## <a name="connect-to-key-vault"></a>Ansluta till Key Vault
 
-1. I den här självstudien använder du ett huvud namn för tjänsten för autentisering till Key Vault. Om du vill skapa tjänstens huvud namn använder du kommandot Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) :
+1. I den här självstudien använder du ett huvudnamn för tjänsten för autentisering för att Key Vault. Om du vill skapa tjänstens huvudnamn använder du kommandot Azure CLI [az ad sp create-for-rbac:](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Den här åtgärden returnerar en serie med nyckel/värde-par:
+    Den här åtgärden returnerar en serie nyckel/värde-par:
 
     ```console
     {
@@ -115,15 +115,15 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Kör följande kommando för att ge tjänstens huvud namn åtkomst till ditt nyckel valv:
+1. Kör följande kommando för att ge tjänstens huvudnamn åtkomst till nyckelvalvet:
 
     ```cmd
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get list set --key-permissions create decrypt delete encrypt get list unwrapKey wrapKey
     ```
 
-1. Lägg till miljövariabler för att lagra värdena för *clientId*, *clientSecret* och *tenantId*.
+1. Lägg till miljövariabler för att lagra *värdena för clientId,* *clientSecret* och *tenantId*.
 
-    #### <a name="windows-command-prompt"></a>[Kommando tolken i Windows](#tab/cmd)
+    #### <a name="windows-command-prompt"></a>[Kommandotolk i Windows](#tab/cmd)
 
     ```cmd
     setx AZURE_CLIENT_ID <clientId-of-your-service-principal>
@@ -150,27 +150,27 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     ---
 
     > [!NOTE]
-    > Dessa Key Vault autentiseringsuppgifter används endast i ditt program. Programmet autentiseras direkt till Key Vault med dessa autentiseringsuppgifter. De skickas aldrig till appens konfigurations tjänst.
+    > Dessa Key Vault autentiseringsuppgifter används endast i ditt program. Ditt program autentiserar direkt till Key Vault med dessa autentiseringsuppgifter. De skickas aldrig till App Configuration tjänsten.
 
-1. Starta om terminalen för att läsa in de här nya miljövariablerna.
+1. Starta om terminalen för att läsa in de nya miljövariablerna.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uppdatera din kod för att använda en Key Vault referens
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uppdatera koden så att den använder Key Vault referens
 
-1. Lägg till en referens till de nödvändiga NuGet-paketen genom att köra följande kommando:
+1. Lägg till en referens till de Nödvändiga NuGet-paketen genom att köra följande kommando:
 
     ```dotnetcli
     dotnet add package Azure.Identity
     ```
 
-1. Öppna *program. cs* och Lägg till referenser till följande nödvändiga paket:
+1. Öppna *Program.cs* och lägg till referenser till följande nödvändiga paket:
 
     ```csharp
     using Azure.Identity;
     ```
 
-1. Uppdatera `CreateWebHostBuilder` metoden för att använda app-konfiguration genom att anropa- `config.AddAzureAppConfiguration` metoden. Inkludera `ConfigureKeyVault` alternativet och skicka rätt autentiseringsuppgifter till Key Vault.
+1. Uppdatera metoden `CreateWebHostBuilder` för att använda App Configuration genom att anropa metoden `config.AddAzureAppConfiguration` . Inkludera `ConfigureKeyVault` alternativet och skicka rätt autentiseringsuppgifter till din Key Vault.
 
-    #### <a name="net-core-2x"></a>[.NET Core 2. x](#tab/core2x)
+    #### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -191,7 +191,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
             .UseStartup<Startup>();
     ```
 
-    #### <a name="net-core-3x"></a>[.NET Core 3. x](#tab/core3x)
+    #### <a name="net-core-3x"></a>[.NET Core 3.x](#tab/core3x)
 
     ```csharp
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -213,9 +213,9 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
             .UseStartup<Startup>());
     ```
 
-1. När du har initierat anslutningen till app-konfigurationen ställer du in anslutningen till Key Vault genom att anropa `ConfigureKeyVault` metoden. Efter initieringen kan du komma åt värdena för Key Vault referenser på samma sätt som du kommer åt värdena för vanliga konfigurations nycklar för appar.
+1. När du initierade anslutningen till App Configuration konfigurerade du anslutningen till Key Vault genom att anropa `ConfigureKeyVault` metoden . Efter initieringen kan du komma åt värdena för Key Vault referenser på samma sätt som du kommer åt värdena för vanliga App Configuration nycklar.
 
-    Om du vill se hur den här processen fungerar öppnar du *index. cshtml* i mappen **vyer**  >   . Ersätt innehållet med följande kod:
+    Om du vill se hur den här processen ser ut i praktiken *öppnar du Index.cshtml* i **mappen**  >  **Vyer.** Ersätt innehållet med följande kod:
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -235,25 +235,25 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
         and @Configuration["TestApp:Settings:KeyVaultMessage"]</h1>
     ```
 
-    Du har åtkomst till värdet för Key Vault Reference **TestApp: Settings: KeyVaultMessage** på samma sätt som för konfiguration svärdet för **TestApp: Settings: Message**.
+    Du kommer åt värdet för Key Vault **testapp:Settings:KeyVaultMessage** på samma sätt som för konfigurationsvärdet **TestApp:Settings:Message**.
 
 ## <a name="build-and-run-the-app-locally"></a>Skapa och köra appen lokalt
 
-1. Om du vill skapa appen med hjälp av .NET Core CLI kör du följande kommando i kommando gränssnittet:
+1. Skapa appen med hjälp av .NET Core CLI kör du följande kommando i kommandogränssnittet:
 
     ```dotnetcli
     dotnet build
     ```
 
-1. När build-versionen har slutförts använder du följande kommando för att köra webbappen lokalt:
+1. När bygget är klart använder du följande kommando för att köra webbappen lokalt:
 
     ```dotnetcli
     dotnet run
     ```
 
-1. Öppna ett webbläsarfönster och gå till `http://localhost:5000` , vilket är standard-URL: en för webbappen som finns lokalt.
+1. Öppna ett webbläsarfönster och gå till `http://localhost:5000` , som är standard-URL:en för webbappen som finns lokalt.
 
-    ![Starta start av lokal app](./media/key-vault-reference-launch-local.png)
+    ![Snabbstart för lokal appstart](./media/key-vault-reference-launch-local.png)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -261,7 +261,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skapat en konfigurations nyckel för appen som refererar till ett värde som lagras i Key Vault. Fortsätt till nästa självstudie om du vill veta mer om hur du lägger till en Azure-hanterad tjänst identitet som effektiviserar åtkomsten till app-konfigurationen och Key Vault.
+I den här självstudien har du skapat App Configuration nyckel som refererar till ett värde som lagras i Key Vault. Om du vill lära dig hur du lägger till en Azure-hanterad tjänstidentitet som effektiviserar åtkomsten till App Configuration och Key Vault kan du fortsätta till nästa självstudie.
 
 > [!div class="nextstepaction"]
-> [Hanterad identitets integrering](./howto-integrate-azure-managed-service-identity.md)
+> [Integrering av hanterade identiteter](./howto-integrate-azure-managed-service-identity.md)

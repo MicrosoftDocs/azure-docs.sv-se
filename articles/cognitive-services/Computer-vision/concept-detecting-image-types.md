@@ -1,7 +1,7 @@
 ---
-title: Identifiering av avbildnings typ – Visuellt innehåll
+title: Identifiering av avbildningstyp – Visuellt innehåll
 titleSuffix: Azure Cognitive Services
-description: Begrepp relaterade till funktionen för identifiering av avbildnings typer i API för visuellt innehåll.
+description: Begrepp som rör identifieringsfunktionen för avbildningstyp i Visuellt innehåll API.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,33 +11,33 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d2ed00f3fc6f5b52a9a13a96f1e1659e30f02d5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dc24788ddd21ca2b7df1f9f92238c776dee33016
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96532609"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778885"
 ---
-# <a name="detecting-image-types-with-computer-vision"></a>Identifiera avbildnings typer med Visuellt innehåll
+# <a name="detecting-image-types-with-computer-vision"></a>Identifiera bildtyper med Visuellt innehåll
 
-Med [analys avbildnings](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) -API: et kan visuellt innehåll analysera innehålls typen för bilder, vilket anger om en bild är ClipArt eller en linje ritning.
+Med [Analysera bild](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API kan Visuellt innehåll analysera innehållstypen för bilder, vilket anger om en bild är ClipArt eller en linjeritning.
 
 ## <a name="detecting-clip-art"></a>Identifiera ClipArt
 
-Visuellt innehåll analyserar en bild och mäter sannolikheten för att bilden ska vara en ClipArt-fil på en skala på 0 till 3, enligt beskrivningen i följande tabell.
+Visuellt innehåll analyserar en bild och beter sannolikheten för att bilden är ClipArt på en skala från 0 till 3, enligt beskrivningen i följande tabell.
 
 | Värde | Innebörd |
 |-------|---------|
 | 0 | Non-clip-art |
-| 1 | Registrerade |
-| 2 | Normal-ClipArt |
-| 3 | Lämplig-ClipArt |
+| 1 | Tvetydig |
+| 2 | Normal ClipArt |
+| 3 | Good-Clip-Art |
 
 ### <a name="clip-art-detection-examples"></a>Exempel på identifiering av ClipArt
 
-Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du klassificerar sannolikheten för att exempel bilderna ska vara ClipArt.
+Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du bedömer sannolikheten för att exempelbilderna är ClipArt.
 
-![En ClipArt-bild av en sektor av ost](./Images/cheese_clipart.png)
+![En ClipArt-bild av en ostsegment](./Images/cheese_clipart.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du klassi
 }
 ```
 
-![Ett blått hus och en främre meter](./Images/house_yard.png)
+![Ett blått hus och fronten](./Images/house_yard.png)
 
 ```json
 {
@@ -71,15 +71,15 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du klassi
 }
 ```
 
-## <a name="detecting-line-drawings"></a>Identifiera rad ritningar
+## <a name="detecting-line-drawings"></a>Identifiera linjeritningar
 
-Visuellt innehåll analyserar en bild och returnerar ett booleskt värde som anger om bilden är en linje ritning.
+Visuellt innehåll analyserar en bild och returnerar ett booleskt värde som anger om bilden är en linjeteckning.
 
-### <a name="line-drawing-detection-examples"></a>Identifierings exempel för linje ritning
+### <a name="line-drawing-detection-examples"></a>Exempel på linjeritning
 
-Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när anger om exempel bilderna är linje ritningar.
+Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du anger om exempelbilderna är linjeritningar.
 
-![En linje ritnings bild av en Lion](./Images/lion_drawing.png)
+![En linjeritning av ett drak](./Images/lion_drawing.png)
 
 ```json
 {
@@ -96,7 +96,7 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när anger om 
 }
 ```
 
-![En vit blomma med grön bakgrund](./Images/flower.png)
+![En vit blomma med en grön bakgrund](./Images/flower.png)
 
 ```json
 {
@@ -115,6 +115,6 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när anger om 
 
 ## <a name="use-the-api"></a>Använda API:et
 
-Bild typs identifierings funktionen är en del av API: et [analys av avbildning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Du kan anropa API: et via en inbyggd SDK eller via REST-anrop. Inkludera `ImageType` i **visualFeatures** -Frågeparametern. När du sedan får det fullständiga JSON-svaret ska du bara parsa strängen för innehållet i `"imageType"` avsnittet.
+Bildtypsidentifieringsfunktionen är en del [Analysera bild](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API:et. Du kan anropa det här API:et via ett inbyggt SDK eller via REST-anrop. Inkludera `ImageType` i **frågeparametern visualFeatures.** När du sedan får det fullständiga JSON-svaret parsar du helt enkelt strängen för innehållet i `"imageType"` avsnittet.
 
-* [Snabb start: Visuellt innehåll REST API-eller klient bibliotek](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Snabbstart: Visuellt innehåll REST API eller klientbibliotek](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

@@ -1,5 +1,5 @@
 ---
-title: Skapa en webbapp med hjälp av SignalR-tjänsten och GitHub-autentisering
+title: Skapa en webbapp med SignalR Service- och GitHub-autentisering
 description: Azure CLI-skriptexempel – Skapa en webbapp som använder SignalR Service- och GitHub-autentisering
 author: sffamily
 ms.service: signalr
@@ -8,12 +8,12 @@ ms.topic: sample
 ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ee9f0253f2ec27b4afbbb6c5dc1ff3f5c129fe8a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c46ac350c1bf7f7593f334a9a7fa5df1af7b19d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94841843"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787349"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>Skapa en webbapp som använder SignalR Service- och GitHub-autentisering
 
@@ -107,14 +107,14 @@ Varje kommando i tabellen länkar till kommandospecifik dokumentation. I det hä
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az signalr create](/cli/azure/signalr#az-signalr-create) | Skapar en Azure SignalR-tjänstresurs. |
-| [az signalr key list](/cli/azure/signalr/key#az-signalr-key-list) | Listar nycklarna som kommer att användas av programmet när det skickar uppdateringar av innehåll i realtid med SignalR. |
-| [az appservice plan create](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en Azure App Service-Plan som värd för webbprogram. |
-| [az webapp create](/cli/azure/webapp#az-webapp-create) | Skapar en Azure-webbapp med hjälp av App Service som värd för planen. |
-| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Lägger till nya appinställningar för webbappen. De här appinställningarna används för att lagra SignalR-anslutningssträngen och GitHub OAuth-apphemligheterna. |
-| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az-webapp-deployment-user-set) | Uppdatera autentiseringsuppgifter för distribution. |
-| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az-webapp-deployment-source-config-local-git) | Hämta en URL för en git-lagringsplatsslutpunkt för att klona och skicka till vid webbappdistribution. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az signalr create](/cli/azure/signalr#az_signalr_create) | Skapar en Azure SignalR-tjänstresurs. |
+| [az signalr key list](/cli/azure/signalr/key#az_signalr_key_list) | Listar nycklarna som kommer att användas av programmet när det skickar uppdateringar av innehåll i realtid med SignalR. |
+| [az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) | Skapar en Azure App Service-Plan som värd för webbprogram. |
+| [az webapp create](/cli/azure/webapp#az_webapp_create) | Skapar en Azure-webbapp med hjälp av App Service som värd för planen. |
+| [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Lägger till nya appinställningar för webbappen. De här appinställningarna används för att lagra SignalR-anslutningssträngen och GitHub OAuth-apphemligheterna. |
+| [az webapp deployment user set](/cli/azure/webapp/deployment/user#az_webapp_deployment_user_set) | Uppdatera autentiseringsuppgifter för distribution. |
+| [az webapp deployment source config-local-git](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config_local_git) | Hämta en URL för en git-lagringsplatsslutpunkt för att klona och skicka till vid webbappdistribution. |
 
 ## <a name="next-steps"></a>Nästa steg
 
