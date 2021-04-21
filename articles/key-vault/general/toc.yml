@@ -48,7 +48,7 @@
     - name: Säkerhet
       items:
         - name: Säkerhetsfunktioner
-          href: security-overview.md
+          href: security-features.md
         - name: Grundläggande om Key Vault-autentisering
           href: authentication-fundamentals.md
         - name: Säkerhetsvärldar och geografiska områden

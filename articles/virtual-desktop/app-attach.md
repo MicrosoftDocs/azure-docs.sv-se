@@ -1,21 +1,21 @@
 ---
 title: Konfigurera Windows Virtual Desktop MSIX-appen bifoga PowerShell-skript – Azure
-description: Så här skapar du PowerShell-skript för MSIX-app bifoga för Windows Virtual Desktop.
+description: Så här skapar du PowerShell-skript för MSIX-app attach för Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 04/13/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: d1ca4a843c6731cde7ed70d65fc230a21ef6e7c4
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: 43a8cb00804927784982999db13ee193c34f55ca
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389442"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835388"
 ---
-# <a name="create-powershell-scripts-for-msix-app-attach"></a>Skapa PowerShell-skript för att koppla MSIX-appen
+# <a name="create-powershell-scripts-for-msix-app-attach"></a>Skapa PowerShell-skript för bifoga MSIX-app
 
-I det här avsnittet får du lära dig hur du ställer in PowerShell-skript för att koppla MSIX-appar.
+I det här avsnittet får du hjälp med att konfigurera PowerShell-skript för att koppla MSIX-appar.
 
 ## <a name="install-certificates"></a>Installera certifikat
 
@@ -24,10 +24,10 @@ Du måste installera certifikat på alla sessionsvärdar i värdpoolen som ska v
 Om din app använder ett certifikat som inte är offentligt betrott eller som har själv signerats gör du så här för att installera det:
 
 1. Högerklicka på paketet och välj **Egenskaper.**
-2. I fönstret som visas väljer du **fliken Digitala signaturer.** Det bör bara finnas ett objekt i listan på fliken, som du ser i följande bild. Markera objektet för att markera objektet och välj sedan **Information.**
-3. När fönstret med information om den digitala signaturen visas väljer **du fliken** Allmänt och sedan **Visa certifikat** och sedan **Installera certifikat.**
+2. I fönstret som visas väljer du **fliken Digitala signaturer.** Det bör bara finnas ett objekt i listan på fliken. Markera objektet för att markera objektet och välj sedan **Information.**
+3. När information om den digitala signaturen visas väljer **du fliken** Allmänt och sedan **Visa certifikat.** Välj sedan **Installera certifikat.**
 4. När installationsprogrammet öppnas väljer **du lokal dator** som lagringsplats och väljer sedan **Nästa.**
-5. Om installationsprogrammet frågar dig om du vill tillåta att appen gör ändringar på enheten väljer du **Ja.**
+5. Om installationsprogrammet frågar om du vill tillåta att appen gör ändringar på enheten väljer du **Ja.**
 6. Välj **Placera alla certifikat i följande arkiv** och välj sedan **Bläddra.**
 7. När fönstret välj certifikatarkiv visas väljer du **Betrodda personer** och sedan **OK.**
 8. Välj **Nästa** och **Slutför**.
@@ -43,7 +43,7 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 >[!NOTE]
 >Den här ändringen kräver att du startar om den virtuella datorn.
 
-## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Förbereda PowerShell-skript för BIFOGA MSIX-app
+## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Förbereda PowerShell-skript för msix-app bifoga
 
 MSIX-app attach har fyra distinkta faser som måste utföras i följande ordning:
 
@@ -73,7 +73,7 @@ Innan du uppdaterar PowerShell-skripten kontrollerar du att volymens GUID finns 
 
 5.  Öppna en kommandotolk och ange **mountvol**. Det här kommandot visar en lista över volymer och deras GUID. Kopiera GUID för volymen där enhetsbeteckningen matchar den enhet som du monterade den virtuella hårddisken till i steg 2.
 
-    Om du till exempel har monterat den virtuella hårddisken på enhet C i det här exempelutdata för mountvol-kommandot bör du kopiera värdet `C:\` ovan:
+    I det här exemplets utdata för kommandot mountvol ska du kopiera värdet ovan om du har monterat den virtuella hårddisken på enhet `C:\` C:
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -202,7 +202,7 @@ Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 
 ## <a name="set-up-simulation-scripts-for-the-msix-app-attach-agent"></a>Konfigurera simuleringsskript för MSIX-appens anslutningsagent
 
-När du har skapat skripten kan användarna köra dem manuellt eller konfigurera dem så att de körs automatiskt som start-, inloggnings-, utloggnings- och avstängningsskript. Mer information om dessa typer av skript finns i Använda skript för [start, avstängning,](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)inloggning och utloggning i grupprincip .
+När du har skapat skripten kan användarna manuellt köra dem eller konfigurera dem så att de körs automatiskt som start-, inloggnings-, utloggnings- och avstängningsskript. Mer information om dessa typer av skript finns i Använda skript [för start, avstängning,](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn789196(v=ws.11)/)inloggning och utloggning i grupprincip .
 
 Vart och ett av dessa automatiska skript kör en fas i appens bifogande skript:
 
@@ -213,7 +213,7 @@ Vart och ett av dessa automatiska skript kör en fas i appens bifogande skript:
 
 ## <a name="use-packages-offline"></a>Använda paket offline
 
-Om du använder paket från [Microsoft Store för företag](https://businessstore.microsoft.com/) eller [Microsoft Store för utbildning](https://educationstore.microsoft.com/) i nätverket eller på enheter som inte är anslutna till Internet måste du hämta paketlicenserna från Microsoft Store och installera dem på enheten för att kunna köra appen. Om enheten är online och kan ansluta till Microsoft Store för företag bör nödvändiga licenser laddas ned automatiskt, men om du är offline måste du konfigurera licenserna manuellt.
+Om du använder paket från [Microsoft Store för företag](https://businessstore.microsoft.com/) eller [Microsoft Store för utbildning](https://educationstore.microsoft.com/) i nätverket eller på enheter som inte är anslutna till Internet måste du hämta paketlicenserna från Microsoft Store och installera dem på enheten för att kunna köra appen. Om enheten är online och kan ansluta till Microsoft Store för företag bör de nödvändiga licenserna laddas ned automatiskt, men om du är offline måste du konfigurera licenserna manuellt.
 
 Om du vill installera licensfilerna måste du använda ett PowerShell-skript som anropar MDM_EnterpriseModernAppManagement_StoreLicenses02_01 i WMI-bryggprovidern.
 

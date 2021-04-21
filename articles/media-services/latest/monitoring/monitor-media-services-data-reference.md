@@ -1,6 +1,6 @@
 ---
-title: Övervaknings Media Services data referens
-description: Viktigt referensmaterial som krävs när du övervakar Media Services
+title: Referens Media Services övervakningsdata
+description: Viktigt referensmaterial som behövs när du övervakar Media Services
 author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
@@ -8,97 +8,68 @@ ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
 ms.date: 03/17/2021
-ms.openlocfilehash: 8908fd1acc64fb180121ac0b6a4dc38ce5a02572
-ms.sourcegitcommit: 9f4510cb67e566d8dad9a7908fd8b58ade9da3b7
+ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106121174"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835514"
 ---
-# <a name="monitoring-media-services-data-reference"></a>Övervaknings Media Services data referens
+# <a name="monitoring-media-services-data-reference"></a>Referens Media Services övervakningsdata
 
-Den här artikeln beskriver de data som är användbara för att övervaka Media Services. För ytterligare information om alla plattforms mått som stöds i Azure Monitor, granska de [mått som stöds med Azure Monitor](../../../azure-monitor/essentials/metrics-supported.md).
+Den här artikeln beskriver de data som är användbara för övervakning Media Services. Mer information om alla plattformsmått som stöds i Azure Monitor finns i [Mått som stöds med Azure Monitor](../../../azure-monitor/essentials/metrics-supported.md).
 
 ## <a name="media-services-metrics"></a>Media Services mått
 
-Mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta, och en avisering kan utlösas snabbt med relativt enkel logik.
+Mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta, och en avisering kan snabbt fås ut med relativt enkel logik.
 
-Media Services stöder övervaknings mått för följande resurser:
 
-* Konto
-* Slutpunkt för direktuppspelning
+Media Services har stöd för övervakningsmått för följande resurser:
 
-### <a name="account"></a>Konto
+|Måtttyp | Resursprovider/typnamnrymd<br/> och länka till enskilda mått |
+|-------|-----|
+| Media Services allmänt | [Allmänt](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservices) |
+| Livehändelser | [Microsoft.Media/mediaservices/liveEvents](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesliveevents) 
+| Slutpunkter för direktuppspelning | [Microsoft.Media/mediaservices/streamingEndpoints](/azure/azure-monitor/essentials/metrics-supported#microsoftmediamediaservicesstreamingendpoints), som är relevanta för slutpunkterna [för direktuppspelning REST API](/rest/api/media/streamingendpoints). 
 
-Du kan övervaka följande konto mått.
 
-|Måttnamn|Visningsnamn|Beskrivning|
-|---|---|---|
-|AssetCount|Antal till gångar|Till gångar i ditt konto.|
-|AssetQuota|Till gångs kvot|Till gångs kvot i ditt konto.|
-|AssetQuotaUsedPercentage|Använd procent andel till till gångs kvot|Procent andelen av till gångs kvoten som redan används.|
-|ContentKeyPolicyCount|Antal nyckel principer för innehåll|Nyckel principer för innehåll i ditt konto.|
-|ContentKeyPolicyQuota|Kvot för innehålls nyckel princip|Kvoten för innehålls nyckel principer i ditt konto.|
-|ContentKeyPolicyQuotaUsedPercentage|Procent andel av nyckel princip för innehåll|Procent andelen av innehålls nyckelns princip kvot som redan används.|
-|StreamingPolicyCount|Antal strömmande principer|Strömmande principer i ditt konto.|
-|StreamingPolicyQuota|Kvot för strömmande princip|Kvot för strömning av principer i ditt konto.|
-|StreamingPolicyQuotaUsedPercentage|Använd procent andel av princip för strömning|Procent andelen av den strömmande princip kvoten används redan.|
+Du bör också granska [kontokvoter och begränsningar.](../limits-quotas-constraints-reference.md)
 
-Du bör också granska [konto kvoter och begränsningar](../limits-quotas-constraints-reference.md).
 
-### <a name="streaming-endpoint"></a>Slutpunkt för direktuppspelning
+## <a name="metric-dimensions"></a>Måttdimensioner
 
-Följande Media Services [slut punkter för direkt uppspelnings](/rest/api/media/streamingendpoints) mått stöds:
-
-|Måttnamn|Visningsnamn|Beskrivning|
-|---|---|---|
-|Begäranden|Begäranden|Visar det totala antalet HTTP-begäranden som hanteras av slut punkten för direkt uppspelning.|
-|Utgående|Utgående|Utgående byte totalt per minut per slut punkt för direkt uppspelning.|
-|SuccessE2ELatency|Slutför svars tid för slut punkt till slut punkt|Varaktighet från när strömnings slut punkten fick begäran till när den sista byten av svaret skickades.|
-|CPU-användning| | CPU-användning för förstklassiga strömnings slut punkter. Dessa data är inte tillgängliga för standard slut punkter för direkt uppspelning. |
-|Utgående bandbredd | | Utgående bandbredd i bitar per sekund.|
-
-## <a name="metric-dimensions"></a>Mått dimensioner
-
-Mer information om vilka mått dimensioner som finns i [flerdimensionella mått](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics).
+Mer information om vilka måttdimensioner är finns [i Flerdimensionella mått.](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)
 
 <!--**PLACEHOLDER** for dimensions table.-->
+OutputFormat, HttpStatusCode, ErrorCode, TrackName
 
 ## <a name="resource-logs"></a>Resursloggar
 
-## <a name="media-services-diagnostic-logs"></a>Media Services diagnostikloggar
+## <a name="media-services-resource-logs"></a>Media Services resursloggar
 
-Diagnostikloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i [så här samlar du in och använder loggdata från dina Azure-resurser](../../../azure-monitor/essentials/platform-logs-overview.md).
+Resursloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i Samla [in och använda loggdata från dina Azure-resurser.](../../../azure-monitor/essentials/platform-logs-overview.md)
 
-Media Services stöder följande diagnostikloggar:
-
-* Nyckel leverans
-
-### <a name="key-delivery"></a>Nyckel leverans
-
-|Name|Beskrivning|
-|---|---|
-|Begäran om nyckel leverans tjänst|Loggar som visar information om viktiga leverans tjänst begär Anden. Mer information finns i [scheman](monitor-media-services-data-reference.md).|
+Media Services har stöd för följande [resursloggar: Microsoft.Media/mediaservices](/azure/azure-monitor/essentials/resource-logs-categories#microsoftmediamediaservices)
 
 ## <a name="schemas"></a>Scheman
 
-Detaljerad beskrivning av schemat på den högsta nivån av diagnostiska loggar finns i [tjänster, scheman och kategorier som stöds för Azure Diagnostic-loggar](../../../azure-monitor/essentials/resource-logs-schema.md).
+En detaljerad beskrivning av schemat för diagnostikloggar på den översta nivån finns [i Tjänster, scheman och kategorier som stöds för Azure-diagnostikloggar.](../../../azure-monitor/essentials/resource-logs-schema.md)
 
-## <a name="key-delivery-log-schema-properties"></a>Schema egenskaper för nyckel leverans logg
+## <a name="key-delivery-log-schema-properties"></a>Schemaegenskaper för nyckelleveranslogg
 
-De här egenskaperna är speciella för logg schema för nyckel leverans.
+De här egenskaperna är specifika för schemat för nyckelleveransloggen.
 
 |Name|Beskrivning|
 |---|---|
 |keyId|ID för den begärda nyckeln.|
-|keyType|Kan vara något av följande värden: "Clear" (ingen kryptering), "FairPlay", "PlayReady" eller "Widevine".|
-|policyName|Principens Azure Resource Manager namn.|
+|Keytype|Kan vara något av följande värden: "Clear" (ingen kryptering), "FairPlay", "PlayReady" eller "Widevine".|
+|policyName|Namnet Azure Resource Manager principen.|
 |tokenType|Tokentyp.|
-|statusMessage|Status meddelandet.|
+|statusMessage|Statusmeddelandet.|
 
 ### <a name="example"></a>Exempel
 
-Egenskaper för nyckel leverans begär ande schema.
+Egenskaper för schemat för nyckelleveransbegäranden.
 
 ```json
 {
@@ -159,7 +130,7 @@ Egenskaper för nyckel leverans begär ande schema.
 ```
 
 >[!NOTE]
-> Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av villkoren i tjänste-och sekretess policyn för Google, Inc.
+> Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av användningsvillkoren och sekretesspolicyn för Google, Inc.
 
 ## <a name="next-steps"></a>Nästa steg
 

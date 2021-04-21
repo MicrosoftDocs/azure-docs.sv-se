@@ -1,25 +1,25 @@
 ---
 title: Konfigurera din egen nyckel för kryptering Azure Event Hubs vilodata
-description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering Azure Event Hubs data rest.
+description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering Azure Event Hubs data vilan.
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: e3dd7cb1158294102d9bfe67629c80ae01ccdd17
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 33587812121051d93aa8b939c3df70530ba65c5e
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107775195"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107812452"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Konfigurera kund hanterade nycklar för kryptering Azure Event Hubs vilodata med hjälp av Azure Portal
-Azure Event Hubs kryptering av vilodata med Azure Storage Service Encryption (Azure SSE). Tjänsten Event Hubs använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med Microsoft-hanterade nycklar. Om du använder en egen nyckel (kallas även Bring Your Own Key (BYOK) eller kund hanterad nyckel) krypteras data fortfarande med den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den kund hanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till kund hanterade nycklar som används för att kryptera Microsoft-hanterade nycklar. Aktivering av BYOK-funktionen är en konfigurationsprocess en gång i namnområdet.
+Azure Event Hubs kryptering av vilodata med Azure Storage Service Encryption (Azure SSE). Tjänsten Event Hubs använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med microsoft-hanterade nycklar. Om du använder en egen nyckel (kallas även Bring Your Own Key (BYOK) eller kundstyrd nyckel) krypteras data fortfarande med den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den kund hanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till kund hanterade nycklar som används för att kryptera Microsoft-hanterade nycklar. Att aktivera BYOK-funktionen är en konfigurationsprocess en gång i namnområdet.
 
 > [!NOTE]
-> - BYOK-funktionen stöds av Event Hubs [dedikerade kluster för en](event-hubs-dedicated-overview.md) klientorganisation. Det kan inte aktiveras för standardnamnrymder Event Hubs namnområden.
+> - BYOK-funktionen stöds av Event Hubs [dedikerade kluster med en](event-hubs-dedicated-overview.md) enda klientorganisation. Det kan inte aktiveras för standardnamnrymder Event Hubs namnområden.
 > - Krypteringen kan bara aktiveras för nya eller tomma namnområden. Om namnområdet innehåller händelsehubbb misslyckas krypteringsåtgärden.
 
 Du kan använda Azure Key Vault för att hantera dina nycklar och granska din nyckelanvändning. Du kan antingen skapa egna nycklar och lagra dem i ett nyckelvalv, eller så kan du använda Azure Key Vault-API:er för att generera nycklar. Mer information om Azure Key Vault finns i [Vad är Azure Key Vault?](../key-vault/general/overview.md)
 
-Den här artikeln visar hur du konfigurerar ett nyckelvalv med kund hanterade nycklar med hjälp av Azure Portal. Information om hur du skapar ett nyckelvalv med hjälp av Azure Portal finns i [Snabbstart:](../key-vault/general/quick-create-portal.md)Skapa ett Azure Key Vault med hjälp av Azure Portal .
+Den här artikeln visar hur du konfigurerar ett nyckelvalv med kund hanterade nycklar med hjälp av Azure Portal. Information om hur du skapar ett nyckelvalv med hjälp av Azure Portal finns i [Snabbstart: Skapa en Azure Key Vault med](../key-vault/general/quick-create-portal.md)hjälp av Azure Portal .
 
 > [!IMPORTANT]
 > Användning av kund hanterade nycklar med Azure Event Hubs kräver att nyckelvalvet har två obligatoriska egenskaper konfigurerade. De är:  **Mjuk borttagning** **och Rensa inte**. Dessa egenskaper är aktiverade som standard när du skapar ett nytt nyckelvalv i Azure Portal. Om du behöver aktivera dessa egenskaper i ett befintligt nyckelvalv måste du dock använda antingen PowerShell eller Azure CLI.
@@ -65,7 +65,7 @@ När du har aktiverar kund hanterade nycklar måste du associera den kund hanter
 Du kan rotera nyckeln i nyckelvalvet med hjälp av rotationsmekanismen för Azure Key Vaults. Aktiverings- och förfallodatum kan också anges för att automatisera nyckelrotation. Tjänsten Event Hubs identifierar nya nyckelversioner och börjar använda dem automatiskt.
 
 ## <a name="revoke-access-to-keys"></a>Återkalla åtkomst till nycklar
-Om du återkallar åtkomsten till krypteringsnycklarna rensas inte data från Event Hubs. Data kan dock inte nås från den Event Hubs namnområdet. Du kan återkalla krypteringsnyckeln via åtkomstprincipen eller genom att ta bort nyckeln. Läs mer om åtkomstprinciper och att skydda ditt nyckelvalv [från Säker åtkomst till ett nyckelvalv.](../key-vault/general/security-overview.md)
+Om du återkallar åtkomsten till krypteringsnycklarna rensas inte data från Event Hubs. Data kan dock inte nås från den Event Hubs namnområdet. Du kan återkalla krypteringsnyckeln via åtkomstprincipen eller genom att ta bort nyckeln. Läs mer om åtkomstprinciper och att skydda ditt nyckelvalv [från Säker åtkomst till ett nyckelvalv.](../key-vault/general/security-features.md)
 
 När krypteringsnyckeln har återkallats kommer Event Hubs tjänsten i det krypterade namnområdet att bli oanvändbar. Om åtkomsten till nyckeln är aktiverad eller om borttagningsnyckeln har återställts väljer Event Hubs-tjänsten nyckeln så att du kan komma åt data från den krypterade Event Hubs namnområdet.
 
@@ -101,7 +101,7 @@ Alla loggar lagras i JSON-format (JavaScript Object Notation). Varje post har st
 | version | Den version av nyckeln som används. |
 | operation | Den åtgärd som utförs på nyckeln i nyckelvalvet. Du kan till exempel inaktivera/aktivera nyckeln, omsluta eller packa upp |
 | kod | Den kod som är associerad med åtgärden. Exempel: Felkod, 404, innebär att nyckeln inte hittades. |
-| meddelande | Eventuella felmeddelanden som är associerade med åtgärden |
+| meddelande | Felmeddelande som är associerat med åtgärden |
 
 Här är ett exempel på loggen för en kund hanterad nyckel:
 
@@ -143,10 +143,10 @@ Det här avsnittet visar hur du utför följande uppgifter med **hjälp Azure Re
 3. Uppdatera Event Hubs med nyckelvalvsinformationen (nyckel/värde). 
 
 
-### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Skapa ett Event Hubs och namnområde med hanterad tjänstidentitet
+### <a name="create-an-event-hubs-cluster-and-namespace-with-managed-service-identity"></a>Skapa ett Event Hubs-kluster och namnområde med hanterad tjänstidentitet
 Det här avsnittet visar hur du skapar ett Azure Event Hubs med hanterad tjänstidentitet med hjälp av en Azure Resource Manager mall och PowerShell. 
 
-1. Skapa en Azure Resource Manager för att skapa ett Event Hubs namnområde med en hanterad tjänstidentitet. Namnge filen: **CreateEventHubClusterAndNamespace.jspå**: 
+1. Skapa en Azure Resource Manager för att skapa en Event Hubs med en hanterad tjänstidentitet. Namnge filen: **CreateEventHubClusterAndNamespace.jspå**: 
 
     ```json
     {
@@ -221,7 +221,7 @@ Det här avsnittet visar hur du skapar ett Azure Event Hubs med hanterad tjänst
     > Ersätt följande värden: 
     > - `<EventHubsClusterName>` – Namnet på ditt Event Hubs kluster    
     > - `<EventHubsNamespaceName>` – Namnet på Event Hubs namnområdet
-    > - `<Location>` – Platsen för Event Hubs namnområdet
+    > - `<Location>` – Plats för Event Hubs namnområdet
 
     ```json
     {
@@ -241,7 +241,7 @@ Det här avsnittet visar hur du skapar ett Azure Event Hubs med hanterad tjänst
     }
     
     ```
-3. Kör följande PowerShell-kommando för att distribuera mallen för att skapa Event Hubs namnområdet. Hämta sedan ID:t för Event Hubs för att använda det senare. Ersätt `{MyRG}` med namnet på resursgruppen innan du kör kommandot.  
+3. Kör följande PowerShell-kommando för att distribuera mallen för att skapa Event Hubs ett namnområde. Hämta sedan ID:t för Event Hubs för att använda det senare. Ersätt `{MyRG}` med namnet på resursgruppen innan du kör kommandot.  
 
     ```powershell
     $outputs = New-AzResourceGroupDeployment -Name CreateEventHubClusterAndNamespace -ResourceGroupName {MyRG} -TemplateFile ./CreateEventHubClusterAndNamespace.json -TemplateParameterFile ./CreateEventHubClusterAndNamespaceParams.json
@@ -264,7 +264,7 @@ Det här avsnittet visar hur du skapar ett Azure Event Hubs med hanterad tjänst
     ```powershell
     ($updatedKeyVault = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -ResourceGroupName {RGName} -VaultName {keyVaultName}).ResourceId).Properties| Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"-Force | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true" -Force
     ``` 
-2. Ange åtkomstprincipen för nyckelvalvet så att den hanterade identiteten för Event Hubs kan komma åt nyckelvärdet i nyckelvalvet. Använd ID:t för Event Hubs namnområdet från föregående avsnitt. 
+2. Ange åtkomstprincipen för nyckelvalvet så att den hanterade identiteten Event Hubs namnområdet kan komma åt nyckelvärdet i nyckelvalvet. Använd ID:t för Event Hubs namnområdet från föregående avsnitt. 
 
     ```powershell
     $identity = (Get-AzureRmResource -ResourceId $EventHubNamespaceId -ExpandProperties).Identity
@@ -275,7 +275,7 @@ Det här avsnittet visar hur du skapar ett Azure Event Hubs med hanterad tjänst
 ### <a name="encrypt-data-in-event-hubs-namespace-with-customer-managed-key-from-key-vault"></a>Kryptera data i Event Hubs med kund hanterad nyckel från nyckelvalvet
 Du har gjort följande hittills: 
 
-1. Skapat ett Premium-namnområde med en hanterad identitet.
+1. Skapat ett premiumnamnområde med en hanterad identitet.
 2. Skapa ett nyckelvalv och bevilja den hanterade identiteten åtkomst till nyckelvalvet. 
 
 I det här steget uppdaterar du Event Hubs med nyckelvalvsinformation. 
@@ -358,7 +358,7 @@ I det här steget uppdaterar du Event Hubs med nyckelvalvsinformation.
     > Ersätt följande värden: 
     > - `<EventHubsClusterName>` – Namnet på ditt Event Hubs kluster.        
     > - `<EventHubsNamespaceName>` – Namnet på Event Hubs namnområdet
-    > - `<Location>` – Plats för Event Hubs namnområdet
+    > - `<Location>` – Platsen för Event Hubs namnområdet
     > - `<KeyVaultName>` – Namnet på ditt nyckelvalv
     > - `<KeyName>` – Namnet på nyckeln i nyckelvalvet
 
@@ -385,20 +385,20 @@ I det här steget uppdaterar du Event Hubs med nyckelvalvsinformation.
        }
     }
     ```             
-3. Kör följande PowerShell-kommando för att distribuera Resource Manager mallen. Ersätt `{MyRG}` med namnet på resursgruppen innan du kör kommandot. 
+3. Kör följande PowerShell-kommando för att distribuera Resource Manager mall. Ersätt `{MyRG}` med namnet på resursgruppen innan du kör kommandot . 
 
     ```powershell
     New-AzResourceGroupDeployment -Name UpdateEventHubNamespaceWithEncryption -ResourceGroupName {MyRG} -TemplateFile ./UpdateEventHubClusterAndNamespace.json -TemplateParameterFile ./UpdateEventHubClusterAndNamespaceParams.json 
     ```
 
 ## <a name="troubleshoot"></a>Felsöka
-Som bästa praxis bör du alltid aktivera loggar som visas i föregående avsnitt. Det hjälper till att spåra aktiviteter när BYOK-kryptering är aktiverat. Det hjälper också till att ta fram en omfångsavstängning av problemen.
+Som bästa praxis bör du alltid aktivera loggar som visas i föregående avsnitt. Det hjälper till att spåra aktiviteter när BYOK-kryptering är aktiverat. Det hjälper också till att minska omfånget för problemen.
 
-Nedan visas vanliga felkoder att söka efter när BYOK-kryptering är aktiverat.
+Nedan visas vanliga felkoder att söka efter när BYOK-kryptering har aktiverats.
 
 | Action | Felkod | Resulterande datatillstånd |
 | ------ | ---------- | ----------------------- | 
-| Ta bort behörigheten att packa upp/packa upp från ett nyckelvalv | 403 |    Otillgängliga |
+| Ta bort omslutnings-/uppackningsbehörighet från ett nyckelvalv | 403 |    Otillgängliga |
 | Ta bort AAD-rollmedlemskap från ett AAD-huvudnamn som beviljat behörigheten wrap/unwrap | 403 |  Otillgängliga |
 | Ta bort en krypteringsnyckel från nyckelvalvet | 404 | Otillgängliga |
 | Ta bort nyckelvalvet | 404 | Otillgänglig (förutsätter att mjuk borttagning är aktiverat, vilket är en obligatorisk inställning.) |

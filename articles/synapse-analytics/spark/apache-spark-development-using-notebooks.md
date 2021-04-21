@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 6859a2f8571c11e6ef93a5e5b1635cdbe39ad001
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c28bc47945882e6b7bbd39d1ba8524a1f7491ceb
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737678"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835224"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-notebooks-in-azure-synapse-analytics"></a>Skapa, utveckla och underhålla Synapse Studio notebook-Azure Synapse Analytics
 
@@ -31,7 +31,7 @@ Med en Azure Synapse Studio-notebook-dator kan du:
 Den här artikeln beskriver hur du använder notebook-datorer i Azure Synapse Studio.
 
 ## <a name="preview-of-the-new-notebook-experience"></a>Förhandsversion av den nya notebook-upplevelsen
-Synapse-teamet införde den nya notebook-komponenten i Synapse Studio för att ge Microsoft-kunder en konsekvent notebook-upplevelse och maximera identifiering, produktivitet, delning och samarbete. Den nya notebook-upplevelsen är redo för förhandsversion. Markera knappen **Förhandsgranskningsfunktioner** i notebook-verktygsfältet för att aktivera den. Tabellen nedan visar funktionsjämförelse mellan befintliga notebook-datorer (så kallade "klassiska notebook-datorer") med den nya förhandsversionen.  
+Synapse-teamet införde den nya notebook-komponenten i Synapse Studio för att tillhandahålla konsekvent notebook-upplevelse för Microsoft-kunder och maximera identifiering, produktivitet, delning och samarbete. Den nya notebook-upplevelsen är redo för förhandsversion. Markera knappen **Förhandsgranskningsfunktioner** i notebook-verktygsfältet för att aktivera den. Tabellen nedan visar funktionsjämförelse mellan befintliga notebook-datorer (så kallade "klassiska notebook-datorer") med den nya förhandsversionen.  
 
 |Funktion|Klassisk notebook-dator|Notebook-förhandsgranskning|
 |--|--|--|
@@ -79,7 +79,7 @@ Det finns flera sätt att lägga till en ny cell i anteckningsboken.
 
     ![add-azure-notebook-cell-between-space](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-add-cell-2.png)
 
-3. Använd [aznb Shortcut-nycklar i kommandoläge](#shortcut-keys-under-command-mode). Tryck **på A** för att infoga en cell ovanför den aktuella cellen. Tryck **på B** för att infoga en cell under den aktuella cellen.
+3. Använd [aznb-genvägsnycklarna i kommandoläget](#shortcut-keys-under-command-mode). Tryck **på A** för att infoga en cell ovanför den aktuella cellen. Tryck **på B** för att infoga en cell under den aktuella cellen.
 
 ---
 
@@ -115,7 +115,7 @@ Följande bild är ett exempel på hur du kan skriva en PySpark-fråga med hjäl
 
 Du kan inte referera till data eller variabler direkt över olika språk i en Synapse Studio notebook-dator. I Spark kan en tillfällig tabell refereras till på olika språk. Här är ett exempel på hur du läser en `Scala` DataFrame i `PySpark` och använder en `SparkSQL` Temporär Spark-tabell som en lösning.
 
-1. I Cell 1 läser du en DataFrame från en SQL-poolanslutning med hjälp av Scala och skapar en tillfällig tabell.
+1. I Cell 1 läser du en DataFrame från en SQL-poolanslutning med Hjälp av Scala och skapar en tillfällig tabell.
 
    ```scala
    %%scala
@@ -123,7 +123,7 @@ Du kan inte referera till data eller variabler direkt över olika språk i en Sy
    scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
-2. I Cell 2 frågar du efter data med Spark SQL.
+2. I cell 2 frågar du efter data med Hjälp av Spark SQL.
    
    ```sql
    %%sql
@@ -210,7 +210,7 @@ Klicka på vänster sida av en cell och dra den till önskad position.
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Om du vill ta bort en cell väljer du ellipserna (...) för att komma åt den andra cellåtgärder-menyn längst till höger och väljer sedan **Ta bort cell**. 
+Om du vill ta bort en cell väljer du ellipserna (...) för att komma åt menyn för andra cellåtgärder längst till höger och väljer sedan **Ta bort cell.** 
 
 Du kan också använda [kortkommandon i kommandoläget](#shortcut-keys-under-command-mode). Tryck **på D,D för** att ta bort den aktuella cellen.
   
@@ -331,6 +331,22 @@ Exempel: ``` %run /path/notebookA ```.
 
 ---
 
+### <a name="variable-explorer"></a>Variabelutforskaren
+
+# <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
+
+Stöds inte.
+
+# <a name="preview-notebook"></a>[Notebook-förhandsgranskning](#tab/preview)
+
+Synapse Notebook tillhandahåller en inbyggd variabelutforskare där du kan se listan över variablernas namn, typ, längd och värde i den aktuella Spark-sessionen för PySpark-celler (Python). Fler variabler visas automatiskt när de definieras i kodcellerna. Om du klickar på varje kolumnrubrik sorteras variablerna i tabellen.
+
+Du kan välja knappen **Variabler i** notebook-kommandofältet för att öppna eller dölja variabelutforskaren.
+
+![azure-notebook-variable-explorer](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-variable-explorer.png)
+
+
+---
 
 ### <a name="cell-status-indicator"></a>Cellstatusindikator
 
@@ -348,12 +364,12 @@ Antalet aktiviteter per jobb eller fas hjälper dig att identifiera den parallel
 
 ### <a name="spark-session-config"></a>Spark-sessionskonfiguration
 
-Du kan ange tidsgränsens varaktighet, antalet och storleken på utförare som ska ge till den aktuella Spark-sessionen i **Konfigurera session**. Starta om Spark-sessionen för att konfigurationsändringar ska börja gälla. Alla cachelagrade notebook-variabler rensas.
+Du kan ange tidsgränsens varaktighet, antalet och storleken på utförare som ska ge till den aktuella Spark-sessionen i **Konfigurera session**. Starta om Spark-sessionen för att konfigurationsändringarna ska börja gälla. Alla cachelagrade notebook-variabler rensas.
 
 [![sessionshantering](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png)](./media/apache-spark-development-using-notebooks/synapse-azure-notebook-spark-session-management.png#lightbox)
 
 #### <a name="spark-session-config-magic-command"></a>Magic-kommando för Spark-sessionskonfiguration
-Du kan också ange inställningar för Spark-sessionen via ett magiskt kommando **%%konfigurera**. Spark-sessionen måste startas om för att inställningarna ska börja gälla. Vi rekommenderar att du kör **%%configure** i början av notebook-datorn. Här är ett exempel, se https://github.com/cloudera/livy#request-body en fullständig lista över giltiga parametrar 
+Du kan också ange inställningar för Spark-sessionen via ett magiskt kommando **%%configure**. Spark-sessionen måste startas om för att inställningarna ska gälla. Vi rekommenderar att du kör **%%configure** i början av anteckningsboken. Här är ett exempel, se en https://github.com/cloudera/livy#request-body fullständig lista över giltiga parametrar 
 
 ```
 %%configure -f
@@ -479,13 +495,13 @@ Välj knappen **Lägg till i pipeline** i det övre högra hörnet för att läg
 
 # <a name="classical-notebook"></a>[Klassisk notebook-dator](#tab/classical)
 
-Om du vill parametrisera notebook-datorn väljer du ellipserna (...) för att komma åt den andra cellåtgärder-menyn längst till höger. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
+Om du vill parameterisera anteckningsboken väljer du ellipserna (...) för att komma åt den andra cellåtgärder-menyn längst till höger. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
 
-![växlingsparameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
+![toggle-parameter](./media/apache-spark-development-using-notebooks/toggle-parameter-cell.png)
 
-# <a name="preview-notebook"></a>[Notebook-förhandsgranskning](#tab/preview)
+# <a name="preview-notebook"></a>[Notebook-förhandsversion](#tab/preview)
 
-Om du vill parametrisera notebook-datorn väljer du ellipserna (...) för att komma **åt fler** kommandon i cellverktygsfältet. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
+Om du vill parameterisera notebook-datorn väljer du ellipserna (...) för att komma **åt fler** kommandon i cellverktygsfältet. Välj sedan **Växla parametercell för** att ange cellen som parametercell.
 
 ![azure-notebook-toggle-parameter](./media/apache-spark-development-using-notebooks/azure-notebook-toggle-parameter-cell.png)
 
@@ -508,11 +524,11 @@ När du tilldelar parametervärden kan du använda [pipelineuttrycksspråket ell
 
 Precis som Jupyter Notebooks har Azure Synapse Studio-notebook-datorer ett modalt användargränssnitt. Tangentbordet gör olika saker beroende på vilket läge notebook-cellen är i. Synapse Studio stöder följande två lägen för en viss kodcell: kommandoläge och redigeringsläge.
 
-1. En cell är i kommandoläge när det inte finns någon textmarkör som uppmanar dig att skriva. När en cell är i kommandoläge kan du redigera anteckningsboken som helhet men inte skriva i enskilda celler. Ange kommandoläge genom att `ESC` trycka på eller använda musen för att välja utanför cellens redigeringsområde.
+1. En cell är i kommandoläge när det inte finns någon textmarkör som uppmanar dig att skriva. När en cell är i kommandoläge kan du redigera anteckningsboken som helhet men inte skriva i enskilda celler. Ange kommandoläge genom att `ESC` trycka på eller använda musen för att välja utanför en cells redigeringsområde.
 
    ![kommandoläge](./media/apache-spark-development-using-notebooks/synapse-command-mode-2.png)
 
-2. Redigeringsläget visas med en textmarkör som uppmanar dig att skriva i redigeringsområdet. När en cell är i redigeringsläge kan du skriva i cellen. Ange redigeringsläget genom att `Enter` trycka på eller använda musen för att markera i cellens redigeringsområde.
+2. Redigeringsläget visas med en textmarkör som uppmanar dig att skriva i redigeringsområdet. När en cell är i redigeringsläge kan du skriva i cellen. Ange redigeringsläget genom att `Enter` trycka på eller använda musen för att markera i en cells redigeringsområde.
    
    ![redigerings-läge](./media/apache-spark-development-using-notebooks/synapse-edit-mode-2.png)
 
@@ -555,7 +571,7 @@ Med hjälp av följande kortkommandon kan du enklare navigera och köra kod i Az
 
 ---
 
-### <a name="shortcut-keys-under-edit-mode"></a>Kortkommandon i redigeringsläge
+### <a name="shortcut-keys-under-edit-mode"></a>Kortkommandon under redigeringsläge
 
 
 Med hjälp av följande kortkommandon kan du enklare navigera och köra kod i Azure Synapse notebook-filer i redigeringsläge.

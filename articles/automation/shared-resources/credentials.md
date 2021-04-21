@@ -1,90 +1,91 @@
 ---
 title: hantera autentiseringsuppgifter i Azure Automation
-description: Den här artikeln beskriver hur du skapar inloggnings till gångar och använder dem i en Runbook-eller DSC-konfiguration.
+description: Den här artikeln beskriver hur du skapar autentiseringstillgångar och använder dem i en runbook eller DSC-konfiguration.
 services: automation
 ms.subservice: shared-capabilities
 ms.date: 12/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9b9e42d55a982aeb55d7c9e26f7b1a6cbca32e0a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 6220a44e952aa4d9856ac5fc2077d254103d4a2c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99052812"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834290"
 ---
 # <a name="manage-credentials-in-azure-automation"></a>hantera autentiseringsuppgifter i Azure Automation
 
-En inloggnings till gång innehåller ett objekt som innehåller autentiseringsuppgifter, till exempel ett användar namn och ett lösen ord. Runbooks och DSC-konfigurationer använder cmdletar som accepterar ett [PSCredential](/dotnet/api/system.management.automation.pscredential) -objekt för autentisering. De kan också extrahera användar namn och lösen ord för `PSCredential` objektet för att tillhandahålla ett program eller en tjänst som kräver autentisering.
+En Automation-autentiseringstillgång innehåller ett objekt som innehåller säkerhetsautentiseringsuppgifter, till exempel ett användarnamn och ett lösenord. Runbooks och DSC-konfigurationer använder cmdlets som accepterar ett [PSCredential-objekt](/dotnet/api/system.management.automation.pscredential) för autentisering. De kan också extrahera användarnamnet och lösenordet för objektet för att tillhandahålla `PSCredential` till vissa program eller tjänster som kräver autentisering.
 
 >[!NOTE]
->Säkra till gångar i Azure Automation inkluderar autentiseringsuppgifter, certifikat, anslutningar och krypterade variabler. Dessa till gångar krypteras och lagras i Azure Automation att använda en unik nyckel som genereras för varje Automation-konto. Azure Automation lagrar nyckeln i systemhanterade Key Vault. Innan du lagrar en säker till gång läser Automation in nyckeln från Key Vault och använder den för att kryptera till gången. 
+>Säkra tillgångar i Azure Automation omfattar autentiseringsuppgifter, certifikat, anslutningar och krypterade variabler. Dessa tillgångar krypteras och lagras i Azure Automation med en unik nyckel som genereras för varje Automation-konto. Azure Automation nyckeln i den system-hanterade Key Vault. Innan du lagrar en säker tillgång läser Automation in nyckeln från Key Vault och använder den sedan för att kryptera tillgången. 
 
 [!INCLUDE [gdpr-dsr-and-stp-note.md](../../../includes/gdpr-dsr-and-stp-note.md)]
 
-## <a name="powershell-cmdlets-used-to-access-credentials"></a>PowerShell-cmdletar som används för att få åtkomst till autentiseringsuppgifter
+## <a name="powershell-cmdlets-used-to-access-credentials"></a>PowerShell-cmdlets som används för att komma åt autentiseringsuppgifter
 
-Cmdletarna i följande tabell skapar och hanterar autentiseringsuppgifter för Automation med PowerShell. De levereras som en del av [AZ-modulerna](modules.md#az-modules).
+Cmdletarna i följande tabell skapar och hanterar autentiseringsuppgifter för Automation med PowerShell. De levereras som en del av [Az-modulerna](modules.md#az-modules).
 
 | Cmdlet | Beskrivning |
 |:--- |:--- |
-| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential) |Hämtar ett [CredentialInfo](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo) -objekt som innehåller metadata om autentiseringsuppgifterna. Cmdlet: en hämtar inte `PSCredential` själva objektet.  |
-| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential) |Skapar en ny Automation-autentiseringsuppgift. |
-| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential) |Tar bort en Automation-autentiseringsuppgift. |
-| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential) |Anger egenskaperna för en befintlig Automation-autentiseringsuppgift. |
+| [Get-AzAutomationCredential](/powershell/module/az.automation/get-azautomationcredential) |Hämtar ett [CredentialInfo-objekt](/dotnet/api/microsoft.azure.commands.automation.model.credentialinfo) som innehåller metadata om autentiseringsobjektet. Cmdleten hämtar inte själva `PSCredential` objektet.  |
+| [New-AzAutomationCredential](/powershell/module/az.automation/new-azautomationcredential) |Skapar en ny Automation-autentiseringsidentifiering. |
+| [Remove-AzAutomationCredential](/powershell/module/az.automation/remove-azautomationcredential) |Tar bort autentiseringsuppgifter för Automation. |
+| [Set-AzAutomationCredential](/powershell/module/az.automation/set-azautomationcredential) |Anger egenskaperna för en befintlig Automation-autentiseringsidentifiering. |
 
-## <a name="other-cmdlets-used-to-access-credentials"></a>Andra cmdletar som används för att få åtkomst till autentiseringsuppgifter
+## <a name="other-cmdlets-used-to-access-credentials"></a>Andra cmdlets som används för att komma åt autentiseringsuppgifter
 
 Cmdletarna i följande tabell används för att komma åt autentiseringsuppgifter i dina runbooks och DSC-konfigurationer. 
 
 | Cmdlet | Beskrivning |
 |:--- |:--- |
-| `Get-AutomationPSCredential` |Hämtar ett `PSCredential` objekt som ska användas i en Runbook-eller DSC-konfiguration. Oftast bör du använda den här [interna cmdleten](modules.md#internal-cmdlets) i stället för `Get-AzAutomationCredential` cmdleten, eftersom den senare bara hämtar autentiseringsinformation. Den här informationen är normalt inte användbar för att skicka till en annan cmdlet. |
-| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) |Hämtar autentiseringsuppgifter med en prompt för användar namn och lösen ord. Denna cmdlet är en del av standard modulen Microsoft. PowerShell. Security. Se [standardmoduler](modules.md#default-modules).|
-| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) | Skapar en inloggnings till gång. Denna cmdlet är en del av Azures standard-modul. Se [standardmoduler](modules.md#default-modules).|
+| `Get-AutomationPSCredential` |Hämtar ett `PSCredential` -objekt som ska användas i en runbook eller DSC-konfiguration. Oftast bör du använda den här [interna cmdleten](modules.md#internal-cmdlets) i stället för cmdleten eftersom den senare endast `Get-AzAutomationCredential` hämtar autentiseringsinformation. Den här informationen är normalt inte användbar för att skicka till en annan cmdlet. |
+| [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) |Hämtar autentiseringsuppgifter med en uppmaning om användarnamn och lösenord. Den här cmdleten är en del av standardmodulen Microsoft.PowerShell.Security. Se [Standardmoduler](modules.md#default-modules).|
+| [New-AzureAutomationCredential](/powershell/module/servicemanagement/azure.service/new-azureautomationcredential) | Skapar en autentiseringstillgång. Den här cmdleten är en del av Azure-standardmodulen. Se [Standardmoduler](modules.md#default-modules).|
 
-Om du vill hämta `PSCredential` objekt i din kod måste du importera `Orchestrator.AssetManagement.Cmdlets` modulen. Mer information finns i [Hantera moduler i Azure Automation](modules.md).
+Om du `PSCredential` vill hämta objekt i koden måste du importera `Orchestrator.AssetManagement.Cmdlets` modulen. Mer information finns i [Hantera moduler i Azure Automation](modules.md).
 
 ```powershell
 Import-Module Orchestrator.AssetManagement.Cmdlets -ErrorAction SilentlyContinue
 ```
 
 > [!NOTE]
-> Du bör undvika att använda variabler i- `Name` parametern i `Get-AutomationPSCredential` . Användningen kan komplicera identifieringen av beroenden mellan Runbooks och DSC-konfigurationer och inloggnings till gångar i design läge.
+> Du bör undvika att använda variabler i `Name` parametern för `Get-AutomationPSCredential` . Användningen av dem kan göra det komplicerat att identifiera beroenden mellan runbooks eller DSC-konfigurationer och autentiseringstillgångar vid designtiden.
 
 ## <a name="python-functions-that-access-credentials"></a>Python-funktioner som har åtkomst till autentiseringsuppgifter
 
-Funktionen i följande tabell används för att komma åt autentiseringsuppgifter i en python 2-eller 3-Runbook. Python 3-Runbooks är för närvarande en för hands version.
+Funktionen i följande tabell används för att komma åt autentiseringsuppgifter i en Python 2- och 3-runbook. Python 3-runbooks är för närvarande i förhandsversion.
 
 | Funktion | Beskrivning |
 |:---|:---|
-| `automationassets.get_automation_credential` | Hämtar information om en inloggnings till gång. |
+| `automationassets.get_automation_credential` | Hämtar information om en autentiseringstillgång. |
 
 > [!NOTE]
-> Importera `automationassets` modulen överst i python-runbooken för att få åtkomst till till gångs funktionerna.
+> Importera modulen `automationassets` överst i din Python-runbook för att få åtkomst till tillgångsfunktionerna.
 
-## <a name="create-a-new-credential-asset"></a>Skapa en ny inloggnings till gång
+## <a name="create-a-new-credential-asset"></a>Skapa en ny autentiseringstillgång
 
-Du kan skapa en ny inloggnings till gång med hjälp av Azure Portal eller med hjälp av Windows PowerShell.
+Du kan skapa en ny autentiseringstillgång med hjälp av Azure Portal eller Windows PowerShell.
 
-### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Skapa en ny inloggnings till gång med Azure Portal
+### <a name="create-a-new-credential-asset-with-the-azure-portal"></a>Skapa en ny autentiseringstillgång med Azure Portal
 
-1. Från ditt Automation-konto väljer du **autentiseringsuppgifter** under **delade resurser** i den vänstra rutan.
-2. På sidan **autentiseringsuppgifter** väljer du **Lägg till en autentiseringsuppgift**.
-3. I fönstret ny autentiseringsuppgift anger du ett lämpligt namn på autentiseringsuppgiften enligt dina namngivnings standarder.
-4. Skriv ditt åtkomst-ID i fältet **användar namn** .
-5. I båda fälten för lösen ord anger du din hemliga åtkomst nyckel.
+1. Välj Autentiseringsuppgifter under Delade resurser i det vänstra fönstret **från** **ditt Automation-konto.**
+2. På sidan **Autentiseringsuppgifter** väljer du **Lägg till en autentiseringsuppgifterna**.
+3. I fönstret Nya autentiseringsuppgifter anger du ett lämpligt namn på autentiseringsnamnet enligt dina namngivningsstandarder.
+4. Ange ditt åtkomst-ID **i fältet** Användarnamn.
+5. För båda lösenordsfälten anger du din hemliga åtkomstnyckel.
 
-    ![Skapa ny autentiseringsuppgift](../media/credentials/credential-create.png)
+    ![Skapa nya autentiseringsuppgifter](../media/credentials/credential-create.png)
 
-6. Avmarkera kryss rutan Multi-Factor Authentication om du är markerad.
-7. Klicka på **skapa** för att spara den nya inloggnings till gången.
+6. Om rutan multifaktorautentisering är markerad avmarkerar du den.
+7. Klicka **på Skapa** för att spara den nya autentiseringstillgången.
 
 > [!NOTE]
-> Azure Automation stöder inte användar konton som använder Multi-Factor Authentication.
+> Azure Automation stöder inte användarkonton som använder multifaktorautentisering.
 
-### <a name="create-a-new-credential-asset-with-windows-powershell"></a>Skapa en ny inloggnings till gång med Windows PowerShell
+### <a name="create-a-new-credential-asset-with-windows-powershell"></a>Skapa en ny autentiseringstillgång med Windows PowerShell
 
-I följande exempel visas hur du skapar en ny inloggnings till gång för Automation. Ett `PSCredential` objekt skapas först med namnet och lösen ordet och används sedan för att skapa inloggnings till gången. I stället kan du använda `Get-Credential` cmdleten för att begära att användaren skriver in ett namn och ett lösen ord.
+I följande exempel visas hur du skapar en ny Automation-autentiseringstillgång. Ett `PSCredential` -objekt skapas först med namnet och lösenordet och används sedan för att skapa autentiseringstillgången. I stället kan du använda `Get-Credential` cmdleten för att uppmana användaren att ange ett namn och lösenord.
 
 ```powershell
 $user = "MyDomain\MyUser"
@@ -93,20 +94,20 @@ $cred = New-Object –TypeName System.Management.Automation.PSCredential –Argu
 New-AzureAutomationCredential -AutomationAccountName "MyAutomationAccount" -Name "MyCredential" -Value $cred
 ```
 
-## <a name="get-a-credential-asset"></a>Hämta en inloggnings till gång
+## <a name="get-a-credential-asset"></a>Hämta en autentiseringstillgång
 
-En Runbook-eller DSC-konfiguration hämtar en inloggnings till gång med den interna `Get-AutomationPSCredential` cmdleten. Denna cmdlet hämtar ett `PSCredential` objekt som du kan använda med en cmdlet som kräver en autentiseringsuppgift. Du kan också hämta egenskaperna för objektet Credential som ska användas individuellt. Objektet har egenskaper för användar namnet och det säkra lösen ordet. 
+En runbook eller DSC-konfiguration hämtar en autentiseringstillgång med den interna `Get-AutomationPSCredential` cmdleten. Den här cmdleten `PSCredential` hämtar ett -objekt som du kan använda med en cmdlet som kräver autentiseringsuppgifter. Du kan också hämta egenskaperna för autentiseringsobjektet för att använda individuellt. Objektet har egenskaper för användarnamnet och det säkra lösenordet. 
 
 > [!NOTE]
-> `Get-AzAutomationCredential`Cmdleten hämtar inte ett `PSCredential` objekt som kan användas för autentisering. Den ger bara information om autentiseringsuppgifterna. Om du behöver använda autentiseringsuppgifter i en Runbook måste du hämta det som ett `PSCredential` objekt med hjälp av `Get-AutomationPSCredential` .
+> `Get-AzAutomationCredential`Cmdleten hämtar inte ett `PSCredential` objekt som kan användas för autentisering. Den innehåller endast information om autentiseringsinformationen. Om du behöver använda autentiseringsuppgifter i en runbook måste du hämta den som ett objekt `PSCredential` med hjälp av `Get-AutomationPSCredential` .
 
-Du kan också använda metoden [GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential) för att hämta ett [NetworkCredential](/dotnet/api/system.net.networkcredential) -objekt som representerar en oskyddad version av lösen ordet.
+Du kan också använda [metoden GetNetworkCredential](/dotnet/api/system.management.automation.pscredential.getnetworkcredential) för att hämta ett [NetworkCredential-objekt](/dotnet/api/system.net.networkcredential) som representerar en oskyddad version av lösenordet.
 
-### <a name="textual-runbook-example"></a>Exempel på text Runbook
+### <a name="textual-runbook-example"></a>Exempel på textbaserad runbook
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-I följande exempel visas hur du använder en PowerShell-autentiseringsuppgift i en Runbook. Den hämtar autentiseringsuppgiften och tilldelar dess användar namn och lösen ord till variabler.
+I följande exempel visas hur du använder powershell-autentiseringsuppgifter i en runbook. Den hämtar autentiseringssuppgifter och tilldelar dess användarnamn och lösenord till variabler.
 
 ```powershell
 $myCredential = Get-AutomationPSCredential -Name 'MyCredential'
@@ -130,7 +131,7 @@ Connect-AzAccount -Credential $myPsCred
 
 # <a name="python-2"></a>[Python 2](#tab/python2)
 
-I följande exempel visas ett exempel på hur du kommer åt autentiseringsuppgifter i python 2-Runbooks.
+I följande exempel visas ett exempel på åtkomst till autentiseringsuppgifter i Python 2-runbooks.
 
 ```python
 import automationassets
@@ -144,7 +145,7 @@ print cred["password"]
 
 # <a name="python-3"></a>[Python 3](#tab/python3)
 
-I följande exempel visas ett exempel på hur du kommer åt autentiseringsuppgifter i python 3 Runbooks (för hands version).
+I följande exempel visas ett exempel på åtkomst till autentiseringsuppgifter i Python 3-runbooks (förhandsversion).
 
 ```python
 import automationassets
@@ -158,22 +159,22 @@ print (cred["password"])
 
 ---
 
-### <a name="graphical-runbook-example"></a>Exempel på grafisk Runbook
+### <a name="graphical-runbook-example"></a>Exempel på grafisk runbook
 
-Du kan lägga till en aktivitet för den interna `Get-AutomationPSCredential` cmdleten i en grafisk Runbook genom att högerklicka på autentiseringsuppgiften i fönstret Bibliotek i den grafiska redigeraren och välja **Lägg till på arbets ytan**.
+Du kan lägga till en aktivitet för den interna cmdleten i en grafisk runbook genom att högerklicka på autentiseringssuppgifter i fönstret Bibliotek i den grafiska redigeraren och välja Lägg till `Get-AutomationPSCredential` **på arbetsytan**.
 
-![Lägg till cmdleten för autentisering till arbets ytan](../media/credentials/credential-add-canvas.png)
+![Lägg till cmdlet för autentiseringsuppgifter på arbetsytan](../media/credentials/credential-add-canvas.png)
 
-Följande bild visar ett exempel på hur du använder en autentiseringsuppgift i en grafisk Runbook. I det här fallet ger autentiseringsuppgiften autentisering för en Runbook till Azure-resurser, enligt beskrivningen i [använda Azure AD i Azure Automation för att autentisera till Azure](../automation-use-azure-ad.md). Den första aktiviteten hämtar de autentiseringsuppgifter som har åtkomst till Azure-prenumerationen. Konto anslutnings aktiviteten använder sedan den här autentiseringsuppgiften för att tillhandahålla autentisering för alla aktiviteter som följer efter den. En [pipeline-länk](../automation-graphical-authoring-intro.md#use-links-for-workflow) används här eftersom `Get-AutomationPSCredential` det förväntar sig ett enskilt objekt.  
+Följande bild visar ett exempel på hur du använder autentiseringsuppgifter i en grafisk runbook. I det här fallet tillhandahåller autentiseringsautentisering för en runbook till Azure-resurser, enligt beskrivningen i Använda Azure AD i Azure Automation för [att autentisera till Azure](../automation-use-azure-ad.md). Den första aktiviteten hämtar de autentiseringsuppgifter som har åtkomst till Azure-prenumerationen. Kontoanslutningsaktiviteten använder sedan dessa autentiseringsuppgifter för att tillhandahålla autentisering för alla aktiviteter som kommer efter den. En [pipelinelänk](../automation-graphical-authoring-intro.md#use-links-for-workflow) används här eftersom `Get-AutomationPSCredential` förväntar sig ett enda objekt.  
 
-![Arbets flöde för autentiseringsuppgifter med pipeline-länk, exempel](../media/credentials/get-credential.png)
+![Exempel på arbetsflöde för autentiseringsuppgifter med pipelinelänk](../media/credentials/get-credential.png)
 
 ## <a name="use-credentials-in-a-dsc-configuration"></a>Använda autentiseringsuppgifter i en DSC-konfiguration
 
-Även om DSC-konfigurationer i Azure Automation kan arbeta med inloggnings till gångar med `Get-AutomationPSCredential` , kan de också skicka inloggnings resurser via parametrar. Mer information finns i [kompilera konfigurationer i Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
+DSC-konfigurationer i Azure Automation fungerar med autentiseringstillgångar med , men de kan också skicka `Get-AutomationPSCredential` autentiseringstillgångar via parametrar. Mer information finns i [Kompilera konfigurationer i Azure Automation DSC](../automation-dsc-compile.md#credential-assets).
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Mer information om de cmdletar som används för att komma åt certifikat finns [i hantera moduler i Azure Automation](modules.md).
-* Allmän information om Runbooks finns [i Runbook-körning i Azure Automation](../automation-runbook-execution.md).
-* Mer information om DSC-konfigurationer finns i [Översikt över Azure Automation tillstånds konfiguration](../automation-dsc-overview.md).
+* Mer information om de cmdlets som används för att komma åt certifikat finns [i Hantera moduler i Azure Automation](modules.md).
+* Allmän information om runbooks finns i [Runbook-körning i Azure Automation](../automation-runbook-execution.md).
+* Mer information om DSC-konfigurationer finns [i Azure Automation State Configuration översikt](../automation-dsc-overview.md).

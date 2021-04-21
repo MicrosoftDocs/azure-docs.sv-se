@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 3d8f20f598243754e3fd39f649e7c84d55b64817
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 90e505a4d505cc52920f1c7727afb321f4eda462
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107751678"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814162"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-javascript-version-4"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för JavaScript (version 4)
 
@@ -285,6 +285,6 @@ I den här snabbstarten har du skapat ett nyckelvalv, lagrat en hemlighet och h�
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Läs en [översikt över Azure Key Vault hemligheter](about-secrets.md)
-- Skydda [åtkomsten till ett nyckelvalv](../general/security-overview.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/security-features.md)
 - Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
-- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

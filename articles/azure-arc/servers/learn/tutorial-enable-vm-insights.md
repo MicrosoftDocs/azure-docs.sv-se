@@ -1,74 +1,74 @@
 ---
-title: Självstudie – övervaka en hybrid dator med Azure Monitor for VMs
-description: Lär dig hur du samlar in och analyserar data från en hybrid dator i Azure Monitor.
+title: Självstudie – Övervaka en hybriddator med Azure Monitor VM-insikter
+description: Lär dig hur du samlar in och analyserar data från en hybriddator i Azure Monitor.
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: 409ad0976e02e42e385e22a103cfc06af5a4f3f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 04/21/2021
+ms.openlocfilehash: f59ad448440110e2c5e6dd1fa1b2858d9cf42e91
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587698"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834272"
 ---
-# <a name="tutorial-monitor-a-hybrid-machine-with-azure-monitor-for-vms"></a>Självstudie: övervaka en hybrid dator med Azure Monitor for VMs
+# <a name="tutorial-monitor-a-hybrid-machine-with-vm-insights"></a>Självstudie: Övervaka en hybriddator med VM-insikter
 
-[Azure Monitor](../overview.md) kan samla in data direkt från dina hybrid datorer till en Log Analytics arbets yta för detaljerad analys och korrelation. Detta innebär vanligt vis att installera [Log Analytics agent](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent) på datorn med hjälp av ett skript, manuellt eller en automatiserad metod enligt dina konfigurations hanterings standarder. Arc-aktiverade servrar har nyligen lanserat stöd för att installera Log Analytics-och beroende agentens [VM-tillägg](../manage-vm-extensions.md) för Windows och Linux, vilket gör att Azure Monitor kan samla in data från virtuella datorer som inte är Azure-datorer.
+[Azure Monitor](../../../azure-monitor/overview.md) kan samla in data direkt från dina hybriddatorer till en Log Analytics-arbetsyta för detaljerad analys och korrelation. Detta innebär vanligtvis att Log [Analytics-agenten](../../../azure-monitor/agents/agents-overview.md#log-analytics-agent) installeras på datorn med hjälp av ett skript, manuellt eller automatiskt, enligt dina standarder för konfigurationshantering. Arc-aktiverade servrar introducerade nyligen stöd för att installera VM-tilläggen Log Analytics och Dependency [Agent](../manage-vm-extensions.md) för Windows och Linux, vilket gjorde det möjligt för [VM-insikter](../../../azure-monitor/vm/vminsights-overview.md) att samla in data från virtuella datorer som inte kommer från Azure.
 
-Den här självstudien visar hur du konfigurerar och samlar in data från dina Linux-eller Windows-datorer genom att aktivera Azure Monitor for VMs följa en förenklad uppsättning steg, vilket effektiviserar upplevelsen och tar kortare tid.  
+Den här självstudien visar hur du konfigurerar och samlar in data från dina Linux- eller Windows-datorer genom att aktivera VM-insikter genom att följa en förenklad uppsättning steg, vilket effektiviserar upplevelsen och tar en kortare tid.  
 
 ## <a name="prerequisites"></a>Krav
 
 * Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
-* Funktioner för virtuella dator tillägg är bara tillgängliga i listan över [regioner som stöds](../overview.md#supported-regions).
+* Funktionen för VM-tillägg är endast tillgänglig i listan över [regioner som stöds.](../overview.md#supported-regions)
 
-* Se vilka [operativ system som stöds](../../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) för att säkerställa att de servrar som du aktiverar stöds av Azure Monitor for VMS.
+* Se [Operativsystem som stöds för](../../../azure-monitor/vm/vminsights-enable-overview.md#supported-operating-systems) att säkerställa att de servrars operativsystem som du aktiverar stöds av VM-insikter.
 
-* Granska brand Väggs kraven för den Log Analytics agent som finns i [översikten över Log Analytics-agenten](../../../azure-monitor/agents/log-analytics-agent.md#network-requirements). Azure Monitor for VMs kartans beroende agent skickar inte några data och kräver inte några ändringar i brand väggar eller portar.
+* Granska brandväggskraven för Log Analytics-agenten i [Översikt över Log Analytics-agenten.](../../../azure-monitor/agents/log-analytics-agent.md#network-requirements) VM-insikter Map Dependency Agent överför inte några data i sig och kräver inte några ändringar i brandväggar eller portar.
 
 ## <a name="sign-in-to-azure-portal"></a>Logga in på Azure-portalen
 
 Logga in på [Azure-portalen](https://portal.azure.com).
 
-## <a name="enable-azure-monitor-for-vms"></a>Aktivera Azure Monitor for VMs
+## <a name="enable-vm-insights"></a>Aktivera insikter om virtuella datorer
 
-1. Starta tjänsten Azure Arc i Azure Portal genom att klicka på **alla tjänster** och sedan söka efter och välja **datorer – Azure-båge**.
+1. Starta Azure Arc-tjänsten i Azure Portal genom att klicka på **Alla** tjänster och sedan söka **efter och välja Datorer - Azure Arc**.
 
-    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Sök efter Arc-aktiverade servrar i alla tjänster" border="false":::
+    :::image type="content" source="./media/quick-enable-hybrid-vm/search-machines.png" alt-text="Sök efter Arc-aktiverade servrar i Alla tjänster" border="false":::
 
-1. På sidan **datorer – Azure-båge** väljer du den anslutna dator som du skapade i [snabb starts](quick-enable-hybrid-vm.md) artikeln.
+1. På sidan **Datorer – Azure Arc** väljer du den anslutna datorn som du skapade i [snabbstartsartikeln.](quick-enable-hybrid-vm.md)
 
-1. I den vänstra rutan under avsnittet **övervakning** väljer du **insikter** och **aktiverar** sedan.
+1. I det vänstra fönstret under avsnittet **Övervakning** väljer du **Insikter och** sedan **Aktivera**.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Välj Insights-alternativ på menyn till vänster" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/insights-option.png" alt-text="Välj alternativet Insikter på den vänstra menyn" border="false":::
 
-1. På sidan Azure Monitor **insikter-onboarde** uppmanas du att skapa en arbets yta. I den här självstudien rekommenderar vi inte att du väljer en befintlig Log Analytics arbets yta om du redan har en. Välj standard, som är en arbets yta med ett unikt namn i samma region som din registrerade anslutna dator. Den här arbets ytan skapas och konfigureras åt dig.
+1. På sidan Azure Monitor **Insights Onboarding** uppmanas du att skapa en arbetsyta. I den här självstudien rekommenderar vi inte att du väljer en befintlig Log Analytics-arbetsyta om du redan har en. Välj standardvärdet, som är en arbetsyta med ett unikt namn i samma region som din registrerade anslutna dator. Den här arbetsytan skapas och konfigureras åt dig.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="Aktivera Azure Monitor for VMs sida" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/enable-vm-insights.png" alt-text="Sidan Aktivera VM-insikter" border="false":::
 
-1. Du får status meddelanden medan konfigurationen utförs. Den här processen tar några minuter eftersom tillägg är installerade på den anslutna datorn.
+1. Du får statusmeddelanden när konfigurationen utförs. Den här processen tar några minuter eftersom tillägg installeras på den anslutna datorn.
 
-    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="Aktivera Azure Monitor for VMs förlopps status meddelande" border="false":::
+    :::image type="content" source="./media/tutorial-enable-vm-insights/onboard-vminsights-vm-portal-status.png" alt-text="Meddelande om förloppsstatus för VM-insikter" border="false":::
 
-    När det är klart får du ett meddelande om att datorn har registrerats och insikten har distribuerats.
+    När det är klart får du ett meddelande om att datorn har installerats och att insikten har distribuerats.
 
 ## <a name="view-data-collected"></a>Visa data som samlas in
 
-När distributionen och konfigurationen är slutförd väljer du **insikter** och väljer sedan fliken **prestanda** . På fliken prestanda visas en Välj grupp med prestanda räknare som samlats in från gäst operativ systemet på datorn. Rulla nedåt för att visa fler räknare och flytta musen över ett diagram för att Visa medelvärde och percentiler som tas från den tidpunkt då Log Analytics VM-tillägget installerades på datorn.
+När distributionen och konfigurationen är klar väljer **du Insikter** och sedan **fliken** Prestanda. På fliken Prestanda visas en grupp med prestandaräknare som samlats in från gästoperativsystemet på datorn. Rulla ned för att visa fler räknare och flytta musen över ett diagram för att visa medelvärden och percentiler som tagits från den tidpunkt då Log Analytics VM-tillägget installerades på datorn.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="Azure Monitor for VMs prestanda diagram för vald dator" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-performance-charts.png" alt-text="VM-insikter Prestandadiagram för vald dator" border="false":::
 
-Välj **Map** för att öppna funktionen Maps, som visar processerna som körs på datorn och deras beroenden. Välj **Egenskaper** för att öppna egenskaps rutan om den inte redan är öppen.
+Välj **Karta** för att öppna kartfunktionen, som visar de processer som körs på datorn och deras beroenden. Välj **Egenskaper** för att öppna egenskapsfönstret om det inte redan är öppet.
 
-:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Azure Monitor for VMs karta för vald dator" border="false":::
+:::image type="content" source="./media/tutorial-enable-vm-insights/insights-map.png" alt-text="Karta över VM-insikter för vald dator" border="false":::
 
-Expandera processerna för datorn. Välj en av processerna för att visa dess information och för att markera dess beroenden.
+Expandera processerna för din dator. Välj en av processerna för att visa dess information och för att markera dess beroenden.
 
-Välj din dator igen och välj sedan **logg händelser**. Du ser en lista över tabeller som lagras i Log Analytics arbets ytan för datorn. Den här listan är olika beroende på om du använder en Windows-eller Linux-dator. Välj **händelse** tabellen. **Händelse** tabellen innehåller alla händelser från händelse loggen i Windows. Log Analytics öppnar med en enkel fråga för att hämta insamlade händelse logg poster.
+Välj din dator igen och välj sedan **Logghändelser.** Du ser en lista över tabeller som lagras på Log Analytics-arbetsytan för datorn. Den här listan skiljer sig beroende på om du använder en Windows- eller Linux-dator. Välj **tabellen** Händelse. **Händelsetabellen** innehåller alla händelser från Windows-händelseloggen. Log Analytics öppnas med en enkel fråga för att hämta insamlade händelseloggposter.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill veta mer om Azure Monitor kan du läsa följande artikel:
+Mer information om Azure Monitor finns i följande artikel:
 
 > [!div class="nextstepaction"]
 > [Översikt över Azure Monitor](../../../azure-monitor/overview.md)

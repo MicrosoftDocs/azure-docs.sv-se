@@ -3,12 +3,12 @@ title: Konfigurera din egen nyckel för kryptering Azure Service Bus vilodata
 description: Den här artikeln innehåller information om hur du konfigurerar din egen nyckel för kryptering Azure Service Bus data rest.
 ms.topic: conceptual
 ms.date: 02/10/2021
-ms.openlocfilehash: 88de4ccc2c6997622540664dc15b21f052df622a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: de716b9f14191ba057c83a060104e64937c4192a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107788595"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816016"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Konfigurera kund hanterade nycklar för kryptering Azure Service Bus vilodata med hjälp av Azure Portal
 Azure Service Bus Premium tillhandahåller kryptering av vilodata med Azure Storage Service Encryption (Azure SSE). Service Bus Premium använder Azure Storage för att lagra data. Alla data som lagras med Azure Storage krypteras med Microsoft-hanterade nycklar. Om du använder en egen nyckel (kallas även Bring Your Own Key (BYOK) eller kund hanterad nyckel) krypteras data fortfarande med den Microsoft-hanterade nyckeln, men dessutom krypteras den Microsoft-hanterade nyckeln med hjälp av den kund hanterade nyckeln. Med den här funktionen kan du skapa, rotera, inaktivera och återkalla åtkomst till kund hanterade nycklar som används för att kryptera Microsoft-hanterade nycklar. Aktivering av BYOK-funktionen är en konfigurationsprocess en gång i namnområdet.
@@ -25,32 +25,32 @@ Den här artikeln visar hur du konfigurerar ett nyckelvalv med kund hanterade ny
 > Användning av kund hanterade nycklar med Azure Service Bus kräver att nyckelvalvet har två obligatoriska egenskaper konfigurerade. De är:  **Mjuk borttagning** **och Rensa inte**. Dessa egenskaper är aktiverade som standard när du skapar ett nytt nyckelvalv i Azure Portal. Om du behöver aktivera dessa egenskaper i ett befintligt nyckelvalv måste du dock använda antingen PowerShell eller Azure CLI.
 
 ## <a name="enable-customer-managed-keys"></a>Aktivera kund hanterade nycklar
-Följ dessa steg om du vill aktivera Azure Portal nycklar i den här Azure Portal:
+Om du vill aktivera kund hanterade nycklar i Azure Portal du följande steg:
 
-1. Gå till ditt Service Bus Premium-namnområde.
+1. Gå till ditt Service Bus Premium-namnområdet.
 2. På sidan **Inställningar** i Service Bus namnområdet väljer du **Kryptering.**
-3. Välj den **kund hanterade nyckelkryptering i vila** som visas i följande bild.
+3. Välj den **kund hanterade nyckelkryptering i vila** som du ser i följande bild.
 
     ![Aktivera kundhanterad nyckel](./media/configure-customer-managed-key/enable-customer-managed-key.png)
 
 
 ## <a name="set-up-a-key-vault-with-keys"></a>Konfigurera ett nyckelvalv med nycklar
 
-När du har aktiverar kund hanterade nycklar måste du associera den kund hanterade nyckeln med Azure Service Bus namnområdet. Service Bus stöder endast Azure Key Vault. Om du aktiverar **alternativet Kryptering med kund hanterad** nyckel i föregående avsnitt måste du importera nyckeln till Azure Key Vault. Nycklarna måste dessutom ha mjuk **borttagning** **och Rensa inte konfigurerat** för nyckeln. De här inställningarna kan konfigureras med [hjälp av PowerShell](../key-vault/general/key-vault-recovery.md) eller [CLI](../key-vault/general/key-vault-recovery.md).
+När du har aktivera kund hanterade nycklar måste du associera den kund hanterade nyckeln med Azure Service Bus namnområdet. Service Bus stöder endast Azure Key Vault. Om du aktiverar **alternativet Kryptering med kund hanterad** nyckel i föregående avsnitt måste du importera nyckeln till Azure Key Vault. Nycklarna måste dessutom ha mjuk **borttagning och** Rensa **inte konfigurerat** för nyckeln. De här inställningarna kan konfigureras med [Hjälp av PowerShell](../key-vault/general/key-vault-recovery.md) eller [CLI.](../key-vault/general/key-vault-recovery.md)
 
-1. Om du vill skapa ett nytt nyckelvalv följer du Azure Key Vault [Snabbstart](../key-vault/general/overview.md). Mer information om hur du importerar befintliga nycklar finns [i Om nycklar, hemligheter och certifikat.](../key-vault/general/about-keys-secrets-certificates.md)
+1. Om du vill skapa ett nytt nyckelvalv följer du Azure Key Vault [Snabbstart.](../key-vault/general/overview.md) Mer information om hur du importerar befintliga nycklar finns [i Om nycklar, hemligheter och certifikat.](../key-vault/general/about-keys-secrets-certificates.md)
 1. Om du vill aktivera både mjuk borttagning och rensningsskydd när du skapar ett valv använder du [kommandot az keyvault create.](/cli/azure/keyvault#az_keyvault_create)
 
     ```azurecli-interactive
     az keyvault create --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
     ```    
-1. Om du vill lägga till rensningsskydd till ett befintligt valv (som redan har mjuk borttagning aktiverat) använder du [kommandot az keyvault update.](/cli/azure/keyvault#az_keyvault_update)
+1. Om du vill lägga till rensningsskydd i ett befintligt valv (som redan har mjuk borttagning aktiverat) använder du [kommandot az keyvault update.](/cli/azure/keyvault#az_keyvault_update)
 
     ```azurecli-interactive
     az keyvault update --name contoso-SB-BYOK-keyvault --resource-group ContosoRG --enable-purge-protection true
     ```
 1. Skapa nycklar genom att följa dessa steg:
-    1. Om du vill skapa en ny nyckel väljer **du Generera/importera** på **menyn Nycklar** under **Inställningar.**
+    1. Om du vill skapa en ny nyckel **väljer du Generera/importera** på **menyn Nycklar** under **Inställningar.**
         
         ![Välj knappen Generera/importera](./media/configure-customer-managed-key/select-generate-import.png)
 
@@ -62,45 +62,45 @@ När du har aktiverar kund hanterade nycklar måste du associera den kund hanter
 
         ![Välj nyckel från nyckelvalvet](./media/configure-customer-managed-key/select-key-from-key-vault.png)
         > [!NOTE]
-        > För redundans kan du lägga till upp till tre nycklar. Om en av nycklarna har upphört att gälla eller inte är tillgänglig används de andra nycklarna för kryptering.
+        > För redundans kan du lägga till upp till 3 nycklar. Om en av nycklarna har upphört att gälla eller inte är tillgänglig används de andra nycklarna för kryptering.
         
     1. Fyll i informationen för nyckeln och klicka på **Välj**. Detta aktiverar kryptering av den Microsoft-hanterade nyckeln med din nyckel (kund hanterad nyckel). 
 
 
     > [!IMPORTANT]
-    > Om du vill använda kund hanterad nyckel tillsammans med geo-haveriberedskap kan du läsa det här avsnittet. 
+    > Om du vill använda en kundhanteringsnyckel tillsammans med geo-haveriberedskap kan du läsa det här avsnittet. 
     >
-    > För att aktivera kryptering av Microsoft-hanterad [](../key-vault/general/security-overview.md) nyckel med en kund hanterad nyckel konfigureras en åtkomstprincip för den hanterade Service Bus-identiteten på det angivna Azure KeyVault. Detta säkerställer kontrollerad åtkomst till Azure KeyVault från Azure Service Bus namnområdet.
+    > Om du vill aktivera kryptering av Microsoft-hanterad nyckel med en kund hanterad nyckel konfigureras en åtkomstprincip för den Service Bus hanterade identiteten på det angivna Azure KeyVault. [](../key-vault/general/security-features.md) Detta säkerställer kontrollerad åtkomst till Azure KeyVault från Azure Service Bus namnområdet.
     >
     > På grund av detta:
     > 
-    >   * Om [Geo-haveriberedskap](service-bus-geo-dr.md) redan har aktiverats Service Bus namnområdet och du vill aktivera kundhanteringsnyckel ska du 
+    >   * Om [geo-haveriberedskap](service-bus-geo-dr.md) redan har aktiverats för Service Bus och du vill aktivera kundhanteringsnyckel ska du 
     >     * Bryt parkopplingen
     >     * [Konfigurera åtkomstprincipen för](../key-vault/general/assign-access-policy-portal.md) den hanterade identiteten för både den primära och sekundära namnrymden till nyckelvalvet.
     >     * Konfigurera kryptering på det primära namnområdet.
     >     * Koppla om de primära och sekundära namnrymderna.
     > 
-    >   * Om du vill aktivera geo-dr på en Service Bus där kund hanterad nyckel redan har ställts in, så -
+    >   * Om du vill aktivera geo-dr på en Service Bus där kund hanterad nyckel redan har ställts in, kan du -
     >     * [Konfigurera åtkomstprincipen för den](../key-vault/general/assign-access-policy-portal.md) hanterade identiteten för det sekundära namnområdet till nyckelvalvet.
     >     * Koppla ihop de primära och sekundära namnrymderna.
 
 
-## <a name="rotate-your-encryption-keys"></a>Rotera krypteringsnycklarna
+## <a name="rotate-your-encryption-keys"></a>Rotera dina krypteringsnycklar
 
 Du kan rotera nyckeln i nyckelvalvet med hjälp av rotationsmekanismen för Azure Key Vaults. Aktiverings- och förfallodatum kan också anges för att automatisera nyckelrotation. Tjänsten Service Bus identifierar nya nyckelversioner och börjar använda dem automatiskt.
 
 ## <a name="revoke-access-to-keys"></a>Återkalla åtkomst till nycklar
 
-När du återkallar åtkomsten till krypteringsnycklarna rensas inte data från Service Bus. Data kan dock inte nås från det Service Bus namnområdet. Du kan återkalla krypteringsnyckeln via åtkomstprincipen eller genom att ta bort nyckeln. Läs mer om åtkomstprinciper och att skydda ditt nyckelvalv [från Säker åtkomst till ett nyckelvalv.](../key-vault/general/security-overview.md)
+Om du återkallar åtkomsten till krypteringsnycklarna rensas inte data från Service Bus. Data kan dock inte nås från det Service Bus namnområdet. Du kan återkalla krypteringsnyckeln via åtkomstprincipen eller genom att ta bort nyckeln. Läs mer om åtkomstprinciper och att skydda ditt nyckelvalv [från Säker åtkomst till ett nyckelvalv.](../key-vault/general/security-features.md)
 
-När krypteringsnyckeln har återkallats blir Service Bus tjänsten i det krypterade namnområdet oanvändbar. Om åtkomsten till nyckeln är aktiverad eller om den borttagna nyckeln har återställts väljer Service Bus-tjänsten nyckeln så att du kan komma åt data från den krypterade Service Bus-namnrymden.
+När krypteringsnyckeln har återkallats blir Service Bus tjänsten i det krypterade namnområdet oanvändbar. Om åtkomsten till nyckeln är aktiverad eller om den borttagna nyckeln återställs väljer Service Bus-tjänsten nyckeln så att du kan komma åt data från den krypterade Service Bus namnområdet.
 
 ## <a name="caching-of-keys"></a>Cachelagring av nycklar
-Instansen Service Bus av sina angivna krypteringsnycklar var 5:e minut. Den cachelagrar och använder dem till nästa avsökning, vilket är efter 5 minuter. Så länge som minst en nyckel är tillgänglig är köer och ämnen tillgängliga. Om alla nycklar i listan inte är tillgängliga när de avsöks blir alla köer och ämnen otillgängliga. 
+Instansen Service Bus av sina angivna krypteringsnycklar var femte minut. Den cachelagrar och använder dem till nästa avsökning, vilket är efter 5 minuter. Så länge som minst en nyckel är tillgänglig är köer och ämnen tillgängliga. Om alla nycklar i listan inte är tillgängliga när de avsöks blir alla köer och ämnen otillgängliga. 
 
 Här finns mer information: 
 
-- Var 5:e minut avsöker Service Bus tjänst alla kund-hanterade nycklar som anges i namnområdets post:
+- Var 5:e minut avsöker Service Bus tjänst alla kund hanterade nycklar som anges i namnområdets post:
     - Om en nyckel har roterats uppdateras posten med den nya nyckeln.
     - Om en nyckel har återkallats tas nyckeln bort från posten.
     - Om alla nycklar har återkallats anges namnområdets krypteringsstatus till **Återkallad.** Data kan inte nås från den Service Bus namnområdet.. 

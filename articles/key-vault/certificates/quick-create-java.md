@@ -8,12 +8,12 @@ ms.date: 12/18/2020
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
-ms.openlocfilehash: c064a35ac6136d728f75b65379c543149cc8189d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 47b15c857f6f0c8c4d8f377ee4ecdcca74e88e0f
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750040"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107818581"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-java-certificates"></a>Snabbstart: Azure Key Vault certifikatklientbibliotek för Java (certifikat)
 Kom igång med Azure Key Vault Certificate-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
@@ -272,4 +272,4 @@ I den här snabbstarten skapade du ett nyckelvalv, skapade ett certifikat, hämt
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Skydda [åtkomst till ett nyckelvalv](../general/security-overview.md)
+- Skydda [åtkomst till ett nyckelvalv](../general/security-features.md)

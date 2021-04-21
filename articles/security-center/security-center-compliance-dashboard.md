@@ -1,30 +1,24 @@
 ---
 title: 'Självstudie: Kontroller av regelefterlevnad – Azure Security Center'
 description: 'Självstudie: Lär dig hur du förbättrar regelefterlevnaden med hjälp Azure Security Center.'
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: 5f50c4dc-ea42-418d-9ea8-158ffeb93706
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/10/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: 284a7f532ed918397fe1cfcf3458bbc6fb0bdd32
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: c8ac9079321e47a1e6d9b8689be46bf55bdd4243
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107739016"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834625"
 ---
 # <a name="tutorial-improve-your-regulatory-compliance"></a>Självstudie: Förbättra regelefterlevnaden
 
 Azure Security Center hjälper till att effektivisera processen för att uppfylla regelefterlevnadskrav med hjälp av **instrumentpanelen för regelefterlevnad.** 
 
-Security Center utvärderar kontinuerligt din hybridmolnmiljö för att analysera riskfaktorerna enligt kontrollerna och bästa praxis i de standarder som tillämpas på dina prenumerationer. Instrumentpanelen visar statusen för din efterlevnad av dessa standarder. 
+Security Center utvärderar kontinuerligt din hybridmolnmiljö för att analysera riskfaktorer enligt kontrollerna och bästa praxis i de standarder som tillämpas på dina prenumerationer. Instrumentpanelen visar statusen för din efterlevnad av dessa standarder. 
 
 När du aktiverar Security Center på en Azure-prenumeration tilldelas [Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction) automatiskt till den prenumerationen. Det här allmänt respekterade benchmark-måttet bygger på kontrollerna från [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) och National Institute of Standards and Technology [(NIST)](https://www.nist.gov/) med fokus på molncentrerad säkerhet.
 
@@ -38,14 +32,14 @@ I den här kursen får du lära du dig att:
 > * Konfigurera aviseringar om ändringar i din efterlevnadsstatus
 > * Exportera dina efterlevnadsdata som en kontinuerlig dataström och som veckovisa ögonblicksbilder
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Så här går du igenom funktionerna i den här självstudien:
 
 - [Azure Defender](azure-defender.md) måste vara aktiverat. Du kan prova Azure Defender kostnadsfritt i 30 dagar.
-- Du måste vara inloggad med ett konto som har läsbehörighet till principefterlevnadsdata **(Säkerhetsläsaren** är inte tillräcklig). Rollen global **läsare för** prenumerationen kommer att fungera. Du måste minst ha rollerna Resursprincipdeltagare **och** **Säkerhetsadministratör** tilldelade.
+- Du måste vara inloggad med ett konto som har läsbehörighet till policyefterlevnadsdata (**Säkerhetsläsaren** är inte tillräcklig). Rollen global **läsare för** prenumerationen kommer att fungera. Du måste minst ha rollerna Resursprincipdeltagare **och** **Säkerhetsadministratör** tilldelade.
 
 ##  <a name="assess-your-regulatory-compliance"></a>Utvärdera din regelefterlevnad
 
@@ -93,7 +87,7 @@ Med hjälp av informationen i instrumentpanelen för regelefterlevnad kan du fö
 
 ## <a name="export-your-compliance-status-data"></a>Exportera dina efterlevnadsstatusdata
 
-Om du vill spåra din efterlevnadsstatus med andra övervakningsverktyg i din miljö Security Center en exportmekanism för att göra detta enkelt. Konfigurera **kontinuerlig export för** att skicka utvalda data till en Azure Event Hub eller en Log Analytics-arbetsyta.
+Om du vill spåra din efterlevnadsstatus med andra övervakningsverktyg i din miljö Security Center en exportmekanism som gör detta enkelt. Konfigurera **kontinuerlig export för** att skicka utvalda data till en Azure Event Hub eller en Log Analytics-arbetsyta.
 
 Använd kontinuerlig export av data till en Azure Event Hub eller en Log Analytics-arbetsyta:
 
@@ -135,14 +129,15 @@ Du kanske till exempel vill att Security Center att skicka ett e-postmeddelande 
 - [Hur kan jag ladda ned en rapport med efterlevnadsdata i ett annat format än PDF?](#how-can-i-download-a-report-with-compliance-data-in-a-format-other-than-pdf)
 - [Hur kan jag skapa undantag för vissa av principerna i instrumentpanelen för regelefterlevnad?](#how-can-i-create-exceptions-for-some-of-the-policies-in-the-regulatory-compliance-dashboard)
 - [Vilka Azure Defender-planer eller licenser behöver jag använda instrumentpanelen för regelefterlevnad?](#what-azure-defender-plans-or-licenses-do-i-need-to-use-the-regulatory-compliance-dashboard)
+- [Hur gör jag för att du veta vilket benchmark eller standard som ska användas?](#how-do-i-know-which-benchmark-or-standard-to-use)
 
 ### <a name="what-standards-are-supported-in-the-compliance-dashboard"></a>Vilka standarder stöds i instrumentpanelen för efterlevnad?
 Som standard visar instrumentpanelen för regelefterlevnad Azure Security Benchmark. Azure Security Benchmark är Microsofts författade, Azure-specifika riktlinjer för säkerhet och bästa praxis för efterlevnad baserat på vanliga ramverk för efterlevnad. Läs mer i [introduktionen till Azure Security Benchmark.](../security/benchmarks/introduction.md)
 
 Om du vill spåra din efterlevnad med andra standarder måste du uttryckligen lägga till dem på instrumentpanelen.
  
-Du kan lägga till standarder som Azure CIS 1.1.0 (ny), NIST SP 800-53 R4, NIST SP 800-171 R2, SWIFT CSP CSCF-v2020, UK Official och UK NHS, HIPAA HITRUST, Canada Federal PBMM, ISO 27001, SOC2-TSP och PCI-DSS 3.2.1.  
- 
+Du kan lägga till andra standarder som Azure CIS 1.3.0, NIST SP 800-53, NIST SP 800-171, SWIFT CSP CSCF-v2020, UK Official och UK NHS, HIPAA, Canada Federal PBMM, ISO 27001, SOC2-TSP och PCI-DSS 3.2.1.  
+
 Fler standarder läggs till på instrumentpanelen och ingår i informationen i Anpassa uppsättningen standarder på instrumentpanelen för [regelefterlevnad.](update-regulatory-compliance-packages.md)
 
 ### <a name="why-do-some-controls-appear-grayed-out"></a>Varför visas vissa kontroller som nedtonade?
@@ -195,20 +190,25 @@ För andra principer kan du skapa ett undantag direkt i själva principen genom 
 Om du har aktiverat något av Azure Defender-paketen för någon av dina Azure-resurstyper har du åtkomst till instrumentpanelen för regelefterlevnad med alla dess data i Security Center.
 
 
+### <a name="how-do-i-know-which-benchmark-or-standard-to-use"></a>Hur gör jag för att du veta vilket benchmark eller standard som ska användas?
+[Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction) (ASB) är den kanoniska uppsättningen säkerhetsrekommendationer och metodtips som definieras av Microsoft, i linje med vanliga ramverk för efterlevnadskontroll, inklusive [CIS Microsoft Azure Foundations Benchmark](https://www.cisecurity.org/benchmark/azure/) och [NIST SP 800-53.](https://csrc.nist.gov/publications/detail/sp/800-53/rev-5/final) ASB är ett mycket omfattande prestandatest och är utformat för att rekommendera de senaste säkerhetsfunktionerna i en mängd olika Azure-tjänster. Vi rekommenderar ASB för kunder som vill maximera sin säkerhetsstatus och ha möjlighet att anpassa sin efterlevnadsstatus till branschstandarder.
 
+[CIS Benchmark har](https://www.cisecurity.org/benchmark/azure/) skrivits av en oberoende entitet – Center for Internet Security (CIS) – och innehåller rekommendationer om en delmängd av de grundläggande Azure-tjänsterna. Vi arbetar med CIS för att se till att deras rekommendationer är uppdaterade med de senaste förbättringarna i Azure, men de ligger ibland efter och blir inaktuella. Vissa kunder vill dock använda det här målet, tredjepartsutvärdering från CIS som den första och primära säkerhetsbaslinjen.
+
+Eftersom vi har släppt Azure Security Benchmark har många kunder valt att migrera till den som en ersättning för CIS-benchmarks.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig Security Center instrumentpanelen för regelefterlevnad för att:
+I den här självstudien har du lärt dig Security Center på instrumentpanelen för regelefterlevnad för att:
 
 > [!div class="checklist"]
 > * Visa och övervaka din efterlevnadsstatus för de standarder och föreskrifter som är viktiga för dig.
 > * Förbättra din kompatibilitetsstatus genom att utföra relevanta rekommendationer och se dina kompatibilitetspoäng öka.
 
-Instrumentpanelen för regelefterlevnad kan förenkla efterlevnadsprocessen avsevärt och avsevärt minska den tid som krävs för att samla in efterlevnadsbevis för din Azure-, hybrid- och multimolnmiljö.
+Instrumentpanelen för regelefterlevnad kan förenkla efterlevnadsprocessen avsevärt och avsevärt minska den tid som krävs för att samla in bevis för efterlevnad för din Azure-, hybrid- och multimolnmiljö.
 
 Mer information finns på dessa relaterade sidor:
 
-- [Anpassa uppsättningen standarder på instrumentpanelen för regelefterlevnad](update-regulatory-compliance-packages.md) – Lär dig hur du väljer vilka standarder som ska visas på instrumentpanelen för regelefterlevnad. 
-- [Hantera säkerhetsrekommendationer i Azure Security Center – Lär](security-center-recommendations.md) dig hur du använder rekommendationer i Security Center att skydda dina Azure-resurser.
+- [Anpassa uppsättningen standarder i instrumentpanelen för regelefterlevnad](update-regulatory-compliance-packages.md) – Lär dig hur du väljer vilka standarder som ska visas på instrumentpanelen för regelefterlevnad. 
+- [Hantera säkerhetsrekommendationer i Azure Security Center – Lär](security-center-recommendations.md) dig hur du använder rekommendationer i Security Center för att skydda dina Azure-resurser.

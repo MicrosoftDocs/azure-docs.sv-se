@@ -101,7 +101,7 @@
               href: event-aggregation.md
             - name: Agentbaserade säkerhetsaviseringar
               href: agent-based-security-alerts.md
-            - name: Anpassade aviseringar för agentbaserad säkerhet
+            - name: Agentbaserade anpassade säkerhetsaviseringar
               href: agent-based-security-custom-alerts.md
             - name: Agentbaserade rekommendationer
               href: agent-based-recommendations.md
@@ -156,7 +156,7 @@
               href: how-to-define-global-user-access-control.md
               displayName: 'business unit, site, region, user'
         - name: Styr vilken trafik som övervakas
-          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets'
+          displayName: 'Windows, Learning, Smart IT Learning, DNS, DHCP, engines, subnets,  WMI, active, probing, scanning, switch'
           href: how-to-control-what-traffic-is-monitored.md
         - name: Hantera sensor från den lokala hanteringskonsolen
           displayName: 'disconnect, connect, activation file, sensor backup'
@@ -348,9 +348,9 @@
           href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: Defender för IoT-ordlista
       href: references-defender-for-iot-glossary.md
-    - name: Funktionsstöd och tillbakagångar
+    - name: Funktionsstöd och tillbaka pensionering
       items:
-        - name: Funktionsstöd och tillbakagångar
+        - name: Funktionsstöd och tillbaka pensionering
           displayName: 'C, C#, deprecation, support'
           href: edge-security-module-deprecation.md
 - name: Resurs

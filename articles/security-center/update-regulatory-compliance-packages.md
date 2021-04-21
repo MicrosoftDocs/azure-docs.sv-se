@@ -1,29 +1,25 @@
 ---
 title: Använda instrumentpanelen för regelefterlevnad i Azure Security Center
 description: Lär dig hur du lägger till och tar bort regler från instrumentpanelen för regelefterlevnad i Security Center
-services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
-ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
-ms.devlang: na
 ms.topic: how-to
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/04/2021
+ms.date: 04/21/2021
 ms.author: memildin
-ms.openlocfilehash: dab6b504fe026324251b7284fc3abdb52bb9911a
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 4ba65517b698896c57ca2254394efcadd6efbb1d
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738962"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107835046"
 ---
-# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassa uppsättningen standarder på instrumentpanelen för regelefterlevnad
+# <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassa uppsättningen standarder i instrumentpanelen för regelefterlevnad
 
 Azure Security Center kontinuerligt jämför konfigurationen av dina resurser med kraven i branschstandarder, föreskrifter och benchmark-standarder. Instrumentpanelen **för regelefterlevnad** ger insikter om din efterlevnadsstatus baserat på hur du uppfyller specifika efterlevnadskrav.
 
+> [!TIP]
+> Läs mer om Security Center på instrumentpanelen för regelefterlevnad [i vanliga frågor och svar.](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard)
 
 ## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Hur representeras standarder för regelefterlevnad i Security Center?
 
@@ -38,15 +34,17 @@ Microsoft spårar själva regelstandarderna och förbättrar automatiskt täckni
 
 ## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Vilka standarder för regelefterlevnad finns i Security Center?
 
-Som standard har varje prenumeration **tilldelats Azure Security Benchmark.** Det här är Microsofts särskilda Azure-riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction).
+Som standard har varje prenumeration **tilldelats Azure Security Benchmark.** Det här är Microsofts författade Azure-specifika riktlinjer för bästa praxis för säkerhet och efterlevnad baserat på vanliga ramverk för efterlevnad. [Läs mer om Azure Security Benchmark](https://docs.microsoft.com/security/benchmark/azure/introduction).
 
 Du kan också lägga till standarder som:
 
-- NIST SP 800-53 R4
+- NIST SP 800-53
 - SWIFT CSP CSCF-v2020
 - UK Official och UK NHS
 - Canada Federal PBMM
-- Azure CIS 1.1.0
+- Azure CIS 1.3.0
+- CMMC Nivå 3
+- Nya Zeeland ISM Restricted
 
 Standarder läggs till på instrumentpanelen när de blir tillgängliga.
 
@@ -71,24 +69,26 @@ Följande steg beskriver hur du lägger till ett paket för att övervaka din ef
 
 1. På sidan **Lägg till standarder för regelefterlevnad** kan du söka efter någon av de tillgängliga standarderna, inklusive:
 
-    - **NIST SP 800-53 R4**
-    - **NIST SP 800 171 R2**
+    - **NIST SP 800-53**
+    - **NIST SP 800 171**
     - **SWIFT CSP CSCF v2020**
     - **NHS och UK NHS**
     - **Canada Federal PBMM**
     - **HIPAA HITRUST**
-    - **Azure CIS 1.1.0**
+    - **Azure CIS 1.3.0**
+    - **CMMC Nivå 3**
+    - **Nya Zeeland ISM Restricted**
     
-    ![Lägga till regelstandarder Azure Security Center på instrumentpanelen för regelefterlevnad](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Lägga till regler för Azure Security Center på instrumentpanelen för regelefterlevnad](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. Välj **Lägg** till och ange all nödvändig information för det specifika initiativet, till exempel omfång, parametrar och reparation.
 
 1. Från Security Center sidopanelen väljer du Regelefterlevnad igen **för** att gå tillbaka till instrumentpanelen för regelefterlevnad.
 
-    Din nya standard visas i din lista över branschstandarder & regler. 
+    Din nya standard visas i listan över branschstandarder & regler. 
 
     > [!NOTE]
-    > Det kan ta några timmar innan en ny standard visas på instrumentpanelen för efterlevnad.
+    > Det kan ta några timmar innan en nyligen tillagd standard visas på instrumentpanelen för efterlevnad.
 
     :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Instrumentpanel för regelefterlevnad" lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
 

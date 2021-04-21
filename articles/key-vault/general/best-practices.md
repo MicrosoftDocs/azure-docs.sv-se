@@ -1,6 +1,6 @@
 ---
 title: Metodtips för att använda Key Vault – Azure Key Vault | Microsoft Docs
-description: Läs om metodtips för Azure Key Vault, inklusive att kontrollera åtkomst, när du ska använda separata nyckelvalv, rekommendationer, loggning och återställningsalternativ.
+description: Lär dig om metodtips för Azure Key Vault, inklusive åtkomstkontroll, när du ska använda separata nyckelvalv, rekommendationer, loggning och återställningsalternativ.
 services: key-vault
 author: msmbaldwin
 tags: azure-key-vault
@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/29/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 5e4ec2749cec8444382e2b6e7c856e74c57ebb59
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7cfa2059cc03b96db39183cfa5056c9934a02290
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777175"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814360"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Metodtips för att använda Key Vault
 
@@ -24,17 +24,17 @@ Vår rekommendation är att använda ett valv per program per miljö (utveckling
 
 ## <a name="control-access-to-your-vault"></a>Kontrollera åtkomsten till ditt valv
 
-Azure Key Vault är en molntjänst som skyddar krypteringsnycklar och hemligheter som certifikat, anslutningssträngar och lösenord. Eftersom dessa data är känsliga och affärskritiska måste du skydda åtkomsten till dina nyckelvalv genom att endast tillåta auktoriserade program och användare. Den [här](security-overview.md) artikeln innehåller en översikt över Key Vault åtkomstmodellen. Den förklarar autentisering och auktorisering och beskriver hur du skyddar åtkomsten till dina nyckelvalv.
+Azure Key Vault är en molntjänst som skyddar krypteringsnycklar och hemligheter som certifikat, anslutningssträngar och lösenord. Eftersom dessa data är känsliga och affärskritiska måste du skydda åtkomsten till dina nyckelvalv genom att endast tillåta auktoriserade program och användare. Den [här](security-features.md) artikeln innehåller en översikt över Key Vault åtkomstmodellen. Den förklarar autentisering och auktorisering och beskriver hur du skyddar åtkomsten till dina nyckelvalv.
 
 Här är några förslag när du kontrollerar åtkomsten till valvet:
-1. Lås åtkomst till din prenumeration, resursgrupp och Nyckelvalv (Azure RBAC)
+1. Lås åtkomst till din prenumeration, resursgrupp och Key Vaults (Azure RBAC)
 2. Skapa åtkomstprinciper för varje valv
-3. Använd åtkomstobjekt med minsta behörighet för att bevilja åtkomst
+3. Använd minsta behörighet för åtkomst till huvudnamn för att bevilja åtkomst
 4. Aktivera brandvägg och [VNET-tjänstslutpunkter](overview-vnet-service-endpoints.md)
 
 ## <a name="backup"></a>Backup
 
-Se till att du tar regelbundna valv back ups när du uppdaterar/tar bort/skapar objekt i ett valv.
+Se till att du tar regelbundna valvback ups när du uppdaterar/tar bort/skapar objekt i ett valv.
 
 ### <a name="azure-powershell-backup-commands"></a>Azure PowerShell för säkerhetskopiering
 

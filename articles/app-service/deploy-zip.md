@@ -4,13 +4,13 @@ description: Lär dig hur du distribuerar din app Azure App Service med en ZIP-f
 ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
-ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: fe906a63a681515d401d005bf3357a4e7218ae66
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.custom: seodec18, devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 9f59576ea66b72a492e1e6c665a51258861842dd
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771433"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833030"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Distribuera din app till Azure App Service en ZIP- eller WAR-fil
 
@@ -54,7 +54,7 @@ az webapp deployment source config-zip --resource-group <group-name> --name <app
 
 Det här kommandot distribuerar filer och kataloger från ZIP-filen till standardprogrammappen för App Service (`\home\site\wwwroot`) och startar om appen.
 
-Som standard förutsätter distributionsmotorn att en ZIP-fil är redo att köras som den är och inte kör någon byggautomatisering. Om du vill aktivera samma byggautomatisering som i en [Git-distribution](deploy-local-git.md)anger du appinställningen genom att köra följande kommando `SCM_DO_BUILD_DURING_DEPLOYMENT` i [Cloud Shell](https://shell.azure.com):
+Som standard förutsätter distributionsmotorn att en ZIP-fil är redo att köras som den är och inte kör någon byggautomatisering. Om du vill aktivera samma byggautomatisering som i en [Git-distribution](deploy-local-git.md)anger du appinställningen genom att `SCM_DO_BUILD_DURING_DEPLOYMENT` köra följande kommando i [Cloud Shell](https://shell.azure.com):
 
 ```azurecli-interactive
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings SCM_DO_BUILD_DURING_DEPLOYMENT=true
@@ -74,7 +74,7 @@ För HTTP BASIC-autentisering behöver du dina autentiseringsuppgifter App Servi
 
 ### <a name="with-curl"></a>Med cURL
 
-I följande exempel används verktyget cURL för att distribuera en WAR-fil. Ersätt platshållarna `<username>` `<war-file-path>` , och `<app-name>` . När du uppmanas av cURL anger du lösenordet.
+I följande exempel används verktyget cURL för att distribuera en WAR-fil. Ersätt platshållarna `<username>` `<war-file-path>` , och `<app-name>` . När du uppmanas av cURL skriver du lösenordet.
 
 ```bash
 curl -X POST -u <username> --data-binary @"<war-file-path>" https://<app-name>.scm.azurewebsites.net/api/wardeploy
