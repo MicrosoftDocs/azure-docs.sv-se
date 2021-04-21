@@ -1,6 +1,6 @@
 ---
-title: 'CLI: ansluta en app till SQL Database'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service-app. Det här exemplet visar hur du ansluter en app till SQL Database.
+title: 'CLI: Anslut en app till SQL Database'
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av App Service app. Det här exemplet visar hur du ansluter en app till SQL Database.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 7c2efdd0-f553-4038-a77a-e953021b3f77
@@ -9,16 +9,16 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: abd96e513aadf44d0f313670e1437ebd16aa410c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 92fa93d64798f67f28ca0020731c63b7922866fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006386"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782391"
 ---
-# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>Ansluta en App Service-app till SQL Database använda CLI
+# <a name="connect-an-app-service-app-to-sql-database-using-cli"></a>Ansluta en App Service-app till SQL Database med CLI
 
-Det här exempel skriptet skapar en databas i Azure SQL Database och en App Service-app. Den länkar sedan databasen till appen med hjälp av app-inställningar.
+Det här exempelskriptet skapar en databas i Azure SQL Database en App Service app. Sedan länkar den databasen till appen med hjälp av appinställningar.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,13 +38,13 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
-| [`az sql server create`](/cli/azure/sql/server#az-sql-server-create) | Skapar en server.  |
-| [`az sql db create`](/cli/azure/sql/db#az-sql-db-create) | Skapar en ny databas. |
-| [`az sql db show-connection-string`](/cli/azure/sql/db#az-sql-db-show-connection-string) | Genererar en anslutningssträng för en databas. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
+| [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Skapar en App Service-app. |
+| [`az sql server create`](/cli/azure/sql/server#az_sql_server_create) | Skapar en server.  |
+| [`az sql db create`](/cli/azure/sql/db#az_sql_db_create) | Skapar en ny databas. |
+| [`az sql db show-connection-string`](/cli/azure/sql/db#az_sql_db_show-connection_string) | Genererar en anslutningssträng för en databas. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
 
 ## <a name="next-steps"></a>Nästa steg
 

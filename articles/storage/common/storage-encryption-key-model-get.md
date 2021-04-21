@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ef0f32ecc59bea6ee7a0f7ff12083fd2358c223c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bc36500bbd95633d1cb1d02bf10a7397401aa4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478921"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780127"
 ---
 # <a name="determine-which-azure-storage-encryption-key-model-is-in-use-for-the-storage-account"></a>Avgöra vilken Azure Storage krypteringsnyckelmodell som används för lagringskontot
 
@@ -62,7 +62,7 @@ Om värdet för egenskapen **KeySource** är `Microsoft.Storage` krypteras konto
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/cli)
 
-Om du vill kontrollera krypteringsmodellen för lagringskontot med hjälp av Azure CLI anropar du kommandot [az storage account show](/cli/azure/storage/account#az-storage-account-show) och kontrollerar sedan egenskapen **keySource** för kontot.
+Om du vill kontrollera krypteringsmodellen för lagringskontot med hjälp av Azure CLI anropar du kommandot [az storage account show](/cli/azure/storage/account#az_storage_account_show) och kontrollerar sedan egenskapen **keySource** för kontot.
 
 ```azurecli-interactive
 key_source=$(az storage account show \

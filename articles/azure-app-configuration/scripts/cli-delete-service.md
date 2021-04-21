@@ -1,7 +1,7 @@
 ---
-title: Skript exempel för Azure CLI – ta bort ett Azure App konfigurations lager
+title: Skriptexempel för Azure CLI – Ta bort ett Azure App Configuration Store
 titleSuffix: Azure App Configuration
-description: Ta bort ett Azure App konfigurations lager med ett exempel skript för Azure CLI. Se referens artikel länkar till kommandon som används i skriptet.
+description: Ta bort ett Azure App Configuration store med hjälp av ett Azure CLI-exempelskript. Se referensartikellänkar till kommandon som används i skriptet.
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
@@ -10,12 +10,12 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 49d6a85faa55de5dbf50377998dbe2fc829d9f6f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 07c4ac3234dc67978f16f6c0c7e0702924bf2bb5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96929794"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768956"
 ---
 # <a name="delete-an-azure-app-configuration-store"></a>Ta bort ett Azure App Configuration-arkiv
 
@@ -25,7 +25,7 @@ Det här exempelskriptet tar bort en instans av Azure App Configuration.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -40,14 +40,14 @@ az appconfig delete --name myTestAppConfigStore --resource-group myResourceGroup
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-I det här skriptet används följande kommandon för att ta bort ett konfigurations lager för appar. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
+Det här skriptet använder följande kommandon för att ta bort en App Configuration store. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Kommentarer |
 |---|---|
-| [az appconfig delete](/cli/azure/appconfig#az-appconfig-delete) | Tar bort en resurs för konfigurations Arkiv för appar. |
+| [az appconfig delete](/cli/azure/appconfig#az_appconfig_delete) | Tar bort en App Configuration store-resurs. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
-Ytterligare skript exempel för programkonfigurations-CLI finns i [Azure App konfigurations-CLI-exempel](../cli-samples.md).
+Ytterligare App Configuration CLI-skriptexempel finns i Azure App Configuration [CLI-exempel](../cli-samples.md).

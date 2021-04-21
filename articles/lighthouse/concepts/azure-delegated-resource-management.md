@@ -1,51 +1,51 @@
 ---
 title: Azure-delegerad resurshantering
-description: Azure-delegerad resurs hantering är en viktig del av Azure Lighthouse, vilket gör det möjligt för tjänst leverantörer att hantera delegerade resurser i stor skala med flexibilitet och precision.
+description: Azure-delegerad resurshantering är en viktig del av Azure Lighthouse, så att tjänstleverantörer kan hantera delegerade resurser i stor skala med flexibilitet och precision.
 ms.date: 10/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: d484e61fc4ab3714eb362b26d64d449890065888
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 93a3de257fe88de4915eff3582ff38fc03ef380e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92203865"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767771"
 ---
 # <a name="azure-delegated-resource-management"></a>Azure-delegerad resurshantering
 
-Azure-delegerad resurs hantering är en av de viktigaste komponenterna i [Azure DataLighthouses](../overview.md). Med Azure-delegerad resurs hantering kan tjänst leverantörer förenkla kund engagemang och onboarding-upplevelser, samtidigt som de delegerade resurserna hanteras i stor skala med flexibilitet och precision. Kunderna behåller kontrollen över vilka tjänst leverantörer som har åtkomst till sin klient, kunderna behåller kontroll över vem som har åtkomst till sin klient, vilka resurser de kan komma åt och vilka åtgärder som kan vidtas.
+Azure-delegerad resurshantering är en av huvudkomponenterna i [Azure Lighthouse](../overview.md). Med Azure-delegerad resurshantering kan tjänstleverantörer förenkla kundengagemang och registrering, samtidigt som de hanterar delegerade resurser i stor skala med flexibilitet och precision. Kunderna har kontroll över vem som har åtkomst till deras klientorganisation, vilka resurser de kan komma åt och vilka åtgärder som kan vidtas.
 
-## <a name="what-is-azure-delegated-resource-management"></a>Vad är Azure-delegerad resurs hantering?
+## <a name="what-is-azure-delegated-resource-management"></a>Vad är Azure-delegerad resurshantering?
 
-Azure-delegerad resurs hantering möjliggör logisk projektion av resurser från en klient organisation till en annan klient organisation. Detta gör det möjligt för behöriga användare i en Azure Active Directory (Azure AD) att utföra hanterings åtgärder för olika Azure AD-klienter som tillhör sina kunder. Tjänste leverantörer kan logga in på sin egen Azure AD-klient och ha behörighet att arbeta i delegerade kund prenumerationer och resurs grupper. Detta gör det möjligt för dem att utföra hanterings åtgärder på uppdrag av sina kunder, utan att behöva logga in på varje enskild kund klient.
+Azure-delegerad resurshantering möjliggör logisk projektion av resurser från en klientorganisation till en annan klientorganisation. Detta gör att behöriga användare i en Azure Active Directory-klientorganisation (Azure AD) kan utföra hanteringsåtgärder över olika Azure AD-klienter som tillhör deras kunder. Tjänstleverantörer kan logga in på sin egen Azure AD-klientorganisation och ha behörighet att arbeta i delegerade kundprenumerationer och resursgrupper. På så sätt kan de utföra hanteringsåtgärder åt sina kunder, utan att behöva logga in på varje enskild kundklientorganisation.
 
 > [!TIP]
-> Azure-delegerad resurs hantering kan också användas [inom ett företag som har flera Azure AD-klienter för](enterprise.md) att förenkla hanteringen av flera innehavare.
+> Azure-delegerad resurshantering kan också användas i ett företag som har flera Azure AD-klientorganisationsklienter för att förenkla hanteringen mellan klientorganisationen. [](enterprise.md)
 
-Med Azure-delegerad resurs hantering kan behöriga användare arbeta direkt i kontexten för en kund prenumeration utan att ha ett konto i den kundens klient organisation eller som medägare till kundens klient.
+Med Azure-delegerad resurshantering kan behöriga användare arbeta direkt i kontexten för en kundprenumeration utan att ha ett konto i kundens klientorganisation eller vara medägare av kundens klientorganisation.
 
-Med [hanterings upplevelsen för flera innehavare](cross-tenant-management-experience.md) kan du arbeta effektivare med Azures hanterings tjänster som Azure Policy, Azure Security Center och mycket annat. Alla tjänste leverantörs aktiviteter spåras i aktivitets loggen, som lagras i kundens klient organisation (och kan visas av användare i hanterings klienten). Det innebär att användare i både hanteringen och den hanterade klienten enkelt kan identifiera den användare som är associerad med eventuella ändringar.
+Med [hanteringsupplevelsen mellan klientorganisationen](cross-tenant-management-experience.md) kan du arbeta mer effektivt med Azure-hanteringstjänster som Azure Policy, Azure Security Center och mycket mer. All tjänstleverantörsaktivitet spåras i aktivitetsloggen, som lagras i kundens klientorganisation (och kan visas av användare i den hanterande klientorganisationen). Det innebär att användare i både den hanterade och den hanterade klientorganisationen enkelt kan identifiera den användare som är associerad med eventuella ändringar.
 
-Du kan [publicera den nya hanterade tjänstens erbjudande typ till Azure Marketplace](../how-to/publish-managed-services-offers.md) för att enkelt publicera kunder till Azure Lighthouse. Du kan också [slutföra onboarding-processen genom att distribuera Azure Resource Manager mallar](../how-to/onboard-customer.md).
+Du kan [publicera den nya erbjudandetypen hanterad tjänst för att Azure Marketplace](../how-to/publish-managed-services-offers.md) enkelt registrera kunder till Azure Lighthouse. Du kan också slutföra [onboarding-processen genom att distribuera Azure Resource Manager mallar](../how-to/onboard-customer.md).
 
-## <a name="how-azure-delegated-resource-management-works"></a>Så här fungerar Azure-delegerad resurs hantering
+## <a name="how-azure-delegated-resource-management-works"></a>Så här fungerar Azure-delegerad resurshantering
 
-Så här fungerar Azure-delegerad resurs hantering på hög nivå:
+På en hög nivå fungerar Azure-delegerad resurshantering på följande sätt:
 
-1. Först ska du identifiera åtkomsten (roller) som dina grupper, tjänstens huvud namn eller användare behöver för att hantera kundens Azure-resurser. Åtkomst definitionen innehåller hantering av klient-ID tillsammans med **principalId** -identiteter från din klient mapp som är mappad till [inbyggda **roll definitions** -värden](../../role-based-access-control/built-in-roles.md) (deltagare, VM-deltagare, läsare osv.).
-2. Du kan ange den här åtkomsten och publicera kunden till Azure-Lighthouse på något av två sätt:
-   - [Publicera ett Azure Marketplace-hanterat tjänst erbjudande](../how-to/publish-managed-services-offers.md) (privat eller offentlig) som kunden accepterar
-   - [Distribuera en Azure Resource Manager-mall till kundens klient](../how-to/onboard-customer.md) för en eller flera specifika prenumerationer eller resurs grupper
+1. Först identifierar du den åtkomst (roller) som dina grupper, tjänstens huvudnamn eller användare behöver för att hantera kundens Azure-resurser. Åtkomstdefinitionen innehåller det hanterande klientorganisations-ID:t tillsammans med **principalId-identiteter** från din klientorganisation mappade till [inbyggda **roleDefinition-värden**](../../role-based-access-control/built-in-roles.md) (deltagare, VM-deltagare, läsare osv.).
+2. Du anger den här åtkomsten och registrera kunden för Azure Lighthouse på något av två sätt:
+   - [Publicera ett Azure Marketplace hanterat tjänsterbjudande](../how-to/publish-managed-services-offers.md) (privat eller offentligt) som kunden accepterar
+   - [Distribuera en Azure Resource Manager mall till kundens klientorganisation för](../how-to/onboard-customer.md) en eller flera specifika prenumerationer eller resursgrupper
 
-3. När kunden har registrerats kan behöriga användare logga in på den hanterande klienten och utföra uppgifter i den angivna kund omfattningen, baserat på den åtkomst som du har definierat. Kunderna kan granska tjänste leverantörs åtgärder och välja att ta bort åtkomst om det behövs.
+3. När kunden har blivit registrerad kan behöriga användare logga in på din hanterande klientorganisation och utföra uppgifter i det angivna kundomfånget, baserat på den åtkomst som du har definierat. Kunder kan granska tjänstleverantörens åtgärder och välja att ta bort åtkomsten om det behövs.
 
 > [!NOTE]
-> Du kan hantera delegerade resurser som finns i olika [regioner](../../availability-zones/az-overview.md#regions). Delegering av prenumerationer i ett [nationellt moln](../../active-directory/develop/authentication-national-cloud.md) och det offentliga Azure-molnet, eller över två separata nationella moln, stöds dock inte.
+> Du kan hantera delegerade resurser som finns i olika [regioner.](../../availability-zones/az-overview.md#regions) Delegering av prenumerationer i ett [nationellt moln](../../active-directory/develop/authentication-national-cloud.md) och det offentliga Azure-molnet, eller mellan två separata nationella moln, stöds dock inte.
 
-## <a name="support-for-azure-delegated-resource-management"></a>Stöd för Azure-delegerad resurs hantering
+## <a name="support-for-azure-delegated-resource-management"></a>Stöd för Azure-delegerad resurshantering
 
-Om du behöver hjälp som rör Azure-delegerad resurs hantering kan du öppna en supportbegäran i Azure Portal. Välj **teknisk** för **typ av problem**. Välj en prenumeration och välj sedan **Lighthouse** (under **övervakning & hantering**).
+Om du behöver hjälp med Azure-delegerad resurshantering kan du öppna en supportbegäran i Azure Portal. För **Typ av problem** väljer du **Teknisk.** Välj en prenumeration och välj sedan **Lighthouse** (under **Övervakning & Hantering).**
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [hanterings upplevelser mellan flera innehavare](cross-tenant-management-experience.md).
-- Lär dig mer om [Managed Services-erbjudanden på Azure Marketplace](managed-services-offers.md).
+- Lär dig [mer om hanteringsupplevelser mellan klientorganisationen.](cross-tenant-management-experience.md)
+- Läs mer [om erbjudanden för hanterade tjänster i Azure Marketplace](managed-services-offers.md).

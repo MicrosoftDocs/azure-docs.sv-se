@@ -1,48 +1,48 @@
 ---
-title: Självstudie – Schemalägg en ACR-uppgift
-description: I den här självstudien får du lära dig hur du kör en Azure Container Registry aktivitet enligt ett definierat schema genom att ange en eller flera timer-utlösare
+title: Självstudie – Schemalägga en ACR-uppgift
+description: I den här självstudien lär du dig att köra en Azure Container Registry uppgift enligt ett definierat schema genom att ange en eller flera timerutlösare
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: 13a4ccac4ea97538583c1c063a6dc61e4d25686a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa80bcbd318266a86c5bec08c9ee60fc0d22a10d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96030619"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780883"
 ---
-# <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Självstudie: köra en ACR-aktivitet enligt ett definierat schema
+# <a name="tutorial-run-an-acr-task-on-a-defined-schedule"></a>Självstudie: Köra en ACR-uppgift enligt ett definierat schema
 
-Den här självstudien visar hur du kör en [ACR-aktivitet](container-registry-tasks-overview.md) enligt ett schema. Schemalägg en aktivitet genom att ställa in en eller flera *timer-utlösare*. Timer-utlösare kan användas separat eller i kombination med andra aktivitets utlösare.
+Den här självstudien visar hur du kör [en ACR-uppgift](container-registry-tasks-overview.md) enligt ett schema. Schemalägg en aktivitet genom att konfigurera en eller flera *timerutlösare*. Timerutlösare kan användas fristående eller i kombination med andra uppgiftsutlösare.
 
-I den här självstudien får du lära dig om schemaläggning av aktiviteter och:
+I den här självstudien lär du dig mer om schemaläggning av aktiviteter och:
 
 > [!div class="checklist"]
-> * Skapa en uppgift med en timer-utlösare
-> * Hantera timer-utlösare
+> * Skapa en uppgift med en timerutlösare
+> * Hantera timerutlösare
 
-Att schemalägga en aktivitet är användbart för scenarier som följande:
+Schemaläggning av en uppgift är användbart för scenarier som följande:
 
-* Kör arbets belastningen container för schemalagda underhålls åtgärder. Du kan till exempel köra en container app för att ta bort onödiga avbildningar från registret.
-* Kör en uppsättning tester på en produktions avbildning under arbets dagen som en del av din direktsända webbplats övervakning.
+* Kör en containerarbetsbelastning för schemalagda underhållsåtgärder. Du kan till exempel köra en containerapp för att ta bort avbildningar som inte behöver tas bort från registret.
+* Kör en uppsättning tester på en produktionsavbildning under arbetsdagen som en del av din live-platsövervakning.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="about-scheduling-a-task"></a>Om schemaläggning av en aktivitet
+## <a name="about-scheduling-a-task"></a>Om schemaläggning av en uppgift
 
-* **Utlösare med cron-uttryck** – timer-utlösaren för en uppgift använder ett *cron-uttryck*. Uttrycket är en sträng med fem fält som anger minut, timme, dag, månad och veckodag för att utlösa uppgiften. Det finns stöd för frekvens upp till en gång per minut.
+* **Utlösare med cron-uttryck** – Timerutlösaren för en uppgift använder ett *cron-uttryck*. Uttrycket är en sträng med fem fält som anger minut, timme, dag, månad och veckodag för att utlösa uppgiften. Frekvenser på upp till en gång per minut stöds.
 
-  Uttrycket utlöser till exempel `"0 12 * * Mon-Fri"` en aktivitet kl. 12.00 UTC på varje veckodag. Se [informationen](#cron-expressions) längre fram i den här artikeln.
-* **Flera timer-utlösare** – det går att lägga till flera timers till en aktivitet, så länge scheman skiljer sig åt.
-    * Ange flera timer-utlösare när du skapar uppgiften eller Lägg till dem senare.
-    * Du kan också namnge utlösare för enklare hantering, eller så kommer ACR-aktiviteter att tillhandahålla standard namn för utlösare.
-    * Om timer-scheman överlappar i taget, utlöser ACR-aktiviteter aktiviteten vid den schemalagda tiden för varje timer.
-* **Andra aktivitets utlösare** – i en timer-utlöst uppgift kan du också aktivera utlösare baserat på [käll kods bekräftelse](container-registry-tutorial-build-task.md) eller [bas avbildnings uppdateringar](container-registry-tutorial-base-image-update.md). Precis som andra ACR-uppgifter kan du också köra en schemalagd aktivitet [manuellt][az-acr-task-run] .
+  Uttrycket utlöser till exempel `"0 12 * * Mon-Fri"` en uppgift vid 12.00 UTC på varje veckodag. Mer [information finns](#cron-expressions) senare i den här artikeln.
+* **Flera timerutlösare** – Det är tillåtet att lägga till flera timers i en uppgift, så länge schemana skiljer sig åt.
+    * Ange flera timerutlösare när du skapar uppgiften eller lägg till dem senare.
+    * Du kan också namnge utlösarna för enklare hantering eller ACR-uppgifter att ange standardutlösarnamn.
+    * Om timerscheman överlappar i taget ACR-uppgifter aktiviteten vid den schemalagda tiden för varje timer.
+* **Andra uppgiftsutlösare** – I en timerutlöst aktivitet kan du också aktivera utlösare baserat på källkodsin commit (källkodsin commit) [eller](container-registry-tutorial-build-task.md) [basavbildningsuppdateringar](container-registry-tutorial-base-image-update.md). Precis som med andra ACR-uppgifter kan du [även köra en][az-acr-task-run] schemalagd aktivitet manuellt.
 
-## <a name="create-a-task-with-a-timer-trigger"></a>Skapa en uppgift med en timer-utlösare
+## <a name="create-a-task-with-a-timer-trigger"></a>Skapa en uppgift med en timerutlösare
 
-### <a name="task-command"></a>Uppgifts kommando
+### <a name="task-command"></a>Aktivitetskommando
 
-Fyll först i följande gränssnitts miljö variabel med ett lämpligt värde för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i miljövariabeln måste du manuellt ersätta varje värde där det visas i exempel kommandona.
+Fyll först i följande gränssnittsmiljövariabel med ett värde som är lämpligt för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i miljövariabeln måste du manuellt ersätta varje värde oavsett var det visas i exempelkommandona.
 
 [![Inbäddad start](https://shell.azure.com/images/launchcloudshell.png "Starta Azure Cloud Shell")](https://shell.azure.com)
 
@@ -50,9 +50,9 @@ Fyll först i följande gränssnitts miljö variabel med ett lämpligt värde f�
 ACR_NAME=<registry-name>        # The name of your Azure container registry
 ```
 
-När du skapar en uppgift med kommandot [AZ ACR Task Create][az-acr-task-create] kan du också lägga till en timer-utlösare. Lägg till `--schedule` parametern och skicka ett cron-uttryck för timern.
+När du skapar en uppgift med kommandot [az acr task create][az-acr-task-create] kan du även lägga till en timerutlösare. Lägg till `--schedule` parametern och skicka ett cron-uttryck för timern.
 
-Som ett enkelt exempel utlöses följande aktivitet som kör `hello-world` avbildningen från Microsoft container Registry varje dag kl. 21:00 UTC. Aktiviteten körs utan en käll kods kontext.
+Som ett enkelt exempel utlöser följande uppgift körning av `hello-world` avbildningen Microsoft Container Registry varje dag kl. 21:00 UTC. Aktiviteten körs utan källkodskontext.
 
 ```azurecli
 az acr task create \
@@ -63,7 +63,7 @@ az acr task create \
   --context /dev/null
 ```
 
-Kör kommandot [AZ ACR Task show][az-acr-task-show] för att se att timer-utlösaren har kon figurer ATS. Som standard aktive ras även uppdaterings utlösaren för bas avbildning.
+Kör kommandot [az acr task show för][az-acr-task-show] att se att timerutlösaren har konfigurerats. Uppdateringsutlösaren för basavbildningen är också aktiverad som standard.
 
 ```azurecli
 az acr task show --name timertask --registry $ACR_NAME --output table
@@ -75,15 +75,15 @@ NAME      PLATFORM    STATUS    SOURCE REPOSITORY       TRIGGERS
 timertask linux       Enabled                           BASE_IMAGE, TIMER
 ```
 
-## <a name="trigger-the-task"></a>Utlös aktiviteten
+## <a name="trigger-the-task"></a>Utlösa uppgiften
 
-Utlös aktiviteten manuellt med [AZ ACR Task-körning][az-acr-task-run] för att kontrol lera att den är korrekt konfigurerad:
+Utlösningsuppgiften manuellt [med az acr task run][az-acr-task-run] för att säkerställa att den är korrekt konfigurerad:
 
 ```azurecli
 az acr task run --name timertask --registry $ACR_NAME
 ```
 
-Om behållaren körs korrekt, ser utdata ut ungefär så här. Utdata komprimeras för att Visa viktiga steg
+Om containern körs korrekt liknar utdata följande. Utdata komprimeras för att visa viktiga steg
 
 ```output
 Queued a run with ID: cf2a
@@ -98,7 +98,7 @@ This message shows that your installation appears to be working correctly.
 [...]
 ```
 
-Efter den schemalagda tiden kör du kommandot [AZ ACR Task List-runs (kör][az-acr-task-list-runs] kommando) för att kontrol lera att timern utlöste uppgiften som förväntat:
+Efter den schemalagda tiden kör du [kommandot az acr task list-runs][az-acr-task-list-runs] för att kontrollera att timern utlöste uppgiften som förväntat:
 
 ```azurecli
 az acr task list-runs --name timertask --registry $ACR_NAME --output table
@@ -113,13 +113,13 @@ ca15      timertask  linux       Succeeded  Timer      2020-11-20T21:00:23Z  00:
 ca14      timertask  linux       Succeeded  Manual     2020-11-20T20:53:35Z  00:00:06
 ```
 
-## <a name="manage-timer-triggers"></a>Hantera timer-utlösare
+## <a name="manage-timer-triggers"></a>Hantera timerutlösare
 
-Använd kommandona [AZ ACR Task timer][az-acr-task-timer] för att hantera timer-utlösare för en ACR-aktivitet.
+Använd kommandona [az acr task timer][az-acr-task-timer] för att hantera timerutlösare för en ACR-uppgift.
 
-### <a name="add-or-update-a-timer-trigger"></a>Lägga till eller uppdatera en timer-utlösare
+### <a name="add-or-update-a-timer-trigger"></a>Lägga till eller uppdatera en timerutlösare
 
-När en uppgift har skapats kan du lägga till en timer-utlösare med hjälp av kommandot [AZ ACR Task timer Add][az-acr-task-timer-add] . I följande exempel läggs ett timer- *timer2* till *timertask* som skapats tidigare. Den här timern utlöser uppgiften varje dag vid 10:30 UTC.
+När en uppgift har skapats kan du lägga till en timerutlösare med hjälp av [kommandot az acr task timer add.][az-acr-task-timer-add] I följande exempel läggs ett timerutlösarnamn *timer2 till* *timertask som* skapades tidigare. Den här timern utlöser uppgiften varje dag kl. 10:30 UTC.
 
 ```azurecli
 az acr task timer add \
@@ -129,7 +129,7 @@ az acr task timer add \
   --schedule "30 10 * * *"
 ```
 
-Uppdatera schemat för en befintlig utlösare eller ändra dess status genom att använda kommandot [AZ ACR Task timer Update][az-acr-task-timer-update] . Uppdatera till exempel utlösaren med namnet *timer2* för att utlösa uppgiften vid 11:30 UTC:
+Uppdatera schemat för en befintlig utlösare eller ändra dess status med hjälp av [kommandot az acr task timer update.][az-acr-task-timer-update] Uppdatera till exempel utlösaren med namnet *timer2* för att utlösa uppgiften kl. 11:30 UTC:
 
 ```azurecli
 az acr task timer update \
@@ -139,9 +139,9 @@ az acr task timer update \
   --schedule "30 11 * * *"
 ```
 
-### <a name="list-timer-triggers"></a>Lista över timer-utlösare
+### <a name="list-timer-triggers"></a>Lista timerutlösare
 
-Kommandot [AZ ACR Task timer List][az-acr-task-timer-list] visar de timer-utlösare som kon figurer ATS för en uppgift:
+Kommandot [az acr task timer list][az-acr-task-timer-list] visar de timerutlösare som har ställts in för en aktivitet:
 
 ```azurecli
 az acr task timer list --name timertask --registry $ACR_NAME
@@ -164,9 +164,9 @@ Exempel på utdata:
 ]
 ```
 
-### <a name="remove-a-timer-trigger"></a>Ta bort en timer-utlösare
+### <a name="remove-a-timer-trigger"></a>Ta bort en timerutlösare
 
-Använd kommandot [AZ ACR Task timer Remove][az-acr-task-timer-remove] för att ta bort en timer-utlösare från en aktivitet. I följande exempel tar bort utlösaren *timer2* från *timertask*:
+Använd kommandot [az acr task timer remove för][az-acr-task-timer-remove] att ta bort en timerutlösare från en uppgift. I följande exempel tas *timer2-utlösaren* bort *från timertask*:
 
 ```azurecli
 az acr task timer remove \
@@ -177,42 +177,42 @@ az acr task timer remove \
 
 ## <a name="cron-expressions"></a>Cron-uttryck
 
-ACR-aktiviteter använder [NCronTab](https://github.com/atifaziz/NCrontab) -biblioteket för att tolka cron-uttryck. Uttryck som stöds i ACR-aktiviteter har fem obligatoriska fält avgränsade med blank steg:
+ACR-uppgifter använder [NCronTab-biblioteket för](https://github.com/atifaziz/NCrontab) att tolka Cron-uttryck. Uttryck som stöds ACR-uppgifter fem obligatoriska fält avgränsade med blanksteg:
 
 `{minute} {hour} {day} {month} {day-of-week}`
 
-Tids zonen som används med cron-uttrycken är Coordinated Universal Time (UTC). Timmar är i 24-timmarsformat.
+Tidszonen som används med Cron-uttrycken är Coordinated Universal Time (UTC). Timmarna är i 24-timmarsformat.
 
 > [!NOTE]
-> ACR-aktiviteter har inte stöd `{second}` för `{year}` fältet eller i cron-uttryck. Om du kopierar ett cron-uttryck som används i ett annat system måste du ta bort dessa fält om de används.
+> ACR-uppgifter stöder inte fältet `{second}` eller `{year}` i Cron-uttryck. Om du kopierar ett Cron-uttryck som används i ett annat system måste du ta bort fälten om de används.
 
-Varje fält kan ha en av följande typer av värden:
+Varje fält kan ha någon av följande typer av värden:
 
-|Typ  |Exempel  |Utlöses av  |
+|Typ  |Exempel  |När den utlöses  |
 |---------|---------|---------|
-|Ett speciellt värde |<nobr>`"5 * * * *"`</nobr>|varje timme efter 5 minuter efter timmen|
-|Alla värden ( `*` )|<nobr>`"* 5 * * *"`</nobr>|varje minut i timmen som börjar 5:00 UTC (60 gånger per dag)|
-|Ett intervall ( `-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 gånger per dag, med 1:00, 2:00 och 3:00 UTC|
-|En uppsättning värden ( `,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 gånger per timme, vid 20 minuter, 30 minuter och 40 minuter efter timmen|
-|Ett intervall värde ( `/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 gånger per timme, vid 10 minuter, 20 minuter och så vidare, efter timmen
+|Ett specifikt värde |<nobr>`"5 * * * *"`</nobr>|varje timme vid 5 minuter efter timmen|
+|Alla värden ( `*` )|<nobr>`"* 5 * * *"`</nobr>|varje minut i timmen med början 5:00 UTC (60 gånger per dag)|
+|Ett intervall ( `-` operator)|<nobr>`"0 1-3 * * *"`</nobr>|3 gånger per dag, 1:00, 2:00 och 3:00 UTC|
+|En uppsättning värden ( `,` operator)|<nobr>`"20,30,40 * * * *"`</nobr>|3 gånger per timme, 20 minuter, 30 minuter och 40 minuter över timmen|
+|Ett intervallvärde ( `/` operator)|<nobr>`"*/10 * * * *"`</nobr>|6 gånger per timme, 10 minuter, 20 minuter och så vidare, senaste timmen
 
 [!INCLUDE [functions-cron-expressions-months-days](../../includes/functions-cron-expressions-months-days.md)]
 
 ### <a name="cron-examples"></a>Cron-exempel
 
-|Exempel|Utlöses av  |
+|Exempel|När den utlöses  |
 |---------|---------|
 |`"*/5 * * * *"`|var femte minut|
 |`"0 * * * *"`|en gång överst i varje timme|
-|`"0 */2 * * *"`|var två: e timme|
+|`"0 */2 * * *"`|en gång varannan timme|
 |`"0 9-17 * * *"`|en gång i timmen från 9:00 till 17:00 UTC|
-|`"30 9 * * *"`|vid 9:30 UTC varje dag|
-|`"30 9 * * 1-5"`|vid 9:30 UTC varje vardag|
-|`"30 9 * Jan Mon"`|vid 9:30 UTC varje måndag i januari|
+|`"30 9 * * *"`|kl. 9:30 UTC varje dag|
+|`"30 9 * * 1-5"`|kl. 9:30 UTC varje veckodag|
+|`"30 9 * Jan Mon"`|kl. 9:30 UTC varje måndag i januari|
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-För att ta bort alla resurser som du har skapat i den här själv studie serien, inklusive behållar registret eller register, behållar instansen, nyckel valvet och tjänstens huvud namn, utfärdar du följande kommandon:
+Om du vill ta bort alla resurser som du har skapat i den här självstudieserien, inklusive containerregistret eller registren, containerinstansen, nyckelvalvet och tjänstens huvudnamn, utfärdar du följande kommandon:
 
 ```azurecli
 az group delete --resource-group $RES_GROUP
@@ -221,11 +221,11 @@ az ad sp delete --id http://$ACR_NAME-pull
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig hur du skapar Azure Container Registry uppgifter som automatiskt utlöses av en timer. 
+I den här självstudien har du lärt dig hur Azure Container Registry skapa aktiviteter som utlöses automatiskt av en timer. 
 
-Ett exempel på hur du använder en schemalagd aktivitet för att rensa databaser i ett register finns i [Rensa avbildningar automatiskt från ett Azure Container Registry](container-registry-auto-purge.md).
+Ett exempel på hur du använder en schemalagd aktivitet för att rensa lagringsplatsen i ett register finns i Rensa avbildningar [automatiskt från ett Azure-containerregister.](container-registry-auto-purge.md)
 
-Exempel på uppgifter som utlöses av käll kods skrivningar eller bas avbildnings uppdateringar finns i andra artiklar i [själv studie serien för ACR uppgifter](container-registry-tutorial-quick-task.md).
+Exempel på uppgifter som utlöses av källkods- eller basavbildningsuppdateringar finns i andra artiklar i [ACR-uppgifter självstudieserien](container-registry-tutorial-quick-task.md).
 
 
 
@@ -234,14 +234,14 @@ Exempel på uppgifter som utlöses av käll kods skrivningar eller bas avbildnin
 
 
 <!-- LINKS - Internal -->
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
 [az-acr-task-timer]: /cli/azure/acr/task/timer
-[az-acr-task-timer-add]: /cli/azure/acr/task/timer#az-acr-task-timer-add
-[az-acr-task-timer-remove]: /cli/azure/acr/task/timer#az-acr-task-timer-remove
-[az-acr-task-timer-list]: /cli/azure/acr/task/timer#az-acr-task-timer-list
-[az-acr-task-timer-update]: /cli/azure/acr/task/timer#az-acr-task-timer-update
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-acr-task-timer-add]: /cli/azure/acr/task/timer#az_acr_task_timer_add
+[az-acr-task-timer-remove]: /cli/azure/acr/task/timer#az_acr_task_timer_remove
+[az-acr-task-timer-list]: /cli/azure/acr/task/timer#az_acr_task_timer_list
+[az-acr-task-timer-update]: /cli/azure/acr/task/timer#az_acr_task_timer_update
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [az-acr-task]: /cli/azure/acr/task
 [azure-cli-install]: /cli/azure/install-azure-cli

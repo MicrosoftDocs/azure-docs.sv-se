@@ -1,25 +1,25 @@
 ---
-title: 'CLI: Ladda upp och bind TLS/SSL-certifikat till en app'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service-app. Det här exemplet visar hur du binder ett anpassat TLS/SSL-certifikat till en app.
+title: 'CLI: Ladda upp och binda TLS/SSL-certifikat till en app'
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av App Service app. Det här exemplet visar hur du binder ett anpassat TLS/SSL-certifikat till en app.
 tags: azure-service-management
 ms.assetid: eb95d350-81ea-4145-a1e2-6eea3b7469b2
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 12/11/2017
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 1d03018cca9757c8a6ddddbff96738a407bba7d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 50f5c0f00daf025791eb0982ea4c5f626ded02ad
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97006403"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782503"
 ---
 # <a name="bind-a-custom-tlsssl-certificate-to-an-app-service-app-using-cli"></a>Binda ett anpassat TLS/SSL-certifikat till en App Service-app med CLI
 
-Det här exempel skriptet skapar en app i App Service med dess relaterade resurser och binder sedan TLS/SSL-certifikatet för ett anpassat domän namn till det. För det här exemplet behöver du följande:
+Det här exempelskriptet skapar en app i App Service med dess relaterade resurser och binder sedan TLS/SSL-certifikatet för ett anpassat domännamn till den. För det här exemplet behöver du följande:
 
 * Få åtkomst till din domänregistrators DNS-konfigurationssida.
-* En giltig. PFX-fil och lösen ord för det TLS/SSL-certifikat som du vill ladda upp och binda.
+* En giltig . PFX-filen och dess lösenord för det TLS/SSL-certifikat som du vill ladda upp och binda.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,12 +39,12 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
-| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az-webapp-config-hostname-add) | Mappar en anpassad domän till en App Service-app. |
-| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl#az-webapp-config-ssl-upload) | Överför ett TLS/SSL-certifikat till en App Service-app. |
-| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl#az-webapp-config-ssl-bind) | Binder ett uppladdat TLS/SSL-certifikat till en App Service-app. |
+| [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Skapar en App Service-app. |
+| [`az webapp config hostname add`](/cli/azure/webapp/config/hostname#az_webapp_config_hostname_add) | Mappar en anpassad domän till en App Service-app. |
+| [`az webapp config ssl upload`](/cli/azure/webapp/config/ssl#az_webapp_config_ssl_upload) | Överför ett TLS/SSL-certifikat till en App Service app. |
+| [`az webapp config ssl bind`](/cli/azure/webapp/config/ssl#az_webapp_config_ssl_bind) | Binder ett överfört TLS/SSL-certifikat till en App Service app. |
 
 ## <a name="next-steps"></a>Nästa steg
 

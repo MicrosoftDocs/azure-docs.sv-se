@@ -1,7 +1,7 @@
 ---
-title: Skapa, ändra eller ta bort en Azure-nätverks säkerhets grupp
+title: Skapa, ändra eller ta bort en Azure-nätverkssäkerhetsgrupp
 titlesuffix: Azure Virtual Network
-description: Lär dig var du hittar information om säkerhets regler och hur du skapar, ändrar eller tar bort en nätverks säkerhets grupp.
+description: Lär dig var du hittar information om säkerhetsregler och hur du skapar, ändrar eller tar bort en nätverkssäkerhetsgrupp.
 services: virtual-network
 documentationcenter: na
 author: KumudD
@@ -11,87 +11,87 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 5de909d0d57ae212fa562eb31551e2271d307d47
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 82f23c1fea29e2a88dd2a67ec9c89c7bf05bfff7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101694265"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783511"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Skapa, ändra eller ta bort en nätverkssäkerhetsgrupp
 
-Säkerhets regler i nätverks säkerhets grupper gör att du kan filtrera den typ av nätverks trafik som kan flöda in i och ut ur virtuella nätverks under nät och nätverks gränssnitt. Mer information om nätverks säkerhets grupper finns i [Översikt över nätverks säkerhets](./network-security-groups-overview.md)grupper. Nu ska du gå igenom självstudien [filtrera nätverks trafik](tutorial-filter-network-traffic.md) för att få lite erfarenhet av nätverks säkerhets grupper.
+Med säkerhetsregler i nätverkssäkerhetsgrupper kan du filtrera den typ av nätverkstrafik som kan flöda in och ut från virtuella nätverksundernät och nätverksgränssnitt. Mer information om nätverkssäkerhetsgrupper finns i [Översikt över nätverkssäkerhetsgrupper.](./network-security-groups-overview.md) Slutför sedan [självstudien Filtrera nätverkstrafik](tutorial-filter-network-traffic.md) för att få lite erfarenhet av nätverkssäkerhetsgrupper.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Om du inte har något konfigurerar du ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio). Slutför någon av dessa uppgifter innan du påbörjar resten av den här artikeln:
+Om du inte har ett konto kan du konfigurera ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) Utför någon av dessa uppgifter innan du påbörjar resten av den här artikeln:
 
-- **Portal användare**: Logga in på [Azure Portal](https://portal.azure.com) med ditt Azure-konto.
+- **Portalanvändare:** Logga in på [Azure Portal](https://portal.azure.com) ditt Azure-konto.
 
-- **PowerShell-användare**: kör antingen kommandona i [Azure Cloud Shell](https://shell.azure.com/powershell)eller kör PowerShell från datorn. Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. På fliken Azure Cloud Shell webbläsare letar du upp List rutan **Välj miljö** och väljer sedan **PowerShell** om den inte redan är markerad.
+- **PowerShell-användare:** Kör antingen [kommandona i Azure Cloud Shell](https://shell.azure.com/powershell)eller kör PowerShell från datorn. Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. På Azure Cloud Shell webbläsarflik hittar du  listrutan Välj miljö och väljer **sedan PowerShell** om det inte redan är markerat.
 
-    Om du kör PowerShell lokalt använder du Azure PowerShell-modul version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az.Network` för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Kör `Connect-AzAccount` för att skapa en anslutning med Azure.
+    Om du kör PowerShell lokalt använder du Azure PowerShell version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az.Network` för att hitta den installerade versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Kör `Connect-AzAccount` för att skapa en anslutning med Azure.
 
-- **Kommando rads gränssnitt för Azure (CLI)**: kör antingen kommandona i [Azure Cloud Shell](https://shell.azure.com/bash)eller kör CLI från datorn. Använd Azure CLI version 2.0.28 eller senare om du kör Azure CLI lokalt. Kör `az --version` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli). Kör `az login` för att skapa en anslutning med Azure.
+- **Azure CLI-användare (Command-Line Interface):** Kör antingen kommandona [i Azure Cloud Shell](https://shell.azure.com/bash)eller kör CLI från datorn. Använd Azure CLI version 2.0.28 eller senare om du kör Azure CLI lokalt. Kör `az --version` för att hitta den installerade versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli). Kör `az login` för att skapa en anslutning med Azure.
 
-Det konto som du loggar in på eller ansluta till Azure med måste tilldelas [rollen nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller en [anpassad roll](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som har tilldelats lämpliga åtgärder som anges i [behörigheter](#permissions).
+Det konto som du loggar in på eller [](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) ansluter till Azure [](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) med måste tilldelas rollen Nätverksdeltagare eller till en anpassad roll som har tilldelats lämpliga åtgärder som anges i [Behörigheter](#permissions).
 
 ## <a name="work-with-network-security-groups"></a>Arbeta med nätverkssäkerhetsgrupper
 
-Du kan skapa, [Visa alla](#view-all-network-security-groups), [Visa information om](#view-details-of-a-network-security-group), [ändra](#change-a-network-security-group)och [ta bort](#delete-a-network-security-group) en nätverks säkerhets grupp. Du kan också [Koppla eller koppla bort](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface) en nätverks säkerhets grupp från ett nätverks gränssnitt eller ett undernät.
+Du kan skapa, [visa alla](#view-all-network-security-groups), visa [information om](#view-details-of-a-network-security-group), [ändra](#change-a-network-security-group)och ta [bort](#delete-a-network-security-group) en nätverkssäkerhetsgrupp. Du kan också [associera eller koppla bort en nätverkssäkerhetsgrupp](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface) från ett nätverksgränssnitt eller undernät.
 
 ### <a name="create-a-network-security-group"></a>Skapa en nätverkssäkerhetsgrupp
 
-Det finns en gräns för hur många nätverks säkerhets grupper du kan skapa för varje Azure-plats och prenumeration. Läs mer i Azure- [prenumeration och tjänst begränsningar, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Det finns en gräns för hur många nätverkssäkerhetsgrupper du kan skapa för varje Azure-plats och -prenumeration. Mer information finns i [Azure-prenumeration och tjänstbegränsningar, kvoter och begränsningar.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)
 
 1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
 
-2. Välj **nätverk** och välj sedan **nätverks säkerhets grupp**.
+2. Välj **Nätverk** och sedan **Nätverkssäkerhetsgrupp.**
 
-3. På sidan **skapa nätverks säkerhets grupp** går du till fliken **grundläggande** och anger värden för följande inställningar:
+3. På sidan **Skapa nätverkssäkerhetsgrupp** går du **till fliken Grundläggande** inställningar och anger värden för följande inställningar:
 
     | Inställning | Action |
     | --- | --- |
     | **Prenumeration** | Välj din prenumeration. |
-    | **Resursgrupp** | Välj en befintlig resurs grupp eller skapa en ny resurs grupp genom att välja **Skapa ny** . |
-    | **Namn** | Ange en unik text sträng inom en resurs grupp. |
+    | **Resursgrupp** | Välj en befintlig resursgrupp eller välj Skapa **ny för** att skapa en ny resursgrupp. |
+    | **Namn** | Ange en unik textsträng i en resursgrupp. |
     | **Region** | Välj den plats som du vill använda. |
 
 4. Välj **Granska + skapa**.
 
-5. När du ser meddelandet **valideringen har skickats** väljer du **skapa**.
+5. När du ser meddelandet **Valideringen har** godkänts väljer du **Skapa**.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az-network-nsg-create) |
+| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
 
-### <a name="view-all-network-security-groups"></a>Visa alla nätverks säkerhets grupper
+### <a name="view-all-network-security-groups"></a>Visa alla nätverkssäkerhetsgrupper
 
-Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks säkerhets grupper. Sök efter och välj **nätverks säkerhets grupper**. Listan över nätverks säkerhets grupper visas för din prenumeration.
+Gå till Azure Portal [för](https://portal.azure.com) att visa dina nätverkssäkerhetsgrupper. Sök efter och välj **Nätverkssäkerhetsgrupper.** Listan över nätverkssäkerhetsgrupper visas för din prenumeration.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG List](/cli/azure/network/nsg#az-network-nsg-list) |
+| Azure CLI | [az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
-### <a name="view-details-of-a-network-security-group"></a>Visa information om en nätverks säkerhets grupp
+### <a name="view-details-of-a-network-security-group"></a>Visa information om en nätverkssäkerhetsgrupp
 
-1. Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks säkerhets grupper. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa dina nätverkssäkerhetsgrupper. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på din nätverks säkerhets grupp.
+2. Välj namnet på nätverkssäkerhetsgruppen.
 
-I meny fältet i nätverks säkerhets gruppen, under **Inställningar**, kan du Visa de **inkommande säkerhets reglerna**, **utgående säkerhets regler**, **nätverks gränssnitt** och **undernät** som nätverks säkerhets gruppen är kopplad till.
+På menyraden i nätverkssäkerhetsgruppen, under Inställningar, kan du visa inkommande säkerhetsregler,  **utgående säkerhetsregler,** nätverksgränssnitt och undernät som **nätverkssäkerhetsgruppen** är associerad med.
 
-Under **övervakning** kan du aktivera eller inaktivera **diagnostikinställningar**. Under **support + fel sökning** kan du Visa **effektiva säkerhets regler**. Läs mer i [diagnostisk loggning för en nätverks säkerhets grupp](virtual-network-nsg-manage-log.md) och [diagnostisera ett problem med trafik filter för virtuella datorer](diagnose-network-traffic-filter-problem.md).
+Under **Övervakning** kan du aktivera eller inaktivera **diagnostikinställningar.** Under **Support + felsökning** kan du visa Gällande **säkerhetsregler.** Mer information finns i [Diagnostisk loggning för en nätverkssäkerhetsgrupp och](virtual-network-nsg-manage-log.md) Diagnostisera problem med [filtreringen av VM-nätverkstrafik.](diagnose-network-traffic-filter-problem.md)
 
-Mer information om de vanliga Azure-inställningarna i listan finns i följande artiklar:
+Mer information om vanliga Azure-inställningar finns i följande artiklar:
 
 - [Aktivitetslogg](../azure-monitor/essentials/platform-logs-overview.md)
 - [Åtkomstkontroll (IAM)](../role-based-access-control/overview.md)
@@ -103,289 +103,289 @@ Mer information om de vanliga Azure-inställningarna i listan finns i följande 
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG show](/cli/azure/network/nsg#az-network-nsg-show) |
+| Azure CLI | [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
-### <a name="change-a-network-security-group"></a>Ändra en nätverks säkerhets grupp
+### <a name="change-a-network-security-group"></a>Ändra en nätverkssäkerhetsgrupp
 
-1. Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks säkerhets grupper. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa dina nätverkssäkerhetsgrupper. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på den nätverks säkerhets grupp som du vill ändra.
+2. Välj namnet på den nätverkssäkerhetsgrupp som du vill ändra.
 
-De vanligaste ändringarna är att [lägga till en säkerhets regel](#create-a-security-rule), [ta bort en regel](#delete-a-security-rule)och [Koppla eller koppla bort en nätverks säkerhets grupp till eller från ett undernät eller nätverks gränssnitt](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
+De vanligaste ändringarna är att lägga [](#delete-a-security-rule)till en säkerhetsregel, [](#create-a-security-rule)ta bort en regel och associera eller koppla bort en nätverkssäkerhetsgrupp till eller från ett undernät eller [nätverksgränssnitt](#associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface).
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Update](/cli/azure/network/nsg#az-network-nsg-update) |
+| Azure CLI | [az network nsg update](/cli/azure/network/nsg#az_network_nsg_update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
 
-### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Koppla eller koppla bort en nätverks säkerhets grupp till eller från ett undernät eller nätverks gränssnitt
+### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Associera eller koppla bort en nätverkssäkerhetsgrupp till eller från ett undernät eller nätverksgränssnitt
 
-Om du vill koppla en nätverks säkerhets grupp till eller koppla bort en nätverks säkerhets grupp från ett nätverks gränssnitt, se [associera en nätverks säkerhets grupp till eller koppla bort en nätverks säkerhets grupp från ett nätverks gränssnitt](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group). Om du vill koppla en nätverks säkerhets grupp till eller koppla bort en nätverks säkerhets grupp från ett undernät, se [ändra under näts inställningar](virtual-network-manage-subnet.md#change-subnet-settings).
+Information om hur du associerar en nätverkssäkerhetsgrupp med eller kopplar bort en nätverkssäkerhetsgrupp från ett nätverksgränssnitt finns i Associera en nätverkssäkerhetsgrupp till eller koppla bort en nätverkssäkerhetsgrupp från ett [nätverksgränssnitt.](virtual-network-network-interface.md#associate-or-dissociate-a-network-security-group) Information om hur du associerar en nätverkssäkerhetsgrupp med eller kopplar bort en nätverkssäkerhetsgrupp från ett undernät finns i [Ändra undernätsinställningar.](virtual-network-manage-subnet.md#change-subnet-settings)
 
-### <a name="delete-a-network-security-group"></a>Ta bort en nätverks säkerhets grupp
+### <a name="delete-a-network-security-group"></a>Ta bort en nätverkssäkerhetsgrupp
 
-Om en nätverks säkerhets grupp är kopplad till undernät eller nätverks gränssnitt kan du inte ta bort den. Koppla bort en nätverks säkerhets grupp från alla undernät och nätverks gränssnitt innan du försöker ta bort den.
+Om en nätverkssäkerhetsgrupp är associerad med undernät eller nätverksgränssnitt kan den inte tas bort. Ta bort en nätverkssäkerhetsgrupp från alla undernät och nätverksgränssnitt innan du försöker ta bort den.
 
-1. Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks säkerhets grupper. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa dina nätverkssäkerhetsgrupper. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på den nätverks säkerhets grupp som du vill ta bort.
+2. Välj namnet på den nätverkssäkerhetsgrupp som du vill ta bort.
 
-3. I verktygsfältet nätverks säkerhets gruppens verktygsfält väljer du **ta bort**. Välj **Ja** i bekräftelse dialog rutan.
+3. I verktygsfältet för nätverkssäkerhetsgruppen väljer du Ta **bort**. Välj sedan **Ja** i bekräftelsedialogrutan.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Delete](/cli/azure/network/nsg#az-network-nsg-delete) |
+| Azure CLI | [az network nsg delete](/cli/azure/network/nsg#az_network_nsg_delete) |
 | PowerShell | [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
 
-## <a name="work-with-security-rules"></a>Arbeta med säkerhets regler
+## <a name="work-with-security-rules"></a>Arbeta med säkerhetsregler
 
-En nätverks säkerhets grupp innehåller noll eller flera säkerhets regler. Du kan skapa, [Visa alla](#view-all-security-rules), [Visa information om](#view-details-of-a-security-rule), [ändra](#change-a-security-rule)och [ta bort](#delete-a-security-rule) en säkerhets regel.
+En nätverkssäkerhetsgrupp innehåller noll eller flera säkerhetsregler. Du kan skapa, [visa alla](#view-all-security-rules), visa [information om](#view-details-of-a-security-rule), [ändra](#change-a-security-rule)och ta [bort](#delete-a-security-rule) en säkerhetsregel.
 
-### <a name="create-a-security-rule"></a>Skapa en säkerhets regel
+### <a name="create-a-security-rule"></a>Skapa en säkerhetsregel
 
-Det finns en gräns för hur många regler per nätverks säkerhets grupp som du kan skapa för varje Azure-plats och prenumeration. Läs mer i Azure- [prenumeration och tjänst begränsningar, kvoter och begränsningar](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).
+Det finns en gräns för hur många regler per nätverkssäkerhetsgrupp du kan skapa för varje Azure-plats och -prenumeration. Mer information finns i [Azure-prenumeration och tjänstbegränsningar, kvoter och begränsningar.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)
 
-1. Gå till [Azure Portal](https://portal.azure.com) för att se dina nätverks säkerhets grupper. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa dina nätverkssäkerhetsgrupper. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på den nätverks säkerhets grupp som du vill lägga till en säkerhets regel i.
+2. Välj namnet på den nätverkssäkerhetsgrupp som du vill lägga till en säkerhetsregel i.
 
-3. I meny raden för nätverks säkerhets gruppen väljer du **inkommande säkerhets regler** eller **utgående säkerhets regler**.
+3. På menyraden för nätverkssäkerhetsgruppen väljer du **Inkommande säkerhetsregler** eller **Utgående säkerhetsregler.**
 
-    Flera befintliga regler visas, inklusive några som du kanske inte har lagt till. När du skapar en nätverks säkerhets grupp skapas flera standard säkerhets regler i den. Mer information finns i [Standard säkerhets regler](./network-security-groups-overview.md#default-security-rules).  Du kan inte ta bort standard säkerhets regler, men du kan åsidosätta dem med regler som har högre prioritet.
+    Flera befintliga regler visas, inklusive vissa som du kanske inte har lagt till. När du skapar en nätverkssäkerhetsgrupp skapas flera standardsäkerhetsregler i den. Mer information finns i [standardsäkerhetsreglerna.](./network-security-groups-overview.md#default-security-rules)  Du kan inte ta bort standardsäkerhetsregler, men du kan åsidosätta dem med regler som har högre prioritet.
 
-4. <a name="security-rule-settings"></a>Välj **Lägg till**. Välj eller Lägg till värden för följande inställningar och välj sedan **OK**:
+4. <a name="security-rule-settings"></a>Välj **Lägg till**. Välj eller lägg till värden för följande inställningar och välj sedan **OK:**
 
     | Inställning | Värde | Information |
     | ------- | ----- | ------- |
-    | **Källa** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (inkommande säkerhets regel) eller **VirtualNetwork** (utgående säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser** måste du även ange **Källans IP-adresser/CIDR-intervall**.</p><p>Om du väljer **service tag** kan du också välja en **source service-tagg**.</p><p>Om du väljer **program säkerhets grupp** måste du också välja en befintlig program säkerhets grupp. Om du väljer **program säkerhets grupp** för både **källa** och **mål** måste nätverks gränssnitten i båda program säkerhets grupperna finnas i samma virtuella nätverk.</p> |
-    | **Käll-IP-adresser/CIDR-intervall** | En kommaavgränsad lista över IP-adresser och CIDR-intervall (Classless Interdomain Routing) | <p>Den här inställningen visas om du ändrar **källa** till **IP-adresser**. Du måste ange ett enskilt värde eller en kommaavgränsad lista med flera värden. Ett exempel på flera värden är `10.0.0.0/16, 192.188.1.1` . Det finns gränser för antalet värden som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator anger du dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan den översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](./public-ip-addresses.md).</p> |
-    | **Käll tjänst tag gen** | En service tag från List rutan | Den här valfria inställningen visas om du anger taggen **Source** to **service** för en inkommande säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](./network-security-groups-overview.md#service-tags). |
-    | **Säkerhets grupp för käll program** | En befintlig program säkerhets grupp | Den här inställningen visas om du anger **källa** till **program säkerhets grupp**. Välj en program säkerhets grupp som finns i samma region som nätverks gränssnittet. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group). |
-    | **Källportintervall** | En av:<ul><li>En enda port, till exempel `80`</li><li>Ett port intervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller port intervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på vilken port som helst</li></ul> | Den här inställningen anger vilka portar som regeln tillåter eller nekar trafik. Det finns gränser för antalet portar som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
-    | **Mål** | En av:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Service tag** (utgående säkerhets regel) eller **VirtualNetwork** (inkommande säkerhets regel)</li><li>**Program &nbsp; säkerhets &nbsp; grupp**</li></ul> | <p>Om du väljer **IP-adresser** anger du även **mål-IP-adresser/CIDR-intervall**.</p><p>Om du väljer **VirtualNetwork** tillåts trafik till alla IP-adresser i det virtuella nätverkets adress utrymme. **VirtualNetwork** är en service tag.</p><p>Om du väljer **program säkerhets grupp** måste du sedan välja en befintlig program säkerhets grupp. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group).</p> |
-    | **Mål-IP-adresser/CIDR-intervall** | En kommaavgränsad lista med IP-adresser och CIDR-intervall | <p>Den här inställningen visas om du ändrar **målet** till **IP-adresser**. Precis som **käll** **-och käll-IP-adresser/CIDR-intervall** kan du ange en eller flera adresser eller intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Om den IP-adress du anger är tilldelad till en virtuell Azure-dator måste du ange dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhets regler efter att den översätter den offentliga IP-adressen till en privat IP-adress för inkommande säkerhets regler, men innan Azure översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-diagramtyper](./public-ip-addresses.md).</p> |
-    | **Måltjänsttagg** | En service tag från List rutan | Den här valfria inställningen visas om du ändrar **målet** till **service tag** för en utgående säkerhets regel. En service tag är en fördefinierad identifierare för en kategori med IP-adresser. Om du vill veta mer om tillgängliga Service märken och hur varje tagg representerar, se [service Taggar](./network-security-groups-overview.md#service-tags). |
-    | **Säkerhets grupp för mål program** | En befintlig program säkerhets grupp | Den här inställningen visas om du anger **mål** för **program säkerhets gruppen**. Välj en program säkerhets grupp som finns i samma region som nätverks gränssnittet. Lär dig hur du [skapar en program säkerhets grupp](#create-an-application-security-group). |
-    | **Målportintervall** | En av:<ul><li>En enda port, till exempel `80`</li><li>Ett port intervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller port intervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på vilken port som helst</li></ul> | Precis som med **käll ports intervall** kan du ange en eller flera portar och intervall. Det finns gränser för antalet som du kan ange. Mer information finns i [Azure-gränser](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
-    | **Protokoll** | **Valfri**, **TCP**, **UDP** eller **ICMP** | Du kan begränsa regeln till Transmission Control Protocol (TCP), User Datagram Protocol (UDP) eller Internet Control Message Protocol (ICMP). Standard regeln gäller för alla protokoll. |
-    | **Åtgärd** | **Tillåt** eller **neka** | Den här inställningen anger om den här regeln tillåter eller nekar åtkomst för den angivna käll-och mål konfigurationen. |
-    | **Priority** | Ett värde mellan 100 och 4096 som är unikt för alla säkerhets regler i nätverks säkerhets gruppen | Azure bearbetar säkerhets regler i prioritetsordning. Ju lägre siffra, desto högre prioritet. Vi rekommenderar att du lämnar ett mellanrum mellan prioritets nummer när du skapar regler, till exempel 100, 200 och 300. Om du lämnar luckor blir det enklare att lägga till regler i framtiden, så att du kan ge dem högre eller lägre prioritet än befintliga regler. |
-    | **Namn** | Ett unikt namn för regeln inom nätverks säkerhets gruppen | Namnet kan bestå av upp till 80 tecken. Det måste börja med en bokstav eller en siffra och måste sluta med en bokstav, en siffra eller ett under streck. Namnet får bara innehålla bokstäver, siffror, under streck, punkter eller bindestreck. |
-    | **Beskrivning** | En text Beskrivning | Du kan också ange en text Beskrivning av säkerhets regeln. Beskrivningen får inte vara längre än 140 tecken. |
+    | **Källa** | Något av följande:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Tjänsttagg** (inkommande säkerhetsregel) eller **VirtualNetwork** (utgående säkerhetsregel)</li><li>**&nbsp; &nbsp; Programsäkerhetsgrupp**</li></ul> | <p>Om du väljer **IP-adresser** måste du också ange Käll-IP-adresser/CIDR-intervall. </p><p>Om du väljer **Tjänsttagg** kan du även välja **källtjänsttaggen**.</p><p>Om du väljer **Programsäkerhetsgrupp** måste du också välja en befintlig programsäkerhetsgrupp. Om du väljer **Programsäkerhetsgrupp** för både **Källa** och Mål **måste** nätverksgränssnitten i båda programsäkerhetsgrupperna finnas i samma virtuella nätverk.</p> |
+    | **Käll-IP-adresser/CIDR-intervall** | En kommaavgränsad lista över IP-adresser och CIDR-intervall (Classless Interdomain Routing) | <p>Den här inställningen visas om du ändrar **Källa till** **IP-adresser**. Du måste ange ett enskilt värde eller en kommaavgränsad lista med flera värden. Ett exempel på flera värden är `10.0.0.0/16, 192.188.1.1` . Det finns gränser för antalet värden som du kan ange. Mer information finns i [Azure-gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)</p><p>Om den IP-adress som du anger är tilldelad till en virtuell Azure-dator anger du dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhetsregler när den offentliga IP-adressen översätts till en privat IP-adress för inkommande säkerhetsregler, men innan den översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-adresstyper.](./public-ip-addresses.md)</p> |
+    | **Källtjänsttagg** | En tjänsttagg från listrutan | Den här valfria inställningen visas om du **ställer in Källa** på **Tjänsttagg** för en inkommande säkerhetsregel. En tjänsttagg är en fördefinierad identifierare för en kategori med IP-adresser. Mer information om tillgängliga tjänsttaggar och vad varje tagg representerar finns i [Tjänsttaggar.](./network-security-groups-overview.md#service-tags) |
+    | **Källprogramsäkerhetsgrupp** | En befintlig programsäkerhetsgrupp | Den här inställningen visas om du ställer **in Källa** **på Programsäkerhetsgrupp**. Välj en programsäkerhetsgrupp som finns i samma region som nätverksgränssnittet. Lär dig hur [du skapar en programsäkerhetsgrupp.](#create-an-application-security-group) |
+    | **Källportintervall** | Något av följande:<ul><li>En enda port, till exempel `80`</li><li>Ett portintervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller portintervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på valfri port</li></ul> | Den här inställningen anger vilka portar som regeln tillåter eller nekar trafik på. Det finns gränser för antalet portar som du kan ange. Mer information finns i [Azure-gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) |
+    | **Mål** | Något av följande:<ul><li>**Alla**</li><li>**IP-adresser**</li><li>**Tjänsttagg** (utgående säkerhetsregel) eller **VirtualNetwork** (inkommande säkerhetsregel)</li><li>**&nbsp; &nbsp; Programsäkerhetsgrupp**</li></ul> | <p>Om du väljer **IP-adresser** anger du även **Mål-IP-adresser/CIDR-intervall.**</p><p>Om du väljer **VirtualNetwork** tillåts trafik till alla IP-adresser inom det virtuella nätverkets adressutrymme. **VirtualNetwork** är en tjänsttagg.</p><p>Om du väljer **Programsäkerhetsgrupp** måste du sedan välja en befintlig programsäkerhetsgrupp. Lär dig hur [du skapar en programsäkerhetsgrupp.](#create-an-application-security-group)</p> |
+    | **Mål-IP-adresser/CIDR-intervall** | En kommaavgränsad lista över IP-adresser och CIDR-intervall | <p>Den här inställningen visas om du ändrar **Mål till** **IP-adresser.** På samma **sätt som** **käll- och käll-IP-adresser/CIDR-intervall** kan du ange en eller flera adresser eller intervall. Det finns gränser för det antal som du kan ange. Mer information finns i [Azure-gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)</p><p>Om den IP-adress som du anger är tilldelad till en virtuell Azure-dator måste du se till att du anger dess privata IP-adress, inte dess offentliga IP-adress. Azure bearbetar säkerhetsregler när den offentliga IP-adressen har översätts till en privat IP-adress för inkommande säkerhetsregler, men innan Azure översätter en privat IP-adress till en offentlig IP-adress för utgående regler. Mer information om offentliga och privata IP-adresser i Azure finns i [IP-adresstyper.](./public-ip-addresses.md)</p> |
+    | **Måltjänsttagg** | En tjänsttagg från listrutan | Den här valfria inställningen visas om du ändrar **Mål** till **Tjänsttagg** för en utgående säkerhetsregel. En tjänsttagg är en fördefinierad identifierare för en kategori med IP-adresser. Mer information om tillgängliga tjänsttaggar och vad varje tagg representerar finns i [Tjänsttaggar.](./network-security-groups-overview.md#service-tags) |
+    | **Målprogramsäkerhetsgrupp** | En befintlig programsäkerhetsgrupp | Den här inställningen visas om du anger **Mål** till **Programsäkerhetsgrupp**. Välj en programsäkerhetsgrupp som finns i samma region som nätverksgränssnittet. Lär dig hur [du skapar en programsäkerhetsgrupp.](#create-an-application-security-group) |
+    | **Målportintervall** | Något av följande:<ul><li>En enda port, till exempel `80`</li><li>Ett portintervall, till exempel `1024-65535`</li><li>En kommaavgränsad lista över enskilda portar och/eller portintervall, till exempel `80, 1024-65535`</li><li>En asterisk ( `*` ) för att tillåta trafik på valfri port</li></ul> | Precis som **med Källportintervall** kan du ange en eller flera portar och intervall. Det finns gränser för det antal som du kan ange. Mer information finns i [Azure-gränser.](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits) |
+    | **Protokoll** | **Alla**, **TCP,** **UDP** eller **ICMP** | Du kan begränsa regeln till Transmission Control Protocol (TCP), UDP (User Datagram Protocol) eller Internet Control Message Protocol (ICMP). Standardvärdet är att regeln gäller för alla protokoll. |
+    | **Åtgärd** | **Tillåt** eller **neka** | Den här inställningen anger om den här regeln tillåter eller nekar åtkomst för den angivna käll- och målkonfigurationen. |
+    | **Priority** | Ett värde mellan 100 och 4096 som är unikt för alla säkerhetsregler i nätverkssäkerhetsgruppen | Azure bearbetar säkerhetsregler i prioritetsordning. Ju lägre nummer, desto högre prioritet. Vi rekommenderar att du lämnar ett mellanrum mellan prioritetsnummer när du skapar regler, till exempel 100, 200 och 300. Om du lämnar luckor blir det enklare att lägga till regler i framtiden, så att du kan ge dem högre eller lägre prioritet än befintliga regler. |
+    | **Namn** | Ett unikt namn för regeln i nätverkssäkerhetsgruppen | Namnet kan vara upp till 80 tecken. Det måste börja med en bokstav eller en siffra och det måste sluta med en bokstav, en siffra eller ett understreck. Namnet får bara innehålla bokstäver, siffror, understreck, punkter eller bindestreck. |
+    | **Beskrivning** | En textbeskrivning | Du kan också ange en textbeskrivning för säkerhetsregeln. Beskrivningen får inte vara längre än 140 tecken. |
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az-network-nsg-rule-create) |
+| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
-### <a name="view-all-security-rules"></a>Visa alla säkerhets regler
+### <a name="view-all-security-rules"></a>Visa alla säkerhetsregler
 
-En nätverks säkerhets grupp innehåller noll eller flera regler. Mer information om den information som visas när du visar regler finns i [Översikt över nätverks säkerhets grupper](./network-security-groups-overview.md).
+En nätverkssäkerhetsgrupp innehåller noll eller fler regler. Mer information om den information som visas när du visar regler finns i [Översikt över nätverkssäkerhetsgrupp.](./network-security-groups-overview.md)
 
-1. Gå till [Azure Portal](https://portal.azure.com) om du vill se reglerna för en nätverks säkerhets grupp. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till [Azure Portal](https://portal.azure.com) för att visa reglerna för en nätverkssäkerhetsgrupp. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på den nätverks säkerhets grupp som du vill visa reglerna för.
+2. Välj namnet på den nätverkssäkerhetsgrupp som du vill visa reglerna för.
 
-3. I meny raden för nätverks säkerhets gruppen väljer du **inkommande säkerhets regler** eller **utgående säkerhets regler**.
+3. På menyraden för nätverkssäkerhetsgruppen väljer du **Inkommande säkerhetsregler** eller **Utgående säkerhetsregler.**
 
-Listan innehåller alla regler som du har skapat och nätverks säkerhets gruppens [Standard säkerhets regler](./network-security-groups-overview.md#default-security-rules).
+Listan innehåller alla regler som du har skapat och nätverkssäkerhetsgruppens [standardsäkerhetsregler.](./network-security-groups-overview.md#default-security-rules)
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az-network-nsg-rule-list) |
+| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="view-details-of-a-security-rule"></a>Visa information om en säkerhetsregel
 
-1. Gå till [Azure Portal](https://portal.azure.com) om du vill se reglerna för en nätverks säkerhets grupp. Sök efter och välj **nätverks säkerhets grupper**.
+1. Gå till [Azure Portal](https://portal.azure.com) för att visa reglerna för en nätverkssäkerhetsgrupp. Sök efter och välj **Nätverkssäkerhetsgrupper.**
 
-2. Välj namnet på den nätverks säkerhets grupp som du vill visa information om en regel för.
+2. Välj namnet på den nätverkssäkerhetsgrupp som du vill visa information om en regel för.
 
-3. I meny raden för nätverks säkerhets gruppen väljer du **inkommande säkerhets regler** eller **utgående säkerhets regler**.
+3. I nätverkssäkerhetsgruppens menyrad väljer du **Inkommande säkerhetsregler eller** **Utgående säkerhetsregler.**
 
-4. Välj den regel som du vill visa information om. En förklaring av alla inställningar finns i [säkerhets regel inställningar](#security-rule-settings).
+4. Välj den regel som du vill visa information om. En förklaring av alla inställningar finns i [Säkerhetsregelinställningar.](#security-rule-settings)
 
     > [!NOTE]
-    > Den här proceduren gäller endast för en anpassad säkerhets regel. Det fungerar inte om du väljer en standard säkerhets regel.
+    > Den här proceduren gäller endast för en anpassad säkerhetsregel. Det fungerar inte om du väljer en standardsäkerhetsregel.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network NSG Rule show](/cli/azure/network/nsg/rule#az-network-nsg-rule-show) |
+| Azure CLI | [az network nsg rule show](/cli/azure/network/nsg/rule#az_network_nsg_rule_show) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
-### <a name="change-a-security-rule"></a>Ändra en säkerhets regel
+### <a name="change-a-security-rule"></a>Ändra en säkerhetsregel
 
-1. Slutför stegen i [Visa information om en säkerhets regel](#view-details-of-a-security-rule).
+1. Slutför stegen i [Visa information om en säkerhetsregel](#view-details-of-a-security-rule).
 
-2. Ändra inställningarna efter behov och välj sedan **Spara**. En förklaring av alla inställningar finns i [säkerhets regel inställningar](#security-rule-settings).
+2. Ändra inställningarna efter behov och välj sedan **Spara.** En förklaring av alla inställningar finns i [Säkerhetsregelinställningar.](#security-rule-settings)
 
     > [!NOTE]
-    > Den här proceduren gäller endast för en anpassad säkerhets regel. Du får inte ändra en standard säkerhets regel.
+    > Den här proceduren gäller endast för en anpassad säkerhetsregel. Du får inte ändra en standardsäkerhetsregel.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az-network-nsg-rule-update) |
+| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
 
-### <a name="delete-a-security-rule"></a>Ta bort en säkerhets regel
+### <a name="delete-a-security-rule"></a>Ta bort en säkerhetsregel
 
-1. Slutför stegen i [Visa information om en säkerhets regel](#view-details-of-a-security-rule).
+1. Slutför stegen i [Visa information om en säkerhetsregel](#view-details-of-a-security-rule).
 
 2. Välj **Ta bort** och välj sedan **Ja**.
 
     > [!NOTE]
-    > Den här proceduren gäller endast för en anpassad säkerhets regel. Du har inte behörighet att ta bort en standard säkerhets regel.
+    > Den här proceduren gäller endast för en anpassad säkerhetsregel. Du kan inte ta bort en standardsäkerhetsregel.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [ta bort AZ Network NSG Rule Delete](/cli/azure/network/nsg/rule#az-network-nsg-rule-delete) |
+| Azure CLI | [az network nsg rule delete](/cli/azure/network/nsg/rule#az_network_nsg_rule_delete) |
 | PowerShell | [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>Arbeta med programsäkerhetsgrupper
 
-En program säkerhets grupp innehåller noll eller flera nätverks gränssnitt. Mer information finns i [program säkerhets grupper](./network-security-groups-overview.md#application-security-groups). Alla nätverks gränssnitt i en program säkerhets grupp måste finnas i samma virtuella nätverk. Information om hur du lägger till ett nätverks gränssnitt i en program säkerhets grupp finns i [lägga till ett nätverks gränssnitt i en program säkerhets grupp](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups).
+En programsäkerhetsgrupp innehåller noll eller flera nätverksgränssnitt. Mer information finns i [programsäkerhetsgrupper.](./network-security-groups-overview.md#application-security-groups) Alla nätverksgränssnitt i en programsäkerhetsgrupp måste finnas i samma virtuella nätverk. Information om hur du lägger till ett nätverksgränssnitt i en programsäkerhetsgrupp finns i [Lägga till ett nätverksgränssnitt i en programsäkerhetsgrupp.](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups)
 
-### <a name="create-an-application-security-group"></a>Skapa en program säkerhets grupp
+### <a name="create-an-application-security-group"></a>Skapa en programsäkerhetsgrupp
 
 1. I menyn i [Azure-portalen](https://portal.azure.com) eller på sidan **Start** väljer du **Skapa en resurs**.
 
-2. I rutan Sök anger du *program säkerhets grupp*.
+2. I sökrutan anger du *Programsäkerhetsgrupp*.
 
-3. På sidan **program säkerhets grupp** väljer du **skapa**.
+3. På sidan **Programsäkerhetsgrupp** väljer du **Skapa**.
 
-4. På sidan **skapa en program säkerhets grupp** går du till fliken **grundläggande** och anger värden för följande inställningar:
+4. På sidan **Skapa en programsäkerhetsgrupp** går du till **fliken Grundläggande** inställningar och anger värden för följande inställningar:
 
     | Inställning | Action |
     | --- | --- |
     | **Prenumeration** | Välj din prenumeration. |
-    | **Resursgrupp** | Välj en befintlig resurs grupp eller skapa en ny resurs grupp genom att välja **Skapa ny** . |
-    | **Namn** | Ange en unik text sträng inom en resurs grupp. |
+    | **Resursgrupp** | Välj en befintlig resursgrupp eller välj Skapa **ny för** att skapa en ny resursgrupp. |
+    | **Namn** | Ange en unik textsträng i en resursgrupp. |
     | **Region** | Välj den plats som du vill använda. |
 
 5. Välj **Granska + skapa**.
 
-6. Klicka på **skapa** på fliken **Granska + skapa** när du ser meddelandet **valideringen har skickats** .
+6. På fliken **Granska + skapa** väljer  du Skapa när du ser meddelandet Valideringen **har godkänts.**
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network grupperna Create](/cli/azure/network/asg#az-network-asg-create) |
+| Azure CLI | [az network asg create](/cli/azure/network/asg#az_network_asg_create) |
 | PowerShell | [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
 
-### <a name="view-all-application-security-groups"></a>Visa alla program säkerhets grupper
+### <a name="view-all-application-security-groups"></a>Visa alla programsäkerhetsgrupper
 
-Gå till [Azure Portal](https://portal.azure.com) för att se dina program säkerhets grupper. Sök efter och välj **program säkerhets grupper**. Azure Portal visar en lista över dina program säkerhets grupper.
-
-#### <a name="commands"></a>Kommandon
-
-| Verktyg | Kommando |
-| ---- | ------- |
-| Azure CLI | [AZ Network grupperna List](/cli/azure/network/asg#az-network-asg-list) |
-| PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
-
-### <a name="view-details-of-a-specific-application-security-group"></a>Visa information om en specifik program säkerhets grupp
-
-1. Gå till [Azure Portal](https://portal.azure.com) om du vill visa en program säkerhets grupp. Sök efter och välj **program säkerhets grupper**.
-
-2. Välj namnet på den program säkerhets grupp som du vill visa information om.
+Gå till Azure Portal [för](https://portal.azure.com) att visa dina programsäkerhetsgrupper. Sök efter och välj **Programsäkerhetsgrupper.** I Azure Portal visas en lista över dina programsäkerhetsgrupper.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network grupperna show](/cli/azure/network/asg#az-network-asg-show) |
+| Azure CLI | [az network asg list](/cli/azure/network/asg#az_network_asg_list) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
-### <a name="change-an-application-security-group"></a>Ändra en program säkerhets grupp
+### <a name="view-details-of-a-specific-application-security-group"></a>Visa information om en specifik programsäkerhetsgrupp
 
-1. Gå till [Azure Portal](https://portal.azure.com) om du vill visa en program säkerhets grupp. Sök efter och välj **program säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa en programsäkerhetsgrupp. Sök efter och välj **Programsäkerhetsgrupper.**
 
-2. Välj namnet på den program säkerhets grupp som du vill ändra.
+2. Välj namnet på den programsäkerhetsgrupp som du vill visa information om.
 
-3. Välj **ändra** bredvid den inställning som du vill ändra. Du kan till exempel lägga till eller ta bort **taggar**, eller så kan du ändra **resurs gruppen** eller **prenumerationen**.
+#### <a name="commands"></a>Kommandon
+
+| Verktyg | Kommando |
+| ---- | ------- |
+| Azure CLI | [az network asg show](/cli/azure/network/asg#az_network_asg_show) |
+| PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
+
+### <a name="change-an-application-security-group"></a>Ändra en programsäkerhetsgrupp
+
+1. Gå till Azure Portal [för](https://portal.azure.com) att visa en programsäkerhetsgrupp. Sök efter och välj **Programsäkerhetsgrupper**.
+
+2. Välj namnet på den programsäkerhetsgrupp som du vill ändra.
+
+3. Välj **Ändra** bredvid den inställning som du vill ändra. Du kan till exempel lägga till eller ta **bort taggar,** eller så kan du ändra **resursgruppen** eller **prenumerationen**.
 
     > [!NOTE]
     > Du kan inte ändra platsen.
 
-    I meny raden kan du också välja **åtkomst kontroll (IAM)**. På sidan **åtkomst kontroll (IAM)** kan du tilldela eller ta bort behörigheter till program säkerhets gruppen.
+    På menyraden kan du också välja **Åtkomstkontroll (IAM).** På sidan **Åtkomstkontroll (IAM)** kan du tilldela eller ta bort behörigheter till programsäkerhetsgruppen.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network grupperna Update](/cli/azure/network/asg#az-network-asg-update) |
+| Azure CLI | [az network asg update](/cli/azure/network/asg#az_network_asg_update) |
 | PowerShell | Ingen PowerShell-cmdlet |
 
-### <a name="delete-an-application-security-group"></a>Ta bort en program säkerhets grupp
+### <a name="delete-an-application-security-group"></a>Ta bort en programsäkerhetsgrupp
 
-Du kan inte ta bort en program säkerhets grupp om den innehåller nätverks gränssnitt. Om du vill ta bort alla nätverks gränssnitt från program säkerhets gruppen ändrar du antingen inställningarna för nätverks gränssnittet eller tar bort nätverks gränssnitten. Mer information finns i [Lägg till i eller ta bort från program säkerhets grupper](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) eller [ta bort ett nätverks gränssnitt](virtual-network-network-interface.md#delete-a-network-interface).
+Du kan inte ta bort en programsäkerhetsgrupp om den innehåller några nätverksgränssnitt. Om du vill ta bort alla nätverksgränssnitt från programsäkerhetsgruppen ändrar du antingen inställningarna för nätverksgränssnittet eller tar bort nätverksgränssnitten. Mer information finns i Lägga [till i eller ta bort från programsäkerhetsgrupper eller](virtual-network-network-interface.md#add-to-or-remove-from-application-security-groups) Ta bort ett [nätverksgränssnitt.](virtual-network-network-interface.md#delete-a-network-interface)
 
-1. Gå till [Azure Portal](https://portal.azure.com) för att hantera dina program säkerhets grupper. Sök efter och välj **program säkerhets grupper**.
+1. Gå till Azure Portal [för](https://portal.azure.com) att hantera dina programsäkerhetsgrupper. Sök efter och välj **Programsäkerhetsgrupper**.
 
-2. Välj namnet på den program säkerhets grupp som du vill ta bort.
+2. Välj namnet på den programsäkerhetsgrupp som du vill ta bort.
 
-3. Välj **ta bort** och välj sedan **Ja** för att ta bort program säkerhets gruppen.
+3. Välj **Ta** bort och välj sedan **Ja för** att ta bort programsäkerhetsgruppen.
 
 #### <a name="commands"></a>Kommandon
 
 | Verktyg | Kommando |
 | ---- | ------- |
-| Azure CLI | [AZ Network grupperna Delete](/cli/azure/network/asg#az-network-asg-delete) |
+| Azure CLI | [az network asg delete](/cli/azure/network/asg#az_network_asg_delete) |
 | PowerShell | [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
 
 ## <a name="permissions"></a>Behörigheter
 
-Om du vill utföra uppgifter i nätverks säkerhets grupper, säkerhets regler och program säkerhets grupper måste ditt konto tilldelas rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) eller till en [anpassad roll](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) som har tilldelats lämpliga behörigheter enligt följande tabeller:
+Om du vill utföra uppgifter i nätverkssäkerhetsgrupper, säkerhetsregler och programsäkerhetsgrupper måste ditt [](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) konto tilldelas till rollen Nätverksdeltagare eller till en anpassad roll som har tilldelats lämpliga behörigheter enligt listan i följande tabeller: [](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)
 
 ### <a name="network-security-group"></a>Nätverkssäkerhetsgrupp
 
 | Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft. Network/networkSecurityGroups/Read                  |   Hämta nätverks säkerhets grupp                                          |
-| Microsoft. Network/networkSecurityGroups/Write                 |   Skapa eller uppdatera nätverks säkerhets grupp                             |
-| Microsoft. Network/networkSecurityGroups/Delete                |   Ta bort nätverks säkerhets grupp                                       |
-| Microsoft. Network/networkSecurityGroups/JOIN/åtgärd           |   Koppla en nätverks säkerhets grupp till ett undernät eller ett nätverks gränssnitt 
+| Microsoft.Network/networkSecurityGroups/read                  |   Hämta nätverkssäkerhetsgrupp                                          |
+| Microsoft.Network/networkSecurityGroups/write                 |   Skapa eller uppdatera nätverkssäkerhetsgrupp                             |
+| Microsoft.Network/networkSecurityGroups/delete                |   Ta bort nätverkssäkerhetsgrupp                                       |
+| Microsoft.Network/networkSecurityGroups/join/action           |   Associera en nätverkssäkerhetsgrupp med ett undernät eller nätverksgränssnitt 
 
 
 >[!NOTE]
-> Om du vill utföra `write` åtgärder på en nätverks säkerhets grupp måste prenumerations kontot ha minst `read` behörighet för resurs gruppen tillsammans med `Microsoft.Network/networkSecurityGroups/write` behörigheten.
+> Om du `write` vill utföra åtgärder på en nätverkssäkerhetsgrupp måste prenumerationskontot ha minst behörighet för `read` resursgruppen tillsammans med `Microsoft.Network/networkSecurityGroups/write` behörighet.
 
 
-### <a name="network-security-group-rule"></a>Regel för nätverks säkerhets grupp
+### <a name="network-security-group-rule"></a>Regel för nätverkssäkerhetsgrupp
 
 | Action                                                        |   Name                                                                |
 |-------------------------------------------------------------- |   -------------------------------------------                         |
-| Microsoft. Network/networkSecurityGroups/securityRules/Read            |   Hämta regel                                                            |
-| Microsoft. Network/networkSecurityGroups/securityRules/Write           |   Skapa eller uppdatera regel                                               |
-| Microsoft. Network/networkSecurityGroups/securityRules/Delete          |   Ta bort regel                                                         |
+| Microsoft.Network/networkSecurityGroups/securityRules/read            |   Hämta regel                                                            |
+| Microsoft.Network/networkSecurityGroups/securityRules/write           |   Skapa eller uppdatera regel                                               |
+| Microsoft.Network/networkSecurityGroups/securityRules/delete          |   Ta bort regel                                                         |
 
 ### <a name="application-security-group"></a>Programsäkerhetsgrupp
 
 | Action                                                                     | Name                                                     |
 | --------------------------------------------------------------             | -------------------------------------------              |
-| Microsoft. Network/applicationSecurityGroups/joinIpConfiguration/Action     | Koppla en IP-konfiguration till en program säkerhets grupp|
-| Microsoft. Network/applicationSecurityGroups/joinNetworkSecurityRule/Action | Koppla en säkerhets regel till en program säkerhets grupp    |
-| Microsoft. Network/applicationSecurityGroups/Read                           | Hämta en program säkerhets grupp                        |
-| Microsoft. Network/applicationSecurityGroups/Write                          | Skapa eller uppdatera en program säkerhets grupp           |
-| Microsoft. Network/applicationSecurityGroups/Delete                         | Ta bort en program säkerhets grupp                     |
+| Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action     | Ansluta en IP-konfiguration till en programsäkerhetsgrupp|
+| Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Ansluta en säkerhetsregel till en programsäkerhetsgrupp    |
+| Microsoft.Network/applicationSecurityGroups/read                           | Hämta en programsäkerhetsgrupp                        |
+| Microsoft.Network/applicationSecurityGroups/write                          | Skapa eller uppdatera en programsäkerhetsgrupp           |
+| Microsoft.Network/applicationSecurityGroups/delete                         | Ta bort en programsäkerhetsgrupp                     |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Skapa en nätverks-eller program säkerhets grupp med [PowerShell](powershell-samples.md) -eller [Azure CLI](cli-samples.md) -exempel skript eller Azure [Resource Manager-mallar](template-samples.md)
-- Skapa och tilldela [Azure policy definitioner](./policy-reference.md) för virtuella nätverk
+- Skapa en nätverks- eller programsäkerhetsgrupp med [hjälp av PowerShell-](powershell-samples.md) eller [Azure CLI-exempelskript](cli-samples.md) eller Azure [Resource Manager mallar](template-samples.md)
+- Skapa och tilldela [Azure Policy definitioner](./policy-reference.md) för virtuella nätverk

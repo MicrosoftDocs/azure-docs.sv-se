@@ -1,5 +1,5 @@
 ---
-title: Lägga till eller ta bort en under näts delegering i ett virtuellt Azure-nätverk
+title: Lägga till eller ta bort en undernätsdelegering i ett virtuellt Azure-nätverk
 titlesuffix: Azure Virtual Network
 description: Lär dig hur du lägger till eller tar bort ett delegerat undernät för en tjänst i Azure.
 services: virtual-network
@@ -12,18 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: kumud
-ms.openlocfilehash: 2bb80ba421617d5fd1699826deda00e56f1e43af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 401124ed4b2794d891ca224ba3dc1c78edcae8d5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98943666"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783421"
 ---
-# <a name="add-or-remove-a-subnet-delegation"></a>Lägga till eller ta bort en under näts delegering
+# <a name="add-or-remove-a-subnet-delegation"></a>Lägga till eller ta bort en undernätsdelegering
 
-Under näts delegering ger explicita behörigheter till tjänsten för att skapa tjänstespecifika resurser i under nätet med en unik identifierare när tjänsten distribueras. Den här artikeln beskriver hur du lägger till eller tar bort ett delegerat undernät för en Azure-tjänst.
+Undernätsdelegering ger explicit behörighet till tjänsten för att skapa tjänstspecifika resurser i undernätet med hjälp av en unik identifierare när tjänsten distribueras. I den här artikeln beskrivs hur du lägger till eller tar bort ett delegerat undernät för en Azure-tjänst.
 
-## <a name="portal"></a>Portal
+## <a name="portal"></a>Portalen
 
 ### <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -31,9 +31,9 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 ### <a name="create-the-virtual-network"></a>Skapa det virtuella nätverket
 
-I det här avsnittet skapar du ett virtuellt nätverk och under nätet som du senare delegerar till en Azure-tjänst.
+I det här avsnittet skapar du ett virtuellt nätverk och det undernät som du senare ska delegera till en Azure-tjänst.
 
-1. På den övre vänstra sidan av skärmen väljer du **skapa en resurs**  >  **nätverk**  >  **virtuellt nätverk**.
+1. Längst upp till vänster på skärmen väljer du Skapa **en resurs**  >  **Virtuellt nätverk**  >  .
 1. I **Skapa virtuellt nätverk** anger eller väljer du följande information:
 
     | Inställning | Värde |
@@ -42,33 +42,33 @@ I det här avsnittet skapar du ett virtuellt nätverk och under nätet som du se
     | Adressutrymme | Ange *10.0.0.0/16*. |
     | Prenumeration | Välj din prenumeration.|
     | Resursgrupp | Välj **Skapa ny**, ange *myResourceGroup* och välj sedan **OK**. |
-    | Location | Välj **öster**.|
-    | Undernät – Namn | Ange *undernät*. |
+    | Location | Välj EastUS ( **USA, östra).**|
+    | Undernät – Namn | Ange *mySubnet*. |
     | Undernät – adressintervall | Ange *10.0.0.0/24*. |
     |||
-1. Lämna resten som standard och välj sedan **skapa**.
+1. Lämna resten som standard och välj sedan **Skapa.**
 
 ### <a name="permissions"></a>Behörigheter
 
 Om du inte skapade det undernät som du vill delegera till en Azure-tjänst behöver du följande behörighet: `Microsoft.Network/virtualNetworks/subnets/write` .
 
-Den inbyggda rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller även de behörigheter som krävs.
+Den inbyggda rollen [Nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller också de behörigheter som krävs.
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>Delegera ett undernät till en Azure-tjänst
 
 I det här avsnittet delegerar du det undernät som du skapade i föregående avsnitt till en Azure-tjänst.
 
 1. I portalens sökfält anger du *myVirtualNetwork*. När **myVirtualNetwork** visas i sökresultatet väljer du det.
-2. I Sök resultaten väljer du *myVirtualNetwork*.
-3. Välj **undernät** under **Inställningar** och välj sedan **undernät**.
-4. På sidan för **under näts Delegerings** listan *väljer du bland* de tjänster som listas under **delegera undernät till en tjänst** (till exempel **Microsoft. DBforPostgreSQL/serversv2**).  
+2. I sökresultaten väljer du *myVirtualNetwork*.
+3. Välj **Undernät** under **INSTÄLLNINGAR** och välj sedan **mySubnet**.
+4. På sidan *mySubnet* för  listan Delegering av undernät väljer du bland de tjänster som listas under Delegera undernät till en **tjänst** (till exempel **Microsoft.DBforPostgreSQL/serversv2).**  
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort under näts delegering från en Azure-tjänst
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort undernätsdelegering från en Azure-tjänst
 
 1. I portalens sökfält anger du *myVirtualNetwork*. När **myVirtualNetwork** visas i sökresultatet väljer du det.
-2. I Sök resultaten väljer du *myVirtualNetwork*.
-3. Välj **undernät** under **Inställningar** och välj sedan **undernät**.
-4. Välj **ingen** från tjänsterna som listas under **delegera undernät till en tjänst** för under **näts delegering** *på sidan för undernät.* 
+2. I sökresultaten väljer du *myVirtualNetwork*.
+3. Välj **Undernät** under **INSTÄLLNINGAR** och välj sedan **mySubnet**.
+4. På *sidan mySubnet* går du till **listan Undernätsdelegering** och väljer **Ingen** från de tjänster som visas under **Delegera undernät till en tjänst**. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -76,12 +76,12 @@ Förbered din miljö för Azure CLI.
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 Skapa en resursgrupp med [az group create](/cli/azure/group). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-I följande exempel skapas en resurs grupp med namnet **myResourceGroup** på platsen för **öster** :
+I följande exempel skapas en resursgrupp med **namnet myResourceGroup** på **platsen eastus:**
 
 ```azurecli-interactive
 
@@ -107,13 +107,13 @@ Skapa det virtuella nätverket **myVnet** med undernätet **mySubnet** i **myRes
 
 Om du inte skapade det undernät som du vill delegera till en Azure-tjänst behöver du följande behörighet: `Microsoft.Network/virtualNetworks/subnets/write` .
 
-Den inbyggda rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller även de behörigheter som krävs.
+Den inbyggda rollen [Nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller också de behörigheter som krävs.
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>Delegera ett undernät till en Azure-tjänst
 
 I det här avsnittet delegerar du det undernät som du skapade i föregående avsnitt till en Azure-tjänst. 
 
-Använd [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) för att uppdatera under nätet med namnet **mitt undernät** med en delegering till en Azure-tjänst.  I det här exemplet används **Microsoft. DBforPostgreSQL/serversv2** för delegering av exempel:
+Använd [az network vnet subnet update för](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) att uppdatera undernätet med namnet **mySubnet med** en delegering till en Azure-tjänst.  I det här **exemplet används Microsoft.DBforPostgreSQL/serversv2** för exempeldelegeringen:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -123,7 +123,7 @@ Använd [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-networ
   --delegations Microsoft.DBforPostgreSQL/serversv2
 ```
 
-Använd [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show)för att kontrol lera att delegeringen har tillämpats. Kontrol lera att tjänsten är delegerad till under nätet under egenskapen **serviceName**:
+Kontrollera att delegeringen tillämpades med [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show). Kontrollera att tjänsten har delegerats till undernätet under egenskapen **serviceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -150,9 +150,9 @@ Använd [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-
 ]
 ```
 
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort under näts delegering från en Azure-tjänst
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort undernätsdelegering från en Azure-tjänst
 
-Använd [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update) för att ta bort delegeringen från under nätet med namnet **subsubnet**:
+Använd [az network vnet subnet update för](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) att ta bort delegeringen från undernätet med namnet **mySubnet**:
 
 ```azurecli-interactive
   az network vnet subnet update \
@@ -161,7 +161,7 @@ Använd [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-networ
   --vnet-name myVnet \
   --remove delegations
 ```
-Om du vill kontrol lera att delegeringen har tagits bort använder du [AZ Network VNet Subnet show](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-show). Kontrol lera att tjänsten har tagits bort från under nätet under egenskapen **serviceName**:
+Kontrollera att delegeringen har tagits bort med [az network vnet subnet show](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_show). Kontrollera att tjänsten tas bort från undernätet under egenskapen **serviceName**:
 
 ```azurecli-interactive
   az network vnet subnet show \
@@ -170,7 +170,7 @@ Om du vill kontrol lera att delegeringen har tagits bort använder du [AZ Networ
   --vnet-name myVnet \
   --query delegations
 ```
-Utdata från kommandot är en null-klammer:
+Utdata från kommandot är en hakparentes med null-värden:
 ```json
 []
 ```
@@ -188,14 +188,14 @@ Utdata från kommandot är en null-klammer:
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 Skapa en resursgrupp med [New-AzResourceGroup](/cli/azure/group). En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-I följande exempel skapas en resurs grupp med namnet *myResourceGroup* på platsen för *öster* :
+I följande exempel skapas en resursgrupp med *namnet myResourceGroup* på *platsen eastus:*
 
 ```azurepowershell-interactive
   New-AzResourceGroup -Name myResourceGroup -Location eastus
 ```
 ### <a name="create-virtual-network"></a>Skapa det virtuella nätverket
 
-Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet mina **undernät** med [New-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) i **myResourceGroup** med [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). IP-adressutrymmet för det virtuella nätverket är **10.0.0.0/16**. Under nätet i det virtuella nätverket är **10.0.0.0/24**.  
+Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet **mySubnet** med [new-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) i **myResourceGroup** med [hjälp av New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). IP-adressutrymmet för det virtuella nätverket är **10.0.0.0/16.** Undernätet i det virtuella nätverket är **10.0.0.0/24.**  
 
 ```azurepowershell-interactive
   $subnet = New-AzVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix "10.0.0.0/24"
@@ -206,13 +206,13 @@ Skapa ett virtuellt nätverk med namnet **myVnet** med ett undernät med namnet 
 
 Om du inte skapade det undernät som du vill delegera till en Azure-tjänst behöver du följande behörighet: `Microsoft.Network/virtualNetworks/subnets/write` .
 
-Den inbyggda rollen [nätverks deltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller även de behörigheter som krävs.
+Den inbyggda rollen [Nätverksdeltagare](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) innehåller också de behörigheter som krävs.
 
 ### <a name="delegate-a-subnet-to-an-azure-service"></a>Delegera ett undernät till en Azure-tjänst
 
 I det här avsnittet delegerar du det undernät som du skapade i föregående avsnitt till en Azure-tjänst. 
 
-Använd [Add-AzDelegation](/powershell/module/az.network/add-azdelegation) för att uppdatera under nätet med namnet mina **undernät** med en delegering som heter **delegering** till en Azure-tjänst.  I det här exemplet används **Microsoft. DBforPostgreSQL/serversv2** för delegering av exempel:
+Använd [Add-AzDelegation för](/powershell/module/az.network/add-azdelegation) att uppdatera undernätet med namnet **mySubnet** med en delegering med namnet **myDelegation** till en Azure-tjänst.  I det här **exemplet används Microsoft.DBforPostgreSQL/serversv2** för exempeldelegeringen:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVNet" -ResourceGroupName "myResourceGroup"
@@ -220,7 +220,7 @@ Använd [Add-AzDelegation](/powershell/module/az.network/add-azdelegation) för 
   $subnet = Add-AzDelegation -Name "myDelegation" -ServiceName "Microsoft.DBforPostgreSQL/serversv2" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Använd [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) för att verifiera delegeringen:
+Använd [Get-AzDelegation för](/powershell/module/az.network/get-azdelegation) att verifiera delegeringen:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -234,9 +234,9 @@ Använd [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) för 
   Id                : /subscriptions/3bf09329-ca61-4fee-88cb-7e30b9ee305b/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet/delegations/myDelegation
 
 ```
-### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort under näts delegering från en Azure-tjänst
+### <a name="remove-subnet-delegation-from-an-azure-service"></a>Ta bort undernätsdelegering från en Azure-tjänst
 
-Använd [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation) för att ta bort delegeringen från under nätet med namnet **subsubnet**:
+Använd [Remove-AzDelegation för](/powershell/module/az.network/remove-azdelegation) att ta bort delegeringen från undernätet med namnet **mySubnet**:
 
 ```azurepowershell-interactive
   $vnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup"
@@ -244,7 +244,7 @@ Använd [Remove-AzDelegation](/powershell/module/az.network/remove-azdelegation)
   $subnet = Remove-AzDelegation -Name "myDelegation" -Subnet $subnet
   Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
-Använd [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) för att verifiera att delegeringen har tagits bort:
+Använd [Get-AzDelegation för att](/powershell/module/az.network/get-azdelegation) kontrollera att delegeringen har tagits bort:
 
 ```azurepowershell-interactive
   $subnet = Get-AzVirtualNetwork -Name "myVnet" -ResourceGroupName "myResourceGroup" | Get-AzVirtualNetworkSubnetConfig -Name "mySubnet"
@@ -255,4 +255,4 @@ Använd [Get-AzDelegation](/powershell/module/az.network/get-azdelegation) för 
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig hur du [hanterar undernät i Azure](virtual-network-manage-subnet.md).
+- Lär dig hur [du hanterar undernät i Azure](virtual-network-manage-subnet.md).

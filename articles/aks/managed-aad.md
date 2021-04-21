@@ -1,42 +1,42 @@
 ---
-title: Använda Azure AD i Azure Kubernetes-tjänsten
-description: Lär dig hur du använder Azure AD i Azure Kubernetes service (AKS)
+title: Använda Azure AD i Azure Kubernetes Service
+description: Lär dig hur du använder Azure AD i Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 0e912de4cf3a9759abe4cb3df78255c0a9ba1557
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 3db9f8d895b4c13b5f969859f422e7b566722ffc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105872"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783079"
 ---
-# <a name="aks-managed-azure-active-directory-integration"></a>AKS-hanterad Azure Active Directory-integrering
+# <a name="aks-managed-azure-active-directory-integration"></a>AKS-hanterad Azure Active Directory integrering
 
-AKS-hanterad Azure AD-integrering är utformad för att förenkla Azure AD-integration, där användare tidigare behövde skapa en klient app, en server app och krävde att Azure AD-klienten ska bevilja Läs behörighet för katalogen. I den nya versionen hanterar AKS Resource Provider klient-och Server apparna åt dig.
+AKS-hanterad Azure AD-integrering är utformad för att förenkla Integrering med Azure AD, där användare tidigare krävdes för att skapa en klientapp, en serverapp och krävde att Azure AD-klienten skulle bevilja läsbehörighet för katalog. I den nya versionen hanterar AKS-resursprovidern klient- och serverapparna åt dig.
 
 ## <a name="azure-ad-authentication-overview"></a>Översikt över Azure AD-autentisering
 
-Kluster administratörer kan konfigurera Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) baserat på användarens identitet eller katalog grupp medlemskap. Azure AD-autentisering tillhandahålls för AKS-kluster med OpenID Connect. OpenID Connect är ett identitets lager som byggts ovanpå OAuth 2,0-protokollet. Mer information om OpenID Connect finns i [Open ID Connect-dokumentationen][open-id-connect].
+Klusteradministratörer kan konfigurera Kubernetes rollbaserad åtkomstkontroll (Kubernetes RBAC) baserat på en användares identitet eller kataloggruppsmedlemskap. Azure AD-autentisering tillhandahålls till AKS-kluster med OpenID Connect. OpenID Connect är ett identitetslager som bygger på OAuth 2.0-protokollet. Mer information om hur OpenID Connect finns i [dokumentationen för Open ID Connect.][open-id-connect]
 
-Läs mer om Azure AD-integrerings flödet i [dokumentationen för Azure Active Directory integrations begrepp](concepts-identity.md#azure-ad-integration).
+Läs mer om Azure AD-integreringsflödet i [dokumentationen Azure Active Directory om integrationsbegrepp.](concepts-identity.md#azure-ad-integration)
 
 ## <a name="limitations"></a>Begränsningar 
 
-* AKS-hanterad Azure AD-integrering kan inte inaktive ras
+* AKS-hanterad Azure AD-integrering kan inte inaktiveras
 * Det finns inte stöd för att ändra ett AKS-hanterat Azure AD-integrerat kluster till äldre AAD
-* icke-Kubernetes RBAC-aktiverade kluster stöds inte för AKS-hanterad Azure AD-integrering
-* Det finns inte stöd för att ändra Azure AD-klienten som är associerad med AKS-hanterad Azure AD-integrering
+* RBAC-aktiverade kluster som inte är Kubernetes stöds inte för AKS-hanterad Azure AD-integrering
+* Det går inte att ändra den Azure AD-klient som är associerad med AKS-hanterad Azure AD-integrering
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure CLI-version 2.11.0 eller senare
-* Kubectl med en lägsta version av [1.18.1](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) eller [kubelogin](https://github.com/Azure/kubelogin)
-* Om du använder [Helm](https://github.com/helm/helm), den lägsta versionen av Helm 3,3.
+* Azure CLI version 2.11.0 eller senare
+* Kubectl med lägst version [1.18.1 eller](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md#v1181) [kubelogin](https://github.com/Azure/kubelogin)
+* Om du använder [helm ,](https://github.com/helm/helm)lägsta version av helm 3.3.
 
 > [!Important]
-> Du måste använda Kubectl med en lägsta version av 1.18.1 eller kubelogin. Skillnaden mellan lägre versioner av Kubernetes och kubectl får inte vara mer än 1 version. Om du inte använder rätt version kommer du att märka problem med autentiseringen.
+> Du måste använda Kubectl med lägst version 1.18.1 eller kubelogin. Skillnaden mellan mindre versioner av Kubernetes och kubectl får inte vara mer än 1 version. Om du inte använder rätt version ser du autentiseringsproblem.
 
 Använd följande kommandon för att installera kubectl och kubelogin:
 
@@ -46,18 +46,18 @@ kubectl version --client
 kubelogin --version
 ```
 
-Använd [de här anvisningarna](https://kubernetes.io/docs/tasks/tools/install-kubectl/) för andra operativ system.
+Följ [dessa anvisningar](https://kubernetes.io/docs/tasks/tools/install-kubectl/) för andra operativsystem.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-För ditt kluster behöver du en Azure AD-grupp. Den här gruppen krävs som administratörs grupp för klustret för att ge kluster administratörs behörighet. Du kan använda en befintlig Azure AD-grupp eller skapa en ny. Registrera objekt-ID för din Azure AD-grupp.
+För klustret behöver du en Azure AD-grupp. Den här gruppen behövs som administratörsgrupp för klustret för att bevilja klusteradministratörsbehörigheter. Du kan använda en befintlig Azure AD-grupp eller skapa en ny. Registrera objekt-ID:t för din Azure AD-grupp.
 
 ```azurecli-interactive
 # List existing groups in the directory
 az ad group list --filter "displayname eq '<group-name>'" -o table
 ```
 
-Om du vill skapa en ny Azure AD-grupp för kluster administratörerna använder du följande kommando:
+Om du vill skapa en ny Azure AD-grupp för dina klusteradministratörer använder du följande kommando:
 
 ```azurecli-interactive
 # Create an Azure AD group
@@ -68,21 +68,21 @@ az ad group create --display-name myAKSAdminGroup --mail-nickname myAKSAdminGrou
 
 Skapa ett AKS-kluster med hjälp av följande CLI-kommandon.
 
-Skapa en Azure-resurs grupp:
+Skapa en Azure-resursgrupp:
 
 ```azurecli-interactive
 # Create an Azure resource group
 az group create --name myResourceGroup --location centralus
 ```
 
-Skapa ett AKS-kluster och aktivera administrations åtkomst för din Azure AD-grupp
+Skapa ett AKS-kluster och aktivera administrationsåtkomst för din Azure AD-grupp
 
 ```azurecli-interactive
 # Create an AKS-managed Azure AD cluster
 az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
 ```
 
-En lyckad skapande av ett AKS Azure AD-kluster har följande avsnitt i svars texten
+Ett lyckat skapande av ett AKS-hanterat Azure AD-kluster har följande avsnitt i svarstexten
 ```output
 "AADProfile": {
     "adminGroupObjectIds": [
@@ -98,18 +98,18 @@ En lyckad skapande av ett AKS Azure AD-kluster har följande avsnitt i svars tex
 
 När klustret har skapats kan du börja komma åt det.
 
-## <a name="access-an-azure-ad-enabled-cluster"></a>Åtkomst till ett Azure AD-aktiverat kluster
+## <a name="access-an-azure-ad-enabled-cluster"></a>Få åtkomst till ett Azure AD-aktiverat kluster
 
-Du behöver den inbyggda rollen [Azure Kubernetes service Cluster-användare](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) för att utföra följande steg.
+Du behöver den [inbyggda Azure Kubernetes Service](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-user-role) klusteranvändaren för att kunna göra följande.
 
-Hämta användarautentiseringsuppgifter för att få åtkomst till klustret:
+Hämta autentiseringsuppgifterna för användaren för att få åtkomst till klustret:
  
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
-Följ anvisningarna för att logga in.
+Följ instruktionerna för att logga in.
 
-Använd kommandot kubectl get Nodes för att Visa noder i klustret:
+Använd kommandot kubectl get nodes för att visa noder i klustret:
 
 ```azurecli-interactive
 kubectl get nodes
@@ -119,30 +119,30 @@ aks-nodepool1-15306047-0   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-1   Ready    agent   102m   v1.15.10
 aks-nodepool1-15306047-2   Ready    agent   102m   v1.15.10
 ```
-Konfigurera [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](./azure-ad-rbac.md) för att konfigurera ytterligare säkerhets grupper för dina kluster.
+Konfigurera [rollbaserad åtkomstkontroll i Azure (Azure RBAC)](./azure-ad-rbac.md) för att konfigurera ytterligare säkerhetsgrupper för dina kluster.
 
-## <a name="troubleshooting-access-issues-with-azure-ad"></a>Fel sökning av åtkomst problem med Azure AD
+## <a name="troubleshooting-access-issues-with-azure-ad"></a>Felsöka åtkomstproblem med Azure AD
 
 > [!Important]
-> Stegen som beskrivs nedan kringgår normal Azure AD-gruppautentisering. Använd dem endast i nödfall.
+> Stegen som beskrivs nedan kringgår den normala Azure AD-gruppautentiseringen. Använd dem endast i nödfall.
 
-Om du är permanent blockerad genom att inte ha åtkomst till en giltig Azure AD-grupp med åtkomst till klustret kan du fortfarande få administratörs behörighet för att få åtkomst till klustret direkt.
+Om du blockeras permanent genom att inte ha åtkomst till en giltig Azure AD-grupp med åtkomst till klustret kan du fortfarande hämta administratörsautentiseringsuppgifterna för att komma åt klustret direkt.
 
-För att utföra de här stegen måste du ha till gång till den inbyggda rollen [Azure Kubernetes service Cluster admin](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role) .
+Om du vill göra dessa steg måste du ha åtkomst till [den inbyggda Azure Kubernetes Service klusteradministratören.](../role-based-access-control/built-in-roles.md#azure-kubernetes-service-cluster-admin-role)
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster --admin
 ```
 
-## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Aktivera AKS-hanterad Azure AD-integrering på ditt befintliga kluster
+## <a name="enable-aks-managed-azure-ad-integration-on-your-existing-cluster"></a>Aktivera AKS-hanterad Azure AD-integrering i ditt befintliga kluster
 
-Du kan aktivera AKS-hanterad Azure AD-integrering på ditt befintliga Kubernetes RBAC-aktiverade kluster. Se till att du anger administratörs gruppen för att behålla åtkomsten till klustret.
+Du kan aktivera AKS-hanterad Azure AD-integrering på ditt befintliga Kubernetes RBAC-aktiverade kluster. Se till att ange att administratörsgruppen ska ha åtkomst till klustret.
 
 ```azurecli-interactive
 az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1> [--aad-tenant-id <id>]
 ```
 
-En lyckad aktivering av ett AKS-hanterat Azure AD-kluster har följande avsnitt i svars texten
+En lyckad aktivering av ett AKS-hanterat Azure AD-kluster innehåller följande avsnitt i svarstexten
 
 ```output
 "AADProfile": {
@@ -157,7 +157,7 @@ En lyckad aktivering av ett AKS-hanterat Azure AD-kluster har följande avsnitt 
   }
 ```
 
-Hämta autentiseringsuppgifter för användare igen för att få åtkomst till klustret genom att följa stegen [här][access-cluster].
+Ladda ned användarautentiseringsuppgifter igen för att få åtkomst till klustret genom att följa stegen [här.][access-cluster]
 
 ## <a name="upgrading-to-aks-managed-azure-ad-integration"></a>Uppgradera till AKS-hanterad Azure AD-integrering
 
@@ -167,7 +167,7 @@ Om klustret använder äldre Azure AD-integrering kan du uppgradera till AKS-han
 az aks update -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <id> [--aad-tenant-id <id>]
 ```
 
-En lyckad migrering av ett AKS-hanterat Azure AD-kluster har följande avsnitt i svars texten
+En lyckad migrering av ett AKS-hanterat Azure AD-kluster innehåller följande avsnitt i svarstexten
 
 ```output
 "AADProfile": {
@@ -182,37 +182,37 @@ En lyckad migrering av ett AKS-hanterat Azure AD-kluster har följande avsnitt i
   }
 ```
 
-Följ stegen [nedan][access-cluster]om du vill ha åtkomst till klustret.
+Om du vill komma åt klustret följer du stegen [här][access-cluster].
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>Icke-interaktiv inloggning med kubelogin
 
-Det finns vissa icke-interaktiva scenarier, t. ex. kontinuerliga integrerings pipeliner, som inte är tillgängliga med kubectl. Du kan använda [`kubelogin`](https://github.com/Azure/kubelogin) för att få åtkomst till klustret med icke-interaktiv inloggning för tjänstens huvud namn.
+Det finns vissa icke-interaktiva scenarier, till exempel pipelines för kontinuerlig integrering, som för närvarande inte är tillgängliga med kubectl. Du kan använda [`kubelogin`](https://github.com/Azure/kubelogin) för att komma åt klustret med icke-interaktiv inloggning för tjänstens huvudnamn.
 
 ## <a name="use-conditional-access-with-azure-ad-and-aks"></a>Använda villkorlig åtkomst med Azure AD och AKS
 
-När du integrerar Azure AD med ditt AKS-kluster kan du också använda [villkorlig åtkomst][aad-conditional-access] för att kontrol lera åtkomsten till klustret.
+När du integrerar Azure AD med ditt AKS-kluster kan du också använda [villkorlig åtkomst för][aad-conditional-access] att styra åtkomsten till klustret.
 
 > [!NOTE]
-> Villkorlig åtkomst för Azure AD är en Azure AD Premium-funktion.
+> Villkorsstyrd åtkomst i Azure AD är Azure AD Premium funktion.
 
-Utför följande steg för att skapa en exempel princip för villkorlig åtkomst som ska användas med AKS:
+Utför följande steg för att skapa ett exempel på en princip för villkorlig åtkomst som ska användas med AKS:
 
-1. Sök efter och välj Azure Active Directory överst i Azure Portal.
-1. I menyn för Azure Active Directory på vänster sida väljer du *företags program*.
-1. Välj *villkorlig åtkomst* på menyn för företags program på vänster sida.
-1. I menyn för villkorlig åtkomst på den vänstra sidan väljer du *principer* och sedan *ny princip*.
+1. Längst upp i Azure Portal du efter och väljer Azure Active Directory.
+1. I menyn för Azure Active Directory på vänster sida väljer du *Företagsprogram*.
+1. På menyn för Företagsprogram till vänster väljer du *Villkorlig åtkomst.*
+1. På menyn för Villkorlig åtkomst till vänster väljer du Principer *och* sedan *Ny princip.*
     :::image type="content" source="./media/managed-aad/conditional-access-new-policy.png" alt-text="Lägga till en princip för villkorlig åtkomst":::
-1. Ange ett namn för principen, till exempel *AKS-policy*.
-1. Välj *användare och grupper* och välj sedan *Välj användare och grupper* under *Inkludera* . Välj de användare och grupper där du vill tillämpa principen. I det här exemplet väljer du samma Azure AD-grupp som har administrations åtkomst till klustret.
+1. Ange ett namn för principen, till exempel *aks-policy*.
+1. Välj *Användare och grupper* och välj sedan Välj användare och grupper under *Inkludera.*  Välj de användare och grupper där du vill tillämpa principen. I det här exemplet väljer du samma Azure AD-grupp som har administrationsåtkomst till klustret.
     :::image type="content" source="./media/managed-aad/conditional-access-users-groups.png" alt-text="Välja användare eller grupper för att tillämpa principen för villkorlig åtkomst":::
-1. Välj *molnappar eller åtgärder* och klicka sedan på *ta med* Välj *appar*. Sök efter *Azure Kubernetes-tjänsten* och välj *Azure Kubernetes service AAD-Server*.
-    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Välja Azure Kubernetes service AD server för att tillämpa principen för villkorlig åtkomst":::
-1. Under *Åtkomstkontroller* väljer du *Bevilja*. Välj *bevilja åtkomst* och *Kräv att enheten ska markeras som kompatibel*.
-    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Välja att bara tillåta kompatibla enheter för principen för villkorlig åtkomst":::
-1. Under *Aktivera princip* väljer du *på* sedan *skapa*.
+1. Välj *Molnappar eller åtgärder* och välj *sedan* Välj appar *under Inkludera.* Sök efter *Azure Kubernetes Service* och välj *Azure Kubernetes Service AAD Server*.
+    :::image type="content" source="./media/managed-aad/conditional-access-apps.png" alt-text="Välja Azure Kubernetes Service AD Server för att tillämpa principen för villkorlig åtkomst":::
+1. Under *Åtkomstkontroller* väljer du *Bevilja*. Välj *Bevilja åtkomst* och sedan *Kräv att enheten är markerad som kompatibel.*
+    :::image type="content" source="./media/managed-aad/conditional-access-grant-compliant.png" alt-text="Välja att endast tillåta kompatibla enheter för principen för villkorlig åtkomst":::
+1. Under *Aktivera princip* väljer du *På* och sedan *Skapa.*
     :::image type="content" source="./media/managed-aad/conditional-access-enable-policy.png" alt-text="Aktivera principen för villkorlig åtkomst":::
 
-Hämta användarautentiseringsuppgifter för att komma åt klustret, till exempel:
+Hämta autentiseringsuppgifterna för att få åtkomst till klustret, till exempel:
 
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
@@ -220,49 +220,49 @@ Hämta användarautentiseringsuppgifter för att komma åt klustret, till exempe
 
 Följ anvisningarna för att logga in.
 
-Använd `kubectl get nodes` kommandot för att Visa noder i klustret:
+Använd kommandot `kubectl get nodes` för att visa noder i klustret:
 
 ```azurecli-interactive
 kubectl get nodes
 ```
 
-Följ instruktionerna för att logga in igen. Observera att det finns ett fel meddelande om att du har loggat in, men administratören kräver att enheten som begär åtkomst hanteras av Azure AD för att få åtkomst till resursen.
+Följ instruktionerna för att logga in igen. Observera att det finns ett felmeddelande om att du har loggat in, men administratören kräver att enheten som begär åtkomst ska hanteras av Azure AD för att få åtkomst till resursen.
 
-I Azure Portal navigerar du till Azure Active Directory, väljer *företags program* under *aktivitet* Välj *inloggningar*. Observera att en post överst med *statusen* *misslyckades* och en *villkorlig åtkomst* till *lyckades*. Markera posten och välj *villkorlig åtkomst* i *detalj*. Observera att den villkorliga åtkomst principen visas.
+I Azure Portal navigerar du till Azure Active Directory företagsprogram *och* under *Aktivitet* väljer *du Inloggningar.* Lägg märke till en post högst upp med *statusen* *Misslyckades* och *villkorsstyrd åtkomst* *till Lyckades.* Välj posten och sedan *Villkorlig åtkomst* i *Information.* Observera att din princip för villkorlig åtkomst visas.
 
-:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Inloggnings posten misslyckades på grund av en princip för villkorlig åtkomst":::
+:::image type="content" source="./media/managed-aad/conditional-access-sign-in-activity.png" alt-text="Det gick inte att logga in på grund av principen för villkorsstyrd åtkomst":::
 
-## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Konfigurera just-in-Time-kluster-åtkomst med Azure AD och AKS
+## <a name="configure-just-in-time-cluster-access-with-azure-ad-and-aks"></a>Konfigurera just-in-time-klusteråtkomst med Azure AD och AKS
 
-Ett annat alternativ för kluster åtkomst kontroll är att använda Privileged Identity Management (PIM) för just-in-Time-begäranden.
+Ett annat alternativ för klusteråtkomstkontroll är att använda Privileged Identity Management (PIM) för just-in-time-begäranden.
 
 >[!NOTE]
-> PIM är en Azure AD Premium-funktion som kräver Premium P2 SKU. Mer information om Azure AD SKU: er finns i [prissättnings guiden][aad-pricing].
+> PIM är en Azure AD Premium funktion som kräver en Premium P2 SKU. Mer information om Azure AD-SKU:er finns i [prisguiden.][aad-pricing]
 
-Utför följande steg för att integrera just-in-Time-begäranden med ett AKS-kluster med AKS-hanterad Azure AD-integrering:
+Om du vill integrera just-in-time-åtkomstbegäranden med ett AKS-kluster med hjälp av AKS-hanterad Azure AD-integrering slutför du följande steg:
 
-1. Sök efter och välj Azure Active Directory överst i Azure Portal.
-1. Anteckna klient-ID: t, som hänvisas till i resten av de här instruktionerna som `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="i en webbläsare, Azure Portal skärmen för Azure Active Directory visas med klientens ID markerat.":::
-1. På menyn för Azure Active Directory till vänster går du till gruppen *Hantera* Välj *grupper* och sedan *ny grupp*.
-    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="Visar skärmen Azure Portal Active Directory grupper med alternativet &quot;ny grupp&quot; markerat.":::
-1. Se till att en grupp typ av *säkerhet* är markerad och ange ett grupp namn, till exempel *myJITGroup*. Under *Azure AD-roller kan tilldelas den här gruppen (för hands version) väljer du* *Ja*. Välj slutligen *skapa*.
-    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Visar Azure Portalens skärm för att skapa en ny grupp.":::
-1. Du kommer tillbaka till sidan *grupper* . Välj den nya gruppen och anteckna det objekt-ID som refereras till i resten av dessa instruktioner som `<object-id>` .
-    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Visar Azure Portal skärmen för den just skapade gruppen och markerar objekt-ID: t":::
-1. Distribuera ett AKS-kluster med AKS-hanterad Azure AD-integrering genom att använda- `<tenant-id>` och- `<object-id>` värden från tidigare:
+1. Längst upp i Azure Portal du efter och väljer Azure Active Directory.
+1. Anteckna klientorganisations-ID:t, som resten av instruktionerna kallas i en `<tenant-id>` :::image type="content" source="./media/managed-aad/jit-get-tenant-id.png" alt-text="webbläsare, Azure Portal-skärmen för Azure Active Directory"::: visas med klientens ID markerat.
+1. I menyn för Azure Active Directory till vänster under Hantera väljer *du* *Grupper och* sedan *Ny grupp.*
+    :::image type="content" source="./media/managed-aad/jit-create-new-group.png" alt-text="Visar skärmen Azure Portal Active Directory-grupper med alternativet Ny grupp markerat.":::
+1. Kontrollera att en Grupptyp för *säkerhet* har valts och ange ett gruppnamn, till exempel *myJITGroup.* Under *Azure AD Roles can be assigned to this group (Preview) (Azure AD-roller kan* tilldelas till den här gruppen (förhandsversion) ) väljer du *Ja.* Välj slutligen *Skapa*.
+    :::image type="content" source="./media/managed-aad/jit-new-group-created.png" alt-text="Visar Azure Portal nya skärmen för att skapa grupper.":::
+1. Du kommer tillbaka till *sidan* Grupper. Välj den nya gruppen och anteckna objekt-ID:t, som i resten av instruktionerna kallas `<object-id>` .
+    :::image type="content" source="./media/managed-aad/jit-get-object-id.png" alt-text="Visar Azure Portal för den nyss skapade gruppen med objekt-ID:t":::
+1. Distribuera ett AKS-kluster med AKS-hanterad Azure AD-integrering med hjälp av `<tenant-id>` `<object-id>` värdena och från tidigare:
     ```azurecli-interactive
     az aks create -g myResourceGroup -n myManagedCluster --enable-aad --aad-admin-group-object-ids <object-id> --aad-tenant-id <tenant-id>
     ```
-1. Gå tillbaka till Azure Portal och välj *privilegie rad åtkomst (för hands version)* på menyn för *aktivitet* på vänster sida och välj *Aktivera privilegie rad åtkomst*.
-    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Sidan Azure Portal privilegie rad åtkomst (för hands version) visas, med alternativet Aktivera privilegie rad åtkomst":::
-1. Välj *Lägg till tilldelningar* för att börja bevilja åtkomst.
-    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Azure Portalens skärm för privilegie rad åtkomst (för hands version) efter aktivering visas. Alternativet att lägga till tilldelningar är markerat.":::
-1. Välj en roll för *medlem* och välj de användare och grupper som du vill bevilja åtkomst till klustret. Tilldelningarna kan ändras när som helst av en grupp administratör. När du är redo att gå vidare väljer du *Nästa*.
-    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Skärmen för att lägga till medlemskap i Azure Portal på medlemskap visas, där en exempel användare har marker ATS för att läggas till som medlem. Alternativet Next är markerat.":::
-1. Välj en tilldelnings typ som *aktiv*, önskad varaktighet och ge en motivering. När du är redo att fortsätta väljer du *tilldela*. Mer information om tilldelnings typer finns [i tilldela berättigande till en privilegie rad åtkomst grupp (för hands version) i Privileged Identity Management][aad-assignments].
-    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Skärmen Azure Portal för att lägga till inställningen Lägg till tilldelning visas. Tilldelnings typen aktiv har valts och en exempel justering har angetts. Alternativet Assign är markerat.":::
+1. När du Azure Portal i menyn för  Aktivitet till vänster väljer du Privilegierad åtkomst *(förhandsversion)* och sedan *Aktivera privilegierad åtkomst.*
+    :::image type="content" source="./media/managed-aad/jit-enabling-priv-access.png" alt-text="Sidan Azure Portal privilegierad åtkomst (förhandsversion) visas med &quot;Aktivera privilegierad åtkomst&quot; markerat":::
+1. Välj *Lägg till tilldelningar för* att börja bevilja åtkomst.
+    :::image type="content" source="./media/managed-aad/jit-add-active-assignment.png" alt-text="Skärmen Azure Portal privilegierad åtkomst (förhandsversion) efter aktiveringen visas. Alternativet &quot;Lägg till tilldelningar&quot; är markerat.":::
+1. Välj en roll *som medlem* och välj de användare och grupper som du vill bevilja klusteråtkomst till. Dessa tilldelningar kan ändras när som helst av en gruppadministratör. När du är redo att gå vidare väljer du *Nästa.*
+    :::image type="content" source="./media/managed-aad/jit-adding-assignment.png" alt-text="Skärmen Azure Portal Lägg till tilldelningar Medlemskap visas, där en exempelanvändare har valts för att läggas till som medlem. Alternativet &quot;Nästa&quot; är markerat.":::
+1. Välj tilldelningstypen *Aktiv,* önskad varaktighet och ange en motivering. När du är redo att fortsätta väljer du *Tilldela*. Mer information om tilldelningstyper finns [i Tilldela behörighet för en privilegierad åtkomstgrupp (förhandsversion) i Privileged Identity Management][aad-assignments].
+    :::image type="content" source="./media/managed-aad/jit-set-active-assignment-details.png" alt-text="Skärmen Azure Portal Lägg till tilldelningar visas på skärmen Lägg till tilldelningar. Tilldelningstypen &quot;Aktiv&quot; har valts och en exempelberättigande har getts. Alternativet Tilldela är markerat.":::
 
-När tilldelningarna har gjorts kontrollerar du att åtkomsten till klustret är just-in-Time-åtkomst. Exempel:
+När tilldelningarna har gjorts kontrollerar du att just-in-time-åtkomst fungerar genom att komma åt klustret. Exempel:
 
 ```azurecli-interactive
  az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
@@ -270,13 +270,13 @@ När tilldelningarna har gjorts kontrollerar du att åtkomsten till klustret är
 
 Följ stegen för att logga in.
 
-Använd `kubectl get nodes` kommandot för att Visa noder i klustret:
+Använd kommandot `kubectl get nodes` för att visa noder i klustret:
 
 ```azurecli-interactive
 kubectl get nodes
 ```
 
-Observera autentiseringskrav och följ de steg som krävs för att autentisera. Om det lyckas bör du se utdata som liknar följande:
+Observera autentiseringskravet och följ stegen för att autentisera. Om det lyckas bör du se utdata som liknar följande:
 
 ```output
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code AAAAAAAAA to authenticate.
@@ -294,15 +294,15 @@ Om `kubectl get nodes` returnerar ett fel som liknar följande:
 Error from server (Forbidden): nodes is forbidden: User "aaaa11111-11aa-aa11-a1a1-111111aaaaa" cannot list resource "nodes" in API group "" at the cluster scope
 ```
 
-Se till att administratören för säkerhets gruppen har gett ditt konto en *aktiv* tilldelning.
+Kontrollera att administratören för säkerhetsgruppen har gett ditt konto en *aktiv* tilldelning.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Lär dig mer om [Azure RBAC-integrering för Kubernetes-auktorisering][azure-rbac-integration]
-* Lär dig mer om [Azure AD-integrering med KUBERNETES RBAC][azure-ad-rbac].
-* Använd [kubelogin](https://github.com/Azure/kubelogin) för att få åtkomst till funktioner för Azure-autentisering som inte är tillgängliga i kubectl.
-* Lär dig mer om [AKS och Kubernetes Identity Concepts][aks-concepts-identity].
-* Använd [Azure Resource Manager arm-mallar ][aks-arm-template] för att skapa AKS-hanterade Azure AD-kluster.
+* Läs mer om [Azure RBAC-integrering för Kubernetes-auktorisering][azure-rbac-integration]
+* Läs mer [om Azure AD-integrering med Kubernetes RBAC][azure-ad-rbac].
+* Använd [kubelogin för](https://github.com/Azure/kubelogin) att komma åt funktioner för Azure-autentisering som inte är tillgängliga i kubectl.
+* Läs mer om [identitetsbegreppen IKS och Kubernetes.][aks-concepts-identity]
+* Använd [Azure Resource Manager (ARM) för att ][aks-arm-template] skapa AKS-hanterade Azure AD-aktiverade kluster.
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
@@ -315,11 +315,11 @@ Se till att administratören för säkerhets gruppen har gett ditt konto en *akt
 [azure-rbac-integration]: manage-azure-rbac.md
 [aks-concepts-identity]: concepts-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]:../active-directory/develop/v2-protocols-oidc.md
-[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
+[az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

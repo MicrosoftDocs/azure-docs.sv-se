@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: d1f78034c2142bfb0fc787683b7efed22ae2698c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc44780bd9b42e00ecfb3d140486fec87c767a76
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102244924"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767274"
 ---
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-I Cloud Shell skapar du en resurs grupp med [`az group create`](/cli/azure/group#az-group-create) kommandot. I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *Europa, västra*. Om du vill se alla platser som stöds för App Service på Linux på **Basic**-nivån kör du kommandot [`az appservice list-locations --sku B1 --linux-workers-enabled`](/cli/azure/appservice#az-appservice-list-locations).
+I Cloud Shell skapar du en resursgrupp med [`az group create`](/cli/azure/group#az_group_create) kommandot . I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *Europa, västra*. Om du vill se alla platser som stöds för App Service på Linux på **Basic**-nivån kör du kommandot [`az appservice list-locations --sku B1 --linux-workers-enabled`](/cli/azure/appservice#az_appservice_list_locations).
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location "West Europe"

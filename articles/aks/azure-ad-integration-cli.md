@@ -1,41 +1,41 @@
 ---
-title: Integrera Azure Active Directory med Azure Kubernetes service (bakåtkompatibelt)
-description: Lär dig hur du använder Azure CLI för att skapa och Azure Active Directory-aktiverade Azure Kubernetes service (AKS)-kluster (bakåtkompatibelt)
+title: Integrera Azure Active Directory med Azure Kubernetes Service (äldre)
+description: Lär dig hur du använder Azure CLI för att Azure Active Directory ett Azure Kubernetes Service (äldre) Azure Kubernetes Service (äldre)
 services: container-service
 author: TomGeske
 ms.topic: article
 ms.date: 07/20/2020
 ms.author: thomasge
-ms.openlocfilehash: 8b76646ef992d220bf44aa4723895f64fab90e9e
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: cb92f84560a88d406f0d519459c27b5d916ec5ad
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107105297"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769579"
 ---
-# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrera Azure Active Directory med Azure Kubernetes-tjänsten med hjälp av Azure CLI (bakåtkompatibelt)
+# <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli-legacy"></a>Integrera Azure Active Directory med Azure Kubernetes Service med Hjälp av Azure CLI (äldre)
 
-Azure Kubernetes service (AKS) kan konfigureras att använda Azure Active Directory (AD) för användarautentisering. I den här konfigurationen kan du logga in på ett AKS-kluster med en Azure AD-autentiseringstoken. Kluster operatörer kan också konfigurera Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) baserat på användarens identitet eller katalog grupp medlemskap.
+Azure Kubernetes Service (AKS) kan konfigureras att använda Azure Active Directory (AD) för användarautentisering. I den här konfigurationen kan du logga in i ett AKS-kluster med hjälp av en Azure AD-autentiseringstoken. Klusteroperatörer kan också konfigurera Kubernetes rollbaserad åtkomstkontroll (Kubernetes RBAC) baserat på en användares identitet eller kataloggruppsmedlemskap.
 
-Den här artikeln visar hur du skapar nödvändiga Azure AD-komponenter, sedan distribuerar ett Azure AD-aktiverat kluster och skapar en grundläggande Kubernetes-roll i AKS-klustret.
+Den här artikeln visar hur du skapar nödvändiga Azure AD-komponenter och sedan distribuerar ett Azure AD-aktiverat kluster och skapar en grundläggande Kubernetes-roll i AKS-klustret.
 
-Det fullständiga exempel skriptet som används i den här artikeln finns i [Azure CLI-exempel – AKS-integrering med Azure AD][complete-script].
+Det fullständiga exempelskriptet som används i den här artikeln finns i [Azure CLI-exempel – AKS-integrering med Azure AD.][complete-script]
 
 > [!Important]
-> AKS har en ny förbättrad [AKS-hanterad Azure AD][managed-aad] -upplevelse som inte kräver att du hanterar Server-eller klient program. Om du vill migrera följer du anvisningarna [här][managed-aad-migrate].
+> AKS har en ny förbättrad [AKS-hanterad Azure AD-upplevelse][managed-aad] som inte kräver att du hanterar server- eller klientprogram. Om du vill migrera följer du anvisningarna [här.][managed-aad-migrate]
 
 ## <a name="the-following-limitations-apply"></a>Följande begränsningar gäller:
 
-- Azure AD kan bara aktive ras på Kubernetes RBAC-aktiverat kluster.
-- Azure AD Legacy-integrering kan bara aktive ras när klustret skapas.
+- Azure AD kan bara aktiveras på Kubernetes RBAC-aktiverade kluster.
+- Äldre Azure AD-integrering kan bara aktiveras när klustret skapas.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Du behöver Azure CLI-versionen 2.0.61 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
+Azure CLI version 2.0.61 eller senare måste vara installerat och konfigurerat. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
-Gå till [https://shell.azure.com](https://shell.azure.com) för att öppna Cloud Shell i webbläsaren.
+Gå till [https://shell.azure.com](https://shell.azure.com) för att Cloud Shell i webbläsaren.
 
-För konsekvens och för att hjälpa till att köra kommandona i den här artikeln skapar du en variabel för det önskade AKS-klustrets namn. I följande exempel används namnet *myakscluster*:
+För konsekvens och för att köra kommandona i den här artikeln skapar du en variabel för önskat AKS-klusternamn. I följande exempel används namnet *myakscluster*:
 
 ```console
 aksname="myakscluster"
@@ -43,18 +43,18 @@ aksname="myakscluster"
 
 ## <a name="azure-ad-authentication-overview"></a>Översikt över Azure AD-autentisering
 
-Azure AD-autentisering tillhandahålls för AKS-kluster med OpenID Connect. OpenID Connect är ett identitets lager som byggts ovanpå OAuth 2,0-protokollet. Mer information om OpenID Connect finns i [Open ID Connect-dokumentationen][open-id-connect].
+Azure AD-autentisering tillhandahålls till AKS-kluster med OpenID Connect. OpenID Connect är ett identitetslager som bygger på OAuth 2.0-protokollet. Mer information om hur OpenID Connect finns i [dokumentationen för Open ID Connect.][open-id-connect]
 
-Från inifrån Kubernetes-klustret används webhook-token-autentisering för att verifiera autentiseringstoken. Webhook-token-autentisering konfigureras och hanteras som en del av AKS-klustret. Mer information om autentisering med webhook-token finns i [dokumentationen för webhook-autentisering][kubernetes-webhook].
+Inifrån Kubernetes-klustret används Webhook-tokenautentisering för att verifiera autentiseringstoken. Webhook-tokenautentisering konfigureras och hanteras som en del av AKS-klustret. Mer information om webhook-tokenautentisering finns i [webhook-autentiseringsdokumentationen][kubernetes-webhook].
 
 > [!NOTE]
-> När du konfigurerar Azure AD för AKS-autentisering konfigureras två Azure AD-program. Den här åtgärden måste utföras av en Azure-innehavaradministratör.
+> När du konfigurerar Azure AD för AKS-autentisering konfigureras två Azure AD-program. Den här åtgärden måste utföras av en Azure-klientadministratör.
 
-## <a name="create-azure-ad-server-component"></a>Skapa Azure AD Server-komponent
+## <a name="create-azure-ad-server-component"></a>Skapa En Azure AD-serverkomponent
 
-För att integrera med AKS skapar du och använder ett Azure AD-program som fungerar som en slut punkt för identitets förfrågningarna. Det första Azure AD-program du behöver får du från Azure AD-grupp medlemskap för en användare.
+Om du vill integrera med AKS skapar och använder du ett Azure AD-program som fungerar som slutpunkt för identitetsbegäranden. Det första Azure AD-program som du behöver får Azure AD-gruppmedlemskap för en användare.
 
-Skapa serverprogram komponenten med kommandot [AZ AD App Create][az-ad-app-create] och uppdatera sedan grupp medlemskaps anspråken med hjälp av kommandot [AZ AD App Update][az-ad-app-update] . I följande exempel används variabeln *aksname* som definierats i avsnittet [innan du börjar](#before-you-begin) och skapar en variabel
+Skapa serverprogramkomponenten med kommandot [az ad app create][az-ad-app-create] och uppdatera sedan anspråken för gruppmedlemskap med kommandot az ad [app][az-ad-app-update] update. I följande exempel används *variabeln aksname* som definierats [i avsnittet Innan du](#before-you-begin) börjar och skapar en variabel
 
 ```azurecli-interactive
 # Create the Azure AD application
@@ -67,7 +67,7 @@ serverApplicationId=$(az ad app create \
 az ad app update --id $serverApplicationId --set groupMembershipClaims=All
 ```
 
-Skapa nu ett tjänst huvud namn för serverprogrammet med hjälp av kommandot [AZ AD SP Create][az-ad-sp-create] . Tjänstens huvud namn används för att autentisera sig själv i Azure-plattformen. Hämta sedan SPN-hemligheten med hjälp av kommandot [AZ AD SP Credential reset][az-ad-sp-credential-reset] och tilldela variabeln namnet *serverApplicationSecret* för användning i något av följande steg:
+Skapa nu ett huvudnamn för tjänsten för serverappen med [kommandot az ad sp][az-ad-sp-create] create. Tjänstens huvudnamn används för att autentisera sig själv på Azure-plattformen. Hämta sedan hemligheten för tjänstens huvudnamn med kommandot [az ad sp credential reset][az-ad-sp-credential-reset] och tilldela variabeln *serverApplicationSecret* för användning i något av följande steg:
 
 ```azurecli-interactive
 # Create a service principal for the Azure AD application
@@ -80,12 +80,12 @@ serverApplicationSecret=$(az ad sp credential reset \
     --query password -o tsv)
 ```
 
-Azure AD-tjänstens huvud namn måste ha behörighet att utföra följande åtgärder:
+Azure AD-tjänstens huvudnamn behöver behörigheter för att utföra följande åtgärder:
 
 * Läs katalogdata
 * Logga in och läsa användarprofil
 
-Tilldela dessa behörigheter med hjälp av kommandot [AZ AD App permission Add][az-ad-app-permission-add] :
+Tilldela dessa behörigheter med kommandot [az ad app permission add:][az-ad-app-permission-add]
 
 ```azurecli-interactive
 az ad app permission add \
@@ -94,16 +94,16 @@ az ad app permission add \
     --api-permissions e1fe6dd8-ba31-4d61-89e7-88639da4683d=Scope 06da0dbc-49e2-44d2-8312-53f166ab848a=Scope 7ab1d382-f21e-4acd-a863-ba3e13f7da61=Role
 ```
 
-Bevilja slutligen de behörigheter som tilldelats i föregående steg för Server programmet med hjälp av kommandot [AZ AD App permission Grant][az-ad-app-permission-grant] . Det här steget Miss lyckas om det aktuella kontot inte är en klient organisations administratör. Du måste också lägga till behörigheter för Azure AD-program för att begära information som annars kan kräva administrativt medgivande med hjälp av [AZ AD App permission admin-medgivande][az-ad-app-permission-admin-consent]:
+Slutligen beviljar du de behörigheter som tilldelades i föregående steg för serverprogrammet med kommandot [az ad app permission grant.][az-ad-app-permission-grant] Det här steget misslyckas om det aktuella kontot inte är en innehavaradministratör. Du måste också lägga till behörigheter för Azure AD-programmet för att begära information som annars kan kräva administrativt medgivande med hjälp av [az ad app permission admin-consent:][az-ad-app-permission-admin-consent]
 
 ```azurecli-interactive
 az ad app permission grant --id $serverApplicationId --api 00000003-0000-0000-c000-000000000000
 az ad app permission admin-consent --id  $serverApplicationId
 ```
 
-## <a name="create-azure-ad-client-component"></a>Skapa Azure AD-klient komponent
+## <a name="create-azure-ad-client-component"></a>Skapa en Azure AD-klientkomponent
 
-Det andra Azure AD-programmet används när en användare loggar in i AKS-klustret med Kubernetes CLI ( `kubectl` ). Det här klient programmet tar emot autentiseringsbegäran från användaren och verifierar sina autentiseringsuppgifter och behörigheter. Skapa Azure AD-appen för klient komponenten med hjälp av kommandot [AZ AD App Create][az-ad-app-create] :
+Det andra Azure AD-programmet används när en användare loggar till AKS-klustret med Kubernetes CLI ( `kubectl` ). Det här klientprogrammet tar autentiseringsbegäran från användaren och verifierar sina autentiseringsuppgifter och behörigheter. Skapa Azure AD-appen för klientkomponenten med kommandot [az ad app][az-ad-app-create] create:
 
 ```azurecli-interactive
 clientApplicationId=$(az ad app create \
@@ -113,19 +113,19 @@ clientApplicationId=$(az ad app create \
     --query appId -o tsv)
 ```
 
-Skapa ett huvud namn för tjänsten för klient programmet med hjälp av kommandot [AZ AD SP Create][az-ad-sp-create] :
+Skapa ett huvudnamn för tjänsten för klientprogrammet med kommandot [az ad sp][az-ad-sp-create] create:
 
 ```azurecli-interactive
 az ad sp create --id $clientApplicationId
 ```
 
-Hämta oAuth2-ID: t för Server-appen för att tillåta autentiserings flödet mellan de två app-komponenterna med hjälp av kommandot [AZ AD App show][az-ad-app-show] . Detta oAuth2-ID används i nästa steg.
+Hämta oAuth2-ID:t för serverappen för att tillåta autentiseringsflödet mellan de två appkomponenterna med kommandot [az ad app show.][az-ad-app-show] Detta oAuth2-ID används i nästa steg.
 
 ```azurecli-interactive
 oAuthPermissionId=$(az ad app show --id $serverApplicationId --query "oauth2Permissions[0].id" -o tsv)
 ```
 
-Lägg till behörigheterna för klient program-och serverprogram komponenter för att använda oAuth2-kommunikations flödet med hjälp av kommandot [AZ AD App permission Add][az-ad-app-permission-add] . Ge sedan behörighet för klient programmet att kommunicera med serverprogrammet med hjälp av kommandot [AZ AD App permission Grant][az-ad-app-permission-grant] :
+Lägg till behörigheterna för klientprogrammet och serverprogramkomponenterna för att använda oAuth2-kommunikationsflödet med [kommandot az ad app permission add.][az-ad-app-permission-add] Bevilja sedan behörigheter för klientprogrammet för kommunikation med serverprogrammet med kommandot [az ad app permission grant:][az-ad-app-permission-grant]
 
 ```azurecli-interactive
 az ad app permission add --id $clientApplicationId --api $serverApplicationId --api-permissions ${oAuthPermissionId}=Scope
@@ -134,15 +134,15 @@ az ad app permission grant --id $clientApplicationId --api $serverApplicationId
 
 ## <a name="deploy-the-cluster"></a>Distribuera klustret
 
-När de två Azure AD-programmen har skapats skapar du nu själva AKS-klustret. Skapa först en resurs grupp med kommandot [AZ Group Create][az-group-create] . I följande exempel skapas resurs gruppen i regionen *östra* :
+Nu när de två Azure AD-programmen har skapats skapar du själva AKS-klustret. Skapa först en resursgrupp med kommandot [az group][az-group-create] create. I följande exempel skapas resursgruppen i *regionen EastUS:*
 
-Skapa en resurs grupp för klustret:
+Skapa en resursgrupp för klustret:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location EastUS
 ```
 
-Hämta klient-ID: t för din Azure-prenumeration med kommandot [AZ Account show][az-account-show] . Skapa sedan AKS-klustret med kommandot [AZ AKS Create][az-aks-create] . Kommandot för att skapa AKS-klustret tillhandahåller Server-och klient program-ID: n, Server programmets tjänstens huvud namn och klient-ID: t:
+Hämta klientorganisations-ID för din Azure-prenumeration med [hjälp av kommandot az account show.][az-account-show] Skapa sedan AKS-klustret med kommandot [az aks create.][az-aks-create] Kommandot för att skapa AKS-klustret tillhandahåller server- och klientprogram-ID:n, hemligheten för tjänstens huvudnamn för serverprogrammet och ditt klientorganisations-ID:
 
 ```azurecli-interactive
 tenantId=$(az account show --query tenantId -o tsv)
@@ -158,7 +158,7 @@ az aks create \
     --aad-tenant-id $tenantId
 ```
 
-Slutligen hämtar du autentiseringsuppgifterna för kluster administratören med kommandot [AZ AKS get-credentials][az-aks-get-credentials] . I något av följande steg får du de vanliga *användar* kluster autentiseringsuppgifterna för att se hur Azure AD-autentiseringsschemat fungerar.
+Hämta slutligen autentiseringsuppgifterna för klusteradministratören med [hjälp av kommandot az aks get-credentials.][az-aks-get-credentials] I något av följande steg får du de vanliga autentiseringsuppgifterna för *användarklustret* för att se hur Azure AD-autentiseringsflödet fungerar.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
@@ -166,18 +166,18 @@ az aks get-credentials --resource-group myResourceGroup --name $aksname --admin
 
 ## <a name="create-kubernetes-rbac-binding"></a>Skapa Kubernetes RBAC-bindning
 
-Innan ett Azure Active Directory konto kan användas med AKS-klustret måste du skapa en roll bindning eller en kluster roll bindning. *Roller* definierar behörigheterna som ska beviljas och *bindningar* tillämpar dem på önskade användare. De här tilldelningarna kan tillämpas på ett angivet namn område eller i hela klustret. Mer information finns i [använda KUBERNETES RBAC-auktorisering][rbac-authorization].
+Innan ett Azure Active Directory-konto kan användas med AKS-klustret måste du skapa en rollbindning eller klusterrollbindning. *Roller* definierar behörigheterna att bevilja och *bindningar* tillämpar dem på önskade användare. Dessa tilldelningar kan tillämpas på en viss namnrymd eller i hela klustret. Mer information finns i Använda [Kubernetes RBAC-auktorisering.][rbac-authorization]
 
-Hämta User Principal Name (UPN) för den användare som för närvarande är inloggad med kommandot [AZ AD Signed-User show][az-ad-signed-in-user-show] . Det här användar kontot är aktiverat för Azure AD-integrering i nästa steg.
+Hämta användarens huvudnamn (UPN) för den användare som för närvarande är inloggad med kommandot [az ad signed-in-user show.][az-ad-signed-in-user-show] Det här användarkontot är aktiverat för Azure AD-integrering i nästa steg.
 
 ```azurecli-interactive
 az ad signed-in-user show --query userPrincipalName -o tsv
 ```
 
 > [!IMPORTANT]
-> Om användaren som du tilldelar Kubernetes RBAC-bindning för finns i samma Azure AD-klient tilldelar du behörigheter baserat på *userPrincipalName*. Om användaren finns i en annan Azure AD-klient frågar du efter och använder egenskapen *ObjectID* i stället.
+> Om användaren du beviljar Kubernetes RBAC-bindningen för finns i samma Azure AD-klientorganisation tilldelar du behörigheter baserat på *userPrincipalName*. Om användaren finns i en annan Azure AD-klientorganisation frågar du efter och använder *egenskapen objectId* i stället.
 
-Skapa ett YAML-manifest med namnet `basic-azure-ad-binding.yaml` och klistra in följande innehåll. På den sista raden ersätter du *userPrincipalName_or_objectId*  med UPN-eller objekt-ID-utdata från föregående kommando:
+Skapa ett YAML-manifest med `basic-azure-ad-binding.yaml` namnet och klistra in följande innehåll. På den sista raden ersätter *du userPrincipalName_or_objectId*  med UPN- eller objekt-ID-utdata från föregående kommando:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -194,27 +194,27 @@ subjects:
   name: userPrincipalName_or_objectId
 ```
 
-Skapa ClusterRoleBinding med kommandot [kubectl Apply][kubectl-apply] och ange fil namnet för ditt yaml-manifest:
+Skapa ClusterRoleBinding med kommandot [kubectl apply][kubectl-apply] och ange filnamnet för ditt YAML-manifest:
 
 ```console
 kubectl apply -f basic-azure-ad-binding.yaml
 ```
 
-## <a name="access-cluster-with-azure-ad"></a>Åtkomst till kluster med Azure AD
+## <a name="access-cluster-with-azure-ad"></a>Komma åt kluster med Azure AD
 
-Nu ska vi testa integreringen av Azure AD-autentisering för AKS-klustret. Ange `kubectl` konfigurations kontexten för att använda vanliga användarautentiseringsuppgifter. Den här kontexten skickar alla autentiseringsbegäranden tillbaka till Azure AD.
+Nu ska vi testa integreringen av Azure AD-autentisering för AKS-klustret. Ange `kubectl` konfigurationskontexten till att använda vanliga användarautentiseringsuppgifter. Den här kontexten skickar alla autentiseringsbegäranden tillbaka via Azure AD.
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name $aksname --overwrite-existing
 ```
 
-Använd nu kommandot [kubectl get poddar][kubectl-get] för att Visa poddar i alla namn områden:
+Använd nu kommandot [kubectl get pods][kubectl-get] för att visa poddar i alla namnområden:
 
 ```console
 kubectl get pods --all-namespaces
 ```
 
-Du får en inloggnings fråga för att autentisera med Azure AD-autentiseringsuppgifter med hjälp av en webbläsare. När du har autentiserat `kubectl` visar kommandot poddar i AKS-klustret, vilket visas i följande exempel på utdata:
+Du får en inloggningsfråga om att autentisera med hjälp av Azure AD-autentiseringsuppgifter via en webbläsare. När du har autentiserats visar kommandot poddarna i `kubectl` AKS-klustret, som du ser i följande exempelutdata:
 
 ```console
 kubectl get pods --all-namespaces
@@ -235,27 +235,27 @@ kube-system   metrics-server-7b97f9cd9-btxzz          1/1     Running   0       
 kube-system   tunnelfront-6ff887cffb-xkfmq            1/1     Running   0          23h
 ```
 
-Autentiseringstoken som togs emot för `kubectl` cachelagras. Du ombeds bara att logga in när token har upphört att gälla eller att konfigurations filen för Kubernetes har återskapats.
+Autentiseringstoken som tas `kubectl` emot för cachelagras. Du får bara logga in om token har upphört att gälla eller kubernetes-konfigurationsfilen skapas på ny plats.
 
-Om ett fel meddelande visas när du har loggat in med en webbläsare som i följande exempel på utdata, kontrollerar du följande möjliga problem:
+Om du ser ett auktoriseringsfelmeddelande när du har loggat in med en webbläsare som i följande exempelutdata kontrollerar du följande möjliga problem:
 
 ```output
 error: You must be logged in to the server (Unauthorized)
 ```
 
-* Du definierade lämpligt objekt-ID eller UPN, beroende på om användar kontot finns i samma Azure AD-klient eller inte.
+* Du har definierat lämpligt objekt-ID eller UPN, beroende på om användarkontot finns i samma Azure AD-klientorganisation eller inte.
 * Användaren är inte medlem i fler än 200 grupper.
-* Hemligheten som definierats i program registreringen för servern matchar det värde som kon figurer ATS med `--aad-server-app-secret`
+* Hemligheten som definierats i programregistreringen för servern matchar värdet som konfigurerats med `--aad-server-app-secret`
 
 ## <a name="next-steps"></a>Nästa steg
 
-Det fullständiga skriptet som innehåller de kommandon som visas i den här artikeln finns i [Azure AD integration-skriptet i AKS-exemplen lagrings platsen][complete-script].
+Det fullständiga skriptet som innehåller kommandona som visas i den här artikeln finns i [Azure AD-integreringsskriptet på lagringsplatsen för AKS-exempel.][complete-script]
 
-Om du vill använda Azure AD-användare och-grupper för att kontrol lera åtkomsten till kluster resurser, se [kontrol lera åtkomst till kluster resurser med hjälp av Kubernetes-rollbaserad åtkomst kontroll och Azure AD-identiteter i AKS][azure-ad-rbac].
+Information om hur du använder Azure AD-användare och -grupper för att styra åtkomsten till klusterresurser finns i Kontrollera åtkomsten till klusterresurser med hjälp av [rollbaserad åtkomstkontroll i Kubernetes och Azure AD-identiteter i AKS][azure-ad-rbac].
 
-Mer information om hur du skyddar Kubernetes-kluster finns i [åtkomst-och identitets alternativ för AKS)][rbac-authorization].
+Mer information om hur du skyddar Kubernetes-kluster finns i [Åtkomst- och identitetsalternativ för AKS).][rbac-authorization]
 
-Metod tips för identitets-och resurs kontroll finns i [metod tips för autentisering och auktorisering i AKS][operator-best-practices-identity].
+Metodtips för identitets- och resurskontroll finns i [Metodtips för autentisering och auktorisering i AKS.][operator-best-practices-identity]
 
 <!-- LINKS - external -->
 [kubernetes-webhook]:https://kubernetes.io/docs/reference/access-authn-authz/authentication/#webhook-token-authentication
@@ -264,23 +264,23 @@ Metod tips för identitets-och resurs kontroll finns i [metod tips för autentis
 [complete-script]: https://github.com/Azure-Samples/azure-cli-samples/tree/master/aks/azure-ad-integration/azure-ad-integration.sh
 
 <!-- LINKS - internal -->
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-group-create]: /cli/azure/group#az-group-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-group-create]: /cli/azure/group#az_group_create
 [open-id-connect]: ../active-directory/develop/v2-protocols-oidc.md
-[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show
-[az-ad-app-create]: /cli/azure/ad/app#az-ad-app-create
-[az-ad-app-update]: /cli/azure/ad/app#az-ad-app-update
-[az-ad-sp-create]: /cli/azure/ad/sp#az-ad-sp-create
-[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az-ad-app-permission-add
-[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az-ad-app-permission-grant
-[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az-ad-app-permission-admin-consent
-[az-ad-app-show]: /cli/azure/ad/app#az-ad-app-show
-[az-group-create]: /cli/azure/group#az-group-create
-[az-account-show]: /cli/azure/account#az-account-show
-[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az-ad-signed-in-user-show
+[az-ad-user-show]: /cli/azure/ad/user#az_ad_user_show
+[az-ad-app-create]: /cli/azure/ad/app#az_ad_app_create
+[az-ad-app-update]: /cli/azure/ad/app#az_ad_app_update
+[az-ad-sp-create]: /cli/azure/ad/sp#az_ad_sp_create
+[az-ad-app-permission-add]: /cli/azure/ad/app/permission#az_ad_app_permission_add
+[az-ad-app-permission-grant]: /cli/azure/ad/app/permission#az_ad_app_permission_grant
+[az-ad-app-permission-admin-consent]: /cli/azure/ad/app/permission#az_ad_app_permission_admin_consent
+[az-ad-app-show]: /cli/azure/ad/app#az_ad_app_show
+[az-group-create]: /cli/azure/group#az_group_create
+[az-account-show]: /cli/azure/account#az_account_show
+[az-ad-signed-in-user-show]: /cli/azure/ad/signed-in-user#az_ad_signed_in_user_show
 [install-azure-cli]: /cli/azure/install-azure-cli
-[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az-ad-sp-credential-reset
+[az-ad-sp-credential-reset]: /cli/azure/ad/sp/credential#az_ad_sp_credential_reset
 [rbac-authorization]: concepts-identity.md#kubernetes-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md

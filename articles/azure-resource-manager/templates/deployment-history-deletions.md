@@ -1,44 +1,44 @@
 ---
 title: Borttagning av distributionshistorik
-description: Beskriver hur Azure Resource Manager automatiskt tar bort distributioner från distributions historiken. Distributioner tas bort när historiken är nära att överskrida gränsen på 800.
+description: Beskriver hur Azure Resource Manager automatiskt tar bort distributioner från distributionshistoriken. Distributioner tas bort när historiken är nära att överskrida gränsen på 800.
 ms.topic: conceptual
 ms.date: 03/23/2021
-ms.openlocfilehash: 83383411ec317e228dabb14273e2b566792c774c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b55c022c35c43be6818bb3c551d5db85b1927ebb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105732473"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781855"
 ---
-# <a name="automatic-deletions-from-deployment-history"></a>Automatisk borttagning från distributions historik
+# <a name="automatic-deletions-from-deployment-history"></a>Automatiska borttagningar från distributionshistorik
 
-Varje gång du distribuerar en mall skrivs information om distributionen till distributions historiken. Varje resurs grupp är begränsad till 800 distributioner i distributions historiken.
+Varje gång du distribuerar en mall skrivs information om distributionen till distributionshistoriken. Varje resursgrupp är begränsad till 800 distributioner i distributionshistoriken.
 
-Azure Resource Manager tar automatiskt bort distributioner från historiken när du närmar dig gränsen. Automatisk borttagning är en förändring från tidigare beteende. Tidigare var du tvungen att manuellt ta bort distributioner från distributions historiken för att undvika ett fel. Den här ändringen implementerades den 6 augusti 2020.
+Azure Resource Manager automatiskt bort distributioner från historiken när du närmar dig gränsen. Automatisk borttagning är en ändring från tidigare beteende. Tidigare var du tvungen att manuellt ta bort distributioner från distributionshistoriken för att undvika att få ett fel. Den här ändringen implementerades den 6 augusti 2020.
 
-**Automatisk borttagning stöds för resurs grupps distributioner. För närvarande tas distributioner i historiken för [prenumeration](deploy-to-subscription.md), [hanterings grupp](deploy-to-management-group.md)och [klient](deploy-to-tenant.md) distributioner inte bort automatiskt.**
+**Automatiska borttagningar stöds för distribution av resursgrupper. Distributioner i historiken [](deploy-to-subscription.md)för prenumerations-, [hanteringsgrupps-](deploy-to-management-group.md)och [klientdistributioner](deploy-to-tenant.md) tas för närvarande inte bort automatiskt.**
 
 > [!NOTE]
-> Att ta bort en distribution från historiken påverkar inte några av de distribuerade resurserna.
+> Om du tar bort en distribution från historiken påverkas inte några av de resurser som har distribuerats.
 
 ## <a name="when-deployments-are-deleted"></a>När distributioner tas bort
 
-Distributioner tas bort från din historik när du överskrider 775-distributioner. Azure Resource Manager tar bort distributioner tills historiken är nere till 750. De äldsta distributionerna tas alltid bort först.
+Distributioner tas bort från historiken när du överskrider 775 distributioner. Azure Resource Manager tar bort distributioner tills historiken är nere på 750. De äldsta distributionerna tas alltid bort först.
 
-:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Borttagningar från distributions historik":::
+:::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Borttagningar från distributionshistorik":::
 
 > [!NOTE]
-> Start numret (775) och slut talet (750) kan ändras.
+> Startnumret (775) och det sista talet (750) kan ändras.
 >
-> Om din resurs grupp redan har nått gränsen 800 Miss lyckas nästa distribution med ett fel. Processen för automatisk borttagning startar omedelbart. Du kan prova distributionen igen efter en kort stund.
+> Om din resursgrupp redan är på gränsen 800 misslyckas nästa distribution med ett fel. Den automatiska borttagningsprocessen startar omedelbart. Du kan prova distributionen igen efter en kort stund.
 
-Förutom distributioner utlöser du även borttagningar när du kör [åtgärden vad händer om](template-deploy-what-if.md) eller verifierar en distribution.
+Förutom distributioner utlöser du även borttagningar när du kör [vad om-åtgärden eller](template-deploy-what-if.md) validerar en distribution.
 
-När du ger en distribution samma namn som en i historiken återställer du dess plats i historiken. Distributionen flyttas till den senaste platsen i historiken. Du kan också återställa en distributions plats när du återställer [till distributionen](rollback-on-error.md) efter ett fel.
+När du ger en distribution samma namn som en i historiken återställer du dess plats i historiken. Distributionen flyttas till den senaste platsen i historiken. Du återställer också platsen för en distribution när du [återställer till distributionen efter](rollback-on-error.md) ett fel.
 
 ## <a name="remove-locks-that-block-deletions"></a>Ta bort lås som blockerar borttagningar
 
-Om du har ett [CanNotDelete-lås](../management/lock-resources.md) på en resurs grupp går det inte att ta bort distributionerna för resurs gruppen. Du måste ta bort låset för att kunna dra nytta av automatiska borttagningar i distributions historiken.
+Om du har [ett CanNotDelete-lås](../management/lock-resources.md) på en resursgrupp kan distributionerna för den resursgruppen inte tas bort. Du måste ta bort låset för att dra nytta av automatiska borttagningar i distributionshistoriken.
 
 Om du vill använda PowerShell för att ta bort ett lås kör du följande kommandon:
 
@@ -56,47 +56,47 @@ az lock delete --ids $lockid
 
 ## <a name="required-permissions"></a>Behörigheter som krävs
 
-Borttagningarna begärs under identiteten för den användare som distribuerade mallen. Användaren måste ha åtkomst till åtgärden **Microsoft. Resources/distribution/Delete** för att kunna ta bort distributioner. Om användaren inte har de behörigheter som krävs raderas inte distributioner från historiken.
+Borttagningarna begärs under identiteten för den användare som distribuerade mallen. Om du vill ta bort distributioner måste användaren ha åtkomst till **åtgärden Microsoft.Resources/deployments/delete.** Om användaren inte har de behörigheter som krävs tas inte distributioner bort från historiken.
 
-Om den aktuella användaren inte har de behörigheter som krävs görs ett försök att utföra automatisk borttagning igen under nästa distribution.
+Om den aktuella användaren inte har de behörigheter som krävs görs ett nytt försök att ta bort automatiskt under nästa distribution.
 
-## <a name="opt-out-of-automatic-deletions"></a>Inaktivera automatiska borttagningar
+## <a name="opt-out-of-automatic-deletions"></a>Avanmäla dig från automatiska borttagningar
 
-Du kan välja bort automatiska borttagningar från historiken. **Använd bara det här alternativet när du vill hantera distributions historiken själv.** Gränsen på 800-distributioner i historiken tillämpas fortfarande. Om du överskrider 800-distributioner får du ett fel meddelande och distributionen kommer att Miss förfaller.
+Du kan välja bort automatiska borttagningar från historiken. **Använd bara det här alternativet om du vill hantera distributionshistoriken själv.** Gränsen på 800 distributioner i historiken tillämpas fortfarande. Om du överskrider 800 distributioner får du ett felmeddelande och distributionen misslyckas.
 
-Registrera funktions flaggan om du vill inaktivera automatiska borttagningar `Microsoft.Resources/DisableDeploymentGrooming` . När du registrerar funktions flaggan kan du välja bort automatiska borttagningar för hela Azure-prenumerationen. Du kan inte välja bara för en viss resurs grupp. Om du vill återaktivera automatisk borttagning avregistrerar du funktions flaggan.
+Om du vill inaktivera automatiska borttagningar registrerar du `Microsoft.Resources/DisableDeploymentGrooming` funktionsflaggan. När du registrerar funktionsflaggan avanmäler du dig från automatiska borttagningar för hela Azure-prenumerationen. Du kan inte välja bort endast en viss resursgrupp. Om du vill återerablering av automatiska borttagningar avregistrerar du funktionsflaggan.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-För PowerShell använder du [register-AzProviderFeature](/powershell/module/az.resources/Register-AzProviderFeature).
+För PowerShell använder du [Register-AzProviderFeature](/powershell/module/az.resources/Register-AzProviderFeature).
 
 ```azurepowershell-interactive
 Register-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName DisableDeploymentGrooming
 ```
 
-Om du vill se aktuell status för din prenumeration använder du:
+Om du vill se den aktuella statusen för din prenumeration använder du:
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -ProviderNamespace Microsoft.Resources -FeatureName DisableDeploymentGrooming
 ```
 
-Om du vill återaktivera automatiska borttagningar använder du Azure REST API eller Azure CLI.
+Om du vill återererbara automatiska borttagningar använder du Azure REST API eller Azure CLI.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Använd [AZ-funktions register](/cli/azure/feature#az-feature-register)för Azure CLI.
+För Azure CLI använder du [az feature register](/cli/azure/feature#az_feature_register).
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-Om du vill se aktuell status för din prenumeration använder du:
+Om du vill se den aktuella statusen för din prenumeration använder du:
 
 ```azurecli-interactive
 az feature show --namespace Microsoft.Resources --name DisableDeploymentGrooming
 ```
 
-Om du vill återaktivera automatiska borttagningar använder du [AZ-funktionen avregistrera](/cli/azure/feature#az-feature-unregister).
+Om du vill återererbara automatiska borttagningar använder [du az feature unregister](/cli/azure/feature#az_feature_unregister).
 
 ```azurecli-interactive
 az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGrooming
@@ -104,19 +104,19 @@ az feature unregister --namespace Microsoft.Resources --name DisableDeploymentGr
 
 # <a name="rest"></a>[REST](#tab/rest)
 
-Använd [funktioner – registrera](/rest/api/resources/features/features/register)för REST API.
+För REST API du funktioner [– registrera](/rest/api/resources/features/register).
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Om du vill se aktuell status för din prenumeration använder du:
+Om du vill se den aktuella statusen för din prenumeration använder du:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/register?api-version=2015-12-01
 ```
 
-Aktivera automatisk borttagning igen genom att använda [funktioner-avregistrera](/rest/api/resources/features/features/unregister)
+Om du vill återererbara automatiska borttagningar använder [du Funktioner – Avregistrera](/rest/api/resources/features/unregister)
 
 ```rest
 POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.Features/providers/Microsoft.Resources/features/DisableDeploymentGrooming/unregister?api-version=2015-12-01
@@ -126,4 +126,4 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Micro
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du visar distributions historiken finns i [Visa distributions historik med Azure Resource Manager](deployment-history.md).
+* Mer information om hur du visar distributionshistoriken finns i [Visa distributionshistorik med Azure Resource Manager](deployment-history.md).
