@@ -1,7 +1,7 @@
 ---
 title: Stöd för containrar
 titleSuffix: Azure Cognitive Services
-description: Lär dig hur du skapar en Azure Container instance-resurs från Azure CLI.
+description: Lär dig hur du skapar en Azure-containerinstansresurs från Azure CLI.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 87007d3df3fe44ab04a330b09b8e495ec4b47e54
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 32b00e031e3cf865093c267084117a8704b6e272
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97866092"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800007"
 ---
-## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Skapa en Azure Container instance-resurs från Azure CLI
+## <a name="create-an-azure-container-instance-resource-from-the-azure-cli"></a>Skapa en Azure Container Instance-resurs från Azure CLI
 
-I YAML nedan definieras Azure Container instance-resursen. Kopiera och klistra in innehållet i en ny fil med namnet `my-aci.yaml` och ersätt de kommenterade värdena med dina egna. Se [mallformat][template-format] för giltiga yaml. Referera till [behållar databaserna och avbildningarna][repositories-and-images] för de tillgängliga avbildnings namnen och deras motsvarande lagrings plats. Mer information om YAML-referensen för container instances finns i [referens för yaml: Azure Container instances][aci-yaml-ref].
+YAML nedan definierar Azure Container Instance-resursen. Kopiera och klistra in innehållet i en ny fil med namnet `my-aci.yaml` och ersätt de kommenterade värdena med dina egna. Se [mallformatet för][template-format] giltig YAML. Se [containerdatabaserna och avbildningarna för tillgängliga][repositories-and-images] avbildningsnamn och deras motsvarande lagringsplats. Mer information om YAML-referensen för containerinstanser finns i [YAML-referens: Azure Container Instances][aci-yaml-ref].
 
 ```YAML
 apiVersion: 2018-10-01
@@ -64,20 +64,20 @@ type: Microsoft.ContainerInstance/containerGroups
 ```
 
 > [!NOTE]
-> Alla platser har inte samma processor-och minnes tillgänglighet. Se tabellen [plats och resurser][location-to-resource] för att visa en lista över tillgängliga resurser för behållare per plats och operativ system.
+> Alla platser har inte samma processor- och minnestillgänglighet. I tabellen plats [och resurser finns][location-to-resource] en lista över tillgängliga resurser för containrar per plats och operativsystem.
 
-Vi förlitar dig på den YAML-fil som vi har skapat för [`az container create`][azure-container-create] kommandot. Kör kommandot från Azure CLI och `az container create` Ersätt `<resource-group>` med ditt eget. För att skydda värden inom en YAML-distribution finns dessutom [säkra värden][secure-values].
+Vi förlitar oss på YAML-filen som vi skapade för [`az container create`][azure-container-create] kommandot . Från Azure CLI kör du kommandot `az container create` som ersätter `<resource-group>` med ditt eget. För att skydda värden i en YAML-distribution refererar du dessutom till [säkra värden][secure-values].
 
 ```azurecli
 az container create -g <resource-group> -f my-aci.yaml
 ```
 
-Kommandots utdata är `Running...` om det är giltigt, efter att utdata har ändrats till en JSON-sträng som representerar den nyligen skapade ACI-resursen. Behållar avbildningen är mer än sannolikt inte tillgänglig för en stund, men resursen distribueras nu.
+Kommandots utdata är om de är giltiga. Efter en stund ändras utdata till en `Running...` JSON-sträng som representerar den nyligen skapade ACI-resursen. Containeravbildningen är förmodligen inte tillgänglig på ett tag, men resursen har nu distribuerats.
 
 > [!TIP]
-> Var uppmärksam på platserna för de allmänt tillgängliga Azure-tjänsterna för för hands versionen, eftersom YAML krävs för att de ska kunna matcha platsen.
+> Var uppmärksam på platserna för den offentliga förhandsversionen av Azure Cognitive Service eftersom YAML måste justeras för att matcha platsen.
 
-[azure-container-create]: /cli/azure/container#az-container-create
+[azure-container-create]: /cli/azure/container#az_container_create
 [template-format]: /azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups#template-format
 [aci-yaml-ref]: ../../../container-instances/container-instances-reference-yaml.md
 [repositories-and-images]: ../container-image-tags.md

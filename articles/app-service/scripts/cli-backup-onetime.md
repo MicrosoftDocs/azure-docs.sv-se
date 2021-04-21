@@ -1,6 +1,6 @@
 ---
-title: 'CLI: säkerhetskopiera en app'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service-app. Det här exemplet visar hur du säkerhetskopierar en app.
+title: 'CLI: Säkerhetskopiera en app'
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av App Service app. Det här exemplet visar hur du kan backa upp en app.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: 4f87e610c1f3315b21a9c157f127e713ff5444f2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a5771882e85c69ae54212b2ea8eb1e9482f27821
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98747549"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782647"
 ---
 # <a name="back-up-an-app-using-cli"></a>Säkerhetskopiera en app med CLI
 
@@ -38,14 +38,14 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az storage account create`](/cli/azure/storage/account#az-storage-account-create) | Skapar ett lagringskonto. |
-| [`az storage container create`](/cli/azure/storage/container#az-storage-container-create) | Skapar en Azure-lagringscontainer. |
-| [`az storage container generate-sas`](/cli/azure/storage/container#az-storage-container-generate-sas) | Genererar en SAS-token för en Azure-lagringscontainer.  |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
-| [`az webapp config backup create`](/cli/azure/webapp/config/backup#az-webapp-config-backup-create) | Skapar en säkerhetskopia för en App Service-app. |
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Hämtar en lista med säkerhetskopior för en App Service-app. |
+| [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az storage account create`](/cli/azure/storage/account#az_storage_account_create) | Skapar ett lagringskonto. |
+| [`az storage container create`](/cli/azure/storage/container#az_storage_container_create) | Skapar en Azure-lagringscontainer. |
+| [`az storage container generate-sas`](/cli/azure/storage/container#az_storage_container_generate_sas) | Genererar en SAS-token för en Azure-lagringscontainer.  |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Skapar en App Service-app. |
+| [`az webapp config backup create`](/cli/azure/webapp/config/backup#az_webapp_config_backup_create) | Skapar en säkerhetskopia för en App Service-app. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | Hämtar en lista med säkerhetskopior för en App Service-app. |
 
 ## <a name="next-steps"></a>Nästa steg
 

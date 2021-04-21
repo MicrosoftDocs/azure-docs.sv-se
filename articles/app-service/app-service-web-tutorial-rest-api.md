@@ -5,17 +5,17 @@ ms.assetid: a820e400-06af-4852-8627-12b3db4a8e70
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/28/2020
-ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18, devx-track-azurecli
-ms.openlocfilehash: 098ee1c8aac343be5ffdbe90d18c886ef74ed72f
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.custom: devx-track-csharp, mvc, devcenter, seo-javascript-september2019, seo-javascript-october2019, seodec18
+ms.openlocfilehash: 6d2f4d8fc7a2a7011a2417467f7131c4cfb26edc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480879"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788231"
 ---
 # <a name="tutorial-host-a-restful-api-with-cors-in-azure-app-service"></a>Självstudie: Vara värd för en RESTful-API med CORS i Azure App Service
 
-[Azure App Service](overview.md) en mycket skalbar och självkorrigering av webbvärdtjänsten. Dessutom har App Service ett inbyggt stöd för [CORS (Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) för RESTful-API:er. Den här självstudien visar hur du distribuerar en ASP.NET Core API-app till App Service med CORS-stöd. Du konfigurerar appen med hjälp av kommandoradsverktyg och distribuerar appen med Git. 
+[Azure App Service](overview.md) en mycket skalbar och självkorrigeringstjänst för webbvärdtjänster. Dessutom har App Service ett inbyggt stöd för [CORS (Cross-Origin Resource Sharing)](https://wikipedia.org/wiki/Cross-Origin_Resource_Sharing) för RESTful-API:er. Den här självstudien visar hur du distribuerar en ASP.NET Core API-app till App Service med CORS-stöd. Du konfigurerar appen med hjälp av kommandoradsverktyg och distribuerar appen med Git. 
 
 I den här guiden får du lära dig att:
 
@@ -33,7 +33,7 @@ Du kan följa stegen i den här självstudien i macOS, Linux och Windows.
 För att slutföra den här kursen behöver du:
 
 * <a href="https://git-scm.com/" target="_blank">Installera Git</a>
- * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Installera den senaste SDK:n för .NET Core 3.1</a>
+ * <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Installera den senaste .NET Core 3.1 SDK</a>
 
 ## <a name="create-local-aspnet-core-app"></a>Skapa en lokal ASP.NET Core-app
 
@@ -160,7 +160,7 @@ Webbläsarappen bör ha en offentlig URL i stället för en localhost-URL i prod
 
 ### <a name="enable-cors"></a>Aktivera CORS 
 
-I Cloud Shell du CORS till klientens URL med hjälp av [`az webapp cors add`](/cli/azure/webapp/cors#az-webapp-cors-add) kommandot . Ersätt _&lt; platshållaren appnamn>_ namn.
+I Cloud Shell du CORS till klientens URL med hjälp av [`az webapp cors add`](/cli/azure/webapp/cors#az_webapp_cors_add) kommandot . Ersätt _&lt; platshållaren appnamn>_ namn.
 
 ```azurecli-interactive
 az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-origins 'http://localhost:5000'
@@ -169,7 +169,7 @@ az webapp cors add --resource-group myResourceGroup --name <app-name> --allowed-
 Du kan ange fler än en klient-URL i `properties.cors.allowedOrigins` (`"['URL1','URL2',...]"`). Du kan också aktivera alla klient-URL:er med `"['*']"`.
 
 > [!NOTE]
-> Om din app kräver att autentiseringsuppgifter såsom cookies eller autentiseringstoken skickas kan webbläsaren kräva huvudet `ACCESS-CONTROL-ALLOW-CREDENTIALS` i svaret. Om du vill aktivera App Service anger du `properties.cors.supportCredentials` till `true` i CORS-konfiguration. Detta kan inte aktiveras när `allowedOrigins` inkluderar `'*'` .
+> Om din app kräver att autentiseringsuppgifter såsom cookies eller autentiseringstoken skickas kan webbläsaren kräva huvudet `ACCESS-CONTROL-ALLOW-CREDENTIALS` i svaret. Om du vill aktivera detta App Service anger `properties.cors.supportCredentials` du till `true` i CORS-konfiguration. Detta kan inte aktiveras när `allowedOrigins` inkluderar `'*'` .
 
 ### <a name="test-cors-again"></a>Testa CORS igen
 
