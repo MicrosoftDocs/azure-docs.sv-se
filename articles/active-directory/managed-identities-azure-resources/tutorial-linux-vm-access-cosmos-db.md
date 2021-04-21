@@ -1,5 +1,5 @@
 ---
-title: Självstudie `:` Använd en hanterad identitet för att få åtkomst till Azure Cosmos DB – Linux – Azure AD
+title: Självstudie `:` om att använda en hanterad identitet för Azure Cosmos DB – Linux – Azure AD
 description: En självstudie som steg för steg beskriver hur du använder en systemtilldelad hanterad identitet för en virtuell Linux-dator för att få åtkomst till Azure Cosmos DB.
 services: active-directory
 documentationcenter: ''
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b81f80af69b47152f7111066070e173bb1ede5f4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca92658f6ba15d10bdc14f192b97f6e996ffe1c5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101093946"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771469"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Självstudie: Använda en systemtilldelad hanterad identitet för en virtuell Linux-dator för åtkomst till Azure Cosmos DB 
 
@@ -40,10 +40,10 @@ I den här självstudien lär du dig hur du använder en systemtilldelad hantera
 
 - Om du inte känner till funktionen för hanterade identiteter för Azure-resurser kan du läsa igenom den här [översikten](overview.md). 
 - Om du inte har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
-- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
-- Om du vill köra exempel skripten har du två alternativ:
-    - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.
-    - Kör skript lokalt genom att installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli)och logga sedan in på Azure med [AZ-inloggning](/cli/azure/reference-index#az-login). Använd ett konto som är kopplat till den Azure-prenumeration som du vill skapa resurser i.
+- För att du ska kunna utföra det resursskapande och den rollhantering som krävs måste ditt konto ha behörigheten ”Ägare” på lämpligt omfång (din prenumeration eller resursgrupp). Om du behöver hjälp med rolltilldelning kan du läsa Tilldela [Azure-roller för att hantera åtkomst till dina Azure-prenumerationsresurser.](../../role-based-access-control/role-assignments-portal.md)
+- Om du vill köra exempelskripten har du två alternativ:
+    - Använd den [Azure Cloud Shell](../../cloud-shell/overview.md), som du kan öppna med hjälp av **knappen Prova** i det övre högra hörnet av kodblock.
+    - Kör skript lokalt genom att installera den senaste versionen av [Azure CLI](/cli/azure/install-azure-cli)och logga sedan in på Azure med [az login](/cli/azure/reference-index#az_login). Använd ett konto som är associerat med den Azure-prenumeration där du vill skapa resurser.
 
 ## <a name="create-a-cosmos-db-account"></a>Skapa ett Cosmos DB-konto 
 
@@ -66,7 +66,7 @@ Lägg till en datasamling till Cosmos DB-kontot som du kan skicka frågor mot i 
 
 ## <a name="grant-access"></a>Bevilja åtkomst
 
-För att få åtkomst till åtkomstnycklarna för Cosmos DB-kontot från Resource Manager i följande avsnitt måste du hämta `principalID` för den virtuella Linux-datorns systemtilldelade hanterade identitet.  Se till att ersätta `<SUBSCRIPTION ID>` , `<RESOURCE GROUP>` (resurs gruppen där den virtuella datorn finns) och `<VM NAME>` parameter värden med dina egna värden.
+För att få åtkomst till åtkomstnycklarna för Cosmos DB-kontot från Resource Manager i följande avsnitt måste du hämta `principalID` för den virtuella Linux-datorns systemtilldelade hanterade identitet.  Se till att ersätta `<SUBSCRIPTION ID>` `<RESOURCE GROUP>` parametervärdena , (resursgruppen där den virtuella datorn finns) `<VM NAME>` och med dina egna värden.
 
 ```azurecli-interactive
 az resource show --id /subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Compute/virtualMachines/<VM NAMe> --api-version 2017-12-01
@@ -111,7 +111,7 @@ Svaret innehåller information om rolltilldelningen som skapats:
 
 ## <a name="access-data"></a>Åtkomst till data
 
-För resten av självstudien arbetar du från den virtuella datorn.
+Under resten av självstudien arbetar du från den virtuella datorn.
 
 För att slutföra de här stegen behöver du en SSH-klient. Om du använder Windows kan du använda SSH-klienten i [Windows-undersystemet för Linux](/windows/wsl/install-win10). Om du behöver hjälp att konfigurera SSH-klientens nycklar läser du [Så här använder du SSH-nycklar med Windows i Azure](../../virtual-machines/linux/ssh-from-windows.md) eller [How to create and use an SSH public and private key pair for Linux VMs in Azure](../../virtual-machines/linux/mac-create-ssh-keys.md) (Skapa och använda SSH-nyckelpar med privata och offentliga nycklar för virtuella Linux-datorer i Azure).
 
@@ -147,7 +147,7 @@ curl 'https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroup
 ```
 
 > [!NOTE]
-> Texten i föregående URL är Skift läges känslig, så Använd det Skift läge som matchar ärendet som används i namnet på din resurs grupp. Dessutom är det viktigt att du är medveten om att det här är en POST-begäran, inte en GET-begäran, samt att du skickar ett värde för att registrera en längdbegränsning med -d som kan vara NULL.  
+> Texten i den tidigare URL:en är fallkänslig, så använd det ärende som matchar det ärende som används i namnet på resursgruppen. Dessutom är det viktigt att du är medveten om att det här är en POST-begäran, inte en GET-begäran, samt att du skickar ett värde för att registrera en längdbegränsning med -d som kan vara NULL.  
 
 CURL-svaret returnerar listan med nycklar.  Om du till exempel hämtar de skrivskyddade nycklarna:  
 
@@ -227,4 +227,4 @@ Det här CLI-kommandot returnerar information om samlingen:
 I den här självstudien har du lärt dig hur du använder en systemtilldelad hanterad identitet på en virtuell Linux-dator för att få åtkomst till Cosmos DB.  Mer information om Cosmos DB finns här:
 
 > [!div class="nextstepaction"]
->[Översikt över Azure Cosmos DB](../../cosmos-db/introduction.md)
+>[Azure Cosmos DB översikt](../../cosmos-db/introduction.md)

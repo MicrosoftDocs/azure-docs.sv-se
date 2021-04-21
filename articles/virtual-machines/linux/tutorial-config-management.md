@@ -1,6 +1,6 @@
 ---
-title: Självstudie – hantera konfiguration av virtuella Linux-datorer i Azure
-description: I den här självstudien får du lära dig att identifiera ändringar och hantera paket uppdateringar på en virtuell Linux-dator
+title: Självstudie – Hantera konfiguration av virtuella Linux-datorer i Azure
+description: I den här självstudien lär du dig att identifiera ändringar och hantera paketuppdateringar på en virtuell Linux-dator
 services: virtual-machines
 documentationcenter: virtual-machines
 author: mgoedtel
@@ -16,16 +16,16 @@ ms.workload: infrastructure
 ms.date: 09/27/2019
 ms.author: magoedte
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 979cac8fd3d2c09443d52c9142a5e7c44127713a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 16e8cfd9c6b20e3a8d17ba335079b1b6fe8b499f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102552540"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785045"
 ---
-# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Självstudie: övervaka ändringar och uppdatera en virtuell Linux-dator i Azure
+# <a name="tutorial-monitor-changes-and-update-a-linux-virtual-machine-in-azure"></a>Självstudie: Övervaka ändringar och uppdatera en virtuell Linux-dator i Azure
 
-Med Azure [ändringsspårning](../../automation/change-tracking/overview.md) kan du enkelt identifiera ändringar och [uppdateringshantering](../../automation/update-management/overview.md) göra det möjligt att hantera operativ system uppdateringar för dina virtuella Azure Linux-datorer.
+Med [Azure Ändringsspårning](../../automation/change-tracking/overview.md) du enkelt identifiera ändringar och [Uppdateringshantering](../../automation/update-management/overview.md) kan du hantera uppdateringar av operativsystemet för dina virtuella Azure Linux-datorer.
 
 I den här guiden får du lära dig att:
 
@@ -35,17 +35,17 @@ I den här guiden får du lära dig att:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- I den här självstudien krävs version 2.0.30 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här självstudien kräver version 2.0.30 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-vm"></a>Skapa en virtuell dator
 
-Du behöver en virtuell dator för att kunna se diagnostik och mått i praktiken. Skapa först en resursgrupp med [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupMonitor* på platsen *eastus* (Östra USA).
+Du behöver en virtuell dator för att kunna se diagnostik och mått i praktiken. Skapa först en resursgrupp med [az group create](/cli/azure/group#az_group_create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupMonitor* på platsen *eastus* (Östra USA).
 
 ```azurecli-interactive
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-Skapa nu en virtuell dator med [az vm create](/cli/azure/vm#az-vm-create). Följande exempel skapar en virtuell dator som heter *myVM*, och SSH-nycklar skapas om de inte redan finns på *~/.ssh/*:
+Skapa nu en virtuell dator med [az vm create](/cli/azure/vm#az_vm_create). Följande exempel skapar en virtuell dator som heter *myVM*, och SSH-nycklar skapas om de inte redan finns på *~/.ssh/*:
 
 ```azurecli-interactive
 az vm create \
@@ -80,15 +80,15 @@ Om du vill utföra ytterligare åtgärder på virtuella datorer som kräver uppd
 
 Verifieringsprocessen kontrollerar också om den virtuella datorn har etablerats med Log Analytics-agenten och Automation Hybrid Runbook Worker. Den här agenten används för att kommunicera med den virtuella datorn och hämta information om uppdateringsstatus.
 
-Välj Log Analytics arbets yta och Automation-konto och välj **Aktivera** för att aktivera lösningen. Det tar upp till 15 minuter att aktivera lösningen.
+Välj Log Analytics-arbetsytan och Automation-kontot och välj **Aktivera** för att aktivera lösningen. Det tar upp till 15 minuter att aktivera lösningen.
 
 Om några av följande krav saknades under publiceringen läggs de till automatiskt:
 
-* [Log Analytics](../../azure-monitor/logs/log-query-overview.md) arbets yta
+* [Log Analytics-arbetsyta](../../azure-monitor/logs/log-query-overview.md)
 * [Automation-konto](../../automation/index.yml)
 * En [Hybrid runbook worker](../../automation/automation-hybrid-runbook-worker.md) aktiveras på den virtuella datorn
 
-Skärmen **Uppdateringshantering** öppnas. Konfigurera platsen, Log Analytics arbets ytan och automation-kontot som ska användas och välj **Aktivera**. Om fälten är nedtonade betyder det att någon annan automatiseringslösning är aktiverad för den virtuella datorn, och samma arbetsyta och Automation-konto måste användas.
+Skärmen **Uppdateringshantering** öppnas. Konfigurera platsen, Log Analytics-arbetsytan och Automation-kontot som ska användas och välj **Aktivera.** Om fälten är nedtonade betyder det att någon annan automatiseringslösning är aktiverad för den virtuella datorn, och samma arbetsyta och Automation-konto måste användas.
 
 ![Aktivera lösningen för hantering av uppdateringar](./media/tutorial-monitoring/manage-updates-update-enable.png)
 
@@ -106,22 +106,22 @@ För att installera uppdateringar schemalägger du en distribution som passar di
 
 Schemalägg en ny uppdateringsdistribution för den virtuella datorn genom att klicka på **Distribution av schemauppdatering** längst upp på skärmen **Hantering av uppdateringar**. På skärmen **Ny uppdateringsdistribution** anger du följande information:
 
-Om du vill skapa en ny uppdaterings distribution väljer du **Schemalägg uppdaterings distribution**. Sidan **ny uppdaterings distribution** öppnas. Ange värden för egenskaperna som beskrivs i följande tabell och klicka sedan på **skapa**:
+Om du vill skapa en ny uppdateringsdistribution väljer **du Schemalägg uppdateringsdistribution.** Sidan **Ny uppdateringsdistribution** öppnas. Ange värden för egenskaperna som beskrivs i följande tabell och klicka sedan på **Skapa**:
 
 | Egenskap | Beskrivning |
 | --- | --- |
 | Name |Unikt namn som identifierar uppdateringsdistributionen. |
 |Operativsystem| Linux eller Windows|
-| Grupper att uppdatera |För Azure-datorer definierar du en fråga baserat på en kombination av prenumeration, resurs grupper, platser och taggar för att skapa en dynamisk grupp med virtuella Azure-datorer som ska ingå i distributionen. </br></br>För datorer som inte är Azure-datorer väljer du en befintlig sparad sökning för att välja en grupp datorer som inte är Azure-datorer att inkludera i distributionen. </br></br>Mer information finns i [Dynamiska grupper](../../automation/update-management/configure-groups.md)|
+| Grupper som ska uppdateras |För Azure-datorer definierar du en fråga baserat på en kombination av prenumeration, resursgrupper, platser och taggar för att skapa en dynamisk grupp med virtuella Azure-datorer som ska ingå i distributionen. </br></br>För datorer som inte är Azure-datorer väljer du en befintlig sparad sökning för att välja en grupp datorer som inte är Azure-datorer som ska ingå i distributionen. </br></br>Mer information finns i [Dynamiska grupper](../../automation/update-management/configure-groups.md)|
 | Datorer som ska uppdateras |Välj en sparad sökning eller en importerad grupp, eller välj Dator i listrutan och välj enskilda datorer. Om du väljer **Datorer** visas beredskapen för datorn i kolumnen **Uppdatera agentberedskap**.</br> Information om de olika metoderna för att skapa datorgrupper i Azure Monitor-loggar finns i [datorgrupper i Azure Monitor-loggar](../../azure-monitor/logs/computer-groups.md) |
-|Klassificering av uppdateringar|Välj alla uppdaterings klassificeringar som du behöver|
-|Inkludera/exkludera uppdateringar|Då öppnas sidan **Inkludera/exkludera** . Uppdateringar som ska inkluderas eller exkluderas visas på en separat flik. Mer information om hur inkludering hanteras finns i [Schemalägga en uppdaterings distribution](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) |
-|Schemainställningar|Välj tid för start och välj antingen en gång eller återkommande för upprepningen|
-| Före skript + efter skript|Välj de skript som ska köras före och efter distributionen|
-| Underhålls period |Antal minuter som har angetts för uppdateringar. Värdet kan inte vara mindre än 30 minuter och högst 6 timmar |
-| Starta om kontroll| Fastställer hur omstarter ska hanteras. De tillgängliga alternativen är:</br>Starta om vid behov (standard)</br>Starta alltid om</br>Starta aldrig om</br>Endast omstart – uppdateringar installeras inte|
+|Klassificering av uppdateringar|Välj alla uppdateringsklassificeringarna som du behöver|
+|Inkludera/exkludera uppdateringar|Då öppnas sidan **Inkludera/exkludera.** Uppdateringar som ska inkluderas eller exkluderas visas på en separat flik. Mer information om hur inkludering hanteras finns i [Schemalägga en uppdateringsdistribution](../../automation/update-management/deploy-updates.md#schedule-an-update-deployment) |
+|Schemainställningar|Välj tidpunkt för start och välj antingen En gång eller återkommande för upprepningen|
+| Förskript + efterskript|Välj de skript som ska köras före och efter distributionen|
+| Underhållsperiod |Antal minuter som angetts för uppdateringar. Värdet får inte vara mindre än 30 minuter och högst 6 timmar |
+| Omstartskontroll| Avgör hur omstarter ska hanteras. De tillgängliga alternativen är:</br>Starta om vid behov (standard)</br>Starta alltid om</br>Starta aldrig om</br>Endast omstart – uppdateringar installeras inte|
 
-Uppdaterings distributioner kan också skapas program mässigt. Information om hur du skapar en uppdaterings distribution med REST API finns i [program uppdaterings konfiguration – skapa](/rest/api/automation/softwareupdateconfigurations/create). Det finns också en exempel-Runbook som kan användas för att skapa en veckovis uppdaterings distribution. Mer information om denna Runbook finns i [skapa en veckovis uppdaterings distribution för en eller flera virtuella datorer i en resurs grupp](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
+Uppdateringsdistributioner kan också skapas programmatiskt. Information om hur du skapar en uppdateringsdistribution med REST API finns i [Programuppdateringskonfigurationer – Skapa](/rest/api/automation/softwareupdateconfigurations/create). Det finns också en exempel-runbook som kan användas för att skapa en veckovis uppdateringsdistribution. Mer information om denna runbook finns i Skapa [en veckovis uppdateringsdistribution för en eller flera virtuella datorer i en resursgrupp.](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1)
 
 När du har konfigurerat schemat klickar du på **Skapa**. Därmed återgår du till statusinstrumentpanelen.
 Observera att tabellen **Schemalagt** visar det distributionsschema som du skapade.
@@ -138,9 +138,9 @@ Välj den slutförda uppdateringsdistributionen för att visa instrumentpanelen 
 På panelen för **uppdateringsresultat** visas en sammanfattning av det totala antalet uppdateringar och distributionsresultat för den virtuella datorn.
 I tabellen till höger visas detaljer för varje uppdatering och installationsresultaten, som kan ha ett av följande värden:
 
-* **Inget försök har gjorts** – uppdateringen installerades inte eftersom det inte fanns tillräckligt med tid baserat på den underhålls period som definierats.
-* **Lyckades** – uppdateringen är klar
-* **Misslyckades** -uppdateringen misslyckades
+* **Inget försök gjordes** – uppdateringen installerades inte eftersom det inte fanns tillräckligt med tid baserat på varaktigheten för underhållsperioden som definierats.
+* **Lyckades –** uppdateringen lyckades
+* **Misslyckades** – uppdateringen misslyckades
 
 Välj **Alla loggar** om du vill se alla loggposter som har skapats för distributionen.
 
@@ -160,7 +160,7 @@ Så här aktiverar du ändringsspårning och inventering för din virtuella dato
 2. Välj en virtuell dator i listan.
 3. Gå till avsnittet **Åtgärder** på VM-skärmen och klicka på **Inventering** eller **Ändringsspårning**. Skärmen **Aktivera ändringsspårning och inventering** öppnas.
 
-Konfigurera platsen, Log Analytics arbets ytan och automation-kontot som ska användas och välj **Aktivera**. Om fälten är nedtonade betyder det att någon annan automatiseringslösning är aktiverad för den virtuella datorn, och samma arbetsyta och Automation-konto måste användas. Trots att lösningarna är separata på menyn är de samma lösning. När du aktiverar den ena aktiveras båda för den virtuella datorn.
+Konfigurera platsen, Log Analytics-arbetsytan och Automation-kontot som ska användas och välj **Aktivera.** Om fälten är nedtonade betyder det att någon annan automatiseringslösning är aktiverad för den virtuella datorn, och samma arbetsyta och Automation-konto måste användas. Trots att lösningarna är separata på menyn är de samma lösning. När du aktiverar den ena aktiveras båda för den virtuella datorn.
 
 ![Aktivera Ändringsspårning och lager](./media/tutorial-monitoring/manage-inventory-enable.png)
 
@@ -192,14 +192,14 @@ Diagrammet visar ändringar som har skett över tid. När du har lagt till en ak
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du konfigurerat och granskat Ändringsspårning och Uppdateringshantering för den virtuella datorn. Du har lärt dig att:
+I den här självstudien har du konfigurerat och granskat Ändringsspårning och Uppdateringshantering för din virtuella dator. Du har lärt dig att:
 
 > [!div class="checklist"]
 > * Skapa en resursgrupp och virtuell dator
 > * Hantera Linux-uppdateringar
 > * Övervaka ändringar och inventering
 
-Gå vidare till nästa självstudie om du vill veta mer om övervakning av den virtuella datorn.
+Gå vidare till nästa självstudie om du vill lära dig hur du övervakar den virtuella datorn.
 
 > [!div class="nextstepaction"]
 > [Övervakning av virtuella datorer](/previous-versions/azure/virtual-machines/linux/tutorial-monitor)

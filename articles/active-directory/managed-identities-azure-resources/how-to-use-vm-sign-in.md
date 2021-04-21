@@ -1,6 +1,6 @@
 ---
 title: Använda hanterade identiteter på en virtuell Azure-dator för inloggning – Azure ADV
-description: Stegvisa instruktioner och exempel på hur du använder en Azure VM-hanterade identiteter för Azure-tjänstens huvud namn för inloggnings-och resurs åtkomst till skript klienter.
+description: Stegvisa instruktioner och exempel för att använda azure VM-hanterade identiteter för tjänstens huvudnamn för Azure-resurser för skriptklientens inloggning och resursåtkomst.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 01/29/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.custom: devx-track-azurecli
-ms.openlocfilehash: 61e83bd27c9434c4222e0161e3b643b183d1aa84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurecli, devx-track-azurepowershell
+ms.openlocfilehash: 59366f1a5b4bd0572af1b36f7be2f5bf91392660
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99090968"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784793"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Använda hanterade identiteter för Azure-resurser på en virtuell Azure-dator för inloggning 
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-msi-preview-notice.md)]  
-Den här artikeln innehåller exempel på PowerShell-och CLI-skript för inloggning med hanterade identiteter för Azure Resources-tjänstens huvud namn och rikt linjer för viktiga ämnen som fel hantering.
+Den här artikeln innehåller PowerShell- och CLI-skriptexempel för inloggning med hanterade identiteter för Tjänstens huvudnamn för Azure-resurser och vägledning om viktiga ämnen som felhantering.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
@@ -34,27 +34,27 @@ Den här artikeln innehåller exempel på PowerShell-och CLI-skript för inloggn
 
 [!INCLUDE [msi-qs-configure-prereqs](../../../includes/active-directory-msi-qs-configure-prereqs.md)]
 
-Om du planerar att använda Azure PowerShell-eller Azure CLI-exemplen i den här artikeln måste du installera den senaste versionen av [Azure PowerShell](/powershell/azure/install-az-ps) eller [Azure CLI](/cli/azure/install-azure-cli). 
+Om du planerar att använda Azure PowerShell eller Azure CLI-exemplen i den här artikeln måste du installera den senaste versionen [av Azure PowerShell](/powershell/azure/install-az-ps) eller [Azure CLI.](/cli/azure/install-azure-cli) 
 
 > [!IMPORTANT]
-> - Alla exempel skript i den här artikeln förutsätter att kommando rads klienten körs på en virtuell dator med hanterade identiteter för Azure-resurser aktiverade. Använd funktionen för att ansluta till den virtuella datorn i Azure Portal för att fjärrans luta till den virtuella datorn. Mer information om hur du aktiverar hanterade identiteter för Azure-resurser på en virtuell dator finns i [Konfigurera hanterade identiteter för Azure-resurser på en virtuell dator med hjälp av Azure Portal](qs-configure-portal-windows-vm.md)eller en av variant-artiklarna (med POWERSHELL, CLI, mall eller Azure SDK). 
-> - För att förhindra fel under resurs åtkomst måste den virtuella datorns hanterade identitet ges minst "läsare"-åtkomst i lämpligt omfång (den virtuella datorn eller högre) för att tillåta Azure Resource Manager åtgärder på den virtuella datorn. Mer information finns i [tilldela hanterade identiteter för Azure-resurser åtkomst till en resurs med hjälp av Azure Portal](howto-assign-access-portal.md) .
+> - Alla exempelskript i den här artikeln förutsätter att kommandoradsklienten körs på en virtuell dator med hanterade identiteter för Azure-resurser aktiverade. Använd funktionen "Anslut" för den virtuella datorn i Azure Portal för att fjärransluta till den virtuella datorn. Mer information om hur du aktiverar hanterade identiteter för Azure-resurser på en virtuell dator finns i Konfigurera hanterade identiteter för [Azure-resurser](qs-configure-portal-windows-vm.md)på en virtuell dator med hjälp av Azure Portal , eller någon av variantartiklarna (med PowerShell, CLI, en mall eller ett Azure SDK). 
+> - För att förhindra fel under resursåtkomst måste den virtuella datorns hanterade identitet ges minst "läsaråtkomst" i lämpligt omfång (den virtuella datorn eller högre) för att tillåta Azure Resource Manager på den virtuella datorn. Mer [information finns i Tilldela hanterade identiteter för Azure-resurser åtkomst till en Azure Portal](howto-assign-access-portal.md) resurs.
 
 ## <a name="overview"></a>Översikt
 
-Hanterade identiteter för Azure-resurser tillhandahåller ett [huvud namn för tjänsten](../develop/developer-glossary.md#service-principal-object) som [skapas när du aktiverar hanterade identiteter för Azure-resurser](overview.md) på den virtuella datorn. Tjänstens huvud namn kan ges åtkomst till Azure-resurser och används som identitet av skript-/kommando rads klienter för inloggning och resurs åtkomst. För att få åtkomst till skyddade resurser under sin egen identitet skulle en skript klient behöva:  
+Hanterade identiteter för Azure-resurser tillhandahåller ett [objekt](../develop/developer-glossary.md#service-principal-object) för tjänstens huvudnamn som skapas när du aktiverar hanterade identiteter [för Azure-resurser på](overview.md) den virtuella datorn. Tjänstens huvudnamn kan ges åtkomst till Azure-resurser och användas som en identitet av skript-/kommandoradsklienter för inloggning och resursåtkomst. För att få åtkomst till skyddade resurser med sin egen identitet skulle en skriptklient traditionellt behöva:  
 
-   - vara registrerad och meddelad med Azure AD som ett konfidentiellt/webb klient program
-   - Logga in under tjänstens huvud namn med hjälp av appens autentiseringsuppgifter (som troligen är inbäddade i skriptet)
+   - vara registrerad och godkännas med Azure AD som ett konfidentiellt klientprogram/webbklientprogram
+   - logga in under tjänstens huvudnamn med hjälp av appens autentiseringsuppgifter (som sannolikt är inbäddade i skriptet)
 
-Med hanterade identiteter för Azure-resurser behöver skript klienten inte längre göra något, eftersom den kan logga in under hanterade identiteter för Azure Resources-tjänstens huvud namn. 
+Med hanterade identiteter för Azure-resurser behöver inte skriptklienten längre göra något, eftersom den kan logga in under de hanterade identiteterna för tjänstens huvudnamn för Azure-resurser. 
 
 ## <a name="azure-cli"></a>Azure CLI
 
 Följande skript visar hur du:
 
-1. Logga in på Azure AD under den virtuella datorns hanterade identitet för Azure Resources-tjänstens huvud namn  
-2. Anropa Azure Resource Manager och hämta den virtuella datorns ID för tjänstens huvud namn. CLI sköter hanteringen av hämtning/användning av token automatiskt. Var noga med att ersätta namnet på den virtuella datorn för `<VM-NAME>` .  
+1. Logga in på Azure AD under den virtuella datorns hanterade identitet för tjänstens huvudnamn för Azure-resurser  
+2. Anropa Azure Resource Manager hämta den virtuella datorns ID för tjänstens huvudnamn. CLI tar hand om hanteringen av tokenförvärv/-användning automatiskt. Ersätt namnet på den virtuella datorn med `<VM-NAME>` .  
 
    ```azurecli
    az login --identity
@@ -67,8 +67,8 @@ Följande skript visar hur du:
 
 Följande skript visar hur du:
 
-1. Logga in på Azure AD under den virtuella datorns hanterade identitet för Azure Resources-tjänstens huvud namn  
-2. Anropa en Azure Resource Manager-cmdlet för att hämta information om den virtuella datorn. PowerShell tar hand om att hantera token-användning automatiskt.  
+1. Logga in på Azure AD under den virtuella datorns hanterade identitet för tjänstens huvudnamn för Azure-resurser  
+2. Anropa en Azure Resource Manager cmdlet för att få information om den virtuella datorn. PowerShell tar hand om hanteringen av tokenanvändning automatiskt.  
 
    ```azurepowershell
    Add-AzAccount -identity
@@ -79,19 +79,19 @@ Följande skript visar hur du:
    echo "The managed identity for Azure resources service principal ID is $spID"
    ```
 
-## <a name="resource-ids-for-azure-services"></a>Resurs-ID för Azure-tjänster
+## <a name="resource-ids-for-azure-services"></a>Resurs-ID:er för Azure-tjänster
 
-Se [Azure-tjänster som stöder Azure AD-autentisering](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) för en lista över resurser som stöder Azure AD och som har testats med hanterade identiteter för Azure-resurser och deras respektive resurs-ID.
+En [lista över resurser som](services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication) stöder Azure AD och som har testats med hanterade identiteter för Azure-resurser och deras respektive resurs-ID finns i Azure-tjänster som stöder Azure AD-autentisering.
 
-## <a name="error-handling-guidance"></a>Vägledning för fel hantering 
+## <a name="error-handling-guidance"></a>Vägledning för felhantering 
 
-Svar som följande kan tyda på att den virtuella datorns hanterade identitet för Azure-resurser inte har kon figurer ATS korrekt:
+Svar som följande kan indikera att den virtuella datorns hanterade identitet för Azure-resurser inte har konfigurerats korrekt:
 
-- PowerShell: *Invoke-WebRequest: det går inte att ansluta till fjärrservern*
-- CLI: *MSI: det gick inte att hämta en token från `http://localhost:50342/oauth2/token` med felet ' HTTPConnectionPool (Host = ' localhost ', Port = 50342)* 
+- PowerShell: *Invoke-WebRequest: Det går inte att ansluta till fjärrservern*
+- CLI: MSI: Det gick inte att hämta en token från med felet *`http://localhost:50342/oauth2/token` "HTTPConnectionPool(host='localhost', port=50342)* 
 
-Om du får ett av dessa fel kan du gå tillbaka till den virtuella Azure-datorn i [Azure Portal](https://portal.azure.com) och gå till sidan **identitet** och se till att **tilldelat system** är inställt på "Ja".
+Om du får något av dessa fel går du tillbaka till den  virtuella Azure-datorn [i Azure Portal](https://portal.azure.com) och går till sidan Identitet och ser till att System assigned (System **assigned)** är inställt på "Yes" (Ja).
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du vill aktivera hanterade identiteter för Azure-resurser på en virtuell Azure-dator, se [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med hjälp av PowerShell](qs-configure-powershell-windows-vm.md)eller [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator](qs-configure-cli-windows-vm.md)
+- Information om hur du aktiverar hanterade identiteter för Azure-resurser på en virtuell Azure-dator finns i Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med Hjälp av [PowerShell](qs-configure-powershell-windows-vm.md)eller Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med Hjälp av [Azure CLI](qs-configure-cli-windows-vm.md)

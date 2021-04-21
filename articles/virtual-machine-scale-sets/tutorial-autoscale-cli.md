@@ -1,5 +1,5 @@
 ---
-title: Självstudie – Autoskala en skalnings uppsättning med Azure CLI
+title: Självstudie – Autoskala en skalningsuppsättning med Azure CLI
 description: Läs hur du använder Azure CLI för att automatiskt skala en VM-skalningsuppsättning allteftersom CPU-kraven varierar
 author: ju-shim
 ms.author: jushiman
@@ -9,12 +9,12 @@ ms.subservice: autoscale
 ms.date: 05/18/2018
 ms.reviewer: avverma
 ms.custom: avverma, devx-track-azurecli
-ms.openlocfilehash: 68f311a949d6c7663c5602c444d1b7b9af09dcad
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b7fdf6d4893a6f6a970223671b28fdae6db3ef3d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96016734"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763000"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Självstudie: Skala en VM-skalningsuppsättning automatiskt med Azure CLI
 
@@ -30,7 +30,7 @@ När du skapar en skalningsuppsättning, definierar du antalet virtuella datorin
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- I den här självstudien krävs version 2.0.32 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här självstudien kräver version 2.0.32 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-scale-set"></a>Skapa en skalningsuppsättning
 
@@ -55,7 +55,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Definiera en autoskalningsprofil
 
-Om du vill aktivera autoskalning för en skalningsuppsättning börjar du med att definiera en autoskalningsprofil. Den här profilen definierar skalningsuppsättningens förvalda, lägsta och högsta kapacitet. Med hjälp av dessa restriktioner kan du begränsa kostnaderna genom att inte skapa VM-instanser kontinuerligt, samtidigt som du kan balansera godtagbara prestanda med minsta antal instanser som bevaras vid en nedskalning. Skapa en autoskalningsprofil med [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create). Följande exempel anger standard-och minimum kapacitet på *2* virtuella dator instanser och högst *10*:
+Om du vill aktivera autoskalning för en skalningsuppsättning börjar du med att definiera en autoskalningsprofil. Den här profilen definierar skalningsuppsättningens förvalda, lägsta och högsta kapacitet. Med hjälp av dessa restriktioner kan du begränsa kostnaderna genom att inte skapa VM-instanser kontinuerligt, samtidigt som du kan balansera godtagbara prestanda med minsta antal instanser som bevaras vid en nedskalning. Skapa en autoskalningsprofil med [az monitor autoscale create](/cli/azure/monitor/autoscale#az_monitor_autoscale_create). I följande exempel anges standard- och minimikapaciteten för *2* VM-instanser och högst *10*:
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -72,7 +72,7 @@ az monitor autoscale create \
 
 Om dina programkrav ökar, ökar även belastningen på de virtuella datorinstanserna i din skalningsuppsättning. Om den här ökade belastningen är konsekvent istället för bara en kortsiktig efterfrågan, kan du konfigurera regler för automatisk skalning för att öka antalet virtuella datorinstanser i skalningsuppsättningen. När dessa virtuella datorinstanser skapas och dina program distribueras, börjar skalningsuppsättningen att distribuera trafik till dem via lastbalanseraren. Du kan styra vilka mått som ska övervakas, som CPU eller disk, hur länge programbelastningen måste uppfylla ett visst tröskelvärde och hur många virtuella datorinstanser som ska läggas till skalningsuppsättningen.
 
-Nu ska vi skapa en regel med [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) som ökar antalet VM-instanser i en skalningsuppsättning när den genomsnittliga CPU-belastningen är större än 70 % under en 5-minutersperiod. När regeln utlöses, ökar antalet virtuella datorinstanser med tre.
+Nu ska vi skapa en regel med [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az_monitor_autoscale_rule_create) som ökar antalet VM-instanser i en skalningsuppsättning när den genomsnittliga CPU-belastningen är större än 70 % under en 5-minutersperiod. När regeln utlöses, ökar antalet virtuella datorinstanser med tre.
 
 ```azurecli-interactive
 az monitor autoscale rule create \
@@ -86,7 +86,7 @@ az monitor autoscale rule create \
 
 På kvällar eller helger, kan efterfrågan på ditt program minska. Om den här minskade belastningen är konsekvent över en tidsperiod, kan du konfigurera regler för automatisk skalning för att minska antalet virtuella datorinstanser i skalningsuppsättningen. Den här åtgärden för skala in minskar kostnaden för att köra din skalningsuppsättningen eftersom du bara köra de antal instanser som krävs för att uppfylla den aktuella efterfrågan.
 
-Skapa en till regel med [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az-monitor-autoscale-rule-create) som minskar antalet VM-instanser i en skalningsuppsättning när den genomsnittliga CPU-belastningen faller under 30 % under en 5-minutersperiod. Följande exempel definierar regeln för att skala ned antalet VM-instanser med en:
+Skapa en till regel med [az monitor autoscale rule create](/cli/azure/monitor/autoscale/rule#az_monitor_autoscale_rule_create) som minskar antalet VM-instanser i en skalningsuppsättning när den genomsnittliga CPU-belastningen faller under 30 % under en 5-minutersperiod. Följande exempel definierar regeln för att skala ned antalet VM-instanser med en:
 
 ```azurecli-interactive
 az monitor autoscale rule create \
@@ -202,7 +202,7 @@ Avsluta *watch* med `Ctrl-c`. Skalningsuppsättningen fortsätter att skala in v
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Ta bort din skalnings uppsättning och ytterligare resurser genom att ta bort resurs gruppen och alla dess resurser med [AZ Group Delete](/cli/azure/group). Parametern `--no-wait` återför kontrollen till kommandotolken utan att vänta på att uppgiften slutförs. Parametern `--yes` bekräftar att du vill ta bort resurserna utan att tillfrågas ytterligare en gång.
+Om du vill ta bort din skalningsuppsättning och ytterligare resurser tar du bort resursgruppen och alla dess resurser med [az group delete](/cli/azure/group). Parametern `--no-wait` återför kontrollen till kommandotolken utan att vänta på att uppgiften slutförs. Parametern `--yes` bekräftar att du vill ta bort resurserna utan att tillfrågas ytterligare en gång.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

@@ -4,12 +4,12 @@ description: Konfigurera en dedikerad beräkningspool (agentpool) i registret f�
 ms.topic: article
 ms.date: 10/12/2020
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21db066b3f18106938d11fbd8e2cfe688c1ef276
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: c23d2ab866f621db27488860ab62a41765faef40
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389561"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763711"
 ---
 # <a name="run-an-acr-task-on-a-dedicated-agent-pool"></a>Köra en ACR-uppgift på en dedikerad agentpool
 
@@ -38,7 +38,7 @@ Den här funktionen är tillgänglig på **tjänstnivån** premiumcontainerregis
 ## <a name="prerequisites"></a>Förutsättningar
 
 * Om du vill använda Azure CLI-stegen i den här artikeln krävs Azure CLI version 2.3.1 eller senare. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli]. Eller kör i [Azure Cloud Shell](../cloud-shell/quickstart.md).
-* Om du inte redan har ett containerregister skapar du ett [(Premium-nivå][create-reg-cli] krävs) i en förhandsversionsregion.
+* Om du inte redan har ett containerregister skapar du [ett (Premium-nivå][create-reg-cli] krävs) i en förhandsversionsregion.
 
 ## <a name="pool-tiers"></a>Poolnivåer
 
@@ -102,7 +102,7 @@ Uppgiftsagentpooler kräver åtkomst till följande Azure-tjänster. Följande b
 | Utgående  | TCP      | VirtualNetwork | Valfri         | AzureMonitor         | 443       | Standardvärde |
 
 > [!NOTE]
-> Om dina uppgifter kräver ytterligare resurser från det offentliga Internet lägger du till motsvarande regler. Ytterligare regler krävs till exempel för att köra en docker-build-uppgift som hämtar basavbildningarna från Docker Hub, eller återställer ett NuGet-paket.
+> Om dina uppgifter kräver ytterligare resurser från det offentliga Internet lägger du till motsvarande regler. Ytterligare regler behövs till exempel för att köra en docker-build-uppgift som hämtar basavbildningarna från Docker Hub, eller återställer ett NuGet-paket.
 
 ### <a name="create-pool-in-vnet"></a>Skapa pool i VNet
 
@@ -122,17 +122,17 @@ az acr agentpool create \
     --subnet-id $subnetId
 ```
 
-## <a name="run-task-on-agent-pool"></a>Köra uppgiften på agentpoolen
+## <a name="run-task-on-agent-pool"></a>Kör aktivitet på agentpoolen
 
 I följande exempel visas hur du anger en agentpool när du köar en uppgift.
 
 > [!NOTE]
-> Om du vill använda en agentpool i en ACR-uppgift ser du till att poolen innehåller minst 1 instans.
+> Om du vill använda en agentpool i en ACR-uppgift måste du se till att poolen innehåller minst 1 instans.
 >
 
 ### <a name="quick-task"></a>Snabbuppgift
 
-Köa en snabbuppgift i agentpoolen med hjälp av [kommandot az acr build][az-acr-build] och skicka `--agent-pool` parametern :
+Köa en snabbuppgift i agentpoolen med hjälp av [kommandot az acr build][az-acr-build] och skicka `--agent-pool` parametern:
 
 ```azurecli
 az acr build \
@@ -176,7 +176,7 @@ az acr agentpool show \
 
 ## <a name="next-steps"></a>Nästa steg
 
-Fler exempel på containeravbildningsbyggen och underhåll i molnet finns i ACR-uppgifter [självstudieserien](container-registry-tutorial-quick-task.md).
+Fler exempel på containeravbildningsbyggen och underhåll i molnet finns i [självstudieserien ACR-uppgifter](container-registry-tutorial-quick-task.md).
 
 
 
@@ -185,11 +185,11 @@ Fler exempel på containeravbildningsbyggen och underhåll i molnet finns i ACR-
 [azure-cli]:           /cli/azure/install-azure-cli
 [open-support-ticket]: https://aka.ms/acr/support/create-ticket
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
-[az-configure]: /cli/azure#az-configure
-[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az-acr-agentpool-create
-[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az-acr-agentpool-update
-[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az-acr-agentpool-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
+[az-configure]: /cli/azure#az_configure
+[az-acr-agentpool-create]: /cli/azure/acr/agentpool#az_acr_agentpool_create
+[az-acr-agentpool-update]: /cli/azure/acr/agentpool#az_acr_agentpool_update
+[az-acr-agentpool-show]: /cli/azure/acr/agentpool#az_acr_agentpool_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
 [create-reg-cli]: container-registry-get-started-azure-cli.md

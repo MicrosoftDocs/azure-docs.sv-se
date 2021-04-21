@@ -1,17 +1,17 @@
 ---
-title: Snabb start – skapa register – Azure CLI
+title: Snabbstart – Skapa register – Azure CLI
 description: Lär dig snabbt att skapa ett privat Docker-containerregister med Azure CLI.
 ms.topic: quickstart
 ms.date: 06/12/2020
 ms.custom: seodec18, H1Hack27Feb2017, mvc, devx-track-azurecli
-ms.openlocfilehash: 226e50aec8f7c76a1b4c81d1a07d57583059ef0e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c313ab43fd3dc18acf8261730686a4d6657291d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96020083"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783799"
 ---
-# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snabb start: skapa ett privat behållar register med hjälp av Azure CLI
+# <a name="quickstart-create-a-private-container-registry-using-the-azure-cli"></a>Snabbstart: Skapa ett privat containerregister med hjälp av Azure CLI
 
 Azure Container Registry är en hanterad Docker-behållarregistertjänst som används för att lagra privata Docker-behållaravbildningar. Den här guiden beskriver hur du skapar en Azure Container Registry-instans med hjälp av Azure CLI. Använd därefter Docker-kommandon för att skicka en containeravbildning till registret, och hämta och kör avbildningen slutligen från registret.
 
@@ -33,7 +33,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Skapa ett containerregister
 
-I den här snabbstarten skapar du ett *Basic*-register, vilket är ett kostnadsoptimerat alternativ för utvecklare som lär sig om Azure Container Registry. Mer information om tillgängliga tjänst nivåer finns i [tjänste nivåer för container Registry][container-registry-skus].
+I den här snabbstarten skapar du ett *Basic*-register, vilket är ett kostnadsoptimerat alternativ för utvecklare som lär sig om Azure Container Registry. Mer information om tillgängliga tjänstnivåer finns i [Tjänstnivåer för Container Registry.][container-registry-skus]
 
 Skapa en ACR-instans med hjälp av kommandot [az acr create][az-acr-create]. Registernamnet måste vara unikt i Azure och innehålla 5–50 alfanumeriska tecken. I följande exempel används *myContainerRegistry007*. Uppdatera det här till ett unikt värde.
 
@@ -65,11 +65,11 @@ När registret har skapats ser utdata ut ungefär så här:
 }
 ```
 
-Anteckna `loginServer` i utdata, vilket är de fullständigt kvalificerade registernamnet (endast gemener). I resten av den här snabb starten `<registry-name>` är en plats hållare för behållar register namnet och `<login-server>` är en plats hållare för registrerings serverns inloggnings Server namn.
+Anteckna `loginServer` i utdata, vilket är de fullständigt kvalificerade registernamnet (endast gemener). I resten av den här snabbstarten är en platshållare för containerregistrets namn och är en platshållare för `<registry-name>` `<login-server>` registrets inloggningsservernamn.
 
 ## <a name="log-in-to-registry"></a>Logga in till registret
 
-Innan du skickar och hämtar containeravbildningar måste du logga in i registret. Det gör du med hjälp av kommandot [az acr login][az-acr-login]. Ange bara register namnet när du loggar in med Azure CLI. Använd inte namnet på inloggnings servern, som innehåller ett domänsuffix som `azurecr.io` . 
+Innan du skickar och hämtar containeravbildningar måste du logga in i registret. Det gör du med hjälp av kommandot [az acr login][az-acr-login]. Ange endast registernamnet när du loggar in med Azure CLI. Använd inte inloggningsservernamnet, som innehåller ett domänsuffix som `azurecr.io` . 
 
 ```azurecli
 az acr login --name <registry-name>
@@ -101,7 +101,7 @@ Result
 hello-world
 ```
 
-I följande exempel visas taggarna i databasen **Hello-World** .
+I följande exempel visas taggarna på **hello-world-lagringsplatsen.**
 
 ```azurecli
 az acr repository show-tags --name <registry-name> --repository hello-world --output table
@@ -133,7 +133,7 @@ I den här snabbstarten skapade du ett Azure Container Registry med Azure CLI, p
 > [Självstudier för Azure Container Registry][container-registry-tutorial-prepare-registry]
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry uppgifter – självstudier][container-registry-tutorial-quick-task]
+> [Azure Container Registry-uppgifter självstudier][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -146,10 +146,10 @@ I den här snabbstarten skapade du ett Azure Container Registry med Azure CLI, p
 [docker-windows]: https://docs.docker.com/docker-for-windows/
 
 <!-- LINKS - internal -->
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md
 [container-registry-skus]: container-registry-skus.md

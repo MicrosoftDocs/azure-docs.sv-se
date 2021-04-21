@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: ce982b38faa72978e1b043d374a333b68aca80b6
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107374751"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772099"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Självstudie: Använda Azure Key Vault med en virtuell dator i .NET
 
@@ -115,7 +115,7 @@ xxxxxxxx-xx-xxxxxx   xxxxxxxx-xxxx-xxxx   SystemAssigned
 ---
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>Tilldela behörigheter till den virtuella datorns identitet
-Tilldela de tidigare skapade identitetsbehörigheterna till nyckelvalvet med [kommandot az keyvault set-policy:](/cli/azure/keyvault#az-keyvault-set-policy)
+Tilldela de tidigare skapade identitetsbehörigheterna till nyckelvalvet med [kommandot az keyvault set-policy:](/cli/azure/keyvault#az_keyvault_set_policy)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 ```azurecli
@@ -138,13 +138,13 @@ Skapa en konsolapp och installera de nödvändiga paketen med hjälp av `dotnet`
 
 ### <a name="install-net-core"></a>Installera .NET Core
 
-Om du vill installera .NET Core går du till [nedladdningssidan för .NET.](https://www.microsoft.com/net/download)
+Om du vill installera .NET Core går du till [sidan för .NET-nedladdningar.](https://www.microsoft.com/net/download)
 
 ### <a name="create-and-run-a-sample-net-app"></a>Skapa och köra en .NET-exempelapp
 
 Öppna en kommandotolk.
 
-Du kan skriva Hello World till konsolen genom att köra följande kommandon:
+Du kan skriva ut Hello World till konsolen genom att köra följande kommandon:
 
 ```console
 dotnet new console -n keyvault-console-app

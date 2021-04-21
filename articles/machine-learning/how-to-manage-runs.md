@@ -1,7 +1,7 @@
 ---
-title: Starta, övervaka och avbryta inlärnings körningar i python
+title: Starta, övervaka och avbryta träningskörningar i Python
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du startar, övervakar och spårar dina Machine Learning-experiment körs med Azure Machine Learning python SDK.
+description: Lär dig hur du startar, övervakar och spårar dina maskininlärningsexperimentkörningar med Azure Machine Learning Python SDK.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -12,58 +12,58 @@ ms.reviewer: nibaccam
 ms.date: 03/04/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: f148a5b267edd3fc1dd33ef17d5ad01005b4a903
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 202278d6436439a212dda229f209ab8fb75db596
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105566293"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752344"
 ---
-# <a name="start-monitor-and-track-run-history"></a>Starta, övervaka och spåra körnings historik 
+# <a name="start-monitor-and-track-run-history"></a>Starta, övervaka och spåra körningshistorik 
 
-[Azure Machine Learning SDK för python](/python/api/overview/azure/ml/intro), [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning Studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och spåra dina körningar för utbildning och experimentering. Din ML-körning är en viktig del av en förklarad och upprepnings bar ML-utvecklings process.
+Sdk [Azure Machine Learning för Python,](/python/api/overview/azure/ml/intro) [Machine Learning CLI](reference-azure-machine-learning-cli.md)och [Azure Machine Learning-studio](https://ml.azure.com) tillhandahåller olika metoder för att övervaka, organisera och spåra körningar för träning och experimentering. Din ML-körningshistorik är en viktig del av en förklarande och repeterbar ML-utvecklingsprocess.
 
 Den här artikeln visar hur du utför följande uppgifter:
 
-* Övervaka körnings prestanda.
-* Övervaka körnings statusen per e-postavisering.
+* Övervaka körningsprestanda.
+* Övervaka körningsstatusen via e-postavisering.
 * Tagga och hitta körningar.
-* Lägg till en körnings beskrivning. 
-* Kör sökningen över din körnings historik. 
-* Avbryt eller kör inte.
+* Lägg till en körningsbeskrivning. 
+* Kör en sökning över din körningshistorik. 
+* Avbryt eller misslyckas körningar.
 * Skapa underordnade körningar.
  
 
 > [!TIP]
-> Om du vill ha information om hur du övervakar Azure Machine Learning tjänsten och tillhör ande Azure-tjänster, se [övervaka Azure Machine Learning](monitor-azure-machine-learning.md).
-> Om du letar efter information om övervaknings modeller som har distribuerats som webb tjänster eller IoT Edge moduler, se [samla in modell data](how-to-enable-data-collection.md) och [övervaka med Application Insights](how-to-enable-app-insights.md).
+> Om du letar efter information om övervakning av Azure Machine Learning Service associerade Azure-tjänster kan du gå [till Så här övervakar du Azure Machine Learning](monitor-azure-machine-learning.md).
+> Om du letar efter information om övervakningsmodeller som distribueras som webbtjänster eller IoT Edge-moduler kan du gå till Samla in [modelldata](how-to-enable-data-collection.md) och [Övervaka med Application Insights](how-to-enable-app-insights.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du behöver följande objekt:
+Du behöver följande:
 
-* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree) idag.
+* En Azure-prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt konto innan du börjar. Prova den [kostnadsfria eller betalda versionen Azure Machine Learning](https://aka.ms/AMLFree) idag.
 
-* En [Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
+* En [Azure Machine Learning arbetsyta](how-to-manage-workspace.md).
 
-* Azure Machine Learning SDK för python (version 1.0.21 eller senare). Information om hur du installerar eller uppdaterar till den senaste versionen av SDK finns i [Installera eller uppdatera SDK](/python/api/overview/azure/ml/install).
+* Den Azure Machine Learning SDK för Python (version 1.0.21 eller senare). Information om hur du installerar eller uppdaterar till den senaste versionen av SDK finns [i Installera eller uppdatera SDK.](/python/api/overview/azure/ml/install)
 
-    Använd följande kod för att kontrol lera din version av Azure Machine Learning SDK:
+    Om du vill kontrollera din version Azure Machine Learning SDK använder du följande kod:
 
     ```python
     print(azureml.core.VERSION)
     ```
 
-* [Azure CLI](/cli/azure/?preserve-view=true&view=azure-cli-latest) -och [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
+* [Azure CLI och](/cli/azure/?preserve-view=true&view=azure-cli-latest) [CLI-tillägget för Azure Machine Learning](reference-azure-machine-learning-cli.md).
 
 
-## <a name="monitor-run-performance"></a>Övervaka körnings prestanda
+## <a name="monitor-run-performance"></a>Övervaka körningsprestanda
 
-* Starta en körning och dess loggnings process
+* Starta en körning och dess loggningsprocess
 
     # <a name="python"></a>[Python](#tab/python)
     
-    1. Konfigurera experimentet genom att importera [arbets ytan](/python/api/azureml-core/azureml.core.workspace.workspace), [experimentet](/python/api/azureml-core/azureml.core.experiment.experiment), [körnings](/python/api/azureml-core/azureml.core.run%28class%29)-och [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) -klasserna från [azureml. Core](/python/api/azureml-core/azureml.core) -paketet.
+    1. Konfigurera experimentet genom att importera [klasserna Workspace](/python/api/azureml-core/azureml.core.workspace.workspace), [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment), [Run](/python/api/azureml-core/azureml.core.run%28class%29)och [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig) från [paketet azureml.core.](/python/api/azureml-core/azureml.core)
     
         ```python
         import azureml.core
@@ -74,7 +74,7 @@ Du behöver följande objekt:
         exp = Experiment(workspace=ws, name="explore-runs")
         ```
     
-    1. Starta en körning och dess loggnings process med- [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) metoden.
+    1. Starta en körning och dess loggningsprocess med [`start_logging()`](/python/api/azureml-core/azureml.core.experiment%28class%29#start-logging--args----kwargs-) metoden .
     
         ```python
         notebook_run = exp.start_logging()
@@ -83,9 +83,9 @@ Du behöver följande objekt:
         
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     
-    Gör så här för att starta en körning av experimentet:
+    Använd följande steg för att starta en körning av experimentet:
     
-    1. Använd Azure CLI från ett gränssnitt eller en kommando tolk för att autentisera till din Azure-prenumeration:
+    1. Från ett gränssnitt eller en kommandotolk använder du Azure CLI för att autentisera till din Azure-prenumeration:
     
         ```azurecli-interactive
         az login
@@ -93,34 +93,34 @@ Du behöver följande objekt:
         
         [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
     
-    1. Koppla en arbets ytans konfiguration till den mapp som innehåller ditt utbildnings skript. Ersätt `myworkspace` med din Azure Machine Learning-arbetsyta. Ersätt `myresourcegroup` med Azure-resurs gruppen som innehåller din arbets yta:
+    1. Bifoga en arbetsytekonfiguration till mappen som innehåller träningsskriptet. Ersätt `myworkspace` med din Azure Machine Learning arbetsyta. Ersätt `myresourcegroup` med den Azure-resursgrupp som innehåller din arbetsyta:
     
         ```azurecli-interactive
         az ml folder attach -w myworkspace -g myresourcegroup
         ```
     
-        Det här kommandot skapar en `.azureml` under katalog som innehåller exempel på runconfig-och Conda-miljöfiler. Den innehåller också en `config.json` fil som används för att kommunicera med din Azure Machine Learning-arbetsyta.
+        Det här kommandot skapar `.azureml` en underkatalog som innehåller exempel på runconfig- och conda-miljöfiler. Den innehåller också en `config.json` fil som används för att kommunicera med Azure Machine Learning arbetsyta.
     
-        Mer information finns i [AZ ml Folder Attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
+        Mer information finns i [az ml folder attach](/cli/azure/ext/azure-cli-ml/ml/folder?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
     
-    2. Starta körningen med hjälp av följande kommando. När du använder det här kommandot anger du namnet på runconfig-filen (texten före \* . runconfig om du tittar på ditt fil system) mot parametern-c.
+    2. Starta körningen med hjälp av följande kommando. När du använder det här kommandot anger du namnet på runconfig-filen (texten före .runconfig om du tittar på filsystemet) mot \* parametern -c.
     
         ```azurecli-interactive
         az ml run submit-script -c sklearn -e testexperiment train.py
         ```
     
         > [!TIP]
-        > `az ml folder attach`Kommandot skapade en `.azureml` under katalog, som innehåller två exempel runconfig-filer.
+        > Kommandot `az ml folder attach` skapade en `.azureml` underkatalog som innehåller två runconfig-exempelfiler.
         >
-        > Om du har ett Python-skript som skapar ett kör konfigurations objekt program mässigt kan du använda [RunConfig. Save ()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) för att spara det som en RunConfig-fil.
+        > Om du har ett Python-skript som skapar ett körningskonfigurationsobjekt programmatiskt kan du använda [RunConfig.save()](/python/api/azureml-core/azureml.core.runconfiguration#save-path-none--name-none--separate-environment-yaml-false-) för att spara det som en runconfig-fil.
         >
-        > Fler exempel på runconfig-filer finns i [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
+        > Mer exempel på runconfig-filer finns i [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
     
-        Mer information finns i [AZ ml Run Submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
+        Mer information finns i [az ml run submit-script](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
     # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-    Ett exempel på hur du tränar en modell i Azure Machine Learning Designer finns i [Självstudier: förutsäga bil priser med designern](tutorial-designer-automobile-price-train-score.md).
+    Ett exempel på hur du tränar en modell i Azure Machine Learning designern finns [i Självstudie: Förutsäga bilpriser med designern](tutorial-designer-automobile-price-train-score.md).
 
     ---
 
@@ -128,26 +128,26 @@ Du behöver följande objekt:
 
     # <a name="python"></a>[Python](#tab/python)
     
-    * Hämta status för en körning med- [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29#get-status--) metoden.
+    * Hämta status för en körning med [`get_status()`](/python/api/azureml-core/azureml.core.run%28class%29#get-status--) metoden .
     
         ```python
         print(notebook_run.get_status())
         ```
     
-    * Använd-metoden för att hämta körnings-ID, körnings tid och annan information om körningen [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) .
+    * Om du vill hämta körnings-ID, körningstid och annan information om körningen använder du [`get_details()`](/python/api/azureml-core/azureml.core.workspace.workspace#get-details--) metoden .
     
         ```python
         print(notebook_run.get_details())
         ```
     
-    * När körningen har slutförts använder du [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) metoden för att markera den som slutförd.
+    * När körningen är klar använder du metoden [`complete()`](/python/api/azureml-core/azureml.core.run%28class%29#complete--set-status-true-) för att markera den som slutförd.
     
         ```python
         notebook_run.complete()
         print(notebook_run.get_status())
         ```
     
-    * Om du använder python `with...as` : s design mönster markeras körningen automatiskt som slutförd när körningen är utanför omfånget. Du behöver inte markera kör som slutförd manuellt.
+    * Om du använder Pythons `with...as` designmönster markeras körningen automatiskt som slutförd när körningen ligger utanför omfånget. Du behöver inte manuellt markera körningen som slutförd.
         
         ```python
         with exp.start_logging() as notebook_run:
@@ -159,92 +159,92 @@ Du behöver följande objekt:
     
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     
-    * Om du vill visa en lista över körningar för experimentet använder du följande kommando. Ersätt `experiment` med namnet på ditt experiment:
+    * Om du vill visa en lista över körningar för experimentet använder du följande kommando. Ersätt `experiment` med namnet på experimentet:
     
         ```azurecli-interactive
         az ml run list --experiment-name experiment
         ```
     
-        Det här kommandot returnerar ett JSON-dokument som visar information om körningar för det här experimentet.
+        Det här kommandot returnerar ett JSON-dokument som innehåller information om körningar för det här experimentet.
     
-        Mer information finns i [AZ ml experiment List](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
+        Mer information finns i [az ml experiment list](/cli/azure/ext/azure-cli-ml/ml/experiment?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-experiment-list).
     
-    * Använd följande kommando om du vill visa information om en speciell körning. Ersätt `runid` med ID: t för körningen:
+    * Om du vill visa information om en specifik körning använder du följande kommando. Ersätt `runid` med ID:t för körningen:
     
         ```azurecli-interactive
         az ml run show -r runid
         ```
     
-        Det här kommandot returnerar ett JSON-dokument som visar information om körningen.
+        Det här kommandot returnerar ett JSON-dokument som innehåller information om körningen.
     
-        Mer information finns i [AZ ml Run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
+        Mer information finns i [az ml run show](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-show).
     
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
     Så här visar du dina körningar i Studio: 
     
-    1. Gå till fliken **experiment** .
+    1. Gå till **fliken Experiment.**
     
-    1. Välj antingen **alla experiment** för att visa alla körningar i ett experiment eller Välj **alla körningar** för att visa alla körningar som skickats in i arbets ytan.
+    1. Välj **antingen Alla experiment** för att visa alla körningar i ett experiment eller välj **Alla körningar** för att visa alla körningar som skickats i arbetsytan.
     
-        På sidan **alla körningar** kan du filtrera körnings listan efter taggar, experiment, Compute Target och mer för att bättre organisera och begränsa ditt arbete.  
+        På sidan **Alla körningar kan** du filtrera körningslistan efter taggar, experiment, beräkningsmål med mera för att bättre organisera och begränsa ditt arbete.  
     
-    1. Gör anpassningar på sidan genom att välja körningar för att jämföra, lägga till diagram eller använda filter. Dessa ändringar kan sparas som en **anpassad vy** så att du enkelt kan gå tillbaka till ditt arbete. Användare med behörighet för arbets ytan kan redigera eller Visa den anpassade vyn. Du kan också dela den anpassade vyn med grupp medlemmar för förbättrat samarbete genom att välja **vyn dela**.   
+    1. Gör anpassningar på sidan genom att välja körningar för att jämföra, lägga till diagram eller tillämpa filter. Dessa ändringar kan sparas som en **anpassad vy så** att du enkelt kan återgå till ditt arbete. Användare med arbetsytebehörigheter kan redigera eller visa den anpassade vyn. Dela även den anpassade vyn med teammedlemmar för förbättrat samarbete genom att välja **Dela vy.**   
     
-        :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Skärm bild: skapa en anpassad vy":::
+        :::image type="content" source="media/how-to-manage-runs/custom-views.gif" alt-text="Skärmbild: Skapa en anpassad vy":::
     
-    1. Om du vill visa körnings loggarna väljer du en speciell körning och på fliken **utdata + loggar** kan du hitta diagnostik-och fel loggar för din körning.
+    1. Om du vill visa körningsloggarna väljer du en specifik körning. På fliken Utdata **+** loggar hittar du diagnostik- och felloggar för körningen.
     
     ---
 
-## <a name="monitor-the-run-status-by-email-notification"></a>Övervaka körnings status via e-postavisering
+## <a name="monitor-the-run-status-by-email-notification"></a>Övervaka körningsstatusen via e-postavisering
 
-1. I [Azure Portal](https://ms.portal.azure.com/)i det vänstra navigerings fältet väljer du fliken **övervaka** . 
+1. I det [Azure Portal](https://ms.portal.azure.com/)navigeringsfältet väljer du fliken Övervaka i **det vänstra navigeringsfältet.** 
 
-1. Välj **diagnostikinställningar** och välj sedan **+ Lägg till diagnostisk inställning**.
+1. Välj **Diagnostikinställningar och** välj sedan **+ Lägg till diagnostikinställning.**
 
-    ![Skärm bild av diagnostikinställningar för e-postavisering](./media/how-to-manage-runs/diagnostic-setting.png)
+    ![Skärmbild av diagnostikinställningar för e-postaviseringar](./media/how-to-manage-runs/diagnostic-setting.png)
 
-1. I den diagnostiska inställningen 
-    1. under **kategori Detaljer** väljer du **AmlRunStatusChangedEvent**. 
-    1. I **mål informationen** väljer du **arbets ytan skicka till Log Analytics** och anger **arbets ytan** för **prenumeration** och Log Analytics. 
+1. I diagnostikinställningen 
+    1. under **Kategoriinformation väljer** du **AmlRunStatusChangedEvent**. 
+    1. I **Målinformation väljer** du arbetsytan **Skicka till Log Analytics och**  anger **prenumerationen och** Log **Analytics-arbetsytan**. 
 
     > [!NOTE]
-    > **Azure Log Analytics-arbetsytan** är en annan typ av Azure-resurs än **Azure Machine Learning service-arbetsytan**. Om det inte finns några alternativ i listan kan du [skapa en Log Analytics-arbetsyta](../azure-monitor/logs/quick-create-workspace.md). 
+    > **Azure Log Analytics-arbetsytan** är en annan typ av Azure-resurs än **Azure Machine Learning Service arbetsyta.** Om det inte finns några alternativ i listan kan du skapa [en Log Analytics-arbetsyta.](../azure-monitor/logs/quick-create-workspace.md) 
     
-    ![Var du ska spara e-postavisering](./media/how-to-manage-runs/log-location.png)
+    ![Var du vill spara e-postaviseringar](./media/how-to-manage-runs/log-location.png)
 
-1. Lägg till en **ny aviserings regel** på fliken **loggar** . 
+1. På fliken **Loggar** lägger du till en **Ny aviseringsregel**. 
 
-    ![Ny varnings regel](./media/how-to-manage-runs/new-alert-rule.png)
+    ![Ny aviseringsregel](./media/how-to-manage-runs/new-alert-rule.png)
 
-1. Se [hur du skapar och hanterar logg aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-log.md).
+1. Se [hur du skapar och hanterar logga aviseringar med hjälp av Azure Monitor](../azure-monitor/alerts/alerts-log.md).
 
-## <a name="run-description"></a>Körnings Beskrivning 
+## <a name="run-description"></a>Körningsbeskrivning 
 
-En körnings beskrivning kan läggas till i en körning för att ge mer kontext och information till körningen. Du kan också söka efter de här beskrivningarna i listan körningar och lägga till körnings beskrivningen som en kolumn i körnings listan. 
+En körningsbeskrivning kan läggas till i en körning för att ge körningen mer kontext och information. Du kan också söka efter dessa beskrivningar från körningslistan och lägga till körningsbeskrivningen som en kolumn i körningslistan. 
 
-Gå till sidan med **körnings information** för din körning och välj ikonen Redigera eller Penn för att lägga till, redigera eller ta bort beskrivningar för din körning. Spara ändringarna i den befintliga anpassade vyn eller en ny anpassad vy om du vill spara ändringarna i körnings listan. Markdown-formatet stöds för körnings beskrivningar, vilket gör att bilder kan bäddas in och djupa länkar som visas nedan.
+Gå till sidan **Körningsinformation** för körningen och välj redigerings- eller pennikonen för att lägga till, redigera eller ta bort beskrivningar för körningen. Spara ändringarna i körningslistan genom att spara ändringarna i din befintliga anpassade vy eller en ny anpassad vy. Markdown-format stöds för körningsbeskrivningar, vilket gör att bilder kan bäddas in och djuplänkas enligt nedan.
 
-:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Skärm bild: skapa en körnings Beskrivning"::: 
+:::image type="content" source="media/how-to-manage-runs/run-description.gif" alt-text="Skärmbild: Skapa en körningsbeskrivning"::: 
 
 ## <a name="tag-and-find-runs"></a>Tagga och hitta körningar
 
-I Azure Machine Learning kan du använda egenskaper och taggar för att organisera och fråga dina körningar efter viktig information.
+I Azure Machine Learning kan du använda egenskaper och taggar för att organisera och fråga körningar efter viktig information.
 
-* Lägg till egenskaper och Taggar
+* Lägga till egenskaper och taggar
 
     # <a name="python"></a>[Python](#tab/python)
     
-    Om du vill lägga till sökbara metadata i dina körningar använder du- [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29#add-properties-properties-) metoden. Följande kod lägger till exempel till `"author"` egenskapen i kör:
+    Om du vill lägga till sökbara metadata i dina körningar använder du [`add_properties()`](/python/api/azureml-core/azureml.core.run%28class%29#add-properties-properties-) metoden . Följande kod lägger till exempel till `"author"` egenskapen i körningen:
     
     ```Python
     local_run.add_properties({"author":"azureml-user"})
     print(local_run.get_properties())
     ```
     
-    Egenskaperna är oföränderliga så att de skapar en permanent post för gransknings syfte. Följande kod exempel resulterar i ett fel eftersom vi redan har lagts till `"azureml-user"` som `"author"` egenskaps värde i föregående kod:
+    Egenskaper är oföränderliga, så de skapar en permanent post i granskningssyfte. Följande kodexempel resulterar i ett fel, eftersom vi redan `"azureml-user"` har lagt till som `"author"` egenskapsvärde i föregående kod:
     
     ```Python
     try:
@@ -253,7 +253,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
         print(e)
     ```
     
-    Till skillnad från egenskaper är taggarna föränderligt. Använd-metoden för att lägga till sökbar och meningsfull information för användare av experimentet [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29#tag-key--value-none-) .
+    Till skillnad från egenskaper är taggar föränderliga. Om du vill lägga till sökbar och meningsfull information för experimentets användare använder du [`tag()`](/python/api/azureml-core/azureml.core.run%28class%29#tag-key--value-none-) metoden .
     
     ```Python
     local_run.tag("quality", "great run")
@@ -263,7 +263,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     print(local_run.get_tags())
     ```
     
-    Du kan också lägga till enkla sträng taggar. När taggarna visas i kod ord listan som nycklar har de värdet `None` .
+    Du kan också lägga till enkla strängtaggar. När taggarna visas i taggordlistan som nycklar har de värdet `None` .
     
     ```Python
     local_run.tag("worth another look")
@@ -275,25 +275,25 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     > [!NOTE]
     > Med CLI kan du bara lägga till eller uppdatera taggar.
     
-    Använd följande kommando om du vill lägga till eller uppdatera en tagg:
+    Om du vill lägga till eller uppdatera en tagg använder du följande kommando:
     
     ```azurecli-interactive
     az ml run update -r runid --add-tag quality='fantastic run'
     ```
     
-    Mer information finns i [AZ ml kör Update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
+    Mer information finns i [az ml run update](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-update).
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Du kan lägga till, redigera eller ta bort Run-taggar från Studio. Gå till sidan med **körnings information** för din körning och välj Redigera-eller Penn ikonen för att lägga till, redigera eller ta bort taggar för dina körningar. Du kan också söka efter och filtrera dessa taggar från körnings List sidan.
+    Du kan lägga till, redigera eller ta bort körningstaggar från Studio. Gå till sidan **Körningsinformation** för körningen och välj redigerings- eller pennikonen för att lägga till, redigera eller ta bort taggar för dina körningar. Du kan också söka efter och filtrera på dessa taggar från sidan med körningslistan.
     
-    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Skärm bild: Lägg till, redigera eller ta bort körnings Taggar":::
+    :::image type="content" source="media/how-to-manage-runs/run-tags.gif" alt-text="Skärmbild: Lägga till, redigera eller ta bort körningstaggar":::
     
     ---
 
-* Frågeegenskaper och Taggar
+* Frågeegenskaper och taggar
 
-    Du kan köra frågor i ett experiment för att returnera en lista över körningar som matchar vissa egenskaper och taggar.
+    Du kan köra frågor i ett experiment för att returnera en lista över körningar som matchar specifika egenskaper och taggar.
 
     # <a name="python"></a>[Python](#tab/python)
     
@@ -304,7 +304,7 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
     
-    Azure CLI stöder [JMESPath](http://jmespath.org) -frågor som kan användas för att filtrera körningar baserat på egenskaper och taggar. Om du vill använda en JMESPath-fråga med Azure CLI anger du den med `--query` parametern. I följande exempel visas några frågor med hjälp av egenskaper och Taggar:
+    Azure CLI stöder [JMESPath-frågor,](http://jmespath.org) som kan användas för att filtrera körningar baserat på egenskaper och taggar. Om du vill använda en JMESPath-fråga med Azure CLI anger du den med `--query` parametern . I följande exempel visas några frågor med hjälp av egenskaper och taggar:
     
     ```azurecli-interactive
     # list runs where the author property = 'azureml-user'
@@ -315,24 +315,24 @@ I Azure Machine Learning kan du använda egenskaper och taggar för att organise
     az ml run list --experiment-name experiment [?properties.author=='azureml-user' && tags.quality=='fantastic run']
     ```
     
-    Mer information om hur du frågar Azure CLI-resultat finns i [läsa utdata från Azure CLI-kommandot](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest).
+    Mer information om hur du kör frågor mot Azure CLI-resultat finns i [Fråga Azure CLI-kommandoutdata.](/cli/azure/query-azure-cli?preserve-view=true&view=azure-cli-latest)
     
     # <a name="studio"></a>[Studio](#tab/azure-studio)
     
-    Om du vill söka efter vissa körningar navigerar du till listan  **alla körningar** . Där finns det två alternativ:
+    Om du vill söka efter specifika körningar går du  **till listan Alla** körningar. Därifrån har du två alternativ:
     
-    1. Använd knappen **Lägg till filter** och välj filtrera efter taggar för att filtrera dina körningar efter tagg som har tilldelats till körningen. <br><br>
+    1. Använd knappen **Lägg till filter** och välj filtrera på taggar för att filtrera dina körningar efter tagg som har tilldelats körningarna. <br><br>
     ELLER
     
-    1. Använd Sök fältet för att snabbt hitta körningar genom att söka på metadata för körning, t. ex. körnings status, beskrivningar, experiment namn och sändnings namn. 
+    1. Använd sökfältet för att snabbt hitta körningar genom att söka efter körningsmetadata som körningsstatus, beskrivningar, experimentnamn och inlämnarnamn. 
     
-## <a name="cancel-or-fail-runs"></a>Avbryt eller kör inte
+## <a name="cancel-or-fail-runs"></a>Avbryta eller misslyckas körningar
 
-Om du ser ett fel eller om körningen tar för lång tid att slutföra, kan du avbryta körningen.
+Om du upptäcker ett misstag eller om körningen tar för lång tid att slutföras kan du avbryta körningen.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Om du vill avbryta en körning med hjälp av SDK använder du [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29#cancel--) metoden:
+Om du vill avbryta en körning med hjälp av SDK:n använder du [`cancel()`](/python/api/azureml-core/azureml.core.run%28class%29#cancel--) metoden :
 
 ```python
 src = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')
@@ -343,7 +343,7 @@ local_run.cancel()
 print(local_run.get_status())
 ```
 
-Om din körning är klar, men den innehåller ett fel (till exempel om ett felaktigt utbildnings skript användes), kan du använda [`fail()`](/python/api/azureml-core/azureml.core.run%28class%29#fail-error-details-none--error-code-none---set-status-true-) metoden för att markera den som misslyckad.
+Om körningen är klar, men den innehåller ett fel (till exempel att det felaktiga träningsskriptet användes), kan du använda metoden för [`fail()`](/python/api/azureml-core/azureml.core.run%28class%29#fail-error-details-none--error-code-none---set-status-true-) att markera den som misslyckad.
 
 ```python
 local_run = exp.submit(src)
@@ -353,21 +353,21 @@ print(local_run.get_status())
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill avbryta en körning med hjälp av CLI använder du följande kommando. Ersätt `runid` med ID: t för körningen
+Om du vill avbryta en körning med hjälp av CLI använder du följande kommando. Ersätt `runid` med ID:t för körningen
 
 ```azurecli-interactive
 az ml run cancel -r runid -w workspace_name -e experiment_name
 ```
 
-Mer information finns i [AZ ml kör Avbryt](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
+Mer information finns i [az ml run cancel](/cli/azure/ext/azure-cli-ml/ml/run?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-cancel).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Om du vill avbryta en körning i Studio använder du följande steg:
+Så här avbryter du en körning i Studio:
 
-1. Gå till pipelinen som körs i avsnittet **experiment** eller **pipelines** . 
+1. Gå till pipelinen som körs i **avsnittet Experiment** **eller Pipelines.** 
 
-1. Välj det körnings nummer för pipelinen som du vill avbryta.
+1. Välj det pipelinekörningsnummer som du vill avbryta.
 
 1. I verktygsfältet väljer du **Avbryt**
 
@@ -375,12 +375,12 @@ Om du vill avbryta en körning i Studio använder du följande steg:
 
 ## <a name="create-child-runs"></a>Skapa underordnade körningar
 
-Skapa underordnade körningar för att gruppera relaterade körningar, t. ex. för olika upprepningar i en parameter.
+Skapa underordnade körningar för att gruppera relaterade körningar, till exempel för olika iterationer av hyperparametrar.
 
 > [!NOTE]
-> Underordnade körningar kan bara skapas med SDK: n.
+> Underordnade körningar kan bara skapas med hjälp av SDK: n.
 
-I det här kod exemplet används `hello_with_children.py` skriptet för att skapa en grupp med fem underordnade körningar från en skickad körning med hjälp av [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29#child-run-name-none--run-id-none--outputs-none-) metoden:
+Det här kodexeskriptet använder skriptet för att skapa en batch med `hello_with_children.py` fem underordnade körningar inifrån en skickad körning med hjälp av [`child_run()`](/python/api/azureml-core/azureml.core.run%28class%29#child-run-name-none--run-id-none--outputs-none-) metoden :
 
 ```python
 !more hello_with_children.py
@@ -399,18 +399,23 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > När de flyttas utanför omfånget markeras underordnade körningar automatiskt som slutförda.
 
-Använd metoden för att skapa många underordnade körningar effektivt [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
+Om du vill skapa många underordnade körningar effektivt använder du [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) metoden . Eftersom varje skapande resulterar i ett nätverks-anrop är det effektivare att skapa en batch med körningar än att skapa dem en i stället för en.
 
 ### <a name="submit-child-runs"></a>Skicka underordnade körningar
 
-Underordnade körningar kan också skickas från en överordnad körning. På så sätt kan du skapa hierarkier med överordnade och underordnade körningar. Det går inte att skapa en överordnad underordnad körning: även om den överordnade körningen inte gör något men starta underordnade körningar, är det fortfarande nödvändigt att skapa hierarkin. Status för alla körningar är oberoende: en överordnad kan ha `"Completed"` tillståndet lyckades även om en eller flera underordnade körningar avbröts eller misslyckades.  
+Underordnade körningar kan också skickas från en överordnad körning. På så sätt kan du skapa hierarkier med överordnade och underordnade körningar. Du kan inte skapa en överordnad underordnad körning: även om den överordnade körningen inte gör något, men startar underordnade körningar, är det fortfarande nödvändigt att skapa hierarkin. Statusen för alla körningar är oberoende: en överordnad körning kan ha ett lyckat tillstånd även om en eller flera underordnade körningar `"Completed"` avbröts eller misslyckades.  
 
-Du kanske vill att ditt underordnade ska köras för att använda en annan körnings konfiguration än den överordnade körningen. Till exempel kan du använda en mindre kraftfull, PROCESSORbaserade konfiguration för den överordnade, samtidigt som du använder GPU-baserade konfigurationer för dina barn. En annan vanlig önskan är att skicka alla underordnade olika argument och data. Om du vill anpassa en underordnad körning skapar du ett `ScriptRunConfig` objekt för den underordnade körningen. Koden nedan:
+Du kanske vill att dina underordnade körningar ska använda en annan körningskonfiguration än den överordnade körningen. Du kan till exempel använda en mindre kraftfull, CPU-baserad konfiguration för den överordnade, när du använder GPU-baserade konfigurationer för dina underordnade konfigurationer. En annan vanlig önskemål är att skicka varje underordnade argument och data. Om du vill anpassa en underordnad körning skapar du `ScriptRunConfig` ett -objekt för den underordnade körningen. 
 
-- Hämtar en beräknings resurs med namnet `"gpu-cluster"` från arbets ytan `ws`
-- Itererar över olika argument värden som ska skickas till underordnade `ScriptRunConfig` objekt
-- Skapar och skickar en ny underordnad körning med hjälp av den anpassade beräknings resursen och argumentet
-- Block tills alla underordnade har slutförts
+> [!IMPORTANT]
+> Om du vill skicka en underordnad körning från en överordnad körning på en fjärrbearbetning måste du först logga in på arbetsytan i den överordnade körningskoden. Som standard har inte körningskontextobjektet i en fjärrkörning autentiseringsuppgifter för att skicka underordnade körningar. Använd tjänstens huvudnamn eller autentiseringsuppgifter för hanterad identitet för att logga in. Mer information om autentisering finns i [Konfigurera autentisering.](how-to-setup-authentication.md)
+
+Koden nedan:
+
+- Hämtar en beräkningsresurs med `"gpu-cluster"` namnet från arbetsytan `ws`
+- Itererar över olika argumentvärden som ska skickas till underordnade `ScriptRunConfig` objekt
+- Skapar och skickar en ny underordnad körning med hjälp av den anpassade beräkningsresursen och argumentet
+- Blockerar tills alla underordnade körningar har slutförts
 
 ```python
 # parent.py
@@ -435,9 +440,9 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Använd metoden för att skapa många underordnade körningar med identiska konfigurationer, argument och indata [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) . Eftersom varje skapande resulterar i ett nätverks anrop är det mer effektivt att skapa en batch med körningar än att skapa en i taget.
+Om du vill skapa många underordnade körningar med identiska konfigurationer, argument och indata effektivt använder du [`create_children()`](/python/api/azureml-core/azureml.core.run.run#create-children-count-none--tag-key-none--tag-values-none-) metoden . Eftersom varje skapande resulterar i ett nätverkssamtal är det effektivare att skapa en batch med körningar än att skapa dem en i stället för en.
 
-I en underordnad körning kan du Visa överordnad körnings-ID:
+Inom en underordnad körning kan du visa det överordnade körnings-ID:t:
 
 ```python
 ## In child run script
@@ -445,17 +450,17 @@ child_run = Run.get_context()
 child_run.parent.id
 ```
 
-### <a name="query-child-runs"></a>Frågans underordnade körningar
+### <a name="query-child-runs"></a>Köra frågor mot underordnade körningar
 
-Använd metoden för att fråga de underordnade körningarna av en speciell överordnad [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) . Med ``recursive = True`` argumentet kan du fråga ett kapslat träd med underordnade och Grandchildren.
+Om du vill köra frågor mot underordnade körningar av en specifik överordnad använder du [`get_children()`](/python/api/azureml-core/azureml.core.run%28class%29#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metoden . Med ``recursive = True`` argumentet kan du fråga ett kapslat träd med barn och grandchildren.
 
 ```python
 print(parent_run.get_children())
 ```
 
-### <a name="log-to-parent-or-root-run"></a>Logga till överordnad eller root-körning
+### <a name="log-to-parent-or-root-run"></a>Logga in på överordnad körning eller rotkörning
 
-Du kan använda `Run.parent` fältet för att komma åt körningen som startade den aktuella underordnade körningen. Ett vanligt användnings fall för `Run.parent` att använda är att kombinera logg resultat på ett och samma ställe. Observera att den underordnade körningen körs asynkront och att det inte finns någon garanti för beställning eller synkronisering utöver det överordnade objektets förmåga att vänta på att dess underordnade körningar ska slutföras.
+Du kan använda fältet `Run.parent` för att komma åt körningen som startade den aktuella underordnade körningen. Ett vanligt användningsfall för användning `Run.parent` är att kombinera loggresultat på en enda plats. Observera att underordnade körningar körs asynkront och att det inte finns någon garanti för ordning eller synkronisering utöver möjligheten för den överordnade att vänta tills dess underordnade körningar har slutförts.
 
 ```python
 # in child (or even grandchild) run
@@ -472,13 +477,13 @@ root_run(current_child_run).log("MyMetric", f"Data from child run {current_child
 
 ## <a name="example-notebooks"></a>Exempelnotebook-filer
 
-Följande antecknings böcker demonstrerar begreppen i den här artikeln:
+Följande anteckningsböcker visar begreppen i den här artikeln:
 
-* Mer information om loggnings-API: er finns i [logg-API-anteckningsboken](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb).
+* Mer information om loggnings-API:er finns i notebook-programmet [för loggnings-API.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/logging-api/logging-api.ipynb)
 
-* Mer information om hur du hanterar körningar med Azure Machine Learning SDK finns i [antecknings boken hantera körningar](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb).
+* Mer information om hur du hanterar körningar med Azure Machine Learning SDK finns i anteckningsboken [för att hantera körningar.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/manage-runs/manage-runs.ipynb)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du loggar mått för dina experiment finns i [logg mått under inlärnings körningar](how-to-track-experiments.md).
-* Information om hur du övervakar resurser och loggar från Azure Machine Learning finns i [övervaknings Azure Machine Learning](monitor-azure-machine-learning.md).
+* Information om hur du loggar mått för dina experiment finns i [Logga mått under träningskörningar.](how-to-track-experiments.md)
+* Information om hur du övervakar resurser och loggar från Azure Machine Learning finns i [Monitoring Azure Machine Learning](monitor-azure-machine-learning.md).
