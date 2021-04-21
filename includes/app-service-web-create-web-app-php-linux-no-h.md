@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/02/2018
 ms.author: cephalin
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: ae371082dbb1ece4a62df37743e4d2a4a62998d3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4f843c5d35bee5311168073e42b620686b1d9adf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107510674"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107779458"
 ---
 <!-- Please keep this file set to PHP 7.2, as that's the highest PHP version Laravel supports (as shown in the PHP+MySQL tutorial) -->
 
 Skapa en [webbapp](../articles/app-service/overview.md#app-service-on-linux) i `myAppServicePlan` App Service plan. 
 
-I Cloud Shell kan du använda [`az webapp create`](/cli/azure/webapp#az-webapp-create) kommandot . Ersätt `<app-name>` med ett globalt unikt appnamn (giltiga tecken är `a-z`, `0-9` och `-`) i följande exempel. Körningen har angetts till `PHP|7.2`. Om du vill se alla körningar som stöds kör du [`az webapp list-runtimes --linux`](/cli/azure/webapp#az-webapp-list-runtimes) . 
+I Cloud Shell kan du använda [`az webapp create`](/cli/azure/webapp#az_webapp_create) kommandot . Ersätt `<app-name>` med ett globalt unikt appnamn (giltiga tecken är `a-z`, `0-9` och `-`) i följande exempel. Körningen har angetts till `PHP|7.2`. Om du vill se alla körningar som stöds kör du [`az webapp list-runtimes --linux`](/cli/azure/webapp#az_webapp_list_runtimes) . 
 
 ```azurecli-interactive
 # Bash
@@ -46,7 +46,7 @@ Local git is configured with url of 'https://&lt;username&gt;@&lt;app-name&gt;.s
 }
 </pre>
 
-Du har ™ skapat en tom ny webbapp med git-distribution aktiverad.
+Du har skapat en tom ny webbapp med git-distribution aktiverad.
 
 > [!NOTE]
 > URL för fjärransluten Git visas i egenskapen `deploymentLocalGitUrl` med formatet `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Spara den här URL:en, eftersom du behöver den senare.

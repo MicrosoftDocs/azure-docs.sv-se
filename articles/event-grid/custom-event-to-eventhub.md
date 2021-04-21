@@ -1,17 +1,17 @@
 ---
-title: 'Snabb start: skicka anpassade händelser till Event Hubs-Event Grid, Azure CLI'
-description: 'Snabb start: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En händelsehubb används för slutpunkten.'
+title: 'Snabbstart: Skicka anpassade händelser till Event Hubs – Event Grid, Azure CLI'
+description: 'Snabbstart: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En händelsehubb används för slutpunkten.'
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 7c236025f31e10c00b324e5ff3374bd6504b2b7e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e1989c94cc7b260cfc36a3129d2743350ca430bf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91324118"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780505"
 ---
-# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Snabb start: dirigera anpassade händelser till Azure Event Hubs med Azure CLI och Event Grid
+# <a name="quickstart-route-custom-events-to-azure-event-hubs-with-azure-cli-and-event-grid"></a>Snabbstart: Dirigera anpassade händelser till Azure Event Hubs med Azure CLI och Event Grid
 
 Azure Event Grid är en händelsetjänst för molnet. Azure Event Hubs är en av de händelsehanterare som stöds. I den här artikeln använder du Azure CLI för att skapa ett anpassat ämne, prenumerera på det anpassade ämnet och utlösa händelsen för att visa resultatet. Skicka händelser till en händelsehubb.
 
@@ -21,7 +21,7 @@ Azure Event Grid är en händelsetjänst för molnet. Azure Event Hubs är en av
 
 Event Grid-ämnen är Azure-resurser och måste placeras i en Azure-resursgrupp. Resursgruppen är en logisk samling där Azure-resurser distribueras och hanteras.
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). 
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az_group_create). 
 
 I följande exempel skapas en resursgrupp med namnet *gridResourceGroup* på platsen *westus2*.
 
@@ -54,7 +54,7 @@ az eventhubs eventhub create --name $hubname --namespace-name $namespace --resou
 
 ## <a name="subscribe-to-a-custom-topic"></a>Prenumerera på ett anpassat ämne
 
-Du prenumererar på ett event Grid-ämne för att berätta Event Grid vilka händelser du vill spåra. I följande exempel prenumererar du på det anpassade ämne som du skapade och skickar resurs-ID för händelse hubben för slut punkten. Slutpunkten är i formatet:
+Du prenumererar på ett Event Grid-ämne för att Event Grid vilka händelser du vill spåra. I följande exempel prenumererar vi på det anpassade ämne som du har skapat och resurs-ID:t för händelsehubben för slutpunkten. Slutpunkten är i formatet:
 
 `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.EventHub/namespaces/<namespace-name>/eventhubs/<hub-name>`
 

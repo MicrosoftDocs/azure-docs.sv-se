@@ -12,16 +12,16 @@ ms.date: 03/30/2020
 ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-two
-ms.openlocfilehash: f02a9a3b493ed0f3068e6e0ccd2daa40850a4fb6
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: db902019b4fb1237c8403c719862d8fca4ba4f28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726186"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772531"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>Använda codec-komprimerade ljudindata med Speech SDK
 
-Speech Service SDK är ett sätt att skicka komprimerade ljudformat direkt till Speech-tjänsten med hjälp av antingen eller (ingen av metodströmmarna direkt till `PullStream` backend-datorn, en rå PCM skickas fortfarande till `PushStream` tjänsten).
+Speech Service SDK kan acceptera komprimerade ljudformat. Den avkodar ljudet innan det skickar det via kabeln till Speech-tjänsten som rå PCM.
 
 Plattform | Språk | GStreamer-version som stöds
 | :--- | ---: | :---:

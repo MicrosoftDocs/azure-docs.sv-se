@@ -1,6 +1,6 @@
 ---
-title: Underhålls kontroll för virtuella Azure-datorer med CLI
-description: Lär dig hur du styr när underhåll tillämpas på dina virtuella Azure-datorer med underhålls kontroll och CLI.
+title: Underhållskontroll för virtuella Azure-datorer med CLI
+description: Lär dig hur du styr när underhåll tillämpas på dina virtuella Azure-datorer med hjälp av underhållskontroll och CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: maintenance-control
@@ -8,20 +8,20 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 11/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 9425759de1e08bc83cac80cd1b56c602edb59fb1
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c57f66eca5d15024c6b10e8fad12ddb575b9f894
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102562970"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765907"
 ---
-# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Styra uppdateringar med underhålls kontroll och Azure CLI
+# <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Kontrollera uppdateringar med underhållskontroll och Azure CLI
 
-Med underhålls kontrollen kan du bestämma när du ska tillämpa plattforms uppdateringar på värd infrastrukturen för de isolerade virtuella datorerna och Azure-dedikerade värdar. Det här avsnittet beskriver Azure CLI-alternativen för underhålls kontroll. Mer information om fördelarna med att använda underhålls kontroll, dess begränsningar och andra hanterings alternativ finns i [Hantera plattforms uppdateringar med underhålls kontroll](maintenance-control.md).
+Med underhållskontroll kan du bestämma när du ska tillämpa plattformsuppdateringar på värdinfrastrukturen för dina isolerade virtuella datorer och dedikerade Azure-värdar. Det här avsnittet beskriver Azure CLI-alternativen för underhållskontroll. Mer information om fördelarna med att använda underhållskontroll, dess begränsningar och andra hanteringsalternativ finns i [Hantera plattformsuppdateringar med underhållskontroll.](maintenance-control.md)
 
 ## <a name="create-a-maintenance-configuration"></a>Skapa en underhållskonfiguration
 
-Använd `az maintenance configuration create` för att skapa en underhålls konfiguration. I det här exemplet skapas en underhålls konfiguration med namnet *unconfig* som är begränsad till värden. 
+Använd `az maintenance configuration create` för att skapa en underhållskonfiguration. I det här exemplet skapas en underhållskonfiguration med *namnet myConfig* som är begränsad till värden. 
 
 ```azurecli-interactive
 az group create \
@@ -34,20 +34,20 @@ az maintenance configuration create \
    --location eastus
 ```
 
-Kopiera konfigurations-ID: t från de utdata som ska användas senare.
+Kopiera konfigurations-ID:t från utdata för senare användning.
 
-Med `--maintenance-scope host` ser du till att underhålls konfigurationen används för att styra uppdateringar av värd infrastrukturen.
+Med `--maintenance-scope host` ser du till att underhållskonfigurationen används för att kontrollera uppdateringar av värdinfrastrukturen.
 
-Om du försöker skapa en konfiguration med samma namn, men på en annan plats, får du ett fel meddelande. Konfigurations namn måste vara unika för din resurs grupp.
+Om du försöker skapa en konfiguration med samma namn, men på en annan plats, får du ett felmeddelande. Konfigurationsnamnen måste vara unika för resursgruppen.
 
-Du kan fråga efter tillgängliga underhålls konfigurationer med `az maintenance configuration list` .
+Du kan fråga efter tillgängliga underhållskonfigurationer med hjälp av `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
 ```
 
-### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Skapa en underhålls konfiguration med schemalagt fönster
-Du kan också deklarera ett schemalagt fönster när Azure ska tillämpa uppdateringarna på dina resurser. I det här exemplet skapas en underhålls konfiguration med namnet config med ett schemalagt fönster på 5 timmar den fjärde måndagen i varje månad. När du har skapat en schemalagd period behöver du inte längre använda uppdateringarna manuellt.
+### <a name="create-a-maintenance-configuration-with-scheduled-window"></a>Skapa en underhållskonfiguration med schemalagd tid
+Du kan också deklarera ett schemalagt fönster när Azure ska tillämpa uppdateringarna på dina resurser. Det här exemplet skapar en underhållskonfiguration med namnet myConfig med ett schemalagt fönster på 5 timmar den fjärde måndagen i varje månad. När du har skapat ett schemalagt fönster behöver du inte längre tillämpa uppdateringarna manuellt.
 
 ```azurecli-interactive
 az maintenance configuration create \
@@ -62,21 +62,21 @@ az maintenance configuration create \
 ```
 
 > [!IMPORTANT]
-> Underhålls **tiden** måste vara *2 timmar* eller längre. **Upprepning** av underhåll måste anges till minst en gång i 35 dagar.
+> **Underhållstiden** måste vara *2 timmar* eller längre. Upprepning **av** underhåll måste anges till minst en gång om 35 dagar.
 
 Upprepning av underhåll kan uttryckas som varje dag, varje vecka eller varje månad. Några exempel är:
-- **dagligt** underhåll-Window-upprepa-var: "dag" **eller** "3Days"
-- **veckovis**-underhåll-Window-upprepa – var: "3Weeks" **eller** "Week lördag, söndag"
-- **månatligt** underhåll-Window-upprepa – var: "månad day23, day24" **eller** "månadens sista söndag" **eller** "månad fjärde måndagen"
+- **daily**– maintenance-window-recur-every: "Day" **eller** "3Days"
+- **weekly**– maintenance-window-recur-every: "3Weeks" **eller** "Week Saturday,Sunday"
+- **monthly**– maintenance-window-recur-every: "Month day23,day24" **eller** "Month Last Sunday" **eller** "Month Fourth Monday"
 
 
 ## <a name="assign-the-configuration"></a>Tilldela konfigurationen
 
-Använd `az maintenance assignment create` för att tilldela konfigurationen till den isolerade virtuella datorn eller den dedikerade Azure-värden.
+Använd `az maintenance assignment create` för att tilldela konfigurationen till den isolerade virtuella datorn eller Azure Dedicated Host.
 
 ### <a name="isolated-vm"></a>Isolerad virtuell dator
 
-Tillämpa konfigurationen på en virtuell dator med hjälp av konfigurationens ID. Ange `--resource-type virtualMachines` och ange namnet på den virtuella datorn för `--resource-name` , och resurs gruppen för den virtuella datorn i `--resource-group` , och platsen för den virtuella datorn för `--location` . 
+Tillämpa konfigurationen på en virtuell dator med hjälp av ID:t för konfigurationen. Ange och ange namnet på den virtuella datorn för , och resursgruppen för till den virtuella datorn i `--resource-type virtualMachines` och platsen för den virtuella datorn för `--resource-name` `--resource-group` `--location` . 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -91,9 +91,9 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Dedikerad värd
 
-Om du vill tillämpa en konfiguration på en dedikerad värd måste du inkludera `--resource-type hosts` , `--resource-parent-name` med namnet på värd gruppen och `--resource-parent-type hostGroups` . 
+Om du vill tillämpa en konfiguration på en dedikerad värd måste du `--resource-type hosts` inkludera , med namnet på `--resource-parent-name` värdgruppen och `--resource-parent-type hostGroups` . 
 
--Parametern `--resource-id` är värdens ID. Du kan använda [AZ VM Host get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) för att hämta ID för den dedikerade värden.
+Parametern `--resource-id` är värdens ID. Du kan använda [az vm host get-instance-view för](/cli/azure/vm/host#az_vm_host_get_instance_view) att hämta ID:t för din dedikerade värd.
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -108,9 +108,9 @@ az maintenance assignment create \
    --resource-parent-type hostGroups 
 ```
 
-## <a name="check-configuration"></a>Kontrol lera konfigurationen
+## <a name="check-configuration"></a>Kontrollera konfigurationen
 
-Du kan kontrol lera att konfigurationen har tillämpats korrekt eller kontrol lera vilken konfiguration som tillämpas med hjälp av `az maintenance assignment list` .
+Du kan kontrollera att konfigurationen har tillämpats korrekt eller kontrollera vilken konfiguration som används för närvarande med hjälp av `az maintenance assignment list` .
 
 ### <a name="isolated-vm"></a>Isolerad virtuell dator
 
@@ -141,11 +141,11 @@ az maintenance assignment list \
 
 ## <a name="check-for-pending-updates"></a>Sök efter väntande uppdateringar
 
-Använd `az maintenance update list` för att se om det finns väntande uppdateringar. Uppdatera--prenumerationen är ID för den prenumeration som innehåller den virtuella datorn.
+Använd `az maintenance update list` för att se om det finns väntande uppdateringar. Uppdatera – prenumerationen ska vara ID:t för prenumerationen som innehåller den virtuella datorn.
 
-Om det inte finns några uppdateringar returnerar kommandot ett fel meddelande som kommer att innehålla texten: `Resource not found...StatusCode: 404` .
+Om det inte finns några uppdateringar returnerar kommandot ett felmeddelande som innehåller texten: `Resource not found...StatusCode: 404` .
 
-Om det finns uppdateringar returneras bara en av dem, även om det finns flera väntande uppdateringar. Data för den här uppdateringen kommer att returneras i ett objekt:
+Om det finns uppdateringar returneras bara en, även om det finns flera väntande uppdateringar. Data för den här uppdateringen returneras i ett -objekt:
 
 ```text
 [
@@ -191,7 +191,7 @@ az maintenance update list \
 
 ## <a name="apply-updates"></a>Tillämpa uppdateringar
 
-Används `az maintenance apply update` för att tillämpa väntande uppdateringar. Vid lyckad kommer det här kommandot returnera JSON som innehåller information om uppdateringen.
+Använd `az maintenance apply update` för att tillämpa väntande uppdateringar. Om det lyckas returnerar det här kommandot JSON som innehåller information om uppdateringen.
 
 ### <a name="isolated-vm"></a>Isolerad virtuell dator
 
@@ -222,11 +222,11 @@ az maintenance applyupdate create \
    --resource-parent-type hostGroups
 ```
 
-## <a name="check-the-status-of-applying-updates"></a>Kontrol lera status för att tillämpa uppdateringar 
+## <a name="check-the-status-of-applying-updates"></a>Kontrollera statusen för att tillämpa uppdateringar 
 
-Du kan kontrol lera förloppet för uppdateringarna med hjälp av `az maintenance applyupdate get` . 
+Du kan kontrollera förloppet för uppdateringarna med hjälp av `az maintenance applyupdate get` . 
 
-Du kan använda `default` som uppdaterings namn för att se resultat för den senaste uppdateringen eller ersätta `myUpdateName` med namnet på den uppdatering som returnerades när du körde `az maintenance applyupdate create` .
+Du kan använda som uppdateringsnamn för att visa resultat för den senaste uppdateringen eller ersätta med namnet på uppdateringen som returnerades `default` `myUpdateName` när du körde `az maintenance applyupdate create` .
 
 ```text
 Status         : Completed
@@ -238,7 +238,7 @@ ute/virtualMachines/DXT-test-04-iso/providers/Microsoft.Maintenance/applyUpdates
 Name           : default
 Type           : Microsoft.Maintenance/applyUpdates
 ```
-LastUpdateTime kommer att vara den tid då uppdateringen slutfördes, antingen initierad av dig eller av plattformen i fallet själv underhålls period inte användes. Om en uppdatering aldrig har tillämpats via underhålls kontrollen visas standardvärdet.
+LastUpdateTime är den tid då uppdateringen slutfördes, antingen initierad av dig eller av plattformen om självunderhållsfönstret inte användes. Om en uppdatering aldrig har tillämpats via underhållskontroll visas standardvärdet.
 
 ### <a name="isolated-vm"></a>Isolerad virtuell dator
 
@@ -268,9 +268,9 @@ az maintenance applyupdate get \
 ```
 
 
-## <a name="delete-a-maintenance-configuration"></a>Ta bort en underhålls konfiguration
+## <a name="delete-a-maintenance-configuration"></a>Ta bort en underhållskonfiguration
 
-Används `az maintenance configuration delete` för att ta bort en underhålls konfiguration. Om du tar bort konfigurationen tas underhålls kontrollen bort från de tillhör ande resurserna.
+Använd `az maintenance configuration delete` för att ta bort en underhållskonfiguration. Om du tar bort konfigurationen tas underhållskontroll bort från de associerade resurserna.
 
 ```azurecli-interactive
 az maintenance configuration delete \
@@ -280,4 +280,4 @@ az maintenance configuration delete \
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-Mer information finns i [underhåll och uppdateringar](maintenance-and-updates.md).
+Mer information finns i [Underhåll och uppdateringar.](maintenance-and-updates.md)

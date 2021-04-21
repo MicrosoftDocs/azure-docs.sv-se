@@ -1,0 +1,53 @@
+### YamlMime:Landing
+title: Azure File Sync dokumentation
+summary: Azure File Sync kan centralisera organisationens filresurser i Azure Files samtidigt som flexibiliteten, prestandan och kompatibiliteten för en Windows-filserver finns kvar.
+metadata:
+  title: Azure File Sync dokumentation
+  description: Montera filresurser i molnet eller lokalt i Windows, Linux och macOS. Cachelagra Azure-filresurser på Windows-servrar med Azure File Sync för lokal åtkomst.
+  services: storage
+  ms.service: storage
+  ms.subservice: files
+  ms.topic: landing-page
+  ms.collection: collection
+  author: roygara
+  ms.author: rogarana
+  ms.date: 04/19/2021
+  ms.openlocfilehash: 1a384985bbd58285ec1a556f2840f27994c4c40b
+  ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+  ms.translationtype: MT
+  ms.contentlocale: sv-SE
+  ms.lasthandoff: 04/20/2021
+  ms.locfileid: "107798960"
+landingContent:
+- title: Om Azure Files Sync
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Planeringsguide för Azure File Sync
+      url: file-sync-planning.md
+    - text: Vad är Azure File Sync?
+      url: file-sync-introduction.md
+    - text: Översikt över molnnivåindelad
+      url: file-sync-cloud-tiering-overview.md
+- title: Kom igång
+  linkLists:
+  - linkListType: get-started
+    links:
+    - text: Skapa/använda filresurser – Windows
+      url: ../files/storage-files-quick-create-use-windows.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Hantera din server med Azure File Sync
+      url: file-sync-server-registration.md
+  - linkListType: tutorial
+    links:
+    - text: Utöka Windows-filservrar med Azure File Sync
+      url: file-sync-extend-servers.md
+- title: Felsöka
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Felsöka Azure Files Windows
+      url: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Felsöka prestanda med Azure Files
+      url: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffilesync%2ftoc.json
+    - text: Felsöka Azure File Sync
+      url: file-sync-troubleshoot.md

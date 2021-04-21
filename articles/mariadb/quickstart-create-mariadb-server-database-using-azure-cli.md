@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: skapa en server – Azure CLI – Azure Database for MariaDB'
+title: 'Snabbstart: Skapa en server – Azure CLI – Azure Database for MariaDB'
 description: Den här snabbstarten beskriver hur du använder Azure CLI för att skapa en Azure Database for MariaDB-server i en Azure-resursgrupp.
 author: savjani
 ms.author: pariks
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 3/18/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3279150d0cb7b287f0a78581094a51356033596c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 042c70fdd08a6de2b97c4560eb2b6a24eec0bb34
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98662168"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789995"
 ---
-# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Snabb start: skapa en Azure Database for MariaDB-server med hjälp av Azure CLI
+# <a name="quickstart-create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Snabbstart: Skapa en Azure Database for MariaDB-server med hjälp av Azure CLI
 
 Du kan använda Azure CLI för att skapa och hantera Azure-resurser från kommandoraden eller i skript. Den här snabbstarten beskriver hur du använder Azure CLI för att skapa en Azure Database for MariaDB-server i en Azure-resursgrupp på ungefär fem minuter.
 
@@ -23,9 +23,9 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt](https://a
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
-Om du har flera prenumerationer väljer du den prenumeration som innehåller den resurs eller prenumeration där du debiteras. För att välja ett specifikt prenumerations-ID i ditt konto använder du kommandot [az account set](/cli/azure/account#az-account-set):
+Om du har flera prenumerationer väljer du den prenumeration som innehåller den resurs eller prenumeration där du debiteras. För att välja ett specifikt prenumerations-ID i ditt konto använder du kommandot [az account set](/cli/azure/account#az_account_set):
 
 ```azurecli-interactive
 az account set --subscription 00000000-0000-0000-0000-000000000000
@@ -33,7 +33,7 @@ az account set --subscription 00000000-0000-0000-0000-000000000000
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) med hjälp av kommandot [az group create](/cli/azure/group#az-group-create). En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras som en grupp.
+Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) med hjälp av kommandot [az group create](/cli/azure/group#az_group_create). En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras som en grupp.
 
 I följande exempel skapas en resursgrupp med namnet `myresourcegroup` på platsen `westus`:
 
@@ -43,21 +43,21 @@ az group create --name myresourcegroup --location westus
 
 ## <a name="create-an-azure-database-for-mariadb-server"></a>Skapa en Azure Database for MariaDB-server
 
-Skapa en Azure Database for MariaDB-server med hjälp av kommandot [az mariadb server create](/cli/azure/mariadb/server#az-mariadb-server-create). En server kan hantera flera databaser. Normalt används en separat databas för varje projekt eller för varje användare.
+Skapa en Azure Database for MariaDB-server med hjälp av kommandot [az mariadb server create](/cli/azure/mariadb/server#az_mariadb_server_create). En server kan hantera flera databaser. Normalt används en separat databas för varje projekt eller för varje användare.
 
-Inställning | Exempelvärde | Beskrivning
+Inställning | Exempelvärde | Description
 ---|---|---
 name | **mydemoserver** | Ange ett unikt namn för din Azure Database for MariaDB-server. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken.
 resource-group | **myresourcegroup** | Ange namnet på Azure-resursgruppen.
-sku-name | **GP_Gen5_2** | Namnet på SKU:n. Efter *pris nivån* för konventions \_ *beräknings generation* \_ *virtuella kärnor* i korthet. Mer information om parametern **sku-name** finns i avsnittet efter den här tabellen.
+sku-name | **GP_Gen5_2** | Namnet på SKU:n. Följer konventionens *prisnivå* \_ *för beräkningsgenerering* av virtuella \_ *kärnor* i korthet. Mer information om parametern **sku-name** finns i avsnittet efter den här tabellen.
 backup-retention | **7** | Hur länge en säkerhetskopia ska behållas. Enheten är dagar. Intervall: 7 till 35. 
-geo-redundant-backup | **Disabled** (Inaktiverat) | Huruvida geo-redundanta säkerhetskopieringar ska aktiveras för den här servern. Tillåtna värden: **aktiverade**, **inaktiverade**.
+geo-redundant-backup | **Disabled** (Inaktiverat) | Huruvida geo-redundanta säkerhetskopieringar ska aktiveras för den här servern. Tillåtna värden: **Aktiverad,** **Inaktiverad**.
 location | **westus** | Azure-platsen för servern.
-ssl-enforcement | **Aktiverad** | Huruvida SSL ska aktiveras för den här servern. Tillåtna värden: **aktiverade**, **inaktiverade**.
+ssl-enforcement | **Aktiverad** | Huruvida SSL ska aktiveras för den här servern. Tillåtna värden: **Aktiverad,** **Inaktiverad**.
 storage-size | **51200** | Serverns lagringskapacitet (enheten är megabyte). Giltiga lagringsstorlekar är 5 120 MB (minst) med ökningar i steg om 1 024 MB. Mer information om storleksgränser för lagring finns i [Prisnivåer](./concepts-pricing-tiers.md). 
-version | **10,2** | MariaDB-huvudmotorversionen.
+version | **10.2** | MariaDB-huvudmotorversionen.
 admin-user | **myadmin** | Användarnamnet för administratörsinloggningen. Parametern **admin-user** får inte bvara **azure_superuser**, **admin**, **administrator**, **root**, **guest** eller **public**.
-admin-password | *ditt lösen ord* | Lösenordet för administratörsanvändaren. Lösenordet måste innehålla mellan 8 och 128 tecken. Det måste innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror och icke-alfanumeriska tecken.
+admin-password | *ditt lösenord* | Lösenordet för administratörsanvändaren. Lösenordet måste innehålla mellan 8 och 128 tecken. Det måste innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror och icke-alfanumeriska tecken.
 
 Parametervärdet för sku-namn följer namngivningskonventionen {prisnivå}\_{compute-generering}\_{vCores} som i exemplen nedan:
 + `--sku-name B_Gen5_1` mappar till Basic, Gen 5 och 1 virtuell kärna. Det här alternativet är minsta tillgängliga SKU.
@@ -77,7 +77,7 @@ az mariadb server create --resource-group myresourcegroup --name mydemoserver  -
 
 ## <a name="configure-a-firewall-rule"></a>Konfigurera en brandväggsregel
 
-Skapa en Azure Database for MariaDB-brandväggsregel på servernivå med hjälp av kommandot [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az-mariadb-server-firewall-rule-create). En brandväggsregel på servernivå gör att externa program, som mysql-kommandoradsverktyget eller MySQL Workbench, kan ansluta till servern via Azure Database for MariaDB-tjänstens brandvägg.
+Skapa en Azure Database for MariaDB-brandväggsregel på servernivå med hjälp av kommandot [az mariadb server firewall-rule create](/cli/azure/mariadb/server/firewall-rule#az_mariadb_server_firewall_rule_create). En brandväggsregel på servernivå gör att externa program, som mysql-kommandoradsverktyget eller MySQL Workbench, kan ansluta till servern via Azure Database for MariaDB-tjänstens brandvägg.
 
 I följande exempel skapas en brandväggsregel som kallas `AllowMyIP` som tillåter anslutningar från den specifika IP-adressen 192.168.0.1. Ersätt en IP-adress eller ett intervall med IP-adresser som motsvarar den plats som du ansluter från.
 
@@ -216,8 +216,8 @@ Så här ansluter du till servern med hjälp av mysql-kommandoradsverktyget:
    | Anslutningsmetod | **Standard (TCP/IP)** | Använda TCP/IP-protokollet för att ansluta till Azure Database for MariaDB |
    | Värdnamn | **mydemoserver.mariadb.database.azure.com** | Det servernamn som du antecknade tidigare. |
    | Port | **3306** | Standardporten för Azure Database for MariaDB. |
-   | Användarnamn | **mydemoserver för administratörer \@** | Den serveradministratörsinloggning som du antecknade tidigare. |
-   | Lösenord | *ditt lösen ord* | Ange det lösenord som du konfigurerade tidigare. |
+   | Användarnamn | **myadmin \@ mydemoserver** | Den serveradministratörsinloggning som du antecknade tidigare. |
+   | Lösenord | *ditt lösenord* | Ange det lösenord som du konfigurerade tidigare. |
 
 3. För att kontrollera om alla parametrar har konfigurerats korrekt väljer du **Testa anslutning**.
 
@@ -231,7 +231,7 @@ Om du inte behöver de resurser som du använde i den här snabbstarten för en 
 az group delete --name myresourcegroup
 ```
 
-Om du bara vill ta bort den server som du skapade i den här snabbstarten kör du kommandot [az mariadb server delete](/cli/azure/mariadb/server#az-mariadb-server-delete):
+Om du bara vill ta bort den server som du skapade i den här snabbstarten kör du kommandot [az mariadb server delete](/cli/azure/mariadb/server#az_mariadb_server_delete):
 
 ```azurecli-interactive
 az mariadb server delete --resource-group myresourcegroup --name mydemoserver

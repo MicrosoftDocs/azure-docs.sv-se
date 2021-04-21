@@ -1,61 +1,61 @@
 ---
-title: Skript exempel för Azure CLI – skapa en logisk app
-description: Exempel skript för att skapa en Logic-app via Logic Apps-tillägget i Azure CLI.
+title: Skriptexempel för Azure CLI – skapa en logikapp
+description: Exempelskript för att skapa en logikapp via Logic Apps i Azure CLI.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: a4553ceee482fb232e9ab56deca650be93f9dc6b
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218051"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789923"
 ---
-# <a name="azure-cli-script-sample---create-a-logic-app"></a>Skript exempel för Azure CLI – skapa en logisk app
+# <a name="azure-cli-script-sample---create-a-logic-app"></a>Skriptexempel för Azure CLI – skapa en logikapp
 
-Det här skriptet skapar en exempel-Logic-app via [Azure CLI Logic Apps-tillägget](/cli/azure/ext/logic/logic)( `az logic` ). En detaljerad guide för att skapa och hantera Logi Kap par via Azure CLI finns i [Logic Apps snabb start för Azure CLI](quickstart-logic-apps-azure-cli.md).
+Det här skriptet skapar en exempellogikapp via [Azure CLI Logic Apps tillägget](/cli/azure/ext/logic/logic), ( `az logic` ). En detaljerad guide för att skapa och hantera logikappar via Azure CLI finns i [Logic Apps snabbstart för Azure CLI.](quickstart-logic-apps-azure-cli.md)
 
 > [!WARNING]
-> Azure CLI Logic Apps-tillägget är för närvarande *experimentellt* och *omfattas inte av kund support*. Använd det här CLI-tillägget med försiktighet, särskilt om du väljer att använda tillägget i produktions miljöer.
+> Azure CLI Logic Apps tillägget är för närvarande *experimentellt* *och omfattas inte av kundsupporten.* Använd det här CLI-tillägget med försiktighet, särskilt om du väljer att använda tillägget i produktionsmiljöer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Ett Azure-konto med en aktiv prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* [Azure CLI](/cli/azure/install-azure-cli) installerat på den lokala datorn.
-* [Logic Apps Azure CLI-tillägget](/cli/azure/azure-cli-extensions-list) installerat på datorn. Använd följande kommando för att installera det här tillägget: `az extension add --name logic`
-* En [arbets flödes definition](quickstart-logic-apps-azure-cli.md#workflow-definition) för din Logic app. Den här JSON-filen måste följa [språk schemat för arbets flödes definitionen](logic-apps-workflow-definition-language.md).
-* En API-anslutning till ett e-postkonto via en [Logic Apps](../connectors/apis-list.md) -anslutning som stöds i samma resurs grupp som din Logic app. I det här exemplet används [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) Connector, men du kan också använda andra anslutningar som [Outlook.com](../connectors/connectors-create-api-outlook.md).
+* Ett Azure-konto med en aktiv prenumeration. Om du inte har en Azure-prenumeration kan du [skapa ett kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+* [Azure CLI installerat](/cli/azure/install-azure-cli) på den lokala datorn.
+* Den [Logic Apps Azure CLI-tillägget](/cli/azure/azure-cli-extensions-list) som är installerat på datorn. Om du vill installera det här tillägget använder du det här kommandot: `az extension add --name logic`
+* En [arbetsflödesdefinition](quickstart-logic-apps-azure-cli.md#workflow-definition) för logikappen. Den här JSON-filen måste följa [språkschemat arbetsflödesdefinition.](logic-apps-workflow-definition-language.md)
+* En API-anslutning till ett e-postkonto via [en Logic Apps i](../connectors/apis-list.md) samma resursgrupp som logikappen. I det här exemplet [används Office 365 Outlook-anslutningsappen,](../connectors/connectors-create-api-office365-outlook.md) men du kan också använda andra anslutningsappar [som Outlook.com](../connectors/connectors-create-api-outlook.md).
 
-### <a name="prerequisite-check"></a>Krav kontroll
+### <a name="prerequisite-check"></a>Kravkontroll
 
 Verifiera din miljö innan du börjar:
 
-* Logga in på Azure Portal och kontrol lera att din prenumeration är aktiv genom att köra `az login` .
+* Logga in på Azure Portal och kontrollera att din prenumeration är aktiv genom att köra `az login` .
 
-* Kontrol lera din version av Azure CLI i ett terminalfönster eller kommando fönster genom att köra `az --version` . Den senaste versionen finns i den senaste versions [informationen](/cli/azure/release-notes-azure-cli).
+* Kontrollera din version av Azure CLI i en terminal eller ett kommandofönster genom att köra `az --version` . Den senaste versionen finns i den senaste [versionsanteckningarna.](/cli/azure/release-notes-azure-cli)
 
-  * Om du inte har den senaste versionen uppdaterar du installationen genom att följa [installations guiden för ditt operativ system eller din plattform](/cli/azure/install-azure-cli).
+  * Om du inte har den senaste versionen uppdaterar du installationen genom att följa [installationsguiden för ditt operativsystem eller din plattform.](/cli/azure/install-azure-cli)
 
-### <a name="sample-workflow-explanation"></a>Exempel på arbets flödes förklaring
+### <a name="sample-workflow-explanation"></a>Förklaring av exempelarbetsflöde
 
-Den här exempel filen för arbets flödes definition skapar samma grundläggande Logic-app som [Logic Apps snabb start för Azure Portal](quickstart-create-first-logic-app-workflow.md). 
+Den här exempelarbetsflödesdefinitionsfilen skapar samma grundläggande logikapp [som Logic Apps snabbstarten för Azure Portal](quickstart-create-first-logic-app-workflow.md). 
 
-Följande exempel arbets flöde: 
+Det här exempelarbetsflödet: 
 
-1. Anger ett schema, `$schema` för Logic app.
+1. Anger ett schema, `$schema` , för logikappen.
 
-1. Definierar en utlösare för Logic-appen i listan över utlösare `triggers` . Utlösaren upprepas ( `recurrence` ) var 3: e timme. Åtgärderna utlöses när ett nytt flödes objekt publiceras ( `When_a_feed_item_is_published` ) för det angivna RSS-flödet ( `feedUrl` ).
+1. Definierar en utlösare för logikappen i listan över utlösare, `triggers` . Utlösaren upprepas ( `recurrence` ) var tredje timme. Åtgärderna utlöses när ett nytt flödesobjekt publiceras ( `When_a_feed_item_is_published` ) för det angivna RSS-flödet ( `feedUrl` ).
 
-1. Definierar en åtgärd för Logic-appen i listan över åtgärder `actions` . Åtgärden skickar ett e-postmeddelande ( `Send_an_email_(V2)` ) via Microsoft 365 med information från RSS-feed-objekten som anges i avsnittet Body ( `body` ) i åtgärdens indata ( `inputs` ).
+1. Definierar en åtgärd för logikappen i listan över åtgärder, `actions` . Åtgärden skickar ett e-postmeddelande ( ) via Microsoft 365 med information från RSS-flödesobjekten som anges i brödtextavsnittet ( ) för `Send_an_email_(V2)` `body` åtgärdens indata ( `inputs` ).
 
-## <a name="sample-workflow-definition"></a>Exempel på arbets flödes definition
+## <a name="sample-workflow-definition"></a>Exempel på arbetsflödesdefinition
 
-Innan du kör exempel skriptet måste du först skapa en exempel [arbets flödes definition](#prerequisites).
+Innan du kör exempelskriptet måste du först skapa en [exempelarbetsflödesdefinition](#prerequisites).
 
-1. Skapa en JSON-fil `testDefinition.json` på din dator. 
+1. Skapa en JSON-fil `testDefinition.json` på datorn. 
 
 1. Kopiera följande innehåll till JSON-filen: 
     ```json
@@ -134,22 +134,22 @@ Innan du kör exempel skriptet måste du först skapa en exempel [arbets flödes
     
     ```
 
-1. Uppdatera plats hållarnas värden med din egen information:
+1. Uppdatera platshållarvärdena med din egen information:
 
-    1. Ersätt e-postadressen för plats hållaren ( `"To": "test@example.com"` ). Du måste använda en e-postadress som är kompatibel med Logic Apps-kopplingar. Mer information finns i [krav](#prerequisites).
+    1. Ersätt platshållarens e-postadress ( `"To": "test@example.com"` ). Du måste använda en e-postadress som är kompatibel Logic Apps anslutningsappar. Mer information finns i [förutsättningarna](#prerequisites).
 
-    1. Ersätt ytterligare anslutnings information om du använder en annan e-postkoppling än Office 365 Outlook Connector.
+    1. Ersätt ytterligare information om anslutningsappen om du använder en annan e-postanslutningsapp än Office 365 Outlook-anslutningsappen.
 
-    1. Ersätt plats hållarnas prenumerations värden ( `00000000-0000-0000-0000-000000000000` ) för anslutnings-ID: n ( `connectionId` och `id` ) under anslutnings parametern ( `$connections` ) med dina egna prenumerations värden.
+    1. Ersätt platshållarprenumerationens värden ( ) för `00000000-0000-0000-0000-000000000000` anslutningsidentifierarna ( och ) under anslutningsparametern `connectionId` ( ) med dina egna `id` `$connections` prenumerationsvärden.
 
 1. Spara ändringarna.
 
 ## <a name="sample-script"></a>Exempelskript
 
 > [!NOTE]
-> Det här exemplet är skrivet för `bash` gränssnittet. Om du vill köra det här exemplet i ett annat gränssnitt, t. ex. Windows PowerShell eller kommando tolken, kan du behöva göra ändringar i skriptet.
+> Det här exemplet är skrivet för `bash` gränssnittet. Om du vill köra det här exemplet i ett annat gränssnitt, till exempel Windows PowerShell eller kommandotolk, kan du behöva göra ändringar i skriptet.
 
-Innan du kör det här exempel skriptet ska du köra det här kommandot för att ansluta till Azure:
+Innan du kör det här exempelskriptet kör du det här kommandot för att ansluta till Azure:
 
 ```azurecli-interactive
 
@@ -157,7 +157,7 @@ az login
 
 ```
 
-Gå sedan till den katalog där du skapade arbets flödes definitionen. Om du till exempel har skapat JSON-filen för arbets flödes definition på Skriv bordet:
+Gå sedan till katalogen där du skapade arbetsflödesdefinitionen. Om du till exempel har skapat JSON-filen för arbetsflödesdefinitionen på skrivbordet:
 
 ```azurecli
 
@@ -165,7 +165,7 @@ cd ~/Desktop
 
 ```
 
-Kör sedan det här skriptet för att skapa en Logic app. 
+Kör sedan det här skriptet för att skapa en logikapp. 
 
 ```azurecli-interactive
 
@@ -183,7 +183,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-När du är klar med exempel skriptet kör du följande kommando för att ta bort resurs gruppen och alla dess kapslade resurser, inklusive Logic app.
+När du är klar med exempelskriptet kör du följande kommando för att ta bort resursgruppen och alla dess kapslade resurser, inklusive logikappen.
 
 ```azurecli-interactive
 
@@ -193,16 +193,16 @@ az group delete --name testResourceGroup --yes
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-Det här exempel skriptet använder följande kommandon för att skapa en ny resurs grupp och en logisk app.
+Det här exempelskriptet använder följande kommandon för att skapa en ny resursgrupp och logikapp.
 
 | Kommando | Kommentarer |
 | ------- | ----- |
-| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resurs grupp där din Logic Apps-resurser lagras. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Skapar en logisk app baserat på det arbets flöde som definierats i parametern `--definition` . |
-| [`az group delete`](/cli/azure/vm/extension) | Tar bort en resurs grupp och alla dess kapslade resurser. |
+| [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där logikappens resurser lagras. |
+| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Skapar en logikapp baserat på arbetsflödet som definierats i parametern `--definition` . |
+| [`az group delete`](/cli/azure/vm/extension) | Tar bort en resursgrupp och alla dess kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure/).
+Mer information om Azure CLI finns i [Azure CLI-dokumentationen.](/cli/azure/)
 
-Du hittar ytterligare Logic Apps CLI-skript exempel i [Microsofts webbläsare för kod exempel](/samples/browse/?products=azure-logic-apps).
+Du hittar fler Logic Apps CLI-skriptexempel i [Microsofts webbläsare för kodexempel.](/samples/browse/?products=azure-logic-apps)

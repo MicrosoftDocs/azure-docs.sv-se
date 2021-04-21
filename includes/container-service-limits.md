@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/06/2021
 ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 15e91e6f275c3a6ebe44690441404a38e8f61394
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: da22991b9a1c4b69d3a3d6eb6f76b0925a6ad3d4
+ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732462"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800130"
 ---
 | Resurs                                                                                                           | Gräns                                                                                                                                                                                                       |
 | ------------------------------------------------------------------------------------------------------------------ | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Maximalt antal kluster per prenumeration                                                                                  | 1000                                                                                                                                                                                                        |
+| Maximalt antal kluster per prenumeration                                                                                  | 5000                                                                                                                                                                                                        |
 | Maximalt antal noder per kluster med tillgänglighetsuppsättningar för virtuella datorer och Basic Load Balancer SKU                       | 100                                                                                                                                                                                                         |
 | Maximalt antal noder per kluster med Virtual Machine Scale Sets [och Standard Load Balancer SKU][standard-load-balancer] | 1 000 (över alla [nodpooler)][node-pool]                                            |
 | Maximalt antal nodpooler per kluster                                                                                     | 100                                                                                  |

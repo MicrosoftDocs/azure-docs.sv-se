@@ -1,83 +1,83 @@
 ---
 title: Installera och konfigurera Windows Azure Diagnostics-tillägget (WAD)
-description: Lär dig mer om att installera och konfigurera Windows Diagnostics-tillägget. Lär dig också hur en beskrivning av hur data lagras i och Azure Storage konto.
+description: Lär dig mer om att installera och konfigurera Tillägget Windows Diagnostics. Lär dig också hur en beskrivning av hur data lagras i och Azure Storage konto.
 services: azure-monitor
 author: bwren
 ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: bwren
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 174f372f9dbe8dc0449c7f9b9f5b34c6206f92de
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ff752b673c49047551c48c4c8693b00d7b5edeb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708568"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787413"
 ---
 # <a name="install-and-configure-windows-azure-diagnostics-extension-wad"></a>Installera och konfigurera Windows Azure Diagnostics-tillägget (WAD)
-[Tillägget Azure Diagnostics](diagnostics-extension-overview.md) är en agent i Azure Monitor som samlar in övervaknings data från gäst operativ systemet och arbets belastningar på virtuella Azure-datorer och andra beräknings resurser. Den här artikeln innehåller information om hur du installerar och konfigurerar Windows Diagnostics-tillägget och en beskrivning av hur data lagras i och Azure Storage konto.
+[Azure Diagnostics-tillägget](diagnostics-extension-overview.md) är en agent Azure Monitor som samlar in övervakningsdata från gästoperativsystemet och arbetsbelastningar för virtuella Azure-datorer och andra beräkningsresurser. Den här artikeln innehåller information om hur du installerar och konfigurerar tillägget Windows Diagnostics och en beskrivning av hur data lagras i och Azure Storage konto.
 
-Tillägget för diagnostik implementeras som ett [tillägg för virtuella datorer](../../virtual-machines/extensions/overview.md) i Azure, så det stöder samma installations alternativ med Resource Manager-mallar, POWERSHELL och CLI. Se [tillägg och funktioner för virtuella datorer för Windows](../../virtual-machines/extensions/features-windows.md) om du vill ha mer information om hur du installerar och hanterar tillägg för virtuella datorer.
+Diagnostiktillägget implementeras som [ett](../../virtual-machines/extensions/overview.md) tillägg för virtuella datorer i Azure, så det stöder samma installationsalternativ med hjälp av Resource Manager-mallar, PowerShell och CLI. Mer [information om hur du installerar och underhåller tillägg för](../../virtual-machines/extensions/features-windows.md) virtuella datorer finns i Tillägg och funktioner för virtuella datorer för Windows.
 
 ## <a name="overview"></a>Översikt
-När du konfigurerar Windows Azure Diagnostics-tillägget måste du ange ett lagrings konto där alla angivna data ska skickas. Du kan också lägga till en eller flera *data mottagare* för att skicka data till olika platser.
+När du konfigurerar diagnostiktillägget för Windows Azure måste du ange ett lagringskonto där alla angivna data ska skickas. Du kan också lägga till en eller flera *data mottagare för* att skicka data till olika platser.
 
-- Azure Monitor mottagare – skicka gäst prestanda data till Azure Monitor mått.
-- Event Hub-mottagare – skicka gäst prestanda och logga data till Azure Event Hub för att vidarebefordra utanför Azure. Det går inte att konfigurera denna mottagare i Azure Portal.
+- Azure Monitor mottagare – Skicka gästprestandadata till Azure Monitor Mått.
+- Händelsehubbens mottagare – Skicka gästprestanda och loggdata till Azure-händelsehubbbar som ska vidarebefordras utanför Azure. Den här mottagaren kan inte konfigureras i Azure Portal.
 
 
 ## <a name="install-with-azure-portal"></a>Installera med Azure Portal
-Du kan installera och Konfigurera diagnostik-tillägget på en enskild virtuell dator i Azure Portal, vilket ger dig ett gränssnitt i stället för att arbeta direkt med konfigurationen. När du aktiverar Diagnostics-tillägget använder det automatiskt en standard konfiguration med de vanligaste prestanda räknarna och-händelserna. Du kan ändra den här standard konfigurationen utifrån dina egna krav.
+Du kan installera och konfigurera diagnostiktillägget på en enskild virtuell dator i Azure Portal vilket ger dig ett gränssnitt i stället för att arbeta direkt med konfigurationen. När du aktiverar diagnostiktillägget används automatiskt en standardkonfiguration med de vanligaste prestandaräknarna och händelserna. Du kan ändra standardkonfigurationen enligt dina specifika krav.
 
 > [!NOTE]
-> Följande beskriver de vanligaste inställningarna för tillägget Diagnostics. Mer information om alla konfigurations alternativ finns i [Windows Diagnostics-tilläggsprogram schema](diagnostics-extension-schema-windows.md).
+> Nedan beskrivs de vanligaste inställningarna för diagnostiktillägget. Mer information om alla konfigurationsalternativ finns i [Schema för Windows-diagnostiktillägg.](diagnostics-extension-schema-windows.md)
 
 1. Öppna menyn för en virtuell dator i Azure Portal.
 
-2. Klicka på **diagnostikinställningar** i avsnittet **övervakning** på menyn VM.
+2. Klicka på **Diagnostikinställningar** i avsnittet **Övervakning** på VM-menyn.
 
-3. Klicka på **Aktivera övervakning på gästnivå** om inget diagnostik-tillägg redan har Aktiver ATS.
+3. Klicka **på Aktivera övervakning på gästnivå** om diagnostiktillägget inte redan har aktiverats.
 
    ![Aktivera övervakning](media/diagnostics-extension-windows-install/enable-monitoring.png)
 
-4. Ett nytt Azure Storage-konto skapas för den virtuella datorn med namnet baserat på namnet på resurs gruppen för den virtuella datorn och en standard uppsättning med gäst prestanda räknare och loggar väljs.
+4. Ett nytt Azure Storage-konto skapas för den virtuella datorn med namnet baserat på namnet på resursgruppen för den virtuella datorn och en standarduppsättning med gästprestandaräknare och loggar väljs.
 
    ![Diagnostikinställningar](media/diagnostics-extension-windows-install/diagnostic-settings.png)
 
-5. På fliken **prestanda räknare** väljer du de gäst mått som du vill samla in från den här virtuella datorn. Använd den **anpassade** inställningen för mer avancerade val.
+5. På fliken **Prestandaräknare** väljer du de gästmått som du vill samla in från den här virtuella datorn. Använd den **anpassade** inställningen för mer avancerade val.
 
    ![Prestandaräknare](media/diagnostics-extension-windows-install/performance-counters.png)
 
-6. På fliken **loggar** väljer du de loggar som ska samlas in från den virtuella datorn. Loggar kan skickas till lagrings-eller händelse nav, men inte Azure Monitor. Använd [Log Analytics-agenten](../agents/log-analytics-agent.md) för att samla in gäst loggar till Azure Monitor.
+6. På fliken **Loggar** väljer du de loggar som ska samlas in från den virtuella datorn. Loggar kan skickas till lagring eller händelsehubbbar, men inte till Azure Monitor. Använd [Log Analytics-agenten för](../agents/log-analytics-agent.md) att samla in gästloggar för att Azure Monitor.
 
-   ![Skärm bild som visar fliken loggar med olika loggar som har valts för en virtuell dator.](media/diagnostics-extension-windows-install/logs.png)
+   ![Skärmbild som visar fliken Loggar med olika loggar valda för en virtuell dator.](media/diagnostics-extension-windows-install/logs.png)
 
-7. På fliken **krasch dum par** anger du de processer som ska samla in minnes dum par efter en krasch. Data skrivs till lagrings kontot för den diagnostiska inställningen och du kan också ange en BLOB-behållare.
+7. På fliken **Kraschdumpar** anger du eventuella processer för att samla in minnesdumpar efter en krasch. Data skrivs till lagringskontot för diagnostikinställningen och du kan välja att ange en blobcontainer.
 
    ![Kraschdumpar](media/diagnostics-extension-windows-install/crash-dumps.png)
 
-8. På fliken **mottagare** anger du om du vill skicka data till andra platser än Azure Storage. Om du väljer **Azure Monitor** skickas gäst prestanda data till Azure Monitor mått. Du kan inte konfigurera händelse Hubbs mottagaren med hjälp av Azure Portal.
+8. På fliken **Mottagare anger** du om du vill skicka data till andra platser än Azure Storage. Om du **Azure Monitor** skickas gästprestandadata till Azure Monitor Mått. Du kan inte konfigurera händelsehubbens mottagare med hjälp av Azure Portal.
 
-   ![Skärm bild som visar fliken mottagare med alternativet Skicka diagnostikdata till Azure Monitor aktiverat.](media/diagnostics-extension-windows-install/sinks.png)
+   ![Skärmbild som visar fliken Mottagare med alternativet Skicka diagnostikdata till Azure Monitor aktiverat.](media/diagnostics-extension-windows-install/sinks.png)
    
-   Om du inte har aktiverat en tilldelad identitet som har kon figurer ATS för den virtuella datorn kan du se varningen nedan när du sparar en konfiguration med Azure Monitor mottagare. Klicka på banderollen för att aktivera identiteten som tilldelats av systemet.
+   Om du inte har aktiverat en system tilldelad identitet som konfigurerats för den virtuella datorn kan du se varningen nedan när du sparar en konfiguration med Azure Monitor mottagare. Klicka på banderollen för att aktivera den system tilldelade identiteten.
    
    ![Hanterad entitet](media/diagnostics-extension-windows-install/managed-entity.png)
 
-9. I **agenten** kan du ändra lagrings kontot, ange disk kvoten och ange om du vill samla in diagnostiska infrastruktur loggar.  
+9. I **Agent kan** du ändra lagringskontot, ange diskkvoten och ange om du vill samla in loggar för diagnostikinfrastruktur.  
 
-   ![Skärm bild som visar fliken agent med alternativet att ange lagrings kontot.](media/diagnostics-extension-windows-install/agent.png)
+   ![Skärmbild som visar fliken Agent med alternativet att ange lagringskontot.](media/diagnostics-extension-windows-install/agent.png)
 
-10. Klicka på **Spara** för att spara konfigurationen. 
+10. Spara **konfigurationen genom** att klicka på Spara. 
 
 > [!NOTE]
-> Även om konfigurationen för Diagnostics-tillägget kan formateras i JSON eller XML kommer alla konfigurationer som görs i Azure Portal alltid att lagras som JSON. Om du använder XML med en annan konfigurations metod och sedan ändrar konfigurationen med Azure Portal, ändras inställningarna till JSON.
+> Konfigurationen för diagnostiktillägget kan formateras antingen i JSON eller XML, men alla konfigurationer som görs i Azure Portal lagras alltid som JSON. Om du använder XML med en annan konfigurationsmetod och sedan ändrar konfigurationen med Azure Portal ändras inställningarna till JSON.
 
 ## <a name="resource-manager-template"></a>Resource Manager-mall
-Se [använda övervakning och diagnostik med en virtuell Windows-dator och Azure Resource Manager mallar](../../virtual-machines/extensions/diagnostics-template.md) för distribution av diagnostikprogrammet med Azure Resource Manager mallar. 
+Se [Använda övervakning och diagnostik med en virtuell Windows-dator och Azure Resource Manager för](../../virtual-machines/extensions/diagnostics-template.md) att distribuera diagnostiktillägget med Azure Resource Manager mallar. 
 
 ## <a name="azure-cli-deployment"></a>Azure CLI-distribution
-Azure CLI kan användas för att distribuera Azure-diagnostik-tillägget till en befintlig virtuell dator som använder [AZ VM-tillägg](/cli/azure/vm/extension#az-vm-extension-set) som i följande exempel. 
+Azure CLI kan användas för att distribuera Azure Diagnostics till en befintlig virtuell dator med [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) som i följande exempel. 
 
 ```azurecli
 az vm extension set \
@@ -89,7 +89,7 @@ az vm extension set \
   --settings public-settings.json 
 ```
 
-De skyddade inställningarna definieras i PrivateConfig- [elementet](diagnostics-extension-schema-windows.md#privateconfig-element) för konfigurations schemat. Följande är ett minimalt exempel på en skyddad inställnings fil som definierar lagrings kontot. Se [exempel på konfiguration](diagnostics-extension-schema-windows.md#privateconfig-element) för fullständig information om de privata inställningarna.
+De skyddade inställningarna definieras i [PrivateConfig-elementet](diagnostics-extension-schema-windows.md#privateconfig-element) i konfigurationsschemat. Följande är ett minimalt exempel på en skyddad inställningsfil som definierar lagringskontot. Se [Exempelkonfiguration](diagnostics-extension-schema-windows.md#privateconfig-element) för fullständig information om de privata inställningarna.
 
 ```JSON
 {
@@ -99,7 +99,7 @@ De skyddade inställningarna definieras i PrivateConfig- [elementet](diagnostics
 }
 ```
 
-De offentliga inställningarna definieras i det [offentliga elementet](diagnostics-extension-schema-windows.md#publicconfig-element) i konfigurations schemat. Följande är ett minimalt exempel på en fil med en offentlig inställning som möjliggör insamling av diagnostiska infrastruktur loggar, en enda prestanda räknare och en enda händelse logg. Se [exempel på konfiguration](diagnostics-extension-schema-windows.md#publicconfig-element) för fullständig information om de offentliga inställningarna.
+De offentliga inställningarna definieras i det [offentliga elementet](diagnostics-extension-schema-windows.md#publicconfig-element) i konfigurationsschemat. Följande är ett minimalt exempel på en fil för offentliga inställningar som möjliggör insamling av loggar för diagnostikinfrastruktur, en enskild prestandaräknare och en enda händelselogg. Se [Exempelkonfiguration](diagnostics-extension-schema-windows.md#publicconfig-element) för fullständig information om de offentliga inställningarna.
 
 ```JSON
 {
@@ -133,7 +133,7 @@ De offentliga inställningarna definieras i det [offentliga elementet](diagnosti
 
 
 ## <a name="powershell-deployment"></a>PowerShell-distribution
-PowerShell kan användas för att distribuera Azure-diagnostik-tillägget till en befintlig virtuell dator med [set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) som i följande exempel. 
+PowerShell kan användas för att distribuera Azure Diagnostics-tillägget till en befintlig virtuell dator med hjälp av [Set-AzVMDiagnosticsExtension](/powershell/module/servicemanagement/azure.service/set-azurevmdiagnosticsextension) som i följande exempel. 
 
 ```powershell
 Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
@@ -141,9 +141,9 @@ Set-AzVMDiagnosticsExtension -ResourceGroupName "myvmresourcegroup" `
   -DiagnosticsConfigurationPath "DiagnosticsConfiguration.json"
 ```
 
-De privata inställningarna definieras i PrivateConfig- [elementet](diagnostics-extension-schema-windows.md#privateconfig-element), medan de offentliga inställningarna definieras i det [offentliga elementet](diagnostics-extension-schema-windows.md#publicconfig-element) i konfigurations schemat. Du kan också välja att ange information om lagrings kontot som parametrar i Set-AzVMDiagnosticsExtension cmdlet i stället för att inkludera dem i de privata inställningarna.
+De privata inställningarna definieras i [PrivateConfig-elementet](diagnostics-extension-schema-windows.md#privateconfig-element), medan de offentliga inställningarna definieras i [det offentliga elementet](diagnostics-extension-schema-windows.md#publicconfig-element) i konfigurationsschemat. Du kan också välja att ange information om lagringskontot som parametrar för Set-AzVMDiagnosticsExtension-cmdleten i stället för att inkludera dem i de privata inställningarna.
 
-Följande är ett minimalt exempel på en konfigurations fil som möjliggör insamling av diagnostiska infrastruktur loggar, en enda prestanda räknare och en enda händelse logg. Se [exempel på konfiguration](diagnostics-extension-schema-windows.md#publicconfig-element) för fullständig information om de privata och offentliga inställningarna. 
+Följande är ett minimalt exempel på en konfigurationsfil som möjliggör insamling av loggar för diagnostikinfrastruktur, en enskild prestandaräknare och en enda händelselogg. Se [Exempelkonfiguration](diagnostics-extension-schema-windows.md#publicconfig-element) för fullständig information om de privata och offentliga inställningarna. 
 
 ```JSON
 {
@@ -185,29 +185,29 @@ Följande är ett minimalt exempel på en konfigurations fil som möjliggör ins
 }
 ```
 
-Se även [använda PowerShell för att aktivera Azure-diagnostik på en virtuell dator som kör Windows](../../virtual-machines/extensions/diagnostics-windows.md).
+Se även [Använda PowerShell för att aktivera Azure Diagnostics på en virtuell dator som kör Windows](../../virtual-machines/extensions/diagnostics-windows.md).
 
 ## <a name="data-storage"></a>Datalagring
-I följande tabell visas olika typer av data som har samlats in från diagnostikprogrammet och om de lagras som en tabell eller en blob. Data som lagras i tabeller kan också lagras i blobbar beroende på [inställningen StorageType](diagnostics-extension-schema-windows.md#publicconfig-element) i din offentliga konfiguration.
+I följande tabell visas de olika typerna av data som samlas in från diagnostiktillägget och om de lagras som en tabell eller en blob. Data som lagras i tabeller kan också lagras i blobar beroende på [inställningen StorageType i](diagnostics-extension-schema-windows.md#publicconfig-element) din offentliga konfiguration.
 
 
-| Data | Lagringstyp | Beskrivning |
+| Data | Lagringstyp | Description |
 |:---|:---|:---|
-| WADDiagnosticInfrastructureLogsTable | Tabell | Diagnostisk övervakning och konfigurations ändringar. |
-| WADDirectoriesTable | Tabell | Kataloger som diagnostiken övervakar.  Detta inkluderar IIS-loggar, IIS misslyckade begär Anden och anpassade kataloger.  Platsen för blobb logg filen anges i fältet container och namnet på blobben är i fältet RelativePath.  Fältet AbsolutePath anger platsen och namnet på filen som den fanns på den virtuella Azure-datorn. |
-| WadLogsTable | Tabell | Loggar som skrivits i kod med spårnings lyssnaren. |
-| WADPerformanceCountersTable | Tabell | Prestanda räknare. |
-| WADWindowsEventLogsTable | Tabell | Händelse loggar i Windows. |
-| wad-IIS-failedreqlogfiles | Blob | Innehåller information från IIS-begäranden om misslyckade förfrågningar. |
-| wad-IIS-loggfiler | Blob | Innehåller information om IIS-loggar. |
-| bild | Blob | En anpassad behållare baserat på hur du konfigurerar kataloger som övervakas av diagnostisk övervakare.  Namnet på den här BLOB-behållaren anges i WADDirectoriesTable. |
+| WADDiagnosticInfrastructureLogsTable | Tabell | Diagnostikövervakare och konfigurationsändringar. |
+| WADDirectoriesTable | Tabell | Kataloger som diagnostikövervakaren övervakar.  Detta inkluderar IIS-loggar, misslyckade IIS-begärandeloggar och anpassade kataloger.  Platsen för blobloggfilen anges i fältet Container och namnet på bloben finns i fältet RelativePath.  Fältet AbsolutePath anger platsen och namnet på filen så som den fanns på den virtuella Azure-datorn. |
+| WadLogsTable | Tabell | Loggar som skrivits i kod med hjälp av spårningslyssnaren. |
+| WADPerformanceCountersTable | Tabell | Prestandaräknare. |
+| WADWindowsEventLogsTable | Tabell | Windows-händelseloggar. |
+| wad-iis-failedreqlogfiles | Blob | Innehåller information från IIS-loggar med misslyckade förfrågningar. |
+| wad-iis-logfiles | Blob | Innehåller information om IIS-loggar. |
+| "anpassad" | Blob | En anpassad container som baseras på konfiguration av kataloger som övervakas av diagnostikövervakaren.  Namnet på den här blobcontainern anges i WADDirectoriesTable. |
 
-## <a name="tools-to-view-diagnostic-data"></a>Verktyg för att Visa diagnostikdata
-Det finns flera verktyg för att visa data när de har överförts till lagring. Exempel:
+## <a name="tools-to-view-diagnostic-data"></a>Verktyg för att visa diagnostikdata
+Det finns flera verktyg för att visa data när de har överförts till lagringen. Exempel:
 
-* Server Explorer i Visual Studio – om du har installerat Azure-verktygen för Microsoft Visual Studio kan du använda noden Azure Storage i Server Explorer för att visa skrivskyddade blob-och tabell data från dina Azure Storage-konton. Du kan visa data från ditt lokala Storage emulator-konto och även från lagrings konton som du har skapat för Azure. Mer information finns i avsnittet [om att bläddra och hantera lagrings resurser med Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
-* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) är en fristående app som gör det enkelt att arbeta med Azure Storage data på Windows, OSX och Linux.
-* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) innehåller Azure-diagnostik Manager som gör att du kan visa, ladda ned och hantera de diagnostikdata som samlas in av programmen som körs på Azure.
+* Server Explorer i Visual Studio – Om du har installerat Azure Tools for Microsoft Visual Studio kan du använda Azure Storage-noden i Server Explorer för att visa skrivskyddade blob- och tabelldata från dina Azure Storage-konton. Du kan visa data från ditt lokala lagringsemulatorkonto och även från lagringskonton som du har skapat för Azure. Mer information finns i Bläddra [bland och hantera lagringsresurser med Server Explorer](/visualstudio/azure/vs-azure-tools-storage-resources-server-explorer-browse-manage).
+* [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md) är en fristående app som gör att du enkelt kan arbeta med Azure Storage data i Windows, OSX och Linux.
+* [Azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) innehåller Azure Diagnostics Manager som gör att du kan visa, ladda ned och hantera diagnostikdata som samlas in av de program som körs i Azure.
 
 ## <a name="next-steps"></a>Nästa steg
-- Se [skicka data från Windows Azure Diagnostics-tillägget till Event Hubs](diagnostics-extension-stream-event-hubs.md) för information om vidarebefordran av övervaknings data till Azure Event Hubs.
+- Mer [information om hur du vidarebefordrar övervakningsdata till Event Hubs](diagnostics-extension-stream-event-hubs.md) finns i Skicka data från Windows Azure Diagnostics-Azure Event Hubs.

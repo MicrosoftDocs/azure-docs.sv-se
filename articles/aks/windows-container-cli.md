@@ -1,23 +1,23 @@
 ---
-title: Skapa en Windows Server-behållare i ett AKS-kluster med hjälp av Azure CLI
-description: Lär dig hur du snabbt skapar ett Kubernetes-kluster, distribuerar ett program i en Windows Server-behållare i Azure Kubernetes service (AKS) med hjälp av Azure CLI.
+title: Skapa en Windows Server-container i ett AKS-kluster med hjälp av Azure CLI
+description: Lär dig hur du snabbt skapar ett Kubernetes-kluster, distribuerar ett program i en Windows Server-container i Azure Kubernetes Service (AKS) med hjälp av Azure CLI.
 services: container-service
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 13b4fbd21bb348d1ef79a3ca68128869115745cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 617590a3f482e246b8af5db6dd906591c16b20fa
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103200897"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769435"
 ---
-# <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Skapa en Windows Server-behållare i ett Azure Kubernetes service-kluster (AKS) med hjälp av Azure CLI
+# <a name="create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Skapa en Windows Server-container i ett Azure Kubernetes Service-kluster (AKS) med hjälp av Azure CLI
 
-Azure Kubernetes Service (AKS) är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. I den här artikeln distribuerar du ett AKS-kluster med hjälp av Azure CLI. Du distribuerar också ett ASP.NET-exempel program i en Windows Server-behållare till klustret.
+Azure Kubernetes Service (AKS) är en hanterad Kubernetes-tjänst som gör att du snabbt kan distribuera och hantera kluster. I den här artikeln distribuerar du ett AKS-kluster med hjälp av Azure CLI. Du distribuerar även ASP.NET ett exempelprogram i en Windows Server-container till klustret.
 
-![Bild av bläddring till ASP.NET exempel program](media/windows-container/asp-net-sample-app.png)
+![Bild som visar hur du bläddrar ASP.NET ett exempelprogram](media/windows-container/asp-net-sample-app.png)
 
-Den här artikeln förutsätter grundläggande kunskaper om Kubernetes-koncept. Mer information finns i [Viktiga koncept för Azure Kubernetes Service (AKS)][kubernetes-concepts].
+Den här artikeln förutsätter grundläggande kunskaper om Kubernetes-begrepp. Mer information finns i [Viktiga koncept för Azure Kubernetes Service (AKS)][kubernetes-concepts].
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -25,25 +25,25 @@ Den här artikeln förutsätter grundläggande kunskaper om Kubernetes-koncept. 
 
 ### <a name="limitations"></a>Begränsningar
 
-Följande begränsningar gäller när du skapar och hanterar AKS-kluster som stöder flera Node-pooler:
+Följande begränsningar gäller när du skapar och hanterar AKS-kluster som stöder flera nodpooler:
 
-* Du kan inte ta bort den första noden.
+* Du kan inte ta bort den första nodpoolen.
 
-Följande ytterligare begränsningar gäller för Windows Server Node-pooler:
+Följande ytterligare begränsningar gäller för Windows Server-nodpooler:
 
-* AKS-klustret kan ha högst 10 noder i pooler.
-* AKS-klustret kan ha högst 100 noder i varje Node-pool.
-* Namnet på Windows Server-adresspoolen innehåller högst 6 tecken.
+* AKS-klustret kan ha högst 10 nodpooler.
+* AKS-klustret kan ha högst 100 noder i varje nodpool.
+* Namnet på Windows Server-nodpoolen har en gräns på 6 tecken.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. När du skapar en resursgrupp uppmanas du att ange en plats. Den här platsen är den plats där resurs gruppens metadata lagras, men det är även där dina resurser körs i Azure om du inte anger någon annan region när du skapar en resurs. Skapa en resursgrupp med hjälp av kommandot [az group create][az-group-create].
+En Azure-resursgrupp är en logisk grupp där Azure-resurser distribueras och hanteras. När du skapar en resursgrupp uppmanas du att ange en plats. Den här platsen är där metadata för resursgrupper lagras. Det är också där dina resurser körs i Azure om du inte anger en annan region när resursen skapas. Skapa en resursgrupp med hjälp av kommandot [az group create][az-group-create].
 
 I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *eastus*.
 
 > [!NOTE]
-> I den här artikeln används bash syntax för kommandona i den här självstudien.
-> Om du använder Azure Cloud Shell kontrollerar du att List rutan längst upp till vänster i Cloud Shells fönstret är inställd på **bash**.
+> I den här artikeln används Bash-syntax för kommandona i den här självstudien.
+> Om du använder Azure Cloud Shell ser du till att listrutan längst upp till vänster i Cloud Shell-fönstret är inställd på **Bash**.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -67,22 +67,22 @@ Följande exempelutdata visar den resursgrupp som skapats:
 
 ## <a name="create-an-aks-cluster"></a>Skapa ett AKS-kluster
 
-Om du vill köra ett AKS-kluster som har stöd för resurspooler för Windows Server-behållare måste klustret använda en nätverks princip som använder [Azure cni][azure-cni-about] (avancerat) nätverks-plugin. Mer detaljerad information om hur du planerar ut nödvändiga undernät och nätverks överväganden finns i [Konfigurera Azure cni Networking][use-advanced-networking]. Använd kommandot [AZ AKS Create][az-aks-create] för att skapa ett AKS-kluster med namnet *myAKSCluster*. Med det här kommandot skapas nödvändiga nätverks resurser om de inte finns.
+Om du vill köra ett AKS-kluster som stöder nodpooler för Windows Server-containrar måste klustret använda en nätverksprincip som [använder Azure CNI][azure-cni-about] (avancerat) plugin-program för nätverk. Mer detaljerad information som hjälper dig att planera de nödvändiga undernätsintervallen och nätverksöverväganden finns i [konfigurera Azure CNI nätverk][use-advanced-networking]. Använd kommandot [az aks create][az-aks-create] för att skapa ett AKS-kluster med namnet *myAKSCluster*. Det här kommandot skapar nödvändiga nätverksresurser om de inte finns.
 
-* Klustret har kon figurer ATS med två noder.
-* `--windows-admin-password`Parametrarna och `--windows-admin-username` anger administratörsautentiseringsuppgifter för alla Windows Server-behållare som skapats i klustret och måste uppfylla krav för [Windows Server-lösenord][windows-server-password]. Om du inte anger parametern *Windows-Admin-Password* uppmanas du att ange ett värde.
-* Node-poolen använder `VirtualMachineScaleSets` .
+* Klustret konfigureras med två noder.
+* Parametrarna `--windows-admin-password` `--windows-admin-username` och anger administratörsautentiseringsuppgifterna för alla Windows Server-containrar som skapas i klustret och måste uppfylla [lösenordskraven för Windows Server.][windows-server-password] Om du inte anger parametern *windows-admin-password* uppmanas du att ange ett värde.
+* Nodpoolen använder `VirtualMachineScaleSets` .
 
 > [!NOTE]
-> För att klustret ska fungera på ett tillförlitligt sätt bör du köra minst två noder (två) i standardnodens pool.
+> För att säkerställa att klustret fungerar tillförlitligt bör du köra minst 2 (två) noder i standardnodpoolen.
 
-Skapa ett användar namn som ska användas som administratörsautentiseringsuppgifter för dina Windows Server-behållare i klustret. I följande kommandon uppmanas du att ange ett användar namn och ange det WINDOWS_USERNAME för användning i ett senare kommando (kom ihåg att kommandona i den här artikeln anges i ett BASH-gränssnitt).
+Skapa ett användarnamn som ska användas som administratörsautentiseringsuppgifter för dina Windows Server-containrar i klustret. Följande kommandon uppmanar dig att ange ett användarnamn och ange WINDOWS_USERNAME för användning i ett senare kommando (kom ihåg att kommandona i den här artikeln anges i ett BASH-gränssnitt).
 
 ```azurecli-interactive
 echo "Please enter the username to use as administrator credentials for Windows Server containers on your cluster: " && read WINDOWS_USERNAME
 ```
 
-Skapa klustret och se till att du anger `--windows-admin-username` parametern. Följande exempel kommando skapar ett kluster med värdet från *WINDOWS_USERNAME* som du angav i föregående kommando. Alternativt kan du ange ett annat användar namn direkt i-parametern i stället för att använda *WINDOWS_USERNAME*. Följande kommando kommer också att uppmana dig att skapa ett lösen ord för administratörsautentiseringsuppgifter för dina Windows Server-behållare i klustret. Du kan också använda *Windows-Admin-Password-* parametern och ange ditt eget värde där.
+Skapa klustret och se till att du anger `--windows-admin-username` parametern. Följande exempelkommando skapar ett kluster med hjälp av värdet från *WINDOWS_USERNAME* som du konfigurerade i föregående kommando. Du kan också ange ett annat användarnamn direkt i parametern i stället för att använda *WINDOWS_USERNAME*. Följande kommando uppmanar dig också att skapa ett lösenord för administratörsautentiseringsuppgifterna för dina Windows Server-containrar i klustret. Du kan också använda parametern *windows-admin-password* och ange ditt eget värde där.
 
 ```azurecli-interactive
 az aks create \
@@ -97,13 +97,13 @@ az aks create \
 ```
 
 > [!NOTE]
-> Om du får ett lösen ords verifierings fel kontrollerar du att lösen ordet som du anger uppfyller [lösen ords kraven för Windows Server][windows-server-password]. Om ditt lösen ord uppfyller kraven kan du försöka skapa en resurs grupp i en annan region. Försök sedan att skapa klustret med den nya resurs gruppen.
+> Om du får ett lösenordsverifieringsfel kontrollerar du att det lösenord som du har angett uppfyller [Windows Server-lösenordskraven.][windows-server-password] Om lösenordet uppfyller kraven kan du försöka skapa resursgruppen i en annan region. Prova sedan att skapa klustret med den nya resursgruppen.
 
-Efter några minuter slutförs kommandot och returnerar JSON-formaterad information om klustret. Ibland kan det ta längre tid än några minuter att etablera klustret. Tillåt upp till 10 minuter i dessa fall.
+Efter några minuter slutförs kommandot och returnerar JSON-formaterad information om klustret. Ibland kan det ta längre tid än några minuter att etablera klustret. Tillåt i dessa fall upp till 10 minuter.
 
-## <a name="add-a-windows-server-node-pool"></a>Lägga till en pool för Windows Server-noder
+## <a name="add-a-windows-server-node-pool"></a>Lägga till en Windows Server-nodpool
 
-Som standard skapas ett AKS-kluster med en Node-pool som kan köra Linux-behållare. Använd `az aks nodepool add` kommandot för att lägga till ytterligare en Node-pool som kan köra Windows Server-behållare tillsammans med Linux-noden.
+Som standard skapas ett AKS-kluster med en nodpool som kan köra Linux-containrar. Använd `az aks nodepool add` kommandot för att lägga till ytterligare en nodpool som kan köra Windows Server-containrar tillsammans med Linux-nodpoolen.
 
 ```azurecli
 az aks nodepool add \
@@ -114,7 +114,7 @@ az aks nodepool add \
     --node-count 1
 ```
 
-Kommandot ovan skapar en ny Node-pool med namnet *npwin* och lägger till den i *myAKSCluster*. När du skapar en Node-pool för att köra Windows Server-behållare är standardvärdet för *Node-VM-size* *Standard_D2s_v3*. Om du väljer att ange parametern *Node-VM-size* kontrollerar du listan över [begränsade VM-storlekar][restricted-vm-sizes]. Den minsta rekommenderade storleken är *Standard_D2s_v3*. Kommandot ovan använder också standard under nätet i det virtuella nätverk som skapas när det körs `az aks create` .
+Kommandot ovan skapar en ny nodpool med namnet *npwin* och lägger till den i *myAKSCluster*. När du skapar en nodpool för att köra Windows Server-containrar är *standardvärdet för node-vm-size* *Standard_D2s_v3*. Om du väljer att ange *parametern node-vm-size* kontrollerar du listan över [begränsade VM-storlekar.][restricted-vm-sizes] Den minsta rekommenderade storleken är *Standard_D2s_v3*. Kommandot ovan använder också standardundernätet i det virtuella standardnätverk som skapas när du kör `az aks create` .
 
 ## <a name="connect-to-the-cluster"></a>Anslut till klustret
 
@@ -136,7 +136,7 @@ Du kan kontrollera anslutningen till klustret genom att köra kommandot [kubectl
 kubectl get nodes
 ```
 
-I följande exempel på utdata visas alla noder i klustret. Kontrol lera att status för alla noder är *klar*:
+Följande exempelutdata visar alla noder i klustret. Kontrollera att statusen för alla noder är *Klar:*
 
 ```output
 NAME                                STATUS   ROLES   AGE    VERSION
@@ -146,9 +146,9 @@ aksnpwin987654                      Ready    agent   108s   v1.16.9
 
 ## <a name="run-the-application"></a>Kör programmet
 
-En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. I den här artikeln används ett manifest för att skapa alla objekt som behövs för att köra ASP.NET-exempel programmet i en Windows Server-behållare. Det här manifestet innehåller en [Kubernetes-distribution][kubernetes-deployment] för exempel programmet ASP.net och en extern [Kubernetes-tjänst][kubernetes-service] för att komma åt programmet från Internet.
+En Kubernetes-manifestfil definierar ett önskat tillstånd för klustret, till exempel vilka containeravbildningar som ska köras. I den här artikeln används ett manifest för att skapa alla objekt som behövs för att köra ASP.NET exempelprogrammet i en Windows Server-container. Det här manifestet [innehåller en Kubernetes-distribution][kubernetes-deployment] för ASP.NET-exempelprogrammet och en extern [Kubernetes-tjänst][kubernetes-service] för att komma åt programmet från Internet.
 
-Exempel programmet ASP.NET tillhandahålls som en del av .NET Framework- [exempel][dotnet-samples] och körs i en Windows Server-behållare. AKS kräver att Windows Server-behållare baseras på avbildningar av *Windows server 2019* eller senare. Manifest filen Kubernetes måste också definiera en [Node-selektor][node-selector] som talar om för ditt AKS-kluster att köra ASP.NET-Pod på en nod som kan köra Windows Server-behållare.
+Den ASP.NET exempelprogrammet tillhandahålls som en del av [.NET Framework Samples och][dotnet-samples] körs i en Windows Server-container. AKS kräver att Windows Server-containrar baseras på avbildningar *av Windows Server 2019* eller högre. Kubernetes-manifestfilen måste också [][node-selector] definiera en nodväljare som anger att ditt AKS-kluster ska köra ASP.NET-exempelprogrammets podd på en nod som kan köra Windows Server-containrar.
 
 Skapa en fil med namnet `sample.yaml` och kopiera följande YAML-definition. Om du använder Azure Cloud Shell, kan du skapa filen med `vi` eller `nano` som om du arbetar i ett virtuellt eller fysiskt system:
 
@@ -204,7 +204,7 @@ Distribuera programmet med kommandot [kubectl apply][kubectl-apply] och ange nam
 kubectl apply -f sample.yaml
 ```
 
-Följande exempel på utdata visar att distributionen och tjänsten har skapats:
+Följande exempelutdata visar att distributionen och tjänsten har skapats:
 
 ```output
 deployment.apps/sample created
@@ -213,7 +213,7 @@ service/sample created
 
 ## <a name="test-the-application"></a>Testa programmet
 
-När programmet körs så exponerar en Kubernetes-tjänst programmets klientdel mot Internet. Den här processen kan ta ett par minuter att slutföra. Ibland kan tjänsten ta längre tid än några minuter att etablera. Tillåt upp till 10 minuter i dessa fall.
+När programmet körs så exponerar en Kubernetes-tjänst programmets klientdel mot Internet. Den här processen kan ta ett par minuter att slutföra. Ibland kan det ta längre tid än några minuter att etablera tjänsten. I dessa fall kan det ta upp till 10 minuter.
 
 Du kan övervaka förloppet genom att använda kommandot [kubectl get service][kubectl-get] med argumentet `--watch`.
 
@@ -221,7 +221,7 @@ Du kan övervaka förloppet genom att använda kommandot [kubectl get service][k
 kubectl get service sample --watch
 ```
 
-Inlednings vis visas den *externa IP-adressen* för *exempel* tjänsten som *väntar*.
+Till en *början visas EXTERNAL-IP* *för* exempeltjänsten *som väntande*.
 
 ```output
 NAME               TYPE           CLUSTER-IP   EXTERNAL-IP   PORT(S)        AGE
@@ -234,12 +234,12 @@ När *EXTERNAL-IP*-adressen ändras från *väntande* till en faktisk offentlig 
 sample  LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 ```
 
-Om du vill se exempel appen i praktiken öppnar du en webbläsare till den externa IP-adressen för din tjänst.
+Om du vill se exempelappen i praktiken öppnar du en webbläsare till den externa IP-adressen för din tjänst.
 
-![Bild av bläddring till ASP.NET exempel program](media/windows-container/asp-net-sample-app.png)
+![Bild som visar hur du bläddrar ASP.NET ett exempelprogram](media/windows-container/asp-net-sample-app.png)
 
 > [!Note]
-> Om du får en tids gräns för anslutningen när du försöker läsa in sidan bör du kontrol lera att exempel appen är klar med följande kommando [kubectl get poddar--Watch]. Ibland kommer Windows-behållaren inte att startas när den externa IP-adressen är tillgänglig.
+> Om du får en tidsgräns för anslutning när du försöker läsa in sidan bör du kontrollera att exempelappen är klar med följande kommando [kubectl get pods --watch]. Ibland startas inte Windows-containern när den externa IP-adressen är tillgänglig.
 
 ## <a name="delete-cluster"></a>Ta bort klustret
 
@@ -254,7 +254,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du distribuerat ett Kubernetes-kluster och distribuerat ett ASP.NET exempel program i en Windows Server-behållare till det. [Öppna Kubernetes-webbinstrumentpanelen][kubernetes-dashboard] för det kluster som du nyss skapade.
+I den här artikeln distribuerade du ett Kubernetes-kluster och distribuerade ASP.NET ett exempelprogram i en Windows Server-container till det. [Öppna Kubernetes-webbinstrumentpanelen][kubernetes-dashboard] för det kluster som du nyss skapade.
 
 Om du vill lära dig mer om AKS, och gå igenom ett exempel med fullständig distributionskod, fortsätter du till självstudiekursen om Kubernetes-kluster.
 
@@ -273,16 +273,16 @@ Om du vill lära dig mer om AKS, och gå igenom ett exempel med fullständig dis
 [kubernetes-concepts]: concepts-clusters-workloads.md
 [aks-monitor]: ../azure-monitor/containers/container-insights-onboard.md
 [aks-tutorial]: ./tutorial-kubernetes-prepare-app.md
-[az-aks-browse]: /cli/azure/aks#az-aks-browse
-[az-aks-create]: /cli/azure/aks#az-aks-create
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
-[az-aks-install-cli]: /cli/azure/aks#az-aks-install-cli
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-aks-browse]: /cli/azure/aks#az_aks_browse
+[az-aks-create]: /cli/azure/aks#az_aks_create
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
+[az-aks-install-cli]: /cli/azure/aks#az_aks_install_cli
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete
+[az-provider-register]: /cli/azure/provider#az_provider_register
 [azure-cli-install]: /cli/azure/install-azure-cli
 [azure-cni-about]: concepts-network.md#azure-cni-advanced-networking
 [sp-delete]: kubernetes-service-principal.md#additional-considerations
@@ -294,6 +294,6 @@ Om du vill lära dig mer om AKS, och gå igenom ett exempel med fullständig dis
 [use-advanced-networking]: configure-azure-cni.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [windows-server-password]: /windows/security/threat-protection/security-policy-settings/password-must-meet-complexity-requirements#reference

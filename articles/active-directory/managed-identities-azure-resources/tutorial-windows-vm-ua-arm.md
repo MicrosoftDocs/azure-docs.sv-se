@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: Använd en hanterad identitet för att komma åt Azure Resource Manager-Windows-Azure AD'
+title: 'Självstudie: Använda en hanterad identitet för att komma Azure Resource Manager – Windows – Azure AD'
 description: En självstudiekurs som beskriver steg för steg hur du använder en användartilldelad hanterad identitet på en virtuell Windows-dator för att få åtkomst till Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
@@ -15,14 +15,15 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f46d92c38d2d2567eeaafce0f9c5c9c3b5dd44c5
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 37b7b6332bdd000968dc136b946d61ebe82d87ad
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307069"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776383"
 ---
-# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Självstudie: Använd en användardefinierad hanterad identitet på en virtuell Windows-dator för att få åtkomst till Azure Resource Manager
+# <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Självstudie: Använda en användar tilldelad hanterad identitet på en virtuell Windows-dator för att komma åt Azure Resource Manager
 
 Den här självstudien beskriver hur du skapar en användartilldelad identitet, hur du tilldelar den till en virtuell Windows-dator (VM) och hur du sedan använder identiteten för att få åtkomst till Azure Resource Manager-API:et. Hanterade tjänstidentiteter hanteras automatiskt av Azure. Det gör det möjligt att autentisera mot tjänster som stöder Azure AD-autentisering, utan att du behöver bädda in autentiseringsuppgifter i din kod. 
 
@@ -45,17 +46,17 @@ Lär dig att:
 
 - [Skapa en virtuell Windows-dator](../../virtual-machines/windows/quick-create-portal.md)
 
-- Ditt konto måste ha behörigheten ”Ägare” och lämpligt omfång (din prenumeration eller resursgrupp) för att du ska kunna utföra stegen i den här självstudien som beskriver hur du skapar resurser och hanterar roller. Om du behöver hjälp med roll tilldelning, se [tilldela Azure-roller för att hantera åtkomst till dina Azure-prenumerations resurser](../../role-based-access-control/role-assignments-portal.md).
+- Ditt konto måste ha behörigheten ”Ägare” och lämpligt omfång (din prenumeration eller resursgrupp) för att du ska kunna utföra stegen i den här självstudien som beskriver hur du skapar resurser och hanterar roller. Om du behöver hjälp med rolltilldelning kan du läsa Tilldela [Azure-roller för att hantera åtkomst till dina Azure-prenumerationsresurser.](../../role-based-access-control/role-assignments-portal.md)
 
-- Om du vill köra exempel skripten har du två alternativ:
-    - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.
+- Om du vill köra exempelskripten har du två alternativ:
+    - Använd den [Azure Cloud Shell](../../cloud-shell/overview.md), som du kan öppna med hjälp av **knappen Prova** i det övre högra hörnet av kodblock.
     - Kör skript lokalt med Azure PowerShell, enligt beskrivningen i nästa avsnitt.
 
 ### <a name="configure-azure-powershell-locally"></a>Konfigurera Azure PowerShell lokalt
 
-Utför följande steg för att använda Azure PowerShell lokalt för den här artikeln (i stället för att använda Cloud Shell):
+Om du Azure PowerShell lokalt för den här artikeln (i stället för att använda Cloud Shell) gör du följande:
 
-1. Installera [den senaste versionen av Azure PowerShell](/powershell/azure/install-az-ps) om du inte redan gjort det.
+1. Installera [den senaste versionen Azure PowerShell](/powershell/azure/install-az-ps) om du inte redan har gjort det.
 
 1. Logga in på Azure:
 
@@ -69,9 +70,9 @@ Utför följande steg för att använda Azure PowerShell lokalt för den här ar
     Install-Module -Name PowerShellGet -AllowPrerelease
     ```
 
-    Du kan behöva använda `Exit` den aktuella PowerShell-sessionen när du har kört det här kommandot för nästa steg.
+    Du kan behöva ta `Exit` bort den aktuella PowerShell-sessionen när du har kört det här kommandot för nästa steg.
 
-1. Installera för hands versionen av `Az.ManagedServiceIdentity` modulen för att utföra de användare som tilldelats hanterade identitets åtgärder i den här artikeln:
+1. Installera förhandsversionen av modulen för att `Az.ManagedServiceIdentity` utföra åtgärderna för användar tilldelad hanterad identitet i den här artikeln:
 
     ```azurepowershell
     Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
@@ -79,14 +80,14 @@ Utför följande steg för att använda Azure PowerShell lokalt för den här ar
 
 ## <a name="enable"></a>Aktivera
 
-För ett scenario som baseras på en användardefinierad identitet måste du utföra följande steg:
+För ett scenario som baseras på en användar tilldelad identitet måste du utföra följande steg:
 
 - Skapa en identitet
-- Tilldela den nyligen skapade identiteten
+- Tilldela den nya identiteten
 
 ### <a name="create-identity"></a>Skapa identitet
 
-I det här avsnittet visas hur du skapar en användardefinierad identitet. En användartilldelad identitet skapas som en fristående Azure-resurs. Azure skapar med hjälp av [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) en identitet i din Azure AD-klient som kan tilldelas till en eller flera Azure-tjänstinstanser.
+Det här avsnittet visar hur du skapar en användar tilldelad identitet. En användartilldelad identitet skapas som en fristående Azure-resurs. Azure skapar med hjälp av [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity) en identitet i din Azure AD-klient som kan tilldelas till en eller flera Azure-tjänstinstanser.
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
@@ -112,7 +113,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 
 ### <a name="assign-identity"></a>Tilldela identitet
 
-I det här avsnittet visas hur du tilldelar den användarspecifika identiteten till en virtuell Windows-dator. En användartilldelad identitet kan användas av klienter på flera Azure-resurser. Använd följande kommandon för att tilldela den användartilldelade identiteten till en enskild virtuell dator. Använd egenskapen `Id` som returnerades i föregående steg för `-IdentityID`-parametern.
+Det här avsnittet visar hur du tilldelar den användar tilldelade identiteten till en virtuell Windows-dator. En användartilldelad identitet kan användas av klienter på flera Azure-resurser. Använd följande kommandon för att tilldela den användartilldelade identiteten till en enskild virtuell dator. Använd egenskapen `Id` som returnerades i föregående steg för `-IdentityID`-parametern.
 
 ```azurepowershell-interactive
 $vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM
@@ -121,7 +122,7 @@ Update-AzVM -ResourceGroupName TestRG -VM $vm -IdentityType "UserAssigned" -Iden
 
 ## <a name="grant-access"></a>Bevilja åtkomst 
 
-I det här avsnittet visas hur du beviljar en användardefinierad identitets åtkomst till en resurs grupp i Azure Resource Manager. Hanterade identiteter för Azure-resurser tillhandahåller identiteter som din kod kan använda för att begära åtkomsttoken för autentisering mot resurs-API:er som stöder Azure AD-autentisering. I den här självstudiekursen använder koden Azure Resource Manager-API:et. 
+Det här avsnittet visar hur du ger din användar tilldelade identitet åtkomst till en resursgrupp i Azure Resource Manager. Hanterade identiteter för Azure-resurser tillhandahåller identiteter som din kod kan använda för att begära åtkomsttoken för autentisering mot resurs-API:er som stöder Azure AD-autentisering. I den här självstudiekursen använder koden Azure Resource Manager-API:et. 
 
 Innan koden kan komma åt API:et måste du ge identiteten åtkomst till en resurs i Azure Resource Manager. I detta fall den resursgrupp som den virtuella datorn finns i. Uppdatera värdet för `<SUBSCRIPTION ID>` baserat på din miljö.
 
@@ -158,7 +159,7 @@ Under resten av självstudiekursen arbetar du från den virtuella datorn som vi 
 
 4. Nu när du har skapat en **anslutning till fjärrskrivbord** med den virtuella datorn öppnar du **PowerShell** i fjärrsessionen.
 
-5. Använd PowerShells `Invoke-WebRequest` och skicka en begäran till den lokala slutpunkten för hanterade identiteter för Azure-resurser för att hämta en åtkomsttoken för Azure Resource Manager.  `client_id`Värdet är det värde som returneras när du skapade den användarspecifika hanterade identiteten.
+5. Använd PowerShells `Invoke-WebRequest` och skicka en begäran till den lokala slutpunkten för hanterade identiteter för Azure-resurser för att hämta en åtkomsttoken för Azure Resource Manager.  Värdet `client_id` är det värde som returnerades när du skapade den användar tilldelade hanterade identiteten.
 
     ```azurepowershell
     $response = Invoke-WebRequest -Uri 'http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=af825a31-b0e0-471f-baea-96de555632f9&resource=https://management.azure.com/' -Method GET -Headers @{Metadata="true"}
@@ -166,7 +167,7 @@ Under resten av självstudiekursen arbetar du från den virtuella datorn som vi 
     $ArmToken = $content.access_token
     ```
 
-### <a name="read-properties"></a>Läsa egenskaper
+### <a name="read-properties"></a>Läsegenskaper
 
 Använd den åtkomsttoken som du hämtade i föregående steg för att komma åt Azure Resource Manager, och läs egenskaperna för den resursgrupp som du gav den användartilldelade identiteten åtkomst till. Ersätt `<SUBSCRIPTION ID>` med prenumerations-id:t för din miljö.
 
@@ -181,7 +182,7 @@ Svaret innehåller information om den specifika resursgruppen, liknande den i f�
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du lärt dig hur du skapar en användardefinierad identitet och kopplar den till en virtuell Azure-dator för att få åtkomst till Azure Resource Manager-API: et.  Mer information om Azure Resource Manager finns här:
+I den här självstudien har du lärt dig hur du skapar en användar tilldelad identitet och kopplar den till en virtuell Azure-dator för att komma åt Azure Resource Manager-API:et.  Mer information om Azure Resource Manager finns här:
 
 > [!div class="nextstepaction"]
 >[Azure Resource Manager](../../azure-resource-manager/management/overview.md)

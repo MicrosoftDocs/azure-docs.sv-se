@@ -1,6 +1,6 @@
 ---
-title: Själv studie kurs om att använda Azure App konfiguration Key Vault referenser i en Java våren Boot-app | Microsoft Docs
-description: I den här självstudien får du lära dig att använda Azure App konfigurations Key Vault referenser från en Java våren Boot-app
+title: Självstudie om att använda Azure App Configuration Key Vault referenser i en Java Spring Boot-app | Microsoft Docs
+description: I den här självstudien får du lära dig hur Azure App Configuration använder Key Vault från en Java Spring Boot-app
 services: azure-app-configuration
 documentationcenter: ''
 author: AlexandraKemperMS
@@ -13,93 +13,93 @@ ms.topic: tutorial
 ms.date: 08/11/2020
 ms.author: alkemper
 ms.custom: mvc, devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 04d9c7a343570349851a206fd69fdda822f790a4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c5534ab836968bc4e72a54db1ddb9667d366558
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99981484"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768857"
 ---
-# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Självstudie: använda Key Vault referenser i en Java våren-app
+# <a name="tutorial-use-key-vault-references-in-a-java-spring-app"></a>Självstudie: Använda Key Vault referenser i en Java Spring-app
 
-I den här självstudien får du lära dig hur du använder Azure App konfigurations tjänsten tillsammans med Azure Key Vault. Konfiguration av appar och Key Vault är kompletterande tjänster som används sida vid sida i de flesta program distributioner.
+I den här självstudien lär du dig att använda Azure App Configuration-tjänsten tillsammans med Azure Key Vault. App Configuration och Key Vault kompletterande tjänster som används sida vid sida i de flesta programdistributioner.
 
-Med konfiguration av appar kan du använda tjänsterna tillsammans genom att skapa nycklar som refererar till värden som lagras i Key Vault. När app-konfigurationen skapar sådana nycklar lagrar den URI: er för Key Vault värden i stället för själva värdena.
+App Configuration hjälper dig att använda tjänsterna tillsammans genom att skapa nycklar som refererar till värden som lagras i Key Vault. När App Configuration skapar sådana nycklar lagras URI:er för Key Vault snarare än själva värdena.
 
-Programmet använder klient leverantören för konfiguration av appar för att hämta Key Vault referenser, precis som för alla andra nycklar som lagras i app-konfigurationen. I det här fallet är de värden som lagras i app-konfigurationen URI: er som refererar till värdena i Key Vault. De är inte Key Vault värden eller autentiseringsuppgifter. Eftersom klient leverantören känner igen nycklarna som Key Vault referenser, använder den Key Vault för att hämta sina värden.
+Programmet använder klientprovidern App Configuration för att hämta Key Vault referenser, precis som för andra nycklar som lagras i App Configuration. I det här fallet är värdena som lagras App Configuration URI:er som refererar till värdena i Key Vault. De är inte Key Vault värden eller autentiseringsuppgifter. Eftersom klientprovidern identifierar nycklarna som Key Vault referenser använder den Key Vault för att hämta deras värden.
 
-Ditt program ansvarar för att autentisera korrekt för både app-konfigurationen och Key Vault. De två tjänsterna kommunicerar inte direkt.
+Ditt program ansvarar för att autentisera korrekt till både App Configuration och Key Vault. De två tjänsterna kommunicerar inte direkt.
 
-Den här självstudien visar hur du implementerar Key Vault referenser i din kod. Den bygger på den webbapp som introducerades i snabbstarterna. Innan du fortsätter måste du först [skapa en Java våren-app med app-konfigurationen](./quickstart-java-spring-app.md) .
+Den här självstudien visar hur du implementerar Key Vault referenser i koden. Den bygger på den webbapp som introducerades i snabbstarterna. Innan du fortsätter slutför du [Skapa en Java Spring-app med App Configuration](./quickstart-java-spring-app.md) först.
 
-Du kan använda valfri kod redigerare för att utföra stegen i den här självstudien. Till exempel är [Visual Studio Code](https://code.visualstudio.com/) en plattforms oberoende kod redigerare som är tillgänglig för operativ systemen Windows, MacOS och Linux.
+Du kan använda valfri kodredigerare för att göra stegen i den här självstudien. Till exempel [Visual Studio Code](https://code.visualstudio.com/) är en plattformsoberoende kodredigerare som är tillgänglig för Windows-, macOS- och Linux-operativsystemen.
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
-> * Skapa en konfigurations nyckel för appen som refererar till ett värde som lagras i Key Vault.
-> * Få åtkomst till värdet för den här nyckeln från ett Java våren-program.
+> * Skapa en App Configuration nyckel som refererar till ett värde som lagras Key Vault.
+> * Få åtkomst till värdet för den här nyckeln från ett Java Spring-program.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/)
-* En [Java Development Kit (JDK)](/java/azure/jdk) som stöds med version 8.
-* [Apache maven](https://maven.apache.org/download.cgi) version 3,0 eller senare.
+* Azure-prenumeration [– skapa en kostnadsfritt](https://azure.microsoft.com/free/)
+* Ett [Java Development Kit (JDK) med](/java/azure/jdk) version 8 som stöds.
+* [Apache Maven](https://maven.apache.org/download.cgi) version 3.0 eller senare.
 
 ## <a name="create-a-vault"></a>Skapa ett valv
 
-1. Välj alternativet **skapa en resurs** i det övre vänstra hörnet i Azure Portal:
+1. Välj alternativet **Skapa en** resurs i det övre vänstra hörnet i Azure Portal:
 
-    ![Skärm bild som visar alternativet Skapa en resurs i Azure Portal.](./media/quickstarts/search-services.png)
+    ![Skärmbild som visar alternativet Skapa en resurs i Azure Portal.](./media/quickstarts/search-services.png)
 1. Ange **Key Vault** i sökrutan.
-1. Välj **nyckel valv** till vänster i listan resultat.
-1. I **nyckel valv** väljer du **Lägg till**.
-1. Ange följande information till höger i **skapa nyckel valv**:
-    * Välj en **prenumeration för att välja en** prenumeration.
-    * I **resurs grupp** väljer du **Skapa ny** och anger ett resurs grupp namn.
-    * I **Key Vault-namnet** krävs ett unikt namn. I den här självstudien anger du **contoso-vault2**.
-    * Välj en plats i list rutan **region** .
-1. Lämna de andra alternativen för att **skapa nyckel valv** med standardvärdena.
+1. I resultatlistan väljer du **Nyckelvalv** till vänster.
+1. I **Nyckelvalv väljer** du Lägg **till**.
+1. Ange följande information **till höger i** Skapa nyckelvalv:
+    * Välj **Prenumeration** för att välja en prenumeration.
+    * I **Resursgrupp** väljer du **Skapa ny** och anger ett resursgruppsnamn.
+    * I **Nyckelvalvsnamn** krävs ett unikt namn. I den här självstudien anger **du Contoso-vault2**.
+    * Välj **en** plats i listrutan Region.
+1. Lämna **standardvärdena för de andra** alternativen för Att skapa nyckelvalv.
 1. Välj **Skapa**.
 
-I det här läget är ditt Azure-konto det enda som har behörighet att komma åt det här nya valvet.
+Nu är ditt Azure-konto det enda som har behörighet att komma åt det nya valvet.
 
-![Skärm bilden visar ditt nyckel valv.](./media/quickstarts/vault-properties.png)
+![Skärmbild som visar nyckelvalvet.](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Lägga till en hemlighet i Key Vault
 
-Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytterligare steg. I det här fallet lägger du till ett meddelande som du kan använda för att testa Key Vault hämtning. Meddelandet kallas **meddelande** och du lagrar värdet "hej från Key Vault" i det.
+Om du vill lägga till en hemlighet i valvet behöver du bara vidta några ytterligare steg. I det här fallet lägger du till ett meddelande som du kan använda för att Key Vault hämtning. Meddelandet kallas Meddelande **och** du lagrar värdet "Hello from Key Vault" i det.
 
-1. Välj **hemligheter** på sidan Key Vault egenskaper.
-1. Välj **generera/importera**.
-1. Ange följande värden i fönstret **skapa en hemlighet** :
-    * **Överförings alternativ**: ange **manuell**.
-    * **Namn**: Ange ett **meddelande**.
-    * **Värde**: ange **Hej från Key Vault**.
-1. Lämna den andra **skapa en hemlig** egenskap med standardvärdena.
+1. Från sidan Key Vault egenskaper väljer du **Hemligheter.**
+1. Välj **Generera/importera**.
+1. I fönstret **Skapa en** hemlighet anger du följande värden:
+    * **Uppladdningsalternativ:** Ange **Manuell**.
+    * **Namn:** Ange **Meddelande**.
+    * **Värde:** Ange **Hello från Key Vault**.
+1. Lämna **standardvärdena för de andra egenskaperna** Skapa en hemlighet.
 1. Välj **Skapa**.
 
-## <a name="add-a-key-vault-reference-to-app-configuration"></a>Lägg till en Key Vault referens till app-konfigurationen
+## <a name="add-a-key-vault-reference-to-app-configuration"></a>Lägga till en Key Vault-referens för App Configuration
 
-1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **alla resurser** och välj sedan den instans av app konfigurations arkiv som du skapade i snabb starten.
+1. Logga in på [Azure-portalen](https://portal.azure.com). Välj **Alla resurser** och välj sedan den App Configuration Store-instans som du skapade i snabbstarten.
 
-1. Välj **konfigurations Utforskaren**.
+1. Välj **Configuration Explorer.**
 
-1. Välj **+ skapa**  >  **Key Vault-referens** och ange sedan följande värden:
-    * **Nyckel**: Välj **/Application/config.keyvaultmessage**
-    * **Etikett**: lämna värdet tomt.
-    * **Prenumeration**, **resurs grupp** och **nyckel valv**: ange värdena som motsvarar värdena i nyckel valvet som du skapade i föregående avsnitt.
-    * **Hemlighet**: Välj det hemliga namnet **meddelande** som du skapade i föregående avsnitt.
+1. Välj **+ Skapa**  >  **nyckelvalvsreferens** och ange sedan följande värden:
+    * **Nyckel:** Välj **/application/config.keyvaultmessage**
+    * **Etikett:** Lämna det här värdet tomt.
+    * **Prenumeration,** **Resursgrupp** och **Nyckelvalv:** Ange de värden som motsvarar värdena i nyckelvalvet som du skapade i föregående avsnitt.
+    * **Hemlighet:** Välj hemligheten med **namnet Meddelande** som du skapade i föregående avsnitt.
 
-## <a name="connect-to-key-vault"></a>Anslut till Key Vault
+## <a name="connect-to-key-vault"></a>Ansluta till Key Vault
 
-1. I den här självstudien använder du ett huvud namn för tjänsten för autentisering till Key Vault. Om du vill skapa tjänstens huvud namn använder du kommandot Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) :
+1. I den här självstudien använder du ett huvudnamn för tjänsten för autentisering för att Key Vault. Om du vill skapa tjänstens huvudnamn använder du kommandot Azure CLI [az ad sp create-for-rbac:](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 
     ```azurecli
     az ad sp create-for-rbac -n "http://mySP" --sdk-auth
     ```
 
-    Den här åtgärden returnerar en serie med nyckel/värde-par:
+    Den här åtgärden returnerar en serie nyckel/värde-par:
 
     ```json
     {
@@ -115,20 +115,20 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Kör följande kommando för att ge tjänstens huvud namn åtkomst till ditt nyckel valv:
+1. Kör följande kommando för att ge tjänstens huvudnamn åtkomst till nyckelvalvet:
 
     ```azurecli
     az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-service-principal> --secret-permissions delete get
     ```
 
-1. Kör följande kommando för att hämta ditt objekt-ID och Lägg sedan till det i appens konfiguration.
+1. Kör följande kommando för att hämta ditt objekt-id och lägg sedan till det i App Configuration.
 
     ```azurecli
     az ad sp show --id <clientId-of-your-service-principal>
     az role assignment create --role "App Configuration Data Reader" --assignee-object-id <objectId-of-your-service-principal> --resource-group <your-resource-group>
     ```
 
-1. Skapa miljövariabler **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** och **AZURE_TENANT_ID**. Använd värdena för tjänstens huvud namn som visades i föregående steg. Kör följande kommandon på kommando raden och starta om kommando tolken för att ändringarna ska börja gälla:
+1. Skapa miljövariablerna **AZURE_CLIENT_ID**, **AZURE_CLIENT_SECRET** och **AZURE_TENANT_ID**. Använd värdena för tjänstens huvudnamn som visades i föregående steg. Kör följande kommandon på kommandoraden och starta om kommandotolken så att ändringen börjar gälla:
 
     ```cmd
     setx AZURE_CLIENT_ID "clientId"
@@ -154,20 +154,20 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
 
 
 > [!NOTE]
-> Dessa Key Vault autentiseringsuppgifter används bara i ditt program.  Ditt program autentiserar direkt med Key Vault med hjälp av dessa autentiseringsuppgifter utan att involvera app Configuration service.  Key Vault tillhandahåller autentisering för både ditt program och din app Configuration-tjänst utan att dela eller exponera nycklar.
+> De Key Vault autentiseringsuppgifterna används bara i ditt program.  Ditt program autentiseras direkt med Key Vault med dessa autentiseringsuppgifter utan att App Configuration tjänsten.  Den Key Vault autentisering för både ditt program och din App Configuration utan att dela eller exponera nycklar.
 
-## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uppdatera din kod för att använda en Key Vault referens
+## <a name="update-your-code-to-use-a-key-vault-reference"></a>Uppdatera koden så att den använder Key Vault referens
 
-1. Skapa en miljö variabel som heter **APP_CONFIGURATION_ENDPOINT**. Ange dess värde till slut punkten för appens konfigurations lager. Du kan hitta slut punkten på bladet **åtkomst nycklar** i Azure Portal. Starta om kommando tolken så att ändringen börjar gälla. 
+1. Skapa en miljövariabel med **namnet APP_CONFIGURATION_ENDPOINT**. Ange dess värde till slutpunkten för App Configuration store. Du hittar slutpunkten på **bladet Åtkomstnycklar** i Azure Portal. Starta om kommandotolken så att ändringen börjar gälla. 
 
 
-1. Öppna *bootstrap. Properties* i mappen *resurser* . Uppdatera den här filen så att den använder **APP_CONFIGURATION_ENDPOINT** -värdet. Ta bort alla referenser till en anslutnings sträng i den här filen. 
+1. Öppna *bootstrap.properties* i *resursmappen.* Uppdatera den här filen så att den **APP_CONFIGURATION_ENDPOINT värdet.** Ta bort alla referenser till en anslutningssträng i den här filen. 
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].endpoint= ${APP_CONFIGURATION_ENDPOINT}
     ```
 
-1. Öppna *MessageProperties. java*. Lägg till en ny variabel med namnet *keyVaultMessage*:
+1. Öppna *MessageProperties.java*. Lägg till en ny variabel med *namnet keyVaultMessage:*
 
     ```java
     private String keyVaultMessage;
@@ -181,7 +181,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Öppna *HelloController. java*. Uppdatera *GetMessage* -metoden för att inkludera det meddelande som hämtats från Key Vault.
+1. Öppna *HelloController.java*. Uppdatera metoden *getMessage* så att den inkluderar meddelandet som hämtats från Key Vault.
 
     ```java
     @GetMapping
@@ -190,7 +190,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Skapa en ny fil med namnet *AzureCredentials. java* och Lägg till koden nedan.
+1. Skapa en ny fil med *namnet AzureCredentials.java* och lägg till koden nedan.
 
     ```java
     package com.example.demo;
@@ -219,7 +219,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Skapa en ny fil med namnet *AppConfiguration. java*. Och Lägg till koden nedan.
+1. Skapa en ny fil med *namnet AppConfiguration.java.* Lägg till koden nedan.
 
     ```java
     package com.example.demo;
@@ -237,27 +237,27 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
     }
     ```
 
-1. Skapa en ny fil i din resurs-META-INF-katalog med namnet *våren. factors* och Lägg till koden nedan.
+1. Skapa en ny fil i dina resursers META-INF-katalog med namnet *spring.factories* och lägg till koden nedan.
 
     ```factories
     org.springframework.cloud.bootstrap.BootstrapConfiguration=\
     com.example.demo.AppConfiguration
     ```
 
-1. Skapa ditt våren Boot-program med Maven och kör det, till exempel:
+1. Skapa ditt Spring Boot med Maven och kör det, till exempel:
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-1. När programmet har körts använder du *sväng* för att testa programmet, till exempel:
+1. När programmet körs använder du *curl för* att testa programmet, till exempel:
 
       ```shell
       curl -X GET http://localhost:8080/
       ```
 
-    Du ser meddelandet som du angav i appens konfigurations arkiv. Du ser också meddelandet som du angav i Key Vault.
+    Du ser meddelandet som du angav i App Configuration store. Du ser också meddelandet som du angav i Key Vault.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
@@ -265,7 +265,7 @@ Om du vill lägga till en hemlighet i valvet behöver du bara utföra några ytt
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien har du skapat en konfigurations nyckel för appen som refererar till ett värde som lagras i Key Vault. Fortsätt till nästa självstudie om du vill lära dig hur du använder funktions flaggor i ditt Java våren-program.
+I den här självstudien har du skapat App Configuration nyckel som refererar till ett värde som lagras i Key Vault. Fortsätt till nästa självstudie om du vill lära dig hur du använder funktionsflaggor i ditt Java Spring-program.
 
 > [!div class="nextstepaction"]
-> [Hanterad identitets integrering](./quickstart-feature-flag-spring-boot.md)
+> [Integrering av hanterade identiteter](./quickstart-feature-flag-spring-boot.md)

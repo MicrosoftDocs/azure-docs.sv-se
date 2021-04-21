@@ -1,15 +1,15 @@
 ---
-title: Azure CLI – skapa och verifiera en virtuell dator i ett labb
+title: Azure CLI – Skapa och verifiera en virtuell dator i ett labb
 description: Det här Azure CLI-skriptet skapar en virtuell dator i ett labb och verifierar att den är tillgänglig.
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 08/11/2020
-ms.openlocfilehash: c7625f62d7897d61903f864b216ccf9aa13648ea
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 779ddee7da4248ce11b906c2a4736fe7851603cf
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102198429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786755"
 ---
 # <a name="use-azure-cli-to-create-and-verify-availability-of-a-virtual-machine-in-a-lab-in-azure-devtest-labs"></a>Använd Azure CLI för att skapa och verifiera tillgängligheten för en virtuell dator i ett labb i Azure DevTest Labs
 
@@ -37,9 +37,9 @@ I det här skriptet används följande kommandon:
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az lab vm create](/cli/azure/lab/vm#az-lab-vm-create) | Skapar en virtuell dator i ett labb. |
-| [az lab vm show](/cli/azure/lab/vm#az-lab-vm-show) | Visar status för den virtuella datorn i ett labb. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az lab vm create](/cli/azure/lab/vm#az_lab_vm_create) | Skapar en virtuell dator i ett labb. |
+| [az lab vm show](/cli/azure/lab/vm#az_lab_vm_show) | Visar status för den virtuella datorn i ett labb. |
 
 ## <a name="next-steps"></a>Nästa steg
 

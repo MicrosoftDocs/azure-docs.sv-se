@@ -9,28 +9,28 @@ ms.date: 04/05/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, references_regions
-ms.openlocfilehash: 91f42ae671cb1696e5b088bafde8362cf19ce856
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: 9caabb8dc7f09e4ef3852d9269d178c086744779
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718003"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789815"
 ---
 # <a name="create-an-azure-file-share"></a>Skapa en Azure-filresurs
 Om du vill skapa en Azure-filresurs måste du besvara tre frågor om hur du ska använda den:
 
 - **Vilka är prestandakraven för din Azure-filresurs?**  
-    Azure Files erbjuder standardfilresurser som finns på hårddiskbaserad (HDD-baserad) maskinvara och premiumfilresurser som finns på SSD-baserad maskinvara (Solid State Disk).
+    Azure Files erbjuder standardfilresurser som finns på hårddiskbaserad (HDD-baserad) maskinvara och premiumfilresurser som finns på SOLID-State Disk-baserad (SSD-baserad) maskinvara.
 
 - **Vilka är dina redundanskrav för din Azure-filresurs?**  
-    Standardfilresurser erbjuder lokalt redundant (LRS), zonredundant (ZRS), geo-redundant (GRS) eller geo-zonredundant lagring (GZRS), men funktionen för stora filresurser stöds endast på lokalt redundanta och zonredundant filresurser. Premium-filresurser stöder inte någon form av geo-redundans.
+    Standardfilresurser erbjuder lokalt redundant (LRS), zonredundant (ZRS), geo-redundant (GRS) eller geo-zonredundant lagring (GZRS), men funktionen för stora filresurser stöds endast på lokalt redundanta filresurser och zonredundant filresurser. Premium-filresurser stöder inte någon form av geo-redundans.
 
-    Premium-filresurser är tillgängliga med lokalt redundans och zonredundans i en delmängd av regionerna. Om du vill ta reda på om Premium-filresurser för närvarande är tillgängliga i din region kan du gå till [produktsidan som är tillgänglig per](https://azure.microsoft.com/global-infrastructure/services/?products=storage) region för Azure. Information om regioner som stöder ZRS finns i [Azure Storage redundans](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Premium-filresurser är tillgängliga med lokalt redundans och zonredundans i en delmängd av regionerna. Om du vill ta reda på om Premium-filresurser för närvarande är tillgängliga i din region kan du gå till [sidan produkter som är tillgängliga per region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) för Azure. Information om regioner som stöder ZRS finns i [Azure Storage redundans](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
-- **Vilken filresursstorlek behöver du?**  
+- **Hur stor filresurs behöver du?**  
     I lokala och zonredundant lagringskonton kan Azure-filresurser sträcka sig över upp till 100 TiB, men i geo- och geo-zonredundant lagringskonton kan Azure-filresurser endast omfatta upp till 5 TiB. 
 
-Mer information om dessa tre alternativ finns i [Planera för en Azure Files distribution.](storage-files-planning.md)
+Mer information om dessa tre alternativ finns i [Planera för en Azure Files distribution](storage-files-planning.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 - Den här artikeln förutsätter att du redan har skapat en Azure-prenumeration. Om du inte redan har en prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
@@ -38,7 +38,7 @@ Mer information om dessa tre alternativ finns i [Planera för en Azure Files dis
 - Om du tänker använda Azure CLI installerar [du den senaste versionen](/cli/azure/install-azure-cli).
 
 ## <a name="create-a-storage-account"></a>Skapa ett lagringskonto
-Azure-filresurser distribueras till *lagringskonton,* som är objekt på den översta nivån som representerar en delad lagringspool. Den här lagringspoolen kan användas för att distribuera flera filresurser. 
+Azure-filresurser distribueras till *lagringskonton*, som är objekt på den översta nivån som representerar en delad lagringspool. Den här lagringspoolen kan användas för att distribuera flera filresurser. 
 
 Azure stöder flera typer av lagringskonton för olika lagringsscenarier som kunder kan ha, men det finns två huvudsakliga typer av lagringskonton för Azure Files. Vilken typ av lagringskonto du behöver skapa beror på om du vill skapa en standardfilresurs eller en premiumfilresurs: 
 
@@ -58,7 +58,7 @@ Det första avsnittet som ska slutföras för att skapa ett lagringskonto kallas
 
 Om du vill skapa ett FileStorage-lagringskonto ser du till att **alternativknappen** Prestanda är inställd på *Premium* och att **Filresurs** har valts i listrutan Premium-kontotyp. 
 
-:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="En skärmbild av alternativknappen för prestanda med Premium valt och typ av konto med filtorage valt.":::
+:::image type="content" source="media/storage-how-to-create-file-share/files-create-smb-share-performance-premium.png" alt-text="En skärmbild av alternativknappen prestanda med Premium valt och konto typ med filtorage valt.":::
 
 De andra grundläggande fälten är oberoende av valet av lagringskonto:
 - **Lagringskontonamn:** Namnet på lagringskontoresursen som ska skapas. Det här namnet måste vara globalt unikt, men annars kan du välja vilket namn du vill. Lagringskontots namn används som servernamn när du monterar en Azure-filresurs via SMB.
@@ -234,26 +234,26 @@ az storage share-rm create \
 ---
 
 > [!Note]  
-> Namnet på filresursen får bara innehålla gemener. Fullständig information om namngivning av filresurser och filer finns i Namnge och referera [till resurser, kataloger, filer och metadata.](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)
+> Namnet på filresursen får bara innehålla gemener. Fullständig information om namngivning av filresurser och filer finns i Namnge och [referera till resurser, kataloger, filer och metadata.](/rest/api/storageservices/Naming-and-Referencing-Shares--Directories--Files--and-Metadata)
 
 ### <a name="change-the-tier-of-an-azure-file-share"></a>Ändra nivå för en Azure-filresurs
-Filresurser som distribueras **i GPv2-lagringskontot (generell användning v2)** kan vara på transaktionsoptimerade, heta eller coola nivåer. Du kan när som helst ändra nivå för Azure-filresursen, beroende på transaktionskostnader enligt beskrivningen ovan.
+Filresurser som distribueras i GPv2-lagringskontot (generell användning **v2)** kan vara på transaktionsoptimerade, heta eller coola nivåer. Du kan när som helst ändra nivå för Azure-filresursen, beroende på transaktionskostnader enligt beskrivningen ovan.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
-På huvudsidan för lagringskontot väljer du Filresurser och väljer panelen Filresurser **(du** kan också navigera till Filresurser **via** innehållsförteckningen för lagringskontot). 
+På huvudlagringskontots  sida väljer du Filresurser och väljer den panel som är märkt **Filresurser** (du kan också navigera till Filresurser **via** innehållsförteckningen för lagringskontot).
 
-:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="Skärmbild av bladet lagringskonto, filresurser valda.":::
+:::image type="content" source="media/storage-files-quick-create-use-windows/click-files.png" alt-text="Skärmbild av bladet lagringskonto, valda filresurser.":::
 
-I tabelllistan över filresurser väljer du den filresurs som du vill ändra nivån för. På filresursöversiktssidan väljer du **Ändra nivå** på menyn.
+I tabelllistan över filresurser väljer du den filresurs som du vill ändra nivån för. På översiktssidan för filresursen väljer **du Ändra nivå** på menyn.
 
-![En skärmbild av filresursens översiktssida med knappen ändra nivå markerad](media/storage-how-to-create-file-share/change-tier-0.png)
+![En skärmbild av översiktssidan för filresursen med knappen ändra nivå markerad](media/storage-how-to-create-file-share/change-tier-0.png)
 
 I dialogrutan som visas väljer du önskad nivå: transaktionsoptimerad, het eller kall.
 
 ![En skärmbild av dialogrutan Ändra nivå](media/storage-how-to-create-file-share/change-tier-1.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
-Följande PowerShell-cmdlet förutsätter att du har angett variablerna , , enligt beskrivningen `$resourceGroupName` `$storageAccountName` i de tidigare `$shareName` avsnitten i det här dokumentet.
+Följande PowerShell-cmdlet förutsätter att du har angett variablerna , , enligt beskrivningen `$resourceGroupName` i tidigare avsnitt i det här `$storageAccountName` `$shareName` dokumentet.
 
 ```PowerShell
 Update-AzRmStorageShare `
@@ -264,7 +264,7 @@ Update-AzRmStorageShare `
 ```
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Följande Azure CLI-kommando förutsätter att du har angett variablerna , och enligt `$resourceGroupName` `$storageAccountName` `$shareName` beskrivningen i tidigare avsnitt i det här dokumentet.
+Följande Azure CLI-kommando förutsätter att du har angett variablerna , och enligt beskrivningen `$resourceGroupName` `$storageAccountName` i de tidigare `$shareName` avsnitten i det här dokumentet.
 
 ```azurecli
 az storage share-rm update \
@@ -277,6 +277,6 @@ az storage share-rm update \
 ---
 
 ## <a name="next-steps"></a>Nästa steg
-- [Planera för en distribution av Azure Files](storage-files-planning.md) eller Planera för en distribution av [Azure File Sync](storage-sync-files-planning.md). 
+- [Planera för en distribution av Azure Files](storage-files-planning.md) eller Planera för en distribution av [Azure File Sync](../file-sync/file-sync-planning.md). 
 - [Nätverksöversikt](storage-files-networking-overview.md).
-- Anslut och montera en filresurs i [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)och [Linux.](storage-how-to-use-files-linux.md)
+- Anslut och montera en filresurs på [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)och [Linux.](storage-how-to-use-files-linux.md)

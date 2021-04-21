@@ -1,24 +1,24 @@
 ---
-title: Självstudie – Bygg avbildning vid kod genomförande
+title: Självstudie – Skapa avbildning vid kod genomförande
 description: I självstudien får du lära dig att konfigurera en Azure Container Registry-uppgift till att utlösa containeravbildningsversioner i molnet automatiskt när du checkar in källkod på en Git-lagringsplats.
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 9c642a6c52a2d992c617993964bedd3ee04a7076
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: b4806ed30319ff058df6dfae0340a73ad4cb6132
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060337"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780793"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Självstudier: Automatisera containeravbildningar i molnet när du checkar in källkod
 
-Förutom en [snabb uppgift](container-registry-tutorial-quick-task.md)har ACR-aktiviteter stöd för automatiserade Docker-behållar avbildningar som bygger i molnet när du allokerar käll koden till en git-lagringsplats. Git-kontexter som stöds för ACR-uppgifter inkluderar offentlig eller privat GitHub eller Azure databaser.
+Förutom en snabbuppgift [stöder](container-registry-tutorial-quick-task.md)ACR-uppgifter automatiserade Docker-containeravbildningsbyggen i molnet när du genomför källkod till en Git-lagringsplats. Git-kontexter som stöds för ACR-uppgifter inkluderar offentliga eller privata GitHub- eller Azure-lagringsplatsen.
 
 > [!NOTE]
-> För närvarande stöder ACR-aktiviteter inte utlösare för commit eller pull-begäranden i GitHub Enterprise databaser.
+> För närvarande ACR-uppgifter inte utlösare för genomförande eller pull-begäran i GitHub Enterprise-lagringsplatsen.
 
-I den här självstudien skapar din ACR-uppgift och push-överför en enda behållar avbildning som anges i en Dockerfile när du allokerar käll koden till en git-lagrings platsen. Om du vill skapa en [multi-Step-aktivitet](container-registry-tasks-multi-step.md) som använder en yaml-fil för att definiera steg för att skapa, skicka och välja att testa flera behållare på kod commit, se [Självstudier: köra ett arbets flöde för flera steg i molnet när du ska genomföra käll koden](container-registry-tutorial-multistep-task.md). En översikt över ACR-aktiviteter finns i [Automatisera OS-och Framework-korrigering med ACR-uppgifter](container-registry-tasks-overview.md)
+I den här självstudien skapar och pushar din ACR-uppgift en enskild containeravbildning som anges i en Dockerfile när du genomför källkoden till en Git-lagringsplats. Information om hur du skapar en uppgift i flera steg som använder en [YAML-fil](container-registry-tasks-multi-step.md) för att definiera steg för att skapa, push-skicka och testa flera containrar vid kodöverföring finns i [Självstudie: Köra](container-registry-tutorial-multistep-task.md)ett containerarbetsflöde i flera steg i molnet när du genomför källkoden . En översikt över ACR-uppgifter finns i [Automatisera korrigering av operativsystem och ramverk med ACR-uppgifter](container-registry-tasks-overview.md)
 
 I de här självstudierna har du
 
@@ -37,7 +37,7 @@ Självstudien förutsätter att du redan har slutfört stegen i den [föregåend
 
 Nu när du har slutfört de steg som krävs för att göra så att ACR Tasks kan läsa incheckningsstatus och skapa webhooks på en lagringsplats kan du skapa en uppgift som utlöser en containeravbildningsversion på incheckningar till lagringsplatsen.
 
-Fyll först i de här gränssnittsmiljövariablerna med värden som är lämpliga för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i de här miljövariablerna måste du ersätta varje värde manuellt var det visas i exempel kommandona.
+Fyll först i de här gränssnittsmiljövariablerna med värden som är lämpliga för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i dessa miljövariabler måste du manuellt ersätta varje värde oavsett var det visas i exempelkommandona.
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -45,7 +45,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Skapa nu uppgiften genom att köra följande [AZ ACR uppgift Create][az-acr-task-create] -kommando:
+Skapa nu uppgiften genom att köra följande [az acr task create-kommando:][az-acr-task-create]
 
 ```azurecli
 az acr task create \
@@ -58,7 +58,7 @@ az acr task create \
 ```
 
 
-Den här uppgiften anger att en viss tids kod allokeras till *huvud* grenen i den databas som anges av `--context` , ACR-aktiviteter skapar behållar avbildningen från koden i den grenen. Den Dockerfile som anges av `--file` från lagringsplatsroten används för att skapa avbildningen. Argumentet `--image` anger ett parametriserat värde på `{{.Run.ID}}` för versionsdelen av avbildningstaggen, vilket säkerställer att versionsavbildningen motsvarar en viss version och är unikt taggad.
+Den här uppgiften anger att varje  gång kod har utförts till huvudgrenen i lagringsplatsen som anges av skapar ACR-uppgifter containeravbildningen från koden i `--context` den grenen. Den Dockerfile som anges av `--file` från lagringsplatsroten används för att skapa avbildningen. Argumentet `--image` anger ett parametriserat värde på `{{.Run.ID}}` för versionsdelen av avbildningstaggen, vilket säkerställer att versionsavbildningen motsvarar en viss version och är unikt taggad.
 
 Utdata från kommandot [az acr task create][az-acr-task-create] liknar följande:
 
@@ -127,7 +127,7 @@ Nu har du en uppgift som definierar din version. Om du vill testa versionspipeli
 az acr task run --registry $ACR_NAME --name taskhelloworld
 ```
 
-Som standard strömmar kommandot `az acr task run` loggens utdata till konsolen när du kör kommandot. Utdata komprimeras för att Visa viktiga steg.
+Som standard strömmar kommandot `az acr task run` loggens utdata till konsolen när du kör kommandot. Utdata komprimeras för att visa viktiga steg.
 
 ```output
 2020/11/19 22:51:00 Using acb_vol_9ee1f28c-4fd4-43c8-a651-f0ed027bbf0e as the home volume
@@ -252,10 +252,7 @@ I självstudien har du lärt dig att använda en uppgift för att utlösa contai
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
 [az-acr-task]: /cli/azure/acr/task
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-login]: /cli/azure/reference-index#az-login
-
-
-
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-login]: /cli/azure/reference-index#az_login

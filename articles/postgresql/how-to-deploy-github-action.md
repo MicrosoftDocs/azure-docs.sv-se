@@ -1,49 +1,49 @@
 ---
-title: 'Snabb start: ansluta till Azure-PostgreSQL med GitHub-åtgärder'
-description: Använda Azure-PostgreSQL från ett GitHub-åtgärds arbets flöde
+title: 'Snabbstart: Ansluta till Azure PostgreSQL med GitHub Actions'
+description: Använda Azure PostgreSQL från ett GitHub Actions arbetsflöde
 author: mksuni
 ms.service: postgresql
 ms.topic: quickstart
 ms.author: sumuth
 ms.date: 10/12/2020
 ms.custom: github-actions-azure
-ms.openlocfilehash: 2e546801f95d9d884bdfb3f09a18b3fa6e2d78a1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fc59c0d9036a2e83c742f51fc17750d40e057fe
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97365121"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791435"
 ---
-# <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Snabb start: använda GitHub-åtgärder för att ansluta till Azure PostgreSQL
+# <a name="quickstart-use-github-actions-to-connect-to-azure-postgresql"></a>Snabbstart: Använda GitHub Actions för att ansluta till Azure PostgreSQL
 
-<Token>**gäller för:** :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL-en server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – flexibel Server</Token>
+<Token>**GÄLLER FÖR:** :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – enskild server :::image type="icon" source="./media/applies-to/yes.png" border="false"::: Azure Database for PostgreSQL – flexibel server</Token>
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) genom att använda ett arbets flöde för att distribuera databas uppdateringar till [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
+Kom igång med [GitHub Actions genom att](https://docs.github.com/en/actions) använda ett arbetsflöde för att distribuera databasuppdateringar till [Azure Database for PostgreSQL](https://azure.microsoft.com/services/postgresql/).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande:
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- En GitHub-lagringsplats med exempel data ( `data.sql` ). Om du inte har ett GitHub-konto kan du [Registrera dig kostnads fritt](https://github.com/join).
-- En Azure Database for PostgreSQL-Server.
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- En GitHub-lagringsplats med exempeldata ( `data.sql` ). Om du inte har något GitHub-konto kan [du registrera dig kostnadsfritt.](https://github.com/join)
+- En Azure Database for PostgreSQL server.
     - [Snabbstart: Skapa en Azure Database for PostgreSQL-server i Azure Portal](quickstart-create-server-database-portal.md)
 
-## <a name="workflow-file-overview"></a>Översikt över arbets flödes fil
+## <a name="workflow-file-overview"></a>Översikt över arbetsflödesfil
 
-Ett arbets flöde för GitHub-åtgärder definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna som utgör arbets flödet.
+Ett GitHub Actions arbetsflöde definieras av en YAML-fil (.yml) i `/.github/workflows/` sökvägen på lagringsplatsen. Den här definitionen innehåller de olika steg och parametrar som utgör arbetsflödet.
 
 Filen har två avsnitt:
 
 |Avsnitt  |Uppgifter  |
 |---------|---------|
-|**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
-|**Distribuera** | 1. distribuera databasen. |
+|**Autentisering** | 1. Definiera ett huvudnamn för tjänsten. <br /> 2. Skapa en GitHub-hemlighet. |
+|**Distribuera** | 1. Distribuera databasen. |
 
 ## <a name="generate-deployment-credentials"></a>Generera autentiseringsuppgifter för distribution
 
-Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac&preserve-view=true) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvudnamn](../active-directory/develop/app-objects-and-service-principals.md) för tjänsten [med kommandot az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac&preserve-view=true) i Azure [CLI.](/cli/azure/) Kör det här kommandot [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja **knappen Prova.**
 
-Ersätt plats hållarna `server-name` med namnet på din postgresql-server som finns på Azure. Ersätt `subscription-id` och `resource-group` med PRENUMERATIONS-ID och resurs grupp som är ansluten till din postgresql-server.
+Ersätt platshållarna `server-name` med namnet på din PostgreSQL-server som finns i Azure. Ersätt och `subscription-id` med `resource-group` prenumerations-ID:t och resursgruppen som är anslutna till PostgreSQL-servern.
 
 ```azurecli-interactive
    az ad sp create-for-rbac --name {server-name} --role contributor \
@@ -51,7 +51,7 @@ Ersätt plats hållarna `server-name` med namnet på din postgresql-server som f
                             --sdk-auth
 ```
 
-Utdata är ett JSON-objekt med roll tilldelningens autentiseringsuppgifter som ger åtkomst till databasen som liknar den nedan. Kopiera det här utdata-JSON-objektet för senare.
+Utdata är ett JSON-objekt med autentiseringsuppgifterna för rolltilldelning som ger åtkomst till din databas på ett sätt som liknar nedan. Kopiera JSON-utdataobjektet för senare tillfälle.
 
 ```output
   {
@@ -64,31 +64,31 @@ Utdata är ett JSON-objekt med roll tilldelningens autentiseringsuppgifter som g
 ```
 
 > [!IMPORTANT]
-> Det är alltid en bra idé att bevilja minimal åtkomst. Omfattningen i föregående exempel är begränsad till den särskilda servern och inte hela resurs gruppen.
+> Det är alltid en bra idé att bevilja minsta möjliga åtkomst. Omfånget i föregående exempel är begränsat till den specifika servern och inte hela resursgruppen.
 
-## <a name="copy-the-postgresql-connection-string"></a>Kopiera anslutnings strängen PostgreSQL
+## <a name="copy-the-postgresql-connection-string"></a>Kopiera PostgreSQL-anslutningssträngen
 
-I Azure Portal går du till Azure Database for PostgreSQL-servern och öppnar **Inställningar**  >  **anslutnings strängar**. Exempel på **ADO.NET**-anslutningssträng. Ersätt plats hållarnas värden för `your_database` och `your_password` . Anslutnings strängen kommer att se ut ungefär så här.
+I Azure Portal du till servern Azure Database for PostgreSQL och öppnar **Inställningar**  >  **Anslutningssträngar**. Exempel på **ADO.NET**-anslutningssträng. Ersätt platshållarvärdena för `your_database` och `your_password` . Anslutningssträngen ser ut ungefär så här.
 
 > [!IMPORTANT]
-> - Använd för enskild server ```user=adminusername@servername```  . Observera att det ```@servername``` är obligatoriskt.
-> - För flexibel Server använder ```user= adminusername``` du utan  ```@servername``` .
+> - För Enskild server använder du ```user=adminusername@servername```  . Observera att ```@servername``` krävs.
+> - För flexibel server använder du ```user= adminusername``` utan  ```@servername``` .
 
 ```output
 psql host={servername.postgres.database.azure.com} port=5432 dbname={your_database} user={adminusername} password={your_database_password} sslmode=require
 ```
 
-Du kommer att använda anslutnings strängen som GitHub-hemlighet.
+Du använder anslutningssträngen som en GitHub-hemlighet.
 
-## <a name="configure-the-github-secrets"></a>Konfigurera GitHub hemligheter
+## <a name="configure-the-github-secrets"></a>Konfigurera GitHub-hemligheterna
 
-1. I [GitHub](https://github.com/)bläddrar du till din lagrings plats.
+1. I [GitHub](https://github.com/)bläddrar du till din lagringsplats.
 
-1. Välj **inställningar > hemligheter > ny hemlighet**.
+1. Välj **Inställningar > Hemligheter > Ny hemlighet**.
 
-1. Klistra in hela JSON-utdata från Azure CLI-kommandot i fältet hemligt värde. Ge hemligheten namnet `AZURE_CREDENTIALS` .
+1. Klistra in hela JSON-utdata från Azure CLI-kommandot i hemlighetens värdefält. Ge hemligheten namnet `AZURE_CREDENTIALS` .
 
-    När du konfigurerar arbets flödes filen senare använder du hemligheten för indata `creds` från åtgärden för Azure-inloggning. Exempel:
+    När du konfigurerar arbetsflödesfilen senare använder du hemligheten som indata `creds` för azure-inloggningsåtgärden. Exempel:
 
     ```yaml
     - uses: azure/login@v1
@@ -96,18 +96,18 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
         creds: ${{ secrets.AZURE_CREDENTIALS }}
    ```
 
-1. Välj **ny hemlighet** igen.
+1. Välj **Ny hemlighet** igen.
 
-1. Klistra in värdet för anslutnings strängen i fältet hemligt värde. Ge hemligheten namnet `AZURE_POSTGRESQL_CONNECTION_STRING` .
+1. Klistra in värdet för anslutningssträngen i hemlighetens värdefält. Ge hemligheten namnet `AZURE_POSTGRESQL_CONNECTION_STRING` .
 
 
-## <a name="add-your-workflow"></a>Lägg till ditt arbets flöde
+## <a name="add-your-workflow"></a>Lägga till arbetsflödet
 
-1. Gå till **åtgärder** för din GitHub-lagringsplats.
+1. Gå till **Åtgärder för** din GitHub-lagringsplats.
 
-2. Välj **Konfigurera ditt arbets flöde själv**.
+2. Välj **Konfigurera arbetsflödet själv.**
 
-2. Ta bort allt efter `on:` avsnittet i arbets flödes filen. Ditt återstående arbets flöde kan till exempel se ut så här.
+2. Ta bort allt efter `on:` avsnittet i arbetsflödesfilen. Ditt återstående arbetsflöde kan till exempel se ut så här.
 
     ```yaml
     name: CI
@@ -119,7 +119,7 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
         branches: [ master ]
     ```
 
-1. Byt namn på arbets flödet `PostgreSQL for GitHub Actions` och Lägg till utcheckningen och inloggnings åtgärderna. De här åtgärderna kommer att checka ut din platskod och autentisera med Azure med hjälp av `AZURE_CREDENTIALS` GitHub-hemligheten som du skapade tidigare.
+1. Byt namn på `PostgreSQL for GitHub Actions` arbetsflödet och lägg till utchecknings- och inloggningsåtgärderna. De här åtgärderna kommer att checka ut din webbplatskod och autentisera med Azure med hjälp av `AZURE_CREDENTIALS` den GitHub-hemlighet som du skapade tidigare.
 
     ```yaml
     name: PostgreSQL for GitHub Actions
@@ -140,7 +140,7 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
             creds: ${{ secrets.AZURE_CREDENTIALS }}
     ```
 
-2. Använd Azure PostgreSQL Deploy-åtgärden för att ansluta till din PostgreSQL-instans. Ersätt `POSTGRESQL_SERVER_NAME` med namnet på servern. Du bör ha en PostgreSQL-datafil med namnet `data.sql` på rot nivån för din lagrings plats.
+2. Använd åtgärden Azure PostgreSQL Deploy för att ansluta till postgreSQL-instansen. Ersätt `POSTGRESQL_SERVER_NAME` med namnet på servern. Du bör ha en PostgreSQL-datafil `data.sql` med namnet på lagringsplatsens rotnivå.
 
     ```yaml
      - uses: azure/postgresql@v1
@@ -150,7 +150,7 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
         sql-file: './data.sql'
     ```
 
-3. Slutför ditt arbets flöde genom att lägga till en åtgärd för att logga ut från Azure. Här är det slutförda arbets flödet. Filen kommer att visas i `.github/workflows` mappen på din lagrings plats.
+3. Slutför arbetsflödet genom att lägga till en åtgärd för utloggning av Azure. Här är det färdiga arbetsflödet. Filen visas i mappen på `.github/workflows` lagringsplatsen.
 
     ```yaml
    name: PostgreSQL for GitHub Actions
@@ -185,20 +185,20 @@ Du kommer att använda anslutnings strängen som GitHub-hemlighet.
 
 ## <a name="review-your-deployment"></a>Granska distributionen
 
-1. Gå till **åtgärder** för din GitHub-lagringsplats.
+1. Gå till **Åtgärder för** din GitHub-lagringsplats.
 
-1. Öppna det första resultatet för att se detaljerade loggar för arbets flödets körning.
+1. Öppna det första resultatet om du vill se detaljerade loggar för arbetsflödets körning.
 
-    :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="Logg för körning av GitHub-åtgärder":::
+    :::image type="content" source="media/how-to-deploy-github-action/gitbub-action-postgres-success.png" alt-text="Loggen med GitHub-åtgärder körs":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När din Azure PostgreSQL-databas och lagrings plats inte längre behövs, rensar du de resurser som du har distribuerat genom att ta bort resurs gruppen och din GitHub-lagringsplats.
+När din Azure PostgreSQL-databas och lagringsplats inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen och GitHub-lagringsplatsen.
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Lär dig mer om Azure och GitHub-integrering](/azure/developer/github/)
+> [Läs mer om Azure- och GitHub-integrering](/azure/developer/github/)
 <br/>
 > [!div class="nextstepaction"]
 > [Lär dig hur du ansluter till servern](how-to-connect-query-guide.md)

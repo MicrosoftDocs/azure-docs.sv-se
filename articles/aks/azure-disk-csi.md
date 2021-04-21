@@ -1,47 +1,47 @@
 ---
-title: Använda CSI-drivrutiner (container Storage Interface) för Azure-diskar på Azure Kubernetes service (AKS)
-description: Lär dig hur du använder CSI-drivrutinerna (container Storage Interface) för Azure-diskar i ett Azure Kubernetes service-kluster (AKS).
+title: Använda Container Storage Interface (CSI) för Azure Disks på Azure Kubernetes Service (AKS)
+description: Lär dig hur du använder Container Storage Interface (CSI)-drivrutiner för Azure-diskar i ett Azure Kubernetes Service-kluster (AKS).
 services: container-service
 ms.topic: article
 ms.date: 08/27/2020
 author: palma21
-ms.openlocfilehash: 5f9e28ac568f70801b2bd955c201712cfcb80084
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: c3421b767f465a4a705bdeb4882fd261c5cf914f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963347"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107776239"
 ---
-# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använd driv rutinerna för Azure disk container Storage-gränssnittet (CSI) i Azure Kubernetes service (AKS) (för hands version)
-Driv rutinen för Azure disk container Storage-gränssnittet (CSI) är en [CSI Specification](https://github.com/container-storage-interface/spec/blob/master/spec.md)-kompatibel driv rutin som används av Azure Kubernetes service (AKS) för att hantera livs cykeln för Azure-diskar.
+# <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks-preview"></a>Använda CSI-drivrutiner (Azure disk Container Storage Interface) i Azure Kubernetes Service (förhandsversion)
+CSI-drivrutinen (Azure Disk Container Storage Interface) är en [CSI-specifikation](https://github.com/container-storage-interface/spec/blob/master/spec.md)som följer standard och som används av Azure Kubernetes Service (AKS) för att hantera livscykeln för Azure-diskar.
 
-CSI är en standard för att exponera godtyckliga block-och fil lagrings system för arbets belastningar i behållare på Kubernetes. Genom att anta och använda CSI kan AKS skriva, distribuera och iterera plugin-program för att exponera nya eller förbättra befintliga lagrings system i Kubernetes utan att behöva röra kärnan Kubernetes Code och vänta på dess versions cykler.
+CSI är en standard för att exponera godtyckliga block- och fillagringssystem för containeriserade arbetsbelastningar i Kubernetes. Genom att implementera och använda CSI kan AKS skriva, distribuera och iterera plugin-program för att exponera nya eller förbättra befintliga lagringssystem i Kubernetes utan att behöva röra kärnkoden för Kubernetes och vänta på lanseringscyklerna.
 
-Om du vill skapa ett AKS-kluster med stöd för CSI-drivrutiner, se [Aktivera CSI-drivrutiner för Azure-diskar och Azure Files på AKS](csi-storage-drivers.md).
+Information om hur du skapar ett AKS-kluster med CSI-drivrutinsstöd finns i Aktivera [CSI-drivrutiner för Azure-diskar Azure Files på AKS](csi-storage-drivers.md).
 
 >[!NOTE]
-> *Driv rutiner i ett träd* refererar till de aktuella lagrings driv rutiner som ingår i Kubernetes-koden och de nya CSI-drivrutinerna, som är plugin-program.
+> *Träddrivrutiner refererar* till de aktuella lagringsdrivrutinerna som ingår i Kubernetes-kärnkoden jämfört med de nya CSI-drivrutinerna, som är plugin-program.
 
-## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Använd CSI-beständiga volymer med Azure-diskar
+## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Använda beständiga CSI-volymer med Azure-diskar
 
-En [beständig volym](concepts-storage.md#persistent-volumes) (PV) representerar en lagrings enhet som tillhandahålls för användning med Kubernetes poddar. Ett PV kan användas av en eller flera poddar och kan vara dynamiskt eller statiskt allokerat. Den här artikeln visar hur du dynamiskt skapar PVs med Azure disks för användning av en enda Pod i ett AKS-kluster. För statisk etablering, se [skapa och använda en volym med Azure-diskar manuellt](azure-disk-volume.md).
+En [beständig](concepts-storage.md#persistent-volumes) volym (PV) representerar en lagringsplats som etableras för användning med Kubernetes-poddar. Ett PV kan användas av en eller flera poddar och kan etableras dynamiskt eller statiskt. Den här artikeln visar hur du dynamiskt skapar PV:er med Azure-diskar för användning av en enskild podd i ett AKS-kluster. För statisk etablering, se [Skapa och använda en volym manuellt med Azure-diskar](azure-disk-volume.md).
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-Mer information om Kubernetes-volymer finns i [lagrings alternativ för program i AKS][concepts-storage].
+Mer information om Kubernetes-volymer finns i [Lagringsalternativ för program i AKS][concepts-storage].
 
-## <a name="dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes"></a>Skapa Azure disk-PVs dynamiskt med hjälp av de inbyggda lagrings klasserna
+## <a name="dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes"></a>Skapa Azure-disk-PV:er dynamiskt med hjälp av de inbyggda lagringsklasserna
 
-En lagrings klass används för att definiera hur en lagrings enhet dynamiskt skapas med en permanent volym. Mer information om Kubernetes lagrings klasser finns i [Kubernetes Storage-klasser][kubernetes-storage-classes]. När du använder driv rutiner för lagring CSI på AKS finns det två ytterligare inbyggda `StorageClasses` som använder Azure disk CSI Storage-drivrutiner. De ytterligare klasserna för CSI-lagring skapas med klustret tillsammans med standard lagrings klasser i trädet.
+En lagringsklass används för att definiera hur en lagringsenhet skapas dynamiskt med en beständig volym. Mer information om Kubernetes-lagringsklasser finns i [Kubernetes-lagringsklasser.][kubernetes-storage-classes] När du använder CSI-lagringsdrivrutiner på AKS finns det två ytterligare inbyggda som använder `StorageClasses` CSI-lagringsdrivrutiner för Azure-diskar. De ytterligare CSI-lagringsklasserna skapas med klustret tillsammans med standardlagringsklasserna i trädet.
 
 - `managed-csi`: Använder Azure Standard SSD lokalt redundant lagring (LRS) för att skapa en hanterad disk.
-- `managed-csi-premium`: Använder Azure Premium-LRS för att skapa en hanterad disk.
+- `managed-csi-premium`: Använder Azure Premium LRS för att skapa en hanterad disk.
 
-Anspråks principen i båda lagrings klasserna säkerställer att den underliggande Azure-disken tas bort när respektive PV tas bort. Lagrings klasserna konfigurerar också PVs till att kunna expanderas. Du behöver bara redigera det permanenta volym anspråket (PVC) med den nya storleken.
+Principen för att frigöra i båda lagringsklasserna säkerställer att den underliggande Azure-disken tas bort när respektive PV tas bort. Lagringsklasserna konfigurerar också de PV:er som kan utökas. Du behöver bara redigera beständigt volymanspråk (PV) med den nya storleken.
 
-Om du vill utnyttja dessa lagrings klasser skapar du en [PVC](concepts-storage.md#persistent-volume-claims) och varje Pod som refererar till och använder dem. En PVC används för att automatiskt etablera lagring baserat på en lagrings klass. En PVC kan använda en av de i förväg skapade lagrings klasserna eller en användardefinierad lagrings klass för att skapa en Azure-hanterad disk för önskad SKU och storlek. När du skapar en POD-definition, anges PVC: n för att begära det önskade lagrings utrymmet.
+Om du vill utnyttja dessa lagringsklasser skapar du [en PV](concepts-storage.md#persistent-volume-claims) och respektive podd som refererar till och använder dem. En PV används för att automatiskt etablera lagring baserat på en lagringsklass. En PV kan använda en av de förskapade lagringsklasserna eller en användardefinierad lagringsklass för att skapa en Azure-hanterad disk för önskad SKU och storlek. När du skapar en podddefinition anges PV för att begära önskad lagring.
 
-Skapa ett exempel på pod och respektive PVC med kommandot [kubectl Apply][kubectl-apply] :
+Skapa en exempelpodd och respektive PV med [kommandot kubectl apply:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/pvc-azuredisk-csi.yaml
@@ -51,13 +51,13 @@ persistentvolumeclaim/pvc-azuredisk created
 pod/nginx-azuredisk created
 ```
 
-När pod är i körnings läge skapar du en ny fil med namnet `test.txt` .
+När podden är i körningstillstånd skapar du en ny fil med namnet `test.txt` .
 
 ```bash
 $ kubectl exec nginx-azuredisk -- touch /mnt/azuredisk/test.txt
 ```
 
-Nu kan du kontrol lera att disken är korrekt monterad genom att köra följande kommando och verifiera att du ser `test.txt` filen i utdata:
+Du kan nu kontrollera att disken är korrekt monterad genom att köra följande kommando och kontrollera att du ser `test.txt` filen i utdata:
 
 ```console
 $ kubectl exec nginx-azuredisk -- ls /mnt/azuredisk
@@ -67,16 +67,16 @@ outfile
 test.txt
 ```
 
-## <a name="create-a-custom-storage-class"></a>Skapa en anpassad lagrings klass
+## <a name="create-a-custom-storage-class"></a>Skapa en anpassad lagringsklass
 
-Standard lagrings klasserna passar de vanligaste scenarierna, men inte alla. I vissa fall kanske du vill ha en egen lagrings klass anpassad med dina egna parametrar. Vi har till exempel ett scenario där du kanske vill ändra `volumeBindingMode` klassen.
+Standardlagringsklasserna passar de vanligaste scenarierna, men inte alla. I vissa fall kanske du vill ha en egen lagringsklass anpassad med dina egna parametrar. Vi har till exempel ett scenario där du kanske vill ändra `volumeBindingMode` klassen.
 
-Du kan använda en `volumeBindingMode: Immediate` klass som garanterar att det sker omedelbart när PVC: n har skapats. I de fall där Node-poolerna är topologi begränsade, till exempel med hjälp av tillgänglighets zoner, skulle PVs vara bundna eller etablerade utan kännedom om Pod schema krav (i det här fallet vara i en speciell zon).
+Du kan använda en `volumeBindingMode: Immediate` klass som garanterar att den inträffar omedelbart när PV har skapats. I fall där dina nodpooler är topologibegränsade, till exempel med hjälp av tillgänglighetszoner, skulle PV:er bindas eller etableras utan kunskap om poddens schemaläggningskrav (i det här fallet i en specifik zon).
 
-För att åtgärda det här scenariot kan du använda `volumeBindingMode: WaitForFirstConsumer` , vilket förskjuter bindningen och etableringen av ett PV tills en pod som använder PVC: n skapas. På så sätt uppfyller PV och tillhandahålls i tillgänglighets zonen (eller någon annan topologi) som anges av Pod schemaläggnings begränsningar. Standard lagrings klasser använder `volumeBindingMode: WaitForFirstConsumer` klass.
+För att hantera det här scenariot kan du använda , vilket fördrödar bindningen och etableringen av ett PV tills en podd som `volumeBindingMode: WaitForFirstConsumer` använder PV skapas. På så sätt kommer PV att överensstämma och etableras i tillgänglighetszonen (eller någon annan topologi) som anges av poddens schemaläggningsbegränsningar. Standardlagringsklasserna använder `volumeBindingMode: WaitForFirstConsumer` klassen .
 
-Skapa en fil med namnet `sc-azuredisk-csi-waitforfirstconsumer.yaml` och klistra in följande manifest.
-Lagrings klassen är samma som vår `managed-csi` lagrings klass men med en annan `volumeBindingMode` klass.
+Skapa en fil med `sc-azuredisk-csi-waitforfirstconsumer.yaml` namnet och klistra in följande manifest.
+Lagringsklassen är samma som vår `managed-csi` lagringsklass men med en annan `volumeBindingMode` klass.
 
 ```yaml
 kind: StorageClass
@@ -91,7 +91,7 @@ reclaimPolicy: Delete
 volumeBindingMode: WaitForFirstConsumer
 ```
 
-Skapa lagrings klassen med kommandot [kubectl Apply][kubectl-apply] och ange din `sc-azuredisk-csi-waitforfirstconsumer.yaml` fil:
+Skapa lagringsklassen med [kommandot kubectl apply][kubectl-apply] och ange `sc-azuredisk-csi-waitforfirstconsumer.yaml` filen:
 
 ```console
 $ kubectl apply -f sc-azuredisk-csi-waitforfirstconsumer.yaml
@@ -99,15 +99,15 @@ $ kubectl apply -f sc-azuredisk-csi-waitforfirstconsumer.yaml
 storageclass.storage.k8s.io/azuredisk-csi-waitforfirstconsumer created
 ```
 
-## <a name="volume-snapshots"></a>Ögonblicks bilder av volymer
+## <a name="volume-snapshots"></a>Ögonblicksbilder av volymer
 
-Driv rutinen för Azure disk CSI stöder skapande [av ögonblicks bilder av permanenta volymer](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html). Som en del av den här funktionen kan driv rutinen utföra antingen *fullständiga* eller [ *stegvisa* ögonblicks bilder](../virtual-machines/disks-incremental-snapshots.md) beroende på vilket värde som anges i `incremental` parametern (som standard är det sant).
+CSI-drivrutinen för Azure-diskar har stöd [för att skapa ögonblicksbilder av beständiga volymer.](https://kubernetes-csi.github.io/docs/snapshot-restore-feature.html) Som en del av den här  funktionen [  ](../virtual-machines/disks-incremental-snapshots.md) kan drivrutinen utföra fullständiga eller inkrementella ögonblicksbilder beroende på värdet som anges i `incremental` parametern (som standard är det sant).
 
-Mer information om alla parametrar finns i [klass parametrar för volym ögonblicks bilder](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass).
+Mer information om alla parametrar finns i klassparametrar [för volymögonblicksbilder.](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/driver-parameters.md#volumesnapshotclass)
 
-### <a name="create-a-volume-snapshot"></a>Skapa en ögonblicks bild av en volym
+### <a name="create-a-volume-snapshot"></a>Skapa en ögonblicksbild av volymen
 
-För ett exempel på den här funktionen skapar du en [volym ögonblicks bild klass](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) med kommandot [kubectl Apply][kubectl-apply] :
+Ett exempel på den här funktionen är att skapa en [volymögonblicksbildsklass](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml) med [kommandot kubectl apply:][kubectl-apply]
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/storageclass-azuredisk-snapshot.yaml
@@ -115,7 +115,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 volumesnapshotclass.snapshot.storage.k8s.io/csi-azuredisk-vsc created
 ```
 
-Nu ska vi skapa en [ögonblicks bild](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) av en volym från den PVC som [vi skapade dynamiskt i början av den här kursen](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `pvc-azuredisk` .
+Nu ska vi skapa en ögonblicksbild [av volymen](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/azuredisk-volume-snapshot.yaml) från PV som vi skapade dynamiskt i början av den [här självstudien](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes), `pvc-azuredisk` .
 
 
 ```bash
@@ -124,7 +124,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 volumesnapshot.snapshot.storage.k8s.io/azuredisk-volume-snapshot created
 ```
 
-Kontrol lera att ögonblicks bilden skapades korrekt:
+Kontrollera att ögonblicksbilden har skapats korrekt:
 
 ```bash
 $ kubectl describe volumesnapshot azuredisk-volume-snapshot
@@ -155,9 +155,9 @@ Status:
 Events:                                <none>
 ```
 
-### <a name="create-a-new-pvc-based-on-a-volume-snapshot"></a>Skapa en ny PVC som baseras på en ögonblicks bild av en volym
+### <a name="create-a-new-pvc-based-on-a-volume-snapshot"></a>Skapa en ny PV baserat på en ögonblicksbild av en volym
 
-Du kan skapa en ny PVC baserat på en ögonblicks bild av en volym. Använd ögonblicks bilden som skapades i föregående steg och skapa en [ny PVC](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) och en [ny Pod](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) för att använda den.
+Du kan skapa en ny PV baserat på en ögonblicksbild av volymen. Använd ögonblicksbilden som skapades i föregående steg och skapa en ny [PV och](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml) en ny [podd för](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/snapshot/nginx-pod-restored-snapshot.yaml) att använda den.
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/snapshot/pvc-azuredisk-snapshot-restored.yaml
@@ -168,7 +168,7 @@ persistentvolumeclaim/pvc-azuredisk-snapshot-restored created
 pod/nginx-restored created
 ```
 
-Slutligen ska vi kontrol lera att det är samma PVC som skapats innan genom att kontrol lera innehållet.
+Slutligen kontrollerar vi att det är samma PV som skapades innan genom att kontrollera innehållet.
 
 ```console
 $ kubectl exec nginx-restored -- ls /mnt/azuredisk
@@ -182,9 +182,9 @@ Som förväntat kan vi fortfarande se vår tidigare skapade `test.txt` fil.
 
 ## <a name="clone-volumes"></a>Klona volymer
 
-En klonad volym definieras som en dubblett av en befintlig Kubernetes-volym. Mer information om kloning av volymer i Kubernetes finns i den konceptuella dokumentationen för [volym kloning](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-cloning).
+En klonad volym definieras som en dubblett av en befintlig Kubernetes-volym. Mer information om kloning av volymer i Kubernetes finns i konceptuell dokumentation för [volymkloning.](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#volume-cloning)
 
-CSI-drivrutinen för Azure-diskar stöder volym kloning. För att demonstrera, skapar du en [klonad volym](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) av den [tidigare skapade](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) `azuredisk-pvc` och [en ny Pod för att använda den](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml).
+CSI-drivrutinen för Azure-diskar stöder volymkloning. För att demonstrera skapar du en [klonad volym](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml) av den [tidigare skapade och](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes) en ny `azuredisk-pvc` [podd för att använda den.](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/cloning/nginx-pod-restored-cloning.yaml)
 
 
 ```console
@@ -196,7 +196,7 @@ persistentvolumeclaim/pvc-azuredisk-cloning created
 pod/nginx-restored-cloning created
 ```
 
-Nu kan vi kontrol lera innehållet i den klonade volymen genom att köra följande kommando och bekräfta att vi fortfarande ser vår `test.txt` skapade fil.
+Nu kan vi kontrollera innehållet i den klonade volymen genom att köra följande kommando och bekräfta att vi fortfarande ser vår `test.txt` skapade fil.
 
 ```console
 $ kubectl exec nginx-restored-cloning -- ls /mnt/azuredisk
@@ -208,12 +208,12 @@ test.txt
 
 ## <a name="resize-a-persistent-volume"></a>Ändra storlek på en beständig volym
 
-Du kan i stället begära en större volym för en PVC. Redigera PVC-objektet och ange en större storlek. Den här ändringen utlöser expansionen av den underliggande volymen som backar upp NUVÄRDEt.
+Du kan i stället begära en större volym för en PV. Redigera PV-objektet och ange en större storlek. Den här ändringen utlöser expansionen av den underliggande volymen som backar upp PV.
 
 > [!NOTE]
-> En ny PV skapas aldrig för att uppfylla kravet. I stället ändras storleken på en befintlig volym.
+> En ny PV skapas aldrig för att uppfylla anspråket. I stället ändras storleken på en befintlig volym.
 
-I AKS tillåter den inbyggda `managed-csi` lagrings klassen redan expansion, så Använd den [PVC som skapades tidigare med denna lagrings klass](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes). PVC: n begärde en 10-GI-beständig volym. Vi kan bekräfta detta genom att köra:
+I AKS tillåter den inbyggda lagringsklassen redan expansion, så använd PV som skapades `managed-csi` tidigare med den här [lagringsklassen](#dynamically-create-azure-disk-pvs-by-using-the-built-in-storage-classes). PV begärde en beständiga 10 Gi-volym. Vi kan bekräfta detta genom att köra:
 
 ```console 
 $ kubectl exec -it nginx-azuredisk -- df -h /mnt/azuredisk
@@ -223,9 +223,9 @@ Filesystem      Size  Used Avail Use% Mounted on
 ```
 
 > [!IMPORTANT]
-> För närvarande stöder Azure disk CSI-driv rutinen bara storleks ändring av PVC: er utan poddar (och volymen har inte monterats till en speciell nod).
+> För närvarande stöder CSI-drivrutinen för Azure-diskar endast storleksändring av PVC:er utan associerade poddar (och volymen är inte monterad på en specifik nod).
 
-Därför tar vi bort Pod vi skapade tidigare:
+Därför tar vi bort den podd som vi skapade tidigare:
 
 ```console
 $ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml
@@ -233,7 +233,7 @@ $ kubectl delete -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-
 pod "nginx-azuredisk" deleted
 ```
 
-Nu ska vi expandera PVC: n genom att öka `spec.resources.requests.storage` fältet:
+Nu ska vi expandera PV genom att öka `spec.resources.requests.storage` fältet:
 
 ```console
 $ kubectl patch pvc pvc-azuredisk --type merge --patch '{"spec": {"resources": {"requests": {"storage": "15Gi"}}}}'
@@ -241,7 +241,7 @@ $ kubectl patch pvc pvc-azuredisk --type merge --patch '{"spec": {"resources": {
 persistentvolumeclaim/pvc-azuredisk patched
 ```
 
-Nu ska vi kontrol lera att volymen är större:
+Nu ska vi bekräfta att volymen är större:
 
 ```console
 $ kubectl get pv
@@ -252,9 +252,9 @@ pvc-391ea1a6-0191-4022-b915-c8dc4216174a   15Gi       RWO            Delete     
 ```
 
 > [!NOTE]
-> PVC: n visar inte den nya storleken förrän den har en pod som är kopplad till den igen.
+> PV återspeglar inte den nya storleken förrän den har en associerad podd igen.
 
-Nu ska vi skapa en ny pod:
+Nu ska vi skapa en ny podd:
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/nginx-pod-azuredisk.yaml
@@ -262,7 +262,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 pod/nginx-azuredisk created
 ```
 
-Och slutligen bekräftar du storleken på PVC: n och i pod:
+Bekräfta slutligen storleken på PV och inuti podden:
 ```console
 $ kubectl get pvc pvc-azuredisk
 NAME            STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
@@ -275,12 +275,12 @@ Filesystem      Size  Used Avail Use% Mounted on
 
 ## <a name="shared-disk"></a>Delad disk
 
-[Azure delade diskar](../virtual-machines/disks-shared.md) är en funktion för Azure Managed disks som gör att du kan koppla en Azure-disk till agent-noder samtidigt. Genom att ansluta en hanterad disk till flera agent-noder kan du till exempel distribuera nya eller migrera befintliga klustrade program till Azure.
+[Delade Azure-diskar är](../virtual-machines/disks-shared.md) en funktion för hanterade Diskar i Azure som gör det möjligt att koppla en Azure-disk till agentnoder samtidigt. Genom att koppla en hanterad disk till flera agentnoder kan du till exempel distribuera nya eller migrera befintliga klustrade program till Azure.
 
 > [!IMPORTANT] 
-> För närvarande stöds endast RAW block Device ( `volumeMode: Block` ) av Azure disk CSI-drivrutinen. Program bör hantera samordning och kontroll av skrivningar, läsningar, lås, cacheminnen, monteringar och staket på den delade disken, som visas som en RAW block-enhet.
+> För närvarande stöds endast råblockenhet ( `volumeMode: Block` ) av Azure-diskens CSI-drivrutin. Program bör hantera samordning och kontroll av skrivningar, läsningar, lås, cacheminnen, monteringar och avspärrning på den delade disken, som exponeras som en råblockenhet.
 
-Nu ska vi skapa en fil `shared-disk.yaml` med namnet genom att kopiera följande kommando som innehåller den delade disk lagrings klassen och PVC:
+Nu ska vi skapa en fil med `shared-disk.yaml` namnet genom att kopiera följande kommando som innehåller den delade disklagringsklassen och PV:
 
 ```yaml
 apiVersion: storage.k8s.io/v1
@@ -308,7 +308,7 @@ spec:
   storageClassName: managed-csi-shared
 ```
 
-Skapa lagrings klassen med kommandot [kubectl Apply][kubectl-apply] och ange din `shared-disk.yaml` fil:
+Skapa lagringsklassen med [kommandot kubectl apply][kubectl-apply] och ange `shared-disk.yaml` filen:
 
 ```console
 $ kubectl apply -f shared-disk.yaml
@@ -317,7 +317,7 @@ storageclass.storage.k8s.io/managed-csi-shared created
 persistentvolumeclaim/pvc-azuredisk-shared created
 ``` 
 
-Nu ska vi skapa en fil `deployment-shared.yml` med namnet genom att kopiera följande kommando:
+Nu ska vi skapa en fil med `deployment-shared.yml` namnet genom att kopiera följande kommando:
 
 ```yaml
 apiVersion: apps/v1
@@ -349,7 +349,7 @@ spec:
             claimName: pvc-azuredisk-shared
 ```
 
-Skapa distributionen med kommandot [kubectl Apply][kubectl-apply] och ange din `deployment-shared.yml` fil:
+Skapa distributionen med [kommandot kubectl apply][kubectl-apply] och ange `deployment-shared.yml` filen:
 
 ```console
 $ kubectl apply -f deployment-shared.yml
@@ -357,7 +357,7 @@ $ kubectl apply -f deployment-shared.yml
 deployment/deployment-azuredisk created
 ```
 
-Till sist kontrollerar vi att enheten är blockerad i pod:
+Slutligen kontrollerar vi blockenheten i podden:
 
 ```console
 # kubectl exec -it deployment-sharedisk-7454978bc6-xh7jp sh
@@ -368,9 +368,9 @@ Till sist kontrollerar vi att enheten är blockerad i pod:
 
 ## <a name="windows-containers"></a>Windows-containrar
 
-Driv rutinen för Azure disk CSI stöder också Windows-noder och behållare. Om du vill använda Windows-behållare följer du [själv studie kursen för Windows-behållare](windows-container-cli.md) för att lägga till en Windows-Node-pool.
+CSI-drivrutinen för Azure-diskar stöder också Windows-noder och -containrar. Om du vill använda Windows-containrar följer du självstudien [om Windows-containrar för](windows-container-cli.md) att lägga till en Windows-nodpool.
 
-När du har en Windows Node-pool kan du nu använda de inbyggda lagrings klasserna som `managed-csi` . Du kan distribuera ett exempel på en [Windows-baserad tillstånds känslig uppsättning](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) som sparar tidsstämplar i filen `data.txt` genom att distribuera följande kommando med kommandot [kubectl Apply][kubectl-apply] :
+När du har en Windows-nodpool kan du nu använda de inbyggda lagringsklasserna som `managed-csi` . Du kan distribuera en [Windows-baserad](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/deploy/example/windows/statefulset.yaml) tillståndsbaserad uppsättning som sparar tidsstämplar i filen genom att distribuera följande kommando med `data.txt` [kommandot kubectl apply:][kubectl-apply]
 
  ```console
 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-csi-driver/master/deploy/example/windows/statefulset.yaml
@@ -378,7 +378,7 @@ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/azuredisk-c
 statefulset.apps/busybox-azuredisk created
 ```
 
-Nu kan du validera innehållet på volymen genom att köra:
+Nu kan du verifiera innehållet på volymen genom att köra:
 
 ```console
 $ kubectl exec -it busybox-azuredisk-0 -- cat c:\\mnt\\azuredisk\\data.txt # on Linux/MacOS Bash
@@ -392,8 +392,8 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du använder CSI-drivrutiner för Azure Files finns i [använda Azure Files med CSI-drivrutiner](azure-files-csi.md).
-- Mer information om metod tips för lagring finns i [metod tips för lagring och säkerhets kopiering i Azure Kubernetes-tjänsten][operator-best-practices-storage].
+- Information om hur du använder CSI-drivrutiner för Azure Files finns i [Använda Azure Files med CSI-drivrutiner.](azure-files-csi.md)
+- Mer information om metodtips för lagring finns [i Metodtips för lagring och säkerhetskopieringar i Azure Kubernetes Service][operator-best-practices-storage].
 
 
 <!-- LINKS - external -->
@@ -408,18 +408,18 @@ $ kubectl exec -it busybox-azuredisk-0 -- cat c:\mnt\azuredisk\data.txt # on Win
 [azure-disk-volume]: azure-disk-volume.md
 [azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/disks-types.md
-[az-disk-list]: /cli/azure/disk#az-disk-list
-[az-snapshot-create]: /cli/azure/snapshot#az-snapshot-create
-[az-disk-create]: /cli/azure/disk#az-disk-create
-[az-disk-show]: /cli/azure/disk#az-disk-show
+[az-disk-list]: /cli/azure/disk#az_disk_list
+[az-snapshot-create]: /cli/azure/snapshot#az_snapshot_create
+[az-disk-create]: /cli/azure/disk#az_disk_create
+[az-disk-show]: /cli/azure/disk#az_disk_show
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [operator-best-practices-storage]: operator-best-practices-storage.md
 [concepts-storage]: concepts-storage.md
 [storage-class-concepts]: concepts-storage.md#storage-classes
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register

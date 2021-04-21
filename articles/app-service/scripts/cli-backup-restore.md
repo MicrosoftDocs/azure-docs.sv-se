@@ -1,6 +1,6 @@
 ---
 title: 'CLI: Återställa en app från en säkerhetskopia'
-description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av App Service app. Det här exemplet visar hur du återställer en app från en säkerhetskopia.
+description: Lär dig hur du använder Azure CLI för att automatisera distribution och hantering av din App Service appen. Det här exemplet visar hur du återställer en app från en säkerhetskopia.
 author: msangapu-msft
 tags: azure-service-management
 ms.devlang: azurecli
@@ -9,12 +9,12 @@ ms.date: 12/07/2017
 ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b30530956b6e8a4b7f10393cf90caf341bcc82a8
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: dd9013e77699deddb680ca1e74c654bac757093f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483409"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782575"
 ---
 # <a name="restore-a-web-app-from-a-backup-using-cli"></a>Återställa en webbapp från en säkerhetskopia med CLI
 
@@ -38,8 +38,8 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az-webapp-config-backup-list) | Hämtar en lista över säkerhetskopior för en webbapp. |
-| [`az webapp config backup restore`](/cli/azure/webapp/config/backup#az-webapp-config-backup-restore) | Återställer en webbapp från en säkerhetskopia. |
+| [`az webapp config backup list`](/cli/azure/webapp/config/backup#az_webapp_config_backup_list) | Hämtar en lista över säkerhetskopior för en webbapp. |
+| [`az webapp config backup restore`](/cli/azure/webapp/config/backup#az_webapp_config_backup_restore) | Återställer en webbapp från en säkerhetskopia. |
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -1,37 +1,37 @@
 ---
-title: Konfigurera en punkt-till-plats (P2S) VPN på Linux som ska användas med Azure Files | Microsoft Docs
-description: Så här konfigurerar du en punkt-till-plats (P2S) VPN i Linux för användning med Azure Files
+title: Konfigurera en punkt-till-plats-VPN (P2S) i Linux för användning med Azure Files | Microsoft Docs
+description: Så här konfigurerar du ett P2S-VPN (punkt-till-plats) i Linux för användning med Azure Files
 author: roygara
 ms.service: storage
 ms.topic: how-to
 ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 74422318718e318a00d7bd7ebaf8e4093ef75aa6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9608e3bdaab033d58796a3841e8cd92d7a8a81ef
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629282"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777985"
 ---
-# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurera en punkt-till-plats (P2S) VPN på Linux som ska användas med Azure Files
-Du kan använda en punkt-till-plats (P2S) VPN-anslutning för att montera dina Azure-filresurser över SMB utanför Azure, utan att öppna port 445. En punkt-till-plats-VPN-anslutning är en VPN-anslutning mellan Azure och en enskild klient. Om du vill använda en P2S VPN-anslutning med Azure Files måste en P2S VPN-anslutning konfigureras för varje klient som vill ansluta. Om du har många klienter som behöver ansluta till dina Azure-filresurser från ditt lokala nätverk kan du använda en plats-till-plats (S2S) VPN-anslutning i stället för en punkt-till-plats-anslutning för varje klient. Mer information finns i [Konfigurera en plats-till-plats-VPN för användning med Azure Files](storage-files-configure-s2s-vpn.md).
+# <a name="configure-a-point-to-site-p2s-vpn-on-linux-for-use-with-azure-files"></a>Konfigurera en punkt-till-plats-VPN (P2S) i Linux för användning med Azure Files
+Du kan använda en P2S VPN-anslutning (punkt-till-plats) för att montera dina Azure-filresurser via SMB utanför Azure, utan att öppna port 445. En punkt-till-plats-VPN-anslutning är en VPN-anslutning mellan Azure och en enskild klient. Om du vill använda en P2S VPN-anslutning Azure Files måste en P2S VPN-anslutning konfigureras för varje klient som vill ansluta. Om du har många klienter som behöver ansluta till dina Azure-filresurser från ditt lokala nätverk kan du använda en VPN-anslutning från plats till plats (S2S) i stället för en punkt-till-plats-anslutning för varje klient. Mer information finns i Konfigurera [en plats-till-plats-VPN för användning med Azure Files](storage-files-configure-s2s-vpn.md).
 
-Vi rekommenderar starkt att du läser [Azure Files nätverks översikt](storage-files-networking-overview.md) innan du fortsätter med den här artikeln för en fullständig diskussion av de nätverks alternativ som är tillgängliga för Azure Files.
+Vi rekommenderar starkt att du [läser Azure Files](storage-files-networking-overview.md) översikt över nätverk innan du fortsätter med den här artikeln för en fullständig beskrivning av de nätverksalternativ som är tillgängliga för Azure Files.
 
-Artikeln beskriver stegen för att konfigurera en punkt-till-plats-VPN i Linux för att montera Azure-filresurser direkt lokalt. Om du vill dirigera Azure File Sync trafik via en VPN-anslutning kan du läsa [konfigurera Azure File Sync proxy-och brand Väggs inställningar](storage-sync-files-firewall-and-proxy.md).
+Artikeln beskriver stegen för att konfigurera en punkt-till-plats-VPN på Linux för att montera Azure-filresurser direkt lokalt. Om du vill dirigera trafik via Azure File Sync VPN kan du gå till konfigurera Azure File Sync [och brandväggsinställningar.](../file-sync/file-sync-firewall-and-proxy.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Den senaste versionen av Azure CLI. Mer information om hur du installerar Azure CLI finns i [installera Azure POWERSHELL CLI](/cli/azure/install-azure-cli) och välj operativ system. Om du föredrar att använda Azure PowerShell-modulen i Linux, kan du följa anvisningarna nedan för Azure CLI.
+- Den senaste versionen av Azure CLI. Mer information om hur du installerar Azure CLI finns i [Installera Azure PowerShell CLI](/cli/azure/install-azure-cli) och välj ditt operativsystem. Om du föredrar att använda Azure PowerShell-modulen i Linux kan du göra det, men anvisningarna nedan visas för Azure CLI.
 
-- En Azure-filresurs som du vill montera lokalt. Azure-filresurser distribueras i lagrings konton, som är hanterings konstruktioner som representerar en delad pool av lagring där du kan distribuera flera fil resurser, samt andra lagrings resurser, till exempel BLOB-behållare eller köer. Du kan lära dig mer om hur du distribuerar Azure-filresurser och lagrings konton i [skapa en Azure-filresurs](storage-how-to-create-file-share.md).
+- En Azure-filresurs som du vill montera lokalt. Azure-filresurser distribueras i lagringskonton, som är hanteringskonstruktioner som representerar en delad lagringspool där du kan distribuera flera filresurser, samt andra lagringsresurser, till exempel blobcontainrar eller köer. Du kan lära dig mer om hur du distribuerar Azure-filresurser och lagringskonton [i Skapa en Azure-filresurs.](storage-how-to-create-file-share.md)
 
-- En privat slut punkt för det lagrings konto som innehåller den Azure-filresurs som du vill montera lokalt. Mer information om hur du skapar en privat slut punkt finns i [konfigurera Azure Files nätverks slut punkter](storage-files-networking-endpoints.md?tabs=azure-cli). 
+- En privat slutpunkt för lagringskontot som innehåller den Azure-filresurs som du vill montera lokalt. Mer information om hur du skapar en privat slutpunkt finns i [Konfigurera Azure Files nätverksslutpunkter](storage-files-networking-endpoints.md?tabs=azure-cli). 
 
-## <a name="install-required-software"></a>Installera nödvändig program vara
-Den virtuella Azure-Nätverksgatewayen kan tillhandahålla VPN-anslutningar med flera VPN-protokoll, inklusive IPsec och OpenVPN. Den här guiden visar hur du använder IPsec och använder strongSwan-paketet för att tillhandahålla support på Linux. 
+## <a name="install-required-software"></a>Installera nödvändig programvara
+Den virtuella Azure-nätverksgatewayen kan tillhandahålla VPN-anslutningar med flera VPN-protokoll, inklusive IPsec och OpenVPN. Den här guiden visar hur du använder IPsec och strongSwan-paketet för att tillhandahålla stöd för Linux. 
 
-> Verifierad med Ubuntu 18,10.
+> Verifierad med Ubuntu 18.10.
 
 ```bash
 sudo apt install strongswan strongswan-pki libstrongswan-extra-plugins curl libxml2-utils cifs-utils
@@ -40,11 +40,11 @@ installDir="/etc/"
 ```
 
 ### <a name="deploy-a-virtual-network"></a>Distribuera ett virtuellt nätverk 
-För att få åtkomst till Azure-filresursen och andra Azure-resurser från lokala platser via en punkt-till-plats-VPN måste du skapa ett virtuellt nätverk eller ett virtuellt nätverk. P2S VPN-anslutningen som du skapar automatiskt är en brygga mellan den lokala Linux-datorn och det virtuella Azure-nätverket.
+För att få åtkomst till din Azure-filresurs och andra Azure-resurser från en lokal plats via en punkt-till-plats-VPN måste du skapa ett virtuellt nätverk eller VNet. P2S VPN-anslutningen som du skapar automatiskt är en brygga mellan din lokala Linux-dator och det här virtuella Azure-nätverket.
 
-Följande skript skapar ett virtuellt Azure-nätverk med tre undernät: ett för lagrings kontots tjänst slut punkt, ett för lagrings kontots privata slut punkt, vilket krävs för att komma åt lagrings kontot lokalt utan att skapa en anpassad routning för den offentliga IP-adressen för det lagrings konto som kan ändras, och ett för din virtuella nätverksgateway som tillhandahåller VPN-tjänsten. 
+Följande skript skapar ett virtuellt Azure-nätverk med tre undernät: ett för lagringskontots tjänstslutpunkt, ett för lagringskontots privata slutpunkt, som krävs för att få åtkomst till lagringskontot lokalt utan att skapa anpassad routning för den offentliga IP-adressen för lagringskontot som kan ändras och ett för din virtuella nätverksgateway som tillhandahåller VPN-tjänsten. 
 
-Kom ihåg att ersätta `<region>` , `<resource-group>` och `<desired-vnet-name>` med lämpliga värden för din miljö.
+Kom ihåg att `<region>` ersätta , och med lämpliga värden för din `<resource-group>` `<desired-vnet-name>` miljö.
 
 ```bash
 region="<region>"
@@ -82,7 +82,7 @@ gatewaySubnet=$(az network vnet subnet create \
 ```
 
 ## <a name="create-certificates-for-vpn-authentication"></a>Skapa certifikat för VPN-autentisering
-För att VPN-anslutningar från dina lokala Linux-datorer ska kunna autentiseras för åtkomst till ditt virtuella nätverk måste du skapa två certifikat: ett rot certifikat som kommer att tillhandahållas till den virtuella datorns gateway och ett klient certifikat, som kommer att signeras med rot certifikatet. Följande skript skapar de certifikat som krävs.
+För att VPN-anslutningar från dina lokala Linux-datorer ska autentiseras för åtkomst till ditt virtuella nätverk måste du skapa två certifikat: ett rotcertifikat som kommer att tillhandahållas till den virtuella datorgatewayen och ett klientcertifikat som signeras med rotcertifikatet. Följande skript skapar de certifikat som krävs.
 
 ```bash
 rootCertName="P2SRootCert"
@@ -112,14 +112,14 @@ openssl pkcs12 -in "clientCert.pem" -inkey "clientKey.pem" -certfile rootCert.pe
 ```
 
 ## <a name="deploy-virtual-network-gateway"></a>Distribuera virtuell nätverksgateway
-Den virtuella Azure-Nätverksgatewayen är den tjänst som dina lokala Linux-datorer kommer att ansluta till. Att distribuera den här tjänsten kräver två grundläggande komponenter: en offentlig IP-adress som identifierar gatewayen för dina klienter oavsett var de finns i världen och ett rot certifikat som du skapade tidigare och som ska användas för att autentisera dina klienter.
+Den virtuella Azure-nätverksgatewayen är den tjänst som dina lokala Linux-datorer ska ansluta till. Distributionen av den här tjänsten kräver två grundläggande komponenter: en offentlig IP-adress som identifierar gatewayen till klienterna oavsett var de finns i världen och ett rotcertifikat som du skapade tidigare som används för att autentisera dina klienter.
 
-Kom ihåg att ersätta `<desired-vpn-name-here>` med det namn som du vill ha för dessa resurser.
+Kom ihåg att `<desired-vpn-name-here>` ersätta med det namn som du vill använda för dessa resurser.
 
 > [!Note]  
-> Det kan ta upp till 45 minuter att distribuera den virtuella Azure-Nätverksgatewayen. När den här resursen distribueras blockerar det här bash-skript skriptet för att distributionen ska slutföras.
+> Det kan ta upp till 45 minuter att distribuera den virtuella Nätverksgatewayen i Azure. Medan den här resursen distribueras blockerar det här bash-skriptskriptet för att distributionen ska slutföras.
 >
-> P2S IKEv2/OpenVPN-anslutningar stöds inte med **Basic** SKU. Det här skriptet använder **VpnGw1** SKU: n för den virtuella Nätverksgatewayen.
+> P2S IKEv2-/OpenVPN-anslutningar stöds  inte med Basic-SKU:n. Det här skriptet använder **VpnGw1** SKU för den virtuella nätverksgatewayen.
 
 ```bash
 vpnName="<desired-vpn-name-here>"
@@ -154,7 +154,7 @@ az network vnet-gateway root-cert create \
 ```
 
 ## <a name="configure-the-vpn-client"></a>Konfigurera VPN-klienten
-Den virtuella Azure-Nätverksgatewayen kommer att skapa ett nedladdnings Bart paket med konfigurationsfiler som krävs för att initiera VPN-anslutningen på din lokala Linux-dator. Följande skript kommer att placera de certifikat som du skapade på rätt plats och konfigurera `ipsec.conf` filen med rätt värden från konfigurations filen i det nedladdnings bara paketet.
+Den virtuella Azure-nätverksgatewayen skapar ett nedladdningsbart paket med konfigurationsfiler som krävs för att initiera VPN-anslutningen på din lokala Linux-dator. Följande skript placerar de certifikat som du skapade på rätt plats och konfigurerar filen med rätt värden från konfigurationsfilen `ipsec.conf` i det nedladdningsbara paketet.
 
 ```bash
 vpnClient=$(az network vnet-gateway vpn-client generate \
@@ -192,8 +192,8 @@ sudo ipsec restart
 sudo ipsec up $virtualNetworkName 
 ```
 
-## <a name="mount-azure-file-share"></a>Montera Azure-filresurs
-Nu när du har konfigurerat din punkt-till-plats-VPN kan du montera Azure-filresursen. I följande exempel monteras resursen icke-permanent. Information om hur du monterar permanent finns i [använda en Azure-filresurs med Linux](storage-how-to-use-files-linux.md). 
+## <a name="mount-azure-file-share"></a>Montera En Azure-filresurs
+Nu när du har ställt in punkt-till-plats-VPN kan du montera Azure-filresursen. I följande exempel monteras resursen icke-beständigt. Information om hur du monterar [beständigt finns i Använda en Azure-filresurs med Linux](storage-how-to-use-files-linux.md). 
 
 ```bash
 fileShareName="myshare"
@@ -211,6 +211,6 @@ sudo mount -t cifs $smbPath $mntPath -o vers=3.0,username=$storageAccountName,pa
 ```
 
 ## <a name="see-also"></a>Se även
-- [Översikt över Azure Files nätverk](storage-files-networking-overview.md)
-- [Konfigurera en punkt-till-plats (P2S) VPN i Windows för användning med Azure Files](storage-files-configure-p2s-vpn-windows.md)
-- [Konfigurera ett VPN för plats-till-plats (S2S) som ska användas med Azure Files](storage-files-configure-s2s-vpn.md)
+- [Azure Files översikt över nätverk](storage-files-networking-overview.md)
+- [Konfigurera en punkt-till-plats-VPN (P2S) i Windows för användning med Azure Files](storage-files-configure-p2s-vpn-windows.md)
+- [Konfigurera ett VPN för plats-till-plats (S2S) för användning med Azure Files](storage-files-configure-s2s-vpn.md)

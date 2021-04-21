@@ -5,23 +5,23 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: c39169c0531a73bd00db7de5fe393ef8c51c8c96
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d7e931a55ec0a9d46a8b92d4353bd2de8edd8818
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102509429"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777841"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Självstudie: Distribuera ett Azure Kubernetes Service-kluster (AKS)
 
 Kubernetes tillhandahåller en distribuerad plattform för containerbaserade program. Med AKS kan du snabbt skapa ett produktionsklart Kubernetes-kluster. I del tre av sju i den här självstudien distribuerar vi ett Kubernetes-kluster i AKS. Lär dig att:
 
 > [!div class="checklist"]
-> * Distribuera ett Kubernetes AKS-kluster som kan autentisera till ett Azure Container Registry
+> * Distribuera ett Kubernetes AKS-kluster som kan autentisera till ett Azure-containerregister
 > * Installera Kubernetes CLI (kubectl)
 > * Konfigurera kubectl för anslutning till ditt AKS-kluster
 
-I senare självstudier distribueras Azure röstnings program till klustret, skalas och uppdateras.
+I senare självstudier distribueras Azure Vote-programmet till klustret, skalas och uppdateras.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -31,11 +31,11 @@ Den här självstudien kräver att du kör Azure CLI version 2.0.53 eller senare
 
 ## <a name="create-a-kubernetes-cluster"></a>Skapa ett Kubernetes-kluster
 
-AKS-kluster kan använda Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC). Med dessa kontroller kan du definiera åtkomst till resurser baserat på roller som är tilldelade till användare. Du kan kombinera behörigheter om en användare har tilldelats flera roller, och behörigheter kan begränsas till en enda namnrymd eller tillämpas på hela klustret. Som standard aktiverar Azure CLI automatiskt Kubernetes RBAC när du skapar ett AKS-kluster.
+AKS-kluster kan använda kubernetes rollbaserad åtkomstkontroll (Kubernetes RBAC). Med dessa kontroller kan du definiera åtkomst till resurser baserat på roller som är tilldelade till användare. Du kan kombinera behörigheter om en användare har tilldelats flera roller, och behörigheter kan begränsas till en enda namnrymd eller tillämpas på hela klustret. Som standard aktiverar Azure CLI automatiskt Kubernetes RBAC när du skapar ett AKS-kluster.
 
-Skapa ett AKS-kluster med [az aks create][]. I följande exempel skapas ett kluster med namnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup*. Den här resurs gruppen skapades i [föregående självstudie][aks-tutorial-prepare-acr] i regionen *östra* . I följande exempel anges ingen region så AKS-klustret skapas också i regionen *östra* . Mer information finns i [kvoter, storleks begränsningar för virtuella datorer och regions tillgänglighet i Azure Kubernetes service (AKS)][quotas-skus-regions] för mer information om resurs begränsningar och regions tillgänglighet för AKS.
+Skapa ett AKS-kluster med [az aks create][]. I följande exempel skapas ett kluster med namnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup*. Den här resursgruppen skapades i föregående [självstudie][aks-tutorial-prepare-acr] i *regionen eastus.* I följande exempel anges ingen region, så AKS-klustret skapas också i *regionen eastus.* Mer information finns i [Kvoter, storleksbegränsningar][quotas-skus-regions] för virtuella datorer och regionstillgänglighet i Azure Kubernetes Service (AKS) för mer information om resursgränser och regionstillgänglighet för AKS.
 
-Om du vill tillåta ett AKS-kluster att samverka med andra Azure-resurser skapas en kluster identitet automatiskt, eftersom du inte angav något. Här ges den här kluster identiteten behörighet [att hämta avbildningar][container-registry-integration] från den Azure Container Registry (ACR) som du skapade i föregående självstudie. Om du vill köra kommandot måste du ha rollen **ägare** eller **administratör för Azure-konto** på Azure-prenumerationen.
+Om du vill tillåta att ett AKS-kluster interagerar med andra Azure-resurser skapas automatiskt en klusteridentitet eftersom du inte angav någon. Här beviljas den här [klusteridentiteten][container-registry-integration] behörighet att hämta avbildningar från den Azure Container Registry -instans (ACR) som du skapade i föregående självstudie. Om du vill köra kommandot måste du  ha rollen Ägare eller **Azure-kontoadministratör i** Azure-prenumerationen.
 
 ```azurecli
 az aks create \
@@ -46,12 +46,12 @@ az aks create \
     --attach-acr <acrName>
 ```
 
-För att undvika att du behöver en **ägare** eller rollen som **administratör för Azure-konto** kan du också konfigurera ett huvud namn för tjänsten manuellt för att hämta avbildningar från ACR. Mer information finns i [ACR-autentisering med tjänstens huvud namn](../container-registry/container-registry-auth-service-principal.md) eller [autentisera från Kubernetes med en pull-hemlighet](../container-registry/container-registry-auth-kubernetes.md). Alternativt kan du använda en [hanterad identitet](use-managed-identity.md) i stället för ett tjänst huvud namn för enklare hantering.
+För att undvika att behöva ha **rollen Ägare** eller **Azure-kontoadministratör** kan du också manuellt konfigurera ett huvudnamn för tjänsten för att hämta avbildningar från ACR. Mer information finns i [ACR-autentisering med tjänstens huvudnamn](../container-registry/container-registry-auth-service-principal.md) eller [Autentisera från Kubernetes med en pull-hemlighet.](../container-registry/container-registry-auth-kubernetes.md) Du kan också använda en hanterad [identitet i stället](use-managed-identity.md) för tjänstens huvudnamn för enklare hantering.
 
 Efter några minuter slutförs distributionen och JSON-formaterad information om AKS-distributionen returneras.
 
 > [!NOTE]
-> För att klustret ska fungera på ett tillförlitligt sätt bör du köra minst två noder.
+> För att säkerställa att klustret fungerar på ett tillförlitligt sätt bör du köra minst 2 (två) noder.
 
 ## <a name="install-the-kubernetes-cli"></a>Installera Kubernetes CLI
 
@@ -71,7 +71,7 @@ För att konfigurera `kubectl` till att ansluta till ditt Kubernetes-kluster anv
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Om du vill kontrol lera anslutningen till klustret kör du kommandot [kubectl get Nodes][kubectl-get] för att returnera en lista över klusternoderna:
+Kontrollera anslutningen till klustret genom att köra kommandot [kubectl get nodes för][kubectl-get] att returnera en lista över klusternoderna:
 
 ```
 $ kubectl get nodes
@@ -86,7 +86,7 @@ aks-nodepool1-37463671-vmss000001   Ready    agent   2m28s   v1.18.10
 I den här självstudiekursen distribuerade du ett Kubernetes-kluster i AKS och konfigurerade `kubectl` för anslutning till klustret. Du har lärt dig att:
 
 > [!div class="checklist"]
-> * Distribuera ett Kubernetes AKS-kluster som kan autentisera till ett Azure Container Registry
+> * Distribuera ett Kubernetes AKS-kluster som kan autentisera till ett Azure-containerregister
 > * Installera Kubernetes CLI (kubectl)
 > * Konfigurera kubectl för anslutning till ditt AKS-kluster
 
@@ -103,12 +103,12 @@ Gå vidare till nästa självstudie och lär dig hur du distribuerar ett program
 [aks-tutorial-deploy-app]: ./tutorial-kubernetes-deploy-application.md
 [aks-tutorial-prepare-acr]: ./tutorial-kubernetes-prepare-acr.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
-[az ad sp create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az acr show]: /cli/azure/acr#az-acr-show
-[az role assignment create]: /cli/azure/role/assignment#az-role-assignment-create
-[az aks create]: /cli/azure/aks#az-aks-create
-[az aks install-cli]: /cli/azure/aks#az-aks-install-cli
-[az aks get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az ad sp create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az acr show]: /cli/azure/acr#az_acr_show
+[az role assignment create]: /cli/azure/role/assignment#az_role_assignment_create
+[az aks create]: /cli/azure/aks#az_aks_create
+[az aks install-cli]: /cli/azure/aks#az_aks_install_cli
+[az aks get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [azure-cli-install]: /cli/azure/install-azure-cli
 [container-registry-integration]: ./cluster-container-registry-integration.md
 [quotas-skus-regions]: quotas-skus-regions.md

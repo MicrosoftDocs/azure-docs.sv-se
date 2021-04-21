@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f02aa9fc1bd31bdde6214ab906136a2cac8f1772
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6519f3fe7335ed41f4d5ef67771aaa738a33e4a8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478320"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782611"
 ---
 # <a name="continuous-deployment-with-custom-containers-in-azure-app-service"></a>Kontinuerlig distribution med anpassade containrar i Azure App Service
 
@@ -100,7 +100,7 @@ Följ nästa steg beroende på **containertypen**:
 - För **Enskild container,** **ange avbildnings-** och taggnamnet i Fullständigt **avbildningsnamn** och Tagg , avgränsade med `:` en (till exempel `nginx:latest` ). Om du vill skriver **du** startkommandot i **Startfil**. 
 ::: zone-end
 
-App Service lägger till strängen i **startfilen** i slutet av kommandot [ `docker run` (som `[COMMAND] [ARG...]` segment) när](https://docs.docker.com/engine/reference/run/) du startar containern.
+App Service lägger till strängen i **startfilen** i slutet av kommandot [ `docker run` (som `[COMMAND] [ARG...]` segment)](https://docs.docker.com/engine/reference/run/) när du startar containern.
 
 # <a name="private-registry"></a>[Privat register](#tab/private)
 
@@ -168,7 +168,7 @@ Om du **GitHub Actions** i **Källa** [(se](#2-choose-deployment-source)Välj di
 
 Du kan anpassa GitHub Actions bygga providern på följande sätt:
 
-- Anpassa arbetsflödesfilen när den har genererats på Din GitHub-lagringsplats. Mer information finns i [Arbetsflödessyntax för GitHub Actions](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions). Se bara till att arbetsflödet slutar med åtgärden [Azure/webapps-deploy för](https://github.com/Azure/webapps-deploy) att utlösa en omstart av appen.
+- Anpassa arbetsflödesfilen när den har genererats på din GitHub-lagringsplats. Mer information finns i [Arbetsflödessyntax för GitHub Actions](https://docs.github.com/actions/reference/workflow-syntax-for-github-actions). Se bara till att arbetsflödet slutar med åtgärden [Azure/webapps-deploy för](https://github.com/Azure/webapps-deploy) att utlösa en omstart av appen.
 - Om den valda grenen är skyddad kan du fortfarande förhandsgranska arbetsflödesfilen utan att spara konfigurationen. Lägg sedan till den och nödvändiga GitHub-hemligheterna i din lagringsplats manuellt. Den här metoden ger dig inte loggintegrering med Azure Portal.
 - I stället för en publiceringsprofil distribuerar du med hjälp [av ett huvudnamn för](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) tjänsten Azure Active Directory.
 
@@ -176,7 +176,7 @@ Du kan anpassa GitHub Actions bygga providern på följande sätt:
 
 Den här valfria konfigurationen ersätter standardautentisering med publiceringsprofiler i den genererade arbetsflödesfilen.
 
-**Generera** ett huvudnamn för tjänsten [med kommandot az ad sp create-for-rbac](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i Azure [CLI.](/cli/azure/) I följande exempel ersätter *\<subscription-id>* du , och med dina egna *\<group-name>* *\<app-name>* värden. **Spara** hela JSON-utdata för nästa steg, inklusive den översta nivån `{}` .
+**Generera** ett huvudnamn för tjänsten [med kommandot az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) i Azure [CLI.](/cli/azure/) I följande exempel ersätter *\<subscription-id>* du , och med dina egna *\<group-name>* *\<app-name>* värden. **Spara** hela JSON-utdata för nästa steg, inklusive den översta nivån `{}` .
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
@@ -185,9 +185,9 @@ az ad sp create-for-rbac --name "myAppDeployAuth" --role contributor \
 ```
 
 > [!IMPORTANT]
-> Av säkerhetsskäl beviljar du den minsta nödvändiga åtkomsten till tjänstens huvudnamn. Omfånget i föregående exempel är begränsat till den App Service appen och inte hela resursgruppen.
+> Av säkerhetsskäl beviljar du den lägsta nödvändiga åtkomsten till tjänstens huvudnamn. Omfånget i föregående exempel är begränsat till den App Service appen och inte hela resursgruppen.
 
-I [GitHub](https://github.com/)bläddrar **du** till din lagringsplats och väljer **sedan Inställningar** **> Hemligheter > Lägg till en ny hemlighet**. **Klistra** in hela JSON-utdata från Azure CLI-kommandot i hemlighetens värdefält. **Ge** hemligheten ett namn som `AZURE_CREDENTIALS` .
+I [GitHub](https://github.com/) **bläddrar du** till din lagringsplats och **väljer sedan Inställningar** **> Hemligheter > Lägg till en ny hemlighet**. **Klistra** in hela JSON-utdata från Azure CLI-kommandot i hemlighetens värdefält. **Ge** hemligheten ett namn som `AZURE_CREDENTIALS` .
 
 I arbetsflödesfilen som genereras av **Distributionscenter** **ändrar du** steget med kod som i `azure/webapps-deploy` följande exempel:
 
@@ -213,7 +213,7 @@ I arbetsflödesfilen som genereras av **Distributionscenter** **ändrar du** ste
 
 ## <a name="automate-with-cli"></a>Automatisera med CLI
 
-Om du vill konfigurera containerregistret och Docker-avbildningen **kör du** [az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set).
+Om du vill konfigurera containerregistret och Docker-avbildningen **kör du** [az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set).
 
 # <a name="azure-container-registry"></a>[Azure Container Registry](#tab/acr)
 
@@ -240,14 +240,14 @@ az webapp config container set --name <app-name> --resource-group <group-name> -
 -----
 
 ::: zone pivot="container-linux"
-Om du vill konfigurera en app med  flera containrar (Docker Compose) förbereder du en Docker Compose-fil lokalt och kör  [sedan az webapp config container set](/cli/azure/webapp/config/container#az-webapp-config-container-set) med `--multicontainer-config-file` parametern . Om docker Compose-filen innehåller privata avbildningar lägger **du till** parametrar som visas i `--docker-registry-server-*` föregående exempel.
+Om du vill konfigurera en app med  flera containrar (Docker Compose) förbereder du en Docker Compose-fil lokalt och kör  [sedan az webapp config container set](/cli/azure/webapp/config/container#az_webapp_config_container_set) med `--multicontainer-config-file` parametern . Om docker Compose-filen innehåller privata avbildningar lägger **du till** parametrar enligt `--docker-registry-server-*` föregående exempel.
 
 ```azurecli-interactive
 az webapp config container set --resource-group <group-name> --name <app-name> --multicontainer-config-file <docker-compose-file>
 ```
 ::: zone-end
 
-Om du vill konfigurera CI/CD från containerregistret till din app kör **du** [az webapp deployment container config](/cli/azure/webapp/deployment/container#az-webapp-deployment-container-config) med `--enable-cd` parametern . Kommandot matar ut webhook-URL:en, men du måste skapa webhooken i registret manuellt i ett separat steg. I följande exempel aktiveras CI/CD på din app och sedan används webhook-URL:en i utdata för att skapa webhooken i Azure Container Registry.
+Om du vill konfigurera CI/CD från containerregistret till din app kör **du** [az webapp deployment container config](/cli/azure/webapp/deployment/container#az_webapp_deployment-container-config) med `--enable-cd` parametern . Kommandot matar ut webhook-URL:en, men du måste skapa webhooken i registret manuellt i ett separat steg. Följande exempel aktiverar CI/CD i din app och använder sedan webhook-URL:en i utdata för att skapa webhooken i Azure Container Registry.
 
 ```azurecli-interactive
 ci_cd_url=$(az webapp deployment container config --name <app-name> --resource-group <group-name> --enable-cd true --query CI_CD_URL --output tsv)
@@ -262,4 +262,4 @@ az acr webhook create --name <webhook-name> --registry <registry-name> --resourc
 * [Snabbstart: Köra en anpassad container på App Service](quickstart-custom-container.md)
 * [Vanliga frågor och svar om App Service på Linux](faq-app-service-linux.md)
 * [Konfigurera anpassade containrar](configure-custom-container.md)
-* [Åtgärder för arbetsflöden som ska distribueras till Azure](https://github.com/Azure/actions-workflow-samples)
+* [Arbetsflöden för åtgärder som ska distribueras till Azure](https://github.com/Azure/actions-workflow-samples)
