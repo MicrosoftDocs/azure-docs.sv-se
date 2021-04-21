@@ -2,26 +2,20 @@
 title: Självstudie – Skapa och hantera virtuella Azure-nätverk för virtuella Linux-datorer
 description: I den här självstudien lär du dig hur du använder Azure CLI för att skapa och hantera virtuella Azure-nätverk för virtuella Linux-datorer
 services: virtual-machines
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
 ms.collection: linux
-tags: azure-resource-manager
 ms.subservice: networking
-ms.assetid: ''
 ms.service: virtual-machines
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
-ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 6356d9b587847ff2b49574b970109ada0d785660
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cfc76ffd05b6348c9a585a64e3f2868f28f5e5cd
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564636"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107811714"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Självstudie: Skapa och hantera virtuella Azure-nätverk för virtuella Linux-datorer med Azure CLI
 
@@ -34,13 +28,13 @@ Azures virtuella datorer använder Azure-nätverk för intern och extern nätver
 > * Skydda nätverkstrafiken
 > * Skapa en virtuell dator för serverdelen
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+I den här självstudien används [CLI Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Prova** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="vm-networking-overview"></a>Nätverksöversikt för VM
 
-Virtuella Azure-nätverk möjliggör säkra nätverks anslutningar mellan virtuella datorer, Internet och andra Azure-tjänster, till exempel Azure SQL Database. Virtuella nätverk är uppdelade i logiska segment som kallas undernät. Undernät används för att kontrollera nätverksflödet och som en säkerhetsgräns. När du distribuerar en virtuell dator ingår vanligtvis ett virtuellt nätverksgränssnitt som är anslutet till ett undernät.
+Virtuella Azure-nätverk möjliggör säkra nätverksanslutningar mellan virtuella datorer, Internet och andra Azure-tjänster, till exempel Azure SQL Database. Virtuella nätverk är uppdelade i logiska segment som kallas undernät. Undernät används för att kontrollera nätverksflödet och som en säkerhetsgräns. När du distribuerar en virtuell dator ingår vanligtvis ett virtuellt nätverksgränssnitt som är anslutet till ett undernät.
 
 I den här självstudiekursen skapas följande virtuella nätverksresurser:
 
@@ -60,7 +54,7 @@ I den här självstudiekursen skapas följande virtuella nätverksresurser:
 
 I den här självstudien skapas ett enda virtuellt nätverk med två undernät. Ett klientdelsundernät som är värd för ett webbprogram och ett serverdelsundernät som är värd för en databasserver.
 
-Innan du kan skapa ett virtuellt nätverk skapar du en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resurs grupp med namnet *myRGNetwork* på platsen för öster.
+Innan du kan skapa ett virtuellt nätverk skapar du en resursgrupp med [az group create](/cli/azure/group). I följande exempel skapas en resursgrupp med namnet *myRGNetwork* på platsen eastus.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -302,4 +296,4 @@ I den här självstudien har du skapat och skyddat Azure-nätverk som är relate
 > * Skydda nätverkstrafiken
 > * Skapa en virtuell dator för serverdelen
 
-Information om hur du skyddar dina virtuella dator diskar finns i [säkerhets kopiering och haveri beredskap för diskar](../backup-and-disaster-recovery-for-azure-iaas-disks.md).
+Mer information om hur du skyddar dina virtuella datordiskar finns [i Säkerhetskopiering och haveriberedskap för diskar.](../backup-and-disaster-recovery-for-azure-iaas-disks.md)
