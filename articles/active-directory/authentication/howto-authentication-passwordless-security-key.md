@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 04/21/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a88bb7904143f69a0eea84ea291c65e3244c70a1
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 436a972693aafd220d277d7411c0da12636e9cc6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765871"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829808"
 ---
 # <a name="enable-passwordless-security-key-sign-in"></a>Aktivera inloggning med lösenordslös säkerhetsnyckel 
 
@@ -33,17 +33,18 @@ Det här dokumentet fokuserar på aktivering av säkerhetsnyckelbaserad lösenor
 
 Om du vill använda säkerhetsnycklar för att logga in på webbappar och tjänster måste du ha en webbläsare som stöder WebAuthN-protokollet. Dessa inkluderar Microsoft Edge, Chrome, Firefox och Safari.
 
+
 ## <a name="prepare-devices"></a>Förbereda enheter
 
 För Azure AD-anslutna enheter är den bästa upplevelsen Windows 10 version 1903 eller senare.
 
-Hybrid Azure AD-anslutna enheter måste köra Windows 10 version 2004 eller senare.
+Hybrid Azure AD-anslutna enheter måste Windows 10 version 2004 eller senare.
 
 ## <a name="enable-passwordless-authentication-method"></a>Aktivera lösenordsfri autentiseringsmetod
 
 ### <a name="enable-the-combined-registration-experience"></a>Aktivera den kombinerade registreringsupplevelsen
 
-Registreringsfunktioner för lösenordslösa autentiseringsmetoder förlitar sig på den kombinerade registreringsfunktionen. Följ stegen i artikeln Aktivera [kombinerad registrering av säkerhetsinformation för](howto-registration-mfa-sspr-combined.md)att aktivera kombinerad registrering.
+Registreringsfunktioner för lösenordslösa autentiseringsmetoder förlitar sig på den kombinerade registreringsfunktionen. Följ stegen i artikeln Aktivera kombinerad [registrering av säkerhetsinformation för](howto-registration-mfa-sspr-combined.md)att aktivera kombinerad registrering.
 
 ### <a name="enable-fido2-security-key-method"></a>Aktivera FIDO2-säkerhetsnyckelmetod
 
@@ -76,7 +77,7 @@ I exemplet nedan har en användare redan etablerat sin FIDO2-säkerhetsnyckel. A
 
 ## <a name="troubleshooting-and-feedback"></a>Felsökning och feedback
 
-Om du vill dela feedback eller stöta på problem med den här funktionen kan du dela via Windows Feedbackhubben med följande steg:
+Om du vill dela feedback eller stöter på problem med den här funktionen kan du dela via Windows Feedbackhubben-appen med hjälp av följande steg:
 
 1. Starta **Feedbackhubben** och kontrollera att du är inloggad.
 1. Skicka feedback under följande kategorisering:
@@ -96,7 +97,7 @@ Cachelagrad inloggning med FIDO2-nycklar misslyckas på Azure AD-anslutna hybrid
 
 ### <a name="upn-changes"></a>UPN-ändringar
 
-Vi arbetar med att stödja en funktion som tillåter UPN-ändringar på Azure AD-anslutna hybridenheter och Azure AD-anslutna enheter. Om en användares UPN ändras kan du inte längre ändra FIDO2-säkerhetsnycklar för att ta hänsyn till ändringen. Lösningen är att återställa enheten och användaren måste omregistrera sig.
+Vi arbetar med att stödja en funktion som gör att UPN kan ändras på Azure AD-anslutna hybridenheter och Azure AD-anslutna enheter. Om en användares UPN ändras kan du inte längre ändra FIDO2-säkerhetsnycklar för att ta hänsyn till ändringen. Lösningen är att återställa enheten och användaren måste omregistrera sig.
 
 ## <a name="next-steps"></a>Nästa steg
 

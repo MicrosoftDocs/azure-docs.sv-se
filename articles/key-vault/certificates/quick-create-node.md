@@ -1,6 +1,6 @@
 ---
-title: Snabb start – Azure Key Vault certifikat klient bibliotek för Java Script (version 4)
-description: Lär dig hur du skapar, hämtar och tar bort certifikat från ett Azure Key Vault med hjälp av Java Script Client library
+title: Snabbstart – Azure Key Vault-certifikatklientbibliotek för JavaScript (version 4)
+description: Lär dig hur du skapar, hämtar och tar bort certifikat från ett Azure-nyckelvalv med hjälp av JavaScript-klientbiblioteket
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 12/6/2020
@@ -8,33 +8,33 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: 1064c6a1e2dddaae98e94ccceca7b1d550897393
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3f933a564e62bf3aae1ec05c6dde048100c22967
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97930862"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815854"
 ---
-# <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Snabb start: Azure Key Vault certifikat klient bibliotek för Java Script (version 4)
+# <a name="quickstart-azure-key-vault-certificate-client-library-for-javascript-version-4"></a>Snabbstart: Azure Key Vault certifikatklientbibliotek för JavaScript (version 4)
 
-Kom igång med klient biblioteket för Azure Key Vault-certifikat för Java Script. [Azure Key Vault](../general/overview.md) är en moln tjänst som tillhandahåller en säker lagring för certifikat. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabb starten får du lära dig hur du skapar, hämtar och tar bort certifikat från ett Azure Key Vault med hjälp av Java Script Client library
+Kom igång med Azure Key Vault för JavaScript. [Azure Key Vault](../general/overview.md) är en molntjänst som tillhandahåller ett säkert arkiv för certifikat. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Du kan skapa och hantera Azure-nyckelvalv via Azure Portal. I den här snabbstarten lär du dig att skapa, hämta och ta bort certifikat från ett Azure-nyckelvalv med hjälp av JavaScript-klientbiblioteket
 
-Key Vault klient biblioteks resurser:
+Key Vault klientbiblioteksresurser:
 
-[API-referens dokumentation](/javascript/api/overview/azure/key-vault-index)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (NPM)](https://www.npmjs.com/package/@azure/keyvault-certificates)
+[API-referensdokumentation](/javascript/api/overview/azure/key-vault-index)  |  [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault)  |  [Paket (npm)](https://www.npmjs.com/package/@azure/keyvault-certificates)
 
 Mer information om Key Vault och certifikat finns i:
-- [Översikt över Key Vault](../general/overview.md)
-- [Certifikat översikt](about-certificates.md).
+- [Key Vault översikt](../general/overview.md)
+- [Översikt över certifikat.](about-certificates.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Nuvarande [Node.js](https://nodejs.org) för ditt operativ system.
+- En Azure-prenumeration [– skapa en utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Aktuella [Node.js](https://nodejs.org) för ditt operativsystem.
 - [Azure CLI](/cli/azure/install-azure-cli)
-- En Key Vault – du kan skapa en med hjälp av [Azure Portal](../general/quick-create-portal.md) [Azure CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
+- En Key Vault – du kan skapa en [med hjälp Azure Portal](../general/quick-create-portal.md) Azure [CLI](../general/quick-create-cli.md)eller [Azure PowerShell](../general/quick-create-powershell.md)
 
-Den här snabb starten förutsätter att du kör [Azure CLI](/cli/azure/install-azure-cli).
+Den här snabbstarten förutsätter att du [kör Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -44,38 +44,38 @@ Den här snabb starten förutsätter att du kör [Azure CLI](/cli/azure/install-
     az login
     ```
 
-    Om CLI kan öppna din standard webbläsare så gör den det och läser in en Azure-inloggnings sida.
+    Om CLI kan öppna din standardwebbläsare gör den det och läser in en Inloggningssida för Azure.
 
-    Annars öppnar du en webb sida på [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och anger den auktoriseringskod som visas i din terminal.
+    Annars öppnar du en webbläsarsida på och [https://aka.ms/devicelogin](https://aka.ms/devicelogin) anger auktoriseringskoden som visas i terminalen.
 
 2. Logga in med dina autentiseringsuppgifter för kontot i webbläsaren.
 
-## <a name="create-new-nodejs-application"></a>Skapa nytt Node.js program
+## <a name="create-new-nodejs-application"></a>Skapa ett nytt Node.js program
 
-Skapa sedan ett Node.js-program som kan distribueras till molnet. 
+Skapa sedan ett Node.js som kan distribueras till molnet. 
 
-1. I ett kommando gränssnitt skapar du en mapp med namnet `key-vault-node-app` :
+1. I ett kommandogränssnitt skapar du en mapp med namnet `key-vault-node-app` :
 
 ```azurecli
 mkdir key-vault-node-app
 ```
 
-1. Ändra till den nyligen skapade *Key-valvet-Node-app-* katalogen och kör kommandot init för att initiera ett Node-projekt:
+1. Ändra till den nyligen skapade *katalogen key-vault-node-app* och kör kommandot "init" för att initiera nodprojektet:
 
 ```azurecli
 cd key-vault-node-app
 npm init -y
 ```
 
-## <a name="install-key-vault-packages"></a>Installera Key Vault-paket
+## <a name="install-key-vault-packages"></a>Installera Key Vault paket
 
-I konsol fönstret installerar du [biblioteket Azure Key Vault certifikat](https://www.npmjs.com/package/@azure/keyvault-certificates) för Node.js.
+Från konsolfönstret installerar du biblioteket Azure Key Vault [certifikat för](https://www.npmjs.com/package/@azure/keyvault-certificates) Node.js.
 
 ```azurecli
 npm install @azure/keyvault-certificates
 ```
 
-Installera [Azure. Identity](https://www.npmjs.com/package/@azure/identity) -paketet för att autentisera till en Key Vault
+Installera [paketet azure.identity](https://www.npmjs.com/package/@azure/identity) för att autentisera till en Key Vault
 
 ```azurecli
 npm install @azure/identity
@@ -83,7 +83,7 @@ npm install @azure/identity
 
 ## <a name="set-environment-variables"></a>Ange miljövariabler
 
-Det här programmet använder Key Vault-namnet som en miljö variabel som kallas `KEY_VAULT_NAME` .
+Det här programmet använder nyckelvalvsnamnet som en miljövariabel med namnet `KEY_VAULT_NAME` .
 
 Windows
 ```cmd
@@ -99,9 +99,9 @@ macOS eller Linux
 export KEY_VAULT_NAME=<your-key-vault-name>
 ```
 
-## <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckel valv
+## <a name="grant-access-to-your-key-vault"></a>Bevilja åtkomst till ditt nyckelvalv
 
-Skapa en åtkomst princip för nyckel valvet som beviljar certifikat behörigheter till ditt användar konto
+Skapa en åtkomstprincip för ditt nyckelvalv som beviljar certifikatbehörighet till ditt användarkonto
 
 ```azurecli
 az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certificate-permissions delete get list create purge
@@ -109,15 +109,15 @@ az keyvault set-policy --name <YourKeyVaultName> --upn user@domain.com --certifi
 
 ## <a name="code-examples"></a>Kodexempel
 
-I kod exemplen nedan visas hur du skapar en-klient, ställer in ett certifikat, hämtar ett certifikat och tar bort ett certifikat. 
+Kodexe exemplen nedan visar hur du skapar en klient, anger ett certifikat, hämtar ett certifikat och tar bort ett certifikat. 
 
-### <a name="set-up-the-app-framework"></a>Konfigurera app Framework
+### <a name="set-up-the-app-framework"></a>Konfigurera appramverket
 
-1. Skapa en ny textfil och spara den som index.js
+1. Skapa en ny textfil och spara den som "index.js"
 
-1. Lägg till Kräv anrop för att läsa in Azure och Node.js moduler
+1. Lägga till Kräv anrop för att läsa in Azure Node.js moduler
 
-1. Skapa strukturen för programmet, inklusive grundläggande undantags hantering
+1. Skapa strukturen för programmet, inklusive grundläggande undantagshantering
 
 ```javascript
 const readline = require('readline');
@@ -141,9 +141,9 @@ async function main() {
 main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 ```
 
-### <a name="add-directives"></a>Lägg till direktiv
+### <a name="add-directives"></a>Lägga till direktiv
 
-Lägg till följande direktiv överst i koden:
+Lägg till följande -direktiv överst i koden:
 
 ```javascript
 const { DefaultAzureCredential } = require("@azure/identity");
@@ -152,11 +152,11 @@ const { CertificateClient } = require("@azure/keyvault-certificates");
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabb starten används inloggad användare för att autentisera till nyckel valv, vilket är önskad metod för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas App Service eller virtuell dator. mer information finns i [Översikt över hanterade identiteter](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I det här exemplet expanderas namnet på nyckel valvet till Key Vault-URI: n i formatet "https:// \<your-key-vault-name\> . Vault.Azure.net". Det här exemplet använder klassen ["DefaultAzureCredential ()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om autentisering till Key Vault finns i [Developer ' s guide](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder [klassen "DefaultAzureCredential()"](https://docs.microsoft.com/javascript/api/@azure/identity/defaultazurecredential) från [Azure Identity Library](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme), som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information om hur du autentiserar till Key Vault finns [i Utvecklarguide.](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code)
 
-Lägg till följande kod till Main ()-funktionen
+Lägg till följande kod i funktionen "main()"
 
 ```javascript
 const keyVaultName = process.env["KEY_VAULT_NAME"];
@@ -168,7 +168,7 @@ const client = new Certificate(KVUri, credential);
 
 ### <a name="save-a-certificate"></a>Spara ett certifikat
 
-Nu när ditt program är autentiserat kan du ange ett certifikat i ditt nyckel valv med BeginCreateCertificate- [metoden](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) detta kräver ett namn för certifikatet och[certifikat principen för certifikat principen med](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy) [certifikat princip egenskaper](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties)
+Nu när programmet har autentiserats kan du placera ett certifikat i ditt nyckelvalv med metoden [beginCreateCertificate.](/javascript/api/@azure/keyvault-certificates/certificateclient?#beginCreateCertificate_string__CertificatePolicy__BeginCreateCertificateOptions_) Detta [](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicyproperties) kräver ett namn på certifikatet och certifikatprincipens certifikatprincip med certifikatprincipegenskaper[](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificatepolicy)
 
 ```javascript
 const certificatePolicy = {
@@ -180,10 +180,10 @@ const certificate = await poller.pollUntilDone();
 ```
 
 > [!NOTE]
-> Om det finns ett certifikat namn skapas en ny version av certifikatet i koden ovan.
+> Om certifikatnamnet finns skapar koden ovan en ny version av certifikatet.
 ### <a name="retrieve-a-certificate"></a>Hämta ett certifikat
 
-Du kan nu hämta det tidigare angivna värdet med [metoden getCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#getCertificate_string__GetCertificateOption).
+Nu kan du hämta det tidigare inställda värdet med [metoden getCertificate](/javascript/api/@azure/keyvault-certificates/certificateclient?#getCertificate_string__GetCertificateOption).
 
 ```javascript
 const retrievedCertificate = await client.getCertificate(certificateName);
@@ -191,7 +191,7 @@ const retrievedCertificate = await client.getCertificate(certificateName);
 
 ### <a name="delete-a-certificate"></a>Ta bort ett certifikat
 
-Slutligen tar vi bort och rensar certifikatet från nyckel valvet med metoderna [beginDeleteCertificate] https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) och [purgeDeletedCertificate](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_) .
+Slutligen tar vi bort och rensar certifikatet från nyckelvalvet med metoderna [beginDeleteCertificate] och https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#beginDeleteCertificate_string__BeginDeleteCertificateOptions_) [purgeDeletedCertificate.](https://docs.microsoft.com/javascript/api/@azure/keyvault-certificates/certificateclient?#purgeDeletedCertificate_string__PurgeDeletedCertificateOptions_)
 
 ```javascript
 const deletePoller = await client.beginDeleteCertificate(certificateName);
@@ -260,7 +260,7 @@ main().then(() => console.log('Done')).catch((ex) => console.log(ex.message));
 
 ## <a name="test-and-verify"></a>Testa och verifiera
 
-Kör följande kommandon för att köra appen.
+Kör appen genom att köra följande kommandon.
 
 ```azurecli
 npm install
@@ -279,11 +279,11 @@ Purging your certificate from mykeyvault ... done
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du ett nyckel valv, lagrat ett certifikat och hämtade det certifikatet. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten skapade du ett nyckelvalv, lagrade ett certifikat och hämtade certifikatet. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](../general/overview.md)
-- Läs en [Översikt över certifikat](about-certificates.md)
-- Se en [åtkomst Key Vault från självstudien för App Service program](../general/tutorial-net-create-vault-azure-web-app.md)
-- Se en [åtkomst Key Vault från den virtuella datorns självstudie](../general/tutorial-net-virtual-machine.md)
-- Se [Azure Key Vault Developer ' s guide](../general/developers-guide.md)
-- Granska [Key Vault säkerhets översikt](../general/security-overview.md)
+- Läs en [översikt över Azure Key Vault](../general/overview.md)
+- Läs en [översikt över certifikat](about-certificates.md)
+- Se [självstudien åtkomst Key Vault från App Service-program](../general/tutorial-net-create-vault-azure-web-app.md)
+- Se [självstudien åtkomst Key Vault från virtuell dator](../general/tutorial-net-virtual-machine.md)
+- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
+- Granska Key Vault [säkerhetsöversikten](../general/security-features.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: avvikelse identifiering med hjälp av klient biblioteket för avvikelse detektor för multivarierad-avvikelse identifiering'
+title: 'Snabbstart: Avvikelseidentifiering med hjälp Avvikelseidentifiering klientbiblioteket för multivariate avvikelseidentifiering'
 titleSuffix: Azure Cognitive Services
-description: Multivarierad för avvikelse detektor erbjuder klient bibliotek för att identifiera avvikelser i din data serie antingen som en batch eller vid strömmande data.
+description: Den Avvikelseidentifiering multivariate erbjuder klientbibliotek för att identifiera avvikelser i dina dataserier, antingen som en batch eller på strömmande data.
 services: cognitive-services
 author: mrbullwinkle
 manager: nitinme
@@ -9,17 +9,17 @@ zone_pivot_groups: anomaly-detector-quickstart-multivariate
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: quickstart
-ms.date: 04/01/2020
+ms.date: 04/21/2021
 ms.author: mbullwin
-keywords: avvikelse identifiering, algoritmer
-ms.openlocfilehash: c522675f90cd716725ecaba23d5b6ce5921665a6
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+keywords: avvikelseidentifiering, algoritmer
+ms.openlocfilehash: c19365719dddb01521010c742ac774762060bed9
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107316039"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830744"
 ---
-# <a name="quickstart-use-the-anomaly-detector-multivariate-client-library"></a>Snabb start: Använd klient biblioteket för avvikelse detektor multivarierad
+# <a name="quickstart-use-the-anomaly-detector-multivariate-client-library"></a>Snabbstart: Använda Avvikelseidentifiering flervarierat klientbibliotek
 
 ::: zone pivot="programming-language-csharp"
 

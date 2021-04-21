@@ -3,12 +3,13 @@ title: Aktivera VM-tillägg med Azure Resource Manager mall
 description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybridmolnmiljöer med en Azure Resource Manager mall.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 095f95192a2054d34e438d8683ac9c2e20a824f1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d32be184a7e5bb713aee83cd3023f271299d3872
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389646"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832868"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivera Azure VM-tillägg med hjälp av ARM-mall
 
@@ -140,9 +141,9 @@ New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateF
 
 ## <a name="deploy-the-custom-script-extension"></a>Distribuera tillägget för anpassat skript
 
-Om du vill använda tillägget för anpassat skript tillhandahålls följande exempel för körning i Windows och Linux. Om du inte är bekant med tillägget för anpassat skript kan du gå [till Tillägg för](../../virtual-machines/extensions/custom-script-windows.md) anpassat skript för Windows eller Anpassat [skripttillägg för Linux.](../../virtual-machines/extensions/custom-script-linux.md) Det finns ett par olika egenskaper som du bör känna till när du använder det här tillägget med hybriddatorer:
+Om du vill använda tillägget för anpassat skript tillhandahålls följande exempel för körning i Windows och Linux. Om du inte är bekant med tillägget för anpassat skript kan du gå [till Tillägg för](../../virtual-machines/extensions/custom-script-windows.md) anpassat skript för Windows eller Anpassat [skripttillägg för Linux.](../../virtual-machines/extensions/custom-script-linux.md) Det finns några olika egenskaper som du bör känna till när du använder det här tillägget med hybriddatorer:
 
-* Listan över operativsystem som stöds med tillägget för anpassat skript för virtuell Azure-dator gäller inte för Azure Arc aktiverade servrar. Listan över OS:er som stöds för Arc-aktiverade servrar finns [här.](agent-overview.md#supported-operating-systems)
+* Listan över operativsystem som stöds med tillägget för anpassat skript för virtuell Azure-dator gäller inte för Azure Arc aktiverade servrar. Listan över OS:er som stöds för Arc-aktiverade servrar finns [här](agent-overview.md#supported-operating-systems).
 
 * Konfigurationsinformation om Azure Virtual Machine Scale Sets eller klassiska virtuella datorer är inte tillämpligt.
 

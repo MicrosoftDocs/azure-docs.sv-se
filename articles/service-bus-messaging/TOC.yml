@@ -110,8 +110,6 @@
           href: message-transfers-locks-settlement.md
         - name: Köer för obeställbara meddelanden
           href: service-bus-dead-letter-queues.md
-        - name: Meddelanderäknare
-          href: message-counters.md
         - name: Optimera prestanda
           href: service-bus-performance-improvements.md
         - name: Geo-haveriberedskap och geo-replikering
@@ -244,6 +242,10 @@
           href: enable-partitions.md
         - name: Aktivera automatisk vidarebefordran för en kö eller prenumeration
           href: enable-auto-forward.md
+        - name: Aktivera dead lettering för en kö eller prenumeration
+          href: enable-dead-letter.md
+        - name: Hämta meddelanderäknare
+          href: message-counters.md
         - name: Flytta mellan regioner
           href: move-across-regions.md
         - name: Uppdatera meddelandeenheter automatiskt

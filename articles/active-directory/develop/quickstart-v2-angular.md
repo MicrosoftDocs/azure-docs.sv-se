@@ -1,7 +1,7 @@
 ---
-title: 'Snabb start: Logga in användare i en vinkel på en enda sida-appar – Azure'
+title: 'Snabbstart: Logga in användare i ensidesappar i Angular – Azure'
 titleSuffix: Microsoft identity platform
-description: I den här snabb starten får du lära dig hur en vinkel-app kan anropa ett API som kräver åtkomsttoken som utfärdats av Microsoft Identity Platform.
+description: I den här snabbstarten lär du dig hur en Angular-app kan anropa ett API som kräver åtkomsttoken som utfärdats av Microsoft Identity Platform.
 services: active-directory
 author: jasonnutter
 manager: CelesteDG
@@ -12,63 +12,65 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: bab92a6d7e30f5aefdd28d06b34a006d065cee3c
-ms.sourcegitcommit: f5448fe5b24c67e24aea769e1ab438a465dfe037
+ms.openlocfilehash: d53ce97c4af302801098d9abaa633ced98c93f3a
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105966851"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814036"
 ---
-# <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabb start: Logga in användare och hämta en åtkomsttoken i ett angulande Enkels Ides program
+# <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Snabbstart: Logga in användare och hämta en åtkomsttoken i ett ensidesapplikation för Angular
 
-I den här snabb starten laddar du ned och kör ett kod exempel som visar hur ett särskilt SPA-program (Single-Side Application) kan logga in användare och anropa Microsoft Graph. Kod exemplet visar hur du hämtar en åtkomsttoken för att anropa Microsoft Graph API eller något webb-API.
+I den här snabbstarten laddar du ned och kör ett kodexempel som visar hur en Engular-ensidesapplikation (SPA) kan logga in användare och anropa Microsoft Graph. Kodexe exemplet visar hur du hämtar en åtkomsttoken för att anropa Microsoft Graph API eller ett webb-API.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-prenumeration. [Skapa ett kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* En Azure-prenumeration. [Skapa en utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * [Node.js](https://nodejs.org/en/download/).
-* [Visual Studio Code](https://code.visualstudio.com/download) för att redigera projektfiler eller [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) för att köra projektet.
+* [Visual Studio Kod](https://code.visualstudio.com/download) för att redigera projektfiler eller [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/) för att köra projektet.
 
 > [!div renderon="docs"]
-> ## <a name="register-and-download-the-quickstart-app"></a>Registrera och hämta snabb starts appen
-> Starta snabb starts programmet med något av följande alternativ.
 >
-> ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Alternativ 1 (Express): registrera och konfigurera appen automatiskt och hämta sedan kod exemplet
+> ## <a name="register-and-download-the-quickstart-app"></a>Registrera och ladda ned snabbstartsappen
 >
-> 1. Gå till snabb starts upplevelsen för <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal-Appregistreringar</a> .
+> Starta snabbstartsappen med något av följande alternativ.
+>
+> ### <a name="option-1-express-register-and-automatically-configure-the-app-and-then-download-the-code-sample"></a>Alternativ 1 (express): Registrera och konfigurera appen automatiskt och ladda sedan ned kodexe exemplet
+>
+> 1. Gå till <a href="https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs" target="_blank">Azure Portal – Appregistreringar</a> snabbstart.
 > 1. Ange ett namn för programmet och välj sedan **Registrera**.
-> 1. Gå till snabb starts fönstret och Visa vinkel snabb starten. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt.
+> 1. Leta reda på Angular-snabbstarten i snabbstartsfönstret. Följ anvisningarna för att ladda ned och konfigurera det nya programmet automatiskt.
 >
-> ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>Alternativ 2 (manuell): registrera och konfigurera programmet och kod exemplet manuellt
+> ### <a name="option-2-manual-register-and-manually-configure-the-application-and-code-sample"></a>Alternativ 2 (manuell): Registrera och konfigurera programmet och kodexe exemplet manuellt
 >
-> #### <a name="step-1-register-the-application"></a>Steg 1: registrera programmet
+> #### <a name="step-1-register-the-application"></a>Steg 1: Registrera programmet
 >
-> 1. Logga in på <a href="https://portal.azure.com/" target="_blank">Azure-portalen</a>.
-> 1. Om du har åtkomst till flera klienter använder du filtret för **katalog + prenumeration** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: i den översta menyn för att välja den klient som du vill registrera ett program i.
-> 1. Följ anvisningarna för att [Registrera ett program på en sida](./scenario-spa-app-registration.md) i Azure Portal.
-> 1. Lägg till en ny plattform i fönstret **verifiering** i appens registrering och registrera omdirigerings-URI: n: `http://localhost:4200/` .
-> 1. I den här snabb starten används det [implicita tilldelnings flödet](v2-oauth2-implicit-grant-flow.md). I avsnittet **implicit beviljande och hybrid flöden** väljer du **ID-tokens** och **åtkomsttoken**. ID-token och åtkomsttoken krävs eftersom den här appen loggar in användare och anropar ett API.
+> 1. Följ anvisningarna för [att registrera ett ensidesprogram](./scenario-spa-app-registration.md) i Azure Portal.
+> 1. Lägg till en ny plattform i **fönstret Autentisering** i appregistreringen och registrera omdirigerings-URI:en: `http://localhost:4200/` .
+> 1. Den här snabbstarten använder [det implicita beviljandeflödet](v2-oauth2-implicit-grant-flow.md). I avsnittet **Implicit beviljande och hybridflöden** väljer du **ID-token och** **Åtkomsttoken.** ID-token och åtkomsttoken krävs eftersom den här appen loggar in användare och anropar ett API.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Steg 1: konfigurera programmet i Azure Portal
-> För att kod exemplet i den här snabb starten ska fungera måste du lägga till en omdirigerings-URI som **http://localhost:4200/** och aktivera **implicit beviljande**.
+>
+> #### <a name="step-1-configure-the-application-in-the-azure-portal"></a>Steg 1: Konfigurera programmet i Azure Portal
+>
+> För att kodexe exemplet i den här snabbstarten ska fungera måste du lägga till en omdirigerings-URI `http://localhost:4200/` till och aktivera Implicit **beviljande**.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Gör ändringarna åt mig]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Redan konfigurerad](media/quickstart-v2-javascript/green-check.png) Programmet konfigureras med de här attributen.
 
-#### <a name="step-2-download-the-code-sample"></a>Steg 2: Hämta kod exemplet
+#### <a name="step-2-download-the-code-sample"></a>Steg 2: Ladda ned kodexe exemplet
 >[!div renderon="docs"]
->Om du vill köra projektet med en webb server med hjälp av Node.js, [klona exempel lagrings platsen](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) eller [Ladda ned de grundläggande projektfilerna](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Öppna filerna med hjälp av ett redigerings program, till exempel Visual Studio Code.
+>Om du vill köra projektet med en webbserver med [](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) hjälp Node.js klonar du exempeldatabasen [eller laddar ned kärnprojektfilerna](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip). Öppna filerna i ett redigeringsprogram, till exempel Visual Studio Code.
 
 > [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
-> [Ladda ned kod exemplet](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
+> [Ladda ned kodexe exemplet](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular/archive/master.zip)
 
 > [!div renderon="docs"]
 >#### <a name="step-3-configure-the-javascript-app"></a>Steg 3: Konfigurera JavaScript-appen
 >
-> I mappen *src/app* redigerar du *app. module. TS* och anger `clientId` `authority` värdena och under `MsalModule.forRoot` .
+> I mappen *src/app* redigerar du *app.module.ts och* anger `clientId` värdena och under `authority` `MsalModule.forRoot` .
 >
 >```javascript
 >MsalModule.forRoot({
@@ -89,35 +91,34 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 > > [!NOTE]
 > > Enter_the_Supported_Account_Info_Here
 
-
 > [!div renderon="docs"]
 >
-> Ersätt följande värden:
+> Ersätt dessa värden:
 >
->|Värdenamn|Beskrivning|
+>|Värdenamn|Description|
 >|---------|---------|
->|Enter_the_Application_Id_Here|På sidan **Översikt** i program registreringen är det här ditt **program (klient) ID-** värde. |
->|Enter_the_Cloud_Instance_Id_Here|Detta är instansen av Azure-molnet. För huvud-eller globala Azure-molnet anger du **https://login.microsoftonline.com** . För nationella moln (till exempel Kina), se [nationella moln](./authentication-national-cloud.md).|
->|Enter_the_Tenant_Info_Here| Ange ett av följande alternativ: om programmet har stöd *för konton i den här organisations katalogen* ersätter du det här värdet med katalogen (klient) ID: t eller klient namnet (till exempel **contoso.Microsoft.com**). Om ditt program har stöd *för konton i en organisations katalog* ersätter du värdet med **organisationer**. Om ditt program har stöd *för konton i en organisations katalog och personliga Microsoft-konton* ersätter du värdet med **vanligt**. Om du bara vill begränsa stödet till *personliga Microsoft-konton* ersätter du värdet med **konsumenter**. |
->|Enter_the_Redirect_Uri_Here|Ersätt med **http://localhost:4200** .|
->|cacheLocation  | Valfritt Ange webb läsar lagring för autentiseringens tillstånd. Standardvärdet är **SessionStorage**.   |
->|storeAuthStateInCookie  | Valfritt Identifiera biblioteket som lagrar status för autentiseringsbegäran. Detta tillstånd krävs för att validera autentiserings flöden i webbläsarens cookies. Den här cookien är inställd för Internet Explorer och Edge för att hantera dessa två webbläsare. Mer information finns i [kända problem](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues). |
+>|Enter_the_Application_Id_Here|På sidan **Översikt** i programregistreringen är det här värdet **för program-ID (klient).** |
+>|Enter_the_Cloud_Instance_Id_Here|Det här är Azure-molninstansen. För det huvudsakliga eller globala Azure-molnet anger du `https://login.microsoftonline.com` . Information om nationella moln (till exempel Kina) finns [i Nationella moln.](./authentication-national-cloud.md)|
+>|Enter_the_Tenant_Info_Here| Ange till något av följande alternativ: Om ditt program stöder konton i den här organisationskatalogen ersätter du det här värdet med katalog-ID:t (klientorganisations-ID:t) eller klientorganisationens namn (till exempel `contoso.microsoft.com` ). Om ditt program stöder *konton i en organisationskatalog ersätter* du det här värdet med `organizations` . Om ditt program stöder konton *i valfri organisationskatalog och personliga Microsoft-konton* ersätter du det här värdet med `common` . Om du endast vill begränsa *stödet till personliga Microsoft-konton* ersätter du det här värdet med `consumers` . |
+>|Enter_the_Redirect_Uri_Here|Ersätt med `http://localhost:4200` .|
+>|cacheLocation  | (Valfritt) Ange webbläsarlagring för autentiseringstillståndet. Standardvärdet är `sessionStorage`.   |
+>|storeAuthStateInCookie  | (Valfritt) Identifiera biblioteket som lagrar tillståndet för autentiseringsbegäran. Det här tillståndet krävs för att verifiera autentiseringsflödena i webbläsarens cookies. Den här cookien anges för Internet Explorer och Microsoft Edge för att hantera dessa två webbläsare. Mer information finns i kända [problem.](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues->on-IE-and-Edge-Browser#issues) |
 >
 > För att hitta värdena för **program-ID (klient)**, **katalog-ID (klient)** och **Kontotyper som stöds** går du till appens **översiktssida** i Azure-portalen.
 
-> Mer information om tillgängliga konfigurerbara alternativ finns i [initiera klient program](msal-js-initializing-client-applications.md).
+> Mer information om tillgängliga konfigurerbara alternativ finns i [Initiera klientprogram.](msal-js-initializing-client-applications.md)
 
-> Du hittar käll koden för MSAL.js bibliotek i [AzureAD/Microsoft-Authentication-Library-for-JS](https://github.com/AzureAD/microsoft-authentication-library-for-js) -lagringsplatsen på GitHub.
+> Du hittar källkoden för MSAL.js biblioteket på [lagringsplatsen AzureAD/microsoft-authentication-library-for-js](https://github.com/AzureAD/microsoft-authentication-library-for-js) på GitHub.
 
 > [!div class="sxs-lookup" renderon="portal"]
-> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: appen har kon figurer ATS och är redo att köras
-> Vi har konfigurerat ditt projekt med värdena för appens egenskaper.
+> #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Steg 3: Din app är konfigurerad och redo att köras
+> Vi har konfigurerat ditt projekt med värden för appens egenskaper.
 
 > [!div renderon="docs"]
 >
-> Rulla ned i samma fil och uppdatera `graphMeEndpoint` . 
+> Rulla nedåt i samma fil och uppdatera `graphMeEndpoint` . 
 > - Ersätt strängen `Enter_the_Graph_Endpoint_Herev1.0/me` med `https://graph.microsoft.com/v1.0/me`
-> - `Enter_the_Graph_Endpoint_Herev1.0/me` är slut punkten som API-anrop görs mot. För Main (global) Microsoft Graph API-tjänsten anger `https://graph.microsoft.com/` du (ta med avslutande snedstreck). Mer information finns i [dokumentationen](https://docs.microsoft.com/graph/deployments).
+> - `Enter_the_Graph_Endpoint_Herev1.0/me` är den slutpunkt som API-anrop görs mot. För den huvudsakliga (globala) Microsoft Graph `https://graph.microsoft.com/` API-tjänsten anger du (inkludera avslutande snedstreck). Mer information finns i [dokumentationen](https://docs.microsoft.com/graph/deployments).
 >
 >
 > ```javascript
@@ -129,31 +130,28 @@ I den här snabb starten laddar du ned och kör ett kod exempel som visar hur et
 >
 
 >[!div renderon="docs"]
->#### <a name="step-4-run-the-project"></a>Steg 4: kör projektet
+>#### <a name="step-4-run-the-project"></a>Steg 4: Kör projektet
 
 Om du använder Node.js:
 
-1. Starta-servern genom att köra följande kommandon från projekt katalogen:
+1. Starta servern genom att köra följande kommandon från projektkatalogen:
 
    ```console
    npm install
    npm start
    ```
 
-1. Bläddra till **http://localhost:4200/**.
-1. Välj **inloggning**.
-1. Välj **profil** för att anropa Microsoft Graph.
-
-När webbläsaren har läst in programmet väljer du **Logga in**. Första gången du börjar logga in uppmanas du att ange ditt medgivande för att ge programmet åtkomst till din profil och logga in dig. När du har loggat in väljer du **profil** så visas din användar profil information på sidan.
+1. Gå till `http://localhost:4200/`.
+1. Välj **Logga in.** Första gången du loggar in uppmanas du att tillåta programmet att komma åt din profil och logga in dig automatiskt.
+1. Välj **Profil för** att anropa Microsoft Graph. Din användarprofilinformation visas på sidan.
 
 ## <a name="how-the-sample-works"></a>Så här fungerar exemplet
 
-![Diagram som visar hur exempel programmet i den här snabb starten fungerar](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
-
+![Diagram som visar hur exempelappen i den här snabbstarten fungerar.](./media/quickstart-v2-angular/diagram-auth-flow-spa-angular.svg)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig sedan att logga in en användare och hämta tokens i den vinkel bara självstudien:
+Lär dig hur du loggar in en användare och hämtar token i Självstudie om Angular:
 
 > [!div class="nextstepaction"]
-> [Vinkel kurs](./tutorial-v2-angular.md)
+> [Självstudie om Angular](./tutorial-v2-angular.md)

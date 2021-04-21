@@ -1,48 +1,48 @@
 ---
-title: Övervaka Delegerings ändringar i hanterings klienten
-description: Lär dig hur du övervakar Delegerings aktivitet från kund klienter till din hanterings klient.
+title: Övervaka delegeringsändringar i din hanterande klientorganisation
+description: Lär dig hur du övervakar delegeringsaktivitet från kundklienter till din hanterande klientorganisation.
 ms.date: 02/18/2021
 ms.topic: how-to
-ms.openlocfilehash: 8bd9e89039c114f3d1088df44198fe00c69bbf82
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1a12b916fae9794d6d695191a81ec076917bda31
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199064"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814900"
 ---
-# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka Delegerings ändringar i hanterings klienten
+# <a name="monitor-delegation-changes-in-your-managing-tenant"></a>Övervaka delegeringsändringar i din hanterande klientorganisation
 
-Som tjänst leverantör kanske du vill vara medveten om att kund prenumerationer eller resurs grupper delegeras till din klient organisation via [Azure Lighthouse](../overview.md)eller när tidigare delegerade resurser tas bort.
+Som tjänstleverantör kanske du vill vara medveten om när kundprenumerationer eller resursgrupper delegeras till din klientorganisation [via Azure Lighthouse](../overview.md), eller när tidigare delegerade resurser tas bort.
 
-I hanterings klienten spårar [Azure aktivitets loggen](../../azure-monitor/essentials/platform-logs-overview.md) Delegerings aktivitet på klient nivå. Den här loggade aktiviteten innehåller alla tillagda eller borttagna delegeringar från kund klienter.
+I den hanterande klientorganisationen spårar [Azure-aktivitetsloggen](../../azure-monitor/essentials/platform-logs-overview.md) delegeringsaktivitet på klientorganisationsnivå. Den här loggade aktiviteten omfattar alla tillagda eller borttagna delegeringar från kundklienter.
 
-I det här avsnittet beskrivs de behörigheter som krävs för att övervaka Delegerings aktivitet till din klient (i alla dina kunder). Det innehåller också ett exempel skript som visar en metod för att fråga och rapportera om dessa data.
+I det här avsnittet beskrivs de behörigheter som krävs för att övervaka delegeringsaktiviteten till din klientorganisation (för alla dina kunder). Den innehåller också ett exempelskript som visar en metod för att fråga och rapportera om dessa data.
 
 > [!IMPORTANT]
-> Alla de här stegen måste utföras i hanterings klienten i stället för i alla kund klienter.
+> Alla dessa steg måste utföras i din hanterande klientorganisation, i stället för i alla kundklienter.
 >
-> Även om vi refererar till tjänst leverantörer och kunder i det här avsnittet kan [företag som hanterar flera klienter](../concepts/enterprise.md) använda samma processer.
+> Även om vi refererar till tjänstleverantörer och kunder i det här [avsnittet kan företag som hanterar flera klienter](../concepts/enterprise.md) använda samma processer.
 
-## <a name="enable-access-to-tenant-level-data"></a>Ge åtkomst till data på klient nivå
+## <a name="enable-access-to-tenant-level-data"></a>Ge åtkomst till data på klientnivå
 
-För att få åtkomst till aktivitets logg data på klient nivå måste ett konto tilldelas den inbyggda rollen för [övervaknings läsaren](../../role-based-access-control/built-in-roles.md#monitoring-reader) i rot omfånget (/). Den här tilldelningen måste utföras av en användare som har rollen global administratör med ytterligare utökad åtkomst.
+För att få åtkomst till aktivitetsloggdata på klientorganisationsnivå måste ett konto tilldelas den inbyggda [rollen](../../role-based-access-control/built-in-roles.md#monitoring-reader) Övervakningsläsare i Azure i rotomfånget (/). Den här tilldelningen måste utföras av en användare som har rollen Global administratör med ytterligare utökad åtkomst.
 
-### <a name="elevate-access-for-a-global-administrator-account"></a>Öka åtkomsten för ett globalt administratörs konto
+### <a name="elevate-access-for-a-global-administrator-account"></a>Utöka åtkomst för ett globalt administratörskonto
 
-Om du vill tilldela en roll i rot omfånget (/) måste du ha rollen global administratör med utökad åtkomst. Den här utökade åtkomsten bör endast läggas till när du behöver göra roll tilldelningen och sedan ta bort den när du är färdig.
+Om du vill tilldela en roll i rotomfånget (/) måste du ha rollen Global administratör med förhöjd behörighet. Den här utökade åtkomsten bör endast läggas till när du behöver göra rolltilldelningen och sedan ta bort den när du är klar.
 
-Detaljerade anvisningar om hur du lägger till och tar bort höjning finns i [öka åtkomsten för att hantera alla Azure-prenumerationer och hanterings grupper](../../role-based-access-control/elevate-access-global-admin.md).
+Detaljerade anvisningar om hur du lägger till och tar bort utökade privilegier finns i [Utöka åtkomst för att hantera alla Azure-prenumerationer och hanteringsgrupper.](../../role-based-access-control/elevate-access-global-admin.md)
 
-När du har tilldelat åtkomsten har ditt konto rollen administratör för användar åtkomst i Azure i rot omfånget. Med den här roll tilldelningen kan du Visa alla resurser och tilldela åtkomst i alla prenumerationer eller hanterings grupper i katalogen, samt för att skapa roll tilldelningar i rot omfånget.
+När du har höjt din behörighet har ditt konto rollen Administratör för användaråtkomst i Azure i rotomfånget. Med den här rolltilldelningen kan du visa alla resurser och tilldela åtkomst i valfri prenumeration eller hanteringsgrupp i katalogen, samt göra rolltilldelningar i rotomfånget.
 
-### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>Tilldela övervaknings läsar rollen i rot omfånget
+### <a name="assign-the-monitoring-reader-role-at-root-scope"></a>Tilldela rollen Övervakningsläsare i rotomfånget
 
-När du har förhöjd åtkomst kan du tilldela rätt behörigheter till ett konto så att det kan fråga efter aktivitets logg data på klient nivå. Det här kontot måste ha den inbyggda rollen för [övervaknings läsaren](../../role-based-access-control/built-in-roles.md#monitoring-reader) som är tilldelad till rot omfånget för hanterings klienten.
+När du har höjt din behörighet kan du tilldela lämpliga behörigheter till ett konto så att det kan köra frågor mot aktivitetsloggdata på klientorganisationsnivå. Det här kontot måste ha den inbyggda [rollen Övervakningsläsare](../../role-based-access-control/built-in-roles.md#monitoring-reader) i Azure tilldelad i rotomfånget för din hanterande klientorganisation.
 
 > [!IMPORTANT]
-> Att bevilja en roll tilldelning i rot omfånget innebär att samma behörigheter gäller för alla resurser i klienten. Eftersom det här är en bred åtkomst nivå kan du vilja [tilldela rollen till ett huvud konto för tjänsten och använda det kontot för att fråga efter data](#use-a-service-principal-account-to-query-the-activity-log). Du kan också tilldela övervaknings läsar rollen i rot omfånget till enskilda användare eller till användar grupper så att de kan [Visa Delegerings information direkt i Azure Portal](#view-delegation-changes-in-the-azure-portal). Om du gör det bör du vara medveten om att detta är en bred åtkomst nivå som bör begränsas till det minsta antalet användare som är möjliga.
+> Att bevilja en rolltilldelning i rotomfånget innebär att samma behörigheter gäller för alla resurser i klientorganisationen. Eftersom det här är en bred åtkomstnivå kanske du vill tilldela den här rollen till ett konto för tjänstens huvudnamn och använda det kontot [för att fråga efter data](#use-a-service-principal-account-to-query-the-activity-log). Du kan också tilldela rollen Övervakningsläsare i rotomfånget till enskilda användare eller användargrupper så att de kan visa [delegeringsinformation](#view-delegation-changes-in-the-azure-portal)direkt i Azure Portal . Om du gör det bör du vara medveten om att det här är en bred åtkomstnivå som bör begränsas till så få användare som möjligt.
 
-Använd någon av följande metoder för att göra tilldelningen av rot omfånget.
+Använd någon av följande metoder för att göra rotomfångstilldelningen.
 
 #### <a name="powershell"></a>PowerShell
 
@@ -60,51 +60,51 @@ New-AzRoleAssignment -SignInName <yourLoginName> -Scope "/" -RoleDefinitionName 
 az role assignment create --assignee 00000000-0000-0000-0000-000000000000 --role "Monitoring Reader" --scope "/"
 ```
 
-### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Ta bort utökad åtkomst för det globala administratörs kontot
+### <a name="remove-elevated-access-for-the-global-administrator-account"></a>Ta bort utökad åtkomst för det globala administratörskontot
 
-När du har tilldelat rollen som övervaknings läsare i rot omfånget till önskat konto måste du [ta bort den utökade åtkomsten](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) för det globala administratörs kontot eftersom den här åtkomst nivån inte längre behövs.
+När du har tilldelat rollen Övervakningsläsare i rotomfånget till [](../../role-based-access-control/elevate-access-global-admin.md#remove-elevated-access) önskat konto måste du ta bort den utökade åtkomsten för det globala administratörskontot eftersom den här åtkomstnivån inte längre behövs.
 
-## <a name="view-delegation-changes-in-the-azure-portal"></a>Visa Delegerings ändringar i Azure Portal
+## <a name="view-delegation-changes-in-the-azure-portal"></a>Visa delegeringsändringar i Azure Portal
 
-Användare som har tilldelats rollen som övervaknings läsare i rot omfånget kan visa Delegerings ändringar direkt i Azure Portal.
+Användare som har tilldelats rollen Övervakningsläsare i rotomfånget kan visa delegeringsändringar direkt i Azure Portal.
 
-1. Gå till sidan **Mina kunder** och välj sedan **aktivitets logg** på den vänstra navigerings menyn.
-1. Se till att **katalog aktivitet** är markerad i filtret längst upp på skärmen.
+1. Gå till **sidan Mina kunder** och välj sedan **Aktivitetslogg** i den vänstra navigeringsmenyn.
+1. Se till **att Katalogaktivitet** är markerat i filtret längst upp på skärmen.
 
-En lista över Delegerings ändringar kommer att visas. Du kan välja **Redigera kolumner** om du vill visa eller **dölja status**, **händelse kategori**, tid **, tidstämpel**, **prenumeration**, **händelse som initieras av**, **resurs grupp**, **resurs typ** och **resurs** värden. 
+En lista över delegeringsändringar visas. Du kan välja Redigera **kolumner för** att visa eller dölja **värdena Status,** Händelsekategori, Tid, Tidsstämpel, **Prenumeration,** Händelse **initierad** av **,** Resursgrupp, Resurstyp och **Resurs.** 
 
-:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Skärm bild av Delegerings ändringar i Azure Portal.":::
+:::image type="content" source="../media/delegation-activity-portal.jpg" alt-text="Skärmbild av delegeringsändringar i Azure Portal.":::
 
-## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>Använd ett huvud konto för tjänsten för att fråga aktivitets loggen
+## <a name="use-a-service-principal-account-to-query-the-activity-log"></a>Använda ett konto för tjänstens huvudnamn för att köra frågor mot aktivitetsloggen
 
-Eftersom övervaknings läsar rollen i rot omfånget är en sådan bred åtkomst nivå, kanske du vill tilldela rollen till ett huvud konto för tjänsten och använda det kontot för att fråga efter data med hjälp av skriptet nedan.
+Eftersom rollen Övervakningsläsare i rotomfånget är en så bred åtkomstnivå kanske du vill tilldela rollen till ett konto för tjänstens huvudnamn och använda det kontot för att köra frågor mot data med hjälp av skriptet nedan.
 
 > [!IMPORTANT]
-> För närvarande kan klienter med en stor mängd Delegerings aktivitet stöta på fel vid frågor mot dessa data.
+> För närvarande kan klienter med en stor mängd delegeringsaktivitet få fel när de kör frågor mot dessa data.
 
-När du använder ett huvud konto för tjänsten för att skicka frågor till aktivitets loggen rekommenderar vi följande metoder:
+När du använder ett tjänsthuvudnamnskonto för att fråga aktivitetsloggen rekommenderar vi följande metodtips:
 
-- [Skapa ett nytt tjänst huvud konto](../../active-directory/develop/howto-create-service-principal-portal.md) som endast ska användas för den här funktionen, i stället för att tilldela den här rollen till ett befintligt huvud namn för tjänsten som används för annan automatisering.
-- Se till att det här tjänstens huvud namn inte har åtkomst till några delegerade kund resurser.
-- [Använd ett certifikat för att autentisera](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) och [lagra det på ett säkert sätt i Azure Key Vault](../../key-vault/general/security-overview.md).
-- Begränsa de användare som har åtkomst till Act för tjänstens huvud namn.
+- [Skapa ett nytt konto för tjänstens](../../active-directory/develop/howto-create-service-principal-portal.md) huvudnamn som endast ska användas för den här funktionen i stället för att tilldela den här rollen till ett befintligt huvudnamn för tjänsten som används för annan automatisering.
+- Se till att tjänstens huvudnamn inte har åtkomst till några delegerade kundresurser.
+- [Använd ett certifikat för att autentisera](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options) och lagra det på ett säkert sätt i [Azure Key Vault](../../key-vault/general/security-features.md).
+- Begränsa de användare som har åtkomst att agera för tjänstens huvudnamn.
 
-När du har skapat ett nytt tjänst huvud konto med övervaknings läsaren åtkomst till rot omfånget för din hanterings klient kan du använda det för att fråga efter och rapportera om Delegerings aktivitet i din klient.
+När du har skapat ett nytt tjänsthuvudnamnskonto med övervakningsläsaråtkomst till rotomfånget för din hanterande klientorganisation kan du använda det för att fråga efter och rapportera om delegeringsaktiviteten i din klientorganisation.
 
-[Det här Azure PowerShell skriptet](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan användas för att skicka frågor till den senaste 1 dagen av aktivitet och rapporter om eventuella tillagda eller borttagna delegeringar (eller försök som inte lyckades). Den frågar [klient aktivitets logg](/rest/api/monitor/TenantActivityLogs/List) data och skapar sedan följande värden för att rapportera om delegeringar som läggs till eller tas bort:
+[Det Azure PowerShell skriptet](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/tools/monitor-delegation-changes) kan användas för att fråga den senaste dagen med aktivitet och rapporter om alla tillagda eller borttagna delegeringar (eller försök som inte lyckades). Den frågar data i [klientaktivitetsloggen](/rest/api/monitor/TenantActivityLogs/List) och skapar sedan följande värden för att rapportera om delegeringar som läggs till eller tas bort:
 
-- **DelegatedResourceId**: ID för den delegerade prenumerationen eller resurs gruppen
-- **CustomerTenantId**: kundens klient-ID
-- **CustomerSubscriptionId**: det PRENUMERATIONS-ID som har delegerats eller som innehåller den resurs grupp som har delegerats
-- **CustomerDelegationStatus**: status ändring för den delegerade resursen (lyckades eller misslyckades)
-- **EventTimeStamp**: datum och tid då Delegerings ändringen loggades
+- **DelegatedResourceId:** ID:t för den delegerade prenumerationen eller resursgruppen
+- **CustomerTenantId: Kundens** klientorganisations-ID
+- **CustomerSubscriptionId:** Prenumerations-ID:t som delegerades eller som innehåller resursgruppen som delegerades
+- **CustomerDelegationStatus:** Statusändringen för den delegerade resursen (lyckades eller misslyckades)
+- **EventTimeStamp:** Datum och tid då delegeringsändringen loggades
 
 Tänk på följande när du frågar efter dessa data:
 
-- Om flera resurs grupper delegeras i en enda distribution returneras separata poster för varje resurs grupp.
-- Ändringar som görs i en tidigare delegering (till exempel uppdatering av behörighets strukturen) kommer att loggas som en tillagd delegering.
-- Som nämnts ovan måste ett konto ha den inbyggda rollen för övervaknings läsaren i rot omfånget (/) för att få åtkomst till dessa data på klient nivå.
-- Du kan använda dessa data i dina egna arbets flöden och rapporter. Du kan till exempel använda [http data Collector-API: t (offentlig för hands version)](../../azure-monitor/logs/data-collector-api.md) för att logga Data till Azure Monitor från en REST API-klient och sedan använda [Åtgärds grupper](../../azure-monitor/alerts/action-groups.md) för att skapa meddelanden eller aviseringar.
+- Om flera resursgrupper delegeras i en enda distribution returneras separata poster för varje resursgrupp.
+- Ändringar som gjorts i en tidigare delegering (till exempel uppdatering av behörighetsstrukturen) loggas som en tillagd delegering.
+- Som nämnts ovan måste ett konto ha den inbyggda Azure-rollen Övervakningsläsare i rotomfånget (/) för att få åtkomst till dessa data på klientorganisationsnivå.
+- Du kan använda dessa data i dina egna arbetsflöden och rapportering. Du kan till exempel använda [HTTP Data Collector API (offentlig förhandsversion)](../../azure-monitor/logs/data-collector-api.md) för att logga data [](../../azure-monitor/alerts/action-groups.md) till Azure Monitor från en REST API-klient och sedan använda åtgärdsgrupper för att skapa meddelanden eller aviseringar.
 
 ```azurepowershell-interactive
 # Log in first with Connect-AzAccount if you're not using Cloud Shell
@@ -180,6 +180,6 @@ else {
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du kan publicera kunder till [Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
-- Läs mer om [Azure Monitor](../../azure-monitor/index.yml) och [Azure aktivitets logg](../../azure-monitor/essentials/platform-logs-overview.md).
-- Granska [aktivitets loggarna efter domän](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) exempel arbets bok för att lära dig hur du visar Azure-aktivitets loggar över prenumerationer med ett alternativ för att filtrera dem efter domän namn.
+- Lär dig hur du kan registrera kunder för [att Azure Lighthouse](../concepts/azure-delegated-resource-management.md).
+- Lär dig [Azure Monitor och](../../azure-monitor/index.yml) [Azure-aktivitetsloggen](../../azure-monitor/essentials/platform-logs-overview.md).
+- Granska [arbetsboken Aktivitetsloggar efter](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) domän och lär dig hur du visar Azure-aktivitetsloggar över prenumerationer med ett alternativ för att filtrera dem efter domännamn.

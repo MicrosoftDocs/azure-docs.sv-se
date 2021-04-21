@@ -1,6 +1,6 @@
 ---
-title: Snabb start – skapa en Azure Key Vault med Azure PowerShell
-description: Snabb start visar hur du skapar en Azure Key Vault med hjälp av Azure PowerShell
+title: Snabbstart – Skapa en Azure Key Vault med Azure PowerShell
+description: Snabbstart som visar hur du skapar en Azure Key Vault med Azure PowerShell
 services: key-vault
 author: msmbaldwin
 tags: azure-resource-manager
@@ -9,22 +9,22 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: e77493bc73bc2d6f590d9bdcf891171fbd71f74e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cc6d9ca2621a56242d7472a088e55651f5502c9c
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99070225"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814810"
 ---
-# <a name="quickstart-create-a-key-vault-using-powershell"></a>Snabb start: skapa ett nyckel valv med PowerShell
+# <a name="quickstart-create-a-key-vault-using-powershell"></a>Snabbstart: Skapa ett nyckelvalv med PowerShell
 
-Azure Key Vault är en moln tjänst som tillhandahåller en säker lagring för [nycklar](../keys/index.yml), [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [About Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckel valv finns i [om nycklar, hemligheter och certifikat](about-keys-secrets-certificates.md).
+Azure Key Vault är en molntjänst som tillhandahåller ett säkert arkiv [för nycklar,](../keys/index.yml) [hemligheter](../secrets/index.yml)och [certifikat](../certificates/index.yml). Mer information om Key Vault finns i [Om Azure Key Vault](overview.md); Mer information om vad som kan lagras i ett nyckelvalv finns [i Om nycklar, hemligheter och certifikat.](about-keys-secrets-certificates.md)
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-I den här snabb starten skapar du ett nyckel valv med [Azure PowerShell](/powershell/azure/). Om du väljer att installera och använda PowerShell lokalt kräver den här självstudien Azure PowerShell-modul version 1.0.0 eller senare. Skriv `$PSVersionTable.PSVersion` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Login-AzAccount` för att skapa en anslutning till Azure.
+I den här snabbstarten skapar du ett nyckelvalv med [Azure PowerShell](/powershell/azure/). Om du väljer att installera och använda PowerShell lokalt kräver den här självstudien Azure PowerShell-modul version 1.0.0 eller senare. Skriv `$PSVersionTable.PSVersion` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). Om du kör PowerShell lokalt måste du också köra `Login-AzAccount` för att skapa en anslutning till Azure.
 
 ```azurepowershell-interactive
 Login-AzAccount
@@ -44,9 +44,9 @@ Login-AzAccount
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en Key Vault med hjälp av Azure PowerShell. Om du vill veta mer om Key Vault och hur du integrerar den med dina program, Fortsätt till artiklarna nedan.
+I den här snabbstarten skapade du en Key Vault med Azure PowerShell. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
-- Läs en [Översikt över Azure Key Vault](overview.md)
-- Se referensen för [Azure PowerShell Key Vault-cmdletar](/powershell/module/az.keyvault/)
-- Granska [Azure Key Vault säkerhets översikt](security-overview.md)
+- Läs en [översikt över Azure Key Vault](overview.md)
+- Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/)
+- Granska Azure Key Vault [säkerhetsöversikten](security-features.md)
 

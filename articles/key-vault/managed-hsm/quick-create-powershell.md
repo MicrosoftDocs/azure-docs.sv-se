@@ -12,14 +12,14 @@ tags:
 - azure-resource-manager
 ms.custom:
 - mode-api
-ms.openlocfilehash: ba1cd8d6b1410be30eefe9dca9675daaf6c16256
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: aa984a8f3899db72ead878e2c4381ea6a080e32d
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534658"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815440"
 ---
-# <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Snabbstart: Ange och hämta en hanterad nyckel från Azure Key Vault powershell
+# <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Snabbstart: Ange och hämta en hanterad nyckel från en Azure Key Vault powershell
 
 I den här snabbstarten skapar du ett nyckelvalv i Azure Key Vault med Azure PowerShell. Azure Key Vault är en molntjänst som fungerar som ett säkert lager för hemligheter. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Mer information om Key Vault finns i [Översikt.](../general/overview.md) Azure PowerShell används för att skapa och hantera Azure-resurser med hjälp av kommandon eller skript. När du har slutfört det lagrar du en nyckel.
 
@@ -35,7 +35,7 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. Använd cmdleten Azure PowerShell [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) för att skapa en resursgrupp med namnet *myResourceGroup* på *platsen westus.* 
+En resursgrupp är en logisk container där Azure-resurser distribueras och hanteras. Använd cmdleten [Azure PowerShell New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) för att skapa en resursgrupp med namnet *myResourceGroup* på *platsen westus.* 
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
@@ -52,7 +52,7 @@ Ditt huvudnamns-ID returneras i formatet "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx".
 
 ## <a name="create-a-managed-hsm"></a>Skapa en hanterad HSM
 
-Använd cmdleten [Azure PowerShell New-AzKeyVaultManagedHsm](/powershell/module/az.keyvault/new-azkeyvaultmanagedhsm) för att skapa en ny Key Vault HSM. Du måste ange en del information:
+Använd cmdlet Azure PowerShell en [New-AzKeyVaultManagedHsm](/powershell/module/az.keyvault/new-azkeyvaultmanagedhsm) för att skapa en ny Key Vault HSM. Du måste ange en del information:
 
 - Namn på hanterad HSM: En sträng på 3 till 24 tecken som endast får innehålla siffror (0–9), bokstäver (a–z, A–Z) och bindestreck (-)
 
@@ -61,22 +61,22 @@ Använd cmdleten [Azure PowerShell New-AzKeyVaultManagedHsm](/powershell/module/
 
 - Resursgruppsnamn: **myResourceGroup**.
 - Platsen: **EastUS**.
-- Ditt huvud-ID: Skicka det Azure Active Directory huvudnamns-ID som du fick i det sista avsnittet till parametern "Administratör". 
+- Ditt huvudnamns-ID: Azure Active Directory det huvudnamns-ID som du fick i det förra avsnittet till parametern "Administratör". 
 
 ```azurepowershell-interactive
 New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "West US" -Administrator "<your-principal-ID>"
 ```
 
-Utdata från den här cmdleten visar egenskaper för den nyligen skapade hanterade HSM:en. Anteckna de två egenskaperna som visas nedan:
+Utdata från den här cmdleten visar egenskaperna för den nyligen skapade hanterade HSM:n. Anteckna de två egenskaperna som visas nedan:
 
 - **Namn på hanterad HSM:** Det namn som du angav för parametern --name ovan.
-- **Valvets URI:** I det här exemplet https:// ditt &lt; unika-hanterade hsm-namn &gt; .vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
+- **Valv-URI:** I det här exemplet är https:// ditt unika hanterade &lt; hsm-namn &gt; .vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
 
 Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
 
 ## <a name="activate-your-managed-hsm"></a>Aktivera din hanterade HSM
 
-Alla kommandon för dataplanet är inaktiverade tills HSM aktiveras. Du kommer inte att kunna skapa nycklar eller tilldela roller. Endast de utsedda administratörerna som tilldelades under create-kommandot kan aktivera HSM. Om du vill aktivera HSM måste du ladda ned [säkerhetsdomänen](security-domain.md).
+Alla kommandon för dataplanet är inaktiverade tills HSM har aktiverats. Du kommer inte att kunna skapa nycklar eller tilldela roller. Endast de utsedda administratörerna som tilldelades under create-kommandot kan aktivera HSM. Om du vill aktivera HSM måste du ladda ned [säkerhetsdomänen](security-domain.md).
 
 För att aktivera din HSM behöver du:
 - Minst 3 RSA-nyckelpar (högst 10)
@@ -115,4 +115,4 @@ I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

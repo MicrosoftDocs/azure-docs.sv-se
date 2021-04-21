@@ -1,18 +1,18 @@
 ---
 title: Aktivera AD DS-autentisering till Azure-filresurser
-description: Lär dig hur du aktiverar Active Directory Domain Services-autentisering via SMB för Azure-filresurser. Dina domän-ansluten virtuella Windows-datorer kan sedan komma åt Azure-filresurser med hjälp av AD DS-autentiseringsuppgifter.
+description: Lär dig hur du aktiverar Active Directory Domain Services över SMB för Azure-filresurser. Dina domän-ansluten virtuella Windows-datorer kan sedan komma åt Azure-filresurser med hjälp av AD DS-autentiseringsuppgifter.
 author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
 ms.date: 09/13/2020
 ms.author: rogarana
-ms.openlocfilehash: f38911b1fffb083902ba67e262141b6780a43ada
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 7187563824fd7e371d6352510b9ab71c920fc1ef
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/21/2021
-ms.locfileid: "107817854"
+ms.locfileid: "107835118"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Del ett: Aktivera AD DS-autentisering för dina Azure-filresurser 
 
@@ -41,7 +41,7 @@ AD DS-kontot som skapas av cmdleten representerar lagringskontot. Om AD DS-konto
 Ersätt platshållarvärdena med dina egna i parametrarna nedan innan du kör dem i PowerShell.
 > [!IMPORTANT]
 > Cmdleten för domänkoppling skapar ett AD-konto som representerar lagringskontot (filresursen) i AD. Du kan välja att registrera dig som ett datorkonto eller ett tjänstinloggningskonto. Mer information [finns i Vanliga](./storage-files-faq.md#security-authentication-and-access-control) frågor och svar. För datorkonton finns en förfalloålder för lösenord som är inställd på 30 dagar i AD. På samma sätt kan tjänstinloggningskontot ha en förfalloålder för standardlösenord som angetts för AD-domänen eller organisationsenheten (OU).
-> För båda kontotyperna rekommenderar vi att du kontrollerar den förfalloålder för lösenord som konfigurerats i AD-miljön och planerar att uppdatera lösenordet för din lagringskontoidentitet för AD-kontot före den högsta lösenordsåldern. [](storage-files-identity-ad-ds-update-password.md) Du kan överväga att skapa en ny AD-organisationsenhet [(OU)](/powershell/module/addsadministration/new-adorganizationalunit) i AD och inaktivera förfalloprincip för lösenord på datorkonton eller tjänstinloggningskonton på motsvarande sätt. [](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) 
+> För båda kontotyperna rekommenderar vi att du kontrollerar den förfalloålder för lösenord som konfigurerats i AD-miljön och planerar att uppdatera lösenordet för din lagringskontoidentitet för AD-kontot innan den högsta lösenordsåldern. [](storage-files-identity-ad-ds-update-password.md) Du kan överväga att skapa en ny AD-organisationsenhet [(OU)](/powershell/module/addsadministration/new-adorganizationalunit) i AD och inaktivera förfalloprincip för lösenord på datorkonton eller tjänstinloggningskonton på motsvarande sätt. [](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj852252(v=ws.11)) 
 
 ```PowerShell
 # Change the execution policy to unblock importing AzFilesHybrid.psm1 module
@@ -59,7 +59,7 @@ Import-Module -Name AzFilesHybrid
 # for more information.
 Connect-AzAccount
 
-# Define parameters
+# Define parameters, $StorageAccountName currently has a maximum limit of 15 characters
 $SubscriptionId = "<your-subscription-id-here>"
 $ResourceGroupName = "<resource-group-name-here>"
 $StorageAccountName = "<storage-account-name-here>"
@@ -92,7 +92,7 @@ Om du redan har kört `Join-AzStorageAccountForAuth` skriptet ovan går du till 
 
 ### <a name="checking-environment"></a>Kontrollera miljön
 
-Först måste du kontrollera tillståndet för din miljö. Mer specifikt måste du kontrollera [om Active Directory PowerShell](/powershell/module/addsadministration/) är installerat och om gränssnittet körs med administratörsbehörighet. Kontrollera sedan för att se om [modulen Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) är installerad, i annat fall installerar du den. När du har slutfört kontrollerna kontrollerar du din AD [](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) DS för att se om det finns ett datorkonto (standard) eller ett tjänstinloggningskonto som redan har skapats med SPN/UPN som "cifs/your-storage-account-name-here.file.core.windows.net". [](/windows/win32/ad/about-service-logon-accounts) Om kontot inte finns skapar du ett enligt beskrivningen i följande avsnitt.
+Först måste du kontrollera tillståndet för din miljö. Mer specifikt måste du kontrollera [om Active Directory PowerShell](/powershell/module/addsadministration/) är installerat och om gränssnittet körs med administratörsbehörighet. Kontrollera sedan för att se om [modulen Az.Storage 2.0](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) är installerad, i annat fall installerar du den. När du har slutfört dessa kontroller kontrollerar du AD [](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) DS för att se om det finns ett datorkonto (standard) eller ett tjänstinloggningskonto som redan har skapats med SPN/UPN som "cifs/your-storage-account-name-here.file.core.windows.net". [](/windows/win32/ad/about-service-logon-accounts) Om kontot inte finns skapar du ett enligt beskrivningen i följande avsnitt.
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Skapa en identitet som representerar lagringskontot i ad manuellt
 
@@ -107,7 +107,7 @@ New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAcco
 Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
 ```
 
-När du har nyckeln skapar du antingen ett tjänst- eller datorkonto under din organisationsenhet. Använd följande specifikation (kom ihåg att ersätta exempeltexten med namnet på ditt lagringskonto):
+När du har den nyckeln skapar du antingen ett tjänst- eller datorkonto under din organisationsenhet. Använd följande specifikation (kom ihåg att ersätta exempeltexten med namnet på ditt lagringskonto):
 
 SPN: "cifs/your-storage-account-name-here.file.core.windows.net" Lösenord: Kerberos-nyckel för ditt lagringskonto.
 

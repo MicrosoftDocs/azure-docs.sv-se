@@ -1,31 +1,32 @@
 ---
-title: Etablera en webbapp med Azure cache för Redis
-description: Använd Azure Resource Manager-mall för att distribuera webbappen med Azure cache för Redis.
+title: Etablera webbapp med Azure Cache for Redis
+description: Använd Azure Resource Manager för att distribuera webbapp med Azure Cache for Redis.
 services: app-service
 author: yegu-ms
 ms.service: app-service
 ms.topic: conceptual
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: ec8d4f5611425734974d07ae6ee7008b10b9b406
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 089d7d7990f0f94135f629a5cd7a461700aa3433
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85833782"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107830780"
 ---
-# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Skapa en webbapp plus Azure cache för Redis med hjälp av en mall
+# <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Skapa en webbapp och Azure Cache for Redis med hjälp av en mall
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-I det här avsnittet får du lära dig hur du skapar en Azure Resource Manager-mall som distribuerar en Azure-webbapp med Azure cache för Redis. Du får lära dig hur du definierar vilka resurser som distribueras och hur du definierar parametrar som anges när distributionen körs. Du kan använda den här mallen för dina egna distributioner eller anpassa den så att den uppfyller dina krav.
+I det här avsnittet får du lära dig hur du skapar en Azure Resource Manager som distribuerar en Azure-webbapp med Azure Cache for Redis. Du får lära dig hur du definierar vilka resurser som distribueras och hur du definierar parametrar som anges när distributionen körs. Du kan använda den här mallen för dina egna distributioner eller anpassa den så att den uppfyller dina krav.
 
-Mer information om hur du skapar mallar finns i [redigera Azure Resource Manager mallar](../azure-resource-manager/templates/template-syntax.md). Information om JSON-syntaxen och egenskaperna för cache-resurs typer finns i [resurs typer för Microsoft. cache](/azure/templates/microsoft.cache/allversions).
+Mer information om hur du skapar mallar finns [i Redigera Azure Resource Manager-mallar.](../azure-resource-manager/templates/template-syntax.md) Mer information om JSON-syntaxen och JSON-egenskaperna för cacheresurstyper finns [i Microsoft.Cache-resurstyper.](/azure/templates/microsoft.cache/allversions)
 
-En fullständig mall finns i [webbapp med Azure cache för Redis-mall](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json).
+Den fullständiga mallen finns i [Web App with Azure Cache for Redis template (Webbapp med Azure Cache for Redis mall).](https://github.com/Azure/azure-quickstart-templates/blob/master/201-web-app-with-redis-cache/azuredeploy.json)
 
 ## <a name="what-you-will-deploy"></a>Vad du ska distribuera
-I den här mallen kommer du att distribuera:
+I den här mallen distribuerar du:
 
 * Azure Web App
 * Azure Cache for Redis
@@ -40,7 +41,7 @@ Klicka på följande knapp för att köra distributionen automatiskt:
 [!INCLUDE [cache-deploy-parameters](../../includes/cache-deploy-parameters.md)]
 
 ## <a name="variables-for-names"></a>Variabler för namn
-Den här mallen använder variabler för att skapa namn för resurserna. Funktionen [uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) används för att skapa ett värde baserat på resurs gruppens ID.
+Den här mallen använder variabler för att konstruera namn för resurserna. Den använder [funktionen uniqueString](../azure-resource-manager/templates/template-functions-string.md#uniquestring) för att skapa ett värde baserat på resursgruppens ID.
 
 ```json
 "variables": {
@@ -55,9 +56,9 @@ Den här mallen använder variabler för att skapa namn för resurserna. Funktio
 [!INCLUDE [app-service-web-deploy-web-host](../../includes/app-service-web-deploy-web-host.md)]
 
 ### <a name="azure-cache-for-redis"></a>Azure Cache for Redis
-Skapar Azure-cachen för Redis som används med webbappen. Namnet på cachen anges i variabeln **cacheName** .
+Skapar Azure Cache for Redis som används med webbappen. Namnet på cacheminnet anges i **variabeln cacheName.**
 
-Mallen skapar cachen på samma plats som resurs gruppen.
+Mallen skapar cachen på samma plats som resursgruppen.
 
 ```json
 {
@@ -81,9 +82,9 @@ Mallen skapar cachen på samma plats som resurs gruppen.
 
 
 ### <a name="web-app"></a>Webbapp
-Skapar webb programmet med namnet som anges i variabeln **webSiteName** .
+Skapar webbappen med det namn som anges i **variabeln webSiteName.**
 
-Observera att webbappen är konfigurerad med egenskaper för app-inställningar som gör att den fungerar med Azure-cachen för Redis. De här inställningarna skapas dynamiskt baserat på de värden som angavs under distributionen.
+Observera att webbappen har konfigurerats med appinställningsegenskaper som gör att den kan fungera med Azure Cache for Redis. De här appinställningarna skapas dynamiskt baserat på värden som anges under distributionen.
 
 ```json
 {

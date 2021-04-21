@@ -1,99 +1,100 @@
 ---
-title: Så här administrerar du Azure cache för Redis
-description: Lär dig hur du utför administrations åtgärder som att starta om och schemalägga uppdateringar för Azure cache för Redis
+title: Så här administrerar du Azure Cache for Redis
+description: Lär dig hur du utför administrationsuppgifter, till exempel starta om och schemalägga uppdateringar för Azure Cache for Redis
 author: yegu-ms
 ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: 0a79b0b5b5f21d1c75fec6b062f1ca91cfe9dd1f
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 7f8eb44ab301b211eaeb2dc3679c97714f91f0da
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102219207"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107833048"
 ---
-# <a name="how-to-administer-azure-cache-for-redis"></a>Så här administrerar du Azure cache för Redis
-I det här avsnittet beskrivs hur du utför administrations åtgärder som att [Starta](#reboot) om och [schemalägga uppdateringar](#schedule-updates) för Azure cache för Redis-instanser.
+# <a name="how-to-administer-azure-cache-for-redis"></a>Så här administrerar du Azure Cache for Redis
+Det här avsnittet beskriver hur du utför administrationsuppgifter som [att starta om](#reboot) och schemalägga [uppdateringar](#schedule-updates) för Azure Cache for Redis instanser.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>Starta om
-På bladet **starta om** kan du starta om en eller flera noder i cacheminnet. Med den här omstarts funktionen kan du testa ditt program för återhämtning om det uppstår ett problem med en cache-nod.
+På **bladet** Starta om kan du starta om en eller flera noder i cacheminnet. Med den här omstartsfunktionerna kan du testa programmet för återhämtning om det uppstår fel på en cachenod.
 
-![Skärm bild som visar meny alternativet starta om.](./media/cache-administration/redis-cache-administration-reboot.png)
+![Skärmbild som visar menyalternativet Starta om.](./media/cache-administration/redis-cache-administration-reboot.png)
 
-Välj de noder som ska startas om och klicka på **starta om**.
+Välj de noder som ska startas om och klicka på **Starta om.**
 
-![Skärm bild som visar vilka noder du kan starta om.](./media/cache-administration/redis-cache-reboot.png)
+![Skärmbild som visar vilka noder du kan starta om.](./media/cache-administration/redis-cache-reboot.png)
 
-Om du har en Premium-cache med aktive rad kluster kan du välja vilken Shards som ska startas om.
+Om du har en premium-cache med klustring aktiverat kan du välja vilka fragment av cacheminnet som ska startas om.
 
 ![Starta om](./media/cache-administration/redis-cache-reboot-cluster.png)
 
-Om du vill starta om en eller flera noder i cacheminnet väljer du önskade noder och klickar på **starta om**. Om du har en Premium-cache med klustrad aktive rad väljer du önskad Shards för omstart och klickar sedan på **starta om**. Efter ett par minuter startar om de valda noderna och är online igen några minuter senare.
+Om du vill starta om en eller flera noder i cacheminnet väljer du önskade noder och klickar på **Starta om.** Om du har en premium-cache med klustring aktiverat väljer du önskade shards för att starta om och klickar sedan på **Starta om.** Efter några minuter startar de valda noderna om och är online igen några minuter senare.
 
-Påverkan på klient program varierar beroende på vilka noder du startar om.
+Effekten på klientprogram varierar beroende på vilka noder du startar om.
 
-* **Master** – när den primära noden startas om växlar Azure cache för Redis över till noden replikering och höjer den till primär. Under den här redundansväxlingen kan det finnas ett kort intervall där anslutningar kan Miss lyckas med cachen.
-* **Replik** – när replik-noden startas om är det vanligt vis ingen påverkan på cachelagring av klienter.
-* **Både primär och replik** – när båda cache-noderna startas om, går alla data förlorade i cacheminnet och anslutningar till cacheminnet misslyckades tills den primära noden är online igen. Om du har konfigurerat [data beständighet](cache-how-to-premium-persistence.md)återställs den senaste säkerhets kopian när cachen är online igen, men alla cache skrivningar som inträffat efter den senaste säkerhets kopieringen går förlorade.
-* **Noder i en Premium-cache med aktive rad kluster** – när du startar om en eller flera noder i en Premium-cache med klustrad aktive rad är beteendet för de valda noderna detsamma som när du startar om motsvarande nod eller noder i en icke-klustrad cache.
+* **Master** – När den primära noden startas om Azure Cache for Redis till repliknoden och befordrar den till primär. Under den här redundansen kan det finnas ett kort intervall där anslutningar kan misslyckas till cachen.
+* **Replik** – När repliknoden startas om påverkas vanligtvis inte cacheklienter.
+* **Både primär och replik** – När båda cachenoderna startas om går alla data förlorade i cacheminnet och anslutningarna till cachen misslyckas tills den primära noden är online igen. Om du har konfigurerat [datapersistence](cache-how-to-premium-persistence.md)återställs den senaste säkerhetskopian när cachen är online igen, men eventuella cache-skrivningar som har inträffat efter den senaste säkerhetskopieringen går förlorade.
+* **Noder i en Premium-cache** med klustring aktiverat – När du startar om en eller flera noder i en premiumcache med klustring aktiverat är beteendet för de valda noderna detsamma som när du startar om motsvarande nod eller noder i en icke-klustrad cache.
 
 ## <a name="reboot-faq"></a>Vanliga frågor och svar om omstart
 * [Vilken nod ska jag starta om för att testa mitt program?](#which-node-should-i-reboot-to-test-my-application)
-* [Kan jag starta om cacheminnet för att rensa klient anslutningar?](#can-i-reboot-the-cache-to-clear-client-connections)
-* [Kommer jag att förlora data från mitt cacheminne om jag gör en omstart?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
-* [Kan jag starta om mitt cacheminne med PowerShell, CLI eller andra hanterings verktyg?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
+* [Kan jag starta om cacheminnet för att rensa klientanslutningar?](#can-i-reboot-the-cache-to-clear-client-connections)
+* [Kommer jag att förlora data från mitt cacheminne om jag startar om?](#will-i-lose-data-from-my-cache-if-i-do-a-reboot)
+* [Kan jag starta om mitt cacheminne med PowerShell, CLI eller andra hanteringsverktyg?](#can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools)
 
 ### <a name="which-node-should-i-reboot-to-test-my-application"></a>Vilken nod ska jag starta om för att testa mitt program?
-Om du vill testa återhämtnings förmågan för ditt program mot att det inte går att utföra den primära noden i cacheminnet startar du om **huvud** noden. Om du vill testa återhämtnings förmågan för ditt program mot Miss lyckas med att replikera noden, startar du om noden **replikering** . Om du vill testa programmets återhämtning mot det totala antalet felaktiga cacheminnen startar du om **båda** noderna.
+Starta om huvudnoden för att testa programmets återhämtning mot  fel i den primära noden i cacheminnet. Starta om repliknoden för att testa programmets återhämtning mot fel på **repliknoden.** Om du vill testa programmets återhämtning mot ett totalt fel i cacheminnet startar du om **Båda noderna.**
 
-### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Kan jag starta om cacheminnet för att rensa klient anslutningar?
-Ja, om du startar om cacheminnet rensas alla klient anslutningar. Det kan vara användbart att starta om alla klient anslutningar på grund av ett logiskt fel eller en bugg i klient programmet. Varje pris nivå har olika [klient anslutnings gränser](cache-configure.md#default-redis-server-configuration) för olika storlekar, och när gränserna har nåtts godkänns inga fler klient anslutningar. Att starta om cacheminnet gör det möjligt att rensa alla klient anslutningar.
+### <a name="can-i-reboot-the-cache-to-clear-client-connections"></a>Kan jag starta om cacheminnet för att rensa klientanslutningar?
+Ja, om du startar om cachen rensas alla klientanslutningar. Omstart kan vara användbart om alla klientanslutningar används på grund av ett logikfel eller en bugg i klientprogrammet. Varje prisnivå har olika [klientanslutningsgränser](cache-configure.md#default-redis-server-configuration) för de olika storlekarna, och när dessa gränser har nåtts godkänns inga fler klientanslutningar. Genom att starta om cacheminnet kan du rensa alla klientanslutningar.
 
 > [!IMPORTANT]
-> Om du startar om cacheminnet för att rensa klient anslutningar återansluter StackExchange. Redis automatiskt när Redis-noden är online igen. Om det underliggande problemet inte är löst, kan klient anslutningarna fortsätta att användas.
+> Om du startar om cacheminnet för att rensa klientanslutningar återansluter StackExchange.Redis automatiskt när Redis-noden är online igen. Om det underliggande problemet inte är löst kan klientanslutningarna fortsätta att vara slut.
 > 
 > 
 
 
 
-### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Kommer jag att förlora data från mitt cacheminne om jag gör en omstart?
-Om du startar om både **huvud** -och **replik** -noderna kan alla data i cachen (eller i den Shard om du använder en Premium-cache med klustring aktive rad) gå förlorade, men detta garanterar inte något. Om du har konfigurerat [data beständighet](cache-how-to-premium-persistence.md)återställs den senaste säkerhets kopian när cachen är online igen, men alla cache-skrivningar som har inträffat efter att säkerhets kopieringen gjordes går förlorade.
+### <a name="will-i-lose-data-from-my-cache-if-i-do-a-reboot"></a>Kommer jag att förlora data från mitt cacheminne om jag startar om?
+Om du startar  om  både huvudnoderna och repliknoderna kan alla data i cacheminnet (eller i den fragmentet om du använder en premium-cache med klustring aktiverat) gå förlorade, men detta garanteras inte heller. Om du har konfigurerat [datapersistence](cache-how-to-premium-persistence.md)återställs den senaste säkerhetskopian när cachen är online igen, men eventuella cache-skrivningar som har inträffat efter säkerhetskopieringen går förlorade.
 
-Om du bara startar om en av noderna, försvinner normalt inte data, men det kan fortfarande vara. Till exempel om den primära noden startas om och en cache-skrivning pågår går data från cache-skrivningen förlorade. Ett annat scenario för data förlust är om du startar om en nod och den andra noden inträffar på grund av ett problem på samma gång. Mer information om möjliga orsaker till data förlust finns i [vad hände med mina data i Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
+Om du startar om bara en av noderna går data normalt inte förlorade, men det kan fortfarande vara det. Om till exempel den primära noden startas om och en cacheskrivning pågår går data från cacheskrivningen förlorade. Ett annat scenario för dataförlust är om du startar om en nod och den andra noden går ned på grund av ett fel samtidigt. Mer information om möjliga orsaker till dataförlust finns i [Vad hände med mina data i Redis?](https://gist.github.com/JonCole/b6354d92a2d51c141490f10142884ea4#file-whathappenedtomydatainredis-md)
 
-### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan jag starta om mitt cacheminne med PowerShell, CLI eller andra hanterings verktyg?
-Ja, för PowerShell-instruktioner, se [så här startar du om en Azure-cache för Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
+### <a name="can-i-reboot-my-cache-using-powershell-cli-or-other-management-tools"></a>Kan jag starta om mitt cacheminne med PowerShell, CLI eller andra hanteringsverktyg?
+Ja, PowerShell-instruktioner finns i [Starta om en Azure Cache for Redis](cache-how-to-manage-redis-cache-powershell.md#to-reboot-an-azure-cache-for-redis).
 
 ## <a name="schedule-updates"></a>Schemauppdateringar
-På bladet **schema uppdateringar** kan du ange ett underhålls fönster för din cache-instans. Med en underhålls period kan du kontrol lera dagar och tidpunkter för en vecka under vilken de virtuella datorerna som är värdar för din cache kan uppdateras. Azure cache för Redis hjälper dig att starta och slutföra uppdateringen av Redis-serverprogrammet inom den angivna tids perioden som du definierar.
+På **bladet Schemalägg** uppdateringar kan du ange en underhållsfönstret för din cacheinstans. Med en underhållstid kan du styra vilka dagar och tidpunkter i veckan som de virtuella datorer som är värdar för din cache kan uppdateras. Azure Cache for Redis gör bästa möjliga försök att starta och slutföra uppdateringen av Redis-serverprogramvaran inom den angivna tidsperiod som du definierar.
 
 > [!NOTE] 
-> Underhålls perioden gäller för redis server-uppdateringar och uppdateringar av operativ systemet för de virtuella datorer som är värdar för cachen. Underhålls perioden gäller inte för värdar för OS-uppdateringar till värdarna som är värdar för cache-VM: ar eller andra Azure nätverks komponenter. I sällsynta fall, där cacheminnen finns i äldre modeller (du kan kontrol lera om cacheminnet finns på en äldre modell om DNS-namnet på cachen matchar suffixet "cloudapp.net", "chinacloudapp.cn", "usgovcloudapi.net" eller "cloudapi.de"), gäller inte underhålls perioden för gäst operativ system uppdateringar.
+> Underhållsfönstret gäller redis-serveruppdateringar och uppdateringar av operativsystemet för de virtuella datorer som är värdar för cachen. Underhållsfönstret gäller inte uppdateringar av värdoperativsystemet för värdar som är värdar för de virtuella cachedatorerna eller andra Azure-nätverkstjänster komponenter. I sällsynta fall, där cacheminnen finns på äldre modeller (du kan se om ditt cacheminne finns på en äldre modell om DNS-namnet på cacheminnet matchar suffixet "cloudapp.net", "chinacloudapp.cn", "usgovcloudapi.net" eller "cloudapi.de") gäller underhållsfönstret inte heller för gästoperativsystemuppdateringar.
 >
 
 
 ![Schemauppdateringar](./media/cache-administration/redis-schedule-updates.png)
 
-Om du vill ange en underhålls period kontrollerar du önskade dagar och anger start timme för underhålls perioden för varje dag och klickar på **OK**. Observera att tiden för underhålls perioden är UTC. 
+Om du vill ange en underhållstid kontrollerar du önskade dagar och anger underhållsfönstrets starttid för varje dag och klickar på **OK.** Observera att underhållsfönstrets tid är i UTC. 
 
-Standard-och minimi underhålls perioden för uppdateringar är fem timmar. Det här värdet kan inte konfigureras från Azure Portal, men du kan konfigurera det i PowerShell med `MaintenanceWindow` parametern för cmdleten [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) . Mer information finns i kan jag hantera schemalagda uppdateringar med hjälp av PowerShell, CLI eller andra hanterings verktyg?
+Standard- och minsta underhållsfönstret för uppdateringar är fem timmar. Det här värdet kan inte konfigureras från Azure Portal, men du kan konfigurera det i PowerShell med hjälp av parametern för `MaintenanceWindow` cmdleten [New-AzRedisCacheScheduleEntry.](/powershell/module/az.rediscache/new-azrediscachescheduleentry) Mer information finns i Kan jag hantera schemalagda uppdateringar med PowerShell, CLI eller andra hanteringsverktyg?
 
-## <a name="schedule-updates-faq"></a>Vanliga frågor och svar om schemalagda uppdateringar
-* [När sker uppdateringar om jag inte använder funktionen schemalagda uppdateringar?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
-* [Vilken typ av uppdateringar görs under den schemalagda underhålls perioden?](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
-* [Kan jag hantera schemalagda uppdateringar med PowerShell, CLI eller andra hanterings verktyg?](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
+## <a name="schedule-updates-faq"></a>Vanliga frågor och svar om schemauppdateringar
+* [När sker uppdateringar om jag inte använder funktionen för schemauppdateringar?](#when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature)
+* [Vilken typ av uppdateringar görs under den schemalagda underhållsfönstret?](#what-type-of-updates-are-made-during-the-scheduled-maintenance-window)
+* [Kan jag hantera schemalagda uppdateringar med PowerShell, CLI eller andra hanteringsverktyg?](#can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
-### <a name="when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature"></a>När sker uppdateringar om jag inte använder funktionen schemalagda uppdateringar?
-Om du inte anger någon underhålls period kan du göra uppdateringar när som helst.
+### <a name="when-do-updates-occur-if-i-dont-use-the-schedule-updates-feature"></a>När sker uppdateringar om jag inte använder funktionen för schemauppdateringar?
+Om du inte anger någon underhållstid kan uppdateringar göras när som helst.
 
-### <a name="what-type-of-updates-are-made-during-the-scheduled-maintenance-window"></a>Vilken typ av uppdateringar görs under den schemalagda underhålls perioden?
-Endast redis server-uppdateringar görs under det schemalagda underhålls fönstret. Underhålls perioden gäller inte för Azure-uppdateringar eller uppdateringar av den virtuella datorns operativ system.
+### <a name="what-type-of-updates-are-made-during-the-scheduled-maintenance-window"></a>Vilken typ av uppdateringar görs under den schemalagda underhållsfönstret?
+Endast Redis-serveruppdateringar görs under den schemalagda underhållsfönstret. Underhållsfönstret gäller inte för Azure-uppdateringar eller uppdateringar av operativsystemet för den virtuella datorn.
 
-### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>Kan jag hantera schemalagda uppdateringar med PowerShell, CLI eller andra hanterings verktyg?
-Ja, du kan hantera dina schemalagda uppdateringar med följande PowerShell-cmdletar:
+### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>Kan jag hantera schemalagda uppdateringar med PowerShell, CLI eller andra hanteringsverktyg?
+Ja, du kan hantera schemalagda uppdateringar med hjälp av följande PowerShell-cmdlets:
 
 * [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
 * [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
@@ -101,7 +102,7 @@ Ja, du kan hantera dina schemalagda uppdateringar med följande PowerShell-cmdle
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ## <a name="next-steps"></a>Nästa steg
-Läs mer om Azure cache för Redis-funktioner.
+Läs mer om Azure Cache for Redis funktioner.
 
-* [Azure cache för Redis-tjänst nivåer](cache-overview.md#service-tiers)
+* [Azure Cache for Redis tjänstnivåer](cache-overview.md#service-tiers)
 

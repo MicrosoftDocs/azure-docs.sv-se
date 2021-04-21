@@ -1,69 +1,69 @@
 ---
 title: Geo-distribuerad skala
-description: Lär dig att horisontellt Skala appar med hjälp av Geo-distribution med Traffic Manager-och App Service miljöer.
+description: Lär dig hur du horisontellt skalar appar med hjälp av geo-distribution Traffic Manager och App Service miljöer.
 author: stefsch
 ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18, references_regions
-ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: seodec18, references_regions, devx-track-azurepowershell
+ms.openlocfilehash: 215132888749a54996b3341e43ef8d91c101a460
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85833612"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834308"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geodistribuerad skalning med App Service Environment
 ## <a name="overview"></a>Översikt
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Program scenarier som kräver mycket hög skalning kan överstiga beräknings resurs kapaciteten som är tillgänglig för en enskild distribution av en app.  Röstnings program, idrotts evenemang och televised underhållnings händelser är exempel på scenarier som kräver mycket hög skalning. Hög skalnings kraven kan uppfyllas genom att skala ut appar horisontellt. För att hantera extrema belastnings krav kan många distributioner av appar göras inom en och samma region och i flera regioner.
+Programscenarier som kräver mycket hög skala kan överskrida beräkningsresurskapaciteten som är tillgänglig för en enskild distribution av en app.  Röstningsprogram, sportevenemang och tv-sända underhållningsevenemang är exempel på scenarier som kräver mycket hög skala. Krav på hög skalning kan uppfyllas genom horisontell utskalning av appar. För att hantera extrema belastningskrav kan många appdistributioner göras inom en enda region och mellan regioner.
 
-App Service miljöer är en perfekt plattform för horisontell skalbarhet. När du har valt en App Service-miljön-konfiguration som har stöd för en känd begär ande frekvens kan utvecklare distribuera ytterligare App Service miljöer i "cookie-kniv" för att uppnå önskad högsta belastnings kapacitet.
+App Service miljöer är en perfekt plattform för horisontell utskalning. När utvecklare har valt en App Service-miljön-konfiguration som har stöd för en känd förfrågningsfrekvens kan de distribuera ytterligare App Service-miljöer i "cookie-läge" för att uppnå önskad kapacitet för hög belastning.
 
-Anta till exempel att en app som körs på en App Service-miljön-konfiguration har testats för att hantera 20 000-begäranden per sekund (RPS).  Om den önskade belastnings belastningen är 100 000 RPS kan fem (5) App Service miljöer skapas och konfigureras för att säkerställa att programmet kan hantera den maximala beräknade belastningen.
+Anta till exempel att en app som körs på en App Service-miljön-konfiguration har testats för att hantera 20 000 begäranden per sekund (RPS).  Om den önskade högsta belastningskapaciteten är 100 000 RPS kan fem (5) App Service-miljöer skapas och konfigureras för att säkerställa att programmet kan hantera den maximala projicerade belastningen.
 
-Eftersom kunderna vanligt vis använder appar med en anpassad (eller anpassad) domän, behöver utvecklare ett sätt att distribuera app-begäranden över alla App Service-miljön instanser.  Ett bra sätt att uppnå det här målet är att lösa den anpassade domänen med hjälp av en [Azure Traffic Manager-profil][AzureTrafficManagerProfile].  Traffic Manager profilen kan konfigureras så att den pekar på alla enskilda App Service miljöer.  Traffic Manager hanterar automatiskt distribution av kunder i alla App Service miljöer, baserat på inställningarna för belastnings utjämning i Traffic Manager profilen.  Den här metoden fungerar oavsett om alla App Services miljöer distribueras i en enda Azure-region eller distribueras över hela världen över flera Azure-regioner.
+Eftersom kunder vanligtvis använder appar med hjälp av en anpassad (eller anpassad) domän behöver utvecklare ett sätt att distribuera appbegäranden över alla App Service-miljön instanser.  Ett bra sätt att uppnå det här målet är att lösa den anpassade domänen med en [Azure Traffic Manager profil][AzureTrafficManagerProfile].  Profilen Traffic Manager kan konfigureras så att den pekar på alla enskilda App Service miljöer.  Traffic Manager hanterar automatiskt distributionen av kunder i alla App Service-miljöer, baserat på inställningarna för belastningsutjämning i Traffic Manager profilen.  Den här metoden fungerar oavsett om alla App Service-miljöer distribueras i en enda Azure-region eller distribueras över hela världen över flera Azure-regioner.
 
-Dessutom, eftersom kunder kommer åt appar via anpassad-domänen, är kunderna inte medvetna om antalet App Service miljöer som kör en app.  Det innebär att utvecklare snabbt och enkelt kan lägga till och ta bort App Service miljöer baserat på observerad trafik belastning.
+Eftersom kunderna dessutom har åtkomst till appar via en enkel domän är kunderna inte medvetna om hur många App Service miljöer som kör en app.  Därför kan utvecklare snabbt och enkelt lägga till och ta bort App Service miljöer baserat på observerad trafikbelastning.
 
-Det konceptuella diagrammet nedan visar en app som är vågrätt skalad över tre App Service miljöer inom en enda region.
+Diagrammet nedan visar en app som skalats ut vågrätt över tre App Service miljöer inom en enda region.
 
 ![Konceptuell arkitektur][ConceptualArchitecture] 
 
-Resten av det här avsnittet vägleder dig genom stegen i att konfigurera en distribuerad topologi för exempel appen med hjälp av flera App Service miljöer.
+Resten av det här avsnittet går igenom stegen för att konfigurera en distribuerad topologi för exempelappen med flera App Service miljöer.
 
 ## <a name="planning-the-topology"></a>Planera topologin
-Innan du skapar en distribuerad app kan det vara bra att ha några delar av informationen i förväg.
+Innan du skapar ett distribuerat appfotavtryck hjälper det att ha lite information i förväg.
 
-* **Anpassad domän för appen:**  Vad är det anpassade domän namnet som kunder kommer att använda för att få åtkomst till appen?  För exempel appen är det anpassade domän namnet `www.scalableasedemo.com` .
-* **Traffic Manager domän:** Välj ett domän namn när du skapar en [Azure Traffic Manager-profil][AzureTrafficManagerProfile].  Det här namnet kombineras med *trafficmanager.net* -suffixet för att registrera en domän post som hanteras av Traffic Manager.  För exempel appen är det valda namnet *skalbart-ASE-demo*.  Därför är det fullständiga domän namnet som hanteras av Traffic Manager *Scalable-ASE-demo.trafficmanager.net*.
-* **Strategi för skalning av appens avtryck:**  Kommer programmet att placeras i flera App Service miljöer i samma region?  Flera regioner?  Vill du blanda och matcha båda metoderna?  Basera beslutet på förväntningarna där kund trafiken kommer fram och hur väl resten av en Apps stödjande backend-infrastruktur kan skalas.  Till exempel, med ett tillstånds löst program på 100%, kan en app skalas enorma med en kombination av många App Service miljöer i varje Azure-region, multiplicerat med App Service miljöer som distribuerats över flera Azure-regioner.  Med 15 globala Azure-regioner som är tillgängliga för att välja bland kan kunder verkligen bygga en världs omfattande storskalig program miljö.  För den exempel app som används för den här artikeln skapades tre App Service miljöer i en enda Azure-region (södra centrala USA).
-* **Namngivnings konvention för App Service miljöer:**  Varje App Service-miljön kräver ett unikt namn.  Utöver en eller två App Service miljöer är det bra att ha en namngivnings konvention som hjälper dig att identifiera varje App Service-miljön.  För exempel appen användes en enkel namngivnings konvention.  Namnen på de tre App Services miljöerna är *fe1ase*, *fe2ase* och *fe3ase*.
-* **Namngivnings konvention för apparna:**  Eftersom flera instanser av appen kommer att distribueras krävs ett namn för varje instans av den distribuerade appen.  En lite välkänd men bekväm funktion i App Service miljöer är att samma app-namn kan användas i flera App Service miljöer.  Eftersom varje App Service-miljön har ett unikt domänsuffix, kan utvecklare välja att återanvända exakt samma app-namn i varje miljö.  En utvecklare kan till exempel ha appar som heter enligt följande:  *MyApp.foo1.p.azurewebsites.net*, *MyApp.foo2.p.azurewebsites.net*, *MyApp.foo3.p.azurewebsites.net* osv.  För exempel appen har dock varje App-instans också ett unikt namn.  De instans namn som används för appar är *webfrontend1*, *webfrontend2* och *webfrontend3*.
+* **Anpassad domän för appen:**  Vilket är det anpassade domännamn som kunder kommer att använda för att få åtkomst till appen?  För exempelappen är det anpassade domännamnet `www.scalableasedemo.com` .
+* **Traffic Manager domän:** Välj ett domännamn när du skapar en [Azure Traffic Manager profil][AzureTrafficManagerProfile].  Det här namnet kombineras med suffixet *trafficmanager.net* för att registrera en domänpost som hanteras av Traffic Manager.  För exempelappen är det valda namnet *scalable-ase-demo*.  Det innebär att det fullständiga domännamnet som hanteras av Traffic Manager är *scalable-ase-demo.trafficmanager.net*.
+* **Strategi för att skala appens fotavtryck:**  Kommer programmets fotavtryck att distribueras över App Service miljöer i en enda region?  Flera regioner?  En blandning av båda metoderna?  Basera beslutet på förväntningar på var kundtrafiken kommer ifrån och hur väl resten av en app stöder backend-infrastrukturen kan skalas.  Med ett tillståndslöst program på 100 % kan en app till exempel skalas massivt med en kombination av många App Service-miljöer i varje Azure-region multiplicerat med App Service-miljöer som distribuerats i många Azure-regioner.  Med över 15 globala Azure-regioner tillgängliga att välja mellan kan kunderna verkligen skapa ett globalt programfotavtryck i hyperskala.  För exempelappen som används för den här artikeln har tre App Service-miljöer skapats i en enda Azure-region (USA, södra centrala).
+* **Namngivningskonvention för App Service miljöer:**  Varje App Service-miljön kräver ett unikt namn.  Utöver en eller två App Service miljöer är det bra att ha en namngivningskonvention som hjälper dig att identifiera varje App Service-miljön.  För exempelappen användes en enkel namngivningskonvention.  Namnen på de tre App Service miljöerna *är fe1ase*, *fe2ase* och *fe3ase*.
+* **Namngivningskonvention för apparna:**  Eftersom flera instanser av appen distribueras behövs ett namn för varje instans av den distribuerade appen.  En lite känd men praktisk funktion i App Service miljöer är att samma appnamn kan användas i flera App Service miljöer.  Eftersom varje App Service-miljön har ett unikt domänsuffix kan utvecklare välja att återanvända exakt samma appnamn i varje miljö.  En utvecklare kan till exempel ha appar med följande namn:  *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net* osv.  För exempelappen har dock varje appinstans också ett unikt namn.  Appinstansnamnen som används *är webfrontend1,* *webfrontend2* och *webfrontend3.*
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Konfigurera Traffic Manager profilen
-När flera instanser av en app har distribuerats i flera App Service-miljöer kan de enskilda app-instanserna registreras med Traffic Manager.  För exempel appen behövs en Traffic Manager profil för *Scalable-ASE-demo.trafficmanager.net* som kan dirigera kunder till någon av följande distribuerade App-instanser:
+När flera instanser av en app har distribuerats i flera App Service-miljöer kan de enskilda appinstanserna registreras med Traffic Manager.  För exempelappen behövs Traffic Manager profil för *att scalable-ase-demo.trafficmanager.net* kan dirigera kunder till någon av följande distribuerade appinstanser:
 
-* **webfrontend1.fe1ase.p.azurewebsites.net:**  En instans av exempel programmet som distribuerats på den första App Service-miljön.
-* **webfrontend2.fe2ase.p.azurewebsites.net:**  En instans av exempel programmet som distribuerats på den andra App Service-miljön.
-* **webfrontend3.fe3ase.p.azurewebsites.net:**  En instans av exempel programmet som distribuerats på den tredje App Service-miljön.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  En instans av exempelappen som distribueras på den första App Service-miljön.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  En instans av exempelappen som distribuerats på den andra App Service-miljön.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  En instans av exempelappen som distribuerats på den tredje App Service-miljön.
 
-Det enklaste sättet att registrera flera Azure App Service-slutpunkter, som körs i **samma** Azure-region, är med PowerShell- [Azure Resource Manager Traffic Manager Support][ARMTrafficManager].  
+Det enklaste sättet att registrera Azure App Service slutpunkter,  som körs i samma Azure-region, är med [PowerShell-Azure Resource Manager Traffic Manager stöd för][ARMTrafficManager].  
 
-Det första steget är att skapa en Azure Traffic Manager-profil.  Koden nedan visar hur profilen skapades för exempel appen:
+Det första steget är att skapa en Azure Traffic Manager profil.  Koden nedan visar hur profilen skapades för exempelappen:
 
 ```azurepowershell-interactive
 $profile = New-AzureTrafficManagerProfile –Name scalableasedemo -ResourceGroupName yourRGNameHere -TrafficRoutingMethod Weighted -RelativeDnsName scalable-ase-demo -Ttl 30 -MonitorProtocol HTTP -MonitorPort 80 -MonitorPath "/"
 ```
 
-Observera att *RelativeDnsName* -parametern har angetts till *Scalable-ASE-demo*.  Den här parametern gör att domän namnet *Scalable-ASE-demo.trafficmanager.net* skapas och associeras med en Traffic Manager-profil.
+Observera hur *parametern RelativeDnsName* har angetts *till scalable-ase-demo*.  Den här parametern gör att *domännamnet scalable-ase-demo.trafficmanager.net* skapas och associeras med en Traffic Manager profil.
 
-Parametern *TrafficRoutingMethod* definierar den princip för belastnings utjämning som Traffic Manager använder för att avgöra hur kund belastningen ska spridas över alla tillgängliga slut punkter.  I det här exemplet valdes den *viktade* metoden.  På grund av detta val kommer kund förfrågningar att spridas över alla registrerade program slut punkter baserat på de relativa vikter som är associerade med varje slut punkt. 
+Parametern *TrafficRoutingMethod* definierar belastningsutjämningsprincipen som Traffic Manager för att fastställa hur kundernas belastning ska spridas över alla tillgängliga slutpunkter.  I det här exemplet *valdes metoden Viktad.*  På grund av det här valet sprids kundbegäranden över alla registrerade programslutpunkter baserat på de relativa vikter som är associerade med varje slutpunkt. 
 
-När profilen har skapats läggs varje App-instans till i profilen som en intern Azure-slutpunkt.  Följande kod hämtar en referens till varje frontend-webbapp. Den lägger sedan till varje app som en Traffic Manager slut punkt via *TargetResourceId* -parametern.
+När profilen har skapats läggs varje appinstans till i profilen som en intern Azure-slutpunkt.  Följande kod hämtar en referens till varje frontend-webbapp. Den lägger sedan till varje app som Traffic Manager slutpunkt via *parametern TargetResourceId.*
 
 ```azurepowershell-interactive
 $webapp1 = Get-AzWebApp -Name webfrontend1
@@ -78,42 +78,42 @@ Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficMan
 Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile
 ```
 
-Observera hur det finns ett anrop till *Add-AzureTrafficManagerEndpointConfig* för varje enskild app-instans.  Parametern *TargetResourceId* i varje PowerShell-kommando refererar till en av de tre distribuerade app-instanserna.  Den Traffic Manager profilen kommer att sprida belastningen över alla tre slut punkter som registrerats i profilen.
+Observera att det finns ett anrop *till Add-AzureTrafficManagerEndpointConfig* för varje enskild appinstans.  Parametern *TargetResourceId* i varje PowerShell-kommando refererar till en av de tre distribuerade appinstanserna.  Den Traffic Manager profilen sprider belastningen över alla tre slutpunkter som registrerats i profilen.
 
-Alla tre slut punkterna använder samma värde (10) för *viktnings* parametern.  I den här situationen uppstår Traffic Manager att sprida kund förfrågningar över alla tre App-instanser relativt jämnt. 
+Alla tre slutpunkterna använder samma värde (10) för *parametern Vikt.*  Den här situationen leder Traffic Manager att kundförfrågningar sprids över alla tre appinstanserna relativt jämnt. 
 
-## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Att peka appens anpassade domän på Traffic Manager domän
-Det sista steget som krävs är att peka den anpassade domänen för appen på Traffic Manager domän.  För exempel appen, peka `www.scalableasedemo.com` på `scalable-ase-demo.trafficmanager.net` .  Slutför det här steget med den domän registrator som hanterar den anpassade domänen.  
+## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Peka appens Custom Domain på Traffic Manager domänen
+Det sista steget är att peka appens anpassade domän mot den Traffic Manager domänen.  För exempelappen pekar du `www.scalableasedemo.com` på `scalable-ase-demo.trafficmanager.net` .  Slutför det här steget med domänregistratorn som hanterar den anpassade domänen.  
 
-Med hjälp av din registrators domän hanterings verktyg måste du skapa CNAME-poster som pekar på den anpassade domänen på den Traffic Manager domänen.  I bilden nedan visas ett exempel på hur denna CNAME-konfiguration ser ut så här:
+Med hjälp av registratorns domänhanteringsverktyg måste en CNAME-post skapas som pekar den anpassade domänen Traffic Manager domän.  Bilden nedan visar ett exempel på hur den här CNAME-konfigurationen ser ut:
 
-![CNAME för anpassad domän][CNAMEforCustomDomain] 
+![CNAME för Custom Domain][CNAMEforCustomDomain] 
 
-Även om det inte beskrivs i det här avsnittet måste du komma ihåg att varje enskild app-instans måste ha den anpassade domänen registrerad.  Om en begäran till exempel gör den till en app-instans och programmet inte har registrerat den anpassade domänen med appen, kommer begäran att Miss klar.
+Även om det inte tas upp i det här avsnittet bör du komma ihåg att varje enskild appinstans måste ha den anpassade domänen registrerad med den också.  Annars misslyckas begäran om en begäran kommer till en appinstans och programmet inte har registrerat den anpassade domänen med appen.
 
-I det här exemplet är den anpassade domänen `www.scalableasedemo.com` och varje program instans har den anpassade domän som är kopplad till den.
+I det här exemplet är den anpassade domänen `www.scalableasedemo.com` , och varje programinstans har den anpassade domän som är associerad med den.
 
 ![Anpassad domän][CustomDomain] 
 
-En sammanfattning för att registrera en anpassad domän med Azure App Service appar finns i [Registrera anpassade domäner][RegisterCustomDomain].
+En sammanfattning av hur du registrerar en anpassad domän med Azure App Service-appar finns i [Registrera anpassade domäner][RegisterCustomDomain].
 
-## <a name="trying-out-the-distributed-topology"></a>Testar distribuerad topologi
-Slut resultatet av Traffic Manager och DNS-konfigurationen är att begär Anden för `www.scalableasedemo.com` kommer att flöda genom följande sekvens:
+## <a name="trying-out-the-distributed-topology"></a>Testa den distribuerade topologin
+Slutresultatet av konfigurationen Traffic Manager DNS är att begäranden för `www.scalableasedemo.com` flödar genom följande sekvens:
 
 1. En webbläsare eller enhet gör en DNS-sökning för `www.scalableasedemo.com`
-2. CNAME-posten på domän registratorn gör att DNS-sökningen omdirigeras till Azure Traffic Manager.
-3. En DNS-sökning görs för *Scalable-ASE-demo.trafficmanager.net* gentemot en av Azure Traffic Manager DNS-servrarna.
-4. Baserat på principen för belastnings utjämning som angavs tidigare i *TrafficRoutingMethod* -parametern, väljer Traffic Manager en av de konfigurerade slut punkterna. Den returnerar sedan det fullständiga domän namnet för den slut punkten till webbläsaren eller enheten.
-5. Eftersom FQDN för slut punkten är URL: en för en app-instans som körs på en App Service-miljön ber webbläsaren eller enheten en Microsoft Azure DNS-server för att matcha FQDN-namnet till en IP-adress. 
+2. CNAME-posten hos domänregistratorn gör att DNS-sökning omdirigeras till Azure Traffic Manager.
+3. En DNS-sökning görs för *att scalable-ase-demo.trafficmanager.net* mot en av de Azure Traffic Manager DNS-servrarna.
+4. Baserat på den belastningsutjämningsprincip som angavs tidigare i parametern *TrafficRoutingMethod* väljer Traffic Manager en av de konfigurerade slutpunkterna. Den returnerar sedan FQDN för slutpunkten till webbläsaren eller enheten.
+5. Eftersom FQDN för slutpunkten är webbadressen till en appinstans som körs på en App Service-miljön, kommer webbläsaren eller enheten att be en Microsoft Azure DNS-server att matcha FQDN till en IP-adress. 
 6. Webbläsaren eller enheten skickar HTTP/S-begäran till IP-adressen.  
-7. Begäran kommer till en av de App-instanser som körs på någon av App Services miljöerna.
+7. Begäran tas emot vid en av de appinstanser som körs på en av App Service miljöerna.
 
-I konsol bilden nedan visas en DNS-sökning för exempel appens anpassade domän. Den har lösts till en app-instans som körs på ett av de tre exempel App Service miljöer (i det här fallet den andra av de tre App Service-miljöerna):
+Konsolbilden nedan visar en DNS-sökning för exempelappens anpassade domän. Den matchar en appinstans som körs på någon av de tre App Service-miljöerna (i det här fallet den andra av de tre App Service miljöerna):
 
 ![DNS-sökning][DNSLookup] 
 
 ## <a name="additional-links-and-information"></a>Ytterligare länkar och information
-Dokumentation om PowerShell- [Azure Resource Manager Traffic Manager Support][ARMTrafficManager].  
+Dokumentation om PowerShell-Azure Resource Manager Traffic Manager [stöd][ARMTrafficManager]för .  
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 

@@ -3,12 +3,13 @@ title: Aktivera VM-tillägg med Azure PowerShell
 description: Den här artikeln beskriver hur du distribuerar tillägg för virtuella datorer till Azure Arc-aktiverade servrar som körs i hybridmolnmiljöer med Azure PowerShell.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0cb854c9745e8bd7eef35c6f6467c284a6327349
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: d5723655b61040c7ddf99e5f11488fff379d96a0
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107388592"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832886"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Aktivera Azure VM-tillägg med Azure PowerShell
 
@@ -109,4 +110,4 @@ Remove-AzConnectedMachineExtension -MachineName myMachineName -ResourceGroupName
 
 - Du kan distribuera, hantera och ta bort VM-tillägg med hjälp av [Azure CLI](manage-vm-extensions-cli.md) [från Azure Portal](manage-vm-extensions-portal.md)eller Azure Resource Manager [mallar](manage-vm-extensions-template.md).
 
-- Felsökningsinformation finns i guiden Felsöka [VM-tillägg.](troubleshoot-vm-extensions.md)
+- Felsökningsinformation finns i felsökningsguiden [för VM-tillägg.](troubleshoot-vm-extensions.md)

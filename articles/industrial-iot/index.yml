@@ -1,6 +1,6 @@
 ### YamlMime:Landing
-title: Dokumentation om Azures industriella IoT-plattform
-summary: Azures industriella IoT-plattform är en Microsoft-Svit med moduler och tjänster som distribueras i Azure.
+title: Dokumentation om Azure Industrial IoT Platform
+summary: Azure Industrial IoT Platform är en Microsoft-uppsättning moduler och tjänster som distribueras i Azure.
 metadata:
   description: Läs mer om
   ms.service: industrial-iot
@@ -8,24 +8,22 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 3/22/2021
-  ms.openlocfilehash: 8419316a452b9258e8b54cb333aa5fe1ef87b5b9
-  ms.sourcegitcommit: ba3a4d58a17021a922f763095ddc3cf768b11336
+  ms.openlocfilehash: bced3bdbb854af75e7b521f7c5c3f2e1022a161b
+  ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
   ms.translationtype: MT
   ms.contentlocale: sv-SE
-  ms.lasthandoff: 03/23/2021
-  ms.locfileid: "104800184"
+  ms.lasthandoff: 04/21/2021
+  ms.locfileid: "107813838"
 landingContent:
-- title: Om Azures industriella IoT-plattform
+- title: Om Azure Industrial IoT Platform
   linkLists:
   - linkListType: overview
     links:
-    - text: Vad är industriella IoT (IIoT)?
+    - text: Vad är bransch-IoT (IIoT)?
       url: overview-what-is-industrial-iot.md
-    - text: Vad är IIoT-plattformen (industriella IoT)?
-      url: overview-what-is-industrial-iot-platform.md
-    - text: Vad är OPC-utgivaren?
+    - text: Vad är OPC Publisher?
       url: overview-what-is-opc-publisher.md
-- title: Kom igång med IIoT (industriella IoT Platform)
+- title: Kom igång med Den industriella IoT-plattformen (IIoT)
   linkLists:
   - linkListType: tutorial
     links:
@@ -33,17 +31,17 @@ landingContent:
       url: tutorial-deploy-industrial-iot-platform.md
     - text: Konfigurera industriella IoT-komponenter
       url: tutorial-configure-industrial-iot-components.md
-    - text: Hämta Azures industriella IoT-data till ADX
+    - text: Hämta Azure Industrial IoT-data till ADX
       url: tutorial-industrial-iot-azure-data-explorer.md
-    - text: Visualisera data med Time Series Insights (TSD)
+    - text: Visualisera data med Time Series Insights (TSI)
       url: tutorial-visualize-data-time-series-insights.md
-- title: Arbeta med OPC-utgivaren
+- title: Arbeta med OPC Publisher
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Distribuera OPC-utgivaren
+    - text: Distribuera OPC Publisher
       url: tutorial-publisher-deploy-opc-publisher-standalone.md
-    - text: Konfigurera OPC-utgivaren
+    - text: Konfigurera OPC Publisher
       url: tutorial-publisher-configure-opc-publisher.md
-    - text: Finjustera prestanda och minne för OPC-utgivare
+    - text: Justera OPC Publisher-prestanda och minne
       url: tutorial-publisher-performance-memory-tuning-opc-publisher.md

@@ -1,23 +1,23 @@
 ---
-title: Skapa ett Azure attesterings certifikat med hjälp av Azure Resource Manager mall
-description: Lär dig hur du skapar ett Azure attesterings certifikat med hjälp av Azure Resource Manager mall.
+title: Skapa ett Azure Attestation certifikat med hjälp Azure Resource Manager mall
+description: Lär dig hur du skapar Azure Attestation certifikat med hjälp Azure Resource Manager mall.
 services: azure-resource-manager
 author: msmbaldwin
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: mbaldwin
 ms.date: 10/16/2020
-ms.openlocfilehash: 8c56a37ebcc799b0170785666212eb4e3b00a5f0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7d70f9ebd071d6699412f56e9dca1abcebb38105
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92144973"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107834254"
 ---
-# <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Snabb start: skapa en Azure attesterings-Provider med en ARM-mall
+# <a name="quickstart-create-an-azure-attestation-provider-with-an-arm-template"></a>Snabbstart: Skapa en Azure Attestation provider med en ARM-mall
 
-[Microsoft Azure attestering](overview.md) är en lösning för att intyga betrodda körnings miljöer (tees). Den här snabb starten fokuserar på processen att distribuera en Azure Resource Manager-mall (ARM-mall) för att skapa en Microsoft Azure attesterings princip.
+[Microsoft Azure attestering](overview.md) är en lösning för attestera betrodda körningsmiljöer (TEE). Den här snabbstarten fokuserar på hur du distribuerar en Azure Resource Manager (ARM-mall) för att skapa en Microsoft Azure attestation-princip.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -35,9 +35,9 @@ Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmalla
 
 :::code language="json" source="~/quickstart-templates/101-attestation-provider-create/azuredeploy.json":::
 
-Azure-resurser som definierats i mallen:
+Azure-resurser som definieras i mallen:
 
-- Microsoft. attestering/attestationProviders
+- Microsoft.Attestation/attestationProviders
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -47,25 +47,25 @@ Azure-resurser som definierats i mallen:
 
 1. Välj eller ange följande värden.
 
-    Om den inte har angetts använder du standardvärdet för att skapa en attesterings leverantör.
+    Om det inte anges använder du standardvärdet för att skapa attestationsprovidern.
 
-    - **Leverantörs namn för attestering**: Välj ett namn för din Azure attesterings-Provider.
-    - **Plats**: Välj en plats. Välj till exempel **USA, centrala**.
-    - **Taggar**: Välj en plats. Välj till exempel **USA, centrala**.
+    - **Attestation providernamn:** Välj ett namn för din Azure Attestation providern.
+    - **Plats:** Välj en plats. Välj till exempel **USA, centrala**.
+    - **Taggar:** Välj en plats. Välj till exempel **USA, centrala**.
 
-1. Välj **Köp**. När du har distribuerat attesterings resursen får du ett meddelande.
+1. Välj **Köp**. När attestationsresursen har distribuerats får du ett meddelande.
 
-Azure-portalen används för att distribuera mallen. Förutom Azure Portal kan du också använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributions metoder finns i [distribuera mallar](../azure-resource-manager/templates/deploy-powershell.md).
+Azure-portalen används för att distribuera mallen. Förutom de Azure Portal kan du även använda Azure PowerShell, Azure CLI och REST API. Mer information om andra distributionsmetoder finns i [Distribuera mallar.](../azure-resource-manager/templates/deploy-powershell.md)
 
 ## <a name="review-deployed-resources"></a>Granska distribuerade resurser
 
-Du kan använda Azure Portal för att kontrol lera attesterings resursen.
+Du kan använda Azure Portal för att kontrollera attestationsresursen.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Andra Azure-attesteringar bygger på den här snabb starten. Om du planerar att fortsätta med efterföljande snabbstarter och självstudier kan du lämna kvar de här resurserna.
+Andra Azure Attestation bygger på den här snabbstarten. Om du planerar att fortsätta med efterföljande snabbstarter och självstudier kan du lämna kvar de här resurserna.
 
-När de inte längre behövs tar du bort resurs gruppen, som tar bort attesterings resursen. Ta bort resurs gruppen med hjälp av Azure CLI eller Azure PowerShell:
+Ta bort resursgruppen när den inte längre behövs, vilket tar bort attestationsresursen. Så här tar du bort resursgruppen med hjälp av Azure CLI eller Azure PowerShell:
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -88,4 +88,4 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten skapade du en attesterings resurs med en ARM-mall och validerade distributionen. Mer information om Azure-attestering finns i [Översikt över Azure-attestering](overview.md).
+I den här snabbstarten skapade du en attestationsresurs med hjälp av en ARM-mall och verifierade distributionen. Mer information om Azure Attestation finns i [Översikt över Azure Attestation](overview.md).

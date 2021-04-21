@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ecebeb6d14a00a92ef845001cf04a59f10345e23
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777193"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815584"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Snabbstart: Azure Key Vault Key-klientbibliotek för Java
 Kom igång med Azure Key Vault Key-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
@@ -157,7 +157,7 @@ import com.azure.security.keyvault.keys.models.KeyVaultKey;
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 I den här snabbstarten används en inloggad användare för att autentisera till Key Vault, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska en hanterad identitet tilldelas till en App Service eller virtuell dator. Mer information finns i Översikt [över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder klassen ["DefaultAzureCredential()"](https://docs.microsoft.com/java/api/com.azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/java/api/overview/azure/identity-readme)
 
 ```java
 String keyVaultName = System.getenv("KEY_VAULT_NAME");
@@ -183,13 +183,13 @@ az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
 ### <a name="retrieve-a-key"></a>Hämta en nyckel
-Nu kan du hämta den tidigare skapade nyckeln med `keyClient.getKey` -metoden.
+Nu kan du hämta den tidigare skapade nyckeln med `keyClient.getKey` metoden .
 
 ```java
 KeyVaultKey retrievedKey = keyClient.getKey(keyName);
  ```
 
-Nu kan du komma åt informationen om den hämtade nyckeln med åtgärder som `retrievedKey.getProperties` `retrievedKey.getKeyOperations` , osv.
+Nu kan du komma åt information om den hämtade nyckeln med åtgärder `retrievedKey.getProperties` som `retrievedKey.getKeyOperations` , osv.
 
 ### <a name="delete-a-key"></a>Ta bort en nyckel
 Slutligen tar vi bort nyckeln från nyckelvalvet med `keyClient.beginDeleteKey` metoden .
@@ -266,9 +266,9 @@ public class App {
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-I den här snabbstarten skapade du ett nyckelvalv, skapade en nyckel, hämtade det och tog sedan bort det. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
+I den här snabbstarten skapade du ett nyckelvalv, skapade en nyckel, hämtade den och tog sedan bort det. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
-- Läs Key Vault [säkerhetsöversikt](../general/security-overview.md)
-- Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Skydda [åtkomst till ett nyckelvalv](../general/security-overview.md)
+- Läs [översikten Key Vault säkerhetsöversikten för datasäkerhet](../general/security-features.md)
+- Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/security-features.md)

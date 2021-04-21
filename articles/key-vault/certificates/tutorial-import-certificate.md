@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: aebb0fa5da4cef655acc424c5ac90b628a4ba3af
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107791975"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107814450"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Självstudie: Importera ett certifikat i Azure Key Vault
 
@@ -30,7 +30,7 @@ Självstudien visar hur du:
 > * Importera ett certifikat i Key Vault powershell.
 
 
-Innan du börjar bör du [läsa Key Vault grundläggande begreppen](../general/basic-concepts.md). 
+Innan du börjar bör du läsa [Key Vault grundläggande begreppen](../general/basic-concepts.md). 
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -40,7 +40,7 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 ## <a name="create-a-vault"></a>Skapa ett valv
 
-1. På Azure Portal menyn eller på sidan **Start** väljer du **Skapa en resurs**.
+1. På Azure Portal menyn eller på **sidan Start** väljer du Skapa **en resurs**.
 2. I rutan Sök anger du **Key Vault**.
 3. Välj **Key Vault** i listan med resultat.
 4. Välj **Skapa** i avsnittet Key Vault.
@@ -54,7 +54,7 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 Anteckna de två egenskaperna som visas nedan:
 
-* **Valvnamn:** I det här exemplet är det **Example-Vault**. Du kommer att använda det här namnet i senare steg.
+* **Valvnamn:** I det här exemplet är detta **Example-Vault**. Du kommer att använda det här namnet i senare steg.
 * **Valvets URI**: I det här exemplet är det https://example-vault.vault.azure.net/. Program som använder ditt valv via dess REST-API måste använda denna URI.
 
 Nu är ditt Azure-konto det enda kontot med behörighet att utföra åtgärder i det nya valvet.
@@ -70,7 +70,7 @@ Om du vill importera ett certifikat till valvet måste du ha en PEM- eller PFX-c
 > - .pem-filformatet innehåller en eller flera X509-certifikatfiler.
 > - .pfx-filformatet är ett arkivfilformat för lagring av flera kryptografiska objekt i en enda fil, t.ex. servercertifikat (utfärdat för din domän), en matchande privat nyckel och kan eventuellt innehålla en mellanliggande certifikatutfärdare.  
 
-1. På sidan Key Vault egenskaper väljer du **Certifikat**.
+1. På Key Vault egenskaper väljer du **Certifikat**.
 2. Klicka på **Generera/importera**.
 3. På skärmen **Skapa ett** certifikat väljer du följande värden:
     - **Metod för att skapa certifikat:** Importera.
@@ -152,5 +152,5 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här självstudien har du skapat Key Vault och importerat ett certifikat i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs mer om [att hantera skapande av certifikat i Azure Key Vault](./create-certificate-scenarios.md)
-- Se exempel på import [av certifikat med hjälp av REST-API:er](/rest/api/keyvault/importcertificate/importcertificate)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Se exempel på import [av certifikat med hjälp av REST API:er](/rest/api/keyvault/importcertificate/importcertificate)
+- Granska [Key Vault säkerhetsöversikten](../general/security-features.md)

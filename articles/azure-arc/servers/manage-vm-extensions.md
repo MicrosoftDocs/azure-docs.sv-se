@@ -3,20 +3,20 @@ title: Hantering av VM-tillägg med Azure Arc aktiverade servrar
 description: Azure Arc-aktiverade servrar kan hantera distribution av tillägg för virtuella datorer som tillhandahåller konfigurations- och automatiseringsuppgifter efter distributionen med virtuella datorer som inte är Azure-datorer.
 ms.date: 04/13/2021
 ms.topic: conceptual
-ms.openlocfilehash: 67f1b5b3db6ef446342e8381d54d487af1f3426a
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: e28cd7753fc85f2e40385c65392fea73502aa05b
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389799"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107832850"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Hantera VM-tillägg med Azure Arc-aktiverade servrar
 
-Tillägg för virtuella datorer (VM) är små program som tillhandahåller konfigurations- och automatiseringsuppgifter efter distributionen på virtuella Azure-datorer. Om en virtuell dator till exempel kräver programvaruinstallation, skydd mot virus eller för att köra ett skript i den, kan ett VM-tillägg användas.
+Vm-tillägg är små program som tillhandahåller konfigurations- och automatiseringsuppgifter efter distributionen på virtuella Azure-datorer. Om en virtuell dator till exempel kräver programvaruinstallation, antivirusskydd eller för att köra ett skript i den, kan ett VM-tillägg användas.
 
-Azure Arc-aktiverade servrar kan du distribuera Azure VM-tillägg till virtuella datorer som inte är Azure Windows- och Linux-datorer, vilket förenklar hanteringen av din hybriddator genom livscykeln. VM-tillägg kan hanteras med följande metoder på dina hybriddatorer eller servrar som hanteras av Arc-aktiverade servrar:
+Azure Arc-aktiverade servrar kan du distribuera Azure VM-tillägg till virtuella datorer som inte är Azure Windows- och Linux-datorer, vilket förenklar hanteringen av din hybriddator genom deras livscykel. VM-tillägg kan hanteras med följande metoder på dina hybriddatorer eller servrar som hanteras av Arc-aktiverade servrar:
 
-- Den [Azure Portal](manage-vm-extensions-portal.md)
+- Följande [Azure Portal](manage-vm-extensions-portal.md)
 - [Azure CLI](manage-vm-extensions-cli.md)
 - [Azure PowerShell](manage-vm-extensions-powershell.md)
 - Azure [Resource Manager mallar](manage-vm-extensions-template.md)
@@ -28,9 +28,9 @@ Azure Arc-aktiverade servrar kan du distribuera Azure VM-tillägg till virtuella
 
 Azure Arc stöd för VM-tillägg för servrar ger följande viktiga fördelar:
 
-- Samla in loggdata för analys [med Loggar i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) genom att aktivera log Analytics-agentens VM-tillägg. Detta är användbart för att göra komplexa analyser av data från olika typer av källor.
+- Samla in loggdata för analys [med Loggar i Azure Monitor](../../azure-monitor/logs/data-platform-logs.md) genom att aktivera Vm-tillägget för Log Analytics-agenten. Detta är användbart för att göra komplexa analyser över data från olika typer av källor.
 
-- Med [Azure Monitor for VMs,](../../azure-monitor/vm/vminsights-overview.md)analyserar prestanda för dina virtuella Windows- och Linux-datorer och övervakar deras processer och beroenden på andra resurser och externa processer. Detta uppnås genom att aktivera både Log Analytics-agenten och VM-tilläggen för beroendeagenten.
+- Med [vm-insikter](../../azure-monitor/vm/vminsights-overview.md)analyserar den prestanda för dina virtuella Windows- och Linux-datorer och övervakar deras processer och beroenden på andra resurser och externa processer. Detta uppnås genom att aktivera vm-tillägg för både Log Analytics-agenten och beroendeagenten.
 
 - Ladda ned och kör skript på hybridanslutna datorer med hjälp av tillägget för anpassat skript. Det här tillägget är användbart för konfiguration efter distribution, programvaruinstallation eller andra konfigurations- eller hanteringsuppgifter.
 
@@ -47,7 +47,7 @@ I den här versionen stöder vi följande VM-tillägg på Windows- och Linux-dat
 Mer information om Azure Connected Machine agentpaketet och information om tilläggsagentkomponenten finns i [Agentöversikt](agent-overview.md#agent-component-details).
 
 > [!NOTE]
-> Stöd för DSC VM-tillägget har nyligen tagits bort för Arc-aktiverade servrar. Alternativt rekommenderar vi att du använder tillägget för anpassat skript för att hantera konfigurationen efter distributionen av din server eller dator.
+> Nyligen togs stödet för DSC VM-tillägget bort för Arc-aktiverade servrar. Alternativt rekommenderar vi att du använder tillägget för anpassat skript för att hantera konfigurationen efter distributionen av din server eller dator.
 
 ### <a name="windows-extensions"></a>Windows-tillägg
 
@@ -58,7 +58,7 @@ Mer information om Azure Connected Machine agentpaketet och information om till�
 |Log Analytics-agent |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Log Analytics VM-tillägg för Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor for VMs (insikter) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [Beroendeagent för virtuell datortillägg för Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|
 |Azure Key Vault certifikatsynkronisering | Microsoft.Azure.Key.Vault |KeyVaultForWindows | [Key Vault tillägg för virtuella datorer för Windows](../../virtual-machines/extensions/key-vault-windows.md) |
-|Azure Monitor-agent |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Installera Azure Monitor agenten (förhandsversion)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure Monitor-agent |Microsoft.Azure.Monitor |AzureMonitorWindowsAgent |[Installera Azure Monitor agent (förhandsversion)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ### <a name="linux-extensions"></a>Linux-tillägg
 
@@ -68,8 +68,8 @@ Mer information om Azure Connected Machine agentpaketet och information om till�
 |Anpassat skripttillägg |Microsoft.Azure.Extensions |CustomScript |[Anpassat Linux-skripttillägg version 2](../../virtual-machines/extensions/custom-script-linux.md) |
 |Log Analytics-agent |Microsoft.EnterpriseCloud.Monitoring |OmsAgentForLinux |[Log Analytics VM-tillägg för Linux](../../virtual-machines/extensions/oms-linux.md) |
 |Azure Monitor for VMs (insikter) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentLinux |[Beroendeagent för virtuell datortillägg för Linux](../../virtual-machines/extensions/agent-dependency-linux.md) |
-|Azure Key Vault certifikatsynkronisering | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Key Vault tillägg för virtuella datorer för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
-|Azure Monitor-agent |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Installera Azure Monitor agent (förhandsversion)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
+|Azure Key Vault certifikatsynkronisering | Microsoft.Azure.Key.Vault |KeyVaultForLinux | [Key Vault virtuellt datortillägg för Linux](../../virtual-machines/extensions/key-vault-linux.md) |
+|Azure Monitor-agent |Microsoft.Azure.Monitor |AzureMonitorLinuxAgent |[Installera Azure Monitor agenten (förhandsversion)](../../azure-monitor/agents/azure-monitor-agent-install.md) |
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -80,7 +80,7 @@ Den här funktionen är beroende av följande Azure-resursproviders i din prenum
 
 Om de inte redan är registrerade följer du stegen under Registrera [Azure-resursproviders.](agent-overview.md#register-azure-resource-providers)
 
-Läs dokumentationen för varje VM-tillägg som refereras i föregående tabell för att förstå om det har några nätverks- eller systemkrav. Detta kan hjälpa dig att undvika anslutningsproblem med en Azure-tjänst eller -funktion som förlitar sig på det virtuella datortillägget.
+Läs dokumentationen för varje VM-tillägg som refereras till i föregående tabell för att förstå om det finns några nätverks- eller systemkrav. Detta kan hjälpa dig att undvika anslutningsproblem med en Azure-tjänst eller -funktion som förlitar sig på det virtuella datortillägget.
 
 ### <a name="log-analytics-vm-extension"></a>Log Analytics VM-tillägg
 
@@ -94,7 +94,7 @@ Tillägget Key Vault virtuell dator (förhandsversion) stöder inte följande Li
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
-Distribution av Key Vault VM-tillägg (förhandsversion) stöds endast med:
+Distribution av Key Vault VM-tillägg (förhandsversion) stöds endast med hjälp av:
 
 - Azure CLI
 - Den Azure PowerShell
@@ -104,11 +104,11 @@ Innan du distribuerar tillägget måste du slutföra följande:
 
 1. [Skapa ett valv och certifikat](../../key-vault/certificates/quick-create-portal.md) (själv signerat eller importera).
 
-2. Ge den Azure Arc aktiverade servern åtkomst till certifikathemligheten. Om du använder [RBAC-förhandsversionen](../../key-vault/general/rbac-guide.md)söker du efter namnet på Azure Arc resursen och tilldelar den rollen Key Vault Secrets **User (förhandsversion).** Om du använder en [Key Vault åtkomstprincip](../../key-vault/general/assign-access-policy-portal.md)tilldelar du **behörigheter** för hemlighets get till Azure Arc-resursens systemtilldelningsidentitet.
+2. Ge den Azure Arc aktiverade servern åtkomst till certifikathemligheten. Om du använder [RBAC-förhandsversionen](../../key-vault/general/rbac-guide.md)söker du efter namnet på Azure Arc resursen och tilldelar den rollen Key Vault Secrets **User (förhandsversion).** Om du använder en [Key Vault åtkomstprincip](../../key-vault/general/assign-access-policy-portal.md)tilldelar du **behörigheter** för Hemlighet hämta till Azure Arc-resursens systemtilldelningsidentitet.
 
 ### <a name="connected-machine-agent"></a>Ansluten datoragent
 
-Kontrollera att datorn matchar de [versioner av](agent-overview.md#supported-operating-systems) Windows- och Linux-operativsystem som stöds för Azure Connected Machine agenten.
+Kontrollera att datorn matchar de [versioner av](agent-overview.md#supported-operating-systems) operativsystemet Windows och Linux som stöds för Azure Connected Machine agenten.
 
 Den lägsta versionen av connected machine-agenten som stöds med den här funktionen i Windows och Linux är version 1.0.
 

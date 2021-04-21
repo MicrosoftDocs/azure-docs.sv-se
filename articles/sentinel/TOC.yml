@@ -61,6 +61,8 @@
       href: extend-sentinel-across-workspaces-tenants.md
     - name: Normalisera data i tabeller
       href: normalization.md
+    - name: Använda Azure Data Explorer för långsiktig loggbevarande
+      href: store-logs-in-azure-data-explorer.md
     - name: Säkerhet
       items:
         - name: Säkerhetsbaslinje
@@ -124,7 +126,7 @@
               href: connect-windows-virtual-desktop.md
         - name: Ansluta externa lösningar
           items:
-            - name: Agari Phishing Defense och Varumärkesskydd
+            - name: Agari Nätfiskeskydd och varumärkesskydd
               href: connect-agari-phishing-defense.md
             - name: Alcide kAudit
               href: connect-alcide-kaudit.md
@@ -178,7 +180,7 @@
               href: connect-qualys-vm.md
             - name: Salesforce Service Cloud
               href: connect-salesforce-service-cloud.md
-            - name: Sophos Cloud ×
+            - name: Sophos Cloud Molnbaseradx
               href: connect-sophos-cloud-optix.md
             - name: Sophos XG-brandvägg
               href: connect-sophos-xg-firewall.md
@@ -272,13 +274,13 @@
       href: multiple-workspace-view.md
     - name: Konfigurera kundhanterade nycklar (CMK)
       href: customer-managed-keys.md
-    - name: Anpassad information för Surface i aviseringar
+    - name: Anpassad Surface-information i aviseringar
       href: surface-custom-details-in-alerts.md
     - name: Skapa incidenter från aviseringar
       href: create-incidents-from-alerts.md
     - name: Hantera SOC bättre med incidentmått
       href: manage-soc-with-incident-metrics.md
-    - name: Granska Azure Sentinel frågor och aktiviteter
+    - name: Granska Azure Sentinel och aktiviteter
       href: audit-sentinel-data.md
     - name: Hotjakt
       href: hunting.md
@@ -321,11 +323,11 @@
       href: data-source-schema-reference.md
     - name: Kusto-frågespråk
       items:
-        - name: Översikt över Kusto-fråga
+        - name: Översikt över Kusto-frågor
           href: /azure/data-explorer/kusto/query/
         - name: Snabbreferens för Kusto Query Language
           href: /azure/data-explorer/kql-quick-reference
-        - name: Azure Monitor optimering av loggfrågor
+        - name: Azure Monitor optimeringar av loggfrågor
           href: ../azure-monitor/logs/query-optimization.md
     - name: UEBA-berikande
       href: ueba-enrichments.md

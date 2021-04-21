@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: be138a0c97e02cace45a57d8d6b32d7c9aea83b7
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: b7a3126aef94ccdef7f6c9120ddeb6f20d872ab5
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749986"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107815782"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Snabbstart: Ange och hämta ett certifikat från Azure Key Vault med hjälp av Azure Portal
 
@@ -88,4 +88,4 @@ I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se [Azure Key Vault utvecklarhandbok](../general/developers-guide.md)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Granska Key Vault [säkerhetsöversikten](../general/security-features.md)

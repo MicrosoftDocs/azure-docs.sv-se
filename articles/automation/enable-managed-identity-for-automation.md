@@ -1,16 +1,17 @@
 ---
 title: Aktivera en hanterad identitet för ditt Azure Automation konto (förhandsversion)
-description: Den här artikeln beskriver hur du ställer in hanterad identitet för Azure Automation konton.
+description: Den här artikeln beskriver hur du ställer in hanterad identitet för Azure Automation-konton.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: 93c55c21bf740f2851cac1926bc673cebcd914b0
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: 0416ce25ed03be35c56e7fa2ed7175ad65ae6555
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107514809"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107831554"
 ---
 # <a name="enable-a-managed-identity-for-your-azure-automation-account-preview"></a>Aktivera en hanterad identitet för ditt Azure Automation konto (förhandsversion)
 
@@ -18,7 +19,7 @@ Det här avsnittet visar hur du skapar en hanterad identitet för ett Azure Auto
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto och prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. Både den hanterade identiteten och De Azure-målresurser som din runbook hanterar med hjälp av den identiteten måste finnas i samma Azure-prenumeration.
+- Ett Azure-konto och prenumeration. Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar. Både den hanterade identiteten och de Azure-målresurser som din runbook hanterar med den identiteten måste finnas i samma Azure-prenumeration.
 
 - Den senaste versionen av Azure Automation-kontomoduler. För närvarande är detta 1.6.0. (Mer information [om den här versionen finns i Az.Automation 1.6.0.)](https://www.powershellgallery.com/packages/Az.Automation/1.6.0)
 
@@ -32,7 +33,7 @@ Det här avsnittet visar hur du skapar en hanterad identitet för ett Azure Auto
 ## <a name="enable-system-assigned-identity"></a>Aktivera system tilldelad identitet
 
 >[!IMPORTANT]
->Den nya Automation-identiteten på kontonivå åsidosätter alla tidigare system tilldelade identiteter på VM-nivå (som beskrivs i Använda [runbook-autentisering med hanterade identiteter).](/automation-hrw-run-runbooks#runbook-auth-managed-identities) Om du kör hybridjobb på virtuella Azure-datorer som använder en virtuell dators system tilldelade identitet för att få åtkomst till Runbook-resurser används Automation-kontoidentiteten för hybridjobben. Det innebär att din befintliga jobbkörning kan påverkas om du har använt funktionen kund hanterade nycklar (CMK) för ditt Automation-konto.<br/><br/>Om du vill fortsätta att använda den virtuella datorns hanterade identitet bör du inte aktivera Automation-identiteten på kontonivå. Om du redan har aktiverat det kan du inaktivera den hanterade identiteten för Automation-kontot. Se [Inaktivera din Azure Automation hanterad identitet.](https://docs.microsoft.com/azure/automation/disable-managed-identity-for-automation)
+>Den nya Automation-identiteten på kontonivå åsidosätter eventuella tidigare system tilldelade identiteter på VM-nivå (som beskrivs i Använda [runbook-autentisering med hanterade identiteter).](/automation-hrw-run-runbooks#runbook-auth-managed-identities) Om du kör hybridjobb på virtuella Azure-datorer som använder en virtuell dators system tilldelade identitet för att få åtkomst till Runbook-resurser används Automation-kontoidentiteten för hybridjobben. Det innebär att din befintliga jobbkörning kan påverkas om du har använt funktionen kund hanterade nycklar (CMK) för ditt Automation-konto.<br/><br/>Om du vill fortsätta använda den virtuella datorns hanterade identitet bör du inte aktivera Automation-identiteten på kontonivå. Om du redan har aktiverat det kan du inaktivera den hanterade identiteten för Automation-kontot. Se [Inaktivera din Azure Automation hanterad identitet.](https://docs.microsoft.com/azure/automation/disable-managed-identity-for-automation)
 
 Du kan konfigurera system tilldelade identiteter för Azure Automation på något av två sätt. Du kan antingen använda Azure Portal eller Azure REST API.
 
@@ -49,7 +50,7 @@ Du kan konfigurera system tilldelade identiteter för Azure Automation på någo
 
 :::image type="content" source="media/managed-identity/managed-identity-on.png" alt-text="Aktivera system tilldelad identitet i Azure Portal.":::
 
-Ditt Automation-konto kan nu använda den system tilldelade identiteten, som är registrerad med Azure Active Directory (Azure AD) och representeras av ett objekt-ID.
+Ditt Automation-konto kan nu använda den system tilldelade identiteten, som har registrerats med Azure Active Directory (Azure AD) och representeras av ett objekt-ID.
 
 :::image type="content" source="media/managed-identity/managed-identity-object-id.png" alt-text="Objekt-ID för hanterad identitet.":::
 
@@ -98,7 +99,7 @@ Ett Automation-konto kan använda sin hanterade identitet för att hämta token 
 
 Innan du kan använda din system tilldelade hanterade identitet för autentisering måste du konfigurera åtkomst för identiteten på den Azure-resurs där du planerar att använda identiteten. För att slutföra den här uppgiften tilldelar du lämplig roll till identiteten på Azure-målresursen.
 
-I det här Azure PowerShell för att visa hur du tilldelar rollen Deltagare i prenumerationen till Azure-målresursen. Rollen Deltagare används som exempel och kanske inte krävs i ditt fall.
+I det här Azure PowerShell för att visa hur du tilldelar rollen Deltagare i prenumerationen till Azure-målresursen. Rollen Deltagare används som exempel och kan krävas i ditt fall.
 
 ```powershell
 New-AzRoleAssignment -ObjectId <automation-Identity-object-id> -Scope "/subscriptions/<subscription-id>" -RoleDefinitionName "Contributor"
@@ -106,7 +107,7 @@ New-AzRoleAssignment -ObjectId <automation-Identity-object-id> -Scope "/subscrip
 
 ## <a name="authenticate-access-with-managed-identity"></a>Autentisera åtkomst med hanterad identitet
 
-När du aktiverar den hanterade identiteten för ditt Automation-konto och ger en identitet åtkomst till målresursen kan du ange den identiteten i runbooks mot resurser som stöder hanterad identitet. För identitetsstöd använder du cmdleten Az `Connect-AzAccount` cmdlet. Se [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount) i PowerShell-referensen.
+När du aktiverar den hanterade identiteten för ditt Automation-konto och ger en identitet åtkomst till målresursen kan du ange den identiteten i runbooks mot resurser som stöder hanterad identitet. För identitetsstöd använder du `Connect-AzAccount` cmdleten Az. Se [Connect-AzAccount i](/powershell/module/az.accounts/Connect-AzAccount) PowerShell-referensen.
 
 ```powershell
 Connect-AzAccount -Identity
@@ -120,7 +121,7 @@ Connect-AzAccount -Identity
 För HTTP-slutpunkter kontrollerar du följande.
 - Metadatarubriken måste finnas och ska vara inställd på "true".
 - En resurs måste skickas tillsammans med begäran, som en frågeparameter för en GET-begäran och som formulärdata för en POST-begäran.
-- X-IDENTITY-HEADER ska vara inställt på värdet för miljövariabeln IDENTITY_HEADER för Hybrid Runbook Workers. 
+- X-IDENTITY-HEADER ska anges till värdet för miljövariabeln som IDENTITY_HEADER Hybrid Runbook Workers. 
 - Innehållstyp för Post-begäran måste vara "application/x-www-form-urlencoded". 
 
 ### <a name="sample-get-request"></a>Exempel på GET-begäran
@@ -148,7 +149,7 @@ Write-Output $accessToken.access_token
 
 ## <a name="sample-runbooks-using-managed-identity"></a>Exempel på runbooks med hanterad identitet
 
-### <a name="sample-runbook-to-access-a-sql-database-without-using-azure-cmdlets"></a>Exempel-runbook för att få åtkomst till en SQL-databas utan att använda Azure-cmdlets
+### <a name="sample-runbook-to-access-a-sql-database-without-using-azure-cmdlets"></a>Exempel på runbook för att få åtkomst till en SQL-databas utan att använda Azure-cmdlets
 
 ```powershell
 $queryParameter = "?resource=https://database.windows.net/" 
@@ -215,6 +216,6 @@ print(response.text)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Om du behöver inaktivera en hanterad identitet kan du gå [till Inaktivera din Azure Automation hanterad identitet (förhandsversion)](disable-managed-identity-for-automation.md).
+- Om du behöver inaktivera en hanterad identitet kan du gå till [Inaktivera Azure Automation hanterad identitet (förhandsversion)](disable-managed-identity-for-automation.md).
 
-- En översikt över hur Azure Automation finns i Översikt över [Automation-kontoautentisering.](automation-security-overview.md)
+- En översikt över Azure Automation finns i Översikt över [Automation-kontoautentisering.](automation-security-overview.md)

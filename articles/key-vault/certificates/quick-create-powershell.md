@@ -1,5 +1,5 @@
 ---
-title: Snabbstart – Ange & visa Azure Key Vault certifikat med Azure PowerShell
+title: Snabbstart – Konfigurera & visa Azure Key Vault certifikat med Azure PowerShell
 description: Snabbstart som visar hur du ställer in och hämtar ett certifikat från Azure Key Vault med Azure PowerShell
 services: key-vault
 author: msmbaldwin
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 32150fb4cce76d5a2537c5ec969f265e0d8aae20
+ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750400"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107816196"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabbstart: Ange och hämta ett certifikat från Azure Key Vault med Azure PowerShell
 
@@ -68,7 +68,7 @@ Nu har du skapat en Key Vault, lagrat ett certifikat och hämtat det.
 
 Om du får det här felet har kontot som använder Azure Key Vault inte rätt behörighet för att skapa certifikat.
 
-Kör följande Azure PowerShell för att tilldela rätt behörigheter:
+Kör följande kommando Azure PowerShell för att tilldela rätt behörigheter:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
@@ -84,4 +84,4 @@ I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/)
-- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)
+- Granska Key Vault [säkerhetsöversikten](../general/security-features.md)

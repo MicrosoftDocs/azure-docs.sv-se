@@ -1,24 +1,24 @@
 ---
 title: Arbeta med Defender for IoT-API:er
-description: Använd en extern REST API att komma åt data som identifierats av sensorer och hanteringskonsoler och utföra åtgärder med dessa data.
+description: Använd en extern REST API för att komma åt data som identifieras av sensorer och hanteringskonsoler och utföra åtgärder med dessa data.
 ms.date: 12/14/2020
 ms.topic: reference
-ms.openlocfilehash: e7833a20d4f708ecb5b80394fae2c56fc07c9489
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 0e3659d8d5e6829651012dae02ca74c5ecacaf0c
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752740"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107829970"
 ---
-# <a name="defender-for-iot-sensor-and-management-console-apis"></a>API:er för Defender for IoT-sensor och hanteringskonsol
+# <a name="defender-for-iot-sensor-and-management-console-apis"></a>API:er för Defender for IoT-sensor och -hanteringskonsol
 
-Använd en extern REST API att komma åt data som identifierats av sensorer och hanteringskonsoler och utföra åtgärder med dessa data.
+Använd en extern REST API för att komma åt data som identifieras av sensorer och hanteringskonsoler och utföra åtgärder med dessa data.
 
 Anslutningar skyddas via SSL.
 
 ## <a name="getting-started"></a>Komma igång
 
-När du använder ett externt API på den Azure Defender for IoT eller lokala hanteringskonsolen måste du i allmänhet generera en åtkomsttoken. Token krävs inte för autentiserings-API:er som du använder på sensorn och den lokala hanteringskonsolen.
+När du använder ett externt API på en Azure Defender for IoT eller en lokal hanteringskonsol måste du i allmänhet generera en åtkomsttoken. Token krävs inte för autentiserings-API:er som du använder på sensorn och den lokala hanteringskonsolen.
 
 Så här genererar du en token:
 
@@ -26,7 +26,7 @@ Så här genererar du en token:
   
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/access-tokens.png" alt-text="Skärmbild av fönstret Systeminställningar med knappen Åtkomsttoken framhävd.":::
 
-2. Välj **Generera ny token**.
+2. Välj **Generera ny token.**
    
    :::image type="content" source="media/references-work-with-defender-for-iot-apis/new-token.png" alt-text="Välj knappen för att generera en ny token.":::
 
@@ -44,11 +44,11 @@ Så här genererar du en token:
 
    **Används** anger den senaste gången ett externt anrop med denna token togs emot.
 
-   Om **ej a** visas i fältet Används **för** denna token fungerar inte anslutningen mellan sensorn och den anslutna servern.
+   Om **ej a visas** i fältet Används **för** denna token fungerar inte anslutningen mellan sensorn och den anslutna servern.
 
 6. Lägg till ett HTTP-huvud **med namnet Authorization** (Auktorisering) i din begäran och ange dess värde till den token som du genererade.
 
-## <a name="sensor-api-specifications"></a>Sensor API-specifikationer
+## <a name="sensor-api-specifications"></a>Specifikationer för sensor-API
 
 I det här avsnittet beskrivs följande sensor-API:er:
 
@@ -56,7 +56,7 @@ I det här avsnittet beskrivs följande sensor-API:er:
 
 - [Hämta information om enhetsanslutning – /api/v1/devices/connections](#retrieve-device-connection-information---apiv1devicesconnections)
 
-- [Hämta information om CVE:er – /api/v1/devices/cves](#retrieve-information-on-cves---apiv1devicescves)
+- [Hämta information om CRE:er – /api/v1/devices/cves](#retrieve-information-on-cves---apiv1devicescves)
 
 - [Hämta aviseringsinformation – /api/v1/alerts](#retrieve-alert-information---apiv1alerts)
 
@@ -68,7 +68,7 @@ I det här avsnittet beskrivs följande sensor-API:er:
 
 - [Hämta sårbarheter i verksamheten – /api/v1/reports/vulnerabilities/operational](#retrieve-operational-vulnerabilities---apiv1reportsvulnerabilitiesoperational)
 
-- [Verifiera autentiseringsuppgifter för användare – /api/external/authentication/validation](#validate-user-credentials---apiexternalauthenticationvalidation)
+- [Verifiera autentiseringsuppgifter för användare – /api/extern/autentisering/validering](#validate-user-credentials---apiexternalauthenticationvalidation)
 
 - [Ändra lösenord – /external/authentication/set_password](#change-password---externalauthenticationset_password)
 
@@ -104,12 +104,12 @@ Matris med JSON-objekt som representerar enheter.
 
 #### <a name="device-fields"></a>Enhetsfält
 
-| Namn | Typ | Kan ha värdet null | Lista över värden |
+| Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
 | **id** | Numerisk | No | - |
-| **ipAddresses** | JSON-matris | Yes | IP-adresser (kan vara mer än en adress om det gäller Internetadresser eller en enhet med dubbla nätverkskort) |
+| **ipAddresses** | JSON-matris | Yes | IP-adresser (kan vara mer än en adress i händelse av Internet-adresser eller en enhet med dubbla nätverkskort) |
 | **name** | Sträng | No | - |
-| **Typ** | Sträng | No | Unknown, Engineering Station, WORKSTATION, HMI, Domain Controller, DB Server, Wireless Access Point, Router, Switch, Server, Workstation, IP Camera, Printer, Firewall, Terminal station, VPN Gateway, Internet eller Multicast och Broadcast |
+| **Typ** | Sträng | No | Unknown, Engineering Station,ROU, HMI, Domain Controller, DB Server, Wireless Access Point, Router, Switch, Server, Workstation, IP Camera, Printer, Firewall, Terminal station, VPN Gateway, Internet eller Multicast och Broadcast |
 | **macAddresses** | JSON-matris | Yes | MAC-adresser (kan vara mer än en adress om en enhet har dubbla nätverkskort) |
 | **operatingSystem** | Sträng | Yes | - |
 | **engineeringStation** | Boolesk | No | Sant eller falskt |
@@ -121,23 +121,23 @@ Matris med JSON-objekt som representerar enheter.
 
 #### <a name="protocol-fields"></a>Protokollfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **Namn** | Sträng | No |  |
 | **Adresser** | JSON-matris | Yes | Huvudvärden eller numeriska värden |
 
 #### <a name="firmware-fields"></a>Fält för inbyggd programvara
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
-| **Seriell** | Sträng | No | Ej aktuellt eller faktiskt värde |
-| **Modell** | Sträng | No | Ej aktuellt eller faktiskt värde |
-| **versionInbyggdProgramvara** | Double | No | Ej aktuellt eller faktiskt värde |
-| **additionalData** | Sträng | No | Ej aktuellt eller faktiskt värde |
-| **moduleAddress** | Sträng | No | Ej A, eller det faktiska värdet |
-| **Rack** | Sträng | No | Ej A, eller det faktiska värdet |
-| **Slot** | Sträng | No | Ej A, eller det faktiska värdet |
-| **Adress** | Sträng | No | Ej A, eller det faktiska värdet |
+| **Seriell** | Sträng | No | Ej A, eller det faktiska värdet |
+| **Modell** | Sträng | No | Ej A, eller det faktiska värdet |
+| **versionInbyggdProgramvara** | Double | No | Ej A, eller det faktiska värdet |
+| **additionalData** | Sträng | No | Ej A, eller det faktiska värdet |
+| **moduleAddress** | Sträng | No | Ej aktuellt eller faktiskt värde |
+| **Rack** | Sträng | No | Ej aktuellt eller faktiskt värde |
+| **Slot** | Sträng | No | Ej aktuellt eller faktiskt värde |
+| **Adress** | Sträng | No | Ej aktuellt eller faktiskt värde |
 
 #### <a name="response-example"></a>Exempel på svar
 
@@ -301,7 +301,7 @@ Om du inte anger frågeparametrarna returneras alla enhetsanslutningar.
 
   `/api/v1/devices/<deviceId>/connections`
 
-- **lastActiveInMinutes:** Tidsram från och med nu bakåt, efter minut, under vilken anslutningarna var aktiva.
+- **lastActiveInMinutes:** Tidsram från nu bakåt, efter minut, under vilken anslutningarna var aktiva.
 
   **Exempel**:
 
@@ -329,7 +329,7 @@ Matris med JSON-objekt som representerar enhetsanslutningar.
 
 #### <a name="fields"></a>Fält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **firstDeviceId** | Numerisk | No | - |
 | **secondDeviceId** | Numerisk | No | - |
@@ -340,7 +340,7 @@ Matris med JSON-objekt som representerar enhetsanslutningar.
 
 #### <a name="protocol-field"></a>Protokollfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **name** | Sträng | No | - |
 | **Kommandon** | Strängmatris | No | - |
@@ -453,7 +453,7 @@ Matris med JSON-objekt som representerar enhetsanslutningar.
 > | GET | curl -k -H "Authorization: <AUTH_TOKEN>" https://<IP_ADDRESS>/api/v1/devices/connections | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" https:/ <span> /127.0.0.1/api/v1/devices/connections |
 > | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/devices/ <deviceId> /connections?lastActiveInMinutes=&discoveredBefore=&discoveredAfter=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/api/v1/devices/2/connections?lastActiveInMinutes=20&discoveredBefore=1594550986000&discoveredAfter=1594550986000' |
 
-### <a name="retrieve-information-on-cves---apiv1devicescves"></a>Hämta information om CVE:er – /api/v1/devices/cves
+### <a name="retrieve-information-on-cves---apiv1devicescves"></a>Hämta information om CRE:er – /api/v1/devices/cves
 
 Använd det här API:et för att begära en lista över alla kända CRE:er som identifierats på enheter i nätverket.
 
@@ -463,7 +463,7 @@ Använd det här API:et för att begära en lista över alla kända CRE:er som i
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
-Som standard innehåller det här API:et en lista över alla enhets-IP-adresser med CRE:er, upp till 100 topppoängade CRE:er för varje IP-adress.
+Som standard innehåller det här API:et en lista över alla enhets-IP-adresser med CRE:er, upp till 100 CRE:er med högst poäng för varje IP-adress.
 
 **Exempel**:
 
@@ -493,12 +493,12 @@ Matris med JSON-objekt som representerar CRE:er som identifierats på IP-adresse
 
 #### <a name="fields"></a>Fält
 
-| Namn | Typ | Kan ha värdet null | Lista över värden |
+| Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
 | **cveId** | Sträng | No | - |
 | **Ip** | Sträng | No | IP-adress |
 | **Poäng** | Sträng | No | 0.0 - 10.0 |
-| **attackVector** | Sträng | No | Nätverk, angränsande nätverk, lokalt eller fysiskt |
+| **attackVector** | Sträng | No | Nätverk, intilliggande nätverk, lokalt eller fysiskt |
 | **Beskrivning** | Sträng | No | - |
 
 #### <a name="response-example"></a>Exempel på svar
@@ -584,7 +584,7 @@ Använd det här API:et för att begära en lista över alla aviseringar som Def
 
   `/api/v1/alerts?state=handled`
 
-- **fromTime:** För att filtrera aviseringar som skapats från en viss tid (i millisekunder, UTC).
+- **fromTime:** Filtrera aviseringar som skapats från en viss tid (i millisekunder, UTC).
 
   **Exempel**:
 
@@ -596,7 +596,7 @@ Använd det här API:et för att begära en lista över alla aviseringar som Def
 
   `/api/v1/alerts?toTime=<epoch>`
 
-- **type**: Om du vill filtrera aviseringar efter en viss typ. Befintliga typer att filtrera efter: oväntade nya enheter, frånkopplingar.
+- **skriv**: Om du vill filtrera aviseringar efter en viss typ. Befintliga typer att filtrera efter: oväntade nya enheter, frånkopplingar.
 
   **Exempel**:
 
@@ -612,7 +612,7 @@ Matris med JSON-objekt som representerar aviseringar.
 
 #### <a name="alert-fields"></a>Aviseringsfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **ID** | Numerisk | No | - |
 | **Tid** | Numerisk | No | Epok (UTC) |
@@ -622,9 +622,9 @@ Matris med JSON-objekt som representerar aviseringar.
 | **Motor** | Sträng | No | Protokollöverträdelse, principöverträdelse, skadlig kod, avvikelse eller drift |
 | **sourceDevice** | Numerisk | Yes | Enhets-ID |
 | **destinationDevice** | Numerisk | Yes | Enhets-ID |
-| **sourceDeviceAddress** | Numerisk | Yes | IP, MAC, Null |
-| **destinationDeviceAddress** | Numerisk | Yes | IP, MAC, Null |
-| **remediationSteps** | Sträng | Yes | Reparationssteg som beskrivs i aviseringen |
+| **sourceDeviceAddress** | Numerisk | Yes | IP, MAC |
+| **destinationDeviceAddress** | Numerisk | Yes | IP, MAC |
+| **remediationSteps** | Sträng | Yes | Åtgärdssteg som beskrivs i aviseringen |
 | **ytterligare information** | Ytterligare informationsobjekt | Yes | - |
 
 Observera att /api/v2/ krävs för följande information:
@@ -635,7 +635,7 @@ Observera att /api/v2/ krävs för följande information:
 
 #### <a name="additional-information-fields"></a>Ytterligare informationsfält
 
-| Namn | Typ | Kan ha värdet null | Lista över värden |
+| Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
 | **Beskrivning** | Sträng | No | - |
 | **Information** | JSON-matris | Inga | Sträng |
@@ -708,11 +708,11 @@ Observera att /api/v2/ krävs för följande information:
 > [!div class="mx-tdBreakAll"]
 > | Typ | API:er | Exempel |
 > |--|--|--|
-> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/api/v1/alerts?state=ohanterad&fromTime=1594550986000&toTime=1594550986001&type=disconnections' |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<IP_ADDRESS>/api/v1/alerts?state=&fromTime=&toTime=&type=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/api/v1/alerts?state=unhandled&fromTime=1594550986000&toTime=1594550986001&type=disconnections' |
 
 ### <a name="retrieve-timeline-events---apiv1events"></a>Hämta tidslinjehändelser – /api/v1/events
 
-Använd det här API:et för att begära en lista över händelser som rapporterats till händelsetidslinjen.
+Använd det här API:et för att begära en lista över händelser som rapporteras till händelsetidslinjen.
 
 #### <a name="method"></a>Metod
 
@@ -720,7 +720,7 @@ Använd det här API:et för att begära en lista över händelser som rapporter
 
 #### <a name="query-parameters"></a>Frågeparametrar
 
-- **minutesTimeFrame:** Tidsramen från nu bakåt, efter minut, då händelserna rapporterades.
+- **minutesTimeFrame:** Tidsramen från nu bakåt, efter minut, där händelserna rapporterades.
 
   **Exempel**:
 
@@ -744,11 +744,11 @@ Matris med JSON-objekt som representerar aviseringar.
 
 #### <a name="event-fields"></a>Händelsefält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|--|
 | **Tidsstämpel** | Numerisk | No | Epok (UTC) |
 | **title** | Sträng | No | - |
-| **Svårighetsgrad** | Sträng | No | INFO, MEDDELANDE eller AVISERING |
+| **Svårighetsgrad** | Sträng | No | INFORMATION, MEDDELANDE eller AVISERING |
 | **Ägare** | Sträng | Yes | Om händelsen skapades manuellt innehåller det här fältet det användarnamn som skapade händelsen |
 | **innehåll** | Sträng | No | - |
 
@@ -871,16 +871,16 @@ Enhetsobjektet innehåller:
 
 #### <a name="operating-system-fields"></a>Operativsystemfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **Namn** | Sträng | Yes | - |
 | **Typ** | Sträng | Yes | - |
 | **Version** | Sträng | Yes | - |
 | **latestVersion** | Sträng | Yes | - |
 
-#### <a name="vulnerabilities-fields"></a>Fält för säkerhetsrisker
+#### <a name="vulnerabilities-fields"></a>Fält för sårbarheter
  
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **Antivirusprogram** | JSON-matris | Yes | Antivirusnamn |
 | **plainTextPasswords** | JSON-matris | Yes | Lösenordsobjekt |
@@ -1109,7 +1109,7 @@ JSON-objekt som representerar utvärderade resultat. Varje nyckel kan ha värdet
 
 **unauthorizedDevices**
 
-| Fältnamn | Typ | Lista över värden |
+| Fältnamn | Typ | Lista med värden |
 | ---------- | ---- | -------------- |
 | **Adress** | Sträng | IP-adress |
 | **name** | Sträng | - |
@@ -1668,7 +1668,7 @@ response:
 
 | Typ | API:er | Exempel |
 |--|--|--|
-| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}" -H 'Content-Type: application/json' https://<IP_ADDRESS>/api/external/authentication/set_password | curl -k -d '{"username": "myUser","password": 1234@abcd " ","new_password": abcd@1234 " "}' -H 'Content-Type: application/json' https:/ <span> /127.0.0.1/api/external/authentication/set_password |
+| POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}" -H 'Content-Type: application/json' https://<IP_ADDRESS>/api/external/authentication/set_password | curl -k -d '{"username": "myUser","password": 1234@abcd ","new_password": abcd@1234 " "}' -H 'Content-Type: application/json' https:/ <span> /127.0.0.1/api/external/authentication/set_password |
 
 ### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Uppdatering av användarlösenord per systemadministratör – /extern/autentisering/set_password_by_admin
 
@@ -1708,7 +1708,7 @@ Meddelandesträng med information om åtgärdsstatus:
 
 - **Lyckades – msg:** Lösenordet har ersatts
 
-- **Fel – fel:** Autentiseringsfel för användare
+- **Fel – fel:** Användarautentiseringsfel
 
 - **Fel – fel:** Användaren finns inte
 
@@ -1779,11 +1779,11 @@ Definiera villkor under vilka aviseringar inte ska skickas. Du kan till exempel 
 
 #### <a name="change-password---externalauthenticationset_password"></a>Ändra lösenord – /external/authentication/set_password 
 
-Använd det här API:et för att låta användarna ändra sina egna lösenord. Alla Defender for IoT-användarroller kan arbeta med API:et. Du behöver inte en Defender for IoT-åtkomsttoken för att använda det här API:et.
+Använd det här API:et för att låta användarna ändra sina egna lösenord. Alla Defender for IoT-användarroller kan fungera med API:et. Du behöver inte en Defender for IoT-åtkomsttoken för att använda det här API:et.
 
 #### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Uppdatering av användarlösenord av systemadministratör – /extern/autentisering/set_password_by_admin 
 
-Använd det här API:et för att låta systemadministratörer ändra lösenord för specifika användare. Defender for IoT-administratörsanvändarroller kan arbeta med API:et. Du behöver inte en Defender for IoT-åtkomsttoken för att använda det här API:et.
+Använd det här API:et för att låta systemadministratörer ändra lösenord för specifika användare. Defender for IoT-administratörsanvändarroller kan fungera med API:et. Du behöver inte en Defender for IoT-åtkomsttoken för att använda det här API:et.
 
 ### <a name="retrieve-device-information---externalv1devices"></a>Hämta enhetsinformation – /external/v1/devices ###
 
@@ -1809,7 +1809,7 @@ Matris med JSON-objekt som representerar enheter.
 
 - **zoneId:** Filtrera endast enheter som är relaterade till specifika zoner. [1](#1)
 
-- **sensorId:** Om du bara vill filtrera enheter som identifieras av specifika sensorer. [1](#1)
+- **sensorId:** Filtrera endast enheter som identifieras av specifika sensorer. [1](#1)
 
 ###### <a name="you-might-not-have-the-site-and-zone-id-if-this-is-the-case-query-all-devices-to-retrieve-the-site-and-zone-id"></a><a id="1">1</a> *Du kanske inte har plats- och zon-ID:t. Om så är fallet frågar du alla enheter för att hämta plats- och zon-ID:t.*
 
@@ -1827,7 +1827,7 @@ Matris med JSON-objekt som representerar enheter.
 
 #### <a name="device-fields"></a>Enhetsfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **sensorId** | Numerisk | No | - |
 | **Zonid** | Numerisk | Yes | - |
@@ -2056,12 +2056,12 @@ Använd det här API:et för att hämta alla eller filtrerade aviseringar från 
 | **Motor** | Sträng | No | Protokollöverträdelse, principöverträdelse, skadlig kod, avvikelse eller drift |
 | **sourceDevice** | Numerisk | Yes | Enhets-ID |
 | **destinationDevice** | Numerisk | Yes | Enhets-ID |
-| **sourceDeviceAddress** | Numerisk | Yes | IP, MAC, Null |
-| **destinationDeviceAddress** | Numerisk | Yes | IP, MAC, Null |
-| **remediationSteps** | Sträng | Yes | Åtgärdssteg som visas i aviseringen|
-| **sensorName** | Sträng | Yes | Namnet på sensorn som definierats av användaren i konsolen|
-|**Zonnamn** | Sträng | Yes | Namnet på zonen som är associerad med sensorn i konsolen|
-| **Platsnamn** | Sträng | Yes | Namnet på den plats som är associerad med sensorn i konsolen |
+| **sourceDeviceAddress** | Numerisk | Yes | IP, MAC |
+| **destinationDeviceAddress** | Numerisk | Yes | IP, MAC |
+| **remediationSteps** | Sträng | Yes | Reparationssteg som visas i aviseringen|
+| **sensorName** | Sträng | Yes | Namnet på sensorn som definierats av användaren |
+|**Zonnamn** | Sträng | Yes | Namn på zon som är associerad med sensorn|
+| **Platsnamn** | Sträng | Yes | Namnet på den plats som är associerad med sensorn |
 | **ytterligare information** | Ytterligare informationsobjekt | Yes | - |
 
 Observera att /api/v2/ krävs för följande information:
@@ -2075,7 +2075,7 @@ Observera att /api/v2/ krävs för följande information:
 
 #### <a name="additional-information-fields"></a>Ytterligare informationsfält
 
-| Namn | Typ | Kan ha värdet null | Lista över värden |
+| Namn | Typ | Kan ha värdet null | Lista med värden |
 |--|--|--|--|
 | **Beskrivning** | Sträng | No | - |
 | **Information** | JSON-matris | Inga | Sträng |
@@ -2183,13 +2183,13 @@ Observera att /api/v2/ krävs för följande information:
 > [!div class="mx-tdBreakAll"]
 > | Typ | API:er | Exempel |
 > |--|--|--|
-> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/external/v1/alerts?state=unhandled&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1' |
+> | GET | curl -k -H "Authorization: <AUTH_TOKEN>" 'https://<>IP_ADDRESS>/external/v1/alerts?state=&zoneId=&fromTime=&toTime=&siteId=&sensor=' | curl -k -H "Authorization: 1234b734a9244d54ab8d40aedddcabcd" 'https:/ <span> /127.0.0.1/external/v1/alerts?state=ohanterad&zoneId=1&fromTime=0&toTime=1594551777000&siteId=1&sensor=1' |
 
 ### <a name="qradar-alerts"></a>QRadar-aviseringar
 
-QRadar-integrering med Defender for IoT hjälper dig att identifiera de aviseringar som genereras av Defender for IoT och utföra åtgärder med dessa aviseringar. QRadar tar emot data från Defender för IoT och kontaktar sedan komponenten för den offentliga API:et för den lokala hanteringskonsolen.
+QRadar-integrering med Defender for IoT hjälper dig att identifiera aviseringar som genereras av Defender for IoT och utföra åtgärder med dessa aviseringar. QRadar tar emot data från Defender for IoT och kontaktar sedan den offentliga API-komponenten för den lokala hanteringskonsolen.
 
-Om du vill skicka data som identifieras av Defender for IoT till QRadar definierar  du en vidarespeeringsregel i Defender for IoT-systemet och väljer alternativet Fjärrsupportaviseringshantering.
+Om du vill skicka data som identifieras av Defender för IoT till QRadar definierar du en vidare vidarebefordransregel i Defender for IoT-systemet och väljer alternativet **Fjärrsupport** aviseringshantering.
 
 :::image type="content" source="media/references-work-with-defender-for-iot-apis/edit-forwarding-rules.png" alt-text="Redigera vidare vidarebefordransregler så att de matchar dina behov.":::
 
@@ -2197,7 +2197,7 @@ När du väljer det här alternativet när du konfigurerar vidare vidarebefordra
 
 - **UUID:** Unik aviseringsidentifierare, till exempel 1-1555245116250.
 
-- **Plats:** Platsen där aviseringen identifierades.
+- **Plats:** Den plats där aviseringen identifierades.
 
 - **Zon:** Zonen där aviseringen identifierades.
 
@@ -2219,11 +2219,11 @@ Exempel på nyttolasten som skickas till QRadar:
 
 #### <a name="request-content"></a>Begära innehåll
 
-JSON-objekt som representerar åtgärden som ska utföras på aviseringen som innehåller UUID.
+JSON-objekt som representerar åtgärden som ska utföras på den avisering som innehåller UUID.
 
 #### <a name="action-fields"></a>Åtgärdsfält
 
-| Namn | Typ | Kan ha värdet null | Lista med värden |
+| Namn | Typ | Kan ha värdet null | Lista över värden |
 |--|--|--|--|
 | **åtgärd** | Sträng | No | handle eller handleAndLearn |
 
@@ -2369,7 +2369,7 @@ Den här metoden är användbar när du vill ange en längre varaktighet än den
 
 - **404 (hittades inte):** Biljett-ID:t är inte länkat till en öppen underhållsfönstret.
 
-- **500 (internt serverfel):** Andra oväntade fel.
+- **500 (internt serverfel):** Annat oväntat fel.
 
 > [!NOTE]
 > Kontrollera att biljett-ID:t är länkat till ett befintligt öppet fönster.
@@ -2551,7 +2551,7 @@ Meddelandesträng med information om åtgärdsstatus:
 
 - **Lyckades – msg:** Lösenordet har ersatts
 
-- **Fel – fel:** Autentiseringsfel för användare
+- **Fel – fel:** Användarautentiseringsfel
 
 - **Fel – fel:** Lösenordet matchar inte säkerhetsprincipen
 
@@ -2586,7 +2586,7 @@ response:
 |--|--|--|
 | POST | curl -k -d '{"username": "<USER_NAME>","password": "<CURRENT_PASSWORD>","new_password": "<NEW_PASSWORD>"}" -H 'Content-Type: application/json' https://<IP_ADDRESS>/external/authentication/set_password | curl -k -d '{"username": "myUser","password": 1234@abcd " ","new_password": abcd@1234 " "}' -H 'Content-Type: application/json' https:/ <span> /127.0.0.1/external/authentication/set_password |
 
-### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Uppdatering av användarlösenord per systemadministratör – /extern/autentisering/set_password_by_admin
+### <a name="user-password-update-by-system-admin---externalauthenticationset_password_by_admin"></a>Uppdatering av användarlösenord av systemadministratör – /extern/autentisering/set_password_by_admin
 
 Använd det här API:et för att låta systemadministratörer ändra lösenord för angivna användare. Defender for IoT-administratörsanvändarroller kan fungera med API:et. Du behöver inte en Defender for IoT-åtkomsttoken för att använda det här API:et.
 
