@@ -1,7 +1,7 @@
 ---
-title: Välj hur du vill ge åtkomst till köa data med Azure CLI
+title: Välj hur du vill auktorisera åtkomst till ködata med Azure CLI
 titleSuffix: Azure Storage
-description: Ange hur data åtgärder ska auktoriseras mot köa data med Azure CLI. Du kan auktorisera data åtgärder med hjälp av autentiseringsuppgifter för Azure AD, med konto åtkomst nyckeln eller med en SAS-token (signatur för delad åtkomst).
+description: Ange hur du ska auktorisera dataåtgärder mot ködata med Azure CLI. Du kan auktorisera dataåtgärder med azure AD-autentiseringsuppgifter, med åtkomstnyckeln för kontot eller med en SAS-token (signatur för delad åtkomst).
 author: tamram
 services: storage
 ms.author: tamram
@@ -11,59 +11,59 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2f7092d8ce184d7021774814e96935e46d1ffb56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6b3ac012da97194134f58d061dd9d84e945db554
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100363176"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774475"
 ---
-# <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Välj hur du vill ge åtkomst till köa data med Azure CLI
+# <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Välj hur du vill auktorisera åtkomst till ködata med Azure CLI
 
-Azure Storage innehåller tillägg för Azure CLI som gör att du kan ange hur du vill auktorisera åtgärder för köa data. Du kan auktorisera data åtgärder på följande sätt:
+Azure Storage tillhandahåller tillägg för Azure CLI som gör att du kan ange hur du vill auktorisera åtgärder för ködata. Du kan auktorisera dataåtgärder på följande sätt:
 
-- Med en Azure Active Directory (Azure AD) säkerhets objekt. Microsoft rekommenderar att du använder Azure AD-autentiseringsuppgifter för överlägsen säkerhet och enkel användning.
-- Med konto åtkomst nyckeln eller en SAS-token (signatur för delad åtkomst).
+- Med ett Azure Active Directory (Azure AD) säkerhetsobjekt. Microsoft rekommenderar att du använder Azure AD-autentiseringsuppgifter för att få överlägsen säkerhet och enkel användning.
+- Med kontoåtkomstnyckeln eller en SAS-token (signatur för delad åtkomst).
 
-## <a name="specify-how-data-operations-are-authorized"></a>Ange hur data åtgärder auktoriseras
+## <a name="specify-how-data-operations-are-authorized"></a>Ange hur dataåtgärder auktoriserats
 
-Azure CLI-kommandon för att läsa och skriva köa data inkluderar den valfria `--auth-mode` parametern. Ange den här parametern för att ange hur en data åtgärd ska auktoriseras:
+Azure CLI-kommandon för att läsa och skriva ködata innehåller den valfria `--auth-mode` parametern . Ange den här parametern för att ange hur en dataåtgärd ska auktoreras:
 
-- Ange att `--auth-mode` parametern ska `login` Logga in med ett säkerhets objekt för Azure AD (rekommenderas).
-- Ange `--auth-mode` parametern till det bakåtkompatibla `key` värdet för att försöka hämta konto åtkomst nyckeln som ska användas för auktorisering. Om du utelämnar `--auth-mode` parametern försöker Azure CLI också hämta åtkomst nyckeln.
+- Ange `--auth-mode` parametern till `login` för att logga in med ett Azure AD-säkerhetsobjekt (rekommenderas).
+- Ange `--auth-mode` parametern till det äldre `key` värdet för att försöka hämta åtkomstnyckeln för kontot som ska användas för auktorisering. Om du utelämnar `--auth-mode` parametern försöker Azure CLI också hämta åtkomstnyckeln.
 
-Om du vill använda `--auth-mode` parametern kontrollerar du att du har installerat Azure CLI v-2.0.46 eller senare. Kör `az --version` för att kontrol lera den installerade versionen.
+Om du vill `--auth-mode` använda parametern kontrollerar du att du har installerat Azure CLI v2.0.46 eller senare. Kör `az --version` för att kontrollera den installerade versionen.
 
 > [!NOTE]
-> När ett lagrings konto är låst med ett Azure Resource Manager **skrivskyddat** lås, tillåts inte [list nyckel](/rest/api/storagerp/storageaccounts/listkeys) åtgärden för det lagrings kontot. **List nycklar** är en post-åtgärd och alla post-åtgärder förhindras när ett **skrivskyddat** lås har kon figurer ATS för kontot. Av den anledningen måste användare som inte redan har konto nycklar använda Azure AD-autentiseringsuppgifter för att få åtkomst till köa data när kontot är låst med ett **skrivskyddat** lås.
+> När ett lagringskonto är låst med Azure Resource Manager **skrivskyddad** låsning tillåts inte åtgärden Listnycklar för det lagringskontot. [](/rest/api/storagerp/storageaccounts/listkeys) **Listnycklar** är en POST-åtgärd och alla POST-åtgärder förhindras när **ett ReadOnly-lås** har konfigurerats för kontot. När kontot är låst med ett **ReadOnly-lås** måste därför användare som inte redan har kontonycklarna använda Azure AD-autentiseringsuppgifter för att få åtkomst till ködata.
 
 > [!IMPORTANT]
-> Om du utelämnar `--auth-mode` parametern eller anger den till `key` , försöker Azure CLI använda kontots åtkomst nyckel för auktorisering. I det här fallet rekommenderar Microsoft att du ger åtkomst nyckeln antingen i kommandot eller i `AZURE_STORAGE_KEY` miljövariabeln. Mer information om miljövariabler finns i avsnittet [Ange miljövariabler för parametrar för auktorisering](#set-environment-variables-for-authorization-parameters).
+> Om du utelämnar parametern eller anger den till försöker Azure CLI använda kontoåtkomstnyckeln för `--auth-mode` `key` auktorisering. I det här fallet rekommenderar Microsoft att du anger åtkomstnyckeln antingen i kommandot eller i `AZURE_STORAGE_KEY` miljövariabeln. Mer information om miljövariabler finns i avsnittet Set environment variables for authorization parameters (Ange [miljövariabler för auktoriseringsparametrar).](#set-environment-variables-for-authorization-parameters)
 >
-> Om du inte anger åtkomst nyckeln försöker Azure CLI anropa Azure Storage Resource Provider för att hämta den för varje åtgärd. Att utföra många data åtgärder som kräver ett anrop till resurs leverantören kan leda till begränsning. Mer information om begränsningar för resurs leverantörer finns i [skalbarhets-och prestanda mål för Azure Storage resurs leverantör](../common/scalability-targets-resource-provider.md).
+> Om du inte anger åtkomstnyckeln försöker Azure CLI anropa Azure Storage resursprovidern för att hämta den för varje åtgärd. Att utföra många dataåtgärder som kräver ett anrop till resursprovidern kan resultera i begränsning. Mer information om resursprovidergränser finns i [Skalbarhets- och prestandamål för Azure Storage resursprovidern](../common/scalability-targets-resource-provider.md).
 
 ## <a name="authorize-with-azure-ad-credentials"></a>Auktorisera med Azure AD-autentiseringsuppgifter
 
-När du loggar in på Azure CLI med Azure AD-autentiseringsuppgifter returneras en OAuth 2,0-åtkomsttoken. Token används automatiskt av Azure CLI för att auktorisera efterföljande data åtgärder mot Queue Storage. För åtgärder som stöds behöver du inte längre skicka en konto nyckel eller SAS-token med kommandot.
+När du loggar in på Azure CLI med Azure AD-autentiseringsuppgifter returneras en OAuth 2.0-åtkomsttoken. Denna token används automatiskt av Azure CLI för att auktorisera efterföljande dataåtgärder mot Queue Storage. För åtgärder som stöds behöver du inte längre skicka en kontonyckel eller SAS-token med kommandot .
 
-Du kan tilldela behörigheter till köa data till ett säkerhets objekt i Azure AD via rollbaserad åtkomst kontroll (Azure RBAC). Mer information om Azure-roller i Azure Storage finns i [Hantera åtkomst rättigheter för att Azure Storage data med Azure RBAC](../common/storage-auth-aad-rbac-portal.md).
+Du kan tilldela behörigheter till ködata till ett Azure AD-säkerhetsobjekt via rollbaserad åtkomstkontroll i Azure (Azure RBAC). Mer information om Azure-roller i Azure Storage finns i [Hantera åtkomstbehörigheter för att Azure Storage data med Azure RBAC.](../common/storage-auth-aad-rbac-portal.md)
 
-### <a name="permissions-for-calling-data-operations"></a>Behörigheter för att anropa data åtgärder
+### <a name="permissions-for-calling-data-operations"></a>Behörigheter för att anropa dataåtgärder
 
-Azure Storage-tilläggen stöds för åtgärder på köa data. Vilka åtgärder som kan anropas beror på vilka behörigheter som beviljats för det säkerhets objekt i Azure AD som du loggar in på Azure CLI. Behörigheter till köer tilldelas via Azure RBAC. Om du till exempel har tilldelats rollen **lagrings köns data läsare** kan du köra skript kommandon som läser data från en kö. Om du har tilldelats rollen **lagrings köns data deltagare** kan du köra skript kommandon som läser, skriver eller tar bort en kö eller de data som de innehåller.
+Tilläggen Azure Storage stöds för åtgärder med ködata. Vilka åtgärder du kan anropa beror på de behörigheter som beviljas till Azure AD-säkerhetsobjekt som du loggar in på Azure CLI med. Behörigheter till köer tilldelas via Azure RBAC. Om du till exempel har tilldelats rollen **Storage Queue Data Reader** kan du köra skriptkommandon som läser data från en kö. Om du har tilldelats **rollen Storage Queue Data Contributor** kan du köra skriptkommandon som läser, skriver eller tar bort en kö eller de data som de innehåller.
 
-Mer information om de behörigheter som krävs för varje Azure Storage-åtgärd i en kö finns i [anropa lagrings åtgärder med OAuth-token](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens).  
+Mer information om de behörigheter som krävs för varje Azure Storage i en kö finns i [Anropa lagringsåtgärder med OAuth-token.](/rest/api/storageservices/authorize-with-azure-active-directory#call-storage-operations-with-oauth-tokens)  
 
-### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>Exempel: auktorisera en åtgärd för att skapa en kö med Azure AD-autentiseringsuppgifter
+### <a name="example-authorize-an-operation-to-create-a-queue-with-azure-ad-credentials"></a>Exempel: Auktorisera en åtgärd för att skapa en kö med Azure AD-autentiseringsuppgifter
 
-I följande exempel visas hur du skapar en kö från Azure CLI med dina autentiseringsuppgifter för Azure AD. Om du vill skapa kön måste du logga in på Azure CLI och du behöver en resurs grupp och ett lagrings konto.
+I följande exempel visas hur du skapar en kö från Azure CLI med dina autentiseringsuppgifter för Azure AD. Om du vill skapa kön måste du logga in på Azure CLI och du behöver en resursgrupp och ett lagringskonto.
 
-1. Innan du skapar kön ska du tilldela rollen [Storage Queue data Contributor](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) till dig själv. Även om du är kontots ägare behöver du explicita behörigheter för att utföra data åtgärder mot lagrings kontot. Mer information om hur du tilldelar Azure-roller finns i [använda Azure Portal för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-portal.md).
+1. Innan du skapar kön tilldelar du rollen [Storage Queue Data-deltagare](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor) till dig själv. Även om du är kontoägare behöver du explicit behörighet att utföra dataåtgärder mot lagringskontot. Mer information om hur du tilldelar Azure-roller finns i Använda Azure Portal för att tilldela en Azure-roll för [åtkomst till blob- och ködata.](../common/storage-auth-aad-rbac-portal.md)
 
     > [!IMPORTANT]
-    > Det kan ta några minuter att sprida Azures roll tilldelningar.
+    > Azure-rolltilldelningar kan ta några minuter att spridas.
 
-1. Anropa [`az storage queue create`](/cli/azure/storage/queue#az-storage-queue-create) kommandot med den `--auth-mode` parameter som har angetts för `login` att skapa kön med dina AUTENTISERINGSUPPGIFTER för Azure AD. Kom ihåg att ersätta plats hållarnas värden inom vinkelparenteser med dina egna värden:
+1. Anropa kommandot [`az storage queue create`](/cli/azure/storage/queue#az_storage_queue_create) med `--auth-mode` parametern inställd på för att skapa kön `login` med dina Autentiseringsuppgifter för Azure AD. Kom ihåg att ersätta platshållarvärden inom vinkelparenteser med dina egna värden:
 
     ```azurecli
     az storage queue create \
@@ -72,11 +72,11 @@ I följande exempel visas hur du skapar en kö från Azure CLI med dina autentis
         --auth-mode login
     ```
 
-## <a name="authorize-with-the-account-access-key"></a>Auktorisera med konto åtkomst nyckeln
+## <a name="authorize-with-the-account-access-key"></a>Auktorisera med åtkomstnyckeln för kontot
 
-Om du har konto nyckeln kan du anropa alla Azure Storage data åtgärder. I allmänhet är det mindre säkert att använda konto nyckeln. Om konto nyckeln komprometteras kan alla data i ditt konto komprometteras.
+Om du har kontonyckeln kan du anropa valfri Azure Storage dataåtgärd. I allmänhet är det mindre säkert att använda kontonyckeln. Om kontonyckeln komprometteras kan alla data i ditt konto komprometteras.
 
-I följande exempel visas hur du skapar en kö med hjälp av kontots åtkomst nyckel. Ange konto nyckeln och ange `--auth-mode` parametern med `key` värdet:
+I följande exempel visas hur du skapar en kö med åtkomstnyckeln för kontot. Ange kontonyckeln och ange `--auth-mode` parametern med `key` värdet:
 
 ```azurecli
 az storage queue create \
@@ -88,7 +88,7 @@ az storage queue create \
 
 ## <a name="authorize-with-a-sas-token"></a>Auktorisera med en SAS-token
 
-Om du har en SAS-token kan du anropa data åtgärder som tillåts av SAS. I följande exempel visas hur du skapar en kö med en SAS-token:
+Om du har en SAS-token kan du anropa dataåtgärder som tillåts av SAS. I följande exempel visas hur du skapar en kö med hjälp av en SAS-token:
 
 ```azurecli
 az storage queue create \
@@ -97,19 +97,19 @@ az storage queue create \
     --sas-token <token>
 ```
 
-## <a name="set-environment-variables-for-authorization-parameters"></a>Ange miljövariabler för parametrar för auktorisering
+## <a name="set-environment-variables-for-authorization-parameters"></a>Ange miljövariabler för auktoriseringsparametrar
 
-Du kan ange auktoriseringsregler i miljövariabler för att undvika att ta med dem vid varje anrop till en Azure Storage data åtgärd. I följande tabell beskrivs tillgängliga miljövariabler.
+Du kan ange auktoriseringsparametrar i miljövariabler för att undvika att inkludera dem vid varje anrop Azure Storage en dataåtgärd. I följande tabell beskrivs tillgängliga miljövariabler.
 
-| Miljövariabel | Beskrivning |
+| Miljövariabel | Description |
 |--|--|
-| **AZURE_STORAGE_ACCOUNT** | Namnet på lagringskontot. Den här variabeln ska användas tillsammans med antingen lagrings konto nyckeln eller en SAS-token. Om ingen sådan används försöker Azure CLI Hämta åtkomst nyckeln för lagrings kontot med hjälp av det autentiserade Azure AD-kontot. Om ett stort antal kommandon körs samtidigt kan begränsningen för Azure Storage resurs leverantörs begränsning nås. Mer information om begränsningar för resurs leverantörer finns i [skalbarhets-och prestanda mål för Azure Storage resurs leverantör](../common/scalability-targets-resource-provider.md). |
-| **AZURE_STORAGE_KEY** | Nyckeln till lagringskontot. Den här variabeln måste användas tillsammans med lagrings kontots namn. |
-| **AZURE_STORAGE_CONNECTION_STRING** | En anslutnings sträng som innehåller lagrings konto nyckeln eller en SAS-token. Den här variabeln måste användas tillsammans med lagrings kontots namn. |
-| **AZURE_STORAGE_SAS_TOKEN** | En SAS-token (signatur för delad åtkomst). Den här variabeln måste användas tillsammans med lagrings kontots namn. |
-| **AZURE_STORAGE_AUTH_MODE** | Det Authorization-läge som kommandot ska köras med. Tillåtna värden är `login` (rekommenderas) eller `key` . Om du anger `login` så använder Azure CLI dina Azure AD-autentiseringsuppgifter för att auktorisera data åtgärden. Om du anger bakåtkompatibelt `key` läge försöker Azure CLI fråga efter kontots åtkomst nyckel och auktoriserar kommandot med nyckeln. |
+| **AZURE_STORAGE_ACCOUNT** | Namnet på lagringskontot. Den här variabeln ska användas tillsammans med lagringskontonyckeln eller en SAS-token. Om ingen av dem finns försöker Azure CLI hämta åtkomstnyckeln för lagringskontot med hjälp av det autentiserade Azure AD-kontot. Om ett stort antal kommandon körs samtidigt kan begränsningsgränsen Azure Storage resursprovidern nås. Mer information om resursprovidergränser finns i [Skalbarhets- och prestandamål för Azure Storage resursprovidern](../common/scalability-targets-resource-provider.md). |
+| **AZURE_STORAGE_KEY** | Nyckeln till lagringskontot. Den här variabeln måste användas tillsammans med lagringskontots namn. |
+| **AZURE_STORAGE_CONNECTION_STRING** | En anslutningssträng som innehåller lagringskontonyckeln eller en SAS-token. Den här variabeln måste användas tillsammans med lagringskontots namn. |
+| **AZURE_STORAGE_SAS_TOKEN** | En SAS-token (signatur för delad åtkomst). Den här variabeln måste användas tillsammans med lagringskontots namn. |
+| **AZURE_STORAGE_AUTH_MODE** | Auktoriseringsläget som kommandot ska köras med. Tillåtna värden `login` är (rekommenderas) eller `key` . Om du anger `login` använder Azure CLI dina Autentiseringsuppgifter för Azure AD för att auktorisera dataåtgärden. Om du anger det äldre läget försöker Azure CLI fråga efter åtkomstnyckeln för kontot `key` och auktorisera kommandot med nyckeln. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Använd Azure CLI för att tilldela en Azure-roll för åtkomst till blob-och Queue-data](../common/storage-auth-aad-rbac-cli.md)
-- [Ge åtkomst till blob-och Queue-data med hanterade identiteter för Azure-resurser](../common/storage-auth-aad-msi.md)
+- [Använda Azure CLI för att tilldela en Azure-roll för åtkomst till blob- och ködata](../common/storage-auth-aad-rbac-cli.md)
+- [Auktorisera åtkomst till blob- och ködata med hanterade identiteter för Azure-resurser](../common/storage-auth-aad-msi.md)

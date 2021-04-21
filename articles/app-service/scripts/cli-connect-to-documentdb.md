@@ -9,12 +9,12 @@ ms.topic: sample
 ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18, devx-track-azurecli
-ms.openlocfilehash: b29609d2bc2c518312bc777d1464755091c11b26
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: f76f036e2101fb1dbb4483ba417f5cf10f3e37f4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482593"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782424"
 ---
 # <a name="connect-an-app-service-app-to-cosmos-db-using-cli"></a>Ansluta en App Service-app till Cosmos DB med hjälp av CLI
 
@@ -38,12 +38,12 @@ I det här skriptet används följande kommandon för att skapa en resursgrupp, 
 
 | Kommando | Kommentarer |
 |---|---|
-| [`az group create`](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [`az appservice plan create`](/cli/azure/appservice/plan#az-appservice-plan-create) | Skapar en App Service-plan. |
-| [`az webapp create`](/cli/azure/webapp#az-webapp-create) | Skapar en App Service-app. |
-| [`az cosmosdb create`](/cli/azure/cosmosdb#az-cosmosdb-create) | Skapar ett Cosmos DB-konto. |
-| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az-cosmosdb-list-connection-strings) | Anger anslutningssträngar för det angivna Cosmos DB-kontot. |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
+| [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) | Skapar en App Service-plan. |
+| [`az webapp create`](/cli/azure/webapp#az_webapp_create) | Skapar en App Service-app. |
+| [`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) | Skapar ett Cosmos DB-konto. |
+| [`az cosmosdb list-connection-strings`](/cli/azure/cosmosdb#az_cosmosdb_list_connection_strings) | Anger anslutningssträngar för det angivna Cosmos DB-kontot. |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Skapar eller uppdaterar en appinställning för en App Service-app. Appinställningarna visas som miljövariabler för din app. |
 
 ## <a name="next-steps"></a>Nästa steg
 

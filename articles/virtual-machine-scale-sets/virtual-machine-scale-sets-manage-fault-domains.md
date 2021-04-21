@@ -1,6 +1,6 @@
 ---
-title: Hantera fel domäner i skalnings uppsättningar för virtuella Azure-datorer
-description: Lär dig hur du väljer rätt antal fd när du skapar en skalnings uppsättning för virtuella datorer.
+title: Hantera feldomäner i skalningsuppsättningar för virtuella Azure-datorer
+description: Lär dig hur du väljer rätt antal FD:er när du skapar en VM-skalningsuppsättning.
 author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
@@ -9,23 +9,23 @@ ms.subservice: availability
 ms.date: 12/18/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 8c114d6260cf81bcc4fb256fc8a09947ab9ce1d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 10d45662f84a354ee4b261c2e7255a57aa81ad0f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502492"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774493"
 ---
 # <a name="choosing-the-right-number-of-fault-domains-for-virtual-machine-scale-set"></a>Välja rätt antal feldomäner för skaluppsättningar för den virtuella datorn
-Skalnings uppsättningar för virtuella datorer skapas med fem fel domäner som standard i Azure-regioner utan zoner. För regioner som stöder zonindelade-distribution av skalnings uppsättningar för virtuella datorer och det här alternativet har valts är standardvärdet för antal fel domäner 1 för var och en av zonerna. FD = 1 i det här fallet innebär det att de virtuella dator instanserna som hör till skalnings uppsättningen kommer att spridas över flera rack på bästa möjliga sätt.
+VM-skalningsuppsättningar skapas med fem feldomäner som standard i Azure-regioner utan zoner. För de regioner som stöder zonindelig distribution av VM-skalningsuppsättningar och det här alternativet är valt är standardvärdet för antalet feldomäner 1 för var och en av zonerna. FD =1 innebär i det här fallet att de VM-instanser som tillhör skalningsuppsättningen sprids över många rack efter bästa försök.
 
-Du kan också överväga att justera antalet fel domäner för skalnings uppsättningar med antalet Managed Disks fel domäner. Den här justeringen kan hjälpa till att förhindra förlust av kvorum om hela Managed Disks fel domänen slutar fungera. Antalet FD-instanser kan anges till mindre än eller lika med antalet Managed Disks fel domäner som är tillgängliga i varje region. Läs det här [dokumentet](../virtual-machines/availability.md) om du vill veta mer om antalet Managed disks fel domäner per region.
+Du kan också överväga att justera antalet feldomäner för skalningsuppsättningen med antalet Managed Disks feldomäner. Den här justeringen kan förhindra förlust av kvorum om en Managed Disks feldomänen går ned. FD-antalet kan anges till mindre än eller lika med det antal Managed Disks feldomäner som är tillgängliga i var och en av regionerna. Läs det här [dokumentet](../virtual-machines/availability.md) om du vill veta mer om antalet Managed Disks feldomäner efter region.
 
 ## <a name="rest-api"></a>REST-API
-Du kan ange egenskapen `properties.platformFaultDomainCount` till 1, 2 eller 3 (Standardvärdet är 3 om inget anges). Läs dokumentationen för REST API [här](/rest/api/compute/virtualmachinescalesets/createorupdate).
+Du kan ange egenskapen `properties.platformFaultDomainCount` till 1, 2 eller 3 (standardvärdet 3 om inget annat anges). Läs dokumentationen för REST API [här](/rest/api/compute/virtualmachinescalesets/createorupdate).
 
 ## <a name="azure-cli"></a>Azure CLI
-Du kan ange parametern `--platform-fault-domain-count` till 1, 2 eller 3 (Standardvärdet är 3 om inget anges). Se dokumentationen för Azure CLI [här](/cli/azure/vmss#az-vmss-create).
+Du kan ange parametern `--platform-fault-domain-count` till 1, 2 eller 3 (standardvärdet 3 om inget annat anges). Läs dokumentationen för Azure CLI [här.](/cli/azure/vmss#az_vmss_create)
 
 ```azurecli-interactive
 az vmss create \
@@ -41,4 +41,4 @@ az vmss create \
 Det tar några minuter att skapa och konfigurera alla skalningsuppsättningsresurser och virtuella datorer.
 
 ## <a name="next-steps"></a>Nästa steg
-- Lär dig mer om [tillgänglighets-och redundans funktioner](../virtual-machines/availability.md) för Azure-miljöer.
+- Läs mer om [funktioner för tillgänglighet och redundans](../virtual-machines/availability.md) för Azure-miljöer.

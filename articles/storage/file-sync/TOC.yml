@@ -1,0 +1,268 @@
+- name: Azure File Sync dokumentation
+  href: index.yml
+- name: Översikt
+  expanded: true
+  items:
+    - name: Vad är Azure File Sync?
+      href: file-sync-introduction.md
+- name: Självstudier
+  items:
+    - name: Utöka Windows-filservrar med Azure File Sync
+      href: file-sync-extend-servers.md
+- name: Begrepp
+  items:
+    - name: Planera för distribution av Azure File Sync
+      href: file-sync-planning.md
+    - name: Nätverksöverväganden för hybridåtkomst
+      href: file-sync-networking-overview.md
+    - name: Lagringsnivåer för moln
+      items:
+        - name: Översikt över molnnivåindelad
+          href: file-sync-cloud-tiering-overview.md
+        - name: Översikt över principer för molnnivåindelad lagring
+          href: file-sync-cloud-tiering-policy.md
+        - name: Välj dina principer för molnnivåindelad lagring
+          href: file-sync-choose-cloud-tiering-policies.md
+        - name: Övervaka molnnivåindelad
+          href: file-sync-monitor-cloud-tiering.md
+    - name: Mål för skalbarhet och prestanda
+      href: ../files/storage-files-scale-targets.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Förhindra oavsiktlig databorttagning
+      href: ../files/storage-files-prevent-file-share-deletion.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Säkerhetskopiera filresurser
+      href: ../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Förstå fakturering
+      href: ../files/understanding-billing.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Kryptering
+      items:
+        - name: Kryptering i vila
+          href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Kryptering av vilande data med kundhanterade nycklar
+          href: ../common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Efterlevnadserbjudanden
+      href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: VANLIGA FRÅGOR OCH SVAR
+      href: ../files/storage-files-faq.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Anvisningar
+  items:
+    - name: Distribuera
+      items:
+        - name: Skapa en SMB-filresurs
+          href: ../files/storage-how-to-create-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Distribuera Azure File Sync
+          href: file-sync-deployment-guide.md
+    - name: Nätverk
+      items:
+        - name: Konfigurera nätverksslutpunkter i Azure File Sync
+          href: file-sync-networking-endpoints.md
+        - name: Konfigurera inställningar för File Sync-proxy och brandvägg
+          href: file-sync-firewall-and-proxy.md
+        - name: Konfigurera en plats-till-plats-anslutning via VPN
+          href: ../files/storage-files-configure-s2s-vpn.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurera en punkt-till-plats-anslutning via VPN på Windows
+          href: ../files/storage-files-configure-p2s-vpn-windows.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Hantera
+      items:
+        - name: Registrera en server med Azure File Sync
+          href: file-sync-server-registration.md
+        - name: Lägga till en serverslutpunkt för Azure File Sync
+          href: file-sync-server-endpoint.md
+        - name: Hantera lagring i moln som inte är beroende av Azure
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Initiera en kontoredundans
+          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Hantera nivåindelade filer
+          href: file-sync-how-to-manage-tiered-files.md
+        - name: 'Flytta resurser till andra resursgrupper, prenumerationer och AAD-klientorganisationer'
+          href: file-sync-resource-move.md
+    - name: Dataskydd
+      items:
+        - name: Aktivera mjuk borttagning
+          href: ../files/storage-files-enable-soft-delete.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Ändra hur data replikeras
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Hantera dataredundans
+          items:
+            - name: Ändra hur data replikeras
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Skapa högtillgängliga program
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Hantera haveriberedskap
+          items:
+            - name: Kontrollera egenskapen Tidpunkt för senaste synkronisering
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Initiera kontoredundans
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Säkerhetskopiera filresurser
+          items:
+            - name: Portalen
+              href: ../../backup/backup-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: CLI
+              href: ../../backup/backup-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/backup-azure-afs-automation.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST-API
+              href: ../../backup/backup-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Återställa filresurser
+          items:
+            - name: Portalen
+              href: ../../backup/restore-afs.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: CLI
+              href: ../../backup/restore-afs-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/restore-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST-API
+              href: ../../backup/restore-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Hantera filresurser
+          items:
+            - name: Portalen
+              href: ../../backup/manage-afs-backup.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: CLI
+              href: ../../backup/manage-afs-backup-cli.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: PowerShell
+              href: ../../backup/manage-afs-powershell.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: REST-API
+              href: ../../backup/manage-azure-file-share-rest-api.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Övervaka
+      items:
+        - name: Övervaka Azure Files
+          href: ../files/storage-files-monitoring.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Övervaka Azure File Sync
+          href: file-sync-monitoring.md
+    - name: Migrera
+      items:
+        - name: Migrera till Azure-filresurser
+          href: ../files/storage-files-migration-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Ange en hybriddistribution som mål
+          items:
+            - name: Migrera bulkdata till Azure File Sync med Azure Data Box
+              href: file-sync-offline-data-transfer.md
+            - name: Migrera från Linux till en hybridfilserver med Azure File Sync
+              href: ../files/storage-files-migration-linux-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migrera från en lokal NAS till en hybridfilserver med Azure File Sync
+              href: ../files/storage-files-migration-nas-hybrid.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migrera från en lokal NAS till en hybridfilserver med DataBox
+              href: ../files/storage-files-migration-nas-hybrid-databox.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Från StorSimple
+          items:
+            - name: Migreringsguide för StorSimple 8100 och 8600
+              href: ../files/storage-files-migration-storsimple-8000.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Migreringsguide för StorSimple 1200
+              href: ../files/storage-files-migration-storsimple-1200.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Aktivera stora filresurser
+      href: ../files/storage-files-how-to-create-large-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Skydda
+      items:
+        - name: Hantera lagringskontots krypteringsnycklar
+          items:
+            - name: Kontrollera krypteringsnyckelmodellen för kontot
+              href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Konfigurera kryptering med kundhanterade nycklar
+              items:
+                - name: Lagra kundhanterade nycklar i ett nyckelvalv
+                  href: ../common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+                - name: Lagra kundhanterade nycklar i ett hanterat HSM
+                  href: ../common/customer-managed-keys-configure-key-vault-hsm.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Aktivera infrastrukturkryptering för kontot
+          href: ../common/infrastructure-encryption-enable.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurera Azure Defender för hotskydd
+          href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Konfigurera brandväggar och virtuella nätverk
+          href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Kräv säker överföring
+          href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Hantera TLS (Transport Layer Security)
+          items:
+            - name: Framtvinga lägsta TLS-version för inkommande begäranden
+              href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+            - name: Konfigurera TLS-version för ett klientprogram
+              href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Felsöka
+      items:
+        - name: Felsöka Azure Files på Windows (SMB)
+          href: ../files/storage-troubleshoot-windows-file-connection-problems.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Felsöka prestanda av Azure-filresurser
+          href: ../files/storage-troubleshooting-files-performance.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Felsök Azure File Sync
+          href: file-sync-troubleshoot.md
+        - name: Felsöka borttagning av Azure-filresurser
+          href: ../files/storage-troubleshoot-cannot-delete-files-azure-file-share.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+        - name: Felsöka säkerhetskopiering av filresurser
+          href: ../../backup/troubleshoot-azure-files.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Referens
+  items:
+    - name: Referens för Azure Files
+      href: ../files/reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Referens för övervakning av Azure Files
+      href: ../files/storage-files-monitoring-reference.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+    - name: Resource Manager-mall
+      displayName: arm
+      href: /azure/templates/microsoft.storage/allversions
+    - name: Exempel
+      href: 'https://azure.microsoft.com/documentation/samples/?service=storage&term=file'
+    - name: Azure Files och Azure NetApp Files jämförelse
+      href: ../files/storage-files-netapp-comparison.md?toc=%2fazure%2fstorage%2ffile-sync%2ftoc.json
+- name: Resurser
+  items:
+    - name: Azure-uppdateringar
+      href: 'https://azure.microsoft.com/updates/?category=storage'
+    - name: Viktig information om Azure File Sync
+      href: file-sync-release-notes.md
+    - name: Azure Files på Microsoft Q&A
+      href: /answers/topics/azure-files.html
+    - name: Azure Files på Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/azure-files'
+    - name: Prissättning för Azure Files
+      href: 'https://azure.microsoft.com/pricing/details/storage/files/'
+    - name: Priskalkylator för Azure
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: Videoklipp
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=storage'
+    - name: NuGet-paket (.NET)
+      items:
+        - name: Microsoft.Azure.Storage.Common (version 11.x)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/'
+        - name: Azure.Storage.Common (version 12.x – förhandsversion)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Common/'
+        - name: Microsoft.Azure.Storage.File (version 11.x)
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.File/'
+        - name: Azure.Storage.File (version 12.x – förhandsversion)
+          href: 'https://www.nuget.org/packages/Azure.Storage.Files/'
+        - name: Azure Configuration Manager
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/'
+        - name: Azure Storage Data Movement Library
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/'
+        - name: Bibliotek för lagringsresursprovider
+          href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/'
+    - name: Källkod
+      items:
+        - name: .NET
+          items:
+            - name: Azure Storage-klientbibliotek
+              items:
+                - name: Version 12.x (förhandsversion)
+                  href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage'
+                - name: Version 11.x och tidigare
+                  href: 'https://github.com/Azure/azure-storage-net'
+            - name: Bibliotek för dataflytt
+              href: 'https://github.com/Azure/azure-storage-net-data-movement'
+            - name: Bibliotek för lagringsresursprovider
+              href: 'https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Microsoft.Azure.Management.Storage'
+        - name: Java
+          items:
+            - name: Azure Storage-klientbibliotek version 12.x (förhandsversion)
+              href: 'https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage'
+            - name: Azure Storage-klientbibliotek version 8.x och tidigare
+              href: 'https://github.com/Azure/azure-storage-java'
+        - name: Node.js
+          items:
+            - name: Azure Storage-klientbibliotek version 12.x (förhandsversion)
+              href: 'https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage'
+            - name: Azure Storage-klientbibliotek version 10.x
+              href: 'https://github.com/Azure/azure-storage-node'
+        - name: Python
+          items:
+            - name: Azure Storage-klientbibliotek version 12.x (förhandsversion)
+              href: 'https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage'
+            - name: Azure Storage-klientbibliotek version 2.1
+              href: 'https://github.com/Azure/azure-storage-python'

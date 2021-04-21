@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
-ms.openlocfilehash: 0e75eebc7aa63efe6d28069bf7ca82234ac15a25
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 67531c1c5d37b02f9107dfc487c10b2fcac734d8
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750004"
+ms.locfileid: "107791975"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Självstudie: Importera ett certifikat i Azure Key Vault
 
@@ -103,9 +103,9 @@ az keyvault certificate import --file
                                [--tags]
 ```
 
-Läs mer om [parametrarna](/cli/azure/keyvault/certificate#az-keyvault-certificate-import).
+Läs mer om [parametrarna](/cli/azure/keyvault/certificate#az_keyvault_certificate_import).
 
-När du har importerat certifikatet kan du visa certifikatet med hjälp [av Certificate show](/cli/azure/keyvault/certificate#az-keyvault-certificate-show)
+När du har importerat certifikatet kan du visa certifikatet med hjälp [av Certificate show](/cli/azure/keyvault/certificate#az_keyvault_certificate_show)
 
 
 ```azurecli
@@ -152,5 +152,5 @@ När du inte behöver resursgruppen längre så tar du bort den. Då tas även n
 I den här självstudien har du skapat Key Vault och importerat ett certifikat i den. Mer information om Key Vault och hur du integrerar det med dina program finns i artiklarna nedan.
 
 - Läs mer om [att hantera skapande av certifikat i Azure Key Vault](./create-certificate-scenarios.md)
-- Se exempel på import [av certifikat med hjälp av REST API:er](/rest/api/keyvault/importcertificate/importcertificate)
-- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)
+- Se exempel på import [av certifikat med hjälp av REST-API:er](/rest/api/keyvault/importcertificate/importcertificate)
+- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)

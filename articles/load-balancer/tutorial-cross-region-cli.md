@@ -1,42 +1,42 @@
 ---
-title: 'Självstudie: skapa en belastningsutjämnare för flera regioner med Azure CLI'
+title: 'Självstudie: Skapa en lastbalanserare mellan regioner med Azure CLI'
 titleSuffix: Azure Load Balancer
-description: Kom igång med den här självstudien för att distribuera en Azure Load Balancer över flera regioner med Azure CLI.
+description: Kom igång med den här självstudiekursen om hur du distribuerar en Azure Load Balancer med hjälp av Azure CLI.
 author: asudbring
 ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 03/04/2021
-ms.openlocfilehash: 83efb428a94d49b77ecd923d4868afe034374b5f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ca4134ff25dc9915f256b5a7bdd9404021b60a8e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103225191"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791921"
 ---
-# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Självstudie: skapa en Azure Load Balancer över flera regioner med Azure CLI
+# <a name="tutorial-create-a-cross-region-azure-load-balancer-using-azure-cli"></a>Självstudie: Skapa en Azure Load Balancer med Azure CLI
 
-En belastningsutjämnare för flera regioner säkerställer att en tjänst är tillgänglig globalt över flera Azure-regioner. Om en region Miss lyckas dirigeras trafiken till nästa närmaste felfria regionala belastnings utjämning.  
+En lastbalanserare mellan regioner säkerställer att en tjänst är tillgänglig globalt i flera Azure-regioner. Om en region misslyckas dirigeras trafiken till nästa närmaste felfria regionala lastbalanserare.  
 
 I den här guiden får du lära dig att:
 
 > [!div class="checklist"]
-> * Skapa en belastningsutjämnare för flera regioner.
+> * Skapa lastbalanserare mellan regioner.
 > * Skapa en lastbalanseringsregel.
-> * Skapa en backend-pool som innehåller två regionala belastningsutjämnare.
-> * Testa belastningsutjämnaren.
+> * Skapa en backend-pool som innehåller två regionala lastbalanserare.
+> * Testa lastbalanseraren.
 
-Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 - En Azure-prenumeration.
-- Två **standardiserade** SKU: er i Azure med backend-pooler distribuerade i två olika Azure-regioner.
-    - Information om hur du skapar en regional standard belastningsutjämnare och virtuella datorer för backend-pooler finns i [snabb start: skapa en offentlig belastningsutjämnare för att belastningsutjämna virtuella datorer med Azure CLI](quickstart-load-balancer-standard-public-cli.md).
-        - Lägg till namnet på belastningsutjämnaren och virtuella datorer i varje region med a **-R1** och **-R2**. 
+- Två  Standard-SKU:er för Azure Load Balancers med backend-pooler distribuerade i två olika Azure-regioner.
+    - Information om hur du skapar en regional standardlastbalanserare och virtuella datorer för serverpooler finns i Snabbstart: Skapa en offentlig [lastbalanserare](quickstart-load-balancer-standard-public-cli.md)för att belastningsutjämna virtuella datorer med Azure CLI.
+        - Lägg till namnet på lastbalanserarna och de virtuella datorerna i varje region med **-R1** och **-R2.** 
 - Azure CLI installerat lokalt eller Azure Cloud Shell.
 
-Om du väljer att installera och använda CLI lokalt kräver den här snabb starten Azure CLI version 2.0.28 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
+Om du väljer att installera och använda CLI lokalt kräver den här snabbstarten Azure CLI version 2.0.28 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sign-in-to-azure-cli"></a>Logga in på Azure CLI
 
@@ -46,18 +46,18 @@ Logga in på Azure CLI:
 az login
 ```
 
-## <a name="create-cross-region-load-balancer"></a>Skapa en belastningsutjämnare för flera regioner
+## <a name="create-cross-region-load-balancer"></a>Skapa lastbalanserare mellan regioner
 
-I det här avsnittet ska du skapa en belastningsutjämnare för flera regioner, offentlig IP-adress och belastnings Utjämnings regel.
+I det här avsnittet skapar du en lastbalanserare mellan regioner, en offentlig IP-adress och en lastbalanseringsregel.
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
 En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
-Skapa en resurs grupp med [AZ Group Create](/cli/azure/group#az-group-create):
+Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create):
 
-* Med namnet **myResourceGroupLB – CR**.
-* På den **västra** platsen.
+* Med **namnet myResourceGroupLB-CR.**
+* På platsen **usa, västra.**
 
 ```azurecli-interactive
   az group create \
@@ -65,13 +65,13 @@ Skapa en resurs grupp med [AZ Group Create](/cli/azure/group#az-group-create):
     --location westus
 ```
 
-### <a name="create-the-load-balancer-resource"></a>Skapa belastnings Utjämnings resursen
+### <a name="create-the-load-balancer-resource"></a>Skapa lastbalanseringsresursen
 
-Skapa en belastningsutjämnare för flera regioner med [AZ Network Cross-region – lb Create](/cli/azure/network/cross-region-lb#az_network_cross_region_lb_create):
+Skapa en lastbalanserare mellan regioner med [az network cross-region-lb create](/cli/azure/network/cross-region-lb#az_network_cross_region_lb_create):
 
-* Med namnet **myLoadBalancer – CR**.
-* En frontend-pool med namnet min **frontend-CR**.
-* En backend-pool med namnet **myBackEndPool-CR**.
+* Med **namnet myLoadBalancer-CR**.
+* En frontend-pool med **namnet myFrontEnd-CR**.
+* En backend-pool med **namnet myBackEndPool-CR**.
 
 ```azurecli-interactive
   az network cross-region-lb create \
@@ -83,18 +83,18 @@ Skapa en belastningsutjämnare för flera regioner med [AZ Network Cross-region 
 
 ### <a name="create-the-load-balancer-rule"></a>Skapa lastbalanseringsregeln
 
-En belastnings Utjämnings regel definierar:
+En lastbalanseringsregel definierar:
 
-* IP-konfiguration för klient delen för inkommande trafik.
-* Server delens IP-pool för att ta emot trafiken.
-* Käll-och mål port som krävs. 
+* Frontend-IP-konfiguration för inkommande trafik.
+* Backend-IP-poolen som ska ta emot trafiken.
+* Käll- och målporten som krävs. 
 
-Skapa en belastnings Utjämnings regel med [AZ Network Cross-region-lb Rule Create](/cli/azure/network/cross-region-lb/rule#az_network_cross_region_lb_rule_create):
+Skapa en lastbalanseringsregel [med az network cross-region-lb rule create](/cli/azure/network/cross-region-lb/rule#az_network_cross_region_lb_rule_create):
 
-* Med namnet **myHTTPRule – CR**
-* Lyssnar på **Port 80** i frontend-poolens klient del **-CR**.
-* Skickar belastningsutjämnad nätverks trafik till backend-adresspoolen **myBackEndPool-CR** med **port 80**. 
-* Protokoll- **TCP**.
+* Med **namnet myHTTPRule-CR**
+* Lyssnar på **port 80** i frontend-poolen **myFrontEnd-CR**.
+* Skicka belastningsutjämnad nätverkstrafik till backend-adresspoolen **myBackEndPool-CR** med **port 80**. 
+* Protokoll **TCP**.
 
 ```azurecli-interactive
   az network cross-region-lb rule create \
@@ -110,18 +110,18 @@ Skapa en belastnings Utjämnings regel med [AZ Network Cross-region-lb Rule Crea
 
 ## <a name="create-backend-pool"></a>Skapa serverdelspool
 
-I det här avsnittet ska du lägga till två regionala standard belastningsutjämnare till backend-poolen för belastningsutjämnaren över flera regioner.
+I det här avsnittet lägger du till två regionala standardlastbalanserare i backend-poolen för lastbalanserare mellan regioner.
 
 > [!IMPORTANT]
-> För att slutföra de här stegen ser du till att två regionala belastningsutjämnare med backend-pooler har distribuerats i din prenumeration.  Mer information finns i, **[snabb start: skapa en offentlig belastningsutjämnare för att belastningsutjämna virtuella datorer med Azure CLI](quickstart-load-balancer-standard-public-cli.md)**.
+> För att slutföra de här stegen ser du till att två regionala lastbalanserare med backend-pooler har distribuerats i din prenumeration.  Mer information finns i **[Snabbstart: Skapa en offentlig lastbalanserare för att lastbalansera virtuella datorer med Azure CLI.](quickstart-load-balancer-standard-public-cli.md)**
 
-### <a name="add-the-regional-frontends-to-load-balancer"></a>Lägg till de regionala klient-frontend-fälten i belastningsutjämnaren
+### <a name="add-the-regional-frontends-to-load-balancer"></a>Lägga till regionala frontends i lastbalanserare
 
-I det här avsnittet ska du placera resurs-ID: n för två regionala belastnings Utjämnings-frontend i variabler.  Sedan använder du variablerna för att lägga till frontend-klienterna i backend-adresspoolen för belastningsutjämnaren mellan regioner.
+I det här avsnittet placerar du resurs-ID:erna för två regionala lastbalanserare i variabler.  Sedan använder du variablerna för att lägga till frontends i backend-adresspoolen för lastbalanseraren mellan regioner.
 
-Hämta resurs-ID: n med [AZ Network lb frontend-IP show](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_show).
+Hämta resurs-IP-adresserna [med az network lb frontend-ip show](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_show).
 
-Använd [AZ Network Cross-region-lb Address-pool Address Add](/cli/azure/network/cross-region-lb/address-pool/address#az_network_cross_region_lb_address_pool_address_add) för att lägga till de klient delar som du placerade i variabler i backend-poolen för över-regionens belastningsutjämnare:
+Använd [az network cross-region-lb address-pool address add](/cli/azure/network/cross-region-lb/address-pool/address#az_network_cross_region_lb_address_pool_address_add) för att lägga till de frontends som du placerade i variabler i backend-poolen för lastbalanseraren mellan regioner:
 
 ```azurecli-interactive
   region1id=$(az network lb frontend-ip show \
@@ -155,9 +155,9 @@ Använd [AZ Network Cross-region-lb Address-pool Address Add](/cli/azure/network
 
 ## <a name="test-the-load-balancer"></a>Testa lastbalanseraren
 
-I det här avsnittet ska du testa belastningsutjämnaren för flera regioner. Du ansluter till den offentliga IP-adressen i en webbläsare.  Du kommer att stoppa de virtuella datorerna i en av de regionala Server dels poolerna för belastnings utjämning och kontrol lera redundansväxlingen.
+I det här avsnittet testar du lastbalanseraren mellan regioner. Du ansluter till den offentliga IP-adressen i en webbläsare.  Du stoppar de virtuella datorerna i någon av de regionala serverpoolerna för lastbalanserare och observerar redundansen.
 
-1. Hämta den offentliga IP-adressen för belastningsutjämnaren med [AZ Network Public-IP show](/cli/azure/network/public-ip#az-network-public-ip-show):
+1. Hämta den offentliga IP-adressen för lastbalanseraren med [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show):
 
     ```azurecli-interactive
       az network public-ip show \
@@ -168,13 +168,13 @@ I det här avsnittet ska du testa belastningsutjämnaren för flera regioner. Du
     ```
 2. Kopiera den offentliga IP-adressen och klistra in den i webbläsarens adressfält. IIS-webbserverns standardsida visas i webbläsaren.
 
-3. Stoppa de virtuella datorerna i backend-poolen för en av de regionala belastnings utjämningen.
+3. Stoppa de virtuella datorerna i serverpoolen för en av de regionala lastbalanserarna.
 
-4. Uppdatera webbläsaren och kontrol lera att anslutningen till den andra regionala belastningsutjämnaren är redundansväxling.
+4. Uppdatera webbläsaren och observera redundans för anslutningen till den andra regionala lastbalanseraren.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen, belastningsutjämnaren och alla relaterade resurser.
+När den inte längre behövs använder du [kommandot az group delete](/cli/azure/group#az_group_delete) för att ta bort resursgruppen, lastbalanseraren och alla relaterade resurser.
 
 ```azurecli-interactive
   az group delete \
@@ -185,10 +185,10 @@ När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/az
 
 I den här kursen får du:
 
-* En belastningsutjämnare för flera regioner har skapats.
-* En regel för belastnings utjämning har skapats.
-* Regionala belastningsutjämnare har lagts till i backend-poolen för belastningsutjämnaren i flera regioner.
-* Belastnings utjämning har testats.
+* Skapat en lastbalanserare mellan regioner.
+* Skapat en belastningsutjämningsregel.
+* Regionala lastbalanserare har lagts till i backend-poolen för lastbalanseraren mellan regioner.
+* Testade lastbalanseraren.
 
 Gå vidare till nästa artikel om du vill lära dig hur du...
 > [!div class="nextstepaction"]

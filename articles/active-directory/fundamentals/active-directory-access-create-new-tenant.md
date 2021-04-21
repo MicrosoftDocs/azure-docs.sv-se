@@ -12,14 +12,15 @@ ms.date: 09/10/2018
 ms.author: ajburnle
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 31d82906625bc55cbdba21f2e356ee3f29f9d436
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: fc51c645c470f2b5b0a009eaf831db2f1957617e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567391"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780146"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Snabbstart: Skapa en ny klient i Azure Active Directory
+
 Du kan utföra alla administrativa aktiviteter med hjälp av Azure Active Directory (Azure AD)-portalen, inklusive att skapa en ny klient för din organisation. 
 
 I den här snabbstarten får du lära dig hur du kommer till Azure-portalen och Azure Active Directory och du får lära dig hur du skapar en grundläggande klient för din organisation.
@@ -27,6 +28,7 @@ I den här snabbstarten får du lära dig hur du kommer till Azure-portalen och 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/) innan du börjar.
 
 ## <a name="create-a-new-tenant-for-your-organization"></a>Så här skapar du en ny klient för din organisation
+
 När du har loggat in på Azure-portalen kan du skapa en ny klient för din organisation. Den nya klientorganisationen representerar din organisation och hjälper dig att hantera en specifik instans av Microsoft-molntjänster för dina interna och externa användare.
 
 ### <a name="to-create-a-new-tenant"></a>Så här skapar du en ny klient
@@ -47,7 +49,7 @@ När du har loggat in på Azure-portalen kan du skapa en ny klient för din orga
 
 1.  Ange följande information på fliken Konfiguration:
     
-    - Skriv _Contoso Organization_ i **rutan Organisationsnamn.**
+    - Skriv _Contoso Organisation_ i **rutan Organisationsnamn.**
 
     - Skriv _Contosoorg_ i **rutan Ursprungligt** domännamn.
 
@@ -61,12 +63,16 @@ Den nya klientorganisationen skapas med domänen contoso.onmicrosoft.com.
 
 ## <a name="your-user-account-in-the-new-tenant"></a>Ditt användarkonto i den nya klientorganisationen
 
-När du skapar en ny AAD-klientorganisation blir du den första användaren i klientorganisationen. Som första användare tilldelas du automatiskt rollen [Global](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) administratör. Kolla in ditt användarkonto genom att gå till [**sidan**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) Användare.
+När du skapar en ny Azure AD-klientorganisation blir du den första användaren i klientorganisationen. Som första användare tilldelas du automatiskt rollen [Global](https://docs.microsoft.com/azure/active-directory/roles/permissions-reference#global-administrator) administratör. Kolla in ditt användarkonto genom att gå till [**sidan**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/MsGraphUsers) Användare.
 
-Som standard visas du också som teknisk [kontakt för](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) klientorganisationen. Teknisk kontaktinformation är något som du kan ändra i [**Egenskaper.**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties)
+Som standard visas du också som teknisk [kontakt för](https://docs.microsoft.com/microsoft-365/admin/manage/change-address-contact-and-more?view=o365-worldwide#what-do-these-fields-mean) klientorganisationen. Teknisk kontaktinformation är något som du kan ändra i [**Egenskaper**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
+
+> [!WARNING]
+> Se till att din katalog har minst två konton med tilldelade behörigheter som global administratör. Detta hjälper om en global administratör är utelåst. Mer information finns i artikeln Hantera konton [för åtkomst vid akutfall i Azure AD.](../roles/security-emergency-access.md)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
-Om du inte kommer att fortsätta att använda det här programmet kan du ta bort klienten med följande steg:
+
+Om du inte tänker fortsätta att använda det här programmet kan du ta bort klienten med följande steg:
 
 - Kontrollera att du är inloggad i den katalog som du vill ta bort via filtret **Katalog +** prenumeration i Azure Portal. Växla till målkatalogen om det behövs.
 - Välj **Azure Active Directory** och klicka sedan på sidan **Contoso – översikt** och **Ta bort katalogen**.
@@ -76,6 +82,7 @@ Om du inte kommer att fortsätta att använda det här programmet kan du ta bort
     <kbd>![Översiktssidan, med den markerade knappen Ta bort katalog](media/active-directory-access-create-new-tenant/azure-ad-delete-new-tenant.png)</kbd>
 
 ## <a name="next-steps"></a>Nästa steg
+
 - Information om att ändra eller lägga till fler domännamn finns i [Lägga till ett anpassat domännamn i Azure Active Directory](add-custom-domain.md)
 
 - Se [Lägga till eller ta bort en ny användare](add-users-azure-active-directory.md) för att lägga till användare

@@ -178,7 +178,7 @@
           items:
             - name: Java Message Service (JMS) 2.0-entiteter
               href: java-message-service-20-entities.md
-            - name: Java Message Service -utvecklare (JMS) guide.md
+            - name: Jms-utvecklare (Java Message Service) guide.md
               href: jms-developer-guide.md
             - name: 'Meddelanden, nyttolaster och serialisering'
               href: service-bus-messages-payloads.md
@@ -345,7 +345,7 @@
 - name: Resurser
   items:
     - name: VANLIGA FRÅGOR OCH SVAR
-      href: service-bus-faq.md
+      href: service-bus-faq.yml
     - name: Utveckla dina färdigheter med Microsoft Learn
       href: /learn/browse/?products=azure-service-bus
     - name: Azure-översikt

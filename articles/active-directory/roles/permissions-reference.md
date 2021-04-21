@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 04/06/2021
+ms.date: 04/20/2021
 ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9266322d424d57ac847df85513db34d4a42e47e1
-ms.sourcegitcommit: aa00fecfa3ad1c26ab6f5502163a3246cfb99ec3
+ms.openlocfilehash: cf614922503212488c822ac020960b0ddb99fc28
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107389833"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780073"
 ---
 # <a name="azure-ad-built-in-roles"></a>Inbyggda roller i Azure AD
 
@@ -79,7 +79,7 @@ Den här artikeln innehåller de inbyggda Roller i Azure AD som du kan tilldela 
 > | [Nätverksadministratör](#network-administrator) | Kan hantera nätverksplatser och granska företagets nätverksdesigninsikter för Microsoft 365 Software as a Service-program. | d37c8bed-0711-4417-ba38-b4abe66ce4c2 |
 > | [Administratör för Office-appar](#office-apps-administrator) | Kan hantera molntjänster för Office-appar, inklusive princip- och inställningshantering, och hantera möjligheten att välja, avmarkera och publicera "vad är nytt"-funktionsinnehåll till slutanvändarens enheter. | 2b745bdf-0803-4d80-aa65-822c4493daac |
 > | [Support på partnernivå 1](#partner-tier1-support) | Använd inte – inte avsett för allmän användning. | 4ba39ca4-527c-499a-b93d-d9b492c50246 |
-> | [Partnersupport på nivå 2](#partner-tier2-support) | Använd inte – inte avsett för allmän användning. | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8 |
+> | [Support för partnernivå 2](#partner-tier2-support) | Använd inte – inte avsett för allmän användning. | e00e864a-17c5-4a4b-9c06-f5b95a8d5bd8 |
 > | [Lösenordsadministratör](#password-administrator) | Kan återställa lösenord för icke-administratörer och lösenordsadministratörer. | 966707d0-3269-4727-9be2-8c3a10f19b9d |
 > | [Power BI administratör](#power-bi-administrator) | Kan hantera alla aspekter av Power BI produkt. | a9ea8996-122f-4c74-9520-8edcd192826c |
 > | [Power Platform administratör](#power-platform-administrator) | Kan skapa och hantera alla aspekter av Microsoft Dynamics 365, PowerApps och Microsoft Flow. | 11648597-926c-4cf3-9c36-bcebb0ba8dcc |
@@ -135,15 +135,15 @@ Den här rollen ger också möjlighet att samtycka till delegerade behörigheter
 > | microsoft.directory/applications/policies/update | Uppdatera principer för program |
 > | microsoft.directory/applications/verification/update | Uppdatera programverifieringsegenskap |
 > | microsoft.directory/applications/synchronization/standard/read | Läsa etableringsinställningar som är associerade med programobjektet |
-> | microsoft.directory/applicationTemplates/instantiate | Instansiera galleriprogram från programmallar |
+> | microsoft.directory/applicationTemplates/instantiate | Skapa en instans av galleriprogram från programmallar |
 > | microsoft.directory/auditLogs/allProperties/read | Läsa alla egenskaper i granskningsloggar, inklusive privilegierade egenskaper |
 > | microsoft.directory/connectors/create | Skapa anslutningsappar för programproxy |
 > | microsoft.directory/connectors/allProperties/read | Läsa alla egenskaper för anslutningsappar för programproxy |
 > | microsoft.directory/connectorGroups/create | Skapa anslutningsgrupper för programproxy |
 > | microsoft.directory/connectorGroups/delete | Ta bort anslutningsgrupper för programproxy |
-> | microsoft.directory/connectorGroups/allProperties/read | Läs alla egenskaper för anslutningsgrupper för programproxy |
+> | microsoft.directory/connectorGroups/allProperties/read | Läsa alla egenskaper för anslutningsgrupper för programproxy |
 > | microsoft.directory/connectorGroups/allProperties/update | Uppdatera alla egenskaper för anslutningsgrupper för programproxy |
-> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighet beviljar och läsa och uppdatera alla egenskaper |
+> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighetsstipendier och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/applicationPolicies/create | Skapa programprinciper |
 > | microsoft.directory/applicationPolicies/delete | Ta bort programprinciper |
 > | microsoft.directory/applicationPolicies/standard/read | Läsa standardegenskaper för programprinciper |
@@ -181,25 +181,25 @@ Den här rollen ger också möjlighet att samtycka till delegerade behörigheter
 
 ## <a name="application-developer"></a>Programutvecklare
 
-Användare i den här rollen kan skapa programregistreringar när inställningen "Användare kan registrera program" är inställd på Nej. Den här rollen ger också behörighet att godkänna för ens räkning när inställningen "Användare kan samtycka till appar som har åtkomst till företagsdata för deras räkning" är inställd på Nej. Användare som tilldelats den här rollen läggs till som ägare när nya programregistreringar eller företagsprogram skapas.
+Användare i den här rollen kan skapa programregistreringar när inställningen "Användare kan registrera program" är inställd på Nej. Den här rollen ger också behörighet att godkänna för ens räkning när inställningen "Användare kan samtycka till att appar får åtkomst till företagsdata för deras räkning" är inställd på Nej. Användare som tilldelas den här rollen läggs till som ägare när nya programregistreringar eller företagsprogram skapas.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | microsoft.directory/applications/createAsOwner | Skapa alla typer av program och skapare läggs till som första ägare |
+> | microsoft.directory/applications/createAsOwner | Skapa alla typer av program, och skapare läggs till som första ägare |
 > | microsoft.directory/appRoleAssignments/createAsOwner | Skapa programrolltilldelningar med skapare som första ägare |
 > | microsoft.directory/oAuth2PermissionGrants/createAsOwner | Skapa OAuth 2.0-behörighetsstipendier, med skapare som första ägare |
 > | microsoft.directory/servicePrincipals/createAsOwner | Skapa tjänstens huvudnamn, med skaparen som första ägare |
 
 ## <a name="attack-payload-author"></a>Attack Payload Author
 
-Användare i den här rollen kan skapa attacknyttolaster, men inte starta eller schemalägga dem. Attacknyttolaster är sedan tillgängliga för alla administratörer i klientorganisationen som kan använda dem för att skapa en simulering.
+Användare i den här rollen kan skapa angreppsnyttolaster, men inte starta eller schemalägga dem. Attacknyttolaster är sedan tillgängliga för alla administratörer i klientorganisationen som kan använda dem för att skapa en simulering.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Skapa och hantera attacknyttolaster i attacksimulatorn |
-> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läs rapporter om svar från attacksimulering och tillhörande utbildning |
+> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läsa rapporter om svar från attacksimulering och tillhörande utbildning |
 
 ## <a name="attack-simulation-administrator"></a>Administratör för attacksimulering
 
@@ -209,12 +209,12 @@ Användare i den här rollen kan skapa och hantera alla aspekter av skapande av 
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Skapa och hantera attacknyttolaster i attacksimulatorn |
-> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läsa rapporter om svar från attacksimulering och tillhörande utbildning |
+> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läs rapporter om svar från attacksimulering och tillhörande utbildning |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | Skapa och hantera mallar för attacksimulering i attacksimulatorn |
 
 ## <a name="authentication-administrator"></a>Autentiseringsadministratör
 
-Användare med den här rollen kan ange eller återställa valfri autentiseringsmetod (inklusive lösenord) för icke-administratörer och vissa roller. Autentiseringsadministratörer kan kräva att användare som inte är administratörer eller som är tilldelade till vissa roller omregistreras mot befintliga autentiseringsuppgifter som inte är lösenord (till exempel MFA eller FIDO), och kan även återkalla kom ihåg **MFA** på enheten , som frågar efter MFA vid nästa inloggning. En lista över de roller som en autentiseringsadministratör kan läsa eller uppdatera autentiseringsmetoder finns i Behörigheter [för lösenordsåterställning.](#password-reset-permissions)
+Användare med den här rollen kan ange eller återställa valfri autentiseringsmetod (inklusive lösenord) för icke-administratörer och vissa roller. Autentiseringsadministratörer kan kräva att användare som inte är administratörer eller som är tilldelade till vissa roller omregistrerar sig mot befintliga autentiseringsuppgifter som inte är lösenord (till exempel MFA eller FIDO), och kan även återkalla kom ihåg **MFA** på enheten , som frågar efter MFA vid nästa inloggning. En lista över de roller som en autentiseringsadministratör kan läsa eller uppdatera autentiseringsmetoder finns i Behörigheter [för lösenordsåterställning.](#password-reset-permissions)
 
 [Administratörsrollen Privilegierad](#privileged-authentication-administrator) autentisering har behörighet att tvinga omregistrering och multifaktorautentisering för alla användare.
 
@@ -223,25 +223,25 @@ Användare med den här rollen kan ange eller återställa valfri autentiserings
 | Roll | Hantera användarens autentiseringsmetoder | Hantera MFA per användare | Hantera MFA-inställningar | Hantera auth-metodprincip | Hantera lösenordsskyddsprincip |
 | ---- | ---- | ---- | ---- | ---- | ---- |
 | Autentiseringsadministratör | Ja för vissa användare (se ovan) | Ja för vissa användare (se ovan) | Inga | Inga | Inga |
-| Privilegierad autentiseringsadministratör| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga |
+| Administratör för privilegierad autentisering| Ja för alla användare | Ja för alla användare | Inga | Inga | Inga |
 | Administratör för autentiseringsprincip | Inga |Inga | Ja | Ja | Ja |
 
 > [!IMPORTANT]
-> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära möjligheten att anta att användarens identitet och behörigheter. Exempel:
+> Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära möjligheten att anta användarens identitet och behörigheter. Exempel:
 >
->* Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans inte beviljad till autentiseringsadministratörer. Med den här sökvägen kan en autentiseringsadministratör förutsätta identiteten för en programägare och sedan ytterligare förutsätta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
+>* Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans som inte har beviljats till autentiseringsadministratörer. Via den här sökvägen kan en autentiseringsadministratör anta identiteten för en programägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >* Azure-prenumerationsägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
->* Säkerhetsgrupp och Microsoft 365 gruppägare, som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
->* Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office samt system för personalavdelningen.
+>* Säkerhetsgrupp och Microsoft 365 gruppägare som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
+>* Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office och system för personalavdelningen.
 >* Icke-administratörer som chefer, juridiska rådgivare och personalpersonal som kan ha åtkomst till känslig eller privat information.
 
 > [!IMPORTANT]
-> Den här rollen kan inte hantera MFA-inställningar i den äldre MFA-hanteringsportalen eller OATH-maskinvarutoken. Samma funktioner kan utföras med hjälp av Azure AD [Powershell-modulen Set-MsolUser.](/powershell/module/msonline/set-msoluser)
+> Den här rollen kan inte hantera MFA-inställningar i den äldre MFA-hanteringsportalen eller OATH-maskinvarutoken. Samma funktioner kan utföras med hjälp av [Set-MsolUser-kommandoleten](/powershell/module/msonline/set-msoluser) Azure AD Powershell-modulen.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut inloggning genom att ogiltigförklara token för användaruppdatering |
+> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut ut genom att ogiltigförklara token för användaruppdatering |
 > | microsoft.directory/users/strongAuthentication/update | Uppdatera den starka autentiseringsegenskapen för användare |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
@@ -300,7 +300,7 @@ Alla Azure DevOps-principer för företag kan hanteras av användare i den här 
 
 ## <a name="azure-information-protection-administrator"></a>Azure Information Protection administratör
 
-Användare med den här rollen har alla behörigheter i Azure Information Protection tjänsten. Med den här rollen kan du konfigurera Azure Information Protection för principen, hantera skyddsmallar och aktivera skydd. Den här rollen beviljar inte behörigheter i Identity Protection Center, Privileged Identity Management, Monitor Microsoft 365 Service Health eller Office 365 Security & Compliance Center.
+Användare med den här rollen har alla behörigheter Azure Information Protection tjänsten. Med den här rollen kan du konfigurera Azure Information Protection för principen, hantera skyddsmallar och aktivera skydd. Den här rollen beviljar inte behörigheter i Identity Protection Center, Privileged Identity Management, Monitor Microsoft 365 Service Health eller Office 365 Security & Compliance Center.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -377,9 +377,9 @@ Den här rollen ger också möjlighet att samtycka till delegerade behörigheter
 > | microsoft.directory/applications/policies/update | Uppdatera principer för program |
 > | microsoft.directory/applications/verification/update | Uppdatera programverifieringsegenskap |
 > | microsoft.directory/applications/synchronization/standard/read | Läsa etableringsinställningar som är associerade med programobjektet |
-> | microsoft.directory/applicationTemplates/instantiate | Instansiera galleriprogram från programmallar |
+> | microsoft.directory/applicationTemplates/instantiate | Skapa en instans av galleriprogram från programmallar |
 > | microsoft.directory/auditLogs/allProperties/read | Läsa alla egenskaper i granskningsloggar, inklusive privilegierade egenskaper |
-> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighetsstipendier och läsa och uppdatera alla egenskaper |
+> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighet beviljar och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/applicationPolicies/create | Skapa programprinciper |
 > | microsoft.directory/applicationPolicies/delete | Ta bort programprinciper |
 > | microsoft.directory/applicationPolicies/standard/read | Läsa standardegenskaper för programprinciper |
@@ -393,11 +393,11 @@ Den här rollen ger också möjlighet att samtycka till delegerade behörigheter
 > | microsoft.directory/servicePrincipals/disable | Inaktivera tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/enable | Aktivera tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/getPasswordSingleSignOnCredentials | Hantera autentiseringsuppgifter för enkel inloggning med lösenord för tjänstens huvudnamn |
-> | microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Hantera hemligheter och autentiseringsuppgifter för programetablering |
+> | microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Hantera programetablering av hemligheter och autentiseringsuppgifter |
 > | microsoft.directory/servicePrincipals/synchronizationJobs/manage | Starta, starta om och pausa synkroniseringsjobb för programetablering |
 > | microsoft.directory/servicePrincipals/synchronizationSchema/manage | Skapa och hantera synkroniseringsjobb och schema för programetablering |
 > | microsoft.directory/servicePrincipals/managePasswordSingleSignOnCredentials | Läsa autentiseringsuppgifter för enkel inloggning med lösenord för tjänstens huvudnamn |
-> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-application-admin | Bevilja medgivande för programbehörigheter och delegerade behörigheter för en användares eller alla användares räkning, förutom programbehörigheter för Microsoft Graph och Azure AD Graph |
+> | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-application-admin | Bevilja medgivande för programbehörigheter och delegerade behörigheter för alla användares eller alla användares räkning, förutom programbehörigheter för Microsoft Graph och Azure AD Graph |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/update | Uppdatera rolltilldelningar för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/audience/update | Uppdatera målgruppsegenskaper för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/authentication/update | Uppdatera autentiseringsegenskaper för tjänstens huvudnamn |
@@ -432,7 +432,7 @@ Användare i den här rollen kan aktivera, inaktivera och ta bort enheter i Azur
 > | microsoft.directory/deviceManagementPolicies/basic/update | Uppdatera grundläggande egenskaper för principer för enhetshanteringsprogram |
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | Läsa standardegenskaper för enhetsregistreringsprinciper |
 > | microsoft.directory/deviceRegistrationPolicy/basic/update | Uppdatera grundläggande egenskaper för enhetsregistreringsprinciper |
-> | microsoft.directory/signInReports/allProperties/read | Läs alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
+> | microsoft.directory/signInReports/allProperties/read | Läsa alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 
@@ -467,7 +467,7 @@ I | Kan göra
 ----- | ----------
 [Microsoft 365 Efterlevnadscenter](https://protection.office.com) | Övervaka efterlevnadsrelaterade principer i Microsoft 365 tjänster<br>Hantera efterlevnadsaviseringar
 [Compliance Manager (Efterlevnadshanteraren)](/office365/securitycompliance/meet-data-protection-and-regulatory-reqs-using-microsoft-cloud) | Spåra, tilldela och verifiera organisationens aktiviteter för regelefterlevnad
-[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Hantera datastyrning<br>Utföra juridisk undersökning och dataundersökning<br>Hantera begäran från dataämne<br><br>Den här rollen har samma behörigheter som [rollgruppen](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) För efterlevnadsdataadministratör i Office 365 Security & Compliance Center rollbaserad åtkomstkontroll.
+[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Hantera datastyrning<br>Utföra juridisk undersökning och dataundersökning<br>Hantera begäran från dataämne<br><br>Den här rollen har samma behörigheter som rollgruppen [Efterlevnadsdataadministratör](/microsoft-365/security/office-365-security/permissions-in-the-security-and-compliance-center#permissions-needed-to-use-features-in-the-security--compliance-center) i Office 365 Security & Compliance Center rollbaserad åtkomstkontroll.
 [Intune](/intune/role-based-access-control) | Visa alla Intune-granskningsdata
 [Cloud App Security](/cloud-app-security/manage-admins) | Har skrivskyddade behörigheter och kan hantera aviseringar<br>Kan skapa och ändra filprinciper och tillåta filstyrningsåtgärder<br>Kan visa alla inbyggda rapporter under Datahantering
 
@@ -485,7 +485,7 @@ I | Kan göra
 
 ## <a name="conditional-access-administrator"></a>Administratör för villkorsstyrd åtkomst
 
-Användare med den här rollen kan hantera inställningar Azure Active Directory villkorlig åtkomst.
+Användare med den här rollen kan hantera Azure Active Directory för villkorlig åtkomst.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -498,13 +498,13 @@ Användare med den här rollen kan hantera inställningar Azure Active Directory
 > | microsoft.directory/conditionalAccessPolicies/basic/update | Uppdatera grundläggande egenskaper för principer för villkorlig åtkomst |
 > | microsoft.directory/conditionalAccessPolicies/owners/update | Uppdatera ägare för principer för villkorlig åtkomst |
 > | microsoft.directory/conditionalAccessPolicies/tenantDefault/update | Uppdatera standardklientorganisationen för principer för villkorlig åtkomst |
-> | microsoft.directory/crossTenantAccessPolicies/create | Skapa åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/delete | Ta bort åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/standard/read | Läsa grundläggande egenskaper för åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/owners/read | Läsägare av åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/policyAppliedTo/read | Läs egenskapen policyAppliedTo för åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/basic/update | Uppdatera grundläggande egenskaper för åtkomstprinciper mellan klienter |
-> | microsoft.directory/crossTenantAccessPolicies/owners/update | Uppdatera ägare av åtkomstprinciper mellan klienter |
+> | microsoft.directory/crossTenantAccessPolicies/create | Skapa åtkomstprinciper mellan klientorganisationen |
+> | microsoft.directory/crossTenantAccessPolicies/delete | Ta bort åtkomstprinciper mellan klientorganisationen |
+> | microsoft.directory/crossTenantAccessPolicies/standard/read | Läsa grundläggande egenskaper för åtkomstprinciper mellan klientorganisationen |
+> | microsoft.directory/crossTenantAccessPolicies/owners/read | Läsägare för åtkomstprinciper mellan klientorganisation |
+> | microsoft.directory/crossTenantAccessPolicies/policyAppliedTo/read | Läs egenskapen policyAppliedTo för åtkomstprinciper mellan klientorganisationen |
+> | microsoft.directory/crossTenantAccessPolicies/basic/update | Uppdatera grundläggande egenskaper för åtkomstprinciper mellan klientorganisationen |
+> | microsoft.directory/crossTenantAccessPolicies/owners/update | Uppdatera ägare av åtkomstprinciper mellan klientorganisation |
 > | microsoft.directory/crossTenantAccessPolicies/tenantDefault/update | Uppdatera standardklientorganisationen för åtkomstprinciper mellan klientorganisationen |
 
 ## <a name="customer-lockbox-access-approver"></a>Customer LockBox-åtkomst godkännare
@@ -519,7 +519,7 @@ Hanterar Customer Lockbox [begäranden](/office365/admin/manage/customer-lockbox
 
 ## <a name="desktop-analytics-administrator"></a>Desktop Analytics administratör
 
-Användare i den här rollen kan hantera Desktop Analytics och Office-anpassning & Policy-tjänster. För Desktop Analytics omfattar detta möjligheten att visa tillgångsinventering, skapa distributionsplaner, visa distribution och hälsostatus. För Office-& policytjänsten kan användarna hantera Office-principer med den här rollen.
+Användare i den här rollen kan hantera Desktop Analytics tjänsten. Detta omfattar möjligheten att visa tillgångsinventering, skapa distributionsplaner och visa distributions- och hälsostatus.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -527,9 +527,6 @@ Användare i den här rollen kan hantera Desktop Analytics och Office-anpassning
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
 > | microsoft.office365.desktopAnalytics/allEntities/allTasks | Hantera alla aspekter av Desktop Analytics |
-> | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
-> | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="directory-readers"></a>Katalogläsare
 
@@ -557,7 +554,7 @@ Användare i den här rollen kan läsa grundläggande kataloginformation. Den h�
 > | microsoft.directory/directoryRoles/standard/read | Uppdatera grundläggande egenskaper i Azure AD-roller |
 > | microsoft.directory/directoryRoles/eligibleMembers/read | Läs berättigade medlemmar i Azure AD-roller |
 > | microsoft.directory/directoryRoles/members/read | Läsa alla medlemmar i Azure AD-roller |
-> | microsoft.directory/domains/standard/read | Läsa grundläggande egenskaper på domäner |
+> | microsoft.directory/domains/standard/read | Läsa grundläggande egenskaper för domäner |
 > | microsoft.directory/groups/standard/read | Läsa grundläggande egenskaper för grupper |
 > | microsoft.directory/groups/appRoleAssignments/read | Läsa programrolltilldelningar för grupper |
 > | microsoft.directory/groups/memberOf/read | Läs de grupper som en grupp är medlem i Azure AD för |
@@ -573,7 +570,7 @@ Användare i den här rollen kan läsa grundläggande kataloginformation. Den h�
 > | microsoft.directory/roleAssignments/standard/read | Läsa grundläggande egenskaper för rolltilldelningar |
 > | microsoft.directory/roleDefinitions/standard/read | Läsa grundläggande egenskaper för rolldefinitioner |
 > | microsoft.directory/servicePrincipals/appRoleAssignedTo/read | Läsa rolltilldelningar för tjänstens huvudnamn |
-> | microsoft.directory/servicePrincipals/appRoleAssignments/read | Läsa rolltilldelningar som tilldelats till tjänstens huvudnamn |
+> | microsoft.directory/servicePrincipals/appRoleAssignments/read | Läsa rolltilldelningar tilldelade till tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/standard/read | Läsa grundläggande egenskaper för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/memberOf/read | Läsa gruppmedlemskap i tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | Läsa delegerade behörighetsstipendier för tjänstens huvudnamn |
@@ -627,7 +624,7 @@ Använd inte. Den här rollen tilldelas automatiskt Azure AD Connect tjänsten o
 > | microsoft.directory/servicePrincipals/appRoleAssignments/read | Läsa rolltilldelningar tilldelade till tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/standard/read | Läsa grundläggande egenskaper för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/memberOf/read | Läsa gruppmedlemskap i tjänstens huvudnamn |
-> | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | Läsa delegerade behörighetsstipendier för tjänstens huvudnamn |
+> | microsoft.directory/servicePrincipals/oAuth2PermissionGrants/read | Läs delegerade behörighetsstipendier för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/owners/read | Läsa ägare av tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/ownedObjects/read | Läsa ägda objekt för tjänstens huvudnamn |
 > | microsoft.directory/servicePrincipals/policies/read | Läsa principer för tjänstens huvudnamn |
@@ -643,7 +640,7 @@ Använd inte. Den här rollen tilldelas automatiskt Azure AD Connect tjänsten o
 
 ## <a name="directory-writers"></a>Katalogskrivare
 
-Användare i den här rollen kan läsa och uppdatera grundläggande information om användare, grupper och tjänstens huvudnamn. Tilldela den här rollen endast till program som inte stöder [Consent Framework.](../develop/quickstart-register-app.md) Den bör inte tilldelas till några användare.
+Användare i den här rollen kan läsa och uppdatera grundläggande information om användare, grupper och tjänstens huvudnamn. Tilldela den här rollen endast till program som inte stöder [Consent Framework](../develop/quickstart-register-app.md). Den ska inte tilldelas till några användare.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -653,10 +650,10 @@ Användare i den här rollen kan läsa och uppdatera grundläggande information 
 > | microsoft.directory/groups/reprocessLicenseAssignment | Ombearbeta licenstilldelningar för gruppbaserad licensiering |
 > | microsoft.directory/groups/basic/update | Uppdatera grundläggande egenskaper för grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/classification/update | Uppdatera klassificeringsegenskapen för grupper, exklusive roll assignable-grupper |
-> | microsoft.directory/groups/dynamicMembershipRule/update | Uppdatera regeln för dynamiskt medlemskap för grupper, exklusive rollde tilldelningsbara grupper |
-> | microsoft.directory/groups/groupType/update | Uppdatera groupType-egenskapen för en grupp |
+> | microsoft.directory/groups/dynamicMembershipRule/update | Uppdatera dynamisk medlemskapsregel för grupper, exklusive roll-tilldelningsbara grupper |
+> | microsoft.directory/groups/groupType/update | Uppdatera egenskapen groupType för en grupp |
 > | microsoft.directory/groups/members/update | Uppdatera medlemmar i grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/onPremWriteBack/update | Uppdatera Azure Active Directory grupper som ska skrivas tillbaka till den lokala Azure AD Connect |
+> | microsoft.directory/groups/onPremWriteBack/update | Uppdatera Azure Active Directory grupper som ska skrivas tillbaka till den lokala platsen med Azure AD Connect |
 > | microsoft.directory/groups/owners/update | Uppdatera ägare av grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/settings/update | Uppdatera inställningar för grupper |
 > | microsoft.directory/groups/visibility/update | Uppdatera synlighetsegenskapen för grupper |
@@ -665,7 +662,7 @@ Användare i den här rollen kan läsa och uppdatera grundläggande information 
 > | microsoft.directory/groupSettings/basic/update | Uppdatera grundläggande egenskaper för gruppinställningar |
 > | microsoft.directory/oAuth2PermissionGrants/create | Skapa OAuth 2.0-behörighetsstipendier |
 > | microsoft.directory/oAuth2PermissionGrants/basic/update | Uppdatera OAuth 2.0-behörighetsstipendier |
-> | microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Hantera hemligheter och autentiseringsuppgifter för programetablering |
+> | microsoft.directory/servicePrincipals/synchronizationCredentials/manage | Hantera programetablering av hemligheter och autentiseringsuppgifter |
 > | microsoft.directory/servicePrincipals/synchronizationJobs/manage | Starta, starta om och pausa synkroniseringsjobb för programetablering |
 > | microsoft.directory/servicePrincipals/synchronizationSchema/manage | Skapa och hantera synkroniseringsjobb och schema för programetablering |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Bevilja tjänstens huvudnamn direkt åtkomst till en grupps data |
@@ -674,7 +671,7 @@ Användare i den här rollen kan läsa och uppdatera grundläggande information 
 > | microsoft.directory/users/create | Lägga till användare |
 > | microsoft.directory/users/disable | Inaktivera användare |
 > | microsoft.directory/users/enable | Aktivera användare |
-> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut ut genom att ogiltigförklara token för användaruppdatering |
+> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut inloggning genom att ogiltigförklara token för användaruppdatering |
 > | microsoft.directory/users/reprocessLicenseAssignment | Ombearbeta licenstilldelningar för användare |
 > | microsoft.directory/users/basic/update | Uppdatera grundläggande egenskaper för användare |
 > | microsoft.directory/users/manager/update | Uppdateringshanterare för användare |
@@ -692,7 +689,7 @@ Användare med den här rollen kan hantera (läsa, lägga till, verifiera, uppda
 
 ## <a name="dynamics-365-administrator"></a>Dynamics 365-administratör
 
-Användare med den här rollen har globala behörigheter i Microsoft Dynamics 365 Online när tjänsten finns, samt möjligheten att hantera supportärenden och övervaka tjänstens hälsa. Mer information finns [i Använda tjänstadministratörsrollen för att hantera Din Azure AD-organisation.](/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)
+Användare med den här rollen har globala behörigheter i Microsoft Dynamics 365 Online när tjänsten finns, samt möjlighet att hantera supportärenden och övervaka tjänstens hälsa. Mer information finns i [Använda tjänstadministratörsrollen för att hantera Din Azure AD-organisation.](/dynamics365/customer-engagement/admin/use-service-admin-role-manage-tenant)
 
 > [!NOTE]
 > I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "Dynamics 365-tjänstadministratör". Det är "Dynamics 365-administratör" i [Azure Portal](https://portal.azure.com).
@@ -712,25 +709,25 @@ Användare med den här rollen har globala behörigheter i Microsoft Dynamics 36
 Användare med den här rollen har globala behörigheter i Microsoft Exchange Online när tjänsten finns. Har också möjlighet att skapa och hantera alla Microsoft 365, hantera supportärenden och övervaka tjänstens hälsa. Mer information finns i [Om Microsoft 365 administratörsroller](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "Exchange-tjänstadministratör". Det är Exchange-administratör i [Azure Portal](https://portal.azure.com). Det är "Exchange Online-administratör" i [administrationscentret för Exchange.](https://go.microsoft.com/fwlink/p/?LinkID=529144)
+> I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "Exchange-tjänstadministratör". Det är "Exchange-administratör" i [Azure Portal](https://portal.azure.com). Det är "Exchange Online-administratör" i [administrationscentret för Exchange.](https://go.microsoft.com/fwlink/p/?LinkID=529144)
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.directory/groups/hiddenMembers/read | Läsa dolda medlemmar i en grupp |
 > | microsoft.directory/groups.unified/create | Skapa Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
-> | microsoft.directory/groups.unified/delete | Ta Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.unified/delete | Ta Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.unified/restore | Återställa Microsoft 365 grupper |
-> | microsoft.directory/groups.unified/basic/update | Uppdatera grundläggande egenskaper för Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.unified/basic/update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.unified/members/update | Uppdatera medlemmar Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.unified/owners/update | Uppdatera ägare Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
 > | microsoft.office365.exchange/allEntities/basic/allTasks | Hantera alla aspekter av Exchange Online |
-> | microsoft.office365.network/performance/allProperties/read | Läs alla nätverksprestandaegenskaper i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
-> | microsoft.office365.usageReports/allEntities/allProperties/read | Läs användningsrapporter för Office 365 |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Läsa användningsrapporter för Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="exchange-recipient-administrator"></a>Administratör för Exchange-mottagare
@@ -744,9 +741,9 @@ Användare med den här rollen har läsbehörighet till mottagare och skrivåtko
 > | microsoft.office365.exchange/messageTracking/allProperties/allTasks | Hantera alla uppgifter i meddelandespårning i Exchange Online |
 > | microsoft.office365.exchange/migration/allProperties/allTasks | Hantera alla uppgifter som rör migrering av mottagare i Exchange Online |
 
-## <a name="external-id-user-flow-administrator"></a>Administratör för användarflöde för externt ID
+## <a name="external-id-user-flow-administrator"></a>Administratör för externt ID-användarflöde
 
-Användare med den här rollen kan skapa och hantera användarflöden (kallas även "inbyggda" principer) i Azure Portal. Dessa användare kan anpassa HTML-/CSS-/JavaScript-innehåll, ändra MFA-krav, välja anspråk i token, hantera API-kopplingar och konfigurera sessionsinställningar för alla användarflöden i Azure AD-organisationen. Å andra sidan omfattar den här rollen inte möjligheten att granska användardata eller göra ändringar i attributen som ingår i organisationens schema. Ändringar av Identity Experience Framework (även kallade anpassade principer) ligger också utanför den här rollens omfång.
+Användare med den här rollen kan skapa och hantera användarflöden (kallas även "inbyggda" principer) i Azure Portal. Dessa användare kan anpassa HTML/CSS/JavaScript-innehåll, ändra MFA-krav, välja anspråk i token, hantera API-anslutningsappar och konfigurera sessionsinställningar för alla användarflöden i Azure AD-organisationen. Å andra sidan omfattar den här rollen inte möjligheten att granska användardata eller göra ändringar i attributen som ingår i organisationsschemat. Ändringar av Identity Experience Framework (kallas även anpassade principer) ligger också utanför den här rollens omfattning.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -755,7 +752,7 @@ Användare med den här rollen kan skapa och hantera användarflöden (kallas ä
 
 ## <a name="external-id-user-flow-attribute-administrator"></a>Administratör för användarflödesattribut för externt ID
 
-Användare med den här rollen lägger till eller tar bort anpassade attribut som är tillgängliga för alla användarflöden i Azure AD-organisationen. Därför kan användare med den här rollen ändra eller lägga till nya element i slutanvändarschemat och påverka beteendet för alla användarflöden och indirekt resultera i ändringar i vilka data som kan efterfrågas av slutanvändare och slutligen skickas som anspråk till program. Den här rollen kan inte redigera användarflöden.
+Användare med den här rollen lägger till eller tar bort anpassade attribut som är tillgängliga för alla användarflöden i Azure AD-organisationen. Därför kan användare med den här rollen ändra eller lägga till nya element i slutanvändarschemat och påverka beteendet för alla användarflöden och indirekt leda till ändringar av vilka data som kan efterfrågas av slutanvändarna och slutligen skickas som anspråk till program. Den här rollen kan inte redigera användarflöden.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -766,8 +763,8 @@ Användare med den här rollen lägger till eller tar bort anpassade attribut so
 
 Den här administratören hanterar federation mellan Azure AD-organisationer och externa identitetsprovidrar. Med den här rollen kan användarna lägga till nya identitetsprovidrar och konfigurera alla tillgängliga inställningar (t.ex. autentiseringssökväg, tjänst-ID, tilldelade nyckelcontainrar). Den här användaren kan göra det möjligt för Azure AD-organisationen att lita på autentiseringar från externa identitetsproviders. Den resulterande effekten på slutanvändarupplevelsen beror på typen av organisation:
 
-* Azure AD-organisationer för anställda och partner: Tillägget av en federation (t.ex. med Gmail) påverkar omedelbart alla gästinbjudningar som ännu inte har lösts in. Se [Lägga till Google som en identitetsprovider för B2B-gästanvändare.](../external-identities/google-federation.md)
-* Azure Active Directory B2C organisationer: Tillägg av en federation (till exempel med Facebook eller med en annan Azure AD-organisation) påverkar inte omedelbart slutanvändarflöden förrän identitetsprovidern läggs till som ett alternativ i ett användarflöde (kallas även för en inbyggd princip). Ett [exempel finns i Microsoft-konto en tjänst som](../../active-directory-b2c/identity-provider-microsoft-account.md) identitetsprovider. Om du vill ändra användarflöden krävs den begränsade rollen "B2C-användarflödesadministratör".
+* Azure AD-organisationer för anställda och partner: Tillägget av en federation (t.ex. med Gmail) påverkar omedelbart alla gästinbjudningar som ännu inte har lösts in. Se [Lägga till Google som identitetsprovider för B2B-gästanvändare.](../external-identities/google-federation.md)
+* Azure Active Directory B2C organisationer: Tillägg av en federation (till exempel med Facebook eller med en annan Azure AD-organisation) påverkar inte omedelbart slutanvändarflöden förrän identitetsprovidern läggs till som ett alternativ i ett användarflöde (kallas även inbyggd princip). Ett [exempel finns i Microsoft-konto en tjänst som](../../active-directory-b2c/identity-provider-microsoft-account.md) identitetsprovider. Om du vill ändra användarflöden krävs den begränsade rollen "B2C-användarflödesadministratör".
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -788,7 +785,7 @@ Användare med den här rollen har åtkomst till alla administrativa funktioner 
 > | microsoft.directory/administrativeUnits/allProperties/allTasks | Skapa och hantera administrativa enheter (inklusive medlemmar) |
 > | microsoft.directory/applications/allProperties/allTasks | Skapa och ta bort program och läs och uppdatera alla egenskaper |
 > | microsoft.directory/applications/synchronization/standard/read | Läsa etableringsinställningar som är associerade med programobjektet |
-> | microsoft.directory/applicationTemplates/instantiate | Instansiera galleriprogram från programmallar |
+> | microsoft.directory/applicationTemplates/instantiate | Skapa en instans av galleriprogram från programmallar |
 > | microsoft.directory/appRoleAssignments/allProperties/allTasks | Skapa och ta bort appRoleAssignments och läs och uppdatera alla egenskaper |
 > | microsoft.directory/auditLogs/allProperties/read | Läsa alla egenskaper i granskningsloggar, inklusive privilegierade egenskaper |
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | Hantera alla aspekter av auktoriseringsprinciper |
@@ -798,7 +795,7 @@ Användare med den här rollen har åtkomst till alla administrativa funktioner 
 > | microsoft.directory/connectors/allProperties/read | Läsa alla egenskaper för anslutningsappar för programproxy |
 > | microsoft.directory/connectorGroups/create | Skapa anslutningsgrupper för programproxy |
 > | microsoft.directory/connectorGroups/delete | Ta bort anslutningsgrupper för programproxy |
-> | microsoft.directory/connectorGroups/allProperties/read | Läs alla egenskaper för anslutningsgrupper för programproxy |
+> | microsoft.directory/connectorGroups/allProperties/read | Läsa alla egenskaper för anslutningsgrupper för programproxy |
 > | microsoft.directory/connectorGroups/allProperties/update | Uppdatera alla egenskaper för anslutningsgrupper för programproxy |
 > | microsoft.directory/contacts/allProperties/allTasks | Skapa och ta bort kontakter och läs och uppdatera alla egenskaper |
 > | microsoft.directory/contracts/allProperties/allTasks | Skapa och ta bort partnerkontrakt och läs och uppdatera alla egenskaper |
@@ -808,19 +805,19 @@ Användare med den här rollen har åtkomst till alla administrativa funktioner 
 > | microsoft.directory/deviceRegistrationPolicy/standard/read | Läsa standardegenskaper för enhetsregistreringsprinciper |
 > | microsoft.directory/deviceRegistrationPolicy/basic/update | Uppdatera grundläggande egenskaper för enhetsregistreringsprinciper |
 > | microsoft.directory/directoryRoles/allProperties/allTasks | Skapa och ta bort katalogroller och läs och uppdatera alla egenskaper |
-> | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | Skapa och ta bort Azure AD-rollmallar och läsa och uppdatera alla egenskaper |
+> | microsoft.directory/directoryRoleTemplates/allProperties/allTasks | Skapa och ta bort Azure AD-rollmallar och läs och uppdatera alla egenskaper |
 > | microsoft.directory/domains/allProperties/allTasks | Skapa och ta bort domäner och läs och uppdatera alla egenskaper |
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Skapa och ta bort resurser och läs och uppdatera alla egenskaper i Azure AD-berättigandehantering |
 > | microsoft.directory/groups/allProperties/allTasks | Skapa och ta bort grupper och läs och uppdatera alla egenskaper |
 > | microsoft.directory/groupsAssignableToRoles/create | Skapa rolltilldelningsbara grupper |
 > | microsoft.directory/groupsAssignableToRoles/delete | Ta bort rollde kan tilldelas grupper |
-> | microsoft.directory/groupsAssignableToRoles/restore | Återställa rollde kan tilldelas grupper |
+> | microsoft.directory/groupsAssignableToRoles/restore | Återställa roll-tilldelarbara grupper |
 > | microsoft.directory/groupsAssignableToRoles/allProperties/update | Uppdatera roll-tilldelarbara grupper |
 > | microsoft.directory/groupSettings/allProperties/allTasks | Skapa och ta bort gruppinställningar och läs och uppdatera alla egenskaper |
 > | microsoft.directory/groupSettingTemplates/allProperties/allTasks | Skapa och ta bort mallar för gruppinställningar och läs och uppdatera alla egenskaper |
 > | microsoft.directory/identityProtection/allProperties/allTasks | Skapa och ta bort alla resurser och läs och uppdatera standardegenskaper i Azure AD Identity Protection |
 > | microsoft.directory/loginOrganizationBranding/allProperties/allTasks | Skapa och ta bort loginTenantBranding och läs och uppdatera alla egenskaper |
-> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighet beviljar och läsa och uppdatera alla egenskaper |
+> | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighetsstipendier och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/organization/allProperties/allTasks | Skapa och ta bort organisationer och läs och uppdatera alla egenskaper |
 > | microsoft.directory/policies/allProperties/allTasks | Skapa och ta bort principer och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/conditionalAccessPolicies/allProperties/allTasks | Hantera alla egenskaper för principer för villkorlig åtkomst |
@@ -837,9 +834,9 @@ Användare med den här rollen har åtkomst till alla administrativa funktioner 
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForAll.microsoft-company-admin | Bevilja medgivande för alla behörigheter till alla program |
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Bevilja tjänstens huvudnamn direkt åtkomst till en grupps data |
 > | microsoft.directory/servicePrincipals/synchronization/standard/read | Läsa etableringsinställningar som är associerade med tjänstens huvudnamn |
-> | microsoft.directory/signInReports/allProperties/read | Läs alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
+> | microsoft.directory/signInReports/allProperties/read | Läsa alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
 > | microsoft.directory/subscribedSkus/allProperties/allTasks | Köpa och hantera prenumerationer och ta bort prenumerationer |
-> | microsoft.directory/users/allProperties/allTasks | Skapa och ta bort användare och läs och uppdatera alla egenskaper |
+> | microsoft.directory/users/allProperties/allTasks | Skapa och ta bort användare och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/permissionGrantPolicies/create | Skapa principer för behörighets beviljande |
 > | microsoft.directory/permissionGrantPolicies/delete | Ta bort principer för behörighets beviljande |
 > | microsoft.directory/permissionGrantPolicies/standard/read | Läsa standardegenskaper för behörighets beviljandeprinciper |
@@ -862,7 +859,7 @@ Användare med den här rollen har åtkomst till alla administrativa funktioner 
 > | microsoft.office365.lockbox/allEntities/allTasks | Hantera alla aspekter av Customer Lockbox |
 > | microsoft.office365.messageCenter/messages/read | Läsa meddelanden i Meddelandecenter i Administrationscenter för Microsoft 365, exklusive säkerhetsmeddelanden |
 > | microsoft.office365.messageCenter/securityMessages/read | Läsa säkerhetsmeddelanden i Meddelandecenter i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.network/performance/allProperties/read | Läs alla nätverksprestandaegenskaper i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.protectionCenter/allEntities/allProperties/allTasks | Hantera alla aspekter av säkerhets- och efterlevnadscenter |
 > | microsoft.office365.search/content/manage | Skapa och ta bort innehåll och läs och uppdatera alla egenskaper i Microsoft Search |
 > | microsoft.office365.securityComplianceCenter/allEntities/allTasks | Skapa och ta bort alla resurser och läs och uppdatera standardegenskaper i Microsoft 365 Security and Compliance Center |
@@ -889,9 +886,9 @@ Användare i den här rollen kan läsa inställningar och administrativ informat
 >- [Office Security & Compliance Center](https://sip.protection.office.com/homepage) – Global läsare kan inte läsa SCC-granskningsloggar, söka efter innehåll eller läsa Säkerhetspoäng.
 >- [Teams administrationscenter –](https://admin.teams.microsoft.com) Global läsare kan inte läsa **Teams livscykel,** **Analytics & rapporter,** **IP-enhetshantering och** **appkatalog.**
 >- [Privileged Access Management (PAM)](/office365/securitycompliance/privileged-access-management-overview) stöder inte rollen Global läsare.
->- [Azure Information Protection](/azure/information-protection/what-is-information-protection) – Global läsare stöds endast för [central](/azure/information-protection/reports-aip) rapportering och när din Azure AD-organisation inte finns på den enhetliga [märkningsplattformen](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
+>- [Azure Information Protection](/azure/information-protection/what-is-information-protection) – Global läsare stöds endast för [central](/azure/information-protection/reports-aip) rapportering och när din Azure AD-organisation inte finns på den enhetliga [etiketteringsplattformen](/azure/information-protection/faqs#how-can-i-determine-if-my-tenant-is-on-the-unified-labeling-platform).
 >
-> Dessa funktioner är under utveckling.
+> Dessa funktioner är för närvarande under utveckling.
 >
 
 > [!div class="mx-tableFixed"]
@@ -901,7 +898,7 @@ Användare i den här rollen kan läsa inställningar och administrativ informat
 > | microsoft.directory/applications/synchronization/standard/read | Läsa etableringsinställningar som är associerade med programobjektet |
 > | microsoft.directory/auditLogs/allProperties/read | Läsa alla egenskaper i granskningsloggar, inklusive privilegierade egenskaper |
 > | microsoft.directory/bitlockerKeys/key/read | Läsa bitlocker-metadata och nyckel på enheter |
-> | microsoft.directory/connectors/allProperties/read | Läs alla egenskaper för anslutningsappar för programproxy |
+> | microsoft.directory/connectors/allProperties/read | Läsa alla egenskaper för anslutningsappar för programproxy |
 > | microsoft.directory/connectorGroups/allProperties/read | Läs alla egenskaper för anslutningsgrupper för programproxy |
 > | microsoft.directory/entitlementManagement/allProperties/read | Läsa alla egenskaper i Azure AD-berättigandehantering |
 > | microsoft.directory/deviceManagementPolicies/standard/read | Läsa standardegenskaper för principer för enhetshanteringsprogram |
@@ -909,7 +906,7 @@ Användare i den här rollen kan läsa inställningar och administrativ informat
 > | microsoft.directory/groups/hiddenMembers/read | Läsa dolda medlemmar i en grupp |
 > | microsoft.directory/policies/standard/read | Läsa grundläggande egenskaper för principer |
 > | microsoft.directory/policies/owners/read | Läsa ägare av principer |
-> | microsoft.directory/policies/policyAppliedTo/read | Läsa policies.policyAppliedTo-egenskapen |
+> | microsoft.directory/policies/policyAppliedTo/read | Egenskapen Read policies.policyAppliedTo |
 > | microsoft.directory/conditionalAccessPolicies/standard/read | Läsa villkorlig åtkomst för principer |
 > | microsoft.directory/conditionalAccessPolicies/owners/read | Läs om ägarna av principer för villkorlig åtkomst |
 > | microsoft.directory/conditionalAccessPolicies/policyAppliedTo/read | Läs egenskapen "tillämpad på" för principer för villkorsstyrd åtkomst |
@@ -919,13 +916,13 @@ Användare i den här rollen kan läsa inställningar och administrativ informat
 > | microsoft.directory/signInReports/allProperties/read | Läsa alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
 > | microsoft.directory/users/strongAuthentication/read | Läs den starka autentiseringsegenskapen för användare |
 > | microsoft.commerce.billing/allEntities/read | Läsa alla resurser för Office 365-fakturering |
-> | microsoft.office365.exchange/allEntities/standard/read | Läs alla resurser i Exchange Online |
+> | microsoft.office365.exchange/allEntities/standard/read | Läsa alla resurser i Exchange Online |
 > | microsoft.office365.messageCenter/messages/read | Läsa meddelanden i Meddelandecenter i Administrationscenter för Microsoft 365, exklusive säkerhetsmeddelanden |
 > | microsoft.office365.messageCenter/securityMessages/read | Läsa säkerhetsmeddelanden i Meddelandecenter i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.network/performance/allProperties/read | Läs alla nätverksprestandaegenskaper i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.protectionCenter/allEntities/allProperties/read | Läs alla egenskaper i säkerhets- och efterlevnadscenter |
-> | microsoft.office365.securityComplianceCenter/allEntities/read | Läsa standardegenskaper i Microsoft 365 Säkerhets- och efterlevnadscenter |
-> | microsoft.office365.usageReports/allEntities/allProperties/read | Läs användningsrapporter för Office 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.protectionCenter/allEntities/allProperties/read | Läsa alla egenskaper i säkerhets- och efterlevnadscenter |
+> | microsoft.office365.securityComplianceCenter/allEntities/read | Läsa standardegenskaper i Microsoft 365 Security and Compliance Center |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Läsa användningsrapporter för Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="groups-administrator"></a>Gruppadministratör
@@ -937,7 +934,7 @@ Användare i den här rollen kan skapa/hantera grupper och dess inställningar s
 > | --- | --- |
 > | microsoft.directory/groups/assignLicense | Tilldela produktlicenser till grupper för gruppbaserad licensiering |
 > | microsoft.directory/groups/create | Skapa grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll tilldelningsbara grupper |
+> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/hiddenMembers/read | Läsa dolda medlemmar i en grupp |
 > | microsoft.directory/groups/reprocessLicenseAssignment | Ombearbeta licenstilldelningar för gruppbaserad licensiering |
 > | microsoft.directory/groups/restore | Återställa borttagna grupper |
@@ -970,8 +967,8 @@ Användare i den här rollen kan hantera Azure Active Directory B2B-gästanvänd
 > | microsoft.directory/users/directReports/read | Läs direktrapporterna för användare |
 > | microsoft.directory/users/manager/read | Läshanterare för användare |
 > | microsoft.directory/users/memberOf/read | Läsa gruppmedlemskap för användare |
-> | microsoft.directory/users/oAuth2PermissionGrants/read | Läs delegerade behörighetsstipendier för användare |
-> | microsoft.directory/users/ownedDevices/read | Läsa ägda enheter för användare |
+> | microsoft.directory/users/oAuth2PermissionGrants/read | Läsa delegerade behörighetsstipendier för användare |
+> | microsoft.directory/users/ownedDevices/read | Läsa användares ägda enheter |
 > | microsoft.directory/users/ownedObjects/read | Läsa ägda objekt för användare |
 > | microsoft.directory/users/registeredDevices/read | Läsa registrerade användares enheter |
 
@@ -984,7 +981,7 @@ Användare med den här rollen kan ändra lösenord, ogiltigförklara uppdaterin
 >
 >- Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans inte beviljad till supportadministratörer. Via den här sökvägen kan en supportadministratör anta identiteten för en programägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-prenumerationsägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
->- Säkerhetsgrupp och Microsoft 365 gruppägare som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
+>- Säkerhetsgrupp och Microsoft 365 gruppägare, som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
 >- Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office och system för personalavdelningen.
 >- Icke-administratörer som chefer, juridiska rådgivare och personalpersonal som kan ha åtkomst till känslig eller privat information.
 
@@ -1006,7 +1003,7 @@ Den här rollen hette tidigare "Lösenordsadministratör" i [Azure Portal](https
 
 ## <a name="hybrid-identity-administrator"></a>Hybrididentitetsadministratör
 
-Användare i den här rollen kan skapa, hantera och distribuera konfigurationskonfigurationer för etablering från AD till Azure AD med hjälp av molnetablering samt hantera Azure AD Connect och federationsinställningar. Användare kan också felsöka och övervaka loggar med den här rollen.
+Användare i den här rollen kan skapa, hantera och distribuera konfigurationskonfiguration för etablering från AD till Azure AD med hjälp av molnetablering samt hantera Azure AD Connect och federationsinställningar. Användare kan också felsöka och övervaka loggar med den här rollen.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1089,7 +1086,7 @@ Den här rollen kan skapa och hantera alla säkerhetsgrupper. Intune-administrat
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | microsoft.directory/bitlockerKeys/key/read | Läsa bitlocker-metadata och nyckel på enheter |
+> | microsoft.directory/bitlockerKeys/key/read | Läsa BitLocker-metadata och -nyckel på enheter |
 > | microsoft.directory/contacts/create | Skapa kontakter |
 > | microsoft.directory/contacts/delete | Ta bort kontakter |
 > | microsoft.directory/contacts/basic/update | Uppdatera grundläggande egenskaper för kontakter |
@@ -1108,7 +1105,7 @@ Den här rollen kan skapa och hantera alla säkerhetsgrupper. Intune-administrat
 > | microsoft.directory/groups.security/delete | Ta bort säkerhetsgrupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.security/basic/update | Uppdatera grundläggande egenskaper för säkerhetsgrupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.security/classification/update | Uppdatera klassificeringsegenskapen för säkerhetsgrupper med undantag för rollde tilldelningsbara grupper |
-> | microsoft.directory/groups.security/dynamicMembershipRule/update | Uppdatera egenskapen dynamicMembershipRule för säkerhetsgrupperna med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.security/dynamicMembershipRule/update | Uppdatera dynamicMembershipRule-egenskapen för säkerhetsgrupperna med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.security/members/update | Uppdatera medlemmar i säkerhetsgrupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.security/owners/update | Uppdatera ägare av säkerhetsgrupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.security/visibility/update | Uppdatera synlighetsegenskapen för säkerhetsgrupper med undantag för rolldefinerbara grupper |
@@ -1121,7 +1118,7 @@ Den här rollen kan skapa och hantera alla säkerhetsgrupper. Intune-administrat
 
 ## <a name="kaizala-administrator"></a>Kaizala-administratör
 
-Användare med den här rollen har global behörighet att hantera inställningar i Microsoft Kaizala när tjänsten finns, samt möjlighet att hantera supportärenden och övervaka tjänstens hälsa. Dessutom kan användaren komma åt rapporter som rör & användning av Kaizala av organisationsmedlemmar och affärsrapporter som genereras med hjälp av Kaizala-åtgärderna.
+Användare med den här rollen har global behörighet att hantera inställningar i Microsoft Kaizala när tjänsten finns, samt möjligheten att hantera supportärenden och övervaka tjänstens hälsa. Dessutom kan användaren komma åt rapporter som rör & användning av Kaizala av organisationsmedlemmar och affärsrapporter som genereras med hjälp av Kaizala-åtgärderna.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1168,7 +1165,7 @@ Användare i den här rollen kan lägga till, ta bort och uppdatera licenstillde
 
 ## <a name="message-center-privacy-reader"></a>Meddelandecenter sekretessläsare
 
-Användare i den här rollen kan övervaka alla meddelanden i Meddelandecenter, inklusive datasekretessmeddelanden. Meddelandecenter sekretessläsare får e-postaviseringar, inklusive sådana som rör datasekretess, och de kan avbryta prenumerationen med Meddelandecenter inställningar. Endast den globala administratören och Meddelandecenter Sekretessläsare kan läsa datasekretessmeddelanden. Dessutom innehåller den här rollen möjligheten att visa grupper, domäner och prenumerationer. Den här rollen har ingen behörighet att visa, skapa eller hantera tjänstbegäranden.
+Användare i den här rollen kan övervaka alla meddelanden i Meddelandecenter, inklusive datasekretessmeddelanden. Meddelandecenter sekretessläsare får e-postaviseringar, inklusive sådana som rör datasekretess, och de kan avbryta prenumerationen med hjälp Meddelandecenter inställningar. Endast den globala administratören och Meddelandecenter Sekretessläsare kan läsa datasekretessmeddelanden. Dessutom innehåller den här rollen möjligheten att visa grupper, domäner och prenumerationer. Den här rollen har ingen behörighet att visa, skapa eller hantera tjänstbegäranden.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1179,7 +1176,7 @@ Användare i den här rollen kan övervaka alla meddelanden i Meddelandecenter, 
 
 ## <a name="message-center-reader"></a>Meddelandecenter Läsare
 
-Användare i den här rollen kan [](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) övervaka aviseringar och rådgivande hälsouppdateringar i Meddelandecenter för organisationen på konfigurerade tjänster som Exchange, Intune och Microsoft Teams. Meddelandecenter läsare får veckovisa e-postmeddelanden med inlägg, uppdateringar och kan dela inlägg i meddelandecentret i Microsoft 365. I Azure AD har användare som tilldelats den här rollen endast skrivskyddad åtkomst på Azure AD-tjänster som användare och grupper. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
+Användare i den här rollen kan [](https://support.office.com/article/Message-center-in-Office-365-38FB3333-BFCC-4340-A37B-DEDA509C2093) övervaka meddelanden och rådgivande hälsouppdateringar i Meddelandecenter för organisationen på konfigurerade tjänster som Exchange, Intune och Microsoft Teams. Meddelandecenter Läsare får veckovisa e-postmeddelanden med inlägg, uppdateringar och kan dela inlägg i meddelandecentret i Microsoft 365. I Azure AD har användare som tilldelats den här rollen endast skrivskyddad åtkomst till Azure AD-tjänster som användare och grupper. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1191,15 +1188,15 @@ Användare i den här rollen kan [](https://support.office.com/article/Message-c
 
 Använd inte. Den här rollen tilldelas automatiskt från Commerce och är inte avsedd eller stöds för någon annan användning. Se informationen nedan.
 
-Användarrollen Modern commerce ger vissa användare behörighet att komma Administrationscenter för Microsoft 365 och se de vänstra navigeringsposterna **för Start,** **Fakturering** och **Support.** Innehållet som är tillgängligt i dessa områden styrs [av](../../cost-management-billing/manage/understand-mca-roles.md) handelsspecifika roller som tilldelas användare för att hantera produkter som de har köpt åt sig själva eller din organisation. Detta kan omfatta uppgifter som att betala fakturor eller för åtkomst till faktureringskonton och faktureringsprofiler.
+Användarrollen Modern commerce ger vissa användare behörighet att komma Administrationscenter för Microsoft 365 och se de vänstra navigeringsposterna **för Start,** **Fakturering** och **Support.** Innehållet som är tillgängligt i [](../../cost-management-billing/manage/understand-mca-roles.md) dessa områden styrs av handelsspecifika roller som tilldelas användare för att hantera produkter som de har köpt för sig själva eller din organisation. Detta kan omfatta uppgifter som att betala fakturor eller för åtkomst till faktureringskonton och faktureringsprofiler.
 
-Användare med användarrollen Modern Commerce har vanligtvis administratörsbehörighet i andra Microsoft-inköpssystem, men har inte någon roll som global administratör eller Faktureringsadministratör för att få åtkomst till administrationscentret.
+Användare med användarrollen Modern Commerce har vanligtvis administratörsbehörighet i andra Microsoft-inköpssystem, men har inte globala administratörs- eller Faktureringsadministratör-roller som används för att få åtkomst till administrationscentret.
 
 **När tilldelas användarrollen Modern handel?**
 
-* **Självbetjäning i Administrationscenter för Microsoft 365** – Självbetjäning ger användarna möjlighet att prova nya produkter genom att köpa eller registrera sig för dem på egen hand. Dessa produkter hanteras i administrationscentret. Användare som gör ett självbetjäningsköp tilldelas en roll i handelssystemet och användarrollen Modern commerce så att de kan hantera sina inköp i administrationscentret. Administratörer kan blockera självbetjäning (för Power BI, Power Apps, Power automate) via [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Mer information finns i [Vanliga frågor och svar om självbetjäningsköp](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
-* **Köp från Microsofts** kommersiella marknadsplats – På samma sätt som när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace tilldelas rollen Modern handelsanvändare om de inte har rollen global administratör eller faktureringsadministratör. I vissa fall kan användare blockeras från att göra dessa köp. Mer information finns i [Microsofts kommersiella marknadsplats.](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)
-* **Förslag från Microsoft** – Ett formellt erbjudande från Microsoft om att din organisation ska köpa Microsofts produkter och tjänster. När den person som godkänner förslaget inte har rollen global administratör eller faktureringsadministratör i Azure AD tilldelas personen både en handelsspecifik roll för att slutföra förslaget och rollen Användare av modern handel för att få åtkomst till administrationscentret. När de använder administrationscentret kan de bara använda funktioner som auktoriserats av deras handelsspecifika roll.
+* **Självbetjäning i Administrationscenter för Microsoft 365** – Självbetjäning ger användarna möjlighet att prova nya produkter genom att köpa eller registrera sig för dem på egen hand. Dessa produkter hanteras i administrationscentret. Användare som köper självbetjäning tilldelas en roll i handelssystemet och användarrollen Modern handel så att de kan hantera sina inköp i administrationscentret. Administratörer kan blockera köp via självbetjäning (för Power BI, Power Apps, Power automate) via [PowerShell](/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell). Mer information finns i [Vanliga frågor och svar om självbetjäningsköp](/microsoft-365/commerce/subscriptions/self-service-purchase-faq).
+* **Köp från Microsofts** kommersiella marknadsplats – På liknande sätt som när en användare köper en produkt eller tjänst från Microsoft AppSource eller Azure Marketplace tilldelas användarrollen Modern handel om användaren inte har rollen global administratör eller faktureringsadministratör. I vissa fall kan användare blockeras från att göra dessa köp. Mer information finns i [Microsofts kommersiella marknadsplats.](../../marketplace/marketplace-faq-publisher-guide.md#what-could-block-a-customer-from-completing-a-purchase)
+* **Förslag från Microsoft** – Ett förslag är ett formellt erbjudande från Microsoft om att din organisation ska köpa Microsofts produkter och tjänster. När den person som godkänner förslaget inte har rollen global administratör eller faktureringsadministratör i Azure AD tilldelas personen både en handelsspecifik roll för att slutföra förslaget och rollen Användare av modern handel för att få åtkomst till administrationscentret. När de använder administrationscentret kan de bara använda funktioner som auktoriserats av deras handelsspecifika roll.
 * **Handelsspecifika roller –** Vissa användare tilldelas handelsspecifika roller. Om en användare inte är global administratör eller faktureringsadministratör får han eller hon rollen Som användare av modern handel så att de kan komma åt administrationscentret.
 
 Om rollen Modern commerce-användare inte har tilldelats från en användare förlorar användaren åtkomst till Administrationscenter för Microsoft 365. Om de hanterade några produkter, antingen för sig själva eller för din organisation, kommer de inte att kunna hantera dem. Detta kan omfatta att tilldela licenser, ändra betalningsmetoder, betala fakturor eller andra uppgifter för att hantera prenumerationer.
@@ -1214,18 +1211,18 @@ Om rollen Modern commerce-användare inte har tilldelats från en användare fö
 
 ## <a name="network-administrator"></a>Nätverksadministratör
 
-Användare i den här rollen kan granska microsofts rekommendationer om perimeterarkitektur för nätverk som baseras på nätverkstelemetri från deras användarplatser. Nätverksprestanda för Microsoft 365 är beroende av noggrann perimeterarkitektur för företagskundnätverk, som vanligtvis är användarplatsspecifik. Med den här rollen kan du redigera identifierade användarplatser och konfigurera nätverksparametrar för dessa platser för att underlätta förbättrade telemetrimätningar och designrekommendationer
+Användare i den här rollen kan granska rekommendationer för perimeterarkitekturen i nätverk från Microsoft som baseras på nätverkstelemetri från deras användarplatser. Nätverksprestanda för Microsoft 365 är beroende av noggrann perimeterarkitektur för företagskundnätverk, som vanligtvis är användarplatsspecifik. Med den här rollen kan du redigera identifierade användarplatser och konfigurera nätverksparametrar för dessa platser för att underlätta bättre telemetrimätningar och designrekommendationer
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.office365.network/locations/allProperties/allTasks | Hantera alla aspekter av nätverksplatser |
-> | microsoft.office365.network/performance/allProperties/read | Läs alla nätverksprestandaegenskaper i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läs alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="office-apps-administrator"></a>Administratör för Office-appar
 
-Användare i den här rollen kan hantera Microsoft 365-appars molninställningar. Detta omfattar hantering av molnprinciper, nedladdningshantering med självbetjäning och möjligheten att visa rapporter relaterade till Office-appar. Den här rollen ger dessutom möjlighet att hantera supportärenden och övervaka tjänstens hälsa i huvudadministrationscentret. Användare som har tilldelats den här rollen kan också hantera kommunikation av nya funktioner i Office-appar.
+Användare i den här rollen kan hantera Microsoft 365-appars molninställningar. Detta omfattar hantering av molnprinciper, hämtning av självbetjäning och möjligheten att visa rapport relaterade till Office-appar. Den här rollen ger dessutom möjlighet att hantera supportärenden och övervaka tjänstens hälsa i huvudadministrationscentret. Användare som har tilldelats den här rollen kan också hantera kommunikation av nya funktioner i Office-appar.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1260,7 +1257,7 @@ Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure 
 > | microsoft.directory/contacts/delete | Ta bort kontakter |
 > | microsoft.directory/contacts/basic/update | Uppdatera grundläggande egenskaper för kontakter |
 > | microsoft.directory/groups/create | Skapa grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll-tilldelningsbara grupper |
+> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll tilldelningsbara grupper |
 > | microsoft.directory/groups/restore | Återställa borttagna grupper |
 > | microsoft.directory/groups/members/update | Uppdatera medlemmar i grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/owners/update | Uppdatera ägare av grupper, exklusive roll-tilldelningsbara grupper |
@@ -1271,7 +1268,7 @@ Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure 
 > | microsoft.directory/users/delete | Ta bort användare |
 > | microsoft.directory/users/disable | Inaktivera användare |
 > | microsoft.directory/users/enable | Aktivera användare |
-> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut ut genom att ogiltigförklara token för användaruppdatering |
+> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut inloggning genom att ogiltigförklara token för användaruppdatering |
 > | microsoft.directory/users/restore | Återställa borttagna användare |
 > | microsoft.directory/users/basic/update | Uppdatera grundläggande egenskaper för användare |
 > | microsoft.directory/users/manager/update | Uppdateringshanterare för användare |
@@ -1285,7 +1282,7 @@ Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure 
 
 ## <a name="partner-tier2-support"></a>Support för partnernivå 2
 
-Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure AD i framtiden. Den här rollen är avsedd att användas av ett litet antal Microsoft-återförsäljningspartner och är inte avsedd för allmän användning.
+Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure AD i framtiden. Den här rollen är avsedd att användas av ett litet antal Microsoft-omförsäljningspartner och är inte avsedd för allmän användning.
 
 > [!IMPORTANT]
 > Den här rollen kan återställa lösenord och ogiltigförklara uppdateringstoken för alla icke-administratörer och administratörer (inklusive globala administratörer). Den här rollen bör inte användas eftersom den är inaktuell och kommer inte längre att returneras i API:et.
@@ -1306,7 +1303,7 @@ Använd inte. Den här rollen är inaktuell och kommer att tas bort från Azure 
 > | microsoft.directory/contacts/basic/update | Uppdatera grundläggande egenskaper för kontakter |
 > | microsoft.directory/domains/allProperties/allTasks | Skapa och ta bort domäner och läs och uppdatera alla egenskaper |
 > | microsoft.directory/groups/create | Skapa grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll tilldelningsbara grupper |
+> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/restore | Återställa borttagna grupper |
 > | microsoft.directory/groups/members/update | Uppdatera medlemmar i grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/owners/update | Uppdatera ägare av grupper, exklusive roll-tilldelningsbara grupper |
@@ -1346,7 +1343,7 @@ Användare med den här rollen har begränsad möjlighet att hantera lösenord. 
 
 ## <a name="power-bi-administrator"></a>Power BI administratör
 
-Användare med den här rollen har globala behörigheter inom Microsoft Power BI, när tjänsten finns, samt möjligheten att hantera supportärenden och övervaka tjänstens hälsa. Mer information finns [i Förstå Power BI administratörsrollen](/power-bi/service-admin-role).
+Användare med den här rollen har globala behörigheter inom Microsoft Power BI när tjänsten finns, samt möjlighet att hantera supportärenden och övervaka tjänstens hälsa. Mer information finns [i Förstå Power BI administratörsrollen](/power-bi/service-admin-role).
 
 > [!NOTE]
 > I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "Power BI tjänstadministratör". Det är Power BI administratör i [Azure Portal](https://portal.azure.com).
@@ -1384,7 +1381,7 @@ Användare i den här rollen kan registrera skrivare och hantera alla aspekter a
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | microsoft.azure.print/allEntities/allProperties/allTasks | Skapa och ta bort skrivare och anslutningsappar och läs och uppdatera alla egenskaper i Microsoft Print |
+> | microsoft.azure.print/allEntities/allProperties/allTasks | Skapa och ta bort skrivare och anslutningsappar samt läsa och uppdatera alla egenskaper i Microsoft Print |
 
 ## <a name="printer-technician"></a>Skrivartekniker
 
@@ -1401,7 +1398,7 @@ Användare med den här rollen kan registrera skrivare och hantera skrivarstatus
 
 ## <a name="privileged-authentication-administrator"></a>Privilegierad autentiseringsadministratör
 
-Användare med den här rollen kan ange eller återställa valfri autentiseringsmetod (inklusive lösenord) för alla användare, inklusive globala administratörer. Administratörer för privilegierad autentisering kan tvinga användare att omregistrera sig mot befintliga autentiseringsuppgifter som inte är lösenord (till exempel MFA eller FIDO) och återkalla "kom ihåg MFA på enheten" och fråga efter MFA vid nästa inloggning för alla användare.
+Användare med den här rollen kan ange eller återställa valfri autentiseringsmetod (inklusive lösenord) för alla användare, inklusive globala administratörer. Privilegierade autentiseringsadministratörer kan tvinga användare att omregistrera sig mot befintliga autentiseringsuppgifter som inte är lösenord (till exempel MFA eller FIDO) och återkalla "kom ihåg MFA på enheten" och fråga efter MFA vid nästa inloggning för alla användare.
 
 Den [Autentiseringsadministratör](#authentication-administrator) rollen har behörighet att tvinga omregistrering och multifaktorautentisering för standardanvändare och användare med vissa administratörsroller.
 
@@ -1416,10 +1413,10 @@ Den [Autentiseringsadministratör](#authentication-administrator) rollen har beh
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra autentiseringsuppgifter för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra autentiseringsuppgifterna för en användare kan innebära möjligheten att anta användarens identitet och behörigheter. Exempel:
 >
->* Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans inte beviljad till autentiseringsadministratörer. Med den här sökvägen kan en autentiseringsadministratör förutsätta identiteten för en programägare och sedan ytterligare förutsätta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
+>* Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans som inte har beviljats till autentiseringsadministratörer. Via den här sökvägen kan en autentiseringsadministratör anta identiteten för en programägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >* Azure-prenumerationsägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
->* Säkerhetsgrupp och Microsoft 365 gruppägare, som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
->* Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office samt system för personalavdelningen.
+>* Säkerhetsgrupp och Microsoft 365 gruppägare som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
+>* Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office och system för personalavdelningen.
 >* Icke-administratörer som chefer, juridiska rådgivare och personalpersonal som kan ha åtkomst till känslig eller privat information.
 
 
@@ -1442,7 +1439,7 @@ Den [Autentiseringsadministratör](#authentication-administrator) rollen har beh
 Användare med den här rollen kan hantera rolltilldelningar i Azure Active Directory, samt inom Azure AD Privileged Identity Management. De kan skapa och hantera grupper som kan tilldelas till Azure AD-roller. Dessutom tillåter den här rollen hantering av alla aspekter av Privileged Identity Management och administrativa enheter.
 
 > [!IMPORTANT]
-> Den här rollen ger möjlighet att hantera tilldelningar för alla Azure AD-roller, inklusive rollen Global administratör. Den här rollen omfattar inte andra privilegierade funktioner i Azure AD som att skapa eller uppdatera användare. Användare som har tilldelats den här rollen kan dock ge sig själva eller andra ytterligare behörighet genom att tilldela ytterligare roller.
+> Den här rollen ger dig möjlighet att hantera tilldelningar för alla Azure AD-roller, inklusive rollen Global administratör. Den här rollen omfattar inte andra privilegierade funktioner i Azure AD som att skapa eller uppdatera användare. Användare som har tilldelats den här rollen kan dock ge sig själva eller andra ytterligare privilegier genom att tilldela ytterligare roller.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1452,9 +1449,9 @@ Användare med den här rollen kan hantera rolltilldelningar i Azure Active Dire
 > | microsoft.directory/authorizationPolicy/allProperties/allTasks | Hantera alla aspekter av auktoriseringsprinciper |
 > | microsoft.directory/directoryRoles/allProperties/allTasks | Skapa och ta bort katalogroller och läs och uppdatera alla egenskaper |
 > | microsoft.directory/groupsAssignableToRoles/create | Skapa rolltilldelningsbara grupper |
-> | microsoft.directory/groupsAssignableToRoles/delete | Ta bort rollde kan tilldelas grupper |
-> | microsoft.directory/groupsAssignableToRoles/restore | Återställa roll-tilldelarbara grupper |
-> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Uppdatera roll-tilldelarbara grupper |
+> | microsoft.directory/groupsAssignableToRoles/delete | Ta bort roll assignerbara grupper |
+> | microsoft.directory/groupsAssignableToRoles/restore | Återställa roll assignerbara grupper |
+> | microsoft.directory/groupsAssignableToRoles/allProperties/update | Uppdatera roll assignable-grupper |
 > | microsoft.directory/oAuth2PermissionGrants/allProperties/allTasks | Skapa och ta bort OAuth 2.0-behörighet beviljar och läsa och uppdatera alla egenskaper |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/allTasks | Skapa och ta bort alla resurser och läs och uppdatera standardegenskaper i Privileged Identity Management |
 > | microsoft.directory/roleAssignments/allProperties/allTasks | Skapa och ta bort rolltilldelningar och läs och uppdatera alla egenskaper för rolltilldelning |
@@ -1467,7 +1464,7 @@ Användare med den här rollen kan hantera rolltilldelningar i Azure Active Dire
 
 ## <a name="reports-reader"></a>Rapportläsare
 
-Användare med den här rollen kan visa användningsrapporter och instrumentpanelen för rapporter i Administrationscenter för Microsoft 365 och kontextpaketet för implementering i Power BI. Dessutom ger rollen åtkomst till inloggningsrapporter och -aktivitet i Azure AD och data som returneras av api:Microsoft Graph reporting. En användare som har tilldelats rollen Rapportläsare kan bara komma åt relevanta användnings- och implementeringsmått. De har inte administratörsbehörighet för att konfigurera inställningar eller komma åt produktspecifika administrationscenter som Exchange. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
+Användare med den här rollen kan visa användningsrapporter och instrumentpanelen för rapporter i Administrationscenter för Microsoft 365 och kontextpaketet för implementering i Power BI. Dessutom ger rollen åtkomst till inloggningsrapporter och -aktivitet i Azure AD och data som returneras av api:et för Microsoft Graph rapportering. En användare som har tilldelats rollen Rapportläsare kan bara komma åt relevanta användnings- och implementeringsmått. De har inte administratörsbehörighet för att konfigurera inställningar eller komma åt produktspecifika administrationscenter som Exchange. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1478,7 +1475,7 @@ Användare med den här rollen kan visa användningsrapporter och instrumentpane
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.usageReports/allEntities/allProperties/read | Läs användningsrapporter för Office 365 |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Läsa användningsrapporter för Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="search-administrator"></a>Sökadministratör
@@ -1555,7 +1552,7 @@ Windows Defender ATP och EDR | Tilldela roller<br>Hantera datorgrupper<br>Konfig
 > | microsoft.office365.protectionCenter/allEntities/standard/read | Läsa standardegenskaper för alla resurser i säkerhets- och efterlevnadscenter |
 > | microsoft.office365.protectionCenter/allEntities/basic/update | Uppdatera grundläggande egenskaper för alla resurser i säkerhets- och efterlevnadscenter |
 > | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/allTasks | Skapa och hantera attacknyttolaster i attacksimulatorn |
-> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läsa rapporter om svar från attacksimulering och tillhörande utbildning |
+> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läs rapporter om svar från attacksimulering och tillhörande utbildning |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/allTasks | Skapa och hantera mallar för attacksimulering i attacksimulatorn |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
@@ -1563,17 +1560,17 @@ Windows Defender ATP och EDR | Tilldela roller<br>Hantera datorgrupper<br>Konfig
 
 ## <a name="security-operator"></a>Säkerhetsoperatör
 
-Användare med den här rollen kan hantera aviseringar och ha global skrivskyddade åtkomst till säkerhetsrelaterade funktioner, inklusive all information i Microsoft 365 Säkerhetscenter, Azure Active Directory, Identity Protection, Privileged Identity Management och Office 365 Security & Compliance Center. Mer information om Office 365-behörigheter finns i [Behörigheter i Security & Compliance Center.](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)
+Användare med den här rollen kan hantera aviseringar och ha global läsbehörighet för säkerhetsrelaterade funktioner, inklusive all information i Microsoft 365 Säkerhetscenter, Azure Active Directory, Identity Protection, Privileged Identity Management och Office 365 Security & Compliance Center. Mer information om Office 365-behörigheter finns i [Behörigheter i Security & Compliance Center.](/office365/securitycompliance/permissions-in-the-security-and-compliance-center)
 
 I | Kan göra
 --- | ---
 [Microsoft 365 Säkerhetscenter](https://protection.office.com) | Alla behörigheter för rollen Säkerhetsläsare<br>Visa, undersöka och svara på aviseringar om säkerhetshot
 Azure AD Identity Protection | Alla behörigheter för rollen Säkerhetsläsare<br>Dessutom kan du utföra alla Identity Protection Center-åtgärder förutom att återställa lösenord och konfigurera e-postaviseringar.
 [Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Alla behörigheter för rollen Säkerhetsläsare
-[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Alla behörigheter för rollen Säkerhetsläsare<br>Visa, undersöka och svara på säkerhetsaviseringar
-Windows Defender ATP och EDR | Alla behörigheter för rollen Säkerhetsläsare<br>Visa, undersöka och svara på säkerhetsaviseringar
-[Intune](/intune/role-based-access-control) | Alla behörigheter för rollen Säkerhetsläsare
-[Cloud App Security](/cloud-app-security/manage-admins) | Alla behörigheter för rollen Säkerhetsläsare
+[Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Alla behörigheter för säkerhetsläsarrollen<br>Visa, undersöka och svara på säkerhetsaviseringar
+Windows Defender ATP och EDR | Alla behörigheter för säkerhetsläsarrollen<br>Visa, undersöka och svara på säkerhetsaviseringar
+[Intune](/intune/role-based-access-control) | Alla behörigheter för säkerhetsläsarrollen
+[Cloud App Security](/cloud-app-security/manage-admins) | Alla behörigheter för säkerhetsläsarrollen
 [Microsoft 365 tjänstens hälsa](/office365/enterprise/view-service-health) | Visa hälsotillståndet för Microsoft 365 tjänster
 
 > [!div class="mx-tableFixed"]
@@ -1584,7 +1581,7 @@ Windows Defender ATP och EDR | Alla behörigheter för rollen Säkerhetsläsare<
 > | microsoft.directory/identityProtection/allProperties/allTasks | Skapa och ta bort alla resurser och läs och uppdatera standardegenskaper i Azure AD Identity Protection |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | Läsa alla resurser i Privileged Identity Management |
 > | microsoft.directory/provisioningLogs/allProperties/read | Läsa alla egenskaper för etableringsloggar |
-> | microsoft.directory/signInReports/allProperties/read | Läsa alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
+> | microsoft.directory/signInReports/allProperties/read | Läs alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
 > | microsoft.azure.advancedThreatProtection/allEntities/allTasks | Hantera alla aspekter av Azure Advanced Threat Protection |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
 > | microsoft.intune/allEntities/read | Läsa alla resurser i Microsoft Intune |
@@ -1599,8 +1596,8 @@ Användare med den här rollen har global skrivskyddade åtkomst till säkerhets
 I | Kan göra
 --- | ---
 [Microsoft 365 Säkerhetscenter](https://protection.office.com) | Visa säkerhetsrelaterade principer för Microsoft 365 tjänster<br>Visa säkerhetshot och aviseringar<br>Visa rapporter
-Identity Protection Center | Läs alla säkerhetsrapporter och inställningsinformation för säkerhetsfunktioner<br><ul><li>Skydd mot skräppost<li>Kryptering<li>Skydd mot dataförlust<li>Skydd mot skadlig kod<li>Advanced Threat Protection<li>Nätfiske<li>Regler för e-postflöde
-[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Har skrivskyddad åtkomst till all information som visas i Azure AD Privileged Identity Management: Principer och rapporter för Azure AD-rolltilldelningar och säkerhetsgranskningar.<br>**Det** går inte att Azure AD Privileged Identity Management eller göra några ändringar i den. I Privileged Identity Management-portalen eller via PowerShell kan någon i den här rollen aktivera ytterligare roller (till exempel global administratör eller privilegierad rolladministratör) om användaren är berättigad till dem.
+Identity Protection Center | Läsa alla säkerhetsrapporter och inställningsinformation för säkerhetsfunktioner<br><ul><li>Skydd mot skräppost<li>Kryptering<li>Skydd mot dataförlust<li>Program mot skadlig kod<li>Advanced Threat Protection<li>Nätfiskeskydd<li>Regler för e-postflöde
+[Privileged Identity Management](../privileged-identity-management/pim-configure.md) | Har skrivskyddad åtkomst till all information som visas i Azure AD Privileged Identity Management: Principer och rapporter för Azure AD-rolltilldelningar och säkerhetsgranskningar.<br>**Det** går inte att Azure AD Privileged Identity Management eller göra några ändringar i den. I Privileged Identity Management-portalen eller via PowerShell kan någon i den här rollen aktivera ytterligare roller (till exempel Global administratör eller Privilegierad rolladministratör) om användaren är berättigad till dem.
 [Office 365 Security & Compliance Center](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d) | Visa säkerhetsprinciper<br>Visa och undersöka säkerhetshot<br>Visa rapporter
 Windows Defender ATP och EDR | Visa och undersöka aviseringar. När du aktiverar rollbaserad åtkomstkontroll i Windows Defender ATP förlorar användare med skrivskyddade behörigheter, till exempel Azure AD Säkerhetsläsare-rollen, åtkomst tills de har tilldelats en Windows Defender ATP-roll.
 [Intune](/intune/role-based-access-control) | Visar information om användare, enhet, registrering, konfiguration och programmet. Kan inte göra ändringar i Intune.
@@ -1612,46 +1609,46 @@ Windows Defender ATP och EDR | Visa och undersöka aviseringar. När du aktivera
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.directory/auditLogs/allProperties/read | Läsa alla egenskaper i granskningsloggar, inklusive privilegierade egenskaper |
-> | microsoft.directory/bitlockerKeys/key/read | Läsa BitLocker-metadata och -nyckel på enheter |
+> | microsoft.directory/bitlockerKeys/key/read | Läsa bitlocker-metadata och nyckel på enheter |
 > | microsoft.directory/entitlementManagement/allProperties/read | Läsa alla egenskaper i Azure AD-berättigandehantering |
 > | microsoft.directory/identityProtection/allProperties/read | Läsa alla resurser i Azure AD Identity Protection |
 > | microsoft.directory/policies/standard/read | Läsa grundläggande egenskaper för principer |
 > | microsoft.directory/policies/owners/read | Läsa ägare av principer |
-> | microsoft.directory/policies/policyAppliedTo/read | Läsa policies.policyAppliedTo-egenskapen |
+> | microsoft.directory/policies/policyAppliedTo/read | Egenskapen Read policies.policyAppliedTo |
 > | microsoft.directory/conditionalAccessPolicies/standard/read | Läsa villkorlig åtkomst för principer |
 > | microsoft.directory/conditionalAccessPolicies/owners/read | Läs om ägarna av principer för villkorlig åtkomst |
 > | microsoft.directory/conditionalAccessPolicies/policyAppliedTo/read | Läs egenskapen "tillämpad på" för principer för villkorsstyrd åtkomst |
 > | microsoft.directory/privilegedIdentityManagement/allProperties/read | Läsa alla resurser i Privileged Identity Management |
 > | microsoft.directory/provisioningLogs/allProperties/read | Läsa alla egenskaper för etableringsloggar |
-> | microsoft.directory/signInReports/allProperties/read | Läs alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
+> | microsoft.directory/signInReports/allProperties/read | Läsa alla egenskaper i inloggningsrapporter, inklusive privilegierade egenskaper |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.office365.protectionCenter/allEntities/standard/read | Läsa standardegenskaper för alla resurser i säkerhets- och efterlevnadscenter |
-> | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/read | Läs alla egenskaper för attacknyttolaster i attacksimulatorn |
-> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läs rapporter om svar från attacksimulering och tillhörande utbildning |
+> | microsoft.office365.protectionCenter/attackSimulator/payload/allProperties/read | Läsa alla egenskaper för angreppsnyttolaster i attacksimulatorn |
+> | microsoft.office365.protectionCenter/attackSimulator/reports/allProperties/read | Läsa rapporter om svar från attacksimulering och tillhörande utbildning |
 > | microsoft.office365.protectionCenter/attackSimulator/simulation/allProperties/read | Läs alla egenskaper för attacksimuleringsmallar i attacksimulatorn |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="service-support-administrator"></a>Tjänstsupportadministratör
 
-Användare med den här rollen kan öppna supportförfrågningar med Microsoft för Azure och Microsoft 365-tjänster och visar instrumentpanelen och meddelandecentret i [Azure Portal](https://portal.azure.com) [och Administrationscenter för Microsoft 365](https://admin.microsoft.com). Mer information finns i [Om administratörsroller.](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
+Användare med den här rollen kan öppna supportbegäranden med Microsoft för Azure och Microsoft 365-tjänster och visar instrumentpanelen för tjänsten och meddelandecentret [i Azure Portal](https://portal.azure.com) [och Administrationscenter för Microsoft 365](https://admin.microsoft.com). Mer information finns i [Om administratörsroller](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
 > [!NOTE]
-> Tidigare kallades den här rollen "Tjänstadministratör" i [Azure Portal](https://portal.azure.com) och [Administrationscenter för Microsoft 365](https://admin.microsoft.com). Vi har bytt namn till "Tjänstsupportadministratör" så att det överensstämmer med det exsiterande namnet i Microsoft Graph API, Azure AD Graph API och Azure AD PowerShell.
+> Tidigare kallades den här rollen "Tjänstadministratör" [i Azure Portal](https://portal.azure.com) och [Administrationscenter för Microsoft 365](https://admin.microsoft.com). Vi har bytt namn till "Tjänstsupportadministratör" så att det överensstämmer med det exsiterande namnet i Microsoft Graph API, Azure AD Graph API och Azure AD PowerShell.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
-> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läs alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="sharepoint-administrator"></a>SharePoint-administratör
 
-Användare med den här rollen har globala behörigheter i Microsoft SharePoint Online när tjänsten finns, samt möjligheten att skapa och hantera alla Microsoft 365-grupper, hantera supportärenden och övervaka tjänstens hälsa. Mer information finns i [Om administratörsroller](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+Användare med den här rollen har globala behörigheter i Microsoft SharePoint Online när tjänsten finns, samt möjligheten att skapa och hantera alla Microsoft 365-grupper, hantera supportärenden och övervaka tjänstens hälsa. Mer information finns i [Om administratörsroller.](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)
 
 > [!NOTE]
 > I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "SharePoint-tjänstadministratör". Det är "SharePoint-administratör" i [Azure Portal](https://portal.azure.com).
@@ -1663,10 +1660,10 @@ Användare med den här rollen har globala behörigheter i Microsoft SharePoint 
 > | Åtgärder | Beskrivning |
 > | --- | --- |
 > | microsoft.directory/groups.unified/create | Skapa Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
-> | microsoft.directory/groups.unified/delete | Ta Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.unified/delete | Ta Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.unified/restore | Återställa Microsoft 365 grupper |
-> | microsoft.directory/groups.unified/basic/update | Uppdatera grundläggande egenskaper för Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
-> | microsoft.directory/groups.unified/members/update | Uppdatera medlemmar Microsoft 365 grupper med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.unified/basic/update | Uppdatera grundläggande egenskaper för Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
+> | microsoft.directory/groups.unified/members/update | Uppdatera medlemmar Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.directory/groups.unified/owners/update | Uppdatera ägare Microsoft 365-grupper med undantag för roll-tilldelningsbara grupper |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
@@ -1674,12 +1671,12 @@ Användare med den här rollen har globala behörigheter i Microsoft SharePoint 
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.sharePoint/allEntities/allTasks | Skapa och ta bort alla resurser och läs och uppdatera standardegenskaper i SharePoint |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
-> | microsoft.office365.usageReports/allEntities/allProperties/read | Läsa användningsrapporter för Office 365 |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Läs användningsrapporter för Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="skype-for-business-administrator"></a>Skype för företag-administratör
 
-Användare med den här rollen har globala behörigheter i Microsoft Skype för företag när tjänsten finns, samt hantera Skype-specifika användarattribut i Azure Active Directory. Dessutom ger den här rollen möjlighet att hantera supportärenden och övervaka tjänstens hälsa samt att få åtkomst till administrationscentret för Teams och Skype för företag. Kontot måste också vara licensierat för Teams eller så kan det inte köra Teams PowerShell-cmdlets. Mer information finns [i Om administratörsrollen för Skype](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) för företag och Licensieringsinformation för Teams i Skype för företag och Microsoft [Teams-tilläggslicensiering](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+Användare med den här rollen har globala behörigheter i Microsoft Skype för företag när tjänsten finns, samt hantera Skype-specifika användarattribut i Azure Active Directory. Dessutom ger den här rollen möjlighet att hantera supportärenden och övervaka tjänstens hälsotillstånd samt få åtkomst till administrationscentret för Teams och Skype för företag. Kontot måste också vara licensierat för Teams eller så kan det inte köra Teams PowerShell-cmdlets. Mer information finns [i Om administratörsrollen för Skype](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) för företag och Licensieringsinformation för Teams i Skype för företag och Microsoft [Teams-tilläggslicensiering](/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
 > [!NOTE]
 > I Microsoft Graph API och Azure AD PowerShell identifieras den här rollen som "Lync-tjänstadministratör". Det är "Skype för företag-administratör" i [Azure Portal](https://portal.azure.com/).
@@ -1692,12 +1689,12 @@ Användare med den här rollen har globala behörigheter i Microsoft Skype för 
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.skypeForBusiness/allEntities/allTasks | Hantera alla aspekter av Skype för företag – Online |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
-> | microsoft.office365.usageReports/allEntities/allProperties/read | Läs användningsrapporter för Office 365 |
+> | microsoft.office365.usageReports/allEntities/allProperties/read | Läsa användningsrapporter för Office 365 |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="teams-administrator"></a>Teams-administratör
 
-Användare i den här rollen kan hantera alla aspekter av Microsoft Teams-arbetsbelastningen via Microsoft Teams & administrationscenter för Skype för företag och respektive PowerShell-moduler. Detta omfattar bland annat alla hanteringsverktyg som rör telefoni, meddelanden, möten och själva teamen. Den här rollen ger dessutom möjlighet att skapa och hantera alla Microsoft 365 grupper, hantera supportärenden och övervaka tjänstens hälsa.
+Användare i den här rollen kan hantera alla aspekter av Microsoft Teams-arbetsbelastningen via Microsoft Teams & administrationscentret för Skype för företag och respektive PowerShell-moduler. Detta omfattar bland annat alla hanteringsverktyg som rör telefoni, meddelanden, möten och själva teamen. Den här rollen ger dessutom möjlighet att skapa och hantera alla Microsoft 365 grupper, hantera supportärenden och övervaka tjänstens hälsa.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1712,7 +1709,7 @@ Användare i den här rollen kan hantera alla aspekter av Microsoft Teams-arbets
 > | microsoft.directory/servicePrincipals/managePermissionGrantsForGroup.microsoft-all-application-permissions | Bevilja tjänstens huvudnamn direkt åtkomst till en grupps data |
 > | microsoft.azure.serviceHealth/allEntities/allTasks | Läsa och konfigurera Azure Service Health |
 > | microsoft.azure.supportTickets/allEntities/allTasks | Skapa och hantera Azure-supportärenden |
-> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.network/performance/allProperties/read | Läs alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.serviceHealth/allEntities/allTasks | Läsa och konfigurera Service Health i Administrationscenter för Microsoft 365 |
 > | microsoft.office365.skypeForBusiness/allEntities/allTasks | Hantera alla aspekter av Skype för företag – Online |
 > | microsoft.office365.supportTickets/allEntities/allTasks | Skapa och hantera Microsoft 365 tjänstbegäranden |
@@ -1740,7 +1737,7 @@ Användare i den här rollen kan hantera aspekter av Microsoft Teams-arbetsbelas
 
 ## <a name="teams-communications-support-engineer"></a>Teams Communications Support Engineer
 
-Användare i den här rollen kan felsöka kommunikationsproblem i Microsoft Teams & Skype för företag med hjälp av felsökningsverktygen för användarsamtal i administrationscentret för Microsoft Teams & Skype för företag. Användare i den här rollen kan visa fullständig information om samtalsposten för alla deltagare. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
+Användare i den här rollen kan felsöka kommunikationsproblem i Microsoft Teams & Skype för företag med hjälp av felsökningsverktygen för användarsamtal i administrationscentret för Microsoft Teams & Skype för företag. Användare i den här rollen kan visa fullständig information om samtalsposten för alla berörda deltagare. Den här rollen har ingen åtkomst till att visa, skapa eller hantera supportärenden.
 
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
@@ -1781,8 +1778,8 @@ Användare med den här rollen kan komma åt aggregerade data på klientnivå oc
 > [!div class="mx-tableFixed"]
 > | Åtgärder | Beskrivning |
 > | --- | --- |
-> | microsoft.office365.network/performance/allProperties/read | Läsa alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
-> | microsoft.office365.usageReports/allEntities/standard/read | Läsa sammanställda användningsrapporter för Office 365 på klientnivå |
+> | microsoft.office365.network/performance/allProperties/read | Läs alla egenskaper för nätverksprestanda i Administrationscenter för Microsoft 365 |
+> | microsoft.office365.usageReports/allEntities/standard/read | Läsa aggregerade Office 365-användningsrapporter på klientnivå |
 > | microsoft.office365.webPortal/allEntities/standard/read | Läsa grundläggande egenskaper för alla resurser i Administrationscenter för Microsoft 365 |
 
 ## <a name="user-administrator"></a>Användaradministratör
@@ -1799,7 +1796,7 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 > [!IMPORTANT]
 > Användare med den här rollen kan ändra lösenord för personer som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i och utanför Azure Active Directory. Att ändra lösenordet för en användare kan innebära möjligheten att anta att användarens identitet och behörigheter. Exempel:
 >
->- Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierade behörigheter i Azure AD och någon annanstans inte beviljad till användaradministratörer. Med den här sökvägen kan en användaradministratör anta identiteten för en programägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
+>- Programregistrering och ägare av företagsprogram, som kan hantera autentiseringsuppgifter för appar som de äger. Dessa appar kan ha privilegierad behörighet i Azure AD och någon annanstans inte beviljad till användaradministratörer. Med den här sökvägen kan en användaradministratör anta identiteten för en programägare och sedan ytterligare anta identiteten för ett privilegierat program genom att uppdatera autentiseringsuppgifterna för programmet.
 >- Azure-prenumerationsägare, som kan ha åtkomst till känslig eller privat information eller kritisk konfiguration i Azure.
 >- Säkerhetsgrupp och Microsoft 365 gruppägare, som kan hantera gruppmedlemskap. Dessa grupper kan bevilja åtkomst till känslig eller privat information eller kritisk konfiguration i Azure AD och någon annanstans.
 >- Administratörer i andra tjänster utanför Azure AD som Exchange Online, Säkerhets- och efterlevnadscenter för Office och system för personalavdelningen.
@@ -1817,16 +1814,16 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 > | microsoft.directory/entitlementManagement/allProperties/allTasks | Skapa och ta bort resurser och läs och uppdatera alla egenskaper i Azure AD-berättigandehantering |
 > | microsoft.directory/groups/assignLicense | Tilldela produktlicenser till grupper för gruppbaserad licensiering |
 > | microsoft.directory/groups/create | Skapa grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll-tilldelningsbara grupper |
+> | microsoft.directory/groups/delete | Ta bort grupper, exklusive roll tilldelningsbara grupper |
 > | microsoft.directory/groups/hiddenMembers/read | Läsa dolda medlemmar i en grupp |
 > | microsoft.directory/groups/reprocessLicenseAssignment | Ombearbeta licenstilldelningar för gruppbaserad licensiering |
 > | microsoft.directory/groups/restore | Återställa borttagna grupper |
 > | microsoft.directory/groups/basic/update | Uppdatera grundläggande egenskaper för grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/classification/update | Uppdatera klassificeringsegenskapen för grupper, exklusive roll assignable-grupper |
-> | microsoft.directory/groups/dynamicMembershipRule/update | Uppdatera regeln för dynamiskt medlemskap för grupper, exklusive rollde tilldelningsbara grupper |
-> | microsoft.directory/groups/groupType/update | Uppdatera groupType-egenskapen för en grupp |
+> | microsoft.directory/groups/dynamicMembershipRule/update | Uppdatera dynamisk medlemskapsregel för grupper, exklusive roll-tilldelningsbara grupper |
+> | microsoft.directory/groups/groupType/update | Uppdatera egenskapen groupType för en grupp |
 > | microsoft.directory/groups/members/update | Uppdatera medlemmar i grupper, exklusive roll-tilldelningsbara grupper |
-> | microsoft.directory/groups/onPremWriteBack/update | Uppdatera Azure Active Directory grupper som ska skrivas tillbaka till den lokala Azure AD Connect |
+> | microsoft.directory/groups/onPremWriteBack/update | Uppdatera Azure Active Directory grupper som ska skrivas tillbaka till den lokala platsen med Azure AD Connect |
 > | microsoft.directory/groups/owners/update | Uppdatera ägare av grupper, exklusive roll-tilldelningsbara grupper |
 > | microsoft.directory/groups/settings/update | Uppdatera inställningar för grupper |
 > | microsoft.directory/groups/visibility/update | Uppdatera synlighetsegenskapen för grupper |
@@ -1838,7 +1835,7 @@ Användare med den här rollen kan skapa användare och hantera alla aspekter av
 > | microsoft.directory/users/disable | Inaktivera användare |
 > | microsoft.directory/users/enable | Aktivera användare |
 > | microsoft.directory/users/inviteGuest | Bjud in gästanvändare |
-> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut inloggning genom att ogiltigförklara token för användaruppdatering |
+> | microsoft.directory/users/invalidateAllRefreshTokens | Framt tvinga ut ut genom att ogiltigförklara token för användaruppdatering |
 > | microsoft.directory/users/reprocessLicenseAssignment | Ombearbeta licenstilldelningar för användare |
 > | microsoft.directory/users/restore | Återställa borttagna användare |
 > | microsoft.directory/users/basic/update | Uppdatera grundläggande egenskaper för användare |
@@ -1861,16 +1858,16 @@ Exempel:
 
 `microsoft.directory/applications/credentials/update`
 
-| Behörighetselement | Beskrivning |
+| Behörighetselement | Description |
 | --- | --- |
-| namnområde | Produkt eller tjänst som exponerar uppgiften och förbereds med `microsoft` . Alla uppgifter i Azure AD använder till exempel `microsoft.directory` namnområdet . |
+| namnområde | Produkt eller tjänst som exponerar uppgiften och förbereds med `microsoft` . Till exempel använder alla uppgifter i Azure AD `microsoft.directory` namnområdet. |
 | Enhet | Logisk funktion eller komponent som exponeras av tjänsten i Microsoft Graph. Azure AD exponerar till exempel användare och grupper, OneNote visar anteckningar och Exchange exponerar postlådor och kalendrar. Det finns ett särskilt nyckelord `allEntities` för att ange alla entiteter i ett namnområde. Detta används ofta i roller som beviljar åtkomst till en hel produkt. |
-| propertySet | Specifika egenskaper eller aspekter av entiteten som åtkomst beviljas för. Ger till exempel `microsoft.directory/applications/authentication/read` möjlighet att läsa svars-URL,utloggnings-URL och implicit flödesegenskap för programobjektet i Azure AD.<ul><li>`allProperties` anger alla egenskaper för entiteten, inklusive privilegierade egenskaper.</li><li>`standard` anger gemensamma egenskaper, men exkluderar privilegierade egenskaper som är relaterade till `read` åtgärder. Omfattar till exempel möjligheten att läsa standardegenskaper som offentligt telefonnummer och e-postadress, men inte det privata sekundära telefonnumret eller e-postadressen som används `microsoft.directory/user/standard/read` för multifaktorautentisering.</li><li>`basic` anger gemensamma egenskaper, men exkluderar privilegierade egenskaper som är relaterade till `update` åtgärden. Uppsättningen egenskaper som du kan läsa kan vara annorlunda än vad du kan uppdatera. Det är därför det finns `standard` nyckelorden `basic` och som återspeglar det.</li></ul> |
-| åtgärd | Åtgärden beviljas, vanligtvis skapa, läsa, uppdatera eller ta bort (CRUD). Det finns ett särskilt `allTasks` nyckelord för att ange alla ovanstående funktioner (skapa, läsa, uppdatera och ta bort). |
+| propertySet | Specifika egenskaper eller aspekter av entiteten som åtkomst beviljas för. Till exempel ger `microsoft.directory/applications/authentication/read` möjlighet att läsa svars-URL, utloggnings-URL och implicit flödesegenskap för programobjektet i Azure AD.<ul><li>`allProperties` anger alla egenskaper för entiteten, inklusive privilegierade egenskaper.</li><li>`standard` anger gemensamma egenskaper, men exkluderar privilegierade egenskaper som är relaterade till `read` åtgärden. Omfattar till exempel möjligheten att läsa standardegenskaper som offentliga telefonnummer och e-postadress, men inte det privata sekundära telefonnumret eller e-postadressen som används för `microsoft.directory/user/standard/read` multifaktorautentisering.</li><li>`basic` anger gemensamma egenskaper, men exkluderar privilegierade egenskaper som är relaterade till `update` åtgärden. Uppsättningen egenskaper som du kan läsa kan vara annorlunda än vad du kan uppdatera. Det är därför det finns `standard` nyckelorden `basic` och som återspeglar det.</li></ul> |
+| åtgärd | Åtgärden beviljas, oftast skapas, läses, uppdateras eller tas bort (CRUD). Det finns ett särskilt `allTasks` nyckelord för att ange alla ovanstående funktioner (skapa, läsa, uppdatera och ta bort). |
 
 ## <a name="deprecated-roles"></a>Inaktuella roller
 
-Följande roller ska inte användas. De har gjorts inaktuella och kommer att tas bort från Azure AD i framtiden.
+Följande roller bör inte användas. De är inaktuella och kommer att tas bort från Azure AD i framtiden.
 
 * AdHoc-licensadministratör
 * Enhetskoppling
@@ -1891,8 +1888,8 @@ Enhetshanterare | Inaktuell | [Dokumentation om inaktuella roller](#deprecated-r
 Enhetsanvändare | Inaktuell | [Dokumentation om inaktuella roller](#deprecated-roles)
 Katalogsynkroniseringskonton | Visas inte eftersom den inte ska användas | [Dokumentation om katalogsynkroniseringskonton](#directory-synchronization-accounts)
 Gästanvändare | Visas inte eftersom det inte kan användas | NA
-Support för partnernivå 1 | Visas inte eftersom den inte ska användas | [Supportdokumentation för partnernivå 1](#partner-tier1-support)
-Support för partnernivå 2 | Visas inte eftersom den inte ska användas | [Supportdokumentation för partnernivå 2](#partner-tier2-support)
+Partnersupport på nivå 1 | Visas inte eftersom den inte ska användas | [Supportdokumentation för PartnerNivå 1](#partner-tier1-support)
+Partnersupport på nivå 2 | Visas inte eftersom den inte ska användas | [Supportdokumentation för partnernivå 2](#partner-tier2-support)
 Begränsad gästanvändare | Visas inte eftersom det inte kan användas | NA
 Användare | Visas inte eftersom det inte kan användas | NA
 Anslut till arbetsplatsenhet | Inaktuell | [Dokumentation om inaktuella roller](#deprecated-roles)
