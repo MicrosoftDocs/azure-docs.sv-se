@@ -8,18 +8,18 @@ ms.service: virtual-machine-scale-sets
 ms.date: 02/12/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli
-ms.openlocfilehash: 72e36a942eeaea00699f346db99a7ca3503495da
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d089708ead67891164aee074394e923d2a84a977
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481658"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774457"
 ---
 # <a name="preview-orchestration-modes-for-virtual-machine-scale-sets-in-azure"></a>Förhandsversion: Orkestreringslägen för VM-skalningsuppsättningar i Azure 
 
-Virtual Machines Scale Sets tillhandahåller en logisk gruppering av plattformsbaserade virtuella datorer. Med skalningsuppsättningar skapar du en konfigurationsmodell för virtuella datorer, lägger automatiskt till eller tar bort ytterligare instanser baserat på CPU- eller minnesbelastning och uppgraderar automatiskt till den senaste versionen av operativsystemet. Traditionellt gör skalningsuppsättningar att du kan skapa virtuella datorer med hjälp av en VM-konfigurationsmodell som tillhandahålls när skalningsuppsättningen skapas, och skalningsuppsättningen kan bara hantera virtuella datorer som skapas implicit baserat på konfigurationsmodellen. 
+Virtual Machines skalningsuppsättningar tillhandahåller en logisk gruppering av plattformsbaserade virtuella datorer. Med skalningsuppsättningar skapar du en konfigurationsmodell för virtuella datorer, lägger automatiskt till eller tar bort ytterligare instanser baserat på CPU- eller minnesbelastning och uppgraderar automatiskt till den senaste versionen av operativsystemet. Traditionellt gör skalningsuppsättningar att du kan skapa virtuella datorer med en VM-konfigurationsmodell som tillhandahålls när skalningsuppsättningen skapas, och skalningsuppsättningen kan bara hantera virtuella datorer som skapas implicit baserat på konfigurationsmodellen. 
 
-Med orkestreringslägen för skalningsuppsättningen kan du få större kontroll över hur instanser av virtuella datorer hanteras av skalningsuppsättningen. 
+Med orkestreringslägen för skalningsuppsättning kan du få större kontroll över hur instanser av virtuella datorer hanteras av skalningsuppsättningen. 
 
 > [!IMPORTANT]
 > Orkestreringsläget definieras när du skapar skalningsuppsättningen och kan inte ändras eller uppdateras senare.
@@ -28,7 +28,7 @@ Med orkestreringslägen för skalningsuppsättningen kan du få större kontroll
 ## <a name="scale-sets-with-uniform-orchestration"></a>Skalningsuppsättningar med enhetlig orkestrering
 Optimerad för storskaliga tillståndslösa arbetsbelastningar med identiska instanser.
 
-VM-skalningsuppsättningar med enhetlig orkestrering använder en virtuell datorprofil eller mall för att skala upp till önskad kapacitet. Även om det finns viss möjlighet att hantera eller anpassa enskilda instanser av virtuella datorer använder Uniform identiska VM-instanser. Enskilda uniforma VM-instanser exponeras via API-kommandon för VM-skalningsuppsättningen för virtuella datorer. Enskilda instanser är inte kompatibla med standardkommandona för API:et för virtuella Azure IaaS-datorer, Azure-hanteringsfunktioner som Azure Resource Manager-resurstaggning av RBAC-behörigheter, Azure Backup eller Azure Site Recovery. Enhetlig orkestrering ger garantier för hög tillgänglighet för feldomäner när de konfigureras med färre än 100 instanser. Enhetlig orkestrering är allmänt tillgängligt och stöder en fullständig uppsättning hantering och orkestrering av skalningsuppsättning, inklusive måttbaserad automatisk skalning, instansskydd och automatiska os-uppgraderingar. 
+Skalningsuppsättningar för virtuella datorer med enhetlig orkestrering använder en virtuell datorprofil eller mall för att skala upp till önskad kapacitet. Även om det finns viss möjlighet att hantera eller anpassa enskilda instanser av virtuella datorer, använder Uniform identiska VM-instanser. Enskilda uniform VM-instanser exponeras via API-kommandon för VM-skalningsuppsättningen för virtuella datorer. Enskilda instanser är inte kompatibla med standardkommandona för AZURE IaaS VM API, Azure-hanteringsfunktioner som RBAC-behörigheter för Azure Resource Manager-resurstaggning, Azure Backup eller Azure Site Recovery. Enhetlig orkestrering ger garantier om hög tillgänglighet för feldomäner när de konfigureras med färre än 100 instanser. Enhetlig orkestrering är allmänt tillgänglig och stöder en fullständig uppsättning hantering och orkestrering av skalningsuppsättning, inklusive måttbaserad automatisk skalning, instansskydd och automatiska OS-uppgraderingar. 
 
 
 ## <a name="scale-sets-with-flexible-orchestration"></a>Skalningsuppsättningar med flexibel orkestrering 
@@ -39,7 +39,7 @@ Med flexibel orkestrering ger Azure en enhetlig upplevelse i ekosystemet för vi
 - Open-Source databaser
 - Tillståndsful-program
 - Tjänster som kräver hög tillgänglighet och stor skala
-- Tjänster som vill blanda olika typer av virtuella datorer eller utnyttja virtuella datorer med plats och på begäran tillsammans
+- Tjänster som vill blanda typer av virtuella datorer eller utnyttja virtuella datorer för vm med plats och på begäran
 - Befintliga program för tillgänglighetsuppsättning  
 
 > [!IMPORTANT]
@@ -49,13 +49,13 @@ Med flexibel orkestrering ger Azure en enhetlig upplevelse i ekosystemet för vi
 
 
 ## <a name="what-has-changed-with-flexible-orchestration-mode"></a>Vad har ändrats med flexibelt orkestreringsläge?
-En av de största fördelarna med flexibel orkestrering är att den tillhandahåller orkestreringsfunktioner över virtuella Azure IaaS-standarddatorer i stället för underordnade virtuella datorer med skalningsuppsättning. Det innebär att du kan använda alla STANDARD-API:er för virtuella datorer när du hanterar flexibla orkestreringsinstanser, i stället för VM-API:erna för VM-skalningsuppsättningen som du använder med Enhetlig orkestrering. Under förhandsversionsperioden finns det flera skillnader mellan att hantera instanser i flexibel orkestrering jämfört med enhetlig orkestrering. I allmänhet rekommenderar vi att du använder standard-API:er för virtuella Azure IaaS-datorer när det är möjligt. I det här avsnittet ska vi lyfta fram exempel på metodtips för att hantera VM-instanser med flexibel orkestrering.  
+En av de största fördelarna med flexibel orkestrering är att den tillhandahåller orkestreringsfunktioner över virtuella Azure IaaS-standarddatorer i stället för underordnade virtuella datorer med skalningsuppsättning. Det innebär att du kan använda alla standard-API:er för virtuella datorer när du hanterar flexibla orkestreringsinstanser, i stället för VM-API:erna för VM-skalningsuppsättningen som du använder med Enhetlig orkestrering. Under förhandsversionsperioden finns det flera skillnader mellan att hantera instanser i flexibel orkestrering jämfört med enhetlig orkestrering. I allmänhet rekommenderar vi att du använder standard-API:er för virtuella Azure IaaS-datorer när det är möjligt. I det här avsnittet ska vi lyfta fram exempel på metodtips för att hantera VM-instanser med flexibel orkestrering.  
 
 ### <a name="assign-fault-domain-during-vm-creation"></a>Tilldela feldomän när den virtuella datorn skapas
 Du kan välja antalet feldomäner för skalningsuppsättningen för flexibel orkestrering. När du lägger till en virtuell dator i en flexibel skalningsuppsättning sprider Azure som standard instanser jämnt över feldomäner. Vi rekommenderar att Du låter Azure tilldela feldomänen, men för avancerade scenarier eller felsökningsscenarier kan du åsidosätta det här standardbeteendet och ange feldomänen där instansen ska landa.
 
 ```azurecli-interactive 
-az vm create â€“vmss "myVMSS"  â€“-platform_fault_domain 1
+az vm create –vmss "myVMSS"  –-platform_fault_domain 1
 ```
 
 ### <a name="instance-naming"></a>Namngivning av instanser 
@@ -65,11 +65,11 @@ När du skapar en virtuell dator och lägger till den i en flexibel skalningsupp
 Den bästa metoden är att använda Azure Resource Graph för att fråga efter alla virtuella datorer i en VM-skalningsuppsättning. Azure Resource Graph ger effektiva frågefunktioner för Azure-resurser i stor skala över prenumerationer. 
 
 ``` 
-|â€¯whereâ€¯typeâ€¯=~â€¯'Microsoft.Compute/virtualMachines' 
-|â€¯whereâ€¯properties.virtualMachineScaleSetâ€¯containsâ€¯"demo" 
-|â€¯extendâ€¯powerStateâ€¯=â€¯properties.extended.instanceView.powerState.code 
-|â€¯projectâ€¯name,â€¯resourceGroup,â€¯location,â€¯powerState 
-|â€¯orderâ€¯byâ€¯resourceGroupâ€¯desc,â€¯nameâ€¯desc 
+| where type =~ 'Microsoft.Compute/virtualMachines' 
+| where properties.virtualMachineScaleSet contains "demo" 
+| extend powerState = properties.extended.instanceView.powerState.code 
+| project name, resourceGroup, location, powerState 
+| order by resourceGroup desc, name desc 
 ```
 
 Att fråga resurser med [Azure Resource Graph är](../governance/resource-graph/overview.md) ett praktiskt och effektivt sätt att fråga Azure-resurser och minimera API-anrop till resursprovidern. Azure Resource Graph är ett konsekvent cacheminne där nya eller uppdaterade resurser kanske inte återspeglas på upp till 60 sekunder. Du kan:
@@ -81,7 +81,7 @@ Att fråga resurser med [Azure Resource Graph är](../governance/resource-graph/
 Använd standardkommandona för virtuella datorer för att starta, stoppa, starta om och ta bort instanser i stället för VM-API:erna för skalningsuppsättning för virtuella datorer. Batchåtgärder för VM-skalningsuppsättningen (starta alla, stoppa alla, avbildning av alla osv.) används inte i flexibelt orkestreringsläge. 
 
 ### <a name="monitor-application-health"></a>Övervaka programhälsa 
-Övervakning av programhälsa gör att ditt program kan ge Azure ett pulsslag för att avgöra om programmet är felfritt eller inte. Azure kan automatiskt ersätta VM-instanser som inte är felhälsosamma. För instanser av flexibel skalningsuppsättning måste du installera och konfigurera tillägget för programhälsa på den virtuella datorn. För instanser av en enhetlig skalningsuppsättning kan du använda antingen tillägget för programhälsa eller mäta hälsotillstånd med en Azure Load Balancer anpassad hälsoavsökning. 
+Övervakning av programhälsa gör att ditt program kan ge Azure ett pulsslag för att avgöra om programmet är felfritt eller inte. Azure kan automatiskt ersätta VM-instanser som inte är felhälsosamma. För instanser av en flexibel skalningsuppsättning måste du installera och konfigurera tillägget för programhälsa på den virtuella datorn. För instanser av en enhetlig skalningsuppsättning kan du använda antingen tillägget för programhälsa eller mäta hälsotillstånd med en Azure Load Balancer anpassad hälsoavsökning. 
 
 ### <a name="list-scale-sets-vm-api-changes"></a>Visa en lista över ändringar i VM-API:et för skalningsuppsättningar 
 Virtual Machine Scale Sets kan du lista de instanser som tillhör skalningsuppsättningen. Med flexibel orkestrering innehåller listan Virtual Machine Scale Sets VM-kommandot en lista över VM-ID:n för skalningsuppsättningar. Du kan sedan anropa GET Virtual Machine Scale Sets VM-kommandon för att få mer information om hur skalningsuppsättningen fungerar med VM-instansen. Om du vill ha fullständig information om den virtuella datorn använder du standardkommandona för GET VM [eller Azure Resource Graph](../governance/resource-graph/overview.md). 
@@ -94,38 +94,38 @@ Använd tillägg riktade för virtuella standarddatorer i stället för tillägg
 
 
 ## <a name="a-comparison-of-flexible-uniform-and-availability-sets"></a>En jämförelse av flexibla, enhetliga och tillgänglighetsuppsättningar 
-I följande tabell jämförs flexibelt orkestreringsläge, enhetligt orkestreringsläge och tillgänglighetsuppsättningar med hjälp av deras funktioner.
+I följande tabell jämförs flexibelt orkestreringsläge, enhetligt orkestreringsläge och tillgänglighetsuppsättningar med deras funktioner.
 
-| Funktion | Stöds av flexibel orkestrering (förhandsversion) | Stöds av Enhetlig orkestrering (allmän tillgänglighet) | Stöds av AvSets (allmän tillgänglighet) |
+| Funktion | Stöds av flexibel orkestrering (förhandsversion) | Stöds av enhetlig orkestrering (allmän tillgänglighet) | Stöds av AvSets (allmän tillgänglighet) |
 |-|-|-|-|
 |         Typ av virtuell dator  | Standard Azure IaaS VM (Microsoft.compute /virtualmachines)  | Skalningsuppsättningsspecifika virtuella datorer (Microsoft.compute /virtualmachinescalesets/virtualmachines)  | Standard Azure IaaS VM (Microsoft.compute /virtualmachines)  |
 |         SKU:er som stöds  |            D-serien, E-serien, F-serien, A-serien, B-serien, Intel, AMD  |            Alla SKU:er  |            Alla SKU:er  |
-|         Tillgänglighetszoner  |            Om du vill kan du ange att alla instanser hamnar i en enda tillgänglighetszon |            Ange instanser som hamnar över 1, 2 eller 3 tillgänglighetszoner  |            Stöds inte  |
-|         Fullständig kontroll över virtuella datorer, nätverkskort, diskar  |            Ja  |            Begränsad kontroll med VM Scale Sets VM API  |            Ja  |
+|         Tillgänglighetszoner  |            Du kan också ange att alla instanser hamnar i en enda tillgänglighetszon |            Ange instanser som hamnar över 1, 2 eller 3 tillgänglighetszoner  |            Stöds inte  |
+|         Fullständig kontroll över virtuella datorer, nätverkskort, diskar  |            Yes  |            Begränsad kontroll med VM Scale Sets VM API  |            Yes  |
 |         Automatisk skalning  |            Inga  |            Ja  |            Inga  |
 |         Tilldela en virtuell dator till en specifik feldomän  |            Ja  |             Inga   |            Inga  |
 |         Ta bort nätverkskort och diskar när du tar bort VM-instanser  |            Inga  |            Ja  |            Inga  |
-|         Uppgraderingsprincip (VM Scale Sets) |            Inga  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
+|         Uppgraderingsprincip (VM Scale Sets) |            No  |            Automatisk, rullande, manuell  |            Ej tillämpligt  |
 |         Automatiska os-uppdateringar (VM Scale Sets) |            Inga  |            Ja  |            Ej tillämpligt  |
 |         I Gästsäkerhetskorrigering  |            Ja  |            Inga  |            Ja  |
 |         Avsluta meddelanden (VM Scale Sets) |            Inga  |            Ja  |            Ej tillämpligt  |
 |         Instansreparation (VM Scale Sets) |            Inga  |            Ja   |            Ej tillämpligt  |
 |         Snabbare nätverk  |            Ja  |            Ja  |            Ja  |
-|         Spotâ€ âinstances and pricingâ€ â  |            Ja, du kan ha instanser med både punkt- och prioritetsordning  |            Ja, instanser måste antingen vara alla platser eller alla vanliga  |            Nej, endast instanser med vanlig prioritet  |
+|         Spotinstanser och priser   |            Ja, du kan ha instanser med både punkt- och regelbunden prioritet  |            Ja, instanser måste antingen vara alla platser eller alla vanliga  |            Nej, endast instanser med vanlig prioritet  |
 |         Blanda operativsystem  |            Ja, Linux och Windows kan finnas i samma flexibla skalningsuppsättning |            Nej, instanser är samma operativsystem  |               Ja, Linux och Windows kan finnas i samma flexibla skalningsuppsättning |
 |         Övervaka programmets hälsotillstånd  |            Tillägg för programhälsa  |            Programhälsotillägg eller Azure Load Balancer-avsökning  |            Tillägg för programhälsa  |
-|         UltraSSDâ€ âDisksâ€ °  |            Ja  |            Ja, endast för zonindeala distributioner  |            Inga  |
-|         Infinibandâ€ °  |            Inga  |            Ja, endast en placeringsgrupp  |            Ja  |
-|         Writeâ€ âAcceleratorâ€ °  |            Inga  |            Ja  |            Ja  |
-|         Proximityâ€ âPlacement Groupsâ€ â  |            Ja  |            Ja  |            Ja  |
-|         Dedikerade Azure-värdarâ° â  |            Inga  |            Ja  |            Ja  |
-|         Basic SLBâ€ °  |            Inga  |            Ja  |            Ja  |
+|         UltraSSD-diskar   |            Yes  |            Ja, endast för zonindeala distributioner  |            No  |
+|         Infiniband   |            No  |            Ja, endast en placeringsgrupp  |            Yes  |
+|         Skrivningsaccelerator   |            Inga  |            Ja  |            Ja  |
+|         Närhetsplaceringsgrupper   |            Ja  |            Ja  |            Ja  |
+|         Dedikerade Azure-värdar   |            Inga  |            Ja  |            Ja  |
+|         Basic SLB   |            Inga  |            Ja  |            Ja  |
 |         Azure Load Balancer Standard-SKU |            Ja  |            Ja  |            Ja  |
 |         Application Gateway  |            Inga  |            Ja  |            Ja  |
-|         Underhållskontrollâ€ °  |            Inga  |            Ja  |            Ja  |
-|         Lista virtuella datorer i set  |            Ja  |            Ja  |            Ja, lista virtuella datorer i AvSet  |
+|         Underhållskontroll   |            Inga  |            Ja  |            Ja  |
+|         Visa en lista över virtuella datorer i set  |            Ja  |            Ja  |            Ja, lista virtuella datorer i AvSet  |
 |         Azure-aviseringar  |            Inga  |            Ja  |            Ja  |
-|         VM-insikter  |            Inga  |            Ja  |            Ja  |
+|         Vm-insikter  |            Inga  |            Ja  |            Ja  |
 |         Azure Backup  |            Ja  |            Ja  |            Ja  |
 |         Azure Site Recovery  |     Inga  |            Inga  |            Ja  |
 |         Lägga till/ta bort befintlig virtuell dator i gruppen  |            Inga  |            Inga  |            Inga  | 
@@ -135,7 +135,7 @@ I följande tabell jämförs flexibelt orkestreringsläge, enhetligt orkestrerin
 Innan du kan distribuera VM-skalningsuppsättningar i flexibelt orkestreringsläge måste du först registrera din prenumeration för förhandsversionsfunktionen. Registreringen kan ta flera minuter att slutföra. Du kan använda följande kommandon Azure PowerShell Azure CLI för att registrera dig.
 
 ### <a name="azure-portal"></a>Azure-portalen
-Gå till informationssidan för den prenumeration som du vill skapa en skalningsuppsättning i flexibelt orkestreringsläge och välj Förhandsgranskningsfunktioner på menyn. Välj de två orkestreringsfunktioner som ska aktiveras: _VMOrchestratorSingleFD_ och _VMOrchestratorMultiFD_ och tryck på knappen Registrera. Funktionsregistreringen kan ta upp till 15 minuter.
+Gå till informationssidan för den prenumeration som du vill skapa en skalningsuppsättning i flexibelt orkestreringsläge och välj Förhandsgranskningsfunktioner på menyn. Välj de två orchestrator-funktionerna som ska aktiveras: _VMOrchestratorSingleFD_ och _VMOrchestratorMultiFD_ och tryck på knappen Registrera. Funktionsregistreringen kan ta upp till 15 minuter.
 
 ![Funktionsregistrering.](https://user-images.githubusercontent.com/157768/110361543-04d95880-7ff5-11eb-91a7-2e98f4112ae0.png)
 
@@ -165,7 +165,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0 
-Använd [az feature register](/cli/azure/feature#az-feature-register) för att aktivera förhandsversionen för din prenumeration. 
+Använd [az feature register](/cli/azure/feature#az_feature_register) för att aktivera förhandsversionen för din prenumeration. 
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
@@ -195,19 +195,19 @@ Skapa en VM-skalningsuppsättning i flexibelt orkestreringsläge via Azure Porta
 
 1. Logga in på [Azure Portal](https://portal.azure.com).
 1. I sökfältet söker du efter och väljer **VM-skalningsuppsättningar.** 
-1. Välj **Skapa** på sidan **VM-skalningsuppsättningar.**
+1. Välj **Skapa på** sidan **VM-skalningsuppsättningar.**
 1. På sidan **Skapa en VM-skalningsuppsättning** visar du **avsnittet Orkestrering.**
-1. För **Orkestreringsläge** väljer du **alternativet** Flexibel.
-1. Ange antal **feldomäner.**
+1. I **Orkestreringsläge** väljer du **alternativet** Flexibel.
+1. Ange **antal feldomäner.**
 1. Slutför skapandet av din skalningsuppsättning. Se [Skapa en skalningsuppsättning i Azure Portal](quick-create-portal.md#create-virtual-machine-scale-set) mer information om hur du skapar en skalningsuppsättning.
 
 :::image type="content" source="./media/virtual-machine-scale-sets-orchestration-modes/portal-create-orchestration-mode-flexible.png" alt-text="Orkestreringsläge i portalen när du skapar en skalningsuppsättning":::
 
 Lägg sedan till en virtuell dator i skalningsuppsättningen i flexibelt orkestreringsläge.
 
-1. I sökfältet söker du efter och väljer **Virtuella datorer.**
+1. I sökfältet söker du efter och väljer **Virtuella datorer**.
 1. Välj **Lägg** till på **sidan Virtuella** datorer.
-1. På fliken **Grundläggande inställningar** visar du **avsnittet Instansinformation.**
+1. På **fliken Grundläggande inställningar** visar du **avsnittet Instansinformation.**
 1. Lägg till den virtuella datorn i skalningsuppsättningen i flexibelt orkestreringsläge genom att välja skalningsuppsättningen i **tillgänglighetsalternativen**. Du kan lägga till den virtuella datorn i en skalningsuppsättning i samma region, zon och resursgrupp.
 1. Slutför skapandet av den virtuella datorn. 
 
@@ -268,7 +268,7 @@ zones = ["1"]
 
 2. Lägg till virtuella datorer i skalningsuppsättningen.
     1. Tilldela egenskapen `virtualMachineScaleSet` till skalningsuppsättningen som du skapade tidigare. Du måste ange egenskapen när `virtualMachineScaleSet` den virtuella datorn skapas. 
-    1. Du kan använda **funktionen copy()** Azure Resource Manager mall för att skapa flera virtuella datorer på samma gång. Se [Resurs iteration](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) i Azure Resource Manager mallar. 
+    1. Du kan använda **funktionen copy()** Azure Resource Manager för att skapa flera virtuella datorer samtidigt. Se [Resurs iteration](../azure-resource-manager/templates/copy-resources.md#iteration-for-a-child-resource) i Azure Resource Manager mallar. 
 
     ```json
     {
@@ -309,19 +309,19 @@ Du kan lägga till upp till 1 000 virtuella datorer till en skalningsuppsättnin
 | Tillgänglighetsattribut  | Flexibel orkestrering  | Enhetlig orkestrering  | Tillgänglighetsuppsättningar  |
 |-|-|-|-|
 | Distribuera mellan tillgänglighetszoner  | Inga  | Ja  | Inga  |
-| Garantier för tillgänglighet för feldomäner inom en region  | Ja, upp till 1 000 instanser kan spridas över upp till tre feldomäner i regionen. Maximalt antal feldomäner varierar beroende på region  | Ja, upp till 100 instanser  | Ja, upp till 200 instanser  |
-| Placeringsgrupper  | Flexibelt läge använder alltid flera placeringsgrupper (singlePlacementGroup = false)  | Du kan välja en enskild placeringsgrupp eller flera placeringsgrupper | Ej tillämpligt  |
-| Uppdateringsdomäner  | Ingen, underhåll eller värduppdateringar görs feldomän av feldomän  | Upp till 5 uppdateringsdomäner  | Upp till 20 uppdateringsdomäner  |
+| Tillgänglighetsgarantier för feldomäner inom en region  | Ja, upp till 1 000 instanser kan spridas över upp till tre feldomäner i regionen. Maximalt antal feldomäner varierar beroende på region  | Ja, upp till 100 instanser  | Ja, upp till 200 instanser  |
+| Placeringsgrupper  | Flexibelt läge använder alltid flera placeringsgrupper (singlePlacementGroup = false)  | Du kan välja Enskild placeringsgrupp eller Flera placeringsgrupper | Ej tillämpligt  |
+| Uppdateringsdomäner  | Ingen, underhåll eller värduppdateringar utförs feldomän av feldomän  | Upp till 5 uppdateringsdomäner  | Upp till 20 uppdateringsdomäner  |
 
 
 ## <a name="troubleshoot-scale-sets-with-flexible-orchestration"></a>Felsöka skalningsuppsättningar med flexibel orkestrering
-Hitta rätt lösning för ditt felsökningsscenario. 
+Hitta rätt lösning på ditt felsökningsscenario. 
 
 ```
 InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
 ```
 
-**Orsak:** Prenumerationen är inte registrerad för den offentliga förhandsversionen av flexibelt orkestreringsläge. 
+**Orsak:** Prenumerationen är inte registrerad för den offentliga förhandsversionen av flexibel orkestreringsläge. 
 
 **Lösning:** Följ anvisningarna ovan för att registrera dig för den allmänt använda förhandsversionen av flexibelt orkestreringsläge. 
 
@@ -331,7 +331,7 @@ InvalidParameter. The specified fault domain count 2 must fall in the range 1 to
 
 **Orsak:** Parametern `platformFaultDomainCount` är ogiltig för den valda regionen eller zonen. 
 
-**Lösning:** Du måste välja ett giltigt `platformFaultDomainCount` värde. För zonindeala distributioner är `platformFaultDomainCount` det högsta värdet 1. För regionala distributioner där ingen zon har angetts varierar `platformFaultDomainCount` maxvärdet beroende på region. Se [Hantera tillgängligheten för virtuella datorer för skript för att](../virtual-machines/availability.md) fastställa det maximala antalet feldomäner per region. 
+**Lösning:** Du måste välja ett giltigt `platformFaultDomainCount` värde. För zonindeala distributioner är `platformFaultDomainCount` det högsta värdet 1. För regionala distributioner där ingen zon har angetts varierar `platformFaultDomainCount` maxvärdet beroende på region. Skript [för att fastställa det maximala antalet feldomäner per region](../virtual-machines/availability.md) finns i Hantera tillgängligheten för virtuella datorer. 
 
 ```
 OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it contains one or more VMs. Please delete or detach the VM(s) before deleting the Virtual Machine Scale Set.

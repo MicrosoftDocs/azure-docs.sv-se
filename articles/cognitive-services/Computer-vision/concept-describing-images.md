@@ -1,7 +1,7 @@
 ---
-title: Bild beskrivningar – Visuellt innehåll
+title: Bildbeskrivningar – Visuellt innehåll
 titleSuffix: Azure Cognitive Services
-description: Begrepp relaterade till bild beskrivnings funktionen i API för visuellt innehåll.
+description: Begrepp som rör bildbeskrivningsfunktionen i api:et för Visuellt innehåll.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4fd328dad3544697ba1f4896f7383be857b097a5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c517fa98bfc17d4702a51d4990e860b2ed7aaefd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "96530671"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778939"
 ---
-# <a name="describe-images-with-human-readable-language"></a>Beskriv bilder med läsligt språk
+# <a name="describe-images-with-human-readable-language"></a>Beskriva bilder med läsbart språk
 
-Visuellt innehåll kan analysera en bild och generera en läslig mening som beskriver dess innehåll. Algoritmen returnerar flera beskrivningar baserat på olika visuella funktioner, och varje beskrivning får en säkerhets poäng. Slutgiltiga utdata är en lista över beskrivningar som har beställts från högst till lägsta förtroende.
+Visuellt innehåll kan analysera en bild och generera en läsbar mening som beskriver dess innehåll. Algoritmen returnerar faktiskt flera beskrivningar baserat på olika visuella funktioner, och varje beskrivning får en förtroendepoäng. De slutliga utdata är en lista med beskrivningar sorterade från högsta till lägsta konfidens.
 
-## <a name="image-description-example"></a>Bild beskrivnings exempel
+## <a name="image-description-example"></a>Exempel på bildbeskrivning
 
-Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du beskriver exempel bilden baserat på dess visuella funktioner.
+Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du beskriver exempelbilden baserat på dess visuella funktioner.
 
-![En svart och vit bild av byggnader i Manhattan](./Images/bw_buildings.png)
+![En svart och vit bild av byggnader i Gör](./Images/bw_buildings.png)
 
 ```json
 {
@@ -58,10 +58,10 @@ Följande JSON-svar illustrerar vad Visuellt innehåll returnerar när du beskri
 
 ## <a name="use-the-api"></a>Använda API:et
 
-Funktionen bild beskrivning är en del av API: et [analys av avbildning](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) . Du kan anropa API: et via en inbyggd SDK eller via REST-anrop. Inkludera `Description` i **visualFeatures** -Frågeparametern. När du sedan får det fullständiga JSON-svaret ska du bara parsa strängen för innehållet i `"description"` avsnittet.
+Bildbeskrivningsfunktionen är en del av [Analysera bild](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) API. Du kan anropa det här API:et via ett inbyggt SDK eller via REST-anrop. Inkludera `Description` i **frågeparametern visualFeatures.** När du sedan får det fullständiga JSON-svaret parsar du helt enkelt strängen för innehållet i `"description"` avsnittet.
 
-* [Snabb start: Visuellt innehåll REST API-eller klient bibliotek](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
+* [Snabbstart: Visuellt innehåll REST API eller klientbibliotek](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig relaterade begrepp för att [Tagga bilder](concept-tagging-images.md) och [kategorisera bilder](concept-categorizing-images.md).
+Lär dig mer om relaterade [begrepp för att tagga](concept-tagging-images.md) [bilder och kategorisera bilder.](concept-categorizing-images.md)

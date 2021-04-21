@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/12/2021
 ms.custom: mvc
-ms.openlocfilehash: dfebb6561e83c51063515ec655153aaaa7a09c0c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a268d39ec514fc7b88b555221ece7dc044ca49ba
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98251377"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767519"
 ---
 # <a name="tutorial-scale-applications-in-azure-kubernetes-service-aks"></a>Självstudie: Skala program i Azure Kubernetes Service (AKS)
 
@@ -21,7 +21,7 @@ Om du har följt självstudierna så har du ett fungerande Kubernetes-kluster i 
 > * Skala Kubernetes-poddar som kör ditt program manuellt
 > * Konfigurera poddar för automatisk skalning som kör appens klientdel
 
-I senare självstudier uppdateras Azure röstnings programmet till en ny version.
+I senare självstudier uppdateras Azure Vote-programmet till en ny version.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
@@ -51,7 +51,7 @@ Om du vill ändra antalet poddar i *azure-vote-front*-distributionen manuellt an
 kubectl scale --replicas=5 deployment/azure-vote-front
 ```
 
-Kör [kubectl get poddar][kubectl-get] igen för att verifiera att AKS har skapat ytterligare poddar. Efter en minut eller så är poddar tillgängliga i klustret:
+Kör [kubectl get pods][kubectl-get] igen för att verifiera att AKS har skapat de ytterligare poddarna. Efter någon minut är poddarna tillgängliga i klustret:
 
 ```console
 kubectl get pods
@@ -74,14 +74,14 @@ az aks show --resource-group myResourceGroup --name myAKSCluster --query kuberne
 ```
 
 > [!NOTE]
-> Om ditt AKS-kluster är mindre än *1,10* installeras inte mått servern automatiskt. Mått Server installations manifest är tillgängliga som `components.yaml` till gång på mått Server versioner, vilket innebär att du kan installera dem via en URL. Mer information om dessa YAML-definitioner finns i avsnittet [distribution][metrics-server-github] i Readme.
+> Om ditt AKS-kluster är mindre *än 1,10* installeras inte måttservern automatiskt. Metrics Server-installationsmanifest är tillgängliga som en tillgång i Metrics Server-versioner, vilket innebär att du `components.yaml` kan installera dem via en URL. Mer information om dessa YAML-definitioner finns i [avsnittet Distribution][metrics-server-github] i viktigt.
 > 
-> Exempel på installation:
+> Exempelinstallation:
 > ```console
 > kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/download/v0.3.6/components.yaml
 > ```
 
-Om du vill använda autoskalning måste alla behållare i din poddar och din poddar ha tilldelade CPU-förfrågningar och-gränser. I `azure-vote-front`-distributionen begär klientdelscontainern redan 0,25 CPU med maxgränsen 0,5 CPU. Dessa resursbegäranden och begränsningar definieras enligt följande exempelavsnitt:
+Om du vill använda autoskalning måste alla containrar i dina poddar och poddar ha definierade CPU-begäranden och -gränser. I `azure-vote-front`-distributionen begär klientdelscontainern redan 0,25 CPU med maxgränsen 0,5 CPU. Dessa resursbegäranden och begränsningar definieras enligt följande exempelavsnitt:
 
 ```yaml
 resources:
@@ -91,13 +91,13 @@ resources:
      cpu: 500m
 ```
 
-I följande exempel används kommandot [kubectl autoscale][kubectl-autoscale] för att automatiskt skala antalet poddar i *azure-vote-front*-distributionen. Om Genomsnittlig CPU-belastning över alla poddar överskrider 50% av den begärda användningen, ökar autoskalning poddar upp till högst *10* instanser. Minst *3* instanser definieras sedan för distributionen:
+I följande exempel används kommandot [kubectl autoscale][kubectl-autoscale] för att automatiskt skala antalet poddar i *azure-vote-front*-distributionen. Om den genomsnittliga processoranvändningen för alla poddar överskrider 50 % av den begärda användningen ökar autoskalningen poddarna upp till *högst 10* instanser. Minst *3* instanser definieras sedan för distributionen:
 
 ```console
 kubectl autoscale deployment azure-vote-front --cpu-percent=50 --min=3 --max=10
 ```
 
-Du kan också skapa en manifest fil för att definiera beteendet för autoskalning och resurs gränser. Följande är ett exempel på en manifest fil med namnet `azure-vote-hpa.yaml` .
+Du kan också skapa en manifestfil för att definiera autoskalningsbeteendet och resursbegränsningarna. Följande är ett exempel på en manifestfil med namnet `azure-vote-hpa.yaml` .
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -129,7 +129,7 @@ spec:
   targetCPUUtilizationPercentage: 50 # target CPU utilization
 ```
 
-Använd `kubectl apply` för att tillämpa autoskalning som definierats i `azure-vote-hpa.yaml` manifest filen.
+Använd `kubectl apply` för att tillämpa autoskalning som definierats i `azure-vote-hpa.yaml` manifestfilen.
 
 ```console
 kubectl apply -f azure-vote-hpa.yaml
@@ -148,7 +148,7 @@ Efter några minuter, med minimal belastning på Azure Vote-appen, minskar antal
 
 ## <a name="manually-scale-aks-nodes"></a>Skala AKS-noder manuellt
 
-Om du har skapat ditt Kubernetes-kluster med hjälp av kommandona i den föregående själv studie kursen har det två noder. Du kan justera antalet noder manuellt om du planerar att ha fler eller färre containerarbetsbelastningar i klustret.
+Om du skapade Kubernetes-klustret med hjälp av kommandona i föregående självstudie har det två noder. Du kan justera antalet noder manuellt om du planerar att ha fler eller färre containerarbetsbelastningar i klustret.
 
 I följande exempel ökas antalet agentnoder till tre i Kubernetes-klustret med namn *myAKSCluster*. Det tar några minuter att slutföra kommandot.
 
@@ -199,6 +199,6 @@ Gå vidare till nästa självstudie och lär dig hur du uppdaterar program i Kub
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-update-app]: ./tutorial-kubernetes-app-update.md
-[az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-aks-scale]: /cli/azure/aks#az_aks_scale
 [azure-cli-install]: /cli/azure/install-azure-cli
-[az-aks-show]: /cli/azure/aks#az-aks-show
+[az-aks-show]: /cli/azure/aks#az_aks_show

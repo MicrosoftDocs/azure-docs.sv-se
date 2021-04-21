@@ -1,17 +1,17 @@
 ---
-title: 'Snabb start: skicka anpassade händelser till lagrings kön – Event Grid, Azure CLI'
-description: 'Snabb start: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En lagringskö används för slutpunkten.'
+title: 'Snabbstart: Skicka anpassade händelser till lagringskö – Event Grid, Azure CLI'
+description: 'Snabbstart: Använd Azure Event Grid och Azure CLI för att publicera ett ämne och prenumerera på händelsen. En lagringskö används för slutpunkten.'
 ms.date: 02/02/2021
 ms.topic: quickstart
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 00808e7eca13824833673ef820d39b70bf618dd2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bb7712fbc5a0498695a8737d627f407eb6dfa575
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493282"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766833"
 ---
-# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Snabb start: dirigera anpassade händelser till Azure Queue Storage med Azure CLI och Event Grid
+# <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Snabbstart: Dirigera anpassade händelser till Azure Queue Storage med Azure CLI och Event Grid
 
 Azure Event Grid är en händelsetjänst för molnet. Azure Queue Storage är en av de händelsehanterare som stöds. I den här artikeln använder du Azure CLI för att skapa ett anpassat ämne, prenumerera på det anpassade ämnet och utlösa händelsen för att visa resultatet. Du skickar händelser till Queue Storage.
 
@@ -19,9 +19,9 @@ Azure Event Grid är en händelsetjänst för molnet. Azure Queue Storage är en
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.0.56 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.56 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
-- Om du använder Azure PowerShell på den lokala datorn i stället för att använda Cloud Shell i Azure Portal, kontrollerar du att du har Azure PowerShell version 1.1.0 eller senare. Ladda ned den senaste versionen av Azure PowerShell på din Windows-dator från [Azure downloads - Command-line tools](https://azure.microsoft.com/downloads/) (Azure-nedladdningar – Kommandoradsverktyg). 
+- Om du använder Azure PowerShell på den lokala datorn i stället för att använda Cloud Shell i Azure Portal måste du kontrollera att du Azure PowerShell version 1.1.0 eller senare. Ladda ned den senaste versionen av Azure PowerShell på din Windows-dator från [Azure downloads - Command-line tools](https://azure.microsoft.com/downloads/) (Azure-nedladdningar – Kommandoradsverktyg). 
 
 Den här artikeln innehåller kommandon för att använda Azure CLI. 
 
@@ -29,7 +29,7 @@ Den här artikeln innehåller kommandon för att använda Azure CLI.
 
 Event Grid-ämnen är Azure-resurser och måste placeras i en Azure-resursgrupp. Resursgruppen är en logisk samling där Azure-resurser distribueras och hanteras.
 
-Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az-group-create). 
+Skapa en resursgrupp med kommandot [az group create](/cli/azure/group#az_group_create). 
 
 I följande exempel skapas en resursgrupp med namnet *gridResourceGroup* på platsen *westus2*.
 
@@ -61,7 +61,7 @@ az storage queue create --name $queuename --account-name $storagename
 
 ## <a name="subscribe-to-a-custom-topic"></a>Prenumerera på ett anpassat ämne
 
-Du prenumererar på ett anpassat ämne för att se Event Grid vilka händelser du vill spåra. I följande exempel prenumererar du på det anpassade ämne som du skapade och skickar resurs-ID för Queue Storage för slut punkten. Med Azure CLI skickar du Queue Storage-ID:t som slutpunkten. Slutpunkten är i formatet:
+Du prenumererar på ett anpassat ämne för att Event Grid vilka händelser du vill spåra. I följande exempel prenumererar vi på det anpassade ämne som du har skapat och resurs-ID:t för Queue Storage för slutpunkten. Med Azure CLI skickar du Queue Storage-ID:t som slutpunkten. Slutpunkten är i formatet:
 
 `/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/queueservices/default/queues/<queue-name>`
 
@@ -118,9 +118,9 @@ Gå till Queue Storage i portalen och kontrollera att Event Grid skickade de tre
 ![Visa meddelanden](./media/custom-event-to-queue-storage/messages.png)
 
 > [!NOTE]
-> Om du använder en [Azure Queue Storage-utlösare för Azure Functions](../azure-functions/functions-bindings-storage-queue-trigger.md) för en kö som tar emot meddelanden från Event Grid kan du se följande fel meddelande i funktions körningen: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
+> Om du använder [en Azure Queue Storage-utlösare för Azure Functions](../azure-functions/functions-bindings-storage-queue-trigger.md) för en kö som tar emot meddelanden från Event Grid kan följande felmeddelande visas vid funktionskörningen: `The input is not a valid Base-64 string as it contains a non-base 64 character, more than two padding characters, or an illegal character among the padding characters.`
 > 
-> Anledningen är att när du använder en [Azure Queue Storage-utlösare](../azure-functions/functions-bindings-storage-queue-trigger.md)förväntas Azure Functions en **Base64-kodad sträng**, men Event Grid skickar meddelanden till en lagrings kö i ett oformaterat text format. För närvarande går det inte att konfigurera kön utlösare för Azure Functions att acceptera oformaterad text. 
+> Anledningen är att när du använder en [Azure Queue Storage-utlösare](../azure-functions/functions-bindings-storage-queue-trigger.md)förväntar Azure Functions en **base64-kodad** sträng , men Event Grid skickar meddelanden till en lagringskö i oformaterat textformat. För närvarande går det inte att konfigurera köutlösaren för att Azure Functions godkänna oformaterad text. 
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser

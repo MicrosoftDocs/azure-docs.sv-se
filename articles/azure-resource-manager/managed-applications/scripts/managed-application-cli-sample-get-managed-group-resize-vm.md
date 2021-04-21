@@ -1,18 +1,18 @@
 ---
-title: Hämta hanterade resurs grupper & ändra storlek på virtuella datorer – Azure CLI
-description: Innehåller exempel skript för Azure CLI som hämtar en hanterad resurs grupp i ett Azure-hanterat program. Skriptet ändrar storlek på virtuella datorer.
+title: Hämta hanterade resursgruppsresurser & ändra storlek på virtuella datorer – Azure CLI
+description: Tillhandahåller Azure CLI-exempelskript som hämtar en hanterad resursgrupp i ett Azure-hanterat program. Skriptet ändrar storlek på virtuella datorer.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 711b516d1ba1154e574b0d8bbd8d86a02d7df018
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 179b1b64656d3f97778e183d57797e4b3660fece
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497825"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775447"
 ---
 # <a name="get-resources-in-a-managed-resource-group-and-resize-vms-with-azure-cli"></a>Hämta resurser från en hanterad resursgrupp och ändra storleken på virtuella datorer med Azure CLI
 
@@ -34,9 +34,9 @@ Det här skriptet använder följande kommandon för att distribuera det hantera
 
 | Kommando | Kommentarer |
 |---|---|
-| [az managedapp list](/cli/azure/managedapp#az-managedapp-list) | Visar en lista med hanterade program. Ange frågevärden om du vill förfina resultatvisningen. |
-| [az resource list](/cli/azure/resource#az-resource-list) | Visar resurserna. Ange en resursgrupp och frågevärden om du vill förfina resultatvisningen. |
-| [az vm resize](/cli/azure/vm#az-vm-resize) | Uppdatera storleken på en virtuell dator. |
+| [az managedapp list](/cli/azure/managedapp#az_managedapp_list) | Visar en lista med hanterade program. Ange frågevärden om du vill förfina resultatvisningen. |
+| [az resource list](/cli/azure/resource#az_resource_list) | Visar resurserna. Ange en resursgrupp och frågevärden om du vill förfina resultatvisningen. |
+| [az vm resize](/cli/azure/vm#az_vm_resize) | Uppdatera storleken på en virtuell dator. |
 
 
 ## <a name="next-steps"></a>Nästa steg

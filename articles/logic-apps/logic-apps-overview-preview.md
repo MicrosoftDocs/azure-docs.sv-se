@@ -1,302 +1,302 @@
 ---
 title: Översikt över förhandsversion av Azure Logic Apps
-description: Azure Logic Apps Preview är en moln lösning för att skapa automatiserad, enskild klient, tillstånds känslig och tillstånds lösa arbets flöden som integrerar appar, data, tjänster och system med minimal kod för scenarier på företags nivå.
+description: Azure Logic Apps Preview är en molnlösning för att skapa automatiserade arbetsflöden med en enda klientorganisation, tillståndslösa och tillståndslösa arbetsflöden som integrerar appar, data, tjänster och system med minimal kod för scenarier på företagsnivå.
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
-ms.date: 03/10/2021
-ms.openlocfilehash: 7120b6ff17657232c0e614f49b75bb24263712b7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: 27889e8309c0efaf1e2869fc39d099f38f64f7c4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102636343"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764827"
 ---
-# <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps för hands version
+# <a name="overview-azure-logic-apps-preview"></a>Översikt: Azure Logic Apps förhandsversion
 
 > [!IMPORTANT]
 > Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Med Azure Logic Apps för hands version kan du skapa automatiserings-och integrerings lösningar mellan appar, data, moln tjänster och system genom att skapa och köra Logic Apps med en enda klient med den nya resurs typen **Logic app (för hands version)** . Med den här typen av Logic-appar för en enda klient kan du skapa flera [ *tillstånds* lösa och *tillstånds lösa* arbets flöden](#stateful-stateless) som drivs av den omdesignade Azure Logic Apps Preview runtime, som ger portabilitet, bättre prestanda och flexibilitet för att distribuera och köra i olika värd miljöer, inklusive inte bara Azure, utan även Docker-behållare.
+Med Azure Logic Apps Preview kan du skapa automatiserings- och integreringslösningar för appar, data, molntjänster och system genom att skapa och köra logikappar med en enda klient med den nya resurstypen **Logikapp (förhandsversion).** Med den här logikapptypen för en enda klient kan du skapa flera [  tillståndslösa och tillståndslösa  ](#stateful-stateless) arbetsflöden som drivs av den omdesignade Azure Logic Apps Preview-körningen, som ger portabilitet, bättre prestanda och flexibilitet för distribution och körning i olika värdmiljöer, inklusive inte bara Azure, utan även Docker-containrar.
 
-Hur är detta möjligt? Den omdesignade körningen använder [Azure Functions utöknings modell](../azure-functions/functions-bindings-register.md) och är värdbaserad som ett tillägg på Azure Functions Runtime. Den här arkitekturen innebär att du kan köra en Logic app-typ med en enda klient som Azure Functions körs. Du kan vara värd för den omdesignade körningen på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som krävs av dina arbets flöden. Mer information finns i [Introduktion till Azure Functions](../azure-functions/functions-overview.md) och [Azure Functions utlösare och bindningar](../azure-functions/functions-triggers-bindings.md).
+Hur är detta möjligt? Den omdesignade körningen [använder Azure Functions utökningsbarhetsmodell](../azure-functions/functions-bindings-register.md) och finns som ett tillägg i Azure Functions-körningen. Den här arkitekturen innebär att du kan köra logikapptypen för en enskild klient var som helst Azure Functions körs. Du kan hantera den omdesignade körningen i nästan vilken nätverkstopologi som helst och välja valfri tillgänglig beräkningsstorlek för att hantera den nödvändiga arbetsbelastning som krävs av dina arbetsflöden. Mer information finns i [Introduktion till Azure Functions](../azure-functions/functions-overview.md) och Azure Functions [utlösare och bindningar.](../azure-functions/functions-triggers-bindings.md)
 
-Du kan skapa en **Logic app-resurs (för hands version)** antingen genom [att starta i Azure Portal](create-stateful-stateless-workflows-azure-portal.md) eller genom att [skapa ett projekt i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)](create-stateful-stateless-workflows-visual-studio-code.md). I Visual Studio Code kan du också skapa *och lokalt köra* dina arbets flöden i din utvecklings miljö. Oavsett om du använder portalen eller Visual Studio Code, kan du distribuera och köra Logic app-typen med en enda klient i samma typer av värd miljöer.
+Du kan skapa logikappresursen **(förhandsversion)** antingen genom att starta i [Azure Portal](create-stateful-stateless-workflows-azure-portal.md) eller genom att skapa ett projekt i [Visual Studio Code med tillägget Azure Logic Apps (förhandsversion).](create-stateful-stateless-workflows-visual-studio-code.md) I Visual Studio Code kan du skapa och *köra dina* arbetsflöden lokalt i utvecklingsmiljön. Oavsett om du använder portalen eller Visual Studio Code kan du distribuera och köra logikapptypen för en enskild klient i samma typer av värdmiljöer.
 
-Den här översikten täcker följande områden:
+Den här översikten omfattar följande områden:
 
-* [Skillnader mellan Azure Logic Apps för hands versionen, Azure Logic Apps flera klient miljö och integrerings tjänst miljön](#preview-differences).
+* [Skillnader mellan Azure Logic Apps Preview, Azure Logic Apps för flera innehavare och integreringstjänstmiljön](#preview-differences).
 
-* [Skillnader mellan tillstånds känsliga och tillstånds lösa arbets flöden](#stateful-stateless), inklusive beteende skillnader mellan [kapslade tillstånds känsliga och tillstånds lösa arbets flöden](#nested-behavior).
+* [Skillnader mellan tillståndslösa och tillståndslösa arbetsflöden,](#stateful-stateless)inklusive beteendeskillnader mellan [kapslade tillståndslösa och tillståndslösa arbetsflöden.](#nested-behavior)
 
-* [Funktioner i den här offentliga för hands versionen](#public-preview-contents).
+* [Funktioner i den här offentliga förhandsversionen.](#public-preview-contents)
 
-* [Hur pris modellen fungerar](#pricing-model).
+* [Så här fungerar prismodellen](#pricing-model).
 
-* [Ändrade, begränsade, ej tillgängliga eller funktioner som inte stöds](#limited-unavailable-unsupported).
+* [Funktioner som har ändrats, begränsats, inte är tillgängliga eller inte stöds.](#limited-unavailable-unsupported)
 
-* [Gränser i Azure Logic Apps för hands version](#limits).
+* [Begränsningar i Azure Logic Apps förhandsversion.](#limits)
 
-Mer information finns i följande avsnitt:
+Mer information finns i de här andra avsnitten:
 
-* [Azure Logic Apps som körs på djupet-körning](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
+* [Azure Logic Apps var som helst – Djupdykning i körning](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564)
 
-* [Logic Apps kända problem med allmänt för hands version (GitHub)](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
+* [Logic Apps offentliga förhandsversionen av kända problem (GitHub)](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
 <a name="preview-differences"></a>
 
-## <a name="how-does-azure-logic-apps-preview-differ"></a>Hur skiljer sig Azure Logic Apps för hands versionen?
+## <a name="how-does-azure-logic-apps-preview-differ"></a>Hur skiljer Azure Logic Apps förhandsversionen?
 
-Azure Logic Apps för hands versions körning använder [Azure Functions](../azure-functions/functions-overview.md) utöknings barhet och är värdbaserad som ett tillägg i Azure Functions Runtime. Den här arkitekturen innebär att du kan köra en Logic app-typ med en enda klient som Azure Functions körs. Du kan vara värd för Azure Logic Apps för hands versions körning på nästan vilken nätverkstopologi som helst och välja en tillgänglig beräknings storlek för att hantera den nödvändiga arbets belastningen som arbets flödet behöver. Mer information om Azure Functions utöknings barhet finns i [WebJobs SDK: skapa anpassade bindningar för indata och utdata](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings).
+Körningen Azure Logic Apps förhandsversionen [använder Azure Functions](../azure-functions/functions-overview.md) utökningsbarhet och finns som ett tillägg i Azure Functions körningen. Den här arkitekturen innebär att du kan köra logikapptypen för en enda klient var som helst Azure Functions körs. Du kan vara värd för Azure Logic Apps Preview-körningen på nästan vilken nätverkstopologi du vill och välja valfri tillgänglig beräkningsstorlek för att hantera den nödvändiga arbetsbelastning som arbetsflödet behöver. Mer information om utökning Azure Functions finns i [WebJobs SDK: Skapa anpassade indata- och utdatabindningar.](https://github.com/Azure/azure-webjobs-sdk/wiki/Creating-custom-input-and-output-bindings)
 
-Med den här nya metoden är Azure Logic Apps Preview-körningsmiljön och dina arbets flöden båda delarna i din app som du kan paketera tillsammans. Med den här funktionen kan du distribuera och köra dina arbets flöden genom att helt enkelt kopiera artefakter till värd miljön och starta din app. Den här metoden ger också en mer standardiserad upplevelse för att skapa distributions pipeliner runt arbets flödes projekt för att köra nödvändiga tester och verifieringar innan du distribuerar ändringar i produktions miljöer. Mer information finns i [Azure Logic Apps som körs i djupet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
+Med den här nya metoden är Azure Logic Apps förhandsgranskningskörning och dina arbetsflöden båda en del av din app som du kan paketera tillsammans. Med den här funktionen kan du distribuera och köra dina arbetsflöden genom att helt enkelt kopiera artefakter till värdmiljön och starta appen. Den här metoden ger också en mer standardiserad upplevelse för att skapa distributionspipelines runt arbetsflödesprojekt för att köra nödvändiga tester och valideringar innan du distribuerar ändringar till produktionsmiljöer. Mer information finns i [Azure Logic Apps Running Anywhere – Runtime Deep Dive](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-runtime-deep-dive/ba-p/1835564).
 
-I följande tabell sammanfattas skillnaderna mellan hur arbets flöden delar resurser, baserat på miljön där de körs. För skillnader i gränser, se [gränser i Azure Logic Apps för hands version](#limits).
+I följande tabell sammanfattas kortfattat skillnaderna i hur arbetsflöden delar resurser, baserat på den miljö där de körs. Skillnader i gränser finns i [Begränsningar i Azure Logic Apps Preview](#limits).
 
-| Miljö | Resurs delning och förbrukning |
+| Miljö | Resursdelning och förbrukning |
 |-------------|----------------------------------|
-| Azure Logic Apps (flera innehavare) | Arbets flöden *från kunder över flera klienter* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
-| Azure Logic Apps (för hands version, en-klient) | Arbets flöden *i samma Logic-app och en enda klient* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
-| Integrerings tjänst miljö (inte tillgänglig i för hands version) | Arbets flöden i *samma miljö* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
+| Azure Logic Apps (flera klient) | Arbetsflöden *från kunder över flera klienter* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
+| Azure Logic Apps (förhandsversion, en klient) | Arbetsflöden *i samma logikapp och en enda klientorganisation* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
+| Integreringstjänstmiljö (inte tillgänglig i förhandsversion) | Arbetsflöden i *samma miljö* delar samma bearbetning (beräkning), lagring, nätverk och så vidare. |
 |||
 
-Under tiden kan du fortfarande skapa Logic app-typen multi-apps i Azure Portal och i Visual Studio Code med hjälp av Azure Logic Apps-tillägget för flera innehavare. Även om utvecklings upplevelsen skiljer sig mellan olika typer av logiska appar för flera innehavare och en och samma klient kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade Logic Apps i din Azure-prenumeration, men apparna organiseras i sina egna kategorier och avsnitt.
+Under tiden kan du fortfarande skapa logikapptypen för flera innehavare i Azure Portal och i Visual Studio Code med hjälp av tillägget för Azure Logic Apps klientorganisation. Även om utvecklingsupplevelserna skiljer sig mellan logikapptyperna för flera klient och en enda klientorganisation, kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade logikappar i din Azure-prenumeration, men apparna är ordnade i egna kategorier och avsnitt.
 
 <a name="stateful-stateless"></a>
 
-## <a name="stateful-and-stateless-workflows"></a>Tillstånds känsliga och tillstånds lösa arbets flöden
+## <a name="stateful-and-stateless-workflows"></a>Tillståndslösa och tillståndslösa arbetsflöden
 
-Med den här typen av Logic-appar kan du skapa de här arbets flödes typerna i samma Logic-app:
+Med logikapptypen för en enda klient kan du skapa dessa arbetsflödestyper i samma logikapp:
 
-* *Tillstånds känsliga*
+* *Stateful*
 
-  Skapa tillstånds känsliga arbets flöden när du behöver behålla, granska eller referera data från tidigare händelser. Dessa arbets flöden sparar indata och utdata för varje åtgärd och deras tillstånd i extern lagring, som gör det möjligt att granska körnings informationen och historiken när varje körning har slutförts. Tillstånds känsliga arbets flöden ger hög återhämtning om avbrott inträffar. När tjänster och system har återställts kan du rekonstruera avbrutna körningar från det sparade läget och köra arbets flödena igen för att slutföras. Tillstånds känsliga arbets flöden kan fortsätta att köras i upp till ett år.
+  Skapa tillståndsful workflows när du behöver behålla, granska eller referera till data från tidigare händelser. Dessa arbetsflöden sparar indata och utdata för varje åtgärd och deras tillstånd i extern lagring, vilket gör det möjligt att granska körningsinformationen och historiken när varje körning är klar. Tillståndsful workflows ger hög återhämtning om avbrott inträffar. När tjänster och system har återställts kan du rekonstruera avbrutna körningar från det sparade tillståndet och köra om arbetsflödena tills de har slutförts. Tillståndsful workflows kan fortsätta köras i upp till ett år.
 
 * *Tillståndslös*
 
-  Skapa tillstånds lösa arbets flöden när du inte behöver spara, granska eller referera data från tidigare händelser i extern lagring för senare granskning. Dessa arbets flöden sparar indata och utdata för varje åtgärd och deras tillstånd *endast i minnet*, i stället för att överföra dessa data till extern lagring. Därför har tillstånds lösa arbets flöden kortare körningar som vanligt vis inte är längre än 5 minuter, snabbare prestanda med snabbare svars tider, högre data flöde och minskade drifts kostnader eftersom körnings informationen och historiken inte lagras i extern lagring. Men om avbrott uppstår, återställs inte avbrutna körningar automatiskt, så att anroparen måste skicka om avbrutna körningar manuellt. De här arbets flödena kan bara köras synkront.
+  Skapa tillståndslösa arbetsflöden när du inte behöver spara, granska eller referera till data från tidigare händelser i extern lagring för senare granskning. Dessa arbetsflöden sparar indata och utdata för varje åtgärd och deras tillstånd endast i minnet *,* i stället för att överföra dessa data till extern lagring. Därför har tillståndslösa arbetsflöden kortare körningar som normalt inte är längre än 5 minuter, snabbare prestanda med snabbare svarstider, högre dataflöde och lägre driftskostnader eftersom körningsinformationen och historiken inte lagras i extern lagring. Om avbrott inträffar återställs dock inte avbrutna körningar automatiskt, så anroparen måste skicka om de avbrutna körningarna manuellt. Dessa arbetsflöden kan bara köras synkront.
 
-  För enklare fel sökning kan du aktivera körnings historiken för ett tillstånds lösa arbets flöde, vilket påverkar prestandan och inaktiverar sedan körnings historiken när du är klar. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) eller [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Azure Portal](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless).
+  För enklare felsökning kan du aktivera körningshistorik för ett tillståndslöst arbetsflöde, vilket påverkar prestandan, och sedan inaktivera körningshistoriken när du är klar. Mer information finns i [Skapa tillståndslösa och tillståndslösa](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless) arbetsflöden i Visual Studio Code eller Skapa [tillståndslösa och tillståndslösa arbetsflöden i Azure Portal](create-stateful-stateless-workflows-visual-studio-code.md#enable-run-history-stateless).
 
   > [!NOTE]
-  > Tillstånds lösa arbets flöden stöder för närvarande endast *åtgärder* för [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), som distribueras i Azure och inte utlösare. Starta arbets flödet genom att välja antingen den [inbyggda begäran, Event Hubs eller Service Bus utlösare](../connectors/apis-list.md#built-ins). Dessa Utlösare körs internt i Azure Logic Apps Preview-körningsmiljön. Mer information om begränsade, otillgängliga eller ej stödda utlösare, åtgärder och anslutningar finns i avsnittet [ändra, begränsad, ej tillgänglig eller funktioner som inte stöds](#limited-unavailable-unsupported).
+  > Tillståndslösa arbetsflöden stöder för närvarande *endast* åtgärder [för hanterade anslutningsappar](../connectors/managed.md), som distribueras i Azure och inte utlösare. Om du vill starta arbetsflödet väljer du [antingen den inbyggda begäran, den Event Hubs eller den Service Bus utlösaren](../connectors/built-in.md). Dessa utlösare körs inbyggt i Azure Logic Apps förhandsgranskningskörning. Mer information om begränsade, otillgängliga eller icke-stödda utlösare, åtgärder och anslutningsappar finns i [Ändrade, begränsade,](#limited-unavailable-unsupported)otillgängliga eller funktioner som inte stöds.
 
 <a name="nested-behavior"></a>
 
-### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>Kapslade beteende skillnader mellan tillstånds känsliga och tillstånds lösa arbets flöden
+### <a name="nested-behavior-differences-between-stateful-and-stateless-workflows"></a>Kapslade beteendeskillnader mellan tillståndslösa och tillståndslösa arbetsflöden
 
-Du kan [skapa ett arbets flöde som kan anropas](../logic-apps/logic-apps-http-endpoint.md) från andra arbets flöden i samma **Logic app (för hands version)** -resurs med hjälp av [begär ande utlösare](../connectors/connectors-native-reqres.md), [http-webhook-utlösare](../connectors/connectors-native-webhook.md)eller hanterade anslutnings utlösare som har [typen ApiConnectionWebhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) och kan ta emot HTTPS-begäranden.
+Du [kan](../logic-apps/logic-apps-http-endpoint.md) göra ett arbetsflöde anropsbart från andra arbetsflöden som finns i samma logikappresurs **(förhandsversion)** med hjälp av begärandeutlösaren, [](../connectors/connectors-native-reqres.md)HTTP [Webhook-utlösaren](../connectors/connectors-native-webhook.md)eller hanterade anslutningsutlösare som har [apiConnectionWebhook-typen](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnectionwebhook-trigger) och kan ta emot HTTPS-begäranden.
 
-Här följer beteende mönster som kapslade arbets flöden kan följa efter att ett överordnat arbets flöde anropar ett underordnat arbets flöde:
+Här följer beteendemönster som kapslade arbetsflöden kan följa när ett överordnat arbetsflöde anropar ett underordnat arbetsflöde:
 
-* Asynkront avsöknings mönster
+* Mönster för asynkron avsökning
 
-  Överordnad väntar inte på svar på sitt första anrop, men kontrollerar kontinuerligt den underordnade körnings historiken tills den underordnade har körts. Tillstånds känsliga arbets flöden följer som standard det här mönstret, vilket är idealiskt för långvariga underordnade arbets flöden som kan överskrida [tids gräns gränsen för begäran](../logic-apps/logic-apps-limits-and-config.md).
+  Den överordnade väntar inte på svar på det första anropet, men kontrollerar kontinuerligt barnets körningshistorik tills den underordnade körningen är klar. Som standard följer tillståndsfulla arbetsflöden det här mönstret, vilket är idealiskt för långvariga underordnade arbetsflöden som kan överskrida tidsgränsgränserna [för förfrågningar.](../logic-apps/logic-apps-limits-and-config.md)
 
-* Synkront mönster ("eld och glömma")
+* Synkront mönster ("fire and forget")
 
-  Underordnade bekräftar anropet genom att omedelbart returnera ett `202 ACCEPTED` svar och den överordnade åtgärden fortsätter till nästa åtgärd utan att vänta på resultatet från den underordnade. I stället får den överordnade resultatet när den underordnade har körts. Underordnade tillstånds känsliga arbets flöden som inte innehåller någon svars åtgärd följer alltid synkront mönster. För underordnade tillstånds känsliga arbets flöden finns körnings historiken som du kan granska.
+  Den underordnade bekräftar anropet genom att omedelbart returnera ett svar, och den överordnade fortsätter till nästa åtgärd utan att `202 ACCEPTED` vänta på resultatet från den underordnade åtgärden. I stället får den överordnade användaren resultaten när det underordnade objektet har körts klart. Underordnade tillståndsfulla arbetsflöden som inte innehåller en svarsåtgärd följer alltid det synkrona mönstret. För underordnade tillståndsfulla arbetsflöden kan du granska körningshistoriken.
 
-  Om du vill aktivera det här beteendet anger du egenskapen till i arbets flödets JSON-definition `operationOptions` `DisableAsyncPattern` . Mer information finns i [utlösare och åtgärds typer – åtgärds alternativ](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options).
+  Om du vill aktivera det här beteendet anger du egenskapen till i arbetsflödets `operationOptions` JSON-definition. `DisableAsyncPattern` Mer information finns i [Utlösare och åtgärdstyper – Åtgärdsalternativ.](../logic-apps/logic-apps-workflow-actions-triggers.md#operation-options)
 
-* Utlös och vänta
+* Utlösare och vänta
 
-  För ett underordnat tillstånds löst arbets flöde väntar den överordnade svaret på ett svar som returnerar resultatet från den underordnade. Det här mönstret fungerar ungefär som att använda den inbyggda [http-utlösaren eller åtgärder](../connectors/connectors-native-http.md) för att anropa ett underordnat arbets flöde. Underordnade tillstånds lösa arbets flöden som inte innehåller någon svars åtgärd returnerar omedelbart ett `202 ACCEPTED` svar, men överordnad väntar på att barnet ska slutföras innan nästa åtgärd fortsätter. Dessa beteenden gäller endast för underordnade tillstånds lösa arbets flöden.
+  För ett underordnat tillståndslöst arbetsflöde väntar det överordnade objektet på ett svar som returnerar resultatet från det underordnade arbetsflödet. Det här mönstret fungerar ungefär som att använda den inbyggda [HTTP-utlösaren eller åtgärden för](../connectors/connectors-native-http.md) att anropa ett underligt arbetsflöde. Underordnade tillståndslösa arbetsflöden som inte innehåller en svarsåtgärd returnerar omedelbart ett svar, men den överordnade väntar på att det underordnade ska slutföras innan nästa `202 ACCEPTED` åtgärd fortsätter. Dessa beteenden gäller endast för underordnade tillståndslösa arbetsflöden.
 
-Den här tabellen anger beteendet för det underordnade arbets flödet baserat på om den överordnade och underordnade är tillstånds känsliga, tillstånds lösa eller är blandade arbets flödes typer:
+Den här tabellen anger beteendet för det underordnade arbetsflödet baserat på om det överordnade och underordnade arbetsflödet är tillståndslösa eller är blandade arbetsflödestyper:
 
-| Överordnat arbets flöde | Underordnat arbets flöde | Underordnat beteende |
+| Överordnat arbetsflöde | Underarbetsflöde | Underbeteende |
 |-----------------|----------------|----------------|
 | Tillståndskänsliga | Tillståndskänsliga | Asynkron eller synkron med `"operationOptions": "DisableAsyncPattern"` inställning |
-| Tillståndskänsliga | Tillståndslös | Utlös och vänta |
+| Tillståndskänsliga | Tillståndslös | Utlösare och vänta |
 | Tillståndslös | Tillståndskänsliga | Synkront |
-| Tillståndslös | Tillståndslös | Utlös och vänta |
+| Tillståndslös | Tillståndslös | Utlösa och vänta |
 ||||
 
 <a name="public-preview-contents"></a>
 
 ## <a name="capabilities"></a>Funktioner
 
-Azure Logic Apps för hands versionen innehåller många aktuella och ytterligare funktioner, till exempel:
+Azure Logic Apps förhandsversionen innehåller många aktuella och ytterligare funktioner, till exempel:
 
-* Skapa Logi Kap par och deras arbets flöden från [400 + kopplingar](/connectors/connector-reference/connector-reference-logicapps-connectors) för SaaS-appar (program vara som en tjänst) och PaaS (Platform-as-a-Service) och-tjänster plus anslutningar för lokala system.
+* Skapa logikappar och deras arbetsflöden från [över 400](/connectors/connector-reference/connector-reference-logicapps-connectors) anslutningsappar för SaaS- (Programvara som en tjänst) och PaaS-appar (plattform som en tjänst) och tjänster samt anslutningsappar för lokala system.
 
-  * Vissa hanterade anslutningar är nu tillgängliga som inbyggda versioner, som körs på samma sätt som de inbyggda utlösarna och åtgärderna, till exempel begär ande utlösare och HTTP-åtgärd som körs internt i Azure Logic Apps för hands versions körning. De här nya inbyggda kopplingarna inkluderar till exempel Azure Service Bus, Azure Event Hubs, SQL Server och MQ.
-
-    > [!NOTE]
-    > För den inbyggda SQL Server-anslutningen kan endast åtgärden **köra fråga** ansluta direkt till virtuella Azure-nätverk utan att den [lokala datagatewayen](logic-apps-gateway-connection.md)krävs.
-
-  * Skapa dina egna inbyggda anslutnings program för alla tjänster du behöver med hjälp av för [hands versionens utöknings ramverk](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På liknande sätt som med inbyggda anslutnings program, till exempel Azure Service Bus och SQL Server, men till skillnad från [anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) som inte stöds för för hands versioner, ger dessa anslutningar högre data flöde, kort svars tid, lokal anslutning och körs internt i samma process som för hands versions körningen.
-
-    Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio Code, men är inte aktive rad som standard. Om du vill skapa de här kopplingarna [byter du ditt projekt från Extensions buntbaserade (Node.js) till NuGet-paket-baserad (.net)](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring). Mer information finns i [Azure Logic Apps som körs var som helst – inbyggd anslutnings barhet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
-
-  * Du kan använda B2B-åtgärder för flytande åtgärder och XML-åtgärder utan ett integrations konto. Om du vill använda dessa åtgärder måste du ha flytande kartor, XML-mappningar eller XML-scheman som du kan överföra via respektive åtgärder i Azure Portal eller lägga till i Visual Studio Code-projektets **artefakter** -mapp med hjälp av mapparna **kartor** och **scheman** .
-
-  * Skapa och distribuera Logi Kap par som kan köras var som helst eftersom Azure Logic Apps tjänsten genererar anslutnings strängar för delad åtkomst (SAS) som dessa Logi Kap par kan använda för att skicka begär anden till moln anslutningens runtime-slutpunkt. Tjänsten Logic Apps sparar dessa anslutnings strängar med andra program inställningar så att du enkelt kan lagra dessa värden i Azure Key Vault när du distribuerar i Azure.
+  * Vissa hanterade anslutningsappar är nu tillgängliga som inbyggda versioner som körs på liknande sätt som de inbyggda utlösarna och åtgärderna, till exempel begärandeutlösaren och HTTP-åtgärden, som körs inbyggt i Azure Logic Apps Preview-körningen. Dessa nya inbyggda anslutningsappar omfattar till exempel Azure Service Bus, Azure Event Hubs, SQL Server och MQ.
 
     > [!NOTE]
-    > Som standard har en **Logic app-resurs (förhands granskning)** den [systemtilldelade hanterade identiteten](../logic-apps/create-managed-service-identity.md) aktive ras automatiskt för att autentisera anslutningar vid körning. Den här identiteten skiljer sig från autentiseringsuppgifterna för autentisering eller anslutnings sträng som du använder när du skapar en anslutning. Om du inaktiverar den här identiteten fungerar inte anslutningarna vid körning. Om du vill visa den här inställningen väljer du **identitet** på din Logic Apps-meny under **Inställningar**.
+    > För den inbyggda anslutningsappen SQL Server  kan endast åtgärden Kör fråga ansluta direkt till virtuella Azure-nätverk utan att den [lokala datagatewayen krävs.](logic-apps-gateway-connection.md)
 
-* Skapa Logi Kap par med tillstånds lösa arbets flöden som bara körs i minnet så att de avslutas snabbare, svarar snabbare, har högre genomflöde och kostar mindre att köra eftersom körnings historiken och data mellan åtgärder inte finns kvar i extern lagring. Du kan också aktivera körnings historik för enklare fel sökning. Mer information finns i [tillstånds känsliga jämfört med tillstånds lösa Logic Apps](#stateful-stateless).
+  * Skapa egna inbyggda anslutningsappar för alla tjänster du behöver med hjälp av [förhandsversionens utökningsramverk](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). Liknar inbyggda anslutningsappar som Azure Service Bus och SQL Server, men till [](../connectors/apis-list.md#custom-apis-and-connectors) skillnad från anpassade anslutningsappar som för närvarande inte stöds för förhandsgranskning, ger dessa anslutningsappar högre dataflöde, låg latens, lokal anslutning och körs inbyggt i samma process som förhandsgranskningskörningen.
 
-* Kör, testa och Felsök dina Logi Kap par och deras arbets flöden i Visual Studio kod utvecklings miljö.
+    Redigeringsfunktionerna är för närvarande endast tillgängliga i Visual Studio Code, men är inte aktiverat som standard. Om du vill skapa de här anslutningsapparna växlar du projektet från tilläggssamlingsbaserad [(Node.js) till NuGet-paketbaserad (.NET).](create-stateful-stateless-workflows-visual-studio-code.md#enable-built-in-connector-authoring) Mer information finns i [Azure Logic Apps Running Anywhere - Built-in connector extensibility](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
 
-  Innan du kör och testar din Logic-app kan du göra fel sökningen enklare genom att lägga till och använda Bryt punkter i **workflow.js** filen för ett arbets flöde. Bryt punkter stöds dock bara för åtgärder för tillfället, inte utlösare. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+  * Du kan använda B2B-åtgärderna för Liquid Operations och XML-åtgärder utan ett integrationskonto. Om du vill använda dessa åtgärder måste du ha Liquid-kartor, XML-kartor eller XML-scheman som du kan ladda upp via respektive åtgärder i Azure Portal eller lägga till i mappen **Artifacts** i ditt Visual Studio Code-projekt med hjälp av mapparna **Maps** och **Scheman.**
 
-* Publicera eller distribuera Logic Apps och deras arbets flöden direkt från Visual Studio Code till olika värd miljöer som Azure och [Docker-behållare](/dotnet/core/docker/introduction).
+  * Skapa och distribuera logikappar som kan köras var som helst eftersom Azure Logic Apps-tjänsten genererar SAS-anslutningssträngar (signatur för delad åtkomst) som dessa logikappar kan använda för att skicka begäranden till slutpunkten för molnanslutningskörning. Tjänsten Logic Apps sparar dessa anslutningssträngar med andra programinställningar så att du enkelt kan lagra dessa värden i Azure Key Vault när du distribuerar i Azure.
 
-* Aktivera diagnostik-loggning och spårnings funktioner för din Logi Kap par genom att använda [Application Insights](../azure-monitor/app/app-insights-overview.md) när de stöds av dina Azure-prenumerationer och Logic app-inställningar.
+    > [!NOTE]
+    > Som standard har en **logikappresurs (förhandsversion)** sin system tilldelade [hanterade identitet](../logic-apps/create-managed-service-identity.md) automatiskt aktiverad för att autentisera anslutningar vid körning. Den här identiteten skiljer sig från autentiseringsuppgifterna eller anslutningssträngen som du använder när du skapar en anslutning. Om du inaktiverar den här identiteten fungerar inte anslutningarna vid körning. Om du vill visa den här inställningen går du till logikappens meny och **väljer** Identitet under **Inställningar.**
 
-* Få åtkomst till nätverksfunktioner, till exempel Anslut och integrera privat med virtuella Azure-nätverk, ungefär som Azure Functions när du skapar och distribuerar dina Logi Kap par med [Azure Functions Premium-planen](../azure-functions/functions-premium-plan.md). Mer information finns i följande avsnitt:
+* Skapa logikappar med tillståndslösa arbetsflöden som endast körs i minnet så att de slutförs snabbare, svarar snabbare, har högre dataflöde och kostar mindre att köra eftersom körningshistoriken och data mellan åtgärder inte bevaras i extern lagring. Du kan också aktivera körningshistorik för enklare felsökning. Mer information finns i [Tillståndsful versus stateless logic apps (Tillståndsful versus stateless logic apps).](#stateful-stateless)
+
+* Kör, testa och felsöka dina logikappar lokalt och deras arbetsflöden i Visual Studio Code-utvecklingsmiljön.
+
+  Innan du kör och testar logikappen kan du göra felsökningen enklare genom att lägga till och använda brytpunkter iworkflow.js **på** filen för ett arbetsflöde. Brytpunkter stöds dock endast för åtgärder just nu, inte utlösare. Mer information finns i [Skapa tillståndsful and stateless workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+
+* Publicera eller distribuera logikappar direkt och deras arbetsflöden från Visual Studio Code till olika värdmiljöer som Azure och [Docker-containrar.](/dotnet/core/docker/introduction)
+
+* Aktivera funktioner för diagnostikloggning och spårning för logikappen genom att använda [Application Insights](../azure-monitor/app/app-insights-overview.md) när det stöds av din Azure-prenumeration och inställningarna för logikappen.
+
+* Få åtkomst till nätverksfunktioner, till exempel ansluta och integrera privat med virtuella Azure-nätverk, på liknande sätt som Azure Functions när du skapar och distribuerar dina logikappar med [hjälp Azure Functions Premium-planen](../azure-functions/functions-premium-plan.md). Mer information finns i följande avsnitt:
 
   * [Nätverksalternativ för Azure Functions](../azure-functions/functions-networking-options.md)
 
-  * [Azure Logic Apps som kör nätverks möjligheter med Azure Logic Apps för hands version](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+  * [Azure Logic Apps var som helst – nätverksmöjligheter med Azure Logic Apps förhandsversion](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-* Återskapa åtkomst nycklar för hanterade anslutningar som används av enskilda arbets flöden i en resurs för **Logic app (för hands version)** med en klient. För den här uppgiften [följer du samma steg för **Logic Apps** resursen för flera innehavare, men på den enskilda arbets flödes nivån](logic-apps-securing-a-logic-app.md#regenerate-access-keys), inte på resurs nivån för Logic app.
+* Återskapa åtkomstnycklar för hanterade anslutningar som används av enskilda arbetsflöden i logikappresursen **för en klient (förhandsversion).** För den här uppgiften följer du samma steg för resursen [ **för Logic Apps**](logic-apps-securing-a-logic-app.md#regenerate-access-keys)klientorganisation, men på nivån för enskilt arbetsflöde, inte resursnivån för logikappen.
 
-* Lägg till parallella grenar i designern för en enda innehavare genom att följa samma steg som för flera innehavare.
+* Lägg till parallella grenar i designern för en enskild klientorganisation genom att följa samma steg som designern för flera innehavare.
 
-Mer information finns i avsnittet om [ändrade, begränsade, otillgängliga och ej stödda](#limited-unavailable-unsupported) på sidan med [kända problem med Logic Apps offentliga för hands versioner i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+Mer information finns i [Funktioner som har ändrats, begränsats,](#limited-unavailable-unsupported) inte är tillgängligt och inte stöds och på sidan kända Logic Apps allmänt [tillgängliga förhandsversioner i GitHub.](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
 <a name="pricing-model"></a>
 
 ## <a name="pricing-model"></a>Prismodell
 
-När du skapar en Logic app-typ med en enda klient i Azure Portal eller distribuerar från Visual Studio Code, måste du välja en värd plan, antingen [App Service eller Premium](../azure-functions/functions-scale.md), för att din Logi Kap par ska använda. Den här planen avgör vilken pris modell som används för att köra din Logic app. Om du väljer App Service plan måste du också välja en [pris nivå](../app-service/overview-hosting-plans.md).
+När du skapar logikapptypen för en klient i Azure Portal eller distribuerar från Visual Studio Code måste du välja en värdplan, antingen App Service eller [Premium,](../azure-functions/functions-scale.md)som logikappen ska använda. Den här planen avgör vilken prismodell som gäller för att köra logikappen. Om du väljer App Service plan måste du också välja [en prisnivå.](../app-service/overview-hosting-plans.md)
 
-*Tillstånds känsliga* arbets flöden använder [extern lagring](../azure-functions/storage-considerations.md#storage-account-requirements), så [Azure Storage prissättningen](https://azure.microsoft.com/pricing/details/storage/) gäller för lagrings transaktioner som Azure Logic Apps för hands versions körning utför. Köer används till exempel för schemaläggning, medan tabeller och blobbar används för att lagra arbets flödes tillstånd.
+*Tillståndsful* workflows [använder extern](../azure-functions/storage-considerations.md#storage-account-requirements)lagring , [så Azure Storage prissättningen](https://azure.microsoft.com/pricing/details/storage/) gäller för lagringstransaktioner som Azure Logic Apps Preview-körningen utför. Köer används till exempel för schemaläggning, medan tabeller och blobar används för att lagra arbetsflödes tillstånd.
 
 > [!NOTE]
-> Under den allmänt tillgängliga för hands versionen debiteras inte *ytterligare avgifter utöver* den valda planen när du kör Logic apps på App Service.
+> Under den offentliga förhandsversionen medför körning av logikappar på App Service inga *ytterligare* avgifter utöver ditt valda abonnemang.
 
-Läs följande avsnitt om du vill ha mer information om de pris modeller som gäller för resurs typen enskild klient:
+Mer information om de prissättningsmodeller som gäller för resurstypen för en enskild klientorganisation finns i följande avsnitt:
 
 * [Skala och var värd i Azure Functions](../azure-functions/functions-scale.md)
 * [Skala upp en app i Azure App Service](../app-service/manage-scale-up.md)
-* [Azure Functions pris information](https://azure.microsoft.com/pricing/details/functions/)
-* [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/)
-* [Azure Storage pris information](https://azure.microsoft.com/pricing/details/storage/)
+* [Azure Functions prisinformation](https://azure.microsoft.com/pricing/details/functions/)
+* [App Service prisinformation](https://azure.microsoft.com/pricing/details/app-service/)
+* [Azure Storage prisinformation](https://azure.microsoft.com/pricing/details/storage/)
 
 <a name="limited-unavailable-unsupported"></a>
 
-## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Ändrade, begränsade, otillgängliga eller ej stödda funktioner
+## <a name="changed-limited-unavailable-or-unsupported-capabilities"></a>Ändrade, begränsade, otillgängliga eller funktioner som inte stöds
 
-I Azure Logic Apps för hands versionen har dessa funktioner ändrats eller är begränsade, otillgängliga eller stöds inte:
+I Azure Logic Apps förhandsversionen har dessa funktioner ändrats, eller så är de för närvarande begränsade, otillgängliga eller stöds inte:
 
-* **OS-support**: för närvarande fungerar inte designern i Visual Studio Code på Linux OS, men du kan fortfarande distribuera Logi Kap par som använder Logic Apps för hands versions körning till Linux-baserade virtuella datorer. Nu kan du bygga dina Logi Kap par i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
+* **Os-stöd:** Designern i Visual Studio Code fungerar för närvarande inte i Linux OS, men du kan fortfarande distribuera logikappar som använder Logic Apps Preview-körningen till Linux-baserade virtuella datorer. För tillfället kan du skapa dina logikappar i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
 
-* **Utlösare och åtgärder**: inbyggda utlösare och åtgärder körs internt i Azure Logic Apps för hands versions körning, medan hanterade anslutningar distribueras i Azure. Vissa inbyggda utlösare är inte tillgängliga, till exempel glidande fönster och batch.
+* **Utlösare och åtgärder:** Inbyggda utlösare och åtgärder körs inbyggt i Azure Logic Apps Preview-körningen, medan hanterade anslutningsappar distribueras i Azure. Vissa inbyggda utlösare är inte tillgängliga, till exempel skjutfönster och Batch.
 
-  För att starta arbets flödet använder du den [inbyggda upprepningen, begäran, http, HTTP-webhook, Event Hubs eller Service Bus utlösare](../connectors/apis-list.md). I designern visas inbyggda utlösare och åtgärder under den **inbyggda** fliken, medan utlösare för hanterade anslutningar och åtgärder visas på fliken **Azure** .
+  Starta arbetsflödet genom att använda den [inbyggda upprepnings-, begäran-, HTTP-, HTTP-webhooken, Event Hubs eller Service Bus utlösaren](../connectors/apis-list.md). I designern visas inbyggda utlösare och åtgärder under fliken **Inbyggd,** medan utlösare och åtgärder för hanterade anslutningsappar visas under **fliken Azure.**
 
   > [!NOTE]
-  > För att du ska kunna köra lokalt i Visual Studio Code krävs ytterligare konfiguration för webhook-baserade utlösare och åtgärder. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
+  > Om du vill köra lokalt Visual Studio Code kräver webhook-baserade utlösare och åtgärder ytterligare konfiguration. Mer information finns i [Skapa tillståndsful and stateless workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#webhook-setup).
 
-  * För *tillstånds lösa arbets flöden* visas inte fliken **Azure** när du väljer en utlösare eftersom du bara kan välja [hanterade kopplings *åtgärder*, inte utlösare](../connectors/apis-list.md#managed-api-connectors). Även om du kan aktivera Azure-distribuerade hanterade anslutningar för tillstånds lösa arbets flöden, visar inte designern några hanterade kopplings utlösare som du kan lägga till.
+  * För *tillståndslösa arbetsflöden* visas **inte Azure-fliken** när du väljer en utlösare eftersom du bara kan välja hanterade [ *anslutningsåtgärder*, inte utlösare](../connectors/managed.md). Även om du kan aktivera Azure-distribuerade hanterade anslutningsappar för tillståndslösa arbetsflöden visar designern inga hanterade anslutningsutlösare som du kan lägga till.
 
-  * För *tillstånds känsliga arbets flöden*, förutom utlösare och åtgärder som anges som otillgängliga nedan, är både [hanterade anslutnings utlösare och åtgärder](../connectors/apis-list.md#managed-api-connectors) tillgängliga för användning.
+  * För *tillståndsful workflows*, förutom de utlösare och åtgärder som anges som otillgängliga nedan, är både hanterade [anslutningsutlösare](../connectors/managed.md) och åtgärder tillgängliga för dig att använda.
 
-  * Dessa utlösare och åtgärder har antingen ändrats eller begränsas, stöds inte eller är inte tillgängliga:
+  * Dessa utlösare och åtgärder har antingen ändrats eller är för närvarande begränsade, stöds inte eller är inte tillgängliga:
 
-    * [Lokala datagateway- *utlösare*](../connectors/apis-list.md#on-premises-connectors) är inte tillgängliga, men Gateway-åtgärder *är* tillgängliga.
+    * [Lokala datagatewayutlösare *är*](../connectors/managed.md#on-premises-connectors) inte tillgängliga, men *gatewayåtgärder är* tillgängliga.
 
-    * Den inbyggda åtgärden [Azure Functions – välja en Azure-funktion](logic-apps-azure-functions.md) är nu **Azure Functions-anropa en Azure-funktion**. Den här åtgärden fungerar för närvarande endast för funktioner som skapas från mallen för **http-utlösare** .
+    * Den inbyggda åtgärden, Azure Functions [– Välj en Azure-funktion](logic-apps-azure-functions.md) är nu Azure Function Operations – Anropa **en Azure-funktion**. Den här åtgärden fungerar för närvarande endast för funktioner som skapas från **HTTP-utlösarmallen.**
 
-      I Azure Portal kan du välja en funktion för HTTP-utlösare där du har åtkomst genom att skapa en anslutning via användar upplevelsen. Om du inspekterar funktions åtgärdens JSON-definition i kodvyn eller **workflow.js** filen, refererar åtgärden till funktionen med hjälp av en `connectionName` referens. Den här versionen sammanfattar funktionens information som en anslutning, som du hittar i projektets **connections.jspå** fil, som är tillgänglig när du har skapat en anslutning.
+      I Azure Portal kan du välja en HTTP-utlösarfunktion där du har åtkomst genom att skapa en anslutning via användarupplevelsen. Om du granskar funktionsåtgärdens JSON-definition i kodvyn eller **workflow.jspå** filen refererar åtgärden till funktionen med hjälp av en `connectionName` referens. Den här versionen abstraherar funktionens information som en anslutning, som du hittar i projektets **connections.jspå** filen, som är tillgänglig när du har skapat en anslutning.
 
       > [!NOTE]
-      > I den enda klient versionen stöder funktions åtgärden endast autentisering med frågesträng. Azure Logic Apps för hands version hämtar standard nyckeln från funktionen när du gör anslutningen, lagrar nyckeln i appens inställningar och använder nyckeln för autentisering när funktionen anropas.
+      > I versionen för en enskild klientorganisation stöder funktionsåtgärden endast frågesträngsautentisering. Azure Logic Apps Preview hämtar standardnyckeln från funktionen när du upprättar anslutningen, lagrar den nyckeln i appens inställningar och använder nyckeln för autentisering när funktionen anropas.
       >
-      > Precis som med flera klient versioner, om du förnyar den här nyckeln, till exempel genom Azure Functions upplevelsen i portalen, fungerar inte längre funktions åtgärden på grund av den ogiltiga nyckeln. För att åtgärda det här problemet måste du återskapa anslutningen till den funktion som du vill anropa eller uppdatera appens inställningar med den nya nyckeln.
+      > Precis som med versionen för flera innehavare fungerar funktionsåtgärden inte längre på grund av den ogiltiga nyckeln om du förnyar den här nyckeln, till exempel via Azure Functions-upplevelsen i portalen. För att åtgärda det här problemet måste du återskapa anslutningen till funktionen som du vill anropa eller uppdatera appens inställningar med den nya nyckeln.
 
-    * Den inbyggda åtgärden, [Infogad kod för att köra JavaScript-kod](logic-apps-add-run-inline-code.md) , är nu **Inlined Code Operations-Run-line Java Script**.
+    * Den inbyggda åtgärden [Inline Code – Execute JavaScript Code](logic-apps-add-run-inline-code.md) är nu **Inline Code Operations - Run in-line JavaScript**.
 
-      * Infogade kod åtgärder kräver inte längre något integrations konto.
+      * Infogade kodåtgärder kräver inte längre ett integrationskonto.
 
-      * För macOS och Linux stöds nu **infogade kod åtgärder** när du använder tillägget Azure Logic Apps (för hands version) i Visual Studio Code.
+      * För macOS och Linux stöds **nu infogade** kodåtgärder när du använder tillägget Azure Logic Apps (förhandsversion) i Visual Studio Code.
 
-      * Du behöver inte längre starta om din Logic-app om du gör ändringar i en **infogad Code Operations** -åtgärd.
+      * Du behöver inte längre starta om logikappen om du gör ändringar i en **åtgärd för infogade kodåtgärder.**
 
-      * **Inlined Code Operations** -åtgärder har [uppdaterade gränser](logic-apps-overview-preview.md#inline-code-limits).
+      * **Infogade kodåtgärder** har [uppdaterade gränser.](logic-apps-overview-preview.md#inline-code-limits)
 
-    * Några [inbyggda B2B-utlösare och åtgärder för integrations konton](../connectors/apis-list.md#integration-account-connectors) är inte tillgängliga, till exempel den **flata fil** kodningen och avkodnings åtgärder.
+    * Vissa [inbyggda B2B-utlösare](../connectors/managed.md#integration-account-connectors) och åtgärder för integrationskonton  är inte tillgängliga, till exempel kodning och avkodning av flat fil.
 
-    * Den inbyggda åtgärden [Azure Logic Apps – Välj ett Logic app-arbetsflöde](logic-apps-http-endpoint.md) är nu arbets flödes **åtgärder – anropa ett arbets flöde i den här arbets flödes appen**.
+    * Den inbyggda åtgärden, Azure Logic Apps Välj ett [logikapparbetsflöde,](logic-apps-http-endpoint.md) är nu Arbetsflödesåtgärder – Anropa **ett arbetsflöde i den här arbetsflödesappen.**
 
-* [Anpassade anslutningar](../connectors/apis-list.md#custom-apis-and-connectors) stöds för närvarande inte för för hands version.
+* [Anpassade anslutningsappar](../connectors/apis-list.md#custom-apis-and-connectors) stöds för närvarande inte för förhandsversionen.
 
-* **Tillgänglighet för värd plan**: om du skapar resurs typen Single-Tenant **Logic app (för hands version)** i Azure Portal eller distribuerar från Visual Studio Code, kan du bara använda Premium-eller App Service hosting-planen i Azure. Förbruknings värd planer är inte tillgängliga och stöds inte för distribution av den här resurs typen. Du kan distribuera från Visual Studio Code till en Docker-behållare, men inte till en [integrerings tjänst miljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md).
+* **Tillgänglighet för värdplan:** Oavsett om du skapar resurstypen **Logic App (förhandsversion)** för en enskild klient i Azure Portal eller distribuerar från Visual Studio Code kan du bara använda Premium- eller App Service-värdplanen i Azure. Förbrukningsvärdplaner är inte tillgängliga och stöds inte för distribution av den här resurstypen. Du kan distribuera från Visual Studio Code till en Docker-container, men inte till en [integrationstjänstmiljö (ISE).](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)
 
-* **Bryt punkts fel sökning i Visual Studio Code**: även om du kan lägga till och använda Bryt punkter i **workflow.jsi** filen för ett arbets flöde, stöds Bryt punkter endast för åtgärder för tillfället, inte utlösare. Mer information finns i [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
+* **Felsökning av brytpunkter i Visual Studio Code:** Även om du kan lägga till och använda brytpunkter i **workflow.jsi** filen för ett arbetsflöde, stöds brytpunkter endast för åtgärder för närvarande, inte utlösare. Mer information finns i [Skapa tillståndsful and stateless workflows in Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#manage-breakpoints).
 
-* **Zoomnings kontroll**: zoomnings kontrollen är för närvarande inte tillgänglig i designern.
+* **Zoomkontroll:** Zoomkontrollen är för närvarande inte tillgänglig för designern.
 
-* **Utlös ande historik och körnings historik**: för resurs typen **Logic app (förhands granskning)** , Utlös ande historik och körnings historik i Azure Portal visas på arbets flödes nivå, inte på Logic app-nivå. Följ dessa steg om du vill hitta dessa historiska data:
+* **Utlösarhistorik och** körningshistorik: För resurstypen Logikapp **(förhandsversion)** visas utlösarhistorik och körningshistorik i Azure Portal på arbetsflödesnivå, inte på logikappnivå. Följ dessa steg för att hitta dessa historiska data:
 
-   * Om du vill visa körnings historiken öppnar du arbets flödet i din Logic app. Välj **övervaka** under **utvecklare** på arbets flödes menyn.
+   * Om du vill visa körningshistoriken öppnar du arbetsflödet i logikappen. Välj Övervaka under Utvecklare på **arbetsflödesmenyn.** 
 
-   * Om du vill granska utlösarens historik öppnar du arbets flödet i din Logic app. På arbets flödes menyn väljer du **Utlös historia** under **utvecklare**.
+   * Om du vill granska utlösarhistoriken öppnar du arbetsflödet i logikappen. På arbetsflödesmenyn under **Utvecklare** väljer du **Trigger Histories (Utlösningshistorik).**
 
 <a name="firewall-permissions"></a>
 
-## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Tillåt trafik i strikta scenarier för nätverk och brand väggar
+## <a name="permit-traffic-in-strict-network-and-firewall-scenarios"></a>Tillåt trafik i strikta nätverks- och brandväggsscenarier
 
-Om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken, måste du tillåta åtkomst för alla utlösare eller åtgärds anslutningar i dina Logic app-arbetsflöden.
+Om din miljö har strikta nätverkskrav eller brandväggar som begränsar trafiken måste du tillåta åtkomst för alla utlösare eller åtgärdsanslutningar i logikappens arbetsflöden.
 
-Om du vill hitta de fullständigt kvalificerade domän namnen (FQDN) för de här anslutningarna granskar du motsvarande avsnitt i följande avsnitt:
+Om du vill hitta fullständigt kvalificerade domännamn (FQDN) för dessa anslutningar kan du läsa motsvarande avsnitt i följande avsnitt:
 
-* [Brand Väggs behörigheter för en enskild klients Logic Apps – Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
-* [Brand Väggs behörigheter för en enda klient organisations Logic Apps – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
+* [Brandväggsbehörigheter för enskilda klientlogikappar – Visual Studio Kod](create-stateful-stateless-workflows-visual-studio-code.md#firewall-setup)
+* [Brandväggsbehörigheter för enskilda klientlogikappar – Azure Portal](create-stateful-stateless-workflows-azure-portal.md#firewall-setup)
 
 <a name="limits"></a>
 
 ## <a name="updated-limits"></a>Uppdaterade gränser
 
-Även om många gränser för Azure Logic Apps för hands version hålls desamma som [gränserna för Azure Logic Apps för flera innehavare](logic-apps-limits-and-config.md)har dessa gränser ändrats för Azure Logic Apps för hands version.
+Även om många gränser Azure Logic Apps förhandsversionen förblir desamma som gränserna för [Azure Logic Apps,](logic-apps-limits-and-config.md)har dessa gränser ändrats för Azure Logic Apps förhandsversionen.
 
 <a name="http-timeout-limits"></a>
 
-### <a name="http-timeout-limits"></a>Tids gränser för HTTP
+### <a name="http-timeout-limits"></a>Tidsgränsgränser för HTTP
 
-För ett enskilt inkommande samtal eller utgående samtal är tids gränsen 230 sekunder (3,9 minuter) för dessa utlösare och åtgärder:
+För ett enskilt inkommande anrop eller utgående anrop är tidsgränsen 230 sekunder (3,9 minuter) för dessa utlösare och åtgärder:
 
 * Utgående begäran: HTTP-utlösare, HTTP-åtgärd
-* Inkommande begäran: utlösare för begäran, HTTP-webhook-utlösare, HTTP webhook-åtgärd
+* Inkommande begäran: Begärandeutlösare, HTTP Webhook-utlösare, HTTP Webhook-åtgärd
 
-I jämförelse är följande tids gränser för dessa utlösare och åtgärder i andra miljöer där Logic Apps och deras arbets flöden körs:
+Som jämförelse finns tidsgränsgränserna för dessa utlösare och åtgärder i andra miljöer där logikappar och deras arbetsflöden körs:
 
-* Azure Logic Apps för flera innehavare: 120 sekunder (2 minuter)
-* Integrerings tjänst miljö: 240 sekunder (4 minuter)
+* Flerklients-Azure Logic Apps: 120 sekunder (2 minuter)
+* Integreringstjänstmiljö: 240 sekunder (4 minuter)
 
-Mer information finns i [http-gränser](logic-apps-limits-and-config.md#http-limits).
+Mer information finns i [HTTP-gränser.](logic-apps-limits-and-config.md#http-limits)
 
 <a name="managed-connector-limits"></a>
 
-### <a name="managed-connectors"></a>Hanterade anslutningar
+### <a name="managed-connectors"></a>Hanterade anslutningsappar
 
-Hanterade anslutningar är begränsade till 50 förfrågningar per minut per anslutning. Information om hur du arbetar med anslutnings begränsnings problem finns i [Hantera begränsnings problem (429-"för många begär Anden"-fel) i Azure Logic Apps](handle-throttling-problems-429-errors.md#connector-throttling).
+Hanterade anslutningsappar är begränsade till 50 begäranden per minut per anslutning. Information om hur du arbetar med problem med anslutningsbegränsning finns i Hantera begränsningsproblem [(429 – felet "För många begäranden") i Azure Logic Apps](handle-throttling-problems-429-errors.md#connector-throttling).
 
 <a name="inline-code-limits"></a>
 
-### <a name="inline-code-operations-execute-javascript-code"></a>Infogade kod åtgärder (kör JavaScript-kod)
+### <a name="inline-code-operations-execute-javascript-code"></a>Infogade kodåtgärder (kör JavaScript-kod)
 
-För en enda Logic app-definition, kör instruktionen för infogad kod åtgärder, [**Kör JavaScript-kod**](logic-apps-add-run-inline-code.md)och har dessa uppdaterade gränser:
+För en enskild logikappdefinition har åtgärden Inline Code Operations, [**Execute JavaScript Code**](logic-apps-add-run-inline-code.md), följande uppdaterade gränser:
 
-* Det maximala antalet kod tecken ökar med 1 024 tecken till 100 000 tecken.
+* Det maximala antalet kodtecken ökar från 1 024 tecken till 100 000 tecken.
 
-* Den maximala varaktigheten för kod som körs ökar från fem sekunder till 15 sekunder.
+* Den maximala varaktigheten för att köra kod ökar från fem sekunder till 15 sekunder.
 
-Mer information finns i [begränsningar för Logic app definition](logic-apps-limits-and-config.md#definition-limits).
+Mer information finns i [Definitionsbegränsningar för logikapp.](logic-apps-limits-and-config.md#definition-limits)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Skapa tillstånds lösa och tillstånds lösa arbets flöden i Azure Portal](create-stateful-stateless-workflows-azure-portal.md)
-* [Skapa tillstånds lösa och tillstånds lösa arbets flöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md)
-* [Sidan Logic Apps allmänt kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
+* [Skapa tillståndslösa och tillståndslösa arbetsflöden i Azure Portal](create-stateful-stateless-workflows-azure-portal.md)
+* [Skapa tillståndslösa och tillståndslösa arbetsflöden i Visual Studio Code](create-stateful-stateless-workflows-visual-studio-code.md)
+* [Logic Apps offentliga förhandsversionen av kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
-Vi vill också höra om din upplevelse med Azure Logic Apps för hands version!
+Vi vill också att du hör av dig om dina erfarenheter av Azure Logic Apps förhandsversion!
 
-* [Skapa problem i GitHub](https://github.com/Azure/logicapps/issues)för buggar eller problem.
-* [Använd det här formuläret](https://aka.ms/lafeedback)för frågor, förfrågningar, kommentarer och annan feedback.
+* För buggar eller problem skapar [du dina problem i GitHub.](https://github.com/Azure/logicapps/issues)
+* Använd det här feedbackformuläret för frågor, begäranden, kommentarer [och annan feedback.](https://aka.ms/lafeedback)

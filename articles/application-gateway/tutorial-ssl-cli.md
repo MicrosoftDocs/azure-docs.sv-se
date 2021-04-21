@@ -1,6 +1,6 @@
 ---
-title: TLS-avslutning med CLI-Azure Application Gateway
-description: Lär dig hur du skapar en Programgateway och lägger till ett certifikat för TLS-avslutning med hjälp av Azure CLI.
+title: TLS-avslutning med CLI – Azure Application Gateway
+description: Lär dig hur du skapar en programgateway och lägger till ett certifikat för TLS-avslutning med hjälp av Azure CLI.
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9ae15503e8f12f7ba70aa5a9d306306fa79745f9
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: a8779c2829ecd2e8975ff56011bf5f73631f2de9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220393"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772693"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Skapa en programgateway med TLS-avslutning med hjälp av Azure CLI
 
-Du kan använda Azure CLI för att skapa en [Programgateway](overview.md) med ett certifikat för [TLS-avslutning](ssl-overview.md). För backend-servrar kan du använda en [skalnings uppsättning för virtuella datorer](../virtual-machine-scale-sets/overview.md). I det här exemplet innehåller skalningsuppsättningen två virtuella datorinstanser i serverdelens standardpool i programgatewayen.
+Du kan använda Azure CLI för att skapa en [programgateway med](overview.md) ett certifikat för [TLS-avslutning.](ssl-overview.md) För backend-servrar kan du använda en [VM-skalningsuppsättning.](../virtual-machine-scale-sets/overview.md) I det här exemplet innehåller skalningsuppsättningen två virtuella datorinstanser i serverdelens standardpool i programgatewayen.
 
 I den här artikeln kan du se hur du:
 
@@ -26,18 +26,18 @@ I den här artikeln kan du se hur du:
 * Skapa en programgateway med certifikatet
 * Skapa en VM-skalningsuppsättning med serverdelens standardpool
 
-Om du vill kan du slutföra den här proceduren med hjälp av [Azure PowerShell](tutorial-ssl-powershell.md).
+Om du vill kan du slutföra den här proceduren med [hjälp av Azure PowerShell](tutorial-ssl-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-self-signed-certificate"></a>Skapa ett självsignerat certifikat
 
-I produktion bör du importera ett giltigt certifikat som är signerat av en betrodd provider. I den här artikeln skapar du ett självsignerat certifikat och en PFX-fil med hjälp av kommandot openssl.
+I produktion bör du importera ett giltigt certifikat som är signerat av en betrodd provider. I den här artikeln skapar du ett själv signerat certifikat och en pfx-fil med kommandot openssl.
 
 ```console
 openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out appgwcert.crt
@@ -122,7 +122,7 @@ az network application-gateway create \
 
 ## <a name="create-a-virtual-machine-scale-set"></a>Skapa en VM-skalningsuppsättning
 
-I det här exemplet skapar du en VM-skalningsuppsättning som tillhandahåller servrar till serverdelens standardpool i programgatewayen. De virtuella datorerna i skalningsuppsättningen är associerade med undernätet *myBackendSubnet* och *appGatewayBackendPool*. Du kan skapa skalningsuppsättningen med [az vmss create](/cli/azure/vmss#az-vmss-create).
+I det här exemplet skapar du en VM-skalningsuppsättning som tillhandahåller servrar till serverdelens standardpool i programgatewayen. De virtuella datorerna i skalningsuppsättningen är associerade med undernätet *myBackendSubnet* och *appGatewayBackendPool*. Du kan skapa skalningsuppsättningen med [az vmss create](/cli/azure/vmss#az_vmss_create).
 
 ```azurecli-interactive
 az vmss create \
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Kopiera den offentliga IP-adressen och klistra in den i webbläsarens adressfält. I det här exemplet är URL: en: **https://52.170.203.149** .
+Kopiera den offentliga IP-adressen och klistra in den i webbläsarens adressfält. I det här exemplet är URL:en: **https://52.170.203.149** .
 
 ![Säkerhetsvarning](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

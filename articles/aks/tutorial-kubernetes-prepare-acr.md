@@ -5,12 +5,12 @@ services: container-service
 ms.topic: tutorial
 ms.date: 01/31/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9f6ec14cea20192aef7d3010201e6613c5d03a9e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fd53fab577797ad8bfdbf29b4a6d219e61ee3ef4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99430971"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764269"
 ---
 # <a name="tutorial-deploy-and-use-azure-container-registry"></a>Självstudier: Distribuera och använda Azure Container Registry
 
@@ -54,7 +54,7 @@ För att använda ACR-instansen måste du först logga in. Använd kommandot [az
 az acr login --name <acrName>
 ```
 
-Kommandot returnerar ett meddelande om att *inloggningen har* slutförts.
+Kommandot returnerar ett meddelande *om att inloggningen lyckades* när den har slutförts.
 
 ## <a name="tag-a-container-image"></a>Tagga en containeravbildning
 
@@ -63,7 +63,7 @@ Om du vill visa en lista över dina aktuella lokala avbildningar använder du ko
 ```console
 docker images
 ```
-Kommandots utdata i ovanstående kommando visar listan över aktuella lokala avbildningar:
+Ovanstående kommandos utdata visar en lista över dina aktuella lokala avbildningar:
 
 ```output
 REPOSITORY                                     TAG                 IMAGE ID            CREATED             SIZE
@@ -80,7 +80,7 @@ Hämta inloggningsserverns adress genom att köra kommandot [az acr list][az-acr
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-Tagga nu din lokala *Azure-röst-frontend-* avbildning med *acrLoginServer* -adressen för behållar registret. Ange versionsnumret för avbildningen genom att lägga till *:v1* i slutet av avbildningens namn:
+Tagga nu din lokala *azure-vote-front-avbildning* *med containerregistrets acrLoginServer-adress.* Ange versionsnumret för avbildningen genom att lägga till *:v1* i slutet av avbildningens namn:
 
 ```console
 docker tag mcr.microsoft.com/azuredocs/azure-vote-front:v1 <acrLoginServer>/azure-vote-front:v1
@@ -166,11 +166,11 @@ Gå vidare till nästa självstudie och lär dig hur du distribuerar ett Kuberne
 <!-- LINKS - internal -->
 [az-acr-create]: /cli/azure/acr
 [az-acr-list]: /cli/azure/acr
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-list]: /cli/azure/acr#az-acr-list
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-list]: /cli/azure/acr#az_acr_list
 [az-acr-repository-list]: /cli/azure/acr/repository
 [az-acr-repository-show-tags]: /cli/azure/acr/repository
-[az-group-create]: /cli/azure/group#az-group-create
+[az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli
 [aks-tutorial-deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md

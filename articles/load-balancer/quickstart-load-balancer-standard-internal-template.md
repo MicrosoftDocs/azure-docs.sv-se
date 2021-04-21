@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: skapa en intern belastningsutjämnare med hjälp av en mall'
-description: Den här snabb starten visar hur du skapar en intern Azure Load Balancer med hjälp av en Azure Resource Manager mall (ARM-mall).
+title: 'Snabbstart: Skapa en intern lastbalanserare med hjälp av en mall'
+description: Den här snabbstarten visar hur du skapar en intern Azure-lastbalanserare med hjälp av en Azure Resource Manager mall (ARM-mall).
 services: load-balancer
 author: asudbring
 ms.service: load-balancer
@@ -8,16 +8,16 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurecli
 ms.author: allensu
 ms.date: 09/14/2020
-ms.openlocfilehash: 749b233b827c27d2c998cfd6be66cf79cf48089d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00126dde55ffe584be611ddf268bb759e127d7a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94831658"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107788753"
 ---
-# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Snabb start: skapa en intern belastningsutjämnare för att belastningsutjämna virtuella datorer genom att använda en ARM-mall
+# <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Snabbstart: Skapa en intern lastbalanserare som lastbalanserar virtuella datorer med hjälp av en ARM-mall
 
-I den här snabb starten beskrivs hur du använder en Azure Resource Manager mall (ARM-mall) för att skapa en intern Azure Load Balancer.
+Den här snabbstarten beskriver hur du använder en Azure Resource Manager (ARM-mall) för att skapa en intern Azure-lastbalanserare.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -31,20 +31,20 @@ Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](htt
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Mallen som används i den här snabb starten är från [Azures snabb starts mallar](https://azure.microsoft.com/resources/templates/201-2-vms-internal-load-balancer).
+Mallen som används i den här snabbstarten kommer från [Azure-snabbstartsmallarna.](https://azure.microsoft.com/resources/templates/201-2-vms-internal-load-balancer)
 
 :::code language="json" source="~/quickstart-templates/201-2-vms-internal-load-balancer/azuredeploy.json":::
 
 Flera Azure-resurser har definierats i mallen:
 
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): virtuella dator lagrings konton för startdiagnostik.
-- [**Microsoft. Compute/availabilitySets**](/azure/templates/microsoft.compute/availabilitySets): tillgänglighets uppsättning för virtuella datorer.
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualNetworks): virtuellt nätverk för belastningsutjämnare och virtuella datorer.
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkInterfaces): nätverks gränssnitt för virtuella datorer.
-- [**Microsoft. Network/belastningsutjämnare**](/azure/templates/microsoft.network/loadBalancers): intern belastningsutjämnare.
-- [**Microsoft. Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualMachines): Virtual Machines.
+- [**Microsoft.Storage/storageAccounts: Lagringskonton**](/azure/templates/microsoft.storage/storageaccounts)för virtuella datorer för startdiagnostik.
+- [**Microsoft.Compute/availabilitySets:**](/azure/templates/microsoft.compute/availabilitySets)Tillgänglighetsuppsättning för virtuella datorer.
+- [**Microsoft.Network/virtualNetworks:**](/azure/templates/microsoft.network/virtualNetworks)Virtuellt nätverk för lastbalanserare och virtuella datorer.
+- [**Microsoft.Network/networkInterfaces:**](/azure/templates/microsoft.network/networkInterfaces)Nätverksgränssnitt för virtuella datorer.
+- [**Microsoft.Network/loadBalancers:**](/azure/templates/microsoft.network/loadBalancers)Intern lastbalanserare.
+- [**Microsoft.Compute/virtualMachines:**](/azure/templates/microsoft.compute/virtualMachines)Virtuella datorer.
 
-Du hittar fler mallar som är relaterade till Azure Load Balancer i [Azure snabb starts mallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
+Om du vill hitta fler mallar som är relaterade Azure Load Balancer finns i [Azure-snabbstartsmallar](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Network&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
@@ -68,17 +68,17 @@ az deployment group create \
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
-1. Välj **resurs grupper** i det vänstra fönstret.
+1. Välj **Resursgrupper** i det vänstra fönstret.
 
-1. Välj den resurs grupp som du skapade i föregående avsnitt. Standard resurs grupps namnet är **myResourceGroupLB**
+1. Välj den resursgrupp som du skapade i föregående avsnitt. Standardnamnet för resursgruppen är **myResourceGroupLB**
 
-1. Kontrol lera att följande resurser har skapats i resurs gruppen:
+1. Kontrollera att följande resurser har skapats i resursgruppen:
 
-:::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Användar Azure Portal för att verifiera att resurser skapas." border="true":::
+:::image type="content" source="media/quickstart-load-balancer-standard-internal-template/verify-creation.png" alt-text="Användaren Azure Portal att verifiera skapandet av resurser." border="true":::
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/azure/group#az-group-delete) för att ta bort resurs gruppen och alla resurser som ingår i.
+När den inte längre behövs kan du använda [kommandot az group delete](/cli/azure/group#az_group_delete) för att ta bort resursgruppen och alla resurser som finns i den.
 
 ```azurecli-interactive
   az group delete \
@@ -87,7 +87,7 @@ När de inte längre behövs kan du använda kommandot [AZ Group Delete](/cli/az
 
 ## <a name="next-steps"></a>Nästa steg
 
-En stegvis själv studie kurs som vägleder dig genom processen för att skapa en mall finns i:
+En stegvis självstudiekurs som vägleder dig genom processen med att skapa en mall finns i:
 
 > [!div class="nextstepaction"]
-> [Självstudie: skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Självstudie: Skapa och distribuera din första ARM-mall](../azure-resource-manager/templates/template-tutorial-create-first-template.md)
