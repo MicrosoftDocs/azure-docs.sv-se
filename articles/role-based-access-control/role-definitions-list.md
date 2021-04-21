@@ -1,6 +1,6 @@
 ---
-title: Visa lista över Azure-roll definitioner – Azure RBAC
-description: Lär dig hur du visar inbyggda Azure-och anpassade roller med hjälp av Azure Portal, Azure PowerShell, Azure CLI eller REST API.
+title: Lista azure-rolldefinitioner – Azure RBAC
+description: Lär dig hur du visar en lista över inbyggda och anpassade Roller i Azure med hjälp Azure Portal, Azure PowerShell, Azure CLI eller REST API.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -9,68 +9,68 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 03/26/2021
 ms.author: rolyon
-ms.openlocfilehash: f354e3bb7fc0f7ced17d43acacf29c726ce1329c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b285755d24cdbf1f8ef06eb850fc218a00734f16
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105629164"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771739"
 ---
-# <a name="list-azure-role-definitions"></a>Visa lista över Azure-roll definitioner
+# <a name="list-azure-role-definitions"></a>Lista azure-rolldefinitioner
 
-En roll definition är en samling behörigheter som kan utföras, till exempel läsa, skriva och ta bort. Den brukar bara kallas en roll. [Rollbaserad åtkomst kontroll i Azure (Azure RBAC)](overview.md) har över 120 [inbyggda roller](built-in-roles.md) eller så kan du skapa dina egna anpassade roller. Den här artikeln beskriver hur du visar en lista över inbyggda och anpassade roller som du kan använda för att bevilja åtkomst till Azure-resurser.
+En rolldefinition är en samling behörigheter som kan utföras, till exempel läsa, skriva och ta bort. Det kallas vanligtvis bara för en roll. [Rollbaserad åtkomstkontroll i Azure (Azure RBAC)](overview.md) har över 120 [inbyggda](built-in-roles.md) roller eller så kan du skapa egna anpassade roller. Den här artikeln beskriver hur du listar de inbyggda och anpassade roller som du kan använda för att bevilja åtkomst till Azure-resurser.
 
-En lista över administratörs roller för Azure Active Directory finns [i administratörs roll behörigheter i Azure Active Directory](../active-directory/roles/permissions-reference.md).
+En lista över administratörsroller för Azure Active Directory finns i [Behörigheter för administratörsroll i Azure Active Directory](../active-directory/roles/permissions-reference.md).
 
 ## <a name="azure-portal"></a>Azure Portal
 
-### <a name="list-all-roles"></a>Lista alla roller
+### <a name="list-all-roles"></a>Visa en lista över alla roller
 
-Följ dessa steg om du vill visa en lista över alla roller i Azure Portal.
+Följ de här stegen för att lista alla roller i Azure Portal.
 
-Om du är intresse rad av att visa en uppdaterad roll upplevelse kan du titta på fliken **roller (för hands version)** , som för närvarande finns i en offentlig för hands version. Fliken **roller (förhands granskning)** visar samma lista över roller som fliken **roller** med vissa ytterligare funktioner. Du kan använda antingen fliken roller för att arbeta med dina roller, men om du skapar eller tar bort anpassade roller kan du behöva uppdatera sidan manuellt för att se de senaste ändringarna.
+Om du är intresserad av att visa en uppdaterad rollupplevelse kan du titta på fliken **Roller (förhandsversion),** som för närvarande är en offentlig förhandsversion. Fliken **Roller (förhandsversion)** visar samma lista över roller som **fliken Roller** med några ytterligare funktioner. Du kan använda någon av rollfliken för att arbeta med dina roller, men om du skapar eller tar bort anpassade roller kan du behöva uppdatera sidan manuellt för att se de senaste ändringarna.
 
 #### <a name="roles"></a>[Roller](#tab/roles/)
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
+1. I den Azure Portal klickar du **på Alla tjänster** och väljer ett omfång. Du kan till exempel välja **Hanteringsgrupper,** **Prenumerationer,** **Resursgrupper** eller en resurs.
 
-1. Klicka på den aktuella resursen.
+1. Klicka på den specifika resursen.
 
 1. Klicka på **Åtkomstkontroll (IAM)**.
 
-1. Klicka på fliken **roller** om du vill se en lista över alla inbyggda och anpassade roller.
+1. Klicka på **fliken** Roller om du vill se en lista över alla inbyggda och anpassade roller.
 
-   Du kan se hur många användare och grupper som har tilldelats varje roll i det aktuella omfånget.
+   Du kan se antalet användare och grupper som har tilldelats till varje roll i det aktuella omfånget.
 
    ![Lista över roller](./media/role-definitions-list/roles-list-current.png)
 
-#### <a name="roles-preview"></a>[Roller (för hands version)](#tab/roles-preview/)
+#### <a name="roles-preview"></a>[Roller (förhandsversion)](#tab/roles-preview/)
 
-1. I Azure Portal klickar du på **alla tjänster** och väljer sedan en omfattning. Du kan till exempel välja **hanterings grupper**, **prenumerationer**, **resurs grupper** eller en resurs.
+1. I den Azure Portal klickar du **på Alla tjänster** och väljer ett omfång. Du kan till exempel välja **Hanteringsgrupper,** **Prenumerationer,** **Resursgrupper** eller en resurs.
 
-1. Klicka på den aktuella resursen.
+1. Klicka på den specifika resursen.
 
 1. Klicka på **Åtkomstkontroll (IAM)**.
 
-1. Klicka på fliken **roller (för hands version)** om du vill se en lista över alla inbyggda och anpassade roller.
+1. Klicka på **fliken Roller (förhandsversion)** om du vill se en lista över alla inbyggda och anpassade roller.
 
-   ![Roll lista med hjälp av för hands versionen](./media/role-definitions-list/roles-list.png)
+   ![Lista över roller med hjälp av förhandsversion](./media/role-definitions-list/roles-list.png)
 
-1. Om du vill se behörigheterna för en viss roll klickar du på länken **Visa** i kolumnen **information** .
+1. Om du vill se behörigheterna för en viss roll går du **till kolumnen Information** och klickar på **länken** Visa.
 
-    Rutan behörigheter visas.
+    Ett behörighetsfönster visas.
 
-1. Klicka på fliken **behörigheter** för att visa och söka efter behörigheter för den valda rollen.
+1. Klicka på **fliken Behörigheter** för att visa och söka efter behörigheter för den valda rollen.
 
-   ![Roll behörigheter med hjälp av för hands versionen](./media/role-definitions-list/role-permissions.png)
+   ![Rollbehörigheter med förhandsversion](./media/role-definitions-list/role-permissions.png)
 
 ---
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-### <a name="list-all-roles"></a>Lista alla roller
+### <a name="list-all-roles"></a>Visa en lista över alla roller
 
-Om du vill visa en lista över alla roller i Azure PowerShell använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Om du vill lista alla roller Azure PowerShell använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition | FT Name, Description
@@ -90,9 +90,9 @@ Automation Operator                               Automation Operators are able 
 ...
 ```
 
-### <a name="list-a-role-definition"></a>Lista en roll definition
+### <a name="list-a-role-definition"></a>Visa en rolldefinition
 
-Om du vill visa information om en speciell roll använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Om du vill visa information om en viss roll använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name>
@@ -113,9 +113,9 @@ NotDataActions   : {}
 AssignableScopes : {/}
 ```
 
-### <a name="list-a-role-definition-in-json-format"></a>Lista en roll definition i JSON-format
+### <a name="list-a-role-definition-in-json-format"></a>Visa en rolldefinition i JSON-format
 
-Om du vill visa en roll i JSON-format använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Om du vill visa en roll i JSON-format använder [du Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | ConvertTo-Json
@@ -147,9 +147,9 @@ PS C:\> Get-AzRoleDefinition "Contributor" | ConvertTo-Json
 }
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Lista behörigheter för en roll definition
+### <a name="list-permissions-of-a-role-definition"></a>Lista behörigheter för en rolldefinition
 
-Om du vill visa en lista över behörigheter för en speciell roll använder du [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
+Om du vill visa en lista över behörigheter för en viss roll [använder du Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
 ```azurepowershell
 Get-AzRoleDefinition <role_name> | FL Actions, NotActions
@@ -185,15 +185,15 @@ Microsoft.Network/loadBalancers/backendAddressPools/join/action
 
 ## <a name="azure-cli"></a>Azure CLI
 
-### <a name="list-all-roles"></a>Lista alla roller
+### <a name="list-all-roles"></a>Visa en lista över alla roller
 
-Om du vill visa alla roller i Azure CLI använder du [AZ roll definitions lista](/cli/azure/role/definition#az-role-definition-list).
+Om du vill visa en lista över alla roller i Azure CLI använder [du az role definition list](/cli/azure/role/definition#az_role_definition_list).
 
 ```azurecli
 az role definition list
 ```
 
-I följande exempel visas namn och beskrivning för alla tillgängliga roll definitioner:
+I följande exempel visas namn och beskrivning för alla tillgängliga rolldefinitioner:
 
 ```azurecli
 az role definition list --output json --query '[].{roleName:roleName, description:description}'
@@ -248,15 +248,15 @@ az role definition list --custom-role-only false --output json --query '[].{role
 ]
 ```
 
-### <a name="list-a-role-definition"></a>Lista en roll definition
+### <a name="list-a-role-definition"></a>Visa en rolldefinition
 
-Om du vill visa information om en roll använder du [AZ roll definitions lista](/cli/azure/role/definition#az-role-definition-list).
+Om du vill visa information om en roll använder [du az role definition list](/cli/azure/role/definition#az_role_definition_list).
 
 ```azurecli
 az role definition list --name {roleName}
 ```
 
-I följande exempel visas *deltagar* roll definitionen:
+I följande exempel visas definitionen *av rollen* Deltagare:
 
 ```azurecli
 az role definition list --name "Contributor"
@@ -294,9 +294,9 @@ az role definition list --name "Contributor"
 ]
 ```
 
-### <a name="list-permissions-of-a-role-definition"></a>Lista behörigheter för en roll definition
+### <a name="list-permissions-of-a-role-definition"></a>Lista behörigheter för en rolldefinition
 
-I följande exempel visas bara *åtgärder* och *notActions* för *deltagar* rollen.
+I följande exempel visas bara *åtgärderna och* *inteÅtgärder för* rollen Deltagare. 
 
 ```azurecli
 az role definition list --name "Contributor" --output json --query '[].{actions:permissions[0].actions, notActions:permissions[0].notActions}'
@@ -319,7 +319,7 @@ az role definition list --name "Contributor" --output json --query '[].{actions:
 ]
 ```
 
-I följande exempel visas bara åtgärder för rollen *virtuell dator deltagare* .
+I följande exempel visas bara åtgärderna för rollen *Virtuell datordeltagare.*
 
 ```azurecli
 az role definition list --name "Virtual Machine Contributor" --output json --query '[].permissions[0].actions'
@@ -354,7 +354,7 @@ az role definition list --name "Virtual Machine Contributor" --output json --que
 
 ### <a name="list-role-definitions"></a>Visa lista över rolldefinitioner
 
-Om du vill lista roll definitioner använder du [roll definitionerna-list](/rest/api/authorization/roledefinitions/list) REST API. Du kan förfina resultaten genom att ange ett omfång och ett valfritt filter.
+Om du vill visa en lista över [rolldefinitioner använder du rolldefinitioner –](/rest/api/authorization/roledefinitions/list) lista REST API. Om du vill förfina resultatet anger du ett omfång och ett valfritt filter.
 
 1. Börja med följande begäran:
 
@@ -362,7 +362,7 @@ Om du vill lista roll definitioner använder du [roll definitionerna-list](/rest
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions?$filter={$filter}&api-version=2015-07-01
     ```
 
-1. I URI: n ersätter du *{scope}* med det omfång som du vill visa roll definitionerna för.
+1. I URI:en *ersätter du {scope}* med det omfång som du vill visa rolldefinitionerna för.
 
     > [!div class="mx-tableFixed"]
     > | Omfång | Typ |
@@ -372,17 +372,17 @@ Om du vill lista roll definitioner använder du [roll definitionerna-list](/rest
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resursgrupp |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resurs |
 
-    I föregående exempel är Microsoft. Web en resurs leverantör som refererar till en App Service instans. På samma sätt kan du använda andra resurs leverantörer och ange omfånget. Mer information finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md) och [Azure Resource Provider-åtgärder](resource-provider-operations.md)som stöds.  
+    I föregående exempel är microsoft.web en resursprovider som refererar till en App Service instans. På samma sätt kan du använda andra resursproviders och ange omfånget. Mer information finns i [Azure-resursproviders och resurstyper samt](../azure-resource-manager/management/resource-providers-and-types.md) åtgärder som [stöds av Azure-resursprovidern.](resource-provider-operations.md)  
      
-1. Ersätt *{filter}* med villkoret som du vill använda för att filtrera roll definitions listan.
+1. Ersätt *{filter}* med villkoret som du vill använda för att filtrera listan över rolldefinitioner.
 
     > [!div class="mx-tableFixed"]
-    > | Filtrera | Beskrivning |
+    > | Filtrera | Description |
     > | --- | --- |
-    > | `$filter=atScopeAndBelow()` | Visar en lista över roll definitioner för det angivna omfånget och eventuella under omfattningar. |
-    > | `$filter=type+eq+'{type}'` | Visar en lista med roll definitioner av den angivna typen. Typ av roll kan vara `CustomRole` eller `BuiltInRole` . |
+    > | `$filter=atScopeAndBelow()` | Visar rolldefinitioner för det angivna omfånget och eventuella underomfång. |
+    > | `$filter=type+eq+'{type}'` | Visar en lista över rolldefinitioner av den angivna typen. Typ av roll kan vara `CustomRole` eller `BuiltInRole` . |
 
-Följande begäran listar anpassade roll definitioner i prenumerations omfattningen:
+I följande begäran visas anpassade rolldefinitioner i prenumerationsomfånget:
 
 ```http
 GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
@@ -431,9 +431,9 @@ Följande visar ett exempel på utdata:
 }
 ```
 
-### <a name="list-a-role-definition"></a>Lista en roll definition
+### <a name="list-a-role-definition"></a>Visa en rolldefinition
 
-Om du vill visa information om en speciell roll använder du [roll definitionerna-get](/rest/api/authorization/roledefinitions/get) eller [Role definitions-get efter ID](/rest/api/authorization/roledefinitions/getbyid) REST API.
+Om du vill visa information om en viss roll använder du [Rolldefinitioner – Hämta](/rest/api/authorization/roledefinitions/get) eller [Rolldefinitioner – Hämta efter ID](/rest/api/authorization/roledefinitions/getbyid) REST API.
 
 1. Börja med följande begäran:
 
@@ -441,13 +441,13 @@ Om du vill visa information om en speciell roll använder du [roll definitionern
     GET https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-    För en roll definition på katalog nivå kan du använda den här begäran:
+    För en rolldefinition på katalognivå kan du använda den här begäran:
 
     ```http
     GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId}?api-version=2015-07-01
     ```
 
-1. I URI: n ersätter du *{scope}* med den omfattning som du vill lista roll definitionen för.
+1. I URI:en *ersätter du {scope}* med det omfång som du vill visa rolldefinitionen för.
 
     > [!div class="mx-tableFixed"]
     > | Omfång | Typ |
@@ -457,9 +457,9 @@ Om du vill visa information om en speciell roll använder du [roll definitionern
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Resursgrupp |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/Microsoft.Web/sites/mysite1` | Resurs |
      
-1. Ersätt *{roleDefinitionId}* med roll Definitions-ID: n.
+1. Ersätt *{roleDefinitionId} med* rolldefinitionsidentifieraren.
 
-Följande begäran visar roll definitionen för [läsaren](built-in-roles.md#reader) :
+I följande begäran visas definitionen [av rollen](built-in-roles.md#reader) Läsare:
 
 ```http
 GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
@@ -499,5 +499,5 @@ Följande visar ett exempel på utdata:
 
 - [Inbyggda roller i Azure](built-in-roles.md)
 - [Anpassade roller i Azure](custom-roles.md)
-- [Visa en lista med Azures roll tilldelningar med hjälp av Azure Portal](role-assignments-list-portal.md)
+- [Lista Azure-rolltilldelningar med hjälp av Azure Portal](role-assignments-list-portal.md)
 - [Tilldela Azure-roller med hjälp av Azure Portal](role-assignments-portal.md)

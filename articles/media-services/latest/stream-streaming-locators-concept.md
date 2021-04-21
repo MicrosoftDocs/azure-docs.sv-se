@@ -1,6 +1,6 @@
 ---
-title: Strömmande positionerare i Azure Media Services
-description: Den här artikeln innehåller en förklaring av vad som finns i strömmande positionerare och hur de används av Azure Media Services.
+title: Positionerare för direktuppspelning i Azure Media Services
+description: Den här artikeln ger en förklaring av vad positionerare för direktuppspelning är och hur de används av Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2020
 ms.author: inhenkel
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd7dd5b5be7af5e4c65ae88a138fff627105003a
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: bcee8d0554b9c3349c7efc88c10e9eee8b185acb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106282288"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773287"
 ---
 # <a name="streaming-locators"></a>Positionerare för direktuppspelning
 
@@ -25,25 +25,25 @@ För att skapa videor i utdatatillgångar som klienter ska kunna spela upp måst
 
 Processen att skapa en **positionerare för direktuppspelning** kallas för publicering. Som standard kan din **positionerare för direktuppspelning** användas omedelbart efter API-anropen. Den fungerar tills den tas bort, såvida du inte konfigurerar valfria start- och sluttider. 
 
-När du skapar en **strömmande positionerare** måste du ange ett **till gångs** namn och ett namn för en **strömmande princip** . Mer information finns i följande avsnitt:
+När du skapar **en positionerare för direktuppspelning** måste du ange ett **resursnamn** och ett namn på **direktuppspelningsprincipen.** Mer information finns i följande avsnitt:
 
 * [Tillgångar](assets-concept.md)
-* [Strömmande principer](stream-streaming-policy-concept.md)
-* [Principer för innehålls nyckel](drm-content-key-policy-concept.md)
+* [Principer för direktuppspelning](stream-streaming-policy-concept.md)
+* [Principer för innehållsnycklar](drm-content-key-policy-concept.md)
 
-Du kan också ange start-och slut tid för din plats för strömning, som endast tillåter att användaren spelar upp innehållet mellan dessa tider (till exempel mellan 5/1/2019 och 5/5/2019).  
+Du kan också ange start- och sluttid för din positionerare för direktuppspelning, vilket endast låter användaren spela upp innehållet mellan dessa tider (till exempel mellan 2019-05-01 till 2019-05-05).  
 
 ## <a name="considerations"></a>Överväganden
 
-* Det går inte att uppdatera **strömmande positionerare** . 
-* Egenskaperna för **strömmande positionerare** som är av typen datetime är alltid i UTC-format.
-* Du bör utforma en begränsad uppsättning principer för ditt Media Service-konto och återanvända dem för dina strömmande positionerare när samma alternativ behövs. Mer information finns i [kvoter och begränsningar](limits-quotas-constraints-reference.md).
+* **Positionerare för direktuppspelning** kan inte uppdateras. 
+* Egenskaperna för **positionerare för direktuppspelning** som är av Datetime-typen är alltid i UTC-format.
+* Du bör utforma en begränsad uppsättning principer för ditt Media Service-konto och återanvända dem för dina positionerare för direktuppspelning när samma alternativ behövs. Mer information finns i [Kvoter och gränser.](limits-quotas-constraints-reference.md)
 
-## <a name="create-streaming-locators"></a>Skapa strömmande positionerare  
+## <a name="create-streaming-locators"></a>Skapa positionerare för direktuppspelning  
 
 ### <a name="not-encrypted"></a>Inte krypterad
 
-Om du vill strömma filen i klartext (icke-krypterad) anger du den fördefinierade principen för att rensa direkt uppspelning: till Predefined_ClearStreamingOnly (i .NET kan du använda PredefinedStreamingPolicy. ClearStreamingOnly-uppräkningen).
+Om du vill strömma filen i klar ordning (icke-krypterad) anger du den fördefinierade principen för rensad direktuppspelning: till "Predefined_ClearStreamingOnly" (i .NET kan du använda uppräkning PredefinedStreamingPolicy.ClearStreamingOnly).
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -59,7 +59,7 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
 
 ### <a name="encrypted"></a>Krypterad 
 
-Om du behöver Kryptera ditt innehåll med CENC-kryptering ställer du in principen på "Predefined_MultiDrmCencStreaming". Widevine-krypteringen tillämpas på en STRECKs ström och PlayReady som är smidigare. Nyckeln skickas till en uppspelnings klient baserat på de konfigurerade DRM-licenserna.
+Om du behöver kryptera ditt innehåll med CENC-kryptering anger du principen till "Predefined_MultiDrmCencStreaming". Widevine-krypteringen tillämpas på en DASH-dataström och PlayReady till Smooth. Nyckeln levereras till en uppspelningsklient baserat på de konfigurerade DRM-licenserna.
 
 ```csharp
 StreamingLocator locator = await client.StreamingLocators.CreateAsync(
@@ -74,27 +74,27 @@ StreamingLocator locator = await client.StreamingLocators.CreateAsync(
     });
 ```
 
-Om du också vill kryptera din HLS-ström med CBCS (FairPlay) använder du Predefined_MultiDrmStreaming.
+Om du även vill kryptera HLS-strömmen med CBCS (FairPlay) använder du "Predefined_MultiDrmStreaming".
 
 > [!NOTE]
-> Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av villkoren i tjänste-och sekretess policyn för Google, Inc.
+> Widevine är en tjänst som tillhandahålls av Google Inc. och omfattas av användningsvillkoren och sekretesspolicyn för Google, Inc.
 
-## <a name="associate-filters-with-streaming-locators"></a>Associera filter med strömmande positionerare
+## <a name="associate-filters-with-streaming-locators"></a>Associera filter med positionerare för direktuppspelning
 
-Se [filter: associera med strömmande positionerare](filters-concept.md#associating-filters-with-streaming-locator).
+Se [Filter: associera med positionerare för direktuppspelning.](filters-concept.md#associating-filters-with-streaming-locator)
 
-## <a name="filter-order-page-streaming-locator-entities"></a>Filter, ordning, lokaliserare för sidans strömmande enheter
+## <a name="filter-order-page-streaming-locator-entities"></a>Filtrera, ordna, sidlokaliserarentiteter för direktuppspelning
 
-Se [filtrering, sortering, sid indelning för Media Services entiteter](filter-order-page-entitites-how-to.md).
+Se [Filtrering, ordning, växling av Media Services entiteter](filter-order-page-entitites-how-to.md).
 
-## <a name="list-streaming-locators-by-asset-name"></a>Lista över strömmande positionerare efter till gångs namn
+## <a name="list-streaming-locators-by-asset-name"></a>Lista positionerare för direktuppspelning efter tillgångsnamn
 
-Använd följande åtgärder om du vill hämta strömmande positionerare baserade på det associerade till gångs namnet:
+Om du vill hämta positionerare för direktuppspelning baserat på det associerade tillgångsnamnet använder du följande åtgärder:
 
 |Språk|API|
 |---|---|
 |REST|[liststreaminglocators](/rest/api/media/assets/liststreaminglocators)|
-|CLI|[AZ AMS Asset List-streaming-Locators](/cli/azure/ams/asset#az-ams-asset-list-streaming-locators)|
+|CLI|[az ams asset list-streaming-locators](/cli/azure/ams/asset#az_ams_asset_list_streaming_locators)|
 |.NET|[ListStreamingLocators](/dotnet/api/microsoft.azure.management.media.assetsoperationsextensions.liststreaminglocators#Microsoft_Azure_Management_Media_AssetsOperationsExtensions_ListStreamingLocators_Microsoft_Azure_Management_Media_IAssetsOperations_System_String_System_String_System_String_)|
 |Java|[AssetStreamingLocator](/rest/api/media/assets/liststreaminglocators#assetstreaminglocator)|
 |Node.js|[listStreamingLocators](/javascript/api/@azure/arm-mediaservices/assets#liststreaminglocators-string--string--string--msrest-requestoptionsbase-)|
@@ -102,10 +102,10 @@ Använd följande åtgärder om du vill hämta strömmande positionerare baserad
 ## <a name="see-also"></a>Se även
 
 * [Tillgångar](assets-concept.md)
-* [Strömmande principer](stream-streaming-policy-concept.md)
-* [Principer för innehålls nyckel](drm-content-key-policy-concept.md)
+* [Principer för direktuppspelning](stream-streaming-policy-concept.md)
+* [Principer för innehållsnycklar](drm-content-key-policy-concept.md)
 * [Självstudie: Ladda upp, koda och strömma videor med .NET](stream-files-tutorial-with-api.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Så här skapar du en strömmande lokaliserare och skapar URL: er](create-streaming-locator-build-url.md)
+[Så här skapar du en positionerare för direktuppspelning och skapar URL:er](create-streaming-locator-build-url.md)

@@ -1,7 +1,7 @@
 ---
 title: Ta bort TDE-skydd (PowerShell & Azure CLI)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Lär dig hur du svarar på ett potentiellt komprometterat TDE-skydd för Azure SQL Database-eller Azure Synapse-analys med hjälp av TDE med stöd för Bring Your Own Key (BYOK).
+description: Lär dig hur du svarar på ett potentiellt komprometterat TDE-skydd för Azure SQL Database eller Azure Synapse Analytics med TDE med stöd för Bring Your Own Key (BYOK).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,27 +12,27 @@ author: shohamMSFT
 ms.author: shohamd
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: c1613c61143044c4fa355c6225cf0fa1d4e2e09d
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: f98dcdd9c1a479703c82c01b4fd240507ea355de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107308395"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784477"
 ---
-# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Ta bort ett transparent datakryptering-skydd (TDE) med PowerShell
+# <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Ta bort transparent datakryptering skydd (TDE) med PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-I det här avsnittet beskrivs hur du svarar på en potentiellt komprometterad TDE-skydd för Azure SQL Database eller Azure Synapse Analytics som använder TDE med Kundhanterade nycklar i Azure Key Vault-Bring Your Own Key (BYOK) support. Mer information om BYOK-stöd för TDE finns på [sidan Översikt](transparent-data-encryption-byok-overview.md).
+Det här avsnittet beskriver hur du svarar på ett potentiellt komprometterat TDE-skydd för Azure SQL Database eller Azure Synapse Analytics som använder TDE med kund hanterade nycklar i byok-stöd (Azure Key Vault – Bring Your Own Key). Mer information om BYOK-stöd för TDE finns på [översiktssidan.](transparent-data-encryption-byok-overview.md)
 
 > [!CAUTION]
-> De procedurer som beskrivs i den här artikeln bör endast göras i extrema fall eller i test miljöer. Granska stegen noggrant, som att ta bort aktivt använda TDE-skydd från Azure Key Vault resulterar i att **databasen blir otillgänglig**.
+> De procedurer som beskrivs i den här artikeln bör endast utföras i extrema fall eller i testmiljöer. Granska stegen noggrant eftersom om du tar bort aktivt använda TDE-skydd från Azure Key Vault leder det till **att databasen blir otillgänglig.**
 
-Om en nyckel någonsin misstänks vara komprometterad, så att en tjänst eller användare har obehörig åtkomst till nyckeln, är det bäst att ta bort nyckeln.
+Om en nyckel någonsin misstänks vara komprometterad, så att en tjänst eller användare har haft obehörig åtkomst till nyckeln, är det bäst att ta bort nyckeln.
 
-Tänk på att när TDE-skyddet tas bort i Key Vault, i upp till 10 minuter, kommer alla krypterade databaser att börja neka alla anslutningar med motsvarande fel meddelande och ändra dess tillstånd till [otillgängligt](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector).
+Tänk på att när TDE-skyddet har tagits bort i Key Vault kommer alla krypterade databaser inom 10 minuter att börja neka alla anslutningar med motsvarande felmeddelande och ändra dess tillstånd till [Otillgänglig](./transparent-data-encryption-byok-overview.md#inaccessible-tde-protector).
 
-Den här instruktions guiden går över två metoder beroende på önskat resultat efter ett komprometterat incident svar:
+Den här guiden går igenom två metoder beroende på önskat resultat efter en komprometterad incidentlösning:
 
 - För att göra databaserna i Azure SQL Database/Azure Synapse Analytics **otillgängliga**.
 - För att göra databaserna i Azure SQL Database/Azure Azure Synapse Analytics **otillgängliga**.
@@ -41,25 +41,25 @@ Den här instruktions guiden går över två metoder beroende på önskat result
 
 - Du måste ha en Azure-prenumeration och vara administratör för den prenumerationen
 - Du måste ha Azure PowerShell installerat och igång.
-- Den här instruktions guiden förutsätter att du redan använder en nyckel från Azure Key Vault som TDE-skydd för en Azure SQL Database eller Azure Synapse. Se [Transparent datakryptering med BYOK support](transparent-data-encryption-byok-overview.md) för mer information.
+- Den här guiden förutsätter att du redan använder en nyckel från Azure Key Vault som TDE-skydd för en Azure SQL Database eller Azure Synapse. Mer [transparent datakryptering finns i transparent datakryptering byok-stöd.](transparent-data-encryption-byok-overview.md)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
- Instruktioner för installation av Az-modulen finns i [Installera Azure PowerShell](/powershell/azure/install-az-ps). För vissa cmdlets, se [AzureRM. SQL](/powershell/module/AzureRM.Sql/).
+ Instruktioner för installation av Az-modulen finns i [Installera Azure PowerShell](/powershell/azure/install-az-ps). Specifika cmdlets finns i [AzureRM.Sql](/powershell/module/AzureRM.Sql/).
 
 > [!IMPORTANT]
-> PowerShell-modulen för Azure Resource Manager (RM) stöds fortfarande men all framtida utveckling är för AZ. SQL-modulen. AzureRM-modulen kommer att fortsätta att ta emot fel korrigeringar fram till minst december 2020.  Argumenten för kommandona i AZ-modulen och i AzureRm-modulerna är i stort sett identiska. Mer information om deras kompatibilitet finns i [Introduktion till den nya Azure PowerShell AZ-modulen](/powershell/azure/new-azureps-module-az).
+> Modulen PowerShell Azure Resource Manager (RM) stöds fortfarande, men all framtida utveckling är till för Az.Sql-modulen. AzureRM-modulen fortsätter att ta emot felkorrigeringar fram till åtminstone december 2020.  Argumenten för kommandona i Az-modulen och i AzureRm-modulerna är betydligt identiska. Mer information om deras kompatibilitet finns i [Introduktion till den nya Azure PowerShell Az-modulen](/powershell/azure/new-azureps-module-az).
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Information om installation finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Information om installation finns [i Installera Azure CLI.](/cli/azure/install-azure-cli)
 
 * * *
 
-## <a name="check-tde-protector-thumbprints"></a>Kontrol lera TDE-skyddskomponenten tumavtrycken
+## <a name="check-tde-protector-thumbprints"></a>Kontrollera tumavtryck för TDE-skydd
 
-Följande steg beskriver hur du kontrollerar TDE-skydds tumavtrycken som fortfarande används av virtuella loggfiler (VLF) för en specifik databas.
-Tumavtrycket för det aktuella TDE-skyddet för databasen och databas-ID: t kan hittas genom att köra:
+Följande steg beskriver hur du kontrollerar tumavtrycken för TDE-skydd som fortfarande används av VLF (Virtual Log Files) för en viss databas.
+Tumavtrycket för det aktuella TDE-skyddet för databasen och databas-ID:t kan hittas genom att köra:
 
 ```sql
 SELECT [database_id],
@@ -69,7 +69,7 @@ SELECT [database_id],
  FROM [sys].[dm_database_encryption_keys]
 ```
 
-Följande fråga returnerar VLFs och TDE-skyddet respektive tumavtrycken som används. Varje annat tumavtryck refererar till en annan nyckel i Azure Key Vault (AKV):
+Följande fråga returnerar de VLAN och TDE-skydd respektive tumavtryck som används. Varje tumavtryck refererar till olika nycklar i Azure Key Vault (AKV):
 
 ```sql
 SELECT * FROM sys.dm_db_log_info (database_id)
@@ -79,21 +79,21 @@ Du kan också använda PowerShell eller Azure CLI:
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-PowerShell-kommandot **Get-AzureRmSqlServerKeyVaultKey**   tillhandahåller TUMAVTRYCKET för det TDE-skydd som används i frågan, så att du kan se vilka nycklar som ska behållas och vilka nycklar som ska tas bort i akv. Endast nycklar som inte längre används av databasen kan tas bort på ett säkert sätt från Azure Key Vault.
+PowerShell-kommandot **Get-AzureRmSqlServerKeyVaultKey** tillhandahåller tumavtrycket för det TDE-skydd som används i frågan, så att du kan se vilka nycklar som ska behållas och vilka nycklar som ska tas bort i   AKV. Endast nycklar som inte längre används av databasen kan tas bort från Azure Key Vault.
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-PowerShell-kommandot **AZ SQL Server Key show**   tillhandahåller TUMAVTRYCKET för det TDE-skydd som används i frågan, så att du kan se vilka nycklar som ska behållas och vilka nycklar som ska tas bort i akv. Endast nycklar som inte längre används av databasen kan tas bort på ett säkert sätt från Azure Key Vault.
+PowerShell-kommandot **az sql server key show** innehåller tumavtrycket för TDE-skyddet som används i frågan, så att du kan se vilka nycklar som ska behållas och vilka nycklar som ska tas bort   i AKV. Endast nycklar som inte längre används av databasen kan tas bort från Azure Key Vault.
 
 * * *
 
-## <a name="keep-encrypted-resources-accessible"></a>Se till att krypterade resurser är tillgängliga
+## <a name="keep-encrypted-resources-accessible"></a>Håll krypterade resurser tillgängliga
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Skapa en [ny nyckel i Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Se till att den nya nyckeln skapas i ett separat nyckel valv från det potentiellt komprometterade TDE-skyddet, eftersom åtkomst kontroll har tillhandahållits på en valv nivå.
+1. Skapa en [ny nyckel i Key Vault](/powershell/module/az.keyvault/add-azkeyvaultkey). Se till att den nya nyckeln skapas i ett separat nyckelvalv från det potentiellt komprometterade TDE-skyddet, eftersom åtkomstkontroll etableras på valvnivå.
 
-2. Lägg till den nya nyckeln till servern med cmdletarna [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) och [set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) och uppdatera den som serverns nya TDE-skydd.
+2. Lägg till den nya nyckeln på servern med cmdletarna [Add-AzSqlServerKeyVaultKey](/powershell/module/az.sql/add-azsqlserverkeyvaultkey) och [Set-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/set-azsqlservertransparentdataencryptionprotector) och uppdatera den som serverns nya TDE-skydd.
 
    ```powershell
    # add the key from Key Vault to the server  
@@ -104,7 +104,7 @@ PowerShell-kommandot **AZ SQL Server Key show**   tillhandahåller TUMAVTRYCKE
        -ServerName <LogicalServerName> -Type AzureKeyVault -KeyId <KeyVaultKeyId>
    ```
 
-3. Se till att servern och alla repliker har uppdaterats till det nya TDE-skyddet med hjälp av [Get-AzSqlServerTransparentDataEncryptionProtector](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector) -cmdleten.
+3. Kontrollera att servern och alla repliker har uppdaterats till det nya TDE-skyddet med cmdleten [Get-AzSqlServerTransparentDataEncryptionProtector.](/powershell/module/az.sql/get-azsqlservertransparentdataencryptionprotector)
 
    > [!NOTE]
    > Det kan ta några minuter för det nya TDE-skyddet att spridas till alla databaser och sekundära databaser under servern.
@@ -113,20 +113,20 @@ PowerShell-kommandot **AZ SQL Server Key show**   tillhandahåller TUMAVTRYCKE
    Get-AzSqlServerTransparentDataEncryptionProtector -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-4. Gör en [säkerhets kopia av den nya nyckeln](/powershell/module/az.keyvault/backup-azkeyvaultkey) i Key Vault.
+4. Gör en [säkerhetskopia av den nya nyckeln](/powershell/module/az.keyvault/backup-azkeyvaultkey) i Key Vault.
 
    ```powershell
    # -OutputFile parameter is optional; if removed, a file name is automatically generated.
    Backup-AzKeyVaultKey -VaultName <KeyVaultName> -Name <KeyVaultKeyName> -OutputFile <DesiredBackupFilePath>
    ```
 
-5. Ta bort den komprometterade nyckeln från Key Vault med cmdleten [Remove-AzKeyVaultKey](/powershell/module/az.keyvault/remove-azkeyvaultkey) .
+5. Ta bort den komprometterade nyckeln Key Vault hjälp av [cmdleten Remove-AzKeyVaultKey.](/powershell/module/az.keyvault/remove-azkeyvaultkey)
 
    ```powershell
    Remove-AzKeyVaultKey -VaultName <KeyVaultName> -Name <KeyVaultKeyName>
    ```
 
-6. Så här återställer du en nyckel till Key Vault i framtiden med hjälp av cmdleten [restore-AzKeyVaultKey](/powershell/module/az.keyvault/restore-azkeyvaultkey) :
+6. Så här återställer du en nyckel Key Vault i framtiden med hjälp av cmdleten [Restore-AzKeyVaultKey:](/powershell/module/az.keyvault/restore-azkeyvaultkey)
 
    ```powershell
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
@@ -134,9 +134,9 @@ PowerShell-kommandot **AZ SQL Server Key show**   tillhandahåller TUMAVTRYCKE
 
 # <a name="the-azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-För kommando referensen, se [Azure CLI-nyckel valvet](/cli/azure/keyvault/key).
+Kommandoreferens finns i [Azure CLI-nyckelvalvet](/cli/azure/keyvault/key).
 
-1. Skapa en [ny nyckel i Key Vault](/cli/azure/keyvault/key#az-keyvault-key-create). Se till att den nya nyckeln skapas i ett separat nyckel valv från det potentiellt komprometterade TDE-skyddet, eftersom åtkomst kontroll har tillhandahållits på en valv nivå.
+1. Skapa en [ny nyckel i Key Vault](/cli/azure/keyvault/key#az_keyvault_key_create). Se till att den här nya nyckeln skapas i ett separat nyckelvalv från det potentiellt komprometterade TDE-skyddet, eftersom åtkomstkontroll etableras på valvnivå.
 
 2. Lägg till den nya nyckeln på servern och uppdatera den som det nya TDE-skyddet för servern.
 
@@ -148,7 +148,7 @@ För kommando referensen, se [Azure CLI-nyckel valvet](/cli/azure/keyvault/key).
    az sql server tde-key set --server-key-type AzureKeyVault --kid <KeyVaultKeyId> --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
    ```
 
-3. Kontrol lera att servern och alla repliker har uppdaterats till det nya TDE-skyddet.
+3. Kontrollera att servern och alla repliker har uppdaterats till det nya TDE-skyddet.
 
    > [!NOTE]
    > Det kan ta några minuter för det nya TDE-skyddet att spridas till alla databaser och sekundära databaser under servern.
@@ -157,7 +157,7 @@ För kommando referensen, se [Azure CLI-nyckel valvet](/cli/azure/keyvault/key).
    az sql server tde-key show --resource-group <SQLDatabaseResourceGroupName> --server <LogicalServerName>
    ```
 
-4. Gör en säkerhets kopia av den nya nyckeln i Key Vault.
+4. Gör en säkerhetskopia av den nya nyckeln i Key Vault.
 
    ```azurecli
    # --file parameter is optional; if removed, a file name is automatically generated.
@@ -170,7 +170,7 @@ För kommando referensen, se [Azure CLI-nyckel valvet](/cli/azure/keyvault/key).
    az keyvault key delete --name <KeyVaultKeyName> --vault-name <KeyVaultName>
    ```
 
-6. För att återställa en nyckel till Key Vault i framtiden.
+6. Återställa en nyckel till Key Vault i framtiden.
 
    ```azurecli
    az keyvault key restore --file <BackupFilePath> --vault-name <KeyVaultName>
@@ -178,18 +178,18 @@ För kommando referensen, se [Azure CLI-nyckel valvet](/cli/azure/keyvault/key).
 
 * * *
 
-## <a name="make-encrypted-resources-inaccessible"></a>Gör krypterade resurser otillgängliga
+## <a name="make-encrypted-resources-inaccessible"></a>Göra krypterade resurser otillgängliga
 
-1. Ta bort databaserna som krypteras av den potentiellt komprometterade nyckeln.
+1. Ta bort de databaser som krypteras av den potentiellt komprometterade nyckeln.
 
-   Databasen och loggfilerna säkerhets kopie ras automatiskt, så en återställning av databasen kan göras när som helst (så länge du anger nyckeln). Databaserna måste släppas innan det går att ta bort ett aktivt TDE-skydd för att förhindra data förlust på upp till 10 minuter från de senaste transaktionerna.
+   Databasen och loggfilerna säkerhetskopieras automatiskt, så en återställning till en tidpunkt av databasen kan göras när som helst (så länge du anger nyckeln). Databaserna måste tas bort innan ett aktivt TDE-skydd tas bort för att förhindra potentiell dataförlust på upp till 10 minuter av de senaste transaktionerna.
 
-2. Säkerhetskopiera nyckel materialet i TDE-skyddskomponenten i Key Vault.
+2. Back up the key material of the TDE protector in Key Vault.
 3. Ta bort den potentiellt komprometterade nyckeln från Key Vault
 
 [!INCLUDE [sql-database-akv-permission-delay](../includes/sql-database-akv-permission-delay.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig hur du roterar TDE-skyddet för en server för att uppfylla säkerhets kraven: [rotera Transparent datakryptering-skyddet med hjälp av PowerShell](transparent-data-encryption-byok-key-rotation.md)
-- Kom igång med Bring Your Own Key-stöd för TDE: [Aktivera TDE med din egen nyckel från Key Vault med hjälp av PowerShell](transparent-data-encryption-byok-configure.md)
+- Lär dig hur du roterar TDE-skyddet för en server för att uppfylla säkerhetskraven: Rotera [transparent datakryptering skydd med PowerShell](transparent-data-encryption-byok-key-rotation.md)
+- Kom igång med Bring Your Own Key för TDE: [Aktivera TDE med](transparent-data-encryption-byok-configure.md) din egen nyckel från Key Vault powershell

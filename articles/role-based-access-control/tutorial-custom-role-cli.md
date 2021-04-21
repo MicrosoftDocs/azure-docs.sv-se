@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: skapa en anpassad Azure-roll med Azure CLI – Azure RBAC'
-description: Kom igång med att skapa en anpassad Azure-roll med Azure CLI och rollbaserad åtkomst kontroll i Azure (Azure RBAC) i den här självstudien.
+title: 'Självstudie: Skapa en anpassad Azure-roll med Azure CLI – Azure RBAC'
+description: Kom igång med att skapa en anpassad Azure-roll med hjälp av Azure CLI och rollbaserad åtkomstkontroll i Azure (Azure RBAC) i den här självstudien.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 319bca74c8e781e5dc5022e9fb901b2edca24a80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e3743697d58d0f5b167b123df59bc5638aa60489
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87485651"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771685"
 ---
-# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Självstudie: skapa en anpassad Azure-roll med hjälp av Azure CLI
+# <a name="tutorial-create-an-azure-custom-role-using-azure-cli"></a>Självstudie: Skapa en anpassad Azure-roll med Hjälp av Azure CLI
 
-Om de [inbyggda Azure-rollerna](built-in-roles.md) inte uppfyller organisationens specifika behov kan du skapa dina egna anpassade roller. För den här självstudien skapar du en anpassad roll med namnet Reader Support Tickets (Läsare av supportbegäranden) med hjälp av Azure CLI. Med den här anpassade rollen kan användare visa allt i en prenumerations hanteringsplan samt öppna supportbegäranden.
+Om [de inbyggda Azure-rollerna](built-in-roles.md) inte uppfyller organisationens specifika behov kan du skapa egna anpassade roller. För den här självstudien skapar du en anpassad roll med namnet Reader Support Tickets (Läsare av supportbegäranden) med hjälp av Azure CLI. Med den här anpassade rollen kan användare visa allt i en prenumerations hanteringsplan samt öppna supportbegäranden.
 
 I den här guiden får du lära dig att:
 
@@ -44,7 +44,7 @@ För att kunna genomföra den här kursen behöver du följande:
 
 ## <a name="sign-in-to-azure-cli"></a>Logga in på Azure CLI
 
-Logga in på [Azure CLI](/cli/azure/authenticate-azure-cli).
+Logga in på [Azure CLI.](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-custom-role"></a>Skapa en anpassad roll
 
@@ -52,7 +52,7 @@ Det enklaste sättet att skapa en anpassad roll är att utgå från en JSON-mall
 
 1. Granska listan över åtgärder för [Microsoft.Support-resursprovidern](resource-provider-operations.md#microsoftsupport). Det är bra att känna till de åtgärder som är tillgängliga för att skapa dina behörigheter.
 
-    | Åtgärd | Beskrivning |
+    | Åtgärd | Description |
     | --- | --- |
     | Microsoft.Support/register/action | Registrerar till supportresursprovidern |
     | Microsoft.Support/supportTickets/read | Hämtar information om supportbegäran (inklusive status, allvarlighetsgrad, kontaktinformation och kommunikation) eller hämtar listan över supportbegäranden för alla prenumerationer. |
@@ -62,7 +62,7 @@ Det enklaste sättet att skapa en anpassad roll är att utgå från en JSON-mall
 
 1. Öppna ReaderSupportRole.json i en textredigerare och lägg till följande JSON.
 
-    Information om de olika egenskaperna finns i [Azure-anpassade roller](custom-roles.md).
+    Information om de olika egenskaperna finns i Anpassade [Azure-roller.](custom-roles.md)
 
     ```json
     {
@@ -86,7 +86,7 @@ Det enklaste sättet att skapa en anpassad roll är att utgå från en JSON-mall
     "Microsoft.Support/*"
     ```
 
-1. Hämta ID för din prenumeration med hjälp av kommandot [az account list](/cli/azure/account#az-account-list).
+1. Hämta ID för din prenumeration med hjälp av kommandot [az account list](/cli/azure/account#az_account_list).
 
     ```azurecli
     az account list --output table
@@ -118,7 +118,7 @@ Det enklaste sättet att skapa en anpassad roll är att utgå från en JSON-mall
     }
     ```
     
-1. För att skapa en ny anpassad roll använder du kommandot [az role definition create](/cli/azure/role/definition#az-role-definition-create) och anger definitionsfilen för JSON-rollen.
+1. För att skapa en ny anpassad roll använder du kommandot [az role definition create](/cli/azure/role/definition#az_role_definition_create) och anger definitionsfilen för JSON-rollen.
 
     ```azurecli
     az role definition create --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -155,7 +155,7 @@ Det enklaste sättet att skapa en anpassad roll är att utgå från en JSON-mall
 
 ## <a name="list-custom-roles"></a>Lista anpassade roller
 
-- För att lista alla dina anpassade roller använder du kommandot [az role definition list](/cli/azure/role/definition#az-role-definition-list) med parametern `--custom-role-only`.
+- För att lista alla dina anpassade roller använder du kommandot [az role definition list](/cli/azure/role/definition#az_role_definition_list) med parametern `--custom-role-only`.
 
     ```azurecli
     az role definition list --custom-role-only true
@@ -225,7 +225,7 @@ Om du vill uppdatera den anpassade rollen uppdaterar du JSON-filen och uppdatera
     }
     ```
         
-1. För att uppdatera den anpassade rollen använder du kommandot [az role definition update](/cli/azure/role/definition#az-role-definition-update) och anger den uppdaterade JSON-filen.
+1. För att uppdatera den anpassade rollen använder du kommandot [az role definition update](/cli/azure/role/definition#az_role_definition_update) och anger den uppdaterade JSON-filen.
 
     ```azurecli
     az role definition update --role-definition "~/CustomRoles/ReaderSupportRole.json"
@@ -261,7 +261,7 @@ Om du vill uppdatera den anpassade rollen uppdaterar du JSON-filen och uppdatera
     
 ## <a name="delete-a-custom-role"></a>Ta bort en anpassad roll
 
-- Använd kommandot [az role definition delete](/cli/azure/role/definition#az-role-definition-delete) och ange rollnamnet eller roll-ID för att ta bort den anpassade rollen.
+- Använd kommandot [az role definition delete](/cli/azure/role/definition#az_role_definition_delete) och ange rollnamnet eller roll-ID för att ta bort den anpassade rollen.
 
     ```azurecli
     az role definition delete --name "Reader Support Tickets"
@@ -270,4 +270,4 @@ Om du vill uppdatera den anpassade rollen uppdaterar du JSON-filen och uppdatera
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Skapa eller uppdatera anpassade Azure-roller med Azure CLI](custom-roles-cli.md)
+> [Skapa eller uppdatera anpassade Azure-roller med Hjälp av Azure CLI](custom-roles-cli.md)

@@ -1,5 +1,5 @@
 ---
-title: Snabbstart – Skapa en Azure Analysis Services-serverresurs med hjälp Azure Resource Manager mall
+title: Snabbstart – Skapa en Azure Analysis Services-serverresurs med hjälp av Azure Resource Manager mall
 description: Snabbstart som visar hur du Azure Analysis Services en serverresurs med hjälp av en Azure Resource Manager mall.
 author: minewiskan
 ms.author: owend
@@ -8,16 +8,13 @@ ms.topic: quickstart
 ms.service: azure-analysis-services
 tags:
 - azure-resource-manager
-ms.custom:
-- subject-armqs
-- references_regions
-- mode-arm
-ms.openlocfilehash: 3e9210bb94cca354a7c0a5cb5c81b6153900b4ec
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: devx-track-azurepowershell - subject-armqs - references_regions - mode-arm
+ms.openlocfilehash: e7203f4b5890ab81cbf337c5f3201d85a3aef0c0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538211"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769379"
 ---
 # <a name="quickstart-create-a-server---arm-template"></a>Snabbstart: Skapa en server – ARM-mall
 
@@ -59,9 +56,9 @@ En enskild [Microsoft.AnalysisServices/servers-resurs](/azure/templates/microsof
     * **Plats:** Ignorera för Analysis Services. Plats anges i Serverplats.
     * **Serverplats:** Ange platsen för Analysis Services servern. Det här är ofta samma region som standardplatsen som angetts för resursgruppen, men det krävs inte. Till exempel **USA, norra centrala.** Information om regioner som stöds [finns Analysis Services tillgänglighet per region.](analysis-services-overview.md#availability-by-region)
     * **SKU-namn:** Ange SKU-namnet för den Analysis Services som ska skapas. Välj mellan: B1, B2, D1, S0, S1, S2, S3, S4, S8v2, S9v2. SKU-tillgängligheten beror på region. S0 eller D1 rekommenderas för utvärdering och testning.
-    * **Kapacitet:** Ange det totala antalet skalbara instanser för frågerepliker. Utskalning av mer än en instans stöds endast i utvalda regioner.
+    * **Kapacitet:** Ange det totala antalet skalbara instanser för frågerepliker. Utskalning av fler än en instans stöds endast i utvalda regioner.
     * **Brandväggsinställningar:** Ange inkommande brandväggsregler som ska definieras för servern. Om inget anges inaktiveras brandväggen.
-    * **Uri för säkerhetskopieringsblobcontainer:** Ange SAS-URI till en privat Azure Blob Storage med läs-, skriv- och listbehörigheter. Krävs endast om du tänker använda [Säkerhetskopiering/återställning.](analysis-services-backup.md)
+    * **Uri för säkerhetskopieringsblobcontainer:** Ange SAS-URI:en till en privat Azure Blob Storage med läs-, skriv- och listbehörigheter. Krävs endast om du tänker använda [Säkerhetskopiering/återställning.](analysis-services-backup.md)
     * **Jag godkänner villkoren ovan**: Välj.
 
 3. Välj **Köp**. När servern har distribuerats får du ett meddelande:
