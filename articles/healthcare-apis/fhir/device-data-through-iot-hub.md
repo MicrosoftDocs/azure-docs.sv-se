@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: ta emot enhets data via Azure IoT Hub'
-description: I den här självstudien får du lära dig hur du aktiverar routning av enhets data från IoT Hub till Azure API för FHIR via Azure IoT Connector för FHIR.
+title: 'Självstudie: Ta emot enhetsdata via Azure IoT Hub'
+description: I den här självstudien lär du dig att aktivera routning av enhetsdata från IoT Hub till Azure API for FHIR via Azure IoT Connector för FHIR.
 services: healthcare-apis
 author: ms-puneet-nagpal
 ms.service: healthcare-apis
@@ -8,72 +8,72 @@ ms.subservice: iomt
 ms.topic: tutorial
 ms.date: 11/13/2020
 ms.author: punagpal
-ms.openlocfilehash: 36d6d8b4d4435b1db99f2721c817c9c06ca60945
-ms.sourcegitcommit: 225e4b45844e845bc41d5c043587a61e6b6ce5ae
+ms.openlocfilehash: 77d54ef0c9bef40af47c2fc48b9d4b5d6315b119
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/11/2021
-ms.locfileid: "103020351"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780403"
 ---
-# <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Självstudie: ta emot enhets data via Azure IoT Hub
+# <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Självstudie: Ta emot enhetsdata via Azure IoT Hub
 
-Azure IoT Connector för arbets resurser för snabb hälso samverkan (FHIR&#174;) * ger dig möjlighet att mata in data från IoMT-enheter (Internet of Medicine saker) till Azure API för FHIR. [Distribuera Azure IoT Connector för FHIR (för hands version) med Azure Portal](iot-fhir-portal-quickstart.md) snabb start visade ett exempel på en enhet som hanteras av Azure IoT Central [Skicka telemetri](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) till Azure IoT Connector för FHIR. Azure IoT-anslutning för FHIR kan också användas med enheter som tillhandahålls och hanteras via Azure IoT Hub. Den här självstudien visar hur du ansluter och dirigerar enhets data från Azure IoT Hub till Azure IoT Connector för FHIR.
+Med Azure IoT Connector for FHIR (elektronisk standard för utbyte av vårdinformation) (FHIR&#174;)* kan du mata in data från IoMT-enheter (Internet of Medical Things) till Azure API for FHIR. [Snabbstarten Distribuera Azure IoT Connector for FHIR (förhandsversion)](iot-fhir-portal-quickstart.md) med Azure Portal visade ett exempel på en enhet som hanteras av Azure IoT Central skickar [telemetri](iot-fhir-portal-quickstart.md#connect-your-devices-to-iot) till Azure IoT Connector för FHIR. Azure IoT Connector for FHIR kan också fungera med enheter som etablerats och hanteras via Azure IoT Hub. Den här självstudien innehåller en procedur för att ansluta och dirigera enhetsdata från Azure IoT Hub till Azure IoT Connector för FHIR.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En aktiv Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
-- Azure API för FHIR-resurs med minst en Azure IoT-anslutning för FHIR – [Distribuera Azure IoT Connector för FHIR (för hands version) med Azure Portal](iot-fhir-portal-quickstart.md)
-- Azure IoT Hub resurs som är ansluten till verkliga eller simulerade enheter – [skapa en IoT Hub med hjälp av Azure Portal](../../iot-hub/quickstart-send-telemetry-dotnet.md)
+- En aktiv Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Azure API for FHIR resurs med minst en Azure IoT Connector for FHIR – [Distribuera Azure IoT Connector för FHIR (förhandsversion) med hjälp av Azure Portal](iot-fhir-portal-quickstart.md)
+- Azure IoT Hub-resurs ansluten till verkliga eller simulerade enheter – Skapa [en IoT-hubb med hjälp av Azure Portal](../../iot-hub/quickstart-send-telemetry-dotnet.md)
 
 > [!TIP]
-> Om du använder ett Azure IoT Hub simulerat enhets program kan du välja mellan olika språk och system som stöds.
+> Om du använder ett Azure IoT Hub simulerat enhetsprogram kan du välja program bland olika språk och system som stöds.
 
-## <a name="get-connection-string-for-azure-iot-connector-for-fhir-preview"></a>Hämta anslutnings sträng för Azure IoT Connector för FHIR (för hands version)
+## <a name="get-connection-string-for-azure-iot-connector-for-fhir-preview"></a>Hämta anslutningssträng för Azure IoT Connector för FHIR (förhandsversion)
 
-Azure IoT Hub kräver en anslutnings sträng för att säkert ansluta till din Azure IoT-anslutning för FHIR. Skapa en ny anslutnings sträng för din Azure IoT-anslutning för FHIR enligt beskrivningen i [skapa en anslutnings sträng](iot-fhir-portal-quickstart.md#generate-a-connection-string). Behåll den här anslutnings strängen som ska användas i nästa steg.
+Azure IoT Hub kräver en anslutningssträng för att på ett säkert sätt ansluta till din Azure IoT Connector för FHIR. Skapa en ny anslutningssträng för din Azure IoT Connector för FHIR enligt beskrivningen i [Generera en anslutningssträng](iot-fhir-portal-quickstart.md#generate-a-connection-string). Bevara den här anslutningssträngen som ska användas i nästa steg.
 
-Azure IoT Connector för FHIR använder en Azure Event Hub-instans under huven för att ta emot enhets meddelanden. Den anslutnings sträng som skapades ovan är i princip anslutnings strängen till den här underliggande Händelsehubben.
+Azure IoT Connector for FHIR använder en Azure Event Hub-instans under huven för att ta emot enhetsmeddelanden. Anslutningssträngen som skapades ovan är i princip anslutningssträngen till den underliggande händelsehubben.
 
-## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Ansluta Azure IoT Hub med Azure IoT Connector för FHIR (för hands version)
+## <a name="connect-azure-iot-hub-with-the-azure-iot-connector-for-fhir-preview"></a>Ansluta Azure IoT Hub med Azure IoT Connector för FHIR (förhandsversion)
 
-Azure IoT Hub stöder en funktion som kallas [meddelanderoutning](../../iot-hub/iot-hub-devguide-messages-d2c.md) som ger möjlighet att skicka enhets data till olika Azure-tjänster som Händelsehubben, lagrings konto och Service Bus. Azure IoT Connector för FHIR använder den här funktionen för att ansluta och skicka enhets data från Azure IoT Hub till händelse navets slut punkt.
+Azure IoT Hub stöder en funktion [](../../iot-hub/iot-hub-devguide-messages-d2c.md) som kallas meddelanderoutning som ger möjlighet att skicka enhetsdata till olika Azure-tjänster som Händelsehubb, Lagringskonto och Service Bus. Azure IoT Connector for FHIR använder den här funktionen för att ansluta och skicka enhetsdata från Azure IoT Hub till händelsehubbens slutpunkt.
 
 > [!NOTE] 
-> Vid detta tillfälle kan du bara använda PowerShell-eller CLI-kommandot för att [skapa meddelanderoutning](../../iot-hub/tutorial-routing.md) eftersom Azure IoT Connector för FHIR-händelsehubben inte finns på kund prenumerationen, och därför är den inte synlig för dig via Azure Portal. Trots att meddelande väg objekt har lagts till med hjälp av PowerShell eller CLI, är de synliga i Azure Portal och kan hanteras därifrån.
+> Just nu kan du bara använda PowerShell- eller CLI-kommando för att skapa meddelanderoutning eftersom Azure IoT Connector för FHIR:s händelsehubb inte finns i kundprenumerationen, och därför visas den inte för dig via Azure Portal. [](../../iot-hub/tutorial-routing.md) När meddelandevägsobjekten har lagts till med PowerShell eller CLI är de dock synliga på Azure Portal och kan hanteras därifrån.
 
 Att konfigurera en meddelanderoutning består av två steg.
 
 ### <a name="add-an-endpoint"></a>Lägga till en slutpunkt
-I det här steget definieras en slut punkt som IoT Hub dirigerar data till. Skapa den här slut punkten med hjälp av antingen [Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) PowerShell-kommandot eller [AZ IoT Hub routing-Endpoint Create CLI-](/cli/azure/iot/hub/routing-endpoint#az-iot-hub-routing-endpoint-create) kommando baserat på din preferens.
+Det här steget definierar en slutpunkt som IoT Hub som data ska dirigeras till. Skapa den här slutpunkten med [antingen PowerShell-kommandot Add-AzIotHubRoutingEndpoint](/powershell/module/az.iothub/Add-AzIotHubRoutingEndpoint) eller [cli-kommandot az iot hub routing-endpoint create,](/cli/azure/iot/hub/routing-endpoint#az_iot_hub_routing_endpoint_create) baserat på dina önskemål.
 
-Här är listan över parametrar som ska användas med kommandot för att skapa en slut punkt:
+Här är listan över parametrar som ska användas med kommandot för att skapa en slutpunkt:
 
-|PowerShell-parameter|CLI-parameter|Beskrivning|
+|PowerShell-parameter|CLI-parameter|Description|
 |---|---|---|
-|ResourceGroupName|resource-group|Resurs grupps namnet för din IoT Hub-resurs.|
-|Name|hubb-namn|Namnet på din IoT Hub-resurs.|
-|EndpointName|slut punkt-namn|Använd ett namn som du vill tilldela till slut punkten som skapas.|
-|EndpointType|slut punkt-typ|Typ av slut punkt som IoT Hub måste ansluta till. Använd literal-värdet "EventHub" för PowerShell och "eventhub" för CLI.|
-|EndpointResourceGroup|slut punkt-resurs grupp|Resurs grupp namn för din Azure IoT-anslutning för FHIRs Azure API för FHIR-resurs. Du kan hämta det här värdet från översikts sidan för Azure API för FHIR.|
-|EndpointSubscriptionId|slut punkt-prenumerations-ID|Prenumerations-ID för din Azure IoT-anslutning för FHIRs Azure API för FHIR-resurs. Du kan hämta det här värdet från översikts sidan för Azure API för FHIR.|
-|Begär|connection-string|Anslutnings sträng till din Azure IoT-anslutning för FHIR. Använd det värde som du fick i föregående steg.|
+|ResourceGroupName|resource-group|Resursgruppens namn på din IoT Hub resurs.|
+|Name|hub-name|Namnet på din IoT Hub resurs.|
+|EndpointName|slutpunktsnamn|Använd ett namn som du vill tilldela till slutpunkten som skapas.|
+|EndpointType|slutpunktstyp|Typ av slutpunkt som IoT Hub måste ansluta till. Använd literalvärdet "EventHub" för PowerShell och "eventhub" för CLI.|
+|EndpointResourceGroup|endpoint-resource-group|Resursgruppsnamn för din Azure IoT Connector för FHIR:s Azure API for FHIR resurs. Du kan hämta det här värdet från översiktssidan för Azure API for FHIR.|
+|EndpointSubscriptionId|endpoint-subscription-id|Prenumerations-ID för din Azure IoT Connector för FHIR:s Azure API for FHIR resurs. Du kan hämta det här värdet från översiktssidan för Azure API for FHIR.|
+|Connectionstring|connection-string|Anslutningssträng till din Azure IoT Connector för FHIR. Använd det värde som du fick i föregående steg.|
 
-### <a name="add-a-message-route"></a>Lägg till en meddelande väg
-I det här steget definieras en meddelande väg som använder den slut punkt som skapades ovan. Skapa en väg med antingen [Add-AzIotHubRoute](/powershell/module/az.iothub/Add-AzIoTHubRoute) PowerShell-kommandot eller [AZ IoT Hub Route skapa](/cli/azure/iot/hub/route#az-iot-hub-route-create) CLI-kommando baserat på din preferens.
+### <a name="add-a-message-route"></a>Lägga till en meddelandeväg
+Det här steget definierar en meddelandeväg med hjälp av slutpunkten som skapades ovan. Skapa en väg med [antingen PowerShell-kommandot Add-AzIotHubRoute eller cli-kommandot](/powershell/module/az.iothub/Add-AzIoTHubRoute) [az iot hub route create,](/cli/azure/iot/hub/route#az_iot_hub_route_create) baserat på dina önskemål.
 
-Här är listan över parametrar som ska användas med kommandot för att lägga till en meddelande väg:
+Här är en lista över parametrar som ska användas med kommandot för att lägga till en meddelandeväg:
 
-|PowerShell-parameter|CLI-parameter|Beskrivning|
+|PowerShell-parameter|CLI-parameter|Description|
 |---|---|---|
-|ResourceGroupName|g|Resurs grupps namnet för din IoT Hub-resurs.|
-|Name|hubb-namn|Namnet på din IoT Hub-resurs.|
-|EndpointName|slut punkt-namn|Namnet på den slut punkt som du har skapat ovan.|
-|RouteName|flödes namn|Ett namn som du vill tilldela till den meddelande väg som skapas.|
-|Källa|typ av källa|Typ av data som ska skickas till slut punkten. Använd litteralt värde för "DeviceMessages" för PowerShell och "DeviceMessages" för CLI.|
+|ResourceGroupName|g|Resursgruppens namn på din IoT Hub resurs.|
+|Name|hub-name|Namnet på din IoT Hub resurs.|
+|EndpointName|slutpunktsnamn|Namnet på den slutpunkt som du skapade ovan.|
+|RouteName|route-name|Ett namn som du vill tilldela till meddelandevägen som skapas.|
+|Källa|källtyp|Typ av data som ska skickas till slutpunkten. Använd literalvärdet "DeviceMessages" för PowerShell och "devicemessages" för CLI.|
 
-## <a name="send-device-message-to-iot-hub"></a>Skicka enhets meddelande till IoT Hub
+## <a name="send-device-message-to-iot-hub"></a>Skicka enhetsmeddelande till IoT Hub
 
-Använd din enhet (verklig eller simulerad) om du vill skicka ett exempel på ett meddelande om hjärtat-pris som visas nedan till Azure IoT Hub. Det här meddelandet skickas till Azure IoT Connector för FHIR, där meddelandet kommer att omvandlas till en FHIR observations resurs och lagras i Azure-API: et för FHIR.
+Använd din enhet (verklig eller simulerad) för att skicka exemplets pulsfrekvensmeddelande som visas nedan till Azure IoT Hub. Det här meddelandet dirigeras till Azure IoT Connector for FHIR, där meddelandet omvandlas till en FHIR-observationsresurs och lagras i Azure API for FHIR.
 
 ```json
 {
@@ -89,28 +89,28 @@ Använd din enhet (verklig eller simulerad) om du vill skicka ett exempel på et
 }
 ```
 > [!IMPORTANT]
-> Se till att skicka enhets meddelandet som följer de [mappar](iot-mapping-templates.md) som kon figurer ATS med din Azure IoT-anslutning för FHIR.
+> Se till att skicka enhetsmeddelandet [](iot-mapping-templates.md) som överensstämmer med mappningsmallarna som konfigurerats med din Azure IoT Connector för FHIR.
 
-## <a name="view-device-data-in-azure-api-for-fhir"></a>Visa enhets data i Azure API för FHIR
+## <a name="view-device-data-in-azure-api-for-fhir"></a>Visa enhetsdata i Azure API for FHIR
 
-Du kan visa de FHIR observations resurser som skapats av Azure IoT Connector för FHIR på Azure API för FHIR med Postman. Konfigurera din [Postman för att få åtkomst till Azure API för FHIR](access-fhir-postman-tutorial.md) och gör en `GET` begäran till `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` att Visa observations FHIR resurser med ett hjärta pris värde som skickats i ovanstående exempel meddelande.
+Du kan visa FHIR-observationsresursen som skapats av Azure IoT Connector for FHIR på Azure API for FHIR postman. Konfigurera [Postman för åtkomst Azure API for FHIR](access-fhir-postman-tutorial.md) skicka en begäran om att visa Observation FHIR-resurser med pulsvärde som `GET` `https://your-fhir-server-url/Observation?code=http://loinc.org|8867-4` skickades i exempelmeddelandet ovan.
 
 > [!TIP]
-> Se till att användaren har rätt åtkomst till Azure API för FHIR-dataplan. Använd [rollbaserad åtkomst kontroll i Azure (Azure RBAC)](configure-azure-rbac.md) för att tilldela nödvändiga data Plans roller.
+> Kontrollera att användaren har rätt åtkomst till Azure API for FHIR dataplanet. Använd [rollbaserad åtkomstkontroll i Azure (Azure RBAC) för](configure-azure-rbac.md) att tilldela nödvändiga dataplansroller.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starts guiden ställer du in Azure-IoT Hub för att dirigera enhets data till Azure IoT Connector för FHIR. Välj mellan nästa steg för att lära dig mer om Azure IoT Connector för FHIR:
+I den här snabbstartsguiden ska du konfigurera Azure IoT Hub att dirigera enhetsdata till Azure IoT Connector för FHIR. Välj nedanstående steg om du vill veta mer om Azure IoT Connector för FHIR:
 
-Förstå olika stadier i data flödet i Azure IoT Connector för FHIR.
-
->[!div class="nextstepaction"]
->[Azure IoT-anslutning för FHIR data flöde](iot-data-flow.md)
-
-Lär dig hur du konfigurerar IoT Connector med hjälp av mallar för enhets-och FHIR-mappning.
+Förstå olika faser i dataflödet i Azure IoT Connector för FHIR.
 
 >[!div class="nextstepaction"]
->[FHIR för Azure IoT Connector för mappning av](iot-mapping-templates.md)
+>[Azure IoT Connector för FHIR-dataflöde](iot-data-flow.md)
 
-* I Azure Portal kallas Azure IoT Connector för FHIR IoT Connector (för hands version). FHIR är ett registrerat varumärke som tillhör HL7 och används med behörigheten för HL7.
+Lär dig hur du konfigurerar IoT Connector med hjälp av enhets- och FHIR-mappningsmallar.
+
+>[!div class="nextstepaction"]
+>[Azure IoT Connector för FHIR-mappningsmallar](iot-mapping-templates.md)
+
+*I Azure Portal kallas Azure IoT Connector för FHIR för IoT Connector (förhandsversion). FHIR är ett registrerat varumärke som tillhör HL7 och används med tillstånd av HL7.

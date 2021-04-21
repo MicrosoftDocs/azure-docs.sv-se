@@ -1,48 +1,48 @@
 ---
-title: Skapa Azure Advisor aviseringar för nya rekommendationer med Resource Manager-mall
-description: Lär dig hur du konfigurerar en avisering för nya rekommendationer från Azure Advisor med hjälp av en Azure Resource Manager-mall (ARM-mall).
+title: Skapa Azure Advisor för nya rekommendationer med hjälp av Resource Manager mall
+description: Lär dig hur du ställer in en avisering för nya rekommendationer från Azure Advisor en Azure Resource Manager mall (ARM-mall).
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurepowershell
 ms.date: 06/29/2020
-ms.openlocfilehash: 7b10ad06e5397ab733987373a3bd18de981c8c97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 716ab104ce6517aeb554b42522e5906829877259
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100590058"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765677"
 ---
-# <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Snabb start: Skapa Azure Advisor aviseringar om nya rekommendationer med en ARM-mall
+# <a name="quickstart-create-azure-advisor-alerts-on-new-recommendations-using-an-arm-template"></a>Snabbstart: Skapa Azure Advisor nya rekommendationer med hjälp av en ARM-mall
 
-Den här artikeln visar hur du ställer in en avisering för nya rekommendationer från Azure Advisor med hjälp av en Azure Resource Manager-mall (ARM-mall).
+Den här artikeln visar hur du ställer in en avisering för nya rekommendationer från Azure Advisor med hjälp av en Azure Resource Manager mall (ARM-mall).
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-När Azure Advisor identifierar en ny rekommendation för en av dina resurser lagras en händelse i [Azure aktivitets loggen](../azure-monitor/essentials/platform-logs-overview.md). Du kan ställa in aviseringar för dessa händelser från Azure Advisor med hjälp av en rekommendation för att skapa aviseringar. Du kan välja en prenumeration och eventuellt en resurs grupp för att ange de resurser som du vill ta emot aviseringar på.
+När Azure Advisor identifierar en ny rekommendation för en av dina resurser lagras en händelse i [Azure-aktivitetsloggen](../azure-monitor/essentials/platform-logs-overview.md). Du kan ställa in aviseringar för dessa händelser från Azure Advisor med hjälp av en rekommendationsspecifik upplevelse för att skapa aviseringar. Du kan välja en prenumeration och eventuellt en resursgrupp för att ange vilka resurser du vill få aviseringar om.
 
-Du kan också bestämma rekommendationernas typer genom att använda följande egenskaper:
+Du kan också bestämma vilka typer av rekommendationer som ska användas med hjälp av följande egenskaper:
 
 - Kategori
-- Effekt nivå
-- Rekommendations typ
+- Effektnivå
+- Rekommendationstyp
 
 Du kan också konfigurera den åtgärd som ska vidtas när en avisering utlöses av:
 
-- Välja en befintlig åtgärds grupp
-- Skapa en ny åtgärds grupp
+- Välja en befintlig åtgärdsgrupp
+- Skapa en ny åtgärdsgrupp
 
-Mer information om åtgärds grupper finns i [skapa och hantera åtgärds grupper](../azure-monitor/alerts/action-groups.md).
+Mer information om åtgärdsgrupper finns i [Skapa och hantera åtgärdsgrupper.](../azure-monitor/alerts/action-groups.md)
 
 > [!NOTE]
-> Advisor-aviseringar är för närvarande endast tillgängliga för hög tillgänglighet, prestanda och kostnads rekommendationer. Säkerhets rekommendationer stöds inte.
+> Advisor-aviseringar är för närvarande endast tillgängliga för rekommendationer för hög tillgänglighet, prestanda och kostnad. Säkerhetsrekommendationer stöds inte.
 
 ## <a name="prerequisites"></a>Krav
 
 - Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
-- Om du vill köra kommandona från den lokala datorn installerar du Azure CLI eller Azure PowerShell modulerna. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli) och [Installera Azure PowerShell](/powershell/azure/install-az-ps).
+- Om du vill köra kommandon från den lokala datorn installerar du Azure CLI eller Azure PowerShell moduler. Mer information finns i [Installera Azure CLI och](/cli/azure/install-azure-cli) Installera [Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="review-the-template"></a>Granska mallen
 
-Följande mall skapar en åtgärds grupp med ett e-postmål och aktiverar alla meddelanden om tjänst hälsa för mål prenumerationen. Spara den här mallen som *CreateAdvisorAlert.jspå*.
+Följande mall skapar en åtgärdsgrupp med ett e-postmål och aktiverar alla service health-meddelanden för målprenumerationen. Spara den här mallen *somCreateAdvisorAlert.jspå*.
 
 ```json
 {
@@ -141,12 +141,12 @@ Följande mall skapar en åtgärds grupp med ett e-postmål och aktiverar alla m
 
 Mallen definierar två resurser:
 
-- [Microsoft. Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
-- [Microsoft. Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
+- [Microsoft.Insights/actionGroups](/azure/templates/microsoft.insights/actiongroups)
+- [Microsoft.Insights/activityLogAlerts](/azure/templates/microsoft.insights/activityLogAlerts)
 
 ## <a name="deploy-the-template"></a>Distribuera mallen
 
-Distribuera mallen med valfri standard metod för att [distribuera en arm-mall](../azure-resource-manager/templates/deploy-portal.md) som i följande exempel med CLI och PowerShell. Ersätt exempel värden för **resurs grupp** och **EmailAddress** med lämpliga värden för din miljö. Arbets ytans namn måste vara unikt bland alla Azure-prenumerationer.
+Distribuera mallen med valfri standardmetod för att [distribuera en ARM-mall,](../azure-resource-manager/templates/deploy-portal.md) till exempel följande exempel med hjälp av CLI och PowerShell. Ersätt exempelvärdena **för Resursgrupp** och **emailAddress** med lämpliga värden för din miljö. Namnet på arbetsytan måste vara unikt bland alla Azure-prenumerationer.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -167,7 +167,7 @@ New-AzResourceGroupDeployment -Name CreateAdvisorAlert -ResourceGroupName my-res
 
 ## <a name="validate-the-deployment"></a>Verifiera distributionen
 
-Kontrol lera att arbets ytan har skapats med något av följande kommandon. Ersätt exempel värden för **resurs grupp** med det värde som du använde ovan.
+Kontrollera att arbetsytan har skapats med något av följande kommandon. Ersätt exempelvärdena för **Resursgrupp med** det värde som du använde ovan.
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -185,7 +185,7 @@ Get-AzActivityLogAlert -ResourceGroupName my-resource-group -Name AdvisorAlertsT
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du planerar att fortsätta arbeta med efterföljande snabb starter och självstudier, kanske du vill lämna dessa resurser på plats. När de inte längre behövs tar du bort resurs gruppen, som tar bort aviserings regeln och relaterade resurser. Ta bort resurs gruppen med hjälp av Azure CLI eller Azure PowerShell
+Om du planerar att fortsätta arbeta med efterföljande snabbstarter och självstudier kanske du vill lämna dessa resurser på plats. Ta bort resursgruppen när den inte längre behövs, vilket tar bort aviseringsregeln och de relaterade resurserna. Ta bort resursgruppen med hjälp av Azure CLI eller Azure PowerShell
 
 # <a name="cli"></a>[CLI](#tab/CLI)
 
@@ -203,5 +203,5 @@ Remove-AzResourceGroup -Name my-resource-group
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Få en [Översikt över aktivitets logg aviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
-- Läs mer om [Åtgärds grupper](../azure-monitor/alerts/action-groups.md).
+- Få en [översikt över aktivitetsloggaviseringar](../azure-monitor/alerts/alerts-overview.md)och lär dig hur du tar emot aviseringar.
+- Läs mer om [åtgärdsgrupper.](../azure-monitor/alerts/action-groups.md)

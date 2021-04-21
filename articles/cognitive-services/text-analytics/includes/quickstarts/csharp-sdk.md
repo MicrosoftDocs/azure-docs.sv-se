@@ -1,65 +1,65 @@
 ---
-title: 'Snabb start: Textanalys klient bibliotek för C# | Microsoft Docs'
-description: 'Kom igång med Textanalys klient biblioteket för C #'
+title: 'Snabbstart: Textanalys klientbibliotek för C#-| Microsoft Docs'
+description: 'Kom igång med Textanalys klientbibliotek för C #'
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/11/2021
+ms.date: 04/19/2021
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: d36efaf64edd51fd1c2b46b959af1a994f6ec956
-ms.sourcegitcommit: f0a3ee8ff77ee89f83b69bc30cb87caa80f1e724
+ms.openlocfilehash: 1fd102f0f94f1ce53bebfba94d4f4c1a1f9e3812
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/26/2021
-ms.locfileid: "105582785"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765150"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-[v 3.1 referens dokumentation](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v 3.1 biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v 3.1-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5)  |  [v 3.1 exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referensdokumentation för v3.1](/dotnet/api/azure.ai.textanalytics?preserve-view=true&view=azure-dotnet-preview)  |  [v3.1-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3.1-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics/5.1.0-beta.5)  |  [v3.1-exempel](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-[v3 referens dokumentation](/dotnet/api/azure.ai.textanalytics)  |  [v3-biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
+[Referensdokumentation för v3](/dotnet/api/azure.ai.textanalytics)  |  [v3-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics)  |  [v3-paket (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-net/tree/Azure.AI.TextAnalytics_5.0.0/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
 ---
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration – [skapa en kostnads fritt](https://azure.microsoft.com/free/cognitive-services)
-* [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs </a> i Azure Portal för att hämta din nyckel och slut punkt.  När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API för textanalys. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
-* Om du vill använda funktionen analysera behöver du en Textanalys resurs med pris nivån standard (S).
+* Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services)
+* Den [Visual Studio IDE](https://visualstudio.microsoft.com/vs/)
+* När du har din Azure-prenumeration skapar du en Textanalys-resurs för att skapa Textanalys resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt.  När den har distribuerats klickar du **på Gå till resurs**.
+    * Du behöver nyckeln och slutpunkten från resursen som du skapar för att ansluta ditt program till Textanalys API. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
+* Om du vill använda funktionen Analysera behöver du Textanalys resurs med prisnivån standard (S).
 
-## <a name="setting-up"></a>Konfigurera
+## <a name="setting-up"></a>Inrätta
 
 ### <a name="create-a-new-net-core-application"></a>Skapa ett nytt .NET Core-program
 
-Skapa en ny .NET Core-konsol med hjälp av Visual Studio IDE. Då skapas ett "Hello World"-projekt med en enda C#-källfil: *program. cs*.
+Med hjälp Visual Studio IDE skapar du en ny .NET Core-konsolapp. Då skapas ett "Hello World"-projekt med en enda C#-källfil: *program.cs*.
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-Installera klient biblioteket genom att högerklicka på lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I den paket hanterare som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Markera kryss rutan **Inkludera prerelase** , Välj version `5.1.0-beta.5` och **Installera** sedan. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Installera klientbiblioteket genom att högerklicka på lösningen i Solution Explorer **och** välja **Hantera NuGet-paket.** I pakethanteraren som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Markera rutan **inkludera prerelase,** välj version `5.1.0-beta.5` och sedan **Installera**. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Installera klient biblioteket genom att högerklicka på lösningen i **Solution Explorer** och välja **Hantera NuGet-paket**. I den paket hanterare som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Välj version `5.0.0` och **Installera** sedan. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Installera klientbiblioteket genom att högerklicka på lösningen i Solution Explorer **och** välja **Hantera NuGet-paket.** I pakethanteraren som öppnas väljer du **Bläddra** och söker efter `Azure.AI.TextAnalytics` . Välj version `5.0.0` och sedan **Installera**. Du kan också använda [Package Manager-konsolen](/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 
 > [!TIP]
-> Vill du Visa hela snabb starts kod filen samtidigt? Du kan hitta den [på GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), som innehåller kod exemplen i den här snabb starten. 
+> Vill du visa hela snabbstartskodfilen samtidigt? Du hittar den på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), som innehåller kodexe exemplen i den här snabbstarten. 
 
 ---
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-Öppna filen *program. cs* och Lägg till följande `using` direktiv:
+Öppna *filen program.cs* och lägg till följande `using` direktiv:
 
 ```csharp
 using Azure;
@@ -68,7 +68,7 @@ using System.Globalization;
 using Azure.AI.TextAnalytics;
 ```
 
-I programmets `Program` klass skapar du variabler för resursens nyckel och slut punkt.
+I programmets `Program` -klass skapar du variabler för resursens nyckel och slutpunkt.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -77,7 +77,7 @@ private static readonly AzureKeyCredential credentials = new AzureKeyCredential(
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
-Ersätt programmets `Main` metod. Du definierar de metoder som anropas här senare.
+Ersätt programmets `Main` -metod. Du definierar metoderna som anropas här senare.
 
 ```csharp
 static void Main(string[] args)
@@ -97,9 +97,9 @@ static void Main(string[] args)
 }
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Öppna filen *program. cs* och Lägg till följande `using` direktiv:
+Öppna *filen program.cs* och lägg till följande `using` direktiv:
 
 ```csharp
 using Azure;
@@ -108,7 +108,7 @@ using System.Globalization;
 using Azure.AI.TextAnalytics;
 ```
 
-I programmets `Program` klass skapar du variabler för resursens nyckel och slut punkt.
+I programmets `Program` -klass skapar du variabler för resursens nyckel och slutpunkt.
 
 [!INCLUDE [text-analytics-find-resource-information](../find-azure-resource-info.md)]
 
@@ -117,7 +117,7 @@ private static readonly AzureKeyCredential credentials = new AzureKeyCredential(
 private static readonly Uri endpoint = new Uri("<replace-with-your-text-analytics-endpoint-here>");
 ```
 
-Ersätt programmets `Main` metod. Du definierar de metoder som anropas här senare.
+Ersätt programmets `Main` -metod. Du definierar metoderna som anropas här senare.
 
 ```csharp
 static void Main(string[] args)
@@ -137,34 +137,34 @@ static void Main(string[] args)
 
 ---
 
-## <a name="object-model"></a>Objekt modell
+## <a name="object-model"></a>Objektmodell
 
-Textanalys-klienten är ett `TextAnalyticsClient` objekt som autentiserar till Azure med hjälp av din nyckel och ger funktioner för att acceptera text som enkla strängar eller som en batch. Du kan skicka text till API: et synkront eller asynkront. Objektet Response kommer att innehålla analys informationen för varje dokument som du skickar. 
+Den Textanalys klienten är ett objekt som autentiserar till Azure med hjälp av din nyckel och innehåller funktioner för att acceptera text som enkla `TextAnalyticsClient` strängar eller som en batch. Du kan skicka text till API:et synkront eller asynkront. Svarsobjektet innehåller analysinformationen för varje dokument som du skickar. 
 
-Om du använder en version `3.x` av tjänsten kan du använda en valfri `TextAnalyticsClientOptions` instans för att initiera klienten med olika standardinställningar (till exempel standard språk eller land/region-tips). Du kan också autentisera med hjälp av en Azure Active Directory-token. 
+Om du använder en version av tjänsten kan du använda en valfri instans för att initiera klienten med olika standardinställningar (till exempel standardspråk eller `3.x` `TextAnalyticsClientOptions` lands-/regionstips). Du kan också autentisera med en Azure Active Directory token. 
 
 ## <a name="code-examples"></a>Kodexempel
 
 * [Attitydanalys](#sentiment-analysis)
-* [Åsikts utvinning](#opinion-mining)
-* [Språk identifiering](#language-detection)
+* [Yttrandeutvinning](#opinion-mining)
+* [Språkidentifiering](#language-detection)
 * [Igenkänning av namngiven enhet](#named-entity-recognition-ner)
-* [Länkning av entitet](#entity-linking)
-* [Extrahering av nyckel fraser](#key-phrase-extraction)
+* [Entitetslänkning](#entity-linking)
+* [Extrahering av nyckelfraser](#key-phrase-extraction)
 
 ## <a name="authenticate-the-client"></a>Autentisera klienten
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-Kontrol lera att din huvud metod från tidigare skapar ett nytt klient objekt med din slut punkt och dina autentiseringsuppgifter.
+Kontrollera att main-metoden från tidigare skapar ett nytt klientobjekt med din slutpunkt och dina autentiseringsuppgifter.
 
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Kontrol lera att din huvud metod från tidigare skapar ett nytt klient objekt med din slut punkt och dina autentiseringsuppgifter.
+Kontrollera att main-metoden från tidigare skapar ett nytt klientobjekt med din slutpunkt och dina autentiseringsuppgifter.
 
 ```csharp
 var client = new TextAnalyticsClient(endpoint, credentials);
@@ -174,9 +174,9 @@ var client = new TextAnalyticsClient(endpoint, credentials);
 
 ## <a name="sentiment-analysis"></a>Attitydanalys
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-Skapa en ny funktion som anropar `SentimentAnalysisExample()` den klient som du skapade tidigare och anropa dess `AnalyzeSentiment()` funktion. Det returnerade `Response<DocumentSentiment>` objektet kommer att innehålla sentiment etikett och poängen i hela indatamängden, samt en sentiment-analys för varje mening om det lyckas. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `SentimentAnalysisExample()` namnet som tar klienten som du skapade tidigare och anropa dess `AnalyzeSentiment()` funktion. Det returnerade objektet innehåller sentimentetiketten och poängen för hela indatadokumentet, samt en attitydanalys för varje mening om `Response<DocumentSentiment>` det lyckas. Om det uppstod ett fel, kommer det att skapa ett `RequestFailedException` .
 
 ```csharp
 static void SentimentAnalysisExample(TextAnalyticsClient client)
@@ -214,9 +214,9 @@ Document sentiment: Positive
         Neutral score: 0.77
 ```
 
-### <a name="opinion-mining"></a>Åsikts utvinning
+### <a name="opinion-mining"></a>Yttrandeutvinning
 
-Skapa en ny funktion som anropar `SentimentAnalysisWithOpinionMiningExample()` den klient som du skapade tidigare och anropa dess `AnalyzeSentimentBatch()` funktion med `IncludeOpinionMining` alternativet i `AnalyzeSentimentOptions` säcken. Det returnerade `AnalyzeSentimentResultCollection` objektet kommer att innehålla samlingen `AnalyzeSentimentResult` i som representerar `Response<DocumentSentiment>` . Skillnaden mellan `SentimentAnalysis()` och `SentimentAnalysisWithOpinionMiningExample()` är att den senare kommer att innehålla `SentenceOpinion` i varje mening som visar ett analyserat mål och de relaterade utvärderingarna. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `SentimentAnalysisWithOpinionMiningExample()` namnet som tar klienten som du skapade tidigare och anropa dess funktion med alternativet i `AnalyzeSentimentBatch()` `IncludeOpinionMining` `AnalyzeSentimentOptions` påsen. Det `AnalyzeSentimentResultCollection` returnerade objektet innehåller samlingen `AnalyzeSentimentResult` där representerar `Response<DocumentSentiment>` . Skillnaden mellan och `SentimentAnalysis()` är att den senare innehåller i varje mening, som visar ett `SentimentAnalysisWithOpinionMiningExample()` `SentenceOpinion` analyserat mål och relaterade utvärderingarna. Om det uppstod ett fel 00:00. `RequestFailedException`
 
 ```csharp
 static void SentimentAnalysisWithOpinionMiningExample(TextAnalyticsClient client)
@@ -300,9 +300,9 @@ Document sentiment: Positive
 Press any key to exit.
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en ny funktion som anropar `SentimentAnalysisExample()` den klient som du skapade tidigare och anropa dess `AnalyzeSentiment()` funktion. Det returnerade `Response<DocumentSentiment>` objektet kommer att innehålla sentiment etikett och poängen i hela indatamängden, samt en sentiment-analys för varje mening om det lyckas. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `SentimentAnalysisExample()` namnet som tar den klient som du skapade tidigare och anropa dess `AnalyzeSentiment()` funktion. Det returnerade objektet innehåller sentimentetiketten och poängen för hela indatadokumentet, samt en attitydanalys för varje mening om `Response<DocumentSentiment>` det lyckas. Om det uppstod ett fel 00:00. `RequestFailedException`
 
 ```csharp
 static void SentimentAnalysisExample(TextAnalyticsClient client)
@@ -344,13 +344,13 @@ Document sentiment: Positive
 
 ## <a name="language-detection"></a>Språkidentifiering
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
 
-Skapa en ny funktion som anropar `LanguageDetectionExample()` den klient som du skapade tidigare och anropa dess  `DetectLanguage()` funktion. Det returnerade `Response<DetectedLanguage>` objektet kommer att innehålla det identifierade språket tillsammans med dess namn och ISO-6391-koden. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `LanguageDetectionExample()` namnet som tar klienten som du skapade tidigare och anropa dess  `DetectLanguage()` funktion. Det `Response<DetectedLanguage>` returnerade objektet innehåller det identifierade språket tillsammans med dess namn och ISO-6391-kod. Om det uppstod ett fel 2018 000 000 `RequestFailedException` .
 
 > [!Tip]
-> I vissa fall kan det vara svårt att disambiguate språk baserat på indatamängden. Du kan använda `countryHint` -parametern för att ange en landskod på 2 bokstäver. Som standard använder API: t "US" som standard-countryHint, för att ta bort det här alternativet kan du återställa den här parametern genom att ange värdet till en tom sträng `countryHint = ""` . Om du vill ange en annan standard ställer du in `TextAnalyticsClientOptions.DefaultCountryHint` egenskapen och skickar den under klient initieringen.
+> I vissa fall kan det vara svårt att disamuera språk baserat på indata. Du kan använda `countryHint` parametern för att ange en lands-/regionskod med två bokstäver. Som standard använder API:et "US" som standard countryHint. För att ta bort det här beteendet kan du återställa den här parametern genom att ange värdet till tom sträng `countryHint = ""` . Om du vill ange ett annat `TextAnalyticsClientOptions.DefaultCountryHint` standardvärde anger du egenskapen och skickar den under klientens initiering.
 
 ```csharp
 static void LanguageDetectionExample(TextAnalyticsClient client)
@@ -368,13 +368,13 @@ Language:
         French, ISO-6391: fr
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 
-Skapa en ny funktion som anropar `LanguageDetectionExample()` den klient som du skapade tidigare och anropa dess  `DetectLanguage()` funktion. Det returnerade `Response<DetectedLanguage>` objektet kommer att innehålla det identifierade språket tillsammans med dess namn och ISO-6391-koden. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `LanguageDetectionExample()` namnet som tar den klient som du skapade tidigare och anropa dess  `DetectLanguage()` funktion. Det `Response<DetectedLanguage>` returnerade objektet innehåller det identifierade språket tillsammans med dess namn och ISO-6391-kod. Om det uppstod ett fel 2018 000 000 `RequestFailedException` .
 
 > [!Tip]
-> I vissa fall kan det vara svårt att disambiguate språk baserat på indatamängden. Du kan använda `countryHint` -parametern för att ange en landskod på 2 bokstäver. Som standard använder API: t "US" som standard-countryHint, för att ta bort det här alternativet kan du återställa den här parametern genom att ange värdet till en tom sträng `countryHint = ""` . Om du vill ange en annan standard ställer du in `TextAnalyticsClientOptions.DefaultCountryHint` egenskapen och skickar den under klient initieringen.
+> I vissa fall kan det vara svårt att disambiuera språk baserat på indata. Du kan använda `countryHint` parametern för att ange en lands-/regionskod med två bokstäver. Som standard använder API:et "US" som standard countryHint. Om du vill ta bort det här beteendet kan du återställa den här parametern genom att ange värdet till tom sträng `countryHint = ""` . Om du vill ange ett annat `TextAnalyticsClientOptions.DefaultCountryHint` standardvärde anger du egenskapen och skickar den under klientens initiering.
 
 ```csharp
 static void LanguageDetectionExample(TextAnalyticsClient client)
@@ -395,12 +395,12 @@ Language:
 
 ---
 
-## <a name="named-entity-recognition-ner"></a>Igenkänning av namngivna enheter (NER)
+## <a name="named-entity-recognition-ner"></a>Igenkänning av namngiven entitet (NER)
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
 
-Skapa en ny funktion som anropar `EntityRecognitionExample()` den klient som du skapade tidigare, anropa sin `RecognizeEntities()` funktion och iterera genom resultaten. Det returnerade `Response<CategorizedEntityCollection>` objektet kommer att innehålla samlingen med identifierade entiteter `CategorizedEntity` . Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `EntityRecognitionExample()` namnet som tar klienten som du skapade tidigare, anropa dess funktion och `RecognizeEntities()` iterera genom resultatet. Det `Response<CategorizedEntityCollection>` returnerade objektet innehåller samlingen identifierade entiteter `CategorizedEntity` . Om det uppstod ett fel, kommer det att skapa ett `RequestFailedException` .
 
 ```csharp
 static void EntityRecognitionExample(TextAnalyticsClient client)
@@ -429,9 +429,9 @@ Named Entities:
                 Score: 0.80,    Length: 9,      Offset: 34
 ```
 
-### <a name="entity-linking"></a>Länkning av entitet
+### <a name="entity-linking"></a>Entitetslänkning
 
-Skapa en ny funktion som anropar `EntityLinkingExample()` den klient som du skapade tidigare, anropa sin `RecognizeLinkedEntities()` funktion och iterera genom resultaten. Det returnerade `Response<LinkedEntityCollection>` objektet kommer att innehålla samlingen med identifierade entiteter `LinkedEntity` . Om ett fel uppstår kommer det att utlösa en `RequestFailedException` . Eftersom länkade entiteter identifieras unikt, grupperas förekomster av samma entitet under ett `LinkedEntity` objekt som en lista med `LinkedEntityMatch` objekt.
+Skapa en ny funktion med `EntityLinkingExample()` namnet som tar klienten som du skapade tidigare, anropa dess funktion och `RecognizeLinkedEntities()` iterera genom resultatet. Det `Response<LinkedEntityCollection>` returnerade objektet innehåller samlingen identifierade entiteter `LinkedEntity` . Om det uppstod ett fel, kommer det att skapa ett `RequestFailedException` . Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `LinkedEntity` objekt som en lista med `LinkedEntityMatch` objekt.
 
 ```csharp
 static void EntityLinkingExample(TextAnalyticsClient client)
@@ -515,9 +515,9 @@ Linked Entities:
                 Offset: 116
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>Personligt identifierbar informations igenkänning
+### <a name="personally-identifiable-information-recognition"></a>Igenkänning av personligt identifierbar information
 
-Skapa en ny funktion som anropar `RecognizePIIExample()` den klient som du skapade tidigare, anropa sin `RecognizePiiEntities()` funktion och iterera genom resultaten. Den returnerade `PiiEntityCollection` representeras av listan över identifierade PII-entiteter. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `RecognizePIIExample()` namnet som tar klienten som du skapade tidigare, anropa dess funktion och `RecognizePiiEntities()` iterera genom resultatet. Returnerade `PiiEntityCollection` representerar listan över identifierade PII-entiteter. Om det uppstod ett fel, kommer det att skapa ett `RequestFailedException` .
 
 ```csharp
 static void RecognizePIIExample(TextAnalyticsClient client)
@@ -551,15 +551,15 @@ Text: 859-98-0987, Category: U.S. Social Security Number (SSN), SubCategory: , C
 Text: 800-102-1100, Category: Phone Number, SubCategory: , Confidence score: 0.8
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 
 > [!NOTE]
 > Ny i version `3.0` :
-> * Enhets länkning är nu avskilt från entitets igenkänning.
+> * Entitetslänkning är nu avgränsad från entitetsigenkänning.
 
 
-Skapa en ny funktion som anropar `EntityRecognitionExample()` den klient som du skapade tidigare, anropa sin `RecognizeEntities()` funktion och iterera genom resultaten. Det returnerade `Response<IReadOnlyCollection<CategorizedEntity>>` objektet kommer att innehålla en lista över identifierade entiteter. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `EntityRecognitionExample()` namnet som tar klienten som du skapade tidigare, anropa dess funktion och `RecognizeEntities()` iterera genom resultatet. Det `Response<IReadOnlyCollection<CategorizedEntity>>` returnerade objektet innehåller listan över identifierade entiteter. Om det uppstod ett fel 2018 000 000 `RequestFailedException` .
 
 ```csharp
 static void EntityRecognitionExample(TextAnalyticsClient client)
@@ -588,9 +588,9 @@ Named Entities:
                 Score: 0.80
 ```
 
-### <a name="entity-linking"></a>Länkning av entitet
+### <a name="entity-linking"></a>Entitetslänkning
 
-Skapa en ny funktion som anropar `EntityLinkingExample()` den klient som du skapade tidigare, anropa sin `RecognizeLinkedEntities()` funktion och iterera genom resultaten. Den returnerade `Response<IReadOnlyCollection<LinkedEntity>>` representerar listan över identifierade entiteter. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` . Eftersom länkade entiteter identifieras unikt, grupperas förekomster av samma entitet under ett `LinkedEntity` objekt som en lista med `LinkedEntityMatch` objekt.
+Skapa en ny funktion med `EntityLinkingExample()` namnet som tar klienten som du skapade tidigare, anropa dess funktion och `RecognizeLinkedEntities()` iterera genom resultatet. Returnerade `Response<IReadOnlyCollection<LinkedEntity>>` representerar listan över identifierade entiteter. Om det uppstod ett fel 00:00. `RequestFailedException` Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `LinkedEntity` objekt som en lista med `LinkedEntityMatch` objekt.
 
 ```csharp
 static void EntityLinkingExample(TextAnalyticsClient client)
@@ -661,9 +661,9 @@ Linked Entities:
 
 ### <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-Skapa en ny funktion som anropar `KeyPhraseExtractionExample()` den klient som du skapade tidigare och anropa dess `ExtractKeyPhrases()` funktion. Det returnerade `<Response<KeyPhraseCollection>` objektet kommer att innehålla en lista över identifierade nyckel fraser. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `KeyPhraseExtractionExample()` namnet som tar den klient som du skapade tidigare och anropa dess `ExtractKeyPhrases()` funktion. Det `<Response<KeyPhraseCollection>` returnerade objektet innehåller listan över identifierade nyckelfraser. Om det uppstod ett fel 2018 000 000 `RequestFailedException` .
 
 ```csharp
 static void KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -688,9 +688,9 @@ Key phrases:
     veterinarian
 ```
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en ny funktion som anropar `KeyPhraseExtractionExample()` den klient som du skapade tidigare och anropa dess `ExtractKeyPhrases()` funktion. Det returnerade `<Response<IReadOnlyCollection<string>>` objektet kommer att innehålla en lista över identifierade nyckel fraser. Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `KeyPhraseExtractionExample()` namnet som tar klienten som du skapade tidigare och anropa dess `ExtractKeyPhrases()` funktion. Det `<Response<IReadOnlyCollection<string>>` returnerade objektet innehåller listan över identifierade nyckelfraser. Om det uppstod ett fel 00:00. `RequestFailedException`
 
 ```csharp
 static void KeyPhraseExtractionExample(TextAnalyticsClient client)
@@ -717,13 +717,13 @@ Key phrases:
 
 ---
 
-## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Använd API asynkront med analys åtgärden
+## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Använda API:et asynkront med analysåtgärden
 
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Skapa en ny funktion som anropar `AnalyzeOperationExample()` den klient som du skapade tidigare och anropa dess `StartAnalyzeBatchActionsAsync()` funktion. Det returnerade `AnalyzeBatchActionsOperation` objektet kommer att innehålla objektet `Operation` Interface. Eftersom det är en tids krävande åtgärd går du till `await` `operation.WaitForCompletionAsync()` för värdet som ska uppdateras. När `WaitForCompletionAsync()` är klar ska samlingen uppdateras i `operation.Value` . Om ett fel uppstår kommer det att utlösa en `RequestFailedException` .
+Skapa en ny funktion med `AnalyzeOperationExample()` namnet som tar den klient som du skapade tidigare och anropa dess `StartAnalyzeBatchActionsAsync()` funktion. Det `AnalyzeBatchActionsOperation` returnerade objektet innehåller `Operation` gränssnittsobjektet. Eftersom det är en långvarig åtgärd `await` på för det värde som ska `operation.WaitForCompletionAsync()` uppdateras. När `WaitForCompletionAsync()` är klar ska samlingen uppdateras i `operation.Value` . Om det uppstod ett fel 00:00. `RequestFailedException`
 
 
 ```csharp
@@ -780,7 +780,7 @@ static async Task AnalyzeOperationExample(TextAnalyticsClient client)
 }
 ```
 
-När du har lagt till det här exemplet i programmet anropar du `main()` metoden med hjälp av `await` .
+När du har lagt till det här exemplet i programmet anropar du i metoden `main()` med `await` .
 
 ```csharp
 await AnalyzeOperationExample(client).ConfigureAwait(false);
@@ -816,10 +816,10 @@ Recognized Entities
     SubCategory: 
 ```
 
-Du kan också använda analys åtgärden för att identifiera personligt identifierbar information och extrahering av nyckel fraser. Se [analys exemplet](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples) på GitHub.
+Du kan också använda åtgärden Analysera för att identifiera extrahering av PII och nyckelfraser. Se Exemplet [Analysera](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples) på GitHub.
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Den här funktionen är inte tillgänglig i version 3,0.
+Den här funktionen är inte tillgänglig i version 3.0.
 
 ---

@@ -1,42 +1,42 @@
 ---
 title: YAML-referens – ACR-uppgifter
-description: Referens för att definiera aktiviteter i YAML för ACR-aktiviteter, inklusive aktivitets egenskaper, steg typer, steg egenskaper och inbyggda variabler.
+description: Referens för att definiera uppgifter i YAML för ACR-uppgifter, inklusive aktivitetsegenskaper, stegtyper, stegegenskaper och inbyggda variabler.
 ms.topic: article
 ms.date: 07/08/2020
-ms.openlocfilehash: 042310d29f5561c2cd77b0b9cccfc587ca4aa767
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 126fcbce0569b2be6d9302cbbb718fa11e3e8046
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88067591"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780955"
 ---
-# <a name="acr-tasks-reference-yaml"></a>Referens för ACR-uppgifter: YAML
+# <a name="acr-tasks-reference-yaml"></a>ACR-uppgifter referens: YAML
 
-Aktivitets definitionen i flera steg i ACR-aktiviteter ger en molnbaserad Compute-beräkning som fokuserar på att skapa, testa och korrigera behållare. Den här artikeln beskriver kommandon, parametrar, egenskaper och syntax för de YAML-filer som definierar dina aktiviteter i flera steg.
+Uppgiftsdefinition i flera steg i ACR-uppgifter en containercentrerad beräkningsprimit som fokuserar på att skapa, testa och korrigera containrar. Den här artikeln beskriver kommandon, parametrar, egenskaper och syntax för YAML-filerna som definierar dina uppgifter i flera steg.
 
-Den här artikeln innehåller information om hur du skapar YAML-filer med flera steg för ACR-aktiviteter. Om du vill ha en introduktion till ACR-uppgifter går du till [Översikt över ACR-aktiviteter](container-registry-tasks-overview.md).
+Den här artikeln innehåller referens för att skapa YAML-filer med flera steg för ACR-uppgifter. Om du vill ha en introduktion till ACR-uppgifter kan du gå ACR-uppgifter [översikt](container-registry-tasks-overview.md).
 
-## <a name="acr-taskyaml-file-format"></a>ACR-Task. yaml-filformat
+## <a name="acr-taskyaml-file-format"></a>filformatet acr-task.yaml
 
-ACR-aktiviteter har stöd för en aktivitets deklaration med flera steg i standardsyntaxen för YAML. Du definierar en aktivitets steg i en YAML-fil. Du kan sedan köra aktiviteten manuellt genom att skicka filen till kommandot [AZ ACR Run][az-acr-run] . Du kan också använda filen för att skapa en uppgift med [AZ ACR Task Create][az-acr-task-create] som utlöses automatiskt vid en git-incheckning, en bas avbildnings uppdatering eller ett schema. Även om den här artikeln refererar till `acr-task.yaml` som den fil som innehåller stegen, stöder ACR-aktiviteter alla giltiga fil namns namn med ett [tillägg som stöds](#supported-task-filename-extensions).
+ACR-uppgifter har stöd för uppgiftsdeklaration i flera steg i yaml-standardsyntaxen. Du definierar en uppgifts steg i en YAML-fil. Du kan sedan köra uppgiften manuellt genom att skicka filen till [kommandot az acr run.][az-acr-run] Du kan också använda filen för att skapa en uppgift med [az acr task create][az-acr-task-create] som utlöses automatiskt vid en Git-genomförande, en basavbildningsuppdatering eller ett schema. Även om den här artikeln refererar till som den fil som innehåller stegen ACR-uppgifter stöd för alla `acr-task.yaml` giltiga filnamn med ett [filnamnstillägg som stöds.](#supported-task-filename-extensions)
 
-De översta topparna `acr-task.yaml` är **aktivitets egenskaper**, **steg typer** och **steg egenskaper**:
+De översta primitiverna `acr-task.yaml` är **aktivitetsegenskaper,** **stegtyper** och **stegegenskaper:**
 
-* [Aktivitets egenskaperna](#task-properties) gäller för alla steg i uppgifts körningen. Det finns flera globala aktivitets egenskaper, inklusive:
+* [Uppgiftsegenskaper](#task-properties) gäller för alla steg under uppgiftskörningen. Det finns flera globala uppgiftsegenskaper, bland annat:
   * `version`
   * `stepTimeout`
   * `workingDirectory`
-* De olika typerna av åtgärder som kan utföras i en [aktivitet representerar de](#task-step-types) typer av åtgärder som kan utföras. Det finns tre typer av steg:
+* [Aktivitetsstegtyper](#task-step-types) representerar de typer av åtgärder som kan utföras i en uppgift. Det finns tre stegtyper:
   * `build`
   * `push`
   * `cmd`
-* [Egenskaper för aktivitets steg](#task-step-properties) är parametrar som gäller för ett enskilt steg. Det finns flera steg-egenskaper, inklusive:
+* [Egenskaper för uppgiftssteg](#task-step-properties) är parametrar som gäller för ett enskilt steg. Det finns flera stegegenskaper, bland annat:
   * `startDelay`
   * `timeout`
   * `when`
   * ... och många fler.
 
-Bas formatet för en `acr-task.yaml` fil, inklusive några vanliga steg egenskaper, följer. Även om det inte finns en fullständig representation av alla tillgängliga steg-egenskaper eller användnings typer, ger det en snabb översikt över det grundläggande fil formatet.
+Basformatet för en `acr-task.yaml` fil, inklusive några vanliga stegegenskaper, följer nedan. Även om det inte är en fullständig representation av alla tillgängliga stegegenskaper eller användning av stegtyper ger det en snabb översikt över det grundläggande filformatet.
 
 ```yml
 version: # acr-task.yaml format version.
@@ -49,86 +49,86 @@ steps: # A collection of image or container actions.
     startDelay: # Step property that specifies the number of seconds to wait before starting execution.
 ```
 
-### <a name="supported-task-filename-extensions"></a>Aktivitets fil namns tillägg som stöds
+### <a name="supported-task-filename-extensions"></a>Filnamnstillägg för aktiviteter som stöds
 
-ACR-aktiviteter har reserverat flera fil namns tillägg, inklusive `.yaml` , som ska bearbetas som en aktivitets fil. Alla tillägg som *inte* finns i följande lista betraktas som ACR-aktiviteter som Dockerfile:. yaml,. yml,. toml,. JSON,. sh,. bash,. zsh,. ps1,. PS,. cmd,. bat,. TS,. js,. php,. py,. lua,.
+ACR-uppgifter har reserverat flera filnamnstillägg, `.yaml` inklusive , som kommer att bearbetas som en uppgiftsfil. Alla *tillägg* som inte finns i följande lista anses av ACR-uppgifter vara en Dockerfile: .yaml, .yml, .toml, .json, .sh, .bash, .zsh, .ps1, .ps, .cmd, .bat, .ts, .js, .php, .py, .rb, .lua
 
-YAML är det enda fil format som för närvarande stöds av ACR-uppgifter. De andra fil namns tilläggen är reserverade för eventuell framtida support.
+YAML är det enda filformat som för närvarande stöds av ACR-uppgifter. De andra filnamnstilläggen är reserverade för eventuell framtida support.
 
-## <a name="run-the-sample-tasks"></a>Kör exempel aktiviteter
+## <a name="run-the-sample-tasks"></a>Köra exempeluppgifterna
 
-Det finns flera exempel på aktivitets filer som refereras i följande avsnitt i den här artikeln. Exempel uppgifterna finns i en offentlig GitHub-lagringsplats, [Azure-samples/ACR-tasks][acr-tasks]. Du kan köra dem med Azure CLI-kommandot [AZ ACR kör][az-acr-run]. Exempel kommandona liknar:
+Det finns flera exempel på aktivitetsfiler som refereras i följande avsnitt i den här artikeln. Exempeluppgifterna finns på en offentlig GitHub-lagringsplats, [Azure-Samples/acr-tasks.][acr-tasks] Du kan köra dem med Azure CLI-kommandot [az acr run][az-acr-run]. Exempelkommandona liknar följande:
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 ```
 
-Formateringen av exempel kommandona förutsätter att du har konfigurerat ett standard register i Azure CLI, så att `--registry` parametererna utelämnas. Om du vill konfigurera ett standard register använder du kommandot [AZ Configure][az-configure] med `--defaults` parametern som accepterar ett `acr=REGISTRY_NAME` värde.
+Formateringen av exempelkommandona förutsätter att du har konfigurerat ett standardregister i Azure CLI, så de utelämnar `--registry` parametern. Om du vill konfigurera ett standardregister använder [du kommandot az configure][az-configure] med `--defaults` parametern , som accepterar ett `acr=REGISTRY_NAME` värde.
 
-Om du till exempel vill konfigurera Azure CLI med ett standard register med namnet "Registry":
+Om du till exempel vill konfigurera Azure CLI med ett standardregister med namnet "myregistry":
 
 ```azurecli
 az configure --defaults acr=myregistry
 ```
 
-## <a name="task-properties"></a>Aktivitets egenskaper
+## <a name="task-properties"></a>Uppgiftsegenskaper
 
-Aktivitets egenskaper visas vanligt vis överst i en `acr-task.yaml` fil och globala egenskaper som gäller för hela körningen av uppgifts stegen. Några av dessa globala egenskaper kan åsidosättas i ett enskilt steg.
+Uppgiftsegenskaper visas vanligtvis överst i en fil och är globala egenskaper som gäller under hela `acr-task.yaml` körningen av uppgiftsstegen. Vissa av dessa globala egenskaper kan åsidosättas i ett enskilt steg.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Åsidosättning stöds | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Åsidosättning stöds | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | sträng | Ja | Versionen av `acr-task.yaml` filen som parsas av ACR tasks-tjänsten. Medan ACR-aktiviteter strävar efter bakåtkompatibilitet, tillåter det här värdet ACR-aktiviteter för att upprätthålla kompatibilitet inom en definierad version. Om inget anges används den senaste versionen som standard. | Inga | Inget |
-| `stepTimeout` | int (sekunder) | Ja | Det maximala antalet sekunder som ett steg kan köras. Om egenskapen anges för en aktivitet anges standard `timeout` egenskapen för alla steg. Om `timeout` egenskapen anges i ett steg åsidosätts den egenskap som anges av uppgiften. | Ja | 600 (10 minuter) |
-| `workingDirectory` | sträng | Ja | Arbets katalogen i behållaren under körning. Om egenskapen anges för en aktivitet anges standard `workingDirectory` egenskapen för alla steg. Om den anges i ett steg åsidosätts den egenskap som anges av uppgiften. | Ja | `c:\workspace` i Windows eller `/workspace` Linux |
-| `env` | [sträng, sträng,...] | Ja |  Sträng mat ris i `key=value` format som definierar miljövariabler för aktiviteten. Om egenskapen anges för en aktivitet anges standard `env` egenskapen för alla steg. Om det anges i ett steg åsidosätts alla miljövariabler som ärvts från uppgiften. | Ja | Inget |
-| `secrets` | [hemligt, hemligt,...] | Ja | Matris med [hemliga](#secret) objekt. | Inga | Inget |
-| `networks` | [nätverk, nätverk,...] | Ja | Matris med [nätverks](#network) objekt. | Inga | Inget |
-| `volumes` | [volym, volym,...] | Ja | Matris med [volym](#volume) objekt. Anger volymer med käll innehåll som ska monteras i ett steg. | Inga | Inget |
+| `version` | sträng | Yes | Den version av `acr-task.yaml` filen som parsas av ACR-uppgifter tjänsten. Även ACR-uppgifter strävar efter att upprätthålla bakåtkompatibilitet gör det här värdet ACR-uppgifter att upprätthålla kompatibiliteten inom en definierad version. Om det inte anges används den senaste versionen som standard. | No | Inget |
+| `stepTimeout` | int (sekunder) | Yes | Det maximala antalet sekunder som ett steg kan köras. Om egenskapen anges för en aktivitet anges `timeout` standardegenskapen för alla steg. Om egenskapen `timeout` anges i ett steg åsidosätter den egenskapen som anges av aktiviteten. | Yes | 600 (10 minuter) |
+| `workingDirectory` | sträng | Yes | Arbetskatalogen för containern under körning. Om egenskapen anges för en aktivitet anges `workingDirectory` standardegenskapen för alla steg. Om det anges i ett steg åsidosätts egenskapen som tillhandahålls av aktiviteten. | Yes | `c:\workspace` i Windows eller `/workspace` i Linux |
+| `env` | [sträng, sträng, ...] | Yes |  Matris med strängar i `key=value` format som definierar miljövariablerna för uppgiften. Om egenskapen anges för en aktivitet anges `env` standardegenskapen för alla steg. Om det anges i ett steg åsidosätts alla miljövariabler som ärvts från aktiviteten. | Yes | Inget |
+| `secrets` | [hemlighet, hemlighet, ...] | Yes | Matris med [hemliga](#secret) objekt. | No | Inget |
+| `networks` | [nätverk, nätverk, ...] | Yes | Matris med [nätverksobjekt.](#network) | No | Inget |
+| `volumes` | [volym, volym, ...] | Yes | Matris med [volymobjekt.](#volume) Anger volymer med källinnehåll som ska monteras i ett steg. | No | Inget |
 
 ### <a name="secret"></a>hemlighet
 
-Objektet Secret har följande egenskaper.
+Det hemliga objektet har följande egenskaper.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------- |
 | `id` | sträng | No | Identifieraren för hemligheten. | Inget |
-| `keyvault` | sträng | Ja | Den Azure Key Vault hemliga URL: en. | Inget |
-| `clientID` | sträng | Ja | Klient-ID: t för den [användarspecifika hanterade identiteten](container-registry-tasks-authentication-managed-identity.md) för Azure-resurser. | Inget |
+| `keyvault` | sträng | Yes | Webbadressen Azure Key Vault hemlighet. | Inget |
+| `clientID` | sträng | Yes | Klient-ID för den användar [tilldelade hanterade identiteten för](container-registry-tasks-authentication-managed-identity.md) Azure-resurser. | Inget |
 
 ### <a name="network"></a>network
 
-Objektet Network har följande egenskaper.
+Nätverksobjektet har följande egenskaper.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | sträng | No | Nätverkets namn. | Inget |
-| `driver` | sträng | Ja | Driv rutinen för att hantera nätverket. | Inget |
-| `ipv6` | boolesk | Ja | Om IPv6-nätverk är aktiverat. | `false` |
-| `skipCreation` | boolesk | Ja | Om du vill hoppa över att skapa nätverk. | `false` |
-| `isDefault` | boolesk | Ja | Om nätverket är ett standard nätverk som tillhandahålls med Azure Container Registry. | `false` |
+| `name` | sträng | No | Namnet på nätverket. | Inget |
+| `driver` | sträng | Yes | Drivrutinen för att hantera nätverket. | Inget |
+| `ipv6` | boolesk | Yes | Om IPv6-nätverk är aktiverat. | `false` |
+| `skipCreation` | boolesk | Yes | Om du vill hoppa över skapandet av nätverk. | `false` |
+| `isDefault` | boolesk | Yes | Om nätverket är ett standardnätverk som medföljer Azure Container Registry. | `false` |
 
 ### <a name="volume"></a>volym
 
-Volym objekt har följande egenskaper.
+Volymobjektet har följande egenskaper.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | sträng | No | Namnet på volymen som ska monteras. Får bara innehålla alfanumeriska tecken,-och _. | Inget |
-| `secret` | sträng för kart [sträng] | Inga | Varje nyckel i kartan är namnet på en fil som skapas och fylls i på volymen. Varje värde är sträng versionen av hemligheten. Hemliga värden måste vara base64-kodade. | Inget |
+| `name` | sträng | No | Namnet på volymen som ska monteras. Får endast innehålla alfanumeriska tecken, "-" och "_". | Inget |
+| `secret` | map[string]string | No | Varje nyckel på kartan är namnet på en fil som skapats och fyllts i volymen. Varje värde är strängversionen av hemligheten. Hemliga värden måste vara Base64-kodade. | Inget |
 
-## <a name="task-step-types"></a>Typer av uppgifts steg
+## <a name="task-step-types"></a>Typer av uppgiftssteg
 
-ACR-aktiviteter stöder tre steg typer. Varje stegtyp stöder flera egenskaper som beskrivs i avsnittet för varje typ av steg.
+ACR-uppgifter har stöd för tre steg. Varje stegtyp har stöd för flera egenskaper, som beskrivs i avsnittet för varje stegtyp.
 
-| Steg typ | Beskrivning |
+| Stegtyp | Description |
 | --------- | ----------- |
-| [`build`](#build) | Skapar en behållar avbildning med hjälp av välbekant `docker build` syntax. |
-| [`push`](#push) | Kör en `docker push` av nyligen inbyggda eller omtaggade avbildningar till ett behållar register. Azure Container Registry, andra privata register och den offentliga Docker-hubben stöds. |
-| [`cmd`](#cmd) | Kör en behållare som ett kommando, med parametrar som skickas till behållarens `[ENTRYPOINT]` . `cmd`Stegtyp stöder parametrar som `env` , `detach` och andra välkända `docker run` kommando alternativ, aktiverar enhets-och funktions testning med körning av samtidiga behållare. |
+| [`build`](#build) | Skapar en containeravbildning med hjälp av välbekant `docker build` syntax. |
+| [`push`](#push) | Kör en av `docker push` nyligen skapade eller omtaggade avbildningar till ett containerregister. Azure Container Registry, andra privata register och offentliga Docker Hub stöds. |
+| [`cmd`](#cmd) | Kör en container som ett kommando med parametrar som skickas till containerns `[ENTRYPOINT]` . Stegtypen `cmd` stöder parametrar som , och andra välbekanta `env` kommandoalternativ, vilket möjliggör `detach` `docker run` enhets- och funktionstestning med samtidig containerkörning. |
 
 ## <a name="build"></a>skapa
 
-Bygg en behållar avbildning. `build`Steg typen representerar en flera klient, säkra metoder för att köra `docker build` i molnet som en överordnad första klass.
+Skapa en containeravbildning. Stegtypen `build` representerar ett säkert sätt för flera innehavare att köra i molnet som en primitiv i första `docker build` klass.
 
 ### <a name="syntax-build"></a>Syntax: build
 
@@ -139,31 +139,31 @@ steps:
     [property]: [value]
 ```
 
-`build`Steg typen stöder parametrarna i följande tabell. `build`Steg typen har även stöd för alla build-alternativ för kommandot [Docker build](https://docs.docker.com/engine/reference/commandline/build/) , till exempel `--build-arg` för att ställa in Bygg tids variabler.
+Stegtypen `build` stöder parametrarna i följande tabell. Stegtypen `build` stöder också alla byggalternativ för kommandot [docker build,](https://docs.docker.com/engine/reference/commandline/build/) till exempel `--build-arg` för att ange byggtidsvariabler.
 
 | Parameter | Beskrivning | Valfritt |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Definierar den `image:tag` färdiga avbildningens fullständigt kvalificerade avbildning.<br /><br />Eftersom bilder kan användas för inre aktivitets valideringar, till exempel funktionella tester, kräver inte alla avbildningar `push` i registret. Men för att kunna instans av en bild i en uppgifts körning behöver avbildningen ett namn att referera till.<br /><br />Till skillnad från fungerar `az acr build` inte ACR-aktiviteter som standard-push-beteende. Med ACR-uppgifter förutsätter standard scenariot att du kan bygga, validera och sedan skicka en avbildning. Se [push](#push) för hur du kan skicka inbyggda avbildningar. | Ja |
-| `-f` &#124; `--file` | Anger den Dockerfile som skickades till `docker build` . Om inget värde anges antas standard-Dockerfile i kontextens rot. Om du vill ange en Dockerfile skickar du fil namnet i förhållande till kontextens rot. | Ja |
-| `context` | Rot katalogen som skickades till `docker build` . Rot katalogen för varje aktivitet anges till en delad [WorkingDirectory](#task-step-properties)och inkluderar roten för den tillhör ande git-klonade katalogen. | Inga |
+| `-t` &#124; `--image` | Definierar den fullständigt kvalificerade `image:tag` avbildningen.<br /><br />Eftersom bilder kan användas för inre uppgiftsverifieringar, till exempel funktionella tester, behöver inte alla `push` avbildningar till ett register. Men för att instansen av en avbildning i en uppgiftskörning ska kunna visas behöver avbildningen ett namn att referera till.<br /><br />Till `az acr build` skillnad från ACR-uppgifter inte push-standardbeteendet när du kör ett program. Med ACR-uppgifter förutsätter standardscenariot att du kan skapa, validera och sedan push-skicka en avbildning. Se [push för](#push) att se hur du kan pusha skapade avbildningar om du vill. | Yes |
+| `-f` &#124; `--file` | Anger den Dockerfile som skickas till `docker build` . Om inget anges antas standard-Dockerfile i kontextens rot. Om du vill ange en Dockerfile skickar du filnamnet relativt till kontextens rot. | Yes |
+| `context` | Rotkatalogen som skickas till `docker build` . Rotkatalogen för varje uppgift är inställd på en delad [workingDirectory](#task-step-properties)och innehåller roten för den associerade Git-klonade katalogen. | No |
 
-### <a name="properties-build"></a>Egenskaper: version
+### <a name="properties-build"></a>Egenskaper: build
 
-`build`Steg typen stöder följande egenskaper. Mer information om dessa egenskaper finns i avsnittet [Egenskaper för aktivitets steg](#task-step-properties) i den här artikeln.
+Stegtypen `build` stöder följande egenskaper. Mer information om dessa egenskaper finns i avsnittet [Egenskaper för uppgiftssteg](#task-step-properties) i den här artikeln.
 
 | Egenskaper | Typ | Obligatorisk |
 | -------- | ---- | -------- |
 | `detach` | boolesk | Valfritt |
 | `disableWorkingDirectoryOverride` | boolesk | Valfritt |
 | `entryPoint` | sträng | Valfritt |
-| `env` | [sträng, sträng,...] | Valfritt |
-| `expose` | [sträng, sträng,...] | Valfritt |
+| `env` | [sträng, sträng, ...] | Valfritt |
+| `expose` | [sträng, sträng, ...] | Valfritt |
 | `id` | sträng | Valfritt |
 | `ignoreErrors` | boolesk | Valfritt |
 | `isolation` | sträng | Valfritt |
 | `keep` | boolesk | Valfritt |
 | `network` | objekt | Valfritt |
-| `ports` | [sträng, sträng,...] | Valfritt |
+| `ports` | [sträng, sträng, ...] | Valfritt |
 | `pull` | boolesk | Valfritt |
 | `repeat` | int | Valfritt |
 | `retries` | int | Valfritt |
@@ -172,12 +172,12 @@ steps:
 | `startDelay` | int (sekunder) | Valfritt |
 | `timeout` | int (sekunder) | Valfritt |
 | `volumeMount` | objekt | Valfritt |
-| `when` | [sträng, sträng,...] | Valfritt |
+| `when` | [sträng, sträng, ...] | Valfritt |
 | `workingDirectory` | sträng | Valfritt |
 
 ### <a name="examples-build"></a>Exempel: build
 
-#### <a name="build-image---context-in-root"></a>Bygg avbildnings kontext i roten
+#### <a name="build-image---context-in-root"></a>Skapa avbildning – kontext i roten
 
 ```azurecli
 az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample.git
@@ -186,7 +186,7 @@ az acr run -f build-hello-world.yaml https://github.com/AzureCR/acr-tasks-sample
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-hello-world.yaml)]
 
-#### <a name="build-image---context-in-subdirectory"></a>Bygg avbildnings kontext i under Katalog
+#### <a name="build-image---context-in-subdirectory"></a>Skapa avbildning – kontext i underkatalog
 
 ```yml
 version: v1.1.0
@@ -194,13 +194,13 @@ steps:
   - build: -t $Registry/hello-world -f hello-world.dockerfile ./subDirectory
 ```
 
-## <a name="push"></a>trycka
+## <a name="push"></a>Tryck
 
-Push en eller flera inbyggda eller omtaggade avbildningar till ett behållar register. Stöder push-överföring till privata register som Azure Container Registry eller till den offentliga Docker-hubben.
+Push-skicka en eller flera byggda eller omtaggade avbildningar till ett containerregister. Stöder push-push till privata register som Azure Container Registry eller till offentliga Docker Hub.
 
 ### <a name="syntax-push"></a>Syntax: push
 
-`push`Steg typen stöder en samling avbildningar. YAML Collection-syntax stöder infogade och kapslade format. Att överföra en enda avbildning visas vanligt vis med en infogad syntax:
+Stegtypen `push` stöder en samling avbildningar. YAML-samlingssyntax har stöd för infogade och kapslade format. Push-push av en enskild bild representeras vanligtvis med hjälp av infogade syntax:
 
 ```yml
 version: v1.1.0
@@ -209,7 +209,7 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-Använd kapslad syntax vid push-överföring av flera avbildningar för ökad läsbarhet:
+Använd kapslad syntax när du push-överföra flera bilder för ökad läsbarhet:
 
 ```yml
 version: v1.1.0
@@ -222,20 +222,20 @@ steps:
 
 ### <a name="properties-push"></a>Egenskaper: push
 
-`push`Steg typen stöder följande egenskaper. Mer information om dessa egenskaper finns i avsnittet [Egenskaper för aktivitets steg](#task-step-properties) i den här artikeln.
+Stegtypen `push` stöder följande egenskaper. Information om dessa egenskaper finns i avsnittet [Egenskaper för uppgiftssteg](#task-step-properties) i den här artikeln.
 
 | Egenskap | Typ | Obligatorisk |
 | -------- | ---- | -------- |
-| `env` | [sträng, sträng,...] | Valfritt |
+| `env` | [sträng, sträng, ...] | Valfritt |
 | `id` | sträng | Valfritt |
 | `ignoreErrors` | boolesk | Valfritt |
 | `startDelay` | int (sekunder) | Valfritt |
 | `timeout` | int (sekunder) | Valfritt |
-| `when` | [sträng, sträng,...] | Valfritt |
+| `when` | [sträng, sträng, ...] | Valfritt |
 
 ### <a name="examples-push"></a>Exempel: push
 
-#### <a name="push-multiple-images"></a>Skicka flera avbildningar
+#### <a name="push-multiple-images"></a>Push-pusha flera avbildningar
 
 ```azurecli
 az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -244,7 +244,7 @@ az acr run -f build-push-hello-world.yaml https://github.com/Azure-Samples/acr-t
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/build-push-hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/build-push-hello-world.yaml)]
 
-#### <a name="build-push-and-run"></a>Skapa, push och kör
+#### <a name="build-push-and-run"></a>Skapa, push-pusha och köra
 
 ```azurecli
 az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -255,7 +255,7 @@ az acr run -f build-run-hello-world.yaml https://github.com/Azure-Samples/acr-ta
 
 ## <a name="cmd"></a>cmd
 
-`cmd`Steg typen kör en behållare.
+Stegtypen `cmd` kör en container.
 
 ### <a name="syntax-cmd"></a>Syntax: cmd
 
@@ -267,21 +267,21 @@ steps:
 
 ### <a name="properties-cmd"></a>Egenskaper: cmd
 
-`cmd`Steg typen stöder följande egenskaper:
+Stegtypen `cmd` stöder följande egenskaper:
 
 | Egenskap | Typ | Obligatorisk |
 | -------- | ---- | -------- |
 | `detach` | boolesk | Valfritt |
 | `disableWorkingDirectoryOverride` | boolesk | Valfritt |
 | `entryPoint` | sträng | Valfritt |
-| `env` | [sträng, sträng,...] | Valfritt |
-| `expose` | [sträng, sträng,...] | Valfritt |
+| `env` | [sträng, sträng, ...] | Valfritt |
+| `expose` | [sträng, sträng, ...] | Valfritt |
 | `id` | sträng | Valfritt |
 | `ignoreErrors` | boolesk | Valfritt |
 | `isolation` | sträng | Valfritt |
 | `keep` | boolesk | Valfritt |
 | `network` | objekt | Valfritt |
-| `ports` | [sträng, sträng,...] | Valfritt |
+| `ports` | [sträng, sträng, ...] | Valfritt |
 | `pull` | boolesk | Valfritt |
 | `repeat` | int | Valfritt |
 | `retries` | int | Valfritt |
@@ -290,16 +290,16 @@ steps:
 | `startDelay` | int (sekunder) | Valfritt |
 | `timeout` | int (sekunder) | Valfritt |
 | `volumeMount` | objekt | Valfritt |
-| `when` | [sträng, sträng,...] | Valfritt |
+| `when` | [sträng, sträng, ...] | Valfritt |
 | `workingDirectory` | sträng | Valfritt |
 
-Du hittar information om de här egenskaperna i avsnittet [Egenskaper för aktivitets steg](#task-step-properties) i den här artikeln.
+Du hittar information om dessa egenskaper i avsnittet Egenskaper [för uppgiftssteg](#task-step-properties) i den här artikeln.
 
 ### <a name="examples-cmd"></a>Exempel: cmd
 
-#### <a name="run-hello-world-image"></a>Kör Hello-World-avbildning
+#### <a name="run-hello-world-image"></a>Kör hello-world-avbildning
 
-Det här kommandot kör `hello-world.yaml` aktivitets filen som refererar till [Hello-World-](https://hub.docker.com/_/hello-world/) avbildningen på Docker Hub.
+Det här kommandot kör `hello-world.yaml` uppgiftsfilen, som refererar till [hello-world-avbildningen](https://hub.docker.com/_/hello-world/) på Docker Hub.
 
 ```azurecli
 az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -308,9 +308,9 @@ az acr run -f hello-world.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/hello-world.yaml -->
 [!code-yml[task](~/acr-tasks/hello-world.yaml)]
 
-#### <a name="run-bash-image-and-echo-hello-world"></a>Kör bash-avbildning och Echo "Hello World"
+#### <a name="run-bash-image-and-echo-hello-world"></a>Kör bash-avbildningen och ekot "hello world"
 
-Det här kommandot kör `bash-echo.yaml` aktivitets filen som refererar till [bash](https://hub.docker.com/_/bash/) -avbildningen på Docker Hub.
+Det här kommandot kör `bash-echo.yaml` uppgiftsfilen, som refererar till [bash-avbildningen](https://hub.docker.com/_/bash/) på Docker Hub.
 
 ```azurecli
 az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -319,11 +319,11 @@ az acr run -f bash-echo.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/bash-echo.yaml -->
 [!code-yml[task](~/acr-tasks/bash-echo.yaml)]
 
-#### <a name="run-specific-bash-image-tag"></a>Kör speciell bash-avbildnings tag
+#### <a name="run-specific-bash-image-tag"></a>Köra specifik bash-avbildningstagg
 
-Om du vill köra en angiven avbildnings version anger du taggen i `cmd` .
+Om du vill köra en specifik avbildningsversion anger du taggen i `cmd` .
 
-Det här kommandot kör `bash-echo-3.yaml` aktivitets filen som refererar till [bash: 3.0](https://hub.docker.com/_/bash/) -avbildningen på Docker Hub.
+Det här kommandot kör `bash-echo-3.yaml` uppgiftsfilen, som refererar till [bash:3.0-avbildningen](https://hub.docker.com/_/bash/) Docker Hub.
 
 ```azurecli
 az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -334,7 +334,7 @@ az acr run -f bash-echo-3.yaml https://github.com/Azure-Samples/acr-tasks.git
 
 #### <a name="run-custom-images"></a>Köra anpassade avbildningar
 
-`cmd`Steg typen refererar till bilder med hjälp av standardformatet `docker run` . Avbildningar som inte föregås av ett register antas ha sitt ursprung i docker.io. Det tidigare exemplet kan vara likvärdigt med:
+Stegtypen `cmd` refererar till bilder med `docker run` standardformatet. Avbildningar som inte föregås av ett register antas komma från docker.io. Det föregående exemplet kan också representeras som:
 
 ```yml
 version: v1.1.0
@@ -342,9 +342,9 @@ steps:
   - cmd: docker.io/bash:3.0 echo hello world
 ```
 
-Genom att använda standard `docker run` referens konventionen för avbildningar `cmd` kan du köra bilder från privata register eller den offentliga Docker-hubben. Om du refererar till avbildningar i samma register där ACR-aktiviteten körs, behöver du inte ange några autentiseringsuppgifter för registret.
+Genom att använda `docker run` referenskonventionen för standardavbildningar `cmd` kan du köra avbildningar från alla privata register eller offentliga Docker Hub. Om du refererar till avbildningar i samma register där ACR Task körs behöver du inte ange några autentiseringsuppgifter för registret.
 
-* Kör en avbildning från ett Azure Container Registry. I följande exempel förutsätter vi att du har ett register med namnet `myregistry` och en anpassad avbildning `myimage:mytag` .
+* Kör en avbildning som kommer från ett Azure-containerregister. I följande exempel förutsätts att du har ett register med namnet `myregistry` och en anpassad avbildning `myimage:mytag` .
 
     ```yml
     version: v1.1.0
@@ -352,11 +352,11 @@ Genom att använda standard `docker run` referens konventionen för avbildningar
         - cmd: myregistry.azurecr.io/myimage:mytag
     ```
 
-* Generalisera register referensen med en Run-variabel eller ett alias
+* Generalisera registerreferensen med en Körningsvariabel eller ett alias
 
-    I stället för att hårdkoda ditt register namn i en `acr-task.yaml` fil kan du göra det mer portabelt med hjälp av en [Run-variabel](#run-variables) eller ett [alias](#aliases). `Run.Registry`Variabeln eller `$Registry` Ali Aset expanderas vid körning till namnet på det register som aktiviteten körs i.
+    I stället för att hårdkoda ditt registernamn i en fil kan du göra det mer `acr-task.yaml` portabelt med hjälp av [variabeln Kör](#run-variables) eller [aliaset](#aliases). `Run.Registry`Variabeln `$Registry` eller aliaset expanderas vid körning till namnet på det register där aktiviteten körs.
 
-    Om du till exempel vill generalisera föregående aktivitet så att den fungerar i alla Azure Container Registry, referera till $Registry variabeln i avbildnings namnet:
+    Om du till exempel vill generalisera föregående uppgift så att den fungerar i alla Azure-containerregister refererar du $Registry variabeln i avbildningens namn:
 
     ```yml
     version: v1.1.0
@@ -364,11 +364,11 @@ Genom att använda standard `docker run` referens konventionen för avbildningar
       - cmd: $Registry/myimage:mytag
     ```
 
-#### <a name="access-secret-volumes"></a>Åtkomst till hemliga volymer
+#### <a name="access-secret-volumes"></a>Få åtkomst till hemliga volymer
 
-`volumes`Egenskapen tillåter att volymer och deras hemliga innehåll anges för `build` och `cmd` steg i en aktivitet. I varje steg visar en valfri `volumeMounts` egenskap volymerna och motsvarande container Sök vägar som ska monteras i behållaren i det steget. Hemligheter anges som filer på varje volyms monterings Sök väg.
+Egenskapen `volumes` tillåter att volymer och deras hemliga innehåll anges för stegen och i en `build` `cmd` uppgift. I varje steg visar en valfri `volumeMounts` egenskap volymerna och motsvarande containersökvägar som ska monteras i containern i det steget. Hemligheter tillhandahålls som filer på varje volyms monteringssökväg.
 
-Kör en uppgift och montera två hemligheter till ett steg: en lagrad i ett nyckel valv och ett som anges på kommando raden:
+Kör en uppgift och montera två hemligheter i ett steg: en som lagras i ett nyckelvalv och en som anges på kommandoraden:
 
 ```azurecli
 az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://github.com/Azure-Samples/acr-tasks.git
@@ -377,49 +377,49 @@ az acr run -f mounts-secrets.yaml --set-secret mysecret=abcdefg123456 https://gi
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/mounts-secrets.yaml -->
 [!code-yml[task](~/acr-tasks/mounts-secrets.yaml)]
 
-## <a name="task-step-properties"></a>Egenskaper för aktivitets steg
+## <a name="task-step-properties"></a>Egenskaper för uppgiftssteg
 
-Varje typ av steg stöder flera egenskaper som passar för typen. I följande tabell definieras alla tillgängliga steg egenskaper. Alla typer av steg har inte stöd för alla egenskaper. Information om vilka av dessa egenskaper som är tillgängliga för varje steg typ finns i avsnittet om typ referens för [cmd](#cmd), [build](#build)och [push](#push) .
+Varje stegtyp har stöd för flera egenskaper som är lämpliga för dess typ. I följande tabell definieras alla tillgängliga stegegenskaper. Alla stegtyper har inte stöd för alla egenskaper. Du kan se vilka av dessa egenskaper som är tillgängliga för varje stegtyp i referensavsnitten [cmd](#cmd), [build](#build)och [push](#push) step type.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------- |
-| `detach` | boolesk | Ja | Anger om behållaren ska kopplas från när den körs. | `false` |
-| `disableWorkingDirectoryOverride` | boolesk | Ja | Om åsidosättning-funktionen ska inaktive ras `workingDirectory` . Använd detta i kombination med `workingDirectory` för att få fullständig kontroll över behållarens arbets katalog. | `false` |
-| `entryPoint` | sträng | Ja | Åsidosätter `[ENTRYPOINT]` i ett stegs behållare. | Inget |
-| `env` | [sträng, sträng,...] | Ja | Sträng mat ris i `key=value` formatet som definierar miljövariablerna för steget. | Inget |
-| `expose` | [sträng, sträng,...] | Ja | Matris med portar som exponeras från behållaren. |  Inget |
-| [`id`](#example-id) | sträng | Ja | Identifierar ett unikt steg i uppgiften. Andra steg i uppgiften kan referera till ett steg `id` , till exempel för beroende kontroll med `when` .<br /><br />`id`Är också namnet på den behållare som körs. Processer som körs i andra behållare i aktiviteten kan referera till `id` som sitt DNS-värdnamn, eller för att komma åt den med Docker-loggar [ID], till exempel. | `acb_step_%d`, där `%d` är det 0-baserade indexet för steget överst i yaml-filen |
-| `ignoreErrors` | boolesk | Ja | Om du vill markera steget som slutfört oavsett om ett fel uppstod när containern kördes. | `false` |
-| `isolation` | sträng | Ja | Behållarens isolerings nivå. | `default` |
-| `keep` | boolesk | Ja | Anger om stegets behållare ska behållas efter körning. | `false` |
-| `network` | objekt | Ja | Identifierar ett nätverk där behållaren körs. | Inget |
-| `ports` | [sträng, sträng,...] | Ja | Matris med portar som publiceras från behållaren till värden. |  Inget |
-| `pull` | boolesk | Ja | Om du vill tvinga fram en hämtning av behållaren innan du kör den för att förhindra alla funktioner för cachelagring. | `false` |
-| `privileged` | boolesk | Ja | Om behållaren ska köras i privilegierat läge. | `false` |
-| `repeat` | int | Ja | Antalet försök att upprepa körningen av en behållare. | 0 |
-| `retries` | int | Ja | Antalet återförsök som ska göras om en behållare inte kan köras. Ett nytt försök görs bara om slut koden för en behållare är skilt från noll. | 0 |
-| `retryDelay` | int (sekunder) | Ja | Fördröjningen i sekunder mellan återförsök för en behållares körning. | 0 |
-| `secret` | objekt | Ja | Identifierar en Azure Key Vault hemlig eller [hanterad identitet för Azure-resurser](container-registry-tasks-authentication-managed-identity.md). | Inget |
-| `startDelay` | int (sekunder) | Ja | Antal sekunder som en behållares körning ska fördröjas. | 0 |
-| `timeout` | int (sekunder) | Ja | Maximalt antal sekunder som ett steg kan utföras innan det avslutas. | 600 |
-| [`when`](#example-when) | [sträng, sträng,...] | Ja | Konfigurerar ett stegs beroende av ett eller flera andra steg i aktiviteten. | Inget |
-| `user` | sträng | Ja | Användar namnet eller UID för en behållare | Inget |
-| `workingDirectory` | sträng | Ja | Anger arbets katalogen för ett steg. Som standard skapar ACR-aktiviteter en rot Katalog som arbets katalog. Men om din version har flera steg, kan tidigare steg dela artefakter med senare steg genom att ange samma arbets katalog. | `c:\workspace` i Windows eller `/workspace` Linux |
+| `detach` | boolesk | Yes | Om containern ska frånkopplad när den körs. | `false` |
+| `disableWorkingDirectoryOverride` | boolesk | Yes | Om du vill inaktivera `workingDirectory` åsidosättningsfunktioner. Använd detta i kombination `workingDirectory` med för att få fullständig kontroll över containerns arbetskatalog. | `false` |
+| `entryPoint` | sträng | Yes | Åsidosätter `[ENTRYPOINT]` för ett stegs container. | Inget |
+| `env` | [sträng, sträng, ...] | Yes | Matris med strängar i `key=value` format som definierar miljövariablerna för steget. | Inget |
+| `expose` | [sträng, sträng, ...] | Yes | Matris med portar som exponeras från containern. |  Inget |
+| [`id`](#example-id) | sträng | Yes | Identifierar unikt steget i uppgiften. Andra steg i uppgiften kan referera till ett stegs , till `id` exempel för beroendekontroll med `when` .<br /><br />`id`är också namnet på containern som körs. Processer som körs i andra containrar i aktiviteten kan till exempel referera till som dess DNS-värdnamn eller för att komma åt den med `id` dockerloggar [id], till exempel. | `acb_step_%d`, `%d` där är det 0-baserade indexet för steget uppifrån och ned i YAML-filen |
+| `ignoreErrors` | boolesk | Yes | Om steget ska markeras som lyckat oavsett om ett fel uppstod under containerkörningen eller inte. | `false` |
+| `isolation` | sträng | Yes | Isoleringsnivån för containern. | `default` |
+| `keep` | boolesk | Yes | Om stegets container ska behållas efter körningen. | `false` |
+| `network` | objekt | Yes | Identifierar ett nätverk där containern körs. | Inget |
+| `ports` | [sträng, sträng, ...] | Yes | Matris med portar som publiceras från containern till värden. |  Inget |
+| `pull` | boolesk | Yes | Om du vill tvinga fram en låsning av containern innan den körs för att förhindra cachelagringsbeteende. | `false` |
+| `privileged` | boolesk | Yes | Om du vill köra containern i privilegierat läge. | `false` |
+| `repeat` | int | Yes | Antalet återförsök för att upprepa körningen av en container. | 0 |
+| `retries` | int | Yes | Antalet återförsök att försöka om en container misslyckas med körningen. Ett nytt försök görs bara om slutkoden för en container inte är noll. | 0 |
+| `retryDelay` | int (sekunder) | Yes | Fördröjningen i sekunder mellan återförsök för en containers körning. | 0 |
+| `secret` | objekt | Yes | Identifierar en Azure Key Vault eller [hanterad identitet för Azure-resurser.](container-registry-tasks-authentication-managed-identity.md) | Inget |
+| `startDelay` | int (sekunder) | Yes | Antal sekunder för att fördröja körningen av en container. | 0 |
+| `timeout` | int (sekunder) | Yes | Maximalt antal sekunder som ett steg kan köras innan det avslutas. | 600 |
+| [`when`](#example-when) | [sträng, sträng, ...] | Yes | Konfigurerar ett stegs beroende av ett eller flera andra steg i aktiviteten. | Inget |
+| `user` | sträng | Yes | Användarnamnet eller UID:t för en container | Inget |
+| `workingDirectory` | sträng | Yes | Anger arbetskatalogen för ett steg. Som standard ACR-uppgifter en rotkatalog som arbetskatalog. Men om bygget har flera steg kan tidigare steg dela artefakter med senare steg genom att ange samma arbetskatalog. | `c:\workspace` i Windows eller `/workspace` i Linux |
 
 ### <a name="volumemount"></a>volumeMount
 
 VolumeMount-objektet har följande egenskaper.
 
-| Egenskap | Typ | Valfritt | Beskrivning | Standardvärde |
+| Egenskap | Typ | Valfritt | Description | Standardvärde |
 | -------- | ---- | -------- | ----------- | ------- | 
 | `name` | sträng | No | Namnet på volymen som ska monteras. Måste exakt matcha namnet från en `volumes` egenskap. | Inget |
-| `mountPath`   | sträng | nej | Den absoluta sökvägen för att montera filer i behållaren.  | Inget |
+| `mountPath`   | sträng | nej | Den absoluta sökvägen för att montera filer i containern.  | Inget |
 
-### <a name="examples-task-step-properties"></a>Exempel: egenskaper för aktivitets steg
+### <a name="examples-task-step-properties"></a>Exempel: Egenskaper för uppgiftssteg
 
-#### <a name="example-id"></a>Exempel: ID
+#### <a name="example-id"></a>Exempel: id
 
-Bygg två avbildningar och indelning av en funktionell test avbildning. Varje steg identifieras av ett unikt `id` steg i aktivitets referensen i sina `when` Egenskaper.
+Skapa två avbildningar och ta en funktionstestbild. Varje steg identifieras av en unik som `id` andra steg i uppgiftsreferensen i sin `when` egenskap.
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -430,14 +430,14 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 #### <a name="example-when"></a>Exempel: när
 
-`when`Egenskapen anger ett stegs beroende av andra steg i uppgiften. Det stöder två parameter värden:
+Egenskapen `when` anger ett stegs beroende av andra steg i aktiviteten. Den stöder två parametervärden:
 
-* `when: ["-"]` -Indikerar inget beroende på andra steg. Ett steg `when: ["-"]` som anger börjar köras omedelbart och möjliggör körning av samtidiga steg.
-* `when: ["id1", "id2"]` -Anger att steget är beroende av stegen med `id` "id1" och `id` "ID2". Det här steget körs inte förrän båda stegen "id1" och "ID2" har slutförts.
+* `when: ["-"]` – Anger inget beroende av andra steg. Ett steg som `when: ["-"]` anger startar körningen omedelbart och aktiverar samtidig stegkörning.
+* `when: ["id1", "id2"]` – Anger att steget är beroende av steg med `id` "id1" och `id` "id2". Det här steget körs inte förrän både stegen "id1" och "id2" har slutförts.
 
-Om `when` inte anges i ett steg är det steget beroende av att föregående steg har slutförts i `acr-task.yaml` filen.
+Om `when` inte anges i ett steg beror det steget på slutförandet av föregående steg i `acr-task.yaml` filen.
 
-Sekventiell steg körning utan `when` :
+Körning av sekventiella steg utan `when` :
 
 ```azurecli
 az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -446,7 +446,7 @@ az acr run -f when-sequential-default.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-default.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-default.yaml)]
 
-Sekventiell steg körning med `when` :
+Sekventiell stegkörning med `when` :
 
 ```azurecli
 az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -455,7 +455,7 @@ az acr run -f when-sequential-id.yaml https://github.com/Azure-Samples/acr-tasks
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-sequential-id.yaml -->
 [!code-yml[task](~/acr-tasks/when-sequential-id.yaml)]
 
-Utveckla parallella bilder:
+Parallella avbildningar:
 
 ```azurecli
 az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -464,7 +464,7 @@ az acr run -f when-parallel.yaml https://github.com/Azure-Samples/acr-tasks.git
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel.yaml)]
 
-Parallell avbildnings version och beroende testning:
+Parallell avbildningsbygge och beroende testning:
 
 ```azurecli
 az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-tasks.git
@@ -473,9 +473,9 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 <!-- SOURCE: https://github.com/Azure-Samples/acr-tasks/blob/master/when-parallel-dependent.yaml -->
 [!code-yml[task](~/acr-tasks/when-parallel-dependent.yaml)]
 
-## <a name="run-variables"></a>Kör variabler
+## <a name="run-variables"></a>Köra variabler
 
-ACR-uppgifter innehåller en standard uppsättning med variabler som är tillgängliga för uppgifts steg när de körs. Dessa variabler kan nås med hjälp av formatet `{{.Run.VariableName}}` , där `VariableName` är något av följande:
+ACR-uppgifter innehåller en standarduppsättning variabler som är tillgängliga för uppgiftssteg när de körs. Du kan komma åt dessa variabler med formatet `{{.Run.VariableName}}` , där är något av `VariableName` följande:
 
 * `Run.ID`
 * `Run.SharedVolume`
@@ -488,13 +488,13 @@ ACR-uppgifter innehåller en standard uppsättning med variabler som är tillgä
 * `Run.Branch`
 * `Run.TaskName`
 
-Variabel namnen är vanligt vis själv för klar Ande. Information följer för ofta använda variabler. Från och med YAML `v1.1.0` -versionen kan du använda ett förkortat, fördefinierat [aktivitets-alias](#aliases) i stället för de flesta körnings variabler. Använd till exempel aliaset i stället för `{{.Run.Registry}}` `$Registry` .
+Variabelnamnen är vanligtvis självförklarande. Information följer för vanliga variabler. Från och med YAML-versionen `v1.1.0` kan du använda ett förkortat, fördefinierat [uppgiftsalias](#aliases) i stället för de flesta körningsvariabler. I stället för använder `{{.Run.Registry}}` du till exempel `$Registry` aliaset .
 
 ### <a name="runid"></a>Run.ID
 
-Varje körning, via `az acr run` eller utlösare baserad körning av uppgifter som skapats via `az acr task create` , har ett unikt ID. ID: t representerar körningen som körs för närvarande.
+Varje Körning, via `az acr run` eller utlösarbaserad körning av uppgifter som skapats via `az acr task create` har ett unikt ID. ID:t representerar den körning som körs för närvarande.
 
-Används vanligt vis för att unikt tagga en bild:
+Används vanligtvis för en unikt taggning av en avbildning:
 
 ```yml
 version: v1.1.0
@@ -502,13 +502,13 @@ steps:
     - build: -t $Registry/hello-world:$ID .
 ```
 
-### <a name="runsharedvolume"></a>Kör. SharedVolume
+### <a name="runsharedvolume"></a>Run.SharedVolume
 
-Den unika identifieraren för en delad volym som är tillgänglig för alla aktivitets steg. Volymen monteras på `c:\workspace` i Windows eller `/workspace` Linux. 
+Unik identifierare för en delad volym som kan nås av alla uppgiftssteg. Volymen monteras på i `c:\workspace` Windows eller `/workspace` i Linux. 
 
-### <a name="runregistry"></a>Kör. Registry
+### <a name="runregistry"></a>Run.Registry
 
-Det fullständigt kvalificerade Server namnet för registret. Används vanligt vis för att allmänt referera till registret där aktiviteten körs.
+Det fullständigt kvalificerade servernamnet för registret. Används vanligtvis för att referera till registret där aktiviteten körs.
 
 ```yml
 version: v1.1.0
@@ -516,9 +516,9 @@ steps:
   - build: -t $Registry/hello-world:$ID .
 ```
 
-### <a name="runregistryname"></a>Kör. RegistryName
+### <a name="runregistryname"></a>Run.RegistryName
 
-Namnet på behållar registret. Används vanligt vis i uppgifts steg som inte kräver ett fullständigt kvalificerat Server namn, till exempel `cmd` steg som kör Azure CLI-kommandon på register.
+Namnet på containerregistret. Används vanligtvis i uppgiftssteg som inte kräver ett fullständigt kvalificerat servernamn, till exempel steg som `cmd` kör Azure CLI-kommandon på register.
 
 ```yml
 version 1.1.0
@@ -528,29 +528,29 @@ steps:
 - cmd: az acr repository list --name $RegistryName
 ```
 
-### <a name="rundate"></a>Kör. datum
+### <a name="rundate"></a>Run.Date
 
 Den aktuella UTC-tid då körningen påbörjades.
 
-### <a name="runcommit"></a>Kör. commit
+### <a name="runcommit"></a>Run.Commit
 
-För en uppgift som utlöses av ett genomförande till en GitHub-lagringsplats, COMMIT-ID: t.
+För en aktivitet som utlöses av en commit till en GitHub-lagringsplats, genomför du id:t.
 
-### <a name="runbranch"></a>Kör. Branch
+### <a name="runbranch"></a>Run.Branch
 
-För en uppgift som utlöses av ett genomförande till en GitHub-lagringsplats, namnet på grenen.
+För en aktivitet som utlöses av en commit till en GitHub-lagringsplats, grennamnet.
 
 ## <a name="aliases"></a>Alias
 
-Från `v1.1.0` och med stöder ACR-aktiviteter alias som är tillgängliga för uppgifts steg när de körs. Alias är liknande för alias (kommando gen vägar) som stöds i bash och vissa andra kommando gränssnitt. 
+Från och `v1.1.0` med ACR-uppgifter alias som är tillgängliga för uppgiftssteg när de körs. Alias liknar alias (kommandogenvägar) som stöds i bash och vissa andra kommandogränssnitt. 
 
-Med ett alias kan du starta ett kommando eller en grupp med kommandon (inklusive alternativ och fil namn) genom att ange ett enda ord.
+Med ett alias kan du starta ett kommando eller en grupp med kommandon (inklusive alternativ och filnamn) genom att ange ett enda ord.
 
-ACR-aktiviteter stöder flera fördefinierade alias och även anpassade alias som du skapar.
+ACR-uppgifter har stöd för flera fördefinierade alias och även anpassade alias som du skapar.
 
 ### <a name="predefined-aliases"></a>Fördefinierade alias
 
-Följande uppgifter alias är tillgängliga för användning i stället för Run- [variabler](#run-variables):
+Följande aktivitetsalias är tillgängliga för användning i stället för [körningsvariabler:](#run-variables)
 
 | Alias | Kör variabel |
 | ----- | ------------ |
@@ -564,7 +564,7 @@ Följande uppgifter alias är tillgängliga för användning i stället för Run
 | `Commit` | `Run.Commit` |
 | `Branch` | `Run.Branch` |
 
-I uppgifts steg, skriver du in ett alias med `$` direktivet, som i det här exemplet:
+I uppgiftsstegen ska du föregå ett alias `$` med -direktivet, som i det här exemplet:
 
 ```yml
 version: v1.1.0
@@ -572,9 +572,9 @@ steps:
   - build: -t $Registry/hello-world:$ID -f hello-world.dockerfile .
 ```
 
-### <a name="image-aliases"></a>Bildalias
+### <a name="image-aliases"></a>Avbildningsalias
 
-Vart och ett av följande alias pekar på en stabil avbildning i Microsoft Container Registry (MCR). Du kan referera till var och en av dem i `cmd` avsnittet i en aktivitets fil utan att använda ett direktiv.
+Vart och ett av följande alias pekar på en stabil avbildning i Microsoft Container Registry (MCR). Du kan referera till var och en av dem i `cmd` avsnittet i en uppgiftsfil utan att använda ett direktiv.
 
 | Alias | Bild |
 | ----- | ----- |
@@ -583,7 +583,7 @@ Vart och ett av följande alias pekar på en stabil avbildning i Microsoft Conta
 | `bash` | `mcr.microsoft.com/acr/bash:a80af84` |
 | `curl` | `mcr.microsoft.com/acr/curl:a80af84` |
 
-I följande exempel aktivitet används flera alias för att [Rensa](container-registry-auto-purge.md) bildtaggar som är äldre än 7 dagar i lagrings platsen `samples/hello-world` i körnings registret:
+I följande exempelaktivitet används flera alias för att [rensa avbildningstaggar](container-registry-auto-purge.md) som är äldre än 7 dagar i `samples/hello-world` lagringsplatsen i körningsregistret:
 
 ```yml
 version: v1.1.0
@@ -594,7 +594,7 @@ steps:
 
 ### <a name="custom-alias"></a>Anpassat alias
 
-Definiera ett anpassat alias i din YAML-fil och Använd det på det sätt som visas i följande exempel. Ett alias får bara innehålla alfanumeriska tecken. Standard direktivet för att expandera ett alias är `$` specialtecknet.
+Definiera ett anpassat alias i YAML-filen och använd det som du ser i följande exempel. Ett alias får bara innehålla alfanumeriska tecken. Standarddirektivet för att expandera ett alias är `$` tecknet .
 
 ```yml
 version: v1.1.0
@@ -605,7 +605,7 @@ steps:
   - build: -t $Registry/$repo/hello-world:$ID -f Dockerfile .
 ```
 
-Du kan länka till en fjärran sluten eller lokal YAML-fil för anpassade definitioner av alias. Följande exempel länkar till en YAML-fil i Azure Blob Storage:
+Du kan länka till en fjärransluten eller lokal YAML-fil för anpassade aliasdefinitioner. Följande exempel länkar till en YAML-fil i Azure Blob Storage:
 
 ```yml
 version: v1.1.0
@@ -617,9 +617,9 @@ alias:
 
 ## <a name="next-steps"></a>Nästa steg
 
-En översikt över aktiviteter i flera steg finns i [utföra åtgärder för att skapa flera steg, testa och uppdatera i ACR uppgifter](container-registry-tasks-multi-step.md).
+En översikt över uppgifter i flera steg finns i Köra uppgifter för att [skapa, testa](container-registry-tasks-multi-step.md)och korrigera flera steg i ACR-uppgifter .
 
-För enskilda-steg-versioner, se [Översikt över ACR-aktiviteter](container-registry-tasks-overview.md).
+Information om byggen med ett steg finns i [ACR-uppgifter översikt.](container-registry-tasks-overview.md)
 
 
 
@@ -629,6 +629,6 @@ För enskilda-steg-versioner, se [Översikt över ACR-aktiviteter](container-reg
 [acr-tasks]: https://github.com/Azure-Samples/acr-tasks
 
 <!-- LINKS - Internal -->
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-configure]: /cli/azure/reference-index#az-configure
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-configure]: /cli/azure/reference-index#az_configure

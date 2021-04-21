@@ -1,7 +1,7 @@
 ---
 title: GitHub Actions för CI/CD
 titleSuffix: Azure Machine Learning
-description: Lär dig mer om hur du skapar ett GitHub-åtgärds arbets flöde för att träna en modell på Azure Machine Learning
+description: Lär dig hur du skapar ett GitHub Actions arbetsflöde för att träna en modell på Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,52 +10,52 @@ ms.author: jukullam
 ms.date: 10/19/2020
 ms.topic: conceptual
 ms.custom: github-actions-azure
-ms.openlocfilehash: b21f53f8ec76257fc19e0e30cd025ecc46ad2188
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6505523aa367eaf202ece81a4253429e864e169a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102218289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780379"
 ---
-# <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub-åtgärder med Azure Machine Learning
+# <a name="use-github-actions-with-azure-machine-learning"></a>Använda GitHub Actions med Azure Machine Learning
 
-Kom igång med [GitHub-åtgärder](https://docs.github.com/en/actions) för att träna en modell på Azure Machine Learning. 
+Kom igång med [GitHub Actions](https://docs.github.com/en/actions) att träna en modell på Azure Machine Learning. 
 
 > [!NOTE]
-> GitHub-åtgärder för Azure Machine Learning tillhandahålls i befintligt skick och stöds inte fullt ut av Microsoft. Om du stöter på problem med en speciell åtgärd öppnar du ett ärende i databasen för åtgärden. Om du till exempel stöter på problem med åtgärden AML-Deploy rapporterar du problemet i [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) lagrings platsen.
+> GitHub Actions för Azure Machine Learning tillhandahålls som de är och stöds inte fullt ut av Microsoft. Om du stöter på problem med en viss åtgärd kan du öppna ett problem på lagringsplatsen för åtgärden. Om du till exempel stöter på problem med åtgärden aml-deploy kan du rapportera problemet i [https://github.com/Azure/aml-deploy]( https://github.com/Azure/aml-deploy) lagringsplatsen.
 
 ## <a name="prerequisites"></a>Förutsättningar 
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnads fritt](https://github.com/join).  
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+- Ett GitHub-konto. Om du inte har någon kan du registrera dig [kostnadsfritt.](https://github.com/join)  
 
-## <a name="workflow-file-overview"></a>Översikt över arbets flödes fil
+## <a name="workflow-file-overview"></a>Översikt över arbetsflödesfil
 
-Ett arbets flöde definieras av en YAML-fil (. yml) i `/.github/workflows/` sökvägen i lagrings platsen. Den här definitionen innehåller de olika stegen och parametrarna som utgör arbets flödet.
+Ett arbetsflöde definieras av en YAML-fil (.yml) i `/.github/workflows/` sökvägen på din lagringsplats. Den här definitionen innehåller de olika steg och parametrar som utgör arbetsflödet.
 
 Filen har fyra avsnitt:
 
 |Avsnitt  |Uppgifter  |
 |---------|---------|
-|**Autentisering** | 1. definiera ett huvud namn för tjänsten. <br /> 2. skapa en GitHub-hemlighet. |
-|**Anslut** | 1. Anslut till Machine Learning-arbetsytan. <br /> 2. Anslut till ett beräknings mål. |
-|**Fungerar** | 1. skicka en utbildnings körning. |
-|**Distribuera** | 1. registrera modell i Azure Machine Learning registret. 1. Distribuera modellen. |
+|**Autentisering** | 1. Definiera ett huvudnamn för tjänsten. <br /> 2. Skapa en GitHub-hemlighet. |
+|**Anslut** | 1. Anslut till maskininlärningsarbetsytan. <br /> 2. Anslut till ett beräkningsmål. |
+|**Kör** | 1. Skicka en träningskörning. |
+|**Distribuera** | 1. Registrera modellen i Azure Machine Learning register. 1. Distribuera modellen. |
 
-## <a name="create-repository"></a>Skapa lagrings plats
+## <a name="create-repository"></a>Skapa lagringsplats
 
-Skapa en ny lagrings plats av [ml-Ops med GitHub-åtgärder och Azure Machine Learning mall](https://github.com/machine-learning-apps/ml-template-azure). 
+Skapa en ny lagringsplats utanför [ML Ops med GitHub Actions och Azure Machine Learning mallen](https://github.com/machine-learning-apps/ml-template-azure). 
 
-1. Öppna [mallen](https://github.com/machine-learning-apps/ml-template-azure) på GitHub. 
-2. Välj **Använd den här mallen**. 
+1. Öppna mallen [på](https://github.com/machine-learning-apps/ml-template-azure) GitHub. 
+2. Välj **Använd den här mallen.** 
 
-    :::image type="content" source="media/how-to-github-actions-machine-learning/gh-actions-use-template.png" alt-text="Välj Använd den här mallen":::
-3. Skapa en ny lagrings plats från mallen. Ange ett namn på lagrings platsen `ml-learning` eller valfritt namn. 
+    :::image type="content" source="media/how-to-github-actions-machine-learning/gh-actions-use-template.png" alt-text="Välj använd den här mallen":::
+3. Skapa en ny lagringsplats från mallen. Ange namnet på `ml-learning` lagringsplatsen till eller ett val av namn. 
 
 
 ## <a name="generate-deployment-credentials"></a>Generera autentiseringsuppgifter för distribution
 
-Du kan skapa ett [huvud namn för tjänsten](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) med kommandot [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp#az-ad-sp-create-for-rbac) i [Azure CLI](/cli/azure/). Kör det här kommandot med [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja knappen **prova** .
+Du kan skapa ett [huvudnamn](../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) för tjänsten [med kommandot az ad sp create-for-rbac](/cli/azure/ad/sp#az_ad_sp_create_for_rbac) i Azure [CLI.](/cli/azure/) Kör det här kommandot [Azure Cloud Shell](https://shell.azure.com/) i Azure Portal eller genom att välja **knappen Prova.**
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name "myML" --role contributor \
@@ -63,7 +63,7 @@ az ad sp create-for-rbac --name "myML" --role contributor \
                             --sdk-auth
 ```
 
-I exemplet ovan ersätter du plats hållarna med ditt prenumerations-ID, resurs grupp namn och app-namn. Utdata är ett JSON-objekt med roll tilldelningens autentiseringsuppgifter som ger åtkomst till din App Service-app på liknande sätt som nedan. Kopiera det här JSON-objektet för senare.
+I exemplet ovan ersätter du platshållarna med ditt prenumerations-ID, resursgruppens namn och appnamnet. Utdata är ett JSON-objekt med autentiseringsuppgifter för rolltilldelning som ger åtkomst till din App Service som liknar nedan. Kopiera det här JSON-objektet för senare tillfälle.
 
 ```output 
   {
@@ -77,13 +77,13 @@ I exemplet ovan ersätter du plats hållarna med ditt prenumerations-ID, resurs 
 
 ## <a name="configure-the-github-secret"></a>Konfigurera GitHub-hemligheten
 
-1. I [GitHub](https://github.com/), bläddra i din lagrings plats, välj **inställningar > hemligheter > Lägg till en ny hemlighet**.
+1. I [GitHub](https://github.com/)bläddrar du till din lagringsplats och **väljer Inställningar > Hemligheter > Lägg till en ny hemlighet**.
 
-2. Klistra in hela JSON-utdata från Azure CLI-kommandot i fältet hemligt värde. Ge hemligheten namnet `AZURE_CREDENTIALS` .
+2. Klistra in hela JSON-utdata från Azure CLI-kommandot i hemlighetens värdefält. Ge hemligheten namnet `AZURE_CREDENTIALS` .
 
-## <a name="connect-to-the-workspace"></a>Anslut till arbets ytan
+## <a name="connect-to-the-workspace"></a>Ansluta till arbetsytan
 
-Använd [Azure Machine Learning-arbetsyta åtgärden](https://github.com/marketplace/actions/azure-machine-learning-workspace) för att ansluta till Azure Machine Learning-arbetsytan. 
+Använd åtgärden [Azure Machine Learning-arbetsyta för](https://github.com/marketplace/actions/azure-machine-learning-workspace) att ansluta till din Azure Machine Learning arbetsyta. 
 
 ```yaml
     - name: Connect/Create Azure Machine Learning Workspace
@@ -93,7 +93,7 @@ Använd [Azure Machine Learning-arbetsyta åtgärden](https://github.com/marketp
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 ```
 
-Som standard förväntar sig åtgärden en `workspace.json` fil. Om JSON-filen har ett annat namn kan du ange den med `parameters_file` indataparametern. Om det inte finns en fil skapas en ny med namnet på databasen.
+Som standard förväntar sig åtgärden en `workspace.json` fil. Om JSON-filen har ett annat namn kan du ange den med `parameters_file` indataparametern. Om det inte finns någon fil skapas en ny med namnet på lagringsplatsen.
 
 
 ```yaml
@@ -104,11 +104,11 @@ Som standard förväntar sig åtgärden en `workspace.json` fil. Om JSON-filen h
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
           parameters_file: "alternate_workspace.json"
 ```
-Åtgärden skriver arbets ytans Azure Resource Manager (ARM) egenskaper till en konfigurations fil som kommer att plockas av alla framtida Azure Machine Learning GitHub åtgärder. Filen sparas i `GITHUB_WORKSPACE/aml_arm_config.json` . 
+Åtgärden skriver arm-Azure Resource Manager (workspace Azure Resource Manager) till en konfigurationsfil som kommer att väljas av alla framtida Azure Machine Learning GitHub Actions. Filen sparas i `GITHUB_WORKSPACE/aml_arm_config.json` . 
 
-## <a name="connect-to-a-compute-target-in-azure-machine-learning"></a>Anslut till ett beräknings mål i Azure Machine Learning
+## <a name="connect-to-a-compute-target-in-azure-machine-learning"></a>Ansluta till ett beräkningsmål i Azure Machine Learning
 
-Använd [Azure Machine Learning beräknings åtgärd](https://github.com/Azure/aml-compute) för att ansluta till ett beräknings mål i Azure Machine Learning.  Om beräknings målet finns ansluter åtgärden till den. Annars kommer åtgärden att skapa ett nytt beräknings mål. [Compute-åtgärden AML](https://github.com/Azure/aml-compute) stöder endast Azure ml Compute-kluster och Azure Kubernetes service (AKS). 
+Använd åtgärden [Azure Machine Learning Compute för](https://github.com/Azure/aml-compute) att ansluta till ett beräkningsmål i Azure Machine Learning.  Om beräkningsmålet finns ansluter åtgärden till det. Annars skapar åtgärden ett nytt beräkningsmål. [AML-beräkningsåtgärden](https://github.com/Azure/aml-compute) stöder endast Azure ML-beräkningsklustret och Azure Kubernetes Service (AKS). 
 
 ```yaml
     - name: Connect/Create Azure Machine Learning Compute Target
@@ -119,7 +119,7 @@ Använd [Azure Machine Learning beräknings åtgärd](https://github.com/Azure/a
 ```
 ## <a name="submit-training-run"></a>Skicka träningskörning
 
-Använd [Azure Machine Learning utbildnings åtgärd](https://github.com/Azure/aml-run) för att skicka en ScriptRun, en uppskattare eller en pipeline till Azure Machine Learning. 
+Använd åtgärden [Azure Machine Learning Training för](https://github.com/Azure/aml-run) att skicka en ScriptRun, en beräknare eller en pipeline för att Azure Machine Learning. 
 
 ```yaml
     - name: Submit training run
@@ -129,9 +129,9 @@ Använd [Azure Machine Learning utbildnings åtgärd](https://github.com/Azure/a
           azure_credentials: ${{ secrets.AZURE_CREDENTIALS }}
 ```
 
-## <a name="register-model-in-registry"></a>Registrera modell i registret
+## <a name="register-model-in-registry"></a>Registrera modellen i registret
 
-Använd [åtgärden Azure Machine Learning registrera modell](https://github.com/Azure/aml-registermodel) för att registrera en modell för Azure Machine Learning.
+Använd åtgärden [Azure Machine Learning Registrera modell för](https://github.com/Azure/aml-registermodel) att registrera en modell för att Azure Machine Learning.
 
 ```yaml
     - name: Register model
@@ -143,9 +143,9 @@ Använd [åtgärden Azure Machine Learning registrera modell](https://github.com
           experiment_name: ${{ steps.aml_run.outputs.experiment_name }}
 ```
 
-## <a name="deploy-model-to-azure-machine-learning-to-aci"></a>Distribuera modellen till Azure Machine Learning till ACI
+## <a name="deploy-model-to-azure-machine-learning-to-aci"></a>Distribuera modell till Azure Machine Learning till ACI
 
-Använd [åtgärden Azure Machine Learning distribution](https://github.com/Azure/aml-deploy) för att distribuera en modell och skapa en slut punkt för modellen. Du kan också använda Azure Machine Learning Deploy för att distribuera till Azure Kubernetes-tjänsten. Se [det här exempel arbets flödet](https://github.com/Azure-Samples/mlops-enterprise-template) för en modell som distribuerar till Azure Kubernetes-tjänsten.
+Använd åtgärden [Azure Machine Learning Deploy för](https://github.com/Azure/aml-deploy) att distribuera en modell och skapa en slutpunkt för modellen. Du kan också använda Azure Machine Learning Distribuera för att distribuera till Azure Kubernetes Service. Se [det här exempelarbetsflödet](https://github.com/Azure-Samples/mlops-enterprise-template) för en modell som distribueras till Azure Kubernetes Service.
 
 ```yaml
     - name: Deploy model
@@ -160,7 +160,7 @@ Använd [åtgärden Azure Machine Learning distribution](https://github.com/Azur
 
 ## <a name="complete-example"></a>Fullständigt exempel
 
-Träna din modell och distribuera den till Azure Machine Learning. 
+Träna din modell och distribuera till Azure Machine Learning. 
 
 ```yaml
 # Actions train a model on Azure Machine Learning
@@ -223,9 +223,9 @@ jobs:
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När din resurs grupp och lagrings plats inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resurs gruppen och GitHub-lagringsplatsen. 
+När resursgruppen och lagringsplatsen inte längre behövs rensar du de resurser som du har distribuerat genom att ta bort resursgruppen och GitHub-lagringsplatsen. 
 
 ## <a name="next-steps"></a>Nästa steg
 
 > [!div class="nextstepaction"]
-> [Skapa och kör maskin inlärnings pipeliner med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)
+> [Skapa och köra pipelines för maskininlärning med Azure Machine Learning SDK](./how-to-create-machine-learning-pipelines.md)

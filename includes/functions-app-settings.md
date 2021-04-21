@@ -7,17 +7,17 @@ ms.topic: include
 ms.date: 08/15/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 1776c756df23be9c1f29382ff223d367ffc5cc5a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a55a8d9313de45cc7d7be9275516b3b85015c835
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99500346"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800029"
 ---
-Det finns flera sätt som du kan lägga till, uppdatera och ta bort funktions program inställningar:
+Det finns flera sätt att lägga till, uppdatera och ta bort inställningar för funktionsappen:
 
 + [I Azure Portal.](../articles/azure-functions/functions-how-to-use-azure-function-app-settings.md#settings)
-+ [Med hjälp av Azure CLI.](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set)
++ [Med hjälp av Azure CLI.](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set)
 + [Med hjälp av Azure PowerShell.](/powershell/module/az.functions/update-azfunctionappsetting)
 
-Ändringar av programmets funktions inställningar kräver att din Function-app startas om.
+Ändringar i inställningarna för funktionsappen kräver att funktionsappen startas om.
