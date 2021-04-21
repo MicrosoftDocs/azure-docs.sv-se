@@ -1,6 +1,6 @@
 ---
-title: CLI – skapa en bild från en ögonblicks bild eller hanterad disk i ett galleri för delade avbildningar
-description: Lär dig hur du skapar en avbildning från en ögonblicks bild eller en hanterad disk i ett delat avbildnings galleri med hjälp av Azure CLI.
+title: CLI – Skapa en avbildning från en ögonblicksbild eller en hanterad disk i en Shared Image Gallery
+description: Lär dig hur du skapar en avbildning från en ögonblicksbild eller en hanterad disk i Shared Image Gallery med hjälp av Azure CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,73 +9,73 @@ ms.workload: infrastructure
 ms.date: 06/30/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c809edd3699d0b9827fe15da53d5d18b12cbe6e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2dc6d99b8b1c913479fc584b52f6ff919dfac675
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102556969"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107792299"
 ---
-# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Skapa en bild från en hanterad disk eller ögonblicks bild i ett galleri för delad avbildning med hjälp av Azure CLI
+# <a name="create-an-image-from-a-managed-disk-or-snapshot-in-a-shared-image-gallery-using-the-azure-cli"></a>Skapa en avbildning från en hanterad disk eller ögonblicksbild i en Shared Image Gallery med hjälp av Azure CLI
 
-Om du har en befintlig ögonblicks bild eller en hanterad disk som du vill migrera till ett delat avbildnings Galleri kan du skapa en avbildning av en delad avbildning direkt från den hanterade disken eller ögonblicks bilden. När du har testat den nya avbildningen kan du ta bort den hanterade käll disken eller ögonblicks bilden. Du kan också skapa en avbildning från en hanterad disk eller ögonblicks bild i ett galleri för delade avbildningar med hjälp av [Azure PowerShell](image-version-snapshot-powershell.md).
+Om du har en befintlig ögonblicksbild eller hanterad disk som du vill migrera till en Shared Image Gallery kan du skapa en Shared Image Gallery-avbildning direkt från den hanterade disken eller ögonblicksbilden. När du har testat den nya avbildningen kan du ta bort den hanterade källdisken eller ögonblicksbilden. Du kan också skapa en avbildning från en hanterad disk eller ögonblicksbild i en Shared Image Gallery med hjälp av [Azure PowerShell](image-version-snapshot-powershell.md).
 
-Bilder i ett bild galleri har två komponenter som vi kommer att skapa i det här exemplet:
-- En **bild definition** innehåller information om avbildningen och kraven för att använda den. Detta inkluderar om avbildningen är Windows eller Linux, specialiserad eller generaliserad, viktig information och lägsta och högsta minnes krav. Det är en definition av en typ av bild. 
-- En **avbildnings version** är vad som används för att skapa en virtuell dator när du använder ett delat avbildnings Galleri. Du kan ha flera versioner av en avbildning efter behov för din miljö. När du skapar en virtuell dator används avbildnings versionen för att skapa nya diskar för den virtuella datorn. Avbildnings versioner kan användas flera gånger.
+Bilder i ett bildgalleri har två komponenter, som vi skapar i det här exemplet:
+- En **bilddefinition** innehåller information om avbildningen och kraven för att använda den. Detta omfattar huruvida avbildningen är Windows eller Linux, specialiserad eller generaliserad, versionsanteckningar samt krav på minsta och högsta minne. Det är en definition av en typ av bild. 
+- En **avbildningsversion** används för att skapa en virtuell dator när du använder en Shared Image Gallery. Du kan ha flera versioner av en avbildning efter behov för din miljö. När du skapar en virtuell dator används avbildningsversionen för att skapa nya diskar för den virtuella datorn. Avbildningsversioner kan användas flera gånger.
 
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-För att slutföra den här artikeln måste du ha en ögonblicks bild eller en hanterad disk. 
+För att kunna slutföra den här artikeln måste du ha en ögonblicksbild eller en hanterad disk. 
 
-Om du vill inkludera en datadisk får data disk storleken inte vara större än 1 TB.
+Om du vill inkludera en datadisk får storleken på datadisken inte vara större än 1 TB.
 
-Ersätt resurs namnen där det behövs när du arbetar i den här artikeln.
+När du arbetar med den här artikeln ersätter du resursnamnen där det behövs.
 
-## <a name="find-the-snapshot-or-managed-disk"></a>Hitta ögonblicks bilden eller den hanterade disken 
+## <a name="find-the-snapshot-or-managed-disk"></a>Hitta ögonblicksbilden eller den hanterade disken 
 
-Du kan se en lista över ögonblicks bilder som är tillgängliga i en resurs grupp med [AZ Snapshot List](/cli/azure/snapshot#az-snapshot-list). 
+Du kan se en lista över ögonblicksbilder som är tillgängliga i en resursgrupp med [az snapshot list](/cli/azure/snapshot#az_snapshot_list). 
 
 ```azurecli-interactive
 az snapshot list --query "[].[name, id]" -o tsv
 ```
 
-Du kan också använda en hanterad disk i stället för en ögonblicks bild. Använd [AZ disk List](/cli/azure/disk#az-disk-list)för att hämta en hanterad disk. 
+Du kan också använda en hanterad disk i stället för en ögonblicksbild. Hämta en hanterad disk med [az disk list](/cli/azure/disk#az_disk_list). 
 
 ```azurecli-interactive
 az disk list --query "[].[name, id]" -o tsv
 ```
 
-När du har ID: t för ögonblicks bilden eller den hanterade disken och kopplat den till en variabel som kallas `$source` för senare bruk.
+När du har ID:t för ögonblicksbilden eller den hanterade disken och tilldelar den till en variabel med namnet `$source` som ska användas senare.
 
-Du kan använda samma process för att hämta alla data diskar som du vill ska ingå i din avbildning. Tilldela dem till variabler och Använd sedan variablerna senare när du skapar avbildnings versionen.
+Du kan använda samma process för att hämta alla datadiskar som du vill ta med i avbildningen. Tilldela dem till variabler och använd sedan dessa variabler senare när du skapar avbildningsversionen.
 
 
 ## <a name="find-the-gallery"></a>Hitta galleriet
 
-Du behöver information om bild galleriet för att kunna skapa avbildnings definitionen.
+Du behöver information om bildgalleriet för att kunna skapa avbildningsdefinitionen.
 
-Visa information om tillgängliga bild gallerier med hjälp av [AZ sig-listan](/cli/azure/sig#az-sig-list). Anteckna namnet på galleriet där resurs gruppen galleriet ska användas senare.
+Visa information om tillgängliga avbildningsgallerier med [az sig list](/cli/azure/sig#az_sig_list). Observera gallerinamnet som den resursgrupp som galleriet finns i för senare användning.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
 
-## <a name="create-an-image-definition"></a>Skapa en avbildnings definition
+## <a name="create-an-image-definition"></a>Skapa en avbildningsdefinition
 
-Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om avbildningen. Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. 
+Bilddefinitioner skapar en logisk gruppering för bilder. De används för att hantera information om avbildningen. Bilddefinitionsnamn kan består av versaler eller gemener, siffror, punkter, bindestreck och punkter. 
 
-När du gör en avbildnings definition ser du till att har all rätt information. I det här exemplet antar vi att ögonblicks bilden eller den hanterade disken kommer från en virtuell dator som används och inte har generaliserats. Om den hanterade disken eller ögonblicks bilden tog ett generaliserat operativ system (efter att du kört Sysprep för Windows eller [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` eller `-deprovision+user` för Linux) ändrar `-OsState` du till `generalized` . 
+När du gör avbildningsdefinitionen ska du kontrollera att har all rätt information. I det här exemplet antar vi att ögonblicksbilden eller den hanterade disken kommer från en virtuell dator som används och inte har generaliserats. Om den hanterade disken eller ögonblicksbilden togs av ett generaliserat operativsystem (efter körning av Sysprep för Windows eller [waagent](https://github.com/Azure/WALinuxAgent) eller för Linux) ändrar `-deprovision` du `-deprovision+user` till `-OsState` `generalized` . 
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](./shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bilddefinition finns i [Bilddefinitioner](./shared-image-galleries.md#image-definitions).
 
-Skapa en bild definition i galleriet med hjälp av [AZ sig-bild-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Skapa en avbildningsdefinition i galleriet med [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create).
 
-I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [SPECIALISERAd](./shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. Använd om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem `--os-type Windows` . 
+I det här exemplet heter avbildningsdefinitionen *myImageDefinition* och är för en specialiserad [Linux](./shared-image-galleries.md#generalized-and-specialized-images) OS-avbildning. Om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem använder du `--os-type Windows` . 
 
-I det här exemplet *heter galleriet Galleri, det* finns i resurs gruppen *myGalleryRG* och bild definitions namnet kommer att vara *mImageDefinition*.
+I det här exemplet heter galleriet *myGallery*, det finns i resursgruppen *myGalleryRG* och avbildningsdefinitionsnamnet *blir mImageDefinition*.
 
 ```azurecli-interactive 
 resourceGroup=myGalleryRG
@@ -93,15 +93,15 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>Skapa avbildnings versionen
+## <a name="create-the-image-version"></a>Skapa avbildningsversionen
 
-Skapa en avbildnings version med [AZ avbildnings Galleri skapa-avbildning-version](/cli/azure/sig/image-version#az-sig-image-version-create). 
+Skapa en avbildningsversion [med az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create). 
 
-Tillåtna tecken för bild version är tal och punkter. Talen måste vara inom intervallet för ett 32-bitars heltal. Format: *Major version*. *MinorVersion*. *Korrigering*.
+Tillåtna tecken för bildversion är siffror och punkter. Tal måste vara inom intervallet för ett 32-bitars heltal. Format: *MajorVersion*. *MinorVersion*. *Korrigera*.
 
-I det här exemplet är versionen av vår avbildning *1.0.0* och vi kommer att skapa en replik i regionen USA, *södra centrala* och 1 i regionen *USA, östra 2* med zon-redundant lagring. Kom ihåg att du även måste inkludera *käll* regionen för den hanterade disken eller ögonblicks bilden som mål för replikering när du väljer mål regioner för replikering.
+I det här exemplet är versionen av avbildningen *1.0.0* och vi ska skapa en replik i regionen USA, södra *centrala* och en replik i regionen USA, östra *2* med zonredundant lagring. När du väljer målregioner för replikering måste  du även inkludera källregionen för den hanterade disken eller ögonblicksbilden som ett mål för replikering.
 
-Skicka ID: t för ögonblicks bilden eller den hanterade disken i `--os-snapshot` parametern.
+Skicka ID:t för ögonblicksbilden eller den hanterade disken i `--os-snapshot` parametern .
 
 
 ```azurecli-interactive 
@@ -115,16 +115,16 @@ az sig image-version create \
    --os-snapshot $source
 ```
 
-Om du vill inkludera data diskar i avbildningen måste du inkludera både `--data-snapshot-luns` parametern som angetts till LUN-numret och `--data-snapshots` värdet för data diskens eller ögonblicks bildens ID.
+Om du vill inkludera datadiskar i avbildningen måste du inkludera både parametern som är inställd på LUN-numret och uppsättningen till ID:t för `--data-snapshot-luns` `--data-snapshots` datadisken eller ögonblicksbilden.
 
 > [!NOTE]
-> Du måste vänta tills avbildnings versionen är fullständigt slutförd och replikerad innan du kan använda samma hanterade avbildning för att skapa en annan avbildnings version.
+> Du måste vänta tills avbildningsversionen har skapats och replikerats helt innan du kan använda samma hanterade avbildning för att skapa en annan avbildningsversion.
 >
-> Du kan också lagra alla dina avbildnings versions repliker i [zon redundant lagring](../storage/common/storage-redundancy.md) genom att lägga till `--storage-account-type standard_zrs` den när du skapar avbildnings versionen.
+> Du kan också lagra alla repliker av avbildningsversion i [Zonredundant lagring genom](../storage/common/storage-redundancy.md) att lägga `--storage-account-type standard_zrs` till när du skapar avbildningsversionen.
 >
 
 ## <a name="next-steps"></a>Nästa steg
 
-Skapa en virtuell dator från en [specialiserad avbildnings version](vm-specialized-image-version-cli.md).
+Skapa en virtuell dator från en [specialiserad avbildningsversion](vm-specialized-image-version-cli.md).
 
-Information om hur du anger information om inköps planer finns i [tillhandahålla information om inköps plan för Azure Marketplace när du skapar avbildningar](marketplace-images.md).
+Information om hur du tillhandahåller information om inköpsplan finns i Ange Azure Marketplace [när du skapar avbildningar.](marketplace-images.md)

@@ -1,43 +1,43 @@
 ---
-title: Självstudie – använda Docker Compose för att distribuera grupper med flera behållare
-description: Använd Docker Compose för att skapa och köra ett program med flera behållare och sedan hämta programmet i Azure Container Instances
+title: Självstudie – Använda Docker Compose för att distribuera grupp med flera containrar
+description: Använd Docker Compose för att skapa och köra ett program med flera containrar och sedan öppna programmet i Azure Container Instances
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.custom: ''
-ms.openlocfilehash: a71ff438feaef555a85c33d818c287c64621d40d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ef08b9f9e0f596f1d94c0e6edfd46f735fe78053
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92913848"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786928"
 ---
-# <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Självstudie: Distribuera en grupp med flera behållare med hjälp av Docker Compose 
+# <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Självstudie: Distribuera en grupp med flera containrar med Docker Compose 
 
-I den här självstudien använder du [Docker Compose](https://docs.docker.com/compose/) för att definiera och köra ett program med flera behållare lokalt och sedan distribuera det som en [behållar grupp](container-instances-container-groups.md) i Azure Container instances. 
+I den här självstudien använder du [Docker Compose](https://docs.docker.com/compose/) för att definiera och köra ett program med flera containrar lokalt och sedan distribuera det som en [containergrupp](container-instances-container-groups.md) i Azure Container Instances. 
 
-Kör behållare i Azure Container Instances på begäran när du utvecklar Cloud-inhemska appar med Docker och du vill växla sömlöst från lokal utveckling till moln distribution. Den här funktionen är aktive rad genom [integrering mellan Docker och Azure](https://docs.docker.com/engine/context/aci-integration/). Du kan använda inbyggda Docker-kommandon för att köra [en enda container instans](quickstart-docker-cli.md) eller flera container grupper i Azure.
+Kör containrar Azure Container Instances på begäran när du utvecklar molnbaserade appar med Docker och vill växla sömlöst från lokal utveckling till molndistribution. Den här funktionen aktiveras genom [integrering mellan Docker och Azure](https://docs.docker.com/engine/context/aci-integration/). Du kan använda interna Docker-kommandon för att köra [antingen en enskild containerinstans](quickstart-docker-cli.md) eller en grupp med flera containrar i Azure.
 
 > [!IMPORTANT]
-> Det finns inte stöd för alla funktioner i Azure Container Instances. Ge feedback om Docker-Azure-integrering genom att skapa ett problem i [Docker ACI integration](https://github.com/docker/aci-integration-beta) GitHub-lagringsplatsen.
+> Alla funktioner i Azure Container Instances stöds inte. Ge feedback om Docker-Azure genom att skapa ett problem på [GitHub-lagringsplatsen för Docker ACI-integrering.](https://github.com/docker/aci-integration-beta)
 
 > [!TIP]
-> Du kan använda [Docker-tillägget för Visual Studio Code](https://aka.ms/VSCodeDocker) för en integrerad upplevelse för att utveckla, köra och hantera behållare, bilder och kontexter.
+> Du kan använda [Docker-tillägget för Visual Studio Code](https://aka.ms/VSCodeDocker) för en integrerad upplevelse för att utveckla, köra och hantera containrar, avbildningar och kontexter.
 
 Den här artikeln innehåller följande avsnitt:
 
 > [!div class="checklist"]
 > * Skapa ett Azure-containerregister
 > * Klona programmets källkod från GitHub
-> * Använd Docker Compose för att skapa en avbildning och köra ett program med flera behållare lokalt
-> * Skicka program avbildningen till behållar registret
+> * Använda Docker Compose för att skapa en avbildning och köra ett program med flera containrar lokalt
+> * Push-skicka programavbildningen till containerregistret
 > * Skapa en Azure-kontext för Docker
-> * Hämta programmet i Azure Container Instances
+> * Öppna programmet i Azure Container Instances
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* **Azure CLI** – du måste ha Azure CLI installerat på den lokala datorn. Version 2.10.1 eller senare rekommenderas. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
+* **Azure CLI** – Du måste ha Azure CLI installerat på den lokala datorn. Version 2.10.1 eller senare rekommenderas. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
-* **Docker-skrivbordet** – du måste använda Docker Desktop version 2.3.0.5 eller senare, tillgängligt för [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) eller [MacOS](https://desktop.docker.com/mac/edge/Docker.dmg). Eller installera [Docker ACI integration CLI för Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux).
+* **Docker Desktop** – Du måste använda Docker Desktop version 2.3.0.5 eller senare, som är tillgänglig för [Windows](https://desktop.docker.com/win/edge/Docker%20Desktop%20Installer.exe) eller [macOS.](https://desktop.docker.com/mac/edge/Docker.dmg) Eller installera [Docker ACI Integration CLI för Linux](https://docs.docker.com/engine/context/aci-integration/#install-the-docker-aci-integration-cli-on-linux).
 
 [!INCLUDE [container-instances-create-registry](../../includes/container-instances-create-registry.md)]
 
@@ -57,11 +57,11 @@ git clone https://github.com/Azure-Samples/azure-voting-app-redis.git
 cd azure-voting-app-redis
 ```
 
-I katalogen är program käll koden och en för hands skapad Docker-fil, Docker-Compose. yaml.
+I katalogen finns programmets källkod och en förskapad Docker Compose-fil, docker-compose.yaml.
 
 ## <a name="modify-docker-compose-file"></a>Ändra Docker Compose-fil
 
-Öppna Docker-Compose-yaml i en text redigerare. Filen konfigurerar-och- `azure-vote-back` `azure-vote-front` tjänsterna.
+Öppna docker-compose.yaml i en textredigerare. Filen konfigurerar `azure-vote-back` tjänsterna `azure-vote-front` och .
 
 ```yml
 version: '3'
@@ -84,9 +84,9 @@ services:
         - "8080:80"
 ```
 
-`azure-vote-front`Gör följande två ändringar i konfigurationen:
+Gör `azure-vote-front` följande två ändringar i konfigurationen:
 
-1. Uppdatera `image` egenskapen i `azure-vote-front` tjänsten. Prefix namnet på avbildningen med inloggnings Server namnet för ditt Azure Container Registry, \<acrName\> . azurecr.io. Om registret till exempel heter *registret*, är namnet på inloggnings servern *myregistry.azurecr.io* (alla gemener) och egenskapen image är sedan `myregistry.azurecr.io/azure-vote-front` .
+1. Uppdatera `image` egenskapen i `azure-vote-front` tjänsten. Prefixet avbildningsnamnet med inloggningsservernamnet för ditt \<acrName\> Azure-containerregister, .azurecr.io. Om registret till exempel heter *myregistry* är inloggningsserverns *namn myregistry.azurecr.io* (endast gemener) och avbildningsegenskapen är då `myregistry.azurecr.io/azure-vote-front` .
 1. Ändra `ports` mappningen till `80:80` . Spara filen.
 
 Den uppdaterade filen bör se ut ungefär så här:
@@ -112,20 +112,20 @@ services:
         - "80:80"
 ```
 
-Genom att göra dessa ersättningar `azure-vote-front` är avbildningen som du skapar i nästa steg taggad för ditt Azure Container Registry och avbildningen kan hämtas för att köras i Azure Container instances.
+Genom att göra dessa ersättningar taggas avbildningen som du skapar i nästa steg för ditt Azure-containerregister och avbildningen kan hämtas för att köras `azure-vote-front` i Azure Container Instances.
 
 > [!TIP]
-> Du behöver inte använda ett Azure Container Registry för det här scenariot. Du kan till exempel välja ett privat lager i Docker Hub som värd för program avbildningen. Om du väljer ett annat register uppdaterar du bild egenskapen på lämpligt sätt.
+> Du behöver inte använda ett Azure-containerregister för det här scenariot. Du kan till exempel välja en privat lagringsplats i Docker Hub som värd för programavbildningen. Om du väljer ett annat register uppdaterar du avbildningsegenskapen på lämpligt sätt.
 
-## <a name="run-multi-container-application-locally"></a>Kör program med flera behållare lokalt
+## <a name="run-multi-container-application-locally"></a>Köra program med flera containrar lokalt
 
-Kör [Docker-Sammanställ](https://docs.docker.com/compose/reference/up/), som använder exempel `docker-compose.yaml` filen för att skapa behållar avbildningen, ladda ned Redis-avbildningen och starta programmet:
+Kör [docker-compose up](https://docs.docker.com/compose/reference/up/), som använder exempelfilen för att skapa containeravbildningen, ladda ned `docker-compose.yaml` Redis-avbildningen och starta programmet:
 
 ```console
 docker-compose up --build -d
 ```
 
-När kommandot har körts kan du använda kommandot [docker images](https://docs.docker.com/engine/reference/commandline/images/) till att se de avbildningar som skapats. Tre avbildningar har hämtats eller skapats. `azure-vote-front`Avbildningen innehåller klient programmet som använder `uwsgi-nginx-flask` avbildningen som bas. `redis`-avbildningen används för att starta en Redis-instans.
+När kommandot har körts kan du använda kommandot [docker images](https://docs.docker.com/engine/reference/commandline/images/) till att se de avbildningar som skapats. Tre avbildningar har hämtats eller skapats. `azure-vote-front`Avbildningen innehåller frontend-programmet, som använder `uwsgi-nginx-flask` avbildningen som bas. `redis`-avbildningen används för att starta en Redis-instans.
 
 ```
 $ docker images
@@ -148,25 +148,25 @@ b62b47a7d313        mcr.microsoft.com/oss/bitnami/redis:6.0.8  "/opt/bitnami/scr
 
 Om du vill visa programmet som körs anger du `http://localhost:80` i en lokal webbläsare. Exempelprogrammet läses in, som du ser i följande exempel:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote.png" alt-text="Bild av röstnings app":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote.png" alt-text="Bild av röstningsappen":::
 
-När du har försökt med det lokala programmet kör du [Docker-Sammanställ](https://docs.docker.com/compose/reference/down/) för att stoppa programmet och ta bort behållarna.
+När du har kört det lokala programmet kör [du docker-compose för](https://docs.docker.com/compose/reference/down/) att stoppa programmet och ta bort containrarna.
 
 ```console
 docker-compose down
 ```
 
-## <a name="push-image-to-container-registry"></a>Skicka avbildning till behållar registret
+## <a name="push-image-to-container-registry"></a>Push-avbildning till containerregister
 
-Om du vill distribuera programmet till Azure Container Instances måste du skicka `azure-vote-front` avbildningen till behållar registret. Kör [Docker-Skriv push](https://docs.docker.com/compose/reference/push) för att skicka avbildningen:
+Om du vill distribuera programmet Azure Container Instances måste du skicka `azure-vote-front` avbildningen till containerregistret. Kör [docker-compose push för](https://docs.docker.com/compose/reference/push) att push-skicka avbildningen:
 
 ```console
 docker-compose push
 ```
 
-Det kan ta några minuter att skicka till registret.
+Det kan ta några minuter att push-skicka till registret.
 
-Om du vill kontrol lera att avbildningen lagras i registret kör du kommandot [AZ ACR-lagringsplats show](/cli/azure/acr/repository#az-acr-repository-show) :
+Kontrollera att avbildningen lagras i registret genom att köra [kommandot az acr repository show:](/cli/azure/acr/repository#az_acr_repository_show)
 
 ```azurecli
 az acr repository show --name <acrName> --repository azure-vote-front
@@ -174,7 +174,7 @@ az acr repository show --name <acrName> --repository azure-vote-front
 
 [!INCLUDE [container-instances-create-docker-context](../../includes/container-instances-create-docker-context.md)]
 
-## <a name="deploy-application-to-azure-container-instances"></a>Distribuera program till Azure Container instances
+## <a name="deploy-application-to-azure-container-instances"></a>Distribuera program till Azure Container Instances
 
 Ändra sedan till ACI-kontexten. Efterföljande Docker-kommandon körs i den här kontexten.
 
@@ -182,16 +182,16 @@ az acr repository show --name <acrName> --repository azure-vote-front
 docker context use myacicontext
 ```
 
-Kör `docker compose up` för att starta programmet i Azure Container instances. `azure-vote-front`Avbildningen hämtas från behållar registret och behållar gruppen skapas i Azure Container instances.
+Kör `docker compose up` för att starta programmet i Azure Container Instances. `azure-vote-front`Avbildningen hämtas från containerregistret och containergruppen skapas i Azure Container Instances.
 
 ```console
 docker compose up
 ```
 
 > [!NOTE]
-> Docker Compose-kommandon som är tillgängliga i en ACI-kontext är `docker compose up` och `docker compose down` . Det finns inget bindestreck mellan `docker` och `compose` i dessa kommandon.
+> Docker Compose-kommandon som för närvarande är tillgängliga i en ACI-kontext är `docker compose up` och `docker compose down` . Det finns inget bindestreck mellan `docker` och `compose` i dessa kommandon.
 
-Under en kort tid distribueras behållar gruppen. Exempel på utdata:
+På kort tid distribueras containergruppen. Exempel på utdata:
 
 ```
 [+] Running 3/3
@@ -200,7 +200,7 @@ Under en kort tid distribueras behållar gruppen. Exempel på utdata:
  ⠿ azure-vote-front           Done                             10.6s
 ```
 
-Kör `docker ps` för att se de behållare som körs och den IP-adress som tilldelats behållar gruppen.
+Kör `docker ps` för att se de containrar som körs och IP-adressen som tilldelats till containergruppen.
 
 ```console
 docker ps
@@ -214,38 +214,38 @@ azurevotingappredis_azure-vote-back    mcr.microsoft.com/oss/bitnami/redis:6.0.8
 azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front                            Running             52.179.23.131:80->80/tcp
 ```
 
-Om du vill se det program som körs i molnet anger du den visade IP-adressen i en lokal webbläsare. I det här exemplet anger du `52.179.23.131` . Exempelprogrammet läses in, som du ser i följande exempel:
+Om du vill se programmet som körs i molnet anger du IP-adressen som visas i en lokal webbläsare. I det här exemplet anger du `52.179.23.131` . Exempelprogrammet läses in, som du ser i följande exempel:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Bild av röstnings app i ACI":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Bild av röstningsappen i ACI":::
 
-Om du vill se loggarna för klient dels behållaren kör du kommandot [Docker-loggar](https://docs.docker.com/engine/reference/commandline/logs) . Exempel:
+Om du vill se loggarna för frontend-containern kör du [kommandot docker logs.](https://docs.docker.com/engine/reference/commandline/logs) Exempel:
 
 ```console
 docker logs azurevotingappredis_azure-vote-front
 ```
 
-Du kan också använda Azure Portal eller andra Azure-verktyg för att se egenskaper och status för den behållar grupp som du har distribuerat.
+Du kan också använda Azure Portal eller andra Azure-verktyg för att se egenskaperna och statusen för den containergrupp som du distribuerade.
 
-När du har försökt att köra programmet stoppar du programmet och behållarna med `docker compose down` :
+När du har provat klart programmet stoppar du programmet och containrarna med `docker compose down` :
 
 ```console
 docker compose down
 ```
 
-Det här kommandot tar bort behållar gruppen i Azure Container Instances.
+Det här kommandot tar bort containergruppen i Azure Container Instances.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien använde du Docker Compose för att växla från att köra ett program med flera behållare lokalt för att köra i Azure Container Instances. Du har lärt dig att:
+I den här självstudien använde du Docker Compose för att växla från att köra ett program med flera containrar lokalt till att köras Azure Container Instances. Du har lärt dig att:
 
 > [!div class="checklist"]
 > * Skapa ett Azure-containerregister
 > * Klona programmets källkod från GitHub
-> * Använd Docker Compose för att skapa en avbildning och köra ett program med flera behållare lokalt
-> * Skicka program avbildningen till behållar registret
+> * Använda Docker Compose för att skapa en avbildning och köra ett program med flera containrar lokalt
+> * Push-skicka programavbildningen till containerregistret
 > * Skapa en Azure-kontext för Docker
-> * Hämta programmet i Azure Container Instances
+> * Öppna programmet i Azure Container Instances
 
-Du kan också använda [Docker-tillägget för Visual Studio Code](https://aka.ms/VSCodeDocker) för en integrerad upplevelse för att utveckla, köra och hantera behållare, bilder och kontexter.
+Du kan också använda [Docker-tillägget för Visual Studio Code](https://aka.ms/VSCodeDocker) för en integrerad upplevelse för att utveckla, köra och hantera containrar, avbildningar och kontexter.
 
-Om du vill dra nytta av fler funktioner i Azure Container Instances använder du Azure-verktyg för att ange en grupp med flera behållare. Se till exempel självstudier för att distribuera en behållar grupp med hjälp av Azure CLI med en [yaml-fil](container-instances-multi-container-yaml.md)eller distribuera med hjälp av en [Azure Resource Manager mall](container-instances-multi-container-group.md). 
+Om du vill dra nytta av fler funktioner i Azure Container Instances kan du använda Azure-verktyg för att ange en grupp med flera containrar. Se till exempel självstudierna om hur du distribuerar en containergrupp med hjälp av Azure CLI med en [YAML-fil](container-instances-multi-container-yaml.md)eller distribuerar med hjälp av [en Azure Resource Manager mall](container-instances-multi-container-group.md). 

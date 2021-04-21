@@ -1,6 +1,6 @@
 ---
-title: Hanterings-API-referens för Azure SQL-hanterad instans
-description: Lär dig mer om att skapa och konfigurera hanterade instanser av Azure SQL-hanterad instans.
+title: API för hantering referens för Azure SQL Managed Instance
+description: Lär dig mer om att skapa och konfigurera hanterade instanser av Azure SQL Managed Instance.
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: operations
@@ -11,32 +11,32 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: cf100861705bf1654b7206445c884b5fe315b06d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 148b24aea42072f1901c76c7a09a126340ef9951
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92792641"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784379"
 ---
 # <a name="managed-api-reference-for-azure-sql-managed-instance"></a>Hanterad API-referens för Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Du kan skapa och konfigurera hanterade instanser av Azure SQL-hanterad instans med hjälp av Azure Portal, PowerShell, Azure CLI, REST API och Transact-SQL. I den här artikeln finns en översikt över de funktioner och API: er som du kan använda för att skapa och konfigurera hanterade instanser.
+Du kan skapa och konfigurera hanterade instanser av Azure SQL Managed Instance med hjälp av Azure Portal, PowerShell, Azure CLI, REST API och Transact-SQL. I den här artikeln hittar du en översikt över de funktioner och det API som du kan använda för att skapa och konfigurera hanterade instanser.
 
-## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: skapa en hanterad instans
+## <a name="azure-portal-create-a-managed-instance"></a>Azure Portal: Skapa en hanterad instans
 
-En snabb start som visar hur du skapar en hanterad instans finns i [snabb start: skapa en hanterad instans](instance-create-quickstart.md).
+En snabbstart som visar hur du skapar en hanterad instans finns i [Snabbstart: Skapa en hanterad instans](instance-create-quickstart.md).
 
-## <a name="powershell-create-and-configure-managed-instances"></a>PowerShell: skapa och konfigurera hanterade instanser
+## <a name="powershell-create-and-configure-managed-instances"></a>PowerShell: Skapa och konfigurera hanterade instanser
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure Resource Manager-modulen stöds fortfarande av Azure SQL Database, men all framtida utveckling gäller AZ. SQL-modulen. De här cmdletarna finns i [AzureRM. SQL](/powershell/module/AzureRM.Sql/). Argumenten för kommandona i AZ-modulen och i AzureRM-modulerna är i stort sett identiska.
+> PowerShell Azure Resource Manager-modulen stöds fortfarande av Azure SQL Database, men all framtida utveckling är för Az.Sql-modulen. För dessa cmdlets, se [AzureRM.Sql](/powershell/module/AzureRM.Sql/). Argumenten för kommandona i Az-modulen och i AzureRM-modulerna är betydligt identiska.
 
-Om du vill skapa och hantera hanterade instanser med Azure PowerShell använder du följande PowerShell-cmdletar. Om du behöver installera eller uppgradera PowerShell, se [installera Azure PowerShell-modulen](/powershell/azure/install-az-ps).
+Om du vill skapa och hantera hanterade instanser Azure PowerShell med hjälp av följande PowerShell-cmdlets. Om du behöver installera eller uppgradera PowerShell kan du gå [till Installera Azure PowerShell modulen](/powershell/azure/install-az-ps).
 
 > [!TIP]
-> Exempel skript för PowerShell finns i [snabb starts skript: skapa en hanterad instans med ett PowerShell-bibliotek](/archive/blogs/sqlserverstorageengine/quick-start-script-create-azure-sql-managed-instance-using-powershell).
+> Exempelskript för PowerShell finns i [Snabbstartsskript: Skapa en hanterad instans med hjälp av ett PowerShell-bibliotek.](/archive/blogs/sqlserverstorageengine/quick-start-script-create-azure-sql-managed-instance-using-powershell)
 
 | Cmdlet | Beskrivning |
 | --- | --- |
@@ -44,67 +44,67 @@ Om du vill skapa och hantera hanterade instanser med Azure PowerShell använder 
 |[Get-AzSqlInstance](/powershell/module/az.sql/get-azsqlinstance)|Returnerar information om en hanterad instans.|
 |[Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance)|Anger egenskaper för en hanterad instans.|
 |[Remove-AzSqlInstance](/powershell/module/az.sql/remove-azsqlinstance)|Tar bort en hanterad instans.|
-|[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)|Hämtar en lista över hanterings åtgärder som har utförts på den hanterade instansen eller en speciell åtgärd.|
-|[Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)|Avbryter den speciella hanterings åtgärden som utförs på den hanterade instansen.|
-|[New-AzSqlInstanceDatabase](/powershell/module/az.sql/new-azsqlinstancedatabase)|Skapar en SQL-hanterad instans databas.|
-|[Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase)|Returnerar information om en SQL-hanterad instans databas.|
-|[Remove-AzSqlInstanceDatabase](/powershell/module/az.sql/remove-azsqlinstancedatabase)|Tar bort en SQL-hanterad instans databas.|
-|[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)|Återställer en SQL-hanterad instans databas.|
+|[Get-AzSqlInstanceOperation](/powershell/module/az.sql/get-azsqlinstanceoperation)|Hämtar en lista över hanteringsåtgärder som utförts på den hanterade instansen eller en specifik åtgärd.|
+|[Stop-AzSqlInstanceOperation](/powershell/module/az.sql/stop-azsqlinstanceoperation)|Avbryter den specifika hanteringsåtgärd som utförs på den hanterade instansen.|
+|[New-AzSqlInstanceDatabase](/powershell/module/az.sql/new-azsqlinstancedatabase)|Skapar en SQL Managed Instance databas.|
+|[Get-AzSqlInstanceDatabase](/powershell/module/az.sql/get-azsqlinstancedatabase)|Returnerar information om en SQL Managed Instance databas.|
+|[Remove-AzSqlInstanceDatabase](/powershell/module/az.sql/remove-azsqlinstancedatabase)|Tar bort en SQL Managed Instance databas.|
+|[Restore-AzSqlInstanceDatabase](/powershell/module/az.sql/restore-azsqlinstancedatabase)|Återställer en SQL Managed Instance databas.|
 
-## <a name="azure-cli-create-and-configure-managed-instances"></a>Azure CLI: skapa och konfigurera hanterade instanser
+## <a name="azure-cli-create-and-configure-managed-instances"></a>Azure CLI: Skapa och konfigurera hanterade instanser
 
-Om du vill skapa och konfigurera hanterade instanser med [Azure CLI](/cli/azure)använder du följande [Azure CLI-kommandon för SQL-hanterad instans](/cli/azure/sql/mi). Använd [Azure Cloud Shell](../../cloud-shell/overview.md) för att köra cli i webbläsaren eller [Installera](/cli/azure/install-azure-cli) det på MacOS, Linux eller Windows.
+Om du vill skapa och konfigurera hanterade instanser [med Azure CLI](/cli/azure)använder du följande Azure [CLI-kommandon för att SQL Managed Instance](/cli/azure/sql/mi). Använd [Azure Cloud Shell](../../cloud-shell/overview.md) för att köra CLI i webbläsaren eller [installera det](/cli/azure/install-azure-cli) på macOS, Linux eller Windows.
 
 > [!TIP]
-> En snabb start för Azure CLI finns i [arbeta med SQL-hanterad instans med hjälp av Azure CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).
+> En Snabbstart för Azure CLI finns i [Arbeta med SQL Managed Instance med Azure CLI.](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)
 
 | Cmdlet | Beskrivning |
 | --- | --- |
-|[AZ SQL mi Create](/cli/azure/sql/mi#az-sql-mi-create) |Skapar en hanterad instans.|
-|[AZ SQL mi-lista](/cli/azure/sql/mi#az-sql-mi-list)|Visar en lista över tillgängliga hanterade instanser.|
-|[AZ SQL mi show](/cli/azure/sql/mi#az-sql-mi-show)|Hämtar information om en hanterad instans.|
-|[AZ SQL mi-uppdatering](/cli/azure/sql/mi#az-sql-mi-update)|Uppdaterar en hanterad instans.|
-|[AZ SQL mi Delete](/cli/azure/sql/mi#az-sql-mi-delete)|Tar bort en hanterad instans.|
-|[AZ SQL mi op-lista](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Hämtar en lista över hanterings åtgärder som utförs på den hanterade instansen.|
-|[AZ SQL mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|Hämtar den angivna hanterings åtgärden som utförs på den hanterade instansen.|
-|[AZ SQL mi op Cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Avbryter den speciella hanterings åtgärden som utförs på den hanterade instansen.|
-|[AZ SQL EXTEXTB Create](/cli/azure/sql/midb#az-sql-midb-create) |Skapar en hanterad databas.|
-|[AZ SQL EXTEXTB-lista](/cli/azure/sql/midb#az-sql-midb-list)|Visar en lista över tillgängliga hanterade databaser.|
-|[AZ SQL EXTEXTB-återställning](/cli/azure/sql/midb#az-sql-midb-restore)|Återställer en hanterad databas.|
-|[ta bort AZ SQL EXTEXTB](/cli/azure/sql/midb#az-sql-midb-delete)|Tar bort en hanterad databas.|
+|[az sql mi create](/cli/azure/sql/mi#az_sql_mi_create) |Skapar en hanterad instans.|
+|[az sql mi list](/cli/azure/sql/mi#az_sql_mi_list)|Visar en lista över tillgängliga hanterade instanser.|
+|[az sql mi show](/cli/azure/sql/mi#az_sql_mi_show)|Hämtar information om en hanterad instans.|
+|[az sql mi update](/cli/azure/sql/mi#az_sql_mi_update)|Uppdaterar en hanterad instans.|
+|[az sql mi delete](/cli/azure/sql/mi#az_sql_mi_delete)|Tar bort en hanterad instans.|
+|[az sql mi op list](/cli/azure/sql/mi/op#az_sql_mi_op_list)|Hämtar en lista över hanteringsåtgärder som utförs på den hanterade instansen.|
+|[az sql mi op show](/cli/azure/sql/mi/op#az_sql_mi_op_show)|Hämtar den specifika hanteringsåtgärd som utförs på den hanterade instansen.|
+|[az sql mi op cancel](/cli/azure/sql/mi/op#az_sql_mi_op_cancel)|Avbryter den specifika hanteringsåtgärd som utförs på den hanterade instansen.|
+|[az sql midb create](/cli/azure/sql/midb#az_sql_midb_create) |Skapar en hanterad databas.|
+|[az sql midb list](/cli/azure/sql/midb#az_sql_midb_list)|Visar en lista över tillgängliga hanterade databaser.|
+|[az sql midb restore](/cli/azure/sql/midb#az_sql_midb_restore)|Återställer en hanterad databas.|
+|[az sql midb delete](/cli/azure/sql/midb#az_sql_midb_delete)|Tar bort en hanterad databas.|
 
-## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: skapa och konfigurera instans databaser
+## <a name="transact-sql-create-and-configure-instance-databases"></a>Transact-SQL: Skapa och konfigurera instansdatabaser
 
-Använd följande T-SQL-kommandon om du vill skapa och konfigurera instans databaser efter att den hanterade instansen har skapats. Du kan utfärda dessa kommandon med hjälp av Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](/sql/azure-data-studio/what-is), [Visual Studio Code](https://code.visualstudio.com/docs)eller andra program som kan ansluta till en server och skicka Transact-SQL-kommandon.
+Om du vill skapa och konfigurera instansdatabaser när den hanterade instansen har skapats använder du följande T-SQL-kommandon. Du kan utfärda dessa kommandon med hjälp av Azure Portal, [SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio), [Azure Data Studio](/sql/azure-data-studio/what-is), [Visual Studio Code](https://code.visualstudio.com/docs)eller något annat program som kan ansluta till en server och skicka Transact-SQL-kommandon.
 
 > [!TIP]
-> För snabb starter som visar hur du konfigurerar och ansluter till en hanterad instans med SQL Server Management Studio på Microsoft Windows, se [snabb start: Konfigurera virtuell Azure-dator för att ansluta till Azure SQL-hanterad instans](connect-vm-instance-configure.md) och [snabb start: Konfigurera en punkt-till-plats-anslutning till en Azure SQL-hanterad instans från den lokala](point-to-site-p2s-configure.md)datorn.
+> Snabbstarter som visar hur du konfigurerar och ansluter till en hanterad instans med hjälp av SQL Server Management Studio i Microsoft Windows finns i [Snabbstart:](connect-vm-instance-configure.md) Konfigurera en virtuell Azure-dator för att ansluta till Azure SQL Managed Instance och Snabbstart: Konfigurera en [punkt-till-plats-anslutning till Azure SQL Managed Instance från en lokal](point-to-site-p2s-configure.md)plats.
 
 > [!IMPORTANT]
-> Du kan inte skapa eller ta bort en hanterad instans med hjälp av Transact-SQL.
+> Du kan inte skapa eller ta bort en hanterad instans med Transact-SQL.
 
 | Kommando | Beskrivning |
 | --- | --- |
-|[SKAPA DATABAS](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Skapar en ny instans databas i SQL-hanterad instans. Du måste vara ansluten till huvud databasen för att skapa en ny databas.|
-| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Ändrar en instans databas i SQL-hanterad instans.|
+|[SKAPA DATABAS](/sql/t-sql/statements/create-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current)|Skapar en ny instansdatabas i SQL Managed Instance. Du måste vara ansluten till huvuddatabasen för att skapa en ny databas.|
+| [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?preserve-view=true&view=azuresqldb-mi-current) |Ändrar en instansdatabas i SQL Managed Instance.|
 
-## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: skapa och konfigurera hanterade instanser
+## <a name="rest-api-create-and-configure-managed-instances"></a>REST API: Skapa och konfigurera hanterade instanser
 
-Använd dessa REST API begär Anden för att skapa och konfigurera hanterade instanser.
+Om du vill skapa och konfigurera hanterade instanser använder du dessa REST API begäranden.
 
 | Kommando | Beskrivning |
 | --- | --- |
-|[Hanterade instanser – skapa eller uppdatera](/rest/api/sql/managedinstances/createorupdate)|Skapar eller uppdaterar en hanterad instans.|
-|[Hanterade instanser – ta bort](/rest/api/sql/managedinstances/delete)|Tar bort en hanterad instans.|
+|[Hanterade instanser – Skapa eller uppdatera](/rest/api/sql/managedinstances/createorupdate)|Skapar eller uppdaterar en hanterad instans.|
+|[Hanterade instanser – Ta bort](/rest/api/sql/managedinstances/delete)|Tar bort en hanterad instans.|
 |[Hanterade instanser – Hämta](/rest/api/sql/managedinstances/get)|Hämtar en hanterad instans.|
-|[Hanterade instanser – lista](/rest/api/sql/managedinstances/list)|Returnerar en lista med hanterade instanser i en prenumeration.|
-|[Hanterade instanser – lista efter resurs grupp](/rest/api/sql/managedinstances/listbyresourcegroup)|Returnerar en lista med hanterade instanser i en resurs grupp.|
-|[Hanterade instanser – uppdatera](/rest/api/sql/managedinstances/update)|Uppdaterar en hanterad instans.|
-|[Hanterade instans åtgärder – lista efter hanterad instans](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Hämtar en lista över hanterings åtgärder som utförs på den hanterade instansen.|
-|[Hanterade instans åtgärder – Hämta](/rest/api/sql/managedinstanceoperations/get)|Hämtar den angivna hanterings åtgärden som utförs på den hanterade instansen.|
-|[Hanterade instans åtgärder – Avbryt](/rest/api/sql/managedinstanceoperations/cancel)|Avbryter den speciella hanterings åtgärden som utförs på den hanterade instansen.|
+|[Hanterade instanser – lista](/rest/api/sql/managedinstances/list)|Returnerar en lista över hanterade instanser i en prenumeration.|
+|[Hanterade instanser – lista efter resursgrupp](/rest/api/sql/managedinstances/listbyresourcegroup)|Returnerar en lista över hanterade instanser i en resursgrupp.|
+|[Hanterade instanser – Uppdatera](/rest/api/sql/managedinstances/update)|Uppdaterar en hanterad instans.|
+|[Åtgärder för hanterad instans – lista efter hanterad instans](/rest/api/sql/managedinstanceoperations/listbymanagedinstance)|Hämtar en lista över hanteringsåtgärder som utförs på den hanterade instansen.|
+|[Åtgärder för hanterad instans – Hämta](/rest/api/sql/managedinstanceoperations/get)|Hämtar den specifika hanteringsåtgärd som utförs på den hanterade instansen.|
+|[Hanterade instansåtgärder – Avbryt](/rest/api/sql/managedinstanceoperations/cancel)|Avbryter den specifika hanteringsåtgärd som utförs på den hanterade instansen.|
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Information om hur du migrerar en SQL Server-databas till Azure finns i [migrera till Azure SQL Database](../database/migrate-to-database-from-sql-server.md).
+- Mer information om hur du migrerar en SQL Server-databas till Azure finns [i Migrera till Azure SQL Database](../database/migrate-to-database-from-sql-server.md).
 - Information om vilka funktioner som stöds finns i avsnittet [Funktioner](../database/features-comparison.md).

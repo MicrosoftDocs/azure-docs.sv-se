@@ -1,6 +1,6 @@
 ---
 title: Använd Azure AD Domain Services för att auktorisera åtkomst till fildata via SMB
-description: Lär dig hur du aktiverar identitetsbaserad autentisering via Server Message Block (SMB) för Azure Files via Azure Active Directory Domain Services. Dina domän-ansluten virtuella Windows-datorer (VM) kan sedan komma åt Azure-filresurser med hjälp av Azure AD-autentiseringsuppgifter.
+description: Lär dig hur du aktiverar identitetsbaserad autentisering över Server Message Block (SMB) för Azure Files via Azure Active Directory Domain Services. Dina domän-ansluten virtuella Windows-datorer (VM) kan sedan komma åt Azure-filresurser med hjälp av Azure AD-autentiseringsuppgifter.
 author: roygara
 ms.service: storage
 ms.topic: how-to
@@ -8,22 +8,22 @@ ms.date: 01/03/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: df2bd1c12c86de43e2a5057813a743d822dbda33
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: e82ac4e1fdb8e5f88c9d83924da50b1ff5c659cc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718359"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777931"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Aktivera Azure Active Directory Domain Services autentisering på Azure Files
 
-[Azure Files](storage-files-introduction.md)   stöder identitetsbaserad autentisering via Server Message Block (SMB) via två typer av Domain Services: lokal Active Directory Domain Services (AD DS) och Azure Active Directory Domain Services (Azure AD DS). Vi rekommenderar starkt att du går igenom [avsnittet Så här fungerar det](./storage-files-active-directory-overview.md#how-it-works) för att välja rätt domäntjänst för autentisering. Konfigurationen skiljer sig beroende på vilken domäntjänst du väljer. Den här artikeln fokuserar på att aktivera och konfigurera Azure AD DS för autentisering med Azure-filresurser.
+[Azure Files](storage-files-introduction.md)   stöder identitetsbaserad autentisering över Server Message Block (SMB) via två typer av Domain Services: lokal Active Directory Domain Services (AD DS) och Azure Active Directory Domain Services (Azure AD DS). Vi rekommenderar starkt att du går igenom [avsnittet Så här fungerar det](./storage-files-active-directory-overview.md#how-it-works) för att välja rätt domäntjänst för autentisering. Konfigurationen varierar beroende på vilken domäntjänst du väljer. Den här artikeln fokuserar på att aktivera och konfigurera Azure AD DS för autentisering med Azure-filresurser.
 
 Om du är nybörjare på Azure-filresurser rekommenderar vi att du läser [vår planeringsguide](storage-files-planning.md) innan du läser följande artikelserie.
 
 > [!NOTE]
 > Azure Files stöder Kerberos-autentisering Azure AD DS endast med RC4-HMAC. AES Kerberos-kryptering stöds inte ännu.
-> Azure Files stöder autentisering för Azure AD DS med fullständig synkronisering med Azure AD. Om du har aktiverat begränsad synkronisering i Azure AD DS som bara synkroniserar en begränsad uppsättning identiteter från Azure AD, stöds inte autentisering och auktorisering.
+> Azure Files har stöd för autentisering Azure AD DS med fullständig synkronisering med Azure AD. Om du har aktiverat omfångssynkronisering i Azure AD DS som endast synkroniserar en begränsad uppsättning identiteter från Azure AD, stöds inte autentisering och auktorisering.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -33,20 +33,20 @@ Innan du aktiverar Azure AD via SMB för Azure-filresurser kontrollerar du att d
 
     Du kan använda en ny eller befintlig klient för Azure AD-autentisering via SMB. Klientorganisationen och filresursen som du vill komma åt måste associeras med samma prenumeration.
 
-    Om du vill skapa en ny Azure AD-klientorganisation kan du [lägga till en Azure AD-klientorganisation och en Azure AD-prenumeration.](/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription) Om du har en befintlig Azure AD-klientorganisation men vill skapa en ny klient för användning med Azure-filresurser kan du gå till [Skapa en Azure Active Directory klientorganisation.](/rest/api/datacatalog/create-an-azure-active-directory-tenant)
+    Om du vill skapa en ny Azure AD-klientorganisation kan du [lägga till en Azure AD-klientorganisation och en Azure AD-prenumeration.](/windows/client-management/mdm/add-an-azure-ad-tenant-and-azure-ad-subscription) Om du har en befintlig Azure AD-klient men vill skapa en ny klient för användning med Azure-filresurser kan du gå till [Skapa en Azure Active Directory klientorganisation.](/rest/api/datacatalog/create-an-azure-active-directory-tenant)
 
 1.  **Aktivera Azure AD Domain Services azure AD-klientorganisationen.**
 
-    För att stödja autentisering med Azure AD-autentiseringsuppgifter måste du aktivera Azure AD Domain Services för din Azure AD-klientorganisation. Om du inte är administratör för Azure AD-klienten kontaktar du administratören och följer de stegvisa riktlinjerna för att aktivera Azure Active Directory Domain Services med hjälp [av Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
+    För att stödja autentisering med Azure AD-autentiseringsuppgifter måste du aktivera Azure AD Domain Services för din Azure AD-klientorganisation. Om du inte är administratör för Azure AD-klientorganisationen kontaktar du administratören och följer den stegvisa vägledningen för att aktivera Azure Active Directory Domain Services med hjälp [av Azure Portal](../../active-directory-domain-services/tutorial-create-instance.md).
 
-    Det tar vanligtvis cirka 15 minuter för en Azure AD DS distributionen att slutföras. Kontrollera att hälsostatusen för Azure AD DS visar **Körs** med synkronisering av lösenordshashar aktiverat innan du fortsätter till nästa steg.
+    Det tar vanligtvis cirka 15 minuter för en Azure AD DS distribution att slutföras. Kontrollera att hälsostatusen för Azure AD DS visar **Kör**, med synkronisering av lösenordshashar aktiverad, innan du fortsätter till nästa steg.
 
 1.  **Domän-ansluta en virtuell Azure-dator med Azure AD DS.**
 
-    För att få åtkomst till en filresurs med hjälp av Azure AD-autentiseringsuppgifter från en virtuell dator måste den virtuella datorn vara domän-ansluten till Azure AD DS. Mer information om hur du domän-ansluter till en virtuell dator finns i [Ansluta en virtuell Windows Server-dator till en hanterad domän.](../../active-directory-domain-services/join-windows-vm.md)
+    Om du vill komma åt en filresurs med hjälp av Azure AD-autentiseringsuppgifter från en virtuell dator måste den virtuella datorn vara domän-ansluten till Azure AD DS. Mer information om hur du ansluter en virtuell dator till en domän finns i [Ansluta en virtuell Windows Server-dator till en hanterad domän.](../../active-directory-domain-services/join-windows-vm.md)
 
     > [!NOTE]
-    > Azure AD DS-autentisering via SMB med Azure-filresurser stöds endast på virtuella Azure-datorer som körs på operativsystemversioner över Windows 7 eller Windows Server 2008 R2.
+    > Azure AD DS-autentisering via SMB med Azure-filresurser stöds endast på virtuella Azure-datorer som körs på os-versioner över Windows 7 eller Windows Server 2008 R2.
 
 1.  **Välj eller skapa en Azure-filresurs.**
 
@@ -59,7 +59,7 @@ Innan du aktiverar Azure AD via SMB för Azure-filresurser kontrollerar du att d
 
 ## <a name="regional-availability"></a>Regional tillgänglighet
 
-Azure Files autentisering med Azure AD DS är tillgängligt i [alla azure-regioner som är offentliga, Gov och Kina.](https://azure.microsoft.com/global-infrastructure/locations/)
+Azure Files autentisering med Azure AD DS är tillgängligt i [alla Azure Public-, Gov- och China-regioner.](https://azure.microsoft.com/global-infrastructure/locations/)
 
 ## <a name="overview-of-the-workflow"></a>Översikt över arbetsflödet
 
@@ -67,7 +67,7 @@ Innan du aktiverar Azure AD DS-autentisering via SMB för Azure-filresurser kont
 
 Gör sedan följande för att bevilja åtkomst till Azure Files med Azure AD-autentiseringsuppgifter:
 
-1. Aktivera Azure AD DS-autentisering via SMB för ditt lagringskonto för att registrera lagringskontot med den Azure AD DS distributionen.
+1. Aktivera Azure AD DS-autentisering via SMB för ditt lagringskonto för att registrera lagringskontot med den associerade Azure AD DS distributionen.
 2. Tilldela åtkomstbehörigheter för en resurs till en Azure AD-identitet (en användare, grupp eller tjänstens huvudnamn).
 3. Konfigurera NTFS-behörigheter via SMB för kataloger och filer.
 4. Montera en Azure-filresurs från en domän-ansluten virtuell dator.
@@ -125,7 +125,7 @@ Set-AzStorageAccount -ResourceGroupName "<resource-group-name>" `
 
 Om du vill aktivera Azure AD-autentisering via SMB med Azure CLI installerar du den senaste CLI-versionen (version 2.0.70 eller senare). Mer information om hur du installerar Azure CLI finns [i Installera Azure CLI.](/cli/azure/install-azure-cli)
 
-Om du vill skapa ett nytt lagringskonto [anropar du az storage account create](/cli/azure/storage/account#az-storage-account-create)och anger egenskapen till `--enable-files-aadds` **true**. Kom ihåg att ersätta platshållarvärdena med dina egna värden i följande exempel. (Om du använde den tidigare förhandsversionsmodulen är parametern för funktionsaktivering **file-aad**.)
+Om du vill skapa ett nytt lagringskonto [anropar du az storage account create](/cli/azure/storage/account#az_storage_account_create)och anger egenskapen till `--enable-files-aadds` **true**. Kom ihåg att ersätta platshållarvärdena med dina egna värden i följande exempel. (Om du använde den tidigare förhandsversionsmodulen är parametern för funktionsaktivering **file-aad**.)
 
 ```azurecli-interactive
 # Create a new storage account

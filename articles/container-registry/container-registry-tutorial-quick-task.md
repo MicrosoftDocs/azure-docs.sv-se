@@ -1,15 +1,15 @@
 ---
-title: Självstudie – bygge för snabb behållar avbildning
+title: Självstudie – Snabb containeravbildningsbygge
 description: I den här självstudien lär du dig att skapa en avbildning av en dockercontainer i Azure med Azure Container Registry Tasks (ACR Tasks) och sedan distribuera den till Azure Container Instances.
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 384c7bebea8ed8120a1bc8134e4189e5e7bcb8db
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 282e6ea56835fba679510a29af936c1fbcb3ead2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060286"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775357"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Självstudier: Skapa och distribuera containeravbildningar i molnet med Azure Container Registry-uppgifter
 
@@ -26,7 +26,7 @@ I den här självstudien, som är del ett i en serie:
 > * Skapa en containeravbildning i Azure
 > * Distribuera en behållare till Azure Container Instances
 
-I kommande självstudier får du lära dig att använda i ACR Tasks för automatiska containeravbildningsversioner som bygger på kodincheckning och uppdateringar av basavbildningar. ACR-aktiviteter kan också köra [aktiviteter med flera steg](container-registry-tasks-multi-step.md), med hjälp av en yaml-fil för att definiera steg för att skapa, skicka och välja att testa flera behållare.
+I kommande självstudier får du lära dig att använda i ACR Tasks för automatiska containeravbildningsversioner som bygger på kodincheckning och uppdateringar av basavbildningar. ACR-uppgifter kan också köra uppgifter i flera steg med hjälp av en YAML-fil för att definiera steg för att skapa, [push-skicka](container-registry-tasks-multi-step.md)och eventuellt testa flera containrar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -46,7 +46,7 @@ Förgrena den här lagringsplatsen: https://github.com/Azure-Samples/acr-build-h
 
 När du har förgrenat lagringsplatsen kan du klona din förgrening och ange den katalog som innehåller din lokala klon.
 
-Klona lagrings platsen med `git` , Ersätt **\<your-github-username\>** med ditt GitHub-användar namn:
+Klona lagringsplatsen `git` med , ersätt med ditt **\<your-github-username\>** GitHub-användarnamn:
 
 ```console
 git clone https://github.com/<your-github-username>/acr-build-helloworld-node
@@ -68,7 +68,7 @@ Kommandona i den här självstudieserien är formaterade för Bash-gränssnittet
 
 Nu när du har hämtat källkoden till din dator, följer du dessa steg för att skapa ett containerregister och en containeravbildning med ACR Tasks.
 
-För att göra det enklare att köra exempelkommandona, använder självstudierna i serien gränssnittets miljövariabler. Kör följande kommando för att ange variabeln `ACR_NAME`. Ersätt **\<registry-name\>** med ett unikt namn för ditt nya behållar register. Register namnet måste vara unikt inom Azure, får bara innehålla gemena bokstäver och innehålla 5-50 alfanumeriska tecken. De andra resurser som du skapar i självstudien baseras på det här namnet, så du behöver bara ändra den första variabeln.
+För att göra det enklare att köra exempelkommandona, använder självstudierna i serien gränssnittets miljövariabler. Kör följande kommando för att ange variabeln `ACR_NAME`. Ersätt **\<registry-name\>** med ett unikt namn för ditt nya containerregister. Registernamnet måste vara unikt i Azure, får bara innehålla gemener och innehålla 5–50 alfanumeriska tecken. De andra resurser som du skapar i självstudien baseras på det här namnet, så du behöver bara ändra den första variabeln.
 
 ```console
 ACR_NAME=<registry-name>
@@ -255,7 +255,7 @@ Om du vill se startprocessen i behållaren använder du kommandot [az container 
 az container attach --resource-group $RES_GROUP --name acr-tasks
 ```
 
-`az container attach`Utdata visar först behållarens status när den hämtar avbildningen och startar och binder sedan den lokala konsolens STDOUT och stderr till den för behållaren.
+Utdata visar först containerns status när den hämtar avbildningen och startar och binder sedan den lokala `az container attach` konsolens STDOUT och STDERR till containerns.
 
 ```output
 Container 'acr-tasks' is in state 'Running'...
@@ -270,7 +270,7 @@ Server running at http://localhost:80
 
 När `Server running at http://localhost:80` visas navigerar du till containerns FQDN i webbläsaren för att se programmet som körs. FQDN bör ha visats i utdatan från kommandot `az container create` du körde i föregående avsnitt.
 
-:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Exempel program som körs i webbläsaren":::
+:::image type="content" source="media/container-registry-tutorial-quick-build/quick-build-02-browser.png" alt-text="Exempelprogram som körs i webbläsaren":::
 
 Om du vill ta bort konsolen från containern trycker du på `Control+C`.
 
@@ -301,14 +301,14 @@ Nu när du har testat den inre loopen med en snabbuppgift kan du konfigurera en 
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az-ad-sp-create-for-rbac
-[az-container-attach]: /cli/azure/container#az-container-attach
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-delete]: /cli/azure/container#az-container-delete
-[az-keyvault-create]: /cli/azure/keyvault/secret#az-keyvault-create
-[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az-keyvault-secret-set
-[az-login]: /cli/azure/reference-index#az-login
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-ad-sp-create-for-rbac]: /cli/azure/ad/sp#az_ad_sp_create_for_rbac
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-delete]: /cli/azure/container#az_container_delete
+[az-keyvault-create]: /cli/azure/keyvault/secret#az_keyvault_create
+[az-keyvault-secret-set]: /cli/azure/keyvault/secret#az_keyvault_secret_set
+[az-login]: /cli/azure/reference-index#az_login
 [service-principal-auth]: container-registry-auth-service-principal.md
 
 <!-- IMAGES -->

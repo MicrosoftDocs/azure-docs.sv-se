@@ -1,96 +1,96 @@
 ---
-title: Vanliga frågor och svar om inbyggda behållare
-description: Få svar på vanliga frågor om de inbyggda Linux-behållarna i Azure App Service.
-keywords: Azure App Service, webbapp, vanliga frågor, Linux, oss, Web App for Containers, multi-container, multibehållare
+title: Vanliga frågor och svar om att köra inbyggda containrar
+description: Få svar på vanliga frågor om de inbyggda Linux-containrarna i Azure App Service.
+keywords: azure app service, web app, faq, linux, oss, web app for containers, multi-container, multicontainer
 author: msangapu-msft
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: fb5203629915914ab9af22d89e5f2865078a8e44
-ms.sourcegitcommit: 6ed3928efe4734513bad388737dd6d27c4c602fd
+ms.openlocfilehash: 82fc5707800e06e3221754bfa29d8e981ccdbd2d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107012615"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782593"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Vanliga frågor och svar om Azure App Service on Linux
 
-I och med lanseringen av App Service på Linux arbetar vi med att lägga till funktioner och förbättra vår plattform. Den här artikeln innehåller svar på frågor som våra kunder har tillfrågat oss nyligen.
+Med lanseringen av App Service på Linux arbetar vi med att lägga till funktioner och göra förbättringar av vår plattform. Den här artikeln innehåller svar på frågor som våra kunder har ställt till oss nyligen.
 
 Om du har en fråga kan du kommentera den här artikeln.
 
 ## <a name="built-in-images"></a>Inbyggda avbildningar
 
-**Jag vill förgrena de inbyggda Docker-behållare som plattformen tillhandahåller. Var hittar jag filerna?**
+**Jag vill förbebygga de inbyggda Docker-containrar som plattformen tillhandahåller. Var hittar jag dessa filer?**
 
-Du kan hitta alla Docker-filer på [GitHub](https://github.com/azure-app-service). Du kan hitta alla Docker-behållare på [Docker Hub](https://hub.docker.com/u/appsvc/).
+Du hittar alla Docker-filer på [GitHub.](https://github.com/azure-app-service) Du hittar alla Docker-containrar på [Docker Hub](https://hub.docker.com/u/appsvc/).
 
 <a id="#startup-file"></a>
 
-**Vilka är de förväntade värdena för start filen i avsnittet när jag konfigurerar körnings stacken?**
+**Vilka är de förväntade värdena för avsnittet Startfil när jag konfigurerar körningsstacken?**
 
 | Stack           | Förväntat värde                                                                         |
 |-----------------|----------------------------------------------------------------------------------------|
 | Java SE         | kommandot för att starta JAR-appen (till exempel `java -jar /home/site/wwwroot/app.jar --server.port=80` ) |
 | Tomcat          | platsen för ett skript för att utföra nödvändiga konfigurationer (till exempel `/home/site/deployments/tools/startup_script.sh` )          |
-| Node.js         | konfigurations filen för PM2 eller skript filen                                |
+| Node.js         | PM2-konfigurationsfilen eller skriptfilen                                |
 | .NET Core       | det kompilerade DLL-namnet som `dotnet <myapp>.dll`                                 |
-| Ruby            | det ruby-skript som du vill initiera din app med                     |
+| Ruby            | Ruby-skriptet som du vill initiera appen med                     |
 
-De här kommandona eller skripten körs när den inbyggda Docker-behållaren har startats, men innan program koden startas.
+Dessa kommandon eller skript körs när den inbyggda Docker-containern har startats, men innan programkoden startas.
 
 ## <a name="management"></a>Hantering
 
-**Vad händer när jag trycker på knappen starta om i Azure Portal?**
+**Vad händer när jag trycker på omstartsknappen i Azure Portal?**
 
 Den här åtgärden är samma som en Docker-omstart.
 
-**Kan jag använda SSH (Secure Shell) för att ansluta till den virtuella datorns app container (VM)?**
+**Kan jag använda Secure Shell (SSH) för att ansluta till den virtuella datorn för appcontainer (VM)?**
 
-Ja, du kan göra det via platsen för käll kontroll hantering (SCM).
+Ja, det kan du göra via källkontrollhanteringsplatsen (SCM).
 
 > [!NOTE]
 > Du kan också ansluta till appcontainern direkt från din lokala utvecklingsdator med SSH, SFTP eller Visual Studio Code (för livefelsökning av Node.js-appar). Mer information finns i [Remote debugging and SSH in App Service on Linux](https://azure.github.io/AppService/2018/05/07/New-SSH-Experience-and-Remote-Debugging-for-Linux-Web-Apps.html) (Fjärrfelsökning och SSH i App Service på Linux).
 >
 
-**Hur kan jag skapa en Linux-App Service plan via en SDK eller en Azure Resource Manager mall?**
+**Hur skapar jag en Linux-App Service plan via en SDK eller en Azure Resource Manager mall?**
 
-Ange det **reserverade** fältet för App Service som *Sant*.
+Ange det **reserverade** fältet för apptjänsten till *true*.
 
 ## <a name="continuous-integration-and-deployment"></a>Kontinuerlig integrering och distribution
 
-**Min webbapp använder fortfarande en gammal Docker-behållar avbildning efter att jag har uppdaterat avbildningen på Docker Hub. Stöder du kontinuerlig integrering och distribution av anpassade behållare?**
+**Min webbapp använder fortfarande en gammal Docker-containeravbildning när jag har uppdaterat avbildningen Docker Hub. Har du stöd för kontinuerlig integrering och distribution av anpassade containrar?**
 
-Ja, om du vill konfigurera kontinuerlig integrering/distribution för Azure Container Registry eller DockerHub, genom att följa [kontinuerlig distribution med Web App for containers](./deploy-ci-cd-custom-container.md). För privata register kan du uppdatera behållaren genom att stoppa och sedan starta din webbapp. Eller så kan du ändra eller lägga till en dummy-programinställning för att tvinga fram en uppdatering av din behållare.
+Ja, för att konfigurera kontinuerlig integrering/distribution för Azure Container Registry eller DockerHub genom att följa [Kontinuerlig distribution med Web App for Containers](./deploy-ci-cd-custom-container.md). För privata register kan du uppdatera containern genom att stoppa och sedan starta webbappen. Eller så kan du ändra eller lägga till en dummy-programinställning för att tvinga fram en uppdatering av containern.
 
-**Har du stöd för mellanlagrings miljöer?**
+**Har du stöd för mellanlagringsmiljöer?**
 
 Ja.
 
-**Kan jag använda *WebDeploy/MSDeploy* för att distribuera min webbapp?**
+**Kan jag använda *WebDeploy/MSDeploy för* att distribuera min webbapp?**
 
-Ja, du måste ange en app-inställning `WEBSITE_WEBDEPLOY_USE_SCM` som kallas *false*.
+Ja, du måste ange en appinställning med namnet `WEBSITE_WEBDEPLOY_USE_SCM` *false*.
 
-**Git-distribution av mitt program Miss lyckas när Linux-webbappen används. Hur kan jag lösa problemet?**
+**Git-distributionen av mitt program misslyckas när jag använder Linux-webbappen. Hur kan jag komma runt problemet?**
 
-Om git-distributionen Miss lyckas med din Linux-webbapp väljer du något av följande alternativ för att distribuera program koden:
+Om Git-distributionen misslyckas med din Linux-webbapp väljer du något av följande alternativ för att distribuera programkoden:
 
-- Använd funktionen för kontinuerlig leverans (för hands version): du kan lagra appens källkod i en Azure DevOps git lagrings platsen-eller GitHub-lagrings platsen för att använda Azures kontinuerliga leverans. Mer information finns i [så här konfigurerar du kontinuerlig leverans för Linux-webbappar](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
+- Använd funktionen Kontinuerlig leverans (förhandsversion): Du kan lagra appens källkod på en Azure DevOps Git-lagringsplatsen eller GitHub-lagringsplatsen för att använda Azure Continuous Delivery. Mer information finns i Så [här konfigurerar du kontinuerlig leverans för Linux-webbappen](https://blogs.msdn.microsoft.com/devops/2017/05/10/use-azure-portal-to-setup-continuous-delivery-for-web-app-on-linux/).
 
-- Använd [zip Deploy API](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file): för att använda detta API, [ssh i din webbapp](configure-linux-open-ssh-session.md) och gå till den mapp där du vill distribuera din kod. Kör följande kod:
+- Använd [API:et för](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)ZIP-distribution: Om du vill använda det här API:et använder du [SSH](configure-linux-open-ssh-session.md) i webbappen och går till mappen där du vill distribuera koden. Kör följande kod:
 
    ```bash
    curl -X POST -u <user> --data-binary @<zipfile> https://{your-sitename}.scm.azurewebsites.net/api/zipdeploy
    ```
 
-   Om du får ett fel meddelande om att `curl` kommandot inte hittas kontrollerar du att du installerar en sväng genom att använda `apt-get install curl` innan du kör föregående `curl` kommando.
+   Om du får ett felmeddelande om att kommandot inte hittas kontrollerar du att du installerar `curl` curl med innan du kör föregående `apt-get install curl` `curl` kommando.
 
 ## <a name="language-support"></a>Stöd för språk
 
-**Jag vill använda Web Sockets i mitt Node.js-program, särskilda inställningar eller konfigurationer att ställa in?**
+**Jag vill använda webbsocketar i mitt Node.js program, eventuella särskilda inställningar eller konfigurationer som ska anges?**
 
-Ja, inaktivera `perMessageDeflate` i Node.js koden på Server sidan. Om du till exempel använder socket.io använder du följande kod:
+Ja, inaktivera `perMessageDeflate` i koden för Node.js serversidan. Om du till exempel använder socket.io använder du följande kod:
 
 ```nodejs
 const io = require('socket.io')(server,{
@@ -98,94 +98,94 @@ const io = require('socket.io')(server,{
 });
 ```
 
-**Stöder du kompilerade .NET Core-appar?**
+**Har du stöd för okompilerade .NET Core-appar?**
 
 Ja.
 
-**Stöder du Composer som beroende hanterare för PHP-appar?**
+**Har du stöd för Composer som beroendehanterare för PHP-appar?**
 
-Ja, under en Git-distribution ska kudu identifiera att du distribuerar ett PHP-program (tack vare förekomsten av en Composer. lock-fil) och kudu sedan utlöser en Composer-installation.
+Ja, under en Git-distribution bör Kudu identifiera att du distribuerar ett PHP-program (tack vare förekomsten av en composer.lock-fil) så utlöser Kudu en installation av en composer.
 
 ## <a name="custom-containers"></a>Anpassade containrar
 
-**Jag använder min egen anpassade behållare. Jag vill att plattformen ska montera en SMB-resurs till `/home/` katalogen.**
+**Jag använder min egen anpassade container. Jag vill att plattformen ska montera en SMB-resurs i `/home/` katalogen.**
 
-Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` inställningen är **ospecificerad** eller är inställd på *falskt*, `/home/` **delas katalogen inte** mellan skalnings instanser och filer som skrivs **behålls inte** i omstarter. Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` du anger *True* aktive ras monteringen.
+Om `WEBSITES_ENABLE_APP_SERVICE_STORAGE` inställningen är **ospecificerad** eller inställd på *false* delas inte katalogen mellan skalningsinstanser och filer som skrivs bevaras inte `/home/` mellan omstarter.   Om du `WEBSITES_ENABLE_APP_SERVICE_STORAGE` uttryckligen anger till *true* aktiveras monteringen.
 
-**Min anpassade behållare tar lång tid att starta och plattformen startar om behållaren innan den har startats.**
+**Det tar lång tid att starta min anpassade container och plattformen startar om containern innan den har startats klart.**
 
-Du kan konfigurera hur lång tid som plattformen ska vänta innan den startar om din behållare. Det gör du genom att ställa in `WEBSITES_CONTAINER_START_TIME_LIMIT` appens inställningar på det värde som du vill använda. Standardvärdet är 230 sekunder och det högsta värdet är 1800 sekunder.
+Du kan konfigurera hur lång tid plattformen ska vänta innan den startar om containern. Det gör du genom att ange `WEBSITES_CONTAINER_START_TIME_LIMIT` appinställningen till det värde som du vill använda. Standardvärdet är 230 sekunder och det högsta värdet är 1 800 sekunder.
 
-**Vad är formatet för den privata register serverns URL?**
+**Vilket format har den privata registerserverns URL?**
 
-Ange fullständig registrerings-URL, inklusive `http://` eller `https://` .
+Ange den fullständiga register-URL:en, `http://` inklusive eller `https://` .
 
-**Vad är formatet för avbildnings namnet i det privata register alternativet?**
+**Vilket format har avbildningsnamnet i det privata registeralternativet?**
 
-Lägg till det fullständiga avbildnings namnet, inklusive URL: en för den privata registret (till exempel myacr.azurecr.io/dotnet:latest). Avbildnings namn som använder en anpassad port [kan inte anges via portalen](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). `docker-custom-image-name`Använd [ `az` kommando rads verktyget](/cli/azure/webapp/config/container#az-webapp-config-container-set)för att ange.
+Lägg till det fullständiga avbildningsnamnet, inklusive URL:en för det privata registret (till exempel myacr.azurecr.io/dotnet:latest). Avbildningsnamn som använder en [anpassad port kan inte anges via portalen](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650). Ange med `docker-custom-image-name` [ `az` kommandoradsverktyget](/cli/azure/webapp/config/container#az_webapp_config_container_set).
 
-**Kan jag exponera fler än en port i min anpassade behållar avbildning?**
+**Kan jag exponera mer än en port på min anpassade containeravbildning?**
 
-Vi har inte stöd för att exponera mer än en port.
+Vi stöder inte att exponera mer än en port.
 
-**Kan jag ta min egen lagring?**
+**Kan jag använda min egen lagring?**
 
-Ja, [ta med din egen lagrings enhet](./configure-connect-to-azure-storage.md) i för hands versionen.
+Ja, [Bring Your Own Storage](./configure-connect-to-azure-storage.md) är en förhandsversion.
 
-**Varför kan jag inte bläddra i min anpassade behållares fil system eller köra processer från SCM-platsen?**
+**Varför kan jag inte bläddra i min anpassade containers filsystem eller köra processer från SCM-webbplatsen?**
 
-SCM-platsen körs i en separat behållare. Du kan inte kontrol lera fil systemet eller körnings processerna för app-behållaren.
+SCM-platsen körs i en separat container. Du kan inte kontrollera filsystemet eller köra processer för appcontainern.
 
-**Min anpassade behållare lyssnar till en annan port än port 80. Hur konfigurerar jag min app för att dirigera begär anden till den porten?**
+**Min anpassade container lyssnar på en annan port än port 80. Hur konfigurerar jag min app för att dirigera begäranden till den porten?**
 
-Vi har automatisk port identifiering. Du kan också ange en app-inställning som kallas *WEBSITES_PORT* och ge den värdet för det förväntade port numret. Tidigare använde plattformen *porten* app-inställningen. Vi planerar att använda den här appens inställning och använda *WEBSITES_PORT* exklusivt.
+Vi har automatisk portidentifiering. Du kan också ange en appinställning *WEBSITES_PORT* och ge den värdet för det förväntade portnumret. Tidigare använde plattformen *appinställningen PORT.* Vi planerar att ta bort den här appinställningen och använda den *WEBSITES_PORT* exklusivt.
 
-**Måste jag implementera HTTPS i min anpassade behållare?**
+**Måste jag implementera HTTPS i min anpassade container?**
 
-Nej, plattformen hanterar HTTPS-avslutning på delade klient delar.
+Nej, plattformen hanterar HTTPS-avslutning på den delade fronten.
 
-**Måste jag använda PORT variabel i kod för inbyggda behållare?**
+**Måste jag använda PORT-variabeln i koden för inbyggda containrar?**
 
-Nej, PORT variabel är inte nödvändig på grund av automatisk port identifiering. Om ingen port identifieras är den som standard 80.
-Om du vill konfigurera en anpassad port manuellt använder du instruktionen Visa i Dockerfile och appens inställning WEBSITES_PORT, med ett port värde som ska bindas i behållaren.
+Nej, portvariabeln är inte nödvändig på grund av automatisk portidentifiering. Om ingen port identifieras blir standardvärdet 80.
+Om du vill konfigurera en anpassad port manuellt använder du instruktionen EXPOSE i Dockerfile och appinställningen, WEBSITES_PORT, med ett portvärde som ska bindas i containern.
 
-**Behöver jag använda WEBSITES_PORT för anpassade behållare?**
+**Måste jag använda en WEBSITES_PORT anpassade containrar?**
 
-Ja, detta krävs för anpassade behållare. Om du vill konfigurera en anpassad port manuellt använder du instruktionen Visa i Dockerfile och appens inställning WEBSITES_PORT, med ett port värde som ska bindas i behållaren.
+Ja, detta krävs för anpassade containrar. Om du vill konfigurera en anpassad port manuellt använder du instruktionen EXPOSE i Dockerfile och appinställningen, WEBSITES_PORT, med ett portvärde som ska bindas i containern.
 
 **Kan jag använda ASPNETCORE_URLS i Docker-avbildningen?**
 
-Ja, Skriv över miljö variabeln innan .NET Core-appen startas.
-T.ex. I init.sh-skriptet: exportera ASPNETCORE_URLS = {ditt värde}
+Ja, skriva över miljövariabeln innan .NET Core-appen startar.
+T.ex. I skriptet init.sh: export ASPNETCORE_URLS={Ditt värde}
 
-## <a name="multi-container-with-docker-compose"></a>Multi-container med Docker Compose
+## <a name="multi-container-with-docker-compose"></a>Flera containrar med Docker Compose
 
-**Hur gör jag för att konfigurera Azure Container Registry (ACR) för användning med flera behållare?**
+**Hur gör jag för att konfigurera Azure Container Registry (ACR) för användning med flera containrar?**
 
-För att kunna använda ACR med flera behållare måste **alla behållar avbildningar** vara värdbaserade på samma ACR-register Server. När de finns på samma register Server måste du skapa program inställningar och sedan uppdatera Docker-bildningens konfigurations fil för att inkludera avbildnings namnet för ACR.
+För att kunna använda ACR med flera containrar måste **alla containeravbildningar** finnas på samma ACR-registerserver. När de finns på samma registerserver måste du skapa programinställningar och sedan uppdatera Docker Compose-konfigurationsfilen så att den innehåller namnet på ACR-avbildningen.
 
-Skapa följande program inställningar:
+Skapa följande programinställningar:
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL (fullständig URL, ex: `https://<server-name>.azurecr.io` )
-- DOCKER_REGISTRY_SERVER_PASSWORD (aktivera administratörs åtkomst i ACR-inställningar)
+- DOCKER_REGISTRY_SERVER_URL (fullständig URL, till exempel `https://<server-name>.azurecr.io` )
+- DOCKER_REGISTRY_SERVER_PASSWORD (aktivera administratörsåtkomst i ACR-inställningar)
 
-I konfigurations filen refererar du till ACR-avbildningen som i följande exempel:
+I konfigurationsfilen refererar du till ACR-avbildningen som i följande exempel:
 
 ```yaml
 image: <server-name>.azurecr.io/<image-name>:<tag>
 ```
 
-**Hur gör jag för att vet du vilken behållare som är tillgänglig för Internet?**
+**Hur gör jag för att du vilken container som är tillgänglig via Internet?**
 
-- Endast en behållare kan vara öppen för åtkomst
-- Endast port 80 och 8080 kan nås (exponerade portar)
+- Endast en container kan öppnas för åtkomst
+- Endast port 80 och 8080 är tillgänglig (exponerade portar)
 
-Här följer reglerna för att avgöra vilken behållare som är tillgänglig – i prioritetsordning:
+Här är reglerna för att avgöra vilken container som är tillgänglig – i prioritetsordning:
 
-- Program inställningen `WEBSITES_WEB_CONTAINER_NAME` har angetts till behållar namnet
-- Den första behållaren för att definiera port 80 eller 8080
-- Om inget av ovanstående är sant kommer den första behållaren som definieras i filen att vara tillgänglig (exponeras)
+- Programinställning `WEBSITES_WEB_CONTAINER_NAME` inställd på containernamnet
+- Den första containern som definierar port 80 eller 8080
+- Om inget av ovanstående stämmer är den första containern som definierats i filen tillgänglig (exponerad)
 
 
 ## <a name="web-sockets"></a>Web Sockets
@@ -193,27 +193,27 @@ Här följer reglerna för att avgöra vilken behållare som är tillgänglig �
 Web Sockets stöds i Linux-appar.
 
 > [!IMPORTANT]
-> Web Sockets stöds för närvarande inte för Linux-appar på App Service – kostnadsfri planer. Vi arbetar på att ta bort den här begränsningen och planera för att stödja upp till 5 WebSocket-anslutningar på App Service – kostnadsfri planer.
+> Web Sockets stöds för närvarande inte för Linux-appar på kostnadsfria App Service-planer. Vi arbetar med att ta bort den här begränsningen och planerar att stödja upp till 5 webbsocketanslutningar på kostnadsfria App Service planer.
 
-## <a name="pricing-and-sla"></a>Priser och service nivå avtal
+## <a name="pricing-and-sla"></a>Priser och serviceavtal
 
-**Vad är prissättningen? nu är tjänsten allmänt tillgänglig?**
+**Vad är prissättningen, nu när tjänsten är allmänt tillgänglig?**
 
-Prissättningen varierar beroende på SKU och region, men du kan se mer information på vår prissättnings sida: [App Service prissättning](https://azure.microsoft.com/pricing/details/app-service/linux/).
+Prissättningen varierar beroende på SKU och region, men du kan se mer information på vår [prissättningssida: App Service priser.](https://azure.microsoft.com/pricing/details/app-service/linux/)
 
 ## <a name="other-questions"></a>Andra frågor
 
-**Vad betyder "den begärda funktionen är inte tillgänglig i resurs gruppen"?**
+**Vad betyder "Den begärda funktionen är inte tillgänglig i resursgruppen"?**
 
-Du kan se det här meddelandet när du skapar en webbapp med Azure Resource Manager (ARM). I samma resurs grupp kan du inte blanda Windows-och Linux-appar i samma region, baserat på en aktuell begränsning.
+Du kan se det här meddelandet när du skapar en webbapp med Azure Resource Manager (ARM). Baserat på en aktuell begränsning kan du inte blanda Windows- och Linux-appar i samma region för samma resursgrupp.
 
-**Vad är de tecken som stöds i program inställnings namn?**
+**Vilka tecken stöds i namn på programinställningar?**
 
-Du kan bara använda bokstäver (A-Z, A-z), siffror (0-9) och under strecks tecknet (_) för program inställningar.
+Du kan bara använda bokstäver (A–Z, a–z), siffror (0–9) och understreck (_) för programinställningar.
 
 **Var kan jag begära nya funktioner?**
 
-Du kan skicka in din idé i [forumen Web Apps feedback](https://aka.ms/webapps-uservoice). Lägg till "[Linux]" i titeln på din idé.
+Du kan skicka in din idé på Web Apps [feedbackforumet](https://aka.ms/webapps-uservoice). Lägg till "[Linux]" i rubriken för din idé.
 
 ## <a name="next-steps"></a>Nästa steg
 

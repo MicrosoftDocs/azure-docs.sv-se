@@ -1,7 +1,7 @@
 ---
-title: Vad är en bild analys?
+title: Vad är bildanalys?
 titleSuffix: Azure Cognitive Services
-description: Tjänsten för avbildnings analys använder förtränade AI-modeller för att extrahera många olika visuella funktioner från bilder.
+description: Tjänsten Bildanalys använder förtränade AI-modeller för att extrahera många olika visuella funktioner från bilder.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,36 +10,36 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 03/30/2021
 ms.author: pafarley
-keywords: visuellt innehåll, program för visuellt innehåll, dator vision
-ms.openlocfilehash: f262fdb49cac4ab9abe7f3f6873160d3059968c6
-ms.sourcegitcommit: b8995b7dafe6ee4b8c3c2b0c759b874dff74d96f
+keywords: computer vision, computer vision applications, computer vision service
+ms.openlocfilehash: 0258eb7c57bc0734b5c0a67644cbaa4f62a34537
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106287278"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107766923"
 ---
-# <a name="what-is-image-analysis"></a>Vad är en bild analys?
+# <a name="what-is-image-analysis"></a>Vad är bildanalys?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Med tjänsten Visuellt innehåll Image Analysis kan du extrahera en mängd olika visuella funktioner från dina avbildningar. Det kan till exempel ta reda på om en bild innehåller olämpligt innehåll, hitta vissa varumärken eller objekt eller hitta mänskliga ansikten.
+Tjänsten Visuellt innehåll Image Analysis kan extrahera en mängd olika visuella funktioner från dina bilder. Den kan till exempel avgöra om en bild innehåller vuxet innehåll, hitta specifika varumärken eller objekt eller hitta ansikten.
 
-Du kan använda bild analys via en klient biblioteks-SDK eller genom att anropa [REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) direkt. Kom igång genom att följa [snabb](quickstarts-sdk/image-analysis-client-library.md) starten.
+Du kan använda bildanalys via ett klientbiblioteks-SDK eller genom att [anropa REST API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v2-ga/operations/5d986960601faab4bf452005) direkt. Kom igång [genom att följa snabbstarten.](quickstarts-sdk/image-analysis-client-library.md)
 
 Den här dokumentationen innehåller följande typer av artiklar:
-* [Snabb starterna](./quickstarts-sdk/image-analysis-client-library.md) är steg-för-steg-instruktioner som gör att du kan anropa tjänsten och få resultat under en kort tids period. 
-* [Instruktions guiderna](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) innehåller instruktioner för att använda tjänsten på mer exakta eller anpassade sätt.
-* De [konceptuella artiklarna](concept-tagging-images.md) innehåller djupgående förklaringar av tjänstens funktioner och funktioner.
-* [Självstudierna](./tutorials/storage-lab-tutorial.md) är längre guider som visar hur du använder den här tjänsten som en komponent i bredare affärs lösningar.
+* [Snabbstarterna](./quickstarts-sdk/image-analysis-client-library.md) är stegvisa instruktioner som gör att du kan göra anrop till tjänsten och få resultat på kort tid. 
+* [Instruktionsguiderna innehåller](./Vision-API-How-to-Topics/HowToCallVisionAPI.md) instruktioner för att använda tjänsten på mer specifika eller anpassade sätt.
+* [Konceptuella](concept-tagging-images.md) artiklar innehåller detaljerade förklaringar av tjänstens funktioner och funktioner.
+* [Självstudierna](./tutorials/storage-lab-tutorial.md) är längre guider som visar hur du använder den här tjänsten som en komponent i bredare affärslösningar.
 
-## <a name="image-analysis-features"></a>Bild analys funktioner
+## <a name="image-analysis-features"></a>Funktioner för bildanalys
 
-Du kan analysera bilder för att ge insikter om sina visuella funktioner och egenskaper. Alla funktioner i listan nedan finns i [analys avbildnings](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) -API: et. Kom igång genom att följa en [snabb start](./quickstarts-sdk/image-analysis-client-library.md) .
+Du kan analysera bilder för att ge insikter om deras visuella funktioner och egenskaper. Alla funktioner i listan nedan tillhandahålls av Analysera bild [API.](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-ga/operations/56f91f2e778daf14a499f21b) Följ en [snabbstart för](./quickstarts-sdk/image-analysis-client-library.md) att komma igång.
 
 
 ### <a name="tag-visual-features"></a>Tagga visuella egenskaper
 
-Identifiera och tagga visuella egenskaper i en bild, från tusentals identifierbara objekt, levande varelser, landskap och åtgärder. När taggarna är tvetydiga eller inte vanliga kunskaper innehåller API-svaret tips för att klargöra taggens kontext. Taggar är inte begränsade till huvudföremålet på bilden, som till exempel en person i förgrunden, utan finns även för saker som bakgrund (inomhus eller utomhus), möbler, verktyg, växter, djur, accessoarer, saker och så vidare. [Tagga visuella egenskaper](concept-tagging-images.md)
+Identifiera och tagga visuella egenskaper i en bild, från tusentals identifierbara objekt, levande varelser, landskap och åtgärder. När taggarna är tvetydiga eller inte är allmänt känt ger API-svaret tips som tydliggör taggens kontext. Taggar är inte begränsade till huvudföremålet på bilden, som till exempel en person i förgrunden, utan finns även för saker som bakgrund (inomhus eller utomhus), möbler, verktyg, växter, djur, accessoarer, saker och så vidare. [Tagga visuella egenskaper](concept-tagging-images.md)
 
 ### <a name="detect-objects"></a>Upptäcka objekt
 
@@ -59,7 +59,7 @@ Skapa en beskrivning av en hel bild i läsbart språk med fullständiga meningar
 
 ### <a name="detect-faces"></a>Identifiera ansikten
 
-Identifiera ansikten i en bild och ange information om varje identifierat ansikte. Visuellt innehåll returnerar koordinater, rektanglar, kön och ålder för varje identifierat ansikte.<br/>Visuellt innehåll tillhandahåller en delmängd av funktionerna för [ansikts](../face/index.yml) tjänster. Du kan använda ansikts tjänsten för mer detaljerad analys, t. ex. ansikts identifiering och identifiering. [Identifiera ansikten](concept-detecting-faces.md)
+Identifiera ansikten i en bild och ange information om varje identifierat ansikte. Visuellt innehåll returnerar koordinater, rektanglar, kön och ålder för varje identifierat ansikte.<br/>Visuellt innehåll en delmängd av [ansiktstjänstens](../face/index.yml) funktioner. Du kan använda tjänsten Ansiktsigenkänning för mer detaljerad analys, till exempel ansiktsidentifiering och attitydidentifiering. [Identifiera ansikten](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>Identifiera bildtyper
 
@@ -67,7 +67,7 @@ Identifiera olika kännetecken om en bild som t. ex. om det är en teckning ell
 
 ### <a name="detect-domain-specific-content"></a>Identifiera domänspecifikt innehåll
 
-Använd domänmodeller för att upptäcka och identifiera domänspecifikt innehåll i en bild, till exempel kändisar och landmärken. Om en bild till exempel innehåller personer kan Visuellt innehåll använda en domän modell för kändisar för att avgöra om de personer som identifieras i avbildningen är kända kändisar. [Identifiera domänspecifikt innehåll](concept-detecting-domain-content.md)
+Använd domänmodeller för att upptäcka och identifiera domänspecifikt innehåll i en bild, till exempel kändisar och landmärken. Om en bild till exempel innehåller personer kan Visuellt innehåll använda en domänmodell för kändisar för att avgöra om de personer som har identifierats i bilden är kända kändisar. [Identifiera domänspecifikt innehåll](concept-detecting-domain-content.md)
 
 ### <a name="detect-the-color-scheme"></a>Identifiera färgschema
 
@@ -79,15 +79,15 @@ Analysera innehållet i en bild för att generera en lämplig miniatyrbild för 
 
 ### <a name="get-the-area-of-interest"></a>Hämta ett intresseområde
 
-Analysera innehållet i en bild för att returnera koordinaterna för *intresseområdet*. I stället för att beskära bilden och generera en miniatyr, returnerar Visuellt innehåll områdets avgränsnings Rams koordinater, så det anropande programmet kan ändra den ursprungliga avbildningen efter behov. [Hämta ett intresseområde](concept-generating-thumbnails.md#area-of-interest)
+Analysera innehållet i en bild för att returnera koordinaterna för *intresseområdet*. I stället för att beskära bilden och generera en miniatyrbild Visuellt innehåll returnerar koordinaterna för avgränsare för regionen, så att det anropande programmet kan ändra den ursprungliga bilden efter behov. [Hämta ett intresseområde](concept-generating-thumbnails.md#area-of-interest)
 
 ## <a name="moderate-content-in-images"></a>Moderera innehåll i bilder
 
-Du kan använda Visuellt innehåll för att [identifiera vuxna innehåll](concept-detecting-adult-content.md) i en bild och returnera konfidensts resultat för olika klassificeringar. Tröskelvärdet för flaggat innehåll kan ställas in på en rörlig skala för att passa dina inställningar.
+Du kan använda Visuellt innehåll för [att identifiera vuxet innehåll](concept-detecting-adult-content.md) i en bild och returnera förtroendepoäng för olika klassificeringar. Tröskelvärdet för att flagga innehåll kan ställas in på en glidande skala för att passa dina önskemål.
 
 ## <a name="image-requirements"></a>Avbildningskrav
 
-Bild analys används för avbildningar som uppfyller följande krav:
+Bildanalys fungerar på bilder som uppfyller följande krav:
 
 - Bilden måste vara i JPEG-, PNG-, GIF- eller BMP-format
 - Filstorleken måste vara mindre än 4 megabyte (MB)
@@ -99,6 +99,6 @@ Som med alla Cognitive Services bör utvecklare som använder tjänsten Visuellt
 
 ## <a name="next-steps"></a>Nästa steg
 
-Kom igång med bild analys genom att följa snabb starts guiden på det föredragna utvecklings språket:
+Kom igång med bildanalys genom att följa snabbstartsguiden på önskat utvecklingsspråk:
 
-- [Snabb start: Visuellt innehåll REST API-eller klient bibliotek](./quickstarts-sdk/image-analysis-client-library.md)
+- [Snabbstart: Visuellt innehåll REST API eller klientbibliotek](./quickstarts-sdk/image-analysis-client-library.md)

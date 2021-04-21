@@ -12,12 +12,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: e9201f41c9552b6a60f9ccd8eacda60ac46f89eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e20a4324f46925b8f83d7519c481a1d5bfc06a9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99591644"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789311"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Begränsa webbtrafik med hjälp av Azure CLI
 
@@ -45,15 +45,15 @@ Det här skriptet använder följande kommandon för att skapa distributionen. V
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Skapar ett virtuellt nätverk. |
-| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Skapar ett undernät i ett virtuellt nätverk. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) | Skapar ett virtuellt nätverk. |
+| [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) | Skapar ett undernät i ett virtuellt nätverk. |
 | [az network public-ip create](/cli/azure/network/public-ip) | Skapar den offentliga IP-adressen för programgatewayen. |
 | [az network application-gateway create](/cli/azure/network/application-gateway) | Skapar en programgateway. |
-| [az vmss create](/cli/azure/vmss#az-vmss-create) | Skapar en VM-skalningsuppsättning. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Skapar ett lagringskonto. |
-| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | Skapar ett lagringskonto. |
-| [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) | Hämtar programgatewayens offentliga IP-adress. |
+| [az vmss create](/cli/azure/vmss#az_vmss_create) | Skapar en VM-skalningsuppsättning. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Skapar ett lagringskonto. |
+| [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az_monitor_diagnostic_settings_create) | Skapar ett lagringskonto. |
+| [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) | Hämtar programgatewayens offentliga IP-adress. |
 
 ## <a name="next-steps"></a>Nästa steg
 

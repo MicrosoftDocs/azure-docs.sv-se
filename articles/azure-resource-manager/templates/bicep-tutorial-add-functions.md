@@ -1,57 +1,57 @@
 ---
-title: Självstudie – lägga till funktioner i Azure Resource Manager bicep-filer
-description: Lägg till funktioner till dina bicep-filer för att skapa värden.
+title: Självstudie – lägga till funktioner i Azure Resource Manager Bicep-filer
+description: Lägg till funktioner i dina Bicep-filer för att konstruera värden.
 author: mumian
-ms.date: 03/10/2021
+ms.date: 04/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: references_regions
-ms.openlocfilehash: b909beb0cce9ad04ba00068ee25247520dcff47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 43dec6ceb21a6604bc0034b3f14b79ffd2cbe263
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102633163"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773809"
 ---
-# <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Självstudie: lägga till funktioner i Azure Resource Manager bicep-fil
+# <a name="tutorial-add-functions-to-azure-resource-manager-bicep-file"></a>Självstudie: Lägga till funktioner i Azure Resource Manager Bicep-fil
 
-I den här självstudien får du lära dig hur du lägger till [mallar](template-functions.md) i din bicep-fil. Du använder funktioner för att dynamiskt konstruera värden. Förutom dessa funktioner som tillhandahålls av systemet kan du också skapa [användardefinierade funktioner](./template-user-defined-functions.md). Den här självstudien tar **7 minuter** att slutföra.
+I den här självstudien får du lära dig hur du [lägger till mallfunktioner](template-functions.md) i din Bicep-fil. Du använder funktioner för att dynamiskt konstruera värden. Bicep stöder för närvarande inte användardefinierade funktioner. Den här **självstudien tar 7 minuter** att slutföra.
 
 [!INCLUDE [Bicep preview](../../../includes/resource-manager-bicep-preview.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Vi rekommenderar att du slutför [självstudien om parametrar](bicep-tutorial-add-parameters.md), men det är inte obligatoriskt.
+Vi rekommenderar att du slutför [självstudien om](bicep-tutorial-add-parameters.md)parametrar, men det krävs inte.
 
-Du måste ha Visual Studio Code med bicep-tillägget och antingen Azure PowerShell eller Azure CLI. Mer information finns i [bicep-verktyg](bicep-tutorial-create-first-bicep.md#get-tools).
+Du måste ha Visual Studio Code med Bicep-tillägget och antingen Azure PowerShell eller Azure CLI. Mer information finns i [Bicep-verktyg.](bicep-tutorial-create-first-bicep.md#get-tools)
 
-## <a name="review-bicep-file"></a>Granska bicep-fil
+## <a name="review-bicep-file"></a>Granska Bicep-filen
 
-I slutet av den föregående själv studie kursen hade bicep-filen följande innehåll:
+I slutet av den föregående självstudien hade bicep-filen följande innehåll:
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.bicep":::
 
-Platsen för lagrings kontot är hårdkodad till **USA, östra**. Du kan dock behöva distribuera lagrings kontot till andra regioner. Du är återigen inriktad på ett problem med din bicep-fil som saknar flexibilitet. Du kan lägga till en parameter för platsen, men det skulle vara bra om standardvärdet har gjorts mer meningsfullt än bara ett hårdkodat värde.
+Lagringskontots plats är hårdkodad till **USA, östra.** Du kan dock behöva distribuera lagringskontot till andra regioner. Du har återigen problem med att bicep-filen saknar flexibilitet. Du kan lägga till en parameter för plats, men det skulle vara bra om dess standardvärde vore mer meningsfullt än bara ett hårdkodat värde.
 
 ## <a name="use-function"></a>Använd funktion
 
-Funktioner ger en flexibel bicep-fil genom att dynamiskt hämta värden under distributionen. I den här självstudien använder du en funktion för att hämta platsen för den resurs grupp som du använder för distribution.
+Funktioner ger bicep-filen flexibilitet genom att hämta värden dynamiskt under distributionen. I den här självstudien använder du en funktion för att hämta platsen för den resursgrupp som du använder för distribution.
 
-I följande exempel visas ändringarna för att lägga till en parameter med namnet `location` . Standardvärdet för parametern anropar funktionen [resourceGroup](template-functions-resource.md#resourcegroup) . Den här funktionen returnerar ett objekt med information om resurs gruppen som används för distribution. En av egenskaperna för objektet är en plats egenskap. När du använder standardvärdet har lagrings konto platsen samma plats som resurs gruppen. Resurserna i en resurs grupp behöver inte dela samma plats. Du kan också ange en annan plats när det behövs.
+I följande exempel visas ändringarna för att lägga till en parameter med namnet `location` . Parameterns standardvärde anropar [resourceGroup-funktionen.](template-functions-resource.md#resourcegroup) Den här funktionen returnerar ett -objekt med information om resursgruppen som används för distribution. En av egenskaperna för objektet är en platsegenskap. När du använder standardvärdet har lagringskontots plats samma plats som resursgruppen. Resurserna i en resursgrupp behöver inte dela samma plats. Du kan också ange en annan plats när det behövs.
 
-Kopiera hela filen och ersätt din bicep-fil med dess innehåll.
+Kopiera hela filen och ersätt bicep-filen med dess innehåll.
 
 :::code language="bicep" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.bicep" range="1-30" highlight="18,22":::
 
-## <a name="deploy-bicep-file"></a>Distribuera bicep-fil
+## <a name="deploy-bicep-file"></a>Distribuera Bicep-fil
 
-I de föregående självstudierna skapade du ett lagrings konto i östra USA, men resurs gruppen skapades i Central USA. I den här självstudien skapas ditt lagrings konto i samma region som resurs gruppen. Använd standardvärdet för plats, så du behöver inte ange detta parameter värde. Du måste ange ett nytt namn för lagrings kontot eftersom du skapar ett lagrings konto på en annan plats. Använd till exempel **store2** som prefix i stället för **store1**.
+I föregående självstudier skapade du ett lagringskonto i USA, östra, men resursgruppen skapades i USA, centrala. I den här självstudien skapas ditt lagringskonto i samma region som resursgruppen. Använd standardvärdet för plats, så du behöver inte ange det parametervärdet. Du måste ange ett nytt namn för lagringskontot eftersom du skapar ett lagringskonto på en annan plats. Använd till exempel **store2 som** prefix i stället för **store1**.
 
-Om du inte har skapat resurs gruppen, se [skapa resurs grupp](bicep-tutorial-create-first-bicep.md#create-resource-group). Exemplet förutsätter att du har angett `bicepFile` variabeln till sökvägen till bicep-filen, som du ser i den [första självstudien](bicep-tutorial-create-first-bicep.md#deploy-bicep-file).
+Om du inte har skapat resursgruppen kan du se [Skapa resursgrupp.](bicep-tutorial-create-first-bicep.md#create-resource-group) I exemplet förutsätter vi att du har angett variabeln till sökvägen `bicepFile` till Bicep-filen, som du ser i den första [självstudien](bicep-tutorial-create-first-bicep.md#deploy-bicep-file).
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-För att kunna köra denna distributions-cmdlet måste du ha den [senaste versionen](/powershell/azure/install-az-ps) av Azure PowerShell.
+Om du vill köra den här distributions-cmdleten måste du ha [den senaste versionen](/powershell/azure/install-az-ps) av Azure PowerShell.
 
 ```azurepowershell
 New-AzResourceGroupDeployment `
@@ -76,31 +76,31 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information om fel sökning.
+> Om distributionen misslyckades använder du `verbose` växeln för att hämta information om de resurser som skapas. Använd `debug` växeln för att få mer information för felsökning.
 
 ## <a name="verify-deployment"></a>Verifiera distributionen
 
-Du kan kontrol lera distributionen genom att utforska resurs gruppen från Azure Portal.
+Du kan verifiera distributionen genom att utforska resursgruppen från Azure Portal.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com).
-1. Välj **resurs grupper** på den vänstra menyn.
-1. Välj den resurs grupp som du har distribuerat till.
-1. Du ser att en lagrings konto resurs har distribuerats och har samma plats som resurs gruppen.
+1. Välj Resursgrupper på den **vänstra menyn.**
+1. Välj den resursgrupp som du distribuerade till.
+1. Du ser att en lagringskontoresurs har distribuerats och har samma plats som resursgruppen.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du går vidare till nästa självstudie behöver du inte ta bort resurs gruppen.
+Om du går vidare till nästa självstudie behöver du inte ta bort resursgruppen.
 
-Om du stoppar nu kanske du vill rensa de resurser som du har distribuerat genom att ta bort resurs gruppen.
+Om du stoppar nu kanske du vill rensa de resurser som du har distribuerat genom att ta bort resursgruppen.
 
-1. Från Azure Portal väljer du **resurs grupp** på den vänstra menyn.
+1. I Azure Portal väljer du **Resursgrupp** på den vänstra menyn.
 2. Ange resursgruppens namn i fältet **Filtrera efter namn**.
 3. Välj resursgruppens namn.
-4. Välj **ta bort resurs grupp** på den översta menyn.
+4. Välj **Ta bort resursgrupp** på den översta menyn.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien använde du en funktion när du definierade standardvärdet för en parameter. I den här självstudien ska du fortsätta använda functions. I slutet av serien lägger du till funktioner i alla avsnitt i bicep-filen.
+I den här självstudien använde du en funktion när du definierade standardvärdet för en parameter. I den här självstudieserien fortsätter du att använda funktioner. I slutet av serien lägger du till funktioner i varje avsnitt i Bicep-filen.
 
 > [!div class="nextstepaction"]
 > [Lägga till variabler](bicep-tutorial-add-variables.md)

@@ -1,31 +1,31 @@
 ---
-title: Privat länk – Azure CLI – Azure Database for PostgreSQL-enskild server
-description: Lär dig hur du konfigurerar en privat länk för Azure Database for PostgreSQL-enskild server från Azure CLI
+title: Private Link – Azure CLI – Azure Database for PostgreSQL – enskild server
+description: Lär dig hur du konfigurerar privat länk för Azure Database for PostgreSQL – enskild server från Azure CLI
 author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3452bfee1e9228926bb687d1b9dc7fb26dfff85a
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 410da33b531524f4a6458df13a89807fedd739a2
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105642185"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773341"
 ---
-# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Skapa och hantera en privat länk för Azure Database for PostgreSQL-enskild server med CLI
+# <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-cli"></a>Skapa och hantera Private Link för Azure Database for PostgreSQL – enskild server med CLI
 
-En privat slut punkt är det grundläggande Bygg blocket för privat länk i Azure. Den gör det möjligt för Azure-resurser, t. ex. Virtual Machines (VM), att kommunicera privat med privata länk resurser. I den här artikeln får du lära dig hur du använder Azure CLI för att skapa en virtuell dator i en Azure-Virtual Network och en Azure Database for PostgreSQL enskild server med en privat Azure-slutpunkt.
+En privat slutpunkt är den grundläggande byggstenen för privat länk i Azure. Det gör det möjligt för Azure-Virtual Machines (VM) att kommunicera privat med privata länkresurser. I den här artikeln får du lära dig hur du använder Azure CLI för att skapa en virtuell dator i en Azure Virtual Network och en Azure Database for PostgreSQL enskild server med en privat Azure-slutpunkt.
 
 > [!NOTE]
-> Funktionen privat länk är bara tillgänglig för Azure Database for PostgreSQL servrar i Generell användning eller Minnesoptimerade pris nivåer. Se till att databas servern är på någon av dessa pris nivåer.
+> Funktionen private link är endast tillgänglig för Azure Database for PostgreSQL servrar i Generell användning eller minnesoptimerade prisnivåer. Se till att databasservern är på någon av dessa prisnivåer.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att gå igenom den här instruktions guiden behöver du:
+Om du vill gå igenom den här guiden behöver du:
 
-- En [Azure Database for postgresql server och databas](quickstart-create-server-database-azure-cli.md).
+- En [Azure Database for PostgreSQL server och databas](quickstart-create-server-database-azure-cli.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -33,14 +33,14 @@ Om du väljer att installera och använda CLI lokalt i stället, måste du köra
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Innan du kan skapa en resurs måste du skapa en resurs grupp som är värd för Virtual Network. Skapa en resursgrupp med [az group create](/cli/azure/group). I det här exemplet skapas en resurs grupp med namnet *myResourceGroup* på *westeurope* -platsen:
+Innan du kan skapa en resurs måste du skapa en resursgrupp som ska vara värd för Virtual Network. Skapa en resursgrupp med [az group create](/cli/azure/group). I det här exemplet skapas en resursgrupp *med namnet myResourceGroup* på *platsen westeurope:*
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
 ## <a name="create-a-virtual-network"></a>Skapa ett virtuellt nätverk
-Skapa en Virtual Network med [AZ Network VNet Create](/cli/azure/network/vnet). I det här exemplet skapas en standard Virtual Network med namnet *myVirtualNetwork* med ett undernät med namnet *undernät*:
+Skapa en Virtual Network med [az network vnet create](/cli/azure/network/vnet). I det här exemplet skapas en Virtual Network med *namnet myVirtualNetwork* med ett undernät med namnet *mySubnet*:
 
 ```azurecli-interactive
 az network vnet create \
@@ -49,8 +49,8 @@ az network vnet create \
  --subnet-name mySubnet
 ```
 
-## <a name="disable-subnet-private-endpoint-policies"></a>Inaktivera privata slut punkts principer för undernät 
-Azure distribuerar resurser till ett undernät i ett virtuellt nätverk, så du måste skapa eller uppdatera under nätet för att inaktivera [nätverks principer](../private-link/disable-private-endpoint-network-policy.md)för privata slut punkter. Uppdatera en under näts konfiguration med namnet *mitt undernät* med [AZ Network VNet Subnet Update](/cli/azure/network/vnet/subnet#az-network-vnet-subnet-update):
+## <a name="disable-subnet-private-endpoint-policies"></a>Inaktivera principer för privata slutpunkter för undernät 
+Azure distribuerar resurser till ett undernät i ett virtuellt nätverk, så du måste skapa eller uppdatera undernätet för att inaktivera nätverksprinciper för [privata slutpunkter.](../private-link/disable-private-endpoint-network-policy.md) Uppdatera en undernätskonfiguration med *namnet mySubnet* med [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -60,7 +60,7 @@ az network vnet subnet update \
  --disable-private-endpoint-network-policies true
 ```
 ## <a name="create-the-vm"></a>Skapa den virtuella datorn 
-Skapa en virtuell dator med AZ VM Create. När du uppmanas anger du ett lösen ord som ska användas som inloggnings uppgifter för den virtuella datorn. I det här exemplet skapas en virtuell dator med namnet *myVm*: 
+Skapa en virtuell dator med az vm create. När du uppmanas till det anger du ett lösenord som ska användas som inloggningsuppgifter för den virtuella datorn. I det här exemplet skapas en virtuell dator med *namnet myVm*: 
 ```azurecli-interactive
 az vm create \
   --resource-group myResourceGroup \
@@ -68,10 +68,10 @@ az vm create \
   --image Win2019Datacenter
 ```
 
- Observera den offentliga IP-adressen för den virtuella datorn. Du kommer att använda den här adressen när du ansluter till den virtuella datorn från Internet i nästa steg.
+ Anteckna den virtuella datorns offentliga IP-adress. Du kommer att använda den här adressen när du ansluter till den virtuella datorn från Internet i nästa steg.
 
-## <a name="create-an-azure-database-for-postgresql---single-server"></a>Skapa en Azure Database for PostgreSQL-enskild server 
-Skapa en Azure Database for PostgreSQL med kommandot AZ postgres Server Create. Kom ihåg att namnet på din PostgreSQL-Server måste vara unikt i Azure, så Ersätt placeholder-värdet med dina egna unika värden som du använde ovan: 
+## <a name="create-an-azure-database-for-postgresql---single-server"></a>Skapa en Azure Database for PostgreSQL – enskild server 
+Skapa en Azure Database for PostgreSQL med kommandot az postgres server create. Kom ihåg att namnet på Din PostgreSQL-server måste vara unikt i Azure, så ersätt platshållarvärdet med dina egna unika värden som du använde ovan: 
 
 ```azurecli-interactive
 # Create a server in the resource group 
@@ -84,8 +84,8 @@ az postgres server create \
 --sku-name GP_Gen5_2
 ```
 
-## <a name="create-the-private-endpoint"></a>Skapa den privata slut punkten 
-Skapa en privat slut punkt för PostgreSQL-servern i Virtual Network: 
+## <a name="create-the-private-endpoint"></a>Skapa den privata slutpunkten 
+Skapa en privat slutpunkt för PostgreSQL-servern i din Virtual Network: 
 
 ```azurecli-interactive
 az network private-endpoint create \  
@@ -99,7 +99,7 @@ az network private-endpoint create \
  ```
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera Privat DNS zon 
-Skapa en Privat DNS zon för PostgreSQL-Server domän och skapa en kopplings länk med Virtual Network. 
+Skapa en Privat DNS zon för PostgreSQL-serverdomänen och skapa en kopplingslänk till Virtual Network. 
 
 ```azurecli-interactive
 az network private-dns zone create --resource-group myResourceGroup \ 
@@ -124,30 +124,30 @@ az network private-dns record-set a add-record --record-set-name myserver --zone
 ```
 
 > [!NOTE] 
-> Det fullständiga domännamnet i DNS-inställningen för kunden matchar inte den privata IP-adressen som har konfigurerats. Du måste konfigurera en DNS-zon för den konfigurerade FQDN: en som visas [här](../dns/dns-operations-recordsets-portal.md).
+> Det fullständiga domännamnet i DNS-inställningen för kunden matchar inte den privata IP-adressen som har konfigurerats. Du måste konfigurera en DNS-zon för det konfigurerade FQDN som visas [här.](../dns/dns-operations-recordsets-portal.md)
 
 > [!NOTE]
-> I vissa fall finns Azure Database for PostgreSQL och VNet-under nätet i olika prenumerationer. I dessa fall måste du se till att följande konfigurationer:
-> - Se till att båda prenumerations resurs leverantören för **Microsoft. DBforPostgreSQL** är registrerad. Mer information finns i [Resource providers](../azure-resource-manager/management/resource-providers-and-types.md).
+> I vissa fall Azure Database for PostgreSQL och VNet-undernätet i olika prenumerationer. I dessa fall måste du kontrollera följande konfigurationer:
+> - Kontrollera att båda prenumerationerna har **resursprovidern Microsoft.DBforPostgreSQL** registrerad. Mer information finns i [resursproviders.](../azure-resource-manager/management/resource-providers-and-types.md)
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Ansluta till en virtuell dator från Internet
 
-Anslut till VM- *myVm* från Internet på följande sätt:
+Anslut till den virtuella *datorn myVm* från Internet på följande sätt:
 
 1. I portalens sökfältet anger du *myVm*.
 
 1. Välj knappen **Anslut**. När du har valt knappen **Anslut** öppnas **Anslut till den virtuella datorn**.
 
-1. Välj **Hämta RDP-fil**. Azure skapar en Remote Desktop Protocol-fil (*. RDP*) och laddar ned den till datorn.
+1. Välj **Hämta RDP-fil**. Azure skapar en Remote Desktop Protocol *(.rdp)* och laddar ned den till datorn.
 
-1. Öppna den *nedladdade RDP* -filen.
+1. Öppna filen *downloaded.rdp.*
 
     1. Välj **Anslut** om du uppmanas att göra det.
 
-    1. Ange det användar namn och lösen ord som du angav när du skapade den virtuella datorn.
+    1. Ange det användarnamn och lösenord som du angav när du skapade den virtuella datorn.
 
         > [!NOTE]
-        > Du kan behöva välja **fler alternativ**  >  **Använd ett annat konto** för att ange de autentiseringsuppgifter du angav när du skapade den virtuella datorn.
+        > Du kan behöva välja Fler **alternativ Använd ett** annat konto för att  >  **ange** autentiseringsuppgifterna som du angav när du skapade den virtuella datorn.
 
 1. Välj **OK**.
 
@@ -157,7 +157,7 @@ Anslut till VM- *myVm* från Internet på följande sätt:
 
 ## <a name="access-the-postgresql-server-privately-from-the-vm"></a>Få åtkomst till PostgreSQL-servern privat från den virtuella datorn
 
-1. Öppna PowerShell i fjärr skrivbordet för *myVM*.
+1. På fjärrskrivbordet på *myVM* öppnar du PowerShell.
 
 2. Ange  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
 
@@ -171,33 +171,33 @@ Anslut till VM- *myVm* från Internet på följande sätt:
    Address:  10.1.3.4
    ```
 
-3. Testa anslutningen till den privata länken för PostgreSQL-servern med valfri tillgänglig klient. I följande exempel används [Azure Data Studio](/sql/azure-data-studio/download) för att utföra åtgärden.
+3. Testa den privata länkanslutningen för PostgreSQL-servern med valfri tillgänglig klient. I följande exempel används [Azure Data Studio](/sql/azure-data-studio/download) för att göra åtgärden.
 
-4. I **ny anslutning** anger eller väljer du den här informationen:
+4. I **Ny anslutning** anger eller väljer du den här informationen:
 
    | Inställning | Värde |
    | ------- | ----- |
-   | Servertyp| Välj **postgresql**.|
-   | Servernamn| Välj *mydemopostgresserver.privatelink.postgres.Database.Azure.com* |
-   | Användarnamn | Ange användar namn som username@servername anges när postgresql-servern skapas. |
-   |Lösenord |Ange ett lösen ord som angavs när PostgreSQL-servern skapades. |
-   |SSL|Välj **obligatoriskt**.|
+   | Servertyp| Välj **PostgreSQL**.|
+   | Servernamn| Välj *mydemopostgresserver.privatelink.postgres.database.azure.com* |
+   | Användarnamn | Ange det användarnamn username@servername som angavs när PostgreSQL-servern skapades. |
+   |Lösenord |Ange ett lösenord som angavs när PostgreSQL-servern skapades. |
+   |SSL|Välj **Obligatorisk.**|
    ||
 
 5. Välj Anslut.
 
-6. Bläddra bland databaser från menyn till vänster.
+6. Bläddra i databaser från den vänstra menyn.
 
-7. Du kan också Skapa eller fråga efter information från postgreSQL-servern.
+7. (Valfritt) Skapa eller fråga efter information från postgreSQL-servern.
 
-8. Stäng fjärr skrivbords anslutningen till myVm.
+8. Stäng fjärrskrivbordsanslutningen till myVm.
 
 ## <a name="clean-up-resources"></a>Rensa resurser 
-När de inte längre behövs kan du använda AZ Group Delete för att ta bort resurs gruppen och alla resurser den har: 
+När den inte längre behövs kan du använda az group delete för att ta bort resursgruppen och alla resurser som den har: 
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes 
 ```
 
 ## <a name="next-steps"></a>Nästa steg
-- Läs mer om [vad som är en privat Azure-slutpunkt](../private-link/private-endpoint-overview.md)
+- Läs mer om [Vad är privat Azure-slutpunkt?](../private-link/private-endpoint-overview.md)

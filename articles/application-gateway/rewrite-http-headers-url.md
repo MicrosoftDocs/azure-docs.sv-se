@@ -1,292 +1,292 @@
 ---
-title: 'Skriv över HTTP-sidhuvuden och URL: en med Azure Application Gateway | Microsoft Docs'
-description: 'Den här artikeln innehåller en översikt över hur du skriver om HTTP-rubriker och URL: er i Azure Application Gateway'
+title: Skriva om HTTP-huvuden och URL med Azure Application Gateway | Microsoft Docs
+description: Den här artikeln innehåller en översikt över omskrivning av HTTP-huvuden och URL i Azure Application Gateway
 services: application-gateway
 author: azhar2005
 ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 04/05/2021
 ms.author: azhussai
-ms.openlocfilehash: 3e7bdc92dc6268c712eecbd69ff014e2229b3b84
-ms.sourcegitcommit: bfa7d6ac93afe5f039d68c0ac389f06257223b42
+ms.openlocfilehash: b7cf7c98e71da215eb30dcab556a88d6d2701591
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106490972"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789455"
 ---
-# <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Skriv om HTTP-sidhuvuden och URL: en med Application Gateway
+# <a name="rewrite-http-headers-and-url-with-application-gateway"></a>Skriva om HTTP-huvuden och URL med Application Gateway
 
- Med Application Gateway kan du skriva om det valda innehållet i begär Anden och svar. Med den här funktionen kan du översätta URL: er, fråga sträng parametrar och ändra begäran och svarshuvuden. Du kan också lägga till villkor för att se till att URL: en eller de angivna rubrikerna bara skrivs om när vissa villkor är uppfyllda. Dessa villkor baseras på informationen för begäran och svar.
+Application Gateway kan du skriva om valt innehåll för begäranden och svar. Med den här funktionen kan du översätta URL:er, frågesträngsparametrar samt ändra begäran- och svarshuvuden. Du kan också lägga till villkor för att säkerställa att URL:en eller de angivna rubrikerna skrivs om endast när vissa villkor uppfylls. Dessa villkor baseras på informationen för begäran och svar.
 
 >[!NOTE]
->Funktioner för HTTP-huvud-och URL-omskrivning är bara tillgängliga för [Application Gateway v2-SKU: n](application-gateway-autoscaling-zone-redundant.md)
+>Funktioner för HTTP-huvud- och URL-omskrivning är endast tillgängliga [för Application Gateway v2 SKU](application-gateway-autoscaling-zone-redundant.md)
 
-## <a name="rewrite-types-supported"></a>Omskrivnings typer som stöds
+## <a name="rewrite-types-supported"></a>Omskrivningstyper som stöds
 
 ### <a name="request-and-response-headers"></a>Sidhuvuden för begäran och svar
 
-HTTP-huvuden låter en klient och Server skicka ytterligare information med en begäran eller ett svar. Genom att skriva om dessa rubriker kan du utföra viktiga uppgifter, till exempel lägga till säkerhetsrelaterade huvud fält som HSTS/X-XSS-Protection, ta bort svars huvud fält som kan avslöja känslig information och ta bort portinformation från X-vidarebefordrade-för-rubriker.
+MED HTTP-huvuden kan en klient och server skicka ytterligare information med en begäran eller ett svar. Genom att skriva om dessa huvuden kan du utföra viktiga uppgifter, till exempel lägga till säkerhetsrelaterade huvudfält som HSTS/X-XSS-Protection, ta bort svarshuvudfält som kan avslöja känslig information och ta bort portinformation från X-Forwarded-For-huvuden.
 
 Med Application Gateway kan du lägga till, ta bort eller uppdatera HTTP-huvuden för begäran och svar när begäran- och svarspaketen flyttas mellan klientens och serverdelens pooler.
 
-Information om hur du skriver om begäran och svarshuvuden med Application Gateway som använder Azure Portal finns [här](rewrite-url-portal.md).
+Information om hur du skriver om begärande- och svarshuvuden med Application Gateway med Azure Portal finns [här.](rewrite-url-portal.md)
 
 ![bild](./media/rewrite-http-headers-url/header-rewrite-overview.png)
 
 
 **Rubriker som stöds**
 
-Du kan skriva om alla huvuden i begär Anden och svar, förutom för anslutningen och uppgraderings rubriker. Du kan också använda Application Gateway för att skapa anpassade huvuden och lägga till dem i de begär Anden och svar som dirigeras genom den.
+Du kan skriva om alla huvuden i begäranden och svar, förutom anslutnings- och uppgraderingshuvudena. Du kan också använda programgatewayen för att skapa anpassade huvuden och lägga till dem i de begäranden och svar som dirigeras genom den.
 
 ### <a name="url-path-and-query-string"></a>URL-sökväg och frågesträng
 
-Med funktionen för URL-omskrivning i Application Gateway kan du:
+Med url-omskrivningsfunktion i Application Gateway kan du:
 
-* Skriv om värd namnet, sökvägen och frågesträngen för begärd URL 
+* Skriva om värdnamnet, sökvägen och frågesträngen för begärande-URL:en 
 
-* Välj att skriva om URL: er för alla begär Anden på en lyssnare eller bara de begär Anden som matchar ett eller flera av de villkor som du anger. Dessa villkor baseras på egenskaperna för begäran och svar (begäran, sidhuvud, svars rubrik och servervariabler).
+* Välj att skriva om URL:en för alla begäranden på en lyssnare eller bara de begäranden som matchar ett eller flera av de villkor som du anger. Dessa villkor baseras på egenskaperna för begäran och svar (begäran, huvud, svarshuvud och servervariabler).
 
-* Välj att dirigera begäran (Välj backend-poolen) baserat antingen på den ursprungliga URL: en eller den omskrivna URL: en
+* Välj att dirigera begäran (välj backend-poolen) baserat på antingen den ursprungliga URL:en eller den omskrivna URL:en
 
-Information om hur du skriver om URL: en med Application Gateway med Azure Portal finns [här](rewrite-url-portal.md).
+Information om hur du skriver om URL med Application Gateway med Azure Portal finns [här](rewrite-url-portal.md).
 
 ![Diagram som beskriver processen för att skriva om en URL med Application Gateway.](./media/rewrite-http-headers-url/url-rewrite-overview.png)
 
-## <a name="rewrite-actions"></a>Skriv om åtgärder
+## <a name="rewrite-actions"></a>Skriva om åtgärder
 
-Du använder återskrivnings åtgärder för att ange den URL, de begärandehuvuden eller de svarshuvuden som du vill skriva om och det nya värdet som du vill skriva om dem till. Värdet för en URL eller en ny eller befintlig rubrik kan anges till följande typer av värden:
+Du använder omskrivningsåtgärder för att ange URL, begärandehuvuden eller svarshuvuden som du vill skriva om och det nya värdet som du vill skriva om dem till. Värdet för en URL eller en ny eller befintlig rubrik kan anges till följande typer av värden:
 
 * Text
-* Begär ande huvud. Om du vill ange ett rubrik för begäran måste du använda syntaxen {http_req_ *huvud*}
-* Svarshuvud. Om du vill ange ett svars huvud måste du använda syntaxen {http_resp_ *huvud*}
-* Server variabel. Om du vill ange en server variabel måste du använda syntaxen {var_ *serverVariable*}. Se listan över servervariabler som stöds
-* En kombination av text, ett begär ande huvud, ett svars huvud och en server variabel. 
+* Begärandehuvud. Om du vill ange ett begärandehuvud måste du använda syntaxen {http_req_ *headerName*}
+* Svarshuvud. Om du vill ange ett svarshuvud måste du använda syntaxen {http_resp_ *headerName*}
+* Servervariabel. Om du vill ange en servervariabel måste du använda syntaxen {var_ *serverVariable*}. Se listan över servervariabler som stöds
+* En kombination av text, ett begärandehuvud, ett svarshuvud och en servervariabel. 
 
-## <a name="rewrite-conditions"></a>Skriv om villkor
+## <a name="rewrite-conditions"></a>Skriva om villkor
 
-Du kan använda omskrivnings villkor, en valfri konfiguration för att utvärdera innehållet i HTTP (S)-begär Anden och svar och bara utföra en omskrivning när ett eller flera villkor är uppfyllda. Programgatewayen använder dessa typer av variabler för att utvärdera innehållet i begär Anden och svar:
+Du kan använda omskrivningsvillkor, en valfri konfiguration, för att utvärdera innehållet i HTTP(S)-begäranden och -svar och endast skriva om när ett eller flera villkor är uppfyllda. Application Gateway använder dessa typer av variabler för att utvärdera innehållet i begäranden och svar:
 
 * HTTP-huvuden i begäran
-* HTTP-rubriker i svaret
+* HTTP-huvuden i svaret
 * Application Gateway servervariabler
 
-Du kan använda ett villkor för att utvärdera om en angiven variabel finns, om en angiven variabel matchar ett specifikt värde, eller om en angiven variabel matchar ett specifikt mönster. 
+Du kan använda ett villkor för att utvärdera om en angiven variabel finns, om en angiven variabel matchar ett visst värde eller om en angiven variabel matchar ett visst mönster. 
 
 
-### <a name="pattern-matching"></a>Mönster matchning 
+### <a name="pattern-matching"></a>Mönstermatchning 
 
-Application Gateway använder reguljära uttryck för mönster matchning i villkoret. Du kan använda [pcre-biblioteket (perl-kompatibla reguljära uttryck)](https://www.pcre.org/) för att konfigurera mönster matchning för reguljära uttryck i villkoren. Mer information om syntax för reguljära uttryck finns i [huvud sidan för vanliga](https://perldoc.perl.org/perlre.html)uttryck i perl.
+Application Gateway använder reguljära uttryck för mönstermatchning i villkoret. Du kan använda [PCRE-biblioteket (Perl Compatible Regular Expressions)](https://www.pcre.org/) för att konfigurera matchning av mönster för reguljära uttryck i villkoren. Mer information om syntax för reguljära uttryck finns på huvudsidan [för Reguljära Perl-uttryck.](https://perldoc.perl.org/perlre.html)
 
-### <a name="capturing"></a>Övervakning
+### <a name="capturing"></a>Fånga
 
-Om du vill avbilda en under sträng för senare användning sätter du parenteser runt det under mönster som matchar det i villkors regex definitionen. Det första paren tes paret lagrar dess del sträng i 1, det andra paret i 2 och så vidare. Du kan använda så många parenteser som du vill. Perl håller bara på att definiera fler numrerade variabler så att du kan representera dessa insamlade strängar. Några exempel från [Ref](https://docstore.mik.ua/orelly/perl/prog3/ch05_07.htm): 
+Om du vill avbilda en delsträng för senare användning lägger du parenteser runt undermönstret som matchar det i villkorets regex-definition. Det första parentesparet lagrar sin delsträng i 1, det andra paret i 2 och så vidare. Du kan använda så många parenteser som du vill; Perl fortsätter bara att definiera fler numrerade variabler så att du kan representera dessa avbildade strängar. Några exempel från [referens :](https://docstore.mik.ua/orelly/perl/prog3/ch05_07.htm) 
 
-*  /(\d) (\d)/# matcha två siffror, samla in dem i grupper 1 och 2 
+*  /(\d)(\d)/ # Matcha två siffror och samla in dem i grupperna 1 och 2 
 
-* /(\d +)/# matcha en eller flera siffror, samla in dem i grupp 1 
+* /(\d+)/ # Matcha en eller flera siffror och samla in dem i grupp 1 
 
-* /(\d) +/# matcha en siffra en eller flera gånger, samla in den sista i grupp 1
+* /(\d)+/ # Matcha en siffra en eller flera gånger och samla in den sista i grupp 1
 
-När du har samlat in kan du referera till dem i den angivna åtgärden med följande format:
+När de har avbildats kan du referera till dem i åtgärdsuppsättningen med hjälp av följande format:
 
-* För registrering av begär ande huvud måste du använda {http_req_headerName_groupNumber}. Till exempel {http_req_User-Agent_1} eller {http_req_User-Agent_2}
-* För en registrering av svars huvud måste du använda {http_resp_headerName_groupNumber}. Till exempel {http_resp_Location_1} eller {http_resp_Location_2}
-* För en server variabel måste du använda {var_serverVariableName_groupNumber}. Till exempel {var_uri_path_1} eller {var_uri_path_2}
+* För en begärandehuvudinfångst måste du använda {http_req_headerName_groupNumber}. Till exempel {http_req_User-Agent_1} eller {http_req_User-Agent_2}
+* För en svarshuvudinfångst måste du använda {http_resp_headerName_groupNumber}. Till exempel {http_resp_Location_1} eller {http_resp_Location_2}
+* För en servervariabel måste du använda {var_serverVariableName_groupNumber}. Till exempel {var_uri_path_1} eller {var_uri_path_2}
 
-Om du vill använda hela värdet ska du inte nämna numret. Använd bara formatet {http_req_headerName} osv. utan groupNumber.
+Om du vill använda hela värdet bör du inte nämna talet. Använd bara formatet {http_req_headerName}, osv. utan groupNumber.
 
 ## <a name="server-variables"></a>Servervariabler
 
-Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran på anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsarens typ. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera Skriv villkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_ *serverVariableName*}
+Application Gateway använder servervariabler för att lagra användbar information om servern, anslutningen till klienten och den aktuella begäran om anslutningen. Exempel på information som lagras är klientens IP-adress och webbläsartyp. Servervariabler ändras dynamiskt, till exempel när en ny sida läses in eller när ett formulär publiceras. Du kan använda dessa variabler för att utvärdera omskrivningsvillkor och skriva om rubriker. För att kunna använda värdet för servervariabler för att skriva om rubriker måste du ange dessa variabler i syntaxen {var_ *serverVariableName*}
 
 Application Gateway stöder följande servervariabler:
 
-|   Variabelnamn    |                   Beskrivning                                           |
+|   Variabelnamn    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
-| add_x_forwarded_for_proxy | Det X-vidarebefordrade – för fältet för klient begär ande huvud med `client_ip` variabeln (se förklaringen senare i den här tabellen) som läggs till i formatet IP1, IP2, IP3 och så vidare. Om fältet X-forwarded inte finns i klient begär ande huvudet `add_x_forwarded_for_proxy` är variabeln lika med `$client_ip` variabeln.   Den här variabeln är särskilt användbar när du vill skriva om den X-vidarebefordrade-för-rubrik som angetts av Application Gateway så att sidhuvudet endast innehåller IP-adressen utan portinformation. |
-| ciphers_supported         | En lista över de chiffer som stöds av klienten.               |
-| ciphers_used              | Den sträng med chiffer som används för en upprättad TLS-anslutning. |
-| client_ip                 | IP-adressen för den klient som Application Gateway tog emot begäran från. Om det finns en omvänd proxy före programgatewayen och den ursprungliga klienten, `client_ip` returnerar IP-adressen för den omvända proxyn. |
-| client_port               | Klient porten.                                             |
-| client_tcp_rtt            | Information om klientens TCP-anslutning. Tillgängligt på system som har stöd för alternativet TCP_INFO socket. |
-| client_user               | När HTTP-autentisering används anges användar namnet för autentisering. |
-| värd                      | I den här prioritetsordningen: värd namnet från begär ande raden, värd namnet från fältet värd begär ande huvud eller Server namnet som matchar en begäran. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` är värd värdet `contoso.com` |
-| cookie_ *namn*             | Cookie- *namn* .                                           |
+| add_x_forwarded_for_proxy | Fältet X-Forwarded-For client request header med variabeln (se förklaring senare i den här tabellen) tillagt i `client_ip` formatet IP1, IP2, IP3 och så vidare. Om fältet X-Forwarded-For inte finns i klientbegärandehuvudet är `add_x_forwarded_for_proxy` variabeln lika med `$client_ip` variabeln .   Den här variabeln är särskilt användbar när du vill skriva om huvudet X-Forwarded-For som angetts av Application Gateway så att rubriken bara innehåller IP-adressen utan portinformationen. |
+| ciphers_supported         | En lista över chiffer som stöds av klienten.               |
+| ciphers_used              | Strängen med chiffer som används för en upprättad TLS-anslutning. |
+| client_ip                 | IP-adressen för klienten som programgatewayen tog emot begäran från. Om det finns en omvänd proxy före programgatewayen och den ursprungliga klienten returnerar `client_ip` IP-adressen för den omvända proxyn. |
+| client_port               | Klientporten.                                             |
+| client_tcp_rtt            | Information om klientens TCP-anslutning. Tillgängligt på system som stöder TCP_INFO socket. |
+| client_user               | När HTTP-autentisering används anges användarnamnet för autentisering. |
+| värd                      | I den här prioritetsordningen: värdnamnet från begäranderaden, värdnamnet från fältet Värdbegärandehuvud eller det servernamn som matchar en begäran. Exempel: I begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` är värdvärdet `contoso.com` |
+| cookie_ *namn*             | Namnet *cookie.*                                           |
 | http_method               | Den metod som används för att göra URL-begäran. Till exempel GET eller POST. |
-| http_status               | Sessionens status. Till exempel 200, 400 eller 403.           |
-| http_version              | Protokollet för begäran. Vanligt vis HTTP/1.0, HTTP/1.1 eller HTTP/2.0. |
-| query_string              | Listan över variabel/värde-par som följer "?" i den begärda URL: en. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` visas QUERY_STRING värde `id=123&title=fabrikam` |
-| received_bytes            | Längden på begäran (inklusive raden för begäran, sidhuvud och brödtext). |
-| request_query             | Argumenten på raden för begäran.                           |
-| request_scheme            | Begär ande schema: http eller https.                           |
-| request_uri               | Fullständig URI för ursprunglig begäran (med argument). Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` visas REQUEST_URI värde `/article.aspx?id=123&title=fabrikam` |
-| sent_bytes                | Antalet byte som har skickats till en klient.                        |
+| http_status               | Sessionsstatus. Till exempel 200, 400 eller 403.           |
+| http_version              | Begärandeprotokollet. Vanligtvis HTTP/1.0, HTTP/1.1 eller HTTP/2.0. |
+| query_string              | Listan med variabel-/värdepar som följer "?" i den begärda URL:en. Exempel: I begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` query_string värdet `id=123&title=fabrikam` |
+| received_bytes            | Längden på begäran (inklusive begäranderaden, rubriken och begärandetexten). |
+| request_query             | Argumenten på begäranderaden.                           |
+| request_scheme            | Begärandeschemat: http eller https.                           |
+| request_uri               | Den fullständiga ursprungliga begärande-URI:n (med argument). Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam*` request_uri värdet `/article.aspx?id=123&title=fabrikam` |
+| sent_bytes                | Antalet byte som skickats till en klient.                        |
 | server_port               | Porten för den server som godkände en begäran.              |
-| ssl_connection_protocol   | Protokollet för en etablerad TLS-anslutning.               |
-| ssl_enabled               | "On" om anslutningen fungerar i TLS-läge. Annars är en tom sträng. |
-| uri_path                  | Identifierar den angivna resursen i värden som webb klienten vill ha åtkomst till. Detta är en del av URI: n för begäran utan argumenten. Exempel: i begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` visas uri_path värde `/article.aspx` |
+| ssl_connection_protocol   | Protokollet för en upprättad TLS-anslutning.               |
+| ssl_enabled               | "På" om anslutningen fungerar i TLS-läge. Annars en tom sträng. |
+| uri_path                  | Identifierar den specifika resursen i värden som webbklienten vill ha åtkomst till. Detta är den del av begärande-URI:t utan argumenten. Exempel: I begäran `http://contoso.com:8080/article.aspx?id=123&title=fabrikam` uri_path värdet `/article.aspx` |
 
-### <a name="mutual-authentication-server-variables-preview"></a>Variabler för ömsesidig autentisering av Server (för hands version)
+### <a name="mutual-authentication-server-variables-preview"></a>Servervariabler för ömsesidig autentisering (förhandsversion)
 
-Application Gateway stöder följande servervariabler för scenarier med ömsesidig autentisering. Använd dessa servervariabler på samma sätt som ovan med de andra servervariabler. 
+Application Gateway stöder följande servervariabler för scenarier med ömsesidig autentisering. Använd dessa servervariabler på samma sätt som ovan med de andra servervariablerna. 
 
-|   Variabelnamn    |                   Beskrivning                                           |
+|   Variabelnamn    |                   Description                                           |
 | ------------------------- | ------------------------------------------------------------ |
-| client_certificate        | Klient certifikatet i PEM-format för en etablerad SSL-anslutning. |
-| client_certificate_end_date| Slutdatumet för klient certifikatet. |
-| client_certificate_fingerprint| SHA1-finger avtryck för klient certifikatet för en etablerad SSL-anslutning. |
-| client_certificate_issuer | Strängen "Issuer DN" för klient certifikatet för en etablerad SSL-anslutning. |
-| client_certificate_serial | Serie numret för klient certifikatet för en etablerad SSL-anslutning.  |
-| client_certificate_start_date| Start datumet för klient certifikatet. |
-| client_certificate_subject| Strängen "subject DN" för klient certifikatet för en etablerad SSL-anslutning. |
-| client_certificate_verification| Resultatet av verifieringen av klient certifikatet: *lyckades*, *misslyckades: <reason>* eller *inget* om ett certifikat saknas. | 
+| client_certificate        | Klientcertifikatet i PEM-format för en upprättad SSL-anslutning. |
+| client_certificate_end_date| Slutdatumet för klientcertifikatet. |
+| client_certificate_fingerprint| SHA1-fingeravtrycket för klientcertifikatet för en upprättad SSL-anslutning. |
+| client_certificate_issuer | Strängen "utfärdar-DN" för klientcertifikatet för en upprättad SSL-anslutning. |
+| client_certificate_serial | Serienumret för klientcertifikatet för en upprättad SSL-anslutning.  |
+| client_certificate_start_date| Startdatumet för klientcertifikatet. |
+| client_certificate_subject| Strängen "ämnes-DN" för klientcertifikatet för en upprättad SSL-anslutning. |
+| client_certificate_verification| Resultatet av verifieringen av klientcertifikatet: *SUCCESS*, *FAILED: <reason>*, eller *NONE* om ett certifikat inte fanns. | 
 
-## <a name="rewrite-configuration"></a>Skriv om konfigurationen
+## <a name="rewrite-configuration"></a>Omskrivningskonfiguration
 
-Om du vill konfigurera en omskrivnings regel måste du skapa en regel uppsättning för omskrivning och lägga till konfigurationen för den omskrivna regeln i den.
+Om du vill konfigurera en omskrivningsregel måste du skapa en regeluppsättning för omskrivning och lägga till konfigurationen för omskrivningsregeln i den.
 
-En regel uppsättning för omskrivning innehåller:
+En regeluppsättning för omskrivning innehåller:
 
-* **Regel koppling för att begära Routning:** Den omskrivna konfigurationen är kopplad till käll lyssnaren via regeln för routning. När du använder en regel för grundläggande routning associeras den omskrivnings konfiguration som är kopplad till en käll lyssnare och är en omskrivning av global rubrik. När du använder en regel för väg-baserad routning definieras konfigurationen för att skriva om i sökvägen till URL-sökvägen. I så fall gäller det bara för det angivna Sök vägs området på en plats. Du kan skapa flera omskrivnings uppsättningar och tillämpa varje skrivnings uppsättning på flera lyssnare. Men du kan endast använda en omskrivnings uppsättning för en speciell lyssnare.
+* **Koppling av begäranderoutningsregel:** Omskrivningskonfigurationen är associerad med källlyssnaren via routningsregeln. När du använder en grundläggande routningsregel associeras omskrivningskonfigurationen med en källlyssnare och är en global omskrivning av rubrik. När du använder en sökvägsbaserad routningsregel definieras omskrivningskonfigurationen på URL-sökvägsmappningen. I så fall gäller den endast för den specifika sökvägen för en plats. Du kan skapa flera omskrivningsuppsättningar och tillämpa varje omskrivningsuppsättning på flera lyssnare. Men du kan bara använda en omskrivningsuppsättning för en specifik lyssnare.
 
-* **Omskrivnings villkor**: det är en valfri konfiguration. Omskrivnings villkor utvärderar innehållet i HTTP (S)-begär Anden och svar. Återskrivning görs om HTTP (S)-begäran eller-svaret matchar omskrivnings villkoret. Om du associerar fler än ett villkor med en åtgärd sker åtgärden endast när alla villkor är uppfyllda. Med andra ord är åtgärden ett logiskt och en åtgärd.
+* **Omskrivningsvillkor: Det** är en valfri konfiguration. Omskrivningsvillkor utvärderar innehållet i HTTP(S)-begäranden och -svar. Omskrivningsåtgärden inträffar om HTTP(S)-begäran eller -svaret matchar omskrivningsvillkoret. Om du associerar mer än ett villkor med en åtgärd, sker åtgärden bara när alla villkor är uppfyllda. Med andra ord är åtgärden en logisk AND-åtgärd.
 
-* **Typ** av omskrivning: det finns tre typer av Skriv åtgärder tillgängliga:
-   * Omskrivning av begärandehuvuden 
-   * Svarshuvuden skrivs om.
-   * Skriver om URL: en omskrivnings-URL har 3 komponenter
-      * **URL-sökväg**: det värde som sökvägen ska skrivas om till. 
-      * **URL-frågesträng**: värdet som frågesträngen ska skrivas om till. 
-      * **Sök igenom Sök vägs kartan igen**: används för att avgöra om sökvägen till URL-sökvägen ska utvärderas igen eller inte. Om den är omarkerad kommer den ursprungliga URL-sökvägen att användas för att matcha Sök vägs mönstret i URL-sökvägen. Om värdet är true, kommer URL-sökvägen att utvärderas igen för att kontrol lera matchningen med den omskrivna sökvägen. Genom att aktivera den här växeln kan du dirigera begäran till en annan backend-pool efter omskrivning.
+* **Skriv om: Det** finns tre typer av omskrivningar:
+   * Skriva om begärandehuvuden 
+   * Skriva om svarshuvuden
+   * Skriva om URL-komponenter
+      * **URL-sökväg:** Det värde som sökvägen ska skrivas om till. 
+      * **URL-frågesträng:** Det värde som frågesträngen ska skrivas om till. 
+      * **Omvärdera sökvägsmappning:** Används för att avgöra om URL-sökvägskartan ska utvärderas om eller inte. Om den behålls avmarkerad används den ursprungliga URL-sökvägen för att matcha sökvägsmönstret i URL-sökvägsmappningen. Om det är inställt på true (sant) utvärderas URL-sökvägsmappningen om för att kontrollera matchningen med den omskrivna sökvägen. Genom att aktivera den här växeln kan du dirigera begäran till en annan serverpool efter omskrivning.
 
-## <a name="rewrite-configuration-common-pitfall"></a>Skriv över vanliga Pitfall för konfiguration
+## <a name="rewrite-configuration-common-pitfalls"></a>Vanliga fallgropar för att skriva om konfigurationen
 
-* Det går inte att aktivera "reevaluate Path Map" för grundläggande regler för routning av förfrågningar. Detta är för att förhindra oändlig utvärderings slinga för en grundläggande routningsprincip.
+* Aktivering av "Omvärdera sökvägskarta" tillåts inte för grundläggande regler för routning av förfrågningar. Detta är för att förhindra oändlig utvärderingsloop för en grundläggande routningsregel.
 
-* Det måste finnas minst 1 regel för villkorlig Rewrite-regel eller 1-omskrivning som inte har "reevaluate Sök vägs karta" aktive rad för vägbaserade routningsregler för att förhindra oändlig utvärderings slinga för en Sök vägs baserad routningsregler.
+* Det måste finnas minst en regel för villkorlig omskrivning eller 1 omskrivningsregel som inte har "Utvärdera om sökvägsmappning" aktiverat för sökvägsbaserade routningsregler för att förhindra oändlig utvärderingsloop för en sökvägsbaserad routningsregel.
 
-* Inkommande begär Anden avslutas med en 500-felkod i händelse av att en loop skapas dynamiskt baserat på klientens indata. Application Gateway fortsätter att betjäna andra begär Anden utan att det är någon försämring i ett sådant scenario.
+* Inkommande begäranden avslutas med en 500-felkod om en loop skapas dynamiskt baserat på klientindata. Den Application Gateway fortsätter att betjäna andra begäranden utan försämring i ett sådant scenario.
 
-### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Använd URL-omskrivning eller omskrivning av värd huvud med brand vägg för webbaserade program (WAF_v2 SKU)
+### <a name="using-url-rewrite-or-host-header-rewrite-with-web-application-firewall-waf_v2-sku"></a>Använda URL-omskrivning eller omskrivning av värdhuvud med Web Application Firewall (WAF_v2 SKU)
 
-När du konfigurerar URL-omskrivning eller omskrivning av värd huvud sker utvärderingen av WAF efter ändringen av begär ande huvudet eller URL-parametrarna (efter omskrivning). När du tar bort konfigurationen av URL-omskrivning eller konfiguration av värd huvud på din Application Gateway, görs utvärderingen av WAF innan huvud skrivningen (förskriven). Den här ordningen säkerställer att WAF-regler tillämpas på den slutgiltiga begäran som skulle tas emot av din backend-pool.
+När du konfigurerar url-omskrivning eller omskrivning av värdhuvud sker WAF-utvärderingen efter ändringen av begärandehuvudet eller URL-parametrarna (efter omskrivning). Och när du tar bort konfigurationen för omskrivning av URL-adress eller värdhuvud på din Application Gateway görs WAF-utvärderingen innan rubriken skrivs om (förskrivning). Den här ordningen säkerställer att WAF-reglerna tillämpas på den slutliga begäran som tas emot av din backend-pool.
 
-Anta till exempel att du har följande huvud regel för att skriva över rubriken `"Accept" : "text/html"` – om värdet för rubrik `"Accept"` är lika med `"text/html"` , skriver du om värdet till `"image/png"` .
+Säg till exempel att du har följande regel för omskrivning av rubriken – om värdet för rubriken är lika med skriver du om `"Accept" : "text/html"` `"Accept"` värdet till `"text/html"` `"image/png"` .
 
-Här, med enbart omskrivning av huvuden, är utvärderingen av WAF slutförd `"Accept" : "text/html"` . Men när du konfigurerar URL-omskrivning eller omskrivning av värd huvud görs en utvärdering av WAF `"Accept" : "image/png"` .
+Här, när endast rubrikreskrivning har konfigurerats, görs WAF-utvärderingen på `"Accept" : "text/html"` . Men när du konfigurerar URL-omskrivning eller omskrivning av värdhuvud görs WAF-utvärderingen på `"Accept" : "image/png"` .
 
 >[!NOTE]
-> Åtgärder för URL-omskrivning förväntas orsaka en mindre ökning av processor användningen av WAF-Application Gateway. Vi rekommenderar att du övervakar [processor användnings måttet](high-traffic-support.md) under en kort tids period när du har aktiverat reglerna för att skriva om URL: er på WAF Application Gateway.
+> URL-omskrivningsåtgärder förväntas orsaka en mindre ökning av CPU-användningen av waf-Application Gateway. Vi rekommenderar att du övervakar [måttet för CPU-användning](high-traffic-support.md) under en kort tidsperiod efter att du har aktivera REGLER för URL-omskrivning på din WAF-Application Gateway.
 
-### <a name="common-scenarios-for-header-rewrite"></a>Vanliga scenarier för header-omskrivning
+### <a name="common-scenarios-for-header-rewrite"></a>Vanliga scenarier för omskrivning av huvud
 
-#### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Ta bort portinformation från det X-vidarebefordrade – för sidhuvudet
+#### <a name="remove-port-information-from-the-x-forwarded-for-header"></a>Ta bort portinformation från rubriken X-Forwarded-For
 
-Application Gateway infogar en X-vidarebefordrad-för-rubrik i alla begär Anden innan den vidarebefordrar begär anden till Server delen. Den här rubriken är en kommaavgränsad lista med IP-portar. Det kan finnas scenarier där backend-servrarna bara behöver rubrikerna för att innehålla IP-adresser. Du kan använda omskrivning av huvuden för att ta bort portinformation från den X-vidarebefordrade-for-rubriken. Ett sätt att göra detta är att ange rubriken till add_x_forwarded_for_proxy Server-variabeln. Du kan också använda variabeln client_ip:
+Application Gateway in en X-Forwarded-For-rubrik i alla begäranden innan den vidarebefordrar begäranden till backend. Det här huvudet är en kommaavgränsad lista över IP-portar. Det kan finnas scenarier där backend-servrarna bara behöver huvudena för att innehålla IP-adresser. Du kan använda omskrivning av sidhuvud för att ta bort portinformationen från huvudet X-Forwarded-For. Ett sätt att göra detta är att ange huvudet till add_x_forwarded_for_proxy servervariabeln. Du kan också använda variabeln client_ip:
 
 ![Ta bort port](./media/rewrite-http-headers-url/remove-port.png)
 
 
-#### <a name="modify-a-redirection-url"></a>Ändra en URL för omdirigering
+#### <a name="modify-a-redirection-url"></a>Ändra en omdirigerings-URL
 
-När ett backend-program skickar ett svar på omdirigering kanske du vill omdirigera klienten till en annan URL än den som anges av Server dels programmet. Du kanske till exempel vill göra detta när en app service finns bakom en Programgateway och kräver att klienten utför en omdirigering till dess relativa sökväg. (Till exempel en omdirigering från contoso.azurewebsites.net/path1 till contoso.azurewebsites.net/path2.)
+När ett backend-program skickar ett omdirigeringssvar kanske du vill omdirigera klienten till en annan URL än den som anges av backend-programmet. Du kanske till exempel vill göra detta när en apptjänst finns bakom en programgateway och kräver att klienten gör en omdirigering till den relativa sökvägen. (Till exempel en omdirigering från contoso.azurewebsites.net/path1 till contoso.azurewebsites.net/path2.)
 
-Eftersom App Service är en tjänst för flera innehavare använder den värd rubriken i begäran för att dirigera begäran till rätt slut punkt. App Services har ett standard domän namn på *. azurewebsites.net (säg contoso.azurewebsites.net) som skiljer sig från programgatewayens domän namn (t. ex. contoso.com). Eftersom den ursprungliga begäran från klienten har Application gateways domän namn (contoso.com) som värdnamn, ändrar programgatewayen värd namnet till contoso.azurewebsites.net. Den här ändringen görs så att App Service kan dirigera begäran till rätt slut punkt.
+Eftersom App Service är en tjänst för flera klienttjänster används värdhuvudet i begäran för att dirigera begäran till rätt slutpunkt. App Services har standarddomännamnet .azurewebsites.net (till exempel contoso.azurewebsites.net) som skiljer sig från programgatewayens domännamn \* (till exempel contoso.com). Eftersom den ursprungliga begäran från klienten har programgatewayens domännamn (contoso.com) som värdnamn, ändrar programgatewayen värdnamnet till contoso.azurewebsites.net. Den gör den här ändringen så att App Service kan dirigera begäran till rätt slutpunkt.
 
-När App Service skickar ett svar för omdirigering använder den samma värdnamn i plats huvudet för sitt svar som det i den begäran som den tar emot från programgatewayen. Klienten kommer därför att göra begäran direkt till `contoso.azurewebsites.net/path2` i stället för att gå igenom Application Gateway ( `contoso.com/path2` ). Att kringgå Application Gateway är inte önskvärt.
+När App Service skickar ett omdirigeringssvar använder den samma värdnamn i platshuvudet för svaret som i den begäran som den tar emot från Programgatewayen. Klienten skickar därför begäran direkt till i stället `contoso.azurewebsites.net/path2` för att gå via programgatewayen ( `contoso.com/path2` ). Det är inte önskvärt att kringgå programgatewayen.
 
-Du kan lösa det här problemet genom att ange värd namnet i plats rubriken till Application gatewayens domän namn.
+Du kan lösa det här problemet genom att ange värdnamnet i platsrubriken till programgatewayens domännamn.
 
-Här följer stegen för att ersätta värd namnet:
+Här är stegen för att ersätta värdnamnet:
 
-1. Skapa en Rewrite-regel med ett villkor som utvärderar om plats rubriken i svaret innehåller azurewebsites.net. Ange mönstret `(https?):\/\/.*azurewebsites\.net(.*)$` .
-2. Utför en åtgärd för att skriva om plats rubriken så att den har Application Gateway-värdnamnet. Gör detta genom att ange `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` som rubrik värde. Du kan också använda Server variabeln `host` för att ange värd namnet som matchar den ursprungliga begäran.
+1. Skapa en omskrivningsregel med ett villkor som utvärderar om platsrubriken i svaret innehåller azurewebsites.net. Ange mönstret `(https?):\/\/.*azurewebsites\.net(.*)$` .
+2. Utför en åtgärd för att skriva om platsrubriken så att den har programgatewayens värdnamn. Gör detta genom att `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` ange som rubrikvärde. Du kan också använda servervariabeln för `host` att ange värdnamnet så att det matchar den ursprungliga begäran.
 
-![Ändra plats rubrik](./media/rewrite-http-headers-url/app-service-redirection.png)
+![Ändra platsrubrik](./media/rewrite-http-headers-url/app-service-redirection.png)
 
-#### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Implementera säkerhets-HTTP-huvuden för att förhindra sårbarheter
+#### <a name="implement-security-http-headers-to-prevent-vulnerabilities"></a>Implementera http-säkerhetshuvuden för att förhindra sårbarheter
 
-Du kan åtgärda flera säkerhets problem genom att implementera nödvändiga huvuden i program svaret. Dessa säkerhets rubriker inkluderar X-XSS-skydd, strikt-Transport-Security och Content-Security-Policy. Du kan använda Application Gateway för att ange de här rubrikerna för alla svar.
+Du kan åtgärda flera säkerhetsproblem genom att implementera nödvändiga huvuden i programsvaret. Dessa säkerhetshuvuden omfattar X-XSS-Protection, Strict-Transport-Security och Content-Security-Policy. Du kan använda Application Gateway för att ange dessa huvuden för alla svar.
 
-![Säkerhets huvud](./media/rewrite-http-headers-url/security-header.png)
+![Säkerhetsrubrik](./media/rewrite-http-headers-url/security-header.png)
 
-### <a name="delete-unwanted-headers"></a>Ta bort oönskade rubriker
+### <a name="delete-unwanted-headers"></a>Ta bort oönskade huvuden
 
-Du kanske vill ta bort huvuden som avslöjar känslig information från ett HTTP-svar. Till exempel kanske du vill ta bort information som server namn, operativ system eller biblioteks information för Server delen. Du kan använda Application Gateway för att ta bort dessa huvuden:
+Du kanske vill ta bort huvuden som visar känslig information från ett HTTP-svar. Du kanske till exempel vill ta bort information som servernamnet, operativsystemet eller biblioteksinformationen. Du kan använda programgatewayen för att ta bort dessa huvuden:
 
-![Tar bort rubrik](./media/rewrite-http-headers-url/remove-headers.png)
+![Ta bort sidhuvud](./media/rewrite-http-headers-url/remove-headers.png)
 
-#### <a name="check-for-the-presence-of-a-header"></a>Sök efter en rubriks förekomst
+#### <a name="check-for-the-presence-of-a-header"></a>Kontrollera förekomsten av en rubrik
 
-Du kan utvärdera en HTTP-begäran eller ett svars huvud för förekomst av en huvud-eller Server variabel. Den här utvärderingen är användbar när du vill utföra en skrivskyddad rubrik endast när det finns en viss rubrik.
+Du kan utvärdera en HTTP-begäran eller ett svarshuvud för förekomsten av ett huvud eller en servervariabel. Den här utvärderingen är användbar när du bara vill skriva om en rubrik när en viss rubrik finns.
 
-![Kontrollerar närvaron av ett sidhuvud](./media/rewrite-http-headers-url/check-presence.png)
+![Kontrollera förekomsten av en rubrik](./media/rewrite-http-headers-url/check-presence.png)
 
 ### <a name="common-scenarios-for-url-rewrite"></a>Vanliga scenarier för URL-omskrivning
 
-#### <a name="parameter-based-path-selection"></a>Val av parameter baserat Sök väg
+#### <a name="parameter-based-path-selection"></a>Val av parameterbaserad sökväg
 
-Om du vill göra scenarier där du vill välja backend-poolen baserat på värdet för en rubrik, en del av URL: en eller frågesträngen i begäran, kan du använda kombinationen av URL-omskrivning och vägs-baserad routning.  Om du till exempel har en shopping webbplats och produkt kategorin skickas som frågesträng i URL: en och du vill dirigera begäran till backend-servern baserat på frågesträngen:
+Om du vill utföra scenarier där du vill välja serverdelspoolen baserat på värdet för en rubrik, en del av URL:en eller frågesträngen i begäran kan du använda en kombination av url-omskrivningsfunktioner och sökvägsbaserad routning. Om du till exempel har en shoppingwebbplats och produktkategorin skickas som frågesträng i URL:en och du vill dirigera begäran till backend baserat på frågesträngen gör du följande:
 
-**Steg 1:**  Skapa en sökväg – karta som visas på bilden nedan
+**Steg 1:**  Skapa en sökvägskarta enligt bilden nedan
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-1.png" alt-text="URL-omskrivning scenario 1-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-1.png" alt-text="URL-omskrivningsscenario 1–1.":::
 
-**Steg 2 (a):** Skapa en omskrivnings uppsättning som har tre omskrivnings regler: 
+**Steg 2 (a):** Skapa en omskrivningsuppsättning som har 3 omskrivningsregler: 
 
-* Den första regeln har ett villkor som kontrollerar *QUERY_STRING*  -variabeln för *kategori = skor* och har en åtgärd som skriver om URL-sökvägen till/*listing1* och har **omutvärderat Sök vägs mappning** aktive rad
+* Den första regeln har ett villkor som kontrollerar *query_string-variabeln* för *category=shoes* och har en åtgärd som skriver om URL-sökvägen till */listing1* och har **Omvärdera** sökvägskarta aktiverad
 
-* Den andra regeln har ett villkor som kontrollerar *QUERY_STRING*  -variabeln för *kategori = påsar* och har en åtgärd som skriver om URL-sökvägen till/*listing2*  och har **omutvärderat Sök vägs kartan** aktiverat
+* Den andra regeln har ett villkor som kontrollerar *query_string-variabeln* för *category=bag* och har en åtgärd som skriver om URL-sökvägen till */listing2*  och har **Omvärdera** sökvägsmappning aktiverad
 
-* Den tredje regeln har ett villkor som kontrollerar *QUERY_STRING*  -variabeln för *Category = Accessories* och har en åtgärd som skriver om URL-sökvägen till/*listing3* och har **omutvärderat Sök vägs mappning** aktive rad
+* Den tredje regeln har ett  villkor som kontrollerar query_string-variabeln för *category=accessories* och har en åtgärd som skriver om URL-sökvägen till */listing3* och har **Omvärdera sökvägsmappning** aktiverad
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-omskrivning scenario 1-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-2.png" alt-text="URL-omskrivningsscenario 1–2.":::
 
  
 
-**Steg 2 (b):** Associera denna omarbetnings uppsättning med standard Sök vägen för ovanstående Sök vägs regel
+**Steg 2 (b):** Associera den här omskrivningsuppsättningen med standardsökvägen för ovanstående sökvägsbaserade regel
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-omskrivning scenario 1-3.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario1-3.png" alt-text="URL-omskrivningsscenario 1–3.":::
 
-Om användaren begär *contoso.com/Listing?Category=any* matchas den nu med standard Sök vägen eftersom inget av Sök vägs mönstren i Sök vägs kartan (/listing1,/listing2,/listing3) matchar. Eftersom du kopplade ovanstående omskrivnings uppsättning med den här sökvägen kommer den här omskrivnings uppsättningen att utvärderas. Eftersom frågesträngen inte matchar villkoret i någon av reglerna för 3-omskrivning i den här Skriv åtgärden kommer ingen omskrivning att ske, och därför kommer begäran att dirigeras oförändrad till Server delen som är kopplad till standard Sök vägen (som är *GenericList*).
+Om användaren nu *begär contoso.com/listing?category=any* matchas den med standardsökvägen eftersom inget av sökvägsmönstren i sökvägskartan (/listing1, /listing2, /listing3) matchar. Eftersom du har associerat ovanstående omskrivningsuppsättning med den här sökvägen utvärderas den här omskrivningsuppsättningen. Eftersom frågesträngen inte matchar villkoret i någon av de tre omskrivningsreglerna i den här omskrivningsuppsättningen sker ingen omskrivningsåtgärd och därför dirigeras begäran oförändrad till den backend som är associerad med standardsökvägen (som är *GenericList).*
 
- Om användaren begär *contoso.com/Listing?Category=Shoes* så matchas standard Sök vägen igen. I det här fallet kommer dock villkoret i den första regeln att matchas och därför körs åtgärden som är associerad med villkoret, vilket kommer att skriva om URL-sökvägen till/*listing1*  och sedan utvärdera sökvägen till kartan igen. När sökvägen – kartan har utvärderats på nytt matchar begäran nu den sökväg som är kopplad till mönstret */listing1* och begäran dirigeras till Server delen som är kopplad till det här mönstret, som är ShoesListBackendPool
+Om användaren begär *contoso.com/listing?category=shoes* matchas standardsökvägen igen. Men i det här fallet kommer villkoret i den första regeln att matcha och därför körs åtgärden som är associerad med villkoret, vilket skriver om URL-sökvägen till */listing1*  och utvärderar sökvägskartan. När sökvägskartan omvärderas kommer begäran nu att matcha sökvägen som är associerad med mönstret */listing1* och begäran dirigeras till den backend som är associerad med det här mönstret, vilket är ShoesListBackendPool.
 
 >[!NOTE]
->Det här scenariot kan utökas till alla sidhuvuds-eller cookie-värden, URL-sökvägar, frågesträngar eller servervariabler baserat på villkoret som definierats och innebär att du kan dirigera begär Anden baserat på dessa villkor.
+>Det här scenariot kan utökas till val annat huvud- eller cookievärde, URL-sökväg, frågesträng eller servervariabler baserat på de definierade villkoren och gör att du kan dirigera begäranden baserat på dessa villkor.
 
-#### <a name="rewrite-query-string-parameters-based-on-the-url"></a>Skriv om Frågesträngens parametrar baserat på URL
+#### <a name="rewrite-query-string-parameters-based-on-the-url"></a>Skriva om frågesträngsparametrar baserat på URL:en
 
-Överväg ett scenario för en shopping webbplats där den synliga länken för användaren bör vara enkel och läslig, men backend-servern behöver parametrarna för frågesträngen för att visa rätt innehåll.
+Tänk dig ett scenario med en shoppingwebbplats där användarens synliga länk ska vara enkel och läsbar, men backend-servern behöver frågesträngparametrarna för att visa rätt innehåll.
 
-I så fall kan Application Gateway avbilda parametrar från URL: en och lägga till frågesträngar nyckel/värde-par från URL: en. Anta till exempel att användaren vill skriva om, `https://www.contoso.com/fashion/shirts` till `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` , det kan uppnås genom följande URL-omskrivning av konfigurationen.
+I så fall kan Application Gateway hämta parametrar från URL:en och lägga till nyckel/värde-par för frågesträngar från dem från URL:en. Anta till exempel att användaren vill skriva om, till , det kan uppnås via följande konfiguration för `https://www.contoso.com/fashion/shirts` `https://www.contoso.com/buy.aspx?category=fashion&product=shirts` URL-omskrivning.
 
-**Villkor** – om Server variabeln `uri_path` är lika med mönstret `/(.+)/(.+)`
+**Villkor** – Om `uri_path` servervariabeln är lika med mönstret `/(.+)/(.+)`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-omskrivning scenario 2-1.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-1.png" alt-text="URL-omskrivningsscenario 2–1.":::
 
-**Åtgärd** – ange URL-sökvägen till `buy.aspx` och frågesträng till `category={var_uri_path_1}&product={var_uri_path_2}`
+**Åtgärd** – Ange URL-sökväg till `buy.aspx` och frågesträng till `category={var_uri_path_1}&product={var_uri_path_2}`
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-omskrivning scenario 2-2.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-scenario2-2.png" alt-text="URL-omskrivningsscenario 2–2.":::
 
-En steg-för-steg-guide för att uppnå scenariot som beskrivs ovan finns i [omskrivnings-URL med Application Gateway med Azure Portal](rewrite-url-portal.md)
+En stegvis guide för att uppnå scenariot som beskrivs ovan finns i Skriva om URL med hjälp [Application Gateway med Azure Portal](rewrite-url-portal.md)
 
-### <a name="url-rewrite-vs-url-redirect"></a>URL-omskrivning vs URL omdirigering
+### <a name="url-rewrite-vs-url-redirect"></a>URL-omskrivning jämfört med url-omdirigering
 
-Om URL-omskrivning görs om, Application Gateway skriver om URL: en innan begäran skickas till Server delen. Detta påverkar inte vad användarna ser i webbläsaren eftersom ändringarna är dolda från användaren.
+När det gäller en URL-Application Gateway skriver om URL:en innan begäran skickas till backend-adressen. Detta ändrar inte vad användarna ser i webbläsaren eftersom ändringarna är dolda för användaren.
 
-I händelse av URL-omdirigering skickar Application Gateway ett omdirigerings svar till klienten med den nya URL: en. Som i sin tur kräver att klienten skickar en begäran till den nya URL: en som finns i omdirigeringen. URL som användaren ser i webbläsaren kommer att uppdateras till den nya URL: en
+Om en URL omdirigeras skickar Application Gateway ett omdirigeringssvar till klienten med den nya URL:en. Det kräver i sin tur att klienten skickar sin begäran på nytt till den nya URL:en som anges i omdirigeringen. Den URL som användaren ser i webbläsaren uppdateras till den nya URL:en.
 
-:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Skriv om vs Redirect.":::
+:::image type="content" source="./media/rewrite-http-headers-url/url-rewrite-vs-redirect.png" alt-text="Omskrivning jämfört med omdirigering.":::
 
 ## <a name="limitations"></a>Begränsningar
 
-- Om ett svar har fler än en rubrik med samma namn, kommer de andra rubrikerna att tas bort om du skriver om värdet för en av dessa huvuden. Detta kan vanligt vis inträffa med Set-Cookie sidhuvud eftersom du kan ha fler än ett Set-Cookie-huvud i ett svar. Ett sådant scenario är när du använder en app service med en Application Gateway och har konfigurerat cookie-baserad mappning mellan sessioner på Application Gateway. I det här fallet kommer svaret att innehålla två Set-Cookie huvuden: en som används av App Service, till exempel: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` och en annan för Application Gateway-tillhörighet, till exempel `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Om du skriver om en av Set-Cookie rubrikerna i det här scenariot kan det leda till att den andra Set-Cookies rubriken tas bort från svaret.
-- Omskrivningar stöds inte när Application Gateway har kon figurer ATS för att omdirigera begär Anden eller för att visa en anpassad felsida.
-- Rubrik namn får innehålla alfanumeriska tecken och vissa symboler som definieras i [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Vi stöder för närvarande inte under streck (_) specialtecken i rubrik namn.
-- Det går inte att skriva om anslutnings-och uppgraderings rubriker
+- Om ett svar har fler än en rubrik med samma namn kommer omskrivning av värdet för en av dessa huvuden att resultera i att de andra huvudena i svaret blir borttryckt. Detta kan vanligtvis inträffa med Set-Cookie huvud eftersom du kan ha fler än en Set-Cookie i ett svar. Ett sådant scenario är när du använder en apptjänst med en programgateway och har konfigurerat cookiebaserad sessionstillhörighet på programgatewayen. I det här fallet innehåller svaret två Set-Cookie huvuden: en som används av apptjänsten, till exempel: och en annan för `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` Application Gateway-tillhörighet, till exempel `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Om du skriver om en av Set-Cookie-huvudena i det här scenariot kan det leda till att den andra Set-Cookie-huvudet tas bort från svaret.
+- Omwrites stöds inte när programgatewayen har konfigurerats för att omdirigera begäranden eller för att visa en anpassad felsida.
+- Rubriknamn kan innehålla alla alfanumeriska tecken och specifika symboler enligt definitionen i [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). Vi stöder för närvarande inte specialtecknet ( \_ ) i Rubriknamn.
+- Anslutnings- och uppgraderingshuvuden kan inte skrivas om
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Lär dig hur du skriver om HTTP-huvuden med Application Gateway med Azure Portal](rewrite-http-headers-portal.md)
-- [Lär dig hur du skriver om URL: en med Application Gateway med Azure Portal](rewrite-url-portal.md)
+- [Lär dig hur du skriver om URL med Application Gateway med Azure Portal](rewrite-url-portal.md)

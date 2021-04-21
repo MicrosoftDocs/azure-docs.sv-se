@@ -1,18 +1,18 @@
 ---
-title: Skript exempel för Azure CLI – distribuera ett hanterat program
-description: Tillhandahåller skript för Azure CLI-exempel som distribuerar en Azure-hanterad applikations definition till prenumerationen.
+title: Skriptexempel för Azure CLI – Distribuera ett hanterat program
+description: Tillhandahåller Azure CLI-exempelskript som distribuerar en Azure Managed Application-definition till prenumerationen.
 author: tfitzmac
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 10/25/2017
 ms.author: tomfitz
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a9912f5134c3596740ef53f23531d57fe9467682
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3ea2baa897efb5c1a01b32e92e76a69c9d1f231c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87497876"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775519"
 ---
 # <a name="deploy-a-managed-application-for-service-catalog-with-azure-cli"></a>Distribuera ett hanterat program för tjänstkatalogen med Azure CLI
 
@@ -34,7 +34,7 @@ Det här skriptet använder följande kommando för att distribuera det hanterad
 
 | Kommando | Kommentarer |
 |---|---|
-| [az managedapp create](/cli/azure/managedapp#az-managedapp-create) | Skapa ett hanterat program. Ange definitions-ID och parametrar för mallen. |
+| [az managedapp create](/cli/azure/managedapp#az_managedapp_create) | Skapa ett hanterat program. Ange definitions-ID och parametrar för mallen. |
 
 
 ## <a name="next-steps"></a>Nästa steg

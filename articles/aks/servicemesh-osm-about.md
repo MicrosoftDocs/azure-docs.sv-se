@@ -7,12 +7,12 @@ ms.date: 3/12/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 65b02ae1baef97442828de747249ab6ffeaf2417
-ms.sourcegitcommit: 950e98d5b3e9984b884673e59e0d2c9aaeabb5bb
+ms.openlocfilehash: bbc07a7ee3f996c778cfc1b9d1764f10a613c50b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/18/2021
-ms.locfileid: "107599480"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107782953"
 ---
 # <a name="open-service-mesh-aks-add-on-preview"></a>Öppna Service Mesh AKS-tillägg (förhandsversion)
 
@@ -30,7 +30,7 @@ OSM tillhandahåller följande funktioner och funktioner för att tillhandahåll
 
 - Skydda tjänst-till-tjänst-kommunikation genom att aktivera mTLS
 
-- Publicera enkelt program i nätet genom att aktivera automatisk sidovagnsinjektion av Envoy-proxy
+- Publicera enkelt program i nätet genom att aktivera automatisk sidovagnsinjektion av Envoy-proxyn
 
 - Enkla och transparenta konfigurationer för trafikväxling i distributioner
 
@@ -52,7 +52,7 @@ OSM kan hjälpa dina AKS-distributioner med följande scenarier:
 
 - Insamling och visning av KPI:er från programtrafik
 
-## <a name="osm-service-quotas-and-limits-preview"></a>Kvoter och begränsningar för OSM-tjänsten (förhandsversion)
+## <a name="osm-service-quotas-and-limits-preview"></a>OSM-tjänstkvoter och -gränser (förhandsversion)
 
 Begränsningar i förhandsversionen av OSM för tjänstkvoter och -gränser finns på sidan om [AKS-kvoter och regionala gränser.](https://docs.microsoft.com/azure/aks/quotas-skus-regions)
 
@@ -87,7 +87,7 @@ Registrera `AKS-OpenServiceMesh` funktionsflaggan med [kommandot az feature regi
 az feature register --namespace "Microsoft.ContainerService" --name "AKS-OpenServiceMesh"
 ```
 
-Det tar några minuter för statusen att visa _Registrerad_. Kontrollera registreringsstatusen med hjälp av [kommandot az feature list:][az-feature-list]
+Det tar några minuter för statusen att visa _Registrerad._ Kontrollera registreringsstatusen med kommandot [az feature list:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-OpenServiceMesh')].{Name:name,State:properties.state}"
@@ -107,7 +107,7 @@ För ett nytt scenario för distribution av AKS-kluster börjar du med en helt n
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-I Azure allokerar du relaterade resurser till en resursgrupp. Skapa en resursgrupp med hjälp av [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med _namnet myOsmAksGroup_ på _platsen eastus2_ (region):
+I Azure allokerar du relaterade resurser till en resursgrupp. Skapa en resursgrupp med hjälp av [az group create](/cli/azure/group#az_group_create). I följande exempel skapas en resursgrupp med _namnet myOsmAksGroup_ på _platsen eastus2_ (region):
 
 ```azurecli-interactive
 az group create --name <myosmaksgroup> --location <eastus2>
@@ -118,7 +118,7 @@ az group create --name <myosmaksgroup> --location <eastus2>
 Nu ska du distribuera ett nytt AKS-kluster med OSM-tillägget aktiverat.
 
 > [!NOTE]
-> Tänk på att följande AKS-distributionskommando använder tillfälliga OS-diskar. Du hittar mer information här om [tillfälliga OS-diskar för AKS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)
+> Tänk på att följande AKS-distributionskommando använder os-tillfälliga diskar. Du hittar mer information här om [tillfälliga OS-diskar för AKS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)
 
 ```azurecli-interactive
 az aks create -n osm-addon-cluster -g <myosmaksgroup> --kubernetes-version 1.19.6 --node-osdisk-type Ephemeral --node-osdisk-size 30 --network-plugin azure --enable-managed-identity -a open-service-mesh
@@ -182,7 +182,7 @@ kubectl get services -n kube-system --selector app=osm-controller
 
 ## <a name="accessing-the-aks-osm-add-on"></a>Åtkomst till AKS OSM-tillägget
 
-För närvarande kan du komma åt och konfigurera OSM-styrenhetskonfigurationen via konfigurationskartan. Om du vill visa konfigurationsinställningarna för OSM-styrenheten frågar du konfigurationskartan osm-config via `kubectl` för att visa dess konfigurationsinställningar.
+För närvarande kan du komma åt och konfigurera OSM-kontrollantkonfigurationen via konfigurationskartan. Om du vill visa konfigurationsinställningarna för OSM-styrenheten frågar du osm-configmap via `kubectl` för att visa dess konfigurationsinställningar.
 
 ```azurecli-interactive
 kubectl get configmap -n kube-system osm-config -o json | jq '.data'
@@ -204,10 +204,10 @@ Utdata från OSM-konfigurationskartan bör se ut så här:
 }
 ```
 
-Observera att **permissive_traffic_policy_mode** har konfigurerats till **sant**. Tillåtet trafikprincipläge i OSM är ett läge där [tvingande SMI-trafikprincip](https://smi-spec.io/) kringgås. I det här läget identifierar OSM automatiskt tjänster som är en del av trafikprincipreglerna för tjänstnät och program på varje Envoy-proxysidavagn för att kunna kommunicera med dessa tjänster.
+Observera att **permissive_traffic_policy_mode** har konfigurerats till **sant**. Tillåtet trafikprincipläge i OSM är ett läge där [tvingande SMI-trafikprincip](https://smi-spec.io/) kringgås. I det här läget identifierar OSM automatiskt tjänster som är en del av tjänstnätet och program trafikprincipregler på varje Envoy-proxy sidovagn för att kunna kommunicera med dessa tjänster.
 
 > [!WARNING]
-> Innan du fortsätter bör du kontrollera att trafikprincipläget är inställt på sant. Om det inte är det ändrar du det till **sant** med hjälp av kommandot nedan
+> Innan du fortsätter bör du kontrollera att principläget för tillåtande trafik är inställt på sant. Om du inte gör det ändrar du det till **sant** med hjälp av kommandot nedan
 
 ```OSM Permissive Mode to True
 kubectl patch ConfigMap -n kube-system osm-config --type merge --patch '{"data":{"permissive_traffic_policy_mode":"true"}}'
@@ -307,15 +307,15 @@ deployment.apps/bookwarehouse created
 
 ### <a name="checkpoint-what-got-installed"></a>Kontrollpunkt: Vad har installerats?
 
-Exemplet på ett boklagerprogram är en app med flera nivåer som består av fyra tjänster, som är bookbuyer, bookthief, bookstore och bookwarehouse. Både bookbuyer- och bookthief-tjänsten kommunicerar med bokhandelstjänsten för att hämta böcker från bokhandelstjänsten. Bokhandelstjänsten hämtar böcker från tjänsten bookwarehouse för att tillhandahålla bookbuyer och bookthief. Det här är ett enkelt flernivåprogram som fungerar bra när det gäller att visa hur ett tjänstnät kan användas för att skydda och auktorisera kommunikation mellan programtjänsterna. När vi fortsätter genom genomgången kommer vi att aktivera och inaktivera SMI-principer (Service Mesh Interface) för att både tillåta och inte tillåta att tjänsterna kommunicerar via OSM. Nedan visas ett arkitekturdiagram över vad som har installerats för bokhandelsprogrammet.
+Exemplet på ett boklagerprogram är en app med flera nivåer som består av fyra tjänster, som är bookbuyer, bookthief, bookstore och bookwarehouse. Både bookbuyer- och bookthief-tjänsten kommunicerar med bokhandelstjänsten för att hämta böcker från bokhandelstjänsten. Bokhandelstjänsten hämtar böcker från tjänsten bookwarehouse för att tillhandahålla bookbuyer och bookthief. Det här är ett enkelt flernivåprogram som fungerar bra för att visa hur ett tjänstnät kan användas för att skydda och auktorisera kommunikation mellan programtjänsterna. När vi fortsätter genom genomgången kommer vi att aktivera och inaktivera SMI-principer (Service Mesh Interface) för att både tillåta och inte tillåta att tjänsterna kommunicerar via OSM. Nedan visas ett arkitekturdiagram över vad som har installerats för bokhandelsprogrammet.
 
-![OSM-bokbuyer-apparkitektur](./media/aks-osm-addon/osm-bookstore-app-arch.png)
+![ARKITEKTUR för OSM-bokköpsapp](./media/aks-osm-addon/osm-bookstore-app-arch.png)
 
-### <a name="verify-the-bookstore-application-running-inside-the-aks-cluster"></a>Kontrollera att bokhandelsprogrammet körs i AKS-klustret
+### <a name="verify-the-bookstore-application-running-inside-the-aks-cluster"></a>Verifiera bokhandelsprogrammet som körs i AKS-klustret
 
-Från och med nu har vi distribuerat bokhandelsprogrammet multiit-container, men det är bara tillgängligt från AKS-klustret. Senare självstudier hjälper dig att exponera programmet utanför klustret via en ingress-kontrollant. För tillfället kommer vi att använda port vidarebefordran för att komma åt bookbuyer-programmet i AKS-klustret för att kontrollera att det köper böcker från bokhandelstjänsten.
+Från och med nu har vi distribuerat bokhandelsprogrammet multiit-container, men det är bara tillgängligt från AKS-klustret. Senare självstudier hjälper dig att exponera programmet utanför klustret via en ingress-kontrollant. För tillfället kommer vi att använda port vidarebefordran för att få åtkomst till bookbuyer-programmet i AKS-klustret för att verifiera att det köper böcker från bokhandelstjänsten.
 
-För att kontrollera att programmet körs i klustret använder vi en port framåt för att visa användargränssnittet för både bookbuyer- och bookthief-komponenterna.
+För att kontrollera att programmet körs i klustret använder vi en port framåt för att visa både bookbuyer- och bookthief-komponenternas användargränssnitt.
 
 Först hämtar vi bookbuyer-poddens namn
 
@@ -391,11 +391,11 @@ Du bör se utdata som liknar följande. Din bookthief-podd har ett unikt namn ti
 configmap/osm-config patched
 ```
 
-För att verifiera att tillåtet trafikläge har inaktiverats, port framåt tillbaka till antingen bookbuyer eller bookthief pod för att visa deras användargränssnitt i webbläsaren och se om böcker som köpts eller böcker stulna inte längre ökar. Se till att uppdatera webbläsaren. Om ökningen har stoppats har principen tillämpats korrekt. Du har stoppat bookthief från att stjäla böcker, men varken bokbuyern kan köpa från bokbutiken eller bokhandelsbutiken kan hämta böcker från bokboken. Därefter implementerar vi [SMI-principer](https://smi-spec.io/) för att endast tillåta de tjänster i nät som du vill kommunicera för att göra det.
+För att verifiera att tillåtet trafikläge har inaktiverats går du tillbaka till antingen bookbuyer- eller bookthief-podden för att visa deras användargränssnitt i webbläsaren och se om böcker som köpts eller böcker som blir stulna inte längre ökar. Se till att uppdatera webbläsaren. Om ökningen har stoppats har principen tillämpats korrekt. Du har stoppat bookthief från att stjäla böcker, men varken bokköparen kan köpa från bokbutiken eller bokbutiken kan hämta böcker från bokboken. Därefter implementerar vi [SMI-principer](https://smi-spec.io/) för att endast tillåta de tjänster i nät som du vill kommunicera för att göra det.
 
-### <a name="apply-service-mesh-interface-smi-traffic-access-policies"></a>Tillämpa SMI-trafikåtkomstprinciper (Service Mesh Interface)
+### <a name="apply-service-mesh-interface-smi-traffic-access-policies"></a>Tillämpa trafikåtkomstprinciper för Service Mesh Interface (SMI)
 
-Nu när vi har inaktiverat all kommunikation i nätnätet låter vi vår bokköpstjänst kommunicera med vår bokhandelstjänst för att köpa böcker och låta vår bokhandelstjänst kommunicera med vår boklagertjänst för att hämta böcker att sälja.
+Nu när vi har inaktiverat all kommunikation i nätet låter vi vår bokköpstjänst kommunicera med vår bokhandelstjänst för att köpa böcker och låta vår bokhandelstjänst kommunicera med vår boklagertjänst för att hämta böcker för att sälja.
 
 Distribuera följande [SMI-principer.](https://smi-spec.io/)
 
@@ -493,15 +493,15 @@ traffictarget.access.smi-spec.io/bookstore-access-bookwarehouse created
 httproutegroup.specs.smi-spec.io/bookwarehouse-service-routes created
 ```
 
-Nu kan du konfigurera en port vidarebefordran session på antingen bookbuyer eller bokhandel poddar och se att både böcker som köpts och böcker sålda mått är tillbaka ökning. Du kan också göra samma sak för bookthief-podden för att kontrollera att den fortfarande inte längre kan stjäla böcker.
+Nu kan du konfigurera en session för port vidarebefordran på antingen bokköparen eller bokhandelspoddarna och se att måtten för både böcker som köpts och böcker som sålts ökar. Du kan också göra samma sak för bookthief-podden för att verifiera att den fortfarande inte längre kan stjäla böcker.
 
 ### <a name="apply-service-mesh-interface-smi-traffic-split-policies"></a>Tillämpa SMI-trafikdelningsprinciper (Service Mesh Interface)
 
-I den sista demonstrationen [](https://smi-spec.io/) skapar vi en SMI-trafikuppdelningsprincip för att konfigurera kommunikationsvikten från en tjänst till flera tjänster som en backend. Med funktionen för trafikdelning kan du progressivt flytta anslutningar till en tjänst över till en annan genom att vikta trafiken på en skala från 0 till 100.
+I den slutliga demonstrationen [](https://smi-spec.io/) skapar vi en SMI-trafikuppdelningsprincip för att konfigurera kommunikationsvikten från en tjänst till flera tjänster som en backend. Med funktionen för trafikdelning kan du progressivt flytta anslutningar till en tjänst över till en annan genom att vikta trafiken på en skala från 0 till 100.
 
-Bilden nedan är ett diagram över principen [för SMI-trafikdelning](https://smi-spec.io/) som ska distribueras. Vi distribuerar ytterligare en Bookstore version 2 och delar sedan upp den inkommande trafiken från bookbuyer, vilket viktar 25 % av trafiken till tjänsten bookstore v1 och 75 % till bokhandel v2-tjänsten.
+Bilden nedan är ett [](https://smi-spec.io/) diagram över SMI-trafikdelningsprincipen som ska distribueras. Vi distribuerar ytterligare en bookstore version 2 och delar sedan upp den inkommande trafiken från bookbuyer, vilket viktar 25 % av trafiken till bookstore v1-tjänsten och 75 % till bookstore v2-tjänsten.
 
-![OSM-bokbuyerdiagram för trafikdelning](./media/aks-osm-addon/osm-bookbuyer-traffic-split-diagram.png)
+![DIAGRAM över OSM-bokdelning av trafik](./media/aks-osm-addon/osm-bookbuyer-traffic-split-diagram.png)
 
 Distribuera tjänsten bookstore v2.
 
@@ -618,26 +618,26 @@ Du bör se följande utdata.
 trafficsplit.split.smi-spec.io/bookstore-split created
 ```
 
-Konfigurera en port framåt-tunnel till bookbuyer-podden. Nu bör du se böcker som köpts från tjänsten bookstore v2. Om du fortsätter att titta på ökningen av köp bör du se en snabbare ökning av inköp som görs via bokbutik v2-tjänsten.
+Konfigurera en port framåt-tunnel till bookbuyer-podden. Nu bör du se böcker som köps från bookstore v2-tjänsten. Om du fortsätter att titta på ökningen av köp bör du se en snabbare ökning av inköp som görs via bokhandel v2-tjänsten.
 
-![OSM bookbuyer books boough UI](./media/aks-osm-addon/osm-bookbuyer-traffic-split-ui.png)
+![OSM-bookbuyer books boough UI](./media/aks-osm-addon/osm-bookbuyer-traffic-split-ui.png)
 
-## <a name="manage-existing-deployed-applications-to-be-managed-by-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Hantera befintliga distribuerade program som ska hanteras av AKS-tillägget (Open Service Mesh) Azure Kubernetes Service (OSM)
+## <a name="manage-existing-deployed-applications-to-be-managed-by-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Hantera befintliga distribuerade program som ska hanteras av tillägget Open Service Mesh (OSM) Azure Kubernetes Service (AKS)
 
 ### <a name="before-you-begin"></a>Innan du börjar
 
-Stegen som beskrivs i den här genomgången förutsätter att du tidigare har aktiverat OSM AKS-tillägget för ditt AKS-kluster. Om inte, läs avsnittet [Aktivera AKS-tillägg (Open Service Mesh Azure Kubernetes Service) (OSM)](#enable-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-an-existing-aks-cluster) för ett befintligt AKS-kluster innan du fortsätter. Dessutom måste AKS-klustret vara version Kubernetes och senare, ha Kubernetes RBAC aktiverat och ha upprättat en anslutning till klustret (Om du behöver hjälp med något av dessa objekt kan du se `1.19+` `kubectl` [AKS-snabbstarten](./kubernetes-walkthrough.md)och ha installerat AKS OSM-tillägget.
+Stegen som beskrivs i den här genomgången förutsätter att du tidigare har aktiverat OSM AKS-tillägget för ditt AKS-kluster. Om inte, läs avsnittet [Enable Open Service Mesh (OSM) Azure Kubernetes Service (AKS) add-on (AKS) add-on for an existing AKS cluster](#enable-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-for-an-existing-aks-cluster) before proceeding. Dessutom måste AKS-klustret vara version Kubernetes och senare, ha Kubernetes RBAC aktiverat och ha upprättat en anslutning till klustret (Om du behöver hjälp med något av dessa objekt kan du gå till `1.19+` `kubectl` [AKS-snabbstarten](./kubernetes-walkthrough.md)och ha installerat AKS OSM-tillägget.
 
 Du måste ha följande resurser installerade:
 
 - Azure CLI, version 2.20.0 eller senare
-- Tilläggsversionen `aks-preview` 0.5.5 eller senare
+- Tilläggsversion `aks-preview` 0.5.5 eller senare
 - OSM version v0.8.0 eller senare
 - apt-get install jq
 
-### <a name="verify-the-open-service-mesh-osm-permissive-traffic-mode-policy"></a>Verifiera principen För tillåtet trafikläge i Open Service Mesh (OSM)
+### <a name="verify-the-open-service-mesh-osm-permissive-traffic-mode-policy"></a>Kontrollera principen Open Service Mesh (OSM) För tillåtet trafikläge
 
-Läget för OSM-tillåtande trafikprincip är ett läge där [tvingande SMI-trafikprincip](https://smi-spec.io/) kringgås. I det här läget identifierar OSM automatiskt tjänster som är en del av tjänstnätet och program trafikprincipregler på varje Envoy-proxy sidovagn för att kunna kommunicera med dessa tjänster.
+Läget för OSM-tillåtande trafikprincip är ett läge där [tvingande SMI-trafikprincip](https://smi-spec.io/) kringgås. I det här läget identifierar OSM automatiskt tjänster som är en del av trafikprincipreglerna för tjänstnät och program på varje Envoy-proxysidavagn för att kunna kommunicera med dessa tjänster.
 
 Kontrollera det aktuella tillåtande trafikläget för OSM för klustret genom att köra följande kommando:
 
@@ -659,7 +659,7 @@ Utdata från OSM-konfigurationskartan bör se ut så här:
 }
 ```
 
-Om **permissive_traffic_policy_mode** har konfigurerats till **sant** kan du på ett säkert sätt registrera dina namnområden utan avbrott i din tjänst-till-tjänst-kommunikation. Om **permissive_traffic_policy_mode** har konfigurerats till **falskt** måste du se till att du har rätt distribuerade principmanifest för [SMI-trafik](https://smi-spec.io/) samt att du har ett tjänstkonto som representerar varje tjänst som distribueras i namnområdet. Följ riktlinjerna för publicera [befintliga distribuerade program med Open Service Mesh (OSM) tillåtande trafikprincip konfigurerad som falskt](#onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false)
+Om **permissive_traffic_policy_mode** har konfigurerats till **sant** kan du på ett säkert sätt publicera dina namnområden utan avbrott i din tjänst-till-tjänst-kommunikation. Om **permissive_traffic_policy_mode** har konfigurerats till **falskt** måste du se till att du har rätt distribuerade principmanifest för [SMI-trafik](https://smi-spec.io/) samt att du har ett tjänstkonto som representerar varje tjänst som distribueras i namnområdet. Följ riktlinjerna för publicera [befintliga distribuerade program med Open Service Mesh (OSM) tillåtande trafikprincip konfigurerad som falskt](#onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false)
 
 ### <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-true"></a>Registrera befintliga distribuerade program med Open Service Mesh (OSM) Tillåtande trafikprincip konfigurerad som True
 
@@ -763,7 +763,7 @@ Kontrollera att programmet fortfarande fungerar efter injectionen av Envoy-sidov
 
 ### <a name="onboard-existing-deployed-applications-with-open-service-mesh-osm-permissive-traffic-policy-configured-as-false"></a>Publicera befintliga distribuerade program med Open Service Mesh (OSM) Tillåtande trafikprincip konfigurerad som Falskt
 
-När OSM-konfigurationen för principen för tillåtande trafik är inställd på kräver OSM explicita SMI-trafikåtkomstprinciper som distribueras för att `false` tjänst-till-tjänst-kommunikationen ska ske i klustret. [](https://smi-spec.io/) OSM använder för närvarande även Kubernetes-tjänstkonton som en del av auktorisering av tjänst-till-tjänst-kommunikation. För att säkerställa att dina befintliga distribuerade program kommunicerar när de hanteras av OSM-nät måste vi kontrollera att det [](https://smi-spec.io/) finns ett tjänstkonto att använda, uppdatera programdistributionen med tjänstkontoinformationen och tillämpa SMI-trafikåtkomstprinciperna.
+När OSM-konfigurationen för principen för tillåtande trafik är inställd på kräver OSM explicita SMI-trafikåtkomstprinciper som distribueras för att `false` tjänst-till-tjänst-kommunikationen ska ske i klustret. [](https://smi-spec.io/) OSM använder för närvarande även Kubernetes-tjänstkonton som en del av auktorisering av tjänst-till-tjänst-kommunikation. För att säkerställa att dina befintliga distribuerade program kommunicerar när de hanteras av OSM-nät måste vi verifiera att det [](https://smi-spec.io/) finns ett tjänstkonto att använda, uppdatera programdistributionen med tjänstkontoinformationen och tillämpa SMI-trafikåtkomstprinciperna.
 
 #### <a name="verify-kubernetes-service-accounts"></a>Verifiera Kubernetes-tjänstkonton
 
@@ -773,7 +773,7 @@ Kontrollera om du har ett kubernetes-tjänstkonto i det namnområde som programm
 kubectl get serviceaccounts -n bookbuyer
 ```
 
-I följande avsnitt finns det ett tjänstkonto `bookbuyer` med namnet i namnområdet bookbuyer.
+I följande avsnitt finns ett tjänstkonto med `bookbuyer` namnet i namnområdet bookbuyer.
 
 ```Output
 NAME        SECRETS   AGE
@@ -812,7 +812,7 @@ Nu ska vi beskriva distributionen som en kontroll för att se om det finns ett t
 kubectl describe deployment bookbuyer -n bookbuyer
 ```
 
-I den här specifika distributionen kan du se att det finns ett tjänstkonto associerat med distributionen som anges under avsnittet Pod template (Poddmall). Den här distributionen använder bokköparen för tjänstkontot. Om du inte ser egenskapen **Serivce Account:** har distributionen inte konfigurerats för att använda ett tjänstkonto.
+I den här specifika distributionen kan du se att det finns ett tjänstkonto associerat med distributionen som anges under avsnittet Pod template (Poddmall). Den här distributionen använder servicekontots bookbuyer. Om du inte ser egenskapen **Serivce Account:** har distributionen inte konfigurerats för att använda ett tjänstkonto.
 
 ```Output
 Pod Template:
@@ -859,9 +859,9 @@ spec:
     namespace: bookbuyer
 ```
 
-I ovanstående TrafficTarget-specifikation `destination` anger det tjänstkonto som har konfigurerats för målkälltjänsten. Kom ihåg att tjänstkontot som lades till i distributionen tidigare kommer att användas för att auktorisera åtkomst till den distribution som det är kopplat till. Avsnittet `rules` , i det här exemplet, definierar vilken typ av HTTP-trafik som tillåts via anslutningen. Du kan konfigurera korniga regex-mönster för HTTP-huvuden så att de är specifika för vilken trafik som tillåts via HTTP. Avsnittet `sources` är den tjänst som kommer från kommunikationen. Den här specifikationen läser bookbuyer behöver kommunicera med bokhandel.
+I ovanstående TrafficTarget-specifikation `destination` anger det tjänstkonto som har konfigurerats för målkälltjänsten. Kom ihåg att tjänstkontot som lades till i distributionen tidigare kommer att användas för att ge åtkomst till distributionen som det är kopplat till. Avsnittet `rules` , i det här exemplet, definierar vilken typ av HTTP-trafik som tillåts via anslutningen. Du kan konfigurera korniga regex-mönster för HTTP-huvuden så att de är specifika för vilken trafik som tillåts via HTTP. Avsnittet `sources` är den tjänst som kommer från kommunikationen. Den här specifikationen läser bookbuyer behöver kommunicera med bokhandel.
 
-HTTPRouteGroup-resursen består av en eller en matris med matchningar av HTTP-huvudinformation och är ett krav för TrafficTarget-specifikationen. I exemplet nedan kan du se att HTTPRouteGroup auktoriserar tre HTTP-åtgärder, två GET och en POST.
+HTTPRouteGroup-resursen består av en eller en matris med matchningar av HTTP-huvudinformation och är ett krav för TrafficTarget-specifikationen. I exemplet nedan ser du att HTTPRouteGroup auktoriserar tre HTTP-åtgärder, två GET och en POST.
 
 ```HTTPRouteGroup Example Spec
 apiVersion: specs.smi-spec.io/v1alpha4
@@ -1140,7 +1140,7 @@ EOF
 
 ### <a name="verify-the-bookstore-application-running-inside-the-aks-cluster"></a>Verifiera bokhandelsprogrammet som körs i AKS-klustret
 
-Från och med nu har vi distribuerat bokhandelsprogrammet multiit-container, men det är bara tillgängligt från AKS-klustret. Senare ska vi lägga till Azure Application Gateway ingress-kontrollanten för att exponera programmet utanför AKS-klustret. För att kontrollera att programmet körs i klustret använder vi en port framåt för att visa användargränssnittet för bookbuyer-komponenten.
+Från och med nu har vi distribuerat bokhandelsprogrammet multiit-container, men det är bara tillgängligt från AKS-klustret. Senare lägger vi till Azure Application Gateway ingress-kontrollanten för att exponera programmet utanför AKS-klustret. För att kontrollera att programmet körs i klustret använder vi en port framåt för att visa användargränssnittet för bookbuyer-komponenten.
 
 Först hämtar vi bookbuyer-poddens namn
 
@@ -1170,13 +1170,13 @@ Forwarding from [::1]:8080 -> 14001
 
 När sessionen för vidarebefordran av portar är på plats navigerar du till följande URL från en webbläsare `http://localhost:8080` . Du bör nu kunna se användargränssnittet för bookbuyer-programmet i webbläsaren som liknar bilden nedan.
 
-![Avbildning av OSM bookbuyer-appen för NGINX-användargränssnittet](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
+![Bild av OSM bookbuyer app for NGINX UI (OSM-bokköparapp för NGINX-användargränssnitt)](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
 ### <a name="create-an-nginx-ingress-controller-in-azure-kubernetes-service-aks"></a>Skapa en NGINX-ingresskontrollant i Azure Kubernetes Service (AKS)
 
 En ingress-kontrollant är en del av programvaran som tillhandahåller omvänd proxy, konfigurerbar trafikroutning och TLS-Avslut för Kubernetes-tjänster. Kubernetes ingress-resurser används för att konfigurera inkommande regler och vägar för enskilda Kubernetes-tjänster. Med hjälp av en ingress-kontrollant och ingress-regler kan en IP-adress användas för att dirigera trafik till flera tjänster i ett Kubernetes-kluster.
 
-Vi kommer att använda ingress-kontrollanten för att exponera programmet som hanteras av OSM på Internet. Om du vill skapa ingress-kontrollanten använder du Helm för att installera nginx-ingress. För ytterligare redundans distribueras två repliker av NGINX-ingresskontrollanterna med parametern `--set controller.replicaCount`. Om du vill dra full nytta av att köra repliker av ingress-kontrollanten kontrollerar du att det finns fler än en nod i ditt AKS-kluster.
+Vi kommer att använda ingress-kontrollanten för att exponera programmet som hanteras av OSM mot Internet. Om du vill skapa ingress-kontrollanten använder du Helm för att installera nginx-ingress. För ytterligare redundans distribueras två repliker av NGINX-ingresskontrollanterna med parametern `--set controller.replicaCount`. Om du vill dra full nytta av att köra repliker av ingress-kontrollanten kontrollerar du att det finns fler än en nod i ditt AKS-kluster.
 
 Ingresskontrollanten måste också schemaläggas på en Linux-nod. Windows Server-noder bör inte köra ingresskontrollanten. En nodväljare anges med parametern `--set nodeSelector` för att instruera Kubernetes-schemaläggaren att köra NGINX-ingresskontrollanten på en Linux-baserad nod.
 
@@ -1365,12 +1365,12 @@ I de här självstudierna får du:
 
 ### <a name="before-you-begin"></a>Innan du börjar
 
-Stegen som beskrivs i den här artikeln förutsätter att du har skapat ett AKS-kluster (Kubernetes och högre med Kubernetes RBAC aktiverat), har upprättat en anslutning till klustret (om du behöver hjälp med något av dessa objekt kan du läsa `1.19+` `kubectl` [AKS-snabbstarten](./kubernetes-walkthrough.md), ha installerat AKS OSM-tillägget och kommer att skapa en ny Azure Application Gateway för ingress.
+Stegen som beskrivs i den här artikeln förutsätter att du har skapat ett AKS-kluster (Kubernetes och högre, med Kubernetes RBAC aktiverat), har upprättat en anslutning till klustret (om du behöver hjälp med något av dessa objekt kan du läsa `1.19+` `kubectl` [AKS-snabbstarten](./kubernetes-walkthrough.md), har installerat AKS OSM-tillägget och kommer att skapa en ny Azure Application Gateway för ingress.
 
 Du måste ha följande resurser installerade:
 
 - Azure CLI, version 2.20.0 eller senare
-- Tilläggsversionen `aks-preview` 0.5.5 eller senare
+- Tilläggsversion `aks-preview` 0.5.5 eller senare
 - AKS-kluster version 1.19+ med Azure CNI nätverk (anslutet till ett azure-Vnet)
 - OSM version v0.8.0 eller senare
 - apt-get install jq
@@ -1532,21 +1532,21 @@ Forwarding from 127.0.0.1:8080 -> 14001
 Forwarding from [::1]:8080 -> 14001
 ```
 
-När sessionen för vidarebefordran av portar är på plats navigerar du till följande URL från en webbläsare `http://localhost:8080` . Du bör nu kunna se användargränssnittet för bookbuyer-programmet i webbläsaren som liknar bilden nedan.
+När sessionen för vidarebefordran av portar är på plats navigerar du till följande URL från en webbläsare `http://localhost:8080` . Du bör nu kunna se användargränssnittet för bookbuyer-programmet i webbläsaren, ungefär som på bilden nedan.
 
-![Avbildning av OSM bookbuyer-app App Gateway användargränssnitt](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
+![Avbildning av OSM-bokbuyerappen App Gateway användargränssnittet](./media/aks-osm-addon/osm-agic-bookbuyer-img.png)
 
 ### <a name="create-an-azure-application-gateway-to-expose-the-bookbuyer-application-outside-the-aks-cluster"></a>Skapa en Azure Application Gateway att exponera bookbuyer-programmet utanför AKS-klustret
 
 > [!NOTE]
-> I följande anvisningar skapas en ny instans av Azure Application Gateway som ska användas för ingress. Om du har en befintlig Azure Application Gateway som du vill använda går du vidare till avsnittet för att aktivera Application Gateway för ingress-kontrollant.
+> I följande anvisningar skapas en ny instans av Azure Application Gateway som ska användas för ingress. Om du har en befintlig Azure Application Gateway som du vill använda går du vidare till avsnittet för att aktivera Application Gateway Ingress Controller-tillägget.
 
 #### <a name="deploy-a-new-application-gateway"></a>Distribuera en ny Application Gateway
 
 > [!NOTE]
-> Vi refererar till befintlig dokumentation för att aktivera Application Gateway Ingress Controller-tillägg för ett befintligt AKS-kluster. Vissa ändringar har gjorts för att passa OSM-materialen. Mer detaljerad dokumentation om ämnet finns [här.](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
+> Vi refererar till befintlig dokumentation för att aktivera Application Gateway för ett befintligt AKS-kluster. Vissa ändringar har gjorts för att passa OSM-materialen. Mer detaljerad dokumentation om ämnet finns [här.](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
 
-Nu ska du distribuera en ny Application Gateway för att simulera att du har en befintlig Application Gateway som du vill använda för att belastningsutjämna trafik till ditt AKS-kluster, _myCluster_. Namnet på Application Gateway är _myApplicationGateway_, men du måste först skapa en offentlig IP-resurs med namnet _myPublicIp_ och ett nytt virtuellt nätverk med namnet _myVnet_ med adressutrymmet 11.0.0.0/8 och ett undernät med adressutrymmet 11.1.0.0/16 med namnet _mySubnet_ och distribuera Application Gateway i _mySubnet med mySubnet_ med _myPublicIp_.
+Nu ska du distribuera en ny Application Gateway för att simulera att ha en befintlig Application Gateway som du vill använda för att belastningsutjämna trafik till ditt _AKS-kluster, myCluster_. Namnet på Application Gateway är _myApplicationGateway,_ men du måste först skapa en offentlig IP-resurs med namnet _myPublicIp_ och ett nytt virtuellt nätverk med namnet _myVnet_ med adressutrymmet 11.0.0.0/8 och ett undernät med adressutrymmet 11.1.0.0/16 med namnet _mySubnet_ och distribuera din Application Gateway i _mySubnet med mySubnet_ med _myPublicIp_.
 
 När du använder ett AKS-Application Gateway i separata virtuella nätverk får adressutrymmena för de två virtuella nätverken inte överlappa varandra. Standardadressutrymmet som ett AKS-kluster distribuerar i är 10.0.0.0/8, så vi anger adressprefixet för det virtuella Application Gateway-nätverket till 11.0.0.0/8.
 
@@ -1558,11 +1558,11 @@ az network application-gateway create -n myApplicationGateway -l eastus2 -g myRe
 ```
 
 > [!NOTE]
-> Application Gateway AGIC-tillägg (Ingress Controller)  stöder endast SKU:er för Application Gateway v2  (Standard och WAF) och inte Application Gateway v1-SKU:er.
+> Application Gateway AGIC-tillägg (Ingress Controller)  stöder endast SKU:er Application Gateway v2 (Standard  och WAF) och inte SKU:er Application Gateway v1.
 
 #### <a name="enable-the-agic-add-on-for-an-existing-aks-cluster-through-azure-cli"></a>Aktivera AGIC-tillägget för ett befintligt AKS-kluster via Azure CLI
 
-Om du vill fortsätta använda Azure CLI kan du fortsätta att aktivera AGIC-tillägget i AKS-klustret som du skapade, _myCluster,_ och ange AGIC-tillägget för att använda den befintliga Application Gateway som du skapade, _myApplicationGateway._
+Om du vill fortsätta att använda Azure CLI kan du fortsätta att aktivera AGIC-tillägget i det AKS-kluster som du skapade, _myCluster_, och ange AGIC-tillägget för att använda den befintliga Application Gateway som du _skapade, myApplicationGateway_.
 
 ```azurecli-interactive
 appgwId=$(az network application-gateway show -n myApplicationGateway -g myResourceGroup -o tsv --query "id")
@@ -1579,7 +1579,7 @@ Det här kommandot ska visa utdata som `true` .
 
 #### <a name="peer-the-two-virtual-networks-together"></a>Peering av de två virtuella nätverken
 
-Eftersom vi distribuerade AKS-klustret i ett eget virtuellt nätverk och Application Gateway i ett annat virtuellt nätverk måste du peer-peera de två virtuella nätverken för att trafiken ska flöda från Application Gateway till poddarna i klustret. Peering av de två virtuella nätverken kräver att Azure CLI-kommandot körs två separata gånger för att säkerställa att anslutningen är dubbelriktad. Det första kommandot skapar en peering-anslutning från det Application Gateway nätverket till det virtuella AKS-nätverket. det andra kommandot skapar en peering-anslutning i den andra riktningen.
+Eftersom vi har distribuerat AKS-klustret i ett eget virtuellt nätverk och Application Gateway i ett annat virtuellt nätverk måste du peer-peera de två virtuella nätverken för att trafiken ska flöda från Application Gateway till poddarna i klustret. Peering av de två virtuella nätverken kräver att Azure CLI-kommandot körs två separata gånger för att säkerställa att anslutningen är dubbelriktad. Det första kommandot skapar en peering-anslutning från det Application Gateway virtuella nätverket till det virtuella AKS-nätverket. Det andra kommandot skapar en peering-anslutning i den andra riktningen.
 
 ```azurecli-interactive
 nodeResourceGroup=$(az aks show -n myCluster -g myResourceGroup -o tsv --query "nodeResourceGroup")
@@ -1594,7 +1594,7 @@ az network vnet peering create -n AKStoAppGWVnetPeering -g $nodeResourceGroup --
 
 ### <a name="expose-the-bookbuyer-service-to-the-internet"></a>Exponera bookbuyer-tjänsten på Internet
 
-Tillämpa följande ingressmanifest på AKS-klustret för att exponera bookbuyer-tjänsten mot Internet via Azure Application Gateway.
+Tillämpa följande ingressmanifest på AKS-klustret för att exponera bookbuyer-tjänsten på Internet via Azure Application Gateway.
 
 ```azurecli-interactive
 kubectl apply -f - <<EOF
@@ -1631,7 +1631,7 @@ Warning: extensions/v1beta1 Ingress is deprecated in v1.14+, unavailable in v1.2
 ingress.extensions/bookbuyer-ingress created
 ```
 
-Eftersom värdnamnet i ingressmanifestet är ett pseudonamn som används för testning är DNS-namnet inte tillgängligt på Internet. Vi kan också använda curl-programmet och förbi värddatornamnets rubrik till den offentliga IP-adressen för Azure Application Gateway och få en 200-kod som ansluter oss till bookbuyer-tjänsten.
+Eftersom värdnamnet i ingressmanifestet är ett pseudonamn som används för testning är DNS-namnet inte tillgängligt på Internet. Vi kan också använda curl-programmet och förbi hostname-rubriken till den offentliga IP-adressen för Azure Application Gateway och få en 200-kod som ansluter oss till bookbuyer-tjänsten.
 
 ```azurecli-interactive
 appGWPIP=$(az network public-ip show -g MyResourceGroup -n myPublicIp -o tsv --query "ipAddress")
@@ -1702,26 +1702,26 @@ Du bör se följande resultat
 ### <a name="troubleshooting"></a>Felsökning
 
 - [Dokumentation om AGIC-felsökning](https://docs.microsoft.com/azure/application-gateway/ingress-controller-troubleshoot)
-- [Ytterligare felsökningsverktyg finns på AGIC:s GitHub-lagringsplatsen](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/troubleshootings/troubleshooting-installing-a-simple-application.md)
+- [Ytterligare felsökningsverktyg är tillgängliga på AGIC:s GitHub-lagringsplatsen](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/master/docs/troubleshootings/troubleshooting-installing-a-simple-application.md)
 
-## <a name="open-service-mesh-osm-monitoring-and-observability-using-azure-monitor-and-applications-insights"></a>Övervakning och observerbarhet med Open Service Mesh (OSM) med hjälp Azure Monitor och Applications Insights
+## <a name="open-service-mesh-osm-monitoring-and-observability-using-azure-monitor-and-applications-insights"></a>Open Service Mesh -övervakning (OSM) och observerbarhet med hjälp Azure Monitor och Applications Insights
 
-Både Azure Monitor och Azure Application Insights hjälper dig att maximera tillgängligheten och prestandan för dina program och tjänster genom att leverera en heltäckande lösning för att samla in, analysera och agera på telemetri från dina molnmiljöer och lokala miljöer.
+Både Azure Monitor och Azure Application Insights hjälper dig att maximera tillgängligheten och prestandan för dina program och tjänster genom att leverera en heltäckande lösning för att samla in, analysera och agera utifrån telemetri från dina molnmiljöer och lokala miljöer.
 
-OSM AKS-tillägget har djupgående integreringar i båda dessa Azure-tjänster och ger en till synes olös Azure-upplevelse för att visa och svara på kritiska KPI:er som tillhandahålls av OSM-mått. Mer information om hur du aktiverar och konfigurerar dessa tjänster för OSM AKS-tillägget finns på [Azure Monitor för OSM](https://aka.ms/azmon/osmpreview) för mer information.
+OSM AKS-tillägget har djupgående integreringar i båda dessa Azure-tjänster och ger en till synes oviktig Azure-upplevelse för att visa och svara på kritiska KPI:er som tillhandahålls av OSM-mått. Mer information om hur du aktiverar och konfigurerar dessa tjänster för OSM AKS-tillägget finns på [Azure Monitor för OSM](https://aka.ms/azmon/osmpreview) för mer information.
 
 ## <a name="tutorial-manually-deploy-prometheus-grafana-and-jaeger-to-view-open-service-mesh-osm-metrics-for-observability"></a>Självstudie: Distribuera Prometheus, Grafana och Jaeger manuellt för att visa OSM-mått (Open Service Mesh) för observerbarhet
 
 > [!WARNING]
-> Installationen av Prometheus, Grafana och Jaeger tillhandahålls som allmän vägledning för att visa hur dessa verktyg kan användas för att visa OSM-måttdata. Installationsvägledningen ska inte användas för en produktionskonfiguration. Läs dokumentationen för varje verktyg om hur du bäst passar deras installationer efter dina behov. Det viktigaste är bristen på beständig lagring, vilket innebär att alla data går förlorade när prometheus Grafana och/eller Jaeger-poddar avslutas.
+> Installationen av Prometheus, Grafana och Jaeger tillhandahålls som allmän vägledning för att visa hur dessa verktyg kan användas för att visa OSM-måttdata. Installationsvägledningen ska inte användas för en produktionskonfiguration. Läs dokumentationen för varje verktyg om hur du bäst passar deras installationer efter dina behov. Det viktigaste är bristen på beständig lagring, vilket innebär att alla data går förlorade när en Prometheus Grafana och/eller Jaeger-poddar avslutas.
 
-Open Service Mesh (OSM) genererar detaljerade mått som är relaterade till all trafik i nätet. De här måtten ger insikter om beteendet för program i näten som hjälper användarna att felsöka, underhålla och analysera sina program.
+Open Service Mesh (OSM) genererar detaljerade mått relaterade till all trafik i mesh. De här måtten ger insikter om beteendet för program i näten och hjälper användarna att felsöka, underhålla och analysera sina program.
 
-Från och med idag samlar OSM in mått direkt från sidovagnsproxies (Envoy). OSM tillhandahåller omfattande mått för inkommande och utgående trafik för alla tjänster i nätet. Med dessa mått kan användaren få information om den totala mängden trafik, fel i trafiken och svarstiden för begäranden.
+Från och med idag samlar OSM in mått direkt från sidovagnsproxies (Envoy). OSM tillhandahåller omfattande mått för inkommande och utgående trafik för alla tjänster i nätnätet. Med dessa mått kan användaren få information om den totala mängden trafik, fel i trafiken och svarstiden för begäranden.
 
 OSM använder Prometheus för att samla in och lagra konsekventa trafikmått och statistik för alla program som körs i näten. Prometheus är ett verktyg för övervakning och avisering med öppen källkod som ofta används i (men inte begränsat till) Kubernetes- och Service Mesh-miljöer.
 
-Varje program som ingår i nät körs i en podd som innehåller en Envoy-sidovagn som exponerar mått (proxymått) i Prometheus-format. Dessutom har varje podd som ingår i nätet Prometheus-anteckningar, vilket gör det möjligt för Prometheus-servern att göra en dynamisk avskraning av programmet. Den här mekanismen möjliggör automatiskt avskraning av mått när en ny namnrymd/pod/tjänst läggs till i nätnätet.
+Varje program som ingår i näten körs i en podd som innehåller en Envoy-sidovagn som visar mått (proxymått) i Prometheus-format. Dessutom har varje podd som är en del av nätet Prometheus-anteckningar, vilket gör det möjligt för Prometheus-servern att göra ett dynamiskt avskrap av programmet. Den här mekanismen möjliggör automatiskt avskraning av mått när en ny namnrymd/pod/tjänst läggs till i nätet.
 
 OSM-mått kan visas med Grafana, som är en programvara för visualisering och analys med öppen källkod. Det gör att du kan fråga, visualisera, varna för och utforska dina mått.
 
@@ -1734,7 +1734,7 @@ I de här självstudierna får du:
 > - Uppdatera Prometheus-konfigurationskartan
 > - Skapa och distribuera en Grafana-instans
 > - Konfigurera Grafana med Prometheus-datakällan
-> - Importera OSM-instrumentpanelen för Grafana
+> - Importera OSM-instrumentpanel för Grafana
 > - Skapa och distribuera en Jaeger-instans
 > - Konfigurera Jaeger-spårning för OSM
 
@@ -1796,13 +1796,13 @@ https://prometheus.io/
 
 #### <a name="configure-osm-to-allow-prometheus-scraping"></a>Konfigurera OSM för att tillåta Prometheus-avskraning
 
-För att säkerställa att OSM-komponenterna har konfigurerats för Prometheus-avskalade, vill vi kontrollera **den prometheus_scraping-konfiguration** som finns i osm-config-konfigurationsfilen. Visa konfigurationen med följande kommando:
+För att säkerställa att OSM-komponenterna har konfigurerats för Prometheus-avskrapor vill vi kontrollera **prometheus_scraping-konfigurationen** som finns i osm-config-konfigurationsfilen. Visa konfigurationen med följande kommando:
 
 ```azurecli-interactive
 kubectl get configmap -n kube-system osm-config -o json | jq '.data.prometheus_scraping'
 ```
 
-Utdata från föregående kommando ska returnera `true` om OSM har konfigurerats för Prometheus-avskraning. Om det returnerade `false` värdet är måste vi uppdatera konfigurationen till `true` . Kör följande kommando för att **aktivera** OSM Prometheus-avskraning:
+Utdata från föregående kommando bör returnera `true` om OSM har konfigurerats för Prometheus-avskraning. Om det returnerade `false` värdet är måste vi uppdatera konfigurationen till `true` . Kör följande kommando för att **aktivera** OSM Prometheus-avklippning:
 
 ```azurecli-interactive
 kubectl patch ConfigMap -n kube-system osm-config --type merge --patch '{"data":{"prometheus_scraping":"true"}}'
@@ -1827,19 +1827,19 @@ stable-prometheus-alertmanager   1      4h34m
 stable-prometheus-server         5      4h34m
 ```
 
-Vi måste ersätta prometheus.yml-konfigurationen som finns i **configmap stable-prometheus-server** med följande OSM-konfiguration. Det finns flera filredigeringstekniker för att utföra den här uppgiften. Ett enkelt och säkert sätt är att exportera konfigurationskartan, skapa en kopia av den för säkerhetskopiering och sedan redigera den med en redigerare som Visual Studio kod.
+Vi måste ersätta prometheus.yml-konfigurationen som finns i konfigurationskartan **stable-prometheus-server** med följande OSM-konfiguration. Det finns flera filredigeringstekniker för att utföra den här uppgiften. Ett enkelt och säkert sätt är att exportera konfigurationskartan, skapa en kopia av den för säkerhetskopiering och sedan redigera den med ett redigeringsprogram som Visual Studio kod.
 
 > [!NOTE]
-> Om du inte har Visual Studio Code kan du hämta och installera det [här.](https://code.visualstudio.com/Download)
+> Om du inte har Visual Studio Code kan du ladda ned och installera det [här.](https://code.visualstudio.com/Download)
 
-Först exporterar vi configmap **stable-prometheus-server** och gör sedan en kopia för säkerhetskopiering.
+Först exporterar vi configmap **för stable-prometheus-server** och gör sedan en kopia för säkerhetskopiering.
 
 ```azurecli-interactive
 kubectl get configmap stable-prometheus-server -o yaml > cm-stable-prometheus-server.yml
 cp cm-stable-prometheus-server.yml cm-stable-prometheus-server.yml.copy
 ```
 
-Nu ska vi öppna filen med hjälp Visual Studio Kod för att redigera.
+Nu ska vi öppna filen med hjälp Visual Studio Kod att redigera.
 
 ```azurecli-interactive
 code cm-stable-prometheus-server.yml
@@ -1848,7 +1848,7 @@ code cm-stable-prometheus-server.yml
 När du har öppnat konfigurationskartan i Visual Studio Code-redigeraren ersätter du filen prometheus.yml med OSM-konfigurationen nedan och sparar filen.
 
 > [!WARNING]
-> Det är mycket viktigt att du behåller yaml-filens indragsstruktur. Eventuella ändringar i yaml-filstrukturen kan leda till att konfigurationskartan inte kan tillämpas igen.
+> Det är mycket viktigt att du behåller yaml-filens indragsstruktur. Ändringar i yaml-filstrukturen kan leda till att konfigurationskartan inte kan tillämpas igen.
 
 ```OSM Prometheus Configmap Configuration
 prometheus.yml: |
@@ -2086,11 +2086,11 @@ configmap/stable-prometheus-server configured
 ```
 
 > [!NOTE]
-> Du kan få ett meddelande om att en Kubernetes-anteckning saknas. Detta kan ignoreras för tillfället.
+> Du kan få ett meddelande om att en Kubernetes-anteckning saknas som krävs. Detta kan ignoreras för tillfället.
 
 #### <a name="verify-prometheus-is-configured-to-scrape-the-osm-mesh-and-api-endpoints"></a>Kontrollera att Prometheus har konfigurerats för att skrapa OSM-nät och API-slutpunkter
 
-För att verifiera att Prometheus är korrekt konfigurerad för att skrapa OSM-nät och API-slutpunkter portas vi till Prometheus-podden och visar målkonfigurationen. Kör följande kommandon.
+För att verifiera att Prometheus är korrekt konfigurerat för att skrapa OSM-nät och API-slutpunkter portas vi till Prometheus-podden och visar målkonfigurationen. Kör följande kommandon.
 
 ```azurecli-interactive
 PROM_POD_NAME=$(kubectl get pods -l "app=prometheus,component=server" -o jsonpath="{.items[0].metadata.name}")
@@ -2142,9 +2142,9 @@ När du har loggat in på Grafana är nästa steg att lägga till Prometheus som
 
 Klicka på **knappen Lägg till datakälla** och välj Prometheus under tidsseriedatabaser.
 
-![BILD av ANVÄNDARGRÄNSSNITTET för OSM Grafana-datakällor](./media/aks-osm-addon/osm-grafana-ui-datasources-select-prometheus.png)
+![Bild av användargränssnittet för OSM Grafana-datakällors urvalssida](./media/aks-osm-addon/osm-grafana-ui-datasources-select-prometheus.png)
 
-På sidan Configure your Prometheus data source below (Konfigurera din **Prometheus-datakälla** nedan) anger du Kubernetes-klustrets FQDN för Prometheus-tjänsten för HTTP-URL-inställningen. Standard-FQDN ska vara `stable-prometheus-server.default.svc.cluster.local` . När du har angett prometheus-tjänstslutpunkten bläddrar du längst ned på sidan och väljer **Spara & Testa**. Du bör få en grön kryssruta som anger att datakällan fungerar.
+På sidan Configure your Prometheus data source below (Konfigurera **prometheus-datakällan** nedan) anger du Kubernetes-klustrets FQDN för Prometheus-tjänsten för HTTP URL-inställningen. Standard-FQDN ska vara `stable-prometheus-server.default.svc.cluster.local` . När du har angett prometheus-tjänstslutpunkten bläddrar du längst ned på sidan och väljer **Spara & Test**. Du bör få en grön kryssruta som anger att datakällan fungerar.
 
 #### <a name="importing-osm-dashboards"></a>Importera OSM-instrumentpaneler
 
@@ -2156,7 +2156,7 @@ OSM-instrumentpaneler är tillgängliga både via:
 Om du vill importera en instrumentpanel letar du `+` upp inloggningen på den vänstra menyn och väljer `import` .
 Du kan importera instrumentpanelen direkt efter deras ID på `Grafana.com` . Vår instrumentpanel `OSM Mesh Details` använder till exempel ID , du kan använda `14145` ID:t direkt i formuläret och välja `import` :
 
-![BILD av ANVÄNDARGRÄNSSNITTET för OSM Grafana-instrumentpanelens importsida](./media/aks-osm-addon/osm-grafana-dashboard-import.png)
+![Bild av användargränssnittet för OSM Grafana-instrumentpanelens importsida](./media/aks-osm-addon/osm-grafana-dashboard-import.png)
 
 När du väljer importera kommer du automatiskt till din importerade instrumentpanel.
 
@@ -2248,7 +2248,7 @@ configmap/osm-config patched
 
 #### <a name="view-the-jaeger-ui-with-port-forwarding"></a>Visa Jaeger-användargränssnittet med port vidarebefordran
 
-Användargränssnittet för Jaeger körs på port 16686. Om du vill visa webbgränssnittet kan du använda kubectl port-forward:
+Jaegers användargränssnitt körs på port 16686. Om du vill visa webbgränssnittet kan du använda kubectl port-forward:
 
 ```azurecli-interactive
 JAEGER_POD=$(kubectl get pods -n jaeger --no-headers  --selector app=jaeger | awk 'NR==1{print $1}')
@@ -2256,7 +2256,7 @@ kubectl port-forward -n jaeger $JAEGER_POD  16686:16686
 http://localhost:16686/
 ```
 
-I webbläsaren bör du se en listrutan Tjänst där du kan välja bland de olika program som distribueras av bokhandelsdemo. Välj en tjänst för att visa alla intervall från den. Om du till exempel väljer bookbuyer med en Lookback på en timme kan du se dess interaktioner med bookstore-v1 och bookstore-v2 sorterade efter tid.
+I webbläsaren bör du se en listrutan Tjänst där du kan välja bland de olika program som distribueras av bokhandelsdemo. Välj en tjänst för att visa alla intervall från den. Om du till exempel väljer bookbuyer med en lookback på en timme kan du se dess interaktioner med bookstore-v1 och bookstore-v2 sorterade efter tid.
 
 ![BILD av användargränssnittet för OSM Jaeger Tracing Page](./media/aks-osm-addon/osm-jaeger-trace-view-ui.png)
 
@@ -2305,7 +2305,7 @@ Kolumnen READY med 0/1 anger att kontrollplanscontainern kraschar – vi måste 
 > [!NOTE]
 > Från och med version v0.8.2 är OSM-styrenheten inte i HA-läge och körs i en distribuerad med replikantalet 1 – enskild podd. Podden har hälsoavsökningar och startas om av kubelet om det behövs.
 
-#### <a name="check-osm-controller-service"></a>Kontrollera OSM-styrenhetstjänsten
+#### <a name="check-osm-controller-service"></a>Kontrollera TJÄNSTEN OSM-styrenhet
 
 ```azurecli-interactive
 kubectl get service -n kube-system osm-controller
@@ -2444,7 +2444,7 @@ En välkonfigurerad konfiguration av muterande webhook skulle se ut exakt så h�
 }
 ```
 
-#### <a name="check-whether-osm-controller-has-given-the-validating-or-mutating-webhook-a-ca-bundle"></a>Kontrollera om OSM-kontrollanten har gett verifierande (eller muterande) webhooken ett CA-paket
+#### <a name="check-whether-osm-controller-has-given-the-validating-or-mutating-webhook-a-ca-bundle"></a>Kontrollera om OSM-kontrollanten har gett webhooken för validering (eller mutering) ett CA-paket
 
 > [!NOTE]
 > Från och med v0.8.2 Det är viktigt att veta att AKS RP installerar den verifierande webhooken, AKS Reconciler säkerställer att den finns, men OSM-kontrollanten är den som fyller CA-paketet.
@@ -2500,7 +2500,7 @@ kubectl delete ValidatingWebhookConfiguration aks-osm-webhook-osm; kubectl patch
 #### <a name="check-the-osm-config-configmap"></a>Kontrollera `osm-config` **configMap**
 
 > [!NOTE]
-> OSM-styrenheten kräver inte att `osm-config` ConfigMap ska finnas i namnområdet kube-system. Kontrollanten har rimliga standardvärden för -konfiguration och kan användas utan den.
+> OSM-styrenheten kräver inte att `osm-config` ConfigMap ska finnas i namnområdet kube-system. Kontrollanten har rimliga standardvärden för konfiguration och kan användas utan den.
 
 Kontrollera om det finns:
 
@@ -2538,19 +2538,19 @@ kubectl get ConfigMap -n kube-system osm-config -o json | jq '.data'
 | envoy_log_level                  | sträng | trace, debug, info, warning, warn, error, critical, off | `"error"`                              | Anger loggningsverositeten för Envoy-proxysidan, som endast gäller för nyligen skapade poddar som ansluter till näten. Om du vill uppdatera loggnivån för befintliga poddar startar du om distributionen med `kubectl rollout restart` .                            |
 | outbound_ip_range_exclusion_list | sträng | kommaavgränsad lista över IP-intervall i formen a.b.c.d/x | `-`                                    | Global lista över IP-adressintervall som ska undantas från utgående trafikskärning av sidovagnsproxyn.                                                                                                                                    |
 | permissive_traffic_policy_mode   | boolesk   | SANT, FALSKT                                             | `"false"`                              | Inställningen till , aktiverar läget "tillåt alla" i nät, det vill `true` säga att ingen trafikprincip används i nätet. Om det är `false` inställt på aktiverar neka all trafikprincip i mesh, dvs. `SMI Traffic Target` en krävs för att tjänster ska kunna kommunicera. |
-| prometheus_scraping              | boolesk   | SANT, FALSKT                                             | `"true"`                               | Aktiverar Prometheus-måttskrasning på sidovagnsproxier.                                                                                                                                                                                 |
-| service_cert_validity_duration   | sträng | 24h, 1h30m (valfri tidslängd)                          | `"24h"`                                | Anger giltighetstiden för tjänstcertifikatet, som representeras som en sekvens med decimaltal med ett valfritt bråktal och ett enhetssuffix.                                                                                             |
+| prometheus_scraping              | boolesk   | SANT, FALSKT                                             | `"true"`                               | Aktiverar Prometheus-måttskratning på sidovagnsproxier.                                                                                                                                                                                 |
+| service_cert_validity_duration   | sträng | 24h, 1h30m (valfri tidslängd)                          | `"24h"`                                | Anger giltighetstiden för tjänstcertifikatet, som representeras som en sekvens med decimaltal med ett valfritt bråk och ett enhetssuffix.                                                                                             |
 | tracing_enable                   | boolesk   | SANT, FALSKT                                             | `"false"`                              | Aktiverar Jaeger-spårning för näten.                                                                                                                                                                                                    |
 | tracing_address                  | sträng | jaeger.mesh-namespace.svc.cluster.local                 | `jaeger.kube-system.svc.cluster.local` | Adress för Jaeger-distributionen om spårning är aktiverat.                                                                                                                                                                                |
 | tracing_endpoint                 | sträng | /api/v2/spans                                           | /api/v2/spans                          | Slutpunkt för spårning av data, om spårning har aktiverats.                                                                                                                                                                                          |
 | tracing_port                     | int    | valfritt heltalsvärde som inte är noll                              | `"9411"`                               | Port där spårning är aktiverat.                                                                                                                                                                                                       |
 | use_https_ingress                | boolesk   | SANT, FALSKT                                             | `"false"`                              | Aktiverar HTTPS-ingress i näten.                                                                                                                                                                                                      |
-| config_resync_interval           | sträng | inaktiverar detta under 1 minut                            | 0 (inaktiverad)                           | När ett värde över 1 m (60 sekunder) anges skickar OSM-kontrollanten all tillgänglig konfiguration till varje anslutet Envoy inom det angivna intervallet                                                                                                    |
+| config_resync_interval           | sträng | inaktiverar detta under 1 minut                            | 0 (inaktiverad)                           | När ett värde över 1 m (60 sekunder) anges skickar OSM-kontrollanten all tillgänglig konfiguration till varje anslutet Envoy vid det angivna intervallet                                                                                                    |
 
 #### <a name="check-namespaces"></a>Kontrollera namnområden
 
 > [!NOTE]
-> Namnområdet kube-system deltar aldrig i ett tjänstnät och märks aldrig och/eller kommenteras aldrig med nyckeln/värdena nedan.
+> Namnområdet kube-system deltar aldrig i ett tjänstnät och märks aldrig och/eller kommenteras aldrig med nyckel/värden nedan.
 
 Vi använder kommandot `osm namespace add` för att koppla namnrymder till ett visst tjänstnät.
 När en k8s-namnrymd är en del av nätet (eller för att det ska ingå i nätet) måste följande vara sant:
@@ -2595,7 +2595,7 @@ Kontrollera om klustret har nödvändiga CRD:er:
 kubectl get crds
 ```
 
-Vi måste ha följande installerat i klustret:
+Vi måste ha följande installerat på klustret:
 
 - httproutegroups.specs.smi-spec.io
 - tcproutes.specs.smi-spec.io
@@ -2603,7 +2603,7 @@ Vi måste ha följande installerat i klustret:
 - traffictargets.access.smi-spec.io
 - udproutes.specs.smi-spec.io
 
-Hämta versionerna av CRD:erna installerade med det här kommandot:
+Hämta versionerna av CRD:erna som installerats med det här kommandot:
 
 ```azurecli-interactive
 for x in $(kubectl get crds --no-headers | awk '{print $1}' | grep 'smi-spec.io'); do
