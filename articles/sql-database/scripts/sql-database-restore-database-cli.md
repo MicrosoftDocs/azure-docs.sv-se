@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: återställa en säkerhets kopia'
-description: Azure CLI-exempel skript för att återställa en databas i Azure SQL Database till en tidigare tidpunkt från automatiska säkerhets kopieringar.
+title: 'Azure CLI: Återställa en säkerhetskopia'
+description: Azure CLI-exempelskript för att återställa en databas Azure SQL Database till en tidigare tidpunkt från automatiska säkerhetskopieringar.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,16 +11,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 363278e0b9969dad652dd00debe4ffc0138e9a97
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4054d19ccf4d136e30896bc066e51c92a4a4ad9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87503794"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783475"
 ---
-# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Använd CLI för att återställa en enskild databas i Azure SQL Database till en tidigare tidpunkt
+# <a name="use-cli-to-restore-a-single-database-in-azure-sql-database-to-an-earlier-point-in-time"></a>Använda CLI för att återställa en enkel databas Azure SQL Database till en tidigare tidpunkt
 
-Det här Azure CLI-exemplet återställer en enskild databas i Azure SQL Database till en viss tidpunkt.  
+Det här Azure CLI-exemplet återställer en enkel databas Azure SQL Database till en viss tidpunkt.  
 
 Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -42,19 +42,19 @@ az account set -s $subscription # ...or use 'az login'
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Beskrivning |
 |---|---|
-| [AZ SQL DB-återställning](/cli/azure/sql/db#az-sql-db-restore) | Återställ databas kommando. |
+| [az sql db restore](/cli/azure/sql/db#az_sql_db_restore) | Kommandot Återställ databas. |
 
 ## <a name="next-steps"></a>Nästa steg
 

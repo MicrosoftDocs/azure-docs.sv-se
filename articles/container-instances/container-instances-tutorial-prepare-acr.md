@@ -1,24 +1,24 @@
 ---
-title: Självstudie – förbereda container Registry för att distribuera avbildning
+title: Självstudie – Förbereda containerregister för distribution av avbildning
 description: Självstudie om Azure Container Instances del 2 av 3 – förbereda Azure Container Registry och push-överföra en avbildning
 ms.topic: tutorial
 ms.date: 12/18/2019
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: 2eda960c53fc7ba851ffcfbe96bd8e9a48844910
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36c2e6cda728a85ccab080bbbb6f1a0b74824f2d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92746927"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786989"
 ---
-# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Självstudie: skapa ett Azure Container Registry och skicka en behållar avbildning
+# <a name="tutorial-create-an-azure-container-registry-and-push-a-container-image"></a>Självstudie: Skapa ett Azure-containerregister och push-pusha en containeravbildning
 
 Det här är del två i en serie självstudier med tre delar. I [del ett](container-instances-tutorial-prepare-app.md) av självstudiekursen skapades en Docker-containeravbildning för ett Node.js-webbprogram. I den här självstudien push-överför du avbildningen till Azure Container Registry. Om du ännu inte har skapat containeravbildningen så gå tillbaka till [Självstudie 1 – skapa containeravbildning](container-instances-tutorial-prepare-app.md).
 
-Azure Container Registry är ditt privata Docker-register i Azure. I den här självstudien är del två i serien:
+Azure Container Registry är ditt privata Docker-register i Azure. I den här självstudien, som är del två i serien, gör du följande:
 
 > [!div class="checklist"]
-> * Skapa en Azure Container Registry-instans med Azure CLI
+> * Skapa en Azure Container Registry instans med Azure CLI
 > * Tagga en containeravbildning för Azure-containerregistret
 > * överföra avbildningen till registret.
 
@@ -66,7 +66,7 @@ REPOSITORY          TAG       IMAGE ID        CREATED           SIZE
 aci-tutorial-app    latest    5c745774dfa9    39 minutes ago    68.1 MB
 ```
 
-Tagga *ACI-självstudie-app-* avbildningen med inloggnings servern för behållar registret. Ange även avbildningens versionsnummer genom att lägga till taggen `:v1` i slutet av avbildningsnamnet. Ersätt `<acrLoginServer>` med resultatet av kommandot [az acr show][az-acr-show] som du körde tidigare.
+Tagga *avbildningen aci-tutorial-app* med inloggningsservern för containerregistret. Ange även avbildningens versionsnummer genom att lägga till taggen `:v1` i slutet av avbildningsnamnet. Ersätt `<acrLoginServer>` med resultatet av kommandot [az acr show][az-acr-show] som du körde tidigare.
 
 ```bash
 docker tag aci-tutorial-app <acrLoginServer>/aci-tutorial-app:v1
@@ -83,7 +83,7 @@ mycontainerregistry082.azurecr.io/aci-tutorial-app    v1        5c745774dfa9    
 
 ## <a name="push-image-to-azure-container-registry"></a>Push-överför avbildningen till Azure Container Registry
 
-Nu när du har märkt *ACI-självstudie-app-* avbildningen med det fullständiga inloggnings Server namnet för ditt privata register, kan du skicka avbildningen till registret med [Docker push][docker-push] -kommandot. Ersätt `<acrLoginServer>` med det fullständiga namnet på inloggningsservern som du erhöll i det tidigare steget.
+Nu när du har taggat *avbildningen aci-tutorial-app* med det fullständiga inloggningsservernamnet för ditt privata register kan du skicka avbildningen till registret med [kommandot docker push.][docker-push] Ersätt `<acrLoginServer>` med det fullständiga namnet på inloggningsservern som du erhöll i det tidigare steget.
 
 ```bash
 docker push <acrLoginServer>/aci-tutorial-app:v1
@@ -166,10 +166,10 @@ Gå vidare till nästa självstudiekurs om du vill lära dig hur man distribuera
 [nodejs]: https://nodejs.org
 
 <!-- LINKS - Internal -->
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-repository-list]: /cli/azure/acr/repository
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-group-create]: /cli/azure/group#az-group-create
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-group-create]: /cli/azure/group#az_group_create
 [azure-cli-install]: /cli/azure/install-azure-cli

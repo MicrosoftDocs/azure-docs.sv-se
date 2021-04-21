@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: övervaka och skala en enskild databas i Azure SQL Database'
-description: Använd ett Azure CLI-exempel skript för att övervaka och skala en enskild databas i Azure SQL Database.
+title: 'Azure CLI: Övervaka och skala en enkel databas i Azure SQL Database'
+description: Använd ett Azure CLI-exempelskript för att övervaka och skala en enkel databas i Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: performance
@@ -11,20 +11,20 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sstein
 ms.date: 06/25/2019
-ms.openlocfilehash: 0a72bea08052e5cd17502a21a98b41cb5582a3b9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bd982ab6dc66674e705f080511282bcfeb909872
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96493647"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787187"
 ---
-# <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Använd Azure CLI för att övervaka och skala en enskild databas i Azure SQL Database
+# <a name="use-the-azure-cli-to-monitor-and-scale-a-single-database-in-azure-sql-database"></a>Använd Azure CLI för att övervaka och skala en enkel databas i Azure SQL Database
 
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Detta exempel på Azure CLI-skript skalar en enskild databas i Azure SQL Database till en annan beräknings storlek efter att ha frågat om storleks informationen för databasen.
+Det här Azure CLI-skriptexempel skalar en enkel databas i Azure SQL Database till en annan beräkningsstorlek efter att ha frågat storleksinformationen för databasen.
 
-Om du väljer att installera och använda Azure CLI lokalt, kräver den här artikeln att du kör Azure CLI version 2,0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Om du väljer att installera och använda Azure CLI lokalt kräver den här artikeln att du kör Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -43,27 +43,27 @@ az account set -s $subscription # ...or use 'az login'
 [!code-azurecli-interactive[main](../../../../cli_scripts/sql-database/monitor-and-scale-database/monitor-and-scale-database.sh "Monitor and scale a database in Azure SQL Database")]
 
 > [!TIP]
-> Använd [AZ SQL DB op List](/cli/azure/sql/db/op?#az-sql-db-op-list) för att hämta en lista över åtgärder som utförts i databasen och Använd [AZ SQL DB op Cancel](/cli/azure/sql/db/op#az-sql-db-op-cancel) för att avbryta en uppdaterings åtgärd på databasen.
+> Använd [az sql db op list för](/cli/azure/sql/db/op?#az_sql_db_op_list) att hämta en lista över åtgärder som utförs på databasen och använd az sql db op [cancel](/cli/azure/sql/db/op#az_sql_db_op_cancel) för att avbryta en uppdateringsåtgärd på databasen.
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
-| Skript | Beskrivning |
+| Skript | Description |
 |---|---|
-| [az sql server](/cli/azure/sql/server) | Server kommandon. |
-| [az sql db show-usage](/cli/azure/sql#az-sql-show-usage) | Visar användningsinformation om storlek för en databas. |
+| [az sql server](/cli/azure/sql/server) | Serverkommandon. |
+| [az sql db show-usage](/cli/azure/sql#az_sql_show_usage) | Visar användningsinformation om storlek för en databas. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
-Ytterligare CLI-skript exempel finns i [skript för Azure CLI-exempel](../az-cli-script-samples-content-guide.md).
+Ytterligare CLI-skriptexempel finns i [Azure CLI-exempelskript.](../az-cli-script-samples-content-guide.md)

@@ -1,22 +1,22 @@
 ---
-title: Skapa Apache Hadoop kluster med Azure CLI – Azure HDInsight
-description: Lär dig hur du skapar Azure HDInsight-kluster med plattforms oberoende Azure CLI.
+title: Skapa Apache Hadoop-kluster med Azure CLI – Azure HDInsight
+description: Lär dig hur du Azure HDInsight kluster med hjälp av plattformsoberoende Azure CLI.
 ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 02/03/2020
-ms.openlocfilehash: 9028d85346611341afec0d0598f27a77e4f37fdf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9c19eb58e32fec66e5fe698c82133c8583f67b8b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101715504"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775141"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Skapa HDInsight-kluster med Azure CLI
+# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Skapa HDInsight-kluster med Hjälp av Azure CLI
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster med Azure CLI.
+Stegen i det här dokumentet går igenom hur du skapar ett HDInsight 3.6-kluster med Hjälp av Azure CLI.
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -26,7 +26,7 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
 
 ## <a name="create-a-cluster"></a>Skapa ett kluster
 
-1. Logga in på din Azure-prenumeration. Om du planerar att använda Azure Cloud Shell väljer du **testa det** i det övre högra hörnet i kod blocket. Annars anger du kommandot nedan:
+1. Logga in på din Azure-prenumeration. Om du planerar att Azure Cloud Shell väljer du **Prova i** det övre högra hörnet av kodblocket. Annars anger du kommandot nedan:
 
     ```azurecli-interactive
     az login
@@ -35,16 +35,16 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-2. Ange miljövariabler. Användningen av variabler i den här artikeln baseras på bash. Små variationer kommer att krävas för andra miljöer. Se [AZ-HDInsight-Create](/cli/azure/hdinsight#az-hdinsight-create) för en fullständig lista över möjliga parametrar för att skapa kluster.
+2. Ange miljövariabler. Användningen av variabler i den här artikeln baseras på Bash. Små variationer krävs för andra miljöer. Se [az-hdinsight-create för](/cli/azure/hdinsight#az_hdinsight_create) en fullständig lista över möjliga parametrar för att skapa kluster.
 
     |Parameter | Beskrivning |
     |---|---|
-    |`--workernode-count`| Antalet arbetsnoder i klustret. I den här artikeln används variabeln `clusterSizeInNodes` som det värde som skickades till `--workernode-count` . |
-    |`--version`| HDInsight-klustrets version. I den här artikeln används variabeln `clusterVersion` som det värde som skickades till `--version` . Se även: [HDInsight-versioner som stöds](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
-    |`--type`| Typ av HDInsight-kluster, t. ex. Hadoop, interactivehive, HBase, Kafka, Storm, Spark, rserver, mlservices.  I den här artikeln används variabeln `clusterType` som det värde som skickades till `--type` . Se även: [kluster typer och konfiguration](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|Versioner av olika Hadoop-komponenter, i blankstegsavgränsad versioner i formatet komponent = version. I den här artikeln används variabeln `componentVersion` som det värde som skickades till `--component-version` . Se även: [Hadoop-komponenter](./hdinsight-component-versioning.md).|
+    |`--workernode-count`| Antalet arbetarnoder i klustret. I den här artikeln används `clusterSizeInNodes` variabeln som det värde som skickas till `--workernode-count` . |
+    |`--version`| HDInsight-klusterversionen. I den här artikeln används `clusterVersion` variabeln som det värde som skickas till `--version` . Se även: [HDInsight-versioner som stöds.](./hdinsight-component-versioning.md#supported-hdinsight-versions)|
+    |`--type`| Typ av HDInsight-kluster, till exempel: hadoop, interactivehive, hbase, kafka, storm, spark, rserver, mlservices.  I den här artikeln används `clusterType` variabeln som det värde som skickas till `--type` . Se även: [Klustertyper och konfiguration.](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type)|
+    |`--component-version`|Versioner av olika Hadoop-komponenter i utrymmesavgränsade versioner i formatet "component=version". I den här artikeln används `componentVersion` variabeln som det värde som skickas till `--component-version` . Se även: [Hadoop-komponenter](./hdinsight-component-versioning.md).|
 
-    Ersätt `RESOURCEGROUPNAME` ,,, `LOCATION` `CLUSTERNAME` `STORAGEACCOUNTNAME` och `PASSWORD` med önskade värden. Ändra värdena för de andra variablerna efter behov. Ange sedan CLI-kommandona.
+    Ersätt `RESOURCEGROUPNAME` , , , och med önskade `LOCATION` `CLUSTERNAME` `STORAGEACCOUNTNAME` `PASSWORD` värden. Ändra värdena för de andra variablerna efter behov. Ange sedan CLI-kommandona.
 
     ```azurecli-interactive
     export resourceGroupName=RESOURCEGROUPNAME
@@ -61,7 +61,7 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
     export componentVersion=Hadoop=2.7
     ```
 
-3. [Skapa resurs gruppen](/cli/azure/group#az-group-create) genom att ange kommandot nedan:
+3. [Skapa resursgruppen genom](/cli/azure/group#az_group_create) att ange kommandot nedan:
 
     ```azurecli-interactive
     az group create \
@@ -69,9 +69,9 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
         --name $resourceGroupName
     ```
 
-    För en lista över giltiga platser använder du `az account list-locations` kommandot och använder sedan en av platserna från `name` värdet.
+    Om du vill ha en lista över giltiga platser använder du kommandot `az account list-locations` och sedan någon av platserna från `name` värdet.
 
-4. [Skapa ett Azure Storage konto](/cli/azure/storage/account#az-storage-account-create) genom att ange kommandot nedan:
+4. [Skapa ett Azure Storage-konto](/cli/azure/storage/account#az_storage_account_create) genom att ange kommandot nedan:
 
     ```azurecli-interactive
     # Note: kind BlobStorage is not available as the default storage account.
@@ -84,7 +84,7 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
         --sku Standard_LRS
     ```
 
-5. [Extrahera primär nyckeln från Azure Storage-kontot](/cli/azure/storage/account/keys#az-storage-account-keys-list) och lagra den i en variabel genom att ange kommandot nedan:
+5. [Extrahera primärnyckeln från Azure Storage och lagra](/cli/azure/storage/account/keys#az_storage_account_keys_list) den i en variabel genom att ange kommandot nedan:
 
     ```azurecli-interactive
     export AZURE_STORAGE_KEY=$(az storage account keys list \
@@ -93,7 +93,7 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
         --query [0].value -o tsv)
     ```
 
-6. [Skapa en Azure Storage-behållare](/cli/azure/storage/container#az-storage-container-create) genom att ange kommandot nedan:
+6. [Skapa en Azure Storage container](/cli/azure/storage/container#az_storage_container_create) genom att ange kommandot nedan:
 
     ```azurecli-interactive
     az storage container create \
@@ -102,7 +102,7 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
         --account-name $AZURE_STORAGE_ACCOUNT
     ```
 
-7. [Skapa HDInsight-klustret](/cli/azure/hdinsight#az-hdinsight-create) genom att ange följande kommando:
+7. [Skapa HDInsight-klustret](/cli/azure/hdinsight#az_hdinsight_create) genom att ange följande kommando:
 
     ```azurecli-interactive
     az hdinsight create \
@@ -123,13 +123,13 @@ Stegen i det här dokumentet beskriver hur du skapar ett HDInsight 3,6-kluster m
     ```
 
     > [!IMPORTANT]  
-    > HDInsight-kluster ingår i olika typer, som motsvarar den arbets belastning eller teknik som klustret är anpassat för. Det finns ingen metod som stöds för att skapa ett kluster som kombinerar flera typer, till exempel storm och HBase på ett kluster.
+    > HDInsight-kluster finns i olika typer, som motsvarar den arbetsbelastning eller teknik som klustret är justerat för. Det finns ingen metod som stöds för att skapa ett kluster som kombinerar flera typer, till exempel Storm och HBase i ett kluster.
 
-    Det kan ta flera minuter innan kluster skapande processen har slutförts. Vanligt vis runt 15.
+    Det kan ta flera minuter att skapa klustret. Vanligtvis runt 15.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När du är klar med artikeln kanske du vill ta bort klustret. Med HDInsight lagras dina data i Azure Storage, så att du på ett säkert sätt kan ta bort ett kluster när det inte används. Du debiteras också för ett HDInsight-kluster, även när det inte används. Eftersom avgifterna för klustret är flera gånger mer än avgifterna för lagring, är det ekonomiskt klokt att ta bort kluster när de inte används.
+När du är klar med artikeln kanske du vill ta bort klustret. Med HDInsight lagras dina data i Azure Storage, så att du på ett säkert sätt kan ta bort ett kluster när det inte används. Du debiteras också för ett HDInsight-kluster, även om det inte används. Eftersom avgifterna för klustret är många gånger högre än avgifterna för lagring är det ekonomiskt meningsfullt att ta bort kluster när de inte används.
 
 Ange alla eller några av följande kommandon för att ta bort resurser:
 
@@ -160,20 +160,20 @@ Om du får problem med att skapa HDInsight-kluster läser du [åtkomstkontrollkr
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har skapat ett HDInsight-kluster med Azure CLI kan du använda följande för att lära dig hur du arbetar med klustret:
+Nu när du har skapat ett HDInsight-kluster med hjälp av Azure CLI kan du använda följande för att lära dig hur du arbetar med klustret:
 
-### <a name="apache-hadoop-clusters"></a>Apache Hadoop kluster
+### <a name="apache-hadoop-clusters"></a>Apache Hadoop-kluster
 
 * [Använda Apache Hive med HDInsight](hadoop/hdinsight-use-hive.md)
 * [Använda MapReduce med HDInsight](hadoop/hdinsight-use-mapreduce.md)
 
 ### <a name="apache-hbase-clusters"></a>Apache HBase-kluster
 
-* [Kom igång med Apache HBase på HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
+* [Kom igång med Apache HBase i HDInsight](hbase/apache-hbase-tutorial-get-started-linux.md)
 * [Utveckla Java-program för Apache HBase på HDInsight](hbase/apache-hbase-build-java-maven-linux.md)
 
 ### <a name="apache-storm-clusters"></a>Apache Storm kluster
 
-* [Utveckla Java-topologier för Apache Storm i HDInsight](storm/apache-storm-develop-java-topology.md)
-* [Använda python-komponenter i Apache Storm på HDInsight](storm/apache-storm-develop-python-topology.md)
+* [Utveckla Java-topologier för Apache Storm på HDInsight](storm/apache-storm-develop-java-topology.md)
+* [Använda Python-komponenter i Apache Storm på HDInsight](storm/apache-storm-develop-python-topology.md)
 * [Distribuera och övervaka topologier med Apache Storm på HDInsight](storm/apache-storm-deploy-monitor-topology-linux.md)

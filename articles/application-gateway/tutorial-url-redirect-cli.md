@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: URL-sökväg baserad omdirigering med CLI'
+title: 'Självstudie: URL-sökvägsbaserad omdirigering med CLI'
 titleSuffix: Azure Application Gateway
 description: I den här självstudien lär du dig hur du skapar en programgateway med webbadressbaserad omdirigering av trafiken i Azure CLI.
 services: application-gateway
@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/05/2021
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: aa247d868e19831b3e6f1c3f68e605fb209a0664
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 042cb42d16fdc5394940b62709b5d25187775014
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102218323"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772657"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Självstudie: Skapa en programgateway med webbadressbaserad omdirigering i Azure CLI
 
@@ -38,7 +38,7 @@ Om du vill kan du utföra den här självstudien med [Azure PowerShell](tutorial
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -78,7 +78,7 @@ az network public-ip create \
 
 ## <a name="create-an-application-gateway"></a>Skapa en programgateway
 
-Använd [AZ Network Application-Gateway Create](/cli/azure/network/application-gateway) för att skapa programgatewayen med namnet myAppGateway. När du skapar en programgateway med hjälp av Azure CLI anger du konfigurationsinformation som kapacitet, sku och HTTP-inställningar. Programgatewayen tilldelas till *myAGSubnet* och *myPublicIPAddress* som du skapade tidigare.
+Använd [az network application-gateway create för](/cli/azure/network/application-gateway) att skapa programgatewayen med namnet myAppGateway. När du skapar en programgateway med hjälp av Azure CLI anger du konfigurationsinformation som kapacitet, sku och HTTP-inställningar. Programgatewayen tilldelas till *myAGSubnet* och *myPublicIPAddress* som du skapade tidigare.
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -158,7 +158,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-default-url-path-map"></a>Lägga till standardmappning för webbadressen
 
-URL-sökvägar se till att vissa URL: er dirigeras till vissa backend-pooler. Du kan skapa webbadressmappningarna *imagePathRule* och *videoPathRule* med [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) och [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule)
+Url-sökvägsmappningar ser till att specifika URL:er dirigeras till specifika backend-pooler. Du kan skapa webbadressmappningarna *imagePathRule* och *videoPathRule* med [az network application-gateway url-path-map create](/cli/azure/network/application-gateway/url-path-map) och [az network application-gateway url-path-map rule create](/cli/azure/network/application-gateway/url-path-map/rule)
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
@@ -236,7 +236,7 @@ az network application-gateway rule create \
 
 I det här exemplet skapar du tre VM-skalningsuppsättningar för de tre serverdelspooler du har skapat. Skalningsuppsättningarna du skapar har namnen *myvmss1*, *myvmss2* och *myvmss3*. Varje skalningsuppsättning innehåller två virtuella datorinstanser där du installerar NGINX.
 
-Ersätt \<azure-user> och \<password> med ett valfritt användar namn och lösen ord.
+Ersätt \<azure-user> \<password> och med val av användarnamn och lösenord.
 
 ```azurecli
 for i in `seq 1 3`; do
@@ -286,7 +286,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 
-Hämta den offentliga IP-adressen för programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopiera den offentliga IP-adressen och klistra in den i webbläsarens adressfält. Till exempel,,, `http://40.121.222.19` `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm` eller `http://40.121.222.19:8081/images/test.htm` .
+Hämta den offentliga IP-adressen för programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Kopiera den offentliga IP-adressen och klistra in den i webbläsarens adressfält. Till exempel `http://40.121.222.19` , , eller `http://40.121.222.19:8080/images/test.htm` `http://40.121.222.19:8080/video/test.htm` `http://40.121.222.19:8081/images/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -298,15 +298,15 @@ az network public-ip show \
 
 ![Testa basadressen i programgatewayen](./media/tutorial-url-redirect-cli/application-gateway-nginx.png)
 
-Ändra URL: en till http:// &lt; IP-address &gt; : 8080/images/test.html, Ersätt IP-adressen för &lt; IP-adress &gt; och du bör se något som liknar följande exempel:
+Ändra URL:en till http:// &lt; ip-adress &gt; :8080/images/test.html. Ersätt din &lt; IP-adress för ip-adress så bör du se något som &gt; liknar följande exempel:
 
 ![Testa bildadressen i programgatewayen](./media/tutorial-url-redirect-cli/application-gateway-nginx-images.png)
 
-Ändra URL: en till http:// &lt; IP-address &gt; : 8080/video/test.html, Ersätt IP-adressen för &lt; IP-adress &gt; och du bör se något som liknar följande exempel:
+Ändra URL:en till http:// &lt; ip-adress &gt; :8080/video/test.html. Ersätt din &lt; IP-adress för ip-adress så bör du se något som &gt; liknar följande exempel:
 
 ![Testa videoadressen i programgatewayen](./media/tutorial-url-redirect-cli/application-gateway-nginx-video.png)
 
-Ändra nu URL: en till http:// &lt; IP-address &gt; : 8081/images/test.htm, Ersätt din IP-adress för &lt; IP-adress &gt; och du bör se trafik som omdirigeras tillbaka till avbildningens backend-pool på http:// &lt; IP-address &gt; : 8080/images.
+Ändra nu URL:en till http:// ip-adress :8081/images/test.htm och ersätt din IP-adress för ip-adress . Du bör se trafik som omdirigeras tillbaka till avbildningens &lt; &gt; &lt; &gt; backend-pool på http:// &lt; ip-adress &gt; :8080/images.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 

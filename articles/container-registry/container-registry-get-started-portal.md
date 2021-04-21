@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mode-portal
-ms.openlocfilehash: b59e605ea0484bd70456e278cb712683189b251d
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 4618a83a43d9c27f44432d5d346fdb053cee7054
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533938"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107773593"
 ---
 # <a name="quickstart-create-an-azure-container-registry-using-the-azure-portal"></a>Snabbstart: Skapa ett Azure-containerregister med hjälp av Azure Portal
 
@@ -105,5 +105,5 @@ I den här snabbstarten skapade du ett Azure Container Registry med Azure-portal
 [container-registry-skus]: container-registry-skus.md
 [azure-cli]: /cli/azure/install-azure-cli
 [get-started-with-azure-cli]: /cli/azure/get-started-with-azure-cli
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [container-registry-tutorial-quick-task]: container-registry-tutorial-quick-task.md

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 2f15aa394f7a271d6b3af49f0106611c4fc943a1
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: e06881d078b4e881174c3e931f7898cb622ad7f9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107753090"
+ms.locfileid: "107766361"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-python"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för Python
 
@@ -133,7 +133,7 @@ python kv_secrets.py
 ```
 
 - Om du stöter på behörighetsfel kontrollerar du att du har kört [ `az keyvault set-policy` kommandot](#grant-access-to-your-key-vault).
-- Om koden med samma hemlighetsnamn körs på nytt kan felet "(Conflict) Secret is currently in a deleted but recoverable state" ((Konflikt) Secret is currently in a deleted but recoverable state ((Konflikt) Secret is currently in a deleted but recoverable state ((Konflikt) Secret is currently in a deleted but recoverable state((Konflikt) Secret is currently in <name> a deleted but recoverable state((Konflikt) Secret is currently in a deleted but recover Använd ett annat hemligt namn.
+- Om koden med samma hemlighetsnamn körs på nytt kan felet "(Conflict) Secret is currently in a deleted but recoverable state" ((Konflikt) Secret is currently in a deleted but recoverable state ((Konflikt) Secret is currently in a deleted but recoverable state((Konflikt) Secret is currently in a deleted but recoverable state((Konflikt) Secret is currently in <name> a deleted but recoverable state". Använd ett annat hemligt namn.
 
 ## <a name="code-details"></a>Kodinformation
 
@@ -170,7 +170,7 @@ retrieved_secret = client.get_secret(secretName)
 
 Det hemliga värdet finns i `retrieved_secret.value` .
 
-Du kan också hämta en hemlighet med Azure CLI-kommandot [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show).
+Du kan också hämta en hemlighet med Azure CLI-kommandot [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show).
 
 ### <a name="delete-a-secret"></a>Ta bort en hemlighet
 
@@ -183,13 +183,13 @@ deleted_secret = poller.result()
 
 Metoden `begin_delete_secret` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden `result` anropas väntar den på att den slutförs.
 
-Du kan kontrollera att hemligheten har tagits bort med Azure CLI-kommandot [az keyvault secret show](/cli/azure/keyvault/secret?#az-keyvault-secret-show).
+Du kan kontrollera att hemligheten har tagits bort med Azure CLI-kommandot [az keyvault secret show](/cli/azure/keyvault/secret?#az_keyvault_secret_show).
 
 När en hemlighet har tagits bort finns den kvar i ett borttagna men återställningsbart tillstånd under en tid. Om du kör koden igen använder du ett annat hemligt namn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) [nycklar kan](../keys/quick-create-python.md)du återanvända de Key Vault som skapades i den här artikeln.
+Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) [nycklar kan du](../keys/quick-create-python.md)återanvända de Key Vault som skapades i den här artikeln.
 
 När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess resurser:
 

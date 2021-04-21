@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/08/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 81d80e7d3ae00c8afe8630634e647e850fe9cc61
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2ab4192d0147f5d51a3314a74c4971dbc50ff646
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102473746"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107800015"
 ---
 > [!IMPORTANT]
-> StorSimple virtuella matris (1200-serien) når sitt [livs längd](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) i december 2022. Om du överväger nya distributioner av StorSimple Virtual Array rekommenderar vi att du utforskar andra alternativ som [Azure File Sync](../articles/storage/files/storage-sync-files-deployment-guide.md) eller [Azure Data Box online-enheter](../articles/databox-online/index.yml) för dina arbets belastningar.
+> StorSimple Virtual Array (1200-serien) når slutet på [sin livslängd](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%201200%20Series) i december 2020. Om du överväger nya distributioner av StorSimple Virtual Array rekommenderar vi att du utforskar andra alternativ som [Azure File Sync](../articles/storage/file-sync/file-sync-deployment-guide.md) eller [Azure Data Box Online-enheter](../articles/databox-online/index.yml) för dina arbetsbelastningar.

@@ -1,153 +1,153 @@
 ---
-title: Pris modeller för fakturerings &
-description: Översikt över hur prissättnings-och fakturerings modeller fungerar i Azure Logic Apps
+title: Prissättningsmodeller & fakturering
+description: Översikt över hur pris- och faktureringsmodeller fungerar i Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
-ms.date: 01/29/2021
-ms.openlocfilehash: 2b37308bcbcd489876c21dce56878de7e0daf545
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 03/24/2021
+ms.openlocfilehash: a3c20dd85c94c359259cf69e25bb9083d56857fc
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101699036"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107777157"
 ---
-# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Pris-och fakturerings modeller för Azure Logic Apps
+# <a name="pricing-and-billing-models-for-azure-logic-apps"></a>Prissättnings- och faktureringsmodeller för Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) hjälper dig att skapa och köra automatiserade integrerings arbets flöden som kan skalas i molnet. Den här artikeln beskriver hur fakturerings-och pris modeller fungerar för den Logic Apps tjänsten och relaterade resurser. För vissa pris nivåer, se [Logic Apps priser](https://azure.microsoft.com/pricing/details/logic-apps). Information om hur du kan planera, hantera och övervaka kostnader finns i [planera och hantera kostnader för Azure Logic Apps](plan-manage-costs.md).
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) hjälper dig att skapa och köra automatiserade integreringsarbetsflöden som kan skalas i molnet. Den här artikeln beskriver hur fakturerings- och prismodeller fungerar för Logic Apps tjänsten och relaterade resurser. Specifika priser finns i [Logic Apps Priser.](https://azure.microsoft.com/pricing/details/logic-apps) Information om hur du kan planera, hantera och övervaka kostnader finns i [Planera och hantera kostnader för Azure Logic Apps](plan-manage-costs.md).
 
 <a name="consumption-pricing"></a>
 
-## <a name="multi-tenant-pricing"></a>Prissättning för flera klienter
+## <a name="multi-tenant-pricing"></a>Priser för flera innehavare
 
-En prissättnings modell för användnings-och användnings priser gäller för logi Kap par som körs i den offentliga, globala, Logic Apps tjänsten för flera innehavare. Alla lyckade och misslyckade körningar mäts och faktureras.
+En prismodell där du betalar för användningsförbrukning gäller för logikappar som körs i den offentliga, "globala" tjänsten för Logic Apps klientorganisation. Alla lyckade och misslyckade körningar mäts och faktureras.
 
-En begäran om avsöknings utlösare är till exempel fortfarande avgiftsbelagd som en körning även om denna utlösare hoppas över och ingen Logic app-arbetsflöde skapas.
+Till exempel mäts en begäran som en avsökningsutlösare gör fortfarande som en körning även om utlösaren hoppas över och ingen instans av logikapparbetsflödet skapas.
 
-| Poster | Beskrivning |
+| Poster | Description |
 |-------|-------------|
-| [Inbyggda](../connectors/apis-list.md#built-in) utlösare och åtgärder | Körs internt i Logic Appss tjänsten och mäts med hjälp av [ **Åtgärds** priset](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>Till exempel är HTTP-utlösaren och begär ande utlösare inbyggda utlösare, medan åtgärden HTTP-åtgärd och svar är inbyggda åtgärder. Åtgärder för data åtgärder, batch-åtgärder, varierande åtgärder och [arbets flödes kontroll](../connectors/apis-list.md#control-workflow), till exempel slingor, villkor, växlar, parallella grenar och så vidare, är också inbyggda åtgärder. |
-| [Standard anslutnings](../connectors/apis-list.md#managed-connectors) utlösare och åtgärder <p><p>[Anpassade anslutnings](../connectors/apis-list.md#custom) program utlösare och åtgärder | Mäts med [standard anslutnings priset](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| [Enterprise Connector](../connectors/apis-list.md#managed-connectors) -utlösare och åtgärder | Mäts med [Enterprise Connector-priset](https://azure.microsoft.com/pricing/details/logic-apps/). Men under den offentliga för hands versionen mäts företags anslutningar med hjälp av [ *standard* anslutnings priset](https://azure.microsoft.com/pricing/details/logic-apps/). |
-| Åtgärder inuti [slingor](logic-apps-control-flow-loops.md) | Varje åtgärd som körs i en slinga mäts för varje loop som körs. <p><p>Anta till exempel att du har en "för varje"-loop som innehåller åtgärder som bearbetar en lista. Logic Apps service mätar varje åtgärd som körs i slingan genom att multiplicera antalet List objekt med antalet åtgärder i slingan och lägger till den åtgärd som startar slingan. Det innebär att beräkningen för en lista med 10 objekt är (10 * 1) + 1, vilket resulterar i 11 åtgärds körningar. |
-| Antal återförsök | För att hantera de mest grundläggande undantagen och felen kan du konfigurera en [princip för återförsök](logic-apps-exception-handling.md#retry-policies) för utlösare och åtgärder där det stöds. Dessa återförsök tillsammans med den ursprungliga begäran debiteras enligt priserna baserat på om utlösaren eller åtgärden har inbyggd typ, standard eller företags typ. Till exempel debiteras en åtgärd som körs med 2 återförsök för tre åtgärds körningar. |
-| [Data lagring och lagrings förbrukning](#data-retention) | Mäts med hjälp av data lagrings priset, som du hittar på [sidan Logic Apps priser](https://azure.microsoft.com/pricing/details/logic-apps/), under **pris informations** tabellen. |
+| [Inbyggda utlösare](../connectors/built-in.md) och åtgärder | Körs inbyggt i Logic Apps-tjänsten och mäts med hjälp av [ **åtgärdspriset**](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>HTTP-utlösaren och begärandeutlösaren är till exempel inbyggda utlösare, medan HTTP-åtgärden och svarsåtgärden är inbyggda åtgärder. Dataåtgärder, batchåtgärder, variabelåtgärder [](../connectors/built-in.md)och arbetsflödeskontrollåtgärder, till exempel loopar, villkor, switch, parallella grenar och så vidare, är också inbyggda åtgärder. |
+| [Utlösare och åtgärder](../connectors/managed.md) för standardanslutningsappen <p><p>[Utlösare och åtgärder](../connectors/apis-list.md#custom-apis-and-connectors) för anpassad anslutningsapp | Mäts med [standardanslutningspriset](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| [Utlösare och åtgärder](../connectors/managed.md) för enterprise-anslutningsappen | Mäts med [enterprise-anslutningspriset](https://azure.microsoft.com/pricing/details/logic-apps/). I den offentliga förhandsversionen mäts dock Enterprise-anslutningsappar med [ *standardanslutningspriset*](https://azure.microsoft.com/pricing/details/logic-apps/). |
+| Åtgärder inuti [loopar](logic-apps-control-flow-loops.md) | Varje åtgärd som körs i en loop mäts för varje loopcykel som körs. <p><p>Anta till exempel att du har en "för varje"-loop som innehåller åtgärder som bearbetar en lista. Tjänsten Logic Apps mäter varje åtgärd som körs i loopen genom att multiplicera antalet listobjekt med antalet åtgärder i loopen och lägger till åtgärden som startar loopen. Beräkningen för en lista med 10 objekt är alltså (10 * 1) + 1, vilket resulterar i 11 åtgärdskörningar. |
+| Antal återförsök | Om du vill hantera de mest grundläggande undantagen och felen kan du konfigurera en [återförsöksprincip](logic-apps-exception-handling.md#retry-policies) för utlösare och åtgärder där det stöds. Dessa återförsök tillsammans med den ursprungliga begäran debiteras enligt priset baserat på om utlösaren eller åtgärden har inbyggd typ, Standard eller Enterprise. Till exempel debiteras en åtgärd som körs med 2 återförsök för 3 åtgärdskörningar. |
+| [Datalagring och lagringsförbrukning](#data-retention) | Mäts med datalagringspriset, som du hittar på [Logic Apps,](https://azure.microsoft.com/pricing/details/logic-apps/)under tabellen **Prisinformation.** |
 |||
 
 Mer information finns i följande:
 
-* [Visa mått för körningar och lagrings förbrukning](plan-manage-costs.md#monitor-billing-metrics)
-* [Gränser i Azure Logic Apps](logic-apps-limits-and-config.md)
+* [Visa mått för körningar och lagringsförbrukning](plan-manage-costs.md#monitor-billing-metrics)
+* [Begränsningar i Azure Logic Apps](logic-apps-limits-and-config.md)
 
-### <a name="not-metered"></a>Inte uppmätt
+### <a name="not-metered"></a>Ej uppmätt
 
-* Utlösare som hoppas över på grund av ouppfyllda-villkor
-* Åtgärder som inte kördes på grund av att Logic app stoppades innan den slutfördes
-* [Inaktiverade Logic Apps](#disabled-apps)
+* Utlösare som hoppas över på grund av ouppfyllda villkor
+* Åtgärder som inte har körts eftersom logikappen stoppades innan slutförande
+* [Inaktiverade logikappar](#disabled-apps)
 
 ### <a name="other-related-resources"></a>Andra relaterade resurser
 
-Logic Apps fungerar med andra relaterade resurser, till exempel integrations konton, lokala datagatewayer och integrerings tjänst miljöer (ISEs). Om du vill veta mer om priser för dessa resurser går du igenom dessa avsnitt senare i det här avsnittet:
+Logikappar fungerar med andra relaterade resurser, till exempel integrationskonton, lokala datagatewayer och integrationstjänstmiljöer (ISE). Mer information om priser för dessa resurser finns i de här avsnitten senare i det här avsnittet:
 
 * [On-premises data gateway (Lokal datagateway)](#data-gateway)
-* [Pris modell för integrerings konto](#integration-accounts)
-* [Pris modell för ISE](#fixed-pricing)
+* [Prissättningsmodell för integrationskonto](#integration-accounts)
+* [ISE-prismodell](#fixed-pricing)
 
-### <a name="tips-for-estimating-consumption-costs"></a>Tips för att uppskatta förbruknings kostnader
+### <a name="tips-for-estimating-consumption-costs"></a>Tips för att uppskatta förbrukningskostnader
 
-Läs följande tips för att få hjälp att beräkna mer exakta förbruknings kostnader:
+Läs följande tips för att hjälpa dig att beräkna mer exakta förbrukningskostnader:
 
-* Ta hänsyn till det möjliga antalet meddelanden eller händelser som kan komma att komma efter en bestämd dag, i stället för att basera beräkningarna enbart på avsöknings intervallet.
+* Fundera över det möjliga antalet meddelanden eller händelser som kan komma under en viss dag, i stället för att endast basera dina beräkningar på avsökningsintervallet.
 
-* När en händelse eller ett meddelande uppfyller utlösarens villkor försöker många utlösare omedelbart läsa eventuella och alla andra väntande händelser eller meddelanden som uppfyller villkoren. Det innebär att även om du väljer ett längre avsöknings intervall utlöses utlösaren baserat på antalet väntande händelser eller meddelanden som är kvalificerade för start av arbets flöden. Utlösare som följer detta beteende är Azure Service Bus och Azure Event Hub.
+* När en händelse eller ett meddelande uppfyller utlösarkriterierna försöker många utlösare omedelbart läsa alla väntande händelser eller meddelanden som uppfyller villkoren. Det här beteendet innebär att utlösaren utlöses baserat på antalet väntande händelser eller meddelanden som är kvalificerade för att starta arbetsflöden även när du väljer ett längre avsökningsintervall. Utlösare som följer det här beteendet omfattar Azure Service Bus och Azure Event Hub.
 
-  Anta till exempel att du konfigurerar utlösare som kontrollerar en slut punkt varje dag. När utlösaren kontrollerar slut punkten och hittar 15 händelser som uppfyller villkoren, utlöses utlösaren och kör motsvarande arbets flöde 15 gånger. Logic Apps service mätar alla åtgärder som dessa 15 arbets flöden utför, inklusive utlösare begär Anden.
+  Anta till exempel att du ställer in en utlösare som kontrollerar en slutpunkt varje dag. När utlösaren kontrollerar slutpunkten och hittar 15 händelser som uppfyller kriterierna utlöses utlösaren och kör motsvarande arbetsflöde 15 gånger. Tjänsten Logic Apps alla åtgärder som dessa 15 arbetsflöden utför, inklusive utlösarbegäranden.
 
 <a name="fixed-pricing"></a>
 
-## <a name="ise-pricing"></a>ISE-prissättning
+## <a name="ise-pricing"></a>ISE-priser
 
-En fast pris modell gäller för Logic Apps som körs i en [ *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). En ISE faktureras med hjälp av [integration service Environment priset](https://azure.microsoft.com/pricing/details/logic-apps), som är beroende av den [ISE-nivå eller *SKU*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) som du skapar. Den här prissättningen skiljer sig från priserna för flera klienter när du betalar för reserverad kapacitet och dedikerade resurser oavsett om du använder dem eller inte.
+En fast prismodell gäller för logikappar som körs i en [ *integrationstjänstmiljö* (ISE).](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) En ISE debiteras med hjälp [Integration Service Environment priset](https://azure.microsoft.com/pricing/details/logic-apps), vilket beror på [ISE-nivån eller *SKU:n*](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level) som du skapar. Den här prissättningen skiljer sig från priser för flera innehavare eftersom du betalar för reserverad kapacitet och dedikerade resurser oavsett om du använder dem eller inte.
 
-| ISE SKU | Beskrivning |
+| ISE SKU | Description |
 |---------|-------------|
-| **Premium** | Bas enheten har [fast kapacitet](logic-apps-limits-and-config.md#integration-service-environment-ise) och [debiteras enligt Tim priset för Premium-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). Om du behöver mer data flöde kan du [lägga till fler skalnings enheter](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) när du skapar din ISE eller senare. Varje skalnings enhet debiteras enligt [Tim pris som är ungefär hälften av bas enhets](https://azure.microsoft.com/pricing/details/logic-apps)priset. <p><p>Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| **Utvecklare** | Bas enheten har [fast kapacitet](logic-apps-limits-and-config.md#integration-service-environment-ise) och [debiteras enligt Tim priset för Developer-SKU: n](https://azure.microsoft.com/pricing/details/logic-apps). Denna SKU har dock inget service avtal (SLA), skalnings kapacitet eller redundans under återvinning, vilket innebär att du kan uppleva fördröjningar eller stillestånds tid. Server dels uppdateringar kan tillfälligt avbryta tjänsten. <p><p>**Viktigt**: se till att du endast använder den här SKU: n för utforskning, experiment, utveckling och testning – inte för produktion eller prestanda testning. <p><p>Information om kapacitet och begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Premium** | Basenheten har [fast kapacitet och](logic-apps-limits-and-config.md#integration-service-environment-ise) [debiteras per timme för Premium-SKU:n](https://azure.microsoft.com/pricing/details/logic-apps). Om du behöver mer dataflöde kan du lägga [till fler skalningsenheter](../logic-apps/ise-manage-integration-service-environment.md#add-capacity) när du skapar ISE eller efteråt. Varje skalningsenhet debiteras till ett [timpris som är ungefär hälften av basenhetspriset.](https://azure.microsoft.com/pricing/details/logic-apps) <p><p>Information om kapacitet och gränser finns i [ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| **Utvecklare** | Basenheten har [fast kapacitet](logic-apps-limits-and-config.md#integration-service-environment-ise) och [debiteras till ett timpris för Developer-SKU:n](https://azure.microsoft.com/pricing/details/logic-apps). Denna SKU har dock inget serviceavtal (SLA), uppskalningskapacitet eller redundans under återanvändning, vilket innebär att det kan uppstå fördröjningar eller driftstopp. Backend-uppdateringar kan tillfälligt avbryta tjänsten. <p><p>**Viktigt!** Se till att du endast använder den här SKU:n för utforskning, experiment, utveckling och testning – inte för produktions- eller prestandatestning. <p><p>Information om kapacitet och gränser finns i [ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 |||
 
 ### <a name="included-at-no-extra-cost"></a>Ingår utan extra kostnad
 
-| Poster | Beskrivning |
+| Poster | Description |
 |-------|-------------|
-| [Inbyggda](../connectors/apis-list.md#built-in) utlösare och åtgärder | Visa **kärn** etiketten och kör i samma ISE som dina Logic Apps. |
-| [Anslutningsappar av standardtyp](../connectors/apis-list.md#managed-connectors) <p><p>[Enterprise-anslutningsappar](../connectors/apis-list.md#enterprise-connectors) | – Hanterade anslutningar som visar **ISE** -etiketten är särskilt utformade för att fungera utan den lokala datagatewayen och köras i samma ISE som dina Logic Apps. ISE-prissättningen innehåller så många företags anslutningar som du vill. <p><p>– Kopplingar som inte visar ISE-etiketten körs i Logic Appss tjänsten för flera innehavare. ISE-prissättningen omfattar dock dessa körningar för logi Kap par som körs i en ISE. |
-| Åtgärder inuti [slingor](logic-apps-control-flow-loops.md) | I priserna för ISE ingår varje åtgärd som körs i en slinga för varje loop-cykel som körs. <p><p>Anta till exempel att du har en "för varje"-loop som innehåller åtgärder som bearbetar en lista. Om du vill hämta det totala antalet åtgärds körningar multiplicerar du antalet List objekt med antalet åtgärder i slingan och lägger till den åtgärd som startar slingan. Det innebär att beräkningen för en lista med 10 objekt är (10 * 1) + 1, vilket resulterar i 11 åtgärds körningar. |
-| Antal återförsök | För att hantera de mest grundläggande undantagen och felen kan du konfigurera en [princip för återförsök](logic-apps-exception-handling.md#retry-policies) för utlösare och åtgärder där det stöds. I priser för ISE ingår återförsök tillsammans med den ursprungliga begäran. |
-| [Data lagring och lagrings förbrukning](#data-retention) | Logic Apps i en ISE ådrar sig inte lagrings-och lagrings kostnader. |
-| [Integrations konton](#integration-accounts) | Inkluderar användning för en enskild integrations konto nivå, baserat på ISE SKU, utan extra kostnad. |
+| [Inbyggda utlösare](../connectors/built-in.md) och åtgärder | Visa **Core-etiketten** och kör i samma ISE som dina logikappar. |
+| [Anslutningsappar av standardtyp](../connectors/managed.md) <p><p>[Enterprise-anslutningsappar](../connectors/managed.md#enterprise-connectors) | – Hanterade anslutningsappar som visar **ISE-etiketten** är särskilt utformade för att fungera utan den lokala datagatewayen och köras i samma ISE som dina logikappar. ISE-prissättningen omfattar så många Enterprise-anslutningar som du vill. <p><p>– Anslutningsappar som inte visar ISE-etiketten körs i Logic Apps klientorganisation. Ise-priser inkluderar dock dessa körningar för logikappar som körs i en ISE. |
+| Åtgärder inuti [loopar](logic-apps-control-flow-loops.md) | ISE-prissättningen omfattar varje åtgärd som körs i en loop för varje loopcykel som körs. <p><p>Anta till exempel att du har en "för varje"-loop som innehåller åtgärder som bearbetar en lista. Om du vill hämta det totala antalet åtgärdskörningar multiplicerar du antalet listobjekt med antalet åtgärder i loopen och lägger till åtgärden som startar loopen. Beräkningen för en lista med 10 objekt är alltså (10 * 1) + 1, vilket resulterar i 11 åtgärdskörningar. |
+| Antal återförsök | Om du vill hantera de mest grundläggande undantagen och felen kan du konfigurera en [återförsöksprincip](logic-apps-exception-handling.md#retry-policies) för utlösare och åtgärder där det stöds. I PRISSÄTTNINGen för ISE ingår återförsök tillsammans med den ursprungliga begäran. |
+| [Datalagring och lagringsförbrukning](#data-retention) | Logikappar i en ISE medför inte kostnader för kvarhållning och lagring. |
+| [Integrationskonton](#integration-accounts) | Inkluderar användning för en enda integrationskontonivå, baserat på ISE SKU, utan extra kostnad. |
 |||
 
-Information om begränsningar finns [i avsnittet ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise).
+Information om begränsningar finns i [ISE-gränser i Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise).
 
 <a name="integration-accounts"></a>
 
 ## <a name="integration-accounts"></a>Integrationskonton
 
-Ett [integrations konto](../logic-apps/logic-apps-pricing.md#integration-accounts) är en separat resurs som du skapar och länkar till logi Kap par så att du kan utforska, bygga och testa B2B-integrerings lösningar som använder funktioner för [EDI](logic-apps-enterprise-integration-b2b.md) och [XML-bearbetning](logic-apps-enterprise-integration-xml.md) .
+Ett [integrationskonto](../logic-apps/logic-apps-pricing.md#integration-accounts) är en separat resurs som du skapar och länkar till logikappar så att du kan utforska, skapa och testa B2B-integreringslösningar som använder [EDI-](logic-apps-enterprise-integration-b2b.md) och XML-bearbetningsfunktioner. [](logic-apps-enterprise-integration-xml.md)
 
-Azure Logic Apps erbjuder dessa integrerings konto nivåer eller nivåer som [varierar i prissättnings](https://azure.microsoft.com/pricing/details/logic-apps/) -och [fakturerings modell](logic-apps-pricing.md#integration-accounts), baserat på om dina Logi Kap par är konsumtions-eller ISE-baserade:
+Azure Logic Apps erbjuder dessa nivåer eller nivåer för [](https://azure.microsoft.com/pricing/details/logic-apps/) integrationskonto som varierar i prissättning och faktureringsmodell, [](logic-apps-pricing.md#integration-accounts)beroende på om dina logikappar är förbrukningsbaserade eller ISE-baserade:
 
-| Nivå | Beskrivning |
+| Nivå | Description |
 |------|-------------|
-| **Basic** | För scenarier där du bara vill ha meddelande hantering eller som fungerar som en liten affärs partner som har en partner relation med en större affär senhet. <p><p>Stöds av Logic Apps service avtal. |
-| **Standard** | För scenarier där du har mer komplexa B2B-relationer och ökat antal entiteter som du måste hantera. <p><p>Stöds av Logic Apps service avtal. |
-| **Kostnadsfri** | I exempel scenarier, inte produktions scenarier. Den här nivån har begränsningar för regions tillgänglighet, data flöde och användning. Den kostnads fria nivån är till exempel bara tillgänglig för offentliga regioner i Azure, till exempel västra USA eller Sydostasien, men inte för [Azure Kina 21Vianet](/azure/china/overview-operations) eller [Azure Government](../azure-government/documentation-government-welcome.md). <p><p>**Obs!**: stöds inte av Logic Apps service avtal. |
+| **Basic** | För scenarier där du bara vill ha meddelandehantering eller som en liten affärspartner som har en handelspartnerrelation med en större affärsenhet. <p><p>Stöds av Logic Apps serviceavtal. |
+| **Standard** | För scenarier där du har mer komplexa B2B-relationer och ett ökat antal entiteter som du måste hantera. <p><p>Stöds av Logic Apps serviceavtal. |
+| **Kostnadsfri** | För undersökande scenarier, inte produktionsscenarier. Den här nivån har gränser för regionstillgänglighet, dataflöde och användning. Till exempel är den kostnadsfria nivån endast tillgänglig för offentliga regioner i Azure, till exempel USA, västra eller Sydostasien, men inte [för Azure China 21Vianet](/azure/china/overview-operations) [eller Azure Government](../azure-government/documentation-government-welcome.md). <p><p>**Obs!** Stöds inte av Logic Apps serviceavtal. |
 |||
 
-Information om gränser för integrations konton finns i [gränser och konfiguration för Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits), till exempel:
+Information om begränsningar för integrationskonto finns [i Gränser och konfiguration för Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits), till exempel:
 
-* [Gränser för integrations konton per Azure-prenumeration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
+* [Begränsningar för integrationskonton per Azure-prenumeration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
 
-* [Begränsningar för olika artefakter per integrations konto](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). Artefakter omfattar handels partner, avtal, kartor, scheman, sammansättningar, certifikat, batch-konfigurationer och så vidare.
+* [Begränsningar för olika artefakter per integrationskonto](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits). Artefakter omfattar handelspartner, avtal, kartor, scheman, sammansättningar, certifikat, batchkonfigurationer och så vidare.
 
-### <a name="integration-accounts-for-consumption-based-logic-apps"></a>Integrations konton för användnings Logic Apps
+### <a name="integration-accounts-for-consumption-based-logic-apps"></a>Integrationskonton för förbrukningsbaserade logikappar
 
-Integrations konton faktureras med hjälp av ett fast [integrerings konto pris](https://azure.microsoft.com/pricing/details/logic-apps/) som baseras på den konto nivå som du använder.
+Integrationskonton debiteras med ett fast [pris för integrationskontot](https://azure.microsoft.com/pricing/details/logic-apps/) som baseras på den kontonivå som du använder.
 
-### <a name="ise-based-logic-apps"></a>ISE-baserade Logic Apps
+### <a name="ise-based-logic-apps"></a>ISE-baserade logikappar
 
-Som en extra kostnad innehåller din ISE ett enda integrations konto, baserat på din ISE SKU. För en extra kostnad kan du skapa fler integrations konton för att din ISE ska använda upp till den [totala ISE-gränsen](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits). Läs mer om versions [pris modellen för ISE](#fixed-pricing) tidigare i det här avsnittet.
+Ise innehåller ett enda integrationskonto baserat på DIN ISE-SKU utan extra kostnad. För en extra kostnad kan du skapa fler integrationskonton för din ISE för att använda upp till den [totala ISE-gränsen.](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) Läs mer om [ISE-prismodellen tidigare](#fixed-pricing) i det här avsnittet.
 
-| ISE SKU | Inkluderat integrations konto | Ytterligare kostnad |
+| ISE SKU | Integrationskonto ingår | Ytterligare kostnad |
 |---------|------------------------------|-----------------|
-| **Premium** | Ett enda [standard](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrations konto | Upp till 19 fler standard konton. Inga kostnads fria eller grundläggande konton är tillåtna. |
-| **Utvecklare** | Ett enda [kostnads fritt](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrations konto | Upp till 19 fler standard konton om du redan har ett kostnads fritt konto eller 20 totala standard konton om du inte har ett kostnads fritt konto. Inga grundläggande konton är tillåtna. |
+| **Premium** | Ett enda [Standard-integrationskonto](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) | Upp till 19 fler Standard-konton. Inga kostnadsfria eller grundläggande konton tillåts. |
+| **Utvecklare** | Ett enda [kostnadsfritt](../logic-apps/logic-apps-limits-and-config.md#artifact-number-limits) integrationskonto | Upp till 19 fler Standard-konton om du redan har ett kostnadsfritt konto eller 20 totala Standard-konton om du inte har ett kostnadsfritt konto. Inga Grundläggande konton tillåts. |
 ||||
 
 <a name="data-retention"></a>
 
-## <a name="data-retention-and-storage-consumption"></a>Data lagring och lagrings förbrukning
+## <a name="data-retention-and-storage-consumption"></a>Databevarande och lagringsförbrukning
 
-Alla indata och utdata i din Logic Apps körnings historik lagras och mäts baserat på appens [körnings tid och historik kvarhållningsperiod](logic-apps-limits-and-config.md#run-duration-retention-limits).
+Alla indata och utdata i logikappens körningshistorik lagras och mäts baserat på appens körningstid och kvarhållningsperiod [för historik.](logic-apps-limits-and-config.md#run-duration-retention-limits)
 
-* För logi Kap par i Logic Apps tjänsten för flera innehavare debiteras lagrings förbrukningen med ett fast pris, som du hittar [Logic Apps på sidan](https://azure.microsoft.com/pricing/details/logic-apps)med pris **information** .
+* För logikappar i Logic Apps-tjänsten för flera innehavare debiteras lagringsförbrukningen till ett fast pris, som du hittar [på sidan med Logic Apps-priser](https://azure.microsoft.com/pricing/details/logic-apps)under tabellen **Prisinformation.**
 
-* För logi Kap par i ISEs medför inte lagrings förbrukning kostnader för datakvarhållning.
+* För logikappar i ISE:er medför lagringsförbrukning inte kostnader för datalagring.
 
-Information om hur du övervakar användning av lagrings förbrukning finns i [Visa mått för körningar och lagrings förbrukning](plan-manage-costs.md#monitor-billing-metrics).
+Information om hur du övervakar användningen av [lagringsanvändning finns i Visa mått för körningar och lagringsförbrukning.](plan-manage-costs.md#monitor-billing-metrics)
 
 <a name="data-gateway"></a>
 
 ## <a name="on-premises-data-gateway"></a>Lokal datagateway
 
-En [lokal datagateway](../logic-apps/logic-apps-gateway-install.md) är en separat resurs som du skapar så att dina Logi Kap par kan komma åt lokala data med hjälp av vissa anslutningar som stöds av gateway. Anslutnings åtgärder som körs via gatewayen debiteras, men själva gatewayen debiteras inte.
+En [lokal datagateway](../logic-apps/logic-apps-gateway-install.md) är en separat resurs som du skapar så att dina logikappar kan komma åt lokala data med hjälp av specifika anslutningsappar som stöds av gatewayen. Anslutningsappar som körs via gatewayen medför avgifter, men själva gatewayen medför inga avgifter.
 
 <a name="disabled-apps"></a>
 
-## <a name="disabled-logic-apps"></a>Inaktiverade Logic Apps
+## <a name="disabled-logic-apps"></a>Inaktiverade logikappar
 
-Inaktiverade Logic Apps debiteras inte eftersom de inte kan skapa nya instanser när de är inaktiverade. När du har inaktiverat en Logic app kan alla instanser som körs för närvarande ta lite tid innan de stoppas helt.
+Inaktiverade logikappar debiteras inte eftersom de inte kan skapa nya instanser när de är inaktiverade. När du har inaktiverat en logikapp kan alla instanser som körs ta lite tid innan de stoppas helt.
 
 ## <a name="next-steps"></a>Nästa steg
 

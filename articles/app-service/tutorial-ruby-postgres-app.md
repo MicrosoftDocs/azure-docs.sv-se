@@ -1,22 +1,22 @@
 ---
-title: 'Självstudie: Linux Ruby-app med postgres'
-description: Lär dig hur du skaffar en Linux Ruby-app som fungerar i Azure App Service, med anslutning till en PostgreSQL-databas i Azure. Räler används i självstudien.
+title: 'Självstudie: Linux Ruby-app med Postgres'
+description: Lär dig hur du får en Linux Ruby-app att Azure App Service med anslutning till en PostgreSQL-databas i Azure. Rails används i självstudien.
 ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: de8f0e64189014b303463dd8bd6c827990b88f9a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 63194ab87e0f2228b8585e962394aa1ebfff48d6
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102178481"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767277"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Skapa en Ruby- och Postgres-app i Azure App Service på Linux
 
-[Azure App Service](overview.md) ger en mycket skalbar och automatisk korrigering av webb värd tjänst. I den här självstudien visas hur du skapar en Ruby-app och ansluter den till en PostgreSQL-databas. När du är klar har du en [Ruby on Rails](https://rubyonrails.org/)-app som körs i App Service på Linux.
+[Azure App Service](overview.md) en mycket skalbar och självkorrigeringstjänst för webbvärdtjänster. I den här självstudien visas hur du skapar en Ruby-app och ansluter den till en PostgreSQL-databas. När du är klar har du en [Ruby on Rails](https://rubyonrails.org/)-app som körs i App Service på Linux.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Skärm bild av ett exempel på en Ruby on-app med titeln uppgifter.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/complete-checkbox-published.png" alt-text="Skärmbild av ett Ruby on Rails-appexempel med namnet Uppgifter.":::
 
 I den här guiden får du lära dig att:
 
@@ -35,7 +35,7 @@ I den här guiden får du lära dig att:
 För att slutföra den här kursen behöver du:
 
 - [Installera Git](https://git-scm.com/)
-- [Installera ruby 2,6](https://www.ruby-lang.org/en/documentation/installation/)
+- [Installera Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
 - [Installera Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
 - [Installera och kör PostgreSQL](https://www.postgresql.org/download/)
 
@@ -114,18 +114,18 @@ I det här steget skapar du en Postgres-databas i [Azure Database for PostgreSQL
 
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
-## <a name="create-postgres-database-in-azure"></a>Skapa postgres-databas i Azure
+## <a name="create-postgres-database-in-azure"></a>Skapa En Postgres-databas i Azure
 
 <!-- > [!NOTE]
 > Before you create an Azure Database for PostgreSQL server, check which [compute generation](../postgresql/concepts-pricing-tiers.md#compute-generations-and-vcores) is available in your region. If your region doesn't support Gen4 hardware, change *--sku-name* in the following command line to a value that's supported in your region, such as B_Gen4_1.  -->
 
-I det här avsnittet skapar du en Azure Database for PostgreSQL-Server och-databas. Starta genom att installera `db-up` tillägget med följande kommando:
+I det här avsnittet skapar du en Azure Database for PostgreSQL server och databas. Starta genom att installera `db-up` tillägget med följande kommando:
 
 ```azurecli
 az extension add --name db-up
 ```
 
-Skapa postgres-databasen i Azure med [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) kommandot, som du ser i följande exempel. Ersätt *\<postgresql-name>* med ett *unikt* namn (Server slut punkten är *https:// \<postgresql-name> . postgres.Database.Azure.com*). För *\<admin-username>* och *\<admin-password>* anger du autentiseringsuppgifter för att skapa en administratörs användare för den här postgres-servern.
+Skapa Postgres-databasen i Azure [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) med kommandot , som du ser i följande exempel. Ersätt *\<postgresql-name>* med ett *unikt* namn (serverslutpunkten är *https:// \<postgresql-name> .postgres.database.azure.com*). För *\<admin-username>* och anger du *\<admin-password>* autentiseringsuppgifter för att skapa en administratörsanvändare för den här Postgres-servern.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -134,20 +134,20 @@ az postgres up --resource-group myResourceGroup --location westeurope --server-n
 
 Det här kommandot kan ta en stund eftersom det gör följande:
 
-- Skapar en [resurs grupp](../azure-resource-manager/management/overview.md#terminology) med namnet `myResourceGroup` , om den inte finns. Varje Azure-resurs måste vara i någon av dessa. `--resource-group` är valfritt.
-- Skapar en postgres-server med den administrativa användaren.
+- Skapar en [resursgrupp](../azure-resource-manager/management/overview.md#terminology) med `myResourceGroup` namnet , om den inte finns. Alla Azure-resurser måste finnas i någon av dessa. `--resource-group` är valfritt.
+- Skapar en Postgres-server med den administrativa användaren.
 - Skapar en `sampledb` databas.
-- Tillåter åtkomst från den lokala IP-adressen.
+- Tillåter åtkomst från din lokala IP-adress.
 - Tillåter åtkomst från Azure-tjänster.
-- Skapa en databas användare med åtkomst till `sampledb` databasen.
+- Skapa en databasanvändare med åtkomst till `sampledb` databasen.
 
-Du kan utföra alla steg separat med andra `az postgres` kommandon och `psql` , men `az postgres up` alla är i ett steg åt dig.
+Du kan göra alla steg separat med andra `az postgres` kommandon och , men gör alla i ett steg åt `psql` `az postgres up` dig.
 
-När kommandot har slutförts söker du efter de utmatnings rader som ska visas `Ran Database Query:` . De visar databas användaren som skapas åt dig, med användar namn `root` och lösen ord `Sampledb1` . Du kommer att använda dem senare för att ansluta din app till-databasen.
+När kommandot har avslutats hittar du de utdatarader som är med `Ran Database Query:` . De visar databasanvändaren som har skapats åt dig med `root` användarnamnet och lösenordet `Sampledb1` . Du kommer att använda dem senare för att ansluta din app till databasen.
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> `--location <location-name>`, kan ställas in på en av [Azure-regionerna](https://azure.microsoft.com/global-infrastructure/regions/). Du kan hämta de regioner som är tillgängliga för din prenumeration med [`az account list-locations`](/cli/azure/account#az-account-list-locations) kommandot. För produktion av appar sätter du din databas och din app på samma plats.
+> `--location <location-name>`, kan anges till vilken som helst av [Azure-regionerna](https://azure.microsoft.com/global-infrastructure/regions/). Du kan hämta de regioner som är tillgängliga för din prenumeration med [`az account list-locations`](/cli/azure/account#az_account_list_locations) kommandot . För produktionsappar ska du placera din databas och din app på samma plats.
 
 ## <a name="connect-app-to-azure-postgres"></a>Anslut appen till Azure Postgres
 
@@ -255,9 +255,9 @@ I det här steget, distribuerar du ditt Postgres-anslutna Rails-program till Azu
 
 ### <a name="configure-database-settings"></a>Konfigurera databasinställningarna
 
-I App Service ställer du in miljövariabler som _appinställningar_ med kommandot [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) i Cloud Shell.
+I App Service ställer du in miljövariabler som _appinställningar_ med kommandot [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) i Cloud Shell.
 
-Följande Cloud Shell-kommando konfigurerar appinställningarna `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` och `DB_PASSWORD`. Ersätt plats hållarna _&lt; APPNAME>_ och _&lt; postgres-Server-Name>_.
+Följande Cloud Shell-kommando konfigurerar appinställningarna `DB_HOST`, `DB_DATABASE`, `DB_USERNAME` och `DB_PASSWORD`. Ersätt platshållarna _&lt; appname>_ _&lt; och postgres-server-name>_.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings DB_HOST="<postgres-server-name>.postgres.database.azure.com" DB_DATABASE="sampledb" DB_USERNAME="root@<postgres-server-name>" DB_PASSWORD="Sampledb1"
@@ -265,7 +265,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="configure-rails-environment-variables"></a>Konfigurera Rails-miljövariabler
 
-I den lokala terminalen [genererar du en ny hemlighet](configure-language-ruby.md#set-secret_key_base-manually) för produktions miljön för räl i Azure.
+Generera en ny hemlighet för [Rails-produktionsmiljön i](configure-language-ruby.md#set-secret_key_base-manually) Azure i den lokala terminalen.
 
 ```bash
 rails secret
@@ -273,13 +273,13 @@ rails secret
 
 Konfigurera variablerna som krävs för Rails-produktionsmiljön.
 
-I följande Cloud Shell-kommando ersätter du plats hållarna två _&lt; utdata-of-räler-Secret>_ med den nya hemliga nyckeln som du genererade i den lokala terminalen.
+I följande Cloud Shell kommando ersätter du platshållarna _&lt; output-of-rails-secret>_ med den nya hemliga nyckeln som du genererade i den lokala terminalen.
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group myResourceGroup --settings RAILS_MASTER_KEY="<output-of-rails-secret>" SECRET_KEY_BASE="<output-of-rails-secret>" RAILS_SERVE_STATIC_FILES="true" ASSETS_PRECOMPILE="true"
 ```
 
-`ASSETS_PRECOMPILE="true"` uppmanar Ruby-standardcontainern att förkompilera tillgångar vid varje Git-distribution. Mer information finns i [förkompilera till gångar](configure-language-ruby.md#precompile-assets) och [betjäna statiska till gångar](configure-language-ruby.md#serve-static-assets).
+`ASSETS_PRECOMPILE="true"` uppmanar Ruby-standardcontainern att förkompilera tillgångar vid varje Git-distribution. Mer information finns i [Förkompilera tillgångar och](configure-language-ruby.md#precompile-assets) [Betjäna statiska tillgångar.](configure-language-ruby.md#serve-static-assets)
 
 ### <a name="push-to-azure-from-git"></a>Skicka till Azure från Git
 
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 Bläddra till `http://<app-name>.azurewebsites.net` och lägg till några uppgifter i listan.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Skärm bild av Azure App-exemplet med rubriken uppgifter som visar aktiviteter som lagts till i listan.":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Skärmbild av Azure-appexempel med namnet Uppgifter som visar uppgifter som lagts till i listan.":::
 
 Grattis! Du kör en datadriven Ruby on Rails-app i Azure App Service.
 
@@ -468,9 +468,9 @@ I den här självstudiekursen lärde du dig att:
 Gå vidare till nästa självstudie där du får lära dig att mappa ett anpassat DNS-namn till appen.
 
 > [!div class="nextstepaction"]
-> [Självstudie: mappa ett anpassat DNS-namn till din app](app-service-web-tutorial-custom-domain.md)
+> [Självstudie: Mappa anpassat DNS-namn till din app](app-service-web-tutorial-custom-domain.md)
 
-Eller kolla ut andra resurser:
+Eller så kan du kolla in andra resurser:
 
 > [!div class="nextstepaction"]
-> [Konfigurera Ruby-app](configure-language-ruby.md)
+> [Konfigurera Ruby-appen](configure-language-ruby.md)

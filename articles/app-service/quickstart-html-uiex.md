@@ -1,6 +1,6 @@
 ---
 title: 'Snabbstart: Skapa en statisk HTML-webbapp'
-description: Distribuera din första HTML-Hello World att Azure App Service på några minuter. Du distribuerar med Git, vilket är ett av många sätt att distribuera till App Service.
+description: Distribuera din första HTML-Hello World till Azure App Service på några minuter. Du distribuerar med Git, vilket är ett av många sätt att distribuera till App Service.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
@@ -8,22 +8,22 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: be555039375e2d71d00bcf8ee58898f54cc3645a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 603d8e642cd2e88beec6ae34094a2c6c43d179ee
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379578"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768961"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Skapa en statisk HTML-webbapp i Azure
 
-Den här snabbstarten visar hur du distribuerar en enkel HTML+CSS-webbplats till <abbr title="En HTTP-baserad tjänst som är värd för webbprogram, REST-API:er och mobila serverdelsprogram.">Azure App Service</abbr>. Du slutför den här snabbstarten i [Cloud Shell](../cloud-shell/overview.md), men du kan också köra dessa kommandon lokalt med [Azure CLI](/cli/azure/install-azure-cli).
+Den här snabbstarten visar hur du distribuerar en enkel HTML+ CSS-webbplats till <abbr title="En HTTP-baserad tjänst som är värd för webbprogram, REST API:er och mobila serverdelsprogram.">Azure App Service</abbr>. Du slutför den här snabbstarten [i Cloud Shell](../cloud-shell/overview.md), men du kan också köra dessa kommandon lokalt med [Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="1-prepare-your-environment"></a>1. Förbered din miljö
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-I [Cloud Shell](../cloud-shell/overview.md)du en snabbstartskatalog och ändrar sedan till den.
+I [Cloud Shell](../cloud-shell/overview.md)skapar du en snabbstartskatalog och ändrar sedan till den.
 
 ```bash
 mkdir quickstart
@@ -51,11 +51,11 @@ az webapp up --location westeurope --name <app_name> --html
 <details>
 <summary>Felsökning</summary>
 <ul>
-<li>Om kommandot inte känns igen kontrollerar du att du har Installerat Azure CLI enligt <code>az</code> beskrivningen i <a href="#1-prepare-your-environment">Förbereda din miljö.</a></li>
+<li>Om kommandot inte känns igen måste du ha Azure CLI installerat enligt <code>az</code> beskrivningen i <a href="#1-prepare-your-environment">Förbereda din miljö.</a></li>
 <li>Ersätt <code>&lt;app-name&gt;</code> med ett namn som är unikt för hela Azure ( giltiga tecken är , och <em> <code>a-z</code> <code>0-9</code> <code>-</code> </em> ). Ett bra mönster är att använda en kombination av företagets namn och en appidentifierare.</li>
 <li>Argumentet <code>--sku F1</code> skapar webbappen på prisnivån Kostnadsfri. Utelämna det här argumentet för att använda en snabbare premiumnivå, vilket medför en kostnad per timme.</li>
-<li>Argumentet <code>--html</code> säger att allt mappinnehåll ska behandlas som statiskt innehåll och att byggautomatisering ska inaktiveras.</li>
-<li>Du kan även inkludera argumentet där är <code>--location &lt;location-name&gt;</code> <code>&lt;location-name&gt;</code> en tillgänglig Azure-region. Du kan hämta en lista över tillåtna regioner för ditt Azure-konto genom att köra <a href="/cli/azure/appservice#az-appservice-list-locations"> <code>az account list-locations</code> </a> kommandot .</li>
+<li>Argumentet <code>--html</code> säger att allt mappinnehåll ska behandlas som statiskt innehåll och att byggautomatisering inaktiveras.</li>
+<li>Du kan också inkludera argumentet där <code>--location &lt;location-name&gt;</code> är <code>&lt;location-name&gt;</code> en tillgänglig Azure-region. Du kan hämta en lista över tillåtna regioner för ditt Azure-konto genom att köra <a href="/cli/azure/appservice#az_appservice_list_locations"> <code>az account list-locations</code> </a> kommandot .</li>
 </ul>
 </details>
 
@@ -67,7 +67,7 @@ Det kan ta några minuter att slutföra kommandot.
 <ul>
 <li>Skapa en standardresursgrupp.</li>
 <li>Skapa en App Service plan.</li>
-<li><a href="/cli/azure/webapp#az-webapp-create">Skapa en App Service med</a> det angivna namnet.</li>
+<li><a href="/cli/azure/webapp#az_webapp_create">Skapa en App Service med</a> det angivna namnet.</li>
 <li><a href="/azure/app-service/deploy-zip">Zip-distribuera</a> filer från den aktuella arbetskatalogen till appen.</li>
 <li>När den körs visas meddelanden om resursskapande, loggning och ZIP-distribution.</li>
 </ul>

@@ -1,33 +1,33 @@
 ---
-title: Krav för Azure CLI för Azure HPC cache
-description: Installations steg innan du kan använda Azure CLI för att skapa eller ändra en Azure HPC-cache
+title: Krav för Azure CLI för Azure HPC Cache
+description: Konfigurera steg innan du kan använda Azure CLI för att skapa eller ändra en Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 13f45c96a830110bd0f4a2d4a2b422921d7a2e31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94654464"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780503"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Konfigurera Azure CLI för Azure HPC Cache
 
-Följ de här stegen för att förbereda din miljö innan du använder Azure CLI för att skapa eller hantera en Azure HPC-cache.
+Följ de här stegen för att förbereda din miljö innan du använder Azure CLI för att skapa eller hantera Azure HPC Cache.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Azure HPC-cache kräver version 2,7 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Azure HPC Cache kräver version 2.7 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
-## <a name="set-default-resource-group-optional"></a>Ange standard resurs grupp (valfritt)
+## <a name="set-default-resource-group-optional"></a>Ange standardresursgrupp (valfritt)
 
-De flesta av HPC-cache-kommandona kräver att du överför cachens resurs grupp. Du kan ställa in standard resurs gruppen genom att använda [AZ konfigurera](/cli/azure/reference-index#az-configure).
+De flesta hpc-cache-kommandon kräver att du skickar cachens resursgrupp. Du kan ange standardresursgruppen med hjälp av [az configure](/cli/azure/reference-index#az_configure).
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har installerat Azure CLI-tillägget och loggat in kan du använda Azure CLI för att skapa och hantera Azure HPC cache-system.
+När du har installerat Azure CLI-tillägget och loggat in kan du använda Azure CLI för att skapa och hantera Azure HPC Cache system.
 
-* [Skapa en Azure HPC-cache](hpc-cache-create.md)
-* [Azure CLI HPC-cache-dokumentation](/cli/azure/ext/hpc-cache/hpc-cache)
+* [Skapa en Azure HPC Cache](hpc-cache-create.md)
+* [Dokumentation om Azure CLI hpc-cache](/cli/azure/ext/hpc-cache/hpc-cache)

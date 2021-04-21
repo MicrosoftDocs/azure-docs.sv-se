@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: importera BACPAC-filen till databasen i Azure SQL Database'
-description: Azure CLI-exempel skript för att importera en BACPAC-fil till en databas i Azure SQL Database
+title: 'Azure CLI: Importera BACPAC-filen till databasen i Azure SQL Database'
+description: Azure CLI-exempelskript för att importera en BACPAC-fil till en databas i Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,16 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/24/2019
-ms.openlocfilehash: a8c544f1d3b7d1255cf5a0e6d05975ea5f5ec203
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a76a2e72533068f37613d801e39f9451098b89e5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87503811"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786611"
 ---
 # <a name="use-cli-to-import-a-bacpac-file-into-a-database-in-sql-database"></a>Använd CLI för att importera en BACPAC-fil till en databas i SQL Database
 
-Detta exempel på Azure CLI-skript importerar en databas från en *. bacpac* -fil till en databas i SQL Database.  
+Det här Azure CLI-skriptexempel importerar en databas från en *.bacpac-fil* till en databas i SQL Database.  
 
 Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI version 2.0 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa informationen i [Installera Azure CLI](/cli/azure/install-azure-cli).
 
@@ -36,20 +36,20 @@ Om du väljer att installera och använda CLI lokalt måste du köra Azure CLI v
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-Använd följande kommando för att ta bort resurs gruppen och alla resurser som är kopplade till den.
+Använd följande kommando för att ta bort resursgruppen och alla resurser som är associerade med den.
 
 ```azurecli-interactive
 az group delete --name $resource
 ```
 
-## <a name="sample-reference"></a>Exempel referens
+## <a name="sample-reference"></a>Exempelreferens
 
 Det här skriptet använder följande kommandon. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Beskrivning |
 |---|---|
-| [az sql server](/cli/azure/sql/server) | Server kommandon. |
-| [AZ SQL DB-import](/cli/azure/sql/db#az-sql-db-import) | Kommandot för databas import. |
+| [az sql server](/cli/azure/sql/server) | Serverkommandon. |
+| [az sql db import](/cli/azure/sql/db#az_sql_db_import) | Kommandot för databasimport. |
 
 ## <a name="next-steps"></a>Nästa steg
 

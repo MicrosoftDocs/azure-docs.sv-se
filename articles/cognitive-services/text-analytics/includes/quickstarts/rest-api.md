@@ -1,63 +1,63 @@
 ---
-title: 'Snabb start: använda spiral för att anropa Textanalys REST API'
+title: 'Snabbstart: Använda cURL för att anropa Textanalys REST API'
 titleSuffix: Azure Cognitive Services
-description: Den här snabb starten visar hur du snabbt kommer igång med API för textanalys i Azure Cognitive Services.
+description: Den här snabbstarten visar hur du snabbt kommer igång med Textanalys API i Azure Cognitive Services.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 03/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: 52c20a88c9a4a70b1608a7d050e4faccef9e2d3e
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: bf18ab6cae83f3dc0908a15bf4bf53b5318613d9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104599106"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765134"
 ---
-# <a name="version-31-preview"></a>[Version 3,1 Preview](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-[v 3.1 referens dokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/)
+[v3.1-referensdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-4/)
 
-# <a name="version-30"></a>[Version 3,0](#tab/version-3)
+# <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-[v3 referens dokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0) 
+[v3-referensdokumentation](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0) 
 
 ---
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Den aktuella versionen av [sväng](https://curl.haxx.se/).
-* När du har en Azure-prenumeration <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" skapar du en textanalys resurs "  target="_blank"> skapa en textanalys resurs </a> i Azure Portal för att hämta din nyckel och slut punkt. När den har distribuerats klickar **du på gå till resurs**.
-    * Du behöver nyckeln och slut punkten från den resurs som du skapar för att ansluta ditt program till API för textanalys. Du klistrar in nyckeln och slut punkten i koden nedan i snabb starten.
-    * Du kan använda den kostnads fria pris nivån ( `F0` ) för att testa tjänsten och senare uppgradera till en betald nivå för produktion.
+* Den aktuella versionen av [cURL](https://curl.haxx.se/).
+* När du har din Azure-prenumeration skapar Textanalys en Textanalys resurs i Azure Portal för <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" att hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Textanalys-API:et. Du klistrar in din nyckel och slutpunkt i koden nedan senare i snabbstarten.
+    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
 
 > [!NOTE]
-> * I följande BASH-exempel används `\` linje fortsättnings symbolen. Om-konsolen eller terminalen använder ett annat linje fortsättnings avstånd, använder du det här specialtecknet.
-> * Du kan hitta språkspecifika exempel på [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code).
-> * Gå till Azure Portal och hitta nyckeln och slut punkten för den Textanalys resurs som du skapade i kraven. De kommer att finnas på resursens **nyckel-och slut punkts** sida under **resurs hantering**. Ersätt sedan strängarna i koden nedan med din nyckel och slut punkt.
-Om du vill anropa API för textanalys behöver du följande information:
+> * I följande BASH-exempel används rad `\` fortsättningstecknet. Om konsolen eller terminalen använder ett annat rad fortsättningstecken använder du det tecknet.
+> * Du hittar språkspecifika exempel på [GitHub.](https://github.com/Azure-Samples/cognitive-services-quickstart-code)
+> * Gå till Azure Portal och leta upp nyckeln och slutpunkten för Textanalys som du skapade i förutsättningarna. De finns på resursens nyckel- och **slutpunktssida** under **resurshantering.** Ersätt sedan strängarna i koden nedan med din nyckel och slutpunkt.
+Om du vill Textanalys API:et behöver du följande information:
 
 
 |parameter  |Description  |
 |---------|---------|
-|`-X POST <endpoint>`     | Anger slut punkten för åtkomst till API: et.        |
-|`-H Content-Type: application/json`     | Innehålls typen för att skicka JSON-data.          |
-|`-H "Ocp-Apim-Subscription-Key:<key>`    | Anger nyckeln för åtkomst till API: et.        |
-|`-d <documents>`     | JSON-filen som innehåller dokumenten som du vill skicka.         |
+|`-X POST <endpoint>`     | Anger slutpunkten för åtkomst till API:et.        |
+|`-H Content-Type: application/json`     | Innehållstyp för att skicka JSON-data.          |
+|`-H "Ocp-Apim-Subscription-Key:<key>`    | Anger nyckeln för åtkomst till API:et.        |
+|`-d <documents>`     | Den JSON som innehåller de dokument som du vill skicka.         |
 
-Följande spiral kommandon körs från ett BASH-gränssnitt. Redigera dessa kommandon med dina egna resurs namn, resurs nyckel och JSON-värden.
+Följande cURL-kommandon körs från ett BASH-gränssnitt. Redigera dessa kommandon med ditt eget resursnamn, resursnyckel och JSON-värden.
 
 ## <a name="sentiment-analysis"></a>Attitydanalys
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[version 3,1 – för hands version](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[version 3.1-preview](#tab/version-3-1)
 
 > [!NOTE]
-> Exemplet nedan innehåller en begäran om uppslags utgångs funktionen i Attitydanalys med hjälp av `opinionMining=true` parametern, som ger detaljerad information om utvärderingar (adjektiv) som rör mål (Substantiv) i texten.
+> Exemplet nedan innehåller en begäran om Funktionen Opinion Mining i Attitydanalys med parametern , som innehåller detaljerad information om utvärderingar (adjektiv) relaterade till mål `opinionMining=true` (substantiv) i texten.
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/sentiment?opinionMining=true \
@@ -135,7 +135,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ``` 
 
-#### <a name="version-30"></a>[version 3,0](#tab/version-3)
+#### <a name="version-30"></a>[version 3.0](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sentiment/ \
@@ -184,7 +184,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/sen
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[version 3,1 – för hands version](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[version 3.1-preview](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/languages/ \
@@ -217,7 +217,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/version-3)
+#### <a name="version-30"></a>[version 3.0](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/languages/ \
@@ -253,11 +253,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/lan
 ---
 
 
-## <a name="named-entity-recognition-ner"></a>Igenkänning av namngivna enheter (NER)
+## <a name="named-entity-recognition-ner"></a>Igenkänning av namngiven entitet (NER)
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[version 3,1 – för hands version](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[version 3.1-preview](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/entities/recognition/general \
@@ -305,7 +305,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 
 ```
 
-### <a name="detecting-personally-identifying-information"></a>Identifiera personlig identifierings information
+### <a name="detecting-personally-identifying-information"></a>Identifiera personligt identifierande information
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
@@ -352,7 +352,7 @@ curl -X POST https://your-text-analytics-endpoint-here>/text/analytics/v3.1-prev
 }
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/version-3)
+#### <a name="version-30"></a>[version 3.0](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/recognition/general \
@@ -408,11 +408,11 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 
 ---
 
-## <a name="entity-linking"></a>Länkning av entitet
+## <a name="entity-linking"></a>Entitetslänkning
 
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
-#### <a name="version-31-preview"></a>[version 3,1 – för hands version](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[version 3.1-preview](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/entities/linking \
@@ -506,7 +506,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/version-3)
+#### <a name="version-30"></a>[version 3.0](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/entities/linking \
@@ -606,7 +606,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/ent
 [!INCLUDE [REST API quickstart instructions](rest-api-instructions.md)]
 
 
-#### <a name="version-31-preview"></a>[version 3,1 – för hands version](#tab/version-3-1)
+#### <a name="version-31-preview"></a>[version 3.1-preview](#tab/version-3-1)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-preview.4/keyPhrases \
@@ -637,7 +637,7 @@ curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.1-pre
 }
 ```
 
-#### <a name="version-30"></a>[version 3,0](#tab/version-3)
+#### <a name="version-30"></a>[version 3.0](#tab/version-3)
 
 ```bash
 curl -X POST https://<your-text-analytics-endpoint-here>/text/analytics/v3.0/keyPhrases \

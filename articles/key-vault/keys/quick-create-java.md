@@ -8,12 +8,12 @@ ms.date: 01/05/2021
 ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
-ms.openlocfilehash: f0933a19ecfebfde8ac43ac3e88332506e2256ec
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 75cb7b6c9225e8579561f980df10da8994257133
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750385"
+ms.locfileid: "107777193"
 ---
 # <a name="quickstart-azure-key-vault-key-client-library-for-java"></a>Snabbstart: Azure Key Vault Key-klientbibliotek för Java
 Kom igång med Azure Key Vault Key-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
@@ -60,7 +60,7 @@ mvn archetype:generate -DgroupId=com.keyvault.keys.quickstart
                        -DinteractiveMode=false
 ```
 
-Utdata från att generera projektet ser ut ungefär så här:
+Utdata från genereringen av projektet ser ut ungefär så här:
 
 ```console
 [INFO] ----------------------------------------------------------------------------
@@ -176,14 +176,14 @@ Nu när programmet har autentiserats kan du skapa en nyckel i nyckelvalvet med h
 keyClient.createKey(keyName, KeyType.RSA);
 ```
 
-Du kan kontrollera att nyckeln har angetts med [kommandot az keyvault key](/cli/azure/keyvault/key?#az-keyvault-key-show) show:
+Du kan kontrollera att nyckeln har angetts med [kommandot az keyvault key](/cli/azure/keyvault/key?#az_keyvault_key_show) show:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
 ```
 
 ### <a name="retrieve-a-key"></a>Hämta en nyckel
-Nu kan du hämta den tidigare skapade nyckeln med `keyClient.getKey` metoden .
+Nu kan du hämta den tidigare skapade nyckeln med `keyClient.getKey` -metoden.
 
 ```java
 KeyVaultKey retrievedKey = keyClient.getKey(keyName);
@@ -201,7 +201,7 @@ SyncPoller<DeletedKey, Void> deletionPoller = keyClient.beginDeleteKey(keyName);
 deletionPoller.waitForCompletion();
 ```
 
-Du kan kontrollera att nyckeln har tagits bort med kommandot [az keyvault key](/cli/azure/keyvault/key?#az-keyvault-key-show) show:
+Du kan kontrollera att nyckeln har tagits bort med kommandot [az keyvault key](/cli/azure/keyvault/key?#az_keyvault_key_show) show:
 
 ```azurecli
 az keyvault key show --vault-name <your-unique-key-vault-name> --name myKey
