@@ -1,6 +1,6 @@
 ---
-title: Skapa, Visa & ta bort användardefinierad hanterad identitet med hjälp av Azure PowerShell-Azure AD
-description: Steg för steg-anvisningar om hur du skapar, visar och tar bort användarspecifika hanterade identiteter med hjälp av Azure PowerShell.
+title: Skapa, lista & bort användar tilldelad hanterad identitet med hjälp Azure PowerShell – Azure AD
+description: Stegvisa instruktioner om hur du skapar, listar och tar bort användar tilldelad hanterad identitet med hjälp av Azure PowerShell.
 services: active-directory
 documentationcenter: ''
 author: barclayn
@@ -15,34 +15,35 @@ ms.workload: identity
 ms.date: 12/02/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 636f40f0c425c25dfe7f41f1f404afc90ed5ba56
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-azurepowershell
+ms.openlocfilehash: af76affd9f4034401225e82de4e25e8b0a51125a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96548230"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784847"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Skapa, Visa eller ta bort en användardefinierad hanterad identitet med hjälp av Azure PowerShell
+# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-azure-powershell"></a>Skapa, visa eller ta bort en användar tilldelad hanterad identitet med Azure PowerShell
 
-Hanterade identiteter för Azure-resurser ger Azure-tjänster med en hanterad identitet i Azure Active Directory. Du kan använda den här identiteten för att autentisera till tjänster som stöder Azure AD-autentisering, utan att behöva ange autentiseringsuppgifter i koden. 
+Hanterade identiteter för Azure-resurser ger Azure-tjänster en hanterad identitet i Azure Active Directory. Du kan använda den här identiteten för att autentisera mot tjänster som stöder Azure AD-autentisering, utan att behöva autentiseringsuppgifter i din kod. 
 
-I den här artikeln får du lära dig hur du skapar, visar och tar bort en användardefinierad hanterad identitet med hjälp av Azure PowerShell.
+I den här artikeln får du lära dig hur du skapar, listar och tar bort en användar tilldelad hanterad identitet med Azure PowerShell.
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Om du inte känner till hanterade identiteter för Azure-resurser kan du läsa [avsnittet Översikt](overview.md). **Se till att granska [skillnaden mellan en tilldelad och användardefinierad hanterad identitet](overview.md#managed-identity-types)**.
+- Om du inte är bekant med hanterade identiteter för Azure-resurser kan du läsa [översiktsavsnittet](overview.md). **Se till att granska skillnaden [mellan en system-tilldelad och användar tilldelad hanterad identitet](overview.md#managed-identity-types)**.
 - Om du inte redan har ett Azure-konto [registrerar du dig för ett kostnadsfritt konto](https://azure.microsoft.com/free/) innan du fortsätter.
-- Om du vill köra exempel skripten har du två alternativ:
-    - Använd [Azure Cloud Shell](../../cloud-shell/overview.md)som du kan öppna med knappen **prova** på det övre högra hörnet av kodblock.
+- Om du vill köra exempelskripten har du två alternativ:
+    - Använd den [Azure Cloud Shell](../../cloud-shell/overview.md), som du kan öppna med hjälp av **knappen Prova** i det övre högra hörnet av kodblock.
     - Kör skript lokalt med Azure PowerShell, enligt beskrivningen i nästa avsnitt.
 
 ### <a name="configure-azure-powershell-locally"></a>Konfigurera Azure PowerShell lokalt
 
-Utför följande steg för att använda Azure PowerShell lokalt för den här artikeln (i stället för att använda Cloud Shell):
+Om du Azure PowerShell lokalt för den här artikeln (i stället för att använda Cloud Shell) gör du följande:
 
-1. Installera [den senaste versionen av Azure PowerShell](/powershell/azure/install-az-ps) om du inte redan gjort det.
+1. Installera [den senaste versionen Azure PowerShell](/powershell/azure/install-az-ps) om du inte redan har gjort det.
 
 1. Logga in på Azure:
 
@@ -56,9 +57,9 @@ Utför följande steg för att använda Azure PowerShell lokalt för den här ar
     Install-Module -Name PowerShellGet -AllowPrerelease
     ```
 
-    Du kan behöva använda `Exit` den aktuella PowerShell-sessionen när du har kört det här kommandot för nästa steg.
+    Du kan behöva ta `Exit` bort den aktuella PowerShell-sessionen när du har kört det här kommandot för nästa steg.
 
-1. Installera för hands versionen av `Az.ManagedServiceIdentity` modulen för att utföra de användare som tilldelats hanterade identitets åtgärder i den här artikeln:
+1. Installera förhandsversionen av modulen för att `Az.ManagedServiceIdentity` utföra åtgärderna för användar tilldelad hanterad identitet i den här artikeln:
 
     ```azurepowershell
     Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease
@@ -66,40 +67,40 @@ Utför följande steg för att använda Azure PowerShell lokalt för den här ar
 
 ## <a name="create-a-user-assigned-managed-identity"></a>Skapa en användartilldelad hanterad identitet
 
-För att skapa en användardefinierad hanterad identitet måste ditt konto ha roll tilldelningen [hanterad identitets deltagare](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
+Om du vill skapa en användar tilldelad hanterad identitet måste ditt konto ha [rolltilldelningen Hanterad](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) identitetsdeltagare.
 
-Använd kommandot för att skapa en användardefinierad hanterad identitet `New-AzUserAssignedIdentity` . `ResourceGroupName`Parametern anger den resurs grupp där den tilldelade hanterade identiteten ska skapas och `-Name` parametern anger dess namn. Ersätt `<RESOURCE GROUP>` `<USER ASSIGNED IDENTITY NAME>` parameter värden och med dina egna värden:
+Om du vill skapa en användar tilldelad hanterad identitet använder du `New-AzUserAssignedIdentity` kommandot . Parametern anger resursgruppen där den användar tilldelade hanterade identiteten ska `ResourceGroupName` skapas, och `-Name` parametern anger dess namn. Ersätt `<RESOURCE GROUP>` `<USER ASSIGNED IDENTITY NAME>` parametervärdena och med dina egna värden:
 
 [!INCLUDE [ua-character-limit](~/includes/managed-identity-ua-character-limits.md)]
 
  ```azurepowershell-interactive
 New-AzUserAssignedIdentity -ResourceGroupName <RESOURCEGROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
-## <a name="list-user-assigned-managed-identities"></a>Lista användare-tilldelade hanterade identiteter
+## <a name="list-user-assigned-managed-identities"></a>Visa en lista över användar tilldelade hanterade identiteter
 
-Om du vill visa en lista över/läsa en användardefinierad hanterad identitet måste ditt konto ha roll tilldelningen [hanterad identitet](../../role-based-access-control/built-in-roles.md#managed-identity-operator) eller [hanterad identitets deltagare](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
+Om du vill visa/läsa en användar tilldelad hanterad identitet måste ditt konto ha [rolltilldelningen](../../role-based-access-control/built-in-roles.md#managed-identity-operator) Hanterad identitetsoperatör [eller Hanterad](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) identitetsdeltagare.
 
-Använd kommandot [Get-AzUserAssigned] för att visa en lista över användare som tilldelats hanterade identiteter.  `-ResourceGroupName`Parametern anger resurs gruppen där den användare som tilldelats den hanterade identiteten skapades. Ersätt `<RESOURCE GROUP>` med ditt eget värde:
+Om du vill visa en lista över användartilldelade hanterade identiteter använder du kommandot [Get-AzUserAssigned].  Parametern `-ResourceGroupName` anger den resursgrupp där den användar tilldelade hanterade identiteten skapades. Ersätt `<RESOURCE GROUP>` med ditt eget värde:
 
 ```azurepowershell-interactive
 Get-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP>
 ```
-I svaret har användare tilldelade hanterade identiteter `"Microsoft.ManagedIdentity/userAssignedIdentities"` värdet returnerat för nyckeln `Type` .
+I svaret har användar tilldelade hanterade identiteter ett värde `"Microsoft.ManagedIdentity/userAssignedIdentities"` som returneras för nyckeln, `Type` .
 
 `Type :Microsoft.ManagedIdentity/userAssignedIdentities`
 
-## <a name="delete-a-user-assigned-managed-identity"></a>Ta bort en användare som tilldelats en hanterad identitet
+## <a name="delete-a-user-assigned-managed-identity"></a>Ta bort en användar tilldelad hanterad identitet
 
-För att ta bort en användardefinierad hanterad identitet måste ditt konto ha roll tilldelningen [hanterad identitets deltagare](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) .
+Om du vill ta bort en användar tilldelad hanterad identitet måste ditt konto ha [rolltilldelningen Hanterad](../../role-based-access-control/built-in-roles.md#managed-identity-contributor) identitetsdeltagare.
 
-Om du vill ta bort en användardefinierad hanterad identitet använder du `Remove-AzUserAssignedIdentity` kommandot.  `-ResourceGroupName`Parametern anger resurs gruppen där den användardefinierade identiteten skapades och `-Name` parametern anger dess namn. Ersätt `<RESOURCE GROUP>` och `<USER ASSIGNED IDENTITY NAME>` parametrarna värden med dina egna värden:
+Om du vill ta bort en användar tilldelad hanterad identitet använder du `Remove-AzUserAssignedIdentity` kommandot .  Parametern `-ResourceGroupName` anger den resursgrupp där den användar tilldelade identiteten skapades och `-Name` parametern anger dess namn. Ersätt `<RESOURCE GROUP>` `<USER ASSIGNED IDENTITY NAME>` parametervärdena och med dina egna värden:
 
  ```azurepowershell-interactive
 Remove-AzUserAssignedIdentity -ResourceGroupName <RESOURCE GROUP> -Name <USER ASSIGNED IDENTITY NAME>
 ```
 > [!NOTE]
-> Om du tar bort en tilldelad hanterad identitet tas inte referensen bort från alla resurser som den har tilldelats. Identitets tilldelningar måste tas bort separat.
+> Om du tar bort en användar tilldelad hanterad identitet tas inte referensen bort från alla resurser som den har tilldelats till. Identitetstilldelningar måste tas bort separat.
 
 ## <a name="next-steps"></a>Nästa steg
 
-En fullständig lista och mer information om Azure PowerShell hanterade identiteter för Azure-resurser finns i [AZ. ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).
+En fullständig lista med mer information om de Azure PowerShell identiteter för Azure-resurskommandon finns i [Az.ManagedServiceIdentity](/powershell/module/az.managedserviceidentity#managed_service_identity).

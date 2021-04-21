@@ -1,6 +1,6 @@
 ---
-title: Tilldela Azure-roller med hjälp av Azure Resource Manager mallar – Azure RBAC
-description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvud namn eller hanterade identiteter med hjälp av Azure Resource Manager mallar och rollbaserad åtkomst kontroll i Azure (Azure RBAC).
+title: Tilldela Azure-roller med Azure Resource Manager mallar – Azure RBAC
+description: Lär dig hur du beviljar åtkomst till Azure-resurser för användare, grupper, tjänstens huvudnamn eller hanterade identiteter med hjälp av Azure Resource Manager-mallar och rollbaserad åtkomstkontroll i Azure (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,28 +10,28 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 01/21/2021
 ms.author: rolyon
-ms.openlocfilehash: 65b4ec369085e44cdffb0550e9eeaef0196cd35a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba1df23b40de82a8ef901541884ef29ea0b504a1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100556016"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771883"
 ---
-# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Tilldela Azure-roller med hjälp av Azure Resource Manager mallar
+# <a name="assign-azure-roles-using-azure-resource-manager-templates"></a>Tilldela Azure-roller med hjälp Azure Resource Manager mallar
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Förutom att använda Azure PowerShell eller Azure CLI kan du tilldela roller med [Azure Resource Manager-mallar](../azure-resource-manager/templates/template-syntax.md). Mallar kan vara användbara om du behöver distribuera resurser konsekvent och upprepade gånger. I den här artikeln beskrivs hur du tilldelar roller med hjälp av mallar.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control/definition-grant.md)] Förutom att använda Azure PowerShell Azure CLI kan du tilldela roller med hjälp av [Azure Resource Manager mallar](../azure-resource-manager/templates/template-syntax.md). Mallar kan vara användbara om du behöver distribuera resurser konsekvent och upprepade gånger. I den här artikeln beskrivs hur du tilldelar roller med hjälp av mallar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 [!INCLUDE [Azure role assignment prerequisites](../../includes/role-based-access-control/prerequisites-role-assignments.md)]
 
-## <a name="get-object-ids"></a>Hämta objekt-ID: n
+## <a name="get-object-ids"></a>Hämta objekt-ID:er
 
-Om du vill tilldela en roll måste du ange ID: t för användaren, gruppen eller programmet som du vill tilldela rollen till. ID: t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID: t med hjälp av Azure Portal, Azure PowerShell eller Azure CLI.
+Om du vill tilldela en roll måste du ange ID:t för den användare, grupp eller det program som du vill tilldela rollen till. ID:t har formatet: `11111111-1111-1111-1111-111111111111` . Du kan hämta ID:t med hjälp av Azure Portal, Azure PowerShell eller Azure CLI.
 
-### <a name="user"></a>User
+### <a name="user"></a>Användare
 
-Om du vill hämta ID för en användare kan du använda kommandona [Get-AzADUser](/powershell/module/az.resources/get-azaduser) eller [AZ AD User show](/cli/azure/ad/user#az-ad-user-show) .
+Om du vill hämta ID:t för en användare kan du använda [kommandona Get-AzADUser](/powershell/module/az.resources/get-azaduser) [eller az ad user show.](/cli/azure/ad/user#az_ad_user_show)
 
 ```azurepowershell
 $objectid = (Get-AzADUser -DisplayName "{name}").id
@@ -43,7 +43,7 @@ objectid=$(az ad user show --id "{email}" --query objectId --output tsv)
 
 ### <a name="group"></a>Group
 
-Om du vill hämta ID för en grupp kan du använda kommandona [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) eller [AZ AD Group show](/cli/azure/ad/group#az-ad-group-show) .
+Om du vill hämta ID:t för en grupp kan du använda [kommandona Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) [eller az ad group show.](/cli/azure/ad/group#az_ad_group_show)
 
 ```azurepowershell
 $objectid = (Get-AzADGroup -DisplayName "{name}").id
@@ -55,7 +55,7 @@ objectid=$(az ad group show --group "{name}" --query objectId --output tsv)
 
 ### <a name="managed-identities"></a>Hanterade identiteter
 
-Om du vill hämta ID: t för en hanterad identitet kan du använda [Get-AzAdServiceprincipal](/powershell/module/az.resources/get-azadserviceprincipal) eller [AZ AD SP](/cli/azure/ad/sp) -kommandon.
+Om du vill hämta ID:t för en hanterad identitet kan du använda [Get-AzAdServiceprincipal eller](/powershell/module/az.resources/get-azadserviceprincipal) [az ad sp-kommandon.](/cli/azure/ad/sp)
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName <Azure resource name>).id
@@ -67,7 +67,7 @@ objectid=$(az ad sp list --display-name <Azure resource name> --query [].objectI
 
 ### <a name="application"></a>Program
 
-Om du vill hämta ID: t för ett huvud namn för tjänsten (identitet som används av ett program) kan du använda kommandona [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) eller [AZ AD SP List](/cli/azure/ad/sp#az-ad-sp-list) . För ett huvud namn för tjänsten använder du objekt-ID: t och **inte** program-ID: t.
+Om du vill hämta ID:t för ett huvudnamn för tjänsten (identitet som används av ett program) kan du använda [kommandona Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal) [eller az ad sp list.](/cli/azure/ad/sp#az_ad_sp_list) För tjänstens huvudnamn använder du objekt-ID:t **och inte** program-ID:t.
 
 ```azurepowershell
 $objectid = (Get-AzADServicePrincipal -DisplayName "{name}").id
@@ -79,18 +79,18 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="assign-an-azure-role"></a>Tilldela en Azure-roll
 
-I Azure RBAC, för att bevilja åtkomst, tilldelar du en roll.
+För att bevilja åtkomst i Azure RBAC tilldelar du en roll.
 
-### <a name="resource-group-scope-without-parameters"></a>Resurs grupps omfång (utan parametrar)
+### <a name="resource-group-scope-without-parameters"></a>Omfång för resursgrupp (utan parametrar)
 
-Följande mall visar ett enkelt sätt att tilldela en roll. Vissa värden anges i mallen. Följande mall visar:
+Följande mall visar ett grundläggande sätt att tilldela en roll. Vissa värden anges i mallen. Följande mall visar:
 
--  Tilldela rollen [läsare](built-in-roles.md#reader) till en användare, grupp eller ett program i ett resurs grupps omfång
+-  Så här tilldelar [du rollen](built-in-roles.md#reader) Läsare till en användare, grupp eller ett program i ett resursgruppsomfång
 
 Om du vill använda mallen måste du göra följande:
 
 - Skapa en ny JSON-fil och kopiera mallen
-- Ersätt `<your-principal-id>` med ID: t för en användare, grupp, hanterad identitet eller program för att tilldela rollen till
+- Ersätt `<your-principal-id>` med ID:t för en användare, grupp, hanterad identitet eller ett program som rollen ska tilldelas till
 
 ```json
 {
@@ -110,7 +110,7 @@ Om du vill använda mallen måste du göra följande:
 }
 ```
 
-Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för hur du startar distributionen i en resurs grupp med namnet ExampleGroup.
+Här är [exempelkommandona New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) för att starta distributionen i en resursgrupp med namnet ExampleGroup.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json
@@ -120,21 +120,21 @@ New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac
 az deployment group create --resource-group ExampleGroup --template-file rbac-test.json
 ```
 
-Följande visar ett exempel på roll tilldelningen för en användare för en resurs grupp när du har distribuerat mallen.
+Nedan visas ett exempel på rolltilldelningen Läsare till en användare för en resursgrupp när mallen har distribuerats.
 
-![Roll tilldelning i resurs gruppens omfång](./media/role-assignments-template/role-assignment-template.png)
+![Rolltilldelning i resursgruppsomfång](./media/role-assignments-template/role-assignment-template.png)
 
-### <a name="resource-group-or-subscription-scope"></a>Resurs grupp eller prenumerations omfång
+### <a name="resource-group-or-subscription-scope"></a>Resursgrupp eller prenumerationsomfång
 
-Den tidigare mallen är inte mycket flexibel. Följande mall använder parametrar och kan användas i olika omfång. Följande mall visar:
+Den tidigare mallen är inte särskilt flexibel. Följande mall använder parametrar och kan användas i olika omfång. Följande mall visar:
 
-- Så här tilldelar du en roll till en användare, grupp eller ett program i antingen en resurs grupp eller ett prenumerations omfång
-- Ange rollen ägare, deltagare och läsare som en parameter
+- Så här tilldelar du en roll till en användare, grupp eller ett program i antingen en resursgrupp eller ett prenumerationsomfång
+- Så här anger du rollerna Ägare, Deltagare och Läsare som en parameter
 
 Om du vill använda mallen måste du ange följande indata:
 
-- ID: t för en användare, grupp, hanterad identitet eller program för att tilldela rollen till
-- Ett unikt ID som ska användas för roll tilldelningen eller så kan du använda standard-ID: t
+- ID för en användare, grupp, hanterad identitet eller ett program som rollen ska tilldelas till
+- Ett unikt ID som ska användas för rolltilldelningen, eller så kan du använda standard-ID:t
 
 ```json
 {
@@ -186,9 +186,9 @@ Om du vill använda mallen måste du ange följande indata:
 ```
 
 > [!NOTE]
-> Den här mallen är inte idempotenta om inte samma `roleNameGuid` värde anges som en parameter för varje distribution av mallen. Om inget anges `roleNameGuid` , genereras ett nytt GUID som standard vid varje distribution och efterföljande distributioner kommer att Miss förväntas med ett `Conflict: RoleAssignmentExists` fel.
+> Den här mallen är inte idempotent såvida inte `roleNameGuid` samma värde anges som en parameter för varje distribution av mallen. Om nej anges genereras som standard ett nytt GUID för `roleNameGuid` varje distribution och efterföljande distributioner misslyckas med ett `Conflict: RoleAssignmentExists` fel.
 
-Roll tilldelningens omfattning bestäms från distributions nivån. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för att starta distributionen i ett resurs grupps omfång.
+Rolltilldelningens omfattning bestäms utifrån distributionsnivån. Här är exempel [på kommandona New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) för att starta distributionen i ett resursgruppomfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
@@ -198,7 +198,7 @@ New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac
 az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Reader
 ```
 
-Här är exempel på kommandona [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) och [AZ Deployment sub Create](/cli/azure/deployment/sub#az_deployment_sub_create) för hur du startar distributionen i ett prenumerations omfång och anger platsen.
+Här är exempel [på kommandona New-AzDeployment](/powershell/module/az.resources/new-azdeployment) och [az deployment sub create](/cli/azure/deployment/sub#az_deployment_sub_create) för hur du startar distributionen i ett prenumerationsomfång och anger platsen.
 
 ```azurepowershell
 New-AzDeployment -Location centralus -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Reader
@@ -210,17 +210,17 @@ az deployment sub create --location centralus --template-file rbac-test.json --p
 
 ### <a name="resource-scope"></a>Resursomfång
 
-Om du behöver tilldela en roll på nivån för en resurs anger du `scope` egenskapen för roll tilldelningen till namnet på resursen.
+Om du behöver tilldela en roll på resursnivå anger du namnet på resursens namn för `scope` rolltilldelningen.
 
 Följande mall visar:
 
 - Så här skapar du ett nytt lagringskonto
-- Så här tilldelar du en roll till en användare, grupp eller ett program i lagrings konto omfånget
-- Ange rollen ägare, deltagare och läsare som en parameter
+- Så här tilldelar du en roll till en användare, grupp eller ett program i lagringskontoomfånget
+- Ange rollerna Ägare, Deltagare och Läsare som en parameter
 
 Om du vill använda mallen måste du ange följande indata:
 
-- ID: t för en användare, grupp, hanterad identitet eller program för att tilldela rollen till
+- ID för en användare, grupp, hanterad identitet eller ett program som rollen ska tilldelas till
 
 ```json
 {
@@ -291,7 +291,7 @@ Om du vill använda mallen måste du ange följande indata:
 }
 ```
 
-Om du vill distribuera den tidigare mallen använder du resurs grupps kommandon. Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för hur du startar distributionen i ett resurs omfång.
+Du distribuerar den tidigare mallen med hjälp av resursgruppskommandona. Här är exempel [på kommandona New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) för att starta distributionen i ett resursomfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-test.json -principalId $objectid -builtInRoleType Contributor
@@ -301,25 +301,25 @@ New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac
 az deployment group create --resource-group ExampleGroup --template-file rbac-test.json --parameters principalId=$objectid builtInRoleType=Contributor
 ```
 
-Följande visar ett exempel på roll tilldelningen deltagare till en användare för ett lagrings konto när du har distribuerat mallen.
+Nedan visas ett exempel på rolltilldelningen Deltagare till en användare för ett lagringskonto när mallen har distribuerats.
 
-![Roll tilldelning i resurs omfång](./media/role-assignments-template/role-assignment-template-resource.png)
+![Rolltilldelning i resursomfång](./media/role-assignments-template/role-assignment-template-resource.png)
 
-### <a name="new-service-principal"></a>Nytt huvud namn för tjänsten
+### <a name="new-service-principal"></a>Nytt huvudnamn för tjänsten
 
-Om du skapar ett nytt huvud namn för tjänsten och sedan omedelbart försöker tilldela en roll till tjänstens huvud namn kan roll tilldelningen inte utföras i vissa fall. Om du till exempel skapar en ny hanterad identitet och sedan försöker tilldela en roll till tjänstens huvud namn i samma Azure Resource Manager mall kan roll tilldelningen Miss Miss förväntat. Orsaken till det här felet är förmodligen en fördröjning i replikeringen. Tjänstens huvud namn skapas i en region. roll tilldelningen kan dock inträffa i en annan region som ännu inte har replikerat tjänstens huvud namn.
+Om du skapar ett nytt huvudnamn för tjänsten och omedelbart försöker tilldela en roll till tjänstens huvudnamn kan rolltilldelningen i vissa fall misslyckas. Om du till exempel skapar en ny hanterad identitet och sedan försöker tilldela en roll till tjänstens huvudnamn i samma Azure Resource Manager mall, kan rolltilldelningen misslyckas. Orsaken till det här felet är troligen en replikeringsfördröjning. Tjänstens huvudnamn skapas i en region. Rolltilldelningen kan dock ske i en annan region som inte har replikerat tjänstens huvudnamn ännu.
 
-För att åtgärda det här scenariot ska du ställa in `principalType` egenskapen till `ServicePrincipal` när roll tilldelningen skapas. Du måste också ange `apiVersion` roll tilldelningen till `2018-09-01-preview` eller senare.
+För att lösa det här scenariot bör du ange `principalType` egenskapen som när du skapar `ServicePrincipal` rolltilldelningen. Du måste också ange `apiVersion` för rolltilldelningen till `2018-09-01-preview` eller senare.
 
 Följande mall visar:
 
-- Så här skapar du en ny hanterad identitet för tjänstens huvud namn
+- Så här skapar du ett nytt huvudnamn för tjänsten för hanterad identitet
 - Så här anger du `principalType`
-- Tilldela deltagar rollen till tjänstens huvud namn i ett resurs grupps omfång
+- Så här tilldelar du rollen Deltagare till tjänstens huvudnamn i ett resursgruppomfång
 
 Om du vill använda mallen måste du ange följande indata:
 
-- Det grundläggande namnet på den hanterade identiteten eller så kan du använda standard strängen
+- Basnamnet på den hanterade identiteten, eller så kan du använda standardsträngen
 
 ```json
 {
@@ -360,7 +360,7 @@ Om du vill använda mallen måste du ange följande indata:
 }
 ```
 
-Här är exempel på [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment) och [AZ-distributions grupp skapa](/cli/azure/deployment/group#az_deployment_group_create) kommandon för att starta distributionen i ett resurs grupps omfång.
+Här är [exempelkommandona New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) och [az deployment group create](/cli/azure/deployment/group#az_deployment_group_create) för att starta distributionen i ett resursgruppomfång.
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rbac-test.json
@@ -370,13 +370,13 @@ New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup2 -TemplateFile rba
 az deployment group create --resource-group ExampleGroup2 --template-file rbac-test.json
 ```
 
-Följande visar ett exempel på roll tilldelningen deltagare till ett nytt hanterat identitets tjänst huvud objekt när du har distribuerat mallen.
+Nedan visas ett exempel på rolltilldelningen Deltagare till ett nytt huvudnamn för tjänsten för hanterad identitet när mallen har distribuerats.
 
-![Roll tilldelning för en ny hanterad identitets tjänstens huvud namn](./media/role-assignments-template/role-assignment-template-msi.png)
+![Rolltilldelning för ett nytt huvudnamn för tjänsten för hanterad identitet](./media/role-assignments-template/role-assignment-template-msi.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-- [Snabb start: skapa och distribuera ARM-mallar med hjälp av Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
+- [Snabbstart: Skapa och distribuera ARM-mallar med hjälp av Azure Portal](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 - [Förstå strukturen och syntaxen för ARM-mallar](../azure-resource-manager/templates/template-syntax.md)
-- [Skapa resurs grupper och resurser på prenumerations nivå](../azure-resource-manager/templates/deploy-to-subscription.md)
+- [Skapa resursgrupper och resurser på prenumerationsnivå](../azure-resource-manager/templates/deploy-to-subscription.md)
 - [Azure snabbstartmallar](https://azure.microsoft.com/resources/templates/?term=rbac)

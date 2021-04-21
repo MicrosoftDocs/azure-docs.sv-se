@@ -1,109 +1,109 @@
 ---
-title: Få åtkomst till nätverks begränsad register med hjälp av betrodd Azure-tjänst
-description: Aktivera en betrodd Azure-tjänstinstans för säker åtkomst till en nätverks begränsad behållar register för att hämta eller skicka avbildningar
+title: Få åtkomst till nätverksbegränsat register med betrodd Azure-tjänst
+description: Aktivera en betrodd Azure-tjänstinstans för säker åtkomst till ett nätverksbegränsat containerregister för att hämta eller skicka avbildningar
 ms.topic: article
 ms.date: 01/29/2021
-ms.openlocfilehash: 2e6b6ee3736f98f53ebb0aa43d707d42ba4cc058
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4b0d7feb223bcfcec4e8b2c786b211f4e3c3c3eb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101716490"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785878"
 ---
-# <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Tillåt betrodda tjänster att säkert komma åt en nätverks begränsad container Registry (för hands version)
+# <a name="allow-trusted-services-to-securely-access-a-network-restricted-container-registry-preview"></a>Tillåt betrodda tjänster att få säker åtkomst till ett nätverksbegränsat containerregister (förhandsversion)
 
-Azure Container Registry kan tillåta Select-betrodda Azure-tjänster att komma åt ett register som är konfigurerat med nätverks åtkomst regler. När betrodda tjänster är tillåtna kan en betrodd tjänst instans på ett säkert sätt kringgå registrets nätverks regler och utföra åtgärder som pull-eller push-avbildningar. Tjänst instansens hanterade identitet används för åtkomst och måste tilldelas en Azure-roll och autentisera med registret.
+Azure Container Registry kan tillåta att utvalda betrodda Azure-tjänster får åtkomst till ett register som har konfigurerats med regler för nätverksåtkomst. När betrodda tjänster tillåts kan en betrodd tjänstinstans på ett säkert sätt kringgå registrets nätverksregler och utföra åtgärder som pull- eller push-avbildningar. Tjänstinstansens hanterade identitet används för åtkomst och måste tilldelas en Azure-roll och autentiseras med registret.
 
-Använd Azure Cloud Shell eller en lokal installation av Azure CLI för att köra kommando exemplen i den här artikeln. Om du vill använda det lokalt, krävs version 2,18 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
+Använd den Azure Cloud Shell eller en lokal installation av Azure CLI för att köra kommandoexempel i den här artikeln. Om du vill använda den lokalt krävs version 2.18 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
 
-Att tillåta register åtkomst av betrodda Azure-tjänster är en **förhands gransknings** funktion.
+Att tillåta registeråtkomst från betrodda Azure-tjänster är en **förhandsgranskningsfunktion.**
 
 ## <a name="limitations"></a>Begränsningar
 
-* Du måste använda en systemtilldelad hanterad identitet som är aktive rad i en [betrodd tjänst](#trusted-services) för att få åtkomst till ett nätverks begränsat behållar register. Användare som tilldelats hanterade identiteter stöds inte för närvarande.
-* Att tillåta betrodda tjänster gäller inte för ett behållar register som kon figurer ATS med en [tjänst slut punkt](container-registry-vnet.md). Funktionen påverkar bara register som är begränsade till en [privat slut punkt](container-registry-private-link.md) eller som har [regler för offentliga IP-åtkomst](container-registry-access-selected-networks.md) . 
+* Du måste använda en system tilldelad hanterad identitet som är aktiverad i en [betrodd tjänst för](#trusted-services) att få åtkomst till ett nätverksbegränsat containerregister. Användar tilldelade hanterade identiteter stöds inte för närvarande.
+* Att tillåta betrodda tjänster gäller inte för ett containerregister som konfigurerats med en [tjänstslutpunkt.](container-registry-vnet.md) Funktionen påverkar endast register som är begränsade med en privat slutpunkt [eller som](container-registry-private-link.md) har regler för [offentlig IP-åtkomst](container-registry-access-selected-networks.md) tillämpad. 
 
 ## <a name="about-trusted-services"></a>Om betrodda tjänster
 
-Azure Container Registry har en skiktad säkerhets modell som stöder flera nätverkskonfigurationer som begränsar åtkomsten till ett register, inklusive:
+Azure Container Registry har en flerlagerssäkerhetsmodell med stöd för flera nätverkskonfigurationer som begränsar åtkomsten till ett register, inklusive:
 
-* [Privat slut punkt med Azure privat länk](container-registry-private-link.md). När ett registers privata slut punkt är tillgängligt, är det bara tillgängligt för resurser i det virtuella nätverket med hjälp av privata IP-adresser.  
-* [Brand Väggs regler för registret](container-registry-access-selected-networks.md), som endast tillåter åtkomst till registrets offentliga slut punkt från vissa offentliga IP-adresser eller adress intervall. Du kan också konfigurera brand väggen så att den blockerar all åtkomst till den offentliga slut punkten när du använder privata slut punkter.
+* [Privat slutpunkt med Azure Private Link](container-registry-private-link.md). När det har konfigurerats är ett registers privata slutpunkt endast tillgänglig för resurser i det virtuella nätverket med hjälp av privata IP-adresser.  
+* [Registerbrandväggsregler](container-registry-access-selected-networks.md), som endast tillåter åtkomst till registrets offentliga slutpunkt från specifika offentliga IP-adresser eller adressintervall. Du kan också konfigurera brandväggen så att den blockerar all åtkomst till den offentliga slutpunkten när du använder privata slutpunkter.
 
-När de distribueras i ett virtuellt nätverk eller konfigureras med brand Väggs regler, nekar ett register åtkomst som standard till användare eller tjänster utanför dessa källor. 
+När det distribueras i ett virtuellt nätverk eller konfigureras med brandväggsregler nekar ett register som standard åtkomst till användare eller tjänster utanför dessa källor. 
 
-Flera Azure-tjänster med flera innehavare körs från nätverk som inte kan ingå i dessa nätverks inställningar för registret, vilket förhindrar att de hämtar eller skickar avbildningar till registret. Genom att utse vissa tjänst instanser som "betrodda" kan en register ägare tillåta utvalda Azure-resurser att på ett säkert sätt kringgå registrets nätverks inställningar för att hämta eller push-avbildningar. 
+Flera Azure-tjänster för flera innehavare fungerar från nätverk som inte kan ingå i dessa nätverksinställningar för registret, vilket hindrar dem från att hämta eller push-pusha avbildningar till registret. Genom att ange vissa tjänstinstanser som "betrodda" kan en registerägare tillåta att utvalda Azure-resurser på ett säkert sätt kringgår registrets nätverksinställningar för att hämta eller skicka avbildningar. 
 
 ### <a name="trusted-services"></a>Betrodda tjänster
 
-Instanser av följande tjänster kan komma åt en nätverks begränsad behållar register om register inställningen **Tillåt betrodda tjänster** är aktive rad (standard). Fler tjänster kommer att läggas till med tiden.
+Instanser av följande tjänster kan komma åt ett nätverksbegränsat containerregister om inställningen tillåt **betrodda** tjänster i registret är aktiverad (standardinställningen). Fler tjänster kommer att läggas till med tiden.
 
-|Betrodd tjänst  |Användnings scenarier som stöds  |
+|Betrodd tjänst  |Användningsscenarier som stöds  |
 |---------|---------|
-|ACR-uppgifter     | [Få åtkomst till ett annat register från en ACR-uppgift](container-registry-tasks-cross-registry-authentication.md)       |
-|Machine Learning | [Distribuera](../machine-learning/how-to-deploy-custom-docker-image.md) eller [träna](../machine-learning/how-to-train-with-custom-image.md) en modell i en Machine Learning arbets yta med en anpassad Docker-behållar avbildning |
-|Azure Container Registry | [Importera avbildningar från ett annat Azure Container Registry](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
+|ACR-uppgifter     | [Få åtkomst till ett annat register än en ACR-uppgift](container-registry-tasks-cross-registry-authentication.md)       |
+|Machine Learning | [Distribuera](../machine-learning/how-to-deploy-custom-docker-image.md) eller [träna en](../machine-learning/how-to-train-with-custom-image.md) modell i en Machine Learning med hjälp av en anpassad Docker-containeravbildning |
+|Azure Container Registry | [Importera avbildningar från ett annat Azure-containerregister](container-registry-import-images.md#import-from-an-azure-container-registry-in-the-same-ad-tenant) | 
 
 > [!NOTE]
-> Som att aktivera inställningen Tillåt betrodda tjänster tillåter inte instanser av andra hanterade Azure-tjänster, inklusive App Service, Azure Container Instances och Azure Security Center för att få åtkomst till en nätverks begränsad behållar register.
+> Att aktivera inställningen Tillåt betrodda tjänster tillåter inte instanser av andra hanterade Azure-tjänster, inklusive App Service, Azure Container Instances och Azure Security Center, att komma åt ett nätverksbegränsat containerregister.
 
 ## <a name="allow-trusted-services---cli"></a>Tillåt betrodda tjänster – CLI
 
-Inställningen Tillåt betrodda tjänster är som standard aktive rad i ett nytt Azure Container Registry. Inaktivera eller aktivera inställningen genom att köra kommandot [AZ ACR Update](/cli/azure/acr#az-acr-update) .
+Som standard är inställningen Tillåt betrodda tjänster aktiverad i ett nytt Azure-containerregister. Inaktivera eller aktivera inställningen genom att köra [kommandot az acr update.](/cli/azure/acr#az_acr_update)
 
-För att inaktivera:
+Så här inaktiverar du:
 
 ```azurecli
 az acr update --name myregistry --allow-trusted-services false
 ```
 
-Aktivera inställningen i ett befintligt register eller i ett register där det redan har inaktiverats:
+Så här aktiverar du inställningen i ett befintligt register eller ett register där det redan är inaktiverat:
 
 ```azurecli
 az acr update --name myregistry --allow-trusted-services true
 ```
 
-## <a name="allow-trusted-services---portal"></a>Tillåt betrodda tjänster – Portal
+## <a name="allow-trusted-services---portal"></a>Tillåt betrodda tjänster – portalen
 
-Inställningen Tillåt betrodda tjänster är som standard aktive rad i ett nytt Azure Container Registry. 
+Som standard är inställningen Tillåt betrodda tjänster aktiverad i ett nytt Azure-containerregister. 
 
-Så här inaktiverar eller aktiverar du inställningen på portalen igen:
+Så här inaktiverar eller återaktiverar du inställningen i portalen:
 
-1. I portalen navigerar du till behållar registret.
-1. Under **Inställningar** väljer du **nätverk**. 
-1. I **Tillåt offentligt nätverks åtkomst** väljer du **valda nätverk** eller **inaktiverade**.
+1. Navigera till containerregistret i portalen.
+1. Under **Inställningar** väljer du **Nätverk.** 
+1. I **Tillåt offentlig nätverksåtkomst** väljer du **Valda nätverk eller** **Inaktiverad**.
 1. Gör något av följande:
-    * Om du vill inaktivera åtkomst av betrodda tjänster går du till **brand Väggs undantag** och avmarkerar **Tillåt att betrodda Microsoft-tjänster kommer åt det här behållar** 
-    * Om du vill tillåta betrodda tjänster går du till **brand Väggs undantag** och kontrollerar **Tillåt att betrodda Microsoft-tjänster har åtkomst till detta behållar register**
+    * Om du vill inaktivera åtkomst för betrodda tjänster **avmarkerar du** Tillåt betrodda tjänster Microsoft-tjänster åtkomst till det här containerregistret under **Brandväggsfel.** 
+    * Om du vill tillåta betrodda tjänster under **Brandväggsfel** markerar **du Tillåt betrodda Microsoft-tjänster att komma åt det här containerregistret.**
 1. Välj **Spara**.
 
-## <a name="trusted-services-workflow"></a>Arbets flöde för betrodda tjänster
+## <a name="trusted-services-workflow"></a>Arbetsflöde för betrodda tjänster
 
-Här är ett typiskt arbets flöde som gör det möjligt för en instans av en betrodd tjänst att komma åt en nätverks begränsad behållar register.
+Här är ett vanligt arbetsflöde för att göra det möjligt för en instans av en betrodd tjänst att komma åt ett nätverksbegränsat containerregister.
 
-1. Aktivera en systemtilldelad [hanterad identitet för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) i en instans av någon av de [betrodda tjänsterna](#trusted-services) för Azure Container Registry.
-1. Tilldela identiteten en [Azure-roll](container-registry-roles.md) till registret. Du kan till exempel tilldela ACRPull-rollen för att hämta behållar avbildningar.
-1. Konfigurera inställningen för att tillåta åtkomst av betrodda tjänster i registret som är begränsat till nätverket.
-1. Använd identitetens autentiseringsuppgifter för att autentisera med det begränsade registret i nätverket. 
-1. Hämta bilder från registret eller utför andra åtgärder som tillåts av rollen.
+1. Aktivera en system tilldelad [hanterad identitet för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) i en instans av en av de [betrodda tjänsterna](#trusted-services) för Azure Container Registry.
+1. Tilldela identiteten en [Azure-roll](container-registry-roles.md) till ditt register. Tilldela till exempel rollen ACRPull för att hämta containeravbildningar.
+1. I det nätverksbegränsade registret konfigurerar du inställningen för att tillåta åtkomst av betrodda tjänster.
+1. Använd identitetens autentiseringsuppgifter för att autentisera med det nätverksbegränsade registret. 
+1. Hämta avbildningar från registret eller utför andra åtgärder som tillåts av rollen.
 
-### <a name="example-acr-tasks"></a>Exempel: ACR-aktiviteter
+### <a name="example-acr-tasks"></a>Exempel: ACR-uppgifter
 
-I följande exempel visas hur du använder ACR-uppgifter som en betrodd tjänst. Se [autentisering mellan register i en ACR-aktivitet med hjälp av en Azure-hanterad identitet](container-registry-tasks-cross-registry-authentication.md) för aktivitets information.
+I följande exempel visas hur du använder ACR-uppgifter som en betrodd tjänst. Information om aktiviteter finns i Autentisering mellan register [i en ACR-uppgift](container-registry-tasks-cross-registry-authentication.md) med hjälp av en Azure-hanterad identitet.
 
-1. Skapa eller uppdatera ett Azure Container Registry och [skicka en exempel bas avbildning](container-registry-tasks-cross-registry-authentication.md#prepare-base-registry) till registret. Det här registret är *bas registret* för scenariot.
-1. I ett andra Azure Container Registry [definierar](container-registry-tasks-cross-registry-authentication.md#define-task-steps-in-yaml-file) och [skapar](container-registry-tasks-cross-registry-authentication.md#option-2-create-task-with-system-assigned-identity) du en ACR-uppgift för att hämta en avbildning från bas registret. Aktivera en systemtilldelad hanterad identitet när aktiviteten skapas.
-1. Tilldela aktivitets identiteten [en Azure-roll för att få åtkomst till bas registret](container-registry-tasks-authentication-managed-identity.md#3-grant-the-identity-permissions-to-access-other-azure-resources). Du kan till exempel tilldela AcrPull-rollen som har behörighet att hämta avbildningar.
-1. [Lägg till autentiseringsuppgifter för hanterad identitet](container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task) i uppgiften.
-1. Om du vill bekräfta att aktiviteten kringgår nätverks begränsningar [inaktiverar du offentlig åtkomst](container-registry-access-selected-networks.md#disable-public-network-access) i bas registret.
-1. Kör uppgiften. Om grundläggande register och aktivitet har kon figurer ATS korrekt körs aktiviteten, eftersom bas registret tillåter åtkomst.
+1. Skapa eller uppdatera ett Azure-containerregister och [skicka en exempelbasavbildning](container-registry-tasks-cross-registry-authentication.md#prepare-base-registry) till registret. Det här registret är *basregistret* för scenariot.
+1. I ett andra Azure-containerregister [definierar och](container-registry-tasks-cross-registry-authentication.md#define-task-steps-in-yaml-file) [skapar du en](container-registry-tasks-cross-registry-authentication.md#option-2-create-task-with-system-assigned-identity) ACR-uppgift för att hämta en avbildning från basregistret. Aktivera en system tilldelad hanterad identitet när du skapar uppgiften.
+1. Tilldela uppgiftsidentiteten [en Azure-roll för åtkomst till basregistret](container-registry-tasks-authentication-managed-identity.md#3-grant-the-identity-permissions-to-access-other-azure-resources). Du kan till exempel tilldela rollen AcrPull, som har behörighet att hämta avbildningar.
+1. [Lägg till autentiseringsuppgifter för hanterad](container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task) identitet i uppgiften.
+1. Om du vill bekräfta att aktiviteten kringgår nätverksbegränsningar [inaktiverar du offentlig](container-registry-access-selected-networks.md#disable-public-network-access) åtkomst i basregistret.
+1. Kör uppgiften. Om basregistret och uppgiften har konfigurerats korrekt körs uppgiften korrekt eftersom basregistret tillåter åtkomst.
 
-Så här testar du inaktive ring av åtkomst av betrodda tjänster:
+Så här testar du inaktivering av åtkomst för betrodda tjänster:
 
-1. I bas registret inaktiverar du inställningen för att tillåta åtkomst av betrodda tjänster.
-1. Kör uppgiften igen. I det här fallet Miss lyckas aktiviteten eftersom det inte längre går att utföra åtgärden på grund registret.
+1. I basregistret inaktiverar du inställningen för att tillåta åtkomst från betrodda tjänster.
+1. Kör uppgiften igen. I det här fallet misslyckas aktivitetskörningen eftersom basregistret inte längre tillåter åtkomst för aktiviteten.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Information om hur du begränsar åtkomsten till ett register med en privat slut punkt i ett virtuellt nätverk finns i [Konfigurera Azures privata länk för ett Azure Container Registry](container-registry-private-link.md).
-* Information om hur du konfigurerar brand Väggs regler för registret finns i [Konfigurera regler för offentliga IP-nätverk](container-registry-access-selected-networks.md).
+* Information om hur du begränsar åtkomsten till ett register med hjälp av en privat slutpunkt i ett virtuellt nätverk finns [i Konfigurera Azure Private Link för ett Azure-containerregister.](container-registry-private-link.md)
+* Information om hur du konfigurerar brandväggsregler för registret finns [i Konfigurera regler för offentliga IP-nätverk.](container-registry-access-selected-networks.md)

@@ -1,43 +1,43 @@
 ---
 title: 'Snabbstart: Textanalys v3-klientbibliotek för Node.js | Microsoft Docs'
-description: Kom igång med v3 Textanalys klientbibliotek för Node.js.
+description: Kom igång med v3 Textanalys klientbiblioteket för Node.js.
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 02/09/2021
+ms.date: 04/19/2021
 ms.author: aahi
 ms.reviewer: sumeh, assafi
 ms.custom: devx-track-js
-ms.openlocfilehash: 3640a03f8ac814fec2823a761e651ab386438c5c
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 72ca331546d53f85ca82f33ec6a02558d91f1c1e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107327040"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765105"
 ---
 <a name="HOLTop"></a>
 
-# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-[v3-referensdokumentation](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview)  |  [v3-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[Referensdokumentation för v3](/javascript/api/overview/azure/ai-text-analytics-readme?preserve-view=true&view=azure-node-preview)  |  [v3-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-[v3-referensdokumentation](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
+[Referensdokumentation för v3](/javascript/api/overview/azure/ai-text-analytics-readme)  |  [v3-bibliotekskällkod](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  [v3-paket (NPM)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [v3-exempel](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 ---
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services)
+* Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services)
 * Den aktuella versionen av [Node.js](https://nodejs.org/).
-* När du har din Azure-prenumeration skapar Textanalys en Textanalys resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
-    * Du behöver nyckeln och slutpunkten från den resurs som du skapar för att ansluta ditt program till Textanalys-API:et. Du klistrar in din nyckel och slutpunkt i koden nedan senare i snabbstarten.
-    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och senare uppgradera till en betald nivå för produktion.
+* När du har din Azure-prenumeration skapar du en Textanalys-resurs för att skapa Textanalys resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+    * Du behöver nyckeln och slutpunkten från resursen som du skapar för att ansluta ditt program till Textanalys API. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
+    * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
 * Om du vill använda funktionen Analysera behöver du Textanalys resurs med prisnivån standard (S).
 
 ## <a name="setting-up"></a>Inrätta
@@ -52,14 +52,14 @@ mkdir myapp
 cd myapp
 ```
 
-Kör kommandot `npm init` för att skapa ett nodprogram med en `package.json` fil. 
+Kör kommandot `npm init` för att skapa ett nodprogram med en `package.json` -fil. 
 
 ```console
 npm init
 ```
 ### <a name="install-the-client-library"></a>Installera klientbiblioteket
 
-# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
 Installera `@azure/ai-text-analytics` NPM-paketen:
 
@@ -333,7 +333,7 @@ ID: 0
 
 # <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
-Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `detectLanguage()` och hämta den returnerade `DetectLanguageResultCollection` . Iterera sedan igenom resultaten och skriv ut varje dokument-ID med respektive primärt språk.
+Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `detectLanguage()` och hämta den returnerade `DetectLanguageResultCollection` . Iterera sedan igenom resultaten och skriv ut varje dokuments ID med respektive primärt språk.
 
 ```javascript
 async function languageDetection(client) {
@@ -362,7 +362,7 @@ ID: 0
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `detectLanguage()` och hämta den returnerade `DetectLanguageResultCollection` . Iterera sedan igenom resultaten och skriv ut varje dokument-ID med respektive primärt språk.
+Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `detectLanguage()` och hämta den returnerade `DetectLanguageResultCollection` . Iterera sedan igenom resultaten och skriv ut varje dokuments ID med respektive primärt språk.
 
 ```javascript
 async function languageDetection(client) {
@@ -588,7 +588,7 @@ Document ID: 1
 
 ### <a name="entity-linking"></a>Entity Linking
 
-Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens `recognizeLinkedEntities()` -metod och hämta `RecognizeLinkedEntitiesResult` -objektet. Iterera genom listan över resultat och skriv ut entitetsnamn, ID, datakälla, URL och matchningar. Varje objekt i `matches` matrisen kommer att innehålla förskjutning, längd och poäng för matchningen.
+Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens `recognizeLinkedEntities()` -metod och hämta `RecognizeLinkedEntitiesResult` -objektet. Iterera genom resultatlistan och skriv ut entitetsnamn, ID, datakälla, URL och matchningar. Varje objekt i `matches` matrisen innehåller förskjutning, längd och poäng för matchningen.
 
 ```javascript
 async function linkedEntityRecognition(client){
@@ -645,9 +645,9 @@ Document ID: 0
 
 ## <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
 
-# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `extractKeyPhrases()` och hämta det returnerade `ExtractKeyPhrasesResult` objektet. Iterera igenom resultaten och skriv ut varje dokuments ID och eventuella identifierade nyckelfraser.
+Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `extractKeyPhrases()` och hämta det returnerade `ExtractKeyPhrasesResult` objektet. Iterera genom resultaten och skriv ut varje dokuments ID och eventuella identifierade nyckelfraser.
 
 ```javascript
 async function keyPhraseExtraction(client){
@@ -676,7 +676,7 @@ ID: 0
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `extractKeyPhrases()` och hämta det returnerade `ExtractKeyPhrasesResult` objektet. Iterera igenom resultaten och skriv ut varje dokuments ID och eventuella identifierade nyckelfraser.
+Skapa en matris med strängar som innehåller det dokument som du vill analysera. Anropa klientens -metod `extractKeyPhrases()` och hämta det returnerade `ExtractKeyPhrasesResult` objektet. Iterera genom resultaten och skriv ut varje dokuments ID och eventuella identifierade nyckelfraser.
 
 ```javascript
 async function keyPhraseExtraction(client){
@@ -708,10 +708,9 @@ ID: 0
 
 ## <a name="use-the-api-asynchronously-with-the-analyze-operation"></a>Använda API:et asynkront med åtgärden Analysera
 
-# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-> [!CAUTION]
-> Om du vill använda Analysåtgärder måste du Textanalys en resurs med prisnivån standard (S).  
+[!INCLUDE [Analyze Batch Action pricing](../analyze-operation-pricing-caution.md)]
 
 Skapa en ny funktion med `analyze_example()` namnet , som anropar funktionen `beginAnalyze()` . Resultatet blir en långvarig åtgärd som avsöks efter resultat.
 

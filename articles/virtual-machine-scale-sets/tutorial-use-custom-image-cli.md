@@ -1,5 +1,5 @@
 ---
-title: Självstudie – Använd en anpassad VM-avbildning i en skalnings uppsättning med Azure CLI
+title: Självstudie – Använda en anpassad virtuell datoravbildning i en skalningsuppsättning med Azure CLI
 description: Läs hur du använder Azure CLI för att skapa en anpassad virtuell datoravbildning som du kan använda för att distribuera en VM-skalningsuppsättning
 author: cynthn
 ms.service: virtual-machine-scale-sets
@@ -9,35 +9,35 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: b12715e299f523d7ace56a72b0098b5d7ffac0ab
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9a4abe550da4f0438f875127b3b689045c06e6f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98683062"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763009"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Självstudie: Skapa och använd en anpassad avbildning för VM-skalningsuppsättningar med Azure CLI
 När du skapar en skalningsuppsättning, kan du ange en avbildning som ska användas när de virtuella datorinstanserna distribueras. Om du vill minska antalet uppgifter när de virtuella datorinstanserna distribueras, kan du använda en anpassad virtuell datoravbildning. Den här anpassade virtuella datoravbildningen inkluderar alla nödvändiga programinstallationer eller konfigurationer. Alla virtuella datorinstanser som skapats i skalningsuppsättningen använder den anpassade virtuella datoravbildningen och är redo att hantera din programtrafik. I den här guiden får du lära du dig hur man:
 
 > [!div class="checklist"]
 > * Skapa ett Shared Image Gallery
-> * Skapa en specialiserad avbildnings definition
+> * Skapa en specialiserad avbildningsdefinition
 > * Skapa en avbildningsversion
-> * Skapa en skalnings uppsättning från en specialiserad avbildning
-> * Dela ett avbildnings Galleri
+> * Skapa en skalningsuppsättning från en specialiserad avbildning
+> * Dela ett bildgalleri
 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.4.0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.4.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="overview"></a>Översikt
 
-Ett [delat bild galleri](../virtual-machines/shared-image-galleries.md) fören klar en anpassad bild delning i hela organisationen. Anpassade avbildningar liknar Marketplace-avbildningar, men du skapar dem själv. Anpassade avbildningar kan användas för startkonfigurationer, till exempel förinläsning av program, programkonfigurationer och andra OS-konfigurationer. 
+En [Shared Image Gallery](../virtual-machines/shared-image-galleries.md) förenklar delning av anpassade avbildningar i organisationen. Anpassade avbildningar liknar Marketplace-avbildningar, men du skapar dem själv. Anpassade avbildningar kan användas för startkonfigurationer, till exempel förinläsning av program, programkonfigurationer och andra OS-konfigurationer. 
 
-Med galleriet för delade avbildningar kan du dela dina anpassade VM-avbildningar med andra. Välj vilka bilder du vill dela, vilka regioner du vill göra tillgängliga i och vilka du vill dela dem med. 
+Med Shared Image Gallery kan du dela dina anpassade VM-avbildningar med andra. Välj vilka avbildningar du vill dela, vilka regioner du vill göra dem tillgängliga i och vilka du vill dela dem med. 
 
 ## <a name="create-and-configure-a-source-vm"></a>Skapa och konfigurera en virtuell källdator
 
@@ -55,9 +55,9 @@ az vm create \
 ```
 
 > [!IMPORTANT]
-> **ID: t** för den virtuella datorn visas i utdata från kommandot [AZ VM Create](/cli/azure/vm) . Kopiera den här okänd anledning säkert så att du kan använda den senare i den här självstudien.
+> **ID:t** för den virtuella datorn visas i utdata från [kommandot az vm create.](/cli/azure/vm) Kopiera den till en säker plats så att du kan använda den senare i den här självstudien.
 
-Den offentliga IP-adressen för den virtuella datorn visas också i utdata från kommandot [AZ VM Create](/cli/azure/vm) . SSH till den virtuella datorns offentliga IP-adress enligt följande:
+Den offentliga IP-adressen för den virtuella datorn visas också i utdata från [kommandot az vm create.](/cli/azure/vm) SSH till den virtuella datorns offentliga IP-adress enligt följande:
 
 ```console
 ssh azureuser@<publicIpAddress>
@@ -69,34 +69,34 @@ Nu ska vi installera en grundläggande webbserver för att anpassa din virtuella
 sudo apt-get install -y nginx
 ```
 
-När du är färdig skriver du `exit` för att koppla från ssh-anslutningen.
+När du är klar skriver du för `exit` att koppla från SSH-anslutningen.
 
-## <a name="create-an-image-gallery"></a>Skapa ett bild galleri 
+## <a name="create-an-image-gallery"></a>Skapa ett bildgalleri 
 
-Ett avbildnings galleri är den primära resurs som används för att aktivera avbildnings delning. 
+Ett bildgalleri är den primära resurs som används för att aktivera bilddelning. 
 
-Tillåtna tecken för Galleri namn är versaler eller gemener, siffror, punkter och punkter. Galleri namnet får inte innehålla bindestreck.   Galleri namn måste vara unika inom din prenumeration. 
+Tillåtna tecken för Gallerinamn är versaler eller gemener, siffror, punkter och punkter. Gallerinamnet får inte innehålla bindestreck.   Gallerinamn måste vara unika i din prenumeration. 
 
-Skapa ett bild galleri med [AZ sig-Create](/cli/azure/sig#az-sig-create). I följande exempel skapas en resurs grupp med namnet *myGalleryRG* i *USA, östra* och ett galleri som heter *Galleri.*
+Skapa ett avbildningsgalleri med [az sig create](/cli/azure/sig#az_sig_create). I följande exempel skapas en resursgrupp med namnet gallery *med namnet myGalleryRG* *i* USA, östra och ett galleri med namnet *myGallery*.
 
 ```azurecli-interactive
 az group create --name myGalleryRG --location eastus
 az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-## <a name="create-an-image-definition"></a>Skapa en avbildnings definition
+## <a name="create-an-image-definition"></a>Skapa en avbildningsdefinition
 
-Bild definitioner skapa en logisk gruppering för avbildningar. De används för att hantera information om de avbildnings versioner som skapas i dem. 
+Bilddefinitioner skapar en logisk gruppering för bilder. De används för att hantera information om de avbildningsversioner som skapas i dem. 
 
-Namn på bild definitioner kan bestå av versaler eller gemener, siffror, punkter, streck och punkter. 
+Bilddefinitionsnamn kan består av versaler eller gemener, siffror, punkter, bindestreck och punkter. 
 
-Se till att bild definitionen är av rätt typ. Om du har generaliserat den virtuella datorn (med Sysprep för Windows eller waagent för Linux) bör du skapa en generaliserad avbildnings definition med hjälp av `--os-state generalized` . Om du vill använda den virtuella datorn utan att ta bort befintliga användar konton skapar du en specialiserad avbildnings definition med hjälp av `--os-state specialized` .
+Kontrollera att bilddefinitionen är rätt typ. Om du har generaliserat den virtuella datorn (med Sysprep för Windows eller waagent -deprovision för Linux) bör du skapa en generaliserad avbildningsdefinition med hjälp av `--os-state generalized` . Om du vill använda den virtuella datorn utan att ta bort befintliga användarkonton skapar du en specialiserad avbildningsdefinition med `--os-state specialized` .
 
-Mer information om de värden som du kan ange för en bild definition finns i [bild definitioner](../virtual-machines/shared-image-galleries.md#image-definitions).
+Mer information om de värden som du kan ange för en bilddefinition finns i [Bilddefinitioner.](../virtual-machines/shared-image-galleries.md#image-definitions)
 
-Skapa en bild definition i galleriet med hjälp av [AZ sig-bild-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create).
+Skapa en avbildningsdefinition i galleriet med [az sig image-definition create](/cli/azure/sig/image-definition#az_sig_image_definition_create).
 
-I det här exemplet heter avbildnings definitionen *myImageDefinition* och är för en [SPECIALISERAd](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Linux OS-avbildning. Använd om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem `--os-type Windows` . 
+I det här exemplet heter avbildningsdefinitionen *myImageDefinition* och är för en specialiserad [Linux OS-avbildning.](../virtual-machines/shared-image-galleries.md#generalized-and-specialized-images) Om du vill skapa en definition för avbildningar med hjälp av ett Windows-operativsystem använder du `--os-type Windows` . 
 
 ```azurecli-interactive 
 az sig image-definition create \
@@ -111,18 +111,18 @@ az sig image-definition create \
 ```
 
 > [!IMPORTANT]
-> **ID: t** för bild definitionen visas i kommandots utdata. Kopiera den här okänd anledning säkert så att du kan använda den senare i den här självstudien.
+> **ID:t** för bilddefinitionen visas i kommandots utdata. Kopiera den till en säker plats så att du kan använda den senare i den här självstudien.
 
 
-## <a name="create-the-image-version"></a>Skapa avbildnings versionen
+## <a name="create-the-image-version"></a>Skapa avbildningsversionen
 
-Skapa en avbildnings version från den virtuella datorn med [AZ avbildnings Galleri skapa-avbildning-version](/cli/azure/sig/image-version#az-sig-image-version-create).  
+Skapa en avbildningsversion från den virtuella datorn [med az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create).  
 
-Tillåtna tecken för bild version är tal och punkter. Talen måste vara inom intervallet för ett 32-bitars heltal. Format: *Major version*. *MinorVersion*. *Korrigering*.
+Tillåtna tecken för bildversion är siffror och punkter. Tal måste vara inom intervallet för ett 32-bitars heltal. Format: *MajorVersion*. *MinorVersion*. *Korrigera*.
 
-I det här exemplet är versionen av vår avbildning *1.0.0* och vi kommer att skapa en replik i regionen USA, *södra centrala* och 1 i regionen *USA, östra 2* . De replikerade regionerna måste innehålla den region som den virtuella käll datorn finns i.
+I det här exemplet är versionen av avbildningen *1.0.0* och vi ska skapa en replik i regionen USA, södra *centrala* och en replik i regionen USA, östra *2.* Replikeringsregionerna måste innehålla den region där den virtuella källdatorn finns.
 
-Ersätt värdet för `--managed-image` i det här exemplet med ID: t för din virtuella dator från föregående steg.
+Ersätt värdet för i `--managed-image` det här exemplet med ID:t för den virtuella datorn från föregående steg.
 
 ```azurecli-interactive 
 az sig image-version create \
@@ -135,22 +135,22 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Du måste vänta tills avbildnings versionen är fullständigt slutförd och replikerad innan du kan använda samma hanterade avbildning för att skapa en annan avbildnings version.
+> Du måste vänta tills avbildningsversionen är klar och replikeras innan du kan använda samma hanterade avbildning för att skapa en annan avbildningsversion.
 >
-> Du kan också lagra din avbildning i Premium Storage genom att lägga till `--storage-account-type  premium_lrs` eller [zonens redundant lagring](../storage/common/storage-redundancy.md) genom att lägga till `--storage-account-type  standard_zrs` den när du skapar avbildnings versionen.
+> Du kan också lagra avbildningen i Premium Storage genom att lägga till `--storage-account-type  premium_lrs` eller [zonredundant lagring](../storage/common/storage-redundancy.md) genom att `--storage-account-type  standard_zrs` lägga till när du skapar avbildningsversionen.
 >
 
 
 
 
-## <a name="create-a-scale-set-from-the-image"></a>Skapa en skalnings uppsättning från avbildningen
-Skapa en skalnings uppsättning från den specialiserade avbildningen med hjälp av [`az vmss create`](/cli/azure/vmss#az-vmss-create) . 
+## <a name="create-a-scale-set-from-the-image"></a>Skapa en skalningsuppsättning från avbildningen
+Skapa en skalningsuppsättning från den specialiserade avbildningen med hjälp av [`az vmss create`](/cli/azure/vmss#az_vmss_create) . 
 
-Skapa skalnings uppsättningen med [`az vmss create`](/cli/azure/vmss#az-vmss-create) hjälp av parametern--specialiserad för att ange att avbildningen är en specialiserad avbildning. 
+Skapa skalningsuppsättningen [`az vmss create`](/cli/azure/vmss#az_vmss_create) med hjälp av parametern --specialized för att ange att avbildningen är en specialiserad avbildning. 
 
-Använd bild Definitions-ID: t för för `--image` att skapa skalnings uppsättnings instanserna från den senaste versionen av avbildningen som är tillgänglig. Du kan också skapa skalnings uppsättnings instanser från en speciell version genom att ange avbildningens versions-ID för `--image` . 
+Använd avbildningsdefinitions-ID:t för `--image` att skapa skalningsuppsättningsinstanser från den senaste versionen av avbildningen som är tillgänglig. Du kan också skapa skalningsuppsättningsinstanserna från en specifik version genom att ange avbildningsversions-ID:t för `--image` . 
 
-Skapa en skalnings uppsättning med namnet *myScaleSet* den senaste versionen av *myImageDefinition* -avbildningen som vi skapade tidigare.
+Skapa en skalningsuppsättning med *namnet myScaleSet med* den senaste versionen av *avbildningen myImageDefinition* som vi skapade tidigare.
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -197,9 +197,9 @@ Ange den offentliga IP-adressen i din webbläsare. Standardwebbsidan för NGINX 
 
 ## <a name="share-the-gallery"></a>Dela galleriet
 
-Du kan dela avbildningar över prenumerationer med hjälp av rollbaserad åtkomst kontroll i Azure (Azure RBAC). Du kan dela bilder i galleriet, bild definitionen eller avbildnings versionen. Alla användare som har Läs behörighet till en avbildnings version, även över prenumerationer, kan distribuera en virtuell dator med hjälp av avbildnings versionen.
+Du kan dela avbildningar mellan prenumerationer med hjälp av rollbaserad åtkomstkontroll i Azure (Azure RBAC). Du kan dela bilder i galleriet, bilddefinitionen eller bildversionen. Alla användare som har läsbehörighet till en avbildningsversion, även mellan prenumerationer, kommer att kunna distribuera en virtuell dator med avbildningsversionen.
 
-Vi rekommenderar att du delar med andra användare på Galleri nivån. Om du vill hämta objekt-ID: t för galleriet använder du [AZ sig Visa](/cli/azure/sig#az-sig-show).
+Vi rekommenderar att du delar med andra användare på gallerinivå. Hämta galleriets objekt-ID med [az sig show](/cli/azure/sig#az_sig_show).
 
 ```azurecli-interactive
 az sig show \
@@ -208,7 +208,7 @@ az sig show \
    --query id
 ```
 
-Använd objekt-ID: t som ett omfång, tillsammans med en e-postadress och [AZ roll tilldelning skapa](/cli/azure/role/assignment#az-role-assignment-create) för att ge en användare åtkomst till det delade avbildnings galleriet. Ersätt `<email-address>` och `<gallery iD>` med din egen information.
+Använd objekt-ID:t som ett omfång, tillsammans med en e-postadress och [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) för att ge en användare åtkomst till det delade bildgalleriet. Ersätt `<email-address>` och med din egen `<gallery iD>` information.
 
 ```azurecli-interactive
 az role assignment create \
@@ -217,11 +217,11 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Mer information om hur du delar resurser med hjälp av Azure RBAC finns i [lägga till eller ta bort roll tilldelningar i Azure med hjälp av Azure CLI](../role-based-access-control/role-assignments-cli.md).
+Mer information om hur du delar resurser med Hjälp av Azure RBAC finns i [Lägga till eller ta bort Azure-rolltilldelningar med Azure CLI.](../role-based-access-control/role-assignments-cli.md)
 
 
 ## <a name="clean-up-resources"></a>Rensa resurser
-Ta bort din skalnings uppsättning och ytterligare resurser genom att ta bort resurs gruppen och alla dess resurser med [AZ Group Delete](/cli/azure/group). Parametern `--no-wait` återför kontrollen till kommandotolken utan att vänta på att uppgiften slutförs. Parametern `--yes` bekräftar att du vill ta bort resurserna utan att tillfrågas ytterligare en gång.
+Om du vill ta bort din skalningsuppsättning och ytterligare resurser tar du bort resursgruppen och alla dess resurser med [az group delete](/cli/azure/group). Parametern `--no-wait` återför kontrollen till kommandotolken utan att vänta på att uppgiften slutförs. Parametern `--yes` bekräftar att du vill ta bort resurserna utan att tillfrågas ytterligare en gång.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes
@@ -233,10 +233,10 @@ I den här självstudien fick du läsa om hur du skapar och använder en anpassa
 
 > [!div class="checklist"]
 > * Skapa ett Shared Image Gallery
-> * Skapa en specialiserad avbildnings definition
+> * Skapa en specialiserad avbildningsdefinition
 > * Skapa en avbildningsversion
-> * Skapa en skalnings uppsättning från en specialiserad avbildning
-> * Dela ett avbildnings Galleri
+> * Skapa en skalningsuppsättning från en specialiserad avbildning
+> * Dela ett bildgalleri
 
 Gå vidare till nästa självstudie för att lära dig hur du distribuerar program till din skalningsuppsättning.
 

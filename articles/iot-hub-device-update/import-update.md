@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 4/19/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: ecbc76651f09a9b4f2bde01c733cace5037f5fd4
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: ebfeee2828b3a36f9cf47891f8aea6d889db85bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738836"
+ms.locfileid: "107763585"
 ---
 # <a name="add-an-update-to-device-update-for-iot-hub"></a>Lägga till en uppdatering i Enhetsuppdatering för IoT Hub
 Lär dig hur du lägger till en ny uppdatering i Enhetsuppdatering för IoT Hub.
@@ -19,8 +19,8 @@ Lär dig hur du lägger till en ny uppdatering i Enhetsuppdatering för IoT Hub.
 ## <a name="prerequisites"></a>Förutsättningar
 
 * [Åtkomst till en IoT Hub med Enhetsuppdatering för IoT Hub aktiverat](create-device-update-account.md). 
-* En IoT-enhet (eller simulator) som etablerats för enhetsuppdatering inom IoT Hub.
-* [PowerShell 5](/powershell/scripting/install/installing-powershell) eller senare (inklusive Linux-, macOS- och Windows-installationer)
+* En IoT-enhet (eller simulator) [som etablerats för enhetsuppdatering](device-update-agent-provisioning.md) inom IoT Hub.
+* [PowerShell 5](/powershell/scripting/install/installing-powershell) eller senare (inklusive linux-, macOS- och Windows-installationer)
 * Webbläsare som stöds:
   * [Microsoft Edge](https://www.microsoft.com/edge)
   * Google Chrome
@@ -30,21 +30,21 @@ Lär dig hur du lägger till en ny uppdatering i Enhetsuppdatering för IoT Hub.
 
 ## <a name="obtain-an-update-for-your-devices"></a>Hämta en uppdatering för dina enheter
 
-Nu när [enhetsuppdateringen har ställts](create-device-update-account.md)in är du redo att uppdatera dina enheter. Därefter behöver du de faktiska uppdateringsfiler som du ska distribuera till dessa enheter.
+Nu när du har ställt in Enhetsuppdatering och etablerat dina enheter behöver du de uppdateringsfiler som du ska distribuera till dessa enheter.
 
-Om du har köpt enheter från en OEM- eller lösningsintegrerare tillhandahåller den organisationen troligen uppdateringsfiler åt dig, utan att du behöver skapa uppdateringarna. Kontakta OEM- eller lösningsintegreraren för att ta reda på hur de gör uppdateringar tillgängliga.
+Om du har köpt enheter från en OEM-tillverkare eller lösningsintegratör tillhandahåller organisationen troligen uppdateringsfiler åt dig, utan att du behöver skapa uppdateringarna. Kontakta OEM-tillverkaren eller lösningsintegreraren för att ta reda på hur de gör uppdateringar tillgängliga.
 
-Om din organisation redan skapar programvara för de enheter som du använder, kommer samma grupp att vara den som skapar uppdateringarna för den programvaran. När du skapar en uppdatering som ska distribueras med enhetsuppdatering för IoT Hub, börjar du med antingen den avbildningsbaserade eller [paketbaserade metoden](understand-device-update.md#support-for-a-wide-range-of-update-artifacts) beroende på ditt scenario. Obs! Om du vill skapa egna uppdateringar men precis har börjat är GitHub ett utmärkt alternativ för att hantera din utveckling. Du kan lagra och hantera källkoden och göra kontinuerlig integrering (CI) och kontinuerlig distribution (CD) med hjälp [av GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration).
+Om din organisation redan skapar programvara för de enheter som du använder, kommer samma grupp att vara den som skapar uppdateringarna för den programvaran. När du skapar en uppdatering som ska distribueras med enhetsuppdatering för IoT Hub, börjar du med antingen den avbildningsbaserade eller [paketbaserade metoden](understand-device-update.md#support-for-a-wide-range-of-update-artifacts) beroende på ditt scenario. Obs! Om du vill skapa egna uppdateringar men precis har börjat är GitHub ett utmärkt alternativ för att hantera din utveckling. Du kan lagra och hantera källkoden och göra kontinuerlig integrering (CI) och kontinuerlig distribution (CD) med hjälp av [GitHub Actions](https://docs.github.com/en/actions/guides/about-continuous-integration).
 
 ## <a name="create-a-device-update-import-manifest"></a>Skapa ett importmanifest för enhetsuppdatering
 
-Om du inte redan har gjort det måste du bekanta dig med de grundläggande [importbegreppen](import-concepts.md).
+Om du inte redan har gjort det bör du bekanta dig med de grundläggande [importbegreppen](import-concepts.md).
 
 1. Kontrollera att dina uppdateringsfiler finns i en katalog som är tillgänglig från PowerShell.
 
-2. Skapa en textfil med **namnet AduUpdate.psm1** i katalogen där uppdateringsavbildningsfilen eller APT-manifestfilen finns. Öppna sedan PowerShell-cmdleten [AduUpdate.psm1,](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) kopiera innehållet till textfilen och spara sedan textfilen.
+2. Skapa en textfil med **namnet AduUpdate.psm1** i katalogen där den uppdaterade bildfilen eller APT-manifestfilen finns. Öppna sedan PowerShell-cmdleten [AduUpdate.psm1,](https://github.com/Azure/iot-hub-device-update/tree/main/tools/AduCmdlets) kopiera innehållet till textfilen och spara sedan textfilen.
 
-3. I PowerShell navigerar du till katalogen där du skapade din PowerShell-cmdlet från steg 2. Använd alternativet Kopiera nedan och klistra sedan in i PowerShell för att köra kommandona:
+3. I PowerShell navigerar du till katalogen där du skapade din PowerShell-cmdlet från steg 2. Använd alternativet Kopiera nedan och klistra sedan in det i PowerShell för att köra kommandona:
 
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
@@ -62,17 +62,17 @@ Om du inte redan har gjort det måste du bekanta dig med de grundläggande [impo
     $importManifest | Out-File '.\importManifest.json' -Encoding UTF8
     ```
 
-    Här är några exempelvärden för parametrarna ovan som en snabbreferens. Du kan också visa det fullständiga [importmanifestschemat](import-schema.md) för mer information.
+    Här är några exempelvärden för parametrarna ovan som snabbreferens. Du kan också visa det fullständiga [importmanifestschemat](import-schema.md) för mer information.
 
     | Parameter | Beskrivning |
     | --------- | ----------- |
-    | deviceManufacturer | Enhetens tillverkare som uppdateringen är kompatibel med, till exempel Contoso. Måste matcha _tillverkarens_ [enhetsegenskap](./device-update-plug-and-play.md#device-properties).
+    | deviceManufacturer | Tillverkaren av enheten som uppdateringen är kompatibel med, till exempel Contoso. Måste matcha _tillverkarens_ [enhetsegenskap](./device-update-plug-and-play.md#device-properties).
     | deviceModel | Modellen för enheten som uppdateringen är kompatibel med, till exempel popup-meddelande. Måste matcha [modellenhetsegenskapen](./device-update-plug-and-play.md#device-properties). 
     | updateProvider | Entitet som skapar eller är direkt ansvarig för uppdateringen. Det är ofta ett företagsnamn.
     | updateName | Identifierare för en klass med uppdateringar. Klassen kan vara vad du än väljer. Det är ofta ett enhets- eller modellnamn.
     | updateVersion | Versionsnummer som särskiljer den här uppdateringen från andra som har samma provider och namn. Matchar inte en version av en enskild programvarukomponent på enheten (men kan det om du väljer).
     | updateType | <ul><li>Ange `microsoft/swupdate:1` för avbildningsuppdatering</li><li>Ange `microsoft/apt:1` för paketuppdatering</li></ul>
-    | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdateringstyp</li><li>Ange name-version , _där namnet_ är namnet på APT-manifestet _och versionen_ är versionen av **APT-manifestet.** Till exempel contoso-iot-edge-1.0.0.0.
+    | installedCriteria | <ul><li>Ange värdet för SWVersion för `microsoft/swupdate:1` uppdateringstyp</li><li>Ange name-version , _där namnet_ är namnet på APT-manifestet och _versionen_ är versionen av **APT-manifestet.** Till exempel contoso-iot-edge-1.0.0.0.
     | updateFilePath(s) | Sökväg till uppdateringsfilerna på datorn
 
 
@@ -122,7 +122,7 @@ Exempel:
 ## <a name="import-an-update"></a>Importera en uppdatering
 
 > [!NOTE]
-> Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal användargränssnitt. Du kan också använda [enhetsuppdateringen för att IoT Hub API:er](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att importera en uppdatering. 
+> Anvisningarna nedan visar hur du importerar en uppdatering via Azure Portal användargränssnitt. Du kan också använda [Enhetsuppdatering för att IoT Hub API:er](https://github.com/Azure/iot-hub-device-update/tree/main/docs/publish-api-reference) för att importera en uppdatering. 
 
 1. Logga in på [Azure Portal](https://portal.azure.com) och gå till din IoT Hub med Enhetsuppdatering.
 
@@ -134,7 +134,7 @@ Exempel:
 
    :::image type="content" source="media/import-update/updates-tab.png" alt-text="Uppdateringar" lightbox="media/import-update/updates-tab.png":::
 
-4. Välj "+ Importera ny uppdatering" under rubriken "Redo att distribuera".
+4. Välj "+ Importera ny uppdatering" under rubriken "Klar att distribuera".
 
    :::image type="content" source="media/import-update/import-new-update-2.png" alt-text="Importera ny uppdatering" lightbox="media/import-update/import-new-update-2.png":::
 
@@ -154,11 +154,11 @@ Exempel:
 
    :::image type="content" source="media/import-update/publish-update.png" alt-text="Publicera uppdatering" lightbox="media/import-update/publish-update.png":::
 
-9. Importen börjar och skärmen växlar till avsnittet "Importhistorik". Välj Uppdatera för att visa förloppet tills importen har slutförts (beroende på uppdateringens storlek kan det ta några minuter men kan ta längre tid).
+9. Importen påbörjas och skärmen växlar till avsnittet "Importhistorik". Välj Uppdatera för att visa förloppet tills importen har slutförts (beroende på uppdateringens storlek kan det ta några minuter men kan ta längre tid).
 
-   :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Uppdatera importsekvensering" lightbox="media/import-update/update-publishing-sequence-2.png":::
+   :::image type="content" source="media/import-update/update-publishing-sequence-2.png" alt-text="Uppdatera ordningsföljden för import" lightbox="media/import-update/update-publishing-sequence-2.png":::
 
-10. När kolumnen Status visar att importen har lyckats väljer du rubriken "Redo att distribuera". Nu bör du se din importerade uppdatering i listan.
+10. När kolumnen Status visar att importen har lyckats väljer du rubriken "Redo att distribuera". Nu bör du se den importerade uppdateringen i listan.
 
    :::image type="content" source="media/import-update/update-ready.png" alt-text="Jobbstatus" lightbox="media/import-update/update-ready.png":::
 

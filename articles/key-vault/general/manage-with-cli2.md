@@ -9,25 +9,25 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 0b29b668b21c375dd1202652b5093526f648c300
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: d4037e66e653bc6e958020a5ef8722f2febb53d0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107749608"
+ms.locfileid: "107772188"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Hantera Key Vault med hjälp av Azure CLI 
 
-Den här artikeln beskriver hur du kommer igång med att Azure Key Vault med hjälp av Azure CLI.  Du kan se information om:
+Den här artikeln beskriver hur du kommer igång med Azure Key Vault med hjälp av Azure CLI.  Du kan se information om:
 
 - Så här skapar du en härdad container (ett valv) i Azure
-- Lägga till en nyckel, en hemlighet eller ett certifikat i nyckelvalvet
+- Lägga till en nyckel, hemlighet eller ett certifikat i nyckelvalvet
 - Registrera ett program med Azure Active Directory
 - Auktorisera ett program att använda en nyckel eller hemlighet
-- Ställa in avancerade åtkomstprinciper för Key Vault
+- Ställa in avancerade åtkomstprinciper för nyckelvalv
 - Arbeta med maskinvarusäkerhetsmoduler (HSM)
 - Ta bort nyckelvalvet och associerade nycklar och hemligheter
-- Diverse kommandon för Azures plattformsoberoende kommandoradsgränssnitt
+- Diverse kommandoradskommandon för Azure-plattformsoberoende
 
 
 Azure Key Vault är tillgängligt i de flesta regioner. Mer information finns på sidan med [Key Vault-priser](https://azure.microsoft.com/pricing/details/key-vault/).
@@ -44,13 +44,13 @@ Om du vill använda Azure CLI-kommandona i den här artikeln måste du ha följa
 
 * En prenumeration på Microsoft Azure. Om du inte har ett konto kan du registrera dig för en [kostnadsfri utvärderingsversion](https://azure.microsoft.com/pricing/free-trial).
 * Azure Command-Line Interface version 2.0 eller senare. Information om hur du installerar den senaste versionen [finns i Installera Azure CLI.](/cli/azure/install-azure-cli)
-* Ett program som ska konfigureras för att använda den nyckel eller det lösenord som du skapar i den här artikeln. Ett exempelprogram är tillgängligt från [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Anvisningar finns i den readme-fil som ingår.
+* Ett program som ska konfigureras för att använda den nyckel eller det lösenord som du skapar i den här artikeln. Ett exempelprogram är tillgängligt från [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=45343). Anvisningar finns i den inkluderade Readme-filen.
 
-### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Få hjälp med Azure Cross-Platform Command-Line Interface
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Få hjälp med Azures plattformsoberoende Command-Line gränssnitt
 
 Den här artikeln förutsätter att du är bekant med kommandoradsgränssnittet (Bash, Terminal, Kommandotolken).
 
-Parametern --help eller -h kan användas för att visa hjälp för specifika kommandon. Alternativt kan Azure-hjälpen [kommando] [alternativ] även användas. Om du är osäker på vilka parametrar som krävs av ett kommando kan du läsa hjälpen. Till exempel returnerar följande kommandon samma information:
+Parametern --help eller -h kan användas för att visa hjälp för specifika kommandon. Alternativt kan Azure-hjälpformatet [kommando] [alternativ] också användas. Om du är osäker på vilka parametrar som krävs av ett kommando kan du läsa hjälpen. Till exempel returnerar följande kommandon samma information:
 
 ```azurecli
 az account set --help
@@ -64,7 +64,7 @@ Du kan också läsa följande artiklar för att bekanta dig Azure Resource Manag
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Så här skapar du en härdad container (ett valv) i Azure
 
-Valv är skyddade containrar som backas upp av maskinvarusäkerhetsmoduler. Med valv så minskar risken för att säkerhetsinformation förloras av misstag eftersom lagringen av hemligheter centraliseras. Key Vault kontrollerar och loggar dessutom åtkomsten till allt som lagras i valven. Azure Key Vault kan hantera förfrågningar om och förnyelser av TLS-certifikat (Transport Layer Security), och ger tillgång till alla de funktioner som krävs för en robust livscykelhantering av certifikat. I nästa steg skapar du ett valv.
+Valv är skyddade containrar som backas upp av säkerhetsmoduler för maskinvara. Med valv så minskar risken för att säkerhetsinformation förloras av misstag eftersom lagringen av hemligheter centraliseras. Key Vault kontrollerar och loggar dessutom åtkomsten till allt som lagras i valven. Azure Key Vault kan hantera förfrågningar om och förnyelser av TLS-certifikat (Transport Layer Security), och ger tillgång till alla de funktioner som krävs för en robust livscykelhantering av certifikat. I nästa steg skapar du ett valv.
 
 ### <a name="connect-to-your-subscriptions"></a>Ansluta till dina prenumerationer
 
@@ -220,7 +220,7 @@ az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec
 
 ## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> Ställa in avancerade åtkomstprinciper för nyckelvalv
 
-Använd [az keyvault update för](/cli/azure/keyvault#az-keyvault-update) att aktivera avancerade principer för nyckelvalvet.
+Använd [az keyvault update för](/cli/azure/keyvault#az_keyvault_update) att aktivera avancerade principer för nyckelvalvet.
 
  Aktivera Key Vault för distribution: Tillåter att virtuella datorer hämtar certifikat som lagras som hemligheter från valvet.
 
@@ -242,7 +242,7 @@ az keyvault update --name "ContosoKeyVault" --resource-group "ContosoResourceGro
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Arbeta med maskinvarusäkerhetsmoduler (HSM)
 
-För ytterligare säkerhet kan du importera eller generera nycklar från maskinvarusäkerhetsmoduler (HSM) som aldrig lämnar HSM-gränsen. HSM-modulerna är FIPS 140-2 Level 2-verifierade. Om detta krav inte är nödvändigt för dig hoppar du över det här avsnittet och går vidare till Ta bort nyckelvalvet och associerade nycklar och hemligheter.
+För ökad säkerhet kan du importera eller generera nycklar från maskinvarusäkerhetsmoduler (HSM) som aldrig lämnar HSM-gränsen. HSM-modulerna är FIPS 140-2 Level 2-verifierade. Om detta krav inte är nödvändigt för dig hoppar du över det här avsnittet och går vidare till Ta bort nyckelvalvet och associerade nycklar och hemligheter.
 
 Om du vill skapa HSM-skyddade nycklar behöver du en valvprenumeration som stöder HSM-skyddade nycklar.
 
@@ -286,7 +286,7 @@ Eller så kan du ta bort en hel Azure-resursgrupp, som innehåller nyckelvalvet 
 az group delete --name "ContosoResourceGroup"
 ```
 
-## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Diverse kommandoradskommandon för Azure-plattformsoberoende
+## <a name="miscellaneous-azure-cross-platform-command-line-interface-commands"></a>Diverse kommandon för Azures plattformsoberoende kommandoradsgränssnitt
 
 Andra kommandon som kan vara användbara för att hantera Azure Key Vault.
 
@@ -322,8 +322,8 @@ az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Fullständig Azure CLI-referens för nyckelvalvskommandon finns i [Key Vault CLI-referens.](/cli/azure/keyvault)
+- Fullständig Azure CLI-referens för nyckelvalvskommandon finns i [Key Vault CLI-referens](/cli/azure/keyvault).
 
 - Programmeringsreferenser [finns i Azure Key Vault utvecklarhandbok](developers-guide.md)
 
-- Mer information om Azure Key Vault och HSM:er finns i Använda [HSM-Protected nycklar med Azure Key Vault](../keys/hsm-protected-keys.md).
+- Mer information om Azure Key Vault och HSM:er finns i Använda [HSM-Protected-nycklar med Azure Key Vault](../keys/hsm-protected-keys.md).

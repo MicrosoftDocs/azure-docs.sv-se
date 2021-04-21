@@ -1,46 +1,46 @@
 ---
 title: Konfigurera Kerberos Key Distribution Center proxy Windows Virtual Desktop – Azure
-description: Konfigurera en Windows-pool för virtuella skriv bord för att använda en Kerberos Key Distribution Center proxy.
+description: Konfigurera en värdpool Windows Virtual Desktop använda en Kerberos-Key Distribution Center proxy.
 author: Heidilohr
 ms.topic: how-to
 ms.date: 03/20/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 21db7ed0cf13a3ed282929b09847c6c3ba8a36ed
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 9dce264b7f2c88aed11f5b82a61f83cbac6c9697
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107307256"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785117"
 ---
-# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurera en Kerberos Key Distribution Center proxy (förhands granskning)
+# <a name="configure-a-kerberos-key-distribution-center-proxy-preview"></a>Konfigurera en Kerberos Key Distribution Center proxy (förhandsversion)
 
 > [!IMPORTANT]
 > Den här funktionen är för närvarande i allmänt tillgänglig förhandsversion.
-> Den här för hands versionen tillhandahålls utan service nivå avtal och vi rekommenderar inte att du använder den för produktions arbets belastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
+> Den här förhandsversionen tillhandahålls utan serviceavtal och vi rekommenderar inte att du använder den för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade.
 > Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Säkerhets medveten kunder, till exempel finansiella eller myndighets organisationer, loggar ofta in med smartkort. Smartkort gör distributioner säkrare genom att kräva multifaktorautentisering (MFA). För RDP-delen av en Windows Virtual Desktop-Session kräver dock smartkort en direkt anslutning, eller "sikt", med en Active Directory (AD) domänkontrollant för Kerberos-autentisering. Utan denna direkta anslutning kan användarna inte automatiskt logga in till organisationens nätverk från fjärr anslutningar. Användare i en Windows-distribution med virtuella skriv bord kan använda KDC-proxyservern för att använda proxyn för autentisering och logga in på distans. KDC-proxyn gör det möjligt att autentisera Remote Desktop Protocol av en Windows Virtual Desktop-Session, vilket gör att användaren kan logga in på ett säkert sätt. Detta gör att det blir mycket enklare att arbeta från hemmet och att vissa katastrof återställnings scenarier kan köras smidigt.
+Säkerhetsmedvetna kunder, till exempel finans- eller myndighetsorganisationer, loggar ofta in med smartkort. Smartkort gör distributioner säkrare genom att kräva multifaktorautentisering (MFA). Men för RDP-delen av en Windows Virtual Desktop-session kräver smartkort en direkt anslutning, eller "synlinje", med en Active Directory-domänkontrollant (AD) för Kerberos-autentisering. Utan den här direkta anslutningen kan användarna inte automatiskt logga in på organisationens nätverk från fjärranslutningar. Användare i en Windows Virtual Desktop-distribution kan använda KDC-proxytjänsten för att proxystyra autentiseringstrafiken och logga in via en fjärrdator. KDC-proxyn tillåter autentisering för Remote Desktop Protocol en Windows Virtual Desktop session, så att användaren kan logga in på ett säkert sätt. Detta gör arbetet hemifrån mycket enklare och gör att vissa scenarier för haveriberedskap kan köras smidigare.
 
-Att konfigurera KDC-proxyn innebär dock vanligt vis att tilldela Windows Server Gateway-rollen i Windows Server 2016 eller senare. Hur använder du en Fjärrskrivbordstjänster roll för att logga in på Windows Virtual Desktop? Vi tar en titt på komponenterna för att få svar på det.
+Att konfigurera KDC-proxyn innebär dock vanligtvis att tilldela Windows Server Gateway-rollen i Windows Server 2016 eller senare. Hur använder du en Fjärrskrivbordstjänster för att logga in på Windows Virtual Desktop? Som svar på det tar vi en snabb titt på komponenterna.
 
-Det finns två komponenter till den Windows Virtual Desktop-tjänst som behöver autentiseras:
+Det finns två komponenter i Windows Virtual Desktop-tjänsten som måste autentiseras:
 
-- Feeden i den virtuella Windows-klienten som ger användare en lista över tillgängliga Skriv bord eller program som de har åtkomst till. Den här autentiseringsprocessen sker i Azure Active Directory, vilket innebär att den här komponenten inte fokuserar på den här artikeln.
-- RDP-sessionen som resulterar i en användare som väljer någon av de tillgängliga resurserna. Den här komponenten använder Kerberos-autentisering och kräver en KDC-proxy för fjärran vändare.
+- Flödet i den Windows Virtual Desktop som ger användarna en lista över tillgängliga skrivbord eller program som de har åtkomst till. Den här autentiseringsprocessen sker Azure Active Directory, vilket innebär att den här komponenten inte är fokus i den här artikeln.
+- RDP-sessionen som resulterar från att en användare väljer en av de tillgängliga resurserna. Den här komponenten använder Kerberos-autentisering och kräver en KDC-proxy för fjärranvändare.
 
-Den här artikeln visar hur du konfigurerar feeden i Windows Virtual Desktop-klienten i Azure Portal. Om du vill lära dig hur du konfigurerar RD Gateway-rollen, se [distribuera RD Gateway-rollen](/azure/virtual-desktop/rd-gateway-role).
+Den här artikeln visar hur du konfigurerar feeden i Windows Virtual Desktop klienten i Azure Portal. Mer information om hur du konfigurerar fjärrskrivbordsgatewayrollen finns i [Distribuera fjärrskrivbordsgatewayrollen](/azure/virtual-desktop/rd-gateway-role).
 
 ## <a name="requirements"></a>Krav
 
-Om du vill konfigurera en Windows-värd för fjärrskrivbordssession med en KDC-proxy behöver du följande saker:
+Om du vill Windows Virtual Desktop en sessionsvärd med en KDC-proxy behöver du följande:
 
-- Åtkomst till Azure Portal och ett Azure-administratörskonto.
-- Fjärrklientdatorerna måste köra antingen Windows 10 eller Windows 7 och ha [Windows Desktop-klienten](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) installerad.
-- Du måste ha en KDC-proxy redan installerad på datorn. Information om hur du gör finns i [Konfigurera RD Gateway-rollen för Windows Virtual Desktop](rd-gateway-role.md).
-- Datorns operativ system måste vara Windows Server 2016 eller senare.
+- Åtkomst till Azure Portal ett Azure-administratörskonto.
+- Fjärrklientdatorerna måste köra antingen Windows 10 eller Windows 7 och ha [Windows Desktop-klienten](/windows-server/remote/remote-desktop-services/clients/windowsdesktop) installerad. Webbklienten stöds för närvarande inte.
+- Du måste ha en KDC-proxy installerad på datorn. Mer information om hur du gör det finns i [Konfigurera fjärrskrivbordsgatewayrollen för Windows Virtual Desktop](rd-gateway-role.md).
+- Datorns operativsystem måste vara Windows Server 2016 eller senare.
 
-När du har bestämt dig för att uppfylla de här kraven är du redo att komma igång.
+När du har sett till att du uppfyller dessa krav är du redo att komma igång.
 
 ## <a name="how-to-configure-the-kdc-proxy"></a>Så här konfigurerar du KDC-proxyn
 
@@ -48,28 +48,28 @@ Så här konfigurerar du KDC-proxyn:
 
 1. Logga in på Azure Portal som administratör.
 
-2. Gå till sidan Windows Virtual Desktop.
+2. Gå till Windows Virtual Desktop sidan.
 
-3. Välj den värd pool som du vill aktivera KDC-proxy för och välj sedan **RDP-egenskaper**.
-
-    > [!div class="mx-imgBorder"]
-    > ![En skärm bild av Azure Portal sidan som visar en användare som väljer lagringspooler, sedan namnet på exempel värd-poolen och sedan RDP-egenskaper.](media/rdp-properties.png)
-
-4. Välj fliken **Avancerat** och ange sedan ett värde i följande format utan blank steg:
-
-    
-    > kdcproxyname: s:\<fqdn\>
-    
+3. Välj den värdpool som du vill aktivera KDC-proxyn för och välj **sedan RDP-egenskaper.**
 
     > [!div class="mx-imgBorder"]
-    > ![En skärm bild som visar fliken Avancerat vald, med det värde som anges enligt beskrivningen i steg 4.](media/advanced-tab-selected.png)
+    > ![En skärmbild av Azure Portal visar en användare som väljer värdpooler, sedan namnet på exempelvärdpoolen och sedan RDP-egenskaper.](media/rdp-properties.png)
+
+4. Välj fliken **Avancerat** och ange sedan ett värde i följande format utan blanksteg:
+
+    
+    > kdcproxyname:s:\<fqdn\>
+    
+
+    > [!div class="mx-imgBorder"]
+    > ![En skärmbild som visar fliken Avancerat markerad med värdet angivet enligt beskrivningen i steg 4.](media/advanced-tab-selected.png)
 
 5. Välj **Spara**.
 
-6. Den valda poolen ska nu börja utfärda RDP-anslutningsfiler som innehåller det kdcproxyname-värde som du angav i steg 4.
+6. Den valda värdpoolen bör nu börja utfärda RDP-anslutningsfiler som innehåller det kdcproxyname-värde som du angav i steg 4.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Information om hur du hanterar den Fjärrskrivbordstjänster sidan av KDC-proxyn och tilldelar RD Gateway-rollen finns i [distribuera RD Gateway-rollen](rd-gateway-role.md).
+Information om hur du hanterar Fjärrskrivbordstjänster av KDC-proxyn och tilldelar rollen fjärrskrivbordsgateway finns i [Distribuera fjärrskrivbordsgatewayrollen](rd-gateway-role.md).
 
-Om du är intresse rad av att skala KDC-proxyservrarna lär du dig att konfigurera hög tillgänglighet för KDC-proxy med [hög tillgänglighet till webb sidan för webb-och gateway-webbfrontend](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha).
+Om du är intresserad av att skala KDC-proxyservrarna kan du läsa om hur du ställer in hög tillgänglighet för KDC-proxy på Lägg till hög tillgänglighet för webb- och [gatewaywebbtjänsten](/windows-server/remote/remote-desktop-services/rds-rdweb-gateway-ha)för fjärrskrivbord.

@@ -3,12 +3,12 @@ title: Hanterade identiteter för Azure-resurser med Service Bus
 description: Den här artikeln beskriver hur du använder hanterade identiteter för att komma åt Azure Service Bus entiteter (köer, ämnen och prenumerationer).
 ms.topic: article
 ms.date: 01/21/2021
-ms.openlocfilehash: cac254ef6b57f1878620b1e3ca30e757d7f39a88
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0558e00ac7e8ce67d2e5194b02d2de06f2d38ff1
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529460"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785441"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Autentisera en hanterad identitet med Azure Active Directory åtkomst till Azure Service Bus resurser
 [Hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md) är en funktion mellan Azure som gör att du kan skapa en säker identitet som är associerad med distributionen som programkoden körs under. Du kan sedan associera identiteten med åtkomstkontrollroller som beviljar anpassade behörigheter för åtkomst till specifika Azure-resurser som ditt program behöver.
@@ -45,7 +45,7 @@ Innan du tilldelar en Azure-roll till ett säkerhetsobjekt ska du bestämma vilk
 
 I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Service Bus resurser, från och med det smalaste omfånget:
 
-- **Kö,** **ämne** eller prenumeration: **Rolltilldelning** gäller för den specifika Service Bus entiteten. För närvarande stöder Azure Portal inte tilldelning av användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerationsnivå. Här är ett exempel på hur du använder Azure [CLI-kommandot az-role-assignment-create](/cli/azure/role/assignment?#az-role-assignment-create) för att tilldela en identitet till en Service Bus Azure-roll: 
+- **Kö,** **ämne** eller prenumeration: **Rolltilldelning** gäller för den specifika Service Bus entiteten. För närvarande stöder Azure Portal inte tilldelning av användare/grupper/hanterade identiteter till Service Bus Azure-roller på prenumerationsnivå. Här är ett exempel på hur du använder Azure [CLI-kommandot az-role-assignment-create](/cli/azure/role/assignment?#az_role_assignment_create) för att tilldela en identitet till en Service Bus Azure-roll: 
 
     ```azurecli
     az role assignment create \
@@ -60,7 +60,7 @@ I följande lista beskrivs de nivåer där du kan begränsa åtkomsten till Serv
 > [!NOTE]
 > Tänk på att azure-rolltilldelningar kan ta upp till fem minuter att spridas. 
 
-Mer information om hur inbyggda roller definieras finns i Förstå [rolldefinitioner.](../role-based-access-control/role-definitions.md#management-and-data-operations) Information om hur du skapar anpassade Azure-roller finns i [Anpassade Roller i Azure.](../role-based-access-control/custom-roles.md)
+Mer information om hur inbyggda roller definieras finns i Förstå [rolldefinitioner.](../role-based-access-control/role-definitions.md#management-and-data-operations) Information om hur du skapar anpassade Roller i Azure finns i [Anpassade Roller i Azure.](../role-based-access-control/custom-roles.md)
 
 ## <a name="enable-managed-identities-on-a-vm"></a>Aktivera hanterade identiteter på en virtuell dator
 Innan du kan använda hanterade identiteter för Azure-resurser för att auktorisera Service Bus från den virtuella datorn måste du först aktivera hanterade identiteter för Azure-resurser på den virtuella datorn. Information om hur du aktiverar hanterade identiteter för Azure-resurser finns i någon av följande artiklar:
@@ -104,7 +104,7 @@ Om du vill tilldela en roll Service Bus ett namnområde navigerar du till namnom
 > 
 > [Skapa ett Service Bus för meddelanden](service-bus-create-namespace-portal.md) om du inte har ett. 
 
-1. I Azure Portal navigerar du till Service Bus namnområdet och visar **Översikt** för namnområdet. 
+1. I Azure Portal navigerar du till Service Bus namnområdet och visar **översikten** för namnområdet. 
 1. Välj **Access Control (IAM)** på den vänstra menyn för att visa åtkomstkontrollinställningar för Service Bus namnområdet.
 1.  Välj fliken **Rolltilldelningar** för att se listan över rolltilldelningar.
 3.  Välj **Lägg till** och sedan Lägg till **rolltilldelning.**

@@ -1,7 +1,7 @@
 ---
-title: Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (förhands granskning)
+title: Konfigurera kryptering med kund hanterade nycklar som lagras i Azure Key Vault Managed HSM (förhandsversion)
 titleSuffix: Azure Storage
-description: Lär dig hur du konfigurerar Azure Storage kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (för hands version) med hjälp av Azure CLI.
+description: Lär dig hur du Azure Storage kryptering med kund-hanterade nycklar som lagras i Azure Key Vault Managed HSM (förhandsversion) med hjälp av Azure CLI.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,30 +11,30 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: ea51c1f7fcfce5b795965eab2f9c03a820a6ab03
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: f9b40c934cb428a31a3feb77195518d5351818d7
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106059368"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107785369"
 ---
-# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM (förhands granskning)
+# <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault-managed-hsm-preview"></a>Konfigurera kryptering med kund hanterade nycklar som lagras i Azure Key Vault Managed HSM (förhandsversion)
 
-Azure Storage krypterar alla data i ett lagrings konto i vila. Som standard krypteras data med Microsoft-hanterade nycklar. Om du vill ha ytterligare kontroll över krypterings nycklarna kan du hantera dina egna nycklar. Kundhanterade nycklar måste lagras i Azure Key Vault eller Key Vault-hanterad maskin varu säkerhets modell (HSM) (för hands version). En Azure Key Vault hanterad HSM är ett FIPS 140-2-nivå 3-verifierad HSM.
+Azure Storage krypterar alla data i ett vilokonto för lagring. Som standard krypteras data med Microsoft-hanterade nycklar. Om du vill ha ytterligare kontroll över krypteringsnycklar kan du hantera dina egna nycklar. Kund hanterade nycklar måste lagras i Azure Key Vault eller Key Vault Managed Hardware Security Model (HSM) (förhandsversion). En Azure Key Vault Managed HSM är en FIPS 140-2 Level 3-verifierad HSM.
 
-Den här artikeln visar hur du konfigurerar kryptering med Kundhanterade nycklar som lagras i en hanterad HSM med hjälp av Azure CLI. Information om hur du konfigurerar kryptering med Kundhanterade nycklar som lagras i ett nyckel valv finns i [Konfigurera kryptering med Kundhanterade nycklar som lagras i Azure Key Vault](customer-managed-keys-configure-key-vault.md).
+Den här artikeln visar hur du konfigurerar kryptering med kund hanterade nycklar som lagras i en hanterad HSM med hjälp av Azure CLI. Information om hur du konfigurerar kryptering med kund hanterade nycklar som lagras i ett nyckelvalv finns i Konfigurera kryptering med kund hanterade nycklar som [lagras i Azure Key Vault](customer-managed-keys-configure-key-vault.md).
 
 > [!IMPORTANT]
 >
-> Kryptering med Kundhanterade nycklar som lagras i Azure Key Vault hanterad HSM är för närvarande en för **hands version**. Se [kompletterande användnings villkor för Microsoft Azure för hands](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) versioner av juridiska villkor som gäller för Azure-funktioner som är i beta, för hands version eller på annat sätt ännu inte släpps till allmän tillgänglighet.
+> Kryptering med kund hanterade nycklar som lagras i Azure Key Vault Managed HSM finns för närvarande i **FÖRHANDSVERSION.** Se kompletterande [användningsvillkor för förhandsversioner Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) för juridiska villkor som gäller för Azure-funktioner som är i betaversion, förhandsversion eller som inte har släppts allmänt ännu.
 >
-> Azure Key Vault och Azure Key Vault Managed HSM stöder samma API: er och hanterings gränssnitt för konfiguration.
+> Azure Key Vault och Azure Key Vault Managed HSM stöder samma API:er och hanteringsgränssnitt för konfiguration.
 
-## <a name="assign-an-identity-to-the-storage-account"></a>Tilldela lagrings kontot en identitet
+## <a name="assign-an-identity-to-the-storage-account"></a>Tilldela en identitet till lagringskontot
 
-Tilldela först en systemtilldelad hanterad identitet till lagrings kontot. Du använder den här hanterade identiteten för att ge lagrings kontots behörigheter åtkomst till hanterad HSM. Mer information om systemtilldelade hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../../active-directory/managed-identities-azure-resources/overview.md).
+Först tilldelar du en system tilldelad hanterad identitet till lagringskontot. Du använder den här hanterade identiteten för att ge lagringskontot behörighet att komma åt den hanterade HSM:en. Mer information om system tilldelade hanterade identiteter finns i [Vad är hanterade identiteter för Azure-resurser?](../../active-directory/managed-identities-azure-resources/overview.md).
 
-Om du vill tilldela en hanterad identitet med Azure CLI anropar du [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update). Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden:
+Om du vill tilldela en hanterad identitet med hjälp av Azure CLI [anropar du az storage account update](/cli/azure/storage/account#az_storage_account_update). Kom ihåg att ersätta platshållarvärdena inom hakparentes med dina egna värden:
 
 ```azurecli
 az storage account update \
@@ -43,11 +43,11 @@ az storage account update \
     --assign-identity
 ```
 
-## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>Tilldela en roll till lagrings kontot för åtkomst till den hanterade HSM
+## <a name="assign-a-role-to-the-storage-account-for-access-to-the-managed-hsm"></a>Tilldela en roll till lagringskontot för åtkomst till den hanterade HSM:en
 
-Tilldela sedan **krypterings rollen hanterad HSM-krypto** till lagrings kontots hanterade identitet så att lagrings kontot har behörighet till den hanterade HSM. Microsoft rekommenderar att du omfångerar roll tilldelningen till nivån för den enskilda nyckeln för att ge minsta möjliga behörighet till den hanterade identiteten.
+Tilldela sedan **krypteringsrollen för den** hanterade HSM-krypteringstjänsten till lagringskontots hanterade identitet så att lagringskontot har behörighet till den hanterade HSM:en. Microsoft rekommenderar att du omfångsomfånget för rolltilldelningen till nivån för den enskilda nyckeln för att ge så få behörigheter som möjligt till den hanterade identiteten.
 
-Om du vill skapa roll tilldelningen för lagrings kontot anropar du [AZ Key Vault roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create). Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden.
+Om du vill skapa rolltilldelningen för lagringskontot [anropar du az key vault role assignment create](/cli/azure/role/assignment#az_role_assignment_create). Kom ihåg att ersätta platshållarvärdena inom hakparentes med dina egna värden.
   
 ```azurecli
 storage_account_principal = $(az storage account show \
@@ -63,13 +63,13 @@ az keyvault role assignment create \
     --scope /keys/<key-name>
 ```
 
-## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Konfigurera kryptering med en nyckel i den hanterade HSM
+## <a name="configure-encryption-with-a-key-in-the-managed-hsm"></a>Konfigurera kryptering med en nyckel i den hanterade HSM:en
 
-Konfigurera slutligen Azure Storage kryptering med Kundhanterade nycklar för att använda en nyckel som lagras i den hanterade HSM. Nyckel typer som stöds är RSA-HSM-nycklar av storlekarna 2048, 3072 och 4096. Information om hur du skapar en nyckel i en hanterad HSM finns i [skapa en HSM-nyckel](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key).
+Slutligen konfigurerar du Azure Storage med kund hanterade nycklar för att använda en nyckel som lagras i den hanterade HSM:en. Nyckeltyper som stöds är RSA-HSM-nycklar av storlekarna 2048, 3072 och 4096. Information om hur du skapar en nyckel i en hanterad HSM finns i [Skapa en HSM-nyckel.](../../key-vault/managed-hsm/key-management.md#create-an-hsm-key)
 
-Installera Azure CLI-2.12.0 eller senare för att konfigurera kryptering för att använda en kundhanterad nyckel i en hanterad HSM. Mer information finns i [Installera Azure CLI](/cli/azure/install-azure-cli).
+Installera Azure CLI 2.12.0 eller senare för att konfigurera kryptering för att använda en kund hanterad nyckel i en hanterad HSM. Mer information finns i [Installera Azure CLI.](/cli/azure/install-azure-cli)
 
-Om du vill uppdatera nyckel versionen för en kundhanterad nyckel automatiskt, utelämnar du nyckel versionen när du konfigurerar kryptering med Kundhanterade nycklar för lagrings kontot. Anropa [AZ Storage Account Update](/cli/azure/storage/account#az_storage_account_update) för att uppdatera lagrings kontots krypterings inställningar, som du ser i följande exempel. Inkludera `--encryption-key-source parameter` och Ställ in det på `Microsoft.Keyvault` för att aktivera Kundhanterade nycklar för kontot. Kom ihåg att ersätta plats hållarnas värden inom hakparenteser med dina egna värden.
+Om du vill uppdatera nyckelversionen för en kund hanterad nyckel automatiskt utelämnar du nyckelversionen när du konfigurerar kryptering med kund hanterade nycklar för lagringskontot. Anropa [az storage account update](/cli/azure/storage/account#az_storage_account_update) för att uppdatera lagringskontots krypteringsinställningar, som du ser i följande exempel. Inkludera och `--encryption-key-source parameter` ställ in den på för att aktivera kund `Microsoft.Keyvault` hanterade nycklar för kontot. Kom ihåg att ersätta platshållarvärdena inom hakparentes med dina egna värden.
 
 ```azurecli
 hsmurl = $(az keyvault show \
@@ -85,7 +85,7 @@ az storage account update \
     --encryption-key-vault $hsmurl
 ```
 
-Om du vill uppdatera versionen för en kundhanterad nyckel manuellt inkluderar du nyckel versionen när du konfigurerar kryptering för lagrings kontot:
+Om du vill uppdatera versionen för en kund hanterad nyckel manuellt inkluderar du nyckelversionen när du konfigurerar kryptering för lagringskontot:
 
 ```azurecli-interactive
 az storage account update
@@ -97,9 +97,9 @@ az storage account update
     --encryption-key-vault $hsmurl
 ```
 
-När du uppdaterar nyckel versionen manuellt måste du uppdatera lagrings kontots krypterings inställningar för att använda den nya versionen. Börja med att fråga efter Key Vault-URI: n genom att anropa AZ-nyckelpar [show](/cli/azure/keyvault#az-keyvault-show)och för nyckel versionen genom att anropa [AZ Key Vault Key List-versions](/cli/azure/keyvault/key#az-keyvault-key-list-versions). Anropa sedan [AZ Storage Account Update](/cli/azure/storage/account#az-storage-account-update) för att uppdatera lagrings kontots krypterings inställningar för att använda den nya versionen av nyckeln, som du ser i föregående exempel.
+När du uppdaterar nyckelversionen manuellt måste du uppdatera lagringskontots krypteringsinställningar för att använda den nya versionen. Fråga först efter nyckelvalvs-URI:en genom att anropa [az keyvault show](/cli/azure/keyvault#az_keyvault_show)och för nyckelversionen genom att anropa [az keyvault key list-versions](/cli/azure/keyvault/key#az_keyvault_key_list_versions). Anropa sedan [az storage account update](/cli/azure/storage/account#az_storage_account_update) för att uppdatera lagringskontots krypteringsinställningar för att använda den nya versionen av nyckeln, som du ser i föregående exempel.
 
 ## <a name="next-steps"></a>Nästa steg
 
 - [Azure Storage-kryptering av vilande data](storage-service-encryption.md)
-- [Kundhanterade nycklar för Azure Storage kryptering](customer-managed-keys-overview.md)
+- [Kund-hanterade nycklar för Azure Storage kryptering](customer-managed-keys-overview.md)

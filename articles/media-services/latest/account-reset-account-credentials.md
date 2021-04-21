@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: cc605a08147da1d076b302e515a4ebe8d411a782
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: d5604f177484d33255d2923d72b00fae124c0f9a
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105964246"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107783601"
 ---
-# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-exempel: återställa kontoautentiseringsuppgifter
+# <a name="azure-cli-example-reset-the-account-credentials"></a>Azure CLI-exempel: Återställa autentiseringsuppgifterna för kontot
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
@@ -30,7 +30,7 @@ Azure CLI-skriptet i den här artikeln visar hur du kan återställa autentiseri
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-[Skapa ett Media Services-konto](./create-account-howto.md).
+[Skapa ett Media Services konto](./create-account-howto.md).
 
 ## <a name="example-script"></a>Exempelskript
 
@@ -46,5 +46,5 @@ az ams account sp reset-credentials \
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [AZ AMS](/cli/azure/ams)
-* [Återställ autentiseringsuppgifter](/cli/azure/ams/account/sp#az-ams-account-sp-reset-credentials)
+* [az ams](/cli/azure/ams)
+* [Återställ autentiseringsuppgifter](/cli/azure/ams/account/sp#az_ams_account_sp_reset_credentials)

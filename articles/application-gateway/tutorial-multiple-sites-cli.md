@@ -1,5 +1,5 @@
 ---
-title: Värd för flera webbplatser med CLI
+title: Vara värd för flera webbplatser med CLI
 titleSuffix: Azure Application Gateway
 description: Lär dig hur du skapar en programgateway som är värd för flera webbplatser i Azure CLI.
 services: application-gateway
@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 350962aed89d04c5508e7b2c50e8a838cd5a7174
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cb924ab1f8947fefc83ed35a409628a576fad4b9
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94566154"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772691"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Skapa en programgateway som är värd för flera webbplatser med hjälp av Azure CLI
 
-Du kan använda Azure CLI till att [konfigurera ett värdskap för flera webbplatser](multiple-site-overview.md) när du skapar en [programgateway](overview.md). I den här artikeln definierar du backend-adresspooler med Virtual Machines Scale Sets. Du konfigurerar sedan lyssnare och regler baserat på de domäner du äger för att kontrollera att webbtrafiken anländer till rätt servrar i poolerna. Den här artikeln förutsätter att du äger flera domäner och använder exempel på *www- \. contoso.com* och *www- \. fabrikam.com*.
+Du kan använda Azure CLI till att [konfigurera ett värdskap för flera webbplatser](multiple-site-overview.md) när du skapar en [programgateway](overview.md). I den här artikeln definierar du serveradresspooler med skalningsuppsättningar för virtuella datorer. Du konfigurerar sedan lyssnare och regler baserat på de domäner du äger för att kontrollera att webbtrafiken anländer till rätt servrar i poolerna. Den här artikeln förutsätter att du äger flera domäner och använder exempel *på www \. contoso.com* *och www \. fabrikam.com*.
 
 I den här artikeln kan du se hur du:
 
@@ -29,15 +29,15 @@ I den här artikeln kan du se hur du:
 * Skapa VM-skalningsuppsättningar med serverdelspoolerna
 * Skapa en CNAME-post i domänen
 
-:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Application Gateway för flera platser":::
+:::image type="content" source="./media/tutorial-multiple-sites-cli/scenario.png" alt-text="Flera Application Gateway":::
 
-Om du vill kan du slutföra den här proceduren med hjälp av [Azure PowerShell](tutorial-multiple-sites-powershell.md).
+Om du vill kan du slutföra den här proceduren med [hjälp av Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2.0.4 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0.4 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -77,7 +77,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Skapa programgatewayen
 
-Du kan använda [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) till att skapa programgatewayen. När du skapar en programgateway med hjälp av Azure CLI anger du konfigurationsinformation som kapacitet, sku och HTTP-inställningar. Programgatewayen tilldelas till *myAGSubnet* och *myAGPublicIPAddress* som du skapade tidigare. 
+Du kan använda [az network application-gateway create](/cli/azure/network/application-gateway#az_network_application_gateway_create) till att skapa programgatewayen. När du skapar en programgateway med hjälp av Azure CLI anger du konfigurationsinformation som kapacitet, sku och HTTP-inställningar. Programgatewayen tilldelas till *myAGSubnet* och *myAGPublicIPAddress* som du skapade tidigare. 
 
 ```azurecli-interactive
 az network application-gateway create \
@@ -105,7 +105,7 @@ Det kan ta flera minuter att skapa programgatewayen. När programgatewayen har s
 
 ### <a name="add-the-backend-pools"></a>Lägga till serverdelspoolerna
 
-Lägg till de backend-pooler som behövs för att innehålla backend-servrarna med [AZ Network Application-Gateway Address-pool Create](/cli/azure/network/application-gateway/address-pool#az-network-application-gateway-address-pool-create)
+Lägg till de serverpooler som ska innehålla backend-servrarna med [az network application-gateway address-pool create](/cli/azure/network/application-gateway/address-pool#az_network_application_gateway_address-pool_create)
 ```azurecli-interactive
 az network application-gateway address-pool create \
   --gateway-name myAppGateway \
@@ -120,11 +120,11 @@ az network application-gateway address-pool create \
 
 ### <a name="add-listeners"></a>Lägga till lyssnare
 
-Lägg till lyssnare som behövs för att dirigera trafik med [AZ Network Application-Gateway http-Listener Create](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create).
+Lägg till lyssnare som behövs för att dirigera trafik [med az network application-gateway http-listener create](/cli/azure/network/application-gateway/http-listener#az_network_application_gateway_http_listener_create).
 
 >[!NOTE]
-> Med Application Gateway eller WAF v2 SKU kan du också konfigurera upp till 5 värdnamn per lyssnare och du kan använda jokertecken i värd namnet. Mer information finns i [namn på jokertecken i lyssnaren](multiple-site-overview.md#wildcard-host-names-in-listener-preview) .
->Om du vill använda flera värdnamn och jokertecken i en lyssnare med hjälp av Azure CLI måste du använda `--host-names` i stället för `--host-name` . Med värd namn kan du nämna upp till fem värdnamn som blankstegsavgränsad värden. Till exempel `--host-names "*.contoso.com *.fabrikam.com"`
+> Med Application Gateway eller WAF v2 SKU kan du också konfigurera upp till 5 värdnamn per lyssnare och du kan använda jokertecken i värdnamnet. Mer [information finns i värdnamn med jokertecken](multiple-site-overview.md#wildcard-host-names-in-listener-preview) i lyssnaren.
+>Om du vill använda flera värdnamn och jokertecken i en lyssnare med Hjälp av Azure CLI måste du använda `--host-names` i stället för `--host-name` . Med värdnamn kan du nämna upp till fem värdnamn som blankstegsavgränsade värden. Till exempel `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,9 +146,9 @@ az network application-gateway http-listener create \
 
 ### <a name="add-routing-rules"></a>Lägga till routningsregler
 
-Regler bearbetas i den ordning som de visas. Trafiken dirigeras med den första regeln som matchar oavsett specificitet. Om du till exempel har en regel med en grundläggande lyssnare och en regel med en lyssnare för flera webbplatser för samma port så måste regeln med lyssnare för flera platser stå innan regeln med den grundläggande lyssnaren om regeln för flera platser ska fungera som förväntat. 
+Regler bearbetas i den ordning som de visas. Trafiken dirigeras med hjälp av den första regeln som matchar oavsett specificitet. Om du till exempel har en regel med en grundläggande lyssnare och en regel med en lyssnare för flera webbplatser för samma port så måste regeln med lyssnare för flera platser stå innan regeln med den grundläggande lyssnaren om regeln för flera platser ska fungera som förväntat. 
 
-I det här exemplet skapar du två nya regler och tar bort standard regeln som skapades när du distribuerade Application Gateway. Du kan lägga till regeln med [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
+I det här exemplet skapar du två nya regler och tar bort standardregeln som skapades när du distribuerade programgatewayen. Du kan lägga till regeln med [az network application-gateway rule create](/cli/azure/network/application-gateway/rule#az_network_application_gateway_rule_create).
 
 ```azurecli-interactive
 az network application-gateway rule create \
@@ -225,7 +225,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Skapa en CNAME-post i domänen
 
-När du har skapat programgatewayen med dess offentliga IP-adress kan du hämta DNS-adressen och använda den till att skapa en CNAME-post i domänen. Hämta den DNS-adressen till programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). Kopiera värdet *fqdn* för DNSSettings och använd det som värde för CNAME-posten du skapar. 
+När du har skapat programgatewayen med dess offentliga IP-adress kan du hämta DNS-adressen och använda den till att skapa en CNAME-post i domänen. Hämta den DNS-adressen till programgatewayen med [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). Kopiera värdet *fqdn* för DNSSettings och använd det som värde för CNAME-posten du skapar. 
 
 ```azurecli-interactive
 az network public-ip show \
@@ -235,7 +235,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Användning av A-poster rekommenderas inte eftersom VIP kan ändras när Application Gateway startar om.
+Användning av A-poster rekommenderas inte eftersom VIP kan ändras när programgatewayen startas om.
 
 ## <a name="test-the-application-gateway"></a>Testa programgatewayen
 

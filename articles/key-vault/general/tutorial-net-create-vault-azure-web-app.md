@@ -10,16 +10,16 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: fd82caab0babbc4803dd54926dafcba98370fa03
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 901f2b938512f842a5b4c34adbfc61f9379e5131
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772175"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-in-net"></a>Självstudie: Använda en hanterad identitet för att Key Vault till en Azure-webbapp i .NET
 
-[Azure Key Vault](./overview.md) är ett sätt att lagra autentiseringsuppgifter och andra hemligheter med ökad säkerhet. Men koden måste autentiseras för att Key Vault hämta dem. [Hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md) hjälper till att lösa det här problemet genom att ge Azure-tjänsterna en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Du kan använda den här identiteten för att autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Key Vault, utan att behöva visa autentiseringsuppgifter i koden.
+[Azure Key Vault](./overview.md) ett sätt att lagra autentiseringsuppgifter och andra hemligheter med ökad säkerhet. Men koden måste autentiseras för att Key Vault hämta dem. [Hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md) hjälper till att lösa det här problemet genom att ge Azure-tjänsterna en automatiskt hanterad identitet i Azure Active Directory (Azure AD). Du kan använda den här identiteten för att autentisera till alla tjänster som stöder Azure AD-autentisering, inklusive Key Vault, utan att behöva visa autentiseringsuppgifter i koden.
 
 I den här självstudien skapar och distribuerar du Azure-webbprogram till [Azure App Service](../../app-service/overview.md). Du använder en hanterad identitet för att autentisera din Azure-webbapp med ett Azure-nyckelvalv med hjälp Azure Key Vault ett hemligt [klientbibliotek](/dotnet/api/overview/azure/key-vault) för .NET och [Azure CLI.](/cli/azure/get-started-with-azure-cli) Samma grundläggande principer gäller när du använder val av utvecklingsspråk, Azure PowerShell och/eller Azure Portal.
 
@@ -39,7 +39,7 @@ För att slutföra den här kursen behöver du:
 * [Azure Key Vault.](./overview.md) Du kan skapa ett nyckelvalv med hjälp [av Azure Portal,](quick-create-portal.md) [Azure CLI](quick-create-cli.md)eller [Azure PowerShell](quick-create-powershell.md).
 * En Key Vault [hemlighet](../secrets/about-secrets.md). Du kan skapa en hemlighet med hjälp [Azure Portal,](../secrets/quick-create-portal.md) [PowerShell](../secrets/quick-create-powershell.md)eller [Azure CLI.](../secrets/quick-create-cli.md)
 
-Om du redan har distribuerat webbappen i Azure App Service [](#create-and-assign-a-managed-identity) kan du gå vidare och konfigurera webbappåtkomst till ett nyckelvalv och ändra kodavsnitt [för webbprogram.](#modify-the-app-to-access-your-key-vault)
+Om du redan har distribuerat webbappen i Azure App Service [](#create-and-assign-a-managed-identity) kan du gå vidare och konfigurera webbappsåtkomst till ett nyckelvalv och ändra [kodavsnitt för webbprogram.](#modify-the-app-to-access-your-key-vault)
 
 ## <a name="create-a-net-core-app"></a>Skapa en .NET Core-app
 I det här steget ska du konfigurera det lokala .NET Core-projektet.
@@ -71,7 +71,7 @@ Mer information om hur du skapar webbprogram för Azure finns i [Skapa en ASP.NE
 
 ## <a name="deploy-the-app-to-azure"></a>distribuera appen till Azure
 
-I det här steget distribuerar du ditt .NET Core-program till Azure App Service med hjälp av lokal Git. Mer information om hur du skapar och distribuerar program finns i [Skapa en ASP.NET Core-webbapp i Azure.](../../app-service/quickstart-dotnetcore.md)
+I det här steget distribuerar du ditt .NET Core-program till Azure App Service med hjälp av lokal Git. Mer information om hur du skapar och distribuerar program finns i [Skapa en ASP.NET Core-webbapp i Azure](../../app-service/quickstart-dotnetcore.md).
 
 ### <a name="configure-the-local-git-deployment"></a>Konfigurera den lokala Git-distributionen
 
@@ -83,11 +83,11 @@ git add .
 git commit -m "first commit"
 ```
 
-Du kan använda FTP och lokal Git för att distribuera en Azure-webbapp med hjälp av en *distributionsanvändare*. När du har konfigurerat distributionsanvändaren kan du använda den för alla dina Azure-distributioner. Ditt användarnamn och lösenord för distribution på kontonivå skiljer sig från autentiseringsuppgifterna för din Azure-prenumeration. 
+Du kan använda FTP och lokal Git för att distribuera en Azure-webbapp med hjälp av en *distributionsanvändare*. När du har konfigurerat distributionsanvändaren kan du använda den för alla dina Azure-distributioner. Användarnamnet och lösenordet för din distribution på kontonivå skiljer sig från autentiseringsuppgifterna för din Azure-prenumeration. 
 
-Konfigurera distributionsanvändaren genom att köra [kommandot az webapp deployment user set.](/cli/azure/webapp/deployment/user?#az-webapp-deployment-user-set) Välj ett användarnamn och lösenord som följer dessa riktlinjer: 
+Konfigurera distributionsanvändaren genom att köra [kommandot az webapp deployment user set.](/cli/azure/webapp/deployment/user?#az_webapp_deployment_user_set) Välj ett användarnamn och lösenord som följer dessa riktlinjer: 
 
-- Användarnamnet måste vara unikt inom Azure. För lokala Git-pushar får den inte innehålla tecknet vid tecknet (@). 
+- Användarnamnet måste vara unikt inom Azure. För lokala Git-pushar får den inte innehålla tecknet på tecknet (@). 
 - Lösenordet måste vara minst åtta tecken långt och innehålla två av följande tre element: bokstäver, siffror och symboler. 
 
 ```azurecli-interactive
@@ -100,7 +100,7 @@ Registrera ditt användarnamn och lösenord så att du kan använda det för att
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-En resursgrupp är en logisk container där du distribuerar Azure-resurser och hanterar dem. Skapa en resursgrupp som ska innehålla både nyckelvalvet och webbappen med hjälp av [kommandot az group create:](/cli/azure/group?#az-group-create)
+En resursgrupp är en logisk container där du distribuerar Azure-resurser och hanterar dem. Skapa en resursgrupp som ska innehålla både nyckelvalvet och webbappen med hjälp av [kommandot az group create:](/cli/azure/group?#az_group_create)
 
 ```azurecli-interactive
 az group create --name "myResourceGroup" -l "EastUS"
@@ -108,7 +108,7 @@ az group create --name "myResourceGroup" -l "EastUS"
 
 ### <a name="create-an-app-service-plan"></a>Skapa en App Service-plan
 
-Skapa en [App Service plan](../../app-service/overview-hosting-plans.md) med hjälp av kommandot Azure CLI [az appservice plan create.](/cli/azure/appservice/plan) I följande exempel skapas App Service plan `myAppServicePlan` namngiven `FREE` i prisnivån:
+Skapa en [App Service plan](../../app-service/overview-hosting-plans.md) med hjälp av kommandot Azure CLI [az appservice plan](/cli/azure/appservice/plan) create. I följande exempel skapas App Service plan `myAppServicePlan` namngiven `FREE` i prisnivån:
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -181,7 +181,7 @@ Gå till den nya appen med hjälp av följande kommando. Ersätt `<your-webapp-n
 https://<your-webapp-name>.azurewebsites.net
 ```
 
-Du ser standardwebbsidan för en ny Azure-webbapp.
+Standardwebbsidan för en ny Azure-webbapp visas.
 
 ### <a name="deploy-your-local-app"></a>Distribuera din lokala app
 
@@ -243,7 +243,7 @@ I det här avsnittet konfigurerar du webbåtkomst till Key Vault och uppdaterar 
 
 I den här självstudien använder vi [hanterad identitet för](../../active-directory/managed-identities-azure-resources/overview.md) att autentisera till Key Vault. Hanterad identitet hanterar automatiskt programautentiseringsuppgifter.
 
-I Azure CLI skapar du identiteten för programmet genom att köra kommandot [az webapp-identity assign:](/cli/azure/webapp/identity?#az-webapp-identity-assign)
+I Azure CLI skapar du identiteten för programmet genom att köra kommandot [az webapp-identity assign:](/cli/azure/webapp/identity?#az_webapp_identity_assign)
 
 ```azurecli-interactive
 az webapp identity assign --name "<your-webapp-name>" --resource-group "myResourceGroup"
@@ -259,7 +259,7 @@ Kommandot returnerar det här JSON-kodfragmentet:
 }
 ```
 
-Om du vill ge  webbappen behörighet att hämta och lista åtgärder i nyckelvalvet skickar du till kommandot Azure CLI az  `principalId` [keyvault set-policy:](/cli/azure/keyvault?#az-keyvault-set-policy)
+Om du vill ge  webbappen behörighet att hämta och lista åtgärder i nyckelvalvet skickar du till kommandot Azure CLI az  `principalId` [keyvault set-policy:](/cli/azure/keyvault?#az_keyvault_set_policy)
 
 ```azurecli-interactive
 az keyvault set-policy --name "<your-keyvault-name>" --object-id "<principalId>" --secret-permissions get list
@@ -269,7 +269,7 @@ Du kan också tilldela åtkomstprinciper med hjälp av [Azure Portal](./assign-a
 
 ### <a name="modify-the-app-to-access-your-key-vault"></a>Ändra appen för att få åtkomst till ditt nyckelvalv
 
-I den här självstudien använder [du Azure Key Vault ett hemligt klientbibliotek](/dotnet/api/overview/azure/security.keyvault.secrets-readme) i demonstrationssyfte. Du kan också använda [Azure Key Vault certifikatklientbibliotek](/dotnet/api/overview/azure/security.keyvault.certificates-readme), eller [Azure Key Vault nyckelklientbiblioteket](/dotnet/api/overview/azure/security.keyvault.keys-readme).
+I den här självstudien använder [du Azure Key Vault hemligt klientbibliotek](/dotnet/api/overview/azure/security.keyvault.secrets-readme) i exempelsyfte. Du kan också använda [Azure Key Vault certifikatklientbibliotek](/dotnet/api/overview/azure/security.keyvault.certificates-readme), eller [Azure Key Vault nyckelklientbiblioteket](/dotnet/api/overview/azure/security.keyvault.keys-readme).
 
 #### <a name="install-the-packages"></a>Installera paketen
 
@@ -284,7 +284,7 @@ dotnet add package Azure.Security.KeyVault.Secrets
 
 Leta upp och öppna filen Startup.cs i ditt akvwebapp-projekt. 
 
-Lägg till de här raderna i rubriken:
+Lägg till följande rader i rubriken:
 
 ```csharp
 using Azure.Identity;
@@ -292,7 +292,7 @@ using Azure.Security.KeyVault.Secrets;
 using Azure.Core;
 ```
 
-Lägg till följande rader före `app.UseEndpoints` anropet och uppdatera URI:en så att den `vaultUri` återspeglar för ditt nyckelvalv. Den här koden  [använder DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) för att autentisera till Key Vault, som använder en token från en hanterad identitet för att autentisera. Mer information om autentisering för Key Vault finns i [Utvecklarhandbok.](./developers-guide.md#authenticate-to-key-vault-in-code) Koden använder också exponentiell backoff för återförsök om Key Vault begränsas. Mer information om Key Vault finns i [vägledningen Azure Key Vault om begränsning.](./overview-throttling.md)
+Lägg till följande rader före `app.UseEndpoints` anropet och uppdatera URI:en så att den `vaultUri` återspeglar för ditt nyckelvalv. Den här koden  [använder DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) för att autentisera till Key Vault, som använder en token från en hanterad identitet för att autentisera. Mer information om hur du autentiserar Key Vault finns i [utvecklarhandboken.](./developers-guide.md#authenticate-to-key-vault-in-code) Koden använder också exponentiell backoff för återförsök om Key Vault begränsas. Mer information om Key Vault finns i [Azure Key Vault vägledningen om begränsningar.](./overview-throttling.md)
 
 ```csharp
 SecretClientOptions options = new SecretClientOptions()
@@ -343,4 +343,4 @@ Där innan du såg "Hello World!", bör du nu se värdet för din hemlighet.
 - [Använda Azure Key Vault med program som distribuerats till en virtuell dator i .NET](./tutorial-net-virtual-machine.md)
 - Läs mer om [hanterade identiteter för Azure-resurser](../../active-directory/managed-identities-azure-resources/overview.md)
 - Visa [utvecklarguiden](./developers-guide.md)
-- [Säker åtkomst till ett nyckelvalv](./secure-your-key-vault.md)
+- [Säker åtkomst till ett nyckelvalv](./security-overview.md)

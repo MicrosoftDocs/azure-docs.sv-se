@@ -1,6 +1,6 @@
 ---
-title: Kopiera en avbildnings version från ett annat galleri med hjälp av CLI
-description: Kopiera en avbildnings version från ett annat galleri med Azure CLI.
+title: Kopiera en avbildningsversion från ett annat galleri med hjälp av CLI
+description: Kopiera en avbildningsversion från ett annat galleri med Azure CLI.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,40 +9,40 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 0bea4fbac062b498dabe04e6e58d530d09b16d6d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2cd885d886a0f13783e61a04c7243efdf12967e
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102553110"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107784991"
 ---
 # <a name="copy-an-image-from-another-gallery-using-the-azure-cli"></a>Kopiera en bild från ett annat galleri med hjälp av Azure CLI
 
-Om du har flera gallerier i din organisation kan du också skapa avbildnings versioner från befintliga avbildnings versioner som lagras i andra gallerier. Du kan till exempel ha ett utvecklings-och test Galleri för att skapa och testa nya avbildningar. När de är redo att användas i produktionen kan du kopiera dem till ett produktions galleri med hjälp av det här exemplet. Du kan också skapa en bild från en bild i ett annat galleri med hjälp av [Azure PowerShell](image-version-another-gallery-powershell.md).
+Om du har flera gallerier i din organisation kan du även skapa avbildningsversioner från befintliga avbildningsversioner som lagras i andra gallerier. Du kan till exempel ha ett utvecklings- och testgalleri för att skapa och testa nya bilder. När de är redo att användas i produktion kan du kopiera dem till ett produktionsgalleri med hjälp av det här exemplet. Du kan också skapa en avbildning från en avbildning i ett annat galleri med [hjälp av Azure PowerShell](image-version-another-gallery-powershell.md).
 
 
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-För att slutföra den här artikeln måste du ha ett befintligt käll Galleri, bild definition och avbildnings version. Du bör också ha ett mål Galleri. 
+För att kunna slutföra den här artikeln måste du ha ett befintligt källgalleri, en bilddefinition och en bildversion. Du bör också ha ett målgalleri. 
 
-Käll avbildnings versionen måste replikeras till den region där mål galleriet finns. 
+Källavbildningsversionen måste replikeras till den region där målgalleriet finns. 
 
-Ersätt resurs namnen där det behövs när du arbetar i den här artikeln.
+När du går igenom den här artikeln ersätter du resursnamnen där det behövs.
 
 
 
-## <a name="get-information-from-the-source-gallery"></a>Hämta information från käll galleriet
+## <a name="get-information-from-the-source-gallery"></a>Hämta information från källgalleriet
 
-Du behöver information från käll avbildnings definitionen så att du kan skapa en kopia av den i ditt nya Galleri.
+Du behöver information från källavbildningsdefinitionen så att du kan skapa en kopia av den i det nya galleriet.
 
-Visa information om det tillgängliga bild galleriet med hjälp av [AZ sig-listan](/cli/azure/sig#az-sig-list) för att hitta information om käll galleriet.
+Visa information om tillgängliga bildgallerier med [az sig list för](/cli/azure/sig#az_sig_list) att hitta information om källgalleriet.
 
 ```azurecli-interactive 
 az sig list -o table
 ```
 
-Visa en lista över bild definitionerna i ett galleri med hjälp av [AZ sig-bild definitions lista](/cli/azure/sig/image-definition#az-sig-image-definition-list). I det här exemplet söker vi efter bild definitioner i galleriet som heter *Galleri* i resurs gruppen *myGalleryRG* .
+Visa en lista med bilddefinitionerna i ett galleri med [az sig image-definition list](/cli/azure/sig/image-definition#az_sig_image_definition_list). I det här exemplet söker vi efter bilddefinitioner i galleriet med namnet *myGallery* i resursgruppen *myGalleryRG.*
 
 ```azurecli-interactive 
 az sig image-definition list \
@@ -51,7 +51,7 @@ az sig image-definition list \
    -o table
 ```
 
-Visa en lista med versioner av en bild i ett galleri med hjälp av [AZ sig-avbildning – versions lista](/cli/azure/sig/image-version#az-sig-image-version-list) för att hitta den avbildnings version som du vill kopiera till det nya galleriet. I det här exemplet letar vi efter alla avbildnings versioner som är en del av *myImageDefinition* -avbildnings definitionen.
+Visa en lista över versionerna av en avbildning i ett galleri med [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) för att hitta den avbildningsversion som du vill kopiera till det nya galleriet. I det här exemplet letar vi efter alla avbildningsversioner som ingår i avbildningsdefinitionen *myImageDefinition.*
 
 ```azurecli-interactive
 az sig image-version list \
@@ -61,7 +61,7 @@ az sig image-version list \
    -o table
 ```
 
-När du har all den information du behöver kan du hämta ID för käll avbildnings versionen med hjälp av [AZ sig-avbildning-version show](/cli/azure/sig/image-version#az-sig-image-version-show).
+När du har all information du behöver kan du hämta ID:t för källavbildningsversionen med [az sig image-version show](/cli/azure/sig/image-version#az_sig_image_version_show).
 
 ```azurecli-interactive
 az sig image-version show \
@@ -73,9 +73,9 @@ az sig image-version show \
 ```
 
 
-## <a name="create-the-image-definition"></a>Skapa avbildnings definitionen 
+## <a name="create-the-image-definition"></a>Skapa avbildningsdefinitionen 
 
-Du måste skapa en avbildnings definition som matchar bild definitionen för käll avbildningens version. Du kan se all information som du behöver för att återskapa avbildnings definitionen i det nya galleriet med hjälp av [AZ sig-bild-definition show](/cli/azure/sig/image-definition#az-sig-image-definition-show).
+Du måste skapa en bilddefinition som matchar bilddefinitionen för din källavbildningsversion. Du kan se all information som du behöver för att återskapa bilddefinitionen i det nya galleriet med [az sig image-definition show](/cli/azure/sig/image-definition#az_sig_image_definition_show).
 
 ```azurecli-interactive
 az sig image-definition show \
@@ -114,7 +114,7 @@ Utdata ser ut ungefär så här:
 }
 ```
 
-Skapa en ny avbildnings definition i det nya galleriet med hjälp av informationen från utdata ovan.
+Skapa en ny bilddefinition i det nya galleriet med hjälp av informationen i utdata ovan.
 
 
 ```azurecli-interactive 
@@ -131,13 +131,13 @@ az sig image-definition create \
 ```
 
 
-## <a name="create-the-image-version"></a>Skapa avbildnings versionen
+## <a name="create-the-image-version"></a>Skapa avbildningsversionen
 
-Skapa versioner med [AZ avbildnings Galleri skapa-avbildning-version](/cli/azure/sig/image-version#az-sig-image-version-create). Du måste skicka in ID: t för den hanterade avbildningen som ska användas som bas linje för att skapa avbildnings versionen. Du kan använda [AZ avbildnings lista](/cli/azure/image?view#az-image-list) för att hämta information om avbildningar som finns i en resurs grupp. 
+Skapa versioner med [az image gallery create-image-version](/cli/azure/sig/image-version#az_sig_image_version_create). Du måste skicka IN ID:t för den hanterade avbildningen som ska användas som baslinje för att skapa avbildningsversionen. Du kan använda [az image list för](/cli/azure/image?view#az_image_list) att hämta information om avbildningar som finns i en resursgrupp. 
 
-Tillåtna tecken för bild version är tal och punkter. Talen måste vara inom intervallet för ett 32-bitars heltal. Format: *Major version*. *MinorVersion*. *Korrigering*.
+Tillåtna tecken för bildversion är siffror och punkter. Tal måste vara inom intervallet för ett 32-bitars heltal. Format: *MajorVersion*. *MinorVersion*. *Korrigera*.
 
-I det här exemplet är versionen av vår avbildning *1.0.0* och vi kommer att skapa en replik i regionen USA, *södra centrala* och 1 i regionen *USA, östra* med zon-redundant lagring.
+I det här exemplet är versionen av avbildningen *1.0.0* och vi ska skapa en replik  i regionen USA, södra *centrala* och en replik i regionen USA, östra med zonredundant lagring.
 
 
 ```azurecli-interactive 
@@ -152,15 +152,15 @@ az sig image-version create \
 ```
 
 > [!NOTE]
-> Du måste vänta tills avbildnings versionen är fullständigt slutförd och replikerad innan du kan använda samma hanterade avbildning för att skapa en annan avbildnings version.
+> Du måste vänta tills avbildningsversionen är klar och replikeras innan du kan använda samma hanterade avbildning för att skapa en annan avbildningsversion.
 >
-> Du kan också lagra din avbildning i Premium Storage genom att lägga till `--storage-account-type  premium_lrs` eller [zonens redundant lagring](../storage/common/storage-redundancy.md) genom att lägga till `--storage-account-type  standard_zrs` när du skapar avbildnings versionen.
+> Du kan också lagra avbildningen i Premium Storage genom att lägga `--storage-account-type  premium_lrs` till eller [zonredundant lagring](../storage/common/storage-redundancy.md) genom att lägga till när du skapar `--storage-account-type  standard_zrs` avbildningsversionen.
 >
 
 ## <a name="next-steps"></a>Nästa steg
 
-Skapa en virtuell dator från en [generaliserad](vm-generalized-image-version-cli.md) eller [specialiserad](vm-specialized-image-version-cli.md) avbildnings version.
+Skapa en virtuell dator från en [generaliserad eller](vm-generalized-image-version-cli.md) specialiserad avbildningsversion. [](vm-specialized-image-version-cli.md)
 
-Prova också att använda [Azure Image Builder (för hands version)](./image-builder-overview.md) för att automatisera avbildnings versionen, du kan även använda den för att uppdatera och [skapa en ny avbildnings version från en befintlig avbildnings version](./linux/image-builder-gallery-update-image-version.md). 
+Prova också att [använda Azure Image Builder (förhandsversion)](./image-builder-overview.md) för att automatisera skapandet av avbildningsversion. Du kan till och med använda det för att uppdatera och skapa en ny avbildningsversion från en befintlig avbildningsversion. [](./linux/image-builder-gallery-update-image-version.md) 
 
-Information om hur du anger information om inköps planer finns i [tillhandahålla information om inköps plan för Azure Marketplace när du skapar avbildningar](marketplace-images.md).
+Information om hur du tillhandahåller information om inköpsplanen finns i [Ange Azure Marketplace information om inköpsplanen när du skapar avbildningar.](marketplace-images.md)

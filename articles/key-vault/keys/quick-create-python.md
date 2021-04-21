@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: keys
 ms.topic: quickstart
 ms.custom: devx-track-python
-ms.openlocfilehash: 7c2e1a54861e47ba8009078ba718fba4fc738f0d
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 2c15090551ad9d84282f65925ff9c2cfbab7e14f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
 ms.lasthandoff: 04/20/2021
-ms.locfileid: "107750328"
+ms.locfileid: "107773359"
 ---
 # <a name="quickstart-azure-key-vault-keys-client-library-for-python"></a>Snabbstart: Azure Key Vault klientbibliotek för Python
 
@@ -49,9 +49,9 @@ Den här snabbstarten använder Azure Identity Library med Azure CLI för att au
 
 ### <a name="install-the-packages"></a>Installera paketen
 
-1. I en terminal eller kommandotolk skapar du en lämplig projektmapp och skapar och aktiverar sedan en virtuell Python-miljö enligt beskrivningen i [Använda virtuella Python-miljöer](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments).
+1. Skapa en lämplig projektmapp i en terminal eller kommandotolk och skapa och aktivera sedan en virtuell Python-miljö enligt beskrivningen [i Använda virtuella Python-miljöer.](/azure/developer/python/configure-local-development-environment?tabs=cmd#use-python-virtual-environments)
 
-1. Installera Azure Active Directory identitetsbiblioteket:
+1. Installera Azure Active Directory identitetsbibliotek:
 
     ```terminal
     pip install azure.identity
@@ -141,15 +141,15 @@ python kv_keys.py
 ```
 
 - Om du stöter på behörighetsfel kontrollerar du att du har kört [ `az keyvault set-policy` kommandot](#grant-access-to-your-key-vault).
-- Om du kör koden igen med samma nyckelnamn kan felet "(Konflikt) Nyckeln är för närvarande i ett borttagna men <name> återställningsbart tillstånd". Använd ett annat nyckelnamn.
+- Om koden med samma nyckelnamn körs på nytt kan felet "(Konflikt)-nyckeln för närvarande är i ett borttagna men <name> återställningsbart tillstånd". Använd ett annat nyckelnamn.
 
 ## <a name="code-details"></a>Kodinformation
 
 ### <a name="authenticate-and-create-a-client"></a>Autentisera och skapa en klient
 
-I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterad identitet tilldelas till App Service eller virtuell dator. Mer information finns i Översikt över [hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+I den här snabbstarten används den inloggade användaren för att autentisera till nyckelvalvet, vilket är den bästa metoden för lokal utveckling. För program som distribueras till Azure ska hanterade identiteter tilldelas till App Service eller virtuell dator. Mer information finns i [Översikt över hanterad identitet.](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 
-I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identitet. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
+I exemplet nedan expanderas namnet på ditt nyckelvalv till nyckelvalvs-URI:t i formatet "https:// \<your-key-vault-name\> .vault.azure.net". Det här exemplet använder  [klassen "DefaultAzureCredential()"](/python/api/azure-identity/azure.identity.defaultazurecredential) som gör att du kan använda samma kod i olika miljöer med olika alternativ för att tillhandahålla identiteter. Mer information finns i [Standardautentisering med Azure-autentiseringsuppgifter.](https://docs.microsoft.com/python/api/overview/azure/identity-readme) 
 
 
 ```python
@@ -159,7 +159,7 @@ client = KeyClient(vault_url=KVUri, credential=credential)
 
 ## <a name="save-a-key"></a>Spara en nyckel
 
-När du har fått klientobjektet för nyckelvalvet kan du lagra en nyckel med hjälp create_rsa_key [metoden:](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-rsa-key-name----kwargs-) 
+När du har fått klientobjektet för nyckelvalvet kan du lagra en nyckel med hjälp av [create_rsa_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-rsa-key-name----kwargs-) metod: 
 
 ```python
 rsa_key = client.create_rsa_key(keyName, size=2048)
@@ -167,7 +167,7 @@ rsa_key = client.create_rsa_key(keyName, size=2048)
 
 Du kan också använda [create_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-key-name--key-type----kwargs-) eller [create_ec_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#create-ec-key-name----kwargs-).
 
-När en `create` metod anropas genereras ett anrop till Azure REST API för nyckelvalvet.
+När du `create` anropar en metod genereras ett anrop till Azure REST API för nyckelvalvet.
 
 När du hanterar begäran autentiserar Azure anroparens identitet (tjänstens huvudnamn) med hjälp av autentiseringsobjektet som du angav för klienten.
 
@@ -179,28 +179,28 @@ Om du vill läsa en Key Vault från en get_key [metoden:](/python/api/azure-keyv
 retrieved_key = client.get_key(keyName)
  ```
 
-Du kan också kontrollera att nyckeln har angetts med Azure CLI-kommandot [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show).
+Du kan också kontrollera att nyckeln har angetts med Azure CLI-kommandot [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show).
 
 ### <a name="delete-a-key"></a>Ta bort en nyckel
 
-Om du vill ta bort en nyckel [använder begin_delete_key](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#begin-delete-key-name----kwargs-) metoden:
+Om du vill ta bort en nyckel [använder begin_delete_key-metoden:](/python/api/azure-keyvault-keys/azure.keyvault.keys.keyclient?#begin-delete-key-name----kwargs-)
 
 ```python
 poller = client.begin_delete_key(keyName)
 deleted_key = poller.result()
 ```
 
-Metoden `begin_delete_key` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden `result` anropas väntar den på att den slutförs.
+Metoden `begin_delete_key` är asynkron och returnerar ett avsökningsobjekt. När avsökningsmetoden anropas `result` väntar den på att den slutförs.
 
-Du kan kontrollera att nyckeln har tagits bort med Azure CLI-kommandot [az keyvault key show](/cli/azure/keyvault/key?#az-keyvault-key-show).
+Du kan kontrollera att nyckeln har tagits bort med Azure CLI-kommandot [az keyvault key show](/cli/azure/keyvault/key?#az_keyvault_key_show).
 
 När nyckeln har tagits bort finns den kvar i ett borttagna men återställningsbart tillstånd under en tid. Om du kör koden igen använder du ett annat nyckelnamn.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) [hemligheter kan du](../secrets/quick-create-python.md)återanvända de Key Vault som skapades i den här artikeln.
+Om du även vill experimentera med certifikat [och](../certificates/quick-create-python.md) [hemligheter kan](../secrets/quick-create-python.md)du återanvända de Key Vault som skapades i den här artikeln.
 
-När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess resurser:
+När du är klar med resurserna som skapades i den här artikeln använder du annars följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser:
 
 ```azurecli
 az group delete --resource-group KeyVault-PythonQS-rg

@@ -1,14 +1,14 @@
 ---
-title: Starta om princip för körnings aktiviteter
-description: Lär dig hur du använder Azure Container Instances för att köra aktiviteter som körs till slut för ande, som i bygg-, test-eller bild åter givnings jobb.
+title: Starta om principen för uppgifter som körs en gång
+description: Lär dig hur du använder Azure Container Instances för att köra uppgifter som körs för att slutföras, till exempel i jobb för att skapa, testa eller återge avbildningar.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 49280549fa834b82574f81494f1cf44817d8be5d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 3bce208e3663ecfcebe520be92de3ac4443c0c8f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102203835"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107771163"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>Köra uppgifter i containrar med principer för omstart
 
@@ -16,11 +16,11 @@ Eftersom det går snabbt att distribuera containrar i Azure Container Instances 
 
 Med en konfigurerbar omstartsprincip kan du ange att dina containrar ska stoppas när deras processer har slutförts. Eftersom du faktureras per sekund för containerinstanser debiteras du endast för de beräkningsresurser som används när containern kör dina uppgifter.
 
-I exemplen som presenteras i den här artikeln används Azure CLI. Du måste ha Azure CLI-version 2.0.21 eller senare [installerad][azure-cli-install]eller använda CLI i [Azure Cloud Shell](../cloud-shell/overview.md).
+Exemplen som visas i den här artikeln använder Azure CLI. Du måste ha Azure CLI version 2.0.21 eller senare installerat [lokalt,][azure-cli-install]eller använda CLI i [Azure Cloud Shell](../cloud-shell/overview.md).
 
-## <a name="container-restart-policy"></a>Princip för omstart av behållare
+## <a name="container-restart-policy"></a>Omstartsprincip för container
 
-När du skapar en [behållar grupp](container-instances-container-groups.md) i Azure Container instances kan du ange en av tre princip inställningar för omstart.
+När du skapar en [containergrupp](container-instances-container-groups.md) i Azure Container Instances kan du ange en av tre principinställningar för omstart.
 
 | Omstartsprincip   | Beskrivning |
 | ---------------- | :---------- |
@@ -30,9 +30,9 @@ När du skapar en [behållar grupp](container-instances-container-groups.md) i A
 
 [!INCLUDE [container-instances-restart-ip](../../includes/container-instances-restart-ip.md)]
 
-## <a name="specify-a-restart-policy"></a>Ange en princip för omstart
+## <a name="specify-a-restart-policy"></a>Ange en omstartsprincip
 
-Hur du anger en princip för omstart beror på hur du skapar dina behållar instanser, till exempel med Azure CLI, Azure PowerShell-cmdlets eller i Azure Portal. I Azure CLI anger `--restart-policy` du parametern när du anropar [AZ container Create][az-container-create].
+Hur du anger en omstartsprincip beror på hur du skapar dina containerinstanser, till exempel med Azure CLI, Azure PowerShell-cmdlets eller i Azure Portal. I Azure CLI anger du parametern `--restart-policy` när du anropar [az container create][az-container-create].
 
 ```azurecli-interactive
 az container create \
@@ -42,11 +42,11 @@ az container create \
     --restart-policy OnFailure
 ```
 
-## <a name="run-to-completion-example"></a>Exempel på Kör till slut för ande
+## <a name="run-to-completion-example"></a>Exempel på körning till slutförande
 
-Om du vill se principen starta om i praktiken skapar du en behållar instans från Microsoft [ACI-WORDCOUNT-][aci-wordcount-image] avbildningen och anger `OnFailure` principen för omstart. Den här exempel behållaren kör ett Python-skript som, som standard, analyserar texten i Shakespeare- [Hamlet](http://shakespeare.mit.edu/hamlet/full.html), skriver de 10 vanligaste orden till stdout och sedan avslutar.
+Om du vill se omstartsprincipen i praktiken skapar du en containerinstans från Microsoft [aci-wordcount-avbildningen][aci-wordcount-image] och anger `OnFailure` omstartsprincipen. Den här exempelcontainern kör ett Python-skript som som standard analyserar texten i Script's [Script,](http://shakespeare.mit.edu/hamlet/full.html)skriver de 10 vanligaste orden till STDOUT och avslutas sedan.
 
-Kör exempel behållaren med följande [AZ container Create][az-container-create] -kommando:
+Kör exempelcontainern med följande [az container create-kommando:][az-container-create]
 
 ```azurecli-interactive
 az container create \
@@ -56,7 +56,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Azure Container Instances startar containern och stoppar den när appen (eller skriptet i det här fallet) avslutas. När Azure Container Instances stoppar en behållare vars restart-princip är `Never` eller `OnFailure` , är behållarens status inställd på **avslutad**. Du kan kontrol lera statusen för en behållare med kommandot [AZ container show][az-container-show] :
+Azure Container Instances startar containern och stoppar den när appen (eller skriptet i det här fallet) avslutas. När Azure Container Instances stoppar en container vars omstartsprincip `Never` är eller , anges `OnFailure` containerns status till **Avslutad.** Du kan kontrollera statusen för en container med [kommandot az container show:][az-container-show]
 
 ```azurecli-interactive
 az container show \
@@ -71,7 +71,7 @@ Exempel på utdata:
 "Terminated"
 ```
 
-När exempelcontainerns status blir *Avslutad* kan du se utdata för uppgiften i containerloggarna. Kör kommandot [AZ container logs][az-container-logs] för att Visa skriptets utdata:
+När exempelcontainerns status blir *Avslutad* kan du se utdata för uppgiften i containerloggarna. Kör kommandot [az container logs][az-container-logs] för att visa skriptets utdata:
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -92,19 +92,19 @@ Utdata:
  ('HAMLET', 386)]
 ```
 
-I det här exemplet visas utdata som skriptet skickat till STDOUT. Dina uppgifter i behållare kan dock i stället skriva sina utdata till beständig lagring för senare hämtning. Till exempel till en [Azure-filresurs](./container-instances-volume-azure-files.md).
+Det här exemplet visar de utdata som skriptet skickade till STDOUT. Dina containeruppgifter kan dock i stället skriva sina utdata till beständig lagring för senare hämtning. Till exempel till en [Azure-filresurs](./container-instances-volume-azure-files.md).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Uppgiftsbaserade scenarier, t. ex. batchbearbetning av en stor data uppsättning med flera behållare, kan dra nytta av anpassade [miljövariabler](container-instances-environment-variables.md) eller [kommando rader](container-instances-start-command.md) vid körning.
+Uppgiftsbaserade scenarier, till exempel batchbearbetning av en stor datamängd med flera containrar, kan dra nytta av anpassade miljövariabler eller [kommandorader](container-instances-start-command.md) vid körning. [](container-instances-environment-variables.md)
 
-Mer information om hur du behåller utdata från dina behållare som körs för slut för ande finns i [montera en Azure-filresurs med Azure Container instances](./container-instances-volume-azure-files.md).
+Mer information om hur du sparar utdata från containrar som körs tills de är klara finns i [Montera en Azure-filresurs med Azure Container Instances](./container-instances-volume-azure-files.md).
 
 <!-- LINKS - External -->
 [aci-wordcount-image]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS - Internal -->
-[az-container-create]: /cli/azure/container#az-container-create
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-create]: /cli/azure/container#az_container_create
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show
 [azure-cli-install]: /cli/azure/install-azure-cli

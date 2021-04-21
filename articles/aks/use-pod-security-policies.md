@@ -1,36 +1,36 @@
 ---
-title: Använda Pod säkerhets principer i Azure Kubernetes service (AKS)
-description: Lär dig hur du styr Pod-inåtkomster med PodSecurityPolicy i Azure Kubernetes service (AKS)
+title: Använda poddsäkerhetsprinciper i Azure Kubernetes Service (AKS)
+description: Lär dig hur du styr poddantagningar med hjälp av PodSecurityPolicy i Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 03/25/2021
-ms.openlocfilehash: 4e72bd28910f471656feb27d10c123930305494e
-ms.sourcegitcommit: d40ffda6ef9463bb75835754cabe84e3da24aab5
+ms.openlocfilehash: d70b8e8efbf96e50575845ac88993012fed936d5
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "107031230"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767429"
 ---
-# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>För hands version – skydda klustret med Pod säkerhets principer i Azure Kubernetes service (AKS)
+# <a name="preview---secure-your-cluster-using-pod-security-policies-in-azure-kubernetes-service-aks"></a>Förhandsversion – Skydda klustret med poddsäkerhetsprinciper i Azure Kubernetes Service (AKS)
 
 > [!WARNING]
-> **Funktionen som beskrivs i det här dokumentet, Pod säkerhets policy (för hands version), påbörjar [utfasningen](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) med Kubernetes version 1,21, med dess borttagning i version 1,25.** I takt med att Kubernetes upprättar en mil stolpe, kommer Kubernetes community att arbeta med att dokumentera livskraftiga alternativ. Föregående meddelande om utfasning gjordes vid tidpunkten eftersom det inte fanns något lämpligt alternativ för kunder. Nu när Kubernetes-communityn arbetar på ett alternativ, är det inte längre något som behöver föråldras före Kubernetes. 
+> **Funktionen som beskrivs i det här dokumentet, [](https://kubernetes.io/blog/2021/04/06/podsecuritypolicy-deprecation-past-present-and-future/) pod security policy (preview), börjar utfasningen med Kubernetes version 1.21, med borttagning i version 1.25.** När Kubernetes Upstream närmar sig milstolpen kommer Kubernetes-communityn att arbeta med att dokumentera genomförbara alternativ. Det tidigare meddelandet om utfasning gjordes då det inte fanns något genomförbart alternativ för kunder. Nu när Kubernetes-communityn arbetar med ett alternativ finns det inte längre ett brådskande behov av att bli inaktuella före Kubernetes. 
 >
-> När Pod säkerhets princip (förhands granskning) är föråldrad måste du inaktivera funktionen på alla befintliga kluster med hjälp av den föråldrade funktionen för att utföra framtida kluster uppgraderingar och hålla koll på Azure-supporten.
+> När poddsäkerhetsprincipen (förhandsversion) är inaktuell måste du inaktivera funktionen på befintliga kluster med den föråldrade funktionen för att utföra framtida klusteruppgraderingar och hålla dig inom Azure-supporten.
 
-För att förbättra säkerheten för ditt AKS-kluster kan du begränsa vilka poddar som kan schemaläggas. Poddar som begär resurser som du inte tillåter kan inte köras i AKS-klustret. Du definierar den här åtkomsten med Pod säkerhets principer. Den här artikeln visar hur du använder Pod säkerhets principer för att begränsa distributionen av poddar i AKS.
+För att förbättra säkerheten för ditt AKS-kluster kan du begränsa vilka poddar som kan schemaläggas. Poddar som begär resurser som du inte tillåter kan inte köras i AKS-klustret. Du definierar den här åtkomsten med hjälp av poddsäkerhetsprinciper. Den här artikeln visar hur du använder poddsäkerhetsprinciper för att begränsa distributionen av poddar i AKS.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du behöver ett AKS-kluster kan du läsa snabb starten för AKS [med hjälp av Azure CLI][aks-quickstart-cli] eller [Azure Portal][aks-quickstart-portal].
+Den här artikeln förutsätter att du har ett befintligt AKS-kluster. Om du behöver ett AKS-kluster kan du gå till AKS-snabbstarten med hjälp av [Azure CLI][aks-quickstart-cli] eller [använda Azure Portal][aks-quickstart-portal].
 
-Du behöver Azure CLI-versionen 2.0.61 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
+Azure CLI version 2.0.61 eller senare måste vara installerat och konfigurerat. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
 ### <a name="install-aks-preview-cli-extension"></a>Installera CLI-tillägget aks-preview
 
-Om du vill använda Pod säkerhets principer behöver du *AKS-Preview CLI-* tillägget version 0.4.1 eller högre. Installera *AKS-Preview* Azure CLI-tillägget med kommandot [AZ Extension Add][az-extension-add] och Sök efter eventuella tillgängliga uppdateringar med kommandot [AZ Extension Update][az-extension-update] :
+Om du vill använda poddsäkerhetsprinciper behöver *du CLI-tillägget aks-preview* version 0.4.1 eller senare. Installera *Azure CLI-tillägget aks-preview* med kommandot [az extension add][az-extension-add] och sök sedan efter tillgängliga uppdateringar med kommandot az extension [update:][az-extension-update]
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -40,68 +40,68 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-### <a name="register-pod-security-policy-feature-provider"></a>Registrera Pod för säkerhets princip
+### <a name="register-pod-security-policy-feature-provider"></a>Registrera poddsäkerhetsprincipfunktionsprovider
 
 **Det här dokumentet och funktionen är inställda för utfasning den 15 oktober 2020.**
 
-Om du vill skapa eller uppdatera ett AKS-kluster för att använda Pod-säkerhetsprinciper måste du först aktivera en funktions flagga i din prenumeration. Registrera funktions flaggan *PodSecurityPolicyPreview* genom att använda kommandot [AZ Feature register][az-feature-register] , som visas i följande exempel:
+Om du vill skapa eller uppdatera ett AKS-kluster för att använda poddsäkerhetsprinciper aktiverar du först en funktionsflagga för din prenumeration. Om du vill *registrera funktionsflaggan PodSecurityPolicyPreview* använder du [kommandot az feature register][az-feature-register] enligt följande exempel:
 
 ```azurecli-interactive
 az feature register --name PodSecurityPolicyPreview --namespace Microsoft.ContainerService
 ```
 
-Det tar några minuter för statusen att visa *registrerad*. Du kan kontrol lera registrerings statusen med hjälp av kommandot [AZ feature list][az-feature-list] :
+Det tar några minuter för statusen att visa *Registrerad.* Du kan kontrollera registreringsstatusen med kommandot [az feature list:][az-feature-list]
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/PodSecurityPolicyPreview')].{Name:name,State:properties.state}"
 ```
 
-När du är klar uppdaterar du registreringen av resurs leverantören *Microsoft. container service* med hjälp av [AZ Provider register][az-provider-register] kommando:
+När du är klar uppdaterar du registreringen av *resursprovidern Microsoft.ContainerService* med kommandot [az provider register:][az-provider-register]
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
 
-## <a name="overview-of-pod-security-policies"></a>Översikt över Pod säkerhets principer
+## <a name="overview-of-pod-security-policies"></a>Översikt över poddsäkerhetsprinciper
 
-I ett Kubernetes-kluster används en åtkomst kontroll för att avlyssna förfrågningar till API-servern när en resurs ska skapas. -Kontroll enheten kan sedan *Verifiera* resurs förfrågan mot en uppsättning regler, eller genom att *i motsvarande* resurs ändra distributions parametrar.
+I ett Kubernetes-kluster används en antagningskontrollant för att fånga upp begäranden till API-servern när en resurs ska skapas. Antagningskontrollanten kan *sedan verifiera* resursbegäran mot en uppsättning regler eller *mutera resursen* för att ändra distributionsparametrar.
 
-*PodSecurityPolicy* är en kontroll enhet som validerar en POD-specifikation som uppfyller dina definierade krav. Dessa krav kan begränsa användningen av privilegierade behållare, åtkomst till vissa typer av lagring eller den användare eller grupp som behållaren kan köras som. När du försöker distribuera en resurs där Pod-specifikationerna inte uppfyller kraven som beskrivs i säkerhets principen för Pod nekas begäran. Den här möjligheten att kontrol lera vilka poddar som kan schemaläggas i AKS-klustret förhindrar säkerhets sårbarheter eller behörighets eskalering.
+*PodSecurityPolicy är* en antagningskontrollant som validerar att en poddspecifikation uppfyller dina definierade krav. Dessa krav kan begränsa användningen av privilegierade containrar, åtkomst till vissa typer av lagring eller den användare eller grupp som containern kan köras som. När du försöker distribuera en resurs där poddspecifikationerna inte uppfyller kraven som beskrivs i poddsäkerhetsprincipen nekas begäran. Den här möjligheten att styra vilka poddar som kan schemaläggas i AKS-klustret förhindrar vissa säkerhetsproblem eller behörighetseskaleringar.
 
-När du aktiverar Pod säkerhets princip i ett AKS-kluster tillämpas vissa standard principer. Dessa standard principer ger en välkomst upplevelse för att definiera vilka poddar som kan schemaläggas. Kluster användare kan dock stöta på problem med att distribuera poddar tills du definierar dina egna principer. Den rekommenderade metoden är att:
+När du aktiverar poddsäkerhetsprincip i ett AKS-kluster tillämpas vissa standardprinciper. Dessa standardprinciper ger en standardupplevelse för att definiera vilka poddar som kan schemaläggas. Klusteranvändare kan dock få problem med att distribuera poddar tills du har definierat dina egna principer. Den rekommenderade metoden är att:
 
 * Skapa ett AKS-kluster
-* Definiera egna Pod säkerhets principer
-* Aktivera säkerhets princip funktionen Pod
+* Definiera egna säkerhetsprinciper för poddar
+* Aktivera funktionen poddsäkerhetsprincip
 
-För att visa hur standard principerna begränsar Pod-distributioner, i den här artikeln, aktiverar vi först funktionen Pod Security Policies och skapar sedan en anpassad princip.
+För att visa hur standardprinciperna begränsar podddistributioner aktiverar vi först funktionen poddsäkerhetsprinciper i den här artikeln och skapar sedan en anpassad princip.
 
-### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>Beteende ändringar mellan säkerhets principer för Pod och Azure Policy
+### <a name="behavior-changes-between-pod-security-policy-and-azure-policy"></a>Beteendeändringar mellan poddsäkerhetsprincip och Azure Policy
 
-Nedan visas en sammanfattning av funktions förändringar mellan Pod säkerhets princip och Azure Policy.
+Nedan visas en sammanfattning av beteendeändringar mellan poddsäkerhetsprincipen och Azure Policy.
 
-|Scenario| Pod säkerhets princip | Azure Policy |
+|Scenario| Poddsäkerhetsprincip | Azure Policy |
 |---|---|---|
-|Installation|Aktivera funktionen för säkerhets princip för Pod |Aktivera Azure Policy-tillägg
-|Distribuera principer| Distribuera Pod säkerhets princip resurs| Tilldela Azure-principer till prenumerations-eller resurs grupps omfånget. Azure Policy-tillägget krävs för resurs program för Kubernetes.
-| Standard principer | När Pod säkerhets princip är aktive rad i AKS tillämpas standard privilegierade och obegränsade principer. | Inga standard principer tillämpas genom att aktivera Azure Policy-tillägget. Du måste uttryckligen aktivera principer i Azure Policy.
-| Vem kan skapa och tilldela principer | Kluster administratören skapar en POD säkerhets princip resurs | Användarna måste ha en lägsta roll för behörigheten ägare eller resurs princip deltagare i AKS-klustrets resurs grupp. – Via API kan användare tilldela principer i AKS-kluster resurs omfånget. Användaren måste ha minst behörigheten "ägare" eller "resurs princip deltagare" på AKS-kluster resursen. – I Azure Portal kan principer tilldelas på nivån hanterings grupp/prenumeration/resurs grupp.
-| Auktorisering av principer| Användare och tjänst konton kräver explicit behörighet att använda Pod säkerhets principer. | Ingen ytterligare tilldelning krävs för att godkänna principer. När principer har tilldelats i Azure kan alla kluster användare använda dessa principer.
-| Princip tillämpbarhet | Administratörs användaren kringgår verk ställandet av Pod säkerhets principer. | Alla användare (admin & icke-administratör) ser samma principer. Det finns inget särskilt hölje baserat på användare. Princip programmet kan undantas på namn områdes nivå.
-| Princip omfattning | Pod säkerhets principer är inte namnrymds | Constraint-mallar som används av Azure Policy är inte namnrymder.
-| Neka/granska/Mutations åtgärd | Pod säkerhets principer stöder endast neka-åtgärder. Mutation kan göras med standardvärden för Create-begäranden. Verifiering kan utföras under uppdaterings begär Anden.| Azure Policy stöder både gransknings & neka åtgärder. Mutation stöds inte ännu, men planerat.
-| Pod för säkerhets principer | Det finns ingen synlighet för kompatibilitet för poddar som fanns innan du aktiverade Pod säkerhets policy. Icke-kompatibla poddar som skapats efter aktivering av Pod-säkerhetsprinciper nekas. | Icke-kompatibla poddar som fanns innan Azure-principer tillämpades skulle visas i princip överträdelser. Icke-kompatibla poddar som skapats efter aktivering av Azure-principer nekas om principer anges med en neka-inverkan.
-| Så här visar du principer för klustret | `kubectl get psp` | `kubectl get constrainttemplate` -Alla principer returneras.
-| Pod säkerhets princip standard-privilegie rad | En privilegie rad Pod säkerhets princip resurs skapas som standard när funktionen aktive ras. | Privilegierat läge innebär ingen begränsning, vilket innebär att det motsvarar att inte ha någon Azure Policy tilldelning.
-| [Pod säkerhets princip standard-bas linje/standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | Användaren installerar en POD-princip bas linje resurs. | Azure Policy tillhandahåller ett [inbyggt bas linje initiativ](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) som mappar till den grundläggande säkerhets principen för pod.
-| [Pod säkerhets princip standard-begränsad](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | Användaren installerar en säkerhets princip begränsad resurs för pod. | Azure Policy tillhandahåller ett [inbyggt begränsat](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) skydd som mappar till den begränsade säkerhets principen för pod.
+|Installation|Aktivera funktionen poddsäkerhetsprincip |Aktivera Azure Policy-tillägg
+|Distribuera principer| Distribuera resurs för poddsäkerhetsprincip| Tilldela Azure-principer till prenumerations- eller resursgruppsomfånget. Tillägget Azure Policy krävs för Kubernetes-resursprogram.
+| Standardprinciper | När poddsäkerhetsprincip är aktiverad i AKS tillämpas privilegierade och obegränsade standardprinciper. | Inga standardprinciper tillämpas genom att aktivera Azure Policy-tillägget. Du måste uttryckligen aktivera principer i Azure Policy.
+| Vem kan skapa och tilldela principer | Klusteradministratören skapar en resurs för poddsäkerhetsprincip | Användarna måste minst ha behörigheten "ägare" eller "Resursprincipdeltagare" för AKS-klusterresursgruppen. – Via API kan användare tilldela principer i resursomfånget för AKS-klustret. Användaren måste ha minst behörighet som ägare eller resursprincipdeltagare för AKS-klusterresursen. - I Azure Portal kan principer tilldelas på nivån Hanteringsgrupp/prenumeration/resursgrupp.
+| Auktorisera principer| Användare och tjänstkonton kräver explicita behörigheter för att använda poddsäkerhetsprinciper. | Ingen ytterligare tilldelning krävs för att auktorisera principer. När principer har tilldelats i Azure kan alla klusteranvändare använda dessa principer.
+| Princip tillämplighet | Administratörsanvändaren kringgår tillämpningen av säkerhetsprinciper för poddar. | Alla användare (& icke-administratör) ser samma principer. Det finns inget särskilt hölje baserat på användare. Principprogram kan undantas på namnområdesnivå.
+| Principomfång | Poddsäkerhetsprinciper är inte namnområden | Begränsningsmallar som används av Azure Policy är inte namnrymder.
+| Åtgärden Neka/granska/Granska/Granska | Poddsäkerhetsprinciper stöder endast nekandeåtgärder. Du kan göra detta med standardvärden för att skapa begäranden. Verifiering kan göras under uppdateringsbegäranden.| Azure Policy stöder både & neka-åtgärder. – Det finns inte stöd för det än, men planerat.
+| Efterlevnad av poddsäkerhetsprincip | Det finns ingen synlighet för efterlevnad för poddar som fanns innan du aktiverar poddsäkerhetsprincip. Icke-kompatibla poddar som skapats efter aktivering av poddsäkerhetsprinciper nekas. | Icke-kompatibla poddar som fanns innan Du tillämpar Azure-principer visas i principöverträdelser. Icke-kompatibla poddar som skapats efter aktivering av Azure-principer nekas om principer anges med en neka-effekt.
+| Så här visar du principer i klustret | `kubectl get psp` | `kubectl get constrainttemplate` – Alla principer returneras.
+| Standard för poddsäkerhetsprincip – Privilegierad | En privilegierad poddsäkerhetsprincipresurs skapas som standard när du aktiverar funktionen. | Privilegierat läge innebär ingen begränsning, vilket innebär att det motsvarar att inte ha Azure Policy tilldelning.
+| [Standard för poddsäkerhetsprincip – baslinje/standard](https://kubernetes.io/docs/concepts/security/pod-security-standards/#baseline-default) | Användaren installerar en baslinjeresurs för poddsäkerhetsprincip. | Azure Policy ett [inbyggt baslinjeinitiativ som](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2Fa8640138-9b0a-4a28-b8cb-1666c838647d) mappar till baslinjens poddsäkerhetsprincip.
+| [Standard för poddsäkerhetsprincip – begränsad](https://kubernetes.io/docs/concepts/security/pod-security-standards/#restricted) | Användaren installerar en resurs med begränsad poddsäkerhetsprincip. | Azure Policy ett [inbyggt begränsat initiativ som mappar](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicySetDefinitions%2F42b8ef37-b724-4e24-bbc8-7a7708edfe00) till den begränsade poddsäkerhetsprincipen.
 
-## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Aktivera Pod säkerhets princip i ett AKS-kluster
+## <a name="enable-pod-security-policy-on-an-aks-cluster"></a>Aktivera poddsäkerhetsprincip i ett AKS-kluster
 
-Du kan aktivera eller inaktivera Pod säkerhets princip med kommandot [AZ AKS Update][az-aks-update] . I följande exempel aktive ras säkerhets principer för Pod på kluster namnet *myAKSCluster* i resurs gruppen med namnet *myResourceGroup*.
+Du kan aktivera eller inaktivera poddsäkerhetsprincip med [hjälp av kommandot az aks update.][az-aks-update] I följande exempel aktiveras poddsäkerhetsprincip på klusternamnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup*.
 
 > [!NOTE]
-> För verklig användning aktiverar du inte säkerhets principen Pod förrän du har definierat dina egna anpassade principer. I den här artikeln aktiverar du Pod säkerhets princip som det första steget för att se hur standard principerna begränsar Pod-distributioner.
+> Aktivera inte poddsäkerhetsprincipen för verklig användning förrän du har definierat dina egna anpassade principer. I den här artikeln aktiverar du poddsäkerhetsprinciper som första steg för att se hur standardprinciperna begränsar podddistributioner.
 
 ```azurecli-interactive
 az aks update \
@@ -110,11 +110,11 @@ az aks update \
     --enable-pod-security-policy
 ```
 
-## <a name="default-aks-policies"></a>Standard principer för AKS
+## <a name="default-aks-policies"></a>AKS-standardprinciper
 
-När du aktiverar Pod säkerhets policy skapar AKS en standard princip med namnet *Privileged*. Redigera eller ta inte bort standard principen. Skapa i stället egna principer som definierar de inställningar som du vill kontrol lera. Vi ska börja med att titta på vad dessa standard principer är för att påverka Pod-distributioner.
+När du aktiverar poddsäkerhetsprincip skapar AKS en standardprincip med namnet *privileged*. Redigera eller ta inte bort standardprincipen. Skapa i stället egna principer som definierar de inställningar som du vill kontrollera. Först ska vi titta på vad dessa standardprinciper är för hur de påverkar poddistributioner.
 
-Om du vill visa tillgängliga principer använder du kommandot [kubectl get PSP][kubectl-get] , som du ser i följande exempel
+Om du vill visa de principer som är tillgängliga använder [du kommandot kubectl get psp,][kubectl-get] som du ser i följande exempel
 
 ```console
 $ kubectl get psp
@@ -123,13 +123,13 @@ NAME         PRIV    CAPS   SELINUX    RUNASUSER          FSGROUP     SUPGROUP  
 privileged   true    *      RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *     configMap,emptyDir,projected,secret,downwardAPI,persistentVolumeClaim
 ```
 
-Säkerhets principen för *privilegie rad* Pod tillämpas på alla autentiserade användare i AKS-klustret. Den här tilldelningen styrs av ClusterRoles och ClusterRoleBindings. Använd kommandot [kubectl get rolebindings][kubectl-get] och Sök efter *standardvärdet: Privileged:* binding i *Kube-systemets* namnrymd:
+*Säkerhetsprincipen* för privilegierade poddar tillämpas på alla autentiserade användare i AKS-klustret. Den här tilldelningen styrs av ClusterRoles och ClusterRoleBindings. Använd kommandot [kubectl get rolebindings][kubectl-get] och sök efter *default:privileged:* binding i *namnområdet kube-system:*
 
 ```console
 kubectl get rolebindings default:privileged -n kube-system -o yaml
 ```
 
-Som det visas i följande komprimerade utdata tilldelas *PSP: Privileged* ClusterRole till alla *system: autentiserade* användare. Den här möjligheten ger en grundläggande behörighets nivå utan att dina egna principer definieras.
+Som du ser i följande komprimerade utdata tilldelas *psp:privileged* ClusterRole till alla *system:autentiserade* användare. Den här möjligheten ger en grundläggande behörighetsnivå utan att dina egna principer definieras.
 
 ```
 apiVersion: rbac.authorization.k8s.io/v1
@@ -148,20 +148,20 @@ subjects:
   name: system:masters
 ```
 
-Det är viktigt att förstå hur dessa standard principer interagerar med användar förfrågningar för att schemalägga poddar innan du börjar skapa egna Pod säkerhets principer. I följande avsnitt kan vi schemalägga vissa poddar för att se de här standard principerna i praktiken.
+Det är viktigt att förstå hur dessa standardprinciper interagerar med användarbegäranden för att schemalägga poddar innan du börjar skapa egna poddsäkerhetsprinciper. I följande avsnitt ska vi schemalägga några poddar för att se hur dessa standardprinciper används.
 
-## <a name="create-a-test-user-in-an-aks-cluster"></a>Skapa en test användare i ett AKS-kluster
+## <a name="create-a-test-user-in-an-aks-cluster"></a>Skapa en testanvändare i ett AKS-kluster
 
-Som standard när du använder kommandot [AZ AKS get-credentials][az-aks-get-credentials] , *läggs administratörsautentiseringsuppgifter för* AKS-klustret till i `kubectl` konfigurationen. Administratörs användaren kringgår verk ställandet av Pod säkerhets principer. Om du använder Azure Active Directory-integrering för dina AKS-kluster kan du logga in med autentiseringsuppgifterna för en användare som inte är administratör för att se verk ställandet av principer i praktiken. I den här artikeln ska vi skapa ett test användar konto i AKS-klustret som du kan använda.
+När du använder kommandot [az aks get-credentials][az-aks-get-credentials] läggs som standard administratörsautentiseringsuppgifterna för AKS-klustret till i din  `kubectl` konfiguration. Administratörsanvändaren kringgår tillämpningen av säkerhetsprinciper för poddar. Om du använder Azure Active Directory-integrering för dina AKS-kluster kan du logga in med autentiseringsuppgifterna för en användare som inte är administratör för att se hur principer används. I den här artikeln ska vi skapa ett testanvändarkonto i AKS-klustret som du kan använda.
 
-Skapa ett exempel namn område med namnet *PSP-AKS* för test resurser med hjälp av kommandot [kubectl Create namespace][kubectl-create] . Skapa sedan ett tjänst konto med namnet *ej administratör – användare* med kommandot [kubectl Create ServiceAccount][kubectl-create] :
+Skapa ett exempelnamnområde med *namnet psp-aks* för testresurser med kommandot [kubectl create namespace.][kubectl-create] Skapa sedan ett tjänstkonto med namnet *nonadmin-user med* kommandot [kubectl create serviceaccount:][kubectl-create]
 
 ```console
 kubectl create namespace psp-aks
 kubectl create serviceaccount --namespace psp-aks nonadmin-user
 ```
 
-Skapa sedan en RoleBinding för den användare som inte är *administratör* för att utföra grundläggande åtgärder i namn området med kommandot [kubectl Create RoleBinding][kubectl-create] :
+Skapa sedan en RoleBinding för *nonadmin-user* för att utföra grundläggande åtgärder i namnområdet med kommandot [kubectl create rolebinding:][kubectl-create]
 
 ```console
 kubectl create rolebinding \
@@ -171,25 +171,25 @@ kubectl create rolebinding \
     --serviceaccount=psp-aks:nonadmin-user
 ```
 
-### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Skapa alias kommandon för administratörer och användare som inte är administratörer
+### <a name="create-alias-commands-for-admin-and-non-admin-user"></a>Skapa aliaskommandon för administratörsanvändare och icke-administratörsanvändare
 
-Om du vill markera skillnaden mellan den vanliga administratörs användaren när du använder `kubectl` och den icke-administratör som skapades i föregående steg, skapar du två kommando rads Ali Aset:
+Om du vill markera skillnaden mellan den vanliga administratörsanvändaren när du använder och den icke-administratörsanvändare som skapades i föregående steg skapar du två `kubectl` kommandoradsalias:
 
-* **Kubectl-admin-** aliaset är för den vanliga administratörs användaren och är begränsad till *PSP-AKS-* namnområdet.
-* **Kubectl-nonadminuser** alias är för den *ej administratörer-användare* som skapades i föregående steg och som är begränsad till namn området *PSP-AKS* .
+* Aliaset **kubectl-admin** är för den vanliga administratörsanvändaren och är begränsad till *namnområdet psp-aks.*
+* Aliaset **kubectl-nonadminuser** gäller för *den nonadmin-user* som skapades i föregående steg och är begränsad till *namnområdet psp-aks.*
 
-Skapa dessa två alias som du ser i följande kommandon:
+Skapa dessa två alias enligt följande kommandon:
 
 ```console
 alias kubectl-admin='kubectl --namespace psp-aks'
 alias kubectl-nonadminuser='kubectl --as=system:serviceaccount:psp-aks:nonadmin-user --namespace psp-aks'
 ```
 
-## <a name="test-the-creation-of-a-privileged-pod"></a>Testa skapandet av en privilegie rad Pod
+## <a name="test-the-creation-of-a-privileged-pod"></a>Testa skapandet av en privilegierad podd
 
-Vi börjar med att testa vad som händer när du schemalägger en POD med säkerhets kontexten för `privileged: true` . Den här säkerhets kontexten eskalerar Pod privilegier. I det föregående avsnittet som visade standard säkerhets principerna för AKS-Pod bör *behörighets* principen neka denna begäran.
+Först testar vi vad som händer när du schemalägger en podd med säkerhetskontexten `privileged: true` . Den här säkerhetskontexten eskalerar poddens behörigheter. I föregående avsnitt som visade standardsäkerhetsprinciperna för AKS-poddar bör *behörighetsprincipen* neka den här begäran.
 
-Skapa en fil med namnet `nginx-privileged.yaml` och klistra in följande yaml-manifest:
+Skapa en fil med namnet `nginx-privileged.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -204,13 +204,13 @@ spec:
         privileged: true
 ```
 
-Skapa Pod med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa podden med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl-nonadminuser apply -f nginx-privileged.yaml
 ```
 
-Pod kan inte schemaläggas, vilket visas i följande exempel på utdata:
+Podden kan inte schemaläggas, som du ser i följande exempelutdata:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-privileged.yaml
@@ -218,13 +218,13 @@ $ kubectl-nonadminuser apply -f nginx-privileged.yaml
 Error from server (Forbidden): error when creating "nginx-privileged.yaml": pods "nginx-privileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Pod når inte schemaläggnings fasen, så det finns inga resurser att ta bort innan du går vidare.
+Podden når inte schemaläggningsfasen, så det finns inga resurser att ta bort innan du går vidare.
 
-## <a name="test-creation-of-an-unprivileged-pod"></a>Testa att skapa en ej privilegie rad Pod
+## <a name="test-creation-of-an-unprivileged-pod"></a>Testa att skapa en podd utan privilegier
 
-I det föregående exemplet begärde Pod-specifikationen privilegie rad eskalering. Den här begäran nekas av säkerhets principen standard *Privilege* pod, så Pod kan inte schemaläggas. Nu ska vi prova att köra samma NGINX-Pod utan begäran om behörighets eskalering.
+I föregående exempel begärde poddspecifikationen privilegierad eskalering. Den här begäran nekas av *standardprivilegier* för poddsäkerhetsprincipen, så podden kan inte schemaläggas. Nu ska vi prova att köra samma NGINX-podd utan begäran om behörighetseskalering.
 
-Skapa en fil med namnet `nginx-unprivileged.yaml` och klistra in följande yaml-manifest:
+Skapa en fil med namnet `nginx-unprivileged.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -237,13 +237,13 @@ spec:
       image: mcr.microsoft.com/oss/nginx/nginx:1.14.2-alpine
 ```
 
-Skapa Pod med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa podden med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Pod kan inte schemaläggas, vilket visas i följande exempel på utdata:
+Podden kan inte schemaläggas, som du ser i följande exempelutdata:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
@@ -251,13 +251,13 @@ $ kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 Error from server (Forbidden): error when creating "nginx-unprivileged.yaml": pods "nginx-unprivileged" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Pod når inte schemaläggnings fasen, så det finns inga resurser att ta bort innan du går vidare.
+Podden når inte schemaläggningsfasen, så det finns inga resurser att ta bort innan du går vidare.
 
-## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Testa att skapa en POD med en speciell användar kontext
+## <a name="test-creation-of-a-pod-with-a-specific-user-context"></a>Testa att skapa en podd med en specifik användarkontext
 
-I föregående exempel försökte behållar avbildningen automatiskt använda roten för att binda NGINX till port 80. Den här begäran nekades av standard säkerhets principen för *privilegie* pod, så Pod kan inte starta. Nu ska vi prova att köra samma NGINX-Pod med en speciell användar kontext, till exempel `runAsUser: 2000` .
+I föregående exempel försökte containeravbildningen automatiskt använda roten för att binda NGINX till port 80. Den här begäran nekades av *standardprivilegier* för poddsäkerhetsprincipen, så podden kan inte starta. Nu ska vi prova att köra samma NGINX-podd med en specifik användarkontext, till exempel `runAsUser: 2000` .
 
-Skapa en fil med namnet `nginx-unprivileged-nonroot.yaml` och klistra in följande yaml-manifest:
+Skapa en fil med namnet `nginx-unprivileged-nonroot.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 apiVersion: v1
@@ -272,13 +272,13 @@ spec:
         runAsUser: 2000
 ```
 
-Skapa Pod med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa podden med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 ```
 
-Pod kan inte schemaläggas, vilket visas i följande exempel på utdata:
+Podden kan inte schemaläggas, som du ser i följande exempelutdata:
 
 ```console
 $ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
@@ -286,15 +286,15 @@ $ kubectl-nonadminuser apply -f nginx-unprivileged-nonroot.yaml
 Error from server (Forbidden): error when creating "nginx-unprivileged-nonroot.yaml": pods "nginx-unprivileged-nonroot" is forbidden: unable to validate against any pod security policy: []
 ```
 
-Pod når inte schemaläggnings fasen, så det finns inga resurser att ta bort innan du går vidare.
+Podden når inte schemaläggningsfasen, så det finns inga resurser att ta bort innan du går vidare.
 
-## <a name="create-a-custom-pod-security-policy"></a>Skapa en anpassad säkerhets princip för Pod
+## <a name="create-a-custom-pod-security-policy"></a>Skapa en anpassad poddsäkerhetsprincip
 
-Nu när du har sett hur du kan använda standard säkerhets principerna för Pod kan du ge den andra *användaren* möjlighet att schemalägga poddar.
+Nu när du har sett beteendet för standardsäkerhetsprinciperna för poddar kan vi ge *icke-användare* ett sätt att schemalägga poddar.
 
-Nu ska vi skapa en princip för att avvisa poddar som begär privilegie rad åtkomst. Andra alternativ, till exempel *runAsUser* eller tillåtna *volymer*, är inte uttryckligen begränsade. Den här typen av princip nekar en begäran om privilegie rad åtkomst, men tillåter annars att klustret kör den begärda poddar.
+Nu ska vi skapa en princip för att avvisa poddar som begär privilegierad åtkomst. Andra alternativ, till *exempel runAsUser* eller *tillåtna volymer,* är inte uttryckligen begränsade. Den här typen av princip nekar en begäran om privilegierad åtkomst, men annars kan klustret köra de begärda poddarna.
 
-Skapa en fil med namnet `psp-deny-privileged.yaml` och klistra in följande yaml-manifest:
+Skapa en fil med namnet `psp-deny-privileged.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 apiVersion: policy/v1beta1
@@ -315,13 +315,13 @@ spec:
   - '*'
 ```
 
-Skapa principen med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa principen med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl apply -f psp-deny-privileged.yaml
 ```
 
-Om du vill visa tillgängliga principer använder du kommandot [kubectl get PSP][kubectl-get] , som du ser i följande exempel. Jämför principen *PSP-Deny-Privileged* med den standard *behörighets* princip som har tillämpats i föregående exempel för att skapa en pod. Endast användningen *av den tidigare eskaleringen* nekas av principen. Det finns inga begränsningar för användaren eller gruppen för principen *PSP-Deny-Privileged* .
+Om du vill visa de principer som är tillgängliga använder [du kommandot kubectl get psp,][kubectl-get] som du ser i följande exempel. Jämför *principen psp-deny-privileged med* principen för standardprivilegier som framtvingas i föregående exempel för att skapa en podd.  Endast användningen av *PRIV-eskalering* nekas av din princip. Det finns inga begränsningar för användaren eller gruppen för *principen psp-deny-privileged.*
 
 ```console
 $ kubectl get psp
@@ -331,11 +331,11 @@ privileged            true    *      RunAsAny   RunAsAny           RunAsAny    R
 psp-deny-privileged   false          RunAsAny   RunAsAny           RunAsAny    RunAsAny    false            *          
 ```
 
-## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Tillåt att användar kontot använder den anpassade säkerhets principen för Pod
+## <a name="allow-user-account-to-use-the-custom-pod-security-policy"></a>Tillåt att användarkontot använder den anpassade poddsäkerhetsprincipen
 
-I föregående steg skapade du en POD säkerhets princip för att avvisa poddar som begär privilegie rad åtkomst. Om du vill tillåta att principen används skapar du en *roll* eller en *ClusterRole*. Sedan associerar du en av dessa roller med hjälp av en *RoleBinding* eller *ClusterRoleBinding*.
+I föregående steg skapade du en säkerhetsprincip för poddar för att avvisa poddar som begär privilegierad åtkomst. Om du vill tillåta att principen används skapar du en *roll* eller en *ClusterRole*. Sedan associerar du en av dessa roller med hjälp av *en RoleBinding* *eller ClusterRoleBinding*.
 
-I det här exemplet skapar du en ClusterRole som gör att du kan *använda* principen *PSP-Deny-Privileged* som skapades i föregående steg. Skapa en fil med namnet `psp-deny-privileged-clusterrole.yaml` och klistra in följande yaml-manifest:
+I det här exemplet skapar du en  ClusterRole som gör att du kan använda *principen psp-deny-privileged* som skapades i föregående steg. Skapa en fil med namnet `psp-deny-privileged-clusterrole.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 kind: ClusterRole
@@ -353,13 +353,13 @@ rules:
   - use
 ```
 
-Skapa ClusterRole med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa ClusterRole med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Skapa nu en ClusterRoleBinding för att använda ClusterRole som skapades i föregående steg. Skapa en fil med namnet `psp-deny-privileged-clusterrolebinding.yaml` och klistra in följande yaml-manifest:
+Skapa nu en ClusterRoleBinding för att använda ClusterRole som skapades i föregående steg. Skapa en fil med namnet `psp-deny-privileged-clusterrolebinding.yaml` och klistra in följande YAML-manifest:
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -376,24 +376,24 @@ subjects:
   name: system:serviceaccounts
 ```
 
-Skapa en ClusterRoleBinding med kommandot [kubectl Apply][kubectl-apply] och ange namnet på ditt yaml-manifest:
+Skapa en ClusterRoleBinding med kommandot [kubectl apply][kubectl-apply] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl apply -f psp-deny-privileged-clusterrolebinding.yaml
 ```
 
 > [!NOTE]
-> I det första steget i den här artikeln har funktionen säkerhets princip för Pod Aktiver ATS i AKS-klustret. Den rekommenderade metoden var att endast aktivera funktionen Pod säkerhets princip när du har definierat dina egna principer. Det här är steget där du aktiverar funktionen Pod Security Policy. En eller flera anpassade principer har definierats och användar konton har associerats med dessa principer. Nu kan du aktivera funktionen Pod säkerhets princip och minimera problemen som orsakas av standard principerna.
+> I det första steget i den här artikeln aktiverades funktionen poddsäkerhetsprincip i AKS-klustret. Den rekommenderade praxis var att endast aktivera säkerhetsprincipfunktionen för poddar när du har definierat dina egna principer. Det här är fasen där du aktiverar funktionen poddsäkerhetsprincip. En eller flera anpassade principer har definierats och användarkonton har associerats med dessa principer. Nu kan du aktivera säkerhetsprincipfunktionen för poddar på ett säkert sätt och minimera problem som orsakas av standardprinciperna.
 
-## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Testa skapandet av en pod som inte har privilegierat igen
+## <a name="test-the-creation-of-an-unprivileged-pod-again"></a>Testa att skapa en podd utan privilegier igen
 
-Med din anpassade Pod-säkerhetsprincip tillämpad och en bindning för användar kontot för att använda principen, försöker vi att skapa en pod som inte har privilegierat igen. Använd samma `nginx-privileged.yaml` manifest för att skapa Pod med kommandot [kubectl Apply][kubectl-apply] :
+Nu när din anpassade poddsäkerhetsprincip har tillämpats och en bindning för användarkontot att använda principen ska vi försöka skapa en podd utan privilegier igen. Använd samma `nginx-privileged.yaml` manifest för att skapa podden med kommandot [kubectl apply:][kubectl-apply]
 
 ```console
 kubectl-nonadminuser apply -f nginx-unprivileged.yaml
 ```
 
-Pod har schemalagts. När du kontrollerar status för Pod med kommandot [kubectl get poddar][kubectl-get] *körs* pod:
+Podden har schemalagts. När du kontrollerar statusen för podden med kommandot [kubectl get pods][kubectl-get] körs *podden*:
 
 ```
 $ kubectl-nonadminuser get pods
@@ -402,9 +402,9 @@ NAME                 READY   STATUS    RESTARTS   AGE
 nginx-unprivileged   1/1     Running   0          7m14s
 ```
 
-Det här exemplet visar hur du kan skapa anpassade Pod säkerhets principer för att definiera åtkomst till AKS-klustret för olika användare eller grupper. Standard principerna för AKS ger tätt kontroll över vad poddar kan köra, så skapa dina egna anpassade principer för att sedan definiera de begränsningar du behöver.
+Det här exemplet visar hur du kan skapa anpassade poddsäkerhetsprinciper för att definiera åtkomst till AKS-klustret för olika användare eller grupper. AKS-standardprinciperna ger nära kontroller för vilka poddar som kan köras, så skapa egna anpassade principer för att sedan korrekt definiera de begränsningar du behöver.
 
-Ta bort NGINX Pod med kommandot [kubectl Delete][kubectl-delete] och ange namnet på din yaml-manifest:
+Ta bort NGINX-podden utan privilegier med kommandot [kubectl delete][kubectl-delete] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl-nonadminuser delete -f nginx-unprivileged.yaml
@@ -412,7 +412,7 @@ kubectl-nonadminuser delete -f nginx-unprivileged.yaml
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill inaktivera Pod säkerhets princip använder du kommandot [AZ AKS Update][az-aks-update] igen. I följande exempel inaktive ras Pod säkerhets princip på kluster namnet *myAKSCluster* i resurs gruppen med namnet *myResourceGroup*:
+Om du vill inaktivera poddsäkerhetsprincipen använder [du kommandot az aks update][az-aks-update] igen. I följande exempel inaktiveras podsäkerhetsprincipen på klusternamnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup:*
 
 ```azurecli-interactive
 az aks update \
@@ -428,13 +428,13 @@ kubectl delete -f psp-deny-privileged-clusterrolebinding.yaml
 kubectl delete -f psp-deny-privileged-clusterrole.yaml
 ```
 
-Ta bort säkerhets principen med kommandot [kubectl Delete][kubectl-delete] och ange namnet på ditt yaml-manifest:
+Ta bort säkerhetsprincipen med [kommandot kubectl delete][kubectl-delete] och ange namnet på ditt YAML-manifest:
 
 ```console
 kubectl delete -f psp-deny-privileged.yaml
 ```
 
-Ta slutligen bort *PSP-AKS-* namnområdet:
+Ta slutligen bort *namnområdet psp-aks:*
 
 ```console
 kubectl delete namespace psp-aks
@@ -442,9 +442,9 @@ kubectl delete namespace psp-aks
 
 ## <a name="next-steps"></a>Nästa steg
 
-Den här artikeln visar dig hur du skapar en POD säkerhets princip för att förhindra användning av privilegie rad åtkomst. Det finns många funktioner som en princip kan genomdriva, t. ex. typ av volym eller RunAs-användare. Mer information om tillgängliga alternativ finns i [referens dokument för säkerhets princip för Kubernetes Pod][kubernetes-policy-reference].
+Den här artikeln visade hur du skapar en poddsäkerhetsprincip för att förhindra användningen av privilegierad åtkomst. Det finns många funktioner som en princip kan tillämpa, till exempel volymtyp eller RunAs-användare. Mer information om tillgängliga alternativ finns i referensdokumenten för [Kubernetes pod security policy.][kubernetes-policy-reference]
 
-Mer information om hur du begränsar Pod nätverks trafik finns i [skydda trafik mellan poddar med hjälp av nätverks principer i AKS][network-policies].
+Mer information om hur du begränsar poddnätverkstrafik finns [i Skydda trafik mellan poddar med nätverksprinciper i AKS.][network-policies]
 
 <!-- LINKS - external -->
 [kubectl-apply]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply
@@ -460,15 +460,15 @@ Mer information om hur du begränsar Pod nätverks trafik finns i [skydda trafik
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [network-policies]: use-network-policies.md
-[az-feature-register]: /cli/azure/feature#az-feature-register
-[az-feature-list]: /cli/azure/feature#az-feature-list
-[az-provider-register]: /cli/azure/provider#az-provider-register
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-feature-register]: /cli/azure/feature#az_feature_register
+[az-feature-list]: /cli/azure/feature#az_feature_list
+[az-provider-register]: /cli/azure/provider#az_provider_register
+[az-aks-get-credentials]: /cli/azure/aks#az_aks_get_credentials
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-extension-add]: /cli/azure/extension#az-extension-add
+[az-extension-add]: /cli/azure/extension#az_extension_add
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
-[az-extension-add]: /cli/azure/extension#az-extension-add
-[az-extension-update]: /cli/azure/extension#az-extension-update
+[az-extension-add]: /cli/azure/extension#az_extension_add
+[az-extension-update]: /cli/azure/extension#az_extension_update
 [policy-samples]: ./policy-reference.md#microsoftcontainerservice
 [azure-policy-add-on]: ../governance/policy/concepts/policy-for-kubernetes.md
