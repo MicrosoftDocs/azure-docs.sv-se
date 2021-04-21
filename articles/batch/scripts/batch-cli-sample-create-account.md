@@ -1,15 +1,15 @@
 ---
-title: Exempel på Azure CLI-skript – skapa batch-konto – batch-tjänst
+title: Exempel på Azure CLI-skript – Skapa Batch-konto – Batch-tjänst
 description: Det här skriptet skapar ett Azure Batch-konto i Batch-tjänstläget och visar hur du ställer frågor eller uppdaterar olika egenskaper för kontot.
 ms.topic: sample
 ms.date: 01/29/2018
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2349b6b373f271a5aa0f169e5a9ebc9f58f6f608
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3d978cf56e92abf9824c116e51f94d53bbe14bbb
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93076818"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768362"
 ---
 # <a name="cli-example-create-a-batch-account-in-batch-service-mode"></a>CLI-exempel: Skapa ett Batch-konto i Batch-tjänstläge
 
@@ -17,7 +17,7 @@ Det här skriptet skapar ett Azure Batch-konto i Batch-tjänstläget och visar h
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- I den här självstudien krävs version 2.0.20 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. 
+- Den här självstudien kräver version 2.0.20 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad. 
 
 ## <a name="example-script"></a>Exempelskript
 
@@ -37,14 +37,14 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Skapar Batch-kontot. |
-| [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Skapar ett lagringskonto. |
-| [az batch account set](/cli/azure/batch/account#az-batch-account-set) | Uppdaterar egenskaperna för Batch-kontot.  |
-| [az batch account show](/cli/azure/batch/account#az-batch-account-show) | Hämtar information om det angivna Batch-kontot.  |
-| [az batch account keys list](/cli/azure/batch/account/keys#az-batch-account-keys-list) | Hämtar åtkomstnycklar för det angivna Batch-kontot.  |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Autentiserar mot det angivna Batch-kontot för ytterligare CLI-interaktion.  |
-| [az group delete](/cli/azure/group#az-group-delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Skapar Batch-kontot. |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Skapar ett lagringskonto. |
+| [az batch account set](/cli/azure/batch/account#az_batch_account_set) | Uppdaterar egenskaperna för Batch-kontot.  |
+| [az batch account show](/cli/azure/batch/account#az_batch_account_show) | Hämtar information om det angivna Batch-kontot.  |
+| [az batch account keys list](/cli/azure/batch/account/keys#az_batch_account_keys_list) | Hämtar åtkomstnycklar för det angivna Batch-kontot.  |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Autentiserar mot det angivna Batch-kontot för ytterligare CLI-interaktion.  |
+| [az group delete](/cli/azure/group#az_group_delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 

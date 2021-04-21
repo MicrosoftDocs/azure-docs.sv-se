@@ -1,33 +1,33 @@
 ---
-title: Hantera Azure blockchain-tjänsten med hjälp av Azure CLI
-description: Hantera Azure blockchain-tjänsten med Azure CLI
+title: Hantera Azure Blockchain Service med hjälp av Azure CLI
+description: Så här hanterar du Azure Blockchain Service med Azure CLI
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 36b012c486c0c7d3303a81998e88f1605999c899
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87170854"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768061"
 ---
-# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Hantera Azure blockchain-tjänsten med hjälp av Azure CLI
+# <a name="manage-azure-blockchain-service-using-azure-cli"></a>Hantera Azure Blockchain Service med hjälp av Azure CLI
 
-Förutom Azure Portal kan du använda Azure CLI för att hantera blockchain-medlemmar och Transaction-noder för Azure blockchain-tjänsten.
+Förutom den här Azure Portal kan du använda Azure CLI för att hantera blockkedjemedlemmar och transaktionsnoder för Azure Blockchain Service.
 
 ## <a name="launch-azure-cloud-shell"></a>Starta Azure Cloud Shell
 
 Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto.
 
-Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsare-flik genom att gå till [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
+Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsarflik genom att gå till [https://shell.azure.com/bash](https://shell.azure.com/bash) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
 
-Om du föredrar att installera och använda CLI lokalt kan du läsa [Installera Azure CLI](/cli/azure/install-azure-cli).
+Om du föredrar att installera och använda CLI lokalt kan du gå till [Installera Azure CLI.](/cli/azure/install-azure-cli)
 
 ## <a name="prepare-your-environment"></a>Förbered din miljö
 
 1. Logga in.
 
-    Logga in med kommandot [az login](/cli/azure/reference-index#az-login) om du använder en lokal CLI-installation.
+    Logga in med kommandot [az login](/cli/azure/reference-index#az_login) om du använder en lokal CLI-installation.
 
     ```azurecli
     az login
@@ -39,15 +39,15 @@ Om du föredrar att installera och använda CLI lokalt kan du läsa [Installera 
 
     När du arbetar med tilläggsreferenser för Azure CLI måste du först installera tillägget.  Med Azure CLI-tillägg får du tillgång till experimentella kommandon som inte finns med i standardversionen av CLI:t ännu.  Läs mer om tillägg, bland annat hur du uppdaterar och avinstallerar dem, i [Använda tillägg med Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-    Installera [tillägget för Azure blockchain-tjänsten](/cli/azure/ext/blockchain/blockchain) genom att köra följande kommando:
+    Installera tillägget [för Azure Blockchain Service](/cli/azure/ext/blockchain/blockchain) genom att köra följande kommando:
 
     ```azurecli-interactive
     az extension add --name blockchain
     ```
 
-## <a name="create-blockchain-member"></a>Skapa blockchain-medlem
+## <a name="create-blockchain-member"></a>Skapa blockkedjemedlem
 
-Exempel [skapar en blockchain-medlem](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) i Azure blockchain-tjänsten som kör kvorumet redovisnings protokoll i ett nytt konsortium.
+Exempel [skapar en blockkedjemedlem i](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) Azure Blockchain Service som kör kvorumregisterprotokollet i ett nytt konsortium.
 
 ```azurecli
 az blockchain member create \
@@ -63,18 +63,18 @@ az blockchain member create \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser skapas. |
-| **Namn** | Ett unikt namn som identifierar din Azure blockchain service blockchain-medlem. Namnet används för den offentliga slut punktens adress. Till exempel `myblockchainmember.blockchain.azure.com`. |
-| **sökvägen** | Azure-region där blockchain-medlemmen skapas. Till exempel `eastus`. Välj den plats som är närmast dina användare eller dina andra Azure-program. Funktioner kanske inte är tillgängliga i vissa regioner. |
-| **lösenord** | Lösen ordet för medlemmens standard transaktions nod. Använd lösen ordet för grundläggande autentisering vid anslutning till blockchain-medlemmens offentliga standard transaktions nod. Lösen ordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken som inte är nummer tecken (#), procent (%), komma (,), stjärna (*), citat tecken ( \` ), dubbelt citat tecken ("), enkla citat tecken (), bindestreck (-) och semicolumn (;)|
-| **protokollhanterare** | Blockchain-protokoll. För närvarande stöds *kvorum* protokoll. |
-| **Consortium** | Namnet på konsortiet att ansluta till eller skapa. Mer information om konsortier finns i [Azure blockchain service Consortium](consortium.md). |
-| **konsortiet-Management-Account-Password** | Konto lösen ordet för konsortiet kallas även medlems kontots lösen ord. Medlems kontots lösen ord används för att kryptera den privata nyckeln för det Ethereum-konto som skapas för din medlem. Du använder medlems kontot och medlems kontots lösen ord för hantering av konsortier. |
-| **SKU** | Nivå typ. *Standard* eller *Basic*. Använd *Basic* -nivån för utveckling, testning och bevis på koncept. Använd *standard* nivån för distributioner av produktions nivåer. Du bör också använda *standard* nivån om du använder blockchain Data Manager eller när du skickar en stor mängd privata transaktioner. Det finns inte stöd för att ändra pris nivån mellan Basic och standard när medlems skapande har skapats. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser skapas. |
+| **Namn** | Ett unikt namn som identifierar din Azure Blockchain Service blockkedjemedlem. Namnet används för den offentliga slutpunktsadressen. Till exempel `myblockchainmember.blockchain.azure.com`. |
+| **Plats** | Azure-region där blockkedjemedlemmen skapas. Till exempel `eastus`. Välj den plats som är närmast dina användare eller dina andra Azure-program. Funktioner kanske inte är tillgängliga i vissa regioner. |
+| **lösenord** | Lösenordet för medlemmens standardtransaktionsnod. Använd lösenordet för grundläggande autentisering vid anslutning till blockkedjemedlemmens offentliga slutpunkt för standardtransaktionsnod. Lösenordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen, 1 versal, 1 siffra och 1 specialtecken som inte är nummertecken(#), procent(%), kommatecken(,), star(*), bakåtcitat( \` ), dubbla citattecken("), enkelt citattecken('), bindestreck(-) och semikolon(;)|
+| **Protokollet** | Blockkedjeprotokoll. *Kvorumprotokollet* stöds för närvarande. |
+| **Konsortium** | Namnet på det konsortium som ska anslutas eller skapas. Mer information om consortia finns i [Azure Blockchain Service consortium](consortium.md). |
+| **consortium-management-account-password** | Lösenordet för konsortiumkontot kallas även för lösenordet för medlemskontot. Lösenordet för medlemskontot används för att kryptera den privata nyckeln för det Ethereum-konto som har skapats för din medlem. Du använder medlemskontot och medlemskontots lösenord för konsortiumhantering. |
+| **Sku** | Nivåtyp. *Standard* eller *Basic*. Använd *Basic-nivån* för utveckling, testning och konceptbevis. Använd *standardnivån* för distributioner i produktionsklass. Du bör också använda *standardnivån* om du använder Blockchain Data Manager eller skickar en stor mängd privata transaktioner. Det går inte att ändra prisnivån mellan Basic och Standard när medlemmen har skapats. |
 
-## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Ändra blockchain-medlems lösen ord eller brand Väggs regler
+## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Ändra blockkedjemedlemslösenord eller brandväggsregler
 
-Exempel [uppdaterar en blockchain-medlems](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)lösen ord, konsortiets hanterings lösen ord och brand Väggs regel.
+Exempel [uppdaterar blockkedjemedlemmens](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)lösenord, lösenord för konsortiumhantering och brandväggsregel.
 
 ```azurecli
 az blockchain member update \
@@ -87,15 +87,15 @@ az blockchain member update \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser skapas. |
-| **Namn** | Namn som identifierar din Azure blockchain service-medlem. |
-| **lösenord** | Lösen ordet för medlemmens standard transaktions nod. Använd lösen ordet för grundläggande autentisering vid anslutning till blockchain-medlemmens offentliga standard transaktions nod. Lösen ordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken som inte är nummer tecken (#), procent (%), komma (,), stjärna (*), citat tecken ( \` ), dubbelt citat tecken ("), enkla citat tecken (), bindestreck (-) och semicolumn (;)|
-| **konsortiet-Management-Account-Password** | Konto lösen ordet för konsortiet kallas även medlems kontots lösen ord. Medlems kontots lösen ord används för att kryptera den privata nyckeln för det Ethereum-konto som skapas för din medlem. Du använder medlems kontot och medlems kontots lösen ord för hantering av konsortier. |
-| **brand vägg – regler** | Start-och slut-IP-adress för listan över tillåtna IP-adresser. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser skapas. |
+| **Namn** | Namn som identifierar din Azure Blockchain Service medlem. |
+| **lösenord** | Lösenordet för medlemmens standardtransaktionsnod. Använd lösenordet för grundläggande autentisering vid anslutning till blockkedjemedlemmens offentliga slutpunkt för standardtransaktionsnod. Lösenordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen, 1 versal, 1 siffra och 1 specialtecken som inte är nummertecken(#), procent(%), kommatecken(,), star(*), bakåtcitat( \` ), dubbla citattecken("), enkelt citattecken('), bindestreck(-) och semikolon(;)|
+| **consortium-management-account-password** | Lösenordet för ett konsortiumkonto kallas även för lösenordet för medlemskontot. Lösenordet för medlemskontot används för att kryptera den privata nyckeln för det Ethereum-konto som skapas för din medlem. Du använder medlemskontot och medlemskontolösenordet för konsortiumhantering. |
+| **brandväggsregler** | Start- och slut-IP-adress för listan över tillåtna IP-adresser. |
 
-## <a name="create-transaction-node"></a>Skapa Transaction-nod
+## <a name="create-transaction-node"></a>Skapa transaktionsnod
 
-[Skapa en Transaction-nod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) i en befintlig blockchain-medlem. Genom att lägga till Transaction Nodes kan du öka säkerhets isoleringen och distribuera belastningen. Du kan till exempel ha en Transaction Node-slutpunkt för olika klient program.
+[Skapa en transaktionsnod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) i en befintlig blockkedjemedlem. Genom att lägga till transaktionsnoder kan du öka säkerhetsisoleringen och fördela belastningen. Du kan till exempel ha en slutpunkt för transaktionsnoder för olika klientprogram.
 
 ```azurecli
 az blockchain transaction-node create \
@@ -107,15 +107,15 @@ az blockchain transaction-node create \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser skapas. |
-| **sökvägen** | Blockchain-medlemmens Azure-region. |
-| **medlems namn** | Namn som identifierar din Azure blockchain service-medlem. |
-| **lösenord** | Lösen ordet för Transaction-noden. Använd lösen ordet för grundläggande autentisering vid anslutning till den offentliga slut punkten för Transaction-noden. Lösen ordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken som inte är nummer tecken (#), procent (%), komma (,), stjärna (*), citat tecken ( \` ), dubbelt citat tecken ("), enkla citat tecken (), bindestreck (-) och semicolumn (;)|
-| **Namn** | Nodnamn för transaktion. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser skapas. |
+| **Plats** | Azure-regionen för blockkedjemedlemmen. |
+| **medlemsnamn** | Namn som identifierar din Azure Blockchain Service medlem. |
+| **lösenord** | Lösenordet för transaktionsnoden. Använd lösenordet för grundläggande autentisering vid anslutning till den offentliga slutpunkten för transaktionsnoden. Lösenordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen, 1 versal, 1 siffra och 1 specialtecken som inte är nummertecken(#), procent(%), kommatecken(,), star(*), bakåtcitat( ), dubbla citattecken("), enkelt \` citattecken('), dash(-) och semikolon(;)|
+| **Namn** | Namn på transaktionsnod. |
 
-## <a name="change-transaction-node-password"></a>Ändra lösen ord för Transaction Node
+## <a name="change-transaction-node-password"></a>Ändra transaktionsnodslösenord
 
-Exempel [uppdaterar ett](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update) lösen ord för Transaction Node.
+Exempel uppdaterar [ett lösenord för transaktionsnoden.](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)
 
 ```azurecli
 az blockchain transaction-node update \
@@ -127,14 +127,14 @@ az blockchain transaction-node update \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser finns. |
-| **medlems namn** | Namn som identifierar din Azure blockchain service-medlem. |
-| **lösenord** | Lösen ordet för Transaction-noden. Använd lösen ordet för grundläggande autentisering vid anslutning till den offentliga slut punkten för Transaction-noden. Lösen ordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen bokstav, 1 versal bokstav, 1 siffra och 1 specialtecken som inte är nummer tecken (#), procent (%), komma (,), stjärna (*), citat tecken ( \` ), dubbelt citat tecken ("), enkla citat tecken (), bindestreck (-) och semicolumn (;)|
-| **Namn** | Nodnamn för transaktion. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser finns. |
+| **medlemsnamn** | Namn som identifierar din Azure Blockchain Service medlem. |
+| **lösenord** | Lösenordet för transaktionsnoden. Använd lösenordet för grundläggande autentisering vid anslutning till den offentliga slutpunkten för transaktionsnoden. Lösenordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen, 1 versal, 1 siffra och 1 specialtecken som inte är nummertecken(#), procent(%), kommatecken(,), star(*), bakåtcitat( ), dubbla citattecken("), enkelt \` citattecken('), dash(-) och semikolon(;)|
+| **Namn** | Namn på transaktionsnod. |
 
-## <a name="list-api-keys"></a>Visa lista över API-nycklar
+## <a name="list-api-keys"></a>Lista API-nycklar
 
-API-nycklar kan användas för Node-åtkomst liknande användar namn och lösen ord. Det finns två API-nycklar som stöder nyckel rotation. Använd följande kommando för att [lista dina API-nycklar](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key).
+API-nycklar kan användas för nodåtkomst på liknande sätt som användarnamn och lösenord. Det finns två API-nycklar som stöder nyckelrotation. Använd följande kommando för att visa [en lista över dina API-nycklar.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)
 
 ```azurecli
 az blockchain member list-api-key \
@@ -144,12 +144,12 @@ az blockchain member list-api-key \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser finns. |
-| **Namn** | Namnet på Azure blockchain service-blockchain medlem |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser finns. |
+| **Namn** | Namnet på Azure Blockchain Service blockkedjemedlem |
 
 ## <a name="regenerate-api-keys"></a>Återskapa API-nycklar
 
-Använd följande kommando för att [återskapa dina API-nycklar](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key).
+Använd följande kommando för att [återskapa DINA API-nycklar.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -160,13 +160,13 @@ az blockchain member regenerate-api-key \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser finns. |
-| **Namn** | Namnet på Azure blockchain-tjänstens blockchain-medlem. |
-| **keyName** | Ersätt \<keyValue\> med antingen KEY1, key2 eller båda. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser finns. |
+| **Namn** | Namnet på Azure Blockchain Service blockkedjemedlem. |
+| **Nyckelnamn** | Ersätt \<keyValue\> med antingen key1, key2 eller båda. |
 
-## <a name="delete-a-transaction-node"></a>Ta bort en Transaction-nod
+## <a name="delete-a-transaction-node"></a>Ta bort en transaktionsnod
 
-Exempel [tar bort en blockchain-medlems transaktions nod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
+Exempel [tar bort en blockkedjemedlemstransaktionsnod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -177,13 +177,13 @@ az blockchain transaction-node delete \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser finns. |
-| **medlems namn** | Namnet på Azure blockchain service-blockchain medlem som också innehåller det transaktions nodnamn som ska tas bort. |
-| **Namn** | Nodnamn som ska tas bort. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser finns. |
+| **medlemsnamn** | Namnet på den Azure Blockchain Service blockkedjemedlem som även innehåller det transaktionsnodnamn som ska tas bort. |
+| **Namn** | Namn på transaktionsnod som ska tas bort. |
 
-## <a name="delete-a-blockchain-member"></a>Ta bort en blockchain-medlem
+## <a name="delete-a-blockchain-member"></a>Ta bort en blockkedjemedlem
 
-Exempel [tar bort en blockchain-medlem](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
+Exempel [tar bort en blockkedjemedlem](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
 
 ```azurecli
 az blockchain member delete \
@@ -194,8 +194,8 @@ az blockchain member delete \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **resurs grupp** | Resurs grupp namn där Azure blockchain service-resurser finns. |
-| **Namn** | Namnet på den Azure blockchain-tjänst blockchain-medlem som ska tas bort. |
+| **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser finns. |
+| **Namn** | Namnet på den Azure Blockchain Service blockkedjemedlem som ska tas bort. |
 
 ## <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -210,13 +210,13 @@ az role assignment create \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **rollinnehavaren** | Namnet på Azure AD-rollen. |
-| **tilldelad person** | Användar-ID för Azure AD. Till exempel `user@contoso.com` |
-| **utrymme** | Roll tilldelningens omfattning. Kan vara antingen en blockchain-medlem eller Transaction-nod. |
+| **Roll** | Namnet på Azure AD-rollen. |
+| **assignee** | Azure AD-användar-ID. Till exempel `user@contoso.com` |
+| **Omfattning** | Rolltilldelningens omfattning. Kan vara antingen en blockkedjemedlem eller transaktionsnod. |
 
 **Exempel:**
 
-Bevilja noden åtkomst för Azure AD-användare till blockchain- **medlemmen**:
+Bevilja nodåtkomst för Azure AD-användare till **blockkedjemedlem:**
 
 ```azurecli
 az role assignment create \
@@ -227,7 +227,7 @@ az role assignment create \
 
 **Exempel:**
 
-Bevilja Node-åtkomst för Azure AD-användare till blockchain- **transaktions nod**:
+Bevilja nodåtkomst för Azure AD-användare till **blockkedjetransaktionsnod:**
 
 ```azurecli
 az role assignment create \
@@ -236,7 +236,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1/transactionNodes/contosoTransactionNode1
 ```
 
-### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Bevilja Node-åtkomst för Azure AD-grupp eller-program roll
+### <a name="grant-node-access-for-azure-ad-group-or-application-role"></a>Bevilja nodåtkomst för Azure AD-grupp eller programroll
 
 ```azurecli
 az role assignment create \
@@ -246,13 +246,13 @@ az role assignment create \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **rollinnehavaren** | Namnet på Azure AD-rollen. |
-| **tilldelad person-objekt-ID** | Azure AD-grupp-ID eller program-ID. |
-| **utrymme** | Roll tilldelningens omfattning. Kan vara antingen en blockchain-medlem eller Transaction-nod. |
+| **Roll** | Namnet på Azure AD-rollen. |
+| **assignee-object-id** | Grupp-ID eller program-ID för Azure AD. |
+| **Omfattning** | Rolltilldelningens omfattning. Kan vara antingen en blockkedjemedlem eller transaktionsnod. |
 
 **Exempel:**
 
-Bevilja noden åtkomst för **program rollen**
+Bevilja nodåtkomst för **programrollen**
 
 ```azurecli
 az role assignment create \
@@ -261,7 +261,7 @@ az role assignment create \
                             --scope /subscriptions/mySubscriptionId/resourceGroups/contosoResourceGroup/providers/Microsoft.Blockchain/blockchainMembers/contosoMember1
 ```
 
-### <a name="remove-azure-ad-node-access"></a>Ta bort åtkomst till Azure AD-nod
+### <a name="remove-azure-ad-node-access"></a>Ta bort azure AD-nodåtkomst
 
 ```azurecli
 az role assignment delete \
@@ -272,10 +272,10 @@ az role assignment delete \
 
 | Parameter | Beskrivning |
 |---------|-------------|
-| **rollinnehavaren** | Namnet på Azure AD-rollen. |
-| **tilldelad person** | Användar-ID för Azure AD. Till exempel `user@contoso.com` |
-| **utrymme** | Roll tilldelningens omfattning. Kan vara antingen en blockchain-medlem eller Transaction-nod. |
+| **Roll** | Namnet på Azure AD-rollen. |
+| **assignee** | Användar-ID för Azure AD. Till exempel `user@contoso.com` |
+| **Omfattning** | Rolltilldelningens omfattning. Kan vara antingen en blockkedjemedlem eller transaktionsnod. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig hur du [konfigurerar noder i Azure blockchain service Transactions med Azure Portal](configure-transaction-nodes.md).
+Lär dig hur [du konfigurerar Azure Blockchain Service-transaktionsnoder med Azure Portal](configure-transaction-nodes.md).

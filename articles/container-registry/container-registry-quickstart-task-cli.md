@@ -1,31 +1,31 @@
 ---
-title: Snabb start – bygga en behållar avbildning på begäran i Azure
-description: Använd Azure Container Registry-kommandon för att snabbt skapa, skicka och köra en Docker-behållare på begäran i Azure-molnet.
+title: Snabbstart – Skapa en containeravbildning på begäran i Azure
+description: Använd Azure Container Registry kommandon för att snabbt skapa, skicka och köra en Docker-containeravbildning på begäran i Azure-molnet.
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: contperf-fy21q1, devx-track-azurecli
-ms.openlocfilehash: c6fe1fc246d112218b492072155175b2db99c8c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d3ef126812cb36874b74c8569d141787f71a29da
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97032957"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781459"
 ---
-# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snabb start: skapa och köra en behållar avbildning med Azure Container Registry uppgifter
+# <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Snabbstart: Skapa och köra en containeravbildning med Azure Container Registry-uppgifter
 
-I den här snabb starten använder du [Azure Container Registry uppgifter][container-registry-tasks-overview] -kommandon för att snabbt skapa, skicka och köra en Docker-behållar avbildning internt i Azure utan en lokal Docker-installation. ACR-aktiviteter är en uppsättning funktioner i Azure Container Registry som hjälper dig att hantera och ändra behållar avbildningar över livs cykeln för behållare. Det här exemplet visar hur du avlastar utvecklings cykeln "inre loop" för behållar avbildningen till molnet med på begäran-versioner med en lokal Dockerfile. 
+I den här snabbstarten använder [du Azure Container Registry-uppgifter][container-registry-tasks-overview] för att snabbt skapa, push-skicka och köra en Docker-containeravbildning inbyggt i Azure, utan en lokal Docker-installation. ACR-uppgifter är en uppsättning funktioner i Azure Container Registry som hjälper dig att hantera och ändra containeravbildningar under containerns livscykel. Det här exemplet visar hur du avlastar utvecklingscykeln för "inre loop" containeravbildning till molnet med byggen på begäran med hjälp av en lokal Dockerfile. 
 
-Efter den här snabb starten kan du utforska mer avancerade funktioner i ACR-aktiviteter med hjälp av [självstudierna](container-registry-tutorial-quick-task.md). ACR-aktiviteter kan automatisera image-versioner baserat på kod incheckningar eller grund avbildnings uppdateringar eller testa flera behållare parallellt, bland andra scenarier. 
+Efter den här snabbstarten kan du utforska mer avancerade funktioner i ACR-uppgifter med hjälp av [självstudierna](container-registry-tutorial-quick-task.md). ACR-uppgifter kan automatisera avbildningsbyggen baserat på kod commits eller basavbildningsuppdateringar, eller testa flera containrar parallellt, bland andra scenarier. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
     
-- Den här snabb starten kräver version 2.0.58 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här snabbstarten kräver version 2.0.58 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Om du inte redan har ett behållar register måste du först skapa en resurs grupp med kommandot [AZ Group Create][az-group-create] . En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
+Om du inte redan har ett containerregister skapar du först en resursgrupp med [kommandot az group][az-group-create] create. En Azure-resursgrupp är en logisk container där Azure-resurser distribueras och hanteras.
 
 I följande exempel skapas en resursgrupp med namnet *myResourceGroup* på platsen *eastus*.
 
@@ -35,24 +35,24 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>Skapa ett containerregister
 
-Skapa ett behållar register med kommandot [AZ ACR Create][az-acr-create] . Registernamnet måste vara unikt i Azure och innehålla 5–50 alfanumeriska tecken. I följande exempel används *myContainerRegistry008* . Uppdatera det här till ett unikt värde.
+Skapa ett containerregister med kommandot [az acr][az-acr-create] create. Registernamnet måste vara unikt i Azure och innehålla 5–50 alfanumeriska tecken. I följande exempel används *myContainerRegistry008.* Uppdatera det här till ett unikt värde.
 
 ```azurecli-interactive
 az acr create --resource-group myResourceGroup \
   --name myContainerRegistry008 --sku Basic
 ```
 
-I det här exemplet skapas ett *grundläggande* register, ett kostnads optimerat alternativ för utvecklare som vill lära sig mer Azure Container Registry. Mer information om tillgängliga tjänst nivåer finns i [tjänste nivåer för container Registry][container-registry-skus].
+Det här exemplet skapar *ett Basic-register,* ett kostnadsoptimerat alternativ för utvecklare som lär sig Azure Container Registry. Mer information om tillgängliga tjänstnivåer finns i [Tjänstnivåer för Container Registry.][container-registry-skus]
 
-## <a name="build-and-push-image-from-a-dockerfile"></a>Bygg och skicka avbildningar från en Dockerfile
+## <a name="build-and-push-image-from-a-dockerfile"></a>Skapa och push-push-avbildning från en Dockerfile
 
-Använd nu Azure Container Registry för att bygga och skicka en avbildning. Skapa först en lokal arbets katalog och skapa sedan en Dockerfile med namnet *Dockerfile* med den enskilda raden: `FROM mcr.microsoft.com/hello-world` . Det här är ett enkelt exempel på hur du skapar en Linux container-avbildning från `hello-world` avbildningen på Microsoft container Registry. Du kan skapa egna standard-Dockerfile och skapa avbildningar för andra plattformar. Om du arbetar med ett bash-gränssnitt skapar du Dockerfile med följande kommando:
+Använd nu Azure Container Registry för att skapa och push-skicka en avbildning. Skapa först en lokal arbetskatalog och skapa sedan en Dockerfile med namnet *Dockerfile* med den enda raden: `FROM mcr.microsoft.com/hello-world` . Det här är ett enkelt exempel för att skapa en Linux-containeravbildning från `hello-world` avbildningen som finns Microsoft Container Registry. Du kan skapa en egen Dockerfile-standardfil och skapa avbildningar för andra plattformar. Om du arbetar i ett bash-gränssnitt skapar du Dockerfile med följande kommando:
 
 ```bash
 echo FROM mcr.microsoft.com/hello-world > Dockerfile
 ```
 
-Kör kommandot [AZ ACR build][az-acr-build] , som skapar avbildningen och när avbildningen har skapats, och push-överför den till registret. I följande exempel skapas och pushrar `sample/hello-world:v1` avbildningen. I `.` slutet av kommandot anges platsen för Dockerfile, i det här fallet den aktuella katalogen.
+Kör kommandot [az acr build,][az-acr-build] som skapar avbildningen och, när avbildningen har skapats, push-installerat den till registret. I följande exempel byggs och push-sar du `sample/hello-world:v1` avbildningen. i `.` slutet av kommandot anger platsen för Dockerfile, i det här fallet den aktuella katalogen.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \
@@ -60,7 +60,7 @@ az acr build --image sample/hello-world:v1 \
   --file Dockerfile . 
 ```
 
-Utdata från en lyckad version och push ser ut ungefär så här:
+Utdata från ett lyckat bygge och push-alternativ liknar följande:
 
 ```console
 Packing source code into tar to upload...
@@ -114,16 +114,16 @@ Run ID: ca8 was successful after 10s
 
 ## <a name="run-the-image"></a>Kör avbildningen
 
-Kör nu snabbt avbildningen som du har skapat och push-överförts till registret. Här använder du [AZ ACR Run][az-acr-run] för att köra container-kommandot. I arbets flödet för container utveckling kan detta vara ett verifierings steg innan du distribuerar avbildningen, eller så kan du inkludera kommandot i en [yaml-fil med flera steg][container-registry-tasks-multi-step]. 
+Kör nu snabbt avbildningen som du skapade och push-push-över till registret. Här använder du [az acr run för][az-acr-run] att köra containerkommandot. I arbetsflödet för containerutveckling kan detta vara ett valideringssteg innan du distribuerar avbildningen, eller så kan du inkludera kommandot i en [YAML-fil med flera steg.][container-registry-tasks-multi-step] 
 
-I följande exempel används `$Registry` för att ange registret där du kör kommandot:
+I följande exempel används `$Registry` för att ange det register där du kör kommandot:
 
 ```azurecli-interactive
 az acr run --registry myContainerRegistry008 \
   --cmd '$Registry/sample/hello-world:v1' /dev/null
 ```
 
-`cmd`Parametern i det här exemplet kör behållaren i dess standard konfiguration, men `cmd` stöder ytterligare `docker run` parametrar eller till och med andra `docker` kommandon.
+Parametern `cmd` i det här exemplet kör containern i standardkonfigurationen, men har stöd för ytterligare parametrar eller till och med andra `cmd` `docker run` `docker` kommandon.
 
 De utdata som genereras liknar följande:
 
@@ -180,10 +180,10 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du använt funktioner i ACR-aktiviteter för att snabbt skapa, skicka och köra en Docker-behållar avbildning internt i Azure, utan en lokal Docker-installation. Fortsätt till självstudierna Azure Container Registry uppgifter och lär dig mer om att använda ACR-uppgifter för att automatisera avbildnings versioner och uppdateringar.
+I den här snabbstarten använde du funktioner i ACR-uppgifter för att snabbt skapa, push-installera och köra en Docker-containeravbildning inbyggt i Azure, utan en lokal Docker-installation. Fortsätt till självstudierna Azure Container Registry-uppgifter att lära dig hur du använder ACR-uppgifter för att automatisera avbildningsbyggen och uppdateringar.
 
 > [!div class="nextstepaction"]
-> [Azure Container Registry uppgifter – självstudier][container-registry-tutorial-quick-task]
+> [Azure Container Registry-uppgifter självstudier][container-registry-tutorial-quick-task]
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -197,11 +197,11 @@ I den här snabb starten har du använt funktioner i ACR-aktiviteter för att sn
 [azure-account]: https://azure.microsoft.com/free/
 
 <!-- LINKS - internal -->
-[az-acr-create]: /cli/azure/acr#az-acr-create
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-run]: /cli/azure/acr#az-acr-run
-[az-group-create]: /cli/azure/group#az-group-create
-[az-group-delete]: /cli/azure/group#az-group-delete
+[az-acr-create]: /cli/azure/acr#az_acr_create
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-run]: /cli/azure/acr#az_acr_run
+[az-group-create]: /cli/azure/group#az_group_create
+[az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-tasks-overview]: container-registry-tasks-overview.md
 [container-registry-tasks-multi-step]: container-registry-tasks-multi-step.md

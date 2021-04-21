@@ -1,24 +1,24 @@
 ---
-title: Förstå användningen av Azure-reservationer för Enterprise-avtal och Microsofts kund avtal
-description: Lär dig mer om hur du läser användnings informationen för att förstå hur en Azure-reservation gäller för Enterprise-avtal och Microsofts kund avtals användning.
+title: Förstå användningen av Azure-reservationer för Enterprise-avtal och Microsoft-kundavtal
+description: Lär dig hur du läser din användningsinformation för att förstå hur en Azure-reservation gäller för Enterprise-avtal Microsoft-kundavtal användning.
 author: bandersmsft
 ms.reviewer: yashar
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/19/2020
+ms.date: 04/20/2021
 ms.author: banders
-ms.openlocfilehash: 0c69e9533130d6ca70c57422c7cdd5fc75adff72
-ms.sourcegitcommit: b39cf769ce8e2eb7ea74cfdac6759a17a048b331
+ms.openlocfilehash: edc1a80687f768723a3a218ecaa1f6459cd484ed
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/22/2021
-ms.locfileid: "98683725"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107763567"
 ---
-# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Hämta kostnader och användning för Enterprise-avtal och Microsofts kund avtal
+# <a name="get-enterprise-agreement-and-microsoft-customer-agreement-reservation-costs-and-usage"></a>Hämta Enterprise-avtal och Microsoft-kundavtal kostnader för och användning av reservationer
 
-Förbättrade data för reservations kostnader och användning är tillgängligt för Enterprise-avtal (EA) och användning av Microsoft Customer Agreement (MCA) i kostnads hantering. I den här artikeln lär du dig hur du:
+Förbättrade data för reservationskostnader och användning är tillgängliga för Användning med Enterprise-avtal (EA) Microsoft-kundavtal (MCA) i Cost Management. I den här artikeln lär du dig hur du:
 
 - Hämtar data om reservationsköp
 - Ser vilken prenumeration, resursgrupp eller resurs som använt reservationen
@@ -85,7 +85,7 @@ Informationen i följande tabell om mått och filter kan hjälpa dig att lösa v
 
 ## <a name="download-the-usage-csv-file-with-new-data"></a>Ladda ned CSV-filen med nya användningsdata
 
-Om du är en EA-administratör kan du ladda ned den CSV-fil som innehåller nya användnings data från Azure Portal. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
+Om du är EA-administratör kan du ladda ned CSV-filen som innehåller nya användningsdata från Azure Portal. Dessa data är inte tillgängliga från EA-portalen (ea.azure.com). Du måste hämta användningsfilen från Azure-portalen (portal.azure.com) för att se nya data.
 
 Navigera till [Kostnadshantering + fakturering](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/BillingAccounts) på Azure-portalen.
 
@@ -95,7 +95,6 @@ Navigera till [Kostnadshantering + fakturering](https://portal.azure.com/#blade/
 ![Exempel som visar var du kan ladda ned CSV-filen med användningsdata på Azure-portalen](./media/understand-reserved-instance-usage-ea/portal-download-csv.png)
 4. I **Ladda ned användning + kostnader** under **Användningsinformation version 2** väljer du **Alla avgifter (användning och inköp)** och klickar sedan på Ladda ned. Upprepa för **Amorterade avgifter (användning och inköp)** .
 
-CSV-filerna som du laddar ned innehåller faktiska kostnader och amorterade kostnader.
 
 ## <a name="common-cost-and-usage-tasks"></a>Vanliga kostnader och användningsaktiviteter
 
@@ -158,8 +157,7 @@ Du kan läsa mer om Azure-reservationer i följande artiklar:
 
 - [Vad är Azure-reservationer?](save-compute-costs-reservations.md)
 - [Förskottsbetala för Virtual Machines med Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Förskottsbetala för SQL Database-beräkningsresurser med reserverad kapacitet för Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
-- [Hantera Azure Reservations](manage-reserved-vm-instance.md)
 - [Förstå hur reservationsrabatten tillämpas](../manage/understand-vm-reservation-charges.md)
-- [Förstå reservationsanvändning för din Betala per användning-prenumeration](understand-reserved-instance-usage.md)
 - [Kostnader för Windows-programvara som inte ingår i reservationer](reserved-instance-windows-software-costs.md)
+- [Använda tjänstens huvudnamn för att hämta kostnadsdata](../manage/assign-roles-azure-service-principals.md)
+- [Använda cost management-exporter](../costs/tutorial-export-acm-data.md)

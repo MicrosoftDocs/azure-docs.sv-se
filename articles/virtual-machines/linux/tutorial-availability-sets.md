@@ -1,5 +1,5 @@
 ---
-title: Distribuera virtuella datorer i en tillgänglighets uppsättning med Azure CLI
+title: Distribuera virtuella datorer i en tillgänglighetsuppsättning med Hjälp av Azure CLI
 description: I den här självstudien får du lära dig hur du använder Azure CLI för att distribuera virtuella datorer med hög tillgänglighet i tillgänglighetsuppsättningar
 documentationcenter: ''
 services: virtual-machines
@@ -10,14 +10,14 @@ ms.date: 3/8/2021
 ms.author: mimckitt
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: 6a54e0d808ef734a26a0fa309bd7367e73316856
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7c45f08a339ca8878bb9e2840faa8a412f3e60e0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102507073"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107765979"
 ---
-# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Skapa och distribuera virtuella datorer i en tillgänglighets uppsättning med Azure CLI
+# <a name="create-and-deploy-virtual-machines-in-an-availability-set-using-azure-cli"></a>Skapa och distribuera virtuella datorer i en tillgänglighetsuppsättning med Azure CLI
 
 I den här självstudien får du lära dig hur du ökar tillgängligheten och tillförlitligheten för dina VM-lösningar i Azure med en funktion som heter ”Tillgänglighetsuppsättningar”. Tillgänglighetsuppsättningarna ser till att de virtuella datorer som du distribuerar i Azure distribueras över flera isolerade maskinvarukluster. Detta innebär att endast en del av de virtuella datorerna påverkas om det skulle uppstå ett maskinvaru- eller programvarufel i Azure, och att din lösning fortfarande är tillgänglig och fungerar.
 
@@ -28,7 +28,7 @@ I den här guiden får du lära dig att:
 > * Skapa en virtuell dator i en tillgänglighetsuppsättning
 > * Kontrollera tillgängliga VM-storlekar
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -36,7 +36,7 @@ Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.
 
 Du kan skapa en tillgänglighetsuppsättning med [az vm availability-set create](/cli/azure/vm/availability-set). I det här exemplet är antalet uppdaterings- och feldomäner satt till *2* för tillgänglighetsuppsättningen med namnet *myAvailabilitySet* i resursgruppen *myResourceGroupAvailability*.
 
-Börja med att skapa en resursgrupp med [az group create](/cli/azure/group#az-group-create) och skapa sedan tillgänglighetsuppsättningen:
+Börja med att skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create) och skapa sedan tillgänglighetsuppsättningen:
 
 ```azurecli-interactive
 az group create --name myResourceGroupAvailability --location eastus
@@ -80,7 +80,7 @@ Distributionen av tillgänglighetsuppsättningen kan visas i portalen genom att 
 
 ## <a name="check-for-available-vm-sizes"></a>Kontrollera tillgängliga VM-storlekar
 
-Ytterligare virtuella datorer kan läggas till i tillgänglighetsuppsättningen senare, där VM-storlekar är tillgängliga i maskinvaran. Använd [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az-vm-availability-set-list-sizes) för att visa en lista över alla tillgängliga storlekar i maskinvaruklustret för tillgänglighetsuppsättningen:
+Ytterligare virtuella datorer kan läggas till i tillgänglighetsuppsättningen senare, där VM-storlekar är tillgängliga i maskinvaran. Använd [az vm availability-set list-sizes](/cli/azure/vm/availability-set#az_vm_availability_set_list_sizes) för att visa en lista över alla tillgängliga storlekar i maskinvaruklustret för tillgänglighetsuppsättningen:
 
 ```azurecli-interactive
 az vm availability-set list-sizes \
@@ -103,6 +103,6 @@ Gå vidare till nästa kurs vill veta mer om VM-skalningsuppsättningar.
 > [!div class="nextstepaction"]
 > [Skapa en VM-skalningsuppsättning](tutorial-create-vmss.md)
 
-* Mer information om tillgänglighets zoner finns i  [Tillgänglighetszoner-dokumentationen](../../availability-zones/az-overview.md).
-* Mer dokumentation om både tillgänglighets uppsättningar och tillgänglighets zoner finns också [här](../availability.md).
-* Om du vill prova tillgänglighets zoner går du till [skapa en virtuell Linux-dator i en tillgänglighets zon med Azure CLI](./create-cli-availability-zone.md)
+* Mer information om tillgänglighetszoner finns i [dokumentationen Tillgänglighetszoner .](../../availability-zones/az-overview.md)
+* Mer dokumentation om både tillgänglighetsuppsättningar och tillgänglighetszoner finns [också här.](../availability.md)
+* Om du vill prova tillgänglighetszoner går [du till Skapa en virtuell Linux-dator i en tillgänglighetszon med Azure CLI](./create-cli-availability-zone.md)

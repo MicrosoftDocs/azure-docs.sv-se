@@ -1,6 +1,6 @@
 ---
 title: Azure-filresurs – det gick inte att ta bort filer från en Azure-filresurs
-description: Identifiera och Felsök fel för att ta bort filer från Azure-filresursen.
+description: Identifiera och felsöka felet med att ta bort filer från Azure-filresursen.
 author: v-miegge
 ms.topic: troubleshooting
 ms.author: kartup
@@ -10,31 +10,31 @@ ms.service: storage
 ms.subservice: files
 services: storage
 tags: ''
-ms.openlocfilehash: 3d4f10745d90ccd83e7251af40d3e92a230f2fcd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8cc0cb7df4bb7bfff5a6b9d2f159cb674532927
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94629690"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789761"
 ---
 # <a name="azure-file-share--failed-to-delete-files-from-azure-file-share"></a>Azure-filresurs – det gick inte att ta bort filer från en Azure-filresurs
 
-Det kan finnas flera symptom på att det inte går att ta bort filer från Azure-filresurs:
+Det kan ha flera symptom att det inte går att ta bort filer från Azure-filresursen:
 
 **Symptom 1:**
 
-Det gick inte att ta bort en fil i Azure-filresursen på grund av ett av de två problemen nedan:
+Det gick inte att ta bort en fil i Azure-filresursen på grund av något av följande två problem:
 
-* Filen som marker ATS för borttagning
-* Den angivna resursen kanske används av en SMB-klient
+* Filen som markerats för borttagning
+* Den angivna resursen kan användas av en SMB-klient
 
 **Symptom 2:**
 
-Det finns inte tillräckligt med kvot utrymme för att bearbeta det här kommandot
+Det finns inte tillräckligt med kvot för att bearbeta det här kommandot
 
 ## <a name="cause"></a>Orsak
 
-Fel 1816 uppstår när du når den övre gränsen för samtidiga öppna referenser som tillåts för en fil, på den dator där fil resursen monteras. Mer information finns i [Check lista för Azure Storage prestanda och skalbarhet](../blobs/storage-performance-checklist.md).
+Fel 1816 inträffar när du når den övre gränsen för samtidiga öppna referenser som tillåts för en fil på den dator där filresursen monteras. Mer information finns i checklistan [Azure Storage för prestanda och skalbarhet.](../blobs/storage-performance-checklist.md)
 
 ## <a name="resolution"></a>Lösning
 
@@ -52,27 +52,27 @@ Minska antalet samtidiga öppna referenser genom att stänga några referenser.
 # Connect-AzAccount
 ```
 
-### <a name="select-the-subscription-of-the-target-storage-account"></a>Välj prenumerationen för mål lagrings kontot:
+### <a name="select-the-subscription-of-the-target-storage-account"></a>Välj prenumerationen för mållagringskontot:
 
 ```
 # Select-AzSubscription -subscriptionid "SubscriptionID"
 ```
 
-### <a name="create-context-for-the-target-storage-account"></a>Skapa en kontext för mål lagrings kontot:
+### <a name="create-context-for-the-target-storage-account"></a>Skapa kontext för mållagringskontot:
 
 ```
 $Context = New-AzStorageContext -StorageAccountName "StorageAccountName" -StorageAccountKey "StorageAccessKey"
 ```
 
-### <a name="get-the-current-open-handles-of-the-file-share"></a>Hämta de aktuella öppna handtagen för fil resursen:
+### <a name="get-the-current-open-handles-of-the-file-share"></a>Hämta de aktuella öppna handtagen för filresursen:
 
 ```
 # Get-AzStorageFileHandle -Context $Context -ShareName "FileShareName" -Recursive
 ```
 
-## <a name="example-result"></a>Exempel på resultat:
+## <a name="example-result"></a>Exempelresultat:
 
-|HandleId|Sökväg|ClientIp|ClientPort|Opentime|LastReconnectTime|FileId|ParentId|SessionId|
+|HandleId|Sökväg|ClientIp|ClientPort|OpenTime|LastReconnectTime|Fileid|ParentId|Sessionid|
 |---|---|---|---|---|---|---|---|---|
 |259101229083|---|10.222.10.123|62758|2019-10-05|12:16:50Z|0|0|9507758546259807489|
 |259101229131|---|10.222.10.123|62758|2019-10-05|12:36:20Z|0|0|9507758546259807489|
@@ -92,4 +92,4 @@ Om du vill stänga en öppen referens använder du följande kommando:
 
 * [Felsöka Azure Files i Windows](storage-troubleshoot-windows-file-connection-problems.md)
 * [Felsöka Azure Files i Linux](storage-troubleshoot-linux-file-connection-problems.md)
-* [Felsöka Azure File Sync](storage-sync-files-troubleshoot.md)
+* [Felsöka Azure File Sync](../file-sync/file-sync-troubleshoot.md)

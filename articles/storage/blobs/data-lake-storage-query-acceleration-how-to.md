@@ -9,18 +9,18 @@ ms.date: 01/06/2021
 ms.author: normesta
 ms.reviewer: jamsbak
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 58b8cdef604861342a6489ef4e57ff1d057cd3f4
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 756258db1c6e91002bf3a7c2bd0f71f921ce655d
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107377742"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769939"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration"></a>Filtrera data med hjälp Azure Data Lake Storage frågeacceleration
 
 Den här artikeln visar hur du använder frågeacceleration för att hämta en delmängd data från ditt lagringskonto. 
 
-Frågeacceleration gör det möjligt för program och analysramverk att dramatiskt optimera databehandlingen genom att endast hämta de data som krävs för att utföra en viss åtgärd. Mer information finns i Azure Data Lake Storage [Frågeacceleration](data-lake-storage-query-acceleration.md).
+Med frågeacceleration kan program och analysramverk optimera databehandlingen avsevärt genom att endast hämta de data som krävs för att utföra en viss åtgärd. Mer information finns i Azure Data Lake Storage [frågeacceleration](data-lake-storage-query-acceleration.md).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -45,7 +45,7 @@ Frågeacceleration gör det möjligt för program och analysramverk att dramatis
   - [Apache Maven](https://maven.apache.org/download.cgi) 
 
     > [!NOTE] 
-    > Den här artikeln förutsätter att du har skapat ett Java-projekt med hjälp av Apache Maven. Ett exempel på hur du skapar ett projekt med apache Maven finns i [Konfigurera](storage-quickstart-blobs-java.md#setting-up).
+    > Den här artikeln förutsätter att du har skapat ett Java-projekt med hjälp av Apache Maven. Ett exempel på hur du skapar ett projekt med apache Maven finns [i Konfigurera](storage-quickstart-blobs-java.md#setting-up).
   
   ### <a name="python"></a>[Python](#tab/python)
 
@@ -53,17 +53,17 @@ Frågeacceleration gör det möjligt för program och analysramverk att dramatis
 
   ### <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-  Det krävs inga ytterligare krav för att använda Node.js SDK.
+  Det finns inga ytterligare krav som krävs för att använda Node.js SDK.
 
 ---
 
 ## <a name="enable-query-acceleration"></a>Aktivera frågeacceleration
 
-Om du vill använda frågeacceleration måste du registrera frågeaccelerationsfunktionen i din prenumeration. När du har kontrollerat att funktionen har registrerats måste du registrera Azure Storage resursprovidern. 
+Om du vill använda frågeacceleration måste du registrera funktionen för frågeacceleration i din prenumeration. När du har kontrollerat att funktionen har registrerats måste du registrera Azure Storage resursprovidern. 
 
 ### <a name="step-1-register-the-query-acceleration-feature"></a>Steg 1: Registrera frågeaccelerationsfunktionen
 
-Om du vill använda frågeacceleration måste du först registrera funktionen för frågeacceleration i din prenumeration. 
+Om du vill använda frågeacceleration måste du först registrera frågeaccelerationsfunktionen i din prenumeration. 
 
 #### <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -84,7 +84,7 @@ Om du vill använda frågeacceleration måste du först registrera funktionen f�
 
    Ersätt `<subscription-id>` platshållarvärdet med ID:t för din prenumeration.
 
-3. Registrera frågeaccelerationsfunktionen med kommandot [Register-AzProviderFeature.](/powershell/module/az.resources/register-azproviderfeature)
+3. Registrera frågeaccelerationsfunktionen med hjälp av kommandot [Register-AzProviderFeature.](/powershell/module/az.resources/register-azproviderfeature)
 
    ```powershell
    Register-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuery
@@ -92,9 +92,9 @@ Om du vill använda frågeacceleration måste du först registrera funktionen f�
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-1. Öppna [Azure Cloud Shell,](../../cloud-shell/overview.md)eller om du har [](/cli/azure/install-azure-cli) installerat Azure CLI lokalt öppnar du ett kommandokonsolprogram, till exempel Windows PowerShell.
+1. Öppna [Azure Cloud Shell](../../cloud-shell/overview.md), eller om du [](/cli/azure/install-azure-cli) har installerat Azure CLI lokalt öppnar du ett kommandokonsolprogram, till exempel Windows PowerShell.
 
-2. Om din identitet är associerad med mer än en prenumeration anger du din aktiva prenumeration till prenumeration på lagringskontot.
+2. Om din identitet är associerad med mer än en prenumeration anger du den aktiva prenumerationen till prenumerationen på lagringskontot.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -102,7 +102,7 @@ Om du vill använda frågeacceleration måste du först registrera funktionen f�
 
    Ersätt `<subscription-id>` platshållarvärdet med ID:t för din prenumeration.
 
-3. Registrera frågeaccelerationsfunktionen med [kommandot az feature register.](/cli/azure/feature#az-feature-register)
+3. Registrera frågeaccelerationsfunktionen med [hjälp av kommandot az feature register.](/cli/azure/feature#az_feature_register)
 
    ```azurecli
    az feature register --namespace Microsoft.Storage --name BlobQuery
@@ -122,7 +122,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName BlobQuer
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Kontrollera att registreringen är klar med kommandot [az feature.](/cli/azure/feature#az-feature-show)
+Kontrollera att registreringen är klar med kommandot [az feature.](/cli/azure/feature#az_feature_show)
 
 ```azurecli
 az feature show --namespace Microsoft.Storage --name BlobQuery
@@ -144,7 +144,7 @@ Register-AzResourceProvider -ProviderNamespace 'Microsoft.Storage'
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Registrera resursprovidern med kommandot [az provider register.](/cli/azure/provider#az-provider-register)
+Registrera resursprovidern med kommandot [az provider](/cli/azure/provider#az_provider_register) register.
 
 ```azurecli
 az provider register --namespace 'Microsoft.Storage'

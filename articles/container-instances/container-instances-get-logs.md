@@ -1,15 +1,15 @@
 ---
-title: Hämta containerinstansloggar & händelser
+title: Hämta loggar för containerinstanser & händelser
 description: Lär dig hur du hämtar containerloggar och händelser i Azure Container Instances för att felsöka problem med containrar
 ms.topic: article
 ms.date: 12/30/2019
 ms.custom: mvc
-ms.openlocfilehash: b2b7ffb2cb4a7b1171afa42c2ef5a64b2bd928f8
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: f5eb8c878164846ed2f1daf1cb7e5014e0c62c55
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107379289"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107764053"
 ---
 # <a name="retrieve-container-logs-and-events-in-azure-container-instances"></a>Hämta loggar och händelser för containers i Azure Container Instances
 
@@ -19,7 +19,7 @@ När du har en container som fungerar felaktigt i Azure Container Instances bör
 
 Om du vill visa loggar från programkoden i en container kan du använda [kommandot az container logs.][az-container-logs]
 
-Följande är loggutdata från exempelaktivitetsbaserade containern i Ange kommandoraden i en [containerinstans](container-instances-start-command.md#azure-cli-example)efter att ha angett en ogiltig URL med hjälp av en kommandorads åsidosättning:
+Följande är loggutdata från den uppgiftsbaserade exempelcontainern i Ange kommandoraden i en [containerinstans](container-instances-start-command.md#azure-cli-example)efter att ha angett en ogiltig URL med hjälp av en kommandorads åsidosättning:
 
 ```azurecli
 az container logs --resource-group myResourceGroup --name mycontainer
@@ -48,9 +48,9 @@ urllib.error.HTTPError: HTTP Error 404: Not Found
 
 ## <a name="attach-output-streams"></a>Ansluta utdataströmmar
 
-Kommandot [az container attach][az-container-attach] ger diagnostisk information vid containerstart. När containern har startats strömmas STDOUT och STDERR till den lokala konsolen.
+Kommandot [az container attach][az-container-attach] ger diagnostisk information vid start av containern. När containern har startats strömmas STDOUT och STDERR till den lokala konsolen.
 
-Här är till exempel utdata från den uppgiftsbaserade containern i Ange kommandoraden i en [containerinstans](container-instances-start-command.md#azure-cli-example)efter att ha angett en giltig URL för en stor textfil som ska bearbetas:
+Här är till exempel utdata från den uppgiftsbaserade containern i Ange kommandoraden i en [containerinstans](container-instances-start-command.md#azure-cli-example), efter att ha angett en giltig URL för en stor textfil som ska bearbetas:
 
 ```azurecli
 az container attach --resource-group myResourceGroup --name mycontainer
@@ -82,13 +82,13 @@ Start streaming logs:
 
 ## <a name="get-diagnostic-events"></a>Hämta diagnostikhändelser
 
-Om containern inte kan distribueras korrekt granskar du den diagnostikinformation som tillhandahålls av Azure Container Instances-resursprovidern. Om du vill visa händelser för din container kör du [kommandot az container show:][az-container-show]
+Om det inte går att distribuera containern granskar du den diagnostikinformation som tillhandahålls av Azure Container Instances-resursprovidern. Om du vill visa händelser för din container kör du [kommandot az container show:][az-container-show]
 
 ```azurecli-interactive
 az container show --resource-group myResourceGroup --name mycontainer
 ```
 
-Utdata innehåller kärnegenskaperna för din container, tillsammans med distributionshändelser (som visas här trunkerade):
+Utdata innehåller kärnegenskaperna för din container, tillsammans med distributionshändelser (visas trunkerat här):
 
 ```JSON
 {
@@ -154,6 +154,6 @@ Lär dig hur [du felsöker vanliga container- och distributionsproblem](containe
 Lär dig hur du skickar logg- och händelsedata för containergrupper till [Azure Monitor loggar](container-instances-log-analytics.md).
 
 <!-- LINKS - Internal -->
-[az-container-attach]: /cli/azure/container#az-container-attach
-[az-container-logs]: /cli/azure/container#az-container-logs
-[az-container-show]: /cli/azure/container#az-container-show
+[az-container-attach]: /cli/azure/container#az_container_attach
+[az-container-logs]: /cli/azure/container#az_container_logs
+[az-container-show]: /cli/azure/container#az_container_show

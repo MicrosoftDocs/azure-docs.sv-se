@@ -1,186 +1,186 @@
 ---
 title: Miljöer för hantering av flera klienter
-description: Azure-delegerad resurs hantering möjliggör hantering av flera innehavare.
+description: Azure-delegerad resurshantering möjliggör hantering mellan klientorganisation.
 ms.date: 03/29/2021
 ms.topic: conceptual
-ms.openlocfilehash: 12c4aaa4dda159862344675c802603fcbda2f254
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 027d1d5e81d5a652a7e2d5441c40440c661f730f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934333"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107778633"
 ---
 # <a name="cross-tenant-management-experiences"></a>Miljöer för hantering av flera klienter
 
-Som tjänst leverantör kan du använda Azure- [Lighthouse](../overview.md) för att hantera resurser för flera kunder i din egen Azure Active Directory (Azure AD)-klient. Många aktiviteter och tjänster kan utföras över hanterade klienter med hjälp av [Azure-delegerad resurs hantering](../concepts/azure-delegated-resource-management.md).
+Som tjänstleverantör kan du använda [Azure Lighthouse](../overview.md) för att hantera resurser för flera kunder från din egen Azure Active Directory (Azure AD) klientorganisation. Många uppgifter och tjänster kan utföras över hanterade klienter med hjälp av [Azure-delegerad resurshantering.](../concepts/azure-delegated-resource-management.md)
 
 > [!TIP]
-> Azure-delegerad resurs hantering kan också användas [inom ett företag som har flera Azure AD-klienter för](enterprise.md) att förenkla administrationen av flera innehavare.
+> Azure-delegerad resurshantering kan också användas i ett företag som har flera Azure AD-klientorganisationsklienter för att förenkla administration mellan klientorganisationen. [](enterprise.md)
 
-## <a name="understanding-tenants-and-delegation"></a>Förstå innehavare och delegering
+## <a name="understanding-tenants-and-delegation"></a>Förstå klienter och delegering
 
-En Azure AD-klient är en representation av en organisation. Det är en dedikerad instans av Azure AD som en organisation tar emot när de skapar en relation med Microsoft genom att registrera sig för Azure, Microsoft 365 eller andra tjänster. Varje Azure AD-klient är distinkt och åtskild från andra Azure AD-klienter och har ett eget klient-ID (ett GUID). Mer information finns i [Vad är Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
+En Azure AD-klientorganisation är en representation av en organisation. Det är en dedikerad instans av Azure AD som en organisation får när de skapar en relation med Microsoft genom att registrera sig för Azure, Microsoft 365 eller andra tjänster. Varje Azure AD-klientorganisation är separat från andra Azure AD-klienter och har sitt eget klient-ID (ett GUID). Mer information finns i [Vad är Azure Active Directory?](../../active-directory/fundamentals/active-directory-whatis.md)
 
-För att kunna hantera Azure-resurser för en kund måste tjänst leverantörer ofta logga in på Azure Portal med ett konto som är kopplat till den kundens klient organisation, vilket kräver att en administratör i kundens klient organisation skapar och hanterar användar konton för tjänst leverantören.
+För att kunna hantera Azure-resurser för en kund måste tjänstleverantörer vanligtvis logga in på Azure Portal med ett konto som är associerat med kundens klientorganisation, vilket kräver att en administratör i kundens klientorganisation skapar och hanterar användarkonton för tjänstleverantören.
 
-Med Azure Lighthouse anger onboarding-processen användare inom tjänst leverantörens klient organisation som kommer att kunna arbeta med delegerade prenumerationer och resurs grupper i kundens klient organisation. Dessa användare kan sedan logga in på Azure Portal med sina egna autentiseringsuppgifter. I Azure Portal kan de hantera resurser som hör till alla kunder som de har åtkomst till. Detta kan göras genom att gå till sidan [Mina kunder](../how-to/view-manage-customers.md) i Azure Portal eller genom att arbeta direkt inom kontexten för kundens prenumeration, antingen i Azure Portal eller via API: er.
+Med Azure Lighthouse anger onboarding-processen användare i tjänstleverantörens klientorganisation som ska kunna arbeta med delegerade prenumerationer och resursgrupper i kundens klientorganisation. Dessa användare kan sedan logga in på Azure Portal med sina egna autentiseringsuppgifter. Inom Azure Portal kan de hantera resurser som hör till alla kunder som de har åtkomst till. Detta kan göras genom [](../how-to/view-manage-customers.md) att gå till sidan Mina kunder i Azure Portal eller genom att arbeta direkt i kontexten för kundens prenumeration, antingen i Azure Portal eller via API:er.
 
-Azure Lighthouse ger större flexibilitet för att hantera resurser för flera kunder utan att behöva logga in på olika konton i olika klienter. En tjänst leverantör kan till exempel ha två kunder med olika ansvars områden och åtkomst nivåer. Med Azure Lighthouse kan behöriga användare logga in på tjänst leverantörens klient för att få åtkomst till dessa resurser.
+Azure Lighthouse ger större flexibilitet för att hantera resurser för flera kunder utan att behöva logga in på olika konton i olika klienter. En tjänstleverantör kan till exempel ha två kunder med olika ansvarsområden och åtkomstnivåer. Med Azure Lighthouse kan behöriga användare logga in på tjänstleverantörens klientorganisation för att få åtkomst till dessa resurser.
 
-![Diagram över kund resurser som hanteras via en tjänst leverantörs klient.](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
+![Diagram som visar kundresurser som hanteras via en tjänstleverantörs klientorganisation.](../media/azure-delegated-resource-management-service-provider-tenant.jpg)
 
-## <a name="apis-and-management-tool-support"></a>Stöd för API: er och hanterings verktyg
+## <a name="apis-and-management-tool-support"></a>Stöd för API:er och hanteringsverktyg
 
-Du kan utföra hanterings uppgifter för delegerade resurser antingen direkt i portalen eller med hjälp av API: er och hanterings verktyg (till exempel Azure CLI och Azure PowerShell). Alla befintliga API: er kan användas när du arbetar med delegerade resurser, så länge som funktionerna stöds för hantering av flera innehavare och användaren har rätt behörigheter.
+Du kan utföra hanteringsuppgifter på delegerade resurser antingen direkt i portalen eller med hjälp av API:er och hanteringsverktyg (till exempel Azure CLI och Azure PowerShell). Alla befintliga API:er kan användas när du arbetar med delegerade resurser, så länge funktionen stöds för hantering mellan klientorganisationen och användaren har rätt behörigheter.
 
-I Azure PowerShell [Get-AzSubscription-cmdlet](/powershell/module/Az.Accounts/Get-AzSubscription) visas `TenantId` för hantering av klient organisationen som standard. Du kan använda `HomeTenantId` -och `ManagedByTenantIds` -attributen för varje prenumeration, så att du kan identifiera om en returnerad prenumeration tillhör en hanterad klient eller till din hanterings klient.
+[Cmdleten Azure PowerShell Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription) visar som standard för den `TenantId` hanterande klientorganisationen. Du kan använda attributen och för varje prenumeration, så att du kan identifiera om en returnerad prenumeration tillhör en hanterad `HomeTenantId` `ManagedByTenantIds` klient eller din hanterande klientorganisation.
 
-På samma sätt visar Azure CLI-kommandon som [AZ Account List](/cli/azure/account#az-account-list) `homeTenantId` `managedByTenants` attributen och. Om du inte ser dessa värden när du använder Azure CLI kan du försöka rensa cacheminnet genom att köra `az account clear` följt av `az login --identity` .
+På samma sätt visar Azure CLI-kommandon [som az account list](/cli/azure/account#az_account_list) `homeTenantId` `managedByTenants` attributen och . Om du inte ser dessa värden när du använder Azure CLI kan du prova att rensa cacheminnet genom att `az account clear` köra följt av `az login --identity` .
 
-I Azure-REST API innehåller kommandona [prenumerationer-get](/rest/api/resources/subscriptions/get) och [Subscription-List](/rest/api/resources/subscriptions/list) `ManagedByTenant` .
+I Azure REST API kommandona [Subscriptions - Get](/rest/api/resources/subscriptions/get) och [Subscriptions – List](/rest/api/resources/subscriptions/list) `ManagedByTenant` .
 
 > [!NOTE]
-> Utöver klient information som är relaterad till Azure-Lighthouse kan klienter som visas i dessa API: er även avspegla partner innehavare för Azure Databricks eller Azure-hanterade program.
+> Förutom information om klientorganisationen som rör Azure Lighthouse kan klienter som visas av dessa API:er även återspegla partnerklienter för Azure Databricks eller Azure-hanterade program.
 
-Vi tillhandahåller också API: er som är speciella för att utföra Azure Lighthouse-uppgifter. Mer information finns i avsnittet **referens** .
+Vi tillhandahåller även API:er som är specifika för att Azure Lighthouse uppgifter. Mer information finns i **avsnittet** Referens.
 
 ## <a name="enhanced-services-and-scenarios"></a>Förbättrade tjänster och scenarier
 
-De flesta uppgifter och tjänster kan utföras på delegerade resurser över hanterade klientorganisationer. Nedan visas några viktiga scenarier där hantering av flera innehavare kan vara särskilt effektivt.
+De flesta uppgifter och tjänster kan utföras på delegerade resurser över hanterade klientorganisationer. Nedan visas några av de viktigaste scenarierna där hantering mellan klientorganisationen kan vara särskilt effektivt.
 
-[Azure-båge](../../azure-arc/index.yml):
+[Azure Arc](../../azure-arc/index.yml):
 
-- Hantera hybrid servrar i skala – [Azure Arc-aktiverade servrar](../../azure-arc/servers/overview.md):
-  - [Hantera Windows Server-eller Linux-datorer utanför Azure som är anslutna](../../azure-arc/servers/onboard-portal.md) till delegerade prenumerationer och/eller resurs grupper i Azure
-  - Hantera anslutna datorer med hjälp av Azure-konstruktioner, till exempel Azure Policy och taggning
-  - Se till att samma uppsättning principer tillämpas på kunders hybrid miljöer
-  - Använd Azure Security Center för att övervaka efterlevnad över kunders hybrid miljöer
-- Hantera hybrid Kubernetes-kluster i skala – [Azure Arc Enabled Kubernetes (för hands version)](../../azure-arc/kubernetes/overview.md):
-  - [Hantera Kubernetes-kluster som är anslutna](../../azure-arc/kubernetes/quickstart-connect-cluster.md) till delegerade prenumerationer och/eller resurs grupper i Azure
+- Hantera hybridservrar i stor skala [– Azure Arc-aktiverade servrar:](../../azure-arc/servers/overview.md)
+  - [Hantera Windows Server- eller Linux-datorer utanför Azure som är anslutna](../../azure-arc/servers/onboard-portal.md) till delegerade prenumerationer och/eller resursgrupper i Azure
+  - Hantera anslutna datorer med hjälp av Azure-konstruktioner, Azure Policy och taggning
+  - Se till att samma uppsättning principer tillämpas i kundernas hybridmiljöer
+  - Använd Azure Security Center för att övervaka efterlevnad i kundernas hybridmiljöer
+- Hantera Kubernetes-hybridkluster i [stor skala Azure Arc Kubernetes (förhandsversion)](../../azure-arc/kubernetes/overview.md):
+  - [Hantera Kubernetes-kluster som är anslutna till](../../azure-arc/kubernetes/quickstart-connect-cluster.md) delegerade prenumerationer och/eller resursgrupper i Azure
   - [Använda GitOps](../../azure-arc/kubernetes/tutorial-use-gitops-connected-cluster.md) för anslutna kluster
-  - Tillämpa principer i anslutna kluster
+  - Framtvinga principer i anslutna kluster
 
 [Azure Automation](../../automation/index.yml):
 
-- Använd Automation-konton för att komma åt och arbeta med delegerade resurser
+- Använda Automation-konton för att få åtkomst till och arbeta med delegerade resurser
 
 [Azure Backup](../../backup/index.yml):
 
-- Säkerhetskopiera och återställa kund information [från lokala arbets belastningar, virtuella Azure-datorer, Azure-filresurser med mera](../..//backup/backup-overview.md#what-can-i-back-up)
-- Visa data för alla delegerade kund resurser i [Backup Center](../../backup/backup-center-overview.md)
-- Använd [Backup Explorer](../../backup/monitor-azure-backup-with-backup-explorer.md) för att Visa användnings information om säkerhets kopierings objekt (inklusive Azure-resurser som ännu inte har kon figurer ATS för säkerhets kopiering) och övervaknings information (jobb och aviseringar) för delegerade prenumerationer. Backup Explorer är för närvarande endast tillgängligt för Azure VM-data.
-- Använd [säkerhets kopierings rapporter](../../backup/configure-reports.md) över delegerade prenumerationer för att spåra historiska trender, analysera förbrukning av lagrings utrymme för säkerhets kopior och granska säkerhets kopieringar och återställning.
+- Återställning av kunddata [från lokala arbetsbelastningar, virtuella Azure-datorer, Azure-filresurser med mera](../..//backup/backup-overview.md#what-can-i-back-up)
+- Visa data för alla delegerade kundresurser i [Backup Center](../../backup/backup-center-overview.md)
+- Använd följande [Backup-utforskaren](../../backup/monitor-azure-backup-with-backup-explorer.md) att visa driftsinformation om säkerhetskopieringsobjekt (inklusive Azure-resurser som ännu inte har konfigurerats för säkerhetskopiering) och övervakningsinformation (jobb och aviseringar) för delegerade prenumerationer. Den Backup-utforskaren är för närvarande endast tillgänglig för virtuella Azure-datordata.
+- Använd [Backup-rapporter](../../backup/configure-reports.md) delegerade prenumerationer för att spåra historiska trender, analysera lagringsanvändning för säkerhetskopior och granska säkerhetskopieringar och återställningar.
 
-[Azure-ritningar](../../governance/blueprints/index.yml):
+[Azure Blueprints](../../governance/blueprints/index.yml):
 
-- Använd Azure-ritningar för att dirigera distributionen av resursfiler och andra artefakter (kräver [ytterligare åtkomst](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) för att förbereda kund prenumerationen)
+- Använd Azure Blueprints för att samordna distributionen av resursmallar och andra artefakter (kräver ytterligare [åtkomst för](https://www.wesleyhaakman.org/preparing-azure-lighthouse-customer-subscriptions-for-azure-blueprints/) att förbereda kundprenumerationen)
 
-[Azure Cost Management + fakturering](../../cost-management-billing/index.yml):
+[Azure Cost Management + Billing](../../cost-management-billing/index.yml):
 
-- Från hanterings klient organisationen kan CSP-partner Visa, hantera och analysera konsumtions kostnader (inte inklusive inköp) för kunder som följer Azure-planen. Kostnaden baseras på återförsäljarversionen och den Azure rollbaserad åtkomst kontroll (Azure RBAC) som partnern har för kundens prenumeration. För närvarande kan du Visa förbruknings kostnader enligt åter försäljnings taxan för varje enskild kund prenumeration baserat på Azure RBAC-åtkomst.
+- Från den hanterande klientorganisationen kan CSP-partner visa, hantera och analysera förbrukningskostnader före skatt (inte inklusive inköp) för kunder som omfattas av Azure-planen. Kostnaden baseras på återförsäljarpriser och azures rollbaserade åtkomstkontroll (Azure RBAC) som partnern har för kundens prenumeration. För närvarande kan du visa förbrukningskostnader till återförsäljarpriser för varje enskild kundprenumeration baserat på Azure RBAC-åtkomst.
 
 [Azure Key Vault](../../key-vault/general/index.yml):
 
-- Skapa nyckel valv i kund klienter
-- Använd en hanterad identitet för att skapa nyckel valv i kund klienter
+- Skapa nyckelvalv i kundklienter
+- Använda en hanterad identitet för att skapa nyckelvalv i kundklienter
 
-[Azure Kubernetes service (AKS)](../../aks/index.yml):
+[Azure Kubernetes Service (AKS):](../../aks/index.yml)
 
-- Hantera värdbaserade Kubernetes-miljöer och distribuera och hantera program i behållare inom kund klienter
-- Distribuera och hantera kluster i kund klienter
--   Använd Azure Monitor för behållare för att övervaka prestanda mellan kund klienter
+- Hantera värdhanterade Kubernetes-miljöer och distribuera och hantera containerprogram i kundklienter
+- Distribuera och hantera kluster i kundklienter
+-   Använda Azure Monitor för containrar för att övervaka prestanda mellan kundklienter
 
 [Azure Migrate](../../migrate/index.yml):
 
-- Skapa migreringsjobb i kund klienten och migrera virtuella datorer
+- Skapa migreringsprojekt i kundens klientorganisation och migrera virtuella datorer
 
 [Azure Monitor](../../azure-monitor/index.yml):
 
-- Visa aviseringar för delegerade prenumerationer med möjlighet att visa och uppdatera aviseringar över alla prenumerationer
-- Visa aktivitets logg information för delegerade prenumerationer
-- [Log Analytics](../../azure-monitor/logs/service-providers.md): fråga efter data från fjärrarbetsyta i flera klienter (Observera att Automation-konton som används för att komma åt data från arbets ytor i kund klienter måste skapas i samma klient organisation)
-- [Skapa, Visa och hantera aktivitets logg aviseringar](../../azure-monitor/alerts/alerts-activity-log.md) i kund klienter
-- Skapa aviseringar i kund klienter som utlöser automatisering, till exempel Azure Automation runbooks eller Azure Functions, i hantera klient organisationen via Webhooks
-- Skapa [diagnostiska inställningar](../..//azure-monitor/essentials/diagnostic-settings.md) i kund klienter för att skicka resurs loggar till arbets ytor i hanterings klienten
-- För SAP-arbetsbelastningar [övervakar du SAP Solutions-mått med en sammanställd vy över kund klienter](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
+- Visa aviseringar för delegerade prenumerationer, med möjlighet att visa och uppdatera aviseringar för alla prenumerationer
+- Visa aktivitetslogginformation för delegerade prenumerationer
+- [Log Analytics:](../../azure-monitor/logs/service-providers.md)Fråga efter data från fjärranslutna arbetsytor i flera klienter (observera att Automation-konton som används för att komma åt data från arbetsytor i kundklienter måste skapas i samma klient)
+- [Skapa, visa och hantera aktivitetsloggaviseringar](../../azure-monitor/alerts/alerts-activity-log.md) i kundklienter
+- Skapa aviseringar i kundklienter som utlöser automatisering, till exempel Azure Automation runbooks eller Azure Functions, i den hanterande klientorganisationen via webhooks
+- Skapa [diagnostikinställningar i](../..//azure-monitor/essentials/diagnostic-settings.md) kundklienter för att skicka resursloggar till arbetsytor i den hanterande klientorganisationen
+- För SAP-arbetsbelastningar [övervakar du SAP Solutions-mått med en aggregerad vy över kundklienter](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293)
 
-[Azure-nätverk](../../networking/networking-overview.md):
+[Azure-nätverkstjänster](../../networking/networking-overview.md):
 
-- Distribuera och hantera [Azure Virtual Network](../../virtual-network/index.yml) och virtuella nätverks gränssnitts kort (virtuella nätverkskort) i hanterade klienter
-- Distribuera och konfigurera [Azure-brandväggen](../../firewall/overview.md) för att skydda kunders Virtual Network resurser
-- Hantera anslutnings tjänster som [Azure Virtual WAN](../../virtual-wan/virtual-wan-about.md), [ExpressRoute](../../expressroute/expressroute-introduction.md)och [VPN-gatewayer](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
-- Använd Azure-Lighthouse för att stödja viktiga scenarier för [Azure Network MSP-programmet](../../networking/networking-partners-msp.md)
+- Distribuera och hantera [Azure Virtual Network](../../virtual-network/index.yml) och virtuella nätverkskort (vNIC) i hanterade klienter
+- Distribuera och konfigurera [Azure Firewall](../../firewall/overview.md) att skydda kundernas Virtual Network resurser
+- Hantera anslutningstjänster som [Azure Virtual WAN,](../../virtual-wan/virtual-wan-about.md) [ExpressRoute](../../expressroute/expressroute-introduction.md)och [VPN-gatewayer](../../vpn-gateway/vpn-gateway-about-vpngateways.md)
+- Använd Azure Lighthouse för att stödja viktiga scenarier för [Azure-nätverkstjänster MSP-programmet](../../networking/networking-partners-msp.md)
 
-[Azure policy](../../governance/policy/index.yml):
+[Azure Policy](../../governance/policy/index.yml):
 
-- Skapa och redigera princip definitioner i delegerade prenumerationer
-- Distribuera princip definitioner och princip tilldelningar över flera klienter
-- Tilldela kunddefinierade princip definitioner inom delegerade prenumerationer
-- Kunder ser principer som skapats av tjänst leverantören tillsammans med eventuella principer som de har skapat själva
-- Kan [åtgärda deployIfNotExists eller ändra tilldelningar i den hanterade klient organisationen](../how-to/deploy-policy-remediation.md)
-- Observera att det inte finns stöd för att visa information om kompatibilitet för icke-kompatibla resurser i kund klienter
+- Skapa och redigera principdefinitioner i delegerade prenumerationer
+- Distribuera principdefinitioner och principtilldelningar över flera klienter
+- Tilldela kunddefinierade principdefinitioner i delegerade prenumerationer
+- Kunder ser principer som har redigerats av tjänstleverantören tillsammans med eventuella principer som de har skapat själva
+- Kan [åtgärda deployIfNotExists eller ändra tilldelningar i den hanterade klientorganisationen](../how-to/deploy-policy-remediation.md)
+- Observera att det för närvarande inte finns stöd för att visa efterlevnadsinformation för icke-kompatibla resurser i kundklienter
 
-[Azure-resurs diagram](../../governance/resource-graph/index.yml):
+[Azure Resource Graph](../../governance/resource-graph/index.yml):
 
-- Innehåller nu klient-ID: t i returnerade frågeresultat, så att du kan identifiera om en prenumeration tillhör en hanterad klient
+- Innehåller nu klientorganisations-ID:t i returnerade frågeresultat, så att du kan identifiera om en prenumeration tillhör en hanterad klientorganisation
 
 [Azure Security Center](../../security-center/index.yml):
 
 - Synlighet mellan klienter
-  - Övervaka efterlevnad av säkerhets principer och garantera säkerhets täckning för alla klienters resurser
-  - Kontinuerlig övervakning av efterlevnad över flera klienter i en enda vy
-  - Övervaka, prioritering och prioritera åtgärds bara säkerhets rekommendationer med säker Poäng beräkning
-- Hantering av säkerhets position över flera innehavare
+  - Övervaka efterlevnad av säkerhetsprinciper och säkerställa säkerhetstäckning för alla klientorganisationsresurser
+  - Kontinuerlig övervakning av regelefterlevnad över flera klienter i en enda vy
+  - Övervaka, prioritera och prioritera säkerhetsrekommendationer med säkerhetspoängberäkning
+- Säkerhetshållningshantering mellan klientorganisation
   - Hantera säkerhetsprinciper
-  - Vidta åtgärder för resurser som inte är kompatibla med åtgärds bara säkerhets rekommendationer
+  - Vidta åtgärder för resurser som inte följer gällande säkerhetsrekommendationer
   - Samla in och lagra säkerhetsrelaterade data
-- Hot identifiering och skydd mellan klienter
-  - Identifiera hot över klient organisations resurser
-  - Använd avancerade skydds kontroller som just-in-Time (JIT) VM-åtkomst
-  - Härdning av nätverks säkerhets grupp konfigurationen med anpassad nätverks härdning
-  - Se till att servrarna bara kör de program och processer som de ska vara med anpassningsbara program kontroller
-  - Övervaka ändringar i viktiga filer och register poster med File Integrity Monitoring (FIM)
-- Observera att hela prenumerationen måste delegeras till hanterings klienten. Azure Security Center scenarier stöds inte med delegerade resurs grupper
+- Hotidentifiering och skydd mellan klientorganisationen
+  - Identifiera hot mellan klientorganisationens resurser
+  - Tillämpa avancerade hotskyddskontroller, till exempel jit-åtkomst (just-in-time) för virtuella datorer
+  - Härda nätverkssäkerhetsgruppens konfiguration med anpassningsbar nätverkshärdning
+  - Se till att servrarna endast kör de program och processer som de ska ha med anpassningsbara programkontroller
+  - Övervaka ändringar av viktiga filer och registerposter med övervakning av filintegritet (FIM)
+- Observera att hela prenumerationen måste delegeras till den hanterande klientorganisationen. Azure Security Center stöds inte med delegerade resursgrupper
 
 [Azure Sentinel](../../sentinel/multiple-tenants-service-providers.md):
 
-- Hantera Azure Sentinel-resurser [i kund klienter](../../sentinel/multiple-tenants-service-providers.md)
-- [Spåra attacker och Visa säkerhets aviseringar över flera klienter](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
-- [Visa incidenter](../../sentinel/multiple-workspace-view.md) över flera Azure Sentinel-arbetsytor som sprids över klienter
+- Hantera Azure Sentinel i [kundklienter](../../sentinel/multiple-tenants-service-providers.md)
+- [Spåra attacker och visa säkerhetsaviseringar över flera klienter](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- [Visa incidenter](../../sentinel/multiple-workspace-view.md) över flera Azure Sentinel arbetsytor som är utspridda mellan klienter
 
 [Azure Service Health](../../service-health/index.yml):
 
-- Övervaka hälso tillståndet för kund resurser med Azure Resource Health
-- Spåra hälsan hos de Azure-tjänster som används av dina kunder
+- Övervaka hälsotillståndet för kundresurser med Azure Resource Health
+- Spåra hälsotillståndet för de Azure-tjänster som används av dina kunder
 
 [Azure Site Recovery](../../site-recovery/index.yml):
 
-- Hantera katastrof återställnings alternativ för virtuella Azure-datorer i kund klienter (Observera att du inte kan använda `RunAs` konton för att kopiera VM-tillägg)
+- Hantera haveriberedskapsalternativ för virtuella Azure-datorer i kundklienter (observera att du inte kan använda konton `RunAs` för att kopiera VM-tillägg)
 
-[Azure-Virtual Machines](../../virtual-machines/index.yml):
+[Azure Virtual Machines](../../virtual-machines/index.yml):
 
-- Använd tillägg för virtuella datorer för att tillhandahålla konfigurations-och automatiserings uppgifter efter distributionen på virtuella Azure-datorer
-- Använd startdiagnostik för att felsöka virtuella Azure-datorer
-- Åtkomst till virtuella datorer med serie konsol
-- Integrera virtuella datorer med Azure Key Vault för lösen ord, hemligheter eller kryptografiska nycklar för disk kryptering med hjälp av [hanterad identitet via princip](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret), och se till att hemligheter lagras i en Key Vault i hanterade klienter
+- Använda tillägg för virtuella datorer för att tillhandahålla konfigurations- och automatiseringsuppgifter efter distribution på virtuella Azure-datorer
+- Använda startdiagnostik för att felsöka virtuella Azure-datorer
+- Få åtkomst till virtuella datorer med seriekonsolen
+- Integrera virtuella datorer med Azure Key Vault för lösenord, hemligheter eller kryptografiska nycklar för diskkryptering med hjälp av hanterad identitet via princip [,](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/create-keyvault-secret)vilket säkerställer att hemligheter lagras i en Key Vault i de hanterade klientorganisationen
 - Observera att du inte kan använda Azure Active Directory för fjärrinloggning till virtuella datorer
 
-Support förfrågningar:
+Supportbegäranden:
 
-- [Öppna support förfrågningar från **hjälp + support**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) i Azure Portal för delegerade resurser (välja det support avtal som är tillgängligt för det delegerade omfånget)
-- Använd [Azures kvot-API](/rest/api/reserved-vm-instances/quotaapi) för att visa och hantera Azures tjänst kvoter för delegerade kund resurser
+- [Öppna supportbegäranden **från Hjälp + support**](../../azure-portal/supportability/how-to-create-azure-support-request.md#getting-started) i Azure Portal för delegerade resurser (välja den supportplan som är tillgänglig för det delegerade omfånget)
+- Använda [Azure Quota API för att](/rest/api/reserved-vm-instances/quotaapi) visa och hantera Azure-tjänstkvoter för delegerade kundresurser
 
 ## <a name="current-limitations"></a>Aktuella begränsningar
 
-Tänk på följande nuvarande begränsningar i alla scenarier:
+I alla scenarier bör du vara medveten om följande aktuella begränsningar:
 
-- Begär Anden som hanteras av Azure Resource Manager kan utföras med hjälp av Azure dataLighthouses. Åtgärds-URI: erna för dessa begär Anden börjar med `https://management.azure.com` . Begär Anden som hanteras av en instans av en resurs typ (till exempel Key Vault hemligheter åtkomst eller åtkomst till lagrings data) stöds dock inte med Azure-Lighthouse. Åtgärds-URI: erna för dessa begär Anden börjar vanligt vis med en adress som är unik för din instans, till exempel `https://myaccount.blob.core.windows.net` eller `https://mykeyvault.vault.azure.net/` . De sistnämnda är också vanliga data åtgärder i stället för hanterings åtgärder.
-- Roll tilldelningar måste använda [inbyggda Azure-roller](../../role-based-access-control/built-in-roles.md). Alla inbyggda roller stöds för närvarande med Azure-delegerad resurs hantering förutom för ägare eller inbyggda roller med [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) behörighet. Rollen administratör för användar åtkomst stöds endast för begränsad användning i [tilldela roller till hanterade identiteter](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Administratörs roller för anpassade roller och [klassiska prenumerationer](../../role-based-access-control/classic-administrators.md) stöds inte.
-- Även om du kan publicera prenumerationer som använder Azure Databricks kan användare i hanterings klienten inte starta Azure Databricks arbets ytor i en delegerad prenumeration just nu.
-- Även om du kan publicera prenumerationer och resurs grupper som har resurs lås, kommer dessa lås inte att förhindra att åtgärder utförs av användare i hanterings klienten. [Neka tilldelningar](../../role-based-access-control/deny-assignments.md) som skyddar systemhanterade resurser, t. ex. de som skapats av Azure-hanterade program eller Azure-skisser (systemtilldelade neka-tilldelningar), förhindrar användare i hanterings klienten från att fungera på dessa resurser. men vid den här tidpunkten kan användare i kund klienten inte skapa sina egna neka-tilldelningar (användar tilldelning neka tilldelningar).
-- Delegering av prenumerationer i ett [nationellt moln](../../active-directory/develop/authentication-national-cloud.md) och det offentliga Azure-molnet, eller över två separata nationella moln, stöds inte.
+- Begäranden som hanteras av Azure Resource Manager kan utföras med Azure Lighthouse. Åtgärds-URI:erna för dessa begäranden börjar med `https://management.azure.com` . Begäranden som hanteras av en instans av en resurstyp (till exempel Key Vault eller lagringsdataåtkomst) stöds dock inte med Azure Lighthouse. Åtgärds-URI:erna för dessa begäranden börjar vanligtvis med en adress som är unik för din instans, till exempel `https://myaccount.blob.core.windows.net` eller `https://mykeyvault.vault.azure.net/` . Det senare är vanligtvis även dataåtgärder i stället för hanteringsåtgärder.
+- Rolltilldelningar måste använda [inbyggda Azure-roller](../../role-based-access-control/built-in-roles.md). Alla inbyggda roller stöds för närvarande med Azure-delegerad resurshantering förutom ägare eller inbyggda roller med [`DataActions`](../../role-based-access-control/role-definitions.md#dataactions) behörighet. Rollen Administratör för användaråtkomst stöds endast för begränsad användning vid [tilldelning av roller till hanterade identiteter.](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant)  Anpassade roller och [administratörsroller för klassiska](../../role-based-access-control/classic-administrators.md) prenumerationer stöds inte.
+- Du kan publicera prenumerationer som använder Azure Databricks, men användare i den hanterande klientorganisationen kan inte starta Azure Databricks arbetsytor i en delegerad prenumeration just nu.
+- Du kan registrera prenumerationer och resursgrupper som har resurslås, men dessa lås hindrar inte åtgärder från att utföras av användare i den hanterande klientorganisationen. [Neka tilldelningar](../../role-based-access-control/deny-assignments.md) som skyddar system hanterade resurser, till exempel de som skapats av Azure-hanterade program eller Azure Blueprints (systemtilldelade tilldelningar), hindrar inte användare i den hanterande klientorganisationen från att agera på dessa resurser. För stunden kan dock användare i kundklientorganisationen inte skapa egna tilldelningsnekanden (tilldelningar av användartilldelad neka).
+- Delegering av prenumerationer [över ett nationellt](../../active-directory/develop/authentication-national-cloud.md) moln och det offentliga Azure-molnet, eller mellan två separata nationella moln, stöds inte.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Publicera dina kunder till Azure Lighthouse, antingen genom att [använda Azure Resource Manager mallar](../how-to/onboard-customer.md) eller genom [att publicera ett privat eller offentligt hanterat tjänst erbjudande på Azure Marketplace](../how-to/publish-managed-services-offers.md).
-- [Visa och hantera kunder](../how-to/view-manage-customers.md) genom att gå till **mina kunder** i Azure Portal.
+- Registrera dina kunder för Azure Lighthouse, antingen med [hjälp av Azure Resource Manager-mallar](../how-to/onboard-customer.md) eller genom att publicera ett privat eller offentligt hanterat tjänsterbjudande [till Azure Marketplace](../how-to/publish-managed-services-offers.md).
+- [Visa och hantera kunder](../how-to/view-manage-customers.md) genom att gå **till Mina** kunder i Azure Portal.

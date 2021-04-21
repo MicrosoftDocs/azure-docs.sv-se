@@ -1,15 +1,15 @@
 ---
-title: Skapa en Function-app med Azure Cosmos DB – Azure CLI
+title: Skapa en funktionsapp med Azure Cosmos DB – Azure CLI
 description: Exempel på Azure CLI-skript – Skapa en Azure-funktion som ansluter till Azure Cosmos DB
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 9ec4d3cb9d47608aa98075ba98aacfde51f341cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 261ede1493b93ccd3cfed19125bbabc3be871698
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97934432"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107786305"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Skapa en Azure-funktion som ansluter till Azure Cosmos DB
 
@@ -19,7 +19,7 @@ Det här exempelskriptet för Azure Functions skapar en funktionsapp och anslute
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. 
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad. 
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -35,20 +35,16 @@ Det här skriptet använder följande kommandon: varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapa en resursgrupp med plats |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Skapa ett lagringskonto |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Skapar en Function-app i [förbruknings planen](../consumption-plan.md)utan server. |
-| [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Skapa en Azure Cosmos DB-databas. |
-| [AZ cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Hämtar databas konto anslutningen. |
-| [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Hämtar nycklar för databasen. |
-| [AZ functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | Anger anslutnings strängen som en app-inställning i Function-appen. |
+| [az group create](/cli/azure/group#az_group_create) | Skapa en resursgrupp med plats |
+| [az storage accounts create](/cli/azure/storage/account#az_storage_account_create) | Skapa ett lagringskonto |
+| [az functionapp create](/cli/azure/functionapp#az_functionapp_create) | Skapar en funktionsapp i den serverlösa [förbrukningsplanen](../consumption-plan.md). |
+| [az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) | Skapa en Azure Cosmos DB-databas. |
+| [az cosmosdb show](/cli/azure/cosmosdb#az_cosmosdb_show)| Hämtar databaskontoanslutningen. |
+| [az cosmosdb list-keys](/cli/azure/cosmosdb#az_cosmosdb_list_keys)| Hämtar nycklarna för databasen. |
+| [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#az_functionapp_config_appsettings_set) | Anger anslutningssträngen som en appinställning i funktionsappen. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
 
 Ytterligare CLI-skriptexempel för Azure Functions finns i [Azure Functions-dokumentationen](../functions-cli-samples.md).
-
-
-
-

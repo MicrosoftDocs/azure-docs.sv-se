@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: skapa en skalnings uppsättning för virtuella Linux-datorer'
-description: Lär dig hur du använder Azure CLI för att skapa och distribuera ett program med hög tillgänglighet på virtuella Linux-datorer med en skalnings uppsättning för virtuella datorer
+title: 'Självstudie: Skapa en VM-skalningsuppsättning för Linux'
+description: Lär dig hur du använder Azure CLI för att skapa och distribuera ett program med hög tillgänglighet på virtuella Linux-datorer med hjälp av en VM-skalningsuppsättning
 author: ju-shim
 ms.author: jushiman
 ms.topic: tutorial
@@ -9,12 +9,12 @@ ms.subservice: linux
 ms.date: 06/01/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: c38fb976ca597647493f3dc3d32be79040ded6eb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d31bde05158e89168f2a67b820c8743d4cd2729
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91320191"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769903"
 ---
 # <a name="tutorial-create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux-with-the-azure-cli"></a>Självstudie: Skapa en VM-skalningsuppsättning och distribuera en app med hög tillgänglighet i Linux med Azure CLI
 
@@ -28,7 +28,7 @@ Med en VM-skalningsuppsättning kan du distribuera och hantera en uppsättning i
 > * Visa anslutningsinformation för skalningsuppsättningsinstanser
 > * Använda datadiskar i en skalningsuppsättning
 
-I den här självstudien används CLI i [Azure Cloud Shell](../../cloud-shell/overview.md), som uppdateras kontinuerligt till den senaste versionen. Om du vill öppna Cloud Shell väljer du **testa den** överst i ett kodblock.
+Den här självstudien använder CLI [i Azure Cloud Shell](../../cloud-shell/overview.md), som ständigt uppdateras till den senaste versionen. Om du vill Cloud Shell väljer **du Testa** längst upp i ett kodblock.
 
 Om du väljer att installera och använda CLI lokalt krävs Azure CLI version 2.0.30 eller senare för att du ska kunna genomföra den här självstudiekursen. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -91,13 +91,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>Skapa en skalningsuppsättning
-Innan du kan skapa en skalningsuppsättning skapar du en resursgrupp med [az group create](/cli/azure/group#az-group-create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupScaleSet* på platsen *eastus*:
+Innan du kan skapa en skalningsuppsättning skapar du en resursgrupp med [az group create](/cli/azure/group#az_group_create). I följande exempel skapas en resursgrupp med namnet *myResourceGroupScaleSet* på platsen *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-Skapa nu en skalningsuppsättning för en virtuell dator med [az vmss create](/cli/azure/vmss#az-vmss-create). I följande exempel skapas en skalningsuppsättning med namnet *myScaleSet* som använder filen cloud-init till att anpassa den virtuella datorn och som genererar SSH-nycklar om de inte redan finns:
+Skapa nu en skalningsuppsättning för en virtuell dator med [az vmss create](/cli/azure/vmss#az_vmss_create). I följande exempel skapas en skalningsuppsättning med namnet *myScaleSet* som använder filen cloud-init till att anpassa den virtuella datorn och som genererar SSH-nycklar om de inte redan finns:
 
 ```azurecli-interactive
 az vmss create \
@@ -116,7 +116,7 @@ Det tar några minuter att skapa och konfigurera alla skalningsuppsättningsresu
 ## <a name="allow-web-traffic"></a>Tillåt webbtrafik
 En lastbalanserare har skapats automatiskt som en del av den virtuella datorns skalningsuppsättning. Lastbalanseraren distribuerar trafik över en uppsättning definierade virtuella datorer med hjälp av regler för lastbalanseraren. Du kan lära dig mer om lastbalanserarens koncept och konfiguration i nästa självstudie [Så här lastbalanserar du virtuella datorer i Azure](tutorial-load-balancer.md).
 
-Skapa en regel med [az network lb rule create](/cli/azure/network/lb/rule#az-network-lb-rule-create) för att tillåta trafik till webbappen. I följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb*:
+Skapa en regel med [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create) för att tillåta trafik till webbappen. I följande exempel skapas en regel med namnet *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -131,7 +131,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>Testa appen
-Om du vill se Node.js-appen hämtar du den offentliga IP-adressen för lastbalanseraren med [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show). I följande exempel hämtas IP-adressen för *myScaleSetLBPublicIP* som skapas som en del av skalningsuppsättningen:
+Om du vill se Node.js-appen hämtar du den offentliga IP-adressen för lastbalanseraren med [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). I följande exempel hämtas IP-adressen för *myScaleSetLBPublicIP* som skapas som en del av skalningsuppsättningen:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -152,7 +152,7 @@ Om du vill se när skalningsuppsättningen används kan du framtvinga en uppdate
 Du kan behöva köra en eller flera administrativa uppgifter i hela livscykeln för skalningsuppsättningen. Dessutom kanske du vill skapa skript som automatiserar olika livscykeluppgifter. Azure CLI ger dig ett snabbt sätt att utföra de här uppgifterna. Här följer några vanliga uppgifter.
 
 ### <a name="view-vms-in-a-scale-set"></a>Visa virtuella datorer i en skalningsuppsättning
-Du kan visa en lista med de virtuella datorer som körs i din skalningsuppsättning med hjälp av [az vmss list-instances](/cli/azure/vmss#az-vmss-list-instances) på följande sätt:
+Du kan visa en lista med de virtuella datorer som körs i din skalningsuppsättning med hjälp av [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) på följande sätt:
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -172,7 +172,7 @@ Utdata ser ut ungefär så här:
 
 
 ### <a name="manually-increase-or-decrease-vm-instances"></a>Öka eller minska VM-instanser manuellt
-Om du vill se antalet instanser som du för närvarande har i en skalningsuppsättning använder du [az vmss show](/cli/azure/vmss#az-vmss-show) och frågar efter *sku.capacity*:
+Om du vill se antalet instanser som du för närvarande har i en skalningsuppsättning använder du [az vmss show](/cli/azure/vmss#az_vmss_show) och frågar efter *sku.capacity*:
 
 ```azurecli-interactive
 az vmss show \
@@ -182,7 +182,7 @@ az vmss show \
     --output table
 ```
 
-Du kan sedan manuellt öka eller minska antalet virtuella datorer i skalningsuppsättningen med [az vmss scale](/cli/azure/vmss#az-vmss-scale). I följande exempel anges antalet virtuella datorer i din skalningsuppsättning till *3*:
+Du kan sedan manuellt öka eller minska antalet virtuella datorer i skalningsuppsättningen med [az vmss scale](/cli/azure/vmss#az_vmss_scale). I följande exempel anges antalet virtuella datorer i din skalningsuppsättning till *3*:
 
 ```azurecli-interactive
 az vmss scale \
@@ -192,7 +192,7 @@ az vmss scale \
 ```
 
 ### <a name="get-connection-info"></a>Hämta anslutningsinformation
-Om du vill hämta anslutningsinformation om de virtuella datorerna i dina skaluppsättningar använder du [az vmss list-instance-connection-info](/cli/azure/vmss#az-vmss-list-instance-connection-info). Detta kommando visar offentlig IP-adress och port för varje virtuell dator där du kan ansluta med SSH:
+Om du vill hämta anslutningsinformation om de virtuella datorerna i dina skaluppsättningar använder du [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info). Detta kommando visar offentlig IP-adress och port för varje virtuell dator där du kan ansluta med SSH:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -205,7 +205,7 @@ az vmss list-instance-connection-info \
 Du kan skapa och använda datadiskar med skalningsuppsättningar. I en tidigare självstudie lärde du dig att [hantera Azure-diskar](tutorial-manage-disks.md), med metodtips och prestandaförbättringar för att skapa program på datadiskar i stället för OS-disken.
 
 ### <a name="create-scale-set-with-data-disks"></a>Skapa en skalningsuppsättning med datadiskar
-Om du vill skapa en skalningsuppsättning och ansluta datadiskar, lägger du till parametern `--data-disk-sizes-gb` i kommandot [az vmss create](/cli/azure/vmss#az-vmss-create). I följande exempel skapas en skalningsuppsättning med *50* Gb datadiskar anslutna till varje instans:
+Om du vill skapa en skalningsuppsättning och ansluta datadiskar, lägger du till parametern `--data-disk-sizes-gb` i kommandot [az vmss create](/cli/azure/vmss#az_vmss_create). I följande exempel skapas en skalningsuppsättning med *50* Gb datadiskar anslutna till varje instans:
 
 ```azurecli-interactive
 az vmss create \
@@ -222,7 +222,7 @@ az vmss create \
 När instanser tas bort från en skalningsuppsättning, tas eventuella anslutna datadiskar också bort.
 
 ### <a name="add-data-disks"></a>Lägga till datadiskar
-Lägg till en datadisk till instanser i din skalningsuppsättning med hjälp av [az vmss disk attach](/cli/azure/vmss/disk#az-vmss-disk-attach). I följande exempel läggs en *50* Gb disk till i varje instans:
+Lägg till en datadisk till instanser i din skalningsuppsättning med hjälp av [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach). I följande exempel läggs en *50* Gb disk till i varje instans:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -233,7 +233,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>Koppla från datadiskar
-Om du vill ta bort en datadisk i instanser i din skalningsuppsättning använder du [az vmss disk detach](/cli/azure/vmss/disk#az-vmss-disk-detach). I följande exempel tar vi bort datadisken på LUN *2* från varje instans:
+Om du vill ta bort en datadisk i instanser i din skalningsuppsättning använder du [az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach). I följande exempel tar vi bort datadisken på LUN *2* från varje instans:
 
 ```azurecli-interactive
 az vmss disk detach \

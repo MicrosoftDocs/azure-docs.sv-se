@@ -8,12 +8,12 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: f1a502722156bc010dab917afdbd1d49ae93681a
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: 804c4732ce979cd9ec46c69456b3f731284c9c73
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375992"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107748534"
 ---
 # <a name="quickstart-azure-key-vault-secret-client-library-for-java"></a>Snabbstart: Azure Key Vault hemligt klientbibliotek för Java
 Kom igång med Azure Key Vault Secret-klientbiblioteket för Java. Följ stegen nedan för att installera paketet och prova exempelkoden för grundläggande uppgifter.
@@ -281,4 +281,4 @@ I den här snabbstarten skapade du ett nyckelvalv, lagrade en hemlighet, hämtad
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se [Azure Key Vault för utvecklare](../general/developers-guide.md)
-- Skydda [åtkomsten till ett nyckelvalv](../general/secure-your-key-vault.md)
+- Skydda [åtkomsten till ett nyckelvalv](../general/security-overview.md)

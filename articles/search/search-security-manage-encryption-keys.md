@@ -1,7 +1,7 @@
 ---
-title: Kryptering – rest med Kundhanterade nycklar
+title: Kryptering i vila med kund hanterade nycklar
 titleSuffix: Azure Cognitive Search
-description: Kompletterande kryptering på Server sidan över index och synonymer mappar i Azure Kognitiv sökning att använda nycklar som du skapar och hanterar i Azure Key Vault.
+description: Komplettera kryptering på serversidan över index och synonymmappningar i Azure Cognitive Search med nycklar som du skapar och hanterar i Azure Key Vault.
 manager: nitinme
 author: NatiNimni
 ms.author: natinimn
@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 6b1079797f1a753fa8362d6e920f3394087d7e9f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a4c06cf13b3988891f3c4b45c96f7153b3014ce0
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98119296"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107752164"
 ---
-# <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurera Kundhanterade nycklar för data kryptering i Azure Kognitiv sökning
+# <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurera kund hanterade nycklar för datakryptering i Azure Cognitive Search
 
-Azure Kognitiv sökning krypterar automatiskt indexerat innehåll i vila med [tjänst hanterade nycklar](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components). Om du behöver mer skydd kan du komplettera standard kryptering med ytterligare ett krypterings lager med hjälp av nycklar som du skapar och hanterar i Azure Key Vault. Den här artikeln vägleder dig genom stegen för att konfigurera kundhanterad nyckel kryptering.
+Azure Cognitive Search krypterar automatiskt indexerat innehåll i vila med [tjänst-hanterade nycklar](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components). Om du behöver mer skydd kan du komplettera standardkryptering med ytterligare ett krypteringslager med hjälp av nycklar som du skapar och hanterar i Azure Key Vault. Den här artikeln går igenom stegen för att konfigurera kund hanterad nyckelkryptering.
 
-Kundhanterad nyckel kryptering är beroende av [Azure Key Vault](../key-vault/general/overview.md). Du kan skapa egna krypterings nycklar och lagra dem i ett nyckel valv, eller så kan du använda Azure Key Vault s API: er för att generera krypterings nycklar. Med Azure Key Vault kan du också granska nyckel användningen om du [aktiverar loggning](../key-vault/general/logging.md).  
+Kund hanterad nyckelkryptering är beroende av [Azure Key Vault](../key-vault/general/overview.md). Du kan skapa egna krypteringsnycklar och lagra dem i ett nyckelvalv, eller använda Azure Key Vault-API:er för att generera krypteringsnycklar. Med Azure Key Vault kan du också granska nyckelanvändningen om du [aktiverar loggning.](../key-vault/general/logging.md)  
 
-Kryptering med Kundhanterade nycklar tillämpas på enskilda index eller synonyma mappningar när objekten skapas och anges inte på själva Sök tjänst nivån. Endast nya objekt kan krypteras. Det går inte att kryptera innehåll som redan finns.
+Kryptering med kund hanterade nycklar tillämpas på enskilda index eller synonymmappningar när dessa objekt skapas och anges inte på själva söktjänstnivån. Endast nya objekt kan krypteras. Du kan inte kryptera innehåll som redan finns.
 
-Nycklar behöver inte vara i samma nyckel valv. En enskild Sök tjänst kan vara värd för flera krypterade index eller synonyma Maps, var och en krypterad med sina egna Kundhanterade krypterings nycklar som lagras i olika nyckel valv. Du kan också ha index och synonym mappningar i samma tjänst som inte är krypterade med Kundhanterade nycklar.
+Alla nycklar behöver inte finnas i samma nyckelvalv. En enda söktjänst kan vara värd för flera krypterade index eller synonymmappningar, var och en krypterad med sina egna kund hanterade krypteringsnycklar, som lagras i olika nyckelvalv. Du kan också ha index och synonymmappningar i samma tjänst som inte krypteras med kund hanterade nycklar.
 
 >[!Important]
-> Om du implementerar Kundhanterade nycklar bör du följa strikta procedurer under rutinmässig rotation av Key Vault-nycklar och Active Directory program hemligheter och registrering. Uppdatera alltid allt krypterat innehåll för att använda nya hemligheter och nycklar innan du tar bort de gamla. Om du saknar det här steget kan innehållet inte dekrypteras.
+> Om du implementerar kund hanterade nycklar måste du följa strikta procedurer under rutinmässig rotation av nyckelvalvsnycklar och Active Directory-programhemligheter och registrering. Uppdatera alltid allt krypterat innehåll så att nya hemligheter och nycklar används innan du tar bort de gamla. Om du missar det här steget kan innehållet inte dekrypteras.
 
 ## <a name="double-encryption"></a>Dubbel kryptering
 
-För tjänster som skapats efter 1 augusti 2020 och i vissa regioner innehåller omfattningen av kundhanterad nyckel kryptering temporära diskar, vilket ger [fullständig dubbel kryptering](search-security-overview.md#double-encryption), för närvarande tillgängliga i dessa regioner: 
+För tjänster som skapats efter den 1 augusti 2020 och i vissa regioner omfattar omfånget för kundstyrd nyckelkryptering temporära diskar, vilket uppnår fullständig dubbel kryptering [,](search-security-overview.md#double-encryption)som för närvarande är tillgängligt i dessa regioner: 
 
 + USA, västra 2
 + East US
@@ -39,50 +39,50 @@ För tjänster som skapats efter 1 augusti 2020 och i vissa regioner innehåller
 + US Gov, Virginia
 + US Gov, Arizona
 
-Om du använder en annan region eller en tjänst som skapats före den 1 augusti, begränsas hanterad nyckel kryptering enbart till data disken, exklusive de temporära diskar som används av tjänsten.
+Om du använder en annan region, eller en tjänst som skapats före den 1 augusti, begränsas krypteringen av hanterade nycklar till enbart datadisken, exklusive de temporära diskar som används av tjänsten.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Följande verktyg och tjänster används i det här scenariot.
 
-+ [Azure kognitiv sökning](search-create-service-portal.md) på en [fakturerbar nivå](search-sku-tier.md#tier-descriptions) (Basic eller högre) i vilken region som helst.
-+ [Azure Key Vault](../key-vault/general/overview.md)kan du skapa nyckel valv med [Azure Portal](../key-vault//general/quick-create-portal.md), [Azure CLI](../key-vault//general/quick-create-cli.md)eller [Azure PowerShell](../key-vault//general/quick-create-powershell.md). i samma prenumeration som Azure Kognitiv sökning. Nyckel valvet måste ha aktiverat **skydd mot** **borttagning** och rensning.
-+ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Om du inte har ett kan du [Konfigurera en ny klient](../active-directory/develop/quickstart-create-new-tenant.md).
++ [Azure Cognitive Search](search-create-service-portal.md) på en [fakturerbar nivå](search-sku-tier.md#tier-descriptions) (Basic eller högre i valfri region).
++ [Azure Key Vault](../key-vault/general/overview.md)kan du skapa nyckelvalv med [Azure Portal,](../key-vault//general/quick-create-portal.md) [Azure CLI](../key-vault//general/quick-create-cli.md)eller [Azure PowerShell](../key-vault//general/quick-create-powershell.md). i samma prenumeration som Azure Cognitive Search. Nyckelvalvet måste ha **mjuk borttagning** och **rensning aktiverat.**
++ [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md). Om du inte har någon kan du [konfigurera en ny klientorganisation.](../active-directory/develop/quickstart-create-new-tenant.md)
 
-Du bör ha ett Sök program som kan skapa det krypterade objektet. I den här koden kommer du att referera till nyckel valvet och Active Directory registrerings information. Den här koden kan vara en fungerande app eller prototyp kod som C#- [kod exemplet DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
+Du bör ha ett sökprogram som kan skapa det krypterade objektet. I den här koden refererar du till en nyckel för nyckelvalvet och registreringsinformationen för Active Directory. Den här koden kan vara en fungerande app eller prototypkod som [C#-kodexempel DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK).
 
 > [!TIP]
-> Du kan använda [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)eller [Azure PowerShell](./search-get-started-powershell.md)för att anropa REST-API: er som skapar index och synonym mappningar som innehåller en krypterings nyckel parameter. Det finns inget stöd för portalen för att lägga till en nyckel i index eller synonym Maps för tillfället.
+> Du kan använda [Postman](search-get-started-rest.md), [Visual Studio Code](search-get-started-vs-code.md)eller [Azure PowerShell](./search-get-started-powershell.md)för att anropa REST API:er som skapar index och synonymmappningar som innehåller en krypteringsnyckelparameter. Det finns inget portalstöd för att lägga till en nyckel till index eller synonymmappningar just nu.
 
-## <a name="1---enable-key-recovery"></a>1 – aktivera nyckel återställning
+## <a name="1---enable-key-recovery"></a>1 – Aktivera nyckelåterställning
 
-På grund av krypterings typen med Kundhanterade nycklar kan ingen hämta dina data om din Azure Key Vault-nyckel tas bort. För att förhindra data förlust som orsakas av oavsiktliga Key Vault nyckel borttagningar måste du aktivera mjuk borttagning och rensnings skydd i nyckel valvet. Mjuk borttagning är aktiverat som standard, så du kommer bara att stöta på problem om du har inaktiverat det. Rensnings skydd är inte aktiverat som standard, men det krävs för kundhanterad nyckel kryptering i Kognitiv sökning. Mer information finns i [mjuk borttagning](../key-vault/general/soft-delete-overview.md) och rensning av [skydds](../key-vault/general/soft-delete-overview.md#purge-protection) översikter.
+På grund av kryptering med kund hanterade nycklar kan ingen hämta dina data om din Azure Key Vault-nyckel tas bort. För att förhindra dataförlust på grund Key Vault av misstag måste skydd för mjuk borttagning och rensning aktiveras i nyckelvalvet. Mjuk borttagning är aktiverat som standard, så du kommer bara att stöta på problem om du har inaktiverat det. Rensningsskydd är inte aktiverat som standard, men det krävs för kundstyrd nyckelkryptering i Cognitive Search. Mer information finns i [Översikt över mjuk borttagning](../key-vault/general/soft-delete-overview.md) och [rensningsskydd.](../key-vault/general/soft-delete-overview.md#purge-protection)
 
-Du kan ange båda egenskaperna med hjälp av kommandona Portal, PowerShell eller Azure CLI.
+Du kan ange båda egenskaperna med hjälp av kommandona portal, PowerShell eller Azure CLI.
 
 ### <a name="using-azure-portal"></a>Använda Azure Portal
 
-1. [Logga in på Azure Portal](https://portal.azure.com) och öppna översikts sidan för Key Vault.
+1. [Logga in på Azure Portal](https://portal.azure.com) och öppna översiktssidan för nyckelvalvet.
 
-1. På sidan **Översikt** under **Essentials** aktiverar du **skydd mot** **mjuk borttagning** och rensning.
+1. På sidan **Översikt** under **Essentials aktiverar** du **mjuk borttagning och** **rensningsskydd.**
 
 ### <a name="using-powershell"></a>Använda PowerShell
 
-1. Kör `Connect-AzAccount` för att konfigurera dina Azure-autentiseringsuppgifter.
+1. Kör `Connect-AzAccount` för att konfigurera dina autentiseringsuppgifter för Azure.
 
-1. Kör följande kommando för att ansluta till nyckel valvet och Ersätt `<vault_name>` med ett giltigt namn:
+1. Kör följande kommando för att ansluta till nyckelvalvet och ersätt `<vault_name>` med ett giltigt namn:
 
    ```powershell
    $resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "<vault_name>").ResourceId
    ```
 
-1. Azure Key Vault skapas med mjuk borttagning aktiverat. Om den är inaktive rad i valvet kör du följande kommando:
+1. Azure Key Vault skapas med mjuk borttagning aktiverat. Om det är inaktiverat i valvet kör du följande kommando:
 
    ```powershell
    $resource.Properties | Add-Member -MemberType NoteProperty -Name "enableSoftDelete" -Value 'true'
    ```
 
-1. Aktivera rensnings skydd:
+1. Aktivera rensningsskydd:
 
    ```powershell
    $resource.Properties | Add-Member -MemberType NoteProperty -Name "enablePurgeProtection" -Value 'true'
@@ -106,76 +106,76 @@ Du kan ange båda egenskaperna med hjälp av kommandona Portal, PowerShell eller
 
 Hoppa över det här steget om du redan har en nyckel i Azure Key Vault.
 
-1. [Logga in på Azure Portal](https://portal.azure.com) och öppna översikts sidan för Key Vault.
+1. [Logga in på Azure Portal](https://portal.azure.com) och öppna översiktssidan för nyckelvalvet.
 
-1. Välj **nycklar** till vänster och välj sedan **+ generera/importera**.
+1. Välj **Nycklar** till vänster och välj sedan **+ Generera/importera.**
 
-1. I fönstret **skapa en nyckel** , i listan med **alternativ**, väljer du den metod som du vill använda för att skapa en nyckel. Du kan **generera** en ny nyckel, **överföra** en befintlig nyckel eller använda **Återställ säkerhets kopia** för att välja en säkerhets kopia av en nyckel.
+1. I fönstret **Skapa en nyckel** i listan över Alternativ **väljer** du den metod som du vill använda för att skapa en nyckel. Du kan **generera** en ny nyckel, **ladda upp** en befintlig nyckel eller använda Återställ säkerhetskopia **för** att välja en säkerhetskopia av en nyckel.
 
-1. Ange ett **namn** för nyckeln och välj även andra nyckel egenskaper.
+1. Ange ett **Namn** för din nyckel och välj eventuellt andra nyckelegenskaper.
 
-1. Välj **skapa** för att starta distributionen.
+1. Välj **Skapa** för att starta distributionen.
 
-1. Anteckna nyckel identifieraren – den består av **nyckel värdets URI**, **nyckel namnet** och **nyckel versionen**. Du behöver identifieraren för att definiera ett krypterat index i Azure Kognitiv sökning.
+1. Anteckna nyckelidentifieraren – den består av nyckelvärdet **URI,** **nyckelnamnet** och **nyckelversionen**. Du behöver identifieraren för att definiera ett krypterat index i Azure Cognitive Search.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Skapa en ny nyckel valvs nyckel":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-key-identifier.png" alt-text="Skapa en ny nyckelvalvsnyckel":::
 
-## <a name="3---register-an-app-in-active-directory"></a>3 – registrera en app i Active Directory
+## <a name="3---register-an-app-in-active-directory"></a>3 – Registrera en app i Active Directory
 
-1. I [Azure Portal](https://portal.azure.com)letar du upp Azure Active Directory resurs för din prenumeration.
+1. I [Azure Portal](https://portal.azure.com)söker du efter Azure Active Directory resurs för din prenumeration.
 
-1. Till vänster, under **Hantera**, Välj **Appregistreringar** och välj sedan **ny registrering**.
+1. Till vänster under Hantera **väljer** du **Appregistreringar** och sedan **Ny registrering.**
 
-1. Ge registreringen ett namn, kanske ett namn som liknar Sök programmets namn. Välj **Register** (Registrera).
+1. Ge registreringen ett namn, kanske ett namn som liknar namnet på sökprogrammet. Välj **Register** (Registrera).
 
-1. Kopiera program-ID: t när appens registrering har skapats. Du måste ange den här strängen för ditt program. 
+1. När appregistreringen har skapats kopierar du program-ID:t. Du måste ange den här strängen till ditt program. 
 
-   Om du går igenom [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)klistrar du in det här värdet i **appsettings.jspå** filen.
+   Om du stegar igenom [DotNetHowToEncryptionUsingCMK](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK)klistrar du in det här **värdet iappsettings.jspå** filen.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-application-id.png" alt-text="Program-ID i avsnittet Essentials":::
 
-1. Välj sedan **certifikat & hemligheter** till vänster.
+1. Välj sedan **Certifikat & hemligheter** till vänster.
 
-1. Välj **Ny klienthemlighet**. Ge hemligheten ett visnings namn och välj **Lägg till**.
+1. Välj **Ny klienthemlighet**. Ge hemligheten ett visningsnamn och välj Lägg **till**.
 
-1. Kopiera program hemligheten. Om du stegar igenom exemplet klistrar du in det här värdet i **appsettings.js** filen.
+1. Kopiera programhemligheten. Om du stegar igenom exemplet klistrar du in det här värdet **iappsettings.jspå** filen.
 
    :::image type="content" source="media/search-manage-encryption-keys/cmk-application-secret.png" alt-text="Apphemlighet":::
 
-## <a name="4---grant-key-access-permissions"></a>4 – bevilja nyckel åtkomst behörigheter
+## <a name="4---grant-key-access-permissions"></a>4 – Bevilja åtkomstbehörigheter för nycklar
 
-I det här steget ska du skapa en åtkomst princip i Key Vault. Den här principen ger programmet som du har registrerat med Active Directory behörighet att använda din Kundhanterade nyckel.
+I det här steget skapar du en åtkomstprincip i Key Vault. Den här principen ger programmet som du registrerade med Active Directory behörighet att använda din kund hanterade nyckel.
 
-Åtkomst behörigheterna kan återkallas vid en angiven tidpunkt. När den har återkallats blir alla Sök tjänst index eller synonym mappningar som använder det nyckel valvet oanvändbara. Att återställa åtkomst behörigheter för Key Vault vid ett senare tillfälle kommer att återställa index\synonym Map-åtkomst. Mer information finns i [säker åtkomst till ett nyckel valv](../key-vault/general/secure-your-key-vault.md).
+Åtkomstbehörigheter kan återkallas när som helst. När det har återkallats blir alla söktjänstindex eller synonymmappning som använder nyckelvalvet oanvändbara. Om du återställer åtkomstbehörigheter för Key Vault vid ett senare tillfälle återställs mappningsåtkomsten för index\synonymer. Mer information finns i [Säker åtkomst till ett nyckelvalv.](../key-vault/general/security-overview.md)
 
-1. Öppna din **översikts** sida för Key vault fortfarande Azure Portal. 
+1. Öppna sidan Översikt Azure Portal nyckelvalvet i **den här Azure Portal nyckelvalvet.** 
 
-1. Välj **åtkomst principer** till vänster och välj **+ Lägg till åtkomst princip**.
+1. Välj **Åtkomstprinciper** till vänster och välj **+ Lägg till åtkomstprincip.**
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Lägg till ny åtkomst princip för nyckel valv":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-add-access-policy.png" alt-text="Lägga till ny åtkomstprincip för nyckelvalv":::
 
-1. Välj **Välj huvud namn** och välj det program som du registrerade med Active Directory. Du kan söka efter den efter namn.
+1. Välj **Välj huvudnamn** och välj det program som du registrerade med Active Directory. Du kan söka efter den efter namn.
 
-   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Välj nyckel valv åtkomst principens huvud namn":::
+   :::image type="content" source="media/search-manage-encryption-keys/cmk-access-policy-permissions.png" alt-text="Välj key vault access policy principal (Huvudnamn för nyckelvalvsåtkomstprincip)":::
 
-1. I **nyckel behörigheter** väljer du *Hämta*, *packa upp nyckel* och *Radbryt nyckel*.
+1. I **Nyckelbehörigheter** väljer *du Hämta,* *Packa upp nyckel och* *Omsluta nyckel.*
 
-1. I **hemliga behörigheter** väljer du *Hämta*.
+1. I **Hemliga behörigheter** väljer du *Hämta*.
 
-1. I **certifikat behörigheter** väljer du *Hämta*.
+1. I **Certifikatbehörigheter** väljer du *Hämta*.
 
-1. Välj **Lägg till** och **Spara**.
+1. Välj **Lägg till** och sedan **Spara.**
 
 > [!Important]
-> Krypterat innehåll i Azure Kognitiv sökning konfigureras för att använda en speciell Azure Key Vault nyckel med en angiven **version**. Om du ändrar nyckeln eller versionen måste mappningen index eller synonymer uppdateras för att använda den nya key\version **innan** du tar bort föregående key\version. Om du inte gör det kommer index eller synonym mappning inte att kunna användas, men du kan inte dekryptera innehållet när nyckel åtkomsten har gått förlorad.
+> Krypterat innehåll i Azure Cognitive Search har konfigurerats för att använda en Azure Key Vault nyckel med en specifik **version**. Om du ändrar nyckeln eller versionen måste indexet eller synonymmappningen  uppdateras så att den nya nyckeln\versionen används innan du tar bort den tidigare nyckeln\versionen. Om du inte gör det renderas indexet eller synonymmappningen som oanvändbar. Då kan du inte dekryptera innehållet när nyckelåtkomsten har gått förlorad.
 
 <a name="encrypt-content"></a>
 
 ## <a name="5---encrypt-content"></a>5 – Kryptera innehåll
 
-Om du vill lägga till en kundhanterad nyckel på ett index, data källa, färdigheter, indexerare eller synonym mappning måste du använda [sök REST API](/rest/api/searchservice/) eller ett SDK. Portalen visar inte synonym kartor eller krypterings egenskaper. När du använder ett giltigt API-index, stöder data källor, färdighetsuppsättningar, indexerare och synonym Maps en **encryptionKey** -egenskap på högsta nivån.
+Om du vill lägga till en kund hanterad nyckel i ett index, en datakälla, en kunskapsuppsättning, en indexerare eller en synonymmappning måste du använda sökfunktionen [REST API](/rest/api/searchservice/) eller ett SDK. Portalen exponerar inte synonymmappningar eller krypteringsegenskaper. När du använder ett giltigt API-index stöder datakällor, kunskapsuppsättningar, indexerare och synonymmappningar en **krypteringsnyckelegenskap på toppnivå.**
 
-I det här exemplet används REST API med värden för Azure Key Vault och Azure Active Directory:
+Det här exemplet använder REST API, med värden för Azure Key Vault och Azure Active Directory:
 
 ```json
 {
@@ -192,21 +192,21 @@ I det här exemplet används REST API med värden för Azure Key Vault och Azure
 ```
 
 > [!Note]
-> Ingen av dessa nyckel valvs uppgifter betraktas som hemliga och kan enkelt hämtas genom att bläddra till den relevanta Azure Key Vault nyckel sidan i Azure Portal.
+> Ingen av dessa nyckelvalvsuppgifter betraktas som hemliga och kan enkelt hämtas genom att bläddra till relevant Azure Key Vault nyckelsida i Azure Portal.
 
-## <a name="example-index-encryption"></a>Exempel: index kryptering
+## <a name="example-index-encryption"></a>Exempel: Indexkryptering
 
-Skapa ett krypterat index med hjälp av [create index Azure Kognitiv sökning REST API](/rest/api/searchservice/create-index). Använd `encryptionKey` egenskapen för att ange vilken krypterings nyckel som ska användas.
+Skapa ett krypterat index med hjälp [av Skapa index Azure Cognitive Search REST API](/rest/api/searchservice/create-index). Använd egenskapen `encryptionKey` för att ange vilken krypteringsnyckel som ska användas.
 > [!Note]
-> Ingen av dessa nyckel valvs uppgifter betraktas som hemliga och kan enkelt hämtas genom att bläddra till den relevanta Azure Key Vault nyckel sidan i Azure Portal.
+> Ingen av dessa nyckelvalvsuppgifter betraktas som hemliga och kan enkelt hämtas genom att bläddra till relevant Azure Key Vault nyckelsida i Azure Portal.
 
 ## <a name="rest-examples"></a>REST-exempel
 
-I det här avsnittet visas en fullständig JSON för ett krypterat index och en synonym mappning
+Det här avsnittet visar den fullständiga JSON-filen för ett krypterat index och en synonymmappning
 
-### <a name="index-encryption"></a>Index kryptering
+### <a name="index-encryption"></a>Indexkryptering
 
-Information om hur du skapar ett nytt index via REST API finns i [create index (REST API)](/rest/api/searchservice/create-index), där den enda skillnaden här anger krypterings nyckel informationen som en del av index definitionen:
+Information om hur du skapar ett nytt index via REST API finns i Skapa [index (REST API)](/rest/api/searchservice/create-index), där den enda skillnaden här är att ange krypteringsnyckelinformationen som en del av indexdefinitionen:
 
 ```json
 {
@@ -235,11 +235,11 @@ Information om hur du skapar ett nytt index via REST API finns i [create index (
 }
 ```
 
-Nu kan du skicka begäran om att skapa index och sedan börja använda indexet som vanligt.
+Nu kan du skicka begäran om att skapa index och sedan börja använda indexet på vanligt sätt.
 
-### <a name="synonym-map-encryption"></a>Kryptering av synonym mappning
+### <a name="synonym-map-encryption"></a>Kryptering av synonymmappning
 
-Skapa en krypterad synonym mappning med hjälp av [create synonymer Map Azure Kognitiv sökning REST API](/rest/api/searchservice/create-synonym-map). Använd `encryptionKey` egenskapen för att ange vilken krypterings nyckel som ska användas.
+Skapa en krypterad synonymmappning med hjälp [av skapa synonymmappning Azure Cognitive Search REST API](/rest/api/searchservice/create-synonym-map). Använd egenskapen `encryptionKey` för att ange vilken krypteringsnyckel som ska användas.
 
 ```json
 {
@@ -259,37 +259,11 @@ Skapa en krypterad synonym mappning med hjälp av [create synonymer Map Azure Ko
 }
 ```
 
-Nu kan du skicka en förfrågan om att skapa synonym mappning och sedan börja använda den som vanligt.
+Nu kan du skicka begäran om att skapa synonymmappningen och sedan börja använda den normalt.
 
-## <a name="example-data-source-encryption"></a>Exempel: kryptering av data Källa
+## <a name="example-data-source-encryption"></a>Exempel: Kryptering av datakälla
 
-Skapa en krypterad data källa med hjälp av [skapa data källa (Azure Kognitiv sökning REST API)](/rest/api/searchservice/create-data-source). Använd `encryptionKey` egenskapen för att ange vilken krypterings nyckel som ska användas.
-
-```json
-{
-  "name" : "datasource1",
-  "type" : "azureblob",
-  "credentials" :
-  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
-  },
-  "container" : { "name" : "containername" },
-  "encryptionKey": {
-    "keyVaultUri": "https://demokeyvault.vault.azure.net",
-    "keyVaultKeyName": "myEncryptionKey",
-    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
-    "accessCredentials": {
-      "applicationId": "00000000-0000-0000-0000-000000000000",
-      "applicationSecret": "myApplicationSecret"
-    }
-  }
-}
-```
-
-Nu kan du skicka begäran om att skapa data källa och sedan börja använda den som vanligt.
-
-## <a name="example-skillset-encryption"></a>Exempel: färdigheter-kryptering
-
-Skapa en krypterad färdigheter med [REST API för att skapa färdigheter Azure kognitiv sökning](/rest/api/searchservice/create-skillset). Använd `encryptionKey` egenskapen för att ange vilken krypterings nyckel som ska användas.
+Skapa en krypterad datakälla med [hjälp av Skapa datakälla (Azure Cognitive Search REST API).](/rest/api/searchservice/create-data-source) Använd egenskapen `encryptionKey` för att ange vilken krypteringsnyckel som ska användas.
 
 ```json
 {
@@ -311,11 +285,37 @@ Skapa en krypterad färdigheter med [REST API för att skapa färdigheter Azure 
 }
 ```
 
-Nu kan du skicka begäran om att skapa färdigheter och sedan börja använda den som vanligt.
+Nu kan du skicka begäran om att skapa datakällan och sedan börja använda den på vanligt sätt.
 
-## <a name="example-indexer-encryption"></a>Exempel: indexerare kryptering
+## <a name="example-skillset-encryption"></a>Exempel: Kunskapsuppsättningskryptering
 
-Skapa en krypterad indexerare med hjälp av [REST API skapa indexerare Azure Kognitiv sökning](/rest/api/searchservice/create-indexer). Använd `encryptionKey` egenskapen för att ange vilken krypterings nyckel som ska användas.
+Skapa en krypterad kunskapsuppsättning med hjälp [av skapa kunskapsuppsättning Azure Cognitive Search REST API](/rest/api/searchservice/create-skillset). Använd egenskapen `encryptionKey` för att ange vilken krypteringsnyckel som ska användas.
+
+```json
+{
+  "name" : "datasource1",
+  "type" : "azureblob",
+  "credentials" :
+  { "connectionString" : "DefaultEndpointsProtocol=https;AccountName=datasource;AccountKey=accountkey;EndpointSuffix=core.windows.net"
+  },
+  "container" : { "name" : "containername" },
+  "encryptionKey": {
+    "keyVaultUri": "https://demokeyvault.vault.azure.net",
+    "keyVaultKeyName": "myEncryptionKey",
+    "keyVaultKeyVersion": "eaab6a663d59439ebb95ce2fe7d5f660",
+    "accessCredentials": {
+      "applicationId": "00000000-0000-0000-0000-000000000000",
+      "applicationSecret": "myApplicationSecret"
+    }
+  }
+}
+```
+
+Nu kan du skicka begäran om att skapa kunskapsuppsättningen och sedan börja använda den normalt.
+
+## <a name="example-indexer-encryption"></a>Exempel: Indexerarkryptering
+
+Skapa en krypterad indexerare med hjälp [av skapa indexeraren Azure Cognitive Search REST API](/rest/api/searchservice/create-indexer). Använd egenskapen `encryptionKey` för att ange vilken krypteringsnyckel som ska användas.
 
 ```json
 {
@@ -339,25 +339,25 @@ Skapa en krypterad indexerare med hjälp av [REST API skapa indexerare Azure Kog
 }
 ```
 
-Nu kan du skicka begäran om att skapa indexerare och sedan börja använda den som vanligt.
+Du kan nu skicka begäran om att skapa indexeraren och sedan börja använda den normalt.
 
 >[!Important]
-> `encryptionKey`Det går inte att lägga till i befintliga Sök index eller synonym mappningar, men det kan uppdateras genom att ange olika värden för någon av de tre nyckel valvs detaljerna (till exempel uppdatering av nyckel versionen). När du ändrar till en ny Key Vault nyckel eller en ny nyckel version måste alla sökindex eller synonym mappningar som använder nyckeln först uppdateras för att använda den nya key\version **innan** du tar bort föregående key\version. Om du inte gör det kommer indexet eller synonym mappningen att bli oanvändbar, eftersom den inte kan dekryptera innehållet när nyckel åtkomsten förlorats. Även om åtkomst behörigheterna för Key Vault återställs vid ett senare tillfälle återställs innehålls åtkomsten.
+> Det går inte att lägga till befintliga sökindex eller synonymmappningar, men det kan uppdateras genom att ange olika värden för någon av de tre nyckelvalvsinformationen (till exempel uppdatering av `encryptionKey` nyckelversionen). När du ändrar till en ny Key Vault-nyckel eller en ny nyckelversion måste alla sökindex eller synonymmappning  som använder nyckeln först uppdateras för att använda den nya nyckeln\versionen innan den tidigare nyckeln\versionen tas bort. Om du inte gör det renderas indexet eller synonymmappningen som oanvändbar, eftersom den inte kan dekryptera innehållet när nyckelåtkomsten går förlorad. Även om du återställer åtkomstbehörigheter för Key Vault vid ett senare tillfälle återställs innehållsåtkomsten.
 
-## <a name="simpler-alternative-trusted-service"></a>Enklare alternativ: betrodd tjänst
+## <a name="simpler-alternative-trusted-service"></a>Enklare alternativ: Betrodd tjänst
 
-Beroende på klient konfiguration och autentiseringskrav kan du eventuellt implementera en enklare metod för att komma åt nyckel valvet. I stället för att skapa och använda ett Active Directory program kan du göra en Sök tjänst till en betrodd tjänst genom att aktivera en Systemhanterad identitet för den. Sedan använder du den betrodda Sök tjänsten som en säkerhets princip, i stället för ett AD-registrerat program, för att komma åt Key Vault-nyckeln.
+Beroende på klientkonfiguration och autentiseringskrav kan du implementera en enklare metod för att komma åt en nyckelvalvsnyckel. I stället för att skapa och använda ett Active Directory-program kan du göra en söktjänst till en betrodd tjänst genom att aktivera en system hanterad identitet för den. Du skulle sedan använda den betrodda söktjänsten som en säkerhetsprincip i stället för ett AD-registrerat program för att få åtkomst till nyckelvalvsnyckeln.
 
-Med den här metoden kan du utelämna stegen för program registrering och program hemligheter och förenkla en krypterings nyckel definition till bara Key Vault-komponenterna (URI, valv namn, nyckel version).
+Med den här metoden kan du utelämna stegen för programregistrering och programhemligheter och förenklar en krypteringsnyckeldefinition till bara nyckelvalvskomponenterna (URI, valvnamn, nyckelversion).
 
-I allmänhet gör en hanterad identitet att Sök tjänsten kan autentisera till Azure Key Vault utan att lagra autentiseringsuppgifter (ApplicationID eller ApplicationSecret) i koden. Livs cykeln för den här typen av hanterad identitet är kopplad till livs cykeln för din Sök tjänst, som bara kan ha en hanterad identitet. Mer information om hur hanterade identiteter fungerar finns i [Vad är hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/overview.md).
+I allmänhet gör en hanterad identitet att din söktjänst kan autentisera till Azure Key Vault utan att lagra autentiseringsuppgifter (ApplicationID eller ApplicationSecret) i kod. Livscykeln för den här typen av hanterad identitet är kopplad till söktjänstens livscykel, som bara kan ha en hanterad identitet. Mer information om hur hanterade identiteter fungerar finns i [Vad är hanterade identiteter för Azure-resurser?](../active-directory/managed-identities-azure-resources/overview.md)
 
-1. Gör din Sök tjänst till en betrodd tjänst.
-   ![Aktivera systemtilldelad hanterad identitet](./media/search-managed-identities/turn-on-system-assigned-identity.png "Aktivera systemtilldelad hanterad identitet")
+1. Gör söktjänsten till en betrodd tjänst.
+   ![Aktivera system tilldelad hanterad identitet](./media/search-managed-identities/turn-on-system-assigned-identity.png "Aktivera system tilldelad hanterad identitet")
 
-1. När du konfigurerar en åtkomst princip i Azure Key Vault väljer du den betrodda Sök tjänsten som princip (i stället för det AD-registrerade programmet). Tilldela samma behörigheter (flera får, omslutning, unwrap) enligt anvisningarna i steget bevilja åtkomst nyckel behörighet.
+1. När du ställer in en åtkomstprincip i Azure Key Vault väljer du den betrodda söktjänsten som princip (i stället för det AD-registrerade programmet). Tilldela samma behörigheter (flera GET,WRAP, UNWRAP) enligt anvisningarna i steget Bevilja åtkomstnyckelbehörigheter.
 
-1. Använd en förenklad konstruktion av `encryptionKey` som utesluter Active Directory egenskaper.
+1. Använd en förenklad konstruktion av `encryptionKey` som utelämnar Active Directory-egenskaperna.
 
     ```json
     {
@@ -369,28 +369,28 @@ I allmänhet gör en hanterad identitet att Sök tjänsten kan autentisera till 
     }
     ```
 
-Villkor som hindrar dig från att införa den här förenklade metoden är:
+Villkor som förhindrar att du använder den här förenklade metoden är:
 
-+ Du kan inte direkt bevilja dina åtkomst behörigheter för Sök tjänsten till nyckel valvet (till exempel om Sök tjänsten är i en annan Active Directory klient än Azure Key Vault).
++ Du kan inte ge söktjänsten direkt åtkomstbehörighet till nyckelvalvet (till exempel om söktjänsten finns i en annan Active Directory-klientorganisation än Azure Key Vault).
 
-+ En enskild Sök tjänst krävs för att vara värd för flera krypterade indexes\synonym-mappningar, var och en använder en annan nyckel från ett annat nyckel valv, där varje nyckel valv måste använda **en annan identitet** för autentisering. Eftersom en Sök tjänst bara kan ha en hanterad identitet, deklarerar ett krav för flera identiteter den förenklade metoden för ditt scenario.  
++ En enda söktjänst krävs för att vara värd för flera krypterade index\synonymmappningar, var och en med en annan nyckel från ett annat nyckelvalv, där varje nyckelvalv måste använda en annan identitet **för** autentisering. Eftersom en söktjänst bara kan ha en hanterad identitet, diskvalificerar ett krav för flera identiteter den förenklade metoden för ditt scenario.  
 
 ## <a name="work-with-encrypted-content"></a>Arbeta med krypterat innehåll
 
-Med kundhanterad nyckel kryptering kommer du att märka svars tider för både indexering och frågor på grund av det extra krypterings-/dekrypterings arbetet. Azure Kognitiv sökning loggar inte krypterings aktivitet, men du kan övervaka nyckel åtkomst via loggning av nyckel valv. Vi rekommenderar att du [aktiverar loggning](../key-vault/general/logging.md) som en del av Key Vault-konfigurationen.
+Med kund hanterad nyckelkryptering ser du svarstiden för både indexering och frågor på grund av det extra arbetet med kryptering/dekryptering. Azure Cognitive Search loggar inte krypteringsaktiviteten, men du kan övervaka nyckelåtkomst via nyckelvalvsloggning. Vi rekommenderar att du aktiverar [loggning som](../key-vault/general/logging.md) en del av konfigurationen av nyckelvalvet.
 
-Nyckel rotation förväntas ske över tid. När du roterar nycklar är det viktigt att följa den här ordningen:
+Nyckelrotation förväntas ske med tiden. När du roterar nycklar är det viktigt att du följer den här sekvensen:
 
-1. [Avgör vilken nyckel som används av ett index eller en synonym mappning](search-security-get-encryption-keys.md).
-1. [Skapa en ny nyckel i Key Vault](../key-vault/keys/quick-create-portal.md), men lämna den ursprungliga nyckeln tillgänglig.
-1. [Uppdatera egenskaperna för encryptionKey](/rest/api/searchservice/update-index) på en index-eller synonym mappning så att de använder de nya värdena. Endast objekt som ursprungligen har skapats med den här egenskapen kan uppdateras för att använda ett annat värde.
-1. Inaktivera eller ta bort föregående nyckel i nyckel valvet. Övervaka nyckel åtkomst för att verifiera att den nya nyckeln används.
+1. [Fastställ nyckeln som används av ett index eller en synonymmappning](search-security-get-encryption-keys.md).
+1. [Skapa en ny nyckel i nyckelvalvet](../key-vault/keys/quick-create-portal.md), men lämna den ursprungliga nyckeln tillgänglig.
+1. [Uppdatera egenskaperna encryptionKey i ett](/rest/api/searchservice/update-index) index eller en synonymmappning för att använda de nya värdena. Endast objekt som ursprungligen skapades med den här egenskapen kan uppdateras för att använda ett annat värde.
+1. Inaktivera eller ta bort den tidigare nyckeln i nyckelvalvet. Övervaka nyckelåtkomst för att kontrollera att den nya nyckeln används.
 
-Av prestanda skäl cachelagrar Sök tjänsten nyckeln i upp till flera timmar. Om du inaktiverar eller tar bort nyckeln utan att ange en ny, fortsätter frågorna att fungera temporärt tills cachen upphör att gälla. Men när Sök tjänsten inte kan dekryptera innehåll visas följande meddelande: "åtkomst förbjuden. Den frågeparameter som används kan ha återkallats-försök igen. " 
+Av prestandaskäl cachelagrar söktjänsten nyckeln i upp till flera timmar. Om du inaktiverar eller tar bort nyckeln utan att ange en ny fortsätter frågorna att fungera tillfälligt tills cacheminnet upphör att gälla. Men när söktjänsten inte kan dekryptera innehåll får du det här meddelandet: "Åtkomst är förbjuden. Den frågenyckel som används kan ha återkallats – försök igen." 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du inte är bekant med Azures säkerhets arkitektur kan du läsa [dokumentationen för Azure-säkerhet](../security/index.yml)och i synnerhet den här artikeln:
+Om du inte är bekant med Azure-säkerhetsarkitekturen kan du läsa [dokumentationen om Azure-säkerhet,](../security/index.yml)särskilt den här artikeln:
 
 > [!div class="nextstepaction"]
 > [Vilande datakryptering](../security/fundamentals/encryption-atrest.md)

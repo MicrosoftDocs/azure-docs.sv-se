@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-java
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: b5bc453e2e0371ee0412824f01d99863b12d91e2
-ms.sourcegitcommit: 2654d8d7490720a05e5304bc9a7c2b41eb4ae007
+ms.openlocfilehash: a270f482438129b7b07506744bf3f9489b242900
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107375380"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107787493"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en Java-funktion i Azure från kommandoraden
 
@@ -93,7 +93,7 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
     | Prompt | Värde | Beskrivning |
     | ------ | ----- | ----------- |
     | **groupId** | `com.fabrikam` | Ett värde som unikt identifierar projektet i alla projekt och som följer [namngivningsreglerna för](https://docs.oracle.com/javase/specs/jls/se6/html/packages.html#7.7) Java. |
-    | **artifactId** | `fabrikam-functions` | Ett värde som är namnet på jar-numret, utan versionsnummer. |
+    | **artifactId** | `fabrikam-functions` | Ett värde som är namnet på jar-et, utan ett versionsnummer. |
     | **Version** | `1.0-SNAPSHOT` | Välj standardvärdet. |
     | **Paket** | `com.fabrikam` | Ett värde som är Java-paketet för den genererade funktionskoden. Använd standardvärdet. |
 
@@ -111,7 +111,7 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
 <details>
 <summary><strong>Vad skapas i mappen LocalFunctionProj?</strong></summary>
 
-Den här mappen innehåller olika filer för projektet, till exempel *Function.java,* *FunctionTest.java* och *pom.xml*. Det finns även konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
+Den här mappen innehåller olika filer för projektet, till exempel *Function.java,* *FunctionTest.java* och *pom.xml*. Det finns även konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) [ ochhost.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
 </details>
 
 <br/>
@@ -131,11 +131,11 @@ Arketypen genererar också ett enhetstest för din funktion. När du ändrar fun
 <details>
 <summary><strong>Kod för pom.xml</strong></summary>
 
-Inställningar för de Azure-resurser som skapats  som värd för din app definieras i konfigurationselementet i plugin-programmet med **ett groupId** för i den `com.microsoft.azure` *genereradepom.xmlfilen.* Konfigurationselementet nedan instruerar till exempel en Maven-baserad distribution att skapa en funktionsapp i `java-functions-group` resursgruppen i `westus` <abbr title="En geografisk referens till ett specifikt Azure-datacenter där resurser allokeras.">region</abbr>. Själva funktionsappen körs på Windows som finns i `java-functions-app-service-plan` planen, vilket som standard är en serverlös förbrukningsplan.
+Inställningar för De Azure-resurser som skapas  som värd för din app definieras i konfigurationselementet i plugin-programmet med **ett groupId** för i den `com.microsoft.azure` *genereradepom.xmlfilen.* Konfigurationselementet nedan instruerar till exempel en Maven-baserad distribution att skapa en funktionsapp i `java-functions-group` resursgruppen i `westus` <abbr title="En geografisk referens till ett specifikt Azure-datacenter där resurser allokeras.">region</abbr>. Själva funktionsappen körs på Windows som finns i `java-functions-app-service-plan` planen, vilket som standard är en serverlös förbrukningsplan.
 
 :::code language="java" source="~/azure-functions-samples-java/pom.xml" range="62-107":::
 
-Du kan ändra de här inställningarna för att styra hur resurser skapas i Azure, till exempel genom att ändra `runtime.os` från till före den första `windows` `linux` distributionen. En fullständig lista över inställningar som stöds av Maven-plugin-programmet finns i [konfigurationsinformationen](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
+Du kan ändra de här inställningarna för att styra hur resurser skapas i Azure, till exempel genom att ändra `runtime.os` från till innan den första `windows` `linux` distributionen. En fullständig lista över inställningar som stöds av Maven-plugin-programmet finns i [konfigurationsinformationen](https://github.com/microsoft/azure-maven-plugins/wiki/Azure-Functions:-Configuration-Details).
 </details>
 
 <br>
@@ -195,7 +195,7 @@ Om du vill skapa en funktionsapp som körs på Linux i stället för Windows än
     az login
     ```
 
-    Kommandot [az login](/cli/azure/reference-index#az-login) loggar in dig på ditt Azure-konto.
+    Kommandot [az login](/cli/azure/reference-index#az_login) loggar in dig på ditt Azure-konto.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
     ```azurepowershell
@@ -212,7 +212,7 @@ Om du vill skapa en funktionsapp som körs på Linux i stället för Windows än
     mvn azure-functions:deploy
     ```
 
-    Distributionen paketerar projektfilerna och distribuerar dem till den nya funktionsappen med [zip-distributionen](functions-deployment-technologies.md#zip-deploy). Koden körs från distributionspaketet i Azure.
+    Distributionen paketerar projektfilerna och distribuerar dem till den nya funktionsappen med [hjälp av zip-distributionen](functions-deployment-technologies.md#zip-deploy). Koden körs från distributionspaketet i Azure.
 
 <br/>
 <details>
@@ -221,7 +221,7 @@ Om du vill skapa en funktionsapp som körs på Linux i stället för Windows än
 + Resursgrupp. Namnges _som java-functions-group_.
 + Lagringskonto. Krävs av Functions. Namnet genereras slumpmässigt baserat på krav på lagringskontonamn.
 + Värdplan. Serverlös värdtjänst för funktionsappen i _regionen USA,_ västra. Namnet är _java-functions-app-service-plan_.
-+ Funktionsapp. En funktionsapp är distributions- och körningsenheten för dina funktioner. Namnet genereras slumpmässigt baserat på ditt _artifactId_, och läggs till med ett slumpmässigt genererat tal.
++ Funktionsapp. En funktionsapp är distributionen och körningsenheten för dina funktioner. Namnet genereras slumpmässigt baserat på ditt _artifactId_, och läggs till med ett slumpmässigt genererat tal.
 </details>
 
 <br>
@@ -241,7 +241,7 @@ Kopiera den fullständiga **Invoke URL som** visas i kommandots utdata till ett 
 
 Kör [`curl`](https://curl.haxx.se/) med Invoke URL **(Anropa URL)** och lägga till parametern `&name=Functions` . Kommandots utdata ska vara texten "Hello Functions".
 
-![Utdata från funktionen körs på Azure med curl](../../includes/media/functions-run-remote-azure-cli/function-test-cloud-curl.png)
+![Utdata från funktionen körs i Azure med curl](../../includes/media/functions-run-remote-azure-cli/function-test-cloud-curl.png)
 
 ---
 
@@ -252,7 +252,7 @@ Kör [`curl`](https://curl.haxx.se/) med Invoke URL **(Anropa URL)** och lägga 
 
 ## <a name="6-clean-up-resources"></a>6. Rensa resurser
 
-Om du fortsätter till nästa [steg och lägger](#next-steps) till en Azure Storage <abbr title="I Azure Storage kan du associera en funktion med en lagringskö så att den kan skapa meddelanden i kön.">köutdatabindning</abbr>håller du alla dina resurser på plats eftersom du bygger vidare på det du redan har gjort.
+Om du fortsätter till nästa [steg och lägger](#next-steps) till en Azure Storage <abbr title="I Azure Storage kan du associera en funktion med en lagringskö så att den kan skapa meddelanden i kön.">köutdatabindning</abbr>håller du alla dina resurser på plats när du bygger vidare på det du redan har gjort.
 
 Annars använder du följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser för att undvika ytterligare kostnader.
 

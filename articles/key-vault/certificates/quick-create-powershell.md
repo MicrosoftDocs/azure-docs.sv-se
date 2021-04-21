@@ -1,9 +1,8 @@
 ---
-title: Snabbstart – Konfigurera & visa Azure Key Vault certifikat med Azure PowerShell
+title: Snabbstart – Ange & visa Azure Key Vault certifikat med Azure PowerShell
 description: Snabbstart som visar hur du ställer in och hämtar ett certifikat från Azure Key Vault med Azure PowerShell
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
@@ -11,14 +10,14 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019, devx-track-azurepowershell
 ms.date: 01/27/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 11f463ab0ae60f489fd6b10d06402b6d27fc9930
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a641ca1206cb41ded0513db72daa278dc3753c85
+ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502274"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107750400"
 ---
-# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabbstart: Ange och hämta ett certifikat från en Azure Key Vault med Azure PowerShell
+# <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-azure-powershell"></a>Snabbstart: Ange och hämta ett certifikat från Azure Key Vault med Azure PowerShell
 
 I den här snabbstarten skapar du ett nyckelvalv i Azure Key Vault med Azure PowerShell. Azure Key Vault är en molntjänst som fungerar som ett säkert lager för hemligheter. Du kan på ett säkert sätt lagra nycklar, lösenord, certifikat och andra hemligheter. Mer information om Key Vault finns i [Översikt.](../general/overview.md) Azure PowerShell används för att skapa och hantera Azure-resurser med hjälp av kommandon eller skript. När du har slutfört det lagrar du ett certifikat.
 
@@ -69,7 +68,7 @@ Nu har du skapat en Key Vault, lagrat ett certifikat och hämtat det.
 
 Om du får det här felet har kontot som använder Azure Key Vault inte rätt behörighet för att skapa certifikat.
 
-Kör följande kommando Azure PowerShell för att tilldela rätt behörigheter:
+Kör följande Azure PowerShell för att tilldela rätt behörigheter:
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy -VaultName <KeyVaultName> -ObjectId <AzureObjectID> -PermissionsToCertificates get,list,update,create
@@ -85,4 +84,4 @@ I den här snabbstarten har du skapat Key Vault och lagrat ett certifikat i den.
 
 - Läs en [översikt över Azure Key Vault](../general/overview.md)
 - Se referensen för [Azure PowerShell Key Vault cmdlets](/powershell/module/az.keyvault/)
-- Granska Key Vault [säkerhetsöversikten](../general/security-overview.md)
+- Granska [Key Vault säkerhetsöversikten](../general/security-overview.md)

@@ -4,12 +4,12 @@ description: Skapa ett Azure-containerregister, konfigurera geo-replikering, fö
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 6abf1b7a524bc7dd28f1704a362749ac84de2389
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c5f5627462f016c857d956be46c276dda78e9b2b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97826079"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780667"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Självstudier: Förbereda ett geo-replikerat Azure Container Registry
 
@@ -37,29 +37,29 @@ Azure Cloud Shell inkluderar inte de Docker-komponenter som krävs för att slut
 
 ## <a name="create-a-container-registry"></a>Skapa ett containerregister
 
-I den här självstudien behöver du ett Azure Container Registry i Premium service-nivån. Följ stegen i det här avsnittet om du vill skapa ett nytt Azure Container Registry.
+För den här självstudien behöver du ett Azure-containerregister på Premium-tjänstnivån. Följ stegen i det här avsnittet om du vill skapa ett nytt Azure-containerregister.
 
 > [!TIP]
-> Om du tidigare har skapat ett register och behöver uppgradera, se [ändra nivåer](container-registry-skus.md#changing-tiers). 
+> Om du tidigare har skapat ett register och behöver uppgradera kan du [gå till Ändra nivåer.](container-registry-skus.md#changing-tiers) 
 
 Logga in på [Azure-portalen](https://portal.azure.com).
 
-Välj **skapa en resurs**  >  **behållare**  >  **Azure Container Registry**.
+Välj **Skapa en resurs**  >    >  **Containrar Azure Container Registry**.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Skapa ett containerregister i Azure-portalen":::
 
-Konfigurera det nya registret med följande inställningar. På fliken **grundläggande** :
+Konfigurera ditt nya register med följande inställningar. På **fliken Grundläggande** inställningar:
 
 * **Registernamn**: Skapa ett registernamn som är globalt unikt i Azure och som innehåller 5–50 alfanumeriska tecken
-* **Resurs grupp**: **Skapa ny** > `myResourceGroup`
+* **Resursgrupp:** **Skapa ny** > `myResourceGroup`
 * **Plats**: `West US`
-* **SKU**: `Premium` (krävs för geo-replikering)
+* **SKU:** `Premium` (krävs för geo-replikering)
 
-Välj **Granska + skapa** och sedan **skapa** för att skapa register instansen.
+Välj **Granska + skapa och** sedan Skapa **för** att skapa registerinstansen.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Konfigurera ett behållar register i Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Konfigurera ett containerregister i Azure Portal":::
 
-I resten av den här självstudien använder vi `<acrName>` som plats hållare för det behållar **register namn** som du har valt.
+I resten av den här självstudien använder `<acrName>` vi som platshållare för det **containerregisternamn** som du har valt.
 
 > [!TIP]
 > Eftersom Azure-containerregister vanligtvis är långlivade resurser som används av flera containervärdar rekommenderar vi att du skapar ditt register i en egen resursgrupp. När du konfigurerar georeplikerade register och webhooks placeras de här ytterligare resurserna i samma resursgrupp.
@@ -68,7 +68,7 @@ I resten av den här självstudien använder vi `<acrName>` som plats hållare f
 
 Nu när du har ett Premium-register kan du konfigurera geo-replikering. Din webbapp, som du konfigurerar i nästa självstudie för att köras i två regioner, kan då hämta sina containeravbildningar från det närmaste registret.
 
-Navigera till ditt nya behållar register i Azure Portal och välj **replikeringar** under **tjänster**:
+Gå till det nya containerregistret i Azure Portal och välj **Replikeringar** under **Tjänster:**
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikeringar i användargränssnittet i containerregister i Azure-portalen":::
 
@@ -85,20 +85,20 @@ När replikeringen är slutförd visar portalen *Klar* för båda regionerna. An
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Status för replikerings-UI i Azure-portalen":::
 
 
-## <a name="enable-admin-account"></a>Aktivera administratörs konto
+## <a name="enable-admin-account"></a>Aktivera administratörskonto
 
-I efterföljande självstudier distribuerar du en behållar avbildning från registret direkt till Web App for Containers. Om du vill aktivera den här funktionen måste du också aktivera registrets [administratörs konto](container-registry-authentication.md#admin-account).
+I efterföljande självstudier distribuerar du en containeravbildning från registret direkt till Web App for Containers. Om du vill aktivera den här funktionen måste du också aktivera registrets [administratörskonto](container-registry-authentication.md#admin-account).
 
-Navigera till ditt nya behållar register i Azure Portal och välj **åtkomst nycklar** under **Inställningar**. Under **Administratörsanvändare** väljer du **Aktivera**.
+Navigera till ditt nya containerregister i Azure Portal och välj **Åtkomstnycklar** under **Inställningar.** Under **Administratörsanvändare** väljer du **Aktivera**.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Aktivera administratörs kontot i Azure Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Aktivera administratörskonto i Azure Portal":::
 
 
 ## <a name="container-registry-login"></a>Logga in på containerregistret
 
-Nu när du har konfigurerat geo-replikering ska du skapa en containeravbildning och push-överföra den till registret. Du måste först logga in i registret innan du skickar avbildningar till det.
+Nu när du har konfigurerat geo-replikering ska du skapa en containeravbildning och push-överföra den till registret. Du måste först logga in i registret innan du push-pushar avbildningar till det.
 
-Använd kommandot [az acr login](/cli/azure/acr#az-acr-login) för att autentisera och cachelagra autentiseringsuppgifterna för registret. Byt ut `<acrName>` mot namnet på registret som du skapade tidigare.
+Använd kommandot [az acr login](/cli/azure/acr#az_acr_login) för att autentisera och cachelagra autentiseringsuppgifterna för registret. Byt ut `<acrName>` mot namnet på registret som du skapade tidigare.
 
 ```azurecli
 az acr login --name <acrName>
@@ -123,7 +123,7 @@ Om du inte har `git` installerat, kan du [hämta ZIP-arkivet][acr-helloworld-zip
 
 ## <a name="update-dockerfile"></a>Uppdatera Dockerfile
 
-Den Dockerfile som finns i exemplet visar hur containern är byggd. Den börjar från en officiell ASP.NET Core runtime-avbildning, kopierar programfilerna till behållaren, installerar beroenden, kompilerar utdata med den officiella .NET Core SDK avbildningen och skapar slutligen en optimerad aspnetcore-avbildning.
+Den Dockerfile som finns i exemplet visar hur containern är byggd. Den börjar från en officiell ASP.NET Core-körningsavbildning, kopierar programfilerna till containern, installerar beroenden, kompilerar utdata med den officiella .NET Core SDK-avbildningen och skapar slutligen en optimerad aspnetcore-avbildning.
 
 [Dockerfile][dockerfile] finns på `./AcrHelloworld/Dockerfile` i den klonade källan.
 

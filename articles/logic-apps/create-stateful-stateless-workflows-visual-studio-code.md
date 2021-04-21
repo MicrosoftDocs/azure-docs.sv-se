@@ -1,285 +1,285 @@
 ---
-title: Skapa Logic Apps för hands versioner av arbets flöden i Visual Studio Code
-description: Skapa och kör arbets flöden för Automation-och integrations scenarier i Visual Studio Code med tillägget Azure Logic Apps (för hands version).
+title: Skapa Logic Apps förhandsgranskningsarbetsflöden i Visual Studio Code
+description: Skapa och kör arbetsflöden för automatiserings- och integreringsscenarier i Visual Studio Code med Azure Logic Apps -tillägget (förhandsversion).
 services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm, az-logic-apps-dev
 ms.topic: conceptual
 ms.date: 03/30/2021
-ms.openlocfilehash: 491d5f14cc8f456d228a5bc6efaa6686575979c1
-ms.sourcegitcommit: 3ee3045f6106175e59d1bd279130f4933456d5ff
+ms.openlocfilehash: 4010f7e2d0d20216107a45109056478694c940ca
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106078748"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772513"
 ---
-# <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillstånds känsliga och tillstånds lösa arbets flöden i Visual Studio Code med tillägget Azure Logic Apps (förhands granskning)
+# <a name="create-stateful-and-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Skapa tillståndsfulla och tillståndslösa arbetsflöden i Visual Studio Code med Azure Logic Apps (förhandsversion)
 
 > [!IMPORTANT]
 > Den här funktionen är tillgänglig som en offentlig förhandsversion utan servicenivåavtal och rekommenderas inte för produktionsarbetsbelastningar. Vissa funktioner kanske inte stöds eller kan vara begränsade. Mer information finns i [Kompletterande villkor för användning av Microsoft Azure-förhandsversioner](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Med [Azure Logic Apps för hands](logic-apps-overview-preview.md)version kan du skapa Automation-och integrations lösningar mellan appar, data, moln tjänster och system genom att skapa och köra Logi Kap par som innehåller [ *tillstånds känsliga* och *tillstånds lösa* arbets flöden](logic-apps-overview-preview.md#stateful-stateless) i Visual Studio Code med hjälp av tillägget Azure Logic Apps (förhands granskning). Genom att använda den här nya typen av Logic-appar kan du skapa flera arbets flöden som drivs av den omdesignade Azure Logic Apps för hands versions körning, vilket ger portabilitet, bättre prestanda och flexibilitet för att distribuera och köra i olika värd miljöer, inte bara Azure, utan även Docker-behållare. Mer information om den nya typen av Logic-appar finns i [Översikt för Azure Logic Apps för hands version](logic-apps-overview-preview.md).
+Med [Azure Logic Apps Preview](logic-apps-overview-preview.md)kan du skapa automatiserings- och integreringslösningar för appar, data, molntjänster och system genom att skapa och köra logikappar som innehåller tillståndslösa och [  tillståndslösa  ](logic-apps-overview-preview.md#stateful-stateless) arbetsflöden i Visual Studio Code med hjälp av Azure Logic Apps-tillägget (förhandsversion). Med den här nya logikapptypen kan du skapa flera arbetsflöden som drivs av den omdesignade körningsmiljön för Azure Logic Apps Preview, som ger portabilitet, bättre prestanda och flexibilitet för distribution och körning i olika värdmiljöer, inte bara Azure, utan även Docker-containrar. Mer information om den nya logikapptypen finns i [Översikt för Azure Logic Apps förhandsversion.](logic-apps-overview-preview.md)
 
-![Skärm bild som visar Visual Studio Code, Logic app Project och Workflow.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
+![Skärmbild som visar Visual Studio kod, logikappsprojekt och arbetsflöde.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-logic-apps-overview.png)
 
-I Visual Studio Code kan du börja med att skapa ett projekt där du kan skapa och köra din Logic Apps-arbets flöden *lokalt* i utvecklings miljön med hjälp av tillägget Azure Logic Apps (för hands version). Även om du kan börja med att [skapa en ny resurs för logi Kap par **(förhands granskning)** i Azure Portal](create-stateful-stateless-workflows-azure-portal.md), ger båda metoderna möjlighet att distribuera och köra din Logi Kap par i samma typer av värd miljöer.
+I Visual Studio Code kan du börja med att skapa  ett projekt där du lokalt kan skapa och köra logikappens arbetsflöden i utvecklingsmiljön med hjälp av Azure Logic Apps-tillägget (förhandsversion). Du kan också börja med att skapa en ny logikappresurs [ **(förhandsversion)**](create-stateful-stateless-workflows-azure-portal.md)i Azure Portal, men båda metoderna ger dig möjlighet att distribuera och köra logikappen i samma typer av värdmiljöer.
 
-Under tiden kan du fortfarande skapa den ursprungliga typen av Logic-appar. Även om utvecklings upplevelser i Visual Studio Code skiljer sig mellan de ursprungliga och nya Logic Apps-typerna, kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade Logi Kap par i din Azure-prenumeration, men apparna organiseras i sina egna kategorier och avsnitt.
+Under tiden kan du fortfarande skapa den ursprungliga logikapptypen. Även om utvecklingsupplevelserna i Visual Studio Code skiljer sig mellan de ursprungliga och nya logikapptyperna kan din Azure-prenumeration innehålla båda typerna. Du kan visa och komma åt alla distribuerade logikappar i din Azure-prenumeration, men apparna är ordnade i egna kategorier och avsnitt.
 
-Den här artikeln visar hur du skapar din Logi Kap par och ett arbets flöde i Visual Studio Code genom att använda tillägget Azure Logic Apps (för hands version) och utföra följande uppgifter på hög nivå:
+Den här artikeln visar hur du skapar din logikapp och ett arbetsflöde i Visual Studio Code med hjälp av Azure Logic Apps-tillägget (förhandsversion) och utför dessa uppgifter på hög nivå:
 
-* Skapa ett projekt för din Logic app och ditt arbets flöde.
+* Skapa ett projekt för logikappen och arbetsflödet.
 
 * Lägg till en utlösare och en åtgärd.
 
-* Kör, testa, Felsök och granska körnings historik lokalt.
+* Kör, testa, felsök och granska körningshistoriken lokalt.
 
-* Hitta domän namns information för brand Väggs åtkomst.
+* Hitta domännamnsinformation för brandväggsåtkomst.
 
-* Distribuera till Azure, som innehåller alternativ för att aktivera Application Insights.
+* Distribuera till Azure, vilket innefattar att aktivera Application Insights.
 
-* Hantera din distribuerade Logic-app i Visual Studio Code och Azure Portal.
+* Hantera din distribuerade logikapp i Visual Studio Code och Azure Portal.
 
-* Aktivera körnings historik för tillstånds lösa arbets flöden.
+* Aktivera körningshistorik för tillståndslösa arbetsflöden.
 
-* Aktivera eller öppna Application Insights efter distribution.
+* Aktivera eller öppna Application Insights efter distributionen.
 
-* Distribuera till en Docker-behållare som du kan köra var som helst.
+* Distribuera till en Docker-container som du kan köra var som helst.
 
 > [!NOTE]
-> Om du vill ha mer information om aktuella kända problem granskar du [sidan Logic Apps offentliga kända problem i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+> Information om aktuella kända problem finns på sidan [Logic Apps offentliga förhandsversionen av kända problem i GitHub.](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 ### <a name="access-and-connectivity"></a>Åtkomst och anslutning
 
-* Åtkomst till Internet så att du kan hämta kraven, ansluta från Visual Studio Code till ditt Azure-konto och publicera från Visual Studio Code till Azure, en Docker-behållare eller en annan miljö.
+* Åtkomst till Internet så att du kan ladda ned kraven, ansluta från Visual Studio Code till ditt Azure-konto och publicera från Visual Studio Code till Azure, en Docker-container eller en annan miljö.
 
 * Ett Azure-konto och prenumeration. Om du inte har någon prenumeration kan du [registrera ett kostnadsfritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-* Om du vill bygga samma exempel på Logic-appen i den här artikeln behöver du ett Office 365 Outlook-e-postkonto som använder ett arbets-eller skol konto från Microsoft för att logga in.
+* Om du vill skapa samma exempellogikapp i den här artikeln behöver du ett Office 365 Outlook-e-postkonto som använder ett Microsoft-arbets- eller skolkonto för att logga in.
 
-  Om du väljer att använda en annan [e-postanslutning som stöds av Azure Logic Apps](/connectors/), till exempel Outlook.com eller [Gmail](../connectors/connectors-google-data-security-privacy-policy.md), kan du fortfarande följa exemplet och de allmänna övergripande stegen är desamma, men användar gränssnittet och alternativen kan variera på vissa sätt. Om du till exempel använder Outlook.com-anslutningsprogrammet använder du din personliga Microsoft-konto i stället för att logga in.
+  Om du väljer att använda en annan e-postanslutning som stöds av [Azure Logic Apps](/connectors/), till exempel Outlook.com eller [Gmail,](../connectors/connectors-google-data-security-privacy-policy.md)kan du fortfarande följa exemplet och de allmänna övergripande stegen är desamma, men användargränssnittet och alternativen kan variera på vissa sätt. Om du till exempel använder anslutningsappen för Outlook.com använder du din personliga Microsoft-konto för att logga in.
 
 <a name="storage-requirements"></a>
 
-### <a name="storage-requirements"></a>Lagrings krav
+### <a name="storage-requirements"></a>Lagringskrav
 
 #### <a name="windows"></a>Windows
 
-För att skapa och köra ditt Logic app-projekt lokalt i Visual Studio Code när du använder Windows, följer du dessa steg för att konfigurera Azure Storage emulatorn:
+Om du vill skapa och köra logikappsprojektet lokalt i Visual Studio Code när du använder Windows följer du dessa steg för att konfigurera Azure Storage emulatorn:
 
-1. Hämta och installera [Azure Storage Emulator 5,10](https://go.microsoft.com/fwlink/p/?linkid=717179).
+1. Ladda ned och [installera Azure Storage Emulator 5.10](https://go.microsoft.com/fwlink/p/?linkid=717179).
 
-1. Om du inte redan har en, måste du ha en lokal SQL DB-installation, till exempel den kostnads fria [SQL Server 2019 Express-versionen](https://go.microsoft.com/fwlink/p/?linkid=866658), så att emulatorn kan köras.
+1. Om du inte redan har en måste du ha en lokal SQL DB-installation, till exempel den [kostnadsfria versionen SQL Server 2019 Express Edition](https://go.microsoft.com/fwlink/p/?linkid=866658), så att emulatorn kan köras.
 
-   Mer information finns i [använda Azure Storage emulatorn för utveckling och testning](../storage/common/storage-use-emulator.md).
+   Mer information finns i Använda [Azure Storage för utveckling och testning.](../storage/common/storage-use-emulator.md)
 
-1. Innan du kan köra ditt projekt ska du kontrol lera att du startar emulatorn.
+1. Innan du kan köra projektet måste du starta emulatorn.
 
-   ![Skärm bild som visar Azure Storage-emulatorn som körs.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
+   ![Skärmbild som visar den Azure Storage emulatorn som körs.](./media/create-stateful-stateless-workflows-visual-studio-code/start-storage-emulator.png)
 
 #### <a name="macos-and-linux"></a>macOS och Linux
 
-Om du vill skapa och köra ditt Logic app-projekt lokalt i Visual Studio Code när du använder macOS eller Linux, följer du dessa steg för att skapa och konfigurera ett Azure Storage konto.
+Om du vill skapa och köra logikappsprojektet lokalt i Visual Studio Code när du använder macOS eller Linux följer du dessa steg för att skapa och konfigurera ett Azure Storage konto.
 
 > [!NOTE]
-> För närvarande fungerar inte designern i Visual Studio Code på Linux OS, men du kan fortfarande köra skapa, köra och distribuera Logi Kap par som använder Logic Apps för hands versions körning till Linux-baserade virtuella datorer. Nu kan du bygga dina Logi Kap par i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
+> Designern i Visual Studio Code fungerar för närvarande inte i Linux OS, men du kan fortfarande köra skapa, köra och distribuera logikappar som använder Logic Apps Preview-körningen till Linux-baserade virtuella datorer. För tillfället kan du skapa dina logikappar i Visual Studio Code på Windows eller macOS och sedan distribuera till en Linux-baserad virtuell dator.
 
-1. Logga in på [Azure Portal](https://portal.azure.com)och [skapa ett Azure Storage-konto](../storage/common/storage-account-create.md?tabs=azure-portal), vilket är ett [krav för Azure Functions](../azure-functions/storage-considerations.md).
+1. Logga in på [Azure Portal](https://portal.azure.com)och skapa [ett Azure Storage ,](../storage/common/storage-account-create.md?tabs=azure-portal)vilket är en förutsättning för att [Azure Functions](../azure-functions/storage-considerations.md).
 
-1. Välj **åtkomst nycklar** under **Inställningar** på menyn lagrings konto.
+1. På lagringskontots meny går du **till Inställningar** och väljer **Åtkomstnycklar.**
 
-1. I fönstret **åtkomst nycklar** letar du reda på och kopierar lagrings kontots anslutnings sträng, som ser ut ungefär som i det här exemplet:
+1. I fönstret **Åtkomstnycklar** letar du upp och kopierar lagringskontots anslutningssträng, som ser ut ungefär som i det här exemplet:
 
    `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
 
-   ![Skärm bild som visar Azure Portal med åtkomst nycklar för lagrings kontot och en anslutnings sträng som har kopierats.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+   ![Skärmbild som visar Azure Portal lagringskontots åtkomstnycklar och anslutningssträngen kopierade.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-   Mer information finns i [Hantera lagrings konto nycklar](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys).
+   Mer information finns i Hantera [lagringskontonycklar.](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)
 
-1. Spara anslutnings strängen någon annan stans. När du har skapat ditt Logic app-projekt i Visual Studio Code, måste du lägga till strängen i **local.settings.js** filen i ditt projekts rotmapp.
+1. Spara anslutningssträngen på en säker plats. När du har skapat logikappsprojektet i Visual Studio Code måste du lägga till strängen **ilocal.settings.jspå** filen i projektets rotnivåmapp.
 
    > [!IMPORTANT]
-   > Om du planerar att distribuera till en Docker-behållare, måste du också använda den här anslutnings strängen med Docker-filen som du använder för att distribuera. För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv.
+   > Om du planerar att distribuera till en Docker-container måste du också använda den här anslutningssträngen med den Docker-fil som du använder för distribution. I produktionsscenarier bör du skydda och skydda sådana hemligheter och känslig information, till exempel med hjälp av ett nyckelvalv.
   
 ### <a name="tools"></a>Verktyg
 
-* [Visual Studio Code 1.30.1 (januari 2019) eller högre](https://code.visualstudio.com/), som är kostnads fri. Hämta och installera även dessa verktyg för Visual Studio Code om du inte redan har dem:
+* [Visual Studio kod 1.30.1 (januari 2019)](https://code.visualstudio.com/)eller senare, vilket är kostnadsfritt. Ladda även ned och installera dessa verktyg för Visual Studio Code om du inte redan har dem:
 
-  * [Tillägg](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)för Azure-konto, som ger en enda gemensam Azure-inloggning och prenumerations filtrerings upplevelse för alla andra Azure-tillägg i Visual Studio Code.
+  * [Azure-kontotillägget](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account), som ger en gemensam filtreringsupplevelse för Azure-inloggning och -prenumerationer för alla andra Azure-tillägg i Visual Studio Code.
 
-  * [C# för kod tillägg för Visual Studio](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), som gör att F5-funktionen kan köra din Logic app.
+  * [C# för Visual Studio Code som](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)gör att F5-funktioner kan köra logikappen.
 
-  * [Azure Functions Core Tools 3.0.3245 eller senare](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3245) med hjälp av Microsoft Installer (MSI)-versionen, som är `func-cli-3.0.3245-x*.msi` .
+  * [Azure Functions Core Tools 3.0.3245](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3245) eller senare med hjälp av Microsoft Installer-versionen (MSI), som är `func-cli-3.0.3245-x*.msi` .
 
-    Dessa verktyg innehåller en version av samma körnings miljö som ger Azure Functions runtime, som används i Visual Studio Code.
-
-    > [!IMPORTANT]
-    > Om du har en tidigare installation än dessa versioner måste du först avinstallera den versionen eller kontrol lera att sökvägen till miljövariabeln pekar på den version som du hämtar och installerar.
-
-  * [Azure Logic Apps (för hands version)-tillägget för Visual Studio Code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Tillägget ger dig möjlighet att skapa Logi Kap par där du kan skapa tillstånds känsliga och tillstånds lösa arbets flöden som körs lokalt i Visual Studio Code och sedan distribuera dessa Logic Apps direkt till Azure eller till Docker-behållare.
-
-    För närvarande kan du ha både det ursprungliga Azure Logic Apps tillägget och det offentliga för hands versions tillägget installerat i Visual Studio Code. Även om utvecklings upplevelsen skiljer sig på några sätt mellan tilläggen, kan din Azure-prenumeration innehålla både typer av logiska appar som du skapar med tilläggen. Visual Studio Code visar alla distribuerade Logic Apps i din Azure-prenumeration, men ordnar dem i olika avsnitt efter tilläggs namn, **Logic Apps** och **Azure Logic Apps (förhands granskning)**.
+    Dessa verktyg innehåller en version av samma körning som driver Azure Functions runtime, som förhandsgranskningstillägget använder i Visual Studio Code.
 
     > [!IMPORTANT]
-    > Om du har skapat Logic Apps-projekt med det tidigare privata förhands gransknings tillägget fungerar inte dessa projekt med det offentliga för hands versions tillägget. Du kan dock migrera dessa projekt när du har avinstallerat tillägget för privat förhands granskning, tagit bort de associerade filerna och installerat det offentliga för hands versions tillägget. Sedan skapar du ett nytt projekt i Visual Studio Code och kopierar din tidigare skapade Logic Apps **. definitions** fil till det nya projektet. Mer information finns i [Migrera från det privata förhands gransknings tillägget](#migrate-private-preview).
+    > Om du har en installation som är tidigare än dessa versioner avinstallerar du den versionen först eller kontrollerar att miljövariabeln PATH pekar på den version som du laddar ned och installerar.
+
+  * [Azure Logic Apps (förhandsversion) för Visual Studio Code](https://go.microsoft.com/fwlink/p/?linkid=2143167). Det här tillägget ger dig möjlighet att skapa logikappar där du kan skapa tillståndslösa och tillståndslösa arbetsflöden som körs lokalt i Visual Studio Code och sedan distribuerar dessa logikappar direkt till Azure eller till Docker-containrar.
+
+    För närvarande kan du ha både det ursprungliga Azure Logic Apps tillägget och det allmänt tillgängliga förhandsversionstillägget installerat i Visual Studio Code. Även om utvecklingsupplevelserna skiljer sig åt på vissa sätt mellan tilläggen kan din Azure-prenumeration innehålla båda logikapptyperna som du skapar med tilläggen. Visual Studio Code visar alla distribuerade logikappar i din Azure-prenumeration, men ordnar dem i olika avsnitt efter tilläggsnamn, **Logic Apps** **och Azure Logic Apps (förhandsversion).**
+
+    > [!IMPORTANT]
+    > Om du har skapat logikappprojekt med det tidigare privata förhandsgranskningstillägget fungerar dessa projekt inte med tillägget för offentlig förhandsversion. Du kan dock migrera dessa projekt när du har avinstallerat det privata förhandsgranskningstillägget, tagit bort de associerade filerna och installerat tillägget för offentlig förhandsversion. Sedan skapar du ett nytt projekt i Visual Studio Code och kopierar logikappens **workflow.definition-fil** som du skapade tidigare till det nya projektet. Mer information finns i Migrera [från det privata förhandsgranskningstillägget](#migrate-private-preview).
     > 
-    > Om du har skapat Logic Apps-projekt med det tidigare offentliga för hands versions tillägget kan du fortsätta att använda dessa projekt utan att migrera några steg.
+    > Om du har skapat logikappprojekt med det tidigare offentliga förhandsversionstillägget kan du fortsätta att använda dessa projekt utan några migreringssteg.
 
-    **Följ dessa steg om du vill installera **Azure Logic Apps (för hands version)** -tillägget:**
+    **Följ dessa **steg Azure Logic Apps installera tillägget** för Azure Logic Apps (förhandsversion):**
 
-    1. Välj **tillägg** i Visual Studio Code i det vänstra verktygsfältet.
+    1. I Visual Studio Code går du till det vänstra verktygsfältet och väljer **Tillägg**.
 
-    1. I sökrutan tillägg anger du `azure logic apps preview` . Välj **Azure Logic Apps (för hands version)** i listan resultat **>** .
+    1. I sökrutan för tillägg anger du `azure logic apps preview` . I resultatlistan väljer du **Azure Logic Apps (förhandsversion)** **>** **Installera**.
 
-       När installationen är klar visas förhands gransknings tillägget i listan **tillägg: installerad** .
+       När installationen är klar visas förhandsgranskningstillägget i **listan Tillägg: Installerade.**
 
-       ![Skärm bild som visar Visual Studio Codes installerade tillägg-lista med tillägget "Azure Logic Apps (för hands version)" understruket.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
+       ![Skärmbild som visar Visual Studio Code-listan över installerade tillägg med tillägget "Azure Logic Apps (förhandsversion)" understruket.](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-extension-installed.png)
 
        > [!TIP]
-       > Om tillägget inte visas i den installerade listan kan du prova att starta om Visual Studio Code.
+       > Om tillägget inte visas i listan över installerade kan du prova att starta om Visual Studio Code.
 
-* Om du vill använda den [infogade kod åtgärder](../logic-apps/logic-apps-add-run-inline-code.md) som kör Java Script, installerar du [Node.js version 10. x, 11. x. x eller 12. x. x](https://nodejs.org/en/download/releases/).
+* Om du vill [använda åtgärden Inline Code Operations](../logic-apps/logic-apps-add-run-inline-code.md) som kör JavaScript installerar duNode.js [versionerna 10.x.x, 11.x.x eller 12.x.x.](https://nodejs.org/en/download/releases/)
 
   > [!TIP] 
-  > För Windows laddar du ned MSI-versionen. Om du använder ZIP-versionen i stället måste du manuellt göra Node.js tillgänglig med hjälp av en Sök VÄGS miljö variabel för ditt operativ system.
+  > För Windows laddar du ned MSI-versionen. Om du använder ZIP-versionen i stället måste du manuellt göra Node.js tillgänglig med hjälp av en PATH-miljövariabel för ditt operativsystem.
 
-* För att lokalt köra webhook-baserade utlösare och åtgärder, till exempel den [inbyggda HTTP-webhook-utlösaren](../connectors/connectors-native-webhook.md), i Visual Studio Code, måste du [Konfigurera vidarebefordran för återanrops-URL: en](#webhook-setup).
+* Om du vill köra webhook-baserade utlösare och åtgärder lokalt, till exempel den [inbyggda HTTP Webhook-utlösaren](../connectors/connectors-native-webhook.md)i Visual Studio Code, måste du konfigurera vidarebefordran för motringnings-URL:en . [](#webhook-setup)
 
-* Om du vill testa den exempel Logic-app som du skapar i den här artikeln behöver du ett verktyg som kan skicka anrop till utlösaren för begäran, vilket är det första steget i exempel Logic app. Om du inte har ett sådant verktyg kan du ladda ned, installera och använda [Postman](https://www.postman.com/downloads/).
+* Om du vill testa exempellogikappen som du skapar i den här artikeln behöver du ett verktyg som kan skicka anrop till begärandeutlösaren, vilket är det första steget i exempellogikappen. Om du inte har något sådant verktyg kan du ladda ned, installera och använda [Postman.](https://www.postman.com/downloads/)
 
-* Om du skapar din Logic app och distribuerar med inställningar som stöder användning av [Application Insights](../azure-monitor/app/app-insights-overview.md), kan du välja att aktivera diagnostikloggning och spårning för din Logic app. Du kan göra det antingen när du distribuerar din Logic app från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights instans, men du kan skapa den här resursen [i förväg](../azure-monitor/app/create-workspace-resource.md)när du distribuerar din Logic app eller efter distributionen.
+* Om du skapar din logikapp och distribuerar med inställningar som stöder [Application Insights](../azure-monitor/app/app-insights-overview.md)kan du även aktivera diagnostikloggning och spårning för logikappen. Du kan göra det antingen när du distribuerar logikappen från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights-instans, men du kan skapa den här resursen antingen i [förväg,](../azure-monitor/app/create-workspace-resource.md)när du distribuerar logikappen eller efter distributionen.
 
 <a name="migrate-private-preview"></a>
 
-## <a name="migrate-from-private-preview-extension"></a>Migrera från privat för hands versions tillägg
+## <a name="migrate-from-private-preview-extension"></a>Migrera från privat förhandsversionstillägg
 
-Alla Logic app-projekt som du skapade med tillägget **Azure Logic Apps (privat förhands granskning)** fungerar inte med det offentliga för hands versions tillägget. Du kan dock migrera dessa projekt till nya projekt genom att följa dessa steg:
+Alla logikappprojekt som du har skapat **med Azure Logic Apps -tillägget (privat förhandsversion)** fungerar inte med tillägget för offentlig förhandsversion. Du kan dock migrera dessa projekt till nya projekt genom att följa dessa steg:
 
-1. Avinstallera privat förhands gransknings tillägg.
+1. Avinstallera det privata förhandsgranskningstillägget.
 
-1. Ta bort alla associerade tilläggs paket och NuGet på följande platser:
+1. Ta bort eventuella associerade tilläggspaket och NuGet-paketmappar på följande platser:
 
-   * Mappen **Microsoft. Azure. functions. ExtensionBundle.** Workflows, som innehåller tidigare anknytnings paket och finns antingen i sökvägen här:
+   * Mappen **Microsoft.Azure.Functions.ExtensionBundle.Workflows,** som innehåller tidigare tilläggspaket och finns längs någon av sökvägarna här:
 
      * `C:\Users\{userName}\AppData\Local\Temp\Functions\ExtensionBundles`
 
      * `C:\Users\{userName}\.azure-functions-core-tools\Functions\ExtensionBundles`
 
-   * Mappen **Microsoft. Azure. Workflows. WebJobs. extension** , som är [NuGet](/nuget/what-is-nuget) -cache för det privata förhands gransknings tillägget och finns på den här sökvägen:
+   * Mappen **microsoft.azure.workflows.webjobs.extension,** som är [NuGet-cachen](/nuget/what-is-nuget) för det privata förhandsgranskningstillägget och finns längs den här sökvägen:
 
      `C:\Users\{userName}\.nuget\packages`
 
-1. Installera tillägget **Azure Logic Apps (förhands granskning)** .
+1. Installera **Azure Logic Apps (förhandsversion).**
 
 1. Skapa ett nytt projekt i Visual Studio Code.
 
-1. Kopiera din tidigare skapade Logic app- **arbetsflöde. definitions** fil till det nya projektet.
+1. Kopiera logikappens **workflow.definition-fil som du skapade** tidigare till det nya projektet.
 
 <a name="set-up"></a>
 
 ## <a name="set-up-visual-studio-code"></a>Konfigurera Visual Studio Code
 
-1. Kontrol lera att alla tillägg är korrekt installerade genom att läsa in eller starta om Visual Studio Code.
+1. Kontrollera att alla tillägg är korrekt installerade genom att läsa in eller starta om Visual Studio Code.
 
-1. Bekräfta att Visual Studio Code automatiskt hittar och installerar tilläggs uppdateringar så att ditt för hands versions tillägg får de senaste uppdateringarna. Annars måste du avinstallera den inaktuella versionen manuellt och installera den senaste versionen.
+1. Bekräfta att Visual Studio Code automatiskt hittar och installerar tilläggsuppdateringar så att ditt förhandsversionstillägg får de senaste uppdateringarna. Annars måste du avinstallera den inaktuella versionen manuellt och installera den senaste versionen.
 
-   1. På **Arkiv** -menyn går **du till inställningar** **>** **Inställningar**.
+   1. På **Arkiv-menyn** går du till **Inställningar** **>** **Inställningar.**
 
-   1. På fliken **användare** går du till **funktioner** **>** **tillägg**.
+   1. På fliken **Användare** går du till **Funktioner** **>** **Tillägg**.
 
-   1. Bekräfta att **automatisk kontroll av uppdateringar** och **Automatisk uppdatering** är markerat.
+   1. Kontrollera att **Automatisk kontroll av** uppdateringar och Automatisk **uppdatering** är markerade.
 
-Som standard är följande inställningar aktiverade och inställda för Logic Apps för hands versions tillägg:
+Som standard är följande inställningar också aktiverade och inställda för Logic Apps förhandsversionstillägget:
 
-* **Azure Logic Apps v2: Project runtime**, som är inställt på version **~ 3**
+* **Azure Logic Apps V2: Project Runtime**, som är inställd på version **~3**
 
   > [!NOTE]
-  > Den här versionen krävs för att använda de [infogade kod](../logic-apps/logic-apps-add-run-inline-code.md)åtgärderna.
+  > Den här versionen krävs för att använda [åtgärderna för infogade kodåtgärder.](../logic-apps/logic-apps-add-run-inline-code.md)
 
-* **Azure Logic Apps v2: experimentell visnings hanterare**, som aktiverar den senaste designern i Visual Studio Code. Om du får problem i designern, till exempel dra och släppa objekt, inaktiverar du den här inställningen.
+* **Azure Logic Apps V2: Experimental View Manager**, som aktiverar den senaste designern i Visual Studio Code. Om du får problem med designern, till exempel att dra och släppa objekt, inaktiverar du den här inställningen.
 
-Följ dessa steg om du vill söka efter och bekräfta de här inställningarna:
+Följ dessa steg för att hitta och bekräfta inställningarna:
 
-1. På **Arkiv** -menyn går **du till inställningar** **>** **Inställningar**.
+1. Gå till **Inställningar** på **Arkiv-menyn.** **>** 
 
-1. På fliken **användare** går du till **>** **tillägg** **>** **Azure Logic Apps (för hands version)**.
+1. På fliken **Användare** går du till **>** **Tillägg Azure Logic Apps** **>** **(förhandsversion).**
 
-   Du kan till exempel hitta **Azure Logic Apps v2: projekt körnings** inställningen här eller använda sökrutan för att hitta andra inställningar:
+   Du kan till exempel hitta inställningen **Azure Logic Apps V2: Project Runtime** här eller använda sökrutan för att hitta andra inställningar:
 
-   ![Skärm bild som visar tillägg för Visual Studio-kod för tillägget Azure Logic Apps (för hands version).](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
+   ![Skärmbild som visar Visual Studio kodinställningar för tillägget "Azure Logic Apps (förhandsversion)".](./media/create-stateful-stateless-workflows-visual-studio-code/azure-logic-apps-preview-settings.png)
 
 <a name="connect-azure-account"></a>
 
 ## <a name="connect-to-your-azure-account"></a>Anslut till ditt Azure-konto
 
-1. Välj Azure-ikonen i aktivitets fältet i Visual Studio Code.
+1. På Visual Studio Code Activity Bar (Kodaktivitetsfält) väljer du Azure-ikonen.
 
-   ![Skärm bild som visar aktivitets fältet i Visual Studio Code och den valda Azure-ikonen.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
+   ![Skärmbild som visar Visual Studio Code Activity Bar (Kodaktivitetsfält) och vald Azure-ikon.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-azure-icon.png)
 
-1. I fönstret Azure under **Azure: Logic Apps (för hands version)** väljer **du logga in på Azure**. När sidan Visual Studio Code Authentication visas loggar du in med ditt Azure-konto.
+1. I Azure-fönstret, under **Azure: Logic Apps (förhandsversion)** väljer **du Logga in på Azure**. När sidan Visual Studio Code-autentisering visas loggar du in med ditt Azure-konto.
 
-   ![Skärm bild som visar Azure-fönstret och den valda länken för Azure-inloggning.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
+   ![Skärmbild som visar Azure-fönstret och den valda länken för Azure-inloggning.](./media/create-stateful-stateless-workflows-visual-studio-code/sign-in-azure-subscription.png)
 
-   När du har loggat in visar Azure-fönstret prenumerationerna på ditt Azure-konto. Om du också har det offentligt utgivna tillägget kan du hitta alla Logi Kap par som du har skapat med tillägget i avsnittet **Logic Apps** , inte avsnittet **Logic Apps (för hands version)** .
+   När du har loggat in visar Azure-fönstret prenumerationerna i ditt Azure-konto. Om du även har det offentligt utgivna tillägget hittar du alla logikappar som du har skapat med tillägget i **avsnittet Logic Apps,** inte **avsnittet Logic Apps (förhandsversion).**
    
-   Om de förväntade prenumerationerna inte visas, eller om du vill att fönstret endast ska visa vissa prenumerationer, följer du dessa steg:
+   Om de förväntade prenumerationerna inte visas, eller om du vill att fönstret endast ska visa specifika prenumerationer, följer du dessa steg:
 
-   1. I listan prenumerationer flyttar du pekaren bredvid den första prenumerationen tills knappen **Välj prenumerationer** (filter ikon) visas. Välj filter ikonen.
+   1. I prenumerationslistan flyttar du pekaren bredvid den första prenumerationen tills **knappen Välj** prenumerationer (filterikonen) visas. Välj filterikonen.
 
-      ![Skärm bild som visar Azure-fönstret och den valda filter ikonen.](./media/create-stateful-stateless-workflows-visual-studio-code/filter-subscription-list.png)
+      ![Skärmbild som visar Azure-fönstret och den valda filterikonen.](./media/create-stateful-stateless-workflows-visual-studio-code/filter-subscription-list.png)
 
-      Alternativt väljer du ditt Azure-konto i statusfältet i Visual Studio Code. 
+      Eller välj ditt Azure-Visual Studio i statusfältet kod. 
 
-   1. När en annan prenumerations lista visas väljer du de prenumerationer som du vill använda och kontrollerar sedan att du väljer **OK**.
+   1. När en annan prenumerationslista visas väljer du de prenumerationer som du vill ha och kontrollerar sedan att du väljer **OK.**
 
 <a name="create-project"></a>
 
 ## <a name="create-a-local-project"></a>Skapa ett lokalt projekt
 
-Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan hantera, köra och distribuera din Logic app från Visual Studio Code. Det underliggande projektet liknar ett Azure Functions projekt, även kallat ett Function Apps-projekt. Dessa projekt typer skiljer sig dock från varandra, så Logic Apps och Function-appar kan inte finnas i samma projekt.
+Innan du kan skapa logikappen måste du skapa ett lokalt projekt så att du kan hantera, köra och distribuera logikappen från Visual Studio Code. Det underliggande projektet liknar ett Azure Functions projekt, även kallat ett funktionsappsprojekt. Dessa projekttyper är dock separata från varandra, så logikappar och funktionsappar kan inte finnas i samma projekt.
 
-1. På din dator skapar du en *Tom* lokal mapp som ska användas för projektet som du senare skapar i Visual Studio Code.
+1. På datorn skapar du en *tom lokal* mapp som ska användas för projektet som du senare skapar i Visual Studio Code.
 
-1. Stäng alla öppna mappar i Visual Studio Code.
+1. I Visual Studio Code stänger du alla öppna mappar.
 
-1. I Azure-fönstret, bredvid **Azure: Logic Apps (för hands version)** väljer du **Skapa nytt projekt** (ikon som visar en mapp och blixt).
+1. I Azure-fönstret bredvid **Azure: Logic Apps (förhandsversion)** väljer du **Skapa** nytt projekt (ikon som visar en mapp och blixt).
 
-   ![Skärm bild som visar verktygsfältet i Azure-fönstret med alternativet "Skapa nytt projekt" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/create-new-project-folder.png)
+   ![Skärmbild som visar verktygsfältet i Azure-fönstret med "Skapa nytt projekt" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/create-new-project-folder.png)
 
-1. Om Windows Defender-brandväggen uppmanas att bevilja nätverks åtkomst för `Code.exe` , som är Visual Studio Code och för `func.exe` , som är Azure Functions Core tools, väljer du **privata nätverk, till exempel mitt hem-eller arbets nätverk** **>** .
+1. Om Windows Defender-brandväggen uppmanar dig att bevilja nätverksåtkomst för , vilket är Visual Studio Code och för , som är Azure Functions Core Tools, väljer du `Code.exe` `func.exe` Privata **nätverk,** till exempel mitt hem- eller arbetsnätverk **>** **Tillåt åtkomst**.
 
-1. Bläddra till den plats där du skapade projektmappen, Välj mappen och fortsätt.
+1. Bläddra till den plats där du skapade projektmappen, välj mappen och fortsätt.
 
-   ![Skärm bild som visar dialog rutan Välj mapp med en nyligen skapad projektmapp och knappen Välj markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-folder.png)
+   ![Skärmbild som visar dialogrutan Välj mapp med en nyligen skapad projektmapp och knappen "Välj" markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/select-project-folder.png)
 
-1. Välj antingen **tillstånds känsligt arbets flöde** eller **arbets flöde för tillstånds lösa** i listan mallar som visas. I det här exemplet väljs **tillstånds känsligt arbets flöde**.
+1. I listan med mallar som visas väljer du antingen **Tillståndsful Workflow (Tillståndsful Workflow)** **eller Stateless Workflow (Tillståndslöst arbetsflöde).** I det här exemplet väljer **du Tillståndsful Workflow**.
 
-   ![Skärm bild som visar listan över arbetsflödesmallar med "tillstånds känsligt arbets flöde" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
+   ![Skärmbild som visar listan med arbetsflödesmallar med "Tillståndsful Workflow" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-stateful-stateless-workflow.png)
 
-1. Ange ett namn för arbets flödet och tryck på RETUR. I det här exemplet används `Fabrikam-Stateful-Workflow` som namn.
+1. Ange ett namn för arbetsflödet och tryck på Retur. I det här exemplet `Fabrikam-Stateful-Workflow` används som namn.
 
-   ![Skärm bild som visar rutan "Skapa nytt tillstånds känsligt arbets flöde (3/4)" och "Fabrikam-Stateable-Workflow" som arbets flödes namn.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
+   ![Skärmbild som visar rutan "Skapa nytt tillståndslöst arbetsflöde (3/4)" och "Fabrikam-Stateful-Workflow" som arbetsflödesnamn.](./media/create-stateful-stateless-workflows-visual-studio-code/name-your-workflow.png)
 
-   Visual Studio Code Slutför skapandet av ditt projekt och öppnar **workflow.js** filen för ditt arbets flöde i kod redigeraren.
+   Visual Studio Code har skapat projektet och öppnar **filenworkflow.jsför** arbetsflödet i kodredigeraren.
 
    > [!NOTE]
-   > Om du uppmanas att välja hur du vill öppna projektet väljer du **Öppna i aktuellt fönster** om du vill öppna projektet i det aktuella Visual Studio Code-fönstret. Om du vill öppna en ny instans för Visual Studio Code väljer du **Öppna i nytt fönster**.
+   > Om du uppmanas att välja hur projektet ska öppnas väljer du **Öppna** i det aktuella fönstret om du vill öppna projektet i det Visual Studio kodfönstret. Om du vill öppna en ny instans Visual Studio Code väljer du **Öppna i nytt fönster.**
 
-1. Öppna fönstret Utforskaren i verktygsfältet i Visual Studio, om det inte redan är öppet.
+1. Från verktygsfältet Visual Studio du Explorer-fönstret, om det inte redan är öppet.
 
-   Explorer-fönstret visar projektet, som nu innehåller automatiskt genererade projektfiler. Projektet har till exempel en mapp som visar ditt arbets flödes namn. I den här mappen innehåller **workflow.jsfilen i** arbets flödets underliggande JSON-definition.
+   Explorer-fönstret visar projektet, som nu innehåller automatiskt genererade projektfiler. Projektet har till exempel en mapp som visar arbetsflödets namn. I den här mappen **innehållerworkflow.jspå** filen arbetsflödets underliggande JSON-definition.
 
-   ![Skärm bild som visar Explorer-fönstret med projektmappen, arbetsflödes mapp och "workflow.jspå"-filen.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
+   ![Skärmbild som visar Explorer-fönstret med projektmapp, arbetsflödesmapp och "workflow.jspå"-fil.](./media/create-stateful-stateless-workflows-visual-studio-code/local-project-created.png)
 
-1. Om du använder macOS eller Linux kan du konfigurera åtkomst till ditt lagrings konto genom att följa dessa steg, som krävs för att lokalt köra ditt projekt:
+1. Om du använder macOS eller Linux ställer du in åtkomst till ditt lagringskonto genom att följa dessa steg, som krävs för att köra projektet lokalt:
 
-   1. Öppna den **local.settings.js** filen i ditt projekts rotmapp.
+   1. I projektets rotmapp öppnar du filen **local.settings.jsfilen.**
 
-      ![Skärm bild som visar Explorer-fönstret och local.settings.jspå-filen i projektet.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
+      ![Skärmbild som visar Explorer-fönstret och "local.settings.json"-filen i projektet.](./media/create-stateful-stateless-workflows-visual-studio-code/local-settings-json-files.png)
 
-   1. Ersätt `AzureWebJobsStorage` egenskap svärdet med lagrings kontots anslutnings sträng som du sparade tidigare, till exempel:
+   1. Ersätt `AzureWebJobsStorage` egenskapsvärdet med lagringskontots anslutningssträng som du sparade tidigare, till exempel:
 
       Innan:
 
@@ -306,38 +306,38 @@ Innan du kan skapa din Logi Kap par skapar du ett lokalt projekt så att du kan 
       ```
 
       > [!IMPORTANT]
-      > För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv.
+      > I produktionsscenarier bör du skydda och skydda sådana hemligheter och känslig information, till exempel med hjälp av ett nyckelvalv.
 
-   1. När du är klar kontrollerar du att du sparar ändringarna.
+   1. När du är klar ser du till att spara ändringarna.
 
 <a name="enable-built-in-connector-authoring"></a>
 
-## <a name="enable-built-in-connector-authoring"></a>Aktivera inbyggd koppling av koppling
+## <a name="enable-built-in-connector-authoring"></a>Aktivera redigering av inbyggd anslutningsapp
 
-Du kan skapa egna inbyggda anslutningar för alla tjänster du behöver med hjälp av för [hands versions ramverket för för hands versionen](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På samma sätt som för inbyggda anslutnings program, till exempel Azure Service Bus och SQL Server, ger dessa anslutningar högre data flöde, låg latens, lokal anslutning och körs internt i samma process som för hands versions körningen.
+Du kan skapa egna inbyggda anslutningsappar för alla tjänster du behöver med hjälp av [förhandsversionens utökningsramverk](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272). På samma sätt som inbyggda anslutningsappar som Azure Service Bus och SQL Server ger dessa anslutningsappar högre dataflöde, låg svarstid, lokal anslutning och körs inbyggt i samma process som förhandsgranskningskörningen.
 
-Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio Code, men är inte aktive rad som standard. Om du vill skapa de här kopplingarna måste du först konvertera ditt projekt från Extension-paketbaserade (Node.js) till NuGet-paket-baserad (.NET).
+Redigeringsfunktionerna är för närvarande endast tillgängliga i Visual Studio Code, men är inte aktiverat som standard. För att skapa de här anslutningsapparna måste du först konvertera projektet från tilläggssamlingsbaserad (Node.js) till NuGet-paketbaserad (.NET).
 
 > [!IMPORTANT]
-> Den här åtgärden är en enkelriktad åtgärd som du inte kan ångra.
+> Den här åtgärden är en envägsåtgärd som du inte kan ångra.
 
-1. I fönstret Utforskaren, i projektets rot, flyttar du mus pekaren över ett tomt utrymme under alla andra filer och mappar, öppnar snabb menyn och väljer **konvertera till NuGet-baserat Logic app-projekt**.
+1. I explorer-fönstret i projektets rot flyttar du muspekaren över ett tomt område under alla andra filer och mappar, öppnar snabbmenyn och väljer Konvertera till **Nuget-baserat logikappsprojekt.**
 
-   ![Skärm bild som visar fönstret Utforskaren med projektets snabb meny som öppnas från ett tomt utrymme i projekt fönstret.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
+   ![Skärmbild som visar Explorer-fönstret med projektets snabbmeny öppen från ett tomt område i projektfönstret.](./media/create-stateful-stateless-workflows-visual-studio-code/convert-logic-app-project.png)
 
-1. När meddelandet visas bekräftar du projekt konverteringen.
+1. När frågan visas bekräftar du projektkonverteringen.
 
-1. Fortsätt genom att granska och följa stegen i artikeln, [Azure Logic Apps som körs var som helst – inbyggd anslutnings barhet](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272).
+1. Om du vill fortsätta granskar du och följer stegen i artikeln Azure Logic Apps Running Anywhere - Built-in connector extensibility ( Kör [överallt – inbyggd anslutningsapps utökningsbarhet).](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-built-in-connector/ba-p/1921272)
 
 <a name="open-workflow-definition-designer"></a>
 
-## <a name="open-the-workflow-definition-file-in-the-designer"></a>Öppna arbets flödets definitions fil i designern
+## <a name="open-the-workflow-definition-file-in-the-designer"></a>Öppna definitionsfilen för arbetsflödet i designern
 
-1. Kontrol lera de versioner som är installerade på datorn genom att köra det här kommandot:
+1. Kontrollera vilka versioner som är installerade på datorn genom att köra det här kommandot:
 
    `..\Users\{yourUserName}\dotnet --list-sdks`
 
-   Om du har .NET Core SDK 5. x kan den här versionen förhindra att du öppnar logik appens underliggande arbets flödes definition i designern. I stället för att avinstallera den här versionen går du till projektets rotmapp och skapar en **global.jspå** en fil som refererar till .net Core runtime 3. x-versionen som är senare än 3.1.201, till exempel:
+   Om du har .NET Core SDK 5.x kan den här versionen hindra dig från att öppna logikappens underliggande arbetsflödesdefinition i designern. I stället för att avinstallera den här versionen skapar du i projektets rotmapp en **global.jspå-fil** som refererar till den .NET Core runtime 3.x-version som du har som är senare än 3.1.201, till exempel:
 
    ```json
    {
@@ -349,185 +349,185 @@ Redigerings funktionen är för närvarande endast tillgänglig i Visual Studio 
    ```
 
    > [!IMPORTANT]
-   > Se till att du uttryckligen lägger till **global.jspå** filen i projektets rotmapp från Visual Studio Code. Annars öppnas inte designern.
+   > Se till att du uttryckligenglobal.js **på** filen i projektets rotmapp inifrån Visual Studio Code. Annars öppnas inte designern.
 
-1. Expandera projektmappen för arbets flödet. Öppna snabb menyn **workflow.jspå** filen och välj **Öppna i designern**.
+1. Expandera projektmappen för arbetsflödet. Öppnaworkflow.js **på** filens snabbmeny och välj **Öppna i Designer.**
 
-   ![Skärm bild som visar Explorer-fönstret och gen vägs fönstret för workflow.jspå filen med alternativet öppna i designer valt.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
+   ![Skärmbild som visar Explorer-fönstret och genvägsfönstret för workflow.jspå filen med "Öppna i Designer" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/open-definition-file-in-designer.png)
 
-1. I listan **aktivera anslutningar i Azure** väljer du **Använd anslutningar från Azure**, som gäller för alla hanterade anslutningar som är tillgängliga och distribuerade i Azure, inte bara anslutningar för Azure-tjänster.
+1. I listan **Aktivera anslutningsappar** i Azure väljer du Använd anslutningsappar från **Azure**, som gäller för alla hanterade anslutningsappar som är tillgängliga och distribuerade i Azure, inte bara anslutningsappar för Azure-tjänster.
 
-   ![Skärm bild som visar Explorer-fönstret med alternativet "aktivera anslutningar i Azure" och "Använd anslutningar från Azure" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
-
-   > [!NOTE]
-   > Tillstånds lösa arbets flöden stöder för närvarande endast *åtgärder* för [hanterade anslutningar](../connectors/apis-list.md#managed-api-connectors), som distribueras i Azure och inte utlösare. Även om du har möjlighet att aktivera anslutningar i Azure för ditt tillstånds lösa arbets flöde, visar inte designern några hanterade kopplings utlösare som du kan välja.
-
-1. I listan **Välj prenumeration** väljer du den Azure-prenumeration som ska användas för ditt Logic Apps-projekt.
-
-   ![Skärm bild som visar Explorer-fönstret med rutan "Välj prenumeration" och din prenumeration har valts.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-subscription.png)
-
-1. I listan resurs grupper väljer du **Skapa ny resurs grupp**.
-
-   ![Skärm bild som visar fönstret Utforskaren med listan resurs grupper och "Skapa ny resurs grupp" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
-
-1. Ange ett namn för resurs gruppen och tryck på RETUR. I det här exemplet används `Fabrikam-Workflows-RG`.
-
-   ![Skärm bild som visar Explorer-fönstret och namn rutan för resurs gruppen.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
-
-1. I listan platser söker du efter och väljer den Azure-region som du vill använda när du skapar resurs gruppen och resurserna. I det här exemplet används **västra centrala USA**.
-
-   ![Skärm bild som visar Explorer-fönstret med plats listan och "västra centrala USA" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
-
-   När du har gjort det här steget öppnas arbetsflödesdesignern i Visual Studio Code.
+   ![Skärmbild som visar Explorer-fönstret med listan "Aktivera anslutningsappar i Azure" öppen och "Använd anslutningsappar från Azure" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/use-connectors-from-azure.png)
 
    > [!NOTE]
-   > När Visual Studio Code startar API för arbets flödets design tid kan det hända att du får ett meddelande om att starten kan ta några sekunder. Du kan ignorera det här meddelandet eller välja **OK**.
+   > Tillståndslösa arbetsflöden stöder för närvarande *endast* åtgärder [för hanterade anslutningsappar](../connectors/managed.md), som distribueras i Azure och inte utlösare. Även om du har möjlighet att aktivera anslutningsappar i Azure för ditt tillståndslösa arbetsflöde, visar inte designern några hanterade anslutningsutlösare som du kan välja.
+
+1. I listan **Välj prenumeration** väljer du den Azure-prenumeration som ska användas för logikappsprojektet.
+
+   ![Skärmbild som visar Explorer-fönstret med rutan "Välj prenumeration" och din prenumeration vald.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-subscription.png)
+
+1. I listan med resursgrupper väljer du **Skapa ny resursgrupp.**
+
+   ![Skärmbild som visar Explorer-fönstret med listan över resursgrupper och "Skapa ny resursgrupp" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/create-select-resource-group.png)
+
+1. Ange ett namn för resursgruppen och tryck på Retur. I det här exemplet används `Fabrikam-Workflows-RG`.
+
+   ![Skärmbild som visar fönstret Utforskaren och rutan resursgruppnamn.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-name-for-resource-group.png)
+
+1. I listan över platser hittar och väljer du den Azure-region som ska användas när du skapar din resursgrupp och dina resurser. I det här exemplet **används USA, västra centrala.**
+
+   ![Skärmbild som visar Explorer-fönstret med platslistan och "USA, västra centrala" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-azure-region.png)
+
+   När du har utför det här Visual Studio Code arbetsflödesdesignern.
+
+   > [!NOTE]
+   > När Visual Studio Code startar API:et för designtid för arbetsflödet kan du få ett meddelande om att starten kan ta några sekunder. Du kan ignorera det här meddelandet eller välja **OK.**
    >
-   > Om designern inte öppnas går du igenom fel söknings avsnittet. det [går inte att öppna designern](#designer-fails-to-open).
+   > Om designern inte öppnas kan du läsa felsökningsavsnittet. [Designern kan inte öppna](#designer-fails-to-open).
 
-   När designern visas visas **åtgärden Välj en åtgärd** i designern och är markerad som standard, vilket visar fönstret **Lägg till en åtgärd** .
+   När designern visas visas **uppmaningen Välj** en åtgärd i designern och är markerad som standard, vilket visar **fönstret Lägg till en** åtgärd.
 
-   ![Skärm bild som visar Workflow Designer.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
+   ![Skärmbild som visar arbetsflödesdesignern.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-designer.png)
 
-1. Lägg sedan [till en utlösare och åtgärder](#add-trigger-actions) i arbets flödet.
+1. Lägg sedan [till en utlösare och åtgärder](#add-trigger-actions) i arbetsflödet.
 
 <a name="add-trigger-actions"></a>
 
-## <a name="add-a-trigger-and-actions"></a>Lägg till en utlösare och åtgärder
+## <a name="add-a-trigger-and-actions"></a>Lägga till en utlösare och åtgärder
 
-När du har öppnat designern visas **åtgärden Välj en åtgärd** i designern och är markerad som standard. Nu kan du börja skapa arbets flödet genom att lägga till en utlösare och åtgärder.
+När du har öppnat designern **visas prompten Välj** en åtgärd i designern och är markerad som standard. Nu kan du börja skapa arbetsflödet genom att lägga till en utlösare och åtgärder.
 
-Arbets flödet i det här exemplet använder utlösaren och följande åtgärder:
+Arbetsflödet i det här exemplet använder den här utlösaren och följande åtgärder:
 
-* Den inbyggda [begär ande utlösaren](../connectors/connectors-native-reqres.md), **när en http-begäran tas emot**, som tar emot inkommande samtal eller begär Anden och skapar en slut punkt som andra tjänster eller Logi Kap par kan anropa.
+* Den inbyggda [begärandeutlösaren](../connectors/connectors-native-reqres.md), , när en **HTTP-begäran** tas emot , som tar emot inkommande anrop eller begäranden och skapar en slutpunkt som andra tjänster eller logikappar kan anropa.
 
-* [Office 365 Outlook-åtgärd](../connectors/connectors-create-api-office365-outlook.md), **Skicka ett e-postmeddelande**.
+* Office [365 Outlook-åtgärden ,](../connectors/connectors-create-api-office365-outlook.md)Skicka **ett e-postmeddelande**.
 
-* Den inbyggda [svars åtgärden](../connectors/connectors-native-reqres.md)som du använder för att skicka ett svar och returnera data tillbaka till anroparen.
+* Den inbyggda [svarsåtgärden](../connectors/connectors-native-reqres.md), som du använder för att skicka ett svar och returnera data tillbaka till anroparen.
 
-### <a name="add-the-request-trigger"></a>Lägg till begär ande utlösare
+### <a name="add-the-request-trigger"></a>Lägg till begärandeutlösaren
 
-1. Bredvid designern, i rutan **Lägg till utlösare** , under Sök i rutan **Välj en åtgärd** , kontrollerar du att **inbyggda** är markerat så att du kan välja en utlösare som körs internt.
+1. Bredvid designern i  fönstret Lägg till en  utlösare under sökrutan Välj en åtgärd kontrollerar du att Inbyggd är **markerad** så att du kan välja en utlösare som körs inbyggt.
 
-1. I sökrutan **Välj en åtgärd** anger `when a http request` du och väljer den inbyggda begär ande utlösaren som är namngiven **när en http-begäran tas emot**.
+1. I **sökrutan Välj en** åtgärd anger du och väljer den inbyggda begärandeutlösaren med namnet `when a http request` När en **HTTP-begäran tas emot.**
 
-   ![Skärm bild som visar arbets flödes utformaren och * * Lägg till en utlösare * * fönstret med alternativet "när en HTTP-förfrågan tas emot" är valt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
+   ![Skärmbild som visar arbetsflödesdesignern och fönstret **Lägg till en utlösare** med utlösaren "När en HTTP-begäran tas emot" markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/add-request-trigger.png)
 
-   När utlösaren visas i designern öppnas utlösarens informations fönster för att Visa utlösarens egenskaper, inställningar och andra åtgärder.
+   När utlösaren visas i designern öppnas utlösarens informationsfönster för att visa utlösarens egenskaper, inställningar och andra åtgärder.
 
-   ![Skärm bild som visar arbets flödes utformaren med alternativet "när en HTTP-begäran tas emot" utlösare vald och utlösnings information öppen.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
-
-   > [!TIP]
-   > Om informations fönstret inte visas ser du till att utlösaren är markerad i designern.
-
-1. Om du behöver ta bort ett objekt från designern [följer du stegen nedan för att ta bort objekt från designern](#delete-from-designer).
-
-### <a name="add-the-office-365-outlook-action"></a>Lägg till åtgärden Office 365 Outlook
-
-1. Välj **nytt steg** under den utlösare som du har lagt till i designern.
-
-   Frågan **Välj en åtgärd** visas i designern och fönstret **Lägg till en åtgärd** öppnas så att du kan välja nästa åtgärd.
-
-1. I fönstret **Lägg till en åtgärd** går du till rutan **Välj en åtgärd** och väljer **Azure** så att du kan hitta och välja en åtgärd för en hanterad koppling som distribueras i Azure.
-
-   Det här exemplet väljer och använder åtgärden Office 365 Outlook, **Skicka ett e-postmeddelande (v2)**.
-
-   ![Skärm bild som visar arbets flödes design och * * Lägg till åtgärd * * fönstret med Office 365 Outlook "Skicka ett e-postmeddelande" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
-
-1. I åtgärdens informations fönster väljer du **Logga** in så att du kan skapa en anslutning till ditt e-postkonto.
-
-   ![Skärm bild som visar arbets flödes design och * * skicka ett e-postmeddelande (v2) * * fönstret med "logga in" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
-
-1. När Visual Studio Code efterfrågar dig att du får åtkomst till ditt e-postkonto väljer du **Öppna**.
-
-   ![Skärm bild som visar Visual Studio Code-prompten för att tillåta åtkomst.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-open-external-website.png)
+   ![Skärmbild som visar arbetsflödesdesignern med utlösaren "När en HTTP-begäran tas emot" markerad och fönstret med utlösarinformation är öppet.](./media/create-stateful-stateless-workflows-visual-studio-code/request-trigger-added-to-designer.png)
 
    > [!TIP]
-   > Om du vill förhindra framtida prompter väljer du **Konfigurera betrodda domäner** så att du kan lägga till sidan autentisering som en betrodd domän.
+   > Om informationsfönstret inte visas kontrollerar du att utlösaren är markerad i designern.
+
+1. Om du behöver ta bort ett objekt från designern följer du [dessa steg för att ta bort objekt från designern](#delete-from-designer).
+
+### <a name="add-the-office-365-outlook-action"></a>Lägga till åtgärden Office 365 Outlook
+
+1. Välj Nytt steg under utlösaren som du lade till **i designern.**
+
+   Uppmaningen **Välj en** åtgärd visas i designern och fönstret **Lägg** till en åtgärd öppnas igen så att du kan välja nästa åtgärd.
+
+1. I fönstret **Lägg till** en  åtgärd går du till sökrutan Välj en åtgärd och väljer **Azure** så att du kan hitta och välja en åtgärd för en hanterad anslutningsapp som har distribuerats i Azure.
+
+   Det här exemplet väljer och använder Åtgärden Office 365 Outlook, **Skicka ett e-postmeddelande (V2).**
+
+   ![Skärmbild som visar arbetsflödesdesignern och fönstret **Lägg till en åtgärd** med office 365 Outlook-åtgärden "Skicka ett e-postmeddelande" markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/add-send-email-action.png)
+
+1. I åtgärdens informationsfönster väljer du Logga **in så** att du kan skapa en anslutning till ditt e-postkonto.
+
+   ![Skärmbild som visar arbetsflödesdesignern och fönstret **Skicka ett e-postmeddelande (V2)** med "Logga in" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-sign-in.png)
+
+1. När Visual Studio Code uppmanar dig att ge ditt e-postkonto tillstånd väljer du **Öppna.**
+
+   ![Skärmbild som visar Visual Studio code-kommandotolken för att tillåta åtkomst.](./media/create-stateful-stateless-workflows-visual-studio-code/visual-studio-code-open-external-website.png)
+
+   > [!TIP]
+   > Om du vill förhindra framtida uppmaningar väljer **du Konfigurera betrodda** domäner så att du kan lägga till autentiseringssidan som en betrodd domän.
 
 1. Följ de efterföljande anvisningarna för att logga in, tillåta åtkomst och tillåta att du återgår till Visual Studio Code.
 
    > [!NOTE]
-   > Om tiden är för lång tid innan du slutför prompterna går det att göra en timeout och Miss lyckas med autentiseringsprocessen. I det här fallet går du tillbaka till designern och försöker logga in igen för att skapa anslutningen.
+   > Om det tar för lång tid innan du slutför prompterna går autentiseringsprocessen ut och misslyckas. I det här fallet går du tillbaka till designern och försöker logga in igen för att skapa anslutningen.
 
-1. När tillägget Azure Logic Apps (förhands granskning) efterfrågar dig att du får åtkomst till ditt e-postkonto väljer du **Öppna**. Följ efterföljande prompt för att tillåta åtkomst.
+1. När tillägget Azure Logic Apps (förhandsversion) uppmanar dig att ge ditt e-postkonto tillstånd väljer du **Öppna.** Följ den efterföljande uppmaningen för att tillåta åtkomst.
 
-   ![Skärm bild som visar utöknings meddelandet för förhands granskning för att tillåta åtkomst.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
+   ![Skärmbild som visar uppmaningen om att tillåta åtkomst för förhandsversionstillägget.](./media/create-stateful-stateless-workflows-visual-studio-code/allow-preview-extension-open-uri.png)
 
    > [!TIP]
-   > Om du vill förhindra framtida prompter väljer du **fråga inte igen för det här tillägget**.
+   > Om du vill förhindra framtida uppmaningar **väljer du Fråga inte igen för det här tillägget**.
 
-   När Visual Studio Code skapar anslutningen visar vissa kopplingar meddelandet som `The connection will be valid for {n} days only` . Denna tids gräns gäller endast för varaktigheten när du redigerar din Logic app i Visual Studio Code. Efter distributionen gäller den här gränsen inte längre eftersom din Logi Kap par kan autentisera vid körning genom att använda den automatiskt aktiverade [systemtilldelade hanterade identiteten](../logic-apps/create-managed-service-identity.md). Den här hanterade identiteten skiljer sig från autentiseringsuppgifterna för autentisering eller anslutnings sträng som du använder när du skapar en anslutning. Om du inaktiverar den här systemtilldelade hanterade identiteten fungerar inte anslutningarna vid körning.
+   När Visual Studio Code har skapat anslutningen visar vissa anslutningsappar meddelandet att `The connection will be valid for {n} days only` . Den här tidsgränsen gäller endast varaktigheten när du skapar logikappen i Visual Studio Code. Efter distributionen gäller den här gränsen inte längre eftersom logikappen kan autentisera vid körning med hjälp av dess automatiskt aktiverade [system tilldelade hanterade identitet](../logic-apps/create-managed-service-identity.md). Den här hanterade identiteten skiljer sig från autentiseringsuppgifterna eller anslutningssträngen som du använder när du skapar en anslutning. Om du inaktiverar den här system tilldelade hanterade identiteten fungerar inte anslutningarna vid körning.
 
-1. Om åtgärden **skicka e-post** inte visas i designern väljer du den åtgärden.
+1. Om åtgärden Skicka ett **e-postmeddelande** inte visas markerad i designern väljer du den åtgärden.
 
-1. I åtgärdens informations fönster, på fliken **parametrar** , anger du nödvändig information för åtgärden, till exempel:
+1. Ange nödvändig information för åtgärden på fliken **Parametrar** i åtgärdens informationsfönster, till exempel:
 
-   ![Skärm bild som visar arbets flödes design med information för Office 365 Outlook "Skicka ett e-postmeddelande"-åtgärd.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
+   ![Skärmbild som visar arbetsflödesdesignern med information om åtgärden "Skicka ett e-postmeddelande" i Office 365 Outlook.](./media/create-stateful-stateless-workflows-visual-studio-code/send-email-action-details.png)
 
    | Egenskap | Krävs | Värde | Beskrivning |
    |----------|----------|-------|-------------|
-   | **Till** | Ja | <*din-e-postadress*> | E-postmottagaren, som kan vara din e-postadress i test syfte. I det här exemplet används det fiktiva e-postmeddelandet `sophiaowen@fabrikam.com` . |
-   | **Ämne** | Ja | `An email from your example workflow` | E-postmeddelandets ämne |
-   | **Brödtext** | Ja | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
+   | **Till** | Yes | <*din e-postadress*> | E-postmottagaren, som kan vara din e-postadress i testsyfte. I det här exemplet används den fiktiva e-postadressen `sophiaowen@fabrikam.com` . |
+   | **Ämne** | Yes | `An email from your example workflow` | E-postämnet |
+   | **Brödtext** | Yes | `Hello from your example workflow!` | Innehållet i e-postmeddelandet |
    ||||
 
    > [!NOTE]
-   > Om du vill göra ändringar i informations fönstret på fliken **Inställningar**, **statiskt resultat** eller **kör efter** , kontrollerar du att du väljer **genomför** ändringarna innan du växlar flikar eller byter fokus till designern. Annars behåller Visual Studio-koden inte dina ändringar. Mer information finns på sidan om [kända problem med Logic Apps offentliga för hands versioner i GitHub](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md).
+   > Om du vill göra några ändringar i informationsfönstret på  fliken **Inställningar,** Statiskt resultat  eller Kör efter ser du till att du väljer Klar för att genomföra ändringarna innan du växlar flikar eller ändrar fokus till designern.  Annars Visual Studio Code inte dina ändringar. Mer information finns på sidan [Logic Apps offentliga förhandsversionen av kända problem i GitHub.](https://github.com/Azure/logicapps/blob/master/articles/logic-apps-public-preview-known-issues.md)
 
-1. I designern väljer du **Spara**.
+1. Välj Spara i **designern.**
 
 > [!IMPORTANT]
-> För att lokalt köra ett arbets flöde som använder en webhook-baserad utlösare eller åtgärder, t. ex. den [inbyggda HTTP-webhook-utlösaren eller åtgärden](../connectors/connectors-native-webhook.md), måste du aktivera den här funktionen genom att konfigurera [vidarebefordran för webhookens återanrops-URL](#webhook-setup).
+> Om du vill köra ett arbetsflöde lokalt som använder en webhook-baserad utlösare eller åtgärder, till exempel den [inbyggda HTTP Webhook-utlösaren](../connectors/connectors-native-webhook.md)eller åtgärden , måste du aktivera den här funktionen genom att konfigurera vidarebefordran för [webhookens](#webhook-setup)återanrops-URL.
 
 <a name="webhook-setup"></a>
 
-## <a name="enable-locally-running-webhooks"></a>Aktivera lokal körning av Webhooks
+## <a name="enable-locally-running-webhooks"></a>Aktivera webhooks som körs lokalt
 
-När du använder en webhook-baserad utlösare eller åtgärd, till exempel **http-webhook**, med en Logic-app som körs i Azure, prenumererar Logic Apps runtime på tjänst slut punkten genom att generera och registrera en återanrops-URL med den slut punkten. Utlösaren eller åtgärden väntar sedan på att tjänstens slut punkt ska anropa URL: en. Men när du arbetar i Visual Studio Code börjar den genererade återanrops-URL: en `http://localhost:7071/...` . Den här URL: en är för din localhost-Server, som är privat så att tjänstens slut punkt inte kan anropa denna URL.
+När du använder en webhook-baserad utlösare eller -åtgärd, till exempel **HTTP-webhook**, med en logikapp som körs i Azure, prenumererar Logic Apps-körningen på tjänstslutpunkten genom att generera och registrera en motringnings-URL med den slutpunkten. Utlösaren eller åtgärden väntar sedan på att tjänstslutpunkten ska anropa URL:en. Men när du arbetar i Visual Studio Code börjar den genererade återanrops-URL:en med `http://localhost:7071/...` . Den här URL:en är för din localhost-server, som är privat så att tjänstslutpunkten inte kan anropa den här URL:en.
 
-För att lokalt köra webhook-baserade utlösare och åtgärder i Visual Studio Code, måste du konfigurera en offentlig URL som visar din localhost-Server och vidarebefordra samtal från tjänst slut punkten till webb adressen för återanrop i webhooken. Du kan använda en tjänst för vidarebefordran och ett verktyg som [**ngrok**](https://ngrok.com/), som öppnar en http-tunnel till din localhost-port, eller så kan du använda ditt eget verktyg.
+Om du vill köra webhook-baserade utlösare och åtgärder lokalt i Visual Studio Code måste du konfigurera en offentlig URL som exponerar din localhost-server och på ett säkert sätt vidarebefordrar anrop från tjänstslutpunkten till webhookens återanrops-URL. Du kan använda en vidarebefordranstjänst och ett verktyg som [**ngrok**](https://ngrok.com/), som öppnar en HTTP-tunnel till din localhost-port, eller så kan du använda ditt eget verktyg.
 
-#### <a name="set-up-call-forwarding-using-ngrok"></a>Konfigurera vidarekoppling av samtal med **ngrok**
+#### <a name="set-up-call-forwarding-using-ngrok"></a>Konfigurera vidarebefordran av anrop med **ngrok**
 
-1. [Registrera dig för ett **ngrok** -konto](https://dashboard.ngrok.com/signup) om du inte har något. Annars [loggar du in på ditt konto](https://dashboard.ngrok.com/login).
+1. [Registrera dig för ett **ngrok-konto**](https://dashboard.ngrok.com/signup) om du inte har ett. Annars loggar [du in på ditt konto](https://dashboard.ngrok.com/login).
 
-1. Hämta din personliga autentiseringstoken som **ngrok** -klienten behöver för att ansluta och autentisera åtkomst till ditt konto.
+1. Hämta din personliga autentiseringstoken som **ngrok-klienten** behöver för att ansluta och autentisera åtkomst till ditt konto.
 
-   1. Om du vill hitta [sidan för autentiseringstoken](https://dashboard.ngrok.com/auth/your-authtoken), expanderar du **autentisering** på menyn för instrument panelen och väljer **din authToken**.
+   1. Du hittar sidan [med autentiseringstoken](https://dashboard.ngrok.com/auth/your-authtoken)genom att gå till menyn på instrumentpanelen för ditt **konto,** expandera Autentisering och välja **Din Autentiseringtoken.**
 
-   1. I rutan **din authToken** kopierar du token till en säker plats.
+   1. I rutan **Your Authtoken** kopierar du token till en säker plats.
 
-1. På [hämtnings sidan för **ngrok**](https://ngrok.com/download) eller [din konto instrument panel](https://dashboard.ngrok.com/get-started/setup), laddar du ned den **ngrok** -version som du vill ha och extraherar. zip-filen. Mer information finns i [steg 1: packa upp för att installera](https://ngrok.com/download).
+1. Från [ **nedladdningssidan för ngrok**](https://ngrok.com/download) eller instrumentpanelen för ditt konto [laddar](https://dashboard.ngrok.com/get-started/setup)du ned **den ngrok-version** som du vill ha och extraherar .zip-filen. Mer information finns i [Steg 1: Packa upp för att installera](https://ngrok.com/download).
 
-1. Öppna kommando tolks verktyget på din dator. Bläddra till den plats där **ngrok.exes** filen finns.
+1. Öppna kommandotolken på datorn. Bläddra till den plats där du har **ngrok.exe** fil.
 
-1. Anslut **ngrok** -klienten till ditt **ngrok** -konto genom att köra följande kommando. Mer information finns i [steg 2: Anslut ditt konto](https://ngrok.com/download).
+1. Anslut **ngrok-klienten** till **ditt ngrok-konto** genom att köra följande kommando. Mer information finns i [Steg 2: Anslut ditt konto.](https://ngrok.com/download)
 
    `ngrok authtoken <your_auth_token>`
 
-1. Öppna HTTP-tunneln till localhost port 7071 genom att köra följande kommando. Mer information finns i [steg 3: starta det](https://ngrok.com/download).
+1. Öppna HTTP-tunneln till localhost-port 7071 genom att köra följande kommando. Mer information finns i [Steg 3: Öppna den.](https://ngrok.com/download)
 
    `ngrok http 7071`
 
-1. Leta upp följande rad från utdata:
+1. Leta reda på följande rad i utdata:
 
    `http://<domain>.ngrok.io -> http://localhost:7071`
 
-1. Kopiera och spara URL: en som har det här formatet: `http://<domain>.ngrok.io`
+1. Kopiera och spara den URL som har det här formatet: `http://<domain>.ngrok.io`
 
-#### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>Konfigurera vidarebefordrings-URL: en i dina app-inställningar
+#### <a name="set-up-the-forwarding-url-in-your-app-settings"></a>Konfigurera vidarebefordran av URL:en i appinställningarna
 
-1. I Visual Studio Code, i designern, lägger du till **http + webhook-** utlösaren eller åtgärden.
+1. I Visual Studio Code går du till designern och lägger till **HTTP + Webhook-utlösaren** eller åtgärden.
 
-1. När uppvarningen visas för värd slut punkten anger du den URL för vidarebefordran (omdirigering) som du skapade tidigare.
+1. När frågan visas för platsen för värdslutpunkten anger du url:en för vidarebefordran (omdirigering) som du skapade tidigare.
 
    > [!NOTE]
-   > Om du ignorerar meddelandet visas en varning om att du måste ange URL: en för vidarebefordran, så välj **Konfigurera** och ange URL: en. När du har slutfört det här steget visas inte prompten igen för efterföljande webhook-utlösare eller åtgärder som du kan lägga till.
+   > Om du ignorerar uppmaningen visas en varning om att du måste ange vidarespolnings-URL:en, så välj **Konfigurera** och ange webbadressen. När du är klar med det här steget visas inte frågan igen för efterföljande webhook-utlösare eller åtgärder som du kan lägga till.
    >
-   > Om du vill att prompten ska visas på projektets rotnivå öppnar du snabb menyn **local.settings.jspå** filen och väljer **Konfigurera webhook omdirigera slut punkt**. Frågan visas nu, så att du kan ange URL: en för vidarebefordran.
+   > Om du vill att prompten ska visas igen öppnar du på **projektets rotnivålocal.settings.js** på filens snabbmeny och väljer **Konfigurera webhookens omdirigeringsslutpunkt.** Uppmaningen visas nu så att du kan ange vidare vidarebefordrande-URL:en.
 
-   Visual Studio Code lägger till vidarebefordrings-URL: en i **local.settings.js** filen i projektets rotmapp. I `Values` objektet visas egenskapen med namnet `Workflows.WebhookRedirectHostUri` nu och anges till URL för vidarebefordran, till exempel:
+   Visual Studio Code lägger till url:en för **vidarebefordranlocal.settings.jsi** filen i projektets rotmapp. I `Values` -objektet visas egenskapen med `Workflows.WebhookRedirectHostUri` namnet nu och är inställd på vidarespolnings-URL:en, till exempel:
    
    ```json
    {
@@ -543,153 +543,153 @@ För att lokalt köra webhook-baserade utlösare och åtgärder i Visual Studio 
    }
    ```
 
-Första gången du startar en lokal felsökningssession eller kör arbets flödet utan fel sökning registrerar Logic Apps körningen arbets flödet med tjänstens slut punkt och prenumererar på den slut punkten för att meddela webhook-åtgärderna. Nästa gången som arbets flödet körs registreras eller omprenumereras inte körningen eftersom prenumerations registreringen redan finns i den lokala lagrings platsen.
+Första gången du startar en lokal felsökningssession eller kör arbetsflödet utan felsökning registrerar Logic Apps-körningen arbetsflödet med tjänstslutpunkten och prenumererar på den slutpunkten för att meddela webhook-åtgärderna. Nästa gång arbetsflödet körs registreras inte körningen eller återprenumerationen eftersom prenumerationsregistreringen redan finns i lokal lagring.
 
-När du stoppar felsökningssessionen för en arbets flödes körning som använder lokalt kör webhook-baserade utlösare eller åtgärder, raderas inte befintliga prenumerations registreringar. Om du vill avregistrera dig måste du manuellt ta bort eller ta bort prenumerations registreringarna.
+När du stoppar felsökningssessionen för en arbetsflödeskörning som använder webhook-baserade utlösare eller åtgärder lokalt tas inte befintliga prenumerationsregistreringar bort. Om du vill avregistrera dig måste du manuellt ta bort eller ta bort prenumerationsregistreringarna.
 
 > [!NOTE]
-> När arbets flödet har börjat köras kan terminalfönstret Visa fel som det här exemplet:
+> När arbetsflödet börjar köras kan terminalfönstret visa fel som i det här exemplet:
 >
 > `message='Http request failed with unhandled exception of type 'InvalidOperationException' and message: 'System.InvalidOperationException: Synchronous operations are disallowed. Call ReadAsync or set AllowSynchronousIO to true instead.`
 >
-> Öppna i så fall **local.settings.js** filen i projektets rotmapp och se till att egenskapen är inställd på `true` :
+> I det här fallet öppnar **local.settings.jsfilen** i projektets rotmapp och kontrollerar att egenskapen är inställd på `true` :
 >
 > `"FUNCTIONS_V2_COMPATIBILITY_MODE": "true"`
 
 <a name="manage-breakpoints"></a>
 
-## <a name="manage-breakpoints-for-debugging"></a>Hantera Bryt punkter för fel sökning
+## <a name="manage-breakpoints-for-debugging"></a>Hantera brytpunkter för felsökning
 
-Innan du kör och testar ditt Logic app-arbetsflöde genom att starta en felsökningssession kan du ange [Bryt punkter](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) i **workflow.js** filen för varje arbets flöde. Ingen ytterligare konfiguration krävs. 
+Innan du kör och testar logikappens arbetsflöde genom att starta en [felsökningssession](https://code.visualstudio.com/docs/editor/debugging#_breakpoints) kan du ange brytpunkter iworkflow.js **på** filen för varje arbetsflöde. Ingen annan installation krävs. 
 
-För närvarande stöds Bryt punkter endast för åtgärder, inte utlösare. Varje åtgärds definition har följande Bryt punkts platser:
+För närvarande stöds brytpunkter endast för åtgärder, inte utlösare. Varje åtgärdsdefinition har dessa brytpunktsplatser:
 
-* Ange start Bryt punkten på raden som visar åtgärdens namn. När den här Bryt punkten träffar under felsökningssessionen kan du granska åtgärdens indata innan de utvärderas.
+* Ange startbrytpunkten på raden som visar åtgärdens namn. När brytpunkten når under felsökningssessionen kan du granska åtgärdens indata innan de utvärderas.
 
-* Ange slut punkten för den rad som visar åtgärdens avslutande klammerparentes (**}**). När den här Bryt punkten träffar under felsökningssessionen kan du granska åtgärdens resultat innan åtgärden slutförs.
+* Ange den sista brytpunkten på den rad som visar åtgärdens avslutande kparentes (**}**). När den här brytpunkten når under felsökningssessionen kan du granska åtgärdens resultat innan åtgärden har körts klart.
 
-Följ dessa steg om du vill lägga till en Bryt punkt:
+Följ dessa steg om du vill lägga till en brytpunkt:
 
-1. Öppna filen **workflow.js** för det arbets flöde som du vill felsöka.
+1. Öppna filen **workflow.js** för det arbetsflöde som du vill felsöka.
 
-1. På den rad där du vill ange Bryt punkten går du till den vänstra kolumnen och väljer i kolumnen. Om du vill ta bort Bryt punkten väljer du den Bryt punkten.
+1. Välj inuti den kolumnen i den vänstra kolumnen på den rad där du vill ange brytpunkten. Om du vill ta bort brytpunkten väljer du brytpunkten.
 
-   När du startar felsökningssessionen visas körnings läge till vänster i kod fönstret, medan verktygsfältet Felsök visas längst upp.
+   När du startar felsökningssessionen visas körningsvyn till vänster i kodfönstret, medan verktygsfältet Felsökning visas längst upp.
 
    > [!NOTE]
-   > Om körnings vyn inte visas automatiskt trycker du på CTRL + SKIFT + D.
+   > Om vyn Kör inte visas automatiskt trycker du på Ctrl+Skift+D.
 
-1. Om du vill granska tillgänglig information när en Bryt punkt träffar i körnings vyn, kontrollerar du fönstret **variabler** .
+1. Om du vill granska den tillgängliga informationen när en brytpunkt når går du till vyn Kör och **undersöker fönstret** Variabler.
 
-1. Fortsätt att köra arbets flödes körningen genom att välja **Fortsätt** (uppspelnings knapp) i verktygsfältet för fel sökning.
+1. Om du vill fortsätta att utföra arbetsflödet går du till verktygsfältet Felsöka och **väljer Fortsätt** (uppspelningsknappen).
 
-Du kan lägga till och ta bort Bryt punkter när som helst under arbets flödes körningen. Men om du uppdaterar **workflow.jspå** filen när körningen har startat, uppdateras inte Bryt punkter automatiskt. Om du vill uppdatera Bryt punkterna startar du om Logic-appen.
+Du kan lägga till och ta bort brytpunkter när som helst under arbetsflödeskörningen. Men om du uppdaterar **workflow.jspå** filen när körningen startar uppdateras inte brytpunkter automatiskt. Starta om logikappen för att uppdatera brytpunkterna.
 
-Allmän information finns i [Bryt punkter – Visual Studio Code](https://code.visualstudio.com/docs/editor/debugging#_breakpoints).
+Allmän information finns i [Brytpunkter – Visual Studio Kod](https://code.visualstudio.com/docs/editor/debugging#_breakpoints).
 
 <a name="run-test-debug-locally"></a>
 
-## <a name="run-test-and-debug-locally"></a>Kör, testa och Felsök lokalt
+## <a name="run-test-and-debug-locally"></a>Köra, testa och felsöka lokalt
 
-Testa din Logi Kap par genom att följa de här stegen för att starta en felsökningssession och hitta URL: en för den slut punkt som har skapats av begär ande utlösaren. Du behöver den här URL: en så att du senare kan skicka en begäran till den slut punkten.
+Testa logikappen genom att följa dessa steg för att starta en felsökningssession och hitta URL:en för slutpunkten som skapas av begärandeutlösaren. Du behöver den här URL:en så att du senare kan skicka en begäran till den slutpunkten.
 
-1. Om du vill felsöka ett tillstånds lösa arbets flöde enklare kan du [Aktivera körnings historiken för det arbets flödet](#enable-run-history-stateless).
+1. Om du vill felsöka ett tillståndslöst arbetsflöde enklare kan du [aktivera körningshistoriken för arbetsflödet](#enable-run-history-stateless).
 
-1. I aktivitets fältet i Visual Studio Code öppnar du menyn **Kör** och väljer **Starta fel sökning** (F5).
+1. På Visual Studio Code-aktivitetsfältet öppnar du **menyn Run** (Kör) och väljer Start **Debugging** (F5).
 
-   **Terminalfönstret** öppnas så att du kan gå igenom felsökningssessionen.
+   **Terminalfönstret** öppnas så att du kan granska felsökningssessionen.
 
    > [!NOTE]
-   > Om du får felet "det **finns fel när du har kört preLaunchTask" generateDebugSymbols ""**, kan du läsa avsnittet fel sökning, det [går inte att starta en felsökningssession](#debugging-fails-to-start).
+   > Om du får felmeddelandet "Felet finns efter **körningen preLaunchTask 'generateDebugSymbols'"** finns i felsökningsavsnittet Felsökningssessionen kan inte [starta](#debugging-fails-to-start).
 
-1. Nu hittar du återanrops-URL: en för slut punkten i utlösaren för begäran.
+1. Leta nu reda på motringningens URL för slutpunkten på begärandeutlösaren.
 
-   1. Öppna fönstret Utforskaren igen så att du kan visa projektet.
+   1. Öppna Explorer-fönstret igen så att du kan visa projektet.
 
-   1. I snabb menyn **workflow.jspå** filen väljer du **Översikt**.
+   1. Frånworkflow.js **på** filens snabbmeny väljer du **Översikt.**
 
-      ![Skärm bild som visar Explorer-fönstret och gen vägs fönstret för workflow.jspå filen med "Översikt" vald.](./media/create-stateful-stateless-workflows-visual-studio-code/open-workflow-overview.png)
+      ![Skärmbild som visar Explorer-fönstret och genvägsfönstret för workflow.jsfil med "Översikt" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/open-workflow-overview.png)
 
-   1. Hitta URL-värdet för **motringning** , som ser ut ungefär som den här URL: en för utlösaren exempel på begäran:
+   1. Leta reda **på värdet för motringning-URL,** som ser ut ungefär som den här URL:en för exemplet Begärandeutlösare:
 
       `http://localhost:7071/api/<workflow-name>/triggers/manual/invoke?api-version=2020-05-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=<shared-access-signature>`
 
-      ![Skärm bild som visar din arbets flödes översikt sida med återanrops-URL](./media/create-stateful-stateless-workflows-visual-studio-code/find-callback-url.png)
+      ![Skärmbild som visar arbetsflödets översiktssida med återanrops-URL](./media/create-stateful-stateless-workflows-visual-studio-code/find-callback-url.png)
 
-1. Om du vill testa återanrops-URL: en genom att utlösa Logic app-arbetsflödet öppnar du [Postman](https://www.postman.com/downloads/) eller önskat verktyg för att skapa och skicka förfrågningar.
+1. Om du vill testa motringnings-URL:en genom att utlösa logikappens arbetsflöde öppnar du [Postman](https://www.postman.com/downloads/) eller önskat verktyg för att skapa och skicka begäranden.
 
-   Detta exempel fortsätter med Postman. Mer information finns i [postman komma igång](https://learning.postman.com/docs/getting-started/introduction/).
+   Det här exemplet fortsätter med postman. Mer information finns i [Postman Komma igång](https://learning.postman.com/docs/getting-started/introduction/).
 
-   1. I verktygsfältet Postman väljer du **nytt**.
+   1. Välj Nytt i **Postman-verktygsfältet.**
 
-      ![Skärm bild som visar Postman med knappen Ny markerad](./media/create-stateful-stateless-workflows-visual-studio-code/postman-create-request.png)
+      ![Skärmbild som visar Postman med knappen Ny markerad](./media/create-stateful-stateless-workflows-visual-studio-code/postman-create-request.png)
 
-   1. I fönstret **Skapa nytt** under **Bygg block** väljer du **begäran**.
+   1. I fönstret **Skapa ny** går du till **Byggstenar och** väljer **Begär.**
 
-   1. I fönstret **Spara begäran** , under **namn för begäran**, anger du ett namn för begäran, till exempel `Test workflow trigger` .
+   1. I fönstret **Spara begäran,** under **Begäransnamn,** anger du ett namn för begäran, till exempel `Test workflow trigger` .
 
-   1. Under **Välj en samling eller mapp att spara till** väljer du **skapa samling**.
+   1. Under **Välj en samling eller mapp som du vill spara till** väljer du Skapa **samling.**
 
-   1. Under **alla samlingar** anger du ett namn för samlingen som ska skapas för att ordna dina begär Anden, trycker på RETUR och väljer **Spara till <*samlings namn* >**. I det här exemplet används `Logic Apps requests` som samlings namn.
+   1. Under **Alla samlingar** anger du ett namn för samlingen som ska skapas för att organisera dina begäranden, trycker på Retur och väljer Spara för att <***samlingsnamnet* >**. I det här exemplet `Logic Apps requests` används som samlingsnamn.
 
-      Postman fönster för begär ande öppnas så att du kan skicka en begäran till återanrops-URL: en för begäran utlösare.
+      Postman-fönstret för begäran öppnas så att du kan skicka en begäran till motringning-URL:en för begärandeutlösaren.
 
-      ![Skärm bild som visar Postman med fönstret öppen förfrågan](./media/create-stateful-stateless-workflows-visual-studio-code/postman-request-pane.png)
+      ![Skärmbild som visar Postman med fönstret öppnad begäran](./media/create-stateful-stateless-workflows-visual-studio-code/postman-request-pane.png)
 
-   1. Gå tillbaka till Visual Studio Code. på sidan Översikt för arbets flödet kopierar du värdet för **återanrops-URL** .
+   1. Gå tillbaka till Visual Studio Code. från arbetsflödets översiktssida kopierar du egenskapsvärdet **för motringning-URL.**
 
-   1. Återgå till Postman. I fönstret begäran, bredvid listan metod **, som för närvarande visar som** standard metod för begäran, klistra in återanrops-URL: en som du tidigare kopierade i rutan adress och väljer **Skicka**.
+   1. Gå tillbaka till Postman. I fönstret begäran bredvid metodlistan, som för närvarande visar **GET** som standardmetod för begäran, klistrar du in motringnings-URL:en som du tidigare kopierade i adressrutan och **väljer Skicka**.
 
-      ![Skärm bild som visar Postman och återanrops-URL i rutan adress med knappen Skicka vald](./media/create-stateful-stateless-workflows-visual-studio-code/postman-test-call-back-url.png)
+      ![Skärmbild som visar Postman och motringnings-URL i adressrutan med knappen Skicka markerad](./media/create-stateful-stateless-workflows-visual-studio-code/postman-test-call-back-url.png)
 
-      Exempel på ett Logic app-arbetsflöde skickar ett e-postmeddelande som ser ut ungefär som i det här exemplet:
+      Logikappens exempelarbetsflöde skickar ett e-postmeddelande som liknar det här exemplet:
 
-      ![Skärm bild som visar Outlook-e-post enligt beskrivningen i exemplet](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-result-email.png)
+      ![Skärmbild som visar e-post i Outlook enligt beskrivningen i exemplet](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-app-result-email.png)
 
-1. Gå tillbaka till arbets flödets översikts sida i Visual Studio Code.
+1. I Visual Studio Code går du tillbaka till arbetsflödets översiktssida.
 
-   Om du har skapat ett tillstånds känsligt arbets flöde, kommer sidan Översikt att Visa arbets flödets körnings status och historik när du har skickat begäran.
+   Om du har skapat ett tillståndslöst arbetsflöde visas arbetsflödets körningsstatus och historik efter den begäran som du skickade utlöste arbetsflödet.
 
    > [!TIP]
-   > Om körnings statusen inte visas kan du försöka att uppdatera översikts sidan genom att välja **Uppdatera**. Ingen körning sker för en utlösare som hoppas över på grund av ouppfyllda-villkor eller inga data hittas.
+   > Om körningsstatusen inte visas kan du försöka uppdatera översiktssidan genom att välja **Uppdatera**. Ingen körning sker för en utlösare som hoppas över på grund av ej använda kriterier eller att inga data har hittats.
 
-   ![Skärm bild som visar sidan för arbets flödets översikt med körnings status och historik](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
+   ![Skärmbild som visar arbetsflödets översiktssida med körningsstatus och historik](./media/create-stateful-stateless-workflows-visual-studio-code/post-trigger-call.png)
 
-   | Körnings status | Beskrivning |
+   | Körningsstatus | Description |
    |------------|-------------|
-   | **Avbruten** | Körningen stoppades eller slutfördes inte på grund av externa problem, till exempel ett system avbrott eller en upphörde Azure-prenumeration. |
-   | **Avbröts** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
-   | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbets flödet har ställts in för att hantera det här problemet. |
-   | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också visas för en körning som är begränsad på grund av [Åtgärds gränser](logic-apps-limits-and-config.md) eller den [aktuella pris Planen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips**: om du konfigurerar [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsnings händelser som inträffar. |
-   | **Brutit** | Körningen lyckades. Om en åtgärd Miss lyckas, hanterar en efterföljande åtgärd i arbets flödet detta fel. |
-   | **Tids gränsen uppnåddes** | Tids gränsen för körningen uppnåddes eftersom den aktuella varaktigheten överskred tids gränsen för körning, vilket styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits). Körningens varaktighet beräknas med hjälp av körningens start tid och tids gräns för körning vid den Start tiden. <p><p>**Obs!** om Körningens varaktighet också överskrider den aktuella *gränsen för körnings historik*, som också styrs av inställningen för [ **kvarhållning av körnings historik i dagar**](logic-apps-limits-and-config.md#run-duration-retention-limits), rensas körningen från körnings historiken med ett dagligt rensnings jobb. Oavsett om tids gränsen för körningen är slut eller slutförd beräknas alltid kvarhållningsperioden med hjälp av start tiden och den *aktuella* kvarhållningsperioden. Så om du minskar tids gränsen för en pågående körnings tid för en flygning. Körningen är dock antingen kvar eller så tas den bort från körnings historiken, baserat på om Körningens varaktighet överskred gränsen för kvarhållning. |
-   | **Väntar** | Körningen har inte startat eller pausats, till exempel på grund av en tidigare arbets flödes instans som fortfarande körs. |
+   | **Avbruten** | Körningen stoppades eller slutförs inte på grund av externa problem, till exempel ett systemavbrott eller en bortställd Azure-prenumeration. |
+   | **Annullerat** | Körningen utlöstes och startades men tog emot en begäran om annullering. |
+   | **Misslyckades** | Minst en åtgärd i körningen misslyckades. Inga efterföljande åtgärder i arbetsflödet har ställts in för att hantera felet. |
+   | **Körs** | Körningen utlöstes och pågår, men den här statusen kan också [](logic-apps-limits-and-config.md) visas för en körning som begränsas på grund av åtgärdsgränser eller [den aktuella prisplanen](https://azure.microsoft.com/pricing/details/logic-apps/). <p><p>**Tips:** Om du ställer in [diagnostikloggning](monitor-logic-apps-log-analytics.md)kan du få information om eventuella begränsningshändelser som inträffar. |
+   | **Lyckades** | Körningen lyckades. Om någon åtgärd misslyckades hanterade en efterföljande åtgärd i arbetsflödet felet. |
+   | **Time out** | Tidsgränsen för körningen överskreds eftersom den aktuella varaktigheten överskred körningens varaktighetsgräns, vilket styrs av inställningen [ **Kvarhållning av körningshistorik i** dagar.](logic-apps-limits-and-config.md#run-duration-retention-limits) En körnings varaktighet beräknas med hjälp av körningens starttid och körningens varaktighetsgräns vid den starttiden. <p><p>**Obs!** Om körningens varaktighet också överskrider kvarhållningsgränsen för den aktuella körningshistoriken *,* som också styrs av inställningen Kvarhållning av körningshistorik i [  dagar,](logic-apps-limits-and-config.md#run-duration-retention-limits)rensas körningen från körningshistoriken av ett dagligt rensningsjobb. Oavsett om tidsgränsen för körningen har slutförts eller inte beräknas kvarhållningsperioden alltid med hjälp av körningens starttid och den *aktuella kvarhållningsgränsen.* Så om du minskar varaktighetsgränsen för en körning som körs under flygning går tidsgränsen ut. Körningen stannar dock kvar eller rensas från körningshistoriken baserat på om körningens varaktighet överskred kvarhållningsgränsen. |
+   | **Väntar** | Körningen har inte startat eller har pausats, till exempel på grund av en tidigare arbetsflödesinstans som fortfarande körs. |
    |||
 
-1. Om du vill granska status för varje steg i en speciell körning och stegets indata och utdata, väljer du knappen med tre punkter (**...**) för den här körningen och väljer **Visa kör**.
+1. Om du vill granska statusen för varje steg i en viss körning och stegets indata och utdata väljer du ellipsknappen (**...**) för körningen och väljer **Visa kör.**
 
-   ![Skärm bild som visar arbets flödets körnings historik rad med ellipser-knappen och "Visa körning" valt](./media/create-stateful-stateless-workflows-visual-studio-code/show-run-history.png)
+   ![Skärmbild som visar raden för arbetsflödets körningshistorik med ellipsknappen och "Visa körning" valt](./media/create-stateful-stateless-workflows-visual-studio-code/show-run-history.png)
 
-   Visual Studio Code öppnar vyn övervakning och visar status för varje steg i körningen.
+   Visual Studio Code öppnar övervakningsvyn och visar status för varje steg i körningen.
 
-   ![Skärm bild som visar varje steg i arbets flödets körning och deras status](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
+   ![Skärmbild som visar varje steg i arbetsflödeskörningen och deras status](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-action-status.png)
 
    > [!NOTE]
-   > Om en körning misslyckades och ett steg i vyn övervakning visar `400 Bad Request` felet, kan det här problemet uppstå från ett längre Utlösar-namn eller åtgärds namn som gör att den underliggande Uniform Resource Identifier (URI) överskrider standard tecken gränsen. Mer information finns i ["400 Felaktig begäran"](#400-bad-request).
+   > Om en körning misslyckades och ett steg i övervakningsvyn visar felet kan det här problemet uppstå från ett längre utlösarnamn eller åtgärdsnamn som gör att den underliggande `400 Bad Request` Uniform Resource Identifier (URI) överskrider standardteckengränsen. Mer information finns i ["400 Bad Request" (Felaktig begäran 400).](#400-bad-request)
 
-   Här är möjliga statusar som varje steg i arbets flödet kan ha:
+   Här är de möjliga statusar som varje steg i arbetsflödet kan ha:
 
-   | Åtgärds status | Ikon | Beskrivning |
+   | Åtgärdsstatus | Ikon | Description |
    |---------------|------|-------------|
-   | **Avbruten** | ![Ikon för status för avbrutna åtgärder][aborted-icon] | Åtgärden stoppades eller avslutades inte på grund av externa problem, till exempel ett system avbrott eller en upphördende Azure-prenumeration. |
-   | **Avbröts** | ![Ikon för status för avbrutna åtgärder][cancelled-icon] | Åtgärden kördes men tog emot en begäran att avbryta. |
-   | **Misslyckades** | ![Ikon för åtgärds status misslyckades][failed-icon] | Det gick inte att utföra åtgärden. |
-   | **Körs** | ![Ikon för åtgärds status som körs][running-icon] | Åtgärden körs för närvarande. |
-   | **Överhoppad** | ![Ikon för åtgärds status "hoppar över"][skipped-icon] | Åtgärden hoppades över eftersom den direkt föregående åtgärden misslyckades. En åtgärd har ett `runAfter` villkor som kräver att föregående åtgärd har slutförts innan den aktuella åtgärden kan köras. |
-   | **Brutit** | ![Ikon för status lyckad åtgärd][succeeded-icon] | Åtgärden har slutförts. |
-   | **Lyckades med återförsök** | ![Ikon för åtgärds status slutförd med återförsök][succeeded-with-retries-icon] | Åtgärden lyckades men endast efter ett eller flera återförsök. Om du vill granska återförsöks historiken går du till vyn körnings historik och väljer den åtgärden så att du kan visa indata och utdata. |
-   | **Tids gränsen uppnåddes** | ![Ikon för åtgärds status uppnåddes][timed-out-icon] | Åtgärden stoppades på grund av timeout-gränsen som anges i den åtgärdens inställningar. |
-   | **Väntar** | ![Ikon för status för "väntande" åtgärd][waiting-icon] | Gäller för en webhook-åtgärd som väntar på en inkommande begäran från en anropare. |
+   | **Avbruten** | ![Ikon för åtgärdsstatusen "Avbruten"][aborted-icon] | Åtgärden stoppades eller har inte avslutats på grund av externa problem, till exempel ett systemavbrott eller en stoppad Azure-prenumeration. |
+   | **Annullerat** | ![Ikon för åtgärdsstatusen "Avbruten"][cancelled-icon] | Åtgärden kördes men tog emot en begäran om att avbryta. |
+   | **Misslyckades** | ![Ikon för åtgärdsstatusen "Misslyckades"][failed-icon] | Åtgärden misslyckades. |
+   | **Körs** | ![Ikon för åtgärdsstatusen "Körs"][running-icon] | Åtgärden körs för närvarande. |
+   | **Överhoppad** | ![Ikon för åtgärdsstatusen "Överhoppad"][skipped-icon] | Åtgärden hoppas över eftersom den omedelbart föregående åtgärden misslyckades. En åtgärd har `runAfter` ett villkor som kräver att föregående åtgärd slutförs korrekt innan den aktuella åtgärden kan köras. |
+   | **Lyckades** | ![Ikon för åtgärdsstatusen "Lyckades"][succeeded-icon] | Åtgärden lyckades. |
+   | **Lyckades med återförsök** | ![Ikon för åtgärdsstatusen "Lyckades med återförsök"][succeeded-with-retries-icon] | Åtgärden lyckades men bara efter ett eller flera återförsök. Om du vill granska historiken för återförsök väljer du åtgärden i vyn körningshistorikinformation så att du kan visa indata och utdata. |
+   | **Time out** | ![Ikon för åtgärdsstatusen "Time out"][timed-out-icon] | Åtgärden stoppades på grund av den tidsgräns som anges av den åtgärdens inställningar. |
+   | **Väntar** | ![Ikon för åtgärdsstatusen "Väntar"][waiting-icon] | Gäller för en webhook-åtgärd som väntar på en inkommande begäran från en anropare. |
    ||||
 
    [aborted-icon]: ./media/create-stateful-stateless-workflows-visual-studio-code/aborted.png
@@ -704,81 +704,81 @@ Testa din Logi Kap par genom att följa de här stegen för att starta en felsö
 
 1. Om du vill granska indata och utdata för varje steg väljer du det steg som du vill granska.
 
-   ![Skärm bild som visar status för varje steg i arbets flödet plus indata och utdata i den expanderade åtgärden "skicka e-post"](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details.png)
+   ![Skärmbild som visar status för varje steg i arbetsflödet plus indata och utdata i den expanderade åtgärden "Skicka ett e-postmeddelande"](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details.png)
 
-1. Om du vill granska rå data och utdata för det steget, väljer du **Visa rå data** eller **visar rå** data.
+1. Om du vill granska råa indata och utdata för det steget ytterligare väljer du **Visa råa indata** eller **Visa råutdata**.
 
-1. Om du vill stoppa felsökningssessionen väljer du **stoppa fel sökning** på menyn **Kör** (Shift + F5).
+1. Om du vill stoppa felsökningssessionen går du **till menyn** Kör och väljer **Stoppa felsökning** (Skift + F5).
 
 <a name="return-response"></a>
 
 ## <a name="return-a-response"></a>Returnera ett svar
 
-Om du vill returnera ett svar till anroparen som skickade en begäran till din Logic app, kan du använda den inbyggda [svars åtgärden](../connectors/connectors-native-reqres.md) för ett arbets flöde som börjar med begär ande utlösaren.
+Om du vill returnera ett svar till anroparen som skickade en begäran till logikappen kan du använda den [inbyggda](../connectors/connectors-native-reqres.md) svarsåtgärden för ett arbetsflöde som börjar med begärandeutlösaren.
 
-1. Välj **nytt steg** under åtgärden **Skicka ett e-postmeddelande** i arbetsflödesdesignern.
+1. I arbetsflödesdesignern går du till **åtgärden Skicka ett e-postmeddelande** och väljer **Nytt steg.**
 
-   Frågan **Välj en åtgärd** visas i designern och **fönstret Lägg till en åtgärd** öppnas så att du kan välja nästa åtgärd.
+   Uppmaningen **Välj en** åtgärd visas i designern och fönstret **Lägg** till en åtgärd öppnas igen så att du kan välja nästa åtgärd.
 
-1. I fönstret **Lägg till en åtgärd** , under sökrutan **Välj en åtgärd** , kontrollerar du att **inbyggt** är markerat. I rutan Sök anger du `response` och väljer **svars** åtgärden.
+1. I fönstret **Lägg till en** åtgärd under **sökrutan Välj en** åtgärd kontrollerar du att **Inbyggd** har valts. I sökrutan anger du `response` och väljer **åtgärden** Svar.
 
-   ![Skärm bild som visar arbets flödes design med den valda svars åtgärden.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
+   ![Skärmbild som visar arbetsflödesdesignern med åtgärden Svar vald.](./media/create-stateful-stateless-workflows-visual-studio-code/add-response-action.png)
 
-   När **svars** åtgärden visas i designern öppnas åtgärdens informations fönster automatiskt.
+   När **åtgärden** Svar visas i designern öppnas åtgärdens informationsfönster automatiskt.
 
-   ![Skärm bild som visar arbets flödes utformaren med åtgärds informations fönstret för "Response" öppen och egenskapen "brödtext" har angetts till egenskap svärdet "Skicka ett e-postmeddelande"-åtgärd.](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
+   ![Skärmbild som visar arbetsflödesdesignern med informationsfönstret för åtgärden "Svar" öppet och egenskapen "Brödtext" inställd på egenskapsvärdet "Skicka ett e-postmeddelande" för åtgärden "Brödtext".](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details.png)
 
-1. På fliken **parametrar** anger du den information som krävs för den funktion som du vill anropa.
+1. På fliken **Parametrar** anger du nödvändig information för den funktion som du vill anropa.
 
-   I det här exemplet returneras **text** egenskap svärdet som matas från åtgärden **skicka e-post** .
+   Det här exemplet returnerar **egenskapsvärdet** Brödtext som är utdata från **åtgärden Skicka ett e-postmeddelande.**
 
-   1. Klicka i egenskaps rutan för **brödtext** så att listan med dynamiskt innehåll visas och visar tillgängliga värden från föregående utlösare och åtgärder i arbets flödet.
+   1. Klicka i **egenskapsrutan** Brödtext så att listan med dynamiskt innehåll visas och visar tillgängliga utdatavärden från den föregående utlösaren och åtgärderna i arbetsflödet.
 
-      ![Skärm bild som visar åtgärds fönstret för Response-åtgärden med mus pekaren inuti egenskapen "Body" så att listan med dynamiskt innehåll visas.](./media/create-stateful-stateless-workflows-visual-studio-code/open-dynamic-content-list.png)
+      ![Skärmbild som visar informationsfönstret för åtgärden "Svar" med muspekaren inuti egenskapen "Brödtext" så att listan med dynamiskt innehåll visas.](./media/create-stateful-stateless-workflows-visual-studio-code/open-dynamic-content-list.png)
 
-   1. I listan med dynamiskt innehåll under **Skicka ett e-postmeddelande** väljer du **brödtext**.
+   1. I listan med dynamiskt innehåll går du till **Skicka ett e-postmeddelande och** väljer **Brödtext.**
 
-      ![Skärm bild som visar listan med öppna dynamiskt innehåll. I listan, under rubriken "Skicka ett e-postmeddelande", är utmatning svärdet "Body" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/select-send-email-action-body-output-value.png)
+      ![Skärmbild som visar den öppna listan med dynamiskt innehåll. I listan under rubriken "Skicka ett e-postmeddelande" väljs utdatavärdet "Brödtext".](./media/create-stateful-stateless-workflows-visual-studio-code/select-send-email-action-body-output-value.png)
 
-      När du är klar har svars åtgärdens egenskap **Body** nu angetts till åtgärden **skicka en e-post-** åtgärds värde för **brödtext** .
+      När du är klar är egenskapen  Brödtext för åtgärdsåtgärden Brödtext nu inställd på utdatavärdet för **åtgärden** Skicka ett e-postmeddelande. 
 
-      ![Skärm bild som visar status för varje steg i arbets flödet plus indata och utdata i den expanderade åtgärden "respons".](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details-body-property.png)
+      ![Skärmbild som visar status för varje steg i arbetsflödet plus indata och utdata i den expanderade åtgärden "Svar".](./media/create-stateful-stateless-workflows-visual-studio-code/response-action-details-body-property.png)
 
-1. I designern väljer du **Spara**.
+1. Välj Spara i **designern.**
 
 <a name="retest-workflow"></a>
 
-## <a name="retest-your-logic-app"></a>Testa om din Logic app
+## <a name="retest-your-logic-app"></a>Testa logikappen igen
 
-När du har gjort uppdateringar till din Logic app kan du köra ett annat test genom att köra fel söknings programmet i Visual Studio och skicka en annan begäran om att utlösa din uppdaterade Logic-app, på samma sätt som stegen i [köra, testa och felsöka lokalt](#run-test-debug-locally).
+När du har uppdaterat logikappen kan du köra ett nytt test genom att köra felsökaren i Visual Studio igen och skicka en annan begäran för att utlösa den uppdaterade logikappen, ungefär som stegen i [Kör, testa och felsöka lokalt.](#run-test-debug-locally)
 
-1. I aktivitets fältet i Visual Studio Code öppnar du menyn **Kör** och väljer **Starta fel sökning** (F5).
+1. På Visual Studio Code-aktivitetsfältet öppnar du **menyn Run** (Kör) och väljer Start **Debugging** (F5).
 
-1. Skicka en annan begäran om att utlösa arbets flödet i Postman eller ditt verktyg för att skapa och skicka begär Anden.
+1. Skicka en ny begäran för att utlösa arbetsflödet i Postman eller ditt verktyg för att skapa och skicka begäranden.
 
-1. Om du har skapat ett tillstånds känsligt arbets flöde kontrollerar du status för den senaste körningen på arbets flödets översikts sida. Om du vill visa status, indata och utdata för varje steg i den här körningen väljer du knappen med tre punkter (**...**) för den här körningen och väljer **Visa kör**.
+1. Om du har skapat ett tillståndslöst arbetsflöde kontrollerar du statusen för den senaste körningen på arbetsflödets översiktssida. Om du vill visa status, indata och utdata för varje steg i körningen väljer du ellipsknappen (**...**) för körningen och väljer **Visa körning.**
 
-   Här är till exempel steg för steg-status för en körning när exempel arbets flödet har uppdaterats med svars åtgärden.
+   Här är till exempel den stegvisa statusen för en körning efter att exempelarbetsflödet har uppdaterats med åtgärden Svar.
 
-   ![Skärm bild som visar status för varje steg i det uppdaterade arbets flödet plus indata och utdata i den expanderade åtgärden "respons".](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
+   ![Skärmbild som visar status för varje steg i det uppdaterade arbetsflödet plus indata och utdata i den expanderade åtgärden "Svar".](./media/create-stateful-stateless-workflows-visual-studio-code/run-history-details-rerun.png)
 
-1. Om du vill stoppa felsökningssessionen väljer du **stoppa fel sökning** på menyn **Kör** (Shift + F5).
+1. Om du vill stoppa felsökningssessionen går du **till menyn Kör** och väljer Stoppa **felsökning** (Skift + F5).
 
 <a name="firewall-setup"></a>
 
-##  <a name="find-domain-names-for-firewall-access"></a>Hitta domän namn för brand Väggs åtkomst
+##  <a name="find-domain-names-for-firewall-access"></a>Hitta domännamn för brandväggsåtkomst
 
-Innan du distribuerar och kör ditt Logic app-arbetsflöde i Azure Portal, om din miljö har strikta nätverks krav eller brand väggar som begränsar trafiken, måste du konfigurera behörigheter för alla utlösare eller åtgärds anslutningar som finns i ditt arbets flöde.
+Innan du distribuerar och kör logikappens arbetsflöde i Azure Portal måste du, om din miljö har strikta nätverkskrav eller brandväggar som begränsar trafiken, konfigurera behörigheter för alla utlösare eller åtgärdsanslutningar som finns i arbetsflödet.
 
-Följ dessa steg om du vill hitta de fullständigt kvalificerade domän namnen (FQDN) för de här anslutningarna:
+Följ dessa steg om du vill hitta fullständigt kvalificerade domännamn (FQDN) för dessa anslutningar:
 
-1. I ditt Logic app-projekt öppnar du **connections.jspå** filen, som skapas när du har lagt till den första anslutningsbaserade utlösaren eller åtgärden i arbets flödet och hittat `managedApiConnections` objektet.
+1. I logikappsprojektet öppnar du **filenconnections.js** som skapas när du har lagt till den första anslutningsbaserade utlösaren eller åtgärden i arbetsflödet och hittar `managedApiConnections` objektet.
 
-1. För varje anslutning som du har skapat kan du söka efter, kopiera och spara `connectionRuntimeUrl` egenskap svärdet på ett säkert sätt så att du kan konfigurera brand väggen med den här informationen.
+1. För varje anslutning som du har skapat söker du efter, kopierar och sparar egenskapsvärdet på en säker plats så att du kan `connectionRuntimeUrl` konfigurera brandväggen med den här informationen.
 
-   Det här exemplet **connections.jsi** filen innehåller två anslutningar, en AS2-anslutning och en Office 365-anslutning med följande `connectionRuntimeUrl` värden:
+   Det här **connections.jsfil** innehåller två anslutningar, en AS2-anslutning och en Office 365-anslutning med följande `connectionRuntimeUrl` värden:
 
-   * AS2 `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
+   * AS2: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/as2/11d3fec26c87435a80737460c85f42ba`
 
    * Office 365: `"connectionRuntimeUrl": https://9d51d1ffc9f77572.00.common.logic-{Azure-region}.azure-apihub.net/apim/office365/668073340efe481192096ac27e7d467f`
 
@@ -817,87 +817,87 @@ Följ dessa steg om du vill hitta de fullständigt kvalificerade domän namnen (
 
 ## <a name="deploy-to-azure"></a>Distribuera till Azure
 
-Från Visual Studio Code kan du publicera ditt projekt direkt till Azure, som distribuerar din Logic app med hjälp av resurs typen ny **Logic app (förhands granskning)** . På samma sätt som för Function app-resursen i Azure Functions, kräver distributionen för den här nya resurs typen att du väljer en [värd plan och pris nivå](../app-service/overview-hosting-plans.md), som du kan konfigurera under distributionen. Läs följande avsnitt om du vill ha mer information om att vara värd för planer och priser:
+Från Visual Studio Code kan du publicera projektet direkt till Azure, som distribuerar logikappen med hjälp av den nya **resurstypen Logikapp (förhandsversion).** Precis som med funktionsappresursen i Azure Functions kräver distributionen för den här nya resurstypen att du väljer en [värdplan](../app-service/overview-hosting-plans.md)och prisnivå som du kan konfigurera under distributionen. Mer information om värdplaner och priser finns i följande avsnitt:
 
 * [Skala upp en i Azure App Service](../app-service/manage-scale-up.md)
 * [Skala och var värd i Azure Functions](../azure-functions/functions-scale.md)
 
-Du kan publicera din Logi Kap par som en ny resurs, som automatiskt skapar nödvändiga resurser, till exempel ett [Azure Storage konto, på samma sätt som funktions kraven för appen](../azure-functions/storage-considerations.md). Eller så kan du publicera din Logic app till en tidigare distribuerad **Logic app-resurs (för hands version)** , som skriver över den logiska appen.
+Du kan publicera logikappen som en ny resurs, som automatiskt skapar nödvändiga resurser, till exempel ett Azure Storage-konto, på ett sätt [som liknar funktionsappens krav.](../azure-functions/storage-considerations.md) Eller så kan du publicera logikappen till en tidigare distribuerad **logikappresurs (förhandsversion)** som skriver över den logikappen.
 
-### <a name="publish-to-a-new-logic-app-preview-resource"></a>Publicera till en ny Logic app-resurs (förhands granskning)
+### <a name="publish-to-a-new-logic-app-preview-resource"></a>Publicera till en ny logikappresurs (förhandsversion)
 
-1. Välj Azure-ikonen i aktivitets fältet i Visual Studio Code.
+1. På Visual Studio Code Activity Bar (Kodaktivitetsfält) väljer du Azure-ikonen.
 
-1. I verktygsfältet **Azure: Logic Apps (för hands version)** väljer du **distribuera till Logic app**.
+1. I verktygsfältet **i fönstret Azure: Logic Apps (förhandsversion)** väljer du **Distribuera till logikapp.**
 
-   ![Skärm bild som visar rutan "Azure: Logic Apps (för hands version)" och fönstrets verktygsfält med "distribuera till Logic app" vald.](./media/create-stateful-stateless-workflows-visual-studio-code/deploy-to-logic-app.png)
+   ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och fönstrets verktygsfält med "Distribuera till logikapp" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/deploy-to-logic-app.png)
 
-1. Om du uppmanas väljer du den Azure-prenumeration som ska användas för din Logic app-distribution.
+1. Om du uppmanas väljer du den Azure-prenumeration som ska användas för distributionen av logikappen.
 
-1. I listan som Visual Studio Code öppnas väljer du bland följande alternativ:
+1. I listan som Visual Studio Code väljer du bland följande alternativ:
 
-   * **Skapa ny Logic app (för hands version) i Azure** (snabb)
-   * **Skapa ny Logic app (för hands version) i Azure Advanced**
-   * En tidigare distribuerad **Logic app-resurs (för hands version)** , om sådan finns
+   * **Skapa ny logikapp (förhandsversion) i Azure** (snabb)
+   * **Skapa ny logikapp (förhandsversion) i Azure Advanced**
+   * En tidigare distribuerad **logikappresurs (förhandsversion),** om det finns någon
 
-   Det här exemplet fortsätter med **Skapa ny Logic app (för hands version) i Azure Advanced**.
+   Det här exemplet fortsätter **med Skapa ny logikapp (förhandsversion) i Azure Advanced**.
 
-   ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" med en lista med "Skapa ny Logic app (för hands version) i Azure" vald.](./media/create-stateful-stateless-workflows-visual-studio-code/select-create-logic-app-options.png)
+   ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" med en lista med "Skapa ny logikapp (förhandsversion) i Azure" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/select-create-logic-app-options.png)
 
-1. Följ dessa steg om du vill skapa en ny **Logic app-resurs (förhands granskning)** :
+1. Följ dessa steg om **du vill skapa en ny logikappresurs (förhandsversion):**
 
-   1. Ange ett globalt unikt namn för din nya Logic app, vilket är det namn som ska användas för **Logic app (för hands version)** -resursen. I det här exemplet används `Fabrikam-Workflows-App`.
+   1. Ange ett globalt unikt namn för din nya logikapp, vilket är det namn som ska användas för **logikappresursen (förhandsversion).** I det här exemplet används `Fabrikam-Workflows-App`.
 
-      ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en uppvarning för att ange ett namn för den nya Logic-appen att skapa.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
+      ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och en uppmaning om att ange ett namn för den nya logikapp som ska skapas.](./media/create-stateful-stateless-workflows-visual-studio-code/enter-logic-app-name.png)
 
-   1. Välj en [värd plan](../app-service/overview-hosting-plans.md) för den nya Logic-appen, antingen [ **App Service plan** (dedikerat)](../azure-functions/dedicated-plan.md) eller [**Premium**](../azure-functions/functions-premium-plan.md).
+   1. Välj en [värdplan](../app-service/overview-hosting-plans.md) för din nya logikapp, [ **antingen App Service Plan** (Dedikerad)](../azure-functions/dedicated-plan.md) eller [**Premium.**](../azure-functions/functions-premium-plan.md)
 
       > [!IMPORTANT]
-      > Förbruknings planer stöds inte eller är inte tillgängliga för den här resurs typen. Den valda planen påverkar de funktioner och pris nivåer som senare är tillgängliga för dig. Mer information finns i följande avsnitt: 
+      > Förbrukningsplaner stöds inte eller är inte tillgängliga för den här resurstypen. Den valda planen påverkar de funktioner och prisnivåer som senare är tillgängliga för dig. Mer information finns i följande avsnitt: 
       >
       > * [Skala och var värd i Azure Functions](../azure-functions/functions-scale.md)
-      > * [App Service pris information](https://azure.microsoft.com/pricing/details/app-service/)
+      > * [App Service prisinformation](https://azure.microsoft.com/pricing/details/app-service/)
       >
-      > Premium-prenumerationen ger till exempel åtkomst till nätverksfunktioner, till exempel Anslut och integrera privat med virtuella Azure-nätverk, ungefär som Azure Functions när du skapar och distribuerar dina Logi Kap par. 
+      > Premium-planen ger till exempel åtkomst till nätverksfunktioner, till exempel att ansluta och integrera privat med virtuella Azure-nätverk, på samma sätt som Azure Functions när du skapar och distribuerar dina logikappar. 
       > Mer information finns i följande avsnitt:
       > 
       > * [Nätverksalternativ för Azure Functions](../azure-functions/functions-networking-options.md)
-      > * [Azure Logic Apps som kör nätverks möjligheter med Azure Logic Apps för hands version](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
+      > * [Azure Logic Apps var som helst – nätverksmöjligheter med Azure Logic Apps förhandsversion](https://techcommunity.microsoft.com/t5/integrations-on-azure/logic-apps-anywhere-networking-possibilities-with-logic-app/ba-p/2105047)
 
-      I det här exemplet används **App Service planen**.
+      I det här exemplet **används App Service Plan**.
 
-      ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en prompt för att välja "App Service plan" eller "Premium".](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
+      ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och en uppmaning om att välja "App Service Plan" eller "Premium".](./media/create-stateful-stateless-workflows-visual-studio-code/select-hosting-plan.png)
 
-   1. Skapa en ny App Service plan eller Välj en befintlig plan. I det här exemplet väljer du **Skapa nytt App Service plan**.
+   1. Skapa en ny App Service plan eller välj en befintlig plan. I det här exemplet **väljer du Skapa App Service Plan**.
 
-      ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en uppvarning till "Skapa ny App Service plan" eller Välj en befintlig App Service plan.](./media/create-stateful-stateless-workflows-visual-studio-code/create-app-service-plan.png)
+      ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och en uppmaning om att skapa en ny App Service-plan eller välja en befintlig App Service plan.](./media/create-stateful-stateless-workflows-visual-studio-code/create-app-service-plan.png)
 
-   1. Ange ett namn för din App Service plan och välj sedan en [pris nivå](../app-service/overview-hosting-plans.md) för planen. I det här exemplet väljs den **kostnads fria** prenumerationen F1.
+   1. Ange ett namn för App Service plan och välj sedan [en prisnivå](../app-service/overview-hosting-plans.md) för planen. I det här exemplet väljer du **den kostnadsfria F1-planen.**
 
-      ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en uppvarning för att välja en pris nivå.](./media/create-stateful-stateless-workflows-visual-studio-code/select-pricing-tier.png)
+      ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och en uppmaning om att välja en prisnivå.](./media/create-stateful-stateless-workflows-visual-studio-code/select-pricing-tier.png)
 
-   1. För optimala prestanda kan du söka efter och välja samma resurs grupp som ditt projekt för distributionen.
+   1. För optimala prestanda hittar och väljer du samma resursgrupp som projektet för distributionen.
 
       > [!NOTE]
-      > Även om du kan skapa eller använda en annan resurs grupp kan det påverka prestandan. Om du skapar eller väljer en annan resurs grupp, men om du avbryter när bekräftelse meddelandet visas, avbryts även distributionen.
+      > Även om du kan skapa eller använda en annan resursgrupp kan det påverka prestandan. Om du skapar eller väljer en annan resursgrupp, men avbryter när bekräftelsemeddelandet visas, avbryts även distributionen.
 
-   1. För tillstånds känsliga arbets flöden väljer du **Skapa nytt lagrings konto** eller ett befintligt lagrings konto.
+   1. För tillståndsfulla arbetsflöden väljer du **Skapa nytt lagringskonto** eller ett befintligt lagringskonto.
 
-      ![Skärm bild som visar fönstret "Azure: Logic Apps (för hands version)" och en uppsvars tolk för att skapa eller välja ett lagrings konto.](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
+      ![Skärmbild som visar fönstret "Azure: Logic Apps (förhandsversion)" och en uppmaning om att skapa eller välja ett lagringskonto.](./media/create-stateful-stateless-workflows-visual-studio-code/create-storage-account.png)
 
-   1. Om din Logic Apps-inställningar för skapande och distribution har stöd för att använda [Application Insights](../azure-monitor/app/app-insights-overview.md), kan du välja att aktivera diagnostikloggning och spårning för din Logic app. Du kan göra det antingen när du distribuerar din Logic app från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights instans, men du kan skapa den här resursen [i förväg](../azure-monitor/app/create-workspace-resource.md)när du distribuerar din Logic app eller efter distributionen.
+   1. Om logikappens inställningar för skapande och distribution stöder användning [Application Insights](../azure-monitor/app/app-insights-overview.md)kan du även aktivera diagnostikloggning och spårning för logikappen. Du kan göra det antingen när du distribuerar logikappen från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights instans, men du kan skapa den här resursen antingen i förväg [,](../azure-monitor/app/create-workspace-resource.md)när du distribuerar logikappen eller efter distributionen.
 
       Följ dessa steg om du vill aktivera loggning och spårning nu:
 
-      1. Välj antingen en befintlig Application Insights resurs eller **skapa en ny Application Insights resurs**.
+      1. Välj antingen en Application Insights resurs eller **Skapa Application Insights resurs**.
 
-      1. I [Azure Portal](https://portal.azure.com)går du till din Application Insights-resurs.
+      1. I [Azure Portal](https://portal.azure.com)går du till Application Insights resurs.
 
-      1. På resurs-menyn väljer du **Översikt**. Sök efter och kopiera **Instrumentation nyckel** värde.
+      1. På resursmenyn väljer du **Översikt.** Leta upp och kopiera **värdet för instrumenteringsnyckeln.**
 
-      1. Öppna den **local.settings.js** filen i projektets rotmapp i Visual Studio Code.
+      1. I Visual Studio Code går du till projektets rotmapp och öppnar **local.settings.jspå** filen.
 
-      1. I `Values` objektet lägger du till `APPINSIGHTS_INSTRUMENTATIONKEY` egenskapen och anger värdet till Instrumentation-nyckeln, till exempel:
+      1. I `Values` -objektet lägger du `APPINSIGHTS_INSTRUMENTATIONKEY` till egenskapen och anger värdet till instrumenteringsnyckeln, till exempel:
 
          ```json
          {
@@ -911,41 +911,41 @@ Du kan publicera din Logi Kap par som en ny resurs, som automatiskt skapar nödv
          ```
 
          > [!TIP]
-         > Du kan kontrol lera om Utlösar-och åtgärds namnen visas korrekt i Application Insights-instansen.
+         > Du kan kontrollera om utlösaren och åtgärdsnamnen visas korrekt i Application Insights instansen.
          >
-         > 1. I Azure Portal går du till din Application Insights-resurs.
+         > 1. I Azure Portal du till din Application Insights resurs.
          >
-         > 2. Välj **program karta** under **Undersök** på resurs resurs menyn.
+         > 2. På resursresursmenyn under Undersök **väljer** du **Programkarta**.
          >
-         > 3. Granska de åtgärds namn som visas i kartan.
+         > 3. Granska åtgärdsnamnen som visas på kartan.
          >
-         > Vissa inkommande begär Anden från inbyggda utlösare kan visas som dubbletter i program kartan. 
-         > I stället för att använda `WorkflowName.ActionName` formatet använder dessa dubbletter arbets flödes namnet som åtgärds namn och härstammar från Azure Functions-värden.
+         > Vissa inkommande begäranden från inbyggda utlösare kan visas som dubbletter i programkartan. 
+         > I stället för att `WorkflowName.ActionName` använda formatet använder dessa dubbletter arbetsflödesnamnet som åtgärdsnamn och kommer från Azure Functions värden.
 
-      1. Sedan kan du välja att ändra allvarlighets grad för de spårnings data som din Logic app samlar in och skickar till din Application Insights-instans.
+      1. Därefter kan du justera allvarlighetsgraden för spårningsdata som logikappen samlar in och skickar till din Application Insights instans.
 
-         Varje gång en arbets flödes händelse inträffar, till exempel när ett arbets flöde utlöses eller när en åtgärd körs, avger körningen olika spår. Dessa spår omfattar arbets flödets livs längd och inkluderar, men är inte begränsat till, följande händelse typer:
+         Varje gång en arbetsflödesrelaterad händelse inträffar, till exempel när ett arbetsflöde utlöses eller när en åtgärd körs, skickar körningen olika spårningar. Dessa spårningar omfattar arbetsflödets livslängd och omfattar, men är inte begränsade till, följande händelsetyper:
 
-         * Tjänste aktivitet, till exempel starta, stoppa och fel.
-         * Jobb och dispatcher-aktivitet.
-         * Arbets flödes aktivitet, till exempel utlösare, åtgärder och körning.
-         * Aktivitet för lagrings förfrågan, till exempel lyckad eller misslyckad.
-         * Aktivitet för HTTP-begäran, till exempel inkommande, utgående, lyckad och misslyckad.
-         * Eventuella utvecklings spår, till exempel fel söknings meddelanden.
+         * Tjänstaktivitet, till exempel start, stopp och fel.
+         * Jobb- och dispatcher-aktivitet.
+         * Arbetsflödesaktivitet, till exempel utlösare, åtgärd och körning.
+         * Aktivitet för lagringsbegäran, till exempel lyckad eller misslyckad.
+         * HTTP-begäransaktivitet, till exempel inkommande, utgående, lyckad och misslyckad.
+         * Alla utvecklingsspårningar, till exempel felsökningsmeddelanden.
 
-         Varje händelse typ tilldelas till en allvarlighets grad. Nivån fångar till exempel de `Trace` mest detaljerade meddelandena, medan `Information` nivån fångar in allmän aktivitet i arbets flödet, till exempel när din Logi Kap par, arbets flöde, utlösare och åtgärder startas och stoppas. I den här tabellen beskrivs allvarlighets graderna och deras spårnings typer:
+         Varje händelsetyp tilldelas en allvarlighetsgrad. Nivån samlar till exempel in de mest detaljerade meddelandena, medan nivån samlar in allmän aktivitet i arbetsflödet, till exempel när logikappen, arbetsflödet, utlösaren och `Trace` `Information` åtgärderna startar och stoppar. I den här tabellen beskrivs allvarlighetsgraderna och deras spårningstyper:
 
-         | Allvarlighetsgrad | Spårnings typ |
+         | Allvarlighetsgrad | Spårningstyp |
          |----------------|------------|
-         | Kritiskt | Loggar som beskriver ett oåterkalleligt fel i din Logic app. |
+         | Kritiskt | Loggar som beskriver ett oåterkalleligt fel i logikappen. |
          | Felsöka | Loggar som du kan använda för undersökning under utvecklingen, till exempel inkommande och utgående HTTP-anrop. |
-         | Fel | Loggar som indikerar ett problem i arbets flödes körningen, men inte ett allmänt haveri i din Logic app. |
-         | Information | Loggar som spårar den allmänna aktiviteten i din Logic app eller arbets flöde, till exempel: <p><p>– När en utlösare, åtgärd eller kör startar och slutar. <br>– När din Logic app startar eller slutar. |
-         | Spårning | Loggar som innehåller de mest detaljerade meddelandena, till exempel lagrings begär Anden eller dispatcher-aktivitet, samt alla meddelanden som är relaterade till körnings aktivitet för arbets flöde. |
-         | Varning | Loggar som markerar ett onormalt tillstånd i din Logic app, men som inte hindrar att det körs. |
+         | Fel | Loggar som indikerar ett fel i arbetsflödeskörningen, men inte ett allmänt fel i logikappen. |
+         | Information | Loggar som spårar den allmänna aktiviteten i logikappen eller arbetsflödet, till exempel: <p><p>– När en utlösare, åtgärd eller körning startar och slutar. <br>– När logikappen startar eller slutar. |
+         | Spårning | Loggar som innehåller de mest detaljerade meddelandena, till exempel lagringsbegäranden eller dispatcher-aktivitet, plus alla meddelanden som är relaterade till körningsaktiviteten för arbetsflöden. |
+         | Varning | Loggar som markerar ett onormalt tillstånd i logikappen men som inte förhindrar att det körs. |
          |||
 
-         Om du vill ange allvarlighets grad på ditt projekts rotnivå öppnar du **host.jspå** filen och letar upp `logging` objektet. Det här objektet styr logg filtreringen för alla arbets flöden i din Logic app och följer [ASP.net Core layout för filtrering av loggnings typ](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering).
+         Om du vill ange allvarlighetsgrad öppnar du filen på **projektets rotnivåhost.js** filen och hittar `logging` objektet. Det här objektet styr loggfiltreringen för alla arbetsflöden i logikappen och [följer ASP.NET Core-layouten för loggtypsfiltrering.](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&preserve-view=true#log-filtering)
 
          ```json
          {
@@ -961,7 +961,7 @@ Du kan publicera din Logi Kap par som en ny resurs, som automatiskt skapar nödv
          }
          ```
 
-         Om `logging` objektet inte innehåller ett `logLevel` objekt som innehåller `Host.Triggers.Workflow` egenskapen, lägger du till dessa objekt. Ange egenskapen till allvarlighets grad för den spårnings typ som du vill ha, till exempel:
+         Om objektet `logging` inte innehåller något objekt som innehåller egenskapen lägger du till dessa `logLevel` `Host.Triggers.Workflow` objekt. Ange egenskapen till allvarlighetsgrad för den spårningstyp som du vill ha, till exempel:
 
          ```json
          {
@@ -980,145 +980,145 @@ Du kan publicera din Logi Kap par som en ny resurs, som automatiskt skapar nödv
          }
          ```
 
-   När du är klar med distributions stegen börjar Visual Studio Code att skapa och distribuera de resurser som krävs för att publicera din Logic app.
+   När du är klar med distributionsstegen börjar Visual Studio Code att skapa och distribuera de resurser som krävs för att publicera logikappen.
 
-1. Om du vill granska och övervaka distributions processen väljer du **utdata** på **Visa** -menyn. I verktygsfältet utdata väljer du **Azure Logic Apps**.
+1. Om du vill granska och övervaka distributionsprocessen går du till **menyn Visa** och väljer **Utdata.** I verktygsfältslistan Utdatafönster väljer **du Azure Logic Apps**.
 
-   ![Skärm bild som visar utdatafönstret med "Azure Logic Apps" som marker ATS i listan verktygsfält tillsammans med distributionens förlopp och status.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
+   ![Skärmbild som visar fönstret Utdata med "Azure Logic Apps" valt i verktygsfältets lista tillsammans med distributionsförloppet och statusen.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-deployment-output-window.png)
 
-   När Visual Studio Code har distribuerat din Logic app till Azure visas följande meddelande:
+   När Visual Studio Code har distribuerat logikappen till Azure visas följande meddelande:
 
-   ![Skärm bild som visar ett meddelande om att distributionen till Azure har slutförts.](./media/create-stateful-stateless-workflows-visual-studio-code/deployment-to-azure-completed.png)
+   ![Skärmbild som visar ett meddelande om att distributionen till Azure har slutförts.](./media/create-stateful-stateless-workflows-visual-studio-code/deployment-to-azure-completed.png)
 
-   Grattis, din Logi Kap par är nu Live i Azure och aktiverat som standard.
+   Grattis, logikappen är nu live i Azure och aktiverad som standard.
 
-Sedan kan du lära dig hur du utför dessa uppgifter:
+Därefter kan du lära dig hur du utför dessa uppgifter:
 
-* [Lägg till ett tomt arbets flöde i projektet](#add-workflow-existing-project).
+* [Lägg till ett tomt arbetsflöde i projektet](#add-workflow-existing-project).
 
-* [Hantera distribuerade Logic Apps i Visual Studio Code](#manage-deployed-apps-vs-code) eller med hjälp av [Azure Portal](#manage-deployed-apps-portal).
+* [Hantera distribuerade logikappar i Visual Studio Code](#manage-deployed-apps-vs-code) eller med hjälp av [Azure Portal](#manage-deployed-apps-portal).
 
-* [Aktivera körnings historik för tillstånds lösa arbets flöden](#enable-run-history-stateless).
+* [Aktivera körningshistorik för tillståndslösa arbetsflöden](#enable-run-history-stateless).
 
-* [Aktivera vyn övervakning i Azure Portal för en distribuerad Logic-app](#enable-monitoring).
+* [Aktivera övervakningsvyn i Azure Portal för en distribuerad logikapp](#enable-monitoring).
 
 <a name="add-workflow-existing-project"></a>
 
-## <a name="add-blank-workflow-to-project"></a>Lägg till tomt arbets flöde i projektet
+## <a name="add-blank-workflow-to-project"></a>Lägga till tomt arbetsflöde i projektet
 
-Du kan ha flera arbets flöden i ditt Logic Apps-projekt. Följ dessa steg om du vill lägga till ett tomt arbets flöde i projektet:
+Du kan ha flera arbetsflöden i logikappsprojektet. Följ dessa steg om du vill lägga till ett tomt arbetsflöde i projektet:
 
-1. Välj Azure-ikonen i aktivitets fältet i Visual Studio Code.
+1. I aktivitetsfältet Visual Studio kod väljer du Azure-ikonen.
 
-1. I Azure-fönstret, bredvid **Azure: Logic Apps (för hands version)** väljer du **skapa arbets flöde** (ikon för Azure Logic Apps).
+1. I Azure-fönstret bredvid **Azure: Logic Apps (förhandsversion)** väljer du **Skapa arbetsflöde** (ikon för Azure Logic Apps).
 
-1. Välj den arbets flödes typ som du vill lägga till: **tillstånds känslig** eller **tillstånds lös**
+1. Välj den arbetsflödestyp som du vill lägga till: **Tillståndsful (tillståndsful)** **eller Stateless (Tillståndslös)**
 
-1. Ange ett namn för arbets flödet.
+1. Ange ett namn för arbetsflödet.
 
-När du är klar visas en ny arbetsflödesmall i projektet tillsammans med en **workflow.jspå** fil för arbets flödes definitionen.
+När du är klar visas en ny arbetsflödesmapp i projektet tillsammans med en **workflow.jspå** fil för arbetsflödesdefinitionen.
 
 <a name="manage-deployed-apps-vs-code"></a>
 
-## <a name="manage-deployed-logic-apps-in-visual-studio-code"></a>Hantera distribuerade Logic Apps i Visual Studio Code
+## <a name="manage-deployed-logic-apps-in-visual-studio-code"></a>Hantera distribuerade logikappar i Visual Studio Code
 
-I Visual Studio Code kan du Visa alla distribuerade Logi Kap par i din Azure-prenumeration, oavsett om de är de ursprungliga **Logic Apps** eller om du har en resurs typ för **Logic app (för hands version)** och väljer aktiviteter som hjälper dig att hantera dessa Logic Apps. Men för att få åtkomst till båda resurs typerna behöver du både **Azure Logic Apps** och **Azure Logic Apps-tillägg (för hands version)** för Visual Studio Code.
+I Visual Studio Code kan du visa alla distribuerade logikappar i din Azure-prenumeration, oavsett om de är den ursprungliga **resurstypen Logic Apps** eller logikappen **(förhandsversion)** och välja uppgifter som hjälper dig att hantera dessa logikappar. För att komma åt båda resurstyperna behöver du dock både **Azure Logic Apps** och **Azure Logic Apps (förhandsversion)** för Visual Studio Code.
 
-1. Välj Azure-ikonen i det vänstra verktygsfältet. I fönstret **Azure: Logic Apps (förhands granskning)** expanderar du din prenumeration, som visar alla distribuerade Logic-appar för den prenumerationen.
+1. Välj Azure-ikonen i det vänstra verktygsfältet. I fönstret **Azure: Logic Apps (förhandsversion)** expanderar du din prenumeration, som visar alla distribuerade logikappar för den prenumerationen.
 
-1. Öppna den Logic-app som du vill hantera. Från den logiska appens snabb meny väljer du den uppgift som du vill utföra.
+1. Öppna logikappen som du vill hantera. På logikappens snabbmeny väljer du den uppgift som du vill utföra.
 
-   Du kan till exempel välja uppgifter som att stoppa, starta, starta om eller ta bort din distribuerade Logic-app.
+   Du kan till exempel välja uppgifter som att stoppa, starta, starta om eller ta bort din distribuerade logikapp.
 
-   ![Skärm bild som visar Visual Studio Code med anknytnings fönstret Azure Logic Apps (förhands granskning) och det distribuerade arbets flödet.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
+   ![Skärmbild som visar Visual Studio Code med det öppna tilläggsfönstret "Azure Logic Apps (förhandsversion)" och det distribuerade arbetsflödet.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. Om du vill visa alla arbets flöden i Logic-appen expanderar du din Logic app och expanderar sedan noden **arbets flöden** .
+1. Om du vill visa alla arbetsflöden i logikappen expanderar du logikappen och expanderar sedan **noden Arbetsflöden.**
 
-1. Om du vill visa ett särskilt arbets flöde öppnar du arbets flödets snabb meny och väljer **Öppna i designer**, som öppnar arbets flödet i skrivskyddat läge.
+1. Om du vill visa ett specifikt arbetsflöde öppnar du arbetsflödets snabbmeny och väljer Öppna i **designer,** vilket öppnar arbetsflödet i skrivskyddade läge.
 
-   För att redigera arbets flödet har du följande alternativ:
+   Om du vill redigera arbetsflödet har du följande alternativ:
 
-   * I Visual Studio Code öppnar du projektets **workflow.jspå** filen i arbetsflödesdesignern, gör dina redigeringar och distribuerar om din Logic app till Azure.
+   * I Visual Studio Code öppnar du projektets **filworkflow.js** i arbetsflödesdesignern, redigerar och distribuerar om logikappen till Azure.
 
-   * [Leta upp och öppna din Logic app](#manage-deployed-apps-portal)i Azure Portal. Hitta, redigera och spara arbets flödet.
+   * I Azure Portal [du och öppnar logikappen](#manage-deployed-apps-portal). Hitta, redigera och spara arbetsflödet.
 
-1. Öppna den distribuerade Logic-appen i Azure Portal genom att öppna den logiska appens snabb meny och välja **Öppna i portalen**.
+1. Öppna den distribuerade logikappen i Azure Portal genom att öppna logikappens snabbmeny och välja **Öppna i portalen.**
 
-   Azure Portal öppnas i webbläsaren, och du loggas in på portalen automatiskt om du är inloggad i Visual Studio Code och visar din Logic app.
+   Den Azure Portal öppnas i webbläsaren, loggar in dig på portalen automatiskt om du är inloggad på Visual Studio Code och visar logikappen.
 
-   ![Skärm bild som visar Azure Portal sidan för din Logic app i Visual Studio Code.](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-workflow-azure-portal.png)
+   ![Skärmbild som visar Azure Portal för logikappen i Visual Studio Kod.](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-workflow-azure-portal.png)
 
-   Du kan också logga in separat till Azure Portal, använda portalen Sök i rutan för att hitta din Logi Kap par och sedan välja din Logi Kap par i resultat listan.
+   Du kan också logga in separat på Azure Portal, använda sökrutan i portalen för att hitta logikappen och sedan välja logikappen i resultatlistan.
 
-   ![Skärm bild som visar Azure Portal och Sök fältet med Sök Resultat för distribuerad Logic-app, som visas markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
+   ![Skärmbild som visar Azure Portal och sökfältet med sökresultat för distribuerad logikapp som visas markerad.](./media/create-stateful-stateless-workflows-visual-studio-code/find-deployed-workflow-azure-portal.png)
 
 <a name="manage-deployed-apps-portal"></a>
 
-## <a name="manage-deployed-logic-apps-in-the-portal"></a>Hantera distribuerade Logic Apps i portalen
+## <a name="manage-deployed-logic-apps-in-the-portal"></a>Hantera distribuerade logikappar i portalen
 
-I Azure Portal kan du Visa alla distribuerade Logic-appar som finns i din Azure-prenumeration, oavsett om de är den ursprungliga **Logic Apps** resurs typen eller resurs typen **Logic app (för hands version)** . För närvarande organiseras och hanteras varje resurs typ som separata kategorier i Azure. Följ dessa steg om du vill hitta Logi Kap par som har resurs typen **Logic app (förhands granskning)** :
+I Azure Portal kan du visa alla distribuerade logikappar som finns i din Azure-prenumeration, oavsett om de är den ursprungliga **Logic Apps-resurstypen** eller resurstypen **Logikapp (förhandsversion).** För närvarande organiseras och hanteras varje resurstyp som separata kategorier i Azure. Följ dessa steg om du vill hitta logikappar som har resurstypen **Logikapp (förhandsversion):**
 
-1. Skriv i rutan Azure Portal Sök `logic app preview` . När resultat listan visas väljer du **Logic app (för hands version)** under **tjänster**.
+1. I sökrutan Azure Portal du `logic app preview` . När resultatlistan visas går du till **Tjänster** och väljer **Logikapp (förhandsversion).**
 
-   ![Skärm bild som visar sökrutan Azure Portal med "Logic Apps Preview" Sök text.](./media/create-stateful-stateless-workflows-visual-studio-code/portal-find-logic-app-preview-resource.png)
+   ![Skärmbild som visar Azure Portal sökrutan med söktexten "logic app preview".](./media/create-stateful-stateless-workflows-visual-studio-code/portal-find-logic-app-preview-resource.png)
 
-1. I fönstret **Logic app (för hands version)** letar du reda på och väljer den Logic-app som du distribuerade från Visual Studio Code.
+1. I fönstret **Logikapp (förhandsversion)** hittar och väljer du den logikapp som du distribuerade från Visual Studio Code.
 
-   ![Skärm bild som visar Azure Portal och den Logic app (för hands version) resurser som distribueras i Azure.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-preview-resources-pane.png)
+   ![Skärmbild som visar Azure Portal och de Logic App-resurser (förhandsversion) som distribuerats i Azure.](./media/create-stateful-stateless-workflows-visual-studio-code/logic-app-preview-resources-pane.png)
 
-   Azure Portal öppnar den enskilda resurs sidan för den valda Logic-appen.
+   Den Azure Portal öppnar sidan för enskilda resurser för den valda logikappen.
 
-   ![Skärm bild som visar ditt Logic app-arbetsflödes resurs sida i Azure Portal.](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-workflow-azure-portal.png)
+   ![Skärmbild som visar resurssidan för logikapparbetsflödet i Azure Portal.](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-workflow-azure-portal.png)
 
-1. Om du vill visa arbets flödena i den här Logic-appen väljer du **arbets flöden** på fliken Logic Apps.
+1. Om du vill visa arbetsflödena i den här logikappen går du till logikappens meny och väljer **Arbetsflöden.**
 
-   I fönstret **arbets flöden** visas alla arbets flöden i den aktuella Logic-appen. Det här exemplet visar det arbets flöde som du skapade i Visual Studio Code.
+   Fönstret **Arbetsflöden** visar alla arbetsflöden i den aktuella logikappen. Det här exemplet visar arbetsflödet som du skapade i Visual Studio Code.
 
-   ![Skärm bild som visar resurs sidan "Logic app (för hands version)" i fönstret "arbets flöden" öppen och det distribuerade arbets flödet](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-logic-app-workflows-pane.png)
+   ![Skärmbild som visar resurssidan "Logikapp (förhandsversion)" med fönstret "Arbetsflöden" öppet och det distribuerade arbetsflödet](./media/create-stateful-stateless-workflows-visual-studio-code/deployed-logic-app-workflows-pane.png)
 
-1. Om du vill visa ett arbets flöde väljer du det i **arbets** flödes fönstret.
+1. Om du vill visa ett arbetsflöde går **du till fönstret** Arbetsflöden och väljer det arbetsflödet.
 
-   Fönstret arbets flöde öppnas och visar mer information och uppgifter som du kan utföra på det arbets flödet.
+   Arbetsflödesfönstret öppnas och visar mer information och uppgifter som du kan utföra i arbetsflödet.
 
-   Om du till exempel vill visa stegen i arbets flödet väljer du **Designer**.
+   Om du till exempel vill visa stegen i arbetsflödet väljer du **Designer**.
 
-   ![Skärm bild som visar det valda arbets flödets översikts fönster, medan arbets flödes menyn visar det valda design kommandot.](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
+   ![Skärmbild som visar det valda arbetsflödets "Översikt"-fönster, medan arbetsflödesmenyn visar det valda kommandot "Designer".](./media/create-stateful-stateless-workflows-visual-studio-code/workflow-overview-pane-select-designer.png)
 
-   Arbetsflödesdesignern öppnas och visar det arbets flöde som du skapade i Visual Studio Code. Nu kan du göra ändringar i det här arbets flödet i Azure Portal.
+   Arbetsflödesdesignern öppnas och visar det arbetsflöde som du skapade i Visual Studio Code. Nu kan du göra ändringar i det här arbetsflödet i Azure Portal.
 
-   ![Skärm bild som visar arbets flödes utformaren och arbets flödet som distribueras från Visual Studio Code.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
+   ![Skärmbild som visar arbetsflödesdesignern och arbetsflödet som distribuerats från Visual Studio Code.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-workflow-designer.png)
 
 <a name="add-workflow-portal"></a>
 
-## <a name="add-another-workflow-in-the-portal"></a>Lägg till ett annat arbets flöde i portalen
+## <a name="add-another-workflow-in-the-portal"></a>Lägga till ytterligare ett arbetsflöde i portalen
 
-Du kan lägga till tomma arbets flöden till en **logisk app-resurs (för hands version)** som du har distribuerat från Visual Studio Code och skapa dessa arbets flöden i Azure Portal med hjälp av Azure Portal.
+Via Azure Portal kan du lägga till tomma arbetsflöden till en logikappresurs **(förhandsversion)** som du har distribuerat från Visual Studio Code och skapa dessa arbetsflöden i Azure Portal.
 
-1. I [Azure Portal](https://portal.azure.com)letar du reda på och väljer din distribuerade **Logic app-resurs (för hands version)** .
+1. I [Azure Portal](https://portal.azure.com)du och väljer den distribuerade logikappresursen **(förhandsversion).**
 
-1. På menyn Logic app väljer du **arbets flöden**. I fönstret **arbets flöden** väljer du **Lägg till**.
+1. På logikappmenyn väljer du **Arbetsflöden.** I fönstret **Arbetsflöden** väljer du Lägg **till**.
 
-   ![Skärm bild som visar den valda Logic Apps-fönstret och verktygsfältet med kommandot Lägg till markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/add-new-workflow.png)
+   ![Skärmbild som visar den valda logikappens fönster "Arbetsflöden" och verktygsfältet med kommandot "Lägg till" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/add-new-workflow.png)
 
-1. Ange ett namn för arbets flödet i fönstret **nytt arbets flöde** . Välj antingen **tillstånds känslig** eller **tillstånds lös** **>** **skapa**.
+1. I fönstret **Nytt arbetsflöde** anger du namnet på arbetsflödet. Välj **antingen Tillståndsful** **(Tillståndsful) eller Stateless** **>** **Create (Tillståndslös).**
 
-   När Azure har distribuerat ditt nya arbets flöde, som visas i fönstret **arbets flöden** , väljer du det arbets flödet så att du kan hantera och utföra andra uppgifter, t. ex. öppna designern eller vyn kod.
+   När Azure har distribuerat ditt nya  arbetsflöde, som visas i fönstret Arbetsflöden, väljer du det arbetsflödet så att du kan hantera och utföra andra uppgifter, till exempel öppna designern eller kodvyn.
 
-   ![Skärm bild som visar det valda arbets flödet med alternativ för hantering och granskning.](./media/create-stateful-stateless-workflows-visual-studio-code/view-new-workflow.png)
+   ![Skärmbild som visar det valda arbetsflödet med hanterings- och granskningsalternativ.](./media/create-stateful-stateless-workflows-visual-studio-code/view-new-workflow.png)
 
-   Om du till exempel öppnar designern för ett nytt arbets flöde visas en tom arbets yta. Nu kan du bygga det här arbets flödet i Azure Portal.
+   Om du till exempel öppnar designern för ett nytt arbetsflöde visas en tom arbetsyta. Nu kan du skapa det här arbetsflödet i Azure Portal.
 
-   ![Skärm bild som visar Workflow Designer och ett tomt arbets flöde.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
+   ![Skärmbild som visar arbetsflödesdesignern och ett tomt arbetsflöde.](./media/create-stateful-stateless-workflows-visual-studio-code/opened-blank-workflow-designer.png)
 
 <a name="enable-run-history-stateless"></a>
 
-## <a name="enable-run-history-for-stateless-workflows"></a>Aktivera körnings historik för tillstånds lösa arbets flöden
+## <a name="enable-run-history-for-stateless-workflows"></a>Aktivera körningshistorik för tillståndslösa arbetsflöden
 
-Om du vill felsöka ett tillstånds lösa arbets flöde enklare kan du aktivera körnings historiken för det arbets flödet och sedan inaktivera körnings historiken när du är klar. Följ de här stegen för Visual Studio Code, eller om du arbetar i Azure Portal, se [skapa tillstånds känsliga och tillstånds lösa arbets flöden i Azure Portal](create-stateful-stateless-workflows-azure-portal.md#enable-run-history-stateless).
+Om du vill felsöka ett tillståndslöst arbetsflöde enklare kan du aktivera körningshistoriken för arbetsflödet och sedan inaktivera körningshistoriken när du är klar. Följ de här stegen Visual Studio Code, eller om du arbetar i Azure Portal, se Skapa [tillståndslösa och tillståndslösa](create-stateful-stateless-workflows-azure-portal.md#enable-run-history-stateless)arbetsflöden i Azure Portal .
 
-1. I ditt Visual Studio Code-projekt expanderar du mappen **Workflow-designtime** och öppnar filen **local.settings.js** .
+1. I ditt Visual Studio Code-projekt expanderar du mappen **workflow-designtime** och **öppnarlocal.settings.jspå** filen.
 
-1. Lägg till `Workflows.{yourWorkflowName}.operationOptions` egenskapen och ange värdet till `WithStatelessRunHistory` , till exempel:
+1. Lägg till `Workflows.{yourWorkflowName}.operationOptions` egenskapen och ange värdet till , till `WithStatelessRunHistory` exempel:
 
    **Windows**
 
@@ -1147,71 +1147,71 @@ Om du vill felsöka ett tillstånds lösa arbets flöde enklare kan du aktivera 
    }
    ```
 
-1. Om du vill inaktivera körnings historik när du är klar, anger du antingen `Workflows.{yourWorkflowName}.OperationOptions` egenskapen till `None` eller tar bort egenskapen och dess värde.
+1. Om du vill inaktivera körningshistoriken när du är klar anger du `Workflows.{yourWorkflowName}.OperationOptions` antingen egenskapen till `None` eller tar bort egenskapen och dess värde.
 
 <a name="enable-monitoring"></a>
 
-## <a name="enable-monitoring-view-in-the-azure-portal"></a>Aktivera vyn övervakning i Azure Portal
+## <a name="enable-monitoring-view-in-the-azure-portal"></a>Aktivera övervakningsvyn i Azure Portal
 
-När du har distribuerat en **Logic app-resurs (förhands granskning)** från Visual Studio Code till Azure kan du granska alla tillgängliga körnings historik och information för ett arbets flöde i den resursen med hjälp av Azure Portal och **övervaknings** upplevelsen för det arbets flödet. Du måste dock först aktivera vyn **övervakare** för den logiska app-resursen.
+När du har distribuerat en **logikappresurs (förhandsversion)** från Visual Studio Code till Azure kan du granska all tillgänglig körningshistorik och information om ett arbetsflöde i resursen med hjälp av Azure Portal och **övervakningsupplevelsen** för det arbetsflödet. Du måste dock först aktivera funktionen **Övervaka vy** för den logikappresursen.
 
-1. I [Azure Portal](https://portal.azure.com)letar du reda på och väljer resursen distribuerad **Logic app (för hands version)** .
+1. I [Azure Portal](https://portal.azure.com)du den distribuerade logikappresursen **(förhandsversion).**
 
-1. På den resurs menyn, under **API**, väljer du **CORS**.
+1. Välj CORS under **API** på **resursens meny.**
 
-1. Lägg till jokertecknet (*) under **tillåtna ursprung** i **CORS** -fönstret.
+1. Lägg till jokertecknet (*)under **Tillåtna ursprung** i **fönstret CORS.**
 
-1. När du är klar väljer du **Spara** i verktygsfältet **CORS** .
+1. När du är klar väljer du Spara i **CORS-verktygsfältet.** 
 
-   ![Skärm bild som visar Azure Portal med en distribuerad Logic app-resurs (förhands granskning). På resurs-menyn väljs "CORS" med en ny post för "tillåtna ursprung" på jokertecknet "*".](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
+   ![Skärmbild som visar Azure Portal med en distribuerad logikappresurs (förhandsversion). På resursmenyn väljs "CORS" med en ny post för "Tillåtna ursprung" inställd på jokertecknet "*".](./media/create-stateful-stateless-workflows-visual-studio-code/enable-run-history-deployed-logic-app.png)
 
 <a name="enable-open-application-insights"></a>
 
-## <a name="enable-or-open-application-insights-after-deployment"></a>Aktivera eller öppna Application Insights efter distribution
+## <a name="enable-or-open-application-insights-after-deployment"></a>Aktivera eller öppna Application Insights efter distributionen
 
-När arbets flödet körs, genererar din Logi Kap telemetri och andra händelser. Du kan använda den här Telemetrin för att få bättre insyn i hur väl ditt arbets flöde körs och hur Logic Apps runtime fungerar på olika sätt. Du kan övervaka arbets flödet med hjälp av [Application Insights](../azure-monitor/app/app-insights-overview.md), som tillhandahåller telemetri i nära real tid (Live metrics). Den här funktionen kan hjälpa dig att undersöka fel och prestanda problem enklare när du använder dessa data för att diagnostisera problem, konfigurera aviseringar och skapa diagram.
+Under körningen av arbetsflödet skickar logikappen telemetri tillsammans med andra händelser. Du kan använda den här telemetrin för att få bättre insyn i hur bra arbetsflödet körs och hur Logic Apps fungerar på olika sätt. Du kan övervaka arbetsflödet med [hjälp Application Insights](../azure-monitor/app/app-insights-overview.md), som tillhandahåller telemetri i nästan realtid (livemått). Den här funktionen kan hjälpa dig att undersöka fel och prestandaproblem enklare när du använder dessa data för att diagnostisera problem, konfigurera aviseringar och skapa diagram.
 
-Om din Logic Apps-inställningar för skapande och distribution har stöd för att använda [Application Insights](../azure-monitor/app/app-insights-overview.md), kan du välja att aktivera diagnostikloggning och spårning för din Logic app. Du kan göra det antingen när du distribuerar din Logic app från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights instans, men du kan skapa den här resursen [i förväg](../azure-monitor/app/create-workspace-resource.md)när du distribuerar din Logic app eller efter distributionen.
+Om logikappens inställningar för att skapa och distribuera stöder [användning Application Insights](../azure-monitor/app/app-insights-overview.md)kan du även aktivera diagnostikloggning och spårning för logikappen. Du kan göra det antingen när du distribuerar logikappen från Visual Studio Code eller efter distributionen. Du måste ha en Application Insights-instans, men du kan skapa den här resursen antingen i förväg [,](../azure-monitor/app/create-workspace-resource.md)när du distribuerar logikappen eller efter distributionen.
 
-Följ dessa steg om du vill aktivera Application Insights i en distribuerad Logic-app eller granska Application Insights data när det redan har Aktiver ATS:
+Följ dessa steg Application Insights aktivera funktionen för en distribuerad logikapp eller granska Application Insights data när de redan är aktiverade:
 
-1. Leta upp din distribuerade Logic-app i Azure Portal.
+1. I Azure Portal du den distribuerade logikappen.
 
-1. På menyn Logic app, under **Inställningar**, väljer du **Application Insights**.
+1. På logikappmenyn går du till **Inställningar** och väljer **Application Insights**.
 
-1. Om Application Insights inte är aktive rad väljer du **aktivera Application Insights** i fönstret **Application Insights** . När fönstret har uppdaterats väljer du **Använd** längst ned.
+1. Om Application Insights inte är aktiverat går du **till Application Insights** och väljer **Aktivera Application Insights**. När fönstret har uppdateras väljer du Tillämpa längst **ned.**
 
-   Om Application Insights är aktive rad väljer du **visa Application Insights data** i fönstret **Application Insights** .
+   Om Application Insights är aktiverat går du **till Application Insights** och väljer Visa **Application Insights data.**
 
-När Application Insights har öppnat kan du granska olika mått för din Logic app. Mer information finns i följande avsnitt:
+När Application Insights öppnas kan du granska olika mått för logikappen. Mer information finns i följande avsnitt:
 
-* [Azure Logic Apps som körs överallt – övervakare med Application Insights del 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
-* [Azure Logic Apps som körs överallt – övervakare med Application Insights del 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
+* [Azure Logic Apps Kör var som helst – Övervaka med Application Insights – del 1](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/1877849)
+* [Azure Logic Apps Kör var som helst – Övervaka med Application Insights – del 2](https://techcommunity.microsoft.com/t5/integrations-on-azure/azure-logic-apps-running-anywhere-monitor-with-application/ba-p/2003332)
 
 <a name="deploy-docker"></a>
 
 ## <a name="deploy-to-docker"></a>Distribuera till Docker
 
-Du kan distribuera din Logic app till en [Docker-behållare](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) som värd miljö med hjälp av [.net CLI](/dotnet/core/tools/). Med dessa kommandon kan du bygga och publicera ditt Logic Apps-projekt. Du kan sedan skapa och köra din Docker-behållare som mål för att distribuera din Logic app.
+Du kan distribuera logikappen till en [Docker-container](/visualstudio/docker/tutorials/docker-tutorial#what-is-a-container) som värdmiljö med hjälp av [.NET CLI.](/dotnet/core/tools/) Med dessa kommandon kan du skapa och publicera logikappens projekt. Du kan sedan skapa och köra dockercontainern som mål för distribution av logikappen.
 
 Om du inte är bekant med Docker kan du läsa följande avsnitt:
 
 * [Vad är Docker?](/dotnet/architecture/microservices/container-docker-introduction/docker-defined)
-* [Introduktion till behållare och Docker](/dotnet/architecture/microservices/container-docker-introduction/)
+* [Introduktion till containrar och Docker](/dotnet/architecture/microservices/container-docker-introduction/)
 * [Introduktion till .NET och Docker](/dotnet/core/docker/introduction)
-* [Docker-behållare, bilder och register](/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries)
-* [Självstudie: kom igång med Docker (Visual Studio Code)](/visualstudio/docker/tutorials/docker-tutorial)
+* [Docker-containrar, avbildningar och register](/dotnet/architecture/microservices/container-docker-introduction/docker-containers-images-registries)
+* [Självstudie: Komma igång med Docker (Visual Studio Code)](/visualstudio/docker/tutorials/docker-tutorial)
 
 ### <a name="requirements"></a>Krav
 
-* Det Azure Storage konto som din Logic app använder för distribution
+* Det Azure Storage-konto som logikappen använder för distribution
 
-* En Docker-fil för det arbets flöde som du använder när du skapar din Docker-behållare
+* En Docker-fil för arbetsflödet som du använder när du skapar dockercontainern
 
-  Den här exempel Docker-filen distribuerar till exempel en Logic-app och anger den anslutnings sträng som innehåller åtkomst nyckeln för det Azure Storage konto som användes för att publicera Logic-appen till Azure Portal. Information om hur du hittar den här strängen finns i [Hämta lagrings kontots anslutnings sträng](#find-storage-account-connection-string). Mer information finns [i metod tips för att skriva Docker-filer](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/).
+  Den här Docker-exempelfilen distribuerar till exempel en logikapp och anger anslutningssträngen som innehåller åtkomstnyckeln för det Azure Storage-konto som användes för att publicera logikappen till Azure Portal. Information om hur du hittar den här strängen finns [i Hämta anslutningssträngen för lagringskontot.](#find-storage-account-connection-string) Mer information finns i [Metodtips för att skriva Docker-filer.](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
   
   > [!IMPORTANT]
-  > För produktions scenarier ser du till att du skyddar och skyddar sådana hemligheter och känslig information, till exempel genom att använda ett nyckel valv. För Docker-filer specifikt granskar du [Bygg avbildningar med BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) och [hanterar känsliga data med Docker-hemligheter](https://docs.docker.com/engine/swarm/secrets/).
+  > I produktionsscenarier bör du skydda och skydda sådana hemligheter och känslig information, till exempel med hjälp av ett nyckelvalv. Mer specifikt för Docker-filer kan [du läsa Skapa avbildningar med BuildKit](https://docs.docker.com/develop/develop-images/build_enhancements/) och [Hantera känsliga data med Docker Secrets.](https://docs.docker.com/engine/swarm/secrets/)
 
    ```text
    FROM mcr.microsoft.com/azure-functions/node:3.0
@@ -1228,33 +1228,33 @@ Om du inte är bekant med Docker kan du läsa följande avsnitt:
 
 <a name="find-storage-account-connection-string"></a>
 
-### <a name="get-storage-account-connection-string"></a>Hämta anslutnings sträng för lagrings konto
+### <a name="get-storage-account-connection-string"></a>Hämta anslutningssträng för lagringskonto
 
-Innan du kan skapa och köra din Docker-behållar avbildning måste du hämta anslutnings strängen som innehåller åtkomst nyckeln till ditt lagrings konto. Tidigare skapade du det här lagrings kontot antingen för att använda tillägget på macOS eller Linux, eller när du distribuerade din Logic app till Azure Portal.
+Innan du kan skapa och köra dockercontaineravbildningen måste du hämta anslutningssträngen som innehåller åtkomstnyckeln till ditt lagringskonto. Tidigare skapade du det här lagringskontot som att använda tillägget på macOS eller Linux, eller när du distribuerade logikappen till Azure Portal.
 
-Följ dessa steg om du vill söka efter och kopiera den här anslutnings strängen:
+Följ dessa steg om du vill hitta och kopiera anslutningssträngen:
 
-1. I Azure Portal väljer du **åtkomst nycklar** under **Inställningar** på menyn lagrings konto. 
+1. På Azure Portal lagringskontomenyn under Inställningar **väljer** du **Åtkomstnycklar.** 
 
-1. I fönstret **åtkomst nycklar** letar du reda på och kopierar lagrings kontots anslutnings sträng, som ser ut ungefär som i det här exemplet:
+1. I fönstret **Åtkomstnycklar** letar du upp och kopierar lagringskontots anslutningssträng, som ser ut ungefär som i det här exemplet:
 
    `DefaultEndpointsProtocol=https;AccountName=fabrikamstorageacct;AccountKey=<access-key>;EndpointSuffix=core.windows.net`
 
-   ![Skärm bild som visar Azure Portal med åtkomst nycklar för lagrings kontot och en anslutnings sträng som har kopierats.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
+   ![Skärmbild som visar Azure Portal lagringskontots åtkomstnycklar och anslutningssträngen kopierade.](./media/create-stateful-stateless-workflows-visual-studio-code/find-storage-account-connection-string.png)
 
-   Mer information finns i [Hantera lagrings konto nycklar](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys).
+   Mer information finns i Hantera [lagringskontonycklar.](../storage/common/storage-account-keys-manage.md?tabs=azure-portal#view-account-access-keys)
 
-1. Spara anslutnings strängen någon annan stans så att du kan lägga till den här strängen i Docker-filen som du använder för distribution. 
+1. Spara anslutningssträngen på en säker plats så att du kan lägga till den här strängen i Docker-filen som du använder för distribution. 
 
 <a name="find-storage-account-master-key"></a>
 
-### <a name="find-master-key-for-storage-account"></a>Sök efter huvud nyckel för lagrings konto
+### <a name="find-master-key-for-storage-account"></a>Hitta huvudnyckel för lagringskonto
 
-När arbets flödet innehåller en begär ande utlösare måste du [Hämta utlösarens återanrops-URL](#get-callback-url-request-trigger) när du har skapat och kört din Docker-behållar avbildning. För den här uppgiften måste du också ange huvud nyckel värdet för det lagrings konto som du använder för distribution.
+När arbetsflödet innehåller en Request-utlösare måste du hämta utlösarens [motringnings-URL](#get-callback-url-request-trigger) när du har byggt och kört Docker-containeravbildningen. För den här uppgiften måste du också ange huvudnyckelvärdet för det lagringskonto som du använder för distributionen.
 
-1. Om du vill hitta huvud nyckeln öppnar du **Azure-WebJobs-hemligheter/{Deployment-Name}/host.jspå** filen i projektet.
+1. Du hittar huvudnyckeln genom att öppna **filen azure-webjobs-secrets/{deployment-name}/host.jsi** projektet.
 
-1. Hitta `AzureWebJobsStorage` egenskapen och kopiera nyckelvärdet från det här avsnittet:
+1. Leta upp `AzureWebJobsStorage` egenskapen och kopiera nyckelvärdet från det här avsnittet:
 
    ```json
    {
@@ -1268,68 +1268,68 @@ När arbets flödet innehåller en begär ande utlösare måste du [Hämta utlö
    }
    ```
 
-1. Spara det här nyckelvärdet på ett säkert sätt som du kan använda senare.
+1. Spara nyckelvärdet på en säker plats så att du kan använda det senare.
 
 <a name="build-run-docker-container-image"></a>
 
-### <a name="build-and-run-your-docker-container-image"></a>Skapa och kör din Docker-behållar avbildning
+### <a name="build-and-run-your-docker-container-image"></a>Skapa och kör dockercontaineravbildningen
 
-1. Bygg din Docker-behållar avbildning med hjälp av Docker-filen och kör följande kommando:
+1. Skapa dockercontaineravbildningen med hjälp av Docker-filen och kör följande kommando:
 
    `docker build --tag local/workflowcontainer .`
 
-   Mer information finns i [Docker-build](https://docs.docker.com/engine/reference/commandline/build/).
+   Mer information finns i [docker build](https://docs.docker.com/engine/reference/commandline/build/).
 
-1. Kör behållaren lokalt genom att använda det här kommandot:
+1. Kör containern lokalt med hjälp av det här kommandot:
 
    `docker run -e WEBSITE_HOSTNAME=localhost -p 8080:80 local/workflowcontainer`
 
-   Mer information finns i [Docker-körning](https://docs.docker.com/engine/reference/commandline/run/).
+   Mer information finns i [docker run](https://docs.docker.com/engine/reference/commandline/run/).
 
 <a name="get-callback-url-request-trigger"></a>
 
-### <a name="get-callback-url-for-request-trigger"></a>Hämta återanrops-URL för begär ande utlösare
+### <a name="get-callback-url-for-request-trigger"></a>Hämta motringning-URL för begärandeutlösare
 
-För ett arbets flöde som använder begär ande utlösaren hämtar du utlösarens återanrops-URL genom att skicka den här begäran:
+För ett arbetsflöde som använder begärandeutlösaren hämtar du utlösarens återanrops-URL genom att skicka den här begäran:
 
 `POST /runtime/webhooks/workflow/api/management/workflows/{workflow-name}/triggers/{trigger-name}/listCallbackUrl?api-version=2020-05-01-preview&code={master-key}`
 
-`{trigger-name}`Värdet är namnet på den begär ande utlösare som visas i arbets flödets JSON-definition. `{master-key}`Värdet definieras i det Azure Storage konto som du har angett för `AzureWebJobsStorage` egenskapen i filen, **Azure-WebJobs-hemligheter/{Deployment-name}/host.jspå**. Mer information finns i [Sök efter lagrings kontots huvud nyckel](#find-storage-account-master-key).
+Värdet `{trigger-name}` är namnet på den begärandeutlösare som visas i arbetsflödets JSON-definition. Värdet definieras i det Azure Storage-konto som du anger för egenskapen i filen `{master-key}` `AzureWebJobsStorage` **azure-webjobs-secrets/{deployment-name}/host.jspå**. Mer information finns i Hitta [huvudnyckeln för lagringskontot.](#find-storage-account-master-key)
 
 <a name="delete-from-designer"></a>
 
 ## <a name="delete-items-from-the-designer"></a>Ta bort objekt från designern
 
-Följ dessa steg om du vill ta bort ett objekt i ditt arbets flöde från designern:
+Följ dessa steg om du vill ta bort ett objekt i arbetsflödet från designern:
 
-* Markera objektet, öppna objektets snabb meny (Shift + F10) och välj **ta bort**. Bekräfta genom att välja **OK**.
+* Välj objektet, öppna objektets snabbmeny (Skift + F10) och välj Ta **bort**. Bekräfta genom att välja **OK**.
 
-* Markera objektet och tryck på Delete-tangenten. Bekräfta genom att välja **OK**.
+* Markera objektet och tryck på delete-tangenten. Bekräfta genom att välja **OK**.
 
-* Markera objektet så att informations fönstret öppnas för det objektet. Öppna ellipsen (**...**)-menyn i fönstrets övre högra hörn och välj **ta bort**. Bekräfta genom att välja **OK**.
+* Markera objektet så att informationsfönstret öppnas för objektet. I fönstrets övre högra hörn öppnar du ellipsmenyn (**...**) och väljer Ta **bort**. Bekräfta genom att välja **OK**.
 
-  ![Skärm bild som visar ett markerat objekt i designern med det öppnade informations fönstret plus den valda ellips-knappen och kommandot "ta bort".](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
+  ![Skärmbild som visar ett markerat objekt i designern med det öppna informationsfönstret plus den valda ellipsknappen och kommandot "Ta bort".](./media/create-stateful-stateless-workflows-visual-studio-code/delete-item-from-designer.png)
 
   > [!TIP]
-  > Om menyn ellipser inte visas expanderar du Visual Studio Code-fönstret så att informations fönstret visar knappen med punkter (**...**) i det övre högra hörnet.
+  > Om ellipsmenyn inte visas expanderar du Visual Studio Code-fönstret så att informationsfönstret visar ellipserna (**...**) i det övre högra hörnet.
 
 <a name="troubleshooting"></a>
 
-## <a name="troubleshoot-errors-and-problems"></a>Felsök fel och problem
+## <a name="troubleshoot-errors-and-problems"></a>Felsöka fel och problem
 
 <a name="designer-fails-to-open"></a>
 
-### <a name="designer-fails-to-open"></a>Det går inte att öppna designern
+### <a name="designer-fails-to-open"></a>Designern kan inte öppnas
 
-När du försöker öppna designern visas ett fel meddelande om **att det inte gick att starta arbets flödets design tid**. Om du tidigare har försökt öppna designern, sedan utgick eller tog bort ditt projekt, kanske inte tilläggs paketet laddas ned korrekt. Följ dessa steg om du vill kontrol lera om den här orsaken är problemet:
+När du försöker öppna designern får du följande felmeddelande: "Det gick inte att starta **designtiden för arbetsflödet".** Om du tidigare försökte öppna designern och sedan avbröt eller tog bort projektet kanske tilläggspaketet inte laddas ned korrekt. Följ dessa steg om du vill kontrollera om problemet beror på detta:
 
-  1. Öppna fönstret utdata i Visual Studio Code. I menyn **Visa** väljer du **utdata**.
+  1. I Visual Studio Code öppnar du fönstret Utdata. Välj **Utdata** på **visa-menyn.**
 
-  1. Välj **Azure Logic Apps (för hands version)** i listan i utmatnings fönstrets namn List så att du kan granska utdata från tillägget, till exempel:
+  1. I listan i namnlisten i utdatafönstret väljer **du Azure Logic Apps (förhandsversion)** så att du kan granska utdata från tillägget, till exempel:
 
-     ![Skärm bild som visar fönstret utdata med "Azure Logic Apps" markerat.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
+     ![Skärmbild som visar fönstret Utdata med "Azure Logic Apps" valt.](./media/create-stateful-stateless-workflows-visual-studio-code/check-outout-window-azure-logic-apps.png)
 
-  1. Granska utdata och kontrol lera om det här fel meddelandet visas:
+  1. Granska utdata och kontrollera om det här felmeddelandet visas:
 
      ```text
      A host error has occurred during startup operation '{operationID}'.
@@ -1343,85 +1343,85 @@ När du försöker öppna designern visas ett fel meddelande om **att det inte g
      Host shutdown completed.
      ```
 
-   Lös problemet genom att ta bort mappen **ExtensionBundles** på den här platsen **. ..\Users \{ your-username} \AppData\Local\Temp\Functions\ExtensionBundles** och försök **workflow.js** att öppna filen i designern igen.
+   Lös det här felet genom att ta bort **mappen ExtensionBundles** på den här platsen **...\Users \{ your-username}\AppData\Local\Temp\Functions\ExtensionBundles** och försök öppna **workflow.js** på filen i designern igen.
 
 <a name="missing-triggers-actions"></a>
 
-### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>Nya utlösare och åtgärder saknas i designer-väljaren för arbets flöden som skapats tidigare
+### <a name="new-triggers-and-actions-are-missing-from-the-designer-picker-for-previously-created-workflows"></a>Nya utlösare och åtgärder saknas i designerväljaren för tidigare skapade arbetsflöden
 
-Azure Logic Apps för hands versionen stöder inbyggda åtgärder för Azure Function Operations, flytande åtgärder och XML-åtgärder, till exempel **XML-verifiering** och **transformering av XML**. Men för tidigare skapade Logic Apps kanske dessa åtgärder inte visas i designer-väljaren för att välja om Visual Studio Code använder en inaktuell version av tilläggs paketet `Microsoft.Azure.Functions.ExtensionBundle.Workflows` .
+Azure Logic Apps Preview stöder inbyggda åtgärder för Azure Function Operations, Liquid Operations och XML-åtgärder, till exempel **XML-validering** och **Transformera XML.** Men för logikappar som skapats tidigare kanske dessa åtgärder inte visas i designerväljaren så att du kan välja om Visual Studio Code använder en inaktuell version av tilläggspaketet, `Microsoft.Azure.Functions.ExtensionBundle.Workflows` .
 
-Dessutom visas inte **Azure Functions** -anslutningsprogrammet och-åtgärder i designern om du inte har aktiverat eller valt **Använd anslutningar från Azure** när du skapade din Logic app. Om du inte har aktiverat Azure-distribuerade anslutningar när appen skapades kan du aktivera dem från projektet i Visual Studio Code. Öppna snabb menyn **workflow.jspå** och välj **Använd anslutningar från Azure**.
+**Anslutningsappen och åtgärderna för Azure Function Operations** visas inte i designerväljaren såvida du inte har aktiverat eller valt Använd anslutningsappar från **Azure** när du skapade logikappen. Om du inte aktiverar de Azure-distribuerade anslutningsapparna när appen skapas kan du aktivera dem från ditt projekt i Visual Studio Code. Öppnaworkflow.js **på** snabbmenyn och välj **Använd anslutningsappar från Azure**.
 
-Åtgärda det inaktuella paketet genom att följa de här stegen för att ta bort det inaktuella paketet, som gör att Visual Studio Code automatiskt uppdaterar tilläggs paketet till den senaste versionen.
+Om du vill åtgärda det inaktuella paketet följer du dessa steg för att ta bort det inaktuella paketet, vilket gör att Visual Studio Code uppdaterar tilläggspaketet automatiskt till den senaste versionen.
 
 > [!NOTE]
-> Den här lösningen gäller endast för Logic Apps som du skapar och distribuerar med hjälp av Visual Studio Code med tillägget Azure Logic Apps (för hands version), inte de Logic Apps som du skapade med Azure Portal Se [utlösare som stöds och åtgärder saknas i designern i Azure Portal](create-stateful-stateless-workflows-azure-portal.md#missing-triggers-actions).
+> Den här lösningen gäller endast för logikappar som du skapar och distribuerar med Visual Studio Code med tillägget Azure Logic Apps (förhandsversion), inte de logikappar som du skapade med hjälp av Azure Portal. Se [Utlösare och åtgärder som stöds saknas i designern i Azure Portal](create-stateful-stateless-workflows-azure-portal.md#missing-triggers-actions).
 
-1. Spara allt arbete som du inte vill förlora och Stäng Visual Studio.
+1. Spara allt arbete som du inte vill förlora och stäng Visual Studio.
 
-1. På datorn bläddrar du till följande mapp som innehåller mappade mappar för det befintliga paketet:
+1. På datorn bläddrar du till följande mapp, som innehåller versionsmappar för det befintliga paketet:
 
    `...\Users\{your-username}\.azure-functions-core-tools\Functions\ExtensionBundles\Microsoft.Azure.Functions.ExtensionBundle.Workflows`
 
-1. Ta bort mappen version för det tidigare paketet, till exempel om du har en mapp för version 1.1.3 tar du bort mappen.
+1. Ta bort versionsmappen för det tidigare paketet, till exempel om du har en mapp för version 1.1.3, ta bort mappen.
 
-1. Bläddra nu till följande mapp som innehåller versions-mappar för det obligatoriska NuGet-paketet:
+1. Bläddra nu till följande mapp, som innehåller versionsmappar för det NuGet-paket som krävs:
 
    `...\Users\{your-username}\.nuget\packages\microsoft.azure.workflows.webjobs.extension`
 
-1. Ta bort mappen version för det tidigare paketet, till exempel om du har en mapp för version 1.0.0.8-Preview tar du bort mappen.
+1. Ta bort versionsmappen för det tidigare paketet, till exempel om du har en mapp för version 1.0.0.8-preview, och ta bort mappen.
 
-1. Öppna Visual Studio-koden igen, ditt projekt och **workflow.js** filen i designern.
+1. Öppna Visual Studio Kod, ditt projekt **ochworkflow.jspå filen** i designern.
 
 De utlösare och åtgärder som saknas visas nu i designern.
 
 <a name="400-bad-request"></a>
 
-### <a name="400-bad-request-appears-on-a-trigger-or-action"></a>"400 Felaktig begäran visas i en utlösare eller åtgärd
+### <a name="400-bad-request-appears-on-a-trigger-or-action"></a>"400 Felaktig begäran" visas på en utlösare eller åtgärd
 
-När en körning Miss lyckas och du inspekterar vyn kör i övervakning, kan det här felet visas i en utlösare eller åtgärd som har ett längre namn, vilket gör att den underliggande Uniform Resource Identifier (URI) överskrider standard tecken gränsen.
+När en körning misslyckas och du inspekterar körningen i övervakningsvyn kan det här felet visas på en utlösare eller åtgärd som har ett längre namn, vilket gör att den underliggande Uniform Resource Identifier -URI:n överskrider standardteckengränsen.
 
-För att lösa det här problemet och justera för längre URI, redigerar du- `UrlSegmentMaxCount` och- `UrlSegmentMaxLength` register nycklarna på datorn genom att följa stegen nedan. Nyckelns standardvärden beskrivs i det här avsnittet [Http.sys register inställningar för Windows](/troubleshoot/iis/httpsys-registry-windows).
+Lös problemet och justera för den längre URI:n genom att redigera registernycklarna och på `UrlSegmentMaxCount` datorn genom att följa stegen `UrlSegmentMaxLength` nedan. Standardvärdena för dessa nycklar beskrivs i det här avsnittet, [Http.sys registerinställningar för Windows](/troubleshoot/iis/httpsys-registry-windows).
 
 > [!IMPORTANT]
-> Innan du börjar ska du se till att spara ditt arbete. Den här lösningen kräver att du startar om datorn när du är klar så att ändringarna börjar gälla.
+> Se till att spara ditt arbete innan du börjar. Den här lösningen kräver att du startar om datorn när du är klar så att ändringarna kan börja gälla.
 
-1. Öppna fönstret **Kör** på datorn och kör `regedit` kommandot som öppnar Registereditorn.
+1. Öppna fönstret Kör på **datorn** och kör kommandot `regedit` som öppnar registereditorn.
 
-1. I rutan **User Account Control** väljer du **Ja** för att tillåta ändringarna på datorn.
+1. I rutan **User Account Control** du Ja **för** att tillåta dina ändringar på datorn.
 
-1. I den vänstra rutan under **dator** expanderar du noderna längs sökvägen, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters** och väljer sedan **parametrar**.
+1. I den vänstra rutan under **Dator** expanderar du noderna längs sökvägen, **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters** och väljer sedan **Parametrar**.
 
-1. Leta upp register nycklarna i den högra `UrlSegmentMaxCount` rutan `UrlSegmentMaxLength` .
+1. Leta reda på registernycklarna `UrlSegmentMaxCount` och i den högra `UrlSegmentMaxLength` rutan.
 
-1. Öka de här nyckel värdena så att URI: erna kan hantera de namn som du vill använda. Om nycklarna inte finns lägger du till dem i mappen **parametrar** genom att följa dessa steg:
+1. Öka de här nyckelvärdena tillräckligt så att URI:erna kan hantera de namn som du vill använda. Om nycklarna inte finns lägger du till dem i mappen **Parametrar** genom att följa dessa steg:
 
-   1. Från snabb menyn **parametrar** väljer du **nytt**  >  **DWORD-värde (32-bitars)**.
+   1. På **snabbmenyn Parametrar** väljer du **Nytt**  >  **DWORD-värde (32-bitars).**
 
-   1. Ange `UrlSegmentMaxCount` som det nya nyckel namnet i redigerings rutan som visas.
+   1. I redigeringsrutan som visas anger du `UrlSegmentMaxCount` som det nya nyckelnamnet.
 
-   1. Öppna snabb menyn för den nya nyckeln och välj **ändra**.
+   1. Öppna snabbmenyn för den nya nyckeln och välj **Ändra**.
 
-   1. I rutan **Redigera sträng** som visas anger du det **värde** värdes nyckel värde som du vill ha i hexadecimalt eller decimalt format. `400`I hexadecimal till exempel motsvarar `1024` i decimal tal.
+   1. I rutan **Redigera sträng** som visas anger du värdet för **den värdedatanyckel** som du vill använda i hexadecimalt eller decimalformat. I till exempel `400` hexadecimalt motsvarar i `1024` decimaltal.
 
-   1. Upprepa dessa steg om du vill lägga till ett `UrlSegmentMaxLength` nyckel värde.
+   1. Upprepa dessa steg `UrlSegmentMaxLength` för att lägga till nyckelvärdet.
 
-   När du har ökat eller lagt till dessa nyckel värden ser Registereditorn ut som i det här exemplet:
+   När du har ökat eller lagt till dessa nyckelvärden ser registereditorn ut som i det här exemplet:
 
-   ![Skärm bild som visar Registereditorn.](media/create-stateful-stateless-workflows-visual-studio-code/edit-registry-settings-uri-length.png)
+   ![Skärmbild som visar registereditorn.](media/create-stateful-stateless-workflows-visual-studio-code/edit-registry-settings-uri-length.png)
 
-1. När du är klar startar du om datorn så att ändringarna kan börja gälla.
+1. När du är klar startar du om datorn så att ändringarna börjar gälla.
 
 <a name="debugging-fails-to-start"></a>
 
 ### <a name="debugging-session-fails-to-start"></a>Det går inte att starta felsökningssessionen
 
-När du försöker starta en felsökningssession får du ett fel meddelande om att det **redan finns ett fel när du har kört PreLaunchTask generateDebugSymbols**. Lös problemet genom att redigera **tasks.jspå** filen i projektet för att hoppa över symbol skapande.
+När du försöker starta en felsökningssession får du felet **"Error exists after running preLaunchTask 'generateDebugSymbols'" (Felet finns efter körningen preLaunchTask 'generateDebugSymbols').** Lös problemet genom att redigera filen **tasks.jsi** projektet för att hoppa över symbolgenereringen.
 
-1. I ditt projekt expanderar du **. VSCode** -mappen och öppnar filen **tasks.js** .
+1. I projektet expanderar du **mappen .vscode** och öppnar mappen **tasks.jspå** filen.
 
-1. I följande uppgift tar du bort raden, `"dependsOn: "generateDebugSymbols"` tillsammans med det kommatecken som avslutar föregående rad, till exempel:
+1. I följande uppgift tar du bort raden `"dependsOn: "generateDebugSymbols"` , tillsammans med kommatecken som slutar på föregående rad, till exempel:
 
    Innan:
 
@@ -1448,7 +1448,7 @@ När du försöker starta en felsökningssession får du ett fel meddelande om a
 
 ## <a name="next-steps"></a>Nästa steg
 
-Vi vill gärna höra om dina upplevelser med tillägget Azure Logic Apps (förhands granskning)!
+Vi vill veta mer om dina erfarenheter av Azure Logic Apps (förhandsversion) !
 
-* [Skapa problem i GitHub](https://github.com/Azure/logicapps/issues)för buggar eller problem.
-* [Använd det här formuläret](https://aka.ms/lafeedback)för frågor, förfrågningar, kommentarer och annan feedback.
+* För buggar eller problem skapar [du dina problem i GitHub.](https://github.com/Azure/logicapps/issues)
+* Använd det här feedbackformuläret för frågor, begäranden, kommentarer [och annan feedback.](https://aka.ms/lafeedback)

@@ -21,7 +21,7 @@
           displayName: 'firewall, proxy, open ports'
           href: quickstart-system-prerequisites.md
         - name: Komma igång med Azure Defender for IoT
-          displayName: 'getting started, registration, onboarding'
+          displayName: 'getting started, registration, onboarding, activation, threat intelligence'
           href: getting-started.md
     - name: Agentbaserad lösning för enhetsskapare
       items:
@@ -33,7 +33,7 @@
           href: quickstart-standalone-agent-binary-installation.md
         - name: Skapa en Defender IoT-mikroagentmodultvilling (förhandsversion)
           href: quickstart-create-micro-agent-module-twin.md
-        - name: Skapa Defender for IoT-mikroagenten från källkod (förhandsversion)
+        - name: Skapa Defender for IoT-mikroagenten från källkoden (förhandsversion)
           displayName: 'baseline, configuration, customize, distribution'
           href: quickstart-building-the-defender-micro-agent-from-source.md
         - name: Konfigurera Defender-IoT-micro-agent för Azure RTOS
@@ -96,12 +96,12 @@
             - name: Azure-säkerhetsbaslinje för Azure Defender for IoT
               displayName: 'identity management, active directory, privileged access, data protection, incident response, posture, vulnerability, governance'
               href: security-baseline.md
-            - name: Klassisk händelseaggregering för Defender-IoT-micro-agent
+            - name: Klassisk händelsesammanställning för Defender-IoT-micro-agent
               displayName: 'twin, default, configuration, alerts'
               href: event-aggregation.md
             - name: Agentbaserade säkerhetsaviseringar
               href: agent-based-security-alerts.md
-            - name: Agentbaserade anpassade säkerhetsaviseringar
+            - name: Anpassade aviseringar för agentbaserad säkerhet
               href: agent-based-security-custom-alerts.md
             - name: Agentbaserade rekommendationer
               href: agent-based-recommendations.md
@@ -122,8 +122,8 @@
               href: how-to-install-software.md
         - name: Förbereda sensorer
           items:
-            - name: Hantera sensorer
-              displayName: 'onboard, cloud, register, activate, offboard, subscription, subscriptions, offboarding'
+            - name: Registrera sensorer
+              displayName: 'onboard, cloud, register, version, activate, offboard, subscription, threat intelligence, packages, connected'
               href: how-to-manage-sensors-on-the-cloud.md
             - name: Aktivera och konfigurera sensor
               displayName: 'deployment, onboard, register, activation, SSL, TLS, certificate, cloud connected, sign in, login, setup, learning mode, initial'
@@ -171,6 +171,7 @@
           displayName: 'mail, SMTP, activation, certificate, software update, backup, restore, proxy, password recovery'
         - name: Arbeta med paket för hotinformation
           href: how-to-work-with-threat-intelligence-packages.md
+          displayName: 'packages, automatic, intelligence, push, threat'
         - name: Arbeta med information om enhetsinventering
           items:
             - name: Undersök alla identifieringar av företagssensorer i en enhetsinventering

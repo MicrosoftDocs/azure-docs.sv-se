@@ -1,6 +1,6 @@
 ---
-title: Azure våren Cloud CI/CD med GitHub-åtgärder
-description: Skapa ett CI/CD-arbetsflöde för Azure våren Cloud med GitHub-åtgärder
+title: Azure Spring Cloud CI/CD med GitHub Actions
+description: Så här skapar du ETT CI/CD-arbetsflöde för Azure Spring Cloud med GitHub Actions
 author: MikeDodaro
 ms.author: barbkess
 ms.service: spring-cloud
@@ -8,36 +8,36 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java, devx-track-azurecli
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 8400fcacbfa4c76aceb079b788255e3d3b83ce33
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c52279108a8fd8d5a7ac8bbd7c8eb215097b21b0
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104878292"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107791363"
 ---
-# <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure våren Cloud CI/CD med GitHub-åtgärder
+# <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure Spring Cloud CI/CD med GitHub Actions
 
-GitHub-åtgärder har stöd för ett arbets flöde för automatisk program varu utvecklings livs cykel. Med GitHub-åtgärder för Azure våren Cloud kan du skapa arbets flöden i din lagrings plats för att skapa, testa, paketera, lansera och distribuera dem till Azure. 
+GitHub Actions stöd för ett arbetsflöde för automatiserad programutvecklingslivscykel. Med GitHub Actions för Azure Spring Cloud kan du skapa arbetsflöden på din lagringsplats för att skapa, testa, paketera, släppa och distribuera till Azure. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 Det här exemplet kräver [Azure CLI](/cli/azure/install-azure-cli).
 
 ::: zone pivot="programming-language-csharp"
 ## <a name="set-up-github-repository-and-authenticate"></a>Konfigurera GitHub-lagringsplatsen och autentisera
-Du behöver en Azure-tjänstens huvud namn för att godkänna Azure login-åtgärden. Kör följande kommandon på den lokala datorn för att få en Azure-autentiseringsuppgift:
+Du behöver autentiseringsuppgifter för Azure-tjänstens huvudnamn för att auktorisera Azure-inloggningsåtgärden. Kör följande kommandon på den lokala datorn för att hämta en Azure-autentiseringsidentifiering:
 
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
 
-För att få åtkomst till en speciell resurs grupp kan du minska omfånget:
+Om du vill komma åt en specifik resursgrupp kan du minska omfånget:
 
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
 
-Kommandot ska generera ett JSON-objekt:
+Kommandot ska mata ut ett JSON-objekt:
 
 ```JSON
 {
@@ -49,18 +49,18 @@ Kommandot ska generera ett JSON-objekt:
 }
 ```
 
-I det här exemplet används [steeltoe-exemplet på GitHub](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample).  Förgrena databasen, öppna sidan GitHub-lagringsplats för förgrening och välj fliken **Inställningar** . Öppna **hemligheter** -menyn och välj **ny hemlighet**:
+I det här exemplet [används exemplet på metalltå på GitHub](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples/tree/master/steeltoe-sample).  Förförför lagringsplatsen öppnar du gitHub-lagringsplatsens sida för förk. Välj **sedan fliken** Inställningar. Öppna menyn **Hemligheter** och välj **Ny hemlighet:**
 
  ![Lägg till ny hemlighet](./media/github-actions/actions1.png)
 
-Ange det hemliga namnet till `AZURE_CREDENTIALS` och dess värde till JSON-strängen som du hittade under rubriken *Konfigurera din GitHub-lagringsplats och autentisera*.
+Ange det hemliga namnet till och dess värde till den JSON-sträng som du hittade `AZURE_CREDENTIALS` under rubriken Konfigurera din *GitHub-lagringsplats och autentisera*.
 
  ![Ange hemliga data](./media/github-actions/actions2.png)
 
-Du kan också hämta autentiseringsuppgifter för Azure-inloggning från Key Vault i GitHub-åtgärder som beskrivs i [autentisera Azure-våren med Key Vault i GitHub-åtgärder](./spring-cloud-github-actions-key-vault.md).
+Du kan också hämta Autentiseringsuppgifter för Azure-inloggning från Key Vault i GitHub actions enligt förklaringen i Autentisera [Azure Spring med Key Vault i GitHub Actions](./spring-cloud-github-actions-key-vault.md).
 
-## <a name="provision-service-instance"></a>Etablera tjänst instans
-För att etablera din Azure våren Cloud Service-instans kör du följande kommandon med hjälp av Azure CLI.
+## <a name="provision-service-instance"></a>Etablera tjänstinstans
+Om du vill Azure Spring Cloud instans av tjänsten kör du följande kommandon med hjälp av Azure CLI.
 
 ```azurecli
 az extension add --name spring-cloud
@@ -69,14 +69,14 @@ az spring-cloud create -n <service instance name> -g <resource group name>
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/Azure-Spring-Cloud-Samples --label main --search-paths steeltoe-sample/config
 ```
 
-## <a name="build-the-workflow"></a>Bygg arbets flödet
-Arbets flödet definieras med hjälp av följande alternativ.
+## <a name="build-the-workflow"></a>Skapa arbetsflödet
+Arbetsflödet definieras med följande alternativ.
 
 ### <a name="prepare-for-deployment-with-azure-cli"></a>Förbereda för distribution med Azure CLI
 
-Kommandot `az spring-cloud app create` är för närvarande inte idempotenta. När du har kört det en gång får du ett fel meddelande om du kör samma kommando igen. Vi rekommenderar det här arbets flödet på befintliga Azure våren-molnappar och-instanser.
+Kommandot är `az spring-cloud app create` för närvarande inte idempotent. När du har kört den en gång får du ett felmeddelande om du kör samma kommando igen. Vi rekommenderar det här arbetsflödet på Azure Spring Cloud appar och instanser.
 
-Använd följande Azure CLI-kommandon för att förbereda:
+Använd följande Azure CLI-kommandon för förberedelse:
 ```
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
@@ -84,9 +84,9 @@ az spring-cloud app create --name planet-weather-provider
 az spring-cloud app create --name solar-system-weather
 ```
 
-### <a name="deploy-with-azure-cli-directly"></a>Distribuera med Azure CLI direkt
+### <a name="deploy-with-azure-cli-directly"></a>Distribuera direkt med Azure CLI
 
-Skapa `.github/workflows/main.yml` filen i lagrings platsen med följande innehåll. Ersätt `<your resource group name>` och `<your service name>` med rätt värden.
+Skapa `.github/workflows/main.yml` filen på lagringsplatsen med följande innehåll. Ersätt `<your resource group name>` `<your service name>` och med rätt värden.
 
 ```yaml
 name: Steeltoe-CD
@@ -147,16 +147,16 @@ jobs:
 
 ::: zone pivot="programming-language-java"
 ## <a name="set-up-github-repository-and-authenticate"></a>Konfigurera GitHub-lagringsplatsen och autentisera
-Du behöver en Azure-tjänstens huvud namn för att godkänna Azure login-åtgärden. Kör följande kommandon på den lokala datorn för att få en Azure-autentiseringsuppgift:
+Du behöver autentiseringsuppgifter för Azure-tjänstens huvudnamn för att auktorisera Azure-inloggningsåtgärden. Kör följande kommandon på den lokala datorn för att hämta en Azure-autentiseringsidentifiering:
 ```
 az login
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID> --sdk-auth 
 ```
-För att få åtkomst till en speciell resurs grupp kan du minska omfånget:
+Om du vill komma åt en specifik resursgrupp kan du minska omfånget:
 ```
 az ad sp create-for-rbac --role contributor --scopes /subscriptions/<SUBSCRIPTION_ID>/resourceGroups/<RESOURCE_GROUP> --sdk-auth
 ```
-Kommandot ska generera ett JSON-objekt:
+Kommandot ska mata ut ett JSON-objekt:
 ```JSON
 {
     "clientId": "<GUID>",
@@ -167,31 +167,31 @@ Kommandot ska generera ett JSON-objekt:
 }
 ```
 
-I det här exemplet används [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics) -exemplet på GitHub.  Förgrena exemplet, öppna GitHub-lagringsplatsen och klicka på fliken **Inställningar** . Öppna **hemligheter** -menyn och klicka på **Lägg till en ny hemlighet**:
+I det här exemplet [används Exempel på SymmetryMetrics](https://github.com/Azure-Samples/piggymetrics) på GitHub.  Förkampa exemplet, öppna sidan gitHub-lagringsplats och klicka **på fliken** Inställningar. Öppna **menyn Hemligheter** och klicka på Lägg till en ny **hemlighet:**
 
  ![Lägg till ny hemlighet](./media/github-actions/actions1.png)
 
-Ange det hemliga namnet till `AZURE_CREDENTIALS` och dess värde till JSON-strängen som du hittade under rubriken *Konfigurera din GitHub-lagringsplats och autentisera*.
+Ange det hemliga namnet till och dess värde till den JSON-sträng som du hittade under rubriken Konfigurera din `AZURE_CREDENTIALS` *GitHub-lagringsplats och autentisera*.
 
  ![Ange hemliga data](./media/github-actions/actions2.png)
 
-Du kan också hämta autentiseringsuppgifter för Azure-inloggning från Key Vault i GitHub-åtgärder som beskrivs i [autentisera Azure-våren med Key Vault i GitHub-åtgärder](./spring-cloud-github-actions-key-vault.md).
+Du kan också hämta autentiseringsuppgifterna för Azure-Key Vault i GitHub-åtgärder enligt förklaringen i Autentisera [Azure Spring med Key Vault i GitHub Actions](./spring-cloud-github-actions-key-vault.md).
 
-## <a name="provision-service-instance"></a>Etablera tjänst instans
-För att etablera din Azure våren Cloud Service-instans kör du följande kommandon med hjälp av Azure CLI.
+## <a name="provision-service-instance"></a>Etablera tjänstinstans
+Om du vill Azure Spring Cloud-tjänstinstansen kör du följande kommandon med hjälp av Azure CLI.
 ```
 az extension add --name spring-cloud
 az group create --location eastus --name <resource group name>
 az spring-cloud create -n <service instance name> -g <resource group name>
 az spring-cloud config-server git set -n <service instance name> --uri https://github.com/xxx/piggymetrics --label config
 ```
-## <a name="build-the-workflow"></a>Bygg arbets flödet
-Arbets flödet definieras med hjälp av följande alternativ.
+## <a name="build-the-workflow"></a>Skapa arbetsflödet
+Arbetsflödet definieras med följande alternativ.
 
 ### <a name="prepare-for-deployment-with-azure-cli"></a>Förbereda för distribution med Azure CLI
-Kommandot `az spring-cloud app create` är för närvarande inte idempotenta.  Vi rekommenderar det här arbets flödet på befintliga Azure våren-molnappar och-instanser.
+Kommandot är `az spring-cloud app create` för närvarande inte idempotent.  Vi rekommenderar det här arbetsflödet på Azure Spring Cloud appar och instanser.
 
-Använd följande Azure CLI-kommandon för att förbereda:
+Använd följande Azure CLI-kommandon för förberedelse:
 ```
 az configure --defaults group=<service group name>
 az configure --defaults spring-cloud=<service instance name>
@@ -200,8 +200,8 @@ az spring-cloud app create --name auth-service
 az spring-cloud app create --name account-service
 ```
 
-### <a name="deploy-with-azure-cli-directly"></a>Distribuera med Azure CLI direkt
-Skapa `.github/workflow/main.yml` filen på lagrings platsen:
+### <a name="deploy-with-azure-cli-directly"></a>Distribuera direkt med Azure CLI
+Skapa filen `.github/workflow/main.yml` på lagringsplatsen:
 
 ```
 name: AzureSpringCloud
@@ -244,12 +244,12 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>Distribuera med Azure CLI-åtgärd
-AZ- `run` kommandot kommer att använda den senaste versionen av Azure CLI. Om det finns andra ändringar kan du även använda en speciell version av Azure CLI med Azure/CLI `action` . 
+Kommandot az `run` använder den senaste versionen av Azure CLI. Om det sker större ändringar kan du också använda en specifik version av Azure CLI med `action` azure/CLI. 
 
 > [!Note] 
-> Det här kommandot körs i en ny behållare, så `env` fungerar inte, och fil åtkomst för kors åtgärder kan ha extra begränsningar.
+> Det här kommandot körs i en ny container, så det fungerar inte, och `env` åtkomst mellan åtgärder kan ha extra begränsningar.
 
-Skapa filen. GitHub/Workflow/main. yml på lagrings platsen:
+Skapa filen .github/workflow/main.yml på lagringsplatsen:
 ```
 name: AzureSpringCloud
 on: push
@@ -288,8 +288,8 @@ jobs:
           az spring-cloud app deploy -n auth-service --jar-path $GITHUB_WORKSPACE/auth-service/target/auth-service.jar
 ```
 
-## <a name="deploy-with-maven-plugin"></a>Distribuera med maven-plugin-programmet
-Ett annat alternativ är att använda [maven-plugin-programmet](./spring-cloud-quickstart.md) för att distribuera jar-och uppdaterings inställningarna för appen. Kommandot `mvn azure-spring-cloud:deploy` är idempotenta och kommer automatiskt att skapa appar om det behövs. Du behöver inte skapa motsvarande appar i förväg.
+## <a name="deploy-with-maven-plugin"></a>Distribuera med Maven-plugin-programmet
+Ett annat alternativ är att använda [Maven-plugin-programmet](./spring-cloud-quickstart.md) för att distribuera Jar och uppdatera appinställningarna. Kommandot är `mvn azure-spring-cloud:deploy` idempotent och skapar automatiskt Appar om det behövs. Du behöver inte skapa motsvarande appar i förväg.
 
 ```
 name: AzureSpringCloud
@@ -325,20 +325,20 @@ jobs:
 
 ::: zone-end
 
-## <a name="run-the-workflow"></a>Kör arbets flödet
+## <a name="run-the-workflow"></a>Kör arbetsflödet
 
-GitHub- **åtgärder** ska aktive ras automatiskt när du push-överför `.github/workflow/main.yml` till GitHub. Åtgärden utlöses när du push-överför en ny incheckning. Om du skapar filen i webbläsaren bör åtgärden redan ha körts.
+GitHub **Actions** ska aktiveras automatiskt när du har `.github/workflow/main.yml` push-aktiverat till GitHub. Åtgärden utlöses när du push-genomför en ny. Om du skapar den här filen i webbläsaren bör åtgärden redan ha körts.
 
-Verifiera att åtgärden har Aktiver ATS genom att klicka på fliken **åtgärder** på sidan GitHub-lagringsplats:
+Kontrollera att åtgärden har aktiverats genom att klicka på **fliken Åtgärder** på gitHub-lagringsplatsens sida:
 
-![Verifiera aktive rad åtgärd](./media/github-actions/actions3.png)
+![Kontrollera att åtgärden är aktiverad](./media/github-actions/actions3.png)
 
-Om åtgärden körs som ett fel, till exempel om du inte har angett Azure-autentiseringsuppgiften, kan du köra kontrollerna igen efter att ha åtgärdat felet. På sidan GitHub-lagringsplats klickar du på **åtgärder**, väljer den angivna arbets flödes uppgiften och klickar sedan på knappen **Kör om kontroller** för att köra om kontrollerna:
+Om åtgärden körs med ett fel, till exempel om du inte har angett Azure-autentiseringssuppgifter, kan du köra kontroller igen när du har åtgärdat felet. På gitHub-lagringsplatsens sida klickar du på **Åtgärder,** väljer den specifika arbetsflödesuppgiften och klickar sedan på knappen Kör **om kontroller** för att köra kontroller igen:
 
-![Kör om kontroller](./media/github-actions/actions4.png)
+![Köra kontroller igen](./media/github-actions/actions4.png)
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Key Vault för GitHub-åtgärder för våren Cloud](./spring-cloud-github-actions-key-vault.md)
-* [Azure Active Directory tjänstens huvud namn](/cli/azure/ad/sp#az-ad-sp-create-for-rbac)
+* [Key Vault för Spring Cloud GitHub-åtgärder](./spring-cloud-github-actions-key-vault.md)
+* [Azure Active Directory tjänstens huvudnamn](/cli/azure/ad/sp#az_ad_sp_create_for_rbac)
 * [GitHub-åtgärder för Azure](https://github.com/Azure/actions/)

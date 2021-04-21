@@ -1,50 +1,50 @@
 ---
-title: API-servern auktoriserade IP-intervall i Azure Kubernetes service (AKS)
-description: Lär dig hur du skyddar klustret med hjälp av ett IP-adressintervall för åtkomst till API-servern i Azure Kubernetes service (AKS)
+title: API-server-auktoriserade IP-intervall i Azure Kubernetes Service (AKS)
+description: Lär dig hur du skyddar klustret med ett IP-adressintervall för åtkomst till API-servern i Azure Kubernetes Service (AKS)
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: 20c3d46e9a19c66c727e5a21bccd6caa0dc5f0ba
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 8fca3fe61e26a031e6ea09692c9ba0781bfca21f
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104771931"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107769651"
 ---
-# <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Säker åtkomst till API-servern med behöriga IP-adressintervall i Azure Kubernetes service (AKS)
+# <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Säker åtkomst till API-servern med auktoriserade IP-adressintervall i Azure Kubernetes Service (AKS)
 
-I Kubernetes tar API-servern emot begär Anden för att utföra åtgärder i klustret, till exempel för att skapa resurser eller skala antalet noder. API-servern är det centrala sättet att interagera med och hantera ett kluster. För att förbättra kluster säkerheten och minimera angrepp bör API-servern endast vara tillgänglig från en begränsad uppsättning IP-adressintervall.
+I Kubernetes tar API-servern emot begäranden om att utföra åtgärder i klustret, till exempel för att skapa resurser eller skala antalet noder. API-servern är det centrala sättet att interagera med och hantera ett kluster. För att förbättra klustersäkerheten och minimera attacker bör API-servern endast vara tillgänglig från en begränsad uppsättning IP-adressintervall.
 
-Den här artikeln visar hur du använder tillåtna IP-adressintervall för API-Server för att begränsa vilka IP-adresser och CIDR-områden som kan komma åt kontroll planet.
+Den här artikeln visar hur du använder API-serverns auktoriserade IP-adressintervall för att begränsa vilka IP-adresser och CIDR som kan komma åt kontrollplanet.
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
 Den här artikeln visar hur du skapar ett AKS-kluster med hjälp av Azure CLI.
 
-Du behöver Azure CLI-versionen 2.0.76 eller senare installerad och konfigurerad. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
+Azure CLI version 2.0.76 eller senare måste vara installerat och konfigurerat. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][install-azure-cli].
 
 ### <a name="limitations"></a>Begränsningar
 
-Funktionen för auktoriserade IP-adressintervall i API-servern har följande begränsningar:
-- På kluster som skapats efter att de IP-adressintervall som har auktoriserats av API-servern har flyttats bort från för hands versionen i oktober 2019, stöds endast API-serverns auktoriserade IP-adressintervall på *standard* -SKU: n. Befintliga kluster med den *grundläggande* SKU-belastningsutjämnaren och den API-server som har kon figurer ATS, fortsätter att fungera som det är men kan inte migreras till en *standard* -SKU. De befintliga klustren kommer också att fortsätta fungera om deras Kubernetes-version eller kontroll plan uppgraderas. Auktoriserade IP-adressintervall stöds inte för privata kluster i API-servern.
-- Den här funktionen är inte kompatibel med kluster som använder [offentlig IP per nod](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools).
+Funktionen auktoriserat IP-intervall för API-servern har följande begränsningar:
+- I kluster som skapades efter att API-serverns auktoriserade IP-adressintervall flyttades utanför förhandsversionen i oktober  2019 stöds endast API-serverns auktoriserade IP-adressintervall i standard-SKU-lastbalanseraren. Befintliga kluster med Basic SKU-lastbalanseraren och API-serverns auktoriserade IP-adressintervall som konfigurerats fortsätter att fungera som de är, men kan inte migreras till en  *standard-SKU-lastbalanserare.* Dessa befintliga kluster fortsätter också att fungera om deras Kubernetes-version eller kontrollplan uppgraderas. API-serverns auktoriserade IP-adressintervall stöds inte för privata kluster.
+- Den här funktionen är inte kompatibel med kluster som använder [offentlig IP per nod.](use-multiple-node-pools.md#assign-a-public-ip-per-node-for-your-node-pools)
 
-## <a name="overview-of-api-server-authorized-ip-ranges"></a>Översikt över tillåtna IP-intervall för API-Server
+## <a name="overview-of-api-server-authorized-ip-ranges"></a>Översikt över API-server-auktoriserade IP-intervall
 
-Kubernetes-API-servern är hur de underliggande Kubernetes-API: erna exponeras. Den här komponenten ger interaktion för hanterings verktyg, till exempel `kubectl` eller Kubernetes-instrumentpanelen. AKS tillhandahåller ett kluster kontroll plan med en enda klient, med en särskild API-Server. Som standard tilldelas API-servern en offentlig IP-adress och du bör kontrol lera åtkomsten med hjälp av Kubernetes-rollbaserad åtkomst kontroll (Kubernetes RBAC) eller Azure RBAC.
+Kubernetes API-servern är hur de underliggande Kubernetes-API:erna exponeras. Den här komponenten ger interaktion för hanteringsverktyg, till exempel `kubectl` eller Kubernetes-instrumentpanelen. AKS tillhandahåller ett kontrollplan för en enda klient med en dedikerad API-server. Som standard tilldelas API-servern en offentlig IP-adress och du bör styra åtkomsten med hjälp av rollbaserad åtkomstkontroll (Kubernetes RBAC) eller Azure RBAC.
 
-Du kan aktivera och använda auktoriserade IP-intervall för att skydda åtkomsten till den allmänt tillgängliga AKS kontroll planet/API-servern. Dessa auktoriserade IP-adressintervall tillåter endast att definierade IP-adressintervall kommunicerar med API-servern. En begäran till API-servern från en IP-adress som inte är en del av dessa auktoriserade IP-intervall är blockerad. Fortsätt att använda Kubernetes RBAC eller Azure RBAC för att auktorisera användare och de åtgärder som de begär.
+Om du vill skydda åtkomsten till den offentligt tillgängliga AKS-kontrollplanet/API-servern kan du aktivera och använda auktoriserade IP-intervall. Dessa auktoriserade IP-intervall tillåter endast att definierade IP-adressintervall kommunicerar med API-servern. En begäran som görs till API-servern från en IP-adress som inte ingår i dessa auktoriserade IP-intervall blockeras. Fortsätt att använda Kubernetes RBAC eller Azure RBAC för att auktorisera användare och de åtgärder som de begär.
 
-Mer information om API-servern och andra kluster komponenter finns i [Kubernetes Core Concepts for AKS][concepts-clusters-workloads].
+Mer information om API-servern och andra klusterkomponenter finns i [Kubernetes core concepts for AKS (Kubernetes-kärnbegrepp för AKS).][concepts-clusters-workloads]
 
-## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Skapa ett AKS-kluster med autentiserade IP-intervall för API-servern
+## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Skapa ett AKS-kluster med API-serverns auktoriserade IP-intervall aktiverade
 
-Skapa ett kluster med hjälp av [AZ AKS Create][az-aks-create] och ange *`--api-server-authorized-ip-ranges`* parametern för att tillhandahålla en lista över tillåtna IP-adressintervall. Dessa IP-adressintervall är vanligt vis adress intervall som används av dina lokala nätverk eller offentliga IP-adresser. När du anger ett CIDR-intervall börjar du med den första IP-adressen i intervallet. Till exempel är *137.117.106.90/29* ett giltigt intervall, men se till att du anger den första IP-adressen i intervallet, till exempel *137.117.106.88/29*.
+Skapa ett kluster med [az aks create och ange][az-aks-create] *`--api-server-authorized-ip-ranges`* parametern för att tillhandahålla en lista över auktoriserade IP-adressintervall. Dessa IP-adressintervall är vanligtvis adressintervall som används av dina lokala nätverk eller offentliga IP-adresser. När du anger ett CIDR-intervall börjar du med den första IP-adressen i intervallet. Till exempel är *137.117.106.90/29* ett giltigt intervall, men se till att du anger den första IP-adressen i intervallet, till exempel *137.117.106.88/29*.
 
 > [!IMPORTANT]
-> Som standard använder klustret [standard SKU-belastningsutjämnaren][standard-sku-lb] som du kan använda för att konfigurera den utgående gatewayen. När du aktiverar tillåtna IP-adressintervall för API-servern när klustret skapas, tillåts även den offentliga IP-adressen för klustret som standard utöver de intervall som du anger. Om du anger värdet *""* eller Nej för *`--api-server-authorized-ip-ranges`* , inaktive ras API-serverns auktoriserade IP-intervall. Observera att om du använder PowerShell kan du använda *`--api-server-authorized-ip-ranges=""`* (med likhets tecken) för att undvika tolknings problem.
+> Som standard använder klustret [standard-SKU-lastbalanserare][standard-sku-lb] som du kan använda för att konfigurera den utgående gatewayen. När du aktiverar API-serverns auktoriserade IP-intervall när klustret skapas tillåts även den offentliga IP-adressen för klustret som standard utöver de intervall som du anger. Om du anger *"" eller* inget värde för *`--api-server-authorized-ip-ranges`* inaktiveras API-serverns auktoriserade IP-intervall. Observera att om du använder PowerShell kan du använda *`--api-server-authorized-ip-ranges=""`* (med likhetstecken) för att undvika parsningsproblem.
 
-I följande exempel skapas ett kluster med en nod med namnet *myAKSCluster* i resurs gruppen med namnet *myResourceGroup* med autentiserade IP-adressintervall för API-servern. De IP-adressintervall som tillåts är *73.140.245.0/24*:
+I följande exempel skapas ett kluster med en nod med namnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup* med API-serverns auktoriserade IP-intervall aktiverade. Ip-adressintervallen som *tillåts är 73.140.245.0/24:*
 
 ```azurecli-interactive
 az aks create \
@@ -59,17 +59,17 @@ az aks create \
 
 > [!NOTE]
 > Du bör lägga till dessa intervall i en lista över tillåtna:
-> - Brand väggens offentliga IP-adress
+> - Den offentliga IP-adressen för brandväggen
 > - Alla intervall som representerar nätverk som du ska administrera klustret från
-> - Om du använder Azure dev Spaces i ditt AKS-kluster måste du tillåta [ytterligare intervall baserat på din region][dev-spaces-ranges].
+> - Om du använder Azure Dev Spaces i ditt AKS-kluster måste du tillåta [ytterligare intervall baserat på din region.][dev-spaces-ranges]
 >
 > Den övre gränsen för antalet IP-intervall som du kan ange är 200.
 >
-> Det kan ta upp till 2min att sprida reglerna. Vänta tills du testar anslutningen.
+> Det kan ta upp till 2 min att sprida reglerna. Tillåt fram till den tiden när du testar anslutningen.
 
-### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Ange utgående IP-adresser för belastningsutjämnaren för standard-SKU
+### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Ange utgående IP-adresser för standard-SKU-lastbalanserare
 
-När du skapar ett AKS-kluster och anger utgående IP-adresser eller prefix för klustret, tillåts även dessa adresser eller prefix. Exempel:
+Om du anger utgående IP-adresser eller prefix för klustret när du skapar ett AKS-kluster tillåts även dessa adresser eller prefix. Exempel:
 
 ```azurecli-interactive
 az aks create \
@@ -83,15 +83,15 @@ az aks create \
     --generate-ssh-keys
 ```
 
-I ovanstående exempel tillåts alla IP-adresser som anges i parametern *`--load-balancer-outbound-ip-prefixes`* tillsammans med IP-adresserna i *`--api-server-authorized-ip-ranges`* parametern.
+I exemplet ovan tillåts alla IP-adresser som anges i *`--load-balancer-outbound-ip-prefixes`* parametern tillsammans med IP-adresser i *`--api-server-authorized-ip-ranges`* parametern .
 
-I stället kan du ange *`--load-balancer-outbound-ip-prefixes`* parametern för att tillåta utgående IP-prefix för utgående belastningsutjämnare.
+I stället kan du ange parametern *`--load-balancer-outbound-ip-prefixes`* för att tillåta utgående IP-prefix för lastbalanseraren.
 
-### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Tillåt endast den utgående offentliga IP-adressen för standard-SKU-belastningsutjämnaren
+### <a name="allow-only-the-outbound-public-ip-of-the-standard-sku-load-balancer"></a>Tillåt endast den utgående offentliga IP-adressen för standard-SKU-lastbalanserare
 
-När du aktiverar API-serverns auktoriserade IP-intervall när klustret skapas, tillåts även den utgående offentliga IP-adressen för standard-SKU: n för klustret också som standard utöver de intervall som du anger. Om du bara vill tillåta den utgående offentliga IP-adressen för belastningsutjämnaren för standard-SKU använder du *0.0.0.0/32* när du anger *`--api-server-authorized-ip-ranges`* parametern.
+När du aktiverar API-serverns auktoriserade IP-intervall när klustret skapas tillåts även den utgående offentliga IP-adressen för standard-SKU-lastbalanseraren för klustret som standard utöver de intervall som du anger. Om du bara vill tillåta den utgående offentliga IP-adressen för standard-SKU-lastbalanseraren använder du *0.0.0.0/32* när du anger *`--api-server-authorized-ip-ranges`* parametern.
 
-I följande exempel tillåts endast den utgående offentliga IP-adressen för standard-SKU-belastningsutjämnaren tillåten och du kan bara komma åt API-servern från noderna i klustret.
+I följande exempel tillåts endast den utgående offentliga IP-adressen för standard-SKU:ns lastbalanserare och du kan bara komma åt API-servern från noderna i klustret.
 
 ```azurecli-interactive
 az aks create \
@@ -104,11 +104,11 @@ az aks create \
     --generate-ssh-keys
 ```
 
-## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Uppdatera ett klusters API-Server auktoriserade IP-intervall
+## <a name="update-a-clusters-api-server-authorized-ip-ranges"></a>Uppdatera ett klusters API-server-auktoriserade IP-intervall
 
-Om du vill uppdatera API-serverns auktoriserade IP-intervall i ett befintligt kluster använder du kommandot [AZ AKS Update][az-aks-update] och använder *`--api-server-authorized-ip-ranges`* parametrarna,--Load-Balancer-utgående-IP-prefix *, *`--load-balancer-outbound-ips`* eller--Load-Balancer-utgående-IP-prefix* .
+Om du vill uppdatera API-serverns auktoriserade IP-intervall i ett befintligt kluster använder du [kommandot az aks update][az-aks-update] och använder parametrarna *`--api-server-authorized-ip-ranges`* ,--load-balancer-outbound-ip-prefixes *, *`--load-balancer-outbound-ips`* eller--load-balancer-outbound-ip-prefixes.*
 
-I följande exempel uppdateras API-servern auktoriserade IP-intervall i klustret med namnet *myAKSCluster* i resurs gruppen med namnet *myResourceGroup*. Det IP-adressintervall som ska auktoriseras är *73.140.245.0/24*:
+I följande exempel uppdateras API-serverns auktoriserade IP-intervall i klustret med namnet *myAKSCluster* i resursgruppen med namnet *myResourceGroup*. IP-adressintervallet som ska godkännas *är 73.140.245.0/24:*
 
 ```azurecli-interactive
 az aks update \
@@ -117,11 +117,11 @@ az aks update \
     --api-server-authorized-ip-ranges  73.140.245.0/24
 ```
 
-Du kan också använda *0.0.0.0/32* när du anger *`--api-server-authorized-ip-ranges`* parametern om du bara vill tillåta den offentliga IP-adressen för den offentliga SKU-belastningsutjämnaren.
+Du kan också använda *0.0.0.0/32* när du anger parametern så att endast den offentliga IP-adressen för *`--api-server-authorized-ip-ranges`* standard-SKU:ns lastbalanserare tillåts.
 
 ## <a name="disable-authorized-ip-ranges"></a>Inaktivera auktoriserade IP-intervall
 
-Om du vill inaktivera auktoriserade IP-intervall använder du [AZ AKS Update][az-aks-update] och anger ett tomt intervall för att inaktivera API-serverns auktoriserade IP-intervall. Exempel:
+Om du vill inaktivera auktoriserade IP-intervall använder du [az aks update][az-aks-update] och anger ett tomt intervall för att inaktivera API-serverns auktoriserade IP-intervall. Exempel:
 
 ```azurecli-interactive
 az aks update \
@@ -132,7 +132,7 @@ az aks update \
 
 ## <a name="find-existing-authorized-ip-ranges"></a>Hitta befintliga auktoriserade IP-intervall
 
-Om du vill hitta IP-intervall som har auktoriserats använder du [AZ AKS show][az-aks-show] och anger klustrets namn och resurs grupp. Exempel:
+Om du vill hitta IP-intervall som har auktoriserats använder du [az aks show][az-aks-show] och anger klustrets namn och resursgrupp. Exempel:
 
 ```azurecli-interactive
 az aks show \
@@ -143,17 +143,17 @@ az aks show \
 
 ## <a name="update-disable-and-find-authorized-ip-ranges-using-azure-portal"></a>Uppdatera, inaktivera och hitta auktoriserade IP-intervall med hjälp av Azure Portal
 
-Ovanstående åtgärder för att lägga till, uppdatera, söka efter och inaktivera auktoriserade IP-intervall kan också utföras i Azure Portal. För att få åtkomst navigerar du till **nätverk** under **Inställningar** på Meny bladet i kluster resursen.
+Ovanstående åtgärder för att lägga till, uppdatera, hitta och inaktivera auktoriserade IP-intervall kan också utföras i Azure Portal. Om du vill komma åt går **du** till **Nätverk under** Inställningar på menybladet för klusterresursen.
 
-:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="I en webbläsare visar kluster resursens nätverks inställningar Azure Portal sidan. Alternativen &quot;Ange angivet IP-adressintervall&quot; och &quot;angivna IP-intervall&quot; är markerade.":::
+:::image type="content" source="media/api-server-authorized-ip-ranges/ip-ranges-specified.PNG" alt-text="I en webbläsare visas klusterresursens nätverksinställningar på Azure Portal sidan. Alternativen &quot;Ange angivet IP-intervall&quot; och &quot;Angivna IP-intervall&quot; är markerade.":::
 
-## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hur hittar jag min IP-adress som ingår i `--api-server-authorized-ip-ranges` ?
+## <a name="how-to-find-my-ip-to-include-in---api-server-authorized-ip-ranges"></a>Hur hittar jag min IP-adress som ska inkluderas i `--api-server-authorized-ip-ranges` ?
 
-Du måste lägga till utvecklings datorer, verktygs-eller Automation-IP-adresser i AKS-kluster listan över godkända IP-intervall för att få åtkomst till API-servern därifrån. 
+Du måste lägga till dina utvecklingsdatorer, verktygs- eller automatiserings-IP-adresser i AKS-klusterlistan över godkända IP-intervall för att få åtkomst till API-servern därifrån. 
 
-Ett annat alternativ är att konfigurera en hoppsida med nödvändiga verktyg i ett separat undernät i brand väggens virtuella nätverk. Detta förutsätter att din miljö har en brand vägg med respektive nätverk, och att du har lagt till brand Väggs-IP: er i tillåtna intervall. På samma sätt, om du har Tvingad tunnel trafik från AKS-undernätet till brand Väggs under nätet, är det också fint att gå till under nätet i klustret.
+Ett annat alternativ är att konfigurera en jumpbox med nödvändiga verktyg i ett separat undernät i brandväggens virtuella nätverk. Detta förutsätter att din miljö har en brandvägg med respektive nätverk och att du har lagt till brandväggs-IP-adresserna i auktoriserade intervall. Om du har tvingad tunneling från AKS-undernätet till brandväggsundernätet går det också bra att ha jumpboxen i klustrets undernät.
 
-Lägg till en annan IP-adress till de godkända intervallen med följande kommando.
+Lägg till ytterligare en IP-adress i godkända intervall med följande kommando.
 
 ```bash
 # Retrieve your IP address
@@ -163,21 +163,21 @@ az aks update -g $RG -n $AKSNAME --api-server-authorized-ip-ranges $CURRENT_IP/3
 ```
 
 >> [!NOTE]
-> Exemplet ovan lägger till den API-server som auktoriserade IP-intervall i klustret. Om du vill inaktivera auktoriserade IP-intervall använder du AZ AKS Update och anger ett tomt intervall "". 
+> Exemplet ovan lägger till API-serverns auktoriserade IP-intervall i klustret. Om du vill inaktivera auktoriserade IP-intervall använder du az aks update och anger ett tomt intervall "". 
 
-Ett annat alternativ är att använda kommandot nedan i Windows-system för att hämta den offentliga IPv4-adressen, eller så kan du använda stegen i [hitta din IP-adress](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address).
+Ett annat alternativ är att använda kommandot nedan på Windows-system för att hämta den offentliga IPv4-adressen, eller så kan du använda stegen i [Hitta din IP-adress.](https://support.microsoft.com/en-gb/help/4026518/windows-10-find-your-ip-address)
 
 ```azurepowershell-interactive
 Invoke-RestMethod http://ipinfo.io/json | Select -exp ip
 ```
 
-Du kan också hitta den här adressen genom att söka i "Vad är min IP-adress" i en webbläsare.
+Du kan också hitta den här adressen genom att söka efter "what is my IP address" (vad är min IP-adress) i en webbläsare.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du aktiverat tillåtna IP-intervall för API-servern. Den här metoden är en del av hur du kan köra ett säkert AKS-kluster.
+I den här artikeln har du aktiverat API-serverns auktoriserade IP-intervall. Den här metoden är en del av hur du kan köra ett säkert AKS-kluster.
 
-Mer information finns i [säkerhets begrepp för program och kluster i AKS][concepts-security] och [metod tips för kluster säkerhet och uppgraderingar i AKS][operator-best-practices-cluster-security].
+Mer information finns i [Säkerhetsbegrepp för program och][concepts-security] kluster i AKS och Metodtips för [klustersäkerhet och uppgraderingar i AKS.][operator-best-practices-cluster-security]
 
 <!-- LINKS - external -->
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
@@ -186,9 +186,9 @@ Mer information finns i [säkerhets begrepp för program och kluster i AKS][conc
 
 <!-- LINKS - internal -->
 [az-aks-update]: /cli/azure/ext/aks-preview/aks#ext-aks-preview-az-aks-update
-[az-aks-create]: /cli/azure/aks#az-aks-create
+[az-aks-create]: /cli/azure/aks#az_aks_create
 [az-aks-show]: /cli/azure/aks#az_aks_show
-[az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
+[az-network-public-ip-list]: /cli/azure/network/public-ip#az_network_public_ip_list
 [concepts-clusters-workloads]: concepts-clusters-workloads.md
 [concepts-security]: concepts-security.md
 [install-azure-cli]: /cli/azure/install-azure-cli

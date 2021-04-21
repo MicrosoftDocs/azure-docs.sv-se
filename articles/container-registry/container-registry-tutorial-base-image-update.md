@@ -1,27 +1,27 @@
 ---
-title: Självstudie – Utlös avbildnings skapande vid uppdatering av bas avbildning
-description: I den här självstudien får du lära dig hur du konfigurerar en Azure Container Registry aktivitet för att automatiskt utlösa behållar avbildnings avbildningar i molnet när en bas avbildning uppdateras i samma register.
+title: Självstudie – Utlösa avbildningsbygge vid uppdatering av basavbildning
+description: I den här självstudien får du lära dig hur du konfigurerar en Azure Container Registry-uppgift för att automatiskt utlösa containeravbildningsbyggen i molnet när en basavbildning uppdateras i samma register.
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 3add2f7b19b65341007c0549463ec156bf9d913f
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 6d83fb7796cecab686d52d561266bd41daef9e01
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106060310"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107780811"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Självstudie: automatisera behållar avbildningar skapar när en bas avbildning uppdateras i ett Azure Container Registry 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Självstudie: Automatisera containeravbildningsbyggen när en basavbildning uppdateras i ett Azure-containerregister 
 
-[ACR-aktiviteter](container-registry-tasks-overview.md) har stöd för automatisk behållar avbildning skapar när en behållares [bas avbildning uppdateras](container-registry-tasks-base-images.md), till exempel när du korrigerar operativ systemet eller program ramverket i en av dina bas avbildningar. 
+[ACR-uppgifter](container-registry-tasks-overview.md) har stöd för automatiserade containeravbildningsbyggen när en containers basavbildning [uppdateras,](container-registry-tasks-base-images.md)till exempel när du korrigerar operativsystemet eller programramverket i en av dina basavbildningar. 
 
-I den här självstudien får du lära dig hur du skapar en ACR-aktivitet som utlöser en version i molnet när en behållares bas avbildning skickas till samma register. Du kan också prova en själv studie kurs om du vill skapa en ACR-aktivitet som utlöser en avbildnings version när en bas avbildning skickas till [ett annat Azure Container Registry](container-registry-tutorial-private-base-image-update.md). 
+I den här självstudien får du lära dig hur du skapar en ACR-uppgift som utlöser en version i molnet när en containers basavbildning skickas till samma register. Du kan också prova en självstudie för att skapa en ACR-uppgift som utlöser en avbildningsbygge när en basavbildning skickas till ett [annat Azure-containerregister.](container-registry-tutorial-private-base-image-update.md) 
 
 I de här självstudierna har du
 
 > [!div class="checklist"]
 > * Skapa basavbildningen
-> * Skapa en program avbildning i samma register för att spåra bas avbildningen 
+> * Skapa en programavbildning i samma register för att spåra basavbildningen 
 > * Uppdatera basavbildningen till att utlösa en programavbildningsuppgift
 > * Visa den utlösta uppgiften
 > * Kontrollera den uppdaterade programavbildningen
@@ -37,7 +37,7 @@ Den här självstudien förutsätter att du redan har konfigurerat din miljö oc
 - Klona en exempellagringsplats
 - Skapa en personlig åtkomsttoken för GitHub
 
-Om du inte redan har gjort det, slutför du följande självstudier innan du fortsätter:
+Om du inte redan har gjort det slutför du följande självstudier innan du fortsätter:
 
 [Skapa containeravbildningar i molnet med Azure Container Registry-uppgifter](container-registry-tutorial-quick-task.md)
 
@@ -46,9 +46,9 @@ Om du inte redan har gjort det, slutför du följande självstudier innan du for
 ### <a name="configure-the-environment"></a>Konfigurera miljön
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
-- Den här artikeln kräver version 2.0.46 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.46 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
-Fyll i de här gränssnittsmiljövariablerna med värden som är lämpliga för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i de här miljövariablerna måste du ersätta varje värde manuellt var det visas i exempel kommandona.
+Fyll i de här gränssnittsmiljövariablerna med värden som är lämpliga för din miljö. Det här steget är inte obligatoriskt, men det gör det lite enklare att köra de flerradiga Azure CLI-kommandona i den här självstudien. Om du inte fyller i dessa miljövariabler måste du manuellt ersätta varje värde oavsett var det visas i exempelkommandona.
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -59,9 +59,9 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ### <a name="base-image-update-scenario"></a>Uppdateringsscenario för basavbildningar
 
-Den här självstudien vägleder dig genom ett bas avbildnings uppdaterings scenario där en bas avbildning och en program avbildning upprätthålls i ett enda register. 
+Den här självstudien går igenom ett uppdateringsscenario för basavbildningar där en basavbildning och en programavbildning underhålls i ett enda register. 
 
-[Kodexemplet][code-sample] innehåller två Docker-filer: en programavbildning och en avbildning som anges som bas. I följande avsnitt skapar du en ACR-uppgift som automatiskt utlöser en version av program avbildningen när en ny version av bas avbildningen skickas till samma behållar register.
+[Kodexemplet][code-sample] innehåller två Docker-filer: en programavbildning och en avbildning som anges som bas. I följande avsnitt skapar du en ACR-uppgift som automatiskt utlöser en version av programavbildningen när en ny version av basavbildningen skickas till samma containerregister.
 
 * [Dockerfile-app][dockerfile-app]: En liten Node.js-webbapp som återger en statisk webbsida som visar vilken Node.js-version den är baserad på. Versionssträngen är simulerad: den visar innehållet i miljövariabeln `NODE_VERSION`, som definieras i basavbildningen.
 
@@ -69,11 +69,11 @@ Den här självstudien vägleder dig genom ett bas avbildnings uppdaterings scen
 
 I följande avsnitt skapar du en uppgift, uppdaterar värdet `NODE_VERSION` i basavbildningen Dockerfile och använder sedan ACR Tasks för att skapa basavbildningen. När ACR-uppgiften skickar den nya basavbildningen till registret utlöser den automatiskt en version av programavbildningen. Du kan också köra programmets containeravbildning lokalt om du vill se andra versionssträngar i versionsavbildningarna.
 
-I den här självstudien skapar din ACR-uppgift och pushar en program behållar avbildning som anges i en Dockerfile. ACR-aktiviteter kan också köra [aktiviteter med flera steg](container-registry-tasks-multi-step.md), med hjälp av en yaml-fil för att definiera steg för att skapa, skicka och välja att testa flera behållare.
+I den här självstudien skapar och pushar din ACR-uppgift en programcontaineravbildning som anges i en Dockerfile. ACR-uppgifter kan också köra uppgifter i flera steg med hjälp av en YAML-fil för att definiera steg för att skapa, [push-skicka](container-registry-tasks-multi-step.md)och eventuellt testa flera containrar.
 
 ## <a name="build-the-base-image"></a>Skapa basavbildningen
 
-Börja med att skapa en bas avbildning med en *snabb uppgift* för ACR uppgifter med hjälp av [AZ ACR build][az-acr-build]. Enligt beskrivningen i den [första självstudien](container-registry-tutorial-quick-task.md) i serien skapar denna process inte bara avbildningen, utan skickar den även till containerregistret om den lyckas.
+Börja med att skapa basavbildningen med ACR-uppgifter *snabbuppgift ,* med [hjälp av az acr build][az-acr-build]. Enligt beskrivningen i den [första självstudien](container-registry-tutorial-quick-task.md) i serien skapar denna process inte bara avbildningen, utan skickar den även till containerregistret om den lyckas.
 
 ```azurecli
 az acr build --registry $ACR_NAME --image baseimages/node:15-alpine --file Dockerfile-base .
@@ -94,17 +94,17 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Den här uppgiften liknar den uppgift som skapades i [föregående självstudie](container-registry-tutorial-build-task.md). Den instruerar ACR Tasks att utlösa en avbildningsversion när incheckningar skickas till den lagringsplats som anges i `--context`. Dockerfile som används för att bygga avbildningen i föregående självstudie anger en offentlig bas avbildning ( `FROM node:15-alpine` ), Dockerfile i den här uppgiften, [Dockerfile-app][dockerfile-app], anger en bas avbildning i samma register:
+Den här uppgiften liknar den uppgift som skapades i föregående [självstudie.](container-registry-tutorial-build-task.md) Den instruerar ACR Tasks att utlösa en avbildningsversion när incheckningar skickas till den lagringsplats som anges i `--context`. Den Dockerfile som användes för att skapa avbildningen i föregående självstudie anger en offentlig basavbildning ( ), men Dockerfile i den här `FROM node:15-alpine` [uppgiften, Dockerfile-app,][dockerfile-app]anger en basavbildning i samma register:
 
 ```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:15-alpine
 ```
 
-Den här konfigurationen gör det enkelt att simulera en Ramverks korrigering i bas avbildningen senare i den här självstudien.
+Den här konfigurationen gör det enkelt att simulera en ramverkskorrigering i basavbildningen senare i den här självstudien.
 
 ## <a name="build-the-application-container"></a>Skapa programcontainern
 
-Använd [AZ ACR Task Run][az-acr-task-run] för att utlösa aktiviteten manuellt och skapa program avbildningen. Det här steget krävs så att aktiviteten spårar program bildens beroende av bas avbildningen.
+Använd [az acr task run för][az-acr-task-run] att utlösa uppgiften manuellt och skapa programavbildningen. Det här steget krävs så att aktiviteten spårar programavbildningens beroende av basavbildningen.
 
 ```azurecli
 az acr task run --registry $ACR_NAME --name baseexample1
@@ -116,13 +116,13 @@ När uppgiften är klar antecknar du **Run ID** (till exempel ”da6”) om du v
 
 Om du arbetar lokalt (inte i Cloud Shell) och har installerat Docker, kör du containern för att se det program som återges i webbläsaren innan du återskapar dess basavbildning. Hoppa över det här avsnittet om du använder Cloud Shell (Cloud Shell stöder inte `az acr login` eller `docker run`).
 
-Börja med att autentisera till behållar registret med [AZ ACR-inloggning][az-acr-login]:
+Först autentiserar du till containerregistret med [az acr login][az-acr-login]:
 
 ```azurecli
 az acr login --name $ACR_NAME
 ```
 
-Kör nu containern lokalt med `docker run`. Ersätt **\<run-id\>** med körnings-ID: t som finns i utdata från föregående steg (till exempel "DA6"). Det här exemplet namnger behållaren `myapp` och innehåller `--rm` parametern för att ta bort behållaren när den stoppas.
+Kör nu containern lokalt med `docker run`. Ersätt **\<run-id\>** med körnings-ID:t i utdata från föregående steg (till exempel "da6"). Det här exemplet namnger `myapp` containern och innehåller `--rm` parametern för att ta bort containern när du stoppar den.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -130,9 +130,9 @@ docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-
 
 Gå till `http://localhost:8080` i webbläsaren. Du bör nu se versionsnumret för Node.js som återgavs på webbsidan, liknande nedan. I ett senare steg ökar du versionen genom att lägga till ett ”a” i versionssträngen.
 
-:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-01.png" alt-text="Skärm bild av exempel programmet i webbläsare":::
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-01.png" alt-text="Skärmbild av exempelprogrammet i webbläsaren":::
 
-Kör följande kommando för att stoppa och ta bort behållaren:
+Kör följande kommando för att stoppa och ta bort containern:
 
 ```bash
 docker stop myapp
@@ -197,7 +197,7 @@ cau       example1        linux       Succeeded  Commit        2020-11-20T23:16:
 cat       taskhelloworld  linux       Succeeded  Manual        2020-11-20T23:07:29Z  00:00:27
 ```
 
-Om du vill utföra följande valfria steg för att köra den nyligen skapade behållaren för att se det uppdaterade versions numret noterar du värdet för **körnings-ID** för avbildnings uppdateringen – utlöst build (i föregående utdata, det är "ca11").
+Om du vill utföra följande valfria steg för att köra den nyskapade containern för att se det uppdaterade versionsnumret anteckningen av **run-ID-värdet** för den avbildningsuppdateringsutlösta versionen (i föregående utdata är det "ca11").
 
 ### <a name="optional-run-newly-built-image"></a>Valfritt: Köra nyskapad avbildning
 
@@ -209,12 +209,12 @@ docker run -d -p 8081:80 --name updatedapp --rm $ACR_NAME.azurecr.io/helloworld:
 
 Gå till http://localhost:8081 i webbläsaren. Du bör nu se det uppdaterade versionsnumret för Node.js (med ett ”a”) på webbsidan:
 
-:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-02.png" alt-text="Skärm bild av uppdaterat exempel program i webbläsare":::
+:::image type="content" source="media/container-registry-tutorial-base-image-update/base-update-02.png" alt-text="Skärmbild av uppdaterat exempelprogram i webbläsaren":::
 
 
 Observera att du har uppdaterat din **basavbildning** med ett nytt versionsnummer, men den senaste skapade **programavbildningen** visar den nya versionen. ACR Tasks hämtade din ändring av basavbildningen och återskapade din programavbildning automatiskt.
 
-Kör följande kommando för att stoppa och ta bort behållaren:
+Kör följande kommando för att stoppa och ta bort containern:
 
 ```bash
 docker stop updatedapp
@@ -222,10 +222,10 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här självstudien lärde du dig att använda en uppgift till att utlösa containeravbildningsversioner automatiskt när en basavbildning har uppdaterats. Gå vidare till nästa självstudie och lär dig hur du utlöser aktiviteter enligt ett definierat schema.
+I den här självstudien lärde du dig att använda en uppgift till att utlösa containeravbildningsversioner automatiskt när en basavbildning har uppdaterats. Gå nu vidare till nästa självstudie för att lära dig hur du utlöser aktiviteter enligt ett definierat schema.
 
 > [!div class="nextstepaction"]
-> [Köra en aktivitet enligt ett schema](container-registry-tasks-scheduled.md)
+> [Köra en uppgift enligt ett schema](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-node]: https://hub.docker.com/_/node/
@@ -235,10 +235,10 @@ I den här självstudien lärde du dig att använda en uppgift till att utlösa 
 
 <!-- LINKS - Internal -->
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-update]: /cli/azure/acr/task#az-acr-task-update
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-update]: /cli/azure/acr/task#az_acr_task_update
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [az-acr-task-list-runs]: /cli/azure/acr
 [az-acr-task]: /cli/azure/acr

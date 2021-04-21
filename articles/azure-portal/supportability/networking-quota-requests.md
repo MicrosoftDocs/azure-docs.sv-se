@@ -6,33 +6,33 @@ ms.author: anavin
 ms.date: 01/23/2020
 ms.topic: how-to
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e945dec2ce8514c3e4f1edecdecd13c5c43f7c75
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 801f0424e7ec15fbde58f35975f4c7eca4c9a5de
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745459"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107775573"
 ---
 # <a name="networking-limit-increase"></a>Höjning av nätverksgräns
 
-Använd [Azure Portal](https://portal.azure.com) för att öka nätverks kvoten.
+Använd Azure Portal [för](https://portal.azure.com) att öka din nätverkskvot.
 
-Om du vill visa din aktuella nätverks användning och kvot i Azure Portal öppnar du din prenumeration och väljer sedan **användnings områden + kvoter**. Du kan också använda följande alternativ för att Visa nätverks användning och-gränser.
+Om du vill visa din aktuella nätverksanvändning och kvot i Azure Portal öppnar du din prenumeration och väljer **sedan Användningar + kvoter.** Du kan också använda följande alternativ för att visa nätverksanvändning och nätverksgränser.
 
-* [Användnings-CLI](/cli/azure/network#az-network-list-usages)
+* [Användnings-CLI](/cli/azure/network#az_network_list_usages)
 * [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
-* [API för nätverks användning](/rest/api/virtualnetwork/virtualnetworks/listusage)
+* [API:et för nätverksanvändning](/rest/api/virtualnetwork/virtualnetworks/listusage)
 
-Du kan begära en ökning genom **att använda hjälp + support** eller i **användnings** -och kvoter i portalen.
+Du kan begära en ökning med **hjälp av Hjälp + support** eller i **Användningar + kvoter** i portalen.
 
 > [!Note]
-> Om du vill ändra standard storleken för **offentliga IP-prefix** väljer du den **minsta offentliga IP-prefixets längd** i list rutan.
+> Om du vill ändra standardstorleken **för offentliga IP-prefix** väljer du Minsta längd på offentligt **IP-internätverksprefix** i listrutan.
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Begär nätverks kvot öka på prenumerations nivå med hjälp + support
+## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Begära ökad nätverkskvot på prenumerationsnivå med hjälp av Hjälp + support
 
-Följ instruktionerna nedan om du vill skapa en supportbegäran med **Hjälp + Support** i Azure Portal.
+Följ anvisningarna nedan för att skapa en supportbegäran med **hjälp av Hjälp + support** i Azure Portal.
 
-1. Logga in på [Azure Portal](https://portal.azure.com)och välj sedan **Hjälp + Support** på Azure Portal-menyn eller Sök efter och välj **Hjälp + Support**.
+1. Logga in [på Azure Portal](https://portal.azure.com)och välj sedan Hjälp + **support** på Azure Portal eller sök efter och välj Hjälp **+ support.**
 
     ![Hjälp + Support](./media/networking-quota-request/help-plus-support.png)
 
@@ -40,35 +40,35 @@ Följ instruktionerna nedan om du vill skapa en supportbegäran med **Hjälp + S
 
     ![Ny supportbegäran](./media/networking-quota-request/new-support-request.png)
 
-1. För **typ av problem** väljer du **tjänst-och prenumerations gränser (kvoter)**.
+1. För **Typ av problem** väljer du **Tjänst- och prenumerationsgränser (kvoter).**
 
-    ![List rutan för att välja prenumerations gränser från ärende typ](./media/networking-quota-request/select-quota-issue-type.png)
+    ![Välj prenumerationsbegränsningar från listrutan för problemtyp](./media/networking-quota-request/select-quota-issue-type.png)
 
 1. Välj den prenumeration som behöver en ökad kvot.
 
-    ![Välj prenumerations nyheter](./media/networking-quota-request/select-subscription-support-request.png)
+    ![Välj prenumeration newSR](./media/networking-quota-request/select-subscription-support-request.png)
 
-1. Under **typ av kvot** väljer du **nätverk**. Välj **Nästa: lösningar**.
+1. Under **Kvottyp** väljer du **Nätverk.** Välj **Nästa: Lösningar**.
 
-    ![Välj typ av kvot](./media/networking-quota-request/select-quota-type-network.png)
+    ![Välj kvottyp](./media/networking-quota-request/select-quota-type-network.png)
 
-1. I **problem information** väljer du **Ange information** och fyller i ytterligare information som kan hjälpa dig att bearbeta din begäran.
+1. I **PROBLEMINFORMATION** väljer du **Ange information och** fyller i ytterligare information för att bearbeta din begäran.
 
     ![Ange information](./media/networking-quota-request/provide-details-link.png)
 
-1. I panelen **kvot information** väljer du en distributions modell, en plats och de resurser som ska ingå i din begäran.
+1. I panelen **Kvotinformation** väljer du en distributionsmodell, en plats och de resurser som ska ingå i din begäran.
 
-    ![Kvot information DM](./media/networking-quota-request/quota-details-network.png)
+    ![DM för kvotinformation](./media/networking-quota-request/quota-details-network.png)
 
-1. Ange de nya gränser som du vill ha i prenumerationen. Om du vill ta bort en rad avmarkerar du resursen från menyn **resurser** eller väljer ikonen Ta bort x. När du har angett kvoten för varje resurs väljer du **Spara och fortsätter** med att skapa support förfrågan.
+1. Ange de nya begränsningar som du vill ha för prenumerationen. Om du vill ta bort en rad avmarkerar du resursen från **menyn Resurser** eller väljer ikonen för att ta bort "x". När du har angett kvoten för varje resurs väljer **du Spara och fortsätter** att skapa supportbegäran.
 
     ![Nya gränser](./media/networking-quota-request/network-new-limits.png)
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>Begär nätverks kvot öka på prenumerations nivå med användning + kvoter
+## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>Begära ökad nätverkskvot på prenumerationsnivå med användning och kvoter
 
-Följ de här anvisningarna för att skapa en supportbegäran med hjälp av **användnings** -och kvot i Azure Portal.
+Följ de här anvisningarna för att skapa en supportbegäran **med hjälp av Användning +** kvot i Azure Portal.
 
-1. Från https://portal.azure.com söker du efter och väljer **prenumerationer**.
+1. Från https://portal.azure.com söker du efter och väljer **Prenumerationer.**
 
     ![Prenumerationer](./media/networking-quota-request/search-for-suscriptions.png)
 
@@ -76,16 +76,16 @@ Följ de här anvisningarna för att skapa en supportbegäran med hjälp av **an
 
     ![Välj en prenumeration](./media/networking-quota-request/select-subscription-change-quota.png)
 
-1. Välj **användning + kvoter**
+1. Välj **Användning + kvoter**
 
     ![Välj användning och kvoter](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-1. I det övre högra hörnet väljer du **begär ökning**.
+1. I det övre högra hörnet väljer du **Begär ökning.**
 
-    ![Begär ökning](./media/networking-quota-request/request-increase-from-subscription.png)
+    ![Begärandeökning](./media/networking-quota-request/request-increase-from-subscription.png)
 
-1. Följ stegen som börjar med steg 3 i [begäran nätverks kvot öka på prenumerations nivå](#request-networking-quota-increase-at-subscription-level-using-help--support).
+1. Följ stegen som börjar med steg 3 i [Öka kvoten för nätverksbegäran på prenumerationsnivå.](#request-networking-quota-increase-at-subscription-level-using-help--support)
 
-## <a name="about-networking-limits"></a>Om nätverks begränsningar
+## <a name="about-networking-limits"></a>Om nätverksgränser
 
-Mer information om nätverks begränsningar finns i [avsnittet nätverk](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) på sidan gränser eller vanliga frågor och svar om nätverks begränsningar.
+Mer information om nätverksgränser finns i avsnittet [Nätverk på sidan](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) med begränsningar eller vanliga frågor och svar om nätverksgränser.

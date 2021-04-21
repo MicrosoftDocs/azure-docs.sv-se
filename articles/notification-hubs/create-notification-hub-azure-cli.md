@@ -1,6 +1,6 @@
 ---
-title: Snabb start – skapa en Azure Notification Hub med hjälp av Azure CLI | Microsoft Docs
-description: I den här självstudien får du lära dig hur du skapar en Azure Notification Hub med hjälp av Azure CLI.
+title: Snabbstart – Skapa en Azure-meddelandehubb med hjälp av Azure CLI-| Microsoft Docs
+description: I den här självstudien får du lära dig hur du skapar en Azure-meddelandehubb med hjälp av Azure CLI.
 services: notification-hubs
 author: dbradish-microsoft
 manager: barbkess
@@ -14,18 +14,18 @@ ms.author: dbradish
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6c565be3aea43fc4dc86fd793e0dc2dea0b08d4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d8400eb051c09fac4cb88863ad2fac12d2ca0a1b
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94563757"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107789894"
 ---
-# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Snabb start: skapa en Azure Notification Hub med Azure CLI
+# <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Snabbstart: Skapa en Azure-meddelandehubb med hjälp av Azure CLI
 
 Azure Notification Hubs innehåller en lättanvänd och uppskalad push-motor som gör det möjligt för dig att skicka meddelanden till valfri plattform (iOS, Android, Windows, Kindle, Baidu osv) från valfri serverdel (molnet eller lokalt). Mer information om tjänsten finns i [Vad är Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-I den här snabb starten skapar du en Notification Hub med hjälp av Azure CLI. Det första avsnittet innehåller steg för steg hur du skapar ett Notification Hubs namn område. Det andra avsnittet innehåller steg för steg hur du skapar en Notification Hub i ett befintligt namn område. Du lär dig också hur du skapar en anpassad åtkomst princip.
+I den här snabbstarten skapar du en meddelandehubb med hjälp av Azure CLI. Det första avsnittet innehåller steg för att skapa ett Notification Hubs namnområde. Det andra avsnittet innehåller steg för att skapa en meddelandehubb i ett befintligt namnområde. Du får också lära dig hur du skapar en anpassad åtkomstprincip.
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
@@ -36,25 +36,25 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Azure Notification Hubs, precis som alla Azure-resurser, måste distribueras till en resurs grupp.  Resursgrupper gör det enkelt att organisera och hantera relaterade Azure-resurser.  Se [Vad är Azure Resource Manager](../azure-resource-manager/management/overview.md) för att lära dig mer om resurs grupper.
+Azure Notification Hubs måste precis som alla Azure-resurser distribueras till en resursgrupp.  Resursgrupper gör det enkelt att organisera och hantera relaterade Azure-resurser.  Mer [information om Azure Resource Manager](../azure-resource-manager/management/overview.md) finns i Vad finns det?
 
-I den här snabb starten skapar du en resurs grupp med namnet **spnhubrg** på den **östra** platsen med följande [AZ Group Create](/cli/azure/group#az-group-create) -kommando.
+I den här snabbstarten skapar du en resursgrupp med namnet **spnhubrg** på **platsen eastus** med följande [az group create-kommando.](/cli/azure/group#az_group_create)
 
 ```azurecli
 az group create --name spnhubrg --location eastus
 ```
 
-## <a name="create-a-notification-hubs-namespace"></a>Skapa ett Notification Hubs-namnområde
+## <a name="create-a-notification-hubs-namespace"></a>Skapa ett Notification Hubs namnområde
 
-1. Skapa ett namn område för dina Notification Hub.
+1. Skapa ett namnområde för dina meddelandehubbbar.
 
-   Ett namn område innehåller ett eller flera hubbar, och namnet måste vara unikt för alla Azure-prenumerationer och vara minst sex tecken långt. Om du vill kontrol lera tillgängligheten för ett namn använder du kommandot [AZ Notification-Hub namn område check-Availability](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability) .
+   Ett namnområde innehåller en eller flera hubbar och namnet måste vara unikt för alla Azure-prenumerationer och innehålla minst sex tecken. Om du vill kontrollera tillgängligheten för ett namn använder du [kommandot az notification-hub namespace check-availability.](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-check-availability)
 
    ```azurecli
    az notification-hub namespace check-availability --name spnhubns
    ```
 
-   Azure CLI svarar på din begäran om tillgänglighet genom att visa följande konsol utdata:
+   Azure CLI svarar på din begäran om tillgänglighet genom att visa följande konsolutdata:
 
    ```shell
    {
@@ -69,13 +69,13 @@ az group create --name spnhubrg --location eastus
    }
    ```
 
-   Lägg märke till den andra raden i Azure CLI-svaret, `"isAvailable": true` . Den här raden läser `false` om det önskade namnet som du har angett för namn området inte är tillgängligt. När du har bekräftat att namnet är tillgängligt kör du kommandot [AZ Notification-Hub namespace Create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) för att skapa ditt namn område.  
+   Lägg märke till den andra raden i Azure CLI-svaret, `"isAvailable": true` . Den här raden läser `false` om det önskade namn som du angav för namnområdet inte är tillgängligt. När du har bekräftat tillgängligheten för namnet kör du kommandot [az notification-hub namespace create](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-create) för att skapa namnområdet.  
 
    ```azurecli
    az notification-hub namespace create --resource-group spnhubrg --name spnhubns  --location eastus --sku Free
    ```
 
-   Om `--name` du har angett `az notification-hub namespace create` kommandot inte är tillgängligt eller inte uppfyller [namngivnings reglerna och begränsningarna för Azure-resurser](../azure-resource-manager/management/resource-name-rules.md), svarar Azure CLI med följande konsol utdata:
+   Om kommandot inte är tillgängligt eller inte uppfyller namngivningsreglerna och begränsningarna för Azure-resurser svarar Azure CLI med följande `--name` `az notification-hub namespace create` konsolutdata: [](../azure-resource-manager/management/resource-name-rules.md)
 
    ```shell
    #the name is not available
@@ -85,63 +85,63 @@ az group create --name spnhubrg --location eastus
    The specified service namespace is invalid.
    ```
 
-   Om det första namnet inte lyckas väljer du ett annat namn för det nya namn området och kör `az notification-hub namespace create` kommandot igen.
+   Om det förnamn som du provade inte lyckas väljer du ett annat namn för det nya namnområdet och kör `az notification-hub namespace create` kommandot igen.
 
    > [!NOTE]
-   > I det här steget framåt måste du ersätta värdet för `--namespace` parametern i varje Azure CLI-kommando som du kopierar från den här snabb starten.
+   > Från och med det här steget måste du ersätta värdet för `--namespace` parametern i varje Azure CLI-kommando som du kopierar från den här snabbstarten.
 
-2. Hämta en lista över namn områden.
+2. Hämta en lista över namnområden.
 
-   Om du vill se information om det nya namn området använder du kommandot [AZ Notification – Hub namespace List](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) . `--resource-group`Parametern är valfri om du vill visa alla namn områden för en prenumeration.
+   Om du vill se information om det nya namnområdet använder du [kommandot az notification-hub namespace list.](/cli/azure/ext/notification-hub/notification-hub/namespace#ext-notification-hub-az-notification-hub-namespace-list) Parametern `--resource-group` är valfri om du vill se alla namnområden för en prenumeration.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
    ```
 
-## <a name="create-notification-hubs"></a>Skapa Notification Hub
+## <a name="create-notification-hubs"></a>Skapa meddelandehubar
 
-1. Skapa din första Notification Hub.
+1. Skapa din första meddelandehubb.
 
-   Du kan nu skapa ett eller flera Notification Hub i det nya namn området. Kör kommandot [AZ Notification-Hub Create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) för att skapa en Notification Hub.
+   En eller flera meddelandehubar kan nu skapas i ditt nya namnområde. Kör kommandot [az notification-hub create](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-create) för att skapa en meddelandehubb.
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name spfcmtutorial1nhub --location eastus --sku Free
    ```
 
-2. Skapa en andra Notification Hub.
+2. Skapa en andra meddelandehubb.
 
-   Flera Notification Hub kan skapas i ett enda namn område. Om du vill skapa en andra Notification Hub i samma namnrymd kör du `az notification-hub create` kommandot igen med ett annat nav namn.
+   Flera meddelandehubar kan skapas i ett enda namnområde. Om du vill skapa en andra meddelandehubb i samma namnområde kör du `az notification-hub create` kommandot igen med ett annat hubbnamn.
 
    ```azurecli
    az notification-hub create --resource-group spnhubrg --namespace-name spnhubns --name mysecondnhub --location eastus --sku Free
    ```
 
-3. Hämta en lista över Notification Hub.
+3. Hämta en lista över meddelandehubbbar.
 
-   Azure CLI returnerar antingen ett lyckat eller fel meddelande med varje exekverat kommando. men det går att fråga efter en lista över Notification Hub. Kommandot [AZ Notification – Hub List](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) har utformats för detta ändamål.
+   Azure CLI returnerar antingen ett lyckat eller felmeddelande med varje kört kommando. Att kunna fråga efter en lista över meddelandehubbbar kan dock vara bra. Kommandot [az notification-hub list](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-list) har utformats för detta ändamål.
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table
    ```
 
-## <a name="work-with-access-policies"></a>Arbeta med åtkomst principer
+## <a name="work-with-access-policies"></a>Arbeta med åtkomstprinciper
 
-1. Azure Notification Hubs använder [signaturen för delad åtkomst](./notification-hubs-push-notification-security.md) med hjälp av åtkomst principer. Två principer skapas automatiskt när du skapar en Notification Hub. Anslutnings strängarna från dessa principer krävs för att konfigurera push-meddelanden. Kommandot [AZ Notification – Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) innehåller en lista över princip namn och deras respektive resurs grupper.
+1. Azure Notification Hubs använder [säkerhet för signaturer för delad](./notification-hubs-push-notification-security.md) åtkomst med hjälp av åtkomstprinciper. Två principer skapas automatiskt när du skapar en meddelandehubb. Anslutningssträngarna från dessa principer behövs för att konfigurera push-meddelanden. Kommandot [az notification-hub authorization-rule list](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) innehåller en lista över principnamn och deras respektive resursgrupper.
 
    ```azurecli
    az notification-hub authorization-rule list --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --output table
    ```
 
    > [!IMPORTANT]
-   > Använd inte _DefaultFullSharedAccessSignature_ -principen i ditt program. Den här principen är endast avsedd att användas i Server delen. Använd endast `Listen` åtkomst principer i klient programmet.
+   > Använd inte _principen DefaultFullSharedAccessSignature_ i ditt program. Den här principen är endast avsedd att användas i din backend-dator. Använd endast `Listen` åtkomstprinciper i klientprogrammet.
 
-2. Om du vill skapa ytterligare auktoriseringsregler med meningsfulla namn kan du skapa och anpassa din egen åtkomst princip genom att använda kommandot [AZ Notification-Hub Authorization-Rule Create](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) . `--rights`Parametern är en blankstegsavgränsad lista över de behörigheter som du vill tilldela.
+2. Om du vill skapa ytterligare auktoriseringsregler med beskrivande namn kan du skapa och anpassa din egen åtkomstprincip med hjälp av kommandot [az notification-hub authorization-rule create.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-create) Parametern `--rights` är en blankstegsavgränsad lista över de behörigheter som du vill tilldela.
 
    ```azurecli
    az notification-hub authorization-rule create --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name spnhub1key --rights Listen Manage Send
    ```
 
-3. Det finns två uppsättningar nycklar och anslutnings strängar för varje åtkomst princip. Du behöver dem senare för att [Konfigurera en Notification Hub](./configure-notification-hub-portal-pns-settings.md). Om du vill visa nycklar och anslutnings strängar för en Notification Hubs åtkomst princip använder du kommandot [AZ Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) .
+3. Det finns två uppsättningar nycklar och anslutningssträngar för varje åtkomstprincip. Du behöver dem senare för att konfigurera [en meddelandehubb.](./configure-notification-hub-portal-pns-settings.md) Om du vill visa nycklar och anslutningssträngar för Notification Hubs åtkomstprincip använder du kommandot [az notification-hub authorization-rule list-keys.](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys)
 
    ```azurecli
    # query the keys and connection strings for DefaultListenSharedAccessSignature
@@ -154,11 +154,11 @@ az group create --name spnhubrg --location eastus
    ```
 
    > [!NOTE]
-   > Ett [Notification Hubs-namnområde](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) och en [Notification Hub](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) har separata åtkomst principer. Kontrol lera att du använder rätt Azure CLI-referens när du frågar efter nycklar och anslutnings strängar.
+   > En [Notification Hubs och en](/cli/azure/ext/notification-hub/notification-hub/namespace/authorization-rule#ext-notification-hub-az-notification-hub-namespace-authorization-rule-list-keys) [meddelandehubb har](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) separata åtkomstprinciper. Kontrollera att du använder rätt Azure CLI-referens när du frågar efter nycklar och anslutningssträngar.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-När de inte längre behövs använder du kommandot [AZ Group Delete](/cli/azure/group) för att ta bort resurs gruppen och alla relaterade resurser:
+När den inte längre behövs använder du [kommandot az group delete](/cli/azure/group) för att ta bort resursgruppen och alla relaterade resurser:
 
 ```azurecli
 az group delete --name spnhubrg
@@ -166,14 +166,14 @@ az group delete --name spnhubrg
 
 ## <a name="next-steps"></a>Nästa steg
 
-* I den här snabbstarten har du skapat en meddelandehubb. Information om hur du konfigurerar hubben med PNS-inställningar (Platform notification system) finns i [Konfigurera push-meddelanden i en Notification Hub](configure-notification-hub-portal-pns-settings.md)
+* I den här snabbstarten har du skapat en meddelandehubb. Information om hur du konfigurerar hubben med inställningar för plattformsmeddelandesystem (PNS) finns i [Konfigurera push-meddelanden i en meddelandehubb](configure-notification-hub-portal-pns-settings.md)
 
-* Upptäck de omfattande funktionerna för att hantera Notification Hub med Azure CLI:
+* Upptäck de omfattande funktionerna för att hantera meddelandehubbbar med Azure CLI:
 
-  [Notification Hubs fullständig referens lista](/cli/azure/ext/notification-hub/notification-hub)
+  [Notification Hubs fullständig referenslista](/cli/azure/ext/notification-hub/notification-hub)
 
-  [Lista över Notification Hubs namn områdes referens](/cli/azure/ext/notification-hub/notification-hub/namespace)
+  [Notification Hubs namnområdesreferenslista](/cli/azure/ext/notification-hub/notification-hub/namespace)
 
-  [Referens lista för Notification Hubs-auktoriseringsregel](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
+  [Notification Hubs lista över auktoriseringsregel](/cli/azure/ext/notification-hub/notification-hub/authorization-rule)
 
-  [Referens lista för Notification Hubs referens](/cli/azure/ext/notification-hub/notification-hub/credential)
+  [Notification Hubs referenslista för autentiseringsuppgifter](/cli/azure/ext/notification-hub/notification-hub/credential)

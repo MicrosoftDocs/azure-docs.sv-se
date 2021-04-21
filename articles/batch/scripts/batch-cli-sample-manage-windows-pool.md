@@ -1,15 +1,15 @@
 ---
-title: Exempel på Azure CLI-skript – Windows-pool i batch
+title: Exempel på Azure CLI-skript – Windows-pool i Batch
 description: Det här skriptet visar några av de kommandon som är tillgängliga i Azure CLI för att skapa och hantera en pool med Windows-beräkningsnoder i Azure Batch.
 ms.topic: sample
 ms.date: 12/12/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: fb18f9d8777c17d31a3ab246603df0d9fa162467
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 773699dde9342a4b230a08471a289a56fca7e308
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93100947"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107768223"
 ---
 # <a name="cli-example-create-and-manage-a-windows-pool-in-azure-batch"></a>CLI-exempel: Skapa och hantera en Windows-pool i Azure Batch
 
@@ -17,7 +17,7 @@ Det här skriptet visar några av de kommandon som är tillgängliga i Azure CLI
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
-- I den här självstudien krävs version 2.0.20 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad. 
+- Den här självstudien kräver version 2.0.20 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad. 
 
 ## <a name="example-script"></a>Exempelskript
 
@@ -37,15 +37,15 @@ Det här skriptet använder följande kommandon. Varje kommando i tabellen länk
 
 | Kommando | Kommentarer |
 |---|---|
-| [az group create](/cli/azure/group#az-group-create) | Skapar en resursgrupp där alla resurser lagras. |
-| [az batch account create](/cli/azure/batch/account#az-batch-account-create) | Skapar Batch-kontot. |
-| [az batch account login](/cli/azure/batch/account#az-batch-account-login) | Autentiserar mot det angivna Batch-kontot för ytterligare CLI-interaktion. |
-| [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) | Skapar en pool med beräkningsnoder.  |
-| [az batch pool set](/cli/azure/batch/pool#az-batch-pool-set) | Uppdaterar egenskaperna för en pool.  |
-| [az batch pool autoscale enable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-enable) | Aktiverar automatisk skalning på en pool och tillämpar en formel.  |
-| [az batch pool show](/cli/azure/batch/pool#az-batch-pool-show) | Visar egenskaperna för en pool.  |
-| [az batch pool autoscale disable](/cli/azure/batch/pool/autoscale#az-batch-pool-autoscale-disable) | Inaktiverar automatisk skalning på en pool. |
-| [az group delete](/cli/azure/group#az-group-delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
+| [az group create](/cli/azure/group#az_group_create) | Skapar en resursgrupp där alla resurser lagras. |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Skapar Batch-kontot. |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | Autentiserar mot det angivna Batch-kontot för ytterligare CLI-interaktion. |
+| [az batch pool create](/cli/azure/batch/pool#az_batch_pool_create) | Skapar en pool med beräkningsnoder.  |
+| [az batch pool set](/cli/azure/batch/pool#az_batch_pool_set) | Uppdaterar egenskaperna för en pool.  |
+| [az batch pool autoscale enable](/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_enable) | Aktiverar automatisk skalning på en pool och tillämpar en formel.  |
+| [az batch pool show](/cli/azure/batch/pool#az_batch_pool_show) | Visar egenskaperna för en pool.  |
+| [az batch pool autoscale disable](/cli/azure/batch/pool/autoscale#az_batch_pool_autoscale_disable) | Inaktiverar automatisk skalning på en pool. |
+| [az group delete](/cli/azure/group#az_group_delete) | Tar bort en resursgrupp, inklusive alla kapslade resurser. |
 
 
 ## <a name="next-steps"></a>Nästa steg

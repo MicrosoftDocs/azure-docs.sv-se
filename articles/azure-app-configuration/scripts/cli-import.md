@@ -1,7 +1,7 @@
 ---
-title: Skript exempel för Azure CLI – importera till ett konfigurations lager för appar
+title: Skriptexempel för Azure CLI – Importera till ett App Configuration store
 titleSuffix: Azure App Configuration
-description: Använd Azure CLI-skript – importera konfiguration till Azure App konfiguration
+description: Använda Azure CLI-skript – Importera konfiguration för att Azure App Configuration
 services: azure-app-configuration
 author: AlexandraKemperMS
 ms.service: azure-app-configuration
@@ -10,22 +10,22 @@ ms.topic: sample
 ms.date: 02/19/2020
 ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f7d68024dd86a1eb2a0311cecf607d41a7067deb
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 5a80acd1261211fe3efaefa6a4b6025a321e2d65
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102173576"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107774187"
 ---
 # <a name="import-to-an-azure-app-configuration-store"></a>Importera till ett Azure App Configuration-arkiv
 
-Det här exempel skriptet importerar nyckel värdes inställningar till en Azure App konfigurations lagring.
+Det här exempelskriptet importerar nyckel/värde-inställningar till Azure App Configuration arkivet.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment.md)]
 
- - I den här självstudien krävs version 2,0 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+ - Den här självstudien kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ## <a name="sample-script"></a>Exempelskript
 
@@ -40,14 +40,14 @@ az appconfig kv import --name myTestAppConfigStore --source file --format json -
 
 ## <a name="script-explanation"></a>Förklaring av skript
 
-I det här skriptet används följande kommandon för att importera till ett konfigurations lager för appar. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
+Det här skriptet använder följande kommandon för att importera till ett App Configuration store. Varje kommando i tabellen länkar till kommandospecifik dokumentation.
 
 | Kommando | Kommentarer |
 |---|---|
-| [AZ appconfig kv import](/cli/azure/appconfig/kv#az-appconfig-kv-import) | Importerar till en resurs för konfigurations Arkiv för appar. |
+| [az appconfig kv import](/cli/azure/appconfig/kv#az_appconfig_kv_import) | Importerar till en App Configuration store-resurs. |
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI finns i [Azure CLI-dokumentationen](/cli/azure).
+Mer information om Azure CLI finns i [Azure CLI-dokumentationen.](/cli/azure)
 
-Ytterligare skript exempel för programkonfigurations-CLI finns i [Azure App konfigurations-CLI-exempel](../cli-samples.md).
+Ytterligare App Configuration CLI-skriptexempel finns i Azure App Configuration [CLI-exempel](../cli-samples.md).

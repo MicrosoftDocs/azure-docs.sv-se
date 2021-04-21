@@ -1,6 +1,6 @@
 ---
-title: Åsidosättning av Azure Traffic Manager-undernät med hjälp av Azure CLI | Microsoft Docs
-description: Den här artikeln hjälper dig att förstå hur Traffic Manager över gångs punkt kan användas för att åsidosätta Dirigerings metoden för en Traffic Manager profil för att dirigera trafik till en slut punkt baserat på IP-adressen för slutanvändare via fördefinierade IP-intervall till slut punkts mappningar.
+title: Azure Traffic Manager åsidosättning av undernät med Hjälp av Azure CLI | Microsoft Docs
+description: Den här artikeln hjälper dig att förstå hur åsidosättning av Traffic Manager-undernät kan användas för att åsidosätta routningsmetoden för en Traffic Manager-profil för att dirigera trafik till en slutpunkt baserat på slutanvändares IP-adress via fördefinierade IP-intervall till slutpunktsmappningar.
 services: traffic-manager
 documentationcenter: ''
 author: duongau
@@ -8,38 +8,38 @@ ms.topic: how-to
 ms.service: traffic-manager
 ms.date: 09/18/2019
 ms.author: duau
-ms.openlocfilehash: 2e289728c7fde9b98256d079d45067aba1d4d805
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: fab167884d9060edc4f626d3ee05fa0b23389d92
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211336"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107767807"
 ---
-# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Traffic Manager under näts Åsidosätt med Azure CLI
+# <a name="traffic-manager-subnet-override-using-azure-cli"></a>Traffic Manager åsidosättning av undernät med Hjälp av Azure CLI
 
-Med Traffic Manager under näts åsidosättning kan du ändra routningsmetod för en profil.  Att lägga till en åsidosättning dirigerar trafik baserat på slutanvändarens IP-adress med ett fördefinierat IP-intervall för slut punkts mappning. 
+Traffic Manager åsidosättning av undernät kan du ändra routningsmetoden för en profil.  Tillägget av en åsidosättning dirigerar trafik baserat på slutanvändarens IP-adress med ett fördefinierat IP-intervall till slutpunktsmappning. 
 
-## <a name="how-subnet-override-works"></a>Hur under näts åsidosättning fungerar
+## <a name="how-subnet-override-works"></a>Så här fungerar åsidosättning av undernät
 
-När under näts åsidosättningar läggs till i en Traffic Manager-profil, kontrollerar Traffic Manager först om det finns en under näts åsidosättande för slutanvändarens IP-adress. Om en hittas dirigeras användarens DNS-fråga till motsvarande slut punkt.  Om ingen mappning hittas kommer Traffic Manager att återgå till profilens ursprungliga routningsmetod. 
+När åsidosättningar av undernät läggs till i en Traffic Manager-profil Traffic Manager först om det finns en åsidosättning av undernätet för slutanvändarens IP-adress. Om en sådan hittas dirigeras användarens DNS-fråga till motsvarande slutpunkt.  Om ingen mappning hittas Traffic Manager till profilens ursprungliga routningsmetod. 
 
-IP-adressintervall kan anges som antingen CIDR-intervall (till exempel 1.2.3.0/24) eller som adress intervall (till exempel 1.2.3.4-5.6.7.8). De IP-intervall som är associerade med varje slut punkt måste vara unika för den slut punkten. Överlappande IP-intervall mellan olika slut punkter gör att profilen avvisas av Traffic Manager.
+IP-adressintervallen kan antingen anges som CIDR-intervall (till exempel 1.2.3.0/24) eller som adressintervall (till exempel 1.2.3.4-5.6.7.8). IP-intervallen som är associerade med varje slutpunkt måste vara unika för den slutpunkten. Eventuella överlappningar av IP-intervall mellan olika slutpunkter gör att profilen avvisas av Traffic Manager.
 
-Det finns två typer av vägvals profiler som stöder under näts åsidosättningar:
+Det finns två typer av routningsprofiler som stöder åsidosättningar av undernät:
 
-* **Geografisk** -om Traffic Manager hittar en under näts ÅSIDOSÄTTNING för DNS-FRÅGAns IP-adress, kommer den att dirigera frågan till slut punkten oavsett hur hälsan är för slut punkten.
-* **Prestanda** – om Traffic Manager hittar en under näts ÅSIDOSÄTTNING för DNS-FRÅGAns IP-adress dirigerar den bara trafiken till slut punkten om den är felfri.  Traffic Manager återgår till heuristiken för prestanda routning om det inte går att åsidosätta slut punkten för under nätet.
+* **Geografisk** – Traffic Manager hittar en åsidosättning av undernätet för DNS-frågans IP-adress dirigeras frågan till slutpunkten oavsett slutpunktens hälsotillstånd.
+* **Prestanda** – Traffic Manager hittar en åsidosättning av undernätet för DNS-frågans IP-adress dirigerar den bara trafiken till slutpunkten om den är felfri.  Traffic Manager kommer att gå tillbaka till heuristiken för prestandadirigering om slutpunkten för åsidosättning av undernät inte är felfri.
 
-## <a name="create-a-traffic-manager-subnet-override"></a>Skapa en Traffic Manager under näts åsidosättning
+## <a name="create-a-traffic-manager-subnet-override"></a>Skapa en Traffic Manager åsidosättning av undernät
 
-Om du vill skapa en åsidosättning för Traffic Manager under nätet kan du använda Azure CLI för att lägga till undernät för åsidosättningen i Traffic Manager-slutpunkten.
+Om du vill Traffic Manager åsidosätta ett undernät kan du använda Azure CLI för att lägga till undernäten för åsidosättningen till Traffic Manager slutpunkten.
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.28 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
-## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Uppdatera Traffic Manager slut punkten med under nätets åsidosättning.
-Använd Azure CLI för att uppdatera din slut punkt med [AZ Network Traffic-Manager Endpoint Update](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update).
+## <a name="update-the-traffic-manager-endpoint-with-subnet-override"></a>Uppdatera Traffic Manager med åsidosättning av undernät.
+Använd Azure CLI för att uppdatera slutpunkten [med az network traffic-manager endpoint update](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update).
 
 ```azurecli-interactive
 ### Add a range of IPs ###
@@ -59,7 +59,7 @@ az network traffic-manager endpoint update \
     --type AzureEndpoints
 ```
 
-Du kan ta bort IP-adressintervall genom att köra [slut punkten för AZ Network Traffic-Manager](/cli/azure/network/traffic-manager/endpoint#az-network-traffic-manager-endpoint-update) med alternativet **--Remove** .
+Du kan ta bort IP-adressintervallen genom att köra [slutpunktsuppdateringen az network traffic-manager](/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_update) med **alternativet --remove.**
 
 ```azurecli-interactive
 az network traffic-manager endpoint update \
@@ -72,6 +72,6 @@ az network traffic-manager endpoint update \
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om hur du Traffic Manager [metoder för trafik cirkulation](traffic-manager-routing-methods.md).
+Läs mer om Traffic Manager [trafikroutningsmetoder](traffic-manager-routing-methods.md).
 
-Lär dig mer om [routningsmetod för under näts trafik](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)
+Lär dig mer om [trafikroutningsmetoden för undernät](./traffic-manager-routing-methods.md#subnet-traffic-routing-method)

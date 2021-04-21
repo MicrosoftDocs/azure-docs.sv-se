@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 07/06/2020
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1b7c8487eb42204f2741679c9ef6eb2717c272cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c059746262cdaf2901c765d3ce3848887b2e629c
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "86057370"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781135"
 ---
-I kommandots utdata `identity` visar avsnittet en identitet av typen som `SystemAssigned` anges i uppgiften. `principalId`Är huvud-ID: t för uppgifts identiteten:
+I kommandots utdata `identity` visar avsnittet att en identitet av typen har `SystemAssigned` angetts i aktiviteten. är `principalId` uppgiftsidentitetens huvudnamns-ID:
 
 ```console
 [...]
@@ -28,7 +28,7 @@ I kommandots utdata `identity` visar avsnittet en identitet av typen som `System
   "location": "eastus",
 [...]
 ``` 
-Använd kommandot [AZ ACR Task show][az-acr-task-show] för att lagra principalId i en variabel som ska användas i senare kommandon. Ersätt namnet på uppgiften och registret i följande kommando:
+Använd kommandot [az acr task show][az-acr-task-show] för att lagra principalId i en variabel som ska användas i senare kommandon. Ersätt namnet på uppgiften och registret med följande kommando:
 
 ```azurecli
 principalID=$(az acr task show \
@@ -37,4 +37,4 @@ principalID=$(az acr task show \
 ```
 
 <!-- LINKS - Internal -->
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show

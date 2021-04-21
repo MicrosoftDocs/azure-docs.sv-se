@@ -8,12 +8,12 @@ ms.date: 03/23/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 2cb3bee770653173f1a40b209c27d2dc92c7df11
-ms.sourcegitcommit: 79c9c95e8a267abc677c8f3272cb9d7f9673a3d7
+ms.openlocfilehash: be7e5b1f9721cc65c2f9b371becf8b4c82fb37b4
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107718043"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107759779"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planera för distribution av Azure Files
 [Azure Files](storage-files-introduction.md) kan distribueras på två huvudsakliga sätt: genom att direkt montera de serverlösa Azure-filresurser eller genom att cachelagra Azure-filresurser lokalt med hjälp av Azure File Sync. Vilket distributionsalternativ du väljer ändrar vad du behöver tänka på när du planerar för distributionen. 
@@ -22,7 +22,7 @@ ms.locfileid: "107718043"
 
 - **Cachelagra En Azure-filresurs** lokalt med Azure File Sync: med Azure File Sync kan du centralisera organisationens filresurser i Azure Files, samtidigt som du behåller flexibiliteten, prestandan och kompatibiliteten hos en lokal filserver. Azure File Sync omvandlar en lokal (eller molnbaserad) Windows Server till ett snabbt cacheminne för din Azure SMB-filresurs. 
 
-Den här artikeln tar främst upp distributionsöverväganden för distribution av en Azure-filresurs som ska monteras direkt av en lokal klient eller molnklient. Information om hur du planerar Azure File Sync distribution finns i [Planera för en Azure File Sync distribution.](storage-sync-files-planning.md)
+Den här artikeln tar främst upp distributionsöverväganden för distribution av en Azure-filresurs som ska monteras direkt av en lokal klient eller molnklient. Information om hur du planerar Azure File Sync distribution finns i [Planera för en Azure File Sync distribution.](../file-sync/file-sync-planning.md)
 
 ## <a name="available-protocols"></a>Tillgängliga protokoll
 
@@ -75,9 +75,9 @@ Azure Files stöder två olika typer av kryptering: kryptering under överförin
 ### <a name="encryption-in-transit"></a>Kryptering under överföring
 
 > [!IMPORTANT]
-> Det här avsnittet beskriver kryptering under överföringsinformation för SMB-resurser. Mer information om kryptering under överföring med NFS-resurser finns i [Säkerhet.](storage-files-compare-protocols.md#security)
+> Det här avsnittet beskriver kryptering under överföringsinformation för SMB-resurser. Mer information om kryptering under överföring med NFS-resurser finns i [Säkerhet](storage-files-compare-protocols.md#security).
 
-Som standard har alla Azure-lagringskonton kryptering under överföring aktiverat. Det innebär att när du monterar en filresurs via SMB eller kommer åt den via FileREST-protokollet (till exempel via Azure Portal, PowerShell/CLI eller Azure-SDK:er) tillåter Azure Files endast anslutningen om den görs med SMB 3.0+ med kryptering eller HTTPS. Klienter som inte stöder SMB 3.0 eller klienter som stöder SMB 3.0 men inte SMB-kryptering kan inte montera Azure-filresursen om kryptering under överföring är aktiverat. Mer information om vilka operativsystem som stöder SMB 3.0 med kryptering finns i vår detaljerade dokumentation för [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)och [Linux.](storage-how-to-use-files-linux.md) Alla aktuella versioner av PowerShell, CLI och SDK:er stöder HTTPS.  
+Som standard har alla Azure Storage-konton kryptering under överföring aktiverat. Det innebär att när du monterar en filresurs via SMB eller kommer åt den via FileREST-protokollet (till exempel via Azure Portal, PowerShell/CLI eller Azure-SDK:er) tillåter Azure Files endast anslutningen om den görs med SMB 3.0+ med kryptering eller HTTPS. Klienter som inte stöder SMB 3.0 eller klienter som stöder SMB 3.0 men inte SMB-kryptering kan inte montera Azure-filresursen om kryptering under överföring är aktiverat. Mer information om vilka operativsystem som stöder SMB 3.0 med kryptering finns i vår detaljerade dokumentation för [Windows,](storage-how-to-use-files-windows.md) [macOS](storage-how-to-use-files-mac.md)och [Linux.](storage-how-to-use-files-linux.md) Alla aktuella versioner av PowerShell, CLI och SDK:er stöder HTTPS.  
 
 Du kan inaktivera kryptering under överföring för ett Azure Storage-konto. När kryptering har inaktiverats Azure Files även SMB 2.1, SMB 3.0 utan kryptering och okrypterade FileREST API-anrop via HTTP. Det främsta skälet till att inaktivera kryptering under överföring är att stödja ett äldre program som måste köras på ett äldre operativsystem, till exempel Windows Server 2008 R2 eller äldre Linux-distribution. Azure Files endast tillåter SMB 2.1-anslutningar inom samma Azure-region som Azure-filresursen. en SMB 2.1-klient utanför Azure-regionen för Azure-filresursen, till exempel lokalt eller i en annan Azure-region, kan inte komma åt filresursen.
 
@@ -94,7 +94,7 @@ Azure Files har en metod med flera lager för att se till att dina data säkerhe
 ### <a name="soft-delete"></a>Mjuk borttagning
 Mjuk borttagning för filresurser (förhandsversion) är en inställning på lagringskontonivå som gör att du kan återställa filresursen när den tas bort av misstag. När en filresurs tas bort övergår den till ett mjukt borttagna tillstånd i stället för att raderas permanent. Du kan konfigurera hur lång tid mjukt borttagna data ska kunna återställas innan de tas bort permanent och sedan ta bort resursen när som helst under kvarhållningsperioden. 
 
-Vi rekommenderar att du slår på mjuk borttagning för de flesta filresurser. Om du har ett arbetsflöde där resursborttagning är vanligt och förväntat kan du välja att ha en kort kvarhållningsperiod eller inte ha mjuk borttagning aktiverat alls.
+Vi rekommenderar att du slår på mjuk borttagning för de flesta filresurser. Om du har ett arbetsflöde där borttagning av resurs är vanligt och förväntat kan du välja att ha en kort kvarhållningsperiod eller inte ha mjuk borttagning aktiverat alls.
 
 Mer information om mjuk borttagning finns i Förhindra [oavsiktlig databorttagning.](./storage-files-prevent-file-share-deletion.md)
 
@@ -131,7 +131,7 @@ I många fall kommer du inte att upprätta en ny nettofilresurs för din organis
 Artikeln [om migreringsöversikt](storage-files-migration-overview.md) beskriver kortfattat grunderna och innehåller en tabell som leder dig till migreringsguider som troligen täcker ditt scenario.
 
 ## <a name="next-steps"></a>Nästa steg
-* [Planera för en Azure File Sync distribution](storage-sync-files-planning.md)
+* [Planera för en Azure File Sync distribution](../file-sync/file-sync-planning.md)
 * [Distribuera Azure Files](./storage-how-to-create-file-share.md)
-* [Distribuera Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Distribuera Azure File Sync](../file-sync/file-sync-deployment-guide.md)
 * [Läs artikeln om migreringsöversikten för att hitta migreringsguiden för ditt scenario](storage-files-migration-overview.md)

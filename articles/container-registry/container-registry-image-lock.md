@@ -1,46 +1,46 @@
 ---
 title: Låsa avbildningar
-description: Ange attribut för en behållar avbildning eller lagrings plats så att den inte kan tas bort eller skrivas över i ett Azure Container Registry.
+description: Ange attribut för en containeravbildning eller lagringsplats så att den inte kan tas bort eller skrivas över i ett Azure-containerregister.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: da84767523bb6d948b71b1c1ad2ddaffb628354a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 340beb1bb6666ddf0de7de38adee6be71f5f52bd
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "77659704"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107772351"
 ---
-# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Låsa en behållar avbildning i ett Azure Container Registry
+# <a name="lock-a-container-image-in-an-azure-container-registry"></a>Låsa en containeravbildning i ett Azure-containerregister
 
-I ett Azure Container Registry kan du låsa en avbildnings version eller en lagrings plats så att den inte kan tas bort eller uppdateras. Om du vill låsa en avbildning eller en lagrings plats uppdaterar du dess attribut med Azure CLI-kommandot [AZ ACR lagrings plats uppdatering][az-acr-repository-update]. 
+I ett Azure-containerregister kan du låsa en avbildningsversion eller en lagringsplats så att den inte kan tas bort eller uppdateras. Om du vill låsa en avbildning eller en lagringsplats uppdaterar du dess attribut med hjälp av Azure CLI-kommandot [az acr repository update][az-acr-repository-update]. 
 
-Den här artikeln kräver att du kör Azure CLI i Azure Cloud Shell eller lokalt (version 2.0.55 eller senare rekommenderas). Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli].
+Den här artikeln kräver att du kör Azure CLI i Azure Cloud Shell lokalt (version 2.0.55 eller senare rekommenderas). Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli].
 
 > [!IMPORTANT]
-> Den här artikeln gäller inte för att låsa ett helt register, till exempel med hjälp av **inställningar > lås** i Azure Portal eller `az lock` kommandon i Azure CLI. Att låsa en register resurs hindrar dig inte från att skapa, uppdatera eller ta bort data i databaserna. Att låsa ett register påverkar bara hanterings åtgärder som att lägga till eller ta bort replikeringar eller ta bort själva registret. Mer information i [Lås resurser för att förhindra oväntade ändringar](../azure-resource-manager/management/lock-resources.md).
+> Den här artikeln gäller inte för låsning av ett helt register, till exempel med hjälp **av inställningar >** lås i Azure Portal eller kommandon i Azure `az lock` CLI. Att låsa en registerresurs hindrar dig inte från att skapa, uppdatera eller ta bort data i lagringsplatsen. Låsning av ett register påverkar endast hanteringsåtgärder som att lägga till eller ta bort replikeringar eller att ta bort själva registret. Mer information finns i [Låsa resurser för att förhindra oväntade ändringar.](../azure-resource-manager/management/lock-resources.md)
 
 ## <a name="scenarios"></a>Scenarier
 
-Som standard är en taggad bild i Azure Container Registry *föränderligt*, så med lämpliga behörigheter kan du uppdatera och skicka en avbildning med samma tagg till ett register upprepade gånger. Behållar avbildningar kan också tas [bort](container-registry-delete.md) efter behov. Det här beteendet är användbart när du utvecklar avbildningar och behöver ha en storlek för registret.
+Som standard är en taggad avbildning i Azure Container Registry *föränderlig,* så med lämpliga behörigheter kan du uppdatera och push-installera en avbildning upprepade gånger med samma tagg till ett register. Containeravbildningar kan också [tas bort](container-registry-delete.md) efter behov. Det här beteendet är användbart när du utvecklar avbildningar och behöver underhålla en storlek för registret.
 
-Men när du distribuerar en *behållar* avbildning till produktion kan du behöva en behållar avbildning. En oföränderlig avbildning är en som du inte kan ta bort eller skriva över av misstag.
+När du distribuerar en containeravbildning till produktion kan du dock behöva en *oföränderlig containeravbildning.* En oföränderlig avbildning är en avbildning som du inte kan ta bort eller skriva över av misstag.
 
-Se [rekommendationer för taggning och versions behållar avbildningar](container-registry-image-tag-version.md) för strategier till tagg-och versions avbildningar i registret.
+Se [Rekommendationer för taggning och versionshantering av containeravbildningar för](container-registry-image-tag-version.md) strategier för att tagga och versionsavbildningar i registret.
 
-Använd [uppdaterings kommandot AZ ACR-lagringsplats][az-acr-repository-update] för att ange attribut för lagring så att du kan:
+Använd kommandot [az acr repository update för][az-acr-repository-update] att ange lagringsplatsens attribut så att du kan:
 
-* Låsa en avbildnings version eller en hel lagrings plats
+* Låsa en avbildningsversion eller en hel lagringsplats
 
-* Skydda en avbildnings version eller lagrings plats från borttagning, men Tillåt uppdateringar
+* Skydda en avbildningsversion eller lagringsplats från borttagning, men tillåt uppdateringar
 
-* Förhindra Läs åtgärder (pull) på en avbildnings version eller en hel lagrings plats
+* Förhindra läsåtgärder (pull-åtgärder) på en avbildningsversion eller en hel lagringsplats
 
 Se följande avsnitt för exempel. 
 
-## <a name="lock-an-image-or-repository"></a>Låsa en bild eller lagrings plats 
+## <a name="lock-an-image-or-repository"></a>Låsa en avbildning eller lagringsplats 
 
-### <a name="show-the-current-repository-attributes"></a>Visa aktuella attribut för databas
-Om du vill se de aktuella attributen för en lagrings plats kör du följande kommando för [AZ ACR-databasen show][az-acr-repository-show] :
+### <a name="show-the-current-repository-attributes"></a>Visa de aktuella lagringsplatsattributen
+Om du vill se de aktuella attributen för en lagringsplats kör du [följande az acr repository show-kommando:][az-acr-repository-show]
 
 ```azurecli
 az acr repository show \
@@ -48,8 +48,8 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="show-the-current-image-attributes"></a>Visa aktuella bildattribut
-Om du vill se de aktuella attributen för en tagg kör du följande kommando för [AZ ACR-databasen show][az-acr-repository-show] :
+### <a name="show-the-current-image-attributes"></a>Visa de aktuella bildattributen
+Om du vill se de aktuella attributen för en tagg kör du följande [az acr repository show-kommando:][az-acr-repository-show]
 
 ```azurecli
 az acr repository show \
@@ -57,9 +57,9 @@ az acr repository show \
     --output jsonc
 ```
 
-### <a name="lock-an-image-by-tag"></a>Lås en bild efter tagg
+### <a name="lock-an-image-by-tag"></a>Låsa en avbildning efter tagg
 
-För att låsa *myrepo/min avbildning: tag* -bilden i *registret* kör du följande [AZ ACR-plats uppdaterings][az-acr-repository-update] kommando:
+Om du vill *låsa avbildningen myrepo/myimage:tag* i *myregistry* kör du följande [az acr repository update-kommando:][az-acr-repository-update]
 
 ```azurecli
 az acr repository update \
@@ -67,9 +67,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-an-image-by-manifest-digest"></a>Lås en avbildning av manifest Sammanfattning
+### <a name="lock-an-image-by-manifest-digest"></a>Låsa en avbildning efter manifest
 
-Kör följande kommando för att låsa en avbildning av *myrepo/bild* som identifieras av manifest sammandrag (SHA-256-hash, representeras som `sha256:...` ). (Om du vill hitta manifest sammandrag som är associerad med en eller flera bildtaggar kör du kommandot [AZ ACR-lagringsplats show-Manifests][az-acr-repository-show-manifests] .)
+Om du vill *låsa en myrepo/myimage-avbildning* som identifierats av manifestet digest (SHA-256-hash, som representeras `sha256:...` som ), kör du följande kommando. (Du hittar manifestet som är associerat med en eller flera avbildningstaggar genom att köra [kommandot az acr repository show-manifests.)][az-acr-repository-show-manifests]
 
 ```azurecli
 az acr repository update \
@@ -77,9 +77,9 @@ az acr repository update \
     --write-enabled false
 ```
 
-### <a name="lock-a-repository"></a>Låsa en lagrings plats
+### <a name="lock-a-repository"></a>Låsa en lagringsplats
 
-Om du vill låsa lagrings platsen för *myrepo/min-avbildningen* och alla avbildningar i den kör du följande kommando:
+Kör följande kommando *för att låsa lagringsplatsen myrepo/myimage* och alla avbildningar i den:
 
 ```azurecli
 az acr repository update \
@@ -87,11 +87,11 @@ az acr repository update \
     --write-enabled false
 ```
 
-## <a name="protect-an-image-or-repository-from-deletion"></a>Skydda en avbildning eller lagrings plats från borttagning
+## <a name="protect-an-image-or-repository-from-deletion"></a>Skydda en avbildning eller lagringsplats från borttagning
 
-### <a name="protect-an-image-from-deletion"></a>Skydda en avbildning från att tas bort
+### <a name="protect-an-image-from-deletion"></a>Skydda en bild från borttagning
 
-Kör följande kommando för att tillåta *myrepo/image: tag-* avbildningen som ska uppdateras men inte tas bort:
+Kör följande *kommando för att tillåta att avbildningen myrepo/myimage:tag* uppdateras men inte tas bort:
 
 ```azurecli
 az acr repository update \
@@ -99,9 +99,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-### <a name="protect-a-repository-from-deletion"></a>Skydda en lagrings plats från borttagning
+### <a name="protect-a-repository-from-deletion"></a>Skydda en lagringsplats från borttagning
 
-Följande kommando anger *myrepo/image-* lagringsplatsen så att den inte kan tas bort. Enskilda avbildningar kan fortfarande uppdateras eller tas bort.
+Följande kommando anger *lagringsplatsen myrepo/myimage* så att den inte kan tas bort. Enskilda avbildningar kan fortfarande uppdateras eller tas bort.
 
 ```azurecli
 az acr repository update \
@@ -109,9 +109,9 @@ az acr repository update \
     --delete-enabled false --write-enabled true
 ```
 
-## <a name="prevent-read-operations-on-an-image-or-repository"></a>Förhindra Läs åtgärder på en avbildning eller lagrings plats
+## <a name="prevent-read-operations-on-an-image-or-repository"></a>Förhindra läsåtgärder på en avbildning eller lagringsplats
 
-För att förhindra Läs åtgärder (pull) på *myrepo/avbildningen: tag* -avbildning kör du följande kommando:
+Om du vill förhindra läsåtgärder (pull)-åtgärder *på avbildningen myrepo/myimage:tag* kör du följande kommando:
 
 ```azurecli
 az acr repository update \
@@ -119,7 +119,7 @@ az acr repository update \
     --read-enabled false
 ```
 
-Kör följande kommando för att förhindra Läs åtgärder på alla avbildningar i *myrepo/image* -lagringsplatsen:
+Om du vill förhindra läsåtgärder på alla avbildningar *i lagringsplatsen myrepo/myimage* kör du följande kommando:
 
 ```azurecli
 az acr repository update \
@@ -127,9 +127,9 @@ az acr repository update \
     --read-enabled false
 ```
 
-## <a name="unlock-an-image-or-repository"></a>Låsa upp en avbildning eller lagrings plats
+## <a name="unlock-an-image-or-repository"></a>Låsa upp en avbildning eller lagringsplats
 
-För att återställa standard beteendet för *myrepo/image: tag* -bilden så att den kan tas bort och uppdateras, kör du följande kommando:
+Om du vill återställa standardbeteendet för *avbildningen myrepo/myimage:tag* så att den kan tas bort och uppdateras kör du följande kommando:
 
 ```azurecli
 az acr repository update \
@@ -137,7 +137,7 @@ az acr repository update \
     --delete-enabled true --write-enabled true
 ```
 
-Om du vill återställa standard beteendet för lagrings platsen *myrepo/min avbildning* och alla avbildningar så att de kan tas bort och uppdateras, kör du följande kommando:
+Om du vill återställa standardbeteendet för *lagringsplatsen myrepo/myimage* och alla avbildningar så att de kan tas bort och uppdateras kör du följande kommando:
 
 ```azurecli
 az acr repository update \
@@ -147,16 +147,15 @@ az acr repository update \
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln har du lärt dig hur du använder [uppdaterings kommandot AZ ACR-lagringsplats][az-acr-repository-update] för att förhindra borttagning eller uppdatering av avbildnings versioner i en lagrings plats. Om du vill ange ytterligare attribut, se referens för [AZ ACR-lagringsplatsen][az-acr-repository-update] .
+I den här artikeln har du lärt dig hur du använder [kommandot az acr repository update][az-acr-repository-update] för att förhindra borttagning eller uppdatering av avbildningsversioner på en lagringsplats. Ytterligare attribut finns i kommandoreferensen [az acr repository update.][az-acr-repository-update]
 
-Om du vill se de attribut som har angetts för en avbildnings version eller lagrings plats använder du kommandot [AZ ACR databas show][az-acr-repository-show] .
+Om du vill se de attribut som angetts för en avbildningsversion eller lagringsplats använder du [kommandot az acr repository show.][az-acr-repository-show]
 
-Mer information om borttagnings åtgärder finns i [ta bort behållar avbildningar i Azure Container Registry][container-registry-delete].
+Mer information om borttagningsåtgärder finns i Ta [bort containeravbildningar i Azure Container Registry][container-registry-delete].
 
 <!-- LINKS - Internal -->
-[az-acr-repository-update]: /cli/azure/acr/repository#az-acr-repository-update
-[az-acr-repository-show]: /cli/azure/acr/repository#az-acr-repository-show
-[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az-acr-repository-show-manifests
+[az-acr-repository-update]: /cli/azure/acr/repository#az_acr_repository_update
+[az-acr-repository-show]: /cli/azure/acr/repository#az_acr_repository_show
+[az-acr-repository-show-manifests]: /cli/azure/acr/repository#az_acr_repository_show_manifests
 [azure-cli]: /cli/azure/install-azure-cli
 [container-registry-delete]: container-registry-delete.md
-

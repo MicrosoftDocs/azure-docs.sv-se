@@ -1,45 +1,45 @@
 ---
-title: Autentisering mellan register från ACR-aktivitet
-description: Konfigurera en Azure Container Registry aktivitet (ACR Task) för att få åtkomst till ett annat privat Azure Container Registry med hjälp av en hanterad identitet för Azure-resurser
+title: Autentisering mellan register från ACR-uppgift
+description: Konfigurera en Azure Container Registry task (ACR Task) för att få åtkomst till ett annat privat Azure-containerregister med hjälp av en hanterad identitet för Azure-resurser
 ms.topic: article
 ms.date: 07/06/2020
-ms.openlocfilehash: 789d2c141f8b7c3f2eb8daa31d99090e3d028a43
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a9b70a44de0cfccb9a61bc24575281e440db6e32
+ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98915836"
+ms.lasthandoff: 04/20/2021
+ms.locfileid: "107781132"
 ---
-# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Autentisering mellan register i en ACR-aktivitet med hjälp av en Azure-hanterad identitet 
+# <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Autentisering mellan register i en ACR-uppgift med hjälp av en Azure-hanterad identitet 
 
-I en [ACR-uppgift](container-registry-tasks-overview.md)kan du [Aktivera en hanterad identitet för Azure-resurser](container-registry-tasks-authentication-managed-identity.md). Uppgiften kan använda identiteten för att få åtkomst till andra Azure-resurser, utan att behöva ange eller hantera autentiseringsuppgifter. 
+I en [ACR-uppgift](container-registry-tasks-overview.md)kan du aktivera [en hanterad identitet för Azure-resurser.](container-registry-tasks-authentication-managed-identity.md) Uppgiften kan använda identiteten för att få åtkomst till andra Azure-resurser, utan att behöva ange eller hantera autentiseringsuppgifter. 
 
-I den här artikeln får du lära dig hur du aktiverar en hanterad identitet i en uppgift för att hämta en avbildning från ett register som skiljer sig från det som används för att köra uppgiften.
+I den här artikeln får du lära dig hur du aktiverar en hanterad identitet i en uppgift för att hämta en avbildning från ett annat register än det som användes för att köra uppgiften.
 
-Den här artikeln kräver att du kör Azure CLI-version 2.0.68 eller senare för att skapa Azure-resurser. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli].
+För att skapa Azure-resurser kräver den här artikeln att du kör Azure CLI version 2.0.68 eller senare. Kör `az --version` för att hitta versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI][azure-cli].
 
 ## <a name="scenario-overview"></a>Översikt över scenario
 
-Exempel aktiviteten hämtar en bas avbildning från ett annat Azure Container Registry för att bygga och skicka en program avbildning. Om du vill hämta bas avbildningen konfigurerar du aktiviteten med en hanterad identitet och tilldelar den behörigheten. 
+Exempelaktiviteten hämtar en basavbildning från ett annat Azure-containerregister för att skapa och push-skicka en programavbildning. Om du vill hämta basavbildningen konfigurerar du uppgiften med en hanterad identitet och tilldelar lämplig behörighet till den. 
 
-Det här exemplet visar steg som använder antingen en användardefinierad eller systemtilldelad hanterad identitet. Ditt val av identitet beror på organisationens behov.
+Det här exemplet visar steg med hjälp av antingen en användar-tilldelad eller system tilldelad hanterad identitet. Ditt val av identitet beror på organisationens behov.
 
-I ett verkligt scenario kan en organisation underhålla en uppsättning grundläggande avbildningar som används av alla utvecklings grupper för att bygga sina program. De här bas avbildningarna lagras i ett företags register, där varje utvecklings team har bara pull-rättigheter. 
+I ett verkligt scenario kan en organisation ha en uppsättning basavbildningar som används av alla utvecklingsteam för att skapa sina program. Dessa basavbildningar lagras i ett företagsregister, där varje utvecklingsteam endast har pull-rättigheter. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-I den här artikeln behöver du två Azure Container-register:
+För den här artikeln behöver du två Azure-containerregister:
 
-* Du använder det första registret för att skapa och köra ACR-uppgifter. I den här *artikeln kallas registret för registret.* 
-* Det andra registret är värd för en bas avbildning som används för aktiviteten för att bygga en avbildning. I den här artikeln heter det andra registret *mybaseregistry*. 
+* Du använder det första registret för att skapa och köra ACR-uppgifter. I den här artikeln heter det här registret *myregistry*. 
+* Det andra registret är värd för en basavbildning som används för uppgiften att skapa en avbildning. I den här artikeln heter det andra registret *mybaseregistry*. 
 
-Ersätt med dina egna register namn i senare steg.
+Ersätt med dina egna registernamn i senare steg.
 
-Om du inte redan har de nödvändiga Azure Container register, se [snabb start: skapa ett privat behållar register med hjälp av Azure CLI](container-registry-get-started-azure-cli.md). Du behöver inte skicka avbildningar till registret ännu.
+Om du inte redan har de Azure-containerregister som behövs kan du gå till [Snabbstart: Skapa ett privat containerregister med hjälp av Azure CLI.](container-registry-get-started-azure-cli.md) Du behöver inte push-skicka avbildningar till registret ännu.
 
-## <a name="prepare-base-registry"></a>Förbered grundläggande register
+## <a name="prepare-base-registry"></a>Förbereda basregistret
 
-I demonstrations syfte kan du som en engångs åtgärd köra [AZ ACR import] [AZ-ACR-import] för att importera en offentlig Node.js-avbildning från Docker Hub till ditt bas register. I praktiken kan ett annat team eller en process i organisationen underhålla avbildningar i bas registret.
+I demonstrationssyfte kör du som en enda åtgärd [az acr import][az-acr-import] för att importera en offentlig Node.js-avbildning från Docker Hub till ditt basregister. I praktiken kan ett annat team eller en annan process i organisationen underhålla avbildningar i basregistret.
 
 ```azurecli
 az acr import --name mybaseregistry \
@@ -47,9 +47,9 @@ az acr import --name mybaseregistry \
   --image baseimages/node:15-alpine 
 ```
 
-## <a name="define-task-steps-in-yaml-file"></a>Definiera uppgifts steg i YAML-filen
+## <a name="define-task-steps-in-yaml-file"></a>Definiera uppgiftssteg i YAML-fil
 
-Stegen för det här exemplet för [flera steg](container-registry-tasks-multi-step.md) definieras i en yaml- [fil](container-registry-tasks-reference-yaml.md). Skapa en fil med namnet `helloworldtask.yaml` i din lokala arbets katalog och klistra in följande innehåll. Uppdatera värdet för `REGISTRY_NAME` i build-steget med Server namnet för bas registret.
+Stegen för den här [exempeluppgiften med flera steg](container-registry-tasks-multi-step.md) definieras i en [YAML-fil](container-registry-tasks-reference-yaml.md). Skapa en fil med `helloworldtask.yaml` namnet i din lokala arbetskatalog och klistra in följande innehåll. Uppdatera värdet för `REGISTRY_NAME` i build-steget med servernamnet för ditt basregister.
 
 ```yml
 version: v1.1.0
@@ -59,17 +59,17 @@ steps:
   - push: ["$Registry/hello-world:$ID"]
 ```
 
-I build-steget används `Dockerfile-app` filen i lagrings platsen [Azure-samples/ACR-build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) för att bygga en avbildning. `--build-arg`Refererar till bas registret för att hämta bas avbildningen. När den har skapats skickas avbildningen till registret som används för att köra uppgiften.
+Build-steget använder filen `Dockerfile-app` i [lagringsplatsen Azure-Samples/acr-build-helloworld-node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) för att skapa en avbildning. Refererar `--build-arg` till basregistret för att hämta basavbildningen. När avbildningen har skapats push-skickas den till det register som används för att köra uppgiften.
 
-## <a name="option-1-create-task-with-user-assigned-identity"></a>Alternativ 1: Skapa uppgift med användardefinierad identitet
+## <a name="option-1-create-task-with-user-assigned-identity"></a>Alternativ 1: Skapa uppgift med användar tilldelad identitet
 
-Stegen i det här avsnittet skapar en uppgift och aktiverar en användardefinierad identitet. Om du vill aktivera en tilldelad identitet i stället, se [Alternativ 2: Skapa uppgift med systemtilldelad identitet](#option-2-create-task-with-system-assigned-identity). 
+Stegen i det här avsnittet skapar en uppgift och aktiverar en användar tilldelad identitet. Om du vill aktivera en system tilldelad identitet i stället kan du se [Alternativ 2: Skapa uppgift med system tilldelad identitet](#option-2-create-task-with-system-assigned-identity). 
 
 [!INCLUDE [container-registry-tasks-user-assigned-id](../../includes/container-registry-tasks-user-assigned-id.md)]
 
 ### <a name="create-task"></a>Skapa uppgift
 
-Skapa uppgiften *helloworldtask* genom att köra följande kommando för [AZ ACR Task Create][az-acr-task-create] . Aktiviteten körs utan en käll kods kontext och kommandot refererar till filen `helloworldtask.yaml` i arbets katalogen. `--assign-identity`Parametern skickar resurs-ID: t för den tilldelade identiteten. 
+Skapa uppgiften *helloworldtask genom* att köra följande [az acr task create-kommando.][az-acr-task-create] Aktiviteten körs utan källkodskontext och kommandot refererar till filen `helloworldtask.yaml` i arbetskatalogen. Parametern `--assign-identity` skickar resurs-ID:t för den användar tilldelade identiteten. 
 
 ```azurecli
 az acr task create \
@@ -82,17 +82,17 @@ az acr task create \
 
 [!INCLUDE [container-registry-tasks-user-id-properties](../../includes/container-registry-tasks-user-id-properties.md)]
 
-### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Ge Identity pull-behörighet till bas registret
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Ge identiteter pull-behörigheter till basregistret
 
-I det här avsnittet ger du hanterade identitets behörigheter att hämta från bas registret, *mybaseregistry*.
+I det här avsnittet ger du den hanterade identiteten behörighet att hämta från *basregistret, mybaseregistry*.
 
-Använd kommandot [AZ ACR show][az-acr-show] för att hämta resurs-ID för bas registret och lagra det i en variabel:
+Använd kommandot [az acr show][az-acr-show] för att hämta resurs-ID:t för basregistret och lagra det i en variabel:
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Använd kommandot [AZ roll tilldelning skapa][az-role-assignment-create] för att tilldela identiteten `acrpull` rollen till bas registret. Den här rollen har endast behörigheter för att hämta avbildningar från registret.
+Använd kommandot [az role assignment create][az-role-assignment-create] för att tilldela den identitet som rollen till `acrpull` basregistret. Den här rollen har endast behörighet att hämta avbildningar från registret.
 
 ```azurecli
 az role assignment create \
@@ -101,15 +101,15 @@ az role assignment create \
   --role acrpull
 ```
 
-Fortsätt att [lägga till autentiseringsuppgifter för mål registret i aktiviteten](#add-target-registry-credentials-to-task).
+Fortsätt till Lägg [till autentiseringsuppgifter för målregistret i uppgiften](#add-target-registry-credentials-to-task).
 
-## <a name="option-2-create-task-with-system-assigned-identity"></a>Alternativ 2: Skapa uppgift med systemtilldelad identitet
+## <a name="option-2-create-task-with-system-assigned-identity"></a>Alternativ 2: Skapa uppgift med system tilldelad identitet
 
-Stegen i det här avsnittet skapar en uppgift och aktiverar en tilldelad identitet. Om du vill aktivera en användardefinierad identitet i stället, se [alternativ 1: Skapa uppgift med användardefinierad identitet](#option-1-create-task-with-user-assigned-identity). 
+Stegen i det här avsnittet skapar en uppgift och aktiverar en system tilldelad identitet. Om du vill aktivera en användar tilldelad identitet i stället kan du se [Alternativ 1: Skapa uppgift med användar tilldelad identitet.](#option-1-create-task-with-user-assigned-identity) 
 
 ### <a name="create-task"></a>Skapa uppgift
 
-Skapa uppgiften *helloworldtask* genom att köra följande kommando för [AZ ACR Task Create][az-acr-task-create] . Aktiviteten körs utan en käll kods kontext och kommandot refererar till filen `helloworldtask.yaml` i arbets katalogen. `--assign-identity`Parametern utan värde aktiverar den systemtilldelade identiteten för uppgiften. 
+Skapa uppgiften *helloworldtask genom* att köra följande [az acr task create-kommando.][az-acr-task-create] Aktiviteten körs utan källkodskontext och kommandot refererar till filen `helloworldtask.yaml` i arbetskatalogen. Parametern `--assign-identity` utan värde aktiverar den system tilldelade identiteten för uppgiften. 
 
 ```azurecli
 az acr task create \
@@ -121,17 +121,17 @@ az acr task create \
 ```
 [!INCLUDE [container-registry-tasks-system-id-properties](../../includes/container-registry-tasks-system-id-properties.md)]
 
-### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Ge Identity pull-behörighet till bas registret
+### <a name="give-identity-pull-permissions-to-the-base-registry"></a>Ge identiteter pull-behörigheter till basregistret
 
-I det här avsnittet ger du hanterade identitets behörigheter att hämta från bas registret, *mybaseregistry*.
+I det här avsnittet ger du den hanterade identiteten behörighet att hämta från *basregistret, mybaseregistry*.
 
-Använd kommandot [AZ ACR show][az-acr-show] för att hämta resurs-ID för bas registret och lagra det i en variabel:
+Använd kommandot [az acr show][az-acr-show] för att hämta resurs-ID:t för basregistret och lagra det i en variabel:
 
 ```azurecli
 baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 ```
 
-Använd kommandot [AZ roll tilldelning skapa][az-role-assignment-create] för att tilldela identiteten `acrpull` rollen till bas registret. Den här rollen har endast behörigheter för att hämta avbildningar från registret.
+Använd kommandot [az role assignment create][az-role-assignment-create] för att tilldela den identitet som rollen till `acrpull` basregistret. Den här rollen har endast behörighet att hämta avbildningar från registret.
 
 ```azurecli
 az role assignment create \
@@ -140,9 +140,9 @@ az role assignment create \
   --role acrpull
 ```
 
-## <a name="add-target-registry-credentials-to-task"></a>Lägg till autentiseringsuppgifter för mål registret i uppgiften
+## <a name="add-target-registry-credentials-to-task"></a>Lägga till autentiseringsuppgifter för målregistret i en uppgift
 
-Använd nu kommandot [AZ ACR Task Credential Add][az-acr-task-credential-add] för att aktivera uppgiften att autentisera med bas registret med identitetens autentiseringsuppgifter. Kör kommandot som motsvarar den typ av hanterade identitet som du aktiverade i uppgiften. Om du har aktiverat en användardefinierad identitet skickar du `--use-identity` med klient-ID: t för identiteten. Om du har aktiverat en systemtilldelad identitet skickar du `--use-identity [system]` .
+Använd nu kommandot [az acr task credential add][az-acr-task-credential-add] för att göra det möjligt för uppgiften att autentisera med basregistret med identitetens autentiseringsuppgifter. Kör kommandot som motsvarar den typ av hanterad identitet som du aktiverade i uppgiften. Om du har aktiverat en användar tilldelad identitet skickar `--use-identity` du med klient-ID:t för identiteten. Om du har aktiverat en system tilldelad identitet skickar du `--use-identity [system]` .
 
 ```azurecli
 # Add credentials for user-assigned identity to the task
@@ -160,9 +160,9 @@ az acr task credential add \
   --use-identity [system]
 ```
 
-## <a name="manually-run-the-task"></a>Kör uppgiften manuellt
+## <a name="manually-run-the-task"></a>Köra uppgiften manuellt
 
-Om du vill kontrol lera att den aktivitet där du har aktiverat en hanterad identitet har körts manuellt utlöser du uppgiften med kommandot [AZ ACR Task Run][az-acr-task-run] . 
+Om du vill kontrollera att aktiviteten där du har aktiverat en hanterad identitet körs manuellt utlöser du uppgiften med [kommandot az acr task run.][az-acr-task-run] 
 
 ```azurecli
 az acr task run \
@@ -170,7 +170,7 @@ az acr task run \
   --registry myregistry
 ```
 
-Om aktiviteten körs ser utdata ut ungefär så här:
+Om aktiviteten körs korrekt ser utdata ut ungefär så här:
 
 ```
 Queued a run with ID: cf10
@@ -219,7 +219,7 @@ The push refers to repository [myregistry.azurecr.io/hello-world]
 Run ID: cf10 was successful after 32s
 ```
 
-Kör kommandot [AZ ACR-lagringsplatsen show-Tags][az-acr-repository-show-tags] för att kontrol lera att avbildningen har skapats och skickats till *registret*:
+Kör kommandot [az acr repository show-tags][az-acr-repository-show-tags] för att verifiera att avbildningen har skapats och push-skickats till *myregistry*:
 
 ```azurecli
 az acr repository show-tags --name myregistry --repository hello-world --output tsv
@@ -233,21 +233,21 @@ cf10
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs mer om hur du [aktiverar en hanterad identitet i en ACR-aktivitet](container-registry-tasks-authentication-managed-identity.md).
-* Se [yaml-referensen ACR tasks](container-registry-tasks-reference-yaml.md)
+* Läs mer om [hur du aktiverar en hanterad identitet i en ACR-uppgift.](container-registry-tasks-authentication-managed-identity.md)
+* Se [ACR-uppgifter YAML-referens](container-registry-tasks-reference-yaml.md)
 
 <!-- LINKS - Internal -->
-[az-login]: /cli/azure/reference-index#az-login
-[az-acr-login]: /cli/azure/acr#az-acr-login
-[az-acr-show]: /cli/azure/acr#az-acr-show
-[az-acr-build]: /cli/azure/acr#az-acr-build
-[az-acr-repository-show-tags]: /cli/azure/acr/repository#az-acr-repository-show-tags
-[az-role-assignment-create]: /cli/azure/role/assignment#az-role-assignment-create
-[az-acr-login]: /cli/azure/acr#az-acr-login
+[az-login]: /cli/azure/reference-index#az_login
+[az-acr-login]: /cli/azure/acr#az_acr_login
+[az-acr-show]: /cli/azure/acr#az_acr_show
+[az-acr-build]: /cli/azure/acr#az_acr_build
+[az-acr-repository-show-tags]: /cli/azure/acr/repository#az_acr_repository_show_tags
+[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-acr-login]: /cli/azure/acr#az_acr_login
 [azure-cli]: /cli/azure/install-azure-cli
-[az-acr-task-create]: /cli/azure/acr/task#az-acr-task-create
-[az-acr-task-show]: /cli/azure/acr/task#az-acr-task-show
-[az-acr-task-run]: /cli/azure/acr/task#az-acr-task-run
-[az-acr-task-list-runs]: /cli/azure/acr/task#az-acr-task-list-runs
-[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az-acr-task-credential-add
-[az-group-create]: /cli/azure/group?#az-group-create
+[az-acr-task-create]: /cli/azure/acr/task#az_acr_task_create
+[az-acr-task-show]: /cli/azure/acr/task#az_acr_task_show
+[az-acr-task-run]: /cli/azure/acr/task#az_acr_task_run
+[az-acr-task-list-runs]: /cli/azure/acr/task#az_acr_task_list_runs
+[az-acr-task-credential-add]: /cli/azure/acr/task/credential#az_acr_task_credential_add
+[az-group-create]: /cli/azure/group?#az_group_create

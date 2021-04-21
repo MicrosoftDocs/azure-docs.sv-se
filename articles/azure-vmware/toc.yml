@@ -4,7 +4,7 @@
   items:
     - name: Om Azure VMware Solution
       href: introduction.md
-    - name: Plattforms uppdateringar
+    - name: Plattformsuppdateringar
       href: azure-vmware-solution-platform-updates.md
 - name: Snabbstart
   items:
@@ -34,7 +34,7 @@
       href: tutorial-deploy-vmware-hcx.md
     - name: 8 – Skala ett privat moln
       href: tutorial-scale-private-cloud.md
-    - name: 9 – ta bort ett privat moln
+    - name: 9 – Ta bort ett privat moln
       href: tutorial-delete-private-cloud.md
 - name: Begrepp
   items:
@@ -52,9 +52,9 @@
       href: concepts-upgrades.md
 - name: Anvisningar
   items:
-    - name: Begär värd kvot och aktivera Azure VMware-lösning
+    - name: Begär värdkvot och aktivera Azure VMware Solution
       href: enable-azure-vmware-solution.md
-    - name: Flytta EA-och CSP-prenumerationer
+    - name: Flytta EA- och CSP-prenumerationer
       href: move-ea-csp-subscriptions.md
     - name: Spara kostnader med en reserverad instans
       href: reserved-instance.md
@@ -62,7 +62,7 @@
       href: /azure/migrate/how-to-create-azure-vmware-solution-assessment?context=/azure/azure-vmware/context/context
     - name: Hantera DHCP
       href: manage-dhcp.md
-    - name: Konfigurera NSX-nätverks komponenter
+    - name: Konfigurera NSX-nätverkskomponenter
       href: configure-nsx-network-components-azure-portal.md
     - name: Konfigurera GitHub Enterprise-server
       href: github-enterprise-server.md
@@ -72,13 +72,13 @@
       href: create-ipsec-tunnel.md
     - name: Windows Server-redundanskluster
       href: windows-server-failover-cluster.md
-    - name: Återställ vSphere-autentiseringsuppgifter
+    - name: Återställa vSphere-autentiseringsuppgifter
       href: reset-vsphere-credentials.md
     - name: Haveriberedskap
       items:
         - name: Distribuera haveriberedskap för virtuella datorer
           href: disaster-recovery-for-virtual-machines.md
-        - name: Haveri beredskap till Azure
+        - name: Haveriberedskap till Azure
           items:
             - name: Förbereda Azure
               href: /azure/site-recovery/avs-tutorial-prepare-azure?context=/azure/azure-vmware/context/context
@@ -124,13 +124,13 @@
           href: vrealize-operations-for-azure-vmware-solution.md
         - name: Distribuera VMware Horizon
           href: azure-vmware-solution-horizon.md
-        - name: Distribuera virtuella datorer från innehålls biblioteket
+        - name: Distribuera virtuella datorer från innehållsbiblioteket
           href: deploy-vm-content-library.md
     - name: VMware-ekosystem
       items:
         - name: Säkerhetskopieringslösningar för virtuella datorer
           href: ecosystem-back-up-vms.md
-        - name: Migrations lösningar för virtuella datorer
+        - name: Migreringslösningar för virtuella datorer
           href: ecosystem-migration-vms.md
 - name: Resurser
   items:
@@ -138,19 +138,21 @@
       items:
         - name: Skapa en supportbegäran om distributionsproblem
           href: fix-deployment-provisioning-failures.md
-    - name: VANLIGA FRÅGOR OCH SVAR
+        - name: VMware tools vix-felkod = 21009
+          href: 'https://kb.vmware.com/s/article/2129927'
+    - name: Vanliga frågor
       items:
         - name: Allmänt
           href: /azure/azure-vmware/faq#general
-        - name: Kund kommunikation
+        - name: Kundkommunikation
           href: /azure/azure-vmware/faq#customer-communication
         - name: Konfiguration och installation
           href: /azure/azure-vmware/faq#configuration-and-setup
         - name: VMware-programvara
           href: /azure/azure-vmware/faq#vmware-software
-        - name: 'Beräkning, säkerhets kopiering och haveri beredskap'
+        - name: 'Beräkning, säkerhetskopiering och haveriberedskap'
           href: '/azure/azure-vmware/faq#compute,-backup,-and-disaster-recovery'
-        - name: Nätverk och anslutning
+        - name: Nätverk och sammankoppling
           href: /azure/azure-vmware/faq#networking-and-interconnectivity
         - name: Storage
           href: /azure/azure-vmware/faq#storage
@@ -162,15 +164,15 @@
           href: /azure/azure-vmware/faq#billing-and-support
     - name: Video
       items:
-        - name: Upprepning
+        - name: Spellista
           href: 'https://youtube.com/playlist?list=PL1NLwHeM6ewbZu0dC0guj-OSpIoZnnJin'
         - name: Integrering med Azure-tjänsten
           href: 'https://youtu.be/m26iLu6DHbU'
         - name: Integrering med Azure Application Gateway
           href: 'https://youtu.be/BoQYvqzb6Y8'
-        - name: Migrering och kapacitets planering
+        - name: Migrering och kapacitetsplanering
           href: 'https://youtu.be/NoNG-hkksrA'
-        - name: Rotera vCenter-& NSX-T-lösenord med Azure Logic app
+        - name: Rotera vCenter& NSX-T-lösenord med hjälp av Azure Logic App
           href: 'https://youtu.be/cK1qY3knj88'
 - name: Referens
   items:
@@ -180,5 +182,5 @@
       href: /cli/azure/ext/vmware/vmware
     - name: Azure PowerShell
       href: /powershell/module/az.vmware/
-    - name: Terraform Azure-Provider
+    - name: Terraform Azure-provider
       href: 'https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/vmware_private_cloud'
