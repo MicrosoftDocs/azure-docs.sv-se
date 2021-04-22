@@ -1,68 +1,68 @@
 ---
-title: Utöka Azure-IoT Central med anpassade regler och meddelanden | Microsoft Docs
-description: Som en lösnings utvecklare konfigurerar du ett IoT Central program för att skicka e-postaviseringar när en enhet slutar skicka telemetri. Den här lösningen använder Azure Stream Analytics, Azure Functions och SendGrid.
-author: TheJasonAndrew
-ms.author: v-anjaso
+title: Utöka Azure IoT Central med anpassade regler och meddelanden | Microsoft Docs
+description: Som lösningsutvecklare konfigurerar du ett IoT Central för att skicka e-postaviseringar när en enhet slutar skicka telemetri. Den här lösningen använder Azure Stream Analytics, Azure Functions och SendGrid.
+author: philmea
+ms.author: philmea
 ms.date: 02/09/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, devx-track-csharp
 manager: philmea
-ms.openlocfilehash: 824308b66803d2dfa05383ff06ce97c48626619d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a65d9dbaed4d197c2e0843e73ff3f45b8678017e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179348"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864225"
 ---
 # <a name="extend-azure-iot-central-with-custom-rules-using-stream-analytics-azure-functions-and-sendgrid"></a>Utöka Azure IoT Central med anpassade regler med hjälp av Stream Analytics, Azure Functions och SendGrid
 
-Den här instruktions guiden visar dig som lösnings utvecklare och hur du utökar ditt IoT Central program med anpassade regler och meddelanden. Exemplet visar hur du skickar ett meddelande till en operatör när en enhet slutar skicka telemetri. Lösningen använder en [Azure Stream Analytics](../../stream-analytics/index.yml) fråga för att identifiera när en enhet har slutat skicka telemetri. Stream Analytics jobbet använder [Azure Functions](../../azure-functions/index.yml) för att skicka e-postmeddelanden med hjälp av [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
+Den här guiden visar hur du som lösningsutvecklare utökar ditt IoT Central med anpassade regler och meddelanden. Exemplet visar hur du skickar ett meddelande till en operatör när en enhet slutar skicka telemetri. Lösningen använder en [Azure Stream Analytics](../../stream-analytics/index.yml) för att identifiera när en enhet har slutat skicka telemetri. I Stream Analytics-jobbet används [Azure Functions för att](../../azure-functions/index.yml) skicka e-postmeddelanden med [SendGrid](https://sendgrid.com/docs/for-developers/partners/microsoft-azure/).
 
-Den här instruktions guiden visar hur du utökar IoT Central bortom det som redan kan utföras med de inbyggda reglerna och åtgärderna.
+Den här guiden visar hur du utökar IoT Central utöver vad den redan kan göra med de inbyggda reglerna och åtgärderna.
 
-I den här instruktions guiden får du lära dig att:
+I den här guiden får du lära dig att:
 
-* Strömma telemetri från ett IoT Central program med *kontinuerlig data export*.
-* Skapa en Stream Analytics-fråga som identifierar när en enhet har slutat skicka data.
-* Skicka ett e-postmeddelande med hjälp av Azure Functions-och SendGrid-tjänsterna.
+* Strömma telemetri från ett IoT Central program med hjälp av *kontinuerlig dataexport*.
+* Skapa en Stream Analytics som identifierar när en enhet har slutat skicka data.
+* Skicka ett e-postmeddelande med hjälp Azure Functions- och SendGrid-tjänsterna.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-För att slutföra stegen i den här instruktions guiden behöver du en aktiv Azure-prenumeration.
+För att slutföra stegen i den här instruktionerna behöver du en aktiv Azure-prenumeration.
 
 Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ### <a name="iot-central-application"></a>IoT Central program
 
-Skapa ett IoT Central-program på webbplatsen för [Azure IoT Central Application Manager](https://aka.ms/iotcentral) med följande inställningar:
+Skapa ett IoT Central-program på [Azure IoT Central programhanterarens](https://aka.ms/iotcentral) webbplats med följande inställningar:
 
 | Inställning | Värde |
 | ------- | ----- |
-| Pris plan | Standard |
-| Programmall | In-Store Analytics – villkors övervakning |
-| Programnamn | Acceptera standardvärdet eller Välj ditt eget namn |
-| URL | Acceptera standardvärdet eller Välj ditt eget unika URL-prefix |
+| Prisplan | Standard |
+| Programmall | Analys i butik – villkorsövervakning |
+| Programnamn | Acceptera standardinställningen eller välj ditt eget namn |
+| URL | Acceptera standardinställningen eller välj ett eget unikt URL-prefix |
 | Katalog | Din Azure Active Directory klient |
 | Azure-prenumeration | Din Azure-prenumeration |
 | Region | Din närmaste region |
 
-I exemplen och skärm bilderna i den här artikeln används den **USA** regionen. Välj en plats nära dig och se till att du skapar alla resurser i samma region.
+Exemplen och skärmbilderna i den här artikeln använder **USA** region. Välj en plats nära dig och se till att du skapar alla dina resurser i samma region.
 
-Den här program mal len innehåller två simulerade termostat-enheter som skickar telemetri.
+Den här programmallen innehåller två simulerade termostatenheter som skickar telemetri.
 
 ### <a name="resource-group"></a>Resursgrupp
 
-Använd [Azure Portal för att skapa en resurs grupp](https://portal.azure.com/#create/Microsoft.ResourceGroup) med namnet **DetectStoppedDevices** som innehåller de andra resurser som du skapar. Skapa dina Azure-resurser på samma plats som ditt IoT Central-program.
+Använd Azure Portal [för att skapa en resursgrupp med](https://portal.azure.com/#create/Microsoft.ResourceGroup) namnet **DetectStoppedDevices** som ska innehålla de andra resurser som du skapar. Skapa dina Azure-resurser på samma plats som ditt IoT Central program.
 
 ### <a name="event-hubs-namespace"></a>Event Hubs-namnområde
 
-Använd [Azure Portal för att skapa ett Event Hubs-namnområde](https://portal.azure.com/#create/Microsoft.EventHub) med följande inställningar:
+Använd Azure Portal [för att skapa Event Hubs ett namnområde](https://portal.azure.com/#create/Microsoft.EventHub) med följande inställningar:
 
 | Inställning | Värde |
 | ------- | ----- |
-| Namn    | Välj namn på namn område |
+| Namn    | Välj namnområdesnamn |
 | Prisnivå | Grundläggande |
 | Prenumeration | Din prenumeration |
 | Resursgrupp | DetectStoppedDevices |
@@ -71,11 +71,11 @@ Använd [Azure Portal för att skapa ett Event Hubs-namnområde](https://portal.
 
 ### <a name="stream-analytics-job"></a>Stream Analytics-jobb
 
-Använd [Azure Portal för att skapa ett Stream Analytics jobb](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  med följande inställningar:
+Använd Azure Portal [för att skapa Stream Analytics jobb](https://portal.azure.com/#create/Microsoft.StreamAnalyticsJob)  med följande inställningar:
 
 | Inställning | Värde |
 | ------- | ----- |
-| Namn    | Välj ditt jobb namn |
+| Namn    | Välj jobbnamn |
 | Prenumeration | Din prenumeration |
 | Resursgrupp | DetectStoppedDevices |
 | Plats | USA, östra |
@@ -84,11 +84,11 @@ Använd [Azure Portal för att skapa ett Stream Analytics jobb](https://portal.a
 
 ### <a name="function-app"></a>Funktionsapp
 
-Använd [Azure Portal för att skapa en Function-app](https://portal.azure.com/#create/Microsoft.FunctionApp) med följande inställningar:
+Använd Azure Portal [för att skapa en funktionsapp](https://portal.azure.com/#create/Microsoft.FunctionApp) med följande inställningar:
 
 | Inställning | Värde |
 | ------- | ----- |
-| Appnamn    | Välj namnet på din Function-app |
+| Appnamn    | Välj funktionsappens namn |
 | Prenumeration | Din prenumeration |
 | Resursgrupp | DetectStoppedDevices |
 | Operativsystem | Windows |
@@ -99,25 +99,25 @@ Använd [Azure Portal för att skapa en Function-app](https://portal.azure.com/#
 
 ### <a name="sendgrid-account-and-api-keys"></a>SendGrid-konto och API-nycklar
 
-Om du inte har ett SendGrid-konto kan du skapa ett [kostnads fritt konto](https://app.sendgrid.com/) innan du börjar.
+Om du inte har ett Sendgrid-konto kan du skapa ett [kostnadsfritt konto](https://app.sendgrid.com/) innan du börjar.
 
-1. Välj **API-nycklar** på SendGrid instrument panels inställningar på den vänstra menyn.
-1. Klicka på **skapa API-nyckel.**
-1. Ge den nya API-nyckeln **AzureFunctionAccess.**
-1. Klicka på **skapa & vy**.
+1. Från Sendgrid-instrumentpanelens inställningar på den vänstra menyn väljer du **API-nycklar.**
+1. Klicka **på Skapa API-nyckel.**
+1. Ge den nya API-nyckeln **namnet AzureFunctionAccess.**
+1. Klicka **på Skapa & Visa**.
 
-    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Skärm bild av API-nyckeln Create SendGrid.":::
+    :::image type="content" source="media/howto-create-custom-rules/sendgrid-api-keys.png" alt-text="Skärmbild av create SendGrid API key (Skapa SendGrid API-nyckel).":::
 
 Därefter får du en API-nyckel. Spara den här strängen för senare användning.
 
 ## <a name="create-an-event-hub"></a>Skapa en händelsehubb
 
-Du kan konfigurera ett IoT Central program för att kontinuerligt exportera telemetri till en Event Hub. I det här avsnittet skapar du en händelsehubben som tar emot telemetri från ditt IoT Central-program. Händelsehubben ger telemetri till din Stream Analytics jobb för bearbetning.
+Du kan konfigurera ett IoT Central att kontinuerligt exportera telemetri till en händelsehubb. I det här avsnittet skapar du en händelsehubb för att ta emot telemetri från IoT Central program. Händelsehubben levererar telemetrin till ditt Stream Analytics för bearbetning.
 
-1. I Azure Portal navigerar du till Event Hubs namn området och väljer **+ Event Hub**.
-1. Namnge Event Hub- **centralexport** och välj **skapa**.
+1. I den Azure Portal navigerar du till Event Hubs namnområdet och väljer **+ Händelsehubb.**
+1. Namnge händelsehubben **centralexportera** och välj **Skapa**.
 
-Event Hubs namn området ser ut som på följande skärm bild: 
+Ditt Event Hubs ser ut som på följande skärmbild: 
 
 ```:::image type="content" source="media/howto-create-custom-rules/event-hubs-namespace.png" alt-text="Screenshot of Event Hubs namespace." border="false":::
 
@@ -226,7 +226,7 @@ To test the function in the portal, first choose **Logs** at the bottom of the c
 [{"deviceid":"test-device-1","time":"2019-05-02T14:23:39.527Z"},{"deviceid":"test-device-2","time":"2019-05-02T14:23:50.717Z"},{"deviceid":"test-device-3","time":"2019-05-02T14:24:28.919Z"}]
 ```
 
-Funktions logg meddelanden visas på panelen **loggar** :
+Funktionsloggmeddelandena visas på **panelen Loggar:**
 
 ```:::image type="content" source="media/howto-create-custom-rules/function-app-logs.png" alt-text="Function log output":::
 
@@ -241,31 +241,31 @@ test-device-2    2019-05-02T14:23:50.717Z
 test-device-3    2019-05-02T14:24:28.919Z
 ```
 
-## <a name="add-stream-analytics-query"></a>Lägg till Stream Analytics fråga
+## <a name="add-stream-analytics-query"></a>Lägga Stream Analytics fråga
 
-I den här lösningen används en Stream Analytics fråga för att identifiera när en enhet slutar skicka telemetri i mer än 120 sekunder. Frågan använder Telemetrin från händelsehubben som indatatyp. Jobbet skickar frågeresultaten till Function-appen. I det här avsnittet konfigurerar du Stream Analytics jobbet:
+Den här lösningen använder Stream Analytics för att identifiera när en enhet slutar skicka telemetri i mer än 120 sekunder. Frågan använder telemetrin från händelsehubben som indata. Jobbet skickar frågeresultatet till funktionsappen. I det här avsnittet konfigurerar du Stream Analytics jobb:
 
-1. I Azure Portal navigerar du till ditt Stream Analytics-jobb, under **jobb sto pol Ogin** väljer **indata**, väljer **+ Lägg till Stream-indata** och väljer sedan **Event Hub**.
-1. Använd informationen i följande tabell för att konfigurera indata med händelsehubben som du skapade tidigare och välj sedan **Spara**:
+1. I den Azure Portal navigerar du till Stream Analytics jobb, under **Jobbtopologi** väljer du **Indata,** väljer + Lägg till **strömindata** och väljer sedan **Händelsehubb.**
+1. Använd informationen i följande tabell för att konfigurera indata med hjälp av den händelsehubb som du skapade tidigare och välj sedan **Spara:**
 
     | Inställning | Värde |
     | ------- | ----- |
     | Inmatat alias | centraltelemetry |
     | Prenumeration | Din prenumeration |
-    | Namnområde för händelsehubb | Ditt Event Hub-namnområde |
-    | Namn på händelsehubb | Använd befintlig- **centralexport** |
+    | Namnområde för händelsehubb | Event Hub-namnområdet |
+    | Namn på händelsehubb | Använd befintlig – **centralexport** |
 
-1. Under **jobb sto pol Ogin** väljer du **utdata**, väljer **+ Lägg till** och väljer sedan **Azure Function**.
+1. Under **Jobbtopologi** väljer du **Utdata,** **väljer + Lägg till** och sedan Azure **Function**.
 1. Använd informationen i följande tabell för att konfigurera utdata och välj sedan **Spara**:
 
     | Inställning | Värde |
     | ------- | ----- |
     | Utdataalias | emailnotification |
     | Prenumeration | Din prenumeration |
-    | Funktionsapp | Din Function-app |
+    | Funktionsapp | Din funktionsapp |
     | Funktion  | HttpTrigger1 |
 
-1. Under **jobb sto pol Ogin** väljer du **fråga** och ersätter den befintliga frågan med följande SQL:
+1. Under **Jobbtopologi** väljer du **Fråga** och ersätter den befintliga frågan med följande SQL:
 
     ```sql
     with
@@ -307,38 +307,38 @@ I den här lösningen används en Stream Analytics fråga för att identifiera n
     ```
 
 1. Välj **Spara**.
-1. Starta Stream Analytics jobb genom att välja **Översikt**, sedan **Start** **och sedan** **Starta**:
+1. Om du vill Stream Analytics jobbet väljer **du Översikt,** **sedan Starta,** **sedan Nu** och **sedan Starta:**
 
-    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Skärm bild av Stream Analytics.":::
+    :::image type="content" source="media/howto-create-custom-rules/stream-analytics.png" alt-text="Skärmbild av Stream Analytics.":::
 
 ## <a name="configure-export-in-iot-central"></a>Konfigurera export i IoT Central 
 
-På webbplatsen [Azure IoT Central Application Manager](https://aka.ms/iotcentral) navigerar du till det IoT Central program som du har skapat.
+På Azure IoT Central [programhanterarens webbplats](https://aka.ms/iotcentral) går du till IoT Central som du skapade.
 
-I det här avsnittet konfigurerar du programmet för att strömma Telemetrin från dess simulerade enheter till händelsehubben. Konfigurera exporten:
+I det här avsnittet konfigurerar du programmet för att strömma telemetrin från dess simulerade enheter till din händelsehubb. Så här konfigurerar du exporten:
 
-1. Gå till sidan **data export** , Välj **+ ny** och sedan **Azure Event Hubs**.
-1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara**: 
+1. Gå till **sidan Dataexport,** välj **+ Ny** och välj sedan **Azure Event Hubs**.
+1. Använd följande inställningar för att konfigurera exporten och välj sedan **Spara:** 
 
     | Inställning | Värde |
     | ------- | ----- |
     | Visningsnamn | Exportera till Event Hubs |
     | Enabled | På |
     | Typ av data som ska exporteras | Telemetri |
-    | Berikningar | Ange önskad nyckel/värde för hur du vill att exporterade data ska ordnas | 
-    | Mål | Skapa ny och ange information om var data ska exporteras |
+    | Berikande | Ange önskad nyckel/värde för hur du vill att exporterade data ska ordnas | 
+    | Mål | Skapa ny och ange information för var data ska exporteras |
 
-    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Skärm bild av data exporten.":::
+    :::image type="content" source="media/howto-create-custom-rules/cde-configuration.png" alt-text="Skärmbild av Dataexport.":::
 
-Vänta tills export status är **igång** innan du fortsätter.
+Vänta tills exportstatusen **är Körs** innan du fortsätter.
 
 ## <a name="test"></a>Test
 
-Om du vill testa lösningen kan du inaktivera kontinuerlig data export från IoT Central till simulerade stoppade enheter:
+Om du vill testa lösningen kan du inaktivera den kontinuerliga dataexporten från IoT Central till simulerade stoppade enheter:
 
-1. I ditt IoT Central program navigerar du till sidan **data export** och väljer export konfigurationen **export till Event Hubs** .
-1. Ange **aktive rad** till **av** och välj **Spara**.
-1. Efter minst två minuter tar e-postadressen emot ett eller flera e **-postmeddelanden som** ser ut som i följande exempel innehåll:
+1. I ditt IoT Central program navigerar du till **sidan Dataexport** och väljer **konfigurationen Exportera för Event Hubs** exportera.
+1. Ställ **in Aktiverad** på **Av** och välj **Spara.**
+1. Efter minst två minuter får **till-e-postadressen** ett eller flera e-postmeddelanden som ser ut som följande exempelinnehåll:
 
     ```txt
     The following device(s) have stopped sending telemetry:
@@ -347,18 +347,18 @@ Om du vill testa lösningen kan du inaktivera kontinuerlig data export från IoT
     Thermostat-Zone1  2019-11-01T12:45:14.686Z
     ```
 
-## <a name="tidy-up"></a>Städa upp
+## <a name="tidy-up"></a>Tidy up (Tidy Up)
 
-Ta bort resurs gruppen **DetectStoppedDevices** i Azure Portal för att städa upp efter den här instruktionen och undvika onödiga kostnader.
+Om du vill hålla ordning på och undvika onödiga kostnader tar du bort resursgruppen **DetectStoppedDevices** i Azure Portal.
 
-Du kan ta bort IoT Central-programmet från **hanterings** sidan i programmet.
+Du kan ta bort IoT Central från **sidan Hantering** i programmet.
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här instruktions guiden har du lärt dig att:
+I den här guiden har du lärt dig att:
 
-* Strömma telemetri från ett IoT Central program med *kontinuerlig data export*.
-* Skapa en Stream Analytics-fråga som identifierar när en enhet har slutat skicka data.
-* Skicka ett e-postmeddelande med hjälp av Azure Functions-och SendGrid-tjänsterna.
+* Strömma telemetri från ett IoT Central program med hjälp av *kontinuerlig dataexport*.
+* Skapa en Stream Analytics som identifierar när en enhet har slutat skicka data.
+* Skicka ett e-postmeddelande med hjälp Azure Functions- och SendGrid-tjänsterna.
 
-Nu när du vet hur du skapar anpassade regler och meddelanden är det föreslagna nästa steg att lära dig hur du [utökar Azure-IoT Central med anpassad analys](howto-create-custom-analytics.md).
+Nu när du vet hur du skapar anpassade regler och meddelanden föreslår vi att du går vidare med att lära dig hur du [utökar Azure IoT Central med anpassad analys.](howto-create-custom-analytics.md)

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2, devx-track-azurecli
-ms.openlocfilehash: 9b73eeccad6d17df8c711671c56fbb7cee20b17a
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 4d0062258919de29750b644b2f8e12990e25098b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107484735"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873225"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Snabbstart: Utforska och analysera kostnader med kostnadsanalys
 
@@ -169,7 +169,7 @@ Börja med att förbereda din miljö för Azure CLI:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-När du har loggat in använder du kommandot [az costmanagement query](/cli/azure/ext/costmanagement/costmanagement#ext_costmanagement_az_costmanagement_query) för att hämta information om kostnaderna hittills under månaden för din prenumeration:
+När du har loggat in använder du kommandot [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query) för att hämta information om kostnaderna hittills under månaden för din prenumeration:
 
 ```azurecli
 az costmanagement query --timeframe MonthToDate --type Usage \
@@ -186,7 +186,7 @@ az costmanagement query --timeframe MonthToDate --type Usage \
 
 Parametern **--dataset-filter** tar en JSON-sträng eller `@json-file`.
 
-Du kan också använda kommandona [az costmanagement export](/cli/azure/ext/costmanagement/costmanagement/export) för att exportera användningsdata till ett Azure Storage-konto. Du kan ladda ned data därifrån.
+Du kan också använda kommandona [az costmanagement export](/cli/azure/costmanagement/export) för att exportera användningsdata till ett Azure Storage-konto. Du kan ladda ned data därifrån.
 
 1. Skapa en resursgrupp eller använd en befintlig resursgrupp. Du kan skapa en resursgrupp med hjälp av kommandot [az group create](/cli/azure/group#az_group_create):
 
@@ -200,7 +200,7 @@ Du kan också använda kommandona [az costmanagement export](/cli/azure/ext/cost
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Skapa rapporten genom att köra kommandot [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create):
+1. Skapa rapporten genom att köra kommandot [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create):
 
    ```azurecli
    az costmanagement export create --name DemoExport --type Usage \

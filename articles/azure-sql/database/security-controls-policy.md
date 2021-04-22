@@ -1,18 +1,18 @@
 ---
 title: Azure Policy för regelefterlevnad för Azure SQL Database
-description: Visar Azure Policy för regelefterlevnad som är Azure SQL Database och SQL Managed Instance. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 04/14/2021
+description: Visar Azure Policy kontroller för regelefterlevnad som är Azure SQL Database och SQL Managed Instance. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
+ms.date: 04/21/2021
 ms.topic: sample
 author: stevestein
 ms.author: sstein
 ms.service: sql-database
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 7073811a53d085c8fc547875c05f897449b25873
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: fc732a047719ccb9f7f1c2b7c03659969cb98382
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107500077"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871729"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-sql-database--sql-managed-instance"></a>Azure Policy för regelefterlevnad för Azure SQL Database & SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]

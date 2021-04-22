@@ -11,12 +11,12 @@ ms.date: 02/16/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy, devx-track-azurecli
-ms.openlocfilehash: 8775696a35bfccc363aa2c6ec06c6c44115916b9
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 9b7b8fe9c05d0de64dcd0cf7c6c324e0d03cb1ac
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479278"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874161"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Högpresterande tjänst med Triton Inference Server (förhandsversion) 
 
@@ -58,7 +58,7 @@ Innan du försöker använda Triton för din egen modell är det viktigt att fö
 
 * Begäranden går direkt till Triton-servern.
 * Triton bearbetar begäranden i batchar för att maximera GPU-användningen.
-* Klienten använder __Triton-URI för__ att göra begäranden. Till exempel `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
+* Klienten använder __Triton-URI:en__ för att göra begäranden. Till exempel `https://myservice.azureml.net/v2/models/${MODEL_NAME}/versions/${MODEL_VERSION}/infer`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/triton-deploy.png" alt-text="Inferenceconfig-distribution endast med Triton och inget Python-mellanprogram":::
 
@@ -116,7 +116,7 @@ models
 az ml model register -n my_triton_model -p models --model-framework=Multi
 ```
 
-Mer information om `az ml model register` finns i [referensdokumentationen](/cli/azure/ext/azure-cli-ml/ml/model).
+Mer information om `az ml model register` finns i [referensdokumentationen](/cli/azure/ml/model).
 
 När du registrerar modellen Azure Machine Learning måste värdet för parametern vara namnet på den `--model-path  -p` överordnade mappen i Triton.  
 I exemplet ovan är  `--model-path` "modeller".
@@ -230,7 +230,7 @@ HTTP/1.1 200 OK
 
 När du har utfört en hälsokontroll kan du skapa en klient som skickar data till Triton för slutsatsledning. Mer information om hur du skapar en klient finns i [klientexempel i](https://aka.ms/nvidia-client-examples) NVIDIA-dokumentationen. Det finns även [Python-exempel på Triton GitHub](https://aka.ms/nvidia-triton-docs).
 
-Om du inte vill lägga till Python för- och efterbearbetning till den distribuerade webbtjänsten kan du vara klar. Läs vidare om du vill lägga till den här för- och efterbearbetningslogiken.
+Om du inte vill lägga till Python för- och efterbearbetning till den distribuerade webbtjänsten kan du vara klar. Om du vill lägga till den här för- och efterbearbetningslogiken läser du vidare.
 
 ## <a name="optional-re-deploy-with-a-python-entry-script-for-pre--and-post-processing"></a>(Valfritt) Distribuera om med ett Python-startskript för för- och efterbearbetning
 
@@ -339,7 +339,7 @@ print(local_service.scoring_uri)
 
 ---
 
-När distributionen är klar visas bedömnings-URI:en. För den här lokala distributionen blir det `http://localhost:6789/score` . Om du distribuerar till molnet kan du använda [CLI-kommandot az ml service show](/cli/azure/ext/azure-cli-ml/ml/service#ext_azure_cli_ml_az_ml_service_show) för att hämta bedömnings-URI:en.
+När distributionen är klar visas bedömnings-URI:en. För den här lokala distributionen blir det `http://localhost:6789/score` . Om du distribuerar till molnet kan du använda [CLI-kommandot az ml service show](/cli/azure/ml/service#az_ml_service_show) för att hämta bedömnings-URI:en.
 
 Information om hur du skapar en klient som skickar inferensbegäranden till bedömnings-URI finns i använda en modell som [distribueras som en webbtjänst](how-to-consume-web-service.md).
 
@@ -356,7 +356,7 @@ Detta innebär att Azure ML ska skapa det antal arbetare som du anger.
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du planerar att fortsätta att Azure Machine Learning arbetsytan, men vill ta bort den distribuerade tjänsten, använder du något av följande alternativ:
+Om du planerar att fortsätta att använda Azure Machine Learning-arbetsytan, men vill ta bort den distribuerade tjänsten, använder du något av följande alternativ:
 
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azcli)

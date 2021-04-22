@@ -6,14 +6,14 @@ ms.subservice: reservations
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: how-to
-ms.date: 03/29/2021
+ms.date: 04/21/2021
 ms.author: banders
-ms.openlocfilehash: 1523ca77b06281b84ed57fbc0e2e49ffede85fb4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: e8a5e6d40b745efb7fcd50919cd27664b3406b7d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105934350"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862857"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Hantera reservationer för Azure-resurser
 
@@ -35,7 +35,7 @@ Du kan visa en reservationsbeställning genom att gå till **Reservationer**, v�
 
 ![Exempel på information om en reservationsbeställning med reservationsbeställnings-id:t ](./media/manage-reserved-vm-instance/reservation-order-details.png)
 
-En reservation ärver sina behörigheter från reservationsbeställningen. Om du vill byta ut eller återbetala en reservation måste användaren läggas till i reservations ordern.
+En reservation ärver sina behörigheter från reservationsbeställningen. Om du vill byta eller återbetala en reservation ska användaren läggas till i reservationsbeställningen.
 
 ## <a name="change-the-reservation-scope"></a>Ändra reservationens omfång
 
@@ -57,8 +57,8 @@ Omfånget gäller endast enskilda prenumerationer där du betalar per användnin
 
 Som standard kan följande användare visa och hantera reservationer:
 
-- Den person som köpte reservationen och konto ägaren för fakturerings prenumerationen får Azure RBAC-åtkomst till reservations ordern.
--  Enterprise-avtal och Microsofts kund avtal fakturerings deltagare kan hantera alla reservationer från Cost Management + fakturering > reservations transaktioner > Välj den blå banderollen.
+- Den person som köpte reservationen och kontoinnehavaren för faktureringsprenumerationen får Azure RBAC-åtkomst till reservationsbeställningen.
+-  Enterprise-avtal och Microsoft-kundavtal-faktureringsdeltagare kan hantera alla reservationer från Cost Management + Billing > reservationstransaktioner > välja den blå banderollen.
 
 Du kan välja mellan två alternativ för att låta andra hantera reservationer:
 
@@ -177,23 +177,9 @@ Om du har frågor eller behöver hjälp kan du [skapa en supportbegäran](https:
 ## <a name="next-steps"></a>Nästa steg
 
 Du kan läsa mer om Azure-reservationer i följande artiklar:
-
-- [Vad är Azure-reservationer?](save-compute-costs-reservations.md)
-
-Köpa en tjänstplan:
-- [Förskottsbetala för Virtual Machines med Azure Reserved VM Instances](../../virtual-machines/prepay-reserved-vm-instances.md)
-- [Förskottsbetala för SQL Database-beräkningsresurser med reserverad kapacitet för Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
-- [Betala i förväg för Azure Cosmos DB-resurser med reserverad Azure Cosmos DB-kapacitet](../../cosmos-db/cosmos-db-reserved-capacity.md)
-
-Köpa en programvaruplan:
-- [Förskottsbetala för Red Hat-programvaruplaner från Azure Reservations](../../virtual-machines/linux/prepay-suse-software-charges.md)
-- [Förskottsbetala för SUSE-programvaruplaner från Azure Reservations](../../virtual-machines/linux/prepay-suse-software-charges.md)
-
-Förstå rabatter och användning:
-- [Förstå hur VM-reservationsrabatten tillämpas](../manage/understand-vm-reservation-charges.md)
-- [Förstå hur rabatten i programvaruplanen för Red Hat Enterprise Linux tillämpas](understand-rhel-reservation-charges.md)
-- [Förstå hur rabatten i programvaruplanen för SUSE Linux Enterprise tillämpas](understand-suse-reservation-charges.md)
-- [Förstå hur andra reservationsrabatter tillämpas](understand-reservation-charges.md)
-- [Förstå reservationsanvändning för din Betala per användning-prenumeration](understand-reserved-instance-usage.md)
-- [Förstå reservationsanvändning för din Enterprise-registrering](understand-reserved-instance-usage-ea.md)
-- [Kostnader för Windows-programvara som inte ingår i reservationer](reserved-instance-windows-software-costs.md)
+ - [Visa reservationsanvändning](reservation-utilization.md)
+ - [Byten och återbetalning](exchange-and-refund-azure-reservations.md)
+ - [Förnya reservationer](reservation-renew.md)
+ - [Överföringar mellan klienter](troubleshoot-reservation-transfers-between-tenants.md)
+ - [Hitta en reservationsköpare från Azure-loggar](find-reservation-purchaser-from-logs.md)
+ - [Förnya en reservation](reservation-renew.md)

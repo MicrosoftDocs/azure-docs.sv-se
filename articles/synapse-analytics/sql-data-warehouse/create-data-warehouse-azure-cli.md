@@ -9,12 +9,12 @@ ms.subservice: sql-dw
 ms.date: 11/20/2020
 ms.author: jrasnick
 ms.custom: azure-synapse, devx-track-azurecli
-ms.openlocfilehash: 532c06cc49f9fddab09c6678ee5fff9fe32347cb
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 712405ec7ba61e05bb587efc3e6393192d820e97
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107565941"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865503"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-with-azure-cli"></a>Snabbstart: Skapa en Synapse SQL pool med Azure CLI
 
@@ -24,7 +24,7 @@ Skapa en Synapse SQL (informationslager) i Azure Synapse Analytics med hjälp av
 
 ## <a name="getting-started"></a>Komma igång
 
-Använd de här kommandona för att logga in på Azure och konfigurera en resursgrupp.
+Använd dessa kommandon för att logga in på Azure och konfigurera en resursgrupp.
 
 1. Om du använder en lokal installation kör du kommandot [az login](/cli/azure/reference-index#az_login) för att logga in på Azure:
 
@@ -55,7 +55,7 @@ Använd de här kommandona för att logga in på Azure och konfigurera en resurs
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurera en brandväggsregel på servernivå
 
-Skapa en [brandväggsregel på servernivå.](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) En brandväggsregel på servernivå gör att externa program, till SQL Server Management Studio eller SQLCMD-verktyget, kan ansluta till en SQL-pool via SQL-pooltjänstens brandvägg.
+Skapa en [brandväggsregel på servernivå.](../../azure-sql/database/firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) En brandväggsregel på servernivå gör att externa program, till exempel SQL Server Management Studio SQLCMD-verktyget, kan ansluta till en SQL-pool via SQL-pooltjänstens brandvägg.
 
 Kör kommandot [az sql server firewall-rule create för](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) att skapa en brandväggsregel:
 
@@ -77,43 +77,43 @@ Skapa SQL-poolen. I det här exemplet används DW100c som tjänstmål, vilket ä
 > [!NOTE]
 > Du behöver en arbetsyta som skapats tidigare. Mer information finns i [Snabbstart: Skapa en Azure Synapse-arbetsyta med Azure CLI.](../quickstart-create-workspace-cli.md)
 
-Använd kommandot [az synapse sql pool create](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_create) för att skapa SQL-poolen:
+Använd kommandot [az synapse sql pool create](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_create) för att skapa SQL-poolen:
 
 ```azurecli
 az synapse sql pool create --resource-group myResourceGroup --name mySampleDataWarehouse \
    --performance-level "DW1000c" --workspace-name testsynapseworkspace
 ```
 
-Mer information om parameteralternativen finns i [az synapse sql pool](/cli/azure/ext/synapse/synapse/sql/pool).
+Mer information om parameteralternativen finns i [az synapse sql pool](/cli/azure/synapse/sql/pool).
 
-Du kan se dina SQL-pooler med kommandot [az synapse sql pool list:](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_list)
+Du kan se dina SQL-pooler med kommandot [az synapse sql pool list:](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_list)
 
 ```azurecli
 az synapse sql pool list --resource-group myResourceGroup --workspace-name testsynapseworkspace
 ```
 
-Använd kommandot [az synapse sql pool update](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_update) för att uppdatera en befintlig pool:
+Använd kommandot [az synapse sql pool update](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_update) för att uppdatera en befintlig pool:
 
 ```azurecli
 az synapse sql pool update --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Använd kommandot [az synapse sql pool pause för](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_pause) att pausa poolen:
+Använd kommandot [az synapse sql pool pause för](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_pause) att pausa poolen:
 
 ```azurecli
 az synapse sql pool pause --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Använd kommandot [az synapse sql pool resume för](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_resume) att starta en pausad pool:
+Använd kommandot [az synapse sql pool resume för](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_resume) att starta en pausad pool:
 
 ```azurecli
 az synapse sql pool resume --resource-group myResourceGroup --name mySampleDataWarehouse \
    --workspace-name testsynapseworkspace
 ```
 
-Om du vill ta bort en befintlig SQL-pool använder [du kommandot az synapse sql pool delete:](/cli/azure/ext/synapse/synapse/sql/pool#ext_synapse_az_synapse_sql_pool_delete)
+Om du vill ta bort en befintlig SQL-pool använder [du kommandot az synapse sql pool delete:](/cli/azure/synapse/sql/pool#az_synapse_sql_pool_delete)
 
 ```azurecli
 az synapse sql pool delete --resource-group myResourceGroup --name mySampleDataWarehouse \

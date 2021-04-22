@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: Anslut med C++ – Azure Database for MySQL'
+title: 'Snabbstart: Ansluta med C++ – Azure Database for MySQL'
 description: Den här snabbstarten innehåller ett kodexempel i C++ som du kan använda för att ansluta till och fråga efter data från Azure Database för MySQL.
 author: savjani
 ms.author: pariks
@@ -8,16 +8,16 @@ ms.custom: mvc
 ms.devlang: cpp
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: e8b2842300e43a9de88cc0b9b3ae9ce6cd754612
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 723d3d3bfb36b17ebdacf9d5961b10071a12ab42
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94535851"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863469"
 ---
-# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabb start: Använd Connector/C++ för att ansluta och fråga efter data i Azure Database for MySQL
+# <a name="quickstart-use-connectorc-to-connect-and-query-data-in-azure-database-for-mysql"></a>Snabbstart: Använda Connector/C++ för att ansluta och fråga efter data i Azure Database for MySQL
 
-Den här snabbstarten visar hur du ansluter till en Azure Database for MySQL med hjälp av ett C++-program. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. Det här avsnittet förutsätter att du är bekant med att utveckla med C++ och att du inte har arbetat med Azure Database for MySQL.
+Den här snabbstarten visar hur du ansluter till en Azure Database for MySQL med hjälp av ett C++-program. Den visar hur du använder SQL-instruktioner för att fråga, infoga, uppdatera och ta bort data i databasen. Det här avsnittet förutsätter att du är van att utveckla med C++ och att du inte har arbetat med Azure Database for MySQL.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -26,27 +26,27 @@ I den här snabbstarten används de resurser som skapades i någon av följande 
 - [Skapa en Azure Database för MySQL-server med Azure CLI](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 Du måste också:
-- Installera [.NET Framework](https://www.microsoft.com/net/download)
+- Installera [.NET Framework](https://dotnet.microsoft.com/download/dotnet-framework)
 - Installera [Visual Studio](https://www.visualstudio.com/downloads/)
 - Installera [MySQL Connector/C++](https://dev.mysql.com/downloads/connector/cpp/) 
 - Installera [Boost](https://www.boost.org/)
 
 > [!IMPORTANT] 
-> Se till att den IP-adress som du ansluter från har lagts till i serverns brand Väggs regler med hjälp av [Azure Portal](./howto-manage-firewall-using-portal.md) eller [Azure CLI](./howto-manage-firewall-using-cli.md)
+> Kontrollera att IP-adressen som du ansluter från har lagts till serverns brandväggsregler med hjälp [av Azure Portal](./howto-manage-firewall-using-portal.md) eller [Azure CLI](./howto-manage-firewall-using-cli.md)
 
 ## <a name="install-visual-studio-and-net"></a>Installera Visual Studio och .NET
-Stegen i det här avsnittet förutsätter att du är van att utveckla med .NET.
+Stegen i det här avsnittet förutsätter att du är bekant med att utveckla med hjälp av .NET.
 
 ### <a name="windows"></a>**Windows**
-- Installera Visual Studio 2019-communityn. Visual Studio 2019 community är en fullt utrustad, utbyggbar och kostnads fri IDE. Med den här IDE-tjänsten kan du skapa moderna program för Android-, iOS-, Windows-, webb-och databas program och moln tjänster. Du kan installera det fullständiga .NET Framework eller bara .NET Core. Kodfragmenten i snabbstarten fungerar med båda. Om du redan har Visual Studio installerat på datorn kan du hoppa över de kommande två stegen.
-   1. Hämta [Visual Studio 2019-installationsprogrammet](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15). 
+- Installera Visual Studio 2019 Community. Visual Studio 2019 Community är en komplett, utökningsbar och kostnadsfri IDE. Med den här IDE:n kan du skapa moderna program för Android, iOS, Windows, webb- och databasprogram och molntjänster. Du kan installera det fullständiga .NET Framework eller bara .NET Core. Kodfragmenten i snabbstarten fungerar med båda. Om du redan har Visual Studio installerat på datorn kan du hoppa över de kommande två stegen.
+   1. Ladda ned [Visual Studio 2019-installationsprogrammet.](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) 
    2. Kör installationsprogrammet och följ anvisningarna för att slutföra installationen.
 
 ### <a name="configure-visual-studio"></a>**Konfigurera Visual Studio**
-1. Från Visual Studio, Project-> egenskaper-> länkar – > allmänna > ytterligare biblioteks kataloger lägger du till katalogen "\lib\opt" (till exempel: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ lib\opt) för C++-anslutaren.
+1. Från Visual Studio, Project -> Properties -> Linker -> General > Additional Library Directories, lägger du till katalogen "\lib\opt" (till exempel: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\lib\opt) för C++-anslutningsprogrammet.
 2. Från Visual Studio: Projekt -> Egenskaper -> C/C++ -> Allmänt > Ytterligare inkluderingskataloger:
-   - Lägg till katalogen "\include" för c++ Connector (till exempel: C:\Program Files (x86) \MySQL\MySQL Connector C++ 1.1.9 \ include \) .
-   - Lägg till förstärknings bibliotekets rot Katalog (till exempel: C:\ boost_1_64_0 \) .
+   - Lägg till katalogen "\include" för c++ connector (till exempel: C:\Program Files (x86)\MySQL\MySQL Connector C++ 1.1.9\include \) .
+   - Lägg till Boost-bibliotekets rotkatalog (till exempel: C:\boost_1_64_0 \) .
 3. Från Visual Studio: Projekt -> Egenskaper -> Linker -> Indata -> Ytterligare beroenden, lägg till **mysqlcppconn.lib** i textfältet.
 4. Antingen kopierar du **mysqlcppconn.dll** från biblioteksmappen C++ connector i steg 3 till samma katalog som den körbara programfilen eller lägger till den i miljövariabeln så att programmet kan hitta den.
 
@@ -60,7 +60,7 @@ Skaffa den information som du behöver för att ansluta till Azure Database för
  :::image type="content" source="./media/connect-cpp/1_server-overview-name-login.png" alt-text="Azure Database för MySQL-servernamn":::
 
 ## <a name="connect-create-table-and-insert-data"></a>Ansluta, skapa tabell och infoga data
-Använd följande kod för att ansluta och läsa in data med hjälp av **CREATE TABLE** och **insert i** SQL-uttryck. Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden createStatement() och execute() för att köra databaskommandona. 
+Använd följande kod för att ansluta och läsa in data med hjälp av **sql-CREATE TABLE** **och INSERT INTO.** Koden använder klassen sql::Driver med metoden connect() för att upprätta en anslutning till MySQL. Sedan används metoden createStatement() och execute() för att köra databaskommandona. 
 
 Ersätt parametrarna Host, DBName, User och Password. Du kan ersätta parametrarna med de värden som du angav när du skapade servern och databasen. 
 
@@ -310,7 +310,7 @@ int main()
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Om du vill rensa alla resurser som används under den här snabb starten tar du bort resurs gruppen med hjälp av följande kommando:
+Om du vill rensa alla resurser som används i den här snabbstarten tar du bort resursgruppen med följande kommando:
 
 ```azurecli
 az group delete \

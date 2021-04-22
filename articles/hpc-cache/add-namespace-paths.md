@@ -1,167 +1,167 @@
 ---
-title: Konfigurera den sammanställda Azure HPC cache-namnrymden
-description: Så här skapar du klientbaserade sökvägar för Server dels lagring med Azure HPC-cache
+title: Konfigurera den Azure HPC Cache aggregerade namnrymden
+description: Så här skapar du klientriktade sökvägar för backend-lagring med Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: v-erkel
-ms.openlocfilehash: 5427389f007b7598274d35425a9b3e8e10a63e49
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2cb8db4e73a8f4fa299031070bffc15a2b754d7e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104798535"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870381"
 ---
-# <a name="set-up-the-aggregated-namespace"></a>Konfigurera sammanställd namnrymd
+# <a name="set-up-the-aggregated-namespace"></a>Konfigurera det aggregerade namnområdet
 
-När du har skapat lagrings mål måste du också skapa namn områdes Sök vägar för dem. Klient datorer använder dessa virtuella sökvägar för att komma åt filer via cacheminnet i stället för att ansluta till Server delens lagrings plats direkt. Med det här systemet kan cache-administratörer ändra backend-baserade lagrings system utan att behöva skriva om klient instruktioner.
+När du har skapat lagringsmål måste du också skapa sökvägar för namnområdet för dem. Klientdatorer använder dessa virtuella sökvägar för att komma åt filer via cachen i stället för att ansluta direkt till serversidans lagring. Med det här systemet kan cacheadministratörer ändra backend-lagringssystem utan att behöva skriva om klientinstruktioner.
 
-Läs [planera det sammanställda namn området](hpc-cache-namespace.md) för att lära dig mer om den här funktionen.
+Läs [Planera det aggregerade namnområdet om du](hpc-cache-namespace.md) vill veta mer om den här funktionen.
 
-**Namn områdes** sidan i Azure Portal visar de sökvägar som klienter använder för att komma åt dina data via cacheminnet. Använd den här sidan om du vill skapa, ta bort eller ändra namn områdes Sök vägar. Du kan också konfigurera namn områdes Sök vägar med hjälp av Azure CLI.
+På **sidan Namnområde** i Azure Portal sökvägar som klienter använder för att komma åt dina data via cachen. Använd den här sidan för att skapa, ta bort eller ändra sökvägar för namnområdet. Du kan också konfigurera sökvägar för namnområden med hjälp av Azure CLI.
 
-Alla klient Sök vägar som har definierats för denna cache visas på **namn områdes** sidan. Lagrings mål som inte har några definierade namn rymds Sök vägar visas ännu inte i tabellen.
+Alla klientriktade sökvägar som har definierats för den här cachen visas på **sidan Namnområde.** Lagringsmål som inte har några definierade namnrymdssökvägar visas inte i tabellen.
 
-Du kan sortera tabell kolumnerna för att bättre förstå cacheminnets sammanställda namnrymd. Klicka på pilarna i kolumn rubrikerna för att sortera Sök vägarna.
+Du kan sortera tabellkolumnerna för att bättre förstå cacheminnets aggregerade namnområde. Sortera sökvägarna genom att klicka på pilarna i kolumnrubrikerna.
 
-[![skärm bild av sidan med Portal namn område med två sökvägar i en tabell. Kolumn rubriker: sökväg till namnrymd, lagrings mål, export Sök väg, och export-under katalog samt klient åtkomst princip. Sök vägs namnen i den första kolumnen är klicknings bara länkar. Topp knappar: Lägg till sökväg för namnrymd, uppdatera, ta bort ](media/namespace-page.png)](media/namespace-page.png#lightbox)
+[![skärmbild av portalnamnområdessidan med två sökvägar i en tabell. Kolumnrubriker: Namnområdessökväg, Lagringsmål, Exportsökväg och Exportera underkatalog och Klientåtkomstprincip. Sökvägsnamnen i den första kolumnen är klickbara länkar. Översta knappar: Lägg till namnområdessökväg, uppdatera, ta bort ](media/namespace-page.png)](media/namespace-page.png#lightbox)
 
-## <a name="add-or-edit-namespace-paths"></a>Lägga till eller redigera namn områdes Sök vägar
+## <a name="add-or-edit-namespace-paths"></a>Lägga till eller redigera sökvägar för namnområden
 
-Du måste skapa minst en namn områdes Sök väg innan klienterna kan komma åt lagrings målet. (Läs genom [att montera Azure HPC cache](hpc-cache-mount.md) för mer information om klient åtkomst.)
+Du måste skapa minst en sökväg för namnområdet innan klienter kan komma åt lagringsmålet. (Läs [Montera Azure HPC Cache för](hpc-cache-mount.md) mer information om klientåtkomst.)
 
-Om du nyligen har lagt till ett lagrings mål eller anpassat en åtkomst princip kan det ta en minut eller två innan du kan skapa en namn områdes Sök väg.
+Om du nyligen har lagt till ett lagringsmål eller anpassat en åtkomstprincip kan det ta någon minut innan du kan skapa en sökväg för namnområdet.
 
-### <a name="blob-namespace-paths"></a>Sökväg till BLOB-namnrymd
+### <a name="blob-namespace-paths"></a>Sökvägar för blobnamnområden
 
-Ett Azure Blob Storage-mål kan bara ha en namn områdes Sök väg.
+Ett Azure Blob Storage-mål kan bara ha en sökväg för namnområdet.
 
 Följ anvisningarna nedan för att ange eller ändra sökvägen med Azure Portal eller Azure CLI.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Läs in sidan **namn rymds** inställningar från Azure Portal. Du kan lägga till, ändra eller ta bort namn områdes Sök vägar från den här sidan.
+Från Azure Portal läser du in **sidan Namnområdesinställningar.** Du kan lägga till, ändra eller ta bort sökvägar för namnområdet från den här sidan.
 
-* **Lägg till en ny sökväg:** Klicka på knappen **+ Lägg till** överst och fyll i informationen på Redigera-panelen.
+* **Lägg till en ny sökväg:** Klicka på **knappen +** Lägg till längst upp och fyll i information i redigeringspanelen.
 
-  ![Skärm bild av Lägg till-namn område redigera fält med ett Blob Storage-mål valt. Sökvägarna export och under katalog är inställda på/och kan inte redige ras.](media/namespace-add-blob.png)
+  ![Skärmbild av fälten för att lägga till namnområdesredigering med ett valt bloblagringsmål. Sökvägarna export och underkatalog anges till /och kan inte redigeras.](media/namespace-add-blob.png)
 
-  * Ange sökvägen som klienter ska använda för att få åtkomst till det här lagrings målet.
+  * Ange sökvägen som klienterna ska använda för att komma åt lagringsmålet.
 
-  * Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+  * Välj vilken åtkomstprincip som ska användas för den här sökvägen. Läs mer om hur du anpassar klientåtkomst i [Använda klientåtkomstprinciper.](access-policies.md)
 
-  * Välj lagrings målet i den nedrullningsbara listan. Om ett Blob Storage-mål redan har en namn områdes Sök väg kan du inte välja det.
+  * Välj lagringsmålet i listrutan. Om ett bloblagringsmål redan har en sökväg för namnområdet kan det inte väljas.
 
-  * För ett Azure Blob Storage-mål ställs export-och under katalog Sök vägar automatiskt till ``/`` .
+  * För ett Azure Blob Storage-mål anges sökvägarna export och underkatalog automatiskt till ``/`` .
 
-* **Ändra en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas. Du kan ändra sökvägen och åtkomst principen, men du kan inte ändra till ett annat lagrings mål.
+* **Ändra en befintlig sökväg:** Klicka på sökvägen för namnområdet. Redigeringspanelen öppnas. Du kan ändra sökvägen och åtkomstprincipen, men du kan inte ändra till ett annat lagringsmål.
 
-* **Ta bort en sökväg för namn område:** Markera kryss rutan till vänster om sökvägen och klicka på knappen **ta bort** .
+* **Ta bort en namnrymdssökväg:** Markera kryssrutan till vänster om sökvägen och klicka på knappen **Ta** bort.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-När du använder Azure CLI måste du lägga till en namn områdes Sök väg när du skapar lagrings målet. Läs [Lägg till ett nytt Azure Blob Storage-mål](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target) för mer information.
+När du använder Azure CLI måste du lägga till en sökväg för namnområdet när du skapar lagringsmålet. Mer [information finns i Lägga till ett nytt Azure Blob Storage-mål.](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target)
 
-Om du vill uppdatera målets namn områdes Sök väg använder du kommandot [AZ HPC-cache Blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update) . Argumenten för kommandot Update liknar argumenten i kommandot CREATE, förutom att du inte överför behållar namnet eller lagrings kontot.
+Om du vill uppdatera målets namnområdessökväg använder du kommandot [az hpc-cache blob-storage-target update.](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update) Argumenten för uppdateringskommandot liknar argumenten i create-kommandot, förutom att du inte skickar containernamnet eller lagringskontot.
 
-Du kan inte ta bort en namn områdes Sök väg från ett Blob Storage-mål med Azure CLI, men du kan skriva över sökvägen med ett annat värde.
+Du kan inte ta bort en namnrymdssökväg från ett bloblagringsmål med Azure CLI, men du kan skriva över sökvägen med ett annat värde.
 
 ---
 
-### <a name="nfs-namespace-paths"></a>Sökväg till NFS-namnrymd
+### <a name="nfs-namespace-paths"></a>Sökvägar för NFS-namnområden
 
-Ett NFS-lagrings mål kan ha flera virtuella sökvägar, så länge varje sökväg representerar en annan export-eller under katalog på samma lagrings system.
+Ett NFS-lagringsmål kan ha flera virtuella sökvägar, så länge varje sökväg representerar en annan export eller underkatalog i samma lagringssystem.
 
-När du planerar ditt namn område för ett NFS-lagrings mål bör du tänka på att varje sökväg måste vara unik och får inte vara en under katalog till en annan namn områdes Sök väg. Om du till exempel har en sökväg för namn område som kallas ``/parent-a`` kan du inte också skapa namn områdes Sök vägar som ``/parent-a/user1`` och ``/parent-a/user2`` . Dessa katalog Sök vägar är redan tillgängliga i namn området som under kataloger i ``/parent-a`` .
+När du planerar namnområdet för ett NFS-lagringsmål bör du komma ihåg att varje sökväg måste vara unik och inte får vara en underkatalog till en annan namnrymdssökväg. Om du till exempel har en namnrymdssökväg som heter kan du inte ``/parent-a`` skapa sökvägar för namnområdet som ``/parent-a/user1`` och ``/parent-a/user2`` . Dessa katalogsökvägar är redan tillgängliga i namnområdet som underkataloger i ``/parent-a`` .
 
-Alla Sök vägs Sök vägar för ett NFS-lagrings system skapas på ett lagrings mål. De flesta cache-konfigurationer har stöd för upp till tio namn rymds Sök vägar per lagrings mål, men större konfigurationer kan ha stöd för upp till 20.
+Alla sökvägar för namnområdet för ett NFS-lagringssystem skapas på ett lagringsmål. De flesta cachekonfigurationer har stöd för upp till tio namnrymdssökvägar per lagringsmål, men större konfigurationer har stöd för upp till 20.
 
-I den här listan visas det maximala antalet sökvägar i namn område per konfiguration.
+Den här listan visar det maximala antalet sökvägar för namnområden per konfiguration.
 
-* Upp till 2 GB/s-genomflöde:
+* Upp till 2 GB/s dataflöde:
 
-  * 3 TB cache-10 namn områdes Sök vägar
-  * 6 TB cache-10 namn områdes Sök vägar
-  * 12 TB cache-20 namn områdes Sök vägar
+  * 3 TB cache – 10 namnrymdssökvägar
+  * 6 TB cache – 10 namnrymdssökvägar
+  * 12 TB cache – 20 namnrymdssökvägar
 
-* Upp till 4 GB/s-genomflöde:
+* Upp till 4 GB/s dataflöde:
 
-  * 6 TB cache-10 namn områdes Sök vägar
-  * 12 TB cache-10 namn områdes Sök vägar
-  * 24 TB cache – 20 namn rymds Sök vägar
+  * 6 TB cache – 10 namnrymdssökvägar
+  * 12 TB cache – 10 namnrymdssökvägar
+  * 24 TB cachelagring – 20 namnområdessökvägar
 
-* Upp till 8 GB/s-genomflöde:
+* Upp till 8 GB/s dataflöde:
 
-  * 12 TB cache-10 namn områdes Sök vägar
-  * 24 TB cache-10 namn områdes Sök vägar
-  * 48 TB cache – 20 namn rymds Sök vägar
+  * 12 TB cache – 10 namnrymdssökvägar
+  * 24 TB cache – 10 namnrymdssökvägar
+  * 48 TB cache – 20 namnrymdssökvägar
 
-För varje NFS-namnrymd, ange sökvägen till klienten, lagrings system exporten och eventuellt en export under katalog.
+För varje NFS-namnområdessökväg anger du den klientriktade sökvägen, lagringssystemet exporterar och eventuellt en exportunderkatalog.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Läs in sidan **namn rymds** inställningar från Azure Portal. Du kan lägga till, redigera eller ta bort namn områdes Sök vägar från den här sidan.
+Från Azure Portal läser du in **sidan Namnområdesinställningar.** Du kan lägga till, redigera eller ta bort sökvägar för namnområdet från den här sidan.
 
-* **Så här lägger du till en ny sökväg:** Klicka på knappen **+ Lägg till** överst och fyll i informationen på Redigera-panelen.
-* **Så här ändrar du en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas och du kan ändra sökvägen.
-* **Så här tar du bort en namn områdes Sök väg:** Markera kryss rutan till vänster om sökvägen och klicka på knappen **ta bort** .
+* **Så här lägger du till en ny sökväg:** Klicka på **knappen +** Lägg till längst upp och fyll i information i redigeringspanelen.
+* **Så här ändrar du en befintlig sökväg:** Klicka på sökvägen för namnområdet. Redigeringspanelen öppnas och du kan ändra sökvägen.
+* **Så här tar du bort en namnrymdssökväg:** Markera kryssrutan till vänster om sökvägen och klicka på knappen **Ta** bort.
 
-Fyll i följande värden för varje namn områdes Sök väg:
+Fyll i följande värden för varje namnområdessökväg:
 
-* **Namn områdes Sök** väg – den klientbaserade fil Sök vägen.
+* **Namnområdessökväg** – Den klientriktade filsökvägen.
 
-* **Klient åtkomst princip** – Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+* **Klientåtkomstprincip –** Välj vilken åtkomstprincip som ska användas för den här sökvägen. Läs mer om hur du anpassar klientåtkomst i [Använda klientåtkomstprinciper.](access-policies.md)
 
-* **Lagrings mål** – om du skapar en ny namn områdes Sök väg väljer du ett lagrings mål i den nedrullningsbara menyn.
+* **Lagringsmål** – Om du skapar en ny sökväg för namnområdet väljer du ett lagringsmål i den nedrullningsna menyn.
 
-* **Exportera sökväg** – ange sökvägen till NFS-exporten. Se till att skriva export namnet korrekt – portalen validerar syntaxen för det här fältet, men kontrollerar inte exporten förrän du skickar ändringen.
+* **Exportera sökväg** – Ange sökvägen till NFS-exporten. Se till att ange exportnamnet korrekt – portalen validerar syntaxen för det här fältet men kontrollerar inte exporten förrän du skickar ändringen.
 
-* **Exportera under katalog** – om du vill att den här sökvägen ska montera en speciell under katalog för exporten anger du den här. Annars lämnar du fältet tomt.
+* **Exportera underkatalog –** Om du vill att den här sökvägen ska montera en specifik underkatalog för exporten anger du den här. Om inte, lämna det här fältet tomt.
 
-![skärm bild av sidan för portalens namn område med redigerings sidan öppen till höger. Redigerings formuläret visar inställningar för en sökväg för NFS-lagringsplatsens namn område](media/namespace-edit-nfs.png)
+![skärmbild av portalens namnområdessida med redigeringssidan öppen till höger. Redigeringsformuläret visar inställningar för en sökväg för NFS-lagringsmålområdet](media/namespace-edit-nfs.png)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-När du använder Azure CLI måste du lägga till minst en namn områdes Sök väg när du skapar lagrings målet. Läs [Lägg till ett nytt NFS-mål](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) för mer information.
+När du använder Azure CLI måste du lägga till minst en sökväg för namnområdet när du skapar lagringsmålet. Mer [information finns i Lägga till ett nytt NFS-lagringsmål.](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target)
 
-Om du vill uppdatera målets namn områdes Sök väg eller lägga till ytterligare sökvägar använder du kommandot [AZ HPC-cache-NFS-cache-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) . Använd ``--junction`` alternativet för att ange alla sökvägar i namn området som du vill använda.
+Om du vill uppdatera målets namnområdessökväg eller lägga till ytterligare sökvägar använder du kommandot [az hpc-cache nfs-storage-target update.](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update) Använd alternativet ``--junction`` för att ange alla sökvägar för namnområdet som du vill använda.
 
-Alternativen som används för kommandot Update liknar kommandot "skapa", förutom att du inte skickar information om lagrings system (IP-adress eller värdnamn) och användnings modellen är valfri. Läs [Lägg till ett nytt NFS-mål](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) för mer information om syntaxen för ``--junction`` alternativet.
+Alternativen som används för uppdateringskommandot liknar kommandot "create", förutom att du inte skickar lagringssystemets information (IP-adress eller värdnamn) och användningsmodellen är valfri. Mer [information om alternativets](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target) syntax finns i Lägga till ett nytt NFS-lagringsmål. ``--junction``
 
 ---
 
-### <a name="adls-nfs-namespace-paths-preview"></a>Sökvägar för ADLS-NFS-namnrymd (för hands version)
+### <a name="adls-nfs-namespace-paths-preview"></a>SÖKVÄGAR för ADLS-NFS-namnområden (FÖRHANDSVERSION)
 
-Precis som ett vanligt Blob Storage-mål har ett ADLS-NFS-mål bara en export, så det kan bara ha en namn områdes Sök väg.
+Precis som ett vanligt bloblagringsmål har ett ADLS-NFS-lagringsmål bara en export, så det kan bara ha en namnrymdssökväg.
 
 Följ anvisningarna nedan för att ange eller ändra sökvägen med Azure Portal.
 
-Läs in sidan **namn rymds** inställningar.
+Läs in **sidan Namnområdesinställningar.**
 
-* **Lägg till en ny sökväg:** Klicka på knappen **+ Lägg till** överst och fyll i informationen på Redigera-panelen.
+* **Lägg till en ny sökväg:** Klicka på **knappen +** Lägg till längst upp och fyll i information i redigeringspanelen.
 
-  ![Skärm bild av redigera fält för Lägg till namnrymd med ett ADLS-NFS valt. Sökvägarna export och under katalog är inställda på/och kan inte redige ras.](media/namespace-add-adls.png)
+  ![Skärmbild av fälten för att lägga till namnområdesredigering med ett adls-NFS-lagringsmål valt. Sökvägarna export och underkatalog anges till /och kan inte redigeras.](media/namespace-add-adls.png)
 
-  * Ange sökvägen som klienter ska använda för att få åtkomst till det här lagrings målet.
+  * Ange sökvägen som klienterna ska använda för att komma åt lagringsmålet.
 
-  * Välj vilken åtkomst princip som ska användas för den här sökvägen. Läs mer om hur du anpassar klient åtkomst i [använda klient åtkomst principer](access-policies.md).
+  * Välj vilken åtkomstprincip som ska användas för den här sökvägen. Läs mer om hur du anpassar klientåtkomst i [Använda klientåtkomstprinciper.](access-policies.md)
 
-  * Välj lagrings målet i den nedrullningsbara listan. Om det redan finns en namn områdes Sök väg för ett ADLS-NFS-lagrings mål kan du inte välja det.
+  * Välj lagringsmålet i listrutan. Om ett ADLS-NFS-lagringsmål redan har en sökväg för namnområdet kan det inte väljas.
 
-  * För ett ADLS-NFS-lagrings mål anges export-och under katalog Sök vägar automatiskt till ``/`` .
+  * För ett ADLS-NFS-lagringsmål anges sökvägarna export och underkatalog automatiskt till ``/`` .
 
-* **Ändra en befintlig sökväg:** Klicka på namn områdes Sök vägen. Redigerings panelen öppnas. Du kan ändra sökvägen och åtkomst principen, men du kan inte ändra till ett annat lagrings mål.
+* **Ändra en befintlig sökväg:** Klicka på sökvägen för namnområdet. Redigeringspanelen öppnas. Du kan ändra sökvägen och åtkomstprincipen, men du kan inte ändra till ett annat lagringsmål.
 
-* **Ta bort en sökväg för namn område:** Markera kryss rutan till vänster om sökvägen och klicka på knappen **ta bort** .
+* **Ta bort en namnrymdssökväg:** Markera kryssrutan till vänster om sökvägen och klicka på knappen **Ta** bort.
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har skapat den sammanställda namn rymden för dina lagrings mål kan du montera klienter i cacheminnet. Läs de här artiklarna om du vill veta mer.
+När du har skapat det aggregerade namnområdet för dina lagringsmål kan du montera klienter i cacheminnet. Läs de här artiklarna om du vill veta mer.
 
 * [Montera Azure HPC Cache](hpc-cache-mount.md)
 * [Flytta data till Azure Blob Storage](hpc-cache-ingest.md)

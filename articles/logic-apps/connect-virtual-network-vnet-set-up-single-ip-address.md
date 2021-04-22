@@ -1,49 +1,49 @@
 ---
-title: Konfigurera en offentlig utgående IP-adress för ISEs
-description: Lär dig hur du konfigurerar en enskild offentlig IP-adress för integrerings tjänst miljöer (ISEs) i Azure Logic Apps
+title: Konfigurera en offentlig utgående IP-adress för ISE:er
+description: Lär dig hur du ställer in en enda offentlig utgående IP-adress för integrationstjänstmiljöer (ISE) i Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.openlocfilehash: e88c4bf05d88007a6e19b568f1bc1085e24b0325
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7ec495dd52607f2f65e0bef50489dd182c2a3253
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102211064"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874197"
 ---
-# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Konfigurera en enskild IP-adress för en eller flera integrerings tjänst miljöer i Azure Logic Apps
+# <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Konfigurera en enskild IP-adress för en eller flera integreringstjänstmiljöer i Azure Logic Apps
 
-När du arbetar med Azure Logic Apps kan du konfigurera en [ *integrerings tjänst miljö* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) för att vara värd för logi Kap par som behöver åtkomst till resurser i ett [virtuellt Azure-nätverk](../virtual-network/virtual-networks-overview.md). Om du har flera ISE-instanser som behöver åtkomst till andra slut punkter som har IP-begränsningar distribuerar du en [Azure-brandvägg](../firewall/overview.md) eller en [virtuell nätverks](../virtual-network/virtual-networks-overview.md#filter-network-traffic) installation till det virtuella nätverket och dirigerar utgående trafik via brand väggen eller den virtuella nätverks installationen. Du kan sedan ha alla ISE-instanser i det virtuella nätverket använda en enda, offentlig, statisk och förutsägbar IP-adress för att kommunicera med de mål system som du vill använda. På så sätt behöver du inte konfigurera ytterligare brand Väggs öppningar i mål systemen för varje ISE.
+När du arbetar med Azure Logic Apps kan du konfigurera en [ *Integration Service Environment* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) för att vara värd för logikappar som behöver åtkomst till resurser i ett [virtuellt Azure-nätverk.](../virtual-network/virtual-networks-overview.md) Om du har flera ISE-instanser som behöver åtkomst till andra slutpunkter som [](../virtual-network/virtual-networks-overview.md#filter-network-traffic) har IP-begränsningar distribuerar du en [Azure Firewall](../firewall/overview.md) eller en virtuell nätverksinstallation till ditt virtuella nätverk och dirigerar utgående trafik genom brandväggen eller den virtuella nätverksinstallationen. Du kan sedan få alla ISE-instanser i ditt virtuella nätverk att använda en enda, offentlig, statisk och förutsägbar IP-adress för att kommunicera med de målsystem som du vill använda. På så sätt behöver du inte konfigurera ytterligare brandväggsöppningar i målsystemen för varje ISE.
 
-Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvägg, men du kan använda liknande begrepp för en virtuell nätverks installation, till exempel en brand vägg från en tredje part från Azure Marketplace. Det här avsnittet fokuserar på installations programmet för flera ISE-instanser, men du kan också använda den här metoden för en enskild ISE när ditt scenario kräver att du begränsar antalet IP-adresser som behöver åtkomst. Överväg om ytterligare kostnader för brand väggen eller den virtuella nätverks enheten passar ditt scenario. Läs mer om [priser för Azure-brandvägg](https://azure.microsoft.com/pricing/details/azure-firewall/).
+Det här avsnittet visar hur du dirigerar utgående trafik via en Azure Firewall, men du kan tillämpa liknande begrepp för en virtuell nätverksinstallation, till exempel en brandvägg från tredje part från Azure Marketplace. Det här avsnittet fokuserar på konfiguration för flera ISE-instanser, men du kan också använda den här metoden för en enda ISE när ditt scenario kräver att du begränsar antalet IP-adresser som behöver åtkomst. Överväg om de ytterligare kostnaderna för brandväggen eller den virtuella nätverksinstallationen är meningsfulla för ditt scenario. Läs mer om [Azure Firewall prissättning.](https://azure.microsoft.com/pricing/details/azure-firewall/)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure-brandvägg som körs i samma virtuella nätverk som din ISE. Om du inte har en brand vägg lägger du först [till ett undernät](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) som heter `AzureFirewallSubnet` i det virtuella nätverket. Du kan sedan [skapa och distribuera en brand vägg](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) i det virtuella nätverket.
+* En Azure-brandvägg som körs i samma virtuella nätverk som din ISE. Om du inte har en brandvägg lägger du först [till ett undernät](../virtual-network/virtual-network-manage-subnet.md#add-a-subnet) med namnet `AzureFirewallSubnet` i det virtuella nätverket. Du kan sedan [skapa och distribuera en brandvägg](../firewall/tutorial-firewall-deploy-portal.md#deploy-the-firewall) i ditt virtuella nätverk.
 
-* En Azure [route-tabell](../virtual-network/manage-route-table.md). Om du inte har en sådan måste du först [skapa en](../virtual-network/manage-route-table.md#create-a-route-table)routningstabell. Mer information om routning finns i [trafik dirigering i virtuella nätverk](../virtual-network/virtual-networks-udr-overview.md).
+* En [Azure-vägtabell](../virtual-network/manage-route-table.md). Om du inte har någon skapar du först [en vägtabell](../virtual-network/manage-route-table.md#create-a-route-table). Mer information om routning finns i [Trafikdirigering i virtuella nätverk.](../virtual-network/virtual-networks-udr-overview.md)
 
-## <a name="set-up-route-table"></a>Konfigurera routningstabell
+## <a name="set-up-route-table"></a>Konfigurera vägtabell
 
-1. I [Azure Portal](https://portal.azure.com)väljer du routningstabellen, till exempel:
+1. I [Azure Portal](https://portal.azure.com)väljer du vägtabellen, till exempel:
 
-   ![Välj routningstabell med regel för att dirigera utgående trafik](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
+   ![Välj vägtabell med regel för att dirigera utgående trafik](./media/connect-virtual-network-vnet-set-up-single-ip-address/select-route-table-for-virtual-network.png)
 
-1. Om du vill [lägga till en ny väg](../virtual-network/manage-route-table.md#create-a-route)går du till routningstabellen-menyn och väljer **vägar**  >  **Lägg till**.
+1. Om [du vill lägga till en ny](../virtual-network/manage-route-table.md#create-a-route)väg går du till menyn för vägtabellen och väljer Vägar **Lägg**  >  **till**.
 
-   ![Lägg till väg för direkt utgående trafik](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
+   ![Lägg till väg för att dirigera utgående trafik](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
-1. I fönstret **Lägg till väg** [ställer du in den nya vägen](../virtual-network/manage-route-table.md#create-a-route) med en regel som anger att all utgående trafik till mål systemet följer detta beteende:
+1. I fönstret **Lägg till** väg ställer [du](../virtual-network/manage-route-table.md#create-a-route) in den nya vägen med en regel som anger att all utgående trafik till målsystemet följer det här beteendet:
 
-   * Använder den [**virtuella enheten**](../virtual-network/virtual-networks-udr-overview.md#user-defined) som nästa hopp typ.
+   * Använder [**den virtuella installationen**](../virtual-network/virtual-networks-udr-overview.md#user-defined) som nästa hopptyp.
 
-   * Går till den privata IP-adressen för brand Väggs instansen som nästa hopp adress.
+   * Går till den privata IP-adressen för brandväggsinstansen som nästa hopp-adress.
 
-     Du hittar den här IP-adressen genom att välja **Översikt** på brand Väggs menyn, hitta adressen under **privat IP-adress**, till exempel:
+     Om du vill hitta den här IP-adressen går du till **brandväggsmenyn och** väljer Översikt och hittar adressen under **Privat IP-adress,** till exempel:
 
-     ![Hitta privat IP-adress för brand vägg](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
+     ![Hitta brandväggens privata IP-adress](./media/connect-virtual-network-vnet-set-up-single-ip-address/find-firewall-private-ip-address.png)
 
    Här är ett exempel som visar hur en sådan regel kan se ut:
 
@@ -51,53 +51,53 @@ Det här avsnittet visar hur du dirigerar utgående trafik via en Azure-brandvä
 
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
-   | **Vägnamn** | <*unikt flöde-namn*> | Ett unikt namn för vägen i routningstabellen |
-   | **Adressprefix** | <*mål adress*> | Adressprefixet för ditt mål system där du vill att utgående trafik ska gå. Se till att du använder [CIDR-notation (classless Inter-Domain routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) för den här adressen. I det här exemplet är detta adressprefix för en SFTP-server, som beskrivs i avsnittet [Konfigurera nätverks regel](#set-up-network-rule). |
-   | **Nästa hopptyp** | **Virtuell installation** | [Hopp typen](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) som används av utgående trafik |
-   | **Nexthop-adress** | <*brand vägg – privat IP-adress*> | Den privata IP-adressen för din brand vägg |
+   | **Vägnamn** | <*unique-route-name*> | Ett unikt namn för vägen i vägtabellen |
+   | **Adressprefix** | <*måladress*> | Adressprefixet för målsystemet där du vill att utgående trafik ska gå. Se till att du använder [CIDR-notation (Classless Inter-Domain Routing)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) för den här adressen. I det här exemplet är det här adressprefixet för en SFTP-server, som beskrivs i [avsnittet Konfigurera nätverksregel](#set-up-network-rule). |
+   | **Nästa hopptyp** | **Virtuell installation** | Hopptypen [som](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) används av utgående trafik |
+   | **Nexthop-adress** | <*firewall-private-IP-address*> | Den privata IP-adressen för brandväggen |
    |||
 
 <a name="set-up-network-rule"></a>
 
-## <a name="set-up-network-rule"></a>Konfigurera nätverks regel
+## <a name="set-up-network-rule"></a>Konfigurera nätverksregel
 
-1. I Azure Portal söker du efter och väljer brand väggen. I menyn brand vägg under **Inställningar** väljer du **regler**. I fönstret regler väljer du **regel insamling**  >  **Lägg till nätverks regel samling**.
+1. I Azure Portal du och väljer brandväggen. På brandväggsmenyn går du **till Inställningar** och väljer **Regler.** I regelfönstret väljer du **Nätverksregelsamling Lägg**  >  **till nätverksregelsamling**.
 
-   ![Lägg till nätverks regel samling i brand väggen](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
+   ![Lägga till nätverksregelsamling i brandväggen](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-network-rule-collection.png)
 
-1. I samlingen lägger du till en regel som tillåter trafik till mål systemet.
+1. I samlingen lägger du till en regel som tillåter trafik till målsystemet.
 
-   Anta till exempel att du har en Logic-app som körs i en ISE och som måste kommunicera med en SFTP-server. Du skapar en nätverks regel samling som har namnet `LogicApp_ISE_SFTP_Outbound` , som innehåller en nätverks regel med namnet `ISE_SFTP_Outbound` . Den här regeln tillåter trafik från IP-adressen för ett undernät där ISE körs i det virtuella nätverket till målets SFTP-server genom att använda brand väggens privata IP-adress.
+   Anta till exempel att du har en logikapp som körs i en ISE och behöver kommunicera med en SFTP-server. Du skapar en nätverksregelsamling med namnet `LogicApp_ISE_SFTP_Outbound` , som innehåller en nätverksregel med namnet `ISE_SFTP_Outbound` . Den här regeln tillåter trafik från IP-adressen för alla undernät där din ISE körs i ditt virtuella nätverk till SFTP-målservern med hjälp av brandväggens privata IP-adress.
 
-   ![Konfigurera nätverks regel för brand vägg](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
+   ![Konfigurera nätverksregel för brandvägg](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
-   **Egenskaper för nätverks regel samling**
-
-   | Egenskap | Värde | Beskrivning |
-   |----------|-------|-------------|
-   | **Namn** | <*nätverks regel-samlings namn*> | Namnet på din nätverks regel samling |
-   | **Priority** | <*prioritets nivå*> | Prioritetsordningen som används för att köra regel samlingen. Mer information finns i [Vad är några Azure Firewall-koncept](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts)? |
-   | **Åtgärd** | **Tillåt** | Den åtgärds typ som ska utföras för den här regeln |
-   |||
-
-   **Egenskaper för nätverks regel**
+   **Egenskaper för nätverksregelsamling**
 
    | Egenskap | Värde | Beskrivning |
    |----------|-------|-------------|
-   | **Namn** | <*nätverks regel-namn*> | Nätverks regelns namn |
-   | **Protokoll** | <*anslutnings protokoll*> | Anslutnings protokollen som ska användas. Om du till exempel använder NSG-regler, väljer du både **TCP** och **UDP**, inte bara **TCP**. |
-   | **Käll adresser** | <*ISE-undernät-adresser*> | IP-adresserna för under nätet där ISE körs och varifrån trafik från din Logic app kommer |
-   | **Mål adresser** | <*mål-IP-adress*> | IP-adressen för ditt mål system där du vill att utgående trafik ska gå. I det här exemplet är den här IP-adressen för SFTP-servern. |
-   | **Mål portar** | <*mål portar*> | Alla portar som mål systemet använder för inkommande kommunikation |
+   | **Namn** | <*network-rule-collection-name*> | Namnet på din nätverksregelsamling |
+   | **Priority** | <*prioritetsnivå*> | Prioritetsordning som ska användas för att köra regelsamlingen. Mer information finns i Vad [är några Azure Firewall begrepp?](../firewall/firewall-faq.yml#what-are-some-azure-firewall-concepts) |
+   | **Åtgärd** | **Tillåt** | Den åtgärdstyp som ska utföras för den här regeln |
    |||
 
-   Mer information om nätverks regler finns i följande artiklar:
+   **Egenskaper för nätverksregel**
+
+   | Egenskap | Värde | Beskrivning |
+   |----------|-------|-------------|
+   | **Namn** | <*network-rule-name*> | Namnet på nätverksregeln |
+   | **Protokoll** | <*anslutningsprotokoll*> | De anslutningsprotokoll som ska användas. Om du till exempel använder NSG-regler väljer du både **TCP** och **UDP**, inte bara **TCP**. |
+   | **Källadresser** | <*ISE-undernätsadresser*> | Undernätets IP-adresser där ISE körs och varifrån trafik från logikappen kommer |
+   | **Måladresser** | <*mål-IP-adress*> | IP-adressen för målsystemet där du vill att utgående trafik ska gå. I det här exemplet är den här IP-adressen för SFTP-servern. |
+   | **Målportar** | <*målportar*> | Alla portar som målsystemet använder för inkommande kommunikation |
+   |||
+
+   Mer information om nätverksregler finns i följande artiklar:
 
    * [Konfigurera en nätverksregel](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Regelbearbetningslogik för Azure Firewall](../firewall/rule-processing.md#network-rules-and-applications-rules)
    * [Vanliga frågor och svar om Azure Firewall](../firewall/firewall-faq.yml)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
-   * [Azure CLI: AZ Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule#ext-azure-firewall-az-network-firewall-network-rule-create)
+   * [Azure CLI: az network firewall network-rule](/cli/azure/network/firewall/network-rule#az_network_firewall_network_rule_create)
 
 ## <a name="next-steps"></a>Nästa steg
 

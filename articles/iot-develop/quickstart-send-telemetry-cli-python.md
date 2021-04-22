@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 03/24/2021
-ms.openlocfilehash: ea0b161a9038666e1e7ddd5a6c6af2078afff8aa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: be44ecf6dd154a21fd024ee37d92f61504350664
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766537"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876446"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-azure-iot-hub-python"></a>Snabbstart: Skicka telemetri från en enhet till en Azure IoT Hub (Python)
 
@@ -21,11 +21,11 @@ ms.locfileid: "107766537"
 I den här snabbstarten får du lära dig ett grundläggande arbetsflöde för utveckling av IoT-enhetsprogram. Du använder Azure CLI för att skapa en Azure IoT-hubb och en enhet. Sedan använder du Azure IoT Python SDK för att skapa en simulerad klientenhet och skicka telemetri till hubben. 
 
 ## <a name="prerequisites"></a>Förutsättningar
-- Om du inte har någon Azure-prenumeration kan [du skapa en kostnadsfritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+- Om du inte har en Azure-prenumeration kan [du skapa en utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - Azure CLI. Du kan köra alla kommandon i den här snabbstarten med Azure Cloud Shell, ett interaktivt CLI-gränssnitt som körs i webbläsaren. Om du använder Cloud Shell behöver du inte installera något. Om du föredrar att använda CLI lokalt kräver den här snabbstarten Azure CLI version 2.0.76 eller senare. Kör az --version för att se versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
 - [Python 3.7+](https://www.python.org/downloads/). Andra versioner av Python som stöds finns i [Azure IoT-enhetsfunktioner.](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device#azure-iot-device-features)
     
-    Kontrollera att Din Python-version är uppdaterad genom att köra `python --version` . Om du har både Python 2 och Python 3 installerat och använder en Python 3-miljö installerar du alla bibliotek med `pip3` . Det här kommandot säkerställer att biblioteken installeras i Python 3-körningen.
+    Kontrollera att Python-versionen är uppdaterad genom att köra `python --version` . Om du har både Python 2 och Python 3 installerat och använder en Python 3-miljö installerar du alla bibliotek med `pip3` . Det här kommandot säkerställer att biblioteken installeras i Python 3-körningen.
     > [!IMPORTANT]
     > I Python-installationsprogrammet väljer du alternativet för att **lägga till Python i PATH**. Om du redan har Python 3.7 eller senare installerat bekräftar du att du har lagt till Python-installationsmappen i `PATH` miljövariabeln.
 
@@ -34,7 +34,7 @@ I den här snabbstarten får du lära dig ett grundläggande arbetsflöde för u
 ## <a name="use-the-python-sdk-to-send-messages"></a>Använda Python SDK för att skicka meddelanden
 I det här avsnittet använder du Python SDK för att skicka meddelanden från din simulerade enhet till din IoT Hub.
 
-1. Öppna ett nytt terminalfönster. Du använder den här terminalen för att installera Python SDK och arbeta med Python-exempelkod. Du bör nu ha två terminaler öppna: den som du precis öppnade för att arbeta med Python och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon.       
+1. Öppna ett nytt terminalfönster. Du använder den här terminalen för att installera Python SDK och arbeta med Python-exempelkod. Du bör nu ha två öppna terminaler: den som du precis öppnade för att arbeta med Python och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon.       
 
 1. Kopiera [Azure IoT Python SDK-enhetsexempel](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) till den lokala datorn:
 
@@ -85,7 +85,7 @@ I det här avsnittet använder du Python SDK för att skicka meddelanden från d
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
 
-1. I det öppna CLI-gränssnittet kör du [kommandot az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelsemeddelanden skrivs ut i terminalen när de tas emot.
+1. I det öppna CLI-gränssnittet kör du [kommandot az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelsemeddelanden skrivs ut i terminalen när de tas emot.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -140,4 +140,4 @@ Som ett nästa steg kan du utforska Azure IoT Python SDK med hjälp av programex
 
 - [Asynkrona exempel:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-hub-scenarios)Den här katalogen innehåller asynkrona Python-exempel för IoT Hub scenarier.
 - [Synkrona exempel:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/sync-samples)Den här katalogen innehåller Python-exempel för användning med Python 2.7 eller synkrona kompatibilitetsscenarier för Python 3.6+
-- [IoT Edge exempel:](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)Den här katalogen innehåller Python-exempel för att arbeta med Edge-moduler och nedströmsenheter.
+- [IoT Edge exempel: Den](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)här katalogen innehåller Python-exempel för att arbeta med Edge-moduler och nedströmsenheter.

@@ -1,14 +1,14 @@
 ---
-title: 'Snabb start: skapa en Event Hub med PowerShell – Azure Event Hubs'
+title: 'Snabbstart: Skapa en händelsehubb med PowerShell – Azure Event Hubs'
 description: Den här snabbstarten beskriver hur du skapar en händelsehubb med Azure PowerShell och hur du sedan skickar och tar emot händelser med hjälp av .NET Standard SDK.
 ms.topic: quickstart
 ms.date: 06/23/2020
-ms.openlocfilehash: 1c81024a9195e463eeaaf384d5cbbd1e0054c485
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: be2761bedd3198d25cb279e6a8ff188db6a51de2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88933978"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873783"
 ---
 # <a name="quickstart-create-an-event-hub-using-azure-powershell"></a>Snabbstart: Skapa en händelsehubb med Azure PowerShell
 
@@ -24,11 +24,11 @@ För att kunna följa den här självstudien måste du ha:
 
 - En Azure-prenumeration. Om du inte har ett konto kan du [skapa ett kostnadsfritt konto][] innan du börjar.
 - [Visual Studio 2019](https://www.visualstudio.com/vs).
-- [SDK för .NET Standard](https://www.microsoft.com/net/download/windows) version 2.0 eller senare.
+- [.NET Core SDK](https://dotnet.microsoft.com/download), version 2.0 eller senare.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Om du använder PowerShell lokalt måste du köra den senaste versionen av PowerShell för att kunna slutföra den här snabbstarten. Om du behöver installera eller uppgradera kan du läsa [Installera och konfigurera Azure PowerShell](/powershell/azure/install-az-ps).
+Om du använder PowerShell lokalt måste du köra den senaste versionen av PowerShell för att kunna slutföra den här snabbstarten. Om du behöver installera eller uppgradera kan du gå [till Installera och konfigurera Azure PowerShell](/powershell/azure/install-az-ps).
 
 ## <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
@@ -61,7 +61,7 @@ Grattis! Du har använt Azure PowerShell för att skapa en Event Hubs-namnrymd o
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln skapade du en Event Hubs-namnrymd och använde exempelprogram för att skicka och ta emot meddelanden från din händelsehubb. Stegvisa instruktioner för att skicka händelser till (eller) ta emot händelser från en händelsehubben finns i självstudierna **skicka och ta emot händelser** : 
+I den här artikeln skapade du en Event Hubs-namnrymd och använde exempelprogram för att skicka och ta emot meddelanden från din händelsehubb. Stegvisa instruktioner för att skicka händelser till (eller) ta emot händelser från en händelsehubb finns i självstudierna **skicka och ta emot** händelser: 
 
 - [.NET Core](event-hubs-dotnet-standard-getstarted-send.md)
 - [Java](event-hubs-java-get-started-send.md)
@@ -72,7 +72,7 @@ I den här artikeln skapade du en Event Hubs-namnrymd och använde exempelprogra
 - [Apache Storm (tar endast emot)](event-hubs-storm-getstarted-receive.md)
 
 
-[skapa ett kostnads fritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[skapa ett kostnadsfritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [Install and Configure Azure PowerShell]: /powershell/azure/install-az-ps
 [New-AzResourceGroup]: /powershell/module/az.resources/new-azresourcegroup
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

@@ -1,29 +1,29 @@
 ---
 title: Hämta dokumentstatus
 titleSuffix: Azure Cognitive Services
-description: Statusmetoden get documents returnerar status för alla dokument i en batchdokumentöversättningsbegäran.
+description: Statusmetoden hämta dokument returnerar status för alla dokument i en begäran om batchdokumentöversättning.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 1e52d4ff5ccb5047ed82cca2764e98a8bd212305
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 8476c4891cef9d9055b16c7ac574e569ecf5b3f2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836285"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864872"
 ---
 # <a name="get-documents-status"></a>Hämta dokumentstatus
 
 Statusmetoden Hämta dokument returnerar status för alla dokument i en begäran om batchdokumentöversättning.
 
-Dokumenten som ingår i svaret sorteras efter dokument-ID i fallande ordning. Om antalet dokument i svaret överskrider vår sidnumreringsgräns används sidinväxling på serversidan. Sidnumrerade svar indikerar ett partiellt resultat och inkluderar en fortsättningstoken i svaret. Frånvaron av en fortsättningstoken innebär att inga ytterligare sidor är tillgängliga.
+Dokumenten som ingår i svaret sorteras efter dokument-ID i fallande ordning. Om antalet dokument i svaret överskrider vår växlingsgräns används sidinsökning på serversidan. Sidnumrerade svar indikerar ett partiellt resultat och inkluderar en fortsättningstoken i svaret. Frånvaron av en fortsättningstoken innebär att inga ytterligare sidor är tillgängliga.
 
-$top och $skip kan användas för att ange ett antal resultat som ska returneras och en offset för samlingen. Servern respekterar de värden som anges av klienten. Klienter måste dock vara förberedda på att hantera svar som innehåller en annan sidstorlek eller som innehåller en fortsättningstoken.
+$top och $skip-frågeparametrar kan användas för att ange ett antal resultat som ska returneras och en offset för samlingen. Servern respekterar de värden som anges av klienten. Klienter måste dock vara förberedda på att hantera svar som innehåller en annan sidstorlek eller som innehåller en fortsättningstoken.
 
 När både $top och $skip ingår bör servern först tillämpa $skip och sedan $top på samlingen.
 
@@ -41,12 +41,12 @@ Lär dig hur du hittar [ditt anpassade domännamn](../get-started-with-document-
 
 > [!IMPORTANT]
 >
-> * **Alla API-begäranden till tjänsten För dokumentöversättning krävs en slutpunkt för en anpassad domän.**
-> * Du kan inte använda slutpunkten som finns  på sidan Azure Portal nycklar och slutpunkter eller slutpunkten för global översättning– – för att göra `api.cognitive.microsofttranslator.com` HTTP-begäranden till dokumentöversättning.
+> * **Alla API-begäranden till tjänsten för dokumentöversättning kräver en anpassad domänslutpunkt.**
+> * Du kan inte använda slutpunkten som finns  på din Azure Portal resursnycklar och slutpunktssida eller den globala översättningsslutpunkten– – för `api.cognitive.microsofttranslator.com` att göra HTTP-begäranden till dokumentöversättning.
 
 ## <a name="request-parameters"></a>Begärandeparametrar
 
-Begärandeparametrar som skickas i frågesträngen är:
+Frågeparametrar som skickas i frågesträngen är:
 
 |Frågeparameter|Krävs|Beskrivning|
 |--- |--- |--- |
@@ -69,7 +69,7 @@ Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 |Statuskod|Description|
 |--- |--- |
 |200|OK. En lyckad begäran och returnerar status för dokumenten. HeadersRetry-After: heltalETag: sträng|
-|400|Ogiltig begäran. Kontrollera indataparametrar.|
+|400|Ogiltig begäran. Kontrollera indataparametrarna.|
 |401|Obehörig. Kontrollera dina autentiseringsuppgifter.|
 |404|Resursen hittades inte.|
 |500|Internt serverfel.|

@@ -1,7 +1,7 @@
 ---
-title: Överföra data med data flyttnings biblioteket för .NET
+title: Överföra data med dataflyttningsbiblioteket för .NET
 titleSuffix: Azure Storage
-description: Använd biblioteket för data förflyttning för att flytta eller kopiera data till eller från blob-och fil innehåll. Kopiera data till Azure Storage från lokala filer eller kopiera data inom eller mellan lagrings konton. Migrera enkelt dina data till Azure Storage.
+description: Använd dataförflyttningsbiblioteket för att flytta eller kopiera data till eller från blob- och filinnehåll. Kopiera data till Azure Storage lokala filer eller kopiera data inom eller mellan lagringskonton. Migrera enkelt dina data till Azure Storage.
 services: storage
 author: tamram
 ms.service: storage
@@ -11,26 +11,26 @@ ms.date: 06/16/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ec35a651d4d3ef9e0877463329a654bc7491f4c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f87379f48f82757916aef0fa0d358835f48cb9a5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96023422"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875943"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Överföra data med dataflyttbiblioteket
 
-Biblioteket för Azure Storage data förflyttning är ett bibliotek med öppen källkod mellan olika plattformar som har utformats för hög prestanda överföring, hämtning och kopiering av blobbar och filer. Data flyttnings biblioteket innehåller praktiska metoder som inte är tillgängliga i Azure Storage klient biblioteket för .NET. Dessa metoder ger möjlighet att ställa in antalet parallella åtgärder, spåra överförings förlopp, enkelt återuppta en avbruten överföring och mycket mer.
+Biblioteket Azure Storage Data Movement är ett plattformsoberoende bibliotek med öppen källkod som är utformat för uppladdning, nedladdning och kopiering av blobar och filer med höga prestanda. Dataförflyttningsbiblioteket innehåller praktiska metoder som inte är tillgängliga i Azure Storage klientbibliotek för .NET. Dessa metoder ger möjlighet att ange antalet parallella åtgärder, spåra överföringsförloppet, enkelt återuppta en avbruten överföring och mycket mer.
 
-Det här biblioteket använder också .NET Core, vilket innebär att du kan använda det när du skapar .NET-appar för Windows, Linux och macOS. Mer information om .NET Core finns i [.net Core-dokumentationen](https://dotnet.github.io/). Det här biblioteket fungerar även för traditionella .NET Framework-appar för Windows.
+Det här biblioteket använder också .NET Core, vilket innebär att du kan använda det när du skapar .NET-appar för Windows, Linux och macOS. Mer information om .NET Core finns i [.NET Core-dokumentationen.](https://dotnet.github.io/) Det här biblioteket fungerar även för traditionella .NET Framework för Windows.
 
 Det här dokumentet visar hur du skapar ett .NET Core-konsolprogram som körs på Windows, Linux och macOS och utför följande scenarier:
 
 - Ladda upp filer och kataloger till Blob Storage.
 - Definiera antalet parallella åtgärder vid överföring av data.
-- Spåra data överförings förlopp.
-- Återuppta avbruten data överföring.
-- Kopiera filen från URL till Blob Storage.
+- Spåra dataöverföringsförloppet.
+- Återuppta avbruten dataöverföring.
+- Kopiera filen från URL:en till Blob Storage.
 - Kopiera från Blob Storage till Blob Storage.
 
 ## <a name="prerequisites"></a>Förutsättningar
@@ -40,18 +40,18 @@ Det här dokumentet visar hur du skapar ett .NET Core-konsolprogram som körs p�
 
 ## <a name="setup"></a>Konfiguration
 
-1. Besök [installations guiden för .net Core](https://www.microsoft.com/net/core) för att installera .net Core. När du väljer din miljö väljer du kommando rads alternativet.
-2. Skapa en katalog för projektet från kommando raden. Navigera till den här katalogen och skriv sedan `dotnet new console -o <sample-project-name>` för att skapa ett C#-konsol projekt.
-3. Öppna den här katalogen i Visual Studio Code. Det här steget kan snabbt utföras via kommando raden genom att skriva `code .` i Windows.
-4. Installera [C#-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) från Visual Studio Code Marketplace. Starta om Visual Studio Code.
-5. Nu bör du se två prompter. Ett är för att lägga till "nödvändiga till gångar för att skapa och felsöka". Klicka på Ja. En annan prompt är för att återställa olösta beroenden. Klicka på Återställ.
-6. Ändra `launch.json` under `.vscode` för att använda extern Terminal som en konsol. Den här inställningen bör läsas som `"console": "externalTerminal"`
-7. Med Visual Studio Code kan du felsöka .NET Core-program. Tryck `F5` på för att köra programmet och kontrol lera att installationen fungerar. Du bör se "Hello World!" skrivs ut till-konsolen.
+1. Gå till [installationsguiden för .NET Core](https://dotnet.microsoft.com/download) för att installera .NET Core SDK. När du väljer din miljö väljer du kommandoradsalternativet.
+2. Skapa en katalog för projektet från kommandoraden. Navigera till den här katalogen och skriv sedan `dotnet new console -o <sample-project-name>` för att skapa ett C#-konsolprojekt.
+3. Öppna den här katalogen i Visual Studio Code. Det här steget kan snabbt utföras via kommandoraden genom att skriva `code .` i Windows.
+4. Installera [C#-tillägget](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp) från Visual Studio Code Marketplace. Starta Visual Studio kod.
+5. Nu bör du se två uppmaningar. En är för att lägga till "nödvändiga tillgångar för att skapa och felsöka". Klicka på "Ja". En annan uppmaning är att återställa olösta beroenden. Klicka på "återställ".
+6. Ändra `launch.json` under för att använda extern terminal som en `.vscode` konsol. Den här inställningen bör läsas som `"console": "externalTerminal"`
+7. Visual Studio Code kan du felsöka .NET Core-program. Tryck `F5` på för att köra programmet och kontrollera att konfigurationen fungerar. Du bör se "Hello World!" skrivs ut till konsolen.
 
-## <a name="add-the-data-movement-library-to-your-project"></a>Lägg till data flyttnings biblioteket i projektet
+## <a name="add-the-data-movement-library-to-your-project"></a>Lägga till dataflyttningsbiblioteket i projektet
 
-1. Lägg till den senaste versionen av data flyttnings biblioteket i `dependencies` avsnittet i `<project-name>.csproj` filen. Vid tidpunkten för skrivning skulle den här versionen vara `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
-2. En prompt ska visa för att återställa projektet. Klicka på knappen Återställ. Du kan också återställa projektet från kommando raden genom att skriva kommandot `dotnet restore` i rot katalogen för projekt katalogen.
+1. Lägg till den senaste versionen av dataförflyttningsbiblioteket `dependencies` i -avsnittet i `<project-name>.csproj` filen. När detta skrivs skulle den här versionen vara `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+2. En uppmaning bör visas för att återställa projektet. Klicka på knappen "återställ". Du kan också återställa projektet från kommandoraden genom att skriva `dotnet restore` kommandot i roten för projektkatalogen.
 
 Ändra `<project-name>.csproj` :
 
@@ -67,9 +67,9 @@ Det här dokumentet visar hur du skapar ett .NET Core-konsolprogram som körs p�
     </Project>
 ```
 
-## <a name="set-up-the-skeleton-of-your-application"></a>Konfigurera Skeleton för ditt program
+## <a name="set-up-the-skeleton-of-your-application"></a>Konfigurera stommen för ditt program
 
-Det första vi gör är att ställa in "Skeleton"-koden för vårt program. I den här koden uppmanas vi att ange ett lagrings konto namn och en konto nyckel och använder dessa autentiseringsuppgifter för att skapa ett `CloudStorageAccount` objekt. Det här objektet används för att interagera med vårt lagrings konto i alla överförings scenarier. Koden meddelar också oss att välja den typ av överförings åtgärd som vi vill köra.
+Det första vi gör är att konfigurera "skeleton"-koden för vårt program. Den här koden uppmanar oss att ange ett lagringskontonamn och en kontonyckel och använder dessa autentiseringsuppgifter för att skapa ett `CloudStorageAccount` -objekt. Det här objektet används för att interagera med vårt lagringskonto i alla överföringsscenarier. Koden uppmanar oss också att välja vilken typ av överföringsåtgärd vi vill köra.
 
 Ändra `Program.cs` :
 
@@ -146,9 +146,9 @@ namespace DMLibSample
 }
 ```
 
-## <a name="upload-a-local-file-to-a-blob"></a>Ladda upp en lokal fil till en BLOB
+## <a name="upload-a-local-file-to-a-blob"></a>Ladda upp en lokal fil till en blob
 
-Lägg till metoderna `GetSourcePath` och `GetBlob` för att `Program.cs` :
+Lägg till metoderna `GetSourcePath` och `GetBlob` i `Program.cs` :
 
 ```csharp
 public static string GetSourcePath()
@@ -190,19 +190,19 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-I den här koden uppmanas vi att ange sökvägen till en lokal fil, namnet på en ny eller befintlig behållare och namnet på en ny blob. `TransferManager.UploadAsync`Metoden utför uppladdningen med hjälp av den här informationen.
+Den här koden uppmanar oss att ange sökvägen till en lokal fil, namnet på en ny eller befintlig container och namnet på en ny blob. Metoden `TransferManager.UploadAsync` utför uppladdningen med hjälp av den här informationen.
 
-Tryck `F5` på för att köra programmet. Du kan kontrol lera att överföringen har skett genom att visa ditt lagrings konto med [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
+Tryck `F5` på för att köra programmet. Du kan kontrollera att uppladdningen har skett genom att visa ditt lagringskonto [med Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
-## <a name="set-the-number-of-parallel-operations"></a>Ange antalet parallell åtgärder
+## <a name="set-the-number-of-parallel-operations"></a>Ange antalet parallella åtgärder
 
-En funktion som erbjuds av data flyttnings biblioteket är möjligheten att ange antalet parallella åtgärder för att öka data överförings data flödet. Som standard anger data flyttnings biblioteket antalet parallell åtgärder till 8 * antalet kärnor på datorn.
+En funktion som erbjuds av dataförflyttningsbiblioteket är möjligheten att ange antalet parallella åtgärder för att öka dataflödet för dataöverföring. Som standard anger dataförflyttningsbiblioteket antalet parallella åtgärder till 8 * antalet kärnor på datorn.
 
-Tänk på att många parallella åtgärder i en miljö med låg bandbredd kan överbelasta nätverks anslutningen och förhindra att åtgärder fullständigt slutförs. Du måste experimentera med den här inställningen för att avgöra vad som fungerar bäst baserat på din tillgängliga nätverks bandbredd.
+Tänk på att många parallella åtgärder i en miljö med låg bandbredd kan överbelasta nätverksanslutningen och faktiskt förhindra att åtgärder slutförs helt. Du måste experimentera med den här inställningen för att avgöra vad som fungerar bäst baserat på din tillgängliga nätverksbandbredd.
 
-Nu ska vi lägga till kod som gör det möjligt för oss att ange antalet parallella åtgärder. Nu ska vi lägga till kod som visar hur lång tid det tar för överföringen att slutföras.
+Nu ska vi lägga till kod som gör att vi kan ange antalet parallella åtgärder. Nu ska vi också lägga till kod som lägger tid på hur lång tid det tar för överföringen att slutföras.
 
-Lägg till en `SetNumberOfParallelOperations` metod för att `Program.cs` :
+Lägg till en `SetNumberOfParallelOperations` metod i `Program.cs` :
 
 ```csharp
 public static void SetNumberOfParallelOperations()
@@ -213,7 +213,7 @@ public static void SetNumberOfParallelOperations()
 }
 ```
 
-Ändra `ExecuteChoice` metoden som ska användas `SetNumberOfParallelOperations` :
+Ändra metoden `ExecuteChoice` så att den använder `SetNumberOfParallelOperations` :
 
 ```csharp
 public static void ExecuteChoice(CloudStorageAccount account)
@@ -242,7 +242,7 @@ public static void ExecuteChoice(CloudStorageAccount account)
 }
 ```
 
-Ändra `TransferLocalFileToAzureBlob` metoden för att använda en timer:
+Ändra metoden `TransferLocalFileToAzureBlob` så att en timer används:
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -258,11 +258,11 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-## <a name="track-transfer-progress"></a>Spåra överförings förlopp
+## <a name="track-transfer-progress"></a>Spåra överföringsförloppet
 
-Det är bra att veta hur lång tid det tog för data att överföras. Att kunna se förloppet för överföringen *under* överförings åtgärden skulle dock vara ännu bättre. För att uppnå det här scenariot måste vi skapa ett `TransferContext` objekt. `TransferContext`Objektet kommer i två former: `SingleTransferContext` och `DirectoryTransferContext` . Den tidigare är för att överföra en enda fil och den senare för att överföra en katalog med filer.
+Att veta hur lång tid det tog för data att överföra är användbart. Men att kunna se förloppet för överföringen *under* överföringsåtgärden skulle vara ännu bättre. För att uppnå det här scenariot måste vi skapa ett `TransferContext` -objekt. -objektet `TransferContext` finns i två former: och `SingleTransferContext` `DirectoryTransferContext` . Den första är till för överföring av en enda fil och den senare används för att överföra en katalog med filer.
 
-Lägg till metoderna `GetSingleTransferContext` och `GetDirectoryTransferContext` för att `Program.cs` :
+Lägg till metoderna `GetSingleTransferContext` och `GetDirectoryTransferContext` i `Program.cs` :
 
 ```csharp
 public static SingleTransferContext GetSingleTransferContext(TransferCheckpoint checkpoint)
@@ -290,7 +290,7 @@ public static DirectoryTransferContext GetDirectoryTransferContext(TransferCheck
 }
 ```
 
-Ändra `TransferLocalFileToAzureBlob` metoden som ska användas `GetSingleTransferContext` :
+Ändra metoden `TransferLocalFileToAzureBlob` så att den använder `GetSingleTransferContext` :
 
 ```csharp
 public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount account)
@@ -310,7 +310,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 ## <a name="resume-a-canceled-transfer"></a>Återuppta en avbruten överföring
 
-En annan praktisk funktion som erbjuds av data flytt biblioteket är möjligheten att återuppta en avbruten överföring. Nu ska vi lägga till kod som gör det möjligt för oss att tillfälligt avbryta överföringen genom att skriva `c` och sedan återuppta överföringen 3 sekunder senare.
+En annan praktisk funktion som erbjuds av dataflyttningsbiblioteket är möjligheten att återuppta en avbruten överföring. Nu ska vi lägga till kod som gör att vi tillfälligt kan avbryta överföringen genom att skriva `c` och sedan återuppta överföringen tre sekunder senare.
 
 Ändra `TransferLocalFileToAzureBlob` :
 
@@ -364,13 +364,13 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-Fram till nu har vårt `checkpoint` värde alltid angetts till `null` . Om vi avbryter överföringen hämtar vi den senaste kontroll punkten för vår överföring och använder sedan den nya kontroll punkten i vår överförings kontext.
+Fram till nu har `checkpoint` vårt värde alltid angetts till `null` . Om vi avbryter överföringen hämtar vi den sista kontrollpunkten för överföringen och använder sedan den nya kontrollpunkten i överföringskontexten.
 
 ## <a name="transfer-a-local-directory-to-blob-storage"></a>Överföra en lokal katalog till Blob Storage
 
-Det skulle bli Disappointing om data flyttnings biblioteket bara kan överföra en fil i taget. Som tur är, detta är inte fallet. Med data flyttnings biblioteket kan du överföra en katalog med filer och alla dess under kataloger. Nu ska vi lägga till kod som gör det möjligt för oss att göra just det.
+Det skulle vara svårt om dataförflyttningsbiblioteket bara kunde överföra en fil i taget. Som tur är är detta inte fallet. Dataförflyttningsbiblioteket ger möjlighet att överföra en katalog med filer och alla dess underkataloger. Nu ska vi lägga till kod som gör att vi kan göra just det.
 
-Lägg först till-metoden `GetBlobDirectory` i `Program.cs` :
+Lägg först till metoden `GetBlobDirectory` i `Program.cs` :
 
 ```csharp
 public static CloudBlobDirectory GetBlobDirectory(CloudStorageAccount account)
@@ -445,11 +445,11 @@ public static async Task TransferLocalDirectoryToAzureBlobDirectory(CloudStorage
 }
 ```
 
-Det finns några skillnader mellan den här metoden och metoden för att ladda upp en enskild fil. Vi använder nu `TransferManager.UploadDirectoryAsync` och metoden som `getDirectoryTransferContext` vi skapade tidigare. Dessutom tillhandahåller vi ett `options` värde för vår överförings åtgärd, vilket gör att vi kan ange att vi vill inkludera under kataloger i vår uppladdning.
+Det finns några skillnader mellan den här metoden och metoden för att ladda upp en enskild fil. Vi använder nu och `TransferManager.UploadDirectoryAsync` metoden som vi skapade `getDirectoryTransferContext` tidigare. Dessutom anger vi nu ett värde för uppladdningsåtgärden, vilket gör att vi kan ange att vi vill inkludera `options` underkataloger i uppladdningen.
 
-## <a name="copy-a-file-from-url-to-a-blob"></a>Kopiera en fil från URL till en BLOB
+## <a name="copy-a-file-from-url-to-a-blob"></a>Kopiera en fil från URL:en till en blob
 
-Nu ska vi lägga till kod som gör det möjligt för oss att kopiera en fil från en URL till en Azure-blob.
+Nu ska vi lägga till kod som gör att vi kan kopiera en fil från en URL till en Azure Blob.
 
 Ändra `TransferUrlToAzureBlob` :
 
@@ -503,11 +503,11 @@ public static async Task TransferUrlToAzureBlob(CloudStorageAccount account)
 }
 ```
 
-Ett viktigt användnings fall för den här funktionen är när du behöver flytta data från en annan moln tjänst (t. ex. AWS) till Azure. Så länge du har en URL som ger dig åtkomst till resursen kan du enkelt flytta resursen till Azure-blobbar med hjälp av- `TransferManager.CopyAsync` metoden. Den här metoden introducerar också en ny boolesk parameter. Om du anger den här parametern `true` anges att vi vill göra en asynkron kopia på Server sidan. Om du anger den här parametern som `false` en synkron kopiering, innebär det att resursen laddas ned till den lokala datorn först och sedan överförs till Azure-blobben. Synkron kopiering är dock för närvarande bara tillgänglig för kopiering från en Azure Storage resurs till en annan.
+Ett viktigt användningsfall för den här funktionen är när du behöver flytta data från en annan molntjänst (t.ex. AWS) till Azure. Så länge du har en URL som ger dig åtkomst till resursen kan du enkelt flytta resursen till Azure Blobs med hjälp av `TransferManager.CopyAsync` metoden . Den här metoden introducerar också en ny boolesk parameter. Om den här `true` parametern anges till anger vi att vi vill göra en asynkron kopia på serversidan. Om den här parametern anges till anger du en synkron kopia, vilket innebär att resursen först laddas ned till den lokala datorn `false` och sedan laddas upp till Azure Blob. Synkron kopia är dock för närvarande endast tillgänglig för kopiering från en Azure Storage resurs till en annan.
 
-## <a name="copy-a-blob"></a>Kopiera en BLOB
+## <a name="copy-a-blob"></a>Kopiera en blob
 
-En annan funktion som tillhandahålls unikt av data flyttnings biblioteket är möjligheten att kopiera från en Azure Storage resurs till en annan.
+En annan funktion som tillhandahålls unikt av dataflyttningsbiblioteket är möjligheten att kopiera från en Azure Storage resurs till en annan.
 
 Ändra `TransferAzureBlobToAzureBlob` :
 
@@ -561,12 +561,12 @@ public static async Task TransferAzureBlobToAzureBlob(CloudStorageAccount accoun
 }
 ```
 
-I det här exemplet anger vi den booleska parametern i `TransferManager.CopyAsync` till `false` för att indikera att vi vill göra en synkron kopia. Det innebär att resursen laddas ned till den lokala datorn först och sedan överförs till Azure-blobben. Alternativet för synkron kopiering är ett bra sätt att se till att kopierings åtgärden har en konsekvent hastighet. Hastigheten för en asynkron kopia på Server sidan är däremot beroende av den tillgängliga nätverks bandbredden på servern, som kan variera. Synkron kopiering kan dock generera ytterligare utgående kostnad jämfört med asynkron kopia. Den rekommenderade metoden är att använda synkron kopia i en virtuell Azure-dator som finns i samma region som ditt käll lagrings konto för att undvika utgångs kostnader.
+I det här exemplet anger vi den booleska parametern i till för att ange att vi `TransferManager.CopyAsync` `false` vill göra en synkron kopia. Det innebär att resursen först laddas ned till den lokala datorn och sedan laddas upp till Azure Blob. Alternativet för synkron kopiering är ett bra sätt att se till att kopieringsåtgärden har en konsekvent hastighet. Hastigheten för en asynkron kopia på serversidan är däremot beroende av serverns tillgängliga nätverksbandbredd, som kan variera. Synkron kopiering kan dock generera ytterligare utgående kostnader jämfört med asynkron kopia. Den rekommenderade metoden är att använda synkron kopiering på en virtuell Azure-dator som finns i samma region som ditt källlagringskonto för att undvika utgående kostnader.
 
-Programmet för data flytt har slutförts. [Det fullständiga kod exemplet finns på GitHub](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
+Dataförflyttningsprogrammet är nu klart. [Det fullständiga kodexe exemplet finns på GitHub](https://github.com/azure-samples/storage-dotnet-data-movement-library-app).
 
 ## <a name="next-steps"></a>Nästa steg
 
-[Azure Storage referens dokumentation för data flytt bibliotek](https://azure.github.io/azure-storage-net-data-movement).
+[Azure Storage referensdokumentation för Data Movement-biblioteket](https://azure.github.io/azure-storage-net-data-movement).
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../../includes/storage-try-azure-tools-blobs.md)]

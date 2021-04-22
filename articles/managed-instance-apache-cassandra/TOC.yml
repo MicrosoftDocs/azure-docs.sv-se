@@ -1,17 +1,17 @@
-- name: Azure Managed instance för Apache Cassandra-dokumentation
+- name: Dokumentation om Azure Managed Instance för Apache Cassandra
   href: index.yml
 - name: Översikt
   items:
-    - name: Vad är Azure Managed instance för Apache Cassandra?
+    - name: Vad är Azure Managed Instance för Apache Cassandra?
       href: introduction.md
 - name: Snabbstarter
   items:
-    - name: Skapa ett kluster – Portal
+    - name: Skapa ett kluster – portalen
       href: create-cluster-portal.md
     - name: Skapa ett kluster – CLI
       displayName: 'az managed-cassandra, cluster, datacenter, connect'
       href: create-cluster-cli.md
-    - name: Konfigurera ett hybrid kluster
+    - name: Konfigurera ett hybridkluster
       href: configure-hybrid-cluster.md
     - name: Distribuera Spark-kluster med Databricks
       href: deploy-cluster-databricks.md
@@ -20,7 +20,7 @@
     - name: Vanliga frågor och svar
       displayName: 'cost, region, monitor, backup'
       href: faq.md
-    - name: Hanterad instans vs Azure Cosmos DB API för Cassandra
+    - name: Hanterad instans jämfört med Azure Cosmos DB API för Cassandra
       href: compare-cosmosdb-managed-instance.md
 - name: Anvisningar
   items:
@@ -35,7 +35,7 @@
       items:
         - name: Cassandra-kluster
           href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandraclusters
-        - name: Cassandra Data Center
+        - name: Cassandra-datacenter
           href: /rest/api/cosmos-db-resource-provider/2021-03-01-preview/cassandradatacenters
     - name: Azure CLI
-      href: /cli/azure/ext/cosmosdb-preview/managed-cassandra
+      href: /cli/azure/managed-cassandra

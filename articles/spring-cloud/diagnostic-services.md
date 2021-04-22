@@ -1,106 +1,106 @@
 ---
-title: Analysera loggar och mått i Azure våren-molnet | Microsoft Docs
-description: Lär dig hur du analyserar diagnostikdata i Azure våren Cloud
+title: Analysera loggar och mått i Azure Spring Cloud | Microsoft Docs
+description: Lär dig hur du analyserar diagnostikdata i Azure Spring Cloud
 author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: 68b9aee49e4cf7c02c07fc7dd90e9cc6065a443c
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 6472ba7dd055de97a1855211f21fd0c75eea814f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259429"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874125"
 ---
 # <a name="analyze-logs-and-metrics-with-diagnostics-settings"></a>Analysera loggar och mått med diagnostikinställningar
 
 **Den här artikeln gäller för:** ✔️ Java ✔️ C #
 
-Med hjälp av diagnostikprogrammet i Azure våren Cloud kan du analysera loggar och mät värden med någon av följande tjänster:
+Med diagnostikfunktionen i Azure Spring Cloud kan du analysera loggar och mått med någon av följande tjänster:
 
-* Använd Azure Log Analytics, där data skrivs till Azure Storage. Det uppstår en fördröjning vid export av loggar till Log Analytics.
-* Spara loggar till ett lagrings konto för granskning eller manuell kontroll. Du kan ange Retentions tid (i dagar).
-* Strömma loggar till händelsehubben för inmatning av en tjänst från tredje part eller en anpassad analys lösning.
+* Använd Azure Log Analytics, där data skrivs till Azure Storage. Det finns en fördröjning när du exporterar loggar till Log Analytics.
+* Spara loggar till ett lagringskonto för granskning eller manuell granskning. Du kan ange kvarhållningstiden (i dagar).
+* Strömma loggar till din händelsehubb för inmatning av en tjänst från tredje part eller en anpassad analyslösning.
 
-Välj den logg kategori och den mått kategori som du vill övervaka.
+Välj den loggkategori och den måttkategori som du vill övervaka.
 
 > [!TIP]
-> Vill du bara strömma dina loggar? Kolla ut detta [Azure CLI-kommando](/cli/azure/ext/spring-cloud/spring-cloud/app#ext-spring-cloud-az-spring-cloud-app-logs)!
+> Vill du bara strömma loggarna? Kolla in det här [Azure CLI-kommandot!](/cli/azure/spring-cloud/app#az_spring_cloud_app_logs)
 
 ## <a name="logs"></a>Loggar
 
-|Loggas | Beskrivning |
+|Loggas | Description |
 |----|----|
-| **ApplicationConsole** | Konsol logg för alla kund program. |
-| **SystemLogs** | För närvarande är endast [vår moln konfigurations Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) loggar i den här kategorin. |
+| **ApplicationConsole** | Konsollogg för alla kundprogram. |
+| **SystemLogs** | För närvarande används [Spring Cloud Config Server](https://cloud.spring.io/spring-cloud-config/reference/html/#_spring_cloud_config_server) i den här kategorin. |
 
 ## <a name="metrics"></a>Mått
 
-En fullständig lista över mått finns i [moln mått för våren](./spring-cloud-concept-metrics.md#user-metrics-options).
+En fullständig lista över mått finns i [Spring Cloud Mått](./spring-cloud-concept-metrics.md#user-metrics-options).
 
-Kom igång genom att aktivera någon av dessa tjänster för att ta emot data. Information om hur du konfigurerar Log Analytics finns [i kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
+Kom igång genom att aktivera en av dessa tjänster för att ta emot data. Mer information om hur du konfigurerar Log Analytics [finns i Kom igång med Log Analytics i Azure Monitor](../azure-monitor/logs/log-analytics-tutorial.md).
 
 ## <a name="configure-diagnostics-settings"></a>Konfigurera diagnostikinställningar
 
-1. I Azure Portal går du till din Azure våren Cloud-instans.
-1. Välj alternativet **diagnostikinställningar** och välj sedan **Lägg till diagnostikinställningar**.
-1. Ange ett namn för inställningen och välj sedan var du vill skicka loggarna. Du kan välja en valfri kombination av följande tre alternativ:
-    * **Arkivera till ett lagrings konto**
+1. I Azure Portal du till din Azure Spring Cloud instans.
+1. Välj **alternativet Diagnostikinställningar** och välj sedan Lägg **till diagnostikinställning.**
+1. Ange ett namn för inställningen och välj sedan var du vill skicka loggarna. Du kan välja valfri kombination av följande tre alternativ:
+    * **Arkivera till ett lagringskonto**
     * **Strömma till en händelsehubb**
     * **Skicka till Log Analytics**
 
-1. Välj vilken logg kategori och vilken mått kategori du vill övervaka och ange sedan kvarhållningsperiod (i dagar). Retentions tiden gäller endast för lagrings kontot.
+1. Välj vilken loggkategori och måttkategori du vill övervaka och ange sedan kvarhållningstiden (i dagar). Kvarhållningstiden gäller endast för lagringskontot.
 1. Välj **Spara**.
 
 > [!NOTE]
-> 1. Det kan finnas en lucka i upp till 15 minuter mellan när loggarna eller måtten genereras och när de visas i ditt lagrings konto, Event Hub eller Log Analytics.
-> 1. Om Azure våren Cloud-instansen tas bort eller flyttas, överlappar inte åtgärden de resurser som används för **diagnostik** . De **diagnostiska inställnings** resurserna måste tas bort manuellt före åtgärden mot dess överordnade objekt, D.v.s. Azure våren Cloud-instansen. Om en ny Azure våren Cloud-instans är etablerad med samma resurs-ID som den borttagna, eller om Azure våren Cloud-instansen flyttas tillbaka, fortsätter de tidigare **inställningarna för diagnostikinställningar** att utökas.
+> 1. Det kan finnas en lucka på upp till 15 minuter mellan när loggar eller mått genereras och när de visas i ditt lagringskonto, din händelsehubb eller Log Analytics.
+> 1. Om Azure Spring Cloud instansen tas bort eller flyttas överlappar åtgärden inte resurserna **för diagnostikinställningar.** Resurserna **för diagnostikinställningar** måste tas bort manuellt innan åtgärden utförs mot dess överordnade objekt, dvs. Azure Spring Cloud instansen. Om en ny Azure Spring Cloud-instans etableras med samma resurs-ID som den borttagna, eller om Azure Spring Cloud-instansen flyttas tillbaka, fortsätter de tidigare diagnostikinställningsresurserna att utöka den. 
 
 ## <a name="view-the-logs-and-metrics"></a>Visa loggar och mått
-Det finns olika metoder för att visa loggar och mått enligt beskrivningen under följande rubriker.
+Det finns olika metoder för att visa loggar och mått enligt beskrivningen i följande rubriker.
 
-### <a name="use-the-logs-blade"></a>Använd bladet loggar
+### <a name="use-the-logs-blade"></a>Använda bladet Loggar
 
-1. I Azure Portal går du till din Azure våren Cloud-instans.
-1. Öppna fönstret **loggs ökning** genom att välja **loggar**.
-1. I sökrutan **tabeller**
-   * Om du vill visa loggar anger du en enkel fråga som:
+1. I Azure Portal du till din Azure Spring Cloud instans.
+1. Öppna fönstret **Loggsökning** genom att välja **Loggar**.
+1. I **sökrutan** Tabeller
+   * Om du vill visa loggar anger du en enkel fråga, till exempel:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-   * Om du vill visa mått anger du en enkel fråga som:
+   * Om du vill visa mått anger du en enkel fråga, till exempel:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
-1. Om du vill visa Sök resultatet väljer du **Kör**.
+1. Om du vill visa sökresultatet väljer du **Kör**.
 
 ### <a name="use-log-analytics"></a>Använda Log Analytics
 
-1. I Azure Portal väljer du **Log Analytics** i det vänstra fönstret.
-1. Välj den Log Analytics arbets yta som du valde när du lade till diagnostikinställningar.
-1. Öppna fönstret **loggs ökning** genom att välja **loggar**.
-1. I sökrutan **tabeller** ,
-   * Om du vill visa loggar anger du en enkel fråga som:
+1. I Azure Portal väljer du Log Analytics i det **vänstra fönstret.**
+1. Välj den Log Analytics-arbetsyta som du valde när du lade till diagnostikinställningarna.
+1. Öppna fönstret **Loggsökning** genom att välja **Loggar**.
+1. I **sökrutan** Tabeller
+   * om du vill visa loggar anger du en enkel fråga, till exempel:
 
     ```sql
     AppPlatformLogsforSpring
     | limit 50
     ```
-    * Om du vill visa mått anger du en enkel fråga som:
+    * om du vill visa mått anger du en enkel fråga, till exempel:
 
     ```sql
     AzureMetrics
     | limit 50
     ```
 
-1. Om du vill visa Sök resultatet väljer du **Kör**.
-1. Du kan söka i loggarna för det specifika programmet eller instansen genom att ange ett filter villkor:
+1. Om du vill visa sökresultatet väljer du **Kör**.
+1. Du kan söka i loggarna för det specifika programmet eller instansen genom att ange ett filtervillkor:
 
     ```sql
     AppPlatformLogsforSpring
@@ -108,40 +108,40 @@ Det finns olika metoder för att visa loggar och mått enligt beskrivningen unde
     | limit 50
     ```
 > [!NOTE]
-> `==` är Skift läges känslig, men `=~` är inte det.
+> `==` är fallkänsligt, men `=~` det är det inte.
 
-Om du vill veta mer om frågespråket som används i Log Analytics, se [Azure Monitor logg frågor](/azure/data-explorer/kusto/query/). Om du vill fråga alla Log Analytics loggar från en centraliserad klient kan du kolla in [Azure datautforskaren](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
+Mer information om frågespråket som används i Log Analytics finns i Azure Monitor [loggfrågor](/azure/data-explorer/kusto/query/). Om du vill fråga efter alla Log Analytics-loggar från en centraliserad klient kan du [kolla Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/query-monitor-data).
 
-### <a name="use-your-storage-account"></a>Använd ditt lagrings konto
+### <a name="use-your-storage-account"></a>Använda ditt lagringskonto
 
-1. Sök efter **lagrings konton** i den vänstra navigerings panelen eller sökrutan i Azure Portal.
-1. Välj det lagrings konto som du valde när du lade till diagnostikinställningar.
-1. Öppna fönstret **BLOB container** genom att välja **blobbar**.
-1. Om du vill granska program loggarna söker du efter en behållare med namnet **Insights-logs-applicationconsole**.
-1. Om du vill granska program mått söker du efter en behållare med namnet **Insights-Metrics-pt1m**.
+1. I Azure Portal du **Lagringskonton i** den vänstra navigeringspanelen eller i sökrutan.
+1. Välj det lagringskonto som du valde när du lade till diagnostikinställningarna.
+1. Öppna fönstret **Blobcontainer** genom att **välja Blobar**.
+1. Om du vill granska programloggar söker du efter en container **med namnet insights-logs-applicationconsole**.
+1. Om du vill granska programmått söker du efter en container **med namnet insights-metrics-pt1m**.
 
-Mer information om hur du skickar diagnostikinformation till ett lagrings konto finns i [lagra och Visa diagnostikdata i Azure Storage](../storage/common/storage-introduction.md).
+Mer information om hur du skickar diagnostikinformation till ett lagringskonto finns [i Lagra och visa diagnostikdata i Azure Storage](../storage/common/storage-introduction.md).
 
-### <a name="use-your-event-hub"></a>Använda händelsehubben
+### <a name="use-your-event-hub"></a>Använda din händelsehubb
 
-1. I Azure Portal söker du efter **Event Hubs** i den vänstra navigerings panelen eller sökrutan.
+1. I rutan Azure Portal du **Event Hubs** i den vänstra navigeringspanelen eller sökrutan.
 
-1. Sök efter och välj den händelsehubben som du valde när du lade till diagnostikinställningar.
-1. Öppna fönstret **Event Hub List** genom att välja **Event Hubs**.
-1. Om du vill granska program loggar kan du söka efter en Event Hub med namnet **Insights-logs-applicationconsole**.
-1. Om du vill granska program mått söker du efter ett händelsehubben som kallas **Insights-Metrics-pt1m**.
+1. Sök efter och välj den händelsehubb som du valde när du lade till diagnostikinställningarna.
+1. Öppna fönstret **Händelsehubblista** genom att välja **Event Hubs**.
+1. Om du vill granska programloggar söker du efter en **händelsehubb med namnet insights-logs-applicationconsole**.
+1. Om du vill granska programmått söker du efter en händelsehubb **med namnet insights-metrics-pt1m**.
 
-Mer information om hur du skickar diagnostikinformation till en Event Hub finns i [strömma Azure-diagnostik data i den aktiva sökvägen med Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md).
+Mer information om hur du skickar diagnostikinformation till en händelsehubb finns i Strömma Azure Diagnostics data i den heta sökvägen [med hjälp av Event Hubs](../azure-monitor/agents/diagnostics-extension-stream-event-hubs.md).
 
 ## <a name="analyze-the-logs"></a>Analysera loggarna
 
-Azure Log Analytics körs med en Kusto-motor så att du kan skicka frågor till dina loggar för analys. En snabb introduktion till att köra frågor mot loggar med hjälp av Kusto finns i [själv studie kursen om Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md).
+Azure Log Analytics körs med en Kusto-motor så att du kan köra frågor mot loggarna för analys. En snabb introduktion till att köra frågor mot loggar med hjälp av Kusto finns i [Log Analytics-självstudien](../azure-monitor/logs/log-analytics-tutorial.md).
 
-Program loggar ger viktig information och utförliga loggar om programmets hälsa, prestanda och mycket annat. I nästa avsnitt finns några enkla frågor som hjälper dig att förstå programmets aktuella och tidigare tillstånd.
+Programloggar ger viktig information och utförliga loggar om programmets hälsotillstånd, prestanda med mera. I nästa avsnitt finns några enkla frågor som hjälper dig att förstå programmets aktuella och tidigare tillstånd.
 
-### <a name="show-application-logs-from-azure-spring-cloud"></a>Visa program loggar från Azure våren Cloud
+### <a name="show-application-logs-from-azure-spring-cloud"></a>Visa programloggar från Azure Spring Cloud
 
-Om du vill granska en lista över program loggar från Azure våren Cloud, sorterat efter tid med de senaste loggarna som visas först, kör du följande fråga:
+Om du vill granska en lista över programloggar från Azure Spring Cloud, sorterade efter tid med de senaste loggarna som visas först, kör du följande fråga:
 
 ```sql
 AppPlatformLogsforSpring
@@ -149,9 +149,9 @@ AppPlatformLogsforSpring
 | sort by TimeGenerated desc
 ```
 
-### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Visa loggar poster som innehåller fel eller undantag
+### <a name="show-logs-entries-containing-errors-or-exceptions"></a>Visa loggposter som innehåller fel eller undantag
 
-Om du vill granska osorterade logg poster som nämner ett fel eller undantag kör du följande fråga:
+Om du vill granska osorterade loggposter som nämner ett fel eller undantag kör du följande fråga:
 
 ```sql
 AppPlatformLogsforSpring
@@ -159,11 +159,11 @@ AppPlatformLogsforSpring
 | where Log contains "error" or Log contains "exception"
 ```
 
-Använd den här frågan för att hitta fel eller ändra sökorden för att hitta vissa felkoder eller undantag.
+Använd den här frågan för att hitta fel eller ändra frågevillkoren för att hitta specifika felkoder eller undantag.
 
-### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Visa antalet fel och undantag som rapporter ATS av ditt program under den senaste timmen
+### <a name="show-the-number-of-errors-and-exceptions-reported-by-your-application-over-the-last-hour"></a>Visa antalet fel och undantag som rapporterats av programmet under den senaste timmen
 
-Kör följande fråga för att skapa ett cirkel diagram som visar antalet fel och undantag som loggats av programmet den senaste timmen:
+Om du vill skapa ett cirkeldiagram som visar antalet fel och undantag som loggats av programmet under den senaste timmen kör du följande fråga:
 
 ```sql
 AppPlatformLogsforSpring
@@ -174,15 +174,15 @@ AppPlatformLogsforSpring
 | render piechart
 ```
 
-### <a name="learn-more-about-querying-application-logs"></a>Läs mer om att skicka frågor till program loggar
+### <a name="learn-more-about-querying-application-logs"></a>Läs mer om att köra frågor mot programloggar
 
-Azure Monitor ger omfattande stöd för att skicka frågor till program loggar med hjälp av Log Analytics. Mer information om den här tjänsten finns [i kom igång med logg frågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md). Mer information om hur du skapar frågor för att analysera dina program loggar finns i [Översikt över logg frågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
+Azure Monitor omfattande stöd för att köra frågor mot programloggar med hjälp av Log Analytics. Mer information om den här tjänsten finns [i Kom igång med loggfrågor i Azure Monitor](../azure-monitor/logs/get-started-queries.md). Mer information om hur du skapar frågor för att analysera dina programloggar finns [i Översikt över loggfrågor i Azure Monitor](../azure-monitor/logs/log-query-overview.md).
 
 ## <a name="frequently-asked-questions-faq"></a>Vanliga frågor och svar (FAQ)
 
-### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Hur konverterar du flera rader i Java stack-spår till en enda rad?
+### <a name="how-to-convert-multi-line-java-stack-traces-into-a-single-line"></a>Hur konverterar jag Java-stackspårningar med flera linjer till en enda rad?
 
-Det finns en lösning för att konvertera dina stack spårningar i flera rader till en enda rad. Du kan ändra Java-loggens utdata för att formatera om stack spårnings meddelanden, ersätta rad matnings tecken med en token. Om du använder Java logback-biblioteket kan du formatera om stack spårnings meddelanden genom att lägga till följande `%replace(%ex){'[\r\n]+', '\\n'}%nopex` :
+Det finns en lösning för att konvertera dina spårningar av flerradsstackar till en enda rad. Du kan ändra Java-loggutdata för att formatera om stackspårningsmeddelanden och ersätta tecken på ny rad med en token. Om du använder Java Logback-biblioteket kan du formatera om stackspårningsmeddelanden genom att lägga `%replace(%ex){'[\r\n]+', '\\n'}%nopex` till följande:
 
 ```xml
 <configuration>
@@ -198,14 +198,14 @@ Det finns en lösning för att konvertera dina stack spårningar i flera rader t
     </root>
 </configuration>
 ```
-Du kan sedan ersätta token med rad matnings tecken igen i Log Analytics enligt nedan:
+Sedan kan du ersätta token med tecken på nyrad igen i Log Analytics enligt nedan:
 
 ```sql
 AppPlatformLogsforSpring
 | extend Log = array_strcat(split(Log, '\\n'), '\n')
 ```
-Du kanske kan använda samma strategi för andra Java logg bibliotek.
+Du kanske kan använda samma strategi för andra Java-loggbibliotek.
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Snabb start: Distribuera ditt första Azure våren Cloud-program](spring-cloud-quickstart.md)
+* [Snabbstart: Distribuera ditt Azure Spring Cloud program](spring-cloud-quickstart.md)

@@ -1,7 +1,7 @@
 ---
 title: Använda och distribuera befintliga modeller
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du kan få ML-modeller utbildade utanför Azure till Azure-molnet med Azure Machine Learning. Distribuera sedan modellen som en webb tjänst eller IoT-modul.
+description: Lär dig hur du tar ML-modeller som tränats utanför Azure till Azure-molnet med Azure Machine Learning. Distribuera sedan modellen som en webbtjänst eller IoT-modul.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,36 +11,36 @@ ms.reviewer: larryfr
 ms.date: 07/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy
-ms.openlocfilehash: 8076e3f6b2198abe46ae49cd8e0fd2b02f000231
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46dc9e48ba68189253885ae823457a62c3c4426e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102519358"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877812"
 ---
 # <a name="deploy-your-existing-model-with-azure-machine-learning"></a>Distribuera din befintliga modell med Azure Machine Learning
 
 
-I den här artikeln får du lära dig hur du registrerar och distribuerar en maskin inlärnings modell som du har tränat utanför Azure Machine Learning. Du kan distribuera som en webb tjänst eller till en IoT Edge enhet.  När du har distribuerat kan du övervaka din modell och identifiera data avvikelser i Azure Machine Learning. 
+I den här artikeln får du lära dig hur du registrerar och distribuerar en maskininlärningsmodell som du har tränat Azure Machine Learning. Du kan distribuera som en webbtjänst eller till en IoT Edge enhet.  När den har distribuerats kan du övervaka din modell och identifiera dataavdrift i Azure Machine Learning. 
 
-Mer information om begreppen och termerna i den här artikeln finns i [Hantera, distribuera och övervaka Machine Learning-modeller](concept-model-management-and-deployment.md).
+Mer information om begreppen och termerna i den här artikeln finns i [Hantera, distribuera och övervaka maskininlärningsmodeller.](concept-model-management-and-deployment.md)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * [En Azure Machine Learning-arbetsyta](how-to-manage-workspace.md)
-  + Python-exempel förutsätter att `ws` variabeln är inställd på din Azure Machine Learning-arbetsyta. Mer information om hur du ansluter till arbets ytan finns i [dokumentationen för Azure Machine Learning SDK för python](/python/api/overview/azure/ml/#workspace).
+  + Python-exempel förutsätter `ws` att variabeln är inställd på Azure Machine Learning arbetsyta. Mer information om hur du ansluter till arbetsytan finns i dokumentationen [Azure Machine Learning SDK för Python.](/python/api/overview/azure/ml/#workspace)
   
-  + CLI-exempel använder plats hållare för `myworkspace` och `myresourcegroup` , som du bör ersätta med namnet på din arbets yta och resurs gruppen som innehåller den.
+  + CLI-exempel använder platshållare för och , som du bör ersätta med namnet på `myworkspace` `myresourcegroup` din arbetsyta och den resursgrupp som innehåller den.
 
-* [Azure Machine Learning python SDK](/python/api/overview/azure/ml/install).  
+* Den [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/install).  
 
-* [Azure CLI](/cli/azure/install-azure-cli) -och [Machine Learning CLI-tillägget](reference-azure-machine-learning-cli.md).
+* [Azure CLI och](/cli/azure/install-azure-cli) Machine Learning [CLI-tillägget](reference-azure-machine-learning-cli.md).
 
-* En utbildad modell. Modellen måste vara bestående av en eller flera filer i utvecklings miljön. <br><br>För att demonstrera registrering av en modell som är utbildad använder exempel koden i den här artikeln modeller från [Paolo Ripamontis projekt för Twitter-sentiment](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis).
+* En tränad modell. Modellen måste bevaras i en eller flera filer i utvecklingsmiljön. <br><br>För att demonstrera registrering av en modell som tränats använder exempelkoden i den här artikeln modellerna från [Ripamonti:s Twitter-projekt för attitydanalys.](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis)
 
-## <a name="register-the-models"></a>Registrera modell (er)
+## <a name="register-the-models"></a>Registrera modellen/modell(erna)
 
-Genom att registrera en modell kan du lagra, version och spåra metadata om modeller i din arbets yta. I följande python-och CLI-exempel `models` innehåller katalogen `model.h5` filerna,, `model.w2v` `encoder.pkl` och `tokenizer.pkl` . I det här exemplet överförs filerna som finns i `models` katalogen som en ny modell registrering med namnet `sentiment` :
+Genom att registrera en modell kan du lagra, versionsregistrera och spåra metadata om modeller på din arbetsyta. I följande Python- och CLI-exempel `models` innehåller katalogen filerna , , och `model.h5` `model.w2v` `encoder.pkl` `tokenizer.pkl` . I det här exemplet laddas filerna i katalogen upp `models` som en ny modellregistrering med namnet `sentiment` :
 
 ```python
 from azureml.core.model import Model
@@ -52,28 +52,28 @@ model = Model.register(model_path = "./models",
                        workspace = ws)
 ```
 
-Mer information finns i referensen [Model. register ()](/python/api/azureml-core/azureml.core.model%28class%29#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-) .
+Mer information finns i [referensen Model.register().](/python/api/azureml-core/azureml.core.model%28class%29#register-workspace--model-path--model-name--tags-none--properties-none--description-none--datasets-none--model-framework-none--model-framework-version-none--child-paths-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none-)
 
 ```azurecli
 az ml model register -p ./models -n sentiment -w myworkspace -g myresourcegroup
 ```
 
 > [!TIP]
-> Du kan också ställa in Lägg till `tags` och `properties` Dictionary-objekt i den registrerade modellen. Dessa värden kan användas senare för att identifiera en speciell modell. Till exempel ramverket som används, utbildnings parametrar osv.
+> Du kan också ange lägg `tags` till och `properties` ordlisteobjekt i den registrerade modellen. Dessa värden kan användas senare för att identifiera en specifik modell. Till exempel det ramverk som används, träningsparametrar osv.
 
-Mer information finns i register referens för [AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-register) .
+Mer information finns i referensen [för az ml model register.](/cli/azure/ml/model#az_ml_model_register)
 
 
-Mer information om modell registrering i allmänhet finns i [Hantera, distribuera och övervaka Machine Learning-modeller](concept-model-management-and-deployment.md).
+Mer information om modellregistrering i allmänhet finns i [Hantera, distribuera och övervaka maskininlärningsmodeller.](concept-model-management-and-deployment.md)
 
-## <a name="define-inference-configuration"></a>Definiera konfiguration av härledning
+## <a name="define-inference-configuration"></a>Definiera slutsatsledningskonfiguration
 
-Konfigurationen av konfigurationen definierar den miljö som används för att köra den distribuerade modellen. Konfigurations konfigurationen refererar till följande entiteter, som används för att köra modellen när den distribueras:
+Inferenskonfigurationen definierar den miljö som används för att köra den distribuerade modellen. Inferenskonfigurationen refererar till följande entiteter som används för att köra modellen när den distribueras:
 
-* Ett Entry-skript med namnet `score.py` , läser in modellen när den distribuerade tjänsten startar. Det här skriptet ansvarar också för att ta emot data, skicka det till modellen och sedan returnera ett svar.
-* En Azure Machine Learnings [miljö](how-to-use-environments.md). En miljö definierar de program beroenden som krävs för att köra modell-och registrerings skriptet.
+* Ett startskript med namnet `score.py` läser in modellen när den distribuerade tjänsten startar. Det här skriptet ansvarar också för att ta emot data, skicka dem till modellen och sedan returnera ett svar.
+* En Azure Machine Learning [miljö](how-to-use-environments.md). En miljö definierar de programvaruberoenden som behövs för att köra modellen och inmatningsskriptet.
 
-I följande exempel visas hur du använder SDK för att skapa en miljö och sedan använder den med en konfigurations konfiguration:
+I följande exempel visas hur du använder SDK för att skapa en miljö och sedan använda den med en inferenskonfiguration:
 
 ```python
 from azureml.core.model import InferenceConfig
@@ -102,11 +102,11 @@ inference_config = InferenceConfig(entry_script="score.py",
 
 Mer information finns i följande artiklar:
 
-+ [Använda miljöer](how-to-use-environments.md).
-+ [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig) -referens.
++ [Så här använder du miljöer](how-to-use-environments.md).
++ [Referens för InferenceConfig.](/python/api/azureml-core/azureml.core.model.inferenceconfig)
 
 
-CLI läser in konfigurationen från en YAML-fil:
+CLI läser in härledningskonfigurationen från en YAML-fil:
 
 ```yaml
 {
@@ -116,7 +116,7 @@ CLI läser in konfigurationen från en YAML-fil:
 }
 ```
 
-Med CLI definieras Conda-miljön i `myenv.yml` filen som den här konfigurations konfigurationen refererar till. Följande YAML är innehållet i den här filen:
+Med CLI definieras conda-miljön i filen `myenv.yml` som refereras av inferenskonfigurationen. Följande YAML är innehållet i den här filen:
 
 ```yaml
 name: inference_environment
@@ -131,16 +131,16 @@ dependencies:
     - gensim
 ```
 
-Mer information om konfiguration av konfiguration finns i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
+Mer information om slutsatsledningskonfiguration finns i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
 
-### <a name="entry-script-scorepy"></a>Entry-skript (score.py)
+### <a name="entry-script-scorepy"></a>Startskript (score.py)
 
-Entry-skriptet har bara två nödvändiga funktioner `init()` och `run(data)` . Dessa funktioner används för att initiera tjänsten vid start och köra modellen med hjälp av begär ande data som skickas in av en klient. Resten av skriptet hanterar inläsning och körning av modell (er).
+Startskriptet har bara två nödvändiga funktioner, `init()` och `run(data)` . Dessa funktioner används för att initiera tjänsten vid start och köra modellen med hjälp av databegäran som skickas av en klient. Resten av skriptet hanterar inläsning och körning av modeller.
 
 > [!IMPORTANT]
-> Det finns inget Generic Entry-skript som fungerar för alla modeller. Den är alltid unik för den modell som används. Den måste förstå hur du läser in modellen, det data format som modellen förväntar sig och hur du visar data med hjälp av modellen.
+> Det finns inget allmänt inmatningsskript som fungerar för alla modeller. Den är alltid specifik för den modell som används. Den måste förstå hur du läser in modellen, det dataformat som modellen förväntar sig och hur du poängar data med hjälp av modellen.
 
-Följande python-kod är ett exempel på ett Entry-skript ( `score.py` ):
+Följande Python-kod är ett exempel på ett startskript ( `score.py` ):
 
 ```python
 import os
@@ -216,13 +216,13 @@ def predict(text, include_neutral=True):
        "elapsed_time": time.time()-start_at}  
 ```
 
-Mer information om Entry-skript finns i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
+Mer information om startskript finns i [Distribuera modeller med Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="define-deployment"></a>Definiera distribution
 
-[WebService-](/python/api/azureml-core/azureml.core.webservice) paketet innehåller de klasser som används för distribution. Klassen som du använder avgör var modellen distribueras. Om du till exempel vill distribuera som en webb tjänst på Azure Kubernetes-tjänsten använder du [AksWebService.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) för att skapa distributions konfigurationen.
+Webbtjänstpaketet [innehåller](/python/api/azureml-core/azureml.core.webservice) de klasser som används för distribution. Den klass som du använder avgör var modellen distribueras. Om du till exempel vill distribuera som en webbtjänst på Azure Kubernetes Service använder [du AksWebService.deploy_configuration() för](/python/api/azureml-core/azureml.core.webservice.akswebservice#deploy-configuration-autoscale-enabled-none--autoscale-min-replicas-none--autoscale-max-replicas-none--autoscale-refresh-seconds-none--autoscale-target-utilization-none--collect-model-data-none--auth-enabled-none--cpu-cores-none--memory-gb-none--enable-app-insights-none--scoring-timeout-ms-none--replica-max-concurrent-requests-none--max-request-wait-time-none--num-replicas-none--primary-key-none--secondary-key-none--tags-none--properties-none--description-none--gpu-cores-none--period-seconds-none--initial-delay-seconds-none--timeout-seconds-none--success-threshold-none--failure-threshold-none--namespace-none--token-auth-enabled-none--compute-target-name-none-) att skapa distributionskonfigurationen.
 
-Följande python-kod definierar en distributions konfiguration för en lokal distribution. Den här konfigurationen distribuerar modellen som en webb tjänst till din lokala dator.
+Följande Python-kod definierar en distributionskonfiguration för en lokal distribution. Den här konfigurationen distribuerar modellen som en webbtjänst till din lokala dator.
 
 > [!IMPORTANT]
 > En lokal distribution kräver en fungerande installation av [Docker](https://www.docker.com/) på den lokala datorn:
@@ -233,9 +233,9 @@ from azureml.core.webservice import LocalWebservice
 deployment_config = LocalWebservice.deploy_configuration()
 ```
 
-Mer information finns i referensen [LocalWebservice.deploy_configuration ()](/python/api/azureml-core/azureml.core.webservice.localwebservice#deploy-configuration-port-none-) .
+Mer information finns i [referensen för LocalWebservice.deploy_configuration().](/python/api/azureml-core/azureml.core.webservice.localwebservice#deploy-configuration-port-none-)
 
-CLI läser in distributions konfigurationen från en YAML-fil:
+CLI läser in distributionskonfigurationen från en YAML-fil:
 
 ```YAML
 {
@@ -243,11 +243,11 @@ CLI läser in distributions konfigurationen från en YAML-fil:
 }
 ```
 
-Att distribuera till ett annat beräknings mål, till exempel Azure Kubernetes service i Azure-molnet, är lika enkelt som att ändra distributions konfigurationen. Mer information finns i [hur och var modeller ska distribueras](how-to-deploy-and-where.md).
+Att distribuera till ett annat beräkningsmål, till exempel Azure Kubernetes Service i Azure-molnet, är lika enkelt som att ändra distributionskonfigurationen. Mer information finns i Hur [och var du distribuerar modeller.](how-to-deploy-and-where.md)
 
 ## <a name="deploy-the-model"></a>Distribuera modellen
 
-I följande exempel läser in information om den registrerade modellen med namnet `sentiment` och distribuerar den sedan som en tjänst med namnet `sentiment` . Under distributionen används konfigurations konfiguration och distribution för att skapa och konfigurera tjänst miljön:
+I följande exempel läses information in på den registrerade `sentiment` modellen med namnet och distribueras sedan som en tjänst med namnet `sentiment` . Under distributionen används härledningskonfigurationen och distributionskonfigurationen för att skapa och konfigurera tjänstmiljön:
 
 ```python
 from azureml.core.model import Model
@@ -260,21 +260,21 @@ print(service.state)
 print("scoring URI: " + service.scoring_uri)
 ```
 
-Mer information finns i referensen [Model. Deploy ()](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) .
+Mer information finns i [referensen model.deploy().](/python/api/azureml-core/azureml.core.model.model#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-)
 
-Använd följande kommando för att distribuera modellen från CLI. Det här kommandot distribuerar version 1 av den registrerade modellen ( `sentiment:1` ) med hjälp av konfigurationen för konfigurations härledning och distribution som lagras i `inferenceConfig.json` `deploymentConfig.json` filerna och:
+Om du vill distribuera modellen från CLI använder du följande kommando. Det här kommandot distribuerar version 1 av den registrerade modellen ( ) med hjälp av `sentiment:1` inferens- och distributionskonfigurationen som lagras i `inferenceConfig.json` `deploymentConfig.json` filerna och :
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json
 ```
 
-Mer information finns i [distributions referens för AZ ml-modellen](/cli/azure/ext/azure-cli-ml/ml/model#ext-azure-cli-ml-az-ml-model-deploy) .
+Mer information finns i referensen [för az ml model deploy.](/cli/azure/ml/model#az_ml_model_deploy)
 
-Mer information om distribution finns i [hur och var modeller ska distribueras](how-to-deploy-and-where.md).
+Mer information om distribution finns i Hur [och var du distribuerar modeller.](how-to-deploy-and-where.md)
 
-## <a name="request-response-consumption"></a>Användning av begäran-svar
+## <a name="request-response-consumption"></a>Förbrukning av begäran-svar
 
-Efter distributionen visas bedömnings-URI: n. Denna URI kan användas av klienter för att skicka begär anden till tjänsten. Följande exempel är en enkel python-klient som skickar data till tjänsten och visar svaret:
+Efter distributionen visas bedömnings-URI:en. Den här URI:en kan användas av klienter för att skicka begäranden till tjänsten. Följande exempel är en enkel Python-klient som skickar data till tjänsten och visar svaret:
 
 ```python
 import requests
@@ -291,7 +291,7 @@ print(response.elapsed)
 print(response.json())
 ```
 
-Mer information om hur du använder den distribuerade tjänsten finns i [skapa en klient](how-to-consume-web-service.md).
+Mer information om hur du använder den distribuerade tjänsten finns i [Skapa en klient.](how-to-consume-web-service.md)
 
 ## <a name="next-steps"></a>Nästa steg
 

@@ -4,12 +4,12 @@ description: Så här hanterar du Azure Blockchain Service med Azure CLI
 ms.date: 07/23/2020
 ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 63401f5ce5cd35f63915e03b7f0362811d2660ec
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 55df56274aa5baa946b60c27cf49723d59c928a1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768061"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865935"
 ---
 # <a name="manage-azure-blockchain-service-using-azure-cli"></a>Hantera Azure Blockchain Service med hjälp av Azure CLI
 
@@ -39,7 +39,7 @@ Om du föredrar att installera och använda CLI lokalt kan du gå till [Installe
 
     När du arbetar med tilläggsreferenser för Azure CLI måste du först installera tillägget.  Med Azure CLI-tillägg får du tillgång till experimentella kommandon som inte finns med i standardversionen av CLI:t ännu.  Läs mer om tillägg, bland annat hur du uppdaterar och avinstallerar dem, i [Använda tillägg med Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-    Installera tillägget [för Azure Blockchain Service](/cli/azure/ext/blockchain/blockchain) genom att köra följande kommando:
+    Installera tillägget [för Azure Blockchain Service](/cli/azure/blockchain) genom att köra följande kommando:
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -47,7 +47,7 @@ Om du föredrar att installera och använda CLI lokalt kan du gå till [Installe
 
 ## <a name="create-blockchain-member"></a>Skapa blockkedjemedlem
 
-Exempel [skapar en blockkedjemedlem i](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-create) Azure Blockchain Service som kör kvorumregisterprotokollet i ett nytt konsortium.
+Exempel [skapar en blockkedjemedlem i](/cli/azure/blockchain/member#az_blockchain_member_create) Azure Blockchain Service som kör kvorumregisterprotokollet i ett nytt konsortium.
 
 ```azurecli
 az blockchain member create \
@@ -74,7 +74,7 @@ az blockchain member create \
 
 ## <a name="change-blockchain-member-passwords-or-firewall-rules"></a>Ändra blockkedjemedlemslösenord eller brandväggsregler
 
-Exempel [uppdaterar blockkedjemedlemmens](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-update)lösenord, lösenord för konsortiumhantering och brandväggsregel.
+Exempel [uppdaterar blockkedjemedlemmens](/cli/azure/blockchain/member#az_blockchain_member_update)lösenord, lösenord för konsortiumhantering och brandväggsregel.
 
 ```azurecli
 az blockchain member update \
@@ -95,7 +95,7 @@ az blockchain member update \
 
 ## <a name="create-transaction-node"></a>Skapa transaktionsnod
 
-[Skapa en transaktionsnod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-create) i en befintlig blockkedjemedlem. Genom att lägga till transaktionsnoder kan du öka säkerhetsisoleringen och fördela belastningen. Du kan till exempel ha en slutpunkt för transaktionsnoder för olika klientprogram.
+[Skapa en transaktionsnod](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_create) i en befintlig blockkedjemedlem. Genom att lägga till transaktionsnoder kan du öka säkerhetsisoleringen och fördela belastningen. Du kan till exempel ha en slutpunkt för transaktionsnoden för olika klientprogram.
 
 ```azurecli
 az blockchain transaction-node create \
@@ -108,14 +108,14 @@ az blockchain transaction-node create \
 | Parameter | Beskrivning |
 |---------|-------------|
 | **resursgrupp** | Resursgruppnamn där Azure Blockchain Service resurser skapas. |
-| **Plats** | Azure-regionen för blockkedjemedlemmen. |
+| **Plats** | Azure-region för blockkedjemedlemmen. |
 | **medlemsnamn** | Namn som identifierar din Azure Blockchain Service medlem. |
 | **lösenord** | Lösenordet för transaktionsnoden. Använd lösenordet för grundläggande autentisering vid anslutning till den offentliga slutpunkten för transaktionsnoden. Lösenordet måste uppfylla tre av följande fyra krav: längden måste vara mellan 12 & 72 tecken, 1 gemen, 1 versal, 1 siffra och 1 specialtecken som inte är nummertecken(#), procent(%), kommatecken(,), star(*), bakåtcitat( ), dubbla citattecken("), enkelt \` citattecken('), dash(-) och semikolon(;)|
 | **Namn** | Namn på transaktionsnod. |
 
 ## <a name="change-transaction-node-password"></a>Ändra transaktionsnodslösenord
 
-Exempel uppdaterar [ett lösenord för transaktionsnoden.](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-update)
+Exempel uppdaterar [ett lösenord för transaktionsnoden.](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_update)
 
 ```azurecli
 az blockchain transaction-node update \
@@ -134,7 +134,7 @@ az blockchain transaction-node update \
 
 ## <a name="list-api-keys"></a>Lista API-nycklar
 
-API-nycklar kan användas för nodåtkomst på liknande sätt som användarnamn och lösenord. Det finns två API-nycklar som stöder nyckelrotation. Använd följande kommando för att visa [en lista över dina API-nycklar.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-list-api-key)
+API-nycklar kan användas för nodåtkomst på liknande sätt som användarnamn och lösenord. Det finns två API-nycklar som stöder nyckelrotation. Använd följande kommando för att visa [en lista över dina API-nycklar.](/cli/azure/blockchain/member#az_blockchain_transaction_node_list-api-key)
 
 ```azurecli
 az blockchain member list-api-key \
@@ -149,7 +149,7 @@ az blockchain member list-api-key \
 
 ## <a name="regenerate-api-keys"></a>Återskapa API-nycklar
 
-Använd följande kommando för att [återskapa DINA API-nycklar.](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-transaction-node-regenerate-api-key)
+Använd följande kommando för att [återskapa DINA API-nycklar.](/cli/azure/blockchain/member#az_blockchain_transaction_node_regenerate-api-key)
 
 ```azurecli
 az blockchain member regenerate-api-key \
@@ -166,7 +166,7 @@ az blockchain member regenerate-api-key \
 
 ## <a name="delete-a-transaction-node"></a>Ta bort en transaktionsnod
 
-Exempel [tar bort en blockkedjemedlemstransaktionsnod](/cli/azure/ext/blockchain/blockchain/transaction-node#ext-blockchain-az-blockchain-transaction-node-delete).
+Exempel [tar bort en blockkedjemedlemstransaktionsnod](/cli/azure/blockchain/transaction-node#az_blockchain_transaction_node_delete).
 
 ```azurecli
 az blockchain transaction-node delete \
@@ -183,7 +183,7 @@ az blockchain transaction-node delete \
 
 ## <a name="delete-a-blockchain-member"></a>Ta bort en blockkedjemedlem
 
-Exempel [tar bort en blockkedjemedlem](/cli/azure/ext/blockchain/blockchain/member#ext-blockchain-az-blockchain-member-delete).
+Exempel [tar bort en blockkedjemedlem](/cli/azure/blockchain/member#az_blockchain_member_delete).
 
 ```azurecli
 az blockchain member delete \

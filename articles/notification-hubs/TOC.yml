@@ -24,7 +24,7 @@
       items:
         - name: Firebase Cloud Messaging
           items:
-            - name: Skicka push-meddelanden till alla registreringar (aktuellt SDK)
+            - name: Skicka push-meddelanden till alla registreringar (aktuell SDK)
               href: android-sdk.md
             - name: Skicka push-meddelanden till alla registreringar (äldre SDK)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
@@ -50,9 +50,9 @@
           items:
             - name: Förutsättningar för iOS-självstudier
               href: ios-sdk-get-started.md
-            - name: Mål-C (aktuell SDK)
+            - name: Objective-C (aktuell SDK)
               href: ios-sdk-current.md
-            - name: Mål-C (äldre SDK)
+            - name: Objective-C (äldre SDK)
               href: ios-sdk-legacy.md
         - name: Skicka push-meddelanden till specifika enheter
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
@@ -158,7 +158,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.notificationhubs
     - name: Azure CLI
-      href: /cli/azure/ext/notification-hub/notification-hub
+      href: /cli/azure/notification-hub
     - name: PowerShell
       href: /powershell/module/az.notificationhubs
     - name: REST

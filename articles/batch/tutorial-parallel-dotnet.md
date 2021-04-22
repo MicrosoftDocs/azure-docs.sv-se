@@ -1,16 +1,16 @@
 ---
-title: 'Självstudie – köra en parallell arbets belastning med .NET-API: et'
+title: Självstudie – Köra en parallell arbetsbelastning med hjälp av .NET-API:et
 description: Självstudie – Omkoda mediefiler parallellt med ffmpeg i Azure Batch med hjälp av klientbiblioteket Batch .NET
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: a990a5480a8a6462bb6ef9f84070b78768628fd0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c172b16fa1f80944394ffb8db8ebba0319b7bc2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97106554"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870939"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Självstudie: Kör en parallell arbetsbelastning med Azure Batch med hjälp av .NET API
 
@@ -31,11 +31,11 @@ I den här självstudien konverterar du MP4-mediefiler parallellt till MP3-forma
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* [Visual Studio 2017 eller senare](https://www.visualstudio.com/vs), eller [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) för Linux, MacOS eller Windows.
+* [Visual Studio 2017](https://www.visualstudio.com/vs)eller senare , eller [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) för Linux, macOS eller Windows.
 
 * Ett Batch-konto och ett länkat Azure Storage-konto. Information om hur du skapar de här kontona finns Batch-snabbstarterna som du kommer åt via [Azure-portalen](quick-create-portal.md) eller [Azure CLI](quick-create-cli.md).
 
-* [Windows 64-bitars version av ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (. zip). Ladda ned zip-filen till din lokala dator. I den här självstudien behöver du bara zip-filen. Du behöver inte packa upp filen eller installera den lokalt.
+* [Windows 64-bitars version av ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) (.zip). Ladda ned zip-filen till din lokala dator. I den här självstudien behöver du bara zip-filen. Du behöver inte packa upp filen eller installera den lokalt.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -45,9 +45,9 @@ Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.co
 
 Använd Azure-portalen och lägg till ffmpeg i Batch-kontot som ett [programpaket](batch-application-packages.md). Med programpaket kan du hantera uppgiftsprogram och deras distribution till beräkningsnoderna i din pool. 
 
-1. Klicka på **fler tjänster**  >  **batch-konton** i Azure Portal och klicka på namnet på batch-kontot.
-3. Klicka på **program**  >  **Lägg till**.
-4. För **program-ID** anger du *ffmpeg* och en paket version av *4.3.1*. Välj zip-filen för ffmpeg som du laddade ned tidigare och klicka på **OK**. Programpaketet för ffmpeg läggs till i Batch-kontot.
+1. I den Azure Portal klickar du på **Fler tjänster**  >  **Batch-konton** och klicka på namnet på ditt Batch-konto.
+3. Klicka på **Program Lägg**  >  **till**.
+4. För **Program-ID** *anger du ffmpeg* och paketversionen *4.3.1*. Välj zip-filen för ffmpeg som du laddade ned tidigare och klicka på **OK**. Programpaketet för ffmpeg läggs till i Batch-kontot.
 
 ![Lägg till programpaket](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -118,7 +118,7 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Gå till Batch-kontot i Azure-portalen för att övervaka poolen, beräkningsnoderna, jobbet och uppgifterna. Om du till exempel vill visa en värme karta över datornoderna i din pool klickar du på **pooler**  >  *WinFFmpegPool*.
+Gå till Batch-kontot i Azure-portalen för att övervaka poolen, beräkningsnoderna, jobbet och uppgifterna. Om du till exempel vill se en heat map av beräkningsnoderna i poolen klickar du på  >  *Pooler WinFFmpegPool*.
 
 När uppgifter körs ser den termiska kartan ut ungefär så här:
 
@@ -147,7 +147,7 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(storageConnection
 CloudBlobClient blobClient = storageAccount.CreateCloudBlobClient();
 ```
 
-Appen skapar ett [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-objekt för att skapa och hantera pooler, jobb och uppgifter i Batch-tjänsten. Batch-klienten i exemplet använder autentisering med delad nyckel. Batch har även stöd för autentisering via [Azure Active Directory](batch-aad-auth.md) för att autentisera enskilda användare eller obevakade program.
+Appen skapar ett [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient)-objekt för att skapa och hantera pooler, jobb och uppgifter i Batch-tjänsten. Batch-klienten i exemplet använder autentisering med delad nyckel. Batch stöder också autentisering via [Azure Active Directory](batch-aad-auth.md) för att autentisera enskilda användare eller ett obevakat program.
 
 ```csharp
 BatchSharedKeyCredentials sharedKeyCredentials = new BatchSharedKeyCredentials(BatchAccountUrl, BatchAccountName, BatchAccountKey);
@@ -190,10 +190,10 @@ Mer information om hur du laddar upp filer som blobar till ett lagringskonto med
 
 Därefter skapar exempelkoden en pool med beräkningsnoder i Batch-kontot med ett anrop till `CreatePoolIfNotExistAsync`. I den här definierade metoden används metoden [BatchClient.PoolOperations.CreatePool](/dotnet/api/microsoft.azure.batch.pooloperations.createpool) till att ange antalet noder, VM-storlek och en poolkonfiguration. Här anger ett [VirtualMachineConfiguration](/dotnet/api/microsoft.azure.batch.virtualmachineconfiguration)-objekt en [ImageReference](/dotnet/api/microsoft.azure.batch.imagereference) till en Windows Server-avbildning som publicerats på Azure Marketplace. Batch har stöd för ett stort antal Linux- och Windows Server-avbildningar på Azure Marketplace samt för anpassade VM-avbildningar.
 
-Antalet noder och VM-storleken anges med definierade konstanter. Batch har stöd för dedikerade noder och [noder med låg prioritet](batch-low-pri-vms.md), och du kan använda antingen eller båda i dina pooler. Dedikerade noder är reserverade för din pool. Noder med låg prioritet erbjuds till ett reducerat pris från VM-överskottskapacitet i Azure. Noder med låg prioritet är inte tillgängliga om Azure inte har tillräckligt med kapacitet. Exemplet skapar som standard en pool som endast innehåller 5 noder med låg prioritet i storleken *Standard_A1_v2*.
+Antalet noder och VM-storleken anges med definierade konstanter. Batch har stöd för dedikerade [noder och noder med låg](batch-low-pri-vms.md)prioritet, och du kan använda antingen eller båda i dina pooler. Dedikerade noder är reserverade för din pool. Noder med låg prioritet erbjuds till ett reducerat pris från VM-överskottskapacitet i Azure. Noder med låg prioritet är inte tillgängliga om Azure inte har tillräckligt med kapacitet. Exemplet skapar som standard en pool som endast innehåller 5 noder med låg prioritet i storleken *Standard_A1_v2*.
 
 >[!Note]
->Se till att du kontrollerar dina Node-kvoter. Se [batch-tjänstens kvoter och begränsningar](batch-quota-limit.md#increase-a-quota) för instruktioner om hur du skapar en kvot förfrågan. "
+>Kontrollera dina nodkvoter. Se [Batch-tjänstens kvoter och begränsningar](batch-quota-limit.md#increase-a-quota) för instruktioner om hur du skapar en kvotbegäran."
 
 Programmet ffmpeg distribueras till beräkningsnoderna genom att en [ApplicationPackageReference](/dotnet/api/microsoft.azure.batch.applicationpackagereference) läggs till i poolkonfigurationen.
 

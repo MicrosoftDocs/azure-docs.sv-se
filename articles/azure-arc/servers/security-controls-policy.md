@@ -1,17 +1,17 @@
 ---
 title: Azure Policy regler för regelefterlevnad för Azure Arc-aktiverade servrar (förhandsversion)
 description: Visar Azure Policy kontroller för regelefterlevnad som är Azure Arc-aktiverade servrar (förhandsversion). Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 2345f4a4d8e88684a78a348454c51629eb9ca8fa
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 55f19045341353dcd1dc2ff7bf098cd77b78d400
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498037"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869930"
 ---
-# <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Azure Policy regler för regelefterlevnad för Azure Arc aktiverade servrar
+# <a name="azure-policy-regulatory-compliance-controls-for-azure-arc-enabled-servers"></a>Azure Policy kontroller för regelefterlevnad för Azure Arc aktiverade servrar
 
 [Regelefterlevnad i Azure Policy](../../governance/policy/concepts/regulatory-compliance.md) tillhandahåller Microsoft skapade och hanterade initiativdefinitioner,  så kallade  inbyggda , för _efterlevnadsdomäner_ och säkerhetskontroller som är relaterade till olika efterlevnadsstandarder. På den här sidan visas **efterlevnadsdomäner** **och säkerhetskontroller** för Azure Arc aktiverade servrar. Du kan tilldela de inbyggda för en säkerhetskontroll **individuellt för** att göra dina Azure-resurser kompatibla med den specifika standarden.
 

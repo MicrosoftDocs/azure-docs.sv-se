@@ -10,12 +10,12 @@ ms.devlang: java
 ms.custom:
 - devx-track-java
 - mode-api
-ms.openlocfilehash: 15453fb8177248087cbec98fd734bcff3bf66868
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 0d93b9b645aaf4190a36dbc523d40dec2757a18b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107533243"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869805"
 ---
 # <a name="quickstart-use-java-to-create-a-chat-room-with-azure-functions-and-signalr-service"></a>Snabbstart: Använda Java för att skapa ett chattrum med Azure Functions och SignalR Service
 
@@ -25,13 +25,13 @@ Azure SignalR Service kan du enkelt lägga till realtidsfunktioner i ditt progra
 
 - En kodredigerare, till exempel [Visual Studio Code](https://code.visualstudio.com/)
 - Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing). Används för att köra Azure-funktionsappar lokalt.
+- [Azure Functions Core Tools](https://github.com/Azure/azure-functions-core-tools#installing). Används för att köra Azure Function-appar lokalt.
 
    > [!NOTE]
    > De obligatoriska SignalR Service-bindningar i Java stöds endast i Azure Function Core Tools version 2.4.419 (värdversion 2.0.12332) eller senare.
 
    > [!NOTE]
-   > Om du vill installera Azure Functions Core Tools måste [.NET Core SDK](https://www.microsoft.com/net/download) installerats. Dock krävs ingen kunskap om .NET för att skapa Azure Functions-appar med JavaScript.
+   > Om du vill installera Azure Functions Core Tools måste [.NET Core SDK](https://dotnet.microsoft.com/download) installerats. Dock krävs ingen kunskap om .NET för att skapa Azure Functions-appar med JavaScript.
 
 - [Java Developer Kit](https://www.azul.com/downloads/zulu/), version 8
 - [Apache Maven](https://maven.apache.org), version 3.0 eller senare
@@ -73,7 +73,7 @@ Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) 
 
 1. I **local.settings.json** klistrar du in anslutningssträngen i värdet för inställningen **AzureSignalRConnectionString**. Spara filen.
 
-1. Huvudfilen som innehåller funktionerna finns i *src/chat/java/src/main/java/com/function/Functions.java:*
+1. Huvudfilen som innehåller funktionerna finns i *src/chat/java/src/main/java/com/function/Functions.java*:
 
     - **negotiate** (förhandla) – använder indatabindningen *SignalRConnectionInfo* för att skapa och returnera giltig anslutningsinformation.
     - **sendMessage** – tar emot ett chattmeddelande i begärandetexten och använder SignalR-utdatabindningen för att sända meddelandet till alla anslutna klientprogram. 
@@ -90,19 +90,19 @@ Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) 
     mvn azure-functions:run
     ```
     
-Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss.](https://aka.ms/asrs/qsjava)
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsjava).
 
 [!INCLUDE [Run web application](includes/signalr-quickstart-run-web-application.md)]
 
-Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss.](https://aka.ms/asrs/qsjava)
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsjava).
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss.](https://aka.ms/asrs/qsjava)
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsjava).
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabbstarten skapade och körde du ett serverlöst realtidsprogram med hjälp av Maven. Lär dig sedan hur du skapar Java-Azure Functions från grunden.
+I den här snabbstarten skapade och körde du ett serverlöst realtidsprogram med Maven. Lär dig sedan hur du skapar Java-Azure Functions från grunden.
 
 > [!div class="nextstepaction"]
 > [Skapa din första funktion med Java och Maven](../azure-functions/create-first-function-cli-csharp.md?pivots=programming-language-java%2cprogramming-language-java)

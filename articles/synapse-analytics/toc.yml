@@ -69,7 +69,7 @@ items:
           - name: Länka en Power BI-arbetsyta
             href: quickstart-power-bi.md
             displayName: quickstart
-          - name: Läsa ADLS Gen2 till Pandas-dataram
+          - name: Läsa ADLS Gen2 till Pandas-dataramen
             href: quickstart-read-from-gen2-to-pandas-dataframe.md
             displayName: quickstart
           - name: Anslut till Azure Data Explorer
@@ -600,7 +600,7 @@ items:
                 href: ./spark/apache-spark-manage-python-packages.md
               - name: Hantera Scala-paket
                 href: ./spark/apache-spark-manage-scala-packages.md
-              - name: Felsöka installationsfel för Python-paket
+              - name: Felsöka fel vid installation av Python-paket
                 href: ./spark/apache-spark-troubleshoot-library-errors.md
               - name: Skapa en privat Conda-kanal
                 href: ./spark/apache-spark-custom-conda-channel.md
@@ -1167,7 +1167,7 @@ items:
   - name: Referens
     items:
       - name: Azure CLI
-        href: /cli/azure/ext/synapse/
+        href: /cli/azure/
       - name: Databassorteringstyper
         href: sql/reference-collation-types.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
       - name: Go

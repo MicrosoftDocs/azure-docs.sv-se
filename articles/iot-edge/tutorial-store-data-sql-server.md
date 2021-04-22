@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 709c7bf352635ffb1c17f6cb24aee59dcae2e033
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: bd64c95bcf59cef27aa988712315403c00a5dfd7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479771"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871263"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Självstudie: Lagra data på gränsen med SQL Server-databaser
 
@@ -51,7 +51,7 @@ Innan du påbörjar den här självstudien bör du ha gått igenom den tidigare 
 Den här självstudien använder Azure Functions-modul för att skicka data till SQL Server. Om du vill IoT Edge en Azure Functions måste du installera följande ytterligare förutsättningar på utvecklingsdatorn:
 
 * [C# för Visual Studio Code-tillägget (drivs av OmniSharp) för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
-* [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
+* [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
 
 ## <a name="create-a-function-project"></a>Skapa ett funktionsprojekt
 
@@ -254,7 +254,7 @@ I föregående avsnitt skapade du en lösning med en modul och lade sedan till e
 
    Den här processen kan ta flera minuter första gången, men går snabbare nästa gång du kör kommandona.
 
-   Du kan kontrollera att modulen sqlFunction har push-skickats till containerregistret. I Azure Portal navigerar du till containerregistret. Välj **lagringsplatsen och** sök efter **sqlFunction**. De andra två modulerna, SimulatedTemperatureSensor och sql, skickas inte till containerregistret eftersom deras databaser redan finns i Microsoft-registren.
+   Du kan kontrollera att modulen sqlFunction har push-skickats till containerregistret. I Azure Portal navigerar du till containerregistret. Välj **lagringsplatsen och** sök efter **sqlFunction**. De andra två modulerna, SimulatedTemperatureSensor och sql, skickas inte till containerregistret eftersom deras lagringsplatsen redan finns i Microsoft-registren.
 
 ## <a name="deploy-the-solution-to-a-device"></a>Distribuera lösningen till en enhet
 
@@ -262,11 +262,11 @@ Du kan ange moduler på en enhet via IoT Hub, men du kan också komma åt din Io
 
 1. I Visual Studio Code-utforskaren under **Azure IoT Hub** expanderar du **Enheter** för att se din lista över IoT-enheter.
 
-2. Högerklicka på den enhet som du vill använda för distributionen och välj **Skapa distribution för enskild enhet.**
+2. Högerklicka på den enhet som du vill använda distributionen som mål och välj **Skapa distribution för enskild enhet.**
 
-3. Välj filen **deployment.amd64.jskonfigurationsmappen** **och** klicka sedan på Välj **Distributionsmanifest för Edge.** Använd inte filen deployment.template.json.
+3. Välj filen **deployment.amd64.jsi** **konfigurationsmappen och** klicka sedan på **Välj Distributionsmanifest för Edge.** Använd inte filen deployment.template.json.
 
-4. Under din enhet expanderar du **Moduler** för att se en lista över distribuerade och körande moduler. Klicka på uppdateringsknappen. Du bör se de nya **modulerna sql** och **sqlFunction** köras tillsammans med **modulen SimulatedTemperatureSensor** och **modulen $edgeAgent** och **$edgeHub**.
+4. Under enheten expanderar du **Moduler för** att se en lista över distribuerade och körande moduler. Klicka på uppdateringsknappen. Du bör se de nya **modulerna sql** och **sqlFunction** köras tillsammans med **modulen SimulatedTemperatureSensor** och **modulen $edgeAgent** och **$edgeHub**.
 
     Du kan också kontrollera att alla moduler är igång på enheten. Kör följande kommando på IoT Edge-enheten för att se status för modulerna.
 

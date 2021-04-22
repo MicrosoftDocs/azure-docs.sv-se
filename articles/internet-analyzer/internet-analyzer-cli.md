@@ -1,22 +1,22 @@
 ---
-title: Skapa ett Internet Analyzer med CLI-| Microsoft Docs
-description: I den här artikeln får du lära dig hur du skapar ditt Internet Analyzer test med hjälp av Azure CLI.
+title: Skapa ett Internet Analyzer-test med CLI-| Microsoft Docs
+description: I den här artikeln får du lära dig hur du skapar ditt första Internet Analyzer test med hjälp av Azure CLI.
 services: internet-analyzer
 author: diego-perez-botero
 ms.service: internet-analyzer
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 46caae53ed81de335c2b9d5ddbd3fd7f89424fdd
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4e200440bd37d3593d5fc096b3dd79eff25dc1d8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780423"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877236"
 ---
 # <a name="create-an-internet-analyzer-test-using-cli-preview"></a>Skapa ett Internet Analyzer med CLI (förhandsversion)
 
-Det finns två sätt att skapa en Internet Analyzer resurs – med hjälp [Azure Portal](internet-analyzer-create-test-portal.md) eller CLI. Det här avsnittet hjälper dig att skapa en Azure Internet Analyzer resurs med hjälp av vår CLI-upplevelse. 
+Det finns två sätt att skapa en Internet Analyzer resurs – med hjälp [av Azure Portal](internet-analyzer-create-test-portal.md) eller cli. Det här avsnittet hjälper dig att skapa en Azure Internet Analyzer resurs med hjälp av vår CLI-upplevelse. 
 
 
 > [!IMPORTANT]
@@ -25,18 +25,18 @@ Det finns två sätt att skapa en Internet Analyzer resurs – med hjälp [Azure
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-Den offentliga förhandsversionen är tillgänglig för användning globalt. Datalagringen är dock begränsad till *USA, västra 2* i förhandsversionen.
+Den offentliga förhandsversionen är tillgänglig för användning globalt. Datalagringen är dock begränsad till *USA, västra 2* under förhandsversionen.
 
 ## <a name="object-model"></a>Objektmodell
 I Internet Analyzer CLI finns följande typer av resurser:
 * **Tester** – Ett test jämför slutanvändares prestanda för två Internetslutpunkter (A och B) över tid.
-* **Profiler** – Tester skapas under en Internet Analyzer profil. Profiler gör det möjligt att gruppera relaterade tester. en enda profil kan innehålla ett eller flera tester.
+* **Profiler** – Tester skapas under en Internet Analyzer profil. Profiler gör det möjligt att gruppera relaterade tester. en enskild profil kan innehålla ett eller flera tester.
 * **Förkonfigurerade slutpunkter** – Vi har konfigurerat slutpunkter med en mängd olika konfigurationer (regioner, accelerationstekniker osv.). Du kan använda någon av dessa förkonfigurerade slutpunkter i dina tester.
-* **Poängkort –** Ett styrkort ger snabba och meningsfulla sammanfattningar av måttresultaten. Läs mer [i Tolka ditt styrkort.](internet-analyzer-scorecard.md)
+* **Styrkort –** Ett styrkort ger snabba och meningsfulla sammanfattningar av måttresultat. Se Tolka [ditt styrkort](internet-analyzer-scorecard.md).
 * **Tidsserie** – En tidsserie visar hur ett mått ändras över tid.
 
 ## <a name="profile-and-test-creation"></a>Skapa profil och testa
-1. Få Internet Analyzer åtkomst till förhandsversionen genom att **följa Hur gör jag för att delta i förhandsversionen?** instruktionerna i vanliga Azure Internet Analyzer vanliga frågor och [svar](internet-analyzer-faq.md).
+1. Få Internet Analyzer åtkomst till förhandsversionen genom **att följa Hur gör jag för att delta i förhandsversionen?** instruktioner från vanliga frågor Azure Internet Analyzer vanliga frågor och [svar](internet-analyzer-faq.md).
 2. [Installera Azure CLI.](/cli/azure/install-azure-cli)
 3. Kör kommandot `login` för att starta en CLI-session:
     ```azurecli-interactive
@@ -50,7 +50,7 @@ I Internet Analyzer CLI finns följande typer av resurser:
 
 5. Välj ditt prenumerations-ID som har beviljats åtkomst till Internet Analyzer offentliga förhandsversionen.
 
-    När du har loggat in visas en lista över prenumerationer som är associerade med ditt Azure-konto. Prenumerationsinformationen med `isDefault: true` är den prenumeration som är aktiverad efter inloggning. Om du vill välja en annan prenumeration använder du [kommandot az account set](/cli/azure/account#az_account_set) med prenumerations-ID:t som du vill växla till. Mer information om prenumerationsval finns i [Använda flera Azure-prenumerationer.](/cli/azure/manage-azure-subscriptions-azure-cli)
+    När du har loggat in visas en lista över prenumerationer som är kopplade till ditt Azure-konto. Prenumerationsinformationen med `isDefault: true` är den prenumeration som för närvarande är aktiverad efter inloggning. Om du vill välja en annan prenumeration använder du [kommandot az account set](/cli/azure/account#az_account_set) med prenumerations-ID:t som du vill växla till. Mer information om prenumerationsval finns i [Använda flera Azure-prenumerationer.](/cli/azure/manage-azure-subscriptions-azure-cli)
 
     Det finns några olika sätt att logga in som inte är interaktiva. Läs mer i [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
 
@@ -79,7 +79,7 @@ I Internet Analyzer CLI finns följande typer av resurser:
     az internet-analyzer test create --resource-group "MyInternetAnalyzerResourceGroup" --profile-name "MyInternetAnalyzerProfile" --endpoint-a-name "contoso" --endpoint-a-endpoint "www.contoso.com/some/path/to/trans.gif" --endpoint-b-name "microsoft" --endpoint-b-endpoint "www.microsoft.com/another/path/to/trans.gif" --name "MyFirstInternetAnalyzerTest" --enabled-state Enabled
     ```
 
-    Kommandot ovan förutsätter att både och `www.contoso.com` `www.microsoft.com` är värdar för en pixelbilden ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) under anpassade sökvägar. Om en objektsökväg inte anges explicit använder Internet Analyzer som objektsökväg som standard, vilket är den plats där de förkonfigurerade slutpunkterna är värdar för en `/apc/trans.gif` pixelavbildningen. Observera också att schemat (https/http) inte behöver anges. Internet Analyzer stöder endast HTTPS-slutpunkter, så HTTPS antas.
+    Kommandot ovan förutsätter att både och är värdar för bilden med en `www.contoso.com` `www.microsoft.com` bildpunkt ([trans.gif](https://fpc.msedge.net/apc/trans.gif)) under anpassade sökvägar. Om en objektsökväg inte anges explicit använder Internet Analyzer som objektsökväg som standard, vilket är den plats där de förkonfigurerade slutpunkterna är värdar för bilden med en `/apc/trans.gif` bildpunkt. Observera också att schemat (https/http) inte behöver anges. Internet Analyzer stöder endast HTTPS-slutpunkter, så HTTPS förutsätts.
 
 11. Det nya testet bör visas under Internet Analyzer profilen:
     ```azurecli-interactive
@@ -113,7 +113,7 @@ I Internet Analyzer CLI finns följande typer av resurser:
     ]
     ````
 
-12. För att börja generera mått måste JavaScript-filen som testets **scriptFileUri** pekar på bäddas in i webbprogrammet. Specifika anvisningar finns på sidan [Bädda in Internet Analyzer klient.](internet-analyzer-embed-client.md)
+12. Om du vill börja generera mått måste JavaScript-filen som testets **scriptFileUri** pekar på bäddas in i webbappen. Specifika anvisningar finns på sidan [Bädda in Internet Analyzer klient.](internet-analyzer-embed-client.md)
 
 13. Du kan övervaka testets förlopp genom att hålla reda på dess statusvärde:
     ```azurecli-interactive
@@ -132,6 +132,6 @@ I Internet Analyzer CLI finns följande typer av resurser:
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Bläddra till [cli Internet Analyzer referensen för](/cli/azure/ext/internet-analyzer/internet-analyzer) en fullständig lista över kommandon som stöds och användningsexempel.
+* Bläddra i [Internet Analyzer CLI-referensen](/cli/azure/internet-analyzer) för en fullständig lista över kommandon och användningsexempel som stöds.
 * Läs vanliga [Internet Analyzer vanliga frågor och svar.](internet-analyzer-faq.md)
-* Läs mer om att bädda Internet Analyzer [klient och](internet-analyzer-embed-client.md) skapa en [anpassad slutpunkt.](internet-analyzer-custom-endpoint.md)
+* Läs mer om att bädda in [Internet Analyzer client](internet-analyzer-embed-client.md) och skapa en [anpassad slutpunkt.](internet-analyzer-custom-endpoint.md)
