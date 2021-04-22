@@ -7,16 +7,16 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs, devx-track-azurecli
 ms.date: 04/01/2021
-ms.openlocfilehash: bdeb80dc487d8418e21a40a29e5d2baab49d7b05
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a177cf48c479f2e2afb0d6d23b1f4695ed57cfe4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771901"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875619"
 ---
 # <a name="quickstart-create-and-deploy-a-logic-app-workflow-by-using-an-arm-template"></a>Snabbstart: Skapa och distribuera ett logikapparbetsflöde med hjälp av en ARM-mall
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) är en molntjänst som hjälper dig att skapa och köra automatiserade arbetsflöden som integrerar data, appar, molnbaserade tjänster och lokala system genom att välja bland hundratals [anslutningsappar.](/connectors/connector-reference/connector-reference-logicapps-connectors) Den här snabbstarten fokuserar på processen för att distribuera en Azure Resource Manager-mall (ARM-mall) för att skapa en grundläggande logikapp som kontrollerar statusen för Azure enligt ett schema per timme. 
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) är en molntjänst som hjälper dig att skapa och köra automatiserade arbetsflöden som integrerar data, appar, molnbaserade tjänster och lokala system genom att välja bland hundratals [anslutningsappar.](/connectors/connector-reference/connector-reference-logicapps-connectors) Den här snabbstarten fokuserar på processen för att distribuera en Azure Resource Manager-mall (ARM-mall) för att skapa en grundläggande logikapp som kontrollerar status för Azure enligt ett schema per timme. 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -26,7 +26,7 @@ Om din miljö uppfyller förhandskraven och du är van att använda ARM-mallar v
 
 ## <a name="prerequisites"></a>Krav
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
+Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt Azure-konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 
 ## <a name="review-the-template"></a>Granska mallen
 
@@ -191,7 +191,7 @@ Mer information finns i de här ämnena:
    | `location`| <*Azure-region*> | Den Azure-region som ska användas för distribution. I det här exemplet används `West US`. |
    | `templateLink` : `uri` | <*quickstart-template-URL*> | URL-platsen för snabbstartsmallen som ska användas för distribution: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json`. |
    | `parametersLink` : `uri` | <*quickstart-template-parameter-file-URL*> | URL-platsen för snabbstartsmallens parameterfil som ska användas för distribution: <p><p>`https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.parameters.json` <p><p>Mer information om parameterfilen Resource Manager finns i följande avsnitt: <p><p>- [Skapa Resource Manager parameterfil](../azure-resource-manager/templates/parameter-files.md) <br>- [Självstudie: Använda parameterfiler för att distribuera ARM-mallen](../azure-resource-manager/templates/template-tutorial-use-parameter-file.md) |
-   | `mode` | <*distributionsläge*> | Kör antingen en inkrementell uppdatering eller en fullständig uppdatering. I det här `Incremental` exemplet används , vilket är standardvärdet. Mer information finns i [Azure Resource Manager distributionslägen](../azure-resource-manager/templates/deployment-modes.md). |
+   | `mode` | <*distributionsläge*> | Kör antingen en inkrementell uppdatering eller en fullständig uppdatering. I det här `Incremental` exemplet används , som är standardvärdet. Mer information finns i [Azure Resource Manager distributionslägen](../azure-resource-manager/templates/deployment-modes.md). |
    |||
 
    Exempel:
@@ -228,7 +228,7 @@ Om du vill visa logikappen kan du använda Azure Portal, köra ett skript som du
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. I sökrutan Azure Portal du logikappens namn, som finns i `Check-Azure-Status-LA` det här exemplet. Välj din logikapp i resultatlistan.
+1. I Azure Portal anger du logikappens namn, som finns i `Check-Azure-Status-LA` det här exemplet. Välj din logikapp i resultatlistan.
 
 1. I Azure Portal du och väljer din logikapp, som finns i `Check-Azure-Status-RG` det här exemplet.
 
@@ -245,7 +245,7 @@ az logic workflow show --name $logicAppName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-Mer information finns i [Azure CLI: az logic workflow show](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show).
+Mer information finns i [Azure CLI: az logic workflow show](/cli/azure/logic/workflow#az_logic_workflow_show).
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

@@ -96,7 +96,7 @@
     - name: Konvertera data
       expanded: false
       items:
-        - name: Mallar för $convert-data-och FHIR Converter-tillägg
+        - name: $convert-data och FHIR Converter Extension Templates
           href: convert-data.md
     - name: 'Hitta ID:n för identitetsobjekt'
       href: find-identity-object-ids.md
@@ -137,14 +137,14 @@
       href: fhir-faq.md
     - name: Funktioner som stöds
       href: fhir-features-supported.md
-    - name: GitHub-projekt
+    - name: GitHub Projects
       href: fhir-github-projects.md
     - name: Partnernätverk
       href: partner-ecosystem.md
 - name: Referens
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/healthcareapis/healthcareapis
+      href: /cli/azure/healthcareapis
     - name: Inbyggda Azure Policy-program
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

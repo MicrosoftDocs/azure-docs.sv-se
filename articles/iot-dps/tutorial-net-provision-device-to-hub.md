@@ -1,6 +1,6 @@
 ---
-title: Självstudie – etablera enhet med Azure IoT Hub Device Provisioning Service (.NET)
-description: Den här självstudien visar hur du kan etablera din enhet till en enda IoT-hubb med hjälp av Azure-IoT Hub Device Provisioning Service (DPS) med hjälp av .NET.
+title: Självstudie – Etablera enhet med Azure IoT Hub Device Provisioning Service (.NET)
+description: Den här självstudien visar hur du kan etablera enheten till en enda IoT-hubb med hjälp Azure IoT Hub Device Provisioning Service (DPS) med hjälp av .NET.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/12/2019
@@ -9,14 +9,14 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: csharp
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: f9a14ee6ee3e10b36d64ec11fc23807efe2bfaf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 84fe935c1122d3d5c65423341b8760643257f992
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94966572"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868579"
 ---
-# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Självstudie: registrera enheten till en IoT-hubb med Azure IoT Hub Provisioning service-klienten (.NET)
+# <a name="tutorial-enroll-the-device-to-an-iot-hub-using-the-azure-iot-hub-provisioning-service-client-net"></a>Självstudie: Registrera enheten på en IoT-hubb med hjälp Azure IoT Hub.NET (Provisioning Service Client)
 
 I den förra självstudien lärde du dig att konfigurera en enhet för att ansluta till din enhetsetableringstjänst. I den här självstudien lär du dig att använda tjänsten för att etablera enheten till en enda IoT-hubb, med hjälp av **_individuell registrering_** och **_registreringslistor_**. I den här självstudiekursen lär du dig att:
 
@@ -32,7 +32,7 @@ Innan du fortsätter måste du konfigurera din enhet och dess *säkerhetsmodul f
 * Visual Studio
 
 > [!NOTE]
-> Visual Studio krävs inte. Installationen av [.NET](https://www.microsoft.com/net) räcker och utvecklare kan använda det redigeringsprogram de föredrar på Windows eller Linux.  
+> Visual Studio krävs inte. Installationen av [.NET](https://dotnet.microsoft.com) räcker och utvecklare kan använda det redigeringsprogram de föredrar på Windows eller Linux.  
 
 Den här självstudien simulerar perioden under eller direkt efter processen för maskinvarutillverkning, när enhetsinformation läggs till i etableringstjänsten. Den här koden körs vanligtvis på en dator eller en enhet som kan köra .NET-kod och bör inte lägga till själva enheterna.
 
@@ -63,7 +63,7 @@ Det finns två sätt att registrera enheten till enhetsetableringstjänsten:
 
 1. I fönstret **NuGet-pakethanteraren** väljer du **Bläddra** och letar upp **microsoft.azure.devices.provisioning.service**. Välj posten och klicka på **Installera** för att installera **Microsoft.Azure.Devices.Provisioning.Service**-paketet och godkänn användningsvillkoren. Den här proceduren hämtar, installerar och lägger till en referens för NuGet-paketet för [Azure IoT Device Provisioning Service SDK](https://www.nuget.org/packages/Microsoft.Azure.Devices.Provisioning.Service/) och dess beroenden.
 
-1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
+1. Lägg till följande `using` -instruktioner överst i **filen Program.cs:**
    
     ```csharp
     using Microsoft.Azure.Devices.Provisioning.Service;
@@ -129,7 +129,7 @@ Det finns två sätt att registrera enheten till enhetsetableringstjänsten:
     Console.ReadLine();
     ```
         
-1. Högerklicka på din lösning i Visual Studio-Solution Explorer och klicka sedan på **Ange start projekt...**. Välj **enstaka start projekt** och välj sedan **DeviceProvisioning** -projektet i list menyn.  
+1. Högerklicka Visual Studio Solution Explorer lösningen i dialogrutan och klicka sedan på **Ange startprojekt...**. Välj **Enskilt startprojekt** och välj sedan **projektet DeviceProvisioning** i den nedrullningsbara menyn.  
 
 1. Kör .NET-enhetsappen **DeviceProvisiong**. Den bör konfigurera etablering av enheten: 
 
@@ -146,7 +146,7 @@ När enheten har registrerats bör du se den i portalen på följande sätt:
 
 1. Öppna projektet **DeviceProvisioning** som du skapade ovan i Visual Studio Solution Explorer. 
 
-1. Lägg till följande- `using` instruktioner överst i filen **program. cs** :
+1. Lägg till följande `using` -instruktioner överst i **filen Program.cs:**
     
     ```csharp
     using System.Security.Cryptography.X509Certificates;

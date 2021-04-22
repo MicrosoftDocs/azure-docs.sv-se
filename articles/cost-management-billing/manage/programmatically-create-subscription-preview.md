@@ -9,12 +9,12 @@ ms.date: 11/17/2020
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9f20659e772f6321f4d3953f0e55192c833e78b9
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: d3247a86795b9661196c3264c60b06e7c61d6e23
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107310605"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877920"
 ---
 # <a name="programmatically-create-azure-subscriptions-with-preview-apis"></a>Skapa Azure-prenumerationer via programmering med förhandsversioner av API:er
 
@@ -198,7 +198,7 @@ Se [New-AzSubscription](/powershell/module/az.subscription/New-AzSubscription) f
 
 Börja med att installera tillägget (förhandsversion) genom att köra `az extension add --name subscription`.
 
-Kör kommandot [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) nedan och ersätt `<enrollmentAccountObjectId>` med `name` som du kopierade i det första steget (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Information om hur du definierar ägare finns i [Hämtar användarobjekt-ID:n](grant-access-to-create-subscription.md#userObjectId).
+Kör kommandot [az account create](/cli/azure/account#-ext-subscription-az-account-create) nedan och ersätt `<enrollmentAccountObjectId>` med `name` som du kopierade i det första steget (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Information om hur du definierar ägare finns i [Hämtar användarobjekt-ID:n](grant-access-to-create-subscription.md#userObjectId).
 
 ```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
@@ -213,7 +213,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `owner-upn`    | Inga       | Sträng | E-postadressen för en användare som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `owner-object-id`.|
 | `owner-spn` | Inga       | Sträng | Program-ID:t för ett tjänsthuvudnamn (SPN) som ska läggas till som Azure RBAC-ägare för prenumerationen när den skapas. Du kan använda parametern i stället för `owner-object-id`. Om du använder parametern måste tjänsthuvudnamnet ha [läsbehörighet till katalogen](/powershell/azure/active-directory/signing-in-service-principal#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
-Se [az account create](/cli/azure/ext/subscription/account#-ext-subscription-az-account-create) för en fullständig lista över alla parametrar.
+Se [az account create](/cli/azure/account#-ext-subscription-az-account-create) för en fullständig lista över alla parametrar.
 
 ---
 

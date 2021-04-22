@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: fb287333ba8b0b4fc0bb35ce91d2e3113ff50e2b
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 45173a74c0e3189c1f356aea2f8024ff15409f32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831122"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866205"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en C#-funktion i Azure från kommandoraden
 
@@ -35,11 +35,11 @@ Det finns även en [Visual Studio kodbaserad version av](create-first-function-v
 
 + Skaffa en Azure <abbr title="Den profil som behåller faktureringsinformation för Azure-användning.">konto</abbr> med en aktiv <abbr title="Den grundläggande organisationsstrukturen där du hanterar resurser i Azure, vanligtvis associerad med en person eller avdelning inom en organisation.">prenumeration</abbr>. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 
-+ Installera [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
++ Installera [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
 
 + Installera [Azure Functions Core Tools](functions-run-local.md#v2) version 3.x.
 
-+ Antingen <abbr title="En uppsättning plattformsoberoende kommandoradsverktyg för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure CLI</abbr> eller <abbr title="En PowerShell-modul som innehåller kommandon för att arbeta med Azure-resurser från din lokala utvecklingsdator som ett alternativ till att använda Azure Portal.">Azure PowerShell</abbr> för att skapa Azure-resurser:
++ Antingen <abbr title="En uppsättning plattformsoberoende kommandoradsverktyg för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure CLI</abbr> eller <abbr title="En PowerShell-modul som innehåller kommandon för att arbeta med Azure-resurser från din lokala utvecklingsdator, som ett alternativ till att använda Azure Portal.">Azure PowerShell</abbr> för att skapa Azure-resurser:
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 eller senare.
 
@@ -49,11 +49,11 @@ Det finns även en [Visual Studio kodbaserad version av](create-first-function-v
 
 ### <a name="2-verify-prerequisites"></a>2. Kontrollera förhandskrav
 
-Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
+Kontrollera dina förutsättningar, som beror på om du använder Azure CLI eller Azure PowerShell för att skapa Azure-resurser:
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ I en terminal eller ett kommandofönster kör du `func --version` för att kontrollera att <abbr title="En uppsättning kommandoradsverktyg för att arbeta med Azure Functions på din lokala dator.">Azure Functions Core Tools</abbr> är version 3.x.
++ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera att <abbr title="Uppsättningen kommandoradsverktyg för att arbeta med Azure Functions på den lokala datorn.">Azure Functions Core Tools</abbr> är version 3.x.
 
 + **Kör** `az --version` för att kontrollera att Azure CLI-versionen är 2.4 eller senare.
 
@@ -63,7 +63,7 @@ Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShe
 
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-+**Kör** `func --version` för att kontrollera att Azure Functions Core Tools version 3.x.
++**Kör** `func --version` för att kontrollera att Azure Functions Core Tools är version 3.x.
 
 + **Kör** `(Get-Module -ListAvailable Az).Version` och verifiera version 5.0 eller senare. 
 
@@ -77,13 +77,13 @@ Kontrollera kraven, som beror på om du använder Azure CLI eller Azure PowerShe
 
 I det här avsnittet skapar du en lokal <abbr title="En logisk container för en eller flera enskilda funktioner som kan distribueras och hanteras tillsammans.">Azure Functions projekt</abbr> i C#. Varje funktion i projektet svarar på en specifik <abbr title="En händelse som anropar funktionens kod, till exempel en HTTP-begäran, ett kömeddelande eller en viss tid.">Utlösa</abbr>.
 
-1. Kör kommandot `func init` för att skapa ett functions-projekt i en mapp med namnet *LocalFunctionProj* med den angivna körningen:  
+1. Kör kommandot `func init` för att skapa ett funktionsprojekt i en mapp med namnet *LocalFunctionProj* med den angivna körningen:  
 
     ```csharp
     func init LocalFunctionProj --dotnet
     ```
 
-1. **Kör** "cd LocalFunctionProj" för att navigera till <abbr title="Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med local.settings.jspå och host.jspå. Eftersom local.settings.jspå kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i .gitignore-filen.">Projektmapp</abbr>.
+1. **Kör** "cd LocalFunctionProj" för att navigera till <abbr title="Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med local.settings.jspå host.jspå. Eftersom local.settings.jspå kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i .gitignore-filen.">Projektmapp</abbr>.
 
     ```console
     cd LocalFunctionProj
@@ -104,11 +104,11 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
     <details>  
     <summary><strong>Valfritt: Kod för HttpExample.cs</strong></summary>  
     
-    *HttpExample.cs* innehåller en metod som tar emot begärandedata i variabeln är en HttpRequest som är prydlig med `Run` `req` **HttpTriggerAttribute**, som definierar utlösarbeteendet. [](/dotnet/api/microsoft.aspnetcore.http.httprequest)
+    *HttpExample.cs* innehåller en metod som tar emot begärandedata i variabeln är en HttpRequest som är snabel med `Run` `req` **HttpTriggerAttribute**, som definierar utlösarbeteendet. [](/dotnet/api/microsoft.aspnetcore.http.httprequest)
 
     :::code language="csharp" source="~/functions-docs-csharp/http-trigger-template/HttpExample.cs":::
         
-    Returobjektet är ett [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) som returnerar ett svarsmeddelande som antingen [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) eller [Ett BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Mer information finns i Azure Functions [HTTP-utlösare och bindningar.](./functions-bindings-http-webhook.md?tabs=csharp)  
+    Returobjektet är ett [ActionResult](/dotnet/api/microsoft.aspnetcore.mvc.actionresult) som returnerar ett svarsmeddelande som antingen [OkObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.okobjectresult) (200) eller [Ett BadRequestObjectResult](/dotnet/api/microsoft.aspnetcore.mvc.badrequestobjectresult) (400). Mer information finns i Azure Functions [HTTP-utlösare och bindningar](./functions-bindings-http-webhook.md?tabs=csharp).  
     </details>
 
 <br/>
@@ -117,7 +117,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
 
 ## <a name="4-run-the-function-locally"></a>4. Kör funktionen lokalt
 
-1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från mappen *LocalFunctionProj:*
+1. Kör funktionen genom att starta den lokala Azure Functions runtime-värden från *mappen LocalFunctionProj:*
 
     ```
     func start
@@ -142,7 +142,7 @@ I det här avsnittet skapar du en lokal <abbr title="En logisk container för en
     <details>
     <summary><strong>Jag ser inte HttpExample i utdata</strong></summary>
 
-    Om HttpExample inte visas startade du förmodligen värden utanför rotmappen för projektet. I så fall använder du <kbd>Ctrl +C</kbd> för att stoppa värden, navigerar till projektets rotmapp och kör föregående kommando igen.
+    Om HttpExample inte visas startade du förmodligen värden utanför rotmappen i projektet. I så fall använder du <kbd>Ctrl+C</kbd> för att stoppa värden, navigerar till projektets rotmapp och kör det föregående kommandot igen.
     </details>
 
 1. Kopiera URL:en för **din HttpExample-funktion** från dessa utdata till en webbläsare och lägg till frågesträngen **?name=<YOUR_NAME>**, vilket gör den fullständiga URL:en som **http://localhost:7071/api/HttpExample?name=Functions** . Webbläsaren bör visa ett meddelande som **Hello Functions:**
@@ -215,11 +215,11 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
 
     ---
 
-    Ersätt `<STORAGE_NAME>` med ett namn som är lämpligt för dig och <abbr title="Namnet måste vara unikt för alla lagringskonton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga namn eller företagsnamn, programnamn och en numerisk identifierare, som i contoszenzappstorage20">unikt i Azure Storage</abbr>. Namn får endast innehålla tre till 24 tecken och gemener. `Standard_LRS` anger ett konto för generell användning som stöds [av Functions](storage-considerations.md#storage-account-requirements).
+    Ersätt `<STORAGE_NAME>` med ett namn som är lämpligt för dig och <abbr title="Namnet måste vara unikt för alla lagringskonton som används av alla Azure-kunder globalt. Du kan till exempel använda en kombination av ditt personliga namn eller företagsnamn, programnamn och en numerisk identifierare, som i contosidentifierarezappstorage20">unikt i Azure Storage</abbr>. Namn får endast innehålla tre till 24 tecken och gemener. `Standard_LRS` anger ett konto för generell användning som stöds [av Functions](storage-considerations.md#storage-account-requirements).
 
 
 1. Skapa funktionsappen i Azure.
-**Ersätt** "<STORAGE_NAME>** med namnet i föregående steg.
+**Ersätt** '<STORAGE_NAME>** med namnet i föregående steg.
 **Ersätt** "<APP_NAME>" med ett globalt unikt namn.
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -244,9 +244,9 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
 
     <br/>
     <details>
-    <summary><strong>Vad kostar det att etablera resurser i Azure?</strong></summary>
+    <summary><strong>Vad är kostnaden för de resurser som etableras i Azure?</strong></summary>
 
-    Det här kommandot skapar en funktionsapp som körs i den angivna språkkörningen under [Azure Functions Consumption-planen](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot innehåller också en associerad Azure Application Insights-instans i samma resursgrupp, med vilken du kan övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en funktionsapp som körs i din angivna språkkörning under [Azure Functions Consumption-planen](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot tiller även en associerad Azure Application Insights-instans i samma resursgrupp som du kan använda för att övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
     </details>
 
 <br/>
@@ -256,14 +256,14 @@ Innan du kan distribuera funktionskoden till Azure måste du skapa en <abbr titl
 ## <a name="6-deploy-the-function-project-to-azure"></a>6. Distribuera funktionsprojektet till Azure
 
 
-**Kopiera** ' func azure funtionapp publicera <APP_NAME> till **terminalen Ersätt** `<APP_NAME>` med namnet på din app.
+**Kopiera** 'func azure funtionapp publish <APP_NAME> into your terminal **Replace** `<APP_NAME>` with the name of your app.
 **Kör**
 
 ```console
 func azure functionapp publish <APP_NAME>
 ```
 
-Kommandot `publish` visar resultat som liknar följande utdata (trunkerade för enkelhetens skull):
+Kommandot `publish` visar resultat som liknar följande utdata (trunkerat för enkelhetens skull):
 
 <pre class="is-monospace is-size-small has-padding-medium has-background-tertiary has-text-tertiary-invert">
 ...
@@ -298,7 +298,7 @@ Kopiera den fullständiga **Invoke URL (Anropa URL)** som visas i `publish` komm
 
 ## <a name="8-clean-up-resources"></a>8. Rensa resurser
 
-Om du fortsätter till nästa [steg och lägger till](#next-steps) en Azure Storage köutdata <abbr title="En deklarativ anslutning mellan en funktion och andra resurser. En indatabindning tillhandahåller data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">Bindande</abbr>håller du alla dina resurser på plats när du bygger vidare på det du redan har gjort.
+Om du fortsätter till nästa [steg och lägger till](#next-steps) en Azure Storage köutdata <abbr title="En deklarativ anslutning mellan en funktion och andra resurser. En indatabindning tillhandahåller data till funktionen. en utdatabindning ger data från funktionen till andra resurser.">Bindande</abbr>håller du alla dina resurser på plats eftersom du bygger vidare på det du redan har gjort.
 
 Annars använder du följande kommando för att ta bort resursgruppen och alla dess inneslutna resurser för att undvika ytterligare kostnader.
 

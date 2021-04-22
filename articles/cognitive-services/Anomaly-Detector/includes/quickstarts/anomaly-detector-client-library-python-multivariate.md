@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/25/2020
 ms.author: mbullwin
-ms.openlocfilehash: 684c61dfb34d55681904943160ca389c19a4c8db
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: b0eba6d0be1d6a65b911f05dabf3cdbecc9c666d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107732261"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879808"
 ---
 Kom igång med Avvikelseidentifiering flervariat klientbibliotek för Python. Följ de här stegen för att installera paketet med hjälp av de algoritmer som tillhandahålls av tjänsten. Med de nya API:erna för multivarierad avvikelseidentifiering kan utvecklare enkelt integrera avancerad AI för att identifiera avvikelser från grupper med mått, utan att behöva maskininlärning eller märkta data. Beroenden och interkorrelationer mellan olika signaler räknas automatiskt som viktiga faktorer. Detta hjälper dig att proaktivt skydda dina komplexa system mot fel.
 
@@ -23,7 +23,7 @@ Använd Avvikelseidentifiering flervariat klientbibliotek för Python för att:
 * När en enskild tidsserie inte berättar så mycket och du måste titta på alla signaler för att identifiera ett problem.
 * Predikatiskt underhåll av dyra fysiska tillgångar med tiotals till hundratals olika typer av sensorer som mäter olika aspekter av systemhälsan.
 
-[Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)
+[Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/anomalydetector/azure-ai-anomalydetector)  |  [Paket (PyPi)](https://pypi.org/project/azure-ai-anomalydetector/3.0.0b3/)  |  [Exempelkod](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/anomalydetector/azure-ai-anomalydetector/samples/sample_multivariate_detect.py)  |  [Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
@@ -236,6 +236,11 @@ if __name__ == '__main__':
 
 ```
 
+Innan du kör kan det vara bra att kontrollera projektet mot den [fullständiga exempelkod som](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) den här snabbstarten härleds från.
+
+Vi har också [en detaljerad Jupyter Notebook](https://github.com/Azure-Samples/AnomalyDetector/blob/master/ipython-notebook/Multivariate%20API%20Demo%20Notebook.ipynb) som hjälper dig att komma igång.
+
 Kör programmet med `python` kommandot och filnamnet.
+
 
 [!INCLUDE [anomaly-detector-next-steps](../quickstart-cleanup-next-steps.md)]

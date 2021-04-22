@@ -1,18 +1,18 @@
 ---
 title: Azure Policy för regelefterlevnad för Azure Container Registry
-description: Visar Azure Policy för regelefterlevnad som är tillgängliga för Azure Container Registry. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
-ms.date: 04/14/2021
+description: Visar Azure Policy för regelefterlevnad som är tillgängliga för Azure Container Registry. Dessa inbyggda principdefinitioner ger vanliga metoder för att hantera kompatibiliteten för dina Azure-resurser.
+ms.date: 04/21/2021
 ms.topic: sample
 author: dlepow
 ms.author: danlep
 ms.service: container-registry
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 52ddf15151fc40674a7d1a7e2c06ae627fa50165
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: f23721454b78f717ef461794b4e29fefdc180501
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107502422"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878656"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-container-registry"></a>Azure Policy för regelefterlevnad för Azure Container Registry
 
@@ -24,5 +24,5 @@ ms.locfileid: "107502422"
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs mer om [Azure Policy regelefterlevnad.](../governance/policy/concepts/regulatory-compliance.md)
+- Läs mer om [Azure Policy regelefterlevnad](../governance/policy/concepts/regulatory-compliance.md).
 - Se de inbyggda programmen på [Azure Policy GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).

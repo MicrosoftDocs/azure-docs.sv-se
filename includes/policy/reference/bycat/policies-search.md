@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 640e015560471465e83fafe253782e42a5108b6a
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: b1c2f38c92c95877afb41cb76e89b31e3920c782
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499155"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867153"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
 |[Azure Cognitive Search ska använda en SKU som stöder private link](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa049bf77-880b-470f-ba6d-9f21c530cf83) |Med SKU:er som stöds Azure Cognitive Search kan Azure Private Link ansluta ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress vid källan eller målet. Den privata länkplattformen hanterar anslutningen mellan konsumenten och tjänsterna via Azures stamnätverk. Genom att mappa privata slutpunkter till tjänsten Search minskar risken för dataläckage. Läs mer på: [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints) . |Granska, Neka, Inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePrivateLinkSupportedResource_Deny.json) |
 |[Azure Cognitive Search bör inaktivera offentlig nätverksåtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fee980b6d-0eca-4501-8d54-f6290fd512c3) |Om du inaktiverar offentlig nätverksåtkomst förbättras säkerheten genom att Azure Cognitive Search tjänsten inte exponeras på det offentliga Internet. Att skapa privata slutpunkter kan begränsa exponeringen för tjänsten Search. Läs mer på: [https://aka.ms/azure-cognitive-search/inbound-private-endpoints](https://aka.ms/azure-cognitive-search/inbound-private-endpoints) . |Granska, Neka, Inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Search/Search_RequirePublicNetworkAccessDisabled_Deny.json) |

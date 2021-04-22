@@ -10,7 +10,7 @@
     - name: Säker virtuell hubb – ARM-mall
       displayName: Resource Manager
       href: quick-secure-virtual-hub.md
-    - name: Distribuera brand väggen med princip ARM-mall
+    - name: Distribuera brandvägg med princip – ARM-mall
       displayName: Resource Manager
       href: quick-firewall-policy.md
 - name: Självstudier
@@ -51,7 +51,7 @@
   items:
     - name: Distribuera säkerhetspartnerprovidrar
       href: deploy-trusted-security-partner.md
-    - name: Säkra privata slut punkter
+    - name: Skydda privata slutpunkter
       href: private-link-inspection-secure-virtual-hub.md
     - name: Migrera till brandväggsprincip – PowerShell
       href: migrate-to-policy.md
@@ -64,7 +64,7 @@
 - name: Referens
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/azure-firewall/network/firewall/policy
+      href: /cli/azure/network/firewall/policy
     - name: Azure PowerShell
       href: /powershell/module/az.network/new-azfirewallpolicy
     - name: .NET

@@ -1,6 +1,6 @@
 ---
 title: Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
-description: Lär dig hur du skapar Azure Enterprise-avtal-prenumerationer program mässigt med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
+description: Lär dig hur du skapar Azure Enterprise-avtalsprenumerationer programmatiskt med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 3275fe0a72b70038cf834436e8290b9c55643414
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: e57f385dce6446ebb3aa2df0ceb48f97a7e0c2f4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963299"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877918"
 ---
 # <a name="programmatically-create-azure-enterprise-agreement-subscriptions-with-the-latest-apis"></a>Skapa prenumerationer på Azure Enterprise-avtal via programmering med de senaste API:erna
 
@@ -32,7 +32,7 @@ För att kunna skapa en prenumeration måste du ha en ägarroll för ett registr
 
 * Företagsadministratören för din registrering kan [utse dig till kontoägare](https://ea.azure.com/helpdocs/addNewAccount) (inloggning krävs), vilket innebär att du blir ägare till registreringskontot.
 * En befintlig ägare till registreringskontot kan [ge dig åtkomst](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du vill skapa en EA-prenumeration med hjälp av ett tjänsthuvudnamn måste du på liknande sätt [bevilja tjänsthuvudnamnet behörighet att skapa prenumerationer](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put).  
-    Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistrering som tjänstens huvud namn ObjectId med [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) eller [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list).
+    Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistreringen som Objekt-ID för tjänstens huvudnamn [med hjälp Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) [eller Azure CLI.](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list)
   > [!NOTE]
   > Se till att du använder rätt API-version för att ge registreringskontot ägarbehörighet. För den här artikeln och för de API:er som dokumenteras i den använder du API:et [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Om du migrerar till användning av de nyare API:erna måste du bevilja ägarbehörighet igen med [2019-10-01-preview](/rest/api/billing/2019-10-01-preview/enrollmentaccountroleassignments/put). Din tidigare konfiguration som skapades med [version 2015-07-01](grant-access-to-create-subscription.md) konverteras inte automatiskt för användning med nyare API:er.
 
@@ -92,7 +92,7 @@ API-svaret visar alla registreringskonton som du har åtkomst till:
 
 ```
 
-Värdena för en fakturerings omfattning och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
+Värdena för ett faktureringsomfång `id` och är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -106,7 +106,7 @@ Begära en lista över alla registreringskonton som du har åtkomst till:
 > az billing account list
 ```
 
-Svar visar alla registrerings konton som du har åtkomst till
+Svar visar alla registreringskonton som du har åtkomst till
 
 ```json
 [
@@ -157,7 +157,7 @@ Svar visar alla registrerings konton som du har åtkomst till
   },
 ```
 
-Värdena för en fakturerings omfattning och `id` är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
+Värdena för ett faktureringsomfång `id` och är samma sak. `id` för ditt registreringskonto är det faktureringsomfång som prenumerationsbegäran initieras i. Det är viktigt att känna till ID:t eftersom det är en obligatorisk parameter som du ska använda senare i artikeln för att skapa en prenumeration.
 
 ---
 
@@ -253,7 +253,7 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 Installera först tillägget genom att köra `az extension add --name account` och `az extension add --name alias`.
 
-Kör följande [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create)-kommando och ange `billing-scope` och `id` från ett av dina `enrollmentAccounts`. 
+Kör följande [az account alias create](/cli/azure/account/alias#az_account_alias_create)-kommando och ange `billing-scope` och `id` från ett av dina `enrollmentAccounts`. 
 
 ```azurecli-interactive
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/1234567/enrollmentAccounts/654321" --display-name "Dev Team Subscription" --workload "Production"
@@ -277,9 +277,9 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 ## <a name="use-arm-template"></a>Använda ARM-mall
 
-Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du överväga att använda en Azure Resource Manager mall (ARM-mall).
+Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du använda en Azure Resource Manager (ARM-mall).
 
-Följande mall skapar en prenumeration. För `billingScope` , ange ID för registrerings kontot. För `targetManagementGroup` , ange den hanterings grupp där du vill skapa prenumerationen.
+Följande mall skapar en prenumeration. För `billingScope` anger du registreringskonto-ID:t. För `targetManagementGroup` anger du den hanteringsgrupp där du vill skapa prenumerationen.
 
 ```json
 {
@@ -323,7 +323,7 @@ Följande mall skapar en prenumeration. För `billingScope` , ange ID för regis
 }
 ```
 
-Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/templates/deploy-to-management-group.md).
+Distribuera mallen på [hanteringsgruppsnivå.](../../azure-resource-manager/templates/deploy-to-management-group.md)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -331,7 +331,7 @@ Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/te
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
 ```
 
-Med en begär ande text:
+Med en begärandetext:
 
 ```json
 {
@@ -394,4 +394,4 @@ az deployment mg create \
 
 * Nu när du har skapat en prenumeration kan du bevilja den möjligheten till andra användare och tjänsthuvudnamn. Mer information finns i [Bevilja behörighet att skapa Azure Enterprise-prenumerationer (förhandsversion)](grant-access-to-create-subscription.md).
 * Mer information om hur du hanterar ett stort antal prenumerationer med hanteringsgrupper finns i [Ordna resurser med hanteringsgrupper i Azure](../../governance/management-groups/overview.md).
-* Information om hur du ändrar hanterings gruppen för en prenumeration finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).
+* Information om hur du ändrar hanteringsgruppen för en prenumeration finns i [Flytta prenumerationer.](../../governance/management-groups/manage.md#move-subscriptions)

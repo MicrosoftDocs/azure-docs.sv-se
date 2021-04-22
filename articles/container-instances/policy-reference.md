@@ -1,15 +1,15 @@
 ---
 title: Inbyggda principdefinitioner för Azure Container Instances
 description: Visar Azure Policy inbyggda principdefinitioner för Azure Container Instances. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7590a5fb7f9731f64c0b51f277166b3235487e52
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a8fd1412a97bf7c77043feb3f0fbb9e8348ff160
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107504174"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862748"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-container-instances"></a>Azure Policy inbyggda definitioner för Azure Container Instances
 

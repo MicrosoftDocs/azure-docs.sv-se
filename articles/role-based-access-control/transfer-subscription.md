@@ -1,6 +1,6 @@
 ---
 title: Överföra en Azure-prenumeration till en annan Azure AD-katalog
-description: Lär dig hur du överför en Azure-prenumeration och kända relaterade resurser till en annan Azure Active Directory (Azure AD)-katalog.
+description: Lär dig hur du överför en Azure-prenumeration och kända relaterade resurser till en Azure Active Directory -katalog (Azure AD).
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -10,131 +10,131 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 04/06/2021
 ms.author: rolyon
-ms.openlocfilehash: 5baf5f503542f31b26c4c210741f1ce986f6a549
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 72dc92ae211034e2a49bc77f60880f17ab15dec7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106580117"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868185"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Överföra en Azure-prenumeration till en annan Azure AD-katalog
 
-Organisationer kan ha flera Azure-prenumerationer. Varje prenumeration är associerad med en viss Azure Active Directory-katalog (Azure AD). För att förenkla hanteringen kan du vilja överföra en prenumeration till en annan Azure AD-katalog. När du överför en prenumeration till en annan Azure AD-katalog överförs inte vissa resurser till mål katalogen. Till exempel tas alla roll tilldelningar och anpassade roller i Azure rollbaserad åtkomst kontroll (Azure RBAC) bort **permanent** från käll katalogen och överförs inte till mål katalogen.
+Organisationer kan ha flera Azure-prenumerationer. Varje prenumeration är associerad med en viss Azure Active Directory -katalog (Azure AD). För att förenkla hanteringen kanske du vill överföra en prenumeration till en annan Azure AD-katalog. När du överför en prenumeration till en annan Azure AD-katalog överförs inte vissa resurser till målkatalogen. Till exempel tas alla rolltilldelningar och anpassade roller i rollbaserad åtkomstkontroll i Azure (Azure RBAC) **bort permanent** från källkatalogen och överförs inte till målkatalogen.
 
-I den här artikeln beskrivs de grundläggande steg som du kan följa för att överföra en prenumeration till en annan Azure AD-katalog och återskapa några av resurserna efter överföringen.
+I den här artikeln beskrivs de grundläggande stegen som du kan följa för att överföra en prenumeration till en annan Azure AD-katalog och skapa om några av resurserna efter överföringen.
 
 > [!NOTE]
-> För Azure Cloud solution providers (CSP)-prenumerationer stöds inte att ändra Azure AD-katalogen för prenumerationen.
+> För CSP-prenumerationer (Azure Cloud Solution Providers) stöds inte ändring av Azure AD-katalogen för prenumerationen.
 
 ## <a name="overview"></a>Översikt
 
-Överföring av en Azure-prenumeration till en annan Azure AD-katalog är en komplex process som måste planeras noggrant och köras. Många Azure-tjänster kräver säkerhets objekt (identiteter) för att kunna användas normalt eller till och med hantera andra Azure-resurser. Den här artikeln försöker omfatta de flesta Azure-tjänster som är beroende av säkerhets objekt, men är inte omfattande.
+Överföring av en Azure-prenumeration till en annan Azure AD-katalog är en komplex process som måste planeras och köras noggrant. Många Azure-tjänster kräver säkerhetsobjekt (identiteter) för att fungera normalt eller till och med hantera andra Azure-resurser. Den här artikeln handlar om de flesta Azure-tjänster som är starkt beroende av säkerhetsobjekt, men som inte är heltäckande.
 
 > [!IMPORTANT]
-> I vissa fall kan överföring av en prenumeration kräva avbrott för att slutföra processen. Noggrann planering krävs för att bedöma om stillestånds tiden kommer att krävas för överföringen.
+> I vissa fall kan överföring av en prenumeration kräva driftstopp för att slutföra processen. Noggrann planering krävs för att utvärdera om det krävs stilleståndstid för överföringen.
 
-Följande diagram visar de grundläggande steg som du måste följa när du överför en prenumeration till en annan katalog.
+I följande diagram visas de grundläggande steg som du måste följa när du överför en prenumeration till en annan katalog.
 
-1. Förbered för överföring
+1. Förbereda för överföringen
 
-1. Överför Azure-prenumerationen till en annan katalog
+1. Överföra Azure-prenumerationen till en annan katalog
 
-1. Återskapa resurser i mål katalogen, till exempel roll tilldelningar, anpassade roller och hanterade identiteter
+1. Skapa om resurser i målkatalogen, till exempel rolltilldelningar, anpassade roller och hanterade identiteter
 
-    ![Överför prenumerations diagram](./media/transfer-subscription/transfer-subscription.png)
+    ![Diagram över överföringsprenumeration](./media/transfer-subscription/transfer-subscription.png)
 
-### <a name="deciding-whether-to-transfer-a-subscription-to-a-different-directory"></a>Bestämma om en prenumeration ska överföras till en annan katalog
+### <a name="deciding-whether-to-transfer-a-subscription-to-a-different-directory"></a>Bestämma om du vill överföra en prenumeration till en annan katalog
 
-Här följer några orsaker till varför du kanske vill överföra en prenumeration:
+Följande är några orsaker till varför du kanske vill överföra en prenumeration:
 
-- På grund av ett företags sammanslagning eller förvärv, vill du hantera en förvärvad prenumeration i din primära Azure AD-katalog.
-- Någon i din organisation har skapat en prenumeration och vill konsolidera hanteringen till en viss Azure AD-katalog.
-- Du har program som är beroende av ett visst prenumerations-ID eller URL och det är inte enkelt att ändra program konfigurationen eller koden.
-- En del av din verksamhet har delats i ett separat företag och du måste flytta några av dina resurser till en annan Azure AD-katalog.
-- Du vill hantera vissa resurser i en annan Azure AD-katalog för säkerhets isolering.
+- På grund av ett företagssammanslagning eller ett förvärv vill du hantera en förvärvad prenumeration i din primära Azure AD-katalog.
+- Någon i din organisation har skapat en prenumeration och du vill konsolidera hanteringen till en viss Azure AD-katalog.
+- Du har program som är beroende av ett visst prenumerations-ID eller en viss URL och det är inte lätt att ändra programkonfigurationen eller koden.
+- En del av din verksamhet har delats upp i ett separat företag och du behöver flytta några av dina resurser till en annan Azure AD-katalog.
+- Du vill hantera vissa av dina resurser i en annan Azure AD-katalog i säkerhetsisoleringssyfte.
 
 ### <a name="alternate-approaches"></a>Alternativa metoder
 
-Överföring av en prenumeration kräver stillestånds tid för att slutföra processen. Beroende på ditt scenario kan du överväga följande alternativa metoder:
+Överföring av en prenumeration kräver stilleståndstid för att slutföra processen. Beroende på ditt scenario kan du överväga följande alternativa metoder:
 
-- Återskapa resurserna och kopiera data till mål katalogen och prenumerationen.
-- Anta en arkitektur för flera kataloger och lämna prenumerationen i käll katalogen. Använd Azure-Lighthouse för att delegera resurser så att användare i mål katalogen kan komma åt prenumerationen i käll katalogen. Mer information finns i [Azure Lighthouse i Enterprise-scenarier](../lighthouse/concepts/enterprise.md).
+- Skapa resurserna på nytt och kopiera data till målkatalogen och prenumerationen.
+- Anta en arkitektur med flera kataloger och lämna prenumerationen i källkatalogen. Använd Azure Lighthouse att delegera resurser så att användare i målkatalogen kan komma åt prenumerationen i källkatalogen. Mer information finns i Azure Lighthouse [i företagsscenarier.](../lighthouse/concepts/enterprise.md)
 
-### <a name="understand-the-impact-of-transferring-a-subscription"></a>Förstå effekten av överföring av en prenumeration
+### <a name="understand-the-impact-of-transferring-a-subscription"></a>Förstå effekten av att överföra en prenumeration
 
-Flera Azure-resurser är beroende av en prenumeration eller en katalog. Beroende på din situation visar följande tabell de kända effekterna av överföring av en prenumeration. Genom att utföra stegen i den här artikeln kan du återskapa några av de resurser som fanns före prenumerations överföringen.
+Flera Azure-resurser är beroende av en prenumeration eller en katalog. Beroende på din situation visar följande tabell den kända effekten av att överföra en prenumeration. Genom att utföra stegen i den här artikeln kan du skapa några av de resurser som fanns innan prenumerationsöverföringen.
 
 > [!IMPORTANT]
-> I det här avsnittet visas de kända Azure-tjänster eller-resurser som är beroende av din prenumeration. Eftersom resurs typer i Azure ständigt håller på att utvecklas kan det finnas ytterligare beroenden som inte visas här, vilket kan orsaka en större ändring i din miljö. 
+> I det här avsnittet visas de kända Azure-tjänster eller -resurser som är beroende av din prenumeration. Eftersom resurstyper i Azure ständigt utvecklas kan det finnas ytterligare beroenden som inte anges här som kan orsaka en stor förändring i din miljö. 
 
-| Tjänst eller resurs | Påverkas | Återställnings bara | Påverkas du? | Det här kan du göra |
+| Tjänst eller resurs | Påverkas | Ersättningsgilla | Påverkas du? | Det här kan du göra |
 | --------- | --------- | --------- | --------- | --------- |
-| Rolltilldelningar | Ja | Ja | [Visa lista över rolltilldelningar](#save-all-role-assignments) | Alla roll tilldelningar tas bort permanent. Du måste mappa användare, grupper och tjänstens huvud namn till motsvarande objekt i mål katalogen. Du måste återskapa roll tilldelningarna. |
-| Anpassade roller | Ja | Ja | [Lista anpassade roller](#save-custom-roles) | Alla anpassade roller tas bort permanent. Du måste återskapa de anpassade rollerna och eventuella roll tilldelningar. |
-| Systemtilldelade hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste inaktivera och återaktivera hanterade identiteter. Du måste återskapa roll tilldelningarna. |
-| Användare som tilldelats hanterade identiteter | Ja | Ja | [Visa lista över hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste ta bort, återskapa och bifoga de hanterade identiteterna till lämplig resurs. Du måste återskapa roll tilldelningarna. |
-| Azure Key Vault | Ja | Ja | [Visa lista Key Vault åtkomst principer](#list-key-vaults) | Du måste uppdatera klient-ID: t som är associerat med nyckel valvena. Du måste ta bort och lägga till nya åtkomst principer. |
-| Azure SQL-databaser med integrering med Azure AD-autentisering aktive rad | Ja | Inga | [Kontrol lera Azure SQL-databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) | Du kan inte överföra en Azure SQL-databas med Azure AD-autentisering aktive rad till en annan katalog. Mer information finns i [använda Azure Active Directory autentisering](../azure-sql/database/authentication-aad-overview.md). | 
-| Azure Storage och Azure Data Lake Storage Gen2 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
-| Azure Data Lake Storage Gen1 | Ja | Ja |  | Du måste återskapa alla ACL: er. |
-| Azure Files | Ja | Ja |  | Du måste återskapa alla ACL: er. |
-| Azure File Sync | Ja | Ja |  | Tjänsten för synkronisering av lagring och/eller lagrings kontot kan flyttas till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Files](../storage/files/storage-files-faq.md#azure-file-sync) |
-| Azure Managed Disks | Ja | Ja |  |  Om du använder disk krypterings uppsättningar för att kryptera Managed Disks med Kundhanterade nycklar, måste du inaktivera och återaktivera systemtilldelade identiteter som är kopplade till disk krypterings uppsättningar. Och du måste skapa roll tilldelningarna igen, vilket innebär att de behörigheter som krävs för disk krypterings uppsättningar i nyckel valvet beviljas igen. |
-| Azure Kubernetes Service | Ja | Inga |  | Du kan inte överföra ditt AKS-kluster och dess associerade resurser till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Kubernetes service (AKS)](../aks/faq.md) |
-| Azure Policy | Ja | Inga | Alla Azure Policy objekt, inklusive anpassade definitioner, tilldelningar, undantag och efterlevnadsprinciper. | Du måste [Exportera](../governance/policy/how-to/export-resources.md), importera och tilldela om definitioner. Skapa sedan nya princip tilldelningar och eventuella [princip undantag](../governance/policy/concepts/exemption-structure.md)som behövs. |
-| Azure Active Directory Domain Services | Ja | Inga |  | Du kan inte överföra en Azure AD Domain Services hanterad domän till en annan katalog. Mer information finns i [vanliga frågor och svar om Azure Active Directory (AD) Domain Services](../active-directory-domain-services/faqs.md) |
+| Rolltilldelningar | Ja | Ja | [Visa lista över rolltilldelningar](#save-all-role-assignments) | Alla rolltilldelningar tas bort permanent. Du måste mappa användare, grupper och tjänstens huvudnamn till motsvarande objekt i målkatalogen. Du måste skapa rolltilldelningarna på nytt. |
+| Anpassade roller | Ja | Ja | [Lista anpassade roller](#save-custom-roles) | Alla anpassade roller tas bort permanent. Du måste skapa om de anpassade rollerna och eventuella rolltilldelningar. |
+| System tilldelade hanterade identiteter | Ja | Ja | [Lista hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste inaktivera och återaktivera de hanterade identiteterna. Du måste skapa rolltilldelningarna på nytt. |
+| Användar tilldelade hanterade identiteter | Ja | Ja | [Lista hanterade identiteter](#list-role-assignments-for-managed-identities) | Du måste ta bort, skapa om och koppla de hanterade identiteterna till lämplig resurs. Du måste skapa rolltilldelningarna på nytt. |
+| Azure Key Vault | Ja | Ja | [Lista Key Vault åtkomstprinciper](#list-key-vaults) | Du måste uppdatera det klientorganisations-ID som är associerat med nyckelvalven. Du måste ta bort och lägga till nya åtkomstprinciper. |
+| Azure SQL databaser med Azure AD-autentiseringsintegrering aktiverat | Ja | Inga | [Kontrollera Azure SQL databaser med Azure AD-autentisering](#list-azure-sql-databases-with-azure-ad-authentication) | Du kan inte överföra Azure SQL databas med Azure AD-autentisering aktiverat till en annan katalog. Mer information finns i Använda [Azure Active Directory autentisering.](../azure-sql/database/authentication-aad-overview.md) | 
+| Azure Storage och Azure Data Lake Storage Gen2 | Ja | Ja |  | Du måste skapa om alla ACL:er. |
+| Azure Data Lake Storage Gen1 | Ja | Ja |  | Du måste skapa om alla ACL:er. |
+| Azure Files | Ja | Ja |  | Du måste skapa om alla ACL:er. |
+| Azure File Sync | Ja | Ja |  | Tjänsten för synkronisering av lagring och/eller lagringskontot kan flyttas till en annan katalog. Mer information finns i [Vanliga frågor och svar om Azure Files](../storage/files/storage-files-faq.md#azure-file-sync) |
+| Azure Managed Disks | Ja | Ja |  |  Om du använder diskkrypteringsuppsättningar för att kryptera Managed Disks med kund hanterade nycklar måste du inaktivera och återaktivera de systemtilldeerade identiteter som är associerade med diskkrypteringsuppsättningar. Och du måste skapa rolltilldelningarna igen, vilket innebär att du återigen måste bevilja nödvändiga behörigheter till diskkrypteringsuppsättningarna i nyckelvalven. |
+| Azure Kubernetes Service | Ja | Inga |  | Du kan inte överföra ditt AKS-kluster och dess associerade resurser till en annan katalog. Mer information finns i [Vanliga frågor och svar om Azure Kubernetes Service (AKS)](../aks/faq.md) |
+| Azure Policy | Ja | Inga | Alla Azure Policy objekt, inklusive anpassade definitioner, tilldelningar, undantag och efterlevnadsdata. | Du måste [exportera,](../governance/policy/how-to/export-resources.md)importera och tilldela om definitioner. Skapa sedan nya principtilldelningar och eventuella nödvändiga [principundantag.](../governance/policy/concepts/exemption-structure.md) |
+| Azure Active Directory Domain Services | Ja | Inga |  | Du kan inte överföra en Azure AD Domain Services hanterad domän till en annan katalog. Mer information finns i [Vanliga frågor och svar om Azure Active Directory (AD) Domain Services](../active-directory-domain-services/faqs.md) |
 | Appregistreringar | Ja | Ja |  |  |
 
 > [!WARNING]
-> Om du använder kryptering i vila för en resurs, till exempel ett lagrings konto eller en SQL-databas, som har ett beroende av ett nyckel valv som **inte** finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckel valv eller tillfälligt inaktivera Kundhanterade nycklar för att undvika det här oåterkalleliga scenariot.
+> Om du använder kryptering i vila för en resurs, till exempel ett lagringskonto eller  en SQL-databas, som är beroende av ett nyckelvalv som inte finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckelvalv eller tillfälligt inaktivera kund hanterade nycklar för att undvika det här oåterkalleliga scenariot.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Du behöver följande för att slutföra de här stegen:
+För att slutföra de här stegen behöver du:
 
 - [Bash i Azure Cloud Shell](../cloud-shell/overview.md) eller [Azure CLI](/cli/azure)
-- Konto administratör för den prenumeration som du vill överföra i käll katalogen
-- [Ägar](built-in-roles.md#owner) roll i mål katalogen
+- Kontoadministratör för den prenumeration som du vill överföra i källkatalogen
+- [Ägarroll](built-in-roles.md#owner) i målkatalogen
 
-## <a name="step-1-prepare-for-the-transfer"></a>Steg 1: Förbered för överföring
+## <a name="step-1-prepare-for-the-transfer"></a>Steg 1: Förbered för överföringen
 
-### <a name="sign-in-to-source-directory"></a>Logga in på käll katalogen
+### <a name="sign-in-to-source-directory"></a>Logga in på källkatalogen
 
 1. Logga in på Azure som administratör.
 
-1. Hämta en lista över dina prenumerationer med kommandot [AZ Account List](/cli/azure/account#az_account_list) .
+1. Hämta en lista över dina prenumerationer med [kommandot az account list.](/cli/azure/account#az_account_list)
 
     ```azurecli
     az account list --output table
     ```
 
-1. Använd [AZ konto uppsättning](/cli/azure/account#az_account_set) för att ange den aktiva prenumeration som du vill överföra.
+1. Använd [az account set för](/cli/azure/account#az_account_set) att ange den aktiva prenumeration som du vill överföra.
 
     ```azurecli
     az account set --subscription "Marketing"
     ```
 
-### <a name="install-the-azure-resource-graph-extension"></a>Installera Azure Resource Graph-tillägget
+### <a name="install-the-azure-resource-graph-extension"></a>Installera Azure Resource Graph tillägget
 
- Azure CLI-tillägget för [Azure Resource Graph](../governance/resource-graph/index.yml), *resurs diagram*, gör att du kan använda [AZ Graph](/cli/azure/ext/resource-graph/graph) -kommandot för att söka efter resurser som hanteras av Azure Resource Manager. Du kommer att använda det här kommandot i senare steg.
+ Med Azure CLI-tillägget [för Azure Resource Graph](../governance/resource-graph/index.yml), *resource-graph*, kan du använda [kommandot az graph](/cli/azure/graph) för att köra frågor mot resurser som hanteras av Azure Resource Manager. Du använder det här kommandot i senare steg.
 
-1. Använd [listan med AZ-tillägg](/cli/azure/extension#az_extension_list) för att se om du har installerat *resurs diagram* tillägget.
+1. Använd [az extension list](/cli/azure/extension#az_extension_list) för att se om du har *resource-graph-tillägget* installerat.
 
     ```azurecli
     az extension list
     ```
 
-1. Annars installerar du *resurs-Graph-* tillägget.
+1. Om inte installerar du *resource-graph-tillägget.*
 
     ```azurecli
     az extension add --name resource-graph
     ```
 
-### <a name="save-all-role-assignments"></a>Spara alla roll tilldelningar
+### <a name="save-all-role-assignments"></a>Spara alla rolltilldelningar
 
-1. Använd [AZ roll tilldelnings lista](/cli/azure/role/assignment#az_role_assignment_list) för att visa en lista över alla roll tilldelningar (inklusive ärvda roll tilldelningar).
+1. Använd [az role assignment list för](/cli/azure/role/assignment#az_role_assignment_list) att lista alla rolltilldelningar (inklusive ärvda rolltilldelningar).
 
-    För att göra det enklare att granska listan kan du exportera utdata som JSON, TSV eller en tabell. Mer information finns i [lista roll tilldelningar med Azure RBAC och Azure CLI](role-assignments-list-cli.md).
+    Om du vill göra det enklare att granska listan kan du exportera utdata som JSON, TSV eller en tabell. Mer information finns i List [role assignments using Azure RBAC and Azure CLI (Lista rolltilldelningar med Azure RBAC och Azure CLI).](role-assignments-list-cli.md)
 
     ```azurecli
     az role assignment list --all --include-inherited --output json > roleassignments.json
@@ -142,31 +142,31 @@ Du behöver följande för att slutföra de här stegen:
     az role assignment list --all --include-inherited --output table > roleassignments.txt
     ```
 
-1. Spara listan med roll tilldelningar.
+1. Spara listan över rolltilldelningar.
 
-    När du överför en prenumeration tas alla roll tilldelningar bort **permanent** , så det är viktigt att spara en kopia.
+    När du överför en prenumeration tas alla rolltilldelningar **bort permanent,** så det är viktigt att spara en kopia.
 
-1. Granska listan över roll tilldelningar. Det kan finnas roll tilldelningar som du inte behöver i mål katalogen.
+1. Granska listan över rolltilldelningar. Det kan finnas rolltilldelningar som du inte behöver i målkatalogen.
 
 ### <a name="save-custom-roles"></a>Spara anpassade roller
 
-1. Använd den [AZ roll definitions listan](/cli/azure/role/definition#az_role_definition_list) för att visa en lista över dina anpassade roller. Mer information finns i [skapa eller uppdatera anpassade Azure-roller med hjälp av Azure CLI](custom-roles-cli.md).
+1. Använd [az role definition list för att](/cli/azure/role/definition#az_role_definition_list) lista dina anpassade roller. Mer information finns i Skapa [eller uppdatera anpassade Azure-roller med Hjälp av Azure CLI.](custom-roles-cli.md)
 
     ```azurecli
     az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
     ```
 
-1. Spara varje anpassad roll som du behöver i mål katalogen som en separat JSON-fil.
+1. Spara varje anpassad roll som du behöver i målkatalogen som en separat JSON-fil.
 
     ```azurecli
     az role definition list --name <custom_role_name> > customrolename.json
     ```
 
-1. Gör kopior av filerna för anpassade roller.
+1. Gör kopior av de anpassade rollfilerna.
 
-1. Ändra varje kopia om du vill använda följande format.
+1. Ändra varje kopia så att den använder följande format.
 
-    Du kommer att använda de här filerna senare för att återskapa de anpassade rollerna i mål katalogen.
+    Du kommer att använda de här filerna senare för att skapa om de anpassade rollerna i målkatalogen.
 
     ```json
     {
@@ -180,82 +180,82 @@ Du behöver följande för att slutföra de här stegen:
     }
     ```
 
-### <a name="determine-user-group-and-service-principal-mappings"></a>Ange mappningar för användare, grupp och tjänst huvud namn
+### <a name="determine-user-group-and-service-principal-mappings"></a>Fastställa mappningar av användare, grupper och tjänstens huvudnamn
 
-1. Baserat på din lista över roll tilldelningar bestämmer du de användare, grupper och tjänstens huvud namn som du ska mappa till i mål katalogen.
+1. Baserat på din lista över rolltilldelningar bestämmer du vilka användare, grupper och tjänsthuvudnamn som du ska mappa till i målkatalogen.
 
-    Du kan identifiera typen av huvud namn genom att titta på `principalType` egenskapen i varje roll tilldelning.
+    Du kan identifiera typen av huvudnamn genom att titta på `principalType` egenskapen i varje rolltilldelning.
 
-1. Om det behövs skapar du alla användare, grupper eller tjänst huvud namn du behöver i mål katalogen.
+1. Om det behövs skapar du alla användare, grupper eller tjänstens huvudnamn som du behöver i målkatalogen.
 
-### <a name="list-role-assignments-for-managed-identities"></a>Lista roll tilldelningar för hanterade identiteter
+### <a name="list-role-assignments-for-managed-identities"></a>Visa en lista över rolltilldelningar för hanterade identiteter
 
-Hanterade identiteter uppdateras inte när en prenumeration överförs till en annan katalog. Det innebär att alla befintliga systemtilldelade eller användarspecifika hanterade identiteter bryts. Efter överföringen kan du återaktivera alla systemtilldelade hanterade identiteter. För användare som tilldelats hanterade identiteter måste du skapa dem på nytt och bifoga dem i mål katalogen.
+Hanterade identiteter uppdateras inte när en prenumeration överförs till en annan katalog. Därför kommer alla befintliga system-tilldelade eller användar tilldelade hanterade identiteter att brytas. Efter överföringen kan du återaktivera alla system tilldelade hanterade identiteter. För användar tilldelade hanterade identiteter måste du skapa dem igen och koppla dem i målkatalogen.
 
-1. Granska [listan över Azure-tjänster som har stöd för hanterade identiteter](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) för att notera var du kan använda hanterade identiteter.
+1. Granska listan [över Azure-tjänster som stöder hanterade identiteter](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) och notera var du kan använda hanterade identiteter.
 
-1. Använd [AZ AD SP-lista](/cli/azure/ad/sp#az_ad_sp_list) för att visa en lista över tilldelade och användarspecifika hanterade identiteter.
+1. Använd [az ad sp list för](/cli/azure/ad/sp#az_ad_sp_list) att lista dina system-tilldelade och användar-tilldelade hanterade identiteter.
 
     ```azurecli
     az ad sp list --all --filter "servicePrincipalType eq 'ManagedIdentity'"
     ```
 
-1. I listan över hanterade identiteter fastställer du vilka som är systemtilldelade och vilka som är tilldelade till användaren. Du kan använda följande kriterier för att fastställa typen.
+1. I listan över hanterade identiteter bestämmer du vilka som är system-tilldelade och vilka som är användar tilldelade. Du kan använda följande kriterier för att fastställa typen.
 
-    | Kriterie | Hanterad identitets typ |
+    | Kriterie | Hanterad identitetstyp |
     | --- | --- |
-    | `alternativeNames` egenskapen innehåller `isExplicit=False` | Systemtilldelad |
-    | `alternativeNames` Egenskapen omfattar inte `isExplicit` | Systemtilldelad |
-    | `alternativeNames` egenskapen innehåller `isExplicit=True` | Tilldelade användare |
+    | `alternativeNames` egenskapen innehåller `isExplicit=False` | System-tilldelad |
+    | `alternativeNames` egenskapen inkluderar inte `isExplicit` | System-tilldelad |
+    | `alternativeNames` egenskapen innehåller `isExplicit=True` | Användar tilldelad |
 
-    Du kan också använda [AZ Identity List](/cli/azure/identity#az_identity_list) för att bara lista användare tilldelade hanterade identiteter. Mer information finns i [skapa, lista eller ta bort en användardefinierad hanterad identitet med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md).
+    Du kan också använda [az identity list för](/cli/azure/identity#az_identity_list) att bara lista användar-tilldelade hanterade identiteter. Mer information finns i [Skapa, visa eller ta bort en användar tilldelad hanterad identitet med hjälp av Azure CLI.](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)
 
     ```azurecli
     az identity list
     ```
 
-1. Hämta en lista över `objectId` värdena för dina hanterade identiteter.
+1. Hämta en lista över värdena `objectId` för dina hanterade identiteter.
 
-1. Sök i listan över roll tilldelningar för att se om det finns några roll tilldelningar för dina hanterade identiteter.
+1. Sök i listan över rolltilldelningar för att se om det finns några rolltilldelningar för dina hanterade identiteter.
 
-### <a name="list-key-vaults"></a>Visa en lista över nyckel valv
+### <a name="list-key-vaults"></a>Visa en lista över nyckelvalv
 
-När du skapar ett nyckel valv knyts det automatiskt till standard Azure Active Directory klient-ID: t för den prenumeration som den skapas i. Alla åtkomstprincipposter knyts också till detta klient-ID. Mer information finns i [flytta en Azure Key Vault till en annan prenumeration](../key-vault/general/move-subscription.md).
+När du skapar ett nyckelvalv är det automatiskt kopplat till Azure Active Directory klientorganisations-ID för prenumerationen som det skapas i. Alla åtkomstprincipposter knyts också till detta klient-ID. Mer information finns i Flytta [en Azure Key Vault till en annan prenumeration.](../key-vault/general/move-subscription.md)
 
 > [!WARNING]
-> Om du använder kryptering i vila för en resurs, till exempel ett lagrings konto eller en SQL-databas, som har ett beroende av ett nyckel valv som **inte** finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckel valv eller tillfälligt inaktivera Kundhanterade nycklar för att undvika det här oåterkalleliga scenariot.
+> Om du använder kryptering i vila för en resurs, till exempel ett lagringskonto eller  en SQL-databas, som är beroende av ett nyckelvalv som inte finns i samma prenumeration som överförs, kan det leda till ett oåterkalleligt scenario. Om du har den här situationen bör du vidta åtgärder för att använda ett annat nyckelvalv eller tillfälligt inaktivera kund hanterade nycklar för att undvika det här oåterkalleliga scenariot.
 
-- Om du har ett nyckel valv ska du använda [AZ Key Vault show](/cli/azure/keyvault#az_keyvault_show) för att visa en lista över åtkomst principerna. Mer information finns i [tilldela en Key Vault åtkomst princip](../key-vault/general/assign-access-policy-cli.md).
+- Om du har ett nyckelvalv använder du [az keyvault show för](/cli/azure/keyvault#az_keyvault_show) att lista åtkomstprinciperna. Mer information finns i Tilldela [en Key Vault åtkomstprincip.](../key-vault/general/assign-access-policy-cli.md)
 
     ```azurecli
     az keyvault show --name MyKeyVault
     ```
 
-### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Visa en lista över Azure SQL-databaser med Azure AD-autentisering
+### <a name="list-azure-sql-databases-with-azure-ad-authentication"></a>Lista Azure SQL databaser med Azure AD-autentisering
 
-- Använd [AZ SQL Server AD-admin List](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) och [AZ Graph](/cli/azure/ext/resource-graph/graph) -tillägget för att se om du använder Azure SQL-databaser med Azure AD-autentisering aktive rad. Mer information finns i [Konfigurera och hantera Azure Active Directory autentisering med SQL](../azure-sql/database/authentication-aad-configure.md).
+- Använd [az sql server ad-admin list](/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) och az [graph-tillägget](/cli/azure/graph) för att se om du använder Azure SQL med Azure AD-autentiseringsintegrering aktiverat. Mer information finns i Konfigurera [och hantera Azure Active Directory autentisering med SQL](../azure-sql/database/authentication-aad-configure.md).
 
     ```azurecli
     az sql server ad-admin list --ids $(az graph query -q 'resources | where type == "microsoft.sql/servers" | project id' -o tsv | cut -f1)
     ```
 
-### <a name="list-acls"></a>Lista ACL: er
+### <a name="list-acls"></a>Lista ACL:er
 
-1. Om du använder Azure Data Lake Storage Gen1 listar du de ACL: er som tillämpas på alla filer med hjälp av Azure Portal eller PowerShell.
+1. Om du använder Azure Data Lake Storage Gen1 listar du de ACL:er som tillämpas på en fil med hjälp av Azure Portal eller PowerShell.
 
-1. Om du använder Azure Data Lake Storage Gen2 listar du de ACL: er som tillämpas på alla filer med hjälp av Azure Portal eller PowerShell.
+1. Om du använder en Azure Data Lake Storage Gen2 listar du de ACL:er som tillämpas på en fil med hjälp av Azure Portal eller PowerShell.
 
-1. Om du använder Azure Files listar du de ACL: er som används för alla filer.
+1. Om du använder en Azure Files lista de ACL:er som tillämpas på alla filer.
 
 ### <a name="list-other-known-resources"></a>Lista andra kända resurser
 
-1. Använd [AZ konto show](/cli/azure/account#az_account_show) för att hämta ditt PRENUMERATIONS-ID.
+1. Använd [az account show för](/cli/azure/account#az_account_show) att hämta ditt prenumerations-ID.
 
     ```azurecli
     subscriptionId=$(az account show --query id | sed -e 's/^"//' -e 's/"$//')
     ```
 
-1. Använd [AZ Graph](/cli/azure/ext/resource-graph/graph) -tillägget för att visa andra Azure-resurser med kända Azure AD Directory-beroenden.
+1. Använd [tillägget az graph för](/cli/azure/graph) att lista andra Azure-resurser med kända Azure AD-katalogberoenden.
 
     ```azurecli
     az graph query -q \
@@ -263,37 +263,37 @@ När du skapar ett nyckel valv knyts det automatiskt till standard Azure Active 
     --subscriptions $subscriptionId --output table
     ```
 
-## <a name="step-2-transfer-the-subscription"></a>Steg 2: överför prenumerationen
+## <a name="step-2-transfer-the-subscription"></a>Steg 2: Överför prenumerationen
 
-I det här steget överför du prenumerationen från käll katalogen till mål katalogen. Stegen är olika beroende på om du vill överföra fakturerings ägarskapet.
+I det här steget överför du prenumerationen från källkatalogen till målkatalogen. Stegen skiljer sig beroende på om du även vill överföra faktureringsägarskapet.
 
 > [!WARNING]
-> När du överför prenumerationen tas alla roll tilldelningar i käll katalogen bort **permanent** och kan inte återställas. Du kan inte gå tillbaka när du har överfört prenumerationen. Se till att slutföra de föregående stegen innan du utför det här steget.
+> När du överför prenumerationen tas alla rolltilldelningar i **källkatalogen bort permanent** och kan inte återställas. Du kan inte gå tillbaka när du överför prenumerationen. Se till att du slutför föregående steg innan du utför det här steget.
 
-1. Avgör om du även vill överföra fakturerings ägandet till ett annat konto.
+1. Avgör om du även vill överföra faktureringsägarskapet till ett annat konto.
 
 1. Överför prenumerationen till en annan katalog.
 
-    - Om du vill behålla den aktuella fakturerings äganden följer du stegen i [associera eller lägga till en Azure-prenumeration i Azure Active Directory klient organisationen](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
-    - Om du även vill överföra fakturerings ägarskapet följer du stegen i [överföra fakturerings ägandet för en Azure-prenumeration till ett annat konto](../cost-management-billing/manage/billing-subscription-transfer.md). Om du vill överföra prenumerationen till en annan katalog måste du markera kryss rutan **prenumeration för Azure AD-klient** .
+    - Om du vill behålla det aktuella faktureringsägarskapet följer du stegen i Associera eller lägga till en Azure-prenumeration till [din Azure Active Directory klientorganisation.](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+    - Om du även vill överföra faktureringsägarskapet följer du stegen i Överföra [faktureringsägarskap för en Azure-prenumeration till ett annat konto.](../cost-management-billing/manage/billing-subscription-transfer.md) Om du vill överföra prenumerationen till en annan katalog måste du markera kryssrutan **Prenumeration på Azure AD-klientorganisation.**
 
-1. När du har överfört prenumerationen kan du gå tillbaka till den här artikeln och återskapa resurserna i mål katalogen.
+1. När du har överfört prenumerationen återgår du till den här artikeln för att skapa resurserna i målkatalogen igen.
 
-## <a name="step-3-re-create-resources"></a>Steg 3: återskapa resurser
+## <a name="step-3-re-create-resources"></a>Steg 3: Skapa resurser på nytt
 
-### <a name="sign-in-to-target-directory"></a>Logga in på mål katalogen
+### <a name="sign-in-to-target-directory"></a>Logga in på målkatalogen
 
-1. Logga in som den användare som godkände överföringsbegäran i mål katalogen.
+1. I målkatalogen loggar du in som den användare som godkände överföringsbegäran.
 
-    Endast användaren i det nya kontot som godkände överföringsbegäran får åtkomst till att hantera resurserna.
+    Endast den användare i det nya kontot som godkände överföringsbegäran har åtkomst till att hantera resurserna.
 
-1. Hämta en lista över dina prenumerationer med kommandot [AZ Account List](/cli/azure/account#az_account_list) .
+1. Hämta en lista över dina prenumerationer med [kommandot az account list.](/cli/azure/account#az_account_list)
 
     ```azurecli
     az account list --output table
     ```
 
-1. Använd [AZ konto uppsättning](/cli/azure/account#az_account_set) för att ange den aktiva prenumeration som du vill använda.
+1. Använd [az account set för](/cli/azure/account#az_account_set) att ange den aktiva prenumeration som du vill använda.
 
     ```azurecli
     az account set --subscription "Contoso"
@@ -301,7 +301,7 @@ I det här steget överför du prenumerationen från käll katalogen till mål k
 
 ### <a name="create-custom-roles"></a>Skapa anpassade roller
         
-- Använd [AZ roll definition Create](/cli/azure/role/definition#az_role_definition_create) för att skapa varje anpassad roll från de filer som du skapade tidigare. Mer information finns i [skapa eller uppdatera anpassade Azure-roller med hjälp av Azure CLI](custom-roles-cli.md).
+- Använd [az role definition create för](/cli/azure/role/definition#az_role_definition_create) att skapa varje anpassad roll från de filer som du skapade tidigare. Mer information finns i Skapa [eller uppdatera anpassade Azure-roller med Hjälp av Azure CLI.](custom-roles-cli.md)
 
     ```azurecli
     az role definition create --role-definition <role_definition>
@@ -309,75 +309,75 @@ I det här steget överför du prenumerationen från käll katalogen till mål k
 
 ### <a name="assign-roles"></a>Tilldela roller
 
-- Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till användare, grupper och tjänstens huvud namn. Mer information finns i [tilldela Azure-roller med Azure CLI](role-assignments-cli.md).
+- Använd [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till användare, grupper och tjänstens huvudnamn. Mer information finns i Tilldela [Azure-roller med hjälp av Azure CLI.](role-assignments-cli.md)
 
     ```azurecli
     az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
     ```
 
-### <a name="update-system-assigned-managed-identities"></a>Uppdatera systemtilldelade hanterade identiteter
+### <a name="update-system-assigned-managed-identities"></a>Uppdatera system tilldelade hanterade identiteter
 
-1. Inaktivera och återaktivera systemtilldelade hanterade identiteter.
+1. Inaktivera och återaktivera system tilldelade hanterade identiteter.
 
     | Azure-tjänst | Mer information | 
     | --- | --- |
-    | Virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
-    | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en skalnings uppsättning för virtuella datorer med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
+    | Virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#system-assigned-managed-identity) |
+    | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en VM-skalningsuppsättning med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#system-assigned-managed-identity) |
     | Övriga tjänster | [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) |
 
-1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till systemtilldelade hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Använd [az role assignment create för](/cli/azure/role/assignment#az_role_assignment_create) att tilldela roller till system tilldelade hanterade identiteter. Mer information finns i Tilldela [en hanterad identitet åtkomst till en resurs med hjälp av Azure CLI.](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
     ```
 
-### <a name="update-user-assigned-managed-identities"></a>Uppdatera användare tilldelade hanterade identiteter
+### <a name="update-user-assigned-managed-identities"></a>Uppdatera användar tilldelade hanterade identiteter
 
-1. Ta bort, återskapa och bifoga användarspecifika hanterade identiteter.
+1. Ta bort, skapa om och bifoga användar tilldelade hanterade identiteter.
 
     | Azure-tjänst | Mer information | 
     | --- | --- |
-    | Virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
-    | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en skalnings uppsättning för virtuella datorer med Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
-    | Övriga tjänster | [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Skapa, Visa eller ta bort en användardefinierad hanterad identitet med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
+    | Virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en virtuell Azure-dator med Hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity) |
+    | Skalningsuppsättningar för virtuella datorer | [Konfigurera hanterade identiteter för Azure-resurser på en VM-skalningsuppsättning med Hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vmss.md#user-assigned-managed-identity) |
+    | Övriga tjänster | [Tjänster som stöder hanterade identiteter för Azure-resurser](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md)<br/>[Skapa, visa eller ta bort en användar tilldelad hanterad identitet med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md) |
 
-1. Använd [AZ roll tilldelning skapa](/cli/azure/role/assignment#az_role_assignment_create) för att tilldela roller till användare tilldelade hanterade identiteter. Mer information finns i [tilldela en hanterad identitets åtkomst till en resurs med hjälp av Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md).
+1. Använd [az role assignment create för](/cli/azure/role/assignment#az_role_assignment_create) att tilldela roller till användartilldelning av hanterade identiteter. Mer information finns i Tilldela [en hanterad identitet åtkomst till en resurs med hjälp av Azure CLI.](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
     ```azurecli
     az role assignment create --assignee <objectid> --role '<role_name_or_id>' --scope <scope>
     ```
 
-### <a name="update-key-vaults"></a>Uppdatera nyckel valv
+### <a name="update-key-vaults"></a>Uppdatera nyckelvalv
 
-I det här avsnittet beskrivs de grundläggande stegen för att uppdatera nyckel valven. Mer information finns i [flytta en Azure Key Vault till en annan prenumeration](../key-vault/general/move-subscription.md).
+I det här avsnittet beskrivs de grundläggande stegen för att uppdatera dina nyckelvalv. Mer information finns i Flytta [en Azure Key Vault till en annan prenumeration.](../key-vault/general/move-subscription.md)
 
-1. Uppdatera klient-ID: t som är associerat med alla befintliga nyckel valv i prenumerationen till mål katalogen.
+1. Uppdatera det klient-ID som är associerat med alla befintliga nyckelvalv i prenumerationen till målkatalogen.
 
 1. Ta bort alla åtkomstprincipposter.
 
-1. Lägg till nya åtkomst princip poster som är associerade med mål katalogen.
+1. Lägg till nya åtkomstprincipposter som är associerade med målkatalogen.
 
-### <a name="update-acls"></a>Uppdatera ACL: er
+### <a name="update-acls"></a>Uppdatera ACL:er
 
-1. Om du använder Azure Data Lake Storage Gen1 tilldelar du lämpliga ACL: er. Mer information finns i [skydda data som lagras i Azure Data Lake Storage gen1](../data-lake-store/data-lake-store-secure-data.md).
+1. Om du använder en Azure Data Lake Storage Gen1 tilldelar du lämpliga ACL:er. Mer information finns i Skydda [data som lagras i Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-secure-data.md).
 
-1. Om du använder Azure Data Lake Storage Gen2 tilldelar du lämpliga ACL: er. Mer information finns i [Åtkomstkontroll i Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
+1. Om du använder en Azure Data Lake Storage Gen2 tilldelar du lämpliga ACL:er. Mer information finns i [Åtkomstkontroll i Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-access-control.md).
 
-1. Om du använder Azure Files tilldelar du lämpliga ACL: er.
+1. Om du använder en Azure Files tilldelar du lämpliga ACL:er.
 
-### <a name="review-other-security-methods"></a>Granska andra säkerhets metoder
+### <a name="review-other-security-methods"></a>Granska andra säkerhetsmetoder
 
-Även om roll tilldelningar tas bort under överföringen kan användare i det ursprungliga ägar kontot fortsätta att ha åtkomst till prenumerationen via andra säkerhets metoder, inklusive:
+Även om rolltilldelningar tas bort under överföringen kan användare i det ursprungliga ägarkontot fortsätta att ha åtkomst till prenumerationen via andra säkerhetsmetoder, inklusive:
 
 - Åtkomstnycklar för tjänster såsom Storage.
-- [Hanterings certifikat](../cloud-services/cloud-services-certs-create.md) som ger användare administratörs åtkomst till prenumerations resurser.
+- [Hanteringscertifikat](../cloud-services/cloud-services-certs-create.md) som ger användaradministratören åtkomst till prenumerationsresurser.
 - Autentiseringsuppgifter för fjärråtkomst för tjänster såsom Azure Virtual Machines.
 
-Om avsikten är att ta bort åtkomst från användare i käll katalogen så att de inte har åtkomst till mål katalogen, bör du överväga att rotera eventuella autentiseringsuppgifter. Användarna fortsätter att ha åtkomst efter överföringen tills autentiseringsuppgifterna har uppdaterats.
+Om din avsikt är att ta bort åtkomst från användare i källkatalogen så att de inte har åtkomst i målkatalogen bör du överväga att rotera eventuella autentiseringsuppgifter. Tills autentiseringsuppgifterna har uppdaterats fortsätter användarna att ha åtkomst efter överföringen.
 
-1. Rotera åtkomst nycklar för lagrings kontot. Mer information finns i [Hantera åtkomst nycklar för lagrings konton](../storage/common/storage-account-keys-manage.md).
+1. Rotera åtkomstnycklar för lagringskonto. Mer information finns i Hantera [åtkomstnycklar för lagringskonto.](../storage/common/storage-account-keys-manage.md)
 
-1. Om du använder åtkomst nycklar för andra tjänster som Azure SQL Database eller Azure Service Bus meddelanden, rotera åtkomst nycklar.
+1. Om du använder åtkomstnycklar för andra tjänster, till exempel Azure SQL Database eller Azure Service Bus-meddelanden, roterar du åtkomstnycklar.
 
 1. För resurser som använder hemligheter öppnar du inställningarna för resursen och uppdaterar hemligheten.
 

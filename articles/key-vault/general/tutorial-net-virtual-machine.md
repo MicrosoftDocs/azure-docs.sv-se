@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/17/2021
 ms.author: mbaldwin
 ms.custom: mvc, devx-track-csharp, devx-track-azurepowershell
-ms.openlocfilehash: c08d0c210e992cba5bca2695fda0bcf08c4689dc
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ba299ff52ccdf811d739efdb1d379889444a02b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772099"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868401"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-virtual-machine-in-net"></a>Självstudie: Använda Azure Key Vault med en virtuell dator i .NET
 
@@ -138,13 +138,13 @@ Skapa en konsolapp och installera de nödvändiga paketen med hjälp av `dotnet`
 
 ### <a name="install-net-core"></a>Installera .NET Core
 
-Om du vill installera .NET Core går du till [sidan för .NET-nedladdningar.](https://www.microsoft.com/net/download)
+Om du vill installera .NET Core går du till [nedladdningssidan för .NET.](https://dotnet.microsoft.com/download)
 
 ### <a name="create-and-run-a-sample-net-app"></a>Skapa och köra en .NET-exempelapp
 
 Öppna en kommandotolk.
 
-Du kan skriva ut Hello World till konsolen genom att köra följande kommandon:
+Du kan skriva Hello World till konsolen genom att köra följande kommandon:
 
 ```console
 dotnet new console -n keyvault-console-app

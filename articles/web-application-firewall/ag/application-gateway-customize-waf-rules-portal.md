@@ -1,71 +1,65 @@
 ---
-title: Anpassa regler med hjälp av Portal – Azure Web Application-brandvägg
-description: Den här artikeln innehåller information om hur du anpassar brand Väggs regler för webb program i Application Gateway med Azure Portal.
+title: Anpassa regler med hjälp av portalen – Azure Web Application Firewall
+description: Den här artikeln innehåller information om hur du anpassar Web Application Firewall i Application Gateway med Azure Portal.
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 11/14/2019
+ms.date: 04/21/2021
 ms.author: victorh
 ms.topic: article
-ms.openlocfilehash: c4635333614ee1c0fd0322c29a659380fb4315c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ab122d178e5390a53e5a3a39f1b7763b298dc6d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "74048367"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878334"
 ---
-# <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Anpassa brand Väggs regler för webb program med hjälp av Azure Portal
+# <a name="customize-web-application-firewall-rules-using-the-azure-portal"></a>Anpassa Web Application Firewall med hjälp av Azure Portal
 
-Brand väggen för webbaserade program (WAF) i Azure Application Gateway tillhandahåller skydd för webb program. Dessa skydd tillhandahålls av OWASP (Open Web Application Security Project) Core regel set (DATORISERAt). Vissa regler kan orsaka falska positiva identifieringar och blockera verklig trafik. Därför ger Application Gateway möjlighet att anpassa regel grupper och regler. Mer information om de specifika regel grupperna och reglerna finns i [lista över regel grupper och regler för webb programs brand vägg](application-gateway-crs-rulegroups-rules.md)
+Den Azure Application Gateway Web Application Firewall (WAF) ger skydd för webbprogram. Dessa skydd tillhandahålls av Open Web Application Security Project (OWASP) Core Rule Set (CRS). Vissa regler kan orsaka falska positiva resultat och blockera verklig trafik. Därför ger Application Gateway möjlighet att anpassa regelgrupper och regler. Mer information om specifika regelgrupper och regler finns i Lista över Web Application Firewall [CRS-regelgrupper och -regler.](application-gateway-crs-rulegroups-rules.md)
 
 >[!NOTE]
-> Om din Application Gateway inte använder WAF-nivån visas alternativet för att uppgradera programgatewayen till WAF-nivån i den högra rutan. 
+> Om programgatewayen inte använder WAF-nivån visas alternativet för att uppgradera programgatewayen till WAF-nivån i den högra rutan. 
 
-![Aktivera WAF][fig1]
+:::image type="content" source="../media/application-gateway-customize-waf-rules-portal/1.png" alt-text="Aktivera WAF"::: 
 
-## <a name="view-rule-groups-and-rules"></a>Visa regel grupper och regler
+## <a name="view-rule-groups-and-rules"></a>Visa regelgrupper och regler
 
-**Visa regel grupper och regler**
-1. Bläddra till programgatewayen och välj sedan **brand vägg för webbaserade program**.  
-2. Välj din **WAF-princip**.
-2. Välj **hanterade regler**.
+**Visa regelgrupper och regler**
+1. Bläddra till programgatewayen och välj sedan **Brandvägg för webbaserade program.**  
+2. Välj **WAF-princip.**
+2. Välj **Hanterade regler.**
 
-   I den här vyn visas en tabell på sidan för alla regel grupper som ingår i den valda regel uppsättningen. Alla kryss rutor för regeln är markerade.
+   Den här vyn visar en tabell på sidan för alla regelgrupper som medföljer den valda regeluppsättningen. Alla kryssrutor för regeln är markerade.
 
-## <a name="disable-rule-groups-and-rules"></a>Inaktivera regel grupper och regler
+## <a name="disable-rule-groups-and-rules"></a>Inaktivera regelgrupper och regler
 
 > [!IMPORTANT]
-> Var försiktig när du inaktiverar regel grupper eller regler. Detta kan innebära ökad säkerhets risk.
+> Var försiktig när du inaktiverar regelgrupper eller regler. Detta kan medföra ökade säkerhetsrisker.
 
-När du inaktiverar regler kan du inaktivera en hel regel grupp eller vissa regler under en eller flera regel grupper. 
+**Inaktivera regelgrupper eller specifika regler**
 
-**Så här inaktiverar du regel grupper eller vissa regler**
-
-   1. Sök efter de regler eller regel grupper som du vill inaktivera.
-   2. Markera kryss rutorna för de regler som du vill inaktivera. 
+   1. Sök efter de regler eller regelgrupper som du vill inaktivera.
+   2. Markera kryssrutorna för de regler som du vill inaktivera. 
    3. Välj åtgärden överst på sidan (aktivera/inaktivera) för de valda reglerna.
-   2. Välj **Spara**. 
-
-![Spara ändringar][3]
+   2. Välj **Spara**.
+    :::image type="content" source="../media/application-gateway-customize-waf-rules-portal/figure3.png" alt-text="Spara inaktiverade regler"::: 
 
 ## <a name="mandatory-rules"></a>Obligatoriska regler
 
-Följande lista innehåller villkor som gör att WAF blockerar begäran i förebyggande läge. I identifierings läge är de loggade som undantag.
+Följande lista innehåller villkor som gör att WAF blockerar begäran i skyddsläge. I identifieringsläget loggas de som undantag.
 
-De kan inte konfigureras eller inaktive ras:
+Dessa kan inte konfigureras eller inaktiveras:
 
-* Det gick inte att parsa begär ande bröd texten i begäran som blockeras, om inte kontroll av brödtext är inaktive rad (XML, JSON, formulär data)
-* Begär ande text (utan filer) data längden är större än den konfigurerade gränsen
-* Begär ande texten (inklusive filer) är större än gränsen
-* Ett internt fel uppstod i WAF-motorn
+* Om begärandetexten inte parsas blockeras begäran, såvida inte brödtextgranskning är inaktiverad (XML, JSON, formulärdata)
+* Datalängden för begärandetexten (utan filer) är större än den konfigurerade gränsen
+* Begärandetexten (inklusive filer) är större än gränsen
+* Ett internt fel inträffade i WAF-motorn
 
-Datoriserat boknings system 3. x:
+CRS 3.x-specifik:
 
-* Inkommande avvikelse Poäng överskred tröskelvärdet
+* Inkommande avvikelsepoäng överskred tröskelvärdet
 
 ## <a name="next-steps"></a>Nästa steg
 
-När du har konfigurerat dina inaktiverade regler kan du lära dig hur du visar dina WAF-loggar. Mer information finns i [Application Gateway Diagnostics](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).
-
-[fig1]: ../media/application-gateway-customize-waf-rules-portal/1.png
-[3]: ../media/application-gateway-customize-waf-rules-portal/figure3.png
+När du har konfigurerat dina inaktiverade regler kan du lära dig hur du visar WAF-loggarna. Mer information finns i [Application Gateway diagnostik](../../application-gateway/application-gateway-diagnostics.md#diagnostic-logging).

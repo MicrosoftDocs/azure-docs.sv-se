@@ -1,101 +1,101 @@
 ---
-title: Skapa ett innehålls bibliotek för att distribuera virtuella datorer i Azure VMware-lösningen
-description: Skapa ett innehålls bibliotek för att distribuera en virtuell dator i ett privat moln i Azure VMware-lösningen.
+title: Skapa ett innehållsbibliotek för att distribuera virtuella datorer i Azure VMware Solution
+description: Skapa ett innehållsbibliotek för att distribuera en virtuell dator i ett Azure VMware Solution privat moln.
 ms.topic: how-to
 ms.date: 02/03/2021
-ms.openlocfilehash: a50b12ef8e139bf7de171398fd28f74fc3f310c9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b27d2682d8799bec6b09a08e5063359113b20a88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382012"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873891"
 ---
-# <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Skapa ett innehålls bibliotek för att distribuera virtuella datorer i Azure VMware-lösningen
+# <a name="create-a-content-library-to-deploy-vms-in-azure-vmware-solution"></a>Skapa ett innehållsbibliotek för att distribuera virtuella datorer i Azure VMware Solution
 
-Ett innehålls bibliotek lagrar och hanterar innehåll i form av biblioteks objekt. Ett enda biblioteks objekt består av en eller flera filer som du använder för att distribuera virtuella datorer (VM). 
+Ett innehållsbibliotek lagrar och hanterar innehåll i form av biblioteksobjekt. Ett enskilt biblioteksobjekt består av en eller flera filer som du använder för att distribuera virtuella datorer (VM). 
 
-I den här artikeln går vi igenom proceduren för att skapa ett innehålls bibliotek.  Sedan kommer vi att gå igenom distributionen av en virtuell dator med en ISO-avbildning från innehålls biblioteket.
+I den här artikeln går vi igenom proceduren för att skapa ett innehållsbibliotek.  Sedan går vi igenom hur du distribuerar en virtuell dator med hjälp av en ISO-avbildning från innehållsbiblioteket.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-Ett NSX-T-segment (logisk växel) och en hanterad DHCP-tjänst krävs för att slutföra den här självstudien.  Mer information finns i artikeln [Hantera DHCP i Azure VMware Solution](manage-dhcp.md) .
+Ett NSX-T-segment (logisk växel) och en hanterad DHCP-tjänst krävs för att slutföra den här självstudien.  Mer information finns i artikeln [Så här hanterar du DHCP i Azure VMware Solution.](manage-dhcp.md)
 
-## <a name="create-a-content-library"></a>Skapa ett innehålls bibliotek
+## <a name="create-a-content-library"></a>Skapa ett innehållsbibliotek
 
-1. Från den lokala vSphere-klienten väljer du **meny > innehålls bibliotek**.
+1. Från den lokala vSphere-klienten väljer du **Meny för >-innehållsbibliotek.**
 
-   ![Välj Meny-> innehålls bibliotek](./media/content-library/vsphere-menu-content-libraries.png)
+   ![Välj meny – > innehållsbibliotek](./media/content-library/vsphere-menu-content-libraries.png)
 
-1. Välj knappen **Lägg till** för att skapa ett nytt innehålls bibliotek.
+1. Välj knappen **Lägg till** för att skapa ett nytt innehållsbibliotek.
 
-   ![Välj knappen Lägg till för att skapa ett nytt innehålls bibliotek.](./media/content-library/create-new-content-library.png)
+   ![Välj knappen Lägg till för att skapa ett nytt innehållsbibliotek.](./media/content-library/create-new-content-library.png)
 
-1. Ange ett namn och bekräfta IP-adressen för vCenter-servern och välj **Nästa**.
+1. Ange ett namn och bekräfta IP-adressen för vCenter-servern och välj **Nästa.**
 
-   ![Ange ett namn och en anteckning om ditt val och välj sedan Nästa.](./media/content-library/new-content-library-step1.png)
+   ![Ange ett val av namn och anteckningar och välj sedan Nästa.](./media/content-library/new-content-library-step1.png)
 
-1. Välj det **lokala innehålls biblioteket** och välj **Nästa**.
+1. Välj det **lokala innehållsbiblioteket** och välj **Nästa.**
 
-   ![I det här exemplet ska vi skapa ett lokalt innehålls bibliotek och välja nästa.](./media/content-library/new-content-library-step2.png)
+   ![I det här exemplet ska vi skapa ett lokalt innehållsbibliotek och välja Nästa.](./media/content-library/new-content-library-step2.png)
 
-1. Välj det data lager som ska lagra innehålls biblioteket och välj sedan **Nästa**.
+1. Välj det datalager som ska lagra innehållsbiblioteket och välj sedan **Nästa.**
 
-   ![Välj det data lager som du vill använda som värd för innehålls biblioteket, välj Nästa.](./media/content-library/new-content-library-step3.png)
+   ![Välj det datalager som du vill använda som värd för innehållsbiblioteket och välj nästa.](./media/content-library/new-content-library-step3.png)
 
-1. Granska och verifiera inställningarna för innehålls bibliotek och välj sedan **Slutför**.
+1. Granska och verifiera inställningarna för innehållsbiblioteket och välj sedan **Slutför**.
 
-   ![Verifiera inställningarna och välj Slutför.](./media/content-library/new-content-library-step4.png)
+   ![Verifiera dina inställningar och välj Slutför.](./media/content-library/new-content-library-step4.png)
 
-## <a name="upload-an-iso-image-to-the-content-library"></a>Ladda upp en ISO-avbildning till innehålls biblioteket
+## <a name="upload-an-iso-image-to-the-content-library"></a>Ladda upp en ISO-avbildning till innehållsbiblioteket
 
-Nu när innehålls biblioteket har skapats kan du lägga till en ISO-avbildning för att distribuera en virtuell dator till ett privat moln kluster. 
+Nu när innehållsbiblioteket har skapats kan du lägga till en ISO-avbildning för att distribuera en virtuell dator till ett privat molnkluster. 
 
-1. Välj **meny > innehålls bibliotek** i vSphere-klienten.
+1. Från vSphere-klienten väljer du **Meny > Innehållsbibliotek**.
 
-1. Högerklicka på det innehålls bibliotek som du vill använda för den nya ISO-filen och välj **Importera objekt**.
+1. Högerklicka på det innehållsbibliotek som du vill använda för den nya ISO-filen och välj **Importera objekt.**
 
-1. Importera ett biblioteks objekt för källan genom att göra något av följande och välj sedan **Importera**:
-   1. Välj URL och ange en URL för att ladda ned en ISO-fil.
+1. Importera ett biblioteksobjekt för källan genom att göra något av följande och välj sedan **Importera**:
+   1. Välj URL och ange en URL för att ladda ned en ISO.
 
-   1. Välj **lokal fil** att ladda upp från det lokala systemet.
+   1. Välj **Lokal fil att** ladda upp från ditt lokala system.
 
    > [!TIP]
-   > Valfritt kan du definiera ett anpassat objekt namn och noteringar för målet.
+   > Du kan också definiera ett anpassat objektnamn och anteckningar för målet.
 
-1. Öppna biblioteket och välj fliken **andra typer** för att kontrol lera att din ISO-överföring har laddats upp.
+1. Öppna biblioteket och välj fliken **Andra typer** för att kontrollera att DIN ISO har laddats upp.
 
 
-## <a name="deploy-a-vm-to-a-private-cloud-cluster"></a>Distribuera en virtuell dator till ett privat moln kluster
+## <a name="deploy-a-vm-to-a-private-cloud-cluster"></a>Distribuera en virtuell dator till ett privat molnkluster
 
-1. Från vSphere-klienten väljer du **meny > värdar och kluster**.
+1. Från vSphere-klienten väljer du **Meny för > värdar och kluster.**
 
 1. I den vänstra panelen expanderar du trädet och väljer ett kluster.
 
-1. Välj **åtgärder > ny virtuell dator**.
+1. Välj **Åtgärder > Ny virtuell dator**.
 
-1. Gå igenom guiden och ändra de inställningar som du vill använda.
+1. Gå igenom guiden och ändra de inställningar du vill ha.
 
-1. Välj **ny CD/DVD-enhet > klienten het > innehålls bibliotekets ISO-fil**.
+1. Välj **Ny CD/DVD-enhet > klientenhet > ISO-fil för innehållsbiblioteket.**
 
-1. Välj den ISO som överfördes i föregående avsnitt och välj sedan **OK**.
+1. Välj ISO som laddades upp i föregående avsnitt och välj sedan **OK.**
 
-1. Markera kryss rutan **Anslut** så att ISO-filen monteras vid ström tillfället.
+1. Markera **kryssrutan Anslut** så att ISO monteras vid ström.
 
-1. Välj **nytt nätverk > Välj List rutan > bläddra**.
+1. Välj **Nytt nätverk > Välj listrutan > Bläddra**.
 
-1. Välj den **logiska växeln (segment)** och välj **OK**.
+1. Välj den **logiska växeln (segmentet)** och **välj OK.**
 
-1. Ändra andra maskin varu inställningar och välj **Nästa**.
+1. Ändra eventuella andra maskinvaruinställningar och välj **Nästa.**
 
-1. Kontrol lera inställningarna och välj **Slutför**.
+1. Kontrollera inställningarna och välj **Slutför.**
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har täckt ett innehålls bibliotek för att distribuera virtuella datorer i Azure VMware-lösningen kanske du vill lära dig mer om:
+Nu när du har gått in på hur du skapar ett innehållsbibliotek för att distribuera virtuella datorer Azure VMware Solution kanske du vill veta mer om:
 
-- [Distribuera och konfigurera VMware-HCX](tutorial-deploy-vmware-hcx.md) för att migrera VM-arbetsbelastningar till ditt privata moln.
-- [Livs cykel hantering av virtuella datorer i Azure VMware-lösningen](lifecycle-management-of-azure-vmware-solution-vms.md).
+- [Så här migrerar du VM-arbetsbelastningar till ditt privata moln](tutorial-deploy-vmware-hcx.md)
+- [Livscykelhantering för virtuella Azure VMware Solution datorer](lifecycle-management-of-azure-vmware-solution-vms.md)
 
 <!-- LINKS - external-->
 

@@ -1,24 +1,24 @@
 ---
-title: Azures säkerhets bas linje för Azure Firewall Manager
-description: Säkerhets bas linjen för Azure Firewall Manager ger procedur vägledning och resurser för att implementera de säkerhets rekommendationer som anges i Azures säkerhets benchmark.
+title: Azure-säkerhetsbaslinje för Azure Firewall Manager
+description: Säkerhetsbaslinjen Azure Firewall Manager procedurvägledning och resurser för implementering av säkerhetsrekommendationerna som anges i Azure Security Benchmark.
 author: msmbaldwin
 ms.service: firewall-manager
 ms.topic: conceptual
 ms.date: 11/24/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: bec5cafaf7d506d9ab25228c680d00af91dbf3d0
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 7cb37de7c5f101ea5f72ff87ccdf94e5925a95d4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102200146"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864423"
 ---
-# <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azures säkerhets bas linje för Azure Firewall Manager
+# <a name="azure-security-baseline-for-azure-firewall-manager"></a>Azure-säkerhetsbaslinje för Azure Firewall Manager
 
-Den här säkerhets bas linjen använder vägledning från [Azures säkerhets benchmark-version 2,0](../security/benchmarks/overview.md) till Azure Firewall Manager. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de **säkerhets kontroller** som definieras av Azures säkerhets benchmark och relaterade rikt linjer som gäller för Azure Firewall Manager. **Kontroller** som inte är tillämpliga på Azure Firewall Manager har uteslutits.
+Den här säkerhetsbaslinjen tillämpar riktlinjer [från Azure Security Benchmark version 2.0](../security/benchmarks/overview.md) till Azure Firewall Manager. Azure Security Benchmark ger rekommendationer om hur du kan skydda dina molnlösningar i Azure. Innehållet grupperas efter de säkerhetskontroller **som definierats** av Azure Security Benchmark och tillhörande vägledning som gäller för Azure Firewall Manager. **Kontroller** som inte är Azure Firewall Manager har undantagits.
 
-Om du vill se hur Azure Firewall Manager fullständigt mappar till Azures säkerhets benchmark, se den [fullständiga mappnings filen för Azure Firewall Manager säkerhets bas linje](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
+Information om hur Azure Firewall Manager mappning helt till Azure Security Benchmark finns i den fullständiga Azure Firewall Manager [säkerhetsbaslinjemappningsfilen](https://github.com/MicrosoftDocs/SecurityBenchmarks/tree/master/Azure%20Offer%20Security%20Baselines).
 
 ## <a name="identity-management"></a>Identitetshantering
 
@@ -26,15 +26,15 @@ Om du vill se hur Azure Firewall Manager fullständigt mappar till Azures säker
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisera Azure Active Directory som centralt system för identiteter och autentisering
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory (Azure AD) som standard tjänst för identitets-och åtkomst hantering. Du bör standardisera Azure AD för att styra organisationens identitets-och åtkomst hantering i:
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory (Azure AD) som standardtjänst för identitets- och åtkomsthantering. Du bör standardisera Azure AD för att styra din organisations identitets- och åtkomsthantering i:
 
-- Microsoft Cloud resurser, till exempel Azure Portal, Azure Storage, virtuell Azure-dator (Linux och Windows), Azure Key Vault, PaaS och SaaS program.
+- Microsoft Cloud-resurser, till exempel Azure Portal, Azure Storage, Azure Virtual Machine (Linux och Windows), Azure Key Vault-, PaaS- och SaaS-program.
 
 - Organisationens resurser, till exempel program i Azure eller företagets nätverksresurser.
 
 Skyddet av Azure AD bör ha hög prioritet i organisationens säkerhetspraxis för molnet. Azure AD ger dig en identitetsskyddspoäng som hjälper dig att utvärdera identiteternas säkerhet i relation till Microsofts rekommendationer kring regelverk. Använd poängen till att mäta hur nära konfigurationen matchar rekommendationerna kring regelverk och förbättra säkerhetsläget.
 
-Azure AD stöder extern identitet som gör det möjligt för användare utan Microsoft-konto att logga in på sina program och resurser med sin externa identitet.
+Azure AD stöder extern identitet som gör att användare utan Microsoft-konto kan logga in på sina program och resurser med sin externa identitet.
 
 - [Klientorganisation i Azure Active Directory](../active-directory/develop/single-and-multi-tenant-apps.md)
 
@@ -50,7 +50,7 @@ Azure AD stöder extern identitet som gör det möjligt för användare utan Mic
 
 ### <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Använd enkel inloggning i Azure AD (SSO) för åtkomst till appar
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory för att tillhandahålla identitets-och åtkomst hantering för Azure-resurser, moln program och lokala program. I det här ingår företagsidentiteter som anställda samt externa identiteter som partner, och leverantörer. På så sätt kan enkel inloggning (SSO) hantera och skydda åtkomsten till organisationens data och resurser både lokalt och i molnet. Anslut alla användare, appar och enheter till Azure AD för en smidig och säker åtkomst samt bättre insyn och kontroll.
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory för att tillhandahålla identitets- och åtkomsthantering för Azure-resurser, molnprogram och lokala program. I det här ingår företagsidentiteter som anställda samt externa identiteter som partner, och leverantörer. På så sätt kan enkel inloggning (SSO) hantera och skydda åtkomsten till organisationens data och resurser både lokalt och i molnet. Anslut alla användare, appar och enheter till Azure AD för en smidig och säker åtkomst samt bättre insyn och kontroll.
 
 - [Förstå SSO för appar i Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -60,11 +60,11 @@ Azure AD stöder extern identitet som gör det möjligt för användare utan Mic
 
 ### <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Använd kraftfulla verifieringskontroller för all Azure Active Directory-baserad åtkomst
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory som stöder starka verifierings kontroller med Multi-Factor Authentication (MFA) och starka metoder för lösen ords kryptering.
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory som stöder starka autentiseringskontroller via multifaktorautentisering (MFA) och starka lösenordslösa metoder.
 - Multifaktorautentisering – aktivera MFA i Azure AD och följ rekommendationerna kring hantering av identiteter och åtkomst i Azure Security Center så att du använder de bästa regelverken i din MFA-konfiguration. MFA kan tillämpas för alla användare, vissa användare eller på användarnivå baserat på inloggningsförhållanden och riskfaktorer.
 - Autentisering utan lösenord – det finns tre alternativ för autentisering utan lösenord: Windows Hello för företag, appen Microsoft Authenticator app och lokala autentiseringsmetoder som smartkort.
 
-För administratörer och privilegierade användare bör du se till att den högsta nivån för metoden stark autentisering används, följt av lämplig princip för stark autentisering för andra användare.
+För administratörsanvändare och privilegierade användare ser du till att den högsta nivån av den starka autentiseringsmetoden används, följt av att distribuera lämplig stark autentiseringsprincip till andra användare.
 
 - [Aktivera MFA i Azure](../active-directory/authentication/howto-mfa-getstarted.md) 
 
@@ -80,15 +80,15 @@ För administratörer och privilegierade användare bör du se till att den hög
 
 ### <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: Övervaka och skicka aviseringar vid kontoavvikelser
 
-**Vägledning**: Azure Firewall Manager är integrerat med Azure Active Directory i som tillhandahåller följande data Källor:
+**Vägledning:** Azure Firewall Manager är integrerad med Azure Active Directory som tillhandahåller följande datakällor:
 - Inloggningsaktiviteter – Rapporten för inloggningsaktiviteter ger information om användningen av hanterade program och användares inloggningsaktiviteter.
 - Granskningsloggar – Ger spårbarhet via loggar för alla ändringar som gjorts via olika funktioner i Azure AD. Exempel på granskningsloggar är de resursändringar som görs i Azure AD, som att lägga till eller ta bort användare, appar, grupper, roller och principer.
 - Riskfyllda inloggningar – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare.
 - Användare som har flaggats för risk – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats.
 
-Dessa data källor kan integreras med Azure Monitor, Azure Sentinel eller SIEM system från tredje part.
+Dessa datakällor kan integreras med Azure Monitor, Azure Sentinel siem-system eller SIEM-system från tredje part.
 
-För närvarande fungerar åtgärder som omgivande brand Väggs princip regel samlings grupper inte stöds av aktivitets loggen, det här är ett känt problem och behandlas i framtida uppdateringar.
+För närvarande stöds inte åtgärder som omger brandväggsprincipregelsamlingsgrupper av aktivitetsloggen. Det här är ett känt problem som åtgärdas i framtida uppdateringar.
 
 Azure Security Center kan också avisera om vissa misstänkta aktiviteter, till exempel ett högt antal misslyckade autentiseringsförsök eller föråldrade konton i prenumerationen.
 
@@ -102,7 +102,7 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 - [Så här integrerar du Azures aktivitetsloggar i Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-- [Kända problem med Azure Firewall Manager](overview.md#known-issues)
+- [Azure Firewall Manager kända problem](overview.md#known-issues)
 
 **Azure Security Center-övervakning**: Ja
 
@@ -110,7 +110,7 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 ### <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: Begränsa åtkomsten till Azure-resurser baserat på villkor
 
-**Vägledning**: Azure Firewall Manager stöder Azure Active Directory (Azure AD) villkorlig åtkomst för en mer detaljerad åtkomst kontroll baserat på användardefinierade villkor, till exempel användar inloggningar från vissa IP-intervall som behöver använda MFA för inloggning. Du kan även använda detaljerade policyer för hantering av sessionsautentisering för olika användningsfall.
+**Vägledning:** Azure Firewall Manager stöder villkorlig Azure Active Directory-åtkomst (Azure AD) för en mer detaljerad åtkomstkontroll baserat på användardefinierade villkor, till exempel användarinloggningar från vissa IP-intervall som behöver använda MFA för inloggning. Du kan även använda detaljerade policyer för hantering av sessionsautentisering för olika användningsfall.
 
 - [Översikt över villkorsstyrd åtkomst i Azure](../active-directory/conditional-access/overview.md)
 
@@ -128,11 +128,11 @@ Azure Advanced Threat Protection (ATP) är en säkerhetslösning som kan använd
 
 ### <a name="pa-1-protect-and-limit-highly-privileged-users"></a>PA-1: Skydda och begränsa privilegierade användare
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory (Azure AD) för identitet och åtkomst. De mest kritiska inbyggda rollerna är Azure AD global administratör och den privilegierade roll administratören när användare som tilldelats dessa två roller kan delegera administratörs roller:
-- Global administratör: användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
-- Privilegie rad roll administratör: användare med den här rollen kan hantera roll tilldelningar i Azure AD, samt i Azure AD Privileged Identity Management (PIM). Dessutom tillåter den här rollen hantering av alla aspekter av PIM och administrativa enheter.
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory (Azure AD) för identitet och åtkomst. De viktigaste inbyggda rollerna är Azure AD är Global administratör och Privilegierad rolladministratör eftersom användare som tilldelats dessa två roller kan delegera administratörsroller:
+- Global administratör: Användare med den här rollen har åtkomst till alla administrativa funktioner i Azure AD, samt tjänster som använder Azure AD-identiteter.
+- Privilegierad rolladministratör: Användare med den här rollen kan hantera rolltilldelningar i Azure AD, samt inom Azure AD Privileged Identity Management (PIM). Dessutom tillåter den här rollen hantering av alla aspekter av PIM och administrativa enheter.
 
-Du kan ha andra viktiga roller som behöver regleras om du använder anpassade roller med vissa privilegierade behörigheter tilldelade. Och du kanske också vill använda liknande kontroller för administratörs kontot för kritiska företags till gångar.
+Du kan ha andra kritiska roller som måste styras om du använder anpassade roller med vissa tilldelade privilegierade behörigheter. Och du kanske också vill tillämpa liknande kontroller som administratörskontot för kritiska affärstillgångar.
 
 Du kan aktivera just-in-time (JIT)-privilegierad åtkomst till Azure-resurser och Azure AD med hjälp av Azure AD Privileged Identity Management (PIM). JIT beviljar temporära behörigheter för att utföra privilegierade uppgifter endast när användarna behöver det. PIM kan också generera säkerhetsaviseringar när det finns misstänkt eller osäker aktivitet i din Azure AD-organisation.
 
@@ -148,19 +148,19 @@ Du kan aktivera just-in-time (JIT)-privilegierad åtkomst till Azure-resurser oc
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Begränsa administrativ åtkomst till affärskritiska system
 
-**Vägledning**: Använd anpassade Azure RBAC-roller för att isolera åtkomst till regel samlings grupper för Azure brand Väggs principer. Använd en anpassad roll definition i Azure för att förhindra oavsiktlig grund policy borttagning och ge selektiv åtkomst till regel samlings grupper i en prenumeration eller resurs grupp.
+**Vägledning:** Använda anpassade Azure RBAC-roller för att isolera åtkomst till regelsamlingsgrupper för Azure Firewall princip. Använd en anpassad rolldefinition i Azure för att förhindra oavsiktlig borttagning av basprinciper och ge selektiv åtkomst till regelsamlingsgrupper i en prenumeration eller resursgrupp.
 
-Se till att du också begränsar åtkomsten till hanterings-, identitets-och säkerhets system som har administrativ åtkomst till dina affärs kritiska system. Angripare som angriper dessa hanterings-och säkerhets system kan omedelbart weaponize dem för att kompromettera affärs kritiska till gångar.
+Se till att du även begränsar åtkomsten till de hanterings-, identitets- och säkerhetssystem som har administrativ åtkomst till dina affärskritiska system. Angripare som komprometterar dessa hanterings- och säkerhetssystem kan omedelbart få dem att kompromettera affärskritiska tillgångar.
 
-Alla typer av åtkomst kontroller bör justeras mot din strategi för företags segmentering för att säkerställa en konsekvent åtkomst kontroll.
+Alla typer av åtkomstkontroller bör anpassas till din strategi för företagssegmentering för att säkerställa konsekvent åtkomstkontroll.
 
-- [Använd Azures brand Väggs princip för att definiera en regel-hierarki](rule-hierarchy.md)
+- [Använda Azure Firewall för att definiera en regelhierarki](rule-hierarchy.md)
 
-- [Azure-komponenter och referens modell](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
+- [Azure-komponenter och referensmodell](/security/compass/microsoft-security-compass-introduction#azure-components-and-reference-model-2151)
 
-- [Åtkomst till hanterings grupp](../governance/management-groups/overview.md#management-group-access)
+- [Åtkomst till hanteringsgrupp](../governance/management-groups/overview.md#management-group-access)
 
-- [Administratörer för Azure-prenumeration](../cost-management-billing/manage/add-change-subscription-administrator.md)
+- [Azure-prenumerationsadministratörer](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -168,13 +168,13 @@ Alla typer av åtkomst kontroller bör justeras mot din strategi för företags 
 
 ### <a name="pa-3-review-and-reconcile-user-access-regularly"></a>PA-3: Granska och stäm av användarnas åtkomst regelbundet
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory-konton (Azure AD) för att hantera sina resurser. Granska användar konton och åtkomst tilldelningen regelbundet för att säkerställa att kontona och deras åtkomst är giltiga. Du kan använda åtkomst granskningar i Azure AD för att granska grupp medlemskap, åtkomst till företags program och roll tilldelningar. Azure AD repor ting kan tillhandahålla loggar för att identifiera inaktuella konton. Du kan också använda Azure AD Privileged Identity Management för att skapa åtkomst gransknings rapportens arbets flöde för att under lätta gransknings processen.
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory (Azure AD)-konton för att hantera dess resurser. Granska användarkonton och åtkomsttilldelning regelbundet för att se till att kontona och deras åtkomst är giltiga. Du kan använda Azure AD-åtkomstgranskningar för att granska gruppmedlemskap, åtkomst till företagsprogram och rolltilldelningar. Azure AD-rapportering kan tillhandahålla loggar som hjälper dig att identifiera inaktuella konton. Du kan också använda Azure AD Privileged Identity Management för att skapa arbetsflödet för granskningsrapport för att underlätta granskningsprocessen.
 
-Dessutom kan Azure Privileged Identity Management också konfigureras för att varna när ett högt antal administratörs konton skapas och för att identifiera administratörs konton som är inaktuella eller felaktigt konfigurerade.
+Dessutom kan Azure Privileged Identity Management konfigureras för att varna när ett stort antal administratörskonton skapas och för att identifiera administratörskonton som är inaktuella eller felaktigt konfigurerade.
 
-Vissa Azure-tjänster har stöd för lokala användare och roller som inte hanteras via Azure AD. Du måste hantera dessa användare separat.
+Vissa Azure-tjänster stöder lokala användare och roller som inte hanteras via Azure AD. Du måste hantera dessa användare separat.
 
-- [Skapa en åtkomst granskning av Azure Resource roles i Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
+- [Skapa en åtkomstgranskning av Azure-resursroller i Privileged Identity Management(PIM)](../active-directory/privileged-identity-management/pim-resource-roles-start-access-review.md) 
 
 - [Så här använder du identitets- och åtkomstgranskningar i Azure AD](../active-directory/governance/access-reviews-overview.md)
 
@@ -184,7 +184,7 @@ Vissa Azure-tjänster har stöd för lokala användare och roller som inte hante
 
 ### <a name="pa-4-set-up-emergency-access-in-azure-ad"></a>PA-4: Konfigurera nödåtkomst i Azure AD
 
-**Vägledning**: Azure Firewall Manager använder Azure Active Directory för att autentisera användare som hanterar tjänsten. För att förhindra oavsiktligt låst av din Azure AD-organisation konfigurerar du ett konto för nöd åtkomst för åtkomst när normala administrativa konton inte kan användas. Konton för nödåtkomst har ofta hög behörighet och bör inte tilldelas till specifika individer. Konton för nödåtkomst är begränsade till nödsituationer där du inte kan använda normala administratörskonton.
+**Vägledning:** Azure Firewall Manager använder Azure Active Directory för att autentisera användare som hanterar tjänsten. Om du vill förhindra att azure AD-organisationen blir utelåst av misstag ställer du in ett konto för åtkomst vid akutfall för åtkomst när normala administrativa konton inte kan användas. Konton för nödåtkomst har ofta hög behörighet och bör inte tilldelas till specifika individer. Konton för nödåtkomst är begränsade till nödsituationer där du inte kan använda normala administratörskonton.
 
 Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller smartkort) för nödåtkomstkonton är skyddade och bara kända av personer som har behörighet att använda dem i nödfall.
 
@@ -194,13 +194,13 @@ Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller s
 
 **Ansvar**: Kund
 
-### <a name="pa-5-automate-entitlement-management"></a>PA-5: automatisera rättighets hantering 
+### <a name="pa-5-automate-entitlement-management"></a>PA-5: Automatisera berättigandehantering 
 
-**Vägledning**: Azure Firewall Manager är integrerat med Azure Active Directory för att hantera sina resurser. Använd funktioner för hantering av Azure AD-rättighet för att automatisera åtkomst till begär ande arbets flöden, inklusive åtkomst tilldelningar, recensioner och förfallo datum. Det finns också stöd för godkännande med dubbla eller flera steg.
+**Vägledning:** Azure Firewall Manager är integrerad med Azure Active Directory för att hantera dess resurser. Använd azure AD-berättigandehanteringsfunktioner för att automatisera arbetsflöden för åtkomstbegäran, inklusive åtkomsttilldelningar, granskningar och förfallotid. Godkännanden med dubbla eller flera steg stöds också.
 
-- [Vad är åtkomst granskningar för Azure AD](../active-directory/governance/access-reviews-overview.md)
+- [Vad är Azure AD-åtkomstgranskningar?](../active-directory/governance/access-reviews-overview.md)
 
-- [Vad är hantering av Azure AD-berättigande](../active-directory/governance/entitlement-management-overview.md)
+- [Vad är berättigandehantering i Azure AD](../active-directory/governance/entitlement-management-overview.md)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -208,9 +208,9 @@ Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller s
 
 ### <a name="pa-6-use-privileged-access-workstations"></a>PA-6: Använd arbetsstationer med privilegierad åtkomst
 
-**Vägledning**: Det är viktigt med säkra och isolerade arbetsstationer för att skydda känsliga roller som administratörer, utvecklare och operatörer av kritiska tjänster. Använd hög säkra användar arbets stationer för att utföra administrativa hanterings uppgifter med dina Azure Firewall Manager-resurser i produktions miljöer. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbets stationerna kan hanteras centralt för att upprätthålla säker konfiguration, inklusive stark autentisering, program vara och maskin varu bas linjer och begränsad logisk och nätverks åtkomst.
+**Vägledning**: Det är viktigt med säkra och isolerade arbetsstationer för att skydda känsliga roller som administratörer, utvecklare och operatörer av kritiska tjänster. Använd mycket säkra användararbetsstationen för att utföra administrativa hanteringsuppgifter med Azure Firewall Manager i produktionsmiljöer. Använd Azure Active Directory, Microsoft Defender Avancerat skydd (ATP) och Microsoft Intune när du ska distribuera en säker och hanterad arbetsstation för administrativa uppgifter. De skyddade arbetsstationerna kan hanteras centralt för att framtvinga säker konfiguration, inklusive stark autentisering, programvaru- och maskinvarubaslinjer samt begränsad logisk och nätverksåtkomst.
 
-- [Förstå arbets stationer med privilegie rad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
+- [Förstå arbetsstationer med privilegierad åtkomst](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 - [Distribuera en arbetsstation med privilegierad åtkomst](/security/compass/privileged-access-deployment)
 
@@ -220,11 +220,11 @@ Du bör se till att autentiseringsuppgifterna (som lösenord, certifikat eller s
 
 ### <a name="pa-7-follow-just-enough-administration-least-privilege-principle"></a>PA-7: Följ JEA (Just Enough Administration, precis tillräcklig administration) (principen om minsta behörighet) 
 
-**Vägledning**: Azure Firewall Manager är integrerat med rollbaserad åtkomst kontroll (RBAC) i Azure för att hantera resurserna. Med Azure RBAC kan du hantera åtkomst till Azure-resurser via rolltilldelningar. Du kan tilldela dessa roller till användare, grupper tjänstens huvud namn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen. De behörigheter som du tilldelar resurser via Azure RBAC bör alltid vara begränsade till vad som krävs av rollerna. Det här är ett komplement till JIT-metoden (just in time) för Azure AD Privileged Identity Management (PIM) och bör granskas regelbundet.
+**Vägledning:** Azure Firewall Manager är integrerad med rollbaserad åtkomstkontroll (RBAC) i Azure för att hantera dess resurser. Med Azure RBAC kan du hantera åtkomst till Azure-resurser via rolltilldelningar. Du kan tilldela dessa roller till användare, grupper av tjänstens huvudnamn och hanterade identiteter. Det finns fördefinierade inbyggda roller för vissa resurser och dessa roller kan inventeras eller frågas via verktyg som Azure CLI, Azure PowerShell eller Azure-portalen. De behörigheter som du tilldelar resurser via Azure RBAC bör alltid vara begränsade till vad som krävs av rollerna. Det här är ett komplement till JIT-metoden (just in time) för Azure AD Privileged Identity Management (PIM) och bör granskas regelbundet.
 
 Använd inbyggda roller för att allokera behörighet och skapa bara en anpassad roll vid behov.
 
-- [Vad är Azure rollbaserad åtkomst kontroll (Azure RBAC)](../role-based-access-control/overview.md) 
+- [Vad är rollbaserad åtkomstkontroll i Azure (Azure RBAC)](../role-based-access-control/overview.md) 
 
 - [Så här konfigurerar du Azure RBAC](../role-based-access-control/role-assignments-portal.md)
 
@@ -238,7 +238,7 @@ Använd inbyggda roller för att allokera behörighet och skapa bara en anpassad
 
 ### <a name="dp-2-protect-sensitive-data"></a>DP-2: Skydda känsliga data
 
-**Vägledning**: skydda känsliga data som konfigurations data för Azure Firewall-principen genom att begränsa åtkomsten med hjälp av Azure Role-baserad Access Control (Azure RBAC), nätverksbaserade åtkomst kontroller och vissa kontroller i Azure-tjänster.
+**Vägledning:** Skydda känsliga data som konfigurationsdata för Azure Firewall-princip genom att begränsa åtkomsten med hjälp av Rollbaserad azure-Access Control (Azure RBAC), nätverksbaserade åtkomstkontroller och specifika kontroller i Azure-tjänster.
 
 För att säkerställa konsekvent åtkomstkontroll bör alla typer av åtkomstkontroll justeras mot din strategi för företagssegmentering. Strategin för företagssegmentering bör också informeras om platsen för känsliga eller affärskritiska data och system.
 
@@ -254,9 +254,9 @@ När det gäller den underliggande plattformen, som hanteras av Microsoft, behan
 
 ### <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: Övervaka obehörig överföring av känsliga data
 
-**Vägledning**: Azure Firewall policy-resurser kan endast nås av autentiserade användare. Kunderna måste se till att endast behöriga användare har åtkomst till data.
+**Vägledning:** Azure Firewall principresurser kan bara användas av autentiserade användare. Kunderna måste se till att endast behöriga användare har åtkomst till data.
 
-- [Skapa anpassade roller för åtkomst till regel samlings grupper](rule-hierarchy.md#create-custom-roles-to-access-the-rule-collection-groups)
+- [Skapa anpassade roller för att få åtkomst till regelsamlingsgrupper](rule-hierarchy.md#create-custom-roles-to-access-the-rule-collection-groups)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -264,19 +264,19 @@ När det gäller den underliggande plattformen, som hanteras av Microsoft, behan
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Kryptera känslig information under överföring
 
-**Vägledning**: för att komplettera åtkomst kontroller bör data i överföring skyddas mot "out of band"-attacker (till exempel trafik avbildningar) med hjälp av kryptering för att säkerställa att angripare inte kan läsa eller ändra data.
+**Vägledning:** För att komplettera åtkomstkontroller bör data under överföring skyddas mot "out-of-band"-attacker (till exempel trafikinfångst) med hjälp av kryptering för att säkerställa att angripare inte enkelt kan läsa eller ändra data.
 
-Azure Firewall Manager stöder data kryptering i överföring med TLS v 1.2 eller senare.
+Azure Firewall Manager stöder datakryptering under överföring med TLS v1.2 eller högre.
 
-Även om det är valfritt för trafik i privata nätverk, är detta avgörande för trafik på externa och offentliga nätverk. För HTTP-trafik ser du till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS v 1.2 eller senare. För fjärrhantering använder du SSH (för Linux) eller RDP/TLS (för Windows) i stället för ett okrypterat protokoll. Inaktuella SSL-, TLS-och SSH-versioner och-protokoll och svaga chiffer bör inaktive ras.
+Även om detta är valfritt för trafik i privata nätverk, är detta viktigt för trafik i externa och offentliga nätverk. För HTTP-trafik ser du till att alla klienter som ansluter till dina Azure-resurser kan förhandla TLS v1.2 eller högre. För fjärrhantering använder du SSH (för Linux) eller RDP/TLS (för Windows) i stället för ett okrypterat protokoll. Föråldrade SSL-, TLS- och SSH-versioner och -protokoll och svaga chiffer bör inaktiveras.
 
-Som standard tillhandahåller Azure kryptering för data i överföring mellan Azures Data Center.
+Som standard tillhandahåller Azure kryptering för data under överföring mellan Azure-datacenter.
 
-- [Förstå kryptering i överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
+- [Förstå kryptering under överföring med Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
 
 - [Information om TLS-säkerhet](/security/engineering/solving-tls1-problem) 
 
-- [Double Encryption för Azure-data under överföring](../security/fundamentals/double-encryption.md#data-in-transit)
+- [Dubbel kryptering för Azure-data under överföring](../security/fundamentals/double-encryption.md#data-in-transit)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -294,7 +294,7 @@ Beroende på hur säkerhetsteamets ansvarsområden är strukturerade kan ansvare
 
 Behörigheter för säkerhetsläsare kan tillämpas brett över en hel klientorganisation (rothanteringsgrupp) eller omfattas av hanteringsgrupper eller specifika prenumerationer. 
 
-Ytterligare behörigheter kan krävas för att få insyn i arbets belastningar och tjänster. 
+Ytterligare behörigheter kan krävas för att få insyn i arbetsbelastningar och tjänster. 
 
 - [Översikt över säkerhetsläsarrollen](../role-based-access-control/built-in-roles.md#security-reader)
 
@@ -306,15 +306,15 @@ Ytterligare behörigheter kan krävas för att få insyn i arbets belastningar o
 
 ### <a name="am-2-ensure-security-team-has-access-to-asset-inventory-and-metadata"></a>AM-2: Se till att säkerhetsteamet har åtkomst till tillgångsinventering och metadata
 
-**Vägledning**: se till att säkerhets teamen har åtkomst till en kontinuerligt uppdaterad inventering av Azure Firewall Manager-tillgångar i Azure. De kan använda Azure Resource Graph för att fråga och identifiera alla Azure Firewall-resurser i dina prenumerationer, inklusive Azure-tjänster, program och nätverks resurser.
+**Vägledning:** Se till att säkerhetsteamen har åtkomst till en kontinuerligt uppdaterad inventering av Azure Firewall Manager på Azure. De kan använda Azure Resource Graph att köra frågor mot och identifiera Azure Firewall resurser i dina prenumerationer, inklusive Azure-tjänster, program och nätverksresurser.
 
-Använd taggar för dina Azure-resurser, resurs grupper och prenumerationer för att logiskt organisera dem i en taxonomi. Varje tagg består av ett namn och ett värde-par. Du kan till exempel använda namnet ”Miljö” och värdet ”Produktion” för alla resurser i produktionsmiljön.
+Tillämpa taggar på dina Azure-resurser, resursgrupper och prenumerationer för att organisera dem logiskt i en taxonomi. Varje tagg består av ett namn och ett värdepar. Du kan till exempel använda namnet ”Miljö” och värdet ”Produktion” för alla resurser i produktionsmiljön.
 
 - [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md) 
 
-- [Azure Security Center till gångs lager hantering](../security-center/asset-inventory.md) 
+- [Azure Security Center tillgångslagerhantering](../security-center/asset-inventory.md) 
 
-- [Mer information om att tagga till gångar finns i besluts guiden för resurs namn givning och taggning](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
+- [Mer information om taggning av tillgångar finns i beslutsguiden för namngivning och taggning av resurser](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -322,11 +322,11 @@ Använd taggar för dina Azure-resurser, resurs grupper och prenumerationer för
 
 ### <a name="am-3-use-only-approved-azure-services"></a>AM-3: Använd bara godkända Azure-tjänster
 
-**Vägledning**: Använd Azure policy för att granska och begränsa vilka tjänster som användare kan etablera i din miljö, däribland att kunna tillåta eller neka distributioner av Azure Firewall-resurser. Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna. Du kan också använda Azure Monitor till att skapa regler för att utlösa aviseringar när en icke-godkänd tjänst upptäcks.
+**Vägledning:** Använd Azure Policy för att granska och begränsa vilka tjänster som användare kan etablera i din miljö. Detta omfattar att tillåta eller neka distributioner av Azure Firewall resurser. Använd Azure Resource Graph till att fråga efter och identifiera resurser i prenumerationerna. Du kan också använda Azure Monitor till att skapa regler för att utlösa aviseringar när en icke-godkänd tjänst upptäcks.
 
 - [Konfigurera och hantera Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Så här nekar du en speciell resurs typ med Azure Policy](../governance/policy/samples/built-in-policies.md#general) 
+- [Så här nekar du en viss resurstyp med Azure Policy](../governance/policy/samples/built-in-policies.md#general) 
 
 - [Skapa frågor med Azure Resource Graph Explorer](../governance/resource-graph/first-query-portal.md)
 
@@ -336,21 +336,21 @@ Använd taggar för dina Azure-resurser, resurs grupper och prenumerationer för
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Garantera säker livscykelhantering för tillgångar
 
-**Vägledning**: ta bort Azure Firewall Manager-resurser när de inte längre behövs för att minimera attack ytan. Användare kan hantera sina Azure Firewall Manager-resurser via Azure Portal-, CLI-eller REST-API: er.
+**Vägledning:** Ta Azure Firewall Manager resurser när de inte längre behövs för att minimera angreppsytan. Användare kan hantera sina Azure Firewall Manager via api:Azure Portal, CLI eller REST.
 
-- [CLI för Azure Firewall-princip](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Azure Firewall Policy CLI](/cli/azure/network/firewall/policy)
 
-- [Azure Network CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
+- [Azure-nätverks-CLI](/powershell/module/az.network/?preserve-view=true&view=azps-5.1.0#networking)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
 **Ansvar**: Kund
 
-### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5: begränsa användarnas möjlighet att interagera med Azure Resource Manager
+### <a name="am-5-limit-users-ability-to-interact-with-azure-resource-manager"></a>AM-5: Begränsa användarnas möjlighet att interagera med Azure Resource Manager
 
-**Vägledning**: Azure Firewall Manager är integrerat med Azure Active Directory (Azure AD) för identitet och autentisering. Du kan använda villkorlig åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azures resurser Manager genom att konfigurera "blockera åtkomst" för appen "Microsoft Azure hantering".
+**Vägledning:** Azure Firewall Manager är integrerad med Azure Active Directory (Azure AD) för identitet och autentisering. Du kan använda villkorsstyrd åtkomst i Azure för att begränsa användarnas möjlighet att interagera med Azure Resources Manager genom att konfigurera "Blockera åtkomst" för appen "Microsoft Azure Management".
 
-- [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azures resurs hanterare](../role-based-access-control/conditional-access-azure-management.md)
+- [Så här konfigurerar du villkorlig åtkomst för att blockera åtkomst till Azure Resources Manager](../role-based-access-control/conditional-access-azure-management.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -360,13 +360,13 @@ Använd taggar för dina Azure-resurser, resurs grupper och prenumerationer för
 
 *Mer information finns i [Azure Security Benchmark: Loggning och hotidentifiering](../security/benchmarks/security-controls-v2-logging-threat-detection.md).*
 
-### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hot identifiering för Azure-resurser
+### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivera hotidentifiering för Azure-resurser
 
-**Vägledning**: vanliga aktivitets loggar som skapats av eller som relateras till brand Väggs principen till din Siem som kan användas för att konfigurera anpassade hot identifieringar. Se till att du övervakar olika typer av Azure-tillgångar för potentiella hot och avvikelser. Fokusera på att få aviseringar med hög kvalitet för att minska antalet falska positiva identifieringar för analytiker som ska sorteras. Aviseringar kan hämtas från loggdata, agenter eller andra data.
+**Vägledning:** Vidarebefordra aktivitetsloggar som skapas av eller som är relaterade till brandväggsprincipen till din SIEM som kan användas för att konfigurera anpassade hotidentifieringar. Se till att du övervakar olika typer av Azure-tillgångar för potentiella hot och avvikelser. Fokusera på att få aviseringar av hög kvalitet för att minska falska positiva resultat som analytiker kan gå igenom. Aviseringar kan komma från loggdata, agenter eller andra data.
 
-- [Skapa anpassade analys regler för att identifiera hot](../sentinel/tutorial-detect-threats-custom.md) 
+- [Skapa anpassade analysregler för att identifiera hot](../sentinel/tutorial-detect-threats-custom.md) 
 
-- [Cyberhot Hot information med Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
+- [Cyberhotinformation med Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
 - [Azure Firewall-loggar och mått](../firewall/firewall-diagnostics.md)
 
@@ -383,9 +383,9 @@ Använd taggar för dina Azure-resurser, resurs grupper och prenumerationer för
 - Riskfyllda inloggningar – En riskfylld inloggning indikerar ett potentiellt inloggningsförsök av någon annan än användarkontots ägare.
 - Användare som har flaggats för risk – En användare som har flaggats för risk indikerar att ett användarkonto kan ha komprometterats.
 
-Azure Security Center kan också avisera om vissa misstänkta aktiviteter, till exempel ett högt antal misslyckade autentiseringsförsök eller föråldrade konton i prenumerationen. Utöver den grundläggande övervakningen av säkerhetsrutiner kan hotskyddsmodulen i Azure Security Center även samla in mer detaljerade säkerhetsaviseringar från enskilda Azure Compute-resurser (virtuella datorer, containrar, App Service), data resurser (SQL DB och lagring) och lager i Azure-tjänsten. Den här funktionen ger dig insyn i konto avvikelser i de enskilda resurserna.
+Azure Security Center kan också avisera om vissa misstänkta aktiviteter, till exempel ett högt antal misslyckade autentiseringsförsök eller föråldrade konton i prenumerationen. Utöver den grundläggande övervakningen av säkerhetsrutiner kan hotskyddsmodulen i Azure Security Center även samla in mer detaljerade säkerhetsaviseringar från enskilda Azure Compute-resurser (virtuella datorer, containrar, App Service), data resurser (SQL DB och lagring) och lager i Azure-tjänsten. Den här funktionen ger dig insyn i kontoavvikelser i de enskilda resurserna.
 
-För närvarande fungerar åtgärder som omgivande brand Väggs princip regel samlings grupper inte stöds av aktivitets loggen, det här är ett känt problem och behandlas i framtida uppdateringar.
+För närvarande stöds inte åtgärder som omger brandväggsprincipregelsamlingsgrupper av aktivitetsloggen. Det här är ett känt problem som åtgärdas i framtida uppdateringar.
 
 - [Granska aktivitetsrapporter i Azure Active Directory](../active-directory/reports-monitoring/concept-audit-logs.md)
 
@@ -399,13 +399,13 @@ För närvarande fungerar åtgärder som omgivande brand Väggs princip regel sa
 
 ### <a name="lt-4-enable-logging-for-azure-resources"></a>LT-4: Aktivera loggning för Azure-resurser
 
-**Vägledning**: aktivitets loggar, som är automatiskt tillgängliga, innehåller alla Skriv åtgärder (placera, skicka, ta bort) för brand Väggs principens resurser förutom Läs åtgärder (get). Aktivitets loggar kan användas för att hitta ett fel när du felsöker eller övervakar hur en användare i organisationen ändrade en resurs.
+**Vägledning:** Aktivitetsloggar, som är automatiskt tillgängliga, innehåller alla skrivåtgärder (PUT, POST, DELETE) för dina brandväggsprincipresurser förutom läsåtgärder (GET). Aktivitetsloggar kan användas för att hitta ett fel vid felsökning eller för att övervaka hur en användare i organisationen har ändrat en resurs.
 
-För närvarande fungerar åtgärder som omgivande brand Väggs princip regel samlings grupper inte stöds av aktivitets loggen, det här är ett känt problem och behandlas i framtida uppdateringar.
+För närvarande stöds inte åtgärder som omger brandväggsprincipregelsamlingsgrupper av aktivitetsloggen. Det här är ett känt problem som åtgärdas i framtida uppdateringar.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Så här samlar du in plattformsloggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Förstå loggning och olika logg typer i Azure](../azure-monitor/essentials/platform-logs-overview.md)
+- [Förstå loggning och olika loggtyper i Azure](../azure-monitor/essentials/platform-logs-overview.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -413,17 +413,17 @@ För närvarande fungerar åtgärder som omgivande brand Väggs princip regel sa
 
 ### <a name="lt-5-centralize-security-log-management-and-analysis"></a>LT-5: Central hantering och analys av säkerhetsloggar
 
-**Vägledning**: centralisera loggning av lagring och analys för att aktivera korrelation. För varje logg källa ser du till att du har tilldelat en data ägare, åtkomst vägledning, lagrings plats, vilka verktyg som används för att bearbeta och komma åt data samt krav för data lagring.
+**Vägledning:** Centralisera lagring och analys av loggning för att möjliggöra korrelation. Se till att du har tilldelat en dataägare, åtkomstvägledning, lagringsplats, vilka verktyg som används för att bearbeta och komma åt data samt krav på databevarande för varje loggkälla.
 
-Se till att du integrerar Azures aktivitets loggar i den centrala loggningen. Mata in loggar via Azure Monitor för att samla in säkerhets data som genererats av slut punkts enheter, nätverks resurser och andra säkerhets system. I Azure Monitor använder du Log Analytics arbets ytor för att fråga och utföra analyser och använda Azure Storage konton för långsiktig lagring.
+Se till att du integrerar Azure-aktivitetsloggar i din centrala loggning. Mata in loggar via Azure Monitor för att aggregera säkerhetsdata som genereras av slutpunktsenheter, nätverksresurser och andra säkerhetssystem. I Azure Monitor använder du Log Analytics-arbetsytor för att köra frågor mot och utföra analyser och använda Azure Storage-konton för långsiktig lagring och arkiveringslagring.
 
-Du kan också aktivera och publicera dina loggdata till Azure Sentinel eller en SIEM från tredje part.
+Dessutom kan du aktivera och registrera dina loggdata för Azure Sentinel eller en SIEM från tredje part.
 
-Många organisationer väljer att använda Azure Sentinel för "heta" data som används ofta och Azure Storage för "kall" data som används mindre ofta.
+Många organisationer väljer att använda Azure Sentinel för "frekventa" data som används ofta Azure Storage för "kalla" data som används mindre ofta.
 
-- [Samla in plattforms loggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
+- [Samla in plattformsloggar och mått med Azure Monitor](../azure-monitor/essentials/diagnostic-settings.md)
 
-- [Publicera Azure Sentinel](../sentinel/quickstart-onboard.md)
+- [Registrera Azure Sentinel](../sentinel/quickstart-onboard.md)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 
@@ -431,13 +431,13 @@ Många organisationer väljer att använda Azure Sentinel för "heta" data som a
 
 ### <a name="lt-6-configure-log-storage-retention"></a>LT-6: Konfigurera kvarhållning av loggar
 
-**Vägledning**: kontrol lera att lagrings konton eller Log Analytics arbets ytor som används för att lagra brand Väggs princip loggar har den logg kvarhållningsperiod som angetts i enlighet med organisationens regler för efterlevnad.
+**Vägledning:** Se till att alla lagringskonton eller Log Analytics-arbetsytor som används för att lagra brandväggsprinciploggar har kvarhållningsperioden för loggar enligt organisationens efterlevnadsregler.
 
-I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt organisationens regler för efterlevnad. Använd Azure Storage-, Data Lake-eller Log Analytics arbets ytans konton för långsiktig lagring och arkivering.
+I Azure Monitor kan du ange kvarhållningsperioden för Log Analytics-arbetsytan enligt organisationens efterlevnadsregler. Använd Azure Storage-, Data Lake- eller Log Analytics-arbetsytekonton för långsiktig lagring och arkiveringslagring.
 
-- [Så här konfigurerar du Log Analytics bevarande period för arbets ytor](../azure-monitor/logs/manage-cost-storage.md)
+- [Så här konfigurerar du Kvarhållningsperiod för Log Analytics-arbetsyta](../azure-monitor/logs/manage-cost-storage.md)
 
-- [Lagra resurs loggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
+- [Lagra resursloggar i ett Azure Storage konto](../azure-monitor/essentials/resource-logs.md#send-to-azure-storage)
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -475,7 +475,7 @@ I Azure Monitor kan du Log Analytics ange arbets ytans lagrings period enligt or
 
 Du kan basera aviseringar av hög kvalitet på erfarenheter från tidigare incidenter, validerade community-källor och verktyg som utformats för att skapa och rensa aviseringar genom att sammanfoga och korrelera olika signalkällor. 
 
-Azure Security Center ger aviseringar med hög kvalitet över flera Azure-tillgångar. Du kan använda anslutningsprogrammet för ASC-data för att strömma aviseringarna till Azure Sentinel. Med Azure Sentinel kan du skapa avancerade aviseringsregler för att generera incidenter automatiskt för en undersökning. 
+Azure Security Center tillhandahåller aviseringar av hög kvalitet för många Azure-tillgångar. Du kan använda anslutningsprogrammet för ASC-data för att strömma aviseringarna till Azure Sentinel. Med Azure Sentinel kan du skapa avancerade aviseringsregler för att generera incidenter automatiskt för en undersökning. 
 
 Exportera dina Azure Security Center-aviseringar och -rekommendationer med hjälp av exportfunktionen för att identifiera risker med Azure-resurser. Exportera aviseringar och rekommendationer antingen manuellt eller löpande.
 
@@ -521,7 +521,7 @@ Azure Sentinel tillhandahåller omfattande dataanalyser i praktiskt taget alla l
 
 **Riktlinjer**: Tillhandahålla en kontext till analytiker om vilka incidenter att fokusera på först baserat på aviseringens allvarlighetsgrad och tillgångens känslighet. 
 
-Azure Security Center tilldelar en allvarlighetsgrad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighets graden baseras på hur tillförlitlig Security Center är i sökningen eller analysen som används för att utfärda aviseringen, samt den konfidensnivå som det fanns skadlig avsikt bakom den aktivitet som ledde till aviseringen.
+Azure Security Center tilldelar en allvarlighetsgrad till varje avisering för att hjälpa dig att prioritera vilka aviseringar som bör undersökas först. Allvarlighetsgraden baseras på hur säker Security Center är vid upptäckten eller analysen som användes för att utfärda aviseringen, samt konfidensnivån för att det fanns skadlig avsikt bakom aktiviteten som ledde till aviseringen.
 
 Markera även resurser med taggar och skapa ett namngivningssystem för att identifiera och kategorisera Azure-resurser, i synnerhet sådana som används för bearbetning av känsliga data.  Det är ditt ansvar att prioritera åtgärdandet av aviseringar baserat på allvarlighetsgraden för de Azure-resurser och den miljö där incidenten inträffade.
 
@@ -553,13 +553,13 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 ### <a name="pv-1-establish-secure-configurations-for-azure-services"></a>PV-1: Upprätta säkra konfigurationer för Azure-tjänster 
 
-**Vägledning**: automatisera och skydda distributionen och konfigurationen av Azure Firewall Manager-resurser i dina miljöer med hjälp av mekanismer som: Azure Resource Manager mallar, Azure RBAC-kontroller och Azure policy. Definiera säkra konfigurationer för Azure Firewall Manager-resurser vid distributions tillfället, granska och genomdriva dessa konfigurationer genom att definiera anpassade Azure Policy definitioner med hjälp av alias i namn området Azure. Network.
+**Vägledning:** Automatisera och skydda distributionen och konfigurationen av Azure Firewall Manager-resurser i dina miljöer med hjälp av metoder som: Azure Resource Manager-mallar, Azure RBAC-kontroller och Azure Policy. Definiera säkra konfigurationer för dina Azure Firewall Manager-resurser vid distributionen, granska och framtvinga dessa konfigurationer genom att definiera anpassade Azure Policy-definitioner med hjälp av alias i namnområdet "Azure.Network".
 
-- [Referens för Azure Firewall-principmall](/azure/templates/microsoft.network/firewallpolicies)
+- [Azure Firewall principmallreferens](/azure/templates/microsoft.network/firewallpolicies)
 
-- [CLI för Azure Firewall-princip](/cli/azure/ext/azure-firewall/network/firewall/policy)
+- [Azure Firewall Policy CLI](/cli/azure/network/firewall/policy)
 
-- [Bild av guardrails-implementering i netscale-landnings zon](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
+- [Bild av implementering av skyddsräcken i en landningszon i företagsskala](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
 - [Skapa och hantera principer för att använda kompatibilitet](../governance/policy/tutorials/create-and-manage.md)
 
@@ -569,13 +569,13 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 ### <a name="pv-2-sustain-secure-configurations-for-azure-services"></a>PV-2: Underhåll säkra konfigurationer för Azure-tjänster
 
-**Vägledning**: Azure Firewall Manager stöder Azure Resource Manager baserade mallar och verk ställandet av konfigurations inställningar via Azure policy. Definiera anpassade Azure Policys definitioner som ska granskas och upprätthålla resurs konfigurationerna för Azure Firewall Manager med alias i namn området "Azure. Network".
+**Vägledning:** Azure Firewall Manager stöder Azure Resource Manager-baserade mallar och tillämpning av konfigurationsinställningar via Azure Policy. Definiera anpassade Azure Policy för att granska och tillämpa Azure Firewall Manager med hjälp av alias i namnområdet "Azure.Network".
 
-- [Förstå Azure Policys effekter](../governance/policy/concepts/effects.md)
+- [Förstå Azure Policy effekter](../governance/policy/concepts/effects.md)
 
-- [Referens för Azure Firewall-principmall](/azure/templates/microsoft.network/firewallpolicies)
+- [Azure Firewall principmallreferens](/azure/templates/microsoft.network/firewallpolicies)
 
-- [Bild av guardrails-implementering i netscale-landnings zon](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
+- [Bild av implementering av skyddsräcken i en landningszon i företagsskala](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture#landing-zone-expanded-definition)
 
 - [Skapa och hantera principer för att använda kompatibilitet](../governance/policy/tutorials/create-and-manage.md)
 
@@ -583,9 +583,9 @@ Markera även resurser med taggar och skapa ett namngivningssystem för att iden
 
 **Ansvar**: Kund
 
-### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: upprätta säkra konfigurationer för beräknings resurser
+### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: Upprätta säkra konfigurationer för beräkningsresurser
 
-**Vägledning**: ej tillämpligt; Azure Firewall Manager är hanterings tjänsten för brand Väggs kontroll och visar inte den underliggande tjänstens beräknings infrastruktur för de kunder som ska konfigureras.
+**Vägledning:** Inte tillämpligt; Azure Firewall Manager är en tjänst för hantering av brandväggsplanet och exponerar inte den underliggande tjänstens beräkningsinfrastruktur som kunder kan konfigurera.
 
 **Azure Security Center-övervakning**: Inte tillgänglig för tillfället
 
@@ -610,15 +610,15 @@ Se till att följa reglerna för intrångstester i Microsoft Cloud så att dina 
 
 *Mer information finns i [Azure Security Benchmark: Säkerhetskopiering och återställning](../security/benchmarks/security-controls-v2-backup-recovery.md).*
 
-### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Säkerställ vanliga automatiserade säkerhets kopieringar
+### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Säkerställ regelbundna automatiserade säkerhetskopieringar
 
-**Vägledning**: Azure Firewall Manager har inte begreppet kunders system för säkerhets kopiering, den underliggande infrastrukturen hanteras av Microsoft.
+**Vägledning:** Azure Firewall Manager inte har begreppet kundriktade systemsäkerhetskopior hanteras den underliggande infrastrukturen av Microsoft.
 
-För resurs konfigurations säkerhets kopieringar använder du Azure Resource Manager för att exportera brand Väggs principer och relaterade resurser i en JavaScript Object Notation (JSON)-mall som kan användas som en konfigurations säkerhets kopia. Du kan också exportera konfiguration av brand Väggs principer med hjälp av funktionen Exportera mall i Azure-brandväggen från Azure Portal. Använd Azure Automation för att köra anpassade skript för säkerhets kopiering för att avbilda resurs konfigurationerna för dina Azure Firewall Manager-resurser automatiskt.
+För säkerhetskopieringar av resurskonfiguration använder Azure Resource Manager för att exportera brandväggsprinciper och relaterade resurser i en JavaScript Object Notation-mall (JSON) som kan användas som en konfigurationssäkerhetskopia. Du kan också exportera brandväggsprincipkonfigurationer med hjälp av funktionen exportera mall i Azure Firewall från Azure Portal. Använd Azure Automation att köra anpassade säkerhetskopieringsskript för att avbilda resurskonfigurationer för Azure Firewall Manager resurser automatiskt.
 
-- [Distribuera säker virtuell hubb med mall](quick-secure-virtual-hub.md)
+- [Distribuera säker virtuell hubb med hjälp av mall](quick-secure-virtual-hub.md)
 
-- [Referens för Microsoft Firewall-principmall](/azure/templates/microsoft.network/firewallpolicies)
+- [Mallreferens för Microsoft Firewall-princip](/azure/templates/microsoft.network/firewallpolicies)
 
 - [Om Azure Automation](../automation/automation-intro.md)
 
@@ -628,11 +628,11 @@ För resurs konfigurations säkerhets kopieringar använder du Azure Resource Ma
 
 ### <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: Validera all säkerhetskopiering med kundhanterade nycklar
 
-**Vägledning**: Azure Firewall Manager har inte begreppet kunder som skyddar systemets säkerhets kopieringar. För alla exporterade resurs mallar för Azure Firewall Manager utför regelbundet återställning med dessa Azure Resource Manager mallfiler.
+**Vägledning:** Azure Firewall Manager har inte begreppet kundriktade systemsäkerhetskopior. För alla exporterade Azure Firewall Manager regelbundet återställning med hjälp av dessa Azure Resource Manager-mallfiler.
 
-- [Distribuera säker virtuell hubb med Azure Resource Manager mallar](quick-secure-virtual-hub.md)
+- [Distribuera säker virtuell hubb med hjälp Azure Resource Manager mallar](quick-secure-virtual-hub.md)
 
-- [Referens för Microsoft Firewall-principmall](/azure/templates/microsoft.network/firewallpolicies)
+- [Mallreferens för Microsoft-brandväggsprincip](/azure/templates/microsoft.network/firewallpolicies)
 
 **Övervakning i Azure Security Center**: Ej tillämpligt
 

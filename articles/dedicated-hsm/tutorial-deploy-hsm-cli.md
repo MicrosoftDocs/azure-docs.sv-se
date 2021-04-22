@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2021
 ms.author: keithp
-ms.openlocfilehash: fa1c01c2d9da19ec1f60878de83a509b7cf561e8
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b845ecabe74040e154886476a8ba28efecc99325
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105606835"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868869"
 ---
-# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Självstudie: Distribuera HSM: er till ett befintligt virtuellt nätverk med hjälp av Azure CLI
+# <a name="tutorial-deploying-hsms-into-an-existing-virtual-network-using-the-azure-cli"></a>Självstudie: Distribuera HSM:er till ett befintligt virtuellt nätverk med hjälp av Azure CLI
 
 Dedikerad HSM i Azure tillhandahåller en fysisk enhet enbart för kundanvändning, med fullständig administrativ kontroll och fullständigt hanteringsansvar. Användningen av fysiska enheter skapar ett behov av att Microsoft styr enhetsallokeringen för att säkerställa att kapacitet hanteras på ett effektivt sätt. I en Azure-prenumeration syns tjänsten Dedikerad HSM därför normalt inte för resursetablering. Azure-kunder som behöver åtkomst till tjänsten Dedikerad HSM måste först kontakta sin Microsoft-kontoansvarige och begära registrering för tjänsten Dedikerad HSM. Det är först när den här processen är klar som etablering blir möjlig. 
 
@@ -47,7 +47,7 @@ Antaganden:
 - Du har skapat en resursgrupp för dessa resurser, och de nya som distribueras i den här självstudien ansluts till den gruppen.
 - Du redan har skapat nödvändiga virtuella nätverk, undernät och virtuella datorer enligt diagrammet ovan och vill nu integrera två HSM:er i den distributionen.
 
-Alla instruktioner nedan förutsätter att du redan har navigerat till Azure Portal och att du har öppnat Cloud Shell (Välj " \> \_ " överst till höger i portalen).
+Alla instruktioner nedan förutsätter att du redan har navigerat till Azure Portal och att du har öppnat Cloud Shell (välj " " längst upp till höger \> \_ i portalen).
 
 ## <a name="provisioning-a-dedicated-hsm"></a>Etablera en Dedikerad HSM
 
@@ -63,7 +63,7 @@ az feature show \
    --name AzureDedicatedHSM
 ```
 
-Kommandona ska returnera statusen "registrerad" (som visas nedan). Om kommandona inte returnerar "registrerad" måste du registrera dig för den här tjänsten genom att kontakta din Microsoft-konto representant.
+Kommandona ska returnera statusen "Registrerad" (se nedan). Om kommandona inte returnerar "Registrerad" måste du registrera dig för den här tjänsten genom att kontakta din Microsoft-konto representant.
 
 ![prenumerationsstatus](media/tutorial-deploy-hsm-cli/subscription-status.png)
 
@@ -98,45 +98,45 @@ az network vnet subnet create \
 ```
 
 >[!NOTE]
->Den viktigaste konfigurationen för att anteckna för det virtuella nätverket, är att under nätet för HSM-enheten måste ha delegeringarna inställt på "Microsoft. HardwareSecurityModules/dedicatedHSMs".  HSM-etableringen fungerar inte utan att det här alternativet anges.
+>Den viktigaste konfigurationen för det virtuella nätverket är att undernätet för HSM-enheten måste ha delegeringar inställda på "Microsoft.HardwareSecurityModules/dedicatedHSMs".  HSM-etableringen fungerar inte utan att det här alternativet anges.
 
-När du har konfigurerat nätverket kan du använda dessa Azure CLI-kommandon för att etablera din HSM: er.
+När du har konfigurerat nätverket använder du dessa Azure CLI-kommandon för att etablera dina HSM:er.
 
-1. Använd kommandot [AZ dedikerad-HSM Create](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_create) för att etablera den första HSM. HSM heter hsm1. Ersätt din prenumeration:
+1. Använd kommandot [az dedicated-hsm create för](/cli/azure/dedicated-hsm#az_dedicated_hsm_create) att etablera den första HSM:en. HSM heter hsm1. Ersätt din prenumeration:
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm1 --resource-group myRG --network-profile-network-interfaces \
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-   Distributionen bör ta cirka 25 till 30 minuter att slutföra med den tid som HSM-enheterna är.
+   Den här distributionen bör ta cirka 25 till 30 minuter att slutföra, och större delen av den tiden är HSM-enheterna.
 
-1. Om du vill se en aktuell HSM kör du kommandot [AZ dedikerat-HSM show](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_show) :
+1. Om du vill se en aktuell HSM kör du [kommandot az dedicated-hsm show:](/cli/azure/dedicated-hsm#az_dedicated_hsm_show)
 
    ```azurecli
    az dedicated-hsm show --resource group myRG --name hsm1
    ```
 
-1. Etablera den andra HSM: en med hjälp av det här kommandot:
+1. Etablera den andra HSM:en med hjälp av det här kommandot:
 
    ```azurecli
    az dedicated-hsm create --location westus --name hsm2 --resource-group myRG --network-profile-network-interfaces \
         /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/MyHSM-vnet/subnets/MyHSM-vnet
    ```
 
-1. Kör kommandot [AZ Dedicated-HSM List](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_list) för att visa information om din aktuella HSM: er:
+1. Kör kommandot [az dedicated-hsm list för](/cli/azure/dedicated-hsm#az_dedicated_hsm_list) att visa information om dina aktuella HSM:er:
 
    ```azurecli
    az dedicated-hsm list --resource-group myRG
    ```
 
-Det finns andra kommandon som kan vara användbara. Använd kommandot [AZ Dedicated-HSM Update](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_update) för att uppdatera en HSM:
+Det finns några andra kommandon som kan vara användbara. Använd kommandot [az dedicated-hsm update](/cli/azure/dedicated-hsm#az_dedicated_hsm_update) för att uppdatera en HSM:
 
 ```azurecli
 az dedicated-hsm update --resource-group myRG –name hsm1
 ```
 
-Om du vill ta bort en HSM använder du kommandot [AZ dedikerat-HSM Delete](/cli/azure/ext/hardware-security-modules/dedicated-hsm#ext_hardware_security_modules_az_dedicated_hsm_delete) :
+Om du vill ta bort en HSM använder du [kommandot az dedicated-hsm delete:](/cli/azure/dedicated-hsm#az_dedicated_hsm_delete)
 
 ```azurecli
 az dedicated-hsm delete --resource-group myRG –name hsm1
@@ -154,7 +154,7 @@ az resource show \
    --ids /subscriptions/$subid/resourceGroups/myRG/providers/Microsoft.HardwareSecurityModules/dedicatedHSMs/HSM2
 ```
 
-Utdata ser ut ungefär så här:
+Utdata ser ut ungefär som följande utdata:
 
 ```json
 {
@@ -198,7 +198,7 @@ Utdata ser ut ungefär så här:
 }
 ```
 
-Du kan nu även se resurser med hjälp av [Azure-resursutforskaren](https://resources.azure.com/).   När du är i Utforskaren expanderar du "prenumerationer" till vänster, expanderar din särskilda prenumeration för dedikerad HSM, expanderar "resurs grupper", expanderar den resurs grupp som du använde och slutligen väljer du alternativet "resurser".
+Du kan nu även se resurser med hjälp av [Azure-resursutforskaren](https://resources.azure.com/).   När du är i utforskaren expanderar du "prenumerationer" till vänster, expanderar din specifika prenumeration för Dedicated HSM, expanderar "resursgrupper", expanderar den resursgrupp som du använde och väljer slutligen objektet "resurser".
 
 ## <a name="testing-the-deployment"></a>Testa distributionen
 
@@ -212,9 +212,9 @@ IP-adressen för den virtuella datorn kan också användas i stället för DNS-n
 ![lista över komponenter](media/tutorial-deploy-hsm-cli/resources.png)
 
 >[!NOTE]
->Lägg märke till kryss rutan Visa dolda typer, som när det här alternativet är valt visas HSM-resurser.
+>Observera kryssrutan "Visa dolda typer" som visar HSM-resurser när du väljer det här alternativet.
 
-I skärm bilden ovan visas en lämplig privat IP-adress om du klickar på "HSM1_HSMnic" eller "HSM2_HSMnic". Annars är kommandot `az resource show` som används ovan ett sätt att identifiera rätt IP-adress. 
+Om du klickar på "HSM1_HSMnic" eller "HSM2_HSMnic" på skärmbilden ovan visas lämplig privat IP-adress. Annars är kommandot `az resource show` som används ovan ett sätt att identifiera rätt IP-adress. 
 
 När du har rätt IP-adress kör du följande kommando och ersätter den adressen:
 
@@ -231,18 +231,18 @@ När du är ansluten till HSM med hjälp av SSH kör du följande kommando för 
 
 Utdata bör se ut som på bilden nedan:
 
-![Skärm bilden visar utdata i PowerShell-fönstret.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
+![Skärmbild som visar utdata i PowerShell-fönstret.](media/tutorial-deploy-hsm-cli/hsm-show-output.png)
 
-I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i Thales Luna 7 HSM Administration Guide kapitel 7 för att initiera HSM och skapa partitioner. All dokumentation och program vara är tillgängliga direkt från Thales för hämtning när du har registrerat dig på [Thales kund support Portal](https://supportportal.thalesgroup.com/csm) och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
+I det här skedet har du allokerat alla resurser för en distribution med hög tillgänglighet och två HSM:er samt verifierat åtkomst och driftstatus. Ytterligare konfiguration eller testning medför mer arbete med själva HSM-enheten. För detta bör du följa anvisningarna i kapitel 7 i thales Guide för HSM-administration av Thales För att initiera HSM och skapa partitioner. All dokumentation och programvara är tillgänglig direkt från Thales för nedladdning när du har registrerat dig på [Thales kundsupportportal](https://supportportal.thalesgroup.com/csm) och har ett kund-ID. Ladda ned klientprogramvara version 7.2 för att få alla nödvändiga komponenter.
 
 ## <a name="delete-or-clean-up-resources"></a>Ta bort eller rensa resurser
 
-Om du är klar med bara HSM-enheten kan den tas bort som resurs och returneras till poolen. Det uppenbara problemet när du gör detta är eventuella känsliga kunddata som finns på enheten. Det bästa sättet att "zeroize" en enhet är att få lösen ordet för HSM-administratören fel tre gånger (Obs! det här är inte enhets administratören, det är den faktiska HSM-administratören). Som säkerhets åtgärd för att skydda nyckel material kan enheten inte tas bort som en Azure-resurs förrän den är i ett nollställt tillstånd.
+Om du är klar med bara HSM-enheten kan den tas bort som resurs och returneras till poolen. Det uppenbara problemet när du gör detta är eventuella känsliga kunddata som finns på enheten. Det bästa sättet att "nollställa" en enhet är att få HSM-administratörslösenordet fel tre gånger (obs! Det här är inte enhetens administratör, det är den faktiska HSM-administratören). Som en säkerhetsåtgärd för att skydda nyckelmaterial kan enheten inte tas bort som en Azure-resurs förrän den är i ett nollat tillstånd.
 
 > [!NOTE]
-> Om du har problem med en Thales enhets konfiguration bör du kontakta [Thales kund support](https://supportportal.thalesgroup.com/csm).
+> Om du har problem med någon thales-enhetskonfiguration bör du kontakta [Thales kundsupport.](https://supportportal.thalesgroup.com/csm)
 
-Om du är färdig med alla resurser i den här resurs gruppen kan du ta bort dem med följande kommando:
+Om du är klar med alla resurser i den här resursgruppen kan du ta bort alla med följande kommando:
 
 ```azurecli
 az group delete \

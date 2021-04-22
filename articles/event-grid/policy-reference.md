@@ -1,19 +1,19 @@
 ---
 title: Inbyggda principdefinitioner för Azure Event Grid
 description: Visar Azure Policy inbyggda principdefinitioner för Azure Event Grid. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b45d848a2627cfd38afb25d1679b098ea2adc66e
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 748c290698ded47e1bc47e38a65786624fd72e89
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107501628"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869660"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-event-grid"></a>Azure Policy inbyggda definitioner för Azure Event Grid
 
-Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Event Grid. Ytterligare Azure Policy inbyggda funktioner för andra tjänster finns i [Azure Policy inbyggda definitionerna](../governance/policy/samples/built-in-policies.md).
+Den här sidan är ett index [Azure Policy](../governance/policy/overview.md) inbyggda principdefinitioner för Azure Event Grid. Mer information Azure Policy inbyggda program för andra tjänster finns [i Azure Policy inbyggda definitioner](../governance/policy/samples/built-in-policies.md).
 
 Namnet på varje inbyggd principdefinition länkar till principdefinitionen i Azure Portal. Använd länken i kolumnen **Version för** att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy).
 

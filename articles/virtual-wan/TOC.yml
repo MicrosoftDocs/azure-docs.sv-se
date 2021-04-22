@@ -10,10 +10,10 @@
     - name: ARM-mallar
       expanded: true
       items:
-        - name: All-till-valfri routning
+        - name: Alla-till-alla-routning
           displayName: Resource Manager Any-to-any routing
           href: quickstart-any-to-any-template.md
-        - name: Dirigera till delade tjänster virtuella nätverk
+        - name: Dirigera till delade tjänster – virtuella nätverk
           displayName: Resource Manager route to shared services VNets
           href: quickstart-route-shared-services-vnet-template.md
 - name: Självstudier
@@ -71,7 +71,7 @@
           href: scenario-route-through-nvas-custom.md
         - name: Azure Firewall – anpassad
           href: scenario-route-between-vnets-firewall.md
-        - name: Application Gateway-och backend-pooler
+        - name: Application Gateway och backend-pooler
           href: scenario-secured-hub-app-gateway.md
     - name: Övervakning
       items:
@@ -79,13 +79,13 @@
           href: azure-monitor-insights.md
     - name: Plats-till-plats
       items:
-        - name: Om IPsec-principer för S2S
+        - name: Om S2S IPsec-principer
           href: virtual-wan-ipsec.md
         - name: Flera ISP-länkar – val av Azure-sökväg
           href: path-selection-multiple-links.md
     - name: Punkt-till-plats
       items:
-        - name: Om IPsec-principer för P2S
+        - name: Om P2S IPsec-principer
           href: point-to-site-ipsec.md
     - name: Säkerhet
       items:
@@ -117,6 +117,8 @@
           href: virtual-wan-site-to-site-portal.md
         - name: Anslut virtuell nätverksgateway till Virtual WAN
           href: connect-virtual-network-gateway-vwan.md
+        - name: Utföra en paketinfångning
+          href: virtual-wan-site-to-site-packet-capture.md
         - name: Konfigurera anpassad IPsec-princip
           href: virtual-wan-custom-ipsec-portal.md
         - name: Konfigurera NAT-regler
@@ -129,11 +131,11 @@
           href: certificates-point-to-site.md
         - name: Konfigurera Azure AD-klientorganisation
           href: openvpn-azure-ad-tenant.md
-        - name: Klient profiler
+        - name: Klientprofiler
           items:
-            - name: Ladda ned globala och navbaserade profiler
+            - name: Ladda ned globala och hubbbaserade profiler
               href: global-hub-profile.md
-            - name: Extrahera och Visa profil information
+            - name: Extrahera och visa profilinformation
               href: about-vpn-profile-download.md
             - name: Distribuera profiler med Intune
               href: vpn-profile-intune.md
@@ -145,17 +147,17 @@
               href: howto-openvpn-clients.md?
         - name: Konfigurera Always-On tunnlar
           items:
-            - name: Användar tunnel
+            - name: Användartunnel
               href: howto-always-on-user-tunnel.md
-            - name: Enhets tunnel
+            - name: Enhetstunnel
               href: howto-always-on-device-tunnel.md
         - name: Autentisering
           items:
-            - name: Multi-Factor Authentication (MFA)
+            - name: Multifaktorautentisering (MFA)
               href: openvpn-azure-ad-mfa.md
             - name: Azure AD-autentisering
               href: virtual-wan-point-to-site-azure-ad.md
-            - name: Azure AD-autentisering med flera program
+            - name: Azure AD-autentisering för flera program
               href: openvpn-azure-ad-tenant-multi-app.md
     - name: Routning
       items:
@@ -188,7 +190,7 @@
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI
-      href: /cli/azure/ext/virtual-wan
+      href: /cli/azure/
     - name: Python SDK
       href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-mgmt-network/10.0.0/azure.mgmt.network.v2019_02_01.operations.html#azure.mgmt.network.v2019_02_01.operations.VirtualWansOperations'
 - name: Resurser

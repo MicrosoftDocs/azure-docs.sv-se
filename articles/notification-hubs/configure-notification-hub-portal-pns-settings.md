@@ -1,6 +1,6 @@
 ---
 title: Konfigurera push-meddelanden i Azure Notification Hubs | Microsoft Docs
-description: Lär dig hur du konfigurerar Azure-Notification Hubs i Azure Portal genom att använda PNS-inställningar (Platform notification system).
+description: Lär dig att konfigurera Azure Notification Hubs i Azure Portal med hjälp av inställningar för plattformsmeddelandesystem (PNS).
 services: notification-hubs
 author: sethmanheim
 manager: femila
@@ -12,44 +12,44 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 31d915cd44bcf60f3515eb1a84309980f45d40b0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94887271"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868311"
 ---
-# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Snabb start: Konfigurera push-meddelanden i en Notification Hub
+# <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Snabbstart: Konfigurera push-meddelanden i en meddelandehubb
 
-Azure Notification Hubs tillhandahåller en push-motor som är lätt att använda och som skalar ut. Använd Notification Hubs för att skicka meddelanden till valfri plattform (iOS, Android, Windows, Baidu) och från valfri Server del (moln eller lokalt). Mer information finns i [Vad är Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
+Azure Notification Hubs tillhandahåller en push-motor som är enkel att använda och som skalar ut. Använd Notification Hubs att skicka meddelanden till valfri plattform (iOS, Android, Windows, Baidu) och från valfri backend-plats (i molnet eller lokalt). Mer information finns i [Vad är Azure Notification Hubs?](notification-hubs-push-notification-overview.md).
 
-I den här snabb starten använder du PNS-inställningarna (Platform notification system) i Notification Hubs för att konfigurera push-meddelanden på flera plattformar. Snabb starten visar vilka steg du ska vidta i Azure Portal. [Google Firebase Cloud Messaging](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) innehåller instruktioner för hur du använder Azure CLI.
+I den här snabbstarten använder du inställningarna för plattformsmeddelandesystem (PNS) i Notification Hubs för att konfigurera push-meddelanden på flera plattformar. Snabbstarten visar hur du gör i Azure Portal. [Google Firebase Cloud Messaging innehåller](?tabs=azure-cli#google-firebase-cloud-messaging-fcm) instruktioner för att använda Azure CLI.
 
-Om du inte redan har skapat en Notification Hub skapar du ett nu. Mer information finns i [skapa en Azure Notification Hub i Azure Portal](create-notification-hub-portal.md) eller [skapa en Azure Notification Hub med Azure CLI](create-notification-hub-azure-cli.md).
+Om du inte redan har skapat en meddelandehubb skapar du en nu. Mer information finns i Skapa [en Azure-meddelandehubb i Azure Portal](create-notification-hub-portal.md) eller Skapa en [Azure-meddelandehubb med Hjälp av Azure CLI.](create-notification-hub-azure-cli.md)
 
 ## <a name="apple-push-notification-service"></a>Apple Push Notification Service
 
-Konfigurera Apple Push Notification Service (APN):
+Konfigurera en Apple Push Notification Service (APNS):
 
-1. I Azure Portal på sidan **Notification Hub** väljer du **Apple (APNs)** på den vänstra menyn.
+1. På Azure Portal väljer **du** **Apple (APNS)** på den vänstra menyn på sidan Notification Hub.
 
-1. För **autentiseringsläge** väljer du antingen **certifikat** eller **token**.
+1. För **Autentiseringsläge** väljer du antingen **Certifikat** eller **Token**.
 
-   a. Om du väljer **certifikat**:
-   * Välj fil ikonen och välj sedan den *. p12* -fil som du vill ladda upp.
-   * Ange ett lösen ord.
-   * Välj **Sandbox**-läge. Eller, om du vill skicka push-meddelanden till användare som har köpt din app från Store, väljer du **produktions** läge.
+   a. Om du väljer **Certifikat:**
+   * Välj filikonen och välj sedan den *.p12-fil* som du vill ladda upp.
+   * Ange ett lösenord.
+   * Välj **Sandbox**-läge. Om du vill skicka push-meddelanden till användare som har köpt appen från butiken väljer du **Produktionsläge.**
 
-     ![Skärm bild av en konfiguration av APN-certifikat i Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
+     ![Skärmbild av en APNS-certifikatkonfiguration i Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
-   b. Om du väljer **token**:
+   b. Om du väljer **Token**:
 
-   * Ange värdena för **nyckel-ID**, **paket-ID**, **Team-ID** och **token**.
-   * Välj **Sandbox**-läge. Eller, om du vill skicka push-meddelanden till användare som har köpt din app från Store, väljer du **produktions** läge.
+   * Ange värdena för **Nyckel-ID,** **Paket-ID,** **Team-ID** och **Token**.
+   * Välj **Sandbox**-läge. Om du vill skicka push-meddelanden till användare som har köpt appen från butiken väljer du **Produktionsläge.**
 
-     ![Skärm bild av en konfiguration av APN-token i Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
+     ![Skärmbild av en APNS-tokenkonfiguration i Azure Portal](./media/configure-notification-hub-portal-pns-settings/notification-hubs-apple-config-token.png)
 
-Mer information finns i [skicka push-meddelanden till iOS-appar med hjälp av Azure Notification Hubs](ios-sdk-get-started.md).
+Mer information finns i Skicka [push-meddelanden till iOS-appar med Azure Notification Hubs](ios-sdk-get-started.md).
 
 ## <a name="google-firebase-cloud-messaging-fcm"></a>Google Firebase Cloud Messaging (FCM)
 
@@ -57,31 +57,31 @@ Mer information finns i [skicka push-meddelanden till iOS-appar med hjälp av Az
 
 Konfigurera push-meddelanden för Google FCM:
 
-1. I Azure Portal på sidan **Notification Hub** väljer du **Google (GCM/FCM)** på den vänstra menyn.
-2. Klistra in **API-nyckeln** för det Google FCM-projekt som du sparade tidigare.
+1. På Azure Portal väljer du Google  **(GCM/FCM) på** den vänstra menyn på sidan Notification Hub.
+2. Klistra in **API-nyckeln** för Google FCM-projektet som du sparade tidigare.
 3. Välj **Spara**.
 
-   ![Skärm bild som visar hur du konfigurerar Notification Hubs för Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+   ![Skärmbild som visar hur du konfigurerar Notification Hubs för Google FCM](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
 
-När du slutför de här stegen anger en varning att Notification Hub har uppdaterats. Knappen **Spara** är inaktiverad.
+När du har slutfört de här stegen indikerar en avisering att meddelandehubben har uppdaterats. Knappen **Spara** är inaktiverad.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Du kommer att behöva **API-nyckeln** för ditt Google Firebase Cloud Messaging-projekt (FCM).
+Du behöver **API-nyckeln för** ditt Google Firebase Cloud Messaging-projekt (FCM).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-- Den här artikeln kräver version 2.0.67 eller senare av Azure CLI. Om du använder Azure Cloud Shell är den senaste versionen redan installerad.
+- Den här artikeln kräver version 2.0.67 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
 ### <a name="set-up-push-notifications-for-google-fcm"></a>Konfigurera push-meddelanden för Google FCM
 
-1. Använd kommandot [AZ Notification – Hub Credential GCM Update](/cli/azure/ext/notification-hub/notification-hub/credential/gcm#ext-notification-hub-az-notification-hub-credential-gcm-update) för att lägga till din Google API-nyckel i Notification Hub.
+1. Använd kommandot [az notification-hub credential gcm update](/cli/azure/notification-hub/credential/gcm#az_notification_hub_credential_gcm_update) för att lägga till din Google API-nyckel i meddelandehubben.
 
    ```azurecli
    az notification-hub credential gcm update --resource-group spnhubrg --namespace-name spnhubns    --notification-hub-name spfcmtutorial1nhub --google-api-key myKey
    ```
 
-2. Android-appen behöver en anslutnings sträng för att ansluta till Notification Hub.  Använd kommandot [AZ Notification-Hub Authorization-Rule List](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list) för att visa en lista över tillgängliga åtkomst principer.  Använd kommandot [AZ Notification-Hub Authorization-Rule List-Keys](/cli/azure/ext/notification-hub/notification-hub/authorization-rule#ext-notification-hub-az-notification-hub-authorization-rule-list-keys) för att hämta anslutnings strängarna för åtkomst principen.  Ange **primaryConnectionString** eller **secondaryConnectionString** i `--query` parametern för att hämta den primära anslutnings strängen direkt.
+2. Android-appen behöver en anslutningssträng för att ansluta till meddelandehubben.  Använd kommandot [az notification-hub authorization-rule list för](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list) att visa en lista över tillgängliga åtkomstprinciper.  Använd kommandot [az notification-hub authorization-rule list-keys för](/cli/azure/notification-hub/authorization-rule#az_notification_hub_authorization_rule_list_keys) att hämta anslutningssträngarna för åtkomstprincipen.  Ange **primaryConnectionString eller** **secondaryConnectionString i** `--query` parametern för att hämta den primära anslutningssträngen direkt.
 
    ```azurecli
    #list access policies for a notification hub
@@ -94,7 +94,7 @@ Du kommer att behöva **API-nyckeln** för ditt Google Firebase Cloud Messaging-
    az notification-hub authorization-rule list-keys --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --name myAccessPolicyName --query primaryConnectionString
    ```
 
-3. Använd kommandot [AZ Notification-Hub test-Send](/cli/azure/ext/notification-hub/notification-hub#ext-notification-hub-az-notification-hub-test-send) för att testa att skicka meddelanden till Android-appen.
+3. Använd kommandot [az notification-hub test-send för](/cli/azure/notification-hub#az_notification_hub_test_send) att testa att skicka meddelanden till Android-appen.
 
    ```azurecli
    #test with message body
@@ -104,67 +104,67 @@ Du kommer att behöva **API-nyckeln** för ditt Google Firebase Cloud Messaging-
    az notification-hub test-send --resource-group spnhubrg --namespace-name spnhubns --notification-hub-name spfcmtutorial1nhub --notification-format gcm --payload "{\"data\":{\"message\":\"my JSON string\"}}"
    ```
 
-Hämta Azure CLI-referenser för andra plattformar med kommandot [AZ Notification – Hub Credential](/cli/azure/ext/notification-hub/notification-hub/credential) .
+Hämta Azure CLI-referenser för andra plattformar med [kommandot az notification-hub credential.](/cli/azure/notification-hub/credential)
 
-Mer information om hur du skickar meddelanden till ett Android-program finns i [skicka push-meddelanden till Android-enheter med Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+Mer information om hur du skickar meddelanden till en Android-app finns i [Skicka push-meddelanden till Android-enheter med Firebase.](notification-hubs-android-push-notification-google-fcm-get-started.md)
 
 ---
 
 ## <a name="windows-push-notification-service"></a>Windows Push Notification Service
 
-Konfigurera Windows Push Notification Service (WNS):
+Konfigurera en Windows Push Notification Service (WNS):
 
-1. I Azure Portal på sidan **Notification Hub** väljer du **Windows (WNS)** på den vänstra menyn.
+1. På Azure Portal väljer **du** **Windows (WNS)** på den vänstra menyn på sidan Notification Hub.
 2. Ange värden för **Package SID** (Paket-SID) och **Security Key** (Säkerhetsnyckel).
 3. Välj **Spara**.
 
-   ![Skärm bild som visar rutorna paket-SID och säkerhets nyckel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
+   ![Skärmbild som visar rutorna Paket-SID och Säkerhetsnyckel](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-configure-wns.png)
 
-Mer information finns i [skicka meddelanden till UWP-appar med hjälp av Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
+Mer information finns i [Skicka meddelanden till UWP-appar med hjälp av Azure Notification Hubs](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md).
 
 ## <a name="microsoft-push-notification-service-for-windows-phone"></a>Microsoft Push Notification Service för Windows Phone
 
-Så här konfigurerar du Microsoft Push Notification Service (MPNS) för Windows Phone:
+Så här ställer Microsoft Push Notification Service (MPNS) för Windows Phone:
 
-1. I Azure Portal på sidan **Notification Hub** väljer du **Windows Phone (MPNS)** på den vänstra menyn.
-1. Aktivera antingen oautentiserade eller autentiserade push-meddelanden:
+1. I Azure Portal väljer du **MPNS (Windows Phone Notification** **Hub)** på den vänstra menyn.
+1. Aktivera antingen ej autentiserade eller autentiserade push-meddelanden:
 
-   a. Om du vill aktivera oautentiserade push-meddelanden väljer du **Aktivera oautentiserad push**  >  **Spara**.
+   a. Om du vill aktivera oauthenticerade push-meddelanden **väljer du Aktivera ejauticerade push-meddelanden**  >  **Spara**.
 
-      ![Skärm bild som visar hur du aktiverar oautentiserade push-meddelanden](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
+      ![Skärmbild som visar hur du aktiverar oauticerade push-meddelanden](./media/notification-hubs-windows-phone-get-started/azure-portal-unauth.png)
 
    b. Så här aktiverar du autentiserade push-meddelanden:
-      * I verktygsfältet väljer du **Ladda upp certifikat**.
-      * Välj fil ikonen och välj sedan certifikat filen.
+      * I verktygsfältet väljer du Ladda **upp certifikat.**
+      * Välj filikonen och välj sedan certifikatfilen.
       * Ange lösenordet för certifikatet.
       * Välj **OK**.
-      * På sidan **Windows Phone (MPNS)** väljer du **Spara**.
+      * På Windows Phone **(MPNS)** väljer du **Spara**.
 
-Mer information finns i [push-meddelanden till Windows Phone appar med hjälp av Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
+Mer information finns i Skicka [meddelanden till Windows Phone med hjälp av Notification Hubs](notification-hubs-windows-mobile-push-notifications-mpns.md).
 
 ## <a name="baidu-android-china"></a>Baidu (Android China)
 
 Konfigurera push-meddelanden för Baidu:
 
-1. I Azure Portal på sidan **Notification Hub** väljer du **Baidu (Android China)** på den vänstra menyn.
-2. Ange den **API-nyckel** som du fick från Baidu-konsolen i Baidu Cloud push projektet.
-3. Ange den **hemliga nyckeln** som du fick från Baidu-konsolen i Baidu Cloud push projektet.
+1. I Azure Portal väljer du **Baidu** **(Android China)** på den vänstra menyn på sidan Notification Hub.
+2. Ange **den API-nyckel** som du fick från Baidu-konsolen i Baidu Cloud Push projekt.
+3. Ange den **hemliga nyckel** som du fick från Baidu-konsolen i Baidu Cloud Push projekt.
 4. Välj **Spara**.
 
-    ![Skärm bild av Notification Hubs som visar Baidu-konfigurationen (Android China) för push-meddelanden](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
+    ![Skärmbild av Notification Hubs som visar Baidu-konfigurationen (Android China) för push-meddelanden](./media/notification-hubs-baidu-get-started/AzureNotificationServicesBaidu.png)
 
-När du slutför de här stegen anger en varning att Notification Hub har uppdaterats. Knappen **Spara** är inaktiverad.
+När du har slutfört de här stegen anger en avisering att meddelandehubben har uppdaterats. Knappen **Spara** är inaktiverad.
 
-Mer information finns i [Kom igång med Notification Hubs med hjälp av Baidu](notification-hubs-baidu-china-android-notifications-get-started.md).
+Mer information finns i [Kom igång med Notification Hubs hjälp av Baidu.](notification-hubs-baidu-china-android-notifications-get-started.md)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du konfigurerar inställningar för plattforms aviserings systemet för en Notification Hub i Azure Portal.
+I den här snabbstarten har du lärt dig hur du konfigurerar systeminställningar för plattformsmeddelanden för en meddelandehubb i Azure Portal.
 
-Mer information om hur du skickar meddelanden till olika plattformar finns i följande Självstudier:
+Mer information om hur du push-meddelanden till olika plattformar finns i dessa självstudier:
 
-* [Skicka push-meddelanden till iOS-appar med hjälp av Azure Notification Hubs](ios-sdk-get-started.md)
-* [Skicka meddelanden till Android-enheter med hjälp av Notification Hubs och Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
+* [Skicka push-meddelanden till iOS-appar med Azure Notification Hubs](ios-sdk-get-started.md)
+* [Skicka meddelanden till Android-enheter med hjälp Notification Hubs och Google FCM](notification-hubs-android-push-notification-google-fcm-get-started.md)
 * [Skicka meddelanden till en UWP-app som körs på en Windows-enhet](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)
 * [Skicka meddelanden till en Windows Phone 8-app med hjälp av MPNS](notification-hubs-windows-mobile-push-notifications-mpns.md)
 * [Skicka meddelanden med hjälp av Notification Hubs och Baidu Cloud Push](notification-hubs-baidu-china-android-notifications-get-started.md)

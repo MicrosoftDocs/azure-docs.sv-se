@@ -1,6 +1,6 @@
 ---
-title: Använd .NET Core för att ansluta och fråga en databas
-description: Det här avsnittet visar hur du använder .NET Core för att skapa ett program som ansluter till en databas i Azure SQL Database eller en Azure SQL-hanterad instans och frågar den med hjälp av Transact-SQL-uttryck.
+title: Använda .NET Core för att ansluta och fråga en databas
+description: Det här avsnittet visar hur du använder .NET Core för att skapa ett program som ansluter till en databas i Azure SQL Database eller Azure SQL Managed Instance och frågar den med hjälp av Transact-SQL-uttryck.
 titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
@@ -12,28 +12,28 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 1d25f43ef5a694d8b94710055bf1be72a7fcb45c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 221b69d428556b031efd3bd91e16d12cfeb71393
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97705225"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874809"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Snabb start: använda .NET Core (C#) för att fråga en databas
+# <a name="quickstart-use-net-core-c-to-query-a-database"></a>Snabbstart: Använda .NET Core (C#) för att fråga en databas
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-I den här snabb starten använder du [.net Core](https://www.microsoft.com/net/) och C#-kod för att ansluta till en databas. Sedan kör du en Transact-SQL-instruktion för att fråga efter data.
+I den här snabbstarten använder du [.NET Core och](https://dotnet.microsoft.com) C#-kod för att ansluta till en databas. Sedan kör du en Transact-SQL-instruktion för att fråga efter data.
 
 > [!TIP]
-> Följande Microsoft Learn modul hjälper dig att lära dig kostnads fritt hur du [utvecklar och konfigurerar ett ASP.NET-program som frågar en databas i Azure SQL Database](/learn/modules/develop-app-that-queries-azure-sql/)
+> Följande modul Microsoft Learn dig att lära dig hur du utvecklar och konfigurerar ett [ASP.NET-program](/learn/modules/develop-app-that-queries-azure-sql/) som frågar en databas i Azure SQL Database
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att slutföra den här snabbstarten behöver du:
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [.NET Core för ditt operativsystem](https://www.microsoft.com/net/core).
-- En databas där du kan köra din fråga. 
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
+- [.NET Core SDK för ditt operativsystem installerat.](https://dotnet.microsoft.com/download)
+- En databas där du kan köra frågan. 
 
   [!INCLUDE[create-configure-database](../includes/create-configure-database.md)]
   
@@ -127,7 +127,7 @@ namespace sqltest
    dotnet run
    ```
 
-2. Kontrol lera att raderna returneras.
+2. Kontrollera att raderna returneras.
 
    ```text
    Query data example:
@@ -145,6 +145,6 @@ namespace sqltest
 ## <a name="next-steps"></a>Nästa steg
 
 - [Komma igång med .NET Core för Windows/Linux/macOS med hjälp av kommandoraden](/dotnet/core/tutorials/using-with-xplat-cli).
-- Lär dig hur du [ansluter och frågar Azure SQL Database eller en Azure SQL-hanterad instans med hjälp av .NET Framework och Visual Studio](connect-query-dotnet-visual-studio.md).  
-- Lär dig hur du [utformar din första databas med SSMS](design-first-database-tutorial.md) eller [utformar en databas och ansluter med C# och ADO.net](design-first-database-csharp-tutorial.md).
+- Lär dig hur [du ansluter och frågar Azure SQL Database eller Azure SQL Managed Instance med](connect-query-dotnet-visual-studio.md)hjälp av .NET Framework och Visual Studio .  
+- Lär dig hur [du utformar din första databas med SSMS](design-first-database-tutorial.md) eller utformar en databas och ansluter med [C# och ADO.NET](design-first-database-csharp-tutorial.md).
 - Mer information om .NET finns i [.NET-dokumentationen](/dotnet/).

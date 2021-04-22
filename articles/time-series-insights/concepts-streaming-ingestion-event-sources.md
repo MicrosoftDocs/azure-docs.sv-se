@@ -9,12 +9,12 @@ ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
 ms.date: 03/18/2021
-ms.openlocfilehash: 499cb3c978a67f9ef71e6ad9dd03be9f05b45729
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.openlocfilehash: e0d40a4e0e376a42841bd8df5d76e5c83d11b1e3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107726978"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865490"
 ---
 # <a name="azure-time-series-insights-gen2-event-sources"></a>Azure Time Series Insights Gen2-händelsekällor
 
@@ -29,7 +29,7 @@ Händelser måste skickas som UTF-8-kodad JSON.
 
 Händelsekällan är länken mellan din hubb och din Azure Time Series Insights Gen2-miljö och en separat resurs av typen `Time Series Insights event source` skapas i resursgruppen. Resurserna IoT Hub eller händelsehubben kan vara live i samma Azure-prenumeration som din Azure Time Series Insights Gen2-miljö eller en annan prenumeration. Det är dock bästa praxis att ha din Azure Time Series Insights miljö och IoT Hub eller Händelsehubb i samma Azure-region.
 
-Du kan använda [Azure Portal,](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment) [Azure CLI,](https://docs.microsoft.com/cli/azure/ext/timeseriesinsights/tsi/event-source) [Azure Resource Manager-mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelsekällor.
+Du kan använda [Azure Portal,](./tutorials-set-up-tsi-environment.md#create-an-azure-time-series-insights-gen2-environment) [Azure CLI,](/cli/azure/tsi/event-source) [Azure Resource Manager-mallar](time-series-insights-manage-resources-using-azure-resource-manager-template.md)och [REST API](/rest/api/time-series-insights/management(gen1/gen2)/eventsources) för att skapa, redigera eller ta bort din miljös händelsekällor.
 
 > [!WARNING]
 > Begränsa inte offentlig Internetåtkomst till en hubb eller händelsekälla som används av Time Series Insights, annars bryts den nödvändiga anslutningen.
@@ -41,17 +41,17 @@ När du skapar en händelsekälla kan du ange vilka befintliga data som ska saml
 | Name   |  Beskrivning  |  Azure Resource Manager mallexempel |
 |----------|-------------|------|
 | EarliestAvailable | Mata in alla befintliga data som lagras i IoT eller Händelsehubb | `"ingressStartAt": {"type": "EarliestAvailable"}` |
-| EventSourceCreationTime |  Börja mata in data som tas emot när händelsekällan har skapats. Alla befintliga data som strömmades innan händelsekällan skapades ignoreras. Det här är standardinställningen i Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
-| CustomEnqueuedTime | Din miljö matar in data från din anpassade tidssekvens (UTC) framåt. Alla händelser som har förts in i din IoT eller händelsehubb vid eller efter din anpassade iqueued-tid kommer att matas in och lagras. Alla händelser som ankom före din anpassade tidpunkt ignoreras. Observera att "tid iqueued" avser den tid (i UTC) som händelsen ankom till i din IoT eller Event Hub. Detta skiljer sig från en anpassad [tidsstämpelegenskap](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) som finns i händelsens brödtext. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
+| EventSourceCreationTime |  Börja mata in data som kommer när händelsekällan har skapats. Alla befintliga data som strömmades innan händelsekällan skapades ignoreras. Det här är standardinställningen i Azure Portal   |   `"ingressStartAt": {"type": "EventSourceCreationTime"}` |
+| CustomEnqueuedTime | Din miljö matar in data från din anpassade tidssekvens (UTC) framåt. Alla händelser som togs i din IoT- eller händelsehubb vid eller efter din anpassade iqueued-tid matas in och lagras. Alla händelser som anlänt före din anpassade tid i enqueued ignoreras. Observera att "iqueued time" syftar på den tid (i UTC) som händelsen anlänt till din IoT eller Event Hub. Detta skiljer sig från en anpassad [tidsstämpelegenskap](./concepts-streaming-ingestion-event-sources.md#event-source-timestamp) som finns i brödtexten för händelsen. |     `"ingressStartAt": {"type": "CustomEnqueuedTime", "time": "2021-03-01T17:00:00.20Z"}` |
 
 > [!IMPORTANT]
 >
-> - Om du väljer EarliestAvailable och har många befintliga data kan det uppstå lång svarstid när din Azure Time Series Insights Gen2-miljö bearbetar alla dina data.
+> - Om du väljer EarliestAvailable och har många befintliga data kan det uppstå hög inledande svarstid eftersom din Azure Time Series Insights Gen2-miljö bearbetar alla dina data.
 > - Den här höga svarstiden bör så småningom minska när data indexeras. Skicka en supportbiljett via Azure Portal om du upplever kontinuerligt hög svarstid.
 
 - EarliestAvailable
 
-![TidigastTillgängligt diagram](media/concepts-streaming-event-sources/event-source-earliest-available.png)
+![EarliestAvailable-diagram](media/concepts-streaming-event-sources/event-source-earliest-available.png)
 
 - EventSourceCreationTime
 
@@ -67,15 +67,15 @@ När du skapar en händelsekälla kan du ange vilka befintliga data som ska saml
 
 - Konfigurera din Azure Time Series Insights Gen2-miljö och IoT Hub och/eller Event Hubs i samma Azure-region. Även om det är möjligt att konfigurera en händelsekälla i en separat region stöds inte det här scenariot och vi kan inte garantera hög tillgänglighet.
 
-- Gå inte utöver din miljös gräns [för dataflöde eller](./concepts-streaming-ingress-throughput-limits.md) per partitionsgräns.
+- Gå inte längre än din miljös gräns [för dataflöde eller](./concepts-streaming-ingress-throughput-limits.md) per partitionsgräns.
 
 - Konfigurera en [fördröjningsavisering](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) för att få ett meddelande om din miljö har problem med att bearbeta data. Se [Produktionsarbetsbelastningar nedan](./concepts-streaming-ingestion-event-sources.md#production-workloads) för föreslagna aviseringsvillkor.
 
-- Använd strömningsinmatning endast för data i nära realtid och senaste, men strömning av historiska data stöds inte.
+- Använd strömningsinmatning endast för data i nära realtid och senaste data. Strömning av historiska data stöds inte.
 
-- Förstå hur egenskaper kommer att kommas över och [JSON-data plattas ut och lagras.](./concepts-json-flattening-escaping-rules.md)
+- Förstå hur egenskaper kommer att vara rymde och [JSON-data plattas ut och lagras.](./concepts-json-flattening-escaping-rules.md)
 
-- Följ principen om minsta behörighet när du tillhandahåller anslutningssträngar för händelsekälla. Konfigurera Event Hubs princip för delad åtkomst endast  med skicka anspråket och för IoT Hub endast *behörigheten för tjänståtkomst.*
+- Följ principen om minsta behörighet när du tillhandahåller anslutningssträngar för händelsekälla. Konfigurera Event Hubs princip för delad åtkomst med  enbart skicka anspråk och för att IoT Hub endast *behörigheten för* tjänståtkomst.
 
 > [!CAUTION]
 > Om du tar bort din IoT Hub eller händelsehubb och skapar en ny resurs med samma namn måste du skapa en ny händelsekälla och koppla den nya IoT Hub eller händelsehubben. Data matas inte in förrän du har slutfört det här steget.
@@ -84,13 +84,13 @@ När du skapar en händelsekälla kan du ange vilka befintliga data som ska saml
 
 Förutom metodtipsen ovan rekommenderar vi att du implementerar följande för affärskritiska arbetsbelastningar.
 
-- Öka din IoT Hub eller Event Hub-datalagringstid till högst sju dagar.
+- Öka din IoT Hub- eller Event Hub-datalagringstid till högst sju dagar.
 
-- Skapa miljöaviseringar i Azure Portal. Med aviseringar baserade på [plattformsmått](./how-to-monitor-tsi-reference.md#metrics) kan du verifiera pipelinebeteendet från slutet till slut. Anvisningarna för att skapa och hantera aviseringar finns [här.](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) Föreslagna aviseringsvillkor:
+- Skapa miljöaviseringar i Azure Portal. Med aviseringar som baseras [på plattformsmått](./how-to-monitor-tsi-reference.md#metrics) kan du verifiera pipelinebeteendet från slutet till slut. Anvisningarna för att skapa och hantera aviseringar finns [här.](./time-series-insights-environment-mitigate-latency.md#monitor-latency-and-throttling-with-alerts) Föreslagna aviseringsvillkor:
 
   - IngressReceivedMessagesTimeLag är större än 5 minuter
   - IngressReceivedBytes är 0
-- Håll inmatningsbelastningen balanserad mellan dina IoT Hub partitioner eller Event Hub-partitioner.
+- Håll inmatningsbelastningen balanserad mellan dina IoT Hub eller Event Hub-partitioner.
 
 ### <a name="historical-data-ingestion"></a>Historisk datainmatning
 
@@ -121,6 +121,6 @@ Tidszonsförskjutningen ska formateras som något av följande:
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Läs [reglerna för JSON-utplattning och undantag](./concepts-json-flattening-escaping-rules.md) för att förstå hur händelser kommer att lagras.
+- Läs [reglerna för utplattning och undantag för JSON för](./concepts-json-flattening-escaping-rules.md) att förstå hur händelser kommer att lagras.
 
 - Förstå miljöns [dataflödesbegränsningar](./concepts-streaming-ingress-throughput-limits.md)

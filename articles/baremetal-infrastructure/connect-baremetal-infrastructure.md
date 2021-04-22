@@ -1,165 +1,165 @@
 ---
-title: Anslut BareMetal Infrastructure instances i Azure
+title: Ansluta BareMetal-infrastrukturinstanser i Azure
 description: Lär dig hur du identifierar och interagerar med BareMetal-instanser i Azure Portal eller Azure CLI.
 ms.topic: how-to
 ms.subservice: workloads
 ms.date: 04/06/2021
-ms.openlocfilehash: a7fdc17aa4271915f7dc02aaa2d7a688016bf892
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: e67ede85608f2a33dcc179005f0090ca2ce6a640
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106579199"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871659"
 ---
-# <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Anslut BareMetal Infrastructure instances i Azure
+# <a name="connect-baremetal-infrastructure-instances-in-azure"></a>Ansluta BareMetal-infrastrukturinstanser i Azure
 
-Den här artikeln visar hur [Azure Portal](https://portal.azure.com/) visar [BareMetal-instanser](concepts-baremetal-infrastructure-overview.md). Den här artikeln visar också vad du kan göra i Azure Portal med de distribuerade BareMetal-infrastruktur instanserna. 
+Den här artikeln visar hur [Azure Portal](https://portal.azure.com/) visar [BareMetal-instanser](concepts-baremetal-infrastructure-overview.md). Den här artikeln visar också vad du kan göra i Azure Portal med dina distribuerade BareMetal-infrastrukturinstanser. 
  
 ## <a name="register-the-resource-provider"></a>Registrera resursprovidern
-En Azure Resource Provider för BareMetal-instanser ger insyn i instanserna i Azure Portal. Som standard registrerar Azure-prenumerationen som du använder för BareMetal-instansen distribution av *BareMetalInfrastructure* -resurs leverantören. Om du inte ser dina distribuerade BareMetal-instanser måste du registrera resurs leverantören med din prenumeration. 
+En Azure-resursprovider för BareMetal-instanser ger insyn i instanserna i Azure Portal. Som standard registrerar Azure-prenumerationen som du använder för BareMetal-instansdistributioner *resursprovidern BareMetalInfrastructure.* Om du inte ser dina distribuerade BareMetal-instanser måste du registrera resursprovidern med din prenumeration. 
 
-Du kan registrera BareMetal-instansens resurs leverantör genom att använda Azure Portal eller Azure CLI.
+Du kan registrera BareMetal-instansresursprovidern med hjälp av Azure Portal eller Azure CLI.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
  
-Du måste ange din prenumeration i Azure Portal och sedan dubbelklicka på prenumerationen som används för att distribuera dina BareMetal-instanser.
+Du måste visa din prenumeration i listan Azure Portal dubbelklicka på prenumerationen som används för att distribuera dina BareMetal-instanser.
  
 1. Logga in på [Azure-portalen](https://portal.azure.com).
 
 1. Välj **Alla tjänster** på menyn i Azure-portalen.
 
-1. I rutan **alla tjänster** anger du **prenumeration** och väljer sedan **prenumerationer**.
+1. I rutan **Alla tjänster** anger du **prenumeration** och väljer sedan **Prenumerationer.**
 
-1. Välj prenumerationen från prenumerations listan.
+1. Välj prenumerationen i prenumerationslistan.
 
-1. Välj **resurs leverantörer** och ange **BareMetalInfrastructure** i sökningen. Resurs leverantören bör vara **registrerad**, som bilden visar.
+1. Välj **Resursproviders** **och ange BareMetalInfrastructure** i sökningen. Resursprovidern ska **vara Registrerad**, som visas på bilden.
  
 >[!NOTE]
->Om resurs leverantören inte är registrerad väljer du **Registrera**.
+>Om resursprovidern inte är registrerad väljer du **Registrera**.
  
-:::image type="content" source="media/connect-baremetal-infrastructure/register-resource-provider-azure-portal.png" alt-text="Skärm bild som visar BareMetal-instanser som registrerats.":::
+:::image type="content" source="media/connect-baremetal-infrastructure/register-resource-provider-azure-portal.png" alt-text="Skärmbild som visar registrerade BareMetal-instanser.":::
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Börja använda Azure CLI:
+Så här börjar du använda Azure CLI:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Logga in på Azure-prenumerationen som du använder för BareMetal-instansen av Azure CLI. Registrera `BareMetalInfrastructure` resurs leverantören med [AZ Provider register](/cli/azure/provider#az_provider_register) kommando:
+Logga in på Azure-prenumerationen som du använder för distributionen av BareMetal-instansen via Azure CLI. Registrera `BareMetalInfrastructure` resursprovidern med [kommandot az provider](/cli/azure/provider#az_provider_register) register:
 
 ```azurecli
 az provider register --namespace Microsoft.BareMetalInfrastructure
 ```
 
-Du kan använda kommandot [AZ Provider List](/cli/azure/provider#az_provider_list) för att se alla tillgängliga providers.
+Du kan använda kommandot [az provider list](/cli/azure/provider#az_provider_list) för att se alla tillgängliga providers.
 
 ---
 
-Mer information om resurs leverantörer finns i [Azure Resource providers och-typer](../azure-resource-manager/management/resource-providers-and-types.md).  
+Mer information om resursproviders finns i [Azure-resursproviders och resurstyper.](../azure-resource-manager/management/resource-providers-and-types.md)  
 
 ## <a name="baremetal-instances-in-the-azure-portal"></a>BareMetal-instanser i Azure Portal
  
-När du skickar en distributions förfrågan för BareMetal-instansen anger du den Azure-prenumeration som du ansluter till BareMetal-instanserna. Använd samma prenumeration som du använder för att distribuera program lagret som fungerar mot BareMetal-instanserna.
+När du skickar en distributionsbegäran för BareMetal-instansen anger du den Azure-prenumeration som du ansluter till BareMetal-instanserna. Använd samma prenumeration som du använder för att distribuera programlagret som fungerar mot BareMetal-instanserna.
  
-Under distributionen av BareMetal-instanserna skapas en ny [Azure-resurs grupp](../azure-resource-manager/management/manage-resources-portal.md) i Azure-prenumerationen som du använde i distributions förfrågan. I den här nya resurs gruppen visas alla BareMetal-instanser som du har distribuerat i den prenumerationen.
+Under distributionen av dina BareMetal-instanser skapas en ny [Azure-resursgrupp](../azure-resource-manager/management/manage-resources-portal.md) i den Azure-prenumeration som du använde i distributionsbegäran. Den här nya resursgruppen visar en lista över alla BareMetal-instanser som du har distribuerat i prenumerationen.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. I BareMetal-prenumerationen väljer du **resurs grupper** i Azure Portal.
+1. I BareMetal-prenumerationen går du Azure Portal väljer **Resursgrupper**.
  
-   :::image type="content" source="media/connect-baremetal-infrastructure/view-baremetal-instances-azure-portal.png" alt-text="Skärm bild som visar listan över resurs grupper.":::
+   :::image type="content" source="media/connect-baremetal-infrastructure/view-baremetal-instances-azure-portal.png" alt-text="Skärmbild som visar listan över resursgrupper.":::
 
-1. Leta upp den nya resurs gruppen i listan.
+1. Leta upp den nya resursgruppen i listan.
  
-   :::image type="content" source="media/connect-baremetal-infrastructure/filter-resource-groups.png" alt-text="Skärm bild som visar BareMetal-instansen i en lista med filtrerade resurs grupper." lightbox="media/connect-baremetal-infrastructure/filter-resource-groups.png":::
+   :::image type="content" source="media/connect-baremetal-infrastructure/filter-resource-groups.png" alt-text="Skärmbild som visar BareMetal-instansen i en filtrerad lista över resursgrupper." lightbox="media/connect-baremetal-infrastructure/filter-resource-groups.png":::
    
    >[!TIP]
-   >Du kan filtrera på den prenumeration som du använde för att distribuera BareMetal-instansen. När du har filtrerat till rätt prenumeration kan du ha en lång lista över resurs grupper. Leta efter en med post-Fix of **-TXXX** där xxx är tre siffror som **-T250**.
+   >Du kan filtrera på den prenumeration som du använde för att distribuera BareMetal-instansen. När du har filtrerat på rätt prenumeration kan du ha en lång lista över resursgrupper. Leta efter en med en efterkorrigering av **-Txxx** där xxx är tre siffror som **-T250**.
 
-1. Välj den nya resurs gruppen om du vill visa information om den. Bilden visar en BareMetal-instans som har distribuerats.
+1. Välj den nya resursgruppen för att visa dess information. Avbildningen visar en BareMetal-instans som har distribuerats.
    
    >[!NOTE]
-   >Om du har distribuerat flera BareMetal-instanser under samma Azure-prenumeration visas flera Azure-resurs grupper.
+   >Om du har distribuerat flera BareMetal-instansklienter under samma Azure-prenumeration visas flera Azure-resursgrupper.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill se alla BareMetal-instanser kör du kommandot [AZ baremetalinstance List](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_list) för resurs gruppen:
+Om du vill se alla dina BareMetal-instanser kör du [kommandot az baremetalinstance list](/cli/azure/baremetalinstance#az_baremetalinstance_list) för din resursgrupp:
 
 ```azurecli
 az baremetalinstance list --resource-group DSM05A-T550 –output table
 ```
 
 > [!TIP]
-> `--output`Parametern är en global parameter som är tillgänglig för alla kommandon. **Tabellens** värde visar utdata i ett eget format. Mer information finns i [utdataformat för Azure CLI-kommandon](/cli/azure/format-output-azure-cli).
+> Parametern `--output` är en global parameter som är tillgänglig för alla kommandon. **Tabellvärdet** visar utdata i ett användarvänligt format. Mer information finns i [Utdataformat för Azure CLI-kommandon.](/cli/azure/format-output-azure-cli)
 
 ---
 
 ## <a name="view-the-attributes-of-a-single-instance"></a>Visa attributen för en enskild instans
 
-Du kan visa information om en enda instans.
+Du kan visa information om en enskild instans.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-I listan över BareMetal-instanser väljer du den enda instans som du vill visa.
+I listan över BareMetal-instanser väljer du den enskilda instans som du vill visa.
  
-:::image type="content" source="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png" alt-text="Skärm bild som visar BareMetal-instansens attribut för en enskild instans." lightbox="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png":::
+:::image type="content" source="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png" alt-text="Skärmbild som visar BareMetal-instansattributen för en enskild instans." lightbox="media/connect-baremetal-infrastructure/view-attributes-single-baremetal-instance.png":::
  
-Attributen i bilden ser inte likadana ut som attributen för virtuell Azure-dator. Till vänster visas resurs gruppen, Azure-regionen och prenumerations namnet och ID: t. Om du har tilldelat Taggar ser du dem även här. BareMetal-instanserna har som standard inte tilldelade taggar.
+Attributen i avbildningen ser inte mycket annorlunda ut än attributen för virtuella Datorer i Azure. Till vänster visas resursgruppen, Azure-regionen och prenumerationsnamnet och ID:t. Om du har tilldelat taggar visas de även här. Som standard har BareMetal-instanserna inte tilldelade taggar.
  
-Till höger ser du namnet på BareMetal-instansen, operativ systemet (OS), IP-adressen och SKU: n som visar antalet CPU-trådar och minne. Du ser också energi tillstånds-och maskin varu versionen (revision av BareMetal-instansnamnet). Energi läget anger om maskin varu enheten är påslagen eller inte. Informationen om operativ systemet anger dock inte om den är igång.
+Till höger ser du namnet på BareMetal-instansen, operativsystemet (OS), IP-adressen och SKU:n som visar antalet CPU-trådar och minne. Du ser även energitillståndet och maskinvaruversionen (revision av BareMetal-instansstämpeln). Energispartillståndet anger om maskinvaruenheten är påslagen eller avstängd. Operativsystemets information anger dock inte om det är igång eller inte.
  
-Möjliga maskin varu revisioner är:
+Möjliga maskinvarurevisioner är:
 
-* Revision 3 (rev 3)
+* Revision 3 (Rev 3)
 
-* Revision 4 (rev 4)
+* Revision 4 (Rev 4)
  
-* Revision 4,2 (rev 4,2)
+* Revision 4.2 (Rev 4.2)
  
 >[!NOTE]
->Rev 4,2 är den senaste ommärkta BareMetal-infrastrukturen med den befintliga rev 4-arkitekturen. Rev 4 ger närmare närhet till Azures virtuella dator värdar. Den har betydande förbättringar i nätverks fördröjningen mellan virtuella Azure-datorer och SAP HANA instanser. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal. Mer information finns i [BareMetal-infrastruktur på Azure](concepts-baremetal-infrastructure-overview.md).
+>Rev 4.2 är den senaste omdöpta BareMetal-infrastrukturen med hjälp av den befintliga Rev 4-arkitekturen. Rev 4 ger närmare närhet till värdar för virtuella Azure-datorer. Det har betydande förbättringar av nätverksfördröjningen mellan virtuella Azure-datorer och SAP HANA instanser. Du kan komma åt och hantera dina BareMetal-instanser via Azure Portal. Mer information finns i [BareMetal Infrastructure on Azure](concepts-baremetal-infrastructure-overview.md).
 
  
-På den högra sidan hittar du också namnet på [Azure närhets placerings gruppen](../virtual-machines/co-location.md) , som skapas automatiskt för varje distribuerad BareMetal-instans. Referera till närhets placerings gruppen när du distribuerar de virtuella Azure-datorer som är värdar för program lagret. När du använder placerings gruppen för närhet som är kopplad till BareMetal-instansen ser du till att de virtuella Azure-datorerna går att distribuera nära BareMetal-instansen.
+På höger sida hittar du även [](../virtual-machines/co-location.md) namnet på Azure-närhetsplaceringsgruppen, som skapas automatiskt för varje distribuerad BareMetal-instans. Referera till närhetsplaceringsgruppen när du distribuerar de virtuella Azure-datorer som är värdar för programlagret. När du använder närhetsplaceringsgruppen som är associerad med BareMetal-instansen ser du till att de virtuella Azure-datorerna distribueras nära BareMetal-instansen.
  
 >[!TIP]
->Om du vill hitta program lagret i samma Azure-datacenter som revision 4. x, se [placerings grupper för Azure närhet för optimal nätverks fördröjning](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios).
+>Information om hur du hittar programlagret i samma Azure-datacenter som Revision 4.x finns i Närhetsplaceringsgrupper i [Azure för optimal nätverksfördröjning.](/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios)
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill se information om en BareMetal-instans kör du kommandot [AZ baremetalinstance show](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_show) :
+Om du vill se information om en BareMetal-instans kör du [kommandot az baremetalinstance show:](/cli/azure/baremetalinstance#az_baremetalinstance_show)
 
 ```azurecli
 az baremetalinstance show --resource-group DSM05A-T550 --instance-name orcllabdsm01
 ```
 
-Om du är osäker på instans namnet kör du `az baremetalinstance list` kommandot, som beskrivs ovan.
+Om du är osäker på instansnamnet kör du kommandot `az baremetalinstance list` som beskrivs ovan.
 
 ---
  
-## <a name="check-activities-of-a-single-instance"></a>Kontrol lera aktiviteter för en enskild instans
+## <a name="check-activities-of-a-single-instance"></a>Kontrollera aktiviteter för en enskild instans
  
-Du kan kontrol lera aktiviteterna för en enskild BareMetal-instans. En av de viktigaste aktiviteterna som registreras är omstarter av instansen. De data som visas innehåller aktivitetens status, tidsstämpel för aktiviteten som utlöses, prenumerations-ID och den Azure-användare som utlöste aktiviteten.
+Du kan kontrollera aktiviteterna för en enda BareMetal-instans. En av de viktigaste aktiviteterna som registreras är omstarter av instansen. De data som anges innehåller aktivitetens status, tidsstämpel för den utlösta aktiviteten, prenumerations-ID och den Azure-användare som utlöste aktiviteten.
  
-:::image type="content" source="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png" alt-text="Skärm bild som visar BareMetal-instansens aktiviteter." lightbox="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png":::
+:::image type="content" source="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png" alt-text="Skärmbild som visar BareMetal-instansaktiviteterna." lightbox="media/connect-baremetal-infrastructure/check-activities-single-baremetal-instance.png":::
  
-Ändringar av instansens metadata i Azure registreras också i aktivitets loggen. Förutom att starta om startas kan du se aktiviteten **Skriv BareMetallnstances**. Den här aktiviteten gör inga ändringar i själva BareMetal-instansen utan dokumenterar ändringarna i enhetens metadata i Azure.
+Ändringar av instansens metadata i Azure registreras också i aktivitetsloggen. Förutom omstarten som initieras kan du se aktiviteten **Skriv Bare BareNstances**. Den här aktiviteten gör inga ändringar på själva BareMetal-instansen, men dokumenterar ändringarna i enhetens metadata i Azure.
  
-En annan aktivitet som registreras är när du lägger till eller tar bort en [tagg](../azure-resource-manager/management/tag-resources.md) till en instans.
+En annan aktivitet som registreras är när du lägger till eller tar bort [en tagg](../azure-resource-manager/management/tag-resources.md) i en instans.
  
 ## <a name="add-and-delete-an-azure-tag-to-an-instance"></a>Lägga till och ta bort en Azure-tagg till en instans
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
  
-Du kan lägga till Azure-taggar till en BareMetal-instans eller ta bort dem. Taggarna tilldelas på samma sätt som när de tilldelas virtuella datorer. Precis som med virtuella datorer finns taggarna i Azure-metadata. Taggar har samma begränsningar för BareMetal-instanser som för virtuella datorer.
+Du kan lägga till Azure-taggar till en BareMetal-instans eller ta bort dem. Taggar tilldelas precis som de gör när du tilldelar taggar till virtuella datorer. Precis som med virtuella datorer finns taggarna i Azure-metadata. Taggar har samma begränsningar för BareMetal-instanser som för virtuella datorer.
  
-Att ta bort taggar fungerar också på samma sätt som för virtuella datorer. Att tillämpa och ta bort en tagg visas i aktivitets loggen för BareMetal-instansen.
+Att ta bort taggar fungerar också på samma sätt som för virtuella datorer. Att tillämpa och ta bort en tagg visas i aktivitetsloggen för BareMetal-instansen.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Att tilldela taggar till BareMetal-instanser fungerar på samma sätt som att tilldela taggar för virtuella datorer. Precis som med virtuella datorer finns taggarna i Azure-metadata. Taggar har samma begränsningar för BareMetal-instanser som för virtuella datorer.
 
-Om du vill lägga till taggar till en BareMetal-instans kör du kommandot [AZ baremetalinstance Update](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_update) :
+Om du vill lägga till taggar till en BareMetal-instans kör du [kommandot az baremetalinstance update:](/cli/azure/baremetalinstance#az_baremetalinstance_update)
 
 ```azurecli
 az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllabdsm01 --set tags.Dept=Finance tags.Status=Normal
@@ -173,31 +173,31 @@ az baremetalinstance update --resource-group DSM05a-T550 --instance-name orcllab
 
 ---
 
-## <a name="check-properties-of-an-instance"></a>Kontrol lera egenskaperna för en instans
+## <a name="check-properties-of-an-instance"></a>Kontrollera egenskaperna för en instans
  
-När du hämtar instanserna kan du gå till avsnittet Egenskaper om du vill visa de data som samlats in om instanserna. Data som samlas in inkluderar Azure-anslutning, lagrings Server del, ExpressRoute krets-ID, unikt resurs-ID och prenumerations-ID. Du använder den här informationen i support förfrågningar eller när du konfigurerar konfiguration av lagrings ögonblicks bild.
+När du hämtar instanserna kan du gå till avsnittet Egenskaper för att visa de data som samlats in om instanserna. Data som samlas in omfattar Azure-anslutning, lagringsbackend, ExpressRoute-krets-ID, unikt resurs-ID och prenumerations-ID. Du använder den här informationen i supportbegäranden eller när du ställer in konfiguration av ögonblicksbilder av lagring.
  
-En annan viktig information som du ser är lagrings-NFS-IP-adressen. Den isolerar lagringen till din **klient** organisation i BareMetal instance-stacken. Du använder den här IP-adressen när du redigerar [konfigurations filen för säkerhets kopior av lagrings ögonblicks bilder](../virtual-machines/workloads/sap/hana-backup-restore.md#set-up-storage-snapshots).
+En annan viktig information du ser är NFS IP-adressen för lagring. Det isolerar lagringen till din **klientorganisation** i BareMetal-instansstacken. Du använder den här IP-adressen när du redigerar konfigurationsfilen [för säkerhetskopior av ögonblicksbilder av lagring.](../virtual-machines/workloads/sap/hana-backup-restore.md#set-up-storage-snapshots)
  
-:::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-properties.png" alt-text="Skärm bild som visar BareMetal-instansens egenskaps inställningar." lightbox="media/connect-baremetal-infrastructure/baremetal-instance-properties.png":::
+:::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-properties.png" alt-text="Skärmbild som visar egenskapsinställningarna för BareMetal-instansen." lightbox="media/connect-baremetal-infrastructure/baremetal-instance-properties.png":::
  
 ## <a name="restart-a-baremetal-instance-through-the-azure-portal"></a>Starta om en BareMetal-instans via Azure Portal
 
-Det finns olika situationer där operativ systemet inte slutför en omstart, vilket kräver en omstart av BareMetal-instansen.
+Det finns olika situationer där operativsystemet inte slutför en omstart, vilket kräver en omstart av BareMetal-instansen.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 Du kan göra en omstart av instansen direkt från Azure Portal:
  
-Välj **starta om** och sedan **Ja** för att bekräfta omstarten.
+Välj **Starta om** och sedan **Ja** för att bekräfta omstarten.
  
-:::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-restart.png" alt-text="Skärm bild som visar hur du startar om BareMetal-instansen.":::
+:::image type="content" source="media/connect-baremetal-infrastructure/baremetal-instance-restart.png" alt-text="Skärmbild som visar hur du startar om BareMetal-instansen.":::
  
-När du startar om en BareMetal-instans får du en fördröjning. Under den här fördröjningen flyttas energi spar läget från **Starta** till **startad**, vilket innebär att operativ systemet har startats helt. Efter en omstart kan du bara logga in i enheten när tillstånds växlarna **har startats**.
+När du startar om en BareMetal-instans får du en fördröjning. Under den här fördröjningen flyttas energitillståndet **från Startar** **till Startad,** vilket innebär att operativsystemet har startats helt. Efter en omstart kan du därför bara logga in på enheten när tillståndet växlar till **Startad**.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill starta om en BareMetal-instans använder du kommandot [AZ baremetalinstance restart](/cli/azure/ext/baremetal-infrastructure/baremetalinstance#ext_baremetal_infrastructure_az_baremetalinstance_restart) :
+Om du vill starta om en BareMetal-instans använder du [kommandot az baremetalinstance restart:](/cli/azure/baremetalinstance#az_baremetalinstance_restart)
 
 ```azurecli
 az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orcllabdsm01
@@ -206,14 +206,14 @@ az baremetalinstance restart --resource-group DSM05a-T550 --instance-name orclla
 ---
 
 >[!IMPORTANT]
->Beroende på mängden minne i BareMetal-instansen kan en omstart och omstart av maskin varan och operativ systemet ta upp till en timme.
+>Beroende på mängden minne i BareMetal-instansen kan en omstart och en omstart av maskinvaran och operativsystemet ta upp till en timme.
  
-## <a name="open-a-support-request-for-baremetal-instances"></a>Öppna en support förfrågan för BareMetal-instanser
+## <a name="open-a-support-request-for-baremetal-instances"></a>Öppna en supportbegäran för BareMetal-instanser
  
-Du kan skicka support förfrågningar specifikt för BareMetal-instanser.
-1. I Azure Portal, under **Hjälp + Support**, skapa en **[ny supportbegäran](https://rc.portal.azure.com/#create/Microsoft.Support)** och ange följande information för biljetten:
+Du kan skicka supportbegäranden specifikt för BareMetal-instanser.
+1. I Azure Portal hjälp **+ support skapar** du en **[ny supportbegäran](https://rc.portal.azure.com/#create/Microsoft.Support)** och anger följande information för supportbegäran:
  
-   - **Typ av problem:** Välj en typ av problem.
+   - **Typ av problem:** Välj en problemtyp.
  
    - **Prenumeration:** Välj din prenumeration.
  
@@ -223,24 +223,24 @@ Du kan skicka support förfrågningar specifikt för BareMetal-instanser.
  
    - **Sammanfattning:** Ange en sammanfattning av din begäran.
  
-   - **Problem typ:** Välj en problem typ.
+   - **Problemtyp:** Välj en problemtyp.
  
-   - **Problem under typ:** Välj en undertyp för problemet.
+   - **Undergrupp av problem:** Välj en undertyp för problemet.
 
-1. Välj fliken **lösningar** för att hitta en lösning på problemet. Om du inte hittar någon lösning går du till nästa steg.
+1. Välj fliken **Lösningar** för att hitta en lösning på problemet. Om du inte hittar någon lösning går du till nästa steg.
 
-1. Välj fliken **information** och välj om problemet är med virtuella datorer eller BareMetal-instanser. Den här informationen hjälper till att dirigera support förfrågan till rätt specialister.
+1. Välj fliken **Information** och välj om problemet gäller virtuella datorer eller BareMetal-instanser. Den här informationen hjälper dig att dirigera supportbegäran till rätt specialister.
 
-1. Ange när problemet började och välj instans region.
+1. Ange när problemet började och välj instansregion.
 
 1. Ange mer information om begäran och ladda upp en fil om det behövs.
 
-1. Välj **Granska + skapa** för att skicka begäran.
+1. Välj **Granska + skapa för** att skicka begäran.
  
-Det tar upp till fem arbets dagar för en support representant att bekräfta din begäran.
+Det tar upp till fem arbetsdagar för en supportrepresentant att bekräfta din begäran.
 
 ## <a name="next-steps"></a>Nästa steg
 
-Läs mer om arbets belastningar:
+Läs mer om arbetsbelastningar:
 
 - [Vad är SAP HANA på Azure (stora instanser)?](../virtual-machines/workloads/sap/hana-overview-architecture.md)

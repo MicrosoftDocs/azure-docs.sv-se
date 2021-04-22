@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: 5088b4e50899a2643488103ba29a7e36a7f256ea
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 036052dc45b8d029dac6e137b3a878b75e6e015c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778363"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873405"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-cli"></a>Snabbstart: Skapa en privat slutpunkt med Azure CLI
 
@@ -82,7 +82,7 @@ az network vnet subnet update \
     --disable-private-endpoint-network-policies true
 ```
 
-Använd [az network public-ip create för](/cli/azure/network/public-ip#az_network_public_ip_create) att skapa en offentlig IP-adress för skyddsvärden:
+Använd [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) för att skapa en offentlig IP-adress för skyddsvärden:
 
 * Skapa en redundant offentlig IP-adress i standardzonen med namnet **myBastionIP.**
 * I **CreatePrivateEndpointQS-rg**.
@@ -98,7 +98,7 @@ Använd [az network vnet subnet create för](/cli/azure/network/vnet/subnet#az_n
 
 * Med **namnet AzureBastionSubnet**.
 * Adressprefixet **10.0.1.0/24**.
-* I det virtuella nätverket **myVNet**.
+* I det virtuella **nätverket myVNet**.
 * I resursgruppen **CreatePrivateEndpointQS-rg**.
 
 ```azurecli-interactive
@@ -111,7 +111,7 @@ az network vnet subnet create \
 
 Använd [az network bastion create för](/cli/azure/network/bastion#az_network_bastion_create) att skapa en skyddsvärd:
 
-* Med **namnet myBastionHost.**
+* Med **namnet myBastionHost**.
 * I **CreatePrivateEndpointQS-rg**.
 * Associerat med offentlig IP **myBastionIP**.
 * Associerat med det virtuella nätverket **myVNet**.
@@ -185,18 +185,18 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera den privata DNS-zonen
 
-I det här avsnittet skapar och konfigurerar du den privata DNS-zonen med [az network private-dns zone create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+I det här avsnittet skapar och konfigurerar du den privata DNS-zonen med [az network private-dns zone create](/cli/azure/network/private-dns/zone#az_network_private_dns_zone_create).  
 
-Du använder az [network private-dns link vnet create för](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) att skapa den virtuella nätverkslänken till DNS-zonen.
+Du använder az [network private-dns link vnet create för](/cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create) att skapa den virtuella nätverkslänken till DNS-zonen.
 
 Du skapar en dns-zongrupp med [az network private-endpoint dns-zone-group create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
 
 * Zon med **namnet privatelink.azurewebsites.net**
-* I det virtuella nätverket **myVNet**.
+* I det virtuella **nätverket myVNet**.
 * I resursgruppen **CreatePrivateEndpointQS-rg**.
 * DNS-länk med **namnet myDNSLink**.
-* Associerat **med myPrivateEndpoint**.
-* Zongrupp med namnet **MyZoneGroup**.
+* Associerad med **myPrivateEndpoint**.
+* Zongrupp med **namnet MyZoneGroup**.
 
 ```azurecli-interactive
 az network private-dns zone create \
@@ -220,7 +220,7 @@ az network private-endpoint dns-zone-group create \
 
 ## <a name="test-connectivity-to-private-endpoint"></a>Testa anslutningen till den privata slutpunkten
 
-I det här avsnittet använder du den virtuella dator som du skapade i föregående steg för att ansluta till SQL-servern via den privata slutpunkten.
+I det här avsnittet använder du den virtuella dator som du skapade i föregående steg för att ansluta till SQL-servern över den privata slutpunkten.
 
 1. Logga in på [Azure-portalen](https://portal.azure.com) 
  
@@ -230,7 +230,7 @@ I det här avsnittet använder du den virtuella dator som du skapade i föregåe
 
 4. Välj **myVM.**
 
-5. På översiktssidan för **myVM** väljer du **Anslut** och sedan **Bastion**.
+5. På översiktssidan för **myVM** väljer du **Anslut** och sedan **Bastion.**
 
 6. Välj den blå **knappen Använd Bastion.**
 
@@ -254,11 +254,11 @@ I det här avsnittet använder du den virtuella dator som du skapade i föregåe
 
 10. I skyddsanslutningen till **myVM** öppnar du Internet Explorer.
 
-11. Ange webbadressen till webbappen, **https:// \<your-webapp-name> .azurewebsites.net**.
+11. Ange url:en för **webbappen, https:// \<your-webapp-name> .azurewebsites.net**.
 
 12. Du får standardwebbappsidan om programmet inte har distribuerats:
 
-    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Standardsidan för webbappen." border="true":::
+    :::image type="content" source="./media/create-private-endpoint-portal/web-app-default-page.png" alt-text="Standardsida för webbapp." border="true":::
 
 13. Stäng anslutningen till **myVM**.
 

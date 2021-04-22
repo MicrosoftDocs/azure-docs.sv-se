@@ -1,21 +1,21 @@
 ---
-title: Avbryt översättningsmetod
+title: Avbryt översättningsmetoden
 titleSuffix: Azure Cognitive Services
-description: Metoden avbryt översättning avbryter en pågående bearbetning eller köad åtgärd.
+description: Översättningsmetoden Avbryt avbryter en pågående bearbetning eller köåtgärd.
 services: cognitive-services
 author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 3de052f50676065a6656f77a0ea68cf8c9ab46a8
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: e3b7da30f54b9d9468b46a2cd0972a3397e5cdce
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836267"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865115"
 ---
 # <a name="cancel-translation"></a>Avbryta översättning
 
@@ -33,16 +33,16 @@ Lär dig hur du hittar [ditt anpassade domännamn](../get-started-with-document-
 
 > [!IMPORTANT]
 >
-> * **Alla API-begäranden till tjänsten för dokumentöversättning kräver en anpassad domänslutpunkt.**
-> * Du kan inte använda slutpunkten som finns  på din Azure Portal resursnycklar och slutpunktssida eller den globala översättningsslutpunkten– – för att `api.cognitive.microsofttranslator.com` göra HTTP-begäranden till dokumentöversättning.
+> * **Alla API-begäranden till tjänsten För dokumentöversättning krävs en slutpunkt för en anpassad domän.**
+> * Du kan inte använda slutpunkten som finns  på sidan Azure Portal nycklar och slutpunkter eller slutpunkten för global översättning– – för att göra `api.cognitive.microsofttranslator.com` HTTP-begäranden till dokumentöversättning.
 
 ## <a name="request-parameters"></a>Begärandeparametrar
 
-Frågeparametrar som skickas i frågesträngen är:
+Begärandeparametrar som skickas i frågesträngen är:
 
 |Frågeparameter|Krävs|Beskrivning|
 |-----|-----|-----|
-|id|Sant|Åtgärds-ID: t.|
+|id|Sant|Åtgärds-ID:t.|
 
 ## <a name="request-headers"></a>Begärandehuvuden
 
@@ -72,10 +72,10 @@ Följande information returneras i ett lyckat svar.
 
 |Namn|Typ|Description|
 |--- |--- |--- |
-|id|sträng|ID för åtgärden.|
-|createdDateTimeUtc|sträng|Datum/tid för åtgärden skapades.|
+|id|sträng|ÅTGÄRDENs ID.|
+|createdDateTimeUtc|sträng|Åtgärden skapade datum/tid.|
 |lastActionDateTimeUtc|sträng|Datum/tid då åtgärdens status har uppdaterats.|
-|status|Sträng|Lista över möjliga statusar för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryta</li><li>Misslyckad</li><li>Inte startad</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
+|status|Sträng|Lista över möjliga statusar för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryta</li><li>Misslyckad</li><li>NotStarted</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
 |sammanfattning|StatusSummary|Sammanfattning som innehåller informationen som anges nedan.|
 |summary.total|heltal|Antal dokument totalt.|
 |summary.failed|heltal|Antalet dokument misslyckades.|

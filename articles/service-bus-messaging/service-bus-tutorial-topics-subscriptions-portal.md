@@ -6,12 +6,12 @@ ms.author: spelluru
 ms.date: 10/15/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d0a94f346f9d3cf7a05a1ca6e1b37d4d008f3e75
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: a7b03727c574dcee1cd56144a521f36de6dc48c6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102179671"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861381"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Självstudie: Uppdatera lagret med Azure-portalen och ämnen/prenumerationer
 
@@ -29,14 +29,14 @@ Ett exempel på det här scenariot är en uppdatering av lagersortimentet för f
 
 ![ämne](./media/service-bus-tutorial-topics-subscriptions-portal/about-service-bus-topic.png)
 
-Om du inte har någon Azure-prenumeration kan du skapa ett [kostnads fritt konto][] innan du börjar.
+Om du inte har någon Azure-prenumeration kan du skapa ett kostnadsfritt [konto][] innan du börjar.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 För att kunna följa de här självstudierna ska du kontrollera att du har installerat:
 
 - [Visual Studio 2017 Update 3 (version 15.3, 26730.01)](https://www.visualstudio.com/vs) eller senare.
-- [NET Core SDK](https://www.microsoft.com/net/download/windows), version 2.0 eller senare.
+- [NET Core SDK](https://dotnet.microsoft.com/download), version 2.0 eller senare.
 
 ## <a name="service-bus-topics-and-subscriptions"></a>Service Bus-ämnen och prenumerationer
 
@@ -97,7 +97,7 @@ Om du vill köra koden gör du följande:
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Ta bort namn området och ämnet när de inte längre behövs. Om du vill göra det, väljer du resurserna i portalen och klickar på **Ta bort**.
+Ta bort namnområdet och ämnet när de inte längre behövs. Om du vill göra det, väljer du resurserna i portalen och klickar på **Ta bort**.
 
 ## <a name="understand-the-sample-code"></a>Förstå exempelkoden
 
@@ -396,7 +396,7 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> Du kan hantera Service Bus-resurser med [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer gör det möjligt för användare att ansluta till en Service Bus namnrymd och administrera meddelande enheter på ett enkelt sätt. Verktyget innehåller avancerade funktioner som import/export-funktioner eller möjlighet att testa ämnen, köer, prenumerationer, relä tjänster, Notification Hub och Event Hub. 
+> Du kan hantera Service Bus resurser med [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Med Service Bus Explorer kan användarna ansluta till en Service Bus och administrera meddelandeentiteter på ett enkelt sätt. Verktyget innehåller avancerade funktioner som import/export-funktioner eller möjligheten att testa ämnen, köer, prenumerationer, vidarebefordrande tjänster, meddelandehubbbar och händelsehubbbar. 
 
 ## <a name="next-steps"></a>Nästa steg
 
@@ -416,7 +416,7 @@ Gå vidare till nästa självstudie för att läsa mer om att använda Service B
 > [!div class="nextstepaction"]
 > [Svara på händelser via Event Grid](service-bus-to-event-grid-integration-example.md)
 
-[kostnads fritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+[kostnadsfritt konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 

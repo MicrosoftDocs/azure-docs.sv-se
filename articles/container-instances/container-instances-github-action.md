@@ -4,16 +4,16 @@ description: Konfigurera en GitHub-åtgärd som automatiserar steg för att skap
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: e6a4d9ecff292d79f132f933c36b0030e04f4efa
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: df8f7a546767f1198cee6fc6ceb6032645c14989
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771307"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868996"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurera en GitHub-åtgärd för att skapa en containerinstans
 
-[GitHub Actions](https://docs.github.com/en/actions) är en uppsättning funktioner i GitHub som automatiserar arbetsflöden för programutveckling på samma plats som du lagrar kod och samarbetar kring pull-begäranden och problem.
+[GitHub Actions](https://docs.github.com/en/actions) är en uppsättning funktioner i GitHub för att automatisera arbetsflöden för programutveckling på samma plats som du lagrar kod och samarbetar kring pull-begäranden och problem.
 
 Använd åtgärden [Deploy to Azure Container Instances](https://github.com/azure/aci-deploy) GitHub (Distribuera till gitHub) för att automatisera distributionen av en enskild container till Azure Container Instances. Med åtgärden kan du ange egenskaper för en containerinstans som liknar dem i [kommandot az container create.][az-container-create]
 
@@ -319,4 +319,4 @@ Bläddra till [GitHub Marketplace om](https://github.com/marketplace?type=action
 [az-container-show]: /cli/azure/container#az_container_show
 [az-container-delete]: /cli/azure/container#az_container_delete
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-container-app-up]: /cli/azure/ext/deploy-to-azure/container/app#ext-deploy-to-azure-az-container-app-up
+[az-container-app-up]: /cli/azure/container/app#az_container_app_up

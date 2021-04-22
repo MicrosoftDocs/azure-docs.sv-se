@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/23/2021
 ms.author: msangapu
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 5a4572c1292f691f1883a720d07c3f0130f1c8f3
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 3610c4a571d73631ed39d416c72d0d6004dd170d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107480298"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871767"
 ---
 # <a name="open-an-ssh-session-to-a-linux-container-in-azure-app-service"></a>Öppna en SSH-session till en Linux-container i Azure App Service
 
@@ -41,7 +41,7 @@ Med TCP-tunneltrafik kan du skapa en nätverksanslutning mellan utvecklingsdator
 
 För att komma igång måste du installera [Azure CLI](/cli/azure/install-azure-cli). Om du vill se hur det fungerar utan att installera Azure CLI öppnar [du Azure Cloud Shell](../cloud-shell/overview.md). 
 
-Öppna en fjärranslutning till din app med [kommandot az webapp remote-connection create.](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) Ange _\<subscription-id>_ , och _ för din _\<group-name>_ \_ \<app-name> app.
+Öppna en fjärranslutning till din app med [kommandot az webapp remote-connection](/cli/azure/ext/webapp/webapp/remote-connection#ext-webapp-az-webapp-remote-connection-create) create. Ange _\<subscription-id>_ och _ för din _\<group-name>_ \_ \<app-name> app.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -71,7 +71,7 @@ Start your favorite client and connect to port 21382
 ssh root@127.0.0.1 -p <port>
 ```
 
-När du uppmanas till det skriver `yes` du för att fortsätta ansluta. Du uppmanas sedan att ange lösenordet. Använd `Docker!` , som visades för dig tidigare.
+När du uppmanas till det skriver `yes` du för att fortsätta ansluta. Du uppmanas sedan att ange lösenordet. Använd `Docker!` , som visades tidigare.
 
 <pre>
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -92,7 +92,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 </pre>
 
-Nu är du ansluten till anslutningsappen.  
+Nu är du ansluten till din anslutningsapp.  
 
 Prova att köra [det översta](https://ss64.com/bash/top.html) kommandot. Du bör kunna se appens process i processlistan. I exempelutdata nedan är det det som har `PID 263` .
 
