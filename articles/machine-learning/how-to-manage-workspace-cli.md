@@ -1,7 +1,7 @@
 ---
-title: Skapa arbets ytor med Azure CLI
+title: Skapa arbetsytor med Azure CLI
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du använder Azure CLI-tillägget för Machine Learning för att skapa en ny Azure Machine Learning-arbetsyta.
+description: Lär dig hur du använder Azure CLI-tillägget för maskininlärning för att skapa en Azure Machine Learning arbetsyta.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,25 +10,25 @@ author: Blackmist
 ms.date: 04/02/2021
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 5e9df582ce6eddd50fbecf02858f4afe611dcf18
-ms.sourcegitcommit: 3f684a803cd0ccd6f0fb1b87744644a45ace750d
+ms.openlocfilehash: 8a00f5474fb73677125b85e48fcc2a42f34fdeb0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/02/2021
-ms.locfileid: "106220223"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876411"
 ---
-# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Skapa en arbets yta för Azure Machine Learning med Azure CLI
+# <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Skapa en arbetsyta för Azure Machine Learning med Azure CLI
 
 
-I den här artikeln får du lära dig hur du skapar en Azure Machine Learning-arbetsyta med hjälp av Azure CLI. Azure CLI innehåller kommandon för att hantera Azure-resurser. Machine Learning-tillägget till CLI innehåller kommandon för att arbeta med Azure Machine Learning resurser.
+I den här artikeln får du lära dig hur du skapar Azure Machine Learning en arbetsyta med hjälp av Azure CLI. Azure CLI innehåller kommandon för att hantera Azure-resurser. Maskininlärningstillägget till CLI innehåller kommandon för att arbeta med Azure Machine Learning resurser.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En **Azure-prenumeration**. Om du inte har en sådan kan du prova den [kostnads fria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
+* En **Azure-prenumeration**. Om du inte har någon kan du prova den [kostnadsfria eller betalda versionen av Azure Machine Learning](https://aka.ms/AMLFree).
 
-* Om du vill använda CLI-kommandona i det här dokumentet från din **lokala miljö** behöver du [Azure CLI](/cli/azure/install-azure-cli).
+* Om du vill använda CLI-kommandona i det här dokumentet **från din lokala** miljö behöver du Azure [CLI](/cli/azure/install-azure-cli).
 
-    Om du använder [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/)kan CLI nås via webbläsaren och finns i molnet.
+    Om du använder [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/), nås CLI via webbläsaren och finns i molnet.
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -37,49 +37,49 @@ I den här artikeln får du lära dig hur du skapar en Azure Machine Learning-ar
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Ansluta CLI till din Azure-prenumeration
 
 > [!IMPORTANT]
-> Om du använder Azure Cloud Shell kan du hoppa över det här avsnittet. Cloud Shell autentiserar automatiskt dig med det konto som du loggar in i din Azure-prenumeration.
+> Om du använder Azure Cloud Shell kan du hoppa över det här avsnittet. Cloud Shell autentiserar dig automatiskt med det konto som du loggar in på din Azure-prenumeration.
 
-Det finns flera sätt som du kan autentisera till din Azure-prenumeration från CLI. Det enklaste är att interaktivt autentisera med hjälp av en webbläsare. För att autentisera interaktivt, öppna en kommando rad eller Terminal och Använd följande kommando:
+Det finns flera sätt att autentisera till din Azure-prenumeration från CLI. Det enklaste är att autentisera interaktivt med hjälp av en webbläsare. Om du vill autentisera interaktivt öppnar du en kommandorad eller terminal och använder följande kommando:
 
 ```azurecli-interactive
 az login
 ```
 
-Om CLI kan öppna din standardwebbläsare så sker det och en inloggningssida läses in. Annars måste du öppna en webbläsare och följa anvisningarna på kommando raden. Anvisningarna omfattar att bläddra till [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och ange en auktoriseringskod.
+Om CLI kan öppna din standardwebbläsare så sker det och en inloggningssida läses in. Annars måste du öppna en webbläsare och följa anvisningarna på kommandoraden. Anvisningarna handlar om att bläddra till [https://aka.ms/devicelogin](https://aka.ms/devicelogin) och ange en auktoriseringskod.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
-För andra metoder för autentisering, se [Logga in med Azure CLI](/cli/azure/authenticate-azure-cli).
+Andra metoder för autentisering finns i [Logga in med Azure CLI.](/cli/azure/authenticate-azure-cli)
 
 ## <a name="create-a-workspace"></a>Skapa en arbetsyta
 
-Azure Machine Learning-arbetsytan är beroende av följande Azure-tjänster eller-entiteter:
+Arbetsytan Azure Machine Learning förlitar sig på följande Azure-tjänster eller entiteter:
 
 > [!IMPORTANT]
-> Om du inte anger en befintlig Azure-tjänst skapas en automatiskt när arbets ytan skapas. Du måste alltid ange en resurs grupp. När du kopplar ditt eget lagrings konto ser du till att det uppfyller följande kriterier:
+> Om du inte anger en befintlig Azure-tjänst skapas en automatiskt när arbetsytan skapas. Du måste alltid ange en resursgrupp. När du bifogar ett eget lagringskonto kontrollerar du att det uppfyller följande kriterier:
 >
-> * Lagrings kontot är _inte_ ett Premium-konto (Premium_LRS och Premium_GRS)
-> * Både Azure blob-och Azure-filfunktioner är aktiverade
-> * Hierarkiskt namn område (ADLS gen 2) är inaktiverat
+> * Lagringskontot är _inte ett_ Premium-konto (Premium_LRS och Premium_GRS)
+> * Både Azure Blob- och Azure File-funktioner är aktiverade
+> * Hierarkisk namnrymd (ADLS Gen 2) är inaktiverat
 >
-> Dessa krav gäller endast för det _standard_ lagrings konto som används av arbets ytan.
+> Dessa krav gäller endast för det _standardlagringskonto_ som används av arbetsytan.
 
 | Tjänst | Parameter för att ange en befintlig instans |
 | ---- | ---- |
-| **Azure-resurs grupp** | `-g <resource-group-name>`
+| **Azure-resursgrupp** | `-g <resource-group-name>`
 | **Azure Storage konto** | `--storage-account <service-id>` |
-| **Azure Application insikter** | `--application-insights <service-id>` |
+| **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
-Azure Container Registry (ACR) stöder för närvarande inte Unicode-tecken i resurs grupps namn. Du kan åtgärda det här problemet genom att använda en resurs grupp som inte innehåller dessa tecken.
+Azure Container Registry (ACR) stöder för närvarande inte Unicode-tecken i resursgruppnamn. Du kan åtgärda det här problemet genom att använda en resursgrupp som inte innehåller dessa tecken.
 
 ### <a name="create-a-resource-group"></a>Skapa en resursgrupp
 
-Arbets ytan Azure Machine Learning måste skapas i en resurs grupp. Du kan välja en befintlig resursgrupp eller skapa en ny. Använd följande kommando för att __skapa en ny resurs grupp__. Ersätt `<resource-group-name>` med det namn som ska användas för den här resurs gruppen. Ersätt `<location>` med den Azure-region som ska användas för den här resurs gruppen:
+Arbetsytan Azure Machine Learning måste skapas i en resursgrupp. Du kan välja en befintlig resursgrupp eller skapa en ny. Använd __följande kommando för att skapa__ en ny resursgrupp. Ersätt `<resource-group-name>` med namnet som ska användas för den här resursgruppen. Ersätt `<location>` med Azure-regionen som ska användas för den här resursgruppen:
 
 > [!TIP]
-> Välj en region där Azure Machine Learning är tillgängligt. Mer information finns i [produkt tillgänglighet per region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
+> Du bör välja en region där Azure Machine Learning är tillgänglig. Mer information finns i [Produktinformation per region.](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service)
 
 ```azurecli-interactive
 az group create --name <resource-group-name> --location <location>
@@ -101,18 +101,18 @@ Svaret från det här kommandot liknar följande JSON:
 }
 ```
 
-Mer information om hur du arbetar med resurs grupper finns i [AZ Group](/cli/azure/group).
+Mer information om hur du arbetar med resursgrupper finns i [az group](/cli/azure/group).
 
-### <a name="automatically-create-required-resources"></a>Skapa nödvändiga resurser automatiskt
+### <a name="automatically-create-required-resources"></a>Skapa automatiskt nödvändiga resurser
 
-Om du vill skapa en ny arbets yta där __tjänsterna skapas automatiskt__, använder du följande kommando:
+Om du vill skapa en ny __arbetsyta där tjänsterna skapas automatiskt__ använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
 ```
 
 > [!NOTE]
-> Namnet på arbets ytan är Skift läges okänsligt.
+> Arbetsytans namn är inte case-okänsligt.
 
 Utdata från det här kommandot liknar följande JSON:
 
@@ -137,66 +137,66 @@ Utdata från det här kommandot liknar följande JSON:
 }
 ```
 
-### <a name="virtual-network-and-private-endpoint"></a>Virtuellt nätverk och privat slut punkt
+### <a name="virtual-network-and-private-endpoint"></a>Virtuellt nätverk och privat slutpunkt
 
 > [!IMPORTANT]
-> Användning av en Azure Machine Learning arbets yta med privat länk är inte tillgänglig i Azure Government regionerna.
+> Användning av Azure Machine Learning arbetsyta med privat länk är inte tillgängligt i Azure Government regioner.
 
-Om du vill begränsa åtkomsten till din arbets yta till ett virtuellt nätverk kan du använda följande parametrar:
+Om du vill begränsa åtkomsten till din arbetsyta till ett virtuellt nätverk kan du använda följande parametrar:
 
-* `--pe-name`: Namnet på den privata slut punkt som skapas.
-* `--pe-auto-approval`: Om de privata slut punkts anslutningarna till arbets ytan automatiskt ska godkännas.
-* `--pe-resource-group`: Resurs gruppen som den privata slut punkten ska skapas i. Måste vara samma grupp som innehåller det virtuella nätverket.
-* `--pe-vnet-name`: Det befintliga virtuella nätverket som den privata slut punkten ska skapas i.
-* `--pe-subnet-name`: Namnet på det undernät som den privata slut punkten ska skapas i. Standardvärdet är `default`.
+* `--pe-name`: Namnet på den privata slutpunkt som skapas.
+* `--pe-auto-approval`: Om privata slutpunktsanslutningar till arbetsytan ska godkännas automatiskt.
+* `--pe-resource-group`: Resursgruppen som den privata slutpunkten ska skapas i. Måste vara samma grupp som innehåller det virtuella nätverket.
+* `--pe-vnet-name`: Det befintliga virtuella nätverk som den privata slutpunkten ska skapas i.
+* `--pe-subnet-name`: Namnet på undernätet som den privata slutpunkten ska skapas i. Standardvärdet är `default`.
 
-Mer information om hur du använder en privat slut punkt och ett virtuellt nätverk med din arbets yta finns i [Översikt över virtuell nätverks isolering och sekretess](how-to-network-security-overview.md).
+Mer information om hur du använder en privat slutpunkt och ett virtuellt nätverk med din arbetsyta finns i Översikt [över isolering och sekretess för virtuella nätverk.](how-to-network-security-overview.md)
 
-### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Kundhanterad nyckel och arbets yta med hög arbets belastning
+### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Kundhanteringsnyckel och arbetsyta med stor inverkan på verksamheten
 
-Som standard lagras metadata för arbets ytan i en Azure Cosmos DB-instans som Microsoft underhåller. Dessa data är krypterade med Microsoft-hanterade nycklar.
+Som standard lagras metadata för arbetsytan i en Azure Cosmos DB som Microsoft underhåller. Dessa data krypteras med Microsoft-hanterade nycklar.
 
 > [!NOTE]
-> Azure Cosmos DB används __inte__ för att lagra information som modell prestanda, information som loggats av experiment eller information som loggats från modell distributioner. Mer information om hur du övervakar dessa objekt finns i avsnittet [övervakning och loggning](concept-azure-machine-learning-architecture.md) i artikeln arkitektur och begrepp.
+> Azure Cosmos DB __används inte__ för att lagra information som modellprestanda, information som loggas av experiment eller information som loggas från dina modelldistributioner. Mer information om övervakning av dessa objekt finns i [avsnittet Övervakning och loggning](concept-azure-machine-learning-architecture.md) i artikeln om arkitektur och begrepp.
 
-I stället för att använda den Microsoft-hanterade nyckeln kan du använda ange din egen nyckel. Om du gör det skapas Azure Cosmos DB-instansen som lagrar metadata i din Azure-prenumeration. Använd `--cmk-keyvault` parametern för att ange Azure Key Vault som innehåller nyckeln och `--resource-cmk-uri` för att ange URL: en för nyckeln i valvet.
+I stället för att använda den Microsoft-hanterade nyckeln kan du använda ange en egen nyckel. När du gör det skapas Azure Cosmos DB-instansen som lagrar metadata i din Azure-prenumeration. Använd `--cmk-keyvault` parametern för att Azure Key Vault som innehåller nyckeln och för `--resource-cmk-uri` att ange url:en för nyckeln i valvet.
 
 Innan du använder `--cmk-keyvault` `--resource-cmk-uri` parametrarna och måste du först utföra följande åtgärder:
 
-1. Auktorisera __Machine Learning-appen__ (i identitets-och åtkomst hantering) med deltagar behörigheter för din prenumeration.
-1. Följ stegen i [Konfigurera Kundhanterade nycklar](../cosmos-db/how-to-setup-cmk.md) för att:
-    * Registrera Azure Cosmos DB-providern
+1. __Auktorisera Machine Learning -appen__ (i Identitets- och åtkomsthantering) med deltagarbehörighet för din prenumeration.
+1. Följ stegen i Konfigurera [kund hanterade nycklar för](../cosmos-db/how-to-setup-cmk.md) att:
+    * Registrera Azure Cosmos DB providern
     * Skapa och konfigurera en Azure Key Vault
     * Generera en nyckel
 
-Du behöver inte skapa Azure Cosmos DB-instansen manuellt, en skapas automatiskt när du skapar arbets ytan. Den här Azure Cosmos DB-instansen skapas i en separat resurs grupp med hjälp av ett namn baserat på det här mönstret: `<your-resource-group-name>_<GUID>` .
+Du behöver inte skapa Azure Cosmos DB instansen manuellt. En skapas åt dig när arbetsytan skapas. Den Azure Cosmos DB instansen skapas i en separat resursgrupp med ett namn baserat på det här mönstret: `<your-resource-group-name>_<GUID>` .
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
-Om du vill begränsa de data som Microsoft samlar in på din arbets yta använder du `--hbi-workspace` parametern. 
+Om du vill begränsa de data som Microsoft samlar in på din arbetsyta använder du `--hbi-workspace` parametern . 
 
 > [!IMPORTANT]
-> Du kan bara välja hög påverkan på verksamheten när du skapar en arbets yta. Du kan inte ändra den här inställningen när du har skapat arbets ytan.
+> Du kan bara välja stor inverkan på verksamheten när du skapar en arbetsyta. Du kan inte ändra den här inställningen när arbetsytan har skapats.
 
-Mer information om Kundhanterade nycklar och arbets ytan för arbets ytor med hög arbets belastning finns i [företags säkerhet för Azure Machine Learning](concept-data-encryption.md#encryption-at-rest).
+Mer information om kund hanterade nycklar och arbetsyta med stor inverkan på verksamheten finns i [Enterprise Security for Azure Machine Learning](concept-data-encryption.md#encryption-at-rest).
 
-### <a name="use-existing-resources"></a>Använd befintliga resurser
+### <a name="use-existing-resources"></a>Använda befintliga resurser
 
-Om du vill skapa en arbets yta som använder befintliga resurser måste du ange ID: t för resurserna. Använd följande kommandon för att hämta ID: t för tjänsterna:
+Om du vill skapa en arbetsyta som använder befintliga resurser måste du ange ID:t för resurserna. Använd följande kommandon för att hämta ID:t för tjänsterna:
 
 > [!IMPORTANT]
-> Du behöver inte ange alla befintliga resurser. Du kan ange en eller flera. Du kan till exempel ange ett befintligt lagrings konto så skapas de andra resurserna av arbets ytan.
+> Du behöver inte ange alla befintliga resurser. Du kan ange en eller flera. Du kan till exempel ange ett befintligt lagringskonto så skapar arbetsytan de andra resurserna.
 
 + **Azure Storage konto**: `az storage account show --name <storage-account-name> --query "id"`
 
-    Svaret från det här kommandot liknar följande text och är ID: t för ditt lagrings konto:
+    Svaret från det här kommandot liknar följande text och är ID:t för ditt lagringskonto:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-account-name>"`
 
     > [!IMPORTANT]
-    > Om du vill använda ett befintligt Azure Storage-konto kan det inte vara ett Premium-konto (Premium_LRS och Premium_GRS). Det får inte heller ha ett hierarkiskt namn område (används med Azure Data Lake Storage Gen2). Varken Premium Storage eller hierarkiskt namn område stöds med arbets ytans _standard_ lagrings konto. Du kan använda Premium Storage eller hierarkiskt namnrymd med lagrings konton som _inte är standard_ .
+    > Om du vill använda ett befintligt Azure Storage konto kan det inte vara ett Premium-konto (Premium_LRS och Premium_GRS). Den kan inte heller ha ett hierarkiskt namnområde (används med Azure Data Lake Storage Gen2). Varken Premium Storage eller hierarkisk namnrymd stöds med _arbetsytans_ standardlagringskonto. Du kan använda premiumlagring eller hierarkisk namnrymd med _lagringskonton som inte_ är standard.
 
-+ **Azure Application insikter**:
++ **Azure Application Insights:**
 
     1. Installera Application Insights-tillägget:
 
@@ -204,38 +204,38 @@ Om du vill skapa en arbets yta som använder befintliga resurser måste du ange 
         az extension add -n application-insights
         ```
 
-    2. Hämta ID för din Application Insight Service:
+    2. Hämta ID:t för din application insight-tjänst:
 
         ```azurecli-interactive
         az monitor app-insights component show --app <application-insight-name> -g <resource-group-name> --query "id"
         ```
 
-        Svaret från det här kommandot liknar följande text och är ID: t för Application Insights-tjänsten:
+        Svaret från det här kommandot liknar följande text och är ID:t för application insights-tjänsten:
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
 + **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
-    Svaret från det här kommandot liknar följande text och är ID: t för nyckel valvet:
+    Svaret från det här kommandot liknar följande text och är ID:t för nyckelvalvet:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
 + **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
-    Svaret från det här kommandot liknar följande text och är ID: t för behållar registret:
+    Svaret från det här kommandot liknar följande text och är ID:t för containerregistret:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"`
 
     > [!IMPORTANT]
-    > Kontot för behållar registret måste ha [Administratörs kontot](../container-registry/container-registry-authentication.md#admin-account) aktiverat innan det kan användas med en Azure Machine Learning-arbetsyta.
+    > Containerregistret måste ha [administratörskontot aktiverat innan](../container-registry/container-registry-authentication.md#admin-account) det kan användas med en Azure Machine Learning arbetsyta.
 
-När du har ID: n för de resurser som du vill använda med arbets ytan använder du `az workspace create -w <workspace-name> -g <resource-group-name>` kommandot Base och lägger till parametrarna och ID: na för de befintliga resurserna. Följande kommando skapar till exempel en arbets yta som använder ett befintligt behållar register:
+När du har ID:n för de resurser som du vill använda med arbetsytan använder du baskommandot och lägger till parametrarna och ID:na för de `az workspace create -w <workspace-name> -g <resource-group-name>` befintliga resurserna. Följande kommando skapar till exempel en arbetsyta som använder ett befintligt containerregister:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name> --container-registry "/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.ContainerRegistry/registries/<acr-name>"
 ```
 
-Utdata från det här kommandot liknar följande JSON:
+Kommandots utdata liknar följande JSON:
 
 ```json
 {
@@ -258,15 +258,15 @@ Utdata från det här kommandot liknar följande JSON:
 }
 ```
 
-## <a name="list-workspaces"></a>Lista arbets ytor
+## <a name="list-workspaces"></a>Visa en lista över arbetsytor
 
-Om du vill visa en lista över alla arbets ytor för din Azure-prenumeration använder du följande kommando:
+Om du vill visa en lista över alla arbetsytor för din Azure-prenumeration använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace list
 ```
 
-Utdata från det här kommandot liknar följande JSON:
+Kommandots utdata liknar följande JSON:
 
 ```json
 [
@@ -283,17 +283,17 @@ Utdata från det här kommandot liknar följande JSON:
 ]
 ```
 
-Mer information finns i dokumentationen om [AZ ml-arbetsytans lista](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-list) .
+Mer information finns i dokumentationen [för az ml workspace list.](/cli/azure/ml/workspace#az_ml_workspace_list)
 
-## <a name="get-workspace-information"></a>Hämta information om arbets ytan
+## <a name="get-workspace-information"></a>Hämta arbetsyteinformation
 
-Om du vill hämta information om en arbets yta använder du följande kommando:
+Om du vill ha information om en arbetsyta använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace show -w <workspace-name> -g <resource-group-name>
 ```
 
-Utdata från det här kommandot liknar följande JSON:
+Kommandots utdata liknar följande JSON:
 
 ```json
 {
@@ -316,17 +316,17 @@ Utdata från det här kommandot liknar följande JSON:
 }
 ```
 
-Mer information finns i dokumentationen om [AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-show) .
+Mer information finns i dokumentationen [az ml workspace show.](/cli/azure/ml/workspace#az_ml_workspace_show)
 
-## <a name="update-a-workspace"></a>Uppdatera en arbets yta
+## <a name="update-a-workspace"></a>Uppdatera en arbetsyta
 
-Om du vill uppdatera en arbets yta använder du följande kommando:
+Om du vill uppdatera en arbetsyta använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace update -w <workspace-name> -g <resource-group-name>
 ```
 
-Utdata från det här kommandot liknar följande JSON:
+Kommandots utdata liknar följande JSON:
 
 ```json
 {
@@ -349,68 +349,68 @@ Utdata från det här kommandot liknar följande JSON:
 }
 ```
 
-Mer information finns i dokumentationen om [uppdatering av AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-update) .
+Mer information finns i dokumentationen [för az ml workspace update.](/cli/azure/ml/workspace#az_ml_workspace_update)
 
-## <a name="share-a-workspace-with-another-user"></a>Dela en arbets yta med en annan användare
+## <a name="share-a-workspace-with-another-user"></a>Dela en arbetsyta med en annan användare
 
-Om du vill dela en arbets yta med en annan användare i din prenumeration använder du följande kommando:
+Om du vill dela en arbetsyta med en annan användare i din prenumeration använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace share -w <workspace-name> -g <resource-group-name> --user <user> --role <role>
 ```
 
-Mer information om rollbaserad åtkomst kontroll i Azure (Azure RBAC) med Azure Machine Learning finns i [Hantera användare och roller](how-to-assign-roles.md).
+Mer information om rollbaserad åtkomstkontroll i Azure (Azure RBAC) med Azure Machine Learning finns i [Hantera användare och roller.](how-to-assign-roles.md)
 
-Mer information finns i [AZ ml-arbetsytan resurs](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-share) dokumentation.
+Mer information finns i dokumentationen [om az ml workspace share.](/cli/azure/ml/workspace#az_ml_workspace_share)
 
 ## <a name="sync-keys-for-dependent-resources"></a>Synkronisera nycklar för beroende resurser
 
-Om du ändrar åtkomst nycklar för en av resurserna som används av din arbets yta tar det ungefär en timme innan arbets ytan synkroniseras med den nya nyckeln. Om du vill tvinga arbets ytan att synkronisera de nya nycklarna direkt använder du följande kommando:
+Om du ändrar åtkomstnycklarna för en av de resurser som används av arbetsytan tar det ungefär en timme för arbetsytan att synkroniseras med den nya nyckeln. Om du vill tvinga arbetsytan att synkronisera de nya nycklarna direkt använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace sync-keys -w <workspace-name> -g <resource-group-name>
 ```
 
-Mer information om hur du ändrar nycklar finns i [Återskapa lagrings åtkomst nycklar](how-to-change-storage-access-key.md).
+Mer information om hur du ändrar nycklar finns i [Återskapa åtkomstnycklar för lagring.](how-to-change-storage-access-key.md)
 
-Mer information finns i dokumentationen för [Sync-Keys för AZ ml-arbetsytan](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-sync-keys) .
+Mer information finns i dokumentationen [az ml workspace sync-keys.](/cli/azure/ml/workspace#az_ml_workspace_sync-keys)
 
 ## <a name="delete-a-workspace"></a>Ta bort en arbetsyta
 
-Använd följande kommando om du vill ta bort en arbets yta efter att den inte längre behövs:
+Om du vill ta bort en arbetsyta när den inte längre behövs använder du följande kommando:
 
 ```azurecli-interactive
 az ml workspace delete -w <workspace-name> -g <resource-group-name>
 ```
 
 > [!IMPORTANT]
-> Om du tar bort en arbets yta tas inte program insikter, lagrings konto, nyckel valv eller behållar registret som används av arbets ytan bort.
+> När du tar bort en arbetsyta tas inte programinsikter, lagringskonto, nyckelvalv eller containerregister bort som används av arbetsytan.
 
-Du kan också ta bort resurs gruppen, som tar bort arbets ytan och alla andra Azure-resurser i resurs gruppen. Om du vill ta bort resurs gruppen använder du följande kommando:
+Du kan också ta bort resursgruppen, vilket tar bort arbetsytan och alla andra Azure-resurser i resursgruppen. Om du vill ta bort resursgruppen använder du följande kommando:
 
 ```azurecli-interactive
 az group delete -g <resource-group-name>
 ```
 
-Mer information finns i [AZ ml-arbetsytan ta bort](/cli/azure/ext/azure-cli-ml/ml/workspace#ext-azure-cli-ml-az-ml-workspace-delete) dokumentation.
+Mer information finns i dokumentationen [för az ml workspace delete.](/cli/azure/ml/workspace#az_ml_workspace_delete)
 
 ## <a name="troubleshooting"></a>Felsökning
 
-### <a name="resource-provider-errors"></a>Resurs leverantörs fel
+### <a name="resource-provider-errors"></a>Resursproviderfel
 
 [!INCLUDE [machine-learning-resource-provider](../../includes/machine-learning-resource-provider.md)]
 
-### <a name="moving-the-workspace"></a>Flytta arbets ytan
+### <a name="moving-the-workspace"></a>Flytta arbetsytan
 
 > [!WARNING]
-> Det finns inte stöd för att flytta Azure Machine Learning arbets ytan till en annan prenumeration eller flytta den ägande prenumerationen till en ny klient. Detta kan orsaka fel.
+> Det finns inte Azure Machine Learning att flytta din arbetsyta till en annan prenumeration eller att flytta den egna prenumerationen till en ny klientorganisation. Detta kan orsaka fel.
 
-### <a name="deleting-the-azure-container-registry"></a>Tar bort Azure Container Registry
+### <a name="deleting-the-azure-container-registry"></a>Ta bort Azure Container Registry
 
-I arbets ytan Azure Machine Learning används Azure Container Registry (ACR) för vissa åtgärder. En ACR-instans skapas automatiskt när den först behöver en.
+Arbetsytan Azure Machine Learning använder Azure Container Registry (ACR) för vissa åtgärder. Den skapar automatiskt en ACR-instans när den först behöver en.
 
 [!INCLUDE [machine-learning-delete-acr](../../includes/machine-learning-delete-acr.md)]
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI-tillägget för Machine Learning finns i [AZ ml](/cli/azure/ext/azure-cli-ml/ml) -dokumentationen.
+Mer information om Azure CLI-tillägget för maskininlärning finns i [az ml-dokumentationen.](/cli/azure/ml)

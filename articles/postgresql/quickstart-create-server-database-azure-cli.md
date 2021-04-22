@@ -1,6 +1,6 @@
 ---
 title: 'Snabbstart: Skapa server – Azure CLI – Azure Database for PostgreSQL – enskild server'
-description: I den här snabbstartsguiden skapar du en Azure Database for PostgreSQL-server med hjälp av Azure CLI.
+description: I den här snabbstartsguiden skapar du en Azure Database for PostgreSQL server med hjälp av Azure CLI.
 author: sunilagarwal
 ms.author: sunila
 ms.service: postgresql
@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: a595d677cf0964083526cb7e2c73471148be0fd4
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d4d3b44b0ee878028df369de41451e3dc1d3c6de
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778448"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875241"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-by-using-the-azure-cli"></a>Snabbstart: Skapa en Azure Database for PostgreSQL-server med hjälp av Azure CLI
 
@@ -24,11 +24,11 @@ Den här snabbstarten visar hur du använder Azure [CLI-kommandon i Azure Cloud 
 - Den här artikeln kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
     > [!TIP]
-    >  Överväg att använda det [enklare az postgres up](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) Azure CLI-kommandot som för närvarande är i förhandsversion. Prova [snabbstarten](./quickstart-create-server-up-azure-cli.md).
+    >  Överväg att använda det [enklare az postgres-kommandot](/cli/azure/postgres#az_postgres_up) för Azure CLI som för närvarande är i förhandsversion. Prova [snabbstarten](./quickstart-create-server-up-azure-cli.md).
 
-- Välj det specifika prenumerations-ID:t under ditt konto med [hjälp av kommandot az account set.](/cli/azure/account)
+- Välj det specifika prenumerations-ID:t under ditt konto med [kommandot az account set.](/cli/azure/account)
 
-    - Anteckna ID-värdet **från az** **login-utdata** som ska användas som värde för **prenumerationsargumentet** i kommandot. 
+    - Anteckna ID-värdet **från az** login-utdata som ska användas som värde för  **prenumerationsargumentet** i kommandot. 
 
         ```azurecli
         az account set --subscription <subscription id>
@@ -44,7 +44,7 @@ Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) m
 az group create --name myresourcegroup --location westus
 ```
 
-Skapa en [Azure Database for PostgreSQL server med](overview.md) hjälp av kommandot az [postgres server](/cli/azure/postgres/server) create. En server kan innehålla flera databaser.
+Skapa en [Azure Database for PostgreSQL server med](overview.md) hjälp av kommandot az [postgres server create.](/cli/azure/postgres/server) En server kan innehålla flera databaser.
 
 ```azurecli-interactive
 az postgres server create --resource-group myresourcegroup --name mydemoserver  --location westus --admin-user myadmin --admin-password <server_admin_password> --sku-name GP_Gen5_2 
@@ -53,7 +53,7 @@ Här är information om föregående argument:
 
 **Inställning** | **Exempelvärde** | **Beskrivning**
 ---|---|---
-name | mydemoserver | Unikt namn som identifierar din Azure Database for PostgreSQL server. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla 3 till 63 tecken. Mer information finns i [Azure Database for PostgreSQL namngivningsregler.](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)
+name | mydemoserver | Unikt namn som identifierar din Azure Database for PostgreSQL server. Ditt servernamn får bara innehålla gemener, siffror och bindestreck. Det måste innehålla mellan 3 och 63 tecken. Mer information finns i [Azure Database for PostgreSQL namngivningsregler.](../azure-resource-manager/management/resource-name-rules.md#microsoftdbforpostgresql)
 resource-group | myresourcegroup | Namnet på Azure-resursgruppen.
 location | westus | Azure-plats för servern.
 admin-user | myadmin | Användarnamn för administratörsinloggningen. Det kan inte **azure_superuser,** **admin,** **administratör,** **rot,** **gäst** eller **offentlig**.
@@ -118,7 +118,7 @@ Resultatet är i JSON-format. Anteckna värdena **administratorLogin och** **ful
 ```
 
 ## <a name="connect-to-the-azure-database-for-postgresql-server-by-using-psql"></a>Ansluta till Azure Database for PostgreSQL med psql
-[Psql-klienten](https://www.postgresql.org/docs/current/static/app-psql.html) är ett populärt alternativ för att ansluta till PostgreSQL-servrar. Du kan ansluta till servern med psql med [Azure Cloud Shell](../cloud-shell/overview.md). Du kan även använda psql i din lokala miljö om du har det tillgängligt. En tom databas, **postgres,** skapas automatiskt med en ny PostgreSQL-server. Du kan använda databasen för att ansluta till psql, som du ser i följande kod. 
+[Psql-klienten](https://www.postgresql.org/docs/current/static/app-psql.html) är ett populärt alternativ för att ansluta till PostgreSQL-servrar. Du kan ansluta till servern med psql med [Azure Cloud Shell](../cloud-shell/overview.md). Du kan även använda psql i din lokala miljö om du har det tillgängligt. En tom databas, **postgres,** skapas automatiskt med en ny PostgreSQL-server. Du kan använda databasen för att ansluta med psql, som du ser i följande kod. 
 
    ```bash
  psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
@@ -139,7 +139,7 @@ Om du inte behöver dessa resurser för en annan snabbstart eller självstudie k
 az group delete --name myresourcegroup
 ```
 
-Om du bara vill ta bort den nyligen skapade servern kan du köra [kommandot az postgres server delete.](/cli/azure/postgres/server)
+Om du bara vill ta bort den nyligen skapade servern kan du köra kommandot [az postgres server delete.](/cli/azure/postgres/server)
 
 ```azurecli-interactive
 az postgres server delete --resource-group myresourcegroup --name mydemoserver

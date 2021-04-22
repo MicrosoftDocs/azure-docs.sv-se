@@ -1,15 +1,15 @@
 ---
 title: Inbyggda principdefinitioner för Azure Resource Manager
 description: Visar Azure Policy inbyggda principdefinitioner för Azure Resource Manager. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: ccc4b03a92a885065abc3fad056b3c535ddf5b68
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: a948c09ac886f6f7f3866970da84fac2413e2d98
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499635"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865151"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-resource-manager"></a>Azure Policy inbyggda definitioner för Azure Resource Manager
 

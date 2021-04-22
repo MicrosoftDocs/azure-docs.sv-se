@@ -1,5 +1,5 @@
 ---
-title: Snabb start för Webbsökning i Bing C#-klient bibliotek
+title: Webbsökning i Bing snabbstart för C#-klientbibliotek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d391586ade9e9a58344f9b1666802a453770152a
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff4a29cd2da98d6782d2e3bae5078e92bc43eaca
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386522"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107879697"
 ---
-Med Webbsökning i Bing klient biblioteket är det enkelt att integrera Webbsökning i Bing i C#-programmet. I den här snabbstarten lär du dig att instansiera en klient, skicka en begäran och skriva ut svaret.
+Med Webbsökning i Bing-klientbiblioteket är det enkelt att integrera Webbsökning i Bing C#-programmet. I den här snabbstarten lär du dig att instansiera en klient, skicka en begäran och skriva ut svaret.
 
-Vill du se koden på en gång? Exempel för [Bing-sökning klient bibliotek för .net](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) finns på GitHub.
+Vill du se koden på en gång? Exempel på [Bing-sökning klientbibliotek för .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7) finns på GitHub.
 
 ## <a name="prerequisites"></a>Förutsättningar
 Här följer några saker som du behöver innan du kör den här snabbstarten:
@@ -27,16 +27,16 @@ Här följer några saker som du behöver innan du kör den här snabbstarten:
 * [Visual Studio Code 2017](https://code.visualstudio.com/download)
   * [C# för Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
   * [NuGet-pakethanteraren](https://github.com/jmrog/vscode-nuget-package-manager)
-* [.NET Core SDK](https://www.microsoft.com/net/download)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 
 [!INCLUDE [bing-web-search-quickstart-signup](~/includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="create-a-project-and-install-dependencies"></a>Skapa ett projekt och installera beroenden
 
 > [!TIP]
-> Hämta den senaste koden som en Visual Studio-lösning från [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
+> Hämta den senaste koden som en Visual Studio från [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Det första steget är att skapa ett nytt konsollprojekt. Om du behöver hjälp med att konfigurera ett konsol projekt, se [Hello World--ditt första program (C# programmerings guide)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). För att kunna använda API för webbsökning i Bing i ditt program behöver du installera `Microsoft.Azure.CognitiveServices.Search.WebSearch` med hjälp av NuGet-pakethanteraren.
+Det första steget är att skapa ett nytt konsollprojekt. Om du behöver hjälp med att konfigurera ett [konsolprojekt kan du Hello World -- Your First Program (C# Programming Guide)](/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). För att kunna använda API för webbsökning i Bing i ditt program behöver du installera `Microsoft.Azure.CognitiveServices.Search.WebSearch` med hjälp av NuGet-pakethanteraren.
 
 [SDK-paketet för webbsökning](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) installeras också:
 
@@ -59,7 +59,7 @@ using System.Threading.Tasks;
 
 ## <a name="create-project-scaffolding"></a>Skapa projektställningar
 
-När du skapade det nya konsolprojektet bör en namnrymd och en klass för programmet ha skapats. Programmet bör se ut som det här exemplet:
+När du skapade det nya konsolprojektet bör en namnrymd och en klass för programmet ha skapats. Programmet bör se ut som i det här exemplet:
 
 ```csharp
 namespace WebSearchSDK

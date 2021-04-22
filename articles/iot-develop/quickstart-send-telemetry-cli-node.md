@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: node
 ms.topic: quickstart
 ms.date: 03/25/2021
-ms.openlocfilehash: 3d42ac814678136c2f6342cd1064e3c3ff394507
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0e1c99124228da9490abaa17ecc41b931631d9fb
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107777247"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876984"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-nodejs"></a>Snabbstart: Skicka telemetri från en enhet till en IoT-hubb (Node.js)
 
@@ -23,7 +23,7 @@ I den här snabbstarten får du lära dig ett grundläggande arbetsflöde för u
 ## <a name="prerequisites"></a>Förutsättningar
 - Om du inte har en Azure-prenumeration kan [du skapa en utan kostnad](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) innan du börjar.
 - Azure CLI. Du kan köra alla kommandon i den här snabbstarten med Azure Cloud Shell, ett interaktivt CLI-gränssnitt som körs i webbläsaren. Om du använder Cloud Shell behöver du inte installera något. Om du föredrar att använda CLI lokalt kräver den här snabbstarten Azure CLI version 2.0.76 eller senare. Kör az --version för att se versionen. Om du behöver installera eller uppgradera kan du läsa [Installera Azure CLI]( /cli/azure/install-azure-cli).
-- [Node.js 10+](https://nodejs.org). Om du använder Azure Cloud Shell bör du inte uppdatera den installerade versionen av Node.js. Den Azure Cloud Shell versionen har redan den senaste Node.js versionen.
+- [Node.js 10+](https://nodejs.org). Om du använder Azure Cloud Shell bör du inte uppdatera den installerade versionen av Node.js. Den Azure Cloud Shell har redan den senaste Node.js versionen.
 
     Kontrollera den aktuella versionen Node.js på utvecklingsdatorn med hjälp av följande kommando:
 
@@ -34,11 +34,11 @@ I den här snabbstarten får du lära dig ett grundläggande arbetsflöde för u
 [!INCLUDE [iot-hub-include-create-hub-cli](../../includes/iot-hub-include-create-hub-cli.md)]
 
 ## <a name="use-the-nodejs-sdk-to-send-messages"></a>Skicka meddelanden med Node.js SDK
-I det här avsnittet använder du Node.js SDK för att skicka meddelanden från din simulerade enhet till din IoT Hub. 
+I det här avsnittet använder du SDKNode.js för att skicka meddelanden från din simulerade enhet till din IoT Hub. 
 
-1. Öppna ett nytt terminalfönster. Du använder terminalen för att installera Node.js SDK och arbeta med Node.js exempelkod. Du bör nu ha två terminaler öppna: den som du precis öppnade för att arbeta med Node.js och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon.
+1. Öppna ett nytt terminalfönster. Du använder den här terminalen för att installera Node.js SDK och arbeta med Node.js exempelkod. Du bör nu ha två terminaler öppna: den som du precis öppnade för att arbeta med Node.js och CLI-gränssnittet som du använde i föregående avsnitt för att ange Azure CLI-kommandon.
 
-1. Kopiera [Azure IoT Node.js SDK-enhetsexempel](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) till den lokala datorn:
+1. Kopiera Azure [IoT Node.js SDK-enhetsexempel](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples) till din lokala dator:
 
     ```console
     git clone https://github.com/Azure/azure-iot-sdk-node
@@ -56,9 +56,9 @@ I det här avsnittet använder du Node.js SDK för att skicka meddelanden från 
     npm install
     ```
 
-    Det här kommandot installerar rätt beroenden som anges i filen *package.jsi* katalogen med enhetsexempel.
+    Det här kommandot installerar rätt beroenden som anges ipackage.js *på filen* i enhetens exempelkatalog.
 
-1. Ange båda följande miljövariabler så att den simulerade enheten kan ansluta till Azure IoT.
+1. Ange båda av följande miljövariabler så att den simulerade enheten kan ansluta till Azure IoT.
     * Ange en miljövariabel med namnet `IOTHUB_DEVICE_CONNECTION_STRING` . För variabelvärdet använder du enhetsanslutningssträngen som du sparade i föregående avsnitt.
     * Ange en miljövariabel med namnet `IOTHUB_DEVICE_SECURITY_TYPE` . För variabeln använder du stränglitteralvärdet `connectionString` .
 
@@ -91,7 +91,7 @@ I det här avsnittet använder du Node.js SDK för att skicka meddelanden från 
     ```bash
     export IOTHUB_DEVICE_SECURITY_TYPE="connectionString"
     ```
-1. I ditt öppna CLI-gränssnitt kör du [kommandot az iot hub monitor-events](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelsemeddelanden skrivs ut i terminalen när de tas emot.
+1. I det öppna CLI-gränssnittet kör du [kommandot az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) för att börja övervaka händelser på din simulerade IoT-enhet.  Händelsemeddelanden skrivs ut i terminalen när de tas emot.
 
     ```azurecli
     az iot hub monitor-events --output table --hub-name {YourIoTHubName}
@@ -104,9 +104,9 @@ I det här avsnittet använder du Node.js SDK för att skicka meddelanden från 
     node ./simple_thermostat.js
     ```
     > [!NOTE]
-    > Det här kodexe exemplet använder Azure IoT Plug and Play, vilket gör att du kan integrera smarta enheter i dina lösningar utan någon manuell konfiguration.  Som standard använder de flesta exempel i den här dokumentationen IoT-Plug and Play. Mer information om fördelarna med IoT PnP och användningsfall finns i Vad är [IoT-Plug and Play?](../iot-pnp/overview-iot-plug-and-play.md)
+    > I det här kodexe exemplet används Azure IoT Plug and Play, vilket gör att du kan integrera smarta enheter i dina lösningar utan manuell konfiguration.  Som standard använder de flesta exempel i den här dokumentationen IoT-Plug and Play. Mer information om fördelarna med IoT PnP och användningsfall finns i Vad är [IoT-Plug and Play?](../iot-pnp/overview-iot-plug-and-play.md)
 
-När Node.js-koden skickar ett simulerat telemetrimeddelande från enheten till IoT-hubben visas meddelandet i CLI-gränssnittet som övervakar händelser:
+När koden Node.js ett simulerat telemetrimeddelande från enheten till IoT-hubben visas meddelandet i CLI-gränssnittet som övervakar händelser:
 
 ```output
 Starting event monitor, use ctrl-c to stop...

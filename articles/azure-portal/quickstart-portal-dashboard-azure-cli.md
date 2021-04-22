@@ -4,12 +4,12 @@ description: 'Snabbstart: Lär dig hur du skapar en instrumentpanel i Azure Port
 ms.topic: quickstart
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 ms.date: 12/4/2020
-ms.openlocfilehash: d951c692c7d3c282ae68c5f9b53e9cda5407df10
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 581c8cc4c2da275467bc39c5c2008b29a5bc0e0e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107481029"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875763"
 ---
 # <a name="quickstart-create-an-azure-portal-dashboard-with-azure-cli"></a>Snabbstart: Skapa en Azure Portal instrumentpanel med Azure CLI
 
@@ -73,20 +73,20 @@ Mer information finns i [mallreferensen för instrumentpaneler i Microsoft Porta
 
 Nu kan du distribuera mallen från Azure CLI.
 
-1. Kör kommandot [az portal dashboard create](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_create) för att distribuera mallen:
+1. Kör kommandot [az portal dashboard create](/cli/azure/portal/dashboard#az_portal_dashboard_create) för att distribuera mallen:
 
    ```azurecli
    az portal dashboard create --resource-group myResourceGroup --name 'Simple VM Dashboard' \
       --input-path portal-dashboard-template-testvm.json --location centralus
    ```
 
-1. Kontrollera att instrumentpanelen har skapats genom att köra kommandot [az portal dashboard show:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_show)
+1. Kontrollera att instrumentpanelen har skapats genom att köra kommandot [az portal dashboard show:](/cli/azure/portal/dashboard#az_portal_dashboard_show)
 
    ```azurecli
    az portal dashboard show --resource-group myResourceGroup --name 'Simple VM Dashboard'
    ```
 
-Om du vill se alla instrumentpaneler för den aktuella prenumerationen använder du [az portal dashboard list](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_list):
+Om du vill se alla instrumentpaneler för den aktuella prenumerationen använder du [az portal dashboard list](/cli/azure/portal/dashboard#az_portal_dashboard_list):
 
 ```azurecli
 az portal dashboard list
@@ -98,7 +98,7 @@ Du kan också se alla instrumentpaneler för en resursgrupp:
 az portal dashboard list --resource-group myResourceGroup
 ```
 
-Du kan uppdatera en instrumentpanel med hjälp av [kommandot az portal dashboard update:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_update)
+Du kan uppdatera en instrumentpanel med hjälp av [kommandot az portal dashboard update:](/cli/azure/portal/dashboard#az_portal_dashboard_update)
 
 ```azurecli
 az portal dashboard update --resource-group myResourceGroup --name 'Simple VM Dashboard' \
@@ -119,7 +119,7 @@ Om du vill ta bort den virtuella datorn och den associerade instrumentpanelen ta
 az group delete --name myResourceGroup
 ```
 
-Om du bara vill ta bort instrumentpanelen använder du [kommandot az portal dashboard delete:](/cli/azure/ext/portal/portal/dashboard#ext_portal_az_portal_dashboard_delete)
+Om du bara vill ta bort instrumentpanelen använder du [kommandot az portal dashboard delete:](/cli/azure/portal/dashboard#az_portal_dashboard_delete)
 
 ```azurecli
 az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Dashboard"
@@ -127,4 +127,4 @@ az portal dashboard delete --resource-group myResourceGroup --name "Simple VM Da
 
 ## <a name="next-steps"></a>Nästa steg
 
-Mer information om Azure CLI-stöd för instrumentpaneler finns i [az portal dashboard](/cli/azure/ext/portal/portal/dashboard).
+Mer information om Azure CLI-stöd för instrumentpaneler finns i [az portal dashboard](/cli/azure/portal/dashboard).

@@ -7,12 +7,12 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: a7617a36ed800f1765ed7723568a4b612fcb6518
-ms.sourcegitcommit: 272351402a140422205ff50b59f80d3c6758f6f6
+ms.openlocfilehash: 6214594f825908388762ac35cc8c8722ff9135f1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/17/2021
-ms.locfileid: "107587603"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874359"
 ---
 # <a name="tutorial-mock-api-responses"></a>Självstudie: Fingera API-svar
 
@@ -70,7 +70,7 @@ Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du til
     | **Visningsnamn**    | *Testanrop*                       | Namnet som visas i [utvecklarportalen](api-management-howto-developer-portal.md).                                                                                                                                       |
     | **URL** (HTTP-verb) | GET                               | Välj ett av de fördefinierade HTTP-verben.                                                                                                                                         |
     | **URL**             | */test*                           | En URL-sökväg för API:et.                                                                                                                                                                       |
-    | **Beskrivning**     |                                   |  Valfri beskrivning av åtgärden, som används för att tillhandahålla dokumentation i utvecklarportalen till utvecklare som använder det här API:et.                                                    |
+    | **Beskrivning**     |                                   |  Valfri beskrivning av åtgärden som används för att tillhandahålla dokumentation i utvecklarportalen till utvecklare som använder det här API:et.                                                    |
     
 1. Välj fliken **Svar** under fälten URL, Visningsnamn och Beskrivning. Ange inställningar på den här fliken för att definiera svarsstatuskoder, innehållstyper, exempel och scheman.
 1. Välj **+ Lägg till** svar och välj **200 OK** i listan.
@@ -86,8 +86,8 @@ Ett API exponerar en eller flera åtgärder. I det här avsnittet lägger du til
 
 |Flik      |Description  |
 |---------|---------|
-|**Query**     |  Lägg till frågeparametrar. Förutom att ange ett namn och en beskrivning kan du ange värden som har tilldelats till en frågeparameter. Ett av värdena kan vara markerat som standard (valfritt).        |
-|**Förfrågan**     |  Definiera innehållstyper, exempel och scheman för förfrågningar.       |
+|**Query**     |  Lägg till frågeparametrar. Förutom att ange ett namn och en beskrivning kan du ange värden som är tilldelade till en frågeparameter. Ett av värdena kan vara markerat som standard (valfritt).        |
+|**Förfrågan**     |  Definiera typer av begärandeinnehåll, exempel och scheman.       |
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -95,7 +95,7 @@ Så här börjar du använda Azure CLI:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Om du vill lägga till en åtgärd i test-API:et kör du [kommandot az apim api operation create:](/cli/azure/apim/api/operation#az_apim_api_operation_create)
+Om du vill lägga till en åtgärd i test-API:et kör du [kommandot az apim api operation](/cli/azure/apim/api/operation#az_apim_api_operation_create) create:
 
 ```azurecli
 az apim api operation create --resource-group apim-hello-word-resource-group \
@@ -142,7 +142,7 @@ Behåll den här åtgärden för användning i resten av den här artikeln.
 1. Välj **Spara**.
 
     > [!TIP]
-    > Ett gult fält med texten **Mocking** har aktiverats för ditt API anger att svar som returneras från API Management är [fingerade](api-management-advanced-policies.md#mock-response) av fingerningsprincipen och inte skapas av backend-enheten.
+    > Ett gult fält med texten **Mocking (Fingera)** är aktiverat för ditt API anger att svar som returneras från API Management fingeras av [fingerningsprincipen](api-management-advanced-policies.md#mock-response) och inte skapas av backend-enheten.
 
 ## <a name="test-the-mocked-api"></a>Testa det simulerade API:et
 

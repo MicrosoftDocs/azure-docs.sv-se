@@ -1,7 +1,7 @@
 ---
 title: Planera och hantera kostnader
 titleSuffix: Azure Machine Learning
-description: Planera och hantera kostnader för Azure Machine Learning med kostnadsanalys i Azure Portal. Lär dig ytterligare kostnadsbesparande tips för att sänka dina kostnader när du skapar ML-modeller.
+description: Planera och hantera kostnader för Azure Machine Learning med kostnadsanalys i Azure Portal. Lär dig fler kostnadsbesparande tips för att sänka dina kostnader när du skapar ML-modeller.
 author: sdgilley
 ms.author: sgilley
 ms.custom: subject-cost-optimization, devx-track-azurecli
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 39c649cccdf159810ad01c2312c4ea4837d9f4fc
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: d8f74e438175758b1f09e1809b5eba15c1b26c3c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107478649"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873639"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Planera och hantera kostnader för Azure Machine Learning
 
@@ -41,7 +41,7 @@ Mer information om hur du får åtkomst till Azure Cost Management finns i [Till
 
 ## <a name="estimate-costs-before-using-azure-machine-learning"></a>Beräkna kostnader innan du använder Azure Machine Learning
 
-Använd [priskalkylatorn för Azure](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att beräkna kostnader innan du skapar resurserna i ett Azure Machine Learning konto. Till vänster väljer du **AI + Machine Learning** och väljer sedan Azure Machine Learning för att börja.   
+Använd [priskalkylatorn för Azure](https://azure.microsoft.com/pricing/calculator?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att beräkna kostnader innan du skapar resurserna i ett Azure Machine Learning konto. Till vänster väljer du **AI + Machine Learning** och väljer sedan Azure Machine Learning **för** att börja.  
 
 Följande skärmbild visar kostnadsuppskattningen med hjälp av kalkylatorn:
 
@@ -49,13 +49,13 @@ Följande skärmbild visar kostnadsuppskattningen med hjälp av kalkylatorn:
 
 När du lägger till nya resurser på arbetsytan återgår du till den här kalkylatorn och lägger till samma resurs här för att uppdatera dina kostnadsuppskattningar.
 
-Mer information finns i [Azure Machine Learning prissättning.](https://azure.microsoft.com/pricing/details/machine-learning?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+Mer information finns i [Azure Machine Learning priser.](https://azure.microsoft.com/pricing/details/machine-learning?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 ## <a name="understand-the-full-billing-model-for-azure-machine-learning"></a>Förstå den fullständiga faktureringsmodellen för Azure Machine Learning
 
-Azure Machine Learning körs på Azure-infrastruktur som ackumulerar kostnader tillsammans Azure Machine Learning när du distribuerar den nya resursen. Det är viktigt att förstå att ytterligare infrastruktur kan ackumulera kostnader. Du måste hantera den kostnaden när du gör ändringar i distribuerade resurser. 
+Azure Machine Learning körs på Azure-infrastruktur som ackumulerar kostnader tillsammans med Azure Machine Learning när du distribuerar den nya resursen. Det är viktigt att förstå att ytterligare infrastruktur kan ackumulera kostnader. Du måste hantera den kostnaden när du gör ändringar i distribuerade resurser. 
 
-### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Kostnader som vanligtvis ackumuleras med Azure Machine Learning
+### <a name="costs-that-typically-accrue-with-azure-machine-learning"></a>Kostnader som vanligtvis påförs med Azure Machine Learning
 
 När du skapar resurser för en Azure Machine Learning skapas även resurser för andra Azure-tjänster. De är:
 
@@ -79,7 +79,7 @@ Om du vill ta bort arbetsytan tillsammans med dessa beroende resurser använder 
 ws.delete(delete_dependent_resources=True)
 ```
 
-Om du skapar Azure Kubernetes Service (AKS) i arbetsytan, eller om du kopplar några beräkningsresurser till arbetsytan, måste du ta bort dem separat [i Azure Portal](https://portal.azure.com).
+Om du skapar Azure Kubernetes Service (AKS) på arbetsytan, eller om du kopplar några beräkningsresurser till din arbetsyta, måste du ta bort dem separat [i Azure Portal](https://portal.azure.com).
 
 ### <a name="using-azure-prepayment-credit-with-azure-machine-learning"></a>Använda Azure-förskottsbetalningskredit med Azure Machine Learning
 
@@ -90,15 +90,15 @@ Du kan betala för Azure Machine Learning med din Azure-förskottsbetalningskred
 
 Du kan skapa [budgetar](../cost-management-billing/costs/tutorial-acm-create-budgets.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) för att hantera kostnader och skapa [aviseringar](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) som automatiskt meddelar mottagarna om kostnadsavvikelser och risker för överförbrukning. Aviseringar baseras på utgifter jämfört med budget- och kostnadströsklar. Budgetar och aviseringar skapas för Azure-prenumerationer och resursgrupper, så de är användbara som en del av en övergripande strategi för kostnadsövervakning. 
 
-Budgetar kan skapas med filter för specifika resurser eller tjänster i Azure om du vill ha mer kornighet i övervakningen. Filter hjälper till att säkerställa att du inte oavsiktligt skapar nya resurser som kostar ytterligare pengar. Mer information om filteralternativen när du skapar en budget finns i [Alternativ för gruppering och filter.](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
+Budgetar kan skapas med filter för specifika resurser eller tjänster i Azure om du vill ha mer kornighet i övervakningen. Filter hjälper till att se till att du inte oavsiktligt skapar nya resurser som kostar ytterligare pengar. Mer information om filteralternativen när du skapar en budget finns i [Alternativ för gruppering och filter.](../cost-management-billing/costs/group-filter.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn)
 
 ## <a name="export-cost-data"></a>Exportera kostnadsdata
 
-Du kan också [exportera kostnadsdata till](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ett lagringskonto. Detta är användbart när du behöver eller andra för att göra ytterligare dataanalys för kostnader. Ett ekonomiteam kan till exempel analysera data med excel eller Power BI. Du kan exportera dina kostnader enligt ett schema för varje dag, vecka eller månad och ange ett anpassat datumintervall. Att exportera kostnadsdata är det rekommenderade sättet att hämta kostnadsdatauppsättningar.
+Du kan också [exportera kostnadsdata till](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) ett lagringskonto. Detta är användbart när du behöver eller andra för att göra ytterligare dataanalys för kostnader. Ett ekonomiteam kan till exempel analysera data med hjälp av Excel eller Power BI. Du kan exportera dina kostnader enligt ett schema per dag, vecka eller månad och ange ett anpassat datumintervall. Att exportera kostnadsdata är det rekommenderade sättet att hämta kostnadsdatauppsättningar.
 
 ## <a name="other-ways-to-manage-and-reduce-costs-for-azure-machine-learning"></a>Andra sätt att hantera och minska kostnader för Azure Machine Learning
 
-Använd de här tipsen för att hålla nere kostnaderna för dina beräkningsresurser för maskininlärning.
+Använd de här tipsen för att innehålla kostnader för dina beräkningsresurser för maskininlärning.
 
 ### <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Använda Azure Machine Learning beräkningskluster (AmlCompute)
 
@@ -108,9 +108,9 @@ Azure Machine Learning kan använda det hanterade Azure Machine Learning beräkn
 
 Eftersom dessa beräkningspooler finns i Azures IaaS-infrastruktur kan du distribuera, skala och hantera din träning med samma säkerhets- och efterlevnadskrav som resten av infrastrukturen.  Dessa distributioner sker i din prenumeration och följer styrningsreglerna. Läs mer om [Azure Machine Learning beräkning](how-to-create-attach-compute-cluster.md).
 
-### <a name="configure-training-clusters-for-autoscaling"></a>Konfigurera träningskluster för automatisk skalning
+### <a name="configure-training-clusters-for-autoscaling"></a>Konfigurera träningskluster för autoskalning
 
-Med kluster för automatisk skalning baserat på kraven för din arbetsbelastning kan du minska kostnaderna så att du bara använder det du behöver.
+Autoskalning av kluster baserat på kraven för din arbetsbelastning hjälper till att minska dina kostnader så att du bara använder det du behöver.
 
 AmlCompute-kluster är utformade för att skala dynamiskt baserat på din arbetsbelastning. Klustret kan skalas upp till det maximala antalet noder som du konfigurerar. När varje körning slutförs släpper klustret noderna och skalas till det konfigurerade minsta antalet noder.
 
@@ -119,9 +119,9 @@ AmlCompute-kluster är utformade för att skala dynamiskt baserat på din arbets
 Du kan också konfigurera hur lång tid noden är inaktiv innan nedskalning. Som standard är inaktivitetstiden innan nedskalning inställd på 120 sekunder.
 
 + Om du utför mindre iterativa experiment kan du minska den här tiden för att spara kostnader.
-+ Om du utför mycket iterativa dev/test-experiment kan du behöva öka tiden så att du inte betalar för konstant upp- och nedskalning efter varje ändring i ditt träningsskript eller din miljö.
++ Om du utför mycket iterativa utvecklings-/testexperiment kan du behöva öka tiden så att du inte betalar för konstant upp- och nedskalning efter varje ändring i ditt träningsskript eller din miljö.
 
-AmlCompute-kluster kan konfigureras för dina föränderliga arbetsbelastningskrav i Azure Portal med hjälp av [AmlCompute SDK-klassen](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute), [AmlCompute CLI](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute), med [REST-API:erna](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
+AmlCompute-kluster kan konfigureras för dina föränderliga arbetsbelastningskrav i Azure Portal med hjälp av [AmlCompute SDK-klassen](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute) [, AmlCompute CLI](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute), med [REST-API:erna](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -129,11 +129,11 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 ### <a name="set-quotas-on-resources"></a>Ange kvoter för resurser
 
-AmlCompute levereras med en [kvotkonfiguration (eller gräns).](how-to-manage-quotas.md#azure-machine-learning-compute) Den här kvoten är per VM-familj (till exempel Dv2-serien, NCv3-serien) och varierar beroende på region för varje prenumeration. Prenumerationer börjar med små standardvärden för att komma igång, men använd den här inställningen för att styra mängden Amlcompute-resurser som är tillgängliga för att börja användas i din prenumeration. 
+AmlCompute levereras med en [kvotkonfiguration (eller gräns).](how-to-manage-quotas.md#azure-machine-learning-compute) Den här kvoten är per VM-familj (till exempel Dv2-serien, NCv3-serien) och varierar efter region för varje prenumeration. Prenumerationer börjar med små standardvärden för att komma igång, men använd den här inställningen för att styra hur många Amlcompute-resurser som är tillgängliga att användas i din prenumeration. 
 
-Konfigurera även [kvot på arbetsytenivå efter VM-familj](how-to-manage-quotas.md#workspace-level-quotas)för varje arbetsyta i en prenumeration. På så sätt kan du få mer detaljerad kontroll över de kostnader som varje arbetsyta potentiellt kan medföra och begränsa vissa VM-familjer. 
+Konfigurera även kvot [på arbetsytenivå efter VM-familj](how-to-manage-quotas.md#workspace-level-quotas), för varje arbetsyta i en prenumeration. På så sätt kan du få mer detaljerad kontroll över de kostnader som varje arbetsyta potentiellt kan medföra och begränsa vissa VM-familjer. 
 
-Om du vill ange kvoter på arbetsytenivå börjar du [i Azure Portal](https://portal.azure.com).  Välj en arbetsyta i din prenumeration och **välj Användningar + kvoter** i den vänstra rutan. Välj sedan **fliken Konfigurera kvoter** för att visa kvoter. Du behöver behörighet i prenumerationsomfånget för att ange kvoten, eftersom det är en inställning som påverkar flera arbetsytor.
+Om du vill ange kvoter på arbetsytenivå börjar du [i Azure Portal](https://portal.azure.com).  Välj en arbetsyta i din prenumeration och **välj Användning + kvoter** i den vänstra rutan. Välj sedan **fliken Konfigurera kvoter** för att visa kvoterna. Du behöver behörighet i prenumerationsomfånget för att ange kvoten, eftersom det är en inställning som påverkar flera arbetsytor.
 
 ### <a name="set-run-autotermination-policies"></a>Ange principer för att köra autoterminering 
 
@@ -141,14 +141,14 @@ I vissa fall bör du konfigurera dina träningskörningar för att begränsa der
 
 Här är några alternativ som du har:
 * Definiera en parameter med namnet i Din RunConfiguration för att styra den maximala varaktighet som en körning kan utökas till på den beräkning du väljer (antingen lokal beräkning eller `max_run_duration_seconds` fjärrmolnbearbetning).
-* För [justering av hyperparametern](how-to-tune-hyperparameters.md#early-termination)definierar du en princip för tidig avslutning från en Alternativ-princip, en princip för medianstopp eller en princip för val av trunkering. Om du vill styra hyperparameterns reglage ytterligare använder du parametrar som `max_total_runs` eller `max_duration_minutes` .
-* För [automatiserad maskininlärning](how-to-configure-auto-train.md#exit)anger du liknande avslutningsprinciper med hjälp av  `enable_early_stopping` flaggan . Du kan också använda egenskaper `iteration_timeout_minutes` som och för att styra den maximala `experiment_timeout_minutes` varaktigheten för en körning eller för hela experimentet.
+* För [justering av hyperparametern](how-to-tune-hyperparameters.md#early-termination)definierar du en princip för tidig avslutning från en Grupprincip, en princip för medianstopp eller en princip för val av trunkering. Om du vill styra hyperparameterns genomsökning ytterligare använder du parametrar som `max_total_runs` eller `max_duration_minutes` .
+* För [automatiserad maskininlärning](how-to-configure-auto-train.md#exit)anger du liknande avslutningsprinciper med hjälp av  `enable_early_stopping` flaggan . Använd även egenskaper som `iteration_timeout_minutes` och för att styra den maximala `experiment_timeout_minutes` varaktigheten för en körning eller för hela experimentet.
 
 ### <a name="use-low-priority-vms"></a><a id="low-pri-vm"></a> Använda lågprioriterade virtuella datorer
 
-Med Azure kan du använda överflödig outnyttjad kapacitet som Low-Priority virtuella datorer i VM-skalningsuppsättningar, Batch och Machine Learning tjänsten. Dessa allokeringar är förebyggande, men har ett lägre pris jämfört med dedikerade virtuella datorer. I allmänhet rekommenderar vi att du Low-Priority virtuella datorer för Batch-arbetsbelastningar. Du bör också använda dem där avbrott kan återställas antingen genom att skicka om (för Batch-inferens) eller genom omstarter (för djupinlärningsträning med kontrollpunkter).
+Med Azure kan du använda överflödig outnyttjad kapacitet som Low-Priority virtuella datorer i VM-skalningsuppsättningar, Batch och Machine Learning tjänsten. Dessa allokeringar är förebyggande men har ett lägre pris jämfört med dedikerade virtuella datorer. I allmänhet rekommenderar vi att du använder Low-Priority virtuella datorer för Batch-arbetsbelastningar. Du bör också använda dem där avbrott kan återställas antingen genom att skicka om (för Batch-inferens) eller genom omstarter (för djupinlärningsträning med kontrollpunkter).
 
-Low-Priority virtuella datorer har en enda kvot som är separat från det dedikerade kvotvärdet, som är efter VM-familj. Läs [mer om AmlCompute-kvoter](how-to-manage-quotas.md).
+Low-Priority virtuella datorer har en enda kvot som är separat från det dedikerade kvotvärdet, som är av VM-familj. Läs [mer om AmlCompute-kvoter](how-to-manage-quotas.md).
 
  Low-Priority virtuella datorer fungerar inte för beräkningsinstanser, eftersom de behöver stöd för interaktiva notebook-upplevelser.
 

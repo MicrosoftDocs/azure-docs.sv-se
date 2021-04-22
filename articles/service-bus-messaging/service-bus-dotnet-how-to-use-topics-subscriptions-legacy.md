@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 09/02/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 28e94cdb0df0a18b41f4c8a0ded362b50df6dcac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a64ccec49248f48a85782cfe9537513a97b2bdfc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100652980"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868167"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Kom igång med Service Bus-ämnen
 Den här självstudien omfattar följande steg:
@@ -19,18 +19,18 @@ Den här självstudien omfattar följande steg:
 2. Skriva ett .NET Core-konsolprogram för att ta emot meddelanden från prenumerationen.
 
 > [!WARNING]
-> Den här snabb starten använder det gamla Microsoft. Azure. Service Bus-paketet. En snabb start som använder det senaste Azure. Messaging. Service Bus-paketet finns i [skicka och ta emot meddelanden med Azure. Messaging. Service Bus-paketet](service-bus-dotnet-how-to-use-topics-subscriptions.md). Information om hur du flyttar ditt program från att använda det gamla biblioteket till ett nytt finns i [guiden för att migrera från Microsoft. Azure. Service Bus till Azure. Messaging. Service Bus](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md). 
+> I den här snabbstarten används det gamla Microsoft.Azure.ServiceBus-paketet. En snabbstart som använder det senaste Azure.Messaging.ServiceBus-paketet finns i Skicka och ta emot meddelanden med hjälp av [Azure.Messaging.ServiceBus-paketet](service-bus-dotnet-how-to-use-topics-subscriptions.md). Information om hur du flyttar ditt program från att använda det gamla biblioteket till det nya finns i Guide [to migrate from Microsoft.Azure.ServiceBus to Azure.Messaging.ServiceBus (Guide för att migrera från Microsoft.Azure.ServiceBus till Azure.Messaging.ServiceBus).](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md) 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-1. En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [förmåner för Visual Studio eller MSDN-prenumeranter](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnads fritt konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
-2. Följ stegen i [snabb starten: använd Azure Portal för att skapa ett Service Bus ämne och prenumerationer på avsnittet](service-bus-quickstart-topics-subscriptions-portal.md) för att utföra följande uppgifter:
-    1. Skapa ett Service Bus- **namnområde**.
-    2. Hämta **anslutnings strängen**.
-    3. Skapa ett **ämne** i namn området.
-    4. Skapa **en prenumeration** på ämnet i namn området.
+1. En Azure-prenumeration. Du behöver ett Azure-konto för att genomföra kursen. Du kan aktivera dina [Visual Studio- eller MSDN-prenumerantförmåner](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) eller registrera dig för ett [kostnadsfritt konto.](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)
+2. Följ stegen i [Snabbstart: Använd Azure Portal](service-bus-quickstart-topics-subscriptions-portal.md) för att skapa ett Service Bus ämne och prenumerationer på ämnet för att utföra följande uppgifter:
+    1. Skapa en Service Bus **namnområdet**.
+    2. Hämta **anslutningssträngen**.
+    3. Skapa ett **ämne** i namnområdet.
+    4. Skapa **en prenumeration** på ämnet i namnområdet.
 3. [Visual Studio 2017 Update 3 (version 15.3, 26730.01)](https://www.visualstudio.com/vs) eller senare.
-4. [NET Core SDK](https://www.microsoft.com/net/download/windows), version 2.0 eller senare.
+4. [NET Core SDK](https://dotnet.microsoft.com/download), version 2.0 eller senare.
  
 ## <a name="send-messages-to-the-topic"></a>Skicka meddelanden till ämnet
 
@@ -66,7 +66,7 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Core)**.
     static ITopicClient topicClient;
     ``` 
 
-3. Ersätt `Main()` metoden med följande async-  `Main` metod som skickar meddelanden asynkront med SendMessagesAsync-metoden som du ska lägga till i nästa steg. 
+3. Ersätt metoden med följande asynkrona metod som skickar meddelanden asynkront med metoden `Main()` SendMessagesAsync som du lägger  `Main` till i nästa steg. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -179,7 +179,7 @@ Starta Visual Studio och skapa ett nytt projekt: **Konsolprogram (.NET Core)**.
 
 ## <a name="receive-messages-from-the-subscription"></a>Ta emot meddelanden från prenumerationen
 
-Om du vill ta emot meddelanden som du har skickat skapar du ett annat .NET Core-konsolprogram och installerar **Microsoft. Azure. Service Bus** NuGet-paketet, som liknar det tidigare avsändar programmet.
+För att ta emot de meddelanden som du har skickat skapar du ett annat .NET Core-konsolprogram och installerar NuGet-paketet **Microsoft.Azure.ServiceBus,** liknande det tidigare avsändarprogrammet.
 
 ### <a name="write-code-to-receive-messages-from-the-subscription"></a>Skriva kod för att ta emot meddelanden från prenumerationen
 
@@ -201,7 +201,7 @@ Om du vill ta emot meddelanden som du har skickat skapar du ett annat .NET Core-
     static ISubscriptionClient subscriptionClient;
     ```
 
-3. Ersätt `Main()` metoden med följande async-  `Main` metod. Den anropar den `RegisterOnMessageHandlerAndReceiveMessages()` metod som du ska lägga till i nästa steg. 
+3. Ersätt `Main()` metoden med följande **asynkrona** `Main` metod. Den anropar `RegisterOnMessageHandlerAndReceiveMessages()` metoden som du ska lägga till i nästa steg. 
 
     ```csharp
     public static async Task Main(string[] args)
@@ -355,14 +355,14 @@ Om du vill ta emot meddelanden som du har skickat skapar du ett annat .NET Core-
         }
     }
     ```
-9. Kör programmet och kontrollera portalen igen. Observera att **antalet meddelanden** och **aktuella** värden nu är **0**.
+9. Kör programmet och kontrollera portalen igen. Observera att värdena **för Antal** meddelanden **och Aktuell** nu är **0**.
    
     ![Ämnets längd][topic-message-receive]
 
 Grattis! Med .NET Standard-biblioteket har du nu skapat ett ämne och en prenumeration, skickat tio meddelanden och tagit emot dessa meddelanden.
 
 > [!NOTE]
-> Du kan hantera Service Bus-resurser med [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Service Bus Explorer gör det möjligt för användare att ansluta till en Service Bus namnrymd och administrera meddelande enheter på ett enkelt sätt. Verktyget innehåller avancerade funktioner som import/export-funktioner eller möjlighet att testa ämnen, köer, prenumerationer, relä tjänster, Notification Hub och Event Hub. 
+> Du kan hantera Service Bus resurser med [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer/). Med Service Bus Explorer kan användarna ansluta till en Service Bus och administrera meddelandeentiteter på ett enkelt sätt. Verktyget innehåller avancerade funktioner som import/export-funktioner eller möjligheten att testa ämnen, köer, prenumerationer, vidarebefordrande tjänster, meddelandehubbbar och händelsehubbbar. 
 
 ## <a name="next-steps"></a>Nästa steg
 

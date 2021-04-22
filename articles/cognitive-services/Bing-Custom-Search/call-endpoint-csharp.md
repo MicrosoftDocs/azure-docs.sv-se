@@ -1,5 +1,5 @@
 ---
-title: 'Snabb start: anropa din Anpassad sökning i Bing-slutpunkt med C# | Microsoft Docs'
+title: 'Snabbstart: Anropa din Anpassad Bing-sökning med hjälp av C#-| Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Använd den här snabbstarten till att börja begära sökresultat från instansen av anpassad Bing-sökning i C#.
 services: cognitive-services
@@ -11,37 +11,37 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b892194a0e716aa3de218bc6edb6c38cdc898935
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 1d3accdb20073bd1e9b29988b78d7eacd49976b8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96338664"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862317"
 ---
-# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Snabb start: anropa din Anpassad sökning i Bing slut punkt med hjälp av C # 
+# <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Snabbstart: Anropa din Anpassad Bing-sökning med C # 
 
 > [!WARNING]
-> API:er för Bing-sökresultat flyttas från Cognitive Services till Bing-sökning tjänster. Från och med den **30 oktober 2020** måste alla nya instanser av Bing-sökning tillhandahållas enligt processen som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
-> API:er för Bing-sökresultat som har tillhandahållits med hjälp av Cognitive Services kommer att stödjas under de kommande tre åren eller tills Enterprise-avtals slut, beroende på vilket som sker först.
-> Instruktioner för migrering finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er flyttas från Cognitive Services till Bing-sökning Services. Från **och med 30 oktober 2020** måste alla nya instanser av Bing-sökning etableras enligt den process som dokumenteras [här](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
+> Bing-sökning API:er som etablerats med Cognitive Services kommer att stödjas under de kommande tre åren eller fram till slutet av ditt Enterprise-avtal, beroende på vilket som inträffar först.
+> Migreringsanvisningar finns i [Bing-sökning Services](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
-Använd den här snabb starten för att lära dig hur du begär Sök Resultat från Anpassad sökning i Bing-instansen. Även om det här programmet är skrivet i C# är API för anpassad Bing-sökning en webb tjänst för RESTful som är kompatibel med de flesta programmeringsspråk. Käll koden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
+Använd den här snabbstarten för att lära dig hur du begär sökresultat från din Anpassad Bing-sökning instans. Även om det här programmet är skrivet i C# är Anpassad Bing-sökning-API:et en RESTful-webbtjänst som är kompatibel med de flesta programmeringsspråk. Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En instans av anpassad Bing-sökning. Mer information finns i [snabb start: skapa din första anpassad sökning i Bing-instans](quick-start.md).
-- [Microsoft .net Core](https://www.microsoft.com/net/download/core).
-- En version av [Visual Studio 2019 eller senare](https://www.visualstudio.com/downloads/).
+- En instans av anpassad Bing-sökning. Mer information finns i [Snabbstart: Skapa din första Anpassad Bing-sökning instans](quick-start.md).
+- [Microsoft .NET Core](https://dotnet.microsoft.com/download).
+- Alla versioner av [Visual Studio 2019 eller senare](https://www.visualstudio.com/downloads/).
 - Om du använder Linux/Mac OS kan det här programmet köras med [Mono](https://www.mono-project.com/).
-- [Anpassad sökning i Bing](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet-paketet. 
+- Det [Anpassad Bing-sökning](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet-paketet. 
 
    Installera det här paketet i Visual Studio: 
-     1. Högerklicka på ditt projekt i **Solution Explorer** och välj sedan **Hantera NuGet-paket**. 
-     2. Sök efter och välj *Microsoft. Azure. CognitiveServices. search. CustomSearch* och installera sedan paketet.
+     1. Högerklicka på projektet i **Solution Explorer** och välj sedan Hantera **NuGet-paket.** 
+     2. Sök efter och välj *Microsoft.Azure.CognitiveServices.Search.CustomSearch* och installera sedan paketet.
 
-   När du installerar Anpassad sökning i Bing NuGet-paketet installerar Visual Studio även följande paket:
+   När du installerar Anpassad Bing-sökning NuGet-Visual Studio även följande paket:
      - **Microsoft.Rest.ClientRuntime**
-     - **Microsoft. rest. ClientRuntime. Azure**
+     - **Microsoft.Rest.ClientRuntime.Azure**
      - **Newtonsoft.Json**
 
 
@@ -58,7 +58,7 @@ Använd den här snabb starten för att lära dig hur du begär Sök Resultat fr
     using Newtonsoft.Json;
     ```
 
-2. Skapa följande klasser för att lagra Sök resultaten som returneras av API för anpassad Bing-sökning:
+2. Skapa följande klasser för att lagra sökresultaten som returneras av Anpassad Bing-sökning API:
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -82,7 +82,7 @@ Använd den här snabb starten för att lära dig hur du begär Sök Resultat fr
     }
     ```
 
-3. I projektets huvud metod skapar du följande variabler för din API för anpassad Bing-sökning prenumerations nyckel, Sök instansens anpassade konfigurations-ID och Sök villkor:
+3. I main-metoden i projektet skapar du följande variabler för din Anpassad Bing-sökning-API-prenumerationsnyckel, sökinstansens anpassade konfigurations-ID och sökterm:
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -90,7 +90,7 @@ Använd den här snabb starten för att lära dig hur du begär Sök Resultat fr
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Konstruera URL: en för begäran genom att lägga till sökordet i `q=` Frågeparametern och Sök instansens anpassade konfigurations-ID till `customconfig=` parametern. Avgränsa parametrarna med ett et-tecken ( `&` ). För `url` variabelvärdet kan du använda den globala slut punkten i följande kod eller använda den [anpassade slut domänen](../../cognitive-services/cognitive-services-custom-subdomains.md) som visas i Azure Portal för din resurs.
+4. Skapa begärande-URL:en genom att lägga till söktermen i frågeparametern `q=` och sökinstansens anpassade konfigurations-ID till `customconfig=` parametern . Avgränsa parametrarna med ett et-et-an ( `&` ). För variabelvärdet kan du använda den globala slutpunkten i följande kod eller använda den anpassade slutpunkten för underdomänen som visas `url` i Azure Portal för din resurs. [](../../cognitive-services/cognitive-services-custom-subdomains.md)
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +

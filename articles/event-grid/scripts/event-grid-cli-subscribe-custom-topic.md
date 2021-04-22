@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 07/08/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: f6004961a43fe13db617f98ae2c65fa5829924e5
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: eaec3521c90a0fb6425f5b68425ef608ae6db3c5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766559"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871317"
 ---
 # <a name="subscribe-to-events-for-a-custom-topic-with-azure-cli"></a>Prenumerera på händelser för ett anpassat ämne med Azure CLI
 
@@ -38,7 +38,7 @@ Det här skriptet använder följande kommandon för att skapa händelseprenumer
 | Kommando | Kommentarer |
 |---|---|
 | [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) | Skapa en Event Grid-prenumeration. |
-| [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription#ext-eventgrid-az-eventgrid-event-subscription-create) – version av tillägg | Skapa en Event Grid-prenumeration. |
+| [az eventgrid event-subscription create](/cli/azure/eventgrid/event-subscription#az_eventgrid_event_subscription_create) – version av tillägg | Skapa en Event Grid-prenumeration. |
 
 ## <a name="next-steps"></a>Nästa steg
 

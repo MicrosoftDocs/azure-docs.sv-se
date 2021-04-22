@@ -1,6 +1,6 @@
 ---
-title: 'Självstudie: Ansluta till en Azure SQL server med hjälp av en privat Azure-slutpunkt – Azure CLI'
-description: Använd den här självstudien för att lära dig hur du skapar en Azure SQL-server med en privat slutpunkt med Hjälp av Azure CLI
+title: 'Självstudie: Ansluta till en Azure SQL-server med hjälp av en privat Azure-slutpunkt – Azure CLI'
+description: I den här självstudien får du lära dig hur du skapar en Azure SQL-server med en privat slutpunkt med Hjälp av Azure CLI
 services: private-link
 author: asudbring
 ms.service: private-link
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 11/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, devx-track-azurecli
-ms.openlocfilehash: a8fafeaaf974893c9a1a71115912f2a7b019ddd9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 5a66749a3e773328e6c6c02375e76998bd6531cd
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107771829"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871965"
 ---
-# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Självstudie: Ansluta till en Azure SQL server med hjälp av en privat Azure-slutpunkt – Azure CLI
+# <a name="tutorial-connect-to-an-azure-sql-server-using-an-azure-private-endpoint---azure-cli"></a>Självstudie: Ansluta till en Azure SQL-server med hjälp av en privat Azure-slutpunkt – Azure CLI
 
 Privat Azure-slutpunkt är den grundläggande byggstenen för Private Link i Azure. Det gör att Azure-resurser, till exempel virtuella datorer, kan kommunicera med Private Link resurser privat.
 
@@ -41,7 +41,7 @@ En Azure-resursgrupp är en logisk container där Azure-resurser distribueras oc
 Skapa en resursgrupp med [az group create](/cli/azure/group#az_group_create):
 
 * Med **namnet CreateSQLEndpointTutorial-rg**. 
-* På **platsen eastus.**
+* På platsen **eastus.**
 
 ```azurecli-interactive
 az group create \
@@ -74,7 +74,7 @@ az network vnet create \
     --subnet-prefixes 10.0.0.0/24
 ```
 
-Uppdatera undernätet för att inaktivera privata slutpunktsnätverksprinciper för den privata slutpunkten med [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
+Uppdatera undernätet för att inaktivera nätverksprinciper för privata slutpunkter för den privata slutpunkten med [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -100,7 +100,7 @@ Använd [az network vnet subnet create för](/cli/azure/network/vnet/subnet#az_n
 
 * Med **namnet AzureBastionSubnet**.
 * Adressprefixet **10.0.1.0/24**.
-* I det virtuella **nätverket myVNet**.
+* I det virtuella nätverket **myVNet**.
 * I resursgruppen **CreateSQLEndpointTutorial-rg**.
 
 ```azurecli-interactive
@@ -113,9 +113,9 @@ az network vnet subnet create \
 
 Använd [az network bastion create för](/cli/azure/network/bastion#az_network_bastion_create) att skapa en skyddsvärd:
 
-* Med **namnet myBastionHost.**
+* Med **namnet myBastionHost**.
 * I **CreateSQLEndpointTutorial-rg**.
-* Associerad med offentlig IP **myBastionIP**.
+* Associerat med offentlig IP **myBastionIP**.
 * Associerat med det virtuella nätverket **myVNet**.
 * På **platsen eastus.**
 
@@ -199,7 +199,7 @@ Använd [az network private-endpoint create](/cli/azure/network/private-endpoint
 
 * Med **namnet myPrivateEndpoint**.
 * I resursgruppen **CreateSQLEndpointTutorial-rg**.
-* I det virtuella **nätverket myVNet**.
+* I det virtuella nätverket **myVNet**.
 * I undernätet **myBackendSubnet**.
 * Anslutning med namnet **myConnection**.
 
@@ -220,9 +220,9 @@ az network private-endpoint create \
 
 ## <a name="configure-the-private-dns-zone"></a>Konfigurera den privata DNS-zonen
 
-I det här avsnittet skapar och konfigurerar du den privata DNS-zonen med [az network private-dns zone create](/cli/azure/network/private-dns/zone#ext_privatedns_az_network_private_dns_zone_create).  
+I det här avsnittet skapar och konfigurerar du den privata DNS-zonen med [az network private-dns zone create](/cli/azure/network/private-dns/zone#az_network_private_dns_zone_create).  
 
-Du använder az [network private-dns link vnet create för](/cli/azure/network/private-dns/link/vnet#ext_privatedns_az_network_private_dns_link_vnet_create) att skapa den virtuella nätverkslänken till DNS-zonen.
+Du använder az [network private-dns link vnet create för](/cli/azure/network/private-dns/link/vnet#az_network_private_dns_link_vnet_create) att skapa den virtuella nätverkslänken till DNS-zonen.
 
 Du skapar en dns-zongrupp med [az network private-endpoint dns-zone-group create](/cli/azure/network/private-endpoint/dns-zone-group#az_network_private_endpoint_dns_zone_group_create).
 

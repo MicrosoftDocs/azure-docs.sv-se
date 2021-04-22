@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: c7083cb6669d7bc779a8e69babfef38988819f8c
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: b704d2cf8e2cc8e6cf5d8049290379dd45e26737
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483781"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870345"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud-preview"></a>Application Insights Java In-Process Agent i Azure Spring Cloud (förhandsversion)
 
@@ -21,8 +21,8 @@ Det här dokumentet beskriver hur du övervakar appar och mikrotjänster med hj�
 Med den här funktionen kan du:
 
 * Sök efter spårningsdata med olika filter.
-* Visa beroendekarta över mikrotjänster.
-* Kontrollera begärandeprestanda.
+* Visa beroendemappning för mikrotjänster.
+* Kontrollera prestanda för begäran.
 * Övervaka realtidsbaserade livemått.
 * Kontrollera misslyckade förfrågningar.
 * Kontrollera programmått.
@@ -38,28 +38,28 @@ Application Insights ger många observerbara perspektiv, inklusive:
 
 ## <a name="enable-java-in-process-agent-for-application-insights"></a>Aktivera Java In-Process Agent för Application Insights
 
-Aktivera förhandsversionsfunktionen för Java In-Process Agent med hjälp av följande procedur.
+Aktivera förhandsversionsfunktionen i Java In-Process Agent med hjälp av följande procedur.
 
-1. Gå till tjänstöversiktssidan för tjänstinstansen.
-2. Klicka **Application Insights** under övervakningsbladet.
-3. Klicka **på Application Insights** för att aktivera **Application Insights** integrering.
+1. Gå till tjänstöversiktssidan för din tjänstinstans.
+2. Klicka **Application Insights** posten under bladet Övervakning.
+3. Klicka **på Application Insights** aktivera Application Insights **integrering.**
 4. Välj en befintlig instans Application Insights skapa en ny.
-5. Enable **Java in-process agent to** enable preview Java in-process agent feature. Här kan du också anpassa samplingsfrekvensen från 0 till 100.
+5. Enable Java in-process agent to enable preview Java in-process agent feature(Aktivera **Java-processagent** för förhandsversion). Här kan du också anpassa samplingsfrekvensen från 0 till 100.
 6.  Spara ändringen genom att klicka på **Spara**.
 
 ## <a name="portal"></a>Portalen
 
 1. Gå till **| Översiktssidan** och **Application Insights** i **avsnittet** Övervakning. 
 2. Klicka **på Aktivera Application Insights** för att Application Insights i Azure Spring Cloud.
-3. Klicka **på Enable Java in-process agent (Aktivera processagent** för Java) för att aktivera förhandsversionsfunktionen i Java IPA. När en IPA-förhandsgranskningsfunktion är aktiverad kan du konfigurera en valfri samplingsfrekvens (standardvärdet är 10,0 %).
+3. Klicka på Enable Java in-process agent to enable Java IPA preview feature (Aktivera **Java IPA-förhandsgranskningsfunktion).** När en IPA-förhandsgranskningsfunktion är aktiverad kan du konfigurera en valfri samplingsfrekvens (standardvärdet är 10,0 %).
 
   [![IPA 0](media/spring-cloud-application-insights/insights-process-agent-0.png)](media/spring-cloud-application-insights/insights-process-agent-0.png)
 
 ## <a name="using-the-application-insights-feature"></a>Använda Application Insights funktion
 
-När **Application Insights** har aktiverats kan du:
+När **Application Insights** är aktiverad kan du:
 
-I det vänstra navigeringsfönstret klickar du **på Application Insights** för att gå **till översiktssidan** för Application Insights. 
+I det vänstra navigeringsfönstret klickar du **Application Insights** för att gå **till översiktssidan** för Application Insights. 
 
 * Klicka **på Programkarta** för att se status för anrop mellan program.
 
@@ -71,7 +71,7 @@ I det vänstra navigeringsfönstret klickar du **på Application Insights** för
 
   [![IPA 4](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)](media/spring-cloud-application-insights/insights-process-agent-4-performance.png)
 
-* I det vänstra navigeringsfönstret klickar du på **Fel för** att se om något oväntat från dina program.
+* I det vänstra navigeringsfönstret klickar du på **Fel för** att se om något oväntat visas i dina program.
 
   [![IPA 6](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)](media/spring-cloud-application-insights/insights-process-agent-6-failures.png)
 
@@ -79,11 +79,11 @@ I det vänstra navigeringsfönstret klickar du **på Application Insights** för
 
   [![IPA 7](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)](media/spring-cloud-application-insights/insights-process-agent-5-metrics.png)
 
-* I det vänstra navigeringsfönstret klickar du **på Live Metrics** för att se realtidsmått för olika dimensioner.
+* I det vänstra navigeringsfönstret klickar du **på Live Metrics** (Livemått) för att se realtidsmått för olika dimensioner.
 
   [![IPA 8](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)](media/spring-cloud-application-insights/petclinic-microservices-live-metrics.jpg)
 
-* I det vänstra navigeringsfönstret klickar du på **Tillgänglighet** för att övervaka tillgängligheten och svarstiden för webbappar genom att [skapa tillgänglighetstester i Application Insights](../azure-monitor/app/monitor-web-app-availability.md).
+* I det vänstra navigeringsfönstret klickar du på **Tillgänglighet för** att övervaka tillgängligheten och svarstiderna för webbappar genom att [skapa tillgänglighetstester i Application Insights](../azure-monitor/app/monitor-web-app-availability.md).
 
   [![IPA 9](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)](media/spring-cloud-application-insights/petclinic-microservices-availability.jpg)
 

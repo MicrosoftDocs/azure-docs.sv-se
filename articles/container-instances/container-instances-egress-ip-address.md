@@ -3,12 +3,12 @@ title: Konfigurera statisk utgående IP
 description: Konfigurera Azure Firewall och användardefinierade vägar för Azure Container Instances arbetsbelastningar som använder brandväggens offentliga IP-adress för in- och utgående trafik
 ms.topic: article
 ms.date: 07/16/2020
-ms.openlocfilehash: 1cd0ff48da58706a1be59caf4b9d5974dc5f552a
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: a03c59652b9409d54bbe63c63a31fdd2228ac34e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107790823"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878694"
 ---
 # <a name="configure-a-single-public-ip-address-for-outbound-and-inbound-traffic-to-a-container-group"></a>Konfigurera en enskild offentlig IP-adress för utgående och inkommande trafik till en containergrupp
 
@@ -71,7 +71,7 @@ ACI_PRIVATE_IP="$(az container show --name appcontainer \
 
 I följande avsnitt använder du Azure CLI för att distribuera en Azure-brandvägg i det virtuella nätverket. Bakgrundsinformation finns i [Självstudie: Distribuera och konfigurera Azure Firewall med hjälp av Azure Portal](../firewall/deploy-cli.md).
 
-Använd först az [network vnet subnet create för att][az-network-vnet-subnet-create] lägga till ett undernät med namnet AzureFirewallSubnet för brandväggen. AzureFirewallSubnet är det *obligatoriska* namnet på det här undernätet.
+Använd först az [network vnet subnet create för att][az-network-vnet-subnet-create] lägga till ett undernät med namnet AzureFirewallSubnet för brandväggen. AzureFirewallSubnet är det *obligatoriska namnet* på det här undernätet.
 
 ```azurecli
 az network vnet subnet create \
@@ -140,7 +140,7 @@ FW_PUBLIC_IP="$(az network public-ip show \
 
 ## <a name="define-user-defined-route-on-aci-subnet"></a>Definiera användardefinierad väg i ACI-undernät
 
-Definiera en användardefinierad väg i ACI-undernätet för att omdirigera trafik till Azure-brandväggen. Mer information finns i [Dirigera nätverkstrafik](../virtual-network/tutorial-create-route-table-cli.md). 
+Definiera en användardefinierad väg i ACI-undernätet för att omdirigera trafik till Azure-brandväggen. Mer information finns i [Dirigera nätverkstrafik.](../virtual-network/tutorial-create-route-table-cli.md) 
 
 ### <a name="create-route-table"></a>Skapa routningstabell
 
@@ -251,7 +251,7 @@ Om NAT-regeln i brandväggen är korrekt konfigurerad ser du följande när du a
 ### <a name="test-egress-from-a-container-group"></a>Testa utgående från en containergrupp
 
 
-Distribuera följande exempelcontainer till det virtuella nätverket. När den körs skickar den en enda HTTP-begäran till `http://checkip.dyndns.org` , som visar avsändarens IP-adress (den utgående IP-adressen). Om programregeln i brandväggen är korrekt konfigurerad returneras brandväggens offentliga IP-adress.
+Distribuera följande exempelcontainer till det virtuella nätverket. När den körs skickar den en enskild HTTP-begäran till `http://checkip.dyndns.org` , som visar avsändarens IP-adress (den utgående IP-adressen). Om programregeln i brandväggen är korrekt konfigurerad returneras brandväggens offentliga IP-adress.
 
 ```azurecli
 az container create \
@@ -280,7 +280,7 @@ Utdata liknar följande:
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här artikeln ställer du in containergrupper i ett virtuellt nätverk bakom en Azure-brandvägg. Du konfigurerade en användardefinierad väg och NAT och programregler i brandväggen. Med den här konfigurationen kan du konfigurera en enda statisk IP-adress för in- och utgående från Azure Container Instances.
+I den här artikeln ställer du in containergrupper i ett virtuellt nätverk bakom en Azure-brandvägg. Du konfigurerade en användardefinierad väg samt NAT och programregler i brandväggen. Med den här konfigurationen kan du konfigurera en enda statisk IP-adress för in- och utgående från Azure Container Instances.
 
 Mer information om hur du hanterar trafik och skyddar Azure-resurser finns i Azure Firewall dokumentationen. [](../firewall/index.yml)
 
@@ -290,15 +290,15 @@ Mer information om hur du hanterar trafik och skyddar Azure-resurser finns i Azu
 [az-container-create]: /cli/azure/container#az_container_create
 [az-network-vnet-subnet-create]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_create
 [az-extension-add]: /cli/azure/extension#az_extension_add
-[az-network-firewall-update]: /cli/azure/ext/azure-firewall/network/firewall#ext-azure-firewall-az-network-firewall-update
+[az-network-firewall-update]: /cli/azure/network/firewall#az_network_firewall_update
 [az-network-public-ip-show]: /cli/azure/network/public-ip/#az_network_public_ip_show
 [az-network-route-table-create]:/cli/azure/network/route-table/#az_network_route_table_create
 [az-network-route-table-route-create]: /cli/azure/network/route-table/route#az_network_route_table_route_create
-[az-network-firewall-ip-config-list]: /cli/azure/ext/azure-firewall/network/firewall/ip-config#ext-azure-firewall-az-network-firewall-ip-config-list
+[az-network-firewall-ip-config-list]: /cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_list
 [az-network-vnet-subnet-update]: /cli/azure/network/vnet/subnet#az_network_vnet_subnet_update
 [az-container-exec]: /cli/azure/container#az_container_exec
 [az-vm-create]: /cli/azure/vm#az_vm_create
 [az-vm-open-port]: /cli/azure/vm#az_vm_open_port
 [az-vm-list-ip-addresses]: /cli/azure/vm#az_vm_list_ip_addresses
-[az-network-firewall-application-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/application-rule#ext-azure-firewall-az-network-firewall-application-rule-create
-[az-network-firewall-nat-rule-create]: /cli/azure/ext/azure-firewall/network/firewall/nat-rule#ext-azure-firewall-az-network-firewall-nat-rule-create
+[az-network-firewall-application-rule-create]: /cli/azure/network/firewall/application-rule#az_network_firewall_application_rule_create
+[az-network-firewall-nat-rule-create]: /cli/azure/network/firewall/nat-rule#az_network_firewall_nat_rule_create

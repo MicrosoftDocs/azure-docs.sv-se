@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc, amqp, devx-track-csharp
 ms.date: 11/06/2018
 ms.author: dobett
-ms.openlocfilehash: a94f3cc6b2387857d19c7b98fa0be64dd6646ec9
-ms.sourcegitcommit: 3ed0f0b1b66a741399dc59df2285546c66d1df38
+ms.openlocfilehash: 2d2c33d0b6f86bc1a779361b86d242cde4c5df38
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107713866"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873675"
 ---
 # <a name="serialize-telemetry-using-protocol-buffers"></a>Serialisera telemetri med protokollbuffertar
 
@@ -37,10 +37,10 @@ Stegen i den här instruktionerna visar hur du:
 Om du vill följa stegen i den här instruktionerna behöver du:
 
 * Visual Studio Code. Du kan ladda [Visual Studio Code för Mac, Linux och Windows.](https://code.visualstudio.com/download)
-* .NET Core. Du kan ladda [ned .NET Core för Mac, Linux och Windows.](https://www.microsoft.com/net/download)
+* .NET Core. Du kan ladda [ned .NET Core för Mac, Linux och Windows.](https://dotnet.microsoft.com/download)
 * Brevbäraren. Du kan ladda [ned Postman för Mac, Windows eller Linux](https://www.getpostman.com/apps).
 * En [IoT-hubb som distribuerats till din Azure-prenumeration.](../iot-hub/iot-hub-create-through-portal.md) Du behöver anslutningssträngen för IoT-hubben för att slutföra stegen i den här guiden. Du kan hämta anslutningssträngen från Azure Portal.
-* En [Cosmos DB-databas distribuerad till din Azure-prenumeration](../cosmos-db/create-sql-api-dotnet.md#create-account) som använder SQL-API:et och som har konfigurerats för [stark konsekvens](../cosmos-db/how-to-manage-database-account.md). Du behöver Cosmos DB databasens anslutningssträng för att slutföra stegen i den här guiden. Du kan hämta anslutningssträngen från Azure Portal.
+* En [Cosmos DB-databas som distribuerats till din Azure-prenumeration](../cosmos-db/create-sql-api-dotnet.md#create-account) och som använder SQL-API:et och som har konfigurerats för [stark konsekvens.](../cosmos-db/how-to-manage-database-account.md) Du behöver Cosmos DB databasens anslutningssträng för att slutföra stegen i den här guiden. Du kan hämta anslutningssträngen från Azure Portal.
 * Ett [Azure Storage-konto som distribuerats till din Azure-prenumeration.](../storage/common/storage-account-create.md) Du behöver anslutningssträngen för lagringskontot för att slutföra stegen i den här guiden. Du kan hämta anslutningssträngen från Azure Portal.
 
 ## <a name="prepare-your-development-environment"></a>Förbereda utvecklingsmiljön
@@ -55,7 +55,7 @@ Anvisningarna i den här artikeln förutsätter att du använder Windows. Om du 
 
 ### <a name="download-the-microservices"></a>Ladda ned mikrotjänster
 
-Ladda ned och packa upp [mikrotjänster för fjärrövervakning från](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) GitHub till en lämplig plats på den lokala datorn. Den här lagringsplatsen innehåller den mikrotjänst för lagringskort som du behöver för den här i vilken du gör detta.
+Ladda ned och packa upp [mikrotjänster för fjärrövervakning från](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) GitHub till en lämplig plats på den lokala datorn. Den här lagringsplatsen innehåller lagringskortets mikrotjänst som du behöver för den här i vilken du gör detta.
 
 Ladda ned och packa upp [mikrotjänsten för enhetssimulering](https://github.com/Azure/azure-iot-pcs-device-simulation/archive/master.zip) från GitHub till en lämplig plats på den lokala datorn.
 
@@ -63,16 +63,16 @@ Ladda ned och packa upp [mikrotjänsten för enhetssimulering](https://github.co
 
 I Visual Studio Code öppnar du mappen **remote-monitoring-services-dotnet-master\storage-adapter.** Klicka på **återställningsknapparna** för att åtgärda olösta beroenden.
 
-Öppna **filen .vscode/launch.js** och tilldela Cosmos DB-anslutningssträngen till **miljövariabeln PCS \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING.**
+Öppna **filen .vscode/launch.js** och tilldela Cosmos DB till miljövariabeln **PCS \_ STORAGEADAPTER \_ DOCUMENTDB \_ CONNSTRING.**
 
 > [!NOTE]
 > När du kör mikrotjänsten lokalt på datorn krävs det fortfarande en Cosmos DB i Azure för att fungera korrekt.
 
 Om du vill köra lagringskortets mikrotjänst lokalt **klickar du på \> Felsök Starta felsökning.**
 
-I **terminalfönstret** i Visual Studio Code visas utdata från den mikrotjänst som körs, inklusive en URL för webbtjänstens hälsokontroll: <http://127.0.0.1:9022/v1/status> . När du navigerar till den här adressen ska statusen vara "OK: Levande och väl".
+**Terminalfönstret** i Visual Studio Code visar utdata från den mikrotjänst som körs, inklusive en URL för webbtjänstens hälsokontroll: <http://127.0.0.1:9022/v1/status> . När du navigerar till den här adressen bör statusen vara "OK: Levande och väl".
 
-Låt lagringskortets mikrotjänst köras i den här instansen Visual Studio Code medan du utför följande steg.
+Låt lagringskortets mikrotjänst köras i den här instansen Visual Studio Kod medan du utför följande steg.
 
 ## <a name="define-your-device-model"></a>Definiera din enhetsmodell
 
@@ -82,7 +82,7 @@ I den här guiden skapar du en ny enhetsmodell för en tillgångsspårare:
 
 1. Skapa en ny enhetsmodellfil med **namnetassettracker-01.jspå** i mappen **Services\data\devicemodels.**
 
-1. Definiera enhetsfunktionen i enhetsmodellen som **assettracker-01.jspå** filen. Telemetriavsnittet i en Protobuf-enhetsmodell måste:
+1. Definiera enhetsfunktionen i enhetsmodellen som **assettracker-01.jspå** filen. Avsnittet om telemetri i en Protobuf-enhetsmodell måste:
 
    * Inkludera namnet på den Protobuf-klass som du genererar för din enhet. I följande avsnitt visas hur du genererar den här klassen.
    * Ange Protobuf som meddelandeformat.
@@ -190,13 +190,13 @@ I det här avsnittet testar du tillgångsspårarenheten som du skapade i föreg�
 
 Öppna **filen .vscode/launch.js** och tilldela följande:
 
-* IoT Hub anslutningssträngen till **\_ miljövariabeln PCS IOTHUB \_ CONNSTRING.**
+* IoT Hub anslutningssträngen till **miljövariabeln PCS \_ IOTHUB \_ CONNSTRING.**
 * Anslutningssträng för lagringskonto till **\_ miljövariabeln PCS AZURE \_ \_ STORAGE ACCOUNT.**
 * Cosmos DB anslutningssträngen till **\_ miljövariabeln PCS STORAGEADAPTER \_ \_ DOCUMENTDB CONNSTRING.**
 
-Öppna filen **WebService/Properties/launchSettings.jsoch** tilldela följande:
+Öppna filen **WebService/Properties/launchSettings.js** och tilldela:
 
-* IoT Hub anslutningssträngen till **\_ miljövariabeln PCS IOTHUB \_ CONNSTRING.**
+* IoT Hub anslutningssträngen till **miljövariabeln PCS \_ IOTHUB \_ CONNSTRING.**
 * Anslutningssträng för lagringskonto till **\_ miljövariabeln PCS AZURE \_ \_ STORAGE ACCOUNT.**
 * Cosmos DB anslutningssträngen till **\_ miljövariabeln PCS STORAGEADAPTER \_ \_ DOCUMENTDB CONNSTRING.**
 
@@ -206,7 +206,7 @@ I det här avsnittet testar du tillgångsspårarenheten som du skapade i föreg�
 
 Som standard kopieras inte dina nya JSON- och JS-filer för enhetsmodellen till den inbyggda lösningen. Du måste uttryckligen inkludera dem.
 
-Lägg till en post i **filen services\services.csproj** för varje fil som du vill inkludera. Exempel:
+Lägg till en post i **services\services.csproj-filen** för varje fil som du vill inkludera. Exempel:
 
 ```xml
 <None Update="data\devicemodels\assettracker-01.json">
@@ -219,7 +219,7 @@ Lägg till en post i **filen services\services.csproj** för varje fil som du vi
 
 Om du vill köra mikrotjänsten lokalt klickar **du på \> Felsök Starta felsökning.**
 
-**Terminalfönstret** i Visual Studio Code visar utdata från den mikrotjänst som körs.
+**Terminalfönstret** i Visual Studio Code visar utdata från mikrotjänsten som körs.
 
 Låt mikrotjänsten för enhetssimuleringen köras i den här instansen Visual Studio Code medan du slutför nästa steg.
 
@@ -239,9 +239,9 @@ az iot hub monitor-events --hub-name device-simulation-test
 
 Låt händelseövervakaren köras medan du testar de simulerade enheterna.
 
-### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Skapa en simulering med enhetstyp för tillgångsspårare
+### <a name="create-a-simulation-with-the-asset-tracker-device-type"></a>Skapa en simulering med enhetstypen tillgångsspårare
 
-I det här avsnittet använder du Postman-verktyget för att begära mikrotjänsten för enhetssimulering för att köra en simulering med hjälp av enhetstypen tillgångsspårare. Postman är ett verktyg som gör att du kan skicka REST-begäranden till en webbtjänst.
+I det här avsnittet använder du Postman-verktyget för att begära att enhetssimuleringens mikrotjänst kör en simulering med hjälp av enhetstyp för tillgångsspårare. Postman är ett verktyg som gör att du kan skicka REST-begäranden till en webbtjänst.
 
 Så här ställer du in Postman:
 
@@ -253,15 +253,15 @@ Så här ställer du in Postman:
 
 1. Expandera **lösningsacceleratorn för Azure IoT-enhetssimulering** för att visa de begäranden som du kan skicka.
 
-1. Klicka **på Ingen miljö** och välj **lösningsacceleratorn för Azure IoT-enhetssimulering.**
+1. Klicka **på Ingen miljö** och välj **Lösningsacceleratorn för Azure IoT-enhetssimulering.**
 
-Nu har du en samling och miljö som har lästs in på Din Postman-arbetsyta som du kan använda för att interagera med mikrotjänsten för enhetssimulering.
+Nu har du en samling och miljö inläst i Din Postman-arbetsyta som du kan använda för att interagera med mikrotjänsten för enhetssimulering.
 
 Så här konfigurerar och kör du simuleringen:
 
 1. I Postman-samlingen väljer du Skapa **tillgångsspårarsimulering** och klickar på **Skicka**. Den här begäran skapar fyra instanser av enhetstypen för den simulerade tillgångsspåraren.
 
-1. Händelseövervakarutdata i Azure CLI-fönstret visar telemetrin från de simulerade enheterna.
+1. Utdata från händelseövervakaren i Azure CLI-fönstret visar telemetrin från de simulerade enheterna.
 
 Om du vill stoppa simuleringen väljer du begäran **Stoppa simulering** i Postman och klickar på **Skicka**.
 
@@ -277,4 +277,4 @@ Många IoT Hub funktioner har inte inbyggt stöd för Protobuf eller andra binä
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har lärt dig hur du anpassar enhetssimuleringen för att använda Protobuf för att skicka telemetri är nästa steg att besöka GitHub-lagringsplatsen för att lära dig mer [om enhetssimulering.](https://github.com/Azure/azure-iot-pcs-device-simulation)
+Nu när du har lärt dig hur du anpassar enhetssimulering för att använda Protobuf för att skicka telemetri är nästa steg att besöka GitHub-lagringsplatsen för att lära dig mer [om enhetssimulering.](https://github.com/Azure/azure-iot-pcs-device-simulation)

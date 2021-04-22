@@ -42,7 +42,7 @@
     - name: Benchmark för Azure-säkerhet
       displayName: 'standards, azure, benchmark'
       href: ./samples/azure-security-benchmark.md
-    - name: Azure Security benchmark Foundation
+    - name: Benchmark Foundation för Azure-säkerhet
       items:
         - name: Översikt
           displayName: 'standards, azure, benchmark, foundation'
@@ -72,13 +72,13 @@
         - name: Distributionssteg
           displayName: 'standards, canada, federal, pbmm'
           href: ./samples/canada-federal-pbmm/deploy.md
-    - name: CIS Microsoft Azure grunderna benchmark v 1.3.0
+    - name: CIS Microsoft Azure Foundations Benchmark v1.3.0
       displayName: 'standards, cis'
       href: ./samples/cis-azure-1-3-0.md
     - name: CIS Microsoft Azure Foundations Benchmark v1.1.0
       displayName: 'standards, cis'
       href: ./samples/cis-azure-1-1-0.md
-    - name: CMMC nivå 3
+    - name: CMMC Nivå 3
       displayName: 'standards, cmmc'
       href: ./samples/cmmc-l3.md
     - name: 'DoD:s effektnivå 4'
@@ -175,7 +175,7 @@
         - name: Distributionssteg
           displayName: 'standards, Media'
           href: ./samples/media/deploy.md
-    - name: Nya Zeeland ISM-begränsad
+    - name: Nya Zeeland ISM Restricted
       displayName: 'standards, NZISM'
       href: ./samples/new-zealand-ism.md
     - name: NIST SP 800-53 R4
@@ -272,7 +272,7 @@
 - name: Referens
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/blueprint/blueprint
+      href: /cli/azure/blueprint
     - name: Azure PowerShell
       href: /powershell/module/az.blueprint/#blueprint
     - name: Azure SDK för .NET

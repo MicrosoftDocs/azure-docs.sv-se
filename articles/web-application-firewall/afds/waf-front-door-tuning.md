@@ -1,6 +1,6 @@
 ---
-title: Justera brand vägg för webbaserade program (WAF) för Azure-front dörr
-description: I den här artikeln får du lära dig hur du finjusterar WAF för front dörren.
+title: Justera Web Application Firewall (WAF) för Azure Front Door
+description: I den här artikeln får du lära dig hur du finjusterar WAF för Front Door.
 services: web-application-firewall
 author: mohitkusecurity
 ms.service: web-application-firewall
@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: b2f551257fb6869d5dec47014be3a8522b61b9fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c0879edc0e3fbd6cf6bcadc26dd862f95ecf4fd4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506641"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872361"
 ---
-# <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Justera brand vägg för webbaserade program (WAF) för Azure-front dörr
+# <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Justera Web Application Firewall (WAF) för Azure Front Door
  
-Den Azure-hanterade standard regel uppsättningen är baserad på [OWASP Core regel set (datoriserat)](https://github.com/SpiderLabs/owasp-modsecurity-crs/tree/v3.1/dev) och är utformad för att vara strikt ut ur kartongen. Det förväntas ofta att WAF regler måste vara justerade för att passa de specifika behoven hos programmet eller organisationen med hjälp av WAF. Detta uppnås ofta genom att definiera regel undantag, skapa anpassade regler och till och med inaktivera regler som kan orsaka problem eller falska positiva identifieringar. Det finns några saker du kan göra om förfrågningar som ska passera genom brand väggen för webbaserade program (WAF) är blockerade.
+Den Azure-hanterade standardregeluppsättningen baseras på [OWASP Core Rule Set (CRS)](https://github.com/SpiderLabs/owasp-modsecurity-crs/tree/v3.1/dev) och är utformad för att vara strikt från start. Det förväntas ofta att WAF-regler måste justeras så att de passar de specifika behoven i programmet eller organisationen med waf. Detta uppnås vanligtvis genom att definiera regel uteslutningar, skapa anpassade regler och till och med inaktivera regler som kan orsaka problem eller falska positiva resultat. Det finns några saker du kan göra om begäranden som ska passera genom Web Application Firewall (WAF) blockeras.
 
-Se först till att du har läst [WAF-översikten för front dörren](afds-overview.md) och [WAF-principen för front dörr](waf-front-door-create-portal.md) dokument. Kontrol lera också att du har aktiverat [övervakning och loggning av WAF](waf-front-door-monitor.md). De här artiklarna förklarar hur WAF-funktionerna fungerar, hur WAF-regel uppsättningarna fungerar och hur du får åtkomst till WAF-loggar.
+Kontrollera först att du har läst översikten [Front Door WAF](afds-overview.md) och [WAF-principen för Front Door](waf-front-door-create-portal.md) dokument. Kontrollera också att du har aktiverat [WAF-övervakning och loggning.](waf-front-door-monitor.md) De här artiklarna förklarar hur WAF fungerar, hur WAF-regeluppsättningar fungerar och hur du kommer åt WAF-loggar.
  
 ## <a name="understanding-waf-logs"></a>Förstå WAF-loggar
  
-Syftet med WAF-loggar är att visa varje begäran som matchas eller blockeras av WAF. Det är en samling av alla utvärderade begär Anden som matchas eller blockeras. Om du märker att WAF blockerar en begäran om att den inte ska (ett falskt positivt) kan du göra några saker. Först, begränsa och hitta en specifik begäran. Om du vill kan du [Konfigurera ett anpassat svarsmeddelande](./waf-front-door-configure-custom-response-code.md) så att det innehåller `trackingReference` fältet för att enkelt identifiera händelsen och utföra en logg fråga på det aktuella värdet. Leta igenom loggarna för att hitta URI, tidsstämpel eller klient-IP för begäran. När du hittar de relaterade logg posterna kan du börja arbeta med falska positiva identifieringar. 
+Syftet med WAF-loggar är att visa varje begäran som matchas eller blockeras av WAF. Det är en samling med alla utvärderade begäranden som matchas eller blockeras. Om du märker att WAF blockerar en begäran som den inte borde (en falsk positiv) kan du göra några saker. Börja med att begränsa och hitta den specifika begäran. Om du vill kan du [konfigurera ett anpassat svarsmeddelande](./waf-front-door-configure-custom-response-code.md) så att fältet inkluderas för att enkelt identifiera händelsen och utföra en `trackingReference` loggfråga på det specifika värdet. Titta igenom loggarna för att hitta den specifika URI:en, tidsstämpeln eller klient-IP-adressen för begäran. När du hittar relaterade loggposter kan du börja agera på falska positiva resultat. 
  
-Anta till exempel att du har en legitim trafik som innehåller den sträng `1=1` som du vill skicka genom din WAF. Så här ser begäran ut:
+Säg till exempel att du har en legitim trafik som innehåller `1=1` strängen som du vill passera genom din WAF. Så här ser begäran ut:
 
 ```
 POST http://afdwafdemosite.azurefd.net/api/Feedbacks HTTP/1.1
@@ -36,9 +36,9 @@ Content-Length: 55
 UserId=20&captchaId=7&captchaId=15&comment="1=1"&rating=3
 ```
 
-Om du testar begäran blockerar WAF trafik som innehåller din *1 = 1* -sträng i valfri parameter eller fält. Detta är en sträng som ofta är kopplad till en SQL-attack. Du kan titta igenom loggarna och se tidsstämpeln för begäran och reglerna som har blockerats/matchats.
+Om du provar begäran blockerar WAF trafik som innehåller *strängen 1=1* i valfri parameter eller fält. Det här är en sträng som ofta är associerad med en SQL-ktionsattack. Du kan titta igenom loggarna och se tidsstämpeln för begäran och de regler som blockerade/matchade.
  
-I följande exempel utforskar vi en `FrontdoorWebApplicationFirewallLog` logg som genererats på grund av en regel matchning. Följande Log Analytics fråga kan användas för att söka efter begär Anden som har blockerats under de senaste 24 timmarna:
+I följande exempel utforskar vi en logg som `FrontdoorWebApplicationFirewallLog` genereras på grund av en regelmatchning. Följande Log Analytics-fråga kan användas för att hitta begäranden som har blockerats under de senaste 24 timmarna:
 
 ```kusto
 AzureDiagnostics
@@ -48,11 +48,11 @@ AzureDiagnostics
 
 ```
  
-I `requestUri` fältet kan du se att begäran har gjorts `/api/Feedbacks/` specifikt. Nu hittar vi regel-ID: t `942110` i `ruleName` fältet. Genom att känna till regel-ID: t kan du gå till [OWASP ModSecurity Core Rule uppsättnings officiella lagrings plats](https://github.com/coreruleset/coreruleset) och söka utifrån [regel-ID: t](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) för att granska koden och förstå exakt vad den här regeln matchar. 
+I `requestUri` fältet kan du se att begäran har gjorts `/api/Feedbacks/` till specifikt. Längre fram hittar vi `942110` regel-ID:t i `ruleName` fältet . Om du känner till regel-ID:t kan du gå till den officiella lagringsplatsen för [OWASP ModSecurity Core Rule Set och](https://github.com/coreruleset/coreruleset) söka efter det regel-ID:t för att granska koden och förstå exakt vad den här regeln matchar. [](https://github.com/coreruleset/coreruleset/blob/v3.1/dev/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf) 
  
-När du sedan kontrollerar `action` fältet ser vi att den här regeln är inställd på blockera begär Anden vid matchning, och vi bekräftar att begäran faktiskt blockeras av WAF eftersom `policyMode` är inställt på `prevention` . 
+Genom att kontrollera fältet ser vi sedan att den här regeln är inställd på att blockera begäranden vid matchning, och vi bekräftar att begäran i själva verket blockerades av WAF eftersom är inställd `action` `policyMode` på `prevention` . 
  
-Nu ska vi kontrol lera informationen i `details` fältet. Här kan du se `matchVariableName` och `matchVariableValue` informationen. Vi lär oss att den här regeln utlöstes på grund av att någon inmatade *1 = 1* i `comment` fältet i webbappen.
+Nu ska vi kontrollera informationen i `details` fältet . Det är här du kan se `matchVariableName` och `matchVariableValue` informationen. Vi lär oss att den här regeln utlöstes eftersom någon anger *1 = 1* `comment` i fältet för webbappen.
  
 ```json
 {
@@ -85,9 +85,9 @@ Nu ska vi kontrol lera informationen i `details` fältet. Här kan du se `matchV
 }
 ```
  
-Det finns också ett värde för att kontrol lera åtkomst loggarna för att utöka dina kunskaper om en specifik WAF-händelse. Nedan granskar vi `FrontdoorAccessLog` loggen som genererades som ett svar på händelsen ovan.
+Det finns också värde i att kontrollera åtkomstloggarna för att utöka dina kunskaper om en viss WAF-händelse. Nedan granskar vi `FrontdoorAccessLog` loggen som genererades som ett svar på händelsen ovan.
  
-Du kan se dessa är relaterade loggar baserat på `trackingReference` värdet som är samma. Bland olika fält som ger allmän insikt, till exempel `userAgent` och `clientIP` , kommer vi att uppmärksamma `httpStatusCode` fälten och `httpStatusDetails` . Här kan vi bekräfta att klienten har tagit emot ett HTTP 403-svar, vilket absolut bekräftar att denna begäran nekades och blockerats. 
+Du kan se att dessa är relaterade loggar baserat på `trackingReference` att värdet är detsamma. Bland olika fält som ger allmänna insikter, till exempel `userAgent` och `clientIP` , uppmärksammar vi fälten och `httpStatusCode` `httpStatusDetails` . Här kan vi bekräfta att klienten har fått ett HTTP 403-svar, vilket absolut bekräftar att begäran nekades och blockerades. 
  
 ```json
 {
@@ -121,112 +121,112 @@ Du kan se dessa är relaterade loggar baserat på `trackingReference` värdet so
 }
 ```
 
-## <a name="resolving-false-positives"></a>Lösa falska positiva identifieringar
+## <a name="resolving-false-positives"></a>Lösa falska positiva resultat
  
-För att fatta ett informerat beslut om att hantera ett falskt positivt är det viktigt att bekanta dig med de tekniker som används i programmet. Anta till exempel att det inte finns någon SQL-Server i din tekniks tack och att du får falska positiva identifieringar som är relaterade till dessa regler. Att inaktivera dessa regler innebär inte nödvändigt vis att säkerheten minskas. 
+För att kunna fatta ett välgrundat beslut om att hantera falska positiva resultat är det viktigt att du bekantar dig med de tekniker som programmet använder. Säg till exempel att det inte finns någon SQL-server i din teknikstack och att du får falska positiva resultat relaterade till dessa regler. Att inaktivera dessa regler innebär inte nödvändigtvis att din säkerhet försämras. 
 
-Med den här informationen, och kunskapen om regel 942110 är den som matchade `1=1` strängen i vårt exempel, kan vi göra några saker för att stoppa den här legitima begäran från att blockeras:
+Med den här informationen, och vetskapen om att regel 942110 är den som matchade strängen i vårt exempel, kan vi göra några saker för att förhindra att denna legitima begäran `1=1` blockeras:
  
-* Använda undantags listor
-  * Se [brand vägg för webbaserade program (WAF) med undantags listor för frontend-tjänsten](waf-front-door-exclusion.md) för mer information om undantags listor. 
+* Använda undantagslistor
+  * Se [Web Application Firewall (WAF) med undantagslistor Front Door-tjänsten](waf-front-door-exclusion.md) för mer information om undantagslistor. 
 * Ändra WAF-åtgärder
   * Se [WAF-åtgärder](afds-overview.md#waf-actions) för mer information om vilka åtgärder som kan vidtas när en begäran matchar en regels villkor.
-* Använd anpassade regler
-  * Se [anpassade regler för brand vägg för webbaserade program med Azures front dörr](waf-front-door-custom-rules.md) för mer information om anpassade regler.
+* Använda anpassade regler
+  * Se [Anpassade regler för Web Application Firewall med Azure Front Door](waf-front-door-custom-rules.md) mer information om anpassade regler.
 * Inaktivera regler 
 
 > [!TIP]
-> När du väljer en metod för att tillåta legitima begär Anden via WAF, försöker du göra detta så smalt som möjligt. Till exempel är det bättre att använda en undantags lista än att inaktivera en regel helt.
+> När du väljer en metod för att tillåta legitima begäranden via WAF bör du försöka göra detta så smalt som möjligt. Det är till exempel bättre att använda en undantagslista än att helt inaktivera en regel.
 
-### <a name="using-exclusion-lists"></a>Använda undantags listor
+### <a name="using-exclusion-lists"></a>Använda undantagslistor
 
-En fördel med att använda en undantags lista är att bara den matchnings variabel som du väljer att undanta inte längre kommer att kontrol leras för den aktuella begäran. Det innebär att du kan välja mellan specifika begärandehuvuden, begära cookies, argument för frågesträng eller begär ande text argument som ska uteslutas om ett visst villkor uppfylls, i stället för att undanta hela begäran från att inspekteras. De övriga icke-specificerade variablerna i begäran kommer fortfarande att inspekteras som vanligt.
+En fördel med att använda en undantagslista är att endast matchningsvariabeln som du väljer att exkludera inte längre kontrolleras för den angivna begäran. Det innebär att du kan välja mellan specifika begärandehuvuden, begärandecookies, frågesträngargument eller postargument för begärandetexten som ska undantas om ett visst villkor uppfylls, i stället för att utesluta hela begäran från att granskas. De andra icke-angivna variablerna i begäran inspekteras fortfarande normalt.
  
-Det är viktigt att tänka på att undantag är en global inställning. Det innebär att den konfigurerade undantagen gäller för all trafik som passerar genom din WAF, inte bara en speciell webbapp eller URI. Detta kan till exempel vara ett problem om *1 = 1* är en giltig begäran i bröd texten för en viss webbapp, men inte för andra i samma WAF-princip. Om det är bra att använda olika undantags listor för olika program, bör du överväga att använda olika WAF-principer för varje program och tillämpa dem på varje program klient del.
+Det är viktigt att tänka på att undantag är en global inställning. Det innebär att det konfigurerade undantaget gäller för all trafik som passerar genom din WAF, inte bara en specifik webbapp eller URI. Detta kan till exempel vara ett problem om *1 = 1* är en giltig begäran i brödtexten för en viss webbapp, men inte för andra under samma WAF-princip. Om det är klokt att använda olika undantagslistor för olika program bör du överväga att använda olika WAF-principer för varje program och tillämpa dem på varje programs frontend.
  
-När du konfigurerar exkluderings listor för hanterade regler kan du välja att undanta alla regler inom en regel uppsättning, alla regler inom en regel grupp eller en enskild regel. En undantags lista kan konfigureras med [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject), [Azure CLI](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), [REST API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal.
+När du konfigurerar undantagslistor för hanterade regler kan du välja att undanta alla regler i en regeluppsättning, alla regler i en regelgrupp eller en enskild regel. En undantagslista kan konfigureras med [hjälp av PowerShell,](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject) [Azure CLI,](/cli/azure/network/front-door/waf-policy/managed-rules/exclusion#az_network_front_door_waf_policy_managed_rules_exclusion_add) [Rest API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate)eller Azure Portal.
 
-* Undantag på regel nivå
-  * Att tillämpa undantag på en regel nivå innebär att de angivna undantagen inte analyseras mot den enskilda regeln, medan de fortfarande analyseras av alla andra regler i regel uppsättningen. Detta är den mest detaljerade nivån för undantag och kan användas för att finjustera den hanterade regel uppsättningen baserat på den information som du hittar i WAF-loggarna när du felsöker en händelse.
-* Undantag på regel grupp nivå
-  * Att tillämpa undantag på en regel grupp nivå innebär att de angivna undantagen inte kommer att analyseras mot den specifika uppsättningen regel typer. Om du till exempel väljer *SQLI* som en undantagen regel grupp anger de definierade undantagen för begäran inte att kontrol leras av någon av de SQLI reglerna, men den kommer fortfarande att kontrol leras av regler i andra grupper, t. ex. *php*, *RFI* eller *XSS*. Den här typen av undantag kan vara användbar när vi är säker på att programmet inte är sårbart för specifika typer av attacker. Till exempel kan ett program som inte har några SQL-databaser ha alla *SQLI* -regler exkluderade utan att det är skadligt för säkerhets nivån.
-* Undantag på regel uppsättnings nivå 
-  * Att tillämpa undantag på en regel uppsättnings nivå innebär att de angivna undantagen inte kommer att analyseras mot någon av de säkerhets regler som är tillgängliga i regel uppsättningen. Detta är ett omfattande undantag, så den bör användas noggrant.
+* Undantag på regelnivå
+  * Att tillämpa undantag på regelnivå innebär att de angivna undantagen inte analyseras enbart mot den enskilda regeln, medan den fortfarande analyseras av alla andra regler i regeluppsättningen. Det här är den mest detaljerade nivån för undantag och kan användas för att finjustera den hanterade regeluppsättningen baserat på den information du hittar i WAF-loggarna när du felsöker en händelse.
+* Undantag på regelgruppsnivå
+  * Att tillämpa undantag på regelgruppsnivå innebär att de angivna undantagen inte analyseras mot den specifika uppsättningen regeltyper. Att till exempel välja *SQLI* som en undantagen regelgrupp anger att de definierade begärande undantagen inte skulle kontrolleras av någon av de SQLI-specifika reglerna, men det skulle fortfarande kontrolleras av regler i andra grupper, till exempel *PHP,* *RFI* eller *XSS*. Den här typen av undantag kan vara användbar när vi är säkra på att programmet inte är sårbart för specifika typer av attacker. Ett program som inte har några SQL-databaser kan till exempel undanta alla *SQLI-regler* utan att det skadar säkerhetsnivån.
+* Undantag på regeluppsättningsnivå 
+  * Att tillämpa undantag på en regeluppsättningsnivå innebär att de angivna undantagen inte analyseras mot någon av de säkerhetsregler som är tillgängliga i den regeluppsättningen. Det här är ett omfattande undantag, så det bör användas noggrant.
 
-I det här exemplet kommer vi att utföra ett undantag på den mest detaljerade nivån (tillämpa exkludering på en enskild regel) och vi vill utesluta det matchande variabeln **brödtext post namn** som innehåller `comment` . Detta är uppenbart eftersom du kan se matchnings informationen i brand Väggs loggen: `"matchVariableName": "PostParamValue:comment"` . Attributet är `comment` . Du kan också hitta det här attributnamnet på några andra sätt, se [hitta attribut namn för begäran](#finding-request-attribute-names).
+I det här exemplet utför vi ett undantag på den mest detaljerade nivån (tillämpar exkludering på en enskild regel) och vi vill undanta matchningsvariabeln Begärandetext **efter args-namn** som innehåller `comment` . Detta är uppenbart eftersom du kan se information om matchningsvariabler i brandväggsloggen: `"matchVariableName": "PostParamValue:comment"` . Attributet är `comment` . Du kan också hitta det här attributnamnet på några andra sätt. Mer information finns i [Hitta namn på begärandeattribut.](#finding-request-attribute-names)
 
-![Undantags regler](../media/waf-front-door-tuning/exclusion-rules.png)
+![Undantagsregler](../media/waf-front-door-tuning/exclusion-rules.png)
 
-![Regel undantag för en speciell regel](../media/waf-front-door-tuning/exclusion-rule.png)
+![Regel exkludering för specifik regel](../media/waf-front-door-tuning/exclusion-rule.png)
 
-Ibland finns det fall där vissa parametrar får skickas till WAF på ett sätt som inte är intuitivt. Det finns till exempel en token som skickas när du autentiserar med hjälp av Azure Active Directory. Denna token `__RequestVerificationToken` skickas vanligt vis som en cookie för begäran. Men i vissa fall där cookies är inaktiverat, skickas denna token också i som ett argument för Request-inlägget. Därför måste du kontrol lera att `__RequestVerificationToken` har lagts till i undantags listan för både och för att adressera Azure AD-token med falska positiva identifieringar `RequestCookieNames` `RequestBodyPostArgsNames` .
+Ibland finns det fall där specifika parametrar skickas till waf på ett sätt som kanske inte är intuitivt. Det finns till exempel en token som skickas vid autentisering med hjälp av Azure Active Directory. Denna `__RequestVerificationToken` token, , skickas vanligtvis som en cookie för begäran. I vissa fall där cookies är inaktiverade skickas denna token också som ett begärande efter argument. Därför måste du se till att läggs till i undantagslistan för både och för att åtgärda falska positiva Azure `__RequestVerificationToken` `RequestCookieNames` AD-token. `RequestBodyPostArgsNames`
 
-Undantag i ett fält namn (*väljare*) innebär att värdet inte längre kommer att utvärderas av WAF. Men fält namnet fortsätter att utvärderas och i sällsynta fall kan det matcha en WAF-regel och utlösa en åtgärd.
+Undantag i ett fältnamn *(väljare)* innebär att värdet inte längre utvärderas av WAF. Själva fältnamnet fortsätter dock att utvärderas och i sällsynta fall kan det matcha en WAF-regel och utlösa en åtgärd.
 
-![Regel undantag för regel uppsättning](../media/waf-front-door-tuning/exclusion-rule-selector.png)
+![Regel uteslutning för regeluppsättning](../media/waf-front-door-tuning/exclusion-rule-selector.png)
 
 ### <a name="changing-waf-actions"></a>Ändra WAF-åtgärder
 
-Ett annat sätt att hantera beteendet för WAF-regler är genom att välja den åtgärd som ska vidtas när en begäran matchar en regels villkor. Tillgängliga åtgärder är: [Tillåt, blockera, logga och omdirigera](afds-overview.md#waf-actions).
+Ett annat sätt att hantera beteendet för WAF-regler är att välja vilken åtgärd som ska vidtas när en begäran matchar en regels villkor. De tillgängliga åtgärderna är: [Tillåt, Blockera, Logga och Omdirigera](afds-overview.md#waf-actions).
 
-I det här exemplet har vi ändrat standard åtgärds *block* till *logg* åtgärden för regel 942110. Detta gör att WAF loggar begäran och fortsätter att utvärdera samma begäran mot de återstående reglerna för lägre prioritet.
+I det här exemplet har vi ändrat standardåtgärden *Blockera* till *loggåtgärden* på regel 942110. Detta gör att WAF loggar begäran och fortsätter att utvärdera samma begäran mot återstående regler med lägre prioritet.
 
 ![WAF-åtgärder](../media/waf-front-door-tuning/actions.png)
 
-Efter att ha genomfört samma begäran kan vi referera till loggarna och vi ser att denna begäran var en matchning för regel-ID 942110 och att `action_s` fältet nu indikerar *logg* i stället för *block*. Vi expanderar sedan logg frågan för att inkludera `trackingReference_s` informationen och se vad mer har hänt med den här begäran.
+När vi har utfört samma begäran kan vi referera tillbaka till loggarna och vi kommer att se att begäran var en matchning för regel-ID 942110 och att fältet nu anger Logg i stället för `action_s` *Blockera*.  Vi expanderade sedan loggfrågan för att inkludera `trackingReference_s` informationen och se vad mer som har hänt med den här begäran.
 
-![Logg som visar flera regel matchningar](../media/waf-front-door-tuning/actions-log.png)
+![Logg som visar flera regelmatchning](../media/waf-front-door-tuning/actions-log.png)
 
-Vi kan se en annan SQLI regel matchning inträffar i millisekunder efter att regel-ID 942110 bearbetats. Samma begäran matchade på regel-ID 942310 och den här gången är standard åtgärds *block* utlösta.
+Intressant nog ser vi att en annan SQLI-regelmatchning inträffar millisekunder efter att regel-ID 942110 har bearbetats. Samma begäran matchade för regel-ID 942310 och den här gången utlöstes *standardåtgärden* Blockera.
 
-En annan fördel med att använda *logg* åtgärden vid WAF-justering eller fel sökning är att du kan identifiera om flera regler i en specifik regel grupp matchar och blockerar en angiven begäran. Du kan sedan skapa dina undantag på lämplig nivå, t. ex. på regel-eller regel grupps nivå. 
+En annan fördel med att använda *loggåtgärden* vid WAF-justering eller felsökning är att du kan identifiera om flera regler i en viss regelgrupp matchar och blockerar en viss begäran. Du kan sedan skapa dina undantag på lämplig nivå, dvs. på regel- eller regelgruppsnivå. 
 
 ### <a name="using-custom-rules"></a>Använda anpassade regler
 
-När du har identifierat vad som orsakar en regel matchning i WAF kan du använda anpassade regler för att justera hur WAF svarar på händelsen. Anpassade regler bearbetas före hanterade regler, de kan innehålla fler än ett villkor och deras åtgärder kan vara [Tillåt, neka, logga eller omdirigera](afds-overview.md#waf-actions). När det finns en regel matchning stoppar WAF-motorn bearbetning. Det innebär att andra anpassade regler med lägre prioritet och hanterade regler inte längre körs.
+När du har identifierat vad som orsakar en WAF-regelmatchning kan du använda anpassade regler för att justera hur WAF svarar på händelsen. Anpassade regler bearbetas före hanterade regler, de kan innehålla fler än ett villkor och deras åtgärder kan vara [Tillåt, Neka, Logga eller Omdirigera.](afds-overview.md#waf-actions) När det finns en regelmatchning stoppar WAF-motorn bearbetningen. Det innebär att andra anpassade regler med lägre prioritet och hanterade regler inte längre körs.
 
-I exemplet nedan har vi skapat en anpassad regel med två villkor. Det första villkoret är att leta efter `comment` värdet i begär ande texten. Det andra villkoret söker efter `/api/Feedbacks/` värdet i URI: n för begäran.
+I exemplet nedan skapade vi en anpassad regel med två villkor. Det första villkoret söker efter värdet `comment` i begärandetexten. Det andra villkoret söker efter värdet `/api/Feedbacks/` i URI:en för begäran.
 
-Med hjälp av en anpassad regel kan du vara mest detaljerad när du finjusterar dina WAF-regler och hanterar falska positiva identifieringar. I det här fallet vidtar vi inte åtgärder baserat på värdet för `comment` begär ande texten, som kan finnas på flera webbplatser eller i appar i samma WAF-princip. Genom att inkludera ett annat villkor som också matchar i en viss begär ande-URI `/api/Feedbacks/` , ser vi till att den här anpassade regeln verkligen gäller för det explicita användnings fall som vi testats ut. Detta säkerställer att samma attack, om det utförs mot olika villkor, fortfarande kommer att inspekteras och förhindras av WAF-motorn.
+Med en anpassad regel kan du vara den mest detaljerade när du finjusterar WAF-reglerna och hanterar falska positiva resultat. I det här fallet vidtar vi inte bara åtgärder baserat på begärandetextens värde, som kan finnas på flera webbplatser eller appar `comment` under samma WAF-princip. Genom att inkludera ett annat villkor som även ska matcha en viss begärande-URI ser vi till att den här anpassade regeln verkligen gäller för det här explicita användningsfallet som `/api/Feedbacks/` vi har granskat. Detta säkerställer att samma attack, om den utförs mot olika villkor, fortfarande skulle inspekteras och förhindras av WAF-motorn.
 
 ![Loggas](../media/waf-front-door-tuning/custom-rule.png)
 
-När du utforskar loggen kan du se att `ruleName_s` fältet innehåller det namn som angavs för den anpassade regel som vi skapade: `redirectcomment` . I `action_s` fältet kan du se att *omdirigerings* åtgärden vidtogs för den här händelsen. I `details_matches_s` fältet kan vi se information om båda villkoren matchades.
+När du utforskar loggen kan du se att fältet innehåller det namn som `ruleName_s` ges till den anpassade regel som vi skapade: `redirectcomment` . I fältet `action_s` kan du se att omdirigeringsåtgärden har vidtagits för den här händelsen.  I fältet `details_matches_s` kan vi se att informationen för båda villkoren matchades.
 
 ### <a name="disabling-rules"></a>Inaktivera regler
 
-Ett annat sätt att komma runt ett falskt positivt är att inaktivera regeln som matchade den angivna invärdet. WAF trodde var skadlig. Eftersom du har analyserat WAF-loggarna och har begränsat regeln till 942110 kan du inaktivera den i Azure Portal. Se [Anpassa brand Väggs regler för webb program med hjälp av Azure Portal](../ag/application-gateway-customize-waf-rules-portal.md#disable-rule-groups-and-rules).
+Ett annat sätt att komma runt en falsk positiv är att inaktivera regeln som matchade på de indata som WAF trodde var skadliga. Eftersom du har parsat WAF-loggarna och har begränsat regeln till 942110 kan du inaktivera den i Azure Portal. Se [Anpassa Web Application Firewall regler med hjälp av Azure Portal](../ag/application-gateway-customize-waf-rules-portal.md#disable-rule-groups-and-rules).
  
-Att inaktivera en regel är en fördel när du är säker på att alla begär Anden som uppfyller villkoret verkligen är legitima begär Anden, eller när du är säker på att regeln helt enkelt inte gäller för din miljö (t. ex. genom att inaktivera en SQL-inmatnings regel eftersom du har icke-SQL-StartSlut). 
+Att inaktivera en regel är en fördel när du är säker på att alla begäranden som uppfyller det specifika villkoret i själva verket är legitima begäranden, eller när du är säker på att regeln helt enkelt inte gäller för din miljö (t.ex. inaktivering av en SQL- injectionsregel eftersom du har icke-SQL-servermiljöer). 
  
-Att inaktivera en regel är dock en global inställning som gäller för alla klient dels värdar som är kopplade till WAF-principen. När du väljer att inaktivera en regel kan du lämna sårbarheter som exponeras utan skydd eller identifiering för andra klient dels värdar som är kopplade till WAF-principen.
+Inaktivering av en regel är dock en global inställning som gäller för alla frontend-värdar som är associerade med WAF-principen. När du väljer att inaktivera en regel kan du låta sårbarheter exponeras utan skydd eller identifiering för andra frontend-värdar som är associerade med WAF-principen.
  
-Om du vill använda Azure PowerShell för att inaktivera en hanterad regel, se [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) objekt dokumentationen. Om du vill använda Azure CLI kan du läsa mer i [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override) dokumentationen.
+Om du vill använda Azure PowerShell för att inaktivera en hanterad regel kan du läsa [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject) objektdokumentationen. Om du vill använda Azure CLI kan du läsa [`az network front-door waf-policy managed-rules override`](/cli/azure/network/front-door/waf-policy/managed-rules/override) dokumentationen.
 
 ![WAF-regler](../media/waf-front-door-tuning/waf-rules.png)
 
 > [!TIP]
-> Det är en bra idé att dokumentera eventuella ändringar som du gör i WAF-principen. Inkludera exempel begär Anden för att illustrera falsk positiv identifiering och klart förklara varför du har lagt till en anpassad regel, inaktiverat en regel eller ruleset eller lagt till ett undantag. Den här dokumentationen kan vara till hjälp om du omdesignerar programmet i framtiden och behöver kontrol lera att ändringarna fortfarande är giltiga. Det kan också hjälpa om du någonsin har granskat eller behöver motivera att du har konfigurerat om WAF-principen från standardinställningarna.
+> Det är en bra idé att dokumentera eventuella ändringar som du gör i WAF-principen. Inkludera exempelbegäranden för att illustrera identifieringen av falska positiva identifieringar och förklara tydligt varför du har lagt till en anpassad regel, inaktiverat en regel eller regeluppsättning eller lagt till ett undantag. Den här dokumentationen kan vara användbar om du gör om ditt program i framtiden och behöver kontrollera att ändringarna fortfarande är giltiga. Det kan också vara till hjälp om du någon gång granskas eller behöver motivera varför du har konfigurerat om WAF-principen från dess standardinställningar.
 
-## <a name="finding-request-fields"></a>Hitta begär ande fält
+## <a name="finding-request-fields"></a>Hitta fält för begäran
 
-Med hjälp av en webbläsare som [Fiddler](https://www.telerik.com/fiddler)kan du kontrol lera enskilda förfrågningar och fastställa vilka specifika fält på en webb sida som anropas. Detta är användbart när vi behöver undanta vissa fält från inspektion med undantags listor i WAF.
+Med hjälp av en [webbläsarproxy som Fiddler](https://www.telerik.com/fiddler)kan du inspektera enskilda begäranden och avgöra vilka specifika fält på en webbsida som anropas. Detta är användbart när vi behöver undanta vissa fält från inspektion med undantagslistor i WAF.
 
-### <a name="finding-request-attribute-names"></a>Söker efter attribut för begäran
+### <a name="finding-request-attribute-names"></a>Hitta namn på begärandeattribut
  
-I det här exemplet kan du se fältet där `1=1` strängen har angetts kallas `comment` . Dessa data skickades i bröd texten i en POST-begäran.
+I det här exemplet kan du se att fältet där `1=1` strängen har angetts kallas `comment` . Dessa data skickades i brödtexten i en POST-begäran.
 
-![Fiddler-begäran som visar bröd texten](../media/waf-front-door-tuning/fiddler-request-attribute-name.png)
+![Fiddler-begäran som visar brödtext](../media/waf-front-door-tuning/fiddler-request-attribute-name.png)
 
-Det här är ett fält som du kan undanta. Mer information om undantags listor finns i [undantags listor för brand vägg för webb program](./waf-front-door-exclusion.md). Du kan undanta utvärderingen i det här fallet genom att konfigurera följande undantag:
+Det här är ett fält som du kan undanta. Mer information om undantagslistor finns i [Undantagslistor för brandvägg för webbaserade program.](./waf-front-door-exclusion.md) Du kan utesluta utvärderingen i det här fallet genom att konfigurera följande undantag:
 
-![Exkluderings regel](../media/waf-front-door-tuning/fiddler-request-attribute-name-exclusion.png)
+![Undantagsregel](../media/waf-front-door-tuning/fiddler-request-attribute-name-exclusion.png)
 
-Du kan också granska brand Väggs loggarna för att hämta information för att se vad du behöver lägga till i undantags listan. Information om hur du aktiverar loggning finns [i övervaka mått och loggar i Azures front dörr](./waf-front-door-monitor.md).
+Du kan också granska brandväggsloggarna för att få information om vad du behöver lägga till i undantagslistan. Om du vill aktivera [loggning kan du se Övervakningsmått och loggar i Azure Front Door](./waf-front-door-monitor.md).
 
-Granska brand Väggs loggen i `PT1H.json` filen under den timme som den begäran du vill kontrol lera har genomförts. `PT1H.json` filerna är tillgängliga i lagrings konto behållarna där `FrontDoorWebApplicationFirewallLog` och `FrontDoorAccessLog` diagnostiska loggar lagras.
+Granska brandväggsloggen `PT1H.json` i filen under den timme som begäran som du vill granska inträffade. `PT1H.json` -filer är tillgängliga i de lagringskontocontainrar `FrontDoorWebApplicationFirewallLog` där `FrontDoorAccessLog` diagnostikloggarna och lagras.
 
-I det här exemplet kan du se regeln som blockerade begäran (med samma transaktions referens) och inträffade på exakt samma gång:
+I det här exemplet kan du se regeln som blockerade begäran (med samma transaktionsreferens) och inträffade exakt samtidigt:
 
 ```json
 {
@@ -259,23 +259,23 @@ I det här exemplet kan du se regeln som blockerade begäran (med samma transakt
 }
 ```
 
-Med dina kunskaper om hur de Azure-hanterade regel uppsättningarna fungerar (se [brand vägg för webbaserade program på Azures front dörr](afds-overview.md)) vet du att regeln med egenskapen *åtgärd: block* blockeras baserat på de data som matchas i begär ande texten. Du kan se den information som den matchade ett mönster ( `1=1` ) och fältet heter `comment` . Följ samma föregående steg för att undanta begär ande texten efter argument namnet som innehåller `comment` .
+När du vet hur de Azure-hanterade regeluppsättningarna fungerar (se [Web Application Firewall på Azure Front Door](afds-overview.md)) vet du att regeln med *åtgärden: Blockera* egenskapen blockerar baserat på de data som matchas i begärandetexten. Du kan se i informationen att det matchade ett mönster ( `1=1` ), och fältet heter `comment` . Följ samma föregående steg för att undanta begärandetexten efter args-namnet som innehåller `comment` .
 
-### <a name="finding-request-header-names"></a>Söker efter begärans huvud namn
+### <a name="finding-request-header-names"></a>Hitta namn på begärandehuvuden
 
-Fiddler är ett användbart verktyg en gång till för att hitta rubrik namn för begäran. I följande skärm bild kan du se huvudena för GET-begäran, som innehåller innehålls typ, användar agent och så vidare. Du kan också använda begärandehuvuden för att skapa undantag och anpassade regler i WAF.
+Fiddler är ett användbart verktyg igen för att hitta namn på begärandehuvuden. I följande skärmbild kan du se huvudena för den här GET-begäran, som innehåller Innehållstyp, Användaragent och så vidare. Du kan också använda begärandehuvuden för att skapa undantag och anpassade regler i WAF.
 
-![Fiddler-begäran som visar rubrik](../media/waf-front-door-tuning/fiddler-request-header-name.png)
+![Fiddler-begäran som visar sidhuvud](../media/waf-front-door-tuning/fiddler-request-header-name.png)
 
-Ett annat sätt att Visa begäran och svarshuvuden är att titta inuti utvecklarverktyg i webbläsaren, till exempel Edge eller Chrome. Du kan trycka på F12 eller högerklicka – > **inspektera**  ->  **utvecklarverktyg** och välj fliken **nätverk** . Läs in en webb sida och klicka på den begäran som du vill granska.
+Ett annat sätt att visa begärande- och svarshuvuden är att titta i utvecklarverktygen i webbläsaren, till exempel Edge eller Chrome. Du kan trycka på F12 eller högerklicka på -> **Inspect** Utvecklarverktyg och välja fliken Nätverk. Läs in en webbsida och klicka på den begäran som  ->  du vill granska. 
 
-![Begäran om nätverks kontroll](../media/waf-front-door-tuning/network-inspector-request.png)
+![Begäran om nätverkskontroll](../media/waf-front-door-tuning/network-inspector-request.png)
 
-### <a name="finding-request-cookie-names"></a>Söker efter cookie-namn för begäran
+### <a name="finding-request-cookie-names"></a>Hitta namn på begärandecookies
 
-Om begäran innehåller cookies kan fliken cookies väljas för att visa dem i Fiddler. Cookie-information kan också användas för att skapa undantag eller anpassade regler i WAF.
+Om begäran innehåller cookies kan du välja fliken Cookies för att visa dem i Fiddler. Cookieinformation kan också användas för att skapa undantag eller anpassade regler i WAF.
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Lär dig mer om [Azure WebApplication-brandväggen](../overview.md).
+- Läs mer om [Azures brandvägg för webbaserade program](../overview.md).
 - Läs hur du [skapar en Front Door](../../frontdoor/quickstart-create-front-door.md).

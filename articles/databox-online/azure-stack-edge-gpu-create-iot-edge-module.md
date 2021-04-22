@@ -1,5 +1,5 @@
 ---
-title: C# IoT Edge modul för Azure Stack Edge Pro med GPU | Microsoft Docs
+title: C# IoT Edge-modul för Azure Stack Edge Pro med GPU-| Microsoft Docs
 description: Lär dig hur du utvecklar en C# IoT Edge-modul som kan distribueras på din Azure Stack Edge Pro GPU-enhet.
 services: databox
 author: alkohli
@@ -8,92 +8,92 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/05/2021
 ms.author: alkohli
-ms.openlocfilehash: d2ab96fcfa33301f0bd1212b23f9418fa39d0134
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1aab6fa7a2ea659b489a2e65e2a6a79070edc6b3
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102638746"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873773"
 ---
-# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Utveckla en C# IoT Edge-modul för att flytta filer på Azure Stack Edge Pro
+# <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge-pro"></a>Utveckla en C#-IoT Edge modul för att flytta filer på Azure Stack Edge Pro
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-Den här artikeln beskriver hur du skapar en IoT Edge-modul för distribution med din Azure Stack Edge Pro-enhet. Azure Stack Edge Pro är en lagrings lösning som gör att du kan bearbeta data och skicka dem över nätverket till Azure.
+Den här artikeln beskriver hur du skapar en IoT Edge-modul för distribution med din Azure Stack Edge Pro enhet. Azure Stack Edge Pro är en lagringslösning som gör att du kan bearbeta data och skicka dem via nätverket till Azure.
 
-Du kan använda Azure IoT Edge moduler med Azure Stack Edge Pro för att transformera data när de flyttas till Azure. Modulen som används i den här artikeln implementerar logiken för att kopiera en fil från en lokal resurs till en moln resurs på din Azure Stack Edge Pro-enhet.
+Du kan använda Azure IoT Edge-moduler med Azure Stack Edge Pro för att transformera data när de flyttas till Azure. Modulen som används i den här artikeln implementerar logiken för att kopiera en fil från en lokal resurs till en molnresurs på din Azure Stack Edge Pro enhet.
 
 I den här artikeln kan du se hur du:
 
 > [!div class="checklist"]
-> * Skapa ett behållar register för att lagra och hantera dina moduler (Docker-avbildningar).
-> * Skapa en IoT Edge-modul som ska distribueras på din Azure Stack Edge Pro-enhet.
+> * Skapa ett containerregister för att lagra och hantera dina moduler (Docker-avbildningar).
+> * Skapa en IoT Edge-modul som ska distribueras på Azure Stack Edge Pro enhet.
 
 
-## <a name="about-the-iot-edge-module"></a>Om modulen IoT Edge
+## <a name="about-the-iot-edge-module"></a>Om IoT Edge modulen
 
-Din Azure Stack Edge Pro-enhet kan distribuera och köra IoT Edge moduler. Edge-moduler är i princip Docker-behållare som utför en speciell uppgift, till exempel mata in ett meddelande från en enhet, transformera ett meddelande eller skicka ett meddelande till ett IoT Hub. I den här artikeln ska du skapa en modul som kopierar filer från en lokal resurs till en moln resurs på din Azure Stack Edge Pro-enhet.
+Din Azure Stack Edge Pro enhet kan distribuera och köra IoT Edge moduler. Edge-moduler är i stort sett Docker-containrar som utför en viss uppgift, till exempel mata in ett meddelande från en enhet, transformera ett meddelande eller skicka ett meddelande till en IoT Hub. I den här artikeln skapar du en modul som kopierar filer från en lokal resurs till en molnresurs på din Azure Stack Edge Pro enhet.
 
-1. Filerna skrivs till den lokala resursen på din Azure Stack Edge Pro-enhet.
-2. Fil händelse generatorn skapar en fil händelse för varje fil som skrivs till den lokala resursen. Fil händelserna skapas också när en fil ändras. Fil händelserna skickas sedan till IoT Edge Hub (i IoT Edge Runtime).
-3. Den anpassade modulen IoT Edge bearbetar fil händelsen för att skapa ett fil händelse objekt som också innehåller en relativ sökväg till filen. Modulen genererar en absolut sökväg med den relativa fil Sök vägen och kopierar filen från den lokala resursen till moln resursen. Modulen tar sedan bort filen från den lokala resursen.
+1. Filer skrivs till den lokala resursen på din Azure Stack Edge Pro enhet.
+2. Filhändelsegeneratorn skapar en filhändelse för varje fil som skrivs till den lokala resursen. Filhändelser genereras också när en fil ändras. Filhändelserna skickas sedan till IoT Edge Hub (i IoT Edge runtime).
+3. Den IoT Edge modulen bearbetar filhändelsen för att skapa ett filhändelseobjekt som även innehåller en relativ sökväg för filen. Modulen genererar en absolut sökväg med hjälp av den relativa filsökvägen och kopierar filen från den lokala resursen till molnresursen. Modulen tar sedan bort filen från den lokala resursen.
 
-![Så här fungerar Azure IoT Edge-modulen på Azure Stack Edge Pro](./media/azure-stack-edge-gpu-create-iot-edge-module/how-module-works-1.png)
+![Så Azure IoT Edge modulen fungerar på Azure Stack Edge Pro](./media/azure-stack-edge-gpu-create-iot-edge-module/how-module-works-1.png)
 
-När filen finns i moln resursen överförs den automatiskt till ditt Azure Storage-konto.
+När filen finns i molnresursen laddas den automatiskt upp till ditt Azure Storage konto.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Innan du börjar ska du kontrollera att du har:
 
-- En Azure Stack Edge Pro-enhet som kör.
+- En Azure Stack Edge Pro enhet som körs.
 
-    - Enheten har också en tillhör ande IoT Hub-resurs.
-    - Enhetens beräknings roll har kon figurer ATS.
-    Mer information finns i [Konfigurera Compute](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) för din Azure Stack Edge Pro.<!--Update link?-->
+    - Enheten har också en associerad IoT Hub resurs.
+    - Enheten har edge-beräkningsrollen konfigurerad.
+    Mer information finns i Konfigurera [beräkning för](azure-stack-edge-j-series-deploy-configure-compute.md#configure-compute) din Azure Stack Edge Pro.<!--Update link?-->
 
-- Följande utvecklings resurser:
+- Följande utvecklingsresurser:
 
     - [Visual Studio Code](https://code.visualstudio.com/).
     - [C# för Visual Studio Code-tillägg (drivs av OmniSharp)](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).
     - [Azure IoT Edge-tillägg för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
-    - [.NET Core 2.1 SDK](https://www.microsoft.com/net/download).
-    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Du kan behöva skapa ett konto för att ladda ned och installera program varan.
+    - [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1).
+    - [Docker CE](https://store.docker.com/editions/community/docker-ce-desktop-windows). Du kan behöva skapa ett konto för att ladda ned och installera programvaran.
 
 ## <a name="create-a-container-registry"></a>Skapa ett containerregister
 
-Ett Azure-containerregister är ett privat Docker-register i Azure där du kan lagra och hantera dina privata Docker-containeravbildningar. De två populära Docker-register tjänsterna som är tillgängliga i molnet är Azure Container Registry och Docker Hub. Den här artikeln använder Container Registry.
+Ett Azure-containerregister är ett privat Docker-register i Azure där du kan lagra och hantera dina privata Docker-containeravbildningar. De två populära Docker-registertjänsterna som är tillgängliga i molnet Azure Container Registry och Docker Hub. Den här artikeln använder Container Registry.
 
 1. Logga in på Azure Portal på [https://portal.azure.com](https://portal.azure.com).
-2. Välj **skapa en resurs > behållare > container Registry**. Klicka på **Skapa**.
-3. Använda
+2. Välj **Skapa en resurs > Containers > Container Registry**. Klicka på **Skapa**.
+3. Ge:
 
-   1. Ett unikt **register namn** i Azure som innehåller 5 till 50 alfanumeriska tecken.
-   2. Välj en **prenumeration**.
-   3. Skapa en ny eller Välj en befintlig **resurs grupp**.
-   4. Välj en **plats**. Vi rekommenderar att den här platsen är samma som den som är kopplad till Azure Stack Edge-resursen.
+   1. Ett unikt **registernamn** i Azure som innehåller mellan 5 och 50 alfanumeriska tecken.
+   2. Välj en **prenumeration.**
+   3. Skapa en ny eller välj en **befintlig resursgrupp.**
+   4. Välj en **Plats.** Vi rekommenderar att den här platsen är samma som den som är associerad med Azure Stack Edge resurs.
    5. Växla till **Administratörsanvändare** för att **Aktivera**.
-   6. Ange SKU: n till **Basic**.
+   6. Ställ in SKU:n på **Basic**.
 
       ![Skapa containerregister](./media/azure-stack-edge-gpu-create-iot-edge-module/create-container-registry-1.png)
  
 4. Välj **Skapa**.
 5. När du har skapat ditt containerregister går du till det och väljer **Åtkomstnycklar**.
 
-    ![Hämta åtkomst nycklar](./media/azure-stack-edge-gpu-create-iot-edge-module/get-access-keys-1.png)
+    ![Hämta åtkomstnycklar](./media/azure-stack-edge-gpu-create-iot-edge-module/get-access-keys-1.png)
  
-6. Kopiera värdena för **Inloggningsserver**, **Användarnamn** och **Lösenord**. Du kan använda dessa värden senare för att publicera Docker-avbildningen i registret och lägga till registervärdena i Azure IoT Edge Runtime.
+6. Kopiera värdena för **Inloggningsserver**, **Användarnamn** och **Lösenord**. Du använder dessa värden senare för att publicera Docker-avbildningen till registret och lägga till autentiseringsuppgifterna för registret Azure IoT Edge körningen.
 
 
 ## <a name="create-an-iot-edge-module-project"></a>Skapa ett projekt för IoT Edge-modulen
 
-Följande steg skapar ett IoT Edge module-projekt baserat på .NET Core 2,1 SDK. Projektet använder Visual Studio Code och Azure IoT Edge-tillägget.
+Följande steg skapar ett IoT Edge-modulprojekt baserat på .NET Core 2.1 SDK. Projektet använder Visual Studio Code och Azure IoT Edge tillägget.
 
 ### <a name="create-a-new-solution"></a>Skapa en ny lösning
 
 Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
 
-1. I Visual Studio Code väljer du **visa > kommando palett** för att öppna kommando paletten vs Code.
+1. I Visual Studio Code väljer du Visa **> kommandopalett för** att öppna kommandopaletten i VS Code.
 2. Ange och kör kommandot **Azure: Logga in** i kommandopaletten och följ anvisningarna för att logga in med ditt Azure-konto. Om du redan är inloggad kan du hoppa över det här steget.
 3. Skriv och kör kommandot **Azure IoT Edge: New IoT Edge solution** (Ny IoT Edge-lösning) på kommandopaletten. Ange följande information i kommandopaletten för att skapa din lösning:
 
@@ -102,31 +102,31 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     
         ![Skapa ny lösning 1](./media/azure-stack-edge-gpu-create-iot-edge-module/create-new-solution-1.png)
 
-    3. Välj **C#-modul** som mall.
-    4. Ersätt namnet på standardmodulen med det namn som du vill tilldela, i det här fallet är det **FileCopyModule**.
+    3. Välj **C#-modul** som modulmall.
+    4. Ersätt standardmodulnamnet med det namn som du vill tilldela. I det här fallet är det **FileCopyModule**.
     
         ![Skapa ny lösning 2](./media/azure-stack-edge-gpu-create-iot-edge-module/create-new-solution-2.png)
 
-    5. Ange det behållar register som du skapade i föregående avsnitt som avbildnings lagrings plats för din första modul. Ersätt **localhost:5000** med det serverinloggningsvärde som du kopierade.
+    5. Ange det containerregister som du skapade i föregående avsnitt som avbildningsdatabas för din första modul. Ersätt **localhost:5000** med det serverinloggningsvärde som du kopierade.
 
-        Den slutliga strängen ser ut som `<Login server name>/<Module name>` . I det här exemplet är strängen: `mycontreg2.azurecr.io/filecopymodule` .
+        Den slutliga strängen ser ut så `<Login server name>/<Module name>` här: . I det här exemplet är strängen: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![Skapa ny lösning 3](./media/azure-stack-edge-gpu-create-iot-edge-module/create-new-solution-3.png)
 
-4. Gå till **filen > öppna mappen**.
+4. Gå till **Arkiv > Öppna mapp**.
 
     ![Skapa ny lösning 4](./media/azure-stack-edge-gpu-create-iot-edge-module/create-new-solution-4.png)
 
-5. Bläddra och peka på **EdgeSolution** -mappen som du skapade tidigare. VS Code-fönstret läser in din IoT Edge lösnings arbets yta med dess fem toppnivå komponenter. Du kan inte redigera `.vscode` mappen, **. gitignore** -filen, **. kuvert** filen och deployment.template.jspå * * i den här artikeln.
+5. Bläddra och peka på mappen **EdgeSolution** som du skapade tidigare. VS Code-fönstret läser in IoT Edge-lösningens arbetsyta med dess fem komponenter på den översta nivån. Du kommer inte att redigera mappen `.vscode` . **gitignore-filen,** **.env-filen** och deployment.template.jspå** i den här artikeln.
     
-    Den enda komponent som du ändrar är mappen moduler. Den här mappen har C#-koden för din modul och Docker-filer för att bygga modulen som en behållar avbildning.
+    Den enda komponent som du ändrar är mappen modules. Den här mappen har C#-koden för din modul och Docker-filer för att skapa modulen som en containeravbildning.
 
     ![Skapa ny lösning 5](./media/azure-stack-edge-gpu-create-iot-edge-module/create-new-solution-5.png)
 
 ### <a name="update-the-module-with-custom-code"></a>Uppdatera modulen med anpassad kod
 
-1. I VS Code-Utforskaren öppnar du **moduler > FileCopyModule > program. cs**.
-2. Längst upp i FileCopyModule- **namnområdet** lägger du till följande using-instruktioner för typer som används senare. **Microsoft. Azure. devices. client. transport. MQTT** är ett protokoll för att skicka meddelanden till IoT Edge Hub.
+1. I VS Code-utforskaren öppnar **du moduler > FileCopyModule > Program.cs**.
+2. Längst upp i **namnområdet FileCopyModule lägger** du till följande using-instruktioner för typer som används senare. **Microsoft.Azure.Devices.Client.Transport.Mqtt** är ett protokoll för att skicka meddelanden till IoT Edge Hub.
 
     ```
     namespace FileCopyModule
@@ -134,7 +134,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
         using Microsoft.Azure.Devices.Client.Transport.Mqtt;
         using Newtonsoft.Json;
     ```
-3. Lägg till variabeln **InputFolderPath** och **OutputFolderPath** i program klassen.
+3. Lägg till **variabeln InputFolderPath** **och OutputFolderPath** i klassen Program.
 
     ```
     class Program
@@ -144,7 +144,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
             private const string OutputFolderPath = "/home/output";
     ```
 
-4. Direkt efter föregående steg lägger du till **FileEvent** -klassen för att definiera meddelande texten.
+4. Direkt efter föregående steg lägger du till **klassen FileEvent** för att definiera meddelandetexten.
 
     ```
     /// <summary>
@@ -160,7 +160,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     }
     ```
 
-5. I **init-metoden** skapar och konfigurerar koden ett **ModuleClient** -objekt. Med det här objektet kan modulen ansluta till den lokala Azure IoT Edge runtime med hjälp av MQTT-protokollet för att skicka och ta emot meddelanden. Anslutningssträngen som används i Init-metoden skickas till modulen av IoT Edge-körningen. Koden registrerar ett FileCopy-återanrop för att ta emot meddelanden från en IoT Edge hubb via **INPUT1** -slutpunkten. Ersätt **init-metoden** med följande kod.
+5. I **metoden Init** skapar och konfigurerar koden ett **ModuleClient-objekt.** Med det här objektet kan modulen ansluta till den lokala Azure IoT Edge med hjälp av MQTT-protokollet för att skicka och ta emot meddelanden. Anslutningssträngen som används i Init-metoden skickas till modulen av IoT Edge-körningen. Koden registrerar ett FileCopy-återanrop för att ta emot meddelanden från en IoT Edge-hubb via **slutpunkten input1.** Ersätt **init-metoden** med följande kod.
 
     ```
     /// <summary>
@@ -182,7 +182,7 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     }
     ```
 
-6. Ta bort koden för **metoden PipeMessage** och infoga koden för **FileCopy** i dess ställe.
+6. Ta bort koden för **metoden PipeMessage** och infoga i stället koden för **FileCopy**.
 
     ```
         /// <summary>
@@ -240,42 +240,42 @@ Skapa en C#-lösningsmall som du kan anpassa med din egen kod.
     ```
 
 7. Spara den här filen.
-8. Du kan också [Hämta ett befintligt kod exempel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) för det här projektet. Du kan sedan validera filen som du sparade mot filen **program. cs** i det här exemplet.
+8. Du kan också [ladda ned ett befintligt kodexempel](https://azure.microsoft.com/resources/samples/data-box-edge-csharp-modules/?cdn=disable) för det här projektet. Du kan sedan verifiera filen som du sparade mot filen **program.cs** i det här exemplet.
 
 ## <a name="build-your-iot-edge-solution"></a>Skapa din IoT Edge-lösning
 
-I föregående avsnitt skapade du en IoT Edge-lösning och lagt till kod i FileCopyModule för att kopiera filer från lokal resurs till moln resursen. Nu behöver du skapa lösningen som en containeravbildning och push-överföra den till ditt containerregister.
+I föregående avsnitt skapade du en IoT Edge-lösning och lade till kod i FileCopyModule för att kopiera filer från en lokal resurs till molnresursen. Nu behöver du skapa lösningen som en containeravbildning och push-överföra den till ditt containerregister.
 
-1. I VSCode går du till Terminal > New Terminal för att öppna en ny Visual Studio Code-integrerad Terminal.
+1. I VSCode går du till Terminal > Ny terminal för att öppna en ny Visual Studio Code-integrerad terminal.
 2. Logga in på Docker genom att ange följande kommando i den integrerade terminalen.
 
     `docker login <ACR login server> -u <ACR username>`
 
-    Använd den inloggnings Server och det användar namn som du kopierade från behållar registret.
+    Använd inloggningsservern och användarnamnet som du kopierade från containerregistret.
 
-    ![Lösning för att bygga och push IoT Edge](./media/azure-stack-edge-gpu-create-iot-edge-module/build-iot-edge-solution-1.png)
+    ![Skapa och push-IoT Edge lösning](./media/azure-stack-edge-gpu-create-iot-edge-module/build-iot-edge-solution-1.png)
 
-2. Ange lösen ordet när du uppmanas att ange lösen ord. Du kan också hämta värdena för inloggnings Server, användar namn och lösen ord från **åtkomst nycklarna** i behållar registret i Azure Portal.
+2. Ange lösenordet när du uppmanas att ange lösenordet. Du kan också hämta värdena för inloggningsserver,  användarnamn och lösenord från åtkomstnycklarna i containerregistret i Azure Portal.
  
-3. När du har angett autentiseringsuppgifterna kan du skicka modulens avbildning till Azure Container Registry. I VS Code-Utforskaren högerklickar du på **module.jspå** filen och väljer **Build och push IoT Edge-lösning**.
+3. När autentiseringsuppgifterna har angetts kan du skicka modulavbildningen till Azure-containerregistret. I VS Code Explorer högerklickar du på filen **module.jsoch** väljer Skapa och **push-IoT Edge lösningen**.
 
-    ![Build och push IoT Edge lösning 2](./media/azure-stack-edge-gpu-create-iot-edge-module/build-iot-edge-solution-2.png)
+    ![Skapa och push-IoT Edge lösning 2](./media/azure-stack-edge-gpu-create-iot-edge-module/build-iot-edge-solution-2.png)
  
-    När du anger Visual Studio Code för att bygga lösningen, körs två kommandon i den integrerade terminalen: Docker-build och Docker push. Dessa två kommandon skapar din kod, bäddar in CSharpModule.dll i en container och skickar sedan koden till det containerregister som du angav när du initierade lösningen.
+    När du Visual Studio Code för att skapa din lösning körs två kommandon i den integrerade terminalen: docker build och docker push. Dessa två kommandon skapar din kod, bäddar in CSharpModule.dll i en container och skickar sedan koden till det containerregister som du angav när du initierade lösningen.
 
-    Du uppmanas att välja modul-plattformen. Välj *amd64* som motsvarar Linux.
+    Du uppmanas att välja modulplattform. Välj *amd64* som motsvarar Linux.
 
     ![Välj plattform](./media/azure-stack-edge-gpu-create-iot-edge-module/select-platform.png)
 
     > [!IMPORTANT] 
     > Endast Linux-moduler stöds.
 
-    Du kan se följande varning att du kan ignorera:
+    Du kan se följande varning som du kan ignorera:
 
-    *Program. CS (77, 44): varning CS1998: den här asynkrona metoden saknar await-operatorer och kommer att köras synkront. Överväg att använda operatorn "await" för att vänta på icke-blockerande API-anrop, eller "vänta aktivitet. Run (...)" för att göra CPU-kopplat arbete på en bakgrunds tråd.*
+    *Program.cs(77,44): varning CS1998: Den här asynkrona metoden saknar "await"-operatorer och körs synkront. Överväg att använda await-operatorn för att vänta på icke-blockerande API-anrop eller "await Task.Run(...)" för att utföra cpu-bundet arbete på en bakgrundstråd.*
 
-4. Den fullständiga adressen med tagg för containeravbildningen finns i den integrerade VS Code-terminalen. Bild adressen skapas utifrån den information som finns i module.jsfilen med formatet `<repository>:<version>-<platform>` . I den här artikeln bör den se ut `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` .
+4. Den fullständiga adressen med tagg för containeravbildningen finns i den integrerade VS Code-terminalen. Avbildningsadressen bygger på information som finns i module.jspå filen med formatet `<repository>:<version>-<platform>` . Den här artikeln bör se ut så `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` här: .
 
 ## <a name="next-steps"></a>Nästa steg
 
-Om du vill distribuera och köra modulen på Azure Stack Edge Pro, se stegen i [lägga till en modul](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module).<!--Update link?-->
+Om du vill distribuera och köra den här Azure Stack Edge Pro finns stegen i Lägga [till en modul](azure-stack-edge-j-series-deploy-configure-compute.md#add-a-module).<!--Update link?-->

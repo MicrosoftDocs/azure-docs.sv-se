@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/20/2021
 ms.author: b-juche
-ms.openlocfilehash: 28fc465627032522afb9da8f6ec0fad704834d09
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: d3ca94524c334a20f5ee75e5300ad419fa1542c5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107813712"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873279"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Skapa en SMB-volym för Azure NetApp Files
 
@@ -34,7 +34,7 @@ Den här artikeln visar hur du skapar en SMB3-volym. Information om NFS-volymer 
 
 ## <a name="configure-active-directory-connections"></a>Konfigurera Active Directory-anslutningar 
 
-Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om du inte har konfigurerat Active Directory-anslutningar för Azure NetApp-filer följer du anvisningarna i [Skapa och hantera Active Directory-anslutningar.](create-active-directory-connections.md)
+Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om du inte har konfigurerat Active Directory-anslutningar för Azure NetApp-filer följer du anvisningarna som beskrivs i [Skapa och hantera Active Directory-anslutningar.](create-active-directory-connections.md)
 
 ## <a name="add-an-smb-volume"></a>Lägga till en SMB-volym
 
@@ -81,13 +81,13 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
     
         ![Skapa undernät](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
 
-    * Om du vill tillämpa en befintlig ögonblicksbildsprincip på volymen klickar du på Visa avancerat avsnitt för att expandera den, anger om du vill dölja sökvägen till ögonblicksbilden och väljer en princip för ögonblicksbilder i den nedströmsmenyn.  
+    * Om du vill tillämpa en befintlig ögonblicksbildsprincip på volymen klickar du på Visa avancerat avsnitt för att expandera den, anger om du vill dölja sökvägen till ögonblicksbilden och väljer en ögonblicksbildsprincip i den nedströmsmenyn.  
 
-        Information om hur du skapar en princip för ögonblicksbilder finns i [Hantera principer för ögonblicksbilder.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
+        Information om hur du skapar en ögonblicksbildsprincip finns i [Hantera principer för ögonblicksbilder.](azure-netapp-files-manage-snapshots.md#manage-snapshot-policies)
 
         ![Visa avancerat val](../media/azure-netapp-files/volume-create-advanced-selection.png)
 
-4. Klicka **på** Protokoll och slutför följande information:  
+4. Klicka **på** Protokoll och fyll i följande information:  
     * Välj **SMB** som protokolltyp för volymen. 
     * Välj **din Active Directory-anslutning** i listrutan.
     * Ange namnet på den delade volymen i  **Resursnamn**.
@@ -114,9 +114,9 @@ Innan du skapar en SMB-volym måste du skapa en Active Directory-anslutning. Om 
     * Om du vill aktivera kontinuerlig tillgänglighet för SMB-volymen väljer du **Aktivera kontinuerlig tillgänglighet.**    
 
         > [!IMPORTANT]   
-        > Funktionen kontinuerlig SMB-tillgänglighet är för närvarande i offentlig förhandsversion. Du måste skicka en begäran om väntelista för att få åtkomst till funktionen via sidan för att **[skicka Azure NetApp Files SMB continuous availability shares public preview (SMB-kontinuerlig tillgänglighetsresurser](https://aka.ms/anfsmbcasharespreviewsignup)** för offentlig förhandsversion). Vänta på ett officiellt e-postmeddelande från Azure NetApp Files innan du använder funktionen Kontinuerlig tillgänglighet.   
+        > Funktionen kontinuerlig SMB-tillgänglighet är för närvarande i offentlig förhandsversion. Du måste skicka en begäran om väntelista för att få åtkomst till funktionen via sidan för att **[skicka Azure NetApp Files SMB Continuous Availability Shares Public Preview.](https://aka.ms/anfsmbcasharespreviewsignup)** Vänta på ett officiellt e-postmeddelande från Azure NetApp Files innan du använder funktionen Kontinuerlig tillgänglighet.   
         > 
-        > Du bör endast aktivera kontinuerlig tillgänglighet för SQL Server och [FsLogix-användarprofilcontainrar.](../virtual-desktop/create-fslogix-profile-container.md) Användning av SMB-kontinuerliga tillgänglighetsresurser för andra arbetsbelastningar än SQL Server och FsLogix-användarprofilcontainrar *stöds* inte. Den här funktionen stöds för närvarande i Windows SQL Server. Linux SQL Server stöds inte för närvarande. Om du använder ett icke-administratörskonto (domän) för att SQL Server måste du se till att kontot har den säkerhetsbehörighet som krävs. Om domänkontot inte har den säkerhetsbehörighet som krävs ( ), och behörigheten inte kan anges på domännivå, kan du bevilja kontot behörigheten med hjälp av fältet Säkerhetsprivilegier i `SeSecurityPrivilege` Active Directory-anslutningar.  Se [Skapa en Active Directory-anslutning.](create-active-directory-connections.md#create-an-active-directory-connection)
+        > Du bör endast aktivera kontinuerlig tillgänglighet för SQL Server och [FSLogix-användarprofilcontainrar.](../virtual-desktop/create-fslogix-profile-container.md) Användning av SMB-kontinuerliga tillgänglighetsresurser för andra arbetsbelastningar än SQL Server och FSLogix-användarprofilcontainrar *stöds* inte. Den här funktionen stöds för närvarande i Windows SQL Server. Linux SQL Server stöds inte för närvarande. Om du använder ett icke-administratörskonto (domän) för att SQL Server måste du se till att kontot har den säkerhetsbehörighet som krävs. Om domänkontot inte har den säkerhetsbehörighet som krävs ( ), och behörigheten inte kan anges på domännivå, kan du bevilja kontot behörigheten med hjälp av fältet Säkerhetsprivilegier i `SeSecurityPrivilege` Active Directory-anslutningar.  Se [Skapa en Active Directory-anslutning.](create-active-directory-connections.md#create-an-active-directory-connection)
 
     <!-- [1/13/21] Commenting out command-based steps below, because the plan is to use form-based (URL) registration, similar to CRR feature registration -->
     <!-- 

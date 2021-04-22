@@ -1,6 +1,6 @@
 ---
-title: Konfigurera underhålls fönstret (förhands granskning)
-description: Lär dig hur du ställer in tiden när planerat underhåll ska utföras på dina Azure SQL-databaser, elastiska pooler och hanterade instans databaser.
+title: Konfigurera underhållsfönstret (förhandsversion)
+description: Lär dig hur du anger den tid då planerat underhåll ska utföras på Azure SQL databaser, elastiska pooler och databaser för hanterade instanser.
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: service
@@ -9,66 +9,66 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/23/2021
-ms.openlocfilehash: 8688458d85084f3d3dab4678fa91ed827a337739
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9771c68dda6f457586f27ea45fbc52aa118e8006
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105047359"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107874791"
 ---
-# <a name="configure-maintenance-window-preview"></a>Konfigurera underhålls fönstret (förhands granskning)
+# <a name="configure-maintenance-window-preview"></a>Konfigurera underhållsfönstret (förhandsversion)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 
-Konfigurera [underhålls perioden (förhands granskning)](maintenance-window.md) för en Azure SQL-databas, elastisk pool eller Azure SQL-hanterad instans databas under skapandet av en resurs, eller när en resurs har skapats. 
+Konfigurera [underhållsfönstret (förhandsversion)](maintenance-window.md) för en Azure SQL databas, elastisk pool eller Azure SQL Managed Instance-databas när resursen skapas eller när som helst efter att en resurs har skapats. 
 
-*Systemets standard* underhålls period är 17 till 8.00 dagligen (lokal tid för den Azure-region där resursen finns) för att undvika avbrott i arbets tiden. Om *systemets standard* underhålls period inte är den bästa tiden väljer du någon av de andra tillgängliga underhålls Fönstren.
+*Standardunderhållsfönstret för systemet* är 17:00 till 08:00 varje dag (lokal tid i Den Azure-region som resursen finns) för att undvika avbrott under tider med hög belastning. Om *systemstandardunderhållsfönstret* inte är den bästa tiden väljer du någon av de andra tillgängliga underhållsfönstret.
 
-Möjligheten att ändra till en annan underhålls period är inte tillgänglig för varje service nivå eller i varje region. Mer information om tillgänglighet finns i [tillgänglighet för underhålls fönster](maintenance-window.md#availability).
+Möjligheten att ändra till en annan underhållsfönstret är inte tillgänglig för varje servicenivå eller i varje region. Mer information om tillgänglighet finns i [Underhållsfönstrets tillgänglighet.](maintenance-window.md#availability)
 
 > [!Important]
-> Att konfigurera underhålls perioden är en tids krävande asynkron åtgärd, ungefär som att ändra tjänst nivån för Azure SQL-resursen. Resursen är tillgänglig under åtgärden, förutom en kort omkonfiguration som sker i slutet av åtgärden och som vanligt vis varar i upp till 8 sekunder, även om tids krävande transaktioner har avbrutits. För att minimera effekten av omkonfigurationen bör du utföra åtgärden utanför det högsta antalet timmar.
+> Att konfigurera underhållsfönstret är en långvarig asynkron åtgärd, ungefär som att ändra tjänstnivån för Azure SQL resurs. Resursen är tillgänglig under åtgärden, förutom en kort omkonfiguration som sker i slutet av åtgärden och vanligtvis varar i upp till 8 sekunder även om långvariga transaktioner avbryts. För att minimera effekten av omkonfigurationen bör du utföra åtgärden utanför tider med hög belastning.
 
-## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurera underhålls fönstret när databasen skapas 
+## <a name="configure-maintenance-window-during-database-creation"></a>Konfigurera underhållsfönstret när databasen skapas 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Konfigurera underhålls fönstret när du skapar en databas, en elastisk pool eller en hanterad instans genom att ange önskad **underhålls period** på sidan **ytterligare inställningar** . 
+Om du vill konfigurera underhållsfönstret när du skapar en databas, elastisk pool eller hanterad instans anger du önskat **underhållsfönstret** på **sidan Ytterligare** inställningar. 
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database-or-elastic-pool"></a>Ange underhålls perioden när du skapar en enskild databas eller elastisk pool
+## <a name="set-the-maintenance-window-while-creating-a-single-database-or-elastic-pool"></a>Ange underhållsfönstret när du skapar en enkel databas eller elastisk pool
 
-Steg-för-steg-information om hur du skapar en ny databas eller pool finns i [skapa en Azure SQL Database enskild databas](single-database-create-quickstart.md).
+Stegvis information om hur du skapar en ny databas eller pool finns i Skapa en Azure SQL Database [enkel databas.](single-database-create-quickstart.md)
 
-   :::image type="content" source="media/maintenance-window-configure/additional-settings.png" alt-text="Fliken Skapa ytterligare databas inställningar":::
+   :::image type="content" source="media/maintenance-window-configure/additional-settings.png" alt-text="Fliken Skapa ytterligare databasinställningar":::
 
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhålls perioden när du skapar en hanterad instans
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhållsfönstret när du skapar en hanterad instans
 
-Steg för steg-information om hur du skapar en ny hanterad instans finns i [skapa en hanterad Azure SQL-instans](../managed-instance/instance-create-quickstart.md).
+Stegvis information om hur du skapar en ny hanterad instans finns i [Skapa en Azure SQL Managed Instance](../managed-instance/instance-create-quickstart.md).
 
-   :::image type="content" source="media/maintenance-window-configure/additional-settings-mi.png" alt-text="Fliken Skapa hanterad instans ytterligare inställningar":::
+   :::image type="content" source="media/maintenance-window-configure/additional-settings-mi.png" alt-text="Fliken Skapa ytterligare inställningar för hanterad instans":::
 
 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-I följande exempel visas hur du konfigurerar underhålls fönstret med hjälp av Azure PowerShell. Du kan [installera Azure PowerShell](/powershell/azure/install-az-ps)eller använda Azure Cloud Shell.
+I följande exempel visas hur du konfigurerar underhållsfönstret med hjälp av Azure PowerShell. Du kan [installera Azure PowerShell](/powershell/azure/install-az-ps)eller använda Azure Cloud Shell.
 
 ## <a name="launch-azure-cloud-shell"></a>Starta Azure Cloud Shell
 
 Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. 
 
-Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsare-flik genom att gå till [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
+Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsarflik genom att gå till [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
 
 
-## <a name="discover-available-maintenance-windows"></a>Identifiera tillgängliga underhålls fönster
+## <a name="discover-available-maintenance-windows"></a>Identifiera tillgängliga underhållsfönster
 
-När du ställer in underhålls fönstret har varje region ett eget alternativ för underhålls perioden som motsvarar timezone för regionen som databasen eller poolen finns i. 
+När du ställer in underhållsfönstret har varje region sina egna underhållsalternativ som motsvarar tidszonen för den region som databasen eller poolen finns i. 
 
-### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Identifiera SQL Database underhålls fönster för elastisk pool 
+### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Upptäck SQL Database och elastiska poolunderhållsfönster 
 
-I följande exempel returneras de tillgängliga underhålls Fönstren för *eastus2* -regionen med hjälp av [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) -cmdleten. För databaser och elastiska pooler anger `MaintenanceScope` du till `SQLDB` .
+I följande exempel returneras tillgängliga underhållsfönster för *regionen eastus2* med hjälp av cmdleten [Get-AzMaintenancePublicConfiguration.](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) För databaser och elastiska pooler anger du `MaintenanceScope` till `SQLDB` .
 
    ```powershell-interactive
    $location = "eastus2"
@@ -78,9 +78,9 @@ I följande exempel returneras de tillgängliga underhålls Fönstren för *east
    $configurations | ?{ $_.Location -eq $location -and $_.MaintenanceScope -eq "SQLDB"}
    ```
 
-### <a name="discover-sql-managed-instance-maintenance-windows"></a>Identifiera underhålls fönster för SQL-hanterad instans 
+### <a name="discover-sql-managed-instance-maintenance-windows"></a>Upptäck SQL Managed Instance för underhåll 
 
-I följande exempel returneras de tillgängliga underhålls Fönstren för *eastus2* -regionen med hjälp av [Get-AzMaintenancePublicConfiguration](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) -cmdleten. För hanterade instanser anger `MaintenanceScope` du till `SQLManagedInstance` .
+I följande exempel returneras tillgängliga underhållsfönster för *regionen eastus2* med hjälp av cmdleten [Get-AzMaintenancePublicConfiguration.](/powershell/module/az.maintenance/get-azmaintenancepublicconfiguration) För hanterade instanser anger du `MaintenanceScope` till `SQLManagedInstance` .
 
    ```powershell-interactive
    $location = "eastus2"
@@ -91,9 +91,9 @@ I följande exempel returneras de tillgängliga underhålls Fönstren för *east
    ```
 
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>Ange underhålls perioden när du skapar en enskild databas
+## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>Ange underhållsfönstret när du skapar en enkel databas
 
-I följande exempel skapas en ny databas och underhålls fönstret anges med cmdleten [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) . `-MaintenanceConfigurationId`Måste anges till ett giltigt värde för databasens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny databas och underhållsfönstret anges med hjälp av cmdleten [New-AzSqlDatabase.](/powershell/module/az.sql/new-azsqldatabase) `-MaintenanceConfigurationId`måste anges till ett giltigt värde för databasens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -119,9 +119,9 @@ I följande exempel skapas en ny databas och underhålls fönstret anges med cmd
 
 
 
-## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>Ange underhålls perioden när du skapar en elastisk pool
+## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>Ange underhållsfönstret när du skapar en elastisk pool
 
-I följande exempel skapas en ny elastisk pool och underhålls fönstret anges med cmdleten [New-AzSqlElasticPool](/powershell/module/az.sql/new-azsqlelasticpool) . Underhålls perioden är inställd på den elastiska poolen, så alla databaser i poolen har en Pools schema för underhålls fönster. `-MaintenanceConfigurationId`Måste anges till ett giltigt värde för poolens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny elastisk pool och underhållsfönstret anges med hjälp av cmdleten [New-AzSqlElasticPool.](/powershell/module/az.sql/new-azsqlelasticpool) Underhållsfönstret är inställt på den elastiska poolen, så alla databaser i poolen har poolens underhållsschema. `-MaintenanceConfigurationId`måste anges till ett giltigt värde för poolens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -146,9 +146,9 @@ I följande exempel skapas en ny elastisk pool och underhålls fönstret anges m
     $pool
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhålls perioden när du skapar en hanterad instans
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhållsfönstret när du skapar en hanterad instans
 
-I följande exempel skapas en ny hanterad instans och underhålls fönstret anges med cmdleten [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) . Underhålls fönstret är inställt på instansen, så alla databaser i instansen har instansen underhålls fönster schema. För `-MaintenanceConfigurationId` måste *MaintenanceConfigName* vara ett giltigt värde för din instanss region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny hanterad instans och underhållsfönstret anges med hjälp av cmdleten [New-AzSqlInstance.](/powershell/module/az.sql/new-azsqlinstance) Underhållsfönstret är inställt på instansen, så att alla databaser i instansen har schemat för underhållsfönstret för instansen. För `-MaintenanceConfigurationId` måste *MaintenanceConfigName* vara ett giltigt värde för instansens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```powershell
@@ -162,23 +162,23 @@ I följande exempel skapas en ny hanterad instans och underhålls fönstret ange
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
-I följande exempel visas hur du konfigurerar underhålls fönstret med Azure CLI. Du kan [Installera Azure CLI](/cli/azure/install-azure-cli)eller använda Azure Cloud Shell. 
+I följande exempel visas hur du konfigurerar underhållsfönstret med Hjälp av Azure CLI. Du kan [installera Azure CLI](/cli/azure/install-azure-cli)eller använda Azure Cloud Shell. 
 
-Att konfigurera underhålls fönstret med Azure CLI är bara tillgängligt för SQL-hanterad instans.
+Det går bara att konfigurera underhållsfönstret med Azure CLI för SQL Managed Instance.
 
 ## <a name="launch-azure-cloud-shell"></a>Starta Azure Cloud Shell
 
 Azure Cloud Shell är ett interaktivt gränssnitt som du kan använda för att utföra stegen i den här artikeln. Den har vanliga Azure-verktyg förinstallerat och har konfigurerats för användning med ditt konto. 
 
-Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsare-flik genom att gå till [https://shell.azure.com/cli](https://shell.azure.com/cli) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
+Om du vill öppna Cloud Shell väljer du bara **Prova** från det övre högra hörnet i ett kodblock. Du kan också starta Cloud Shell på en separat webbläsarflik genom att gå till [https://shell.azure.com/cli](https://shell.azure.com/cli) . Kopiera kodblocket genom att välja **Kopiera**, klistra in det i Cloud Shell och kör det genom att trycka på RETUR.
 
-## <a name="discover-available-maintenance-windows"></a>Identifiera tillgängliga underhålls fönster
+## <a name="discover-available-maintenance-windows"></a>Identifiera tillgängliga underhållsfönster
 
-När du ställer in underhålls fönstret har varje region ett eget alternativ för underhålls perioden som motsvarar timezone för regionen som databasen eller poolen finns i.
+När du ställer in underhållsfönstret har varje region sina egna underhållsalternativ som motsvarar tidszonen för den region som databasen eller poolen finns i.
 
-### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Identifiera SQL Database underhålls fönster för elastisk pool
+### <a name="discover-sql-database-and-elastic-pool-maintenance-windows"></a>Upptäck SQL Database och underhåll av elastiska pooler
 
-I följande exempel returneras de tillgängliga underhålls Fönstren för regionen *eastus2* med kommandot [AZ Maintenance Public-Configuration List](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) . För databaser och elastiska pooler anger `maintenanceScope` du till `SQLDB` .
+I följande exempel returneras de tillgängliga underhållsfönster för *regionen eastus2* med [kommandot az maintenance public-configuration list.](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) För databaser och elastiska pooler anger du `maintenanceScope` till `SQLDB` .
 
    ```azurecli
    location="eastus2"
@@ -186,17 +186,17 @@ I följande exempel returneras de tillgängliga underhålls Fönstren för regio
    az maintenance public-configuration list --query "[?location=='$location'&&contains(maintenanceScope,'SQLDB')]"
    ```
 
-### <a name="discover-sql-managed-instance-maintenance-windows"></a>Identifiera underhålls fönster för SQL-hanterad instans
+### <a name="discover-sql-managed-instance-maintenance-windows"></a>Upptäck SQL Managed Instance för underhåll
 
-I följande exempel returneras de tillgängliga underhålls Fönstren för regionen *eastus2* med kommandot [AZ Maintenance Public-Configuration List](/cli/azure/ext/maintenance/maintenance/public-configuration#ext_maintenance_az_maintenance_public_configuration_list) . För hanterade instanser anger `maintenanceScope` du till `SQLManagedInstance` .
+I följande exempel returneras de tillgängliga underhållsfönster för *regionen eastus2* med [kommandot az maintenance public-configuration list.](/cli/azure/maintenance/public-configuration#az_maintenance_public_configuration_list) För hanterade instanser anger du `maintenanceScope` till `SQLManagedInstance` .
 
    ```azurecli
    az maintenance public-configuration list --query "[?location=='eastus2'&&contains(maintenanceScope,'SQLManagedInstance')]"
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>Ange underhålls perioden när du skapar en enskild databas
+## <a name="set-the-maintenance-window-while-creating-a-single-database"></a>Ange underhållsfönstret när du skapar en enkel databas
 
-I följande exempel skapas en ny databas och underhålls fönstret anges med kommandot [AZ SQL DB Create](/cli/azure/sql/db#az_sql_db_create) . `--maint-config-id`(Eller `-m` ) måste anges till ett giltigt värde för databasens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny databas och underhållsfönstret anges med kommandot [az sql db](/cli/azure/sql/db#az_sql_db_create) create. `--maint-config-id`(eller `-m` ) måste anges till ett giltigt värde för databasens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```azurecli
@@ -219,9 +219,9 @@ I följande exempel skapas en ny databas och underhålls fönstret anges med kom
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>Ange underhålls perioden när du skapar en elastisk pool
+## <a name="set-the-maintenance-window-while-creating-an-elastic-pool"></a>Ange underhållsfönstret när du skapar en elastisk pool
 
-I följande exempel skapas en ny elastisk pool och underhålls fönstret används med [AZ SQL Elastic-pool Create-](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) cmdlet. Underhålls perioden är inställd på den elastiska poolen, så alla databaser i poolen har en Pools schema för underhålls fönster. `--maint-config-id`(Eller `-m` ) måste anges till ett giltigt värde för poolens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny elastisk pool och underhållsfönstret anges med hjälp av [cmdleten az sql elastic-pool create.](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) Underhållsfönstret är inställt på den elastiska poolen, så alla databaser i poolen har poolens underhållsschema. `--maint-config-id`(eller `-m` ) måste anges till ett giltigt värde för poolens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```azurecli
@@ -244,9 +244,9 @@ I följande exempel skapas en ny elastisk pool och underhålls fönstret använd
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhålls perioden när du skapar en hanterad instans
+## <a name="set-the-maintenance-window-while-creating-a-managed-instance"></a>Ange underhållsfönstret när du skapar en hanterad instans
 
-I följande exempel skapas en ny hanterad instans och underhålls fönstret anges med [AZ SQL mi Create](/cli/azure/sql/mi#az_sql_mi_create). Underhålls fönstret är inställt på instansen, så alla databaser i instansen har instansen underhålls fönster schema. *MaintenanceConfigName* måste vara ett giltigt värde för din instanss region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel skapas en ny hanterad instans och underhållsfönstret anges med [hjälp av az sql mi create](/cli/azure/sql/mi#az_sql_mi_create). Underhållsfönstret är inställt på instansen, så alla databaser i instansen har schemat för underhållsfönstret för instansen. *MaintenanceConfigName* måste vara ett giltigt värde för instansens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```azurecli
    az sql mi create -g mygroup -n myinstance -l mylocation -i -u myusername -p mypassword --subnet /subscriptions/{SubID}/resourceGroups/{ResourceGroup}/providers/Microsoft.Network/virtualNetworks/{VNETName}/subnets/{SubnetName} -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MaintenanceConfigName}
@@ -254,38 +254,38 @@ I följande exempel skapas en ny hanterad instans och underhålls fönstret ange
 
 -----
 
-## <a name="configure-maintenance-window-for-existing-databases"></a>Konfigurera underhålls perioden för befintliga databaser
+## <a name="configure-maintenance-window-for-existing-databases"></a>Konfigurera underhållsfönstret för befintliga databaser
 
 
-När du tillämpar ett val av en underhålls period i en databas, kan en kort konfiguration (flera sekunder) uppstå i vissa fall när Azure tillämpar de nödvändiga ändringarna.
+När du tillämpar ett val av underhållsfönstret på en databas kan en kort omkonfiguration (flera sekunder) uppstå i vissa fall eftersom Azure tillämpar de ändringar som krävs.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Följande steg anger underhålls perioden för en befintlig databas, elastisk pool eller hanterad instans med hjälp av Azure Portal:
+Följande steg anger underhållsfönstret för en befintlig databas, elastisk pool eller hanterad instans med hjälp av Azure Portal:
 
 
-## <a name="set-the-maintenance-window-for-an-existing-database-or-elastic-pool"></a>Ange underhålls perioden för en befintlig databas eller elastisk pool
+## <a name="set-the-maintenance-window-for-an-existing-database-or-elastic-pool"></a>Ange underhållsfönstret för en befintlig databas eller elastisk pool
 
-1. Gå till den SQL-databas eller elastiska pool som du vill ange underhålls perioden för.
-1. Välj **Underhåll** på menyn **Inställningar** och välj sedan önskad underhålls period.
+1. Gå till den SQL-databas eller elastiska pool som du vill ange underhållsfönstret för.
+1. På menyn **Inställningar** väljer **du Underhåll** och sedan önskad underhållsfönstret.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="Sidan underhåll av SQL-databas":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance.png" alt-text="Sida för SQL-databasunderhåll":::
 
 
-## <a name="set-the-maintenance-window-for-an-existing-managed-instance"></a>Ange underhålls perioden för en befintlig hanterad instans
+## <a name="set-the-maintenance-window-for-an-existing-managed-instance"></a>Ange underhållsfönstret för en befintlig hanterad instans
 
-1. Navigera till den hanterade instans som du vill ange underhålls perioden för.
-1. Välj **Underhåll** på menyn **Inställningar** och välj sedan önskad underhålls period.
+1. Gå till den hanterade instans som du vill ange underhållsfönstret för.
+1. I menyn **Inställningar** väljer **du Underhåll** och sedan önskad underhållsfönstret.
 
-   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="Underhålls sida för SQL-hanterad instans":::
+   :::image type="content" source="media/maintenance-window-configure/maintenance-mi.png" alt-text="Underhållssida för SQL-hanterad instans":::
 
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-## <a name="set-the-maintenance-window-for-an-existing-database"></a>Ange underhålls perioden för en befintlig databas
+## <a name="set-the-maintenance-window-for-an-existing-database"></a>Ange underhållsfönstret för en befintlig databas
 
-I följande exempel anges underhålls perioden för en befintlig databas med hjälp av cmdleten [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) . `-MaintenanceConfigurationId`Måste anges till ett giltigt värde för databasens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret för en befintlig databas med hjälp av cmdleten [Set-AzSqlDatabase.](/powershell/module/az.sql/set-azsqldatabase) `-MaintenanceConfigurationId`måste anges till ett giltigt värde för databasens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```powershell-interactive
     # Select different maintenance window
@@ -300,9 +300,9 @@ I följande exempel anges underhålls perioden för en befintlig databas med hj�
     $database
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Ange underhålls perioden för en befintlig elastisk pool
+## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Ange underhållsfönstret för en befintlig elastisk pool
 
-I följande exempel anges underhålls fönstret för en befintlig elastisk pool med cmdleten [set-AzSqlElasticPool](/powershell/module/az.sql/set-azsqlelasticpool) . Det är viktigt att se till att `$maintenanceConfig` värdet är ett giltigt värde för poolens region.  För att få giltiga värden för en region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret för en befintlig elastisk pool med hjälp av cmdleten [Set-AzSqlElasticPool.](/powershell/module/az.sql/set-azsqlelasticpool) Det är viktigt att se till att `$maintenanceConfig` värdet är ett giltigt värde för poolens region.  Information om hur du hämtar giltiga värden för en region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```powershell-interactive
     # Select different maintenance window
@@ -319,9 +319,9 @@ I följande exempel anges underhålls fönstret för en befintlig elastisk pool 
 
 
 
-## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Ange underhålls perioden för en befintlig hanterad instans
+## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Ange underhållsfönstret för en befintlig hanterad instans
 
-I följande exempel anges underhålls fönstret för en befintlig hanterad instans med cmdleten [set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) . Det är viktigt att se till att `$maintenanceConfig` värdet måste vara ett giltigt värde för din instanss region.  För att få giltiga värden för en region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret på en befintlig hanterad instans med hjälp av [cmdleten Set-AzSqlInstance.](/powershell/module/az.sql/set-azsqlinstance) Det är viktigt att se till att `$maintenanceConfig` värdet måste vara ett giltigt värde för instansens region.  Information om hur du hämtar giltiga värden för en region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
 
    ```powershell-interactive
@@ -333,11 +333,11 @@ I följande exempel anges underhålls fönstret för en befintlig hanterad insta
 
 # <a name="cli"></a>[CLI](#tab/azure-cli)
 
-I följande exempel visas hur du konfigurerar underhålls fönstret med Azure CLI. Du kan [Installera Azure CLI](/cli/azure/install-azure-cli)eller använda Azure Cloud Shell.
+I följande exempel visas hur du konfigurerar underhållsfönstret med Hjälp av Azure CLI. Du kan [installera Azure CLI](/cli/azure/install-azure-cli)eller använda Azure Cloud Shell.
 
-## <a name="set-the-maintenance-window-for-an-existing-database"></a>Ange underhålls perioden för en befintlig databas
+## <a name="set-the-maintenance-window-for-an-existing-database"></a>Ange underhållsfönstret för en befintlig databas
 
-I följande exempel anges underhålls perioden för en befintlig databas med hjälp av kommandot [AZ SQL DB Update](/cli/azure/sql/db#az_sql_db_update) . `--maint-config-id`(Eller `-m` ) måste anges till ett giltigt värde för databasens region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret för en befintlig databas med kommandot [az sql db](/cli/azure/sql/db#az_sql_db_update) update. `--maint-config-id`(eller `-m` ) måste anges till ett giltigt värde för databasens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```azurecli
     # Select different maintenance window
@@ -351,9 +351,9 @@ I följande exempel anges underhålls perioden för en befintlig databas med hj�
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Ange underhålls perioden för en befintlig elastisk pool
+## <a name="set-the-maintenance-window-on-an-existing-elastic-pool"></a>Ange underhållsfönstret för en befintlig elastisk pool
 
-I följande exempel anges underhålls fönstret för en befintlig elastisk pool med kommandot [AZ SQL Elastic-pool Update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) . Det är viktigt att se till att `maintenanceConfig` värdet är ett giltigt värde för poolens region.  För att få giltiga värden för en region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret för en befintlig elastisk pool med kommandot [az sql elastic-pool update.](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update) Det är viktigt att se till att `maintenanceConfig` värdet är ett giltigt värde för poolens region.  Information om hur du hämtar giltiga värden för en region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```azurecli
     # Select different maintenance window
@@ -367,9 +367,9 @@ I följande exempel anges underhålls fönstret för en befintlig elastisk pool 
       --maint-config-id $maintenanceConfig
    ```
 
-## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Ange underhålls perioden för en befintlig hanterad instans
+## <a name="set-the-maintenance-window-on-an-existing-managed-instance"></a>Ange underhållsfönstret för en befintlig hanterad instans
 
-I följande exempel anges underhålls fönstret med [AZ SQL mi Update](/cli/azure/sql/mi#az_sql_mi_update). Underhålls fönstret är inställt på instansen, så alla databaser i instansen har instansen underhålls fönster schema. För `-MaintenanceConfigurationId` måste *MaintenanceConfigName* vara ett giltigt värde för din instanss region. För att få giltiga värden för din region, se [identifiera tillgängliga underhålls fönster](#discover-available-maintenance-windows).
+I följande exempel anges underhållsfönstret med [az sql mi update](/cli/azure/sql/mi#az_sql_mi_update). Underhållsfönstret är inställt på instansen, så alla databaser i instansen har schemat för underhållsfönstret för instansen. För `-MaintenanceConfigurationId` måste *MaintenanceConfigName* vara ett giltigt värde för instansens region. Information om hur du hämtar giltiga värden för din region finns [i Identifiera tillgängliga underhållsfönster.](#discover-available-maintenance-windows)
 
    ```azurecli
    az sql mi update -g mygroup  -n myinstance -m /subscriptions/{SubID}/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_{Region}_{MainteanceConfigName}
@@ -383,8 +383,8 @@ Se till att ta bort resurser som inte behövs när du är klar med dem för att 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Navigera till den SQL-databas eller elastisk pool som du inte längre behöver.
-1. I **översikts** menyn väljer du alternativet för att ta bort resursen.
+1. Gå till DEN SQL-databas eller elastiska pool som du inte längre behöver.
+1. På menyn **Översikt** väljer du alternativet för att ta bort resursen.
 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -421,6 +421,6 @@ Se till att ta bort resurser som inte behövs när du är klar med dem för att 
 
 ## <a name="next-steps"></a>Nästa steg
 
-- Mer information om underhålls fönstret finns i [underhålls period (för hands version)](maintenance-window.md).
-- Mer information finns i [vanliga frågor och svar om underhålls fönster](maintenance-window-faq.yml).
-- Mer information om hur du optimerar prestanda finns [i övervakning och prestanda justering i Azure SQL Database och Azure SQL-hanterad instans](monitor-tune-overview.md).
+- Mer information om underhållsfönstret finns i [Underhållsfönstret (förhandsversion)](maintenance-window.md).
+- Mer information finns i Vanliga frågor [och svar om underhållsfönstret.](maintenance-window-faq.yml)
+- Mer information om hur du optimerar prestanda finns [i Övervakning och prestandajustering i Azure SQL Database och Azure SQL Managed Instance](monitor-tune-overview.md).

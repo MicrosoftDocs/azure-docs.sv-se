@@ -112,7 +112,7 @@
           href: concepts/ui-framework/ui-sdk-overview.md
         - name: Funktioner i UI Framework
           href: concepts/ui-framework/ui-sdk-features.md
-    - name: 'SDK:er och REST API:er'
+    - name: 'SDK:er och REST-API:er'
       href: concepts/sdk-options.md
     - name: Klient- och serverarkitektur
       href: concepts/client-and-server-architecture.md
@@ -152,7 +152,7 @@
     - name: Översikt för referensdokumentation
       href: concepts/reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/communication/communication
+      href: /cli/azure/communication
     - name: REST API – dokumentation
       href: /rest/api/communication/
     - name: Samtalsbibliotek

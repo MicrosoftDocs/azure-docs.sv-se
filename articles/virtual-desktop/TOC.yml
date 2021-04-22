@@ -215,7 +215,7 @@
     - name: Linux-support
       href: linux-overview.md
     - name: Azure CLI
-      href: /cli/azure/ext/desktopvirtualization/desktopvirtualization
+      href: /cli/azure/desktopvirtualization
     - name: Beräkna Azure Monitor kostnader
       href: azure-monitor-costs.md
     - name: RDP-filinställningar som stöds
@@ -223,7 +223,7 @@
     - name: Storleksvägledning för virtuella datorer
       href: /windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context
     - name: Azures kommandoradsgränssnitt (CLI)
-      href: /cli/azure/ext/desktopvirtualization/
+      href: /cli/azure/
     - name: Azure – exempel på scenarier
       href: /azure/architecture/example-scenario/wvd/windows-virtual-desktop
     - name: E-postidentifiering
