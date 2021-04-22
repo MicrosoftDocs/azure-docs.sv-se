@@ -1,52 +1,52 @@
 ---
-title: Uppdatera lagrings mål för Azure HPC cache
-description: Redigera lagrings mål för Azure HPC cache
+title: Uppdatera Azure HPC Cache lagringsmål
+description: Så här redigerar du Azure HPC Cache lagringsmål
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 03/29/2021
 ms.author: v-erkel
-ms.openlocfilehash: d61612b6e491fae550559e499cb360efc0f7c044
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: ebf68c1eb06984e2de8114c53e1bb55d52aed70a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107258919"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862641"
 ---
 # <a name="edit-storage-targets"></a>Redigera lagringsmål
 
-Du kan ta bort eller ändra lagrings mål med Azure Portal eller med hjälp av Azure CLI.
+Du kan ta bort eller ändra lagringsmål med Azure Portal eller med hjälp av Azure CLI.
 
-Beroende på typ av lagring kan du ändra dessa värden för lagrings mål:
+Beroende på typen av lagring kan du ändra dessa lagringsmålvärden:
 
-* För Blob Storage-mål kan du ändra namn områdets sökväg och åtkomst princip.
+* För Blob Storage-mål kan du ändra sökvägen för namnområdet och åtkomstprincipen.
 
-* För NFS-lagrings mål kan du ändra dessa värden:
+* För NFS-lagringsmål kan du ändra följande värden:
 
-  * Namn områdes Sök vägar
+  * Sökvägar för namnområde
   * Åtkomstprincip
 
-  * Under katalogen lagrings export eller export som är associerad med en namn områdes Sök väg
-  * Användnings modell
+  * Lagringsexport- eller exportunderkatalogen som är associerad med en namnområdessökväg
+  * Användningsmodell
 
-* För ADLS-NFS-lagrings mål kan du ändra namn rymds Sök vägen, åtkomst principen och användnings modellen.
+* För ADLS-NFS-lagringsmål kan du ändra sökvägen för namnområdet, åtkomstprincipen och användningsmodellen.
 
-Du kan inte redigera ett lagrings måls namn, typ eller backend-filsystem (BLOB container eller NFS-värdnamn/IP-adress). Om du behöver ändra dessa egenskaper tar du bort lagrings målet och skapar en ersättning med det nya värdet.
+Du kan inte redigera lagringsmålnamnet, typen eller backend-lagringssystemet (blobcontainer eller NFS-värdnamn/IP-adress). Om du behöver ändra dessa egenskaper tar du bort lagringsmålet och skapar en ersättning med det nya värdet.
 
 > [!TIP]
-> I [Hantera Azure HPC cache-video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) visas hur du redigerar ett lagrings mål i Azure Portal.
+> Videon [Hantera Azure HPC Cache visar](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) hur du redigerar ett lagringsmål i Azure Portal.
 
-## <a name="remove-a-storage-target"></a>Ta bort ett lagrings mål
+## <a name="remove-a-storage-target"></a>Ta bort ett lagringsmål
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Om du vill ta bort ett lagrings mål öppnar du sidan **lagrings mål** . Välj lagrings målet i listan och klicka på knappen **ta bort** .
+Om du vill ta bort ett lagringsmål öppnar **du sidan Lagringsmål.** Välj lagringsmålet i listan och klicka på knappen **Ta** bort.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-Använd [AZ HPC-cache Storage – Target Remove](/cli/azure/ext/hpc-cache/hpc-cache/storage-target#ext-hpc-cache-az-hpc-cache-storage-target-remove) för att ta bort ett lagrings mål från cachen.
+Använd [az hpc-cache storage-target remove för](/cli/azure/hpc-cache/storage-target#az_hpc_cache_storage_target_remove) att ta bort ett lagringsmål från cachen.
 
 ```azurecli
 $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-cache0629 --name blob1
@@ -61,31 +61,31 @@ $ az hpc-cache storage-target remove --resource-group cache-rg --cache-name doc-
 
 ---
 
-Om du tar bort ett lagrings mål tas lagrings systemets koppling bort från det här Azure HPC cache-systemet, men det ändrar inte Server dels lagrings systemet. Om du till exempel använde en Azure Blob Storage-behållare finns behållaren och dess innehåll fortfarande kvar när du har tagit bort den från cachen. Du kan lägga till behållaren i en annan Azure HPC-cache, lägga till den i cacheminnet igen eller ta bort den med Azure Portal.
+Om du tar bort ett lagringsmål tas lagringssystemets association med Azure HPC Cache lagringssystemet bort, men det ändrar inte lagringssystemet i backend-systemet. Om du till exempel har använt en Azure Blob Storage-container finns containern och dess innehåll fortfarande kvar när du har tagit bort den från cachen. Du kan lägga till containern i en Azure HPC Cache, lägga till den i cacheminnet igen eller ta bort den med Azure Portal.
 
-Alla fil ändringar som lagras i cacheminnet skrivs till Server dels lagrings systemet innan lagrings målet tas bort. Den här processen kan ta en timme eller mer om mycket ändrade data finns i cacheminnet.
+Alla filändringar som lagras i cachen skrivs till backend-lagringssystemet innan lagringsmålet tas bort. Den här processen kan ta en timme eller mer om många ändrade data finns i cacheminnet.
 
-## <a name="change-a-blob-storage-targets-namespace-path"></a>Ändra namn områdes Sök vägen för ett Blob Storage-mål
+## <a name="change-a-blob-storage-targets-namespace-path"></a>Ändra sökvägen för ett Blob Storage-måls namnområde
 
-Namn områdes Sök vägar är de sökvägar som klienter använder för att montera det här lagrings målet. (Mer information finns i [planera den aggregerade namn rymden](hpc-cache-namespace.md) och [Konfigurera den sammanställda namn rymden](add-namespace-paths.md)).
+Sökvägar för namnområden är sökvägarna som klienter använder för att montera lagringsmålet. (Mer information finns i [Planera det aggregerade namnområdet](hpc-cache-namespace.md) [och Konfigurera det aggregerade namnområdet](add-namespace-paths.md)).
 
-Namn områdes Sök vägen är den enda uppdatering du kan göra i ett Azure Blob Storage-mål. Använd Azure Portal eller Azure CLI för att ändra det.
+Sökvägen till namnområdet är den enda uppdatering som du kan göra för ett Azure Blob Storage-mål. Använd Azure Portal eller Azure CLI för att ändra den.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Använd **namn områdes** sidan för Azure HPC-cachen. Namn områdes sidan beskrivs mer detaljerat i artikeln Konfigurera sammanställd [namnrymd](add-namespace-paths.md).
+Använd sidan **Namnområde** för din Azure HPC Cache. Namnområdessidan beskrivs i detalj i artikeln Konfigurera [det aggregerade namnområdet](add-namespace-paths.md).
 
-Klicka på namnet på den sökväg som du vill ändra och skapa den nya sökvägen i fönstret Redigera som visas.
+Klicka på namnet på den sökväg som du vill ändra och skapa den nya sökvägen i redigeringsfönstret som visas.
 
-![Skärm bild av namn områdes sidan efter att du har klickat på en BLOB namespace-sökväg. redigerings fälten visas i ett fönster till höger](media/update-namespace-blob.png)
+![Skärmbild av namnområdessidan när du har klickat på en sökväg för blobnamnområdet – redigeringsfälten visas i ett fönster till höger](media/update-namespace-blob.png)
 
-När du har gjort ändringarna klickar du på **OK** för att uppdatera lagrings målet, eller klicka på **Avbryt** om du vill ignorera ändringarna.
+När du har gjort ändringarna klickar du **på OK** för att uppdatera lagringsmålet eller klickar på **Avbryt för** att ta bort ändringarna.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-Om du vill ändra ett Blob Storage Target-namnområde med Azure CLI använder du kommandot [AZ HPC-cache Blob-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/blob-storage-target#ext-hpc-cache-az-hpc-cache-blob-storage-target-update). Endast `--virtual-namespace-path` värdet kan ändras.
+Om du vill ändra namnområdet för ett bloblagringsmål med Azure CLI använder du kommandot [az hpc-cache blob-storage-target update](/cli/azure/hpc-cache/blob-storage-target#az_hpc_cache_blob_storage_target_update). Endast `--virtual-namespace-path` värdet kan ändras.
 
   ```azurecli
   az hpc-cache blob-storage-target update --cache-name cache-name --name target-name \
@@ -94,53 +94,53 @@ Om du vill ändra ett Blob Storage Target-namnområde med Azure CLI använder du
 
 ---
 
-## <a name="update-an-nfs-storage-target"></a>Uppdatera ett NFS-lagrings mål
+## <a name="update-an-nfs-storage-target"></a>Uppdatera ett NFS-lagringsmål
 
-För NFS-lagrings mål kan du ändra eller lägga till sökvägar för virtuella namn områden, ändra de NFS-export-eller under katalog värden som en namn områdes Sök väg pekar på och ändra användnings modellen.
+För NFS-lagringsmål kan du ändra eller lägga till sökvägar för virtuellt namnområde, ändra de NFS-export- eller underkatalogvärden som en namnrymdssökväg pekar på och ändra användningsmodellen.
 
-Lagrings mål i cacheminnen med vissa typer av anpassade DNS-inställningar har också en kontroll för att uppdatera deras IP-adresser. (Den här typen av konfiguration är sällsynt.)
+Lagringsmål i cacheminnen med vissa typer av anpassade DNS-inställningar har också en kontroll för att uppdatera sina IP-adresser. (Den här typen av konfiguration är sällsynt.)
 
-Mer information finns nedan:
+Information finns nedan:
 
-* [Ändra sammanställda namn rymds värden](#change-aggregated-namespace-values) (sökväg för virtuell namn område, åtkomst princip, export och export)
-* [Ändra användnings modellen](#change-the-usage-model)
+* [Ändra aggregerade namnområdesvärden](#change-aggregated-namespace-values) (virtuell namnrymdssökväg, åtkomstprincip, export och export-underkatalog)
+* [Ändra användningsmodellen](#change-the-usage-model)
 * [Uppdatera DNS](#update-ip-address-custom-dns-configurations-only)
 
-### <a name="change-aggregated-namespace-values"></a>Ändra sammanställda namn områdes värden
+### <a name="change-aggregated-namespace-values"></a>Ändra aggregerade namnområdesvärden
 
-Du kan använda Azure Portal eller Azure CLI för att ändra sökvägen till klient-Facing-namnrymd, lagrings export och export-underkatalogen (om den används).
+Du kan använda Azure Portal eller Azure CLI för att ändra sökvägen till det klientriktade namnområdet, lagringsexporten och underkatalogen export (om det används).
 
-Läs rikt linjerna i [Lägg till NFS-namnområden sökvägar](add-namespace-paths.md#nfs-namespace-paths) om du behöver en påminnelse om hur du skapar flera giltiga sökvägar på ett lagrings mål.
+Läs riktlinjerna i Lägg [till sökvägar för NFS-namnrymd](add-namespace-paths.md#nfs-namespace-paths) om du behöver en påminnelse om hur du skapar flera giltiga sökvägar på ett lagringsmål.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Använd **namn områdes** sidan för Azure HPC-cachen för att uppdatera namn områdes värden. Den här sidan beskrivs mer detaljerat i artikeln Konfigurera sammanställd [namnrymd](add-namespace-paths.md).
+Använd sidan **Namnområde** för din Azure HPC Cache uppdatera namnområdesvärden. Den här sidan beskrivs i detalj i artikeln [Konfigurera det aggregerade namnområdet](add-namespace-paths.md).
 
-![skärm bild av sidan för portalens namn område med NFS-uppdateringstjänsten öppen till höger](media/update-namespace-nfs.png)
+![skärmbild av portalens namnområdessida med NFS-uppdateringssidan öppen till höger](media/update-namespace-nfs.png)
 
 1. Klicka på namnet på den sökväg som du vill ändra.
-1. Använd fönstret Redigera om du vill ange nya värden för virtuell sökväg, exportera eller under katalog eller välja en annan åtkomst princip.
-1. När du har gjort ändringarna klickar du på **OK** för att uppdatera lagrings målet eller **Avbryt** för att ignorera ändringar.
+1. Använd redigeringsfönstret för att skriva in nya värden för virtuell sökväg, export eller underkatalog eller för att välja en annan åtkomstprincip.
+1. När du har gjort ändringarna klickar du **på OK** för att uppdatera lagringsmålet eller **Avbryt för** att ta bort ändringarna.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-Använd ``--junction`` alternativet i kommandot [AZ HPC-cache-NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target) för att ändra namn områdets sökväg, NFS-export eller exportera under katalog.
+Använd alternativet ``--junction`` i kommandot az [hpc-cache nfs-storage-target update](/cli/azure/hpc-cache/nfs-storage-target) för att ändra underkatalogen för namnområdessökväg, NFS-export eller export.
 
-``--junction``Parametern använder följande värden:
+Parametern ``--junction`` använder följande värden:
 
-* ``namespace-path`` -Klientens virtuella fil Sök väg
-* ``nfs-export`` – Lagrings system exporten som ska associeras med den klient-riktade sökvägen
-* ``target-path`` (valfritt) – en under katalog till exporten, om det behövs
+* ``namespace-path`` – Den klientriktade virtuella filsökvägen
+* ``nfs-export`` – Lagringssystemet exporteras för att associeras med den klientriktade sökvägen
+* ``target-path`` (valfritt) – En underkatalog för exporten, om det behövs
 
 Exempel: ``--junction namespace-path="/nas-1" nfs-export="/datadisk1" target-path="/test"``
 
-Du måste ange alla tre värdena för varje sökväg i ``--junction`` instruktionen. Använd de befintliga värdena för värden som du inte vill ändra.
+Du måste ange alla tre värden för varje sökväg i ``--junction`` -instruktionen. Använd de befintliga värdena för alla värden som du inte vill ändra.
 
-Cache-namn, lagrings mål namn och resurs grupp krävs även i alla uppdaterings kommandon.
+Cachenamnet, lagringsmålnamnet och resursgruppen krävs också i alla uppdateringskommandon.
 
-Exempel kommando:
+Exempelkommando:
 
 ```azurecli
 az hpc-cache nfs-storage-target update --cache-name mycache \
@@ -150,73 +150,73 @@ az hpc-cache nfs-storage-target update --cache-name mycache \
 
 ---
 
-### <a name="change-the-usage-model"></a>Ändra användnings modellen
+### <a name="change-the-usage-model"></a>Ändra användningsmodellen
 
-Användnings modellen påverkar hur cachen behåller data. Läs mer i avsnittet om [användnings modeller för cache](cache-usage-models.md) .
+Användningsmodellen påverkar hur cachen behåller data. Läs [Förstå cacheanvändningsmodeller om](cache-usage-models.md) du vill veta mer.
 
 > [!NOTE]
-> Om du ändrar användnings modeller kan du behöva montera om klienter för att undvika NLM-fel. Läs [om hur du ommonterar klienter för att se](cache-usage-models.md#know-when-to-remount-clients-for-nlm) mer information.
+> Om du ändrar användningsmodeller kan du behöva återmontera klienter för att undvika NLM-fel. Mer [information finns i Veta när klienter ska återmonteras.](cache-usage-models.md#know-when-to-remount-clients-for-nlm)
 
-Använd någon av dessa metoder för att ändra användnings modellen för ett NFS-lagrings mål.
+Om du vill ändra användningsmodellen för ett NFS-lagringsmål använder du någon av dessa metoder.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Ändra användnings modellen från sidan **lagrings mål** i Azure Portal. Klicka på namnet på det lagrings mål som du vill ändra.
+Ändra användningsmodellen från **sidan Lagringsmål** i Azure Portal. Klicka på namnet på lagringsmålet som ska ändras.
 
-![skärm bild av redigerings sidan för ett NFS-lagrings mål](media/edit-storage-nfs.png)
+![skärmbild av redigeringssidan för ett NFS-lagringsmål](media/edit-storage-nfs.png)
 
-Använd List rutan för att välja en ny användnings modell. Klicka på **OK** för att uppdatera lagrings målet, eller klicka på **Avbryt** om du vill ignorera ändringarna.
+Använd listr listrutan för att välja en ny användningsmodell. Klicka **på OK** för att uppdatera lagringsmålet eller klicka på Avbryt **för** att ta bort ändringarna.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Konfigurera Azure CLI för Azure HPC-cache](./az-cli-prerequisites.md).
+[Konfigurera Azure CLI för Azure HPC Cache](./az-cli-prerequisites.md).
 
-Använd kommandot [AZ HPC-cache-NFS-Storage-Target Update](/cli/azure/ext/hpc-cache/hpc-cache/nfs-storage-target#ext-hpc-cache-az-hpc-cache-nfs-storage-target-update) .
+Använd kommandot [az hpc-cache nfs-storage-target update.](/cli/azure/hpc-cache/nfs-storage-target#az_hpc_cache_nfs_storage_target_update)
 
-Uppdaterings kommandot är nästan identiskt med det kommando som du använder för att lägga till ett NFS-lagrings mål. Mer information och exempel finns i [skapa ett NFS-mål](hpc-cache-add-storage.md#create-an-nfs-storage-target) .
+Uppdateringskommandot är nästan identiskt med kommandot som du använder för att lägga till ett NFS-lagringsmål. Mer information [och exempel finns i Skapa ett NFS-lagringsmål.](hpc-cache-add-storage.md#create-an-nfs-storage-target)
 
-Uppdatera alternativet om du vill ändra användnings modellen ``--nfs3-usage-model`` . Exempel: ``--nfs3-usage-model WRITE_WORKLOAD_15``
+Om du vill ändra användningsmodellen uppdaterar du ``--nfs3-usage-model`` alternativet . Exempel: ``--nfs3-usage-model WRITE_WORKLOAD_15``
 
-Cache-namn, lagrings mål namn och resurs grupps värden krävs också.
+Cachenamn, lagringsmålnamn och resursgruppsvärden krävs också.
 
-Om du vill kontrol lera namnen på användnings modellerna använder du kommandot [AZ HPC-cache Usage-Model List](/cli/azure/ext/hpc-cache/hpc-cache/usage-model#ext-hpc-cache-az-hpc-cache-usage-model-list).
+Om du vill kontrollera namnen på användningsmodellerna använder du kommandot [az hpc-cache usage-model list](/cli/azure/hpc-cache/usage-model#az_hpc_cache_usage-model-list).
 
-Om cachen har stoppats eller inte är i felfritt tillstånd kommer uppdateringen att gälla när cachen är felfri.
+Om cacheminnet stoppas eller inte är i felfritt tillstånd gäller uppdateringen när cachen är felfri.
 
 ---
 
 ### <a name="update-ip-address-custom-dns-configurations-only"></a>Uppdatera IP-adress (endast anpassade DNS-konfigurationer)
 
-Om din cache använder en DNS-konfiguration som inte är standard är det möjligt att din NFS-målplatss IP-adress kan ändras på grund av DNS-ändringar på Server sidan. Om DNS-servern ändrar Server dels lagrings systemets IP-adress kan Azure HPC-cache förlora åtkomst till lagrings systemet.
+Om ditt cacheminne använder en DNS-konfiguration som inte är standard är det möjligt att IP-adressen för ditt NFS-lagringsmål ändras på grund av DNS-ändringar i serverslutet. Om DIN DNS-server ändrar lagringssystemets IP-adress kan Azure HPC Cache förlora åtkomst till lagringssystemet.
 
-Vi rekommenderar att du arbetar med chefen för cacheminnets anpassade DNS-system för att planera för eventuella uppdateringar, eftersom dessa ändringar gör lagringen otillgänglig.
+Vi rekommenderar att du samarbetar med cachehanterarens anpassade DNS-system för att planera för eventuella uppdateringar, eftersom dessa ändringar gör lagringen otillgänglig.
 
-Om du behöver uppdatera lagrings målets DNS-angivna IP-adress finns det en knapp i listan lagrings mål. Klicka på **Uppdatera DNS** om du vill fråga den anpassade DNS-servern efter en ny IP-adress.
+Om du behöver uppdatera ett lagringsmåls DNS-angivna IP-adress finns det en knapp i listan Lagringsmål. Klicka **på Uppdatera DNS** för att fråga den anpassade DNS-servern efter en ny IP-adress.
 
-![Skärm bild av listan över lagrings mål. För ett lagrings mål, "..." menyn i den högra kolumnen är öppen och två alternativ visas: ta bort och uppdatera DNS.](media/refresh-dns.png)
+![Skärmbild av listan med lagringsmål. För ett lagringsmål är "..." menyn längst till höger är öppen och två alternativ visas: Ta bort och Uppdatera DNS.](media/refresh-dns.png)
 
-Om det lyckas bör uppdateringen ta mindre än två minuter. Du kan bara uppdatera ett lagrings mål i taget. vänta tills den föregående åtgärden har slutförts innan du testar en annan.
+Om uppdateringen lyckas bör uppdateringen ta mindre än två minuter. Du kan bara uppdatera ett lagringsmål i taget. vänta tills den föregående åtgärden har slutförts innan du provar en annan.
 
-## <a name="update-an-adls-nfs-storage-target-preview"></a>Uppdatera ett ADLS-NFS-lagrings mål (för hands version)
+## <a name="update-an-adls-nfs-storage-target-preview"></a>Uppdatera ett ADLS-NFS-lagringsmål (FÖRHANDSVERSION)
 
-Precis som NFS-mål kan du ändra namn rymds Sök vägen och användnings modellen för ADLS-NFS-lagrings mål.
+På samma sätt som med NFS-mål kan du ändra sökvägen för namnområdet och användningsmodellen för ADLS-NFS-lagringsmål.
 
-### <a name="change-an-adls-nfs-namespace-path"></a>Ändra sökvägen till en ADLS-NFS-namnrymd
+### <a name="change-an-adls-nfs-namespace-path"></a>Ändra en sökväg för ADLS-NFS-namnområdet
 
-Använd **namn områdes** sidan för Azure HPC-cachen för att uppdatera namn områdes värden. Den här sidan beskrivs mer detaljerat i artikeln Konfigurera sammanställd [namnrymd](add-namespace-paths.md).
+Använd sidan **Namnområde** för din Azure HPC Cache uppdatera namnområdesvärden. Den här sidan beskrivs i detalj i artikeln [Konfigurera det aggregerade namnområdet](add-namespace-paths.md).
 
-![skärm bild av sidan Portal namn område med en ADS-NFS-uppdatera sida öppen till höger](media/update-namespace-adls.png)
+![skärmbild av portalens namnområdessida med en ADS-NFS-uppdateringssida öppen till höger](media/update-namespace-adls.png)
 
 1. Klicka på namnet på den sökväg som du vill ändra.
-1. Använd redigera-fönstret för att ange en ny virtuell sökväg eller uppdatera åtkomst principen.
-1. När du har gjort ändringarna klickar du på **OK** för att uppdatera lagrings målet eller **Avbryt** för att ignorera ändringar.
+1. Använd redigeringsfönstret för att skriva in en ny virtuell sökväg eller uppdatera åtkomstprincipen.
+1. När du har gjort ändringarna klickar du **på OK** för att uppdatera lagringsmålet eller **Avbryt för** att ta bort ändringarna.
 
-### <a name="change-adls-nfs-usage-models"></a>Ändra ADLS-NFS-användnings modeller
+### <a name="change-adls-nfs-usage-models"></a>Ändra användningsmodeller för ADLS-NFS
 
-Konfigurationen för användnings modellerna ADLS-NFS är identisk med valet av NFS-användnings modell. Läs Portal anvisningarna i [ändra användnings modellen](#change-the-usage-model) i NFS-avsnittet ovan. Ytterligare verktyg för att uppdatera ADLS-NFS-lagrings mål är under utveckling.
+Konfigurationen för ADLS-NFS-användningsmodeller är identisk med valet av NFS-användningsmodell. Läs portalanvisningarna i [Ändra användningsmodellen](#change-the-usage-model) i NFS-avsnittet ovan. Ytterligare verktyg för att uppdatera ADLS-NFS-lagringsmål är under utveckling.
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-* Läs [Lägg till lagrings mål](hpc-cache-add-storage.md) för mer information om de här alternativen.
-* Läs [planera det sammanställda namn området](hpc-cache-namespace.md) för fler tips om hur du använder virtuella sökvägar.
+* Läs [Lägga till lagringsmål](hpc-cache-add-storage.md) om du vill veta mer om de här alternativen.
+* Läs [Planera det aggregerade namnområdet för fler](hpc-cache-namespace.md) tips om hur du använder virtuella sökvägar.

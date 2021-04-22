@@ -11,32 +11,32 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2d23e073a43d61a501e93e0288f222ef26407744
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: f61936e622a539b29c6788f631df5de42bb2f242
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107538230"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861255"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Skapa ett Azure Machine Learning beräkningskluster
 
-Lär dig hur du skapar och hanterar ett [beräkningskluster](concept-compute-target.md#azure-machine-learning-compute-managed) i Azure Machine Learning arbetsyta.
+Lär dig hur du skapar och hanterar ett [beräkningskluster](concept-compute-target.md#azure-machine-learning-compute-managed) i din Azure Machine Learning arbetsyta.
 
-Du kan använda Azure Machine Learning beräkningskluster för att distribuera en tränings- eller batch-inferensprocess över ett kluster med CPU- eller GPU-beräkningsnoder i molnet. Mer information om VM-storlekar som innehåller GPU:er finns i [GPU-optimerade storlekar för virtuella datorer.](../virtual-machines/sizes-gpu.md) 
+Du kan använda Azure Machine Learning beräkningskluster för att distribuera en tränings- eller batch inferensprocess över ett kluster med CPU- eller GPU-beräkningsnoder i molnet. Mer information om VM-storlekar som inkluderar GPU:er finns i [STORLEKAR för GPU-optimerade virtuella datorer.](../virtual-machines/sizes-gpu.md) 
 
 I den här artikeln får du lära dig att:
 
 * Skapa ett beräkningskluster
-* Lägre kostnad för beräkningskluster
+* Sänk kostnaden för beräkningskluster
 * Konfigurera en [hanterad identitet](../active-directory/managed-identities-azure-resources/overview.md) för klustret
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 * En Azure Machine Learning-arbetsyta. Mer information finns i Skapa [en Azure Machine Learning arbetsyta.](how-to-manage-workspace.md)
 
-* [Azure CLI-tillägget för Machine Learning,](reference-azure-machine-learning-cli.md) [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)eller Azure Machine Learning Visual Studio [Code-tillägget](tutorial-setup-vscode-extension.md).
+* [Azure CLI-tillägget för Machine Learning service](reference-azure-machine-learning-cli.md), Azure Machine Learning Python [SDK](/python/api/overview/azure/ml/intro)eller [Azure Machine Learning Visual Studio Code-tillägget](tutorial-setup-vscode-extension.md).
 
-* Om du använder Python SDK [ställer du in utvecklingsmiljön med en arbetsyta](how-to-configure-environment.md).  När din miljö har ställts in kopplar du till arbetsytan i Python-skriptet:
+* Om du använder Python SDK [ställer du in utvecklingsmiljön med en arbetsyta](how-to-configure-environment.md).  När din miljö har ställts in ansluter du till arbetsytan i Python-skriptet:
 
     ```python
     from azureml.core import Workspace
@@ -46,9 +46,9 @@ I den här artikeln får du lära dig att:
 
 ## <a name="what-is-a-compute-cluster"></a>Vad är ett beräkningskluster?
 
-Azure Machine Learning beräkningskluster är en hanterad beräkningsinfrastruktur som gör att du enkelt kan skapa en beräkning med en eller flera noder. Beräkningen skapas i din arbetsyteregion som en resurs som kan delas med andra användare på din arbetsyta. Beräkningen skalas upp automatiskt när ett jobb skickas och kan läggas till i en Azure-Virtual Network. Beräkningen körs i en containermiljö och paketerar dina modellberoenden i en [Docker-container.](https://www.docker.com/why-docker)
+Azure Machine Learning ett beräkningskluster är en hanterad beräkningsinfrastruktur som gör att du enkelt kan skapa en beräkning med en eller flera noder. Beräkningen skapas i din arbetsyteregion som en resurs som kan delas med andra användare i din arbetsyta. Beräkningen skalas upp automatiskt när ett jobb skickas och kan läggas i ett Azure-Virtual Network. Beräkningen körs i en containermiljö och paketerar modellberoendena i en [Docker-container.](https://www.docker.com/why-docker)
 
-Beräkningskluster kan köra jobb på ett säkert sätt i [en virtuell nätverksmiljö](how-to-secure-training-vnet.md)utan att företag behöver öppna SSH-portar. Jobbet körs i en containermiljö och paketerar dina modellberoenden i en Docker-container. 
+Beräkningskluster kan köra jobb på ett säkert sätt [i en virtuell nätverksmiljö](how-to-secure-training-vnet.md)utan att företag behöver öppna SSH-portar. Jobbet körs i en containermiljö och paketerar dina modellberoenden i en Docker-container. 
 
 ## <a name="limitations"></a>Begränsningar
 
@@ -79,7 +79,7 @@ Beräkningen skalas automatiskt ned till noll noder när den inte används.   De
 # <a name="python"></a>[Python](#tab/python)
 
 
-Om du vill skapa en permanent Azure Machine Learning Compute-resurs i Python anger du **vm_size** och **max_nodes** egenskaper. Azure Machine Learning sedan smarta standardvärden för de andra egenskaperna.
+Om du vill skapa en beständig Azure Machine Learning Compute-resurs i Python **anger du vm_size** och **max_nodes** egenskaper. Azure Machine Learning sedan smarta standardvärden för de andra egenskaperna.
     
 * **vm_size:** Den virtuella datorfamiljen för noderna som skapats av Azure Machine Learning Compute.
 * **max_nodes:** Det maximala antalet noder som ska skalas upp automatiskt till när du kör ett jobb på Azure Machine Learning Compute.
@@ -96,17 +96,17 @@ Du kan också konfigurera flera avancerade egenskaper när du skapar Azure Machi
 az ml computetarget create amlcompute -n cpu --min-nodes 1 --max-nodes 1 -s STANDARD_D3_V2
 ```
 
-Mer information finns i [az ml computetarget create amlcompute](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute).
+Mer information finns i [az ml computetarget create amlcompute](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_amlcompute).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-Information om hur du skapar ett beräkningskluster i studio finns i [Skapa beräkningsmål i Azure Machine Learning-studio](how-to-create-attach-compute-studio.md#amlcompute).
+Information om hur du skapar ett beräkningskluster i Studio finns [i Skapa beräkningsmål i Azure Machine Learning-studio](how-to-create-attach-compute-studio.md#amlcompute).
 
 ---
 
- ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Lägre kostnad för beräkningskluster
+ ## <a name="lower-your-compute-cluster-cost"></a><a id="low-pri-vm"></a> Sänk kostnaden för beräkningskluster
 
-Du kan också välja att använda [lågprioriterade virtuella datorer](concept-plan-manage-cost.md#low-pri-vm) för att köra vissa eller alla dina arbetsbelastningar. De här virtuella datorerna har inte garanterad tillgänglighet och kan tas bort när de används. Du måste starta om ett avinbestämt jobb. 
+Du kan också välja att använda [lågprioriterade virtuella datorer](concept-plan-manage-cost.md#low-pri-vm) för att köra vissa eller alla dina arbetsbelastningar. De här virtuella datorerna har inte garanterad tillgänglighet och kan tas i bruk när de används. Du måste starta om ett avinbestämt jobb. 
 
 Använd något av följande sätt för att ange en virtuell dator med låg prioritet:
     
@@ -128,7 +128,7 @@ az ml computetarget create amlcompute --name lowpriocluster --vm-size Standard_N
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-I studio väljer du Låg **prioritet när** du skapar en virtuell dator.
+I Studio väljer du Låg **prioritet när** du skapar en virtuell dator.
 
 --- 
 

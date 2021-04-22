@@ -5,12 +5,12 @@ ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/19/2021
 ms.author: aahi
-ms.openlocfilehash: cee201c11d0415e1f63e7e6a9157b96a059503ba
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: d36666ea35a4ce3fc894e35dd8ca3860900ecef6
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765121"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107879853"
 ---
 <a name="HOLTop"></a>
 
@@ -26,9 +26,9 @@ ms.locfileid: "107765121"
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* Azure-prenumeration [– Skapa en kostnadsfritt](https://azure.microsoft.com/free/cognitive-services)
+* Azure-prenumeration [– Skapa en utan kostnad](https://azure.microsoft.com/free/cognitive-services)
 * [Python 3.x](https://www.python.org/)
-* När du har din Azure-prenumeration skapar du Textanalys resurs för att skapa Textanalys resurs i Azure Portal för <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" att hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
+* När du har din Azure-prenumeration skapar du en Textanalys-resurs för att skapa Textanalys resurs i Azure Portal för att <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" hämta din nyckel och "  target="_blank"> </a> slutpunkt. När den har distribuerats klickar du **på Gå till resurs**.
     * Du behöver nyckeln och slutpunkten från resursen som du skapar för att ansluta ditt program till Textanalys API. Du klistrar in nyckeln och slutpunkten i koden nedan senare i snabbstarten.
     * Du kan använda den kostnadsfria prisnivån ( `F0` ) för att prova tjänsten och uppgradera senare till en betald nivå för produktion.
 * Om du vill använda funktionen Analysera behöver du Textanalys resurs med prisnivån standard (S).
@@ -78,7 +78,7 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 Klienten Textanalys är ett `TextAnalyticsClient` objekt som autentiserar till Azure. Klienten tillhandahåller flera metoder för att analysera text. 
 
-När bearbetning av text skickas till API:et som en lista över , som antingen är som en lista över sträng, en lista över `documents` dict-liknande representation eller som en lista över `TextDocumentInput/DetectLanguageInput` . Ett `dict-like` -objekt innehåller en kombination `id` av , och `text` `language/country_hint` . Attributet `text` lagrar den text som ska analyseras i `country_hint` ursprunget , och kan vara vilket `id` värde som helst. 
+När bearbetning av text skickas till API:et som en lista över , som antingen är som en lista med sträng, en lista över `documents` dict-liknande representation eller som en lista över `TextDocumentInput/DetectLanguageInput` . Ett `dict-like` -objekt innehåller en kombination `id` av , och `text` `language/country_hint` . Attributet `text` lagrar den text som ska analyseras i `country_hint` ursprunget , och kan vara vilket `id` värde som helst. 
 
 Svarsobjektet är en lista som innehåller analysinformationen för varje dokument. 
 
@@ -86,7 +86,7 @@ Svarsobjektet är en lista som innehåller analysinformationen för varje dokume
 
 Klienten Textanalys är ett `TextAnalyticsClient` objekt som autentiserar till Azure med hjälp av din nyckel. Klienten tillhandahåller flera metoder för att analysera text som en batch. 
 
-När batchbearbetningstext skickas till API:et som en lista över , som är objekt som innehåller en kombination av attributen , och beroende `documents` på vilken metod som `dictionary` `id` `text` `language` används. Attributet `text` lagrar den text som ska analyseras i `language` ursprunget , och kan vara vilket `id` värde som helst. 
+När batchbearbetningstext skickas till API:et som en lista över , som är objekt som innehåller en kombination av `documents` `dictionary` `id` `text` attributen , och `language` beroende på vilken metod som används. Attributet `text` lagrar den text som ska analyseras i `language` ursprunget , och kan vara vilket `id` värde som helst. 
 
 Svarsobjektet är en lista som innehåller analyserad information för varje dokument. 
 
@@ -94,7 +94,7 @@ Svarsobjektet är en lista som innehåller analyserad information för varje dok
 
 ## <a name="code-examples"></a>Kodexempel
 
-De här kodfragmenten visar hur du utför följande uppgifter Textanalys klientbiblioteket för Python:
+De här kodfragmenten visar hur du utför följande uppgifter med Textanalys klientbibliotek för Python:
 
 # <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
@@ -158,7 +158,7 @@ def authenticate_client():
 client = authenticate_client()
 ```
 
-Om du har installerat v5.1.0 i klientbiblioteket med kan du ange `pip install azure-ai-textanalytics --pre` v3.0 för Textanalys-API:et med klientens `api_version` parameter. Använd endast följande `authenticate_client()` metod om klienten är v5.1.0 eller senare.
+Om du har installerat v5.1.0 i klientbiblioteket med kan du ange `pip install azure-ai-textanalytics --pre` v3.0 för Textanalys-API:et med klientens `api_version` parameter. Använd bara följande `authenticate_client()` metod om klienten är v5.1.0 eller senare.
 
 ```python
 # Only use the following code sample if you're using v5.1.0 of the client library, 
@@ -338,7 +338,7 @@ Press any key to continue . . .
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en ny funktion med `sentiment_analysis_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `analyze_sentiment()` . Det returnerade svarsobjektet innehåller sentimentetiketten och poängen för hela indatadokumentet, samt en attitydanalys för varje mening.
+Skapa en ny funktion med `sentiment_analysis_example()` namnet som tar klienten som ett argument och anropar sedan `analyze_sentiment()` funktionen. Det returnerade svarsobjektet innehåller sentimentetiketten och poängen för hela indatadokumentet, samt en attitydanalys för varje mening.
 
 
 ```python
@@ -420,7 +420,7 @@ Language:  French
 Skapa en ny funktion med `language_detection_example()` namnet som tar klienten som ett argument och anropar sedan `detect_language()` funktionen. Det returnerade svarsobjektet innehåller det identifierade språket i `primary_language` om det lyckas och ett om `error` inte.
 
 > [!Tip]
-> I vissa fall kan det vara svårt att disamuera språk baserat på indata. Du kan använda `country_hint` parametern för att ange en landskod med två bokstäver. Som standard använder API:et "US" som standard countryHint. För att ta bort det här beteendet kan du återställa den här parametern genom att ange värdet till tom sträng `country_hint : ""` . 
+> I vissa fall kan det vara svårt att disamuera språk baserat på indata. Du kan använda `country_hint` parametern för att ange en landskod med två bokstäver. Som standard använder API:et "US" som standard countryHint. Om du vill ta bort det här beteendet kan du återställa den här parametern genom att ange värdet till tom sträng `country_hint : ""` . 
 
 ```python
 def language_detection_example(client):
@@ -446,13 +446,13 @@ Language:  French
 
 ## <a name="named-entity-recognition-ner"></a>Igenkänning av namngiven entitet (NER)
 
-# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
 
 > [!NOTE]
 > I version `3.1` : 
 > * Entitetslänkning är en separat begäran än NER.
 
-Skapa en ny funktion med `entity_recognition_example` namnet som tar klienten som ett argument och anropar sedan funktionen och `recognize_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i `entity` om det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om det finns.
+Skapa en ny funktion `entity_recognition_example` med namnet som tar klienten som ett argument, anropar sedan funktionen och `recognize_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i om `entity` det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om finns.
 
 ```python
 def entity_recognition_example(client):
@@ -488,7 +488,7 @@ Named Entities:
 
 ### <a name="entity-linking"></a>Entity Linking
 
-Skapa en ny funktion `entity_linking_example()` med namnet som tar klienten som ett argument och anropar `recognize_linked_entities()` sedan funktionen och itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i `entities` om det lyckas och om `error` inte. Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `entity` objekt som en lista med `match` objekt.
+Skapa en ny funktion `entity_linking_example()` med namnet som tar klienten som ett argument, anropar sedan funktionen och `recognize_linked_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i om `entities` det lyckas och om `error` inte. Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `entity` objekt som en lista med `match` objekt.
 
 ```python
 def entity_linking_example(client):
@@ -574,9 +574,9 @@ Linked Entities:
                 Length: 11
 ```
 
-### <a name="personally-identifiable-information-recognition"></a>Personligt identifierbar informationsigenkänning
+### <a name="personally-identifiable-information-recognition"></a>Igenkänning av personligt identifierbar information
 
-Skapa en ny funktion `pii_recognition_example` med namnet som tar klienten som ett argument och anropar `recognize_pii_entities()` sedan funktionen och itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i `entity` om det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om det finns.
+Skapa en ny funktion `pii_recognition_example` med namnet som tar klienten som ett argument, anropar sedan funktionen och `recognize_pii_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i om `entity` det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om finns.
 
 ```python
 def pii_recognition_example(client):
@@ -620,7 +620,7 @@ Entity: 555-555-5555
 > I version `3.0` : 
 > * Entitetslänkning är en separat begäran än NER.
 
-Skapa en ny funktion `entity_recognition_example` med namnet som tar klienten som ett argument och anropar `recognize_entities()` sedan funktionen och itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i om `entity` det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om finns.
+Skapa en ny funktion `entity_recognition_example` med namnet som tar klienten som ett argument, anropar sedan funktionen och `recognize_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i `entity` om det lyckas och om `error` inte. För varje identifierat entitet skriver du ut dess Kategori och Sub-Category om det finns.
 
 ```python
 def entity_recognition_example(client):
@@ -656,7 +656,7 @@ Named Entities:
 
 ### <a name="entity-linking"></a>Entity Linking
 
-Skapa en ny funktion `entity_linking_example()` med namnet som tar klienten som ett argument, anropar sedan funktionen och `recognize_linked_entities()` itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i om `entities` det lyckas och om `error` inte. Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `entity` objekt som en lista med `match` objekt.
+Skapa en ny funktion `entity_linking_example()` med namnet som tar klienten som ett argument och anropar `recognize_linked_entities()` sedan funktionen och itererar genom resultatet. Det returnerade svarsobjektet innehåller listan över identifierade entiteter i `entities` om det lyckas och om `error` inte. Eftersom länkade entiteter identifieras unikt grupperas förekomster av samma entitet under ett `entity` objekt som en lista med `match` objekt.
 
 ```python
 def entity_linking_example(client):
@@ -728,9 +728,9 @@ Linked Entities:
 
 ### <a name="key-phrase-extraction"></a>Extrahering av nyckelfraser
 
-# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
-Skapa en ny funktion med `key_phrase_extraction_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `extract_key_phrases()` . Resultatet innehåller listan över identifierade nyckelfraser i om `key_phrases` det lyckas och om det inte `error` lyckas. Skriv ut identifierade nyckelfraser.
+Skapa en ny funktion med `key_phrase_extraction_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `extract_key_phrases()` . Resultatet innehåller en lista över identifierade nyckelfraser i om `key_phrases` det lyckas och en om `error` inte. Skriv ut identifierade nyckelfraser.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -764,7 +764,7 @@ key_phrase_extraction_example(client)
 
 # <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
-Skapa en ny funktion med `key_phrase_extraction_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `extract_key_phrases()` . Resultatet innehåller listan över identifierade nyckelfraser i om `key_phrases` det lyckas, och om `error` inte. Skriv ut identifierade nyckelfraser.
+Skapa en ny funktion med `key_phrase_extraction_example()` namnet som tar klienten som ett argument och anropar sedan `extract_key_phrases()` funktionen. Resultatet innehåller en lista över identifierade nyckelfraser i om `key_phrases` det lyckas, och en `error` om inte. Skriv ut identifierade nyckelfraser.
 
 ```python
 def key_phrase_extraction_example(client):
@@ -801,11 +801,11 @@ key_phrase_extraction_example(client)
 
 ## <a name="use-the-api-asynchronously-with-the-batch-analyze-operation"></a>Använda API:et asynkront med batchanalysåtgärden
 
-# <a name="version-31-preview"></a>[Förhandsversion 3.1](#tab/version-3-1)
+# <a name="version-31-preview"></a>[Version 3.1 –förhandsversion](#tab/version-3-1)
 
 [!INCLUDE [Analyze operation pricing](../analyze-operation-pricing-caution.md)]
 
-Skapa en ny funktion med `analyze_batch_actions_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `begin_analyze_batch_actions()` . Resultatet blir en långvarig åtgärd som avsöks efter resultat.
+Skapa en ny funktion med `analyze_batch_example()` namnet som tar klienten som ett argument och anropar sedan funktionen `begin_analyze_batch_actions()` . Resultatet blir en långvarig åtgärd som avsöks efter resultat.
 
 ```python
 from azure.ai.textanalytics import (

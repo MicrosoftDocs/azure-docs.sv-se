@@ -1,21 +1,21 @@
 ---
 title: Lista över inbyggda principdefinitioner
 description: Lista inbyggda principdefinitioner för Azure Policy. Kategorierna är taggar, regelefterlevnad, Key Vault, Kubernetes, gästkonfiguration med mera.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: sample
 ms.custom: generated
-ms.openlocfilehash: 8110ee2539165dfd6daa243dca151578726d0d84
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 48eed2f33c31bc78e341a674948b23dc2aa99c43
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498901"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866975"
 ---
 # <a name="azure-policy-built-in-policy-definitions"></a>Azure Policy inbyggda principdefinitioner
 
 Den här sidan är ett index Azure Policy inbyggda principdefinitioner.
 
-Namnet på varje inbyggd länkar till principdefinitionen i Azure Portal. Använd länken i **källkolumnen** för att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy). De inbyggda är grupperade efter **kategoriegenskapen** i **metadata**. Om du vill gå till **en** viss kategori använder du menyn till höger på sidan. Annars använder du <kbd>Ctrl</kbd> - <kbd>F</kbd> för att använda webbläsarens sökfunktion.
+Namnet på varje inbyggd länk till principdefinitionen i Azure Portal. Använd länken i kolumnen **Source (Källa)** för att visa källan på Azure Policy [GitHub-lagringsplatsen](https://github.com/Azure/azure-policy). De inbyggda är grupperade efter **kategoriegenskapen** i **metadata**. Om du vill gå vidare **till en** viss kategori använder du menyn till höger på sidan. Annars använder du <kbd>Ctrl</kbd> - <kbd>F</kbd> för att använda webbläsarens sökfunktion.
 
 ## <a name="api-for-fhir"></a>API för FHIR
 
@@ -48,6 +48,10 @@ Namnet på varje inbyggd länkar till principdefinitionen i Azure Portal. Använ
 ## <a name="automation"></a>Automation
 
 [!INCLUDE [azure-policy-reference-policies-automation](../../../../includes/policy/reference/bycat/policies-automation.md)]
+
+## <a name="azure-active-directory"></a>Azure Active Directory
+
+[!INCLUDE [azure-policy-reference-policies-azure-active-directory](../../../../includes/policy/reference/bycat/policies-azure-active-directory.md)]
 
 ## <a name="azure-data-explorer"></a>Öppna Azure-datautforskaren
 

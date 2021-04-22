@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 36cd10a0b04be21e9f332832b4381662eeedd01d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 4c6e82af46a012ad53dfa1cc1db1252ef2c0443e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107833678"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864945"
 ---
 # <a name="get-document-status"></a>Hämta dokumentstatus
 
@@ -65,18 +65,18 @@ Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 
 ## <a name="get-document-status-response"></a>Hämta svar på dokumentstatus
 
-### <a name="successful-get-document-status-response"></a>Svar om att hämta dokumentstatus lyckades
+### <a name="successful-get-document-status-response"></a>Svar om att hämta dokumentstatus har lyckats
 
 |Namn|Typ|Description|
 |--- |--- |--- |
 |path|sträng|Platsen för dokumentet eller mappen.|
-|createdDateTimeUtc|sträng|Datum/tid för åtgärden skapades.|
+|createdDateTimeUtc|sträng|Åtgärden skapade datum/tid.|
 |lastActionDateTimeUtc|sträng|Datum/tid då åtgärdens status har uppdaterats.|
-|status|Sträng|Lista över möjliga statusar för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryta</li><li>Misslyckad</li><li>Inte startad</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
-|på|sträng|Språkkod med två bokstäver för To Language. Se listan över språk.|
+|status|Sträng|Lista över möjliga statusar för jobb eller dokument: <ul><li>Avbrutna</li><li>Avbryta</li><li>Misslyckad</li><li>NotStarted</li><li>Körs</li><li>Lyckades</li><li>ValidationFailed</li></ul>|
+|på|sträng|Språkkod med två bokstäver för Till-språk. Se listan över språk.|
 |progress|antal|Översättningens förlopp om tillgängligt|
 |id|sträng|Dokument-ID.|
-|characterCharged|heltal|Tecken som debiteras av API:et.|
+|characterCharged (tecken) debiterad|heltal|Tecken som debiteras av API:et.|
 
 ### <a name="error-response"></a>Felsvar
 
@@ -84,7 +84,7 @@ Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller felkoder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar felmeddelande på hög nivå.|
-|innerError|InnerErrorV2|Nytt format för inre fel som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (kan kapslas).|
+|innerError|InnerErrorV2|Nytt innerfelsformat som följer riktlinjerna för Cognitive Services API. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (kan kapslas).|
 |innerError.code|sträng|Hämtar kodfelsträngen.|
 |innerError.message|sträng|Hämtar felmeddelande på hög nivå.|
 

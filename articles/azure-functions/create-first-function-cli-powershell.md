@@ -7,18 +7,18 @@ ms.custom:
 - devx-track-powershell
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: 59532ce4dcc0c967777afd3080a2cb54dbaa6491
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 441cc17099379366755a6c1e41c7f544215dc19d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107831968"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866187"
 ---
 # <a name="quickstart-create-a-powershell-function-in-azure-from-the-command-line"></a>Snabbstart: Skapa en PowerShell-funktion i Azure från kommandoraden
 
 [!INCLUDE [functions-language-selector-quickstart-cli](../../includes/functions-language-selector-quickstart-cli.md)]
 
-I den här artikeln använder du kommandoradsverktyg för att skapa en PowerShell-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverlösa miljön Azure Functions.
+I den här artikeln använder du kommandoradsverktyg för att skapa en PowerShell-funktion som svarar på HTTP-begäranden. När du har testat koden lokalt distribuerar du den till den serverlösa Azure Functions.
 
 När du slutför den här snabbstarten medför det en liten kostnad på några cent eller mindre för ditt Azure-konto.
 
@@ -38,7 +38,7 @@ Innan du börjar måste du ha följande:
 
     + [Azure CLI](/cli/azure/install-azure-cli) version 2.4 eller senare.
 
-+ Den [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
++ [.NET Core 3.1 SDK](https://dotnet.microsoft.com/download)
 
 ### <a name="prerequisite-check"></a>Kravkontroll
 
@@ -46,7 +46,7 @@ Kontrollera dina förutsättningar, som beror på om du använder Azure CLI elle
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-+ I en terminal eller ett kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
++ I ett terminal- eller kommandofönster kör `func --version` du för att kontrollera Azure Functions Core Tools version 3.x.
 
 + Kör `az --version` för att kontrollera att Azure CLI-versionen är 2.4 eller senare.
 
@@ -66,7 +66,7 @@ Kontrollera dina förutsättningar, som beror på om du använder Azure CLI elle
 
 I Azure Functions är ett funktionsprojekt en container för en eller flera enskilda funktioner som var och en svarar på en specifik utlösare. Alla funktioner i ett projekt delar samma lokala konfigurationer och värdkonfigurationer. I det här avsnittet skapar du ett funktionsprojekt som innehåller en enda funktion.
 
-1. Kör kommandot på följande sätt för att skapa ett functions-projekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
+1. Kör kommandot på följande sätt för att skapa ett funktionsprojekt i en mapp med namnet `func init` *LocalFunctionProj* med den angivna körningen:  
 
     ```console
     func init LocalFunctionProj --powershell
@@ -78,9 +78,9 @@ I Azure Functions är ett funktionsprojekt en container för en eller flera ensk
     cd LocalFunctionProj
     ```
     
-    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler med [local.settings.jspå](functions-run-local.md#local-settings-file) och [host.jspå](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
+    Den här mappen innehåller olika filer för projektet, inklusive konfigurationsfiler [ medlocal.settings.jspå](functions-run-local.md#local-settings-file) ochhost.js[ på](functions-host-json.md). Eftersom *local.settings.jspå* kan innehålla hemligheter som laddats ned från Azure undantas filen från källkontrollen som standard i *.gitignore-filen.*
     
-1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på funktionen `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP). 
+1. Lägg till en funktion i projektet med hjälp av följande kommando, där argumentet är det unika namnet på din funktion `--name` (HttpExample) och `--template` argumentet anger funktionens utlösare (HTTP). 
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
@@ -98,11 +98,11 @@ Om du vill kan du gå [vidare till Kör funktionen lokalt](#run-the-function-loc
 
 :::code language="powershell" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/run.ps1":::
 
-För en HTTP-utlösare tar funktionen emot begärandedata som skickas till `$Request` parametern som definieras *function.jspå*. Returobjektet, som `Response` definieras *function.jspå*, skickas till `Push-OutputBinding` cmdleten som svar. 
+För en HTTP-utlösare tar funktionen emot begärandedata som skickas `$Request` till parametern som definieras *function.jspå*. Returobjektet, som `Response` definieras *somfunction.jspå*, skickas till `Push-OutputBinding` cmdleten som svar. 
 
 #### <a name="functionjson"></a>function.json
 
-*function.jspå är* en konfigurationsfil som definierar indata och `bindings` utdata för funktionen, inklusive utlösartypen. 
+*function.jspå* är en konfigurationsfil som definierar indata och `bindings` utdata för funktionen, inklusive utlösartypen. 
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-PowerShell/function.json":::
 
@@ -134,7 +134,7 @@ Varje bindning kräver en riktning, en typ och ett unikt namn. HTTP-utlösaren h
     
     I föregående exempel ersätter du med namnet på det konto som du använde i föregående steg och ersätter med ett `<STORAGE_NAME>` globalt unikt namn som passar `<APP_NAME>` dig. `<APP_NAME>` är även DNS-standarddomänen för funktionsappen. 
     
-    Det här kommandot skapar en funktionsapp som körs i din angivna språkkörning under [Azure Functions Consumption Plan](consumption-plan.md), vilket är kostnadsfritt för den användning du ådrar dig här. Kommandot tiller även en associerad Azure Application Insights-instans i samma resursgrupp som du kan använda för att övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
+    Det här kommandot skapar en funktionsapp som körs i den angivna språkkörningen under [Azure Functions Consumption Plan](consumption-plan.md), vilket är kostnadsfritt för den mängd användning som du ådrar dig här. Kommandot innehåller också en associerad Azure Application Insights-instans i samma resursgrupp, med vilken du kan övervaka funktionsappen och visa loggar. Mer information finns i [Övervaka Azure Functions](functions-monitoring.md). Instansen medför inga kostnader förrän du aktiverar den.
 
 [!INCLUDE [functions-publish-project-cli](../../includes/functions-publish-project-cli.md)]
 

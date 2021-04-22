@@ -5,16 +5,16 @@ ms.service: data-lake-analytics
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
-ms.openlocfilehash: 5050e7014d9f1f804f7103938ff3dcb43915c549
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: e1d74795fd25019e205f4b7b1d2bac1b67107e2d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107738944"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107878586"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Använda Azure Data Lake Tools för Visual Studio Code
 
-I den här artikeln får du lära dig hur du kan använda Azure Data Lake Tools för Visual Studio Code (VS Code) för att skapa, testa och köra U-SQL-skript. Informationen tas även upp i följande video:
+I den här artikeln får du lära dig hur du kan använda Azure Data Lake Tools för Visual Studio Code (VS Code) för att skapa, testa och köra U-SQL-skript. Informationen tas också upp i följande video:
 
 [![Videospelare: Azure Data Lake-verktyg för VS Code](media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-video.png)](https://channel9.msdn.com/Series/AzureDataLake/Azure-Data-Lake-Tools-for-VSCode?term=ADL%20Tools%20for%20VSCode")
 
@@ -24,10 +24,10 @@ Azure Data Lake Tools för VS Code stöder Windows, Linux och macOS. Lokal U-SQL
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
-För MacOS och Linux:
+För macOS och Linux:
 
-- [.NET Core SDK 5.0](https://www.microsoft.com/net/download/core)
-- [Mono 6.12.x](https://www.mono-project.com/download/)
+- [.NET 5.0 SDK](https://dotnet.microsoft.com/download)
+- [Mono 5.2.x](https://www.mono-project.com/download/)
 
 ## <a name="install-azure-data-lake-tools"></a>Installera Azure Data Lake Tools
 
@@ -36,13 +36,13 @@ När du har installerat förutsättningarna kan du installera Azure Data Lake To
 ### <a name="to-install-azure-data-lake-tools"></a>Så här installerar du Azure Data Lake Tools
 
 1. Öppna Visual Studio Code.
-2. Välj **Tillägg** i det vänstra fönstret. Ange **Azure Data Lake Tools** i sökrutan.
+2. Välj **Tillägg** i den vänstra rutan. Ange **Azure Data Lake Tools** i sökrutan.
 3. Välj **Installera** bredvid **Azure Data Lake Tools**.
 
    ![Val för att installera Data Lake Tools](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
    Efter några sekunder ändras knappen **Installera** till Läs **in på nytt.**
-4. Välj **Läs in** igen för att aktivera Azure Data Lake **Tools-tillägget.**
+4. Välj **Läs in** på nytt för att aktivera Azure Data Lake **Tools-tillägget.**
 5. Välj **Läs in fönster igen** för att bekräfta. Du kan se **Azure Data Lake-verktyg** i **fönstret** Tillägg.
 
 ## <a name="activate-azure-data-lake-tools"></a>Aktivera Azure Data Lake-verktyg
@@ -94,7 +94,7 @@ Om du vill arbeta med U-SQL måste du öppna antingen en U-SQL-fil eller en mapp
 
 När du har skickat ett U-SQL-jobb visas inskickade loggar i **fönstret Utdata** i VS Code. Jobbvyn visas i den högra rutan. Om överföringen lyckas visas även jobb-URL:en. Du kan öppna jobb-URL:en i en webbläsare för att spåra jobbstatusen i realtid.
 
-På jobbvyns **sammanfattningsflik** kan du se jobbinformationen. Huvudfunktionerna är att skicka ett skript på nytt, duplicera ett skript och öppna det i portalen. På jobbvyns **dataflik** kan du referera till indatafiler, utdatafiler och resursfiler. Filer kan laddas ned till den lokala datorn.
+På jobbvyns **sammanfattningsflik** kan du se jobbinformationen. Huvudfunktionerna är att skicka om ett skript, duplicera ett skript och öppna det i portalen. På fliken DATA i **jobbvyn** kan du referera till indatafiler, utdatafiler och resursfiler. Filer kan laddas ned till den lokala datorn.
 
 ![Fliken Sammanfattning i jobbvyn](./media/data-lake-analytics-data-lake-tools-for-vscode/job-view-summary.png)
 
@@ -138,7 +138,7 @@ Du kan ange standardkontexten för att tillämpa den här inställningen på all
 
    ![Objekt i .gitIgnore-filen](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-gitignore.png)
 
-## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>Arbeta med filer som ligger bakom koden: C Sharp, Python och R
+## <a name="work-with-code-behind-files-c-sharp-python-and-r"></a>Arbeta med filer som ligger bakom kod: C Sharp, Python och R
 
 Azure Data Lake Tools stöder flera anpassade koder. Instruktioner finns i [Utveckla U-SQL med Python, R och C Sharp](data-lake-analytics-u-sql-develop-with-python-r-csharp-in-vscode.md)för Azure Data Lake Analytics i VS Code .
 
@@ -146,7 +146,7 @@ Azure Data Lake Tools stöder flera anpassade koder. Instruktioner finns i [Utve
 
 Information om hur du utvecklar sammansättningar finns i [Utveckla U-SQL-sammansättningar för Azure Data Lake Analytics jobb]().
 
-Du kan använda Data Lake Tools för att registrera anpassade kodsammansättningar i Data Lake Analytics katalogen.
+Du kan använda Data Lake Tools för att registrera anpassade kodsammansättningar i Data Lake Analytics katalog.
 
 ### <a name="to-register-an-assembly"></a>Registrera en sammansättning
 

@@ -1,5 +1,5 @@
 ---
-title: 'Självstudie: förbättra webb program åtkomst – Azure Application Gateway'
+title: 'Självstudie: Förbättra åtkomsten till webbprogram – Azure Application Gateway'
 description: I den här självstudien får du lära dig hur du skapar en zonredundant programgateway för automatisk skalning med en reserverad IP-adress med hjälp av Azure PowerShell.
 services: application-gateway
 author: vhorne
@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 03/08/2021
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 2a756313a4659dfc531289c2c86890371f700367
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 8196267ff7a71fb3910848fd0fef11a40a3c1c32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102452296"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869949"
 ---
-# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Självstudie: skapa en Programgateway som förbättrar åtkomsten till webb program
+# <a name="tutorial-create-an-application-gateway-that-improves-web-application-access"></a>Självstudie: Skapa en programgateway som förbättrar åtkomsten till webbprogram
 
 Om du är IT-administratör som arbetar med att förbättra webbappmåtkomst kan du kan optimera din programgateway om du vill skala baserat på kundernas efterfrågan och sträcka dig över flera tillgänglighetszoner. Den här självstudien hjälper dig att konfigurera Azure Application Gateway-funktioner som gör det: automatisk skalning, zonredundans och reserverade virtuella IP-adresser (statisk IP-adress). Du använder Azure PowerShell-cmdletar och Azure Resource Manager-distributionsmodellen för att lösa problemet.
 
@@ -36,7 +36,7 @@ Om du inte har någon Azure-prenumeration kan du [skapa ett kostnadsfritt konto]
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-I den här självstudien krävs att du kör en administrativ Azure PowerShell-session lokalt. Du måste ha Azure PowerShell-modul version 1.0.0 eller senare installerad. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). När du har verifierat PowerShell-versionen kör du `Connect-AzAccount` för att skapa en anslutning till Azure.
+Den här självstudien kräver att du kör en administrativ Azure PowerShell-session lokalt. Du måste Azure PowerShell version 1.0.0 eller senare. Kör `Get-Module -ListAvailable Az` för att hitta versionen. Om du behöver uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-az-ps) (Installera Azure PowerShell-modul). När du har verifierat PowerShell-versionen kör du `Connect-AzAccount` för att skapa en anslutning till Azure.
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -58,7 +58,7 @@ New-AzResourceGroup -Name $rg -Location $location
 
 ## <a name="create-a-self-signed-certificate"></a>Skapa ett självsignerat certifikat
 
-I produktion bör du importera ett giltigt certifikat som är signerat av en betrodd provider. I den här självstudiekursen skapar du ett självsignerat certifikat med [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate). Du kan använda [Export-PfxCertificate](/powershell/module/pkiclient/export-pfxcertificate) med det tumavtryck som returnerades och exportera en pfx-fil från certifikatet.
+I produktion bör du importera ett giltigt certifikat som är signerat av en betrodd provider. I den här självstudiekursen skapar du ett självsignerat certifikat med [New-SelfSignedCertificate](/powershell/module/pki/new-selfsignedcertificate). Du kan använda [Export-PfxCertificate](/powershell/module/pki/export-pfxcertificate) med det tumavtryck som returnerades och exportera en pfx-fil från certifikatet.
 
 ```powershell
 New-SelfSignedCertificate `
@@ -76,7 +76,7 @@ Thumbprint                                Subject
 E1E81C23B3AD33F9B4D1717B20AB65DBB91AC630  CN=www.contoso.com
 ```
 
-Använd tumavtrycket för att skapa PFX-filen. Ersätt *\<password>* med ett valfritt lösen ord:
+Använd tumavtrycket för att skapa pfx-filen. Ersätt *\<password>* med val av lösenord:
 
 ```powershell
 $pwd = ConvertTo-SecureString -String "<password>" -Force -AsPlainText
@@ -120,9 +120,9 @@ $vnet = Get-AzvirtualNetwork -Name "AutoscaleVNet" -ResourceGroupName $rg
 $gwSubnet = Get-AzVirtualNetworkSubnetConfig -Name "AppGwSubnet" -VirtualNetwork $vnet
 ```
 
-## <a name="create-web-apps"></a>Skapa webb program
+## <a name="create-web-apps"></a>Skapa webbappar
 
-Konfigurera två webbappar för backend-poolen. Ersätt *\<site1-name>* och *\<site-2-name>* med unika namn i `azurewebsites.net` domänen.
+Konfigurera två webbappar för backend-poolen. Ersätt *\<site1-name>* och med unika namn i *\<site-2-name>* `azurewebsites.net` domänen.
 
 ```azurepowershell
 New-AzAppServicePlan -ResourceGroupName $rg -Name "ASP-01"  -Location $location -Tier Basic `
@@ -135,7 +135,7 @@ New-AzWebApp -ResourceGroupName $rg -Name <site2-name> -Location $location -AppS
 
 Konfigurera IP-konfigurationen, IP-konfigurationen för klientsidan, serverdelspoolen, HTTP-inställningarna, certifikatet, porten, lyssnaren och regeln i samma format som den befintliga standardprogramgatewayen. Den nya SKU:n följer samma objektmodell som standard-SKU:n.
 
-Ersätt dina två FQDN-namn för webbappen (till exempel: `mywebapp.azurewebsites.net` ) i variabel definitionen $pool.
+Ersätt dina två FQDN för webbappen (till exempel: `mywebapp.azurewebsites.net` ) $pool variabeldefinitionen.
 
 ```azurepowershell
 $ipconfig = New-AzApplicationGatewayIPConfiguration -Name "IPConfig" -Subnet $gwSubnet

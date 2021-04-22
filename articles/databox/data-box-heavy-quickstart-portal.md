@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/04/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 3a7f9179822720b0e5ffc21bc560b4c6ccad9463
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
-ms.translationtype: HT
+ms.openlocfilehash: 8c418f7cbeb56b94b7a85b12e833301b979bff32
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347430"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871566"
 ---
 ::: zone target = "docs"
 
@@ -89,7 +89,7 @@ Använd de här Azure CLI-kommandona för att skapa ett Data Box Heavy-jobb.
    az storage account create --resource-group databox-rg --name databoxtestsa
    ```
 
-1. Kör kommandot [az databox job create](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_create) om du vill skapa ett Data Box-jobb med **--sku** -värdet `DataBoxHeavy`:
+1. Kör kommandot [az databox job create](/cli/azure/databox/job#az_databox_job_create) om du vill skapa ett Data Box-jobb med **--sku**-värdet `DataBoxHeavy`:
 
    ```azurecli
    az databox job create --resource-group databox-rg --name databoxheavy-job \
@@ -102,37 +102,37 @@ Använd de här Azure CLI-kommandona för att skapa ett Data Box Heavy-jobb.
    > [!NOTE]
    > Kontrollera att din prenumeration stöder Data Box Heavy.
 
-1. Kör [az databox job update](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_update) om du vill uppdatera ett jobb, som i det här exemplet, där du ändrar kontaktnamnet och e-postadressen:
+1. Kör [az databox job update](/cli/azure/databox/job#az_databox_job_update) om du vill uppdatera ett jobb, som i det här exemplet, där du ändrar kontaktnamnet och e-postadressen:
 
    ```azurecli
    az databox job update -g databox-rg --name databox-job --contact-name "Robert Anic" --email-list RobertAnic@contoso.com
    ```
 
-   Kör kommandot [az databox job show](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_show) om du vill hämta information om jobbet:
+   Kör kommandot [az databox job show](/cli/azure/databox/job#az_databox_job_show) om du vill hämta information om jobbet:
 
    ```azurecli
    az databox job show --resource-group databox-rg --name databox-job
    ```
 
-   Använd kommandot [az databox job list]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list) om du vill visa alla Data Box-jobb för en resursgrupp:
+   Använd kommandot [az databox job list]( /cli/azure/databox/job#az_databox_job_list) om du vill visa alla Data Box-jobb för en resursgrupp:
 
    ```azurecli
    az databox job list --resource-group databox-rg
    ```
 
-   Kör kommandot [az databox job cancel](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_cancel) om du vill avbryta ett jobb:
+   Kör kommandot [az databox job cancel](/cli/azure/databox/job#az_databox_job_cancel) om du vill avbryta ett jobb:
 
    ```azurecli
    az databox job cancel –resource-group databox-rg --name databox-job --reason "Cancel job."
    ```
 
-   Kör kommandot [az databox job delete](/cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_delete) om du vill ta bort ett jobb:
+   Kör kommandot [az databox job delete](/cli/azure/databox/job#az_databox_job_delete) om du vill ta bort ett jobb:
 
    ```azurecli
    az databox job delete –resource-group databox-rg --name databox-job
    ```
 
-1. Använd kommandot [az databox job list-credentials]( /cli/azure/ext/databox/databox/job#ext_databox_az_databox_job_list_credentials) om du vill visa autentiseringsuppgifter för ett Data Box-jobb:
+1. Använd kommandot [az databox job list-credentials]( /cli/azure/databox/job#az_databox_job_list_credentials) om du vill visa autentiseringsuppgifter för ett Data Box-jobb:
 
    ```azurecli
    az databox job list-credentials --resource-group "databox-rg" --name "databoxdisk-job"

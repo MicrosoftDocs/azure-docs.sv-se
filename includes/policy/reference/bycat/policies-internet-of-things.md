@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 630b8d9a965f4b34e7b14b5b1d80fe74b0cc31c3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: e623932d26ec3e90f8e82df69b1db63c03c9c615
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107499074"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867102"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[\[Förhandsversion: \] Azure IoT Hub använda kund hanterad nyckel för att kryptera vilodata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Kryptering av vilade data i IoT Hub med kundhanterade nycklar lägger till ett andra lager med kryptering ovanpå standardtjänsthanterade nycklar, ger kundkontroll över nycklar, anpassade rotationsprinciper och möjlighet att hantera åtkomst till data via nyckelåtkomstkontroll. Kund hanterade nycklar måste konfigureras när du skapar IoT Hub. Mer information om hur du konfigurerar kund hanterade nycklar finns i [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Granska, Neka, Inaktiverad |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
+|[\[Förhandsversion: \] Azure IoT Hub använda kund hanterad nyckel för att kryptera vilodata](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2d7e144b-159c-44fc-95c1-ac3dbf5e6e54) |Kryptering av vilodata i IoT Hub med kundhanterade nycklar lägger till ett andra lager med kryptering ovanpå standardtjänsthanterade nycklar, ger kundkontroll över nycklar, anpassade rotationsprinciper och möjlighet att hantera åtkomst till data via nyckelåtkomstkontroll. Kund hanterade nycklar måste konfigureras när du skapar IoT Hub. Mer information om hur du konfigurerar kund hanterade nycklar finns i [https://aka.ms/iotcmk](https://aka.ms/iotcmk) . |Granska, Neka, Inaktiverad |[1.0.0-preview](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IotHub_CMKEncryptionEnabled.json) |
 |[Konfigurera IoT Hub för enhetsetablering för att använda privata DNS-zoner](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Faaa64d2d-2fa3-45e5-b332-0b031b9b30e8) |Använd privata DNS-zoner för att åsidosätta DNS-upplösningen för en privat slutpunkt. En privat DNS-zon länkar till ditt virtuella nätverk för att matcha IoT Hub en instans av enhetsetableringstjänsten. Läs mer på: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateDnsZoneForPrivateEndpoint_Deploy.json) |
 |[Konfigurera IoT Hub för enhetsetableringstjänsten för att inaktivera åtkomst till offentligt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F859dfc91-ea35-43a6-8256-31271c363794) |Inaktivera offentlig nätverksåtkomst för din IoT Hub för enhetsetablering så att den inte är tillgänglig via det offentliga Internet. Detta kan minska riskerna för dataläckage. Läs mer på: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |Ändra, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DisablePublicNetworkAccess_Modify.json) |
 |[Konfigurera IoT Hub för enhetsetableringstjänsten med privata slutpunkter](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F9b75ea5b-c796-4c99-aaaf-21c204daac43) |Privata slutpunkter ansluter ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress vid källan eller målet. Genom att mappa privata slutpunkter IoT Hub enhetsetableringstjänsten kan du minska riskerna för dataläckage. Läs mer om privata länkar på: [https://aka.ms/iotdpsvnet](https://aka.ms/iotdpsvnet) . |DeployIfNotExists, Disabled |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Internet%20of%20Things/IoTDps_DeployPrivateEndpoint_Deploy.json) |

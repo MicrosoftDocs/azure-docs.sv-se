@@ -1,15 +1,15 @@
 ---
-title: Konfigurera utvecklings miljön i Linux
+title: Konfigurera utvecklingsmiljön i Linux
 description: Installera runtime och SDK, och skapa ett lokalt utvecklingskluster i Linux. När den här installationen är klar kan du börja bygga program.
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fcf0aeec27415d03c528e42ad5341a92bd299d88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086898"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869409"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Förbereda utvecklingsmiljön i Linux
 > [!div class="op_single_selector"]
@@ -19,16 +19,16 @@ ms.locfileid: "93086898"
 
 För att kunna skapa och köra [Azure Service Fabric-program](service-fabric-application-model.md) på en Linux-utvecklingsdator måste du installera runtime och SDK. Du kan även installera SDK:er för Java- och .NET Core-utveckling. 
 
-I den här artikeln förutsätter vi att du installerar internt i Linux eller använder [Service Fabric Onebox behållaravbildningen-behållar avbildningen](https://hub.docker.com/_/microsoft-service-fabric-onebox), t. ex. `mcr.microsoft.com/service-fabric/onebox:u18` .
+Stegen i den här artikeln förutsätter att du installerar inbyggt på Linux eller använder [Service Fabric OneBox-containeravbildningen,](https://hub.docker.com/_/microsoft-service-fabric-onebox) `mcr.microsoft.com/service-fabric/onebox:u18` dvs. .
 
-Du kan hantera Service Fabric entiteter som finns i molnet eller lokalt med Azure Service Fabric kommando rads gränssnitt (CLI). Information om hur du installerar kommandoradsgränssnittet finns i [Konfigurera Service Fabric CLI](./service-fabric-cli.md).
+Du kan Service Fabric entiteter som finns i molnet eller lokalt med Azure Service Fabric kommandoradsgränssnitt (CLI). Information om hur du installerar kommandoradsgränssnittet finns i [Konfigurera Service Fabric CLI](./service-fabric-cli.md).
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Följande operativsystemversioner stöds för utveckling:
 
-* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
+* Ubuntu 16.04 ( `Xenial Xerus` ), 18.04 ( `Bionic Beaver` )
 
     Kontrollera att `apt-transport-https`-paketet har installerats.
          
@@ -50,7 +50,7 @@ Om du vill installera SDK och det tillhörande runtime-paketet via kommandoradsv
 
 ## <a name="script-installation"></a>Installation av skript
 
-För enkelhetens skull tillhandahålls ett skript för att installera Service Fabric Runtime och Service Fabric common SDK tillsammans med [ **sfctl** CLI](service-fabric-cli.md). Vi förutsätter att du har godkänt licenserna för all programvara som installeras innan du kör skriptet. Du kan också köra de [manuella installations](#manual-installation) stegen i nästa avsnitt som visar associerade licenser samt de komponenter som installeras.
+För enkelhetens skull tillhandahålls ett skript för att installera Service Fabric runtime och Service Fabric sdk tillsammans med [ **sfctl** CLI](service-fabric-cli.md). Vi förutsätter att du har godkänt licenserna för all programvara som installeras innan du kör skriptet. Du kan också köra stegen [för manuell](#manual-installation) installation i nästa avsnitt som presenterar associerade licenser samt de komponenter som installeras.
 
 När skriptet har körts kan du gå vidare till [Konfigurera ett lokalt kluster](#set-up-a-local-cluster).
 
@@ -63,14 +63,14 @@ Om du vill installera Service Fabric Runtime och SDK manuellt följer du stegen 
 
 1. Öppna en terminal.
 
-2. Lägg till `dotnet` lagrings platsen i listan över källor som motsvarar din distribution.
+2. Lägg till `dotnet` lagringsplatsen i listan över källor som motsvarar din distribution.
 
     ```bash
     wget -q https://packages.microsoft.com/config/ubuntu/$(lsb_release -rs)/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-3. Lägg till den nya MS Open Tech GNU Privacy Guard-nyckeln (GnuPG eller GPG) till din APT-nyckelring.
+3. Lägg till den nya MS Open Tech Gnu Privacy Guard-nyckeln (GnuPG eller GPG) i din APT-nyckelring.
 
     ```bash
     sudo curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
@@ -88,7 +88,7 @@ Om du vill installera Service Fabric Runtime och SDK manuellt följer du stegen 
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-6. Lägg till Azul JDK-nyckeln i APT-nyckelringen och konfigurera dess lagrings plats.
+6. Lägg till Azul JDK-nyckeln i din APT-nyckelring och konfigurera dess lagringsplats.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
@@ -120,8 +120,8 @@ sudo apt-get install servicefabricsdkcommon
 
 # <a name="red-hat-enterprise-linux-74"></a>[Red Hat Enterprise Linux 7.4](#tab/sdksetuprhel74)
 
-## <a name="update-your-yum-repositories"></a>Uppdatera dina yum-databaser
-Om du vill installera SDK och associerat runtime-paket via kommando rads verktyget yum måste du först uppdatera paket källorna.
+## <a name="update-your-yum-repositories"></a>Uppdatera dina Yum-lagringsplatsen
+Om du vill installera SDK och tillhörande körningspaket via kommandoradsverktyget yum måste du först uppdatera paketkällorna.
 
 ## <a name="manual-installation-rhel"></a>Manuell installation (RHEL)
 Om du vill installera Service Fabric Runtime och SDK manuellt följer du stegen i resten av den här guiden.
@@ -162,26 +162,26 @@ sudo yum install servicefabricsdkcommon
 
 ---
 
-## <a name="included-packages"></a>Inkluderade paket
+## <a name="included-packages"></a>Paket som ingår
 Service Fabric Runtime som medföljer SDK-installationen innehåller paketen i följande tabell. 
 
  | | DotNetCore | Java | Python | NodeJS | 
 --- | --- | --- | --- |---
-**Ubuntu** | 2.0.7 | AzulJDK 1,8 | Implicit från npm | senaste |
+**Ubuntu** | 2.0.7 | AzulJDK 1.8 | Implicit från npm | senaste |
 **RHEL** | - | OpenJDK 1.8 | Implicit från npm | senaste |
 
 ## <a name="set-up-a-local-cluster"></a>Konfigurera ett lokalt kluster
-1. Starta ett lokalt Service Fabric-kluster för utveckling.
+1. Starta ett lokalt Service Fabric kluster för utveckling.
 
-# <a name="container-based-local-cluster"></a>[Container-baserat lokalt kluster](#tab/localclusteroneboxcontainer)
+# <a name="container-based-local-cluster"></a>[Containerbaserat lokalt kluster](#tab/localclusteroneboxcontainer)
 
-Starta en container-baserad [Service Fabric Onebox behållaravbildningen](https://hub.docker.com/_/microsoft-service-fabric-onebox) -kluster.
+Starta ett containerbaserat Service Fabric [Onebox-kluster.](https://hub.docker.com/_/microsoft-service-fabric-onebox)
 
-1. Installera Moby för att kunna distribuera Docker-behållare.
+1. Installera Moby för att kunna distribuera Docker-containrar.
     ```bash
     sudo apt-get install moby-engine moby-cli -y
     ```
-2. Uppdatera Docker-daemon-konfigurationen på värden med följande inställningar och starta om Docker daemon. Information: [Aktivera stöd för IPv6](https://docs.docker.com/config/daemon/ipv6/)
+2. Uppdatera konfigurationen för Docker-daemon på värden med följande inställningar och starta om Docker-daemonen. Information: [Aktivera IPv6-stöd](https://docs.docker.com/config/daemon/ipv6/)
 
     ```json
     {
@@ -191,12 +191,12 @@ Starta en container-baserad [Service Fabric Onebox behållaravbildningen](https:
     ```
 
 3. Starta klustret.<br/>
-    <b>Ubuntu 18,04 LTS:</b>
+    <b>Ubuntu 18.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
-    <b>Ubuntu 16,04 LTS:</b>
+    <b>Ubuntu 16.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
     ```
@@ -259,13 +259,13 @@ Service Fabric tillhandahåller ramverktyg som hjälper dig att skapa Service Fa
 
 När du har installerat generatorerna skapar du körbara gästprogram eller containertjänster genom att köra `yo azuresfguest` respektive `yo azuresfcontainer`.
 
-## <a name="set-up-net-core-31-development"></a>Konfigurera .NET Core 3,1-utveckling
+## <a name="set-up-net-core-31-development"></a>Konfigurera .NET Core 3.1-utveckling
 
-Installera [.net Core 3,1 SDK för Ubuntu](https://www.microsoft.com/net/core#linuxubuntu) för att börja [skapa C# Service Fabric-program](service-fabric-create-your-first-linux-application-with-csharp.md). Paket för .NET Core Service Fabric-program finns på NuGet.org.
+Installera [.NET Core 3.1 SDK för Ubuntu för att](/dotnet/core/install/linux-ubuntu) börja skapa [C# Service Fabric program](service-fabric-create-your-first-linux-application-with-csharp.md). Paket för .NET Core Service Fabric program finns på NuGet.org.
 
 ## <a name="set-up-java-development"></a>Konfigurera Java-utveckling
 
-Om du vill skapa Service Fabric tjänster med Java installerar du Gradle för att köra Bygg uppgifter. Kör kommandot nedan för att installera Gradle. Java-biblioteken för Service Fabric hämtas från Maven.
+Om du vill Service Fabric tjänster med Java installerar du Gradle för att köra bygguppgifter. Kör kommandot nedan för att installera Gradle. Java-biblioteken för Service Fabric hämtas från Maven.
 
 
 * Ubuntu
@@ -298,11 +298,11 @@ Du kan installera Eclipse-pluginprogrammet för Service Fabric i Eclipse IDE fö
 > 
 > I Ubuntu rekommenderar vi att du installerar direkt från Eclipses webbplats i stället för att använda ett installationspaket (`apt` eller `apt-get`). På så sätt kan du vara säker på att du får den senaste versionen av Eclipse. Du kan installera Eclipse IDE för Java-utvecklare eller för Java EE-utvecklare.
 
-1. I Eclipse kontrollerar du att Eclipse Neon eller senare och Buildship version 2.2.1 eller senare är installerade. Kontrol lera de installerade komponenternas versioner genom att välja **Hjälp**  >  **om**  >  **installations information** för Sol förmörkelse. Om du vill uppdatera Buildship kan du läsa [Eclipse Buildship: Eclipse-plugin-program för Gradle][buildship-update].
+1. I Eclipse kontrollerar du att Eclipse Neon eller senare och Buildship version 2.2.1 eller senare är installerade. Kontrollera versionerna av installerade komponenter genom att välja **Hjälp**  >  **om**  >  **installationsinformation för Eclipse.** Om du vill uppdatera Buildship kan du läsa [Eclipse Buildship: Eclipse-plugin-program för Gradle][buildship-update].
 
-2. Installera Service Fabric plugin-programmet genom att välja **Hjälp**  >  **installera ny program vara**.
+2. Om du vill Service Fabric plugin-programmet väljer du **Hjälp installera**  >  **ny programvara.**
 
-3. I rutan **arbeta med** anger du **https: \/ /dl.Microsoft.com/Eclipse**.
+3. I rutan **Arbeta med** anger du **https: \/ /dl.microsoft.com/eclipse**.
 
 4. Välj **Lägg till**.
 
@@ -312,7 +312,7 @@ Du kan installera Eclipse-pluginprogrammet för Service Fabric i Eclipse IDE fö
 
 6. Utför följande installationssteg. Acceptera sedan licensavtalet.
 
-Om du redan har Service Fabric Eclipse-plugin-programmet installerat kontrollerar du att du har den senaste versionen. Kontrol lera genom att välja **Hjälp**  >  **om**  >  **installations information** för Sol förmörkelse. Sök sedan efter Service Fabric i listan över installerade plugin-program. Välj **Uppdatera** om det finns en nyare version.
+Om du redan har Service Fabric Eclipse-plugin-programmet installerat kontrollerar du att du har den senaste versionen. Kontrollera genom att **välja Hjälp**  >  **om**  >  **installationsinformation för** Eclipse. Sök sedan efter Service Fabric i listan över installerade plugin-program. Välj **Uppdatera** om det finns en nyare version.
 
 Mer information finns i [Service Fabric-plugin-program för utveckling av Java-program i Eclipse](service-fabric-get-started-eclipse.md).
 

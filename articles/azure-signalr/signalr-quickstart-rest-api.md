@@ -1,17 +1,17 @@
 ---
 title: Snabbstart – Azure SignalR Service REST API
-description: Lär dig hur du använder REST API med Azure SignalR service i följande exempel. Hitta information om REST API specifikation.
+description: Lär dig hur du använder REST API med Azure SignalR Service följande exempel. Hitta information om REST API specifikation.
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 2613f91e8c7f1ad3a05792a9a165f4560c09a637
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfcbb00ec20797248f41cc1676809f3198d51527
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94874533"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866169"
 ---
 # <a name="quickstart-broadcast-real-time-messages-from-console-app"></a>Snabbstart: Sända realtidsmeddelanden från konsolapp
 
@@ -23,22 +23,22 @@ I den här snabbstarten får du lära dig hur du sänder meddelanden från en ko
 
 Den här snabbstarten kan köras på macOS, Windows eller Linux.
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/core)
+* [.NET Core SDK](https://dotnet.microsoft.com/download)
 * Valfri textredigerare eller kodredigerare.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
 Logga in på Azure-portalen på <https://portal.azure.com/> med ditt Azure-konto.
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 [!INCLUDE [Create instance](includes/signalr-quickstart-create-instance.md)]
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="clone-the-sample-application"></a>Klona exempelprogrammet
 
@@ -51,7 +51,7 @@ Medan tjänsten distribueras ska vi förbereda koden. Klona [exempelappen från 
     ```bash
     git clone https://github.com/aspnet/AzureSignalR-samples.git
     ```
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="build-and-run-the-sample"></a>Skapa och köra exempelappen
 
@@ -88,7 +88,7 @@ cd bin/Release/netcoreapp2.1/osx.10.13-x64/
 Serverless server -c "<ConnectionString>" -h <HubName>
 ```
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="run-the-sample-without-publishing"></a>Kör exemplet utan att publicera
 
@@ -106,7 +106,7 @@ dotnet run -- client <ClientName> -c "<ConnectionString>" -h <HubName>
 
 Du kan köra `dotnet user-secrets set Azure:SignalR:ConnectionString "<ConnectionString>"` i exemplets rotkatalog. Efter det behöver du inte alternativet `-c "<ConnectionString>"` längre.
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="usage"></a>Användning
 
@@ -122,7 +122,7 @@ broadcast
 
 Du kan starta flera klienter med olika klientnamn.
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
 
 ## <a name="integration-with-third-party-services"></a><a name="usage"> </a> Integrering med tjänster från tredje part
 
@@ -134,12 +134,12 @@ Följande tabell visar alla versioner av de REST API:er som stöds hittills. Du 
 
 Version | API-tillstånd | Door | Specifik
 --- | --- | --- | ---
-`1.0-preview` | Tillgänglig | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
-`1.0` | Tillgänglig | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
+`1.0-preview` | Tillgängligt | 5002 | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1-preview.json)
+`1.0` | Tillgängligt | Standard | [Swagger](https://github.com/Azure/azure-signalr/tree/dev/docs/swagger/v1.json)
 
 Listan över tillgängliga API:er för varje specifika version finns i följande lista.
 
-API | 1,0 – för hands version | 1.0
+API | 1.0-förhandsversion | 1.0
 --- | --- | ---
 [Sänd till alla](#broadcast) | **&#x2713;** | **&#x2713;**
 [Sänd till en grupp](#broadcast-group) | **&#x2713;** | **&#x2713;**
@@ -148,12 +148,12 @@ Sänd till vissa grupper | **&#x2713;** (inaktuellt) | `N / A`
 Skicka till vissa användare | **&#x2713;** (inaktuellt) | `N / A`
 [Lägga till användare i en grupp](#add-user-to-group) | `N / A` | **&#x2713;**
 [Ta bort en användare från en grupp](#remove-user-from-group) | `N / A` | **&#x2713;**
-[Kontrol lera användar förekomst](#check-user-existence) | `N / A` | **&#x2713;**
+[Kontrollera om användaren finns](#check-user-existence) | `N / A` | **&#x2713;**
 [Ta bort en användare från alla grupper](#remove-user-from-all-groups) | `N / A` | **&#x2713;**
 [Skicka till en anslutning](#send-connection) | `N / A` | **&#x2713;**
-[Lägg till en anslutning till en grupp](#add-connection-to-group) | `N / A` | **&#x2713;**
+[Lägga till en anslutning till en grupp](#add-connection-to-group) | `N / A` | **&#x2713;**
 [Ta bort en anslutning från en grupp](#remove-connection-from-group) | `N / A` | **&#x2713;**
-[Stänga en klient anslutning](#close-connection) | `N / A` | **&#x2713;**
+[Stäng en klientanslutning](#close-connection) | `N / A` | **&#x2713;**
 [Tjänsthälsa](#service-health) | `N / A` | **&#x2713;**
 
 <a name="broadcast"> </a>
@@ -195,14 +195,14 @@ Version | API HTTP-metoden | Begärans-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>`
 
 <a name="check-user-existence"> </a>
-### <a name="check-user-existence-in-a-group"></a>Kontrol lera användarnas existens i en grupp
+### <a name="check-user-existence-in-a-group"></a>Kontrollera om användaren finns i en grupp
 
 API-version | API HTTP-metoden | Begärans-URL
 ---|---|---
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/users/<user-id>/groups/<group-name>`
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/groups/<group-name>/users/<user-id>` 
 
-Statuskod för svar | Beskrivning
+Statuskod för svar | Description
 ---|---
 `200` | Användaren finns
 `404` | Användaren finns inte
@@ -222,7 +222,7 @@ API-version | API HTTP-metoden | Begärans-URL | Begärandetext
 `1.0` | `POST` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>` | `{ "target":"<method-name>", "arguments":[ ... ] }`
 
 <a name="add-connection-to-group"> </a>
-### <a name="add-a-connection-to-a-group"></a>Lägg till en anslutning till en grupp
+### <a name="add-a-connection-to-a-group"></a>Lägga till en anslutning till en grupp
 
 API-version | API HTTP-metoden | Begärans-URL
 ---|---|---
@@ -238,7 +238,7 @@ API-version | API HTTP-metoden | Begärans-URL
 `1.0` | `DELETE` | `https://<instance-name>.service.signalr.net/api/v1/hubs/<hub-name>/connections/<connection-id>/groups/<group-name>`
 
 <a name="close-connection"> </a>
-### <a name="close-a-client-connection"></a>Stänga en klient anslutning
+### <a name="close-a-client-connection"></a>Stäng en klientanslutning
 
 API-version | API HTTP-metoden | Begärans-URL
 ---|---|---
@@ -252,20 +252,20 @@ API-version | API HTTP-metoden | Begärans-URL
 ---|---|---                             
 `1.0` | `GET` | `https://<instance-name>.service.signalr.net/api/v1/health`
 
-Statuskod för svar | Beskrivning
+Statuskod för svar | Description
 ---|---
-`200` | Tjänsten är felfri
-`5xx` | Tjänst fel
+`200` | Service Good
+`5xx` | Tjänstfel
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss.](https://aka.ms/asrs/qsapi)
 
 [!INCLUDE [Cleanup](includes/signalr-quickstart-cleanup.md)]
 
-Har du problem? Prova [fel söknings guiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss](https://aka.ms/asrs/qsapi).
+Har du problem? Prova [felsökningsguiden](signalr-howto-troubleshoot-guide.md) eller [berätta för oss.](https://aka.ms/asrs/qsapi)
 
 ## <a name="next-steps"></a>Nästa steg
 
-I den här snabb starten har du lärt dig hur du använder REST API för att sända real tids meddelanden från SignalR-tjänsten till klienter. Nu ska du läsa mer om hur du utvecklar och distribuerar Azure Functions med en signal tjänst bindning, som är byggd ovanpå REST API.
+I den här snabbstarten har du lärt dig hur du använder REST API att sända realtidsmeddelanden från SignalR Service till klienter. Härnäst får du lära dig mer om hur du utvecklar och distribuerar Azure Functions med SignalR Service-bindning, som bygger på REST API.
 
 > [!div class="nextstepaction"]
-> [Utveckla Azure Functions med hjälp av Azure SignalR service-bindningar](signalr-quickstart-azure-functions-csharp.md)
+> [Utveckla Azure Functions med hjälp Azure SignalR Service bindningar](signalr-quickstart-azure-functions-csharp.md)

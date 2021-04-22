@@ -1,15 +1,15 @@
 ---
-title: Konfigurera din utvecklings miljö på macOS
-description: Installera runtime, SDK och verktyg och skapa ett lokalt utvecklingskluster. När du har slutfört den här installationen är du redo att skapa program på macOS.
+title: Konfigurera utvecklingsmiljön på macOS
+description: Installera runtime, SDK och verktyg och skapa ett lokalt utvecklingskluster. När du har slutfört den här konfigurationen är du redo att skapa program på macOS.
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: d08046c8f29901dd9650a1edc886efa2ff226e00
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6fe551f8371322af8d955b5233e6d9d05741f3d9
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93086785"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107868131"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurera din utvecklingsmiljö i Mac OS X
 > [!div class="op_single_selector"]
@@ -41,38 +41,38 @@ Utför följande steg för att konfigurera en lokal Docker-container och köra e
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Du kan uppdatera inställningarna direkt i filen daemon.json som finns på Docker-installationssökvägen. Du kan ändra konfigurations inställningarna för daemonen direkt i Docker. Välj **Docker-ikonen** och sedan **Inställningar** > **Daemon** > **Avancerat**.
+    Du kan uppdatera inställningarna direkt i filen daemon.json som finns på Docker-installationssökvägen. Du kan ändra konfigurationsinställningarna för daemon direkt i Docker. Välj **Docker-ikonen** och sedan **Inställningar** > **Daemon** > **Avancerat**.
     
     >[!NOTE]
     >
-    >Att ändra daemonen direkt i Docker rekommenderas eftersom platsen för filen daemon.jskan variera från dator till dator. Den kan till exempel vara ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Vi rekommenderar att du ändrar daemon direkt i Docker eftersom platsen för daemon.jspå filen kan variera från dator till dator. Den kan till exempel vara ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]
     >Vi rekommenderar att öka du ökar de resurser som Docker tilldelas vid testning av stora program. Detta kan du göra genom att först välja **Docker-ikonen** och sedan välja **Avancerat** för att justera antalet kärnor och minne.
 
 2. Starta klustret.<br/>
-    <b>Ubuntu 18,04 LTS:</b>
+    <b>Ubuntu 18.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u18
     ```
 
-    <b>Ubuntu 16,04 LTS:</b>
+    <b>Ubuntu 16.04 LTS:</b>
     ```bash
     docker run --name sftestcluster -d -v /var/run/docker.sock:/var/run/docker.sock -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mcr.microsoft.com/service-fabric/onebox:u16
     ```
 
     >[!TIP]
-    > Som standard hämtas avbildningen med den senaste Service Fabric-versionen. För särskilda revideringar går du till sidan [Service Fabric Onebox behållaravbildningen](https://hub.docker.com/_/microsoft-service-fabric-onebox) på Docker Hub.
+    > Som standard hämtas avbildningen med den senaste Service Fabric-versionen. För specifika revisioner går du till [Service Fabric Onebox-sidan](https://hub.docker.com/_/microsoft-service-fabric-onebox) på Docker Hub.
 
 
 
-3. Valfritt: Bygg din utökade Service Fabric-avbildning.
+3. Valfritt: Skapa din utökade Service Fabric avbildning.
 
-    I en ny katalog skapar du en fil `Dockerfile` som heter för att skapa en anpassad avbildning:
+    I en ny katalog skapar du en fil med namnet `Dockerfile` för att skapa din anpassade avbildning:
 
     >[!NOTE]
-    >Du kan anpassa avbildningen ovan med en Dockerfile för att lägga till ytterligare program eller beroenden i din behållare.
+    >Du kan anpassa avbildningen ovan med en Dockerfile för att lägga till ytterligare program eller beroenden i containern.
     >Om du t.ex. lägger till `RUN apt-get install nodejs -y` tillåter du stöd för `nodejs`-program som körbara gästfiler.
     ```Dockerfile
     FROM mcr.microsoft.com/service-fabric/onebox:u18
@@ -85,7 +85,7 @@ Utför följande steg för att konfigurera en lokal Docker-container och köra e
     >[!TIP]
     > Som standard hämtas avbildningen med den senaste Service Fabric-versionen. Läs mer om vissa revideringar på sidan [Docker-hubb](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
 
-    Om du vill skapa en åter användnings bild från `Dockerfile` öppnar du en Terminal och `cd` till den direkt innehavaren och `Dockerfile` kör sedan:
+    Om du vill skapa den återanvändbara avbildningen från öppnar du en terminal och till den som direkt `Dockerfile` håller din och kör `cd` `Dockerfile` sedan:
 
     ```bash 
     docker build -t mysfcluster .
@@ -108,14 +108,14 @@ Utför följande steg för att konfigurera en lokal Docker-container och köra e
     >`docker run -itd -p 19000:19000 -p 19080:19080 -p 8080:8080 --name sfonebox mcr.microsoft.com/service-fabric/onebox:u18`
     >
 
-4. Klustret kommer att ta en stund att starta. När den körs kan du Visa loggar med följande kommando eller gå till instrument panelen för att se kluster hälsan: `http://localhost:19080`
+4. Det tar en stund att starta klustret. När den körs kan du visa loggar med hjälp av följande kommando eller gå till instrumentpanelen för att visa klustrets hälsa: `http://localhost:19080`
 
     ```bash 
     docker logs sftestcluster
     ```
 
 
-5. Använd följande kommando för att stoppa och rensa behållaren. Vi kommer dock att använda den här behållaren i nästa steg.
+5. Om du vill stoppa och rensa containern använder du följande kommando. Vi kommer dock att använda den här containern i nästa steg.
 
     ```bash 
     docker rm -f sftestcluster
@@ -125,8 +125,8 @@ Utför följande steg för att konfigurera en lokal Docker-container och köra e
  
  Följande begränsningar är kända begränsningar i lokala kluster som körs i en container för Mac: 
  
- * DNS-tjänsten körs inte och stöds för närvarande inte i behållaren. [Problem #132](https://github.com/Microsoft/service-fabric/issues/132)
- * Att köra containerbaserade appar kräver att du kör SF på en Linux-värd. Kapslade behållar program stöds inte för närvarande.
+ * DNS-tjänsten körs inte och stöds för närvarande inte i containern. [Problem #132](https://github.com/Microsoft/service-fabric/issues/132)
+ * Om du vill köra containerbaserade appar måste du köra SF på en Linux-värd. Kapslade containerappar stöds inte för närvarande.
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Konfigurera Service Fabric CLI (sfctl) på Mac
 
@@ -173,7 +173,7 @@ Service Fabric har ramverktyg som hjälper dig att skapa ett Service Fabric-prog
     ```
 
     > [!IMPORTANT]
-    > Aktuella versioner av `brew cask install java` kan installera en senare version av JDK.
+    > Aktuella versioner av `brew cask install java` kan installera en nyare version av JDK.
     > Se till att installera JDK 8.
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Distribuera ditt program på Mac från terminalen
@@ -193,9 +193,9 @@ När du har skapat ett Service Fabric-program så kan du distribuera det med [CL
     bash install.sh
     ```
 
-## <a name="set-up-net-core-31-development"></a>Konfigurera .NET Core 3,1-utveckling
+## <a name="set-up-net-core-31-development"></a>Konfigurera .NET Core 3.1-utveckling
 
-Installera [.net Core 3,1 SDK för Mac](https://www.microsoft.com/net/core#macos) för att börja [skapa C#-Service Fabric program](service-fabric-create-your-first-linux-application-with-csharp.md). Paket för .NET Core Service Fabric-program finns på NuGet.org.
+Installera [.NET Core 3.1 SDK för Mac för att](https://dotnet.microsoft.com/download?initial-os=macos) börja skapa [C# Service Fabric program](service-fabric-create-your-first-linux-application-with-csharp.md). Paket för .NET Core Service Fabric program finns på NuGet.org.
 
 ## <a name="install-the-service-fabric-plug-in-for-eclipse-on-your-mac"></a>Installera plugin-programmet för Service Fabric till Eclipse på din Mac
 
@@ -221,7 +221,7 @@ Attributen har följande definitioner:
 ## <a name="next-steps"></a>Nästa steg
 <!-- Links -->
 * [Skapa och distribuera ditt första Service Fabric-program med Java i Linux med hjälp av Yeoman](service-fabric-create-your-first-linux-application-with-java.md)
-* [Skapa och distribuera ditt första Service Fabric Java-program på Linux med Service Fabric-plugin-program för Sol förmörkelse](service-fabric-get-started-eclipse.md)
+* [Skapa och distribuera ditt Service Fabric Java-program i Linux med Service Fabric plugin-program för Eclipse](service-fabric-get-started-eclipse.md)
 * [Skapa ett Service Fabric-kluster i Azure-portalen](service-fabric-cluster-creation-via-portal.md)
 * [Skapa ett Service Fabric-kluster med Azure Resource Manager](service-fabric-cluster-creation-via-arm.md)
 * [Förstå Service Fabric-programmodellen](service-fabric-application-model.md)

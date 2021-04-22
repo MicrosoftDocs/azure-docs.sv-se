@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 97212a0da47a25330def26a5bff2b39ff840a23d
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 03203206da6ae3ea9a1174aebafda0b58e22ea41
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836255"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864855"
 ---
 # <a name="get-supported-storage-sources"></a>Hämta lagringskällor som stöds
 
@@ -69,7 +69,7 @@ Bastyp för listretur i API:et Hämta lagringskällor som stöds.
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller felkoder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar felmeddelande på hög nivå.|
-|innerError|InnerErrorV2|Nytt format för inre fel, som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
+|innerError|InnerErrorV2|Nytt format för inre fel som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
 |innerError.code|sträng|Hämtar kodfelsträngen.|
 |innerError.message|sträng|Hämtar felmeddelande på hög nivå.|
 

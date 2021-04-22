@@ -1,6 +1,6 @@
 ---
 title: Skapa Azure-prenumerationer via programmering för ett Microsoft-kundavtal med de senaste API:erna
-description: Lär dig hur du skapar Azure-prenumerationer för ett Microsoft-kundavtal genom programmering med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
+description: Lär dig hur du skapar Azure-prenumerationer för en Microsoft-kundavtal programmatiskt med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
@@ -9,12 +9,12 @@ ms.date: 03/29/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5409c30020db2c8d7acf3c23df5a7d709d872341
-ms.sourcegitcommit: edc7dc50c4f5550d9776a4c42167a872032a4151
+ms.openlocfilehash: 324ca849e0f9c1282dc4b47ceba4654c76c07b35
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105963282"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870831"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-customer-agreement-with-the-latest-apis"></a>Skapa Azure-prenumerationer via programmering för ett Microsoft-kundavtal med de senaste API:erna
 
@@ -28,9 +28,9 @@ När du skapar en Azure-prenumeration programmatiskt styrs prenumerationen av de
 
 ## <a name="prerequisites"></a>Krav
 
-För att kunna skapa prenumerationer måste du ha rollen ägare, deltagare eller skapare av Azure-prenumerationen i ett fakturaavsnitt eller rollen ägare eller deltagare i en faktureringsprofil eller ett faktureringskonto. Du kan också ge samma roll till ett SPN (Service Principal Name). Mer information om roller och tilldelning av behörigheter finns i [prenumerations fakturerings roller och uppgifter](understand-mca-roles.md#subscription-billing-roles-and-tasks).
+För att kunna skapa prenumerationer måste du ha rollen ägare, deltagare eller skapare av Azure-prenumerationen i ett fakturaavsnitt eller rollen ägare eller deltagare i en faktureringsprofil eller ett faktureringskonto. Du kan också ge samma roll till tjänstens huvudnamn (SPN). Mer information om roller och tilldelning av behörigheter till dem finns i Roller och uppgifter [för prenumerationsfakturering.](understand-mca-roles.md#subscription-billing-roles-and-tasks)
 
-Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistrering som tjänstens huvud namn ObjectId med [Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) eller [Azure CLI](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list). 
+Om du använder ett SPN för att skapa prenumerationer använder du ObjectId för Azure AD-programregistreringen som Objekt-ID för tjänstens huvudnamn [med hjälp Azure Active Directory PowerShell](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0) [eller Azure CLI.](/cli/azure/ad/sp?view=azure-cli-latest#az_ad_sp_list) 
 
 Om du inte vet om du har åtkomst till ett konto för ett Microsoft-kundavtal kan du läsa mer i [Kontrollera åtkomsten till ett Microsoft-kundavtal](../understand/mca-overview.md#check-access-to-a-microsoft-customer-agreement).
 
@@ -75,7 +75,7 @@ Använd egenskapen `displayName` för att identifiera det faktureringskonto som 
 ```azurepowershell
 Get-AzBillingAccount
 ```
-Du får tillbaka en lista över alla fakturerings konton som du har åtkomst till 
+Du får tillbaka en lista över alla faktureringskonton som du har åtkomst till 
 
 ```json
 Name          : 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
@@ -93,7 +93,7 @@ Använd egenskapen `displayName` för att identifiera det faktureringskonto som 
 ```azurecli
 az billing account list
 ```
-Du får tillbaka en lista över alla fakturerings konton som du har åtkomst till 
+Du får tillbaka en lista över alla faktureringskonton som du har åtkomst till 
 
 ```json
 [
@@ -126,7 +126,7 @@ Använd egenskapen `displayName` för att identifiera det faktureringskonto som 
 
 Avgifterna för din prenumeration visas i ett avsnitt på fakturan för en faktureringsprofil. Använd följande API för att hämta listan över faktureringsprofiler och fakturaavsnitt som du har behörighet att skapa Azure-prenumerationer för.
 
-Först får du listan över fakturerings profiler under det fakturerings konto som du har åtkomst till (Använd det `name` du fick från föregående steg)
+Först hämtar du listan över faktureringsprofiler under det faktureringskonto som du har åtkomst till (använd som `name` du fick från föregående steg)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -216,7 +216,7 @@ Använd egenskapen `id` för att identifiera det fakturaavsnitt som du vill skap
 Get-AzBillingProfile -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx
 ```
 
-Du får listan över fakturerings profiler under det här kontot som en del av svaret.
+Du får en lista över faktureringsprofiler under det här kontot som en del av svaret.
 
 ```json
 Name              : AW4F-xxxx-xxx-xxx
@@ -238,20 +238,20 @@ Country           : US
 PostalCode        : 98052
 ```
 
-Notera `name` fakturerings profilen från ovanstående svar. Nästa steg är att hämta faktura avsnittet som du har åtkomst till under denna fakturerings profil. Du behöver ditt `name` fakturerings konto och fakturerings profil
+Observera för `name` faktureringsprofilen från svaret ovan. Nästa steg är att hämta fakturaavsnittet som du har åtkomst till under den här faktureringsprofilen. Du behöver för `name` faktureringskontot och faktureringsprofilen
 
 ```azurepowershell
 Get-AzInvoiceSection -BillingAccountName 5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx -BillingProfileName AW4F-xxxx-xxx-xxx
 ```
 
-Du får faktura avsnittet returnerat
+Fakturaavsnittet returneras
 
 ```json
 Name        : SH3V-xxxx-xxx-xxx
 DisplayName : Development
 ```
 
-Det `name` här är namnet på faktura avsnittet som du behöver för att skapa en prenumeration under. Skapa din fakturerings omfattning med formatet "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /BillingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> ". I det här exemplet motsvarar det här värdet `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
+Ovanstående `name` är namnet på fakturaavsnittet som du måste skapa en prenumeration under. Konstruera ditt faktureringsomfång med formatet "/providers/Microsoft.Billing/billingAccounts/ <BillingAccountName> /billingProfiles/ <BillingProfileName> /invoiceSections/ <InvoiceSectionName> ". I det här exemplet motsvarar det här värdet `"/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx"` .
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -259,7 +259,7 @@ Det `name` här är namnet på faktura avsnittet som du behöver för att skapa 
 az billing profile list --account-name "5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --expand "InvoiceSections"
 ```
 
-Detta API kommer att returnera listan över fakturerings profiler och faktura avsnitt under det angivna fakturerings kontot.
+Det här API:et returnerar listan över faktureringsprofiler och fakturaavsnitt under det angivna faktureringskontot.
 
 ```json
 [
@@ -323,7 +323,7 @@ Detta API kommer att returnera listan över fakturerings profiler och faktura av
   }
 ]
 ```
-Använd `id` egenskapen under objektet faktura avsnitt för att identifiera faktura avsnittet som du vill skapa prenumerationer för. Kopiera hela strängen. Till exempel/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-XX-XX/billingProfiles/AW4F-xxxx-XXX-XXX/invoiceSections/SH3V-xxxx-XXX-XXX.
+Använd egenskapen `id` under objektet fakturaavsnitt för att identifiera det fakturaavsnitt som du vill skapa prenumerationer för. Kopiera hela strängen. Till exempel /providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx.
 
 ---
 
@@ -416,7 +416,7 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 Installera först tillägget genom att köra `az extension add --name account` och `az extension add --name alias`.
 
-Kör följande [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create)-kommando.
+Kör följande [az account alias create](/cli/azure/account/alias#az_account_alias_create)-kommando.
 
 ```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/AW4F-xxxx-xxx-xxx/invoiceSections/SH3V-xxxx-xxx-xxx" --display-name "Dev Team Subscription" --workload "Production"
@@ -440,9 +440,9 @@ subscriptionId returneras som en del av svaret från kommandot.
 
 ## <a name="use-arm-template"></a>Använda ARM-mall
 
-Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du överväga att använda en Azure Resource Manager mall (ARM-mall).
+Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du använda en Azure Resource Manager (ARM-mall).
 
-Följande mall skapar en prenumeration. För `billingScope` anger du ID för faktura avsnitt. För `targetManagementGroup` , ange den hanterings grupp där du vill skapa prenumerationen.
+Följande mall skapar en prenumeration. För `billingScope` anger du fakturaavsnitts-ID:t. För `targetManagementGroup` anger du den hanteringsgrupp där du vill skapa prenumerationen.
 
 ```json
 {
@@ -486,7 +486,7 @@ Följande mall skapar en prenumeration. För `billingScope` anger du ID för fak
 }
 ```
 
-Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/templates/deploy-to-management-group.md).
+Distribuera mallen på [hanteringsgruppsnivå.](../../azure-resource-manager/templates/deploy-to-management-group.md)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -494,7 +494,7 @@ Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/te
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
 ```
 
-Med en begär ande text:
+Med en begärandetext:
 
 ```json
 {
@@ -549,4 +549,4 @@ az deployment mg create \
 
 * Nu när du har skapat en prenumeration kan du bevilja den möjligheten till andra användare och tjänsthuvudnamn. Mer information finns i [Bevilja behörighet att skapa Azure Enterprise-prenumerationer (förhandsversion)](grant-access-to-create-subscription.md).
 * Mer information om hur du hanterar ett stort antal prenumerationer med hanteringsgrupper finns i [Ordna resurser med hanteringsgrupper i Azure](../../governance/management-groups/overview.md).
-* Information om hur du ändrar hanterings gruppen för en prenumeration finns i [Flytta prenumerationer](../../governance/management-groups/manage.md#move-subscriptions).
+* Information om hur du ändrar hanteringsgruppen för en prenumeration finns i [Flytta prenumerationer.](../../governance/management-groups/manage.md#move-subscriptions)

@@ -5,12 +5,12 @@ author: MSEvanhi
 ms.topic: tutorial
 ms.date: 06/24/2020
 ms.author: evanhi
-ms.openlocfilehash: 721fe31f514cb948c93dc2a779a92ef3b2775ef9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 915856e3f9875c0a3318bc19138eaae8742bf72f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107779245"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871749"
 ---
 # <a name="quickstart-create-a-custom-provider-and-deploy-custom-resources"></a>Snabbstart: Skapa en anpassad provider och distribuera anpassade resurser
 
@@ -265,7 +265,7 @@ Du får svaret:
 
 ## <a name="custom-resource-provider-commands"></a>Anpassade resursproviderkommandon
 
-Använd kommandon [för anpassade providers](/cli/azure/ext/custom-providers/custom-providers/resource-provider) för att arbeta med din anpassade resursprovider.
+Använd kommandon [för anpassade providers](/cli/azure/custom-providers/resource-provider) för att arbeta med din anpassade resursprovider.
 
 ### <a name="list-custom-resource-providers"></a>Lista anpassade resursproviders
 
@@ -356,7 +356,7 @@ az custom-providers resource-provider update --resource-group $rgName --name $fu
 
 ### <a name="delete-a-custom-resource-provider"></a>Ta bort en anpassad resursprovider
 
-Kommandot `delete` frågar dig och tar bara bort den anpassade resursprovidern. Lagringskontot, App Service och App Service-planen tas inte bort. När providern har tagits bort returneras du till en kommandotolk.
+Kommandot `delete` frågar dig och tar endast bort den anpassade resursprovidern. Lagringskontot, App Service och App Service-planen tas inte bort. När providern har tagits bort kommer du tillbaka till en kommandotolk.
 
 ```azurecli-interactive
 az custom-providers resource-provider delete --resource-group $rgName --name $funcName

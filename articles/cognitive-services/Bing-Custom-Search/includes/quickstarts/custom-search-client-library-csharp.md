@@ -1,5 +1,5 @@
 ---
-title: Snabb start för Anpassad Bing-sökning C#-klient bibliotek
+title: Anpassad Bing-sökning snabbstart för C#-klientbibliotek
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
@@ -8,28 +8,28 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
-ms.openlocfilehash: 70f97b73b5cc6a06caf8f1dac4dec61b6ad6de29
-ms.sourcegitcommit: 2f9f306fa5224595fa5f8ec6af498a0df4de08a8
+ms.openlocfilehash: 504057be85902307a121a57dd421254d94167341
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 01/28/2021
-ms.locfileid: "98948419"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107880719"
 ---
-Kom igång med Anpassad Bing-sökning klient biblioteket för C#. Följ de här stegen för att installera paketet och prova exempel koden för grundläggande uppgifter. Med API för anpassad Bing-sökning kan du skapa skräddarsydda, annons fria Sök upplevelser för ämnen som du bryr dig om. Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
+Kom igång med Anpassad Bing-sökning klientbibliotek för C#. Följ de här stegen för att installera paketet och prova exempelkoden för grundläggande uppgifter. Med Anpassad Bing-sökning-API:et kan du skapa skräddarsydda, reklamfria sökupplevelser för ämnen som är viktiga för dig. Källkoden för det här exemplet finns på [GitHub](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 
-Använd Anpassad Bing-sökning klient bibliotek för C# för att:
-* Hitta Sök resultat på webben från Anpassad Bing-sökning-instansen.
+Använd Anpassad Bing-sökning för C# för att:
+* Hitta sökresultat på webben från din Anpassad Bing-sökning instans.
 
-[Referens dokumentation](/dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme)  |  [Biblioteks käll kod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
+[Referensdokumentation](/dotnet/api/overview/azure/cognitiveservices/bing-custom-search-readme)  |  [Bibliotekskällkod](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Search.BingCustomSearch)  |  [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  |  [Exempel](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples)
 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- En instans av anpassad Bing-sökning. Se [snabb start: skapa din första anpassad Bing-sökning-instans](../../quick-start.md) för mer information.
-- Microsoft [.net Core](https://www.microsoft.com/net/download/core)
+- En instans av anpassad Bing-sökning. Mer [information finns i Snabbstart: Skapa din Anpassad Bing-sökning instans.](../../quick-start.md)
+- Microsoft [.NET Core](https://dotnet.microsoft.com/download)
 - Valfri version av [Visual Studio 2017 eller senare](https://www.visualstudio.com/downloads/)
 - Om du använder Linux/Mac OS kan det här programmet köras med [Mono](https://www.mono-project.com/).
-- [Anpassad Bing-sökning](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-paketet. 
+- Det [Anpassad Bing-sökning](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0)  NuGet-paketet. 
     - Från **Solution Explorer** i Visual Studio högerklickar du på projektet och väljer **Hantera NuGet-paket** på menyn. Installera paketet `Microsoft.Azure.CognitiveServices.Search.CustomSearch`. När du installerar NuGet-paketet för anpassad sökning installeras även följande sammansättningar:
         - Microsoft.Rest.ClientRuntime
         - Microsoft.Rest.ClientRuntime.Azure

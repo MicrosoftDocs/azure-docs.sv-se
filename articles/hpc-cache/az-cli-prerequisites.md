@@ -1,17 +1,17 @@
 ---
-title: Krav för Azure CLI för Azure HPC Cache
-description: Konfigurera steg innan du kan använda Azure CLI för att skapa eller ändra en Azure HPC Cache
+title: Azure CLI-krav för Azure HPC Cache
+description: Installationssteg innan du kan använda Azure CLI för att skapa eller ändra en Azure HPC Cache
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
 ms.author: v-erkel
-ms.openlocfilehash: 30621eceefd69cd3e08de137bb34f1079a17a406
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 0b8e1158bc60c4cceea508db988000fe952a90a4
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780503"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864297"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Konfigurera Azure CLI för Azure HPC Cache
 
@@ -30,4 +30,4 @@ De flesta hpc-cache-kommandon kräver att du skickar cachens resursgrupp. Du kan
 När du har installerat Azure CLI-tillägget och loggat in kan du använda Azure CLI för att skapa och hantera Azure HPC Cache system.
 
 * [Skapa en Azure HPC Cache](hpc-cache-create.md)
-* [Dokumentation om Azure CLI hpc-cache](/cli/azure/ext/hpc-cache/hpc-cache)
+* [Dokumentation om Azure CLI hpc-cache](/cli/azure/hpc-cache)

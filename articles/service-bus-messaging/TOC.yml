@@ -110,6 +110,8 @@
           href: message-transfers-locks-settlement.md
         - name: Köer för obeställbara meddelanden
           href: service-bus-dead-letter-queues.md
+        - name: Skjut upp meddelanden
+          href: message-deferral.md
         - name: Optimera prestanda
           href: service-bus-performance-improvements.md
         - name: Geo-haveriberedskap och geo-replikering
@@ -206,8 +208,6 @@
           items:
             - name: Förhämtning av meddelanden
               href: service-bus-prefetch.md
-            - name: Skjut upp meddelanden
-              href: message-deferral.md
             - name: Chain-enheter med automatisk vidarebefordran
               href: service-bus-auto-forwarding.md
             - name: Transaktionsbearbetning

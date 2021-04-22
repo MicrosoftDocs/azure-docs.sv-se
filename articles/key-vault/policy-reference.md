@@ -1,18 +1,18 @@
 ---
 title: Inbyggda principdefinitioner för Key Vault
 description: Visar Azure Policy inbyggda principdefinitioner för Key Vault. Dessa inbyggda principdefinitioner tillhandahåller vanliga metoder för att hantera dina Azure-resurser.
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.topic: reference
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5362b84135a8efd53284b9c2308ba70d9ae113bc
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 127783cdbfe5f0a2ce51ac655d348883c6546d19
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107506201"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107872612"
 ---
 # <a name="azure-policy-built-in-definitions-for-key-vault"></a>Azure Policy inbyggda definitioner för Key Vault
 

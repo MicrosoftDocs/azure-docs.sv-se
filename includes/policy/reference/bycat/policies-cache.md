@@ -2,19 +2,19 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/14/2021
+ms.date: 04/21/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: e8cf3c89388e5e45a527a02f575ee8d9271678e3
-ms.sourcegitcommit: 3b5cb7fb84a427aee5b15fb96b89ec213a6536c2
+ms.openlocfilehash: 9e75c04f4d5252b2c69e9e20c74a5f03b40285e8
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107498958"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107866999"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Beskrivning |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
+|Name<br /><sub>(Azure Portal)</sub> |Description |Effekt(er) |Version<br /><sub>(GitHub)</sub> |
 |---|---|---|---|
-|[Azure Cache for Redis ska inaktivera åtkomst till offentligt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F470baccb-7e51-4549-8b1a-3e5be069f663) |Om du inaktiverar offentlig nätverksåtkomst förbättras säkerheten genom att Azure Cache for Redis inte exponeras på det offentliga Internet. Du kan begränsa exponeringen för dina Azure Cache for Redis genom att skapa privata slutpunkter i stället. Läs mer på: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |Granska, Neka, Inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_AuditDeny.json) |
+|[Azure Cache for Redis ska inaktivera offentlig nätverksåtkomst](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F470baccb-7e51-4549-8b1a-3e5be069f663) |Om du inaktiverar offentlig nätverksåtkomst förbättras säkerheten genom att Azure Cache for Redis inte exponeras på det offentliga Internet. Du kan begränsa exponeringen för dina Azure Cache for Redis genom att skapa privata slutpunkter i stället. Läs mer på: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |Granska, Neka, Inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_AuditDeny.json) |
 |[Azure Cache for Redis ska finnas i ett virtuellt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7d092e0a-7acd-40d2-a975-dca21cae48c4) |Azure Virtual Network-distributionen ger förbättrad säkerhet och isolering för Azure Cache for Redis, samt undernät, principer för åtkomstkontroll och andra funktioner för att ytterligare begränsa åtkomsten. När en Azure Cache for Redis-instans har konfigurerats med ett virtuellt nätverk är den inte offentligt adresserbar och kan bara nås från virtuella datorer och program i det virtuella nätverket. |Granska, Neka, Inaktiverad |[1.0.3](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_CacheInVnet_Audit.json) |
 |[Azure Cache for Redis bör använda private link](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7803067c-7d34-46e3-8c79-0ca68fc4036d) |Med privata slutpunkter kan du ansluta ditt virtuella nätverk till Azure-tjänster utan en offentlig IP-adress vid källan eller målet. Genom att mappa privata slutpunkter till Azure Cache for Redis instanser minskar risken för dataläckage. Läs mer på: [https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link) . |AuditIfNotExists, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PrivateEndpoint_AuditIfNotExists.json) |
 |[Konfigurera Azure Cache for Redis att inaktivera åtkomst till offentligt nätverk](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F30b3dfa5-a70d-4c8e-bed6-0083858f663d) |Inaktivera offentlig nätverksåtkomst för din Azure Cache for Redis så att den inte är tillgänglig via det offentliga Internet. Detta hjälper till att skydda cachen mot dataläckagerisker. |Ändra, inaktiverad |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cache/RedisCache_PublicNetworkAccess_Modify.json) |

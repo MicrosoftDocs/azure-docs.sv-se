@@ -8,16 +8,16 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 242dd2476783a3d1db6b74452d35e87c5cd189b6
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: 2712115f19c7cc64a0475061e134d6be6de5d1ca
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107516560"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867411"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Vad är nytt i Windows Virtual Desktop?
 
-Windows Virtual Desktop uppdateringar regelbundet. I den här artikeln får du veta mer om:
+Windows Virtual Desktop uppdateras regelbundet. I den här artikeln får du veta mer om:
 
 - De senaste uppdateringarna
 - Nya funktioner
@@ -42,15 +42,15 @@ Den Windows Virtual Desktop agenten uppdateras minst en gång per månad.
 
 Här är vad som har ändrats i Windows Virtual Desktop Agent:
 
-- Version 1.0.2990.800: Den här uppdateringen släpptes i april 13 2021 och har följande ändringar:
+- Version 1.0.2990.800: Den här uppdateringen släpptes 13 april 2021 och har följande ändringar:
     - Uppdaterade agentfelmeddelanden.
     - Lägger till ett undantag som förhindrar att du installerar icke-Windows 7-agenter på virtuella Windows 7-datorer.
     - Har uppdaterat logiken för pulsslagstjänsten.
-- Version 1.0.2944.1400: Den här uppdateringen släpptes 7 april 2021 och har följande ändringar:
+- Version 1.0.2944.1400: Den här uppdateringen släpptes den 7 april 2021 och har följande ändringar:
     - Länkar till felsökningsguiden Windows Virtual Desktop agent i loggbokens loggar för agentfel.
     - Ytterligare ett undantag har lagts till för bättre felhantering.
-    - Lade till WVDAgentUrlTool.exe som gör att kunderna kan kontrollera vilka url:er som krävs som de kan komma åt.
-- Version 1.0.2866.1500: Den här uppdateringen släpptes den 26 mars 2021 och åtgärdar ett problem med stackens hälsokontroll.
+    - Lade till WVDAgentUrlTool.exe som gör att kunderna kan kontrollera vilka url:er som de har åtkomst till.
+- Version 1.0.2866.1500: Den här uppdateringen släpptes den 26 mars 2021 och åtgärdar ett problem med stackhälsokontrollen.
 - Version 1.0.2800.2802: Den här uppdateringen släpptes den 10 mars 2021 och innehåller allmänna förbättringar och felkorrigeringar.
 - Version 1.0.2800.2800: Den här uppdateringen släpptes den 2 mars 2021 och åtgärdar ett problem med omvänd anslutning.
 - Version 1.0.2800.2700: Den här uppdateringen släpptes den 10 februari 2021 och innehåller allmänna förbättringar och felkorrigeringar.
@@ -66,7 +66,7 @@ Det här är vad som ändrades i mars 2021.
 
 ### <a name="updates-to-the-azure-portal-ui-for-windows-virtual-desktop"></a>Uppdateringar av Azure Portal användargränssnitt för Windows Virtual Desktop
 
-Vi har gjort följande uppdateringar för Windows Virtual Desktop för Azure Portal:
+Vi har gjort följande uppdateringar för att Windows Virtual Desktop för Azure Portal:
 
 - Vi har aktiverat nya tillgänglighetsalternativ (tillgänglighetsuppsättning och zoner) för arbetsflödena för att skapa värdpooler och lägga till virtuella datorer.
 - Vi har åtgärdat ett problem där en värd med statusen "Behöver hjälp" visades som otillgänglig. Nu har värden en varningsikon bredvid sig.
@@ -96,16 +96,16 @@ Vi har gjort följande uppdateringar för Teams på Windows Virtual Desktop:
 - Vi har minskat processoranvändningen med 5–10 % (beroende på cpu-generering) genom att använda maskinvaru-avlastning av videobearbetning (XVP).
 - Äldre datorer kan nu använda XVP och maskinvaruavkodning för att visa fler inkommande videoströmmar smidigt i 2x2-läge.
 - Vi har uppdaterat WebRTC-stacken från M74 till M88 för bättre AV-synkroniseringsprestanda och färre tillfälliga problem.
-- Vi har ersatt vår kodare H264-programvara med OpenH264 (OSS som används i Teams på webben), vilket ökade videokvaliteten för den utgående kameran.
+- Vi har ersatt vår programvara H264-kodare med OpenH264 (OSS som används i Teams på webben), vilket ökade videokvaliteten för den utgående kameran.
 - Vi aktiverade 2x2-läge för Teams Server för allmänheten den 30 mars. 2x2-läge visar upp till fyra inkommande videoströmmar samtidigt.
 
 ### <a name="start-vm-on-connect-public-preview"></a>Starta virtuell dator på Anslut offentlig förhandsversion
 
-Den nya inställningen för värdpoolen, Starta virtuell dator på Anslut, är nu tillgänglig i offentlig förhandsversion. Med den här inställningen kan du aktivera dina virtuella datorer när du behöver dem. Om du vill spara kostnader måste du avallokera dina virtuella datorer genom att konfigurera Azure Compute inställningar. Mer information finns i [blogginlägget](https://aka.ms/wvdstartvmonconnect) och [i vår dokumentation.](start-virtual-machine-connect.md)
+Den nya inställningen för värdpoolen, Starta virtuell dator på Anslut, är nu tillgänglig i offentlig förhandsversion. Med den här inställningen kan du aktivera dina virtuella datorer när du behöver dem. Om du vill spara kostnader måste du allokera dina virtuella datorer genom att konfigurera Azure Compute inställningar. Mer information finns i [blogginlägget och](https://aka.ms/wvdstartvmonconnect) [i vår dokumentation.](start-virtual-machine-connect.md)
 
 ### <a name="windows-virtual-desktop-specialty-certification"></a>Windows Virtual Desktop Specialcertifiering
 
-Vi har släppt en betaversion av AZ-140-provet som gör att du kan bevisa dina kunskaper inom Windows Virtual Desktop i Azure. Mer information finns i vårt [TechCommunity-inlägg.](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107)
+Vi har släppt en betaversion av AZ-140-provet som gör att du kan bevisa dina kunskaper inom Windows Virtual Desktop i Azure. Mer information finns i [techcommunity-inlägget](https://techcommunity.microsoft.com/t5/microsoft-learn-blog/beta-exam-prove-your-expertise-in-windows-virtual-desktop-on/ba-p/2147107).
 
 ## <a name="february-2021"></a>Februari 2021
 
@@ -115,17 +115,17 @@ Det här är vad som ändrades i februari 2021.
 
 Vi har förbättrat Azure Portal på följande sätt:
 
-- Masstömningsläge på värdar på fliken för sessionsvärdrutnät. 
+- Masstömningsläge på värdar på rutnätsfliken för sessionsvärdar. 
 - MSIX-app attach är nu tillgängligt för offentlig förhandsversion.
 - Översiktsinformation för värdpoolen för mörkt läge har åtgärdats.
 
 ### <a name="eu-metadata-storage-now-in-public-preview"></a>EU-metadatalagring nu i offentlig förhandsversion
 
-Vi är nu värd för en offentlig förhandsversion av geografin Europa (EU) som ett lagringsalternativ för tjänstmetadata i Windows Virtual Desktop. Kunder kan välja mellan Europa, västra eller Europa, norra när de skapar sina tjänstobjekt. Tjänstobjekten och metadata för värdpoolerna lagras i det Azure-geografiska område som är associerat med varje region. Mer information finns i [vårt blogginlägg om den offentliga förhandsversionen.](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939)
+Vi är nu värd för en offentlig förhandsversion av geografin Europa (EU) som ett lagringsalternativ för tjänstmetadata i Windows Virtual Desktop. Kunder kan välja mellan Europa, västra eller Europa, norra när de skapar sina tjänstobjekt. Tjänstobjekten och metadata för värdpoolerna lagras i azure-geografin som är associerad med varje region. Mer information finns i [vårt blogginlägg om den offentliga förhandsversionen.](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/announcing-public-preview-of-windows-virtual-desktop-service/m-p/2143939)
 
-### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Uppdateringar av Teams Windows Virtual Desktop plugin-program
+### <a name="teams-on-windows-virtual-desktop-plugin-updates"></a>Teams on Windows Virtual Desktop plugin-uppdateringar
 
-Vi har förbättrat videosamtalskvaliteten i Windows Virtual Desktop-plugin-programmet genom att åtgärda de vanligaste problemen, till exempel när skärmen plötsligt skulle bli mörk eller videon och ljudet desynkroniserat. Dessa förbättringar bör öka prestandan för en enskild videovy med aktiv talarväxling. Vi har också åtgärdat ett problem där maskinvaruenheter med specialtecken inte var tillgängliga i Teams.
+Vi har förbättrat videosamtalskvaliteten i plugin-programmet Windows Virtual Desktop genom att åtgärda de vanligaste problemen, till exempel när skärmen plötsligt skulle bli mörk eller videon och ljudet desynkroniserats. Dessa förbättringar bör öka prestandan för en enskild videovy med aktiv talarväxling. Vi har också åtgärdat ett problem där maskinvaruenheter med specialtecken inte var tillgängliga i Teams.
 
 ## <a name="january-2021"></a>Januari 2021
 
@@ -133,11 +133,11 @@ Det här är vad som ändrades i januari 2021:
 
 ### <a name="new-windows-virtual-desktop-offer"></a>Nytt Windows Virtual Desktop erbjudande
 
-Nya kunder sparar 30 procent på Windows Virtual Desktop beräkningskostnader för virtuella datorer i D-serien och BS-serien i upp till 90 dagar när du använder den interna Microsoft-lösningen. Du kan lösa in det här erbjudandet Azure Portal den 31 mars 2021. Läs mer på Windows Virtual Desktop [sidan med erbjudanden.](https://azure.microsoft.com/services/virtual-desktop/offer/)
+Nya kunder sparar 30 procent på Windows Virtual Desktop datorkostnader för virtuella datorer i D-serien och Bs-serien i upp till 90 dagar när du använder den interna Microsoft-lösningen. Du kan lösa in det här erbjudandet Azure Portal den 31 mars 2021. Läs mer på Windows Virtual Desktop [sidan med erbjudanden.](https://azure.microsoft.com/services/virtual-desktop/offer/)
 
 ### <a name="networksecuritygrouprules-value-change"></a>networkSecurityGroupRules-värdeändring 
 
-I den Azure Resource Manager kapslade mallen ändrade vi standardvärdet för networkSecurityGroupRules från ett objekt till en matris. Detta förhindrar eventuella fel om du använder managedDisks-customimagevm.jspå utan att ange ett värde för networkSecurityGroupRules. Detta var inte en bakåtkompatibel ändring och är bakåtkompatibel.
+I den Azure Resource Manager kapslade mallen ändrade vi standardvärdet för networkSecurityGroupRules från ett objekt till en matris. Detta förhindrar eventuella fel om du använder managedDisks-customimagevm.jspå utan att ange ett värde för networkSecurityGroupRules. Det här var inte en bakåtkompatibel ändring och är bakåtkompatibel.
 
 ### <a name="fslogix-hotfix-update"></a>Uppdatering av snabbkorrigeringar för FSLogix
 
@@ -147,26 +147,26 @@ Mer information finns i viktig information i [Vad är nytt i FSLogix.](/fslogix/
 
 ### <a name="azure-portal-experience-improvements"></a>Azure Portal upplevelseförbättringar
 
-Vi har gjort följande förbättringar av Azure Portal upplevelsen:
+Vi har gjort följande förbättringar Azure Portal upplevelsen:
 
-- Du kan nu lägga till autentiseringsuppgifter för lokal VM-administratör direkt i stället för att behöva lägga till ett lokalt konto som skapats med autentiseringsuppgifterna för Domänkoppling för Active Directory.
+- Nu kan du lägga till autentiseringsuppgifter för lokal VM-administratör direkt i stället för att behöva lägga till ett lokalt konto som skapats med autentiseringsuppgifterna för domänkopplingskontot i Active Directory.
 - Användare kan nu visa både enskilda tilldelningar och grupptilldelningar på separata flikar för enskilda användare och grupper.
 - Versionsnumret för den virtuella Windows Virtual Desktop agenten visas nu i översikten över virtuella datorer för värdpooler.
 - Massborttagning har lagts till för värdpooler och programgrupper.
-- Nu kan du aktivera eller inaktivera tömningsläge för flera sessionsvärdar i en värdpool.
+- Du kan nu aktivera eller inaktivera tömningsläge för flera sessionsvärdar i en värdpool.
 - Det offentliga IP-fältet har tagits bort från informationssidan för den virtuella datorn.
 
-### <a name="windows-virtual-desktop-agent-troubleshooting"></a>Windows Virtual Desktop agentfelsökning
+### <a name="windows-virtual-desktop-agent-troubleshooting"></a>felsökning Windows Virtual Desktop agent
 
 Vi konfigurerade nyligen [felsökningsguiden Windows Virtual Desktop Agent för](troubleshoot-agent.md) att hjälpa kunder som har stött på vanliga problem.
 
 ### <a name="microsoft-defender-for-endpoint-integration"></a>Microsoft Defender för slutpunktsintegrering
 
-Integreringen av Microsoft Defender för slutpunkter är nu allmänt tillgänglig. Den här funktionen ger Windows Virtual Desktop virtuella datorer samma undersökningsupplevelse som en lokal Windows 10 dator. Om du använder Windows 10 Enterprise flera sessioner stöder Microsoft Defender för slutpunkt upp till 50 samtidiga användaranslutningar, vilket ger kostnadsbesparingar för Windows 10 Enterprise flera sessioner och förtroendet för Microsoft Defender för slutpunkt. Mer information finns i vårt [blogginlägg](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
+Integreringen av Microsoft Defender för slutpunkter är nu allmänt tillgänglig. Den här funktionen ger Windows Virtual Desktop virtuella datorer samma undersökningsupplevelse som en lokal Windows 10 dator. Om du använder Windows 10 Enterprise flera sessioner stöder Microsoft Defender för slutpunkt upp till 50 samtidiga användaranslutningar, vilket ger kostnadsbesparingar för Windows 10 Enterprise flera sessioner och förtroendet för Microsoft Defender för slutpunkt. Mer information finns i [blogginlägget](https://techcommunity.microsoft.com/t5/microsoft-defender-for-endpoint/windows-virtual-desktop-support-is-now-generally-available/ba-p/2103712).
 
 ### <a name="azure-security-baseline-for-windows-virtual-desktop"></a>Azure-säkerhetsbaslinje för Windows Virtual Desktop
 
-Vi har nyligen publicerat [en artikel om Azures](security-baseline.md) säkerhetsbaslinje för Windows Virtual Desktop som vi vill uppmärksamma dig på. Dessa riktlinjer innehåller information om hur du använder Azure Security Benchmark version 2.0 för att Windows Virtual Desktop. Azure Security Benchmark beskriver de inställningar och metoder som vi rekommenderar att du använder för att skydda dina molnlösningar i Azure.
+Vi har nyligen publicerat [en artikel om Azures](security-baseline.md) säkerhetsbaslinje för Windows Virtual Desktop som vi vill uppmärksamma dig på. Dessa riktlinjer innehåller information om hur du tillämpar Azure Security Benchmark, version 2.0 på Windows Virtual Desktop. Azure Security Benchmark beskriver de inställningar och metoder som vi rekommenderar att du använder för att skydda dina molnlösningar i Azure.
 
 ## <a name="december-2020"></a>December 2020
 
@@ -174,7 +174,7 @@ Det här är vad som ändrades i december 2020:
 
 ### <a name="azure-monitor-for-windows-virtual-desktop"></a>Azure Monitor för Windows Virtual Desktop
 
-Den offentliga förhandsversionen för Azure Monitor för Windows Virtual Desktop är nu tillgänglig. Den här nya funktionen innehåller en robust instrumentpanel som byggts ovanpå Azure Monitor arbetsböcker för att hjälpa IT-proffs att förstå Windows Virtual Desktop miljöer. Mer information [finns i tillkännagivandet](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) på vår blogg. 
+Den offentliga förhandsversionen för Azure Monitor för Windows Virtual Desktop är nu tillgänglig. Den här nya funktionen innehåller en robust instrumentpanel som byggts ovanpå Azure Monitor arbetsböcker för att hjälpa IT-proffs att förstå Windows Virtual Desktop miljöer. Mer information [finns i tillkännagivandet på](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/azure-monitor-for-windows-virtual-desktop-public-preview/m-p/1946587) vår blogg. 
 
 ### <a name="azure-resource-manager-template-change"></a>Azure Resource Manager ändra mall 
 
@@ -182,7 +182,7 @@ I den senaste uppdateringen har vi tagit bort alla parametrar för offentliga IP
 
 ### <a name="msix-app-attach-public-preview"></a>Bifoga offentlig förhandsversion av MSIX-appen 
 
-MSIX-app attach är en annan tjänst som påbörjade sin offentliga förhandsversion den här månaden. MSIX-apptillämpning är en tjänst som dynamiskt presenterar MSIX-program för dina virtuella Windows Virtual Desktop Sessionsvärdar. Mer information [finns i tillkännagivandet](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) på vår blogg. 
+MSIX-app attach är en annan tjänst som påbörjade sin offentliga förhandsversion den här månaden. MSIX-apptillämpning är en tjänst som dynamiskt presenterar MSIX-program för Windows Virtual Desktop Session Host VMs. Mer information [finns i tillkännagivandet på](https://techcommunity.microsoft.com/t5/windows-virtual-desktop/msix-app-attach-azure-portal-integration-public-preview/m-p/1986231) vår blogg. 
 
 ### <a name="screen-capture-protection"></a>Skydd mot skärmdumpar 
 
@@ -213,11 +213,11 @@ Mer information om klientuppdateringar finns i [Klientuppdateringar.](whats-new.
 Vi har åtgärdat två buggar i Azure Portal användarupplevelsen:
 
 - Det egna namnet på skrivbordsprogrammet skrivs inte längre över i arbetsflödet "Lägg till virtuell dator".
-- Nu läses sessionsvärdfliken in om sessionsvärdar är en del av skalningsuppsättningar.
+- Sessionsvärdfliken läses nu in om sessionsvärdar ingår i skalningsuppsättningar.
 
 ### <a name="fslogix-client-version-2009"></a>FSLogix-klient, version 2009 
 
-Vi har släppt en ny version av FSLogix-klienten med många korrigeringar och förbättringar. Läs mer i [vårt blogginlägg](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix).
+Vi har släppt en ny version av FSLogix-klienten med många korrigeringar och förbättringar. Läs mer [i vårt blogginlägg](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix).
 
 ### <a name="rdp-shortpath-public-preview"></a>Offentlig förhandsversion av RDP Shortpath
 
@@ -252,7 +252,7 @@ Den Azure Government Cloud är nu allmänt tillgänglig. Läs mer [i vårt blogg
 Vi har gjort några uppdateringar av Windows Virtual Desktop Azure Portal:
 
 - Ett resourceID-fel som hindrade användare från att öppna fliken Sessioner har åtgärdats.
-- Effektiviserat användargränssnittet på fliken Sessionsvärdar.
+- Effektiviserat användargränssnittet på fliken "Sessionsvärdar".
 - Inställningarna "Defaults", "Usability" (Användbarhet) och "Restore defaults" (Återställ standardvärden) har åtgärdats under RDP-egenskaper.
 - Funktionerna "Ta bort" och "Ta bort" är konsekventa på alla flikar.
 - Portalen validerar nu appnamn i arbetsflödet "Lägg till en app".
@@ -294,7 +294,7 @@ Nu kan du använda Experience [Estimator för att](https://azure.microsoft.com/s
     
 - Vi har lagt till en ny funktion som gör att du kan ändra vm-plats, avbildning, resursgrupp, prefixnamn, nätverkskonfiguration som en del av arbetsflödet för att lägga till en virtuell dator i distributionen i Azure Portal.
 
-- IT-proffs kan nu hantera hybrida Azure Active Directory-Windows 10 Enterprise virtuella datorer med Microsoft Endpoint Manager. Mer information finns i [vårt blogginlägg](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048).
+- IT-proffs kan nu hantera hybridbaserade Azure Active Directory-Windows 10 Enterprise virtuella datorer med Microsoft Endpoint Manager. Mer information finns i [vårt blogginlägg](https://techcommunity.microsoft.com/t5/microsoft-endpoint-manager-blog/microsoft-endpoint-manager-announces-support-for-windows-virtual/ba-p/1681048).
 
 ## <a name="august-2020"></a>Augusti 2020
 
@@ -315,9 +315,9 @@ Det här är vad som ändrades i augusti 2020:
 
 - Azure Advisor är nu en del av Windows Virtual Desktop. När du använder Windows Virtual Desktop via Azure Portal kan du se rekommendationer för att optimera din Windows Virtual Desktop miljö. Läs mer på [Azure Advisor](azure-advisor.md).
 
-- Azure CLI stöder nu Windows Virtual Desktop ( `az desktopvirtualization` ) som hjälper dig att automatisera Windows Virtual Desktop distributioner. Kolla in [desktopvirtualization för](/cli/azure/ext/desktopvirtualization/) en lista över tilläggskommandon.
+- Azure CLI stöder nu Windows Virtual Desktop ( `az desktopvirtualization` ) som hjälper dig att automatisera Windows Virtual Desktop distributioner. Kolla in [desktopvirtualization för](/cli/azure/) en lista över tilläggskommandon.
 
-- Vi har uppdaterat våra distributionsmallar så att de är helt kompatibla med Windows Virtual Desktop Azure Resource Manager gränssnitten. Du hittar mallarna på [GitHub.](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates)
+- Vi har uppdaterat våra distributionsmallar så att de är helt kompatibla med Windows Virtual Desktop Azure Resource Manager gränssnitten. Du hittar mallarna på [GitHub](https://github.com/Azure/RDS-Templates/tree/master/ARM-wvd-templates).
 
 - Portalen Windows Virtual Desktop US Gov nu i offentlig förhandsversion. Mer information finns i [vårt meddelande](https://azure.microsoft.com/updates/windows-virtual-desktop-is-now-available-in-the-azure-government-cloud-in-preview/).
 
@@ -333,7 +333,7 @@ Mer information om nya funktioner finns i det [här blogginlägget.](https://tec
 
 ### <a name="autoscaling-tool-update"></a>Uppdatering av autoskalningsverktyg
 
-Den senaste versionen av autoskalningsverktyget som fanns i förhandsversionen är nu allmänt tillgänglig. Det här verktyget använder ett Azure Automation-konto och Azure Logic App för att automatiskt stänga av och starta om sessionsvärdar (VM) i en värdpool, vilket minskar infrastrukturkostnaderna. Läs mer i [Skala sessionsvärdar med hjälp av Azure Automation](set-up-scaling-script.md).
+Den senaste versionen av verktyget för automatisk skalning som fanns i förhandsversionen är nu allmänt tillgänglig. Det här verktyget använder ett Azure Automation-konto och Azure Logic App för att automatiskt stänga av och starta om sessionsvärdar (VM) i en värdpool, vilket minskar infrastrukturkostnaderna. Läs mer i [Skala sessionsvärdar med hjälp av Azure Automation](set-up-scaling-script.md).
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -344,9 +344,9 @@ Nu kan du göra följande med Azure Portal i Windows Virtual Desktop:
 
 ### <a name="diagnostics"></a>Diagnostik
 
-Vi har släppt några nya fördefinierade frågor för Log Analytics-arbetsytan. Du kommer åt frågorna genom att gå till **Loggar** och under **Kategori** väljer **du Windows Virtual Desktop**. Läs mer i [Använda Log Analytics för diagnostikfunktionen](diagnostics-log-analytics.md).
+Vi har släppt några nya fördefinierade frågor för Log Analytics-arbetsytan. Om du vill komma åt frågorna går du **till Loggar** och under **Kategori** väljer **du Windows Virtual Desktop**. Läs mer i [Använda Log Analytics för diagnostikfunktionen](diagnostics-log-analytics.md).
 
-### <a name="update-for-remote-desktop-client-for-android"></a>Uppdatera för fjärrskrivbordsklienten för Android
+### <a name="update-for-remote-desktop-client-for-android"></a>Uppdatering för Fjärrskrivbordsklient för Android
 
 [Fjärrskrivbordsklienten för Android stöder](https://play.google.com/store/apps/details?id=com.microsoft.rdc.androidx) nu Windows Virtual Desktop anslutningar. Från och med version 10.0.7 har Android-klienten ett nytt användargränssnitt för bättre användarupplevelse. Klienten kan också integreras med Microsoft Authenticator Android-enheter för att aktivera villkorlig åtkomst när du prenumererar på Windows Virtual Desktop arbetsytor.  
 

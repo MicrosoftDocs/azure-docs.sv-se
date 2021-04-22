@@ -37,7 +37,7 @@
           href: azure-portal-dashboard-share-access.md
         - name: Använda en anpassad Markdown-panel
           href: azure-portal-markdown-tile.md
-        - name: Skapa en Azure-instrumentpanel program mässigt
+        - name: Skapa en Azure-instrumentpanel programmässigt
           href: azure-portal-dashboards-create-programmatically.md
           displayName: 'Azure CLI, az portal dashboard, az portal'
     - name: Instruktionsvideoserie om Azure-portalen
@@ -79,7 +79,7 @@
     - name: Azure-instrumentpanelernas struktur
       href: azure-portal-dashboards-structure.md
     - name: Azure CLI
-      href: /cli/azure/ext/portal/portal
+      href: /cli/azure/portal
     - name: Inbyggda Azure Policy-program
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

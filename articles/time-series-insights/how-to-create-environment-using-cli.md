@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: how-to
 ms.date: 03/15/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e2846b7ba07ec0a7678a8287fe6a84bc169497a3
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 07e7f21bd706d9f83d2813b0ab491b01fbc53672
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785135"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867573"
 ---
 # <a name="create-an-azure-time-series-insights-gen2-environment-using-the-azure-cli"></a>Skapa en Azure Time Series Insights Gen2-miljö med Hjälp av Azure CLI
 
@@ -62,7 +62,7 @@ az tsi environment gen2 create --name "my-tsi-env" --location eastus2 --resource
 
 Du kan använda Azure CLI för att ta bort en enskild resurs, till exempel en Time Series Insights-miljö, eller ta bort en resursgrupp och alla dess resurser, inklusive Time Series Insights miljöer.
 
-Om [du vill Time Series Insights en miljö](/cli/azure/ext/timeseriesinsights/tsi/environment#ext_timeseriesinsights_az_tsi_environment_delete)Time Series Insights kör du följande kommando:
+Om [du vill Time Series Insights en miljö](/cli/azure/tsi/environment#az_tsi_environment_delete)Time Series Insights kör du följande kommando:
 
 ```azurecli-interactive
 az tsi environment delete --name "my-tsi-env" --resource-group $rg
