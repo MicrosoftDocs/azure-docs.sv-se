@@ -8,19 +8,19 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 07/15/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3dd971ff36bde02072d14c465dbafec2823b256d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 63c7fe703a1fbf4cb46532085a33efd74e6a76ef
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107780325"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875385"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-azure-cli"></a>Snabbstart: Skapa en Azure Database for MySQL server med Azure CLI
 
 > [!TIP]
-> Överväg att använda det enklare [Azure CLI-kommandot az mysql up](/cli/azure/ext/db-up/mysql#ext-db-up-az-mysql-up) (för närvarande i förhandsversion). Prova [snabbstarten](./quickstart-create-server-up-azure-cli.md).
+> Överväg att använda det enklare [Azure CLI-kommandot az mysql](/cli/azure/mysql#az_mysql_up) (för närvarande i förhandsversion). Prova [snabbstarten](./quickstart-create-server-up-azure-cli.md).
 
-Den här snabbstarten visar hur du använder [Azure CLI-kommandon](/cli/azure/get-started-with-azure-cli) [i Azure Cloud Shell](https://shell.azure.com) för att skapa en Azure Database for MySQL server på fem minuter. 
+Den här snabbstarten visar hur du använder [Azure CLI-kommandon](/cli/azure/get-started-with-azure-cli) [i Azure Cloud Shell](https://shell.azure.com) för att skapa en Azure Database for MySQL-server på fem minuter. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -28,14 +28,14 @@ Den här snabbstarten visar hur du använder [Azure CLI-kommandon](/cli/azure/ge
 
  - Den här snabbstarten kräver version 2.0 eller senare av Azure CLI. Om du Azure Cloud Shell är den senaste versionen redan installerad.
 
- - Välj den specifika prenumerationen under ditt konto med [kommandot az account](/cli/azure/account) set. Anteckna ID-värdet **från az** login-utdata som ska användas som värde för  **prenumerationsargumentet** i kommandot . Om du har flera prenumerationer ska du välja lämplig prenumeration där resursen ska debiteras. Om du vill hämta alla dina prenumerationer använder [du az account list](/cli/azure/account#az_account_list).
+ - Välj den specifika prenumerationen under ditt konto med [kommandot az account](/cli/azure/account) set. Anteckna ID-värdet **från az** login-utdata som ska användas som värde för  **prenumerationsargumentet** i kommandot . Om du har flera prenumerationer ska du välja lämplig prenumeration där resursen ska debiteras. Om du vill hämta hela prenumerationen använder [du az account list](/cli/azure/account#az_account_list).
 
    ```azurecli
    az account set --subscription <subscription id>
    ```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Skapa en Azure Database för MySQL-server
-Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) med [kommandot az group create](/cli/azure/group) och skapa sedan MySQL-servern i den här resursgruppen. Du bör ange ett unikt namn. I följande exempel skapas en resursgrupp med namnet `myresourcegroup` på platsen `westus`.
+Skapa en [Azure-resursgrupp](../azure-resource-manager/management/overview.md) med kommandot [az group create](/cli/azure/group) och skapa sedan mySQL-servern i den här resursgruppen. Du bör ange ett unikt namn. I följande exempel skapas en resursgrupp med namnet `myresourcegroup` på platsen `westus`.
 
 ```azurecli-interactive
 az group create --name myresourcegroup --location westus
@@ -56,17 +56,17 @@ resource-group | myresourcegroup | Ange namnet på Azure-resursgruppen.
 location | westus | Azure-platsen för servern.
 admin-user | myadmin | Användarnamnet för administratörsinloggning. Det kan inte vara **azure_superuser**, **admin**, **administrator**, **root**, **guest** eller **public**.
 admin-password | *säkert lösenord* | Lösenordet för administratörsanvändaren. Det måste innehålla mellan 8 och 128 tecken. Lösenordet måste innehålla tecken från tre av följande kategorier: engelska versala bokstäver, engelska gemena bokstäver, siffror och icke-alfanumeriska tecken.
-sku-name|GP_Gen5_2|Ange namnet på prisnivån och beräkningskonfigurationen. Följer konventionen {prisnivå}_{beräkningsgenerering}_{vCores} i snabbformat. Mer information [finns i prisnivåer.](./concepts-pricing-tiers.md)
+sku-name|GP_Gen5_2|Ange namnet på prisnivån och beräkningskonfigurationen. Följer konventionen {prisnivå}_{beräkningsgenerering}_{vCores} i snabbformat. Mer information [finns i prisnivåerna.](./concepts-pricing-tiers.md)
 
 >[!IMPORTANT] 
->- Standardversionen av MySQL på servern är 5.7. Vi har för närvarande även versionerna 5.6 och 8.0.
->- Om du vill visa alla argument för **kommandot az mysql server create** går du till det här [referensdokumentet](/cli/azure/mysql/server#az_mysql_server_create).
+>- Standardversionen av MySQL på servern är 5.7. Vi har för närvarande även versionerna 5.6 och 8.0 tillgängliga.
+>- Om du vill visa alla argument för **kommandot az mysql server create** kan du se det här [referensdokumentet](/cli/azure/mysql/server#az_mysql_server_create).
 >- SSL är aktiverat som standard på servern . Mer information om SSL finns i Konfigurera [SSL-anslutning](howto-configure-ssl.md)
 
 ## <a name="configure-a-server-level-firewall-rule"></a>Konfigurera en brandväggsregel på servernivå 
-Som standard skyddas den nya server som skapas med brandväggsregler och kan inte nås offentligt. Du kan konfigurera brandväggsregeln på servern med kommandot [az mysql server firewall-rule](/cli/azure/mysql/server/firewall-rule) create. På så sätt kan du ansluta till servern lokalt.
+Som standard skyddas den nya server som skapas med brandväggsregler och kan inte nås offentligt. Du kan konfigurera brandväggsregeln på servern med kommandot [az mysql server firewall-rule create.](/cli/azure/mysql/server/firewall-rule) På så sätt kan du ansluta till servern lokalt.
 
-I följande exempel skapas en brandväggsregel som kallas `AllowMyIP` som tillåter anslutningar från den specifika IP-adressen 192.168.0.1. Ersätt IP-adressen som du ansluter från. Du kan använda ett intervall med IP-adresser om det behövs. Vet inte hur du söker efter din IP-adress och går sedan till för [https://whatismyipaddress.com/](https://whatismyipaddress.com/) att hämta din IP-adress.
+I följande exempel skapas en brandväggsregel som kallas `AllowMyIP` som tillåter anslutningar från den specifika IP-adressen 192.168.0.1. Ersätt IP-adressen som du ska ansluta från. Du kan använda ett intervall med IP-adresser om det behövs. Vet inte hur du söker efter din IP-adress och gå sedan till för [https://whatismyipaddress.com/](https://whatismyipaddress.com/) att hämta din IP-adress.
 
 ```azurecli-interactive
 az mysql server firewall-rule create --resource-group myresourcegroup --server mydemoserver --name AllowMyIP --start-ip-address 192.168.0.1 --end-ip-address 192.168.0.1
@@ -114,7 +114,7 @@ Resultatet är i JSON-format. Anteckna **fullyQualifiedDomainName** och **admini
 ```
 
 ## <a name="connect-to-azure-database-for-mysql-server-using-mysql-command-line-client"></a>Ansluta till Azure Database for MySQL-servern med mysql-kommandoradsklienten
-Du kan ansluta till servern med ett populärt klientverktyg, **[mysql.exe](https://dev.mysql.com/downloads/)** kommandoradsverktyg [med](../cloud-shell/overview.md)Azure Cloud Shell . Du kan också använda mysql-kommandoraden i din lokala miljö.
+Du kan ansluta till servern med ett populärt **[ klientverktyg,mysql.exe](https://dev.mysql.com/downloads/)** kommandoradsverktyg [med](../cloud-shell/overview.md)Azure Cloud Shell . Du kan också använda mysql-kommandoraden i din lokala miljö.
 ```bash
  mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```

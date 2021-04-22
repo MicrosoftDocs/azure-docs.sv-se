@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 58dccf56cd493782a422b0ddf0386e31d4d87daf
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: bb8f2d77c04e01c47318042337db819ac2f36d46
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107765997"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863199"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Snabbstart: Skapa ett Azure Stream Analytics jobb med hjälp av Azure CLI
 
@@ -59,7 +59,7 @@ Följande Kodblock i Azure CLI är kommandon som förbereder de indata som kräv
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-3. Hämta enhetsanslutningssträngen med hjälp av kommandot [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string). Kopiera hela anslutningssträngen och spara den för användning när du skapar Raspberry Pi-simulatorn.
+3. Hämta enhetsanslutningssträngen med hjälp av kommandot [az iot hub device-identity show-connection-string](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_show_connection_string). Kopiera hela anslutningssträngen och spara den för användning när du skapar Raspberry Pi-simulatorn.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
@@ -108,7 +108,7 @@ Följande Azure CLI-kodblock skapar ett bloblagringskonto som används för jobb
 
 Följande Azure CLI-kodblock skapar ett Stream Analytics jobb. Läs avsnitten för att förstå koden
 
-1. Skapa ett Stream Analytics jobb med [kommandot az stream-analytics job create.](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create)
+1. Skapa ett Stream Analytics jobb med [kommandot az stream-analytics job create.](/cli/azure/stream-analytics/job#az_stream_analytics_job_create)
 
 ```azurecli
 az stream-analytics job create \
@@ -124,7 +124,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>Konfigurera indata för jobbet
 
-Lägg till indata i jobbet med hjälp av [cmdleten az stream-analytics input.](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) Den här cmdleten tar jobbnamnet, jobbindatanamnet, resursgruppens namn och jobbindatadefinitionen som parametrar. Jobbindatadefinitionen är en JSON-fil som innehåller de egenskaper som krävs för att konfigurera jobbets indata. I det här exemplet skapar du en IoT Hub som indata.
+Lägg till indata i jobbet med hjälp av [cmdleten az stream-analytics input.](/cli/azure/stream-analytics/input#az_stream_analytics_input_create) Den här cmdleten tar jobbnamnet, jobbindatanamnet, resursgruppens namn och jobbindatadefinitionen som parametrar. Jobbindatadefinitionen är en JSON-fil som innehåller de egenskaper som krävs för att konfigurera jobbets indata. I det här exemplet skapar du en IoT Hub som indata.
 
 Skapa en fil med namnet `datasource.json` på den lokala datorn och lägg till följande JSON-data i den. Ersätt värdet för `sharedAccessPolicyKey` med `SharedAccessKey`-delen i den anslutningssträng för IoT Hub som du sparade i ett tidigare avsnitt.
 
@@ -166,7 +166,7 @@ az stream-analytics input create \
 
 ## <a name="configure-output-to-the-job"></a>Konfigurera utdata för jobbet
 
-Lägg till utdata i jobbet med hjälp av [cmdleten az stream-analytics output create.](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) Den här cmdleten tar jobbnamnet, jobbutdatanamnet, resursgruppens namn och jobbutdatadefinitionen som parametrar. Jobbutdatadefinitionen är en JSON-fil som innehåller de egenskaper som krävs för att konfigurera jobbets utdata. Det här exemplet använder bloblagring som utdata.
+Lägg till utdata i jobbet med hjälp av [cmdleten az stream-analytics output create.](/cli/azure/stream-analytics/output#az_stream_analytics_output_create) Den här cmdleten tar jobbnamnet, jobbutdatanamnet, resursgruppens namn och jobbutdatadefinitionen som parametrar. Jobbutdatadefinitionen är en JSON-fil som innehåller de egenskaper som krävs för att konfigurera jobbets utdata. Det här exemplet använder bloblagring som utdata.
 
 Skapa en fil med namnet `datasink.json` på den lokala datorn och lägg till följande JSON-data i den. Ersätt värdet för med lagringskontots åtkomstnyckel som är `accountKey` det värde som lagras i $storageAccountKey värdet.
 
@@ -188,7 +188,7 @@ Skapa en fil med namnet `datasink.json` på den lokala datorn och lägg till fö
 }
 ```
 
-Kör sedan cmdleten `az stream-analytics output`. Ersätt värdet för variabeln med sökvägen där du har lagrat JSON-filen för jobbdefinitionsdefinitionen och värdet för variabeln med sökvägen där du har lagrat `datasource` `serialization` JSON-filen för serialisering.
+Kör sedan cmdleten `az stream-analytics output`. Ersätt värdet för variabeln med sökvägen där du har lagrat JSON-filen för jobbutdatadefinitionen och värdet för variabeln med sökvägen där du har lagrat `datasource` `serialization` JSON-filen för serialisering.
 
 ```azurecli
 az stream-analytics output create \
@@ -201,7 +201,7 @@ az stream-analytics output create \
 
 ## <a name="define-the-transformation-query"></a>Definiera transformationsfrågan
 
-Lägg till en transformering för jobbet med hjälp [av cmdleten az stream-analytics transformation create.](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) Den här cmdleten tar jobbnamnet, jobbtransformationsnamnet, resursgruppens namn och jobbtransformationsdefinitionen som parametrar. 
+Lägg till en transformering för jobbet med hjälp [av cmdleten az stream-analytics transformation create.](/cli/azure/stream-analytics/transformation#az_stream_analytics_transformation_create) Den här cmdleten tar jobbnamnet, jobbtransformationsnamnet, resursgruppens namn och jobbtransformationsdefinitionen som parametrar. 
 
 Kör `az stream-analytics transformation create` cmdleten .
 
@@ -225,7 +225,7 @@ az stream-analytics transformation create \
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Starta Stream Analytics-jobbet och kontrollera utdata
 
-Starta jobbet med hjälp av [cmdleten az stream-analytics job start.](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start) Den här cmdleten tar jobbnamnet, resursgruppens namn, startläget för utdata och starttiden som parametrar. `OutputStartMode` godkänner värden för `JobStartTime`, `CustomTime` eller `LastOutputEventTime`.
+Starta jobbet med hjälp av [cmdleten az stream-analytics job start.](/cli/azure/stream-analytics/job#az_stream_analytics_job_start) Den här cmdleten tar jobbnamnet, resursgruppens namn, startläget för utdata och starttiden som parametrar. `OutputStartMode` godkänner värden för `JobStartTime`, `CustomTime` eller `LastOutputEventTime`.
 
 När du har kört följande cmdlet returnerar den `True` som utdata om jobbet startar. En utdatamapp skapas i lagringscontainern med de data som har transformerats.
 

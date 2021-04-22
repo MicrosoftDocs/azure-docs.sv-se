@@ -285,7 +285,7 @@
         - name: Konfigurera utvecklingsmiljöer
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
-        - name: Konfigurera studiomiljö
+        - name: Konfigurera Studio-miljö
           items:
             - name: Skapa och hantera filer
               href: how-to-manage-files.md
@@ -437,9 +437,6 @@
         - name: Använd automatiserad ML med Databricks
           displayName: automl
           href: how-to-configure-databricks-automl-environment.md
-        - name: Använd fjärrberäkningsmål
-          displayName: automl automated auto ml
-          href: how-to-auto-train-remote.md
         - name: Träna prognosmodeller automatiskt
           displayName: time series
           href: how-to-auto-train-forecast.md
@@ -622,7 +619,7 @@
       displayName: 'environments, curated environments'
       href: resource-curated-environments.md
     - name: Azure CLI
-      href: /cli/azure/ext/azure-cli-ml/ml
+      href: /cli/azure/ml
 - name: Resurser
   items:
     - name: Viktig information

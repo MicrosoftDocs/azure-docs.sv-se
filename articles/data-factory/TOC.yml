@@ -107,7 +107,7 @@
       items:
         - name: Omvandla data genom att mappa dataflöden
           items:
-            - name: Metodtips för att landningsdata i en lake med ADLS Gen2
+            - name: Metodtips för landning av data i ADLS Gen2
               href: tutorial-data-flow-write-to-lake.md
             - name: Transformera data i en lake med Delta Lake
               href: tutorial-data-flow-delta-lake.md
@@ -115,7 +115,7 @@
               href: tutorial-data-flow.md
             - name: Videokurser för dataflödesmappning
               href: data-flow-tutorials.md
-        - name: Förbereda data med dataförändring
+        - name: Förbereda data med omangning
           href: wrangling-tutorial.md
         - name: Använda externa tjänster
           items:
@@ -199,7 +199,7 @@
               href: concepts-data-flow-expression-builder.md
             - name: Uttrycksspråk
               href: data-flow-expression-functions.md
-        - name: Förbereda data med Power Query data wrangling
+        - name: Förbereda data med Power Query datafördrång
           items:
             - name: Översikt över dataförändring
               href: wrangling-overview.md
@@ -592,7 +592,7 @@
           href: control-flow-system-variables.md
         - name: Parametrisera mappningsdataflöden
           href: parameters-data-flow.md
-        - name: Parameterisera
+        - name: Så här parameteriserar du
           href: how-to-expression-language-functions.md
     - name: Säkerhet
       items:
@@ -776,7 +776,7 @@
       items:
         - name: Översikt över reserverad kapacitet för dataflöde
           href: data-flow-reserved-capacity-overview.md
-        - name: Dataflöde – förstå reservationsavgifter
+        - name: Dataflöde för att förstå reservationsavgifter
           href: data-flow-understand-reservation-charges.md
         - name: Planera och hantera kostnader
           href: plan-manage-costs.md
@@ -827,7 +827,7 @@
     - name: Inbyggda Azure Policy-program
       href: policy-reference.md
     - name: Azure CLI
-      href: /cli/azure/ext/datafactory/datafactory
+      href: /cli/azure/datafactory
 - name: Resurser
   items:
     - name: Faktablad

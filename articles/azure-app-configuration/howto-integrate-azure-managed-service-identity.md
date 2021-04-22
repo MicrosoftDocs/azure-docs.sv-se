@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.topic: conceptual
 ms.date: 04/08/2021
-ms.openlocfilehash: 591f767fe0ef2150f7fe180108f207b56f7c915f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 7a9eb992ff0cb98fdae2920da2beeda0bbd8941b
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107764319"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877542"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Använda hanterade identiteter för att få åtkomst till App Configuration
 
@@ -35,13 +35,13 @@ I den här artikeln kan du se hur du:
 > [!div class="checklist"]
 > * Ge en hanterad identitet åtkomst till App Configuration.
 > * Konfigurera din app för att använda en hanterad identitet när du ansluter till App Configuration.
-> * Du kan också konfigurera din app så att den använder en hanterad identitet när du ansluter Key Vault via en App Configuration Key Vault referens.
+> * Du kan också konfigurera din app så att den använder en hanterad identitet när du ansluter till Key Vault via en App Configuration Key Vault referens.
 
 ## <a name="prerequisites"></a>Förutsättningar
 
 Du behöver följande för att kunna slutföra den här självstudiekursen:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [.NET Core SDK](https://dotnet.microsoft.com/download).
 * [Azure Cloud Shell konfigurerat](../cloud-shell/quickstart.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -52,7 +52,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
 
 1. Skapa en App Services instans i [Azure Portal](https://portal.azure.com) som vanligt. Gå till den i portalen.
 
-1. Rulla ned till **gruppen Inställningar** i det vänstra fönstret och välj **Identitet.**
+1. Rulla ned till **gruppen** Inställningar i det vänstra fönstret och välj **Identitet.**
 
 1. På fliken **System tilldelad** växlar du **Status** till **På** och väljer **Spara.**
 
@@ -76,7 +76,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
 
     ![Lägga till en hanterad identitet](./media/add-managed-identity.png)
 
-1. Valfritt: Om du även vill bevilja åtkomst Key Vault följer du anvisningarna i Tilldela [en Key Vault åtkomstprincip](../key-vault/general/assign-access-policy-portal.md).
+1. Valfritt: Om du även vill bevilja åtkomst Key Vault följer du anvisningarna i [Tilldela en Key Vault åtkomstprincip](../key-vault/general/assign-access-policy-portal.md).
 
 ## <a name="use-a-managed-identity"></a>Använda en hanterad identitet
 
@@ -86,7 +86,7 @@ Om du vill konfigurera en hanterad identitet i portalen skapar du först ett pro
     dotnet add package Azure.Identity
     ```
 
-1. Hitta slutpunkten till App Configuration store. Den här URL:en visas **på fliken** Åtkomstnycklar för arkivet i Azure Portal.
+1. Hitta slutpunkten till din App Configuration store. Den här URL:en visas **på fliken** Åtkomstnycklar för arkivet i Azure Portal.
 
 1. Öppna *appsettings.jspå* och lägg till följande skript. Ersätt *\<service_endpoint>* , inklusive hakparenteserna, med URL:en till App Configuration arkivet.
 
@@ -266,7 +266,7 @@ http://<app_name>.azurewebsites.net
 
 App Configuration-providrar för .NET Framework och Java Spring har också inbyggt stöd för hanterad identitet. Du kan använda butikens URL-slutpunkt i stället för dess fullständiga anslutningssträng när du konfigurerar någon av dessa providers.
 
-Du kan till exempel uppdatera .NET Framework-konsolappen som skapades i snabbstarten  för att ange följande inställningar iApp.configfilen:
+Du kan till exempel uppdatera .NET Framework-konsolappen som skapades i snabbstarten för att ange *följande* inställningar iApp.configfilen:
 
 ```xml
     <configSections>
@@ -291,7 +291,7 @@ Du kan till exempel uppdatera .NET Framework-konsolappen som skapades i snabbsta
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>Nästa steg
-I den här självstudien lade du till en hanterad Azure-identitet för att effektivisera åtkomsten App Configuration och förbättra hanteringen av autentiseringsuppgifter för din app. Om du vill veta mer om hur App Configuration kan du fortsätta till Azure CLI-exemplen.
+I den här självstudien har du lagt till en hanterad Azure-identitet för att effektivisera åtkomsten till App Configuration och förbättra hanteringen av autentiseringsuppgifter för din app. Om du vill veta mer om hur App Configuration kan du fortsätta till Azure CLI-exemplen.
 
 > [!div class="nextstepaction"]
 > [CLI-exempel](./cli-samples.md)

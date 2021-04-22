@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: 1d167962e22953a4a9ca69ece347f8427b9218c9
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: 820b5f39192fffa0ec54b44c6016965599d85a8c
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836316"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863703"
 ---
 # <a name="start-translation"></a>Starta översättning
 
-Använd det här API:et för att starta en massöversättningsbegäran (batch) med tjänsten för dokumentöversättning. Varje begäran kan innehålla flera dokument och måste innehålla en käll- och målcontainer för varje dokument.
+Använd det här API:et för att starta en massöversättningsbegäran (batch) med tjänsten För dokumentöversättning. Varje begäran kan innehålla flera dokument och måste innehålla en käll- och målcontainer för varje dokument.
 
 Prefixet och suffixfiltret (om det anges) används för att filtrera mappar. Prefixet tillämpas på underökvägen efter containernamnet.
 
@@ -38,18 +38,18 @@ Lär dig hur du hittar [ditt anpassade domännamn](../get-started-with-document-
 
 > [!IMPORTANT]
 >
-> * **Alla API-begäranden till tjänsten För dokumentöversättning krävs en slutpunkt för en anpassad domän.**
-> * Du kan inte använda slutpunkten som finns  på sidan Azure Portal nycklar och slutpunkter eller slutpunkten för global översättning– – för att göra `api.cognitive.microsofttranslator.com` HTTP-begäranden till dokumentöversättning.
+> * **Alla API-begäranden till tjänsten för dokumentöversättning kräver en anpassad domänslutpunkt.**
+> * Du kan inte använda slutpunkten som finns  på din Azure Portal resursnycklar och slutpunktssida eller den globala översättningsslutpunkten– – för `api.cognitive.microsofttranslator.com` att göra HTTP-begäranden till dokumentöversättning.
 
 ## <a name="request-headers"></a>Begärandehuvuden
 
-Begärandehuvudena är:
+Begärandehuvuden är:
 
 |Sidhuvuden|Description|
 |--- |--- |
 |Ocp-Apim-Subscription-Key|Begärandehuvud som krävs|
 
-## <a name="request-body-batch-submission-request"></a>Begärandetext: Batch-överföringsbegäran
+## <a name="request-body-batch-submission-request"></a>Begärandetext: Begäran om batchinskickning
 
 |Namn|Typ|Description|
 |--- |--- |--- |
@@ -63,7 +63,7 @@ Definition för begäran om batchöversättning av indata.
 |--- |--- |--- |--- |
 |källa|SourceInput[]|Sant|inputs.source som anges nedan. Källa för indatadokumenten.|
 |storageType|StorageInputType[]|Sant|inputs.storageType som anges nedan. Lagringstyp för källsträngen för indatadokument.|
-|Mål|TargetInput[]|Sant|inputs.target som anges nedan. Plats för utdatamålet.|
+|Mål|TargetInput[]|Sant|inputs.target som anges nedan. Platsen för utdatamålet.|
 
 **inputs.source**
 
@@ -233,7 +233,7 @@ Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller felkoder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar felmeddelande på hög nivå.|
-|innerError|InnerErrorV2|Nytt format för inre fel, som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
+|innerError|InnerErrorV2|Nytt format för inre fel som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
 |Inre. Felkod|sträng|Hämtar kodfelsträngen.|
 |innerError.message|sträng|Hämtar felmeddelande på hög nivå.|
 

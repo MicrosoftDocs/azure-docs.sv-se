@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/01/2020
 ms.author: duau
-ms.openlocfilehash: d315fa5b588c6e5f2e4643ca18626e400e6ca01b
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: f31e592f3e8fa9501b0aa1f8ed47fa5122f75820
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785657"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869625"
 ---
-# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Självstudie: Skala snabbt och skydda en webbapp med hjälp av Azure Front Door och Azure Web Application Firewall (WAF)
+# <a name="tutorial-quickly-scale-and-protect-a-web-application-by-using-azure-front-door-and-azure-web-application-firewall-waf"></a>Självstudie: Skala snabbt och skydda en webbapp med hjälp Azure Front Door och Azure Web Application Firewall (WAF)
 
-Många webbprogram har haft en snabb ökning av trafiken under de senaste veckorna på grund av COVID-19. Dessa webbprogram har också en ökning av skadlig trafik, inklusive doS-attacker. Det finns ett effektivt sätt att både skala ut ditt program för trafiktoppar och skydda dig mot attacker: konfigurera Azure Front Door med Azure WAF som acceleration, cachelagring och säkerhetslager framför webbappen. Den här artikeln innehåller råd om hur du Azure Front Door med Azure WAF konfigurerat för alla webbappar som körs i eller utanför Azure. 
+Många webbprogram har haft en snabb ökning av trafiken under de senaste veckorna på grund av COVID-19. De här webbprogrammen har också en ökning av skadlig trafik, inklusive doS-attacker. Det finns ett effektivt sätt att både skala ut ditt program för trafiktoppar och skydda dig mot attacker: konfigurera Azure Front Door med Azure WAF som acceleration, cachelagring och säkerhetslager framför webbappen. Den här artikeln innehåller råd om hur du Azure Front Door med Azure WAF konfigurerat för alla webbappar som körs i eller utanför Azure. 
 
 Vi använder Azure CLI för att konfigurera WAF i den här självstudien. Du kan göra samma sak med hjälp av Azure Portal, Azure PowerShell, Azure Resource Manager eller Azure REST API:er. 
 
@@ -48,7 +48,7 @@ I den här självstudien får du lära dig att:
    ```
 
 > [!NOTE] 
-> Mer information om de kommandon som används i den här självstudien finns [i Azure CLI reference for Front Door](/cli/azure/ext/front-door).
+> Mer information om kommandona som används i den här självstudien finns [i Azure CLI-referens för Front Door](/cli/azure/).
 
 ## <a name="create-an-azure-front-door-resource"></a>Skapa en Azure Front Door resurs
 
@@ -62,9 +62,9 @@ az network front-door create --backend-address <>  --accepted-protocols <> --nam
 
 `--name`: Namnet på din Azure Front Door resurs.
 
-`--resource-group`: Den resursgrupp som du vill placera den här Azure Front Door resurs i. Mer information om resursgrupper finns i [Hantera resursgrupper i Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
+`--resource-group`: Den resursgrupp som du vill placera den Azure Front Door resursen i. Mer information om resursgrupper finns i [Hantera resursgrupper i Azure](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
-Leta efter nyckeln i svaret du får när du kör det här `hostName` kommandot. Du behöver det här värdet i ett senare steg. `hostName`är DNS-namnet för den Azure Front Door som du skapade.
+Leta efter nyckeln i svaret du får när du kör det här `hostName` kommandot. Du behöver det här värdet i ett senare steg. `hostName`är DNS-namnet på den Azure Front Door som du skapade.
 
 ## <a name="create-an-azure-waf-profile-to-use-with-azure-front-door-resources"></a>Skapa en Azure WAF-profil som ska användas med Azure Front Door resurser
 
@@ -85,7 +85,7 @@ Leta efter nyckeln i svaret du får när du kör det här `ID` kommandot. Du beh
 
 Fältet `ID` ska ha det här formatet:
 
-/subscriptions/**subscription id**/resourcegroups/ resource group **name**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF policy name**
+/subscriptions/**subscription id**/resourcegroups/ resource group **name**/providers/Microsoft.Network/frontdoorwebapplicationfirewallpolicies/**WAF-principnamn**
 
 ## <a name="add-managed-rule-sets-to-the-waf-policy"></a>Lägga till hanterade regeluppsättningar i WAF-principen
 

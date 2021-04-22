@@ -10,17 +10,17 @@ ms.custom: mvc, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 02/09/2021
 ms.author: apimpm
-ms.openlocfilehash: 1d99d6f876e4896bb4321afb8dc4d8e7c3a404e7
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 6ab3f2e4e2164611820813a5fdb04e2b27df1ff2
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107483598"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107877038"
 ---
-# <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>Självstudie: Använda revisioner för att på ett säkert sätt göra icke-icke-större API-ändringar
+# <a name="tutorial-use-revisions-to-make-non-breaking-api-changes-safely"></a>Självstudie: Använda revisioner för att göra icke-api-ändringar på ett säkert sätt
 När ditt API är klart och börjar användas av utvecklare, måste du så småningom göra ändringar för det API:et och samtidigt se till att du inte stör anropen till API:et. Det är också bra att informera utvecklarna om de ändringar du gjort. 
 
-I Azure API Management du *revisioner för* att göra icke-större API-ändringar så att du kan modellera och testa ändringar på ett säkert sätt. När du är klar kan du göra en revision aktuell och ersätta ditt aktuella API. 
+I Azure API Management du *revisioner för att* göra icke-brytnings-API-ändringar så att du kan modellera och testa ändringar på ett säkert sätt. När du är klar kan du göra en revision aktuell och ersätta ditt aktuella API. 
 
 Bakgrundsinformation finns i [Versioner & och](https://azure.microsoft.com/blog/versions-revisions/) [API-versionshantering med Azure API Management](https://azure.microsoft.com/blog/api-versioning-with-azure-api-management/).
 
@@ -44,14 +44,14 @@ I den här guiden får du lära dig att:
 
 1. Logga in på [Azure Portal](https://portal.azure.com)och gå till din API Management instans.
 1. Välj **API:er**.
-2. Välj **Demo Conference API (Demokonferens-API)** i API-listan (eller något annat API som du vill lägga till revisioner i).
+2. Välj **Demo Conference API (Demokonferens-API)** i API-listan (eller ett annat API som du vill lägga till revisioner i).
 3. Välj fliken **Revisioner.**
 4. Välj **+ Lägg till revision.**
 
    :::image type="content" source="media/api-management-getstarted-revise-api/07-add-revisions-01-add-new-revision.png" alt-text="Lägga till API-granskning":::
 
     > [!TIP]
-    > Du kan också välja **Lägg till** revision på snabbmenyn (**...**) för API:et.
+    > Du kan också välja **Lägg till revision** på snabbmenyn (**...**) för API:et.
 
 5. Ange en beskrivning för din nya revision så att du kommer ihåg vad den ska användas för.
 6. Välj **Skapa**,
@@ -82,8 +82,8 @@ I den här guiden får du lära dig att:
 
 1. Välj fliken **Revisioner** från menyn upptill på sidan.
 1. Öppna snabbmenyn (**...**) för **revision 2**.
-1. Välj **Gör aktuell**.
-1. Markera kryssrutan **Post to Public Change log for this API** (Publicera till offentlig ändringslogg för det här API:et) om du vill publicera anteckningar om den här ändringen. Ange en beskrivning för din ändring som utvecklare ser, till exempel: **Testa revisioner. Lade till ny "teståtgärd".**
+1. Välj **Gör aktuell.**
+1. Markera kryssrutan **Post to Public Change log for this API** (Publicera till offentlig ändringslogg för det här API:et) om du vill publicera anteckningar om den här ändringen. Ange en beskrivning för din ändring som utvecklare ser, till exempel: **Testa revisioner. En ny teståtgärd har lagts till.**
 1. Nu är **Revision 2** aktuell.
 
     :::image type="content" source="media/api-management-getstarted-revise-api/revisions-menu.png" alt-text="Revision-menyn i fönstret Revisioner":::
@@ -96,7 +96,7 @@ Så här börjar du använda Azure CLI:
 
 Använd den här proceduren för att skapa och uppdatera en version.
 
-1. Kör kommandot [az apim api list för](/cli/azure/apim/api#az_apim_api_list) att se dina API-API-API:er:
+1. Kör kommandot [az apim api list för](/cli/azure/apim/api#az_apim_api_list) att se dina API-ID:n:
 
    ```azurecli
    az apim api list --resource-group apim-hello-word-resource-group \

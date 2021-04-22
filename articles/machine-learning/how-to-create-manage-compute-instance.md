@@ -1,7 +1,7 @@
 ---
-title: Skapa och hantera en beräknings instans
+title: Skapa och hantera en beräkningsinstans
 titleSuffix: Azure Machine Learning
-description: Lär dig hur du skapar och hanterar en Azure Machine Learning beräknings instans. Använd som utvecklings miljö eller som beräknings mål för utvecklings-och test syfte.
+description: Lär dig hur du skapar och hanterar Azure Machine Learning en beräkningsinstans. Använd som utvecklingsmiljö eller som beräkningsmål för utveckling/testning.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,44 +11,44 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 2778f52b312e5d2fda7879b834fcd204285b7144
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 5ac525ae062efca25601c9e63a5c8f16f2be29be
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105628959"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861236"
 ---
-# <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Skapa och hantera en Azure Machine Learning beräknings instans
+# <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Skapa och hantera en Azure Machine Learning beräkningsinstans
 
-Lär dig hur du skapar och hanterar en [beräknings instans](concept-compute-instance.md) i din Azure Machine Learning-arbetsyta.
+Lär dig hur du skapar och hanterar en [beräkningsinstans](concept-compute-instance.md) i Azure Machine Learning arbetsyta.
 
-Använd en beräknings instans som din fullständigt konfigurerade och hanterade utvecklings miljö i molnet. För utveckling och testning kan du också använda instansen som ett [inlärnings mål](concept-compute-target.md#train) eller för ett mål för ett [mål](concept-compute-target.md#deploy).   En beräknings instans kan köra flera jobb parallellt och har en jobbkö. Som utvecklings miljö kan en beräknings instans inte delas med andra användare i din arbets yta.
+Använd en beräkningsinstans som din fullständigt konfigurerade och hanterade utvecklingsmiljö i molnet. För utveckling och testning kan du också använda instansen som ett [träningsbearbetningsmål](concept-compute-target.md#train) eller som [ett inferensmål.](concept-compute-target.md#deploy)   En beräkningsinstans kan köra flera jobb parallellt och har en jobbkö. Som en utvecklingsmiljö kan en beräkningsinstans inte delas med andra användare på din arbetsyta.
 
 I den här artikeln kan du se hur du:
 
 * Skapa en beräkningsinstans 
-* Hantera (starta, stoppa, starta om, ta bort) en beräknings instans
-* Få åtkomst till terminalfönstret 
-* Installera R-eller python-paket
-* Skapa nya miljöer eller Jupyter-kärnor
+* Hantera (starta, stoppa, starta om, ta bort) en beräkningsinstans
+* Öppna terminalfönstret 
+* Installera R- eller Python-paket
+* Skapa nya miljöer eller Jupyter-kernels
 
-Beräknings instanser kan köra jobb på ett säkert sätt i en [virtuell nätverks miljö](how-to-secure-training-vnet.md), utan att företag behöver öppna SSH-portar. Jobbet körs i en behållare miljö och paketerar dina modell beroenden i en Docker-behållare. 
+Beräkningsinstanser kan köra jobb på ett säkert sätt [i en virtuell nätverksmiljö](how-to-secure-training-vnet.md)utan att företag behöver öppna SSH-portar. Jobbet körs i en containermiljö och paketerar dina modellberoenden i en Docker-container. 
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-* En Azure Machine Learning-arbetsyta. Mer information finns i [skapa en Azure Machine Learning-arbetsyta](how-to-manage-workspace.md).
+* En Azure Machine Learning-arbetsyta. Mer information finns i Skapa [en Azure Machine Learning arbetsyta.](how-to-manage-workspace.md)
 
-* [Azure CLI-tillägget för Machine Learning-tjänst](reference-azure-machine-learning-cli.md), [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro)eller [Azure Machine Learning Visual Studio Code-tillägget](tutorial-setup-vscode-extension.md).
+* [Azure CLI-tillägget för Machine Learning service](reference-azure-machine-learning-cli.md), Azure Machine Learning Python [SDK](/python/api/overview/azure/ml/intro)eller [Azure Machine Learning Visual Studio Code-tillägget](tutorial-setup-vscode-extension.md).
 
 ## <a name="create"></a>Skapa
 
-**Tids uppskattning**: cirka 5 minuter.
+**Uppskattad** tidsuppskattning: Cirka 5 minuter.
 
-Att skapa en beräknings instans är en process som en gång för din arbets yta. Du kan återanvända beräkningen som en utvecklings arbets Station eller som ett beräknings mål för träning. Du kan ha flera beräknings instanser kopplade till din arbets yta.
+Att skapa en beräkningsinstans är en enda process för din arbetsyta. Du kan återanvända beräkningen som en arbetsstation för utveckling eller som ett beräkningsmål för träning. Du kan ha flera beräkningsinstanser kopplade till din arbetsyta.
 
-De dedikerade kärnorna per region per VM-tullkvot och den totala regionala kvoten som gäller för skapande av beräknings instanser, är enhetliga och delade med Azure Machine Learning inlärnings kluster kvot. Att stoppa beräknings instansen frigör inte kvoten för att se till att du kommer att kunna starta om beräknings instansen. Observera att det inte går att ändra storlek på en beräknings instans för den virtuella datorn när den har skapats.
+De dedikerade kärnorna per region per VM-familj och den totala regionala kvoten, som gäller för skapande av beräkningsinstanser, är enhetliga och delas med Azure Machine Learning beräkningsklusterkvoten för träning. Om du stoppar beräkningsinstansen frigörs inte kvoten för att säkerställa att du kan starta om beräkningsinstansen. Observera att det inte går att ändra storleken på den virtuella datorn för beräkningsinstansen när den har skapats.
 
-Följande exempel visar hur du skapar en beräknings instans:
+Följande exempel visar hur du skapar en beräkningsinstans:
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -80,10 +80,10 @@ except ComputeTargetException:
     instance.wait_for_completion(show_output=True)
 ```
 
-Mer information om klasser, metoder och parametrar som används i det här exemplet finns i följande referens dokument:
+Mer information om klasser, metoder och parametrar som används i det här exemplet finns i följande referensdokument:
 
 * [ComputeInstance-klass](/python/api/azureml-core/azureml.core.compute.computeinstance.computeinstance)
-* [ComputeTarget. Create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
+* [ComputeTarget.create](/python/api/azureml-core/azureml.core.compute.computetarget#create-workspace--name--provisioning-configuration-)
 * [ComputeInstance.wait_for_completion](/python/api/azureml-core/azureml.core.compute.computeinstance(class)#wait-for-completion-show-output-false--is-delete-operation-false-)
 
 
@@ -93,46 +93,46 @@ Mer information om klasser, metoder och parametrar som används i det här exemp
 az ml computetarget create computeinstance  -n instance -s "STANDARD_D3_V2" -v
 ```
 
-Mer information finns i [AZ ml computetarget Create computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/create#ext_azure_cli_ml_az_ml_computetarget_create_computeinstance) reference.
+Mer information finns i referensen [az ml computetarget create computeinstance.](/cli/azure/ml/computetarget/create#az_ml_computetarget_create_computeinstance)
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-I arbets ytan i Azure Machine Learning Studio skapar du en ny beräknings instans från antingen **Compute** -avsnittet eller i avsnittet **antecknings böcker** när du är redo att köra en av dina antecknings böcker.
+I arbetsytan i Azure Machine Learning-studio du en ny **beräkningsinstans** från antingen avsnittet **Compute** eller i avsnittet Notebooks när du är redo att köra en av dina notebook-datorer.
 
-Information om hur du skapar en beräknings instans i Studio finns i [skapa beräknings mål i Azure Machine Learning Studio](how-to-create-attach-compute-studio.md#compute-instance).
+Information om hur du skapar en beräkningsinstans i studio finns i [Skapa beräkningsmål i Azure Machine Learning-studio](how-to-create-attach-compute-studio.md#compute-instance).
 
 ---
 
-Du kan också skapa en beräknings instans med en [Azure Resource Manager-mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance). 
+Du kan också skapa en beräkningsinstans med en [Azure Resource Manager mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance). 
 
-### <a name="create-on-behalf-of-preview"></a>Skapa på uppdrag av (för hands version)
+### <a name="create-on-behalf-of-preview"></a>Skapa för (förhandsversion)
 
-Som administratör kan du skapa en beräknings instans på uppdrag av en data expert och tilldela den instansen till dem med:
-* [Azure Resource Manager mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Information om hur du hittar TenantID och ObjectID som behövs i den här mallen finns i [hitta ID-objekt-ID: n för konfiguration av autentisering](../healthcare-apis/fhir/find-identity-object-ids.md).  Du kan också hitta dessa värden i Azure Active Directory-portalen.
+Som administratör kan du skapa en beräkningsinstans åt en dataexpert och tilldela instansen till dem med:
+* [Azure Resource Manager mall](https://github.com/Azure/azure-quickstart-templates/tree/master/101-machine-learning-compute-create-computeinstance).  Mer information om hur du hittar det TenantID och ObjectID som behövs i den här mallen finns i Hitta ID:t för [identitetsobjekt för autentiseringskonfiguration.](../healthcare-apis/fhir/find-identity-object-ids.md)  Du hittar även dessa värden i Azure Active Directory portalen.
 * REST-API
 
-Data expert som du skapar beräknings instansen för behöver följande är [Azure-rollbaserad åtkomst kontroll (Azure RBAC)](../role-based-access-control/overview.md) -behörigheter: 
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/start/åtgärd*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd*
-* *Microsoft. MachineLearningServices/arbets ytor/computes/applicationaccess/Action*
+Dataexperten som du skapar beräkningsinstansen för behöver följande [azure-behörigheter för rollbaserad åtkomstkontroll (Azure RBAC):](../role-based-access-control/overview.md) 
+* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/applicationaccess/action*
 
-Data expert kan starta, stoppa och starta om beräknings instansen. De kan använda beräknings instansen för:
+Dataexperten kan starta, stoppa och starta om beräkningsinstansen. De kan använda beräkningsinstansen för:
 * Jupyter
 * JupyterLab
 * RStudio
-* Integrerade antecknings böcker
+* Integrerade notebook-datorer
 
 ## <a name="manage"></a>Hantera
 
-Starta, stoppa, starta om och ta bort en beräknings instans. En beräknings instans skalar inte automatiskt ned, så se till att stoppa resursen för att förhindra pågående kostnader.
+Starta, stoppa, starta om och ta bort en beräkningsinstans. En beräkningsinstans skalas inte ned automatiskt, så se till att stoppa resursen för att förhindra löpande avgifter.
 
 > [!TIP]
-> Beräknings instansen har 120 GB OS-disk. Om du får slut på disk utrymme kan du [använda terminalen](how-to-access-terminal.md) för att rensa minst 1-2 GB innan du stoppar eller startar om beräknings instansen.
+> Beräkningsinstansen har en OS-disk på 120 GB. Om diskutrymmet tar slut använder du [terminalen](how-to-access-terminal.md) för att rensa minst 1–2 GB innan du stoppar eller startar om beräkningsinstansen.
 
 # <a name="python"></a>[Python](#tab/python)
 
-I exemplen nedan är namnet på beräknings instansen **instansen**
+I exemplen nedan är namnet på beräkningsinstansen **instansen**
 
 * Hämta status
 
@@ -173,7 +173,7 @@ I exemplen nedan är namnet på beräknings instansen **instansen**
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-I exemplen nedan är namnet på beräknings instansen **instansen**
+I exemplen nedan är namnet på beräkningsinstansen **instansen**
 
 * Stoppa
 
@@ -181,7 +181,7 @@ I exemplen nedan är namnet på beräknings instansen **instansen**
     az ml computetarget stop computeinstance -n instance -v
     ```
 
-    Mer information finns i [AZ ml computetarget Stop computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-stop).
+    Mer information finns i [az ml computetarget stop computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_stop).
 
 * Start 
 
@@ -189,7 +189,7 @@ I exemplen nedan är namnet på beräknings instansen **instansen**
     az ml computetarget start computeinstance -n instance -v
     ```
 
-    Mer information finns i [AZ ml computetarget start computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-start).
+    Mer information finns i [az ml computetarget start computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_start).
 
 * Starta om 
 
@@ -197,7 +197,7 @@ I exemplen nedan är namnet på beräknings instansen **instansen**
     az ml computetarget restart computeinstance -n instance -v
     ```
 
-    Mer information finns i [AZ ml computetarget restart computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget/computeinstance#ext-azure-cli-ml-az-ml-computetarget-computeinstance-restart).
+    Mer information finns i [az ml computetarget restart computeinstance](/cli/azure/ml/computetarget/computeinstance#az_ml_computetarget_computeinstance_restart).
 
 * Ta bort
 
@@ -205,43 +205,43 @@ I exemplen nedan är namnet på beräknings instansen **instansen**
     az ml computetarget delete -n instance -v
     ```
 
-    Mer information finns i [AZ ml computetarget Delete computeinstance](/cli/azure/ext/azure-cli-ml/ml/computetarget#ext-azure-cli-ml-az-ml-computetarget-delete).
+    Mer information finns i [az ml computetarget delete computeinstance](/cli/azure/ml/computetarget#az_ml_computetarget_delete).
 
 # <a name="studio"></a>[Studio](#tab/azure-studio)
 
-I arbets ytan i Azure Machine Learning Studio väljer du **Compute** och sedan **beräknings instans** överst.
+I arbetsytan i Azure Machine Learning-studio väljer **du Compute** och sedan **Beräkningsinstans** högst upp.
 
-![Hantera en beräknings instans](./media/concept-compute-instance/manage-compute-instance.png)
+![Hantera en beräkningsinstans](./media/concept-compute-instance/manage-compute-instance.png)
 
 Du kan utföra följande åtgärder:
 
-* Skapa en ny beräknings instans 
-* Uppdatera fliken beräknings instanser.
-* Starta, stoppa och starta om en beräknings instans.  Du betalar för instansen när den körs. Stoppa beräknings instansen när du inte använder den för att minska kostnaderna. Att stoppa en beräknings instans frigör den. Starta den sedan igen när du behöver den.
-* Ta bort en beräknings instans.
-* Filtrera listan över beräknings instanser så att endast de som du har skapat visas.
+* Skapa en ny beräkningsinstans 
+* Uppdatera fliken beräkningsinstanser.
+* Starta, stoppa och starta om en beräkningsinstans.  Du betalar för instansen när den körs. Stoppa beräkningsinstansen när du inte använder den för att minska kostnaderna. Om du stoppar en beräkningsinstans så frisplaceras den. Starta den sedan igen när du behöver den.
+* Ta bort en beräkningsinstans.
+* Filtrera listan över beräkningsinstanser så att endast de som du har skapat visas.
 
-För varje beräknings instans i arbets ytan som du skapade (eller som har skapats åt dig) kan du:
+För varje beräkningsinstans på arbetsytan som du skapade (eller som har skapats åt dig) kan du:
 
-* Åtkomst Jupyter, JupyterLab, RStudio på beräknings instansen
-* SSH till beräknings instans. SSH-åtkomst är inaktive rad som standard men kan aktive ras vid skapande av beräknings instanser. SSH-åtkomst sker via en funktion för offentlig/privat nyckel. På fliken får du information om SSH-anslutning, till exempel IP-adress, användar namn och port nummer.
-* Hämta information om en angiven beräknings instans, till exempel IP-adress och region.
+* Få åtkomst till Jupyter, JupyterLab, RStudio på beräkningsinstansen
+* SSH till beräkningsinstans. SSH-åtkomst är inaktiverat som standard men kan aktiveras när beräkningsinstansen skapas. SSH-åtkomsten är via mekanismen för offentlig/privat nyckel. På fliken visas information om SSH-anslutning, till exempel IP-adress, användarnamn och portnummer.
+* Få information om en specifik beräkningsinstans, till exempel IP-adress och region.
 
 ---
 
 
-Med [Azure RBAC](../role-based-access-control/overview.md) kan du styra vilka användare i arbets ytan som kan skapa, ta bort, starta, stoppa och starta om en beräknings instans. Alla användare i arbets ytans deltagare och ägar roll kan skapa, ta bort, starta, stoppa och starta om beräknings instanser i arbets ytan. Men endast skaparen av en angiven beräknings instans, eller användaren som tilldelats om den skapades för deras räkning, tillåts komma åt Jupyter, JupyterLab och RStudio på den beräknings instansen. En beräknings instans är dedikerad till en enda användare som har rot åtkomst och kan terminalen i genom Jupyter/JupyterLab/RStudio. Compute-instansen kommer att ha enkel inloggning och alla åtgärder kommer att använda användarens identitet för Azure RBAC och för att köra experiment körningar. SSH-åtkomsten styrs via mekanismen för offentlig/privat nyckel.
+[Med Azure RBAC](../role-based-access-control/overview.md) kan du styra vilka användare på arbetsytan som kan skapa, ta bort, starta, stoppa och starta om en beräkningsinstans. Alla användare i arbetsytans deltagare och ägarroll kan skapa, ta bort, starta, stoppa och starta om beräkningsinstanser på arbetsytan. Det är dock bara skaparen av en specifik beräkningsinstans, eller den användare som tilldelats om den har skapats för deras räkning, som får åtkomst till Jupyter, JupyterLab och RStudio på den beräkningsinstansen. En beräkningsinstans är dedikerad till en enskild användare som har rotåtkomst och kan terminala in via Jupyter/JupyterLab/RStudio. Beräkningsinstansen har enkel inloggning och alla åtgärder använder användarens identitet för Azure RBAC och attribution av experimentkörningar. SSH-åtkomst styrs via mekanismen för offentliga/privata nycklar.
 
-De här åtgärderna kan styras av Azure RBAC:
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/läsning*
+Dessa åtgärder kan styras av Azure RBAC:
+* *Microsoft.MachineLearningServices/workspaces/computes/read*
 * *Microsoft.MachineLearningServices/workspaces/computes/write*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/ta bort*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/start/åtgärd*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/stoppa/åtgärd*
-* *Microsoft. MachineLearningServices/arbets ytor/beräkningar/omstart/åtgärd*
+* *Microsoft.MachineLearningServices/workspaces/computes/delete*
+* *Microsoft.MachineLearningServices/workspaces/computes/start/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/stop/action*
+* *Microsoft.MachineLearningServices/workspaces/computes/restart/action*
 
 ## <a name="next-steps"></a>Nästa steg
 
-* [Få åtkomst till beräknings instansens Terminal](how-to-access-terminal.md)
+* [Få åtkomst till terminalen för beräkningsinstansen](how-to-access-terminal.md)
 * [Skapa och hantera filer](how-to-manage-files.md)
-* [Skicka in en utbildnings körning](how-to-set-up-training-targets.md)
+* [Skicka en träningskörning](how-to-set-up-training-targets.md)

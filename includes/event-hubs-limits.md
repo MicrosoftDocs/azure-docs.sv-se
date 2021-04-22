@@ -1,78 +1,78 @@
 ---
-rubrik: inkludera fil Beskrivning: inkludera fil tjänster: Event-Hub author: spelluru MS. service: Event-Hub MS. topic: inkludera MS. Date: 03/31/2021 MS. author: spelluru MS. Custom: "include File", "FastTrack-Edit", "IoT", "Event-Hub"
+title: include file description: include file services: event-hubs author: spell fältet ms.service: event-hubs ms.topic: include ms.date: 03/31/2021 ms.author: spell hubs ms.custom: "include file","fasttrack-edit","iot","event-hubs"
 
 ---
 
-Följande tabeller innehåller kvoter och begränsningar som är begränsade till [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Information om Event Hubs priser finns i [Event Hubs prissättning](https://azure.microsoft.com/pricing/details/event-hubs/).
+Följande tabeller innehåller kvoter och begränsningar som är specifika [för Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/). Mer information om Event Hubs finns i [Event Hubs priser.](https://azure.microsoft.com/pricing/details/event-hubs/)
 
 ### <a name="common-limits-for-all-tiers"></a>Vanliga gränser för alla nivåer
 Följande begränsningar är gemensamma för alla nivåer. 
 
 | Gräns |  Kommentarer | Värde |
 | --- |  --- | --- |
-| Antal Event Hubs namn rymder per prenumeration |- |100 |
-| Antal Event Hub per namnrymd | Efterföljande begär Anden om att skapa en ny händelsehubben avvisas. |10 |
-| Storlek på ett Event Hub-namn |- | 256 tecken |
-| Storlek på ett konsument grupp namn | Kafka-protokollet kräver inte att en konsument grupp skapas. | <p>Kafka: 256 tecken</p><p>AMQP: 50 tecken |
-| Antal icke-epok mottagare per konsument grupp |- |5 |
-| Antal auktoriseringsregler per namnrymd | Efterföljande begär Anden om att skapa auktoriseringsregler avvisas.|12 |
-| Antal anrop till GetRuntimeInformation-metoden |  - | 50 per sekund | 
+| Antal Event Hubs namnrymder per prenumeration |- |100 |
+| Antal händelsehubbb per namnområde | Efterföljande begäranden om att skapa en ny händelsehubb avvisas. |10 |
+| Namnet på en händelsehubb |- | 256 tecken |
+| Storleken på ett konsumentgruppnamn | Kafka-protokollet kräver inte att en konsumentgrupp skapas. | <p>Kafka: 256 tecken</p><p>AMQP: 50 tecken |
+| Antal icke-epokmottagare per konsumentgrupp |- |5 |
+| Antal auktoriseringsregler per namnområde | Efterföljande begäranden om att skapa auktoriseringsregel avvisas.|12 |
+| Antal anrop till metoden GetRuntimeInformation |  - | 50 per sekund | 
 | Antal virtuella nätverk (VNet) | - | 128 | 
-| Antal IP config-regler | - | 128 | 
+| Antal IP-konfigurationsregler | - | 128 | 
 
-### <a name="basic-vs-standard-tiers"></a>Basic vs. standard-nivåer
-I följande tabell visas de gränser som kan vara olika för nivåerna Basic och standard. 
+### <a name="basic-vs-standard-tiers"></a>Nivåerna Basic och Standard
+I följande tabell visas gränser som kan vara olika för nivåerna Basic och Standard. 
 
 | Gräns | Kommentarer | Basic | Standard |
 |---|---|--|---|
-| Maximal storlek för Event Hubs publikation| &nbsp; | 256 kB | 1 MB |
-| Antal konsument grupper per Event-hubb | &nbsp; |1 |20 |
-| Antal AMQP-anslutningar per namnrymd | Efterföljande begär Anden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. |100 |5 000|
-| Högsta kvarhållningsperiod för händelse data | &nbsp; |1 dag |1-7 dagar |
-| Maximalt antal data flödes enheter |Att överskrida den här gränsen gör att dina data begränsas och genererar en [Server upptagen undantag](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception). Om du vill begära ett större antal data flödes enheter för en standard-nivå kan du skicka en [support förfrågan](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). [Ytterligare data flödes enheter](../articles/event-hubs/event-hubs-auto-inflate.md) är tillgängliga i block om 20 på ett dedikerat köp. |20 | 20 | 
-| Antal partitioner per Event-hubb | |32 | 32 | 
+| Maximal storlek på Event Hubs publicering| &nbsp; | 256 kB | 1 MB |
+| Antal konsumentgrupper per händelsehubb | &nbsp; |1 |20 |
+| Antal AMQP-anslutningar per namnområde | Efterföljande begäranden om ytterligare anslutningar avvisas och ett undantag tas emot av den anropande koden. |100 |5 000|
+| Maximal kvarhållningsperiod för händelsedata | &nbsp; |1 dag |1–7 dagar |
+| Maximalt dataflöde |Om den här gränsen överskrids begränsas dina data och ett undantagsfel genereras [för servern.](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) Om du vill begära ett större antal dataflödesenheter för en standardnivå kan du skicka en [supportbegäran.](../articles/azure-portal/supportability/how-to-create-azure-support-request.md) [Ytterligare dataflödesenheter](../articles/event-hubs/event-hubs-auto-inflate.md) är tillgängliga i block om 20 för inköp. |20 | 20 | 
+| Antal partitioner per händelsehubb | |32 | 32 | 
 
 > [!NOTE]
 >
-> Du kan publicera händelser individuellt eller i batch. 
-> Publicerings gränsen (enligt SKU) gäller oavsett om det är en enskild händelse eller en batch. Publicerings händelser som är större än max gränsen avvisas.
+> Du kan publicera händelser individuellt eller i batchar. 
+> Publiceringsgränsen (enligt SKU) gäller oavsett om det är en enskild händelse eller en batch. Publicering av händelser som är större än det högsta tröskelvärdet avvisas.
 
-### <a name="dedicated-tier-vs-standard-tier"></a>Dedikerad nivå kontra standard nivå
-Event Hubs Dedicated erbjudandet debiteras till ett fast månads pris, med minst fyra timmars användning. Den dedikerade nivån innehåller alla funktioner i standard planen, men med kapacitet för företags skala och gränser för kunder med krävande arbets belastningar. 
+### <a name="dedicated-tier-vs-standard-tier"></a>Dedikerad nivå jämfört med standardnivån
+Erbjudandet Event Hubs Dedicated faktureras till ett fast månadspris med minst 4 timmars användning. På nivån Dedikerad finns alla funktioner i standardplanen, men med kapacitet och begränsningar i företagsskala för kunder med krävande arbetsbelastningar. 
 
-Läs det här [dokumentet](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) om hur du skapar dedikerat Event Hubs kluster med Azure Portal.
+Läs det här [dokumentet om](../articles/event-hubs/event-hubs-dedicated-cluster-create-portal.md) hur du skapar dedikerade Event Hubs kluster med Azure Portal.
 
 | Funktion | Standard | Dedikerad |
 | --- |:---|:---|
-| Bandbredd | 20 antal (upp till 40 antal) | 20 CUs |
-| Namnrymder |  1 | 50 per CU |
-| Event Hubs |  10 per namnrymd | 1000 per namnrymd |
-| Ingress-händelser | Betala per miljon händelser | Ingår |
-| Meddelande storlek | 1 000 000 byte | 1 000 000 byte |
-| Partitioner | 32 per Event-hubb | 1024 per Event-hubb<br/>2000 per CU |
-| Konsumentgrupper | 20 per Event-hubb | Ingen gräns per CU, 1000 per Event-hubb |
-| Brokered Connections | 1 000 ingår, 5 000 max | 100 KB ingår och Max |
-| Kvarhållning av meddelanden | 7 dagar, 84 GB ingår per data flödes enheter | 90 dagar, 10 TB inkluderat per CU |
+| Bandbredd | 20 TUs (upp till 40 TUs) | 20 CUs |
+| Namnrymder |  100 per prenumeration | 50 per CU (100 per prenumeration) |
+| Event Hubs |  10 per namnområde | 1 000 per namnområde |
+| Ingresshändelser | Betala per miljon händelser | Ingår |
+| Meddelandestorlek | 1 miljon byte | 1 miljon byte |
+| Partitioner | 32 per händelsehubb | 1024 per händelsehubb<br/>2 000 per CU |
+| Konsumentgrupper | 20 per händelsehubb | Ingen gräns per CU, 1 000 per händelsehubb |
+| A brokered connections | 1 000 ingår, 5 000 max | 100 K ingår och max |
+| Kvarhållning av meddelanden | 7 dagar, 84 GB ingår per TU | 90 dagar, 10 TB ingår per CU |
 | Capture | Betala per timme | Ingår |
 
 
-### <a name="schema-registry-limitations"></a>Begränsningar för schema registret
+### <a name="schema-registry-limitations"></a>Schemaregisterbegränsningar
 
-#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Begränsningar som är desamma för standard-och dedikerade nivåer 
+#### <a name="limits-that-are-the-same-for-standard-and-dedicated-tiers"></a>Samma begränsningar för standard- och dedikerade nivåer 
 | Funktion | Gräns | 
 |---|---|
-| Maximal längd på ett schema grupps namn | 50 |  
-| Maximal längd för ett schema namn | 100 |    
+| Maximal längd för ett schemagruppnamn | 50 |  
+| Maximal längd för ett schemanamn | 100 |    
 | Storlek i byte per schema | 1 MB |   
-| Antal egenskaper per schema grupp | 1024 |
-| Storlek i byte per grupp egenskaps nyckel | 256 | 
-| Storlek i byte per grupp egenskaps värde | 1024 | 
+| Antal egenskaper per schemagrupp | 1024 |
+| Storlek i byte per gruppegenskapsnyckel | 256 | 
+| Storlek i byte per gruppegenskapsvärde | 1024 | 
 
 
-#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Begränsningar som skiljer sig mellan standard-och dedikerade nivåer 
+#### <a name="limits-that-are-different-for-standard-and-dedicated-tiers"></a>Begränsningar som skiljer sig för standard- och dedikerade nivåer 
 
 | Gräns | Standard | Dedikerad | 
 |---|---|--|
-| Storlek på schema registret (namnrymd) i megabyte | 25 |  1024 |
-| Antal schema grupper i ett schema register eller namnrymd | 1 – exklusive standard gruppen | 1000 |
-| Antal schema versioner i alla schema grupper | 25 | 10000 |
+| Schemaregistrets storlek (namnrymd) i megabyte | 25 |  1024 |
+| Antal schemagrupper i ett schemaregister eller ett namnområde | 1 – exkludera standardgruppen | 1000 |
+| Antal schemaversioner i alla schemagrupper | 25 | 10000 |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/25/2021
+ms.date: 04/21/2021
 ms.author: v-jansk
-ms.openlocfilehash: b2419c9d1fe32390afcd81b77d1cf32900b9fe8a
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.openlocfilehash: ea22e6a3afe8ee90cb7b59d1aca0a37fc4fa03d6
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107836282"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864927"
 ---
 # <a name="get-supported-glossary-formats"></a>Hämta ordlisteformat som stöds
 
@@ -33,11 +33,11 @@ Lär dig hur du hittar [ditt anpassade domännamn](../get-started-with-document-
 > [!IMPORTANT]
 >
 > * **Alla API-begäranden till tjänsten för dokumentöversättning kräver en anpassad domänslutpunkt.**
-> * Du kan inte använda slutpunkten som finns  på din Azure Portal resursnycklar och slutpunktssida eller den globala översättningsslutpunkten– – för `api.cognitive.microsofttranslator.com` att göra HTTP-begäranden till dokumentöversättning.
+> * Du kan inte använda slutpunkten som finns  på din Azure Portal resursnycklar och slutpunktssida eller den globala översättningsslutpunkten– – för att `api.cognitive.microsofttranslator.com` göra HTTP-begäranden till dokumentöversättning.
 
 ## <a name="request-headers"></a>Begärandehuvuden
 
-Begärandehuvuden är:
+Begärandehuvudena är:
 
 |Sidhuvuden|Description|
 |--- |--- |
@@ -58,9 +58,9 @@ Följande är möjliga HTTP-statuskoder som en begäran returnerar.
 
 Bastyp för listretur i API:et Get supported glossary formats (Hämta stödda ordlisteformat).
 
-### <a name="successful-get-supported-glossary-formats-response"></a>Svar från get supported glossary formats (Hämta ordlisteformat som stöds) lyckades
+### <a name="successful-get-supported-glossary-formats-response"></a>Svar från get supported glossary formats (Hämta ordlista som stöds) har lyckats
 
-Bastyp för listretur i API:et Get supported glossary formats (Hämta ordlisteformat som stöds).
+Bastyp för listretur i API:et Get supported glossary formats (Hämta stödda ordlisteformat).
 
 |Statuskod|Description|
 |--- |--- |
@@ -74,7 +74,7 @@ Bastyp för listretur i API:et Get supported glossary formats (Hämta ordlistefo
 |--- |--- |--- |
 |kod|sträng|Uppräkningar som innehåller felkoder på hög nivå. Möjliga värden:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Behörighet saknas</li></ul>|
 |meddelande|sträng|Hämtar felmeddelande på hög nivå.|
-|innerError|InnerErrorV2|Nytt innerfelsformat som följer riktlinjerna för Cognitive Services API. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
+|innerError|InnerErrorV2|Nytt format för inre fel som överensstämmer Cognitive Services API-riktlinjer. Den innehåller de obligatoriska egenskaperna ErrorCode, message och optional properties target, details(key value pair), inner error (detta kan kapslas).|
 |innerError.code|sträng|Hämtar kodfelsträngen.|
 |innerError.message|sträng|Hämtar felmeddelande på hög nivå.|
 

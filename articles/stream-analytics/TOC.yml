@@ -322,7 +322,7 @@
           href: stream-analytics-machine-learning-integration-tutorial.md
         - name: Avvikelseidentifiering
           href: stream-analytics-machine-learning-anomaly-detection.md
-        - name: 'Använd ML REST API: er'
+        - name: 'Använda ML REST API:er'
           href: stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md
     - name: Felsöka med hjälp av jobbdiagram
       href: stream-analytics-job-diagram-with-metrics.md
@@ -677,7 +677,7 @@
     - name: Resource Manager-mall
       href: /azure/templates/microsoft.streamanalytics/allversions
     - name: Azure CLI
-      href: /cli/azure/ext/stream-analytics/stream-analytics
+      href: /cli/azure/stream-analytics
     - name: Inbyggda Azure Policy-program
       displayName: 'samples, policies, definitions'
       href: ./policy-reference.md

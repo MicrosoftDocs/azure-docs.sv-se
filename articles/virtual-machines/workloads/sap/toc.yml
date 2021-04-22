@@ -140,7 +140,7 @@
           href: ../../../backup/sap-hana-backup-support-matrix.md
         - name: Vanliga frågor och svar – SAP HANA databaser på virtuella Azure-datorer
           href: ../../../backup/sap-hana-faq-backup-azure-vm.yml
-        - name: Felsöka säkerhetskopiering av SAP HANA databaser i Azure
+        - name: Felsöka säkerhetskopiering SAP HANA databaser i Azure
           href: ../../../backup/backup-azure-sap-hana-database-troubleshoot.md
         - name: Självstudie – SAP HANA databaser på en virtuell Azure-dator
           href: ../../../backup/tutorial-backup-sap-hana-db.md
@@ -332,7 +332,7 @@
 - name: Referens
   items:
     - name: Azure CLI
-      href: /cli/azure/ext/sap-hana/hanainstance
+      href: /cli/azure/hanainstance
     - name: Azure PowerShell
       href: /powershell/module/az.hanaonazure/#sap-hana-on-azure
 - name: Resurser

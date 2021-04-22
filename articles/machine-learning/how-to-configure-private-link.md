@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 02/09/2021
-ms.openlocfilehash: 0ea4e3ae0113608203dad63f636ae4adb4eeff9b
-ms.sourcegitcommit: 425420fe14cf5265d3e7ff31d596be62542837fb
+ms.openlocfilehash: 5e13c97427736d60f300d2d7b502c6f3e15fb481
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107737522"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861453"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace"></a>Konfigurera Azure Private Link för en Azure Machine Learning arbetsyta
 
@@ -66,7 +66,7 @@ ws = Workspace.create(name='myworkspace',
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace create.](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_create) Följande parametrar för det här kommandot kan användas för att skapa en arbetsyta med ett privat nätverk, men det kräver ett befintligt virtuellt nätverk:
+[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace create.](/cli/azure/ml/workspace#az_ml_workspace_create) Följande parametrar för det här kommandot kan användas för att skapa en arbetsyta med ett privat nätverk, men det kräver ett befintligt virtuellt nätverk:
 
 * `--pe-name`: Namnet på den privata slutpunkt som skapas.
 * `--pe-auto-approval`: Om privata slutpunktsanslutningar till arbetsytan ska godkännas automatiskt.
@@ -116,7 +116,7 @@ Mer information om de klasser och metoder som används i det här exemplet finns
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace private-endpoint add.](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_add)
+[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace private-endpoint add.](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_add)
 
 ```azurecli
 az ml workspace private-endpoint add -w myworkspace  --pe-name myprivateendpoint --pe-auto-approval true --pe-vnet-name myvnet
@@ -153,7 +153,7 @@ ws.delete_private_endpoint_connection(private_endpoint_connection_name=connectio
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace private-endpoint delete.](/cli/azure/ext/azure-cli-ml/ml/workspace/private-endpoint#ext_azure_cli_ml_az_ml_workspace_private_endpoint_delete)
+[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace private-endpoint delete.](/cli/azure/ml/workspace/private-endpoint#az_ml_workspace_private_endpoint_delete)
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -192,7 +192,7 @@ ws.update(allow_public_access_when_behind_vnet=True)
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace update.](/cli/azure/ext/azure-cli-ml/ml/workspace#ext_azure_cli_ml_az_ml_workspace_update) Om du vill aktivera offentlig åtkomst till arbetsytan lägger du till parametern `--allow-public-access true` .
+[Azure CLI-tillägget för maskininlärning](reference-azure-machine-learning-cli.md) tillhandahåller [kommandot az ml workspace update.](/cli/azure/ml/workspace#az_ml_workspace_update) Om du vill aktivera offentlig åtkomst till arbetsytan lägger du till parametern `--allow-public-access true` .
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 

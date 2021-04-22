@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 03/22/2021
 ms.author: ccompy
 ms.custom: seodec18, references_regions, devx-track-azurecli
-ms.openlocfilehash: aaaa190935da8c016c43832712f553a116332974
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 796ee38140e72a56f1f22b0594dd904a43ac53c0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482576"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865233"
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service-miljön hanteringsadresser
 
@@ -32,7 +32,7 @@ Adresserna som anges nedan kan konfigureras i en routningstabell för att undvik
 
 ## <a name="configuring-a-network-security-group"></a>Konfigurera en nätverkssäkerhetsgrupp
 
-Med nätverkssäkerhetsgrupper behöver du inte bekymra dig om enskilda adresser eller att underhålla din egen konfiguration. Det finns en IP-tjänsttagg med namnet AppServiceManagement som hålls uppdaterad med alla adresser. Om du vill använda den här IP-tjänsttaggen i din NSG går du till portalen, öppnar användargränssnittet för nätverkssäkerhetsgrupper och väljer Inkommande säkerhetsregler. Om du har en befintlig regel för inkommande hanteringstrafik redigerar du den. Om den här NSG:n inte har skapats med din ASE, eller om allt är nytt, väljer du Lägg **till**. Under listrutan Källa väljer du **Tjänsttagg**.  Under Källtjänsttagg väljer du **AppServiceManagement**. Ange källportintervallen till , Mål till \* **Alla,** Målportintervall till **454–455,** Protokoll till **TCP** och Åtgärd **för att tillåta**. Om du gör regeln måste du ange Prioritet. 
+Med nätverkssäkerhetsgrupper behöver du inte bekymra dig om enskilda adresser eller att underhålla din egen konfiguration. Det finns en IP-tjänsttagg med namnet AppServiceManagement som hålls uppdaterad med alla adresser. Om du vill använda den här IP-tjänsttaggen i din NSG går du till portalen, öppnar användargränssnittet för nätverkssäkerhetsgrupper och väljer Inkommande säkerhetsregler. Om du har en befintlig regel för inkommande hanteringstrafik redigerar du den. Om den här NSG:n inte skapades med din ASE, eller om den är helt ny, väljer du Lägg **till**. Under listrutan Källa väljer du **Tjänsttagg**.  Under Källtjänsttagg väljer du **AppServiceManagement**. Ange källportintervallen till , Mål till \* **Alla,** Målportintervall till **454–455,** Protokoll till **TCP** och Åtgärd **för att tillåta**. Om du gör regeln måste du ange Prioritet. 
 
 ![skapa en NSG med tjänsttaggen][1]
 

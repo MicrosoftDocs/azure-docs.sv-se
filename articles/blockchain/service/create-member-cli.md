@@ -5,12 +5,12 @@ ms.date: 07/23/2020
 ms.topic: quickstart
 ms.reviewer: ravastra
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 2d94640e1c6a037893fb1ad9198b82195c46dd24
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: da099aa75168e52d0024f4a4381c77b3e9ce67ab
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107768133"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876660"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-blockchain-member-using-azure-cli"></a>Snabbstart: Skapa en Azure Blockchain Service blockkedjemedlem med Azure CLI
 
@@ -46,7 +46,7 @@ Om du föredrar att installera och använda CLI lokalt kräver den här snabbsta
 
     När du arbetar med tilläggsreferenser för Azure CLI måste du först installera tillägget.  Med Azure CLI-tillägg får du tillgång till experimentella kommandon som inte finns med i standardversionen av CLI:t ännu.  Läs mer om tillägg, bland annat hur du uppdaterar och avinstallerar dem, i [Använda tillägg med Azure CLI](/cli/azure/azure-cli-extensions-overview).
 
-    Installera tillägget [för Azure Blockchain Service](/cli/azure/ext/blockchain/blockchain) genom att köra följande kommando:
+    Installera tillägget [för Azure Blockchain Service](/cli/azure/blockchain) genom att köra följande kommando:
 
     ```azurecli-interactive
     az extension add --name blockchain
@@ -90,7 +90,7 @@ az blockchain member create \
 | **lösenord** | Lösenordet för medlemmens standardtransaktionsnod. Använd lösenordet för grundläggande autentisering vid anslutning till blockkedjemedlemmens offentliga slutpunkt för standardtransaktionsnod.
 | **Protokollet** | Blockkedjeprotokoll. *Kvorumprotokoll* stöds för närvarande.
 | **Konsortium** | Namnet på det konsortium som ska anslutas eller skapas. Mer information om consortia finns i [Azure Blockchain Service consortium](consortium.md).
-| **consortium-management-account-password** | Lösenordet för ett konsortiumkonto kallas även för lösenordet för medlemskontot. Lösenordet för medlemskontot används för att kryptera den privata nyckeln för det Ethereum-konto som skapas för din medlem. Du använder medlemskontot och medlemskontots lösenord för konsortiumhantering.
+| **consortium-management-account-password** | Lösenordet för ett konsortiumkonto kallas även för lösenordet för medlemskontot. Lösenordet för medlemskontot används för att kryptera den privata nyckeln för det Ethereum-konto som har skapats för din medlem. Du använder medlemskontot och medlemskontots lösenord för konsortiumhantering.
 | **Sku** | Nivåtyp. *Standard* eller *Basic*. Använd *Basic-nivån* för utveckling, testning och konceptbevis. Använd *standardnivån* för distributioner i produktionsklass. Använd även *standardnivån* om du använder Blockchain Data Manager eller skickar en stor mängd privata transaktioner. Det går inte att ändra prisnivån mellan Basic och Standard när medlemmen har skapats.
 
 Det tar cirka 10 minuter att skapa blockkedjemedlemmen och stödresurser.

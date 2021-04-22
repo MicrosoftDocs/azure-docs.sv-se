@@ -1,6 +1,6 @@
 ---
 title: Skapa Azure-prenumerationer via programmering för ett Microsoft-partneravtal med de senaste API:erna
-description: Lär dig hur du skapar Azure-prenumerationer för ett Microsoft partner avtal genom programmering med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
+description: Lär dig hur du skapar Azure-prenumerationer för en Microsoft-partneravtal programmatiskt med de senaste versionerna av REST API, Azure CLI, Azure PowerShell och Azure Resource Manager mallar.
 author: bandersmsft
 ms.service: cost-management-billing
 ms.subservice: billing
@@ -9,12 +9,12 @@ ms.date: 03/12/2021
 ms.reviewer: andalmia
 ms.author: banders
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 5a731aab924e63eac468a22862f35aeff76bc068
-ms.sourcegitcommit: 772eb9c6684dd4864e0ba507945a83e48b8c16f0
+ms.openlocfilehash: 69d8910ffe0e45c4c47a035d5c32e71f19d9e04a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "104593986"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870683"
 ---
 # <a name="programmatically-create-azure-subscriptions-for-a-microsoft-partner-agreement-with-the-latest-apis"></a>Skapa Azure-prenumerationer via programmering för ett Microsoft-partneravtal med de senaste API:erna
 
@@ -79,7 +79,7 @@ Använd antingen Azure CLI eller REST API för att hämta det här värdet.
 ```azurecli
 az billing account list
 ```
-Du får tillbaka en lista över alla fakturerings konton som du har åtkomst till.
+Du får tillbaka en lista över alla faktureringskonton som du har åtkomst till.
 
 ```json
 [
@@ -104,7 +104,7 @@ Du får tillbaka en lista över alla fakturerings konton som du har åtkomst til
 ]
 ```
 
-Använd egenskapen displayName för att identifiera det fakturerings konto som du vill skapa prenumerationer för. Se till att agreementType för kontot är MicrosoftPartnerAgreement. Kopiera namnet för kontot. Om du till exempel vill skapa en prenumeration för Contoso-fakturerings konto kopierar du 99a13315-XXXX-XXXX-XXXX-XXXXXXXXXXXX: XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxxxxx_xxxx-xx-xx. Klistra in värdet någonstans så att du kan använda det i nästa steg.
+Använd egenskapen displayName för att identifiera det faktureringskonto som du vill skapa prenumerationer för. Se till att agreementType för kontot är MicrosoftPartnerAgreement. Kopiera namnet på kontot. Om du till exempel vill skapa en prenumeration för Contosos faktureringskonto kopierar du 99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx. Klistra in värdet någonstans så att du kan använda det i nästa steg.
 
 ---
 
@@ -235,7 +235,7 @@ Använd antingen Azure CLI eller REST API för att hämta det här värdet.
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Gör följande begäran, med den `name` kopierade från det första steget ( ```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ) och kunden som `name` kopierades från föregående steg ( ```acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ).
+Gör följande begäran, med som `name` kopierades från det första steget ( ```99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx``` ) och kunden `name` kopierade från föregående steg ( ```acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` ).
 
 ```azurecli
  az billing customer show --expand "enabledAzurePlans,resellers" --account-name "99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx" --name "acba85c9-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -363,7 +363,7 @@ Använd det valfria *resellerId* som kopierades från det andra steget i `New-Az
 
 Installera först tillägget genom att köra `az extension add --name account` och `az extension add --name alias`.
 
-Kör följande [az account alias create](/cli/azure/ext/account/account/alias#ext_account_az_account_alias_create)-kommando. 
+Kör följande [az account alias create](/cli/azure/account/alias#az_account_alias_create)-kommando. 
 
 ```azurecli
 az account alias create --name "sampleAlias" --billing-scope "/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --display-name "Dev Team Subscription" --workload "Production"
@@ -391,7 +391,7 @@ Använd det valfria *resellerId* som kopierades från det andra steget i `az acc
 
 Föregående avsnitt visade hur du skapar en prenumeration med PowerShell, CLI eller REST API. Om du behöver automatisera skapandet av prenumerationer kan du överväga att använda en Azure Resource Manager mall (ARM-mall).
 
-Följande mall skapar en prenumeration. För `billingScope` anger du kund-ID. För `targetManagementGroup` , ange den hanterings grupp där du vill skapa prenumerationen.
+Följande mall skapar en prenumeration. För `billingScope` anger du kund-ID:t. För `targetManagementGroup` anger du den hanteringsgrupp där du vill skapa prenumerationen.
 
 ```json
 {
@@ -435,7 +435,7 @@ Följande mall skapar en prenumeration. För `billingScope` anger du kund-ID. F�
 }
 ```
 
-Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/templates/deploy-to-management-group.md).
+Distribuera mallen på [hanteringsgruppsnivå.](../../azure-resource-manager/templates/deploy-to-management-group.md)
 
 ### <a name="rest"></a>[REST](#tab/rest)
 
@@ -443,7 +443,7 @@ Distribuera mallen på [hanterings grupps nivå](../../azure-resource-manager/te
 PUT https://management.azure.com/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Resources/deployments/exampledeployment?api-version=2020-06-01
 ```
 
-Med en begär ande text:
+Med en begärandetext:
 
 ```json
 {

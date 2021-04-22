@@ -16,12 +16,12 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: e72af412f61f2084fb78907c15a92a22b9e3bc99
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 7f919069005e8fcb813baf2521c8cb20cffafc88
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567187"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107870363"
 ---
 # <a name="control-access-to-iot-hub"></a>Styra åtkomst till IoT Hub
 
@@ -53,7 +53,7 @@ Du kan bevilja [behörigheter](#iot-hub-permissions) på följande sätt:
   | registryRead | **RegistryRead-behörigheter** |
   | registryReadWrite | **RegistryRead-** **och RegistryWrite-behörigheter** |
 
-* **Säkerhetsautentiseringsuppgifter per enhet.** Varje IoT Hub innehåller ett [](iot-hub-devguide-identity-registry.md) identitetsregister För varje enhet i det här identitetsregistret kan du konfigurera säkerhetsautentiseringsuppgifter som beviljar **DeviceConnect-behörigheter** som är begränsade till motsvarande enhetsslutpunkter.
+* **Säkerhetsautentiseringsuppgifter per enhet.** Varje IoT Hub innehåller [ett](iot-hub-devguide-identity-registry.md) identitetsregister För varje enhet i det här identitetsregistret kan du konfigurera säkerhetsautentiseringsuppgifter som beviljar **DeviceConnect-behörigheter** som är begränsade till motsvarande enhetsslutpunkter.
 
 I en typisk IoT-lösning kan du till exempel:
 
@@ -86,7 +86,7 @@ När du [använder AMQP](https://www.amqp.org/)IoT Hub stöd [SASL PLAIN](https:
 
 Om du använder AMQP-anspråksbaserad säkerhet anger standarden hur dessa token ska överföras.
 
-Användarnamnet SASL PLAIN **till** exempel vara:
+Till SASL PLAIN **användarnamnet** vara:
 
 * `{policyName}@sas.root.{iothubName}` om du använder token på IoT-hubbnivå.
 * `{deviceId}@sas.{iothubname}` om du använder token med enhetsomfång.
@@ -97,9 +97,9 @@ HTTPS implementerar autentisering genom att  inkludera en giltig token i rubrike
 
 #### <a name="example"></a>Exempel
 
-Användarnamn (DeviceId är fallkänsligt): `iothubname.azure-devices.net/DeviceId`
+Användarnamn (DeviceId är case-sensitive): `iothubname.azure-devices.net/DeviceId`
 
-Lösenord (du kan generera en SAS-token med CLI-tilläggskommandot [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token), [eller Azure IoT Tools för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
+Lösenord (du kan generera en SAS-token med CLI-tilläggskommandot [az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token), [eller Azure IoT Tools för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -110,7 +110,7 @@ Lösenord (du kan generera en SAS-token med CLI-tilläggskommandot [az iot hub g
 
 När du SASL PLAIN med AMQP kan en klient som ansluter till en IoT-hubb använda en enda token för varje TCP-anslutning. När token upphör att gälla kopplas TCP-anslutningen från tjänsten och utlöser en återanslutning. Det här beteendet, även om det inte är problematiskt för en serverapp, är skadligt för en enhetsapp av följande skäl:
 
-* Gatewayer ansluter vanligtvis för många enheters räkning. När du SASL PLAIN måste de skapa en distinkt TCP-anslutning för varje enhet som ansluter till en IoT-hubb. Det här scenariot ökar förbrukningen av energi- och nätverksresurser avsevärt och ökar svarstiden för varje enhetsanslutning.
+* Gatewayer ansluter vanligtvis för många enheters räkning. När du SASL PLAIN måste de skapa en distinkt TCP-anslutning för varje enhet som ansluter till en IoT-hubb. Det här scenariot ökar avsevärt förbrukningen av ström- och nätverksresurser och ökar svarstiden för varje enhetsanslutning.
 
 * Resursbegränsade enheter påverkas negativt av den ökade användningen av resurser som ska återanslutas efter varje tokens upphörande.
 
@@ -303,7 +303,7 @@ Resultatet, som ger åtkomst till alla funktioner för device1, blir:
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Det går att generera en [SAS-token med CLI-tilläggskommandot az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token), eller [Azure IoT Tools för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
+> Det går att generera en [SAS-token med CLI-tilläggskommandot az iot hub generate-sas-token](/cli/azure/iot/hub#az_iot_hub_generate_sas_token), eller [Azure IoT Tools för Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools).
 
 ### <a name="use-a-shared-access-policy"></a>Använda en princip för delad åtkomst
 
@@ -367,7 +367,7 @@ var policyKey = '...';
 var token = generateSasToken(endpoint, policyKey, policyName, 60);
 ```
 
-Resultatet, som skulle ge åtkomst att läsa alla enhetsidentiteter, skulle bli:
+Resultatet, som skulle ge åtkomst till att läsa alla enhetsidentiteter, skulle bli:
 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices&sig=JdyscqTpXdEJs49elIUCcohw2DlFDR3zfH5KqGJo4r4%3D&se=1456973447&skn=registryRead`
 
@@ -385,7 +385,7 @@ Certifikat som stöds är:
 
 En enhet kan antingen använda ett X.509-certifikat eller en säkerhetstoken för autentisering, men inte båda. Med X.509-certifikatautentisering kontrollerar du att du har en strategi för att hantera certifikatsverifiering när ett befintligt certifikat upphör att gälla.
 
-Följande funktioner för enheter som använder X.509-certifikatutfärdarautentisering (CA) är ännu inte allmänt tillgängliga och [förhandsgranskningsläget måste vara aktiverat:](iot-hub-preview-mode.md)
+Följande funktioner för enheter som använder X.509-certifikatutfärdarautentisering (CA) är ännu inte allmänt tillgängliga och förhandsgranskningsläget [måste vara aktiverat:](iot-hub-preview-mode.md)
 
 * HTTPS, MQTT över WebSockets och AMQP över WebSockets-protokoll.
 * Filuppladdningar (alla protokoll).
@@ -396,7 +396,7 @@ Mer information om autentisering med certifikatutfärdare finns i [Enhetsautenti
 
 [Azure IoT Service SDK för C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (version 1.0.8+) stöder registrering av en enhet som använder ett X.509-certifikat för autentisering. Andra API:er, till exempel import/export av enheter, stöder också X.509-certifikat.
 
-Du kan också använda CLI-tilläggskommandot [az iot hub device-identity för](/cli/azure/ext/azure-iot/iot/hub/device-identity) att konfigurera X.509-certifikat för enheter.
+Du kan också använda CLI-tilläggskommandot [az iot hub device-identity för](/cli/azure/iot/hub/device-identity) att konfigurera X.509-certifikat för enheter.
 
 ### <a name="c-support"></a>\#C-stöd
 
@@ -493,7 +493,7 @@ Andra referensämnen i IoT Hub utvecklarhandbok är:
 
 * [IoT Hub MQTT-stöd](iot-hub-mqtt-support.md) ger mer information IoT Hub stöd för MQTT-protokollet.
 
-* [RFC 5246 – TLS-protokollversion 1.2 (Transport Layer Security)](https://tools.ietf.org/html/rfc5246/) innehåller mer information om TLS-autentisering.
+* [RFC 5246 – TLS-protokoll version 1.2 (Transport Layer Security)](https://tools.ietf.org/html/rfc5246/) innehåller mer information om TLS-autentisering.
 
 ## <a name="next-steps"></a>Nästa steg
 

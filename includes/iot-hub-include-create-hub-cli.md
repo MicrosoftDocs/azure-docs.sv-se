@@ -6,12 +6,12 @@ ms.author: timlt
 ms.service: iot-develop
 ms.topic: include
 ms.date: 01/14/2021
-ms.openlocfilehash: be51d4db6c98b63fcb1c9c60df045b494536d78f
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4999bd93f338ca7b34b141b88e06e4a769a4aaa1
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766534"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876445"
 ---
 I följande avsnitt ska du konfigurera en terminal och använda Azure CLI för att skapa en IoT-hubb. Om du vill konfigurera en terminal som kör Azure CLI-kommandon kan du antingen använda den webbläsarbaserade Azure Cloud Shell eller använda en lokal terminal.
 * Om du Cloud Shell du till nästa avsnitt: [Starta Cloud Shell](#launch-the-cloud-shell). 
@@ -24,14 +24,14 @@ Logga in på Azure Portal på https://portal.azure.com.
 
 Så här startar du Cloud Shell:
 
-1. Välj knappen **Cloud Shell** på den övre högra menyraden i Azure Portal. 
+1. Välj knappen **Cloud Shell** på menyraden längst upp till höger i Azure Portal. 
 
-    ![Azure Portal Cloud Shell-knapp](media/iot-hub-include-create-hub-cli/cloud-shell-button.png)
+    ![knappen Azure Portal Cloud Shell](media/iot-hub-include-create-hub-cli/cloud-shell-button.png)
 
     > [!NOTE]
     > Om det är första gången du använder Cloud Shell uppmanas du att skapa lagring, vilket krävs för att använda Cloud Shell.  Välj en prenumeration för att skapa ett lagringskonto och Microsoft Azure Files-resurs. 
 
-2. Välj önskad CLI-miljö i **listrutan Välj** miljö. Den här snabbstarten använder **Bash-miljön.** Alla följande CLI-kommandon fungerar också i PowerShell-miljön. 
+2. Välj önskad CLI-miljö i **listrutan Välj** miljö. Den här snabbstarten använder **Bash-miljön.** Alla följande CLI-kommandon fungerar även i PowerShell-miljön. 
 
     ![Välj CLI-miljö](media/iot-hub-include-create-hub-cli/cloud-shell-environment.png)
 
@@ -87,7 +87,7 @@ Så här skapar du en IoT-hubb och en resursgrupp:
 
 1. Kör kommandot [az iot hub create](/cli/azure/iot/hub#az_iot_hub_create) för att skapa en IoT-hubb. Det kan ta några minuter att skapa en IoT-hubb. 
 
-    *YourIotHubName*. Ersätt den här platshållaren och de omgivande kparenteserna i följande kommando med det namn som du valde för din IoT-hubb. Ett IoT-hubbnamn måste vara globalt unikt i Azure. Använd namnet på din IoT-hubb i resten av den här snabbstarten oavsett var du ser platshållaren.
+    *YourIotHubName*. Ersätt platshållaren och de omgivande kparenteserna i följande kommando med det namn du valde för din IoT-hubb. Ett IoT-hubbnamn måste vara globalt unikt i Azure. Använd namnet på din IoT-hubb i resten av den här snabbstarten oavsett var du ser platshållaren.
 
     ```azurecli
     az iot hub create --resource-group MyResourceGroup --name {YourIoTHubName}
@@ -97,7 +97,7 @@ Så här skapar du en IoT-hubb och en resursgrupp:
 I det här avsnittet skapar du en simulerad IoT-enhet som är ansluten till din IoT-hubb. 
 
 Så här skapar du en simulerad enhet:
-1. Kör kommandot [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) i CLI-gränssnittet. Detta skapar den simulerade enhetsidentiteten. 
+1. Kör kommandot [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) i CLI-gränssnittet. Detta skapar den simulerade enhetsidentiteten. 
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -107,7 +107,7 @@ Så här skapar du en simulerad enhet:
     az iot hub device-identity create --device-id myDevice --hub-name {YourIoTHubName} 
     ```
 
-1.  Kör kommandot [az iot hub device-identity connection-string show.](/cli/azure/ext/azure-iot/iot/hub/device-identity/connection-string#ext_azure_iot_az_iot_hub_device_identity_connection_string_show) 
+1.  Kör kommandot [az iot hub device-identity connection-string show.](/cli/azure/iot/hub/device-identity/connection-string#az_iot_hub_device_identity_connection_string_show) 
 
     ```azurecli
     az iot hub device-identity connection-string show --device-id myDevice --hub-name {YourIoTHubName}

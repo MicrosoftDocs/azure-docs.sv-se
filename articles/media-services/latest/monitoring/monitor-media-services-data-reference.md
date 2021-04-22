@@ -7,19 +7,19 @@ manager: femila
 ms.topic: reference
 ms.service: media-services
 ms.custom: subject-monitoring
-ms.date: 03/17/2021
-ms.openlocfilehash: 4e4c65966ec8a6a5b47d5f68596f6d2d496fda17
-ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
+ms.date: 04/21/2021
+ms.openlocfilehash: 3fd7b8013ec67d718f308ccd1b72a6f90012e02e
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107835514"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873063"
 ---
 # <a name="monitoring-media-services-data-reference"></a>Referens Media Services övervakningsdata
 
 Den här artikeln beskriver de data som är användbara för övervakning Media Services. Mer information om alla plattformsmått som stöds i Azure Monitor finns i [Mått som stöds med Azure Monitor](../../../azure-monitor/essentials/metrics-supported.md).
 
-## <a name="media-services-metrics"></a>Media Services mått
+## <a name="metrics"></a>Mått
 
 Mått samlas in med jämna mellanrum oavsett om värdet ändras eller inte. De är användbara för aviseringar eftersom de kan samplas ofta, och en avisering kan snabbt fås ut med relativt enkel logik.
 
@@ -40,12 +40,13 @@ Du bör också granska [kontokvoter och begränsningar.](../limits-quotas-constr
 
 Mer information om vilka måttdimensioner är finns [i Flerdimensionella mått.](../../../azure-monitor/essentials/data-platform-metrics.md#multi-dimensional-metrics)
 
-<!--**PLACEHOLDER** for dimensions table.-->
-OutputFormat, HttpStatusCode, ErrorCode, TrackName
+Media Services har följande måttdimensioner.  De är självbetjäning baserat på de mått som de stöder.  Se [måttlänkarna ovan](#metrics) för mer information.   
+- OutputFormat
+- HttpStatusCode 
+- Felkod 
+- TrackName 
 
 ## <a name="resource-logs"></a>Resursloggar
-
-## <a name="media-services-resource-logs"></a>Media Services resursloggar
 
 Resursloggar ger omfattande och frekventa data om driften av en Azure-resurs. Mer information finns i Samla [in och använda loggdata från dina Azure-resurser.](../../../azure-monitor/essentials/platform-logs-overview.md)
 

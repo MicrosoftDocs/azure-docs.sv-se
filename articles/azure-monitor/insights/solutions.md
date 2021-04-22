@@ -1,21 +1,21 @@
 ---
 title: Övervakningslösningar i Azure Monitor | Microsoft Docs
-description: Övervakningslösningar i Azure Monitor är en samling logik-, visualiserings- och datainsamlingsregler som tillhandahåller mått som pivoteras runt ett visst problemområde.  Den här artikeln innehåller information om hur du installerar och använder övervakningslösningar.
+description: Övervakningslösningar i Azure Monitor är en samling regler för logik, visualisering och datainsamling som tillhandahåller mått som pivoteras runt ett visst problemområde.  Den här artikeln innehåller information om hur du installerar och använder övervakningslösningar.
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 8a18a47331eb5d4a9ed5578cca320beef5e0ba45
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6a98571f513e25d801acd4f4a9c2901dcd56fabc
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107766995"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107869229"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Övervakningslösningar i Azure Monitor
 
-Övervakningslösningar i Azure Monitor en analys av driften av ett visst Azure-program eller en viss Azure-tjänst. Den här artikeln innehåller en kort översikt över övervakningslösningar i Azure och information om hur du använder och installerar dem. Du kan lägga till övervakningslösningar för Azure Monitor program och tjänster som du använder. De är vanligtvis tillgängliga utan kostnad, men samlar in data som kan anropa användningsavgifter.
+Övervakningslösningar i Azure Monitor ger en analys av driften av ett visst Azure-program eller en viss Azure-tjänst. Den här artikeln innehåller en kort översikt över övervakningslösningar i Azure och information om hur du använder och installerar dem. Du kan lägga till övervakningslösningar för Azure Monitor program och tjänster som du använder. De är vanligtvis tillgängliga utan kostnad men samlar in data som kan anropa användningsavgifter.
 
 ## <a name="use-monitoring-solutions"></a>Använda övervakningslösningar
 
@@ -28,7 +28,7 @@ Använd listrutorna överst på skärmen för att ändra arbetsytan eller det ti
 
 [![Skärmbild som visar Azure Portal med Lösningar valt och lösningar som visas i fönstret Lösningar.](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-Övervakningslösningar kan innehålla flera typer av Azure-resurser och du kan visa alla resurser som ingår i en lösning precis som andra resurser. Loggfrågor som ingår i lösningen visas till exempel under **Lösningsfrågor i** [Frågeutforskaren.](../logs/log-analytics-tutorial.md) Du kan använda dessa frågor när du utför ad hoc-analys [med loggfrågor](../logs/log-query-overview.md).
+Övervakningslösningar kan innehålla flera typer av Azure-resurser och du kan visa alla resurser som ingår i en lösning precis som andra resurser. Alla loggfrågor som ingår i lösningen visas till exempel under **Lösningsfrågor i** [Frågeutforskaren.](../logs/log-analytics-tutorial.md) Du kan använda dessa frågor när du utför ad hoc-analys [med loggfrågor](../logs/log-query-overview.md).
 
 ## <a name="list-installed-monitoring-solutions"></a>Lista över installerade övervakningslösningar
 
@@ -48,7 +48,7 @@ Klicka på namnet på en lösning för att öppna dess sammanfattningssida. Den 
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Använd kommandot [az monitor log-analytics solution list för](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-list) att visa en lista över de övervakningslösningar som är installerade i din prenumeration.   Innan du kör `list` kommandot följer du förutsättningarna som finns i [Installera en övervakningslösning](#install-a-monitoring-solution).
+Använd kommandot [az monitor log-analytics solution list för](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_list) att visa en lista över de övervakningslösningar som är installerade i din prenumeration.   Innan du kör `list` kommandot följer du förutsättningarna som finns i [Installera en övervakningslösning](#install-a-monitoring-solution).
 
 ```azurecli
 # List all log-analytics solutions in the current subscription.
@@ -126,7 +126,7 @@ Medlemmar i communityn kan skicka hanteringslösningar till Azure-snabbstartsmal
 
 1. Installera `log-analytics-solution` tillägget
 
-   Kommandot `log-analytics-solution` är en experimentell utökning av Grundläggande Azure CLI. Läs mer om tilläggsreferenser [i Använda tillägg med Azure CLI.](/cli/azure/azure-cli-extensions-overview?)
+   Kommandot `log-analytics-solution` är en experimentell utökning av Grundläggande Azure CLI. Läs mer om tilläggsreferenser i [Använda tillägg med Azure CLI.](/cli/azure/azure-cli-extensions-overview?)
 
    ```azurecli
    az extension add --name log-analytics-solution
@@ -142,7 +142,7 @@ Medlemmar i communityn kan skicka hanteringslösningar till Azure-snabbstartsmal
 
 När du installerar en lösning måste du välja en [Log Analytics-arbetsyta](../logs/manage-access.md) där lösningen ska installeras och var dess data ska samlas in.  Med Azure CLI kan du hantera arbetsytor med hjälp av [referenskommandona az monitor log-analytics workspace.](/cli/azure/monitor/log-analytics/workspace)  Följ processen som beskrivs i [Log Analytics-arbetsytan och Automation-kontot för att](#log-analytics-workspace-and-automation-account) länka en arbetsyta och ett konto.
 
-Använd [az monitor log-analytics solution create för](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution) att installera en övervakningslösning.  Parametrar inom hakparenteser är valfria.
+Använd [az monitor log-analytics solution create för](/cli/azure/monitor/log-analytics/solution) att installera en övervakningslösning.  Parametrar inom hakparenteser är valfria.
 
 ```azurecli
 az monitor log-analytics solution create --name
@@ -231,17 +231,17 @@ Du kan verifiera länken mellan en Log Analytics-arbetsyta och ett Automation-ko
 
 1. Välj Automation-kontot i Azure Portal.
 1. Bläddra till avsnittet **Relaterade resurser** på menyn och välj **Länkad arbetsyta.**
-1. Om arbetsytan **är** länkad till ett Automation-konto visar den här sidan arbetsytan som den är länkad till. Om du väljer namnet på arbetsytan i listan omdirigeras du till översiktssidan för arbetsytan.
+1. Om arbetsytan **är** länkad till ett Automation-konto visar den här sidan arbetsytan som den är länkad till. Om du väljer namnet på arbetsytan som visas omdirigeras du till översiktssidan för arbetsytan.
 
 ## <a name="remove-a-monitoring-solution"></a>Ta bort en övervakningslösning
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-Om du vill ta bort en installerad lösning med hjälp av portalen letar du upp den [i listan över installerade lösningar.](#list-installed-monitoring-solutions) Klicka på namnet på lösningen för att öppna sammanfattningssidan och klicka sedan på Ta **bort.**
+Om du vill ta bort en installerad lösning med hjälp av portalen letar du upp den [i listan över installerade lösningar](#list-installed-monitoring-solutions). Klicka på namnet på lösningen för att öppna sammanfattningssidan och klicka sedan på Ta **bort.**
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Om du vill ta bort en installerad lösning med hjälp av Azure CLI använder du [kommandot az monitor log-analytics solution delete.](/cli/azure/ext/log-analytics-solution/monitor/log-analytics/solution#ext-log-analytics-solution-az-monitor-log-analytics-solution-delete)
+Om du vill ta bort en installerad lösning med hjälp av Azure CLI använder du [kommandot az monitor log-analytics solution delete.](/cli/azure/monitor/log-analytics/solution#az_monitor_log_analytics_solution_delete)
 
 ```azurecli
 az monitor log-analytics solution delete --name

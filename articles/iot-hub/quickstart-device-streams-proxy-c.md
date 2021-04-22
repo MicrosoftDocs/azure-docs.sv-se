@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: references_regions, devx-track-azurecli
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: c9c09914e30bdeae809924bc4256c773f42abd52
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 8a74b5e463045e92e703ef6932f92b84d4709f36
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107479949"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107864150"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Snabbstart: Aktivera SSH och RDP över en IoT Hub enhetsström med hjälp av ett C-proxyprogram (förhandsversion)
 
@@ -120,7 +120,7 @@ I den här snabbstarten använder du [SDK för Azure IoT-enheter för C.](iot-hu
 
 ## <a name="register-a-device"></a>Registrera en enhet
 
-En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget för](/cli/azure/ext/azure-iot/iot) att registrera en simulerad enhet.
+En enhet måste vara registrerad vid din IoT-hubb innan den kan ansluta. I det här avsnittet använder du Azure Cloud Shell med [IoT-tillägget för](/cli/azure/iot) att registrera en simulerad enhet.
 
 1. Skapa enhetsidentiteten genom att köra följande kommando i Cloud Shell:
 
@@ -207,7 +207,7 @@ Nu uppmanas du att ange dina autentiseringsuppgifter i SSH-inloggningsfönstret.
 
 Följande bild visar konsolens utdata på den enhets lokala proxyn, som ansluter till SSH-daemonen på `IP_address:22` :
 
-![Utdata från enhets lokal proxy](./media/quickstart-device-streams-proxy-c/device-console-output.png)
+![Utdata från enhets-lokal proxy](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 
 Följande bild visar konsolens utdata för SSH-klientprogrammet. SSH-klienten kommunicerar med SSH-daemonen genom att ansluta till port 22, som den tjänst-lokala proxyn lyssnar på:
 

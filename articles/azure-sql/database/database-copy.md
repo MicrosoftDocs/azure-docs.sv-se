@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: wiassaf
 ms.date: 03/10/2021
-ms.openlocfilehash: 3ce07af74c3f01fd78ef15ab0e7d43b91361e556
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: b7084ef045d14b9715c41bb9ffa483d1f2f7bedf
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784487"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107865161"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopiera en transaktionellt konsekvent kopia av en databas i Azure SQL Database
 
@@ -74,15 +74,15 @@ az sql db copy --dest-name "CopyOfMySampleDatabase" --dest-resource-group "myRes
     --name "<databaseName>" --resource-group "<resourceGroup>" --server $sourceserver
 ```
 
-Databaskopian är en asynkron åtgärd, men måldatabasen skapas omedelbart efter att begäran har godkänts. Om du behöver avbryta kopieringsåtgärden medan den pågår släpper du måldatabasen med kommandot [az sql db delete.](/cli/azure/sql/db#az_sql_db_delete)
+Databaskopian är en asynkron åtgärd, men måldatabasen skapas omedelbart efter att begäran har godkänts. Om du behöver avbryta kopieringsåtgärden medan den fortfarande pågår släpper du måldatabasen med kommandot [az sql db delete.](/cli/azure/sql/db#az_sql_db_delete)
 
 * * *
 
 ## <a name="copy-using-transact-sql"></a>Kopiera med Transact-SQL
 
-Logga in på huvuddatabasen med serveradministratörens inloggning eller inloggningen som skapade den databas som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen. Mer information om inloggningar och anslutning till servern finns i [Hantera inloggningar.](logins-create-manage.md)
+Logga in på huvuddatabasen med serveradministratörsinloggningen eller inloggningen som skapade databasen som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen. Mer information om inloggningar och anslutning till servern finns i [Hantera inloggningar.](logins-create-manage.md)
 
-Börja kopiera källdatabasen med [CREATE DATABASE ... SOM KOPIA AV -instruktion.](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) T-SQL-instruktionen fortsätter att köras tills databaskopieringsåtgärden har slutförts.
+Börja kopiera källdatabasen med [CREATE DATABASE ... SOM COPY OF-instruktion.](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current&preserve-view=true#copy-a-database) T-SQL-instruktionen fortsätter att köras tills databaskopieringsåtgärden har slutförts.
 
 > [!NOTE]
 > Om du avslutar T-SQL-instruktionen avslutas inte databaskopieringsåtgärden. Om du vill avsluta åtgärden tar du bort måldatabasen.
@@ -93,7 +93,7 @@ Börja kopiera källdatabasen med [CREATE DATABASE ... SOM KOPIA AV -instruktion
 
 ### <a name="copy-to-the-same-server"></a>Kopiera till samma server
 
-Logga in på huvuddatabasen med serveradministratörens inloggning eller inloggningen som skapade databasen som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen.
+Logga in på huvuddatabasen med serveradministratörsinloggningen eller inloggningen som skapade databasen som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen.
 
 Det här kommandot kopierar Database1 till en ny databas med namnet Database2 på samma server. Beroende på databasens storlek kan kopieringsåtgärden ta lite tid att slutföra.
 
@@ -104,11 +104,11 @@ Det här kommandot kopierar Database1 till en ny databas med namnet Database2 p�
 
 ### <a name="copy-to-an-elastic-pool"></a>Kopiera till en elastisk pool
 
-Logga in på huvuddatabasen med serveradministratörens inloggning eller inloggningen som skapade den databas som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen.
+Logga in på huvuddatabasen med serveradministratörsinloggningen eller inloggningen som skapade databasen som du vill kopiera. För att databaskopiering ska lyckas måste inloggningar som inte är serveradministratör vara medlemmar i `dbmanager` rollen.
 
 Det här kommandot kopierar Database1 till en ny databas med namnet Database2 i en elastisk pool med namnet pool1. Beroende på databasens storlek kan kopieringsåtgärden ta lite tid att slutföra.
 
-Database1 kan vara en enkel databas eller en pooldatabas. Kopiering mellan olika nivåpooler stöds, men vissa kopior på flera nivåer kommer inte att lyckas. Du kan till exempel kopiera en enskild eller elastisk standard-databas till en pool för generell användning, men du kan inte kopiera en elastisk standard-databas till en premiumpool. 
+Database1 kan vara en enkel databas eller en pooldatabas. Kopiering mellan olika nivåpooler stöds, men vissa kopior mellan nivåer kommer inte att lyckas. Du kan till exempel kopiera en enkel eller elastisk standard-databas till en pool för generell användning, men du kan inte kopiera en elastisk standard-databas till en Premium-pool. 
 
    ```sql
    -- Execute on the master database to start copying
@@ -119,7 +119,7 @@ Database1 kan vara en enkel databas eller en pooldatabas. Kopiering mellan olika
 
 ### <a name="copy-to-a-different-server"></a>Kopiera till en annan server
 
-Logga in på huvuddatabasen på målservern där den nya databasen ska skapas. Använd en inloggning som har samma namn och lösenord som databasägaren för källdatabasen på källservern. Inloggningen på målservern måste också vara medlem i `dbmanager` rollen eller vara serveradministratörens inloggning.
+Logga in på målserverns huvuddatabas där den nya databasen ska skapas. Använd en inloggning som har samma namn och lösenord som databasägaren för källdatabasen på källservern. Inloggningen på målservern måste också vara medlem i rollen `dbmanager` eller vara serveradministratörens inloggning.
 
 Det här kommandot kopierar Database1 på server1 till en ny databas med namnet Database2 på server2. Beroende på databasens storlek kan kopieringsåtgärden ta lite tid att slutföra.
 
@@ -129,7 +129,7 @@ CREATE DATABASE Database2 AS COPY OF server1.Database1;
 ```
 
 > [!IMPORTANT]
-> Båda servrarna måste konfigureras för att tillåta inkommande anslutning från IP-adressen för den klient som utfärdar T-SQL CREATE DATABASE ... SOM KOPIA AV kommandot .
+> Båda servrarna brandväggar måste konfigureras för att tillåta inkommande anslutning från IP-adressen för den klient som utfärdar T-SQL CREATE DATABASE ... SOM KOPIA AV kommandot.
 
 ### <a name="copy-to-a-different-subscription"></a>Kopiera till en annan prenumeration
 
@@ -185,16 +185,16 @@ AS COPY OF source_server_name.source_database_name;
 
 ## <a name="monitor-the-progress-of-the-copying-operation"></a>Övervaka kopieringsåtgärdens förlopp
 
-Övervaka kopieringsprocessen genom att fråga [sys.databases,](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)och [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) vyer. Medan kopieringen pågår är  state_desc i vyn sys.databases för den nya databasen inställd på **KOPIERA**.
+Övervaka kopieringsprocessen genom att fråga [sys.databases,](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) [sys.dm_database_copies](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-copies-azure-sql-database)och [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) vyer. Medan kopieringen pågår anges **state_desc** sys.databases-vyn för den nya databasen till **COPYING (KOPIERA).**
 
-* Om kopieringen misslyckas anges **state_desc** i vyn sys.databases för den nya databasen till **MISSTÄNKT**. Kör DROP-instruktionen på den nya databasen och försök igen senare.
-* Om kopieringen lyckas anges **state_desc** i vyn sys.databases för den nya databasen till **ONLINE**. Kopieringen är klar och den nya databasen är en vanlig databas som kan ändras oberoende av källdatabasen.
+* Om kopieringen misslyckas anges **state_desc** i vyn sys.databases för den nya databasen till **SUSPECT**. Kör DROP-instruktionen på den nya databasen och försök igen senare.
+* Om kopieringen lyckas anges **state_desc** i vyn sys.databases för den nya databasen till **ONLINE.** Kopieringen är klar och den nya databasen är en vanlig databas som kan ändras oberoende av källdatabasen.
 
 > [!NOTE]
 > Om du vill avbryta kopieringen medan den pågår kör du [DROP DATABASE-instruktionen](/sql/t-sql/statements/drop-database-transact-sql) på den nya databasen.
 
 > [!IMPORTANT]
-> Om du behöver skapa en kopia med ett betydligt mindre tjänstmål än källan kanske måldatabasen inte har tillräckligt med resurser för att slutföra seeding-processen och det kan leda till att kopieringsåtgärden misslyckas. I det här scenariot använder du en begäran om geo-återställning för att skapa en kopia på en annan server och/eller i en annan region. Se [Återställa en Azure SQL Database med hjälp av databassäkerhetskopior](recovery-using-backups.md#geo-restore) för mer information.
+> Om du behöver skapa en kopia med ett betydligt mindre tjänstmål än källan, kanske måldatabasen inte har tillräckligt med resurser för att slutföra seeding-processen och det kan leda till att kopieringsåtgärden misslyckas. I det här scenariot använder du en begäran om geo-återställning för att skapa en kopia på en annan server och/eller i en annan region. Se [Återställa en Azure SQL Database med hjälp av databassäkerhetskopior](recovery-using-backups.md#geo-restore) för mer information.
 
 ## <a name="azure-rbac-roles-and-permissions-to-manage-database-copy"></a>Azure RBAC-roller och behörigheter för att hantera databaskopiering
 
@@ -209,22 +209,22 @@ Om du vill skapa en databaskopia måste du ha följande roller
 Om du vill avbryta en databaskopia måste du ha följande roller
 
 * Prenumerationsägare eller
-* SQL Server rollen Deltagare eller
+* SQL Server rollen deltagare eller
 * Anpassad roll på käll- och måldatabaserna med följande behörighet:
 
    Microsoft.Sql/servers/databases/read Microsoft.Sql/servers/databases/write
 
-Om du vill hantera databaskopiering Azure Portal databasen behöver du även följande behörigheter:
+Om du vill hantera databaskopiering Azure Portal databasen måste du också ha följande behörigheter:
 
    Microsoft.Resources/subscriptions/resources/read Microsoft.Resources/subscriptions/resources/write Microsoft.Resources/deployments/read Microsoft.Resources/deployments/write Microsoft.Resources/deployments/operationstatuses/read
 
-Om du vill se åtgärderna under distributioner i resursgruppen på portalen, åtgärder över flera resursproviders, inklusive SQL-åtgärder, behöver du följande ytterligare Azure-roller:
+Om du vill se åtgärderna under distributioner i resursgruppen på portalen, åtgärder över flera resursproviders, inklusive SQL-åtgärder, behöver du följande ytterligare behörigheter:
 
    Microsoft.Resources/subscriptions/resourcegroups/deployments/operations/read Microsoft.Resources/subscriptions/resourcegroups/deployments/operationstatuses/read
 
 ## <a name="resolve-logins"></a>Lösa inloggningar
 
-När den nya databasen är online på målservern använder du [alter user-instruktionen](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) för att mappa om användarna från den nya databasen till inloggningar på målservern. Information om hur du löser överblivna användare finns [i Felsöka överblivna användare.](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server) Se även [Hantera Azure SQL Database efter haveriberedskap.](active-geo-replication-security-configure.md)
+När den nya databasen är online på målservern använder du [ALTER USER-instruktionen](/sql/t-sql/statements/alter-user-transact-sql?view=azuresqldb-current&preserve-view=true) för att mappa om användarna från den nya databasen till inloggningar på målservern. Information om hur du löser överblivna användare finns [i Felsöka överblivna användare.](/sql/sql-server/failover-clusters/troubleshoot-orphaned-users-sql-server) Se även [Hantera Azure SQL Database efter haveriberedskap.](active-geo-replication-security-configure.md)
 
 Alla användare i den nya databasen behåller de behörigheter som de hade i källdatabasen. Den användare som initierade databaskopian blir databasägare för den nya databasen. När kopieringen har lyckats och innan andra användare mappas om kan endast databasägaren logga in på den nya databasen.
 
@@ -232,7 +232,7 @@ Mer information om hur du hanterar användare och inloggningar när du kopierar 
 
 ## <a name="database-copy-errors"></a>Fel vid databaskopiering
 
-Följande fel kan uppstå när du kopierar en databas i Azure SQL Database. Mer information finns i [Kopiera en Azure SQL Database](database-copy.md).
+Följande fel kan uppstå vid kopiering av en databas i Azure SQL Database. Mer information finns i [Kopiera en Azure SQL Database](database-copy.md).
 
 | Felkod | Allvarlighetsgrad | Beskrivning |
 | ---:| ---:|:--- |
@@ -243,8 +243,8 @@ Följande fel kan uppstå när du kopierar en databas i Azure SQL Database. Mer 
 | 40563 |16 |Databaskopiering misslyckades. Måldatabasen har tagits bort. |
 | 40564 |16 |Databaskopian misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen. |
 | 40565 |16 |Databaskopiering misslyckades. Högst 1 samtidig databaskopiering från samma källa tillåts. Ta bort måldatabasen och försök igen senare. |
-| 40566 |16 |Databaskopian misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen. |
-| 40567 |16 |Databaskopian misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen. |
+| 40566 |16 |Databaskopiering misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen. |
+| 40567 |16 |Databaskopiering misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen. |
 | 40568 |16 |Databaskopiering misslyckades. Källdatabasen har blivit otillgänglig. Ta bort måldatabasen och försök igen. |
 | 40569 |16 |Databaskopiering misslyckades. Måldatabasen har blivit otillgänglig. Ta bort måldatabasen och försök igen. |
 | 40570 |16 |Databaskopiering misslyckades på grund av ett internt fel. Ta bort måldatabasen och försök igen senare. |

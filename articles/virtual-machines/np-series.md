@@ -1,32 +1,32 @@
 ---
 title: NP-serien – Azure Virtual Machines
-description: Specifikationer för de virtuella datorerna i NP-serien.
+description: Specifikationer för virtuella datorer i NP-serien.
 author: vikancha-MSFT
 ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: aa67a858d0396badc25a625b23dc2f2fdf1bdff9
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 61488b88b00206cb78beed4fe773bf9377848701
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551381"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107861057"
 ---
 # <a name="np-series"></a>NP-serien 
-De virtuella datorerna i NP-serien drivs av [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) -FPGAs för att påskynda arbets belastningar, inklusive maskin inlärnings störningar, video omkodning och databas sökning & analys. De virtuella datorerna i NP-serien drivs med Intel Xeon 8171M-processorer (Skylake) med all Core Turbo klock hastighet på 3,2 GHz.
+De virtuella datorerna i NP-serien drivs av [Xilinx U250 ](https://www.xilinx.com/products/boards-and-kits/alveo/u250.html) FPGA:er för att påskynda arbetsbelastningar som inferens av maskininlärning, videotranskodning och & analys. Virtuella datorer i NP-serien drivs också av Intel Xeon 8171M-processorer (Skylake) med en hastighet på 3,2 GHz för alla kärnor med turboklocka.
 
-[Premium Storage](premium-storage-performance.md): stöds<br>
-[Premium Storage caching](premium-storage-performance.md): stöds<br>
-[Direktmigrering](maintenance-and-updates.md): stöds inte<br>
-[Minnes bebetjänings uppdateringar](maintenance-and-updates.md): stöds inte<br>
-Stöd för VM-generering: generation 1<br>
-[Accelererat nätverk](../virtual-network/create-vm-accelerated-networking-cli.md): stöds<br>
-[Tillfälliga OS-diskar](ephemeral-os-disks.md): stöds inte <br>
+[Premium Storage](premium-storage-performance.md): Stöds<br>
+[Premium Storage cachelagring:](premium-storage-performance.md)Stöds<br>
+[direktmigrering:](maintenance-and-updates.md)Stöds inte<br>
+[Minnesbevarande uppdateringar:](maintenance-and-updates.md)Stöds inte<br>
+Stöd för VM-generering: Generation 1<br>
+[Accelererat nätverk:](../virtual-network/create-vm-accelerated-networking-cli.md)Stöds<br>
+[Tillfälliga OS-diskar:](ephemeral-os-disks.md)Stöds inte <br>
 <br>
 
-| Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | FPGA | FPGA-minne: GiB | Maximalt antal datadiskar | Högsta antal nätverkskort/förväntad nätverks bandbredd (Mbit/s) | 
+| Storlek | Virtuell processor | Minne: GiB | Temporär lagring (SSD) GiB | FPGA | FPGA-minne: GiB | Maximalt antal datadiskar | Maximalt antal nätverkskort/förväntad nätverksbandbredd (MBps) | 
 |---|---|---|---|---|---|---|---|
 | Standard_NP10s | 10 | 168 | 736  | 1 | 64  | 8 | 1 / 7500 | 
 | Standard_NP20s | 20 | 336 | 1474 | 2 | 128 | 16 | 2 / 15000 | 
@@ -41,100 +41,109 @@ Stöd för VM-generering: generation 1<br>
 
 **F:** Vilken version av Vitis ska jag använda? 
 
-**A:** Xilinx rekommenderar [Vitis 2020,2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
+**S:** Xilinx rekommenderar [Vitis 2020.2](https://www.xilinx.com/products/design-tools/vitis/vitis-platform.html)
 
 
-**F:** Behöver jag använda NP-datorer för att utveckla min lösning? 
+**F:** Måste jag använda virtuella NP-datorer för att utveckla min lösning? 
 
-**A:** Nej, du kan utveckla lokalt och distribuera det till molnet! Kontrol lera att du följer attesterings dokumentationen för att distribuera på de virtuella datorerna i NP. 
+**S:** Nej, du kan utveckla lokalt och distribuera till molnet! Se till att följa attestationsdokumentationen för distribution på virtuella NP-datorer. 
 
 **F:** Vilken version av XRT ska jag använda?
 
-**A:** xrt_202020.2.8.832 
+**S:** xrt_202020.2.8.832 
 
-**F:** Vad är mål distributions plattformen?
+**F:** Vad är måldistributionsplattformen?
 
-**A:** Använd följande plattformar.
-- Xilinx-u250-gen3x16-xdma-Platform-2.1-3_all
-- Xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1 
+**S:** Använd följande plattformar.
+- xilinx-u250-gen3x16-xdma-platform-2.1-3_all
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1 
 
-**F:** Vilken plattform ska jag ha för utveckling?
+**F:** Vilken plattform ska jag rikta in mig på för utveckling?
 
-**A:** Xilinx-u250-gen3x16-xdma-2.1-202010-1-dev_1-2954688_all 
+**S:** xilinx-u250-gen3x16-xdma-2.1-202010-1-dev_1-2954688_all 
 
-**F:** Vilka operativ system stöds? 
+**F:** Vilket operativsystem stöds (operativsystem)? 
 
-**A:** Xilinx och Microsoft har verifierat Ubuntu 18,04 LTS och CentOS 7,8.
+**S:** Xilinx och Microsoft har verifierat Ubuntu 18.04 LTS och CentOS 7.8.
 
- Xilinx har skapat följande Marketplace-avbildningar för att förenkla distributionen av de här virtuella datorerna. 
+ Xilinx har skapat följande Marketplace-avbildningar för att förenkla distributionen av dessa virtuella datorer. 
 
-[Xilinx ALVEO U250 Deployment VM – Ubuntu 18.04](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_ubuntu1804_032321)
+[Xilinx Alveo U250 Deployment VM – Ubuntu18.04](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_ubuntu1804_032321)
 
-[Xilinx ALVEO U250 Deployment VM – CentOS 7,8](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_centos78_032321)
+[Xilinx Alveo U250 Deployment VM – CentOS7.8](https://ms.portal.azure.com/#blade/Microsoft_Azure_Marketplace/GalleryItemDetailsBladeNopdl/id/xilinx.xilinx_alveo_u250_deployment_vm_centos78_032321)
 
-**F:** Kan jag distribuera mina egna Ubuntu/CentOS-datorer och installera XRT/distributions mål plattform? 
+**F:** Kan jag distribuera mina egna virtuella Ubuntu/CentOS-datorer och installera XRT/Deployment Target Platform? 
 
 **S:** Ja.
 
-**F:** Om jag distribuerar min egen Ubuntu 18.04 VM, vilka är de nödvändiga paketen och stegen?
+**F:** Vilka paket och steg krävs om jag distribuerar min egen virtuella Ubuntu18.04-dator?
 
-**A:** Använda kernel 4.1 X per [Xilinx XRT-dokumentation](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)
+**S:** Använda Kernel 4.1X per [XRT-dokumentation för Xilinx](https://www.xilinx.com/support/documentation/sw_manuals/xilinx2020_2/ug1451-xrt-release-notes.pdf)
        
 Installera följande paket.
-- xrt_202020 xrt_202020.2.8.832_18.04-amd64-XRT. deb
+- xrt_202020.2.8.832_18.04-amd64-xrt.deb
        
-- xrt_202020 xrt_202020.2.8.832_18.04-amd64-Azure. deb
+- xrt_202020.2.8.832_18.04-amd64-azure.deb
        
-- Xilinx-u250-gen3x16-xdma-Platform-2.1-3_all_18.04. deb. tar. gz
+- xilinx-u250-gen3x16-xdma-platform-2.1-3_all_18.04.deb.tar.gz
        
-- Xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1_all. deb  
+- xilinx-u250-gen3x16-xdma-validate_2.1-3005608.1_all.deb  
 
-**F:** Efter omstart av den virtuella datorn på Ubuntu kan jag inte hitta mina FPGA: 
+**F:** När jag har startat om min virtuella dator i Ubuntu kan jag inte hitta mina FPGA:er: 
 
-**A:** Kontrol lera att din kernel inte har uppgraderats (uname-a). I så fall kan du nedgradera till kernel 4.1 X. 
+**S:** Kontrollera att din kernel inte har uppgraderats (uname -a). I så fall nedgraderar du till kernel 4.1X. 
 
-**F:** Om jag distribuerar min egen CentOS 7,8 virtuell dator, vilka är de nödvändiga paketen och stegen?
+**F:** Vilka paket och steg krävs om jag distribuerar min egen virtuella CentOS7.8-dator?
 
-**A:** Använd kernel-version: 3.10.0-1160.15.2.el7.x86_64
+**S:** Använd Kernel-version: 3.10.0-1160.15.2.el7.x86_64
 
  Installera följande paket.
    
- - xrt_202020 xrt_202020.2.8.832_7.4.1708-x86_64-XRT. rpm 
+ - xrt_202020.2.8.832_7.4.1708-x86_64-xrt.rpm 
       
- - xrt_202020 xrt_202020.2.8.832_7.4.1708-x86_64-Azure. rpm 
+ - xrt_202020.2.8.832_7.4.1708-x86_64-azure.rpm 
      
- - Xilinx-u250-gen3x16-xdma-Platform-2.1 -3. nobåge. rpm. tar. gz 
+ - xilinx-u250-gen3x16-xdma-platform-2.1-3.noarch.rpm.tar.gz 
       
- - Xilinx-u250-gen3x16-xdma-validate-2.1 – 3005608.1. nobåge. rpm  
+ - xilinx-u250-gen3x16-xdma-validate-2.1-3005608.1.noarch.rpm  
 
-**F:** När du kör xbutil validate på CentOS får du den här varningen: "Varning: kernel-version 3.10.0-1160.15.2.el7.x86_64 stöds inte officiellt. 4.18.0-193 är den senaste versionen som stöds. " 
+**F:** När jag kör xbutil validate på CentOS får jag den här varningen: "VARNING: Kernelversion 3.10.0-1160.15.2.el7.x86_64 stöds inte officiellt. 4.18.0-193 är den senaste versionen som stöds." 
 
-**A:** Detta kan ignoreras. 
+**S:** Detta kan ignoreras. 
 
-**F:** Vad är skillnaden mellan OnPrem och NP-datorer angående XRT? 
+**F:** Vilka är skillnaderna mellan virtuella OnPrem- och NP-datorer när det gäller XRT? 
 
-**A:** På Azure stöder XDMA 2,1-plattformen endast Host_Mem (SB) och DDR-datakvarhållning. 
+**S:** På Azure stöder XDMA 2.1-plattformen endast funktioner för Host_Mem (SB) och DDR-datalagring. 
 
-Aktivera Host_Mem (SB) (1 GB RAM): sudo xbutil host_mem--Enable--size 1G 
+Så här aktiverar Host_Mem(SB) (1 GB RAM): sudo xbutil host_mem --enable --size 1g 
 
-Så här inaktiverar du Host_Mem (SB): sudo xbutil host_mem--Disable 
+Så här inaktiverar Host_Mem(SB): sudo xbutil host_mem --disable 
 
 **F:** Kan jag köra xbmgmt-kommandon? 
 
-**A:** Nej, på virtuella Azure-datorer finns det inget hanterings stöd direkt från den virtuella Azure-datorn. 
+**S:** Nej, på virtuella Azure-datorer finns det inget hanteringsstöd direkt från den virtuella Azure-datorn. 
 
  **F:** Måste jag läsa in en PLP? 
 
-**A:** Nej, PLP läses in automatiskt åt dig, så det är inte nödvändigt att läsa in via xbmgmt-kommandon. 
+**S:** Nej, PLP läses in automatiskt åt dig, så du behöver inte läsa in via xbmgmt-kommandon. 
 
  
-**F:** Stöder Azure olika PLPs? 
+**F:** Stöder Azure olika PLP:er? 
 
-**A:** Inte just nu. Vi stöder bara de PLP som tillhandahålls i distributions plattforms paketen. 
+**S:** Inte just nu. Vi stöder endast PLP som tillhandahålls i distributionens plattformspaket. 
 
-**F:** Hur kan jag fråga PLP-informationen? 
+**F:** Hur frågar jag PLP-informationen? 
 
-**A:** Du måste köra xbutil-frågan och titta på den nedre delen. 
+**S:** Du måste köra xbutil-frågan och titta på den nedre delen. 
+
+**F:** Vilka ytterligare ändringar behöver jag göra om jag skapar min egen virtuella dator och distribuerar XRT manuellt? 
+
+**S:** I /opt/xilinx/xrt/setup.sh lägger du till en post för XRT_INI_PATH som pekar på /opt/xilinx/xrt/xrt.ini
+
+ 
+Innehållet i /opt/xilinx/xrt/xrt.ini ska innehålla: <br>
+[Runtime]<br>
+ert=false <br>
 
 ## <a name="other-sizes"></a>Andra storlekar
 
@@ -147,4 +156,4 @@ Så här inaktiverar du Host_Mem (SB): sudo xbutil host_mem--Disable
 
 ## <a name="next-steps"></a>Nästa steg
 
-Lär dig mer om hur [Azure Compute Units (ACU)](acu.md) kan hjälpa dig att jämföra beräknings prestanda i Azure SKU: er.
+Läs mer om hur [Azure-beräkningsenheter (ACU) kan](acu.md) hjälpa dig att jämföra beräkningsprestanda mellan Azure-SKU:er.

@@ -1,68 +1,68 @@
 ---
-title: Koncept – uppdateringar och uppgraderingar av privata moln
-description: Lär dig mer om de viktiga uppgraderings processerna och funktionerna i Azure VMware-lösningen.
+title: Begrepp – uppdateringar och uppgraderingar i privata moln
+description: Lär dig mer om viktiga uppgraderingsprocesser och funktioner i Azure VMware Solution.
 ms.topic: conceptual
 ms.date: 03/17/2021
-ms.openlocfilehash: 9810de40944f70a4efb7ec81d17868ffdf256c7d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ced5832a6d994f6cbc7e659d44ce4f6ac88681d0
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104586156"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876822"
 ---
-# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Uppdateringar och uppgraderingar av privata moln i Azure VMware-lösningar
+# <a name="azure-vmware-solution-private-cloud-updates-and-upgrades"></a>Azure VMware Solution uppdateringar och uppgraderingar av privata moln
 
-En fördel med privata moln i Azure VMware-lösningar är att plattformen upprätthålls för dig. Underhåll inkluderar automatiserade uppdateringar av en VMware-verifierad program varu samling för att se till att du använder den senaste versionen av Azure VMware-lösningen privat moln program vara.
+En fördel med Azure VMware Solution privata moln är att plattformen underhålls åt dig. Underhållet omfattar automatiserade uppdateringar av ett VMware-verifierat programpaket för att säkerställa att du använder den senaste versionen Azure VMware Solution programvara i privata moln.
 
-Mer specifikt innehåller ett privat moln i Azure VMware-lösningen:
+Mer specifikt innehåller Azure VMware Solution privata moln:
 
-- Dedikerade Bare Metal Server-noder etablerade med VMware ESXi hypervisor 
-- vCenter-Server för hantering av ESXi och virtuellt San 
-- VMware NSX-T program varu definierade nätverk för vSphere VM-arbetsbelastningar  
-- VMware virtuellt San data lager för vSphere arbets belastning VM  
-- VMware HCX för arbets belastnings mobilitet  
+- Dedikerade bare metal-servernoder som etablerats med VMware ESXi hypervisor 
+- vCenter-server för att hantera ESXi och vSAN 
+- VMware NSX-T-programvarudefinierat nätverk för virtuella vSphere-arbetsbelastningsbaserade datorer  
+- VMware vSAN-datalager för virtuella vSphere-arbetsbelastningar  
+- VMware HCX för arbetsbelastningsmobilitet  
 
-Ett privat moln i Azure VMware-lösningen innehåller också resurser i Azure-Underlay som krävs för anslutning och för att kunna använda det privata molnet. Azure VMware-lösningen övervakar kontinuerligt hälsan för både Underlay-och VMware-komponenterna. När Azure VMware-lösningen identifierar ett fel vidtar den åtgärder för att reparera de komponenter som misslyckades. 
+Ett Azure VMware Solution privat moln innehåller även resurser i Azure-underlagret som krävs för anslutning och för att driva det privata molnet. Azure VMware Solution övervakar kontinuerligt hälsotillståndet för både de ingående komponenterna och VMware-komponenterna. När Azure VMware Solution upptäcker ett fel vidtar den åtgärder för att reparera de felande komponenterna. 
 
-## <a name="what-components-get-updated"></a>Vilka komponenter kommer att uppdateras?   
+## <a name="what-components-get-updated"></a>Vilka komponenter uppdateras?   
 
-Azure VMware-lösningen uppdaterar följande VMware-komponenter: 
+Azure VMware Solution uppdaterar följande VMware-komponenter: 
 
-- vCenter Server och ESXi som körs på de Bare Metal-noderna 
-- Virtuellt San 
+- vCenter Server och ESXi som körs på bare metal-servernoderna 
+- vSAN 
 - NSX-T 
 
-Azure VMware-lösningen uppdaterar också program varan i Underlay, till exempel driv rutiner, program vara på nätverks växlarna och den inbyggda program varan på Bare Metal-noderna. 
+Azure VMware Solution uppdaterar även programvaran i underlagret, till exempel drivrutiner, programvara på nätverksväxlarna och inbyggd programvara på noder utan dator. 
 
 ## <a name="types-of-updates"></a>Typer av uppdateringar
 
-Azure VMware-lösningen använder följande typer av uppdateringar av VMware-komponenter:
+Azure VMware Solution tillämpar följande typer av uppdateringar på VMware-komponenter:
 
-- Korrigeringar: säkerhets korrigeringar och fel korrigeringar som publicerats av VMware. 
-- Uppdateringar: lägre versions uppdateringar av en eller flera VMware-komponenter. 
-- Uppgraderingar: högre versions uppdateringar av en eller flera VMware-komponenter.
+- Korrigeringar: Säkerhetskorrigeringar och felkorrigeringar som har släppts av VMware. 
+- Uppdateringar: Mindre versionsuppdateringar av en eller flera VMware-komponenter. 
+- Uppgraderingar: Större versionsuppdateringar av en eller flera VMware-komponenter.
 
-Du får ett meddelande innan och efter att korrigeringsfiler har tillämpats på dina privata moln. Vi kommer också att arbeta med dig för att schemalägga en underhålls period innan du tillämpar uppdateringar eller uppgraderingar i ditt privata moln. 
+Du meddelas före och efter att korrigeringarna har tillämpats på dina privata moln. Vi kommer också att samarbeta med dig för att schemalägga en underhållsfönstret innan du tillämpar uppdateringar eller uppgraderingar i ditt privata moln. 
 
-## <a name="vmware-appliance-backup"></a>Säkerhets kopiering av VMware-apparat 
+## <a name="vmware-appliance-backup"></a>Säkerhetskopiering av VMware-installation 
 
-Azure VMware-lösningen tar även en konfigurations säkerhets kopia av följande VMware-komponenter:
+Azure VMware Solution också en konfigurationssäkerhetskopia av följande VMware-komponenter:
 
 - vCenter Server 
-- NSX-T-chef 
+- NSX-T Manager 
 
-Vid misslyckade försök kan Azure VMware-lösningen återställa dessa komponenter från konfigurations säkerhets kopian. 
+Vid fel kan Azure VMware Solution dessa komponenter från konfigurationssäkerhetskopieringen. 
 
-## <a name="vmware-software-versions"></a>Versioner av VMware-programvara
+## <a name="vmware-software-versions"></a>VMware-programvaruversioner
 [!INCLUDE [vmware-software-versions](includes/vmware-software-versions.md)]
 
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har täckt de viktiga uppgraderings processerna och funktionerna i Azure VMware-lösningen kanske du vill lära dig mer om:
+Nu när du har gått in på viktiga uppgraderingsprocesser och funktioner i Azure VMware Solution kanske du vill veta mer om:
 
-- [Så här skapar du ett privat moln](tutorial-create-private-cloud.md).
-- [Så här aktiverar du Azure VMware-lösnings resurser](enable-azure-vmware-solution.md).
+- [Så här skapar du ett privat moln](tutorial-create-private-cloud.md)
+- [Så här aktiverar du Azure VMware Solution resurs](enable-azure-vmware-solution.md)
 
 <!-- LINKS - external -->
 

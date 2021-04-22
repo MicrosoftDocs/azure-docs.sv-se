@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
-ms.openlocfilehash: 9a7a0795a15de52c34b8591c4224c3ca5883445c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: ae5ca6ac822dabd32b6463c3a742901f32b34323
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107772081"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862263"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Skapa och hantera integrationskonton för B2B-företagsintegrationer i Azure Logic Apps
 
@@ -71,7 +71,7 @@ För den här uppgiften kan du använda antingen Azure Portal genom att följa s
    | **Prenumeration** | Yes | <*Azure-prenumerationens namn*> | Azure-prenumerationens namn |
    | **Resursgrupp** | Yes | <*Azure-resource-group-name*> | Namnet på den [Azure-resursgrupp som](../azure-resource-manager/management/overview.md) ska användas för att organisera relaterade resurser. I det här exemplet skapar du en ny resursgrupp med namnet "FabrikamIntegration-RG". |
    | **Prisnivå** | Yes | <*prisnivå*> | Prisnivån för integrationskontot, som du kan ändra senare. I det här exemplet väljer du **Kostnadsfri.** Mer information finns i de här ämnena: <p>- [Logic Apps prismodell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps gränser och konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Plats** | Yes | <*Azure-region*> | Den region där metadata för ditt integrationskonto ska lagras. Välj antingen samma plats som logikappen eller skapa dina logikappar på samma plats som ditt integrationskonto. I det här exemplet använder du "USA, västra". <p>**Obs!** Om du vill skapa ett integrationskonto i en [integrationstjänstmiljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)väljer du den ISE:n som plats. Mer information finns i Skapa [integrationskonton i en ISE.](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment) |
+   | **Plats** | Yes | <*Azure-region*> | Den region där metadata för ditt integrationskonto ska lagras. Välj antingen samma plats som logikappen eller skapa dina logikappar på samma plats som ditt integrationskonto. I det här exemplet använder du "USA, västra". <p>**Obs!** Om du vill skapa ett integrationskonto i [en integrationstjänstmiljö (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)väljer du den ISE:n som plats. Mer information finns i Skapa [integrationskonton i en ISE.](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment) |
    | **Log Analytics** | No | Av, På | Behåll inställningen **Av** för det här exemplet. |
    |||||
 
@@ -93,7 +93,7 @@ Du kan skapa ett integrationskonto med hjälp av Azure CLI-kommandona i det här
 
 Använd dessa kommandon för att skapa ett integrationskonto.
 
-1. Om du vill [lägga till tillägget az logic integration-account](/cli/azure/ext/logic/logic/integration-account) använder du kommandot az extension [add:](/cli/azure/extension#az_extension_add)
+1. Om du vill [lägga till tillägget az logic integration-account](/cli/azure/logic/integration-account) använder du kommandot az extension [add:](/cli/azure/extension#az_extension_add)
 
    ```azurecli
    az extension add –-name logic
@@ -105,13 +105,13 @@ Använd dessa kommandon för att skapa ett integrationskonto.
    az group create --name myresourcegroup --location westus
    ```
 
-   Om du vill visa en lista med integrationskonton för en resursgrupp använder du kommandot [az logic integration-account list:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_list)
+   Om du vill visa en lista med integrationskonton för en resursgrupp använder du kommandot [az logic integration-account list:](/cli/azure/logic/integration-account#az_logic_integration_account_list)
 
    ```azurecli
    az logic integration-account list --resource-group myresourcegroup
    ```
 
-1. Skapa ett integrationskonto genom att köra [kommandot az logic integration-account create:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_create)
+1. Skapa ett integrationskonto genom att köra [kommandot az logic integration-account create:](/cli/azure/logic/integration-account#az_logic_integration_account_create)
 
    ```azurecli
    az logic integration-account create --resource-group myresourcegroup \
@@ -123,13 +123,13 @@ Använd dessa kommandon för att skapa ett integrationskonto.
    > [!TIP]
    > Om du vill skapa ett integrationskonto [i en Integration Service Environment (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)väljer du den ISE:n som plats. Mer information finns i Skapa [integrationskonton i en ISE.](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment)
 
-   Om du vill visa ett specifikt integrationskonto använder du kommandot [az logic integration-account show:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_show)
+   Om du vill visa ett specifikt integrationskonto använder du kommandot [az logic integration-account show:](/cli/azure/logic/integration-account#az_logic_integration_account_show)
 
    ```azurecli
    az logic integration-account show --name integration_account_01 --resource-group myresourcegroup
    ```
 
-   Du kan ändra din SKU eller prisnivå med hjälp av kommandot [az logic integration-account update:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_update)
+   Du kan ändra din SKU eller prisnivå med hjälp av kommandot [az logic integration-account update:](/cli/azure/logic/integration-account#az_logic_integration_account_update)
 
    ```azurecli
    az logic integration-account update --sku name=Basic --name integration_account_01 \
@@ -142,14 +142,14 @@ Använd dessa kommandon för att skapa ett integrationskonto.
    * [Logic Apps gränser och konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits)
    * [Logic Apps prissättning](https://azure.microsoft.com/pricing/details/logic-apps/)
 
-Om du vill importera ett integrationskonto med hjälp av en JSON-fil använder du [kommandot az logic integration-account import:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_import)
+Om du vill importera ett integrationskonto med hjälp av en JSON-fil använder du [kommandot az logic integration-account import:](/cli/azure/logic/integration-account#az_logic_integration_account_import)
 
 ```azurecli
 az logic integration-account import --name integration_account_01 \
     --resource-group myresourcegroup --input-path integration.json
 ```
 
-Du kan ta bort ett integrationskonto med kommandot [az logic integration-account delete:](/cli/azure/ext/logic/logic/integration-account#ext_logic_az_logic_integration_account_delete)
+Du kan ta bort ett integrationskonto med kommandot [az logic integration-account delete:](/cli/azure/logic/integration-account#az_logic_integration_account_delete)
 
 ```azurecli
 az logic integration-account delete --name integration_account_01 --resource-group myresourcegroup
@@ -172,7 +172,7 @@ Om du vill ge dina logikappar åtkomst till ett integrationskonto som innehålle
 
    ![Välj ditt integrationskonto](./media/logic-apps-enterprise-integration-create-integration-account/select-integration-account.png)
 
-1. Slutför länkningen genom att välja **Spara.**
+1. Slutför länkningen genom att välja **Spara**.
 
    ![Skärmbild som visar var du väljer Spara för att välja ditt integrationskonto.](./media/logic-apps-enterprise-integration-create-integration-account/save-link.png)
 
@@ -337,7 +337,7 @@ För den här uppgiften kan du använda antingen Azure Portal genom att följa s
 
 1. Om du vill bekräfta att skript eller verktyg som är associerade med de flyttade resurserna inte fungerar förrän du uppdaterar dem med de nya resurs-ID:erna markerar du bekräftelserutan och väljer **sedan OK.**
 
-1. När du är klar ser du till att uppdatera alla skript med de nya resurs-ID:erna för dina flyttade resurser.  
+1. När du är klar ser du till att uppdatera alla skript med de nya resurs-ID:erna för de resurser som har flyttats.  
 
 ## <a name="delete-integration-account"></a>Ta bort integrationskonto
 

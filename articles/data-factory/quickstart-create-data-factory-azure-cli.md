@@ -1,6 +1,6 @@
 ---
-title: 'Snabb start: skapa en Azure Data Factory med Azure CLI'
-description: Den här snabb starten skapar en Azure Data Factory, inklusive en länkad tjänst, data uppsättningar och en pipeline. Du kan köra pipelinen för att göra en fil kopierings åtgärd.
+title: 'Snabbstart: Skapa en Azure Data Factory med Azure CLI'
+description: Den här snabbstarten skapar Azure Data Factory, inklusive en länkad tjänst, datauppsättningar och en pipeline. Du kan köra pipelinen för att göra en filkopieringsåtgärd.
 author: linda33wj
 ms.author: jingwang
 ms.service: azure-cli
@@ -9,16 +9,16 @@ ms.date: 03/24/2021
 ms.custom:
 - template-quickstart
 - devx-track-azurecli
-ms.openlocfilehash: 9af5f276e49e9eb2756dc544db353c75c99bc5a9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: b40407f4c4fb81bbf76bd0b552f3c9f2c827232a
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105938070"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107871544"
 ---
-# <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Snabb start: skapa en Azure Data Factory med Azure CLI
+# <a name="quickstart-create-an-azure-data-factory-using-azure-cli"></a>Snabbstart: Skapa en Azure Data Factory med Azure CLI
 
-I den här snabb starten beskrivs hur du använder Azure CLI för att skapa en Azure Data Factory. Pipelinen som du skapar i den här data fabriken kopierar data från en mapp till en annan i ett Azure-Blob Storage. Information om hur du omvandlar data med hjälp av Azure Data Factory finns [i transformera data i Azure Data Factory](transform-data.md).
+Den här snabbstarten beskriver hur du använder Azure CLI för att skapa Azure Data Factory. Pipelinen som du skapar i den här datafabriken kopierar data från en mapp till en annan mapp i en Azure Blob Storage. Information om hur du transformerar data med Azure Data Factory finns i [Transformera data i Azure Data Factory](transform-data.md).
 
 En introduktion till Azure Data Factory-tjänsten finns i [Introduktion till Azure Data Factory](introduction.md).
 
@@ -27,53 +27,53 @@ Om du inte har någon Azure-prenumeration kan du skapa ett [kostnadsfritt konto]
 [!INCLUDE [azure-cli-prepare-your-environment](../../includes/azure-cli-prepare-your-environment.md)]
 
 > [!NOTE]
-> Om du vill skapa Data Factory-instanser måste det användarkonto du använder för att logga in på Azure vara medlem av rollerna deltagare eller ägare, eller vara administratör för Azure-prenumerationen. Mer information finns i [Azure-roller](quickstart-create-data-factory-powershell.md#azure-roles).
+> Om du vill skapa Data Factory-instanser måste det användarkonto du använder för att logga in på Azure vara medlem av rollerna deltagare eller ägare, eller vara administratör för Azure-prenumerationen. Mer information finns i [Azure-roller.](quickstart-create-data-factory-powershell.md#azure-roles)
 
-## <a name="prepare-a-container-and-test-file"></a>Förbereda en behållare och test fil
+## <a name="prepare-a-container-and-test-file"></a>Förbereda en container och en testfil
 
-I den här snabb starten används ett Azure Storage-konto, som innehåller en behållare med en fil.
+Den här snabbstarten använder Azure Storage ett konto, som innehåller en container med en fil.
 
-1. Om du vill skapa en resurs grupp med namnet `ADFQuickStartRG` använder du kommandot [AZ Group Create](/cli/azure/group#az_group_create) :
+1. Om du vill skapa en `ADFQuickStartRG` resursgrupp med namnet använder du [kommandot az group create:](/cli/azure/group#az_group_create)
 
    ```azurecli
    az group create --name ADFQuickStartRG --location eastus
    ```
 
-1. Skapa ett lagrings konto med kommandot [AZ Storage Account Create](/cli/azure/storage/container#az_storage_container_create) :
+1. Skapa ett lagringskonto med kommandot [az storage account](/cli/azure/storage/container#az_storage_container_create) create:
 
    ```azurecli
    az storage account create --resource-group ADFQuickStartRG \
        --name adfquickstartstorage --location eastus
    ```
 
-1. Skapa en behållare med namnet `adftutorial` med hjälp av kommandot [AZ Storage container Create](/cli/azure/storage/container#az_storage_container_create) :
+1. Skapa en container med `adftutorial` namnet med kommandot az storage container [create:](/cli/azure/storage/container#az_storage_container_create)
 
    ```azurecli
    az storage container create --resource-group ADFQuickStartRG --name adftutorial \
        --account-name adfquickstartstorage --auth-mode key
    ```
 
-1. I den lokala katalogen skapar du en fil med namnet `emp.txt` att ladda upp. Om du arbetar i Azure Cloud Shell kan du hitta den aktuella arbets katalogen med hjälp av `echo $PWD` kommandot bash. Du kan använda vanliga bash-kommandon som `cat` till exempel för att skapa en fil:
+1. I den lokala katalogen skapar du en fil med namnet `emp.txt` för uppladdning. Om du arbetar i Azure Cloud Shell du hitta den aktuella arbetskatalogen med hjälp av `echo $PWD` Bash-kommandot. Du kan använda bash-standardkommandon som `cat` för att skapa en fil:
 
    ```console
    cat > emp.txt
    This is text.
    ```
 
-   Använd **CTRL + D** för att spara den nya filen.
+   Använd **Ctrl + D** för att spara den nya filen.
 
-1. Om du vill överföra den nya filen till din Azure Storage-behållare använder du kommandot [AZ Storage BLOB upload](/cli/azure/storage/blob#az_storage_blob_upload) :
+1. Om du vill ladda upp den nya filen till Azure Storage-containern använder du [kommandot az storage blob upload:](/cli/azure/storage/blob#az_storage_blob_upload)
 
    ```azurecli
    az storage blob upload --account-name adfquickstartstorage --name input/emp.txt \
        --container-name adftutorial --file emp.txt --auth-mode key
    ```
 
-   Det här kommandot överför till en ny mapp med namnet `input` .
+   Det här kommandot laddar upp till en ny mapp med namnet `input` .
 
 ## <a name="create-a-data-factory"></a>Skapa en datafabrik
 
-Skapa en Azure-datafabrik genom att köra kommandot [AZ DataFactory Factory Create](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_create) :
+Skapa en Azure-datafabrik genom att köra [kommandot az datafactory factory create:](/cli/azure/datafactory/factory#az_datafactory_factory_create)
 
 ```azurecli
 az datafactory factory create --resource-group ADFQuickStartRG \
@@ -81,27 +81,27 @@ az datafactory factory create --resource-group ADFQuickStartRG \
 ```
 
 > [!IMPORTANT]
-> Ersätt `ADFTutorialFactory` med ett globalt unikt data fabriks namn, till exempel ADFTutorialFactorySP1127.
+> Ersätt `ADFTutorialFactory` med ett globalt unikt datafabriksnamn, till exempel ADFTutorialFactorySP1127.
 
-Du kan se data fabriken som du skapade med kommandot [AZ DataFactory Factory show](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) :
+Du kan se datafabriken som du skapade med kommandot [az datafactory factory show:](/cli/azure/datafactory/factory#az_datafactory_factory_show)
 
 ```azurecli
 az datafactory factory show --resource-group ADFQuickStartRG \
     --factory-name ADFTutorialFactory
 ```
 
-## <a name="create-a-linked-service-and-datasets"></a>Skapa en länkad tjänst och data uppsättningar
+## <a name="create-a-linked-service-and-datasets"></a>Skapa en länkad tjänst och datauppsättningar
 
-Skapa sedan en länkad tjänst och två data uppsättningar.
+Skapa sedan en länkad tjänst och två datauppsättningar.
 
-1. Hämta anslutnings strängen för ditt lagrings konto med hjälp av kommandot [AZ Storage Account show-Connection-sträng](/cli/azure/ext/datafactory/datafactory/factory#ext_datafactory_az_datafactory_factory_show) :
+1. Hämta anslutningssträngen för ditt lagringskonto med hjälp av [kommandot az storage account show-connection-string:](/cli/azure/datafactory/factory#az_datafactory_factory_show)
 
    ```azurecli
    az storage account show-connection-string --resource-group ADFQuickStartRG \
        --name adfquickstartstorage --key primary
    ```
 
-1. I din arbets katalog skapar du en JSON-fil med det här innehållet, som innehåller din egen anslutnings sträng från föregående steg. Namnge filen `AzureStorageLinkedService.json` :
+1. I arbetskatalogen skapar du en JSON-fil med det här innehållet, som innehåller din egen anslutningssträng från föregående steg. Ge filen namnet `AzureStorageLinkedService.json` :
 
    ```json
    {
@@ -115,7 +115,7 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
    }
    ```
 
-1. Skapa en länkad tjänst med namnet med `AzureStorageLinkedService` hjälp av kommandot [AZ DataFactory Linked-service Create](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_create) :
+1. Skapa en länkad tjänst med `AzureStorageLinkedService` namnet med hjälp av kommandot az [datafactory linked-service create:](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_create)
 
    ```azurecli
    az datafactory linked-service create --resource-group ADFQuickStartRG \
@@ -123,7 +123,7 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
        --properties @AzureStorageLinkedService.json
    ```
 
-1. I din arbets katalog skapar du en JSON-fil med det här innehållet med namnet `InputDataset.json` :
+1. I arbetskatalogen skapar du en JSON-fil med det här innehållet med namnet `InputDataset.json` :
 
    ```json
    {
@@ -146,7 +146,7 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
    }
    ```
 
-1. Skapa en data uppsättning med namnet `InputDataset` med hjälp av kommandot [AZ DataFactory data uppsättning Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) :
+1. Skapa en indatauppsättning med `InputDataset` namnet med kommandot az [datafactory dataset](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) create:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -154,7 +154,7 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
        --properties @InputDataset.json
    ```
 
-1. I din arbets katalog skapar du en JSON-fil med det här innehållet med namnet `OutputDataset.json` :
+1. I arbetskatalogen skapar du en JSON-fil med det här innehållet med namnet `OutputDataset.json` :
 
    ```json
    {
@@ -177,7 +177,7 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
    }
    ```
 
-1. Skapa en data uppsättning för utdata med namnet `OutputDataset` med hjälp av kommandot [AZ DataFactory data uppsättning Create](/cli/azure/ext/datafactory/datafactory/dataset#ext_datafactory_az_datafactory_dataset_create) :
+1. Skapa en utdatauppsättning med `OutputDataset` namnet med kommandot az [datafactory dataset](/cli/azure/datafactory/dataset#az_datafactory_dataset_create) create:
 
    ```azurecli
    az datafactory dataset create --resource-group ADFQuickStartRG \
@@ -185,11 +185,11 @@ Skapa sedan en länkad tjänst och två data uppsättningar.
        --properties @OutputDataset.json
    ```
 
-## <a name="create-and-run-the-pipeline"></a>Skapa och kör pipelinen
+## <a name="create-and-run-the-pipeline"></a>Skapa och köra pipelinen
 
-Slutligen skapar och kör du pipelinen.
+Skapa och kör slutligen pipelinen.
 
-1. I din arbets katalog skapar du en JSON-fil med det här innehållet med namnet `Adfv2QuickStartPipeline.json` :
+1. I arbetskatalogen skapar du en JSON-fil med det här innehållet med namnet `Adfv2QuickStartPipeline.json` :
 
    ```json
    {
@@ -243,7 +243,7 @@ Slutligen skapar och kör du pipelinen.
    }
    ```
 
-1. Skapa en pipeline med namnet `Adfv2QuickStartPipeline` med hjälp av kommandot [AZ DataFactory pipeline Create](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create) :
+1. Skapa en pipeline med `Adfv2QuickStartPipeline` namnet med kommandot az [datafactory pipeline](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create) create:
 
    ```azurecli
    az datafactory pipeline create --resource-group ADFQuickStartRG \
@@ -251,7 +251,7 @@ Slutligen skapar och kör du pipelinen.
        --pipeline @Adfv2QuickStartPipeline.json
    ```
 
-1. Köra pipelinen med hjälp av kommandot [AZ DataFactory pipeline Create-Run](/cli/azure/ext/datafactory/datafactory/pipeline#ext_datafactory_az_datafactory_pipeline_create_run) :
+1. Kör pipelinen med kommandot [az datafactory pipeline create-run:](/cli/azure/datafactory/pipeline#az_datafactory_pipeline_create_run)
 
    ```azurecli
    az datafactory pipeline create-run --resource-group ADFQuickStartRG \
@@ -260,33 +260,33 @@ Slutligen skapar och kör du pipelinen.
 
    Det här kommandot returnerar ett körnings-ID. Kopiera den för användning i nästa kommando.
 
-1. Verifiera att pipelinen har körts genom att använda kommandot [AZ DataFactory pipeline-Run show](/cli/azure/ext/datafactory/datafactory/pipeline-run#ext_datafactory_az_datafactory_pipeline_run_show) :
+1. Kontrollera att pipelinekörningen lyckades med kommandot [az datafactory pipeline-run show:](/cli/azure/datafactory/pipeline-run#az_datafactory_pipeline_run_show)
 
    ```azurecli
    az datafactory pipeline-run show --resource-group ADFQuickStartRG \
        --factory-name ADFTutorialFactory --run-id 00000000-0000-0000-0000-000000000000
    ```
 
-Du kan också kontrol lera att din pipeline kördes som förväntat med hjälp av [Azure Portal](https://portal.azure.com/). Mer information finns i [Granska distribuerade resurser](quickstart-create-data-factory-powershell.md#review-deployed-resources).
+Du kan också kontrollera att pipelinen kördes som förväntat med hjälp av [Azure Portal](https://portal.azure.com/). Mer information finns i [Granska distribuerade resurser.](quickstart-create-data-factory-powershell.md#review-deployed-resources)
 
 ## <a name="clean-up-resources"></a>Rensa resurser
 
-Alla resurser i den här snabb starten ingår i samma resurs grupp. Om du vill ta bort alla använder du kommandot [AZ Group Delete](/cli/azure/group#az_group_delete) :
+Alla resurser i den här snabbstarten ingår i samma resursgrupp. Om du vill ta bort alla använder du [kommandot az group delete:](/cli/azure/group#az_group_delete)
 
 ```azurecli
 az group delete --name ADFQuickStartRG
 ```
 
-Om du använder den här resurs gruppen för något annat kan du i stället ta bort enskilda resurser. Om du till exempel vill ta bort den länkade tjänsten använder du kommandot [AZ DataFactory Link-service Delete](/cli/azure/ext/datafactory/datafactory/linked-service#ext_datafactory_az_datafactory_linked_service_delete) .
+Om du använder den här resursgruppen för något annat tar du i stället bort enskilda resurser. Om du till exempel vill ta bort den länkade tjänsten använder du [kommandot az datafactory linked-service delete.](/cli/azure/datafactory/linked-service#az_datafactory_linked_service_delete)
 
-I den här snabb starten skapade du följande JSON-filer:
+I den här snabbstarten skapade du följande JSON-filer:
 
 - AzureStorageLinkedService.jspå
 - InputDataset.jspå
 - OutputDataset.jspå
 - Adfv2QuickStartPipeline.jspå
 
-Ta bort dem med hjälp av standard bash-kommandon.
+Ta bort dem med hjälp av bash-standardkommandon.
 
 ## <a name="next-steps"></a>Nästa steg
 

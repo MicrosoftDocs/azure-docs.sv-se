@@ -1,5 +1,5 @@
 ---
-title: Snabb start – skapa ett Stream Analytics jobb med Azure PowerShell
+title: Snabbstart – Skapa ett Stream Analytics jobb med Azure PowerShell
 description: Den här snabbstarten demonstrerar hur du använder Azure PowerShell-modulen för att distribuera och köra ett Azure Stream Analytics-jobb.
 author: enkrumah
 ms.author: ebnkruma
@@ -7,14 +7,14 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 377abef31dbc4364f37161194923bbf74d272d80
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 193c8b1f47960b9b42c61a9b0e394e5ebedf7bf7
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98012299"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107867609"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snabb start: skapa ett Stream Analytics jobb med Azure PowerShell
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Snabbstart: Skapa ett Stream Analytics jobb med hjälp av Azure PowerShell
 
 Azure PowerShell-modulen används för att skapa och hantera Azure-resurser med hjälp av PowerShell-cmdletar eller -skript. Den här snabbstarten beskriver hur du använder Azure PowerShell-modulen för att distribuera och köra ett Azure Stream Analytics-jobb.
 
@@ -24,11 +24,11 @@ Exempeljobbet läser strömmande data från en IoT Hub-enhet. Indata genereras a
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-* Om du inte har en Azure-prenumeration kan du skapa ett [kostnads fritt konto.](https://azure.microsoft.com/free/)
+* Om du inte har en Azure-prenumeration kan du skapa ett [kostnadsfritt konto.](https://azure.microsoft.com/free/)
 
 * Den här snabbstarten kräver Azure PowerShell-modulen. Hitta versionen som är installerad på den lokala datorn genom att köra `Get-Module -ListAvailable Az`. Om du behöver installera eller uppgradera kan du läsa [Install Azure PowerShell module](/powershell/azure/install-Az-ps) (Installera Azure PowerShell-modul).
 
-* Vissa IoT Hub åtgärder stöds inte av Azure PowerShell och måste slutföras med hjälp av Azure CLI version 2.0.70 eller senare och IoT-tillägget för Azure CLI. [Installera Azure CLI](/cli/azure/install-azure-cli) och använd `az extension add --name azure-iot` för att installera IoT-tillägget.
+* Vissa IoT Hub-åtgärder stöds inte av Azure PowerShell och måste slutföras med Azure CLI version 2.0.70 eller senare och IoT-tillägget för Azure CLI. [Installera Azure CLI](/cli/azure/install-azure-cli) och använd `az extension add --name azure-iot` för att installera IoT-tillägget.
 
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
@@ -96,7 +96,7 @@ Följande Azure CLI-kodblock utför många kommandon som förbereder de indata s
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. Hämta enhetsanslutningssträngen med hjälp av kommandot [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-show-connection-string). Kopiera hela anslutningssträngen och spara den för användning när du skapar Raspberry Pi-simulatorn.
+4. Hämta enhetsanslutningssträngen med hjälp av kommandot [az iot hub device-identity show-connection-string](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_show_connection_string). Kopiera hela anslutningssträngen och spara den för användning när du skapar Raspberry Pi-simulatorn.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table

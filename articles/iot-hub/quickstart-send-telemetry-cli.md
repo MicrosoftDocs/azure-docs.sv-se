@@ -11,12 +11,12 @@ ms.custom:
 ms.author: timlt
 author: timlt
 ms.date: 11/06/2019
-ms.openlocfilehash: a34fd5480ae47678f250dbf888005c396ba32f38
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 843db24707b8c826fe48e9d50aa7ec5bc135399f
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107792155"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107863613"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-monitor-it-with-the-azure-cli"></a>Snabbstart: Skicka telemetri från en enhet till en IoT-hubb och övervaka den med Azure CLI
 
@@ -31,16 +31,16 @@ IoT Hub är en Azure-tjänst som gör att du kan mata in stora mängder telemetr
 ## <a name="sign-in-to-the-azure-portal"></a>Logga in på Azure Portal
 Logga in på Azure Portal på https://portal.azure.com.
 
-Oavsett om du kör CLI lokalt eller i Cloud Shell ska du hålla portalen öppen i webbläsaren.  Du använder det senare i den här snabbstarten.
+Oavsett om du kör CLI lokalt eller i Cloud Shell bör du hålla portalen öppen i webbläsaren.  Du använder den senare i den här snabbstarten.
 
 ## <a name="launch-the-cloud-shell"></a>Starta Cloud Shell
-I det här avsnittet startar du en instans av Azure Cloud Shell. Om du använder CLI lokalt går du vidare till avsnittet [Förbereda två CLI-sessioner.](#prepare-two-cli-sessions)
+I det här avsnittet startar du en instans av Azure Cloud Shell. Om du använder CLI lokalt går du vidare till avsnittet Förbereda [två CLI-sessioner.](#prepare-two-cli-sessions)
 
 Så här startar du Cloud Shell:
 
-1. Välj knappen **Cloud Shell** på menyraden längst upp till höger i Azure Portal. 
+1. Välj knappen **Cloud Shell** på den övre högra menyraden i Azure Portal. 
 
-    ![knappen Azure Portal Cloud Shell](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
+    ![Azure Portal Cloud Shell-knapp](media/quickstart-send-telemetry-cli/cloud-shell-button.png)
 
     > [!NOTE]
     > Om det är första gången du använder Cloud Shell uppmanas du att skapa lagring, vilket krävs för att använda Cloud Shell.  Välj en prenumeration för att skapa ett lagringskonto och Microsoft Azure Files-resurs. 
@@ -94,7 +94,7 @@ I det här avsnittet använder du Azure CLI för att skapa en resursgrupp och en
 I det här avsnittet skapar du en simulerad enhet i den första CLI-sessionen. Den simulerade enheten skickar enhetste telemetri till din IoT-hubb. I den andra CLI-sessionen övervakar du händelser och telemetri och skickar ett moln-till-enhet-meddelande till den simulerade enheten.
 
 Så här skapar och startar du en simulerad enhet:
-1. Kör kommandot [az iot hub device-identity create](/cli/azure/ext/azure-iot/iot/hub/device-identity#ext-azure-iot-az-iot-hub-device-identity-create) i den första CLI-sessionen. Detta skapar den simulerade enhetsidentiteten. 
+1. Kör kommandot [az iot hub device-identity create](/cli/azure/iot/hub/device-identity#az_iot_hub_device_identity_create) i den första CLI-sessionen. Detta skapar den simulerade enhetsidentiteten. 
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -104,7 +104,7 @@ Så här skapar och startar du en simulerad enhet:
     az iot hub device-identity create --device-id simDevice --hub-name {YourIoTHubName} 
     ```
 
-1. Kör kommandot [az iot device simulate](/cli/azure/ext/azure-iot/iot/device#ext-azure-iot-az-iot-device-simulate) i den första CLI-sessionen.  Detta startar den simulerade enheten. Enheten skickar telemetri till din IoT-hubb och tar emot meddelanden från den.  
+1. Kör kommandot [az iot device simulate i](/cli/azure/iot/device#az_iot_device_simulate) den första CLI-sessionen.  Detta startar den simulerade enheten. Enheten skickar telemetri till din IoT-hubb och tar emot meddelanden från den.  
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -113,7 +113,7 @@ Så här skapar och startar du en simulerad enhet:
     ```
 
 Så här övervakar du en enhet:
-1. I den andra CLI-sessionen kör du [kommandot az iot hub monitor-events.](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-monitor-events) Detta börjar övervaka den simulerade enheten. Utdata visar telemetri som den simulerade enheten skickar till IoT-hubben.
+1. I den andra CLI-sessionen kör du [kommandot az iot hub monitor-events.](/cli/azure/iot/hub#az_iot_hub_monitor_events) Nu börjar övervakningen av den simulerade enheten. Utdata visar telemetri som den simulerade enheten skickar till IoT-hubben.
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -136,7 +136,7 @@ I det här avsnittet använder du den andra CLI-sessionen för att skicka ett me
     az iot device simulate -d simDevice -n {YourIoTHubName}
     ```
 
-1. I den andra CLI-sessionen kör du [kommandot az iot device c2d-message send.](/cli/azure/ext/azure-iot/iot/device/c2d-message#ext-azure-iot-az-iot-device-c2d-message-send) Detta skickar ett moln-till-enhet-meddelande från din IoT-hubb till den simulerade enheten. Meddelandet innehåller en sträng och två nyckel/värde-par.  
+1. I den andra CLI-sessionen kör du [kommandot az iot device c2d-message send.](/cli/azure/iot/device/c2d-message#az_iot_device_c2d-message-send) Detta skickar ett moln-till-enhet-meddelande från din IoT-hubb till den simulerade enheten. Meddelandet innehåller en sträng och två nyckel/värde-par.  
 
     *YourIotHubName*. Ersätt platshållaren nedan med det namn som du har valt för din IoT-hubb. 
 
@@ -155,7 +155,7 @@ I det här avsnittet använder du den andra CLI-sessionen för att skicka ett me
 Med Azure Portal kan du hantera alla aspekter av dina IoT Hub och enheter. I ett IoT Hub program som matar in telemetri från enheter kanske du vill övervaka enheter eller visa mått på enhetens telemetri. 
 
 Visualisera meddelandemått i Azure Portal:
-1. I den vänstra navigeringsmenyn i portalen väljer du **Alla resurser.** Här visas alla resurser i din prenumeration, inklusive den IoT-hubb som du skapade. 
+1. I den vänstra navigeringsmenyn i portalen väljer du **Alla resurser.** Då visas alla resurser i din prenumeration, inklusive den IoT-hubb som du skapade. 
 
 1. Välj länken på den IoT-hubb som du skapade. Portalen visar översiktssidan för hubben.
 
@@ -163,7 +163,7 @@ Visualisera meddelandemått i Azure Portal:
 
     ![IoT Hub mått för meddelanden](media/quickstart-send-telemetry-cli/iot-hub-portal-metrics.png)
 
-1. Ange namnet på din IoT-hubb i **Omfång.**
+1. Ange namnet på din IoT-hubb i **Omfång**.
 
 2. Välj *Standardmått för IoT Hub* i **Namnområde för mått.**
 

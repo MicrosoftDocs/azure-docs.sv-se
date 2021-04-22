@@ -7,16 +7,16 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/30/2020
-ms.openlocfilehash: b81d9b4a637965dd103d8fa89305424686a0c72c
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8086ce0e5964d4e37a5ffc3082d5f2856058e4e5
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107789923"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107875493"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Skriptexempel för Azure CLI – skapa en logikapp
 
-Det här skriptet skapar en exempellogikapp via [Azure CLI Logic Apps tillägget](/cli/azure/ext/logic/logic), ( `az logic` ). En detaljerad guide för att skapa och hantera logikappar via Azure CLI finns i [Logic Apps snabbstart för Azure CLI.](quickstart-logic-apps-azure-cli.md)
+Det här skriptet skapar en exempellogikapp via [Azure CLI Logic Apps tillägget](/cli/azure/logic), ( `az logic` ). En detaljerad guide för att skapa och hantera logikappar via Azure CLI finns i [Logic Apps snabbstart för Azure CLI.](quickstart-logic-apps-azure-cli.md)
 
 > [!WARNING]
 > Azure CLI Logic Apps tillägget är för närvarande *experimentellt* *och omfattas inte av kundsupporten.* Använd det här CLI-tillägget med försiktighet, särskilt om du väljer att använda tillägget i produktionsmiljöer.
@@ -140,7 +140,7 @@ Innan du kör exempelskriptet måste du först skapa en [exempelarbetsflödesdef
 
     1. Ersätt ytterligare information om anslutningsappen om du använder en annan e-postanslutningsapp än Office 365 Outlook-anslutningsappen.
 
-    1. Ersätt platshållarprenumerationens värden ( ) för `00000000-0000-0000-0000-000000000000` anslutningsidentifierarna ( och ) under anslutningsparametern `connectionId` ( ) med dina egna `id` `$connections` prenumerationsvärden.
+    1. Ersätt platshållarprenumerationens värden ( ) för anslutningsidentifierarna ( och `00000000-0000-0000-0000-000000000000` `connectionId` ) under `id` anslutningsparametern ( `$connections` ) med dina egna prenumerationsvärden.
 
 1. Spara ändringarna.
 
@@ -157,7 +157,7 @@ az login
 
 ```
 
-Gå sedan till katalogen där du skapade arbetsflödesdefinitionen. Om du till exempel har skapat JSON-filen för arbetsflödesdefinitionen på skrivbordet:
+Gå sedan till katalogen där du skapade arbetsflödesdefinitionen. Om du till exempel har skapat JSON-filen med arbetsflödesdefinitionen på skrivbordet:
 
 ```azurecli
 
@@ -165,7 +165,7 @@ cd ~/Desktop
 
 ```
 
-Kör sedan det här skriptet för att skapa en logikapp. 
+Kör sedan skriptet för att skapa en logikapp. 
 
 ```azurecli-interactive
 
@@ -183,7 +183,7 @@ az logic workflow create --resource-group "testResourceGroup" --location "westus
 
 ### <a name="clean-up-deployment"></a>Rensa distribution
 
-När du är klar med exempelskriptet kör du följande kommando för att ta bort resursgruppen och alla dess kapslade resurser, inklusive logikappen.
+När du har använt exempelskriptet kör du följande kommando för att ta bort resursgruppen och alla dess kapslade resurser, inklusive logikappen.
 
 ```azurecli-interactive
 
@@ -198,11 +198,11 @@ Det här exempelskriptet använder följande kommandon för att skapa en ny resu
 | Kommando | Kommentarer |
 | ------- | ----- |
 | [`az group create`](/cli/azure/group#az_group_create) | Skapar en resursgrupp där logikappens resurser lagras. |
-| [`az logic workflow create`](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-create) | Skapar en logikapp baserat på arbetsflödet som definierats i parametern `--definition` . |
+| [`az logic workflow create`](/cli/azure/logic/workflow#az_logic_workflow_create) | Skapar en logikapp baserat på arbetsflödet som definierats i parametern `--definition` . |
 | [`az group delete`](/cli/azure/vm/extension) | Tar bort en resursgrupp och alla dess kapslade resurser. |
 
 ## <a name="next-steps"></a>Nästa steg
 
 Mer information om Azure CLI finns i [Azure CLI-dokumentationen.](/cli/azure/)
 
-Du hittar fler Logic Apps CLI-skriptexempel i [Microsofts webbläsare för kodexempel.](/samples/browse/?products=azure-logic-apps)
+Du hittar ytterligare Logic Apps CLI-skriptexempel [i Microsofts webbläsare för kodexempel.](/samples/browse/?products=azure-logic-apps)

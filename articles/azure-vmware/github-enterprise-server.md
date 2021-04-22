@@ -1,109 +1,109 @@
 ---
-title: Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
-description: Lär dig hur du konfigurerar GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen.
+title: Konfigurera GitHub Enterprise Server på din Azure VMware Solution privata moln
+description: Lär dig hur du ställer in GitHub Enterprise Server på Azure VMware Solution privata molnet.
 ms.topic: how-to
 ms.date: 02/11/2021
-ms.openlocfilehash: 59a76c3976f6fcda88423b7b78344f2abed1ea84
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0ff7ab87d7401cd3faaecf149fb1b07be3f8db42
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100382029"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107862947"
 ---
-# <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Konfigurera GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen
+# <a name="set-up-github-enterprise-server-on-your-azure-vmware-solution-private-cloud"></a>Konfigurera GitHub Enterprise Server på din Azure VMware Solution privata moln
 
-I den här artikeln går vi igenom stegen för att konfigurera GitHub Enterprise Server, den lokala versionen av [GitHub.com](https://github.com/), i ditt privata moln i Azure VMware-lösningen. Scenariot är en GitHub Enterprise Server-instans som kan hantera upp till 3 000 utvecklare som kör upp till 25 jobb per minut på GitHub åtgärder. Den innehåller konfigurationen av (vid tidpunkten för skrivning) för *hands versions* funktioner, till exempel GitHub-åtgärder. Om du vill anpassa konfigurationen för dina specifika behov granskar du kraven som anges i [Installera GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
+I den här artikeln går vi igenom stegen för att konfigurera GitHub Enterprise Server, den "lokala" versionen [av GitHub.com](https://github.com/), i ditt Azure VMware Solution privata moln. Det scenario som vi ska ta upp är en GitHub Enterprise Server-instans som kan hjälpa upp till 3 000 utvecklare att köra upp till 25 jobb per minut på GitHub Actions. Den innehåller konfiguration av (när detta skrivs) *förhandsgranskningsfunktioner,* till exempel GitHub Actions. Om du vill anpassa konfigurationen för dina specifika behov granskar du kraven som anges [i Installera GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations).
 
 ## <a name="before-you-begin"></a>Innan du börjar
 
-GitHub Enterprise Server kräver en giltig licens nyckel. Du kan registrera dig för en [utvärderings licens](https://enterprise.github.com/trial). Om du vill utöka funktionerna i GitHub Enterprise Server via en integrering kan du kvalificera dig för en kostnads fri licens för webbaserade utvecklare. Ansök för den här licensen via [GitHub-partner program](https://partner.github.com/).
+GitHub Enterprise Server kräver en giltig licensnyckel. Du kan registrera dig för en [utvärderingslicens.](https://enterprise.github.com/trial) Om du vill utöka funktionerna i GitHub Enterprise Server via en integrering kan du kvalificera dig för en kostnadsfri utvecklarlicens med fem platser. Ansöka om den här licensen [via GitHubs partnerprogram](https://partner.github.com/).
 
 ## <a name="installing-github-enterprise-server-on-vmware"></a>Installera GitHub Enterprise Server på VMware
 
-Ladda ned [den aktuella versionen av GitHub Enterprise Server](https://enterprise.github.com/releases/2.19.0/download) för VMware ESXi/VSPHERE (ägg) och [distribuera den ägg-mall](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) som du laddade ned.
+Ladda [ned den aktuella versionen av GitHub Enterprise Server](https://enterprise.github.com/releases/2.19.0/download) för VMware ESXi/vSphere (OVA) och distribuera [OVA-mallen som](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.vsphere.vm_admin.doc/GUID-17BEDA21-43F6-41F4-8FB2-E01D275FE9B4.html) du laddade ned.
 
 :::image type="content" source="media/github-enterprise-server/github-options.png" alt-text="Välj att köra GitHub lokalt eller i molnet.":::  
 
-:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Distribuera mallen för ägg.":::  
+:::image type="content" source="media/github-enterprise-server/deploy-ova-template.png" alt-text="Distribuera OVA-mallen.":::  
 
-Ange ett identifierbart namn för din nya virtuella dator, till exempel GitHubEnterpriseServer. Du behöver inte inkludera versions informationen i namnet på den virtuella datorn eftersom informationen blir inaktuell när instansen uppgraderas. Välj alla standardvärden nu (vi redigerar informationen strax) och väntar på att de ägg som ska importeras.
+Ange ett identifierbart namn för den nya virtuella datorn, till exempel GitHubEnterpriseServer. Du behöver inte inkludera versionsinformation i namnet på den virtuella datorn eftersom informationen blir inaktuell när instansen uppgraderas. Välj alla standardvärden för tillfället (vi redigerar den här informationen snart) och vänta tills OVA har importerats.
 
-När du har importerat [justerar du maskin varu konfigurationen](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) utifrån dina behov. I vårt exempel scenario behöver vi följande konfiguration.
+När den har [importerats justerar du maskinvarukonfigurationen](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#creating-the-github-enterprise-server-instance) baserat på dina behov. I vårt exempelscenario behöver vi följande konfiguration.
 
-| Resurs | Standard konfiguration | Standard konfigurera + "beta funktioner" (åtgärder) |
+| Resurs | Standardinstallation | Standard set up + "Beta Features" (Åtgärder) |
 | --- | --- | --- |
 | Virtuella processorer | 4 | 8 |
 | Minne | 32 GB | 61 GB |
-| Bifogad lagring | 250 GB | 300 GB |
-| Rot lagring | 200 GB | 200 GB |
+| Ansluten lagring | 250 GB | 300 GB |
+| Rotlagring | 200 GB | 200 GB |
 
-Dina behov kan dock variera. Läs rikt linjerna för maskin varu överväganden vid [installation av GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations). Se även [lägga till processor-eller minnes resurser för VMware](https://docs.github.com/en/enterprise/admin/enterprise-management/increasing-cpu-or-memory-resources#adding-cpu-or-memory-resources-for-vmware) för att anpassa maskin varu konfigurationen utifrån din situation.
+Dina behov kan dock variera. Se vägledningen om maskinvaruöverväganden [i Installera GitHub Enterprise Server på VMware](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#hardware-considerations). Se även [Lägga till PROCESSOR- eller minnesresurser för VMware](https://docs.github.com/en/enterprise/admin/enterprise-management/increasing-cpu-or-memory-resources#adding-cpu-or-memory-resources-for-vmware) för att anpassa maskinvarukonfigurationen baserat på din situation.
 
 ## <a name="configuring-the-github-enterprise-server-instance"></a>Konfigurera GitHub Enterprise Server-instansen
 
 :::image type="content" source="media/github-enterprise-server/install-github-enterprise.png" alt-text="Installera GitHub Enterprise.":::  
 
-När den nyligen etablerade virtuella datorn (VM) har påbörjats [konfigurerar du den via din webbläsare](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance). Du måste ladda upp licens filen och ange ett lösen ord för hanterings konsolen. Se till att skriva ned det här lösen ordet någonstans säkert.
+När den nyligen etablerade virtuella datorn (VM) har etablerats [konfigurerar du den via webbläsaren](https://docs.github.com/en/enterprise/admin/installation/installing-github-enterprise-server-on-vmware#configuring-the-github-enterprise-server-instance). Du måste ladda upp licensfilen och ange ett lösenord för hanteringskonsolen. Se till att skriva ned lösenordet på en säker plats.
 
-:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Få åtkomst till admin Shell via SSH.":::    
+:::image type="content" source="media/github-enterprise-server/ssh-access.png" alt-text="Få åtkomst till administrationsgränssnittet via SSH.":::    
 
-Vi rekommenderar att du vidtar minst följande steg:
+Vi rekommenderar att du åtminstone gör följande:
 
-1. Ladda upp en offentlig SSH-nyckel till hanterings konsolen så att du kan [komma åt det administrativa gränssnittet via SSH](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh). 
+1. Ladda upp en offentlig SSH-nyckel till hanteringskonsolen så att du kan [komma åt det administrativa gränssnittet via SSH](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh). 
 
-2. [Konfigurera TLS på din instans](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) så att du kan använda ett certifikat som har signerats av en betrodd certifikat utfärdare.
+2. [Konfigurera TLS på din instans så](https://docs.github.com/en/enterprise/admin/configuration/configuring-tls) att du kan använda ett certifikat som signerats av en betrodd certifikatutfärdare.
 
-:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Konfigurerar din instans.":::
+:::image type="content" source="media/github-enterprise-server/configuring-your-instance.png" alt-text="Konfigurera din instans.":::
 
-Använd dina inställningar.  När instansen startas om kan du fortsätta med nästa steg, **konfigurera Blob Storage för GitHub-åtgärder**.
+Tillämpa dina inställningar.  När instansen startas om kan du fortsätta med nästa steg, **Konfigurera Blob Storage för GitHub Actions**.
 
-:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Skapa ditt administratörs konto.":::
+:::image type="content" source="media/github-enterprise-server/create-admin-account.png" alt-text="Skapa ditt administratörskonto.":::
 
-När instansen har startats om kan du skapa ett nytt administratörs konto på instansen. Glöm inte att anteckna den här användarens lösen ord.
+När instansen har startats om kan du skapa ett nytt administratörskonto på instansen. Se även till att anteckna den här användarens lösenord.
 
-### <a name="other-configuration-steps"></a>Andra konfigurations steg
+### <a name="other-configuration-steps"></a>Andra konfigurationssteg
 
-Följande valfria installations steg rekommenderas för att förstärka din instans för produktions användning:
+Följande valfria konfigurationssteg rekommenderas för att härda din instans för produktionsanvändning:
 
 1. Konfigurera [hög tillgänglighet](https://help.github.com/enterprise/admin/guides/installation/configuring-github-enterprise-for-high-availability/) för skydd mot:
 
-    - Program krascher (OS eller program nivå)
-    - Maskin varu problem (lagring, CPU, RAM-minne och så vidare)
-    - Systemfel för Virtualiseringsvärd
-    - Logiskt eller fysiskt allvarligt nätverk
+    - Programvarukrasch (operativsystem- eller programnivå)
+    - Maskinvarufel (lagring, CPU, RAM och så vidare)
+    - Systemfel för virtualiseringsvärdar
+    - Logiskt eller fysiskt avsade nätverk
 
-2. [Konfigurera](https://docs.github.com/en/enterprise/admin/configuration/configuring-backups-on-your-appliance) [säkerhets kopiering – verktyg](https://github.com/github/backup-utils)som tillhandahåller versioner av ögonblicks bilder för haveri beredskap och som är i tillgänglighet som är åtskilda från den primära instansen.
-3. [Konfigurera under domän isolering](https://docs.github.com/en/enterprise/admin/configuration/enabling-subdomain-isolation)med ett giltigt TLS-certifikat, för att minimera skript körning av flera webbplatser och andra relaterade sårbarheter.
+2. [Konfigurera](https://docs.github.com/en/enterprise/admin/configuration/configuring-backups-on-your-appliance) [säkerhetskopieringsverktyg, som](https://github.com/github/backup-utils)tillhandahåller versionsögonblicksbilder för haveriberedskap med tillgänglighet som är separat från den primära instansen.
+3. [Konfigurera underdomänisolering med](https://docs.github.com/en/enterprise/admin/configuration/enabling-subdomain-isolation)hjälp av ett giltigt TLS-certifikat för att minimera skriptning mellan webbplatser och andra relaterade säkerhetsrisker.
 
-## <a name="configuring-blob-storage-for-github-actions"></a>Konfigurera Blob Storage för GitHub-åtgärder
-
-> [!NOTE]
-> GitHub-åtgärder är [för närvarande tillgängliga som en begränsad beta version på GitHub Enterprise Server version 2,22](https://docs.github.com/en/enterprise/admin/github-actions).
-
-Extern blob-lagring krävs för att aktivera GitHub-åtgärder på GitHub Enterprise Server (som för närvarande är tillgänglig som en beta funktion). Den här externa blob-lagringen används av åtgärder för att lagra artefakter och loggar. Åtgärder på GitHub Enterprise Server [har stöd för Azure Blob Storage som en lagrings leverantör](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (och andra). Vi etablerar ett nytt Azure Storage-konto med [lagrings konto typen](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage:
-
-:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Etablera Azure Blob Storage-konto.":::
-
-När distributionen av den nya BlobStorage-resursen har slutförts, kopiera och anteckna anslutnings strängen (tillgänglig under åtkomst nycklar). Vi behöver den här strängen inom kort.
-
-## <a name="setting-up-the-github-actions-runner"></a>Konfigurera GitHub-åtgärds löpare
+## <a name="configuring-blob-storage-for-github-actions"></a>Konfigurera bloblagring för GitHub Actions
 
 > [!NOTE]
-> GitHub-åtgärder är [för närvarande tillgängliga som en begränsad beta version på GitHub Enterprise Server version 2,22](https://docs.github.com/en/enterprise/admin/github-actions).
+> GitHub Actions är [för närvarande tillgänglig som en begränsad betaversion på GitHub Enterprise Server version 2.22.](https://docs.github.com/en/enterprise/admin/github-actions)
 
-Nu bör du ha en instans av GitHub Enterprise Server som kör med ett administratörs konto som skapats. Du bör också ha en extern blob-lagring som GitHub-åtgärder kommer att använda för persistence.
+Extern bloblagring krävs för att aktivera GitHub Actions på GitHub Enterprise Server (för närvarande tillgänglig som en "beta"-funktion). Den här externa bloblagringen används av Åtgärder för att lagra artefakter och loggar. Åtgärder på GitHub Enterprise Server [stöder Azure Blob Storage som lagringsprovider](https://docs.github.com/en/enterprise/admin/github-actions/enabling-github-actions-and-configuring-storage#about-external-storage-requirements) (och vissa andra). Därför etablerar vi ett nytt Azure Storage-konto med [lagringskontotypen](../storage/common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#types-of-storage-accounts) BlobStorage:
 
-Nu ska vi skapa någonstans för att GitHub åtgärder ska kunna köras; Vi använder Azure VMware-lösningen igen.
+:::image type="content" source="media/github-enterprise-server/storage-account.png" alt-text="Etablera Azure Blob Storage konto.":::
 
-Först ska vi etablera en ny virtuell dator i klustret. Vi kommer att basera vår virtuella dator på [en ny version av Ubuntu-servern](http://releases.ubuntu.com/20.04.1/).
+När distributionen av den nya BlobStorage-resursen har slutförts kopierar du och anteckningen av anslutningssträngen (tillgänglig under Åtkomstnycklar). Vi behöver den här strängen inom kort.
+
+## <a name="setting-up-the-github-actions-runner"></a>Konfigurera GitHub Actions start
+
+> [!NOTE]
+> GitHub Actions är [för närvarande tillgänglig som en begränsad betaversion på GitHub Enterprise Server version 2.22.](https://docs.github.com/en/enterprise/admin/github-actions)
+
+Nu bör du ha en instans av GitHub Enterprise Server som körs, med ett administratörskonto skapat. Du bör också ha extern bloblagring som GitHub Actions för beständighet.
+
+Nu ska vi skapa någonstans där GitHub Actions ska köras. igen använder vi Azure VMware Solution.
+
+Först etablerar vi en ny virtuell dator i klustret. Vi baserar den virtuella datorn på [en nyligen genomförd version av Ubuntu Server](http://releases.ubuntu.com/20.04.1/).
 
 :::image type="content" source="media/github-enterprise-server/provision-new-vm.png" alt-text="Etablera en ny virtuell dator.":::
 
-:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Etablera en ny VM steg 2.":::
+:::image type="content" source="media/github-enterprise-server/provision-new-vm-2.png" alt-text="Etablera en ny virtuell dator steg 2.":::
 
 När den virtuella datorn har skapats kan du starta den och ansluta till den via SSH.
 
-Sedan installerar [du åtgärden löpare](https://github.com/actions/runner) , som kör ett jobb från ett arbets flöde för GitHub-åtgärder. Identifiera och hämta den mest aktuella linux x64-versionen av åtgärds utlöpareen, antingen från [sidan versioner](https://github.com/actions/runner/releases) eller genom att köra följande snabb skript. Det här skriptet kräver att både sväng-och [JQ](https://stedolan.github.io/jq/) finns på den virtuella datorn.
+Installera sedan programmet [Actions runner,](https://github.com/actions/runner) som kör ett jobb från ett GitHub Actions arbetsflöde. Identifiera och ladda ned den senaste versionen av Actions-körningen för Linux x64, antingen från sidan [med](https://github.com/actions/runner/releases) versioner eller genom att köra följande snabbskript. Det här skriptet kräver att både curl [och jq](https://stedolan.github.io/jq/) finns på den virtuella datorn.
 
 `LATEST\_RELEASE\_ASSET\_URL=$( curl https://api.github.com/repos/actions/runner/releases/latest | \`
 
@@ -115,18 +115,18 @@ Sedan installerar [du åtgärden löpare](https://github.com/actions/runner) , s
 
 `curl -OL $DOWNLOAD\_URL`
 
-Nu bör du ha en fil lokalt på den virtuella datorn, Actions-löpare-Linux-arm64- \* . tar. gz. Extrahera den här tarball lokalt:
+Nu bör du ha en fil lokalt på den virtuella datorn, actions-runner-linux-arm64- \* .tar.gz. Extrahera denna tarball lokalt:
 
 `tar xzf actions-runner-linux-arm64-\*.tar.gz`
 
-Den här extraheringen packar upp några filer lokalt, inklusive ett `config.sh` och `run.sh` skript, som vi kommer tillbaka till kort.
+Den här extraheringen packar upp några filer lokalt, inklusive ett `config.sh` - och -skript, som vi snart ska gå tillbaka `run.sh` till.
 
-## <a name="enabling-github-actions"></a>Aktivera GitHub-åtgärder
+## <a name="enabling-github-actions"></a>Aktivera GitHub Actions
 
 > [!NOTE]
-> GitHub-åtgärder är [för närvarande tillgängliga som en begränsad beta version på GitHub Enterprise Server version 2,22](https://docs.github.com/en/enterprise/admin/github-actions).
+> GitHub Actions är [för närvarande tillgänglig som en begränsad betaversion på GitHub Enterprise Server version 2.22.](https://docs.github.com/en/enterprise/admin/github-actions)
 
-Nästan där! Vi konfigurerar och aktiverar GitHub-åtgärder på GitHub Enterprise Server-instansen. Vi behöver åtkomst till [GitHub Enterprise Server-instansens administrativa gränssnitt via SSH](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh)och kör sedan följande kommandon:
+Nästan där! Nu ska vi konfigurera och aktivera GitHub Actions på GitHub Enterprise Server-instansen. Vi behöver komma åt [GitHub Enterprise Server-instansens administrativa gränssnitt via SSH](https://docs.github.com/en/enterprise/admin/configuration/accessing-the-administrative-shell-ssh)och sedan köra följande kommandon:
 
 `# set an environment variable containing your Blob storage connection string`
 
@@ -158,77 +158,77 @@ Nästa körning:
 
 Du bör se utdata: "Blob Storage är felfri".
 
-Nu när GitHub-åtgärder har kon figurer ATS kan du aktivera det för dina användare. Logga in på din GitHub Enterprise Server-instans som administratör och välj Rocket- ![ ikonen.](media/github-enterprise-server/rocket-icon.png) i det övre högra hörnet på en sida. I den vänstra sid panelen väljer du **företags översikt**, sedan **principer**, **åtgärder** och väljer alternativet för att **Aktivera åtgärder för alla organisationer**.
+Nu när GitHub Actions har konfigurerats aktiverar du det för dina användare. Logga in på din GitHub Enterprise Server-instans som administratör och välj ![ raketikonen.](media/github-enterprise-server/rocket-icon.png) i det övre högra hörnet på valfri sida. I den vänstra sidopanelen väljer **du Företagsöversikt** och **sedan Principer,** **Åtgärder** och sedan alternativet för att aktivera Åtgärder för **alla organisationer.**
 
-Konfigurera sedan din löpare från fliken **egna värdar** . Välj **Lägg till ny** och sedan **ny löpare** i list rutan.
+Konfigurera sedan din löpning **från fliken Med egen** värd. Välj **Lägg till** ny och sedan **Ny** löpning i listrutan.
 
-På nästa sida visas en uppsättning kommandon som ska köras, vi behöver bara kopiera kommandot för att **Konfigurera** löpare, till exempel:
+På nästa sida visas en uppsättning kommandon som ska köras. Vi behöver bara  kopiera kommandot för att konfigurera körningen, till exempel:
 
 `./config.sh --url https://10.1.1.26/enterprises/octo-org --token AAAAAA5RHF34QLYBDCHWLJC7L73MA`
 
-Kopiera `config.sh` kommandot och klistra in det i en session på din åtgärds löpare (skapad tidigare).
+Kopiera kommandot `config.sh` och klistra in det i en session i ditt Actions-löpning (skapat tidigare).
 
-:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Åtgärds löpare.":::
+:::image type="content" source="media/github-enterprise-server/actions-runner.png" alt-text="Åtgärds runner.":::
 
-Använd kommandot run.sh för att *köra* löpare:
+Använd kommandot run.sh för att *köra* körningskörningen:
 
-:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Kör löpare.":::
+:::image type="content" source="media/github-enterprise-server/run-runner.png" alt-text="Kör körningen.":::
 
-Om du vill göra den här utlöpareen tillgänglig för organisationer i företaget redigerar du dess organisations åtkomst:
+Om du vill göra det här löpet tillgängligt för organisationer i företaget redigerar du dess organisationsåtkomst:
 
-:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Redigera löpare-åtkomst.":::
+:::image type="content" source="media/github-enterprise-server/edit-runner-access.png" alt-text="Redigera åtkomst till löpning.":::
 
-Här kommer vi att göra den tillgänglig för alla organisationer, men du kan begränsa åtkomsten till en delmängd organisationer och till och med vissa databaser.
+Här gör vi den tillgänglig för alla organisationer, men du kan begränsa åtkomsten till en delmängd av organisationer och till och med till specifika lagringsplatsen.
 
-## <a name="optional-configuring-github-connect"></a>Valfritt Konfigurera GitHub Connect
+## <a name="optional-configuring-github-connect"></a>(Valfritt) Konfigurera GitHub Connect
 
-Även om det här steget är valfritt rekommenderar vi det om du planerar att använda åtgärder med öppen källkod som finns på GitHub.com. Det gör att du kan bygga vidare på arbetet med andra genom att referera till dessa återanvändbara åtgärder i dina arbets flöden.
+Även om det här steget är valfritt rekommenderar vi det om du planerar att använda åtgärder med öppen källkod som är GitHub.com. Det gör att du kan bygga vidare på andras arbete genom att referera till dessa återanvändbara åtgärder i dina arbetsflöden.
 
-Om du vill aktivera GitHub Connect följer du stegen i [Aktivera automatisk åtkomst till GitHub.com-åtgärder med GitHub Connect](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect).
+Om du vill aktivera GitHub Connect följer du stegen i [Aktivera automatisk åtkomst till GitHub.com åtgärder med GitHub Connect](https://docs.github.com/en/enterprise/admin/github-actions/enabling-automatic-access-to-githubcom-actions-using-github-connect).
 
-När GitHub Connect har Aktiver ATS väljer du alternativet **Server för att använda åtgärder från GitHub.com i arbets flödets körnings** alternativ.
+När GitHub Connect är aktiverat väljer du den **server som ska använda åtgärder GitHub.com i arbetsflödeskörningar.**
 
-:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="Aktivera med åtgärder från GitHub.com i arbets flödes körningar.":::
+:::image type="content" source="media/github-enterprise-server/enable-using-actions.png" alt-text="Aktivera med åtgärder från GitHub.com i arbetsflödeskörningar.":::
 
-## <a name="setting-up-and-running-your-first-workflow"></a>Konfigurera och köra ditt första arbets flöde
+## <a name="setting-up-and-running-your-first-workflow"></a>Konfigurera och köra ditt första arbetsflöde
 
-Nu när åtgärderna och GitHub Connect har kon figurer ATS är det dags att börja med allt detta arbete. Här är ett exempel på ett arbets flöde som refererar till den utmärkta [octokit/begäran-åtgärden](https://github.com/octokit/request-action), så att vi kan "skriva" skript "GitHub via interaktioner med hjälp av GITHUB-API, som drivs av GitHub åtgärder.
+Nu när Actions och GitHub Connect har ställts in ska vi använda allt det här arbetet på ett bra sätt. Här är ett exempelarbetsflöde som refererar till utmärkt [octokit/request-action](https://github.com/octokit/request-action)så att vi kan "skripta" GitHub via interaktioner med GitHub-API:et, som drivs av GitHub Actions.
 
-I det här grundläggande arbets flödet kommer vi `octokit/request-action` att använda för att bara öppna ett problem på GitHub med hjälp av API: et.
+I det här grundläggande arbetsflödet använder vi för `octokit/request-action` att bara öppna ett ärende på GitHub med hjälp av API:et.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Exempel arbets flöde.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example.png" alt-text="Exempelarbetsflöde.":::
 
 >[!NOTE]
->GitHub.com är värd för åtgärden, men när den körs på GitHub Enterprise Server använder den *automatiskt* GitHub Enterprise Server-API: et.
+>GitHub.com är värd för åtgärden, men när den körs på GitHub Enterprise Server använder *den* automatiskt GitHub Enterprise Server-API:et.
 
-Om du väljer att inte aktivera GitHub Connect kan du använda följande alternativa arbets flöde.
+Om du väljer att inte aktivera GitHub Connect kan du använda följande alternativa arbetsflöde.
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Alternativt exempel arbets flöde.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-2.png" alt-text="Alternativt exempelarbetsflöde.":::
 
-Navigera till en lagrings platsen på din instans och Lägg till arbets flödet ovan som: `.github/workflows/hello-world.yml`
+Gå till en lagringsplatsen på din instans och lägg till arbetsflödet ovan som: `.github/workflows/hello-world.yml`
 
-:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Ett annat exempel på ett arbets flöde.":::
+:::image type="content" source="media/github-enterprise-server/workflow-example-3.png" alt-text="Ett annat exempelarbetsflöde.":::
 
-På fliken **åtgärder** för din lagrings platsen väntar du på att arbets flödet ska köras.
+På fliken **Åtgärder** för lagringsplatsen väntar du tills arbetsflödet har körts.
 
-:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Utfört exempel arbets flöde.":::
+:::image type="content" source="media/github-enterprise-server/executed-example-workflow.png" alt-text="Kör exempelarbetsflöde.":::
 
-Du kan också se att den bearbetas av löpare.
+Du kan också se när den bearbetas av löpning.
 
-:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Arbets flöde som bearbetas av löpare.":::
+:::image type="content" source="media/github-enterprise-server/workflow-processed-by-runner.png" alt-text="Arbetsflöde som bearbetas av runner.":::
 
-Om allt har körts utan problem bör du se ett nytt ärende i din lagrings platsen, med titeln "Hello World".
+Om allt har körts korrekt bör du se ett nytt problem i lagringsplatsen med titeln "Hello world".
 
-:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Exempel i lagrings platsen.":::
+:::image type="content" source="media/github-enterprise-server/example-in-repo.png" alt-text="Exempel i lagringsplatsen.":::
 
-Grattis! Du har precis slutfört ditt första åtgärds arbets flöde på GitHub Enterprise Server, som körs på ditt privata moln i Azure VMware-lösningen.
+Grattis! Du har precis slutfört ditt första Actions-arbetsflöde på GitHub Enterprise Server, som körs Azure VMware Solution privata molnet.
 
-I den här artikeln ställer vi in en ny instans av GitHub Enterprise Server, som är den GitHub.com som är egen värd, ovanpå ditt privata moln i Azure VMware-lösningen. Den här instansen innehåller stöd för GitHub-åtgärder och använder Azure Blob Storage för att beständige loggar och artefakter. Men vi skapar bara ytan på vad du kan göra med GitHub-åtgärder. Kolla in listan med åtgärder på [GitHubs Marketplace](https://github.com/marketplace)eller [skapa en egen](https://docs.github.com/en/actions/creating-actions).
+I den här artikeln ska vi konfigurera en ny instans av GitHub Enterprise Server, den egenvärdbaserade motsvarigheten till GitHub.com, ovanpå ditt Azure VMware Solution privata moln. Den här instansen har stöd för GitHub Actions och använder Azure Blob Storage för beständighet av loggar och artefakter. Men vi håller bara på att repa ytan av vad du kan göra med GitHub Actions. Kolla in listan över åtgärder på [GitHub Marketplace](https://github.com/marketplace)eller [skapa en egen](https://docs.github.com/en/actions/creating-actions).
 
 ## <a name="next-steps"></a>Nästa steg
 
-Nu när du har täckt GitHub Enterprise Server i ditt privata moln i Azure VMware-lösningen kanske du vill lära dig mer om: 
+Nu när du har gått in på att konfigurera GitHub Enterprise Server Azure VMware Solution privata molnet kanske du vill veta mer om: 
 
-- [Komma igång med GitHub-åtgärder](https://docs.github.com/en/actions).
-- [Delta i beta programmet](https://resources.github.com/beta-signup/).
-- [Administration av GitHub Enterprise Server](https://githubtraining.github.io/admin-training/#/00_getting_started).
+- [Så här kommer du igång med GitHub Actions](https://docs.github.com/en/actions)
+- [Så här går du med i betaprogrammet](https://resources.github.com/beta-signup/)
+- [Administration av GitHub Enterprise Server](https://githubtraining.github.io/admin-training/#/00_getting_started)

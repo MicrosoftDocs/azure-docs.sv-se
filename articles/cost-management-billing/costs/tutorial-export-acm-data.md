@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: af050ae95b4ab161028229299a8de5ed3426430b
-ms.sourcegitcommit: afb79a35e687a91270973990ff111ef90634f142
+ms.openlocfilehash: 08bf165254c8759a978b406b3e9a990a41ab7a30
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/14/2021
-ms.locfileid: "107482841"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107873222"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Självstudier: Skapa och hantera exporterade data
 
@@ -63,9 +63,9 @@ Om du vill skapa eller visa en dataexport, eller om du vill schemalägga en expo
     - **Verklig kostnad (användning och inköp)** – välj för att exportera standardanvändning och standardinköp
     - **Periodiserad kostnad (användning och inköp)** – välj för att exportera periodiserade kostnader för inköp som Azure-reservationer
 1. Välj **Exporttyp**:
-    - **Daglig export av kostnader hittills under** månaden â –" Tillhandahåller en ny exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter.
-    - **Veckovis export av kostnader för** de senaste sju dagarna â –" Skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.
-    - **Månatlig export av förra månadens** kostnader â –" Ger dig en export av den senaste månadens kostnader jämfört med den aktuella månaden då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.
+    - **Daglig export av kostnader hittills under månaden** â..."" Tillhandahåller en ny exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter.
+    - **Veckovis export av kostnader för de** senaste sju dagarna– Skapar en veckovis export av dina kostnader under de senaste sju dagarna från det valda startdatumet för exporten.
+    - **Månatlig export av förra månadens** kostnader â –" Ger dig en export av den senaste månadens kostnader jämfört med den aktuella månad då du skapar exporten. Om vi ser framåt kör schemat en export den femte dagen i varje ny månad med kostnaderna för den senaste månaden.
     - **One-time export** â..."" Gör att du kan välja ett datumintervall för historiska data som ska exporteras till Azure Blob Storage. Du kan exportera högst 90 dagars historiska kostnader från den dag du väljer. Den här exporten körs omedelbart och är tillgänglig i ditt lagringskonto inom två timmar.
         Beroende på exporttyp väljer du antingen ett startdatum eller väljer datum för **Från** och **Till**.
 1. Ange prenumerationen för ditt Azure Storage-konto och välj sedan en resursgrupp eller skapa en ny resursgrupp.
@@ -81,13 +81,13 @@ Först kan det ta 12–24 timmar innan exporten körs. Men det kan ta längre ti
 
 ### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-När du skapar en export programmässigt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
+När du skapar en export programmatiskt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Börja med att förbereda din miljö för Azure CLI:
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-1. När du har loggat in kan du visa dina befintliga exporter genom att köra kommandot [az costmanagement export list](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_list):
+1. När du har loggat in kan du visa dina befintliga exporter genom att köra kommandot [az costmanagement export list](/cli/azure/costmanagement/export#az_costmanagement_export_list):
 
    ```azurecli
    az costmanagement export list --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -110,7 +110,7 @@ Börja med att förbereda din miljö för Azure CLI:
    az storage account create --resource-group TreyNetwork --name cmdemo
    ```
 
-1. Skapa rapporten genom att köra kommandot [az costmanagement export create](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_create):
+1. Skapa rapporten genom att köra kommandot [az costmanagement export create](/cli/azure/costmanagement/export#az_costmanagement_export_create):
 
    ```azurecli
    az costmanagement export create --name DemoExport --type ActualCost \
@@ -124,14 +124,14 @@ Börja med att förbereda din miljö för Azure CLI:
 
    I det här exemplet används `MonthToDate`. Exporten skapar en exportfil varje dag för dina kostnader hittills under månaden. Den senaste informationen sammanställs från tidigare dagliga exporter under månaden.
 
-1. Du kan visa information om exportåtgärden med hjälp av kommandot [az costmanagement export show](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_show):
+1. Du kan visa information om exportåtgärden med hjälp av kommandot [az costmanagement export show](/cli/azure/costmanagement/export#az_costmanagement_export_show):
 
    ```azurecli
    az costmanagement export show --name DemoExport \
       --scope "subscriptions/00000000-0000-0000-0000-000000000000"
    ```
 
-1. Du kan uppdatera en export med hjälp av kommandot [az costmanagement export update](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_update):
+1. Du kan uppdatera en export med hjälp av kommandot [az costmanagement export update](/cli/azure/costmanagement/export#az_costmanagement_export_update):
 
    ```azurecli
    az costmanagement export update --name DemoExport
@@ -143,7 +143,7 @@ Börja med att förbereda din miljö för Azure CLI:
 >[!NOTE]
 >Först kan det ta 12–24 timmar innan exporten körs. Men det kan ta längre tid innan data visas i de exporterade filerna.
 
-Du kan ta bort en export med hjälp av kommandot [az costmanagement export delete](/cli/azure/ext/costmanagement/costmanagement/export#ext_costmanagement_az_costmanagement_export_delete):
+Du kan ta bort en export med hjälp av kommandot [az costmanagement export delete](/cli/azure/costmanagement/export#az_costmanagement_export_delete):
 
 ```azurecli
 az costmanagement export delete --name DemoExport --scope "subscriptions/00000000-0000-0000-0000-000000000000"
@@ -151,7 +151,7 @@ az costmanagement export delete --name DemoExport --scope "subscriptions/0000000
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
-När du skapar en export programmässigt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
+När du skapar en export programmatiskt måste du manuellt registrera `Microsoft.CostManagementExports` resursprovidern med prenumerationen där lagringskontot finns. Registreringen sker automatiskt när du skapar exporten med hjälp av Azure Portal. Mer information om hur du registrerar resursproviders finns i [Registrera resursprovider.](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider)
 
 Börja med att förbereda din miljö för Azure PowerShell:
 
