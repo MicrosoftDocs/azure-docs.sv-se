@@ -8,32 +8,32 @@ ms.topic: include
 ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 4b708e80bf335ba8bdce074285857a6f8b77b972
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6e819e1078ac90ef16070702e7961122b06c1d6f
+ms.sourcegitcommit: 3c460886f53a84ae104d8a09d94acb3444a23cdc
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103439197"
+ms.lasthandoff: 04/21/2021
+ms.locfileid: "107879852"
 ---
-I för hands versionen har NFS följande begränsningar:
+I förhandsversionen har NFS följande begränsningar:
 
-- NFS 4,1 stöder för närvarande bara de flesta funktioner från [protokoll specifikationen](https://tools.ietf.org/html/rfc5661). Vissa funktioner som delegering och motringning av alla typer, Lås uppgraderingar och nedgradering, Kerberos-autentisering och kryptering stöds inte.
-- Om de flesta av dina begär Anden är metadata-koncentriska kommer svars tiden att bli sämre vid jämförelse med Läs-/skriv-/uppdaterings åtgärder.
-- Du måste skapa ett nytt lagrings konto för att kunna skapa en NFS-resurs.
-- Endast hanterings planens REST-API: er stöds. REST-API: er för data plan är inte tillgängliga, vilket innebär att verktyg som Storage Explorer inte fungerar med NFS-resurser eller att du inte kan bläddra i NFS dela data i Azure Portal.
+- NFS 4.1 stöder för närvarande endast de flesta funktioner från [protokollspecifikationen](https://tools.ietf.org/html/rfc5661). Vissa funktioner, till exempel delegeringar och återanrop av alla typer, låsuppgraderingar och nedgradering, Kerberos-autentisering och kryptering stöds inte.
+- Om de flesta av dina begäranden är metadatacentrerade blir svarstiden sämre jämfört med läs-/skriv-/uppdateringsåtgärder.
+- NFS-resurser kan bara aktiveras/skapas på nya lagringskonto/s och inte på befintliga
+- Endast hanteringsplanets REST API:er stöds. REST-API:er för dataplanet är inte tillgängliga, vilket innebär att verktyg som Storage Explorer inte fungerar med NFS-resurser och inte heller kan bläddra bland NFS-resursdata i Azure Portal.
 - AzCopy stöds inte för närvarande.
 - Endast tillgängligt för Premium-nivån.
-- NFS-resurser accepterar bara numeriskt UID/GID. För att undvika att klienter skickar alfanumeriska UID/GID bör du inaktivera ID-mappning.
-- Resurser kan bara monteras från ett lagrings konto på en enskild virtuell dator, när privata länkar används. Försök att montera resurser från andra lagrings konton kommer att Miss lyckas.
-- Det är bäst att förlita dig på de behörigheter som tilldelats den primära gruppen. Ibland kan behörigheter som allokerats till den icke-primära gruppen av användaren leda till åtkomst nekas på grund av ett känt fel.
+- NFS-resurser accepterar endast numerisk UID/GID. För att undvika att klienter skickar alfanumeriska UID/GID bör du inaktivera ID-mappning.
+- Resurser kan bara monteras från ett lagringskonto på en enskild virtuell dator när du använder privata länkar. Det går inte att montera resurser från andra lagringskonton.
+- Det är bäst att förlita sig på de behörigheter som tilldelats till den primära gruppen. Ibland kan behörigheter som allokerats till användarens icke-primära grupp resultera i åtkomst nekad på grund av en känd bugg.
 
-### <a name="azure-storage-features-not-yet-supported"></a>Azure Storage funktioner som ännu inte stöds
+### <a name="azure-storage-features-not-yet-supported"></a>Azure Storage funktioner som inte stöds ännu
 
-Dessutom är följande Azure Files funktioner inte tillgängliga med NFS-resurser:
+Dessutom är följande Azure Files tillgängliga med NFS-resurser:
 
-- Identitets baserad autentisering
+- Identitetsbaserad autentisering
 - Azure Backup support
 - Ögonblicksbilder
 - Mjuk borttagning
-- Fullständig stöd för kryptering under överföring (mer information finns i [NFS-säkerhet](../articles/storage/files/storage-files-compare-protocols.md#security))
-- Azure File Sync (endast tillgängligt för Windows-klienter som NFS 4,1 inte stöder)
+- Fullständigt stöd för kryptering under överföring (mer information finns i [NFS-säkerhet](../articles/storage/files/storage-files-compare-protocols.md#security))
+- Azure File Sync (endast tillgängligt för Windows-klienter som NFS 4.1 inte stöder)

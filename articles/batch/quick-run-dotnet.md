@@ -1,15 +1,15 @@
 ---
-title: 'Snabb start – kör ditt första Azure Batch-jobb med .NET-API: et'
-description: I den här snabb starten kör du ett Azure Batch exempel jobb och uppgifter från ett C#-program med batch .NET-klient biblioteket.
+title: Snabbstart – Kör ditt första Azure Batch jobb med .NET-API:et
+description: I den här snabbstarten kör du ett Azure Batch jobb och uppgifter från ett C#-program med Batch .NET-klientbiblioteket.
 ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 48166faa016defb719d8b48c2fff84de32f6c2e4
-ms.sourcegitcommit: d23602c57d797fb89a470288fcf94c63546b1314
+ms.openlocfilehash: 1c2328db520042ceff1861b740313befbed0e20d
+ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
 ms.translationtype: MT
 ms.contentlocale: sv-SE
-ms.lasthandoff: 04/01/2021
-ms.locfileid: "106168254"
+ms.lasthandoff: 04/22/2021
+ms.locfileid: "107876732"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Snabbstart: Kör ditt första Azure Batch-jobb med .NET-API
 
@@ -17,15 +17,15 @@ Kom igång med Azure Batch genom att köra ett jobb från ett C#-program som byg
 
 När du har slutfört den här snabbstarten kommer du att förstå huvudbegreppen för Batch-tjänsten och vara redo att testa Batch med mer realistiska arbetsbelastningar i större skala.
 
-![Diagram som visar en översikt över arbets flödet för Azure Batch app.](./media/quick-run-dotnet/sampleapp.png)
+![Diagram som visar en översikt över Azure Batch apparbetsflöde.](./media/quick-run-dotnet/sampleapp.png)
 
 ## <a name="prerequisites"></a>Förutsättningar
 
-- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto kostnads fritt](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+- Ett Azure-konto med en aktiv prenumeration. [Skapa ett konto utan kostnad.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 
 - Ett Batch-konto och ett länkat Azure Storage-konto. Information om hur du skapar de här kontona finns Batch-snabbstarterna som du kommer åt via [Azure-portalen](quick-create-portal.md) eller [Azure CLI](quick-create-cli.md).
 
-- [Visual Studio 2017 eller senare](https://www.visualstudio.com/vs), eller [.net Core 2,1](https://www.microsoft.com/net/download/dotnet-core/2.1) för Linux, MacOS eller Windows. 
+- [Visual Studio 2017](https://www.visualstudio.com/vs)eller senare, eller [.NET Core 2.1 SDK](https://dotnet.microsoft.com/download/dotnet/2.1) för Linux, macOS eller Windows. 
 
 ## <a name="sign-in-to-azure"></a>Logga in på Azure
 
@@ -62,11 +62,11 @@ private const string StorageAccountKey  = "xxxxxxxxxxxxxxxxy4/xxxxxxxxxxxxxxxxfw
 
 Om du vill se Batch-arbetsflödet i praktiken skapar och kör du programmet i Visual Studio eller på kommandoraden med kommandona `dotnet build` och `dotnet run`. När du har kört appen ska du granska koden för att lära dig hur varje del av appen fungerar. Till exempel i Visual Studio:
 
-- Högerklicka på lösningen i Solution Explorer och klicka på Build- **lösning**. 
+- Högerklicka på lösningen i Solution Explorer och klicka på **Skapa lösning**. 
 
 - Bekräfta återställningen av NuGet-paket om du uppmanas att göra det. Om du behöver ladda ned paket som saknas ska du se till att [NuGet Package Manager](https://docs.nuget.org/consume/installing-nuget) är installerat.
 
-När du kör exempelappen ser utdata i konsolen ut ungefär så här. Under körningen uppstår det en paus vid `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` medan poolens beräkningsnoder startas. Aktiviteter köas för att köras när den första beräkningsnoden körs. Gå till batch-kontot i [Azure Portal](https://portal.azure.com) för att övervaka poolen, Compute-noderna, jobbet och uppgifterna.
+När du kör exempelappen ser utdata i konsolen ut ungefär så här. Under körningen uppstår det en paus vid `Monitoring all tasks for 'Completed' state, timeout in 00:30:00...` medan poolens beräkningsnoder startas. Aktiviteter köas för att köras när den första beräkningsnoden körs. Gå till Batch-kontot i [Azure Portal](https://portal.azure.com) för att övervaka poolen, beräkningsnoderna, jobbet och aktiviteterna.
 
 ```
 Sample start: 11/16/2018 4:02:54 PM
